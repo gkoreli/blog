@@ -1,0 +1,1087 @@
+{
+  "bun_revision": "1.4.4-canary.1+da867c60b",
+  "bun_sha256": "256c4f08d81ae8d5c0e445c637b424ba780e0514374b5328dd3db7a953e1aac5",
+  "method": "Two warmup processes; balanced rotating/reversed six-mode order; warm filesystem; fresh process per observation. hot_ms excludes imports, constructor and warmup; elapsed_ms includes process startup, warmup and exit. time -l reports whole-process lifetime peaks. Native addon disabled.",
+  "builds": [
+    {
+      "name": "runtime-jit",
+      "flags": [],
+      "exit": 0,
+      "seconds": 0.02516783302417025,
+      "bytes": 122165474,
+      "sha256": "3b973ba11e22477696fd43705590ea637867ee05271c9c23a360265bf68655ea"
+    },
+    {
+      "name": "runtime-aot",
+      "flags": [
+        "--aot"
+      ],
+      "exit": 0,
+      "seconds": 1.4783233330235817,
+      "bytes": 57174242,
+      "sha256": "3bcc70ab174bd4f25565c7480a686f06f24e5ac13e3734bc154216106ed34d15"
+    },
+    {
+      "name": "runtime-aot-trim",
+      "flags": [
+        "--aot",
+        "--trim"
+      ],
+      "exit": 0,
+      "seconds": 1.4523183749988675,
+      "bytes": 43617938,
+      "sha256": "e6765cdda08673fd3b9c446f123afa44c05a413d2cc463a584a7ffbef5389137"
+    },
+    {
+      "name": "standalone-jit",
+      "flags": [],
+      "exit": 0,
+      "seconds": 0.018831958004739136,
+      "bytes": 121141730,
+      "sha256": "cae7ee3e1a82041577b7b37e82ac0aae2e6da56c489d0c84c859f425cf111b18"
+    },
+    {
+      "name": "standalone-aot",
+      "flags": [
+        "--aot"
+      ],
+      "exit": 0,
+      "seconds": 0.1954891660134308,
+      "bytes": 52187618,
+      "sha256": "953e75be66e771c1f1b2df12a74f063628fe39d31401aa7005b50256fe63b866"
+    },
+    {
+      "name": "standalone-aot-trim",
+      "flags": [
+        "--aot",
+        "--trim"
+      ],
+      "exit": 0,
+      "seconds": 0.17456266697263345,
+      "bytes": 26148194,
+      "sha256": "b0d9a52582bd87bd34b60e73d3ff9cf5a199e68e1a22c7782283cf1387d616f0"
+    }
+  ],
+  "summary": [
+    {
+      "schema": "simple",
+      "traffic": "cold",
+      "mode": "runtime-jit",
+      "engine": "codegen",
+      "n": 12,
+      "metrics": {
+        "elapsed_ms": {
+          "median": 18.1609585,
+          "min": 17.674708,
+          "max": 18.442667
+        },
+        "hot_ms": {
+          "median": 8.400000000019503e-05,
+          "min": 4.2000000000541604e-05,
+          "max": 0.00012500000000059686
+        },
+        "first_ms": {
+          "median": 2.1665624999999995,
+          "min": 2.0981249999999996,
+          "max": 2.285667
+        },
+        "peak_rss_bytes": {
+          "median": 17989632.0,
+          "min": 17973248,
+          "max": 18006016
+        },
+        "peak_physical_bytes": {
+          "median": 9773524.0,
+          "min": 9765320,
+          "max": 9781728
+        }
+      }
+    },
+    {
+      "schema": "simple",
+      "traffic": "cold",
+      "mode": "runtime-aot",
+      "engine": "interpreter",
+      "n": 12,
+      "metrics": {
+        "elapsed_ms": {
+          "median": 9.665271,
+          "min": 9.31175,
+          "max": 10.648375
+        },
+        "hot_ms": {
+          "median": 6.299999999992423e-05,
+          "min": 4.099999999995774e-05,
+          "max": 0.0001669999999998062
+        },
+        "first_ms": {
+          "median": 0.1650625000000001,
+          "min": 0.15108400000000022,
+          "max": 0.20083299999999982
+        },
+        "peak_rss_bytes": {
+          "median": 15745024.0,
+          "min": 15728640,
+          "max": 15745024
+        },
+        "peak_physical_bytes": {
+          "median": 9765320.0,
+          "min": 9765320,
+          "max": 9765320
+        }
+      }
+    },
+    {
+      "schema": "simple",
+      "traffic": "cold",
+      "mode": "runtime-aot-forced-codegen",
+      "engine": "codegen",
+      "n": 12,
+      "metrics": {
+        "elapsed_ms": {
+          "median": 10.1429795,
+          "min": 9.50925,
+          "max": 11.098666
+        },
+        "hot_ms": {
+          "median": 6.250000000007638e-05,
+          "min": 0,
+          "max": 0.00016700000000025028
+        },
+        "first_ms": {
+          "median": 0.4191665000000001,
+          "min": 0.390541,
+          "max": 0.512875
+        },
+        "peak_rss_bytes": {
+          "median": 17891328.0,
+          "min": 17891328,
+          "max": 17907712
+        },
+        "peak_physical_bytes": {
+          "median": 9765320.0,
+          "min": 9765320,
+          "max": 9765320
+        }
+      }
+    },
+    {
+      "schema": "simple",
+      "traffic": "cold",
+      "mode": "runtime-jit-interpreter",
+      "engine": "interpreter",
+      "n": 12,
+      "metrics": {
+        "elapsed_ms": {
+          "median": 17.267417000000002,
+          "min": 16.922958,
+          "max": 18.082125
+        },
+        "hot_ms": {
+          "median": 0.00012500000000059686,
+          "min": 8.300000000005525e-05,
+          "max": 0.00012500000000059686
+        },
+        "first_ms": {
+          "median": 1.2484375,
+          "min": 1.2080000000000002,
+          "max": 1.3334590000000004
+        },
+        "peak_rss_bytes": {
+          "median": 16793600.0,
+          "min": 16793600,
+          "max": 16809984
+        },
+        "peak_physical_bytes": {
+          "median": 9773524.0,
+          "min": 9765320,
+          "max": 9781728
+        }
+      }
+    },
+    {
+      "schema": "simple",
+      "traffic": "cold",
+      "mode": "standalone-jit",
+      "engine": "standalone",
+      "n": 12,
+      "metrics": {
+        "elapsed_ms": {
+          "median": 9.9789375,
+          "min": 9.2585,
+          "max": 10.0935
+        },
+        "hot_ms": {
+          "median": 0.00012500000000015277,
+          "min": 8.300000000005525e-05,
+          "max": 0.0001669999999998062
+        },
+        "first_ms": {
+          "median": 0.04643749999999991,
+          "min": 0.04420800000000025,
+          "max": 0.055625000000000036
+        },
+        "peak_rss_bytes": {
+          "median": 12115968.0,
+          "min": 12042240,
+          "max": 12156928
+        },
+        "peak_physical_bytes": {
+          "median": 9765320.0,
+          "min": 9765320,
+          "max": 9781728
+        }
+      }
+    },
+    {
+      "schema": "simple",
+      "traffic": "cold",
+      "mode": "standalone-aot",
+      "engine": "standalone",
+      "n": 12,
+      "metrics": {
+        "elapsed_ms": {
+          "median": 9.3259995,
+          "min": 8.920458,
+          "max": 9.582375
+        },
+        "hot_ms": {
+          "median": 4.1499999999916604e-05,
+          "min": 0,
+          "max": 8.399999999997299e-05
+        },
+        "first_ms": {
+          "median": 0.017250499999999946,
+          "min": 0.016167000000000042,
+          "max": 0.03225000000000011
+        },
+        "peak_rss_bytes": {
+          "median": 12615680.0,
+          "min": 12615680,
+          "max": 12632064
+        },
+        "peak_physical_bytes": {
+          "median": 9765320.0,
+          "min": 9765320,
+          "max": 9765320
+        }
+      }
+    },
+    {
+      "schema": "simple",
+      "traffic": "valid",
+      "mode": "runtime-jit",
+      "engine": "codegen",
+      "n": 12,
+      "metrics": {
+        "elapsed_ms": {
+          "median": 31.087562499999997,
+          "min": 30.784792,
+          "max": 31.8675
+        },
+        "hot_ms": {
+          "median": 9.506291500000001,
+          "min": 9.318042,
+          "max": 9.821292000000001
+        },
+        "first_ms": {
+          "median": 2.2462294999999997,
+          "min": 2.0960839999999994,
+          "max": 2.3147080000000013
+        },
+        "peak_rss_bytes": {
+          "median": 38764544.0,
+          "min": 37765120,
+          "max": 38993920
+        },
+        "peak_physical_bytes": {
+          "median": 24044168.0,
+          "min": 23069344,
+          "max": 24314552
+        }
+      }
+    },
+    {
+      "schema": "simple",
+      "traffic": "valid",
+      "mode": "runtime-aot",
+      "engine": "interpreter",
+      "n": 12,
+      "metrics": {
+        "elapsed_ms": {
+          "median": 51.2243955,
+          "min": 50.386667,
+          "max": 52.401583
+        },
+        "hot_ms": {
+          "median": 36.555020999999996,
+          "min": 35.827708,
+          "max": 37.633792
+        },
+        "first_ms": {
+          "median": 0.16520849999999987,
+          "min": 0.15745799999999988,
+          "max": 0.1780409999999999
+        },
+        "peak_rss_bytes": {
+          "median": 25362432.0,
+          "min": 25362432,
+          "max": 25395200
+        },
+        "peak_physical_bytes": {
+          "median": 15450856.0,
+          "min": 15434448,
+          "max": 15483648
+        }
+      }
+    },
+    {
+      "schema": "simple",
+      "traffic": "valid",
+      "mode": "runtime-aot-forced-codegen",
+      "engine": "codegen",
+      "n": 12,
+      "metrics": {
+        "elapsed_ms": {
+          "median": 139.15772950000002,
+          "min": 133.973,
+          "max": 154.467041
+        },
+        "hot_ms": {
+          "median": 116.64418749999999,
+          "min": 111.629916,
+          "max": 131.659958
+        },
+        "first_ms": {
+          "median": 0.42256249999999995,
+          "min": 0.4077089999999999,
+          "max": 0.5064580000000001
+        },
+        "peak_rss_bytes": {
+          "median": 27770880.0,
+          "min": 27754496,
+          "max": 27787264
+        },
+        "peak_physical_bytes": {
+          "median": 15631080.0,
+          "min": 15598288,
+          "max": 15647488
+        }
+      }
+    },
+    {
+      "schema": "simple",
+      "traffic": "valid",
+      "mode": "runtime-jit-interpreter",
+      "engine": "interpreter",
+      "n": 12,
+      "metrics": {
+        "elapsed_ms": {
+          "median": 49.415125,
+          "min": 48.452375,
+          "max": 49.852625
+        },
+        "hot_ms": {
+          "median": 25.7616035,
+          "min": 25.487000000000002,
+          "max": 26.288458
+        },
+        "first_ms": {
+          "median": 1.2757500000000004,
+          "min": 1.2005409999999994,
+          "max": 1.6193329999999992
+        },
+        "peak_rss_bytes": {
+          "median": 38977536.0,
+          "min": 38846464,
+          "max": 39157760
+        },
+        "peak_physical_bytes": {
+          "median": 24240800.0,
+          "min": 24101560,
+          "max": 24429216
+        }
+      }
+    },
+    {
+      "schema": "simple",
+      "traffic": "valid",
+      "mode": "standalone-jit",
+      "engine": "standalone",
+      "n": 12,
+      "metrics": {
+        "elapsed_ms": {
+          "median": 19.7721875,
+          "min": 19.157083,
+          "max": 20.522208
+        },
+        "hot_ms": {
+          "median": 7.282625,
+          "min": 6.774541,
+          "max": 7.823416999999999
+        },
+        "first_ms": {
+          "median": 0.04735400000000012,
+          "min": 0.045166999999999735,
+          "max": 0.0521250000000002
+        },
+        "peak_rss_bytes": {
+          "median": 23363584.0,
+          "min": 23183360,
+          "max": 23429120
+        },
+        "peak_physical_bytes": {
+          "median": 11453076.0,
+          "min": 11256456,
+          "max": 11502240
+        }
+      }
+    },
+    {
+      "schema": "simple",
+      "traffic": "valid",
+      "mode": "standalone-aot",
+      "engine": "standalone",
+      "n": 12,
+      "metrics": {
+        "elapsed_ms": {
+          "median": 19.153437500000003,
+          "min": 18.489541,
+          "max": 19.566541
+        },
+        "hot_ms": {
+          "median": 8.458187500000001,
+          "min": 7.92225,
+          "max": 9.114917
+        },
+        "first_ms": {
+          "median": 0.017542000000000058,
+          "min": 0.016583999999999932,
+          "max": 0.025500000000000078
+        },
+        "peak_rss_bytes": {
+          "median": 12615680.0,
+          "min": 12615680,
+          "max": 12632064
+        },
+        "peak_physical_bytes": {
+          "median": 9765320.0,
+          "min": 9765320,
+          "max": 9765320
+        }
+      }
+    },
+    {
+      "schema": "simple",
+      "traffic": "mixed",
+      "mode": "runtime-jit",
+      "engine": "codegen",
+      "n": 12,
+      "metrics": {
+        "elapsed_ms": {
+          "median": 45.8433955,
+          "min": 45.278291,
+          "max": 47.979958
+        },
+        "hot_ms": {
+          "median": 23.623583000000004,
+          "min": 23.251917000000006,
+          "max": 24.110334
+        },
+        "first_ms": {
+          "median": 2.2325415,
+          "min": 2.120125,
+          "max": 2.377542
+        },
+        "peak_rss_bytes": {
+          "median": 38780928.0,
+          "min": 38649856,
+          "max": 39124992
+        },
+        "peak_physical_bytes": {
+          "median": 23372436.0,
+          "min": 23249544,
+          "max": 23724704
+        }
+      }
+    },
+    {
+      "schema": "simple",
+      "traffic": "mixed",
+      "mode": "runtime-aot",
+      "engine": "interpreter",
+      "n": 12,
+      "metrics": {
+        "elapsed_ms": {
+          "median": 131.98904149999998,
+          "min": 129.432291,
+          "max": 133.094375
+        },
+        "hot_ms": {
+          "median": 116.9279165,
+          "min": 114.78104099999999,
+          "max": 118.341667
+        },
+        "first_ms": {
+          "median": 0.1673954999999998,
+          "min": 0.16066700000000012,
+          "max": 0.18812500000000032
+        },
+        "peak_rss_bytes": {
+          "median": 26001408.0,
+          "min": 25985024,
+          "max": 26034176
+        },
+        "peak_physical_bytes": {
+          "median": 15573736.0,
+          "min": 15532728,
+          "max": 15614720
+        }
+      }
+    },
+    {
+      "schema": "simple",
+      "traffic": "mixed",
+      "mode": "runtime-aot-forced-codegen",
+      "engine": "codegen",
+      "n": 12,
+      "metrics": {
+        "elapsed_ms": {
+          "median": 273.783042,
+          "min": 271.252583,
+          "max": 279.102292
+        },
+        "hot_ms": {
+          "median": 249.7383125,
+          "min": 246.678416,
+          "max": 254.054875
+        },
+        "first_ms": {
+          "median": 0.4306880000000002,
+          "min": 0.412458,
+          "max": 0.4635419999999999
+        },
+        "peak_rss_bytes": {
+          "median": 29278208.0,
+          "min": 29278208,
+          "max": 29294592
+        },
+        "peak_physical_bytes": {
+          "median": 15975144.0,
+          "min": 15958736,
+          "max": 16007936
+        }
+      }
+    },
+    {
+      "schema": "simple",
+      "traffic": "mixed",
+      "mode": "runtime-jit-interpreter",
+      "engine": "interpreter",
+      "n": 12,
+      "metrics": {
+        "elapsed_ms": {
+          "median": 88.6014585,
+          "min": 88.03275,
+          "max": 99.245708
+        },
+        "hot_ms": {
+          "median": 64.840229,
+          "min": 64.418917,
+          "max": 71.516042
+        },
+        "first_ms": {
+          "median": 1.2801254999999987,
+          "min": 1.2622079999999993,
+          "max": 1.3048330000000004
+        },
+        "peak_rss_bytes": {
+          "median": 51732480.0,
+          "min": 51167232,
+          "max": 52445184
+        },
+        "peak_physical_bytes": {
+          "median": 36201144.0,
+          "min": 35619488,
+          "max": 36913848
+        }
+      }
+    },
+    {
+      "schema": "simple",
+      "traffic": "mixed",
+      "mode": "standalone-jit",
+      "engine": "standalone",
+      "n": 12,
+      "metrics": {
+        "elapsed_ms": {
+          "median": 29.8492085,
+          "min": 28.971208,
+          "max": 31.668208
+        },
+        "hot_ms": {
+          "median": 15.039354,
+          "min": 14.834665999999999,
+          "max": 15.698249999999998
+        },
+        "first_ms": {
+          "median": 0.04877049999999983,
+          "min": 0.045958000000000165,
+          "max": 0.05237500000000006
+        },
+        "peak_rss_bytes": {
+          "median": 35848192.0,
+          "min": 35504128,
+          "max": 35995648
+        },
+        "peak_physical_bytes": {
+          "median": 22897300.0,
+          "min": 22545056,
+          "max": 23069344
+        }
+      }
+    },
+    {
+      "schema": "simple",
+      "traffic": "mixed",
+      "mode": "standalone-aot",
+      "engine": "standalone",
+      "n": 12,
+      "metrics": {
+        "elapsed_ms": {
+          "median": 26.8582705,
+          "min": 26.134833,
+          "max": 28.208458
+        },
+        "hot_ms": {
+          "median": 14.469354,
+          "min": 13.834541999999999,
+          "max": 15.693125
+        },
+        "first_ms": {
+          "median": 0.01793750000000005,
+          "min": 0.016875000000000195,
+          "max": 0.027124999999999844
+        },
+        "peak_rss_bytes": {
+          "median": 22380544.0,
+          "min": 22364160,
+          "max": 22396928
+        },
+        "peak_physical_bytes": {
+          "median": 14795472.0,
+          "min": 14762656,
+          "max": 14811880
+        }
+      }
+    },
+    {
+      "schema": "nested",
+      "traffic": "valid",
+      "mode": "runtime-jit",
+      "engine": "codegen",
+      "n": 12,
+      "metrics": {
+        "elapsed_ms": {
+          "median": 66.7657915,
+          "min": 66.190458,
+          "max": 70.194834
+        },
+        "hot_ms": {
+          "median": 35.3285205,
+          "min": 34.761750000000006,
+          "max": 35.665541
+        },
+        "first_ms": {
+          "median": 2.931813,
+          "min": 2.8224169999999997,
+          "max": 3.0322499999999994
+        },
+        "peak_rss_bytes": {
+          "median": 40837120.0,
+          "min": 40517632,
+          "max": 41091072
+        },
+        "peak_physical_bytes": {
+          "median": 25289352.0,
+          "min": 24953504,
+          "max": 25543280
+        }
+      }
+    },
+    {
+      "schema": "nested",
+      "traffic": "valid",
+      "mode": "runtime-aot",
+      "engine": "interpreter",
+      "n": 12,
+      "metrics": {
+        "elapsed_ms": {
+          "median": 336.44183350000003,
+          "min": 331.279791,
+          "max": 342.246583
+        },
+        "hot_ms": {
+          "median": 269.515688,
+          "min": 265.24125000000004,
+          "max": 275.366417
+        },
+        "first_ms": {
+          "median": 0.2386044999999999,
+          "min": 0.2291249999999998,
+          "max": 0.25124999999999975
+        },
+        "peak_rss_bytes": {
+          "median": 26238976.0,
+          "min": 26230784,
+          "max": 26263552
+        },
+        "peak_physical_bytes": {
+          "median": 15770344.0,
+          "min": 15729360,
+          "max": 15811328
+        }
+      }
+    },
+    {
+      "schema": "nested",
+      "traffic": "valid",
+      "mode": "runtime-aot-forced-codegen",
+      "engine": "codegen",
+      "n": 12,
+      "metrics": {
+        "elapsed_ms": {
+          "median": 890.9685830000001,
+          "min": 879.413584,
+          "max": 926.434584
+        },
+        "hot_ms": {
+          "median": 731.0633124999999,
+          "min": 722.3843750000001,
+          "max": 763.320458
+        },
+        "first_ms": {
+          "median": 0.7123124999999998,
+          "min": 0.6620409999999999,
+          "max": 0.803042
+        },
+        "peak_rss_bytes": {
+          "median": 29065216.0,
+          "min": 29016064,
+          "max": 29065216
+        },
+        "peak_physical_bytes": {
+          "median": 16130780.0,
+          "min": 16089832,
+          "max": 16155392
+        }
+      }
+    },
+    {
+      "schema": "nested",
+      "traffic": "valid",
+      "mode": "runtime-jit-interpreter",
+      "engine": "interpreter",
+      "n": 12,
+      "metrics": {
+        "elapsed_ms": {
+          "median": 199.6561255,
+          "min": 196.535667,
+          "max": 206.026
+        },
+        "hot_ms": {
+          "median": 144.8902085,
+          "min": 142.9065,
+          "max": 150.46433299999998
+        },
+        "first_ms": {
+          "median": 2.0288745000000006,
+          "min": 1.9805829999999993,
+          "max": 2.156666999999999
+        },
+        "peak_rss_bytes": {
+          "median": 53878784.0,
+          "min": 52985856,
+          "max": 55017472
+        },
+        "peak_physical_bytes": {
+          "median": 35881656.0,
+          "min": 35029664,
+          "max": 36651680
+        }
+      }
+    },
+    {
+      "schema": "nested",
+      "traffic": "valid",
+      "mode": "standalone-jit",
+      "engine": "standalone",
+      "n": 12,
+      "metrics": {
+        "elapsed_ms": {
+          "median": 54.5447505,
+          "min": 53.6545,
+          "max": 57.412333
+        },
+        "hot_ms": {
+          "median": 33.499959,
+          "min": 32.733625,
+          "max": 35.733333
+        },
+        "first_ms": {
+          "median": 0.2078534999999999,
+          "min": 0.19979199999999997,
+          "max": 0.2188749999999997
+        },
+        "peak_rss_bytes": {
+          "median": 24756224.0,
+          "min": 24707072,
+          "max": 24887296
+        },
+        "peak_physical_bytes": {
+          "median": 12190344.0,
+          "min": 12124784,
+          "max": 12288624
+        }
+      }
+    },
+    {
+      "schema": "nested",
+      "traffic": "valid",
+      "mode": "standalone-aot",
+      "engine": "standalone",
+      "n": 12,
+      "metrics": {
+        "elapsed_ms": {
+          "median": 53.2459375,
+          "min": 51.993625,
+          "max": 58.861917
+        },
+        "hot_ms": {
+          "median": 35.9693745,
+          "min": 34.925667000000004,
+          "max": 39.048583
+        },
+        "first_ms": {
+          "median": 0.023750500000000008,
+          "min": 0.022209000000000145,
+          "max": 0.035374999999999934
+        },
+        "peak_rss_bytes": {
+          "median": 12746752.0,
+          "min": 12746752,
+          "max": 12763136
+        },
+        "peak_physical_bytes": {
+          "median": 9765320.0,
+          "min": 9765320,
+          "max": 9765320
+        }
+      }
+    },
+    {
+      "schema": "nested",
+      "traffic": "mixed",
+      "mode": "runtime-jit",
+      "engine": "codegen",
+      "n": 12,
+      "metrics": {
+        "elapsed_ms": {
+          "median": 82.75897900000001,
+          "min": 81.95325,
+          "max": 85.35975
+        },
+        "hot_ms": {
+          "median": 50.339229,
+          "min": 49.841916,
+          "max": 51.617915999999994
+        },
+        "first_ms": {
+          "median": 2.9673745,
+          "min": 2.8671249999999997,
+          "max": 3.0465420000000005
+        },
+        "peak_rss_bytes": {
+          "median": 49225728.0,
+          "min": 48775168,
+          "max": 49512448
+        },
+        "peak_physical_bytes": {
+          "median": 32940692.0,
+          "min": 32490144,
+          "max": 33178224
+        }
+      }
+    },
+    {
+      "schema": "nested",
+      "traffic": "mixed",
+      "mode": "runtime-aot",
+      "engine": "interpreter",
+      "n": 12,
+      "metrics": {
+        "elapsed_ms": {
+          "median": 443.47589600000003,
+          "min": 437.169459,
+          "max": 492.717625
+        },
+        "hot_ms": {
+          "median": 376.718146,
+          "min": 371.221833,
+          "max": 425.816916
+        },
+        "first_ms": {
+          "median": 0.237792,
+          "min": 0.2275830000000001,
+          "max": 0.2667919999999997
+        },
+        "peak_rss_bytes": {
+          "median": 26443776.0,
+          "min": 26427392,
+          "max": 26460160
+        },
+        "peak_physical_bytes": {
+          "median": 15762152.0,
+          "min": 15745744,
+          "max": 15794944
+        }
+      }
+    },
+    {
+      "schema": "nested",
+      "traffic": "mixed",
+      "mode": "runtime-aot-forced-codegen",
+      "engine": "codegen",
+      "n": 12,
+      "metrics": {
+        "elapsed_ms": {
+          "median": 1108.9790625,
+          "min": 1098.686625,
+          "max": 1134.10325
+        },
+        "hot_ms": {
+          "median": 947.9284170000001,
+          "min": 940.836125,
+          "max": 972.4760419999999
+        },
+        "first_ms": {
+          "median": 0.7091665,
+          "min": 0.6704999999999997,
+          "max": 0.7646249999999997
+        },
+        "peak_rss_bytes": {
+          "median": 30744576.0,
+          "min": 30720000,
+          "max": 30769152
+        },
+        "peak_physical_bytes": {
+          "median": 16753384.0,
+          "min": 16728808,
+          "max": 16794368
+        }
+      }
+    },
+    {
+      "schema": "nested",
+      "traffic": "mixed",
+      "mode": "runtime-jit-interpreter",
+      "engine": "interpreter",
+      "n": 12,
+      "metrics": {
+        "elapsed_ms": {
+          "median": 267.45995800000003,
+          "min": 263.201333,
+          "max": 275.956125
+        },
+        "hot_ms": {
+          "median": 212.111104,
+          "min": 209.248625,
+          "max": 220.70304199999998
+        },
+        "first_ms": {
+          "median": 2.0486875000000007,
+          "min": 1.964792000000001,
+          "max": 2.1860420000000005
+        },
+        "peak_rss_bytes": {
+          "median": 59318272.0,
+          "min": 58523648,
+          "max": 63275008
+        },
+        "peak_physical_bytes": {
+          "median": 42173112.0,
+          "min": 40944312,
+          "max": 46727816
+        }
+      }
+    },
+    {
+      "schema": "nested",
+      "traffic": "mixed",
+      "mode": "standalone-jit",
+      "engine": "standalone",
+      "n": 12,
+      "metrics": {
+        "elapsed_ms": {
+          "median": 73.01474999999999,
+          "min": 71.325875,
+          "max": 80.7985
+        },
+        "hot_ms": {
+          "median": 45.9510415,
+          "min": 45.209792,
+          "max": 46.808583
+        },
+        "first_ms": {
+          "median": 0.21306200000000008,
+          "min": 0.2067089999999996,
+          "max": 0.22883399999999998
+        },
+        "peak_rss_bytes": {
+          "median": 43409408.0,
+          "min": 42795008,
+          "max": 43761664
+        },
+        "peak_physical_bytes": {
+          "median": 29917892.0,
+          "min": 29278904,
+          "max": 30229152
+        }
+      }
+    },
+    {
+      "schema": "nested",
+      "traffic": "mixed",
+      "mode": "standalone-aot",
+      "engine": "standalone",
+      "n": 12,
+      "metrics": {
+        "elapsed_ms": {
+          "median": 74.912917,
+          "min": 73.726292,
+          "max": 81.213833
+        },
+        "hot_ms": {
+          "median": 52.745999999999995,
+          "min": 52.096166000000004,
+          "max": 54.191458
+        },
+        "first_ms": {
+          "median": 0.024125000000000063,
+          "min": 0.02224999999999988,
+          "max": 0.03616700000000006
+        },
+        "peak_rss_bytes": {
+          "median": 22577152.0,
+          "min": 22560768,
+          "max": 22593536
+        },
+        "peak_physical_bytes": {
+          "median": 14934736.0,
+          "min": 14910136,
+          "max": 14975720
+        }
+      }
+    }
+  ]
+}

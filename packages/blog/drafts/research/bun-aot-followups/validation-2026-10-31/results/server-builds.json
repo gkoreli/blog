@@ -1,0 +1,131 @@
+[
+  {
+    "name": "elysia-plugin-generation",
+    "exit": 0
+  },
+  {
+    "name": "elysia-jit",
+    "project": "framework",
+    "source": "elysia-entry.ts",
+    "flags": [],
+    "exit": 0,
+    "build_seconds": 0.03278175002196804,
+    "bytes": 121521506,
+    "sha256": "848b02ee9a6e454859d56d261d7d90ddfb0bc2406a11169933ee4d4756bbc049"
+  },
+  {
+    "name": "elysia-native",
+    "project": "framework",
+    "source": "elysia-entry.ts",
+    "flags": [
+      "--aot"
+    ],
+    "exit": 0,
+    "build_seconds": 1.2646085000014864,
+    "bytes": 57190754,
+    "sha256": "dafeff323888283549a628acc97b755347fd74db6091fb638ec4a66bdbb19033"
+  },
+  {
+    "name": "elysia-plugin-jit",
+    "project": "framework",
+    "source": "plugin-output/index.js",
+    "flags": [],
+    "exit": 0,
+    "build_seconds": 0.021929958020336926,
+    "bytes": 121389410,
+    "sha256": "4e411906e0f1eeeb358e58bf62ea0636fd0ae426691d7f14519233843038354a"
+  },
+  {
+    "name": "elysia-plugin-native",
+    "project": "framework",
+    "source": "plugin-output/index.js",
+    "flags": [
+      "--aot"
+    ],
+    "exit": 0,
+    "build_seconds": 0.657205083000008,
+    "bytes": 53855330,
+    "sha256": "e9d27f7c91527ddfa934a1947b5079b6eedb417ccfa260386475e8a733da1052"
+  },
+  {
+    "name": "hono-jit",
+    "project": "framework",
+    "source": "hono-entry.ts",
+    "flags": [],
+    "exit": 0,
+    "build_seconds": 0.021279709006194025,
+    "bytes": 121141730,
+    "sha256": "0625e696c7890b353ab991d03b58b95cd1289648d04c3e86ab83eb2243f940b5"
+  },
+  {
+    "name": "hono-native",
+    "project": "framework",
+    "source": "hono-entry.ts",
+    "flags": [
+      "--aot"
+    ],
+    "exit": 0,
+    "build_seconds": 0.3454979590023868,
+    "bytes": 52765538,
+    "sha256": "47569b7506fa7a3ab49925fb762c42e5cf4d28215f4c130030dd81017d4168eb"
+  },
+  {
+    "name": "api-plugin-generation",
+    "exit": 0
+  },
+  {
+    "name": "api-wired-jit",
+    "project": "sources/api/apps/elysia-api",
+    "source": "wired-entry.ts",
+    "flags": [],
+    "exit": 0,
+    "build_seconds": 0.03908170899376273,
+    "bytes": 122528738,
+    "sha256": "525f1921220556e302af2e17c56b31f87d69e6a593cbe48160c75347ec66e601"
+  },
+  {
+    "name": "api-wired-native",
+    "project": "sources/api/apps/elysia-api",
+    "source": "wired-entry.ts",
+    "flags": [
+      "--aot"
+    ],
+    "exit": 0,
+    "build_seconds": 2.4698053339961916,
+    "bytes": 64720226,
+    "sha256": "3aba92beef1b4836e0c7b352c967ecc4e4213d8e79bc3c7737b2dd07a5ef7036"
+  },
+  {
+    "name": "api-plugin-jit",
+    "project": "sources/api/apps/elysia-api",
+    "source": "plugin-output/index.js",
+    "flags": [],
+    "exit": 0,
+    "build_seconds": 0.037259207980241627,
+    "bytes": 122429666,
+    "sha256": "43cd1d3c3c6d293dd44677f8dd0880a01af487c884de2e464739023477066802"
+  },
+  {
+    "name": "api-plugin-native",
+    "project": "sources/api/apps/elysia-api",
+    "source": "plugin-output/index.js",
+    "flags": [
+      "--aot"
+    ],
+    "exit": 0,
+    "build_seconds": 2.2716068340232596,
+    "bytes": 63316706,
+    "sha256": "b5450a2b25b8a35e988bb52aec17134038ec5b0247b760ddeeba899aa40dbc0b"
+  },
+  {
+    "name": "api-wired-bytecode",
+    "flags": [
+      "--bytecode",
+      "--format=esm"
+    ],
+    "exit": 0,
+    "seconds": 0.21363625000230968,
+    "bytes": 126788834,
+    "sha256": "ab8fb93021de4c2f18348544a25ffda67f65243c6b6e2f226d1bee2120f01528"
+  }
+]

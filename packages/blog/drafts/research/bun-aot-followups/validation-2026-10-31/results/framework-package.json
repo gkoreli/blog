@@ -1,0 +1,8 @@
+{
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "elysia": "2.0.0-beta.29",
+    "hono": "4.13.13"
+  }
+}

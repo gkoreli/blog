@@ -1,0 +1,1938 @@
+[
+  {
+    "mode": "deep-runtime-jit",
+    "exit": 0,
+    "cases": 133,
+    "wrong_verdicts": 0,
+    "differences": []
+  },
+  {
+    "mode": "deep-runtime-native",
+    "exit": 0,
+    "cases": 133,
+    "wrong_verdicts": 0,
+    "differences": []
+  },
+  {
+    "mode": "deep-standalone-jit",
+    "exit": 0,
+    "cases": 133,
+    "wrong_verdicts": 0,
+    "differences": [
+      {
+        "kind": "simple",
+        "case": "root-null",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "simple",
+        "case": "root-[]",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "simple",
+        "case": "root-true",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "simple",
+        "case": "root-false",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "simple",
+        "case": "root-0",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "simple",
+        "case": "root-1.5",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "simple",
+        "case": "root-\"\"",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "simple",
+        "case": "root-\"object\"",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "simple",
+        "case": "empty-object",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "simple",
+        "case": "ordinary-valid",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "simple",
+        "case": "missing-id",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "simple",
+        "case": "id-type-\"1\"",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "simple",
+        "case": "id-type-null",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "simple",
+        "case": "id-type-true",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "simple",
+        "case": "id-type-1.5",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "simple",
+        "case": "zero-id",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "simple",
+        "case": "negative-id",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "simple",
+        "case": "large-id",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "simple",
+        "case": "max-safe-id",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "simple",
+        "case": "extra-property",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "simple",
+        "case": "own-proto-key",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "simple",
+        "case": "own-constructor-key",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "simple",
+        "case": "missing-name",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "simple",
+        "case": "name-\"\"",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "simple",
+        "case": "name-1",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "simple",
+        "case": "name-null",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "simple",
+        "case": "name-false",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "simple",
+        "case": "name-[]",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "simple",
+        "case": "name-{}",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "simple",
+        "case": "unicode-name",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "simple",
+        "case": "multiple-errors",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "root-null",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "root-[]",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "root-true",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "root-false",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "root-0",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "root-1.5",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "root-\"\"",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "root-\"object\"",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "empty-object",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "ordinary-valid",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "missing-id",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "id-type-\"1\"",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "id-type-null",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "id-type-true",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "id-type-1.5",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "zero-id",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "negative-id",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "large-id",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "max-safe-id",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "extra-property",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "own-proto-key",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "own-constructor-key",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "missing-status",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "missing-user",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "missing-items",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "status-active",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "status-inactive",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "status-pending",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "status-\"\"",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "status-\"other\"",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "status-1",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "status-null",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "user-null",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "user-[]",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "user-true",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "user-\"name\"",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "user-{}",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "user-missing-firstName",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "user-missing-lastName",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "user-missing-email",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "empty-first-name",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "unicode-first-name",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "invalid-email",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "missing-age-is-valid",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "age-boundary-0",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "age-boundary-150",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "age--1",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "age-151",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "age-12.5",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "age-\"30\"",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "age-null",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "items-[]",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "items-null",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "items-{}",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "items-\"items\"",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "items-[null]",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "items-[{}]",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "item-missing-sku",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "item-missing-quantity",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "item-missing-price",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "empty-sku",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "quantity-0",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "quantity--1",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "quantity-1.5",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "quantity-\"1\"",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "quantity-null",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "zero-price",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "price--1",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "price-\"1\"",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "price-null",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "later-item-invalid",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "multiple-errors",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "defaults",
+        "case": "root-null",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "defaults",
+        "case": "root-[]",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "defaults",
+        "case": "root-true",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "defaults",
+        "case": "root-false",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "defaults",
+        "case": "root-0",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "defaults",
+        "case": "root-1.5",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "defaults",
+        "case": "root-\"\"",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "defaults",
+        "case": "root-\"object\"",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "defaults",
+        "case": "empty-object",
+        "fields": [
+          "mutated-input-versus-runtime-jit",
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "defaults",
+        "case": "ordinary-valid",
+        "fields": [
+          "mutated-input-versus-runtime-jit",
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "defaults",
+        "case": "missing-id",
+        "fields": [
+          "mutated-input-versus-runtime-jit",
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "defaults",
+        "case": "id-type-\"1\"",
+        "fields": [
+          "mutated-input-versus-runtime-jit",
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "defaults",
+        "case": "id-type-null",
+        "fields": [
+          "mutated-input-versus-runtime-jit",
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "defaults",
+        "case": "id-type-true",
+        "fields": [
+          "mutated-input-versus-runtime-jit",
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "defaults",
+        "case": "id-type-1.5",
+        "fields": [
+          "mutated-input-versus-runtime-jit",
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "defaults",
+        "case": "zero-id",
+        "fields": [
+          "mutated-input-versus-runtime-jit",
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "defaults",
+        "case": "negative-id",
+        "fields": [
+          "mutated-input-versus-runtime-jit",
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "defaults",
+        "case": "large-id",
+        "fields": [
+          "mutated-input-versus-runtime-jit",
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "defaults",
+        "case": "max-safe-id",
+        "fields": [
+          "mutated-input-versus-runtime-jit",
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "defaults",
+        "case": "extra-property",
+        "fields": [
+          "mutated-input-versus-runtime-jit",
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "defaults",
+        "case": "own-proto-key",
+        "fields": [
+          "mutated-input-versus-runtime-jit",
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "defaults",
+        "case": "own-constructor-key",
+        "fields": [
+          "mutated-input-versus-runtime-jit",
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "defaults",
+        "case": "default-field-explicit-true",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "defaults",
+        "case": "default-field-explicit-false",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "defaults",
+        "case": "enabled-null",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "defaults",
+        "case": "enabled-0",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "defaults",
+        "case": "enabled-1",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "defaults",
+        "case": "enabled-\"true\"",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "defaults",
+        "case": "enabled-[]",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "defaults",
+        "case": "multiple-errors",
+        "fields": [
+          "mutated-input-versus-runtime-jit",
+          "serialized-result-versus-runtime-jit"
+        ]
+      }
+    ]
+  },
+  {
+    "mode": "deep-standalone-native",
+    "exit": 0,
+    "cases": 133,
+    "wrong_verdicts": 0,
+    "differences": [
+      {
+        "kind": "simple",
+        "case": "root-null",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "simple",
+        "case": "root-[]",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "simple",
+        "case": "root-true",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "simple",
+        "case": "root-false",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "simple",
+        "case": "root-0",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "simple",
+        "case": "root-1.5",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "simple",
+        "case": "root-\"\"",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "simple",
+        "case": "root-\"object\"",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "simple",
+        "case": "empty-object",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "simple",
+        "case": "ordinary-valid",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "simple",
+        "case": "missing-id",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "simple",
+        "case": "id-type-\"1\"",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "simple",
+        "case": "id-type-null",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "simple",
+        "case": "id-type-true",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "simple",
+        "case": "id-type-1.5",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "simple",
+        "case": "zero-id",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "simple",
+        "case": "negative-id",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "simple",
+        "case": "large-id",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "simple",
+        "case": "max-safe-id",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "simple",
+        "case": "extra-property",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "simple",
+        "case": "own-proto-key",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "simple",
+        "case": "own-constructor-key",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "simple",
+        "case": "missing-name",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "simple",
+        "case": "name-\"\"",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "simple",
+        "case": "name-1",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "simple",
+        "case": "name-null",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "simple",
+        "case": "name-false",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "simple",
+        "case": "name-[]",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "simple",
+        "case": "name-{}",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "simple",
+        "case": "unicode-name",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "simple",
+        "case": "multiple-errors",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "root-null",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "root-[]",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "root-true",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "root-false",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "root-0",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "root-1.5",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "root-\"\"",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "root-\"object\"",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "empty-object",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "ordinary-valid",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "missing-id",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "id-type-\"1\"",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "id-type-null",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "id-type-true",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "id-type-1.5",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "zero-id",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "negative-id",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "large-id",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "max-safe-id",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "extra-property",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "own-proto-key",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "own-constructor-key",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "missing-status",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "missing-user",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "missing-items",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "status-active",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "status-inactive",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "status-pending",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "status-\"\"",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "status-\"other\"",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "status-1",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "status-null",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "user-null",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "user-[]",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "user-true",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "user-\"name\"",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "user-{}",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "user-missing-firstName",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "user-missing-lastName",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "user-missing-email",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "empty-first-name",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "unicode-first-name",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "invalid-email",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "missing-age-is-valid",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "age-boundary-0",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "age-boundary-150",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "age--1",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "age-151",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "age-12.5",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "age-\"30\"",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "age-null",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "items-[]",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "items-null",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "items-{}",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "items-\"items\"",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "items-[null]",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "items-[{}]",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "item-missing-sku",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "item-missing-quantity",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "item-missing-price",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "empty-sku",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "quantity-0",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "quantity--1",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "quantity-1.5",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "quantity-\"1\"",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "quantity-null",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "zero-price",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "price--1",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "price-\"1\"",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "price-null",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "later-item-invalid",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "nested",
+        "case": "multiple-errors",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "defaults",
+        "case": "root-null",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "defaults",
+        "case": "root-[]",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "defaults",
+        "case": "root-true",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "defaults",
+        "case": "root-false",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "defaults",
+        "case": "root-0",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "defaults",
+        "case": "root-1.5",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "defaults",
+        "case": "root-\"\"",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "defaults",
+        "case": "root-\"object\"",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "defaults",
+        "case": "empty-object",
+        "fields": [
+          "mutated-input-versus-runtime-jit",
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "defaults",
+        "case": "ordinary-valid",
+        "fields": [
+          "mutated-input-versus-runtime-jit",
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "defaults",
+        "case": "missing-id",
+        "fields": [
+          "mutated-input-versus-runtime-jit",
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "defaults",
+        "case": "id-type-\"1\"",
+        "fields": [
+          "mutated-input-versus-runtime-jit",
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "defaults",
+        "case": "id-type-null",
+        "fields": [
+          "mutated-input-versus-runtime-jit",
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "defaults",
+        "case": "id-type-true",
+        "fields": [
+          "mutated-input-versus-runtime-jit",
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "defaults",
+        "case": "id-type-1.5",
+        "fields": [
+          "mutated-input-versus-runtime-jit",
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "defaults",
+        "case": "zero-id",
+        "fields": [
+          "mutated-input-versus-runtime-jit",
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "defaults",
+        "case": "negative-id",
+        "fields": [
+          "mutated-input-versus-runtime-jit",
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "defaults",
+        "case": "large-id",
+        "fields": [
+          "mutated-input-versus-runtime-jit",
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "defaults",
+        "case": "max-safe-id",
+        "fields": [
+          "mutated-input-versus-runtime-jit",
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "defaults",
+        "case": "extra-property",
+        "fields": [
+          "mutated-input-versus-runtime-jit",
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "defaults",
+        "case": "own-proto-key",
+        "fields": [
+          "mutated-input-versus-runtime-jit",
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "defaults",
+        "case": "own-constructor-key",
+        "fields": [
+          "mutated-input-versus-runtime-jit",
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "defaults",
+        "case": "default-field-explicit-true",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "defaults",
+        "case": "default-field-explicit-false",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "defaults",
+        "case": "enabled-null",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "defaults",
+        "case": "enabled-0",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "defaults",
+        "case": "enabled-1",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "defaults",
+        "case": "enabled-\"true\"",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "defaults",
+        "case": "enabled-[]",
+        "fields": [
+          "serialized-result-versus-runtime-jit"
+        ]
+      },
+      {
+        "kind": "defaults",
+        "case": "multiple-errors",
+        "fields": [
+          "mutated-input-versus-runtime-jit",
+          "serialized-result-versus-runtime-jit"
+        ]
+      }
+    ]
+  },
+  {
+    "mode": "deep-runtime-jit-interpreter",
+    "exit": 0,
+    "cases": 133,
+    "wrong_verdicts": 0,
+    "differences": []
+  },
+  {
+    "mode": "deep-runtime-native-auto",
+    "exit": 0,
+    "cases": 133,
+    "wrong_verdicts": 0,
+    "differences": []
+  }
+]

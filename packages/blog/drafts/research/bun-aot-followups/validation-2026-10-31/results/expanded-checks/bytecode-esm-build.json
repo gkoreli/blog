@@ -1,0 +1,13 @@
+[
+  {
+    "name": "api-wired-bytecode",
+    "flags": [
+      "--bytecode",
+      "--format=esm"
+    ],
+    "exit": 0,
+    "seconds": 0.21363625000230968,
+    "bytes": 126788834,
+    "sha256": "ab8fb93021de4c2f18348544a25ffda67f65243c6b6e2f226d1bee2120f01528"
+  }
+]

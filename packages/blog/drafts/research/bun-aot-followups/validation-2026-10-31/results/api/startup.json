@@ -1,0 +1,1256 @@
+{
+  "suite": "api",
+  "stage": "startup",
+  "concurrency": 8,
+  "seconds": 10,
+  "rows": [
+    {
+      "block": 0,
+      "position": 0,
+      "variant": "api-wired-jit",
+      "ready_ms": 30.64216603524983,
+      "ready_memory": {
+        "user_ns": 607106,
+        "system_ns": 147691,
+        "rss_bytes": 34029568,
+        "physical_bytes": 18203272,
+        "lifetime_peak_physical_bytes": 19399304
+      }
+    },
+    {
+      "block": 0,
+      "position": 1,
+      "variant": "api-wired-native",
+      "ready_ms": 11.660791002213955,
+      "ready_memory": {
+        "user_ns": 110711,
+        "system_ns": 111273,
+        "rss_bytes": 25001984,
+        "physical_bytes": 8569576,
+        "lifetime_peak_physical_bytes": 9765320
+      }
+    },
+    {
+      "block": 0,
+      "position": 2,
+      "variant": "api-plugin-jit",
+      "ready_ms": 28.899667027872056,
+      "ready_memory": {
+        "user_ns": 571864,
+        "system_ns": 135366,
+        "rss_bytes": 31309824,
+        "physical_bytes": 17433248,
+        "lifetime_peak_physical_bytes": 17433248
+      }
+    },
+    {
+      "block": 0,
+      "position": 3,
+      "variant": "api-plugin-native",
+      "ready_ms": 11.349166976287961,
+      "ready_memory": {
+        "user_ns": 114613,
+        "system_ns": 110625,
+        "rss_bytes": 24756224,
+        "physical_bytes": 8946408,
+        "lifetime_peak_physical_bytes": 9765320
+      }
+    },
+    {
+      "block": 1,
+      "position": 0,
+      "variant": "api-wired-native",
+      "ready_ms": 11.677832982968539,
+      "ready_memory": {
+        "user_ns": 113825,
+        "system_ns": 108027,
+        "rss_bytes": 24969216,
+        "physical_bytes": 8536808,
+        "lifetime_peak_physical_bytes": 9765320
+      }
+    },
+    {
+      "block": 1,
+      "position": 1,
+      "variant": "api-plugin-jit",
+      "ready_ms": 28.600334015209228,
+      "ready_memory": {
+        "user_ns": 567160,
+        "system_ns": 130689,
+        "rss_bytes": 31309824,
+        "physical_bytes": 17433272,
+        "lifetime_peak_physical_bytes": 17433272
+      }
+    },
+    {
+      "block": 1,
+      "position": 2,
+      "variant": "api-plugin-native",
+      "ready_ms": 11.27424999140203,
+      "ready_memory": {
+        "user_ns": 114387,
+        "system_ns": 111444,
+        "rss_bytes": 24805376,
+        "physical_bytes": 9011968,
+        "lifetime_peak_physical_bytes": 9765320
+      }
+    },
+    {
+      "block": 1,
+      "position": 3,
+      "variant": "api-wired-jit",
+      "ready_ms": 30.008082976564765,
+      "ready_memory": {
+        "user_ns": 600520,
+        "system_ns": 142838,
+        "rss_bytes": 34095104,
+        "physical_bytes": 18268808,
+        "lifetime_peak_physical_bytes": 19448456
+      }
+    },
+    {
+      "block": 2,
+      "position": 0,
+      "variant": "api-plugin-jit",
+      "ready_ms": 29.135124990716577,
+      "ready_memory": {
+        "user_ns": 568929,
+        "system_ns": 138079,
+        "rss_bytes": 31277056,
+        "physical_bytes": 17400480,
+        "lifetime_peak_physical_bytes": 17400480
+      }
+    },
+    {
+      "block": 2,
+      "position": 1,
+      "variant": "api-plugin-native",
+      "ready_ms": 11.764958035200834,
+      "ready_memory": {
+        "user_ns": 117627,
+        "system_ns": 109904,
+        "rss_bytes": 24756224,
+        "physical_bytes": 8946408,
+        "lifetime_peak_physical_bytes": 9765320
+      }
+    },
+    {
+      "block": 2,
+      "position": 2,
+      "variant": "api-wired-jit",
+      "ready_ms": 30.00170801533386,
+      "ready_memory": {
+        "user_ns": 601652,
+        "system_ns": 148229,
+        "rss_bytes": 34062336,
+        "physical_bytes": 18268856,
+        "lifetime_peak_physical_bytes": 19448504
+      }
+    },
+    {
+      "block": 2,
+      "position": 3,
+      "variant": "api-wired-native",
+      "ready_ms": 11.539291008375585,
+      "ready_memory": {
+        "user_ns": 112979,
+        "system_ns": 112265,
+        "rss_bytes": 24969216,
+        "physical_bytes": 8553216,
+        "lifetime_peak_physical_bytes": 9765320
+      }
+    },
+    {
+      "block": 3,
+      "position": 0,
+      "variant": "api-plugin-native",
+      "ready_ms": 11.849750007968396,
+      "ready_memory": {
+        "user_ns": 114771,
+        "system_ns": 109036,
+        "rss_bytes": 24805376,
+        "physical_bytes": 8979176,
+        "lifetime_peak_physical_bytes": 9765320
+      }
+    },
+    {
+      "block": 3,
+      "position": 1,
+      "variant": "api-wired-jit",
+      "ready_ms": 30.25779197923839,
+      "ready_memory": {
+        "user_ns": 603724,
+        "system_ns": 153173,
+        "rss_bytes": 33996800,
+        "physical_bytes": 18186912,
+        "lifetime_peak_physical_bytes": 19366560
+      }
+    },
+    {
+      "block": 3,
+      "position": 2,
+      "variant": "api-wired-native",
+      "ready_ms": 11.571208015084267,
+      "ready_memory": {
+        "user_ns": 112576,
+        "system_ns": 115045,
+        "rss_bytes": 24952832,
+        "physical_bytes": 8553240,
+        "lifetime_peak_physical_bytes": 9765320
+      }
+    },
+    {
+      "block": 3,
+      "position": 3,
+      "variant": "api-plugin-jit",
+      "ready_ms": 28.731958009302616,
+      "ready_memory": {
+        "user_ns": 566417,
+        "system_ns": 140521,
+        "rss_bytes": 31113216,
+        "physical_bytes": 17236640,
+        "lifetime_peak_physical_bytes": 17236640
+      }
+    },
+    {
+      "block": 4,
+      "position": 0,
+      "variant": "api-plugin-native",
+      "ready_ms": 11.820999963674694,
+      "ready_memory": {
+        "user_ns": 115811,
+        "system_ns": 107859,
+        "rss_bytes": 24805376,
+        "physical_bytes": 9011968,
+        "lifetime_peak_physical_bytes": 9765320
+      }
+    },
+    {
+      "block": 4,
+      "position": 1,
+      "variant": "api-plugin-jit",
+      "ready_ms": 39.52066699275747,
+      "ready_memory": {
+        "user_ns": 694277,
+        "system_ns": 226247,
+        "rss_bytes": 31408128,
+        "physical_bytes": 17400456,
+        "lifetime_peak_physical_bytes": 17400456
+      }
+    },
+    {
+      "block": 4,
+      "position": 2,
+      "variant": "api-wired-native",
+      "ready_ms": 11.805707996245474,
+      "ready_memory": {
+        "user_ns": 114408,
+        "system_ns": 118021,
+        "rss_bytes": 24969216,
+        "physical_bytes": 8520400,
+        "lifetime_peak_physical_bytes": 9765320
+      }
+    },
+    {
+      "block": 4,
+      "position": 3,
+      "variant": "api-wired-jit",
+      "ready_ms": 29.75954196881503,
+      "ready_memory": {
+        "user_ns": 600002,
+        "system_ns": 141761,
+        "rss_bytes": 34013184,
+        "physical_bytes": 18186888,
+        "lifetime_peak_physical_bytes": 19366536
+      }
+    },
+    {
+      "block": 5,
+      "position": 0,
+      "variant": "api-wired-jit",
+      "ready_ms": 31.016249966342002,
+      "ready_memory": {
+        "user_ns": 619638,
+        "system_ns": 146990,
+        "rss_bytes": 34127872,
+        "physical_bytes": 18334392,
+        "lifetime_peak_physical_bytes": 19514040
+      }
+    },
+    {
+      "block": 5,
+      "position": 1,
+      "variant": "api-plugin-native",
+      "ready_ms": 12.001041963230819,
+      "ready_memory": {
+        "user_ns": 115652,
+        "system_ns": 126976,
+        "rss_bytes": 24756224,
+        "physical_bytes": 8962816,
+        "lifetime_peak_physical_bytes": 9765320
+      }
+    },
+    {
+      "block": 5,
+      "position": 2,
+      "variant": "api-plugin-jit",
+      "ready_ms": 29.206125007476658,
+      "ready_memory": {
+        "user_ns": 571884,
+        "system_ns": 138829,
+        "rss_bytes": 31326208,
+        "physical_bytes": 17449632,
+        "lifetime_peak_physical_bytes": 17449632
+      }
+    },
+    {
+      "block": 5,
+      "position": 3,
+      "variant": "api-wired-native",
+      "ready_ms": 11.68341701850295,
+      "ready_memory": {
+        "user_ns": 112731,
+        "system_ns": 112454,
+        "rss_bytes": 24969216,
+        "physical_bytes": 8536808,
+        "lifetime_peak_physical_bytes": 9765320
+      }
+    },
+    {
+      "block": 6,
+      "position": 0,
+      "variant": "api-wired-native",
+      "ready_ms": 11.514708050526679,
+      "ready_memory": {
+        "user_ns": 108069,
+        "system_ns": 109278,
+        "rss_bytes": 24969216,
+        "physical_bytes": 8520400,
+        "lifetime_peak_physical_bytes": 9765320
+      }
+    },
+    {
+      "block": 6,
+      "position": 1,
+      "variant": "api-wired-jit",
+      "ready_ms": 29.98741698684171,
+      "ready_memory": {
+        "user_ns": 591061,
+        "system_ns": 134968,
+        "rss_bytes": 34062336,
+        "physical_bytes": 18252448,
+        "lifetime_peak_physical_bytes": 19432096
+      }
+    },
+    {
+      "block": 6,
+      "position": 2,
+      "variant": "api-plugin-native",
+      "ready_ms": 11.279041995294392,
+      "ready_memory": {
+        "user_ns": 112642,
+        "system_ns": 111418,
+        "rss_bytes": 24772608,
+        "physical_bytes": 8979200,
+        "lifetime_peak_physical_bytes": 9765320
+      }
+    },
+    {
+      "block": 6,
+      "position": 3,
+      "variant": "api-plugin-jit",
+      "ready_ms": 28.88245799113065,
+      "ready_memory": {
+        "user_ns": 573805,
+        "system_ns": 136967,
+        "rss_bytes": 31260672,
+        "physical_bytes": 17351280,
+        "lifetime_peak_physical_bytes": 17351280
+      }
+    },
+    {
+      "block": 7,
+      "position": 0,
+      "variant": "api-plugin-jit",
+      "ready_ms": 29.095167003106326,
+      "ready_memory": {
+        "user_ns": 571351,
+        "system_ns": 138950,
+        "rss_bytes": 31309824,
+        "physical_bytes": 17416840,
+        "lifetime_peak_physical_bytes": 17416840
+      }
+    },
+    {
+      "block": 7,
+      "position": 1,
+      "variant": "api-wired-native",
+      "ready_ms": 11.55445899348706,
+      "ready_memory": {
+        "user_ns": 113053,
+        "system_ns": 111902,
+        "rss_bytes": 24969216,
+        "physical_bytes": 8553216,
+        "lifetime_peak_physical_bytes": 9765320
+      }
+    },
+    {
+      "block": 7,
+      "position": 2,
+      "variant": "api-wired-jit",
+      "ready_ms": 30.073042027652264,
+      "ready_memory": {
+        "user_ns": 603222,
+        "system_ns": 144946,
+        "rss_bytes": 34078720,
+        "physical_bytes": 18236064,
+        "lifetime_peak_physical_bytes": 19415712
+      }
+    },
+    {
+      "block": 7,
+      "position": 3,
+      "variant": "api-plugin-native",
+      "ready_ms": 11.843167012557387,
+      "ready_memory": {
+        "user_ns": 113702,
+        "system_ns": 110468,
+        "rss_bytes": 24788992,
+        "physical_bytes": 8979176,
+        "lifetime_peak_physical_bytes": 9765320
+      }
+    },
+    {
+      "block": 8,
+      "position": 0,
+      "variant": "api-wired-jit",
+      "ready_ms": 30.024625011719763,
+      "ready_memory": {
+        "user_ns": 600501,
+        "system_ns": 139920,
+        "rss_bytes": 34160640,
+        "physical_bytes": 18334392,
+        "lifetime_peak_physical_bytes": 19514040
+      }
+    },
+    {
+      "block": 8,
+      "position": 1,
+      "variant": "api-wired-native",
+      "ready_ms": 11.245000001508743,
+      "ready_memory": {
+        "user_ns": 115756,
+        "system_ns": 115907,
+        "rss_bytes": 24969216,
+        "physical_bytes": 8684288,
+        "lifetime_peak_physical_bytes": 9765320
+      }
+    },
+    {
+      "block": 8,
+      "position": 2,
+      "variant": "api-plugin-jit",
+      "ready_ms": 29.963833978399634,
+      "ready_memory": {
+        "user_ns": 596147,
+        "system_ns": 136231,
+        "rss_bytes": 31326208,
+        "physical_bytes": 17416840,
+        "lifetime_peak_physical_bytes": 17416840
+      }
+    },
+    {
+      "block": 8,
+      "position": 3,
+      "variant": "api-plugin-native",
+      "ready_ms": 11.794375022873282,
+      "ready_memory": {
+        "user_ns": 117576,
+        "system_ns": 114961,
+        "rss_bytes": 24805376,
+        "physical_bytes": 8962792,
+        "lifetime_peak_physical_bytes": 9765320
+      }
+    },
+    {
+      "block": 9,
+      "position": 0,
+      "variant": "api-wired-native",
+      "ready_ms": 11.695542023517191,
+      "ready_memory": {
+        "user_ns": 116527,
+        "system_ns": 117718,
+        "rss_bytes": 24985600,
+        "physical_bytes": 8586008,
+        "lifetime_peak_physical_bytes": 9765320
+      }
+    },
+    {
+      "block": 9,
+      "position": 1,
+      "variant": "api-plugin-jit",
+      "ready_ms": 30.479417007882148,
+      "ready_memory": {
+        "user_ns": 612311,
+        "system_ns": 147366,
+        "rss_bytes": 31244288,
+        "physical_bytes": 17351304,
+        "lifetime_peak_physical_bytes": 17351304
+      }
+    },
+    {
+      "block": 9,
+      "position": 2,
+      "variant": "api-plugin-native",
+      "ready_ms": 11.851957999169827,
+      "ready_memory": {
+        "user_ns": 122458,
+        "system_ns": 118295,
+        "rss_bytes": 24788992,
+        "physical_bytes": 9110320,
+        "lifetime_peak_physical_bytes": 9765320
+      }
+    },
+    {
+      "block": 9,
+      "position": 3,
+      "variant": "api-wired-jit",
+      "ready_ms": 32.21849998226389,
+      "ready_memory": {
+        "user_ns": 646965,
+        "system_ns": 161432,
+        "rss_bytes": 34160640,
+        "physical_bytes": 18334344,
+        "lifetime_peak_physical_bytes": 19513992
+      }
+    },
+    {
+      "block": 10,
+      "position": 0,
+      "variant": "api-plugin-jit",
+      "ready_ms": 31.166166998445988,
+      "ready_memory": {
+        "user_ns": 612789,
+        "system_ns": 153528,
+        "rss_bytes": 31195136,
+        "physical_bytes": 17302152,
+        "lifetime_peak_physical_bytes": 17302152
+      }
+    },
+    {
+      "block": 10,
+      "position": 1,
+      "variant": "api-plugin-native",
+      "ready_ms": 12.5068339984864,
+      "ready_memory": {
+        "user_ns": 119631,
+        "system_ns": 111930,
+        "rss_bytes": 24723456,
+        "physical_bytes": 8930048,
+        "lifetime_peak_physical_bytes": 9765320
+      }
+    },
+    {
+      "block": 10,
+      "position": 2,
+      "variant": "api-wired-jit",
+      "ready_ms": 30.2567079779692,
+      "ready_memory": {
+        "user_ns": 598538,
+        "system_ns": 144178,
+        "rss_bytes": 34095104,
+        "physical_bytes": 18301624,
+        "lifetime_peak_physical_bytes": 19481272
+      }
+    },
+    {
+      "block": 10,
+      "position": 3,
+      "variant": "api-wired-native",
+      "ready_ms": 11.272833973634988,
+      "ready_memory": {
+        "user_ns": 112670,
+        "system_ns": 115241,
+        "rss_bytes": 24969216,
+        "physical_bytes": 8569624,
+        "lifetime_peak_physical_bytes": 9765320
+      }
+    },
+    {
+      "block": 11,
+      "position": 0,
+      "variant": "api-plugin-native",
+      "ready_ms": 11.407042038626969,
+      "ready_memory": {
+        "user_ns": 114282,
+        "system_ns": 105090,
+        "rss_bytes": 24805376,
+        "physical_bytes": 8995560,
+        "lifetime_peak_physical_bytes": 9765320
+      }
+    },
+    {
+      "block": 11,
+      "position": 1,
+      "variant": "api-wired-jit",
+      "ready_ms": 29.854207998141646,
+      "ready_memory": {
+        "user_ns": 597809,
+        "system_ns": 143480,
+        "rss_bytes": 34029568,
+        "physical_bytes": 18219680,
+        "lifetime_peak_physical_bytes": 19399328
+      }
+    },
+    {
+      "block": 11,
+      "position": 2,
+      "variant": "api-wired-native",
+      "ready_ms": 11.796667007729411,
+      "ready_memory": {
+        "user_ns": 110066,
+        "system_ns": 117716,
+        "rss_bytes": 24985600,
+        "physical_bytes": 8586008,
+        "lifetime_peak_physical_bytes": 9765320
+      }
+    },
+    {
+      "block": 11,
+      "position": 3,
+      "variant": "api-plugin-jit",
+      "ready_ms": 29.315375024452806,
+      "ready_memory": {
+        "user_ns": 579790,
+        "system_ns": 144702,
+        "rss_bytes": 31375360,
+        "physical_bytes": 17515192,
+        "lifetime_peak_physical_bytes": 17515192
+      }
+    },
+    {
+      "block": 12,
+      "position": 0,
+      "variant": "api-plugin-native",
+      "ready_ms": 11.486542003694922,
+      "ready_memory": {
+        "user_ns": 114720,
+        "system_ns": 107302,
+        "rss_bytes": 24772608,
+        "physical_bytes": 8979200,
+        "lifetime_peak_physical_bytes": 9765320
+      }
+    },
+    {
+      "block": 12,
+      "position": 1,
+      "variant": "api-plugin-jit",
+      "ready_ms": 28.973542037419975,
+      "ready_memory": {
+        "user_ns": 577198,
+        "system_ns": 132438,
+        "rss_bytes": 31277056,
+        "physical_bytes": 17384072,
+        "lifetime_peak_physical_bytes": 17384072
+      }
+    },
+    {
+      "block": 12,
+      "position": 2,
+      "variant": "api-wired-native",
+      "ready_ms": 11.209249962121248,
+      "ready_memory": {
+        "user_ns": 112232,
+        "system_ns": 109606,
+        "rss_bytes": 24952832,
+        "physical_bytes": 8553240,
+        "lifetime_peak_physical_bytes": 9765320
+      }
+    },
+    {
+      "block": 12,
+      "position": 3,
+      "variant": "api-wired-jit",
+      "ready_ms": 29.968083021230996,
+      "ready_memory": {
+        "user_ns": 603823,
+        "system_ns": 146132,
+        "rss_bytes": 33914880,
+        "physical_bytes": 18088584,
+        "lifetime_peak_physical_bytes": 19268232
+      }
+    },
+    {
+      "block": 13,
+      "position": 0,
+      "variant": "api-wired-jit",
+      "ready_ms": 31.647458963561803,
+      "ready_memory": {
+        "user_ns": 630728,
+        "system_ns": 145489,
+        "rss_bytes": 34045952,
+        "physical_bytes": 18252472,
+        "lifetime_peak_physical_bytes": 19432120
+      }
+    },
+    {
+      "block": 13,
+      "position": 1,
+      "variant": "api-plugin-native",
+      "ready_ms": 11.832292017061263,
+      "ready_memory": {
+        "user_ns": 117423,
+        "system_ns": 112188,
+        "rss_bytes": 24788992,
+        "physical_bytes": 8979200,
+        "lifetime_peak_physical_bytes": 9765320
+      }
+    },
+    {
+      "block": 13,
+      "position": 2,
+      "variant": "api-plugin-jit",
+      "ready_ms": 29.084790963679552,
+      "ready_memory": {
+        "user_ns": 572310,
+        "system_ns": 139399,
+        "rss_bytes": 31178752,
+        "physical_bytes": 17302176,
+        "lifetime_peak_physical_bytes": 17302176
+      }
+    },
+    {
+      "block": 13,
+      "position": 3,
+      "variant": "api-wired-native",
+      "ready_ms": 11.498540989123285,
+      "ready_memory": {
+        "user_ns": 115927,
+        "system_ns": 113823,
+        "rss_bytes": 24969216,
+        "physical_bytes": 8536808,
+        "lifetime_peak_physical_bytes": 9765320
+      }
+    },
+    {
+      "block": 14,
+      "position": 0,
+      "variant": "api-wired-native",
+      "ready_ms": 11.574084055610001,
+      "ready_memory": {
+        "user_ns": 109307,
+        "system_ns": 110365,
+        "rss_bytes": 24952832,
+        "physical_bytes": 8520424,
+        "lifetime_peak_physical_bytes": 9765320
+      }
+    },
+    {
+      "block": 14,
+      "position": 1,
+      "variant": "api-wired-jit",
+      "ready_ms": 29.942583001684397,
+      "ready_memory": {
+        "user_ns": 609944,
+        "system_ns": 145219,
+        "rss_bytes": 34078720,
+        "physical_bytes": 18252424,
+        "lifetime_peak_physical_bytes": 19432072
+      }
+    },
+    {
+      "block": 14,
+      "position": 2,
+      "variant": "api-plugin-native",
+      "ready_ms": 11.597624979913235,
+      "ready_memory": {
+        "user_ns": 117916,
+        "system_ns": 109982,
+        "rss_bytes": 24756224,
+        "physical_bytes": 8962816,
+        "lifetime_peak_physical_bytes": 9765320
+      }
+    },
+    {
+      "block": 14,
+      "position": 3,
+      "variant": "api-plugin-jit",
+      "ready_ms": 28.848208021372557,
+      "ready_memory": {
+        "user_ns": 570444,
+        "system_ns": 135390,
+        "rss_bytes": 31227904,
+        "physical_bytes": 17334920,
+        "lifetime_peak_physical_bytes": 17334920
+      }
+    },
+    {
+      "block": 15,
+      "position": 0,
+      "variant": "api-plugin-jit",
+      "ready_ms": 29.345457965973765,
+      "ready_memory": {
+        "user_ns": 574513,
+        "system_ns": 135710,
+        "rss_bytes": 31277056,
+        "physical_bytes": 17416888,
+        "lifetime_peak_physical_bytes": 17416888
+      }
+    },
+    {
+      "block": 15,
+      "position": 1,
+      "variant": "api-wired-native",
+      "ready_ms": 11.5632499800995,
+      "ready_memory": {
+        "user_ns": 114288,
+        "system_ns": 112546,
+        "rss_bytes": 24969216,
+        "physical_bytes": 8536808,
+        "lifetime_peak_physical_bytes": 9765320
+      }
+    },
+    {
+      "block": 15,
+      "position": 2,
+      "variant": "api-wired-jit",
+      "ready_ms": 30.18200001679361,
+      "ready_memory": {
+        "user_ns": 599686,
+        "system_ns": 137992,
+        "rss_bytes": 34095104,
+        "physical_bytes": 18268808,
+        "lifetime_peak_physical_bytes": 19448456
+      }
+    },
+    {
+      "block": 15,
+      "position": 3,
+      "variant": "api-plugin-native",
+      "ready_ms": 11.605292034801096,
+      "ready_memory": {
+        "user_ns": 115790,
+        "system_ns": 111918,
+        "rss_bytes": 24756224,
+        "physical_bytes": 8962816,
+        "lifetime_peak_physical_bytes": 9765320
+      }
+    },
+    {
+      "block": 16,
+      "position": 0,
+      "variant": "api-wired-jit",
+      "ready_ms": 30.6660839705728,
+      "ready_memory": {
+        "user_ns": 613624,
+        "system_ns": 138408,
+        "rss_bytes": 34029568,
+        "physical_bytes": 18236088,
+        "lifetime_peak_physical_bytes": 19415736
+      }
+    },
+    {
+      "block": 16,
+      "position": 1,
+      "variant": "api-wired-native",
+      "ready_ms": 11.38195802923292,
+      "ready_memory": {
+        "user_ns": 114155,
+        "system_ns": 114992,
+        "rss_bytes": 25034752,
+        "physical_bytes": 8700648,
+        "lifetime_peak_physical_bytes": 9765320
+      }
+    },
+    {
+      "block": 16,
+      "position": 2,
+      "variant": "api-plugin-jit",
+      "ready_ms": 29.423207975924015,
+      "ready_memory": {
+        "user_ns": 575910,
+        "system_ns": 140818,
+        "rss_bytes": 31293440,
+        "physical_bytes": 17400456,
+        "lifetime_peak_physical_bytes": 17400456
+      }
+    },
+    {
+      "block": 16,
+      "position": 3,
+      "variant": "api-plugin-native",
+      "ready_ms": 11.700583039782941,
+      "ready_memory": {
+        "user_ns": 114632,
+        "system_ns": 108247,
+        "rss_bytes": 24788992,
+        "physical_bytes": 8979176,
+        "lifetime_peak_physical_bytes": 9765320
+      }
+    },
+    {
+      "block": 17,
+      "position": 0,
+      "variant": "api-wired-native",
+      "ready_ms": 11.093916022218764,
+      "ready_memory": {
+        "user_ns": 113561,
+        "system_ns": 106568,
+        "rss_bytes": 25001984,
+        "physical_bytes": 8602392,
+        "lifetime_peak_physical_bytes": 9765320
+      }
+    },
+    {
+      "block": 17,
+      "position": 1,
+      "variant": "api-plugin-jit",
+      "ready_ms": 29.05295800883323,
+      "ready_memory": {
+        "user_ns": 574074,
+        "system_ns": 139014,
+        "rss_bytes": 31162368,
+        "physical_bytes": 17285792,
+        "lifetime_peak_physical_bytes": 17285792
+      }
+    },
+    {
+      "block": 17,
+      "position": 2,
+      "variant": "api-plugin-native",
+      "ready_ms": 11.459542030934244,
+      "ready_memory": {
+        "user_ns": 115376,
+        "system_ns": 110316,
+        "rss_bytes": 24805376,
+        "physical_bytes": 8995560,
+        "lifetime_peak_physical_bytes": 9765320
+      }
+    },
+    {
+      "block": 17,
+      "position": 3,
+      "variant": "api-wired-jit",
+      "ready_ms": 30.043000006116927,
+      "ready_memory": {
+        "user_ns": 602527,
+        "system_ns": 144056,
+        "rss_bytes": 33964032,
+        "physical_bytes": 18154144,
+        "lifetime_peak_physical_bytes": 19333792
+      }
+    },
+    {
+      "block": 18,
+      "position": 0,
+      "variant": "api-plugin-jit",
+      "ready_ms": 29.283332987688482,
+      "ready_memory": {
+        "user_ns": 571392,
+        "system_ns": 138499,
+        "rss_bytes": 31145984,
+        "physical_bytes": 17236592,
+        "lifetime_peak_physical_bytes": 17236592
+      }
+    },
+    {
+      "block": 18,
+      "position": 1,
+      "variant": "api-plugin-native",
+      "ready_ms": 11.56808400992304,
+      "ready_memory": {
+        "user_ns": 116506,
+        "system_ns": 109953,
+        "rss_bytes": 24772608,
+        "physical_bytes": 8979200,
+        "lifetime_peak_physical_bytes": 9765320
+      }
+    },
+    {
+      "block": 18,
+      "position": 2,
+      "variant": "api-wired-jit",
+      "ready_ms": 30.27933300472796,
+      "ready_memory": {
+        "user_ns": 606859,
+        "system_ns": 145268,
+        "rss_bytes": 33964032,
+        "physical_bytes": 18137736,
+        "lifetime_peak_physical_bytes": 19317384
+      }
+    },
+    {
+      "block": 18,
+      "position": 3,
+      "variant": "api-wired-native",
+      "ready_ms": 11.893916002009064,
+      "ready_memory": {
+        "user_ns": 115877,
+        "system_ns": 117937,
+        "rss_bytes": 24985600,
+        "physical_bytes": 8586008,
+        "lifetime_peak_physical_bytes": 9765320
+      }
+    },
+    {
+      "block": 19,
+      "position": 0,
+      "variant": "api-plugin-native",
+      "ready_ms": 11.55591697897762,
+      "ready_memory": {
+        "user_ns": 115974,
+        "system_ns": 107444,
+        "rss_bytes": 24756224,
+        "physical_bytes": 8979224,
+        "lifetime_peak_physical_bytes": 9765320
+      }
+    },
+    {
+      "block": 19,
+      "position": 1,
+      "variant": "api-wired-jit",
+      "ready_ms": 30.29891598271206,
+      "ready_memory": {
+        "user_ns": 603135,
+        "system_ns": 142433,
+        "rss_bytes": 33882112,
+        "physical_bytes": 18088632,
+        "lifetime_peak_physical_bytes": 19284664
+      }
+    },
+    {
+      "block": 19,
+      "position": 2,
+      "variant": "api-wired-native",
+      "ready_ms": 11.73779199598357,
+      "ready_memory": {
+        "user_ns": 117372,
+        "system_ns": 116393,
+        "rss_bytes": 25018368,
+        "physical_bytes": 8618776,
+        "lifetime_peak_physical_bytes": 9765320
+      }
+    },
+    {
+      "block": 19,
+      "position": 3,
+      "variant": "api-plugin-jit",
+      "ready_ms": 29.187875043135136,
+      "ready_memory": {
+        "user_ns": 571763,
+        "system_ns": 135412,
+        "rss_bytes": 31326208,
+        "physical_bytes": 17433224,
+        "lifetime_peak_physical_bytes": 17433224
+      }
+    },
+    {
+      "block": 20,
+      "position": 0,
+      "variant": "api-plugin-native",
+      "ready_ms": 11.98887499049306,
+      "ready_memory": {
+        "user_ns": 117384,
+        "system_ns": 110009,
+        "rss_bytes": 24772608,
+        "physical_bytes": 8979200,
+        "lifetime_peak_physical_bytes": 9765320
+      }
+    },
+    {
+      "block": 20,
+      "position": 1,
+      "variant": "api-plugin-jit",
+      "ready_ms": 28.979499998968095,
+      "ready_memory": {
+        "user_ns": 567935,
+        "system_ns": 135355,
+        "rss_bytes": 31195136,
+        "physical_bytes": 17318560,
+        "lifetime_peak_physical_bytes": 17318560
+      }
+    },
+    {
+      "block": 20,
+      "position": 2,
+      "variant": "api-wired-native",
+      "ready_ms": 11.711042025126517,
+      "ready_memory": {
+        "user_ns": 113979,
+        "system_ns": 112035,
+        "rss_bytes": 24969216,
+        "physical_bytes": 8520400,
+        "lifetime_peak_physical_bytes": 9765320
+      }
+    },
+    {
+      "block": 20,
+      "position": 3,
+      "variant": "api-wired-jit",
+      "ready_ms": 30.063915997743607,
+      "ready_memory": {
+        "user_ns": 594871,
+        "system_ns": 147008,
+        "rss_bytes": 34062336,
+        "physical_bytes": 18252448,
+        "lifetime_peak_physical_bytes": 19432096
+      }
+    },
+    {
+      "block": 21,
+      "position": 0,
+      "variant": "api-wired-jit",
+      "ready_ms": 30.734915984794497,
+      "ready_memory": {
+        "user_ns": 608436,
+        "system_ns": 150092,
+        "rss_bytes": 34111488,
+        "physical_bytes": 18301600,
+        "lifetime_peak_physical_bytes": 19481248
+      }
+    },
+    {
+      "block": 21,
+      "position": 1,
+      "variant": "api-plugin-native",
+      "ready_ms": 11.650540982373059,
+      "ready_memory": {
+        "user_ns": 114103,
+        "system_ns": 107468,
+        "rss_bytes": 24788992,
+        "physical_bytes": 8995584,
+        "lifetime_peak_physical_bytes": 9765320
+      }
+    },
+    {
+      "block": 21,
+      "position": 2,
+      "variant": "api-plugin-jit",
+      "ready_ms": 29.162749997340143,
+      "ready_memory": {
+        "user_ns": 578430,
+        "system_ns": 145277,
+        "rss_bytes": 31129600,
+        "physical_bytes": 17253024,
+        "lifetime_peak_physical_bytes": 17253024
+      }
+    },
+    {
+      "block": 21,
+      "position": 3,
+      "variant": "api-wired-native",
+      "ready_ms": 11.467707983683795,
+      "ready_memory": {
+        "user_ns": 113577,
+        "system_ns": 111911,
+        "rss_bytes": 24952832,
+        "physical_bytes": 8504016,
+        "lifetime_peak_physical_bytes": 9765320
+      }
+    },
+    {
+      "block": 22,
+      "position": 0,
+      "variant": "api-wired-native",
+      "ready_ms": 11.426209006458521,
+      "ready_memory": {
+        "user_ns": 111612,
+        "system_ns": 106136,
+        "rss_bytes": 24969216,
+        "physical_bytes": 8520400,
+        "lifetime_peak_physical_bytes": 9765320
+      }
+    },
+    {
+      "block": 22,
+      "position": 1,
+      "variant": "api-wired-jit",
+      "ready_ms": 30.13391699641943,
+      "ready_memory": {
+        "user_ns": 597507,
+        "system_ns": 143679,
+        "rss_bytes": 34144256,
+        "physical_bytes": 18350776,
+        "lifetime_peak_physical_bytes": 19530424
+      }
+    },
+    {
+      "block": 22,
+      "position": 2,
+      "variant": "api-plugin-native",
+      "ready_ms": 11.941000004298985,
+      "ready_memory": {
+        "user_ns": 113266,
+        "system_ns": 109769,
+        "rss_bytes": 24788992,
+        "physical_bytes": 8979176,
+        "lifetime_peak_physical_bytes": 9765320
+      }
+    },
+    {
+      "block": 22,
+      "position": 3,
+      "variant": "api-plugin-jit",
+      "ready_ms": 30.380250012967736,
+      "ready_memory": {
+        "user_ns": 588027,
+        "system_ns": 141091,
+        "rss_bytes": 31277056,
+        "physical_bytes": 17384072,
+        "lifetime_peak_physical_bytes": 17384072
+      }
+    },
+    {
+      "block": 23,
+      "position": 0,
+      "variant": "api-plugin-jit",
+      "ready_ms": 29.025666997767985,
+      "ready_memory": {
+        "user_ns": 572077,
+        "system_ns": 135789,
+        "rss_bytes": 31260672,
+        "physical_bytes": 17351328,
+        "lifetime_peak_physical_bytes": 17351328
+      }
+    },
+    {
+      "block": 23,
+      "position": 1,
+      "variant": "api-wired-native",
+      "ready_ms": 11.222583008930087,
+      "ready_memory": {
+        "user_ns": 112167,
+        "system_ns": 114270,
+        "rss_bytes": 24969216,
+        "physical_bytes": 8553216,
+        "lifetime_peak_physical_bytes": 9765320
+      }
+    },
+    {
+      "block": 23,
+      "position": 2,
+      "variant": "api-wired-jit",
+      "ready_ms": 30.01920902170241,
+      "ready_memory": {
+        "user_ns": 597369,
+        "system_ns": 148810,
+        "rss_bytes": 34160640,
+        "physical_bytes": 18350752,
+        "lifetime_peak_physical_bytes": 19530400
+      }
+    },
+    {
+      "block": 23,
+      "position": 3,
+      "variant": "api-plugin-native",
+      "ready_ms": 11.626292020082474,
+      "ready_memory": {
+        "user_ns": 116422,
+        "system_ns": 110005,
+        "rss_bytes": 24772608,
+        "physical_bytes": 8962792,
+        "lifetime_peak_physical_bytes": 9765320
+      }
+    }
+  ]
+}

@@ -1,0 +1,1022 @@
+{
+  "metadata": {
+    "started_at": "2026-10-31T20:49:11.299046+00:00",
+    "runner_sha256": "adc8758a3332b15b5521df045886e4253c6290544a21e334a891112149817b7c",
+    "client_sha256": "88e8575a1c04a9d5159289731bf68341861df37a67e9a0f63d312879ead3bf38",
+    "rusage_cpu_unit": "mach_absolute_ticks"
+  },
+  "suite": "api",
+  "stage": "startup",
+  "concurrency": 8,
+  "seconds": 10,
+  "rows": [
+    {
+      "block": 0,
+      "position": 0,
+      "variant": "api-wired-jit",
+      "ready_ms": 29.75729200989008,
+      "ready_memory": {
+        "user_ticks": 594297,
+        "system_ticks": 147330,
+        "rss_bytes": 34144256,
+        "physical_bytes": 18334368,
+        "lifetime_peak_physical_bytes": 19514016
+      },
+      "observed_at": "2026-10-31T20:49:11.441422+00:00"
+    },
+    {
+      "block": 0,
+      "position": 1,
+      "variant": "api-wired-bytecode",
+      "ready_ms": 14.918875007424504,
+      "ready_memory": {
+        "user_ticks": 237346,
+        "system_ticks": 132884,
+        "rss_bytes": 29425664,
+        "physical_bytes": 14779016,
+        "lifetime_peak_physical_bytes": 14779016
+      },
+      "observed_at": "2026-10-31T20:49:11.458248+00:00"
+    },
+    {
+      "block": 0,
+      "position": 2,
+      "variant": "api-wired-native",
+      "ready_ms": 11.260458966717124,
+      "ready_memory": {
+        "user_ticks": 110711,
+        "system_ticks": 108791,
+        "rss_bytes": 24952832,
+        "physical_bytes": 8520424,
+        "lifetime_peak_physical_bytes": 9765320
+      },
+      "observed_at": "2026-10-31T20:49:11.471362+00:00"
+    },
+    {
+      "block": 1,
+      "position": 0,
+      "variant": "api-wired-bytecode",
+      "ready_ms": 14.080833992920816,
+      "ready_memory": {
+        "user_ticks": 224675,
+        "system_ticks": 127307,
+        "rss_bytes": 29212672,
+        "physical_bytes": 14582432,
+        "lifetime_peak_physical_bytes": 14582432
+      },
+      "observed_at": "2026-10-31T20:49:11.487256+00:00"
+    },
+    {
+      "block": 1,
+      "position": 1,
+      "variant": "api-wired-native",
+      "ready_ms": 11.27429201733321,
+      "ready_memory": {
+        "user_ticks": 114718,
+        "system_ticks": 111884,
+        "rss_bytes": 25051136,
+        "physical_bytes": 8618776,
+        "lifetime_peak_physical_bytes": 9765320
+      },
+      "observed_at": "2026-10-31T20:49:11.500425+00:00"
+    },
+    {
+      "block": 1,
+      "position": 2,
+      "variant": "api-wired-jit",
+      "ready_ms": 29.251332976855338,
+      "ready_memory": {
+        "user_ticks": 586461,
+        "system_ticks": 144013,
+        "rss_bytes": 34045952,
+        "physical_bytes": 18236064,
+        "lifetime_peak_physical_bytes": 19415712
+      },
+      "observed_at": "2026-10-31T20:49:11.531549+00:00"
+    },
+    {
+      "block": 2,
+      "position": 0,
+      "variant": "api-wired-native",
+      "ready_ms": 10.677458019927144,
+      "ready_memory": {
+        "user_ticks": 112955,
+        "system_ticks": 109290,
+        "rss_bytes": 24969216,
+        "physical_bytes": 8520400,
+        "lifetime_peak_physical_bytes": 9765320
+      },
+      "observed_at": "2026-10-31T20:49:11.544025+00:00"
+    },
+    {
+      "block": 2,
+      "position": 1,
+      "variant": "api-wired-jit",
+      "ready_ms": 28.847250039689243,
+      "ready_memory": {
+        "user_ticks": 587483,
+        "system_ticks": 134775,
+        "rss_bytes": 34013184,
+        "physical_bytes": 18203296,
+        "lifetime_peak_physical_bytes": 19382944
+      },
+      "observed_at": "2026-10-31T20:49:11.574732+00:00"
+    },
+    {
+      "block": 2,
+      "position": 2,
+      "variant": "api-wired-bytecode",
+      "ready_ms": 14.817583025433123,
+      "ready_memory": {
+        "user_ticks": 234559,
+        "system_ticks": 140095,
+        "rss_bytes": 29294592,
+        "physical_bytes": 14582432,
+        "lifetime_peak_physical_bytes": 14680736
+      },
+      "observed_at": "2026-10-31T20:49:11.591361+00:00"
+    },
+    {
+      "block": 3,
+      "position": 0,
+      "variant": "api-wired-native",
+      "ready_ms": 11.510208016261458,
+      "ready_memory": {
+        "user_ticks": 111610,
+        "system_ticks": 111699,
+        "rss_bytes": 24969216,
+        "physical_bytes": 8536808,
+        "lifetime_peak_physical_bytes": 9765320
+      },
+      "observed_at": "2026-10-31T20:49:11.604756+00:00"
+    },
+    {
+      "block": 3,
+      "position": 1,
+      "variant": "api-wired-bytecode",
+      "ready_ms": 15.129749954212457,
+      "ready_memory": {
+        "user_ticks": 228989,
+        "system_ticks": 126342,
+        "rss_bytes": 29310976,
+        "physical_bytes": 14582384,
+        "lifetime_peak_physical_bytes": 14680688
+      },
+      "observed_at": "2026-10-31T20:49:11.621714+00:00"
+    },
+    {
+      "block": 3,
+      "position": 2,
+      "variant": "api-wired-jit",
+      "ready_ms": 29.34887498850003,
+      "ready_memory": {
+        "user_ticks": 591857,
+        "system_ticks": 148170,
+        "rss_bytes": 34160640,
+        "physical_bytes": 18350752,
+        "lifetime_peak_physical_bytes": 19530400
+      },
+      "observed_at": "2026-10-31T20:49:11.652941+00:00"
+    },
+    {
+      "block": 4,
+      "position": 0,
+      "variant": "api-wired-jit",
+      "ready_ms": 28.827250003814697,
+      "ready_memory": {
+        "user_ticks": 581992,
+        "system_ticks": 140816,
+        "rss_bytes": 34045952,
+        "physical_bytes": 18219656,
+        "lifetime_peak_physical_bytes": 19399304
+      },
+      "observed_at": "2026-10-31T20:49:11.683605+00:00"
+    },
+    {
+      "block": 4,
+      "position": 1,
+      "variant": "api-wired-native",
+      "ready_ms": 11.345542035996914,
+      "ready_memory": {
+        "user_ticks": 108497,
+        "system_ticks": 111414,
+        "rss_bytes": 24969216,
+        "physical_bytes": 8553216,
+        "lifetime_peak_physical_bytes": 9765320
+      },
+      "observed_at": "2026-10-31T20:49:11.696858+00:00"
+    },
+    {
+      "block": 4,
+      "position": 2,
+      "variant": "api-wired-bytecode",
+      "ready_ms": 15.126833051908761,
+      "ready_memory": {
+        "user_ticks": 229776,
+        "system_ticks": 126239,
+        "rss_bytes": 29310976,
+        "physical_bytes": 14582384,
+        "lifetime_peak_physical_bytes": 14680688
+      },
+      "observed_at": "2026-10-31T20:49:11.713870+00:00"
+    },
+    {
+      "block": 5,
+      "position": 0,
+      "variant": "api-wired-bytecode",
+      "ready_ms": 14.903125003911555,
+      "ready_memory": {
+        "user_ticks": 234565,
+        "system_ticks": 140323,
+        "rss_bytes": 29540352,
+        "physical_bytes": 14844576,
+        "lifetime_peak_physical_bytes": 14926496
+      },
+      "observed_at": "2026-10-31T20:49:11.730660+00:00"
+    },
+    {
+      "block": 5,
+      "position": 1,
+      "variant": "api-wired-jit",
+      "ready_ms": 29.642665991559625,
+      "ready_memory": {
+        "user_ticks": 594939,
+        "system_ticks": 146169,
+        "rss_bytes": 34095104,
+        "physical_bytes": 18285216,
+        "lifetime_peak_physical_bytes": 19464864
+      },
+      "observed_at": "2026-10-31T20:49:11.762197+00:00"
+    },
+    {
+      "block": 5,
+      "position": 2,
+      "variant": "api-wired-native",
+      "ready_ms": 11.00845797918737,
+      "ready_memory": {
+        "user_ticks": 111837,
+        "system_ticks": 109845,
+        "rss_bytes": 24969216,
+        "physical_bytes": 8536808,
+        "lifetime_peak_physical_bytes": 9765320
+      },
+      "observed_at": "2026-10-31T20:49:11.775099+00:00"
+    },
+    {
+      "block": 6,
+      "position": 0,
+      "variant": "api-wired-jit",
+      "ready_ms": 29.115165991242975,
+      "ready_memory": {
+        "user_ticks": 605085,
+        "system_ticks": 149044,
+        "rss_bytes": 34078720,
+        "physical_bytes": 18268832,
+        "lifetime_peak_physical_bytes": 19448480
+      },
+      "observed_at": "2026-10-31T20:49:11.806115+00:00"
+    },
+    {
+      "block": 6,
+      "position": 1,
+      "variant": "api-wired-bytecode",
+      "ready_ms": 14.913332997821271,
+      "ready_memory": {
+        "user_ticks": 230870,
+        "system_ticks": 136786,
+        "rss_bytes": 29229056,
+        "physical_bytes": 14500464,
+        "lifetime_peak_physical_bytes": 14598768
+      },
+      "observed_at": "2026-10-31T20:49:11.822924+00:00"
+    },
+    {
+      "block": 6,
+      "position": 2,
+      "variant": "api-wired-native",
+      "ready_ms": 11.248583032283932,
+      "ready_memory": {
+        "user_ticks": 110385,
+        "system_ticks": 110199,
+        "rss_bytes": 24952832,
+        "physical_bytes": 8536832,
+        "lifetime_peak_physical_bytes": 9765320
+      },
+      "observed_at": "2026-10-31T20:49:11.836076+00:00"
+    },
+    {
+      "block": 7,
+      "position": 0,
+      "variant": "api-wired-bytecode",
+      "ready_ms": 14.852041029371321,
+      "ready_memory": {
+        "user_ticks": 227851,
+        "system_ticks": 125097,
+        "rss_bytes": 29458432,
+        "physical_bytes": 14713432,
+        "lifetime_peak_physical_bytes": 14795352
+      },
+      "observed_at": "2026-10-31T20:49:11.852811+00:00"
+    },
+    {
+      "block": 7,
+      "position": 1,
+      "variant": "api-wired-native",
+      "ready_ms": 10.884083982091397,
+      "ready_memory": {
+        "user_ticks": 111220,
+        "system_ticks": 109398,
+        "rss_bytes": 24952832,
+        "physical_bytes": 8536832,
+        "lifetime_peak_physical_bytes": 9765320
+      },
+      "observed_at": "2026-10-31T20:49:11.865625+00:00"
+    },
+    {
+      "block": 7,
+      "position": 2,
+      "variant": "api-wired-jit",
+      "ready_ms": 29.850417049601674,
+      "ready_memory": {
+        "user_ticks": 609276,
+        "system_ticks": 148071,
+        "rss_bytes": 34144256,
+        "physical_bytes": 18317960,
+        "lifetime_peak_physical_bytes": 19497608
+      },
+      "observed_at": "2026-10-31T20:49:11.897312+00:00"
+    },
+    {
+      "block": 8,
+      "position": 0,
+      "variant": "api-wired-native",
+      "ready_ms": 11.525249981787056,
+      "ready_memory": {
+        "user_ticks": 113140,
+        "system_ticks": 112069,
+        "rss_bytes": 24952832,
+        "physical_bytes": 8536832,
+        "lifetime_peak_physical_bytes": 9765320
+      },
+      "observed_at": "2026-10-31T20:49:11.910797+00:00"
+    },
+    {
+      "block": 8,
+      "position": 1,
+      "variant": "api-wired-jit",
+      "ready_ms": 28.814291988965124,
+      "ready_memory": {
+        "user_ticks": 588679,
+        "system_ticks": 132723,
+        "rss_bytes": 34029568,
+        "physical_bytes": 18203272,
+        "lifetime_peak_physical_bytes": 19382920
+      },
+      "observed_at": "2026-10-31T20:49:11.941497+00:00"
+    },
+    {
+      "block": 8,
+      "position": 2,
+      "variant": "api-wired-bytecode",
+      "ready_ms": 14.757625001948327,
+      "ready_memory": {
+        "user_ticks": 245018,
+        "system_ticks": 141249,
+        "rss_bytes": 29343744,
+        "physical_bytes": 14566000,
+        "lifetime_peak_physical_bytes": 14680688
+      },
+      "observed_at": "2026-10-31T20:49:11.958192+00:00"
+    },
+    {
+      "block": 9,
+      "position": 0,
+      "variant": "api-wired-native",
+      "ready_ms": 11.524458997882903,
+      "ready_memory": {
+        "user_ticks": 110178,
+        "system_ticks": 109011,
+        "rss_bytes": 24969216,
+        "physical_bytes": 8536808,
+        "lifetime_peak_physical_bytes": 9765320
+      },
+      "observed_at": "2026-10-31T20:49:11.971633+00:00"
+    },
+    {
+      "block": 9,
+      "position": 1,
+      "variant": "api-wired-bytecode",
+      "ready_ms": 14.746875036507845,
+      "ready_memory": {
+        "user_ticks": 226754,
+        "system_ticks": 123830,
+        "rss_bytes": 29376512,
+        "physical_bytes": 14647920,
+        "lifetime_peak_physical_bytes": 14746224
+      },
+      "observed_at": "2026-10-31T20:49:11.988269+00:00"
+    },
+    {
+      "block": 9,
+      "position": 2,
+      "variant": "api-wired-jit",
+      "ready_ms": 29.410250019282103,
+      "ready_memory": {
+        "user_ticks": 593057,
+        "system_ticks": 148171,
+        "rss_bytes": 34144256,
+        "physical_bytes": 18350776,
+        "lifetime_peak_physical_bytes": 19530424
+      },
+      "observed_at": "2026-10-31T20:49:12.019535+00:00"
+    },
+    {
+      "block": 10,
+      "position": 0,
+      "variant": "api-wired-jit",
+      "ready_ms": 29.068165982607752,
+      "ready_memory": {
+        "user_ticks": 589238,
+        "system_ticks": 141931,
+        "rss_bytes": 34045952,
+        "physical_bytes": 18236064,
+        "lifetime_peak_physical_bytes": 19415712
+      },
+      "observed_at": "2026-10-31T20:49:12.050526+00:00"
+    },
+    {
+      "block": 10,
+      "position": 1,
+      "variant": "api-wired-native",
+      "ready_ms": 11.294207943137735,
+      "ready_memory": {
+        "user_ticks": 111513,
+        "system_ticks": 110870,
+        "rss_bytes": 24969216,
+        "physical_bytes": 8536808,
+        "lifetime_peak_physical_bytes": 9765320
+      },
+      "observed_at": "2026-10-31T20:49:12.063767+00:00"
+    },
+    {
+      "block": 10,
+      "position": 2,
+      "variant": "api-wired-bytecode",
+      "ready_ms": 14.645833987742662,
+      "ready_memory": {
+        "user_ticks": 228445,
+        "system_ticks": 126368,
+        "rss_bytes": 29425664,
+        "physical_bytes": 14697072,
+        "lifetime_peak_physical_bytes": 14778992
+      },
+      "observed_at": "2026-10-31T20:49:12.080339+00:00"
+    },
+    {
+      "block": 11,
+      "position": 0,
+      "variant": "api-wired-bytecode",
+      "ready_ms": 14.488457993138582,
+      "ready_memory": {
+        "user_ticks": 235991,
+        "system_ticks": 141593,
+        "rss_bytes": 29392896,
+        "physical_bytes": 14713456,
+        "lifetime_peak_physical_bytes": 14713456
+      },
+      "observed_at": "2026-10-31T20:49:12.096681+00:00"
+    },
+    {
+      "block": 11,
+      "position": 1,
+      "variant": "api-wired-jit",
+      "ready_ms": 29.132665949873626,
+      "ready_memory": {
+        "user_ticks": 591043,
+        "system_ticks": 142035,
+        "rss_bytes": 34177024,
+        "physical_bytes": 18367136,
+        "lifetime_peak_physical_bytes": 19546784
+      },
+      "observed_at": "2026-10-31T20:49:12.127709+00:00"
+    },
+    {
+      "block": 11,
+      "position": 2,
+      "variant": "api-wired-native",
+      "ready_ms": 11.146417004056275,
+      "ready_memory": {
+        "user_ticks": 113224,
+        "system_ticks": 113444,
+        "rss_bytes": 24952832,
+        "physical_bytes": 8536832,
+        "lifetime_peak_physical_bytes": 9765320
+      },
+      "observed_at": "2026-10-31T20:49:12.140761+00:00"
+    },
+    {
+      "block": 12,
+      "position": 0,
+      "variant": "api-wired-jit",
+      "ready_ms": 29.6094169607386,
+      "ready_memory": {
+        "user_ticks": 596129,
+        "system_ticks": 151443,
+        "rss_bytes": 34144256,
+        "physical_bytes": 18334368,
+        "lifetime_peak_physical_bytes": 19514016
+      },
+      "observed_at": "2026-10-31T20:49:12.172283+00:00"
+    },
+    {
+      "block": 12,
+      "position": 1,
+      "variant": "api-wired-bytecode",
+      "ready_ms": 14.897042012307793,
+      "ready_memory": {
+        "user_ticks": 233699,
+        "system_ticks": 129054,
+        "rss_bytes": 29392896,
+        "physical_bytes": 14664304,
+        "lifetime_peak_physical_bytes": 14746224
+      },
+      "observed_at": "2026-10-31T20:49:12.189153+00:00"
+    },
+    {
+      "block": 12,
+      "position": 2,
+      "variant": "api-wired-native",
+      "ready_ms": 11.398374976124614,
+      "ready_memory": {
+        "user_ticks": 111232,
+        "system_ticks": 110107,
+        "rss_bytes": 24952832,
+        "physical_bytes": 8536832,
+        "lifetime_peak_physical_bytes": 9765320
+      },
+      "observed_at": "2026-10-31T20:49:12.202482+00:00"
+    },
+    {
+      "block": 13,
+      "position": 0,
+      "variant": "api-wired-bytecode",
+      "ready_ms": 14.87187499878928,
+      "ready_memory": {
+        "user_ticks": 232217,
+        "system_ticks": 130655,
+        "rss_bytes": 29245440,
+        "physical_bytes": 14500440,
+        "lifetime_peak_physical_bytes": 14598744
+      },
+      "observed_at": "2026-10-31T20:49:12.219202+00:00"
+    },
+    {
+      "block": 13,
+      "position": 1,
+      "variant": "api-wired-native",
+      "ready_ms": 11.398624978028238,
+      "ready_memory": {
+        "user_ticks": 109755,
+        "system_ticks": 110011,
+        "rss_bytes": 24952832,
+        "physical_bytes": 8520424,
+        "lifetime_peak_physical_bytes": 9765320
+      },
+      "observed_at": "2026-10-31T20:49:12.232524+00:00"
+    },
+    {
+      "block": 13,
+      "position": 2,
+      "variant": "api-wired-jit",
+      "ready_ms": 29.25462502753362,
+      "ready_memory": {
+        "user_ticks": 591530,
+        "system_ticks": 141442,
+        "rss_bytes": 34095104,
+        "physical_bytes": 18268808,
+        "lifetime_peak_physical_bytes": 19448456
+      },
+      "observed_at": "2026-10-31T20:49:12.263691+00:00"
+    },
+    {
+      "block": 14,
+      "position": 0,
+      "variant": "api-wired-native",
+      "ready_ms": 11.389374965801835,
+      "ready_memory": {
+        "user_ticks": 114555,
+        "system_ticks": 118665,
+        "rss_bytes": 24969216,
+        "physical_bytes": 8536808,
+        "lifetime_peak_physical_bytes": 9765320
+      },
+      "observed_at": "2026-10-31T20:49:12.277008+00:00"
+    },
+    {
+      "block": 14,
+      "position": 1,
+      "variant": "api-wired-jit",
+      "ready_ms": 29.169000044930726,
+      "ready_memory": {
+        "user_ticks": 594935,
+        "system_ticks": 142179,
+        "rss_bytes": 34029568,
+        "physical_bytes": 18219680,
+        "lifetime_peak_physical_bytes": 19399328
+      },
+      "observed_at": "2026-10-31T20:49:12.308044+00:00"
+    },
+    {
+      "block": 14,
+      "position": 2,
+      "variant": "api-wired-bytecode",
+      "ready_ms": 15.05674998043105,
+      "ready_memory": {
+        "user_ticks": 244036,
+        "system_ticks": 170467,
+        "rss_bytes": 29523968,
+        "physical_bytes": 14844528,
+        "lifetime_peak_physical_bytes": 14860912
+      },
+      "observed_at": "2026-10-31T20:49:12.325059+00:00"
+    },
+    {
+      "block": 15,
+      "position": 0,
+      "variant": "api-wired-native",
+      "ready_ms": 11.433540959842503,
+      "ready_memory": {
+        "user_ticks": 110524,
+        "system_ticks": 110301,
+        "rss_bytes": 24969216,
+        "physical_bytes": 8553216,
+        "lifetime_peak_physical_bytes": 9765320
+      },
+      "observed_at": "2026-10-31T20:49:12.338413+00:00"
+    },
+    {
+      "block": 15,
+      "position": 1,
+      "variant": "api-wired-bytecode",
+      "ready_ms": 14.744041953235865,
+      "ready_memory": {
+        "user_ticks": 232477,
+        "system_ticks": 128424,
+        "rss_bytes": 29360128,
+        "physical_bytes": 14615176,
+        "lifetime_peak_physical_bytes": 14713480
+      },
+      "observed_at": "2026-10-31T20:49:12.355065+00:00"
+    },
+    {
+      "block": 15,
+      "position": 2,
+      "variant": "api-wired-jit",
+      "ready_ms": 29.165124986320734,
+      "ready_memory": {
+        "user_ticks": 589631,
+        "system_ticks": 143945,
+        "rss_bytes": 33931264,
+        "physical_bytes": 18121376,
+        "lifetime_peak_physical_bytes": 19301024
+      },
+      "observed_at": "2026-10-31T20:49:12.386134+00:00"
+    },
+    {
+      "block": 16,
+      "position": 0,
+      "variant": "api-wired-jit",
+      "ready_ms": 29.12416699109599,
+      "ready_memory": {
+        "user_ticks": 581265,
+        "system_ticks": 140926,
+        "rss_bytes": 34062336,
+        "physical_bytes": 18236040,
+        "lifetime_peak_physical_bytes": 19415688
+      },
+      "observed_at": "2026-10-31T20:49:12.417150+00:00"
+    },
+    {
+      "block": 16,
+      "position": 1,
+      "variant": "api-wired-native",
+      "ready_ms": 11.35804201476276,
+      "ready_memory": {
+        "user_ticks": 112893,
+        "system_ticks": 110151,
+        "rss_bytes": 24969216,
+        "physical_bytes": 8553216,
+        "lifetime_peak_physical_bytes": 9765320
+      },
+      "observed_at": "2026-10-31T20:49:12.430472+00:00"
+    },
+    {
+      "block": 16,
+      "position": 2,
+      "variant": "api-wired-bytecode",
+      "ready_ms": 14.823124976828694,
+      "ready_memory": {
+        "user_ticks": 228452,
+        "system_ticks": 130623,
+        "rss_bytes": 29474816,
+        "physical_bytes": 14779016,
+        "lifetime_peak_physical_bytes": 14844552
+      },
+      "observed_at": "2026-10-31T20:49:12.447214+00:00"
+    },
+    {
+      "block": 17,
+      "position": 0,
+      "variant": "api-wired-bytecode",
+      "ready_ms": 14.509541972074658,
+      "ready_memory": {
+        "user_ticks": 224631,
+        "system_ticks": 130648,
+        "rss_bytes": 29327360,
+        "physical_bytes": 14631584,
+        "lifetime_peak_physical_bytes": 14729888
+      },
+      "observed_at": "2026-10-31T20:49:12.463682+00:00"
+    },
+    {
+      "block": 17,
+      "position": 1,
+      "variant": "api-wired-jit",
+      "ready_ms": 29.223665944300592,
+      "ready_memory": {
+        "user_ticks": 591210,
+        "system_ticks": 144077,
+        "rss_bytes": 34045952,
+        "physical_bytes": 18252472,
+        "lifetime_peak_physical_bytes": 19432120
+      },
+      "observed_at": "2026-10-31T20:49:12.494790+00:00"
+    },
+    {
+      "block": 17,
+      "position": 2,
+      "variant": "api-wired-native",
+      "ready_ms": 11.300125042907894,
+      "ready_memory": {
+        "user_ticks": 112760,
+        "system_ticks": 112170,
+        "rss_bytes": 25001984,
+        "physical_bytes": 8602392,
+        "lifetime_peak_physical_bytes": 9765320
+      },
+      "observed_at": "2026-10-31T20:49:12.508050+00:00"
+    },
+    {
+      "block": 18,
+      "position": 0,
+      "variant": "api-wired-jit",
+      "ready_ms": 28.98150001419708,
+      "ready_memory": {
+        "user_ticks": 585447,
+        "system_ticks": 146298,
+        "rss_bytes": 33947648,
+        "physical_bytes": 18121352,
+        "lifetime_peak_physical_bytes": 19301000
+      },
+      "observed_at": "2026-10-31T20:49:12.538961+00:00"
+    },
+    {
+      "block": 18,
+      "position": 1,
+      "variant": "api-wired-bytecode",
+      "ready_ms": 15.046749962493777,
+      "ready_memory": {
+        "user_ticks": 250349,
+        "system_ticks": 145095,
+        "rss_bytes": 29491200,
+        "physical_bytes": 14713456,
+        "lifetime_peak_physical_bytes": 14828144
+      },
+      "observed_at": "2026-10-31T20:49:12.555951+00:00"
+    },
+    {
+      "block": 18,
+      "position": 2,
+      "variant": "api-wired-native",
+      "ready_ms": 10.963084001559764,
+      "ready_memory": {
+        "user_ticks": 112037,
+        "system_ticks": 111220,
+        "rss_bytes": 24952832,
+        "physical_bytes": 8553240,
+        "lifetime_peak_physical_bytes": 9765320
+      },
+      "observed_at": "2026-10-31T20:49:12.568815+00:00"
+    },
+    {
+      "block": 19,
+      "position": 0,
+      "variant": "api-wired-bytecode",
+      "ready_ms": 14.516542025376111,
+      "ready_memory": {
+        "user_ticks": 238224,
+        "system_ticks": 134774,
+        "rss_bytes": 29261824,
+        "physical_bytes": 14631584,
+        "lifetime_peak_physical_bytes": 14631584
+      },
+      "observed_at": "2026-10-31T20:49:12.585177+00:00"
+    },
+    {
+      "block": 19,
+      "position": 1,
+      "variant": "api-wired-native",
+      "ready_ms": 11.357332987245172,
+      "ready_memory": {
+        "user_ticks": 110385,
+        "system_ticks": 109382,
+        "rss_bytes": 24936448,
+        "physical_bytes": 8504040,
+        "lifetime_peak_physical_bytes": 9765320
+      },
+      "observed_at": "2026-10-31T20:49:12.598394+00:00"
+    },
+    {
+      "block": 19,
+      "position": 2,
+      "variant": "api-wired-jit",
+      "ready_ms": 29.18299997691065,
+      "ready_memory": {
+        "user_ticks": 589168,
+        "system_ticks": 135124,
+        "rss_bytes": 34095104,
+        "physical_bytes": 18268808,
+        "lifetime_peak_physical_bytes": 19448456
+      },
+      "observed_at": "2026-10-31T20:49:12.629499+00:00"
+    },
+    {
+      "block": 20,
+      "position": 0,
+      "variant": "api-wired-native",
+      "ready_ms": 11.35054201586172,
+      "ready_memory": {
+        "user_ticks": 111943,
+        "system_ticks": 112353,
+        "rss_bytes": 24969216,
+        "physical_bytes": 8536808,
+        "lifetime_peak_physical_bytes": 9765320
+      },
+      "observed_at": "2026-10-31T20:49:12.642811+00:00"
+    },
+    {
+      "block": 20,
+      "position": 1,
+      "variant": "api-wired-jit",
+      "ready_ms": 29.150583024602383,
+      "ready_memory": {
+        "user_ticks": 599484,
+        "system_ticks": 146412,
+        "rss_bytes": 34078720,
+        "physical_bytes": 18252424,
+        "lifetime_peak_physical_bytes": 19432072
+      },
+      "observed_at": "2026-10-31T20:49:12.673911+00:00"
+    },
+    {
+      "block": 20,
+      "position": 2,
+      "variant": "api-wired-bytecode",
+      "ready_ms": 14.748249959666282,
+      "ready_memory": {
+        "user_ticks": 230795,
+        "system_ticks": 130284,
+        "rss_bytes": 29392896,
+        "physical_bytes": 14680712,
+        "lifetime_peak_physical_bytes": 14762632
+      },
+      "observed_at": "2026-10-31T20:49:12.690567+00:00"
+    },
+    {
+      "block": 21,
+      "position": 0,
+      "variant": "api-wired-native",
+      "ready_ms": 10.883458016905934,
+      "ready_memory": {
+        "user_ticks": 109885,
+        "system_ticks": 112847,
+        "rss_bytes": 24969216,
+        "physical_bytes": 8536808,
+        "lifetime_peak_physical_bytes": 9765320
+      },
+      "observed_at": "2026-10-31T20:49:12.703424+00:00"
+    },
+    {
+      "block": 21,
+      "position": 1,
+      "variant": "api-wired-bytecode",
+      "ready_ms": 14.553249988239259,
+      "ready_memory": {
+        "user_ticks": 229463,
+        "system_ticks": 128653,
+        "rss_bytes": 29212672,
+        "physical_bytes": 14549616,
+        "lifetime_peak_physical_bytes": 14549616
+      },
+      "observed_at": "2026-10-31T20:49:12.719977+00:00"
+    },
+    {
+      "block": 21,
+      "position": 2,
+      "variant": "api-wired-jit",
+      "ready_ms": 31.003166979644448,
+      "ready_memory": {
+        "user_ticks": 615514,
+        "system_ticks": 150624,
+        "rss_bytes": 34127872,
+        "physical_bytes": 18317984,
+        "lifetime_peak_physical_bytes": 19497632
+      },
+      "observed_at": "2026-10-31T20:49:12.752886+00:00"
+    },
+    {
+      "block": 22,
+      "position": 0,
+      "variant": "api-wired-jit",
+      "ready_ms": 29.522124968934804,
+      "ready_memory": {
+        "user_ticks": 596482,
+        "system_ticks": 152351,
+        "rss_bytes": 34111488,
+        "physical_bytes": 18301600,
+        "lifetime_peak_physical_bytes": 19481248
+      },
+      "observed_at": "2026-10-31T20:49:12.784349+00:00"
+    },
+    {
+      "block": 22,
+      "position": 1,
+      "variant": "api-wired-native",
+      "ready_ms": 11.293500021565706,
+      "ready_memory": {
+        "user_ticks": 113350,
+        "system_ticks": 113305,
+        "rss_bytes": 24952832,
+        "physical_bytes": 8520424,
+        "lifetime_peak_physical_bytes": 9765320
+      },
+      "observed_at": "2026-10-31T20:49:12.797628+00:00"
+    },
+    {
+      "block": 22,
+      "position": 2,
+      "variant": "api-wired-bytecode",
+      "ready_ms": 14.697416976559907,
+      "ready_memory": {
+        "user_ticks": 230646,
+        "system_ticks": 126522,
+        "rss_bytes": 29212672,
+        "physical_bytes": 14500464,
+        "lifetime_peak_physical_bytes": 14582384
+      },
+      "observed_at": "2026-10-31T20:49:12.814242+00:00"
+    },
+    {
+      "block": 23,
+      "position": 0,
+      "variant": "api-wired-bytecode",
+      "ready_ms": 14.413958007935435,
+      "ready_memory": {
+        "user_ticks": 232505,
+        "system_ticks": 135794,
+        "rss_bytes": 29261824,
+        "physical_bytes": 14631584,
+        "lifetime_peak_physical_bytes": 14631584
+      },
+      "observed_at": "2026-10-31T20:49:12.830590+00:00"
+    },
+    {
+      "block": 23,
+      "position": 1,
+      "variant": "api-wired-jit",
+      "ready_ms": 29.56474997336045,
+      "ready_memory": {
+        "user_ticks": 597410,
+        "system_ticks": 149579,
+        "rss_bytes": 34095104,
+        "physical_bytes": 18285216,
+        "lifetime_peak_physical_bytes": 19464864
+      },
+      "observed_at": "2026-10-31T20:49:12.862125+00:00"
+    },
+    {
+      "block": 23,
+      "position": 2,
+      "variant": "api-wired-native",
+      "ready_ms": 11.462083959486336,
+      "ready_memory": {
+        "user_ticks": 110442,
+        "system_ticks": 111305,
+        "rss_bytes": 24985600,
+        "physical_bytes": 8602416,
+        "lifetime_peak_physical_bytes": 9765320
+      },
+      "observed_at": "2026-10-31T20:49:12.875494+00:00"
+    }
+  ]
+}

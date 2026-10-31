@@ -1,0 +1,16 @@
+[
+  {
+    "mode": "jit",
+    "build_success": true,
+    "exit": 0,
+    "stdout": "42\n",
+    "expected_output": true
+  },
+  {
+    "mode": "native",
+    "build_success": true,
+    "exit": 0,
+    "stdout": "42\n",
+    "expected_output": true
+  }
+]

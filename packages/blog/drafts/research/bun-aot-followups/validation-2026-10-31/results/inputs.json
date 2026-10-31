@@ -1,0 +1,156 @@
+{
+  "compiler": {
+    "revision": "1.4.4-canary.1+da867c60b",
+    "commit": "da867c60bf0bcbf9d6d36994f8ca0efa42075115",
+    "zip_sha256": "67ede5394a7da4a8b1a1eb0788b72325f480bc956cb1155b6be962919c9aa581",
+    "binary_sha256": "256c4f08d81ae8d5c0e445c637b424ba780e0514374b5328dd3db7a953e1aac5",
+    "asset_id": 687869686
+  },
+  "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+  "cpu": "Apple M5",
+  "logical_cpus": 10,
+  "memory_bytes": 25769803776,
+  "power": "AC attached, 80% battery at capture",
+  "thermal_telemetry": "pmset therm unavailable (0xe00002bc); no temperature or no-throttling claim",
+  "sources": {
+    "ata": "8cfedd9e33af092eba91cc615fb7ca98ddc99cb0",
+    "frameworks": "f654bcd175165bce2e3c83b65eaecd8e34294ffd",
+    "api": "d58f3d10daa53f8e6c7b085fc3b2b2d9c38b8056"
+  },
+  "files": {
+    "sources/ata.tar.gz": {
+      "bytes": 3092976,
+      "sha256": "1512dd743234ff730a5c3547f2821c5b3bc207d2c03156dbd72dd27e4843c6b3"
+    },
+    "sources/frameworks.tar.gz": {
+      "bytes": 14492481,
+      "sha256": "5dd517f22ba7ea8b8df0a59c3c7956b0aa007da49b54db13fab9ca08d0866510"
+    },
+    "sources/api.tar.gz": {
+      "bytes": 350716,
+      "sha256": "147893a5e6dd86e232659a2525fe804634a95d042513c22bb095f7b994448914"
+    },
+    "sources/postgresql-17.10.tar.bz2": {
+      "bytes": 21664720,
+      "sha256": "078a03516dcdbdb705fecaf415ea3d13a956c589e46f09fed68a06fb00598c90"
+    },
+    "http-load": {
+      "bytes": 34952,
+      "sha256": "88e8575a1c04a9d5159289731bf68341861df37a67e9a0f63d312879ead3bf38"
+    },
+    "validator/package.json": {
+      "sha256": "fd531d7f027bc1b3c1b4551d93c9ca786d2bf1f8d326046950aff5867bd0bf0c"
+    },
+    "validator/bun.lock": {
+      "sha256": "658255e1d1bebfbe336254801bf306785693509b804c814b76fe18f7b6f59180"
+    },
+    "framework/package.json": {
+      "sha256": "fc28c2f0ef4f798dfc02b77e1c6eeba354fbdc2d244fbfb8626605e26e326761"
+    },
+    "framework/bun.lock": {
+      "sha256": "d113a8d91e566947f6814f01ce163ea689dd6112cf77c091a4dc1ba31cbd5b6e"
+    },
+    "sources/api/apps/elysia-api/package.json": {
+      "sha256": "a826c813434ee8b20bfb3135d1131520b1bd71158bcc151d51c8b77091fbede8"
+    },
+    "sources/api/apps/elysia-api/bun.lock": {
+      "sha256": "64898b89e79f0991058533eca815d7c5006714db571f24485c9630af917bdbc6"
+    }
+  },
+  "dependencies": {
+    "validator": {
+      "ajv": "8.20.0",
+      "ajv-formats": "3.0.1",
+      "ansi-regex": "5.0.1",
+      "ansi-styles": "4.3.0",
+      "ata-validator": "1.61.3",
+      "chownr": "3.0.0",
+      "cliui": "8.0.1",
+      "cmake-js": "8.0.0",
+      "color-convert": "2.0.1",
+      "color-name": "1.1.4",
+      "debug": "4.4.3",
+      "deep-extend": "0.6.0",
+      "emoji-regex": "8.0.0",
+      "esbuild": "0.28.2",
+      "escalade": "3.2.0",
+      "fast-deep-equal": "3.1.3",
+      "fast-uri": "3.1.9",
+      "fs-extra": "11.4.1",
+      "get-caller-file": "2.0.5",
+      "graceful-fs": "4.2.11",
+      "ini": "1.3.8",
+      "is-fullwidth-code-point": "3.0.0",
+      "isexe": "4.0.0",
+      "json-schema-traverse": "1.0.0",
+      "jsonc-parser": "3.3.1",
+      "jsonfile": "6.2.1",
+      "minimist": "1.2.8",
+      "minipass": "7.1.3",
+      "minizlib": "3.1.0",
+      "mitata": "1.0.34",
+      "ms": "2.1.3",
+      "node-addon-api": "8.9.2",
+      "node-api-headers": "1.9.0",
+      "rc": "1.2.8",
+      "require-directory": "2.1.1",
+      "require-from-string": "2.0.2",
+      "semver": "7.8.5",
+      "string-width": "4.2.3",
+      "strip-ansi": "6.0.1",
+      "strip-json-comments": "2.0.1",
+      "tar": "7.5.22",
+      "typebox": "1.4.3",
+      "typescript": "6.0.3",
+      "undici-types": "8.9.0",
+      "universalify": "2.0.1",
+      "url-join": "4.0.1",
+      "valibot": "1.5.0",
+      "which": "6.0.1",
+      "wrap-ansi": "7.0.0",
+      "y18n": "5.0.8",
+      "yallist": "5.0.0",
+      "yargs": "17.7.3",
+      "yargs-parser": "21.1.1",
+      "zod": "4.6.7"
+    },
+    "framework": {
+      "deuri": "3.0.1",
+      "elysia": "2.0.0-beta.29",
+      "exact-mirror": "1.2.6",
+      "hono": "4.13.13",
+      "memoirist": "1.2.3",
+      "openapi-types": "12.1.3",
+      "typebox": "1.4.3"
+    },
+    "sources/api/apps/elysia-api": {
+      "bun-types": "1.4.1",
+      "deuri": "3.0.0",
+      "drizzle-orm": "0.45.2",
+      "elysia": "2.0.0-beta.12",
+      "exact-mirror": "1.2.4",
+      "jose": "6.2.11",
+      "memoirist": "1.2.2",
+      "openapi-types": "12.1.3",
+      "postgres": "3.4.9",
+      "typebox": "1.3.26",
+      "typescript": "5.9.3",
+      "undici-types": "8.3.0"
+    }
+  },
+  "rusage_cpu_clock": {
+    "unit": "mach_absolute_ticks",
+    "numer": 125,
+    "denom": 3,
+    "nanoseconds_per_tick": 41.666666666666664,
+    "calibration": {
+      "method": "Passive sampling of the existing benchmark server; no added CPU task",
+      "wall_seconds": 0.5121645829640329,
+      "rusage_delta_ticks": 12212139,
+      "ps_time_before": "0:18.32",
+      "ps_time_after": "0:18.83",
+      "converted_cpu_seconds": 0.508839125
+    },
+    "legacy_field_note": "Framework main/startup and early controls called these fields user_ns/system_ns; they contain raw Mach ticks, not nanoseconds. Analysis must convert. Newer runner labels them user_ticks/system_ticks."
+  }
+}

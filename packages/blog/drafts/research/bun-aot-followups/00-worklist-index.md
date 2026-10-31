@@ -49,3 +49,7 @@ All requested preparation and experiments are complete. No site post or producti
 ## Separately authorized distribution — October 29
 
 Goga subsequently authorized the Polkadot comment, Assaf pitch and X demo publication. All three were performed and checked; [execution receipt](../../social/oss-radar-08-bun-aot/execution-2026-10-29.md). Earlier unposted/unsent statements describe preparation-time state. The [maintainer comment](https://github.com/paritytech/polkadot-cli/issues/218#issuecomment-6500261059) and [video post](https://x.com/GogaKoreli/status/2115822454497309070) are live. No maintainer response, independent rerun or adoption result is established.
+
+## New owner request — October 31: application trials and article update
+
+The original follow-up acceptance above remains complete. Goga has now authorized broader validator, framework and database experiments and publication of their distilled findings in the existing article. [Experiment plan and delivery gates](validation-2026-10-31/00-plan.md). The experiments and numeric audit are complete; publication acceptance is tracked in that plan. They are not a maintainer endorsement or an independent replication of our measurements.

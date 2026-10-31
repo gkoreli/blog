@@ -1,0 +1,306 @@
+[
+  {
+    "variant": "api-source",
+    "checks": [
+      {
+        "name": "health",
+        "status": 200,
+        "body": "{\"status\":\"ok\"}",
+        "sha256": "a29ee2b15c494311c52521766e44af56a3ad2248e7a8ab465e5206463c13d288"
+      },
+      {
+        "name": "echo",
+        "status": 200,
+        "body": "{\"name\":\"Jane Doe\",\"email\":\"jane@example.com\",\"age\":30,\"tags\":[\"a\",\"b\"]}",
+        "sha256": "2905a66e09f19e1c250e37b20fa4669fbc47ec685c113a539a7e8dd1f0e7876f"
+      },
+      {
+        "name": "user",
+        "status": 200,
+        "body": "{\"id\":4242,\"name\":\"User 4242\",\"email\":\"user4242@example.com\",\"age\":35,\"createdAt\":\"2023-11-14T23:24:01.000Z\"}",
+        "sha256": "2be3138ebc3a0b7e17a9db9e7c4e07cbb036d169a99c896b5f5e963466c3647a"
+      },
+      {
+        "name": "list",
+        "status": 200,
+        "body": "{\"page\":7,\"limit\":20,\"items\":[{\"id\":121,\"name\":\"User 121\",\"email\":\"user121@example.com\",\"age\":43,\"createdAt\":\"2023-11-14T22:15:20.000Z\"},{\"id\":122,\"name\":\"User 122\",\"email\":\"user122@example.com\",\"age\":54,\"createdAt\":\"2023-11-14T22:15:21.000Z\"},{\"id\":123,\"name\":\"User 123\",\"email\":\"user123@example.com\",\"age\":25,\"createdAt\":\"2023-11-14T22:15:22.000Z\"},{\"id\":124,\"name\":\"User 124\",\"email\":\"user124@example.com\",\"age\":25,\"createdAt\":\"2023-11-14T22:15:23.000Z\"},{\"id\":125,\"name\":\"User 125\",\"email\":\"user125@example.com\",\"age\":19,\"createdAt\":\"2023-11-14T22:15:24.000Z\"},{\"id\":126,\"name\":\"User 126\",\"email\":\"user126@example.com\",\"age\":25,\"createdAt\":\"2023-11-14T22:15:25.000Z\"},{\"id\":127,\"name\":\"User 127\",\"email\":\"user127@example.com\",\"age\":36,\"createdAt\":\"2023-11-14T22:15:26.000Z\"},{\"id\":128,\"name\":\"User 128\",\"email\":\"user128@example.com\",\"age\":69,\"createdAt\":\"2023-11-14T22:15:27.000Z\"},{\"id\":129,\"name\":\"User 129\",\"email\":\"user129@example.com\",\"age\":73,\"createdAt\":\"2023-11-14T22:15:28.000Z\"},{\"id\":130,\"name\":\"User 130\",\"email\":\"user130@example.com\",\"age\":25,\"createdAt\":\"2023-11-14T22:15:29.000Z\"},{\"id\":131,\"name\":\"User 131\",\"email\":\"user131@example.com\",\"age\":65,\"createdAt\":\"2023-11-14T22:15:30.000Z\"},{\"id\":132,\"name\":\"User 132\",\"email\":\"user132@example.com\",\"age\":45,\"createdAt\":\"2023-11-14T22:15:31.000Z\"},{\"id\":133,\"name\":\"User 133\",\"email\":\"user133@example.com\",\"age\":66,\"createdAt\":\"2023-11-14T22:15:32.000Z\"},{\"id\":134,\"name\":\"User 134\",\"email\":\"user134@example.com\",\"age\":72,\"createdAt\":\"2023-11-14T22:15:33.000Z\"},{\"id\":135,\"name\":\"User 135\",\"email\":\"user135@example.com\",\"age\":75,\"createdAt\":\"2023-11-14T22:15:34.000Z\"},{\"id\":136,\"name\":\"User 136\",\"email\":\"user136@example.com\",\"age\":44,\"createdAt\":\"2023-11-14T22:15:35.000Z\"},{\"id\":137,\"name\":\"User 137\",\"email\":\"user137@example.com\",\"age\":61,\"createdAt\":\"2023-11-14T22:15:36.000Z\"},{\"id\":138,\"name\":\"User 138\",\"email\":\"user138@example.com\",\"age\":58,\"createdAt\":\"2023-11-14T22:15:37.000Z\"},{\"id\":139,\"name\":\"User 139\",\"email\":\"user139@example.com\",\"age\":63,\"createdAt\":\"2023-11-14T22:15:38.000Z\"},{\"id\":140,\"name\":\"User 140\",\"email\":\"user140@example.com\",\"age\":32,\"createdAt\":\"2023-11-14T22:15:39.000Z\"}]}",
+        "sha256": "67b554fac087d54bd51f996a89b338644ca0e4f75268086484097edb68267bdb"
+      },
+      {
+        "name": "me",
+        "status": 200,
+        "body": "{\"id\":4242,\"name\":\"User 4242\",\"email\":\"user4242@example.com\",\"age\":35,\"createdAt\":\"2023-11-14T23:24:01.000Z\"}",
+        "sha256": "2be3138ebc3a0b7e17a9db9e7c4e07cbb036d169a99c896b5f5e963466c3647a"
+      },
+      {
+        "name": "no-auth",
+        "status": 401,
+        "body": "{\"error\":\"unauthorized\"}"
+      },
+      {
+        "name": "bad-auth",
+        "status": 401,
+        "body": "{\"error\":\"unauthorized\"}"
+      },
+      {
+        "name": "not-found",
+        "status": 404,
+        "body": "{\"error\":\"not found\"}"
+      },
+      {
+        "name": "bad-param",
+        "status": 422,
+        "body": "{\"type\":\"validation\",\"title\":\"Validation Error\",\"status\":422,\"on\":\"params\",\"property\":\"/id\"}"
+      },
+      {
+        "name": "bad-echo",
+        "status": 422,
+        "body": "{\"type\":\"validation\",\"title\":\"Validation Error\",\"status\":422,\"on\":\"body\",\"property\":\"/email\"}"
+      },
+      {
+        "name": "bad-json",
+        "status": 400,
+        "body": "{\"type\":\"parse\",\"code\":\"parse\",\"status\":400,\"title\":\"Bad Request\"}"
+      },
+      {
+        "name": "order",
+        "status": 201,
+        "body": "{\"amount\": \"19.99\", \"currency\": \"USD\", \"userId\": 4242}"
+      },
+      {
+        "name": "cpu",
+        "status": 200,
+        "body": "{\"n\":500,\"hash\":\"edc7b46abe0e90a10e1c3f0d1b2b869be2a900661a37c68e9f353e004f5eee28\"}"
+      }
+    ],
+    "matches_reference": true
+  },
+  {
+    "variant": "api-wired-jit",
+    "checks": [
+      {
+        "name": "health",
+        "status": 200,
+        "body": "{\"status\":\"ok\"}",
+        "sha256": "a29ee2b15c494311c52521766e44af56a3ad2248e7a8ab465e5206463c13d288"
+      },
+      {
+        "name": "echo",
+        "status": 200,
+        "body": "{\"name\":\"Jane Doe\",\"email\":\"jane@example.com\",\"age\":30,\"tags\":[\"a\",\"b\"]}",
+        "sha256": "2905a66e09f19e1c250e37b20fa4669fbc47ec685c113a539a7e8dd1f0e7876f"
+      },
+      {
+        "name": "user",
+        "status": 200,
+        "body": "{\"id\":4242,\"name\":\"User 4242\",\"email\":\"user4242@example.com\",\"age\":35,\"createdAt\":\"2023-11-14T23:24:01.000Z\"}",
+        "sha256": "2be3138ebc3a0b7e17a9db9e7c4e07cbb036d169a99c896b5f5e963466c3647a"
+      },
+      {
+        "name": "list",
+        "status": 200,
+        "body": "{\"page\":7,\"limit\":20,\"items\":[{\"id\":121,\"name\":\"User 121\",\"email\":\"user121@example.com\",\"age\":43,\"createdAt\":\"2023-11-14T22:15:20.000Z\"},{\"id\":122,\"name\":\"User 122\",\"email\":\"user122@example.com\",\"age\":54,\"createdAt\":\"2023-11-14T22:15:21.000Z\"},{\"id\":123,\"name\":\"User 123\",\"email\":\"user123@example.com\",\"age\":25,\"createdAt\":\"2023-11-14T22:15:22.000Z\"},{\"id\":124,\"name\":\"User 124\",\"email\":\"user124@example.com\",\"age\":25,\"createdAt\":\"2023-11-14T22:15:23.000Z\"},{\"id\":125,\"name\":\"User 125\",\"email\":\"user125@example.com\",\"age\":19,\"createdAt\":\"2023-11-14T22:15:24.000Z\"},{\"id\":126,\"name\":\"User 126\",\"email\":\"user126@example.com\",\"age\":25,\"createdAt\":\"2023-11-14T22:15:25.000Z\"},{\"id\":127,\"name\":\"User 127\",\"email\":\"user127@example.com\",\"age\":36,\"createdAt\":\"2023-11-14T22:15:26.000Z\"},{\"id\":128,\"name\":\"User 128\",\"email\":\"user128@example.com\",\"age\":69,\"createdAt\":\"2023-11-14T22:15:27.000Z\"},{\"id\":129,\"name\":\"User 129\",\"email\":\"user129@example.com\",\"age\":73,\"createdAt\":\"2023-11-14T22:15:28.000Z\"},{\"id\":130,\"name\":\"User 130\",\"email\":\"user130@example.com\",\"age\":25,\"createdAt\":\"2023-11-14T22:15:29.000Z\"},{\"id\":131,\"name\":\"User 131\",\"email\":\"user131@example.com\",\"age\":65,\"createdAt\":\"2023-11-14T22:15:30.000Z\"},{\"id\":132,\"name\":\"User 132\",\"email\":\"user132@example.com\",\"age\":45,\"createdAt\":\"2023-11-14T22:15:31.000Z\"},{\"id\":133,\"name\":\"User 133\",\"email\":\"user133@example.com\",\"age\":66,\"createdAt\":\"2023-11-14T22:15:32.000Z\"},{\"id\":134,\"name\":\"User 134\",\"email\":\"user134@example.com\",\"age\":72,\"createdAt\":\"2023-11-14T22:15:33.000Z\"},{\"id\":135,\"name\":\"User 135\",\"email\":\"user135@example.com\",\"age\":75,\"createdAt\":\"2023-11-14T22:15:34.000Z\"},{\"id\":136,\"name\":\"User 136\",\"email\":\"user136@example.com\",\"age\":44,\"createdAt\":\"2023-11-14T22:15:35.000Z\"},{\"id\":137,\"name\":\"User 137\",\"email\":\"user137@example.com\",\"age\":61,\"createdAt\":\"2023-11-14T22:15:36.000Z\"},{\"id\":138,\"name\":\"User 138\",\"email\":\"user138@example.com\",\"age\":58,\"createdAt\":\"2023-11-14T22:15:37.000Z\"},{\"id\":139,\"name\":\"User 139\",\"email\":\"user139@example.com\",\"age\":63,\"createdAt\":\"2023-11-14T22:15:38.000Z\"},{\"id\":140,\"name\":\"User 140\",\"email\":\"user140@example.com\",\"age\":32,\"createdAt\":\"2023-11-14T22:15:39.000Z\"}]}",
+        "sha256": "67b554fac087d54bd51f996a89b338644ca0e4f75268086484097edb68267bdb"
+      },
+      {
+        "name": "me",
+        "status": 200,
+        "body": "{\"id\":4242,\"name\":\"User 4242\",\"email\":\"user4242@example.com\",\"age\":35,\"createdAt\":\"2023-11-14T23:24:01.000Z\"}",
+        "sha256": "2be3138ebc3a0b7e17a9db9e7c4e07cbb036d169a99c896b5f5e963466c3647a"
+      },
+      {
+        "name": "no-auth",
+        "status": 401,
+        "body": "{\"error\":\"unauthorized\"}"
+      },
+      {
+        "name": "bad-auth",
+        "status": 401,
+        "body": "{\"error\":\"unauthorized\"}"
+      },
+      {
+        "name": "not-found",
+        "status": 404,
+        "body": "{\"error\":\"not found\"}"
+      },
+      {
+        "name": "bad-param",
+        "status": 422,
+        "body": "{\"type\":\"validation\",\"title\":\"Validation Error\",\"status\":422,\"on\":\"params\",\"property\":\"/id\"}"
+      },
+      {
+        "name": "bad-echo",
+        "status": 422,
+        "body": "{\"type\":\"validation\",\"title\":\"Validation Error\",\"status\":422,\"on\":\"body\",\"property\":\"/email\"}"
+      },
+      {
+        "name": "bad-json",
+        "status": 400,
+        "body": "{\"type\":\"parse\",\"code\":\"parse\",\"status\":400,\"title\":\"Bad Request\"}"
+      },
+      {
+        "name": "order",
+        "status": 201,
+        "body": "{\"amount\": \"19.99\", \"currency\": \"USD\", \"userId\": 4242}"
+      },
+      {
+        "name": "cpu",
+        "status": 200,
+        "body": "{\"n\":500,\"hash\":\"edc7b46abe0e90a10e1c3f0d1b2b869be2a900661a37c68e9f353e004f5eee28\"}"
+      }
+    ],
+    "matches_reference": true
+  },
+  {
+    "variant": "api-wired-bytecode",
+    "checks": [
+      {
+        "name": "health",
+        "status": 200,
+        "body": "{\"status\":\"ok\"}",
+        "sha256": "a29ee2b15c494311c52521766e44af56a3ad2248e7a8ab465e5206463c13d288"
+      },
+      {
+        "name": "echo",
+        "status": 200,
+        "body": "{\"name\":\"Jane Doe\",\"email\":\"jane@example.com\",\"age\":30,\"tags\":[\"a\",\"b\"]}",
+        "sha256": "2905a66e09f19e1c250e37b20fa4669fbc47ec685c113a539a7e8dd1f0e7876f"
+      },
+      {
+        "name": "user",
+        "status": 200,
+        "body": "{\"id\":4242,\"name\":\"User 4242\",\"email\":\"user4242@example.com\",\"age\":35,\"createdAt\":\"2023-11-14T23:24:01.000Z\"}",
+        "sha256": "2be3138ebc3a0b7e17a9db9e7c4e07cbb036d169a99c896b5f5e963466c3647a"
+      },
+      {
+        "name": "list",
+        "status": 200,
+        "body": "{\"page\":7,\"limit\":20,\"items\":[{\"id\":121,\"name\":\"User 121\",\"email\":\"user121@example.com\",\"age\":43,\"createdAt\":\"2023-11-14T22:15:20.000Z\"},{\"id\":122,\"name\":\"User 122\",\"email\":\"user122@example.com\",\"age\":54,\"createdAt\":\"2023-11-14T22:15:21.000Z\"},{\"id\":123,\"name\":\"User 123\",\"email\":\"user123@example.com\",\"age\":25,\"createdAt\":\"2023-11-14T22:15:22.000Z\"},{\"id\":124,\"name\":\"User 124\",\"email\":\"user124@example.com\",\"age\":25,\"createdAt\":\"2023-11-14T22:15:23.000Z\"},{\"id\":125,\"name\":\"User 125\",\"email\":\"user125@example.com\",\"age\":19,\"createdAt\":\"2023-11-14T22:15:24.000Z\"},{\"id\":126,\"name\":\"User 126\",\"email\":\"user126@example.com\",\"age\":25,\"createdAt\":\"2023-11-14T22:15:25.000Z\"},{\"id\":127,\"name\":\"User 127\",\"email\":\"user127@example.com\",\"age\":36,\"createdAt\":\"2023-11-14T22:15:26.000Z\"},{\"id\":128,\"name\":\"User 128\",\"email\":\"user128@example.com\",\"age\":69,\"createdAt\":\"2023-11-14T22:15:27.000Z\"},{\"id\":129,\"name\":\"User 129\",\"email\":\"user129@example.com\",\"age\":73,\"createdAt\":\"2023-11-14T22:15:28.000Z\"},{\"id\":130,\"name\":\"User 130\",\"email\":\"user130@example.com\",\"age\":25,\"createdAt\":\"2023-11-14T22:15:29.000Z\"},{\"id\":131,\"name\":\"User 131\",\"email\":\"user131@example.com\",\"age\":65,\"createdAt\":\"2023-11-14T22:15:30.000Z\"},{\"id\":132,\"name\":\"User 132\",\"email\":\"user132@example.com\",\"age\":45,\"createdAt\":\"2023-11-14T22:15:31.000Z\"},{\"id\":133,\"name\":\"User 133\",\"email\":\"user133@example.com\",\"age\":66,\"createdAt\":\"2023-11-14T22:15:32.000Z\"},{\"id\":134,\"name\":\"User 134\",\"email\":\"user134@example.com\",\"age\":72,\"createdAt\":\"2023-11-14T22:15:33.000Z\"},{\"id\":135,\"name\":\"User 135\",\"email\":\"user135@example.com\",\"age\":75,\"createdAt\":\"2023-11-14T22:15:34.000Z\"},{\"id\":136,\"name\":\"User 136\",\"email\":\"user136@example.com\",\"age\":44,\"createdAt\":\"2023-11-14T22:15:35.000Z\"},{\"id\":137,\"name\":\"User 137\",\"email\":\"user137@example.com\",\"age\":61,\"createdAt\":\"2023-11-14T22:15:36.000Z\"},{\"id\":138,\"name\":\"User 138\",\"email\":\"user138@example.com\",\"age\":58,\"createdAt\":\"2023-11-14T22:15:37.000Z\"},{\"id\":139,\"name\":\"User 139\",\"email\":\"user139@example.com\",\"age\":63,\"createdAt\":\"2023-11-14T22:15:38.000Z\"},{\"id\":140,\"name\":\"User 140\",\"email\":\"user140@example.com\",\"age\":32,\"createdAt\":\"2023-11-14T22:15:39.000Z\"}]}",
+        "sha256": "67b554fac087d54bd51f996a89b338644ca0e4f75268086484097edb68267bdb"
+      },
+      {
+        "name": "me",
+        "status": 200,
+        "body": "{\"id\":4242,\"name\":\"User 4242\",\"email\":\"user4242@example.com\",\"age\":35,\"createdAt\":\"2023-11-14T23:24:01.000Z\"}",
+        "sha256": "2be3138ebc3a0b7e17a9db9e7c4e07cbb036d169a99c896b5f5e963466c3647a"
+      },
+      {
+        "name": "no-auth",
+        "status": 401,
+        "body": "{\"error\":\"unauthorized\"}"
+      },
+      {
+        "name": "bad-auth",
+        "status": 401,
+        "body": "{\"error\":\"unauthorized\"}"
+      },
+      {
+        "name": "not-found",
+        "status": 404,
+        "body": "{\"error\":\"not found\"}"
+      },
+      {
+        "name": "bad-param",
+        "status": 422,
+        "body": "{\"type\":\"validation\",\"title\":\"Validation Error\",\"status\":422,\"on\":\"params\",\"property\":\"/id\"}"
+      },
+      {
+        "name": "bad-echo",
+        "status": 422,
+        "body": "{\"type\":\"validation\",\"title\":\"Validation Error\",\"status\":422,\"on\":\"body\",\"property\":\"/email\"}"
+      },
+      {
+        "name": "bad-json",
+        "status": 400,
+        "body": "{\"type\":\"parse\",\"code\":\"parse\",\"status\":400,\"title\":\"Bad Request\"}"
+      },
+      {
+        "name": "order",
+        "status": 201,
+        "body": "{\"amount\": \"19.99\", \"currency\": \"USD\", \"userId\": 4242}"
+      },
+      {
+        "name": "cpu",
+        "status": 200,
+        "body": "{\"n\":500,\"hash\":\"edc7b46abe0e90a10e1c3f0d1b2b869be2a900661a37c68e9f353e004f5eee28\"}"
+      }
+    ],
+    "matches_reference": true
+  },
+  {
+    "variant": "api-wired-native",
+    "checks": [
+      {
+        "name": "health",
+        "status": 200,
+        "body": "{\"status\":\"ok\"}",
+        "sha256": "a29ee2b15c494311c52521766e44af56a3ad2248e7a8ab465e5206463c13d288"
+      },
+      {
+        "name": "echo",
+        "status": 200,
+        "body": "{\"name\":\"Jane Doe\",\"email\":\"jane@example.com\",\"age\":30,\"tags\":[\"a\",\"b\"]}",
+        "sha256": "2905a66e09f19e1c250e37b20fa4669fbc47ec685c113a539a7e8dd1f0e7876f"
+      },
+      {
+        "name": "user",
+        "status": 200,
+        "body": "{\"id\":4242,\"name\":\"User 4242\",\"email\":\"user4242@example.com\",\"age\":35,\"createdAt\":\"2023-11-14T23:24:01.000Z\"}",
+        "sha256": "2be3138ebc3a0b7e17a9db9e7c4e07cbb036d169a99c896b5f5e963466c3647a"
+      },
+      {
+        "name": "list",
+        "status": 200,
+        "body": "{\"page\":7,\"limit\":20,\"items\":[{\"id\":121,\"name\":\"User 121\",\"email\":\"user121@example.com\",\"age\":43,\"createdAt\":\"2023-11-14T22:15:20.000Z\"},{\"id\":122,\"name\":\"User 122\",\"email\":\"user122@example.com\",\"age\":54,\"createdAt\":\"2023-11-14T22:15:21.000Z\"},{\"id\":123,\"name\":\"User 123\",\"email\":\"user123@example.com\",\"age\":25,\"createdAt\":\"2023-11-14T22:15:22.000Z\"},{\"id\":124,\"name\":\"User 124\",\"email\":\"user124@example.com\",\"age\":25,\"createdAt\":\"2023-11-14T22:15:23.000Z\"},{\"id\":125,\"name\":\"User 125\",\"email\":\"user125@example.com\",\"age\":19,\"createdAt\":\"2023-11-14T22:15:24.000Z\"},{\"id\":126,\"name\":\"User 126\",\"email\":\"user126@example.com\",\"age\":25,\"createdAt\":\"2023-11-14T22:15:25.000Z\"},{\"id\":127,\"name\":\"User 127\",\"email\":\"user127@example.com\",\"age\":36,\"createdAt\":\"2023-11-14T22:15:26.000Z\"},{\"id\":128,\"name\":\"User 128\",\"email\":\"user128@example.com\",\"age\":69,\"createdAt\":\"2023-11-14T22:15:27.000Z\"},{\"id\":129,\"name\":\"User 129\",\"email\":\"user129@example.com\",\"age\":73,\"createdAt\":\"2023-11-14T22:15:28.000Z\"},{\"id\":130,\"name\":\"User 130\",\"email\":\"user130@example.com\",\"age\":25,\"createdAt\":\"2023-11-14T22:15:29.000Z\"},{\"id\":131,\"name\":\"User 131\",\"email\":\"user131@example.com\",\"age\":65,\"createdAt\":\"2023-11-14T22:15:30.000Z\"},{\"id\":132,\"name\":\"User 132\",\"email\":\"user132@example.com\",\"age\":45,\"createdAt\":\"2023-11-14T22:15:31.000Z\"},{\"id\":133,\"name\":\"User 133\",\"email\":\"user133@example.com\",\"age\":66,\"createdAt\":\"2023-11-14T22:15:32.000Z\"},{\"id\":134,\"name\":\"User 134\",\"email\":\"user134@example.com\",\"age\":72,\"createdAt\":\"2023-11-14T22:15:33.000Z\"},{\"id\":135,\"name\":\"User 135\",\"email\":\"user135@example.com\",\"age\":75,\"createdAt\":\"2023-11-14T22:15:34.000Z\"},{\"id\":136,\"name\":\"User 136\",\"email\":\"user136@example.com\",\"age\":44,\"createdAt\":\"2023-11-14T22:15:35.000Z\"},{\"id\":137,\"name\":\"User 137\",\"email\":\"user137@example.com\",\"age\":61,\"createdAt\":\"2023-11-14T22:15:36.000Z\"},{\"id\":138,\"name\":\"User 138\",\"email\":\"user138@example.com\",\"age\":58,\"createdAt\":\"2023-11-14T22:15:37.000Z\"},{\"id\":139,\"name\":\"User 139\",\"email\":\"user139@example.com\",\"age\":63,\"createdAt\":\"2023-11-14T22:15:38.000Z\"},{\"id\":140,\"name\":\"User 140\",\"email\":\"user140@example.com\",\"age\":32,\"createdAt\":\"2023-11-14T22:15:39.000Z\"}]}",
+        "sha256": "67b554fac087d54bd51f996a89b338644ca0e4f75268086484097edb68267bdb"
+      },
+      {
+        "name": "me",
+        "status": 200,
+        "body": "{\"id\":4242,\"name\":\"User 4242\",\"email\":\"user4242@example.com\",\"age\":35,\"createdAt\":\"2023-11-14T23:24:01.000Z\"}",
+        "sha256": "2be3138ebc3a0b7e17a9db9e7c4e07cbb036d169a99c896b5f5e963466c3647a"
+      },
+      {
+        "name": "no-auth",
+        "status": 401,
+        "body": "{\"error\":\"unauthorized\"}"
+      },
+      {
+        "name": "bad-auth",
+        "status": 401,
+        "body": "{\"error\":\"unauthorized\"}"
+      },
+      {
+        "name": "not-found",
+        "status": 404,
+        "body": "{\"error\":\"not found\"}"
+      },
+      {
+        "name": "bad-param",
+        "status": 422,
+        "body": "{\"type\":\"validation\",\"title\":\"Validation Error\",\"status\":422,\"on\":\"params\",\"property\":\"/id\"}"
+      },
+      {
+        "name": "bad-echo",
+        "status": 422,
+        "body": "{\"type\":\"validation\",\"title\":\"Validation Error\",\"status\":422,\"on\":\"body\",\"property\":\"/email\"}"
+      },
+      {
+        "name": "bad-json",
+        "status": 400,
+        "body": "{\"type\":\"parse\",\"code\":\"parse\",\"status\":400,\"title\":\"Bad Request\"}"
+      },
+      {
+        "name": "order",
+        "status": 201,
+        "body": "{\"amount\": \"19.99\", \"currency\": \"USD\", \"userId\": 4242}"
+      },
+      {
+        "name": "cpu",
+        "status": 200,
+        "body": "{\"n\":500,\"hash\":\"edc7b46abe0e90a10e1c3f0d1b2b869be2a900661a37c68e9f353e004f5eee28\"}"
+      }
+    ],
+    "matches_reference": true
+  }
+]

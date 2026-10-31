@@ -1,0 +1,33 @@
+[
+  {
+    "case": "plain-api-executables",
+    "modes": [
+      "jit",
+      "native"
+    ],
+    "build_success": true,
+    "run_exit": 1,
+    "error": "Cannot find module typebox/type through a dynamic loader",
+    "resolution": "Static setupTypebox namespace imports in a wrapper; app/DB handlers unchanged; source and packaged modes then pass parity."
+  },
+  {
+    "case": "bytecode-default-format",
+    "flags": [
+      "--bytecode"
+    ],
+    "build_exit": 1,
+    "error": "Default CommonJS format rejects this graph with top-level await",
+    "resolution": "Same source with --bytecode --format=esm succeeds; no AOT attribution."
+  },
+  {
+    "case": "framework-range-expectation",
+    "error": "Initial gate expected 206 from Elysia; its JIT fixture returns 200/full file",
+    "resolution": "Preserve family-specific baseline behavior; JIT/native agree; Hono returns 206 in both."
+  },
+  {
+    "case": "validator-contract-preflight",
+    "timed_observations_before_stop": 0,
+    "error": "One untimed defaults case has reversed error order",
+    "resolution": "Retain the difference; require exact full results on all 103 cases of the two timed schemas; defaults remain untimed."
+  }
+]

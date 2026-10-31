@@ -1,0 +1,338 @@
+[
+  {
+    "variant": "elysia-jit",
+    "checks": [
+      {
+        "name": "root",
+        "status": 200,
+        "body": "Hi",
+        "sha256": "3639efcd08abb273b1619e82e78c29a7df02c1051b1820e99fc395dcaa3326b8"
+      },
+      {
+        "name": "dynamic",
+        "status": 200,
+        "body": "42 Jane",
+        "sha256": "6847fb8147870cbefb8ae9350f89ea6ac69c80b4234c77bb14889fa3fb06c733"
+      },
+      {
+        "name": "json",
+        "status": 200,
+        "body": "{\"name\":\"Jane\",\"items\":[1,2,3],\"active\":true}",
+        "sha256": "00d773aba14a933e380b1c024236fa22dea9856d9e1099f73753373154c98ed6"
+      },
+      {
+        "name": "extra",
+        "status": 200,
+        "body": "ok",
+        "sha256": "2689367b205c16ce32ed4200942b8b8b1e262dfc70d9bc9fbc77c49699a4f1df"
+      },
+      {
+        "name": "/missing",
+        "status": 404,
+        "body": "{\"type\":\"not-found\",\"code\":\"not-found\",\"status\":404,\"title\":\"Not Found\"}"
+      },
+      {
+        "name": "/id",
+        "status": 404,
+        "body": "{\"type\":\"not-found\",\"code\":\"not-found\",\"status\":404,\"title\":\"Not Found\"}"
+      },
+      {
+        "name": "malformed-json",
+        "status": 400,
+        "body": "{\"type\":\"parse\",\"code\":\"parse\",\"status\":400,\"title\":\"Bad Request\"}"
+      },
+      {
+        "name": "video",
+        "status": 200,
+        "bytes": 14148221,
+        "sha256": "65006f6fe9fc1004107b0806c6380381b226e5b1dfc815aed79920f26d9af175"
+      },
+      {
+        "name": "range",
+        "status": 200,
+        "sha256": "65006f6fe9fc1004107b0806c6380381b226e5b1dfc815aed79920f26d9af175"
+      }
+    ],
+    "matches_reference": true
+  },
+  {
+    "variant": "elysia-native",
+    "checks": [
+      {
+        "name": "root",
+        "status": 200,
+        "body": "Hi",
+        "sha256": "3639efcd08abb273b1619e82e78c29a7df02c1051b1820e99fc395dcaa3326b8"
+      },
+      {
+        "name": "dynamic",
+        "status": 200,
+        "body": "42 Jane",
+        "sha256": "6847fb8147870cbefb8ae9350f89ea6ac69c80b4234c77bb14889fa3fb06c733"
+      },
+      {
+        "name": "json",
+        "status": 200,
+        "body": "{\"name\":\"Jane\",\"items\":[1,2,3],\"active\":true}",
+        "sha256": "00d773aba14a933e380b1c024236fa22dea9856d9e1099f73753373154c98ed6"
+      },
+      {
+        "name": "extra",
+        "status": 200,
+        "body": "ok",
+        "sha256": "2689367b205c16ce32ed4200942b8b8b1e262dfc70d9bc9fbc77c49699a4f1df"
+      },
+      {
+        "name": "/missing",
+        "status": 404,
+        "body": "{\"type\":\"not-found\",\"code\":\"not-found\",\"status\":404,\"title\":\"Not Found\"}"
+      },
+      {
+        "name": "/id",
+        "status": 404,
+        "body": "{\"type\":\"not-found\",\"code\":\"not-found\",\"status\":404,\"title\":\"Not Found\"}"
+      },
+      {
+        "name": "malformed-json",
+        "status": 400,
+        "body": "{\"type\":\"parse\",\"code\":\"parse\",\"status\":400,\"title\":\"Bad Request\"}"
+      },
+      {
+        "name": "video",
+        "status": 200,
+        "bytes": 14148221,
+        "sha256": "65006f6fe9fc1004107b0806c6380381b226e5b1dfc815aed79920f26d9af175"
+      },
+      {
+        "name": "range",
+        "status": 200,
+        "sha256": "65006f6fe9fc1004107b0806c6380381b226e5b1dfc815aed79920f26d9af175"
+      }
+    ],
+    "matches_reference": true
+  },
+  {
+    "variant": "elysia-plugin-jit",
+    "checks": [
+      {
+        "name": "root",
+        "status": 200,
+        "body": "Hi",
+        "sha256": "3639efcd08abb273b1619e82e78c29a7df02c1051b1820e99fc395dcaa3326b8"
+      },
+      {
+        "name": "dynamic",
+        "status": 200,
+        "body": "42 Jane",
+        "sha256": "6847fb8147870cbefb8ae9350f89ea6ac69c80b4234c77bb14889fa3fb06c733"
+      },
+      {
+        "name": "json",
+        "status": 200,
+        "body": "{\"name\":\"Jane\",\"items\":[1,2,3],\"active\":true}",
+        "sha256": "00d773aba14a933e380b1c024236fa22dea9856d9e1099f73753373154c98ed6"
+      },
+      {
+        "name": "extra",
+        "status": 200,
+        "body": "ok",
+        "sha256": "2689367b205c16ce32ed4200942b8b8b1e262dfc70d9bc9fbc77c49699a4f1df"
+      },
+      {
+        "name": "/missing",
+        "status": 404,
+        "body": "{\"type\":\"not-found\",\"code\":\"not-found\",\"status\":404,\"title\":\"Not Found\"}"
+      },
+      {
+        "name": "/id",
+        "status": 404,
+        "body": "{\"type\":\"not-found\",\"code\":\"not-found\",\"status\":404,\"title\":\"Not Found\"}"
+      },
+      {
+        "name": "malformed-json",
+        "status": 400,
+        "body": "{\"type\":\"parse\",\"code\":\"parse\",\"status\":400,\"title\":\"Bad Request\"}"
+      },
+      {
+        "name": "video",
+        "status": 200,
+        "bytes": 14148221,
+        "sha256": "65006f6fe9fc1004107b0806c6380381b226e5b1dfc815aed79920f26d9af175"
+      },
+      {
+        "name": "range",
+        "status": 200,
+        "sha256": "65006f6fe9fc1004107b0806c6380381b226e5b1dfc815aed79920f26d9af175"
+      }
+    ],
+    "matches_reference": true
+  },
+  {
+    "variant": "elysia-plugin-native",
+    "checks": [
+      {
+        "name": "root",
+        "status": 200,
+        "body": "Hi",
+        "sha256": "3639efcd08abb273b1619e82e78c29a7df02c1051b1820e99fc395dcaa3326b8"
+      },
+      {
+        "name": "dynamic",
+        "status": 200,
+        "body": "42 Jane",
+        "sha256": "6847fb8147870cbefb8ae9350f89ea6ac69c80b4234c77bb14889fa3fb06c733"
+      },
+      {
+        "name": "json",
+        "status": 200,
+        "body": "{\"name\":\"Jane\",\"items\":[1,2,3],\"active\":true}",
+        "sha256": "00d773aba14a933e380b1c024236fa22dea9856d9e1099f73753373154c98ed6"
+      },
+      {
+        "name": "extra",
+        "status": 200,
+        "body": "ok",
+        "sha256": "2689367b205c16ce32ed4200942b8b8b1e262dfc70d9bc9fbc77c49699a4f1df"
+      },
+      {
+        "name": "/missing",
+        "status": 404,
+        "body": "{\"type\":\"not-found\",\"code\":\"not-found\",\"status\":404,\"title\":\"Not Found\"}"
+      },
+      {
+        "name": "/id",
+        "status": 404,
+        "body": "{\"type\":\"not-found\",\"code\":\"not-found\",\"status\":404,\"title\":\"Not Found\"}"
+      },
+      {
+        "name": "malformed-json",
+        "status": 400,
+        "body": "{\"type\":\"parse\",\"code\":\"parse\",\"status\":400,\"title\":\"Bad Request\"}"
+      },
+      {
+        "name": "video",
+        "status": 200,
+        "bytes": 14148221,
+        "sha256": "65006f6fe9fc1004107b0806c6380381b226e5b1dfc815aed79920f26d9af175"
+      },
+      {
+        "name": "range",
+        "status": 200,
+        "sha256": "65006f6fe9fc1004107b0806c6380381b226e5b1dfc815aed79920f26d9af175"
+      }
+    ],
+    "matches_reference": true
+  },
+  {
+    "variant": "hono-jit",
+    "checks": [
+      {
+        "name": "root",
+        "status": 200,
+        "body": "Hi",
+        "sha256": "3639efcd08abb273b1619e82e78c29a7df02c1051b1820e99fc395dcaa3326b8"
+      },
+      {
+        "name": "dynamic",
+        "status": 200,
+        "body": "42 Jane",
+        "sha256": "6847fb8147870cbefb8ae9350f89ea6ac69c80b4234c77bb14889fa3fb06c733"
+      },
+      {
+        "name": "json",
+        "status": 200,
+        "body": "{\"name\":\"Jane\",\"items\":[1,2,3],\"active\":true}",
+        "sha256": "00d773aba14a933e380b1c024236fa22dea9856d9e1099f73753373154c98ed6"
+      },
+      {
+        "name": "extra",
+        "status": 200,
+        "body": "ok",
+        "sha256": "2689367b205c16ce32ed4200942b8b8b1e262dfc70d9bc9fbc77c49699a4f1df"
+      },
+      {
+        "name": "/missing",
+        "status": 404,
+        "body": "404 Not Found"
+      },
+      {
+        "name": "/id",
+        "status": 404,
+        "body": "404 Not Found"
+      },
+      {
+        "name": "malformed-json",
+        "status": 500,
+        "body": "Internal Server Error"
+      },
+      {
+        "name": "video",
+        "status": 200,
+        "bytes": 14148221,
+        "sha256": "65006f6fe9fc1004107b0806c6380381b226e5b1dfc815aed79920f26d9af175"
+      },
+      {
+        "name": "range",
+        "status": 206,
+        "sha256": "631cc18dc85abd5e6911f41efac9d24eecac5cb0c1685a6da4566931dfb56e71"
+      }
+    ],
+    "matches_reference": true
+  },
+  {
+    "variant": "hono-native",
+    "checks": [
+      {
+        "name": "root",
+        "status": 200,
+        "body": "Hi",
+        "sha256": "3639efcd08abb273b1619e82e78c29a7df02c1051b1820e99fc395dcaa3326b8"
+      },
+      {
+        "name": "dynamic",
+        "status": 200,
+        "body": "42 Jane",
+        "sha256": "6847fb8147870cbefb8ae9350f89ea6ac69c80b4234c77bb14889fa3fb06c733"
+      },
+      {
+        "name": "json",
+        "status": 200,
+        "body": "{\"name\":\"Jane\",\"items\":[1,2,3],\"active\":true}",
+        "sha256": "00d773aba14a933e380b1c024236fa22dea9856d9e1099f73753373154c98ed6"
+      },
+      {
+        "name": "extra",
+        "status": 200,
+        "body": "ok",
+        "sha256": "2689367b205c16ce32ed4200942b8b8b1e262dfc70d9bc9fbc77c49699a4f1df"
+      },
+      {
+        "name": "/missing",
+        "status": 404,
+        "body": "404 Not Found"
+      },
+      {
+        "name": "/id",
+        "status": 404,
+        "body": "404 Not Found"
+      },
+      {
+        "name": "malformed-json",
+        "status": 500,
+        "body": "Internal Server Error"
+      },
+      {
+        "name": "video",
+        "status": 200,
+        "bytes": 14148221,
+        "sha256": "65006f6fe9fc1004107b0806c6380381b226e5b1dfc815aed79920f26d9af175"
+      },
+      {
+        "name": "range",
+        "status": 206,
+        "sha256": "631cc18dc85abd5e6911f41efac9d24eecac5cb0c1685a6da4566931dfb56e71"
+      }
+    ],
+    "matches_reference": true
+  }
+]

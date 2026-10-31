@@ -1,0 +1,4932 @@
+{
+  "inputs": {
+    "compiler": {
+      "revision": "1.4.4-canary.1+da867c60b",
+      "commit": "da867c60bf0bcbf9d6d36994f8ca0efa42075115",
+      "zip_sha256": "67ede5394a7da4a8b1a1eb0788b72325f480bc956cb1155b6be962919c9aa581",
+      "binary_sha256": "256c4f08d81ae8d5c0e445c637b424ba780e0514374b5328dd3db7a953e1aac5",
+      "asset_id": 687869686
+    },
+    "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+    "cpu": "Apple M5",
+    "logical_cpus": 10,
+    "memory_bytes": 25769803776,
+    "power": "AC attached, 80% battery at capture",
+    "thermal_telemetry": "pmset therm unavailable (0xe00002bc); no temperature or no-throttling claim",
+    "sources": {
+      "ata": "8cfedd9e33af092eba91cc615fb7ca98ddc99cb0",
+      "frameworks": "f654bcd175165bce2e3c83b65eaecd8e34294ffd",
+      "api": "d58f3d10daa53f8e6c7b085fc3b2b2d9c38b8056"
+    },
+    "files": {
+      "sources/ata.tar.gz": {
+        "bytes": 3092976,
+        "sha256": "1512dd743234ff730a5c3547f2821c5b3bc207d2c03156dbd72dd27e4843c6b3"
+      },
+      "sources/frameworks.tar.gz": {
+        "bytes": 14492481,
+        "sha256": "5dd517f22ba7ea8b8df0a59c3c7956b0aa007da49b54db13fab9ca08d0866510"
+      },
+      "sources/api.tar.gz": {
+        "bytes": 350716,
+        "sha256": "147893a5e6dd86e232659a2525fe804634a95d042513c22bb095f7b994448914"
+      },
+      "sources/postgresql-17.10.tar.bz2": {
+        "bytes": 21664720,
+        "sha256": "078a03516dcdbdb705fecaf415ea3d13a956c589e46f09fed68a06fb00598c90"
+      },
+      "http-load": {
+        "bytes": 34952,
+        "sha256": "88e8575a1c04a9d5159289731bf68341861df37a67e9a0f63d312879ead3bf38"
+      },
+      "validator/package.json": {
+        "sha256": "fd531d7f027bc1b3c1b4551d93c9ca786d2bf1f8d326046950aff5867bd0bf0c"
+      },
+      "validator/bun.lock": {
+        "sha256": "658255e1d1bebfbe336254801bf306785693509b804c814b76fe18f7b6f59180"
+      },
+      "framework/package.json": {
+        "sha256": "fc28c2f0ef4f798dfc02b77e1c6eeba354fbdc2d244fbfb8626605e26e326761"
+      },
+      "framework/bun.lock": {
+        "sha256": "d113a8d91e566947f6814f01ce163ea689dd6112cf77c091a4dc1ba31cbd5b6e"
+      },
+      "sources/api/apps/elysia-api/package.json": {
+        "sha256": "a826c813434ee8b20bfb3135d1131520b1bd71158bcc151d51c8b77091fbede8"
+      },
+      "sources/api/apps/elysia-api/bun.lock": {
+        "sha256": "64898b89e79f0991058533eca815d7c5006714db571f24485c9630af917bdbc6"
+      }
+    },
+    "dependencies": {
+      "validator": {
+        "ajv": "8.20.0",
+        "ajv-formats": "3.0.1",
+        "ansi-regex": "5.0.1",
+        "ansi-styles": "4.3.0",
+        "ata-validator": "1.61.3",
+        "chownr": "3.0.0",
+        "cliui": "8.0.1",
+        "cmake-js": "8.0.0",
+        "color-convert": "2.0.1",
+        "color-name": "1.1.4",
+        "debug": "4.4.3",
+        "deep-extend": "0.6.0",
+        "emoji-regex": "8.0.0",
+        "esbuild": "0.28.2",
+        "escalade": "3.2.0",
+        "fast-deep-equal": "3.1.3",
+        "fast-uri": "3.1.9",
+        "fs-extra": "11.4.1",
+        "get-caller-file": "2.0.5",
+        "graceful-fs": "4.2.11",
+        "ini": "1.3.8",
+        "is-fullwidth-code-point": "3.0.0",
+        "isexe": "4.0.0",
+        "json-schema-traverse": "1.0.0",
+        "jsonc-parser": "3.3.1",
+        "jsonfile": "6.2.1",
+        "minimist": "1.2.8",
+        "minipass": "7.1.3",
+        "minizlib": "3.1.0",
+        "mitata": "1.0.34",
+        "ms": "2.1.3",
+        "node-addon-api": "8.9.2",
+        "node-api-headers": "1.9.0",
+        "rc": "1.2.8",
+        "require-directory": "2.1.1",
+        "require-from-string": "2.0.2",
+        "semver": "7.8.5",
+        "string-width": "4.2.3",
+        "strip-ansi": "6.0.1",
+        "strip-json-comments": "2.0.1",
+        "tar": "7.5.22",
+        "typebox": "1.4.3",
+        "typescript": "6.0.3",
+        "undici-types": "8.9.0",
+        "universalify": "2.0.1",
+        "url-join": "4.0.1",
+        "valibot": "1.5.0",
+        "which": "6.0.1",
+        "wrap-ansi": "7.0.0",
+        "y18n": "5.0.8",
+        "yallist": "5.0.0",
+        "yargs": "17.7.3",
+        "yargs-parser": "21.1.1",
+        "zod": "4.6.7"
+      },
+      "framework": {
+        "deuri": "3.0.1",
+        "elysia": "2.0.0-beta.29",
+        "exact-mirror": "1.2.6",
+        "hono": "4.13.13",
+        "memoirist": "1.2.3",
+        "openapi-types": "12.1.3",
+        "typebox": "1.4.3"
+      },
+      "sources/api/apps/elysia-api": {
+        "bun-types": "1.4.1",
+        "deuri": "3.0.0",
+        "drizzle-orm": "0.45.2",
+        "elysia": "2.0.0-beta.12",
+        "exact-mirror": "1.2.4",
+        "jose": "6.2.11",
+        "memoirist": "1.2.2",
+        "openapi-types": "12.1.3",
+        "postgres": "3.4.9",
+        "typebox": "1.3.26",
+        "typescript": "5.9.3",
+        "undici-types": "8.3.0"
+      }
+    },
+    "rusage_cpu_clock": {
+      "unit": "mach_absolute_ticks",
+      "numer": 125,
+      "denom": 3,
+      "nanoseconds_per_tick": 41.666666666666664,
+      "calibration": {
+        "method": "Passive sampling of the existing benchmark server; no added CPU task",
+        "wall_seconds": 0.5121645829640329,
+        "rusage_delta_ticks": 12212139,
+        "ps_time_before": "0:18.32",
+        "ps_time_after": "0:18.83",
+        "converted_cpu_seconds": 0.508839125
+      },
+      "legacy_field_note": "Framework main/startup and early controls called these fields user_ns/system_ns; they contain raw Mach ticks, not nanoseconds. Analysis must convert. Newer runner labels them user_ticks/system_ticks."
+    }
+  },
+  "batches": {
+    "framework-startup": {
+      "source_sha256": "8c9bafe919bf776009a1b65487b1c55df9dd7b82bae7fb4384197e33571e19dc",
+      "observations": 144,
+      "groups": [
+        {
+          "variant": "elysia-jit",
+          "startup_ms": {
+            "n": 24,
+            "median": 16.01127049070783,
+            "min": 15.369083033874631,
+            "max": 18.439500010572374
+          },
+          "ready_physical_bytes": {
+            "n": 24,
+            "median": 11813512.0,
+            "min": 11240048,
+            "max": 12059296
+          },
+          "routes": []
+        },
+        {
+          "variant": "elysia-native",
+          "startup_ms": {
+            "n": 24,
+            "median": 10.260812967317179,
+            "min": 9.81099996715784,
+            "max": 12.980250001419336
+          },
+          "ready_physical_bytes": {
+            "n": 24,
+            "median": 7725812.0,
+            "min": 7652072,
+            "max": 7783168
+          },
+          "routes": []
+        },
+        {
+          "variant": "elysia-plugin-jit",
+          "startup_ms": {
+            "n": 24,
+            "median": 15.400187519844621,
+            "min": 14.652583980932832,
+            "max": 19.067625049501657
+          },
+          "ready_physical_bytes": {
+            "n": 24,
+            "median": 11412128.0,
+            "min": 10699424,
+            "max": 11600544
+          },
+          "routes": []
+        },
+        {
+          "variant": "elysia-plugin-native",
+          "startup_ms": {
+            "n": 24,
+            "median": 10.240708012133837,
+            "min": 9.66229202458635,
+            "max": 12.501167017035186
+          },
+          "ready_physical_bytes": {
+            "n": 24,
+            "median": 7652072.0,
+            "min": 7537384,
+            "max": 7734040
+          },
+          "routes": []
+        },
+        {
+          "variant": "hono-jit",
+          "startup_ms": {
+            "n": 24,
+            "median": 13.17454149830155,
+            "min": 11.18545897770673,
+            "max": 13.845665962435305
+          },
+          "ready_physical_bytes": {
+            "n": 24,
+            "median": 9953928.0,
+            "min": 9732720,
+            "max": 10470048
+          },
+          "routes": []
+        },
+        {
+          "variant": "hono-native",
+          "startup_ms": {
+            "n": 24,
+            "median": 10.511083470191807,
+            "min": 9.469165990594774,
+            "max": 12.494167021941394
+          },
+          "ready_physical_bytes": {
+            "n": 24,
+            "median": 7357160.0,
+            "min": 7308008,
+            "max": 7471896
+          },
+          "routes": []
+        }
+      ]
+    },
+    "api-startup": {
+      "source_sha256": "1f7d144fbee7476152dd2203baf41af60d1703d85f793328cd9611f2f0a32782",
+      "observations": 96,
+      "groups": [
+        {
+          "variant": "api-wired-jit",
+          "startup_ms": {
+            "n": 24,
+            "median": 30.103479512035847,
+            "min": 29.75954196881503,
+            "max": 32.21849998226389
+          },
+          "ready_physical_bytes": {
+            "n": 24,
+            "median": 18252448.0,
+            "min": 18088584,
+            "max": 18350776
+          },
+          "routes": []
+        },
+        {
+          "variant": "api-wired-native",
+          "startup_ms": {
+            "n": 24,
+            "median": 11.55885448679328,
+            "min": 11.093916022218764,
+            "max": 11.893916002009064
+          },
+          "ready_physical_bytes": {
+            "n": 24,
+            "median": 8553216.0,
+            "min": 8504016,
+            "max": 8700648
+          },
+          "routes": []
+        },
+        {
+          "variant": "api-plugin-jit",
+          "startup_ms": {
+            "n": 24,
+            "median": 29.14893749402836,
+            "min": 28.600334015209228,
+            "max": 39.52066699275747
+          },
+          "ready_physical_bytes": {
+            "n": 24,
+            "median": 17384072.0,
+            "min": 17236592,
+            "max": 17515192
+          },
+          "routes": []
+        },
+        {
+          "variant": "api-plugin-native",
+          "startup_ms": {
+            "n": 24,
+            "median": 11.675562011078,
+            "min": 11.27424999140203,
+            "max": 12.5068339984864
+          },
+          "ready_physical_bytes": {
+            "n": 24,
+            "median": 8979188.0,
+            "min": 8930048,
+            "max": 9110320
+          },
+          "routes": []
+        }
+      ]
+    },
+    "framework-load": {
+      "source_sha256": "8dda784b35de18e53bbdea79c423aee649cd4b3add276fc8be3cc3a023da1c62",
+      "observations": 36,
+      "groups": [
+        {
+          "variant": "elysia-jit",
+          "startup_ms": {
+            "n": 6,
+            "median": 16.950500023085624,
+            "min": 16.31870900746435,
+            "max": 20.31708398135379
+          },
+          "ready_physical_bytes": {
+            "n": 6,
+            "median": 11903612.0,
+            "min": 11158152,
+            "max": 11993760
+          },
+          "routes": [
+            {
+              "name": "dynamic",
+              "verified_requests": 10603023,
+              "rps": {
+                "n": 6,
+                "median": 220985.929,
+                "min": 219309.121,
+                "max": 222187.403
+              },
+              "p50_upper_us": {
+                "n": 6,
+                "median": 38.054628,
+                "min": 38.054628,
+                "max": 38.054628
+              },
+              "p95_upper_us": {
+                "n": 6,
+                "median": 53.817371,
+                "min": 53.817371,
+                "max": 58.688259
+              },
+              "p99_upper_us": {
+                "n": 6,
+                "median": 69.792495,
+                "min": 64.0,
+                "max": 69.792495
+              },
+              "end_physical_bytes": {
+                "n": 6,
+                "median": 24715936.0,
+                "min": 23347896,
+                "max": 25952928
+              },
+              "sampled_peak_rss_bytes": {
+                "n": 6,
+                "median": 51961856.0,
+                "min": 48709632,
+                "max": 54263808
+              },
+              "server_cpu_percent": {
+                "n": 6,
+                "median": 101.27691890277575,
+                "min": 101.17538735138325,
+                "max": 101.3862250319663
+              },
+              "foreign_persistent_cpu_percent": {
+                "n": 6,
+                "median": 14.187357251428644,
+                "min": 8.874901266678679,
+                "max": 19.249846001167814
+              }
+            },
+            {
+              "name": "json",
+              "verified_requests": 9603983,
+              "rps": {
+                "n": 6,
+                "median": 199971.6005,
+                "min": 199660.428,
+                "max": 200738.989
+              },
+              "p50_upper_us": {
+                "n": 6,
+                "median": 38.054628,
+                "min": 38.054628,
+                "max": 38.054628
+              },
+              "p95_upper_us": {
+                "n": 6,
+                "median": 64.0,
+                "min": 64.0,
+                "max": 64.0
+              },
+              "p99_upper_us": {
+                "n": 6,
+                "median": 76.109255,
+                "min": 76.109255,
+                "max": 76.109255
+              },
+              "end_physical_bytes": {
+                "n": 6,
+                "median": 24879764.0,
+                "min": 23200440,
+                "max": 26624672
+              },
+              "sampled_peak_rss_bytes": {
+                "n": 6,
+                "median": 50126848.0,
+                "min": 46645248,
+                "max": 55017472
+              },
+              "server_cpu_percent": {
+                "n": 6,
+                "median": 101.41385112083827,
+                "min": 101.38270146391142,
+                "max": 101.56362225468301
+              },
+              "foreign_persistent_cpu_percent": {
+                "n": 6,
+                "median": 14.62484482200802,
+                "min": 10.374850861535837,
+                "max": 19.249809908138733
+              }
+            }
+          ],
+          "lifetime_peak_physical_bytes": {
+            "n": 6,
+            "median": 29934240.0,
+            "min": 28230328,
+            "max": 32637600
+          }
+        },
+        {
+          "variant": "elysia-native",
+          "startup_ms": {
+            "n": 6,
+            "median": 11.228083516471088,
+            "min": 10.436541982926428,
+            "max": 13.774916995316744
+          },
+          "ready_physical_bytes": {
+            "n": 6,
+            "median": 7717632.0,
+            "min": 7635688,
+            "max": 7750400
+          },
+          "routes": [
+            {
+              "name": "dynamic",
+              "verified_requests": 10002090,
+              "rps": {
+                "n": 6,
+                "median": 209207.0765,
+                "min": 205483.423,
+                "max": 210335.568
+              },
+              "p50_upper_us": {
+                "n": 6,
+                "median": 38.054628,
+                "min": 38.054628,
+                "max": 38.054628
+              },
+              "p95_upper_us": {
+                "n": 6,
+                "median": 58.688259,
+                "min": 58.688259,
+                "max": 64.0
+              },
+              "p99_upper_us": {
+                "n": 6,
+                "median": 72.950875,
+                "min": 69.792495,
+                "max": 82.997731
+              },
+              "end_physical_bytes": {
+                "n": 6,
+                "median": 16761588.0,
+                "min": 15811328,
+                "max": 17548032
+              },
+              "sampled_peak_rss_bytes": {
+                "n": 6,
+                "median": 34455552.0,
+                "min": 33488896,
+                "max": 35291136
+              },
+              "server_cpu_percent": {
+                "n": 6,
+                "median": 99.81379317528,
+                "min": 99.41294157362293,
+                "max": 99.89556306269989
+              },
+              "foreign_persistent_cpu_percent": {
+                "n": 6,
+                "median": 17.749827720457166,
+                "min": 11.124884579346254,
+                "max": 28.374677238058005
+              }
+            },
+            {
+              "name": "json",
+              "verified_requests": 9147395,
+              "rps": {
+                "n": 6,
+                "median": 190952.804,
+                "min": 186176.711,
+                "max": 193024.989
+              },
+              "p50_upper_us": {
+                "n": 6,
+                "median": 41.498866,
+                "min": 38.054628,
+                "max": 41.498866
+              },
+              "p95_upper_us": {
+                "n": 6,
+                "median": 69.792495,
+                "min": 69.792495,
+                "max": 69.792495
+              },
+              "p99_upper_us": {
+                "n": 6,
+                "median": 82.997731,
+                "min": 82.997731,
+                "max": 82.997731
+              },
+              "end_physical_bytes": {
+                "n": 6,
+                "median": 17892108.0,
+                "min": 17285864,
+                "max": 18957056
+              },
+              "sampled_peak_rss_bytes": {
+                "n": 6,
+                "median": 36028416.0,
+                "min": 34750464,
+                "max": 37175296
+              },
+              "server_cpu_percent": {
+                "n": 6,
+                "median": 99.75251534692265,
+                "min": 99.68783383726498,
+                "max": 99.86762271103386
+              },
+              "foreign_persistent_cpu_percent": {
+                "n": 6,
+                "median": 16.999821751913665,
+                "min": 13.87485257966813,
+                "max": 21.874751174653614
+              }
+            }
+          ],
+          "lifetime_peak_physical_bytes": {
+            "n": 6,
+            "median": 19489524.0,
+            "min": 19186432,
+            "max": 19890944
+          }
+        },
+        {
+          "variant": "elysia-plugin-jit",
+          "startup_ms": {
+            "n": 6,
+            "median": 16.091958474135026,
+            "min": 15.62070898944512,
+            "max": 20.034999994095415
+          },
+          "ready_physical_bytes": {
+            "n": 6,
+            "median": 11502216.0,
+            "min": 10814112,
+            "max": 11600544
+          },
+          "routes": [
+            {
+              "name": "dynamic",
+              "verified_requests": 10544589,
+              "rps": {
+                "n": 6,
+                "median": 221096.3875,
+                "min": 212664.115,
+                "max": 221925.434
+              },
+              "p50_upper_us": {
+                "n": 6,
+                "median": 38.054628,
+                "min": 38.054628,
+                "max": 38.054628
+              },
+              "p95_upper_us": {
+                "n": 6,
+                "median": 53.817371,
+                "min": 53.817371,
+                "max": 58.688259
+              },
+              "p99_upper_us": {
+                "n": 6,
+                "median": 69.792495,
+                "min": 64.0,
+                "max": 69.792495
+              },
+              "end_physical_bytes": {
+                "n": 6,
+                "median": 24175276.0,
+                "min": 23593608,
+                "max": 24871584
+              },
+              "sampled_peak_rss_bytes": {
+                "n": 6,
+                "median": 50126848.0,
+                "min": 49037312,
+                "max": 52379648
+              },
+              "server_cpu_percent": {
+                "n": 6,
+                "median": 101.24024641663252,
+                "min": 101.08803687710817,
+                "max": 101.28521459650925
+              },
+              "foreign_persistent_cpu_percent": {
+                "n": 6,
+                "median": 16.187324970676254,
+                "min": 11.624877938777932,
+                "max": 17.499814064438908
+              }
+            },
+            {
+              "name": "json",
+              "verified_requests": 9486205,
+              "rps": {
+                "n": 6,
+                "median": 198644.452,
+                "min": 191081.714,
+                "max": 201710.437
+              },
+              "p50_upper_us": {
+                "n": 6,
+                "median": 38.054628,
+                "min": 38.054628,
+                "max": 41.498866
+              },
+              "p95_upper_us": {
+                "n": 6,
+                "median": 64.0,
+                "min": 64.0,
+                "max": 69.792495
+              },
+              "p99_upper_us": {
+                "n": 6,
+                "median": 79.553493,
+                "min": 76.109255,
+                "max": 107.634741
+              },
+              "end_physical_bytes": {
+                "n": 6,
+                "median": 24158892.0,
+                "min": 23020168,
+                "max": 25215648
+              },
+              "sampled_peak_rss_bytes": {
+                "n": 6,
+                "median": 49823744.0,
+                "min": 44564480,
+                "max": 53903360
+              },
+              "server_cpu_percent": {
+                "n": 6,
+                "median": 101.35524219239187,
+                "min": 100.40557511091555,
+                "max": 101.52521474208575
+              },
+              "foreign_persistent_cpu_percent": {
+                "n": 6,
+                "median": 17.499812064547786,
+                "min": 11.499910875701747,
+                "max": 32.749619285699005
+              }
+            }
+          ],
+          "lifetime_peak_physical_bytes": {
+            "n": 6,
+            "median": 29500076.0,
+            "min": 27935416,
+            "max": 31408800
+          }
+        },
+        {
+          "variant": "elysia-plugin-native",
+          "startup_ms": {
+            "n": 6,
+            "median": 11.22683347784914,
+            "min": 10.245124984066933,
+            "max": 13.747999968472868
+          },
+          "ready_physical_bytes": {
+            "n": 6,
+            "median": 7652060.0,
+            "min": 7586512,
+            "max": 7701224
+          },
+          "routes": [
+            {
+              "name": "dynamic",
+              "verified_requests": 10370857,
+              "rps": {
+                "n": 6,
+                "median": 217291.4575,
+                "min": 212488.08,
+                "max": 218209.829
+              },
+              "p50_upper_us": {
+                "n": 6,
+                "median": 38.054628,
+                "min": 38.054628,
+                "max": 38.054628
+              },
+              "p95_upper_us": {
+                "n": 6,
+                "median": 58.688259,
+                "min": 58.688259,
+                "max": 58.688259
+              },
+              "p99_upper_us": {
+                "n": 6,
+                "median": 69.792495,
+                "min": 69.792495,
+                "max": 76.109255
+              },
+              "end_physical_bytes": {
+                "n": 6,
+                "median": 16024320.0,
+                "min": 15516368,
+                "max": 17498880
+              },
+              "sampled_peak_rss_bytes": {
+                "n": 6,
+                "median": 33071104.0,
+                "min": 31522816,
+                "max": 33226752
+              },
+              "server_cpu_percent": {
+                "n": 6,
+                "median": 99.80967490185492,
+                "min": 99.42547480063838,
+                "max": 99.84729101498006
+              },
+              "foreign_persistent_cpu_percent": {
+                "n": 6,
+                "median": 14.562346243803406,
+                "min": 9.9998887512373,
+                "max": 22.624782236440034
+              }
+            },
+            {
+              "name": "json",
+              "verified_requests": 9725836,
+              "rps": {
+                "n": 6,
+                "median": 203038.07799999998,
+                "min": 199974.35,
+                "max": 203642.616
+              },
+              "p50_upper_us": {
+                "n": 6,
+                "median": 38.054628,
+                "min": 38.054628,
+                "max": 38.054628
+              },
+              "p95_upper_us": {
+                "n": 6,
+                "median": 64.0,
+                "min": 64.0,
+                "max": 64.0
+              },
+              "p99_upper_us": {
+                "n": 6,
+                "median": 76.109255,
+                "min": 76.109255,
+                "max": 76.109255
+              },
+              "end_physical_bytes": {
+                "n": 6,
+                "median": 17548032.0,
+                "min": 16483072,
+                "max": 18711320
+              },
+              "sampled_peak_rss_bytes": {
+                "n": 6,
+                "median": 33890304.0,
+                "min": 32800768,
+                "max": 37076992
+              },
+              "server_cpu_percent": {
+                "n": 6,
+                "median": 99.82144696364443,
+                "min": 99.80611979254556,
+                "max": 99.92057074481772
+              },
+              "foreign_persistent_cpu_percent": {
+                "n": 6,
+                "median": 13.874851681256796,
+                "min": 11.499893625967555,
+                "max": 15.87486903231252
+              }
+            }
+          ],
+          "lifetime_peak_physical_bytes": {
+            "n": 6,
+            "median": 19276544.0,
+            "min": 18924288,
+            "max": 19366656
+          }
+        },
+        {
+          "variant": "hono-jit",
+          "startup_ms": {
+            "n": 6,
+            "median": 12.556854489957914,
+            "min": 12.244999990798533,
+            "max": 15.80629195086658
+          },
+          "ready_physical_bytes": {
+            "n": 6,
+            "median": 9970312.0,
+            "min": 9896584,
+            "max": 10420896
+          },
+          "routes": [
+            {
+              "name": "dynamic",
+              "verified_requests": 10191100,
+              "rps": {
+                "n": 6,
+                "median": 212435.51049999997,
+                "min": 209874.526,
+                "max": 213905.995
+              },
+              "p50_upper_us": {
+                "n": 6,
+                "median": 38.054628,
+                "min": 38.054628,
+                "max": 38.054628
+              },
+              "p95_upper_us": {
+                "n": 6,
+                "median": 58.688259,
+                "min": 58.688259,
+                "max": 58.688259
+              },
+              "p99_upper_us": {
+                "n": 6,
+                "median": 76.109255,
+                "min": 69.792495,
+                "max": 76.109255
+              },
+              "end_physical_bytes": {
+                "n": 6,
+                "median": 23659180.0,
+                "min": 23003808,
+                "max": 24085176
+              },
+              "sampled_peak_rss_bytes": {
+                "n": 6,
+                "median": 51650560.0,
+                "min": 50905088,
+                "max": 53706752
+              },
+              "server_cpu_percent": {
+                "n": 6,
+                "median": 102.03119277773958,
+                "min": 101.94282616221844,
+                "max": 102.11213124763567
+              },
+              "foreign_persistent_cpu_percent": {
+                "n": 6,
+                "median": 15.874821361375112,
+                "min": 11.124887360526637,
+                "max": 65.1243487564884
+              }
+            },
+            {
+              "name": "json",
+              "verified_requests": 8832982,
+              "rps": {
+                "n": 6,
+                "median": 184292.22,
+                "min": 181220.814,
+                "max": 185939.719
+              },
+              "p50_upper_us": {
+                "n": 6,
+                "median": 39.776747,
+                "min": 38.054628,
+                "max": 41.498866
+              },
+              "p95_upper_us": {
+                "n": 6,
+                "median": 69.792495,
+                "min": 69.792495,
+                "max": 69.792495
+              },
+              "p99_upper_us": {
+                "n": 6,
+                "median": 90.509668,
+                "min": 90.509668,
+                "max": 117.376518
+              },
+              "end_physical_bytes": {
+                "n": 6,
+                "median": 24355488.0,
+                "min": 24052384,
+                "max": 25035448
+              },
+              "sampled_peak_rss_bytes": {
+                "n": 6,
+                "median": 52764672.0,
+                "min": 48529408,
+                "max": 56328192
+              },
+              "server_cpu_percent": {
+                "n": 6,
+                "median": 101.92540335949869,
+                "min": 101.54715167198307,
+                "max": 101.9593226252764
+              },
+              "foreign_persistent_cpu_percent": {
+                "n": 6,
+                "median": 19.687284963324394,
+                "min": 12.62487059506878,
+                "max": 79.12415930582188
+              }
+            }
+          ],
+          "lifetime_peak_physical_bytes": {
+            "n": 6,
+            "median": 31515308.0,
+            "min": 30163616,
+            "max": 33587896
+          }
+        },
+        {
+          "variant": "hono-native",
+          "startup_ms": {
+            "n": 6,
+            "median": 10.382353997556493,
+            "min": 10.191958979703486,
+            "max": 13.650624954607338
+          },
+          "ready_physical_bytes": {
+            "n": 6,
+            "median": 7381760.0,
+            "min": 7324368,
+            "max": 7471872
+          },
+          "routes": [
+            {
+              "name": "dynamic",
+              "verified_requests": 10396094,
+              "rps": {
+                "n": 6,
+                "median": 217140.025,
+                "min": 210207.444,
+                "max": 220011.23
+              },
+              "p50_upper_us": {
+                "n": 6,
+                "median": 38.054628,
+                "min": 38.054628,
+                "max": 38.054628
+              },
+              "p95_upper_us": {
+                "n": 6,
+                "median": 58.688259,
+                "min": 58.688259,
+                "max": 58.688259
+              },
+              "p99_upper_us": {
+                "n": 6,
+                "median": 72.950875,
+                "min": 69.792495,
+                "max": 107.634741
+              },
+              "end_physical_bytes": {
+                "n": 6,
+                "median": 15975144.0,
+                "min": 15483672,
+                "max": 16335592
+              },
+              "sampled_peak_rss_bytes": {
+                "n": 6,
+                "median": 31145984.0,
+                "min": 30375936,
+                "max": 31653888
+              },
+              "server_cpu_percent": {
+                "n": 6,
+                "median": 99.70942505143958,
+                "min": 98.01857055733048,
+                "max": 99.88943857797386
+              },
+              "foreign_persistent_cpu_percent": {
+                "n": 6,
+                "median": 16.249814439629887,
+                "min": 13.999868751170899,
+                "max": 124.8738293078359
+              }
+            },
+            {
+              "name": "json",
+              "verified_requests": 9426955,
+              "rps": {
+                "n": 6,
+                "median": 196917.4295,
+                "min": 193927.714,
+                "max": 198559.742
+              },
+              "p50_upper_us": {
+                "n": 6,
+                "median": 41.498866,
+                "min": 38.054628,
+                "max": 41.498866
+              },
+              "p95_upper_us": {
+                "n": 6,
+                "median": 64.0,
+                "min": 64.0,
+                "max": 64.0
+              },
+              "p99_upper_us": {
+                "n": 6,
+                "median": 82.997731,
+                "min": 76.109255,
+                "max": 107.634741
+              },
+              "end_physical_bytes": {
+                "n": 6,
+                "median": 16941800.0,
+                "min": 16220952,
+                "max": 17416984
+              },
+              "sampled_peak_rss_bytes": {
+                "n": 6,
+                "median": 32350208.0,
+                "min": 31145984,
+                "max": 35241984
+              },
+              "server_cpu_percent": {
+                "n": 6,
+                "median": 99.75591951017171,
+                "min": 99.59245636254153,
+                "max": 99.87809795688062
+              },
+              "foreign_persistent_cpu_percent": {
+                "n": 6,
+                "median": 17.624830517243836,
+                "min": 10.124878501447226,
+                "max": 31.249671878434377
+              }
+            }
+          ],
+          "lifetime_peak_physical_bytes": {
+            "n": 6,
+            "median": 18555612.0,
+            "min": 17875712,
+            "max": 19137304
+          }
+        }
+      ]
+    },
+    "api-load": {
+      "source_sha256": "aeb1784574cbd775fb274239ced8fa7fe821e27f906448c2ea2b88c88fbe032f",
+      "observations": 32,
+      "groups": [
+        {
+          "variant": "api-wired-jit",
+          "startup_ms": {
+            "n": 8,
+            "median": 32.364916522055864,
+            "min": 31.381416018120944,
+            "max": 35.67916702013463
+          },
+          "ready_physical_bytes": {
+            "n": 8,
+            "median": 18211476.0,
+            "min": 18104968,
+            "max": 18350752
+          },
+          "routes": [
+            {
+              "name": "health",
+              "verified_requests": 14404865,
+              "rps": {
+                "n": 8,
+                "median": 228532.7505,
+                "min": 203311.58,
+                "max": 229665.502
+              },
+              "p50_upper_us": {
+                "n": 8,
+                "median": 38.054628,
+                "min": 38.054628,
+                "max": 38.054628
+              },
+              "p95_upper_us": {
+                "n": 8,
+                "median": 53.817371,
+                "min": 53.817371,
+                "max": 58.688259
+              },
+              "p99_upper_us": {
+                "n": 8,
+                "median": 66.8962475,
+                "min": 64.0,
+                "max": 128.0
+              },
+              "end_physical_bytes": {
+                "n": 8,
+                "median": 48423656.0,
+                "min": 29344416,
+                "max": 53035752
+              },
+              "sampled_peak_rss_bytes": {
+                "n": 8,
+                "median": 103751680.0,
+                "min": 56803328,
+                "max": 115539968
+              },
+              "server_cpu_percent": {
+                "n": 8,
+                "median": 101.45294228702596,
+                "min": 95.18206011231345,
+                "max": 101.87297129810379
+              },
+              "foreign_persistent_cpu_percent": {
+                "n": 8,
+                "median": 17.937328829781926,
+                "min": 11.749870751457134,
+                "max": 50.12394113173592
+              }
+            },
+            {
+              "name": "echo",
+              "verified_requests": 12347758,
+              "rps": {
+                "n": 8,
+                "median": 193563.907,
+                "min": 188584.501,
+                "max": 194461.913
+              },
+              "p50_upper_us": {
+                "n": 8,
+                "median": 38.054628,
+                "min": 38.054628,
+                "max": 41.498866
+              },
+              "p95_upper_us": {
+                "n": 8,
+                "median": 64.0,
+                "min": 64.0,
+                "max": 69.792495
+              },
+              "p99_upper_us": {
+                "n": 8,
+                "median": 82.997731,
+                "min": 82.997731,
+                "max": 90.509668
+              },
+              "end_physical_bytes": {
+                "n": 8,
+                "median": 35734200.0,
+                "min": 33882856,
+                "max": 50463464
+              },
+              "sampled_peak_rss_bytes": {
+                "n": 8,
+                "median": 88244224.0,
+                "min": 66371584,
+                "max": 110559232
+              },
+              "server_cpu_percent": {
+                "n": 8,
+                "median": 101.75529355031497,
+                "min": 101.5721192735863,
+                "max": 102.08171589896267
+              },
+              "foreign_persistent_cpu_percent": {
+                "n": 8,
+                "median": 16.87479104950297,
+                "min": 10.374881985690925,
+                "max": 44.24941369533036
+              }
+            },
+            {
+              "name": "user",
+              "verified_requests": 3374324,
+              "rps": {
+                "n": 8,
+                "median": 52655.881,
+                "min": 52500.43,
+                "max": 53053.975
+              },
+              "p50_upper_us": {
+                "n": 8,
+                "median": 152.218511,
+                "min": 152.218511,
+                "max": 152.218511
+              },
+              "p95_upper_us": {
+                "n": 8,
+                "median": 181.019336,
+                "min": 181.019336,
+                "max": 197.402986
+              },
+              "p99_upper_us": {
+                "n": 8,
+                "median": 430.538965,
+                "min": 430.538965,
+                "max": 430.538965
+              },
+              "end_physical_bytes": {
+                "n": 8,
+                "median": 51405544.0,
+                "min": 46531280,
+                "max": 53920488
+              },
+              "sampled_peak_rss_bytes": {
+                "n": 8,
+                "median": 107683840.0,
+                "min": 95174656,
+                "max": 112787456
+              },
+              "server_cpu_percent": {
+                "n": 8,
+                "median": 104.96392063810852,
+                "min": 104.60198132014928,
+                "max": 105.07045293952135
+              },
+              "foreign_persistent_cpu_percent": {
+                "n": 8,
+                "median": 20.124703824812805,
+                "min": 16.37464999185455,
+                "max": 27.624437151995053
+              }
+            },
+            {
+              "name": "me",
+              "verified_requests": 2677760,
+              "rps": {
+                "n": 8,
+                "median": 41864.255999999994,
+                "min": 41597.262,
+                "max": 42045.994
+              },
+              "p50_upper_us": {
+                "n": 8,
+                "median": 181.019336,
+                "min": 181.019336,
+                "max": 181.019336
+              },
+              "p95_upper_us": {
+                "n": 8,
+                "median": 256.0,
+                "min": 256.0,
+                "max": 256.0
+              },
+              "p99_upper_us": {
+                "n": 8,
+                "median": 512.0,
+                "min": 512.0,
+                "max": 558.339959
+              },
+              "end_physical_bytes": {
+                "n": 8,
+                "median": 49595112.0,
+                "min": 45023976,
+                "max": 52691688
+              },
+              "sampled_peak_rss_bytes": {
+                "n": 8,
+                "median": 106266624.0,
+                "min": 97009664,
+                "max": 114688000
+              },
+              "server_cpu_percent": {
+                "n": 8,
+                "median": 128.85909579847754,
+                "min": 128.68943183727706,
+                "max": 129.15683441091815
+              },
+              "foreign_persistent_cpu_percent": {
+                "n": 8,
+                "median": 16.687156889855046,
+                "min": 11.124762208244354,
+                "max": 22.749439794999102
+              }
+            }
+          ],
+          "lifetime_peak_physical_bytes": {
+            "n": 8,
+            "median": 64037584.0,
+            "min": 62145256,
+            "max": 66011856
+          }
+        },
+        {
+          "variant": "api-wired-native",
+          "startup_ms": {
+            "n": 8,
+            "median": 13.136853987816721,
+            "min": 11.614374991040677,
+            "max": 16.333542007487267
+          },
+          "ready_physical_bytes": {
+            "n": 8,
+            "median": 8569624.0,
+            "min": 8504016,
+            "max": 8700696
+          },
+          "routes": [
+            {
+              "name": "health",
+              "verified_requests": 14482079,
+              "rps": {
+                "n": 8,
+                "median": 226906.77899999998,
+                "min": 219909.953,
+                "max": 228451.698
+              },
+              "p50_upper_us": {
+                "n": 8,
+                "median": 38.054628,
+                "min": 38.054628,
+                "max": 38.054628
+              },
+              "p95_upper_us": {
+                "n": 8,
+                "median": 53.817371,
+                "min": 53.817371,
+                "max": 53.817371
+              },
+              "p99_upper_us": {
+                "n": 8,
+                "median": 69.792495,
+                "min": 64.0,
+                "max": 82.997731
+              },
+              "end_physical_bytes": {
+                "n": 8,
+                "median": 23421732.0,
+                "min": 15958808,
+                "max": 24937240
+              },
+              "sampled_peak_rss_bytes": {
+                "n": 8,
+                "median": 49831936.0,
+                "min": 37715968,
+                "max": 55820288
+              },
+              "server_cpu_percent": {
+                "n": 8,
+                "median": 99.65219716408633,
+                "min": 98.05927906045261,
+                "max": 99.76909446769214
+              },
+              "foreign_persistent_cpu_percent": {
+                "n": 8,
+                "median": 17.31232329867083,
+                "min": 11.374889094830797,
+                "max": 40.99959512904968
+              }
+            },
+            {
+              "name": "echo",
+              "verified_requests": 10221443,
+              "rps": {
+                "n": 8,
+                "median": 159907.131,
+                "min": 157260.099,
+                "max": 161158.865
+              },
+              "p50_upper_us": {
+                "n": 8,
+                "median": 41.498866,
+                "min": 41.498866,
+                "max": 41.498866
+              },
+              "p95_upper_us": {
+                "n": 8,
+                "median": 82.997731,
+                "min": 82.997731,
+                "max": 82.997731
+              },
+              "p99_upper_us": {
+                "n": 8,
+                "median": 98.701493,
+                "min": 98.701493,
+                "max": 128.0
+              },
+              "end_physical_bytes": {
+                "n": 8,
+                "median": 20636464.0,
+                "min": 16941800,
+                "max": 24822552
+              },
+              "sampled_peak_rss_bytes": {
+                "n": 8,
+                "median": 47218688.0,
+                "min": 40386560,
+                "max": 56901632
+              },
+              "server_cpu_percent": {
+                "n": 8,
+                "median": 99.7622832469483,
+                "min": 99.4460797744957,
+                "max": 100.0352293219958
+              },
+              "foreign_persistent_cpu_percent": {
+                "n": 8,
+                "median": 19.062214223179396,
+                "min": 10.124902547861547,
+                "max": 103.99862201820207
+              }
+            },
+            {
+              "name": "user",
+              "verified_requests": 2646641,
+              "rps": {
+                "n": 8,
+                "median": 41415.5595,
+                "min": 40547.272,
+                "max": 41774.894
+              },
+              "p50_upper_us": {
+                "n": 8,
+                "median": 197.402986,
+                "min": 197.402986,
+                "max": 197.402986
+              },
+              "p95_upper_us": {
+                "n": 8,
+                "median": 256.0,
+                "min": 256.0,
+                "max": 256.0
+              },
+              "p99_upper_us": {
+                "n": 8,
+                "median": 291.80350050000004,
+                "min": 279.16998,
+                "max": 430.538965
+              },
+              "end_physical_bytes": {
+                "n": 8,
+                "median": 22250264.0,
+                "min": 20808448,
+                "max": 23610160
+              },
+              "sampled_peak_rss_bytes": {
+                "n": 8,
+                "median": 48529408.0,
+                "min": 41811968,
+                "max": 51396608
+              },
+              "server_cpu_percent": {
+                "n": 8,
+                "median": 99.7947685277222,
+                "min": 98.94782642535415,
+                "max": 99.85617374527816
+              },
+              "foreign_persistent_cpu_percent": {
+                "n": 8,
+                "median": 23.749456856397927,
+                "min": 13.749800627950446,
+                "max": 30.749469571659404
+              }
+            },
+            {
+              "name": "me",
+              "verified_requests": 2249100,
+              "rps": {
+                "n": 8,
+                "median": 35141.1415,
+                "min": 34948.802,
+                "max": 35352.295
+              },
+              "p50_upper_us": {
+                "n": 8,
+                "median": 215.269482,
+                "min": 215.269482,
+                "max": 215.269482
+              },
+              "p95_upper_us": {
+                "n": 8,
+                "median": 331.990926,
+                "min": 331.990926,
+                "max": 331.990926
+              },
+              "p99_upper_us": {
+                "n": 8,
+                "median": 394.805971,
+                "min": 394.805971,
+                "max": 394.805971
+              },
+              "end_physical_bytes": {
+                "n": 8,
+                "median": 21938980.0,
+                "min": 21562136,
+                "max": 24068936
+              },
+              "sampled_peak_rss_bytes": {
+                "n": 8,
+                "median": 46137344.0,
+                "min": 42713088,
+                "max": 52379648
+              },
+              "server_cpu_percent": {
+                "n": 8,
+                "median": 121.47039164787881,
+                "min": 121.13312069767362,
+                "max": 121.76791011493253
+              },
+              "foreign_persistent_cpu_percent": {
+                "n": 8,
+                "median": 18.81204810473607,
+                "min": 13.874665273722389,
+                "max": 39.998870031873665
+              }
+            }
+          ],
+          "lifetime_peak_physical_bytes": {
+            "n": 8,
+            "median": 25649956.0,
+            "min": 23970632,
+            "max": 28738328
+          }
+        },
+        {
+          "variant": "api-plugin-jit",
+          "startup_ms": {
+            "n": 8,
+            "median": 31.201562494970858,
+            "min": 30.412708991207182,
+            "max": 35.34562501590699
+          },
+          "ready_physical_bytes": {
+            "n": 8,
+            "median": 17416852.0,
+            "min": 17302152,
+            "max": 17547912
+          },
+          "routes": [
+            {
+              "name": "health",
+              "verified_requests": 14594389,
+              "rps": {
+                "n": 8,
+                "median": 228362.50400000002,
+                "min": 225740.335,
+                "max": 229492.791
+              },
+              "p50_upper_us": {
+                "n": 8,
+                "median": 38.054628,
+                "min": 38.054628,
+                "max": 38.054628
+              },
+              "p95_upper_us": {
+                "n": 8,
+                "median": 53.817371,
+                "min": 53.817371,
+                "max": 53.817371
+              },
+              "p99_upper_us": {
+                "n": 8,
+                "median": 69.792495,
+                "min": 64.0,
+                "max": 69.792495
+              },
+              "end_physical_bytes": {
+                "n": 8,
+                "median": 45286120.0,
+                "min": 27378312,
+                "max": 46039760
+              },
+              "sampled_peak_rss_bytes": {
+                "n": 8,
+                "median": 95633408.0,
+                "min": 53919744,
+                "max": 104038400
+              },
+              "server_cpu_percent": {
+                "n": 8,
+                "median": 101.78288183317372,
+                "min": 101.29869111889158,
+                "max": 102.11502078875824
+              },
+              "foreign_persistent_cpu_percent": {
+                "n": 8,
+                "median": 15.4373523998463,
+                "min": 13.99986525131956,
+                "max": 42.62445653821709
+              }
+            },
+            {
+              "name": "echo",
+              "verified_requests": 12281098,
+              "rps": {
+                "n": 8,
+                "median": 191925.5615,
+                "min": 190601.082,
+                "max": 193332.337
+              },
+              "p50_upper_us": {
+                "n": 8,
+                "median": 41.498866,
+                "min": 38.054628,
+                "max": 41.498866
+              },
+              "p95_upper_us": {
+                "n": 8,
+                "median": 69.792495,
+                "min": 64.0,
+                "max": 69.792495
+              },
+              "p99_upper_us": {
+                "n": 8,
+                "median": 82.997731,
+                "min": 82.997731,
+                "max": 90.509668
+              },
+              "end_physical_bytes": {
+                "n": 8,
+                "median": 38724292.0,
+                "min": 30769848,
+                "max": 46285520
+              },
+              "sampled_peak_rss_bytes": {
+                "n": 8,
+                "median": 81289216.0,
+                "min": 62013440,
+                "max": 99139584
+              },
+              "server_cpu_percent": {
+                "n": 8,
+                "median": 102.05726094564562,
+                "min": 101.86738482906159,
+                "max": 102.26940397063471
+              },
+              "foreign_persistent_cpu_percent": {
+                "n": 8,
+                "median": 17.43730439279445,
+                "min": 12.624883219844538,
+                "max": 36.124629722555255
+              }
+            },
+            {
+              "name": "user",
+              "verified_requests": 3368892,
+              "rps": {
+                "n": 8,
+                "median": 52703.0155,
+                "min": 51367.755,
+                "max": 53214.599
+              },
+              "p50_upper_us": {
+                "n": 8,
+                "median": 152.218511,
+                "min": 152.218511,
+                "max": 152.218511
+              },
+              "p95_upper_us": {
+                "n": 8,
+                "median": 181.019336,
+                "min": 181.019336,
+                "max": 197.402986
+              },
+              "p99_upper_us": {
+                "n": 8,
+                "median": 430.538965,
+                "min": 430.538965,
+                "max": 430.538965
+              },
+              "end_physical_bytes": {
+                "n": 8,
+                "median": 45343452.0,
+                "min": 42222264,
+                "max": 47186640
+              },
+              "sampled_peak_rss_bytes": {
+                "n": 8,
+                "median": 98328576.0,
+                "min": 88670208,
+                "max": 99041280
+              },
+              "server_cpu_percent": {
+                "n": 8,
+                "median": 105.57921757500833,
+                "min": 105.17919052673736,
+                "max": 105.91077947066691
+              },
+              "foreign_persistent_cpu_percent": {
+                "n": 8,
+                "median": 20.624606062362012,
+                "min": 16.874713129936875,
+                "max": 32.874420588390045
+              }
+            },
+            {
+              "name": "me",
+              "verified_requests": 2662095,
+              "rps": {
+                "n": 8,
+                "median": 41696.968,
+                "min": 40731.395,
+                "max": 42109.816
+              },
+              "p50_upper_us": {
+                "n": 8,
+                "median": 181.019336,
+                "min": 181.019336,
+                "max": 197.402986
+              },
+              "p95_upper_us": {
+                "n": 8,
+                "median": 256.0,
+                "min": 256.0,
+                "max": 279.16998
+              },
+              "p99_upper_us": {
+                "n": 8,
+                "median": 512.0,
+                "min": 512.0,
+                "max": 558.339959
+              },
+              "end_physical_bytes": {
+                "n": 8,
+                "median": 44876520.0,
+                "min": 43188944,
+                "max": 45712104
+              },
+              "sampled_peak_rss_bytes": {
+                "n": 8,
+                "median": 96804864.0,
+                "min": 91668480,
+                "max": 101728256
+              },
+              "server_cpu_percent": {
+                "n": 8,
+                "median": 129.50081578990097,
+                "min": 129.17609245265888,
+                "max": 129.72328098762196
+              },
+              "foreign_persistent_cpu_percent": {
+                "n": 8,
+                "median": 17.4370633234618,
+                "min": 14.3747664100144,
+                "max": 29.499199834187284
+              }
+            }
+          ],
+          "lifetime_peak_physical_bytes": {
+            "n": 8,
+            "median": 58884828.0,
+            "min": 56722080,
+            "max": 61964984
+          }
+        },
+        {
+          "variant": "api-plugin-native",
+          "startup_ms": {
+            "n": 8,
+            "median": 15.815354010555893,
+            "min": 11.752834019716829,
+            "max": 16.13599999109283
+          },
+          "ready_physical_bytes": {
+            "n": 8,
+            "median": 8987392.0,
+            "min": 8946408,
+            "max": 9061144
+          },
+          "routes": [
+            {
+              "name": "health",
+              "verified_requests": 14581472,
+              "rps": {
+                "n": 8,
+                "median": 228105.62699999998,
+                "min": 226025.711,
+                "max": 229304.785
+              },
+              "p50_upper_us": {
+                "n": 8,
+                "median": 38.054628,
+                "min": 38.054628,
+                "max": 38.054628
+              },
+              "p95_upper_us": {
+                "n": 8,
+                "median": 53.817371,
+                "min": 53.817371,
+                "max": 53.817371
+              },
+              "p99_upper_us": {
+                "n": 8,
+                "median": 64.0,
+                "min": 64.0,
+                "max": 69.792495
+              },
+              "end_physical_bytes": {
+                "n": 8,
+                "median": 24003388.0,
+                "min": 16204568,
+                "max": 25412400
+              },
+              "sampled_peak_rss_bytes": {
+                "n": 8,
+                "median": 51748864.0,
+                "min": 36962304,
+                "max": 54099968
+              },
+              "server_cpu_percent": {
+                "n": 8,
+                "median": 99.72034821076883,
+                "min": 99.5703283087592,
+                "max": 99.87605618439086
+              },
+              "foreign_persistent_cpu_percent": {
+                "n": 8,
+                "median": 14.249883469715364,
+                "min": 10.749884438775508,
+                "max": 16.624831673604888
+              }
+            },
+            {
+              "name": "echo",
+              "verified_requests": 11991320,
+              "rps": {
+                "n": 8,
+                "median": 187412.4575,
+                "min": 185438.752,
+                "max": 188418.609
+              },
+              "p50_upper_us": {
+                "n": 8,
+                "median": 41.498866,
+                "min": 38.054628,
+                "max": 41.498866
+              },
+              "p95_upper_us": {
+                "n": 8,
+                "median": 69.792495,
+                "min": 69.792495,
+                "max": 69.792495
+              },
+              "p99_upper_us": {
+                "n": 8,
+                "median": 82.997731,
+                "min": 82.997731,
+                "max": 90.509668
+              },
+              "end_physical_bytes": {
+                "n": 8,
+                "median": 20677412.0,
+                "min": 17416984,
+                "max": 25363248
+              },
+              "sampled_peak_rss_bytes": {
+                "n": 8,
+                "median": 46964736.0,
+                "min": 39763968,
+                "max": 57147392
+              },
+              "server_cpu_percent": {
+                "n": 8,
+                "median": 99.82621307461169,
+                "min": 99.76799994666715,
+                "max": 99.95864891303749
+              },
+              "foreign_persistent_cpu_percent": {
+                "n": 8,
+                "median": 17.562340392121136,
+                "min": 10.999879001331312,
+                "max": 20.749784720940376
+              }
+            },
+            {
+              "name": "user",
+              "verified_requests": 2708755,
+              "rps": {
+                "n": 8,
+                "median": 42462.228,
+                "min": 41549.81,
+                "max": 42761.975
+              },
+              "p50_upper_us": {
+                "n": 8,
+                "median": 197.402986,
+                "min": 197.402986,
+                "max": 197.402986
+              },
+              "p95_upper_us": {
+                "n": 8,
+                "median": 256.0,
+                "min": 234.753035,
+                "max": 256.0
+              },
+              "p99_upper_us": {
+                "n": 8,
+                "median": 279.16998,
+                "min": 279.16998,
+                "max": 394.805971
+              },
+              "end_physical_bytes": {
+                "n": 8,
+                "median": 22922008.0,
+                "min": 20693784,
+                "max": 24462152
+              },
+              "sampled_peak_rss_bytes": {
+                "n": 8,
+                "median": 47906816.0,
+                "min": 41041920,
+                "max": 57278464
+              },
+              "server_cpu_percent": {
+                "n": 8,
+                "median": 99.83229616623467,
+                "min": 99.03857147220153,
+                "max": 99.9082252798657
+              },
+              "foreign_persistent_cpu_percent": {
+                "n": 8,
+                "median": 22.624413266194892,
+                "min": 12.62471752199121,
+                "max": 231.7451043846621
+              }
+            },
+            {
+              "name": "me",
+              "verified_requests": 2345017,
+              "rps": {
+                "n": 8,
+                "median": 36741.15700000001,
+                "min": 35547.78,
+                "max": 36993.344
+              },
+              "p50_upper_us": {
+                "n": 8,
+                "median": 215.269482,
+                "min": 215.269482,
+                "max": 215.269482
+              },
+              "p95_upper_us": {
+                "n": 8,
+                "median": 331.990926,
+                "min": 331.990926,
+                "max": 331.990926
+              },
+              "p99_upper_us": {
+                "n": 8,
+                "median": 362.038672,
+                "min": 362.038672,
+                "max": 512.0
+              },
+              "end_physical_bytes": {
+                "n": 8,
+                "median": 22520636.0,
+                "min": 21627696,
+                "max": 24396592
+              },
+              "sampled_peak_rss_bytes": {
+                "n": 8,
+                "median": 45580288.0,
+                "min": 41091072,
+                "max": 52002816
+              },
+              "server_cpu_percent": {
+                "n": 8,
+                "median": 122.2955341420036,
+                "min": 121.61878774038159,
+                "max": 122.52951659261997
+              },
+              "foreign_persistent_cpu_percent": {
+                "n": 8,
+                "median": 18.749659373362825,
+                "min": 9.87473091357205,
+                "max": 76.6232855540976
+              }
+            }
+          ],
+          "lifetime_peak_physical_bytes": {
+            "n": 8,
+            "median": 25797412.0,
+            "min": 24134448,
+            "max": 27755336
+          }
+        }
+      ]
+    },
+    "bytecode-startup": {
+      "source_sha256": "1863059d315bdf95890d31616c2e2556a919cc55adaf5ca1a31c8e6a14312fd7",
+      "observations": 72,
+      "groups": [
+        {
+          "variant": "api-wired-jit",
+          "startup_ms": {
+            "n": 24,
+            "median": 29.20333296060562,
+            "min": 28.814291988965124,
+            "max": 31.003166979644448
+          },
+          "ready_physical_bytes": {
+            "n": 24,
+            "median": 18268808.0,
+            "min": 18121352,
+            "max": 18367136
+          },
+          "routes": []
+        },
+        {
+          "variant": "api-wired-bytecode",
+          "startup_ms": {
+            "n": 24,
+            "median": 14.787604013690725,
+            "min": 14.080833992920816,
+            "max": 15.129749954212457
+          },
+          "ready_physical_bytes": {
+            "n": 24,
+            "median": 14631584.0,
+            "min": 14500440,
+            "max": 14844576
+          },
+          "routes": []
+        },
+        {
+          "variant": "api-wired-native",
+          "startup_ms": {
+            "n": 24,
+            "median": 11.322833539452404,
+            "min": 10.677458019927144,
+            "max": 11.525249981787056
+          },
+          "ready_physical_bytes": {
+            "n": 24,
+            "median": 8536820.0,
+            "min": 8504040,
+            "max": 8618776
+          },
+          "routes": []
+        }
+      ]
+    },
+    "bytecode-load": {
+      "source_sha256": "96e3c9e62d9cb063ce60046cea7692b89dc39e12d629ceeafa9015dab3e9c0e9",
+      "observations": 18,
+      "groups": [
+        {
+          "variant": "api-wired-jit",
+          "startup_ms": {
+            "n": 6,
+            "median": 51.50289600715041,
+            "min": 29.851707979105413,
+            "max": 69.30262502282858
+          },
+          "ready_physical_bytes": {
+            "n": 6,
+            "median": 18244268.0,
+            "min": 17941128,
+            "max": 18350752
+          },
+          "routes": [
+            {
+              "name": "echo",
+              "verified_requests": 5684202,
+              "rps": {
+                "n": 6,
+                "median": 188910.5345,
+                "min": 187495.913,
+                "max": 192453.937
+              },
+              "p50_upper_us": {
+                "n": 6,
+                "median": 41.498866,
+                "min": 38.054628,
+                "max": 41.498866
+              },
+              "p95_upper_us": {
+                "n": 6,
+                "median": 69.792495,
+                "min": 64.0,
+                "max": 69.792495
+              },
+              "p99_upper_us": {
+                "n": 6,
+                "median": 82.997731,
+                "min": 82.997731,
+                "max": 98.701493
+              },
+              "end_physical_bytes": {
+                "n": 6,
+                "median": 41411244.0,
+                "min": 34538168,
+                "max": 49464064
+              },
+              "sampled_peak_rss_bytes": {
+                "n": 6,
+                "median": 82468864.0,
+                "min": 65617920,
+                "max": 104595456
+              },
+              "server_cpu_percent": {
+                "n": 6,
+                "median": 101.72350587467568,
+                "min": 100.87232656617088,
+                "max": 101.86360364587334
+              },
+              "foreign_persistent_cpu_percent": {
+                "n": 6,
+                "median": 21.099691164637704,
+                "min": 11.199814083045476,
+                "max": 154.19762535657583
+              }
+            },
+            {
+              "name": "me",
+              "verified_requests": 1237150,
+              "rps": {
+                "n": 6,
+                "median": 41299.0795,
+                "min": 39817.337,
+                "max": 42142.154
+              },
+              "p50_upper_us": {
+                "n": 6,
+                "median": 189.211161,
+                "min": 181.019336,
+                "max": 197.402986
+              },
+              "p95_upper_us": {
+                "n": 6,
+                "median": 256.0,
+                "min": 256.0,
+                "max": 304.437021
+              },
+              "p99_upper_us": {
+                "n": 6,
+                "median": 512.0,
+                "min": 512.0,
+                "max": 608.874043
+              },
+              "end_physical_bytes": {
+                "n": 6,
+                "median": 50545384.0,
+                "min": 46056192,
+                "max": 53592808
+              },
+              "sampled_peak_rss_bytes": {
+                "n": 6,
+                "median": 102252544.0,
+                "min": 93224960,
+                "max": 111607808
+              },
+              "server_cpu_percent": {
+                "n": 6,
+                "median": 128.46264386303275,
+                "min": 126.11725271257306,
+                "max": 128.83427689740907
+              },
+              "foreign_persistent_cpu_percent": {
+                "n": 6,
+                "median": 25.09878172953514,
+                "min": 10.999518221128653,
+                "max": 142.58753784926307
+              }
+            }
+          ],
+          "lifetime_peak_physical_bytes": {
+            "n": 6,
+            "median": 65348328.0,
+            "min": 59703992,
+            "max": 70042344
+          }
+        },
+        {
+          "variant": "api-wired-bytecode",
+          "startup_ms": {
+            "n": 6,
+            "median": 16.3322500011418,
+            "min": 15.27583401184529,
+            "max": 101.3644160120748
+          },
+          "ready_physical_bytes": {
+            "n": 6,
+            "median": 14754428.0,
+            "min": 14418568,
+            "max": 15041112
+          },
+          "routes": [
+            {
+              "name": "echo",
+              "verified_requests": 5745711,
+              "rps": {
+                "n": 6,
+                "median": 191277.619,
+                "min": 189286.646,
+                "max": 194009.418
+              },
+              "p50_upper_us": {
+                "n": 6,
+                "median": 41.498866,
+                "min": 38.054628,
+                "max": 41.498866
+              },
+              "p95_upper_us": {
+                "n": 6,
+                "median": 69.792495,
+                "min": 64.0,
+                "max": 69.792495
+              },
+              "p99_upper_us": {
+                "n": 6,
+                "median": 82.997731,
+                "min": 82.997731,
+                "max": 90.509668
+              },
+              "end_physical_bytes": {
+                "n": 6,
+                "median": 38593232.0,
+                "min": 30704312,
+                "max": 46105320
+              },
+              "sampled_peak_rss_bytes": {
+                "n": 6,
+                "median": 79052800.0,
+                "min": 61587456,
+                "max": 99778560
+              },
+              "server_cpu_percent": {
+                "n": 6,
+                "median": 101.92729167388514,
+                "min": 101.6423029385471,
+                "max": 102.28162486297711
+              },
+              "foreign_persistent_cpu_percent": {
+                "n": 6,
+                "median": 19.099619447821333,
+                "min": 8.399870642007393,
+                "max": 161.99701925479647
+              }
+            },
+            {
+              "name": "me",
+              "verified_requests": 1240642,
+              "rps": {
+                "n": 6,
+                "median": 41392.998,
+                "min": 40800.327,
+                "max": 41937.234
+              },
+              "p50_upper_us": {
+                "n": 6,
+                "median": 197.402986,
+                "min": 181.019336,
+                "max": 197.402986
+              },
+              "p95_upper_us": {
+                "n": 6,
+                "median": 256.0,
+                "min": 256.0,
+                "max": 279.16998
+              },
+              "p99_upper_us": {
+                "n": 6,
+                "median": 512.0,
+                "min": 512.0,
+                "max": 558.339959
+              },
+              "end_physical_bytes": {
+                "n": 6,
+                "median": 46973660.0,
+                "min": 43778792,
+                "max": 49169200
+              },
+              "sampled_peak_rss_bytes": {
+                "n": 6,
+                "median": 98369536.0,
+                "min": 90652672,
+                "max": 105824256
+              },
+              "server_cpu_percent": {
+                "n": 6,
+                "median": 128.2881907749043,
+                "min": 127.2405292621537,
+                "max": 129.0625766636001
+              },
+              "foreign_persistent_cpu_percent": {
+                "n": 6,
+                "median": 114.69609825304501,
+                "min": 8.999749806947724,
+                "max": 153.19427053431139
+              }
+            }
+          ],
+          "lifetime_peak_physical_bytes": {
+            "n": 6,
+            "median": 59867916.0,
+            "min": 57426616,
+            "max": 64586544
+          }
+        },
+        {
+          "variant": "api-wired-native",
+          "startup_ms": {
+            "n": 6,
+            "median": 36.66150048957206,
+            "min": 12.372583034448326,
+            "max": 61.66920898249373
+          },
+          "ready_physical_bytes": {
+            "n": 6,
+            "median": 8667904.0,
+            "min": 8553240,
+            "max": 8700648
+          },
+          "routes": [
+            {
+              "name": "echo",
+              "verified_requests": 4779234,
+              "rps": {
+                "n": 6,
+                "median": 159480.7625,
+                "min": 156145.746,
+                "max": 161867.681
+              },
+              "p50_upper_us": {
+                "n": 6,
+                "median": 41.498866,
+                "min": 41.498866,
+                "max": 41.498866
+              },
+              "p95_upper_us": {
+                "n": 6,
+                "median": 82.997731,
+                "min": 76.109255,
+                "max": 82.997731
+              },
+              "p99_upper_us": {
+                "n": 6,
+                "median": 98.701493,
+                "min": 98.701493,
+                "max": 107.634741
+              },
+              "end_physical_bytes": {
+                "n": 6,
+                "median": 20497176.0,
+                "min": 16696088,
+                "max": 23331608
+              },
+              "sampled_peak_rss_bytes": {
+                "n": 6,
+                "median": 44892160.0,
+                "min": 40370176,
+                "max": 49528832
+              },
+              "server_cpu_percent": {
+                "n": 6,
+                "median": 99.84427001103484,
+                "min": 99.57873375313876,
+                "max": 99.91554337269054
+              },
+              "foreign_persistent_cpu_percent": {
+                "n": 6,
+                "median": 15.49971260545989,
+                "min": 10.39978992429004,
+                "max": 132.39777571731645
+              }
+            },
+            {
+              "name": "me",
+              "verified_requests": 1058131,
+              "rps": {
+                "n": 6,
+                "median": 35379.735,
+                "min": 34621.042,
+                "max": 35681.601
+              },
+              "p50_upper_us": {
+                "n": 6,
+                "median": 215.269482,
+                "min": 215.269482,
+                "max": 215.269482
+              },
+              "p95_upper_us": {
+                "n": 6,
+                "median": 331.990926,
+                "min": 331.990926,
+                "max": 331.990926
+              },
+              "p99_upper_us": {
+                "n": 6,
+                "median": 394.805971,
+                "min": 394.805971,
+                "max": 430.538965
+              },
+              "end_physical_bytes": {
+                "n": 6,
+                "median": 21783344.0,
+                "min": 21594904,
+                "max": 23053128
+              },
+              "sampled_peak_rss_bytes": {
+                "n": 6,
+                "median": 45367296.0,
+                "min": 42663936,
+                "max": 48529408
+              },
+              "server_cpu_percent": {
+                "n": 6,
+                "median": 121.33313626836016,
+                "min": 120.52793124309405,
+                "max": 121.64215709802866
+              },
+              "foreign_persistent_cpu_percent": {
+                "n": 6,
+                "median": 30.99874311104405,
+                "min": 11.999462424203275,
+                "max": 130.79437584182256
+              }
+            }
+          ],
+          "lifetime_peak_physical_bytes": {
+            "n": 6,
+            "median": 24724260.0,
+            "min": 21775152,
+            "max": 26854192
+          }
+        }
+      ]
+    },
+    "driver-load": {
+      "source_sha256": "0723a6ee989a0863f3d327f9a1b206124c6692e1ad107a2f531f6f7122ce5cd4",
+      "observations": 16,
+      "groups": [
+        {
+          "variant": "api-wired-jit",
+          "startup_ms": {
+            "n": 4,
+            "median": 35.976207989733666,
+            "min": 30.853208038024604,
+            "max": 67.7056250278838
+          },
+          "ready_physical_bytes": {
+            "n": 4,
+            "median": 18252448.0,
+            "min": 18137760,
+            "max": 18285216
+          },
+          "routes": [
+            {
+              "name": "user",
+              "verified_requests": 1047501,
+              "rps": {
+                "n": 4,
+                "median": 52892.808999999994,
+                "min": 50732.246,
+                "max": 52977.105
+              },
+              "p50_upper_us": {
+                "n": 4,
+                "median": 152.218511,
+                "min": 152.218511,
+                "max": 152.218511
+              },
+              "p95_upper_us": {
+                "n": 4,
+                "median": 181.019336,
+                "min": 181.019336,
+                "max": 197.402986
+              },
+              "p99_upper_us": {
+                "n": 4,
+                "median": 430.538965,
+                "min": 394.805971,
+                "max": 430.538965
+              },
+              "end_physical_bytes": {
+                "n": 4,
+                "median": 47547100.0,
+                "min": 46777064,
+                "max": 48317184
+              },
+              "sampled_peak_rss_bytes": {
+                "n": 4,
+                "median": 97607680.0,
+                "min": 97091584,
+                "max": 99975168
+              },
+              "server_cpu_percent": {
+                "n": 4,
+                "median": 104.56088033721403,
+                "min": 103.15681231859509,
+                "max": 104.79751897939266
+              },
+              "foreign_persistent_cpu_percent": {
+                "n": 4,
+                "median": 28.099137226553047,
+                "min": 26.199491730018043,
+                "max": 190.39642054723828
+              }
+            },
+            {
+              "name": "me",
+              "verified_requests": 823392,
+              "rps": {
+                "n": 4,
+                "median": 41928.092000000004,
+                "min": 38558.075,
+                "max": 42259.096
+              },
+              "p50_upper_us": {
+                "n": 4,
+                "median": 181.019336,
+                "min": 181.019336,
+                "max": 197.402986
+              },
+              "p95_upper_us": {
+                "n": 4,
+                "median": 256.0,
+                "min": 256.0,
+                "max": 256.0
+              },
+              "p99_upper_us": {
+                "n": 4,
+                "median": 512.0,
+                "min": 512.0,
+                "max": 724.077344
+              },
+              "end_physical_bytes": {
+                "n": 4,
+                "median": 48014068.0,
+                "min": 47219432,
+                "max": 49349376
+              },
+              "sampled_peak_rss_bytes": {
+                "n": 4,
+                "median": 98877440.0,
+                "min": 93487104,
+                "max": 101548032
+              },
+              "server_cpu_percent": {
+                "n": 4,
+                "median": 128.76034993342535,
+                "min": 124.26683426264435,
+                "max": 129.07197068178507
+              },
+              "foreign_persistent_cpu_percent": {
+                "n": 4,
+                "median": 14.399547374317606,
+                "min": 11.799579934950094,
+                "max": 539.9870403110053
+              }
+            }
+          ],
+          "lifetime_peak_physical_bytes": {
+            "n": 4,
+            "median": 60719860.0,
+            "min": 58393320,
+            "max": 66781904
+          }
+        },
+        {
+          "variant": "api-wired-native",
+          "startup_ms": {
+            "n": 4,
+            "median": 15.174478990957141,
+            "min": 12.896790984086692,
+            "max": 16.44237502478063
+          },
+          "ready_physical_bytes": {
+            "n": 4,
+            "median": 8585960.0,
+            "min": 8536832,
+            "max": 8667904
+          },
+          "routes": [
+            {
+              "name": "user",
+              "verified_requests": 837802,
+              "rps": {
+                "n": 4,
+                "median": 41961.5015,
+                "min": 41520.237,
+                "max": 42112.191
+              },
+              "p50_upper_us": {
+                "n": 4,
+                "median": 197.402986,
+                "min": 197.402986,
+                "max": 197.402986
+              },
+              "p95_upper_us": {
+                "n": 4,
+                "median": 256.0,
+                "min": 234.753035,
+                "max": 256.0
+              },
+              "p99_upper_us": {
+                "n": 4,
+                "median": 279.16998,
+                "min": 279.16998,
+                "max": 279.16998
+              },
+              "end_physical_bytes": {
+                "n": 4,
+                "median": 21136152.0,
+                "min": 20660968,
+                "max": 21644080
+              },
+              "sampled_peak_rss_bytes": {
+                "n": 4,
+                "median": 42901504.0,
+                "min": 41582592,
+                "max": 44072960
+              },
+              "server_cpu_percent": {
+                "n": 4,
+                "median": 99.82168774188341,
+                "min": 99.76708771208435,
+                "max": 99.85681383168217
+              },
+              "foreign_persistent_cpu_percent": {
+                "n": 4,
+                "median": 24.199372578416984,
+                "min": 14.999427021908316,
+                "max": 125.99707686782867
+              }
+            },
+            {
+              "name": "me",
+              "verified_requests": 706734,
+              "rps": {
+                "n": 4,
+                "median": 35391.198,
+                "min": 35015.182,
+                "max": 35543.52
+              },
+              "p50_upper_us": {
+                "n": 4,
+                "median": 215.269482,
+                "min": 215.269482,
+                "max": 215.269482
+              },
+              "p95_upper_us": {
+                "n": 4,
+                "median": 331.990926,
+                "min": 331.990926,
+                "max": 331.990926
+              },
+              "p99_upper_us": {
+                "n": 4,
+                "median": 394.805971,
+                "min": 394.805971,
+                "max": 394.805971
+              },
+              "end_physical_bytes": {
+                "n": 4,
+                "median": 21717796.0,
+                "min": 21578496,
+                "max": 21938992
+              },
+              "sampled_peak_rss_bytes": {
+                "n": 4,
+                "median": 43294720.0,
+                "min": 42713088,
+                "max": 44171264
+              },
+              "server_cpu_percent": {
+                "n": 4,
+                "median": 121.5763298958702,
+                "min": 119.80534582635613,
+                "max": 121.83121657620323
+              },
+              "foreign_persistent_cpu_percent": {
+                "n": 4,
+                "median": 24.899238024092014,
+                "min": 13.399271079613442,
+                "max": 117.19458561017217
+              }
+            }
+          ],
+          "lifetime_peak_physical_bytes": {
+            "n": 4,
+            "median": 21832484.0,
+            "min": 21611264,
+            "max": 21955376
+          }
+        },
+        {
+          "variant": "api-wired-jit-postgresjs",
+          "startup_ms": {
+            "n": 4,
+            "median": 36.03554150322452,
+            "min": 33.134958997834474,
+            "max": 67.04787496710196
+          },
+          "ready_physical_bytes": {
+            "n": 4,
+            "median": 18940576.0,
+            "min": 18842272,
+            "max": 19055264
+          },
+          "routes": [
+            {
+              "name": "user",
+              "verified_requests": 726233,
+              "rps": {
+                "n": 4,
+                "median": 36682.822499999995,
+                "min": 34267.412,
+                "max": 37605.855
+              },
+              "p50_upper_us": {
+                "n": 4,
+                "median": 215.269482,
+                "min": 215.269482,
+                "max": 215.269482
+              },
+              "p95_upper_us": {
+                "n": 4,
+                "median": 291.80350050000004,
+                "min": 279.16998,
+                "max": 394.805971
+              },
+              "p99_upper_us": {
+                "n": 4,
+                "median": 636.4279475000001,
+                "min": 608.874043,
+                "max": 724.077344
+              },
+              "end_physical_bytes": {
+                "n": 4,
+                "median": 54067908.0,
+                "min": 53412608,
+                "max": 54870760
+              },
+              "sampled_peak_rss_bytes": {
+                "n": 4,
+                "median": 102268928.0,
+                "min": 97239040,
+                "max": 105758720
+              },
+              "server_cpu_percent": {
+                "n": 4,
+                "median": 102.70081207651711,
+                "min": 100.63642475403094,
+                "max": 102.93737223849324
+              },
+              "foreign_persistent_cpu_percent": {
+                "n": 4,
+                "median": 71.69686082186522,
+                "min": 12.999051069335746,
+                "max": 328.18647871702586
+              }
+            },
+            {
+              "name": "me",
+              "verified_requests": 595683,
+              "rps": {
+                "n": 4,
+                "median": 29753.9365,
+                "min": 29645.05,
+                "max": 29978.977
+              },
+              "p50_upper_us": {
+                "n": 4,
+                "median": 267.58499,
+                "min": 256.0,
+                "max": 279.16998
+              },
+              "p95_upper_us": {
+                "n": 4,
+                "median": 362.038672,
+                "min": 362.038672,
+                "max": 362.038672
+              },
+              "p99_upper_us": {
+                "n": 4,
+                "median": 724.077344,
+                "min": 663.981852,
+                "max": 724.077344
+              },
+              "end_physical_bytes": {
+                "n": 4,
+                "median": 53969640.0,
+                "min": 52806400,
+                "max": 55198416
+              },
+              "sampled_peak_rss_bytes": {
+                "n": 4,
+                "median": 101236736.0,
+                "min": 99942400,
+                "max": 104448000
+              },
+              "server_cpu_percent": {
+                "n": 4,
+                "median": 123.01294736230437,
+                "min": 122.72000572778465,
+                "max": 124.44989650086873
+              },
+              "foreign_persistent_cpu_percent": {
+                "n": 4,
+                "median": 108.09574904748567,
+                "min": 30.19882828545824,
+                "max": 160.3934880243318
+              }
+            }
+          ],
+          "lifetime_peak_physical_bytes": {
+            "n": 4,
+            "median": 67535580.0,
+            "min": 64586448,
+            "max": 68354792
+          }
+        },
+        {
+          "variant": "api-wired-native-postgresjs",
+          "startup_ms": {
+            "n": 4,
+            "median": 15.125645470106974,
+            "min": 12.603666982613504,
+            "max": 82.72395899984986
+          },
+          "ready_physical_bytes": {
+            "n": 4,
+            "median": 9044760.0,
+            "min": 9011944,
+            "max": 9159424
+          },
+          "routes": [
+            {
+              "name": "user",
+              "verified_requests": 641733,
+              "rps": {
+                "n": 4,
+                "median": 32081.411500000002,
+                "min": 31821.131,
+                "max": 32357.646
+              },
+              "p50_upper_us": {
+                "n": 4,
+                "median": 256.0,
+                "min": 256.0,
+                "max": 256.0
+              },
+              "p95_upper_us": {
+                "n": 4,
+                "median": 331.990926,
+                "min": 331.990926,
+                "max": 331.990926
+              },
+              "p99_upper_us": {
+                "n": 4,
+                "median": 430.538965,
+                "min": 430.538965,
+                "max": 430.538965
+              },
+              "end_physical_bytes": {
+                "n": 4,
+                "median": 24568588.0,
+                "min": 24003376,
+                "max": 24789808
+              },
+              "sampled_peak_rss_bytes": {
+                "n": 4,
+                "median": 47284224.0,
+                "min": 46350336,
+                "max": 48267264
+              },
+              "server_cpu_percent": {
+                "n": 4,
+                "median": 98.69155683270586,
+                "min": 98.46767471869691,
+                "max": 98.91982706513441
+              },
+              "foreign_persistent_cpu_percent": {
+                "n": 4,
+                "median": 108.29628640871992,
+                "min": 16.99907864997117,
+                "max": 291.79019584952397
+              }
+            },
+            {
+              "name": "me",
+              "verified_requests": 547806,
+              "rps": {
+                "n": 4,
+                "median": 27399.641499999998,
+                "min": 27206.908,
+                "max": 27550.351
+              },
+              "p50_upper_us": {
+                "n": 4,
+                "median": 304.437021,
+                "min": 304.437021,
+                "max": 304.437021
+              },
+              "p95_upper_us": {
+                "n": 4,
+                "median": 394.805971,
+                "min": 394.805971,
+                "max": 394.805971
+              },
+              "p99_upper_us": {
+                "n": 4,
+                "median": 512.0,
+                "min": 469.50607,
+                "max": 512.0
+              },
+              "end_physical_bytes": {
+                "n": 4,
+                "median": 24904484.0,
+                "min": 24625992,
+                "max": 25248536
+              },
+              "sampled_peak_rss_bytes": {
+                "n": 4,
+                "median": 47570944.0,
+                "min": 47054848,
+                "max": 48250880
+              },
+              "server_cpu_percent": {
+                "n": 4,
+                "median": 117.70672090740862,
+                "min": 117.48158046886732,
+                "max": 121.0183797638104
+              },
+              "foreign_persistent_cpu_percent": {
+                "n": 4,
+                "median": 65.1967686434821,
+                "min": 17.59908484750046,
+                "max": 265.1913017252824
+              }
+            }
+          ],
+          "lifetime_peak_physical_bytes": {
+            "n": 4,
+            "median": 25150232.0,
+            "min": 24625992,
+            "max": 25264944
+          }
+        }
+      ]
+    },
+    "framework-soak": {
+      "source_sha256": "a60ef46175094ed195d4163c96f2d2d15e3db9bb8ca743a3a6df8d644d22ef53",
+      "observations": 4,
+      "groups": [
+        {
+          "variant": "elysia-jit",
+          "startup_ms": {
+            "n": 2,
+            "median": 19.09891699324362,
+            "min": 18.655541993211955,
+            "max": 19.542291993275285
+          },
+          "ready_physical_bytes": {
+            "n": 2,
+            "median": 11666056.0,
+            "min": 11387528,
+            "max": 11944584
+          },
+          "routes": [
+            {
+              "name": "json",
+              "verified_requests": 23914662,
+              "rps": {
+                "n": 2,
+                "median": 199288.571,
+                "min": 198725.902,
+                "max": 199851.24
+              },
+              "p50_upper_us": {
+                "n": 2,
+                "median": 38.054628,
+                "min": 38.054628,
+                "max": 38.054628
+              },
+              "p95_upper_us": {
+                "n": 2,
+                "median": 64.0,
+                "min": 64.0,
+                "max": 64.0
+              },
+              "p99_upper_us": {
+                "n": 2,
+                "median": 76.109255,
+                "min": 76.109255,
+                "max": 76.109255
+              },
+              "end_physical_bytes": {
+                "n": 2,
+                "median": 22799008.0,
+                "min": 22332064,
+                "max": 23265952
+              },
+              "sampled_peak_rss_bytes": {
+                "n": 2,
+                "median": 48029696.0,
+                "min": 47988736,
+                "max": 48070656
+              },
+              "server_cpu_percent": {
+                "n": 2,
+                "median": 101.38784969014017,
+                "min": 101.37599675544931,
+                "max": 101.39970262483102
+              },
+              "foreign_persistent_cpu_percent": {
+                "n": 2,
+                "median": 23.56663292504471,
+                "min": 16.08331242501996,
+                "max": 31.04995342506946
+              }
+            }
+          ],
+          "lifetime_peak_physical_bytes": {
+            "n": 2,
+            "median": 28435104.0,
+            "min": 28344992,
+            "max": 28525216
+          }
+        },
+        {
+          "variant": "elysia-native",
+          "startup_ms": {
+            "n": 2,
+            "median": 28.872416500234976,
+            "min": 11.344083002768457,
+            "max": 46.400749997701496
+          },
+          "ready_physical_bytes": {
+            "n": 2,
+            "median": 7701236.0,
+            "min": 7684840,
+            "max": 7717632
+          },
+          "routes": [
+            {
+              "name": "json",
+              "verified_requests": 22952956,
+              "rps": {
+                "n": 2,
+                "median": 191274.3495,
+                "min": 191199.306,
+                "max": 191349.393
+              },
+              "p50_upper_us": {
+                "n": 2,
+                "median": 41.498866,
+                "min": 41.498866,
+                "max": 41.498866
+              },
+              "p95_upper_us": {
+                "n": 2,
+                "median": 69.792495,
+                "min": 69.792495,
+                "max": 69.792495
+              },
+              "p99_upper_us": {
+                "n": 2,
+                "median": 82.997731,
+                "min": 82.997731,
+                "max": 82.997731
+              },
+              "end_physical_bytes": {
+                "n": 2,
+                "median": 15426292.0,
+                "min": 15287016,
+                "max": 15565568
+              },
+              "sampled_peak_rss_bytes": {
+                "n": 2,
+                "median": 35086336.0,
+                "min": 34848768,
+                "max": 35323904
+              },
+              "server_cpu_percent": {
+                "n": 2,
+                "median": 99.77512929200361,
+                "min": 99.77176736004172,
+                "max": 99.7784912239655
+              },
+              "foreign_persistent_cpu_percent": {
+                "n": 2,
+                "median": 17.341640976288943,
+                "min": 16.349975202541653,
+                "max": 18.33330675003623
+              }
+            }
+          ],
+          "lifetime_peak_physical_bytes": {
+            "n": 2,
+            "median": 19538676.0,
+            "min": 19514088,
+            "max": 19563264
+          }
+        }
+      ]
+    },
+    "api-soak": {
+      "source_sha256": "6e308bacaca30b2e5a18748b967160c0f2e5250d0fbb0c196357282476d7bd20",
+      "observations": 4,
+      "groups": [
+        {
+          "variant": "api-wired-jit",
+          "startup_ms": {
+            "n": 2,
+            "median": 34.27395800827071,
+            "min": 31.207791005726904,
+            "max": 37.34012501081452
+          },
+          "ready_physical_bytes": {
+            "n": 2,
+            "median": 18309780.0,
+            "min": 18301576,
+            "max": 18317984
+          },
+          "routes": [
+            {
+              "name": "me",
+              "verified_requests": 4980269,
+              "rps": {
+                "n": 2,
+                "median": 41502.121499999994,
+                "min": 41206.35,
+                "max": 41797.893
+              },
+              "p50_upper_us": {
+                "n": 2,
+                "median": 181.019336,
+                "min": 181.019336,
+                "max": 181.019336
+              },
+              "p95_upper_us": {
+                "n": 2,
+                "median": 256.0,
+                "min": 256.0,
+                "max": 256.0
+              },
+              "p99_upper_us": {
+                "n": 2,
+                "median": 535.1699795,
+                "min": 512.0,
+                "max": 558.339959
+              },
+              "end_physical_bytes": {
+                "n": 2,
+                "median": 47579892.0,
+                "min": 46646016,
+                "max": 48513768
+              },
+              "sampled_peak_rss_bytes": {
+                "n": 2,
+                "median": 100704256.0,
+                "min": 99549184,
+                "max": 101859328
+              },
+              "server_cpu_percent": {
+                "n": 2,
+                "median": 129.56954728153636,
+                "min": 129.36198251084255,
+                "max": 129.77711205223017
+              },
+              "foreign_persistent_cpu_percent": {
+                "n": 2,
+                "median": 21.241606988500884,
+                "min": 17.43327493185729,
+                "max": 25.04993904514448
+              }
+            }
+          ],
+          "lifetime_peak_physical_bytes": {
+            "n": 2,
+            "median": 61375208.0,
+            "min": 60867280,
+            "max": 61883136
+          }
+        },
+        {
+          "variant": "api-wired-native",
+          "startup_ms": {
+            "n": 2,
+            "median": 35.70810402743518,
+            "min": 12.844917015172541,
+            "max": 58.571291039697826
+          },
+          "ready_physical_bytes": {
+            "n": 2,
+            "median": 8643340.0,
+            "min": 8553216,
+            "max": 8733464
+          },
+          "routes": [
+            {
+              "name": "me",
+              "verified_requests": 4223726,
+              "rps": {
+                "n": 2,
+                "median": 35197.5875,
+                "min": 35172.273,
+                "max": 35222.902
+              },
+              "p50_upper_us": {
+                "n": 2,
+                "median": 215.269482,
+                "min": 215.269482,
+                "max": 215.269482
+              },
+              "p95_upper_us": {
+                "n": 2,
+                "median": 331.990926,
+                "min": 331.990926,
+                "max": 331.990926
+              },
+              "p99_upper_us": {
+                "n": 2,
+                "median": 394.805971,
+                "min": 394.805971,
+                "max": 394.805971
+              },
+              "end_physical_bytes": {
+                "n": 2,
+                "median": 21979952.0,
+                "min": 21922608,
+                "max": 22037296
+              },
+              "sampled_peak_rss_bytes": {
+                "n": 2,
+                "median": 43130880.0,
+                "min": 42991616,
+                "max": 43270144
+              },
+              "server_cpu_percent": {
+                "n": 2,
+                "median": 121.40713161652951,
+                "min": 121.40032372601904,
+                "max": 121.41393950703998
+              },
+              "foreign_persistent_cpu_percent": {
+                "n": 2,
+                "median": 17.908267865099198,
+                "min": 17.116603049953884,
+                "max": 18.699932680244512
+              }
+            }
+          ],
+          "lifetime_peak_physical_bytes": {
+            "n": 2,
+            "median": 21996336.0,
+            "min": 21955376,
+            "max": 22037296
+          }
+        }
+      ]
+    },
+    "framework-c1": {
+      "source_sha256": "7505c29929957a3858a3feab5d456a0f02529dd41e0779a6ef7937d3efa1103f",
+      "observations": 8,
+      "groups": [
+        {
+          "variant": "elysia-jit",
+          "startup_ms": {
+            "n": 4,
+            "median": 16.21581250219606,
+            "min": 15.867625013925135,
+            "max": 19.410124979913235
+          },
+          "ready_physical_bytes": {
+            "n": 4,
+            "median": 11600532.0,
+            "min": 11256480,
+            "max": 11862640
+          },
+          "routes": [
+            {
+              "name": "dynamic",
+              "verified_requests": 1266912,
+              "rps": {
+                "n": 4,
+                "median": 63326.607,
+                "min": 63121.459,
+                "max": 63606.231
+              },
+              "p50_upper_us": {
+                "n": 4,
+                "median": 16.0,
+                "min": 16.0,
+                "max": 16.0
+              },
+              "p95_upper_us": {
+                "n": 4,
+                "median": 19.027314,
+                "min": 19.027314,
+                "max": 19.027314
+              },
+              "p99_upper_us": {
+                "n": 4,
+                "median": 25.792029,
+                "min": 24.675373,
+                "max": 29.344129
+              },
+              "end_physical_bytes": {
+                "n": 4,
+                "median": 23265952.0,
+                "min": 22479520,
+                "max": 23888544
+              },
+              "sampled_peak_rss_bytes": {
+                "n": 4,
+                "median": 50020352.0,
+                "min": 47300608,
+                "max": 51937280
+              },
+              "server_cpu_percent": {
+                "n": 4,
+                "median": 47.06837112542776,
+                "min": 46.73462679968194,
+                "max": 47.17704970644504
+              },
+              "foreign_persistent_cpu_percent": {
+                "n": 4,
+                "median": 24.899870620678758,
+                "min": 20.199882840660592,
+                "max": 31.399767641682264
+              }
+            },
+            {
+              "name": "json",
+              "verified_requests": 1232719,
+              "rps": {
+                "n": 4,
+                "median": 61727.547999999995,
+                "min": 61248.706,
+                "max": 61838.74
+              },
+              "p50_upper_us": {
+                "n": 4,
+                "median": 17.448124,
+                "min": 17.448124,
+                "max": 17.448124
+              },
+              "p95_upper_us": {
+                "n": 4,
+                "median": 19.8883735,
+                "min": 19.027314,
+                "max": 20.749433
+              },
+              "p99_upper_us": {
+                "n": 4,
+                "median": 25.792029,
+                "min": 24.675373,
+                "max": 26.908685
+              },
+              "end_physical_bytes": {
+                "n": 4,
+                "median": 23167648.0,
+                "min": 22430368,
+                "max": 24380088
+              },
+              "sampled_peak_rss_bytes": {
+                "n": 4,
+                "median": 49037312.0,
+                "min": 45826048,
+                "max": 53264384
+              },
+              "server_cpu_percent": {
+                "n": 4,
+                "median": 49.539922038999045,
+                "min": 49.30114196209881,
+                "max": 49.6357398632259
+              },
+              "foreign_persistent_cpu_percent": {
+                "n": 4,
+                "median": 20.79991540036258,
+                "min": 11.999911200634832,
+                "max": 30.599853120745585
+              }
+            }
+          ],
+          "lifetime_peak_physical_bytes": {
+            "n": 4,
+            "median": 27484844.0,
+            "min": 26673824,
+            "max": 29590152
+          }
+        },
+        {
+          "variant": "elysia-native",
+          "startup_ms": {
+            "n": 4,
+            "median": 11.190686986083165,
+            "min": 10.315416962839663,
+            "max": 13.03916604956612
+          },
+          "ready_physical_bytes": {
+            "n": 4,
+            "median": 7693008.0,
+            "min": 7652072,
+            "max": 7717608
+          },
+          "routes": [
+            {
+              "name": "dynamic",
+              "verified_requests": 1239197,
+              "rps": {
+                "n": 4,
+                "median": 62005.7155,
+                "min": 61707.469,
+                "max": 62118.914
+              },
+              "p50_upper_us": {
+                "n": 4,
+                "median": 17.448124,
+                "min": 17.448124,
+                "max": 17.448124
+              },
+              "p95_upper_us": {
+                "n": 4,
+                "median": 20.749433,
+                "min": 20.749433,
+                "max": 20.749433
+              },
+              "p99_upper_us": {
+                "n": 4,
+                "median": 24.675373,
+                "min": 24.675373,
+                "max": 24.675373
+              },
+              "end_physical_bytes": {
+                "n": 4,
+                "median": 17220340.0,
+                "min": 17056512,
+                "max": 17564392
+              },
+              "sampled_peak_rss_bytes": {
+                "n": 4,
+                "median": 33882112.0,
+                "min": 32931840,
+                "max": 34914304
+              },
+              "server_cpu_percent": {
+                "n": 4,
+                "median": 47.87106019934576,
+                "min": 47.76757443582426,
+                "max": 47.948199002698516
+              },
+              "foreign_persistent_cpu_percent": {
+                "n": 4,
+                "median": 19.199864460911627,
+                "min": 11.599916480654597,
+                "max": 29.999862000685106
+              }
+            },
+            {
+              "name": "json",
+              "verified_requests": 1184524,
+              "rps": {
+                "n": 4,
+                "median": 59222.968,
+                "min": 58943.529,
+                "max": 59513.807
+              },
+              "p50_upper_us": {
+                "n": 4,
+                "median": 17.448124,
+                "min": 17.448124,
+                "max": 17.448124
+              },
+              "p95_upper_us": {
+                "n": 4,
+                "median": 21.688425000000002,
+                "min": 20.749433,
+                "max": 22.627417
+              },
+              "p99_upper_us": {
+                "n": 4,
+                "median": 26.908685,
+                "min": 24.675373,
+                "max": 26.908685
+              },
+              "end_physical_bytes": {
+                "n": 4,
+                "median": 18047744.0,
+                "min": 17826536,
+                "max": 19268328
+              },
+              "sampled_peak_rss_bytes": {
+                "n": 4,
+                "median": 34635776.0,
+                "min": 34537472,
+                "max": 36388864
+              },
+              "server_cpu_percent": {
+                "n": 4,
+                "median": 48.8675324636529,
+                "min": 48.61301748741791,
+                "max": 49.00500124366094
+              },
+              "foreign_persistent_cpu_percent": {
+                "n": 4,
+                "median": 22.199880680635452,
+                "min": 13.999888000921526,
+                "max": 35.79976372161439
+              }
+            }
+          ],
+          "lifetime_peak_physical_bytes": {
+            "n": 4,
+            "median": 19079936.0,
+            "min": 18186984,
+            "max": 20087528
+          }
+        }
+      ]
+    },
+    "api-c1": {
+      "source_sha256": "0e67fb6275853826f30085afc77cd7c98b1f2ea06802bb14f16d7ca181de1097",
+      "observations": 8,
+      "groups": [
+        {
+          "variant": "api-wired-jit",
+          "startup_ms": {
+            "n": 4,
+            "median": 31.507666513789445,
+            "min": 31.029542034957558,
+            "max": 32.05345798050985
+          },
+          "ready_physical_bytes": {
+            "n": 4,
+            "median": 18252448.0,
+            "min": 18121352,
+            "max": 18334368
+          },
+          "routes": [
+            {
+              "name": "echo",
+              "verified_requests": 1205599,
+              "rps": {
+                "n": 4,
+                "median": 60383.85,
+                "min": 59490.807,
+                "max": 60859.798
+              },
+              "p50_upper_us": {
+                "n": 4,
+                "median": 17.448124,
+                "min": 17.448124,
+                "max": 17.448124
+              },
+              "p95_upper_us": {
+                "n": 4,
+                "median": 20.749433,
+                "min": 20.749433,
+                "max": 20.749433
+              },
+              "p99_upper_us": {
+                "n": 4,
+                "median": 26.908685,
+                "min": 24.675373,
+                "max": 26.908685
+              },
+              "end_physical_bytes": {
+                "n": 4,
+                "median": 35226320.0,
+                "min": 29852344,
+                "max": 39961296
+              },
+              "sampled_peak_rss_bytes": {
+                "n": 4,
+                "median": 79069184.0,
+                "min": 63275008,
+                "max": 93274112
+              },
+              "server_cpu_percent": {
+                "n": 4,
+                "median": 49.569013677843046,
+                "min": 49.48304518195942,
+                "max": 49.68703650222479
+              },
+              "foreign_persistent_cpu_percent": {
+                "n": 4,
+                "median": 30.499820801043814,
+                "min": 19.399871960799743,
+                "max": 37.599751841549235
+              }
+            },
+            {
+              "name": "me",
+              "verified_requests": 310891,
+              "rps": {
+                "n": 4,
+                "median": 15565.867999999999,
+                "min": 15440.805,
+                "max": 15605.106
+              },
+              "p50_upper_us": {
+                "n": 4,
+                "median": 64.0,
+                "min": 64.0,
+                "max": 64.0
+              },
+              "p95_upper_us": {
+                "n": 4,
+                "median": 76.109255,
+                "min": 76.109255,
+                "max": 76.109255
+              },
+              "p99_upper_us": {
+                "n": 4,
+                "median": 90.509668,
+                "min": 90.509668,
+                "max": 107.634741
+              },
+              "end_physical_bytes": {
+                "n": 4,
+                "median": 43795164.0,
+                "min": 40272592,
+                "max": 47006416
+              },
+              "sampled_peak_rss_bytes": {
+                "n": 4,
+                "median": 93421568.0,
+                "min": 86917120,
+                "max": 100319232
+              },
+              "server_cpu_percent": {
+                "n": 4,
+                "median": 71.46752241646482,
+                "min": 71.18701961528623,
+                "max": 71.73310960134239
+              },
+              "foreign_persistent_cpu_percent": {
+                "n": 4,
+                "median": 30.999742982342944,
+                "min": 13.39991960053591,
+                "max": 34.99955900561259
+              }
+            }
+          ],
+          "lifetime_peak_physical_bytes": {
+            "n": 4,
+            "median": 51716816.0,
+            "min": 49496784,
+            "max": 54575824
+          }
+        },
+        {
+          "variant": "api-wired-native",
+          "startup_ms": {
+            "n": 4,
+            "median": 11.75249950028956,
+            "min": 11.325833038426936,
+            "max": 12.906209041830152
+          },
+          "ready_physical_bytes": {
+            "n": 4,
+            "median": 8684300.0,
+            "min": 8569600,
+            "max": 8700696
+          },
+          "routes": [
+            {
+              "name": "echo",
+              "verified_requests": 1090687,
+              "rps": {
+                "n": 4,
+                "median": 54577.867,
+                "min": 54245.799,
+                "max": 54734.318
+              },
+              "p50_upper_us": {
+                "n": 4,
+                "median": 19.027314,
+                "min": 17.448124,
+                "max": 19.027314
+              },
+              "p95_upper_us": {
+                "n": 4,
+                "median": 24.675373,
+                "min": 24.675373,
+                "max": 24.675373
+              },
+              "p99_upper_us": {
+                "n": 4,
+                "median": 29.344129,
+                "min": 29.344129,
+                "max": 29.344129
+              },
+              "end_physical_bytes": {
+                "n": 4,
+                "median": 19481356.0,
+                "min": 17974040,
+                "max": 21906224
+              },
+              "sampled_peak_rss_bytes": {
+                "n": 4,
+                "median": 42434560.0,
+                "min": 39731200,
+                "max": 45940736
+              },
+              "server_cpu_percent": {
+                "n": 4,
+                "median": 53.82545732252784,
+                "min": 53.52585499888733,
+                "max": 53.87698202779247
+              },
+              "foreign_persistent_cpu_percent": {
+                "n": 4,
+                "median": 20.799832501376095,
+                "min": 14.799923040397998,
+                "max": 23.599834801144347
+              }
+            },
+            {
+              "name": "me",
+              "verified_requests": 287085,
+              "rps": {
+                "n": 4,
+                "median": 14378.843,
+                "min": 14255.426,
+                "max": 14403.198
+              },
+              "p50_upper_us": {
+                "n": 4,
+                "median": 69.792495,
+                "min": 69.792495,
+                "max": 69.792495
+              },
+              "p95_upper_us": {
+                "n": 4,
+                "median": 82.997731,
+                "min": 82.997731,
+                "max": 82.997731
+              },
+              "p99_upper_us": {
+                "n": 4,
+                "median": 103.168117,
+                "min": 98.701493,
+                "max": 107.634741
+              },
+              "end_physical_bytes": {
+                "n": 4,
+                "median": 20554532.0,
+                "min": 18973464,
+                "max": 22348568
+              },
+              "sampled_peak_rss_bytes": {
+                "n": 4,
+                "median": 43114496.0,
+                "min": 39993344,
+                "max": 46170112
+              },
+              "server_cpu_percent": {
+                "n": 4,
+                "median": 68.6426534504819,
+                "min": 68.3807082553593,
+                "max": 68.72926695692925
+              },
+              "foreign_persistent_cpu_percent": {
+                "n": 4,
+                "median": 28.09971820320378,
+                "min": 19.39970900434855,
+                "max": 31.399616924649976
+              }
+            }
+          ],
+          "lifetime_peak_physical_bytes": {
+            "n": 4,
+            "median": 22414116.0,
+            "min": 21955352,
+            "max": 22643480
+          }
+        }
+      ]
+    },
+    "framework-c32": {
+      "source_sha256": "8f274cd8c979d82e24892c39fa4804a188398f166902caed904ea9cf0d038a57",
+      "observations": 8,
+      "groups": [
+        {
+          "variant": "elysia-jit",
+          "startup_ms": {
+            "n": 4,
+            "median": 16.18879151646979,
+            "min": 15.969708969350904,
+            "max": 16.70129201374948
+          },
+          "ready_physical_bytes": {
+            "n": 4,
+            "median": 11256444.0,
+            "min": 11190920,
+            "max": 11289200
+          },
+          "routes": [
+            {
+              "name": "dynamic",
+              "verified_requests": 4410700,
+              "rps": {
+                "n": 4,
+                "median": 219631.09,
+                "min": 216155.626,
+                "max": 226664.8
+              },
+              "p50_upper_us": {
+                "n": 4,
+                "median": 139.58499,
+                "min": 139.58499,
+                "max": 139.58499
+              },
+              "p95_upper_us": {
+                "n": 4,
+                "median": 267.58499,
+                "min": 256.0,
+                "max": 279.16998
+              },
+              "p99_upper_us": {
+                "n": 4,
+                "median": 304.437021,
+                "min": 279.16998,
+                "max": 304.437021
+              },
+              "end_physical_bytes": {
+                "n": 4,
+                "median": 24666796.0,
+                "min": 23134856,
+                "max": 25772704
+              },
+              "sampled_peak_rss_bytes": {
+                "n": 4,
+                "median": 52101120.0,
+                "min": 50577408,
+                "max": 53444608
+              },
+              "server_cpu_percent": {
+                "n": 4,
+                "median": 101.44382807452212,
+                "min": 101.26955788247933,
+                "max": 101.473771104548
+              },
+              "foreign_persistent_cpu_percent": {
+                "n": 4,
+                "median": 11.799233349898085,
+                "min": 7.199568025852783,
+                "max": 15.198933034948494
+              }
+            },
+            {
+              "name": "json",
+              "verified_requests": 3995355,
+              "rps": {
+                "n": 4,
+                "median": 199740.069,
+                "min": 196881.418,
+                "max": 202655.884
+              },
+              "p50_upper_us": {
+                "n": 4,
+                "median": 152.218511,
+                "min": 152.218511,
+                "max": 152.218511
+              },
+              "p95_upper_us": {
+                "n": 4,
+                "median": 304.437021,
+                "min": 304.437021,
+                "max": 304.437021
+              },
+              "p99_upper_us": {
+                "n": 4,
+                "median": 331.990926,
+                "min": 331.990926,
+                "max": 394.805971
+              },
+              "end_physical_bytes": {
+                "n": 4,
+                "median": 24642196.0,
+                "min": 23380664,
+                "max": 26493576
+              },
+              "sampled_peak_rss_bytes": {
+                "n": 4,
+                "median": 50683904.0,
+                "min": 45858816,
+                "max": 55754752
+              },
+              "server_cpu_percent": {
+                "n": 4,
+                "median": 101.52826595637725,
+                "min": 101.10946218959975,
+                "max": 101.63596187827221
+              },
+              "foreign_persistent_cpu_percent": {
+                "n": 4,
+                "median": 16.098740641727936,
+                "min": 11.399329719456697,
+                "max": 38.198181766721035
+              }
+            }
+          ],
+          "lifetime_peak_physical_bytes": {
+            "n": 4,
+            "median": 30909100.0,
+            "min": 28426888,
+            "max": 32473760
+          }
+        },
+        {
+          "variant": "elysia-native",
+          "startup_ms": {
+            "n": 4,
+            "median": 10.764104488771409,
+            "min": 9.765625,
+            "max": 11.33758295327425
+          },
+          "ready_physical_bytes": {
+            "n": 4,
+            "median": 7709428.0,
+            "min": 7652072,
+            "max": 7734016
+          },
+          "routes": [
+            {
+              "name": "dynamic",
+              "verified_requests": 4154502,
+              "rps": {
+                "n": 4,
+                "median": 207066.11800000002,
+                "min": 203531.698,
+                "max": 213189.176
+              },
+              "p50_upper_us": {
+                "n": 4,
+                "median": 152.218511,
+                "min": 139.58499,
+                "max": 152.218511
+              },
+              "p95_upper_us": {
+                "n": 4,
+                "median": 279.16998,
+                "min": 279.16998,
+                "max": 279.16998
+              },
+              "p99_upper_us": {
+                "n": 4,
+                "median": 304.437021,
+                "min": 304.437021,
+                "max": 331.990926
+              },
+              "end_physical_bytes": {
+                "n": 4,
+                "median": 16990964.0,
+                "min": 16089856,
+                "max": 17580800
+              },
+              "sampled_peak_rss_bytes": {
+                "n": 4,
+                "median": 34496512.0,
+                "min": 33816576,
+                "max": 35078144
+              },
+              "server_cpu_percent": {
+                "n": 4,
+                "median": 99.78938305832631,
+                "min": 99.68282788850709,
+                "max": 99.8668968681216
+              },
+              "foreign_persistent_cpu_percent": {
+                "n": 4,
+                "median": 18.59894365999243,
+                "min": 15.599026620711252,
+                "max": 20.998916455971212
+              }
+            },
+            {
+              "name": "json",
+              "verified_requests": 3809977,
+              "rps": {
+                "n": 4,
+                "median": 190571.62800000003,
+                "min": 187853.456,
+                "max": 192953.511
+              },
+              "p50_upper_us": {
+                "n": 4,
+                "median": 165.995463,
+                "min": 152.218511,
+                "max": 165.995463
+              },
+              "p95_upper_us": {
+                "n": 4,
+                "median": 304.437021,
+                "min": 304.437021,
+                "max": 304.437021
+              },
+              "p99_upper_us": {
+                "n": 4,
+                "median": 347.01479900000004,
+                "min": 331.990926,
+                "max": 362.038672
+              },
+              "end_physical_bytes": {
+                "n": 4,
+                "median": 18146036.0,
+                "min": 17531648,
+                "max": 18907904
+              },
+              "sampled_peak_rss_bytes": {
+                "n": 4,
+                "median": 35979264.0,
+                "min": 34816000,
+                "max": 37224448
+              },
+              "server_cpu_percent": {
+                "n": 4,
+                "median": 99.87789078306609,
+                "min": 99.5323379064945,
+                "max": 99.92111175996494
+              },
+              "foreign_persistent_cpu_percent": {
+                "n": 4,
+                "median": 12.599197571257793,
+                "min": 8.999492428638165,
+                "max": 16.599103648419717
+              }
+            }
+          ],
+          "lifetime_peak_physical_bytes": {
+            "n": 4,
+            "median": 19538676.0,
+            "min": 19006208,
+            "max": 20054784
+          }
+        }
+      ]
+    },
+    "api-c32": {
+      "source_sha256": "18c56cad2604428ac72b6dddabbc81bc526378b822dc6790c8e3ad7abd554497",
+      "observations": 8,
+      "groups": [
+        {
+          "variant": "api-wired-jit",
+          "startup_ms": {
+            "n": 4,
+            "median": 31.821083481190726,
+            "min": 31.627917021978647,
+            "max": 32.14862500317395
+          },
+          "ready_physical_bytes": {
+            "n": 4,
+            "median": 18211476.0,
+            "min": 18154120,
+            "max": 18252424
+          },
+          "routes": [
+            {
+              "name": "echo",
+              "verified_requests": 3980981,
+              "rps": {
+                "n": 4,
+                "median": 199100.81650000002,
+                "min": 198388.046,
+                "max": 199560.147
+              },
+              "p50_upper_us": {
+                "n": 4,
+                "median": 152.218511,
+                "min": 152.218511,
+                "max": 152.218511
+              },
+              "p95_upper_us": {
+                "n": 4,
+                "median": 304.437021,
+                "min": 304.437021,
+                "max": 304.437021
+              },
+              "p99_upper_us": {
+                "n": 4,
+                "median": 331.990926,
+                "min": 331.990926,
+                "max": 331.990926
+              },
+              "end_physical_bytes": {
+                "n": 4,
+                "median": 45720236.0,
+                "min": 34636496,
+                "max": 56869608
+              },
+              "sampled_peak_rss_bytes": {
+                "n": 4,
+                "median": 88088576.0,
+                "min": 65978368,
+                "max": 109182976
+              },
+              "server_cpu_percent": {
+                "n": 4,
+                "median": 101.84018310771017,
+                "min": 101.58706247676825,
+                "max": 102.06602919161875
+              },
+              "foreign_persistent_cpu_percent": {
+                "n": 4,
+                "median": 19.59884167026602,
+                "min": 18.398870309360944,
+                "max": 22.798787104545433
+              }
+            },
+            {
+              "name": "me",
+              "verified_requests": 888659,
+              "rps": {
+                "n": 4,
+                "median": 44527.88250000001,
+                "min": 43496.911,
+                "max": 45157.298
+              },
+              "p50_upper_us": {
+                "n": 4,
+                "median": 694.0295980000001,
+                "min": 663.981852,
+                "max": 724.077344
+              },
+              "p95_upper_us": {
+                "n": 4,
+                "median": 1217.748086,
+                "min": 1116.679918,
+                "max": 1217.748086
+              },
+              "p99_upper_us": {
+                "n": 4,
+                "median": 1327.963704,
+                "min": 1327.963704,
+                "max": 1448.154688
+              },
+              "end_physical_bytes": {
+                "n": 4,
+                "median": 55665384.0,
+                "min": 52904632,
+                "max": 58606312
+              },
+              "sampled_peak_rss_bytes": {
+                "n": 4,
+                "median": 107823104.0,
+                "min": 101056512,
+                "max": 113360896
+              },
+              "server_cpu_percent": {
+                "n": 4,
+                "median": 136.8243518185481,
+                "min": 136.21428569524105,
+                "max": 137.31156020065052
+              },
+              "foreign_persistent_cpu_percent": {
+                "n": 4,
+                "median": 11.998699210523942,
+                "min": 8.998677194504658,
+                "max": 23.196859145309958
+              }
+            }
+          ],
+          "lifetime_peak_physical_bytes": {
+            "n": 4,
+            "median": 69665512.0,
+            "min": 67224248,
+            "max": 70370024
+          }
+        },
+        {
+          "variant": "api-wired-native",
+          "startup_ms": {
+            "n": 4,
+            "median": 12.659249507123604,
+            "min": 11.538084014318883,
+            "max": 12.750082998536527
+          },
+          "ready_physical_bytes": {
+            "n": 4,
+            "median": 8577804.0,
+            "min": 8536832,
+            "max": 8700672
+          },
+          "routes": [
+            {
+              "name": "echo",
+              "verified_requests": 3264239,
+              "rps": {
+                "n": 4,
+                "median": 164024.327,
+                "min": 160159.005,
+                "max": 164591.977
+              },
+              "p50_upper_us": {
+                "n": 4,
+                "median": 181.019336,
+                "min": 181.019336,
+                "max": 197.402986
+              },
+              "p95_upper_us": {
+                "n": 4,
+                "median": 362.038672,
+                "min": 362.038672,
+                "max": 362.038672
+              },
+              "p99_upper_us": {
+                "n": 4,
+                "median": 394.805971,
+                "min": 394.805971,
+                "max": 430.538965
+              },
+              "end_physical_bytes": {
+                "n": 4,
+                "median": 23077668.0,
+                "min": 17335064,
+                "max": 30065480
+              },
+              "sampled_peak_rss_bytes": {
+                "n": 4,
+                "median": 46645248.0,
+                "min": 40419328,
+                "max": 55410688
+              },
+              "server_cpu_percent": {
+                "n": 4,
+                "median": 99.88656975152236,
+                "min": 99.5922016522753,
+                "max": 100.02591178796453
+              },
+              "foreign_persistent_cpu_percent": {
+                "n": 4,
+                "median": 12.799126439679743,
+                "min": 8.799192234247819,
+                "max": 16.398894714379168
+              }
+            },
+            {
+              "name": "me",
+              "verified_requests": 761871,
+              "rps": {
+                "n": 4,
+                "median": 38116.0705,
+                "min": 37967.889,
+                "max": 38158.308
+              },
+              "p50_upper_us": {
+                "n": 4,
+                "median": 861.077929,
+                "min": 861.077929,
+                "max": 861.077929
+              },
+              "p95_upper_us": {
+                "n": 4,
+                "median": 1116.679918,
+                "min": 1116.679918,
+                "max": 1116.679918
+              },
+              "p99_upper_us": {
+                "n": 4,
+                "median": 1579.223885,
+                "min": 1579.223885,
+                "max": 1579.223885
+              },
+              "end_physical_bytes": {
+                "n": 4,
+                "median": 26649404.0,
+                "min": 25183000,
+                "max": 28066632
+              },
+              "sampled_peak_rss_bytes": {
+                "n": 4,
+                "median": 50348032.0,
+                "min": 49119232,
+                "max": 51576832
+              },
+              "server_cpu_percent": {
+                "n": 4,
+                "median": 125.22552380405935,
+                "min": 124.67690150752186,
+                "max": 125.33851299848986
+              },
+              "foreign_persistent_cpu_percent": {
+                "n": 4,
+                "median": 17.998087850887153,
+                "min": 15.198109355236683,
+                "max": 20.598438638283923
+              }
+            }
+          ],
+          "lifetime_peak_physical_bytes": {
+            "n": 4,
+            "median": 27632444.0,
+            "min": 25445144,
+            "max": 32097096
+          }
+        }
+      ]
+    }
+  },
+  "comparisons": [
+    {
+      "batch": "framework-load",
+      "route": "dynamic",
+      "baseline": "elysia-jit",
+      "candidate": "elysia-native",
+      "paired_rps_ratios": [
+        0.9369579434865365,
+        0.9364828753450036,
+        0.9466583845889769,
+        0.9432684515755775,
+        0.9488893370696194,
+        0.9475944263673657
+      ],
+      "median_ratio": 0.9449634180822772,
+      "descriptive_bootstrap_95": [
+        0.9367204094157701,
+        0.9482418817184926
+      ]
+    },
+    {
+      "batch": "framework-load",
+      "route": "json",
+      "baseline": "elysia-jit",
+      "candidate": "elysia-native",
+      "paired_rps_ratios": [
+        0.9324667530012507,
+        0.9604650661679414,
+        0.94701510626817,
+        0.9629834143340333,
+        0.9544369017619395,
+        0.9573509564215357
+      ],
+      "median_ratio": 0.9558939290917376,
+      "descriptive_bootstrap_95": [
+        0.9397409296347103,
+        0.9617242402509874
+      ]
+    },
+    {
+      "batch": "framework-load",
+      "route": "dynamic",
+      "baseline": "elysia-plugin-jit",
+      "candidate": "elysia-plugin-native",
+      "paired_rps_ratios": [
+        1.0032318851725408,
+        0.9584141735261774,
+        0.9865197247677886,
+        0.9915381707739008,
+        0.9804882526443544,
+        0.9818390643023727
+      ],
+      "median_ratio": 0.9841793945350806,
+      "descriptive_bootstrap_95": [
+        0.9694512130852659,
+        0.9973850279732208
+      ]
+    },
+    {
+      "batch": "framework-load",
+      "route": "json",
+      "baseline": "elysia-plugin-jit",
+      "candidate": "elysia-plugin-native",
+      "paired_rps_ratios": [
+        1.0300804719148413,
+        1.0068452301595987,
+        1.0068735907800348,
+        1.0129341231703914,
+        1.0624844143903796,
+        1.0346921638803066
+      ],
+      "median_ratio": 1.0215072975426165,
+      "descriptive_bootstrap_95": [
+        1.0068594104698168,
+        1.048588289135343
+      ]
+    },
+    {
+      "batch": "framework-load",
+      "route": "dynamic",
+      "baseline": "hono-jit",
+      "candidate": "hono-native",
+      "paired_rps_ratios": [
+        1.0262545393431883,
+        1.0320575541783485,
+        0.9911812091259208,
+        1.0112618711909485,
+        1.0285416731775097,
+        1.031397842884349
+      ],
+      "median_ratio": 1.027398106260349,
+      "descriptive_bootstrap_95": [
+        1.0012215401584346,
+        1.0317276985313488
+      ]
+    },
+    {
+      "batch": "framework-load",
+      "route": "json",
+      "baseline": "hono-jit",
+      "candidate": "hono-native",
+      "paired_rps_ratios": [
+        1.0622529322099892,
+        1.085787160187902,
+        1.0608500371591818,
+        1.0678715826175902,
+        1.0637324857240353,
+        1.063247904296661
+      ],
+      "median_ratio": 1.0634901950103481,
+      "descriptive_bootstrap_95": [
+        1.0615514846845855,
+        1.076829371402746
+      ]
+    },
+    {
+      "batch": "api-load",
+      "route": "health",
+      "baseline": "api-wired-jit",
+      "candidate": "api-wired-native",
+      "paired_rps_ratios": [
+        0.9839897591585174,
+        1.0006538318583815,
+        1.010108539471786,
+        0.995374876545785,
+        0.9615221792620868,
+        0.9903976697069543,
+        1.1199064263825997,
+        0.993876138890366
+      ],
+      "median_ratio": 0.9946255077180755,
+      "descriptive_bootstrap_95": [
+        0.9839897591585174,
+        1.010108539471786
+      ]
+    },
+    {
+      "batch": "api-load",
+      "route": "echo",
+      "baseline": "api-wired-jit",
+      "candidate": "api-wired-native",
+      "paired_rps_ratios": [
+        0.8308858699609535,
+        0.8299274271031754,
+        0.834236414705945,
+        0.822083273447999,
+        0.8112429923230389,
+        0.8237210373154056,
+        0.8381356747869751,
+        0.8325023103057471
+      ],
+      "median_ratio": 0.8304066485320645,
+      "descriptive_bootstrap_95": [
+        0.822083273447999,
+        0.834236414705945
+      ]
+    },
+    {
+      "batch": "api-load",
+      "route": "user",
+      "baseline": "api-wired-jit",
+      "candidate": "api-wired-native",
+      "paired_rps_ratios": [
+        0.7822502389435941,
+        0.7811911088231167,
+        0.7941296645660023,
+        0.7862010904932194,
+        0.7723226647857931,
+        0.7859095671667865,
+        0.7808217915185115,
+        0.7919576941143295
+      ],
+      "median_ratio": 0.7840799030551904,
+      "descriptive_bootstrap_95": [
+        0.7808217915185115,
+        0.7919576941143295
+      ]
+    },
+    {
+      "batch": "api-load",
+      "route": "me",
+      "baseline": "api-wired-jit",
+      "candidate": "api-wired-native",
+      "paired_rps_ratios": [
+        0.8341154745445258,
+        0.840170730467789,
+        0.8401235722233915,
+        0.8450484746198668,
+        0.8438035310780275,
+        0.8424006786811047,
+        0.8329550169074071,
+        0.8408005528422041
+      ],
+      "median_ratio": 0.8404856416549966,
+      "descriptive_bootstrap_95": [
+        0.8341154745445258,
+        0.8438035310780275
+      ]
+    },
+    {
+      "batch": "api-load",
+      "route": "health",
+      "baseline": "api-plugin-jit",
+      "candidate": "api-plugin-native",
+      "paired_rps_ratios": [
+        0.9944916918980693,
+        0.9996507707506108,
+        1.015790044787521,
+        1.002571503188662,
+        0.9880975980392358,
+        0.9898596954993955,
+        1.003785496175929,
+        0.9989584437792671
+      ],
+      "median_ratio": 0.999304607264939,
+      "descriptive_bootstrap_95": [
+        0.9898596954993955,
+        1.003785496175929
+      ]
+    },
+    {
+      "batch": "api-load",
+      "route": "echo",
+      "baseline": "api-plugin-jit",
+      "candidate": "api-plugin-native",
+      "paired_rps_ratios": [
+        0.9833577702355331,
+        0.9711723225425791,
+        0.9721492064723761,
+        0.9824383799938732,
+        0.9730599842639853,
+        0.9755902905880699,
+        0.9865939522391484,
+        0.9670140243633689
+      ],
+      "median_ratio": 0.9743251374260276,
+      "descriptive_bootstrap_95": [
+        0.9711723225425791,
+        0.9833577702355331
+      ]
+    },
+    {
+      "batch": "api-load",
+      "route": "user",
+      "baseline": "api-plugin-jit",
+      "candidate": "api-plugin-native",
+      "paired_rps_ratios": [
+        0.8251542626303213,
+        0.8091068697078913,
+        0.7995637540264996,
+        0.8039357372103814,
+        0.8119288754294328,
+        0.7951132375570978,
+        0.7807972019107011,
+        0.8075627493319153
+      ],
+      "median_ratio": 0.8057492432711484,
+      "descriptive_bootstrap_95": [
+        0.7951132375570978,
+        0.8119288754294328
+      ]
+    },
+    {
+      "batch": "api-load",
+      "route": "me",
+      "baseline": "api-plugin-jit",
+      "candidate": "api-plugin-native",
+      "paired_rps_ratios": [
+        0.8579867467887268,
+        0.9023645028607541,
+        0.8820888074442523,
+        0.8721897288746169,
+        0.8840002179375256,
+        0.8782730046592917,
+        0.889578770490713,
+        0.8811568364789106
+      ],
+      "median_ratio": 0.8816228219615815,
+      "descriptive_bootstrap_95": [
+        0.8721897288746169,
+        0.889578770490713
+      ]
+    },
+    {
+      "batch": "bytecode-load",
+      "route": "echo",
+      "baseline": "api-wired-jit",
+      "candidate": "api-wired-native",
+      "paired_rps_ratios": [
+        0.8398705192505364,
+        0.8244736661454504,
+        0.8391547618663499,
+        0.8218657554680607,
+        0.8566185747801959,
+        0.8633131165904401
+      ],
+      "median_ratio": 0.8395126405584431,
+      "descriptive_bootstrap_95": [
+        0.8231697108067555,
+        0.859965845685318
+      ]
+    },
+    {
+      "batch": "bytecode-load",
+      "route": "me",
+      "baseline": "api-wired-jit",
+      "candidate": "api-wired-native",
+      "paired_rps_ratios": [
+        0.8393731369307795,
+        0.8642046625770081,
+        0.8365546955949488,
+        0.8668847239269214,
+        0.8694966717638601,
+        0.8566123913968093
+      ],
+      "median_ratio": 0.8604085269869087,
+      "descriptive_bootstrap_95": [
+        0.8379639162628642,
+        0.8681906978453908
+      ]
+    },
+    {
+      "batch": "bytecode-load",
+      "route": "echo",
+      "baseline": "api-wired-jit",
+      "candidate": "api-wired-bytecode",
+      "paired_rps_ratios": [
+        1.002963659818505,
+        1.0104551389175125,
+        1.0095482273902054,
+        0.989507350799222,
+        1.0332927650685773,
+        1.0196849410792224
+      ],
+      "median_ratio": 1.010001683153859,
+      "descriptive_bootstrap_95": [
+        0.9962355053088635,
+        1.0264888530738998
+      ]
+    },
+    {
+      "batch": "bytecode-load",
+      "route": "me",
+      "baseline": "api-wired-jit",
+      "candidate": "api-wired-bytecode",
+      "paired_rps_ratios": [
+        0.9688891792289496,
+        1.0014019686754883,
+        0.970866227508684,
+        1.0148133799471237,
+        1.053240551973629,
+        1.0110269986848155
+      ],
+      "median_ratio": 1.0062144836801519,
+      "descriptive_bootstrap_95": [
+        0.9698777033688168,
+        1.0340269659603765
+      ]
+    },
+    {
+      "batch": "driver-load",
+      "route": "user",
+      "baseline": "api-wired-jit",
+      "candidate": "api-wired-native",
+      "paired_rps_ratios": [
+        0.7967220450519814,
+        0.818419058363787,
+        0.7949130289395767,
+        0.7899479957594744
+      ],
+      "median_ratio": 0.7958175369957791,
+      "descriptive_bootstrap_95": [
+        0.7899479957594744,
+        0.818419058363787
+      ]
+    },
+    {
+      "batch": "driver-load",
+      "route": "me",
+      "baseline": "api-wired-jit",
+      "candidate": "api-wired-native",
+      "paired_rps_ratios": [
+        0.845626193772587,
+        0.9081154077323622,
+        0.8367505779110845,
+        0.8469318390077274
+      ],
+      "median_ratio": 0.8462790163901572,
+      "descriptive_bootstrap_95": [
+        0.8367505779110845,
+        0.9081154077323622
+      ]
+    },
+    {
+      "batch": "driver-load",
+      "route": "user",
+      "baseline": "api-wired-jit-postgresjs",
+      "candidate": "api-wired-native-postgresjs",
+      "paired_rps_ratios": [
+        0.8598233174062921,
+        0.8472097650900215,
+        0.8889201936282536,
+        0.9442687413919675
+      ],
+      "median_ratio": 0.8743717555172729,
+      "descriptive_bootstrap_95": [
+        0.8472097650900215,
+        0.9442687413919675
+      ]
+    },
+    {
+      "batch": "driver-load",
+      "route": "me",
+      "baseline": "api-wired-jit-postgresjs",
+      "candidate": "api-wired-native-postgresjs",
+      "paired_rps_ratios": [
+        0.923340985179879,
+        0.9075329021400563,
+        0.9236780209904248,
+        0.9240522785422862
+      ],
+      "median_ratio": 0.9235095030851519,
+      "descriptive_bootstrap_95": [
+        0.9075329021400563,
+        0.9240522785422862
+      ]
+    },
+    {
+      "batch": "framework-soak",
+      "route": "json",
+      "baseline": "elysia-jit",
+      "candidate": "elysia-native",
+      "paired_rps_ratios": [
+        0.9628809887097657,
+        0.9567081295067272
+      ],
+      "median_ratio": 0.9597945591082464,
+      "descriptive_bootstrap_95": [
+        0.9567081295067272,
+        0.9628809887097657
+      ]
+    },
+    {
+      "batch": "api-soak",
+      "route": "me",
+      "baseline": "api-wired-jit",
+      "candidate": "api-wired-native",
+      "paired_rps_ratios": [
+        0.8535643899544609,
+        0.8426956353996122
+      ],
+      "median_ratio": 0.8481300126770366,
+      "descriptive_bootstrap_95": [
+        0.8426956353996122,
+        0.8535643899544609
+      ]
+    },
+    {
+      "batch": "framework-c1",
+      "route": "dynamic",
+      "baseline": "elysia-jit",
+      "candidate": "elysia-native",
+      "paired_rps_ratios": [
+        0.9766168034700876,
+        0.977245525501564,
+        0.9835462928700681,
+        0.9751156884551511
+      ],
+      "median_ratio": 0.9769311644858258,
+      "descriptive_bootstrap_95": [
+        0.9751156884551511,
+        0.9835462928700681
+      ]
+    },
+    {
+      "batch": "framework-c1",
+      "route": "json",
+      "baseline": "elysia-jit",
+      "candidate": "elysia-native",
+      "paired_rps_ratios": [
+        0.9531812743920721,
+        0.9716745199482255,
+        0.9570850900045657,
+        0.9617705352451371
+      ],
+      "median_ratio": 0.9594278126248514,
+      "descriptive_bootstrap_95": [
+        0.9531812743920721,
+        0.9716745199482255
+      ]
+    },
+    {
+      "batch": "api-c1",
+      "route": "echo",
+      "baseline": "api-wired-jit",
+      "candidate": "api-wired-native",
+      "paired_rps_ratios": [
+        0.903803663911357,
+        0.920046655275663,
+        0.9038937095266693,
+        0.8913240066948628
+      ],
+      "median_ratio": 0.9038486867190132,
+      "descriptive_bootstrap_95": [
+        0.8913240066948628,
+        0.920046655275663
+      ]
+    },
+    {
+      "batch": "api-c1",
+      "route": "me",
+      "baseline": "api-wired-jit",
+      "candidate": "api-wired-native",
+      "paired_rps_ratios": [
+        0.9270837986496676,
+        0.9302301272504898,
+        0.9229579159910001,
+        0.9135103600065261
+      ],
+      "median_ratio": 0.9250208573203338,
+      "descriptive_bootstrap_95": [
+        0.9135103600065261,
+        0.9302301272504898
+      ]
+    },
+    {
+      "batch": "framework-c32",
+      "route": "dynamic",
+      "baseline": "elysia-jit",
+      "candidate": "elysia-native",
+      "paired_rps_ratios": [
+        0.9150354885275527,
+        0.9563752923090699,
+        0.940941118838864,
+        0.9561953934867795
+      ],
+      "median_ratio": 0.9485682561628217,
+      "descriptive_bootstrap_95": [
+        0.9150354885275527,
+        0.9563752923090699
+      ]
+    },
+    {
+      "batch": "framework-c32",
+      "route": "json",
+      "baseline": "elysia-jit",
+      "candidate": "elysia-native",
+      "paired_rps_ratios": [
+        0.9404055953365202,
+        0.9688493913630793,
+        0.9269578178149518,
+        0.9793609041023295
+      ],
+      "median_ratio": 0.9546274933497998,
+      "descriptive_bootstrap_95": [
+        0.9269578178149518,
+        0.9793609041023295
+      ]
+    },
+    {
+      "batch": "api-c32",
+      "route": "echo",
+      "baseline": "api-wired-jit",
+      "candidate": "api-wired-native",
+      "paired_rps_ratios": [
+        0.8247737811097123,
+        0.8273023768780907,
+        0.8219063663709354,
+        0.8057879895537713
+      ],
+      "median_ratio": 0.8233400737403238,
+      "descriptive_bootstrap_95": [
+        0.8057879895537713,
+        0.8273023768780907
+      ]
+    },
+    {
+      "batch": "api-c32",
+      "route": "me",
+      "baseline": "api-wired-jit",
+      "candidate": "api-wired-native",
+      "paired_rps_ratios": [
+        0.8450086628300921,
+        0.8753285491928382,
+        0.8635161428730485,
+        0.8462394023349884
+      ],
+      "median_ratio": 0.8548777726040184,
+      "descriptive_bootstrap_95": [
+        0.8450086628300921,
+        0.8753285491928382
+      ]
+    }
+  ],
+  "inference_limits": "Closed-loop client/server/database on one shared laptop. Bootstrap resamples matched blocks within this pass; it is not a cross-host or production confidence interval. Report raw spread and same-mode controls alongside ratios. Physical and RSS metrics are distinct; database memory is excluded from server memory."
+}

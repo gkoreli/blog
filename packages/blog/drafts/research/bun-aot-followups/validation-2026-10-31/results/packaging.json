@@ -1,0 +1,170 @@
+[
+  {
+    "binary": "api-wired-jit",
+    "driver": "bunsql",
+    "checks": [
+      {
+        "case": "echo",
+        "status": 200,
+        "body_sha256": "2905a66e09f19e1c250e37b20fa4669fbc47ec685c113a539a7e8dd1f0e7876f"
+      },
+      {
+        "case": "user",
+        "status": 200,
+        "body_sha256": "2be3138ebc3a0b7e17a9db9e7c4e07cbb036d169a99c896b5f5e963466c3647a"
+      },
+      {
+        "case": "me",
+        "status": 200,
+        "body_sha256": "2be3138ebc3a0b7e17a9db9e7c4e07cbb036d169a99c896b5f5e963466c3647a"
+      }
+    ],
+    "source_and_node_modules_hidden": true,
+    "cwd_has_no_dependencies": true,
+    "system_bins_only_on_path": true
+  },
+  {
+    "binary": "api-wired-native",
+    "driver": "bunsql",
+    "checks": [
+      {
+        "case": "echo",
+        "status": 200,
+        "body_sha256": "2905a66e09f19e1c250e37b20fa4669fbc47ec685c113a539a7e8dd1f0e7876f"
+      },
+      {
+        "case": "user",
+        "status": 200,
+        "body_sha256": "2be3138ebc3a0b7e17a9db9e7c4e07cbb036d169a99c896b5f5e963466c3647a"
+      },
+      {
+        "case": "me",
+        "status": 200,
+        "body_sha256": "2be3138ebc3a0b7e17a9db9e7c4e07cbb036d169a99c896b5f5e963466c3647a"
+      }
+    ],
+    "source_and_node_modules_hidden": true,
+    "cwd_has_no_dependencies": true,
+    "system_bins_only_on_path": true
+  },
+  {
+    "binary": "api-wired-bytecode",
+    "driver": "bunsql",
+    "checks": [
+      {
+        "case": "echo",
+        "status": 200,
+        "body_sha256": "2905a66e09f19e1c250e37b20fa4669fbc47ec685c113a539a7e8dd1f0e7876f"
+      },
+      {
+        "case": "user",
+        "status": 200,
+        "body_sha256": "2be3138ebc3a0b7e17a9db9e7c4e07cbb036d169a99c896b5f5e963466c3647a"
+      },
+      {
+        "case": "me",
+        "status": 200,
+        "body_sha256": "2be3138ebc3a0b7e17a9db9e7c4e07cbb036d169a99c896b5f5e963466c3647a"
+      }
+    ],
+    "source_and_node_modules_hidden": true,
+    "cwd_has_no_dependencies": true,
+    "system_bins_only_on_path": true
+  },
+  {
+    "binary": "api-plugin-jit",
+    "driver": "bunsql",
+    "checks": [
+      {
+        "case": "echo",
+        "status": 200,
+        "body_sha256": "2905a66e09f19e1c250e37b20fa4669fbc47ec685c113a539a7e8dd1f0e7876f"
+      },
+      {
+        "case": "user",
+        "status": 200,
+        "body_sha256": "2be3138ebc3a0b7e17a9db9e7c4e07cbb036d169a99c896b5f5e963466c3647a"
+      },
+      {
+        "case": "me",
+        "status": 200,
+        "body_sha256": "2be3138ebc3a0b7e17a9db9e7c4e07cbb036d169a99c896b5f5e963466c3647a"
+      }
+    ],
+    "source_and_node_modules_hidden": true,
+    "cwd_has_no_dependencies": true,
+    "system_bins_only_on_path": true
+  },
+  {
+    "binary": "api-plugin-native",
+    "driver": "bunsql",
+    "checks": [
+      {
+        "case": "echo",
+        "status": 200,
+        "body_sha256": "2905a66e09f19e1c250e37b20fa4669fbc47ec685c113a539a7e8dd1f0e7876f"
+      },
+      {
+        "case": "user",
+        "status": 200,
+        "body_sha256": "2be3138ebc3a0b7e17a9db9e7c4e07cbb036d169a99c896b5f5e963466c3647a"
+      },
+      {
+        "case": "me",
+        "status": 200,
+        "body_sha256": "2be3138ebc3a0b7e17a9db9e7c4e07cbb036d169a99c896b5f5e963466c3647a"
+      }
+    ],
+    "source_and_node_modules_hidden": true,
+    "cwd_has_no_dependencies": true,
+    "system_bins_only_on_path": true
+  },
+  {
+    "binary": "api-wired-jit",
+    "driver": "postgresjs",
+    "checks": [
+      {
+        "case": "echo",
+        "status": 200,
+        "body_sha256": "2905a66e09f19e1c250e37b20fa4669fbc47ec685c113a539a7e8dd1f0e7876f"
+      },
+      {
+        "case": "user",
+        "status": 200,
+        "body_sha256": "2be3138ebc3a0b7e17a9db9e7c4e07cbb036d169a99c896b5f5e963466c3647a"
+      },
+      {
+        "case": "me",
+        "status": 200,
+        "body_sha256": "2be3138ebc3a0b7e17a9db9e7c4e07cbb036d169a99c896b5f5e963466c3647a"
+      }
+    ],
+    "source_and_node_modules_hidden": true,
+    "cwd_has_no_dependencies": true,
+    "system_bins_only_on_path": true
+  },
+  {
+    "binary": "api-wired-native",
+    "driver": "postgresjs",
+    "checks": [
+      {
+        "case": "echo",
+        "status": 200,
+        "body_sha256": "2905a66e09f19e1c250e37b20fa4669fbc47ec685c113a539a7e8dd1f0e7876f"
+      },
+      {
+        "case": "user",
+        "status": 200,
+        "body_sha256": "2be3138ebc3a0b7e17a9db9e7c4e07cbb036d169a99c896b5f5e963466c3647a"
+      },
+      {
+        "case": "me",
+        "status": 200,
+        "body_sha256": "2be3138ebc3a0b7e17a9db9e7c4e07cbb036d169a99c896b5f5e963466c3647a"
+      }
+    ],
+    "source_and_node_modules_hidden": true,
+    "cwd_has_no_dependencies": true,
+    "system_bins_only_on_path": true
+  }
+]

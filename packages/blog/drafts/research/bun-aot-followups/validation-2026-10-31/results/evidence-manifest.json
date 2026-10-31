@@ -1,0 +1,165 @@
+{
+  "created_at": "2026-10-31T21:18:02.721403+00:00",
+  "compiler_revision": "1.4.4-canary.1+da867c60b",
+  "server_batches": 13,
+  "startup_observations": 312,
+  "timed_route_windows": 340,
+  "checked_timed_responses": 360095582,
+  "response_failures": 0,
+  "raw_validator_processes": 360,
+  "matching_output_validator_processes": 192,
+  "expanded_verdict_cases_per_configuration": 133,
+  "matching_full_result_cases_per_timed_configuration": 103,
+  "packaging_configurations": 7,
+  "scope": "One owner-operated Mac; no independent operator replication, maintainer acceptance or production capacity claim. Data copied unchanged except separately summarized/curated setup notes. Earlier CPU field labels are documented; raw values preserved.",
+  "files": {
+    "api/c1.json": {
+      "bytes": 433808,
+      "sha256": "0e67fb6275853826f30085afc77cd7c98b1f2ea06802bb14f16d7ca181de1097"
+    },
+    "api/c32.json": {
+      "bytes": 434726,
+      "sha256": "18c56cad2604428ac72b6dddabbc81bc526378b822dc6790c8e3ad7abd554497"
+    },
+    "api/load.json": {
+      "bytes": 3980834,
+      "sha256": "aeb1784574cbd775fb274239ced8fa7fe821e27f906448c2ea2b88c88fbe032f"
+    },
+    "api/noise.json": {
+      "bytes": 269931,
+      "sha256": "9632a9eac0332bcd84497d26ebcd1fc2739d905eab5beb3a6a522ed0f9ffe65c"
+    },
+    "api/parity.json": {
+      "bytes": 25088,
+      "sha256": "6a155e08663cfa9f2817143b63d28444d8ebd01c626fe31c4a8d2989cfd1c198"
+    },
+    "api/soak.json": {
+      "bytes": 415904,
+      "sha256": "6e308bacaca30b2e5a18748b967160c0f2e5250d0fbb0c196357282476d7bd20"
+    },
+    "api/startup.json": {
+      "bytes": 31706,
+      "sha256": "1f7d144fbee7476152dd2203baf41af60d1703d85f793328cd9611f2f0a32782"
+    },
+    "bytecode/load.json": {
+      "bytes": 978213,
+      "sha256": "96e3c9e62d9cb063ce60046cea7692b89dc39e12d629ceeafa9015dab3e9c0e9"
+    },
+    "bytecode/parity.json": {
+      "bytes": 20072,
+      "sha256": "99ffc8f11dbcfc847b0c8183245e3007de7b442495cf317e9a44ee970fa38722"
+    },
+    "bytecode/startup.json": {
+      "bytes": 28717,
+      "sha256": "1863059d315bdf95890d31616c2e2556a919cc55adaf5ca1a31c8e6a14312fd7"
+    },
+    "driver/load.json": {
+      "bytes": 868603,
+      "sha256": "0723a6ee989a0863f3d327f9a1b206124c6692e1ad107a2f531f6f7122ce5cd4"
+    },
+    "driver/parity.json": {
+      "bytes": 25108,
+      "sha256": "ec8a35ea5c9af0c993de65c2d90de8c920c35b4e934c3675e51eae62c608c4c5"
+    },
+    "expanded-checks/bytecode-esm-build.json": {
+      "bytes": 265,
+      "sha256": "f9a2cf37594d6e24c10e69da7f272c14903a5f9cad2b1345b13848d343e9b3b3"
+    },
+    "expanded-checks/commonjs-results.json": {
+      "bytes": 246,
+      "sha256": "eee64c68759e866c0d43cc435a87c64b168f037c7ff67ed1f57c93404c4c13b2"
+    },
+    "expanded-checks/deep-parity.json": {
+      "bytes": 713651,
+      "sha256": "89853e0c34f2e9f7499cbaec6396119b2727b0e34e84f513247f6272204ad83e"
+    },
+    "expanded-checks/deep-summary.json": {
+      "bytes": 43163,
+      "sha256": "c428f45ac1e63574de16b42efd50757f0a3052cba5084967e9317cea9f968283"
+    },
+    "framework/c1.json": {
+      "bytes": 433870,
+      "sha256": "7505c29929957a3858a3feab5d456a0f02529dd41e0779a6ef7937d3efa1103f"
+    },
+    "framework/c32.json": {
+      "bytes": 434602,
+      "sha256": "8f274cd8c979d82e24892c39fa4804a188398f166902caed904ea9cf0d038a57"
+    },
+    "framework/load.json": {
+      "bytes": 2229114,
+      "sha256": "8dda784b35de18e53bbdea79c423aee649cd4b3add276fc8be3cc3a023da1c62"
+    },
+    "framework/noise.json": {
+      "bytes": 135540,
+      "sha256": "bc1d5d7ef4585a5f84761cb549a5ca698a3aea9e51058e08010ca6cc997cb9eb"
+    },
+    "framework/parity.json": {
+      "bytes": 9662,
+      "sha256": "d85c1e46a8a5a8281af64c11cfcfd6d1c74a7a03c9f86d19c7e992005f08cacd"
+    },
+    "framework/soak.json": {
+      "bytes": 415575,
+      "sha256": "a60ef46175094ed195d4163c96f2d2d15e3db9bb8ca743a3a6df8d644d22ef53"
+    },
+    "framework/startup.json": {
+      "bytes": 47157,
+      "sha256": "8c9bafe919bf776009a1b65487b1c55df9dd7b82bae7fb4384197e33571e19dc"
+    },
+    "framework-bun.lock": {
+      "bytes": 1565,
+      "sha256": "d113a8d91e566947f6814f01ce163ea689dd6112cf77c091a4dc1ba31cbd5b6e"
+    },
+    "framework-package.json": {
+      "bytes": 120,
+      "sha256": "fc28c2f0ef4f798dfc02b77e1c6eeba354fbdc2d244fbfb8626605e26e326761"
+    },
+    "inputs-captured.json": {
+      "bytes": 9546,
+      "sha256": "0cfb0122b78e0e703d2a34adefc399e66416cabbc80e51e4a03ac4c276c69d51"
+    },
+    "inputs.json": {
+      "bytes": 5181,
+      "sha256": "034a695467de30af4a9160f8cbdd3fc9835d3581c71982e92f5d5251a5ba6ffb"
+    },
+    "packaging.json": {
+      "bytes": 4675,
+      "sha256": "024845a684861e9fc6e2c579699232ef096ca968566fb43de0ce6e62309f5de0"
+    },
+    "server-builds.json": {
+      "bytes": 3358,
+      "sha256": "a04c5d7de963cf20cac390490801fdd89410ebbc83d52e9316f7a2a2bca2b582"
+    },
+    "setup-observations.json": {
+      "bytes": 1194,
+      "sha256": "398980ca192cddb04911947ee4ab3926ccc0f0e0cda25e151a120f7941667ba2"
+    },
+    "summary.json": {
+      "bytes": 145238,
+      "sha256": "b0c79874e0c7f38775c4272aa18085c0d1f040934dfa6b4b5917584621337a46"
+    },
+    "validator/observations.json": {
+      "bytes": 152452,
+      "sha256": "d34dc8c8a48371979df2afa19b4e59b5b79c4f79bd7b438af8a929c41f50708f"
+    },
+    "validator/parity.json": {
+      "bytes": 360913,
+      "sha256": "c33e9cb4ec5b92cb041c780b064f4d0c2bed9f9deca26b6da9b728b97f1d5c31"
+    },
+    "validator/summary.json": {
+      "bytes": 26578,
+      "sha256": "ea4ec8827306fa28600df84f5b74b6490c2dfa1858029aeb2d454a482950b80c"
+    },
+    "validator-contract/observations.json": {
+      "bytes": 90626,
+      "sha256": "251b375c6b3bd8c9ac957a562574f0afae324604a0d08700b6ed025c10521e3a"
+    },
+    "validator-contract/parity.json": {
+      "bytes": 479873,
+      "sha256": "0dd55cd797ff020989c490f8eb52a2f190b9ceb39cd156cfe36dd6b0a63dde8c"
+    },
+    "validator-contract/summary.json": {
+      "bytes": 13133,
+      "sha256": "0a0465a6d53b746e292dfe5d33e2ee22fe3b3920b60d84fa287bb9552893f22d"
+    }
+  }
+}

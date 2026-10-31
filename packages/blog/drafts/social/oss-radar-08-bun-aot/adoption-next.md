@@ -1,6 +1,6 @@
 # Next adoption work: give someone a result they can use
 
-Prepared October 28, 2026. **Item 1 was posted October 29; item 5 was posted October 30**. The other proposals below remain unsent. [Execution receipt](execution-2026-10-29.md) also records the separately authorized Assaf pitch and historical-demo X post. This extends [the earlier evidence review](battle-tested-2026-10-28.md), rather than repeating the newsletter pitches and posts already executed.
+Prepared October 28, 2026. **Item 1 was posted October 29; item 5 was posted October 30**. October 31 owner direction superseded item 2 with an offer to do useful experiments for the authors; the earlier independent-run ask was not sent. Other proposals below remain unsent or on hold. [Execution receipt](execution-2026-10-29.md) also records the separately authorized Assaf pitch and historical-demo X post. This extends [the earlier evidence review](battle-tested-2026-10-28.md), rather than repeating the newsletter pitches and posts already executed.
 
 ## What the evidence actually supports
 
@@ -17,6 +17,8 @@ The useful result is a maintainer rerun, a correction, or a request to test one 
 This is the strongest next action because someone is already deciding the exact question our work addresses. It is established helper-first practice applied to a verified project need; the outcome is still unobserved.
 
 ## 2. Get one independent run, with a small ask
+
+**Superseded October 31:** Goga authorized us to run useful experiments for named authors and publish distilled findings. We sent ICE a specific offer to test a server case, and ata-validator's author a schema-testing offer with an initial result. The old message below remains an unsent historical draft; do not send it as a second ask. [Application trials, output-contract correction and publication gates](../../research/bun-aot-followups/validation-2026-10-31/00-plan.md). Native Gmail verified both outgoing messages. These are our own experiments and delivered invitations; an independent rerun, supplied case, acceptance or maintainer endorsement is not established.
 
 **Named reader:** Vorrapong Kertnat / ICE. His [M5 Bun-framework study](https://blog.icerust.dev/blog/bun-http-framework-benchmark-on-m5-air/) checks response correctness and reshuffles order after finding thermal effects. His [own about page](https://blog.icerust.dev/about/) provides contact. This verifies relevant experience and a public route, not interest or willingness to collaborate. His Elysia AOT setting is not Bun's new native compiler.
 
@@ -83,4 +85,4 @@ This remains an experiment in helping readers make a decision. Replies, tests co
 - A library-wide `aot` export campaign based on one 4% hashing difference. The source-export experiment is not a complete crypto-library test.
 - The repository URL embedded in `verifiablejs`'s package metadata was not accessible through the public GitHub checks. Do not invent a maintainer contact route; the existing Polkadot discussion can carry the finding.
 
-Item #1 is complete; #2 remains a proposal requiring authorization. Keep a manual record of replies, reruns, failures and decisions. No new service, tracking system, mass outreach or automated follow-up is needed.
+Item #1 is complete. Item #2's old ask is superseded by the two individually sent offers; replies and independent use remain unverified. Keep a manual record of replies, reruns, failures and decisions. No new service, tracking system, mass outreach or automated follow-up is needed.

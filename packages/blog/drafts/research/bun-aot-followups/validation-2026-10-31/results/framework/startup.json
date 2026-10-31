@@ -1,0 +1,1880 @@
+{
+  "suite": "framework",
+  "stage": "startup",
+  "concurrency": 8,
+  "seconds": 10,
+  "rows": [
+    {
+      "block": 0,
+      "position": 0,
+      "variant": "elysia-jit",
+      "ready_ms": 16.831082990393043,
+      "ready_memory": {
+        "user_ns": 278632,
+        "system_ns": 142649,
+        "rss_bytes": 24510464,
+        "physical_bytes": 11240072,
+        "lifetime_peak_physical_bytes": 11256456
+      }
+    },
+    {
+      "block": 0,
+      "position": 1,
+      "variant": "elysia-native",
+      "ready_ms": 10.292958002537489,
+      "ready_memory": {
+        "user_ns": 93321,
+        "system_ns": 105398,
+        "rss_bytes": 20086784,
+        "physical_bytes": 7717632,
+        "lifetime_peak_physical_bytes": 9765320
+      }
+    },
+    {
+      "block": 0,
+      "position": 2,
+      "variant": "elysia-plugin-jit",
+      "ready_ms": 14.999708975665271,
+      "ready_memory": {
+        "user_ns": 249634,
+        "system_ns": 130469,
+        "rss_bytes": 24379392,
+        "physical_bytes": 11403936,
+        "lifetime_peak_physical_bytes": 11403936
+      }
+    },
+    {
+      "block": 0,
+      "position": 3,
+      "variant": "elysia-plugin-native",
+      "ready_ms": 10.533624968957156,
+      "ready_memory": {
+        "user_ns": 93967,
+        "system_ns": 108152,
+        "rss_bytes": 19398656,
+        "physical_bytes": 7668456,
+        "lifetime_peak_physical_bytes": 9765320
+      }
+    },
+    {
+      "block": 0,
+      "position": 4,
+      "variant": "hono-jit",
+      "ready_ms": 13.845665962435305,
+      "ready_memory": {
+        "user_ns": 199662,
+        "system_ns": 141450,
+        "rss_bytes": 22773760,
+        "physical_bytes": 10060448,
+        "lifetime_peak_physical_bytes": 10060448
+      }
+    },
+    {
+      "block": 0,
+      "position": 5,
+      "variant": "hono-native",
+      "ready_ms": 12.494167021941394,
+      "ready_memory": {
+        "user_ns": 97758,
+        "system_ns": 126261,
+        "rss_bytes": 18038784,
+        "physical_bytes": 7357160,
+        "lifetime_peak_physical_bytes": 9765320
+      }
+    },
+    {
+      "block": 1,
+      "position": 0,
+      "variant": "elysia-native",
+      "ready_ms": 12.980250001419336,
+      "ready_memory": {
+        "user_ns": 107477,
+        "system_ns": 138111,
+        "rss_bytes": 20103168,
+        "physical_bytes": 7717608,
+        "lifetime_peak_physical_bytes": 9765320
+      }
+    },
+    {
+      "block": 1,
+      "position": 1,
+      "variant": "elysia-plugin-jit",
+      "ready_ms": 19.067625049501657,
+      "ready_memory": {
+        "user_ns": 288787,
+        "system_ns": 168520,
+        "rss_bytes": 23855104,
+        "physical_bytes": 10764936,
+        "lifetime_peak_physical_bytes": 10764936
+      }
+    },
+    {
+      "block": 1,
+      "position": 2,
+      "variant": "elysia-plugin-native",
+      "ready_ms": 10.494874964933842,
+      "ready_memory": {
+        "user_ns": 94924,
+        "system_ns": 109650,
+        "rss_bytes": 19415040,
+        "physical_bytes": 7635664,
+        "lifetime_peak_physical_bytes": 9765320
+      }
+    },
+    {
+      "block": 1,
+      "position": 3,
+      "variant": "hono-jit",
+      "ready_ms": 13.504667032975703,
+      "ready_memory": {
+        "user_ns": 189138,
+        "system_ns": 141179,
+        "rss_bytes": 22577152,
+        "physical_bytes": 9880200,
+        "lifetime_peak_physical_bytes": 9880200
+      }
+    },
+    {
+      "block": 1,
+      "position": 4,
+      "variant": "hono-native",
+      "ready_ms": 10.52729197544977,
+      "ready_memory": {
+        "user_ns": 93721,
+        "system_ns": 113974,
+        "rss_bytes": 18022400,
+        "physical_bytes": 7439104,
+        "lifetime_peak_physical_bytes": 9765320
+      }
+    },
+    {
+      "block": 1,
+      "position": 5,
+      "variant": "elysia-jit",
+      "ready_ms": 18.439500010572374,
+      "ready_memory": {
+        "user_ns": 312582,
+        "system_ns": 148130,
+        "rss_bytes": 25231360,
+        "physical_bytes": 11993760,
+        "lifetime_peak_physical_bytes": 12059296
+      }
+    },
+    {
+      "block": 2,
+      "position": 0,
+      "variant": "elysia-plugin-jit",
+      "ready_ms": 15.748124977108091,
+      "ready_memory": {
+        "user_ns": 264695,
+        "system_ns": 138163,
+        "rss_bytes": 24264704,
+        "physical_bytes": 11256480,
+        "lifetime_peak_physical_bytes": 11256480
+      }
+    },
+    {
+      "block": 2,
+      "position": 1,
+      "variant": "elysia-plugin-native",
+      "ready_ms": 10.343874979298562,
+      "ready_memory": {
+        "user_ns": 94421,
+        "system_ns": 110521,
+        "rss_bytes": 19398656,
+        "physical_bytes": 7668480,
+        "lifetime_peak_physical_bytes": 9765320
+      }
+    },
+    {
+      "block": 2,
+      "position": 2,
+      "variant": "hono-jit",
+      "ready_ms": 13.299125013872981,
+      "ready_memory": {
+        "user_ns": 187285,
+        "system_ns": 124720,
+        "rss_bytes": 22970368,
+        "physical_bytes": 9978504,
+        "lifetime_peak_physical_bytes": 9978504
+      }
+    },
+    {
+      "block": 2,
+      "position": 3,
+      "variant": "hono-native",
+      "ready_ms": 10.263125004712492,
+      "ready_memory": {
+        "user_ns": 89223,
+        "system_ns": 108464,
+        "rss_bytes": 18055168,
+        "physical_bytes": 7373544,
+        "lifetime_peak_physical_bytes": 9765320
+      }
+    },
+    {
+      "block": 2,
+      "position": 4,
+      "variant": "elysia-jit",
+      "ready_ms": 15.910166024696082,
+      "ready_memory": {
+        "user_ns": 267504,
+        "system_ns": 131895,
+        "rss_bytes": 25100288,
+        "physical_bytes": 11977352,
+        "lifetime_peak_physical_bytes": 11977352
+      }
+    },
+    {
+      "block": 2,
+      "position": 5,
+      "variant": "elysia-native",
+      "ready_ms": 10.025458002928644,
+      "ready_memory": {
+        "user_ns": 91290,
+        "system_ns": 105861,
+        "rss_bytes": 20037632,
+        "physical_bytes": 7684840,
+        "lifetime_peak_physical_bytes": 9765320
+      }
+    },
+    {
+      "block": 3,
+      "position": 0,
+      "variant": "elysia-plugin-native",
+      "ready_ms": 9.66229202458635,
+      "ready_memory": {
+        "user_ns": 85601,
+        "system_ns": 103061,
+        "rss_bytes": 19382272,
+        "physical_bytes": 7668480,
+        "lifetime_peak_physical_bytes": 9765320
+      }
+    },
+    {
+      "block": 3,
+      "position": 1,
+      "variant": "hono-jit",
+      "ready_ms": 13.087957981042564,
+      "ready_memory": {
+        "user_ns": 183745,
+        "system_ns": 121935,
+        "rss_bytes": 22593536,
+        "physical_bytes": 9863816,
+        "lifetime_peak_physical_bytes": 9863816
+      }
+    },
+    {
+      "block": 3,
+      "position": 2,
+      "variant": "hono-native",
+      "ready_ms": 10.551374987699091,
+      "ready_memory": {
+        "user_ns": 85390,
+        "system_ns": 100698,
+        "rss_bytes": 17956864,
+        "physical_bytes": 7324392,
+        "lifetime_peak_physical_bytes": 9765320
+      }
+    },
+    {
+      "block": 3,
+      "position": 3,
+      "variant": "elysia-jit",
+      "ready_ms": 16.043958021327853,
+      "ready_memory": {
+        "user_ns": 272564,
+        "system_ns": 134648,
+        "rss_bytes": 25182208,
+        "physical_bytes": 11960992,
+        "lifetime_peak_physical_bytes": 11993760
+      }
+    },
+    {
+      "block": 3,
+      "position": 4,
+      "variant": "elysia-native",
+      "ready_ms": 10.390874987933785,
+      "ready_memory": {
+        "user_ns": 93132,
+        "system_ns": 109900,
+        "rss_bytes": 20070400,
+        "physical_bytes": 7684840,
+        "lifetime_peak_physical_bytes": 9765320
+      }
+    },
+    {
+      "block": 3,
+      "position": 5,
+      "variant": "elysia-plugin-jit",
+      "ready_ms": 16.754583979491144,
+      "ready_memory": {
+        "user_ns": 270957,
+        "system_ns": 154460,
+        "rss_bytes": 23904256,
+        "physical_bytes": 10863216,
+        "lifetime_peak_physical_bytes": 10863216
+      }
+    },
+    {
+      "block": 4,
+      "position": 0,
+      "variant": "hono-jit",
+      "ready_ms": 13.536292011849582,
+      "ready_memory": {
+        "user_ns": 187280,
+        "system_ns": 150047,
+        "rss_bytes": 22347776,
+        "physical_bytes": 9814640,
+        "lifetime_peak_physical_bytes": 9814640
+      }
+    },
+    {
+      "block": 4,
+      "position": 1,
+      "variant": "hono-native",
+      "ready_ms": 11.023250001017004,
+      "ready_memory": {
+        "user_ns": 96702,
+        "system_ns": 117207,
+        "rss_bytes": 18055168,
+        "physical_bytes": 7471896,
+        "lifetime_peak_physical_bytes": 9765320
+      }
+    },
+    {
+      "block": 4,
+      "position": 2,
+      "variant": "elysia-jit",
+      "ready_ms": 17.20291597303003,
+      "ready_memory": {
+        "user_ns": 294143,
+        "system_ns": 146062,
+        "rss_bytes": 25182208,
+        "physical_bytes": 12059296,
+        "lifetime_peak_physical_bytes": 12059296
+      }
+    },
+    {
+      "block": 4,
+      "position": 3,
+      "variant": "elysia-native",
+      "ready_ms": 12.114250042941421,
+      "ready_memory": {
+        "user_ns": 117165,
+        "system_ns": 124663,
+        "rss_bytes": 20103168,
+        "physical_bytes": 7652072,
+        "lifetime_peak_physical_bytes": 9765320
+      }
+    },
+    {
+      "block": 4,
+      "position": 4,
+      "variant": "elysia-plugin-jit",
+      "ready_ms": 17.765750002581626,
+      "ready_memory": {
+        "user_ns": 268030,
+        "system_ns": 155942,
+        "rss_bytes": 24395776,
+        "physical_bytes": 11485880,
+        "lifetime_peak_physical_bytes": 11485880
+      }
+    },
+    {
+      "block": 4,
+      "position": 5,
+      "variant": "elysia-plugin-native",
+      "ready_ms": 12.501167017035186,
+      "ready_memory": {
+        "user_ns": 103856,
+        "system_ns": 126976,
+        "rss_bytes": 19398656,
+        "physical_bytes": 7553744,
+        "lifetime_peak_physical_bytes": 9765320
+      }
+    },
+    {
+      "block": 5,
+      "position": 0,
+      "variant": "hono-native",
+      "ready_ms": 10.638375009875745,
+      "ready_memory": {
+        "user_ns": 91513,
+        "system_ns": 112500,
+        "rss_bytes": 18038784,
+        "physical_bytes": 7373568,
+        "lifetime_peak_physical_bytes": 9765320
+      }
+    },
+    {
+      "block": 5,
+      "position": 1,
+      "variant": "elysia-jit",
+      "ready_ms": 16.050250036641955,
+      "ready_memory": {
+        "user_ns": 270034,
+        "system_ns": 131682,
+        "rss_bytes": 25018368,
+        "physical_bytes": 11813512,
+        "lifetime_peak_physical_bytes": 11846280
+      }
+    },
+    {
+      "block": 5,
+      "position": 2,
+      "variant": "elysia-native",
+      "ready_ms": 10.710250004194677,
+      "ready_memory": {
+        "user_ns": 96027,
+        "system_ns": 112301,
+        "rss_bytes": 20086784,
+        "physical_bytes": 7734016,
+        "lifetime_peak_physical_bytes": 9765320
+      }
+    },
+    {
+      "block": 5,
+      "position": 3,
+      "variant": "elysia-plugin-jit",
+      "ready_ms": 15.395125024951994,
+      "ready_memory": {
+        "user_ns": 256048,
+        "system_ns": 137922,
+        "rss_bytes": 24510464,
+        "physical_bytes": 11453064,
+        "lifetime_peak_physical_bytes": 11453064
+      }
+    },
+    {
+      "block": 5,
+      "position": 4,
+      "variant": "elysia-plugin-native",
+      "ready_ms": 10.258750000502914,
+      "ready_memory": {
+        "user_ns": 91879,
+        "system_ns": 104648,
+        "rss_bytes": 19415040,
+        "physical_bytes": 7652072,
+        "lifetime_peak_physical_bytes": 9765320
+      }
+    },
+    {
+      "block": 5,
+      "position": 5,
+      "variant": "hono-jit",
+      "ready_ms": 13.09954101452604,
+      "ready_memory": {
+        "user_ns": 184464,
+        "system_ns": 130626,
+        "rss_bytes": 22872064,
+        "physical_bytes": 10142320,
+        "lifetime_peak_physical_bytes": 10142320
+      }
+    },
+    {
+      "block": 6,
+      "position": 0,
+      "variant": "hono-native",
+      "ready_ms": 10.156167030800134,
+      "ready_memory": {
+        "user_ns": 87440,
+        "system_ns": 101071,
+        "rss_bytes": 18022400,
+        "physical_bytes": 7340776,
+        "lifetime_peak_physical_bytes": 9765320
+      }
+    },
+    {
+      "block": 6,
+      "position": 1,
+      "variant": "hono-jit",
+      "ready_ms": 13.101875025313348,
+      "ready_memory": {
+        "user_ns": 185379,
+        "system_ns": 126433,
+        "rss_bytes": 22822912,
+        "physical_bytes": 10093192,
+        "lifetime_peak_physical_bytes": 10093192
+      }
+    },
+    {
+      "block": 6,
+      "position": 2,
+      "variant": "elysia-plugin-native",
+      "ready_ms": 10.608957963995636,
+      "ready_memory": {
+        "user_ns": 94071,
+        "system_ns": 113272,
+        "rss_bytes": 19382272,
+        "physical_bytes": 7619256,
+        "lifetime_peak_physical_bytes": 9765320
+      }
+    },
+    {
+      "block": 6,
+      "position": 3,
+      "variant": "elysia-plugin-jit",
+      "ready_ms": 15.881750034168363,
+      "ready_memory": {
+        "user_ns": 259792,
+        "system_ns": 135477,
+        "rss_bytes": 23953408,
+        "physical_bytes": 10879648,
+        "lifetime_peak_physical_bytes": 10879648
+      }
+    },
+    {
+      "block": 6,
+      "position": 4,
+      "variant": "elysia-native",
+      "ready_ms": 10.694249998778105,
+      "ready_memory": {
+        "user_ns": 96725,
+        "system_ns": 112454,
+        "rss_bytes": 20086784,
+        "physical_bytes": 7750400,
+        "lifetime_peak_physical_bytes": 9765320
+      }
+    },
+    {
+      "block": 6,
+      "position": 5,
+      "variant": "elysia-jit",
+      "ready_ms": 16.358040971681476,
+      "ready_memory": {
+        "user_ns": 275294,
+        "system_ns": 138256,
+        "rss_bytes": 24494080,
+        "physical_bytes": 11272840,
+        "lifetime_peak_physical_bytes": 11305608
+      }
+    },
+    {
+      "block": 7,
+      "position": 0,
+      "variant": "elysia-jit",
+      "ready_ms": 16.44391700392589,
+      "ready_memory": {
+        "user_ns": 279973,
+        "system_ns": 137698,
+        "rss_bytes": 25214976,
+        "physical_bytes": 12026528,
+        "lifetime_peak_physical_bytes": 12026528
+      }
+    },
+    {
+      "block": 7,
+      "position": 1,
+      "variant": "hono-native",
+      "ready_ms": 10.57087501976639,
+      "ready_memory": {
+        "user_ns": 88528,
+        "system_ns": 101316,
+        "rss_bytes": 18022400,
+        "physical_bytes": 7406336,
+        "lifetime_peak_physical_bytes": 9765320
+      }
+    },
+    {
+      "block": 7,
+      "position": 2,
+      "variant": "hono-jit",
+      "ready_ms": 13.206332980189472,
+      "ready_memory": {
+        "user_ns": 179665,
+        "system_ns": 130471,
+        "rss_bytes": 22446080,
+        "physical_bytes": 9781896,
+        "lifetime_peak_physical_bytes": 9781896
+      }
+    },
+    {
+      "block": 7,
+      "position": 3,
+      "variant": "elysia-plugin-native",
+      "ready_ms": 10.379792016465217,
+      "ready_memory": {
+        "user_ns": 89849,
+        "system_ns": 114909,
+        "rss_bytes": 19415040,
+        "physical_bytes": 7652072,
+        "lifetime_peak_physical_bytes": 9765320
+      }
+    },
+    {
+      "block": 7,
+      "position": 4,
+      "variant": "elysia-plugin-jit",
+      "ready_ms": 15.665667015127838,
+      "ready_memory": {
+        "user_ns": 255409,
+        "system_ns": 135669,
+        "rss_bytes": 23805952,
+        "physical_bytes": 10781344,
+        "lifetime_peak_physical_bytes": 10797728
+      }
+    },
+    {
+      "block": 7,
+      "position": 5,
+      "variant": "elysia-native",
+      "ready_ms": 10.50766697153449,
+      "ready_memory": {
+        "user_ns": 93950,
+        "system_ns": 111092,
+        "rss_bytes": 20070400,
+        "physical_bytes": 7734016,
+        "lifetime_peak_physical_bytes": 9765320
+      }
+    },
+    {
+      "block": 8,
+      "position": 0,
+      "variant": "elysia-native",
+      "ready_ms": 10.149708017706871,
+      "ready_memory": {
+        "user_ns": 91625,
+        "system_ns": 117669,
+        "rss_bytes": 20119552,
+        "physical_bytes": 7733992,
+        "lifetime_peak_physical_bytes": 9765320
+      }
+    },
+    {
+      "block": 8,
+      "position": 1,
+      "variant": "elysia-jit",
+      "ready_ms": 16.44541701534763,
+      "ready_memory": {
+        "user_ns": 278365,
+        "system_ns": 138741,
+        "rss_bytes": 24559616,
+        "physical_bytes": 11354784,
+        "lifetime_peak_physical_bytes": 11354784
+      }
+    },
+    {
+      "block": 8,
+      "position": 2,
+      "variant": "hono-native",
+      "ready_ms": 10.97312499769032,
+      "ready_memory": {
+        "user_ns": 89525,
+        "system_ns": 108278,
+        "rss_bytes": 18038784,
+        "physical_bytes": 7357160,
+        "lifetime_peak_physical_bytes": 9765320
+      }
+    },
+    {
+      "block": 8,
+      "position": 3,
+      "variant": "hono-jit",
+      "ready_ms": 13.142750016413629,
+      "ready_memory": {
+        "user_ns": 190025,
+        "system_ns": 125790,
+        "rss_bytes": 22921216,
+        "physical_bytes": 9994888,
+        "lifetime_peak_physical_bytes": 9994888
+      }
+    },
+    {
+      "block": 8,
+      "position": 4,
+      "variant": "elysia-plugin-native",
+      "ready_ms": 10.470000037457794,
+      "ready_memory": {
+        "user_ns": 95342,
+        "system_ns": 115669,
+        "rss_bytes": 19398656,
+        "physical_bytes": 7635664,
+        "lifetime_peak_physical_bytes": 9765320
+      }
+    },
+    {
+      "block": 8,
+      "position": 5,
+      "variant": "elysia-plugin-jit",
+      "ready_ms": 15.29508299427107,
+      "ready_memory": {
+        "user_ns": 251619,
+        "system_ns": 132144,
+        "rss_bytes": 24379392,
+        "physical_bytes": 11403936,
+        "lifetime_peak_physical_bytes": 11403936
+      }
+    },
+    {
+      "block": 9,
+      "position": 0,
+      "variant": "elysia-plugin-jit",
+      "ready_ms": 17.92133296839893,
+      "ready_memory": {
+        "user_ns": 283114,
+        "system_ns": 161890,
+        "rss_bytes": 23904256,
+        "physical_bytes": 10863216,
+        "lifetime_peak_physical_bytes": 10863216
+      }
+    },
+    {
+      "block": 9,
+      "position": 1,
+      "variant": "elysia-native",
+      "ready_ms": 11.284541978966445,
+      "ready_memory": {
+        "user_ns": 97652,
+        "system_ns": 123677,
+        "rss_bytes": 20135936,
+        "physical_bytes": 7766784,
+        "lifetime_peak_physical_bytes": 9765320
+      }
+    },
+    {
+      "block": 9,
+      "position": 2,
+      "variant": "elysia-jit",
+      "ready_ms": 17.341792001388967,
+      "ready_memory": {
+        "user_ns": 292477,
+        "system_ns": 146223,
+        "rss_bytes": 24608768,
+        "physical_bytes": 11371144,
+        "lifetime_peak_physical_bytes": 11371144
+      }
+    },
+    {
+      "block": 9,
+      "position": 3,
+      "variant": "hono-native",
+      "ready_ms": 10.588374978397042,
+      "ready_memory": {
+        "user_ns": 91044,
+        "system_ns": 116476,
+        "rss_bytes": 18038784,
+        "physical_bytes": 7340752,
+        "lifetime_peak_physical_bytes": 9765320
+      }
+    },
+    {
+      "block": 9,
+      "position": 4,
+      "variant": "hono-jit",
+      "ready_ms": 12.751792033668607,
+      "ready_memory": {
+        "user_ns": 183123,
+        "system_ns": 130050,
+        "rss_bytes": 22528000,
+        "physical_bytes": 9863840,
+        "lifetime_peak_physical_bytes": 9847456
+      }
+    },
+    {
+      "block": 9,
+      "position": 5,
+      "variant": "elysia-plugin-native",
+      "ready_ms": 10.619041044265032,
+      "ready_memory": {
+        "user_ns": 95241,
+        "system_ns": 128727,
+        "rss_bytes": 19365888,
+        "physical_bytes": 7635688,
+        "lifetime_peak_physical_bytes": 9765320
+      }
+    },
+    {
+      "block": 10,
+      "position": 0,
+      "variant": "elysia-plugin-native",
+      "ready_ms": 10.198833013419062,
+      "ready_memory": {
+        "user_ns": 93514,
+        "system_ns": 105349,
+        "rss_bytes": 19398656,
+        "physical_bytes": 7684864,
+        "lifetime_peak_physical_bytes": 9765320
+      }
+    },
+    {
+      "block": 10,
+      "position": 1,
+      "variant": "elysia-plugin-jit",
+      "ready_ms": 16.17404102580622,
+      "ready_memory": {
+        "user_ns": 259761,
+        "system_ns": 153566,
+        "rss_bytes": 24412160,
+        "physical_bytes": 11420320,
+        "lifetime_peak_physical_bytes": 11453088
+      }
+    },
+    {
+      "block": 10,
+      "position": 2,
+      "variant": "elysia-native",
+      "ready_ms": 10.827291989699006,
+      "ready_memory": {
+        "user_ns": 94713,
+        "system_ns": 112664,
+        "rss_bytes": 20054016,
+        "physical_bytes": 7684816,
+        "lifetime_peak_physical_bytes": 9765320
+      }
+    },
+    {
+      "block": 10,
+      "position": 3,
+      "variant": "elysia-jit",
+      "ready_ms": 15.978582960087806,
+      "ready_memory": {
+        "user_ns": 272555,
+        "system_ns": 150198,
+        "rss_bytes": 25018368,
+        "physical_bytes": 11862664,
+        "lifetime_peak_physical_bytes": 11895432
+      }
+    },
+    {
+      "block": 10,
+      "position": 4,
+      "variant": "hono-native",
+      "ready_ms": 10.4585419758223,
+      "ready_memory": {
+        "user_ns": 87107,
+        "system_ns": 104684,
+        "rss_bytes": 17989632,
+        "physical_bytes": 7340776,
+        "lifetime_peak_physical_bytes": 9765320
+      }
+    },
+    {
+      "block": 10,
+      "position": 5,
+      "variant": "hono-jit",
+      "ready_ms": 13.271042029373348,
+      "ready_memory": {
+        "user_ns": 185023,
+        "system_ns": 124790,
+        "rss_bytes": 23314432,
+        "physical_bytes": 10470048,
+        "lifetime_peak_physical_bytes": 10470048
+      }
+    },
+    {
+      "block": 11,
+      "position": 0,
+      "variant": "hono-jit",
+      "ready_ms": 13.41433305060491,
+      "ready_memory": {
+        "user_ns": 188446,
+        "system_ns": 126682,
+        "rss_bytes": 22855680,
+        "physical_bytes": 10060424,
+        "lifetime_peak_physical_bytes": 10060424
+      }
+    },
+    {
+      "block": 11,
+      "position": 1,
+      "variant": "elysia-plugin-native",
+      "ready_ms": 10.09774999693036,
+      "ready_memory": {
+        "user_ns": 91170,
+        "system_ns": 105141,
+        "rss_bytes": 19382272,
+        "physical_bytes": 7684888,
+        "lifetime_peak_physical_bytes": 9765320
+      }
+    },
+    {
+      "block": 11,
+      "position": 2,
+      "variant": "elysia-plugin-jit",
+      "ready_ms": 14.725000015459955,
+      "ready_memory": {
+        "user_ns": 253396,
+        "system_ns": 122073,
+        "rss_bytes": 24444928,
+        "physical_bytes": 11403936,
+        "lifetime_peak_physical_bytes": 11436704
+      }
+    },
+    {
+      "block": 11,
+      "position": 3,
+      "variant": "elysia-native",
+      "ready_ms": 10.169583023525774,
+      "ready_memory": {
+        "user_ns": 92346,
+        "system_ns": 102829,
+        "rss_bytes": 20119552,
+        "physical_bytes": 7684864,
+        "lifetime_peak_physical_bytes": 9765320
+      }
+    },
+    {
+      "block": 11,
+      "position": 4,
+      "variant": "elysia-jit",
+      "ready_ms": 15.92595799593255,
+      "ready_memory": {
+        "user_ns": 274656,
+        "system_ns": 132469,
+        "rss_bytes": 25018368,
+        "physical_bytes": 11797104,
+        "lifetime_peak_physical_bytes": 11829872
+      }
+    },
+    {
+      "block": 11,
+      "position": 5,
+      "variant": "hono-native",
+      "ready_ms": 10.529999970458448,
+      "ready_memory": {
+        "user_ns": 87313,
+        "system_ns": 104330,
+        "rss_bytes": 18006016,
+        "physical_bytes": 7389952,
+        "lifetime_peak_physical_bytes": 9765320
+      }
+    },
+    {
+      "block": 12,
+      "position": 0,
+      "variant": "elysia-jit",
+      "ready_ms": 15.801708970684558,
+      "ready_memory": {
+        "user_ns": 274373,
+        "system_ns": 125025,
+        "rss_bytes": 25149440,
+        "physical_bytes": 12026504,
+        "lifetime_peak_physical_bytes": 12026504
+      }
+    },
+    {
+      "block": 12,
+      "position": 1,
+      "variant": "elysia-native",
+      "ready_ms": 10.194834030698985,
+      "ready_memory": {
+        "user_ns": 92759,
+        "system_ns": 104506,
+        "rss_bytes": 20070400,
+        "physical_bytes": 7701200,
+        "lifetime_peak_physical_bytes": 9765320
+      }
+    },
+    {
+      "block": 12,
+      "position": 2,
+      "variant": "elysia-plugin-jit",
+      "ready_ms": 15.176458051428199,
+      "ready_memory": {
+        "user_ns": 252438,
+        "system_ns": 130332,
+        "rss_bytes": 23756800,
+        "physical_bytes": 10699424,
+        "lifetime_peak_physical_bytes": 10699424
+      }
+    },
+    {
+      "block": 12,
+      "position": 3,
+      "variant": "elysia-plugin-native",
+      "ready_ms": 10.171666974201798,
+      "ready_memory": {
+        "user_ns": 93195,
+        "system_ns": 103167,
+        "rss_bytes": 19365888,
+        "physical_bytes": 7635688,
+        "lifetime_peak_physical_bytes": 9765320
+      }
+    },
+    {
+      "block": 12,
+      "position": 4,
+      "variant": "hono-jit",
+      "ready_ms": 13.229999982286245,
+      "ready_memory": {
+        "user_ns": 187260,
+        "system_ns": 130341,
+        "rss_bytes": 22495232,
+        "physical_bytes": 9863840,
+        "lifetime_peak_physical_bytes": 9863840
+      }
+    },
+    {
+      "block": 12,
+      "position": 5,
+      "variant": "hono-native",
+      "ready_ms": 10.604582959786057,
+      "ready_memory": {
+        "user_ns": 90719,
+        "system_ns": 99799,
+        "rss_bytes": 17973248,
+        "physical_bytes": 7324368,
+        "lifetime_peak_physical_bytes": 9765320
+      }
+    },
+    {
+      "block": 13,
+      "position": 0,
+      "variant": "elysia-native",
+      "ready_ms": 10.319042019546032,
+      "ready_memory": {
+        "user_ns": 91315,
+        "system_ns": 107799,
+        "rss_bytes": 20054016,
+        "physical_bytes": 7701224,
+        "lifetime_peak_physical_bytes": 9765320
+      }
+    },
+    {
+      "block": 13,
+      "position": 1,
+      "variant": "elysia-plugin-jit",
+      "ready_ms": 15.442500007338822,
+      "ready_memory": {
+        "user_ns": 262840,
+        "system_ns": 131732,
+        "rss_bytes": 24559616,
+        "physical_bytes": 11518600,
+        "lifetime_peak_physical_bytes": 11534984
+      }
+    },
+    {
+      "block": 13,
+      "position": 2,
+      "variant": "elysia-plugin-native",
+      "ready_ms": 10.22266602376476,
+      "ready_memory": {
+        "user_ns": 91189,
+        "system_ns": 105218,
+        "rss_bytes": 19382272,
+        "physical_bytes": 7635688,
+        "lifetime_peak_physical_bytes": 9765320
+      }
+    },
+    {
+      "block": 13,
+      "position": 3,
+      "variant": "hono-jit",
+      "ready_ms": 12.214041023980826,
+      "ready_memory": {
+        "user_ns": 186128,
+        "system_ns": 127464,
+        "rss_bytes": 22888448,
+        "physical_bytes": 10060448,
+        "lifetime_peak_physical_bytes": 10060448
+      }
+    },
+    {
+      "block": 13,
+      "position": 4,
+      "variant": "hono-native",
+      "ready_ms": 10.434208030346781,
+      "ready_memory": {
+        "user_ns": 87223,
+        "system_ns": 101392,
+        "rss_bytes": 18038784,
+        "physical_bytes": 7357160,
+        "lifetime_peak_physical_bytes": 9765320
+      }
+    },
+    {
+      "block": 13,
+      "position": 5,
+      "variant": "elysia-jit",
+      "ready_ms": 16.51775004575029,
+      "ready_memory": {
+        "user_ns": 276851,
+        "system_ns": 135833,
+        "rss_bytes": 25083904,
+        "physical_bytes": 11928200,
+        "lifetime_peak_physical_bytes": 11928200
+      }
+    },
+    {
+      "block": 14,
+      "position": 0,
+      "variant": "elysia-plugin-jit",
+      "ready_ms": 15.339583973400295,
+      "ready_memory": {
+        "user_ns": 252675,
+        "system_ns": 126650,
+        "rss_bytes": 23773184,
+        "physical_bytes": 10764960,
+        "lifetime_peak_physical_bytes": 10764960
+      }
+    },
+    {
+      "block": 14,
+      "position": 1,
+      "variant": "elysia-plugin-native",
+      "ready_ms": 10.128542024176568,
+      "ready_memory": {
+        "user_ns": 91404,
+        "system_ns": 103687,
+        "rss_bytes": 19431424,
+        "physical_bytes": 7734040,
+        "lifetime_peak_physical_bytes": 9765320
+      }
+    },
+    {
+      "block": 14,
+      "position": 2,
+      "variant": "hono-jit",
+      "ready_ms": 12.934208032675087,
+      "ready_memory": {
+        "user_ns": 185201,
+        "system_ns": 125822,
+        "rss_bytes": 22577152,
+        "physical_bytes": 9912968,
+        "lifetime_peak_physical_bytes": 9912968
+      }
+    },
+    {
+      "block": 14,
+      "position": 3,
+      "variant": "hono-native",
+      "ready_ms": 10.466542036738247,
+      "ready_memory": {
+        "user_ns": 85600,
+        "system_ns": 102819,
+        "rss_bytes": 17989632,
+        "physical_bytes": 7324368,
+        "lifetime_peak_physical_bytes": 9765320
+      }
+    },
+    {
+      "block": 14,
+      "position": 4,
+      "variant": "elysia-jit",
+      "ready_ms": 15.728666039649397,
+      "ready_memory": {
+        "user_ns": 268905,
+        "system_ns": 128023,
+        "rss_bytes": 24428544,
+        "physical_bytes": 11240072,
+        "lifetime_peak_physical_bytes": 11240072
+      }
+    },
+    {
+      "block": 14,
+      "position": 5,
+      "variant": "elysia-native",
+      "ready_ms": 10.06208301987499,
+      "ready_memory": {
+        "user_ns": 91444,
+        "system_ns": 104279,
+        "rss_bytes": 20119552,
+        "physical_bytes": 7750400,
+        "lifetime_peak_physical_bytes": 9765320
+      }
+    },
+    {
+      "block": 15,
+      "position": 0,
+      "variant": "elysia-plugin-native",
+      "ready_ms": 10.165208019316196,
+      "ready_memory": {
+        "user_ns": 87548,
+        "system_ns": 115822,
+        "rss_bytes": 19349504,
+        "physical_bytes": 7537384,
+        "lifetime_peak_physical_bytes": 9765320
+      }
+    },
+    {
+      "block": 15,
+      "position": 1,
+      "variant": "hono-jit",
+      "ready_ms": 13.208082993514836,
+      "ready_memory": {
+        "user_ns": 184970,
+        "system_ns": 124922,
+        "rss_bytes": 23281664,
+        "physical_bytes": 10404512,
+        "lifetime_peak_physical_bytes": 10404512
+      }
+    },
+    {
+      "block": 15,
+      "position": 2,
+      "variant": "hono-native",
+      "ready_ms": 10.406916961073875,
+      "ready_memory": {
+        "user_ns": 86125,
+        "system_ns": 101681,
+        "rss_bytes": 17956864,
+        "physical_bytes": 7324392,
+        "lifetime_peak_physical_bytes": 9765320
+      }
+    },
+    {
+      "block": 15,
+      "position": 3,
+      "variant": "elysia-jit",
+      "ready_ms": 16.30970899714157,
+      "ready_memory": {
+        "user_ns": 275379,
+        "system_ns": 128048,
+        "rss_bytes": 24494080,
+        "physical_bytes": 11338400,
+        "lifetime_peak_physical_bytes": 11338400
+      }
+    },
+    {
+      "block": 15,
+      "position": 4,
+      "variant": "elysia-native",
+      "ready_ms": 10.267958976328373,
+      "ready_memory": {
+        "user_ns": 91101,
+        "system_ns": 107318,
+        "rss_bytes": 20086784,
+        "physical_bytes": 7717608,
+        "lifetime_peak_physical_bytes": 9765320
+      }
+    },
+    {
+      "block": 15,
+      "position": 5,
+      "variant": "elysia-plugin-jit",
+      "ready_ms": 14.71879199380055,
+      "ready_memory": {
+        "user_ns": 245116,
+        "system_ns": 126722,
+        "rss_bytes": 24510464,
+        "physical_bytes": 11518600,
+        "lifetime_peak_physical_bytes": 11518600
+      }
+    },
+    {
+      "block": 16,
+      "position": 0,
+      "variant": "hono-jit",
+      "ready_ms": 12.924999988172203,
+      "ready_memory": {
+        "user_ns": 182982,
+        "system_ns": 122791,
+        "rss_bytes": 23199744,
+        "physical_bytes": 10437256,
+        "lifetime_peak_physical_bytes": 10437256
+      }
+    },
+    {
+      "block": 16,
+      "position": 1,
+      "variant": "hono-native",
+      "ready_ms": 10.293458006344736,
+      "ready_memory": {
+        "user_ns": 86966,
+        "system_ns": 107293,
+        "rss_bytes": 17989632,
+        "physical_bytes": 7357160,
+        "lifetime_peak_physical_bytes": 9765320
+      }
+    },
+    {
+      "block": 16,
+      "position": 2,
+      "variant": "elysia-jit",
+      "ready_ms": 15.585375018417835,
+      "ready_memory": {
+        "user_ns": 270895,
+        "system_ns": 123333,
+        "rss_bytes": 25018368,
+        "physical_bytes": 11813488,
+        "lifetime_peak_physical_bytes": 11879024
+      }
+    },
+    {
+      "block": 16,
+      "position": 3,
+      "variant": "elysia-native",
+      "ready_ms": 10.297250002622604,
+      "ready_memory": {
+        "user_ns": 93237,
+        "system_ns": 107408,
+        "rss_bytes": 20086784,
+        "physical_bytes": 7750400,
+        "lifetime_peak_physical_bytes": 9765320
+      }
+    },
+    {
+      "block": 16,
+      "position": 4,
+      "variant": "elysia-plugin-jit",
+      "ready_ms": 15.18962497357279,
+      "ready_memory": {
+        "user_ns": 246270,
+        "system_ns": 132181,
+        "rss_bytes": 24559616,
+        "physical_bytes": 11600544,
+        "lifetime_peak_physical_bytes": 11600544
+      }
+    },
+    {
+      "block": 16,
+      "position": 5,
+      "variant": "elysia-plugin-native",
+      "ready_ms": 10.41254197480157,
+      "ready_memory": {
+        "user_ns": 92654,
+        "system_ns": 107717,
+        "rss_bytes": 19398656,
+        "physical_bytes": 7684864,
+        "lifetime_peak_physical_bytes": 9765320
+      }
+    },
+    {
+      "block": 17,
+      "position": 0,
+      "variant": "hono-native",
+      "ready_ms": 10.241999989375472,
+      "ready_memory": {
+        "user_ns": 86965,
+        "system_ns": 100261,
+        "rss_bytes": 18006016,
+        "physical_bytes": 7357160,
+        "lifetime_peak_physical_bytes": 9765320
+      }
+    },
+    {
+      "block": 17,
+      "position": 1,
+      "variant": "elysia-jit",
+      "ready_ms": 15.830916992854327,
+      "ready_memory": {
+        "user_ns": 269677,
+        "system_ns": 129040,
+        "rss_bytes": 25083904,
+        "physical_bytes": 11960968,
+        "lifetime_peak_physical_bytes": 11960968
+      }
+    },
+    {
+      "block": 17,
+      "position": 2,
+      "variant": "elysia-native",
+      "ready_ms": 9.946541977114975,
+      "ready_memory": {
+        "user_ns": 91941,
+        "system_ns": 105592,
+        "rss_bytes": 20070400,
+        "physical_bytes": 7717608,
+        "lifetime_peak_physical_bytes": 9765320
+      }
+    },
+    {
+      "block": 17,
+      "position": 3,
+      "variant": "elysia-plugin-jit",
+      "ready_ms": 15.13454201631248,
+      "ready_memory": {
+        "user_ns": 250728,
+        "system_ns": 127067,
+        "rss_bytes": 24494080,
+        "physical_bytes": 11469448,
+        "lifetime_peak_physical_bytes": 11469448
+      }
+    },
+    {
+      "block": 17,
+      "position": 4,
+      "variant": "elysia-plugin-native",
+      "ready_ms": 10.126832989044487,
+      "ready_memory": {
+        "user_ns": 91662,
+        "system_ns": 102505,
+        "rss_bytes": 19398656,
+        "physical_bytes": 7668480,
+        "lifetime_peak_physical_bytes": 9765320
+      }
+    },
+    {
+      "block": 17,
+      "position": 5,
+      "variant": "hono-jit",
+      "ready_ms": 13.367458013817668,
+      "ready_memory": {
+        "user_ns": 180907,
+        "system_ns": 124149,
+        "rss_bytes": 22511616,
+        "physical_bytes": 9863840,
+        "lifetime_peak_physical_bytes": 9863840
+      }
+    },
+    {
+      "block": 18,
+      "position": 0,
+      "variant": "hono-native",
+      "ready_ms": 10.553999978583306,
+      "ready_memory": {
+        "user_ns": 84031,
+        "system_ns": 103288,
+        "rss_bytes": 18006016,
+        "physical_bytes": 7373568,
+        "lifetime_peak_physical_bytes": 9765320
+      }
+    },
+    {
+      "block": 18,
+      "position": 1,
+      "variant": "hono-jit",
+      "ready_ms": 12.839792005252093,
+      "ready_memory": {
+        "user_ns": 184249,
+        "system_ns": 122251,
+        "rss_bytes": 22888448,
+        "physical_bytes": 10011248,
+        "lifetime_peak_physical_bytes": 10011248
+      }
+    },
+    {
+      "block": 18,
+      "position": 2,
+      "variant": "elysia-plugin-native",
+      "ready_ms": 9.90583299426362,
+      "ready_memory": {
+        "user_ns": 91400,
+        "system_ns": 100165,
+        "rss_bytes": 19398656,
+        "physical_bytes": 7635664,
+        "lifetime_peak_physical_bytes": 9765320
+      }
+    },
+    {
+      "block": 18,
+      "position": 3,
+      "variant": "elysia-plugin-jit",
+      "ready_ms": 15.405250014737248,
+      "ready_memory": {
+        "user_ns": 255961,
+        "system_ns": 132610,
+        "rss_bytes": 24657920,
+        "physical_bytes": 11600544,
+        "lifetime_peak_physical_bytes": 11600544
+      }
+    },
+    {
+      "block": 18,
+      "position": 4,
+      "variant": "elysia-native",
+      "ready_ms": 9.81099996715784,
+      "ready_memory": {
+        "user_ns": 90334,
+        "system_ns": 103474,
+        "rss_bytes": 20086784,
+        "physical_bytes": 7750400,
+        "lifetime_peak_physical_bytes": 9765320
+      }
+    },
+    {
+      "block": 18,
+      "position": 5,
+      "variant": "elysia-jit",
+      "ready_ms": 15.810750017408282,
+      "ready_memory": {
+        "user_ns": 267477,
+        "system_ns": 122131,
+        "rss_bytes": 24625152,
+        "physical_bytes": 11403888,
+        "lifetime_peak_physical_bytes": 11436656
+      }
+    },
+    {
+      "block": 19,
+      "position": 0,
+      "variant": "elysia-jit",
+      "ready_ms": 15.582541993353516,
+      "ready_memory": {
+        "user_ns": 267833,
+        "system_ns": 132100,
+        "rss_bytes": 24592384,
+        "physical_bytes": 11371144,
+        "lifetime_peak_physical_bytes": 11403912
+      }
+    },
+    {
+      "block": 19,
+      "position": 1,
+      "variant": "hono-native",
+      "ready_ms": 10.624249989632517,
+      "ready_memory": {
+        "user_ns": 87244,
+        "system_ns": 101537,
+        "rss_bytes": 18022400,
+        "physical_bytes": 7357160,
+        "lifetime_peak_physical_bytes": 9765320
+      }
+    },
+    {
+      "block": 19,
+      "position": 2,
+      "variant": "hono-jit",
+      "ready_ms": 13.230749987997115,
+      "ready_memory": {
+        "user_ns": 180459,
+        "system_ns": 127668,
+        "rss_bytes": 22429696,
+        "physical_bytes": 9732720,
+        "lifetime_peak_physical_bytes": 9765320
+      }
+    },
+    {
+      "block": 19,
+      "position": 3,
+      "variant": "elysia-plugin-native",
+      "ready_ms": 10.203333979006857,
+      "ready_memory": {
+        "user_ns": 90428,
+        "system_ns": 107236,
+        "rss_bytes": 19431424,
+        "physical_bytes": 7684864,
+        "lifetime_peak_physical_bytes": 9765320
+      }
+    },
+    {
+      "block": 19,
+      "position": 4,
+      "variant": "elysia-plugin-jit",
+      "ready_ms": 15.013666998129338,
+      "ready_memory": {
+        "user_ns": 253933,
+        "system_ns": 126518,
+        "rss_bytes": 24625152,
+        "physical_bytes": 11551368,
+        "lifetime_peak_physical_bytes": 11551368
+      }
+    },
+    {
+      "block": 19,
+      "position": 5,
+      "variant": "elysia-native",
+      "ready_ms": 9.85162501456216,
+      "ready_memory": {
+        "user_ns": 91011,
+        "system_ns": 102096,
+        "rss_bytes": 20070400,
+        "physical_bytes": 7734016,
+        "lifetime_peak_physical_bytes": 9765320
+      }
+    },
+    {
+      "block": 20,
+      "position": 0,
+      "variant": "elysia-native",
+      "ready_ms": 9.986124990973622,
+      "ready_memory": {
+        "user_ns": 90804,
+        "system_ns": 103592,
+        "rss_bytes": 20103168,
+        "physical_bytes": 7766808,
+        "lifetime_peak_physical_bytes": 9765320
+      }
+    },
+    {
+      "block": 20,
+      "position": 1,
+      "variant": "elysia-jit",
+      "ready_ms": 16.101624991279095,
+      "ready_memory": {
+        "user_ns": 276570,
+        "system_ns": 128931,
+        "rss_bytes": 25116672,
+        "physical_bytes": 11911816,
+        "lifetime_peak_physical_bytes": 11944584
+      }
+    },
+    {
+      "block": 20,
+      "position": 2,
+      "variant": "hono-native",
+      "ready_ms": 10.104624961968511,
+      "ready_memory": {
+        "user_ns": 87591,
+        "system_ns": 97910,
+        "rss_bytes": 18038784,
+        "physical_bytes": 7373568,
+        "lifetime_peak_physical_bytes": 9765320
+      }
+    },
+    {
+      "block": 20,
+      "position": 3,
+      "variant": "hono-jit",
+      "ready_ms": 13.301333994604647,
+      "ready_memory": {
+        "user_ns": 185110,
+        "system_ns": 125986,
+        "rss_bytes": 22642688,
+        "physical_bytes": 9962120,
+        "lifetime_peak_physical_bytes": 9962120
+      }
+    },
+    {
+      "block": 20,
+      "position": 4,
+      "variant": "elysia-plugin-native",
+      "ready_ms": 10.125583969056606,
+      "ready_memory": {
+        "user_ns": 92286,
+        "system_ns": 106498,
+        "rss_bytes": 19415040,
+        "physical_bytes": 7652072,
+        "lifetime_peak_physical_bytes": 9765320
+      }
+    },
+    {
+      "block": 20,
+      "position": 5,
+      "variant": "elysia-plugin-jit",
+      "ready_ms": 15.386541956104338,
+      "ready_memory": {
+        "user_ns": 257896,
+        "system_ns": 133219,
+        "rss_bytes": 24264704,
+        "physical_bytes": 11207280,
+        "lifetime_peak_physical_bytes": 11207280
+      }
+    },
+    {
+      "block": 21,
+      "position": 0,
+      "variant": "elysia-plugin-jit",
+      "ready_ms": 15.418874972965568,
+      "ready_memory": {
+        "user_ns": 253483,
+        "system_ns": 132090,
+        "rss_bytes": 24559616,
+        "physical_bytes": 11485832,
+        "lifetime_peak_physical_bytes": 11485832
+      }
+    },
+    {
+      "block": 21,
+      "position": 1,
+      "variant": "elysia-native",
+      "ready_ms": 10.253666958305985,
+      "ready_memory": {
+        "user_ns": 92519,
+        "system_ns": 104914,
+        "rss_bytes": 20086784,
+        "physical_bytes": 7750400,
+        "lifetime_peak_physical_bytes": 9765320
+      }
+    },
+    {
+      "block": 21,
+      "position": 2,
+      "variant": "elysia-jit",
+      "ready_ms": 15.906707965768874,
+      "ready_memory": {
+        "user_ns": 266743,
+        "system_ns": 135875,
+        "rss_bytes": 24920064,
+        "physical_bytes": 11813512,
+        "lifetime_peak_physical_bytes": 11813512
+      }
+    },
+    {
+      "block": 21,
+      "position": 3,
+      "variant": "hono-native",
+      "ready_ms": 10.398166021332145,
+      "ready_memory": {
+        "user_ns": 88358,
+        "system_ns": 106060,
+        "rss_bytes": 18006016,
+        "physical_bytes": 7340752,
+        "lifetime_peak_physical_bytes": 9765320
+      }
+    },
+    {
+      "block": 21,
+      "position": 4,
+      "variant": "hono-jit",
+      "ready_ms": 13.120250019710511,
+      "ready_memory": {
+        "user_ns": 185362,
+        "system_ns": 116776,
+        "rss_bytes": 22642688,
+        "physical_bytes": 9945736,
+        "lifetime_peak_physical_bytes": 9945736
+      }
+    },
+    {
+      "block": 21,
+      "position": 5,
+      "variant": "elysia-plugin-native",
+      "ready_ms": 10.617249994538724,
+      "ready_memory": {
+        "user_ns": 93979,
+        "system_ns": 114522,
+        "rss_bytes": 19382272,
+        "physical_bytes": 7652072,
+        "lifetime_peak_physical_bytes": 9765320
+      }
+    },
+    {
+      "block": 22,
+      "position": 0,
+      "variant": "elysia-plugin-native",
+      "ready_ms": 10.362416971474886,
+      "ready_memory": {
+        "user_ns": 94479,
+        "system_ns": 109259,
+        "rss_bytes": 19431424,
+        "physical_bytes": 7684864,
+        "lifetime_peak_physical_bytes": 9765320
+      }
+    },
+    {
+      "block": 22,
+      "position": 1,
+      "variant": "elysia-plugin-jit",
+      "ready_ms": 15.657874988391995,
+      "ready_memory": {
+        "user_ns": 251819,
+        "system_ns": 143010,
+        "rss_bytes": 24412160,
+        "physical_bytes": 11453088,
+        "lifetime_peak_physical_bytes": 11453088
+      }
+    },
+    {
+      "block": 22,
+      "position": 2,
+      "variant": "elysia-native",
+      "ready_ms": 10.19033300690353,
+      "ready_memory": {
+        "user_ns": 91781,
+        "system_ns": 107057,
+        "rss_bytes": 20054016,
+        "physical_bytes": 7701224,
+        "lifetime_peak_physical_bytes": 9765320
+      }
+    },
+    {
+      "block": 22,
+      "position": 3,
+      "variant": "elysia-jit",
+      "ready_ms": 15.369083033874631,
+      "ready_memory": {
+        "user_ns": 266149,
+        "system_ns": 124777,
+        "rss_bytes": 25083904,
+        "physical_bytes": 11944608,
+        "lifetime_peak_physical_bytes": 11977376
+      }
+    },
+    {
+      "block": 22,
+      "position": 4,
+      "variant": "hono-native",
+      "ready_ms": 10.494874964933842,
+      "ready_memory": {
+        "user_ns": 85615,
+        "system_ns": 100605,
+        "rss_bytes": 17956864,
+        "physical_bytes": 7340800,
+        "lifetime_peak_physical_bytes": 9765320
+      }
+    },
+    {
+      "block": 22,
+      "position": 5,
+      "variant": "hono-jit",
+      "ready_ms": 11.18545897770673,
+      "ready_memory": {
+        "user_ns": 176838,
+        "system_ns": 119970,
+        "rss_bytes": 22577152,
+        "physical_bytes": 9863792,
+        "lifetime_peak_physical_bytes": 9863792
+      }
+    },
+    {
+      "block": 23,
+      "position": 0,
+      "variant": "hono-jit",
+      "ready_ms": 11.437708046287298,
+      "ready_memory": {
+        "user_ns": 175893,
+        "system_ns": 119213,
+        "rss_bytes": 22577152,
+        "physical_bytes": 9929352,
+        "lifetime_peak_physical_bytes": 9912968
+      }
+    },
+    {
+      "block": 23,
+      "position": 1,
+      "variant": "elysia-plugin-native",
+      "ready_ms": 9.683334035798907,
+      "ready_memory": {
+        "user_ns": 87705,
+        "system_ns": 101130,
+        "rss_bytes": 19415040,
+        "physical_bytes": 7652072,
+        "lifetime_peak_physical_bytes": 9765320
+      }
+    },
+    {
+      "block": 23,
+      "position": 2,
+      "variant": "elysia-plugin-jit",
+      "ready_ms": 14.652583980932832,
+      "ready_memory": {
+        "user_ns": 252574,
+        "system_ns": 123819,
+        "rss_bytes": 24444928,
+        "physical_bytes": 11485856,
+        "lifetime_peak_physical_bytes": 11485856
+      }
+    },
+    {
+      "block": 23,
+      "position": 3,
+      "variant": "elysia-native",
+      "ready_ms": 9.896708012092859,
+      "ready_memory": {
+        "user_ns": 90271,
+        "system_ns": 102846,
+        "rss_bytes": 20119552,
+        "physical_bytes": 7783168,
+        "lifetime_peak_physical_bytes": 9765320
+      }
+    },
+    {
+      "block": 23,
+      "position": 4,
+      "variant": "elysia-jit",
+      "ready_ms": 15.57974994648248,
+      "ready_memory": {
+        "user_ns": 276779,
+        "system_ns": 124520,
+        "rss_bytes": 24477696,
+        "physical_bytes": 11240048,
+        "lifetime_peak_physical_bytes": 11240048
+      }
+    },
+    {
+      "block": 23,
+      "position": 5,
+      "variant": "hono-native",
+      "ready_ms": 9.469165990594774,
+      "ready_memory": {
+        "user_ns": 84425,
+        "system_ns": 100957,
+        "rss_bytes": 17940480,
+        "physical_bytes": 7308008,
+        "lifetime_peak_physical_bytes": 9765320
+      }
+    }
+  ]
+}
