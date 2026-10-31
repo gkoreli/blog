@@ -1,0 +1,201 @@
+{
+  "checkedOn": "2026-10-31",
+  "baseline": "traction-summary-2026-10-31.json",
+  "siteUpdatedAt": "2026-10-31T17:33:13.225Z",
+  "siteBrowserSignalsBefore": 25,
+  "siteBrowserSignalsNow": 25,
+  "siteBrowserReferrers": [
+    {
+      "referrerHost": "reddit.com",
+      "views": 7
+    },
+    {
+      "referrerHost": "t.co",
+      "views": 2
+    },
+    {
+      "referrerHost": "bing.com",
+      "views": 1
+    },
+    {
+      "referrerHost": "github.com",
+      "views": 1
+    },
+    {
+      "referrerHost": "kagi.com",
+      "views": 1
+    }
+  ],
+  "redditPost": {
+    "displayedViews": "6.9K",
+    "reportedUpvotes": 25,
+    "shares": 1,
+    "totalComments": 3,
+    "otherAccountComments": 2,
+    "authorClarification": 1
+  },
+  "latestReplies": {
+    "xFollowup": {
+      "url": "https://x.com/GogaKoreli/status/2116566572873768968",
+      "displayedViews": 2,
+      "replies": 0,
+      "likes": 0
+    },
+    "redditClarification": {
+      "url": "https://www.reddit.com/r/bun/comments/1xi7ih0/comment/19rxrmn00mmht/",
+      "insightViews": 4,
+      "upvotes": 1,
+      "replies": 0,
+      "shares": 0,
+      "voteLimit": "automatic self-upvote"
+    }
+  },
+  "testInvitation": {
+    "url": "https://x.com/GogaKoreli/status/2116196406960758926",
+    "impressions": 7,
+    "linkClicks": 0,
+    "replies": 0
+  },
+  "sentThreadMessageCounts": [
+    1,
+    1,
+    1
+  ],
+  "polkadotOtherComments": 0,
+  "hnDead": true,
+  "scorecard": [
+    {
+      "route": "Self-contained r/bun results post",
+      "observed": "6.9K views, 25 reported upvotes, one share; two other-account comments and our clarification",
+      "stageValidated": "distribution and engagement",
+      "decision": "keep",
+      "limit": "No controlled channel comparison or verified person count; seven Reddit-referring Browser observations are source-level only"
+    },
+    {
+      "route": "Answering an existing technical question",
+      "observed": "Karn discussed the measured result and thanked us; latest two follow-ups have no new replies",
+      "stageValidated": "one useful exchange",
+      "decision": "keep, with a narrow answer to the actual question",
+      "limit": "One case does not estimate a general reply success rate; comprehension after the Reddit clarification is not yet observed"
+    },
+    {
+      "route": "Standalone X launch assets",
+      "observed": "Earlier full audit: original/image/video 22/24/17 impressions and one combined tracked article click",
+      "stageValidated": "small delivery only",
+      "decision": "pause additional assets for this article",
+      "limit": "Different ages, small exposure and no matched control; no claim that video, links or wording caused the result"
+    },
+    {
+      "route": "Broad two-CLI invitation",
+      "observed": "Fresh owner analytics: seven impressions, zero replies or tracked clicks",
+      "stageValidated": "publication only",
+      "decision": "unvalidated; try one relevant existing conversation next",
+      "limit": "Too few observed impressions to declare no demand; no outreach performed"
+    },
+    {
+      "route": "Editorial pitches and Changelog submission",
+      "observed": "Sent threads still only outgoing messages; no fresh Changelog URL search result; latest newsletter archive/feed dates unchanged",
+      "stageValidated": "sending/submission",
+      "decision": "pending; assess after the next published issue",
+      "limit": "No selection or rejection established; no new message sent"
+    },
+    {
+      "route": "HN submission",
+      "observed": "Official API still returns dead:true",
+      "stageValidated": "delivery failure",
+      "decision": "blocked route; wait for moderator clarification",
+      "limit": "Exact moderation cause and account status remain unknown; no repost or automated submission"
+    },
+    {
+      "route": "Repeat readership, signups or independent application",
+      "observed": "No reported rerun or CLI submission; subscriptions and repeat readership unverified",
+      "stageValidated": "not yet established",
+      "decision": "make a specific useful action the next primary outcome",
+      "limit": "Do not substitute a code view, vote or daily-client count for a return reader, signup or independent run"
+    }
+  ],
+  "nextCandidate": {
+    "url": "https://github.com/yuyakinjo/decopin-cli/issues/85",
+    "checkedState": "OPEN",
+    "issueUpdatedAt": "2026-10-30T08:03:12Z",
+    "comments": 0,
+    "fit": "Maintainer is planning a generated-CLI startup, size and memory comparison and currently prefers waiting for stable",
+    "outreachSent": false
+  },
+  "scope": {
+    "publicArticleReportGets": 1,
+    "directSql": 0,
+    "newD1AuthAttempts": 0,
+    "privateInboxAccess": false,
+    "newExternalCommunications": 0,
+    "scheduledMonitor": false
+  },
+  "privateCaptures": "~/.local/share/gkoreli/social-evidence/2026-10-31-bun-adoption-validation/",
+  "captureCommitments": [
+    {
+      "file": "changelog-search.txt",
+      "bytes": 6429,
+      "sha256": "fceaee1a47a8168c197961c8f9d917ca87ecb71b7f684abf02361767d9a387a5"
+    },
+    {
+      "file": "email-threads.json",
+      "bytes": 8933,
+      "sha256": "402aad5dd9b426195d1860937bceb08f213d362468c332e79f00a794e24c48f7"
+    },
+    {
+      "file": "hn.json",
+      "bytes": 106,
+      "sha256": "cf09af709185fe76bfbe2f60ac2ad898b6506ebe38ce8644f3c223d637ab0ad0"
+    },
+    {
+      "file": "labnotes-rss.xml",
+      "bytes": 126376,
+      "sha256": "d5f5eb03e57f2020ef1b23de6f919b4174dbbb89c92dc7089c8a91e73154e5ad"
+    },
+    {
+      "file": "polkadot.json",
+      "bytes": 1622,
+      "sha256": "9f99d1fbcc694948d9c2357e29115a1ecd4c6b127e35c9409d8235f58ede86b5"
+    },
+    {
+      "file": "reddit-clarification-insights.txt",
+      "bytes": 9305,
+      "sha256": "8cf265036cf903c79a5e9caa0357b11824d6d66fe87bdae5f9c2040dc8deba94"
+    },
+    {
+      "file": "reddit-clarification.txt",
+      "bytes": 18780,
+      "sha256": "7cfc091acb6cc7e62fcab0d0a6a339f178e8d4d92185f9da3e0f6c3d263a0fb6"
+    },
+    {
+      "file": "reddit-post-insights.txt",
+      "bytes": 9250,
+      "sha256": "813791407a30c0dc6f06df3293537de3d2aad901d9637b2efa10a9657893087e"
+    },
+    {
+      "file": "site-browser.headers",
+      "bytes": 632,
+      "sha256": "60c5f7232b694232b0e260e3ea03a660f14696515b4448ba16b3d133cb40f84a"
+    },
+    {
+      "file": "site-browser.json",
+      "bytes": 15477,
+      "sha256": "910e3927ee8310414d64fea2d72c299e90ed474d88422b26e07020bd63b1bfaf"
+    },
+    {
+      "file": "x-followup.txt",
+      "bytes": 21882,
+      "sha256": "a767b777f74891280440d4d43b1002bb319c11644b344447f9bf75dcb89d84ed"
+    },
+    {
+      "file": "x-offer-analytics.txt",
+      "bytes": 3088,
+      "sha256": "c0d2b186526ed014db904544a0825833d8011fada37fafd60d185f531c1da3ce"
+    },
+    {
+      "file": "x-offer.txt",
+      "bytes": 8354,
+      "sha256": "6384560a98161b7498798b7e238bcea318fd822f775c6f59d2e57688cfb00751"
+    }
+  ]
+}
