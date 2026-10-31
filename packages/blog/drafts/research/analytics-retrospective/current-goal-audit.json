@@ -1,6 +1,6 @@
 {
   "schemaVersion": "goal-evidence-audit-2026-10-31.1",
-  "checkedAt": "2026-10-31T09:13:33.092492+00:00",
+  "checkedAt": "2026-10-31T09:17:25.392020+00:00",
   "sourceBaseline": "8c9adf34d94d11f6f272f1cadf59010765e4d8aa",
   "goalStatus": "active",
   "goalAchieved": false,
@@ -70,7 +70,8 @@
         "../discovery-experiment-02/05-retained-control-evidence.md",
         "../discovery-experiment-02/retained-control-checks.json",
         "../discovery-experiment-02/06-public-report-integrity.md",
-        "../discovery-experiment-02/report-integrity-checks.json"
+        "../discovery-experiment-02/report-integrity-checks.json",
+        "../discovery-experiment-02/report-integrity-release.json"
       ],
       "limit": "Missing, unsupported, conflicting and native unavailable values stay distinct. This does not prove human accuracy or managed-verifier agreement."
     },
@@ -171,7 +172,8 @@
         "../discovery-experiment-02/05-retained-control-evidence.md",
         "../discovery-experiment-02/retained-control-checks.json",
         "../discovery-experiment-02/06-public-report-integrity.md",
-        "../discovery-experiment-02/report-integrity-checks.json"
+        "../discovery-experiment-02/report-integrity-checks.json",
+        "../discovery-experiment-02/report-integrity-release.json"
       ],
       "limit": "Weekly joint measurement history is implemented and has dated production acceptance; Research108's identical-report counterexample is superseded for that gap. Stage controls distinguish response/script/queue/receipt, but representative human/device/RUM behavior remains unmeasured."
     },
@@ -216,14 +218,15 @@
     {
       "id": "engineering-article",
       "requirement": "Deliver a concise retrospective with inspectable evidence and cross-references",
-      "status": "updated-source-locally-accepted-publication-pending",
+      "status": "updated-source-activated-served-content-pending",
       "evidence": [
         "111-weekly-history-in-the-retrospective.md",
         "weekly-history-article-release.json",
         "../discovery-experiment-02/06-public-report-integrity.md",
-        "../discovery-experiment-02/report-integrity-checks.json"
+        "../discovery-experiment-02/report-integrity-checks.json",
+        "../discovery-experiment-02/report-integrity-release.json"
       ],
-      "limit": "Current source is1429words/33humanprompts with prior prefix preserved. Prior1379/32 publication remains dated; this addition is locally built/validated but no new served acceptance is claimed."
+      "limit": "1429-word/33-prompt source is locally accepted and its exact source activation is accepted. Prior1379/32 served publication remains dated; no new served-content or reader outcome claim."
     },
     {
       "id": "offline-search-evidence",
@@ -294,7 +297,8 @@
     "previousAcceptedSourceSha256": "b22116595f06ab41f0ca83575f577f7e981fe12843775bdc5093cfbe0efad595",
     "currentWords": 1429,
     "currentHumanPrompts": 33,
-    "currentLocalAcceptanceReceipt": "../discovery-experiment-02/report-integrity-checks.json"
+    "currentLocalAcceptanceReceipt": "../discovery-experiment-02/report-integrity-checks.json",
+    "sourceActivationReceipt": "../discovery-experiment-02/report-integrity-release.json"
   },
   "unresolvedInputs": [
     {
@@ -346,7 +350,7 @@
     "newCalibrationTrials": 0,
     "newModelTrialsOrRegrades": 0,
     "articleChanged": true,
-    "sourceActivationMeasured": false,
+    "sourceActivationMeasured": true,
     "runtimeChanged": true,
     "productionSiteRequests": 0,
     "nativeMatchingSecurityEventsObserved": 0,
@@ -363,7 +367,7 @@
     "verifiedLiveWait": false,
     "freshResumedRun": true
   },
-  "nextBoundedAction": "Verify this exact report-integrity source in deployment metadata and, if an existing zero-query acceptance route is available, its served stats-client/article assets. Keep production report/API reads, D1 authorization retries, native/human labels and privacy/raw collection gated. Then audit remaining full-goal requirements from current evidence; do not repeat accepted local controls to manufacture progress.",
+  "nextBoundedAction": "Audit the remaining full-goal requirements against current authoritative evidence and input availability. Choose only a decision-changing next investigation; preserve native/search/human/privacy/source-purpose gates, and do not repeat accepted local controls or chase documentation-only deployments.",
   "latestDependencyCheck": {
     "checkedAt": "2026-10-31T00:40:21.399815+00:00",
     "availableToolMetadataInspected": true,
@@ -393,14 +397,15 @@
   "latestContinuation": {
     "research": "../discovery-experiment-02/06-public-report-integrity.md",
     "receipt": "../discovery-experiment-02/report-integrity-checks.json",
-    "nextBoundedAction": "Verify this exact report-integrity source in deployment metadata and, if an existing zero-query acceptance route is available, its served stats-client/article assets. Keep production report/API reads, D1 authorization retries, native/human labels and privacy/raw collection gated. Then audit remaining full-goal requirements from current evidence; do not repeat accepted local controls to manufacture progress."
+    "nextBoundedAction": "Audit the remaining full-goal requirements against current authoritative evidence and input availability. Choose only a decision-changing next investigation; preserve native/search/human/privacy/source-purpose gates, and do not repeat accepted local controls or chase documentation-only deployments.",
+    "release": "../discovery-experiment-02/report-integrity-release.json"
   },
   "latestAcceptedSourceActivation": {
-    "sourceCommit": "762e3b5a7f6b2c7b2770ae22f41f730ceca6ba84",
-    "versionId": "c1c6a99c-8d8b-4a85-a4fc-960d5fca9da4",
+    "sourceCommit": "ebe943974b2b53197ee2cb1106b337cc376d8437",
+    "versionId": "65bdef0f-7f28-45f5-9a0c-0e701bf9f61b",
     "allocation": 100,
-    "receipt": "../discovery-experiment-02/answer-fidelity-release.json",
-    "method": "Native source-linked build log, Ready100%meter and activeprefix",
+    "receipt": "../discovery-experiment-02/report-integrity-release.json",
+    "method": "Native source-linked build log, displayed Ready/100% meter and active version prefix",
     "productionBehaviorMeasured": false,
     "servedDestinationAcceptance": false
   }

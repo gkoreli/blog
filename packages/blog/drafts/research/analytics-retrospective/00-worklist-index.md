@@ -1,5 +1,8 @@
 # Analytics retrospective — worklist and shaping notes
 
+**October31 report repair activated:** [Release receipt](../discovery-experiment-02/report-integrity-release.json) joins sourceebe9439/nativebuild579addf2/Worker65bdef0f to native Ready/100% and the active prefix; six scoped source/article/prompt files match. Native log confirms38posts; hostedNode24.22.1 differs from local24.14.1. No production stats/API/asset request, SQL, retry or settings change; current served content and report behavior remain unmeasured. Goal active/incomplete.
+
+
 **October31 public-report integrity repaired:** [Count/partition audit](../discovery-experiment-02/06-public-report-integrity.md) reproduces five plausible-zero/dropped-row failures, then requires valid counts/keys and reconciled complete event partitions. It preserves non-additive daily IDs, subset tables and broader outgoing transitions. Review catches and repairs a new-hour clock-boundary rejection; valid returned buckets survive and the client exposes later timestamps. 369analytics/169site tests, types,27validations/38-post isolatedbuild/dry-run and71exact Node/nativeD1/workerd comparisons pass. Invalid local reports503/no-store/recover; empty200caches. The retrospective adds50words (1429total) and exact human prompt33. No production data query or new labels; activation remains separate, full goal active.
 
 

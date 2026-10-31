@@ -43,3 +43,10 @@ Initial preparation failures remain private: missing HTML representation in the 
 All sixty-two private evidence files verify under manifest SHA-256 `4969d8602f54bde042bb89a68682ad9153bcd54fb431af15ac18252b2dac074a`. No production site/API request, D1 query, account/security change, raw-mode activation, new calibration/human label or model regrade occurred. Local/native checks establish the repair's behavior, not current production correctness or accuracy.
 
 **Decision:** a missing or contradictory report is unavailable; a measured empty selection can be zero. Preserve valid event partitions and their source/clock limits. Next, verify exact-source deployment metadata and use only an existing zero-query route for served client/article assets; production report reads and unresolved account/native/human/privacy gates remain unchanged. The complete goal remains active/incomplete.
+
+
+## Exact source activation
+
+[The release receipt](report-integrity-release.json) joins source `ebe9439`, native build `579addf2` and Worker `65bdef0f-7f28-45f5-9a0c-0e701bf9f61b`. Native deployment metadata shows **Ready / 100%**, with the same active prefix. The downloaded build log reports 38 built posts and the full Worker ID; six scoped source/article/prompt files match the pushed commit. Hosted Node24.22.1 differs from local24.14.1; pnpm is9.15.4 in both. The initial GitHub check still said in_progress and is not used as success or live-wait proof.
+
+No production stats API, article/client asset request, D1 statement, build retry or settings change was made. The owned dashboard tab is closed. Source activation is accepted; served-content and current production-report behavior remain unmeasured. The separate five-file private release archive preserves the log/projection and source linkage. Later documentation-only builds have different identities and do not invalidate this point-in-time activation.

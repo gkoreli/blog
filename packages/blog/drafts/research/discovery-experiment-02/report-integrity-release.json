@@ -1,0 +1,42 @@
+{
+  "checkedAt": "2026-10-31T09:17:25.392020+00:00",
+  "sourceCommit": "ebe943974b2b53197ee2cb1106b337cc376d8437",
+  "nativeBuildId": "579addf2-e688-4e7d-b740-0c65ff82f909",
+  "workerVersion": "65bdef0f-7f28-45f5-9a0c-0e701bf9f61b",
+  "allocation": 100,
+  "status": "Ready",
+  "nativeBuildVersionEmittedAt": "2026-10-31T09:15:14.690Z",
+  "hostedNode": "24.22.1",
+  "localNode": "24.14.1",
+  "pnpm": "9.15.4",
+  "hostedBuiltPosts": 38,
+  "nativeBuildLogSha256": "4f848126d39f857988b2cd48d4705616825c21266b725ea9ecb7fe6ee6facf43",
+  "githubCheckInitialStatus": "in_progress",
+  "githubCheckUsedAsSuccessOrLiveWaitProof": false,
+  "sourceFilesMatch": {
+    "packages/analytics/src/stats.ts": "2a0a57c81d1358750ec205a4fd3cac1b5dc564bf699bcdca05cf27136da9fdb4",
+    "packages/analytics/src/dates.ts": "f334e2087231b06aa183f927b689da5f0afa011ebf1e9d7001297025c0bee723",
+    "packages/blog/src/client/stats.ts": "978ec4a704a01606e9e35174144edb74f703aac72fd0f2dd25ed39c9a3e655c5",
+    "packages/blog/src/worker/stats-cache.ts": "c0f3c80107491253439ed7d5a6f85bc2f88fbf717e3b9aab424d60a80d6cebb2",
+    "packages/blog/posts/030-building-blog-analytics-what-the-numbers-can-prove.md": "85d3d022262eac6a129d9cf31ce385ad7e65037561d64a0fdb8b7fdf5c45c452",
+    "packages/blog/prompts/building-blog-analytics-what-the-numbers-can-prove.prompts.md": "2bf95aa3051bf9e9194f919e5dd067e544ecfc10074e051e39713f109801c5c6"
+  },
+  "newProductionSiteOrApiRequests": 0,
+  "productionD1Statements": 0,
+  "servedStatsAssetChecked": false,
+  "servedArticleChecked": false,
+  "productionReportBehaviorMeasured": false,
+  "rulesCredentialsOrScopesChanged": false,
+  "ownTabsClosed": true,
+  "buildRetryOrSettingsAction": false,
+  "limits": [
+    "Native source activation and local/native fixtures do not prove current production data shape, output or readership.",
+    "Later documentation-only delivery creates its own deployment identity; this accepts the recorded point-in-time activation.",
+    "No GitHub-check completion claim or native managed-bot agreement is added."
+  ],
+  "privateArchive": {
+    "location": "packages/blog/worklog/analytics-evidence/2026-10-31-stats-integrity-release",
+    "files": 5,
+    "manifestSha256": "62a317f3173beb366811e0a9595f56c03903f2edf65b82cb561178a8e49daf1f"
+  }
+}
