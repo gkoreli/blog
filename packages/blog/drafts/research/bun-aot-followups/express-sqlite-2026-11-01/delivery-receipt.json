@@ -1,0 +1,75 @@
+{
+  "research_commit": "15865c5ca7145c46f5a94db66e101d87aec712d5",
+  "check_date": "2026-11-01",
+  "method": "Connected GitHub fetch_file at the pushed commit, comparing returned Git blob SHA to local git hash-object. Binary observation fetched as base64; no production-site acceptance is inferred.",
+  "remote_checks": [
+    {
+      "path": "packages/blog/drafts/research/bun-aot-followups/express-sqlite-2026-11-01/09-follow-up-draft.md",
+      "git_blob_sha": "d1af9710446c4562213b8610785cc366d02aa46e",
+      "bytes": 9063,
+      "remote_git_blob_sha": "d1af9710446c4562213b8610785cc366d02aa46e",
+      "matches": true,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "packages/blog/drafts/research/bun-aot-followups/express-sqlite-2026-11-01/05-express-results.md",
+      "git_blob_sha": "fdb6cd99435eb12c25becaf45cdf37069915e6b8",
+      "bytes": 4238,
+      "remote_git_blob_sha": "fdb6cd99435eb12c25becaf45cdf37069915e6b8",
+      "matches": true,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "packages/blog/drafts/research/bun-aot-followups/express-sqlite-2026-11-01/07-serializer-results.md",
+      "git_blob_sha": "c569f62ad82398c9770a13390896bdf52a711657",
+      "bytes": 4672,
+      "remote_git_blob_sha": "c569f62ad82398c9770a13390896bdf52a711657",
+      "matches": true,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "packages/blog/drafts/research/bun-aot-followups/express-sqlite-2026-11-01/results/standalone-contract.json",
+      "git_blob_sha": "e9b3a62c023a4dc6c0413abbd84607e24fddbe43",
+      "bytes": 379,
+      "remote_git_blob_sha": "e9b3a62c023a4dc6c0413abbd84607e24fddbe43",
+      "matches": true,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "packages/blog/drafts/research/bun-aot-followups/express-sqlite-2026-11-01/results/express-warm-guarded.json.gz",
+      "git_blob_sha": "4dd421edb1756679f74cdb61bc28dba2bedb02c8",
+      "bytes": 32747,
+      "remote_git_blob_sha": "4dd421edb1756679f74cdb61bc28dba2bedb02c8",
+      "matches": true,
+      "encoding": "base64"
+    },
+    {
+      "path": "packages/blog/drafts/research/bun-aot-followups/express-sqlite-2026-11-01/results/cold-startup-manifest.json",
+      "git_blob_sha": "f1fd92630330460d499e4ea44914eddb6b795542",
+      "bytes": 1245,
+      "remote_git_blob_sha": "f1fd92630330460d499e4ea44914eddb6b795542",
+      "matches": true,
+      "encoding": "utf-8"
+    },
+    {
+      "path": "packages/blog/drafts/research/bun-aot-followups/express-sqlite-2026-11-01/standalone/serializer.cjs",
+      "git_blob_sha": "e8a1c9d2df8b5109d83b51f13f45455881640c11",
+      "bytes": 8266,
+      "remote_git_blob_sha": "e8a1c9d2df8b5109d83b51f13f45455881640c11",
+      "matches": true,
+      "encoding": "utf-8"
+    }
+  ],
+  "accepted_timed_windows": 246,
+  "checked_measured_responses": 27977442,
+  "startup_control_processes": 180,
+  "generated_whitespace_exception": {
+    "file": "standalone/serializer.cjs",
+    "diagnostics": 43,
+    "reason": "Unmodified upstream generator output retained to preserve measured source hash",
+    "authored_diff_check": "passed excluding only this generated file"
+  },
+  "site_article_published": false,
+  "concurrent_main_preserved": "25311bd",
+  "new_outreach_messages": 0
+}

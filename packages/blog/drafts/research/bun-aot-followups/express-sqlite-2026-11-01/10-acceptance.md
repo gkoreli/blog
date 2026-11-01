@@ -13,7 +13,7 @@ The owner's request was to explore the new Bun AOT report through further eviden
 | Reach a follow-up decision | [Editorial brief](03-article-brief.md) recommends a focused engineering field note; [draft](09-follow-up-draft.md) explains the result, tested method, counterevidence and limits |
 | Preserve publication integrity | Exact [owner prompt](owner-prompt.md); no invented feeling, quote, production deployment or adoption; this scope edits research only, preserving concurrent predecessor updates and its frozen accounting; no new site post/outreach |
 | Verify scoped artifacts | Four private-capture auditors ran; `verify-evidence.py` verifies five manifests, recomputes all public summaries and counters, checks mode positions/startup rows, generated-source commitments and semantic results; three guard checks passed |
-| Deliver to main | Scoped research commit and selected remote artifact checks recorded with the final delivery receipt; no production-activation claim follows from Git delivery |
+| Deliver to main | Research/draft pushed through `15865c5`; [seven selected remote artifact identities](delivery-receipt.json) match local Git blobs; no production-activation claim follows from Git delivery |
 
 The request is not an independent replication of Jarred's exact unknown setup. It does not require certifying every schema, another OS, electricity/cloud costs or production capacity. Those remain explicitly separate proposals. The prepared all-in-one runners are reproduction alternatives; the accepted evidence comes from the separately guarded checkpoints listed above.
 

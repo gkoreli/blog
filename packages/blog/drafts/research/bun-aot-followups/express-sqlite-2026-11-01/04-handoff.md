@@ -1,6 +1,6 @@
 # Handoff — November 1, 2026: research complete
 
-The supplied report has been checked, the declared research/experiments are complete, results are audited, and a [follow-up draft](09-follow-up-draft.md) is ready. [Article decision and review](03-article-brief.md). No new site post or outreach was published. Source preparation was delivered as `5054c8f`; the final result delivery accompanies this handoff.
+The supplied report has been checked, the declared research/experiments are complete, results are audited, and a [follow-up draft](09-follow-up-draft.md) is ready. [Article decision and review](03-article-brief.md). No new site post or outreach was published. Source preparation was delivered as `5054c8f`; final research/draft delivery is through `15865c5`, with [seven selected remote-file identity checks](delivery-receipt.json).
 
 ## Accepted evidence
 

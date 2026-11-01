@@ -31,7 +31,7 @@ These are new fixtures inspired by the report. Exact upstream source, compiler, 
 - [x] Build and verify new fixtures and rejection paths.
 - [x] Run warmed and cold batches without detected overlap from the known competing study paths; preserve the bounded sampling limit.
 - [x] Audit results, record a supported article decision and remaining limits.
-- [ ] Commit/push scoped evidence and record the delivery.
+- [x] Commit/push scoped evidence and record the delivery.
 
 ## Excluded setup and pilot
 
@@ -77,3 +77,9 @@ Acceptance uses the four checkpoint auditors and `verify-evidence.py`; the latte
 The timestamp anchor in accepted cold data is response-check completion; excluded earlier traces used call start. Startup-control binary hashes are checked before and after the batch, avoiding a full executable scan before every launch. Both changes preceded the accepted runs.
 
 [Article decision](03-article-brief.md): proceed with the [prepared engineering draft](09-follow-up-draft.md), centered on memory/CPU distinctions and generating a serializer before build while testing response behavior. A new site publication is a separate optional step; the research request does not require publishing a post. This investigation edits research artifacts rather than the predecessor article or its frozen footprint. A concurrent real-project study updated that article separately; its changes are preserved during integration. [Delivery status](04-handoff.md).
+
+## Delivered and checked
+
+Research and draft are pushed to main through [`15865c5`](https://github.com/gkoreli/blog/commit/15865c5ca7145c46f5a94db66e101d87aec712d5), after replaying only our unpublished commits over the concurrent project-study commits. The shared worklist preserves both completed investigations; this scope has no post-file diff against that integrated main.
+
+Seven selected remote files, including the draft, result reports, contract, compressed observations, manifest and exact generated serializer, were fetched through the connected GitHub API at that commit. Their returned Git blob identities match local `git hash-object`. [Selected delivery receipt](delivery-receipt.json). This verifies Git delivery, not a new site publication or production activation. The full numeric verifier, source syntax, Markdown links/fences and table audit passed; the 43 upstream whitespace diagnostics in the byte-preserved generated serializer are explicitly excepted from authored-file diff checks. No correctness or evidence-integrity gate excludes that source.
