@@ -72,3 +72,5 @@ Goga rejected another round of proposals and authorized source-backed Keryx/Next
 ## New owner request — November 1: iterate and publish the Express/Fastify follow-up
 
 The separate research above remains complete. Goga authorized publication. The [publication plan](express-sqlite-2026-11-01/publication-plan.md) and [balanced policy control](express-sqlite-2026-11-01/11-policy-matrix-results.md) track the additional 36 windows, final article/provenance, isolated checks, deployment activation and served acceptance. Cumulative evidence is 282 timed windows / 39,177,468 checked responses, plus 180 readiness starts. Earlier separated policy batches remain available; the interleaved control governs the article’s cross-policy comparison. No new outreach is included.
+
+The Express/Fastify publication request is complete: [live article](https://gkoreli.com/bun-aot-express-fastify-serializers), main commit `46b51ea`, successful build, active deployment and [served/evidence acceptance](express-sqlite-2026-11-01/publication-acceptance.json). The original article now links forward and both articles share the Bun AOT field-notes series. No outreach was included.

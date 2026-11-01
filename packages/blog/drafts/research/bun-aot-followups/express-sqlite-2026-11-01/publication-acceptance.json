@@ -1,0 +1,195 @@
+{
+  "article_commit": "46b51eac45d0932b05ad3f70deec71a77e5d86ad",
+  "build_check": {
+    "id": 124976899010,
+    "name": "Workers Builds: gkoreli-com",
+    "head_sha": "46b51eac45d0932b05ad3f70deec71a77e5d86ad",
+    "status": "completed",
+    "conclusion": "success",
+    "completed_at": "2026-11-01T20:59:43Z"
+  },
+  "deployment": {
+    "id": "813979bd-83b8-4e2e-9088-65dbfee3620a",
+    "created_on": "2026-11-01T20:59:39.951235Z",
+    "versions": [
+      {
+        "version_id": "0007c768-7517-48bb-9c14-ab6aa1c98c5c",
+        "percentage": 100
+      }
+    ]
+  },
+  "served_acceptance": {
+    "checked_at": "2026-11-01T21:00:02.968534+00:00",
+    "article_commit": "46b51eac45d0932b05ad3f70deec71a77e5d86ad",
+    "requests": [
+      {
+        "url": "https://gkoreli.com/bun-aot-express-fastify-serializers",
+        "status": 200,
+        "content_type": "text/html",
+        "bytes": 28266,
+        "sha256": "23badf77133a6041c27d90941b09a91b36b3f6718c5403a5c9229b173f8a9133",
+        "checks": [
+          "39,177,468",
+          "282",
+          "38,400",
+          "40,320",
+          "26.66",
+          "41 to 77",
+          "3.3%",
+          "11-policy-matrix-results.md"
+        ],
+        "one_h1_canonical_series_prompt_link": true
+      },
+      {
+        "url": "https://gkoreli.com/bun-aot-express-fastify-serializers.md",
+        "status": 200,
+        "content_type": "text/markdown; charset=utf-8",
+        "bytes": 10987,
+        "sha256": "7bbd45b2fa42a01442afec767766540d8c0a1f7ebd7707ae3d29fa9a397dc771",
+        "checks": [
+          "39,177,468",
+          "38,400",
+          "3.3%"
+        ],
+        "exact_built_match": true
+      },
+      {
+        "url": "https://gkoreli.com/bun-aot-express-fastify-serializers/prompts",
+        "status": 200,
+        "content_type": "text/html",
+        "bytes": 8255,
+        "sha256": "c64e83ae6c8bedab0eacf5fa50a280452fd67f8875dc8b538d7f52a1162675f9",
+        "checks": [
+          "Prompt 1",
+          "lets iterate further to publish it",
+          "We might need a followup article"
+        ]
+      },
+      {
+        "url": "https://gkoreli.com/oss-radar-08-bun-aot",
+        "status": 200,
+        "content_type": "text/html",
+        "bytes": 25917,
+        "sha256": "978621d92b10eedb7984ebe6d168bad9a5d95c1e44e650681a9b948e4083cff7",
+        "checks": [
+          "/bun-aot-express-fastify-serializers",
+          "Bun AOT field notes",
+          "40,753",
+          "47,789"
+        ]
+      },
+      {
+        "url": "https://gkoreli.com/oss-radar-08-bun-aot.md",
+        "status": 200,
+        "content_type": "text/markdown; charset=utf-8",
+        "bytes": 13039,
+        "sha256": "fc3d0ec637b650c548e727fe1256e49969bae9a4f1834713a7614f69548ada4c",
+        "checks": [
+          "/bun-aot-express-fastify-serializers",
+          "40,753",
+          "47,789"
+        ],
+        "exact_built_match": true
+      },
+      {
+        "url": "https://gkoreli.com/posts.json",
+        "status": 200,
+        "content_type": "application/json",
+        "bytes": 31680,
+        "sha256": "5eff7892b196522da12e683cf043744add4c5e82b85f726f767a47ba0c6ba515",
+        "checks": [
+          "bun-aot-express-fastify-serializers"
+        ]
+      },
+      {
+        "url": "https://gkoreli.com/feed.xml",
+        "status": 200,
+        "content_type": "application/xml",
+        "bytes": 20178,
+        "sha256": "58c74867f78d4374ef3335d460beb4b55edd45a41b9f3a1a3a135edd16301c2a",
+        "checks": [
+          "bun-aot-express-fastify-serializers"
+        ]
+      },
+      {
+        "url": "https://gkoreli.com/sitemap.xml",
+        "status": 200,
+        "content_type": "application/xml",
+        "bytes": 7179,
+        "sha256": "d3b4dfa57d97b807ccd4e88a095851eee9ce874bd1dfdc6a1751acb2cfd10a46",
+        "checks": [
+          "bun-aot-express-fastify-serializers"
+        ]
+      },
+      {
+        "url": "https://gkoreli.com/llms.txt",
+        "status": 200,
+        "content_type": "text/plain; charset=utf-8",
+        "bytes": 16187,
+        "sha256": "d850517c53982eca19d3a203b529ac1d83f1ef758723ab327c653f0f0863f6b7",
+        "checks": [
+          "bun-aot-express-fastify-serializers"
+        ]
+      }
+    ],
+    "request_headers": {
+      "User-Agent": "GogaKoreli-ArticleAcceptance/2026-11-01",
+      "Purpose": "prefetch"
+    },
+    "analytics_boundary": "Current eligibility code excludes prefetch GETs; no D1 query verified stored-row exclusion.",
+    "html_build_boundary": "Preview omitted public Turnstile site key; main article HTML is content-checked, not claimed byte-identical."
+  },
+  "public_evidence": {
+    "checked_at": "2026-11-01T21:00:23.653412+00:00",
+    "commit": "46b51eac45d0932b05ad3f70deec71a77e5d86ad",
+    "files": [
+      {
+        "path": "11-policy-matrix-results.md",
+        "status": 200,
+        "bytes": 4400,
+        "sha256": "f5083a45d06da337c0aa43ec5a16d66fa75a35bb18a4f107155550c4f6d3e238"
+      },
+      {
+        "path": "results/policy-matrix-manifest.json",
+        "status": 200,
+        "bytes": 1242,
+        "sha256": "acf45e02a852c9d6d4a4b2b6d543a6fbddc8c302507b36ca645b468739d7939d"
+      },
+      {
+        "path": "results/policy-matrix-observations.json.gz",
+        "status": 200,
+        "bytes": 64297,
+        "sha256": "30eb9d6d24d5d56d48a97a86f16f7748d190814ff0411141fd688694797235ad"
+      },
+      {
+        "path": "results/policy-matrix-summary.json",
+        "status": 200,
+        "bytes": 10622,
+        "sha256": "ab43f25970133a581e2d2c92bc706d27f4574acaef2d9b17320b44444e5fede6"
+      },
+      {
+        "path": "results/policy-matrix-inputs.json",
+        "status": 200,
+        "bytes": 2444,
+        "sha256": "cc62d3efd813690fc4451842e103e7ef6bf81716653d13e89018730fbeb5af2b"
+      },
+      {
+        "path": "results/policy-matrix-conditions.json",
+        "status": 200,
+        "bytes": 457,
+        "sha256": "c6e15d4262d10a88a64856b5f77cd6362f01d9c359532ddaec64ef8c9c0d0f68"
+      },
+      {
+        "path": "results/policy-matrix-pairs.json",
+        "status": 200,
+        "bytes": 5423,
+        "sha256": "a80c8cf0c628ff91a4240e9602f8e9af49fec95c9217a54c212b0d5893726351"
+      }
+    ]
+  },
+  "limits": [
+    "Publication acceptance checks, not readership or adoption.",
+    "One macOS host, cached reads, six processes per cell and bounded host guard; broader schema/OS validation and independent replication remain unmeasured.",
+    "No social, email or upstream outreach included."
+  ]
+}
