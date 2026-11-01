@@ -33,3 +33,7 @@ Is all data real and coming from third oarty service by manual hand validation? 
 ---
 
 Approve both service tests
+
+---
+
+i need screenshots as verifications similarly. Why did grok fail? I should have access to it through my X account. Go ahead we need more.

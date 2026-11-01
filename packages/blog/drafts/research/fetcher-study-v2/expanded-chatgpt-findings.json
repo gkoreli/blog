@@ -1,0 +1,181 @@
+{
+  "checkedAt": "2026-11-01T16:49:34.034Z",
+  "status": "one-additional-assistant-chain-accepted-expanded-goal-active",
+  "service": "ChatGPT",
+  "signedIn": true,
+  "displayedConfiguration": "Medium thinking effort; exact underlying model identifier not exposed in inspected UI",
+  "submittedAt": "2026-11-01T16:37:42.756Z",
+  "receivedAt": "2026-11-01T16:37:45.164Z",
+  "acknowledgedAt": "2026-11-01T16:37:45.696Z",
+  "answer": {
+    "heading": "Which AI Fetchers Send Which Headers, Measured on a Live Site",
+    "sentence": "Browser remains a request classification, not a human count.",
+    "scopedTextCapturedAt": "2026-11-01T16:44:19.879Z"
+  },
+  "event": {
+    "service": "chatgpt",
+    "timestamp": "2026-11-01T16:37:45.164Z",
+    "workerVersion": "dc782dc5-7c0c-4465-8e70-52059c811f9f",
+    "responseStatus": 200,
+    "method": "GET",
+    "truncated": false,
+    "userAgentProducts": [
+      "Mozilla/5.0",
+      "AppleWebKit/537.36",
+      "ChatGPT-User/1.0"
+    ],
+    "userAgentValuePresent": true,
+    "accept": "withheld-unrecognized",
+    "fetchMetadata": {
+      "sec-fetch-mode": null,
+      "sec-fetch-dest": null,
+      "sec-fetch-site": null,
+      "sec-fetch-user": null
+    },
+    "signingHeaderPresence": {
+      "signature": false,
+      "signature-input": false,
+      "signature-agent": false
+    },
+    "retainedSignatureComponentLists": [],
+    "retainedSignatureInputAssessed": false,
+    "attemptLogs": 1,
+    "storedLogs": 1,
+    "receipts": [
+      {
+        "operationJoined": true,
+        "returnedReferenceAvailable": true,
+        "receipt": {
+          "status": "recorded",
+          "version": "2026-10-29.2",
+          "classifierProfile": "2026-10-31.1",
+          "readerKind": "ai-assistant",
+          "fetchMetadataBits": 585,
+          "declarations": {
+            "status": "single",
+            "candidateCount": 1,
+            "candidateNames": "ChatGPT-User"
+          },
+          "signature": {
+            "verifierProfile": "2026-10-31.3",
+            "source": "local-webbotauth",
+            "status": "absent",
+            "outcome": "absent",
+            "reasonNames": "none",
+            "reasonCount": 0,
+            "signer": "none",
+            "userAgentCovered": "unavailable",
+            "coverage": {
+              "status": "unavailable"
+            }
+          },
+          "native": {
+            "verifiedBot": "unavailable",
+            "signedAgent": "unavailable"
+          },
+          "vendorNetwork": {
+            "status": "recorded",
+            "checkCount": 1,
+            "summary": {
+              "listed": true,
+              "notListed": false,
+              "unavailable": false,
+              "notAssessed": false
+            }
+          }
+        }
+      }
+    ]
+  },
+  "exactOperationJoin": true,
+  "exactReturnedReferenceJoin": true,
+  "fullCurrentReceiptMatches": true,
+  "ownerExcluded": false,
+  "independentNetworkCheck": {
+    "checkedAt": "2026-11-01T16:49:11.770419+00:00",
+    "method": "Independent Python ipaddress membership of retained cf-connecting-ip in later-captured public ChatGPT-User feed",
+    "source": "https://openai.com/chatgpt-user.json",
+    "responseDate": "Sun, 01 Nov 2026 16:49:11 GMT",
+    "prefixCount": 235,
+    "addressFamily": 4,
+    "matchingPrefixes": 1,
+    "listed": true,
+    "feedSha256": "9d4d2d9db7a781488f3bbf7ed1327229a7e5a308918e63fd2ecbe2a4f6b90a45",
+    "sourceCaptureSha256": "a21b5c96f3cfce855e86b0a08565f0f33664eb00e4e4aa41968691680c7099a1",
+    "clientAddressPublished": false,
+    "limits": [
+      "Later independent feed capture, not reconstruction of the original resolver response",
+      "Network attribution does not authenticate a person or a particular prompt"
+    ]
+  },
+  "readback": {
+    "rowsReturned": 1,
+    "rowsRead": 1,
+    "rowsWritten": 0,
+    "attempts": 1,
+    "constantControlRowsRead": 0,
+    "sqlSha256": "6150e43680dd21867579ae579360260d5093cac03adc9aec1e6cfb1d20bec2b3",
+    "nativePreflight": "passed-local-workerd-d1"
+  },
+  "nativeUi": {
+    "exactReferenceQueryEvents": 1,
+    "message": "analytics.observation_stored",
+    "timestamp": "2026-11-01T16:37:45.696Z",
+    "fullReceiptExpansionAccepted": false,
+    "rawScreenshotPublication": false
+  },
+  "sourceSha256": {
+    "selectedCapture": "a21b5c96f3cfce855e86b0a08565f0f33664eb00e4e4aa41968691680c7099a1",
+    "readback": "475f35a5f76f0b0da128162efb5f739c175cde7503cfdffbc3e0f66ab868fc7d",
+    "scopedAnswer": "b611e17fa6849eb9b9cdda46b3d32360b5b61e15a86c270861795b5c12d99e00",
+    "receiptProjector": "3b78f4efce7161e69cfbb31fc455fcf2b4464d55d634a2eb0d3d46fa38d65beb",
+    "extractor": "5999c6f79376f6d1c7dde8a5b91e3b5cd06b8fd147eb887aaf2c7334b1d9bf80"
+  },
+  "screenshots": [
+    {
+      "path": "/images/fetcher-live-2026-11-01/chatgpt-answer.jpg",
+      "sha256": "01bb61baafec65984a86c8ba01fd74e485fc3eae2153986cbdd22f0df5a46738",
+      "kind": "actual-service-answer",
+      "privacyReviewed": true
+    },
+    {
+      "path": "/images/fetcher-live-2026-11-01/duck-ai-answer.jpg",
+      "sha256": "b4e7a998e7d0ee701c62f6a060e042f75b61fe1419c7384247948cca1e68c039",
+      "kind": "actual-earlier-accepted-service-answer",
+      "privacyReviewed": true
+    }
+  ],
+  "pending": [
+    {
+      "service": "Grok on X",
+      "state": "Existing account interface opens; submission unconfirmed; prepared exact prompt awaits manual check",
+      "fetchFailureEstablished": false
+    },
+    {
+      "service": "Gemini",
+      "state": "Existing account requires passkey completion; no r3 prompt submitted"
+    },
+    {
+      "service": "Claude",
+      "state": "Sign-in screen; no r3 prompt submitted"
+    },
+    {
+      "service": "Perplexity",
+      "state": "Prepared prompt and Send attempt; login overlay remains; submission unconfirmed"
+    },
+    {
+      "service": "Copilot",
+      "state": "Sign-in screen; no assigned trial submitted"
+    }
+  ],
+  "limits": [
+    "The expanded objective remains active; this is one additional successful assistant product, not completion of the requested broader survey.",
+    "Agent-operated interfaces and inspectable records; no claim that Goga personally inspected every row.",
+    "Screenshots establish visible service answers; receipt/row joins separately establish captured delivery.",
+    "Assigned URL and network match support controlled attribution, not signed authentication of a user or human intent.",
+    "The independent network check used a later public feed capture; original resolver response is not reconstructed.",
+    "Native verification booleans are unavailable. No signature was supplied by this ChatGPT request.",
+    "The source is a finite snapshot from an ongoing bounded tail, not a stopped complete-population stream.",
+    "Raw native screenshot and login/OAuth/passkey screens stay private; no permission expansion was performed."
+  ]
+}

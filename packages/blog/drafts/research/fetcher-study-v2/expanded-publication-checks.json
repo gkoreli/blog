@@ -1,0 +1,59 @@
+{
+  "checkedAt": "2026-11-01T16:52:30.379417+00:00",
+  "pages": [
+    {
+      "slug": "ai-fetcher-research-from-experiments-to-a-cited-reference",
+      "h1": 1,
+      "uniqueIds": 13,
+      "promptCount": 9,
+      "builtSha256": "ce0e76d845778155efb1d484f258f0047e8d0c09eb6b73637d18e526c000d883",
+      "images": [
+        "/images/fetcher-live-2026-11-01/duck-ai-answer.jpg",
+        "/images/fetcher-live-2026-11-01/chatgpt-answer.jpg"
+      ]
+    },
+    {
+      "slug": "which-ai-fetchers-send-which-headers",
+      "h1": 1,
+      "uniqueIds": 22,
+      "promptCount": 22,
+      "builtSha256": "2c359f08d9b4f8cb3f6f0a42c1ac4cdb4c9192a39a0382e53b006f503d78c4ab",
+      "images": []
+    }
+  ],
+  "markdownValidation": 28,
+  "isolatedBuildPosts": 39,
+  "researchRelativeTargets": 126,
+  "originalFrozenFootprintUnchanged": true,
+  "publicScreenshotHashesMatch": true,
+  "runtimeCodeChanged": false,
+  "unitTestsRepeated": false,
+  "expandedGoalStatus": "active",
+  "limits": [
+    "This accepts the screenshot publication and one new ChatGPT chain, not the entire expanded service goal.",
+    "No unconfirmed Grok submission is counted as a fetch."
+  ],
+  "browserLayout": {
+    "documentWidth": 1280,
+    "images": [
+      {
+        "complete": true,
+        "height": 409.5,
+        "naturalHeight": 720,
+        "naturalWidth": 1280,
+        "src": "/images/fetcher-live-2026-11-01/duck-ai-answer.jpg",
+        "width": 728
+      },
+      {
+        "complete": true,
+        "height": 409.5,
+        "naturalHeight": 720,
+        "naturalWidth": 1280,
+        "src": "/images/fetcher-live-2026-11-01/chatgpt-answer.jpg",
+        "width": 728
+      }
+    ],
+    "viewport": 1280
+  },
+  "articleReadability": "Full accessible article inspected; both screenshots decode at1280x720 and render728x409.5 without horizontal document overflow"
+}

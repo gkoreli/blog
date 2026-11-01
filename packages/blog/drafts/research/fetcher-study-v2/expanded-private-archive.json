@@ -1,0 +1,21 @@
+{
+  "checkedAt": "2026-11-01T16:53:51.915163+00:00",
+  "directory": "packages/blog/worklog/fetcher-expanded-20261101",
+  "gitIgnored": true,
+  "checkpointFiles": 50,
+  "checkpointManifestSha256": "4ca56bd71e4e7fbf17a37d00d4ea82d5841de57c0465498cc69dfd26364682d7",
+  "ongoingTailExcludedFromCheckpoint": true,
+  "frozenAcceptedCapture": "extract-02/matched-private.json and exact row batch1 remain retained; see public source commitments",
+  "privateOnly": [
+    "OAuth/passkey/login screenshots",
+    "raw native Cloudflare screenshot",
+    "exact operation/observation references",
+    "raw headers and client addresses",
+    "CLI account metadata"
+  ],
+  "publicReviewedCopies": [
+    "Actual ChatGPT answer screenshot",
+    "Actual earlier Duck.ai answer screenshot"
+  ],
+  "expandedGoalStatus": "active"
+}

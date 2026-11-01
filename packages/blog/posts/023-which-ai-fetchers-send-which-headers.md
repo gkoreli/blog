@@ -245,6 +245,8 @@ The [revised follow-up](/ai-fetcher-research-from-experiments-to-a-cited-referen
 
 ### Changelog
 
+- **2026-11-01 UTC, screenshot-backed ChatGPT recheck.** The follow-up adds an actual signed-in ChatGPT answer and matched unsigned ChatGPT-User request, exact storage check, independent published-network check and real ChatGPT/Duck.ai answer screenshots. The earlier Grok gate is scoped to signed-out grok.com; the later X interface opened but submission remains unconfirmed. [Current evidence and open work](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/fetcher-study-v2/20-expanded-screenshot-results.md). These additions do not refresh the full September survey or its frozen research footprint.
+
 - **2026-11-01 UTC, fresh third-party validation.** The follow-up now includes an actual Duck.ai answer, its signed DuckAssistBot request and exact stored row, plus a real Jina hosted-reader fetch. The unchanged fresh DuckAssistBot proof verifies in three implementations and still leaves the path unsigned. Grok stopped at a sign-up gate. [Method and results](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/fetcher-study-v2/17-third-party-validation-results.md). These are agent-operated tests, separate from the dated September survey and the follow-up's own browser controls.
 
 - **2026-11-01 UTC, live follow-up revision.** Linked the fresh browser/production-data investigation and real-proof replay. The follow-up's generated regression cases are no longer its central finding. September observations, prompts and frozen research-footprint figures remain dated and unchanged.
