@@ -1,0 +1,100 @@
+[
+  {
+    "name": "fixture",
+    "same_bytes": true,
+    "generated_bytes": 2215,
+    "json_bytes": 2215,
+    "generated_keys": [
+      "user",
+      "orders",
+      "summary",
+      "settings",
+      "padding"
+    ],
+    "json_keys": [
+      "user",
+      "orders",
+      "summary",
+      "settings",
+      "padding"
+    ],
+    "generated_user_keys": [
+      "id",
+      "name",
+      "bio"
+    ],
+    "json_user_keys": [
+      "id",
+      "name",
+      "bio"
+    ],
+    "generated_id_type": "number",
+    "json_id_type": "number"
+  },
+  {
+    "name": "extra-fields",
+    "same_bytes": false,
+    "generated_bytes": 2215,
+    "json_bytes": 2262,
+    "generated_keys": [
+      "user",
+      "orders",
+      "summary",
+      "settings",
+      "padding"
+    ],
+    "json_keys": [
+      "user",
+      "orders",
+      "summary",
+      "settings",
+      "padding",
+      "internalNote"
+    ],
+    "generated_user_keys": [
+      "id",
+      "name",
+      "bio"
+    ],
+    "json_user_keys": [
+      "id",
+      "name",
+      "bio",
+      "internalFlag"
+    ],
+    "generated_id_type": "number",
+    "json_id_type": "number"
+  },
+  {
+    "name": "numeric-string",
+    "same_bytes": false,
+    "generated_bytes": 2215,
+    "json_bytes": 2217,
+    "generated_keys": [
+      "user",
+      "orders",
+      "summary",
+      "settings",
+      "padding"
+    ],
+    "json_keys": [
+      "user",
+      "orders",
+      "summary",
+      "settings",
+      "padding"
+    ],
+    "generated_user_keys": [
+      "id",
+      "name",
+      "bio"
+    ],
+    "json_user_keys": [
+      "id",
+      "name",
+      "bio"
+    ],
+    "generated_id_type": "number",
+    "json_id_type": "string"
+  }
+]

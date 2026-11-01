@@ -7,3 +7,5 @@
 - **[Prepared adoption actions](../../social/oss-radar-08-bun-aot/adoption-next.md):** named readers, exact messages and what a useful response would establish. Nothing newly posted or sent.
 
 [Worklist and acceptance](00-worklist-index.md). All experiments use previews and bounded local workloads; sources, failures and limits are linked beside the results.
+
+[November 1 Express/SQLite investigation](express-sqlite-2026-11-01/README.md) checks the new maintainer report, CPU/request, first-use behavior and Fastify serializer contracts. The functional serializer check passed; uncontended performance acceptance and the follow-up decision remain open.

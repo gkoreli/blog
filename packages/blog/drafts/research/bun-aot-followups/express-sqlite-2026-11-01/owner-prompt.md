@@ -1,0 +1,1 @@
+We might need a followup article to the bun aot, more and more results are coming up https://x.com/jarredsumner/status/2116679973448945762?a=pSLkQ64TbFzzcaL0roc&s=46 do more evidence based exploration and research and experiments
