@@ -1,0 +1,160 @@
+{
+  "checkedAt": "2026-11-01T19:33:58.721607+00:00",
+  "status": "expanded-screenshot-and-service-objective-accepted",
+  "sourceCommit": "729c3da9cea22dcd5923c8fd8c8b67197e52d2b3",
+  "sourcePushed": true,
+  "nativeBuild": {
+    "id": "296fdad9-95e0-48da-8aae-4d0d5e978b01",
+    "sourceCommit": "729c3da9cea22dcd5923c8fd8c8b67197e52d2b3",
+    "buildCommandSucceeded": true,
+    "deployCommandSucceeded": true,
+    "workerVersion": "9766e640-b59f-4dde-a305-c2dad5c92de5",
+    "hostedNode": "24.22.1",
+    "localNode": "24.14.1",
+    "displayedDuration": "46s",
+    "durationSource": "native-build-UI"
+  },
+  "sourceBuildVersionJoinAccepted": true,
+  "freshDeployment": {
+    "id": "5c8d7974-9a32-431e-8d03-f96622646600",
+    "created_on": "2026-11-01T19:31:19.17584Z",
+    "versions": [
+      {
+        "version_id": "9766e640-b59f-4dde-a305-c2dad5c92de5",
+        "percentage": 100
+      }
+    ]
+  },
+  "served": {
+    "checkedAt": "2026-11-01T19:32:39.727Z",
+    "articleHtmlMatches": true,
+    "articleTextMatches": true,
+    "htmlCharacters": 30040,
+    "textCharacters": 20575,
+    "layout": {
+      "documentWidth": 1280,
+      "images": [
+        {
+          "complete": true,
+          "height": 409.5,
+          "naturalHeight": 720,
+          "naturalWidth": 1280,
+          "src": "/images/fetcher-live-2026-11-01/duck-ai-answer.jpg",
+          "width": 728
+        },
+        {
+          "complete": true,
+          "height": 409.5,
+          "naturalHeight": 720,
+          "naturalWidth": 1280,
+          "src": "/images/fetcher-live-2026-11-01/chatgpt-answer.jpg",
+          "width": 728
+        },
+        {
+          "complete": true,
+          "height": 767,
+          "naturalHeight": 767,
+          "naturalWidth": 625,
+          "src": "/images/fetcher-live-2026-11-01/grok-x-answer.jpg",
+          "width": 625
+        },
+        {
+          "complete": true,
+          "height": 297.140625,
+          "naturalHeight": 400,
+          "naturalWidth": 980,
+          "src": "/images/fetcher-live-2026-11-01/grok-native-reader-kind.jpg",
+          "width": 727.9921875
+        }
+      ],
+      "viewport": 1280
+    }
+  },
+  "nativeReceipt": "expanded-native-acceptance.json",
+  "publicationChecks": "expanded-native-publication-checks.json",
+  "completionAudit": [
+    {
+      "requirement": "Explain original Grok gate and use existing X account",
+      "accepted": true,
+      "evidence": [
+        "21-grok-x-results.md",
+        "expanded-grok-findings.json"
+      ],
+      "boundary": "Earlier standalone signed-out gate did not establish account entitlement or fetch refusal; the earlier inert-control cause remains unknown."
+    },
+    {
+      "requirement": "At least two additional distinct actual assistant request chains",
+      "accepted": true,
+      "evidence": [
+        "expanded-chatgpt-findings.json",
+        "expanded-grok-findings.json"
+      ],
+      "boundary": "ChatGPT plus Grok; Grok quoted correctly but returned document title as H1. Gates and hosted-reader results are separately identified."
+    },
+    {
+      "requirement": "Actual prompt/answer and matched native screenshots with request-to-row evidence",
+      "accepted": true,
+      "evidence": [
+        "expanded-native-acceptance.json",
+        "expanded-grok-findings.json"
+      ],
+      "boundary": "Three actual service screenshots plus one cropped actual native acknowledgement; one native receipt expanded, all eleven row comparisons separate."
+    },
+    {
+      "requirement": "Article integration with preserved dated captures, prompts and footprint",
+      "accepted": true,
+      "evidence": [
+        "expanded-native-publication-checks.json"
+      ],
+      "boundary": "Original September footprint and complete prompt histories remain unchanged; logistics and permission replies add no new shaping prompt."
+    },
+    {
+      "requirement": "Isolated rendered checks and actual final served revision",
+      "accepted": true,
+      "evidence": [
+        "expanded-native-publication-checks.json",
+        "expanded-final-release.json"
+      ],
+      "boundary": "Complete article HTML/text equality, all four images decoded, no1280px overflow; no whole-document byte-equality or served-request-to-Worker join claim."
+    },
+    {
+      "requirement": "Scoped main delivery and activation",
+      "accepted": true,
+      "evidence": [
+        "expanded-final-release.json"
+      ],
+      "boundary": "Source729c3da, native source/build log and fresh CLI100% allocation; later evidence-only delivery is separate."
+    },
+    {
+      "requirement": "Preserve raw private evidence and clean owned resources",
+      "accepted": true,
+      "evidence": [
+        "expanded-private-archive.json"
+      ],
+      "boundary": "No owned tail or preview remains running; temporary builds removed, other sessions and shared dependencies preserved."
+    }
+  ],
+  "allRequiredEvidenceAccepted": true,
+  "futureMonitoringScheduled": false,
+  "newNativeStepD1Queries": 0,
+  "cleanup": {
+    "tailStopped": true,
+    "previewsStopped": true,
+    "temporaryBuildCheckoutsRemoved": true,
+    "otherWorktreesAndSharedDependenciesPreserved": true
+  },
+  "sourceSha256": {
+    "nativeBuildLog": "ef9e24941507a829f467f069a559edc934d2d48b1d303feda85a83da1da63f75",
+    "nativeBuildAx": "97c0f5f9d9acf718e2477b2c10a5c23b15548b9a666d5335ddb6fa7063502c11",
+    "servedArticleBody": "d27ed775a2037e2aa25721597ef2bd6ef4bb328e795202248d2dde512e12e07e",
+    "servedComparison": "fa38b5fd12e758645e80cf3e92d3445aa25f712fc31d0ca014e2e96481b4fc1f"
+  },
+  "limits": [
+    "Grok trial attribution uses the assigned URL and actual service/result/origin chain; it is not cryptographic identity, human intent or eleven readers.",
+    "A correct sentence and delivered page do not make Grok\u2019s incorrect H1 answer correct.",
+    "The native crop shows one filtered receipt classification; full receipt equality, eleven row checks and HTTP200 records are separate evidence.",
+    "The hosted build used Node24.22.1 while the isolated local build used the pinned24.14.1. The actual served article was independently compared afterward.",
+    "Current source/build activation and served content are separate observations; no per-request Worker-version join or whole-document byte equality is claimed."
+  ],
+  "finalResearchRelativeTargetsChecked": 150
+}

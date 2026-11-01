@@ -19,7 +19,7 @@
     "Actual Grok on X prompt and answer screenshot",
     "Actual native Cloudflare readerKind screenshot clip"
   ],
-  "expandedGoalStatus": "active",
+  "expandedGoalStatus": "evidence-accepted",
   "publicationCheckpointFiles": 78,
   "publicationCheckpointManifestSha256": "23e34d36bf131419476148ec598ac8f5e0cdae516b67b812615dea8624992934",
   "publicationCapturePreserved": true,
@@ -27,9 +27,12 @@
   "grokCheckpointFiles": 129,
   "grokCheckpointManifestSha256": "eeae712bac52495989200bdd634d3996abb87f393c31e76e3ba28b607d86d746",
   "grokStoppedStreamPreserved": true,
-  "latestCheckpointAt": "2026-11-01T19:30:00.775504+00:00",
-  "latestCheckpointFiles": 178,
-  "latestCheckpointManifestSha256": "c937054c0b13d84803af452a5a30640f583f0648cca5a96be960ff12ddf197f7",
+  "latestCheckpointAt": "2026-11-01T19:35:08.803331+00:00",
+  "latestCheckpointFiles": 190,
+  "latestCheckpointManifestSha256": "ebb362ec4581ae19b8438d4532b3e6a3e8fbfa7baa49559e9d16f8704b6c6cde",
   "publicationPendingOriginApproval": false,
-  "nativeReceiptAccepted": true
+  "nativeReceiptAccepted": true,
+  "finalAcceptedArchive": true,
+  "finalManifestName": "manifest-final.json",
+  "finalFourImageServedAcceptance": true
 }
