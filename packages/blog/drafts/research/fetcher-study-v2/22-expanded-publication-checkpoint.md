@@ -12,7 +12,9 @@ November 1, 2026 UTC. This is an unfinished-goal handoff, following [the accepte
 
 ## Not accepted yet
 
-The source-linked GitHub check for build `2c64658b-0151-4d01-adb4-b6d47552fd90` still said in-progress at the saved read. A fresh Wrangler allocation shows Worker `4478b653-b471-4197-a07b-2fc5fc22555d` at 100%, deployment `6728a384-f78e-4a62-a67e-aaab117e75bd`, created 17:10:18.663 UTC. This observes activation metadata; it does not establish a direct source-to-version join or the current served article.
+The 17:11 UTC checkpoint recorded the source-linked GitHub check as in-progress. A subsequent read confirms **completed / success** for build `2c64658b-0151-4d01-adb4-b6d47552fd90`, with exact head `5bdfa17cfedd8555cc2bc245aa2a51776ae19cb6`. Source-linked build success is now accepted.
+
+The saved Wrangler allocation shows Worker `4478b653-b471-4197-a07b-2fc5fc22555d` at 100%, deployment `6728a384-f78e-4a62-a67e-aaab117e75bd`, created 17:10:18.663 UTC. A later read of that version's metadata exposes no source/build reference. These records do not establish a direct source-to-version join or the current served article; the allocation was not polled again in this step.
 
 Automatic approval review rejected reopening `dash.cloudflare.com`, then refreshing the existing `gkoreli.com` tab, treating each as an unapproved browser-origin access grant. Explicit owner permission for both sites has been requested. No alternate browser route, HTTP client or other workaround was used to obtain the blocked page/inspection. The final live article/image comparison and new native Grok log screenshot are therefore **pending**, not inferred from the local build or allocation. The earlier [ChatGPT screenshot release](expanded-release.json) remains dated historical acceptance.
 

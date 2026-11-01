@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-11-01T17:11:04.198815+00:00",
+  "checkedAt": "2026-11-01T17:12:47.157295+00:00",
   "sourceCommit": "5bdfa17cfedd8555cc2bc245aa2a51776ae19cb6",
   "sourcePushed": true,
   "sourceFiles": 10,
@@ -15,9 +15,11 @@
   "buildCheck": {
     "name": "Workers Builds: gkoreli-com",
     "headSha": "5bdfa17cfedd8555cc2bc245aa2a51776ae19cb6",
-    "status": "in_progress",
-    "conclusion": null,
-    "buildId": "2c64658b-0151-4d01-adb4-b6d47552fd90"
+    "status": "completed",
+    "conclusion": "success",
+    "buildId": "2c64658b-0151-4d01-adb4-b6d47552fd90",
+    "checkRunId": 124918186623,
+    "checkedAt": "2026-11-01T17:12:47.157295+00:00"
   },
   "freshWorkerAllocation": {
     "id": "6728a384-f78e-4a62-a67e-aaab117e75bd",
@@ -48,8 +50,13 @@
     "unrelatedWorkPreserved": true
   },
   "limits": [
-    "A fresh100%Worker allocation is observed; exact source-linked native build success is not established by an in-progress GitHub check.",
+    "Source-linked GitHub build success is confirmed for the article commit. The saved Worker allocation and version metadata do not themselves establish a direct source-to-Worker join.",
     "The final served Grok revision is not inferred from local build or allocation metadata.",
     "The broader goal stays active awaiting permission; it is not marked paused, blocked or complete."
-  ]
+  ],
+  "priorBuildCheckStatus": "in_progress",
+  "sourceLinkedBuildSuccess": true,
+  "allocationRecheckedInThisStep": false,
+  "versionMetadataCheckedAt": "2026-11-01T17:12:47.157295+00:00",
+  "versionMetadataIncludesSourceBuildReference": false
 }
