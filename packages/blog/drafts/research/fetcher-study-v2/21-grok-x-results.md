@@ -1,5 +1,7 @@
 # Grok on X fetched the study; its answer confused the title and H1
 
+The later [native inspection and publication acceptance](23-expanded-publication-acceptance.md) supersedes this record's pending dashboard-permission status. Its eleven-request findings remain accepted.
+
 November 1, 2026 UTC, 17:01–17:02. Continues the [expanded screenshot trial plan](19-expanded-screenshot-trial-plan.md) and supersedes the unconfirmed Grok submission in the [16:53 checkpoint](20-expanded-screenshot-results.md). The new signed-in ChatGPT and Grok trials now provide two additional distinct assistant products with complete request chains. Publication checks and the requested native dashboard screenshot remain separate acceptance work.
 
 ## Existing account, confirmed submission

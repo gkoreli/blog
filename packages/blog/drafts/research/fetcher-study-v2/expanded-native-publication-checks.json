@@ -1,0 +1,44 @@
+{
+  "checkedAt": "2026-11-01T19:28:50.802210+00:00",
+  "pages": [
+    {
+      "slug": "ai-fetcher-research-from-experiments-to-a-cited-reference",
+      "h1": 1,
+      "uniqueIds": 13,
+      "promptCount": 9,
+      "builtSha256": "4781762a232aa9635316374a4333da207776111e0aa7bd0db265effbb2119110",
+      "images": [
+        "/images/fetcher-live-2026-11-01/duck-ai-answer.jpg",
+        "/images/fetcher-live-2026-11-01/chatgpt-answer.jpg",
+        "/images/fetcher-live-2026-11-01/grok-x-answer.jpg",
+        "/images/fetcher-live-2026-11-01/grok-native-reader-kind.jpg"
+      ]
+    },
+    {
+      "slug": "which-ai-fetchers-send-which-headers",
+      "h1": 1,
+      "uniqueIds": 22,
+      "promptCount": 22,
+      "builtSha256": "63ca5024cdb7246bca4d665a0460d8af80ccbe259bbfeca2fbf2e8f80ec0d8ec",
+      "images": []
+    }
+  ],
+  "markdownValidation": 28,
+  "isolatedBuildPosts": 39,
+  "researchRelativeTargets": 147,
+  "originalFrozenFootprintUnchanged": true,
+  "publicScreenshotHashesMatch": true,
+  "runtimeCodeChanged": false,
+  "unitTestsRepeated": false,
+  "expandedGoalStatus": "active",
+  "limits": [
+    "The native crop shows one selected acknowledgement\u2019s readerKind; all eleven complete receipt comparisons are separate evidence.",
+    "Final served acceptance for the fourth-image revision must follow this isolated build."
+  ],
+  "latestResearchLinkCheckAt": "2026-11-01T19:30:28.699786+00:00",
+  "localBrowser": {
+    "fourImagesDecoded": true,
+    "noDocumentOverflow": true,
+    "viewport": 1280
+  }
+}

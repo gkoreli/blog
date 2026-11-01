@@ -99,6 +99,10 @@ Grok's signed-out gate said nothing about access through my existing X account. 
 
 *Grok's actual prompt and answer from the 17:01 UTC trial. The sentence matches; the claimed H1 is the document title. Eleven matched request-to-row chains separately establish captured delivery.*
 
+![Cloudflare's native event view showing analytics.observation_stored at 17:01:39.453 UTC and its filtered receipt.readerKind value of browser.](/images/fetcher-live-2026-11-01/grok-native-reader-kind.jpg)
+
+*One matching Grok acknowledgement in Cloudflare's actual log interface, filtered to `readerKind` and cropped to exclude account details and internal identifiers. The full native receipt matches the captured acknowledgement and exact stored row. [Native inspection and screenshot method](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/fetcher-study-v2/23-expanded-publication-acceptance.md).*
+
 This is the useful habit: compare the answer with what your server actually recorded. A confident answer, a failed tool and a delivered page are different events. Keep all three.
 
 ## A signed request can leave the page unsigned

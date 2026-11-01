@@ -16,7 +16,8 @@
   "publicReviewedCopies": [
     "Actual ChatGPT answer screenshot",
     "Actual earlier Duck.ai answer screenshot",
-    "Actual Grok on X prompt and answer screenshot"
+    "Actual Grok on X prompt and answer screenshot",
+    "Actual native Cloudflare readerKind screenshot clip"
   ],
   "expandedGoalStatus": "active",
   "publicationCheckpointFiles": 78,
@@ -26,8 +27,9 @@
   "grokCheckpointFiles": 129,
   "grokCheckpointManifestSha256": "eeae712bac52495989200bdd634d3996abb87f393c31e76e3ba28b607d86d746",
   "grokStoppedStreamPreserved": true,
-  "latestCheckpointAt": "2026-11-01T17:12:47.157295+00:00",
-  "latestCheckpointFiles": 145,
-  "latestCheckpointManifestSha256": "bd7853ae1dd00027ac8fccb44c6330252cec0c4707d349b47c2cbdf1765db7c7",
-  "publicationPendingOriginApproval": true
+  "latestCheckpointAt": "2026-11-01T19:30:00.775504+00:00",
+  "latestCheckpointFiles": 178,
+  "latestCheckpointManifestSha256": "c937054c0b13d84803af452a5a30640f583f0648cca5a96be960ff12ddf197f7",
+  "publicationPendingOriginApproval": false,
+  "nativeReceiptAccepted": true
 }

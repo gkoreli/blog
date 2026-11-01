@@ -1,0 +1,110 @@
+{
+  "checkedAt": "2026-11-01T19:27:00.071Z",
+  "status": "approved-native-grok-receipt-accepted",
+  "browserApproval": {
+    "userText": "Yes approve both",
+    "scope": [
+      "gkoreli.com public article verification",
+      "Signed-in Cloudflare dashboard matched-log inspection"
+    ],
+    "macInteractionRequired": false
+  },
+  "nativeLookup": {
+    "timeframeStart": "2026-11-01T17:01:00.000Z",
+    "timeframeEnd": "2026-11-01T17:03:00.000Z",
+    "filter": "Exact returned storage reference; value withheld",
+    "matchingEvents": 1,
+    "message": "analytics.observation_stored",
+    "timestamp": "2026-11-01T17:01:39.453Z",
+    "receiptExpandedAndInspected": true,
+    "nativeUiJsonCopied": true,
+    "entireNativeReceiptMatchesCapturedAcknowledgement": true,
+    "exactOperationStorageCollectorWorkerAndUrlMatch": true,
+    "fullCurrentStoredRowReceiptMatches": true,
+    "storedReaderKind": "browser",
+    "signatureOutcome": "absent",
+    "newD1ReadbackPerformed": false,
+    "invocationView": {
+      "httpStatus": 200,
+      "records": 3,
+      "attemptTimestamp": "2026-11-01T17:01:38.976Z",
+      "storedTimestamp": "2026-11-01T17:01:39.453Z",
+      "assignedUrlMessageObserved": true
+    }
+  },
+  "servedBeforeNativeImageAddition": {
+    "checkedAt": "2026-11-01T19:22:37.081Z",
+    "articleHtmlMatches": true,
+    "articleTextMatches": true,
+    "htmlCharacters": 29328,
+    "textCharacters": 20290,
+    "layout": {
+      "documentWidth": 1280,
+      "images": [
+        {
+          "complete": true,
+          "height": 409.5,
+          "naturalHeight": 720,
+          "naturalWidth": 1280,
+          "src": "/images/fetcher-live-2026-11-01/duck-ai-answer.jpg",
+          "width": 728
+        },
+        {
+          "complete": true,
+          "height": 409.5,
+          "naturalHeight": 720,
+          "naturalWidth": 1280,
+          "src": "/images/fetcher-live-2026-11-01/chatgpt-answer.jpg",
+          "width": 728
+        },
+        {
+          "complete": true,
+          "height": 767,
+          "naturalHeight": 767,
+          "naturalWidth": 625,
+          "src": "/images/fetcher-live-2026-11-01/grok-x-answer.jpg",
+          "width": 625
+        }
+      ],
+      "viewport": 1280
+    }
+  },
+  "originalChangelog": {
+    "checkedAt": "2026-11-01T19:24:22.153Z",
+    "heading": "Which AI Fetchers Send Which Headers, Measured on a Live Site",
+    "grokChangelog": "2026-11-01 UTC, signed-in Grok on X. The follow-up adds a completed trial through the existing X account: eleven assigned-URL requests, all unsigned and stored as Browser, with full receipt-to-row agreement and a real prompt/answer screenshot. Grok quoted the requested sentence correctly but returned the document title as the H1. Method, result and limits. This supersedes the earlier unconfirmed X submission; the September survey remains dated."
+  },
+  "screenshot": {
+    "path": "/images/fetcher-live-2026-11-01/grok-native-reader-kind.jpg",
+    "width": 980,
+    "height": 400,
+    "kind": "actual-native-screenshot-clip",
+    "propertyFilter": "readerKind",
+    "clip": {
+      "x": 280,
+      "y": 250,
+      "width": 980,
+      "height": 400
+    },
+    "sha256": "d084b2a68df185a0ef1afb30dc134fbc3d080ebf12bab73330a404696df45c88",
+    "privacyReviewed": true,
+    "generatedOrRecreated": false,
+    "identifiersOrAccountDataVisible": false
+  },
+  "sourceSha256": {
+    "nativeCopiedJson": "bc65ac1392ab3e105f2c97ff0e299271835cb58d8f5338e28706779bd8cc6cd1",
+    "uncroppedScreenshot": "a0627c3a96c1cdc2b8215a690df628d2edc00ed5066652277845a6094c2d4f3b",
+    "nativeExpandedAx": "1557be26fa74e3dc5dbcacfef09e51656b0bb5d1af2008346253cc93b300303a",
+    "capturedEnvelope": "f9f26018312e3a5b7339a3f31600791af41716ffae66d019bb851c1d38e09740",
+    "acceptedRowReadback": "839ad2e6115f3e10992c8fb4193339f961dea1cf3d264c3367fc90f74bc35ca8",
+    "currentReceiptProjector": "3b78f4efce7161e69cfbb31fc455fcf2b4464d55d634a2eb0d3d46fa38d65beb"
+  },
+  "limits": [
+    "One native receipt was expanded and checked; all eleven rows were separately compared offline.",
+    "The crop shows only the filtered readerKind property of the selected stored acknowledgement, with its event timestamp/message.",
+    "The crop does not itself show the HTTP200 response, entire receipt, exact-reference join or all eleven events; those are separate retained records and comparisons.",
+    "One Success in the image is the selected native event count, not a site-wide error or health claim.",
+    "Raw account details, exact references, native records and uncropped captures remain private.",
+    "The served comparison predates this new fourth image; final publication requires a new isolated build and served comparison."
+  ]
+}

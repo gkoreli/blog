@@ -1,5 +1,7 @@
 # Grok evidence delivered; browser acceptance awaits origin permission
 
+The owner later approved both browser origins in text. [Native inspection and final publication](23-expanded-publication-acceptance.md) supersedes the permission blockers below; this checkpoint preserves the earlier limits.
+
 November 1, 2026 UTC. This is an unfinished-goal handoff, following [the accepted Grok trial](21-grok-x-results.md). Do not rerun its prompt or exact-row query merely to resume.
 
 ## Complete
