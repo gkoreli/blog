@@ -22,7 +22,7 @@ Run the blog skills in this order when they apply:
 5. `launch-article-on-x`
 6. `polish-prose` for final social copy only
 
-`personal-essays` still wins every voice conflict. `oss-radar` still governs evidence and verdicts. This skill owns the distribution artifact, capture quality, publication workflow, and post-launch learning loop.
+`personal-essays` protects personal article material; `oss-radar` governs evidence and verdicts. For posts and informal replies, use [Goga's informal voice](../polish-prose/SKILL.md#gogas-informal-voice): useful point first, ordinary words and his natural punctuation. Do not import an article's formal structure into a reply. This skill owns the distribution artifact, capture quality, publication workflow, and post-launch learning loop.
 
 ## Working directory
 
@@ -88,7 +88,7 @@ Make the first post complete enough to earn attention on X:
 - native media, when included: evidence that supports the claim;
 - body: why the result matters to the target engineer;
 - link: direct canonical article URL;
-- reply invitation: a real decision or experience readers can answer.
+- reply invitation, only when useful: a real decision or experience readers can answer. Do not append a question to every post or follow-up.
 
 Use a single post when one claim and one visual carry the whole doorway. Use a thread only when each additional post adds a distinct payload. Keep most threads to three to five posts:
 

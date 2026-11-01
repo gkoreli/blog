@@ -24,6 +24,8 @@ Goga's October 31, 2026 direction: do not use another project's GitHub issues fo
 
 ## Publication feedback
 
+For Reddit, X and casual outreach written as Goga, follow [Goga's informal voice](../../polish-prose/SKILL.md#gogas-informal-voice). The October 31 direction is to put the useful result first, use ordinary language and preserve his natural fragments, lowercase openings and punctuation. A research-process preamble is not the default opening for a useful reply.
+
 After publishing a substantive engineering article:
 
 1. Set a measurement window before interpreting performance.
