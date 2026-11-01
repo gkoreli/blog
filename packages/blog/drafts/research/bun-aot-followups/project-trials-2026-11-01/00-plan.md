@@ -15,7 +15,7 @@ Previous goal turn: progress. It published the pool evidence and reader tool. Th
 - [x] For a failed mode, do not invent speed/RAM numbers. Retain exact diagnostics, attempt the documented applicable remedy and verify any claimed mechanism with a bounded reproducer or directly observed runtime path.
 - [x] Determine whether Varsafe's source or comparable test builds are publicly available. No source access, account or author participation is assumed. If unavailable, state the evidence gap explicitly; do not substitute an unrelated CLI as its result.
 - [x] Add compact, plain-language findings to the article, with numbers, conditions, source/permalink links, useful changes and failures. Publish full reproduction/evidence alongside it.
-- [ ] Check source/data consistency, relevant site checks, render, scoped main delivery, deployment activation and actual served HTML/Markdown. Preserve original research accounting and opening executable sizes.
+- [x] Check source/data consistency, relevant site checks, render, scoped main delivery, deployment activation and actual served HTML/Markdown. Preserve original research accounting and opening executable sizes.
 
 ## Pinned inputs and initial conditions
 
@@ -103,6 +103,16 @@ The original batches and extensions remain distinct: 96 + 22 startup/load/contro
 
 The isolated site build uses current main `5054c8f` plus this article, preserving concurrent Express/SQLite and fetcher research. Frozen-lockfile installation, workspace typecheck, post validation (28 Markdown posts) and full build (39 total posts) passed in `/tmp/bun-aot-publication-20261031`. The active checkout's stale dependency tree initially lacked `ipaddr.js`; typechecking the clean installed preview passed without changing application code or dependency files.
 
-Built HTML and Markdown contain the new medians, original opening executable sizes, unchanged frozen footprint and correct canonical URL; HTML has one H1. The final source is about 1,780 words including frontmatter, beyond the original limit under Goga's explicit relaxation. Desktop rendering at 1280 pixels passed. A four-column phone table squeezed out the memory column; the final source uses two three-column tables. At 390 pixels all cells are readable and document width remains 390, with no horizontal document overflow. The temporary viewport was reset. Local file links, Markdown fences, Python syntax, evidence hashes/medians and a credential/private-address scan passed. Bun issue 47044 was rechecked and remained open.
+Built HTML and Markdown contain the new medians, original opening executable sizes, unchanged frozen footprint and correct canonical URL; HTML has one H1. The final source is 1,797 words including frontmatter, beyond the original limit under Goga's explicit relaxation. Desktop rendering at 1280 pixels passed. A four-column phone table squeezed out the memory column; the final source uses two three-column tables. At 390 pixels all cells are readable and document width remains 390, with no horizontal document overflow. The temporary viewport was reset. Local file links, Markdown fences, Python syntax, evidence hashes/medians and a credential/private-address scan passed. Bun issue 47044 was rechecked and remained open.
 
 Commit/push, deployment activation and actual served HTML/Markdown acceptance are not yet established by these local checks.
+
+## Delivered and served — November 1, 17:31 UTC
+
+Article/evidence commit `54b6fdd09a762235a69542520f120ea807391fba` was pushed directly to main after scoped checks. Its Workers build passed at 17:31:12 UTC. Deployment `c193822e-d6c1-4fa6-8e51-ae767e7986f6` activated version `6736d5f4-ba22-4a76-83bc-876000413bf7` at 100% at 17:31:08 UTC.
+
+Actual public HTML and `.md` both returned 200 at 17:31:42 UTC with the new medians, timer result, source/patch links and preserved opening sizes. The Markdown matched the isolated built bytes exactly. HTML has one H1 and the expected canonical URL. Five public GitHub evidence destinations matched the committed bytes: README, reproduction instructions, timeout patch, manifest and full summary. [Structured acceptance](publication-acceptance.json) records bytes/hashes and the method. Requests used `Purpose: prefetch` under the inspected current eligibility rule; no D1 query or stored-row verification was performed. A deployment metadata read initially hit restricted DNS; the approved read succeeded. This is delivery acceptance, not adoption evidence.
+
+The exact `.patch` bytes retain blank context markers, which `git diff --check` reports as trailing spaces. They were intentionally preserved and hash-checked; the scoped diff check excluding patch artifacts passed. All numerical evidence remains frozen. The temporary local preview and study-owned PostgreSQL were stopped, and temporary viewport settings reset.
+
+This owner request is complete: executed real-project studies, source/doc analysis, reproduced changes/failures, distilled article findings and live publication acceptance. Varsafe remains an explicitly unavailable comparison, with its optional author-contact question unanswered. No new maintainer message or promotional GitHub comment was sent.

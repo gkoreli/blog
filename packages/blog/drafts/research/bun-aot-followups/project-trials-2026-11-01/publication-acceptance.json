@@ -1,0 +1,116 @@
+{
+  "article_commit": "54b6fdd09a762235a69542520f120ea807391fba",
+  "check": {
+    "source_endpoint": "https://api.github.com/repos/gkoreli/blog/commits/54b6fdd09a762235a69542520f120ea807391fba/check-runs",
+    "id": 124923507273,
+    "name": "Workers Builds: gkoreli-com",
+    "conclusion": "success",
+    "completed_at": "2026-11-01T17:31:12Z"
+  },
+  "deployment": {
+    "id": "c193822e-d6c1-4fa6-8e51-ae767e7986f6",
+    "created_on": "2026-11-01T17:31:08.137439Z",
+    "versions": [
+      {
+        "version_id": "6736d5f4-ba22-4a76-83bc-876000413bf7",
+        "percentage": 100
+      }
+    ]
+  },
+  "served_acceptance": {
+    "checked_at": "2026-11-01T17:31:42.327398+00:00",
+    "commit": "54b6fdd09a762235a69542520f120ea807391fba",
+    "requests": [
+      {
+        "url": "https://gkoreli.com/oss-radar-08-bun-aot",
+        "status": 200,
+        "content_type": "text/html",
+        "bytes": 25297,
+        "sha256": "3f2022889be35301b320c57c375902ac4a45961bdc733d489500b1ee710a025b",
+        "checks": [
+          "40,753",
+          "47,789",
+          "45,307",
+          "17,767",
+          "3,847",
+          "twenty timers",
+          "140.6",
+          "77.9",
+          "121.5",
+          "51.8",
+          "30.3",
+          "project-trials-2026-11-01"
+        ],
+        "exact_built_markdown_match": false
+      },
+      {
+        "url": "https://gkoreli.com/oss-radar-08-bun-aot.md",
+        "status": 200,
+        "content_type": "text/markdown; charset=utf-8",
+        "bytes": 12643,
+        "sha256": "b8c4e93bd3a2850ae72e6188e1d79bd9ce29da46b2dab1b4bfb042f43ce863a0",
+        "checks": [
+          "40,753",
+          "47,789",
+          "45,307",
+          "17,767",
+          "3,847",
+          "twenty timers",
+          "140.6",
+          "77.9",
+          "121.5",
+          "51.8",
+          "30.3",
+          "project-trials-2026-11-01"
+        ],
+        "exact_built_markdown_match": true
+      }
+    ],
+    "request_headers": {
+      "User-Agent": "GogaKoreli-ArticleAcceptance/2026-11-01",
+      "Purpose": "prefetch"
+    },
+    "analytics_boundary": "Current eligibility.ts rejects prefetch GETs; .md paths are also ineligible. No D1 query or stored-row exclusion verification was performed."
+  },
+  "public_evidence": {
+    "checked_at": "2026-11-01T17:30:29.705291+00:00",
+    "commit": "54b6fdd09a762235a69542520f120ea807391fba",
+    "files": [
+      {
+        "path": "README.md",
+        "status": 200,
+        "bytes": 8317,
+        "sha256": "3ee7ea16781d23391b3505fc83d942239e39a0ce4f9d72f635bdcc50ad7212b1"
+      },
+      {
+        "path": "reproduce.md",
+        "status": 200,
+        "bytes": 12470,
+        "sha256": "9016c3f1398c3e1c39134e5a013359203e6b4e7fbebbaf8f22c1eb7194665fda"
+      },
+      {
+        "path": "timer-cleanup.patch",
+        "status": 200,
+        "bytes": 891,
+        "sha256": "0be5607d3d655a5355416471052a549256af88c8d3badedafb7106c044e27902"
+      },
+      {
+        "path": "results/manifest.json",
+        "status": 200,
+        "bytes": 11353,
+        "sha256": "c987db37a7f5d7e8a92b1f8a4f56c54bbd9e25998894bba750f92a64660bdee3"
+      },
+      {
+        "path": "results/summary.json",
+        "status": 200,
+        "bytes": 67250,
+        "sha256": "d265e2bf61aa38d2bca2882b73db1150e7bde7fefe84615d404bbc24e7f884a5"
+      }
+    ]
+  },
+  "limits": [
+    "Controlled delivery checks, not reader acquisition or maintainer adoption.",
+    "No new outreach sent; Varsafe comparison unavailable without verified source/matched builds.",
+    "Local experiments on one shared Mac; article describes separate modes, services, timer patches and trial counts."
+  ]
+}

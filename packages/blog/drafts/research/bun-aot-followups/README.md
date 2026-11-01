@@ -6,6 +6,8 @@
 - **[Thirty-second demo](../../social/oss-radar-08-bun-aot/demo-30s.mp4):** separate labels for the original server's file size and the compiler's memory result.
 - **[Prepared adoption actions](../../social/oss-radar-08-bun-aot/adoption-next.md):** named readers, exact messages and what a useful response would establish. Nothing newly posted or sent.
 
+**[Keryx and Next.js experiments](project-trials-2026-11-01/README.md):** a Keryx timeout cleanup saved more RAM than changing compilers; the Next adapter's interpreted dynamic JSON route served 78% fewer requests under its AOT launcher. Patches, full checked samples and [live article acceptance](project-trials-2026-11-01/00-plan.md#delivered-and-served--november-1-1731-utc) are published.
+
 [Worklist and acceptance](00-worklist-index.md). All experiments use previews and bounded local workloads; sources, failures and limits are linked beside the results.
 
 [November 1 Express/SQLite investigation](express-sqlite-2026-11-01/README.md) checks the new maintainer report, CPU/request, first-use behavior and Fastify serializer contracts. The functional serializer check passed; uncontended performance acceptance and the follow-up decision remain open.
