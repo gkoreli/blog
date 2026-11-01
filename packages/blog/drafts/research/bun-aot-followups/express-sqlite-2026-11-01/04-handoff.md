@@ -14,7 +14,7 @@ The supplied report has been checked, the declared research/experiments are comp
 
 All relative private paths use `/tmp/bun-aot-express-20261101`. Public captures total **246 timed windows and 27,977,442 completely checked responses**. Every checkpoint keeps source/binary/data identities, sample spread, complete measured response checks and the bounded guard conditions. The five guards show no detected known competing activity inside each accepted scope; ordinary/short-lived or unknown activity remains possible.
 
-The standalone generator's emitted source, unchanged transitive dependency lock, upstream license and four semantic cases are committed. The article preserves the separate-policy comparison limit and distinguishes health readiness, the first checked business call and warmed request speed. The first-call timer includes Python connection/JSON work. The original article and frozen accounting remain unchanged.
+The standalone generator's emitted source, unchanged transitive dependency lock, upstream license and four semantic cases are committed. The article preserves the separate-policy comparison limit and distinguishes health readiness, the first checked business call and warmed request speed. The first-call timer includes Python connection/JSON work. This scope does not edit the predecessor article or its frozen accounting. Concurrent main commits `54b6fdd` / `25311bd` updated the predecessor through the separate real-project study; those changes are preserved, and both completed scopes remain linked from the shared worklist.
 
 ## Terminal process state
 

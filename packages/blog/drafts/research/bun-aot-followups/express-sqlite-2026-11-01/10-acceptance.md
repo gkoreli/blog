@@ -11,7 +11,7 @@ The owner's request was to explore the new Bun AOT report through further eviden
 | Keep method and limits inspectable | Exact sources/locks/generated module, binary/data/source hashes, balanced positions, every accepted observation and spread, defined physical-footprint/CPU/request clocks, separate policy batches and guarded phase receipts |
 | Preserve failed/confounded attempts | Overlapped captures remain private and excluded; complete Express phase before later guard interruption accepted by explicit timestamp-boundary audit; no slow cell selectively removed |
 | Reach a follow-up decision | [Editorial brief](03-article-brief.md) recommends a focused engineering field note; [draft](09-follow-up-draft.md) explains the result, tested method, counterevidence and limits |
-| Preserve publication integrity | Exact [owner prompt](owner-prompt.md); no invented feeling, quote, production deployment or adoption; original article/accounting unchanged; no new site post/outreach |
+| Preserve publication integrity | Exact [owner prompt](owner-prompt.md); no invented feeling, quote, production deployment or adoption; this scope edits research only, preserving concurrent predecessor updates and its frozen accounting; no new site post/outreach |
 | Verify scoped artifacts | Four private-capture auditors ran; `verify-evidence.py` verifies five manifests, recomputes all public summaries and counters, checks mode positions/startup rows, generated-source commitments and semantic results; three guard checks passed |
 | Deliver to main | Scoped research commit and selected remote artifact checks recorded with the final delivery receipt; no production-activation claim follows from Git delivery |
 

@@ -30,3 +30,7 @@ The full study has 246 timed windows and 27,977,442 checked responses, plus the 
 - **Prose review:** result-led opening, three reader takeaways, concrete source/build steps, tables for actual comparisons, a bounded ending and checked glossary. No hypothetical deployment or successful user adoption is narrated.
 
 The distinctive payoff is a tested workflow: make generated code visible before compiling, and compare the serializer's behavior as well as its rate. Site publication, broader schema coverage, a different OS and independent replication are optional next work, not unfinished acceptance for this research.
+
+## Concurrent publication context
+
+During delivery, main received the separate [Keryx/Next.js real-project study](../project-trials-2026-11-01/README.md) and its [publication receipt](../project-trials-2026-11-01/publication-acceptance.json). Its updated predecessor article is preserved. Those source/packaging/timer findings strengthen the case for keeping this draft focused on SQLite API measurements and serializer behavior. The studies share authorship and hardware; their counts are separate, and neither independently replicates the other. The project-study README and latest plan were read during integration; its complete numeric corpus was not re-audited here.
