@@ -1,0 +1,55 @@
+{
+  "checkedAt": "2026-11-01T17:11:04.198815+00:00",
+  "sourceCommit": "5bdfa17cfedd8555cc2bc245aa2a51776ae19cb6",
+  "sourcePushed": true,
+  "sourceFiles": 10,
+  "localChecks": "expanded-grok-publication-checks.json",
+  "newAssistantTrials": [
+    "ChatGPT",
+    "Grok on X"
+  ],
+  "grokChainsAccepted": 11,
+  "grokExactRowReads": 22,
+  "grokExactRowWrites": 0,
+  "publicScreenshots": 3,
+  "buildCheck": {
+    "name": "Workers Builds: gkoreli-com",
+    "headSha": "5bdfa17cfedd8555cc2bc245aa2a51776ae19cb6",
+    "status": "in_progress",
+    "conclusion": null,
+    "buildId": "2c64658b-0151-4d01-adb4-b6d47552fd90"
+  },
+  "freshWorkerAllocation": {
+    "id": "6728a384-f78e-4a62-a67e-aaab117e75bd",
+    "created_on": "2026-11-01T17:10:18.663474Z",
+    "versions": [
+      {
+        "version_id": "4478b653-b471-4197-a07b-2fc5fc22555d",
+        "percentage": 100
+      }
+    ]
+  },
+  "directSourceToWorkerJoinAccepted": false,
+  "servedArticleAccepted": false,
+  "servedArticleReason": "Browser refresh blocked by automatic origin-access review; explicit permission pending. Previous5fc9abe served acceptance remains historical.",
+  "newNativeGrokDashboardScreenshotAccepted": false,
+  "nativeDashboardReason": "Dashboard origin access blocked by automatic review; explicit permission pending. No alternate route used.",
+  "expandedGoalStatus": "active",
+  "remaining": [
+    "Owner browser-origin permission for public gkoreli.com and signed-in Cloudflare",
+    "Actual served Grok article and image checks",
+    "Native matched Grok log screenshot and reviewed inspection"
+  ],
+  "cleanup": {
+    "tailStoppedBefore": "2026-11-01T17:02:16Z",
+    "previewStopped": true,
+    "temporaryBuildCheckoutRemoved": true,
+    "sharedDependencyStorePreserved": true,
+    "unrelatedWorkPreserved": true
+  },
+  "limits": [
+    "A fresh100%Worker allocation is observed; exact source-linked native build success is not established by an in-progress GitHub check.",
+    "The final served Grok revision is not inferred from local build or allocation metadata.",
+    "The broader goal stays active awaiting permission; it is not marked paused, blocked or complete."
+  ]
+}
