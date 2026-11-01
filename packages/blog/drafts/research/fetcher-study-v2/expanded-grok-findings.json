@@ -1,0 +1,917 @@
+{
+  "checkedAt": "2026-11-01T17:05:02.407Z",
+  "status": "actual-grok-x-trial-chain-accepted",
+  "service": "Grok on X",
+  "signedIn": true,
+  "displayedMode": "Auto; underlying model identifier not exposed",
+  "submittedAt": "2026-11-01T17:01:35.297Z",
+  "requests": 11,
+  "firstReceivedAt": "2026-11-01T17:01:38.648Z",
+  "lastReceivedAt": "2026-11-01T17:02:11.552Z",
+  "answer": {
+    "headingReturned": "ChatGPT, Claude, Gemini and Grok Fetcher Headers, Measured",
+    "actualBodyH1": "Which AI Fetchers Send Which Headers, Measured on a Live Site",
+    "documentTitle": "ChatGPT, Claude, Gemini and Grok Fetcher Headers, Measured",
+    "headingMatchesBodyH1": false,
+    "headingEqualsDocumentTitle": true,
+    "sentenceReturned": "The current analytics retain separate declaration, network, signature-coverage and unresolved evidence; the later build log explains those changes.",
+    "sentenceMatchesRenderedSource": true,
+    "sourcePanelInspected": true,
+    "internalCauseEstablished": false
+  },
+  "events": [
+    {
+      "service": "grok",
+      "timestamp": "2026-11-01T17:01:38.648Z",
+      "workerVersion": "d88f3a81-833d-43e4-a8b2-536bb5075730",
+      "responseStatus": 200,
+      "method": "GET",
+      "truncated": false,
+      "userAgentProducts": [
+        "Mozilla/5.0",
+        "AppleWebKit/537.36",
+        "Chrome/143.0.0.0",
+        "Safari/537.36"
+      ],
+      "userAgentValuePresent": true,
+      "accept": "withheld-unrecognized",
+      "fetchMetadata": {
+        "sec-fetch-mode": "navigate",
+        "sec-fetch-dest": "document",
+        "sec-fetch-site": "none",
+        "sec-fetch-user": null
+      },
+      "signingHeaderPresence": {
+        "signature": false,
+        "signature-input": false,
+        "signature-agent": false
+      },
+      "retainedSignatureComponentLists": [],
+      "retainedSignatureInputAssessed": false,
+      "attemptLogs": 1,
+      "storedLogs": 1,
+      "receipts": [
+        {
+          "operationJoined": true,
+          "returnedReferenceAvailable": true,
+          "receipt": {
+            "status": "recorded",
+            "version": "2026-10-29.2",
+            "classifierProfile": "2026-10-31.1",
+            "readerKind": "browser",
+            "fetchMetadataBits": 658,
+            "declarations": {
+              "status": "none",
+              "candidateCount": 0,
+              "candidateNames": "none"
+            },
+            "signature": {
+              "verifierProfile": "2026-10-31.3",
+              "source": "local-webbotauth",
+              "status": "absent",
+              "outcome": "absent",
+              "reasonNames": "none",
+              "reasonCount": 0,
+              "signer": "none",
+              "userAgentCovered": "unavailable",
+              "coverage": {
+                "status": "unavailable"
+              }
+            },
+            "native": {
+              "verifiedBot": "unavailable",
+              "signedAgent": "unavailable"
+            },
+            "vendorNetwork": {
+              "status": "recorded",
+              "checkCount": 0,
+              "summary": {
+                "listed": false,
+                "notListed": false,
+                "unavailable": false,
+                "notAssessed": false
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "service": "grok",
+      "timestamp": "2026-11-01T17:01:39.115Z",
+      "workerVersion": "d88f3a81-833d-43e4-a8b2-536bb5075730",
+      "responseStatus": 200,
+      "method": "GET",
+      "truncated": false,
+      "userAgentProducts": [
+        "Mozilla/5.0",
+        "AppleWebKit/537.36",
+        "Chrome/143.0.0.0",
+        "Safari/537.36"
+      ],
+      "userAgentValuePresent": true,
+      "accept": "withheld-unrecognized",
+      "fetchMetadata": {
+        "sec-fetch-mode": "navigate",
+        "sec-fetch-dest": "document",
+        "sec-fetch-site": "none",
+        "sec-fetch-user": null
+      },
+      "signingHeaderPresence": {
+        "signature": false,
+        "signature-input": false,
+        "signature-agent": false
+      },
+      "retainedSignatureComponentLists": [],
+      "retainedSignatureInputAssessed": false,
+      "attemptLogs": 1,
+      "storedLogs": 1,
+      "receipts": [
+        {
+          "operationJoined": true,
+          "returnedReferenceAvailable": true,
+          "receipt": {
+            "status": "recorded",
+            "version": "2026-10-29.2",
+            "classifierProfile": "2026-10-31.1",
+            "readerKind": "browser",
+            "fetchMetadataBits": 658,
+            "declarations": {
+              "status": "none",
+              "candidateCount": 0,
+              "candidateNames": "none"
+            },
+            "signature": {
+              "verifierProfile": "2026-10-31.3",
+              "source": "local-webbotauth",
+              "status": "absent",
+              "outcome": "absent",
+              "reasonNames": "none",
+              "reasonCount": 0,
+              "signer": "none",
+              "userAgentCovered": "unavailable",
+              "coverage": {
+                "status": "unavailable"
+              }
+            },
+            "native": {
+              "verifiedBot": "unavailable",
+              "signedAgent": "unavailable"
+            },
+            "vendorNetwork": {
+              "status": "recorded",
+              "checkCount": 0,
+              "summary": {
+                "listed": false,
+                "notListed": false,
+                "unavailable": false,
+                "notAssessed": false
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "service": "grok",
+      "timestamp": "2026-11-01T17:01:39.616Z",
+      "workerVersion": "d88f3a81-833d-43e4-a8b2-536bb5075730",
+      "responseStatus": 200,
+      "method": "GET",
+      "truncated": false,
+      "userAgentProducts": [
+        "Mozilla/5.0",
+        "AppleWebKit/537.36",
+        "Chrome/142.0.0.0",
+        "Safari/537.36"
+      ],
+      "userAgentValuePresent": true,
+      "accept": "withheld-unrecognized",
+      "fetchMetadata": {
+        "sec-fetch-mode": "navigate",
+        "sec-fetch-dest": "document",
+        "sec-fetch-site": "none",
+        "sec-fetch-user": null
+      },
+      "signingHeaderPresence": {
+        "signature": false,
+        "signature-input": false,
+        "signature-agent": false
+      },
+      "retainedSignatureComponentLists": [],
+      "retainedSignatureInputAssessed": false,
+      "attemptLogs": 1,
+      "storedLogs": 1,
+      "receipts": [
+        {
+          "operationJoined": true,
+          "returnedReferenceAvailable": true,
+          "receipt": {
+            "status": "recorded",
+            "version": "2026-10-29.2",
+            "classifierProfile": "2026-10-31.1",
+            "readerKind": "browser",
+            "fetchMetadataBits": 658,
+            "declarations": {
+              "status": "none",
+              "candidateCount": 0,
+              "candidateNames": "none"
+            },
+            "signature": {
+              "verifierProfile": "2026-10-31.3",
+              "source": "local-webbotauth",
+              "status": "absent",
+              "outcome": "absent",
+              "reasonNames": "none",
+              "reasonCount": 0,
+              "signer": "none",
+              "userAgentCovered": "unavailable",
+              "coverage": {
+                "status": "unavailable"
+              }
+            },
+            "native": {
+              "verifiedBot": "unavailable",
+              "signedAgent": "unavailable"
+            },
+            "vendorNetwork": {
+              "status": "recorded",
+              "checkCount": 0,
+              "summary": {
+                "listed": false,
+                "notListed": false,
+                "unavailable": false,
+                "notAssessed": false
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "service": "grok",
+      "timestamp": "2026-11-01T17:01:39.070Z",
+      "workerVersion": "d88f3a81-833d-43e4-a8b2-536bb5075730",
+      "responseStatus": 200,
+      "method": "GET",
+      "truncated": false,
+      "userAgentProducts": [
+        "Mozilla/5.0",
+        "AppleWebKit/605.1.15",
+        "Version/26.2",
+        "Safari/605.1.15"
+      ],
+      "userAgentValuePresent": true,
+      "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+      "fetchMetadata": {
+        "sec-fetch-mode": "navigate",
+        "sec-fetch-dest": "document",
+        "sec-fetch-site": "none",
+        "sec-fetch-user": null
+      },
+      "signingHeaderPresence": {
+        "signature": false,
+        "signature-input": false,
+        "signature-agent": false
+      },
+      "retainedSignatureComponentLists": [],
+      "retainedSignatureInputAssessed": false,
+      "attemptLogs": 1,
+      "storedLogs": 1,
+      "receipts": [
+        {
+          "operationJoined": true,
+          "returnedReferenceAvailable": true,
+          "receipt": {
+            "status": "recorded",
+            "version": "2026-10-29.2",
+            "classifierProfile": "2026-10-31.1",
+            "readerKind": "browser",
+            "fetchMetadataBits": 658,
+            "declarations": {
+              "status": "none",
+              "candidateCount": 0,
+              "candidateNames": "none"
+            },
+            "signature": {
+              "verifierProfile": "2026-10-31.3",
+              "source": "local-webbotauth",
+              "status": "absent",
+              "outcome": "absent",
+              "reasonNames": "none",
+              "reasonCount": 0,
+              "signer": "none",
+              "userAgentCovered": "unavailable",
+              "coverage": {
+                "status": "unavailable"
+              }
+            },
+            "native": {
+              "verifiedBot": "unavailable",
+              "signedAgent": "unavailable"
+            },
+            "vendorNetwork": {
+              "status": "recorded",
+              "checkCount": 0,
+              "summary": {
+                "listed": false,
+                "notListed": false,
+                "unavailable": false,
+                "notAssessed": false
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "service": "grok",
+      "timestamp": "2026-11-01T17:01:39.286Z",
+      "workerVersion": "d88f3a81-833d-43e4-a8b2-536bb5075730",
+      "responseStatus": 200,
+      "method": "GET",
+      "truncated": false,
+      "userAgentProducts": [
+        "Mozilla/5.0",
+        "AppleWebKit/537.36",
+        "Chrome/143.0.0.0",
+        "Safari/537.36"
+      ],
+      "userAgentValuePresent": true,
+      "accept": "withheld-unrecognized",
+      "fetchMetadata": {
+        "sec-fetch-mode": "navigate",
+        "sec-fetch-dest": "document",
+        "sec-fetch-site": "none",
+        "sec-fetch-user": null
+      },
+      "signingHeaderPresence": {
+        "signature": false,
+        "signature-input": false,
+        "signature-agent": false
+      },
+      "retainedSignatureComponentLists": [],
+      "retainedSignatureInputAssessed": false,
+      "attemptLogs": 1,
+      "storedLogs": 1,
+      "receipts": [
+        {
+          "operationJoined": true,
+          "returnedReferenceAvailable": true,
+          "receipt": {
+            "status": "recorded",
+            "version": "2026-10-29.2",
+            "classifierProfile": "2026-10-31.1",
+            "readerKind": "browser",
+            "fetchMetadataBits": 658,
+            "declarations": {
+              "status": "none",
+              "candidateCount": 0,
+              "candidateNames": "none"
+            },
+            "signature": {
+              "verifierProfile": "2026-10-31.3",
+              "source": "local-webbotauth",
+              "status": "absent",
+              "outcome": "absent",
+              "reasonNames": "none",
+              "reasonCount": 0,
+              "signer": "none",
+              "userAgentCovered": "unavailable",
+              "coverage": {
+                "status": "unavailable"
+              }
+            },
+            "native": {
+              "verifiedBot": "unavailable",
+              "signedAgent": "unavailable"
+            },
+            "vendorNetwork": {
+              "status": "recorded",
+              "checkCount": 0,
+              "summary": {
+                "listed": false,
+                "notListed": false,
+                "unavailable": false,
+                "notAssessed": false
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "service": "grok",
+      "timestamp": "2026-11-01T17:01:39.377Z",
+      "workerVersion": "d88f3a81-833d-43e4-a8b2-536bb5075730",
+      "responseStatus": 200,
+      "method": "GET",
+      "truncated": false,
+      "userAgentProducts": [
+        "Mozilla/5.0",
+        "AppleWebKit/537.36",
+        "Chrome/143.0.0.0",
+        "Safari/537.36"
+      ],
+      "userAgentValuePresent": true,
+      "accept": "withheld-unrecognized",
+      "fetchMetadata": {
+        "sec-fetch-mode": "navigate",
+        "sec-fetch-dest": "document",
+        "sec-fetch-site": "none",
+        "sec-fetch-user": null
+      },
+      "signingHeaderPresence": {
+        "signature": false,
+        "signature-input": false,
+        "signature-agent": false
+      },
+      "retainedSignatureComponentLists": [],
+      "retainedSignatureInputAssessed": false,
+      "attemptLogs": 1,
+      "storedLogs": 1,
+      "receipts": [
+        {
+          "operationJoined": true,
+          "returnedReferenceAvailable": true,
+          "receipt": {
+            "status": "recorded",
+            "version": "2026-10-29.2",
+            "classifierProfile": "2026-10-31.1",
+            "readerKind": "browser",
+            "fetchMetadataBits": 658,
+            "declarations": {
+              "status": "none",
+              "candidateCount": 0,
+              "candidateNames": "none"
+            },
+            "signature": {
+              "verifierProfile": "2026-10-31.3",
+              "source": "local-webbotauth",
+              "status": "absent",
+              "outcome": "absent",
+              "reasonNames": "none",
+              "reasonCount": 0,
+              "signer": "none",
+              "userAgentCovered": "unavailable",
+              "coverage": {
+                "status": "unavailable"
+              }
+            },
+            "native": {
+              "verifiedBot": "unavailable",
+              "signedAgent": "unavailable"
+            },
+            "vendorNetwork": {
+              "status": "recorded",
+              "checkCount": 0,
+              "summary": {
+                "listed": false,
+                "notListed": false,
+                "unavailable": false,
+                "notAssessed": false
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "service": "grok",
+      "timestamp": "2026-11-01T17:01:39.400Z",
+      "workerVersion": "d88f3a81-833d-43e4-a8b2-536bb5075730",
+      "responseStatus": 200,
+      "method": "GET",
+      "truncated": false,
+      "userAgentProducts": [
+        "Mozilla/5.0",
+        "AppleWebKit/605.1.15",
+        "Version/26.2",
+        "Safari/605.1.15"
+      ],
+      "userAgentValuePresent": true,
+      "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+      "fetchMetadata": {
+        "sec-fetch-mode": "navigate",
+        "sec-fetch-dest": "document",
+        "sec-fetch-site": "none",
+        "sec-fetch-user": null
+      },
+      "signingHeaderPresence": {
+        "signature": false,
+        "signature-input": false,
+        "signature-agent": false
+      },
+      "retainedSignatureComponentLists": [],
+      "retainedSignatureInputAssessed": false,
+      "attemptLogs": 1,
+      "storedLogs": 1,
+      "receipts": [
+        {
+          "operationJoined": true,
+          "returnedReferenceAvailable": true,
+          "receipt": {
+            "status": "recorded",
+            "version": "2026-10-29.2",
+            "classifierProfile": "2026-10-31.1",
+            "readerKind": "browser",
+            "fetchMetadataBits": 658,
+            "declarations": {
+              "status": "none",
+              "candidateCount": 0,
+              "candidateNames": "none"
+            },
+            "signature": {
+              "verifierProfile": "2026-10-31.3",
+              "source": "local-webbotauth",
+              "status": "absent",
+              "outcome": "absent",
+              "reasonNames": "none",
+              "reasonCount": 0,
+              "signer": "none",
+              "userAgentCovered": "unavailable",
+              "coverage": {
+                "status": "unavailable"
+              }
+            },
+            "native": {
+              "verifiedBot": "unavailable",
+              "signedAgent": "unavailable"
+            },
+            "vendorNetwork": {
+              "status": "recorded",
+              "checkCount": 0,
+              "summary": {
+                "listed": false,
+                "notListed": false,
+                "unavailable": false,
+                "notAssessed": false
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "service": "grok",
+      "timestamp": "2026-11-01T17:01:41.570Z",
+      "workerVersion": "d88f3a81-833d-43e4-a8b2-536bb5075730",
+      "responseStatus": 200,
+      "method": "GET",
+      "truncated": false,
+      "userAgentProducts": [
+        "Mozilla/5.0",
+        "AppleWebKit/605.1.15",
+        "Version/26.2",
+        "Safari/605.1.15"
+      ],
+      "userAgentValuePresent": true,
+      "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+      "fetchMetadata": {
+        "sec-fetch-mode": "navigate",
+        "sec-fetch-dest": "document",
+        "sec-fetch-site": "none",
+        "sec-fetch-user": null
+      },
+      "signingHeaderPresence": {
+        "signature": false,
+        "signature-input": false,
+        "signature-agent": false
+      },
+      "retainedSignatureComponentLists": [],
+      "retainedSignatureInputAssessed": false,
+      "attemptLogs": 1,
+      "storedLogs": 1,
+      "receipts": [
+        {
+          "operationJoined": true,
+          "returnedReferenceAvailable": true,
+          "receipt": {
+            "status": "recorded",
+            "version": "2026-10-29.2",
+            "classifierProfile": "2026-10-31.1",
+            "readerKind": "browser",
+            "fetchMetadataBits": 658,
+            "declarations": {
+              "status": "none",
+              "candidateCount": 0,
+              "candidateNames": "none"
+            },
+            "signature": {
+              "verifierProfile": "2026-10-31.3",
+              "source": "local-webbotauth",
+              "status": "absent",
+              "outcome": "absent",
+              "reasonNames": "none",
+              "reasonCount": 0,
+              "signer": "none",
+              "userAgentCovered": "unavailable",
+              "coverage": {
+                "status": "unavailable"
+              }
+            },
+            "native": {
+              "verifiedBot": "unavailable",
+              "signedAgent": "unavailable"
+            },
+            "vendorNetwork": {
+              "status": "recorded",
+              "checkCount": 0,
+              "summary": {
+                "listed": false,
+                "notListed": false,
+                "unavailable": false,
+                "notAssessed": false
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "service": "grok",
+      "timestamp": "2026-11-01T17:01:45.120Z",
+      "workerVersion": "d88f3a81-833d-43e4-a8b2-536bb5075730",
+      "responseStatus": 200,
+      "method": "GET",
+      "truncated": false,
+      "userAgentProducts": [
+        "Mozilla/5.0",
+        "AppleWebKit/537.36",
+        "Chrome/142.0.0.0",
+        "Safari/537.36"
+      ],
+      "userAgentValuePresent": true,
+      "accept": "withheld-unrecognized",
+      "fetchMetadata": {
+        "sec-fetch-mode": "navigate",
+        "sec-fetch-dest": "document",
+        "sec-fetch-site": "none",
+        "sec-fetch-user": null
+      },
+      "signingHeaderPresence": {
+        "signature": false,
+        "signature-input": false,
+        "signature-agent": false
+      },
+      "retainedSignatureComponentLists": [],
+      "retainedSignatureInputAssessed": false,
+      "attemptLogs": 1,
+      "storedLogs": 1,
+      "receipts": [
+        {
+          "operationJoined": true,
+          "returnedReferenceAvailable": true,
+          "receipt": {
+            "status": "recorded",
+            "version": "2026-10-29.2",
+            "classifierProfile": "2026-10-31.1",
+            "readerKind": "browser",
+            "fetchMetadataBits": 658,
+            "declarations": {
+              "status": "none",
+              "candidateCount": 0,
+              "candidateNames": "none"
+            },
+            "signature": {
+              "verifierProfile": "2026-10-31.3",
+              "source": "local-webbotauth",
+              "status": "absent",
+              "outcome": "absent",
+              "reasonNames": "none",
+              "reasonCount": 0,
+              "signer": "none",
+              "userAgentCovered": "unavailable",
+              "coverage": {
+                "status": "unavailable"
+              }
+            },
+            "native": {
+              "verifiedBot": "unavailable",
+              "signedAgent": "unavailable"
+            },
+            "vendorNetwork": {
+              "status": "recorded",
+              "checkCount": 0,
+              "summary": {
+                "listed": false,
+                "notListed": false,
+                "unavailable": false,
+                "notAssessed": false
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "service": "grok",
+      "timestamp": "2026-11-01T17:01:47.329Z",
+      "workerVersion": "d88f3a81-833d-43e4-a8b2-536bb5075730",
+      "responseStatus": 200,
+      "method": "GET",
+      "truncated": false,
+      "userAgentProducts": [
+        "Mozilla/5.0",
+        "AppleWebKit/537.36",
+        "Chrome/142.0.0.0",
+        "Safari/537.36"
+      ],
+      "userAgentValuePresent": true,
+      "accept": "withheld-unrecognized",
+      "fetchMetadata": {
+        "sec-fetch-mode": "navigate",
+        "sec-fetch-dest": "document",
+        "sec-fetch-site": "none",
+        "sec-fetch-user": null
+      },
+      "signingHeaderPresence": {
+        "signature": false,
+        "signature-input": false,
+        "signature-agent": false
+      },
+      "retainedSignatureComponentLists": [],
+      "retainedSignatureInputAssessed": false,
+      "attemptLogs": 1,
+      "storedLogs": 1,
+      "receipts": [
+        {
+          "operationJoined": true,
+          "returnedReferenceAvailable": true,
+          "receipt": {
+            "status": "recorded",
+            "version": "2026-10-29.2",
+            "classifierProfile": "2026-10-31.1",
+            "readerKind": "browser",
+            "fetchMetadataBits": 658,
+            "declarations": {
+              "status": "none",
+              "candidateCount": 0,
+              "candidateNames": "none"
+            },
+            "signature": {
+              "verifierProfile": "2026-10-31.3",
+              "source": "local-webbotauth",
+              "status": "absent",
+              "outcome": "absent",
+              "reasonNames": "none",
+              "reasonCount": 0,
+              "signer": "none",
+              "userAgentCovered": "unavailable",
+              "coverage": {
+                "status": "unavailable"
+              }
+            },
+            "native": {
+              "verifiedBot": "unavailable",
+              "signedAgent": "unavailable"
+            },
+            "vendorNetwork": {
+              "status": "recorded",
+              "checkCount": 0,
+              "summary": {
+                "listed": false,
+                "notListed": false,
+                "unavailable": false,
+                "notAssessed": false
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "service": "grok",
+      "timestamp": "2026-11-01T17:02:11.552Z",
+      "workerVersion": "d88f3a81-833d-43e4-a8b2-536bb5075730",
+      "responseStatus": 200,
+      "method": "GET",
+      "truncated": false,
+      "userAgentProducts": [
+        "Mozilla/5.0",
+        "AppleWebKit/537.36",
+        "Chrome/156.0.0.0",
+        "Safari/537.36"
+      ],
+      "userAgentValuePresent": true,
+      "accept": "withheld-unrecognized",
+      "fetchMetadata": {
+        "sec-fetch-mode": "navigate",
+        "sec-fetch-dest": "document",
+        "sec-fetch-site": "none",
+        "sec-fetch-user": "?1"
+      },
+      "signingHeaderPresence": {
+        "signature": false,
+        "signature-input": false,
+        "signature-agent": false
+      },
+      "retainedSignatureComponentLists": [],
+      "retainedSignatureInputAssessed": false,
+      "attemptLogs": 1,
+      "storedLogs": 1,
+      "receipts": [
+        {
+          "operationJoined": true,
+          "returnedReferenceAvailable": true,
+          "receipt": {
+            "status": "recorded",
+            "version": "2026-10-29.2",
+            "classifierProfile": "2026-10-31.1",
+            "readerKind": "browser",
+            "fetchMetadataBits": 1170,
+            "declarations": {
+              "status": "none",
+              "candidateCount": 0,
+              "candidateNames": "none"
+            },
+            "signature": {
+              "verifierProfile": "2026-10-31.3",
+              "source": "local-webbotauth",
+              "status": "absent",
+              "outcome": "absent",
+              "reasonNames": "none",
+              "reasonCount": 0,
+              "signer": "none",
+              "userAgentCovered": "unavailable",
+              "coverage": {
+                "status": "unavailable"
+              }
+            },
+            "native": {
+              "verifiedBot": "unavailable",
+              "signedAgent": "unavailable"
+            },
+            "vendorNetwork": {
+              "status": "recorded",
+              "checkCount": 0,
+              "summary": {
+                "listed": false,
+                "notListed": false,
+                "unavailable": false,
+                "notAssessed": false
+              }
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "exactUniqueOperationJoins": 11,
+  "exactReturnedReferenceJoins": 11,
+  "fullCurrentReceiptMatches": 11,
+  "readerKinds": {
+    "browser": 11
+  },
+  "allUnsigned": true,
+  "allWithoutAgentDeclaration": true,
+  "deliberateTrial": true,
+  "ownerExcluded": false,
+  "readback": {
+    "rowsReturned": 11,
+    "rowsRead": 22,
+    "rowsWritten": 0,
+    "acknowledgedStatementAttempts": 1,
+    "nativePreflight": "passed-local-workerd-d1",
+    "sqlSha256": "dec2b5c54e64b9429a7a305e950465b50fc349ce8b695531a4ee07e4e7fdab64",
+    "priorUnacceptedInvocationPreserved": true,
+    "priorUnacceptedInvocationMetering": "unavailable"
+  },
+  "stoppedStream": {
+    "completedJsonObjects": 68,
+    "inputBytes": 404641,
+    "matchedInvocations": 12,
+    "returnedJoinedReferences": 12,
+    "malformedCompleteFrames": 0,
+    "outsideTextFragments": 0,
+    "unparsedSuffixBytes": 0,
+    "stoppedBefore": "2026-11-01T17:02:16Z"
+  },
+  "screenshot": {
+    "path": "/images/fetcher-live-2026-11-01/grok-x-answer.jpg",
+    "sha256": "5db5625f1433234dd6a371ddcdb967b659ca9eaa681fb9334bb955b322870f65",
+    "kind": "unchanged-actual-service-prompt-and-answer",
+    "privacyReviewed": true
+  },
+  "sourceSha256": {
+    "stoppedStream": "e4670726595c2d87a9c4f8bd7d6b7cd5f660885c30ab93d8cfddc1508d4a0bd4",
+    "selectedCapture": "f9f26018312e3a5b7339a3f31600791af41716ffae66d019bb851c1d38e09740",
+    "readback": "839ad2e6115f3e10992c8fb4193339f961dea1cf3d264c3367fc90f74bc35ca8",
+    "scopedAnswer": "03e842d369b272513636c663c36a87da1a4d144952360f9f6e7fa0730be44abb",
+    "sourcePanel": "d91caf236cb91d599dff3bfd439a24c04b7b45dd7e69700ad644ceb9c1b81b96",
+    "receiptProjector": "3b78f4efce7161e69cfbb31fc455fcf2b4464d55d634a2eb0d3d46fa38d65beb"
+  },
+  "nativeDashboard": {
+    "newScreenshotAccepted": false,
+    "state": "Reopening blocked by automatic approval review; explicit owner permission pending"
+  },
+  "limits": [
+    "The frozen assigned URL, confirmed submission, source panel, matching text and received requests support controlled trial attribution, not cryptographic identity or a user count.",
+    "Eleven requests do not establish eleven readers or reveal Grok’s internal retrieval architecture.",
+    "Ten requests omit Sec-Fetch-User; one later Chrome/156 request carries ?1 and a Google referrer. Same browser products do not establish the same operator. No assigned URL was directly opened by our tools.",
+    "One returned sentence matches; the requested body H1 does not. A correct fetch is not a completely correct answer.",
+    "All exact stored receipts agree with the current projection. Native verified-bot and signed-agent booleans remain unavailable.",
+    "No claim that Goga personally inspected every row or that every historical event was manually third-party-validated.",
+    "Raw login/account/log captures remain private. No new OAuth permission was granted."
+  ]
+}

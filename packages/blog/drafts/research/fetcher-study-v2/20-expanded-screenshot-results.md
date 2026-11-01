@@ -1,5 +1,7 @@
 # Screenshot-backed ChatGPT fetch; broader testing still active
 
+This records the 16:53 UTC checkpoint. The later [completed Grok on X trial](21-grok-x-results.md) supersedes its unconfirmed-submission status; the ChatGPT evidence remains accepted.
+
 November1, 2026 UTC. This is progress on the [expanded owner request](19-expanded-screenshot-trial-plan.md), not completion of it. The earlier [Duck.ai and Jina result](17-third-party-validation-results.md) remains accepted. The new result adds one actual signed-in ChatGPT fetch with a screenshot, exact production chain, database readback and independent network check.
 
 ## ChatGPT: the answer and the received request

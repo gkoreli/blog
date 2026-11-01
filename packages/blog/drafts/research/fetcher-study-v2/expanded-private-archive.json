@@ -4,7 +4,7 @@
   "gitIgnored": true,
   "checkpointFiles": 50,
   "checkpointManifestSha256": "4ca56bd71e4e7fbf17a37d00d4ea82d5841de57c0465498cc69dfd26364682d7",
-  "ongoingTailExcludedFromCheckpoint": true,
+  "ongoingTailExcludedFromCheckpoint": false,
   "frozenAcceptedCapture": "extract-02/matched-private.json and exact row batch1 remain retained; see public source commitments",
   "privateOnly": [
     "OAuth/passkey/login screenshots",
@@ -15,7 +15,15 @@
   ],
   "publicReviewedCopies": [
     "Actual ChatGPT answer screenshot",
-    "Actual earlier Duck.ai answer screenshot"
+    "Actual earlier Duck.ai answer screenshot",
+    "Actual Grok on X prompt and answer screenshot"
   ],
-  "expandedGoalStatus": "active"
+  "expandedGoalStatus": "active",
+  "publicationCheckpointFiles": 78,
+  "publicationCheckpointManifestSha256": "23e34d36bf131419476148ec598ac8f5e0cdae516b67b812615dea8624992934",
+  "publicationCapturePreserved": true,
+  "grokCheckpointAt": "2026-11-01T17:08:39.838825+00:00",
+  "grokCheckpointFiles": 129,
+  "grokCheckpointManifestSha256": "eeae712bac52495989200bdd634d3996abb87f393c31e76e3ba28b607d86d746",
+  "grokStoppedStreamPreserved": true
 }

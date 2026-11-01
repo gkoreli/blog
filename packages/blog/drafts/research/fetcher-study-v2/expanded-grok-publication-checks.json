@@ -1,0 +1,37 @@
+{
+  "checkedAt": "2026-11-01T17:07:56.560530+00:00",
+  "pages": [
+    {
+      "slug": "ai-fetcher-research-from-experiments-to-a-cited-reference",
+      "h1": 1,
+      "uniqueIds": 13,
+      "promptCount": 9,
+      "builtSha256": "4bcec89bcebd744074aafd3d3c9c3abccf0ebc8558423ec16fe5ba6cd7b2b619",
+      "images": [
+        "/images/fetcher-live-2026-11-01/duck-ai-answer.jpg",
+        "/images/fetcher-live-2026-11-01/chatgpt-answer.jpg",
+        "/images/fetcher-live-2026-11-01/grok-x-answer.jpg"
+      ]
+    },
+    {
+      "slug": "which-ai-fetchers-send-which-headers",
+      "h1": 1,
+      "uniqueIds": 22,
+      "promptCount": 22,
+      "builtSha256": "63ca5024cdb7246bca4d665a0460d8af80ccbe259bbfeca2fbf2e8f80ec0d8ec",
+      "images": []
+    }
+  ],
+  "markdownValidation": 28,
+  "isolatedBuildPosts": 39,
+  "researchRelativeTargets": 134,
+  "originalFrozenFootprintUnchanged": true,
+  "publicScreenshotHashesMatch": true,
+  "runtimeCodeChanged": false,
+  "unitTestsRepeated": false,
+  "expandedGoalStatus": "active",
+  "limits": [
+    "This verifies publication of the confirmed Grok result, including its incorrect H1 answer.",
+    "Native Grok dashboard screenshot remains pending explicit owner permission."
+  ]
+}

@@ -3,7 +3,7 @@ title: "My AI Agent Read My Blog. My Analytics Called It a Browser."
 seoTitle: "AI Traffic in Browser Analytics: A Live Cloudflare Recheck"
 date: "2026-10-31"
 lastModified: "2026-11-01"
-description: "Actual Duck.ai and ChatGPT fetches, a hosted reader and two agent-driven browser controls traced into storage, with screenshots. What signatures, 628 events and Arcjet's citation prove."
+description: "Actual Duck.ai, ChatGPT and Grok fetches traced into storage, with screenshots. Grok's eleven requests were stored as Browser. What signatures, 628 events and Arcjet's citation prove."
 section: engineering
 tags: [ai-agents, analytics, http, observability, agentic-engineering]
 series:
@@ -21,6 +21,8 @@ I used Codex's browser to open two articles on this site. Both returned HTTP 200
 Browser describes how those requests arrived. Calling them two human readers would add something the server never established.
 
 Then I had Codex ask Duck.ai to read the original study. It returned the correct heading and a sentence from the requested section. A real signed DuckAssistBot request reached the Worker, verified and matched the exact stored row. Its signature still left the page path unsigned.
+
+Grok later read the study through my existing X account. Eleven requests to its assigned URL reached the Worker. All eleven were stored as **Browser**. It quoted the requested sentence correctly, but reported the document title as the page's H1.
 
 I also pulled a fresh day of production data: **628 stored events, including 72 recorded successful signature verifications. All 72 recorded the requested path as unsigned.** There were 51 requests for the public prompts behind articles, which disappear if I measure only article pages.
 
@@ -64,6 +66,7 @@ For the assistant trials, I assigned each product a different URL and asked for 
 | Perplexity, signed out, Search enabled | Said it could not access the page or provide the requested text | No assigned-URL match in the captured stream |
 | Duck.ai, signed out, GPT-6 Luna, Fast | Correct H1 and a sentence from the requested section | HTTP 200, signed DuckAssistBot request, acknowledged insert and exact database row |
 | ChatGPT, signed in, Medium thinking effort | Correct H1 and a sentence from the requested section | HTTP 200, ChatGPT-User declaration, published-network match, acknowledged insert and exact database row |
+| Grok on X, signed in, Auto | Correct sentence; reported the document title instead of the body H1 | Eleven assigned-URL HTTP 200 requests, all unsigned and stored as Browser; eleven acknowledgements and exact rows |
 | Jina's public hosted reader | Returned the article, including its title and requested section | HTTP 200, unsigned request stored as Cloud browser, acknowledged insert and exact database row |
 | Grok, signed out, Fast | Sign-up gate after submitting; no answer | No assigned-URL match in the captured stream |
 | Codex driving its browser | Rendered the two article pages | Two HTTP 200 requests, two stored receipts and two exact database readbacks |
@@ -72,13 +75,17 @@ The first two attempts ran around 00:30 UTC on November 1. The three third-party
 
 At **16:37 UTC**, signed-in ChatGPT returned the heading and “Browser remains a request classification, not a human count.” Its assigned request arrived about 2.4 seconds after submission, declaring `ChatGPT-User/1.0` without a signature. The exact stored row matches the full acknowledged receipt. The Worker recorded an OpenAI address-feed match, and a separate check against the public feed captured afterward confirmed it. That is controlled delivery and network attribution; it does not authenticate a particular person. [Screenshot, exact joins and independent network check](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/fetcher-study-v2/20-expanded-screenshot-results.md).
 
+At **17:01 UTC**, Grok accepted the prompt inside my signed-in X account. Eleven GETs to its assigned URL arrived between 17:01:38 and 17:02:11 UTC, all HTTP 200. They carried Chrome or Safari navigation headers, with no agent declaration or signature. All eleven acknowledged receipts match their exact stored rows, classified as Browser. Ten omitted `Sec-Fetch-User`; one later Chrome request carried `?1` and a Google referrer. The assigned URL connects these requests to the controlled trial; it does not reveal Grok's retrieval architecture or establish eleven readers. [Actual answer, received headers and eleven storage checks](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/fetcher-study-v2/21-grok-x-results.md).
+
+Grok's answer also shows why I check the text. It returned the correct maintained sentence, but labelled “ChatGPT, Claude, Gemini and Grok Fetcher Headers, Measured” as the H1. That is the HTML document title. The actual body H1 is “Which AI Fetchers Send Which Headers, Measured on a Live Site.” Its source panel contained both. I cannot tell whether the model or the source representation caused the confusion. Receiving the page and answering the question correctly are separate checks.
+
 Jina is a hosted reader, not an additional chat assistant. Its received request carried Chrome navigation headers and `Sec-Fetch-User: ?1`, with no bot declaration or signature. The unique assigned URL and returned content connect it to this trial; the headers alone do not identify Jina. The Duck.ai and Jina requests each have full receipt-to-row agreement, and their native Cloudflare receipts were inspected in the browser. These are deliberate experiments, separate from audience growth. [Fresh service method, answers and storage checks](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/fetcher-study-v2/17-third-party-validation-results.md).
 
-Gemini and Perplexity establish failed tasks on those interfaces. Grok establishes an access gate. A missing log match does not reveal their internal retrieval path or prove they never made a request anywhere. This is a small contemporary recheck, alongside the [September ten-assistant study](/which-ai-fetchers-send-which-headers).
+Gemini and Perplexity establish failed tasks on those interfaces. The earlier signed-out Grok attempt establishes an access gate. A missing log match does not reveal their internal retrieval path or prove they never made a request anywhere. This is a small contemporary recheck, alongside the [September ten-assistant study](/which-ai-fetchers-send-which-headers).
 
 In the earlier pass, other interfaces were unavailable behind sign-in, challenge or agreement screens. Claude Code's installed fetch tool stopped on an expired login; Codex's web-open tool reported the URL inaccessible. Those are access limits, not additional successful vendor tests. A third browser page rendered, but I did not obtain the same complete request-to-row chain for it, so it is outside the two accepted controls.
 
-Grok's signed-out gate says nothing about access through an existing X account. Its interface inside X did open in the later pass, but Codex could not confirm submitting the prepared prompt in this browser session. That check remains unfinished; it is not another failed fetch. Signed-in Gemini likewise waits on a passkey.
+Grok's signed-out gate said nothing about access through my existing X account. The successful X trial used that session without granting the new OAuth permissions requested by standalone grok.com. Earlier unresponsive controls did not establish a fetch refusal, and their cause remains unknown. Signed-in Gemini still waits on a passkey.
 
 ![Duck.ai's actual answer showing the correct heading and a sentence from the requested section.](/images/fetcher-live-2026-11-01/duck-ai-answer.jpg)
 
@@ -87,6 +94,10 @@ Grok's signed-out gate says nothing about access through an existing X account. 
 ![Signed-in ChatGPT's actual prompt and answer, quoting the article heading and requested sentence.](/images/fetcher-live-2026-11-01/chatgpt-answer.jpg)
 
 *ChatGPT's actual answer from the 16:37 UTC trial. The screenshot records the answer; the matched log, acknowledged insert and exact row establish the captured delivery.*
+
+![Grok on X showing the exact public test prompt, its correct quoted sentence and its document-title answer labelled as H1.](/images/fetcher-live-2026-11-01/grok-x-answer.jpg)
+
+*Grok's actual prompt and answer from the 17:01 UTC trial. The sentence matches; the claimed H1 is the document title. Eleven matched request-to-row chains separately establish captured delivery.*
 
 This is the useful habit: compare the answer with what your server actually recorded. A confident answer, a failed tool and a delivered page are different events. Keep all three.
 
@@ -171,7 +182,7 @@ pnpm exec wrangler tail gkoreli-com --format json --method GET
 
 Wrangler's `--search` filters console messages. It does not search request URLs, so putting the probe label there would miss these invocations. Keep the raw stream private, select the assigned URLs afterward and publish only what the finding needs.
 
-Follow each request into storage. My Worker logs an operation ID before processing and a database-row ID after the insert is acknowledged. Those IDs let me check the exact two rows instead of guessing from nearby traffic. The [extractor and method](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/fetcher-study-v2/08-live-trace-method.md) preserve that join.
+Follow each request into storage. My Worker logs an operation ID before processing and a database-row ID after the insert is acknowledged. Those IDs let me check the exact stored rows instead of guessing from nearby traffic. The [extractor and method](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/fetcher-study-v2/08-live-trace-method.md) preserve that join.
 
 Finally, read the signed-component list before interpreting a verified flag. Keep an assistant's answer, a delivered resource, a signing result and an external citation as their own observations.
 
@@ -188,4 +199,4 @@ I want this blog to become a source people and agents can use. Arcjet already us
 | Technical reuse | Arcjet uses the published DuckAssistBot capture to teach a signature distinction. [Direct passage](https://arcjet.com/learn/web-bot-auth#signature-base). | Rechecked November 1, 2026 UTC |
 | Live recheck | Actual browser actions, a production log stream, exact database readbacks and a separately selected complete day. [Research record](https://github.com/gkoreli/blog/tree/main/packages/blog/drafts/research/fetcher-study-v2). | November 1, 2026 UTC |
 
-The September vendor captures retain their original dates. This revision replaces the earlier follow-up's emphasis on generated cases with the live observations and real production selection above. The later Duck.ai, ChatGPT and Jina trials add confirmed third-party delivery; the two Codex browser controls remain our own controls. Further signed-in service testing is still open.
+The September vendor captures retain their original dates. This revision replaces the earlier follow-up's emphasis on generated cases with the live observations and real production selection above. The later Duck.ai, ChatGPT, Grok and Jina trials add confirmed third-party delivery; the two Codex browser controls remain our own controls. Other signed-in interfaces remain untested.

@@ -1,0 +1,64 @@
+{
+  "sourceCommit": "5fc9abe4533e34810fd85de32f7e126730d6b4a9",
+  "nativeBuild": "23e6225b-5856-4273-95ef-dd3af2d659ce",
+  "nativeSourceLink": "https://github.com/gkoreli/blog/commit/5fc9abe4533e34810fd85de32f7e126730d6b4a9",
+  "nativeDeploymentStatus": "Ready",
+  "nativeDuration": "37s",
+  "workerVersion": "d88f3a81-833d-43e4-a8b2-536bb5075730",
+  "latestDeployment": {
+    "id": "328c3250-036c-4332-8ab1-c83a837eb57d",
+    "createdOn": "2026-11-01T16:54:36.040172Z",
+    "versions": [
+      {
+        "version_id": "d88f3a81-833d-43e4-a8b2-536bb5075730",
+        "percentage": 100
+      }
+    ]
+  },
+  "served": {
+    "checkedAt": "2026-11-01T16:56:12.060Z",
+    "articleHtmlMatches": true,
+    "articleTextMatches": true,
+    "htmlCharacters": 27028,
+    "textCharacters": 18473,
+    "images": [
+      {
+        "complete": true,
+        "naturalHeight": 720,
+        "naturalWidth": 1280,
+        "src": "/images/fetcher-live-2026-11-01/duck-ai-answer.jpg"
+      },
+      {
+        "complete": true,
+        "naturalHeight": 720,
+        "naturalWidth": 1280,
+        "src": "/images/fetcher-live-2026-11-01/chatgpt-answer.jpg"
+      }
+    ]
+  },
+  "checks": "expanded-publication-checks.json",
+  "runtimeCodeChanged": false,
+  "expandedGoalStatus": "active",
+  "remaining": [
+    "Confirmed Grok submission through existing X account",
+    "Further distinct signed-in assistant trial(s) and matching screenshots/receipts"
+  ],
+  "cleanup": {
+    "previewStopped": true,
+    "temporaryBuildCheckoutRemoved": true,
+    "sharedDependencyStorePreserved": true,
+    "unrelatedBunWorkPreserved": true
+  },
+  "tail": {
+    "status": "live-at-checkpoint",
+    "maximumMinutes": 30,
+    "stopBeforeUtc": "2026-11-01T17:07:25Z",
+    "newCaptureNeededAfterDeadline": true
+  },
+  "limits": [
+    "Publication acceptance does not complete the broader active service-testing goal",
+    "No downloaded build-log claim; source-linked native Ready row and fresh CLI allocation are the activation evidence",
+    "No per-request Worker-version join for the served article or whole-document byte equality claimed"
+  ],
+  "checkpoint": "ChatGPT screenshot publication accepted at16:56 UTC; later Grok findings in21-grok-x-results.md supersede its pending-submission status."
+}
