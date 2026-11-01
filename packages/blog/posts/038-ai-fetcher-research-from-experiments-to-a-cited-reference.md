@@ -3,7 +3,7 @@ title: "My AI Agent Read My Blog. My Analytics Called It a Browser."
 seoTitle: "AI Traffic in Browser Analytics: A Live Cloudflare Recheck"
 date: "2026-10-31"
 lastModified: "2026-11-01"
-description: "Two real agent-driven browser requests reached my Worker and were stored as Browser. A fresh day of 628 events shows what signatures, page counts and an earned technical citation actually tell me."
+description: "A fresh Duck.ai fetch, a hosted reader and two agent-driven browser controls traced through Cloudflare into storage. What real signatures, 628 production events and Arcjet's citation prove."
 section: engineering
 tags: [ai-agents, analytics, http, observability, agentic-engineering]
 series:
@@ -20,6 +20,8 @@ I used Codex's browser to open two articles on this site. Both returned HTTP 200
 
 Browser describes how those requests arrived. Calling them two human readers would add something the server never established.
 
+Then I had Codex ask Duck.ai to read the original study. It returned the correct heading and a sentence from the requested section. A real signed DuckAssistBot request reached the Worker, verified and matched the exact stored row. Its signature still left the page path unsigned.
+
 I also pulled a fresh day of production data: **628 stored events, including 72 recorded successful signature verifications. All 72 recorded the requested path as unsigned.** There were 51 requests for the public prompts behind articles, which disappear if I measure only article pages.
 
 These are three different questions:
@@ -32,7 +34,7 @@ The last one now has a particularly good answer: Arcjet uses my original fetcher
 
 ## A real browser is an AI client too
 
-The browser trial ran on November 1 UTC, still October 31 where I live. Codex opened the original fetcher study and this follow-up through its in-app browser. I watched the production logs with Wrangler, followed each request through its acknowledged database insert, then read back the exact two saved rows. Both classifications matched the logs.
+The browser controls ran on November 1 UTC, still October 31 where I live. I had Codex open the original fetcher study and this follow-up through its in-app browser, inspect the production logs with Wrangler, follow each request through its acknowledged database insert, then read back the exact two saved rows. Both classifications matched the logs. Codex operated the interfaces and checked the evidence; I did not personally perform every click or inspect every production row.
 
 The received headers included:
 
@@ -54,15 +56,22 @@ These two test visits stay separate from the audience analysis below. [Live tria
 
 ## Ask the assistant. Check the server.
 
-For the assistant trials, I gave each product a different URL and asked for the article's H1 and one sentence from its “Maintaining this reference” section. I did not supply the answer or open those assigned URLs myself.
+For the assistant trials, I assigned each product a different URL and asked for the article's H1 and one sentence from its “Maintaining this reference” section. Codex submitted the prompts through the actual service interfaces. The answer was not supplied in the prompt, and those assigned blog URLs were never opened directly as browser controls.
 
 | Live interface | What it returned | What I could match at the Worker |
 | --- | --- | --- |
 | Gemini, signed out, Flash-Lite | “I cannot access the page directly.” | No assigned-URL match in the captured stream |
 | Perplexity, signed out, Search enabled | Said it could not access the page or provide the requested text | No assigned-URL match in the captured stream |
+| Duck.ai, signed out, GPT-6 Luna, Fast | Correct H1 and a sentence from the requested section | HTTP 200, signed DuckAssistBot request, acknowledged insert and exact database row |
+| Jina's public hosted reader | Returned the article, including its title and requested section | HTTP 200, unsigned request stored as Cloud browser, acknowledged insert and exact database row |
+| Grok, signed out, Fast | Sign-up gate after submitting; no answer | No assigned-URL match in the captured stream |
 | Codex driving its browser | Rendered the two article pages | Two HTTP 200 requests, two stored receipts and two exact database readbacks |
 
-The first two rows establish failed tasks on those interfaces. A missing log match does not reveal their internal retrieval path or prove they never made a request anywhere. The research record keeps the observation window and access failures explicit. This is a small contemporary recheck, alongside the [September ten-assistant study](/which-ai-fetchers-send-which-headers).
+The first two attempts ran around 00:30 UTC on November 1. The three third-party rechecks ran around 08:12 UTC that day, after I questioned whether the evidence really came from external services. Duck.ai returned: “The broader monthly vendor repeats have not been completed; later rechecks should retain the original captures alongside changed behavior.” That sentence matches the article source. Its assigned request arrived about 1.5 seconds after submission.
+
+Jina is a hosted reader, not an additional chat assistant. Its received request carried Chrome navigation headers and `Sec-Fetch-User: ?1`, with no bot declaration or signature. The unique assigned URL and returned content connect it to this trial; the headers alone do not identify Jina. Both successful service requests have full receipt-to-row agreement, and their native Cloudflare receipts were inspected in the browser. These are deliberate experiments, separate from audience growth. [Fresh service method, answers and storage checks](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/fetcher-study-v2/17-third-party-validation-results.md).
+
+Gemini and Perplexity establish failed tasks on those interfaces. Grok establishes an access gate. A missing log match does not reveal their internal retrieval path or prove they never made a request anywhere. This is a small contemporary recheck, alongside the [September ten-assistant study](/which-ai-fetchers-send-which-headers).
 
 Other interfaces were unavailable behind sign-in, challenge or agreement screens. Claude Code's installed fetch tool stopped on an expired login; Codex's web-open tool reported the URL inaccessible. Those are access limits, not additional successful vendor tests. A third browser page rendered, but I did not obtain the same complete request-to-row chain for it, so it is outside the two accepted controls.
 
@@ -74,7 +83,9 @@ The complete UTC day before these trials contained 72 recorded successful verifi
 
 Every one recorded the destination host as covered. None recorded coverage of the method, path, query, User-Agent, full target URL or body digest. Those are actual stored production outcomes under their recorded verifier versions, freshly retrieved through Wrangler. I did not replay all 72 original requests.
 
-One of them requested the original fetcher article at **23:44:24 UTC on October 31**. I used its exact stored reference to recover the Cloudflare invocation, including the incoming request, verification attempt and acknowledged insert. Its signature's component list was:
+The fresh Duck.ai trial gives me a controlled example too. Its request arrived at **08:12:21 UTC on November 1** with a verified proof covering `@authority` and `signature-agent`, valid for ten minutes. I recovered its full native invocation and replayed the unchanged request at the recorded attempt time in Node, local workerd and the pinned independent Python implementation. All three verified it using the public DuckDuckGo key directory captured afterward. No signature was generated or request field changed for that finding. It repeats the September coverage observation for this one current Duck.ai request; it is not a vendor-wide signing claim.
+
+One of those 72 October 31 requests fetched the original article at **23:44:24 UTC**. I used its exact stored reference to recover the Cloudflare invocation, including the incoming request, verification attempt and acknowledged insert. Its signature's component list was:
 
 ```text
 ("@authority" "signature-agent")
@@ -106,7 +117,7 @@ The fresh October 31 records show why that distinction still matters on this sit
 
 ## The research gets traffic too
 
-For the traffic analysis, I selected **October 31, 00:00:00 through November 1, 00:00:00 UTC**, ending before the new browser controls. The preflight counted 628 observations; the export returned 628 rows. Current owner and referrer rules excluded none. That does not establish that every row was organic or that no other unmarked experiment occurred.
+For the traffic analysis, I selected **October 31, 00:00:00 through November 1, 00:00:00 UTC**, ending before the new browser controls and service trials. The preflight counted 628 observations; the export returned 628 rows. These are actual production records analyzed by code, not 628 individually hand-validated third-party interactions. Current owner and referrer rules excluded none. That does not establish that every row was organic or that no other unmarked experiment occurred.
 
 | Requested resource | Stored events |
 | --- | ---: |
@@ -164,4 +175,4 @@ I want this blog to become a source people and agents can use. Arcjet already us
 | Technical reuse | Arcjet uses the published DuckAssistBot capture to teach a signature distinction. [Direct passage](https://arcjet.com/learn/web-bot-auth#signature-base). | Rechecked November 1, 2026 UTC |
 | Live recheck | Actual browser actions, a production log stream, exact database readbacks and a separately selected complete day. [Research record](https://github.com/gkoreli/blog/tree/main/packages/blog/drafts/research/fetcher-study-v2). | November 1, 2026 UTC |
 
-The September vendor captures retain their original dates. This revision replaces the earlier follow-up's emphasis on generated cases with the live observations and real production selection above.
+The September vendor captures retain their original dates. This revision replaces the earlier follow-up's emphasis on generated cases with the live observations and real production selection above. The later Duck.ai and Jina trials add confirmed third-party delivery; the two Codex browser controls remain our own controls.

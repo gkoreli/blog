@@ -1,0 +1,34 @@
+{
+  "checkedAt": "2026-11-01T08:20:59.741530+00:00",
+  "pages": [
+    {
+      "slug": "ai-fetcher-research-from-experiments-to-a-cited-reference",
+      "h1": 1,
+      "uniqueIds": 13,
+      "htmlSha256": "f161b0e8ea0e4c34aa611b3781c7232f0989717b9ba887c7c3621854e55ca52b",
+      "promptCount": 8
+    },
+    {
+      "slug": "which-ai-fetchers-send-which-headers",
+      "h1": 1,
+      "uniqueIds": 22,
+      "htmlSha256": "05d1a128761a325855ec90fb0a357fe7144f5dec6ed7e0bb4db7879616d3eabe",
+      "promptCount": 21
+    }
+  ],
+  "researchRelativeTargets": 114,
+  "originalFrozenFootprintUnchanged": true,
+  "runtimeFilesChanged": false,
+  "validation": "28 Markdown posts valid; isolated build39posts; two actual retained proofs each verify in3implementations; two full trial receipt projections match exact rows",
+  "limits": [
+    "No new human-operated or all-vendor survey claimed",
+    "No analytics runtime changed; site and analytics unit suites not repeated for this content/research-harness revision"
+  ],
+  "browserLayout": {
+    "articleHtmlCharacters": 24938,
+    "articleTextCharacters": 17006,
+    "viewportWidth": 1280,
+    "documentWidth": 1280,
+    "h1AndFullArticleInspected": true
+  }
+}

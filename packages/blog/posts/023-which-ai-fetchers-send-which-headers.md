@@ -245,6 +245,8 @@ The [revised follow-up](/ai-fetcher-research-from-experiments-to-a-cited-referen
 
 ### Changelog
 
+- **2026-11-01 UTC, fresh third-party validation.** The follow-up now includes an actual Duck.ai answer, its signed DuckAssistBot request and exact stored row, plus a real Jina hosted-reader fetch. The unchanged fresh DuckAssistBot proof verifies in three implementations and still leaves the path unsigned. Grok stopped at a sign-up gate. [Method and results](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/fetcher-study-v2/17-third-party-validation-results.md). These are agent-operated tests, separate from the dated September survey and the follow-up's own browser controls.
+
 - **2026-11-01 UTC, live follow-up revision.** Linked the fresh browser/production-data investigation and real-proof replay. The follow-up's generated regression cases are no longer its central finding. September observations, prompts and frozen research-footprint figures remain dated and unchanged.
 - **2026-10-31, reference v2 and follow-up.** Dated key-directory and verifier statements, scoped the local CLI capture and Grok classification result, removed unsupported tool-internal conclusions and unfulfilled upstream-submission promises, and linked the new experiment and publication outcomes. The stable URL, September captures, publication date and frozen research-footprint totals are preserved.
 

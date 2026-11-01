@@ -1,0 +1,25 @@
+{
+  "directory": "packages/blog/worklog/fetcher-thirdparty-20261101",
+  "gitIgnored": true,
+  "files": 105,
+  "manifestSha256": "9555a8c0ee9be4db1f0497bed65efa73c04e1d57a203b6fb174baff661742c2b",
+  "retained": [
+    "service prompt/result ledger",
+    "actual service screenshot",
+    "stopped raw tail",
+    "native Duck invocation",
+    "exact private D1 rows",
+    "later directory response",
+    "untouched real proof replays and source hashes",
+    "pinned independent source archive and files",
+    "failed local execution and access receipts",
+    "publication checks and rendered article"
+  ],
+  "excluded": [
+    "installed Python dependency directories; exact versions and installation logs retained"
+  ],
+  "limits": [
+    "Raw capture and personal identifiers are not committed; public receipts minimize fields",
+    "This archive is private local preservation, not independent external corroboration"
+  ]
+}

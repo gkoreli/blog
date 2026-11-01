@@ -1,0 +1,291 @@
+{
+  "checkedAt": "2026-11-01T08:18:50.552Z",
+  "status": "accepted-real-third-party-trials",
+  "operator": "Codex through actual in-app browser UI; not Goga personally hand-operating each test",
+  "services": [
+    {
+      "service": "duck",
+      "signedIn": false,
+      "displayedModel": "GPT-6 Luna",
+      "mode": "Fast",
+      "submittedAt": "2026-11-01T08:12:19.886Z",
+      "completedBefore": "2026-11-01T08:12:33.170Z",
+      "prompt": "Open this exact URL: https://gkoreli.com/which-ai-fetchers-send-which-headers?probe=fetcher-live-20261101-duck-r2\nReturn the page's H1 and quote one sentence from its \"Maintaining this reference\" section. If you cannot access the page, say so; do not infer its contents from the URL or search snippets.",
+      "answer": [
+        "H1: “Which AI Fetchers Send Which Headers, Measured on a Live Site”",
+        "From “Maintaining this reference”: “The broader monthly vendor repeats have not been completed; later rechecks should retain the original captures alongside changed behavior.”"
+      ],
+      "sourceLink": "https://gkoreli.com/which-ai-fetchers-send-which-headers?probe=fetcher-live-20261101-duck-r2"
+    },
+    {
+      "service": "grok",
+      "signedIn": false,
+      "displayedModel": "Fast",
+      "submittedAt": "2026-11-01T08:12:20.183Z",
+      "completedBefore": "2026-11-01T08:12:33.170Z",
+      "prompt": "Open this exact URL: https://gkoreli.com/which-ai-fetchers-send-which-headers?probe=fetcher-live-20261101-grok-r2\nReturn the page's H1 and quote one sentence from its \"Maintaining this reference\" section. If you cannot access the page, say so; do not infer its contents from the URL or search snippets.",
+      "answer": [
+        "Continue your conversation",
+        "Sign up to continue seamlessly with Grok’s full power"
+      ],
+      "result": "Sign-up gate after submitting; no assistant answer accepted"
+    },
+    {
+      "service": "jina",
+      "signedIn": false,
+      "model": "not-applicable; hosted reader, not a chat assistant",
+      "navigationExactClockRecorded": false,
+      "requestReceivedAt": "2026-11-01T08:12:08.978Z",
+      "returnedTitle": "Which AI Fetchers Send Which Headers, Measured on a Live Site",
+      "returnedBodyCharacters": 49317,
+      "bodyContentCheck": "Browser remains a request classification, not a human count.",
+      "url": "https://r.jina.ai/https://gkoreli.com/which-ai-fetchers-send-which-headers?probe=fetcher-live-20261101-jina-r2",
+      "result": "Full returned article includes title and Maintaining this reference section"
+    }
+  ],
+  "trials": [
+    {
+      "service": "jina",
+      "timestamp": "2026-11-01T08:12:08.978Z",
+      "workerVersion": "2aaa3854-77d3-41fa-9a76-7bcaa5ce65af",
+      "responseStatus": 200,
+      "method": "GET",
+      "truncated": false,
+      "userAgentProducts": [
+        "Mozilla/5.0",
+        "AppleWebKit/537.36",
+        "Chrome/156.0.0.0",
+        "Safari/537.36"
+      ],
+      "userAgentValuePresent": true,
+      "accept": "withheld-unrecognized",
+      "fetchMetadata": {
+        "sec-fetch-mode": "navigate",
+        "sec-fetch-dest": "document",
+        "sec-fetch-site": "none",
+        "sec-fetch-user": "?1"
+      },
+      "signingHeaderPresence": {
+        "signature": false,
+        "signature-input": false,
+        "signature-agent": false
+      },
+      "retainedSignatureComponentLists": [],
+      "retainedSignatureInputAssessed": false,
+      "attemptLogs": 1,
+      "storedLogs": 1,
+      "receipts": [
+        {
+          "operationJoined": true,
+          "returnedReferenceAvailable": true,
+          "receipt": {
+            "status": "recorded",
+            "version": "2026-10-29.2",
+            "classifierProfile": "2026-10-31.1",
+            "readerKind": "cloud-browser",
+            "fetchMetadataBits": 1170,
+            "declarations": {
+              "status": "none",
+              "candidateCount": 0,
+              "candidateNames": "none"
+            },
+            "signature": {
+              "verifierProfile": "2026-10-31.3",
+              "source": "local-webbotauth",
+              "status": "absent",
+              "outcome": "absent",
+              "reasonNames": "none",
+              "reasonCount": 0,
+              "signer": "none",
+              "userAgentCovered": "unavailable",
+              "coverage": {
+                "status": "unavailable"
+              }
+            },
+            "native": {
+              "verifiedBot": "unavailable",
+              "signedAgent": "unavailable"
+            },
+            "vendorNetwork": {
+              "status": "recorded",
+              "checkCount": 0,
+              "summary": {
+                "listed": false,
+                "notListed": false,
+                "unavailable": false,
+                "notAssessed": false
+              }
+            }
+          }
+        }
+      ],
+      "path": "/which-ai-fetchers-send-which-headers",
+      "exactInvocationReceiptRowChain": true,
+      "fullCurrentReceiptProjectionMatches": true,
+      "ownerExcluded": false,
+      "nativeReceiptUiInspected": true
+    },
+    {
+      "service": "duck",
+      "timestamp": "2026-11-01T08:12:21.373Z",
+      "workerVersion": "2aaa3854-77d3-41fa-9a76-7bcaa5ce65af",
+      "responseStatus": 200,
+      "method": "GET",
+      "truncated": false,
+      "userAgentProducts": [
+        "DuckAssistBot/1.2"
+      ],
+      "userAgentValuePresent": true,
+      "accept": "*/*",
+      "fetchMetadata": {
+        "sec-fetch-mode": null,
+        "sec-fetch-dest": null,
+        "sec-fetch-site": null,
+        "sec-fetch-user": null
+      },
+      "signingHeaderPresence": {
+        "signature": true,
+        "signature-input": true,
+        "signature-agent": true
+      },
+      "retainedSignatureComponentLists": [
+        [
+          "@authority",
+          "signature-agent"
+        ]
+      ],
+      "retainedSignatureInputAssessed": true,
+      "attemptLogs": 1,
+      "storedLogs": 1,
+      "receipts": [
+        {
+          "operationJoined": true,
+          "returnedReferenceAvailable": true,
+          "receipt": {
+            "status": "recorded",
+            "version": "2026-10-29.2",
+            "classifierProfile": "2026-10-31.1",
+            "readerKind": "ai-assistant",
+            "fetchMetadataBits": 585,
+            "declarations": {
+              "status": "single",
+              "candidateCount": 1,
+              "candidateNames": "DuckAssistBot"
+            },
+            "signature": {
+              "verifierProfile": "2026-10-31.3",
+              "source": "local-webbotauth",
+              "status": "verified",
+              "outcome": "verified",
+              "reasonNames": "none",
+              "reasonCount": 0,
+              "signer": "DuckDuckGo",
+              "userAgentCovered": "false",
+              "coverage": {
+                "status": "recorded",
+                "authority": true,
+                "targetUri": false,
+                "method": false,
+                "path": false,
+                "query": false,
+                "userAgent": false,
+                "contentDigest": false
+              }
+            },
+            "native": {
+              "verifiedBot": "unavailable",
+              "signedAgent": "unavailable"
+            },
+            "vendorNetwork": {
+              "status": "recorded",
+              "checkCount": 0,
+              "summary": {
+                "listed": false,
+                "notListed": false,
+                "unavailable": false,
+                "notAssessed": false
+              }
+            }
+          }
+        }
+      ],
+      "path": "/which-ai-fetchers-send-which-headers",
+      "exactInvocationReceiptRowChain": true,
+      "fullCurrentReceiptProjectionMatches": true,
+      "ownerExcluded": false,
+      "nativeReceiptUiInspected": true
+    }
+  ],
+  "fullReceiptMatches": 2,
+  "sql": {
+    "rowsReturned": 2,
+    "rowsRead": 4,
+    "rowsWritten": 0,
+    "attempts": 1,
+    "constantControlRowsRead": 0,
+    "constantControlRowsWritten": 0,
+    "sqlSha256": "4dd7218da17db1cc6b33b8e19832ef5512f90211f46d2099c2c6a1bbeacc45ca",
+    "nativePreflight": "passed-local-workerd-d1",
+    "queryPlan": [
+      {
+        "detail": "SEARCH page_observations USING INTEGER PRIMARY KEY (rowid=?)"
+      }
+    ]
+  },
+  "tail": {
+    "createdAt": "2026-11-01T08:11:17.657423+00:00",
+    "windowMaximumMinutes": 30,
+    "maximumBytes": 33554432,
+    "started": true,
+    "tailStartedBefore": "2026-11-01T08:12:02.427747+00:00",
+    "stopConfirmedBefore": "2026-11-01T08:13:46.960322+00:00",
+    "tailStopped": true,
+    "completedJsonObjects": 14,
+    "matchedInvocations": 2,
+    "malformedCompleteFrames": 0,
+    "outsideTextFragments": 0,
+    "unparsedSuffixBytes": 0,
+    "bytes": 84002,
+    "sourceSha256": "bf24c29ea8c2a76acdeebdb0b7b829eb1f4a09a84650b79d19e666ad97a78b46",
+    "populationCompleteness": "not-established"
+  },
+  "controlledSignedProof": {
+    "service": "duck",
+    "freshlyPrompted": true,
+    "untouchedRequestReplays": {
+      "node": "verified",
+      "localWorkerd": "verified",
+      "independentRfc": "verified",
+      "independentReturnedResults": 1
+    },
+    "recordedClock": "2026-11-01T08:12:21.411Z",
+    "validitySeconds": 600,
+    "generatedSignatures": 0,
+    "counterfactualMutations": 0,
+    "replayNetworkCalls": 0,
+    "originalResolverResponseReconstructed": false
+  },
+  "historicalDefaultPreserved": {
+    "node": "verified",
+    "localWorkerd": "verified",
+    "independentRfc": "verified",
+    "independentReturnedResults": 1
+  },
+  "sourceSha256": {
+    "ledger": "50c755b3bd80e5576c367933e3bba6bbdc39481c649cab1ee2df2fec67d13a2d",
+    "nativeDuckChain": "4a18d12405174c949930c26893d4b85d6339204c6e635b4b692ff75b9ec06129",
+    "rowResponse": "fe486d5b743f442950bbefa1bc3fd9850df3fe12b7f7d7ca648f11acf02fd9d7",
+    "extractorProjection": "b31ae6dedf5b2b8d5bca99a67027c5597c9b848e0af45d46f8b47cb8f0a50f1a",
+    "duckReplay": "5aad692ac9c76bb2196c06f793a926ea2f28cbe8c2cb682ad1f81111eaf8dacb"
+  },
+  "limits": [
+    "Agent-operated visible interfaces and inspected logs, not Goga personally performing every action.",
+    "Only Duck.ai and the Jina hosted reader have new successful complete chains. Grok stopped at sign-up; Gemini/Perplexity reserved r2 labels were not submitted.",
+    "Controller attribution uses unique assigned URL and timing; unsigned path and User-Agent do not acquire cryptographic authentication.",
+    "Native bot/signed-agent booleans are unavailable; the local verifier verdict is separate.",
+    "Neither trial request is organic audience growth. Both are public-counted deliberate events after the frozen October31 analysis day.",
+    "The older 628-event aggregate is actual stored data, not 628 individually validated service interactions. Generated regression inputs remain software checks only.",
+    "Offline replay uses an unchanged retained request at its recorded clock with a later captured public key; no original resolver-response reconstruction.",
+    "One request per successful service supplies no vendor-wide error rate or general population estimate."
+  ]
+}

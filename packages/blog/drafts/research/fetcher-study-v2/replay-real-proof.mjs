@@ -12,11 +12,14 @@ const hash = bytes => createHash('sha256').update(bytes).digest('hex');
 const record = value => typeof value === 'object' && value !== null && !Array.isArray(value);
 const id = value => typeof value === 'string' && /^[1-9][0-9]{0,18}$/.test(value) && BigInt(value) <= 9223372036854775807n;
 const read = file => JSON.parse(readFileSync(file));
-const DIRECTORY = 'https://crawler.exa.ai/.well-known/http-message-signatures-directory';
-const [chainFile, dayFile, directoryFile, directoryHeadersFile, privateOutput, publicOutput, python, pythonSource, option] = process.argv.slice(2);
+const [chainFile, dayFile, directoryFile, directoryHeadersFile, privateOutput, publicOutput, python, pythonSource, ...options] = process.argv.slice(2);
 assert.ok(chainFile && dayFile && directoryFile && directoryHeadersFile && privateOutput && publicOutput && python && pythonSource,
-  'Provide retained chain, day rows, captured directory/body headers, NEW private output dir, NEW public output, existing Python executable/source [--node-only]');
-assert.ok(option === undefined || option === '--node-only');
+  'Provide retained chain, captured rows, directory/body headers, NEW private output dir, NEW public output, existing Python executable/source [--node-only] [--service=duck]');
+assert.ok(new Set(options).size === options.length && options.every(option => ['--node-only', '--service=duck'].includes(option)));
+const service = options.includes('--service=duck')
+  ? { name: 'duck', origin: 'https://assistbot.duckduckgo.com', declaration: 'DuckAssistBot', kind: 'ai-assistant' }
+  : { name: 'exa', origin: 'https://crawler.exa.ai', declaration: 'ExaSearchBot', kind: 'ai-search' };
+const DIRECTORY = service.origin + '/.well-known/http-message-signatures-directory';
 const chains = read(chainFile), dayRows = read(dayFile);
 assert.ok(Array.isArray(chains) && chains.length === 3 && Array.isArray(dayRows));
 const invocations = chains.filter(row => row.$metadata?.type === 'cf-worker-event' && record(row.$workers?.event?.request?.headers));
@@ -33,17 +36,17 @@ assert.ok(typeof attempt.source.operationId === 'string' && attempt.source.opera
 assert.equal(acknowledgement.source.storage?.status, 'returned');
 const reference = acknowledgement.source.storage.observationId;
 assert.ok(id(reference));
-const selected = dayRows.filter(row => String(row.id) === reference);
+const selected = dayRows.filter(row => String(row.id ?? row.observation_id) === reference);
 assert.equal(selected.length, 1);
 const row = selected[0], request = invocation.$workers.event.request;
 assert.equal(new URL(request.url).origin, 'https://gkoreli.com');
 assert.equal(new URL(request.url).pathname, row.path);
 assert.equal(request.method, 'GET');
 assert.equal(invocation.$workers.event.response?.status, 200);
-assert.equal(row.signature_agent, 'https://crawler.exa.ai');
-assert.equal(row.agent_name, 'ExaSearchBot');
+assert.equal(row.signature_agent, service.origin);
+assert.equal(row.agent_name, service.declaration);
 assert.equal(row.signature_status, 'verified');
-assert.equal(row.reader_kind, 'ai-search');
+assert.equal(row.reader_kind, service.kind);
 assert.equal(attempt.source.collectionVersion, row.collection_version);
 assert.equal(acknowledgement.source.collectionVersion, row.collection_version);
 const recordedAt = new Date(attempt.timestamp);
@@ -71,7 +74,7 @@ assert.equal(typeof retainedSignatureInput, 'string');
 const componentLists = [...retainedSignatureInput.matchAll(/\(([^)]*)\)/g)]
   .map(match => [...match[1].matchAll(/"([@a-z][@a-z0-9-]*)"/g)].map(component => component[1]));
 assert.deepEqual(componentLists, [['@authority', 'signature-agent']]);
-const input = { vendor: 'exa', variant: 'untouched-retained-request', url: request.url, method: request.method,
+const input = { vendor: service.name, variant: 'untouched-retained-request', url: request.url, method: request.method,
   headers: request.headers, now: recordedAt.toISOString(), directory, directoryBytes: directoryBytes.toString('utf8'), directoryHeaders };
 const output = resolve(privateOutput); mkdirSync(output, { mode: 0o700 });
 const save = (file, value) => writeFileSync(resolve(output, file), JSON.stringify(value, null, 2) + '\n', { flag: 'wx', mode: 0o600 });
@@ -107,13 +110,13 @@ assert.deepEqual(projectedReceipt, acknowledgement.source.receipt, 'D1 projectio
 assert.equal(projectedReceipt.signature.verifierProfile, '2026-10-31.3');
 const node = await api.replay(input);
 save('node-private.json', node);
-assert.equal(node.result.status, 'verified'); assert.equal(node.result.agent, 'https://crawler.exa.ai');
+assert.equal(node.result.status, 'verified'); assert.equal(node.result.agent, service.origin);
 assert.deepEqual(node.calls, [DIRECTORY]);
 const storedEvidence = JSON.parse(row.signature_evidence);
 assert.deepEqual(node.result.evidence.covered, storedEvidence.coverage.covered);
 assert.deepEqual(node.result.evidence.selection, storedEvidence.coverage.selection);
 let native = null;
-if (option !== '--node-only') {
+if (!options.includes('--node-only')) {
   const require = createRequire(resolve('package.json'));
   const { Miniflare } = await import(pathToFileURL(require.resolve('miniflare', { paths: [dirname(require.resolve('wrangler/package.json'))] })));
   const mf = new Miniflare({ modules: true, script: code + '\nexport default {async fetch(request,env){return Response.json(await replay(env.INPUT));}};',
@@ -157,7 +160,7 @@ const summary = { checkedAt: new Date().toISOString(), kind: 'one-real-retained-
   inputSha256: { nativeChain: hash(readFileSync(chainFile)), dayRows: hash(readFileSync(dayFile)) }, sourceSha256,
   scriptSha256: hash(readFileSync(fileURLToPath(import.meta.url))), nodeVersion: process.version,
   replayNetworkCalls: 0, generatedSignatures: 0, counterfactualMutations: 0,
-  limits: ['One real retained request, not a vendor-wide signing rate or a new controlled assistant attribution.',
+  limits: ['One real retained request, not a vendor-wide signing rate. Controlled assistant attribution needs the separate service trial record.',
     'Replayed at the recorded attempt time with a separately captured later public key response; original resolver contents are not reconstructed.',
     'Retained provider request representation is not a packet capture; successful replay establishes the supplied signed bytes and bound components.',
     'Unsigned User-Agent, method and path are not authenticated by the valid proof.',

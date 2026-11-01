@@ -25,3 +25,11 @@ We need a follow up article and hardening and improvements (almost like v2) of t
 ---
 
 Synthetic experiment?? What?? We need only real evidence based findings like use your own computer browserto fully validate and monitor and watch the logs and all that, you have wrangler cli to access the data from our blog and cloudflare. You have couple hours and you can iterate and make this article much better and olease write like goga, open up straight to the point that catches attention right away, for example: instead of saying: memory findings are great and improvements are these or that and bla bla, i love to start with something catchy or polarizing: stop rewriting things in rust, use bun aot. The idea is that even though this doesnt have to be the case all the time it doesn’t matter. We are going to explain down the line what do we mean by this kinda of introduction like bun aot compiles to binary and almost makes it as high efficiency and performance like a rust native app, and provide evidences and numbers. Write in human inderstandable senses, avoid mannered prose and too much jargon. Write like goga. Go ahead improve the article drastically
+
+---
+
+Is all data real and coming from third oarty service by manual hand validation? If not we need to make the tests real
+
+---
+
+Approve both service tests

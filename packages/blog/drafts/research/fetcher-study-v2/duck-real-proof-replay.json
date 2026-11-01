@@ -1,0 +1,100 @@
+{
+  "checkedAt": "2026-11-01T08:17:25.189Z",
+  "kind": "one-real-retained-proof",
+  "invocationRecords": 1,
+  "attemptRecords": 1,
+  "storedRecords": 1,
+  "exactRequestChain": true,
+  "exactOperationChain": true,
+  "exactReturnedRowProjection": true,
+  "receiptFieldsMatch": true,
+  "recordedClock": "2026-11-01T08:12:21.411Z",
+  "rowObservationSecond": "2026-11-01 08:12:21",
+  "executionWorker": "2aaa3854-77d3-41fa-9a76-7bcaa5ce65af",
+  "declaredClient": "DuckAssistBot",
+  "storedKind": "ai-assistant",
+  "storedCollection": "2026-10-30.1",
+  "storedClassifier": "2026-10-31.1",
+  "storedVerifier": "2026-10-31.3",
+  "replayVerifier": "2026-10-31.3",
+  "untouchedRequestReplays": {
+    "node": "verified",
+    "localWorkerd": "verified",
+    "independentRfc": "verified",
+    "independentReturnedResults": 1
+  },
+  "signatureComponents": [
+    "@authority",
+    "signature-agent"
+  ],
+  "covered": {
+    "authority": true,
+    "targetUri": false,
+    "method": false,
+    "path": false,
+    "query": false,
+    "userAgent": false,
+    "contentDigest": false
+  },
+  "validitySeconds": 600,
+  "ageSecondsAtRecordedClock": 0,
+  "native": {
+    "verifiedBot": "unavailable",
+    "signedAgent": "unavailable",
+    "categoryStatus": "known",
+    "categoryValue": "AI Assistant"
+  },
+  "directory": {
+    "url": "https://assistbot.duckduckgo.com/.well-known/http-message-signatures-directory",
+    "responseStatus": 200,
+    "responseDate": "2026-11-01T08:15:04.000Z",
+    "keyCount": 1,
+    "bodySha256": "c950641282920c36e18f460568e6093448e5f104642c3a2a0f80f8b78523a43d",
+    "headersSha256": "7ebf6d1cd89be77a3cbaf3733c3c06840af1a3ee5d0f912345b056395adb63cf",
+    "independentlyCapturedLater": true,
+    "originalResolverResponseReconstructed": false,
+    "directoryResponseSignatureVerified": false
+  },
+  "independent": {
+    "repository": "pyauth/http-message-signatures",
+    "commit": "1de433d9a49fd608475c6054ab14a1652c088844",
+    "sourceFilesRechecked": 18,
+    "dependencies": {
+      "cryptography": "50.0.2",
+      "http-sf": "1.5.0",
+      "cffi": "2.1.1",
+      "typing_extensions": "4.16.0",
+      "pycparser": "3.12"
+    },
+    "wrapperSha256": "f9a687f4831239c9258dd1d54ee8943a1e714401f60bf875bfa97ba9acee7098",
+    "manifestSha256": "b3b73b129b8f5424a4862bcf00528424cba91fe6874faae6648855151125ebd9",
+    "referenceClockSkewSeconds": 5
+  },
+  "inputSha256": {
+    "nativeChain": "4a18d12405174c949930c26893d4b85d6339204c6e635b4b692ff75b9ec06129",
+    "dayRows": "18e27855dfe11639a7c098ab4dfab03b72018ba97e09242aed847765807c3fad"
+  },
+  "sourceSha256": {
+    "packages/analytics/src/directory-discovery.ts": "2acc0b003d1e96f611318385b5052bcfc493b4ad2e293ee1b68895dd90459254",
+    "packages/analytics/src/verification-clock.ts": "cbe3d3c4903ef82e5185685dde12b2fd1dba254f9b9c239df4acd72ef16cac90",
+    "packages/analytics/src/known-test-keys.ts": "d83c868f94170ed5a90a214ca07743489bc61b132a301d5d9dc1715f7d8df06c",
+    "packages/analytics/src/webbotauth.ts": "54348a11b372528ae042dc31b17b42c06104ec16e72e32b1e025b1f94aa38411",
+    "packages/analytics/src/signers.ts": "22bb1ff00ace0b2c59c907037c8252a3011217135506b993cebda3a8ea499fb1",
+    "packages/analytics/src/vendor-ip-receipt.ts": "545417d17610212579e2f9a61f30c3d346626183ab2d7b3a94525b5c6ae34618",
+    "packages/analytics/src/observation-receipt.ts": "3b78f4efce7161e69cfbb31fc455fcf2b4464d55d634a2eb0d3d46fa38d65beb",
+    "packages/analytics/src/versions.ts": "e4df46c9d57cc228367d4ca0e5f4919e355ab1e5ed4c063661242295357a9ff6"
+  },
+  "scriptSha256": "a52aa36a7b9cd79b742a7d5b464886722ae4cddba8730520d2d0800f238ba36f",
+  "nodeVersion": "v24.14.1",
+  "replayNetworkCalls": 0,
+  "generatedSignatures": 0,
+  "counterfactualMutations": 0,
+  "limits": [
+    "One real retained request, not a vendor-wide signing rate. Controlled assistant attribution needs the separate service trial record.",
+    "Replayed at the recorded attempt time with a separately captured later public key response; original resolver contents are not reconstructed.",
+    "Retained provider request representation is not a packet capture; successful replay establishes the supplied signed bytes and bound components.",
+    "Unsigned User-Agent, method and path are not authenticated by the valid proof.",
+    "Local and independent RFC verification are not a Cloudflare managed-verifier verdict or evidence of a human trigger.",
+    "The directory HTTP response signature is retained but not independently verified in this incoming-request replay."
+  ]
+}
