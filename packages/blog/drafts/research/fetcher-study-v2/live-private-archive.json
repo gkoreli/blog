@@ -1,0 +1,12 @@
+{
+  "archive": "packages/blog/worklog/fetcher-live-20261101 (Git-ignored)",
+  "files": 140,
+  "manifestSha256": "9c9262eb80c772656d6e8891ad77b3c03da46eb56abb74597902780720b6325c",
+  "publicArtifacts": [
+    "live-browser-findings.json",
+    "live-day-findings.json",
+    "real-proof-replay.json"
+  ],
+  "rawCapturePublished": false,
+  "readerIdentifiersPublished": false
+}

@@ -1,0 +1,67 @@
+{
+  "checkedAt": "2026-11-01T00:49:43.390351+00:00",
+  "articles": [
+    {
+      "slug": "which-ai-fetchers-send-which-headers",
+      "oneH1": true,
+      "uniqueIds": 22,
+      "internalLinks": 27,
+      "representations": [
+        "html",
+        "markdown",
+        "csl-json",
+        "bibtex",
+        "prompts"
+      ],
+      "htmlSha256": "e888fc197e4a2c5469f3e486b11787077ff6a7eaafba86d3b16cf03b11972e90",
+      "markdownSha256": "039f54a62aaeb8c1a25512557e25990404b68c296285c24bb6342c5e47fde2af"
+    },
+    {
+      "slug": "ai-fetcher-research-from-experiments-to-a-cited-reference",
+      "oneH1": true,
+      "uniqueIds": 13,
+      "internalLinks": 22,
+      "representations": [
+        "html",
+        "markdown",
+        "csl-json",
+        "bibtex",
+        "prompts"
+      ],
+      "htmlSha256": "276101f8075ffa9c62921404fd6eece1c49422007c256e8e09aacd1fc2237583",
+      "markdownSha256": "0b344ef0033ab09b52695ab1214bf0a89b9e8def9ee416bf802699497f5c6f35"
+    }
+  ],
+  "originalFootprintUnchanged": true,
+  "priorPromptsPreservedAsPrefix": true,
+  "researchRelativeTargetsChecked": 99,
+  "researchRelativeTargetsExist": true,
+  "sourceBase": "7052d08932c78a356035d7719af9e44745aa469f",
+  "isolatedBuild": "39 posts",
+  "markdownValidation": "28 valid posts",
+  "workspaceTypes": "passed",
+  "siteTests": {
+    "passed": 174,
+    "failed": 0
+  },
+  "extractorControls": {
+    "passed": 8,
+    "failed": 0
+  },
+  "realProofReplays": [
+    "Node24.14.1",
+    "local workerd",
+    "pinned pyauth RFC9421"
+  ],
+  "nativeBrowserLayout": "desktop inspected; full accessible body reviewed",
+  "runtimeFilesChanged": false,
+  "diagnosticSelects": 4,
+  "acknowledgedProductionRowsRead": 1890,
+  "diagnosticRowsWritten": 0,
+  "normalExperimentalIngestionIsAdditional": true,
+  "priorHistorical392AnalyticsTestsNotRerunForProseOnlyRevision": true,
+  "articleSourceSha256": {
+    "packages/blog/posts/023-which-ai-fetchers-send-which-headers.md": "6a7d7a05b0371c004492bd791a2e1a8056f88ad1d54f2d7cb5946d3166aaa77e",
+    "packages/blog/posts/038-ai-fetcher-research-from-experiments-to-a-cited-reference.md": "01c1f49ec1f1d96d2032f5d529d528496c38d7f646157e9aee663c33675077e2"
+  }
+}

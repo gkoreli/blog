@@ -1,0 +1,2075 @@
+{
+  "version": "fetcher-live-day-findings-v1",
+  "checkedAt": "2026-11-01T00:33:28.473Z",
+  "scope": {
+    "startInclusive": "2026-10-31T00:00:00Z",
+    "endExclusive": "2026-11-01T00:00:00Z",
+    "capturedAt": "2026-11-01T00:31:23.203Z",
+    "timezone": "UTC",
+    "selection": "All exported rows satisfying complete-day predicate, within frozen preflight upper ID",
+    "populationCompleteness": "not-established"
+  },
+  "accounting": {
+    "selectedEvents": 628,
+    "includedEvents": 628,
+    "ownerExcludedEvents": 0,
+    "referralExcludedEvents": 0,
+    "unassessedEvents": 0
+  },
+  "roles": [
+    {
+      "role": "article",
+      "selectedEvents": 447,
+      "includedEvents": 447,
+      "ownerExcludedEvents": 0,
+      "referralExcludedEvents": 0,
+      "unassessedEvents": 0
+    },
+    {
+      "role": "evidence",
+      "selectedEvents": 51,
+      "includedEvents": 51,
+      "ownerExcludedEvents": 0,
+      "referralExcludedEvents": 0,
+      "unassessedEvents": 0
+    },
+    {
+      "role": "site",
+      "selectedEvents": 130,
+      "includedEvents": 130,
+      "ownerExcludedEvents": 0,
+      "referralExcludedEvents": 0,
+      "unassessedEvents": 0
+    },
+    {
+      "role": "unmapped",
+      "selectedEvents": 0,
+      "includedEvents": 0,
+      "ownerExcludedEvents": 0,
+      "referralExcludedEvents": 0,
+      "unassessedEvents": 0
+    }
+  ],
+  "storedKinds": {
+    "unresolved": 173,
+    "ai-search": 93,
+    "other-bot": 30,
+    "seo-crawler": 9,
+    "browser": 122,
+    "cloud-browser": 167,
+    "ai-crawler": 20,
+    "search-crawler": 7,
+    "ai-assistant": 2,
+    "http-client": 5
+  },
+  "storedAgentLabels": {
+    "none": 497,
+    "Applebot": 1,
+    "ExaSearchBot": 63,
+    "AhrefsBot": 9,
+    "Meta-WebIndexer": 27,
+    "ClaudeBot": 7,
+    "Googlebot": 6,
+    "Bingbot": 1,
+    "Bytespider": 1,
+    "PetalBot": 7,
+    "Amazonbot": 5,
+    "Claude-User": 1,
+    "OAI-SearchBot": 1,
+    "PerplexityBot": 1,
+    "ChatGPT-User": 1
+  },
+  "signatureAssessment": {
+    "storedSignatureStatus": {
+      "none": 556,
+      "verified": 72
+    },
+    "assessedSignatureStates": {
+      "absent": 556,
+      "verified": 72
+    },
+    "assessedSignatureBasis": {
+      "unsigned": 556,
+      "verified-ua-uncovered": 72
+    },
+    "recordedVerifierProfiles": {
+      "2026-10-31.1": 243,
+      "2026-10-31.2": 310,
+      "2026-10-31.3": 75
+    },
+    "recognizedVerifiedProfiles": {
+      "2026-10-31.1": 22,
+      "2026-10-31.2": 32,
+      "2026-10-31.3": 18
+    },
+    "verifiedEvents": 72,
+    "verifiedCoverageRecognizedEvents": 72,
+    "coveredFields": {
+      "authority": 72,
+      "targetUri": 0,
+      "method": 0,
+      "path": 0,
+      "query": 0,
+      "userAgent": 0,
+      "contentDigest": 0
+    },
+    "verifiedDeclaredLabels": {
+      "ExaSearchBot": 63,
+      "AhrefsBot": 9
+    },
+    "verifiedSigningOrigins": {
+      "https://crawler.exa.ai": 63,
+      "https://ahrefs.com": 9
+    },
+    "unverifiedOutcomes": {},
+    "nativeBooleanStates": {
+      "unavailable": 628
+    }
+  },
+  "measurementHistory": {
+    "{\"collection\":\"2026-10-30.1\",\"classifier\":\"2026-10-29.3\",\"source\":\"edge\",\"representation\":\"html\"}": 250,
+    "{\"collection\":\"2026-10-30.1\",\"classifier\":\"2026-10-29.3\",\"source\":\"edge\",\"representation\":\"markdown\"}": 10,
+    "{\"collection\":\"2026-10-30.1\",\"classifier\":\"2026-10-31.1\",\"source\":\"edge\",\"representation\":\"html\"}": 349,
+    "{\"collection\":\"2026-10-30.1\",\"classifier\":\"2026-10-31.1\",\"source\":\"edge\",\"representation\":\"markdown\"}": 19
+  },
+  "resources": {
+    "catalogueArticles": 39,
+    "catalogueEvidencePages": 20,
+    "observedArticlePaths": 39,
+    "observedEvidenceParents": 20,
+    "articles": [
+      {
+        "path": "/ai-fetcher-research-from-experiments-to-a-cited-reference",
+        "articleEvents": 8,
+        "evidenceEvents": 3,
+        "relatedEvents": 11,
+        "articleKinds": [
+          {
+            "kind": "ai-crawler",
+            "events": 1
+          },
+          {
+            "kind": "cloud-browser",
+            "events": 7
+          }
+        ],
+        "evidenceKinds": [
+          {
+            "kind": "ai-crawler",
+            "events": 1
+          },
+          {
+            "kind": "cloud-browser",
+            "events": 2
+          }
+        ]
+      },
+      {
+        "path": "/oss-radar-13-hob-offline-file-tasks",
+        "articleEvents": 24,
+        "evidenceEvents": 0,
+        "relatedEvents": 24,
+        "articleKinds": [
+          {
+            "kind": "ai-crawler",
+            "events": 1
+          },
+          {
+            "kind": "browser",
+            "events": 5
+          },
+          {
+            "kind": "cloud-browser",
+            "events": 10
+          },
+          {
+            "kind": "http-client",
+            "events": 1
+          },
+          {
+            "kind": "other-bot",
+            "events": 1
+          },
+          {
+            "kind": "seo-crawler",
+            "events": 1
+          },
+          {
+            "kind": "unresolved",
+            "events": 5
+          }
+        ],
+        "evidenceKinds": []
+      },
+      {
+        "path": "/oss-radar-12-claude-code-status-summary",
+        "articleEvents": 23,
+        "evidenceEvents": 0,
+        "relatedEvents": 23,
+        "articleKinds": [
+          {
+            "kind": "ai-crawler",
+            "events": 1
+          },
+          {
+            "kind": "browser",
+            "events": 4
+          },
+          {
+            "kind": "cloud-browser",
+            "events": 10
+          },
+          {
+            "kind": "http-client",
+            "events": 1
+          },
+          {
+            "kind": "other-bot",
+            "events": 1
+          },
+          {
+            "kind": "seo-crawler",
+            "events": 1
+          },
+          {
+            "kind": "unresolved",
+            "events": 5
+          }
+        ],
+        "evidenceKinds": []
+      },
+      {
+        "path": "/oss-radar-11-qwenputer-compiled-cpu",
+        "articleEvents": 22,
+        "evidenceEvents": 0,
+        "relatedEvents": 22,
+        "articleKinds": [
+          {
+            "kind": "ai-crawler",
+            "events": 1
+          },
+          {
+            "kind": "browser",
+            "events": 3
+          },
+          {
+            "kind": "cloud-browser",
+            "events": 10
+          },
+          {
+            "kind": "http-client",
+            "events": 1
+          },
+          {
+            "kind": "other-bot",
+            "events": 1
+          },
+          {
+            "kind": "seo-crawler",
+            "events": 1
+          },
+          {
+            "kind": "unresolved",
+            "events": 5
+          }
+        ],
+        "evidenceKinds": []
+      },
+      {
+        "path": "/oss-radar-10-paperpilot-redaction",
+        "articleEvents": 27,
+        "evidenceEvents": 0,
+        "relatedEvents": 27,
+        "articleKinds": [
+          {
+            "kind": "ai-crawler",
+            "events": 1
+          },
+          {
+            "kind": "ai-search",
+            "events": 1
+          },
+          {
+            "kind": "browser",
+            "events": 3
+          },
+          {
+            "kind": "cloud-browser",
+            "events": 14
+          },
+          {
+            "kind": "http-client",
+            "events": 1
+          },
+          {
+            "kind": "other-bot",
+            "events": 1
+          },
+          {
+            "kind": "seo-crawler",
+            "events": 1
+          },
+          {
+            "kind": "unresolved",
+            "events": 5
+          }
+        ],
+        "evidenceKinds": []
+      },
+      {
+        "path": "/oss-radar-09-tsrs-typescript-memory",
+        "articleEvents": 22,
+        "evidenceEvents": 0,
+        "relatedEvents": 22,
+        "articleKinds": [
+          {
+            "kind": "ai-crawler",
+            "events": 1
+          },
+          {
+            "kind": "browser",
+            "events": 3
+          },
+          {
+            "kind": "cloud-browser",
+            "events": 10
+          },
+          {
+            "kind": "http-client",
+            "events": 1
+          },
+          {
+            "kind": "other-bot",
+            "events": 1
+          },
+          {
+            "kind": "seo-crawler",
+            "events": 1
+          },
+          {
+            "kind": "unresolved",
+            "events": 5
+          }
+        ],
+        "evidenceKinds": []
+      },
+      {
+        "path": "/why-worktree-setup-is-slow-on-macos",
+        "articleEvents": 23,
+        "evidenceEvents": 4,
+        "relatedEvents": 27,
+        "articleKinds": [
+          {
+            "kind": "ai-assistant",
+            "events": 1
+          },
+          {
+            "kind": "ai-search",
+            "events": 1
+          },
+          {
+            "kind": "browser",
+            "events": 10
+          },
+          {
+            "kind": "cloud-browser",
+            "events": 5
+          },
+          {
+            "kind": "other-bot",
+            "events": 2
+          },
+          {
+            "kind": "unresolved",
+            "events": 4
+          }
+        ],
+        "evidenceKinds": [
+          {
+            "kind": "ai-crawler",
+            "events": 1
+          },
+          {
+            "kind": "browser",
+            "events": 1
+          },
+          {
+            "kind": "cloud-browser",
+            "events": 2
+          }
+        ]
+      },
+      {
+        "path": "/oss-radar-08-bun-aot",
+        "articleEvents": 17,
+        "evidenceEvents": 0,
+        "relatedEvents": 17,
+        "articleKinds": [
+          {
+            "kind": "ai-search",
+            "events": 4
+          },
+          {
+            "kind": "browser",
+            "events": 4
+          },
+          {
+            "kind": "cloud-browser",
+            "events": 1
+          },
+          {
+            "kind": "other-bot",
+            "events": 2
+          },
+          {
+            "kind": "search-crawler",
+            "events": 1
+          },
+          {
+            "kind": "unresolved",
+            "events": 5
+          }
+        ],
+        "evidenceKinds": []
+      },
+      {
+        "path": "/building-blog-analytics-what-the-numbers-can-prove",
+        "articleEvents": 12,
+        "evidenceEvents": 2,
+        "relatedEvents": 14,
+        "articleKinds": [
+          {
+            "kind": "browser",
+            "events": 3
+          },
+          {
+            "kind": "cloud-browser",
+            "events": 4
+          },
+          {
+            "kind": "other-bot",
+            "events": 1
+          },
+          {
+            "kind": "unresolved",
+            "events": 4
+          }
+        ],
+        "evidenceKinds": [
+          {
+            "kind": "browser",
+            "events": 1
+          },
+          {
+            "kind": "cloud-browser",
+            "events": 1
+          }
+        ]
+      },
+      {
+        "path": "/openclaw-chose-solid-why-id-choose-nisli",
+        "articleEvents": 11,
+        "evidenceEvents": 0,
+        "relatedEvents": 11,
+        "articleKinds": [
+          {
+            "kind": "ai-crawler",
+            "events": 1
+          },
+          {
+            "kind": "ai-search",
+            "events": 4
+          },
+          {
+            "kind": "browser",
+            "events": 2
+          },
+          {
+            "kind": "cloud-browser",
+            "events": 1
+          },
+          {
+            "kind": "unresolved",
+            "events": 3
+          }
+        ],
+        "evidenceKinds": []
+      },
+      {
+        "path": "/chatgpt-plugin-apps",
+        "articleEvents": 12,
+        "evidenceEvents": 4,
+        "relatedEvents": 16,
+        "articleKinds": [
+          {
+            "kind": "ai-search",
+            "events": 4
+          },
+          {
+            "kind": "browser",
+            "events": 1
+          },
+          {
+            "kind": "cloud-browser",
+            "events": 3
+          },
+          {
+            "kind": "other-bot",
+            "events": 1
+          },
+          {
+            "kind": "unresolved",
+            "events": 3
+          }
+        ],
+        "evidenceKinds": [
+          {
+            "kind": "cloud-browser",
+            "events": 3
+          },
+          {
+            "kind": "search-crawler",
+            "events": 1
+          }
+        ]
+      },
+      {
+        "path": "/prompt-cache-context-edits",
+        "articleEvents": 12,
+        "evidenceEvents": 4,
+        "relatedEvents": 16,
+        "articleKinds": [
+          {
+            "kind": "ai-search",
+            "events": 4
+          },
+          {
+            "kind": "browser",
+            "events": 3
+          },
+          {
+            "kind": "cloud-browser",
+            "events": 1
+          },
+          {
+            "kind": "other-bot",
+            "events": 1
+          },
+          {
+            "kind": "unresolved",
+            "events": 3
+          }
+        ],
+        "evidenceKinds": [
+          {
+            "kind": "ai-search",
+            "events": 2
+          },
+          {
+            "kind": "cloud-browser",
+            "events": 1
+          },
+          {
+            "kind": "other-bot",
+            "events": 1
+          }
+        ]
+      },
+      {
+        "path": "/productive-procrastination",
+        "articleEvents": 6,
+        "evidenceEvents": 1,
+        "relatedEvents": 7,
+        "articleKinds": [
+          {
+            "kind": "browser",
+            "events": 2
+          },
+          {
+            "kind": "cloud-browser",
+            "events": 1
+          },
+          {
+            "kind": "unresolved",
+            "events": 3
+          }
+        ],
+        "evidenceKinds": [
+          {
+            "kind": "cloud-browser",
+            "events": 1
+          }
+        ]
+      },
+      {
+        "path": "/oss-radar-07-ai-citations",
+        "articleEvents": 8,
+        "evidenceEvents": 3,
+        "relatedEvents": 11,
+        "articleKinds": [
+          {
+            "kind": "browser",
+            "events": 3
+          },
+          {
+            "kind": "cloud-browser",
+            "events": 2
+          },
+          {
+            "kind": "unresolved",
+            "events": 3
+          }
+        ],
+        "evidenceKinds": [
+          {
+            "kind": "ai-crawler",
+            "events": 1
+          },
+          {
+            "kind": "browser",
+            "events": 1
+          },
+          {
+            "kind": "cloud-browser",
+            "events": 1
+          }
+        ]
+      },
+      {
+        "path": "/filter-referrer-spam-without-deleting-analytics-history",
+        "articleEvents": 6,
+        "evidenceEvents": 3,
+        "relatedEvents": 9,
+        "articleKinds": [
+          {
+            "kind": "browser",
+            "events": 1
+          },
+          {
+            "kind": "cloud-browser",
+            "events": 1
+          },
+          {
+            "kind": "search-crawler",
+            "events": 1
+          },
+          {
+            "kind": "unresolved",
+            "events": 3
+          }
+        ],
+        "evidenceKinds": [
+          {
+            "kind": "ai-search",
+            "events": 2
+          },
+          {
+            "kind": "cloud-browser",
+            "events": 1
+          }
+        ]
+      },
+      {
+        "path": "/how-i-separate-readers-from-bots-without-javascript",
+        "articleEvents": 10,
+        "evidenceEvents": 2,
+        "relatedEvents": 12,
+        "articleKinds": [
+          {
+            "kind": "ai-crawler",
+            "events": 1
+          },
+          {
+            "kind": "browser",
+            "events": 2
+          },
+          {
+            "kind": "cloud-browser",
+            "events": 1
+          },
+          {
+            "kind": "other-bot",
+            "events": 1
+          },
+          {
+            "kind": "seo-crawler",
+            "events": 1
+          },
+          {
+            "kind": "unresolved",
+            "events": 4
+          }
+        ],
+        "evidenceKinds": [
+          {
+            "kind": "ai-crawler",
+            "events": 1
+          },
+          {
+            "kind": "cloud-browser",
+            "events": 1
+          }
+        ]
+      },
+      {
+        "path": "/which-ai-fetchers-send-which-headers",
+        "articleEvents": 18,
+        "evidenceEvents": 1,
+        "relatedEvents": 19,
+        "articleKinds": [
+          {
+            "kind": "ai-search",
+            "events": 7
+          },
+          {
+            "kind": "browser",
+            "events": 3
+          },
+          {
+            "kind": "cloud-browser",
+            "events": 4
+          },
+          {
+            "kind": "seo-crawler",
+            "events": 1
+          },
+          {
+            "kind": "unresolved",
+            "events": 3
+          }
+        ],
+        "evidenceKinds": [
+          {
+            "kind": "cloud-browser",
+            "events": 1
+          }
+        ]
+      },
+      {
+        "path": "/oss-radar-06-interp-engine",
+        "articleEvents": 9,
+        "evidenceEvents": 0,
+        "relatedEvents": 9,
+        "articleKinds": [
+          {
+            "kind": "ai-crawler",
+            "events": 2
+          },
+          {
+            "kind": "browser",
+            "events": 3
+          },
+          {
+            "kind": "cloud-browser",
+            "events": 1
+          },
+          {
+            "kind": "unresolved",
+            "events": 3
+          }
+        ],
+        "evidenceKinds": []
+      },
+      {
+        "path": "/oss-radar-05-bun-1-4",
+        "articleEvents": 7,
+        "evidenceEvents": 0,
+        "relatedEvents": 7,
+        "articleKinds": [
+          {
+            "kind": "ai-search",
+            "events": 2
+          },
+          {
+            "kind": "browser",
+            "events": 1
+          },
+          {
+            "kind": "cloud-browser",
+            "events": 1
+          },
+          {
+            "kind": "unresolved",
+            "events": 3
+          }
+        ],
+        "evidenceKinds": []
+      },
+      {
+        "path": "/first-party-analytics-for-a-personal-blog",
+        "articleEvents": 12,
+        "evidenceEvents": 5,
+        "relatedEvents": 17,
+        "articleKinds": [
+          {
+            "kind": "ai-search",
+            "events": 4
+          },
+          {
+            "kind": "browser",
+            "events": 2
+          },
+          {
+            "kind": "cloud-browser",
+            "events": 1
+          },
+          {
+            "kind": "other-bot",
+            "events": 1
+          },
+          {
+            "kind": "unresolved",
+            "events": 4
+          }
+        ],
+        "evidenceKinds": [
+          {
+            "kind": "ai-search",
+            "events": 3
+          },
+          {
+            "kind": "cloud-browser",
+            "events": 1
+          },
+          {
+            "kind": "seo-crawler",
+            "events": 1
+          }
+        ]
+      },
+      {
+        "path": "/does-llms-txt-work",
+        "articleEvents": 6,
+        "evidenceEvents": 3,
+        "relatedEvents": 9,
+        "articleKinds": [
+          {
+            "kind": "ai-search",
+            "events": 1
+          },
+          {
+            "kind": "browser",
+            "events": 1
+          },
+          {
+            "kind": "cloud-browser",
+            "events": 1
+          },
+          {
+            "kind": "unresolved",
+            "events": 3
+          }
+        ],
+        "evidenceKinds": [
+          {
+            "kind": "ai-search",
+            "events": 2
+          },
+          {
+            "kind": "cloud-browser",
+            "events": 1
+          }
+        ]
+      },
+      {
+        "path": "/my-evals-say-it-works-i-dont-use-it",
+        "articleEvents": 7,
+        "evidenceEvents": 1,
+        "relatedEvents": 8,
+        "articleKinds": [
+          {
+            "kind": "ai-search",
+            "events": 2
+          },
+          {
+            "kind": "browser",
+            "events": 1
+          },
+          {
+            "kind": "cloud-browser",
+            "events": 1
+          },
+          {
+            "kind": "unresolved",
+            "events": 3
+          }
+        ],
+        "evidenceKinds": [
+          {
+            "kind": "cloud-browser",
+            "events": 1
+          }
+        ]
+      },
+      {
+        "path": "/oss-radar-04-the-agent-multiplexer-is-becoming-a-runtime",
+        "articleEvents": 12,
+        "evidenceEvents": 0,
+        "relatedEvents": 12,
+        "articleKinds": [
+          {
+            "kind": "ai-search",
+            "events": 7
+          },
+          {
+            "kind": "browser",
+            "events": 1
+          },
+          {
+            "kind": "cloud-browser",
+            "events": 1
+          },
+          {
+            "kind": "unresolved",
+            "events": 3
+          }
+        ],
+        "evidenceKinds": []
+      },
+      {
+        "path": "/bring-your-own-ai-agent",
+        "articleEvents": 9,
+        "evidenceEvents": 1,
+        "relatedEvents": 10,
+        "articleKinds": [
+          {
+            "kind": "ai-search",
+            "events": 4
+          },
+          {
+            "kind": "browser",
+            "events": 1
+          },
+          {
+            "kind": "cloud-browser",
+            "events": 1
+          },
+          {
+            "kind": "unresolved",
+            "events": 3
+          }
+        ],
+        "evidenceKinds": [
+          {
+            "kind": "cloud-browser",
+            "events": 1
+          }
+        ]
+      },
+      {
+        "path": "/oss-radar-03-buzz-is-slack-on-airoids",
+        "articleEvents": 7,
+        "evidenceEvents": 0,
+        "relatedEvents": 7,
+        "articleKinds": [
+          {
+            "kind": "browser",
+            "events": 2
+          },
+          {
+            "kind": "cloud-browser",
+            "events": 1
+          },
+          {
+            "kind": "other-bot",
+            "events": 1
+          },
+          {
+            "kind": "unresolved",
+            "events": 3
+          }
+        ],
+        "evidenceKinds": []
+      },
+      {
+        "path": "/openwiki-validates-my-bet",
+        "articleEvents": 5,
+        "evidenceEvents": 0,
+        "relatedEvents": 5,
+        "articleKinds": [
+          {
+            "kind": "browser",
+            "events": 1
+          },
+          {
+            "kind": "cloud-browser",
+            "events": 1
+          },
+          {
+            "kind": "unresolved",
+            "events": 3
+          }
+        ],
+        "evidenceKinds": []
+      },
+      {
+        "path": "/i-am-lost-right-now",
+        "articleEvents": 5,
+        "evidenceEvents": 0,
+        "relatedEvents": 5,
+        "articleKinds": [
+          {
+            "kind": "browser",
+            "events": 1
+          },
+          {
+            "kind": "cloud-browser",
+            "events": 1
+          },
+          {
+            "kind": "unresolved",
+            "events": 3
+          }
+        ],
+        "evidenceKinds": []
+      },
+      {
+        "path": "/one-hundred-pull-requests",
+        "articleEvents": 7,
+        "evidenceEvents": 1,
+        "relatedEvents": 8,
+        "articleKinds": [
+          {
+            "kind": "ai-search",
+            "events": 2
+          },
+          {
+            "kind": "browser",
+            "events": 1
+          },
+          {
+            "kind": "cloud-browser",
+            "events": 1
+          },
+          {
+            "kind": "unresolved",
+            "events": 3
+          }
+        ],
+        "evidenceKinds": [
+          {
+            "kind": "cloud-browser",
+            "events": 1
+          }
+        ]
+      },
+      {
+        "path": "/what-if-the-agent-was-better-before-we-helped",
+        "articleEvents": 5,
+        "evidenceEvents": 2,
+        "relatedEvents": 7,
+        "articleKinds": [
+          {
+            "kind": "browser",
+            "events": 1
+          },
+          {
+            "kind": "cloud-browser",
+            "events": 1
+          },
+          {
+            "kind": "unresolved",
+            "events": 3
+          }
+        ],
+        "evidenceKinds": [
+          {
+            "kind": "browser",
+            "events": 1
+          },
+          {
+            "kind": "cloud-browser",
+            "events": 1
+          }
+        ]
+      },
+      {
+        "path": "/i-thought-building-was-enough",
+        "articleEvents": 5,
+        "evidenceEvents": 1,
+        "relatedEvents": 6,
+        "articleKinds": [
+          {
+            "kind": "browser",
+            "events": 1
+          },
+          {
+            "kind": "cloud-browser",
+            "events": 1
+          },
+          {
+            "kind": "unresolved",
+            "events": 3
+          }
+        ],
+        "evidenceKinds": [
+          {
+            "kind": "cloud-browser",
+            "events": 1
+          }
+        ]
+      },
+      {
+        "path": "/linux-signal-stack-conflict",
+        "articleEvents": 11,
+        "evidenceEvents": 0,
+        "relatedEvents": 11,
+        "articleKinds": [
+          {
+            "kind": "ai-search",
+            "events": 4
+          },
+          {
+            "kind": "browser",
+            "events": 2
+          },
+          {
+            "kind": "cloud-browser",
+            "events": 2
+          },
+          {
+            "kind": "unresolved",
+            "events": 3
+          }
+        ],
+        "evidenceKinds": []
+      },
+      {
+        "path": "/life-as-background-music",
+        "articleEvents": 11,
+        "evidenceEvents": 2,
+        "relatedEvents": 13,
+        "articleKinds": [
+          {
+            "kind": "ai-crawler",
+            "events": 1
+          },
+          {
+            "kind": "ai-search",
+            "events": 4
+          },
+          {
+            "kind": "browser",
+            "events": 2
+          },
+          {
+            "kind": "cloud-browser",
+            "events": 1
+          },
+          {
+            "kind": "unresolved",
+            "events": 3
+          }
+        ],
+        "evidenceKinds": [
+          {
+            "kind": "browser",
+            "events": 1
+          },
+          {
+            "kind": "cloud-browser",
+            "events": 1
+          }
+        ]
+      },
+      {
+        "path": "/you-dont-need-codemap",
+        "articleEvents": 8,
+        "evidenceEvents": 0,
+        "relatedEvents": 8,
+        "articleKinds": [
+          {
+            "kind": "ai-search",
+            "events": 1
+          },
+          {
+            "kind": "browser",
+            "events": 2
+          },
+          {
+            "kind": "cloud-browser",
+            "events": 2
+          },
+          {
+            "kind": "unresolved",
+            "events": 3
+          }
+        ],
+        "evidenceKinds": []
+      },
+      {
+        "path": "/oss-radar-02-the-toolchain-is-the-moat",
+        "articleEvents": 14,
+        "evidenceEvents": 0,
+        "relatedEvents": 14,
+        "articleKinds": [
+          {
+            "kind": "ai-crawler",
+            "events": 1
+          },
+          {
+            "kind": "ai-search",
+            "events": 6
+          },
+          {
+            "kind": "browser",
+            "events": 3
+          },
+          {
+            "kind": "cloud-browser",
+            "events": 1
+          },
+          {
+            "kind": "unresolved",
+            "events": 3
+          }
+        ],
+        "evidenceKinds": []
+      },
+      {
+        "path": "/procrastination-is-a-craft-youve-been-mastering-your-entire-life",
+        "articleEvents": 6,
+        "evidenceEvents": 0,
+        "relatedEvents": 6,
+        "articleKinds": [
+          {
+            "kind": "ai-search",
+            "events": 1
+          },
+          {
+            "kind": "browser",
+            "events": 1
+          },
+          {
+            "kind": "cloud-browser",
+            "events": 1
+          },
+          {
+            "kind": "unresolved",
+            "events": 3
+          }
+        ],
+        "evidenceKinds": []
+      },
+      {
+        "path": "/topologies-of-thoughts",
+        "articleEvents": 10,
+        "evidenceEvents": 0,
+        "relatedEvents": 10,
+        "articleKinds": [
+          {
+            "kind": "ai-search",
+            "events": 4
+          },
+          {
+            "kind": "browser",
+            "events": 2
+          },
+          {
+            "kind": "cloud-browser",
+            "events": 1
+          },
+          {
+            "kind": "unresolved",
+            "events": 3
+          }
+        ],
+        "evidenceKinds": []
+      },
+      {
+        "path": "/how-ghx-was-born",
+        "articleEvents": 10,
+        "evidenceEvents": 3,
+        "relatedEvents": 13,
+        "articleKinds": [
+          {
+            "kind": "ai-search",
+            "events": 4
+          },
+          {
+            "kind": "browser",
+            "events": 1
+          },
+          {
+            "kind": "cloud-browser",
+            "events": 1
+          },
+          {
+            "kind": "search-crawler",
+            "events": 1
+          },
+          {
+            "kind": "unresolved",
+            "events": 3
+          }
+        ],
+        "evidenceKinds": [
+          {
+            "kind": "ai-crawler",
+            "events": 1
+          },
+          {
+            "kind": "browser",
+            "events": 1
+          },
+          {
+            "kind": "cloud-browser",
+            "events": 1
+          }
+        ]
+      },
+      {
+        "path": "/oss-radar-01-vercel-winter-2026-cohort",
+        "articleEvents": 13,
+        "evidenceEvents": 0,
+        "relatedEvents": 13,
+        "articleKinds": [
+          {
+            "kind": "ai-crawler",
+            "events": 1
+          },
+          {
+            "kind": "ai-search",
+            "events": 7
+          },
+          {
+            "kind": "browser",
+            "events": 1
+          },
+          {
+            "kind": "cloud-browser",
+            "events": 1
+          },
+          {
+            "kind": "unresolved",
+            "events": 3
+          }
+        ],
+        "evidenceKinds": []
+      },
+      {
+        "path": "/the-agentic-product-engineer",
+        "articleEvents": 7,
+        "evidenceEvents": 5,
+        "relatedEvents": 12,
+        "articleKinds": [
+          {
+            "kind": "browser",
+            "events": 2
+          },
+          {
+            "kind": "cloud-browser",
+            "events": 1
+          },
+          {
+            "kind": "unresolved",
+            "events": 4
+          }
+        ],
+        "evidenceKinds": [
+          {
+            "kind": "ai-crawler",
+            "events": 2
+          },
+          {
+            "kind": "browser",
+            "events": 1
+          },
+          {
+            "kind": "cloud-browser",
+            "events": 2
+          }
+        ]
+      }
+    ]
+  },
+  "declarationMethodAssessment": [
+    {
+      "classifier_state": "current",
+      "inclusion": "included",
+      "declaration": "AhrefsBot",
+      "legacy_agreement": "matches-single",
+      "stored_kind": "seo-crawler",
+      "method_mask": 1,
+      "local_state": "verified",
+      "vendor_state": "not-configured",
+      "network_state": "recognized",
+      "network_mask": 1,
+      "failure_reason": "not-applicable",
+      "reason_set_state": "not-applicable",
+      "closed_reasons": "[]",
+      "views": 6
+    },
+    {
+      "classifier_state": "current",
+      "inclusion": "included",
+      "declaration": "Amazonbot",
+      "legacy_agreement": "matches-single",
+      "stored_kind": "ai-crawler",
+      "method_mask": 1,
+      "local_state": "absent",
+      "vendor_state": "not-configured",
+      "network_state": "recognized",
+      "network_mask": 1,
+      "failure_reason": "not-applicable",
+      "reason_set_state": "not-applicable",
+      "closed_reasons": "[]",
+      "views": 4
+    },
+    {
+      "classifier_state": "current",
+      "inclusion": "included",
+      "declaration": "ChatGPT-User",
+      "legacy_agreement": "matches-single",
+      "stored_kind": "ai-assistant",
+      "method_mask": 1,
+      "local_state": "absent",
+      "vendor_state": "not-configured",
+      "network_state": "recognized",
+      "network_mask": 1,
+      "failure_reason": "not-applicable",
+      "reason_set_state": "not-applicable",
+      "closed_reasons": "[]",
+      "views": 1
+    },
+    {
+      "classifier_state": "current",
+      "inclusion": "included",
+      "declaration": "Claude-User",
+      "legacy_agreement": "matches-single",
+      "stored_kind": "ai-assistant",
+      "method_mask": 0,
+      "local_state": "absent",
+      "vendor_state": "not-configured",
+      "network_state": "recognized",
+      "network_mask": 0,
+      "failure_reason": "not-applicable",
+      "reason_set_state": "not-applicable",
+      "closed_reasons": "[]",
+      "views": 1
+    },
+    {
+      "classifier_state": "current",
+      "inclusion": "included",
+      "declaration": "ClaudeBot",
+      "legacy_agreement": "matches-single",
+      "stored_kind": "ai-crawler",
+      "method_mask": 0,
+      "local_state": "absent",
+      "vendor_state": "not-configured",
+      "network_state": "recognized",
+      "network_mask": 0,
+      "failure_reason": "not-applicable",
+      "reason_set_state": "not-applicable",
+      "closed_reasons": "[]",
+      "views": 2
+    },
+    {
+      "classifier_state": "current",
+      "inclusion": "included",
+      "declaration": "ExaSearchBot",
+      "legacy_agreement": "matches-single",
+      "stored_kind": "ai-search",
+      "method_mask": 2,
+      "local_state": "verified",
+      "vendor_state": "matching-origin",
+      "network_state": "recognized",
+      "network_mask": 0,
+      "failure_reason": "not-applicable",
+      "reason_set_state": "not-applicable",
+      "closed_reasons": "[]",
+      "views": 42
+    },
+    {
+      "classifier_state": "current",
+      "inclusion": "included",
+      "declaration": "Googlebot",
+      "legacy_agreement": "matches-single",
+      "stored_kind": "search-crawler",
+      "method_mask": 1,
+      "local_state": "absent",
+      "vendor_state": "not-configured",
+      "network_state": "recognized",
+      "network_mask": 1,
+      "failure_reason": "not-applicable",
+      "reason_set_state": "not-applicable",
+      "closed_reasons": "[]",
+      "views": 2
+    },
+    {
+      "classifier_state": "current",
+      "inclusion": "included",
+      "declaration": "Googlebot",
+      "legacy_agreement": "matches-single",
+      "stored_kind": "search-crawler",
+      "method_mask": 1,
+      "local_state": "absent",
+      "vendor_state": "not-configured",
+      "network_state": "recognized",
+      "network_mask": 4,
+      "failure_reason": "not-applicable",
+      "reason_set_state": "not-applicable",
+      "closed_reasons": "[]",
+      "views": 1
+    },
+    {
+      "classifier_state": "current",
+      "inclusion": "included",
+      "declaration": "Meta-WebIndexer",
+      "legacy_agreement": "matches-single",
+      "stored_kind": "ai-search",
+      "method_mask": 0,
+      "local_state": "absent",
+      "vendor_state": "not-configured",
+      "network_state": "recognized",
+      "network_mask": 0,
+      "failure_reason": "not-applicable",
+      "reason_set_state": "not-applicable",
+      "closed_reasons": "[]",
+      "views": 19
+    },
+    {
+      "classifier_state": "current",
+      "inclusion": "included",
+      "declaration": "OAI-SearchBot",
+      "legacy_agreement": "matches-single",
+      "stored_kind": "ai-search",
+      "method_mask": 1,
+      "local_state": "absent",
+      "vendor_state": "not-configured",
+      "network_state": "recognized",
+      "network_mask": 1,
+      "failure_reason": "not-applicable",
+      "reason_set_state": "not-applicable",
+      "closed_reasons": "[]",
+      "views": 1
+    },
+    {
+      "classifier_state": "current",
+      "inclusion": "included",
+      "declaration": "PerplexityBot",
+      "legacy_agreement": "matches-single",
+      "stored_kind": "ai-search",
+      "method_mask": 1,
+      "local_state": "absent",
+      "vendor_state": "not-configured",
+      "network_state": "recognized",
+      "network_mask": 1,
+      "failure_reason": "not-applicable",
+      "reason_set_state": "not-applicable",
+      "closed_reasons": "[]",
+      "views": 1
+    },
+    {
+      "classifier_state": "current",
+      "inclusion": "included",
+      "declaration": "PetalBot",
+      "legacy_agreement": "matches-single",
+      "stored_kind": "ai-crawler",
+      "method_mask": 0,
+      "local_state": "absent",
+      "vendor_state": "not-configured",
+      "network_state": "recognized",
+      "network_mask": 0,
+      "failure_reason": "not-applicable",
+      "reason_set_state": "not-applicable",
+      "closed_reasons": "[]",
+      "views": 5
+    },
+    {
+      "classifier_state": "current",
+      "inclusion": "included",
+      "declaration": "none",
+      "legacy_agreement": "matches-unselected",
+      "stored_kind": "browser",
+      "method_mask": 0,
+      "local_state": "absent",
+      "vendor_state": "no-declaration",
+      "network_state": "recognized",
+      "network_mask": 0,
+      "failure_reason": "not-applicable",
+      "reason_set_state": "not-applicable",
+      "closed_reasons": "[]",
+      "views": 43
+    },
+    {
+      "classifier_state": "current",
+      "inclusion": "included",
+      "declaration": "none",
+      "legacy_agreement": "matches-unselected",
+      "stored_kind": "cloud-browser",
+      "method_mask": 0,
+      "local_state": "absent",
+      "vendor_state": "no-declaration",
+      "network_state": "recognized",
+      "network_mask": 0,
+      "failure_reason": "not-applicable",
+      "reason_set_state": "not-applicable",
+      "closed_reasons": "[]",
+      "views": 102
+    },
+    {
+      "classifier_state": "current",
+      "inclusion": "included",
+      "declaration": "none",
+      "legacy_agreement": "matches-unselected",
+      "stored_kind": "http-client",
+      "method_mask": 0,
+      "local_state": "absent",
+      "vendor_state": "no-declaration",
+      "network_state": "recognized",
+      "network_mask": 0,
+      "failure_reason": "not-applicable",
+      "reason_set_state": "not-applicable",
+      "closed_reasons": "[]",
+      "views": 5
+    },
+    {
+      "classifier_state": "current",
+      "inclusion": "included",
+      "declaration": "none",
+      "legacy_agreement": "matches-unselected",
+      "stored_kind": "other-bot",
+      "method_mask": 0,
+      "local_state": "absent",
+      "vendor_state": "no-declaration",
+      "network_state": "recognized",
+      "network_mask": 0,
+      "failure_reason": "not-applicable",
+      "reason_set_state": "not-applicable",
+      "closed_reasons": "[]",
+      "views": 19
+    },
+    {
+      "classifier_state": "current",
+      "inclusion": "included",
+      "declaration": "none",
+      "legacy_agreement": "matches-unselected",
+      "stored_kind": "unresolved",
+      "method_mask": 0,
+      "local_state": "absent",
+      "vendor_state": "no-declaration",
+      "network_state": "recognized",
+      "network_mask": 0,
+      "failure_reason": "not-applicable",
+      "reason_set_state": "not-applicable",
+      "closed_reasons": "[]",
+      "views": 114
+    },
+    {
+      "classifier_state": "other-recorded",
+      "inclusion": "included",
+      "declaration": "AhrefsBot",
+      "legacy_agreement": "matches-single",
+      "stored_kind": "seo-crawler",
+      "method_mask": 1,
+      "local_state": "verified",
+      "vendor_state": "not-configured",
+      "network_state": "recognized",
+      "network_mask": 1,
+      "failure_reason": "not-applicable",
+      "reason_set_state": "not-applicable",
+      "closed_reasons": "[]",
+      "views": 3
+    },
+    {
+      "classifier_state": "other-recorded",
+      "inclusion": "included",
+      "declaration": "Amazonbot",
+      "legacy_agreement": "matches-single",
+      "stored_kind": "ai-crawler",
+      "method_mask": 1,
+      "local_state": "absent",
+      "vendor_state": "not-configured",
+      "network_state": "recognized",
+      "network_mask": 1,
+      "failure_reason": "not-applicable",
+      "reason_set_state": "not-applicable",
+      "closed_reasons": "[]",
+      "views": 1
+    },
+    {
+      "classifier_state": "other-recorded",
+      "inclusion": "included",
+      "declaration": "Applebot",
+      "legacy_agreement": "matches-single",
+      "stored_kind": "ai-search",
+      "method_mask": 1,
+      "local_state": "absent",
+      "vendor_state": "not-configured",
+      "network_state": "recognized",
+      "network_mask": 1,
+      "failure_reason": "not-applicable",
+      "reason_set_state": "not-applicable",
+      "closed_reasons": "[]",
+      "views": 1
+    },
+    {
+      "classifier_state": "other-recorded",
+      "inclusion": "included",
+      "declaration": "Bingbot",
+      "legacy_agreement": "matches-single",
+      "stored_kind": "search-crawler",
+      "method_mask": 1,
+      "local_state": "absent",
+      "vendor_state": "not-configured",
+      "network_state": "recognized",
+      "network_mask": 1,
+      "failure_reason": "not-applicable",
+      "reason_set_state": "not-applicable",
+      "closed_reasons": "[]",
+      "views": 1
+    },
+    {
+      "classifier_state": "other-recorded",
+      "inclusion": "included",
+      "declaration": "Bytespider",
+      "legacy_agreement": "matches-single",
+      "stored_kind": "ai-crawler",
+      "method_mask": 0,
+      "local_state": "absent",
+      "vendor_state": "not-configured",
+      "network_state": "recognized",
+      "network_mask": 0,
+      "failure_reason": "not-applicable",
+      "reason_set_state": "not-applicable",
+      "closed_reasons": "[]",
+      "views": 1
+    },
+    {
+      "classifier_state": "other-recorded",
+      "inclusion": "included",
+      "declaration": "ClaudeBot",
+      "legacy_agreement": "matches-single",
+      "stored_kind": "ai-crawler",
+      "method_mask": 0,
+      "local_state": "absent",
+      "vendor_state": "not-configured",
+      "network_state": "recognized",
+      "network_mask": 0,
+      "failure_reason": "not-applicable",
+      "reason_set_state": "not-applicable",
+      "closed_reasons": "[]",
+      "views": 5
+    },
+    {
+      "classifier_state": "other-recorded",
+      "inclusion": "included",
+      "declaration": "ExaSearchBot",
+      "legacy_agreement": "matches-single",
+      "stored_kind": "ai-search",
+      "method_mask": 2,
+      "local_state": "verified",
+      "vendor_state": "matching-origin",
+      "network_state": "recognized",
+      "network_mask": 0,
+      "failure_reason": "not-applicable",
+      "reason_set_state": "not-applicable",
+      "closed_reasons": "[]",
+      "views": 21
+    },
+    {
+      "classifier_state": "other-recorded",
+      "inclusion": "included",
+      "declaration": "Googlebot",
+      "legacy_agreement": "matches-single",
+      "stored_kind": "search-crawler",
+      "method_mask": 1,
+      "local_state": "absent",
+      "vendor_state": "not-configured",
+      "network_state": "recognized",
+      "network_mask": 1,
+      "failure_reason": "not-applicable",
+      "reason_set_state": "not-applicable",
+      "closed_reasons": "[]",
+      "views": 3
+    },
+    {
+      "classifier_state": "other-recorded",
+      "inclusion": "included",
+      "declaration": "Meta-WebIndexer",
+      "legacy_agreement": "matches-single",
+      "stored_kind": "ai-search",
+      "method_mask": 0,
+      "local_state": "absent",
+      "vendor_state": "not-configured",
+      "network_state": "recognized",
+      "network_mask": 0,
+      "failure_reason": "not-applicable",
+      "reason_set_state": "not-applicable",
+      "closed_reasons": "[]",
+      "views": 8
+    },
+    {
+      "classifier_state": "other-recorded",
+      "inclusion": "included",
+      "declaration": "PetalBot",
+      "legacy_agreement": "matches-single",
+      "stored_kind": "ai-crawler",
+      "method_mask": 0,
+      "local_state": "absent",
+      "vendor_state": "not-configured",
+      "network_state": "recognized",
+      "network_mask": 0,
+      "failure_reason": "not-applicable",
+      "reason_set_state": "not-applicable",
+      "closed_reasons": "[]",
+      "views": 2
+    },
+    {
+      "classifier_state": "other-recorded",
+      "inclusion": "included",
+      "declaration": "none",
+      "legacy_agreement": "matches-unselected",
+      "stored_kind": "browser",
+      "method_mask": 0,
+      "local_state": "absent",
+      "vendor_state": "no-declaration",
+      "network_state": "recognized",
+      "network_mask": 0,
+      "failure_reason": "not-applicable",
+      "reason_set_state": "not-applicable",
+      "closed_reasons": "[]",
+      "views": 79
+    },
+    {
+      "classifier_state": "other-recorded",
+      "inclusion": "included",
+      "declaration": "none",
+      "legacy_agreement": "matches-unselected",
+      "stored_kind": "cloud-browser",
+      "method_mask": 0,
+      "local_state": "absent",
+      "vendor_state": "no-declaration",
+      "network_state": "recognized",
+      "network_mask": 0,
+      "failure_reason": "not-applicable",
+      "reason_set_state": "not-applicable",
+      "closed_reasons": "[]",
+      "views": 65
+    },
+    {
+      "classifier_state": "other-recorded",
+      "inclusion": "included",
+      "declaration": "none",
+      "legacy_agreement": "matches-unselected",
+      "stored_kind": "other-bot",
+      "method_mask": 0,
+      "local_state": "absent",
+      "vendor_state": "no-declaration",
+      "network_state": "recognized",
+      "network_mask": 0,
+      "failure_reason": "not-applicable",
+      "reason_set_state": "not-applicable",
+      "closed_reasons": "[]",
+      "views": 11
+    },
+    {
+      "classifier_state": "other-recorded",
+      "inclusion": "included",
+      "declaration": "none",
+      "legacy_agreement": "matches-unselected",
+      "stored_kind": "unresolved",
+      "method_mask": 0,
+      "local_state": "absent",
+      "vendor_state": "no-declaration",
+      "network_state": "recognized",
+      "network_mask": 0,
+      "failure_reason": "not-applicable",
+      "reason_set_state": "not-applicable",
+      "closed_reasons": "[]",
+      "views": 59
+    }
+  ],
+  "networkAssignments": {
+    "profile": "2026-10-31.1",
+    "raw": {
+      "rows": 628,
+      "states": {
+        "consistent": 628,
+        "contradictory": 0,
+        "not-assessed": 0
+      },
+      "reasons": {
+        "classification-not-recorded": 0,
+        "classification-invalid-json": 0,
+        "classification-duplicate-key": 0,
+        "network-not-recorded": 0,
+        "network-invalid-json": 0,
+        "network-duplicate-key": 0,
+        "decoder-state-invalid": 0,
+        "classification-policy-limit": 0,
+        "network-policy-limit": 0,
+        "classification-envelope-invalid": 0,
+        "classifier-profile-missing": 0,
+        "classifier-profile-invalid": 0,
+        "classifier-profile-conflict": 0,
+        "classifier-profile-unsupported": 0,
+        "classification-schema-missing": 0,
+        "classification-schema-invalid": 0,
+        "classification-schema-unsupported": 0,
+        "classification-schema-conflict": 0,
+        "declarations-invalid": 0,
+        "network-envelope-invalid": 0,
+        "network-profile-missing": 0,
+        "network-profile-invalid": 0,
+        "network-profile-unsupported": 0,
+        "profile-pair-unreviewed": 0,
+        "network-assignment-fields-invalid": 0,
+        "source-unsupported": 0,
+        "declaration-count": 0,
+        "configured-count": 0,
+        "unmapped-count": 0,
+        "duplicate-source": 0,
+        "source-set": 0,
+        "source-order": 0
+      },
+      "cohorts": [
+        {
+          "classifierProfile": "2026-10-29.3",
+          "networkProfile": "2026-10-30.1",
+          "structuralState": "recognized",
+          "assignmentState": "consistent",
+          "reasons": [],
+          "rows": 260
+        },
+        {
+          "classifierProfile": "2026-10-31.1",
+          "networkProfile": "2026-10-31.1",
+          "structuralState": "recognized",
+          "assignmentState": "consistent",
+          "reasons": [],
+          "rows": 3
+        },
+        {
+          "classifierProfile": "2026-10-31.1",
+          "networkProfile": "2026-10-31.2",
+          "structuralState": "recognized",
+          "assignmentState": "consistent",
+          "reasons": [],
+          "rows": 365
+        }
+      ]
+    },
+    "included": {
+      "rows": 628,
+      "states": {
+        "consistent": 628,
+        "contradictory": 0,
+        "not-assessed": 0
+      },
+      "reasons": {
+        "classification-not-recorded": 0,
+        "classification-invalid-json": 0,
+        "classification-duplicate-key": 0,
+        "network-not-recorded": 0,
+        "network-invalid-json": 0,
+        "network-duplicate-key": 0,
+        "decoder-state-invalid": 0,
+        "classification-policy-limit": 0,
+        "network-policy-limit": 0,
+        "classification-envelope-invalid": 0,
+        "classifier-profile-missing": 0,
+        "classifier-profile-invalid": 0,
+        "classifier-profile-conflict": 0,
+        "classifier-profile-unsupported": 0,
+        "classification-schema-missing": 0,
+        "classification-schema-invalid": 0,
+        "classification-schema-unsupported": 0,
+        "classification-schema-conflict": 0,
+        "declarations-invalid": 0,
+        "network-envelope-invalid": 0,
+        "network-profile-missing": 0,
+        "network-profile-invalid": 0,
+        "network-profile-unsupported": 0,
+        "profile-pair-unreviewed": 0,
+        "network-assignment-fields-invalid": 0,
+        "source-unsupported": 0,
+        "declaration-count": 0,
+        "configured-count": 0,
+        "unmapped-count": 0,
+        "duplicate-source": 0,
+        "source-set": 0,
+        "source-order": 0
+      },
+      "cohorts": [
+        {
+          "classifierProfile": "2026-10-29.3",
+          "networkProfile": "2026-10-30.1",
+          "structuralState": "recognized",
+          "assignmentState": "consistent",
+          "reasons": [],
+          "rows": 260
+        },
+        {
+          "classifierProfile": "2026-10-31.1",
+          "networkProfile": "2026-10-31.1",
+          "structuralState": "recognized",
+          "assignmentState": "consistent",
+          "reasons": [],
+          "rows": 3
+        },
+        {
+          "classifierProfile": "2026-10-31.1",
+          "networkProfile": "2026-10-31.2",
+          "structuralState": "recognized",
+          "assignmentState": "consistent",
+          "reasons": [],
+          "rows": 365
+        }
+      ]
+    }
+  },
+  "sourceCommitments": {
+    "exportSha256": "88c264a201fca46942f172a70bdae7d303e7716ce4e52da9b57e2980cca26d40",
+    "rowsSha256": "be1adcf8bed0f0525da6ba504a45eb337d158a2ecef61d520e88c9fa631b3bdf",
+    "catalogueSha256": "a1b96d127130bfc7b7c41a5cc462290d71509dc3b00cec170279fa2f4463226b",
+    "catalogueSource": "accepted isolated 39-post build from previous publication; explicit url/prompts relationships",
+    "analysisSourceManifestSha256": "7ac1412fe8209e3bc7b2c1796469fa0aa185687670351ea6c5bcc7eeedf10a26",
+    "analysisBundleSha256": "ed026a51a876e8575e1f12339cd29c1aa814f93058ea98b661b7320ffe55cbda",
+    "resourceInputSha256": "59ff8e3ba6b29b831dcda3ce4428c73fdcb01f9561416fbc3caf7c11c6fe8c13",
+    "sharedSourceFiles": 47
+  },
+  "productionMeters": {
+    "preflight": {
+      "rows_read": 629,
+      "rows_written": 0,
+      "changed_db": false,
+      "total_attempts": 1
+    },
+    "export": {
+      "rows_read": 1257,
+      "rows_written": 0,
+      "changed_db": false,
+      "total_attempts": 1
+    }
+  },
+  "localReconstructionMeters": {
+    "rowsRead": 141163,
+    "rowsWritten": 0,
+    "scope": "Offline reconstructed native-D1 analysis, not production reads."
+  },
+  "checks": {
+    "pureJavaScriptReferralEqualsNativeSQL": true,
+    "independentResourceMapEqualsSharedAnalyzer": true,
+    "rawKindsEqualStoredKinds": true,
+    "positiveSignatureScalarEqualsAssessedPositive": true,
+    "coveredFieldsReconcile": true,
+    "nativeBooleansUnavailable": true,
+    "exactDayWindow": true,
+    "inputUnchanged": true
+  },
+  "referralPolicySha256": "25d4655bd67b0a63e9fc1f59586c6d85f924671024874198a678e8b82a00d7c4",
+  "independentChecksSha256": "fbd711c24dff26a33fdf3628211fe41058a0c4a20cc0a1f45bb3520cf24df9fa",
+  "humanCount": null,
+  "growthRate": null,
+  "limits": [
+    "Stored observations, not requests that failed before collection or unobserved delivery.",
+    "Owner/referral policy applied at query/analysis time, not reconstructed historical policy. Unmarked experiments may remain included.",
+    "One complete UTC day cannot establish a normalized growth rate.",
+    "Stored verified outcomes and coverage were assessed, not independently replayed from original signed requests.",
+    "Native null booleans are unavailable, not false.",
+    "Current catalogue labels do not establish historical presentation or equal publication exposure.",
+    "Historical397-row selection covers a different partial-day interval; do not sum overlapping reports or compare counts as rates."
+  ]
+}

@@ -1,0 +1,211 @@
+{
+  "checkedAt": "2026-11-01T00:42:06.362Z",
+  "status": "accepted-final-stopped-tail-and-exact-control-findings",
+  "planFrozenAt": "2026-11-01T00:26:35Z",
+  "submittedBrowserTrials": [
+    {
+      "service": "Gemini",
+      "uiMode": "Flash-Lite, signed out",
+      "prompt": "Open this exact URL: https://gkoreli.com/which-ai-fetchers-send-which-headers?probe=fetcher-live-20261101-gemini-r1\nReturn the page's H1 and quote one sentence from its \"Maintaining this reference\" section. If you cannot access the page, say so; do not infer its contents from the URL or search snippets.",
+      "answer": "I cannot access the page directly.",
+      "observedCompleteBefore": "2026-11-01T00:28:30Z",
+      "exactSendTimeRecorded": false,
+      "observedFetchChain": "unavailable"
+    },
+    {
+      "service": "Perplexity",
+      "uiMode": "Search selected, signed out; model not exposed",
+      "prompt": "Open this exact URL: https://gkoreli.com/which-ai-fetchers-send-which-headers?probe=fetcher-live-20261101-perplexity-r1\nReturn the page's H1 and quote one sentence from its \"Maintaining this reference\" section. If you cannot access the page, say so; do not infer its contents from the URL or search snippets.",
+      "answer": "I can’t access the page right now, so I can’t provide its H1 or quote from “Maintaining this reference.”",
+      "observedCompleteBefore": "2026-11-01T00:29:30Z",
+      "exactSendTimeRecorded": false,
+      "observedFetchChain": "unavailable",
+      "displayedCompletion": "4s"
+    }
+  ],
+  "interfacesNotSubmitted": [
+    {
+      "service": "ChatGPT",
+      "state": "Just a moment challenge/interstitial, no prompt sent"
+    },
+    {
+      "service": "Claude",
+      "state": "Sign-in screen, no prompt sent"
+    },
+    {
+      "service": "Copilot",
+      "state": "Sign-in screen, no prompt sent"
+    },
+    {
+      "service": "Duck.ai",
+      "state": "6 Luna; first Ask explicitly accepts terms; awaiting owner confirmation"
+    },
+    {
+      "service": "Grok",
+      "state": "Fast; first message explicitly accepts terms; awaiting owner confirmation"
+    }
+  ],
+  "terminalTrial": {
+    "service": "Claude Code",
+    "version": "2.1.280",
+    "modelAdvertised": "claude-opus-5-5[1m]",
+    "startedAt": "2026-11-01T00:29:11.096473+00:00",
+    "finishedAt": "2026-11-01T00:29:11.798426+00:00",
+    "exitCode": 1,
+    "result": "Authentication failed: existing OAuth session expired and could not be refreshed",
+    "toolUses": 0,
+    "webFetchExecuted": false
+  },
+  "controls": [
+    {
+      "service": "operator-control",
+      "timestamp": "2026-11-01T00:26:51.872Z",
+      "path": "/ai-fetcher-research-from-experiments-to-a-cited-reference",
+      "responseStatus": 200,
+      "exactInvocationReceiptRowChain": true,
+      "fullReceiptProjectionMatches": true,
+      "storedKind": "browser",
+      "ownerExcluded": false,
+      "signatureOutcome": "absent",
+      "declaredClients": "none",
+      "native": {
+        "verifiedBot": "unavailable",
+        "signedAgent": "unavailable",
+        "categoryStatus": "empty",
+        "categoryValue": "none"
+      },
+      "workerVersion": "b06bde7e-9a63-4c65-bee7-4f0c265cdbc2"
+    },
+    {
+      "service": "operator-original",
+      "timestamp": "2026-11-01T00:30:23.303Z",
+      "path": "/which-ai-fetchers-send-which-headers",
+      "responseStatus": 200,
+      "exactInvocationReceiptRowChain": true,
+      "fullReceiptProjectionMatches": true,
+      "storedKind": "browser",
+      "ownerExcluded": false,
+      "signatureOutcome": "absent",
+      "declaredClients": "none",
+      "native": {
+        "verifiedBot": "unavailable",
+        "signedAgent": "unavailable",
+        "categoryStatus": "empty",
+        "categoryValue": "none"
+      },
+      "workerVersion": "b06bde7e-9a63-4c65-bee7-4f0c265cdbc2"
+    }
+  ],
+  "controlReadback": {
+    "selectedRows": 2,
+    "fullReceiptMatches": 2,
+    "rowsRead": 4,
+    "rowsWritten": 0,
+    "totalAttempts": 1,
+    "changedDatabase": false,
+    "boundary": "One exact-reference production SELECT. Provider metadata/native UI/tail and ordinary ingestion have additional costs.",
+    "sqlSha256": "f3a740fda66708296079f739bb1bebe82e2bbe0acaa0b9350470e356b6bf7b2b",
+    "nativePreflight": "passed-local-workerd-d1",
+    "queryPlan": [
+      {
+        "detail": "SEARCH page_observations USING INTEGER PRIMARY KEY (rowid=?)"
+      }
+    ]
+  },
+  "finalTail": {
+    "snapshotCheckedAt": "2026-11-01T00:41:31.548Z",
+    "completedJsonObjects": 26,
+    "matchedInvocations": 2,
+    "malformedCompleteFrames": 0,
+    "unparsedSuffixBytes": 0,
+    "sourceSha256": "b858bf235c8336d0441526cfc266e59d32b1491b4f7a12feddca031ceb0b2431",
+    "finalStoppedWindowAccepted": true,
+    "controller": {
+      "startConfirmedBeforeUtc": "2026-11-01T00:26:35Z",
+      "stopAfterUtc": "2026-11-01T00:41:19Z",
+      "stopConfirmedBeforeUtc": "2026-11-01T00:41:47.645034+00:00",
+      "stopAction": "Ctrl-C; owned terminal session returned exit1; final stream parses without incomplete suffix",
+      "wholeStreamIsPopulationComplete": false,
+      "strictNoRequestInference": false
+    },
+    "outsideTextFragments": 0,
+    "extractionSha256": "5500f4b157c0159da4d1b2c13f3ef28efe70bfeb17364d03ce256945d727f2d7"
+  },
+  "parentObservedAdditionalEvidence": {
+    "codexWebOpen": "Tool reported URL inaccessible; no accepted request/storage chain",
+    "promptsBrowserPage": "Rendered, but no fresh live invocation/storage chain accepted",
+    "retainedPrefixLookup": {
+      "window": "Last 1 hour at parent observation",
+      "returnedEvents": 0,
+      "interpretation": "Scoped returned zero; no proof of absent requests"
+    },
+    "retainedPromptsLookup": {
+      "returnedEvents": 7,
+      "recordsAround": "2026-10-31T23:38Z",
+      "freshPromptChainAccepted": false
+    },
+    "arcjet": {
+      "url": "https://arcjet.com/learn/web-bot-auth#signature-base",
+      "target": "https://gkoreli.com/which-ai-fetchers-send-which-headers",
+      "relation": "Technical evidence reuse comparing DuckAssistBot and SeatGeek signature coverage",
+      "rel": [
+        "noopener",
+        "noreferrer"
+      ],
+      "nofollowPresent": false,
+      "basis": "Parent investigator rechecked rendered passage and anchor in native browser UI",
+      "checkedBeforeUtc": "2026-11-01T00:30:00Z"
+    }
+  },
+  "inputSha256": {
+    "browserLedger": "c9d714ac70cc4962e65b9ca3f2fabf87f71f2d8ea428dfcdbc4135acbe0c0dee",
+    "matchedControls": "e40138e809f461a388f1c7109419cf1f5565b632376c65ad5977b4b03649eba5",
+    "controlReadback": "3e3a347fba30363ed6826c92d7e030f7b4e27f4301682457dacda3370ba0c332",
+    "claudeCodeOutput": "aa274c94131f826c42d391b76fea70340c13bcb8e598073285ebf80fe47c6187",
+    "claudeCodeExecution": "2d1b5ee585c6cb84e9c52e40cc436ac807a5433994ab625265de65e1d1cf1746",
+    "tailController": "c84d486cb139e73004171c0c792c788720fb410384c2ec045a7c8424fe4680db"
+  },
+  "receiptProjectionSourceSha256": "3b78f4efce7161e69cfbb31fc455fcf2b4464d55d634a2eb0d3d46fa38d65beb",
+  "limits": [
+    "No successful fresh assistant-fetch chain is accepted by these browser trials.",
+    "Exact send times are unrecorded; completion bounds and displayed duration are not reconstructed timestamps.",
+    "Missing live/retained events are unavailable evidence rather than proof of no request.",
+    "Two agent-operated controls are stored as Browser and ownerExcluded=false; they are deliberate traffic, not people or organic growth.",
+    "Prompt text/answers are public-source trial material; private conversation URLs and identifiers are omitted.",
+    "The stopped tail is a finite captured stream, not proof of a complete request population."
+  ],
+  "additionalAttempts": [
+    {
+      "service": "Codex web-open tool",
+      "result": "Internal Error (); URL is not accessible via this tool.",
+      "timeBoundsUtc": {
+        "after": "2026-11-01T00:28:37Z",
+        "before": "2026-11-01T00:29:11Z"
+      }
+    },
+    {
+      "service": "Claude Code",
+      "result": "Failed to authenticate: OAuth session expired and could not be refreshed",
+      "webFetchToolCalled": false
+    }
+  ],
+  "browserActions": [
+    {
+      "page": "/ai-fetcher-research-from-experiments-to-a-cited-reference",
+      "rendered": true
+    },
+    {
+      "page": "/which-ai-fetchers-send-which-headers",
+      "rendered": true
+    },
+    {
+      "page": "/ai-fetcher-research-from-experiments-to-a-cited-reference/prompts",
+      "rendered": true,
+      "observationBoundsUtc": {
+        "after": "2026-11-01T00:30:23Z",
+        "before": "2026-11-01T00:30:47Z"
+      },
+      "displayedPromptCount": 5
+    }
+  ]
+}

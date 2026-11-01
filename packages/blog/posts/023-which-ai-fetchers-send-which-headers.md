@@ -3,7 +3,7 @@ title: "Which AI Fetchers Send Which Headers, Measured on a Live Site"
 seoTitle: "ChatGPT, Claude, Gemini and Grok Fetcher Headers, Measured"
 alternativeHeadline: "What happened at a Cloudflare Worker when ChatGPT, Claude, Gemini, Grok, Perplexity, Copilot, Mistral, DuckDuckGo, Claude Code and Codex were asked to fetch a page: headers, networks, IP lists and signatures"
 date: "2026-09-03"
-lastModified: "2026-10-31"
+lastModified: "2026-11-01"
 description: "What happened when ChatGPT, Claude, Gemini, Grok, Perplexity, Copilot, Mistral, DuckDuckGo, Claude Code and Codex were asked to fetch a page on a live Cloudflare Worker: the User-Agent, Accept and Fetch Metadata headers received, vendor IP-list matches, the limits of verified Web Bot Auth signatures, and which assistants sent no observed request."
 section: engineering
 tags: [ai-agents, analytics, cloudflare-workers, http, observability, agentic-engineering]
@@ -241,10 +241,11 @@ That is an earned external citation and demonstrated technical use of the publis
 
 The current analytics retain separate declaration, network, signature-coverage and unresolved evidence; [the later build log](/building-blog-analytics-what-the-numbers-can-prove) explains those changes. Browser remains a request classification, not a human count. The September Grok captures demonstrate errors in the rules tested then; they do not establish today's error rate or a universal detection limit.
 
-The October 31 follow-up adds a separate synthetic discovery-profile experiment and hardens this reference's date and attribution wording. The September vendor observations and files remain unchanged; the promised monthly vendor repeats have not been completed. A future vendor update should repeat labelled trials, report missed automation and unresolved cases, and preserve the earlier results alongside changed behavior. [The classifier article](/how-i-separate-readers-from-bots-without-javascript) describes the original implementation.
+The [revised follow-up](/ai-fetcher-research-from-experiments-to-a-cited-reference) adds fresh browser trials, exact production request-to-row checks, a complete October 31 UTC traffic selection and replay of one real recent Exa request. It keeps those results separate from the September ten-assistant survey. The broader monthly vendor repeats have not been completed; later rechecks should retain the original captures alongside changed behavior. [The classifier article](/how-i-separate-readers-from-bots-without-javascript) describes the original implementation.
 
 ### Changelog
 
+- **2026-11-01 UTC, live follow-up revision.** Linked the fresh browser/production-data investigation and real-proof replay. The follow-up's generated regression cases are no longer its central finding. September observations, prompts and frozen research-footprint figures remain dated and unchanged.
 - **2026-10-31, reference v2 and follow-up.** Dated key-directory and verifier statements, scoped the local CLI capture and Grok classification result, removed unsupported tool-internal conclusions and unfulfilled upstream-submission promises, and linked the new experiment and publication outcomes. The stable URL, September captures, publication date and frozen research-footprint totals are preserved.
 
 - **2026-10-31, external reference.** Added Arcjet's guide, which references the published DuckAssistBot capture. This records external reuse of the capture; it adds no vendor trial or population growth estimate. The frozen September research-footprint figures exclude this update and the discovery audit.

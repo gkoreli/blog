@@ -1,7 +1,9 @@
 ---
-title: "AI Fetcher Research: From Experiments to a Cited Reference"
+title: "My AI Agent Read My Blog. My Analytics Called It a Browser."
+seoTitle: "AI Traffic in Browser Analytics: A Live Cloudflare Recheck"
 date: "2026-10-31"
-description: "Arcjet used my AI-fetcher study as technical evidence. New signature experiments, clearer analytics and a standalone Worker show how I am strengthening the research behind it."
+lastModified: "2026-11-01"
+description: "Two real agent-driven browser requests reached my Worker and were stored as Browser. A fresh day of 628 events shows what signatures, page counts and an earned technical citation actually tell me."
 section: engineering
 tags: [ai-agents, analytics, http, observability, agentic-engineering]
 series:
@@ -10,117 +12,146 @@ series:
   order: 7
 ---
 
-# AI Fetcher Research: From Experiments to a Cited Reference
+# My AI Agent Read My Blog. My Analytics Called It a Browser.
 
-Arcjet uses a request I captured on this blog to explain Web Bot Auth. In its [technical guide](https://arcjet.com/learn/web-bot-auth#signature-base), my DuckAssistBot capture sits beside SeatGeek's ChatGPT example. The comparison teaches a concrete difference: one signature covers the destination host; the other also covers the request method and path. Arcjet links directly to [my study](/which-ai-fetchers-send-which-headers).
+Stop counting browsers as people.
 
-That is an earned backlink and visible use of the research as evidence. It is the kind of publishing I want to do with AI agents: investigate a real question, publish enough of the work for someone else to inspect, and give them something useful to build on.
+I used Codex's browser to open two articles on this site. Both returned HTTP 200. My Cloudflare Worker stored both requests as **Browser**. They carried Chrome headers, normal navigation metadata and even `Sec-Fetch-User: ?1`. An AI agent was driving.
 
-The original question was simple: when an assistant says it fetched an article, what reaches my server? Maintaining the answer has become a larger engineering task. I have corrected claims, recovered signing inputs, tested log transformations, improved the analytics and made a fresh installation possible outside this blog. For this follow-up, I ran a new experiment against a protocol change published on October 29.
+Browser describes how those requests arrived. Calling them two human readers would add something the server never established.
 
-Three lessons now shape the reference:
+I also pulled a fresh day of production data: **628 stored events, including 72 recorded successful signature verifications. All 72 recorded the requested path as unsigned.** There were 51 requests for the public prompts behind articles, which disappear if I measure only article pages.
 
-- Record the signed fields and verification profile alongside a successful result.
-- Separate bad cryptography, unavailable evidence and a format the implementation does not support.
-- Count technical reuse, agent access and supporting-material access as outcomes in their own right.
+These are three different questions:
 
-## The experiment became a source
+- What reached the site?
+- What does the request prove about its sender?
+- Did anyone use the work?
 
-The September study asked ten assistants to fetch assigned URLs and recorded what arrived at a Cloudflare Worker. Its published files contain 37 requests for the assigned probes, with attributed side requests kept separately. That gave another writer an inspectable example of a real signing choice.
+The last one now has a particularly good answer: Arcjet uses my original fetcher experiment as technical evidence in its Web Bot Auth guide. That is why I want to get the first two right.
 
-Arcjet's passage uses that example correctly. It explains that the captured DuckAssistBot signature covers `@authority` and `signature-agent`, leaving the path unsigned. Its SeatGeek comparison makes the consequences easier to understand. This is demonstrated technical reuse of the original experiment.
+## A real browser is an AI client too
 
-The capture also exposed a mistake in my explanation. I initially treated successful signing as a broader identity guarantee. The October 29 replay made the covered boundary explicit: both saved proofs still verified after changing the unsigned method, path, query or User-Agent. Changing signed components or the signature failed. Node, local workerd and a pinned independent RFC implementation agreed across the [20 recorded contexts](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/96-fetcher-reference-coverage-correction.md).
+The browser trial ran on November 1 UTC, still October 31 where I live. Codex opened the original fetcher study and this follow-up through its in-app browser. I watched the production logs with Wrangler, followed each request through its acknowledged database insert, then read back the exact two saved rows. Both classifications matched the logs.
 
-Those tests use saved proofs, a later directory capture and an explicit historical clock. They explain the September evidence. They do not turn the September trial into a current vendor survey.
-
-Keeping the original URL matters here. I have strengthened its wording and linked this follow-up while preserving its publication date, captures and frozen research accounting. A reader following Arcjet's citation should find both the original observation and the subsequent correction.
-
-## A new protocol can change the meaning of a URL
-
-For implementers, the next problem is deciding which discovery model a verifier actually supports.
-
-Our earlier profile reads a `Signature-Agent` origin and appends `/.well-known/http-message-signatures-directory` to find keys. The [October 29 Web Bot Auth draft](https://datatracker.ietf.org/doc/html/draft-ietf-webbotauth-httpsig-protocol-01#section-4.1) instead identifies the signer by a full URL. A directory can live at a particular path. That draft remains work in progress; publication of a new profile does not establish that existing clients have adopted it.
-
-Consider these two synthetic assertions:
+The received headers included:
 
 ```text
-Signature-Agent: "https://keys.example"
+User-Agent: … Chrome/156.0.0.0 …
+Sec-Fetch-Mode: navigate
+Sec-Fetch-Dest: document
+Sec-Fetch-Site: none
+Sec-Fetch-User: ?1
 ```
 
-```text
-Signature-Agent: proof="https://keys.example/tenant-a/jwks.json"
-```
+Neither request carried a bot declaration or a signature. I supplied no replacement headers. This was the browser's actual request, recorded by the production Worker.
 
-The first fits our origin-discovery profile. The second names a particular resource. Dropping its path and fetching the host's well-known directory would change the assertion we were trying to verify. Two tenants on one host can have different key sets and identities.
+The [Fetch Metadata draft](https://www.w3.org/TR/2026/WD-fetch-metadata-20260921/#sec-fetch-user-header) defines `Sec-Fetch-User` in terms of browser user activation. In this trial, its presence did not establish that a person operated the navigation. The agent produced the request while doing useful browser work.
 
-I froze **20 signed synthetic cases** before changing the implementation. They include the older forms, explicit directory paths, different keys at the root and well-known resources, unsafe locations, malformed input and two damaged signatures. The signer constructs its canonical bytes independently of the verifier. A separate WebCrypto check establishes which supplied bases match their signatures; it is a mathematical control, not a complete protocol-conformance test.
+That does not make browser signals useless. They tell me how a request arrived. They cannot settle who was operating the browser. This is also why I keep the category named Browser rather than presenting it as a verified human count.
 
-The same frozen inputs ran through the normal verifier, an explicitly selected candidate and the exhaustive audit, in Node 24.14.1 and local workerd. All key responses came from an exact in-memory map. No vendor or production endpoint received these requests.
+These two test visits stay separate from the audience analysis below. [Live trial method and evidence](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/fetcher-study-v2/13-live-browser-findings.md).
 
-| Condition | Before | Hardened result |
+## Ask the assistant. Check the server.
+
+For the assistant trials, I gave each product a different URL and asked for the article's H1 and one sentence from its “Maintaining this reference” section. I did not supply the answer or open those assigned URLs myself.
+
+| Live interface | What it returned | What I could match at the Worker |
 | --- | --- | --- |
-| Three supported origin-form controls | Verified with the expected well-known lookup | Preserved |
-| Explicit well-known or tenant directory path | Invalid before any key lookup | Unsupported discovery location; no lookup |
-| Damaged proof naming an explicit directory | Rejected before cryptography | Still unsupported; no claim that its signature was checked |
-| Origin-form proof signed by a different root-resource key | Key unavailable from the selected well-known resource | Preserved |
-| Damaged proof under the supported origin profile | Signature-invalid | Preserved |
-| IP literal or local hostname with a directory path | Rejected before lookup | Explicit local-policy rejection; no lookup |
+| Gemini, signed out, Flash-Lite | “I cannot access the page directly.” | No assigned-URL match in the captured stream |
+| Perplexity, signed out, Search enabled | Said it could not access the page or provide the requested text | No assigned-URL match in the captured stream |
+| Codex driving its browser | Rendered the two article pages | Two HTTP 200 requests, two stored receipts and two exact database readbacks |
 
-Five explicit-path cases now retain an unsupported result. Their exhaustive audits remain partial because that profile was not assessed. The three supported positives and the distinct unavailable and cryptographic-negative controls keep their results. Node and workerd agree exactly across all three API paths. [Result, reproduction and final receipts](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/fetcher-study-v2/06-discovery-profile-results.md).
+The first two rows establish failed tasks on those interfaces. A missing log match does not reveal their internal retrieval path or prove they never made a request anywhere. The research record keeps the observation window and access failures explicit. This is a small contemporary recheck, alongside the [September ten-assistant study](/which-ai-fetchers-send-which-headers).
 
-I kept the narrower fetch policy. Supporting direct URL identities properly also requires deliberate cache keys, identity storage, publisher mappings and query handling. Silently broadening a resolver would conceal those decisions. Query-bearing forms and other excluded inputs retain their existing local-profile rejection rules; this repair does not implement the whole new draft.
+Other interfaces were unavailable behind sign-in, challenge or agreement screens. Claude Code's installed fetch tool stopped on an expired login; Codex's web-open tool reported the URL inaccessible. Those are access limits, not additional successful vendor tests. A third browser page rendered, but I did not obtain the same complete request-to-row chain for it, so it is outside the two accepted controls.
 
-The verifier profile now identifies these semantics as `2026-10-31.3`. A separate local collector/D1 test checks that unsupported discovery survives storage and reporting while the event remains counted. The useful improvement is a result that says what the implementation established.
+This is the useful habit: compare the answer with what your server actually recorded. A confident answer, a failed tool and a delivered page are different events. Keep all three.
 
-## A valid request can fail replay from its trace
+## A signed request can leave the page unsigned
 
-The next boundary is the evidence saved after verification. A log entry may contain a transformed version of the signed request.
+The complete UTC day before these trials contained 72 recorded successful verifications: **63 Exa-origin results carrying an ExaSearchBot declaration and nine Ahrefs-origin results carrying AhrefsBot**.
 
-In the [October 29 native tracing experiment](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/74-native-trace-redaction-and-covered-urls.md), twelve synthetic requests verified inside a local producer Worker. Only seven verified when reconstructed from the default Tail Worker views. All twelve verified from the unredacted synthetic views. The thirteenth request, an intentionally invalid proof, failed throughout.
+Every one recorded the destination host as covered. None recorded coverage of the method, path, query, User-Agent, full target URL or body digest. Those are actual stored production outcomes under their recorded verifier versions, freshly retrieved through Wrangler. I did not replay all 72 original requests.
 
-The five lost replays involved redacted covered headers or URL components. This exercised actual local workerd tracing through Miniflare, rather than an imitation that replaced strings in JavaScript. It demonstrates a mechanism under those recorded runtime versions; it does not establish that every historical production export followed that path.
+One of them requested the original fetcher article at **23:44:24 UTC on October 31**. I used its exact stored reference to recover the Cloudflare invocation, including the incoming request, verification attempt and acknowledged insert. Its signature's component list was:
 
-The operator lesson is to compare representations before judging the original request. Preserve the verification time, source profile, covered components, key provenance and capture surface. If a retained value changed, a failed replay describes the retained input. Enabling unrestricted production capture would introduce a different retention and privacy decision. Synthetic fixtures let us test the mechanism without collecting readers' credentials.
+```text
+("@authority" "signature-agent")
+```
 
-## The analytics now preserve more of those distinctions
+That is the host and the signing-origin header. `/which-ai-fetchers-send-which-headers` was present in the received request, but absent from that signed list. The proof had a five-minute validity window.
 
-Our old grouping could turn a signed SEO crawler into an AI assistant. The repair keeps the client's declaration, signing evidence, documented role and known trigger separate. A signed crawler is useful access to the publication; the signature alone does not establish an assistant conversation.
+I replayed that unchanged retained request using the time recorded in the Worker's attempt log. The current verifier in Node and local workerd, plus a pinned independent Python RFC implementation, all verified it. The logged receipt also matched the exact saved row. The key came from Exa's public directory captured later, at 00:37 UTC; this does not reconstruct the directory response used by the original Worker. [Real request, three verifiers and exact joins](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/fetcher-study-v2/12-real-proof-replay.md).
 
-The later [52-proof historical recovery](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/75-frozen-signed-cohort-and-export-boundaries.md) recovered complete retained chains, replayed the selected profiles and matched exact storage projections. That is a concrete improvement over having only a stored verified flag. The selected requests still left the resource and User-Agent unsigned.
+A signature checks the bytes it covers. It cannot authenticate the missing path just because the server received a path alongside it. [RFC 9421's insufficient-coverage section](https://www.rfc-editor.org/rfc/rfc9421.html#section-7.2.1) describes this explicitly.
 
-Reports needed hardening too. In local tests, missing counts could become plausible zeroes and chart rows could disappear beside a nonzero headline. The [report-integrity repair](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/discovery-experiment-02/06-public-report-integrity.md) validates returned fields and complete partitions. A failed report now stays a failure; a valid empty result remains zero. Separate [coverage checks](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/discovery-experiment-02/12-signature-coverage-producer-invariants.md) withhold impossible detailed binding claims while preserving the event and its original verified outcome.
+For the analytics, I can record the delivered resource and the verified proof together while keeping their relationship clear. The signature supports the covered fields under the selected key and verification rules. It does not independently prove that the signer chose that article, that the unsigned User-Agent is authentic, or that someone asked an assistant a question.
 
-These changes make the evidence more useful. They also keep future comparisons from depending on a label whose meaning quietly changed.
+The roles matter too. Exa search access and an Ahrefs SEO crawl are both useful observations. A successful signature does not turn the crawler into an assistant conversation.
 
-## Growth includes people using the evidence
+Cloudflare's own verified-bot and signed-agent booleans were unavailable in all 628 saved events. My local verifier's result remains a separate result. [Complete-day selection, counts and limits](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/fetcher-study-v2/11-live-day-findings.md).
 
-The Arcjet reference is the clearest outcome here: another technical publication used the original experiment as a source. The study also appears in an attributed Web Pulse reproduction and a Daily Artifact source link. The [captured reference ledger](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/backlink-value-trials/reference-results.json) distinguishes those pages, repeated anchors and link qualifiers. Web Pulse still carries older wording; a correction sheet is prepared.
+## Arcjet used the experiment to teach exactly this
 
-Two agent-operated search runs each returned the canonical study for three of four sampled questions: headers, signature coverage and the late Codex fetch. Those are [observed discovery results](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/discovery-experiment-02/01-repeat-and-decision.md) under their recorded method. They are separate from citations inside generated answers.
+Arcjet's [Web Bot Auth guide](https://arcjet.com/learn/web-bot-auth#signature-base) links directly to my original article. Its signature comparison puts my DuckAssistBot capture beside SeatGeek's published ChatGPT example.
 
-The retained access data gives context. Across four complete UTC weeks, the fetcher article recorded:
+The difference is practical. My captured DuckAssistBot proof covers the host and signing-origin header. SeatGeek's example additionally covers the method and path. Arcjet explains why the first can remain valid across paths on the same host during its validity window.
 
-| UTC week | Browser-selected article events | Outside fixed unexplained source R1 |
-| --- | ---: | ---: |
-| October 2–8 | 11 | 11 |
-| October 9–15 | 20 | 20 |
-| October 16–22 | 14 | 14 |
-| October 23–29 | 22 | 18 |
+That is an earned backlink **and someone using my hands-on research to explain a technical fact**. The inspectable request made the article useful as a source. I want more of that: work another engineer can check and use, with AI agents making the investigation possible at a scale I could not manage alone.
 
-These are [dated delivery observations](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/126-retained-windows-and-resource-trends.md). Measurement stamps are missing for much of the historical data, so I do not present the sequence as a normalized readership growth rate. It does show continuing recorded access outside the concentrated source.
+It also gives me a reason to maintain the original URL. I have corrected broad identity claims, dated the key-directory observations, preserved the September captures and linked later findings. Someone arriving through Arcjet should find the original evidence and the corrections together.
 
-Supporting work receives access too. A separate retained 397-event selection from October 29–30 contains **243 article events, 68 prompt/evidence-resource events and 86 site events**. Keeping those [resource categories distinct](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/124-retained-agent-reach-delta.md) recognizes access to the research process without inflating canonical article views. People and agents are both part of the audience I want this publication to serve.
+The fresh October 31 records show why that distinction still matters on this site. The original DuckAssistBot example was one observed signing choice. It was never a promise about every bot or every later version of the protocol.
 
-## Give the next operator something they can run
+## The research gets traffic too
 
-The analytics have also taken a step beyond this site's history. A fresh installation originally failed because the migration chain expected a legacy table and included this blog's historical backfills.
+For the traffic analysis, I selected **October 31, 00:00:00 through November 1, 00:00:00 UTC**, ending before the new browser controls. The preflight counted 628 observations; the export returned 628 rows. Current owner and referrer rules excluded none. That does not establish that every row was organic or that no other unmarked experiment occurred.
 
-The [minimal Worker example](https://github.com/gkoreli/blog/tree/main/packages/analytics/examples/minimal-worker) now has a separate empty-install schema and runs the real collector, owner endpoint and report without the blog router, article catalogue or newsletter. The [accepted October 31 local test](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/discovery-experiment-02/14-fresh-install-portability.md) applied the migration and exercised 22 requests. Six events were stored; matching owner marks left three public. HTML and negotiated Markdown collected; excluded methods and representations did not add observations.
+| Requested resource | Stored events |
+| --- | ---: |
+| Canonical articles | 447 |
+| Public prompt pages | 51 |
+| Hubs and other site pages | 130 |
+| **Total** | **628** |
 
-That is a runnable portability result. Independent operator adoption is the next test. The example still needs a separate database per site. It is a workspace package in this repository, with its deployment and retention decisions documented.
+The requests covered 39 articles and the public prompt pages for 20 articles. Counting them separately makes the research process visible without adding prompt views to article views.
 
-Working with agents has made this much investigation practical for one publication. The part I want to repeat is the connection between the work and the article: ask a consequential question, run controls that could change the answer, expose the evidence, and maintain the reference when someone else starts using it. Arcjet's citation is a concrete reason to keep doing that.
+The original fetcher study received **18 article requests and one prompt-page request** that day. The first version of this follow-up received **eight article requests and three prompt-page requests** after being published partway through the day. The original's named declarations included ExaSearchBot, Meta-WebIndexer, OAI-SearchBot and AhrefsBot. The follow-up had a ClaudeBot declaration and seven unnamed requests classified as Cloud browser.
+
+That is observed access to the work and its supporting material. Arcjet's citation establishes something further: actual use of a published observation in another technical explanation. Both matter to a publication whose audience includes agents as well as people.
+
+I am not turning this into a percentage growth claim. Classification changed within the day, the articles had different publication exposure, and the earlier 397-event capture covered a different partial-day window. Comparing those totals would produce a bigger number with a weaker meaning. The complete [resource and method breakdown](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/fetcher-study-v2/live-day-findings.json) keeps those conditions visible.
+
+## What I changed in the analytics
+
+The September study exposed cases where my labels hid useful distinctions. A signed request could be grouped as an assistant even when its declared role was crawling. A successful verification flag could conceal which fields were protected. A report could make unavailable data look like a plausible zero.
+
+The implementation now keeps the declaration, network check, signature result, signed fields and documented role separately. The fresh Exa record saves which signature was checked, which rules applied and which fields it covered alongside the requested page. Ahrefs retains its crawler role. A missing Cloudflare result stays unavailable.
+
+The reports also [reject missing counters and inconsistent totals](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/discovery-experiment-02/06-public-report-integrity.md). A failed report stays a failure. That matters more than a chart that always looks complete.
+
+I hardened how the verifier reports a newer key-discovery format too. An unsupported location now stays unsupported rather than being called bad cryptography. The generated inputs used for that change are [regression tests](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/fetcher-study-v2/06-discovery-profile-results.md); they are separate from the real requests and traffic findings in this article.
+
+There is a [minimal Worker example](https://github.com/gkoreli/blog/tree/main/packages/analytics/examples/minimal-worker) for trying the collector outside this blog. It has its own empty-install schema instead of depending on this site's history, and uses the real collector, owner endpoint and report. It is ready for another operator to try. I have not yet established independent adoption.
+
+## Run the check on your own site
+
+Start with a question you can answer from both ends: ask an assistant to open a page, then inspect what reached the server.
+
+Give it a unique URL, save the exact prompt and time, and start the log stream before submitting. This site's command is:
+
+```sh
+pnpm exec wrangler tail gkoreli-com --format json --method GET
+```
+
+Wrangler's `--search` filters console messages. It does not search request URLs, so putting the probe label there would miss these invocations. Keep the raw stream private, select the assigned URLs afterward and publish only what the finding needs.
+
+Follow each request into storage. My Worker logs an operation ID before processing and a database-row ID after the insert is acknowledged. Those IDs let me check the exact two rows instead of guessing from nearby traffic. The [extractor and method](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/fetcher-study-v2/08-live-trace-method.md) preserve that join.
+
+Finally, read the signed-component list before interpreting a verified flag. Keep an assistant's answer, a delivered resource, a signing result and an external citation as their own observations.
+
+I want this blog to become a source people and agents can use. Arcjet already using the experiment is a concrete step toward that. The next step is making the evidence behind it easier to inspect every time the system changes.
 
 ---
 
@@ -128,9 +159,9 @@ Working with agents has made this much investigation practical for one publicati
 
 | Term | Meaning and primary basis | Date |
 | --- | --- | --- |
-| Signature coverage | The selected message components protected by a proof; [RFC 9421 §7.2](https://www.rfc-editor.org/rfc/rfc9421.html#section-7.2). | February 2024 |
-| Discovery profile | The implemented rules for interpreting a signing identifier and obtaining keys; compare our recorded origin-only subset with [Web Bot Auth draft `-01`](https://datatracker.ietf.org/doc/html/draft-ietf-webbotauth-httpsig-protocol-01). It remains work in progress. | October 29, 2026 |
-| Technical reuse | An external explanation uses the published capture as evidence; [Arcjet's signature-base comparison](https://arcjet.com/learn/web-bot-auth#signature-base). | Retrieved October 31, 2026 |
-| Local verification | Our implementation's result under its recorded policy; distinct from the provider-managed verifier and from human purpose. [New experiment and acceptance](https://github.com/gkoreli/blog/tree/main/packages/blog/drafts/research/fetcher-study-v2). | October 31, 2026 |
+| Browser signals | Request and navigation characteristics; they do not identify the operator. [Fetch Metadata working draft](https://www.w3.org/TR/2026/WD-fetch-metadata-20260921/). | September 21, 2026 |
+| Signature coverage | The message components protected by the proof. [RFC 9421 §7.2](https://www.rfc-editor.org/rfc/rfc9421.html#section-7.2). | February 2024 |
+| Technical reuse | Arcjet uses the published DuckAssistBot capture to teach a signature distinction. [Direct passage](https://arcjet.com/learn/web-bot-auth#signature-base). | Rechecked November 1, 2026 UTC |
+| Live recheck | Actual browser actions, a production log stream, exact database readbacks and a separately selected complete day. [Research record](https://github.com/gkoreli/blog/tree/main/packages/blog/drafts/research/fetcher-study-v2). | November 1, 2026 UTC |
 
-The September captures and October experiments retain their own dates and methods. This follow-up adds the local discovery-profile experiment; it does not report new vendor fetch trials. The [evidence inventory](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/fetcher-study-v2/02-growth-and-improvements.md) links the completed improvements and their original receipts.
+The September vendor captures retain their original dates. This revision replaces the earlier follow-up's emphasis on generated cases with the live observations and real production selection above.
