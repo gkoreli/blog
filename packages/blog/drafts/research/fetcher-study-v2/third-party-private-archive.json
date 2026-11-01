@@ -21,5 +21,8 @@
   "limits": [
     "Raw capture and personal identifiers are not committed; public receipts minimize fields",
     "This archive is private local preservation, not independent external corroboration"
-  ]
+  ],
+  "filesAtFinalAcceptance": 121,
+  "finalManifestSha256": "ef432238c3e0c22eeea69c9fa86306a3e16a70fba0f70dfefbd05a7a48709fa2",
+  "finalIncludes": "Completed source-linked build, current allocation, served DOM equality and owned-resource cleanup"
 }

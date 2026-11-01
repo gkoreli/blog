@@ -1,0 +1,30 @@
+{
+  "sourceCommit": "9d03741b628ef022a1e6fe4bc32002c5e2d5406b",
+  "nativeBuild": "8c0a06e1-81c8-4395-8ae4-1893c806f383",
+  "worker": "8e41ef10-9d85-4e03-8ff9-0db49aee8a47",
+  "latestDeployment": {
+    "id": "19afb15d-7232-4926-a13e-0dff0edafbe0",
+    "createdOn": "2026-11-01T08:22:57.500082Z",
+    "versions": [
+      {
+        "version_id": "8e41ef10-9d85-4e03-8ff9-0db49aee8a47",
+        "percentage": 100
+      }
+    ]
+  },
+  "buildLogSha256": "6739ed966e536e553d34ee8632c1a9f70b386a5f9f9fea11283a6a6a0db23169",
+  "served": {
+    "checkedAt": "2026-11-01T08:24:08.048Z",
+    "articleHtmlMatches": true,
+    "articleTextMatches": true,
+    "htmlCharacters": 24938,
+    "textCharacters": 17006,
+    "prompts": 1
+  },
+  "cleanup": {
+    "tailStopped": true,
+    "previewStopped": true,
+    "temporaryCheckoutRemoved": true,
+    "sharedDependencyStorePreserved": true
+  }
+}
