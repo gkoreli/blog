@@ -1,0 +1,64 @@
+{
+  "ready": {
+    "path": "/health",
+    "expected_json": {
+      "status": "ok"
+    }
+  },
+  "cases": [
+    {
+      "name": "echo",
+      "method": "POST",
+      "path": "/echo",
+      "json": {
+        "name": "Jane Doe",
+        "email": "jane@example.com",
+        "age": 30,
+        "tags": [
+          "a",
+          "b"
+        ]
+      },
+      "expected_json": {
+        "name": "Jane Doe",
+        "email": "jane@example.com",
+        "age": 30,
+        "tags": [
+          "a",
+          "b"
+        ]
+      }
+    },
+    {
+      "name": "user",
+      "path": "/users/4242",
+      "expected_json": {
+        "id": 4242,
+        "name": "User 4242",
+        "email": "user4242@example.com",
+        "age": 35,
+        "createdAt": "2023-11-14T23:24:01.000Z"
+      }
+    },
+    {
+      "name": "invalid",
+      "method": "POST",
+      "path": "/echo",
+      "json": {
+        "name": "x",
+        "email": "bad",
+        "age": -1,
+        "tags": []
+      },
+      "expected_status": 422,
+      "expected_json": {
+        "type": "validation",
+        "title": "Validation Error",
+        "status": 422,
+        "on": "body",
+        "property": "/email"
+      },
+      "measure": false
+    }
+  ]
+}

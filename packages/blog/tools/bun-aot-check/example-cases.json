@@ -1,0 +1,7 @@
+{
+  "ready": {"path":"/health","expected_json":{"status":"ok"}},
+  "cases": [
+    {"name":"echo","method":"POST","path":"/echo","json":{"name":"Jane","items":[1,2,3]},"expected_json":{"name":"Jane","items":[1,2,3]}},
+    {"name":"missing","path":"/missing","expected_status":404,"expected_text":"missing","measure":false}
+  ]
+}

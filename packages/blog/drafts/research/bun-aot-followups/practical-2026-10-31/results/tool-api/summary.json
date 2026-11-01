@@ -1,0 +1,323 @@
+{
+  "complete": true,
+  "memory_metric": "physical_footprint_bytes",
+  "groups": [
+    {
+      "mode": "jit",
+      "file_bytes": 122528738,
+      "accepted_runs": 6,
+      "expected_runs": 6,
+      "build_status": "passed",
+      "errors": [],
+      "routes": [
+        {
+          "name": "echo",
+          "rps": {
+            "n": 6,
+            "median": 189258.16350000002,
+            "min": 186237.982,
+            "max": 195877.392
+          },
+          "end_memory_bytes": {
+            "n": 6,
+            "median": 45130424.0,
+            "min": 37978784,
+            "max": 53134032
+          },
+          "sampled_peak_memory_bytes": {
+            "n": 6,
+            "median": 45302456.0,
+            "min": 38798008,
+            "max": 53166800
+          },
+          "cpu_percent": {
+            "n": 6,
+            "median": 101.62141515299751,
+            "min": 101.52166641584297,
+            "max": 101.7418787363962
+          },
+          "cpu_seconds_per_million": {
+            "n": 6,
+            "median": 5.373451416208665,
+            "min": 5.188227515253305,
+            "max": 5.456308217602846
+          },
+          "p99_upper_us": {
+            "n": 6,
+            "median": 82.997731,
+            "min": 82.997731,
+            "max": 82.997731
+          },
+          "checked_requests": 2280438
+        },
+        {
+          "name": "user",
+          "rps": {
+            "n": 6,
+            "median": 52632.39,
+            "min": 52242.627,
+            "max": 52974.918
+          },
+          "end_memory_bytes": {
+            "n": 6,
+            "median": 51749584.0,
+            "min": 48579280,
+            "max": 53609168
+          },
+          "sampled_peak_memory_bytes": {
+            "n": 6,
+            "median": 52265680.0,
+            "min": 48579280,
+            "max": 55526096
+          },
+          "cpu_percent": {
+            "n": 6,
+            "median": 104.77227767546786,
+            "min": 104.57704433252886,
+            "max": 104.87548496120307
+          },
+          "cpu_seconds_per_million": {
+            "n": 6,
+            "median": 19.90908832747679,
+            "min": 19.780651006521392,
+            "max": 20.05878217581737
+          },
+          "p99_upper_us": {
+            "n": 6,
+            "median": 430.538965,
+            "min": 430.538965,
+            "max": 430.538965
+          },
+          "checked_requests": 631816
+        }
+      ],
+      "first_checked_launch_ms": 39.62845797650516,
+      "startup_ms": {
+        "n": 6,
+        "median": 33.83264600415714,
+        "min": 33.16583298146725,
+        "max": 34.28791702026501
+      },
+      "ready_memory_bytes": {
+        "n": 6,
+        "median": 18244232.0,
+        "min": 18154120,
+        "max": 18317984
+      }
+    },
+    {
+      "mode": "bytecode",
+      "file_bytes": 126788834,
+      "accepted_runs": 6,
+      "expected_runs": 6,
+      "build_status": "passed",
+      "errors": [],
+      "routes": [
+        {
+          "name": "echo",
+          "rps": {
+            "n": 6,
+            "median": 189393.8765,
+            "min": 186092.219,
+            "max": 195135.426
+          },
+          "end_memory_bytes": {
+            "n": 6,
+            "median": 40862392.0,
+            "min": 34456272,
+            "max": 48857832
+          },
+          "sampled_peak_memory_bytes": {
+            "n": 6,
+            "median": 41042616.0,
+            "min": 34669264,
+            "max": 48890600
+          },
+          "cpu_percent": {
+            "n": 6,
+            "median": 102.0218071913514,
+            "min": 101.51455760218668,
+            "max": 102.29050911053857
+          },
+          "cpu_seconds_per_million": {
+            "n": 6,
+            "median": 5.398836383920251,
+            "min": 5.238397913682766,
+            "max": 5.455067288911099
+          },
+          "p99_upper_us": {
+            "n": 6,
+            "median": 82.997731,
+            "min": 82.997731,
+            "max": 90.509668
+          },
+          "checked_requests": 2280726
+        },
+        {
+          "name": "user",
+          "rps": {
+            "n": 6,
+            "median": 52488.027,
+            "min": 51577.213,
+            "max": 53044.427
+          },
+          "end_memory_bytes": {
+            "n": 6,
+            "median": 48931572.0,
+            "min": 45236920,
+            "max": 49660672
+          },
+          "sampled_peak_memory_bytes": {
+            "n": 6,
+            "median": 48980712.0,
+            "min": 45236920,
+            "max": 49660672
+          },
+          "cpu_percent": {
+            "n": 6,
+            "median": 105.33758687894397,
+            "min": 104.98512697134188,
+            "max": 105.4432449574802
+          },
+          "cpu_seconds_per_million": {
+            "n": 6,
+            "median": 20.05875072094952,
+            "min": 19.791923907101246,
+            "max": 20.428078401912792
+          },
+          "p99_upper_us": {
+            "n": 6,
+            "median": 430.538965,
+            "min": 394.805971,
+            "max": 430.538965
+          },
+          "checked_requests": 629282
+        }
+      ],
+      "first_checked_launch_ms": 23.68783298879862,
+      "startup_ms": {
+        "n": 6,
+        "median": 16.95922954240814,
+        "min": 16.810417000669986,
+        "max": 17.297500045970082
+      },
+      "ready_memory_bytes": {
+        "n": 6,
+        "median": 14934652.0,
+        "min": 14811784,
+        "max": 15024776
+      }
+    },
+    {
+      "mode": "aot",
+      "file_bytes": 64720226,
+      "accepted_runs": 6,
+      "expected_runs": 6,
+      "build_status": "passed",
+      "errors": [],
+      "routes": [
+        {
+          "name": "echo",
+          "rps": {
+            "n": 6,
+            "median": 159122.28100000002,
+            "min": 153063.184,
+            "max": 162350.152
+          },
+          "end_memory_bytes": {
+            "n": 6,
+            "median": 20792064.0,
+            "min": 18187008,
+            "max": 23577368
+          },
+          "sampled_peak_memory_bytes": {
+            "n": 6,
+            "median": 21562136.0,
+            "min": 18973440,
+            "max": 24478488
+          },
+          "cpu_percent": {
+            "n": 6,
+            "median": 99.86829276060507,
+            "min": 99.26264885267693,
+            "max": 99.95822727661339
+          },
+          "cpu_seconds_per_million": {
+            "n": 6,
+            "median": 6.275048659814624,
+            "min": 6.156953110083209,
+            "max": 6.485076719213774
+          },
+          "p99_upper_us": {
+            "n": 6,
+            "median": 98.701493,
+            "min": 98.701493,
+            "max": 117.376518
+          },
+          "checked_requests": 1905940
+        },
+        {
+          "name": "user",
+          "rps": {
+            "n": 6,
+            "median": 41644.117,
+            "min": 41431.17,
+            "max": 42038.801
+          },
+          "end_memory_bytes": {
+            "n": 6,
+            "median": 21816076.0,
+            "min": 20710192,
+            "max": 23151360
+          },
+          "sampled_peak_memory_bytes": {
+            "n": 6,
+            "median": 21824268.0,
+            "min": 20710192,
+            "max": 23151360
+          },
+          "cpu_percent": {
+            "n": 6,
+            "median": 99.72875363019719,
+            "min": 99.65305189012318,
+            "max": 99.7789289266269
+          },
+          "cpu_seconds_per_million": {
+            "n": 6,
+            "median": 23.94372754542794,
+            "min": 23.706852688747492,
+            "max": 24.068991766319538
+          },
+          "p99_upper_us": {
+            "n": 6,
+            "median": 304.437021,
+            "min": 279.16998,
+            "max": 304.437021
+          },
+          "checked_requests": 500471
+        }
+      ],
+      "first_checked_launch_ms": 20.649458980187774,
+      "startup_ms": {
+        "n": 6,
+        "median": 13.274624972837046,
+        "min": 12.225000013131648,
+        "max": 13.629916007630527
+      },
+      "ready_memory_bytes": {
+        "n": 6,
+        "median": 8553228.0,
+        "min": 8536808,
+        "max": 8684240
+      }
+    }
+  ],
+  "limits": [
+    "One local client and one server process; closed-loop HTTP/1.1 with fixed Content-Length responses under 120 KB.",
+    "macOS physical footprint and Linux RSS are different metrics. Server memory excludes external databases/services.",
+    "Readiness is the first expected ready response. One checked launch is recorded separately before repeated fresh-process starts; warm request speed excludes startup. Filesystem caches are not flushed.",
+    "Every measured response must match the checked reference bytes. Selected checks do not certify the whole application.",
+    "No CPU/RAM limit, independent arrival rate, remote load generator, production soak or cloud-cost claim.",
+    "Build flags are ESM JIT / ESM bytecode / native AOT; framework build plugins require a separately prepared entry or --binary."
+  ]
+}

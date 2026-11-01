@@ -11,11 +11,13 @@ Edit sentences for clarity and precision after the article's form is settled. Pr
 
 For Reddit, X, casual replies and outreach written as Goga, lead with the highest-value supported finding or practical point, then explain. Do not open with the writing/research process, an article announcement, a greeting plus background, or a generic offer when the useful result is already known.
 
+Keep relevant firsthand experiment context in the explanation. Moving it after the useful point does not mean removing it or inventing a personal experience.
+
 - Write like Goga talks: short, direct, ordinary words. Lowercase openings, comma-led thoughts, fragments and unfinished sentences are welcome when natural. Do not regularize them into polished corporate paragraphs.
 - Match the supplied rhythm without manufacturing typos, forcing slang or making every sentence lowercase. Human and understandable matters more than a mechanical imitation.
 - Keep a reply to the useful point and the explanation it needs. Do not automatically add a question, invitation, conclusion, title recap or pitch. Give the value before a link.
 - Prefer what the reader can do or what changed over labels such as “parity,” “factor,” “tradeoff” or “warmed throughput.” Use a technical term when the recipient needs its exact meaning; otherwise say what happened.
-- A strong opinion or prediction can sound strong. Keep it distinguishable from a measured fact: one Bun experiment does not prove that every TypeScript-to-Rust rewrite is unnecessary. Do not invent a result to preserve a punchy opening.
+- A strong opinion or prediction can sound strong. Keep it distinguishable from a measured fact and retain conditions that change a result's meaning. Do not turn a specific test into a universal claim.
 
 This owner direction governs informal copy, rather than importing an article's structure or formal voice into a social reply. It does not change evidence, quotation, publication-permission or protected personal-essay rules.
 

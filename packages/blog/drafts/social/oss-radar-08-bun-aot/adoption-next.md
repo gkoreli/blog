@@ -93,3 +93,33 @@ Item #1 is complete. Item #2's old ask is superseded by the two individually sen
 The [application trials](../../research/bun-aot-followups/validation-2026-10-31/README.md) and the [updated live article](https://gkoreli.com/oss-radar-08-bun-aot#sources-and-evidence) are published. Mert received the corrected matching-output validator result in the existing conversation; ICE received the completed framework results. Both were read back as sent; neither thread had an incoming reply at that check. Davron received the [API findings in his invited comparison](https://www.reddit.com/r/bun/comments/1w9jkzz/comment/19ry53pmjozc5/), with the article/code and test limits. The posted text and permanent link were verified in the browser. [Publication and delivery receipt](../../research/bun-aot-followups/validation-2026-10-31/00-plan.md#publication-and-result-delivery-complete).
 
 These are our measured findings and delivered messages. No supplied case, independent rerun, endorsement or adoption lift is established. Further work depends on a useful reader/author response; this batch needs no more broadcast posts or generic follow-ups.
+
+## Next participants — checked October 31 local / November 1 UTC
+
+Goga asked who we can help by doing experiments for them, then adding useful findings to the article. These are **new prepared contacts, not sent messages or accepted trials**. Existing ICE, Mert and Davron conversations have already received results; do not treat them as new prospects or send another generic follow-up. Topic relevance alone still does not authorize GitHub issue outreach.
+
+| Priority / person | Verified reason and route | Specific work we can offer | Useful article evidence |
+| --- | --- | --- | --- |
+| 1. Evan Tahler, Keryx | His [Bun announcement](https://www.reddit.com/r/bun/comments/1ruorfa/keryx_a_fullstack_api_framework_built/) explicitly requests feedback. The [current public repo](https://github.com/actionhero/keryx) uses Zod actions across HTTP, CLI and MCP; last pushed October 22. Reply in the invited Reddit discussion after a fresh archive/rules check. | Build the example under ordinary Bun and native AOT. Check one action's successful and rejected inputs through HTTP and CLI, then measure startup, app memory and warmed HTTP work. Add one MCP smoke case only if the setup fits the bounded trial. | Whether a real Zod-backed framework keeps the same behavior, what packaging changes it needs, and whether memory savings outweigh any request-speed loss. |
+| 2. ramonmalcolm10, next-bun-compile | The author's [announcement](https://www.reddit.com/r/nextjs/comments/1ranq8q/nextbuncompile_compile_your_nextjs_app_into_a/) asks for feedback and includes a native-dependency question. The [current repo](https://github.com/ramonmalcolm10/next-bun-compile) was pushed October 24 and has deployment recipes. Reply in the invited thread after a fresh archive/rules check. | Compare its existing packaged output with native AOT on one small fixture: a rendered page, one API response, static asset and a sharp image. Check complete output before startup, warmed requests, app memory and file size. Record unsupported compilation rather than promising it works. | A concrete answer to “does this work for Next.js and native packages?” Current packaging and bytecode claims must not be relabeled native AOT. |
+| 3. Yoann Gendrey / iiAku, Varsafe | His [own article](https://iiaku.com/2026/10/13/how-bun-quietly-became-my-default-runtime/) identifies Varsafe startup/memory as a reason to watch AOT. His [personal site](https://yoann.gendrey.fr/) publishes a contact address. No public Varsafe source repo was verified. | Offer to compare supplied JIT/AOT test builds or a small runnable fixture: offline help plus one fake-data vault operation, checking output, launch time, peak app memory and executable size. Source/build access is a dependency, not already granted. | A real short-lived CLI result without network latency or actual secrets dominating the comparison. |
+
+Prepared copy for Evan:
+
+```text
+Keryx looks like a useful test for whether Bun AOT's RAM savings survive a real app, especially with Zod in the request path. i'm testing this while updating my article, happy to run your example both ways and send the startup, RAM and request results, including anything that breaks. is there one action you'd want me to use?
+```
+
+Prepared copy for ramonmalcolm10:
+
+```text
+i can test whether native Bun AOT adds anything to next-bun-compile's current output, using a page, an API route and a sharp image. i'm doing these comparisons for an article, i'll handle the setup and send the speed, RAM, file sizes and any failed builds. is there a small example you'd want tested?
+```
+
+Prepared copy for Yoann, using only his published address if sending is later authorized:
+
+```text
+you mentioned watching Bun AOT for Varsafe's startup and RAM, i can run that comparison for you. i'm testing real apps for an article, happy to use a small fixture or test builds with fake secrets and send the timings, peak RAM and file sizes. would that be useful?
+```
+
+Start with Evan and ramonmalcolm10: public code and an explicit feedback invitation make the work concrete. Allow 45 minutes of initial compatibility work per project, retain failures, and ask for one representative case rather than a benchmark run from them. Publish only our reproducible findings; get permission before quoting private feedback. A supplied case, completed local experiment, independent rerun and changed operator decision remain separate outcomes. Do not add proposed results to the article as if measured.

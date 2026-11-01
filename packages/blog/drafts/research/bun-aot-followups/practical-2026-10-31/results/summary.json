@@ -1,0 +1,4183 @@
+{
+  "batches": {
+    "main": {
+      "metadata": {
+        "started_at": "2026-11-01T00:18:25.725574+00:00",
+        "runner_sha256": "a80b9e3aff2557c3343e96f0c282973e2ae6b2141955dc1b325bf890e2a7d43e",
+        "client_sha256": "88e8575a1c04a9d5159289731bf68341861df37a67e9a0f63d312879ead3bf38",
+        "binaries": {
+          "jit": {
+            "name": "api-wired-jit",
+            "project": "sources/api/apps/elysia-api",
+            "source": "wired-entry.ts",
+            "flags": [],
+            "exit": 0,
+            "build_seconds": 0.03908170899376273,
+            "bytes": 122528738,
+            "sha256": "525f1921220556e302af2e17c56b31f87d69e6a593cbe48160c75347ec66e601"
+          },
+          "bytecode": {
+            "name": "api-wired-bytecode",
+            "flags": [
+              "--bytecode",
+              "--format=esm"
+            ],
+            "exit": 0,
+            "seconds": 0.21363625000230968,
+            "bytes": 126788834,
+            "sha256": "ab8fb93021de4c2f18348544a25ffda67f65243c6b6e2f226d1bee2120f01528"
+          },
+          "native": {
+            "name": "api-wired-native",
+            "project": "sources/api/apps/elysia-api",
+            "source": "wired-entry.ts",
+            "flags": [
+              "--aot"
+            ],
+            "exit": 0,
+            "build_seconds": 2.4698053339961916,
+            "bytes": 64720226,
+            "sha256": "3aba92beef1b4836e0c7b352c967ecc4e4213d8e79bc3c7737b2dd07a5ef7036"
+          }
+        },
+        "host": {
+          "machine": "arm64",
+          "system": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+          "cpu_count": 10
+        },
+        "cpu_nanoseconds_per_tick": {
+          "numer": 125,
+          "denom": 3
+        },
+        "total_connections": 32,
+        "per_process_db_pool_limit": 10,
+        "warmup_seconds": 3.0,
+        "measured_seconds": 10.0,
+        "blocks": 4
+      },
+      "observations": 36,
+      "timed_route_windows": 72,
+      "checked_responses": 89366815,
+      "source_sha256": "f94a90109f44079307c8bce76439766d0ce5de452afabacaac0f03db0317344d",
+      "groups": [
+        {
+          "mode": "bytecode",
+          "workers": 1,
+          "all_ready_ms": {
+            "n": 4,
+            "median": 54.090208519482985,
+            "min": 20.454959012567997,
+            "max": 68.29150003613904
+          },
+          "positions": [
+            3,
+            7,
+            8,
+            2
+          ],
+          "routes": [
+            {
+              "name": "echo",
+              "verified_requests": 7554028,
+              "rps": {
+                "n": 4,
+                "median": 189585.40351618163,
+                "min": 179505.52735797456,
+                "max": 196406.08634865322
+              },
+              "end_app_physical_bytes": {
+                "n": 4,
+                "median": 34144952.0,
+                "min": 33145528,
+                "max": 53510888
+              },
+              "sampled_peak_app_physical_bytes": {
+                "n": 4,
+                "median": 43754180.0,
+                "min": 33784504,
+                "max": 54903528
+              },
+              "end_database_process_physical_sum_bytes": {
+                "n": 4,
+                "median": 81278604.0,
+                "min": 74176176,
+                "max": 86824648
+              },
+              "app_cpu_percent": {
+                "n": 4,
+                "median": 101.00298392444313,
+                "min": 99.31616728947746,
+                "max": 102.2874346612843
+              },
+              "database_cpu_percent": {
+                "n": 4,
+                "median": 0.004926808531502272,
+                "min": 0.0008959347280978997,
+                "max": 0.009705713295275734
+              },
+              "foreign_persistent_cpu_percent": {
+                "n": 4,
+                "median": 38.53297752215654,
+                "min": 21.292507345555777,
+                "max": 155.83291782462356
+              },
+              "p99_upper_us": {
+                "n": 4,
+                "median": 453.4029855,
+                "min": 362.038672,
+                "max": 558.339959
+              },
+              "client_launch_span_ms": {
+                "n": 4,
+                "median": 0.0,
+                "min": 0.0,
+                "max": 0.0
+              },
+              "database_pids_added_after_warmup": [
+                [],
+                [],
+                [],
+                []
+              ],
+              "server_cpu_seconds_per_million_requests": {
+                "n": 4,
+                "median": 5.3288982664241775,
+                "min": 5.207956462189629,
+                "max": 5.532763739994401
+              }
+            },
+            {
+              "name": "me",
+              "verified_requests": 1673651,
+              "rps": {
+                "n": 4,
+                "median": 42052.75193960441,
+                "min": 39463.471955181936,
+                "max": 43727.6933591361
+              },
+              "end_app_physical_bytes": {
+                "n": 4,
+                "median": 53215988.0,
+                "min": 51151568,
+                "max": 54379264
+              },
+              "sampled_peak_app_physical_bytes": {
+                "n": 4,
+                "median": 54649588.0,
+                "min": 52036304,
+                "max": 55689984
+              },
+              "end_database_process_physical_sum_bytes": {
+                "n": 4,
+                "median": 86709900.0,
+                "min": 85022384,
+                "max": 86824648
+              },
+              "app_cpu_percent": {
+                "n": 4,
+                "median": 134.61998827223226,
+                "min": 131.37130683657773,
+                "max": 137.57347926624618
+              },
+              "database_cpu_percent": {
+                "n": 4,
+                "median": 38.77036631050768,
+                "min": 38.18718016112584,
+                "max": 39.402039892440406
+              },
+              "foreign_persistent_cpu_percent": {
+                "n": 4,
+                "median": 38.933146087371384,
+                "min": 16.69346937458314,
+                "max": 253.90395448188644
+              },
+              "p99_upper_us": {
+                "n": 4,
+                "median": 1663.089484,
+                "min": 1448.154688,
+                "max": 2048.0
+              },
+              "client_launch_span_ms": {
+                "n": 4,
+                "median": 0.0,
+                "min": 0.0,
+                "max": 0.0
+              },
+              "database_pids_added_after_warmup": [
+                [],
+                [],
+                [],
+                []
+              ],
+              "server_cpu_seconds_per_million_requests": {
+                "n": 4,
+                "median": 31.938689827882015,
+                "min": 31.46140779399303,
+                "max": 33.45015164410581
+              }
+            }
+          ]
+        },
+        {
+          "mode": "bytecode",
+          "workers": 2,
+          "all_ready_ms": {
+            "n": 4,
+            "median": 24.235208024038002,
+            "min": 23.340500018093735,
+            "max": 31.660167034715414
+          },
+          "positions": [
+            1,
+            0,
+            6,
+            4
+          ],
+          "routes": [
+            {
+              "name": "echo",
+              "verified_requests": 8151806,
+              "rps": {
+                "n": 4,
+                "median": 205298.75913914246,
+                "min": 193420.43016311075,
+                "max": 210807.51070810293
+              },
+              "end_app_physical_bytes": {
+                "n": 4,
+                "median": 80692664.0,
+                "min": 65275296,
+                "max": 97486336
+              },
+              "sampled_peak_app_physical_bytes": {
+                "n": 4,
+                "median": 82781624.0,
+                "min": 67241376,
+                "max": 99583488
+              },
+              "end_database_process_physical_sum_bytes": {
+                "n": 4,
+                "median": 132170956.0,
+                "min": 119366848,
+                "max": 142877912
+              },
+              "app_cpu_percent": {
+                "n": 4,
+                "median": 197.96600958309156,
+                "min": 191.44643343113532,
+                "max": 199.47806855515827
+              },
+              "database_cpu_percent": {
+                "n": 4,
+                "median": 0.011168988028784663,
+                "min": 0.008825845072517713,
+                "max": 0.014354443633216257
+              },
+              "foreign_persistent_cpu_percent": {
+                "n": 4,
+                "median": 56.577336024859115,
+                "min": 19.990905221682052,
+                "max": 125.54027056306434
+              },
+              "p99_upper_us": {
+                "n": 4,
+                "median": 367.487993,
+                "min": 304.437021,
+                "max": 512.0
+              },
+              "client_launch_span_ms": {
+                "n": 4,
+                "median": 1.2258955102879554,
+                "min": 1.138332998380065,
+                "max": 1.2673750170506537
+              },
+              "database_pids_added_after_warmup": [
+                [],
+                [],
+                [],
+                []
+              ],
+              "server_cpu_seconds_per_million_requests": {
+                "n": 4,
+                "median": 9.646832166074716,
+                "min": 9.462569330908133,
+                "max": 9.8979426976607
+              }
+            },
+            {
+              "name": "me",
+              "verified_requests": 2660995,
+              "rps": {
+                "n": 4,
+                "median": 66463.04587692331,
+                "min": 63273.74748404767,
+                "max": 69747.56873824124
+              },
+              "end_app_physical_bytes": {
+                "n": 4,
+                "median": 97314304.0,
+                "min": 92145104,
+                "max": 99861992
+              },
+              "sampled_peak_app_physical_bytes": {
+                "n": 4,
+                "median": 99722740.0,
+                "min": 93980112,
+                "max": 101402112
+              },
+              "end_database_process_physical_sum_bytes": {
+                "n": 4,
+                "median": 142779596.0,
+                "min": 141124800,
+                "max": 143320280
+              },
+              "app_cpu_percent": {
+                "n": 4,
+                "median": 266.72216159128226,
+                "min": 258.96926871012965,
+                "max": 277.2367875420443
+              },
+              "database_cpu_percent": {
+                "n": 4,
+                "median": 139.89218294526216,
+                "min": 132.79663286980653,
+                "max": 150.8592772302111
+              },
+              "foreign_persistent_cpu_percent": {
+                "n": 4,
+                "median": 70.3180748591599,
+                "min": 23.485072986230783,
+                "max": 150.58659072363218
+              },
+              "p99_upper_us": {
+                "n": 4,
+                "median": 1282.4173030000002,
+                "min": 1116.679918,
+                "max": 1448.154688
+              },
+              "client_launch_span_ms": {
+                "n": 4,
+                "median": 1.1988744954578578,
+                "min": 1.0497919865883887,
+                "max": 1.696124963928014
+              },
+              "database_pids_added_after_warmup": [
+                [],
+                [],
+                [],
+                []
+              ],
+              "server_cpu_seconds_per_million_requests": {
+                "n": 4,
+                "median": 40.34373452353781,
+                "min": 38.467071453373045,
+                "max": 41.9045595828056
+              }
+            }
+          ]
+        },
+        {
+          "mode": "bytecode",
+          "workers": 4,
+          "all_ready_ms": {
+            "n": 4,
+            "median": 38.60533353872597,
+            "min": 20.07458300795406,
+            "max": 69.78299998445436
+          },
+          "positions": [
+            8,
+            2,
+            4,
+            6
+          ],
+          "routes": [
+            {
+              "name": "echo",
+              "verified_requests": 7823247,
+              "rps": {
+                "n": 4,
+                "median": 195598.44327033946,
+                "min": 192666.97015036555,
+                "max": 197912.98326741823
+              },
+              "end_app_physical_bytes": {
+                "n": 4,
+                "median": 127134564.0,
+                "min": 116771648,
+                "max": 140544856
+              },
+              "sampled_peak_app_physical_bytes": {
+                "n": 4,
+                "median": 135654292.0,
+                "min": 126274320,
+                "max": 146852696
+              },
+              "end_database_process_physical_sum_bytes": {
+                "n": 4,
+                "median": 228868332.0,
+                "min": 211550456,
+                "max": 246268128
+              },
+              "app_cpu_percent": {
+                "n": 4,
+                "median": 347.22281102855374,
+                "min": 346.98621385636847,
+                "max": 349.04317898776253
+              },
+              "database_cpu_percent": {
+                "n": 4,
+                "median": 0.010635162907355993,
+                "min": 0.003361855699149797,
+                "max": 0.01164809808229311
+              },
+              "foreign_persistent_cpu_percent": {
+                "n": 4,
+                "median": 46.76586357922092,
+                "min": 21.58571044101961,
+                "max": 104.22835256518668
+              },
+              "p99_upper_us": {
+                "n": 4,
+                "median": 362.038672,
+                "min": 362.038672,
+                "max": 430.538965
+              },
+              "client_launch_span_ms": {
+                "n": 4,
+                "median": 3.9333754975814372,
+                "min": 3.677957982290536,
+                "max": 4.251167003531009
+              },
+              "database_pids_added_after_warmup": [
+                [],
+                [],
+                [],
+                []
+              ],
+              "server_cpu_seconds_per_million_requests": {
+                "n": 4,
+                "median": 17.77863721618231,
+                "min": 17.544916933442398,
+                "max": 18.05423117287189
+              }
+            },
+            {
+              "name": "me",
+              "verified_requests": 2890866,
+              "rps": {
+                "n": 4,
+                "median": 71561.34660631018,
+                "min": 68603.50569740235,
+                "max": 77156.49918325931
+              },
+              "end_app_physical_bytes": {
+                "n": 4,
+                "median": 172198816.0,
+                "min": 167119800,
+                "max": 179211168
+              },
+              "sampled_peak_app_physical_bytes": {
+                "n": 4,
+                "median": 176106400.0,
+                "min": 171985848,
+                "max": 183077792
+              },
+              "end_database_process_physical_sum_bytes": {
+                "n": 4,
+                "median": 245752044.0,
+                "min": 245383416,
+                "max": 246268128
+              },
+              "app_cpu_percent": {
+                "n": 4,
+                "median": 429.08703390899564,
+                "min": 418.23158342021236,
+                "max": 433.61905879986773
+              },
+              "database_cpu_percent": {
+                "n": 4,
+                "median": 164.55165603119437,
+                "min": 158.78707190975703,
+                "max": 175.18509796330756
+              },
+              "foreign_persistent_cpu_percent": {
+                "n": 4,
+                "median": 66.60277517056014,
+                "min": 24.284042552392098,
+                "max": 99.32629492301687
+              },
+              "p99_upper_us": {
+                "n": 4,
+                "median": 1579.223885,
+                "min": 1448.154688,
+                "max": 1722.155858
+              },
+              "client_launch_span_ms": {
+                "n": 4,
+                "median": 3.56812501559034,
+                "min": 3.379541973117739,
+                "max": 4.109792003873736
+              },
+              "database_pids_added_after_warmup": [
+                [],
+                [],
+                [],
+                []
+              ],
+              "server_cpu_seconds_per_million_requests": {
+                "n": 4,
+                "median": 59.9763280472889,
+                "min": 56.19993952420671,
+                "max": 60.96358767217468
+              }
+            }
+          ]
+        },
+        {
+          "mode": "jit",
+          "workers": 1,
+          "all_ready_ms": {
+            "n": 4,
+            "median": 54.36318798456341,
+            "min": 35.83995799999684,
+            "max": 82.88754097884521
+          },
+          "positions": [
+            0,
+            1,
+            5,
+            5
+          ],
+          "routes": [
+            {
+              "name": "echo",
+              "verified_requests": 7642682,
+              "rps": {
+                "n": 4,
+                "median": 192605.7829838209,
+                "min": 180734.29151223478,
+                "max": 198001.1933778305
+              },
+              "end_app_physical_bytes": {
+                "n": 4,
+                "median": 46686940.0,
+                "min": 36586168,
+                "max": 58049256
+              },
+              "sampled_peak_app_physical_bytes": {
+                "n": 4,
+                "median": 47940316.0,
+                "min": 38027984,
+                "max": 59425512
+              },
+              "end_database_process_physical_sum_bytes": {
+                "n": 4,
+                "median": 81237704.0,
+                "min": 73946800,
+                "max": 86873800
+              },
+              "app_cpu_percent": {
+                "n": 4,
+                "median": 100.9318709766325,
+                "min": 99.44694250135193,
+                "max": 101.66770432668679
+              },
+              "database_cpu_percent": {
+                "n": 4,
+                "median": 0.002277204398244128,
+                "min": 0.0006851989732670113,
+                "max": 0.009464782305082055
+              },
+              "foreign_persistent_cpu_percent": {
+                "n": 4,
+                "median": 38.23037939427557,
+                "min": 16.494759478013492,
+                "max": 81.36947153325815
+              },
+              "p99_upper_us": {
+                "n": 4,
+                "median": 415.772371,
+                "min": 362.038672,
+                "max": 558.339959
+              },
+              "client_launch_span_ms": {
+                "n": 4,
+                "median": 0.0,
+                "min": 0.0,
+                "max": 0.0
+              },
+              "database_pids_added_after_warmup": [
+                [],
+                [],
+                [],
+                []
+              ],
+              "server_cpu_seconds_per_million_requests": {
+                "n": 4,
+                "median": 5.241115733024588,
+                "min": 5.134701594079895,
+                "max": 5.502383729687505
+              }
+            },
+            {
+              "name": "me",
+              "verified_requests": 1693082,
+              "rps": {
+                "n": 4,
+                "median": 42250.86095705348,
+                "min": 40181.57107481647,
+                "max": 44553.94208915124
+              },
+              "end_app_physical_bytes": {
+                "n": 4,
+                "median": 55534312.0,
+                "min": 54493928,
+                "max": 58426112
+              },
+              "sampled_peak_app_physical_bytes": {
+                "n": 4,
+                "median": 56918760.0,
+                "min": 55739112,
+                "max": 58835712
+              },
+              "end_database_process_physical_sum_bytes": {
+                "n": 4,
+                "median": 86669000.0,
+                "min": 84809392,
+                "max": 86873800
+              },
+              "app_cpu_percent": {
+                "n": 4,
+                "median": 134.49627370867523,
+                "min": 129.98095219474394,
+                "max": 137.5896172068345
+              },
+              "database_cpu_percent": {
+                "n": 4,
+                "median": 39.324042554481245,
+                "min": 38.84742806354201,
+                "max": 39.64231925382788
+              },
+              "foreign_persistent_cpu_percent": {
+                "n": 4,
+                "median": 41.033781466939914,
+                "min": 16.89360795203967,
+                "max": 121.14745178405452
+              },
+              "p99_upper_us": {
+                "n": 4,
+                "median": 1748.077344,
+                "min": 1327.963704,
+                "max": 2233.359836
+              },
+              "client_launch_span_ms": {
+                "n": 4,
+                "median": 0.0,
+                "min": 0.0,
+                "max": 0.0
+              },
+              "database_pids_added_after_warmup": [
+                [],
+                [],
+                [],
+                []
+              ],
+              "server_cpu_seconds_per_million_requests": {
+                "n": 4,
+                "median": 31.691257682364125,
+                "min": 30.679494104510876,
+                "max": 32.926364876406545
+              }
+            }
+          ]
+        },
+        {
+          "mode": "jit",
+          "workers": 2,
+          "all_ready_ms": {
+            "n": 4,
+            "median": 60.055250505683944,
+            "min": 34.81345798354596,
+            "max": 88.27908296370879
+          },
+          "positions": [
+            7,
+            3,
+            3,
+            7
+          ],
+          "routes": [
+            {
+              "name": "echo",
+              "verified_requests": 8235476,
+              "rps": {
+                "n": 4,
+                "median": 206591.2816974385,
+                "min": 200269.91465649253,
+                "max": 209711.0886461202
+              },
+              "end_app_physical_bytes": {
+                "n": 4,
+                "median": 88073632.0,
+                "min": 62801240,
+                "max": 105907664
+              },
+              "sampled_peak_app_physical_bytes": {
+                "n": 4,
+                "median": 90793376.0,
+                "min": 67028312,
+                "max": 107644368
+              },
+              "end_database_process_physical_sum_bytes": {
+                "n": 4,
+                "median": 132007128.0,
+                "min": 120939736,
+                "max": 143074520
+              },
+              "app_cpu_percent": {
+                "n": 4,
+                "median": 196.50588319506366,
+                "min": 194.89481624981948,
+                "max": 198.07202662724504
+              },
+              "database_cpu_percent": {
+                "n": 4,
+                "median": 0.010664640446284145,
+                "min": 0.0014959987343528512,
+                "max": 0.015880419376364696
+              },
+              "foreign_persistent_cpu_percent": {
+                "n": 4,
+                "median": 31.984390190484255,
+                "min": 17.49219010098767,
+                "max": 108.05749063695333
+              },
+              "p99_upper_us": {
+                "n": 4,
+                "median": 381.2649455,
+                "min": 331.990926,
+                "max": 430.538965
+              },
+              "client_launch_span_ms": {
+                "n": 4,
+                "median": 1.242708502104506,
+                "min": 1.0242920252494514,
+                "max": 1.2861249851994216
+              },
+              "database_pids_added_after_warmup": [
+                [],
+                [],
+                [],
+                []
+              ],
+              "server_cpu_seconds_per_million_requests": {
+                "n": 4,
+                "median": 9.511085620709451,
+                "min": 9.393618719693087,
+                "max": 9.787649129575916
+              }
+            },
+            {
+              "name": "me",
+              "verified_requests": 2671602,
+              "rps": {
+                "n": 4,
+                "median": 67052.79890318961,
+                "min": 61988.05678892375,
+                "max": 70921.14256023018
+              },
+              "end_app_physical_bytes": {
+                "n": 4,
+                "median": 100476332.0,
+                "min": 92030368,
+                "max": 104990208
+              },
+              "sampled_peak_app_physical_bytes": {
+                "n": 4,
+                "median": 101451180.0,
+                "min": 93341088,
+                "max": 108922368
+              },
+              "end_database_process_physical_sum_bytes": {
+                "n": 4,
+                "median": 142861528.0,
+                "min": 142730456,
+                "max": 143074520
+              },
+              "app_cpu_percent": {
+                "n": 4,
+                "median": 263.8027534971003,
+                "min": 254.0955467796109,
+                "max": 269.65404710734884
+              },
+              "database_cpu_percent": {
+                "n": 4,
+                "median": 139.83156914465286,
+                "min": 131.8126666225315,
+                "max": 145.94364760449693
+              },
+              "foreign_persistent_cpu_percent": {
+                "n": 4,
+                "median": 45.719581777800656,
+                "min": 21.09060756156433,
+                "max": 72.565302595762
+              },
+              "p99_upper_us": {
+                "n": 4,
+                "median": 1347.9519015,
+                "min": 1116.679918,
+                "max": 1579.223885
+              },
+              "client_launch_span_ms": {
+                "n": 4,
+                "median": 1.3592710020020604,
+                "min": 1.250875007826835,
+                "max": 1.394667022395879
+              },
+              "database_pids_added_after_warmup": [
+                [],
+                [],
+                [],
+                []
+              ],
+              "server_cpu_seconds_per_million_requests": {
+                "n": 4,
+                "median": 39.488715404709154,
+                "min": 37.88627474398161,
+                "max": 40.99104891202424
+              }
+            }
+          ]
+        },
+        {
+          "mode": "jit",
+          "workers": 4,
+          "all_ready_ms": {
+            "n": 4,
+            "median": 90.92341602081433,
+            "min": 42.31004201574251,
+            "max": 94.56208400661126
+          },
+          "positions": [
+            5,
+            5,
+            1,
+            0
+          ],
+          "routes": [
+            {
+              "name": "echo",
+              "verified_requests": 7724963,
+              "rps": {
+                "n": 4,
+                "median": 192764.3101270735,
+                "min": 188455.88547506346,
+                "max": 197919.1292740287
+              },
+              "end_app_physical_bytes": {
+                "n": 4,
+                "median": 134515484.0,
+                "min": 123046744,
+                "max": 142707568
+              },
+              "sampled_peak_app_physical_bytes": {
+                "n": 4,
+                "median": 144214860.0,
+                "min": 141134584,
+                "max": 153455472
+              },
+              "end_database_process_physical_sum_bytes": {
+                "n": 4,
+                "median": 229163256.0,
+                "min": 209993952,
+                "max": 246006008
+              },
+              "app_cpu_percent": {
+                "n": 4,
+                "median": 346.4642875771449,
+                "min": 339.79418905275855,
+                "max": 351.3722082519218
+              },
+              "database_cpu_percent": {
+                "n": 4,
+                "median": 0.009925313939743614,
+                "min": 0.0036017850463753048,
+                "max": 0.01265914294589189
+              },
+              "foreign_persistent_cpu_percent": {
+                "n": 4,
+                "median": 101.67454929306359,
+                "min": 18.285331507032765,
+                "max": 119.906842371567
+              },
+              "p99_upper_us": {
+                "n": 4,
+                "median": 415.772371,
+                "min": 362.038672,
+                "max": 469.50607
+              },
+              "client_launch_span_ms": {
+                "n": 4,
+                "median": 3.949062986066565,
+                "min": 3.6668750108219683,
+                "max": 4.16345801204443
+              },
+              "database_pids_added_after_warmup": [
+                [],
+                [],
+                [],
+                []
+              ],
+              "server_cpu_seconds_per_million_requests": {
+                "n": 4,
+                "median": 17.996276280123595,
+                "min": 17.651254821966504,
+                "max": 18.091530131195068
+              }
+            },
+            {
+              "name": "me",
+              "verified_requests": 2672101,
+              "rps": {
+                "n": 4,
+                "median": 66111.61837565812,
+                "min": 57807.012748318804,
+                "max": 76965.41386529918
+              },
+              "end_app_physical_bytes": {
+                "n": 4,
+                "median": 180243348.0,
+                "min": 171002688,
+                "max": 210029496
+              },
+              "sampled_peak_app_physical_bytes": {
+                "n": 4,
+                "median": 183872404.0,
+                "min": 171395904,
+                "max": 210029496
+              },
+              "end_database_process_physical_sum_bytes": {
+                "n": 4,
+                "median": 245915896.0,
+                "min": 243876064,
+                "max": 246219000
+              },
+              "app_cpu_percent": {
+                "n": 4,
+                "median": 407.77910356542145,
+                "min": 386.7883889472607,
+                "max": 433.3215038508091
+              },
+              "database_cpu_percent": {
+                "n": 4,
+                "median": 150.77783852703976,
+                "min": 136.30540269429022,
+                "max": 174.55240260151166
+              },
+              "foreign_persistent_cpu_percent": {
+                "n": 4,
+                "median": 123.1035995589179,
+                "min": 31.575677388457102,
+                "max": 199.02067158777882
+              },
+              "p99_upper_us": {
+                "n": 4,
+                "median": 1800.090069,
+                "min": 1448.154688,
+                "max": 2435.496172
+              },
+              "client_launch_span_ms": {
+                "n": 4,
+                "median": 4.097458004252985,
+                "min": 3.863207995891571,
+                "max": 4.28683398058638
+              },
+              "database_pids_added_after_warmup": [
+                [],
+                [],
+                [],
+                []
+              ],
+              "server_cpu_seconds_per_million_requests": {
+                "n": 4,
+                "median": 61.675029886228884,
+                "min": 56.30080864752908,
+                "max": 66.91028831246942
+              }
+            }
+          ]
+        },
+        {
+          "mode": "native",
+          "workers": 1,
+          "all_ready_ms": {
+            "n": 4,
+            "median": 43.44570852117613,
+            "min": 15.218375017866492,
+            "max": 69.28716599941254
+          },
+          "positions": [
+            6,
+            4,
+            2,
+            8
+          ],
+          "routes": [
+            {
+              "name": "echo",
+              "verified_requests": 6173462,
+              "rps": {
+                "n": 4,
+                "median": 155159.1995887807,
+                "min": 141514.48028919884,
+                "max": 165269.06973741806
+              },
+              "end_app_physical_bytes": {
+                "n": 4,
+                "median": 22135588.0,
+                "min": 17220352,
+                "max": 28525336
+              },
+              "sampled_peak_app_physical_bytes": {
+                "n": 4,
+                "median": 23503652.0,
+                "min": 18973440,
+                "max": 29967128
+              },
+              "end_database_process_physical_sum_bytes": {
+                "n": 4,
+                "median": 81385136.0,
+                "min": 75847368,
+                "max": 86791832
+              },
+              "app_cpu_percent": {
+                "n": 4,
+                "median": 98.27328393164427,
+                "min": 96.2361993560143,
+                "max": 99.95447510719758
+              },
+              "database_cpu_percent": {
+                "n": 4,
+                "median": 0.004957475785884216,
+                "min": 0.0014326588912492672,
+                "max": 0.010191636882982786
+              },
+              "foreign_persistent_cpu_percent": {
+                "n": 4,
+                "median": 52.37911483996132,
+                "min": 15.395032215552815,
+                "max": 79.16273315369286
+              },
+              "p99_upper_us": {
+                "n": 4,
+                "median": 560.4370215,
+                "min": 394.805971,
+                "max": 724.077344
+              },
+              "client_launch_span_ms": {
+                "n": 4,
+                "median": 0.0,
+                "min": 0.0,
+                "max": 0.0
+              },
+              "database_pids_added_after_warmup": [
+                [],
+                [],
+                [],
+                []
+              ],
+              "server_cpu_seconds_per_million_requests": {
+                "n": 4,
+                "median": 6.333766559418448,
+                "min": 6.047984372756907,
+                "max": 6.800448912319511
+              }
+            },
+            {
+              "name": "me",
+              "verified_requests": 1442950,
+              "rps": {
+                "n": 4,
+                "median": 36708.587258000756,
+                "min": 32369.180131781803,
+                "max": 38446.7983782977
+              },
+              "end_app_physical_bytes": {
+                "n": 4,
+                "median": 26182448.0,
+                "min": 25346864,
+                "max": 28377880
+              },
+              "sampled_peak_app_physical_bytes": {
+                "n": 4,
+                "median": 26223408.0,
+                "min": 25346864,
+                "max": 28525336
+              },
+              "end_database_process_physical_sum_bytes": {
+                "n": 4,
+                "median": 86750896.0,
+                "min": 86660808,
+                "max": 86955672
+              },
+              "app_cpu_percent": {
+                "n": 4,
+                "median": 123.29566453139694,
+                "min": 118.98783342073318,
+                "max": 125.64508599669205
+              },
+              "database_cpu_percent": {
+                "n": 4,
+                "median": 33.78113546041399,
+                "min": 33.09838667493908,
+                "max": 34.637229278471075
+              },
+              "foreign_persistent_cpu_percent": {
+                "n": 4,
+                "median": 35.234208573769514,
+                "min": 14.494344427059913,
+                "max": 114.84529057456412
+              },
+              "p99_upper_us": {
+                "n": 4,
+                "median": 1813.6119425000002,
+                "min": 1579.223885,
+                "max": 3158.44777
+              },
+              "client_launch_span_ms": {
+                "n": 4,
+                "median": 0.0,
+                "min": 0.0,
+                "max": 0.0
+              },
+              "database_pids_added_after_warmup": [
+                [],
+                [],
+                [],
+                []
+              ],
+              "server_cpu_seconds_per_million_requests": {
+                "n": 4,
+                "median": 33.61482651939616,
+                "min": 32.68024680765503,
+                "max": 36.75960680385121
+              }
+            }
+          ]
+        },
+        {
+          "mode": "native",
+          "workers": 2,
+          "all_ready_ms": {
+            "n": 4,
+            "median": 42.56972900475375,
+            "min": 12.86362501559779,
+            "max": 67.21524999011308
+          },
+          "positions": [
+            4,
+            6,
+            0,
+            1
+          ],
+          "routes": [
+            {
+              "name": "echo",
+              "verified_requests": 7735714,
+              "rps": {
+                "n": 4,
+                "median": 198205.41671156546,
+                "min": 168900.89257834342,
+                "max": 207882.33601932286
+              },
+              "end_app_physical_bytes": {
+                "n": 4,
+                "median": 41993752.0,
+                "min": 34309680,
+                "max": 49923680
+              },
+              "sampled_peak_app_physical_bytes": {
+                "n": 4,
+                "median": 44631588.0,
+                "min": 36800024,
+                "max": 52545120
+              },
+              "end_database_process_physical_sum_bytes": {
+                "n": 4,
+                "median": 132179124.0,
+                "min": 119203008,
+                "max": 143123672
+              },
+              "app_cpu_percent": {
+                "n": 4,
+                "median": 196.06772344638,
+                "min": 185.19594436597248,
+                "max": 198.5104310682883
+              },
+              "database_cpu_percent": {
+                "n": 4,
+                "median": 0.010747963215196294,
+                "min": 0.008114494784232637,
+                "max": 0.01589155950291726
+              },
+              "foreign_persistent_cpu_percent": {
+                "n": 4,
+                "median": 41.277355562545196,
+                "min": 15.69338210080026,
+                "max": 147.52706015800484
+              },
+              "p99_upper_us": {
+                "n": 4,
+                "median": 396.28881850000005,
+                "min": 304.437021,
+                "max": 663.981852
+              },
+              "client_launch_span_ms": {
+                "n": 4,
+                "median": 1.4815419854130596,
+                "min": 1.1123339645564556,
+                "max": 1.5206250245682895
+              },
+              "database_pids_added_after_warmup": [
+                [],
+                [],
+                [],
+                []
+              ],
+              "server_cpu_seconds_per_million_requests": {
+                "n": 4,
+                "median": 9.893570899871172,
+                "min": 9.549172617044123,
+                "max": 10.96477002216378
+              }
+            },
+            {
+              "name": "me",
+              "verified_requests": 2361784,
+              "rps": {
+                "n": 4,
+                "median": 58400.53734411794,
+                "min": 54085.68917883959,
+                "max": 65173.38766153804
+              },
+              "end_app_physical_bytes": {
+                "n": 4,
+                "median": 48965168.0,
+                "min": 45712968,
+                "max": 52414024
+              },
+              "sampled_peak_app_physical_bytes": {
+                "n": 4,
+                "median": 48981552.0,
+                "min": 45794888,
+                "max": 52921928
+              },
+              "end_database_process_physical_sum_bytes": {
+                "n": 4,
+                "median": 143049908.0,
+                "min": 141010112,
+                "max": 143123672
+              },
+              "app_cpu_percent": {
+                "n": 4,
+                "median": 246.4085354741408,
+                "min": 241.5302017402245,
+                "max": 258.5693433609884
+              },
+              "database_cpu_percent": {
+                "n": 4,
+                "median": 113.4870713894621,
+                "min": 110.23997909484437,
+                "max": 124.0182009317594
+              },
+              "foreign_persistent_cpu_percent": {
+                "n": 4,
+                "median": 86.8047191341645,
+                "min": 19.29158983141381,
+                "max": 115.84471648036872
+              },
+              "p99_upper_us": {
+                "n": 4,
+                "median": 1585.155273,
+                "min": 939.01214,
+                "max": 1878.02428
+              },
+              "client_launch_span_ms": {
+                "n": 4,
+                "median": 1.3672290078829974,
+                "min": 1.1148329940624535,
+                "max": 1.4392909943126142
+              },
+              "database_pids_added_after_warmup": [
+                [],
+                [],
+                [],
+                []
+              ],
+              "server_cpu_seconds_per_million_requests": {
+                "n": 4,
+                "median": 42.19460304450847,
+                "min": 39.67406830281781,
+                "max": 44.65695184942202
+              }
+            }
+          ]
+        },
+        {
+          "mode": "native",
+          "workers": 4,
+          "all_ready_ms": {
+            "n": 4,
+            "median": 45.08541652467102,
+            "min": 22.348958009388298,
+            "max": 78.10199999948964
+          },
+          "positions": [
+            2,
+            8,
+            7,
+            3
+          ],
+          "routes": [
+            {
+              "name": "echo",
+              "verified_requests": 7667840,
+              "rps": {
+                "n": 4,
+                "median": 191664.24413642724,
+                "min": 186594.3476446339,
+                "max": 196317.6542898666
+              },
+              "end_app_physical_bytes": {
+                "n": 4,
+                "median": 80145516.0,
+                "min": 69094496,
+                "max": 91917528
+              },
+              "sampled_peak_app_physical_bytes": {
+                "n": 4,
+                "median": 85429356.0,
+                "min": 75172960,
+                "max": 95309016
+              },
+              "end_database_process_physical_sum_bytes": {
+                "n": 4,
+                "median": 228958432.0,
+                "min": 209748192,
+                "max": 246218952
+              },
+              "app_cpu_percent": {
+                "n": 4,
+                "median": 354.91333971987706,
+                "min": 350.8768921213471,
+                "max": 368.25954019384113
+              },
+              "database_cpu_percent": {
+                "n": 4,
+                "median": 0.010005142557960839,
+                "min": 0.002567422691398827,
+                "max": 0.01241205904276449
+              },
+              "foreign_persistent_cpu_percent": {
+                "n": 4,
+                "median": 67.8504026016735,
+                "min": 45.86757544954692,
+                "max": 98.0334087679085
+              },
+              "p99_upper_us": {
+                "n": 4,
+                "median": 450.02251750000005,
+                "min": 394.805971,
+                "max": 469.50607
+              },
+              "client_launch_span_ms": {
+                "n": 4,
+                "median": 3.9281245262827724,
+                "min": 3.721332992427051,
+                "max": 4.7337079886347055
+              },
+              "database_pids_added_after_warmup": [
+                [],
+                [],
+                [],
+                []
+              ],
+              "server_cpu_seconds_per_million_requests": {
+                "n": 4,
+                "median": 18.670497983449884,
+                "min": 18.45153655673093,
+                "max": 18.80426157332412
+              }
+            },
+            {
+              "name": "me",
+              "verified_requests": 2590566,
+              "rps": {
+                "n": 4,
+                "median": 67283.39769866584,
+                "min": 53239.86096231484,
+                "max": 71042.89477596982
+              },
+              "end_app_physical_bytes": {
+                "n": 4,
+                "median": 87346332.0,
+                "min": 84954208,
+                "max": 88411304
+              },
+              "sampled_peak_app_physical_bytes": {
+                "n": 4,
+                "median": 87952516.0,
+                "min": 87231704,
+                "max": 88869984
+              },
+              "end_database_process_physical_sum_bytes": {
+                "n": 4,
+                "median": 245866720.0,
+                "min": 243663072,
+                "max": 246218952
+              },
+              "app_cpu_percent": {
+                "n": 4,
+                "median": 413.3548431943026,
+                "min": 344.1956393344989,
+                "max": 433.83071749456354
+              },
+              "database_cpu_percent": {
+                "n": 4,
+                "median": 149.91369240351634,
+                "min": 105.79289803387324,
+                "max": 161.8639786835973
+              },
+              "foreign_persistent_cpu_percent": {
+                "n": 4,
+                "median": 65.49948771503935,
+                "min": 50.35455229258427,
+                "max": 324.4559928690582
+              },
+              "p99_upper_us": {
+                "n": 4,
+                "median": 1579.223885,
+                "min": 1327.963704,
+                "max": 2655.927408
+              },
+              "client_launch_span_ms": {
+                "n": 4,
+                "median": 4.225979006150737,
+                "min": 3.8353330455720425,
+                "max": 5.349957966245711
+              },
+              "database_pids_added_after_warmup": [
+                [],
+                [],
+                [],
+                []
+              ],
+              "server_cpu_seconds_per_million_requests": {
+                "n": 4,
+                "median": 61.493546288353826,
+                "min": 60.954525435522235,
+                "max": 64.64998839462285
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "fixed-total-db": {
+      "metadata": {
+        "started_at": "2026-11-01T00:34:15.823179+00:00",
+        "runner_sha256": "60c6c590090901d496718f025ff37ff7e8501b9b4ce87886e14e298c0c198874",
+        "client_sha256": "88e8575a1c04a9d5159289731bf68341861df37a67e9a0f63d312879ead3bf38",
+        "binaries": {
+          "jit": {
+            "name": "jit",
+            "flags": [],
+            "source_change": "DB_POOL_MAX replaces literal 10 in both existing driver configurations",
+            "upstream_db_sha256": "22ae564050208fd05951b604e2daa468e7e65a79ed9aae3b63497614d5148c7d",
+            "overlay_db_sha256": "288067f05d1e285d0a3b28f645b3e09a04c82d99941a4ab6c651d0d04d61fb47",
+            "bytes": 122528738,
+            "sha256": "1e2c0d6785e76f3992559af7568238a8f96315190d905f843f7adb0b9db37238",
+            "build_seconds": 0.22829837497556582
+          },
+          "native": {
+            "name": "native",
+            "flags": [
+              "--aot"
+            ],
+            "source_change": "DB_POOL_MAX replaces literal 10 in both existing driver configurations",
+            "upstream_db_sha256": "22ae564050208fd05951b604e2daa468e7e65a79ed9aae3b63497614d5148c7d",
+            "overlay_db_sha256": "288067f05d1e285d0a3b28f645b3e09a04c82d99941a4ab6c651d0d04d61fb47",
+            "bytes": 64720226,
+            "sha256": "1e03403749e036c95e52e2f97d0b573ad66b6221a68c076fe65536a8eaa4adcb",
+            "build_seconds": 2.748729666986037
+          }
+        },
+        "host": {
+          "machine": "arm64",
+          "system": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+          "cpu_count": 10
+        },
+        "cpu_nanoseconds_per_tick": {
+          "numer": 125,
+          "denom": 3
+        },
+        "total_connections": 32,
+        "total_configured_db_pool_limit": 12,
+        "per_process_db_pool_limit": {
+          "1": 12,
+          "2": 6,
+          "4": 3
+        },
+        "warmup_seconds": 3.0,
+        "measured_seconds": 8.0,
+        "blocks": 4,
+        "sample_seconds": 0.25,
+        "selected_cells": "",
+        "segments": 1,
+        "total_measured_seconds_per_route": 8.0
+      },
+      "observations": 24,
+      "timed_route_windows": 24,
+      "checked_responses": 11252494,
+      "source_sha256": "82df47b1004e7834662f51c69273bf0af5c24ef5f1ac5fe7de2d578cbe4e3fcc",
+      "groups": [
+        {
+          "mode": "jit",
+          "workers": 1,
+          "all_ready_ms": {
+            "n": 4,
+            "median": 34.61820850498043,
+            "min": 33.75183400930837,
+            "max": 963.4458749787882
+          },
+          "positions": [
+            0,
+            1,
+            2,
+            5
+          ],
+          "routes": [
+            {
+              "name": "me",
+              "verified_requests": 1334313,
+              "rps": {
+                "n": 4,
+                "median": 41515.54011197679,
+                "min": 41348.248311306335,
+                "max": 42327.7552221496
+              },
+              "end_app_physical_bytes": {
+                "n": 4,
+                "median": 55468800.0,
+                "min": 55083704,
+                "max": 55640784
+              },
+              "sampled_peak_app_physical_bytes": {
+                "n": 4,
+                "median": 56124124.0,
+                "min": 55362232,
+                "max": 57000728
+              },
+              "end_database_process_physical_sum_bytes": {
+                "n": 4,
+                "median": 97991064.0,
+                "min": 97900952,
+                "max": 98064792
+              },
+              "app_cpu_percent": {
+                "n": 4,
+                "median": 130.90491281508002,
+                "min": 130.71926320615128,
+                "max": 131.0709515364756
+              },
+              "database_cpu_percent": {
+                "n": 4,
+                "median": 39.54852753056787,
+                "min": 38.895449194628924,
+                "max": 39.92006167531946
+              },
+              "foreign_persistent_cpu_percent": {
+                "n": 4,
+                "median": 47.22830994443123,
+                "min": 40.97810147153519,
+                "max": 87.20510209356398
+              },
+              "p99_upper_us": {
+                "n": 4,
+                "median": 1878.02428,
+                "min": 1878.02428,
+                "max": 2048.0
+              },
+              "client_launch_span_ms": {
+                "n": 4,
+                "median": 0.0,
+                "min": 0.0,
+                "max": 0.0
+              },
+              "database_pids_added_after_warmup": [
+                [],
+                [],
+                [],
+                []
+              ],
+              "server_cpu_seconds_per_million_requests": {
+                "n": 4,
+                "median": 31.512786841070074,
+                "min": 30.965722337169385,
+                "max": 31.652060224144655
+              },
+              "database_connections_before_load": [
+                12,
+                12,
+                12,
+                12
+              ]
+            }
+          ]
+        },
+        {
+          "mode": "jit",
+          "workers": 2,
+          "all_ready_ms": {
+            "n": 4,
+            "median": 36.4571874961257,
+            "min": 36.26008296851069,
+            "max": 49.949457985349
+          },
+          "positions": [
+            4,
+            3,
+            0,
+            1
+          ],
+          "routes": [
+            {
+              "name": "me",
+              "verified_requests": 2143328,
+              "rps": {
+                "n": 4,
+                "median": 66736.8482790796,
+                "min": 66434.87172866343,
+                "max": 67848.51193533208
+              },
+              "end_app_physical_bytes": {
+                "n": 4,
+                "median": 101565880.0,
+                "min": 101074336,
+                "max": 102073760
+              },
+              "sampled_peak_app_physical_bytes": {
+                "n": 4,
+                "median": 102630840.0,
+                "min": 101647776,
+                "max": 103826848
+              },
+              "end_database_process_physical_sum_bytes": {
+                "n": 4,
+                "median": 98072984.0,
+                "min": 98048408,
+                "max": 98081176
+              },
+              "app_cpu_percent": {
+                "n": 4,
+                "median": 260.45349222827184,
+                "min": 259.403496757259,
+                "max": 263.2737223037541
+              },
+              "database_cpu_percent": {
+                "n": 4,
+                "median": 130.76832142735228,
+                "min": 128.95959056182832,
+                "max": 132.1416971338748
+              },
+              "foreign_persistent_cpu_percent": {
+                "n": 4,
+                "median": 69.83244444328206,
+                "min": 53.3425571702546,
+                "max": 74.83397967910126
+              },
+              "p99_upper_us": {
+                "n": 4,
+                "median": 1448.154688,
+                "min": 1327.963704,
+                "max": 1448.154688
+              },
+              "client_launch_span_ms": {
+                "n": 4,
+                "median": 1.3086455001030117,
+                "min": 1.143458008300513,
+                "max": 1.886208017822355
+              },
+              "database_pids_added_after_warmup": [
+                [],
+                [],
+                [],
+                []
+              ],
+              "server_cpu_seconds_per_million_requests": {
+                "n": 4,
+                "median": 39.026935701199676,
+                "min": 38.8031682337685,
+                "max": 39.04628548343218
+              },
+              "database_connections_before_load": [
+                12,
+                12,
+                12,
+                12
+              ]
+            }
+          ]
+        },
+        {
+          "mode": "jit",
+          "workers": 4,
+          "all_ready_ms": {
+            "n": 4,
+            "median": 40.06299999309704,
+            "min": 40.035041980445385,
+            "max": 40.92916700756177
+          },
+          "positions": [
+            2,
+            5,
+            4,
+            3
+          ],
+          "routes": [
+            {
+              "name": "me",
+              "verified_requests": 2412805,
+              "rps": {
+                "n": 4,
+                "median": 75308.96235978865,
+                "min": 74761.02237246922,
+                "max": 75921.31030724324
+              },
+              "end_app_physical_bytes": {
+                "n": 4,
+                "median": 182651784.0,
+                "min": 179309496,
+                "max": 184322976
+              },
+              "sampled_peak_app_physical_bytes": {
+                "n": 4,
+                "median": 187247496.0,
+                "min": 185322424,
+                "max": 188926880
+              },
+              "end_database_process_physical_sum_bytes": {
+                "n": 4,
+                "median": 97892748.0,
+                "min": 97769880,
+                "max": 98130328
+              },
+              "app_cpu_percent": {
+                "n": 4,
+                "median": 427.6106833332735,
+                "min": 425.5495011152006,
+                "max": 432.4901133916166
+              },
+              "database_cpu_percent": {
+                "n": 4,
+                "median": 152.43042995038374,
+                "min": 150.70708527158823,
+                "max": 152.54544024005074
+              },
+              "foreign_persistent_cpu_percent": {
+                "n": 4,
+                "median": 67.06474057512696,
+                "min": 58.313791781499326,
+                "max": 72.16857242562739
+              },
+              "p99_upper_us": {
+                "n": 4,
+                "median": 1513.6892865,
+                "min": 1448.154688,
+                "max": 1579.223885
+              },
+              "client_launch_span_ms": {
+                "n": 4,
+                "median": 4.786021017935127,
+                "min": 3.7075000000186265,
+                "max": 4.844874958507717
+              },
+              "database_pids_added_after_warmup": [
+                [],
+                [],
+                [],
+                []
+              ],
+              "server_cpu_seconds_per_million_requests": {
+                "n": 4,
+                "median": 56.82786299793224,
+                "min": 56.668832209258156,
+                "max": 57.12544584974912
+              },
+              "database_connections_before_load": [
+                12,
+                12,
+                12,
+                12
+              ]
+            }
+          ]
+        },
+        {
+          "mode": "native",
+          "workers": 1,
+          "all_ready_ms": {
+            "n": 4,
+            "median": 15.015646000392735,
+            "min": 14.69974999781698,
+            "max": 17.17508299043402
+          },
+          "positions": [
+            3,
+            4,
+            5,
+            2
+          ],
+          "routes": [
+            {
+              "name": "me",
+              "verified_requests": 1126809,
+              "rps": {
+                "n": 4,
+                "median": 35073.6585510524,
+                "min": 34924.89913282814,
+                "max": 35707.075602981735
+              },
+              "end_app_physical_bytes": {
+                "n": 4,
+                "median": 28238628.0,
+                "min": 28197656,
+                "max": 28410624
+              },
+              "sampled_peak_app_physical_bytes": {
+                "n": 4,
+                "median": 28345112.0,
+                "min": 28263192,
+                "max": 28443416
+              },
+              "end_database_process_physical_sum_bytes": {
+                "n": 4,
+                "median": 98113908.0,
+                "min": 97835416,
+                "max": 98179480
+              },
+              "app_cpu_percent": {
+                "n": 4,
+                "median": 121.24305172569606,
+                "min": 120.88290403549557,
+                "max": 121.33140536546381
+              },
+              "database_cpu_percent": {
+                "n": 4,
+                "median": 33.81500380959883,
+                "min": 33.25439080055607,
+                "max": 34.1627934658295
+              },
+              "foreign_persistent_cpu_percent": {
+                "n": 4,
+                "median": 51.09982153902416,
+                "min": 45.473670744262904,
+                "max": 57.847458889998826
+              },
+              "p99_upper_us": {
+                "n": 4,
+                "median": 2048.0,
+                "min": 2048.0,
+                "max": 2233.359836
+              },
+              "client_launch_span_ms": {
+                "n": 4,
+                "median": 0.0,
+                "min": 0.0,
+                "max": 0.0
+              },
+              "database_pids_added_after_warmup": [
+                [],
+                [],
+                [],
+                []
+              ],
+              "server_cpu_seconds_per_million_requests": {
+                "n": 4,
+                "median": 34.511621841433026,
+                "min": 33.979653420660405,
+                "max": 34.72623225475641
+              },
+              "database_connections_before_load": [
+                12,
+                12,
+                12,
+                12
+              ]
+            }
+          ]
+        },
+        {
+          "mode": "native",
+          "workers": 2,
+          "all_ready_ms": {
+            "n": 4,
+            "median": 16.316604509484023,
+            "min": 13.271416013594717,
+            "max": 529.4020409928635
+          },
+          "positions": [
+            1,
+            0,
+            3,
+            4
+          ],
+          "routes": [
+            {
+              "name": "me",
+              "verified_requests": 1974744,
+              "rps": {
+                "n": 4,
+                "median": 61518.584689751275,
+                "min": 60595.24659281473,
+                "max": 63045.77473042937
+              },
+              "end_app_physical_bytes": {
+                "n": 4,
+                "median": 49366564.0,
+                "min": 49169968,
+                "max": 49415704
+              },
+              "sampled_peak_app_physical_bytes": {
+                "n": 4,
+                "median": 49415716.0,
+                "min": 49186352,
+                "max": 49464856
+              },
+              "end_database_process_physical_sum_bytes": {
+                "n": 4,
+                "median": 98023832.0,
+                "min": 97982872,
+                "max": 98113944
+              },
+              "app_cpu_percent": {
+                "n": 4,
+                "median": 250.22938604006575,
+                "min": 249.52734897699935,
+                "max": 251.8589369643447
+              },
+              "database_cpu_percent": {
+                "n": 4,
+                "median": 112.47078043772956,
+                "min": 110.57552452731218,
+                "max": 113.20727015173718
+              },
+              "foreign_persistent_cpu_percent": {
+                "n": 4,
+                "median": 63.01731853281866,
+                "min": 49.34312614135441,
+                "max": 86.07421307266101
+              },
+              "p99_upper_us": {
+                "n": 4,
+                "median": 1448.154688,
+                "min": 1327.963704,
+                "max": 1579.223885
+              },
+              "client_launch_span_ms": {
+                "n": 4,
+                "median": 1.474478980526328,
+                "min": 1.4105409500189126,
+                "max": 1.5721659874543548
+              },
+              "database_pids_added_after_warmup": [
+                [],
+                [],
+                [],
+                []
+              ],
+              "server_cpu_seconds_per_million_requests": {
+                "n": 4,
+                "median": 40.6302391053277,
+                "min": 39.9485830797133,
+                "max": 41.27520068460578
+              },
+              "database_connections_before_load": [
+                12,
+                12,
+                12,
+                12
+              ]
+            }
+          ]
+        },
+        {
+          "mode": "native",
+          "workers": 4,
+          "all_ready_ms": {
+            "n": 4,
+            "median": 16.326333483448252,
+            "min": 15.253915975335985,
+            "max": 17.420166986994445
+          },
+          "positions": [
+            5,
+            2,
+            1,
+            0
+          ],
+          "routes": [
+            {
+              "name": "me",
+              "verified_requests": 2260495,
+              "rps": {
+                "n": 4,
+                "median": 71342.64044152306,
+                "min": 67583.61656608689,
+                "max": 71988.48657959128
+              },
+              "end_app_physical_bytes": {
+                "n": 4,
+                "median": 87247980.0,
+                "min": 87084080,
+                "max": 87428240
+              },
+              "sampled_peak_app_physical_bytes": {
+                "n": 4,
+                "median": 87288928.0,
+                "min": 87166024,
+                "max": 87428240
+              },
+              "end_database_process_physical_sum_bytes": {
+                "n": 4,
+                "median": 97933708.0,
+                "min": 97786264,
+                "max": 98081176
+              },
+              "app_cpu_percent": {
+                "n": 4,
+                "median": 419.86392588081395,
+                "min": 418.069764575219,
+                "max": 421.66727618347613
+              },
+              "database_cpu_percent": {
+                "n": 4,
+                "median": 143.0792131157415,
+                "min": 139.16971797022248,
+                "max": 144.3271361942459
+              },
+              "foreign_persistent_cpu_percent": {
+                "n": 4,
+                "median": 61.43117351421941,
+                "min": 49.19460584677269,
+                "max": 157.7285326134835
+              },
+              "p99_upper_us": {
+                "n": 4,
+                "median": 1448.154688,
+                "min": 1448.154688,
+                "max": 1579.223885
+              },
+              "client_launch_span_ms": {
+                "n": 4,
+                "median": 4.714250011602417,
+                "min": 3.6255419836379588,
+                "max": 5.755791033152491
+              },
+              "database_pids_added_after_warmup": [
+                [],
+                [],
+                [],
+                []
+              ],
+              "server_cpu_seconds_per_million_requests": {
+                "n": 4,
+                "median": 58.86447406296098,
+                "min": 58.55003452493859,
+                "max": 61.859631937040234
+              },
+              "database_connections_before_load": [
+                12,
+                12,
+                12,
+                12
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "five-minute": {
+      "metadata": {
+        "started_at": "2026-11-01T00:45:08.078247+00:00",
+        "runner_sha256": "8dad3d0fedfa7895402137e1fae284ba1162daa819d980686b102feca5d4c6c0",
+        "client_sha256": "88e8575a1c04a9d5159289731bf68341861df37a67e9a0f63d312879ead3bf38",
+        "binaries": {
+          "jit": {
+            "name": "jit",
+            "flags": [],
+            "source_change": "DB_POOL_MAX replaces literal 10 in both existing driver configurations",
+            "upstream_db_sha256": "22ae564050208fd05951b604e2daa468e7e65a79ed9aae3b63497614d5148c7d",
+            "overlay_db_sha256": "288067f05d1e285d0a3b28f645b3e09a04c82d99941a4ab6c651d0d04d61fb47",
+            "bytes": 122528738,
+            "sha256": "1e2c0d6785e76f3992559af7568238a8f96315190d905f843f7adb0b9db37238",
+            "build_seconds": 0.22829837497556582
+          },
+          "native": {
+            "name": "native",
+            "flags": [
+              "--aot"
+            ],
+            "source_change": "DB_POOL_MAX replaces literal 10 in both existing driver configurations",
+            "upstream_db_sha256": "22ae564050208fd05951b604e2daa468e7e65a79ed9aae3b63497614d5148c7d",
+            "overlay_db_sha256": "288067f05d1e285d0a3b28f645b3e09a04c82d99941a4ab6c651d0d04d61fb47",
+            "bytes": 64720226,
+            "sha256": "1e03403749e036c95e52e2f97d0b573ad66b6221a68c076fe65536a8eaa4adcb",
+            "build_seconds": 2.748729666986037
+          }
+        },
+        "host": {
+          "machine": "arm64",
+          "system": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+          "cpu_count": 10
+        },
+        "cpu_nanoseconds_per_tick": {
+          "numer": 125,
+          "denom": 3
+        },
+        "total_connections": 32,
+        "total_configured_db_pool_limit": 12,
+        "per_process_db_pool_limit": {
+          "1": 12,
+          "2": 6,
+          "4": 3
+        },
+        "warmup_seconds": 5.0,
+        "measured_seconds": 60.0,
+        "blocks": 2,
+        "sample_seconds": 1.0,
+        "selected_cells": "jit:1,native:2",
+        "segments": 5,
+        "total_measured_seconds_per_route": 300.0
+      },
+      "observations": 4,
+      "timed_route_windows": 20,
+      "checked_responses": 64346728,
+      "source_sha256": "5819a98543df52f5a23a1e9fd81e9f2ddae7c5cbae8e9dbfbb7c9e8a259d8298",
+      "groups": [
+        {
+          "mode": "jit",
+          "workers": 1,
+          "all_ready_ms": {
+            "n": 2,
+            "median": 58.47314596758224,
+            "min": 46.40324995853007,
+            "max": 70.54304197663441
+          },
+          "positions": [
+            0,
+            1
+          ],
+          "routes": [
+            {
+              "name": "me-minute-1",
+              "verified_requests": 5093525,
+              "rps": {
+                "n": 2,
+                "median": 42443.47919611581,
+                "min": 40839.26605624425,
+                "max": 44047.692335987376
+              },
+              "end_app_physical_bytes": {
+                "n": 2,
+                "median": 55952092.0,
+                "min": 54936272,
+                "max": 56967912
+              },
+              "sampled_peak_app_physical_bytes": {
+                "n": 2,
+                "median": 57017052.0,
+                "min": 55689936,
+                "max": 58344168
+              },
+              "end_database_process_physical_sum_bytes": {
+                "n": 2,
+                "median": 98048384.0,
+                "min": 98015592,
+                "max": 98081176
+              },
+              "app_cpu_percent": {
+                "n": 2,
+                "median": 134.53278118245186,
+                "min": 131.6971427329442,
+                "max": 137.3684196319595
+              },
+              "database_cpu_percent": {
+                "n": 2,
+                "median": 39.145564262545975,
+                "min": 38.825702194979264,
+                "max": 39.46542633011268
+              },
+              "foreign_persistent_cpu_percent": {
+                "n": 2,
+                "median": 39.99750395042693,
+                "min": 15.99908310800612,
+                "max": 63.99592479284774
+              },
+              "p99_upper_us": {
+                "n": 2,
+                "median": 1687.981852,
+                "min": 1327.963704,
+                "max": 2048.0
+              },
+              "client_launch_span_ms": {
+                "n": 2,
+                "median": 0.0,
+                "min": 0.0,
+                "max": 0.0
+              },
+              "database_pids_added_after_warmup": [
+                [],
+                []
+              ],
+              "server_cpu_seconds_per_million_requests": {
+                "n": 2,
+                "median": 31.71698410511404,
+                "min": 31.18629202731882,
+                "max": 32.24767618290926
+              },
+              "database_connections_before_load": [
+                12,
+                12
+              ]
+            },
+            {
+              "name": "me-minute-2",
+              "verified_requests": 5026111,
+              "rps": {
+                "n": 2,
+                "median": 41880.727407427694,
+                "min": 40047.7670580025,
+                "max": 43713.68775685289
+              },
+              "end_app_physical_bytes": {
+                "n": 2,
+                "median": 55960296.0,
+                "min": 55231208,
+                "max": 56689384
+              },
+              "sampled_peak_app_physical_bytes": {
+                "n": 2,
+                "median": 56255208.0,
+                "min": 55821032,
+                "max": 56689384
+              },
+              "end_database_process_physical_sum_bytes": {
+                "n": 2,
+                "median": 98048384.0,
+                "min": 98015592,
+                "max": 98081176
+              },
+              "app_cpu_percent": {
+                "n": 2,
+                "median": 134.2938371019983,
+                "min": 131.12360400289603,
+                "max": 137.46407020110053
+              },
+              "database_cpu_percent": {
+                "n": 2,
+                "median": 39.047418882646646,
+                "min": 38.65056852337964,
+                "max": 39.44426924191365
+              },
+              "foreign_persistent_cpu_percent": {
+                "n": 2,
+                "median": 38.396332731054116,
+                "min": 17.315519693854025,
+                "max": 59.4771457682542
+              },
+              "p99_upper_us": {
+                "n": 2,
+                "median": 1748.077344,
+                "min": 1448.154688,
+                "max": 2048.0
+              },
+              "client_launch_span_ms": {
+                "n": 2,
+                "median": 0.0,
+                "min": 0.0,
+                "max": 0.0
+              },
+              "database_pids_added_after_warmup": [
+                [],
+                []
+              ],
+              "server_cpu_seconds_per_million_requests": {
+                "n": 2,
+                "median": 32.09413039605816,
+                "min": 31.446459279691084,
+                "max": 32.74180151242525
+              },
+              "database_connections_before_load": [
+                12,
+                12
+              ]
+            },
+            {
+              "name": "me-minute-3",
+              "verified_requests": 5095404,
+              "rps": {
+                "n": 2,
+                "median": 42460.183748719865,
+                "min": 40955.41501868199,
+                "max": 43964.95247875774
+              },
+              "end_app_physical_bytes": {
+                "n": 2,
+                "median": 54960872.0,
+                "min": 53986024,
+                "max": 55935720
+              },
+              "sampled_peak_app_physical_bytes": {
+                "n": 2,
+                "median": 55468776.0,
+                "min": 54100712,
+                "max": 56836840
+              },
+              "end_database_process_physical_sum_bytes": {
+                "n": 2,
+                "median": 98048384.0,
+                "min": 98015592,
+                "max": 98081176
+              },
+              "app_cpu_percent": {
+                "n": 2,
+                "median": 134.30805296142012,
+                "min": 131.4343866973128,
+                "max": 137.18171922552744
+              },
+              "database_cpu_percent": {
+                "n": 2,
+                "median": 39.22060715096165,
+                "min": 39.05044616663408,
+                "max": 39.390768135289214
+              },
+              "foreign_persistent_cpu_percent": {
+                "n": 2,
+                "median": 46.69842555575872,
+                "min": 44.797268393226005,
+                "max": 48.59958271829144
+              },
+              "p99_upper_us": {
+                "n": 2,
+                "median": 1748.077344,
+                "min": 1448.154688,
+                "max": 2048.0
+              },
+              "client_launch_span_ms": {
+                "n": 2,
+                "median": 0.0,
+                "min": 0.0,
+                "max": 0.0
+              },
+              "database_pids_added_after_warmup": [
+                [],
+                []
+              ],
+              "server_cpu_seconds_per_million_requests": {
+                "n": 2,
+                "median": 31.64729149063569,
+                "min": 31.202517344197886,
+                "max": 32.092065637073496
+              },
+              "database_connections_before_load": [
+                12,
+                12
+              ]
+            },
+            {
+              "name": "me-minute-4",
+              "verified_requests": 5068295,
+              "rps": {
+                "n": 2,
+                "median": 42232.99468592924,
+                "min": 40661.921200987505,
+                "max": 43804.068170870974
+              },
+              "end_app_physical_bytes": {
+                "n": 2,
+                "median": 54960872.0,
+                "min": 53920488,
+                "max": 56001256
+              },
+              "sampled_peak_app_physical_bytes": {
+                "n": 2,
+                "median": 55460584.0,
+                "min": 54575848,
+                "max": 56345320
+              },
+              "end_database_process_physical_sum_bytes": {
+                "n": 2,
+                "median": 98048384.0,
+                "min": 98015592,
+                "max": 98081176
+              },
+              "app_cpu_percent": {
+                "n": 2,
+                "median": 134.61017736017993,
+                "min": 131.7419938325584,
+                "max": 137.4783608878015
+              },
+              "database_cpu_percent": {
+                "n": 2,
+                "median": 39.470111255968014,
+                "min": 39.36947873243311,
+                "max": 39.57074377950292
+              },
+              "foreign_persistent_cpu_percent": {
+                "n": 2,
+                "median": 37.08081336934395,
+                "min": 18.532163477545026,
+                "max": 55.629463261142874
+              },
+              "p99_upper_us": {
+                "n": 2,
+                "median": 1748.077344,
+                "min": 1448.154688,
+                "max": 2048.0
+              },
+              "client_launch_span_ms": {
+                "n": 2,
+                "median": 0.0,
+                "min": 0.0,
+                "max": 0.0
+              },
+              "database_pids_added_after_warmup": [
+                [],
+                []
+              ],
+              "server_cpu_seconds_per_million_requests": {
+                "n": 2,
+                "median": 31.892095788168312,
+                "min": 31.384838584289867,
+                "max": 32.39935299204676
+              },
+              "database_connections_before_load": [
+                12,
+                12
+              ]
+            },
+            {
+              "name": "me-minute-5",
+              "verified_requests": 5078900,
+              "rps": {
+                "n": 2,
+                "median": 42321.34222658268,
+                "min": 40646.48456738464,
+                "max": 43996.19988578072
+              },
+              "end_app_physical_bytes": {
+                "n": 2,
+                "median": 58852072.0,
+                "min": 56328936,
+                "max": 61375208
+              },
+              "sampled_peak_app_physical_bytes": {
+                "n": 2,
+                "median": 59155176.0,
+                "min": 56328936,
+                "max": 61981416
+              },
+              "end_database_process_physical_sum_bytes": {
+                "n": 2,
+                "median": 98048384.0,
+                "min": 98015592,
+                "max": 98081176
+              },
+              "app_cpu_percent": {
+                "n": 2,
+                "median": 134.5804644530008,
+                "min": 131.599555800093,
+                "max": 137.56137310590861
+              },
+              "database_cpu_percent": {
+                "n": 2,
+                "median": 39.290559738537326,
+                "min": 39.262012346392645,
+                "max": 39.319107130682006
+              },
+              "foreign_persistent_cpu_percent": {
+                "n": 2,
+                "median": 41.42204584800515,
+                "min": 16.582340776594037,
+                "max": 66.26175091941626
+              },
+              "p99_upper_us": {
+                "n": 2,
+                "median": 1687.981852,
+                "min": 1327.963704,
+                "max": 2048.0
+              },
+              "client_launch_span_ms": {
+                "n": 2,
+                "median": 0.0,
+                "min": 0.0,
+                "max": 0.0
+              },
+              "database_pids_added_after_warmup": [
+                [],
+                []
+              ],
+              "server_cpu_seconds_per_million_requests": {
+                "n": 2,
+                "median": 31.82163161340796,
+                "min": 31.266648815814552,
+                "max": 32.37661441100136
+              },
+              "database_connections_before_load": [
+                12,
+                12
+              ]
+            }
+          ]
+        },
+        {
+          "mode": "native",
+          "workers": 2,
+          "all_ready_ms": {
+            "n": 2,
+            "median": 37.635687476722524,
+            "min": 17.67104194732383,
+            "max": 57.60033300612122
+          },
+          "positions": [
+            1,
+            0
+          ],
+          "routes": [
+            {
+              "name": "me-minute-1",
+              "verified_requests": 7476036,
+              "rps": {
+                "n": 2,
+                "median": 62295.43816498855,
+                "min": 58755.392237334534,
+                "max": 65835.48409264255
+              },
+              "end_app_physical_bytes": {
+                "n": 2,
+                "median": 48776752.0,
+                "min": 48481816,
+                "max": 49071688
+              },
+              "sampled_peak_app_physical_bytes": {
+                "n": 2,
+                "median": 48899632.0,
+                "min": 48596504,
+                "max": 49202760
+              },
+              "end_database_process_physical_sum_bytes": {
+                "n": 2,
+                "median": 98122136.0,
+                "min": 98081176,
+                "max": 98163096
+              },
+              "app_cpu_percent": {
+                "n": 2,
+                "median": 253.8646049716499,
+                "min": 249.19936753625768,
+                "max": 258.5298424070421
+              },
+              "database_cpu_percent": {
+                "n": 2,
+                "median": 115.00487648162814,
+                "min": 111.07510871118893,
+                "max": 118.93464425206737
+              },
+              "foreign_persistent_cpu_percent": {
+                "n": 2,
+                "median": 61.81189490604875,
+                "min": 23.548134366459347,
+                "max": 100.07565544563815
+              },
+              "p99_upper_us": {
+                "n": 2,
+                "median": 1259.1180125,
+                "min": 939.01214,
+                "max": 1579.223885
+              },
+              "client_launch_span_ms": {
+                "n": 2,
+                "median": 1.1857085337396711,
+                "min": 1.1792090372182429,
+                "max": 1.1922080302610993
+              },
+              "database_pids_added_after_warmup": [
+                [],
+                []
+              ],
+              "server_cpu_seconds_per_million_requests": {
+                "n": 2,
+                "median": 40.84104686817977,
+                "min": 39.26907289741249,
+                "max": 42.41302083894704
+              },
+              "database_connections_before_load": [
+                12,
+                12
+              ]
+            },
+            {
+              "name": "me-minute-2",
+              "verified_requests": 7701355,
+              "rps": {
+                "n": 2,
+                "median": 64173.268598293536,
+                "min": 63654.19693062832,
+                "max": 64692.34026595876
+              },
+              "end_app_physical_bytes": {
+                "n": 2,
+                "median": 48858672.0,
+                "min": 48416280,
+                "max": 49301064
+              },
+              "sampled_peak_app_physical_bytes": {
+                "n": 2,
+                "median": 48940592.0,
+                "min": 48514584,
+                "max": 49366600
+              },
+              "end_database_process_physical_sum_bytes": {
+                "n": 2,
+                "median": 98122136.0,
+                "min": 98081176,
+                "max": 98163096
+              },
+              "app_cpu_percent": {
+                "n": 2,
+                "median": 258.389603155205,
+                "min": 257.8723347503295,
+                "max": 258.90687156008045
+              },
+              "database_cpu_percent": {
+                "n": 2,
+                "median": 120.85128635766745,
+                "min": 119.10862118528168,
+                "max": 122.59395153005322
+              },
+              "foreign_persistent_cpu_percent": {
+                "n": 2,
+                "median": 78.58589456285148,
+                "min": 57.14589855219222,
+                "max": 100.02589057351075
+              },
+              "p99_upper_us": {
+                "n": 2,
+                "median": 1116.679918,
+                "min": 1116.679918,
+                "max": 1116.679918
+              },
+              "client_launch_span_ms": {
+                "n": 2,
+                "median": 1.0561460221651942,
+                "min": 0.962125021032989,
+                "max": 1.1501670232973993
+              },
+              "database_pids_added_after_warmup": [
+                [],
+                []
+              ],
+              "server_cpu_seconds_per_million_requests": {
+                "n": 2,
+                "median": 40.26765340080773,
+                "min": 39.86133964085737,
+                "max": 40.67396716075809
+              },
+              "database_connections_before_load": [
+                12,
+                12
+              ]
+            },
+            {
+              "name": "me-minute-3",
+              "verified_requests": 7895147,
+              "rps": {
+                "n": 2,
+                "median": 65788.17685496347,
+                "min": 64916.39748262889,
+                "max": 66659.95622729804
+              },
+              "end_app_physical_bytes": {
+                "n": 2,
+                "median": 48907824.0,
+                "min": 48383512,
+                "max": 49432136
+              },
+              "sampled_peak_app_physical_bytes": {
+                "n": 2,
+                "median": 48956976.0,
+                "min": 48465432,
+                "max": 49448520
+              },
+              "end_database_process_physical_sum_bytes": {
+                "n": 2,
+                "median": 98122136.0,
+                "min": 98081176,
+                "max": 98163096
+              },
+              "app_cpu_percent": {
+                "n": 2,
+                "median": 260.1524540562242,
+                "min": 259.69243614707034,
+                "max": 260.61247196537806
+              },
+              "database_cpu_percent": {
+                "n": 2,
+                "median": 121.00600258844909,
+                "min": 120.63490809283104,
+                "max": 121.37709708406716
+              },
+              "foreign_persistent_cpu_percent": {
+                "n": 2,
+                "median": 56.51280999269683,
+                "min": 32.63074197652775,
+                "max": 80.39487800886592
+              },
+              "p99_upper_us": {
+                "n": 2,
+                "median": 981.50607,
+                "min": 939.01214,
+                "max": 1024.0
+              },
+              "client_launch_span_ms": {
+                "n": 2,
+                "median": 1.1901459947694093,
+                "min": 1.0639589745551348,
+                "max": 1.3163330149836838
+              },
+              "database_pids_added_after_warmup": [
+                [],
+                []
+              ],
+              "server_cpu_seconds_per_million_requests": {
+                "n": 2,
+                "median": 39.5518242727909,
+                "min": 38.9577867800524,
+                "max": 40.1458617655294
+              },
+              "database_connections_before_load": [
+                12,
+                12
+              ]
+            },
+            {
+              "name": "me-minute-4",
+              "verified_requests": 7955436,
+              "rps": {
+                "n": 2,
+                "median": 66290.34045316765,
+                "min": 65652.93913591861,
+                "max": 66927.74177041669
+              },
+              "end_app_physical_bytes": {
+                "n": 2,
+                "median": 49022512.0,
+                "min": 48694808,
+                "max": 49350216
+              },
+              "sampled_peak_app_physical_bytes": {
+                "n": 2,
+                "median": 49071664.0,
+                "min": 48711192,
+                "max": 49432136
+              },
+              "end_database_process_physical_sum_bytes": {
+                "n": 2,
+                "median": 98122136.0,
+                "min": 98081176,
+                "max": 98163096
+              },
+              "app_cpu_percent": {
+                "n": 2,
+                "median": 259.0837401076194,
+                "min": 258.63569272407426,
+                "max": 259.5317874911645
+              },
+              "database_cpu_percent": {
+                "n": 2,
+                "median": 119.73861957168278,
+                "min": 119.14492066897301,
+                "max": 120.33231847439254
+              },
+              "foreign_persistent_cpu_percent": {
+                "n": 2,
+                "median": 25.956383092132157,
+                "min": 22.048394034660767,
+                "max": 29.86437214960355
+              },
+              "p99_upper_us": {
+                "n": 2,
+                "median": 939.01214,
+                "min": 939.01214,
+                "max": 939.01214
+              },
+              "client_launch_span_ms": {
+                "n": 2,
+                "median": 1.2673534802161157,
+                "min": 1.2246659607626498,
+                "max": 1.3100409996695817
+              },
+              "database_pids_added_after_warmup": [
+                [],
+                []
+              ],
+              "server_cpu_seconds_per_million_requests": {
+                "n": 2,
+                "median": 39.086145184374274,
+                "min": 38.77790892473865,
+                "max": 39.394381444009895
+              },
+              "database_connections_before_load": [
+                12,
+                12
+              ]
+            },
+            {
+              "name": "me-minute-5",
+              "verified_requests": 7956519,
+              "rps": {
+                "n": 2,
+                "median": 66299.43452930197,
+                "min": 65584.58322858972,
+                "max": 67014.28583001421
+              },
+              "end_app_physical_bytes": {
+                "n": 2,
+                "median": 48883248.0,
+                "min": 48416280,
+                "max": 49350216
+              },
+              "sampled_peak_app_physical_bytes": {
+                "n": 2,
+                "median": 49006128.0,
+                "min": 48662040,
+                "max": 49350216
+              },
+              "end_database_process_physical_sum_bytes": {
+                "n": 2,
+                "median": 98122136.0,
+                "min": 98081176,
+                "max": 98163096
+              },
+              "app_cpu_percent": {
+                "n": 2,
+                "median": 259.2521404605261,
+                "min": 258.42143743746186,
+                "max": 260.0828434835904
+              },
+              "database_cpu_percent": {
+                "n": 2,
+                "median": 119.8816968346716,
+                "min": 119.01427267879805,
+                "max": 120.74912099054514
+              },
+              "foreign_persistent_cpu_percent": {
+                "n": 2,
+                "median": 26.856347680458192,
+                "min": 25.69818585071072,
+                "max": 28.014509510205666
+              },
+              "p99_upper_us": {
+                "n": 2,
+                "median": 981.50607,
+                "min": 939.01214,
+                "max": 1024.0
+              },
+              "client_launch_span_ms": {
+                "n": 2,
+                "median": 1.0994790063705295,
+                "min": 1.0845829965546727,
+                "max": 1.1143750161863863
+              },
+              "database_pids_added_after_warmup": [
+                [],
+                []
+              ],
+              "server_cpu_seconds_per_million_requests": {
+                "n": 2,
+                "median": 39.106415817232374,
+                "min": 38.81005971522345,
+                "max": 39.4027719192413
+              },
+              "database_connections_before_load": [
+                12,
+                12
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "matched-clients": {
+      "metadata": {
+        "started_at": "2026-11-01T01:05:47.144308+00:00",
+        "runner_sha256": "a8b95315632b908f9399477b53e7779e39de2ea3b0f9d9b14ed44613d7b4635e",
+        "client_sha256": "88e8575a1c04a9d5159289731bf68341861df37a67e9a0f63d312879ead3bf38",
+        "binaries": {
+          "jit": {
+            "name": "jit",
+            "flags": [],
+            "source_change": "DB_POOL_MAX replaces literal 10 in both existing driver configurations",
+            "upstream_db_sha256": "22ae564050208fd05951b604e2daa468e7e65a79ed9aae3b63497614d5148c7d",
+            "overlay_db_sha256": "288067f05d1e285d0a3b28f645b3e09a04c82d99941a4ab6c651d0d04d61fb47",
+            "bytes": 122528738,
+            "sha256": "1e2c0d6785e76f3992559af7568238a8f96315190d905f843f7adb0b9db37238",
+            "build_seconds": 0.22829837497556582
+          },
+          "native": {
+            "name": "native",
+            "flags": [
+              "--aot"
+            ],
+            "source_change": "DB_POOL_MAX replaces literal 10 in both existing driver configurations",
+            "upstream_db_sha256": "22ae564050208fd05951b604e2daa468e7e65a79ed9aae3b63497614d5148c7d",
+            "overlay_db_sha256": "288067f05d1e285d0a3b28f645b3e09a04c82d99941a4ab6c651d0d04d61fb47",
+            "bytes": 64720226,
+            "sha256": "1e03403749e036c95e52e2f97d0b573ad66b6221a68c076fe65536a8eaa4adcb",
+            "build_seconds": 2.748729666986037
+          }
+        },
+        "host": {
+          "machine": "arm64",
+          "system": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+          "cpu_count": 10
+        },
+        "cpu_nanoseconds_per_tick": {
+          "numer": 125,
+          "denom": 3
+        },
+        "total_connections": 32,
+        "total_configured_db_pool_limit": 12,
+        "per_process_db_pool_limit": {
+          "1": 12,
+          "2": 6,
+          "4": 3
+        },
+        "warmup_seconds": 2.0,
+        "measured_seconds": 5.0,
+        "blocks": 4,
+        "fixed_client_processes": 4,
+        "sample_seconds": 0.25,
+        "selected_cells": "",
+        "segments": 1,
+        "total_measured_seconds_per_route": 5.0
+      },
+      "observations": 24,
+      "timed_route_windows": 24,
+      "checked_responses": 7539258,
+      "source_sha256": "c296cc33b34ce0963a0204810e789fecd3882e08e2da6386bafe722fb59d2694",
+      "groups": [
+        {
+          "mode": "jit",
+          "workers": 1,
+          "all_ready_ms": {
+            "n": 4,
+            "median": 33.20752049330622,
+            "min": 33.08487497270107,
+            "max": 33.414750010706484
+          },
+          "positions": [
+            0,
+            1,
+            2,
+            5
+          ],
+          "routes": [
+            {
+              "name": "me",
+              "verified_requests": 884804,
+              "rps": {
+                "n": 4,
+                "median": 44166.3503108304,
+                "min": 44092.71514399106,
+                "max": 44303.092953045954
+              },
+              "end_app_physical_bytes": {
+                "n": 4,
+                "median": 55190272.0,
+                "min": 54067944,
+                "max": 58082024
+              },
+              "sampled_peak_app_physical_bytes": {
+                "n": 4,
+                "median": 55190272.0,
+                "min": 54133480,
+                "max": 58344168
+              },
+              "end_database_process_physical_sum_bytes": {
+                "n": 4,
+                "median": 98040216.0,
+                "min": 97966488,
+                "max": 98261400
+              },
+              "app_cpu_percent": {
+                "n": 4,
+                "median": 136.69914436294226,
+                "min": 136.07992210961896,
+                "max": 137.13261949088346
+              },
+              "database_cpu_percent": {
+                "n": 4,
+                "median": 39.592723109540096,
+                "min": 39.126453509581744,
+                "max": 40.10224840434646
+              },
+              "foreign_persistent_cpu_percent": {
+                "n": 4,
+                "median": 11.784761463951227,
+                "min": 9.188728952616644,
+                "max": 18.77275088275455
+              },
+              "p99_upper_us": {
+                "n": 4,
+                "median": 1327.963704,
+                "min": 1327.963704,
+                "max": 1448.154688
+              },
+              "client_launch_span_ms": {
+                "n": 4,
+                "median": 3.532853996148333,
+                "min": 3.2674589892849326,
+                "max": 4.250291967764497
+              },
+              "database_pids_added_after_warmup": [
+                [],
+                [],
+                [],
+                []
+              ],
+              "server_cpu_seconds_per_million_requests": {
+                "n": 4,
+                "median": 30.92729507563532,
+                "min": 30.774249035703388,
+                "max": 31.08928986517898
+              },
+              "database_connections_before_load": [
+                12,
+                12,
+                12,
+                12
+              ]
+            }
+          ]
+        },
+        {
+          "mode": "jit",
+          "workers": 2,
+          "all_ready_ms": {
+            "n": 4,
+            "median": 36.15497949067503,
+            "min": 34.163667005486786,
+            "max": 38.407834013924
+          },
+          "positions": [
+            4,
+            3,
+            0,
+            1
+          ],
+          "routes": [
+            {
+              "name": "me",
+              "verified_requests": 1416158,
+              "rps": {
+                "n": 4,
+                "median": 71213.54142233534,
+                "min": 67736.0861085184,
+                "max": 72633.93933715812
+              },
+              "end_app_physical_bytes": {
+                "n": 4,
+                "median": 102180280.0,
+                "min": 100861416,
+                "max": 105612752
+              },
+              "sampled_peak_app_physical_bytes": {
+                "n": 4,
+                "median": 102180280.0,
+                "min": 100861416,
+                "max": 105596368
+              },
+              "end_database_process_physical_sum_bytes": {
+                "n": 4,
+                "median": 97941912.0,
+                "min": 97884568,
+                "max": 98212248
+              },
+              "app_cpu_percent": {
+                "n": 4,
+                "median": 268.61668318697616,
+                "min": 262.5351139667887,
+                "max": 277.47568692514284
+              },
+              "database_cpu_percent": {
+                "n": 4,
+                "median": 138.34575879226395,
+                "min": 132.9649511566924,
+                "max": 146.40545802224958
+              },
+              "foreign_persistent_cpu_percent": {
+                "n": 4,
+                "median": 36.74587405492147,
+                "min": 20.96713175226016,
+                "max": 105.63063270955394
+              },
+              "p99_upper_us": {
+                "n": 4,
+                "median": 1167.2140020000002,
+                "min": 1116.679918,
+                "max": 1327.963704
+              },
+              "client_launch_span_ms": {
+                "n": 4,
+                "median": 4.512625018833205,
+                "min": 4.035458026919514,
+                "max": 4.8727079993113875
+              },
+              "database_pids_added_after_warmup": [
+                [],
+                [],
+                [],
+                []
+              ],
+              "server_cpu_seconds_per_million_requests": {
+                "n": 4,
+                "median": 38.04531680205933,
+                "min": 37.55613868519056,
+                "max": 38.758530208873786
+              },
+              "database_connections_before_load": [
+                12,
+                12,
+                12,
+                12
+              ]
+            }
+          ]
+        },
+        {
+          "mode": "jit",
+          "workers": 4,
+          "all_ready_ms": {
+            "n": 4,
+            "median": 37.811479007359594,
+            "min": 36.736791022121906,
+            "max": 38.54029200738296
+          },
+          "positions": [
+            2,
+            5,
+            4,
+            3
+          ],
+          "routes": [
+            {
+              "name": "me",
+              "verified_requests": 1626224,
+              "rps": {
+                "n": 4,
+                "median": 80806.75841029364,
+                "min": 79897.72157056372,
+                "max": 83256.97335116184
+              },
+              "end_app_physical_bytes": {
+                "n": 4,
+                "median": 186321824.0,
+                "min": 185879384,
+                "max": 187272024
+              },
+              "sampled_peak_app_physical_bytes": {
+                "n": 4,
+                "median": 186346400.0,
+                "min": 186092376,
+                "max": 187829080
+              },
+              "end_database_process_physical_sum_bytes": {
+                "n": 4,
+                "median": 97900952.0,
+                "min": 97638808,
+                "max": 97966488
+              },
+              "app_cpu_percent": {
+                "n": 4,
+                "median": 439.2987709892369,
+                "min": 436.78792640455805,
+                "max": 446.49811697544914
+              },
+              "database_cpu_percent": {
+                "n": 4,
+                "median": 163.45470681571564,
+                "min": 160.99863434535476,
+                "max": 168.06664925708793
+              },
+              "foreign_persistent_cpu_percent": {
+                "n": 4,
+                "median": 27.258206866617154,
+                "min": 17.374618143104684,
+                "max": 33.155373418010015
+              },
+              "p99_upper_us": {
+                "n": 4,
+                "median": 1327.963704,
+                "min": 1217.748086,
+                "max": 1448.154688
+              },
+              "client_launch_span_ms": {
+                "n": 4,
+                "median": 4.196249996311963,
+                "min": 3.865957958623767,
+                "max": 4.3967500096186996
+              },
+              "database_pids_added_after_warmup": [
+                [],
+                [],
+                [],
+                []
+              ],
+              "server_cpu_seconds_per_million_requests": {
+                "n": 4,
+                "median": 54.36712089515049,
+                "min": 53.628915273223576,
+                "max": 54.66838325530942
+              },
+              "database_connections_before_load": [
+                12,
+                12,
+                12,
+                12
+              ]
+            }
+          ]
+        },
+        {
+          "mode": "native",
+          "workers": 1,
+          "all_ready_ms": {
+            "n": 4,
+            "median": 15.159396483795717,
+            "min": 14.79954196838662,
+            "max": 18.09891703305766
+          },
+          "positions": [
+            3,
+            4,
+            5,
+            2
+          ],
+          "routes": [
+            {
+              "name": "me",
+              "verified_requests": 762419,
+              "rps": {
+                "n": 4,
+                "median": 37993.62001164094,
+                "min": 37896.923456973665,
+                "max": 38405.06759533209
+              },
+              "end_app_physical_bytes": {
+                "n": 4,
+                "median": 28304164.0,
+                "min": 27230976,
+                "max": 28607280
+              },
+              "sampled_peak_app_physical_bytes": {
+                "n": 4,
+                "median": 28328740.0,
+                "min": 27247360,
+                "max": 28623664
+              },
+              "end_database_process_physical_sum_bytes": {
+                "n": 4,
+                "median": 98015640.0,
+                "min": 97950104,
+                "max": 98228632
+              },
+              "app_cpu_percent": {
+                "n": 4,
+                "median": 124.85691132627869,
+                "min": 124.47722704512341,
+                "max": 125.65451824945548
+              },
+              "database_cpu_percent": {
+                "n": 4,
+                "median": 34.37883759024041,
+                "min": 34.25456825254755,
+                "max": 34.697419185281255
+              },
+              "foreign_persistent_cpu_percent": {
+                "n": 4,
+                "median": 12.18433750109794,
+                "min": 9.587592617717648,
+                "max": 121.64696101836998
+              },
+              "p99_upper_us": {
+                "n": 4,
+                "median": 1579.223885,
+                "min": 1448.154688,
+                "max": 1579.223885
+              },
+              "client_launch_span_ms": {
+                "n": 4,
+                "median": 3.464750509010628,
+                "min": 3.3383750123903155,
+                "max": 3.6120000295341015
+              },
+              "database_pids_added_after_warmup": [
+                [],
+                [],
+                [],
+                []
+              ],
+              "server_cpu_seconds_per_million_requests": {
+                "n": 4,
+                "median": 32.81807550806313,
+                "min": 32.54425077367175,
+                "max": 33.1115345916253
+              },
+              "database_connections_before_load": [
+                12,
+                12,
+                12,
+                12
+              ]
+            }
+          ]
+        },
+        {
+          "mode": "native",
+          "workers": 2,
+          "all_ready_ms": {
+            "n": 4,
+            "median": 14.493333525024354,
+            "min": 13.382417033426464,
+            "max": 16.938165994361043
+          },
+          "positions": [
+            1,
+            0,
+            3,
+            4
+          ],
+          "routes": [
+            {
+              "name": "me",
+              "verified_requests": 1343437,
+              "rps": {
+                "n": 4,
+                "median": 67244.16953115673,
+                "min": 65990.5254485725,
+                "max": 67856.70770236029
+              },
+              "end_app_physical_bytes": {
+                "n": 4,
+                "median": 49071676.0,
+                "min": 48825856,
+                "max": 49317520
+              },
+              "sampled_peak_app_physical_bytes": {
+                "n": 4,
+                "median": 49079868.0,
+                "min": 48842240,
+                "max": 49317520
+              },
+              "end_database_process_physical_sum_bytes": {
+                "n": 4,
+                "median": 98113908.0,
+                "min": 98032024,
+                "max": 98146712
+              },
+              "app_cpu_percent": {
+                "n": 4,
+                "median": 259.5665269632741,
+                "min": 256.8483280863147,
+                "max": 260.3248232834903
+              },
+              "database_cpu_percent": {
+                "n": 4,
+                "median": 120.15871568153997,
+                "min": 117.780723157044,
+                "max": 121.40360978863359
+              },
+              "foreign_persistent_cpu_percent": {
+                "n": 4,
+                "median": 22.170713855211744,
+                "min": 11.583802369213613,
+                "max": 27.766490244537483
+              },
+              "p99_upper_us": {
+                "n": 4,
+                "median": 939.01214,
+                "min": 939.01214,
+                "max": 939.01214
+              },
+              "client_launch_span_ms": {
+                "n": 4,
+                "median": 3.694792016176507,
+                "min": 3.200666978955269,
+                "max": 4.045290988869965
+              },
+              "database_pids_added_after_warmup": [
+                [],
+                [],
+                [],
+                []
+              ],
+              "server_cpu_seconds_per_million_requests": {
+                "n": 4,
+                "median": 38.62795937396744,
+                "min": 37.85157529494768,
+                "max": 39.393710113171146
+              },
+              "database_connections_before_load": [
+                12,
+                12,
+                12,
+                12
+              ]
+            }
+          ]
+        },
+        {
+          "mode": "native",
+          "workers": 4,
+          "all_ready_ms": {
+            "n": 4,
+            "median": 16.688062489265576,
+            "min": 15.318166988436133,
+            "max": 17.69374997820705
+          },
+          "positions": [
+            5,
+            2,
+            1,
+            0
+          ],
+          "routes": [
+            {
+              "name": "me",
+              "verified_requests": 1506216,
+              "rps": {
+                "n": 4,
+                "median": 75354.65433076047,
+                "min": 73238.20312050651,
+                "max": 76813.31198385097
+              },
+              "end_app_physical_bytes": {
+                "n": 4,
+                "median": 86887460.0,
+                "min": 86756472,
+                "max": 87362656
+              },
+              "sampled_peak_app_physical_bytes": {
+                "n": 4,
+                "median": 86903904.0,
+                "min": 86789120,
+                "max": 87411808
+              },
+              "end_database_process_physical_sum_bytes": {
+                "n": 4,
+                "median": 97974680.0,
+                "min": 97769880,
+                "max": 97982872
+              },
+              "app_cpu_percent": {
+                "n": 4,
+                "median": 425.2500424950953,
+                "min": 419.4267172669828,
+                "max": 426.6686302205686
+              },
+              "database_cpu_percent": {
+                "n": 4,
+                "median": 150.0976862081485,
+                "min": 146.06377829535182,
+                "max": 152.3097481341699
+              },
+              "foreign_persistent_cpu_percent": {
+                "n": 4,
+                "median": 26.856149090973386,
+                "min": 12.38104070444969,
+                "max": 33.74544711001666
+              },
+              "p99_upper_us": {
+                "n": 4,
+                "median": 1388.0591960000002,
+                "min": 1327.963704,
+                "max": 1448.154688
+              },
+              "client_launch_span_ms": {
+                "n": 4,
+                "median": 4.294729005778208,
+                "min": 3.831417008768767,
+                "max": 4.553624952677637
+              },
+              "database_pids_added_after_warmup": [
+                [],
+                [],
+                [],
+                []
+              ],
+              "server_cpu_seconds_per_million_requests": {
+                "n": 4,
+                "median": 56.43743623264571,
+                "min": 55.5461832332227,
+                "max": 57.26884322610372
+              },
+              "database_connections_before_load": [
+                12,
+                12,
+                12,
+                12
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "comparisons": [
+    {
+      "batch": "main",
+      "comparison": "two-native-vs-one-jit",
+      "route": "echo",
+      "ratios_of_group_medians": {
+        "rps": 1.0290730301084206,
+        "end_app_physical_bytes": 0.8994753564915584,
+        "app_cpu_percent": 1.9425749423764584,
+        "database_cpu_percent": 4.719806102378719
+      },
+      "within_block_ratios": [
+        {
+          "block": 0,
+          "rps": 1.0499044600334146,
+          "app_memory": 0.9507634688606907,
+          "app_cpu": 1.9525416884640057
+        },
+        {
+          "block": 1,
+          "rps": 1.0280182949556669,
+          "app_memory": 0.8476028013175569,
+          "app_cpu": 1.9399684817444118
+        },
+        {
+          "block": 2,
+          "rps": 0.8910499355160244,
+          "app_memory": 0.9269835958847704,
+          "app_cpu": 1.8467688695910132
+        },
+        {
+          "block": 3,
+          "rps": 1.0804253309356024,
+          "app_memory": 0.8857730774073119,
+          "app_cpu": 1.9615308976204198
+        }
+      ]
+    },
+    {
+      "batch": "main",
+      "comparison": "two-native-vs-one-jit",
+      "route": "me",
+      "ratios_of_group_medians": {
+        "rps": 1.382233072208399,
+        "end_app_physical_bytes": 0.8817101758638876,
+        "app_cpu_percent": 1.8320844784731536,
+        "database_cpu_percent": 2.8859462053585196
+      },
+      "within_block_ratios": [
+        {
+          "block": 0,
+          "rps": 1.4739302256202214,
+          "app_memory": 0.7824064692170515,
+          "app_cpu": 1.8792794733361935
+        },
+        {
+          "block": 1,
+          "rps": 1.2986275471033712,
+          "app_memory": 0.8723254504301814,
+          "app_cpu": 1.7940318484099433
+        },
+        {
+          "block": 2,
+          "rps": 1.346032216563514,
+          "app_memory": 0.9442311885612282,
+          "app_cpu": 1.8255794743354545
+        },
+        {
+          "block": 3,
+          "rps": 1.4631529209570198,
+          "app_memory": 0.9077140484349009,
+          "app_cpu": 1.9048346408966792
+        }
+      ]
+    },
+    {
+      "batch": "main",
+      "comparison": "four-native-vs-two-jit",
+      "route": "echo",
+      "ratios_of_group_medians": {
+        "rps": 0.92774604311293,
+        "end_app_physical_bytes": 0.9099830923289277,
+        "app_cpu_percent": 1.8061206817282338,
+        "database_cpu_percent": 0.9381603260189524
+      },
+      "within_block_ratios": [
+        {
+          "block": 0,
+          "rps": 0.9395953440506926,
+          "app_memory": 0.9687823642550674,
+          "app_cpu": 1.8592203374930611
+        },
+        {
+          "block": 1,
+          "rps": 0.8897686281124841,
+          "app_memory": 0.8616941687990196,
+          "app_cpu": 1.781149791367257
+        },
+        {
+          "block": 2,
+          "rps": 0.9332424843271235,
+          "app_memory": 1.1140357101229212,
+          "app_cpu": 1.804580104095472
+        },
+        {
+          "block": 3,
+          "rps": 0.9622976266013056,
+          "app_memory": 0.8679025155346642,
+          "app_cpu": 1.8270000516124623
+        }
+      ]
+    },
+    {
+      "batch": "main",
+      "comparison": "four-native-vs-two-jit",
+      "route": "me",
+      "ratios_of_group_medians": {
+        "rps": 1.003439062936197,
+        "end_app_physical_bytes": 0.8693224589448588,
+        "app_cpu_percent": 1.5669087517649665,
+        "database_cpu_percent": 1.07210191032351
+      },
+      "within_block_ratios": [
+        {
+          "block": 0,
+          "rps": 1.0044947508872284,
+          "app_memory": 0.842090950043646,
+          "app_cpu": 1.6088418555122084
+        },
+        {
+          "block": 1,
+          "rps": 0.954404500182659,
+          "app_memory": 0.8718346597289856,
+          "app_cpu": 1.5355237160497588
+        },
+        {
+          "block": 2,
+          "rps": 0.8400025520127213,
+          "app_memory": 0.9231105975801379,
+          "app_cpu": 1.3293938269486638
+        },
+        {
+          "block": 3,
+          "rps": 1.0789068288990524,
+          "app_memory": 0.8668172119340877,
+          "app_cpu": 1.6297963735906629
+        }
+      ]
+    },
+    {
+      "batch": "main",
+      "comparison": "four-vs-two-native",
+      "route": "echo",
+      "ratios_of_group_medians": {
+        "rps": 0.9669980130530079,
+        "end_app_physical_bytes": 1.9085104850835906,
+        "app_cpu_percent": 1.8101568860054504,
+        "database_cpu_percent": 0.9308873093103632
+      },
+      "within_block_ratios": [
+        {
+          "block": 0,
+          "rps": 0.9443690986405824,
+          "app_memory": 1.9863420773078073,
+          "app_cpu": 1.8551143041302374
+        },
+        {
+          "block": 1,
+          "rps": 0.9276796657035312,
+          "app_memory": 1.8358379920196268,
+          "app_cpu": 1.7804936506362543
+        },
+        {
+          "block": 2,
+          "rps": 1.1285270421578917,
+          "app_memory": 2.039156995926514,
+          "app_cpu": 1.8990875259166227
+        },
+        {
+          "block": 3,
+          "rps": 0.9869378584350642,
+          "app_memory": 1.8411609080099864,
+          "app_cpu": 1.8358875466790268
+        }
+      ]
+    },
+    {
+      "batch": "main",
+      "comparison": "four-vs-two-native",
+      "route": "me",
+      "ratios_of_group_medians": {
+        "rps": 1.1521023736854807,
+        "end_app_physical_bytes": 1.7838462639401136,
+        "app_cpu_percent": 1.6775183635539357,
+        "database_cpu_percent": 1.320975954071863
+      },
+      "within_block_ratios": [
+        {
+          "block": 0,
+          "rps": 1.0900598745137144,
+          "app_memory": 1.934053024078419,
+          "app_cpu": 1.6778118854132407
+        },
+        {
+          "block": 1,
+          "rps": 1.1698695980844012,
+          "app_memory": 1.8049430365131172,
+          "app_cpu": 1.682479099384161
+        },
+        {
+          "block": 2,
+          "rps": 0.9843613305226094,
+          "app_memory": 1.6208297229764308,
+          "app_cpu": 1.4250625257403429
+        },
+        {
+          "block": 3,
+          "rps": 1.134661640294787,
+          "app_memory": 1.7631757659936023,
+          "app_cpu": 1.6726050601365752
+        }
+      ]
+    },
+    {
+      "batch": "fixed-total-db",
+      "comparison": "two-native-vs-one-jit",
+      "route": "me",
+      "ratios_of_group_medians": {
+        "rps": 1.4818206513469836,
+        "end_app_physical_bytes": 0.8899879571939541,
+        "app_cpu_percent": 1.9115354852536883,
+        "database_cpu_percent": 2.843867710391963
+      },
+      "within_block_ratios": [
+        {
+          "block": 0,
+          "rps": 1.4996204372365218,
+          "app_memory": 0.8968046157535086,
+          "app_cpu": 1.91288855542271
+        },
+        {
+          "block": 1,
+          "rps": 1.431572410934421,
+          "app_memory": 0.8911079028324098,
+          "app_cpu": 1.9081886065010973
+        },
+        {
+          "block": 2,
+          "rps": 1.5166562863337905,
+          "app_memory": 0.8891671101492764,
+          "app_cpu": 1.9267163139310972
+        },
+        {
+          "block": 3,
+          "rps": 1.4719566325890439,
+          "app_memory": 0.8837037235133135,
+          "app_cpu": 1.905747600960762
+        }
+      ]
+    },
+    {
+      "batch": "fixed-total-db",
+      "comparison": "four-native-vs-two-jit",
+      "route": "me",
+      "ratios_of_group_medians": {
+        "rps": 1.0690142294880784,
+        "end_app_physical_bytes": 0.8590284453794916,
+        "app_cpu_percent": 1.6120495152079912,
+        "database_cpu_percent": 1.0941427675603261
+      },
+      "within_block_ratios": [
+        {
+          "block": 0,
+          "rps": 1.014552163226927,
+          "app_memory": 0.8645688650528672,
+          "app_cpu": 1.6081947591517662
+        },
+        {
+          "block": 1,
+          "rps": 1.0691999131126602,
+          "app_memory": 0.862395217713822,
+          "app_cpu": 1.6039847538404652
+        },
+        {
+          "block": 2,
+          "rps": 1.07171352793181,
+          "app_memory": 0.8531485466979957,
+          "app_cpu": 1.6236339075579835
+        },
+        {
+          "block": 3,
+          "rps": 1.0610179136751754,
+          "app_memory": 0.8561066160061881,
+          "app_cpu": 1.6016307001462693
+        }
+      ]
+    },
+    {
+      "batch": "fixed-total-db",
+      "comparison": "four-vs-two-native",
+      "route": "me",
+      "ratios_of_group_medians": {
+        "rps": 1.1596924864464322,
+        "end_app_physical_bytes": 1.7673496579587755,
+        "app_cpu_percent": 1.6779161413663342,
+        "database_cpu_percent": 1.2721456413735706
+      },
+      "within_block_ratios": [
+        {
+          "block": 0,
+          "rps": 1.0899409308057595,
+          "app_memory": 1.7698267911380157,
+          "app_cpu": 1.6699366334093657
+        },
+        {
+          "block": 1,
+          "rps": 1.1797316480184052,
+          "app_memory": 1.7668618647885441,
+          "app_cpu": 1.6734825652199017
+        },
+        {
+          "block": 2,
+          "rps": 1.1293247019717962,
+          "app_memory": 1.762275409452833,
+          "app_cpu": 1.6722706692509326
+        },
+        {
+          "block": 3,
+          "rps": 1.1795495202799726,
+          "app_memory": 1.7760828316992194,
+          "app_cpu": 1.689863968467617
+        }
+      ]
+    },
+    {
+      "batch": "five-minute",
+      "comparison": "two-native-vs-one-jit",
+      "route": "me-minute-1",
+      "ratios_of_group_medians": {
+        "rps": 1.4677269475752468,
+        "end_app_physical_bytes": 0.8717592185829263,
+        "app_cpu_percent": 1.8870092682270618,
+        "database_cpu_percent": 2.9378776024353668
+      },
+      "within_block_ratios": [
+        {
+          "block": 0,
+          "rps": 1.438698534797761,
+          "app_memory": 0.8932475068566721,
+          "app_cpu": 1.8922154449590816
+        },
+        {
+          "block": 1,
+          "rps": 1.4946409357943673,
+          "app_memory": 0.8510372646271466,
+          "app_cpu": 1.8820180293236317
+        }
+      ]
+    },
+    {
+      "batch": "five-minute",
+      "comparison": "two-native-vs-one-jit",
+      "route": "me-minute-2",
+      "ratios_of_group_medians": {
+        "rps": 1.5322863897276098,
+        "end_app_physical_bytes": 0.8730953102892808,
+        "app_cpu_percent": 1.9240615111693773,
+        "database_cpu_percent": 3.094987833149091
+      },
+      "within_block_ratios": [
+        {
+          "block": 0,
+          "rps": 1.5894568313493196,
+          "app_memory": 0.8926305577093299,
+          "app_cpu": 1.9745252849697614
+        },
+        {
+          "block": 1,
+          "rps": 1.4799103801489981,
+          "app_memory": 0.8540625525230615,
+          "app_cpu": 1.8759253554261848
+        }
+      ]
+    },
+    {
+      "batch": "five-minute",
+      "comparison": "two-native-vs-one-jit",
+      "route": "me-minute-3",
+      "ratios_of_group_medians": {
+        "rps": 1.5494086705865215,
+        "end_app_physical_bytes": 0.8898662306522357,
+        "app_cpu_percent": 1.9369832881945865,
+        "database_cpu_percent": 3.0852659195889616
+      },
+      "within_block_ratios": [
+        {
+          "block": 0,
+          "rps": 1.5850504128212837,
+          "app_memory": 0.9156469089110915,
+          "app_cpu": 1.9828332486958404
+        },
+        {
+          "block": 1,
+          "rps": 1.5162067162362043,
+          "app_memory": 0.8649841639653516,
+          "app_cpu": 1.8930542466823488
+        }
+      ]
+    },
+    {
+      "batch": "five-minute",
+      "comparison": "two-native-vs-one-jit",
+      "route": "me-minute-4",
+      "ratios_of_group_medians": {
+        "rps": 1.5696339069995808,
+        "end_app_physical_bytes": 0.891952951547057,
+        "app_cpu_percent": 1.9246965213810123,
+        "database_cpu_percent": 3.0336529531210252
+      },
+      "within_block_ratios": [
+        {
+          "block": 0,
+          "rps": 1.6146049472528166,
+          "app_memory": 0.9152405297222087,
+          "app_cpu": 1.963198561066226
+        },
+        {
+          "block": 1,
+          "rps": 1.5278887227858575,
+          "app_memory": 0.8695306405270624,
+          "app_cpu": 1.887801002391736
+        }
+      ]
+    },
+    {
+      "batch": "five-minute",
+      "comparison": "two-native-vs-one-jit",
+      "route": "me-minute-5",
+      "ratios_of_group_medians": {
+        "rps": 1.5665721132931905,
+        "end_app_physical_bytes": 0.8306121830340994,
+        "app_cpu_percent": 1.9263727578460255,
+        "database_cpu_percent": 3.051157775110242
+      },
+      "within_block_ratios": [
+        {
+          "block": 0,
+          "rps": 1.6135364208400886,
+          "app_memory": 0.8040741140950594,
+          "app_cpu": 1.9636953625437636
+        },
+        {
+          "block": 1,
+          "rps": 1.5231835023022702,
+          "app_memory": 0.8595276857350901,
+          "app_cpu": 1.8906676897107766
+        }
+      ]
+    },
+    {
+      "batch": "matched-clients",
+      "comparison": "two-native-vs-one-jit",
+      "route": "me",
+      "ratios_of_group_medians": {
+        "rps": 1.5225204042876783,
+        "end_app_physical_bytes": 0.8891363318521062,
+        "app_cpu_percent": 1.8988160326308519,
+        "database_cpu_percent": 3.0348686891048176
+      },
+      "within_block_ratios": [
+        {
+          "block": 0,
+          "rps": 1.5389550741151803,
+          "app_memory": 0.9008013824819651,
+          "app_cpu": 1.8874814454950302
+        },
+        {
+          "block": 1,
+          "rps": 1.4922076283709627,
+          "app_memory": 0.847124611222226,
+          "app_cpu": 1.8967120207640464
+        },
+        {
+          "block": 2,
+          "rps": 1.5180998753472126,
+          "app_memory": 0.8798776073661663,
+          "app_cpu": 1.8899361210706473
+        },
+        {
+          "block": 3,
+          "rps": 1.5241835712417446,
+          "app_memory": 0.9030462856142634,
+          "app_cpu": 1.9093874839661604
+        }
+      ]
+    },
+    {
+      "batch": "matched-clients",
+      "comparison": "four-native-vs-two-jit",
+      "route": "me",
+      "ratios_of_group_medians": {
+        "rps": 1.0581506385683876,
+        "end_app_physical_bytes": 0.8503349178530338,
+        "app_cpu_percent": 1.5831110616427768,
+        "database_cpu_percent": 1.0849460620873164
+      },
+      "within_block_ratios": [
+        {
+          "block": 0,
+          "rps": 1.0338485168272942,
+          "app_memory": 0.821612299242046,
+          "app_cpu": 1.5681984240467102
+        },
+        {
+          "block": 1,
+          "rps": 1.044329269855684,
+          "app_memory": 0.8435750648206258,
+          "app_cpu": 1.5785056746692638
+        },
+        {
+          "block": 2,
+          "rps": 1.1214771724929467,
+          "app_memory": 0.8605737898312585,
+          "app_cpu": 1.6176865825360276
+        },
+        {
+          "block": 3,
+          "rps": 1.057540217215711,
+          "app_memory": 0.8625913401810659,
+          "app_cpu": 1.537679336696894
+        }
+      ]
+    },
+    {
+      "batch": "matched-clients",
+      "comparison": "four-vs-two-native",
+      "route": "me",
+      "ratios_of_group_medians": {
+        "rps": 1.1206124613650832,
+        "end_app_physical_bytes": 1.7706234447749452,
+        "app_cpu_percent": 1.638308480951643,
+        "database_cpu_percent": 1.2491618719191093
+      },
+      "within_block_ratios": [
+        {
+          "block": 0,
+          "rps": 1.1015098855761476,
+          "app_memory": 1.773020050412091,
+          "app_cpu": 1.6577898593073885
+        },
+        {
+          "block": 1,
+          "rps": 1.1098290644402014,
+          "app_memory": 1.7632457332839702,
+          "app_cpu": 1.6134206835712244
+        },
+        {
+          "block": 2,
+          "rps": 1.1344365812955968,
+          "app_memory": 1.7714324645683726,
+          "app_cpu": 1.6386789853915626
+        },
+        {
+          "block": 3,
+          "rps": 1.1375360477925858,
+          "app_memory": 1.7818875310655076,
+          "app_cpu": 1.6389855751709554
+        }
+      ]
+    }
+  ],
+  "five_minute_series": [
+    {
+      "block": 0,
+      "mode": "jit",
+      "workers": 1,
+      "measured_seconds": 300.019203208969,
+      "checked_requests": 12189829,
+      "rps": 40630.16256832585,
+      "end_app_physical_bytes": 61375208,
+      "first_window_app_physical_bytes": 54936272,
+      "app_cpu_percent": 131.51933478632432,
+      "database_cpu_percent": 39.071892425394246
+    },
+    {
+      "block": 0,
+      "mode": "native",
+      "workers": 2,
+      "measured_seconds": 300.0221203340334,
+      "checked_requests": 19115219,
+      "rps": 63712.69884606452,
+      "end_app_physical_bytes": 49350216,
+      "first_window_app_physical_bytes": 49071688,
+      "app_cpu_percent": 257.1551585427598,
+      "database_cpu_percent": 118.64106121976357
+    },
+    {
+      "block": 1,
+      "mode": "native",
+      "workers": 2,
+      "measured_seconds": 300.022430708108,
+      "checked_requests": 19869274,
+      "rps": 66225.96168261442,
+      "end_app_physical_bytes": 48416280,
+      "first_window_app_physical_bytes": 48481816,
+      "app_cpu_percent": 259.1418486466703,
+      "database_cpu_percent": 119.95192201983392
+    },
+    {
+      "block": 1,
+      "mode": "jit",
+      "workers": 1,
+      "measured_seconds": 300.01845045905793,
+      "checked_requests": 13172406,
+      "rps": 43905.31975565141,
+      "end_app_physical_bytes": 56328936,
+      "first_window_app_physical_bytes": 56967912,
+      "app_cpu_percent": 137.410788692897,
+      "database_cpu_percent": 39.397809918848175
+    }
+  ],
+  "response_sha256": {
+    "echo": "2905a66e09f19e1c250e37b20fa4669fbc47ec685c113a539a7e8dd1f0e7876f",
+    "me": "2be3138ebc3a0b7e17a9db9e7c4e07cbb036d169a99c896b5f5e963466c3647a"
+  },
+  "limits": [
+    "One shared M5, pinned preview and cached local DB row; no enforced CPU/RAM budget.",
+    "Main: each worker can open 10 DB connections. Fixed-total control: 12 configured across all workers, with observed counts retained.",
+    "App memory is the sum of process physical footprints, not uniquely occupied OS RAM or an enforced packing test.",
+    "PostgreSQL process footprint sums can include shared accounting; do not turn their sum into machine-wide unique bytes.",
+    "CPU percentages are process CPU seconds / elapsed seconds; 100% is one core, and DB CPU is separate.",
+    "Four repetitions, equal cell counts and rotated/reversed positions; not a complete nine-position Latin square.",
+    "Same-host clients and DB can constrain scaling. Every request count is checked work, not maximum independent server capacity."
+  ]
+}

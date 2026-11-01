@@ -1,0 +1,99 @@
+[
+  {
+    "name": "build-and-run",
+    "exit": 0,
+    "complete": true,
+    "accepted_runs": [
+      1,
+      1,
+      1
+    ],
+    "errors": [
+      [],
+      [],
+      []
+    ]
+  },
+  {
+    "name": "boolean-is-not-number",
+    "exit": 1,
+    "complete": false,
+    "accepted_runs": [
+      0
+    ],
+    "errors": [
+      [
+        "json-type: JSON differs from the expected result"
+      ]
+    ]
+  },
+  {
+    "name": "hot-wrong-body",
+    "exit": 1,
+    "complete": false,
+    "accepted_runs": [
+      0
+    ],
+    "errors": [
+      [
+        "HTTP load failed: response changed, connection failed, or unsupported framing (requires Content-Length)"
+      ]
+    ]
+  },
+  {
+    "name": "startup-crash",
+    "exit": 1,
+    "complete": false,
+    "accepted_runs": [
+      0
+    ],
+    "errors": [
+      [
+        "Server exited at startup; see /private/tmp/bun-aot-practical-20261031/tool-selftest-v5/startup-crash/private/test-first.log"
+      ]
+    ]
+  },
+  {
+    "name": "occupied-port",
+    "exit": 1,
+    "complete": false,
+    "accepted_runs": [
+      0
+    ],
+    "errors": [
+      [
+        "[Errno 48] Address already in use"
+      ]
+    ]
+  },
+  {
+    "name": "compiler-failure",
+    "exit": 1,
+    "complete": false,
+    "accepted_runs": [
+      0,
+      0,
+      0
+    ],
+    "errors": [
+      [],
+      [],
+      []
+    ]
+  },
+  {
+    "name": "native-type-error",
+    "exit": 1,
+    "complete": false,
+    "accepted_runs": [
+      1,
+      1,
+      0
+    ],
+    "errors": [
+      [],
+      [],
+      []
+    ]
+  }
+]

@@ -1,0 +1,24 @@
+[
+  {
+    "name": "jit",
+    "flags": [],
+    "source_change": "DB_POOL_MAX replaces literal 10 in both existing driver configurations",
+    "upstream_db_sha256": "22ae564050208fd05951b604e2daa468e7e65a79ed9aae3b63497614d5148c7d",
+    "overlay_db_sha256": "288067f05d1e285d0a3b28f645b3e09a04c82d99941a4ab6c651d0d04d61fb47",
+    "bytes": 122528738,
+    "sha256": "1e2c0d6785e76f3992559af7568238a8f96315190d905f843f7adb0b9db37238",
+    "build_seconds": 0.22829837497556582
+  },
+  {
+    "name": "native",
+    "flags": [
+      "--aot"
+    ],
+    "source_change": "DB_POOL_MAX replaces literal 10 in both existing driver configurations",
+    "upstream_db_sha256": "22ae564050208fd05951b604e2daa468e7e65a79ed9aae3b63497614d5148c7d",
+    "overlay_db_sha256": "288067f05d1e285d0a3b28f645b3e09a04c82d99941a4ab6c651d0d04d61fb47",
+    "bytes": 64720226,
+    "sha256": "1e03403749e036c95e52e2f97d0b573ad66b6221a68c076fe65536a8eaa4adcb",
+    "build_seconds": 2.748729666986037
+  }
+]

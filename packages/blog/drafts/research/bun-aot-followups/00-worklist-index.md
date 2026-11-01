@@ -53,3 +53,7 @@ Goga subsequently authorized the Polkadot comment, Assaf pitch and X demo public
 ## New owner request — October 31: application trials and article update
 
 The original follow-up acceptance above remains complete. Goga has now authorized broader validator, framework and database experiments and publication of their distilled findings in the existing article. [Experiment plan and delivery gates](validation-2026-10-31/00-plan.md). The experiments, numeric audit and verified article publication are complete; the plan records the build, activation, live HTML/Markdown and individual result-delivery receipts. They are not a maintainer endorsement or an independent replication of our measurements.
+
+## New owner request — October 31 evening: practical use and informal voice
+
+The application publication above remains complete. Goga asked for a persistent informal Reddit/X voice rule, cleanup of conflicting guidance and about another hour of useful experiments/building. [New plan and acceptance](practical-2026-10-31/00-plan.md) tests actual multi-process app scaling and a reusable executable-comparison tool. Do not merge its observations with the earlier single-process batches.

@@ -19,14 +19,14 @@ researchFootprint:
   startedAt: "2026-10-27T14:49:02.355Z"
   measuredAt: "2026-10-27T15:34:24.348Z"
   provenanceUrl: "https://github.com/gkoreli/blog/tree/main/packages/blog/drafts/research/bun-aot"
-  scope: "One linked session through the frozen research cutoff, including experiments, writing and publication preparation. Tokens count cumulative usage epochs, including cached input; elapsed time is not human hands-on time. Six committed Markdown research artifacts, plus reproduction sources and numeric results. Prompts are omitted at the author's request. Private logs stay private; the linked manifest records accounting and prefix commitments. Later deployment checks and the October 31 application trials are outside this cutoff."
+  scope: "One linked session through the frozen research cutoff, including experiments, writing and publication preparation. Tokens count cumulative usage epochs, including cached input; elapsed time is not human hands-on time. Six committed Markdown research artifacts, plus reproduction sources and numeric results. Prompts are omitted at the author's request. Private logs stay private; the linked manifest records accounting and prefix commitments. Later deployment checks and application trials are outside this cutoff."
 ---
 
 # Bun AOT: Don't Rewrite TypeScript in Rust Yet
 
 The TypeScript compiler I tested finished **3.3× faster with 64% less peak physical memory**, without rewriting its source. My server executable shrank from **121.5 MB with JIT to 51.8 MB with AOT, then 30.3 MB with `--trim`**.
 
-Before moving a TypeScript application to Rust for efficiency, I would try Bun's ahead-of-time compiler.
+Try compiling your TypeScript before rewriting it in Rust.
 
 That recommendation has limits:
 
@@ -80,27 +80,24 @@ The server's AOT executable was **51.8 MB** before trimming and **30.3 MB** afte
 
 [My Bun 1.4 review](/oss-radar-05-bun-1-4) covered the runtime's Rust rewrite. AOT targets the applications running on it. These tests do not establish TypeScript/Rust equivalence. Bun's original server comparison put Rust ahead in throughput and memory.
 
-Before an efficiency-driven rewrite, use `bun build` to compare your usual executable with `--compile --bytecode --format=esm` and `--compile --aot`. Check outputs, warmed performance, memory and plugin paths before keeping a build.
+Try the macOS-tested [comparison tool](/downloads/bun-aot-check-0.1.0.zip) on your own server. It checks responses and compares regular Bun, bytecode and AOT on startup, requests, memory, CPU and file size. [Instructions and limits](https://github.com/gkoreli/blog/tree/main/packages/blog/tools/bun-aot-check).
 
 ---
 
 ## Sources and evidence
 
-The [October 31 application trials](https://github.com/gkoreli/blog/tree/main/packages/blog/drafts/research/bun-aot-followups/validation-2026-10-31) test code generation, frameworks and a PostgreSQL API separately:
+The [application trials](https://github.com/gkoreli/blog/tree/main/packages/blog/drafts/research/bun-aot-followups/validation-2026-10-31) and [multiple-copy checks](https://github.com/gkoreli/blog/tree/main/packages/blog/drafts/research/bun-aot-followups/practical-2026-10-31) answer different decisions:
 
 | Check | Finding |
 | --- | --- |
 | Prebuilt validation | With matching outputs, one million valid nested checks fell from **264 ms to 50 ms** under AOT; regular Bun took **34 ms**. The raw module changes returned data, defaults and errors. |
 | Elysia and Hono | At eight connections: about **30% less physical memory after warm-up**, with throughput from **5% slower to 7% faster**. Small changes overlap run variation. |
-| PostgreSQL API | Roughly **half the server memory**, but **12–21% fewer requests** on the database routes at eight connections. Prebuilding routes recovered most validation throughput. |
+| One API copy | Roughly **half the server memory**, but **12–21% fewer requests** on the database routes at eight connections. Prebuilding routes recovered most validation throughput. |
 | API with bytecode | JIT startup fell from **29.2 ms to 14.8 ms** (native AOT: **11.3 ms**), while retaining JIT-like warmed throughput. |
+| Two API copies | With **12 DB connections total**, two AOT copies served **52% more requests** than one JIT copy: **49 vs 55 MB** of app memory and **2.6 vs 1.4 cores** of app CPU. PostgreSQL needed more CPU too. |
 
-The database tests repeatedly read one cached user; server memory excludes PostgreSQL. The memory gap persisted in two one-minute runs per mode, which is no proof of permanent savings.
+The database tests repeatedly read one cached user; app memory excludes PostgreSQL. The linked five-minute checks retain each minute separately. No CPU or RAM quota was enforced.
 
-| Source | What it establishes |
-| --- | --- |
-| [Reproduction and question map](https://github.com/gkoreli/blog/tree/main/packages/blog/drafts/research/bun-aot) | Versions, methods, failures and local measurements. |
-| [Bun AOT proposal](https://github.com/oven-sh/bun/pull/45631) | Preview status and maintainer rationale. |
-| [Pinned compiler docs](https://github.com/oven-sh/bun/tree/06888611e2cf51ef28fd7b19eba61cbbf3cdf4ea/docs/compiler) | Memory mechanisms, compatibility, size and comparison conditions. |
+[Original experiments](https://github.com/gkoreli/blog/tree/main/packages/blog/drafts/research/bun-aot) preserve versions, methods and failures. [Pinned compiler docs](https://github.com/oven-sh/bun/tree/06888611e2cf51ef28fd7b19eba61cbbf3cdf4ea/docs/compiler) explain memory mechanisms and compatibility limits.
 
 Checked October 31, 2026. Original measurements use Bun `06888611e`; application follow-ups use `da867c60b`. Both are macOS arm64 previews, without stable-release guarantees.

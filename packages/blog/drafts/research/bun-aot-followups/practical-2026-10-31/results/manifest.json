@@ -1,0 +1,102 @@
+{
+  "created_at": "2026-11-01T01:17:20.811966+00:00",
+  "scope": "Owner-run numerical evidence on one shared M5 and one preview compiler. Gzip is lossless; no samples are filtered. Raw process/mail/app-command logs stay outside Git. No independent operator replication or adoption claim.",
+  "accepted_totals": {
+    "observations": 88,
+    "windows": 140,
+    "requests": 172505295
+  },
+  "comparison_tool_sha256": "88483f02b3c72e84dba66eda73f37ec4bfbc69ac4edcccd236c7c906b033212f",
+  "runner_source_sha256": {
+    "pool-study.py": "a80b9e3aff2557c3343e96f0c282973e2ae6b2141955dc1b325bf890e2a7d43e",
+    "pool-fixed-connections.py": "60c6c590090901d496718f025ff37ff7e8501b9b4ce87886e14e298c0c198874",
+    "pool-sustained.py": "8dad3d0fedfa7895402137e1fae284ba1162daa819d980686b102feca5d4c6c0",
+    "matched-client-pools.py": "a8b95315632b908f9399477b53e7779e39de2ea3b0f9d9b14ed44613d7b4635e"
+  },
+  "analysis_source_sha256": {
+    "summarize-pools.py": "37acd86abe9c2793c99190fca9f351b74842bf52e5abce04358705e44b783850",
+    "verify-evidence.py": "715b88ee0f1ac5279e204b5f86898cc11dbf642e89ce3d3a67beff7908011b32",
+    "capture-public.py": "59e34cad2728d39b8ea3f30d66a6990fab4fbf5d394c6958c570c47b06f3472a",
+    "build-pool-control.py": "d782a226cbab8c2da7d90d1b0e11176ce6327b827474634893392daaedc1fc03"
+  },
+  "download": {
+    "url": "https://gkoreli.com/downloads/bun-aot-check-0.1.0.zip",
+    "bytes": 17085,
+    "sha256": "92fffd5f9021fca27cd84b5359ae18fb3801814c8d1669156da851f08132b61d",
+    "entries": 8
+  },
+  "files": {
+    "control-builds.json": {
+      "bytes": 970,
+      "sha256": "5f0d8786d8d0fb1ecfa32e032a2218423568cb7aaf1b4b6ddc58e71a3ce66b20"
+    },
+    "expected-responses.json": {
+      "bytes": 452,
+      "sha256": "3f63e1c462802e93c8daa80ab216a27ea81f5056b773dc3db9051ebc7a8ce6fb"
+    },
+    "fixed-total-db.json.gz": {
+      "bytes": 288532,
+      "sha256": "ac29dfe42ef5373317a7f4ee3bbe4ebd22ef9297945abc4ef293a2b8905e6815",
+      "encoding": "gzip",
+      "uncompressed_bytes": 5937961,
+      "uncompressed_sha256": "82df47b1004e7834662f51c69273bf0af5c24ef5f1ac5fe7de2d578cbe4e3fcc"
+    },
+    "host-conditions.json": {
+      "bytes": 399,
+      "sha256": "b70e1f9b7aa2c635f32c423f36e5c3947d6981fd0619b92d85156d47304f0290"
+    },
+    "main.json.gz": {
+      "bytes": 1082955,
+      "sha256": "5d067a37a64ebc161c770590d8b540427ee3b6ff28fcb83a5c8c431a3848e099",
+      "encoding": "gzip",
+      "uncompressed_bytes": 30002690,
+      "uncompressed_sha256": "f94a90109f44079307c8bce76439766d0ce5de452afabacaac0f03db0317344d"
+    },
+    "matched-clients.json.gz": {
+      "bytes": 245572,
+      "sha256": "38cf8bdcc7b014b1e945991d225ced2b7a4df341d3bd9a0737f9d9e3ffd7a954",
+      "encoding": "gzip",
+      "uncompressed_bytes": 5209198,
+      "uncompressed_sha256": "c296cc33b34ce0963a0204810e789fecd3882e08e2da6386bafe722fb59d2694"
+    },
+    "summary.json": {
+      "bytes": 129834,
+      "sha256": "31b692cd697318bedd5e8c1f5ed53c5f683c61944ccd7a0d924c273d88252c92"
+    },
+    "sustained.json.gz": {
+      "bytes": 346765,
+      "sha256": "ccf8f59f3c2f3a91394c2bfeb184018dc29195d6cbf0070be9c3639b52acbbf9",
+      "encoding": "gzip",
+      "uncompressed_bytes": 7513699,
+      "uncompressed_sha256": "5819a98543df52f5a23a1e9fd81e9f2ddae7c5cbae8e9dbfbb7c9e8a259d8298"
+    },
+    "tool-api/observations.json": {
+      "bytes": 819393,
+      "sha256": "ea010dfdcd675184e907464c387fecff360a974cda07bda4ec1cbdfc6edf33f4"
+    },
+    "tool-api/report.md": {
+      "bytes": 2324,
+      "sha256": "39d6901d178dce531cb01c78b6d2ea393113844f6accc8c003e40dbf5975a90b"
+    },
+    "tool-api/summary.json": {
+      "bytes": 8967,
+      "sha256": "092a5176a4145d4d9cc59eeec89095436afa3be689d6c715327cac694544d24d"
+    },
+    "tool-example/observations.json": {
+      "bytes": 263848,
+      "sha256": "08054e99d234bcc5882bc145bbbd732ae703ef759bb31cb48f2e4216a025a483"
+    },
+    "tool-example/report.md": {
+      "bytes": 2178,
+      "sha256": "5c2cdf3cf079eba24adda9a820be556c810b67f1522a67f9eca7de7432320364"
+    },
+    "tool-example/summary.json": {
+      "bytes": 7305,
+      "sha256": "64780fa4a285118a2ab737fe6b72c16b3ec78b590858a99ac0afad341f196399"
+    },
+    "tool-selftest.json": {
+      "bytes": 1526,
+      "sha256": "d77e95f10e34305e2e474b2290d9a3a1daf85d67fc2f9a18d4e1291cf098f69b"
+    }
+  }
+}

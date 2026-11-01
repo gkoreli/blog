@@ -1,0 +1,7 @@
+{
+  "observed_at": "2026-11-01T00:26:31.335480+00:00",
+  "phase": "during main batch, not a whole-run power trace",
+  "ac_power_observed": true,
+  "memory_bytes": 25769803776,
+  "thermal_output": "Error:Failed to get thermal warning level with error code 0xe00002bc\nError: Failed to get performance warning level with error code 0xe00002bc\nError: No CPU power status with error code 0xe00002bc"
+}

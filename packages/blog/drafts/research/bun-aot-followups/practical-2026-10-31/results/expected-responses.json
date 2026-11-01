@@ -1,0 +1,10 @@
+{
+  "echo": {
+    "sha256": "2905a66e09f19e1c250e37b20fa4669fbc47ec685c113a539a7e8dd1f0e7876f",
+    "body_utf8": "{\"name\":\"Jane Doe\",\"email\":\"jane@example.com\",\"age\":30,\"tags\":[\"a\",\"b\"]}"
+  },
+  "me": {
+    "sha256": "2be3138ebc3a0b7e17a9db9e7c4e07cbb036d169a99c896b5f5e963466c3647a",
+    "body_utf8": "{\"id\":4242,\"name\":\"User 4242\",\"email\":\"user4242@example.com\",\"age\":35,\"createdAt\":\"2023-11-14T23:24:01.000Z\"}"
+  }
+}

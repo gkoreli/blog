@@ -152,6 +152,8 @@ State the claim, show the code or report, then give the result.
 
 These govern prose: metadata, headings, tables, callouts, source cards, the article body, and pull-request text. Never touch code or technical terms; swap in everyday words only where precision survives.
 
+For Reddit, X and casual messages, [Goga's informal voice](../polish-prose/SKILL.md#gogas-informal-voice) governs the copy. Keep the evidence standard, without imposing the article's structure, formal rhythm or research-process opening on a reply.
+
 1. Never use a metaphor, simile or other figure of speech which you are used to seeing in print.
 2. Never use a long word where a short one will do.
 3. If it is possible to cut a word out, always cut it out.
@@ -159,7 +161,7 @@ These govern prose: metadata, headings, tables, callouts, source cards, the arti
 5. Never use a foreign phrase, a scientific word or a jargon word if you can think of an everyday English equivalent.
 6. Break any of these rules sooner than say anything outright barbarous.
 7. don't build a straw man to knock down. use not X, it's Y once per piece, max
-8. two examples are enough. don't stretch to three
+8. use only the examples the reader needs, without a fixed count
 9. don't announce what you're about to say. say it
 10. don't end two paragraphs in a row with punchlines
 11. vary the length and shape of neighboring sentences
