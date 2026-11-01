@@ -18,3 +18,5 @@ The owner's request was to explore the new Bun AOT report through further eviden
 The request is not an independent replication of Jarred's exact unknown setup. It does not require certifying every schema, another OS, electricity/cloud costs or production capacity. Those remain explicitly separate proposals. The prepared all-in-one runners are reproduction alternatives; the accepted evidence comes from the separately guarded checkpoints listed above.
 
 No required experiment or writing deliverable remains after scoped delivery. Final source syntax, local links/fences, manifests, numeric/text audit and Git diff checks accompany that delivery. A future site release would require its normal metadata/prompt/series/rendering/build checks and truthful activation acceptance at that time.
+
+Diff-check exception: the full staged diff reports trailing blanks only in the unmodified `standalone/serializer.cjs` emitted by fast-json-stringify. Its exact bytes are needed to match the compiled source/hash. Authored paths pass `git diff --check` with that single generated file excluded; no syntax, contract or evidence-integrity gate excludes it.
