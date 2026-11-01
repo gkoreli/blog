@@ -1,0 +1,83 @@
+{
+  "checkedAt": "2026-11-01T20:54:25.920Z",
+  "status": "two-authorized-reddit-placements-published-and-reopened",
+  "account": "ggaua",
+  "placements": [
+    {
+      "community": "grok",
+      "type": "reply",
+      "url": "https://www.reddit.com/r/grok/comments/1x9f9hu/comment/19rzvebx4uc2q/",
+      "submittedAt": "2026-11-01T20:41:40.043Z",
+      "authorVerified": true,
+      "entireBodyMatches": true,
+      "reopenedAndReloaded": true,
+      "outboundLinks": 0
+    },
+    {
+      "community": "CloudFlare",
+      "type": "discussion-self-post",
+      "url": "https://www.reddit.com/r/CloudFlare/comments/1xle2vd/one_grok_prompt_produced_11_browserstyle_requests/",
+      "submittedAt": "2026-11-01T20:51:19.359Z",
+      "title": "One Grok prompt produced 11 browser-style requests to my Cloudflare Worker",
+      "flair": "Discussion",
+      "authorVerified": true,
+      "entireRenderedBodyMatchesSubmittedMarkdown": true,
+      "reopenedAndReloaded": true,
+      "canonicalArticleLinkVerified": "https://gkoreli.com/ai-fetcher-research-from-experiments-to-a-cited-reference",
+      "nativeAutoModeratorResponse": "Routine Discord referral; no removal notice observed"
+    }
+  ],
+  "excluded": [
+    {
+      "community": "SaaS",
+      "reason": "Current expanded rule 4 prohibits AI-generated posts and comments; no text submitted there."
+    }
+  ],
+  "screenshotReceipts": [
+    {
+      "path": "grok-reply-proof.jpg",
+      "sha256": "9331ff92bc99b84fdcc07b0003f8d46ba5948eb4416e58df8645dfc3dca2d5e7",
+      "actualBrowserCapture": true,
+      "privacyReviewed": true,
+      "scope": "Published author and complete reply; native self-vote is not independent engagement."
+    },
+    {
+      "path": "cloudflare-post-opening-proof.jpg",
+      "sha256": "bbe4899469212f0e5e3d90861b5f9fb8e1809e0d8590cc4531ec992f5c79d2cb",
+      "actualBrowserCapture": true,
+      "privacyReviewed": true,
+      "scope": "Published community, author, title, flair and opening/method; complete body/link checked separately."
+    }
+  ],
+  "exactCopy": "copy-2026-11-01.md",
+  "nextValidation": "next-validation.md",
+  "newVendorTrialsPerformed": false,
+  "productionAnalyticsQueriesPerformed": false,
+  "anonymousAvailability": {
+    "status": "unavailable",
+    "checks": 2,
+    "result": "Cache miss for each new canonical permalink; no bypass or duplicate submission"
+  },
+  "readerReception": {
+    "status": "not-established",
+    "automaticSelfVotesExcluded": true,
+    "ownVerificationViewsNotTreatedAsAcquisition": true,
+    "autoModeratorNotTreatedAsEndorsement": true
+  },
+  "followUpAutomationScheduled": false,
+  "sourceSha256": {
+    "frozenPrivatePlan": "6240bd2b4de0945c4a5952df34f47cc19e7c2ab3817c70344eb99661542ac903",
+    "grokCompleteRules": "630150ff1d695f5bc244d0d70bbeb93ff6ee1ccb0eea262be376eeb80e3beccc",
+    "saasExpandedRules": "959f48a14ea6e15f25e4369e140a5133b6196906af8408961a0d4b10d89e287d",
+    "cloudflareWiki": "35a042f2778c851eb5fb0b4b16fd89826e6d6fe3f69d97ba14a30462e7e880e2",
+    "grokCanonicalReopen": "f2587f5389d7e6e270988cc2a4a8ab81db30e7fc7fddd951aa86cdba355467ae",
+    "cloudflareCanonicalReopen": "c914c290a638cea7a039be37feb41cca7245111658662047cd63cb80e276c127",
+    "deliveryChecks": "8f19dcdd117f1606680b16a28b4183371c64664237cfc0c3bfccfff551c797e7"
+  },
+  "limits": [
+    "Observed publication/delivery is separate from independent reception, referral, citation, ranking or adoption outcomes.",
+    "All published empirical claims refer to the previously accepted controlled Nov 1 trial; no new provider result is inferred from Reddit posting.",
+    "The native cloud receipt screenshot and eleven request-to-row comparisons remain distinct evidence in the source article.",
+    "The next-validation designs are proposed and unrun."
+  ]
+}
