@@ -57,3 +57,6 @@ The original follow-up acceptance above remains complete. Goga has now authorize
 ## New owner request — October 31 evening: practical use and informal voice
 
 The application publication above remains complete. Goga asked for a persistent informal Reddit/X voice rule, cleanup of conflicting guidance and about another hour of useful experiments/building. [New plan and acceptance](practical-2026-10-31/00-plan.md) tests actual multi-process app scaling and a reusable executable-comparison tool. Do not merge its observations with the earlier single-process batches.
+
+
+This practical-use request is complete: four accepted batches (88 pools / 140 timed windows), the seven-gate tested comparison tool and source ZIP, informal-voice rule/caller cleanup, and the distilled article update. [Delivery and served-byte acceptance](practical-2026-10-31/00-plan.md#delivered-and-accepted--november-1-0121-utc) separates code, build, activation and the actual public article/download. No new outreach or independent adoption is claimed. Goga's participant question now has [three named, checked prospects and exact unsent offers](../../social/oss-radar-08-bun-aot/adoption-next.md#next-participants--checked-october-31-local--november-1-utc); start with the two public projects whose authors asked for feedback.

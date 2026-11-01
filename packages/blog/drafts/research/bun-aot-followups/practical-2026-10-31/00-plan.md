@@ -23,7 +23,7 @@ Use the previously pinned October 29 canary, binaries and upstream API revision 
 - [x] Verify reused inputs and finish all 36 pool observations / 72 timed route windows, preserving failures and raw results.
 - [x] Audit counts, responses, spread, memory and CPU; distinguish measured pool results from any capacity arithmetic.
 - [x] Build and exercise the reader comparison tool, including meaningful failure cases and a real application.
-- [ ] Publish the useful artifact, distilled supported findings and reproduction evidence; check the article and actual delivery if changed.
+- [x] Publish the useful artifact, distilled supported findings and reproduction evidence; check the article and actual delivery if changed.
 
 Raw commands, mail readbacks, process lists and binaries stay under `/tmp/bun-aot-practical-20261031`. Public evidence contains methods, selected conditions, numeric results and source hashes. No new outreach is authorized by the experiment skill; any follow-up stays within the user's existing scoped conversations and invitation requirement. No generic follow-up is needed merely because more tests finished.
 
@@ -92,3 +92,11 @@ The isolated checkout was refreshed from `d791b14` (including the concurrent fet
 Rendered candidate: one H1, correct canonical URL, 957 article words, preserved opening executable sizes and frozen research-footprint values, working versioned download link. Desktop and 390-pixel iframe screenshots were inspected; the evidence table wraps within the narrow page. Python source parsing, new-guide links/fences, instruction frontmatter/links/diff, whitespace checks, offline evidence verification and all eight ZIP entry bytes passed. No prompt file or new dependency was added. Only the study-owned PostgreSQL cluster was stopped after the final tool acceptance.
 
 The owner's new participant question is answered by the [three checked prospective contacts](../../../social/oss-radar-08-bun-aot/adoption-next.md#next-participants--checked-october-31-local--november-1-utc). Those offers are prepared, not sent. ICE, Mert and Davron already received the preceding application results; no additional message or independent adoption outcome is claimed.
+
+## Delivered and accepted — November 1, 01:21 UTC
+
+Code commit [`ec66924`](https://github.com/gkoreli/blog/commit/ec669242379e18f8e37d0a2efa39f7472c399372) is pushed directly to main. Its Workers build completed successfully and a 100% deployment activated at 01:20:49 UTC. Fresh controlled GETs returned 200 for [the article](https://gkoreli.com/oss-radar-08-bun-aot), its Markdown representation and [the source ZIP](https://gkoreli.com/downloads/bun-aot-check-0.1.0.zip). The served Markdown matches the isolated build; the served ZIP matches all eight source files and the recorded SHA-256. The actual live browser displays the 52% result, its CPU cost and the download link. [Selected delivery receipt](delivery-receipt.json).
+
+The informal voice rule, caller cleanup, four measured batches, reader tool, failure checks, article update and delivery are complete. Original measurements/accounting and concurrent work are preserved. The first public preflight occurred while the build was running and saw the previous article and no ZIP; the later accepted checks supersede it. These controlled checks are not adoption traffic. Linux portability, an independent operator run and participant acceptance are unmeasured; none is represented as complete.
+
+Next bounded action is optional outreach using the prepared Keryx/Next.js offers after Goga authorizes sending and current thread eligibility is checked. No new message, public post, subscription or monitoring automation was created in this batch.

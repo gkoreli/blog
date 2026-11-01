@@ -1,0 +1,57 @@
+{
+  "checked_at": "2026-11-01T01:21:17.445713+00:00",
+  "code_commit": "ec669242379e18f8e37d0a2efa39f7472c399372",
+  "article_source_sha256": "0a283e641f304a41b7c14ec80bc7a0b3846bba875bb9cb362ada960b5f111c8f",
+  "workers_build": {
+    "id": 124713231160,
+    "name": "Workers Builds: gkoreli-com",
+    "status": "completed",
+    "conclusion": "success",
+    "completed_at": "2026-11-01T01:20:58Z",
+    "html_url": "https://github.com/gkoreli/blog/runs/124713231160",
+    "details_url": "https://dash.cloudflare.com/7e0dc86ef69b4572a63162a52cddd269/workers/services/view/gkoreli-com/production/builds/42e52829-14fa-444c-ac38-4acb7da8bee9"
+  },
+  "activation": {
+    "id": "74842983-782c-47f0-b94e-c09eacd35729",
+    "created_on": "2026-11-01T01:20:49.189432Z",
+    "versions": [
+      {
+        "version_id": "10d245e0-7bbd-4931-8c88-625e5cfe54f4",
+        "percentage": 100
+      }
+    ]
+  },
+  "served": {
+    "/oss-radar-08-bun-aot": {
+      "status": 200,
+      "bytes": 19459,
+      "sha256": "3719f731d5ee521052818a82090742110db3f4568322e27bbde73d5bca1b6b3e",
+      "content_type": "text/html"
+    },
+    "/oss-radar-08-bun-aot.md": {
+      "status": 200,
+      "bytes": 8190,
+      "sha256": "9a259d568bf32f17d2f06f272e3c599d922c7b118d6b82957604ed57d060fee7",
+      "content_type": "text/markdown; charset=utf-8"
+    },
+    "/downloads/bun-aot-check-0.1.0.zip": {
+      "status": 200,
+      "bytes": 17085,
+      "sha256": "92fffd5f9021fca27cd84b5359ae18fb3801814c8d1669156da851f08132b61d",
+      "content_type": "application/zip"
+    }
+  },
+  "markdown_matches_isolated_build": true,
+  "zip_matches_all_eight_source_files": true,
+  "article": {
+    "new_result_and_cpu_cost_present": true,
+    "opening_sizes_preserved": true,
+    "h1_count": 1,
+    "canonical_correct": true,
+    "prompt_link_absent": true,
+    "local_rendered_words": 957,
+    "desktop_and_390px_iframe_inspected": true
+  },
+  "controlled_checks_are_not_adoption": true,
+  "outreach_sent_in_this_batch": false
+}

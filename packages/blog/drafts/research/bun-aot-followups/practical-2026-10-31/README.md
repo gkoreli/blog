@@ -17,7 +17,7 @@ The final comparison held both twelve DB connections and four local request-send
 | Native | 2 | 67,244 | 49.1 | 49.1 | 2.60 | 1.20 |
 | Native | 4 | 75,355 | 86.9 | 86.9 | 4.25 | 1.50 |
 
-The two-native/one-JIT request ratios were 1.49–1.54 within the four blocks. Four native copies improved on two by only 12%, while using 77% more app memory and 64% more app CPU. More processes have diminishing returns. Each native copy remained slower than the same-count JIT pool here.
+The two-native/one-JIT request ratios were 1.49–1.54 within the four blocks. Four native copies improved on two by only 12%, while using 77% more app memory and 64% more app CPU. More processes have diminishing returns. Each native pool handled fewer requests than the same-count JIT pool here.
 
 The separate five-minute checks kept app and DB pools alive, with clients reconnecting between five one-minute segments. These use one/two sender processes, so keep them separate from the matched short comparison:
 
