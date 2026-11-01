@@ -1,0 +1,32 @@
+[
+  {
+    "file": "policy-matrix-observations.json.gz",
+    "bytes": 64297,
+    "sha256": "30eb9d6d24d5d56d48a97a86f16f7748d190814ff0411141fd688694797235ad",
+    "uncompressed_sha256": "939c301082709507a70328ac33d8d0f448773cf500b5400a99d16f73f89a5668"
+  },
+  {
+    "file": "policy-matrix-summary.json",
+    "bytes": 10622,
+    "sha256": "ab43f25970133a581e2d2c92bc706d27f4574acaef2d9b17320b44444e5fede6",
+    "uncompressed_sha256": "ab43f25970133a581e2d2c92bc706d27f4574acaef2d9b17320b44444e5fede6"
+  },
+  {
+    "file": "policy-matrix-inputs.json",
+    "bytes": 2444,
+    "sha256": "cc62d3efd813690fc4451842e103e7ef6bf81716653d13e89018730fbeb5af2b",
+    "uncompressed_sha256": "cc62d3efd813690fc4451842e103e7ef6bf81716653d13e89018730fbeb5af2b"
+  },
+  {
+    "file": "policy-matrix-conditions.json",
+    "bytes": 457,
+    "sha256": "c6e15d4262d10a88a64856b5f77cd6362f01d9c359532ddaec64ef8c9c0d0f68",
+    "uncompressed_sha256": "c6e15d4262d10a88a64856b5f77cd6362f01d9c359532ddaec64ef8c9c0d0f68"
+  },
+  {
+    "file": "policy-matrix-pairs.json",
+    "bytes": 5423,
+    "sha256": "a80c8cf0c628ff91a4240e9602f8e9af49fec95c9217a54c212b0d5893726351",
+    "uncompressed_sha256": "a80c8cf0c628ff91a4240e9602f8e9af49fec95c9217a54c212b0d5893726351"
+  }
+]

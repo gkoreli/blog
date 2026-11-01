@@ -4,7 +4,9 @@ New November 1 investigation of [Jarred Sumner's Express/SQLite report](https://
 
 Research complete: separately guarded [Express](05-express-results.md), [Fastify](06-fastify-results.md), [serializer controls](07-serializer-results.md) and [cold/startup checks](08-cold-startup-results.md) passed. Earlier overlapping passes remain excluded. The accepted captures contain **246 timed windows, 27,977,442 fully checked responses and 180 additional startup-control processes**. [Follow-up draft](09-follow-up-draft.md), [article decision](03-article-brief.md), [delivery status](04-handoff.md).
 
-The follow-up is warranted as a focused engineering field note: large memory savings, distinct CPU outcomes and a tested build-time serializer path. The draft is outside `posts/`; it has not been published on the site.
+The historical draft above remains the research cutoff. Goga subsequently authorized [iteration and publication](publication-plan.md). The [final article source](../../../../posts/039-bun-aot-express-fastify-serializers.md) adds a [balanced six-cell policy control](11-policy-matrix-results.md), with 36 more timed windows and 11,200,026 checked responses. Cumulative evidence is **282 timed windows / 39,177,468 checked responses**, plus the separate 180-start readiness control. Build, activation and actual served acceptance are recorded separately in that publication plan.
+
+Check the additional public evidence with `PYTHONDONTWRITEBYTECODE=1 python3 verify-policy-matrix.py`; the original verifier retains its frozen 246-window scope.
 
 ## What this tests
 

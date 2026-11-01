@@ -1,0 +1,25 @@
+{
+  "slug": "bun-aot-express-fastify-serializers",
+  "h1": 1,
+  "canonical": "https://gkoreli.com/bun-aot-express-fastify-serializers",
+  "prompt_count": 2,
+  "markdown_validation_posts": 29,
+  "full_build_posts": 40,
+  "frozen_predecessor_footprint_preserved": true,
+  "new_series_and_reciprocal_links": true,
+  "built_html_sha256": "2049ace4191952c263b6e5929f71134e2c3775e47beb1ab2fa7c09cd8a55e82e",
+  "built_markdown_sha256": "7bbd45b2fa42a01442afec767766540d8c0a1f7ebd7707ae3d29fa9a397dc771",
+  "public_build_configuration": {
+    "public_turnstile_site_key_present": false,
+    "private_env_file_copied": false,
+    "preview_base": "e53513f2bd6103879251b37feac32517611c0d89"
+  },
+  "visual_qa": {
+    "desktop_width": 1280,
+    "phone_width": 390,
+    "phone_document_width": 390,
+    "tables_fit_phone": 4,
+    "prompt_page_checked": true,
+    "code_scrolls_in_container": true
+  }
+}

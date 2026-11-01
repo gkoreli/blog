@@ -6,6 +6,10 @@ date: "2026-10-27"
 lastModified: "2026-11-01"
 description: "Bun AOT made my TypeScript compiler 3.3× faster with 64% less peak memory. A server executable shrank from 121.5 MB to 30.3 MB with AOT and --trim."
 section: oss-radar
+series:
+  id: bun-aot-field-notes
+  title: Bun AOT field notes
+  order: 1
 tags: [oss-radar, bun, typescript, rust, performance]
 researchFootprint:
   sessions: 1
@@ -81,6 +85,8 @@ The server's AOT executable was **51.8 MB** before trimming and **30.3 MB** afte
 [My Bun 1.4 review](/oss-radar-05-bun-1-4) covered the runtime's Rust rewrite. AOT targets the applications running on it. These tests do not establish TypeScript/Rust equivalence. Bun's original server comparison put Rust ahead in throughput and memory.
 
 Try the macOS-tested [comparison tool](/downloads/bun-aot-check-0.1.0.zip) on your own server. It checks responses and compares regular Bun, bytecode and AOT on startup, requests, memory, CPU and file size. [Instructions and limits](https://github.com/gkoreli/blog/tree/main/packages/blog/tools/bun-aot-check).
+
+The [Express and Fastify follow-up](/bun-aot-express-fastify-serializers) measures CPU per completed request and tests generating Fastify’s serializer before the native build.
 
 ---
 

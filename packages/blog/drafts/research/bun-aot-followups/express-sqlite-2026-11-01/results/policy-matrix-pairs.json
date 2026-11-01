@@ -1,0 +1,144 @@
+{
+  "blocks": [
+    {
+      "block": 0,
+      "runtime_aot_vs_jit_rate_pct": -4.766656836283167,
+      "runtime_aot_vs_jit_cpu_pct": 3.5870759976106337,
+      "standalone_aot_vs_jit_rate_pct": 1.6083017197441762,
+      "standalone_aot_vs_jit_cpu_pct": -2.9983148012453276,
+      "json_aot_vs_jit_rate_pct": 1.4173088795161215,
+      "json_aot_vs_jit_cpu_pct": -2.838277412329071,
+      "jit_standalone_vs_runtime_rate_pct": -1.7686454361381165,
+      "jit_standalone_vs_runtime_cpu_pct": 1.8273169024729308,
+      "aot_standalone_vs_runtime_rate_pct": 4.807001217056683,
+      "aot_standalone_vs_runtime_cpu_pct": -4.646199888532965
+    },
+    {
+      "block": 1,
+      "runtime_aot_vs_jit_rate_pct": -3.6210566334896277,
+      "runtime_aot_vs_jit_cpu_pct": 2.404500481172578,
+      "standalone_aot_vs_jit_rate_pct": -0.456265192775418,
+      "standalone_aot_vs_jit_cpu_pct": -1.411485964191428,
+      "json_aot_vs_jit_rate_pct": 0.9822791522949403,
+      "json_aot_vs_jit_cpu_pct": -3.0363397523223035,
+      "jit_standalone_vs_runtime_rate_pct": 0.554407727546602,
+      "jit_standalone_vs_runtime_cpu_pct": -0.026689199192997393,
+      "aot_standalone_vs_runtime_rate_pct": 3.8563087215432335,
+      "aot_standalone_vs_runtime_cpu_pct": -3.7520801451132124
+    },
+    {
+      "block": 2,
+      "runtime_aot_vs_jit_rate_pct": -4.319173634384765,
+      "runtime_aot_vs_jit_cpu_pct": 2.8925159115455568,
+      "standalone_aot_vs_jit_rate_pct": -5.96467164075446,
+      "standalone_aot_vs_jit_cpu_pct": 2.571321237140789,
+      "json_aot_vs_jit_rate_pct": -1.6583214911342847,
+      "json_aot_vs_jit_cpu_pct": -0.7320139437789863,
+      "jit_standalone_vs_runtime_rate_pct": 0.5563324188120333,
+      "jit_standalone_vs_runtime_cpu_pct": -0.34264199465620093,
+      "aot_standalone_vs_runtime_rate_pct": -1.1730134784603163,
+      "aot_standalone_vs_runtime_cpu_pct": -0.6537376304562081
+    },
+    {
+      "block": 3,
+      "runtime_aot_vs_jit_rate_pct": -1.3480160637231453,
+      "runtime_aot_vs_jit_cpu_pct": 0.8524079918436067,
+      "standalone_aot_vs_jit_rate_pct": 0.11166851028869829,
+      "standalone_aot_vs_jit_cpu_pct": -1.7313055806120303,
+      "json_aot_vs_jit_rate_pct": 3.8396854689635607,
+      "json_aot_vs_jit_cpu_pct": -5.467787851844985,
+      "jit_standalone_vs_runtime_rate_pct": 1.2828358831371567,
+      "jit_standalone_vs_runtime_cpu_pct": -0.26627610427094606,
+      "aot_standalone_vs_runtime_rate_pct": 2.7814473377865134,
+      "aot_standalone_vs_runtime_cpu_pct": -2.821330378054654
+    },
+    {
+      "block": 4,
+      "runtime_aot_vs_jit_rate_pct": -2.7405093491687293,
+      "runtime_aot_vs_jit_cpu_pct": 1.3352213931226098,
+      "standalone_aot_vs_jit_rate_pct": 0.39812260878113737,
+      "standalone_aot_vs_jit_cpu_pct": -1.8745964347230304,
+      "json_aot_vs_jit_rate_pct": 2.0356387628440276,
+      "json_aot_vs_jit_cpu_pct": -3.4558479781719442,
+      "jit_standalone_vs_runtime_rate_pct": -0.15865616532091398,
+      "jit_standalone_vs_runtime_cpu_pct": 0.08039366020371475,
+      "aot_standalone_vs_runtime_rate_pct": 3.0632940051687596,
+      "aot_standalone_vs_runtime_cpu_pct": -3.0896771934642686
+    },
+    {
+      "block": 5,
+      "runtime_aot_vs_jit_rate_pct": -0.22212673771543345,
+      "runtime_aot_vs_jit_cpu_pct": 0.4118055558904432,
+      "standalone_aot_vs_jit_rate_pct": -1.016952759417833,
+      "standalone_aot_vs_jit_cpu_pct": -0.6561508382330383,
+      "json_aot_vs_jit_rate_pct": 1.1523853242977555,
+      "json_aot_vs_jit_cpu_pct": -2.25867189472031,
+      "jit_standalone_vs_runtime_rate_pct": 4.304143277833705,
+      "jit_standalone_vs_runtime_cpu_pct": -2.534074430771749,
+      "aot_standalone_vs_runtime_rate_pct": 3.4732611940808233,
+      "aot_standalone_vs_runtime_cpu_pct": -3.570699136846611
+    }
+  ],
+  "summary": {
+    "runtime_aot_vs_jit_rate_pct": {
+      "n": 6,
+      "median": -3.1807829913291785,
+      "min": -4.766656836283167,
+      "max": -0.22212673771543345
+    },
+    "runtime_aot_vs_jit_cpu_pct": {
+      "n": 6,
+      "median": 1.8698609371475938,
+      "min": 0.4118055558904432,
+      "max": 3.5870759976106337
+    },
+    "standalone_aot_vs_jit_rate_pct": {
+      "n": 6,
+      "median": -0.17229834124335985,
+      "min": -5.96467164075446,
+      "max": 1.6083017197441762
+    },
+    "standalone_aot_vs_jit_cpu_pct": {
+      "n": 6,
+      "median": -1.5713957724017291,
+      "min": -2.9983148012453276,
+      "max": 2.571321237140789
+    },
+    "json_aot_vs_jit_rate_pct": {
+      "n": 6,
+      "median": 1.2848471019069385,
+      "min": -1.6583214911342847,
+      "max": 3.8396854689635607
+    },
+    "json_aot_vs_jit_cpu_pct": {
+      "n": 6,
+      "median": -2.937308582325687,
+      "min": -5.467787851844985,
+      "max": -0.7320139437789863
+    },
+    "jit_standalone_vs_runtime_rate_pct": {
+      "n": 6,
+      "median": 0.5553700731793176,
+      "min": -1.7686454361381165,
+      "max": 4.304143277833705
+    },
+    "jit_standalone_vs_runtime_cpu_pct": {
+      "n": 6,
+      "median": -0.14648265173197172,
+      "min": -2.534074430771749,
+      "max": 1.8273169024729308
+    },
+    "aot_standalone_vs_runtime_rate_pct": {
+      "n": 6,
+      "median": 3.2682775996247915,
+      "min": -1.1730134784603163,
+      "max": 4.807001217056683
+    },
+    "aot_standalone_vs_runtime_cpu_pct": {
+      "n": 6,
+      "median": -3.33018816515544,
+      "min": -4.646199888532965,
+      "max": -0.6537376304562081
+    }
+  }
+}

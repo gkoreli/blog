@@ -1,0 +1,17 @@
+{
+  "timed_windows": 36,
+  "checked_responses": 11200026,
+  "blocks": 6,
+  "positions_per_cell": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+  ],
+  "running_guard_samples": 388,
+  "active_known_competing_samples": 0,
+  "guard_quiet_seconds": 60.0,
+  "boundary": "Known study paths sampled once per second; ordinary/unknown activity and thermal variation remain possible. One cached-read fixture on macOS; plain JSON has different wider response behavior."
+}
