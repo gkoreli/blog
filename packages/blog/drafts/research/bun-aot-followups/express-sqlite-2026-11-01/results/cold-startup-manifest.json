@@ -1,0 +1,32 @@
+[
+  {
+    "file": "express-cold-guarded.json.gz",
+    "sha256": "8033bff73d08f955ce73d48ffdca518b5e5cbbf896e466cb28166d55546b96bb",
+    "uncompressed_sha256": "f02461d8788d3c3c2401926cad5baaed2d1e4ae949b8e2525910e48aa414bb66",
+    "bytes": 63485
+  },
+  {
+    "file": "fastify-cold-guarded.json.gz",
+    "sha256": "d237589e6ca80606f4d49886cc117699de1e55e31e506010fec7c73de0fecb78",
+    "uncompressed_sha256": "64d1bfa9f4b1a3ece945791b36edb88c541004d474f56ac92c0a924e991dbbc1",
+    "bytes": 62429
+  },
+  {
+    "file": "startup-control-guarded.json.gz",
+    "sha256": "a0cc05d60054a7f60cd91873d038e3f854a3f15b23f4af3f1b9602b74a256366",
+    "uncompressed_sha256": "dd1d5565e34de790b5cea9efee12a462f54be5404b60e7728be3ebe26e050ebf",
+    "bytes": 7021
+  },
+  {
+    "file": "cold-startup-summary.json",
+    "sha256": "43ebc571ca6b763e5c5e8d7f0c21c38849469a9c5075747990bbcd10b60b5f65",
+    "uncompressed_sha256": "43ebc571ca6b763e5c5e8d7f0c21c38849469a9c5075747990bbcd10b60b5f65",
+    "bytes": 32145
+  },
+  {
+    "file": "cold-startup-conditions.json",
+    "sha256": "05898dd98d289ca0090a694b9449f4c4decfd63465527d9ac78c44688728fb41",
+    "uncompressed_sha256": "05898dd98d289ca0090a694b9449f4c4decfd63465527d9ac78c44688728fb41",
+    "bytes": 631
+  }
+]

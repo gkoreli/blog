@@ -1,0 +1,26 @@
+[
+  {
+    "name": "fixture",
+    "same": true,
+    "throws": false,
+    "bytes": 2215
+  },
+  {
+    "name": "extra-fields",
+    "same": true,
+    "throws": false,
+    "bytes": 2215
+  },
+  {
+    "name": "numeric-string",
+    "same": true,
+    "throws": false,
+    "bytes": 2215
+  },
+  {
+    "name": "missing-required",
+    "same": true,
+    "throws": true,
+    "bytes": null
+  }
+]

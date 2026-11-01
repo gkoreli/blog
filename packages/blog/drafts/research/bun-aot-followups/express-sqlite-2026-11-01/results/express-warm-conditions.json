@@ -1,0 +1,17 @@
+{
+  "scope": "Completed guarded Express warmed batch only. Later cold phase interrupted; no cold/Fastify/control performance acceptance in this receipt.",
+  "processes": 18,
+  "timed_windows": 18,
+  "checked_responses": 5615327,
+  "response_sha256": [
+    "b006a478e4f9aba7221d6c0e1ff4de732ea7178ead47fd2f93de1ba330e6989d"
+  ],
+  "phase_samples": 196,
+  "active_other_study_samples_during_phase": 0,
+  "guard_quiet_seconds_required": 60.0,
+  "later_attempt_status": "interrupted_external_activity",
+  "phase_observation_start": "2026-11-01T17:13:57.912297+00:00",
+  "phase_observation_end": "2026-11-01T17:17:19.498814+00:00",
+  "later_first_conflict_at": "2026-11-01T17:17:26.742259+00:00",
+  "boundary": "One-second snapshots of >10% CPU processes in two known study paths, excluding owned descendants. Short-lived/unknown work and ordinary shared-host activity remain possible."
+}

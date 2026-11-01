@@ -29,8 +29,8 @@ These are new fixtures inspired by the report. Exact upstream source, compiler, 
 - [x] Read original post and the author's three follow-ups in the signed-in browser.
 - [x] Resolve current official canary asset and verify its cached archive SHA-256.
 - [x] Build and verify new fixtures and rejection paths.
-- [ ] Run warmed and cold batches without overlapping the existing study.
-- [ ] Audit results, record a supported article decision and remaining limits.
+- [x] Run warmed and cold batches without detected overlap from the known competing study paths; preserve the bounded sampling limit.
+- [x] Audit results, record a supported article decision and remaining limits.
 - [ ] Commit/push scoped evidence and record the delivery.
 
 ## Excluded setup and pilot
@@ -54,3 +54,26 @@ The sampler revealed repeated external Keryx, Redis and compiler activity throug
 The sampler was initially only inspected after the run progressed. That let new external jobs overlap despite waiting for the first known process to exit. The replacement `host-guard.py` gates the entire expanded study on sixty quiet seconds and interrupts only our own process group if new known external activity appears. It retains every attempt and exits 75; a new run requires fresh output paths. A thirty-minute observation timeout expires the attempt without starting measurements. It is not a host-wide exclusivity mechanism and can miss short or unknown activity.
 
 The remaining acceptance gates stay open. No new performance claim or article publication is accepted from this pass. [Next bounded action and live handle](04-handoff.md).
+
+## Accepted Express phase and next guarded batch — November 1, 17:21 UTC
+
+The third attempt's guard observed a quiet minute, then completed the Express warmed phase. All eighteen windows passed, with 5,615,327 complete responses checked and 196 phase snapshots without detected activity from the two known study paths. A new competing process appeared seven seconds after the phase sampler ended, during the following cold test; the guard interrupted our process group and exited 75. The complete preceding phase is accepted separately after source/database/binary/response/count/CPU arithmetic and time-boundary audit. [Results, ranges and exact limits](05-express-results.md). No part of the interrupted cold phase is accepted.
+
+The guard passed three lightweight checks: a simulated busy host launches no study; a quiet child completes; simulated renewed competition interrupts only the actual owned child process group. [Selected test receipt](results/host-guard-tests.json). Those checks generate no performance samples.
+
+The next guarded pass measures Fastify alone with the same previously checked executable hashes, fixed fixture and six runs per mode. Reusing binaries avoids another build and preserves the completed Express batch. The [handoff](04-handoff.md) records the actual live handle; the earlier full-study handle is terminal. The main audit now includes the prepared standalone/control checks, but no accepted standalone execution is claimed.
+
+## Research acceptance — November 1
+
+The queued Fastify pass subsequently completed, followed by separately guarded standalone, plain-JSON and cold/startup checkpoints. All are terminal and accepted. Historical queued/pending statements above describe their earlier states. The accepted protocol has 66 warmed windows, 180 cold windows and 180 additional readiness-only starts. All 27,977,442 measured responses match the independently computed expected body/status. Source/native standalone serialization matches the four declared cases; plain JSON differs in the declared extra-field/coercion cases.
+
+- [Express](05-express-results.md): 57.7% less end app footprint, 3.8% less CPU/request, 2.0% more requests versus JIT.
+- [Fastify](06-fastify-results.md): 52.6% less footprint, 2.8% more CPU/request, 4.4% fewer requests.
+- [Standalone control](07-serializer-results.md): four contract cases match under source/native; AOT rate is 1.0% behind JIT in its separate batch. Plain JSON is 1.9% ahead within its control, with changed tested semantics. Policies were not randomized together.
+- [Cold/startup](08-cold-startup-results.md): thirty-start medians about 27.1 / 17.2 / 13.8 ms for Express and 37.8 / 18.0 / 13.6 ms for Fastify, JIT / bytecode / AOT. The first checked business call includes client-side connection/JSON work and follows a health probe.
+
+Acceptance uses the four checkpoint auditors and `verify-evidence.py`; the latter recomputes every public summary, counts all measured responses/windows, checks mode positions and 180 startup rows, verifies manifests and generated-source hashes. The original all-in-one audit is an alternative reproduction path, not the representation of these separately guarded captures. No combined zero-interference log was fabricated. All guards retain the known-path/one-second sampling boundary.
+
+The timestamp anchor in accepted cold data is response-check completion; excluded earlier traces used call start. Startup-control binary hashes are checked before and after the batch, avoiding a full executable scan before every launch. Both changes preceded the accepted runs.
+
+[Article decision](03-article-brief.md): proceed with the [prepared engineering draft](09-follow-up-draft.md), centered on memory/CPU distinctions and generating a serializer before build while testing response behavior. A new site publication is a separate optional step; the research request does not require publishing a post. The original article and frozen research footprint remain unchanged. [Delivery status](04-handoff.md).

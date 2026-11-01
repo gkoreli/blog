@@ -1,0 +1,14 @@
+{
+  "scope": "Separately guarded Fastify plain-JSON control; matching fixed HTTP output does not preserve every schema-specific serialization behavior.",
+  "processes": 12,
+  "timed_windows": 12,
+  "checked_responses": 3937744,
+  "response_sha256": [
+    "b006a478e4f9aba7221d6c0e1ff4de732ea7178ead47fd2f93de1ba330e6989d"
+  ],
+  "running_guard_samples": 129,
+  "active_other_study_samples_during_phase": 0,
+  "guard_quiet_seconds_required": 60.0,
+  "first_launch_boundary": "These prebuilt binaries already ran in excluded exploratory batches. The first checked launch here is not the first launch of a newly built file.",
+  "boundary": "One-second snapshots of >10% CPU processes in two known study paths, excluding owned descendants. Short-lived/unknown work and ordinary host activity remain possible."
+}

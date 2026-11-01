@@ -1,0 +1,21 @@
+{
+  "checked_date": "2026-11-01",
+  "command": "PYTHONDONTWRITEBYTECODE=1 python3 test-host-guard.py",
+  "exit_code": 0,
+  "test_source_sha256": "842bb8642fc69bcb3240e15ecb72f5b7656a2f09ed26b9495165c3a1e4dc7a7e",
+  "cases": [
+    {
+      "case": "busy-host-never-launches",
+      "passed": true
+    },
+    {
+      "case": "quiet-host-completes",
+      "passed": true
+    },
+    {
+      "case": "overlap-interrupts-only-owned-child-group",
+      "passed": true
+    }
+  ],
+  "scope": "Selected receipt of the successful integration invocation; no performance samples. Competition is simulated; the interrupted child is real and owned."
+}

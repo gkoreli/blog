@@ -10,4 +10,4 @@
 
 [Worklist and acceptance](00-worklist-index.md). All experiments use previews and bounded local workloads; sources, failures and limits are linked beside the results.
 
-[November 1 Express/SQLite investigation](express-sqlite-2026-11-01/README.md) checks the new maintainer report, CPU/request, first-use behavior and Fastify serializer contracts. The functional serializer check passed; uncontended performance acceptance and the follow-up decision remain open.
+[November 1 Express/SQLite investigation](express-sqlite-2026-11-01/README.md) is complete: guarded Express/Fastify trials, standalone/plain serializers, cold traces and readiness checks, with 246 timed windows and 27,977,442 checked responses. [Follow-up draft and supported decision](express-sqlite-2026-11-01/03-article-brief.md). A new site article has not been published.

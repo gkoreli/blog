@@ -1,0 +1,140 @@
+{
+  "complete": true,
+  "memory_metric": "physical_footprint_bytes",
+  "groups": [
+    {
+      "mode": "jit",
+      "file_bytes": 126490786,
+      "accepted_runs": 6,
+      "expected_runs": 6,
+      "build_status": "passed",
+      "errors": [],
+      "routes": [
+        {
+          "name": "dashboard",
+          "rps": {
+            "n": 6,
+            "median": 40629.144,
+            "min": 40437.683,
+            "max": 40786.757
+          },
+          "end_memory_bytes": {
+            "n": 6,
+            "median": 39625400.0,
+            "min": 38716112,
+            "max": 41386680
+          },
+          "sampled_peak_memory_bytes": {
+            "n": 6,
+            "median": 41476792.0,
+            "min": 40960720,
+            "max": 42140344
+          },
+          "cpu_percent": {
+            "n": 6,
+            "median": 101.18898521888985,
+            "min": 101.13046345759138,
+            "max": 101.42602749269155
+          },
+          "cpu_seconds_per_million": {
+            "n": 6,
+            "median": 24.896606053726835,
+            "min": 24.82074653043796,
+            "max": 25.082056840077065
+          },
+          "p99_upper_us": {
+            "n": 6,
+            "median": 394.805971,
+            "min": 394.805971,
+            "max": 394.805971
+          },
+          "checked_requests": 1950424
+        }
+      ],
+      "first_checked_launch_ms": 47.897292068228126,
+      "startup_ms": {
+        "n": 6,
+        "median": 36.640207981690764,
+        "min": 35.251458059065044,
+        "max": 37.55116695538163
+      },
+      "ready_memory_bytes": {
+        "n": 6,
+        "median": 20144776.0,
+        "min": 19907208,
+        "max": 20349528
+      }
+    },
+    {
+      "mode": "aot",
+      "file_bytes": 68401570,
+      "accepted_runs": 6,
+      "expected_runs": 6,
+      "build_status": "passed",
+      "errors": [],
+      "routes": [
+        {
+          "name": "dashboard",
+          "rps": {
+            "n": 6,
+            "median": 41417.736000000004,
+            "min": 41261.261,
+            "max": 41474.546
+          },
+          "end_memory_bytes": {
+            "n": 6,
+            "median": 19145460.0,
+            "min": 18023168,
+            "max": 20267752
+          },
+          "sampled_peak_memory_bytes": {
+            "n": 6,
+            "median": 19587828.0,
+            "min": 18301672,
+            "max": 21037824
+          },
+          "cpu_percent": {
+            "n": 6,
+            "median": 99.88719042644087,
+            "min": 99.78208834530137,
+            "max": 99.90609879559797
+          },
+          "cpu_seconds_per_million": {
+            "n": 6,
+            "median": 24.12071539268736,
+            "min": 24.05863300824181,
+            "max": 24.20836678289442
+          },
+          "p99_upper_us": {
+            "n": 6,
+            "median": 362.038672,
+            "min": 362.038672,
+            "max": 362.038672
+          },
+          "checked_requests": 1987320
+        }
+      ],
+      "first_checked_launch_ms": 20.449833013117313,
+      "startup_ms": {
+        "n": 6,
+        "median": 13.322646031156182,
+        "min": 13.170833932235837,
+        "max": 13.53145798202604
+      },
+      "ready_memory_bytes": {
+        "n": 6,
+        "median": 10560220.0,
+        "min": 10535656,
+        "max": 10617600
+      }
+    }
+  ],
+  "limits": [
+    "One local client and one server process; closed-loop HTTP/1.1 with fixed Content-Length responses under 120 KB.",
+    "macOS physical footprint and Linux RSS are different metrics. Server memory excludes external databases/services.",
+    "Readiness is the first expected ready response. One checked launch is recorded separately before repeated fresh-process starts; warm request speed excludes startup. Filesystem caches are not flushed.",
+    "Every measured response must match the checked reference bytes. Selected checks do not certify the whole application.",
+    "No CPU/RAM limit, independent arrival rate, remote load generator, production soak or cloud-cost claim.",
+    "Build flags are ESM JIT / ESM bytecode / native AOT; framework build plugins require a separately prepared entry or --binary."
+  ]
+}

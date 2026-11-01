@@ -1,0 +1,26 @@
+[
+  {
+    "file": "fastify-warm-guarded.json.gz",
+    "sha256": "fa42a45bf9116981d24169285639c7630b739f49019bb229f9af68425d902ba6",
+    "uncompressed_sha256": "9a7053ea98c565e140e7fbd8eb10ed07583fb1cd374c51f327441ffbd8c0a4a3",
+    "bytes": 33389
+  },
+  {
+    "file": "fastify-warm-summary.json",
+    "sha256": "4879a8b9969c02bb89ae25e1f789a17aacdcb280be992c6f15906cf41c5bea33",
+    "uncompressed_sha256": "4879a8b9969c02bb89ae25e1f789a17aacdcb280be992c6f15906cf41c5bea33",
+    "bytes": 5766
+  },
+  {
+    "file": "fastify-warm-inputs.json",
+    "sha256": "14dc49c55d8e45fdfd51fc7e234b156dbc9a9dfdb9c20147ee1ed616a7670286",
+    "uncompressed_sha256": "14dc49c55d8e45fdfd51fc7e234b156dbc9a9dfdb9c20147ee1ed616a7670286",
+    "bytes": 1911
+  },
+  {
+    "file": "fastify-warm-conditions.json",
+    "sha256": "4dfd9fbe13379b72d423acdce535a1866a6ebd872653853200303989d4889694",
+    "uncompressed_sha256": "4dfd9fbe13379b72d423acdce535a1866a6ebd872653853200303989d4889694",
+    "bytes": 816
+  }
+]

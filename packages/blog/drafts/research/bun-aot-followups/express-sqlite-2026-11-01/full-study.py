@@ -12,6 +12,7 @@ tool = source.parents[3] / 'tools/bun-aot-check/compare.py'
 parser = argparse.ArgumentParser(description=__doc__)
 parser.add_argument('--work', type=Path, required=True)
 parser.add_argument('--bun', type=Path, required=True)
+parser.add_argument('--standalone-only', action='store_true')
 args = parser.parse_args()
 work = args.work.resolve()
 bun = args.bun.resolve()
@@ -25,9 +26,10 @@ def run(command, cwd=None, capture=None):
         subprocess.run(command, cwd=cwd, check=True)
 
 
-run([sys.executable, str(source / 'run-study.py'), '--work', str(work), '--bun', str(bun)])
-run([sys.executable, str(source / 'startup-study.py'), '--work', str(work),
-     '--out', str(work / 'startup-control')])
+if not args.standalone_only:
+    run([sys.executable, str(source / 'run-study.py'), '--work', str(work), '--bun', str(bun)])
+    run([sys.executable, str(source / 'startup-study.py'), '--work', str(work),
+         '--out', str(work / 'startup-control')])
 static = work / 'standalone'
 run([sys.executable, str(source / 'standalone/prepare.py'), '--base', str(work), '--out', str(static)])
 run(['pnpm', 'install', '--frozen-lockfile', '--ignore-scripts'], cwd=static)
@@ -46,4 +48,5 @@ metadata = {'hashes': {name: hashlib.sha256((static / name).read_bytes()).hexdig
                                     'fastify-static.mjs', 'database.mjs', 'cases.json', 'fixture.sqlite']},
             'source_and_native_contract_match': True}
 (static / 'completed.json').write_text(json.dumps(metadata, indent=2) + '\n')
-print('All declared batches finished; audit required before any performance conclusion', flush=True)
+print('Standalone batch finished; audit required before any performance conclusion' if args.standalone_only
+      else 'All declared batches finished; audit required before any performance conclusion', flush=True)

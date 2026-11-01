@@ -66,15 +66,16 @@ def main():
                     row['ready_memory'] = server['ready_memory']
                     start = time.perf_counter()
                     body = compare.request(server['port'], case)
-                    row['first_business_ms'] = (time.perf_counter() - start) * 1000
+                    business_done = time.perf_counter()
+                    row['first_business_ms'] = (business_done - start) * 1000
                     row['response_sha256'] = hashlib.sha256(body).hexdigest()
-                    previous = time.perf_counter()
+                    previous = business_done
                     for window in range(5):
                         before = time.perf_counter()
                         value = compare.load(client, server, case, body, 1, 8, metrics)
                         row['windows'].append({
                             'index': window, 'gap_before_seconds': before - previous,
-                            'start_after_first_business_seconds': before - start,
+                            'start_after_first_business_seconds': before - business_done,
                             **value,
                         })
                         previous = time.perf_counter()

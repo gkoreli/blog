@@ -27,21 +27,25 @@ def main():
     case = compare.case(config['cases'][0], 1)
     metrics = compare.Metrics()
     rows = []
+    fixture_builds = {}
+    for fixture in ['express', 'fastify']:
+        warm = json.loads((args.work / (fixture + '-warm') / 'observations.json').read_text())
+        fixture_builds[fixture] = warm['builds']
+        for build in warm['builds']:
+            compare.require(compare.sha(Path(build['binary'])) == build['sha256'], 'Executable changed before batch')
     result = {'created_at': datetime.now(timezone.utc).isoformat(), 'runs_per_fixture_mode': 30,
               'runner_sha256': compare.sha(__file__), 'observations': rows,
               'boundary': 'Third batch, declared after startup medians reversed between warm and cold batches. Same checked binaries, fresh processes, warm filesystem caches, readiness at /health. A successful business request follows readiness but no load window.'}
     for block in range(30):
         fixtures = ['express', 'fastify'] if block % 2 == 0 else ['fastify', 'express']
         for fixture in fixtures:
-            warm = json.loads((args.work / (fixture + '-warm') / 'observations.json').read_text())
-            builds = warm['builds']
+            builds = fixture_builds[fixture]
             k = block % 3
             order = builds[k:] + builds[:k]
             if (block // 3) % 2:
                 order = list(reversed(order))
             for position, build in enumerate(order):
                 binary = Path(build['binary'])
-                compare.require(compare.sha(binary) == build['sha256'], 'Executable changed')
                 with compare.server(binary, args.work, ready, metrics,
                                     private / f"{fixture}-{build['mode']}-{block}.log", 10, 0) as server:
                     compare.request(server['port'], case)
@@ -51,6 +55,9 @@ def main():
                                  'binary_sha256': build['sha256']})
             (args.out / 'observations.json').write_text(json.dumps(result, indent=2) + '\n')
         print('startup block', block + 1, 'passed', flush=True)
+    for builds in fixture_builds.values():
+        for build in builds:
+            compare.require(compare.sha(Path(build['binary'])) == build['sha256'], 'Executable changed after batch')
     summary = []
     for fixture in ['express', 'fastify']:
         for mode in ['jit', 'bytecode', 'aot']:

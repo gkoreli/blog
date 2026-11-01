@@ -1,0 +1,21 @@
+{
+  "started_at": "2026-11-01T17:13:56.849961+00:00",
+  "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+  "logical_cpus": 10,
+  "node": "v24.14.1",
+  "pnpm": "9.15.4",
+  "bun_revision": "1.4.4-canary.1+3f3a9ff87",
+  "bun_sha256": "cbecab3f05a0c8bc11ea0164e5868db0b5da12067fdb13dfcacfc9bf87b68b6a",
+  "database_bytes": 2277376,
+  "database_sha256": "ea8d3fcc6c0e75a7c5a6515647b0c98ad37372f62dc91b2a69279e3c5215a673",
+  "source_hashes": {
+    "express.mjs": "f09595fff82009acc2a1f4e38f73e1ff56183b953e2a5834f21c4b8b0696bfe4",
+    "fastify.mjs": "01a296df3a8297025de12d293af7efa62f762889e550848be3eeb7db91462025",
+    "fastify-json.mjs": "3162b33328258a32d18fa7b65cd51877ec24bf026625244ee67d2a412328be1b",
+    "database.mjs": "2736d0efd93f277991890a2e87c649fc1cfc4d5b632d976e402feee5786ad4ff",
+    "package.json": "a24e4b71b6971ac33ac3a06bd9ddf7f3b5338ea2739280ba3693c0ab8a69f809",
+    "pnpm-lock.yaml": "b14916ce7e909477dc669066a1aed179e3b619d4b78fe097c14c25a40ff9eac3",
+    "cases.json": "2af23475a498b13f9029fefdff94b90c24f3ec197cd337caeda67fa3e18e238e"
+  },
+  "reader_tool_sha256": "88483f02b3c72e84dba66eda73f37ec4bfbc69ac4edcccd236c7c906b033212f"
+}

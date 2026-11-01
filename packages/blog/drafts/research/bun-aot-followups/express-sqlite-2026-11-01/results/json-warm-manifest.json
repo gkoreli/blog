@@ -1,0 +1,26 @@
+[
+  {
+    "file": "json-warm-guarded.json.gz",
+    "sha256": "87789a35c905a1178619ff1fc8a36d00bd992a382f8fd74f686361ae944b3125",
+    "uncompressed_sha256": "f21e23d0d9d301d0d775a78b4bb8543f21661c42131516780c774472b2e02422",
+    "bytes": 22926
+  },
+  {
+    "file": "json-warm-summary.json",
+    "sha256": "b34ef6af8daf0e764f53be2bbdc19798657f625e3f7cf9a08c60df032ad0703b",
+    "uncompressed_sha256": "b34ef6af8daf0e764f53be2bbdc19798657f625e3f7cf9a08c60df032ad0703b",
+    "bytes": 4153
+  },
+  {
+    "file": "json-warm-inputs.json",
+    "sha256": "a6e30bf4872a9b454cd040af21e96faaa975e83921aafae443ead8dc14544ad0",
+    "uncompressed_sha256": "a6e30bf4872a9b454cd040af21e96faaa975e83921aafae443ead8dc14544ad0",
+    "bytes": 1575
+  },
+  {
+    "file": "json-warm-conditions.json",
+    "sha256": "dd523db3cf3b9b68e0ec91cfdcba040d53b89ed43e009442b8cb1d51feba641b",
+    "uncompressed_sha256": "dd523db3cf3b9b68e0ec91cfdcba040d53b89ed43e009442b8cb1d51feba641b",
+    "bytes": 808
+  }
+]

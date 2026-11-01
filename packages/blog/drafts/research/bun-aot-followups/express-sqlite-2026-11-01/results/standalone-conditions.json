@@ -1,0 +1,14 @@
+{
+  "scope": "Separately guarded standalone-serializer warmed batch and four source/native contract cases. This is a separate control batch, not an interleaved comparison of serializer policies.",
+  "processes": 18,
+  "timed_windows": 18,
+  "checked_responses": 5708369,
+  "response_sha256": [
+    "b006a478e4f9aba7221d6c0e1ff4de732ea7178ead47fd2f93de1ba330e6989d"
+  ],
+  "running_guard_samples": 200,
+  "active_other_study_samples_during_phase": 0,
+  "guard_quiet_seconds_required": 60.0,
+  "source_native_contract_cases": 4,
+  "boundary": "One-second snapshots of >10% CPU processes in two known study paths, excluding owned descendants. Short-lived/unknown work and ordinary host activity remain possible. Contract coverage is four cases, not every schema feature."
+}

@@ -1,0 +1,11 @@
+{
+  "scope": "Two guarded cold traces and a separate thirty-start-per-mode/framework readiness control.",
+  "cold_processes": 36,
+  "timed_windows": 180,
+  "checked_responses": 7043742,
+  "startup_control_processes": 180,
+  "running_guard_samples": 188,
+  "active_other_study_samples_during_phase": 0,
+  "quiet_seconds_required": 60.0,
+  "boundary": "Health readiness precedes the first business request; fresh processes use warm file caches. The client is restarted for each one-second window and gaps are retained. Known competing study paths are sampled once per second; other activity and thermal variation remain possible."
+}

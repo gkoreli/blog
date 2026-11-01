@@ -1,28 +1,32 @@
-# Follow-up decision: a concrete candidate, with measurements pending
+# Article decision — a follow-up is warranted
 
-Goga's tentative article request should produce a distinct reader benefit beyond appending another percentage to the original article. A useful candidate is an engineering field note about moving framework-generated code into an AOT build while preserving what the API returns.
+The research supports a focused engineering field note, with a concrete result beyond another memory percentage. [Prepared draft](09-follow-up-draft.md): **Bun AOT in Express and Fastify: memory, CPU and serializers**. It is not a new site post.
 
-**Proposed title:** Bun AOT in web APIs: check what your serializer returns
+The reader can compare RAM, CPU per completed request, request speed and startup separately, then move a runtime-generated serializer into the native build without silently changing the tested response behavior. The author contributes checked fixtures, a reproduced semantic difference, a successful four-case standalone control, source and numeric artifacts, and the decision to exclude overlapping measurements.
 
-**Reader language and discovery hypothesis:** engineers trying Bun AOT with Express or Fastify ask whether it preserves API behavior and whether runtime code generation costs speed. Queries such as “Bun AOT Fastify serializer” describe the subject; no search demand or traffic improvement has been measured.
+## Supported findings and scope
 
-**Reader promise:** explain how to compare memory, CPU/request, request speed and first-use latency, and how to test a serializer optimization against schema behavior rather than one successful payload.
+| Finding | Basis | Limit |
+| --- | --- | --- |
+| Express saves memory with a small CPU/rate improvement | Six guarded runs per mode, 5,615,327 checked responses | One cached-read SQLite fixture and preview on macOS |
+| Fastify saves memory while CPU/request rises | Six guarded runs per mode, 5,672,260 responses | No universal framework ordering or cost claim |
+| Standalone source preserves four serializer behaviors and has a smaller AOT/JIT rate gap | Four source/native contract cases; six guarded runs per mode | Separate policy batches; wider schemas and all runtime-generated framework paths unproven |
+| Plain JSON changes response behavior | Extra fields and numeric-string cases differ | Matching one payload does not establish a generally equivalent substitution |
+| Native reaches readiness sooner; bytecode recovers much of that gain | Thirty-start control per mode/framework, cold traces | Warm file caches, health before business work, local clients |
 
-**Author's contribution:** the existing article supplied a checked comparison tool and earlier application/pool results. This investigation adds two SQLite fixtures, an independently computed output contract, a reproduced semantic difference in Bun's documented serializer suggestion, and a guarded experiment after detecting shared-host interference. The completed work is inspectable; there is no invented personal motive or successful adoption story.
+The full study has 246 timed windows and 27,977,442 checked responses, plus the separate 180-process readiness control. Results differ from Jarred's report because the fixture and conditions differ; the exact upstream chart remains unreplicated. Ordinary/short-lived host activity can evade the bounded guard. Linux, production capacity, energy, cloud cost, durable writes, multi-route serializer mapping and every schema feature remain outside the evidence.
 
-## Evidence that already supports prose
+## Positioning and editorial review
 
-Bun's documented `JSON.stringify` substitution matches the fixed response exactly, but emits extra fields that the generated serializer omitted and preserves a numeric string rather than emitting a number. The [functional experiment](results/serializer-contract.json), pinned dependencies and [primary source notes](01-source-notes.md) establish that bounded result. The practical lesson is to include rejected and transformed data in a serializer test before accepting a speed improvement.
+- **Form:** engineering field note/decision aid; no new OSS Radar issue number. A bridge between the recognizable Bun AOT decision and the author's inspectable experiments.
+- **Reader language:** Bun AOT, Express, Fastify, memory, CPU/request, generated serializer and startup. “Bun AOT Fastify serializer” and “Bun AOT Express memory CPU” are discovery hypotheses, not measured demand or competition.
+- **Proposed H1 / SEO title:** Bun AOT in Express and Fastify: memory, CPU and serializers.
+- **Proposed slug:** `bun-aot-express-fastify-serializers`; not reserved or published.
+- **Proposed description:** Bun AOT cut memory by about half in Express and Fastify SQLite fixtures. CPU outcomes differed; a build-time serializer preserved four checked response behaviors.
+- **Tags if published:** `bun`, `performance`, `fastify`, `sqlite`.
+- **Relationship:** the original Bun AOT article is the predecessor. The draft has one contextual root-relative backward link. A future publication should add the actual forward link and applicable series metadata then; no speculative live URL or date is inserted now.
+- **Authorship:** first-person statements follow recorded work; no supplied feeling, quotation or adoption outcome is invented. The exact [owner prompt](owner-prompt.md) is preserved for a future engineering-post prompt record. No new research-token estimate inherits the original frozen accounting.
+- **Evidence review:** each consequential number maps to a checkpoint summary; runtime-generation claims use pinned Bun/Fastify sources. The draft retains separate-policy and host limits, failed measurement setup, bytecode counterevidence and contract differences. It makes no growth or citation promise and prepares no outreach.
+- **Prose review:** result-led opening, three reader takeaways, concrete source/build steps, tables for actual comparisons, a bounded ending and checked glossary. No hypothetical deployment or successful user adoption is narrated.
 
-Jarred's Express/SQLite, Hono and Fastify posts are useful external leads. They remain attributed maintainer reports. Our fixtures have different source and unspecified upstream conditions, so our percentages cannot validate or refute his exact chart.
-
-## What is still needed for the performance article
-
-1. Finish the uncontended full protocol and numeric audit; retain the overlapped captures as excluded exploratory work.
-2. Test the supported standalone serializer under the source runtime and native AOT, including extra fields, coercion and required-field failure. No claim of a repaired response contract until it runs.
-3. Compare its warmed results with default/generated and plain JSON output, keeping the control batches separate and their limitations beside the numbers.
-4. Inspect the additional startup distribution and preserve the reversal in the excluded batches as a reason to avoid a simplistic first-launch headline.
-
-If the standalone path preserves the tested contract and yields a useful measured difference, that supplies a concrete worked example for a separate article. If it does not, a failure report can still be useful; the title and verdict must follow that result. No site post, outreach or automatic promotion is prepared from the unaccepted timings.
-
-The original article and its frozen research footprint remain unchanged. A future engineering post should include the exact [owner prompt](owner-prompt.md) in its prompt provenance; this working brief is not a published post or a measured research-usage claim.
+The distinctive payoff is a tested workflow: make generated code visible before compiling, and compare the serializer's behavior as well as its rate. Site publication, broader schema coverage, a different OS and independent replication are optional next work, not unfinished acceptance for this research.

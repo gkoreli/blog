@@ -34,6 +34,8 @@ def main():
     parser.add_argument('--work', type=Path, required=True)
     parser.add_argument('--out', type=Path, required=True)
     parser.add_argument('--startup', type=Path)
+    parser.add_argument('--static', type=Path)
+    parser.add_argument('--guard', type=Path)
     args = parser.parse_args()
     args.out.mkdir(parents=True, exist_ok=True)
     work = args.work
@@ -120,6 +122,41 @@ def main():
         save(fixture + '-cold', cold, compress=True)
     assert len(response_hashes) == 1, 'Cross-framework/mode response bytes differ'
     assert timed_windows == 228
+    if args.static:
+        static = args.static
+        metadata = json.loads((static / 'completed.json').read_text())
+        assert metadata['source_and_native_contract_match']
+        for name, expected_sha in metadata['hashes'].items():
+            assert sha((static / name).read_bytes()) == expected_sha
+        assert metadata['hashes']['fixture.sqlite'] == inputs['database_sha256']
+        assert metadata['hashes']['database.mjs'] == inputs['source_hashes']['database.mjs']
+        assert metadata['hashes']['cases.json'] == inputs['source_hashes']['cases.json']
+        semantic = json.loads((static / 'contract-source.json').read_text())
+        assert semantic == json.loads((static / 'contract-native.json').read_text())
+        assert [v['name'] for v in semantic] == ['fixture', 'extra-fields', 'numeric-string', 'missing-required']
+        assert all(v['same'] for v in semantic)
+        assert [v['throws'] for v in semantic] == [False, False, False, True]
+        assert [v['bytes'] for v in semantic] == [2215, 2215, 2215, None]
+        data = json.loads((static / 'warm/observations.json').read_text())
+        summary = compare.summarize(data)
+        assert summary['complete'] and len(data['observations']) == 18
+        for row in data['observations']:
+            assert row['status'] == 'passed' and len(row['routes']) == 1
+            for route in row['routes']:
+                checked += verify_route(route)
+                response_hashes.add(route['response_sha256'])
+                timed_windows += 1
+        for mode in ['jit', 'bytecode', 'aot']:
+            rows = [r for r in data['observations'] if r['mode'] == mode]
+            assert len(rows) == 6 and {r['block'] for r in rows} == set(range(6))
+            assert [sum(r['position'] == p for r in rows) for p in range(3)] == [2, 2, 2]
+        for build in data['builds']:
+            build.pop('binary', None)
+        save('fastify-static-warm', data, compress=True)
+        save('standalone-contract', semantic)
+        save('standalone-inputs', metadata)
+        summaries['fastify-static-warm'] = summary
+        assert len(response_hashes) == 1 and timed_windows == 246
     if args.startup:
         startup = json.loads((args.startup / 'observations.json').read_text())
         assert len(startup['observations']) == 180
@@ -147,12 +184,25 @@ def main():
         'boundary': 'One-second snapshots of >10% CPU processes in the two known study paths, excluding our descendants. Short-lived work and other host activity can be missed.',
     }
     assert not errors and not active, 'Known external study overlap; preserve results and review before acceptance'
+    if args.guard:
+        guard = json.loads(args.guard.read_text())
+        assert guard['status'] == 'completed' and guard['study_exit_code'] == 0
+        running = [r for r in guard['samples'] if r['stage'] == 'running']
+        assert running and not any(r['active_external_study'] for r in running)
+        save('guard-conditions', {
+            'status': guard['status'], 'running_samples': len(running),
+            'quiet_seconds_required': guard['quiet_seconds_required'],
+            'active_other_study_samples_while_running': 0,
+            'guard_source_sha256': sha((source / 'host-guard.py').read_bytes()),
+            'boundary': conditions['boundary'],
+        })
     save('conditions', conditions)
     save('inputs', inputs)
     save('completed', completed)
     save('control-builds', json.loads((work / 'control-builds.json').read_text()))
     save('summary', summaries)
-    save('audit', {'warm_processes': 48, 'cold_processes': 36, 'timed_windows': timed_windows,
+    save('audit', {'warm_processes': 66 if args.static else 48, 'cold_processes': 36,
+                   'startup_control_processes': 180 if args.startup else 0, 'timed_windows': timed_windows,
                    'checked_responses': checked, 'unique_response_sha256': sorted(response_hashes),
                    'reader_tool_sha256': sha(tool.read_bytes()), 'sampling_errors': len(errors),
                    'active_other_study_samples': len(active)})

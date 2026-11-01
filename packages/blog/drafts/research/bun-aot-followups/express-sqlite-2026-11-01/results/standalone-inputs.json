@@ -1,0 +1,12 @@
+{
+  "hashes": {
+    "package.json": "07f6b38db5535bef30b5c81d28bd7fd2d6298f3d500afbd460f4584c5f0a0f5b",
+    "pnpm-lock.yaml": "ac39e753722006c68734dc88fc48a6712cc38cf7c51499e1c091b6087386d0f7",
+    "serializer.cjs": "5e70c667e01b4eeed3b0251c8c0c3dcddc080412a9f3662ef39d2cc06176a6a2",
+    "fastify-static.mjs": "2f40450c313d6e2e4ee4432984b6f1fd0c017309f2e546759945895e73ce868f",
+    "database.mjs": "2736d0efd93f277991890a2e87c649fc1cfc4d5b632d976e402feee5786ad4ff",
+    "cases.json": "2af23475a498b13f9029fefdff94b90c24f3ec197cd337caeda67fa3e18e238e",
+    "fixture.sqlite": "ea8d3fcc6c0e75a7c5a6515647b0c98ad37372f62dc91b2a69279e3c5215a673"
+  },
+  "source_and_native_contract_match": true
+}

@@ -2,7 +2,9 @@
 
 New November 1 investigation of [Jarred Sumner's Express/SQLite report](https://x.com/jarredsumner/status/2116679973448945762). [Plan and acceptance](00-plan.md), [primary sources](01-source-notes.md). Earlier [application](../validation-2026-10-31/README.md) and [process-pool](../practical-2026-10-31/README.md) measurements keep their original conditions and acceptance.
 
-Current status: the serializer contract experiment passed. Performance passes overlapped another session's load tests and are excluded from conclusions. A complete rerun is queued behind a quiet-window guard; [current handoff](04-handoff.md). The standalone serializer and startup-distribution controls are prepared, with execution still pending.
+Research complete: separately guarded [Express](05-express-results.md), [Fastify](06-fastify-results.md), [serializer controls](07-serializer-results.md) and [cold/startup checks](08-cold-startup-results.md) passed. Earlier overlapping passes remain excluded. The accepted captures contain **246 timed windows, 27,977,442 fully checked responses and 180 additional startup-control processes**. [Follow-up draft](09-follow-up-draft.md), [article decision](03-article-brief.md), [delivery status](04-handoff.md).
+
+The follow-up is warranted as a focused engineering field note: large memory savings, distinct CPU outcomes and a tested build-time serializer path. The draft is outside `posts/`; it has not been published on the site.
 
 ## What this tests
 
@@ -38,6 +40,16 @@ python3 "$STUDY_DIR/host-guard.py" --receipt "$LAB_DIR/guard-receipt.json" -- \
 Choose the expanded command **instead of** the earlier `run-study.py` command, with a fresh output directory. An interrupted guard exits 75 and retains the partial captures. Do not publish their timing as an uncontended comparison.
 
 Official canary assets change. Verify the reported executable revision and hash before calling a new result a replication of this particular compiler. The runner uses the existing [reader comparison tool](../../../../tools/bun-aot-check/README.md), without changing its implementation.
+
+The accepted execution used **separately guarded checkpoints**, rather than one uninterrupted `full-study.py` invocation: Express completed before a later cold interruption; Fastify, standalone, JSON and cold/startup then completed under their own guards. `audit-express-warm.py`, `audit-fastify-warm.py` (also `--json-control`), `audit-standalone.py` and `audit-cold-startup.py` accepted those captures. The original all-in-one runner/audit remain reproduction alternatives; their output-folder assumptions must not be applied to these checkpoints without explicit wiring.
+
+Check the public evidence without running another benchmark:
+
+```sh
+PYTHONDONTWRITEBYTECODE=1 python3 verify-evidence.py
+```
+
+That verifies stored/decompressed hashes, recomputes every summary, checks 246 windows and 27,977,442 measured responses, verifies balanced mode positions, checks the 180 startup rows and generated source/contract commitments. It rechecks the published evidence; it does not independently rerun or authenticate the original execution.
 
 The warmed batches use six fresh processes per mode: JIT, bytecode and native, eight connections, three seconds warmup and eight measured seconds. Cold batches use another six fresh processes per mode, a health-only readiness check, one fully checked business response and five one-second request windows. The serializer control compares JIT/native with `JSON.stringify` separately. Mode positions are balanced; every trial is retained. First launches of newly built files remain separate from repeated fresh-process startup.
 

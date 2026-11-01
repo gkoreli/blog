@@ -1,0 +1,32 @@
+[
+  {
+    "file": "standalone-warm-guarded.json.gz",
+    "sha256": "7a6e5addc55e3c128eec75e15633865691ada7f842847e3f0520ce8681388d65",
+    "uncompressed_sha256": "82ff622681f082ec12e1c0cc5487604cdb11cc602d74f242752f4758211c3791",
+    "bytes": 34053
+  },
+  {
+    "file": "standalone-warm-summary.json",
+    "sha256": "b9e51335a101c0965753a1d07426082676651ca4f12b76cfa3e1318a9068284e",
+    "uncompressed_sha256": "b9e51335a101c0965753a1d07426082676651ca4f12b76cfa3e1318a9068284e",
+    "bytes": 5765
+  },
+  {
+    "file": "standalone-inputs.json",
+    "sha256": "fe5f44b9cc1a74f9e7bbddbd8b1f28ebe7d5e3a7f0555290d4d325aa14e4eb54",
+    "uncompressed_sha256": "fe5f44b9cc1a74f9e7bbddbd8b1f28ebe7d5e3a7f0555290d4d325aa14e4eb54",
+    "bytes": 691
+  },
+  {
+    "file": "standalone-contract.json",
+    "sha256": "0ac1fa85ce0b7f0634a44c9501905041af028bdd3488fc73a339f1354ee3c783",
+    "uncompressed_sha256": "0ac1fa85ce0b7f0634a44c9501905041af028bdd3488fc73a339f1354ee3c783",
+    "bytes": 379
+  },
+  {
+    "file": "standalone-conditions.json",
+    "sha256": "4ca4d032eadf117560bf8e67fdb916ba3bea78a0eb6fc067416f466ed88f59ae",
+    "uncompressed_sha256": "4ca4d032eadf117560bf8e67fdb916ba3bea78a0eb6fc067416f466ed88f59ae",
+    "bytes": 771
+  }
+]
