@@ -1,0 +1,2196 @@
+{
+  "batches": {
+    "keryx-startup": {
+      "source_sha256": "c90308b9a1980925be119fda20769afe1310bf4559315845eaae8ef73dbfb08a",
+      "metadata": {
+        "observed_at": "2026-11-01T16:46:52.318136+00:00",
+        "project": "keryx",
+        "stage": "startup",
+        "runs": 12,
+        "runner_sha256": "0ea8c5043122a1baa8bd6af63e3912bef380a61d89930218d05c1e052a20988f",
+        "helper_sha256": "88483f02b3c72e84dba66eda73f37ec4bfbc69ac4edcccd236c7c906b033212f",
+        "client_source_sha256": "180ff54962d59c435d50e28d9a8d90d06a060a4f66e505a0f1d8503408e4e797",
+        "compiler_sha256": "cbecab3f05a0c8bc11ea0164e5868db0b5da12067fdb13dfcacfc9bf87b68b6a",
+        "cpu_seconds_per_tick": 4.166666666666666e-08,
+        "system": "Darwin",
+        "machine": "arm64",
+        "cpu_count": 10,
+        "connections": 8,
+        "warmup_seconds": 2,
+        "measured_seconds": 5,
+        "memory_metric": "physical_footprint_bytes"
+      },
+      "observations": 24,
+      "checked_response_cases": 72,
+      "groups": [
+        {
+          "mode": "native",
+          "ready_ms": {
+            "n": 12,
+            "median": 31.698146020062268,
+            "min": 28.70020898990333,
+            "max": 34.862250089645386
+          },
+          "ready_physical_bytes": {
+            "n": 12,
+            "median": 29811540.0,
+            "min": 29721440,
+            "max": 29950864
+          },
+          "routes": [],
+          "binary_sha256": "ba572a835a250f8909129a021623929aa6d9c369c0a622692fb4d92cc1d0444e"
+        },
+        {
+          "mode": "source",
+          "ready_ms": {
+            "n": 12,
+            "median": 180.38770847488195,
+            "min": 177.3574579274282,
+            "max": 195.62891696114093
+          },
+          "ready_physical_bytes": {
+            "n": 12,
+            "median": 100459312.0,
+            "min": 99205936,
+            "max": 101106456
+          },
+          "routes": [],
+          "binary_sha256": "cbecab3f05a0c8bc11ea0164e5868db0b5da12067fdb13dfcacfc9bf87b68b6a"
+        }
+      ],
+      "timed_windows": 0,
+      "timed_checked_responses": 0,
+      "preextraction": null
+    },
+    "keryx-load": {
+      "source_sha256": "9115cdf6fa20fc922b610174e452dd383930cbf2079cfb54631bf70531c545f4",
+      "metadata": {
+        "observed_at": "2026-11-01T16:47:02.171445+00:00",
+        "project": "keryx",
+        "stage": "load",
+        "runs": 6,
+        "runner_sha256": "0ea8c5043122a1baa8bd6af63e3912bef380a61d89930218d05c1e052a20988f",
+        "helper_sha256": "88483f02b3c72e84dba66eda73f37ec4bfbc69ac4edcccd236c7c906b033212f",
+        "client_source_sha256": "180ff54962d59c435d50e28d9a8d90d06a060a4f66e505a0f1d8503408e4e797",
+        "compiler_sha256": "cbecab3f05a0c8bc11ea0164e5868db0b5da12067fdb13dfcacfc9bf87b68b6a",
+        "cpu_seconds_per_tick": 4.166666666666666e-08,
+        "system": "Darwin",
+        "machine": "arm64",
+        "cpu_count": 10,
+        "connections": 8,
+        "warmup_seconds": 2,
+        "measured_seconds": 5,
+        "memory_metric": "physical_footprint_bytes"
+      },
+      "observations": 12,
+      "checked_response_cases": 36,
+      "groups": [
+        {
+          "mode": "native",
+          "ready_ms": {
+            "n": 6,
+            "median": 35.35104205366224,
+            "min": 32.92275010608137,
+            "max": 134.4599169678986
+          },
+          "ready_physical_bytes": {
+            "n": 6,
+            "median": 29803360.0,
+            "min": 29721440,
+            "max": 29950864
+          },
+          "routes": [
+            {
+              "name": "default",
+              "rps": {
+                "n": 6,
+                "median": 50840.5595,
+                "min": 49178.184,
+                "max": 52989.021
+              },
+              "app_cpu_percent": {
+                "n": 6,
+                "median": 126.25917717190646,
+                "min": 122.41909599670197,
+                "max": 133.8445260955568
+              },
+              "end_physical_bytes": {
+                "n": 6,
+                "median": 969320224.0,
+                "min": 716244408,
+                "max": 1276790920
+              },
+              "sampled_peak_physical_bytes": {
+                "n": 6,
+                "median": 1043441440.0,
+                "min": 713491896,
+                "max": 1544882312
+              },
+              "lifetime_peak_physical_bytes": {
+                "n": 6,
+                "median": 1043760928.0,
+                "min": 716244408,
+                "max": 1548830856
+              },
+              "end_rss_bytes": {
+                "n": 6,
+                "median": 1369055232.0,
+                "min": 905920512,
+                "max": 1928429568
+              },
+              "response_sha256": "1378361d51ac6bda5ff18d7d53d87857c59956b568284e5d3dd49c4c94bd2b51",
+              "requests": 1537279
+            },
+            {
+              "name": "greeting",
+              "rps": {
+                "n": 6,
+                "median": 50045.2195,
+                "min": 48157.288,
+                "max": 50278.512
+              },
+              "app_cpu_percent": {
+                "n": 6,
+                "median": 127.77319581899198,
+                "min": 123.13733305415,
+                "max": 131.11754874230283
+              },
+              "end_physical_bytes": {
+                "n": 6,
+                "median": 915195656.0,
+                "min": 676758992,
+                "max": 1576257912
+              },
+              "sampled_peak_physical_bytes": {
+                "n": 6,
+                "median": 944654076.0,
+                "min": 727877096,
+                "max": 1517209952
+              },
+              "lifetime_peak_physical_bytes": {
+                "n": 6,
+                "median": 948725500.0,
+                "min": 727909864,
+                "max": 1576257912
+              },
+              "end_rss_bytes": {
+                "n": 6,
+                "median": 1307377664.0,
+                "min": 915439616,
+                "max": 2189262848
+              },
+              "response_sha256": "8849a7d0648329102a73e7cc7251dad2ff3926cf39f777ba5d990035c9de05dc",
+              "requests": 1490568
+            }
+          ],
+          "binary_sha256": "ba572a835a250f8909129a021623929aa6d9c369c0a622692fb4d92cc1d0444e"
+        },
+        {
+          "mode": "source",
+          "ready_ms": {
+            "n": 6,
+            "median": 255.44572953367606,
+            "min": 181.12049996852875,
+            "max": 345.930292038247
+          },
+          "ready_physical_bytes": {
+            "n": 6,
+            "median": 100197180.0,
+            "min": 99795760,
+            "max": 101024584
+          },
+          "routes": [
+            {
+              "name": "default",
+              "rps": {
+                "n": 6,
+                "median": 50336.892,
+                "min": 44016.035,
+                "max": 51532.526
+              },
+              "app_cpu_percent": {
+                "n": 6,
+                "median": 123.14659475213108,
+                "min": 118.86953656753802,
+                "max": 136.84759858388443
+              },
+              "end_physical_bytes": {
+                "n": 6,
+                "median": 1614850220.0,
+                "min": 1016202896,
+                "max": 2265794912
+              },
+              "sampled_peak_physical_bytes": {
+                "n": 6,
+                "median": 1745192976.0,
+                "min": 1013204624,
+                "max": 2361838280
+              },
+              "lifetime_peak_physical_bytes": {
+                "n": 6,
+                "median": 1747027984.0,
+                "min": 1016202896,
+                "max": 2361936584
+              },
+              "end_rss_bytes": {
+                "n": 6,
+                "median": 1565671424.0,
+                "min": 1247903744,
+                "max": 2773975040
+              },
+              "response_sha256": "1378361d51ac6bda5ff18d7d53d87857c59956b568284e5d3dd49c4c94bd2b51",
+              "requests": 1479304
+            },
+            {
+              "name": "greeting",
+              "rps": {
+                "n": 6,
+                "median": 46670.3505,
+                "min": 45958.975,
+                "max": 47870.504
+              },
+              "app_cpu_percent": {
+                "n": 6,
+                "median": 124.0715227900811,
+                "min": 121.93648310561107,
+                "max": 143.29880761895166
+              },
+              "end_physical_bytes": {
+                "n": 6,
+                "median": 1470507012.0,
+                "min": 1101563560,
+                "max": 2248362744
+              },
+              "sampled_peak_physical_bytes": {
+                "n": 6,
+                "median": 1508739076.0,
+                "min": 1022527096,
+                "max": 2455505656
+              },
+              "lifetime_peak_physical_bytes": {
+                "n": 6,
+                "median": 1511827460.0,
+                "min": 1101563560,
+                "max": 2470529784
+              },
+              "end_rss_bytes": {
+                "n": 6,
+                "median": 1831133184.0,
+                "min": 1270136832,
+                "max": 2822127616
+              },
+              "response_sha256": "8849a7d0648329102a73e7cc7251dad2ff3926cf39f777ba5d990035c9de05dc",
+              "requests": 1405420
+            }
+          ],
+          "binary_sha256": "cbecab3f05a0c8bc11ea0164e5868db0b5da12067fdb13dfcacfc9bf87b68b6a"
+        }
+      ],
+      "timed_windows": 24,
+      "timed_checked_responses": 5912571,
+      "preextraction": null
+    },
+    "keryx-cookie": {
+      "source_sha256": "8068d9925e135f929018a5d7c5f6e348f1e2ec1d4a70b67f8d6c3729cc59e9b5",
+      "metadata": {
+        "profile": "One returning session shared by eight concurrent HTTP connections; reuse the actual Set-Cookie value",
+        "runner_sha256": "5dfe54de67a6d68fc08162faf9f59a94ae5dcd5838aee81c1e43fb671d7f0f18",
+        "study_sha256": "0ea8c5043122a1baa8bd6af63e3912bef380a61d89930218d05c1e052a20988f",
+        "helper_sha256": "88483f02b3c72e84dba66eda73f37ec4bfbc69ac4edcccd236c7c906b033212f",
+        "client_source_sha256": "180ff54962d59c435d50e28d9a8d90d06a060a4f66e505a0f1d8503408e4e797",
+        "runs": 6,
+        "connections": 8,
+        "warmup_seconds": 2,
+        "measured_seconds": 5,
+        "cpu_seconds_per_tick": 4.166666666666666e-08
+      },
+      "observations": 12,
+      "checked_response_cases": 36,
+      "groups": [
+        {
+          "mode": "native",
+          "ready_ms": {
+            "n": 6,
+            "median": 85.77429153956473,
+            "min": 36.166541976854205,
+            "max": 132.12470803409815
+          },
+          "ready_physical_bytes": {
+            "n": 6,
+            "median": 29795192.0,
+            "min": 29737824,
+            "max": 29999992
+          },
+          "routes": [
+            {
+              "name": "default",
+              "rps": {
+                "n": 6,
+                "median": 53343.466499999995,
+                "min": 51337.406,
+                "max": 56736.803
+              },
+              "app_cpu_percent": {
+                "n": 6,
+                "median": 124.25293671923927,
+                "min": 113.57119251652385,
+                "max": 135.11799909564144
+              },
+              "end_physical_bytes": {
+                "n": 6,
+                "median": 761218680.0,
+                "min": 621872496,
+                "max": 1375324320
+              },
+              "sampled_peak_physical_bytes": {
+                "n": 6,
+                "median": 811550328.0,
+                "min": 621659480,
+                "max": 1375324320
+              },
+              "lifetime_peak_physical_bytes": {
+                "n": 6,
+                "median": 815031916.0,
+                "min": 622724440,
+                "max": 1376897184
+              },
+              "end_rss_bytes": {
+                "n": 6,
+                "median": 1167622144.0,
+                "min": 826327040,
+                "max": 1874952192
+              },
+              "response_sha256": "1378361d51ac6bda5ff18d7d53d87857c59956b568284e5d3dd49c4c94bd2b51",
+              "requests": 1607869
+            },
+            {
+              "name": "greeting",
+              "rps": {
+                "n": 6,
+                "median": 52747.991500000004,
+                "min": 43788.746,
+                "max": 54595.845
+              },
+              "app_cpu_percent": {
+                "n": 6,
+                "median": 124.0946952713773,
+                "min": 117.41806516268471,
+                "max": 136.76641900284363
+              },
+              "end_physical_bytes": {
+                "n": 6,
+                "median": 825820816.0,
+                "min": 612353440,
+                "max": 1129269312
+              },
+              "sampled_peak_physical_bytes": {
+                "n": 6,
+                "median": 869426820.0,
+                "min": 672564664,
+                "max": 1310115904
+              },
+              "lifetime_peak_physical_bytes": {
+                "n": 6,
+                "median": 870147716.0,
+                "min": 674039224,
+                "max": 1310115904
+              },
+              "end_rss_bytes": {
+                "n": 6,
+                "median": 1184661504.0,
+                "min": 840220672,
+                "max": 1755660288
+              },
+              "response_sha256": "8849a7d0648329102a73e7cc7251dad2ff3926cf39f777ba5d990035c9de05dc",
+              "requests": 1542398
+            }
+          ],
+          "binary_sha256": "ba572a835a250f8909129a021623929aa6d9c369c0a622692fb4d92cc1d0444e"
+        },
+        {
+          "mode": "source",
+          "ready_ms": {
+            "n": 6,
+            "median": 337.0258744689636,
+            "min": 312.1299159247428,
+            "max": 379.7312079695985
+          },
+          "ready_physical_bytes": {
+            "n": 6,
+            "median": 99984176.0,
+            "min": 98419480,
+            "max": 100352816
+          },
+          "routes": [
+            {
+              "name": "default",
+              "rps": {
+                "n": 6,
+                "median": 51380.968,
+                "min": 49608.82,
+                "max": 55221.58
+              },
+              "app_cpu_percent": {
+                "n": 6,
+                "median": 131.67424104005897,
+                "min": 124.64696646443896,
+                "max": 144.58040515226546
+              },
+              "end_physical_bytes": {
+                "n": 6,
+                "median": 1481770952.0,
+                "min": 888964608,
+                "max": 2623408864
+              },
+              "sampled_peak_physical_bytes": {
+                "n": 6,
+                "median": 1498154952.0,
+                "min": 887621120,
+                "max": 2621459144
+              },
+              "lifetime_peak_physical_bytes": {
+                "n": 6,
+                "median": 1521182664.0,
+                "min": 888964608,
+                "max": 2623408864
+              },
+              "end_rss_bytes": {
+                "n": 6,
+                "median": 1729183744.0,
+                "min": 1086930944,
+                "max": 2816524288
+              },
+              "response_sha256": "1378361d51ac6bda5ff18d7d53d87857c59956b568284e5d3dd49c4c94bd2b51",
+              "requests": 1552137
+            },
+            {
+              "name": "greeting",
+              "rps": {
+                "n": 6,
+                "median": 50320.3425,
+                "min": 46597.689,
+                "max": 51870.856
+              },
+              "app_cpu_percent": {
+                "n": 6,
+                "median": 127.31425322411155,
+                "min": 125.68102323348982,
+                "max": 140.61255203512638
+              },
+              "end_physical_bytes": {
+                "n": 6,
+                "median": 1344849840.0,
+                "min": 916129304,
+                "max": 1938688544
+              },
+              "sampled_peak_physical_bytes": {
+                "n": 6,
+                "median": 1399801776.0,
+                "min": 914015768,
+                "max": 1997851168
+              },
+              "lifetime_peak_physical_bytes": {
+                "n": 6,
+                "median": 1402415024.0,
+                "min": 916129304,
+                "max": 1999211040
+              },
+              "end_rss_bytes": {
+                "n": 6,
+                "median": 1688764416.0,
+                "min": 1104478208,
+                "max": 2526855168
+              },
+              "response_sha256": "8849a7d0648329102a73e7cc7251dad2ff3926cf39f777ba5d990035c9de05dc",
+              "requests": 1492317
+            }
+          ],
+          "binary_sha256": "cbecab3f05a0c8bc11ea0164e5868db0b5da12067fdb13dfcacfc9bf87b68b6a"
+        }
+      ],
+      "timed_windows": 24,
+      "timed_checked_responses": 6194721,
+      "preextraction": null
+    },
+    "keryx-external": {
+      "source_sha256": "c1e21a3aac1ec3d494b4e94fa28a0fc9a93f165ebd349eb3f068a1cf674b4004",
+      "metadata": {
+        "profile": "One returning session, eight HTTP connections, real isolated Redis and PostgreSQL",
+        "runner_sha256": "55db43e06cddf3dd2e81937d31dc25b56c1e9ae68812a9be87133e6f42a5b508",
+        "helper_sha256": "88483f02b3c72e84dba66eda73f37ec4bfbc69ac4edcccd236c7c906b033212f",
+        "study_sha256": "0ea8c5043122a1baa8bd6af63e3912bef380a61d89930218d05c1e052a20988f",
+        "client_source_sha256": "180ff54962d59c435d50e28d9a8d90d06a060a4f66e505a0f1d8503408e4e797",
+        "runs": 6,
+        "connections": 8,
+        "warmup_seconds": 2,
+        "measured_seconds": 5,
+        "redis_version": "Redis server v=8.0.3 sha=00000000:1 malloc=libc bits=64 build=d528a868710740b4",
+        "redis_sha256": "e6520b71e9ef4814555772b7cc024340a89e9bd9138e368083dbb94c163710ad",
+        "cpu_seconds_per_tick": 4.166666666666666e-08
+      },
+      "observations": 12,
+      "checked_response_cases": 36,
+      "groups": [
+        {
+          "mode": "native",
+          "ready_ms": {
+            "n": 6,
+            "median": 38.35497907130048,
+            "min": 34.52824999112636,
+            "max": 133.45387508161366
+          },
+          "ready_physical_bytes": {
+            "n": 6,
+            "median": 28607340.0,
+            "min": 28394360,
+            "max": 28754808
+          },
+          "routes": [
+            {
+              "name": "default",
+              "rps": {
+                "n": 6,
+                "median": 36629.764,
+                "min": 34208.765,
+                "max": 39084.414
+              },
+              "app_cpu_percent": {
+                "n": 6,
+                "median": 114.86875661360696,
+                "min": 111.33351409135976,
+                "max": 121.39613122524516
+              },
+              "end_physical_bytes": {
+                "n": 6,
+                "median": 654034456.0,
+                "min": 475104528,
+                "max": 803817176
+              },
+              "sampled_peak_physical_bytes": {
+                "n": 6,
+                "median": 753681980.0,
+                "min": 479544544,
+                "max": 1015269080
+              },
+              "lifetime_peak_physical_bytes": {
+                "n": 6,
+                "median": 755443260.0,
+                "min": 484410616,
+                "max": 1015269080
+              },
+              "end_rss_bytes": {
+                "n": 6,
+                "median": 981491712.0,
+                "min": 584155136,
+                "max": 1269874688
+              },
+              "response_sha256": "1378361d51ac6bda5ff18d7d53d87857c59956b568284e5d3dd49c4c94bd2b51",
+              "requests": 1104810,
+              "redis_cpu_percent": {
+                "n": 6,
+                "median": 37.9612551814374,
+                "min": 36.79361320140827,
+                "max": 38.61475688831037
+              },
+              "redis_physical_bytes": {
+                "n": 6,
+                "median": 3383680.0,
+                "min": 3326336,
+                "max": 3391872
+              },
+              "redis_used_memory": {
+                "n": 6,
+                "median": 1202904.0,
+                "min": 1196864,
+                "max": 1208432
+              },
+              "redis_key_counts": [
+                [
+                  12,
+                  12
+                ],
+                [
+                  17,
+                  17
+                ],
+                [
+                  32,
+                  32
+                ],
+                [
+                  37,
+                  37
+                ],
+                [
+                  52,
+                  52
+                ],
+                [
+                  57,
+                  57
+                ]
+              ]
+            },
+            {
+              "name": "greeting",
+              "rps": {
+                "n": 6,
+                "median": 35976.5165,
+                "min": 31746.143,
+                "max": 37598.741
+              },
+              "app_cpu_percent": {
+                "n": 6,
+                "median": 114.56778157175175,
+                "min": 108.6712790259015,
+                "max": 119.62973882920558
+              },
+              "end_physical_bytes": {
+                "n": 6,
+                "median": 592856552.0,
+                "min": 433112288,
+                "max": 861095784
+              },
+              "sampled_peak_physical_bytes": {
+                "n": 6,
+                "median": 641484240.0,
+                "min": 462554336,
+                "max": 1058211688
+              },
+              "lifetime_peak_physical_bytes": {
+                "n": 6,
+                "median": 642385360.0,
+                "min": 463897824,
+                "max": 1058260840
+              },
+              "end_rss_bytes": {
+                "n": 6,
+                "median": 887726080.0,
+                "min": 536985600,
+                "max": 1439252480
+              },
+              "response_sha256": "8849a7d0648329102a73e7cc7251dad2ff3926cf39f777ba5d990035c9de05dc",
+              "requests": 1059921,
+              "redis_cpu_percent": {
+                "n": 6,
+                "median": 37.51782382452135,
+                "min": 36.74907088512056,
+                "max": 38.0718059850609
+              },
+              "redis_physical_bytes": {
+                "n": 6,
+                "median": 3383680.0,
+                "min": 3326336,
+                "max": 3391872
+              },
+              "redis_used_memory": {
+                "n": 6,
+                "median": 1202904.0,
+                "min": 1196864,
+                "max": 1208432
+              },
+              "redis_key_counts": [
+                [
+                  12,
+                  12
+                ],
+                [
+                  17,
+                  17
+                ],
+                [
+                  32,
+                  32
+                ],
+                [
+                  37,
+                  37
+                ],
+                [
+                  52,
+                  52
+                ],
+                [
+                  57,
+                  57
+                ]
+              ]
+            }
+          ],
+          "binary_sha256": "ba572a835a250f8909129a021623929aa6d9c369c0a622692fb4d92cc1d0444e"
+        },
+        {
+          "mode": "source",
+          "ready_ms": {
+            "n": 6,
+            "median": 224.39241653773934,
+            "min": 207.76829204987735,
+            "max": 351.2302079470828
+          },
+          "ready_physical_bytes": {
+            "n": 6,
+            "median": 94970648.0,
+            "min": 93733680,
+            "max": 95912752
+          },
+          "routes": [
+            {
+              "name": "default",
+              "rps": {
+                "n": 6,
+                "median": 36521.8965,
+                "min": 24472.724,
+                "max": 38410.51
+              },
+              "app_cpu_percent": {
+                "n": 6,
+                "median": 123.84577621833051,
+                "min": 94.65580715543715,
+                "max": 140.47536205247292
+              },
+              "end_physical_bytes": {
+                "n": 6,
+                "median": 963995172.0,
+                "min": 524535032,
+                "max": 1678903456
+              },
+              "sampled_peak_physical_bytes": {
+                "n": 6,
+                "median": 972056100.0,
+                "min": 552240352,
+                "max": 1684621472
+              },
+              "lifetime_peak_physical_bytes": {
+                "n": 6,
+                "median": 974587428.0,
+                "min": 554058976,
+                "max": 1687881888
+              },
+              "end_rss_bytes": {
+                "n": 6,
+                "median": 1208410112.0,
+                "min": 698269696,
+                "max": 2007891968
+              },
+              "response_sha256": "1378361d51ac6bda5ff18d7d53d87857c59956b568284e5d3dd49c4c94bd2b51",
+              "requests": 1042355,
+              "redis_cpu_percent": {
+                "n": 6,
+                "median": 36.329195465525316,
+                "min": 24.252917578884016,
+                "max": 36.91500265718887
+              },
+              "redis_physical_bytes": {
+                "n": 6,
+                "median": 3375488.0,
+                "min": 3309952,
+                "max": 3391872
+              },
+              "redis_used_memory": {
+                "n": 6,
+                "median": 1202776.0,
+                "min": 1195536,
+                "max": 1209632
+              },
+              "redis_key_counts": [
+                [
+                  7,
+                  7
+                ],
+                [
+                  22,
+                  22
+                ],
+                [
+                  27,
+                  27
+                ],
+                [
+                  42,
+                  42
+                ],
+                [
+                  47,
+                  47
+                ],
+                [
+                  62,
+                  62
+                ]
+              ]
+            },
+            {
+              "name": "greeting",
+              "rps": {
+                "n": 6,
+                "median": 35714.786,
+                "min": 32206.989,
+                "max": 36865.244
+              },
+              "app_cpu_percent": {
+                "n": 6,
+                "median": 119.94864156375172,
+                "min": 116.20719702310298,
+                "max": 130.24471705262638
+              },
+              "end_physical_bytes": {
+                "n": 6,
+                "median": 888989208.0,
+                "min": 698615104,
+                "max": 1258981200
+              },
+              "sampled_peak_physical_bytes": {
+                "n": 6,
+                "median": 878470668.0,
+                "min": 682673448,
+                "max": 1264273232
+              },
+              "lifetime_peak_physical_bytes": {
+                "n": 6,
+                "median": 888989208.0,
+                "min": 698615104,
+                "max": 1269040976
+              },
+              "end_rss_bytes": {
+                "n": 6,
+                "median": 1134346240.0,
+                "min": 845168640,
+                "max": 1553973248
+              },
+              "response_sha256": "8849a7d0648329102a73e7cc7251dad2ff3926cf39f777ba5d990035c9de05dc",
+              "requests": 1050719,
+              "redis_cpu_percent": {
+                "n": 6,
+                "median": 35.382176165126914,
+                "min": 34.06417632241044,
+                "max": 36.205914610403454
+              },
+              "redis_physical_bytes": {
+                "n": 6,
+                "median": 3375488.0,
+                "min": 3293568,
+                "max": 3391872
+              },
+              "redis_used_memory": {
+                "n": 6,
+                "median": 1202776.0,
+                "min": 1195536,
+                "max": 1209632
+              },
+              "redis_key_counts": [
+                [
+                  7,
+                  7
+                ],
+                [
+                  22,
+                  22
+                ],
+                [
+                  27,
+                  27
+                ],
+                [
+                  42,
+                  42
+                ],
+                [
+                  47,
+                  47
+                ],
+                [
+                  62,
+                  62
+                ]
+              ]
+            }
+          ],
+          "binary_sha256": "cbecab3f05a0c8bc11ea0164e5868db0b5da12067fdb13dfcacfc9bf87b68b6a"
+        }
+      ],
+      "timed_windows": 24,
+      "timed_checked_responses": 4257805,
+      "preextraction": null
+    },
+    "next-startup": {
+      "source_sha256": "e70c7a74df045200e2d5190a985ded23ee061260f31a90638a353dd781786aa6",
+      "metadata": {
+        "observed_at": "2026-11-01T16:46:56.841125+00:00",
+        "project": "next",
+        "stage": "startup",
+        "runs": 12,
+        "runner_sha256": "0ea8c5043122a1baa8bd6af63e3912bef380a61d89930218d05c1e052a20988f",
+        "helper_sha256": "88483f02b3c72e84dba66eda73f37ec4bfbc69ac4edcccd236c7c906b033212f",
+        "client_source_sha256": "180ff54962d59c435d50e28d9a8d90d06a060a4f66e505a0f1d8503408e4e797",
+        "compiler_sha256": "cbecab3f05a0c8bc11ea0164e5868db0b5da12067fdb13dfcacfc9bf87b68b6a",
+        "cpu_seconds_per_tick": 4.166666666666666e-08,
+        "system": "Darwin",
+        "machine": "arm64",
+        "cpu_count": 10,
+        "connections": 8,
+        "warmup_seconds": 2,
+        "measured_seconds": 5,
+        "memory_metric": "physical_footprint_bytes"
+      },
+      "observations": 24,
+      "checked_response_cases": 96,
+      "groups": [
+        {
+          "mode": "jit",
+          "ready_ms": {
+            "n": 12,
+            "median": 26.7989169806242,
+            "min": 25.630541029386222,
+            "max": 28.26145791914314
+          },
+          "ready_physical_bytes": {
+            "n": 12,
+            "median": 19120776.0,
+            "min": 18989704,
+            "max": 19530400
+          },
+          "routes": [],
+          "binary_sha256": "255d6898f782d1edd09d47ccba2dfb617f3cde933a636e2806dc754096208971"
+        },
+        {
+          "mode": "native-disk",
+          "ready_ms": {
+            "n": 12,
+            "median": 17.937749507836998,
+            "min": 15.002792002633214,
+            "max": 19.361875019967556
+          },
+          "ready_physical_bytes": {
+            "n": 12,
+            "median": 10707712.0,
+            "min": 10666728,
+            "max": 10896152
+          },
+          "routes": [],
+          "binary_sha256": "1266b2e7d997330f087591a16fc415f4ababda1628354bbcc6b25ddfe2a91e41"
+        }
+      ],
+      "timed_windows": 0,
+      "timed_checked_responses": 0,
+      "preextraction": [
+        {
+          "mode": "jit",
+          "regular_files": 2061,
+          "regular_file_bytes": 44903959
+        },
+        {
+          "mode": "native-disk",
+          "regular_files": 2061,
+          "regular_file_bytes": 44903983
+        }
+      ]
+    },
+    "next-load": {
+      "source_sha256": "6c8ef8a4466086c8dcde3f2378e2c0b40476442686ea84e3f90012ab7d019db4",
+      "metadata": {
+        "observed_at": "2026-11-01T16:49:54.073014+00:00",
+        "project": "next",
+        "stage": "load",
+        "runs": 6,
+        "runner_sha256": "0ea8c5043122a1baa8bd6af63e3912bef380a61d89930218d05c1e052a20988f",
+        "helper_sha256": "88483f02b3c72e84dba66eda73f37ec4bfbc69ac4edcccd236c7c906b033212f",
+        "client_source_sha256": "180ff54962d59c435d50e28d9a8d90d06a060a4f66e505a0f1d8503408e4e797",
+        "compiler_sha256": "cbecab3f05a0c8bc11ea0164e5868db0b5da12067fdb13dfcacfc9bf87b68b6a",
+        "cpu_seconds_per_tick": 4.166666666666666e-08,
+        "system": "Darwin",
+        "machine": "arm64",
+        "cpu_count": 10,
+        "connections": 8,
+        "warmup_seconds": 2,
+        "measured_seconds": 5,
+        "memory_metric": "physical_footprint_bytes"
+      },
+      "observations": 12,
+      "checked_response_cases": 48,
+      "groups": [
+        {
+          "mode": "jit",
+          "ready_ms": {
+            "n": 6,
+            "median": 34.08145846333355,
+            "min": 29.66300002299249,
+            "max": 72.97766697593033
+          },
+          "ready_physical_bytes": {
+            "n": 6,
+            "median": 19497620.0,
+            "min": 19120776,
+            "max": 19694240
+          },
+          "routes": [
+            {
+              "name": "image",
+              "rps": {
+                "n": 6,
+                "median": 1377.327,
+                "min": 1322.813,
+                "max": 1425.351
+              },
+              "app_cpu_percent": {
+                "n": 6,
+                "median": 389.9569278246925,
+                "min": 379.49842670309295,
+                "max": 395.6435050263979
+              },
+              "end_physical_bytes": {
+                "n": 6,
+                "median": 105317552.0,
+                "min": 102089928,
+                "max": 143901848
+              },
+              "sampled_peak_physical_bytes": {
+                "n": 6,
+                "median": 108856496.0,
+                "min": 103646432,
+                "max": 142787712
+              },
+              "lifetime_peak_physical_bytes": {
+                "n": 6,
+                "median": 153789580.0,
+                "min": 134743168,
+                "max": 170427544
+              },
+              "end_rss_bytes": {
+                "n": 6,
+                "median": 256843776.0,
+                "min": 208732160,
+                "max": 278970368
+              },
+              "response_sha256": "71a3a0b0532a76b1b3124c231c2812da0cb01ab9bad3885621670ea6c866c7d0",
+              "requests": 41429
+            },
+            {
+              "name": "json",
+              "rps": {
+                "n": 6,
+                "median": 17767.243000000002,
+                "min": 15968.822,
+                "max": 18504.438
+              },
+              "app_cpu_percent": {
+                "n": 6,
+                "median": 104.34303722821605,
+                "min": 103.60425317278245,
+                "max": 106.89438783349543
+              },
+              "end_physical_bytes": {
+                "n": 6,
+                "median": 137462960.0,
+                "min": 103236784,
+                "max": 153191576
+              },
+              "sampled_peak_physical_bytes": {
+                "n": 6,
+                "median": 137880752.0,
+                "min": 103842992,
+                "max": 154535064
+              },
+              "lifetime_peak_physical_bytes": {
+                "n": 6,
+                "median": 155837580.0,
+                "min": 135120096,
+                "max": 170427544
+              },
+              "end_rss_bytes": {
+                "n": 6,
+                "median": 267591680.0,
+                "min": 243171328,
+                "max": 308150272
+              },
+              "response_sha256": "e15e6b924aa646ad99a7045908fd5d5ba79f4f20d6de46a839e89aabc7ce90b1",
+              "requests": 526086
+            },
+            {
+              "name": "page",
+              "rps": {
+                "n": 6,
+                "median": 166478.57,
+                "min": 136605.869,
+                "max": 170614.524
+              },
+              "app_cpu_percent": {
+                "n": 6,
+                "median": 100.2272372582639,
+                "min": 91.35084409349868,
+                "max": 100.7853339791868
+              },
+              "end_physical_bytes": {
+                "n": 6,
+                "median": 82256988.0,
+                "min": 62669832,
+                "max": 126911712
+              },
+              "sampled_peak_physical_bytes": {
+                "n": 6,
+                "median": 84730972.0,
+                "min": 63931400,
+                "max": 127927520
+              },
+              "lifetime_peak_physical_bytes": {
+                "n": 6,
+                "median": 102532212.0,
+                "min": 67027976,
+                "max": 147997848
+              },
+              "end_rss_bytes": {
+                "n": 6,
+                "median": 198926336.0,
+                "min": 112820224,
+                "max": 307970048
+              },
+              "response_sha256": "7253e4a89f76d971d38852a5b80a231b1124da58f91ceedd039a57198e9d02ed",
+              "requests": 4870507
+            },
+            {
+              "name": "static",
+              "rps": {
+                "n": 6,
+                "median": 197603.24349999998,
+                "min": 193633.47,
+                "max": 203233.661
+              },
+              "app_cpu_percent": {
+                "n": 6,
+                "median": 99.53517022316632,
+                "min": 98.47846458333042,
+                "max": 100.2679062253463
+              },
+              "end_physical_bytes": {
+                "n": 6,
+                "median": 99058852.0,
+                "min": 98452632,
+                "max": 114082968
+              },
+              "sampled_peak_physical_bytes": {
+                "n": 6,
+                "median": 105424024.0,
+                "min": 102679728,
+                "max": 116786328
+              },
+              "lifetime_peak_physical_bytes": {
+                "n": 6,
+                "median": 155837580.0,
+                "min": 134743168,
+                "max": 170427544
+              },
+              "end_rss_bytes": {
+                "n": 6,
+                "median": 258211840.0,
+                "min": 224247808,
+                "max": 263290880
+              },
+              "response_sha256": "3258aad849dd7db871805cc046be633f27e9691a18c646e122f3d915549c8b57",
+              "requests": 5938380
+            }
+          ],
+          "binary_sha256": "255d6898f782d1edd09d47ccba2dfb617f3cde933a636e2806dc754096208971"
+        },
+        {
+          "mode": "native-disk",
+          "ready_ms": {
+            "n": 6,
+            "median": 22.708979493472725,
+            "min": 18.11850001104176,
+            "max": 62.308624968864024
+          },
+          "ready_physical_bytes": {
+            "n": 6,
+            "median": 10658560.0,
+            "min": 10633960,
+            "max": 10863360
+          },
+          "routes": [
+            {
+              "name": "image",
+              "rps": {
+                "n": 6,
+                "median": 1341.509,
+                "min": 1039.853,
+                "max": 1383.986
+              },
+              "app_cpu_percent": {
+                "n": 6,
+                "median": 404.70664280513824,
+                "min": 392.75890790512824,
+                "max": 409.44792053329076
+              },
+              "end_physical_bytes": {
+                "n": 6,
+                "median": 72344704.0,
+                "min": 70009984,
+                "max": 91997264
+              },
+              "sampled_peak_physical_bytes": {
+                "n": 6,
+                "median": 75269248.0,
+                "min": 71025768,
+                "max": 90883152
+              },
+              "lifetime_peak_physical_bytes": {
+                "n": 6,
+                "median": 90760284.0,
+                "min": 87475280,
+                "max": 96044136
+              },
+              "end_rss_bytes": {
+                "n": 6,
+                "median": 154656768.0,
+                "min": 142966784,
+                "max": 170885120
+              },
+              "response_sha256": "71a3a0b0532a76b1b3124c231c2812da0cb01ab9bad3885621670ea6c866c7d0",
+              "requests": 38623
+            },
+            {
+              "name": "json",
+              "rps": {
+                "n": 6,
+                "median": 3847.452,
+                "min": 3632.627,
+                "max": 3939.419
+              },
+              "app_cpu_percent": {
+                "n": 6,
+                "median": 99.98178016699335,
+                "min": 99.30866918612418,
+                "max": 100.39550217027244
+              },
+              "end_physical_bytes": {
+                "n": 6,
+                "median": 90154076.0,
+                "min": 79922256,
+                "max": 106841216
+              },
+              "sampled_peak_physical_bytes": {
+                "n": 6,
+                "median": 90334300.0,
+                "min": 79905872,
+                "max": 106841216
+              },
+              "lifetime_peak_physical_bytes": {
+                "n": 6,
+                "median": 94364788.0,
+                "min": 80168016,
+                "max": 109413480
+              },
+              "end_rss_bytes": {
+                "n": 6,
+                "median": 131424256.0,
+                "min": 126992384,
+                "max": 184762368
+              },
+              "response_sha256": "e15e6b924aa646ad99a7045908fd5d5ba79f4f20d6de46a839e89aabc7ce90b1",
+              "requests": 114423
+            },
+            {
+              "name": "page",
+              "rps": {
+                "n": 6,
+                "median": 166005.987,
+                "min": 161059.965,
+                "max": 169881.274
+              },
+              "app_cpu_percent": {
+                "n": 6,
+                "median": 97.82486147447597,
+                "min": 97.02127017034256,
+                "max": 99.0406298345002
+              },
+              "end_physical_bytes": {
+                "n": 6,
+                "median": 74245188.0,
+                "min": 51905616,
+                "max": 107365504
+              },
+              "sampled_peak_physical_bytes": {
+                "n": 6,
+                "median": 76588100.0,
+                "min": 53068880,
+                "max": 107365504
+              },
+              "lifetime_peak_physical_bytes": {
+                "n": 6,
+                "median": 81388636.0,
+                "min": 54723664,
+                "max": 109413480
+              },
+              "end_rss_bytes": {
+                "n": 6,
+                "median": 117186560.0,
+                "min": 97648640,
+                "max": 184991744
+              },
+              "response_sha256": "7253e4a89f76d971d38852a5b80a231b1124da58f91ceedd039a57198e9d02ed",
+              "requests": 4978436
+            },
+            {
+              "name": "static",
+              "rps": {
+                "n": 6,
+                "median": 196876.428,
+                "min": 173944.278,
+                "max": 201711.841
+              },
+              "app_cpu_percent": {
+                "n": 6,
+                "median": 97.5254472784828,
+                "min": 93.3787460013819,
+                "max": 99.23626392710192
+              },
+              "end_physical_bytes": {
+                "n": 6,
+                "median": 87483484.0,
+                "min": 79938640,
+                "max": 91554944
+              },
+              "sampled_peak_physical_bytes": {
+                "n": 6,
+                "median": 90662016.0,
+                "min": 81331280,
+                "max": 95650944
+              },
+              "lifetime_peak_physical_bytes": {
+                "n": 6,
+                "median": 91554944.0,
+                "min": 87475280,
+                "max": 109413480
+              },
+              "end_rss_bytes": {
+                "n": 6,
+                "median": 143425536.0,
+                "min": 107085824,
+                "max": 174260224
+              },
+              "response_sha256": "3258aad849dd7db871805cc046be633f27e9691a18c646e122f3d915549c8b57",
+              "requests": 5730085
+            }
+          ],
+          "binary_sha256": "1266b2e7d997330f087591a16fc415f4ababda1628354bbcc6b25ddfe2a91e41"
+        }
+      ],
+      "timed_windows": 48,
+      "timed_checked_responses": 22237969,
+      "preextraction": [
+        {
+          "mode": "jit",
+          "regular_files": 2061,
+          "regular_file_bytes": 44903950
+        },
+        {
+          "mode": "native-disk",
+          "regular_files": 2061,
+          "regular_file_bytes": 44903974
+        }
+      ]
+    },
+    "keryx-long": {
+      "source_sha256": "a205ec43029ba9a27ec99deae40f048137aa004d02b4e9aff260c91aef7904ee",
+      "metadata": {
+        "runner_sha256": "7f35dd21f16f1a53bdae8033c4a6015973801e743eed748a88cb430c0d9d0bd6",
+        "external_helper_sha256": "55db43e06cddf3dd2e81937d31dc25b56c1e9ae68812a9be87133e6f42a5b508",
+        "study_sha256": "0ea8c5043122a1baa8bd6af63e3912bef380a61d89930218d05c1e052a20988f",
+        "helper_sha256": "88483f02b3c72e84dba66eda73f37ec4bfbc69ac4edcccd236c7c906b033212f",
+        "cpu_seconds_per_tick": 4.166666666666666e-08,
+        "order": [
+          "source",
+          "native",
+          "native",
+          "source"
+        ],
+        "segments": 6,
+        "seconds_per_segment": 10,
+        "warmup_seconds": 2,
+        "connections": 8,
+        "profile": "Returning cookie, actual Redis and PostgreSQL; status/heap checks between segments"
+      },
+      "observations": 4,
+      "series": [
+        {
+          "mode": "source",
+          "block": 0,
+          "binary_sha256": "cbecab3f05a0c8bc11ea0164e5868db0b5da12067fdb13dfcacfc9bf87b68b6a",
+          "rps": 31604.48132264746,
+          "physical_bytes": [
+            1035404992,
+            2092206528,
+            2835467288,
+            3000176072,
+            3808743384,
+            4716384672
+          ],
+          "app_cpu_percent": [
+            119.67842815240704,
+            124.94945979170839,
+            104.31195017137027,
+            135.2492620944019,
+            135.91712387628291,
+            136.04294368611315
+          ],
+          "redis_keys": [
+            7,
+            7,
+            7,
+            7,
+            7,
+            7
+          ],
+          "response_sha256": "8849a7d0648329102a73e7cc7251dad2ff3926cf39f777ba5d990035c9de05dc",
+          "heap_used_mib": [
+            398.29,
+            679.43,
+            1047.28,
+            1308.1,
+            1777.05,
+            1968.5
+          ]
+        },
+        {
+          "mode": "native",
+          "block": 1,
+          "binary_sha256": "ba572a835a250f8909129a021623929aa6d9c369c0a622692fb4d92cc1d0444e",
+          "rps": 35803.89553905844,
+          "physical_bytes": [
+            605488616,
+            914245576,
+            1396591256,
+            1569655784,
+            1810255184,
+            2112769864
+          ],
+          "app_cpu_percent": [
+            116.00534270426131,
+            121.07752609834937,
+            124.28270200209613,
+            132.37643850242625,
+            119.09100336805388,
+            143.02340647059987
+          ],
+          "redis_keys": [
+            12,
+            12,
+            12,
+            12,
+            12,
+            12
+          ],
+          "response_sha256": "8849a7d0648329102a73e7cc7251dad2ff3926cf39f777ba5d990035c9de05dc",
+          "heap_used_mib": [
+            363.42,
+            688.63,
+            941.3,
+            1127.65,
+            1551.24,
+            1666.61
+          ]
+        },
+        {
+          "mode": "native",
+          "block": 2,
+          "binary_sha256": "ba572a835a250f8909129a021623929aa6d9c369c0a622692fb4d92cc1d0444e",
+          "rps": 35964.4077781618,
+          "physical_bytes": [
+            972490504,
+            1130645640,
+            1331972712,
+            1649265640,
+            1973063112,
+            2191527800
+          ],
+          "app_cpu_percent": [
+            114.3366690642837,
+            127.87614523916402,
+            126.90096443895715,
+            117.62554537314634,
+            132.52100227392418,
+            141.70848710535006
+          ],
+          "redis_keys": [
+            17,
+            17,
+            17,
+            17,
+            17,
+            17
+          ],
+          "response_sha256": "8849a7d0648329102a73e7cc7251dad2ff3926cf39f777ba5d990035c9de05dc",
+          "heap_used_mib": [
+            411.13,
+            640.25,
+            913.06,
+            1339.6,
+            1508.79,
+            1677.64
+          ]
+        },
+        {
+          "mode": "source",
+          "block": 3,
+          "binary_sha256": "cbecab3f05a0c8bc11ea0164e5868db0b5da12067fdb13dfcacfc9bf87b68b6a",
+          "rps": 37444.13549143903,
+          "physical_bytes": [
+            1147553544,
+            1761298856,
+            2796588536,
+            3112062912,
+            3982709272,
+            5784507432
+          ],
+          "app_cpu_percent": [
+            124.3687834962379,
+            131.19541666300003,
+            138.98044947062863,
+            125.53146843100431,
+            152.24067369294278,
+            159.48888995203689
+          ],
+          "redis_keys": [
+            22,
+            22,
+            22,
+            22,
+            22,
+            22
+          ],
+          "response_sha256": "8849a7d0648329102a73e7cc7251dad2ff3926cf39f777ba5d990035c9de05dc",
+          "heap_used_mib": [
+            489.35,
+            888.42,
+            1206.93,
+            1724.4,
+            1945.73,
+            2421.57
+          ]
+        }
+      ],
+      "timed_windows": 24,
+      "timed_checked_responses": 8453657
+    },
+    "timer-short": {
+      "source_sha256": "76bfe8a064ef4267a53a9d27383e0120851823b947c51561a9d8f70cdc88eadc",
+      "metadata": {
+        "runner_sha256": "37cf6b6ace5c847efd460ba2b42a3c77cf5ed55f8411440387c77f28a3cf2ae2",
+        "external_sha256": "55db43e06cddf3dd2e81937d31dc25b56c1e9ae68812a9be87133e6f42a5b508",
+        "study_sha256": "0ea8c5043122a1baa8bd6af63e3912bef380a61d89930218d05c1e052a20988f",
+        "patch_helper_sha256": "876b401c4f91ad5ba51d0c5b90cbecf9d629c9548606b09356464ab6d10ad70c",
+        "stage": "short",
+        "order": [
+          [
+            0,
+            "source-original"
+          ],
+          [
+            0,
+            "source-fixed"
+          ],
+          [
+            0,
+            "native-original"
+          ],
+          [
+            0,
+            "native-fixed"
+          ],
+          [
+            1,
+            "source-fixed"
+          ],
+          [
+            1,
+            "native-original"
+          ],
+          [
+            1,
+            "native-fixed"
+          ],
+          [
+            1,
+            "source-original"
+          ],
+          [
+            2,
+            "native-original"
+          ],
+          [
+            2,
+            "native-fixed"
+          ],
+          [
+            2,
+            "source-original"
+          ],
+          [
+            2,
+            "source-fixed"
+          ],
+          [
+            3,
+            "native-fixed"
+          ],
+          [
+            3,
+            "source-original"
+          ],
+          [
+            3,
+            "source-fixed"
+          ],
+          [
+            3,
+            "native-original"
+          ]
+        ],
+        "connections": 8,
+        "warmup_seconds": 2,
+        "measured_seconds": 5,
+        "segments": 1,
+        "profile": "Original/fixed default five-minute action deadline, returning cookie, real Redis/PostgreSQL"
+      },
+      "observations": 16,
+      "series": [
+        {
+          "mode": "source-original",
+          "block": 0,
+          "binary_sha256": "cbecab3f05a0c8bc11ea0164e5868db0b5da12067fdb13dfcacfc9bf87b68b6a",
+          "rps": 41137.08047003635,
+          "physical_bytes": [
+            1011418720
+          ],
+          "app_cpu_percent": [
+            120.42433376284873
+          ],
+          "redis_keys": [
+            7
+          ],
+          "response_sha256": "8849a7d0648329102a73e7cc7251dad2ff3926cf39f777ba5d990035c9de05dc"
+        },
+        {
+          "mode": "source-fixed",
+          "block": 0,
+          "binary_sha256": "cbecab3f05a0c8bc11ea0164e5868db0b5da12067fdb13dfcacfc9bf87b68b6a",
+          "rps": 47784.12963549617,
+          "physical_bytes": [
+            143573856
+          ],
+          "app_cpu_percent": [
+            102.32925365805137
+          ],
+          "redis_keys": [
+            12
+          ],
+          "response_sha256": "8849a7d0648329102a73e7cc7251dad2ff3926cf39f777ba5d990035c9de05dc"
+        },
+        {
+          "mode": "native-original",
+          "block": 0,
+          "binary_sha256": "ba572a835a250f8909129a021623929aa6d9c369c0a622692fb4d92cc1d0444e",
+          "rps": 40293.268855783484,
+          "physical_bytes": [
+            494994752
+          ],
+          "app_cpu_percent": [
+            117.40715519476927
+          ],
+          "redis_keys": [
+            17
+          ],
+          "response_sha256": "8849a7d0648329102a73e7cc7251dad2ff3926cf39f777ba5d990035c9de05dc"
+        },
+        {
+          "mode": "native-fixed",
+          "block": 0,
+          "binary_sha256": "300bc9d42c14d6970c6e291c78fec504ba01c5831f41cc40c99b9942b392627c",
+          "rps": 45982.86649687159,
+          "physical_bytes": [
+            46629704
+          ],
+          "app_cpu_percent": [
+            100.04792527683364
+          ],
+          "redis_keys": [
+            22
+          ],
+          "response_sha256": "8849a7d0648329102a73e7cc7251dad2ff3926cf39f777ba5d990035c9de05dc"
+        },
+        {
+          "mode": "source-fixed",
+          "block": 1,
+          "binary_sha256": "cbecab3f05a0c8bc11ea0164e5868db0b5da12067fdb13dfcacfc9bf87b68b6a",
+          "rps": 47794.231613430304,
+          "physical_bytes": [
+            144720736
+          ],
+          "app_cpu_percent": [
+            102.45784905958479
+          ],
+          "redis_keys": [
+            27
+          ],
+          "response_sha256": "8849a7d0648329102a73e7cc7251dad2ff3926cf39f777ba5d990035c9de05dc"
+        },
+        {
+          "mode": "native-original",
+          "block": 1,
+          "binary_sha256": "ba572a835a250f8909129a021623929aa6d9c369c0a622692fb4d92cc1d0444e",
+          "rps": 40015.11959177102,
+          "physical_bytes": [
+            598541704
+          ],
+          "app_cpu_percent": [
+            117.38937882010518
+          ],
+          "redis_keys": [
+            32
+          ],
+          "response_sha256": "8849a7d0648329102a73e7cc7251dad2ff3926cf39f777ba5d990035c9de05dc"
+        },
+        {
+          "mode": "native-fixed",
+          "block": 1,
+          "binary_sha256": "300bc9d42c14d6970c6e291c78fec504ba01c5831f41cc40c99b9942b392627c",
+          "rps": 45509.16191048363,
+          "physical_bytes": [
+            48743288
+          ],
+          "app_cpu_percent": [
+            100.06664956054054
+          ],
+          "redis_keys": [
+            37
+          ],
+          "response_sha256": "8849a7d0648329102a73e7cc7251dad2ff3926cf39f777ba5d990035c9de05dc"
+        },
+        {
+          "mode": "source-original",
+          "block": 1,
+          "binary_sha256": "cbecab3f05a0c8bc11ea0164e5868db0b5da12067fdb13dfcacfc9bf87b68b6a",
+          "rps": 40810.216563597336,
+          "physical_bytes": [
+            812025272
+          ],
+          "app_cpu_percent": [
+            120.5548583048311
+          ],
+          "redis_keys": [
+            42
+          ],
+          "response_sha256": "8849a7d0648329102a73e7cc7251dad2ff3926cf39f777ba5d990035c9de05dc"
+        },
+        {
+          "mode": "native-original",
+          "block": 2,
+          "binary_sha256": "ba572a835a250f8909129a021623929aa6d9c369c0a622692fb4d92cc1d0444e",
+          "rps": 39535.27161487374,
+          "physical_bytes": [
+            499074272
+          ],
+          "app_cpu_percent": [
+            113.14155261049892
+          ],
+          "redis_keys": [
+            47
+          ],
+          "response_sha256": "8849a7d0648329102a73e7cc7251dad2ff3926cf39f777ba5d990035c9de05dc"
+        },
+        {
+          "mode": "native-fixed",
+          "block": 2,
+          "binary_sha256": "300bc9d42c14d6970c6e291c78fec504ba01c5831f41cc40c99b9942b392627c",
+          "rps": 44815.26731785773,
+          "physical_bytes": [
+            47268728
+          ],
+          "app_cpu_percent": [
+            100.02600577726908
+          ],
+          "redis_keys": [
+            52
+          ],
+          "response_sha256": "8849a7d0648329102a73e7cc7251dad2ff3926cf39f777ba5d990035c9de05dc"
+        },
+        {
+          "mode": "source-original",
+          "block": 2,
+          "binary_sha256": "cbecab3f05a0c8bc11ea0164e5868db0b5da12067fdb13dfcacfc9bf87b68b6a",
+          "rps": 40695.77335048714,
+          "physical_bytes": [
+            873792952
+          ],
+          "app_cpu_percent": [
+            120.33871546530315
+          ],
+          "redis_keys": [
+            57
+          ],
+          "response_sha256": "8849a7d0648329102a73e7cc7251dad2ff3926cf39f777ba5d990035c9de05dc"
+        },
+        {
+          "mode": "source-fixed",
+          "block": 2,
+          "binary_sha256": "cbecab3f05a0c8bc11ea0164e5868db0b5da12067fdb13dfcacfc9bf87b68b6a",
+          "rps": 47936.01678017578,
+          "physical_bytes": [
+            143524680
+          ],
+          "app_cpu_percent": [
+            102.42113326717579
+          ],
+          "redis_keys": [
+            62
+          ],
+          "response_sha256": "8849a7d0648329102a73e7cc7251dad2ff3926cf39f777ba5d990035c9de05dc"
+        },
+        {
+          "mode": "native-fixed",
+          "block": 3,
+          "binary_sha256": "300bc9d42c14d6970c6e291c78fec504ba01c5831f41cc40c99b9942b392627c",
+          "rps": 45104.91153791925,
+          "physical_bytes": [
+            48005936
+          ],
+          "app_cpu_percent": [
+            99.98538798219658
+          ],
+          "redis_keys": [
+            67
+          ],
+          "response_sha256": "8849a7d0648329102a73e7cc7251dad2ff3926cf39f777ba5d990035c9de05dc"
+        },
+        {
+          "mode": "source-original",
+          "block": 3,
+          "binary_sha256": "cbecab3f05a0c8bc11ea0164e5868db0b5da12067fdb13dfcacfc9bf87b68b6a",
+          "rps": 40366.443687492094,
+          "physical_bytes": [
+            782124424
+          ],
+          "app_cpu_percent": [
+            119.86761994796973
+          ],
+          "redis_keys": [
+            72
+          ],
+          "response_sha256": "8849a7d0648329102a73e7cc7251dad2ff3926cf39f777ba5d990035c9de05dc"
+        },
+        {
+          "mode": "source-fixed",
+          "block": 3,
+          "binary_sha256": "cbecab3f05a0c8bc11ea0164e5868db0b5da12067fdb13dfcacfc9bf87b68b6a",
+          "rps": 46630.56377863562,
+          "physical_bytes": [
+            140673888
+          ],
+          "app_cpu_percent": [
+            102.118812240583
+          ],
+          "redis_keys": [
+            77
+          ],
+          "response_sha256": "8849a7d0648329102a73e7cc7251dad2ff3926cf39f777ba5d990035c9de05dc"
+        },
+        {
+          "mode": "native-original",
+          "block": 3,
+          "binary_sha256": "ba572a835a250f8909129a021623929aa6d9c369c0a622692fb4d92cc1d0444e",
+          "rps": 39808.25735704097,
+          "physical_bytes": [
+            550962520
+          ],
+          "app_cpu_percent": [
+            113.21945489060133
+          ],
+          "redis_keys": [
+            82
+          ],
+          "response_sha256": "8849a7d0648329102a73e7cc7251dad2ff3926cf39f777ba5d990035c9de05dc"
+        }
+      ],
+      "timed_windows": 16,
+      "timed_checked_responses": 3471215
+    },
+    "timer-long-fixed": {
+      "source_sha256": "ebe4402432f517e51cc826a06ecf60e17897ef90fe021cb5978741027c3e6e88",
+      "metadata": {
+        "runner_sha256": "37cf6b6ace5c847efd460ba2b42a3c77cf5ed55f8411440387c77f28a3cf2ae2",
+        "external_sha256": "55db43e06cddf3dd2e81937d31dc25b56c1e9ae68812a9be87133e6f42a5b508",
+        "study_sha256": "0ea8c5043122a1baa8bd6af63e3912bef380a61d89930218d05c1e052a20988f",
+        "patch_helper_sha256": "876b401c4f91ad5ba51d0c5b90cbecf9d629c9548606b09356464ab6d10ad70c",
+        "stage": "long-fixed",
+        "order": [
+          [
+            0,
+            "source-fixed"
+          ],
+          [
+            1,
+            "native-fixed"
+          ]
+        ],
+        "connections": 8,
+        "warmup_seconds": 2,
+        "measured_seconds": 10,
+        "segments": 6,
+        "profile": "Original/fixed default five-minute action deadline, returning cookie, real Redis/PostgreSQL"
+      },
+      "observations": 2,
+      "series": [
+        {
+          "mode": "source-fixed",
+          "block": 0,
+          "binary_sha256": "cbecab3f05a0c8bc11ea0164e5868db0b5da12067fdb13dfcacfc9bf87b68b6a",
+          "rps": 47374.043337186886,
+          "physical_bytes": [
+            129827656,
+            129942368,
+            129237832,
+            129237832,
+            129237832,
+            130384736
+          ],
+          "app_cpu_percent": [
+            102.72968764598787,
+            102.55898387265209,
+            102.50174962852472,
+            102.2454021823582,
+            102.1395882213943,
+            102.75679741314354
+          ],
+          "redis_keys": [
+            7,
+            7,
+            7,
+            7,
+            7,
+            7
+          ],
+          "response_sha256": "8849a7d0648329102a73e7cc7251dad2ff3926cf39f777ba5d990035c9de05dc",
+          "heap_used_mib": [
+            39.43,
+            30.45,
+            31.48,
+            35.29,
+            31.76,
+            32.27
+          ]
+        },
+        {
+          "mode": "native-fixed",
+          "block": 1,
+          "binary_sha256": "300bc9d42c14d6970c6e291c78fec504ba01c5831f41cc40c99b9942b392627c",
+          "rps": 45100.41623671517,
+          "physical_bytes": [
+            49218376,
+            48890696,
+            48055112,
+            47547208,
+            47301448,
+            46941000
+          ],
+          "app_cpu_percent": [
+            99.86591922862567,
+            100.11457145857084,
+            99.9905764017199,
+            99.77780161067018,
+            99.85241151674245,
+            100.09272058183585
+          ],
+          "redis_keys": [
+            12,
+            12,
+            12,
+            12,
+            12,
+            12
+          ],
+          "response_sha256": "8849a7d0648329102a73e7cc7251dad2ff3926cf39f777ba5d990035c9de05dc",
+          "heap_used_mib": [
+            9.25,
+            9.81,
+            14.61,
+            15.13,
+            13.78,
+            22.69
+          ]
+        }
+      ],
+      "timed_windows": 12,
+      "timed_checked_responses": 5548553
+    }
+  },
+  "comparisons": [],
+  "limits": [
+    "Shared Mac; same-host closed-loop clients; eight connections; no CPU/RAM cap.",
+    "macOS physical footprint, RSS, executable bytes and extracted file bytes are distinct.",
+    "Keryx compares source execution with a named native packaging variant; ordinary packaged JIT failed before help.",
+    "Next compares matched launchers; disk-loaded Next JS remains interpreted.",
+    "Selected complete output checks are not whole-application certification or maintainer adoption."
+  ],
+  "totals": {
+    "fresh_processes": 96,
+    "timed_route_windows": 120,
+    "timed_checked_responses": 38603066,
+    "first_dynamic_fresh_processes": 24,
+    "extension_fresh_processes": 22,
+    "extension_timed_windows": 52,
+    "extension_timed_checked_responses": 17473425
+  },
+  "first_dynamic_response": {
+    "source_sha256": "2a2a838432c83cf5f4f26b380640ab919b99e6d20abefe5160f4f916e9f1c6d2",
+    "fresh_processes": 24,
+    "groups": [
+      {
+        "mode": "jit",
+        "static_ready_ms": {
+          "n": 12,
+          "median": 26.711791520938277,
+          "min": 26.023957994766533,
+          "max": 27.66433299984783
+        },
+        "launch_to_first_json_ms": {
+          "n": 12,
+          "median": 123.56774997897446,
+          "min": 122.0084170345217,
+          "max": 312.0360419852659
+        },
+        "first_json_after_static_ms": {
+          "n": 12,
+          "median": 96.5386459720321,
+          "min": 95.26270895730704,
+          "max": 285.684583010152
+        },
+        "first_image_after_json_ms": {
+          "n": 12,
+          "median": 2.7032294892705977,
+          "min": 2.554125036112964,
+          "max": 4.9486670177429914
+        }
+      },
+      {
+        "mode": "native-disk",
+        "static_ready_ms": {
+          "n": 12,
+          "median": 18.141291511710733,
+          "min": 16.670666984282434,
+          "max": 19.386042025871575
+        },
+        "launch_to_first_json_ms": {
+          "n": 12,
+          "median": 120.14525051927194,
+          "min": 118.77537495456636,
+          "max": 253.46170796547085
+        },
+        "first_json_after_static_ms": {
+          "n": 12,
+          "median": 102.46933298185468,
+          "min": 101.49891604669392,
+          "max": 234.93000003509223
+        },
+        "first_image_after_json_ms": {
+          "n": 12,
+          "median": 3.7815209943801165,
+          "min": 2.955292002297938,
+          "max": 4.976917058229446
+        }
+      }
+    ]
+  },
+  "timeout_comparison": {
+    "groups": [
+      {
+        "variant": "source-original",
+        "rps": {
+          "n": 4,
+          "median": 40752.99495704224,
+          "min": 40366.443687492094,
+          "max": 41137.08047003635
+        },
+        "end_physical_bytes": {
+          "n": 4,
+          "median": 842909112.0,
+          "min": 782124424,
+          "max": 1011418720
+        },
+        "app_cpu_percent": {
+          "n": 4,
+          "median": 120.38152461407594,
+          "min": 119.86761994796973,
+          "max": 120.5548583048311
+        }
+      },
+      {
+        "variant": "source-fixed",
+        "rps": {
+          "n": 4,
+          "median": 47789.18062446323,
+          "min": 46630.56377863562,
+          "max": 47936.01678017578
+        },
+        "end_physical_bytes": {
+          "n": 4,
+          "median": 143549268.0,
+          "min": 140673888,
+          "max": 144720736
+        },
+        "app_cpu_percent": {
+          "n": 4,
+          "median": 102.37519346261358,
+          "min": 102.118812240583,
+          "max": 102.45784905958479
+        }
+      },
+      {
+        "variant": "native-original",
+        "rps": {
+          "n": 4,
+          "median": 39911.68847440599,
+          "min": 39535.27161487374,
+          "max": 40293.268855783484
+        },
+        "end_physical_bytes": {
+          "n": 4,
+          "median": 525018396.0,
+          "min": 494994752,
+          "max": 598541704
+        },
+        "app_cpu_percent": {
+          "n": 4,
+          "median": 115.30441685535325,
+          "min": 113.14155261049892,
+          "max": 117.40715519476927
+        }
+      },
+      {
+        "variant": "native-fixed",
+        "rps": {
+          "n": 4,
+          "median": 45307.03672420144,
+          "min": 44815.26731785773,
+          "max": 45982.86649687159
+        },
+        "end_physical_bytes": {
+          "n": 4,
+          "median": 47637332.0,
+          "min": 46629704,
+          "max": 48743288
+        },
+        "app_cpu_percent": {
+          "n": 4,
+          "median": 100.03696552705136,
+          "min": 99.98538798219658,
+          "max": 100.06664956054054
+        }
+      }
+    ]
+  },
+  "session_profile": {
+    "before": 0,
+    "after20NewRequests": 20,
+    "afterOneCookieCreated": 21,
+    "after20ReturningRequests": 21,
+    "runner_sha256": "43beedfbdf7b53a0027e373b5a3c98089063b1b99104cb5a22386b8254796fef"
+  }
+}

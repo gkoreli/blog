@@ -1,0 +1,59 @@
+{
+  "runner_sha256": "197e28df4ddc3693fa78d6903debbb13f29262201e89cb33f8ce0e020a0ba1d9",
+  "source_hidden": true,
+  "rows": [
+    {
+      "mode": "jit",
+      "checks": [
+        {
+          "name": "page",
+          "bytes": 4297,
+          "sha256": "7253e4a89f76d971d38852a5b80a231b1124da58f91ceedd039a57198e9d02ed"
+        },
+        {
+          "name": "json",
+          "bytes": 35,
+          "sha256": "e15e6b924aa646ad99a7045908fd5d5ba79f4f20d6de46a839e89aabc7ce90b1"
+        },
+        {
+          "name": "static",
+          "bytes": 27,
+          "sha256": "3258aad849dd7db871805cc046be633f27e9691a18c646e122f3d915549c8b57"
+        },
+        {
+          "name": "image",
+          "bytes": 141,
+          "sha256": "71a3a0b0532a76b1b3124c231c2812da0cb01ab9bad3885621670ea6c866c7d0"
+        }
+      ],
+      "accepted": true
+    },
+    {
+      "mode": "native-disk",
+      "checks": [
+        {
+          "name": "page",
+          "bytes": 4297,
+          "sha256": "7253e4a89f76d971d38852a5b80a231b1124da58f91ceedd039a57198e9d02ed"
+        },
+        {
+          "name": "json",
+          "bytes": 35,
+          "sha256": "e15e6b924aa646ad99a7045908fd5d5ba79f4f20d6de46a839e89aabc7ce90b1"
+        },
+        {
+          "name": "static",
+          "bytes": 27,
+          "sha256": "3258aad849dd7db871805cc046be633f27e9691a18c646e122f3d915549c8b57"
+        },
+        {
+          "name": "image",
+          "bytes": 141,
+          "sha256": "71a3a0b0532a76b1b3124c231c2812da0cb01ab9bad3885621670ea6c866c7d0"
+        }
+      ],
+      "accepted": true
+    }
+  ],
+  "source_restored": true
+}

@@ -1,0 +1,20 @@
+{
+  "runner_sha256": "c85dc9a96b743533df8c6f0fb63ac76f4686052b02d1a33465a93c74e679cfec",
+  "binary_sha256": "8a75c60336eb4a4fb8195d27d0d996e8ead6245569d4e4564224476ad3908bd1",
+  "source_hidden": true,
+  "path": "/usr/bin:/bin",
+  "accepted": true,
+  "protocol": "2025-03-26",
+  "tools": [
+    "status",
+    "status-markdown"
+  ],
+  "health_checks": {
+    "database": true,
+    "redis": true
+  },
+  "resource_uris": [],
+  "ui_html_checks": [],
+  "child_processes": [],
+  "source_restored": true
+}

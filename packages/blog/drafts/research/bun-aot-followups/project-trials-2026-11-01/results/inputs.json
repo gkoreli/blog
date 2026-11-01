@@ -1,0 +1,75 @@
+{
+  "checked_at": "2026-11-01T17:26:35.775775+00:00",
+  "compiler_source": "3f3a9ff87cdccf3d32d7ec6b648c664eddaae840",
+  "compiler_revision": "1.4.4-canary.1+3f3a9ff87",
+  "compiler_sha256": "cbecab3f05a0c8bc11ea0164e5868db0b5da12067fdb13dfcacfc9bf87b68b6a",
+  "compiler_archive_sha256": "9878f8609a02b7b23dcbb9a1b592aa8ab820ed8652975814c5646b36957e1680",
+  "official_asset_id": 697873698,
+  "host": {
+    "system": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+    "machine": "arm64",
+    "cpu_count": 10,
+    "hardware": "Mac17,2 / Apple M5 / 24 GiB / 10 CPUs",
+    "power": "AC observed during setup; not a continuous trace"
+  },
+  "repositories": {
+    "keryx": {
+      "revision": "d119595bec716ae99b4eca740964343e47f57eee",
+      "lock_sha256": "08c40e0c432dd2ce2fe3f29a9d07d010abfb06fdb7302668c63c25b764987437",
+      "tracked_patch_sha256": "4b8b93490fda922a4710b335d0d326376e64271ad3312588bbe2a625b2785fc6"
+    },
+    "next-bun-compile": {
+      "revision": "43ab16c93774f23923654d337e6e2d9c205e4fe4",
+      "lock_sha256": "4028fa1f5c972b32a9a453e24609fef7267186a6650f2bdd8b5578a57e17938e",
+      "tracked_patch_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "documents": {
+    "libraries.mdx": {
+      "sha256": "6f0b32fa24d19468e24917a305130e968ce22c969bcd24e4acefb0aa60b7f760",
+      "url": "https://github.com/oven-sh/bun/blob/3f3a9ff87cdccf3d32d7ec6b648c664eddaae840/docs/compiler/libraries.mdx"
+    },
+    "debugging.mdx": {
+      "sha256": "8f8c42a6c4d5d9c9391cdcd19e13a575959327374ef61b3938cdec54c7b8f742",
+      "url": "https://github.com/oven-sh/bun/blob/3f3a9ff87cdccf3d32d7ec6b648c664eddaae840/docs/compiler/debugging.mdx"
+    },
+    "aot.mdx": {
+      "sha256": "27d61740e1151a8714a7f75322c1e31738e04dfc1a86ee49da0f90a3f448fcdc",
+      "url": "https://github.com/oven-sh/bun/blob/3f3a9ff87cdccf3d32d7ec6b648c664eddaae840/docs/compiler/aot.mdx"
+    },
+    "executables.mdx": {
+      "sha256": "77e5636ebcb7107c17d1691b59593da67e2c5a256c2858bc48c729c5fdc9e326",
+      "url": "https://github.com/oven-sh/bun/blob/3f3a9ff87cdccf3d32d7ec6b648c664eddaae840/docs/compiler/executables.mdx"
+    },
+    "size.mdx": {
+      "sha256": "c015e8ab8dcf776efe8c7e6f84863598ac9622ac8e0ce1cbb88df8bf88fd42a3",
+      "url": "https://github.com/oven-sh/bun/blob/3f3a9ff87cdccf3d32d7ec6b648c664eddaae840/docs/compiler/size.mdx"
+    },
+    "compatibility.mdx": {
+      "sha256": "dbee9299ece98b55976effdeed740ec2df6a303660cac0b9d2cd85a2f002fc26",
+      "url": "https://github.com/oven-sh/bun/blob/3f3a9ff87cdccf3d32d7ec6b648c664eddaae840/docs/compiler/compatibility.mdx"
+    },
+    "internals.mdx": {
+      "sha256": "afec2448f0fb195e209b618ac2a2b2e94edd5286adf680ee618e263fad2e589a",
+      "url": "https://github.com/oven-sh/bun/blob/3f3a9ff87cdccf3d32d7ec6b648c664eddaae840/docs/compiler/internals.mdx"
+    },
+    "troubleshooting.mdx": {
+      "sha256": "411a25e8f922eb0aaed55d3ae6363bd3b35f02fbdf6f5a5d580e93eed65b0269",
+      "url": "https://github.com/oven-sh/bun/blob/3f3a9ff87cdccf3d32d7ec6b648c664eddaae840/docs/compiler/troubleshooting.mdx"
+    }
+  },
+  "dependency_sources": {
+    "zod-parse": {
+      "sha256": "a58b9c7be78e29d71f969f01807fe5f9be1f68d222a0f60c25e32e24f3b6639c",
+      "relative_path": "keryx/node_modules/.bun/zod@4.3.6/node_modules/zod/v4/core/parse.js"
+    },
+    "zod-schemas": {
+      "sha256": "8f25b8fe962d889812763c51e1a10b439996ef59c65b3ee7c46df911f82c4b59",
+      "relative_path": "keryx/node_modules/.bun/zod@4.3.6/node_modules/zod/v4/core/schemas.js"
+    },
+    "next-console-wrapper": {
+      "sha256": "42f44d4369aa0b9ca7c34fde5e426ced96957ef8f24472d5649d80b8f41a0f3e",
+      "relative_path": "next-preflight/native-disk/examples/sharp/.next/node_modules/next/dist/server/node-environment-extensions/console-dim.external.js"
+    }
+  }
+}

@@ -1,0 +1,26 @@
+[
+  {
+    "variant": "original",
+    "connection_sha256": "3bda17015bae9ed8217033f56a5fe3d6270500dab5d749a703963ffa93309f10",
+    "contract_sha256": "59f1d30330bb51229ba3acc05e4eb0fcddf66134049284407578df8cebffc619",
+    "defaultTimersAfter20Successes": 20,
+    "fastTimers": 1,
+    "fastStatus": 200,
+    "slowStatus": 408,
+    "abortObserved": true,
+    "thrownStatus": 500,
+    "thrownTimers": 1
+  },
+  {
+    "variant": "fixed",
+    "connection_sha256": "4e4253101f4e2ebbe61e0191bb34acb9ba1ca3a13faa0b1932150f3d8152c2d4",
+    "contract_sha256": "59f1d30330bb51229ba3acc05e4eb0fcddf66134049284407578df8cebffc619",
+    "defaultTimersAfter20Successes": 0,
+    "fastTimers": 0,
+    "fastStatus": 200,
+    "slowStatus": 408,
+    "abortObserved": true,
+    "thrownStatus": 500,
+    "thrownTimers": 0
+  }
+]

@@ -1,0 +1,18 @@
+diff --git a/example/backend/actions/mcp.ts b/example/backend/actions/mcp.ts
+index e3e36ea..ce59b8c 100644
+--- a/example/backend/actions/mcp.ts
++++ b/example/backend/actions/mcp.ts
+@@ -1,3 +1,4 @@
++import studyStatusHtml from "../study-mcp-status";
+ import {
+   Action,
+   type ActionParams,
+@@ -97,7 +98,7 @@ export class StatusDashboardApp implements Action {
+   mcp = {
+     tool: true,
+     ui: {
+-      client: new URL("../mcpApp/status.ts", import.meta.url),
++      html: studyStatusHtml,
+       prefersBorder: true,
+     },
+   };

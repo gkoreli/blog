@@ -1,0 +1,56 @@
+[
+  {
+    "case": "keryx-builds/jit-help.log",
+    "full_private_log_sha256": "a2a1e03d083ae2fbc8c82898b214cb34ad9795c9efbd606e1679fc9aa39c52e0",
+    "selected_diagnostics": [
+      "ENOENT: no such file or directory, open '/$bunfs/lua/add-presence.lua'",
+      "    path: \"/$bunfs/lua/add-presence.lua\","
+    ]
+  },
+  {
+    "case": "keryx-builds/native-help.log",
+    "full_private_log_sha256": "a9d7db7d0a9b021c226f403b61ec1ff3f539c0252c4a75936e43f9fab19d86cd",
+    "selected_diagnostics": [
+      "ENOENT: no such file or directory, open '/$bunfs/root/_.._/_.._/packages/keryx/lua/add-presence.lua'",
+      "    path: \"/$bunfs/root/_.._/_.._/packages/keryx/lua/add-presence.lua\","
+    ]
+  },
+  {
+    "case": "keryx-wired/jit-help.log",
+    "full_private_log_sha256": "a2a1e03d083ae2fbc8c82898b214cb34ad9795c9efbd606e1679fc9aa39c52e0",
+    "selected_diagnostics": [
+      "ENOENT: no such file or directory, open '/$bunfs/lua/add-presence.lua'",
+      "    path: \"/$bunfs/lua/add-presence.lua\","
+    ]
+  },
+  {
+    "case": "keryx-wired/native-greeting-valid.log",
+    "full_private_log_sha256": "83f0098b58ca6a5f2ff2dfda5fb7685d302663ab075ef9ae7335787a9d3f98aa",
+    "selected_diagnostics": [
+      "error: Failed to initialize initializer \"oauth\": ENOENT: no such file or directory, open '/$bunfs/root/packages/keryx/util/../templates/oauth-authorize.html'",
+      "ENOENT: no such file or directory, open '/$bunfs/root/packages/keryx/util/../templates/oauth-authorize.html'",
+      "    path: \"/$bunfs/root/packages/keryx/util/../templates/oauth-authorize.html\","
+    ]
+  },
+  {
+    "case": "next-preflight/native.log",
+    "full_private_log_sha256": "cb4947bdae7b88fb3d738c03e5c9292d20aa7f70f6f0aa360b2c65f724f03066",
+    "selected_diagnostics": [
+      "error: Cannot load '/private/tmp/bun-aot-projects-20261101/next-preflight/native/examples/sharp/.next/node_modules/next/dist/server/lib/router-server.js': it isn't in this executable, which only runs code that was compiled into it. Pass the file to bun compile as another entry point, or build with --aot-allow-code-from-disk."
+    ]
+  },
+  {
+    "case": "next-preflight/native-disk.log",
+    "full_private_log_sha256": "3403139a0ec73057d2e4ff55950dc38c53a7a289391b3ee39edd78f401e821ce",
+    "selected_diagnostics": [
+      "TypeError: Cannot assign to console.assert because built-in objects are read-only in a compiled executable (bun compile differs from bun run here: https://bun.com/docs/compiler/compatibility)"
+    ]
+  },
+  {
+    "case": "next-preflight-console/native-disk-console.log",
+    "full_private_log_sha256": "82b459b32ecb88419a20660fe05fe5a245de355646308475fef72e8e36b190dd",
+    "selected_diagnostics": [
+      "Failed to install `Date` class extension. When using `cacheComponents`, APIs that read the current time will not correctly trigger dynamic behavior."
+    ]
+  }
+]

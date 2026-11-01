@@ -1,0 +1,380 @@
+{
+  "keryx-builds": [
+    {
+      "mode": "jit",
+      "case": "help",
+      "argv": [
+        "--help"
+      ],
+      "exit": 1
+    },
+    {
+      "mode": "jit",
+      "case": "actions",
+      "argv": [
+        "actions"
+      ],
+      "exit": 1
+    },
+    {
+      "mode": "jit",
+      "case": "greeting-valid",
+      "argv": [
+        "greeting:prompt",
+        "--name",
+        "Goga",
+        "-q"
+      ],
+      "exit": 1
+    },
+    {
+      "mode": "jit",
+      "case": "greeting-default",
+      "argv": [
+        "greeting:prompt",
+        "-q"
+      ],
+      "exit": 1
+    },
+    {
+      "mode": "native",
+      "case": "help",
+      "argv": [
+        "--help"
+      ],
+      "exit": 1
+    },
+    {
+      "mode": "native",
+      "case": "actions",
+      "argv": [
+        "actions"
+      ],
+      "exit": 1
+    },
+    {
+      "mode": "native",
+      "case": "greeting-valid",
+      "argv": [
+        "greeting:prompt",
+        "--name",
+        "Goga",
+        "-q"
+      ],
+      "exit": 1
+    },
+    {
+      "mode": "native",
+      "case": "greeting-default",
+      "argv": [
+        "greeting:prompt",
+        "-q"
+      ],
+      "exit": 1
+    }
+  ],
+  "keryx-wired": [
+    {
+      "mode": "jit",
+      "case": "help",
+      "argv": [
+        "--help"
+      ],
+      "exit": 1
+    },
+    {
+      "mode": "jit",
+      "case": "actions",
+      "argv": [
+        "actions"
+      ],
+      "exit": 1
+    },
+    {
+      "mode": "jit",
+      "case": "greeting-valid",
+      "argv": [
+        "greeting:prompt",
+        "--name",
+        "Goga",
+        "-q"
+      ],
+      "exit": 1
+    },
+    {
+      "mode": "jit",
+      "case": "greeting-default",
+      "argv": [
+        "greeting:prompt",
+        "-q"
+      ],
+      "exit": 1
+    },
+    {
+      "mode": "native",
+      "case": "help",
+      "argv": [
+        "--help"
+      ],
+      "exit": 0
+    },
+    {
+      "mode": "native",
+      "case": "actions",
+      "argv": [
+        "actions"
+      ],
+      "exit": 0
+    },
+    {
+      "mode": "native",
+      "case": "greeting-valid",
+      "argv": [
+        "greeting:prompt",
+        "--name",
+        "Goga",
+        "-q"
+      ],
+      "exit": 1
+    },
+    {
+      "mode": "native",
+      "case": "greeting-default",
+      "argv": [
+        "greeting:prompt",
+        "-q"
+      ],
+      "exit": 1
+    }
+  ],
+  "keryx-normalized": [
+    {
+      "mode": "source",
+      "case": "help",
+      "argv": [
+        "--help"
+      ],
+      "exit": 0
+    },
+    {
+      "mode": "source",
+      "case": "actions",
+      "argv": [
+        "actions"
+      ],
+      "exit": 0
+    },
+    {
+      "mode": "source",
+      "case": "greeting-valid",
+      "argv": [
+        "greeting:prompt",
+        "--name",
+        "Goga",
+        "-q"
+      ],
+      "exit": 0
+    },
+    {
+      "mode": "source",
+      "case": "greeting-default",
+      "argv": [
+        "greeting:prompt",
+        "-q"
+      ],
+      "exit": 0
+    },
+    {
+      "mode": "native",
+      "case": "help",
+      "argv": [
+        "--help"
+      ],
+      "exit": 0
+    },
+    {
+      "mode": "native",
+      "case": "actions",
+      "argv": [
+        "actions"
+      ],
+      "exit": 0
+    },
+    {
+      "mode": "native",
+      "case": "greeting-valid",
+      "argv": [
+        "greeting:prompt",
+        "--name",
+        "Goga",
+        "-q"
+      ],
+      "exit": 0
+    },
+    {
+      "mode": "native",
+      "case": "greeting-default",
+      "argv": [
+        "greeting:prompt",
+        "-q"
+      ],
+      "exit": 0
+    }
+  ],
+  "next-preflight": [
+    {
+      "mode": "jit",
+      "exit_before_requests": null,
+      "cases": [
+        {
+          "path": "/",
+          "status": 200,
+          "headers": {
+            "Vary": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch, Accept-Encoding",
+            "Cache-Control": "s-maxage=31536000",
+            "Content-Type": "text/html; charset=utf-8",
+            "ETag": "\"scng0trmbwox\"",
+            "x-nextjs-stale-time": "300",
+            "x-nextjs-prerender": "1",
+            "x-nextjs-cache": "HIT",
+            "X-Powered-By": "Next.js",
+            "Date": "Sun, 01 Nov 2026 16:41:12 GMT",
+            "Content-Length": "4297"
+          },
+          "bytes": 4297,
+          "sha256": "0cc8a65eb0494bcc2caf03ee554a5990137cd227b32ef2d02fa66e9137803489",
+          "preview": null
+        },
+        {
+          "path": "/api/resize",
+          "status": 200,
+          "headers": {
+            "Vary": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch",
+            "Cache-Control": "no-store",
+            "Content-Type": "image/png",
+            "Date": "Sun, 01 Nov 2026 16:41:12 GMT",
+            "Content-Length": "141"
+          },
+          "bytes": 141,
+          "sha256": "71a3a0b0532a76b1b3124c231c2812da0cb01ab9bad3885621670ea6c866c7d0",
+          "preview": null
+        }
+      ]
+    },
+    {
+      "mode": "native",
+      "exit_before_requests": null,
+      "cases": [
+        {
+          "path": "/",
+          "status": 200,
+          "headers": {
+            "Vary": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch, Accept-Encoding",
+            "Cache-Control": "s-maxage=31536000",
+            "Content-Type": "text/html; charset=utf-8",
+            "ETag": "\"scng0trmbwox\"",
+            "x-nextjs-stale-time": "300",
+            "x-nextjs-prerender": "1",
+            "x-nextjs-cache": "HIT",
+            "X-Powered-By": "Next.js",
+            "Date": "Sun, 01 Nov 2026 16:41:13 GMT",
+            "Content-Length": "4297"
+          },
+          "bytes": 4297,
+          "sha256": "0cc8a65eb0494bcc2caf03ee554a5990137cd227b32ef2d02fa66e9137803489",
+          "preview": null
+        },
+        {
+          "path": "/api/resize",
+          "status": 500,
+          "headers": {
+            "content-type": "text/plain;charset=utf-8",
+            "Date": "Sun, 01 Nov 2026 16:41:13 GMT",
+            "Content-Length": "21"
+          },
+          "bytes": 21,
+          "sha256": "e41656eb2ba6c6293bf6dd928e5a88cdbc50535cab661c1969e0f598e497ed62",
+          "preview": "Internal Server Error"
+        }
+      ]
+    },
+    {
+      "mode": "native-disk",
+      "exit_before_requests": null,
+      "cases": [
+        {
+          "path": "/",
+          "status": 200,
+          "headers": {
+            "Vary": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch, Accept-Encoding",
+            "Cache-Control": "s-maxage=31536000",
+            "Content-Type": "text/html; charset=utf-8",
+            "ETag": "\"scng0trmbwox\"",
+            "x-nextjs-stale-time": "300",
+            "x-nextjs-prerender": "1",
+            "x-nextjs-cache": "HIT",
+            "X-Powered-By": "Next.js",
+            "Date": "Sun, 01 Nov 2026 16:41:14 GMT",
+            "Content-Length": "4297"
+          },
+          "bytes": 4297,
+          "sha256": "0cc8a65eb0494bcc2caf03ee554a5990137cd227b32ef2d02fa66e9137803489",
+          "preview": null
+        },
+        {
+          "path": "/api/resize",
+          "status": 500,
+          "headers": {
+            "content-type": "text/plain;charset=utf-8",
+            "Date": "Sun, 01 Nov 2026 16:41:14 GMT",
+            "Content-Length": "21"
+          },
+          "bytes": 21,
+          "sha256": "e41656eb2ba6c6293bf6dd928e5a88cdbc50535cab661c1969e0f598e497ed62",
+          "preview": "Internal Server Error"
+        }
+      ]
+    }
+  ],
+  "next-preflight-console": [
+    {
+      "mode": "native-disk-console",
+      "exit_before_requests": null,
+      "cases": [
+        {
+          "path": "/",
+          "status": 200,
+          "headers": {
+            "Vary": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch, Accept-Encoding",
+            "Cache-Control": "s-maxage=31536000",
+            "Content-Type": "text/html; charset=utf-8",
+            "ETag": "\"scng0trmbwox\"",
+            "x-nextjs-stale-time": "300",
+            "x-nextjs-prerender": "1",
+            "x-nextjs-cache": "HIT",
+            "X-Powered-By": "Next.js",
+            "Date": "Sun, 01 Nov 2026 16:42:19 GMT",
+            "Content-Length": "4297"
+          },
+          "bytes": 4297,
+          "sha256": "0cc8a65eb0494bcc2caf03ee554a5990137cd227b32ef2d02fa66e9137803489",
+          "preview": null
+        },
+        {
+          "path": "/api/resize",
+          "status": 200,
+          "headers": {
+            "Vary": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch",
+            "Cache-Control": "no-store",
+            "Content-Type": "image/png",
+            "Date": "Sun, 01 Nov 2026 16:42:19 GMT",
+            "Content-Length": "141"
+          },
+          "bytes": 141,
+          "sha256": "71a3a0b0532a76b1b3124c231c2812da0cb01ab9bad3885621670ea6c866c7d0",
+          "preview": null
+        }
+      ]
+    }
+  ]
+}

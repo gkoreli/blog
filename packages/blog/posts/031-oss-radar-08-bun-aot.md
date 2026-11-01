@@ -3,7 +3,7 @@ title: "OSS Radar #08: Bun AOT — Don't Rewrite TypeScript in Rust Yet"
 seoTitle: "Bun AOT: Before You Rewrite TypeScript in Rust"
 alternativeHeadline: "Bun AOT cuts memory, run time and executable size on existing TypeScript applications, with limits for servers and dependencies"
 date: "2026-10-27"
-lastModified: "2026-10-31"
+lastModified: "2026-11-01"
 description: "Bun AOT made my TypeScript compiler 3.3× faster with 64% less peak memory. A server executable shrank from 121.5 MB to 30.3 MB with AOT and --trim."
 section: oss-radar
 tags: [oss-radar, bun, typescript, rust, performance]
@@ -32,7 +32,7 @@ That recommendation has limits:
 
 - My database API used roughly half the memory, but served fewer warmed requests.
 - Faster startup does not promise faster warmed requests.
-- This preview still needs plugin and packaging checks.
+- A Next.js variant answered its static page faster, but handled **78% fewer requests** on a dynamic JSON route.
 
 [Peter Steinberger's report](https://x.com/steipete/status/2114879798434758905) raised three questions: does it help long-running servers, where does the RAM go, and what breaks? I tested an official preview on macOS arm64. [Code, conditions and results](https://github.com/gkoreli/blog/tree/main/packages/blog/drafts/research/bun-aot).
 
@@ -72,9 +72,9 @@ Measure the application after warm-up, including its validators. A faster gatewa
 
 ## Can I ship it today?
 
-Try a test deployment first. [The AOT pull request merged October 27](https://github.com/oven-sh/bun/pull/45631); my follow-ups use an October 29 canary. [OpenClaw's reloadable plugins needed work at launch](https://x.com/steipete/status/2114885726701785500).
+Try a test deployment first. [The AOT pull request merged October 27](https://github.com/oven-sh/bun/pull/45631); my follow-ups use October 29 and November 1 canaries. [OpenClaw's reloadable plugins needed work at launch](https://x.com/steipete/status/2114885726701785500).
 
-My computed-import test loaded plugins included at build time. Loading an unembedded plugin from disk required an opt-in; that code is interpreted. The October 29 canary passes my original [CommonJS/declaration-file fixture](https://github.com/oven-sh/bun/issues/47044), which crashed the first preview. The wider report remained open at the October 31 check.
+My computed-import test loaded plugins included at build time. Loading an unembedded plugin from disk required an opt-in; that code is interpreted. The October 29 canary passes my original [CommonJS/declaration-file fixture](https://github.com/oven-sh/bun/issues/47044), which crashed the first preview. The wider report remained open at the November 1 check.
 
 The server's AOT executable was **51.8 MB** before trimming and **30.3 MB** afterward. [Trimming removes unused runtime features](https://github.com/oven-sh/bun/blob/06888611e2cf51ef28fd7b19eba61cbbf3cdf4ea/docs/compiler/size.mdx). It barely changed the server's warmed RSS: savings on disk and in RAM need separate measurements.
 
@@ -98,6 +98,40 @@ The [application trials](https://github.com/gkoreli/blog/tree/main/packages/blog
 
 The database tests repeatedly read one cached user; app memory excludes PostgreSQL. The linked five-minute checks retain each minute separately. No CPU or RAM quota was enforced.
 
+### Keryx and Next.js: what happened in real apps
+
+**Fixing one Keryx timer bug saved more memory than switching compilers. Next.js showed how a working homepage can hide a broken API.** These November 1 trials include [source traces, patches and reproducible results](https://github.com/gkoreli/blog/tree/main/packages/blog/drafts/research/bun-aot-followups/project-trials-2026-11-01).
+
+| Requests/second | Bun JIT | AOT variant |
+| --- | ---: | ---: |
+| Keryx, original timer | **40,753** | **39,912** |
+| Keryx, timer cleared | **47,789** | **45,307** |
+| Next.js JSON | **17,767** | **3,847** |
+| Next.js sharp PNG | **1,377** | **1,342** |
+
+| App physical memory | Bun JIT | AOT variant |
+| --- | ---: | ---: |
+| Keryx, original timer | **843 MB** | **525 MB** |
+| Keryx, timer cleared | **144 MB** | **48 MB** |
+| Next.js JSON | **137.5 MB** | **90.2 MB** |
+| Next.js sharp PNG | **105.3 MB** | **72.3 MB** |
+
+Keryx tests its greeting action; Next.js tests dynamic JSON and a generated PNG. Medians from four runs per Keryx cell, six per Next.js mode. Eight connections, two seconds warmup, five measured seconds; every timed response matched. Memory is the app's footprint at the end, excluding external services. These are local tests on one shared Mac, without a CPU or RAM limit.
+
+**Keryx left every completed action's five-minute timeout running.** Its [action runner](https://github.com/actionhero/keryx/blob/d119595bec716ae99b4eca740964343e47f57eee/packages/keryx/classes/Connection.ts) races the action against a timer but never clears that timer. Twenty successful calls left twenty timers; [a small cleanup patch](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/bun-aot-followups/project-trials-2026-11-01/timer-cleanup.patch) left zero. Success, timeout, abort and thrown-error checks still passed.
+
+With real Redis, PostgreSQL and a returning cookie, the patch cut JIT memory **83%** and AOT memory **91%**, while both served more requests. With the fix in both, AOT used **67% less memory**, serving **5% fewer requests**. In separate one-minute checks, the original app climbed to **4.7–5.8 GB under JIT and 2.1–2.2 GB under AOT** despite stable Redis key counts. After the fix, the ten-second checkpoints stayed at **129–130 MB and 47–49 MB**, respectively. Those minute checks cover two original processes per mode and one fixed process per mode; they do not establish a production memory budget.
+
+Packaging needed work too. Minimal standalone builds failed on missing Lua files under both JIT and AOT. The measured native build includes discovered modules/assets and a normalized template path; its baseline is Bun running the same source. Keryx's async Zod parser also skips the generated synchronous path from the earlier slowdown example.
+
+MCP was off during HTTP timing. Native MCP startup invoked itself as Bun's build tool, but [native executables omit the Bun CLI](https://github.com/oven-sh/bun/blob/3f3a9ff87cdccf3d32d7ec6b648c664eddaae840/docs/compiler/executables.mdx#act-as-the-bun-cli). A separate variant prebuilt the same browser UI and passed initialization and the public health call with source hidden and no Bun on `PATH`. Authenticated tools and browser interaction remain unchecked.
+
+**Next.js returned HTTP 200 for its static page while its image route returned 500.** Allowing disk-loaded code exposed another failure in console patching. The measured variant declares the console properties Next replaces; both final builds passed page, JSON, static-file and PNG checks with the source hidden and no Bun on `PATH`.
+
+The [adapter compiles a launcher](https://github.com/ramonmalcolm10/next-bun-compile/blob/43ab16c93774f23923654d337e6e2d9c205e4fe4/src/build.ts), then extracts Next and loads it later. AOT's disk-loading option interprets that JavaScript. The JSON route handled **78% fewer requests**; sharp's native image work stayed much closer. This integration does not compile all of Next to native code.
+
+After pre-extraction, static readiness fell from **27 to 18 ms**, while the first dynamic JSON response took **124 versus 120 ms**, across twelve fresh processes per mode. The executable shrank from **140.6 to 77.9 MB**; both still extracted **44.9 MB** of runtime files. A Date-extension warning remains; cache-component behavior is untested.
+
 [Original experiments](https://github.com/gkoreli/blog/tree/main/packages/blog/drafts/research/bun-aot) preserve versions, methods and failures. [Pinned compiler docs](https://github.com/oven-sh/bun/tree/06888611e2cf51ef28fd7b19eba61cbbf3cdf4ea/docs/compiler) explain memory mechanisms and compatibility limits.
 
-Checked October 31, 2026. Original measurements use Bun `06888611e`; application follow-ups use `da867c60b`. Both are macOS arm64 previews, without stable-release guarantees.
+Checked November 1, 2026. Original measurements use Bun `06888611e`; earlier application follow-ups use `da867c60b`; Keryx/Next.js trials use `3f3a9ff87`. These are macOS arm64 previews, without stable-release guarantees.

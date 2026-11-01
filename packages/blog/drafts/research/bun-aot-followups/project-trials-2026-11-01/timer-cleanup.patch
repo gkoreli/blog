@@ -1,0 +1,23 @@
+diff --git a/packages/keryx/classes/Connection.ts b/packages/keryx/classes/Connection.ts
+index 3ac31e2..5d8a90e 100644
+--- a/packages/keryx/classes/Connection.ts
++++ b/packages/keryx/classes/Connection.ts
+@@ -558,8 +558,9 @@ export class Connection<
+       message: `Action '${action.name}' timed out after ${timeoutMs}ms`,
+       type: ErrorType.CONNECTION_ACTION_TIMEOUT,
+     });
++    let timeoutHandle: ReturnType<typeof setTimeout> | undefined;
+     const timeoutPromise = new Promise<never>((_, reject) => {
+-      setTimeout(() => {
++      timeoutHandle = setTimeout(() => {
+         controller.abort();
+         reject(timeoutError);
+       }, timeoutMs);
+@@ -573,6 +574,7 @@ export class Connection<
+         timeoutPromise,
+       ]);
+     } finally {
++      if (timeoutHandle !== undefined) clearTimeout(timeoutHandle);
+       this.actionAbortSignal = previousSignal;
+     }
+   }

@@ -1,0 +1,108 @@
+# Real-project Bun AOT trials — November 1
+
+Owner request: execute the proposed project work, inspect actual source and authoritative Bun documentation, and publish grounded, reusable findings in the existing article. The original four-to-five-minute limit is relaxed for this iteration. Previous application/pool studies remain accepted historical batches; do not silently reopen or merge them.
+
+Previous goal turn: progress. It published the pool evidence and reader tool. The new request rejects further proposal-only completion and asks for the Keryx / next-bun-compile work itself.
+
+## Required outcomes
+
+- [x] Pin and inspect Keryx and next-bun-compile source, lockfiles, build commands and actual request/loading paths.
+- [x] Retrieve current official Bun compiler docs pinned to the compiler used. Verify the official binary and retain build/runtime versions.
+- [x] Build and run each public project's own example under its existing ordinary packaging first, then native AOT. Preserve build/startup/correctness failures and investigate their causes in code. Any compatibility change is a separately labeled variant.
+- [x] Keryx: exercise a real example action with successful and rejected inputs via HTTP and CLI; inspect Zod and action-discovery behavior. Include an MCP smoke check where the actual framework setup supports it. Keep real dependencies or explicitly identify a no-service configuration; do not relabel a toy as the full example.
+- [x] Next.js: exercise the shipped sharp example, a rendered page, API response, static asset and actual sharp-produced PNG. Inspect the adapter's embedded/extracted runtime and loader hooks. A static page alone does not establish native compilation of the dynamic Next graph.
+- [x] For working comparable modes, check complete deterministic outputs before measuring. Use the same source/data/services, checked first launch separately, twelve alternating fresh processes for startup, and six interleaved runs per mode for warmed routes (2-second warmup / 5 measured seconds, eight connections). Keep raw spread, app CPU, physical memory and RSS, binary bytes and required extracted files. Adapt the client only when the real protocol requires it; retain correctness coverage.
+- [x] For a failed mode, do not invent speed/RAM numbers. Retain exact diagnostics, attempt the documented applicable remedy and verify any claimed mechanism with a bounded reproducer or directly observed runtime path.
+- [x] Determine whether Varsafe's source or comparable test builds are publicly available. No source access, account or author participation is assumed. If unavailable, state the evidence gap explicitly; do not substitute an unrelated CLI as its result.
+- [x] Add compact, plain-language findings to the article, with numbers, conditions, source/permalink links, useful changes and failures. Publish full reproduction/evidence alongside it.
+- [ ] Check source/data consistency, relevant site checks, render, scoped main delivery, deployment activation and actual served HTML/Markdown. Preserve original research accounting and opening executable sizes.
+
+## Pinned inputs and initial conditions
+
+Private working area: `/tmp/bun-aot-projects-20261101`. Keryx `d119595bec716ae99b4eca740964343e47f57eee`; next-bun-compile `43ab16c93774f23923654d337e6e2d9c205e4fe4`. Repositories cloned to separate new folders. Current official canary asset 697873698, updated November 1 09:26 UTC; archive SHA-256 `9878f8609a02b7b23dcbb9a1b592aa8ab820ed8652975814c5646b36957e1680`, verified before execution. Reported revision `1.4.4-canary.1+3f3a9ff87`. This is a new compiler versus the October 29 application/pool data; keep comparisons separate.
+
+Install existing lockfiles with lifecycle scripts disabled, then inspect any necessary explicit build step. The selected Next package invokes `bun` by name; put the selected compiler first on PATH so it cannot silently build with another runtime. No load test overlaps another load test, compiler or site build. Use only study-owned services/ports and terminate only owned children. Normal lightweight editing continues on a shared Mac; retain host limits.
+
+No new external message or issue comment is required for public-source experiments. Private replies, raw operational logs and credentials stay outside Git. No author endorsement or independent operator use follows from our own successful trial.
+
+## Compatibility checkpoint — before timed comparisons
+
+The selected compiler source is `3f3a9ff87cdccf3d32d7ec6b648c664eddaae840`. Both existing lockfile installs passed with scripts disabled; the Next adapter's inspected self-link/build steps were performed explicitly. A guessed separate `frameworks.mdx` docs path returned 404; the actual framework instructions are in `libraries.mdx`. No benchmark used that missing source.
+
+Keryx's minimal documented `--compile` command built both JIT and native binaries, but both failed before even `--help`: the Lua files read at module initialization were missing. A separate build lists runtime-discovered modules and assets. Native then listed actions, but failed on an unnormalized `util/../templates` virtual-file path. The next variant changes only that concatenation to `path.join` and retains the patch. Regular packaged JIT still flattens the module paths; do not attribute that existing packaging failure to AOT. The ordinary source-run application remains the intended runtime baseline if it passes. The full example's own Application initializer requires a database, so a fresh study-owned PostgreSQL 17.10 cluster and its two upstream migrations are used on port 55441. Redis uses the framework's documented `memory://` implementation; do not imply an external Redis result. Automatic migrations are disabled after applying the actual SQL.
+
+The unmodified Next sharp example built and served a 200 static page and a 200 PNG under packaged JIT. Both native builds served the same static page but returned 500 on the image route. Native first refused the extracted router-server module. The documented `--aot-allow-code-from-disk` remedy exposed a second failure: Next's disk-loaded console wrappers attempted to redefine `console.assert`. A separately recorded prelude declares the thirteen console properties that Next's actual wrapper source patches; native plus disk loading then served a 200 PNG. This is compatibility progress, not proof that the extracted Next graph is native-compiled. Its Date-extension warning remains a limitation.
+
+Before the final Next builds, add one declared fixture extension: a force-dynamic deterministic JSON route and a static text asset, leaving the upstream page/image handlers unchanged. Compile JIT and native from the same generated entry/prelude. Include page, JSON, static bytes and independent PNG pixel validation before timing. No compatibility-probe timing will be promoted to a performance result.
+
+## Final performance protocol clarification — before the timed batches
+
+Both final Keryx modes passed full HTTP output checks, including a repeated `name` query that produces an array and must be rejected with HTTP 406. The ordinary baseline is **Bun running the source**, because ordinary standalone packaging still failed on runtime resource paths; the native comparison includes the recorded asset/module list and one template-path normalization patch. Both use the same patched source. The full example's PostgreSQL database remains live, task workers/rate limiting are off, Redis is explicitly in-memory, and MCP is off during HTTP timing. MCP and CLI correctness get separate checks. These modes are not mislabeled as two unchanged standalone binaries.
+
+Keryx calls Zod `safeParseAsync`; the installed Zod object's generated fast path requires `ctx.async === false`. Thus the earlier synchronous Zod microbenchmark cannot predict this framework's actual route performance. Inspect and measure this path separately; do not invent a generated-code slowdown here.
+
+For Next, final JIT/native-disk binaries share the same explicit console prelude and generated entry. Native's extracted Next/Sharp JavaScript remains interpreted under the documented disk-loading flag. First extraction is a separate condition: the verify stage has its own fresh runtime directories; each later stage pre-extracts both builds before repeated launch/load runs. Report file bytes and extracted regular-file bytes separately. Repeat twelve fresh processes per mode for startup and six per mode for load. Use the same static page, force-dynamic JSON, text asset and PNG reference/pixel checks. No source/compiler/site build overlaps these performance batches.
+
+## Startup checkpoint — retain these completed batches
+
+The live sequential batch is terminal session `46571`; revalidate that handle before treating it as running. Keryx startup and Next startup each saved 24/24 accepted fresh processes. Their exact runner hash is recorded in each capture. Do not restart them. Keryx/Next load stages follow sequentially in the same session; no compiler or site build may overlap them. A partial load capture is not final acceptance.
+
+Current hardware read: Mac17,2 / Apple M5 / ten CPUs / 25,769,803,776 bytes (24 GiB). AC power observed at this checkpoint, not traced continuously. Same-host closed-loop HTTP, no imposed CPU/RAM quota and no thermal-status guarantee. The unprivileged hardware read was unavailable; the approved read supplied these values.
+
+Varsafe's public latest release is 7.8.2. Its signed-release manifest exposes `version`, `date`, `bun` and platform checksums, not a verified source checkout or paired JIT/AOT builds. The installer was read but not executed. A permission question to ask the author for test materials is pending; do not send without that answer. Public-source work continues independently.
+
+### Separate first-dynamic-response control, declared while the main batch runs
+
+Next's startup readiness uses the static page; the adapter intentionally initializes Next lazily. That metric cannot stand in for a dynamic API's first response. After the main performance session exits, run twelve additional alternating fresh processes per final Next mode, pre-extracted files, measuring first static response, first force-dynamic JSON response from process launch and first sharp image after JSON. Keep this separate from the warmed throughput batches. The timer runs directly around process/request work, with no binary hashing or process-tree scan in the critical interval. Full expected outputs/pixels still gate acceptance. CLI/MCP correctness runs separately after performance; do not introduce those processes into the active load batch.
+
+### Metadata correction during evidence preparation
+
+The reused Keryx packaging helper emitted `source_changes: []` for the normalized build, because that field predated the separately applied template patch. This is incorrect metadata. Public capture explicitly preserves the original field and corrects it to reference the actual one-file patch; executed arguments, binary hashes and measurements are unchanged. Do not describe the accepted variant as unchanged source.
+
+## Main numerical acceptance and new-session diagnosis
+
+Session `46571` exited successfully: 72 retained fresh processes across startup/load, 72 timed route windows and 28,150,540 checked timed responses, zero response failures. `accepted/summary.json` audits counts/body hashes and keeps all slower runs. Next's twelve-per-mode first-dynamic control also passed; retain it separately.
+
+Keryx's no-cookie client creates a new session on each request: web.ts mints a UUID without the session cookie, Connection.act loads/creates a session, and session.ts stores it with the default 24-hour TTL. With `memory://`, those keys live in the app process. The observed 0.9–1.6 GB end footprints are therefore also a new-session-retention workload, not a clean steady returning-user baseline. Preserve all observations and declare a separate six-pair control with the actual Set-Cookie value reused across eight concurrent connections, same two routes/warmup/duration/order. Do not silently replace the earlier profile or call it a generic runtime-memory measurement. No other performance test/build overlaps this new batch.
+
+Extra-check session `76144` ended with expected-useful failures: both CLI rejection cases returned exit 1 and correct JSON on stderr, but the first checker incorrectly parsed stdout. Correct the checker, retain v1 and recheck those cases. Source MCP initialization/tool listing/status succeeded. Native MCP failed during UI-client building: spawnBunBuild executes `process.execPath build --target=browser`, and `process.execPath` is now the application executable. Do not relabel HTTP success as complete MCP compatibility or hide that it assumes a runtime build tool.
+
+### External Redis control, declared before building/running it
+
+The full framework normally uses an external Redis server. The in-memory mode is documented and useful, but its retained sessions are part of the measured app heap. After the returning-cookie batch exits, build a pinned official Redis 8.0.3 server in this isolated lab, verify its official archive hash, and bind only loopback on a new study port. Reuse the exact accepted Keryx binaries/source/template patch, real PostgreSQL, returning cookie, six alternating processes per mode and the same warmup/duration/connections. Only the Redis service configuration changes. Keep this as a separate batch, report external service memory separately, and do not pool different profiles or services into one headline median. This tests whether the memory interpretation survives the ordinary external-service architecture; it does not repair the separately observed native MCP build-tool assumption. No compiler/load overlap.
+
+The first internal session-count harness timed out after 30 seconds; no numeric result from it was accepted. The standalone harness now exits explicitly after all assertions and `api.stop`, matching the framework CLI's explicit completion behavior. Its original source is retained. This setup/check failure is separate from the completed HTTP performance batches. Redis's official 8.0.3 archive SHA-256 matches `33f37290b00b14e9a884dd4dcba335febd63ea16c51609d34fa41e031ad587df`; the build runs after the returning-cookie batch exited.
+
+### Native MCP remedy, declared before executing it
+
+The pinned Bun executable docs explicitly exclude the Bun CLI from a native executable; `BUN_BE_BUN` is not an escape hatch there. Keryx already supports `mcp.ui.html` in place of `mcp.ui.client`. After the external Redis comparison, test a separate variant that generates the exact existing status UI HTML at build time using Keryx's own `resolveMcpAppHtml`, then changes only that UI declaration to import the prebuilt HTML string. Keep action handlers/auth policy unchanged and retain the metadata patch/generated-content hash. Rebuild a separately named native binary, verify MCP initialize/list/status, and keep the original native failure. Do not reuse the earlier HTTP timing numbers as measurements of this new binary. This tests the actual build-time remedy rather than disabling the MCP feature.
+
+### Final bounded memory check — declared after the short controls
+
+The returning-cookie and external-Redis short controls passed all twelve processes each. Reusing cookies reduces stored keys, but footprints remain large under high allocation: this does not prove that retained sessions explain the whole footprint. Keep that distinction explicit. Before a memory recommendation, run four one-minute real-Redis pools in source/native/native/source order, same eight connections and returning cookie, one greeting route, two seconds warmup, then six ten-second windows on each unchanged app. Between windows, check the real `/api/status` output's heap-used MiB and actual Redis key/memory counters. Retain the complete series, app physical footprint and CPU; no forced GC, permanent-memory or leak claim. This is the final performance extension for the observed memory question, not an open-ended search for a favorable result. Publish after its audit and the existing delivery gates.
+
+## Consequential source finding after the final memory series
+
+All four minute checks passed. With stable Redis key counts, app physical footprint still climbed to 4.7–5.8 GB under source JIT and 2.1–2.2 GB under native by one minute. This contradicts attributing the full growth to session storage. Source inspection then identified an uncancelled timer in `Connection.executeWithTimeout`: each successful action leaves its default 300,000-ms timeout and captured error/controller alive. The finally block restores the signal but never clears the timer. Metrics/tracing are disabled by default, so they do not supply an established explanation.
+
+The earlier stop condition ends general performance exploration; this new concrete code defect justifies a bounded fix-validation experiment before publishing a causal RAM story. Preserve all existing data. Add a local one-method fix that keeps the same timeout/AbortController/Error and clears its handle in finally. First inspect the actual registered action with timer accounting: twenty good calls, a fast call, a true timeout, an observed abort signal and a thrown error. Compare original/fixed source behavior. Then build a separately named native fixed binary and run a balanced four-cell source/native × original/fixed short comparison on the same real Redis, PostgreSQL, returning cookie and greeting output, with four blocks, two seconds warmup and five measured seconds. Include two fixed one-minute processes only to check that the observed growth is resolved in both runtimes. This is a scoped correction test, not more fixture selection or a hidden replacement of the original results.
+
+The actual timeout-contract diagnostic passed: original good calls left twenty five-minute timers; the fixed code left zero. Both variants returned HTTP 200 for a fast action, HTTP 408 for a genuinely slow action with its abort signal observed, and HTTP 500 for a thrown action. Fast/thrown actions left one pending short timer each originally and zero after cleanup. The fix preserves deadlines rather than disabling `ACTION_TIMEOUT`. The native fixed build passed. A full four-position rotation balances the four short-test cells; the source file is changed only between owned processes and restored after every trial. Timer comparison runs in session `10798`; keep all earlier observations separate.
+
+## Completed experiment audit — November 1
+
+Session `10798` completed; its saved captures contain 16/16 accepted short cells and 2/2 fixed minute processes. Each four-cell variant appeared once in every order position. Source hashes confirm the class was restored to its original form after the temporary runs. The owned PostgreSQL cluster was stopped after all studies; every real-Redis runner stopped its own service.
+
+The patch reduced median app physical footprint from 842.9 to 143.5 MB under source JIT and from 525.0 to 47.6 MB under native. The fixed source/native comparison served 47,789/45,307 requests/s, with 143.5/47.6 MB. Fixed minute checkpoints stayed at 129.2–130.4 / 46.9–49.2 MB; one process per mode, not a long soak. All timed outputs passed.
+
+The original batches and extensions remain distinct: 96 + 22 startup/load/control processes, 120 + 52 timed windows, 38,603,066 + 17,473,425 checked timed responses. Twenty-four first-dynamic launches and functional probes remain separate. Both parameterized builder branches were executed; both rebuilt Next modes passed source-hidden standalone checks. Native MCP's separate prebuilt-UI proof passed; original native MCP still failed as retained. No combined MCP/timer variant, authenticated UI, Varsafe speed result or independent maintainer adoption is claimed.
+
+[README](README.md), [reproduction](reproduce.md), [source/claim audit](01-source-and-claim-audit.md), [full summary](results/summary.json), [manifest](results/manifest.json) and offline `python3 verify.py` expose the results and their limits. The original harness mistakes and compatibility failures remain included. Publication and actual served-byte acceptance remain open until the delivery receipt below is recorded.
+
+## Local publication checks
+
+The isolated site build uses current main `5054c8f` plus this article, preserving concurrent Express/SQLite and fetcher research. Frozen-lockfile installation, workspace typecheck, post validation (28 Markdown posts) and full build (39 total posts) passed in `/tmp/bun-aot-publication-20261031`. The active checkout's stale dependency tree initially lacked `ipaddr.js`; typechecking the clean installed preview passed without changing application code or dependency files.
+
+Built HTML and Markdown contain the new medians, original opening executable sizes, unchanged frozen footprint and correct canonical URL; HTML has one H1. The final source is about 1,780 words including frontmatter, beyond the original limit under Goga's explicit relaxation. Desktop rendering at 1280 pixels passed. A four-column phone table squeezed out the memory column; the final source uses two three-column tables. At 390 pixels all cells are readable and document width remains 390, with no horizontal document overflow. The temporary viewport was reset. Local file links, Markdown fences, Python syntax, evidence hashes/medians and a credential/private-address scan passed. Bun issue 47044 was rechecked and remained open.
+
+Commit/push, deployment activation and actual served HTML/Markdown acceptance are not yet established by these local checks.

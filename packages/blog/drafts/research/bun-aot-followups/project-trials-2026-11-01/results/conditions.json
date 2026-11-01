@@ -1,0 +1,22 @@
+{
+  "redis": {
+    "version": "8.0.3",
+    "archive_sha256": "33f37290b00b14e9a884dd4dcba335febd63ea16c51609d34fa41e031ad587df",
+    "server_sha256": "e6520b71e9ef4814555772b7cc024340a89e9bd9138e368083dbb94c163710ad",
+    "archive_url": "https://download.redis.io/releases/redis-8.0.3.tar.gz",
+    "checksum_source": "https://github.com/redis/redis-hashes/blob/master/README"
+  },
+  "measured_keryx_sources": {
+    "tracked_patch_sha256": "4b8b93490fda922a4710b335d0d326376e64271ad3312588bbe2a625b2785fc6",
+    "source_files": {
+      "example/backend/actions/mcp.ts": "257b09efa814044982d1e56bb32587c67fd694317ab9f2dd3f3d8b332f2afbb5",
+      "packages/keryx/util/oauthTemplates.ts": "54688182369b228d460c827f2479e7d99cb14f95b04005c510956e7580887dcc",
+      "packages/keryx/classes/Connection.ts": "3bda17015bae9ed8217033f56a5fe3d6270500dab5d749a703963ffa93309f10",
+      "packages/keryx/util/glob.ts": "c5391c055fc745859c8e62121a55485f7caeabc3dca6db6fdef954055b37a9a7",
+      "packages/keryx/util/bunBuild.ts": "acd0474155a4aca943228345f9d7b0550772a7664539325b7df1bffd14d90d11",
+      "packages/keryx/initializers/session.ts": "0844433b7d44c875bd95f138ff215603e593c8b7f1d68cefa9d32fc0f1701909",
+      "packages/keryx/servers/web.ts": "a82e7802acdb663544b6972a2da8ec5a19f57a4fc7e29ffb34e823a314a1866d"
+    }
+  },
+  "original_next_entry_sha256": "f56200aae0fe38f9b1954643f96aa47b4e3a6ff3e9282acd88989d6f0cc9980d"
+}

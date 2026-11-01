@@ -1,0 +1,16 @@
+{
+  "checked_at": "2026-11-01T16:48:04.493784+00:00",
+  "latest_version": "7.8.2",
+  "installer_sha256": "dae09a3095042450c248bc77406332ea5b20a45f39ce1d71f5a85c06be881158",
+  "release_manifest_sha256": "a747695703bed3b8f29c829f1b443ceb89ce62bb99eda27679593134a78ad29c",
+  "manifest_fields": [
+    "version",
+    "date",
+    "bun",
+    "checksums"
+  ],
+  "source_or_paired_builds_verified": false,
+  "binary_executed": false,
+  "account_created": false,
+  "note": "The inspected installer distributes signed platform binaries. It does not supply a verified source checkout or two matching compiler modes."
+}

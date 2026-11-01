@@ -1,0 +1,7 @@
+{
+  "before": 0,
+  "after20NewRequests": 20,
+  "afterOneCookieCreated": 21,
+  "after20ReturningRequests": 21,
+  "runner_sha256": "43beedfbdf7b53a0027e373b5a3c98089063b1b99104cb5a22386b8254796fef"
+}
