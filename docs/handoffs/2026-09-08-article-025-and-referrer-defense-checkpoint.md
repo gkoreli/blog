@@ -56,6 +56,8 @@ Newsletter work has a separate [current handoff](../../packages/blog/drafts/rese
 
 ## Working-copy preservation and recovery
 
+**November 1 checkout update:** the [worktree audit and partial cleanup](2026-11-01-blog-worktree-audit.md) supersedes the checkout-location inventory below. Three clean checkouts and three missing-directory registrations were removed with verified recovery; four dirty copies and the stash remain intact for owner review. The September archive and evidence remain valid.
+
 At **2026-09-09T02:53:08.159992+00:00**, all eight linked worktrees were inventoried. **58 source/evidence files** from five dirty worktrees were copied to private durable storage with per-file hashes, each checkout's base commit, binary tracked diff, and original Git status. Three worktrees were clean. Dependency links and one private runtime configuration file were excluded. No credentials were copied into the archive or committed.
 
 Archive: `/Users/goga/.local/share/gkoreli/workspace-checkpoints/analytics-break-20260909T025308Z`. Its private `manifest.json` has SHA-256 `7760923c0447df79cd85e90d5c22cece56a1d8d03254823203648e6c135739b3`. The [public inventory receipt](2026-09-08-analytics-workspace.json) contains paths, bases, counts, exclusions, and the commitment. Status remained stable during each capture; this was not an atomic snapshot of all concurrent sessions.
