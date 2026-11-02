@@ -99,3 +99,9 @@ Removed after the checks above: the fetcher, article 025, Radar 07 and referrer-
 Only the primary checkout and `/Users/goga/.codex/worktrees/bun-aot-radar/blog` remain. Bun is clean and its tip is on `main`. Its earlier processes have stopped and the latest turns in *Oss 8 Bun Aot* and *Linux vs Macos* are completed, but both existing chats still use that directory as their shared workspace. It remains available for their continuation; neither chat was interrupted, moved or archived. There are no dirty worktrees or live stashes left. Further Bun removal should accompany migration/retirement of those chat workspaces, rather than leave their working directories missing.
 
 The requested redundancy assessment and cleanup are complete. No runtime source or article prose changed, no old patch was merged, and no production request/deployment was needed. Commit/push of this maintenance record is separate from production activation.
+
+## Follow-on request: migrate the two Bun chats
+
+The owner subsequently requested moving *Oss 8 Bun Aot* and *Linux vs Macos* to the primary checkout and removing Bun if its work is committed. Fresh preflight confirms the Bun checkout is clean, its tip has zero commits outside `main`, and its ignored configuration still matches the verified recovery archive.
+
+The app's supported `handoff_thread` operation refused both migrations because each chat has pending composer state: “Send or remove it before handing the thread off.” No chat was moved or message sent. Computer Use cannot access the Codex app, and no supported composer-editing tool is available. The owner was asked to preserve any draft text and clear both composers, including attachments. Bun remains intact until both chat working directories have been verified at the primary checkout. Next action: retry the two handoffs after the composer state is cleared, verify their destinations, then remove the already-preserved redundant checkout and update this record.
