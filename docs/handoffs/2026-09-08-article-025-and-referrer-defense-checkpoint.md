@@ -56,7 +56,7 @@ Newsletter work has a separate [current handoff](../../packages/blog/drafts/rese
 
 ## Working-copy preservation and recovery
 
-**November 1 checkout update:** the [worktree audit and partial cleanup](2026-11-01-blog-worktree-audit.md) supersedes the checkout-location inventory below. Three clean checkouts and three missing-directory registrations were removed with verified recovery; four dirty copies and the stash remain intact for owner review. The September archive and evidence remain valid.
+**November 1 checkout update:** the [worktree audit and cleanup](2026-11-01-blog-worktree-audit.md) supersedes the checkout-location inventory below. Seven redundant checkouts, three missing-directory registrations and the superseded stash were removed after validation with tested recovery. Only the primary checkout and Bun's clean shared workspace remain. The September archive and evidence remain valid.
 
 At **2026-09-09T02:53:08.159992+00:00**, all eight linked worktrees were inventoried. **58 source/evidence files** from five dirty worktrees were copied to private durable storage with per-file hashes, each checkout's base commit, binary tracked diff, and original Git status. Three worktrees were clean. Dependency links and one private runtime configuration file were excluded. No credentials were copied into the archive or committed.
 
