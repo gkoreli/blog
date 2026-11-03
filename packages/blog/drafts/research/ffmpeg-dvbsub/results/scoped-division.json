@@ -1,0 +1,262 @@
+[
+  {
+    "fixture": "real",
+    "mode": 1,
+    "passes": 100,
+    "rounds": 3,
+    "cpu_seconds": {
+      "upstream": [
+        0.653898,
+        0.651579,
+        0.649526
+      ],
+      "previous": [
+        0.150145,
+        0.150077,
+        0.150296
+      ],
+      "sparse-block16": [
+        0.122849,
+        0.122181,
+        0.12404
+      ],
+      "sparse-block16-prune": [
+        0.121713,
+        0.122342,
+        0.12198
+      ],
+      "sparse-block32-prune": [
+        0.12663,
+        0.128192,
+        0.126902
+      ],
+      "block16-unbounded": [
+        0.131092,
+        0.131525,
+        0.130893
+      ],
+      "block16-unbounded-prune": [
+        0.130436,
+        0.129553,
+        0.13158
+      ]
+    },
+    "medians": {
+      "upstream": 0.651579,
+      "previous": 0.150145,
+      "sparse-block16": 0.122849,
+      "sparse-block16-prune": 0.12198,
+      "sparse-block32-prune": 0.126902,
+      "block16-unbounded": 0.131092,
+      "block16-unbounded-prune": 0.130436
+    }
+  },
+  {
+    "fixture": "real",
+    "mode": -1,
+    "passes": 1000,
+    "rounds": 3,
+    "cpu_seconds": {
+      "upstream": [
+        0.320361,
+        0.315205,
+        0.289153
+      ],
+      "previous": [
+        0.297707,
+        0.292563,
+        0.303834
+      ],
+      "sparse-block16": [
+        0.303083,
+        0.29039,
+        0.304548
+      ],
+      "sparse-block16-prune": [
+        0.294362,
+        0.28712,
+        0.2859
+      ],
+      "sparse-block32-prune": [
+        0.30182,
+        0.293063,
+        0.294399
+      ],
+      "block16-unbounded": [
+        0.293884,
+        0.294094,
+        0.300722
+      ],
+      "block16-unbounded-prune": [
+        0.294681,
+        0.299268,
+        0.294852
+      ]
+    },
+    "medians": {
+      "upstream": 0.315205,
+      "previous": 0.297707,
+      "sparse-block16": 0.303083,
+      "sparse-block16-prune": 0.28712,
+      "sparse-block32-prune": 0.294399,
+      "block16-unbounded": 0.294094,
+      "block16-unbounded-prune": 0.294852
+    }
+  },
+  {
+    "fixture": "generated",
+    "mode": 1,
+    "passes": 10,
+    "rounds": 3,
+    "cpu_seconds": {
+      "upstream": [
+        0.804574,
+        0.799105,
+        0.803371
+      ],
+      "previous": [
+        0.124552,
+        0.12483,
+        0.125012
+      ],
+      "sparse-block16": [
+        0.13277,
+        0.133462,
+        0.132341
+      ],
+      "sparse-block16-prune": [
+        0.133329,
+        0.1346,
+        0.133717
+      ],
+      "sparse-block32-prune": [
+        0.13466,
+        0.13543,
+        0.134175
+      ],
+      "block16-unbounded": [
+        0.135076,
+        0.13528,
+        0.135325
+      ],
+      "block16-unbounded-prune": [
+        0.135885,
+        0.135312,
+        0.1354
+      ]
+    },
+    "medians": {
+      "upstream": 0.803371,
+      "previous": 0.12483,
+      "sparse-block16": 0.13277,
+      "sparse-block16-prune": 0.133717,
+      "sparse-block32-prune": 0.13466,
+      "block16-unbounded": 0.13528,
+      "block16-unbounded-prune": 0.1354
+    }
+  },
+  {
+    "fixture": "generated",
+    "mode": -1,
+    "passes": 10,
+    "rounds": 3,
+    "cpu_seconds": {
+      "upstream": [
+        0.416778,
+        0.414549,
+        0.414527
+      ],
+      "previous": [
+        0.076794,
+        0.078184,
+        0.077943
+      ],
+      "sparse-block16": [
+        0.081583,
+        0.082152,
+        0.081538
+      ],
+      "sparse-block16-prune": [
+        0.082341,
+        0.08205,
+        0.082097
+      ],
+      "sparse-block32-prune": [
+        0.082819,
+        0.082437,
+        0.082614
+      ],
+      "block16-unbounded": [
+        0.082458,
+        0.081774,
+        0.081871
+      ],
+      "block16-unbounded-prune": [
+        0.082605,
+        0.083075,
+        0.08312
+      ]
+    },
+    "medians": {
+      "upstream": 0.414549,
+      "previous": 0.077943,
+      "sparse-block16": 0.081583,
+      "sparse-block16-prune": 0.082097,
+      "sparse-block32-prune": 0.082614,
+      "block16-unbounded": 0.081871,
+      "block16-unbounded-prune": 0.083075
+    }
+  },
+  {
+    "fixture": "generated",
+    "mode": 0,
+    "passes": 10,
+    "rounds": 3,
+    "cpu_seconds": {
+      "upstream": [
+        0.028947,
+        0.029135,
+        0.029567
+      ],
+      "previous": [
+        0.028777,
+        0.02883,
+        0.028451
+      ],
+      "sparse-block16": [
+        0.028925,
+        0.029058,
+        0.029017
+      ],
+      "sparse-block16-prune": [
+        0.028839,
+        0.028768,
+        0.02838
+      ],
+      "sparse-block32-prune": [
+        0.028405,
+        0.029364,
+        0.028464
+      ],
+      "block16-unbounded": [
+        0.02902,
+        0.028643,
+        0.028973
+      ],
+      "block16-unbounded-prune": [
+        0.02951,
+        0.02917,
+        0.028872
+      ]
+    },
+    "medians": {
+      "upstream": 0.029135,
+      "previous": 0.028777,
+      "sparse-block16": 0.029017,
+      "sparse-block16-prune": 0.028768,
+      "sparse-block32-prune": 0.028464,
+      "block16-unbounded": 0.028973,
+      "block16-unbounded-prune": 0.02917
+    }
+  }
+]

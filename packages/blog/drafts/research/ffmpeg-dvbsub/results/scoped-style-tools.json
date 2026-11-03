@@ -1,0 +1,12 @@
+{
+  "grep": {
+    "version": "3.12",
+    "url": "https://ghcr.io/v2/homebrew/core/grep/blobs/sha256:cb3715e0ab1d3d667c577b6823d444ade6ea5ca2f6bf82a30daf072bdb8f0f3a",
+    "sha256": "cb3715e0ab1d3d667c577b6823d444ade6ea5ca2f6bf82a30daf072bdb8f0f3a"
+  },
+  "findutils": {
+    "version": "4.11.0",
+    "url": "https://ghcr.io/v2/homebrew/core/findutils/blobs/sha256:e35180244a00d215d59d1e53f4a3da84f8e5a046c67e72e8d27dd4ce82c958df",
+    "sha256": "e35180244a00d215d59d1e53f4a3da84f8e5a046c67e72e8d27dd4ce82c958df"
+  }
+}

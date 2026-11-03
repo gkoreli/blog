@@ -4,7 +4,7 @@ title: Verify FFmpeg DVB subtitle improvements and preserve article research
 status: in_progress
 parent_id: FLDR-0003
 created_at: '2026-11-03T08:34:54Z'
-updated_at: '2026-11-03T08:42:42Z'
+updated_at: '2026-11-03T09:27:21Z'
 type: task
 ---
 
@@ -28,3 +28,9 @@ Investigate the optimization claimed in Romain Hédouin's X post, find the upstr
 - A five-patch series and draft upstream descriptions are prepared. No upstream PR is submitted, no article is published, and no cross-platform or universal regression guarantee is claimed.
 
 Research/check delivery follows the repository's scoped commit-and-push preference. Article drafting, broader proofs, additional broadcast/architecture coverage and upstream submission remain explicit follow-up work, rather than silently marked complete.
+
+## November 3 native-comparison iteration
+
+The preferred performance scope is now a 17-line addition/one-line deletion inside the existing palette function. Its matrix and scorer stay unchanged. The 33-line transposed/sparse candidate was rejected for large random-image slowdowns; all screens and source hashes remain in the canonical worklist. The final patch has 49 accepted proof/control/model results, 96,758 normal/sanitized differential cases, full-decoder checks and independent robustness-fix integration.
+
+The final real forced-path gain is 4.989× against upstream and 1.173× throughput versus the larger candidate, with generated-pattern/default-path tradeoffs recorded explicitly. Default real decoding is 2.65% slower in the median of this run; neutrality is not accepted. The investigation and article evidence are delivered separately from the unsubmitted upstream PR. Current sources, results, reproduction and remaining review are owned by [Research 04](../../packages/blog/drafts/research/ffmpeg-dvbsub/04-native-comparisons-and-smaller-scope.md).

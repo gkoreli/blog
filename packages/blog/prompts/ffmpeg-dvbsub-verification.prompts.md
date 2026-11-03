@@ -20,3 +20,7 @@ should we use this kinda strategy to further validate and verify our gains and i
 ---
 
 yes, go ahead and machine-check the C transformations first, then use TLA+ for the stateful parts. fix anything you find and keep the proofs and benchmarks reproducible, lets capture all this in the research worklist in the blog, this will all become a blog article btw besides the PR
+
+---
+
+read more authoritative docs and native capabilities including C++, C, FFMPEG and library that we are working with and TLA+, iterate further, all this could be slightly sidestepped and even more significantly improved, keep the scope concise, lets not make all of this significantly complicated so that the PR review doesn't stretch too long, it should be scoped and really big impact overall. Go ahead, please iterate further, capture all the findings and the work that we are doing in the research worklist so that it will be useful for the article.

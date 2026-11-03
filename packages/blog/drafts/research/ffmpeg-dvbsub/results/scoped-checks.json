@@ -1,0 +1,1216 @@
+[
+  {
+    "name": "predicate",
+    "command": [
+      "<tools>/cbmc/cbmc/6.11.0/bin/cbmc",
+      "<out>/predicate.c",
+      "--unwind",
+      "55",
+      "--unwinding-assertions",
+      "--bounds-check",
+      "--pointer-check",
+      "--signed-overflow-check",
+      "--conversion-check"
+    ],
+    "exit_code": 0,
+    "expected": 0,
+    "accepted": true,
+    "seconds": 0.569,
+    "log_sha256": "487b9aed2c1a7e5a2052f8dcb086f05471b89a7dc8f98a0e019fcbe9a6deb29a",
+    "summary": [
+      "** 0 of 40 failed (1 iterations)",
+      "VERIFICATION SUCCESSFUL"
+    ]
+  },
+  {
+    "name": "reachable-predicate",
+    "command": [
+      "<tools>/cbmc/cbmc/6.11.0/bin/cbmc",
+      "<out>/predicate.c",
+      "-DCOVER",
+      "--unwind",
+      "55",
+      "--cover",
+      "cover"
+    ],
+    "exit_code": 0,
+    "expected": 0,
+    "accepted": true,
+    "seconds": 0.57,
+    "log_sha256": "b423921307ba4b135c8b73ad2b22e1fff75cda883b6a413ed1d18c70ddf67802",
+    "summary": [
+      "[main.coverage.1] file /private/tmp/dvbsub-scope/local-proofs/predicate.c line 18 function main condition '1 != 0': SATISFIED"
+    ]
+  },
+  {
+    "name": "bounds",
+    "command": [
+      "<tools>/cbmc/cbmc/6.11.0/bin/cbmc",
+      "<out>/bounds.c",
+      "--unwind",
+      "2",
+      "--unwinding-assertions",
+      "--bounds-check",
+      "--pointer-check",
+      "--signed-overflow-check",
+      "--conversion-check"
+    ],
+    "exit_code": 0,
+    "expected": 0,
+    "accepted": true,
+    "seconds": 1.813,
+    "log_sha256": "9d3f4848d45b9b6f0a60b17372ff9ad0c4eadc0b83fd6fd252509be01af002e1",
+    "summary": [
+      "** 0 of 23 failed (1 iterations)",
+      "VERIFICATION SUCCESSFUL"
+    ]
+  },
+  {
+    "name": "reachable-bounds",
+    "command": [
+      "<tools>/cbmc/cbmc/6.11.0/bin/cbmc",
+      "<out>/bounds.c",
+      "-DCOVER",
+      "--unwind",
+      "2",
+      "--cover",
+      "cover"
+    ],
+    "exit_code": 0,
+    "expected": 0,
+    "accepted": true,
+    "seconds": 0.128,
+    "log_sha256": "ef61c489a073094a60458f1b8190d6032da098e78b87142e237229affd439921",
+    "summary": [
+      "[main.coverage.1] file /private/tmp/dvbsub-scope/local-proofs/bounds.c line 23 function main condition '1 != 0': SATISFIED"
+    ]
+  },
+  {
+    "name": "calls-0-0",
+    "command": [
+      "<tools>/cbmc/cbmc/6.11.0/bin/cbmc",
+      "<out>/calls.c",
+      "-DPATTERN0=0",
+      "-DPATTERN1=0",
+      "--unwind",
+      "20",
+      "--unwinding-assertions",
+      "--bounds-check",
+      "--pointer-check",
+      "--signed-overflow-check",
+      "--conversion-check"
+    ],
+    "exit_code": 0,
+    "expected": 0,
+    "accepted": true,
+    "seconds": 0.182,
+    "log_sha256": "8ae3aa34a6bd129dc9365dce0779603db487ba35feab2205132a6a3d885d4411",
+    "summary": [
+      "** 0 of 625 failed (1 iterations)",
+      "VERIFICATION SUCCESSFUL"
+    ]
+  },
+  {
+    "name": "reachable-calls-0-0",
+    "command": [
+      "<tools>/cbmc/cbmc/6.11.0/bin/cbmc",
+      "<out>/calls.c",
+      "-DPATTERN0=0",
+      "-DPATTERN1=0",
+      "-DCOVER",
+      "--unwind",
+      "20",
+      "--cover",
+      "cover"
+    ],
+    "exit_code": 0,
+    "expected": 0,
+    "accepted": true,
+    "seconds": 0.239,
+    "log_sha256": "e70317e8cceea658c11a42ae7b1bcfe879b8ad93d98e0bae974dfadb0bb22716",
+    "summary": [
+      "[main.coverage.1] file /private/tmp/dvbsub-scope/local-proofs/calls.c line 172 function main condition '1 != 0': SATISFIED"
+    ]
+  },
+  {
+    "name": "calls-0-1",
+    "command": [
+      "<tools>/cbmc/cbmc/6.11.0/bin/cbmc",
+      "<out>/calls.c",
+      "-DPATTERN0=0",
+      "-DPATTERN1=1",
+      "--unwind",
+      "20",
+      "--unwinding-assertions",
+      "--bounds-check",
+      "--pointer-check",
+      "--signed-overflow-check",
+      "--conversion-check"
+    ],
+    "exit_code": 0,
+    "expected": 0,
+    "accepted": true,
+    "seconds": 0.187,
+    "log_sha256": "f375d7c1582fe7254582ddc6afda71ffa5fd7e134ce0a5ba211f14692c09cf92",
+    "summary": [
+      "** 0 of 625 failed (1 iterations)",
+      "VERIFICATION SUCCESSFUL"
+    ]
+  },
+  {
+    "name": "reachable-calls-0-1",
+    "command": [
+      "<tools>/cbmc/cbmc/6.11.0/bin/cbmc",
+      "<out>/calls.c",
+      "-DPATTERN0=0",
+      "-DPATTERN1=1",
+      "-DCOVER",
+      "--unwind",
+      "20",
+      "--cover",
+      "cover"
+    ],
+    "exit_code": 0,
+    "expected": 0,
+    "accepted": true,
+    "seconds": 0.242,
+    "log_sha256": "e70317e8cceea658c11a42ae7b1bcfe879b8ad93d98e0bae974dfadb0bb22716",
+    "summary": [
+      "[main.coverage.1] file /private/tmp/dvbsub-scope/local-proofs/calls.c line 172 function main condition '1 != 0': SATISFIED"
+    ]
+  },
+  {
+    "name": "calls-0-2",
+    "command": [
+      "<tools>/cbmc/cbmc/6.11.0/bin/cbmc",
+      "<out>/calls.c",
+      "-DPATTERN0=0",
+      "-DPATTERN1=2",
+      "--unwind",
+      "20",
+      "--unwinding-assertions",
+      "--bounds-check",
+      "--pointer-check",
+      "--signed-overflow-check",
+      "--conversion-check"
+    ],
+    "exit_code": 0,
+    "expected": 0,
+    "accepted": true,
+    "seconds": 0.176,
+    "log_sha256": "f4a105f6cfad8a99c7069936723de1c0747d79acad8fc78105c83b32e46b16a1",
+    "summary": [
+      "** 0 of 625 failed (1 iterations)",
+      "VERIFICATION SUCCESSFUL"
+    ]
+  },
+  {
+    "name": "reachable-calls-0-2",
+    "command": [
+      "<tools>/cbmc/cbmc/6.11.0/bin/cbmc",
+      "<out>/calls.c",
+      "-DPATTERN0=0",
+      "-DPATTERN1=2",
+      "-DCOVER",
+      "--unwind",
+      "20",
+      "--cover",
+      "cover"
+    ],
+    "exit_code": 0,
+    "expected": 0,
+    "accepted": true,
+    "seconds": 0.239,
+    "log_sha256": "e70317e8cceea658c11a42ae7b1bcfe879b8ad93d98e0bae974dfadb0bb22716",
+    "summary": [
+      "[main.coverage.1] file /private/tmp/dvbsub-scope/local-proofs/calls.c line 172 function main condition '1 != 0': SATISFIED"
+    ]
+  },
+  {
+    "name": "calls-0-3",
+    "command": [
+      "<tools>/cbmc/cbmc/6.11.0/bin/cbmc",
+      "<out>/calls.c",
+      "-DPATTERN0=0",
+      "-DPATTERN1=3",
+      "--unwind",
+      "20",
+      "--unwinding-assertions",
+      "--bounds-check",
+      "--pointer-check",
+      "--signed-overflow-check",
+      "--conversion-check"
+    ],
+    "exit_code": 0,
+    "expected": 0,
+    "accepted": true,
+    "seconds": 0.187,
+    "log_sha256": "0f9598d67b34726b6e24e03c293a4c63de8562ee89b58dc700aeeda18d83ac4d",
+    "summary": [
+      "** 0 of 625 failed (1 iterations)",
+      "VERIFICATION SUCCESSFUL"
+    ]
+  },
+  {
+    "name": "reachable-calls-0-3",
+    "command": [
+      "<tools>/cbmc/cbmc/6.11.0/bin/cbmc",
+      "<out>/calls.c",
+      "-DPATTERN0=0",
+      "-DPATTERN1=3",
+      "-DCOVER",
+      "--unwind",
+      "20",
+      "--cover",
+      "cover"
+    ],
+    "exit_code": 0,
+    "expected": 0,
+    "accepted": true,
+    "seconds": 0.237,
+    "log_sha256": "e70317e8cceea658c11a42ae7b1bcfe879b8ad93d98e0bae974dfadb0bb22716",
+    "summary": [
+      "[main.coverage.1] file /private/tmp/dvbsub-scope/local-proofs/calls.c line 172 function main condition '1 != 0': SATISFIED"
+    ]
+  },
+  {
+    "name": "calls-1-0",
+    "command": [
+      "<tools>/cbmc/cbmc/6.11.0/bin/cbmc",
+      "<out>/calls.c",
+      "-DPATTERN0=1",
+      "-DPATTERN1=0",
+      "--unwind",
+      "20",
+      "--unwinding-assertions",
+      "--bounds-check",
+      "--pointer-check",
+      "--signed-overflow-check",
+      "--conversion-check"
+    ],
+    "exit_code": 0,
+    "expected": 0,
+    "accepted": true,
+    "seconds": 0.178,
+    "log_sha256": "2248c662a156e4ecf58a5b62e271215f643a386413aab258db355196c0e4e3df",
+    "summary": [
+      "** 0 of 625 failed (1 iterations)",
+      "VERIFICATION SUCCESSFUL"
+    ]
+  },
+  {
+    "name": "reachable-calls-1-0",
+    "command": [
+      "<tools>/cbmc/cbmc/6.11.0/bin/cbmc",
+      "<out>/calls.c",
+      "-DPATTERN0=1",
+      "-DPATTERN1=0",
+      "-DCOVER",
+      "--unwind",
+      "20",
+      "--cover",
+      "cover"
+    ],
+    "exit_code": 0,
+    "expected": 0,
+    "accepted": true,
+    "seconds": 0.239,
+    "log_sha256": "e70317e8cceea658c11a42ae7b1bcfe879b8ad93d98e0bae974dfadb0bb22716",
+    "summary": [
+      "[main.coverage.1] file /private/tmp/dvbsub-scope/local-proofs/calls.c line 172 function main condition '1 != 0': SATISFIED"
+    ]
+  },
+  {
+    "name": "calls-1-1",
+    "command": [
+      "<tools>/cbmc/cbmc/6.11.0/bin/cbmc",
+      "<out>/calls.c",
+      "-DPATTERN0=1",
+      "-DPATTERN1=1",
+      "--unwind",
+      "20",
+      "--unwinding-assertions",
+      "--bounds-check",
+      "--pointer-check",
+      "--signed-overflow-check",
+      "--conversion-check"
+    ],
+    "exit_code": 0,
+    "expected": 0,
+    "accepted": true,
+    "seconds": 0.184,
+    "log_sha256": "7807545623824ac5540190d5165136657650ee0937c40a33fa6b518c6a470943",
+    "summary": [
+      "** 0 of 625 failed (1 iterations)",
+      "VERIFICATION SUCCESSFUL"
+    ]
+  },
+  {
+    "name": "reachable-calls-1-1",
+    "command": [
+      "<tools>/cbmc/cbmc/6.11.0/bin/cbmc",
+      "<out>/calls.c",
+      "-DPATTERN0=1",
+      "-DPATTERN1=1",
+      "-DCOVER",
+      "--unwind",
+      "20",
+      "--cover",
+      "cover"
+    ],
+    "exit_code": 0,
+    "expected": 0,
+    "accepted": true,
+    "seconds": 0.238,
+    "log_sha256": "e70317e8cceea658c11a42ae7b1bcfe879b8ad93d98e0bae974dfadb0bb22716",
+    "summary": [
+      "[main.coverage.1] file /private/tmp/dvbsub-scope/local-proofs/calls.c line 172 function main condition '1 != 0': SATISFIED"
+    ]
+  },
+  {
+    "name": "calls-1-2",
+    "command": [
+      "<tools>/cbmc/cbmc/6.11.0/bin/cbmc",
+      "<out>/calls.c",
+      "-DPATTERN0=1",
+      "-DPATTERN1=2",
+      "--unwind",
+      "20",
+      "--unwinding-assertions",
+      "--bounds-check",
+      "--pointer-check",
+      "--signed-overflow-check",
+      "--conversion-check"
+    ],
+    "exit_code": 0,
+    "expected": 0,
+    "accepted": true,
+    "seconds": 0.182,
+    "log_sha256": "6462d198a3e27fff20bf1b62c5c9c3175c58bf5893b757d6bdeea98b3a16da15",
+    "summary": [
+      "** 0 of 625 failed (1 iterations)",
+      "VERIFICATION SUCCESSFUL"
+    ]
+  },
+  {
+    "name": "reachable-calls-1-2",
+    "command": [
+      "<tools>/cbmc/cbmc/6.11.0/bin/cbmc",
+      "<out>/calls.c",
+      "-DPATTERN0=1",
+      "-DPATTERN1=2",
+      "-DCOVER",
+      "--unwind",
+      "20",
+      "--cover",
+      "cover"
+    ],
+    "exit_code": 0,
+    "expected": 0,
+    "accepted": true,
+    "seconds": 0.235,
+    "log_sha256": "e70317e8cceea658c11a42ae7b1bcfe879b8ad93d98e0bae974dfadb0bb22716",
+    "summary": [
+      "[main.coverage.1] file /private/tmp/dvbsub-scope/local-proofs/calls.c line 172 function main condition '1 != 0': SATISFIED"
+    ]
+  },
+  {
+    "name": "calls-1-3",
+    "command": [
+      "<tools>/cbmc/cbmc/6.11.0/bin/cbmc",
+      "<out>/calls.c",
+      "-DPATTERN0=1",
+      "-DPATTERN1=3",
+      "--unwind",
+      "20",
+      "--unwinding-assertions",
+      "--bounds-check",
+      "--pointer-check",
+      "--signed-overflow-check",
+      "--conversion-check"
+    ],
+    "exit_code": 0,
+    "expected": 0,
+    "accepted": true,
+    "seconds": 0.185,
+    "log_sha256": "8928e587693b20e94a648be8830f2bd47093b033bce47ba01c5cabbc935ca95f",
+    "summary": [
+      "** 0 of 625 failed (1 iterations)",
+      "VERIFICATION SUCCESSFUL"
+    ]
+  },
+  {
+    "name": "reachable-calls-1-3",
+    "command": [
+      "<tools>/cbmc/cbmc/6.11.0/bin/cbmc",
+      "<out>/calls.c",
+      "-DPATTERN0=1",
+      "-DPATTERN1=3",
+      "-DCOVER",
+      "--unwind",
+      "20",
+      "--cover",
+      "cover"
+    ],
+    "exit_code": 0,
+    "expected": 0,
+    "accepted": true,
+    "seconds": 0.241,
+    "log_sha256": "e70317e8cceea658c11a42ae7b1bcfe879b8ad93d98e0bae974dfadb0bb22716",
+    "summary": [
+      "[main.coverage.1] file /private/tmp/dvbsub-scope/local-proofs/calls.c line 172 function main condition '1 != 0': SATISFIED"
+    ]
+  },
+  {
+    "name": "calls-2-0",
+    "command": [
+      "<tools>/cbmc/cbmc/6.11.0/bin/cbmc",
+      "<out>/calls.c",
+      "-DPATTERN0=2",
+      "-DPATTERN1=0",
+      "--unwind",
+      "20",
+      "--unwinding-assertions",
+      "--bounds-check",
+      "--pointer-check",
+      "--signed-overflow-check",
+      "--conversion-check"
+    ],
+    "exit_code": 0,
+    "expected": 0,
+    "accepted": true,
+    "seconds": 0.186,
+    "log_sha256": "bd9446a5bf6f6116176d475f8489d7a56369afd63ef41707f0e8f52fec331cfb",
+    "summary": [
+      "** 0 of 625 failed (1 iterations)",
+      "VERIFICATION SUCCESSFUL"
+    ]
+  },
+  {
+    "name": "reachable-calls-2-0",
+    "command": [
+      "<tools>/cbmc/cbmc/6.11.0/bin/cbmc",
+      "<out>/calls.c",
+      "-DPATTERN0=2",
+      "-DPATTERN1=0",
+      "-DCOVER",
+      "--unwind",
+      "20",
+      "--cover",
+      "cover"
+    ],
+    "exit_code": 0,
+    "expected": 0,
+    "accepted": true,
+    "seconds": 0.241,
+    "log_sha256": "e70317e8cceea658c11a42ae7b1bcfe879b8ad93d98e0bae974dfadb0bb22716",
+    "summary": [
+      "[main.coverage.1] file /private/tmp/dvbsub-scope/local-proofs/calls.c line 172 function main condition '1 != 0': SATISFIED"
+    ]
+  },
+  {
+    "name": "calls-2-1",
+    "command": [
+      "<tools>/cbmc/cbmc/6.11.0/bin/cbmc",
+      "<out>/calls.c",
+      "-DPATTERN0=2",
+      "-DPATTERN1=1",
+      "--unwind",
+      "20",
+      "--unwinding-assertions",
+      "--bounds-check",
+      "--pointer-check",
+      "--signed-overflow-check",
+      "--conversion-check"
+    ],
+    "exit_code": 0,
+    "expected": 0,
+    "accepted": true,
+    "seconds": 0.184,
+    "log_sha256": "ea1e3a5dc32d427c1e7ff3f33a7605ec21e8943af3f7745e119b3c90e59cbd1e",
+    "summary": [
+      "** 0 of 625 failed (1 iterations)",
+      "VERIFICATION SUCCESSFUL"
+    ]
+  },
+  {
+    "name": "reachable-calls-2-1",
+    "command": [
+      "<tools>/cbmc/cbmc/6.11.0/bin/cbmc",
+      "<out>/calls.c",
+      "-DPATTERN0=2",
+      "-DPATTERN1=1",
+      "-DCOVER",
+      "--unwind",
+      "20",
+      "--cover",
+      "cover"
+    ],
+    "exit_code": 0,
+    "expected": 0,
+    "accepted": true,
+    "seconds": 0.233,
+    "log_sha256": "e70317e8cceea658c11a42ae7b1bcfe879b8ad93d98e0bae974dfadb0bb22716",
+    "summary": [
+      "[main.coverage.1] file /private/tmp/dvbsub-scope/local-proofs/calls.c line 172 function main condition '1 != 0': SATISFIED"
+    ]
+  },
+  {
+    "name": "calls-2-2",
+    "command": [
+      "<tools>/cbmc/cbmc/6.11.0/bin/cbmc",
+      "<out>/calls.c",
+      "-DPATTERN0=2",
+      "-DPATTERN1=2",
+      "--unwind",
+      "20",
+      "--unwinding-assertions",
+      "--bounds-check",
+      "--pointer-check",
+      "--signed-overflow-check",
+      "--conversion-check"
+    ],
+    "exit_code": 0,
+    "expected": 0,
+    "accepted": true,
+    "seconds": 0.178,
+    "log_sha256": "44c3165228bc39d8c14b7b4390c0d9cade33f37872c9a97c5c9dd3ab5fe82916",
+    "summary": [
+      "** 0 of 625 failed (1 iterations)",
+      "VERIFICATION SUCCESSFUL"
+    ]
+  },
+  {
+    "name": "reachable-calls-2-2",
+    "command": [
+      "<tools>/cbmc/cbmc/6.11.0/bin/cbmc",
+      "<out>/calls.c",
+      "-DPATTERN0=2",
+      "-DPATTERN1=2",
+      "-DCOVER",
+      "--unwind",
+      "20",
+      "--cover",
+      "cover"
+    ],
+    "exit_code": 0,
+    "expected": 0,
+    "accepted": true,
+    "seconds": 0.243,
+    "log_sha256": "e70317e8cceea658c11a42ae7b1bcfe879b8ad93d98e0bae974dfadb0bb22716",
+    "summary": [
+      "[main.coverage.1] file /private/tmp/dvbsub-scope/local-proofs/calls.c line 172 function main condition '1 != 0': SATISFIED"
+    ]
+  },
+  {
+    "name": "calls-2-3",
+    "command": [
+      "<tools>/cbmc/cbmc/6.11.0/bin/cbmc",
+      "<out>/calls.c",
+      "-DPATTERN0=2",
+      "-DPATTERN1=3",
+      "--unwind",
+      "20",
+      "--unwinding-assertions",
+      "--bounds-check",
+      "--pointer-check",
+      "--signed-overflow-check",
+      "--conversion-check"
+    ],
+    "exit_code": 0,
+    "expected": 0,
+    "accepted": true,
+    "seconds": 0.181,
+    "log_sha256": "ca1312c9f37faa800dfc92490dd4a2724965bafc8fe6c0d499872b9336ae4179",
+    "summary": [
+      "** 0 of 625 failed (1 iterations)",
+      "VERIFICATION SUCCESSFUL"
+    ]
+  },
+  {
+    "name": "reachable-calls-2-3",
+    "command": [
+      "<tools>/cbmc/cbmc/6.11.0/bin/cbmc",
+      "<out>/calls.c",
+      "-DPATTERN0=2",
+      "-DPATTERN1=3",
+      "-DCOVER",
+      "--unwind",
+      "20",
+      "--cover",
+      "cover"
+    ],
+    "exit_code": 0,
+    "expected": 0,
+    "accepted": true,
+    "seconds": 0.241,
+    "log_sha256": "e70317e8cceea658c11a42ae7b1bcfe879b8ad93d98e0bae974dfadb0bb22716",
+    "summary": [
+      "[main.coverage.1] file /private/tmp/dvbsub-scope/local-proofs/calls.c line 172 function main condition '1 != 0': SATISFIED"
+    ]
+  },
+  {
+    "name": "calls-3-0",
+    "command": [
+      "<tools>/cbmc/cbmc/6.11.0/bin/cbmc",
+      "<out>/calls.c",
+      "-DPATTERN0=3",
+      "-DPATTERN1=0",
+      "--unwind",
+      "20",
+      "--unwinding-assertions",
+      "--bounds-check",
+      "--pointer-check",
+      "--signed-overflow-check",
+      "--conversion-check"
+    ],
+    "exit_code": 0,
+    "expected": 0,
+    "accepted": true,
+    "seconds": 0.18,
+    "log_sha256": "72211e2e78606aaf5e6cfbbef200fb541cc66382b31adee2b092d70f8299c5ec",
+    "summary": [
+      "** 0 of 625 failed (1 iterations)",
+      "VERIFICATION SUCCESSFUL"
+    ]
+  },
+  {
+    "name": "reachable-calls-3-0",
+    "command": [
+      "<tools>/cbmc/cbmc/6.11.0/bin/cbmc",
+      "<out>/calls.c",
+      "-DPATTERN0=3",
+      "-DPATTERN1=0",
+      "-DCOVER",
+      "--unwind",
+      "20",
+      "--cover",
+      "cover"
+    ],
+    "exit_code": 0,
+    "expected": 0,
+    "accepted": true,
+    "seconds": 0.241,
+    "log_sha256": "e70317e8cceea658c11a42ae7b1bcfe879b8ad93d98e0bae974dfadb0bb22716",
+    "summary": [
+      "[main.coverage.1] file /private/tmp/dvbsub-scope/local-proofs/calls.c line 172 function main condition '1 != 0': SATISFIED"
+    ]
+  },
+  {
+    "name": "calls-3-1",
+    "command": [
+      "<tools>/cbmc/cbmc/6.11.0/bin/cbmc",
+      "<out>/calls.c",
+      "-DPATTERN0=3",
+      "-DPATTERN1=1",
+      "--unwind",
+      "20",
+      "--unwinding-assertions",
+      "--bounds-check",
+      "--pointer-check",
+      "--signed-overflow-check",
+      "--conversion-check"
+    ],
+    "exit_code": 0,
+    "expected": 0,
+    "accepted": true,
+    "seconds": 0.186,
+    "log_sha256": "1dd38cd75a436581b72e4d58b3accbbbb04256c88ec7aa4592210657ecf0c437",
+    "summary": [
+      "** 0 of 625 failed (1 iterations)",
+      "VERIFICATION SUCCESSFUL"
+    ]
+  },
+  {
+    "name": "reachable-calls-3-1",
+    "command": [
+      "<tools>/cbmc/cbmc/6.11.0/bin/cbmc",
+      "<out>/calls.c",
+      "-DPATTERN0=3",
+      "-DPATTERN1=1",
+      "-DCOVER",
+      "--unwind",
+      "20",
+      "--cover",
+      "cover"
+    ],
+    "exit_code": 0,
+    "expected": 0,
+    "accepted": true,
+    "seconds": 0.242,
+    "log_sha256": "e70317e8cceea658c11a42ae7b1bcfe879b8ad93d98e0bae974dfadb0bb22716",
+    "summary": [
+      "[main.coverage.1] file /private/tmp/dvbsub-scope/local-proofs/calls.c line 172 function main condition '1 != 0': SATISFIED"
+    ]
+  },
+  {
+    "name": "calls-3-2",
+    "command": [
+      "<tools>/cbmc/cbmc/6.11.0/bin/cbmc",
+      "<out>/calls.c",
+      "-DPATTERN0=3",
+      "-DPATTERN1=2",
+      "--unwind",
+      "20",
+      "--unwinding-assertions",
+      "--bounds-check",
+      "--pointer-check",
+      "--signed-overflow-check",
+      "--conversion-check"
+    ],
+    "exit_code": 0,
+    "expected": 0,
+    "accepted": true,
+    "seconds": 0.181,
+    "log_sha256": "6974b77c1fb15fefcd2787f68181b9ac4460cda09ba79a21f76f64d4746f2ff2",
+    "summary": [
+      "** 0 of 625 failed (1 iterations)",
+      "VERIFICATION SUCCESSFUL"
+    ]
+  },
+  {
+    "name": "reachable-calls-3-2",
+    "command": [
+      "<tools>/cbmc/cbmc/6.11.0/bin/cbmc",
+      "<out>/calls.c",
+      "-DPATTERN0=3",
+      "-DPATTERN1=2",
+      "-DCOVER",
+      "--unwind",
+      "20",
+      "--cover",
+      "cover"
+    ],
+    "exit_code": 0,
+    "expected": 0,
+    "accepted": true,
+    "seconds": 0.241,
+    "log_sha256": "e70317e8cceea658c11a42ae7b1bcfe879b8ad93d98e0bae974dfadb0bb22716",
+    "summary": [
+      "[main.coverage.1] file /private/tmp/dvbsub-scope/local-proofs/calls.c line 172 function main condition '1 != 0': SATISFIED"
+    ]
+  },
+  {
+    "name": "calls-3-3",
+    "command": [
+      "<tools>/cbmc/cbmc/6.11.0/bin/cbmc",
+      "<out>/calls.c",
+      "-DPATTERN0=3",
+      "-DPATTERN1=3",
+      "--unwind",
+      "20",
+      "--unwinding-assertions",
+      "--bounds-check",
+      "--pointer-check",
+      "--signed-overflow-check",
+      "--conversion-check"
+    ],
+    "exit_code": 0,
+    "expected": 0,
+    "accepted": true,
+    "seconds": 0.188,
+    "log_sha256": "a107af6a6110d87580d763870222e10df179856eacb0df9d842f74259dcf8106",
+    "summary": [
+      "** 0 of 625 failed (1 iterations)",
+      "VERIFICATION SUCCESSFUL"
+    ]
+  },
+  {
+    "name": "reachable-calls-3-3",
+    "command": [
+      "<tools>/cbmc/cbmc/6.11.0/bin/cbmc",
+      "<out>/calls.c",
+      "-DPATTERN0=3",
+      "-DPATTERN1=3",
+      "-DCOVER",
+      "--unwind",
+      "20",
+      "--cover",
+      "cover"
+    ],
+    "exit_code": 0,
+    "expected": 0,
+    "accepted": true,
+    "seconds": 0.238,
+    "log_sha256": "e70317e8cceea658c11a42ae7b1bcfe879b8ad93d98e0bae974dfadb0bb22716",
+    "summary": [
+      "[main.coverage.1] file /private/tmp/dvbsub-scope/local-proofs/calls.c line 172 function main condition '1 != 0': SATISFIED"
+    ]
+  },
+  {
+    "name": "missing-upper-neighbour",
+    "command": [
+      "<tools>/cbmc/cbmc/6.11.0/bin/cbmc",
+      "<out>/predicate.c",
+      "--unwind",
+      "55",
+      "--unwinding-assertions",
+      "--bounds-check",
+      "--pointer-check",
+      "--trace"
+    ],
+    "exit_code": 10,
+    "expected": 10,
+    "accepted": true,
+    "seconds": 0.349,
+    "log_sha256": "62f114a6fdcc136e9e9c35dbd605d81f79319df3044e36bd1573dd7dd5aad2ed",
+    "summary": [
+      "[main.assertion.1] line 18 assertion predicate(p,stride)==scalar: FAILURE",
+      "** 1 of 40 failed (2 iterations)",
+      "VERIFICATION FAILED"
+    ]
+  },
+  {
+    "name": "missing-right-endpoint",
+    "command": [
+      "<tools>/cbmc/cbmc/6.11.0/bin/cbmc",
+      "<out>/predicate.c",
+      "--unwind",
+      "55",
+      "--unwinding-assertions",
+      "--bounds-check",
+      "--pointer-check",
+      "--trace"
+    ],
+    "exit_code": 10,
+    "expected": 10,
+    "accepted": true,
+    "seconds": 0.508,
+    "log_sha256": "d0cd9bd0f9c6355b3ad7b9c59016dfd83fbebd556d065c03cde438a690072726",
+    "summary": [
+      "[main.assertion.1] line 18 assertion predicate(p,stride)==scalar: FAILURE",
+      "** 1 of 40 failed (2 iterations)",
+      "VERIFICATION FAILED"
+    ]
+  },
+  {
+    "name": "coverage-1",
+    "command": [
+      "<tools>/java/jdk-21.0.13+9-jre/Contents/Home/bin/java",
+      "-XX:+UseParallelGC",
+      "-cp",
+      "<tools>/tla2tools.jar",
+      "tlc2.TLC",
+      "-workers",
+      "1",
+      "-seed",
+      "20261103",
+      "-fp",
+      "1",
+      "-metadir",
+      "<out>/states-1",
+      "-config",
+      "<out>/coverage-1.cfg",
+      "<out>/LoopCoverage.tla"
+    ],
+    "exit_code": 0,
+    "expected": 0,
+    "accepted": true,
+    "seconds": 0.737,
+    "log_sha256": "edb77658704e24ce7a8f7f30480667c2f174586d465b80d601cda21b49f1bd2b",
+    "summary": [
+      "Model checking completed. No error has been found.",
+      "3 states generated, 2 distinct states found, 0 states left on queue."
+    ]
+  },
+  {
+    "name": "coverage-2",
+    "command": [
+      "<tools>/java/jdk-21.0.13+9-jre/Contents/Home/bin/java",
+      "-XX:+UseParallelGC",
+      "-cp",
+      "<tools>/tla2tools.jar",
+      "tlc2.TLC",
+      "-workers",
+      "1",
+      "-seed",
+      "20261103",
+      "-fp",
+      "1",
+      "-metadir",
+      "<out>/states-2",
+      "-config",
+      "<out>/coverage-2.cfg",
+      "<out>/LoopCoverage.tla"
+    ],
+    "exit_code": 0,
+    "expected": 0,
+    "accepted": true,
+    "seconds": 0.664,
+    "log_sha256": "7cf0ddbeb566441df6ff642b07eebb6ecec3e52c9239ca756383b60d8573f289",
+    "summary": [
+      "Model checking completed. No error has been found.",
+      "4 states generated, 3 distinct states found, 0 states left on queue."
+    ]
+  },
+  {
+    "name": "coverage-17",
+    "command": [
+      "<tools>/java/jdk-21.0.13+9-jre/Contents/Home/bin/java",
+      "-XX:+UseParallelGC",
+      "-cp",
+      "<tools>/tla2tools.jar",
+      "tlc2.TLC",
+      "-workers",
+      "1",
+      "-seed",
+      "20261103",
+      "-fp",
+      "1",
+      "-metadir",
+      "<out>/states-17",
+      "-config",
+      "<out>/coverage-17.cfg",
+      "<out>/LoopCoverage.tla"
+    ],
+    "exit_code": 0,
+    "expected": 0,
+    "accepted": true,
+    "seconds": 0.626,
+    "log_sha256": "b9a74875d48cb8509752ba3dfceb84911857fa5ec4a2107431f739ab1f61888b",
+    "summary": [
+      "Model checking completed. No error has been found.",
+      "19 states generated, 18 distinct states found, 0 states left on queue."
+    ]
+  },
+  {
+    "name": "coverage-18",
+    "command": [
+      "<tools>/java/jdk-21.0.13+9-jre/Contents/Home/bin/java",
+      "-XX:+UseParallelGC",
+      "-cp",
+      "<tools>/tla2tools.jar",
+      "tlc2.TLC",
+      "-workers",
+      "1",
+      "-seed",
+      "20261103",
+      "-fp",
+      "1",
+      "-metadir",
+      "<out>/states-18",
+      "-config",
+      "<out>/coverage-18.cfg",
+      "<out>/LoopCoverage.tla"
+    ],
+    "exit_code": 0,
+    "expected": 0,
+    "accepted": true,
+    "seconds": 0.626,
+    "log_sha256": "0efe4d81d16be9a97a118d207ddf9ae6e2219b533d33eac59466da0c128fcdc7",
+    "summary": [
+      "Model checking completed. No error has been found.",
+      "21 states generated, 19 distinct states found, 0 states left on queue."
+    ]
+  },
+  {
+    "name": "coverage-19",
+    "command": [
+      "<tools>/java/jdk-21.0.13+9-jre/Contents/Home/bin/java",
+      "-XX:+UseParallelGC",
+      "-cp",
+      "<tools>/tla2tools.jar",
+      "tlc2.TLC",
+      "-workers",
+      "1",
+      "-seed",
+      "20261103",
+      "-fp",
+      "1",
+      "-metadir",
+      "<out>/states-19",
+      "-config",
+      "<out>/coverage-19.cfg",
+      "<out>/LoopCoverage.tla"
+    ],
+    "exit_code": 0,
+    "expected": 0,
+    "accepted": true,
+    "seconds": 0.622,
+    "log_sha256": "4b6475fc4c3758fd2f93ea1eb97d167def2af61414913defbc6cadfcba8fc523",
+    "summary": [
+      "Model checking completed. No error has been found.",
+      "22 states generated, 20 distinct states found, 0 states left on queue."
+    ]
+  },
+  {
+    "name": "coverage-32",
+    "command": [
+      "<tools>/java/jdk-21.0.13+9-jre/Contents/Home/bin/java",
+      "-XX:+UseParallelGC",
+      "-cp",
+      "<tools>/tla2tools.jar",
+      "tlc2.TLC",
+      "-workers",
+      "1",
+      "-seed",
+      "20261103",
+      "-fp",
+      "1",
+      "-metadir",
+      "<out>/states-32",
+      "-config",
+      "<out>/coverage-32.cfg",
+      "<out>/LoopCoverage.tla"
+    ],
+    "exit_code": 0,
+    "expected": 0,
+    "accepted": true,
+    "seconds": 0.664,
+    "log_sha256": "c59ca1bf7fa3da7712dde96d657b540586402d71fa0fcf028a87d38f913d12b5",
+    "summary": [
+      "Model checking completed. No error has been found.",
+      "35 states generated, 33 distinct states found, 0 states left on queue."
+    ]
+  },
+  {
+    "name": "coverage-33",
+    "command": [
+      "<tools>/java/jdk-21.0.13+9-jre/Contents/Home/bin/java",
+      "-XX:+UseParallelGC",
+      "-cp",
+      "<tools>/tla2tools.jar",
+      "tlc2.TLC",
+      "-workers",
+      "1",
+      "-seed",
+      "20261103",
+      "-fp",
+      "1",
+      "-metadir",
+      "<out>/states-33",
+      "-config",
+      "<out>/coverage-33.cfg",
+      "<out>/LoopCoverage.tla"
+    ],
+    "exit_code": 0,
+    "expected": 0,
+    "accepted": true,
+    "seconds": 0.665,
+    "log_sha256": "d9240a4ad84a3ffdf87c62afd52dede0d46fea9738c4b2a6c121be1ec06f6a64",
+    "summary": [
+      "Model checking completed. No error has been found.",
+      "36 states generated, 34 distinct states found, 0 states left on queue."
+    ]
+  },
+  {
+    "name": "coverage-34",
+    "command": [
+      "<tools>/java/jdk-21.0.13+9-jre/Contents/Home/bin/java",
+      "-XX:+UseParallelGC",
+      "-cp",
+      "<tools>/tla2tools.jar",
+      "tlc2.TLC",
+      "-workers",
+      "1",
+      "-seed",
+      "20261103",
+      "-fp",
+      "1",
+      "-metadir",
+      "<out>/states-34",
+      "-config",
+      "<out>/coverage-34.cfg",
+      "<out>/LoopCoverage.tla"
+    ],
+    "exit_code": 0,
+    "expected": 0,
+    "accepted": true,
+    "seconds": 0.657,
+    "log_sha256": "f8cbd4e3cc4afecaa2657155a3da282aed5d43a1838e2ff112b56b98e59dc053",
+    "summary": [
+      "Model checking completed. No error has been found.",
+      "38 states generated, 35 distinct states found, 0 states left on queue."
+    ]
+  },
+  {
+    "name": "coverage-64",
+    "command": [
+      "<tools>/java/jdk-21.0.13+9-jre/Contents/Home/bin/java",
+      "-XX:+UseParallelGC",
+      "-cp",
+      "<tools>/tla2tools.jar",
+      "tlc2.TLC",
+      "-workers",
+      "1",
+      "-seed",
+      "20261103",
+      "-fp",
+      "1",
+      "-metadir",
+      "<out>/states-64",
+      "-config",
+      "<out>/coverage-64.cfg",
+      "<out>/LoopCoverage.tla"
+    ],
+    "exit_code": 0,
+    "expected": 0,
+    "accepted": true,
+    "seconds": 0.662,
+    "log_sha256": "b8572bd958c9008ed7e2e46349598829c7db64d5d352ebe7aa2a5f599167be99",
+    "summary": [
+      "Model checking completed. No error has been found.",
+      "69 states generated, 65 distinct states found, 0 states left on queue."
+    ]
+  },
+  {
+    "name": "coverage-65",
+    "command": [
+      "<tools>/java/jdk-21.0.13+9-jre/Contents/Home/bin/java",
+      "-XX:+UseParallelGC",
+      "-cp",
+      "<tools>/tla2tools.jar",
+      "tlc2.TLC",
+      "-workers",
+      "1",
+      "-seed",
+      "20261103",
+      "-fp",
+      "1",
+      "-metadir",
+      "<out>/states-65",
+      "-config",
+      "<out>/coverage-65.cfg",
+      "<out>/LoopCoverage.tla"
+    ],
+    "exit_code": 0,
+    "expected": 0,
+    "accepted": true,
+    "seconds": 0.657,
+    "log_sha256": "003f76b44cc0a93c63490e08d5eb26563ee291e95628e7800ba7f9a9694bf41d",
+    "summary": [
+      "Model checking completed. No error has been found.",
+      "70 states generated, 66 distinct states found, 0 states left on queue."
+    ]
+  },
+  {
+    "name": "coverage-broken",
+    "command": [
+      "<tools>/java/jdk-21.0.13+9-jre/Contents/Home/bin/java",
+      "-XX:+UseParallelGC",
+      "-cp",
+      "<tools>/tla2tools.jar",
+      "tlc2.TLC",
+      "-workers",
+      "1",
+      "-seed",
+      "20261103",
+      "-fp",
+      "1",
+      "-metadir",
+      "<out>/states-broken",
+      "-config",
+      "<out>/coverage-broken.cfg",
+      "<out>/LoopCoverage.tla"
+    ],
+    "exit_code": 12,
+    "expected": 12,
+    "accepted": true,
+    "seconds": 0.674,
+    "log_sha256": "820878b3908ea47324617c3c8b1ee5a175a057f783124f5cbe0f5e1abda3a21e",
+    "summary": [
+      "Error: Invariant Prefix is violated.",
+      "4 states generated, 4 distinct states found, 1 states left on queue."
+    ]
+  }
+]

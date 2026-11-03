@@ -1,0 +1,9 @@
+{
+  "upstream_sha256": "0271d5d45f080d53b4d16263d52c0d1be04cf0761e164a96a89bf82a1562cc3f",
+  "candidate_sha256": "1fa15c5563350e8cb5874b0c11a2cddabb47c2c1f39c11c8977d9d75d5fca256",
+  "patch_sha256": "a06fd4dfeec107d56dd848b7ccd7ef5130c0a323e02564975a032fa64c39a70f",
+  "outside_compute_unchanged": true,
+  "scratch_and_score_code_unchanged": true,
+  "insertions": 17,
+  "deletions": 1
+}

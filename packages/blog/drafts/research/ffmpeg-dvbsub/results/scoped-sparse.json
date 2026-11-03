@@ -1,0 +1,232 @@
+[
+  {
+    "fixture": "real",
+    "mode": 1,
+    "passes": 100,
+    "rounds": 3,
+    "cpu_seconds": {
+      "upstream": [
+        0.697469,
+        0.676368,
+        0.673158
+      ],
+      "previous": [
+        0.155782,
+        0.155563,
+        0.154664
+      ],
+      "sparse-uniform": [
+        0.162408,
+        0.183031,
+        0.162957
+      ],
+      "sparse-block16": [
+        0.127479,
+        0.130416,
+        0.124811
+      ],
+      "sparse-block32": [
+        0.132655,
+        0.130789,
+        0.129084
+      ],
+      "sparse-block64": [
+        0.140358,
+        0.140978,
+        0.141405
+      ]
+    },
+    "medians": {
+      "upstream": 0.676368,
+      "previous": 0.155563,
+      "sparse-uniform": 0.162957,
+      "sparse-block16": 0.127479,
+      "sparse-block32": 0.130789,
+      "sparse-block64": 0.140978
+    }
+  },
+  {
+    "fixture": "real",
+    "mode": -1,
+    "passes": 1000,
+    "rounds": 3,
+    "cpu_seconds": {
+      "upstream": [
+        0.301934,
+        0.329035,
+        0.340125
+      ],
+      "previous": [
+        0.29268,
+        0.305554,
+        0.342412
+      ],
+      "sparse-uniform": [
+        0.349441,
+        0.309589,
+        0.310524
+      ],
+      "sparse-block16": [
+        0.395954,
+        0.331855,
+        0.334725
+      ],
+      "sparse-block32": [
+        0.336547,
+        0.306926,
+        0.337747
+      ],
+      "sparse-block64": [
+        0.315979,
+        0.306759,
+        0.303393
+      ]
+    },
+    "medians": {
+      "upstream": 0.329035,
+      "previous": 0.305554,
+      "sparse-uniform": 0.310524,
+      "sparse-block16": 0.334725,
+      "sparse-block32": 0.336547,
+      "sparse-block64": 0.306759
+    }
+  },
+  {
+    "fixture": "generated",
+    "mode": 1,
+    "passes": 10,
+    "rounds": 3,
+    "cpu_seconds": {
+      "upstream": [
+        0.863742,
+        0.88214,
+        0.862776
+      ],
+      "previous": [
+        0.128582,
+        0.128193,
+        0.128976
+      ],
+      "sparse-uniform": [
+        0.154884,
+        0.154607,
+        0.161466
+      ],
+      "sparse-block16": [
+        0.135412,
+        0.135832,
+        0.140821
+      ],
+      "sparse-block32": [
+        0.136448,
+        0.136358,
+        0.143055
+      ],
+      "sparse-block64": [
+        0.138952,
+        0.138508,
+        0.144633
+      ]
+    },
+    "medians": {
+      "upstream": 0.863742,
+      "previous": 0.128582,
+      "sparse-uniform": 0.154884,
+      "sparse-block16": 0.135832,
+      "sparse-block32": 0.136448,
+      "sparse-block64": 0.138952
+    }
+  },
+  {
+    "fixture": "generated",
+    "mode": -1,
+    "passes": 10,
+    "rounds": 3,
+    "cpu_seconds": {
+      "upstream": [
+        0.436234,
+        0.446211,
+        0.471869
+      ],
+      "previous": [
+        0.079598,
+        0.079355,
+        0.088718
+      ],
+      "sparse-uniform": [
+        0.09311,
+        0.092833,
+        0.092673
+      ],
+      "sparse-block16": [
+        0.083061,
+        0.082495,
+        0.082435
+      ],
+      "sparse-block32": [
+        0.086505,
+        0.083102,
+        0.08543
+      ],
+      "sparse-block64": [
+        0.086591,
+        0.084479,
+        0.083515
+      ]
+    },
+    "medians": {
+      "upstream": 0.446211,
+      "previous": 0.079598,
+      "sparse-uniform": 0.092833,
+      "sparse-block16": 0.082495,
+      "sparse-block32": 0.08543,
+      "sparse-block64": 0.084479
+    }
+  },
+  {
+    "fixture": "generated",
+    "mode": 0,
+    "passes": 10,
+    "rounds": 3,
+    "cpu_seconds": {
+      "upstream": [
+        0.032782,
+        0.031256,
+        0.030825
+      ],
+      "previous": [
+        0.032402,
+        0.032293,
+        0.031533
+      ],
+      "sparse-uniform": [
+        0.033222,
+        0.032992,
+        0.03134
+      ],
+      "sparse-block16": [
+        0.034533,
+        0.032599,
+        0.033639
+      ],
+      "sparse-block32": [
+        0.032853,
+        0.032015,
+        0.035792
+      ],
+      "sparse-block64": [
+        0.033915,
+        0.031508,
+        0.029612
+      ]
+    },
+    "medians": {
+      "upstream": 0.031256,
+      "previous": 0.032293,
+      "sparse-uniform": 0.032992,
+      "sparse-block16": 0.033639,
+      "sparse-block32": 0.032853,
+      "sparse-block64": 0.031508
+    }
+  }
+]

@@ -1,0 +1,7 @@
+{
+  "tested_source_sha256": "7dbed1575de51dd805319b86298a24e17b43481df23e943d7f04e1fae68e9654",
+  "final_source_sha256": "2b314b26b0fcf08f2e2b6fdc18a73cce90b910c4353fe327258bb48083661b2c",
+  "only_change": "Doxygen opening marker on private array comment",
+  "preprocessed_translation_units_identical": true,
+  "preprocessed_sha256": "a4ecca2e5c4580f9db980dc4d730b46cf9dc7b752ba0ea417201e809ce02e514"
+}

@@ -1,0 +1,34 @@
+--- a/libavcodec/dvbsubdec.c
++++ b/libavcodec/dvbsubdec.c
+@@ -678,6 +678,13 @@
+     int count, i, x, y;
+     ptrdiff_t stride = rect->linesize[0];
+ 
++    /* A uniform bitmap selects one colour and writes a zero palette entry. */
++    if (w > 0 && h > 0 && stride == w &&
++        !memcmp(rect->data[0], rect->data[0] + 1, (size_t)w * h - 1)) {
++        AV_WN32(clut + 4 * rect->data[0][0], 0);
++        return;
++    }
++
+     memset(ctx->clut_count2, 0 , sizeof(ctx->clut_count2));
+ 
+ #define V(x,y) rect->data[0][(x) + (y)*stride]
+@@ -688,7 +695,16 @@
+             int vr = x+1<w ? V(x+1,y) + 1 : 0;
+             int vt = y     ? V(x,y-1) + 1 : 0;
+             int vb = y+1<h ? V(x,y+1) + 1 : 0;
+-            counttab[v-1] += !!((v!=vl) + (v!=vr) + (v!=vt) + (v!=vb));
++            /* Interior pixels only add diagonal counts, cleared below. */
++            if (!((v != vl) | (v != vr) | (v != vt) | (v != vb))) {
++                if (w - x > 16 && !((x - 1) & 15) &&
++                    !memcmp(&V(x-1,y), &V(x,y), 17) &&
++                    !memcmp(&V(x,y), &V(x,y-1), 16) &&
++                    !memcmp(&V(x,y), &V(x,y+1), 16))
++                    x += 15;
++                continue;
++            }
++            counttab[v-1]++;
+             counttab2[vl][v-1] ++;
+             counttab2[vr][v-1] ++;
+             counttab2[vt][v-1] ++;

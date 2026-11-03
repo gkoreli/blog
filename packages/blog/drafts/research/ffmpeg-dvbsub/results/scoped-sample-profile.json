@@ -1,0 +1,10 @@
+{
+  "dump_sha256": "41f98f2fc0d5a61525e29692049020a594f51a3193619fb8829ab990d7b295a0",
+  "rectangles": 66,
+  "uniform_rectangles": 0,
+  "interior_rows": 2244,
+  "fully_uniform_neighbourhood_rows": 0,
+  "dimensions": {
+    "720x36": 66
+  }
+}

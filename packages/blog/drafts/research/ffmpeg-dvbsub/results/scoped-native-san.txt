@@ -1,0 +1,1 @@
+PASS 96758 bitmap cases, palettes and active adjacency rows (except uniform fast returns); seed=1938705867

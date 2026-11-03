@@ -1,0 +1,954 @@
+[
+  {
+    "name": "predicate",
+    "command": [
+      "<tools>/cbmc/cbmc/6.11.0/bin/cbmc",
+      "<out>/predicate.c",
+      "--unwind",
+      "55",
+      "--unwinding-assertions",
+      "--bounds-check",
+      "--pointer-check",
+      "--signed-overflow-check",
+      "--conversion-check"
+    ],
+    "exit_code": 0,
+    "expected": 0,
+    "accepted": true,
+    "seconds": 0.616,
+    "log_sha256": "16b3816266dfee77838111af5ea8ba3a0f5025cc7063494ae39251f9faea7df8",
+    "summary": [
+      "** 0 of 40 failed (1 iterations)",
+      "VERIFICATION SUCCESSFUL"
+    ]
+  },
+  {
+    "name": "reachable-predicate",
+    "command": [
+      "<tools>/cbmc/cbmc/6.11.0/bin/cbmc",
+      "<out>/predicate.c",
+      "-DCOVER",
+      "--unwind",
+      "55",
+      "--cover",
+      "cover"
+    ],
+    "exit_code": 0,
+    "expected": 0,
+    "accepted": true,
+    "seconds": 0.608,
+    "log_sha256": "3f3250dede267c3dd4f11dc444a3f713a58644cdc8164c50509968580cd3249b",
+    "summary": [
+      "[main.coverage.1] file /private/tmp/dvbsub-scope/proofs-accepted/predicate.c line 18 function main condition '1 != 0': SATISFIED"
+    ]
+  },
+  {
+    "name": "bounds",
+    "command": [
+      "<tools>/cbmc/cbmc/6.11.0/bin/cbmc",
+      "<out>/bounds.c",
+      "--unwind",
+      "2",
+      "--unwinding-assertions",
+      "--bounds-check",
+      "--pointer-check",
+      "--signed-overflow-check",
+      "--conversion-check"
+    ],
+    "exit_code": 0,
+    "expected": 0,
+    "accepted": true,
+    "seconds": 1.653,
+    "log_sha256": "2b3ee5fafb58339f2f78fe2267c918fc29f9bf29371acfb2f3f8d9a303b5f7a7",
+    "summary": [
+      "** 0 of 14 failed (1 iterations)",
+      "VERIFICATION SUCCESSFUL"
+    ]
+  },
+  {
+    "name": "reachable-bounds",
+    "command": [
+      "<tools>/cbmc/cbmc/6.11.0/bin/cbmc",
+      "<out>/bounds.c",
+      "-DCOVER",
+      "--unwind",
+      "2",
+      "--cover",
+      "cover"
+    ],
+    "exit_code": 0,
+    "expected": 0,
+    "accepted": true,
+    "seconds": 0.13,
+    "log_sha256": "58413862a0605915699246298a34b2777ed8ff7e1e9f6de03d50785dffa8c099",
+    "summary": [
+      "[main.coverage.1] file /private/tmp/dvbsub-scope/proofs-accepted/bounds.c line 18 function main condition '1 != 0': SATISFIED"
+    ]
+  },
+  {
+    "name": "calls-0-0",
+    "command": [
+      "<tools>/cbmc/cbmc/6.11.0/bin/cbmc",
+      "<out>/calls.c",
+      "-DPATTERN0=0",
+      "-DPATTERN1=0",
+      "--unwind",
+      "20",
+      "--unwinding-assertions",
+      "--bounds-check",
+      "--pointer-check",
+      "--signed-overflow-check",
+      "--conversion-check"
+    ],
+    "exit_code": 0,
+    "expected": 0,
+    "accepted": true,
+    "seconds": 0.185,
+    "log_sha256": "cb184a054a6f87c98be2d52dd3478e7b379f85b964cfb872ee97dd25d194aa07",
+    "summary": [
+      "** 0 of 598 failed (1 iterations)",
+      "VERIFICATION SUCCESSFUL"
+    ]
+  },
+  {
+    "name": "reachable-calls-0-0",
+    "command": [
+      "<tools>/cbmc/cbmc/6.11.0/bin/cbmc",
+      "<out>/calls.c",
+      "-DPATTERN0=0",
+      "-DPATTERN1=0",
+      "-DCOVER",
+      "--unwind",
+      "20",
+      "--cover",
+      "cover"
+    ],
+    "exit_code": 0,
+    "expected": 0,
+    "accepted": true,
+    "seconds": 0.243,
+    "log_sha256": "3d31a9d87716429e9fde601434c3210af49f313d592b767fb762818c704afe67",
+    "summary": [
+      "[main.coverage.1] file /private/tmp/dvbsub-scope/proofs-accepted/calls.c line 176 function main condition '1 != 0': SATISFIED"
+    ]
+  },
+  {
+    "name": "calls-0-1",
+    "command": [
+      "<tools>/cbmc/cbmc/6.11.0/bin/cbmc",
+      "<out>/calls.c",
+      "-DPATTERN0=0",
+      "-DPATTERN1=1",
+      "--unwind",
+      "20",
+      "--unwinding-assertions",
+      "--bounds-check",
+      "--pointer-check",
+      "--signed-overflow-check",
+      "--conversion-check"
+    ],
+    "exit_code": 0,
+    "expected": 0,
+    "accepted": true,
+    "seconds": 0.183,
+    "log_sha256": "55d9e98147cf204e0183b376bf82703080a37d4f4dc508a0d306f81325cf3145",
+    "summary": [
+      "** 0 of 598 failed (1 iterations)",
+      "VERIFICATION SUCCESSFUL"
+    ]
+  },
+  {
+    "name": "reachable-calls-0-1",
+    "command": [
+      "<tools>/cbmc/cbmc/6.11.0/bin/cbmc",
+      "<out>/calls.c",
+      "-DPATTERN0=0",
+      "-DPATTERN1=1",
+      "-DCOVER",
+      "--unwind",
+      "20",
+      "--cover",
+      "cover"
+    ],
+    "exit_code": 0,
+    "expected": 0,
+    "accepted": true,
+    "seconds": 0.238,
+    "log_sha256": "3d31a9d87716429e9fde601434c3210af49f313d592b767fb762818c704afe67",
+    "summary": [
+      "[main.coverage.1] file /private/tmp/dvbsub-scope/proofs-accepted/calls.c line 176 function main condition '1 != 0': SATISFIED"
+    ]
+  },
+  {
+    "name": "calls-0-2",
+    "command": [
+      "<tools>/cbmc/cbmc/6.11.0/bin/cbmc",
+      "<out>/calls.c",
+      "-DPATTERN0=0",
+      "-DPATTERN1=2",
+      "--unwind",
+      "20",
+      "--unwinding-assertions",
+      "--bounds-check",
+      "--pointer-check",
+      "--signed-overflow-check",
+      "--conversion-check"
+    ],
+    "exit_code": 0,
+    "expected": 0,
+    "accepted": true,
+    "seconds": 0.181,
+    "log_sha256": "52be67f279e19a53cb5340464203295625a82a403f5411153b22202ac8e0a9de",
+    "summary": [
+      "** 0 of 598 failed (1 iterations)",
+      "VERIFICATION SUCCESSFUL"
+    ]
+  },
+  {
+    "name": "reachable-calls-0-2",
+    "command": [
+      "<tools>/cbmc/cbmc/6.11.0/bin/cbmc",
+      "<out>/calls.c",
+      "-DPATTERN0=0",
+      "-DPATTERN1=2",
+      "-DCOVER",
+      "--unwind",
+      "20",
+      "--cover",
+      "cover"
+    ],
+    "exit_code": 0,
+    "expected": 0,
+    "accepted": true,
+    "seconds": 0.238,
+    "log_sha256": "3d31a9d87716429e9fde601434c3210af49f313d592b767fb762818c704afe67",
+    "summary": [
+      "[main.coverage.1] file /private/tmp/dvbsub-scope/proofs-accepted/calls.c line 176 function main condition '1 != 0': SATISFIED"
+    ]
+  },
+  {
+    "name": "calls-0-3",
+    "command": [
+      "<tools>/cbmc/cbmc/6.11.0/bin/cbmc",
+      "<out>/calls.c",
+      "-DPATTERN0=0",
+      "-DPATTERN1=3",
+      "--unwind",
+      "20",
+      "--unwinding-assertions",
+      "--bounds-check",
+      "--pointer-check",
+      "--signed-overflow-check",
+      "--conversion-check"
+    ],
+    "exit_code": 0,
+    "expected": 0,
+    "accepted": true,
+    "seconds": 0.183,
+    "log_sha256": "92f200e95a724bc6c4ce797faeb92d3947fafb5f090df5c6e8d4c86dce472e9a",
+    "summary": [
+      "** 0 of 598 failed (1 iterations)",
+      "VERIFICATION SUCCESSFUL"
+    ]
+  },
+  {
+    "name": "reachable-calls-0-3",
+    "command": [
+      "<tools>/cbmc/cbmc/6.11.0/bin/cbmc",
+      "<out>/calls.c",
+      "-DPATTERN0=0",
+      "-DPATTERN1=3",
+      "-DCOVER",
+      "--unwind",
+      "20",
+      "--cover",
+      "cover"
+    ],
+    "exit_code": 0,
+    "expected": 0,
+    "accepted": true,
+    "seconds": 0.234,
+    "log_sha256": "3d31a9d87716429e9fde601434c3210af49f313d592b767fb762818c704afe67",
+    "summary": [
+      "[main.coverage.1] file /private/tmp/dvbsub-scope/proofs-accepted/calls.c line 176 function main condition '1 != 0': SATISFIED"
+    ]
+  },
+  {
+    "name": "calls-1-0",
+    "command": [
+      "<tools>/cbmc/cbmc/6.11.0/bin/cbmc",
+      "<out>/calls.c",
+      "-DPATTERN0=1",
+      "-DPATTERN1=0",
+      "--unwind",
+      "20",
+      "--unwinding-assertions",
+      "--bounds-check",
+      "--pointer-check",
+      "--signed-overflow-check",
+      "--conversion-check"
+    ],
+    "exit_code": 0,
+    "expected": 0,
+    "accepted": true,
+    "seconds": 0.238,
+    "log_sha256": "33b4340310ec8219b433b6587faccc30604f01b128a9ef785d8ac0fd8623d521",
+    "summary": [
+      "** 0 of 598 failed (1 iterations)",
+      "VERIFICATION SUCCESSFUL"
+    ]
+  },
+  {
+    "name": "reachable-calls-1-0",
+    "command": [
+      "<tools>/cbmc/cbmc/6.11.0/bin/cbmc",
+      "<out>/calls.c",
+      "-DPATTERN0=1",
+      "-DPATTERN1=0",
+      "-DCOVER",
+      "--unwind",
+      "20",
+      "--cover",
+      "cover"
+    ],
+    "exit_code": 0,
+    "expected": 0,
+    "accepted": true,
+    "seconds": 0.237,
+    "log_sha256": "3d31a9d87716429e9fde601434c3210af49f313d592b767fb762818c704afe67",
+    "summary": [
+      "[main.coverage.1] file /private/tmp/dvbsub-scope/proofs-accepted/calls.c line 176 function main condition '1 != 0': SATISFIED"
+    ]
+  },
+  {
+    "name": "calls-1-1",
+    "command": [
+      "<tools>/cbmc/cbmc/6.11.0/bin/cbmc",
+      "<out>/calls.c",
+      "-DPATTERN0=1",
+      "-DPATTERN1=1",
+      "--unwind",
+      "20",
+      "--unwinding-assertions",
+      "--bounds-check",
+      "--pointer-check",
+      "--signed-overflow-check",
+      "--conversion-check"
+    ],
+    "exit_code": 0,
+    "expected": 0,
+    "accepted": true,
+    "seconds": 0.18,
+    "log_sha256": "22baf9dc86c100a487ab0fa9c540d75ddb26ec0ad6e1ca2ff9476eba6dca26d1",
+    "summary": [
+      "** 0 of 598 failed (1 iterations)",
+      "VERIFICATION SUCCESSFUL"
+    ]
+  },
+  {
+    "name": "reachable-calls-1-1",
+    "command": [
+      "<tools>/cbmc/cbmc/6.11.0/bin/cbmc",
+      "<out>/calls.c",
+      "-DPATTERN0=1",
+      "-DPATTERN1=1",
+      "-DCOVER",
+      "--unwind",
+      "20",
+      "--cover",
+      "cover"
+    ],
+    "exit_code": 0,
+    "expected": 0,
+    "accepted": true,
+    "seconds": 0.237,
+    "log_sha256": "3d31a9d87716429e9fde601434c3210af49f313d592b767fb762818c704afe67",
+    "summary": [
+      "[main.coverage.1] file /private/tmp/dvbsub-scope/proofs-accepted/calls.c line 176 function main condition '1 != 0': SATISFIED"
+    ]
+  },
+  {
+    "name": "calls-1-2",
+    "command": [
+      "<tools>/cbmc/cbmc/6.11.0/bin/cbmc",
+      "<out>/calls.c",
+      "-DPATTERN0=1",
+      "-DPATTERN1=2",
+      "--unwind",
+      "20",
+      "--unwinding-assertions",
+      "--bounds-check",
+      "--pointer-check",
+      "--signed-overflow-check",
+      "--conversion-check"
+    ],
+    "exit_code": 0,
+    "expected": 0,
+    "accepted": true,
+    "seconds": 0.178,
+    "log_sha256": "8a923c994a47160627ebfde53bfc1a6b5c2937521bf2bc0294afe8537adae2a3",
+    "summary": [
+      "** 0 of 598 failed (1 iterations)",
+      "VERIFICATION SUCCESSFUL"
+    ]
+  },
+  {
+    "name": "reachable-calls-1-2",
+    "command": [
+      "<tools>/cbmc/cbmc/6.11.0/bin/cbmc",
+      "<out>/calls.c",
+      "-DPATTERN0=1",
+      "-DPATTERN1=2",
+      "-DCOVER",
+      "--unwind",
+      "20",
+      "--cover",
+      "cover"
+    ],
+    "exit_code": 0,
+    "expected": 0,
+    "accepted": true,
+    "seconds": 0.236,
+    "log_sha256": "3d31a9d87716429e9fde601434c3210af49f313d592b767fb762818c704afe67",
+    "summary": [
+      "[main.coverage.1] file /private/tmp/dvbsub-scope/proofs-accepted/calls.c line 176 function main condition '1 != 0': SATISFIED"
+    ]
+  },
+  {
+    "name": "calls-1-3",
+    "command": [
+      "<tools>/cbmc/cbmc/6.11.0/bin/cbmc",
+      "<out>/calls.c",
+      "-DPATTERN0=1",
+      "-DPATTERN1=3",
+      "--unwind",
+      "20",
+      "--unwinding-assertions",
+      "--bounds-check",
+      "--pointer-check",
+      "--signed-overflow-check",
+      "--conversion-check"
+    ],
+    "exit_code": 0,
+    "expected": 0,
+    "accepted": true,
+    "seconds": 0.179,
+    "log_sha256": "ae422feaf7e42da16a76396cef223df84aebcfe5373a0686b8670d4a664fa720",
+    "summary": [
+      "** 0 of 598 failed (1 iterations)",
+      "VERIFICATION SUCCESSFUL"
+    ]
+  },
+  {
+    "name": "reachable-calls-1-3",
+    "command": [
+      "<tools>/cbmc/cbmc/6.11.0/bin/cbmc",
+      "<out>/calls.c",
+      "-DPATTERN0=1",
+      "-DPATTERN1=3",
+      "-DCOVER",
+      "--unwind",
+      "20",
+      "--cover",
+      "cover"
+    ],
+    "exit_code": 0,
+    "expected": 0,
+    "accepted": true,
+    "seconds": 0.235,
+    "log_sha256": "3d31a9d87716429e9fde601434c3210af49f313d592b767fb762818c704afe67",
+    "summary": [
+      "[main.coverage.1] file /private/tmp/dvbsub-scope/proofs-accepted/calls.c line 176 function main condition '1 != 0': SATISFIED"
+    ]
+  },
+  {
+    "name": "calls-2-0",
+    "command": [
+      "<tools>/cbmc/cbmc/6.11.0/bin/cbmc",
+      "<out>/calls.c",
+      "-DPATTERN0=2",
+      "-DPATTERN1=0",
+      "--unwind",
+      "20",
+      "--unwinding-assertions",
+      "--bounds-check",
+      "--pointer-check",
+      "--signed-overflow-check",
+      "--conversion-check"
+    ],
+    "exit_code": 0,
+    "expected": 0,
+    "accepted": true,
+    "seconds": 0.182,
+    "log_sha256": "77775c9c4875d8002ae903a216a26a0d4d9ec50d7dd3e4c78271eac003f2c5cd",
+    "summary": [
+      "** 0 of 598 failed (1 iterations)",
+      "VERIFICATION SUCCESSFUL"
+    ]
+  },
+  {
+    "name": "reachable-calls-2-0",
+    "command": [
+      "<tools>/cbmc/cbmc/6.11.0/bin/cbmc",
+      "<out>/calls.c",
+      "-DPATTERN0=2",
+      "-DPATTERN1=0",
+      "-DCOVER",
+      "--unwind",
+      "20",
+      "--cover",
+      "cover"
+    ],
+    "exit_code": 0,
+    "expected": 0,
+    "accepted": true,
+    "seconds": 0.238,
+    "log_sha256": "3d31a9d87716429e9fde601434c3210af49f313d592b767fb762818c704afe67",
+    "summary": [
+      "[main.coverage.1] file /private/tmp/dvbsub-scope/proofs-accepted/calls.c line 176 function main condition '1 != 0': SATISFIED"
+    ]
+  },
+  {
+    "name": "calls-2-1",
+    "command": [
+      "<tools>/cbmc/cbmc/6.11.0/bin/cbmc",
+      "<out>/calls.c",
+      "-DPATTERN0=2",
+      "-DPATTERN1=1",
+      "--unwind",
+      "20",
+      "--unwinding-assertions",
+      "--bounds-check",
+      "--pointer-check",
+      "--signed-overflow-check",
+      "--conversion-check"
+    ],
+    "exit_code": 0,
+    "expected": 0,
+    "accepted": true,
+    "seconds": 0.185,
+    "log_sha256": "7b9dabb45a2ac10348f07accd6f3c6eaaf4e7529a935392820ee3efbea8e85a4",
+    "summary": [
+      "** 0 of 598 failed (1 iterations)",
+      "VERIFICATION SUCCESSFUL"
+    ]
+  },
+  {
+    "name": "reachable-calls-2-1",
+    "command": [
+      "<tools>/cbmc/cbmc/6.11.0/bin/cbmc",
+      "<out>/calls.c",
+      "-DPATTERN0=2",
+      "-DPATTERN1=1",
+      "-DCOVER",
+      "--unwind",
+      "20",
+      "--cover",
+      "cover"
+    ],
+    "exit_code": 0,
+    "expected": 0,
+    "accepted": true,
+    "seconds": 0.236,
+    "log_sha256": "3d31a9d87716429e9fde601434c3210af49f313d592b767fb762818c704afe67",
+    "summary": [
+      "[main.coverage.1] file /private/tmp/dvbsub-scope/proofs-accepted/calls.c line 176 function main condition '1 != 0': SATISFIED"
+    ]
+  },
+  {
+    "name": "calls-2-2",
+    "command": [
+      "<tools>/cbmc/cbmc/6.11.0/bin/cbmc",
+      "<out>/calls.c",
+      "-DPATTERN0=2",
+      "-DPATTERN1=2",
+      "--unwind",
+      "20",
+      "--unwinding-assertions",
+      "--bounds-check",
+      "--pointer-check",
+      "--signed-overflow-check",
+      "--conversion-check"
+    ],
+    "exit_code": 0,
+    "expected": 0,
+    "accepted": true,
+    "seconds": 0.185,
+    "log_sha256": "9622788477b90cbcab6ea47321ac401351f72c800cff4ffd61910b9c8e1305e0",
+    "summary": [
+      "** 0 of 598 failed (1 iterations)",
+      "VERIFICATION SUCCESSFUL"
+    ]
+  },
+  {
+    "name": "reachable-calls-2-2",
+    "command": [
+      "<tools>/cbmc/cbmc/6.11.0/bin/cbmc",
+      "<out>/calls.c",
+      "-DPATTERN0=2",
+      "-DPATTERN1=2",
+      "-DCOVER",
+      "--unwind",
+      "20",
+      "--cover",
+      "cover"
+    ],
+    "exit_code": 0,
+    "expected": 0,
+    "accepted": true,
+    "seconds": 0.234,
+    "log_sha256": "3d31a9d87716429e9fde601434c3210af49f313d592b767fb762818c704afe67",
+    "summary": [
+      "[main.coverage.1] file /private/tmp/dvbsub-scope/proofs-accepted/calls.c line 176 function main condition '1 != 0': SATISFIED"
+    ]
+  },
+  {
+    "name": "calls-2-3",
+    "command": [
+      "<tools>/cbmc/cbmc/6.11.0/bin/cbmc",
+      "<out>/calls.c",
+      "-DPATTERN0=2",
+      "-DPATTERN1=3",
+      "--unwind",
+      "20",
+      "--unwinding-assertions",
+      "--bounds-check",
+      "--pointer-check",
+      "--signed-overflow-check",
+      "--conversion-check"
+    ],
+    "exit_code": 0,
+    "expected": 0,
+    "accepted": true,
+    "seconds": 0.186,
+    "log_sha256": "87b4f2c89db81de5c3aa47d3d600b0079214b76dfa64e91b88a9e07a2eefa561",
+    "summary": [
+      "** 0 of 598 failed (1 iterations)",
+      "VERIFICATION SUCCESSFUL"
+    ]
+  },
+  {
+    "name": "reachable-calls-2-3",
+    "command": [
+      "<tools>/cbmc/cbmc/6.11.0/bin/cbmc",
+      "<out>/calls.c",
+      "-DPATTERN0=2",
+      "-DPATTERN1=3",
+      "-DCOVER",
+      "--unwind",
+      "20",
+      "--cover",
+      "cover"
+    ],
+    "exit_code": 0,
+    "expected": 0,
+    "accepted": true,
+    "seconds": 0.239,
+    "log_sha256": "3d31a9d87716429e9fde601434c3210af49f313d592b767fb762818c704afe67",
+    "summary": [
+      "[main.coverage.1] file /private/tmp/dvbsub-scope/proofs-accepted/calls.c line 176 function main condition '1 != 0': SATISFIED"
+    ]
+  },
+  {
+    "name": "calls-3-0",
+    "command": [
+      "<tools>/cbmc/cbmc/6.11.0/bin/cbmc",
+      "<out>/calls.c",
+      "-DPATTERN0=3",
+      "-DPATTERN1=0",
+      "--unwind",
+      "20",
+      "--unwinding-assertions",
+      "--bounds-check",
+      "--pointer-check",
+      "--signed-overflow-check",
+      "--conversion-check"
+    ],
+    "exit_code": 0,
+    "expected": 0,
+    "accepted": true,
+    "seconds": 0.183,
+    "log_sha256": "cc8a2189bc0ea278398bc81c14c878b6a952f2f75a6df92f425f807313ea0bfe",
+    "summary": [
+      "** 0 of 598 failed (1 iterations)",
+      "VERIFICATION SUCCESSFUL"
+    ]
+  },
+  {
+    "name": "reachable-calls-3-0",
+    "command": [
+      "<tools>/cbmc/cbmc/6.11.0/bin/cbmc",
+      "<out>/calls.c",
+      "-DPATTERN0=3",
+      "-DPATTERN1=0",
+      "-DCOVER",
+      "--unwind",
+      "20",
+      "--cover",
+      "cover"
+    ],
+    "exit_code": 0,
+    "expected": 0,
+    "accepted": true,
+    "seconds": 0.242,
+    "log_sha256": "3d31a9d87716429e9fde601434c3210af49f313d592b767fb762818c704afe67",
+    "summary": [
+      "[main.coverage.1] file /private/tmp/dvbsub-scope/proofs-accepted/calls.c line 176 function main condition '1 != 0': SATISFIED"
+    ]
+  },
+  {
+    "name": "calls-3-1",
+    "command": [
+      "<tools>/cbmc/cbmc/6.11.0/bin/cbmc",
+      "<out>/calls.c",
+      "-DPATTERN0=3",
+      "-DPATTERN1=1",
+      "--unwind",
+      "20",
+      "--unwinding-assertions",
+      "--bounds-check",
+      "--pointer-check",
+      "--signed-overflow-check",
+      "--conversion-check"
+    ],
+    "exit_code": 0,
+    "expected": 0,
+    "accepted": true,
+    "seconds": 0.188,
+    "log_sha256": "c7ee8bff26814288d07e8073469e717a48d28758cee831fb85ae43c8b1627e58",
+    "summary": [
+      "** 0 of 598 failed (1 iterations)",
+      "VERIFICATION SUCCESSFUL"
+    ]
+  },
+  {
+    "name": "reachable-calls-3-1",
+    "command": [
+      "<tools>/cbmc/cbmc/6.11.0/bin/cbmc",
+      "<out>/calls.c",
+      "-DPATTERN0=3",
+      "-DPATTERN1=1",
+      "-DCOVER",
+      "--unwind",
+      "20",
+      "--cover",
+      "cover"
+    ],
+    "exit_code": 0,
+    "expected": 0,
+    "accepted": true,
+    "seconds": 0.242,
+    "log_sha256": "3d31a9d87716429e9fde601434c3210af49f313d592b767fb762818c704afe67",
+    "summary": [
+      "[main.coverage.1] file /private/tmp/dvbsub-scope/proofs-accepted/calls.c line 176 function main condition '1 != 0': SATISFIED"
+    ]
+  },
+  {
+    "name": "calls-3-2",
+    "command": [
+      "<tools>/cbmc/cbmc/6.11.0/bin/cbmc",
+      "<out>/calls.c",
+      "-DPATTERN0=3",
+      "-DPATTERN1=2",
+      "--unwind",
+      "20",
+      "--unwinding-assertions",
+      "--bounds-check",
+      "--pointer-check",
+      "--signed-overflow-check",
+      "--conversion-check"
+    ],
+    "exit_code": 0,
+    "expected": 0,
+    "accepted": true,
+    "seconds": 0.18,
+    "log_sha256": "673fa7719342d04b826b267dd6113a45537c1c8161affeab040e289512bc3406",
+    "summary": [
+      "** 0 of 598 failed (1 iterations)",
+      "VERIFICATION SUCCESSFUL"
+    ]
+  },
+  {
+    "name": "reachable-calls-3-2",
+    "command": [
+      "<tools>/cbmc/cbmc/6.11.0/bin/cbmc",
+      "<out>/calls.c",
+      "-DPATTERN0=3",
+      "-DPATTERN1=2",
+      "-DCOVER",
+      "--unwind",
+      "20",
+      "--cover",
+      "cover"
+    ],
+    "exit_code": 0,
+    "expected": 0,
+    "accepted": true,
+    "seconds": 0.237,
+    "log_sha256": "3d31a9d87716429e9fde601434c3210af49f313d592b767fb762818c704afe67",
+    "summary": [
+      "[main.coverage.1] file /private/tmp/dvbsub-scope/proofs-accepted/calls.c line 176 function main condition '1 != 0': SATISFIED"
+    ]
+  },
+  {
+    "name": "calls-3-3",
+    "command": [
+      "<tools>/cbmc/cbmc/6.11.0/bin/cbmc",
+      "<out>/calls.c",
+      "-DPATTERN0=3",
+      "-DPATTERN1=3",
+      "--unwind",
+      "20",
+      "--unwinding-assertions",
+      "--bounds-check",
+      "--pointer-check",
+      "--signed-overflow-check",
+      "--conversion-check"
+    ],
+    "exit_code": 0,
+    "expected": 0,
+    "accepted": true,
+    "seconds": 0.233,
+    "log_sha256": "0a8d567cbbb62dc271c1525b30cac44e246458706d74f01ed3d7d7b7fecfe0e9",
+    "summary": [
+      "** 0 of 598 failed (1 iterations)",
+      "VERIFICATION SUCCESSFUL"
+    ]
+  },
+  {
+    "name": "reachable-calls-3-3",
+    "command": [
+      "<tools>/cbmc/cbmc/6.11.0/bin/cbmc",
+      "<out>/calls.c",
+      "-DPATTERN0=3",
+      "-DPATTERN1=3",
+      "-DCOVER",
+      "--unwind",
+      "20",
+      "--cover",
+      "cover"
+    ],
+    "exit_code": 0,
+    "expected": 0,
+    "accepted": true,
+    "seconds": 0.293,
+    "log_sha256": "3d31a9d87716429e9fde601434c3210af49f313d592b767fb762818c704afe67",
+    "summary": [
+      "[main.coverage.1] file /private/tmp/dvbsub-scope/proofs-accepted/calls.c line 176 function main condition '1 != 0': SATISFIED"
+    ]
+  },
+  {
+    "name": "missing-upper-neighbour",
+    "command": [
+      "<tools>/cbmc/cbmc/6.11.0/bin/cbmc",
+      "<out>/predicate.c",
+      "--unwind",
+      "55",
+      "--unwinding-assertions",
+      "--bounds-check",
+      "--pointer-check",
+      "--trace"
+    ],
+    "exit_code": 10,
+    "expected": 10,
+    "accepted": true,
+    "seconds": 0.402,
+    "log_sha256": "ecdc8843b1d7b1f62a43c42d2b6848d9aa3f052036081e6a6a1b38bac6420044",
+    "summary": [
+      "[main.assertion.1] line 18 assertion predicate(p,stride)==scalar: FAILURE",
+      "** 1 of 40 failed (2 iterations)",
+      "VERIFICATION FAILED"
+    ]
+  },
+  {
+    "name": "missing-row-clear",
+    "command": [
+      "<tools>/cbmc/cbmc/6.11.0/bin/cbmc",
+      "<out>/calls.c",
+      "-DPATTERN0=0",
+      "-DPATTERN1=1",
+      "--unwind",
+      "20",
+      "--unwinding-assertions",
+      "--bounds-check",
+      "--pointer-check",
+      "--trace"
+    ],
+    "exit_code": 10,
+    "expected": 10,
+    "accepted": true,
+    "seconds": 0.891,
+    "log_sha256": "c362b6b503549bd5e5097d9c5adc5620c29a9189b64e2358d4651fd9956b8622",
+    "summary": [
+      "[candidate.overflow.34] line 123 arithmetic overflow on signed + in counttab2[(signed long int)(v - 1)][(signed long int)(vl != 0 ? vl - 1 : 2)] + 1: FAILURE",
+      "[candidate.overflow.37] line 124 arithmetic overflow on signed + in counttab2[(signed long int)(v - 1)][(signed long int)(vr != 0 ? vr - 1 : 2)] + 1: FAILURE",
+      "[candidate.overflow.40] line 125 arithmetic overflow on signed + in counttab2[(signed long int)(v - 1)][(signed long int)(vt != 0 ? vt - 1 : 2)] + 1: FAILURE",
+      "[candidate.overflow.43] line 126 arithmetic overflow on signed + in counttab2[(signed long int)(v - 1)][(signed long int)(vb != 0 ? vb - 1 : 2)] + 1: FAILURE",
+      "[candidate.division-by-zero.1] line 145 division by zero in (1024ll * (signed long int)scorev) / (signed long int)counttab[(signed long int)x]: FAILURE",
+      "[candidate.overflow.50] line 157 arithmetic overflow on signed + in scoretab[(signed long int)x] + counttab2[(signed long int)bestv][(signed long int)x]: FAILURE",
+      "[main.assertion.1] line 174 assertion c[k]==d[k]: FAILURE",
+      "** 7 of 579 failed (7 iterations)",
+      "VERIFICATION FAILED"
+    ]
+  },
+  {
+    "name": "rows",
+    "command": [
+      "<tools>/java/jdk-21.0.13+9-jre/Contents/Home/bin/java",
+      "-XX:+UseParallelGC",
+      "-cp",
+      "<tools>/tla2tools.jar",
+      "tlc2.TLC",
+      "-workers",
+      "1",
+      "-seed",
+      "20261103",
+      "-fp",
+      "1",
+      "-metadir",
+      "<out>/states",
+      "-config",
+      "<out>/rows.cfg",
+      "<out>/ScratchRows.tla"
+    ],
+    "exit_code": 0,
+    "expected": 0,
+    "accepted": true,
+    "seconds": 0.669,
+    "log_sha256": "23bb6e5876736fb685a3f3ad952f9f6df874ed63b513ab318ad1aff7e5d19193",
+    "summary": [
+      "Model checking completed. No error has been found.",
+      "1250 states generated, 289 distinct states found, 0 states left on queue."
+    ]
+  },
+  {
+    "name": "rows-broken",
+    "command": [
+      "<tools>/java/jdk-21.0.13+9-jre/Contents/Home/bin/java",
+      "-XX:+UseParallelGC",
+      "-cp",
+      "<tools>/tla2tools.jar",
+      "tlc2.TLC",
+      "-workers",
+      "1",
+      "-seed",
+      "20261103",
+      "-fp",
+      "1",
+      "-metadir",
+      "<out>/states-broken",
+      "-config",
+      "<out>/rows-broken.cfg",
+      "<out>/ScratchRows.tla"
+    ],
+    "exit_code": 12,
+    "expected": 12,
+    "accepted": true,
+    "seconds": 0.659,
+    "log_sha256": "c03e901a61c29b4a51c4805a82af8a92606a1f6fc5141b7226d4381a5b37e9c4",
+    "summary": [
+      "Error: Invariant LogicalRowsAgree is violated.",
+      "2 states generated, 2 distinct states found, 0 states left on queue."
+    ]
+  }
+]

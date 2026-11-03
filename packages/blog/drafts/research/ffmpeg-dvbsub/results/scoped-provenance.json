@@ -1,0 +1,37 @@
+{
+  "recorded_at": "2026-11-03T09:25:48.712666+00:00",
+  "ffmpeg_head": "aab6cec3e8415154b3f0570f8d131db07a9901de",
+  "candidate_sha256": "1fa15c5563350e8cb5874b0c11a2cddabb47c2c1f39c11c8977d9d75d5fca256",
+  "patch_sha256": "a06fd4dfeec107d56dd848b7ccd7ef5130c0a323e02564975a032fa64c39a70f",
+  "same_candidate_in_native_decoder_and_machine_checks": true,
+  "normal_and_sanitized_cases": 96758,
+  "accepted_proof_results": 49,
+  "c_positive_obligations": 18,
+  "reachability_controls": 18,
+  "deliberately_broken_c_variants": 2,
+  "finite_loop_models": 11,
+  "regression_integration_checks": 27,
+  "scope": {
+    "insertions": 17,
+    "deletions": 1,
+    "changed_function": "compute_default_clut",
+    "private_context_unchanged": true,
+    "score_suffix_byte_identical": true,
+    "no_new_allocation_or_state_flag": true
+  },
+  "limits": [
+    "General 256-color equivalence uses a conditional mathematical argument, not a whole-program machine proof",
+    "Checkerboards 2-5 percent slower in this function screen",
+    "Some constructed workloads favor the previous broad refactor",
+    "Default real-sample median 2.65 percent slower; mechanism unestablished",
+    "ARM64 runtime only; x86 compile inspection only",
+    "No upstream PR submitted; no article published"
+  ],
+  "loop_model_sha256": "37f6f6d7a0b3693c223cbacb847901abb2193ba59f573aadc574d1597188dfad",
+  "checked_c_sources": {
+    "calls.c": "0979784fb2fc620cd4a9859d767d46234ec414c733c6535ed5eb9db4225b8bc2",
+    "candidate.c": "1fa15c5563350e8cb5874b0c11a2cddabb47c2c1f39c11c8977d9d75d5fca256",
+    "bounds.c": "cc208b54c8c00240191ab3c436d9c913ec3b8bc17b4b305fb8870470852ba23e",
+    "predicate.c": "c3d014086adc5a07bd4ab0161ef8a51f1b1bf5556ae22430e2e12f1758f7b7e2"
+  }
+}

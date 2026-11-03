@@ -1,0 +1,6 @@
+{
+  "verified_on": "2026-11-03",
+  "command": "git ls-remote https://github.com/FFmpeg/FFmpeg.git HEAD",
+  "head": "aab6cec3e8415154b3f0570f8d131db07a9901de",
+  "matches_pinned_baseline": true
+}

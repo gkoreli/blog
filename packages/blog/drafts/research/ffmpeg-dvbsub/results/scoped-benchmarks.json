@@ -1,0 +1,277 @@
+{
+  "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+  "compiler": "Apple clang version 21.0.0 (clang-2100.3.34.2)\nTarget: arm64-apple-darwin27.0.0\nThread model: posix\nInstalledDir: /Library/Developer/CommandLineTools/usr/bin\n",
+  "method": "process CPU; complete decodes; nine rotating rounds (balanced positions); same -O3 wrapper compilation; no proof/build jobs during measurements",
+  "results": [
+    {
+      "fixture": "real",
+      "mode": 1,
+      "passes": 200,
+      "rounds": 9,
+      "cpu_seconds": {
+        "upstream": [
+          1.317082,
+          1.300685,
+          1.328945,
+          1.292564,
+          1.298116,
+          1.295233,
+          1.290634,
+          1.288473,
+          1.289921
+        ],
+        "previous": [
+          0.312263,
+          0.303328,
+          0.309215,
+          0.302116,
+          0.30332,
+          0.304595,
+          0.305416,
+          0.302488,
+          0.305674
+        ],
+        "scoped": [
+          0.257313,
+          0.258257,
+          0.257087,
+          0.260266,
+          0.258545,
+          0.259612,
+          0.260262,
+          0.260839,
+          0.259968
+        ]
+      },
+      "medians": {
+        "upstream": 1.295233,
+        "previous": 0.304595,
+        "scoped": 0.259612
+      },
+      "upstream_over_scoped": 4.989110672850254,
+      "previous_over_scoped": 1.1732701107807035,
+      "input_sha256": "93ad6d0be649bb29697275ff522a983d475a1e58ab070271f912b86799e04a86",
+      "executable_sha256": {
+        "upstream": "05f292a12cb757eeaf403868bf9c244ef156a240cbe2c79eaa18acd68407f3c4",
+        "previous": "f257ca7826954111cf85e2116485aea7893d84844c67bb76b4d8402f1d04292d",
+        "scoped": "c758c3a1c66f607d70456407c899a3664fd24aac5a7205cf7f9ef3a7ef53b768"
+      }
+    },
+    {
+      "fixture": "real",
+      "mode": -1,
+      "passes": 3000,
+      "rounds": 9,
+      "cpu_seconds": {
+        "upstream": [
+          0.859057,
+          0.873358,
+          0.957106,
+          0.916289,
+          0.858457,
+          0.887832,
+          0.873627,
+          0.867179,
+          0.898273
+        ],
+        "previous": [
+          0.867704,
+          0.972781,
+          0.869919,
+          0.893792,
+          0.929086,
+          0.890913,
+          0.868478,
+          0.886817,
+          0.909431
+        ],
+        "scoped": [
+          0.897912,
+          0.888436,
+          0.874004,
+          0.86249,
+          0.902428,
+          0.896788,
+          0.871232,
+          0.90981,
+          0.937677
+        ]
+      },
+      "medians": {
+        "upstream": 0.873627,
+        "previous": 0.890913,
+        "scoped": 0.896788
+      },
+      "upstream_over_scoped": 0.9741733832299273,
+      "previous_over_scoped": 0.9934488418667511,
+      "input_sha256": "93ad6d0be649bb29697275ff522a983d475a1e58ab070271f912b86799e04a86",
+      "executable_sha256": {
+        "upstream": "05f292a12cb757eeaf403868bf9c244ef156a240cbe2c79eaa18acd68407f3c4",
+        "previous": "f257ca7826954111cf85e2116485aea7893d84844c67bb76b4d8402f1d04292d",
+        "scoped": "c758c3a1c66f607d70456407c899a3664fd24aac5a7205cf7f9ef3a7ef53b768"
+      }
+    },
+    {
+      "fixture": "generated",
+      "mode": 1,
+      "passes": 20,
+      "rounds": 9,
+      "cpu_seconds": {
+        "upstream": [
+          1.695986,
+          1.621758,
+          1.619519,
+          1.637715,
+          1.696726,
+          1.74133,
+          1.708617,
+          1.655132,
+          1.643563
+        ],
+        "previous": [
+          0.25282,
+          0.256213,
+          0.251105,
+          0.254784,
+          0.251679,
+          0.26066,
+          0.252507,
+          0.261607,
+          0.254889
+        ],
+        "scoped": [
+          0.273331,
+          0.272708,
+          0.275462,
+          0.275305,
+          0.272563,
+          0.300697,
+          0.274747,
+          0.275938,
+          0.274502
+        ]
+      },
+      "medians": {
+        "upstream": 1.655132,
+        "previous": 0.254784,
+        "scoped": 0.274747
+      },
+      "upstream_over_scoped": 6.024204085940884,
+      "previous_over_scoped": 0.9273404259191182,
+      "input_sha256": "5902396b98c7e25b23263173d36172b33e68eb9c35ec5c698582a41203b4076f",
+      "executable_sha256": {
+        "upstream": "6a2207db6ae56fc0c2f232a93a595db27db73e424011892252e3aeb015e7dcae",
+        "previous": "16f3401ea685b7b20678120c33e1dbe8146b9899fc37b0c3ce0810e1547462dc",
+        "scoped": "b0582df5762cef9658bcc7e87c13a01ac025cc7f25e9213d3452db9adba757cc"
+      }
+    },
+    {
+      "fixture": "generated",
+      "mode": -1,
+      "passes": 20,
+      "rounds": 9,
+      "cpu_seconds": {
+        "upstream": [
+          0.8473,
+          0.845012,
+          0.841904,
+          0.847445,
+          0.841427,
+          0.844108,
+          0.852665,
+          0.855379,
+          0.848272
+        ],
+        "previous": [
+          0.154989,
+          0.155609,
+          0.157572,
+          0.156579,
+          0.156645,
+          0.154619,
+          0.15586,
+          0.156962,
+          0.156827
+        ],
+        "scoped": [
+          0.166855,
+          0.167032,
+          0.165967,
+          0.167358,
+          0.165711,
+          0.166817,
+          0.166636,
+          0.167769,
+          0.167995
+        ]
+      },
+      "medians": {
+        "upstream": 0.8473,
+        "previous": 0.156579,
+        "scoped": 0.166855
+      },
+      "upstream_over_scoped": 5.0780617901771,
+      "previous_over_scoped": 0.9384135926403164,
+      "input_sha256": "5902396b98c7e25b23263173d36172b33e68eb9c35ec5c698582a41203b4076f",
+      "executable_sha256": {
+        "upstream": "6a2207db6ae56fc0c2f232a93a595db27db73e424011892252e3aeb015e7dcae",
+        "previous": "16f3401ea685b7b20678120c33e1dbe8146b9899fc37b0c3ce0810e1547462dc",
+        "scoped": "b0582df5762cef9658bcc7e87c13a01ac025cc7f25e9213d3452db9adba757cc"
+      }
+    },
+    {
+      "fixture": "generated",
+      "mode": 0,
+      "passes": 20,
+      "rounds": 9,
+      "cpu_seconds": {
+        "upstream": [
+          0.05872,
+          0.058522,
+          0.057801,
+          0.057485,
+          0.058122,
+          0.058661,
+          0.057549,
+          0.058021,
+          0.05778
+        ],
+        "previous": [
+          0.056228,
+          0.057605,
+          0.056186,
+          0.059434,
+          0.056788,
+          0.057763,
+          0.056964,
+          0.057717,
+          0.057017
+        ],
+        "scoped": [
+          0.057584,
+          0.057872,
+          0.057944,
+          0.059058,
+          0.058099,
+          0.058636,
+          0.058778,
+          0.058581,
+          0.05805
+        ]
+      },
+      "medians": {
+        "upstream": 0.058021,
+        "previous": 0.057017,
+        "scoped": 0.058099
+      },
+      "upstream_over_scoped": 0.9986574639838897,
+      "previous_over_scoped": 0.9813766157765194,
+      "input_sha256": "5902396b98c7e25b23263173d36172b33e68eb9c35ec5c698582a41203b4076f",
+      "executable_sha256": {
+        "upstream": "6a2207db6ae56fc0c2f232a93a595db27db73e424011892252e3aeb015e7dcae",
+        "previous": "16f3401ea685b7b20678120c33e1dbe8146b9899fc37b0c3ce0810e1547462dc",
+        "scoped": "b0582df5762cef9658bcc7e87c13a01ac025cc7f25e9213d3452db9adba757cc"
+      }
+    }
+  ]
+}
