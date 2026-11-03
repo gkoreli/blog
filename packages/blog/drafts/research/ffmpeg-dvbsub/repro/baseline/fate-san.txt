@@ -1,0 +1,9 @@
+HOSTCC	tests/base64.o
+HOSTLD	tests/base64
+HOSTCC	tests/tiny_psnr.o
+HOSTLD	tests/tiny_psnr
+HOSTCC	tests/tiny_ssim.o
+HOSTLD	tests/tiny_ssim
+HOSTCC	tests/audiomatch.o
+HOSTLD	tests/audiomatch
+TEST    sub-dvb

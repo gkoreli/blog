@@ -1,0 +1,10 @@
+{
+  "candidate_sha256": "28dec6870b27686523691c19960a565278ab277a9b019909af92b46ece0c5dfd",
+  "functions": {
+    "dvbsub_fill_run": "1547f207b91210249b6be64e6535b75a4a0a1693065b51056c5d15c2d2d8268b",
+    "dvbsub_interior_block": "9892e6e50a2e0986c88651f399bd4e8d868c2515d6946374b528e356593a7d95",
+    "dvbsub_count_boundary_pixel": "cffc9ef8c47dc0f4b16e3993efb69bd5652575763b5889b45e65c46dd707ab35",
+    "dvbsub_count_color_boundaries": "07449379c81f3a5a13c6ed3805700bcb1f4af736339cb90a8f01d18dcbc44140",
+    "dvbsub_order_colors": "88301cea88588122004079b0a56f3322c3e28ed16d97a5bf85abc8ad8cdaf631"
+  }
+}

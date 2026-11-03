@@ -1,0 +1,50 @@
+{
+  "-2": {
+    "identical": true,
+    "hashes": {
+      "upstream": "000c5e70a40bc80f101470e1be34f77eac032b35f277d56ae0e0118559bbae22",
+      "prior": "000c5e70a40bc80f101470e1be34f77eac032b35f277d56ae0e0118559bbae22",
+      "scalar": "000c5e70a40bc80f101470e1be34f77eac032b35f277d56ae0e0118559bbae22",
+      "wide": "000c5e70a40bc80f101470e1be34f77eac032b35f277d56ae0e0118559bbae22",
+      "rle-variant": "000c5e70a40bc80f101470e1be34f77eac032b35f277d56ae0e0118559bbae22",
+      "combined": "000c5e70a40bc80f101470e1be34f77eac032b35f277d56ae0e0118559bbae22",
+      "final": "000c5e70a40bc80f101470e1be34f77eac032b35f277d56ae0e0118559bbae22"
+    }
+  },
+  "-1": {
+    "identical": true,
+    "hashes": {
+      "upstream": "000c5e70a40bc80f101470e1be34f77eac032b35f277d56ae0e0118559bbae22",
+      "prior": "000c5e70a40bc80f101470e1be34f77eac032b35f277d56ae0e0118559bbae22",
+      "scalar": "000c5e70a40bc80f101470e1be34f77eac032b35f277d56ae0e0118559bbae22",
+      "wide": "000c5e70a40bc80f101470e1be34f77eac032b35f277d56ae0e0118559bbae22",
+      "rle-variant": "000c5e70a40bc80f101470e1be34f77eac032b35f277d56ae0e0118559bbae22",
+      "combined": "000c5e70a40bc80f101470e1be34f77eac032b35f277d56ae0e0118559bbae22",
+      "final": "000c5e70a40bc80f101470e1be34f77eac032b35f277d56ae0e0118559bbae22"
+    }
+  },
+  "0": {
+    "identical": true,
+    "hashes": {
+      "upstream": "c48ad19fde4d471f5b65cef1245ec9d53133dfc46d1727f54ef8ec6e66f18822",
+      "prior": "c48ad19fde4d471f5b65cef1245ec9d53133dfc46d1727f54ef8ec6e66f18822",
+      "scalar": "c48ad19fde4d471f5b65cef1245ec9d53133dfc46d1727f54ef8ec6e66f18822",
+      "wide": "c48ad19fde4d471f5b65cef1245ec9d53133dfc46d1727f54ef8ec6e66f18822",
+      "rle-variant": "c48ad19fde4d471f5b65cef1245ec9d53133dfc46d1727f54ef8ec6e66f18822",
+      "combined": "c48ad19fde4d471f5b65cef1245ec9d53133dfc46d1727f54ef8ec6e66f18822",
+      "final": "c48ad19fde4d471f5b65cef1245ec9d53133dfc46d1727f54ef8ec6e66f18822"
+    }
+  },
+  "1": {
+    "identical": true,
+    "hashes": {
+      "upstream": "2fd9088a0f1b653411829c5a0e6bb1ce52318edc9bd070005c739deebf7ab2ec",
+      "prior": "2fd9088a0f1b653411829c5a0e6bb1ce52318edc9bd070005c739deebf7ab2ec",
+      "scalar": "2fd9088a0f1b653411829c5a0e6bb1ce52318edc9bd070005c739deebf7ab2ec",
+      "wide": "2fd9088a0f1b653411829c5a0e6bb1ce52318edc9bd070005c739deebf7ab2ec",
+      "rle-variant": "2fd9088a0f1b653411829c5a0e6bb1ce52318edc9bd070005c739deebf7ab2ec",
+      "combined": "2fd9088a0f1b653411829c5a0e6bb1ce52318edc9bd070005c739deebf7ab2ec",
+      "final": "2fd9088a0f1b653411829c5a0e6bb1ce52318edc9bd070005c739deebf7ab2ec"
+    }
+  }
+}

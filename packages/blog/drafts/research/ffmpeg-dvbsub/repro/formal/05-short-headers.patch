@@ -1,0 +1,21 @@
+--- a/libavcodec/dvbsubdec.c
++++ b/libavcodec/dvbsubdec.c
+@@ -1135,6 +1135,9 @@
+     int y, cr, cb, alpha;
+     int r, g, b, r_add, g_add, b_add;
+ 
++    if (buf_size < 2)
++        return AVERROR_INVALIDDATA;
++
+     ff_dlog(avctx, "DVB clut packet:\n");
+ 
+     for (i=0; i < buf_size; i++) {
+@@ -1381,7 +1384,7 @@
+     int version;
+     int ret;
+ 
+-    if (buf_size < 1)
++    if (buf_size < 2)
+         return AVERROR_INVALIDDATA;
+ 
+     timeout = *buf++;

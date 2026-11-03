@@ -1,0 +1,5 @@
+CC	libavcodec/dvbsubdec.o
+AR	libavcodec/libavcodec.a
+LD	ffmpeg_g
+STRIP	ffmpeg
+TEST    sub-dvb

@@ -6,6 +6,8 @@ This repository uses a dual license:
 
 All source code (templates, components, configuration, build scripts) is licensed under the [MIT License](./LICENSE-MIT).
 
+Third-party research fixtures retain their upstream licenses. The [FFmpeg DVB subtitle research sources](./packages/blog/drafts/research/ffmpeg-dvbsub/repro/README.md) include FFmpeg-derived code under LGPL-2.1-or-later, with its notices and license preserved.
+
 ## Content (CC BY-NC-ND 4.0)
 
 All blog posts, articles, essays, and images in `packages/blog/posts/` and `packages/blog/prompts/` are licensed under [Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International](./LICENSE-CC-BY-NC-ND-4.0).

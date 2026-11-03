@@ -1,0 +1,19 @@
+--- a/libavcodec/dvbsubdec.c
++++ b/libavcodec/dvbsubdec.c
+@@ -895,7 +895,6 @@
+                 ret = AVERROR(ENOMEM);
+                 goto fail;
+             }
+-            memcpy(rect->data[1], clut_table, (1 << region->depth) * sizeof(*clut_table));
+ 
+             rect->data[0] = av_memdup(region->pbuf, region->buf_size);
+             if (!rect->data[0]) {
+@@ -910,6 +909,8 @@
+                 }
+ 
+                 memcpy(rect->data[1], region->computed_clut, sizeof(region->computed_clut));
++            } else {
++                memcpy(rect->data[1], clut_table, rect->nb_colors * sizeof(*clut_table));
+             }
+ 
+             i++;

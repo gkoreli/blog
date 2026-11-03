@@ -1,0 +1,96 @@
+Equivalence argument for the palette reconstruction changes
+=========================================================
+
+Scope and assumptions
+---------------------
+The reference is libavcodec/dvbsubdec.c at commit
+a1a7737c4bcace8615f70b8f2cc7fc515ca26522. The claim concerns defined executions:
+a valid bitmap rectangle, readable row storage, a separate writable palette,
+and dimensions accepted by this decoder. The region parser limits the bitmap
+to 1,310,720 pixels. At most four contributions per pixel fit in signed int;
+the score numerator remains a signed 64-bit expression as in the reference.
+
+This is a mathematical argument for the transformations. It is not a machine-
+checked proof of the C implementation, compiler, runtime, or full DVB conformance.
+Performance also depends on input and hardware; no universal performance guarantee
+follows from output equivalence.
+
+1. Boundary statistics
+----------------------
+For each colour c define B[c] as the number of pixels of colour c with at least
+one different neighbour or one neighbour outside the rectangle. Define O[c] as
+the number of directed pixel-to-outside edges for colour c. Define A[c,d] for
+c != d as the number of directed edges from a pixel of colour c to an adjacent
+pixel of colour d. Set A[c,c] = 0.
+
+The reference counttab[c] equals B[c]. Its counttab2[0][c] equals O[c]. After its
+diagonal-clearing loop, counttab2[d+1][c] equals A[c,d]. Every interior edge occurs
+once in each direction, so A[c,d] = A[d,c].
+
+An interior pixel with four same-colour neighbours contributes zero to B, zero
+to O, and only diagonal entries discarded by the reference. It can be skipped.
+The new collector counts B, O, and the row A[c,*] directly. Clearing a row on
+the first boundary occurrence of c is sufficient: no update to that row occurs
+before that first occurrence. Its diagonal is cleared before ordering.
+
+2. Present colours and initialization
+-------------------------------------
+Every colour appearing in a nonempty finite rectangle has a boundary pixel:
+follow a row from any occurrence until the colour changes or the rectangle ends.
+Thus a colour occurs exactly when B[c] > 0. Colours absent from the bitmap have
+zero initial score and zero incident edges in the reference and are never selected.
+The new code iterates only colours with B[c] > 0 and only reads initialized rows.
+The list is built in ascending original colour-index order.
+
+3. Greedy ordering
+------------------
+For the set S of already selected colours, the reference running score is
+    R[c] = O[c] + sum(A[c,d], d in S).
+The new score starts at O[c] and adds row A[d,*] when d is selected. Symmetry of
+A gives exactly the same R[c]. Both use the unchanged integer expression
+    floor(1024 * R[c] / B[c])
+with a 64-bit numerator. Both choose a strictly greater score, in ascending
+colour-index order, preserving the first winner on ties. Both stop when no
+positive score exists. Induction gives the same selected order and count.
+
+4. Palette writes
+-----------------
+The rank scaling, RGBA expression, write order, and native 32-bit stores are
+unchanged. Unselected palette entries retain their initial bytes. Therefore
+the complete palette is identical, including initial values outside the writes.
+
+5. Portable block skipping
+--------------------------
+FFmpeg's AV_RN64 is an unaligned native-endian read. For an interior row and
+1 <= x with w-x > 8, loads of eight bytes at x, x-1, x+1, above+x, and below+x
+all remain within their respective rows. If their XOR differences are all zero,
+every one of the eight pixels equals each of its four neighbours. Section 1
+therefore permits skipping all eight. This equality property is endian-independent.
+After two failed block checks the row remainder uses the scalar collector, limiting
+attempts on noisy rows. Scalar processing and block skipping cover every pixel
+exactly once, with the same logical statistics.
+
+6. Native run filling
+---------------------
+At each changed RLE loop, let R be run_length, P pixels_read, D dbuf_len, and Q
+destbuf. The old loop writes max(0,min(R,D-P)) copies of the converted byte and
+advances Q and P by exactly that amount. The new helper computes that length
+and uses memset for the same writes and pointer/counter advances. The decremented
+local run_length is never subsequently used. Mapping and non-modifying-colour
+branches stay outside the helper and retain their original behaviour. Return
+values and input-byte consumption do not change. The decoder's accepted widths
+and bounded run lengths keep the subtraction in range.
+
+7. Palette-output copy
+-----------------------
+On the reconstruction path, the reference's initial transmitted/default palette
+copy is overwritten in full by its computed-palette copy before output. Moving
+the initial copy into the other branch removes only this overwritten write. The
+allocation order, computation/cache updates, and failure cleanup remain unchanged.
+
+Remaining limits
+----------------
+Differential tests check these claims on finite input sets and sanitizers check
+the executed paths. Neither establishes all-input correctness, absence of
+pre-existing decoder defects, or performance on every architecture. Independent
+review and cross-platform tests remain necessary before upstream acceptance.

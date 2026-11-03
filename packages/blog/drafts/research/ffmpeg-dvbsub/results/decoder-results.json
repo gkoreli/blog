@@ -1,0 +1,330 @@
+[
+  {
+    "name": "reference-real--2",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "accepted": true,
+    "log_sha256": "d27ef565275fe4e8a6cbd03137d89e35637c8d2debb500809763cfbe47b012e3"
+  },
+  {
+    "name": "reference-generated--2",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "accepted": true,
+    "log_sha256": "77b83a50b507a15dd74b52eb231f53abdd24dbe25b96d02f4f08fe7a82a3172f"
+  },
+  {
+    "name": "reference-real--1",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "accepted": true,
+    "log_sha256": "91210def2a324ef73e71261f26386e9478dd01a6393ecb6122ae94ef0e8cbbc9"
+  },
+  {
+    "name": "reference-generated--1",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "accepted": true,
+    "log_sha256": "fbb18db8ff7d292572082bc0475f8318d1eb8dfb5828e1f6f0f557bf576d49eb"
+  },
+  {
+    "name": "reference-real-0",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "accepted": true,
+    "log_sha256": "f18c0ed7be700dd5e3cc2e67be4e22c1d500ebd58be24f034c234fbe735949a6"
+  },
+  {
+    "name": "reference-generated-0",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "accepted": true,
+    "log_sha256": "e97596113d0a2b8c2d60e9e8350349c635d4610016e183ae9b3b6102cb7ced3f"
+  },
+  {
+    "name": "reference-real-1",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "accepted": true,
+    "log_sha256": "0e79f85626ccb4e1e1d2ebfd35ebbd1f93c5ce57f848bbcfd258aab0919a971c"
+  },
+  {
+    "name": "reference-generated-1",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "accepted": true,
+    "log_sha256": "180804baeaa401ea207531eb49f889cbce27a1eef8405570f6447e293681a27b"
+  },
+  {
+    "name": "build-normal",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "accepted": true,
+    "log_sha256": "74851b8e1d367d36b7b3a1d3e63d448f9d5738f485d4730e9ef3d7b0150663ff"
+  },
+  {
+    "name": "fate-normal",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "accepted": true,
+    "log_sha256": "8d2ba538904349830c47fbbb60eeab486cd42aeff87e53619b3385a801b4cd26"
+  },
+  {
+    "name": "compile-decode-normal",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "accepted": true,
+    "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "compile-packets-normal",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "accepted": true,
+    "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "compile-failure-normal",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "accepted": true,
+    "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "faults-normal",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "accepted": true,
+    "log_sha256": "266a0d36b6588ca8b8c1c4c72783f4f99b2e2fc0ea0eee0aa6493907fc5f169b"
+  },
+  {
+    "name": "real-normal--2",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "accepted": true,
+    "log_sha256": "5bd1fb9643648d65530ee3a4cc009e3870810265b104ef99f835942d3e1ac47d",
+    "identical_to_merged_upstream": true,
+    "bytes": 1778832,
+    "output_sha256": "a2ec6abda7f37443766a093abc6533e97969cdcb2473b3fa50b555f31485d137"
+  },
+  {
+    "name": "generated-normal--2",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "accepted": true,
+    "log_sha256": "0c01014061615f5493ea6128cfdfb7f81b18c57dc6c1574208fd87006708727d",
+    "identical_to_merged_upstream": true,
+    "bytes": 14951552,
+    "output_sha256": "000c5e70a40bc80f101470e1be34f77eac032b35f277d56ae0e0118559bbae22"
+  },
+  {
+    "name": "real-normal--1",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "accepted": true,
+    "log_sha256": "ede29df621aace17fd7d76188f87fa9ba8aed3e855dd7e39e237de356a3a2b84",
+    "identical_to_merged_upstream": true,
+    "bytes": 1778832,
+    "output_sha256": "a2ec6abda7f37443766a093abc6533e97969cdcb2473b3fa50b555f31485d137"
+  },
+  {
+    "name": "generated-normal--1",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "accepted": true,
+    "log_sha256": "6694136b9cb72537a0994b1df4f5b77804fac82985b5380cfe3381a48b15351c",
+    "identical_to_merged_upstream": true,
+    "bytes": 14951552,
+    "output_sha256": "000c5e70a40bc80f101470e1be34f77eac032b35f277d56ae0e0118559bbae22"
+  },
+  {
+    "name": "real-normal-0",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "accepted": true,
+    "log_sha256": "5e793e627c8251fdfd52ab0a713a7e2dac067ddf740673c4ea413a43d13b5585",
+    "identical_to_merged_upstream": true,
+    "bytes": 1778832,
+    "output_sha256": "a2ec6abda7f37443766a093abc6533e97969cdcb2473b3fa50b555f31485d137"
+  },
+  {
+    "name": "generated-normal-0",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "accepted": true,
+    "log_sha256": "ee036125f1eab4cc356fc55345e2933284688f5b84499433770590eba2f893a1",
+    "identical_to_merged_upstream": true,
+    "bytes": 14951552,
+    "output_sha256": "c48ad19fde4d471f5b65cef1245ec9d53133dfc46d1727f54ef8ec6e66f18822"
+  },
+  {
+    "name": "real-normal-1",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "accepted": true,
+    "log_sha256": "7328dcccf6c5488bfb11749645161c77ea29a44ae2990274905c6046ea0a7b82",
+    "identical_to_merged_upstream": true,
+    "bytes": 1778832,
+    "output_sha256": "41f98f2fc0d5a61525e29692049020a594f51a3193619fb8829ab990d7b295a0"
+  },
+  {
+    "name": "generated-normal-1",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "accepted": true,
+    "log_sha256": "e37f50777265d018f283f3ba0c375caee515858aef08429ea601affa661d5fc9",
+    "identical_to_merged_upstream": true,
+    "bytes": 14951552,
+    "output_sha256": "2fd9088a0f1b653411829c5a0e6bb1ce52318edc9bd070005c739deebf7ab2ec"
+  },
+  {
+    "name": "compile-control-final",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "accepted": true,
+    "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "fault-control-final",
+    "exit_code": 1,
+    "expected_exit": 1,
+    "accepted": true,
+    "log_sha256": "cf238e89d5f1bfd71f1d8831ab4d3f8671454d9a6bf519d0fdf6eb19714d1a99"
+  },
+  {
+    "name": "compile-control-upstream",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "accepted": true,
+    "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "fault-control-upstream",
+    "exit_code": 1,
+    "expected_exit": 1,
+    "accepted": true,
+    "log_sha256": "cf238e89d5f1bfd71f1d8831ab4d3f8671454d9a6bf519d0fdf6eb19714d1a99"
+  },
+  {
+    "name": "build-sanitized",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "accepted": true,
+    "log_sha256": "74851b8e1d367d36b7b3a1d3e63d448f9d5738f485d4730e9ef3d7b0150663ff"
+  },
+  {
+    "name": "fate-sanitized",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "accepted": true,
+    "log_sha256": "8d2ba538904349830c47fbbb60eeab486cd42aeff87e53619b3385a801b4cd26"
+  },
+  {
+    "name": "compile-decode-sanitized",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "accepted": true,
+    "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "compile-packets-sanitized",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "accepted": true,
+    "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "compile-failure-sanitized",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "accepted": true,
+    "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "faults-sanitized",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "accepted": true,
+    "log_sha256": "266a0d36b6588ca8b8c1c4c72783f4f99b2e2fc0ea0eee0aa6493907fc5f169b"
+  },
+  {
+    "name": "real-sanitized--2",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "accepted": true,
+    "log_sha256": "a2c8056b6f060d9763d114c92eaeace5cc4944afda20429fafa4388dff96b366",
+    "identical_to_merged_upstream": true,
+    "bytes": 1778832,
+    "output_sha256": "a2ec6abda7f37443766a093abc6533e97969cdcb2473b3fa50b555f31485d137"
+  },
+  {
+    "name": "generated-sanitized--2",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "accepted": true,
+    "log_sha256": "f7ade59c48682e73ae33207876b0c83529eb5de90a26b6529deb3b7321b74cc6",
+    "identical_to_merged_upstream": true,
+    "bytes": 14951552,
+    "output_sha256": "000c5e70a40bc80f101470e1be34f77eac032b35f277d56ae0e0118559bbae22"
+  },
+  {
+    "name": "real-sanitized--1",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "accepted": true,
+    "log_sha256": "61dceaaf79dfe03352c20f3a06067f7ef6e27aed85388efd065e748673fb3dae",
+    "identical_to_merged_upstream": true,
+    "bytes": 1778832,
+    "output_sha256": "a2ec6abda7f37443766a093abc6533e97969cdcb2473b3fa50b555f31485d137"
+  },
+  {
+    "name": "generated-sanitized--1",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "accepted": true,
+    "log_sha256": "9d4361e0c491ca87a85bf1b54fd1b3bc8823346b8c070046a37ec50cd2751874",
+    "identical_to_merged_upstream": true,
+    "bytes": 14951552,
+    "output_sha256": "000c5e70a40bc80f101470e1be34f77eac032b35f277d56ae0e0118559bbae22"
+  },
+  {
+    "name": "real-sanitized-0",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "accepted": true,
+    "log_sha256": "0843a5faa7690ee4fbfe73caefe67c1c4f88cb542d842df86ee1d1a444a5cec7",
+    "identical_to_merged_upstream": true,
+    "bytes": 1778832,
+    "output_sha256": "a2ec6abda7f37443766a093abc6533e97969cdcb2473b3fa50b555f31485d137"
+  },
+  {
+    "name": "generated-sanitized-0",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "accepted": true,
+    "log_sha256": "bc529ce2953d8de24d1438b590dc8284043e0ea17388abef5fd584969a1bf36b",
+    "identical_to_merged_upstream": true,
+    "bytes": 14951552,
+    "output_sha256": "c48ad19fde4d471f5b65cef1245ec9d53133dfc46d1727f54ef8ec6e66f18822"
+  },
+  {
+    "name": "real-sanitized-1",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "accepted": true,
+    "log_sha256": "9136b72d015411f2d430965954cfb9c6ce9acc161133b3b1af69d0248ade7f9a",
+    "identical_to_merged_upstream": true,
+    "bytes": 1778832,
+    "output_sha256": "41f98f2fc0d5a61525e29692049020a594f51a3193619fb8829ab990d7b295a0"
+  },
+  {
+    "name": "generated-sanitized-1",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "accepted": true,
+    "log_sha256": "b6d722da8412f0803a680ce320b98010b1aed98b9e644cba1eb257ce279b3011",
+    "identical_to_merged_upstream": true,
+    "bytes": 14951552,
+    "output_sha256": "2fd9088a0f1b653411829c5a0e6bb1ce52318edc9bd070005c739deebf7ab2ec"
+  }
+]

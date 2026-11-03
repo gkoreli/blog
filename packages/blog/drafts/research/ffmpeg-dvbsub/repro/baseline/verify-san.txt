@@ -1,0 +1,1 @@
+PASS 59278 bitmap cases, palettes and normalized adjacency tables; seed=4139642283

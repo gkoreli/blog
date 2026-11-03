@@ -1,0 +1,55 @@
+Error: Invariant AlwaysFresh is violated.
+Error: The behavior up to this point is:
+State 1: <Initial predicate>
+/\ revision = 0
+/\ outputRevision = 0
+/\ cachedRevision = 0
+/\ cached = FALSE
+/\ phase = "idle"
+/\ output = "none"
+/\ present = FALSE
+
+State 2: <Begin line 18, col 10 to line 19, col 79 of module PaletteCache>
+/\ revision = 0
+/\ outputRevision = 0
+/\ cachedRevision = 0
+/\ cached = FALSE
+/\ phase = "build"
+/\ output = "none"
+/\ present = FALSE
+
+State 3: <Finish line 20, col 11 to line 26, col 43 of module PaletteCache>
+/\ revision = 0
+/\ outputRevision = 0
+/\ cachedRevision = 0
+/\ cached = TRUE
+/\ phase = "idle"
+/\ output = "computed"
+/\ present = FALSE
+
+State 4: <ChangePixels line 11, col 17 to line 15, col 76 of module PaletteCache>
+/\ revision = 1
+/\ outputRevision = 0
+/\ cachedRevision = 0
+/\ cached = TRUE
+/\ phase = "idle"
+/\ output = "none"
+/\ present = FALSE
+
+State 5: <Begin line 18, col 10 to line 19, col 79 of module PaletteCache>
+/\ revision = 1
+/\ outputRevision = 0
+/\ cachedRevision = 0
+/\ cached = TRUE
+/\ phase = "build"
+/\ output = "none"
+/\ present = FALSE
+
+State 6: <Finish line 20, col 11 to line 26, col 43 of module PaletteCache>
+/\ revision = 1
+/\ outputRevision = 0
+/\ cachedRevision = 0
+/\ cached = TRUE
+/\ phase = "idle"
+/\ output = "computed"
+/\ present = FALSE

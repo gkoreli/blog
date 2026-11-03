@@ -1,0 +1,152 @@
+--- a/libavcodec/dvbsubdec.c
++++ b/libavcodec/dvbsubdec.c
+@@ -376,6 +376,19 @@
+     return 0;
+ }
+ 
++/* Clip a decoded run once, then use the native byte-fill operation. */
++static av_always_inline void dvbsub_fill_run(uint8_t **destbuf, int *pixels_read,
++                                           int dbuf_len, int run_length, int color)
++{
++    int length = FFMIN(run_length, dbuf_len - *pixels_read);
++
++    if (length <= 0)
++        return;
++    memset(*destbuf, color, length);
++    *destbuf += length;
++    *pixels_read += length;
++}
++
+ static int dvbsub_read_2bit_string(AVCodecContext *avctx,
+                                    uint8_t *destbuf, int dbuf_len,
+                                    const uint8_t **srcbuf, int buf_size,
+@@ -413,10 +426,8 @@
+                 else {
+                     if (map_table)
+                         bits = map_table[bits];
+-                    while (run_length-- > 0 && pixels_read < dbuf_len) {
+-                        *destbuf++ = bits;
+-                        pixels_read++;
+-                    }
++                    dvbsub_fill_run(&destbuf, &pixels_read, dbuf_len,
++                                    run_length, bits);
+                 }
+             } else {
+                 bits = get_bits1(&gb);
+@@ -431,10 +442,8 @@
+                         else {
+                             if (map_table)
+                                 bits = map_table[bits];
+-                            while (run_length-- > 0 && pixels_read < dbuf_len) {
+-                                *destbuf++ = bits;
+-                                pixels_read++;
+-                            }
++                            dvbsub_fill_run(&destbuf, &pixels_read, dbuf_len,
++                                            run_length, bits);
+                         }
+                     } else if (bits == 3) {
+                         run_length = get_bits(&gb, 8) + 29;
+@@ -445,10 +454,8 @@
+                         else {
+                             if (map_table)
+                                 bits = map_table[bits];
+-                            while (run_length-- > 0 && pixels_read < dbuf_len) {
+-                                *destbuf++ = bits;
+-                                pixels_read++;
+-                            }
++                            dvbsub_fill_run(&destbuf, &pixels_read, dbuf_len,
++                                            run_length, bits);
+                         }
+                     } else if (bits == 1) {
+                         if (map_table)
+@@ -456,10 +463,8 @@
+                         else
+                             bits = 0;
+                         run_length = 2;
+-                        while (run_length-- > 0 && pixels_read < dbuf_len) {
+-                            *destbuf++ = bits;
+-                            pixels_read++;
+-                        }
++                        dvbsub_fill_run(&destbuf, &pixels_read, dbuf_len,
++                                        run_length, bits);
+                     } else {
+                         (*srcbuf) += (get_bits_count(&gb) + 7) >> 3;
+                         return pixels_read;
+@@ -526,10 +531,8 @@
+                 else
+                     bits = 0;
+ 
+-                while (run_length-- > 0 && pixels_read < dbuf_len) {
+-                    *destbuf++ = bits;
+-                    pixels_read++;
+-                }
++                dvbsub_fill_run(&destbuf, &pixels_read, dbuf_len,
++                                run_length, bits);
+             } else {
+                 bits = get_bits1(&gb);
+                 if (bits == 0) {
+@@ -541,10 +544,8 @@
+                     else {
+                         if (map_table)
+                             bits = map_table[bits];
+-                        while (run_length-- > 0 && pixels_read < dbuf_len) {
+-                            *destbuf++ = bits;
+-                            pixels_read++;
+-                        }
++                        dvbsub_fill_run(&destbuf, &pixels_read, dbuf_len,
++                                        run_length, bits);
+                     }
+                 } else {
+                     bits = get_bits(&gb, 2);
+@@ -557,10 +558,8 @@
+                         else {
+                             if (map_table)
+                                 bits = map_table[bits];
+-                            while (run_length-- > 0 && pixels_read < dbuf_len) {
+-                                *destbuf++ = bits;
+-                                pixels_read++;
+-                            }
++                            dvbsub_fill_run(&destbuf, &pixels_read, dbuf_len,
++                                            run_length, bits);
+                         }
+                     } else if (bits == 3) {
+                         run_length = get_bits(&gb, 8) + 25;
+@@ -571,10 +570,8 @@
+                         else {
+                             if (map_table)
+                                 bits = map_table[bits];
+-                            while (run_length-- > 0 && pixels_read < dbuf_len) {
+-                                *destbuf++ = bits;
+-                                pixels_read++;
+-                            }
++                            dvbsub_fill_run(&destbuf, &pixels_read, dbuf_len,
++                                            run_length, bits);
+                         }
+                     } else if (bits == 1) {
+                         if (map_table)
+@@ -582,10 +579,8 @@
+                         else
+                             bits = 0;
+                         run_length = 2;
+-                        while (run_length-- > 0 && pixels_read < dbuf_len) {
+-                            *destbuf++ = bits;
+-                            pixels_read++;
+-                        }
++                        dvbsub_fill_run(&destbuf, &pixels_read, dbuf_len,
++                                        run_length, bits);
+                     } else {
+                         if (map_table)
+                             bits = map_table[0];
+@@ -649,10 +644,8 @@
+             else {
+                 if (map_table)
+                     bits = map_table[bits];
+-                while (run_length-- > 0 && pixels_read < dbuf_len) {
+-                    *destbuf++ = bits;
+-                    pixels_read++;
+-                }
++                dvbsub_fill_run(&destbuf, &pixels_read, dbuf_len,
++                                run_length, bits);
+             }
+         }
+     }

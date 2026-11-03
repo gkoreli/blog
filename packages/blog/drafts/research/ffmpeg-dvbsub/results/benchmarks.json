@@ -1,0 +1,225 @@
+{
+  "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+  "machine": "arm64",
+  "compiler": "Apple clang version 21.0.0 (clang-2100.3.34.2)\nTarget: arm64-apple-darwin27.0.0\nThread model: posix\nInstalledDir: /Library/Developer/CommandLineTools/usr/bin\n",
+  "method": "process CPU time; repeated complete decodes; rotating execution order; median; one host; no universal speed claim",
+  "results": [
+    {
+      "fixture": "real",
+      "mode": -1,
+      "passes": 1000,
+      "rounds": 7,
+      "cpu_seconds": {
+        "upstream": [
+          0.304311,
+          0.324088,
+          0.306572,
+          0.312813,
+          0.301183,
+          0.302713,
+          0.300434
+        ],
+        "optimization": [
+          0.295544,
+          0.304376,
+          0.33377,
+          0.331782,
+          0.3045,
+          0.308677,
+          0.320485
+        ],
+        "hardened": [
+          0.313609,
+          0.31114,
+          0.30943,
+          0.302148,
+          0.296639,
+          0.297962,
+          0.333654
+        ]
+      },
+      "medians": {
+        "upstream": 0.304311,
+        "optimization": 0.308677,
+        "hardened": 0.30943
+      },
+      "upstream_over_hardened": 0.983456678408687,
+      "input_sha256": "93ad6d0be649bb29697275ff522a983d475a1e58ab070271f912b86799e04a86",
+      "executable_sha256": {
+        "upstream": "05f292a12cb757eeaf403868bf9c244ef156a240cbe2c79eaa18acd68407f3c4",
+        "optimization": "a3e66558702c64d3dcc4829132ca0df9be2fd83cf19d65474b753a378a9d4bb4",
+        "hardened": "f257ca7826954111cf85e2116485aea7893d84844c67bb76b4d8402f1d04292d"
+      }
+    },
+    {
+      "fixture": "real",
+      "mode": 1,
+      "passes": 100,
+      "rounds": 7,
+      "cpu_seconds": {
+        "upstream": [
+          0.692589,
+          0.685128,
+          0.688275,
+          0.687317,
+          0.696054,
+          0.688036,
+          0.690178
+        ],
+        "optimization": [
+          0.156008,
+          0.157394,
+          0.156419,
+          0.156972,
+          0.158559,
+          0.158322,
+          0.158392
+        ],
+        "hardened": [
+          0.154408,
+          0.15607,
+          0.155789,
+          0.155088,
+          0.159062,
+          0.157667,
+          0.156416
+        ]
+      },
+      "medians": {
+        "upstream": 0.688275,
+        "optimization": 0.157394,
+        "hardened": 0.15607
+      },
+      "upstream_over_hardened": 4.41004036650221,
+      "input_sha256": "93ad6d0be649bb29697275ff522a983d475a1e58ab070271f912b86799e04a86",
+      "executable_sha256": {
+        "upstream": "05f292a12cb757eeaf403868bf9c244ef156a240cbe2c79eaa18acd68407f3c4",
+        "optimization": "a3e66558702c64d3dcc4829132ca0df9be2fd83cf19d65474b753a378a9d4bb4",
+        "hardened": "f257ca7826954111cf85e2116485aea7893d84844c67bb76b4d8402f1d04292d"
+      }
+    },
+    {
+      "fixture": "generated",
+      "mode": -1,
+      "passes": 10,
+      "rounds": 5,
+      "cpu_seconds": {
+        "upstream": [
+          0.440251,
+          0.440502,
+          0.439608,
+          0.440992,
+          0.439646
+        ],
+        "optimization": [
+          0.08098,
+          0.079505,
+          0.080297,
+          0.079366,
+          0.079053
+        ],
+        "hardened": [
+          0.078548,
+          0.078585,
+          0.080031,
+          0.079058,
+          0.078918
+        ]
+      },
+      "medians": {
+        "upstream": 0.440251,
+        "optimization": 0.079505,
+        "hardened": 0.078918
+      },
+      "upstream_over_hardened": 5.5785879013659745,
+      "input_sha256": "5902396b98c7e25b23263173d36172b33e68eb9c35ec5c698582a41203b4076f",
+      "executable_sha256": {
+        "upstream": "6a2207db6ae56fc0c2f232a93a595db27db73e424011892252e3aeb015e7dcae",
+        "optimization": "a49c1bd5c6b3c522859dfd205629418f1ef4894a6d4def60901234ad755a6795",
+        "hardened": "16f3401ea685b7b20678120c33e1dbe8146b9899fc37b0c3ce0810e1547462dc"
+      }
+    },
+    {
+      "fixture": "generated",
+      "mode": 0,
+      "passes": 10,
+      "rounds": 5,
+      "cpu_seconds": {
+        "upstream": [
+          0.029485,
+          0.029321,
+          0.029838,
+          0.029603,
+          0.029705
+        ],
+        "optimization": [
+          0.029353,
+          0.02913,
+          0.029907,
+          0.030238,
+          0.029953
+        ],
+        "hardened": [
+          0.029369,
+          0.02936,
+          0.029763,
+          0.029095,
+          0.029561
+        ]
+      },
+      "medians": {
+        "upstream": 0.029603,
+        "optimization": 0.029907,
+        "hardened": 0.029369
+      },
+      "upstream_over_hardened": 1.0079675848683987,
+      "input_sha256": "5902396b98c7e25b23263173d36172b33e68eb9c35ec5c698582a41203b4076f",
+      "executable_sha256": {
+        "upstream": "6a2207db6ae56fc0c2f232a93a595db27db73e424011892252e3aeb015e7dcae",
+        "optimization": "a49c1bd5c6b3c522859dfd205629418f1ef4894a6d4def60901234ad755a6795",
+        "hardened": "16f3401ea685b7b20678120c33e1dbe8146b9899fc37b0c3ce0810e1547462dc"
+      }
+    },
+    {
+      "fixture": "generated",
+      "mode": 1,
+      "passes": 10,
+      "rounds": 5,
+      "cpu_seconds": {
+        "upstream": [
+          0.849696,
+          0.849638,
+          0.850931,
+          0.871392,
+          0.859779
+        ],
+        "optimization": [
+          0.130114,
+          0.128865,
+          0.129307,
+          0.135024,
+          0.132386
+        ],
+        "hardened": [
+          0.128516,
+          0.128265,
+          0.127946,
+          0.13167,
+          0.12876
+        ]
+      },
+      "medians": {
+        "upstream": 0.850931,
+        "optimization": 0.130114,
+        "hardened": 0.128516
+      },
+      "upstream_over_hardened": 6.621206697998693,
+      "input_sha256": "5902396b98c7e25b23263173d36172b33e68eb9c35ec5c698582a41203b4076f",
+      "executable_sha256": {
+        "upstream": "6a2207db6ae56fc0c2f232a93a595db27db73e424011892252e3aeb015e7dcae",
+        "optimization": "a49c1bd5c6b3c522859dfd205629418f1ef4894a6d4def60901234ad755a6795",
+        "hardened": "16f3401ea685b7b20678120c33e1dbe8146b9899fc37b0c3ce0810e1547462dc"
+      }
+    }
+  ]
+}

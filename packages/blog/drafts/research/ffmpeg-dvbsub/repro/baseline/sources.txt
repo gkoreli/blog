@@ -1,0 +1,37 @@
+Authoritative sources inspected on 2026-11-03 (America/Los_Angeles)
+
+1. ETSI EN 300 743 V1.6.1 (2018-10), sections 7.2.5, 7.2.5.1, and 10.
+https://www.etsi.org/deliver/etsi_EN/300700_300799/300743/01.06.01_60/en_300743v010601p.pdf
+Used to check RLE field structure, top/bottom fields, colour mapping, non-modifying
+colour semantics, and the distinction between specified default CLUTs and this
+decoder's optional reconstruction heuristic. It does not specify this heuristic's
+greedy ordering, so preserving that ordering is checked against the source.
+
+2. FFmpeg decoder options documentation (pinned source checkout).
+https://github.com/FFmpeg/FFmpeg/blob/aab6cec3e8415154b3f0570f8d131db07a9901de/doc/decoders.texi
+The dvbsub section defines compute_clut=-2,-1,0,1. These modes were tested separately.
+
+3. FFmpeg unaligned/native-endian read helpers.
+https://github.com/FFmpeg/FFmpeg/blob/aab6cec3e8415154b3f0570f8d131db07a9901de/libavutil/intreadwrite.h
+AV_RN64 is an unaligned native-endian read. The block probe uses exact equality,
+which is independent of byte ordering, and guards all row extents explicitly.
+
+4. FFmpeg memory API and coding policy.
+https://github.com/FFmpeg/FFmpeg/blob/aab6cec3e8415154b3f0570f8d131db07a9901de/libavutil/mem.h
+https://github.com/FFmpeg/FFmpeg/blob/aab6cec3e8415154b3f0570f8d131db07a9901de/doc/developer.texi
+Checked native memory operations, allocation semantics, portable C requirements,
+and the separate runtime-dispatch/checkasm workflow expected for new assembly.
+The retained patch adds no assembly, compiler-specific vector type, or dependency.
+
+5. Clang language extensions and sanitizer documentation.
+https://clang.llvm.org/docs/LanguageExtensions.html
+https://clang.llvm.org/docs/AddressSanitizer.html
+https://clang.llvm.org/docs/UndefinedBehaviorSanitizer.html
+Consulted for compiler/native capabilities and validation boundaries. The retained
+implementation uses FFmpeg's portable helpers instead of a Clang-only vector path.
+
+6. Original merged optimization.
+https://code.ffmpeg.org/FFmpeg/FFmpeg/pulls/25687
+https://github.com/FFmpeg/FFmpeg/commit/a1a7737c4bcace8615f70b8f2cc7fc515ca26522
+The reference for equivalence and performance is the merged code, not the tweet's
+peak function speedup. The earlier local patch is also measured separately.

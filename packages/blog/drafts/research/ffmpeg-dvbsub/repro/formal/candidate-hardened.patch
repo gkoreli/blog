@@ -1,0 +1,456 @@
+--- a/libavcodec/dvbsubdec.c
++++ b/libavcodec/dvbsubdec.c
+@@ -130,7 +130,7 @@
+     int compute_edt; /**< if 1 end display time calculated using pts
+                           if 0 (Default) calculated using time out */
+     int compute_clut;
+-    int clut_count2[257][256];
++    int clut_adjacency[256][256];
+     int substream;
+     int64_t prev_start;
+     DVBSubRegion *region_list;
+@@ -376,6 +376,19 @@
+     return 0;
+ }
+ 
++/* Clip a decoded run once, then use the native byte-fill operation. */
++static av_always_inline void dvbsub_fill_run(uint8_t **destbuf, int *pixels_read,
++                                           int dbuf_len, int run_length, int color)
++{
++    int length = FFMIN(run_length, dbuf_len - *pixels_read);
++
++    if (length <= 0)
++        return;
++    memset(*destbuf, color, length);
++    *destbuf += length;
++    *pixels_read += length;
++}
++
+ static int dvbsub_read_2bit_string(AVCodecContext *avctx,
+                                    uint8_t *destbuf, int dbuf_len,
+                                    const uint8_t **srcbuf, int buf_size,
+@@ -413,10 +426,8 @@
+                 else {
+                     if (map_table)
+                         bits = map_table[bits];
+-                    while (run_length-- > 0 && pixels_read < dbuf_len) {
+-                        *destbuf++ = bits;
+-                        pixels_read++;
+-                    }
++                    dvbsub_fill_run(&destbuf, &pixels_read, dbuf_len,
++                                    run_length, bits);
+                 }
+             } else {
+                 bits = get_bits1(&gb);
+@@ -431,10 +442,8 @@
+                         else {
+                             if (map_table)
+                                 bits = map_table[bits];
+-                            while (run_length-- > 0 && pixels_read < dbuf_len) {
+-                                *destbuf++ = bits;
+-                                pixels_read++;
+-                            }
++                            dvbsub_fill_run(&destbuf, &pixels_read, dbuf_len,
++                                            run_length, bits);
+                         }
+                     } else if (bits == 3) {
+                         run_length = get_bits(&gb, 8) + 29;
+@@ -445,10 +454,8 @@
+                         else {
+                             if (map_table)
+                                 bits = map_table[bits];
+-                            while (run_length-- > 0 && pixels_read < dbuf_len) {
+-                                *destbuf++ = bits;
+-                                pixels_read++;
+-                            }
++                            dvbsub_fill_run(&destbuf, &pixels_read, dbuf_len,
++                                            run_length, bits);
+                         }
+                     } else if (bits == 1) {
+                         if (map_table)
+@@ -456,10 +463,8 @@
+                         else
+                             bits = 0;
+                         run_length = 2;
+-                        while (run_length-- > 0 && pixels_read < dbuf_len) {
+-                            *destbuf++ = bits;
+-                            pixels_read++;
+-                        }
++                        dvbsub_fill_run(&destbuf, &pixels_read, dbuf_len,
++                                        run_length, bits);
+                     } else {
+                         (*srcbuf) += (get_bits_count(&gb) + 7) >> 3;
+                         return pixels_read;
+@@ -526,10 +531,8 @@
+                 else
+                     bits = 0;
+ 
+-                while (run_length-- > 0 && pixels_read < dbuf_len) {
+-                    *destbuf++ = bits;
+-                    pixels_read++;
+-                }
++                dvbsub_fill_run(&destbuf, &pixels_read, dbuf_len,
++                                run_length, bits);
+             } else {
+                 bits = get_bits1(&gb);
+                 if (bits == 0) {
+@@ -541,10 +544,8 @@
+                     else {
+                         if (map_table)
+                             bits = map_table[bits];
+-                        while (run_length-- > 0 && pixels_read < dbuf_len) {
+-                            *destbuf++ = bits;
+-                            pixels_read++;
+-                        }
++                        dvbsub_fill_run(&destbuf, &pixels_read, dbuf_len,
++                                        run_length, bits);
+                     }
+                 } else {
+                     bits = get_bits(&gb, 2);
+@@ -557,10 +558,8 @@
+                         else {
+                             if (map_table)
+                                 bits = map_table[bits];
+-                            while (run_length-- > 0 && pixels_read < dbuf_len) {
+-                                *destbuf++ = bits;
+-                                pixels_read++;
+-                            }
++                            dvbsub_fill_run(&destbuf, &pixels_read, dbuf_len,
++                                            run_length, bits);
+                         }
+                     } else if (bits == 3) {
+                         run_length = get_bits(&gb, 8) + 25;
+@@ -571,10 +570,8 @@
+                         else {
+                             if (map_table)
+                                 bits = map_table[bits];
+-                            while (run_length-- > 0 && pixels_read < dbuf_len) {
+-                                *destbuf++ = bits;
+-                                pixels_read++;
+-                            }
++                            dvbsub_fill_run(&destbuf, &pixels_read, dbuf_len,
++                                            run_length, bits);
+                         }
+                     } else if (bits == 1) {
+                         if (map_table)
+@@ -582,10 +579,8 @@
+                         else
+                             bits = 0;
+                         run_length = 2;
+-                        while (run_length-- > 0 && pixels_read < dbuf_len) {
+-                            *destbuf++ = bits;
+-                            pixels_read++;
+-                        }
++                        dvbsub_fill_run(&destbuf, &pixels_read, dbuf_len,
++                                        run_length, bits);
+                     } else {
+                         if (map_table)
+                             bits = map_table[0];
+@@ -649,10 +644,8 @@
+             else {
+                 if (map_table)
+                     bits = map_table[bits];
+-                while (run_length-- > 0 && pixels_read < dbuf_len) {
+-                    *destbuf++ = bits;
+-                    pixels_read++;
+-                }
++                dvbsub_fill_run(&destbuf, &pixels_read, dbuf_len,
++                                run_length, bits);
+             }
+         }
+     }
+@@ -668,68 +661,140 @@
+     return pixels_read;
+ }
+ 
+-static void compute_default_clut(DVBSubContext *ctx, uint8_t *clut, AVSubtitleRect *rect, int w, int h)
+-{
+-    uint8_t list[256] = {0};
+-    uint8_t list_inv[256];
+-    int counttab[256] = {0};
+-    int scoretab[256];
+-    int (*counttab2)[256] = ctx->clut_count2;
+-    int count, i, x, y;
++/* All five loads stay within their rows; equality is endian-independent. */
++static av_always_inline int dvbsub_interior_block(const uint8_t *row,
++                                                 ptrdiff_t stride)
++{
++    uint64_t pixels = AV_RN64(row);
++    return !((pixels ^ AV_RN64(row - 1)) |
++             (pixels ^ AV_RN64(row + 1)) |
++             (pixels ^ AV_RN64(row - stride)) |
++             (pixels ^ AV_RN64(row + stride)));
++}
++
++static av_always_inline void dvbsub_count_boundary_pixel(
++    DVBSubContext *ctx, const uint8_t *row, const uint8_t *above,
++    const uint8_t *below, int x, int w, int boundary_count[256], int scores[256])
++{
++    int color = row[x];
++    int neighbours[4] = {
++        x ? row[x - 1] : -1,
++        x + 1 < w ? row[x + 1] : -1,
++        above ? above[x] : -1,
++        below ? below[x] : -1,
++    };
++
++    if (!((color != neighbours[0]) | (color != neighbours[1]) |
++          (color != neighbours[2]) | (color != neighbours[3])))
++        return;
++
++    /* Only rows belonging to boundary colours will be read. */
++    if (!boundary_count[color]++)
++        memset(ctx->clut_adjacency[color], 0, sizeof(ctx->clut_adjacency[color]));
++
++    for (int i = 0; i < 4; i++) {
++        if (neighbours[i] < 0)
++            scores[color]++;
++        else
++            ctx->clut_adjacency[color][neighbours[i]]++;
++    }
++}
++
++/* Count only boundaries: interior pixels do not affect palette ordering. */
++static void dvbsub_count_color_boundaries(DVBSubContext *ctx,
++                                        const AVSubtitleRect *rect, int w, int h,
++                                        int boundary_count[256], int scores[256])
++{
+     ptrdiff_t stride = rect->linesize[0];
+ 
+-    memset(ctx->clut_count2, 0 , sizeof(ctx->clut_count2));
+-
+-#define V(x,y) rect->data[0][(x) + (y)*stride]
+-    for (y = 0; y<h; y++) {
+-        for (x = 0; x<w; x++) {
+-            int v = V(x,y) + 1;
+-            int vl = x     ? V(x-1,y) + 1 : 0;
+-            int vr = x+1<w ? V(x+1,y) + 1 : 0;
+-            int vt = y     ? V(x,y-1) + 1 : 0;
+-            int vb = y+1<h ? V(x,y+1) + 1 : 0;
+-            counttab[v-1] += !!((v!=vl) + (v!=vr) + (v!=vt) + (v!=vb));
+-            counttab2[vl][v-1] ++;
+-            counttab2[vr][v-1] ++;
+-            counttab2[vt][v-1] ++;
+-            counttab2[vb][v-1] ++;
+-        }
+-    }
+-#define L(x,y) list[d[(x) + (y)*stride]]
+-
+-    for (i = 0; i<256; i++) {
+-        counttab2[i+1][i] = 0;
+-    }
+-    memcpy(scoretab, counttab2[0], sizeof(scoretab));
+-    for (i = 0; i<256; i++) {
+-        int bestscore = 0;
+-        int bestv = 0;
+-
+-        for (x = 0; x < 256; x++) {
+-            int scorev = scoretab[x];
+-            if (list[x])
++    for (int y = 0; y < h; y++) {
++        const uint8_t *row = rect->data[0] + y * stride;
++        const uint8_t *above = y ? row - stride : NULL;
++        const uint8_t *below = y + 1 < h ? row + stride : NULL;
++
++        int x = 0;
++        if (above && below && w > 9) {
++            /* Noisy rows fall back after two failed block probes. */
++            int misses = 0;
++            dvbsub_count_boundary_pixel(ctx, row, above, below, x++, w,
++                                        boundary_count, scores);
++            while (w - x > 8 && misses < 2) {
++                if (dvbsub_interior_block(row + x, stride)) {
++                    x += 8;
++                    continue;
++                }
++                misses++;
++                int end = x + 8;
++                for (; x < end; x++)
++                    dvbsub_count_boundary_pixel(ctx, row, above, below, x, w,
++                                                boundary_count, scores);
++            }
++        }
++        for (; x < w; x++)
++            dvbsub_count_boundary_pixel(ctx, row, above, below, x, w,
++                                        boundary_count, scores);
++    }
++}
++
++/* Preserve ascending colour-index tie breaking and integer score rounding. */
++static int dvbsub_order_colors(DVBSubContext *ctx, const int boundary_count[256],
++                              int scores[256], uint8_t order[256])
++{
++    uint8_t colors[256];
++    uint8_t selected[256] = {0};
++    int nb_colors = 0;
++    int nb_selected = 0;
++
++    for (int color = 0; color < 256; color++)
++        if (boundary_count[color]) {
++            ctx->clut_adjacency[color][color] = 0;
++            colors[nb_colors++] = color;
++        }
++
++    for (int rank = 0; rank < nb_colors; rank++) {
++        int best_color = -1;
++        int best_score = 0;
++
++        for (int i = 0; i < nb_colors; i++) {
++            int color = colors[i];
++            int score;
++
++            if (selected[color] || !scores[color])
+                 continue;
+-
+-            if (scorev) {
+-                int score = 1024LL*scorev / counttab[x];
+-                if (score > bestscore) {
+-                    bestscore = score;
+-                    bestv = x;
+-                }
+-            }
+-        }
+-        if (!bestscore)
++            score = 1024LL * scores[color] / boundary_count[color];
++            if (score > best_score) {
++                best_score = score;
++                best_color = color;
++            }
++        }
++        if (best_color < 0)
+             break;
+-        list    [ bestv ] = 1;
+-        list_inv[     i ] = bestv;
+-        for (x = 0; x < 256; x++)
+-            scoretab[x] += counttab2[bestv+1][x];
+-    }
+-
+-    count = FFMAX(i - 1, 1);
+-    for (i--; i >= 0; i--) {
+-        int v = i * 255 / count;
+-        AV_WN32(clut + 4*list_inv[i], RGBA(v/2,v,v/2,v));
++
++        selected[best_color] = 1;
++        order[nb_selected++] = best_color;
++        for (int i = 0; i < nb_colors; i++) {
++            int color = colors[i];
++            scores[color] += ctx->clut_adjacency[best_color][color];
++        }
++    }
++    return nb_selected;
++}
++
++static void compute_default_clut(DVBSubContext *ctx, uint8_t *clut,
++                                 const AVSubtitleRect *rect, int w, int h)
++{
++    int boundary_count[256] = {0};
++    int scores[256] = {0};
++    uint8_t order[256];
++    int nb_colors, scale;
++
++    dvbsub_count_color_boundaries(ctx, rect, w, h, boundary_count, scores);
++    nb_colors = dvbsub_order_colors(ctx, boundary_count, scores, order);
++
++    scale = FFMAX(nb_colors - 1, 1);
++    for (int rank = nb_colors - 1; rank >= 0; rank--) {
++        int value = rank * 255 / scale;
++        AV_WN32(clut + 4 * order[rank], RGBA(value / 2, value, value / 2, value));
+     }
+ }
+ 
+@@ -830,7 +895,6 @@
+                 ret = AVERROR(ENOMEM);
+                 goto fail;
+             }
+-            memcpy(rect->data[1], clut_table, (1 << region->depth) * sizeof(*clut_table));
+ 
+             rect->data[0] = av_memdup(region->pbuf, region->buf_size);
+             if (!rect->data[0]) {
+@@ -845,6 +909,8 @@
+                 }
+ 
+                 memcpy(rect->data[1], region->computed_clut, sizeof(region->computed_clut));
++            } else {
++                memcpy(rect->data[1], clut_table, rect->nb_colors * sizeof(*clut_table));
+             }
+ 
+             i++;
+@@ -865,6 +931,7 @@
+         av_freep(&sub->rects);
+     }
+     sub->num_rects = 0;
++    *got_output = 0;
+     return ret;
+ }
+ 
+@@ -1068,6 +1135,9 @@
+     int y, cr, cb, alpha;
+     int r, g, b, r_add, g_add, b_add;
+ 
++    if (buf_size < 2)
++        return AVERROR_INVALIDDATA;
++
+     ff_dlog(avctx, "DVB clut packet:\n");
+ 
+     for (i=0; i < buf_size; i++) {
+@@ -1312,8 +1382,9 @@
+     int page_state;
+     int timeout;
+     int version;
+-
+-    if (buf_size < 1)
++    int ret;
++
++    if (buf_size < 2)
+         return AVERROR_INVALIDDATA;
+ 
+     timeout = *buf++;
+@@ -1324,13 +1395,16 @@
+         return 0;
+     }
+ 
++    ff_dlog(avctx, "Page time out %ds, state %d\n", timeout, page_state);
++
++    if (ctx->compute_edt == 1) {
++        ret = save_subtitle_set(avctx, sub, got_output);
++        if (ret < 0)
++            return ret;
++    }
++
+     ctx->time_out = timeout;
+     ctx->version = version;
+-
+-    ff_dlog(avctx, "Page time out %ds, state %d\n", ctx->time_out, page_state);
+-
+-    if (ctx->compute_edt == 1)
+-        save_subtitle_set(avctx, sub, got_output);
+ 
+     if (page_state == 1 || page_state == 2) {
+         delete_regions(ctx);
+@@ -1447,7 +1521,7 @@
+     DVBSubContext *ctx = avctx->priv_data;
+ 
+     if (ctx->compute_edt == 0)
+-        save_subtitle_set(avctx, sub, got_output);
++        return save_subtitle_set(avctx, sub, got_output);
+     return 0;
+ }
+ 
+@@ -1508,7 +1582,7 @@
+ 
+         if (page_id == ctx->composition_id || page_id == ctx->ancillary_id ||
+             ctx->composition_id == -1 || ctx->ancillary_id == -1) {
+-            int ret = 0;
++            ret = 0;
+             switch (segment_type) {
+             case DVBSUB_PAGE_SEGMENT:
+                 ret = dvbsub_parse_page_segment(avctx, p, segment_length, sub, got_sub_ptr);
+@@ -1561,7 +1635,7 @@
+         // segments then we need no further data.
+         if (!got_end_display) {
+             av_log(avctx, AV_LOG_DEBUG, "Missing display_end_segment, emulating\n");
+-            dvbsub_display_end_segment(avctx, p, 0, sub, got_sub_ptr);
++            ret = dvbsub_display_end_segment(avctx, p, 0, sub, got_sub_ptr);
+         }
+     }
+ end:

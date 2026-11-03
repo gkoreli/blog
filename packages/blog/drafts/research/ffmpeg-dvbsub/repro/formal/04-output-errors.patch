@@ -1,0 +1,67 @@
+--- a/libavcodec/dvbsubdec.c
++++ b/libavcodec/dvbsubdec.c
+@@ -931,6 +931,7 @@
+         av_freep(&sub->rects);
+     }
+     sub->num_rects = 0;
++    *got_output = 0;
+     return ret;
+ }
+ 
+@@ -1378,6 +1379,7 @@
+     int page_state;
+     int timeout;
+     int version;
++    int ret;
+ 
+     if (buf_size < 1)
+         return AVERROR_INVALIDDATA;
+@@ -1390,13 +1392,16 @@
+         return 0;
+     }
+ 
++    ff_dlog(avctx, "Page time out %ds, state %d\n", timeout, page_state);
++
++    if (ctx->compute_edt == 1) {
++        ret = save_subtitle_set(avctx, sub, got_output);
++        if (ret < 0)
++            return ret;
++    }
++
+     ctx->time_out = timeout;
+     ctx->version = version;
+-
+-    ff_dlog(avctx, "Page time out %ds, state %d\n", ctx->time_out, page_state);
+-
+-    if (ctx->compute_edt == 1)
+-        save_subtitle_set(avctx, sub, got_output);
+ 
+     if (page_state == 1 || page_state == 2) {
+         delete_regions(ctx);
+@@ -1513,7 +1518,7 @@
+     DVBSubContext *ctx = avctx->priv_data;
+ 
+     if (ctx->compute_edt == 0)
+-        save_subtitle_set(avctx, sub, got_output);
++        return save_subtitle_set(avctx, sub, got_output);
+     return 0;
+ }
+ 
+@@ -1574,7 +1579,7 @@
+ 
+         if (page_id == ctx->composition_id || page_id == ctx->ancillary_id ||
+             ctx->composition_id == -1 || ctx->ancillary_id == -1) {
+-            int ret = 0;
++            ret = 0;
+             switch (segment_type) {
+             case DVBSUB_PAGE_SEGMENT:
+                 ret = dvbsub_parse_page_segment(avctx, p, segment_length, sub, got_sub_ptr);
+@@ -1627,7 +1632,7 @@
+         // segments then we need no further data.
+         if (!got_end_display) {
+             av_log(avctx, AV_LOG_DEBUG, "Missing display_end_segment, emulating\n");
+-            dvbsub_display_end_segment(avctx, p, 0, sub, got_sub_ptr);
++            ret = dvbsub_display_end_segment(avctx, p, 0, sub, got_sub_ptr);
+         }
+     }
+ end:

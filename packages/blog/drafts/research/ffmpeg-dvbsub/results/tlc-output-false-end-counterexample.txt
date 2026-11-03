@@ -1,0 +1,51 @@
+Error: Invariant FailureReported is violated.
+Error: The behavior up to this point is:
+State 1: <Initial predicate>
+/\ versionCommitted = FALSE
+/\ callerRet = 0
+/\ decoderRet = 0
+/\ saveRet = 0
+/\ phase = "idle"
+/\ allocated = 0
+/\ got = FALSE
+/\ failed = FALSE
+
+State 2: <Begin line 8, col 10 to line 9, col 88 of module OutputFailure>
+/\ versionCommitted = FALSE
+/\ callerRet = 0
+/\ decoderRet = 0
+/\ saveRet = 0
+/\ phase = "allocate"
+/\ allocated = 0
+/\ got = TRUE
+/\ failed = FALSE
+
+State 3: <Fail line 12, col 9 to line 15, col 62 of module OutputFailure>
+/\ versionCommitted = FALSE
+/\ callerRet = 0
+/\ decoderRet = 0
+/\ saveRet = -1
+/\ phase = "caller"
+/\ allocated = 0
+/\ got = TRUE
+/\ failed = TRUE
+
+State 4: <Caller line 18, col 11 to line 21, col 66 of module OutputFailure>
+/\ versionCommitted = FALSE
+/\ callerRet = 0
+/\ decoderRet = 0
+/\ saveRet = -1
+/\ phase = "decode"
+/\ allocated = 0
+/\ got = TRUE
+/\ failed = TRUE
+
+State 5: <Decode line 22, col 11 to line 24, col 82 of module OutputFailure>
+/\ versionCommitted = FALSE
+/\ callerRet = 0
+/\ decoderRet = 0
+/\ saveRet = -1
+/\ phase = "returned"
+/\ allocated = 0
+/\ got = TRUE
+/\ failed = TRUE

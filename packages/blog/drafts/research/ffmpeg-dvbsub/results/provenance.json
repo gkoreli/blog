@@ -1,0 +1,71 @@
+{
+  "recorded_at": "2026-11-03T08:41:11.035058+00:00",
+  "source": {
+    "ffmpeg_commit": "aab6cec3e8415154b3f0570f8d131db07a9901de",
+    "merged_optimization": "a1a7737c4bcace8615f70b8f2cc7fc515ca26522",
+    "hardened_sha256": "28dec6870b27686523691c19960a565278ab277a9b019909af92b46ece0c5dfd"
+  },
+  "checked_sources_sha256": {
+    "cache-0.cfg": "db15893a30c3350fa6a1fd2ebd76eb7f034604f08e00fc2f1ac72c0b2982718d",
+    "cache--1.cfg": "1dccb3a3f1354c18bc22a09c0a69d62fd462c4cd75ebea74a11fe246bbe3ad6c",
+    "cache-1.cfg": "8b767f308ea5a4ece0c90b52e3b98c552eb4412d7be731eb14ee17d9c11a03ec",
+    "cache--2.cfg": "0ccb52cb201955f76d2392e93f148f253b92e8a06e961727a70d15fabb924f67",
+    "ordering.c": "528b6cae6b30f0683555355dbd7b2c6d61a8fa80076b904e9845cccc9b2b1d77",
+    "block.c": "8e54bb24e622ce1aa234a448d28228ca7d4a2cb21a5da7d398594d26f5d12540",
+    "bounds.c": "6da69a02b42cadd790a999a3f1aca9f4113ba35c5950da8738e4622df57ad5a0",
+    "statistics.c": "f5608c25582e4568d3959d61a18b2365cda6f949f591e54b51e5c5a1fa4fcc50",
+    "output-false-page.cfg": "b66064230848c133d7df32e55a43aa38cefc3beefa11e6271944b21f9707277b",
+    "cache-once-naive.cfg": "01e6d483da4c2c41a125127f3d2ecce275088bf77a064f45f96352c47df8ad4d",
+    "arithmetic.c": "4cb99d1d0416328a630d47bd1b832df7f60e6b5818f3e9efa4ce6e35b4ee054e",
+    "cache-broken.cfg": "11d997f6212a24958f36a4460a45977cb90326642d9fe6ed591891d073186fb9",
+    "copy.c": "dbafbc3a4693229045578127078627eace667a59e2a25052f368cd4038ebb33d",
+    "hardened.c": "28dec6870b27686523691c19960a565278ab277a9b019909af92b46ece0c5dfd",
+    "output-true-page.cfg": "8ca8682576e71a0ffb6c0c9caae647c80e43d8f3844a67ec7da08b5215e2db94",
+    "output-false-fallback.cfg": "989604b9d4ab5b909a34b4a9437f706a528fdc77f1ad5cee3dfcdadbdaa713db",
+    "PaletteCache.tla": "2a80dbf016d647f1334373c5648d1d535b6c2602d7819758e430c5c4b6b99f86",
+    "reduced.h": "6f08fda8ceabcc6a226489a76712e413bf5b2d193b9b3d4840aa8561be0255a7",
+    "output-true-end.cfg": "43d011491dad7ecb52edf3dce3c80f2428cdc2982c413be1b47f5153b3ba2588",
+    "extracted.h": "51fd89941db3a84f459a23626dcac47d4c8dddfd308f3ae26a070f5f10c06acb",
+    "common.h": "feb7fe7cd5b4e68c3a7e61ad022f93e5095d44cc38c0680d1536f537a21f7f97",
+    "rle.c": "30570509e25aed4dbac7ee0178595029ffddf9c451c6148031ab24e09eda5c39",
+    "output-false-end.cfg": "1c4dfc06138e4747c0996dc4da068b495f89041566a09b4b07216728d3ab3619",
+    "output-true-fallback.cfg": "9b6601bbf09b4839c9abf1c913a0d485d326c83235fb20dcebccf630492e58b1",
+    "OutputFailure.tla": "346ab175a7926d23c89c683789cb541fe9f537f891190d3447876dff412ce1cc",
+    "small-common.h": "877696346edad6459a7138426bb69fadb0857f253809151930b7a46c98f7d761",
+    "failure-test.c": "88e156d0981b57742cc213d6db53a94d425d1db9cc7125b4c03ffb6e04506dd3"
+  },
+  "tool_binaries": {
+    "cbmc": {
+      "sha256": "9bf972e6798c17a4634fe571a81caee69029009e30dd84931468de986992bf2e",
+      "fresh_bootstrap_binary_identical": true
+    },
+    "java": {
+      "sha256": "0f642542ea1f0be6957557c0db96653ec128113bb5a4aaa7c2534d1d72ddb51f",
+      "fresh_bootstrap_binary_identical": true
+    },
+    "z3": {
+      "sha256": "2f4cc81460f49c8c9b8d4851df08282450ce223a961f20d35b3a036b2584ad88",
+      "fresh_bootstrap_binary_identical": true
+    }
+  },
+  "fresh_bootstrap": {
+    "tools": true,
+    "normal_ffmpeg": true,
+    "second_fresh_sanitizer_bootstrap": false,
+    "sanitizer": "earlier separately configured and fully instrumented checkout rebuilt and checked"
+  },
+  "formal_acceptance": {
+    "accepted_results": 29,
+    "c_obligations": 7,
+    "reachability_controls": 7,
+    "expected_c_mutants": 3,
+    "finite_tlc_configurations": 12
+  },
+  "limits": [
+    "No general machine proof of the 256-color collector/ranker",
+    "No checked C-to-TLA+ refinement relation",
+    "Runtime evidence ARM64 only",
+    "Default-path performance neutrality unresolved",
+    "No upstream submission or article publication"
+  ]
+}

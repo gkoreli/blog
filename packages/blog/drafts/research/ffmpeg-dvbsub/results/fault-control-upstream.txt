@@ -1,0 +1,20 @@
+FAIL route=0 allocation=1 ret=6 got=1 rects=0 version=-1
+FAIL route=0 allocation=2 ret=6 got=1 rects=0 version=-1
+FAIL route=0 allocation=3 ret=6 got=1 rects=0 version=-1
+FAIL route=0 allocation=4 ret=6 got=1 rects=0 version=-1
+FAIL route=1 allocation=1 ret=8 got=1 rects=0 version=0
+FAIL retry route=1 allocation=1 ret=8 got=0 rects=0
+FAIL route=1 allocation=2 ret=8 got=1 rects=0 version=0
+FAIL retry route=1 allocation=2 ret=8 got=0 rects=0
+FAIL route=1 allocation=3 ret=8 got=1 rects=0 version=0
+FAIL retry route=1 allocation=3 ret=8 got=0 rects=0
+FAIL route=1 allocation=4 ret=8 got=1 rects=0 version=0
+FAIL retry route=1 allocation=4 ret=8 got=0 rects=0
+FAIL route=2 allocation=1 ret=277 got=1 rects=0 version=0
+FAIL route=2 allocation=2 ret=277 got=1 rects=0 version=0
+FAIL route=2 allocation=3 ret=277 got=1 rects=0 version=0
+FAIL route=2 allocation=4 ret=277 got=1 rects=0 version=0
+FAIL swallowed parser error ret=6
+FAIL short page ret=0
+FAIL short CLUT ret=0
+FAIL 27 native failure-path checks; failures=19
