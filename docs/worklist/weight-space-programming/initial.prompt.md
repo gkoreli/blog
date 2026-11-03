@@ -1,0 +1,1 @@
+i feel like this deserves an engineering blog or an oss article or an essay research it: [https://x.com/rikiyatakehi/status/2117313742891327994?a=oURl30ebOfN6IIagoIo&s=20](https://x.com/rikiyatakehi/status/2117313742891327994?a=oURl30ebOfN6IIagoIo\&s=20)
