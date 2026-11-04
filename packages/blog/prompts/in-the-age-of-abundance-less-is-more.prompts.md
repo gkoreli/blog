@@ -12,3 +12,7 @@ My working interpretation is that you want to interrupt the automatic move from 
 
 
 Yeah I agree to the above, i feel like this is a good way to put it afterall. The resolution doesn’t sound sexy but thats beyond the point, it is what it is. And partially this might not be resolved and we should be okay to live with the unresolved conflict and acknowledge that it will take time to resolve it and for know its better to keep the pressure unresolved than manufacture a fake resolution. So i guess we can close the article with an unsexy half closure and half unresolved tension. I don’t want to be a know it all person and resolve something when I don’t feel like it. And this article essay has now been completed, I don’t see a reason to keep waiting until the resolution hits my mind. Whenever it hits I will be inspired to write a followup article from a mental state where I will resolve this tension. For know this is as best as it gets and we need to be okay with it all. Lets finish the article and publish it.
+
+---
+
+I want that to be a new main featured article

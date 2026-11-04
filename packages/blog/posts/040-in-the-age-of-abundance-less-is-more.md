@@ -6,6 +6,7 @@ date: "2026-11-03"
 description: "AI agents let me keep several projects moving. A mentor's advice made me question whether useful parallel work keeps me from staying with one project."
 section: essays
 tags: [ai-agents, focus, productivity, engineering]
+featured: true
 ---
 
 # In the age of abundance, less is more
