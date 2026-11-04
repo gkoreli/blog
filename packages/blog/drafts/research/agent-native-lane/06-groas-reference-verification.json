@@ -1,0 +1,186 @@
+{
+  "investigation_date": "2026-11-04",
+  "recorded_at_utc": "2026-11-04T15:43:19.286266+00:00",
+  "private_evidence_directory": "~/.local/share/gkoreli/research-evidence/2026-11-04-groas-reference/",
+  "method": {
+    "client": "Python standard-library urllib public GET",
+    "user_agent": "gkoreli-reference-audit/1.0",
+    "accept": "text/html",
+    "primary_redirects": "Redirect handler records each redirect before following it.",
+    "rendering": "Static response HTML inspected; no browser render or publisher account access.",
+    "web_tool": "Groas and cited-target retrieval failed through the web tool; direct HTTP client succeeded."
+  },
+  "primary_http_results": [
+    {
+      "requested_url": "https://groas.com/post/three-quarters-of-our-ai-bot-traffic-couldn-t-be-verified",
+      "requested_at_utc": "2026-11-04T15:39:05.974288+00:00",
+      "final_url": "https://groas.com/post/three-quarters-of-our-ai-bot-traffic-couldn-t-be-verified",
+      "status": 200,
+      "bytes": 158012,
+      "sha256": "14da52f22f66a477d4ecb9a8faeb0f413f2bebb1cfef543827913f028f35b997",
+      "redirects": [],
+      "response_title_recorded_privately": true
+    },
+    {
+      "requested_url": "https://gkoreli.com/blog/chatgpt-claude-gemini-grok-fetcher-headers-measured",
+      "requested_at_utc": "2026-11-04T15:39:05.974510+00:00",
+      "final_url": "https://gkoreli.com/blog/chatgpt-claude-gemini-grok-fetcher-headers-measured",
+      "status": 404,
+      "bytes": 2384,
+      "sha256": "8fbdf24732eddbff77d54bb86e5bc62d405b89d4e66add3447cba504ffbd2b87",
+      "redirects": [],
+      "title": "Page not found — Goga Koreli"
+    },
+    {
+      "requested_url": "https://gkoreli.com/which-ai-fetchers-send-which-headers",
+      "requested_at_utc": "2026-11-04T15:39:05.973881+00:00",
+      "final_url": "https://gkoreli.com/which-ai-fetchers-send-which-headers",
+      "status": 200,
+      "bytes": 73560,
+      "sha256": "22577a24f558f5a32436fa2bddf98168606454bcdc74532ae4d7f6407a7b8ff2",
+      "redirects": [],
+      "title": "ChatGPT, Claude, Gemini and Grok Fetcher Headers, Measured"
+    }
+  ],
+  "publisher_metadata": {
+    "author": "Alexander Perelman",
+    "published_time": "2026-11-03T05:40:21.547Z",
+    "modified_time": "2026-11-03T05:40:21.604Z",
+    "status": "Publisher-supplied metadata, not independently verified authorship or creation time."
+  },
+  "link_verification": {
+    "links_to_gkoreli": 1,
+    "anchor": "robots.txt rules may not apply",
+    "href": "https://gkoreli.com/blog/chatgpt-claude-gemini-grok-fetcher-headers-measured",
+    "section": "Comparison of assistant fetching behavior",
+    "claim_supported": "OpenAI says user-initiated ChatGPT-User actions may not follow robots.txt.",
+    "role": "Secondary source for vendor policy; no specific captured header or experimental result explicitly attributed to Goga in this passage.",
+    "adjacent_claude_test_href": "https://surfacedby.com/ai-traffic-vs-referral-traffic-what-nginx-logs-prove/",
+    "headline_numbers": "Presented by Groas as its own log analysis; not attributed to our study.",
+    "support_in_our_study": {
+      "html_status": 200,
+      "canonical_url": "https://gkoreli.com/which-ai-fetchers-send-which-headers",
+      "section": "ChatGPT-User: documented, list-verified, and fetches more than asked",
+      "source": "Our article quotes the OpenAI policy and links its bots documentation."
+    },
+    "primary_policy_check": {
+      "url": "https://developers.openai.com/api/docs/bots",
+      "status": "Web retrieval confirms the ChatGPT-User section contains the policy on November 4."
+    }
+  },
+  "url_origin_clue": {
+    "seo_title": "ChatGPT, Claude, Gemini and Grok Fetcher Headers, Measured",
+    "transformation": "Lowercase; remove punctuation; omit conjunction and; hyphenate remaining words; prepend /blog/.",
+    "constructed_path": "/blog/chatgpt-claude-gemini-grok-fetcher-headers-measured",
+    "matches_cited_path": true,
+    "interpretation": "Consistent with a reconstructed title-based URL. Does not identify who made it, establish AI authorship, or prove how the source was discovered."
+  },
+  "repository_history_check": {
+    "base_commit": "60e30e413b5e12c4aece7acbaaa586ef7eb952ec",
+    "command": [
+      "git",
+      "log",
+      "--all",
+      "--format=%h %ad %s",
+      "--date=iso-strict",
+      "-S",
+      "chatgpt-claude-gemini-grok-fetcher-headers-measured",
+      "--",
+      "packages/blog/posts",
+      "packages/blog/public/_redirects",
+      "packages/blog/src"
+    ],
+    "matches": 0,
+    "earliest_article_commit": "ba9028b",
+    "earliest_article_path": "packages/blog/posts/023-which-ai-fetchers-send-which-headers.md",
+    "limits": "No matching slug or alias found in these tracked paths across local refs. Does not prove the URL never existed outside this repository history."
+  },
+  "other_cited_html_sources_checked": [
+    {
+      "requested_url": "https://surfacedby.com/ai-traffic-vs-referral-traffic-what-nginx-logs-prove/",
+      "requested_at_utc": "2026-11-04T15:40:43.503696+00:00",
+      "final_url": "https://surfacedby.com/ai-traffic-vs-referral-traffic-what-nginx-logs-prove/",
+      "status": 404,
+      "bytes": 13967,
+      "sha256": "a727d563dc8371090bf6b3daeec690f7a6bdd8fbca210c4ade102d58cc225992",
+      "links_to_us": []
+    },
+    {
+      "requested_url": "https://deepsmith.ai/blog/verify-identify-real-ai-crawler-traffic",
+      "requested_at_utc": "2026-11-04T15:40:43.503982+00:00",
+      "final_url": "https://deepsmith.ai/blog/verify-identify-real-ai-crawler-traffic",
+      "status": 200,
+      "bytes": 157386,
+      "sha256": "39ff7db99cbba29029de4df903e544575224aed474ba76b92ae1de1f0f2e3664",
+      "links_to_us": []
+    },
+    {
+      "requested_url": "https://www.getaiso.com/how-to-track-brand-visibility-ai-search",
+      "requested_at_utc": "2026-11-04T15:40:43.504080+00:00",
+      "final_url": "https://www.getaiso.com/how-to-track-brand-visibility-ai-search",
+      "status": 200,
+      "bytes": 134520,
+      "sha256": "d48e05b0d5c0b26fefd3ab13fa719db8496b52840fa4112a2cefbaf3241dec17",
+      "links_to_us": []
+    },
+    {
+      "requested_url": "https://farcholabs.com/blog/fake-ai-crawlers",
+      "requested_at_utc": "2026-11-04T15:40:43.504144+00:00",
+      "final_url": "https://farcholabs.com/blog/fake-ai-crawlers",
+      "status": 200,
+      "bytes": 271668,
+      "sha256": "5061ecc103c83348b53fd0cadd5f5dd700be63ec101759e3769d4541cb14047b",
+      "links_to_us": []
+    },
+    {
+      "requested_url": "https://www.coaleypeak.co.uk/geo/engines/claude",
+      "requested_at_utc": "2026-11-04T15:40:43.504196+00:00",
+      "final_url": "https://www.coaleypeak.co.uk/geo/engines/claude",
+      "status": 200,
+      "bytes": 176414,
+      "sha256": "bcbfbde039a3e8e12b7cc69602e0d289117c4b4c70969bf316f52fa506304fe7",
+      "links_to_us": []
+    }
+  ],
+  "search_check": {
+    "queries": [
+      "\"groas\" \"three-quarters-of-our-ai-bot-traffic\"",
+      "\"gkoreli.com/blog/chatgpt-claude-gemini-grok-fetcher-headers-measured\"",
+      "\"Only 25% of Our Claimed AI Bot Hits Verified\"",
+      "\"gkoreli\" \"robots.txt rules may not apply\"",
+      "\"gkoreli\" \"groas\"",
+      "\"ChatGPT, Claude, Gemini and Grok Fetcher Headers, Measured\"",
+      "\"gkoreli.com/blog/\" \"headers\"",
+      "\"chatgpt-claude-gemini-grok-fetcher-headers-measured\" -site:gkoreli.com",
+      "\"groas.com\" \"source material\" \"ChatGPT\""
+    ],
+    "result": "Current searches can retrieve the canonical study and syndication. No returned source established Groas’s actual discovery route or the origin of the malformed URL.",
+    "limits": "Current, query-specific results; no exhaustive-web or historical-ranking claim."
+  },
+  "discovery_attribution": {
+    "status": "Unknown",
+    "not_established": [
+      "Search engine, exact query or ranking",
+      "AI tool/model or whether it generated the citation",
+      "Direct reading versus excerpt or secondary-source use",
+      "Author-specific visits or drafting timeline"
+    ],
+    "not_accessed": [
+      "Publisher drafting/research history",
+      "Author communications",
+      "Production analytics or raw request logs"
+    ],
+    "reason_for_no_analytics_query": "A referral could establish a click claiming Groas as source, not the author’s earlier discovery method. No publisher session identity is established."
+  },
+  "decision": {
+    "classification": "Verified external reference to our policy coverage, with a broken citation destination.",
+    "repair_candidate": {
+      "from": "/blog/chatgpt-claude-gemini-grok-fetcher-headers-measured",
+      "to": "/which-ai-fetchers-send-which-headers",
+      "status": "Proposed exact-path permanent redirect; not implemented in this investigation."
+    },
+    "publisher_contact": "Not contacted; correction and discovery questions would require explicit send authorization.",
+    "completed": "Citation location, claim support, direct target behavior and bounded source-origin checks.",
+    "remaining": "Exact discovery route requires publisher evidence; any redirect repair remains separate."
+  }
+}
