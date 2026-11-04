@@ -1,6 +1,6 @@
 # Reddit opportunities for the abundance essay
 
-Researched November 3–4, 2026, Pacific time. Scope: find specific places where the [published essay](https://gkoreli.com/in-the-age-of-abundance-less-is-more) could help readers. **Research and draft preparation only; nothing posted or scheduled.** The earlier X share remains separately pending browser access.
+Researched November 3–4, 2026, Pacific time. Scope: find specific places where the [published essay](https://gkoreli.com/in-the-age-of-abundance-less-is-more) could help readers. **Execution update, November 4:** Goga subsequently authorized posting the shortlist through the agent's browser. Six Reddit contributions and the X share were published and checked in the signed-in browser; opportunity 5 was skipped under r/codex's current no-bots rule. See the [execution receipt](execution-2026-11-04.md). The research below preserves the evidence available before those live checks.
 
 ## Recommendation
 
@@ -51,8 +51,14 @@ Use the parent links in the table if the comment link fails or the surrounding c
 - Generic SideProject product-drop threads were not shortlisted: their invitations focus on apps/products and provide weaker evidence of a reader's need for this essay.
 - [r/vibecoding: Vibe coding is ruining my life](https://www.reddit.com/r/vibecoding/comments/1voraf0/vibe_coding_is_ruining_my_life_lol/) was reviewed but not shortlisted. It centers on an older, personally consequential obsession with one project; the closer matches above concern choosing among several useful work streams.
 
-## State and next action
+## Research checkpoint before execution
 
 Research complete within public-source limits: seven named destinations, specific reader needs, proposed replies, an explicit sharing venue, two locked-thread exclusions, and rule/recency gaps recorded. No Reddit posts, comments, messages, votes, or schedules were created. Proposed distribution is not publication authorization or evidence of adoption.
 
 Next bounded action, if Goga requests execution: choose a small number of the strongest still-current conversations, verify rules and context in the signed-in browser, adapt the preserved reply to any new context, and publish only within the newly authorized Reddit scope. Record each permalink and reader response separately from attributed site requests. The earlier X authorization remains separate and pending access.
+
+## November 4 execution outcome
+
+The owner's later instruction to post the prepared work supersedes the research-only scope above. Current thread context and sidebar rules were inspected before acting. Opportunities 1, 4 and 6 became top-level answers; 2 and 3 became replies to the identified comments; 7 became a disclosed article share in the current pinned promotion thread. Opportunity 5 was not submitted because the live r/codex sidebar says not to use bots. Its preserved draft is available for an owner-operated decision, not an outstanding automated task.
+
+All six submitted Reddit contributions and the X post were reopened at their canonical permalinks. The independent web fetcher returned a cache miss for all seven new publication URLs, so anonymous visibility remains unverified. No reader-use or adoption result is claimed. The [execution receipt](execution-2026-11-04.md) records actual URLs, conditions and limits. No further automatic distribution or measurement is scheduled.

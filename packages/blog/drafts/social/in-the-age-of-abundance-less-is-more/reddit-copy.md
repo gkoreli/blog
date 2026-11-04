@@ -1,8 +1,8 @@
-# Proposed Reddit contributions
+# Reddit contributions
 
-November 4, 2026. **Unpublished drafts for review; no Reddit posting authorized or performed.** Match numbers to [the researched destinations](reddit-opportunities.md). These are proposed wording based on Goga's supplied experience and accepted partial conclusion, not additional experiences or a tested method.
+November 4, 2026. Goga explicitly authorized publication through the agent's browser. **Contributions 1, 2, 3, 4, 6 and 7 were published with the preserved wording below. Contribution 5 remains unpublished because r/codex's current rules say not to use bots.** Match numbers to [the researched destinations](reddit-opportunities.md); actual permalinks and verification limits are in the [execution receipt](execution-2026-11-04.md). The wording comes from Goga's supplied experience and accepted partial conclusion, not additional experiences or a tested method.
 
-Ordinary replies below omit a promotional link because permission was not established. If an article link is relevant and permitted, disclose authorship beside it. Do not repeat these across every thread or present the essay as a coding tool. Preserve the excluded workplace detail and unresolved outcome.
+The five published ordinary replies stand alone without a promotional link. The sharing-thread comment includes author disclosure and the canonical article URL. Each contribution addresses its own context; the essay is not presented as a coding tool. The excluded workplace detail and unresolved outcome remain preserved.
 
 ## 1. ClaudeCode: jumping between ideas
 
@@ -38,6 +38,8 @@ with agents i can usually find more useful work. that doesn't automatically mean
 
 ## 5. Codex: what to do while waiting
 
+Unpublished. The live sidebar's rule 9 says “Don't use bots. Read up on BotBouncer.” No comment was submitted here.
+
 ```text
 i think there's a difference between filling a short agent wait and taking on another ongoing work stream because a project is blocked.
 
@@ -66,4 +68,4 @@ https://gkoreli.com/in-the-age-of-abundance-less-is-more
 i'd be interested in concrete experiences of when staying with a quiet project revealed important work, and when switching was actually the better decision.
 ```
 
-Use the current pinned sharing thread and its actual rules at publication time. The research identifies a plausible resource-sharing fit; it does not establish that moderators have approved this specific essay.
+Contribution 7 was published in the edition confirmed as the current pinned sharing thread. The thread explicitly invites related work with context and affiliation disclosure. Successful submission and a reopened author-view permalink do not establish moderator endorsement or independent public visibility.
