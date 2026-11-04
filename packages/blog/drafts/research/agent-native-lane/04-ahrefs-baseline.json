@@ -1,0 +1,188 @@
+{
+  "schema_version": 1,
+  "observed_on": "2026-11-04",
+  "timezone_for_date": "America/Los_Angeles",
+  "method": "Read signed-in Ahrefs project through native Chrome UI; export existing Site Audit internal-URL data as UTF-8 CSV; inspect CSV with Python standard-library csv. No new crawl, API call, site change, SQL query, or upgrade.",
+  "source_csv": {
+    "filename": "gkoreli_04-nov-2026_internal-urls_2026-11-04_07-09-43.csv",
+    "bytes": 36161,
+    "sha256": "1f201648bbea6467bf14486a93309a2f514fd95a708cb0473f415d04ca317f5e",
+    "rows": 107,
+    "columns": 33,
+    "private_archive": "~/.local/share/gkoreli/research-evidence/2026-11-04-ahrefs-baseline/"
+  },
+  "ui_observation_limit": "Other reports were transcribed from the signed-in UI. No full backlink export or frozen screenshot/accessibility archive was retained. Counts describe provider index/crawl observations, not contemporaneous origin verification.",
+  "site_explorer_overview": {
+    "domain_rating": 4.9,
+    "url_rating": 0,
+    "backlinks_display": "1.2K",
+    "referring_domains": 973,
+    "organic_keywords": 0,
+    "estimated_organic_traffic": 0,
+    "sampled_ai_responses": 0,
+    "scope": "gkoreli.com including subdomains; all locations shown. Provider coverage is not all Google queries or all assistant answers."
+  },
+  "backlink_report": {
+    "all_groups": 1041,
+    "groups_excluding_known_spam_domains": 133,
+    "grouping": "group-similar",
+    "follow_type": "all",
+    "filter_live_only": false,
+    "history_parameter": "all",
+    "rows_observed_after_filter": 50,
+    "group_count_limit": "Grouped index results; not unique referring domains, independently reviewed endorsements, live-link proof, or a complete exported corpus.",
+    "source_leads": [
+      {
+        "url": "https://glama.ai/mcp/servers/gkoreli/backlog-mcp",
+        "target": "https://gkoreli.com/one-hundred-pull-requests",
+        "kind": "Directory displaying repository README",
+        "verification": "Public page retrieved independently; maintainer story link present in copied README."
+      },
+      {
+        "url": "https://news.ycombinator.com/item?id=49594130",
+        "target": "https://gkoreli.com/how-i-separate-readers-from-bots-without-javascript",
+        "kind": "Known launch submission",
+        "verification": "Ahrefs row observed; not re-fetched in this audit."
+      },
+      {
+        "url": "https://www.brutalist.report/topic/tech?before=2026-09-08&",
+        "target": "https://gkoreli.com/how-i-separate-readers-from-bots-without-javascript",
+        "kind": "Aggregator listing",
+        "verification": "Ahrefs row observed; not re-fetched in this audit."
+      },
+      {
+        "url": "https://www.47j.net/news/ai-header-be8f56",
+        "target": "https://gkoreli.com/which-ai-fetchers-send-which-headers",
+        "kind": "Secondary-language coverage lead",
+        "verification": "Ahrefs row observed; text and link not independently checked."
+      },
+      {
+        "url": "https://groas.com/post/three-quarters-of-our-ai-bot-traffic-couldn-t-be-verified",
+        "target": "https://gkoreli.com/blog/chatgpt-claude-gemini-grok-fetcher-headers-measured",
+        "kind": "Possible reuse with a different destination path",
+        "verification": "Ahrefs row observed; web fetch unavailable. Ahrefs Best by links labels target not crawled. Destination behavior remains unchecked."
+      }
+    ]
+  },
+  "top_content_pages_from_csv": [
+    {
+      "url": "https://gkoreli.com/how-i-separate-readers-from-bots-without-javascript",
+      "referring_domains": 50,
+      "backlinks": 84,
+      "csv_record_number": 9
+    },
+    {
+      "url": "https://gkoreli.com/which-ai-fetchers-send-which-headers",
+      "referring_domains": 16,
+      "backlinks": 20,
+      "csv_record_number": 13
+    },
+    {
+      "url": "https://gkoreli.com/first-party-analytics-for-a-personal-blog",
+      "referring_domains": 8,
+      "backlinks": 10,
+      "csv_record_number": 19
+    },
+    {
+      "url": "https://gkoreli.com/one-hundred-pull-requests",
+      "referring_domains": 7,
+      "backlinks": 10,
+      "csv_record_number": 7
+    },
+    {
+      "url": "https://gkoreli.com/linux-signal-stack-conflict",
+      "referring_domains": 5,
+      "backlinks": 6,
+      "csv_record_number": 21
+    },
+    {
+      "url": "https://gkoreli.com/filter-referrer-spam-without-deleting-analytics-history",
+      "referring_domains": 4,
+      "backlinks": 7,
+      "csv_record_number": 18
+    },
+    {
+      "url": "https://gkoreli.com/what-if-the-agent-was-better-before-we-helped",
+      "referring_domains": 3,
+      "backlinks": 9,
+      "csv_record_number": 17
+    },
+    {
+      "url": "https://gkoreli.com/bring-your-own-ai-agent",
+      "referring_domains": 3,
+      "backlinks": 5,
+      "csv_record_number": 33
+    }
+  ],
+  "crawl_csv_checks": {
+    "status_counts": {
+      "200": 105,
+      "301": 1,
+      "404": 1
+    },
+    "indexable_as_classified_by_ahrefs": 70,
+    "indexable_self_canonicals_returning_200": 70,
+    "zero_href_inlink_indexable_urls": [
+      "https://gkoreli.com/one-hundred-pull-requests/prompts"
+    ],
+    "404_urls": [
+      "https://gkoreli.com/LICENSE-CC-BY-NC-ND-4.0"
+    ],
+    "noindex_urls": [
+      "https://gkoreli.com/stats",
+      "https://gkoreli.com/stats/readership",
+      "https://gkoreli.com/stats?traffic=crawlers",
+      "https://gkoreli.com/stats?traffic=agents",
+      "https://gkoreli.com/design-language",
+      "https://gkoreli.com/animations-lab",
+      "https://gkoreli.com/stats?traffic=all"
+    ],
+    "limit": "Indexable is a crawl classification, not evidence of Google indexing. Per-page referring-domain counts overlap and must not be summed into a site-wide unique total."
+  },
+  "site_audit_ui": {
+    "health_score": 94,
+    "ai_discoverability_score": 99,
+    "bot_access_score": 100,
+    "machine_readability_score": 62,
+    "error_occurrences": 7,
+    "warning_occurrences": 169,
+    "notice_occurrences": 136,
+    "urls_with_errors": 6,
+    "pages_with_broken_link_flags": 4,
+    "broken_link_flag_limit": "Includes external 403 responses from npm/dev.to and external GitHub 404s, as well as the internal license 404. A 403 does not establish that a destination is gone.",
+    "schema_warning_urls": 25,
+    "schema_warning_scope": {
+      "prompt_transcripts": 21,
+      "other_urls": [
+        "https://gkoreli.com/",
+        "https://gkoreli.com/oss-radar",
+        "https://gkoreli.com/essays",
+        "https://gkoreli.com/license"
+      ]
+    },
+    "ai_score_limit": "AI search performance and freshness components are marked coming soon; content visibility without JS has no data. This score does not measure actual assistant selection or citations."
+  },
+  "access_limits_observed": [
+    "Site Explorer export requires upgrade.",
+    "Ahrefs GSC Insights requires a paid plan.",
+    "Existing Site Audit internal-URL CSV export succeeds."
+  ],
+  "brand_radar_setup": {
+    "brand": "Gkoreli",
+    "competitor_shown": "Korean skincare brands (cosmetics)",
+    "status": "Unsubmitted form left unchanged; competitor suggestion is unrelated to this publication."
+  },
+  "next_actions": [
+    "Review the license-page link and the orphan prompt transcript in repository context.",
+    "Verify external 404 candidates and preserve historical source meaning; distinguish crawler access failures.",
+    "Verify high-value source leads directly and build an article-to-reference ledger, retaining syndication relationships.",
+    "Use native Google Search Console query/page data for a defined window before article-positioning changes.",
+    "Disambiguate Brand Radar with author name/domain and relevant comparators before creating a comparison."
+  ],
+  "not_completed": [
+    "No causal SEO or GEO improvement claim.",
+    "No full backlink-corpus export or complete source verification.",
+    "No original ChatGPT phishing-incident source trace recovered.",
+    "No runtime repair, new crawl, recurring schedule, public reference panel, account connection, or paid upgrade."
+  ]
+}
