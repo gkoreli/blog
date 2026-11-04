@@ -1,6 +1,14 @@
-# In the age of abundance, less is more
+---
+title: "In the age of abundance, less is more"
+seoTitle: "AI agents and project focus: In the age of abundance, less is more"
+alternativeHeadline: "Staying with a blocked project before starting another AI-assisted work stream"
+date: "2026-11-03"
+description: "AI agents let me keep several projects moving. A mentor's advice made me question whether useful parallel work keeps me from staying with one project."
+section: essays
+tags: [ai-agents, focus, productivity, engineering]
+---
 
-*Working draft, November 3, 2026. Expanded through the second brain dump. An essay of inquiry; the narrower-focus experiment has not been tried. [Worklist](../../../docs/worklist/in-the-age-of-abundance-less-is-more/README.md) · [Discussion notes](../../../docs/worklist/in-the-age-of-abundance-less-is-more/01-discussion.md).*
+# In the age of abundance, less is more
 
 Recently, my mentor suggested that I was involved in too many things at the same time. After thinking about it, I agreed. Before that conversation, I hadn't really seen it as a problem.
 
@@ -90,10 +98,22 @@ But I can already hear the objection. If the work could be postponed and then fo
 
 I don't have a good answer yet. I do feel that follow-ups aren't all equal. Some may deserve to happen earlier. I haven't worked out how to distinguish them from the work that was right to leave behind.
 
-## I haven't found the answer yet
+## A partial answer
 
 I started with a feeling that my mentor was right: I am involved in too many things. I can now describe more precisely what I want to explore. When a project slows down, I can move to another useful project. I want to understand what would happen if I stayed.
 
 So far, the alternatives I have come up with don't feel as valuable as the work I would usually switch to. Some seem redundant, some seem premature, and some seem likely to be discarded. I don't want to pretend I have discovered a better way to spend that time.
 
-But I also don't want to dismiss the constraint before I have really sat with it. I want to allow myself to be bored for a little while and see what I would do next.
+The constraint has to allow for that. I can take a deliberate, limited amount of time to look for something consequential within the project. If I find a question I have been overlooking, staying may be worthwhile. If I find no worthwhile next task, I need to be able to accept that too. Otherwise, I am forcing myself to manufacture work.
+
+Returning to useful testing improvements could be the right decision. My mentor's advice can still be valuable without making every switch a mistake.
+
+For now, I want to interrupt the automatic move from a project becoming quiet to starting something else. Staying briefly might reveal work I have been overlooking. It might also confirm that waiting is appropriate. I haven't yet shown whether doing this will improve the outcome.
+
+That is an unsexy, partial resolution. I still feel the tension between wanting to stay closer to a few projects and knowing that the other work has value. It may take time to understand how those things fit together.
+
+I would rather keep that pressure unresolved than manufacture a conclusion I don't believe. This essay can be finished while the question remains open. If a clearer answer comes, I can write a follow-up from that understanding. For now, this is as far as I have got.
+
+---
+
+*Writing provenance: This essay was developed with AI from my [source prompts](/in-the-age-of-abundance-less-is-more/prompts). One message contains two explicit privacy omissions for a workplace example I asked to exclude.*
