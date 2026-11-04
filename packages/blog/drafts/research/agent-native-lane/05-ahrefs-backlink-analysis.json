@@ -1,0 +1,758 @@
+{
+  "observed_at_utc": "2026-11-04T15:35:32.607068+00:00",
+  "source": {
+    "filename": "ahrefs-raw-dump.csv",
+    "bytes": 54145,
+    "sha256": "650d40c02077478d1a4fea14be60a936628d4d143b1216106595ae3c37b8158a",
+    "columns": [
+      "source_row",
+      "referring_page_title",
+      "referring_page_url",
+      "languages",
+      "platform",
+      "author",
+      "page_types",
+      "categories",
+      "categories_truncated",
+      "domain_rating",
+      "url_rating",
+      "domain_traffic_display",
+      "referring_domains",
+      "linked_domains",
+      "external_links",
+      "page_traffic",
+      "keywords",
+      "anchor_text",
+      "anchor_with_surrounding_text",
+      "link_labels",
+      "target_url",
+      "first_seen_date",
+      "last_seen_date",
+      "last_seen_display",
+      "unlabeled_column_14"
+    ],
+    "private_evidence_directory": "~/.local/share/gkoreli/research-evidence/2026-11-04-ahrefs-backlinks/"
+  },
+  "scope": {
+    "report": "Site Explorer Backlinks",
+    "interpretation": "Matches the 133-group non-spammy-link report inspected earlier on November 4; reconstructed table data, not a native full index export. Filters are not encoded in the CSV itself.",
+    "deduplication": "Exact referring URLs and lowercase parsed hostnames. Target fragments removed, query parameters preserved. Hostnames are not registrable-domain groups.",
+    "liveness": "Report was not restricted to links independently verified live now."
+  },
+  "totals": {
+    "rows": 133,
+    "referring_pages": 89,
+    "referring_hostnames": 68,
+    "target_urls": 41,
+    "unique_source_target_pairs": 133,
+    "duplicate_full_rows": 0
+  },
+  "targets": [
+    {
+      "target_url": "https://gkoreli.com/how-i-separate-readers-from-bots-without-javascript",
+      "rows": 52,
+      "referring_pages": 52,
+      "referring_hostnames": 44,
+      "source_rows": [
+        6,
+        10,
+        12,
+        14,
+        17,
+        18,
+        20,
+        22,
+        24,
+        25,
+        31,
+        32,
+        33,
+        35,
+        36,
+        42,
+        43,
+        45,
+        46,
+        49,
+        53,
+        58,
+        62,
+        65,
+        66,
+        67,
+        73,
+        76,
+        78,
+        80,
+        82,
+        84,
+        85,
+        86,
+        89,
+        90,
+        91,
+        96,
+        98,
+        99,
+        101,
+        104,
+        105,
+        106,
+        108,
+        109,
+        111,
+        112,
+        115,
+        121,
+        128,
+        130
+      ]
+    },
+    {
+      "target_url": "https://gkoreli.com/which-ai-fetchers-send-which-headers",
+      "rows": 13,
+      "referring_pages": 13,
+      "referring_hostnames": 13,
+      "source_rows": [
+        13,
+        15,
+        19,
+        26,
+        28,
+        60,
+        68,
+        77,
+        79,
+        110,
+        124,
+        131,
+        133
+      ]
+    },
+    {
+      "target_url": "https://gkoreli.com/one-hundred-pull-requests",
+      "rows": 8,
+      "referring_pages": 8,
+      "referring_hostnames": 6,
+      "source_rows": [
+        1,
+        4,
+        5,
+        16,
+        30,
+        55,
+        59,
+        93
+      ]
+    },
+    {
+      "target_url": "https://gkoreli.com/",
+      "rows": 8,
+      "referring_pages": 8,
+      "referring_hostnames": 8,
+      "source_rows": [
+        37,
+        41,
+        63,
+        72,
+        88,
+        95,
+        97,
+        117
+      ]
+    },
+    {
+      "target_url": "https://gkoreli.com/first-party-analytics-for-a-personal-blog",
+      "rows": 6,
+      "referring_pages": 6,
+      "referring_hostnames": 6,
+      "source_rows": [
+        23,
+        40,
+        44,
+        74,
+        122,
+        126
+      ]
+    },
+    {
+      "target_url": "https://gkoreli.com/linux-signal-stack-conflict",
+      "rows": 4,
+      "referring_pages": 4,
+      "referring_hostnames": 4,
+      "source_rows": [
+        51,
+        64,
+        114,
+        116
+      ]
+    },
+    {
+      "target_url": "https://gkoreli.com/filter-referrer-spam-without-deleting-analytics-history",
+      "rows": 3,
+      "referring_pages": 3,
+      "referring_hostnames": 3,
+      "source_rows": [
+        7,
+        27,
+        102
+      ]
+    },
+    {
+      "target_url": "https://gkoreli.com/bring-your-own-ai-agent",
+      "rows": 3,
+      "referring_pages": 3,
+      "referring_hostnames": 2,
+      "source_rows": [
+        8,
+        120,
+        123
+      ]
+    },
+    {
+      "target_url": "https://gkoreli.com/my-evals-say-it-works-i-dont-use-it",
+      "rows": 2,
+      "referring_pages": 2,
+      "referring_hostnames": 2,
+      "source_rows": [
+        11,
+        132
+      ]
+    },
+    {
+      "target_url": "https://gkoreli.com/llms.txt",
+      "rows": 2,
+      "referring_pages": 2,
+      "referring_hostnames": 2,
+      "source_rows": [
+        21,
+        61
+      ]
+    },
+    {
+      "target_url": "https://gkoreli.com/what-if-the-agent-was-better-before-we-helped",
+      "rows": 2,
+      "referring_pages": 2,
+      "referring_hostnames": 2,
+      "source_rows": [
+        38,
+        113
+      ]
+    },
+    {
+      "target_url": "https://gkoreli.com/i-am-lost-right-now",
+      "rows": 1,
+      "referring_pages": 1,
+      "referring_hostnames": 1,
+      "source_rows": [
+        2
+      ]
+    },
+    {
+      "target_url": "https://gkoreli.com/ai-fetcher-research-from-experiments-to-a-cited-reference",
+      "rows": 1,
+      "referring_pages": 1,
+      "referring_hostnames": 1,
+      "source_rows": [
+        3
+      ]
+    },
+    {
+      "target_url": "https://gkoreli.com/blog/chatgpt-claude-gemini-grok-fetcher-headers-measured",
+      "rows": 1,
+      "referring_pages": 1,
+      "referring_hostnames": 1,
+      "source_rows": [
+        9
+      ]
+    },
+    {
+      "target_url": "https://gkoreli.com/productive-procrastination",
+      "rows": 1,
+      "referring_pages": 1,
+      "referring_hostnames": 1,
+      "source_rows": [
+        29
+      ]
+    },
+    {
+      "target_url": "https://gkoreli.com/feed.xml",
+      "rows": 1,
+      "referring_pages": 1,
+      "referring_hostnames": 1,
+      "source_rows": [
+        34
+      ]
+    },
+    {
+      "target_url": "https://gkoreli.com/oss-radar-03-buzz-is-slack-on-airoids",
+      "rows": 1,
+      "referring_pages": 1,
+      "referring_hostnames": 1,
+      "source_rows": [
+        39
+      ]
+    },
+    {
+      "target_url": "https://gkoreli.com/oss-radar-06-interp-engine",
+      "rows": 1,
+      "referring_pages": 1,
+      "referring_hostnames": 1,
+      "source_rows": [
+        47
+      ]
+    },
+    {
+      "target_url": "https://gkoreli.com/oss-radar-10-paperpilot-redaction",
+      "rows": 1,
+      "referring_pages": 1,
+      "referring_hostnames": 1,
+      "source_rows": [
+        48
+      ]
+    },
+    {
+      "target_url": "https://gkoreli.com/oss-radar-11-qwenputer-compiled-cpu",
+      "rows": 1,
+      "referring_pages": 1,
+      "referring_hostnames": 1,
+      "source_rows": [
+        50
+      ]
+    },
+    {
+      "target_url": "https://gkoreli.com/why-worktree-setup-is-slow-on-macos",
+      "rows": 1,
+      "referring_pages": 1,
+      "referring_hostnames": 1,
+      "source_rows": [
+        52
+      ]
+    },
+    {
+      "target_url": "https://gkoreli.com/oss-radar-07-ai-citations",
+      "rows": 1,
+      "referring_pages": 1,
+      "referring_hostnames": 1,
+      "source_rows": [
+        54
+      ]
+    },
+    {
+      "target_url": "https://gkoreli.com/oss-radar-08-bun-aot",
+      "rows": 1,
+      "referring_pages": 1,
+      "referring_hostnames": 1,
+      "source_rows": [
+        56
+      ]
+    },
+    {
+      "target_url": "https://gkoreli.com/oss-radar-13-hob-offline-file-tasks",
+      "rows": 1,
+      "referring_pages": 1,
+      "referring_hostnames": 1,
+      "source_rows": [
+        57
+      ]
+    },
+    {
+      "target_url": "https://gkoreli.com/in-the-age-of-abundance-less-is-more",
+      "rows": 1,
+      "referring_pages": 1,
+      "referring_hostnames": 1,
+      "source_rows": [
+        69
+      ]
+    },
+    {
+      "target_url": "https://gkoreli.com/openclaw-chose-solid-why-id-choose-nisli",
+      "rows": 1,
+      "referring_pages": 1,
+      "referring_hostnames": 1,
+      "source_rows": [
+        70
+      ]
+    },
+    {
+      "target_url": "https://gkoreli.com/building-blog-analytics-what-the-numbers-can-prove",
+      "rows": 1,
+      "referring_pages": 1,
+      "referring_hostnames": 1,
+      "source_rows": [
+        71
+      ]
+    },
+    {
+      "target_url": "https://gkoreli.com/oss-radar-04-the-agent-multiplexer-is-becoming-a-runtime",
+      "rows": 1,
+      "referring_pages": 1,
+      "referring_hostnames": 1,
+      "source_rows": [
+        75
+      ]
+    },
+    {
+      "target_url": "https://gkoreli.com/chatgpt-plugin-apps",
+      "rows": 1,
+      "referring_pages": 1,
+      "referring_hostnames": 1,
+      "source_rows": [
+        81
+      ]
+    },
+    {
+      "target_url": "https://gkoreli.com/prompt-cache-context-edits/prompts",
+      "rows": 1,
+      "referring_pages": 1,
+      "referring_hostnames": 1,
+      "source_rows": [
+        83
+      ]
+    },
+    {
+      "target_url": "https://gkoreli.com/how-i-separate-readers-from-bots-without-javascript?ref=ki48.no",
+      "rows": 1,
+      "referring_pages": 1,
+      "referring_hostnames": 1,
+      "source_rows": [
+        87
+      ]
+    },
+    {
+      "target_url": "https://gkoreli.com/oss-radar-09-tsrs-typescript-memory",
+      "rows": 1,
+      "referring_pages": 1,
+      "referring_hostnames": 1,
+      "source_rows": [
+        92
+      ]
+    },
+    {
+      "target_url": "https://gkoreli.com/i-thought-building-was-enough",
+      "rows": 1,
+      "referring_pages": 1,
+      "referring_hostnames": 1,
+      "source_rows": [
+        94
+      ]
+    },
+    {
+      "target_url": "https://gkoreli.com/oss-radar-12-claude-code-status-summary",
+      "rows": 1,
+      "referring_pages": 1,
+      "referring_hostnames": 1,
+      "source_rows": [
+        100
+      ]
+    },
+    {
+      "target_url": "https://gkoreli.com/you-dont-need-codemap",
+      "rows": 1,
+      "referring_pages": 1,
+      "referring_hostnames": 1,
+      "source_rows": [
+        103
+      ]
+    },
+    {
+      "target_url": "https://gkoreli.com/prompt-cache-context-edits",
+      "rows": 1,
+      "referring_pages": 1,
+      "referring_hostnames": 1,
+      "source_rows": [
+        107
+      ]
+    },
+    {
+      "target_url": "https://gkoreli.com/oss-radar-05-bun-1-4",
+      "rows": 1,
+      "referring_pages": 1,
+      "referring_hostnames": 1,
+      "source_rows": [
+        118
+      ]
+    },
+    {
+      "target_url": "https://gkoreli.com/how-ghx-was-born",
+      "rows": 1,
+      "referring_pages": 1,
+      "referring_hostnames": 1,
+      "source_rows": [
+        119
+      ]
+    },
+    {
+      "target_url": "https://gkoreli.com/openwiki-validates-my-bet",
+      "rows": 1,
+      "referring_pages": 1,
+      "referring_hostnames": 1,
+      "source_rows": [
+        125
+      ]
+    },
+    {
+      "target_url": "https://gkoreli.com/oss-radar-07-ai-citations/prompts",
+      "rows": 1,
+      "referring_pages": 1,
+      "referring_hostnames": 1,
+      "source_rows": [
+        127
+      ]
+    },
+    {
+      "target_url": "https://gkoreli.com/bun-aot-express-fastify-serializers",
+      "rows": 1,
+      "referring_pages": 1,
+      "referring_hostnames": 1,
+      "source_rows": [
+        129
+      ]
+    }
+  ],
+  "source_hostnames": {
+    "elseweb.net": 33,
+    "wpnews.pro": 7,
+    "zeli.app": 6,
+    "www.worldprogramming.org": 4,
+    "hnpaper-labs.gaidot.net": 4,
+    "hackernews.jp": 4,
+    "npm.io": 4,
+    "mcpvault.io": 3,
+    "rssamplifier.com": 3,
+    "rdltr.app": 2,
+    "inspect.software": 2,
+    "hb.int2inf.com": 2,
+    "whatstoday.news": 2,
+    "bilisimpostasi.com.tr": 2,
+    "news.barelyhuman.xyz": 2,
+    "glama.ai": 1,
+    "mcprepository.com": 1,
+    "www.brutalist.report": 1,
+    "groas.com": 1,
+    "news.ycombinator.com": 1,
+    "k4m2a.app": 1,
+    "geek.ds3783.com": 1,
+    "www.47j.net": 1,
+    "gokawiil.com": 1,
+    "latinsky.community": 1,
+    "glonce.com": 1,
+    "headlinesbriefing.com": 1,
+    "shortsingh.com": 1,
+    "iitog.ru": 1,
+    "theinvite.community": 1,
+    "europenews.uk": 1,
+    "www.readglim.com": 1,
+    "thebay.news": 1,
+    "linksfor.dev": 1,
+    "katsura.dev": 1,
+    "sonto.tech": 1,
+    "dragthelake.com": 1,
+    "news.thinkingdbx.com": 1,
+    "www.webkkk.net": 1,
+    "primal.net": 1,
+    "www.headlinne.com": 1,
+    "ojeo.com": 1,
+    "satirbasi.net": 1,
+    "arcjet.com": 1,
+    "wolfinisoftware.de": 1,
+    "www.66bd.net": 1,
+    "scoopfeeds.com": 1,
+    "ki48.no": 1,
+    "www.getallsites.com": 1,
+    "news.lavx.hu": 1,
+    "cacher.news": 1,
+    "oddsurf.com": 1,
+    "alobbs.com": 1,
+    "230411.xyz": 1,
+    "apexneuralnews.com": 1,
+    "vely.io": 1,
+    "dailyliftoff.com": 1,
+    "readerfi.com": 1,
+    "deer.social": 1,
+    "outspeaker.com": 1,
+    "readpopwire.com": 1,
+    "yabu.me": 1,
+    "skillsmp.com": 1,
+    "betternews.co": 1,
+    "northsky.app": 1,
+    "kupo.dev": 1,
+    "www.hntoplinks.com": 1,
+    "www.bluenews.app": 1
+  },
+  "concentrations": {
+    "elseweb": {
+      "rows": 33,
+      "referring_pages": 2,
+      "referring_hostnames": 1,
+      "source_pages": {
+        "https://elseweb.net/sites/gkoreli.com": 32,
+        "https://elseweb.net/categories/rss-psychology": 1
+      }
+    },
+    "first_seen_2026_11_04": {
+      "rows": 33,
+      "referring_pages": 2,
+      "referring_hostnames": 1,
+      "hostnames": {
+        "elseweb.net": 33
+      }
+    },
+    "explicit_hn_story_49594130": {
+      "rows": 14,
+      "referring_pages": 11,
+      "referring_hostnames": 6,
+      "source_rows": [
+        10,
+        12,
+        27,
+        36,
+        42,
+        49,
+        53,
+        60,
+        76,
+        86,
+        106,
+        108,
+        121,
+        126
+      ]
+    }
+  },
+  "field_quality": {
+    "entirely_zero_fields": [
+      "url_rating",
+      "page_traffic",
+      "keywords"
+    ],
+    "missing_last_seen_date": 75,
+    "categories_truncated": {
+      "true": 131,
+      "false": 1,
+      "": 1
+    },
+    "link_label_flags": {
+      "CONTENT": 45,
+      "NOFOLLOW": 27,
+      "UGC": 3,
+      "JS": 7,
+      "IMAGE": 5
+    },
+    "blank_link_labels": 69,
+    "languages": {
+      "EN": 110,
+      "JA": 6,
+      "DE": 2,
+      "ZH-CN": 5,
+      "RU": 2,
+      "ES; EN": 2,
+      "ZH-CN; MR": 1,
+      "ES": 2,
+      "TR": 2,
+      "NO": 1
+    },
+    "not_exclusively_english": 23,
+    "unlabeled_column_14": {
+      "values": {
+        "": 120,
+        "1": 4,
+        "2": 2,
+        "5": 3,
+        "13": 1,
+        "12": 1,
+        "15": 1,
+        "58": 1
+      },
+      "meaning": "Unknown; excluded from link totals and quality judgments."
+    }
+  },
+  "companion_html_validation": {
+    "files": [
+      {
+        "filename": "ahrefs-raw-dump.md",
+        "bytes": 2316682,
+        "sha256": "c447d95ed58507501c4bd24a9679978201d6a8fe36e57ad9e76d44858143d8e7"
+      },
+      {
+        "filename": "ahrefs-raw-dump-2.md",
+        "bytes": 790476,
+        "sha256": "9ea1c9b4ae793a3f70bef455bdb39ad93fcf9f2030b5b29ddf5bf8dbf823288d"
+      }
+    ],
+    "rows_per_file": [
+      100,
+      33
+    ],
+    "source_target_pairs_match_all_csv_rows": true,
+    "blank_grouped_source_cells_inherited_at_rows": [
+      3,
+      38,
+      39,
+      48,
+      57,
+      71,
+      123
+    ],
+    "method": "Parse tr/td anchors in supplied order. Inherit source URL only where the grouped row omits it. Compare every source and target with corresponding CSV row."
+  },
+  "selected_reference_leads": [
+    {
+      "source_row": "1",
+      "referring_page_title": "Backlog MCP Server by gkoreli | Glama",
+      "referring_page_url": "https://glama.ai/mcp/servers/gkoreli/backlog-mcp",
+      "target_url": "https://gkoreli.com/one-hundred-pull-requests",
+      "anchor_with_surrounding_text": "117 Pull Requests Later, It Wasn’t a Task Manager Anymore traces how this repository grew from a small task backlog",
+      "domain_rating": "77",
+      "first_seen_date": "2026-09-23",
+      "last_seen_date": "2026-09-23",
+      "last_seen_display": "23 Sep 2026"
+    },
+    {
+      "source_row": "9",
+      "referring_page_title": "Only 25% of Our Claimed AI Bot Hits Verified. The Page-Level Data Told a Different Story",
+      "referring_page_url": "https://groas.com/post/three-quarters-of-our-ai-bot-traffic-couldn-t-be-verified",
+      "target_url": "https://gkoreli.com/blog/chatgpt-claude-gemini-grok-fetcher-headers-measured",
+      "anchor_with_surrounding_text": "says that, because ChatGPT-User actions are initiated by a user, robots.txt rules may not apply . A separate observed Claude-User test pulled",
+      "domain_rating": "51",
+      "first_seen_date": "2026-11-03",
+      "last_seen_date": "",
+      "last_seen_display": "6 h ago"
+    },
+    {
+      "source_row": "15",
+      "referring_page_title": "实测：不同 AI 抓取工具会在请求中发送哪些 Header | AI快讯 | 47+AI",
+      "referring_page_url": "https://www.47j.net/news/ai-header-be8f56",
+      "target_url": "https://gkoreli.com/which-ai-fetchers-send-which-headers",
+      "anchor_with_surrounding_text": "阅读原文",
+      "domain_rating": "0",
+      "first_seen_date": "2026-09-17",
+      "last_seen_date": "",
+      "last_seen_display": "6 d ago"
+    },
+    {
+      "source_row": "77",
+      "referring_page_title": "Web Bot Auth guide: verify signed bots and AI agents | Arcjet",
+      "referring_page_url": "https://arcjet.com/learn/web-bot-auth",
+      "target_url": "https://gkoreli.com/which-ai-fetchers-send-which-headers",
+      "anchor_with_surrounding_text": "a one-hour expiry. A DuckAssistBot request that a site owner published covers only",
+      "domain_rating": "71",
+      "first_seen_date": "2026-10-17",
+      "last_seen_date": "2026-10-17",
+      "last_seen_display": "17 Oct 2026"
+    }
+  ],
+  "direct_source_review": {
+    "url": "https://arcjet.com/learn/web-bot-auth",
+    "review_date": "2026-11-04",
+    "status": "Confirmed public page links the canonical fetcher study and uses the DuckAssistBot signature coverage and expiry example. Previously known reference, reconfirmed here.",
+    "groas_and_47j": "Web-tool retrieval failed; CSV contexts are leads, not independently checked source content."
+  },
+  "limits": [
+    "No complete backlink index, independent-endorsement count, Google ranking, search impressions, visits, assistant citation count, or traffic lift is measured by these rows.",
+    "Earlier all-links crawl counts and this filtered report use different scopes; count differences are not gains or losses.",
+    "First/last seen are provider crawl observations. Relative last-seen labels lack a fully specified capture instant/timezone.",
+    "Multiple mirrors and syndication pages count as distribution surfaces; independent sources require review.",
+    "Ahrefs DR and traffic estimates are provider metrics. Repeated domain metrics must not be summed."
+  ]
+}
