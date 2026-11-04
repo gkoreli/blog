@@ -1,6 +1,6 @@
 # Worklists
 
-- [In the age of abundance, less is more](in-the-age-of-abundance-less-is-more/README.md) — November 3 essay finalized with an accepted partial closure and unresolved tension; publication checks and activation in progress. The remaining personal question is not unfinished article work.
+- [In the age of abundance, less is more](in-the-age-of-abundance-less-is-more/README.md) — published November 3 with the accepted partial closure and unresolved tension; local build, deployment metadata, and live article/prompt/feed checks recorded. Article complete; a possible personal follow-up is not active work.
 - [Weight-space programming](weight-space-programming/README.md) — November 2 initial research into agents reading and editing neural weights; pinned source audit, checked score arithmetic, article-form recommendation, and proposed reproduction. No article or model experiment published.
 - [Blog navigation and Nisli SSG](blog-design-and-nisli-ssg/README.md) — October 20 framework migration and approved sidebar cleanup; local checks and delivery evidence.
 - [FluoTest acquisition case study](fluotest-acquisition-case-study/README.md) — completed public-source trace, with founder history, exchanges, slop distrust, product use, and downstream repackaging. Includes six CSV inventories and an [interactive HTML field guide](fluotest-acquisition-case-study/explorer.html) delivered 2026-10-18 PDT. Visibility and reader-use experiments are proposed, not running.

@@ -1,6 +1,6 @@
 # In the age of abundance, less is more
 
-Started November 3, 2026, Pacific time. Status: essay finalized with Goga's accepted partial closure; publication checks and activation in progress.
+Started November 3, 2026, Pacific time. Status: **published and verified** with Goga's accepted partial closure. The essay is complete; its personal tension intentionally remains unresolved.
 
 ## Direction
 
@@ -13,6 +13,7 @@ Form: **essay of inquiry**, collaboratively drafted at Goga's explicit request. 
 ## Working files
 
 - [Article](../../../packages/blog/posts/040-in-the-age-of-abundance-less-is-more.md) — finalized essay; November 3, 2026 publication date in the author's Pacific timezone.
+- [Live article](https://gkoreli.com/in-the-age-of-abundance-less-is-more) and [publication receipt](publication.json) — source delivery, deployment metadata, and served-content checks recorded separately.
 - [Discussion and competing explanations](01-discussion.md) — author-supplied observations, accepted ending, and unadopted agent proposals retained as history.
 - [Shaping prompts](../../../packages/blog/prompts/in-the-age-of-abundance-less-is-more.prompts.md) — three chronological messages. Messages 1 and 3 are complete; message 2 has two explicit omissions for a workplace example Goga asked to exclude. The unredacted message remains outside Git. Do not call this a complete transcript or put excluded details in the article, public prompt record, notes, or commit text. This author instruction takes precedence over the default complete-public-prompt convention. The article discloses the omissions beside its provenance link.
 
@@ -32,8 +33,8 @@ The article and prompt record now live in the discovered `posts/` and `prompts/`
 - [x] Finish the essay without requiring an answer to every earlier editorial question; remaining questions are intentionally unresolved, not publication blockers.
 - [x] Retain the supplied title and inquiry form; assign description, search metadata, tags, publication date, and the three-message prompt record.
 - [x] Complete article, privacy, Markdown, frontmatter, and isolated production-build checks.
-- [ ] Commit and push scoped publication changes to main.
-- [ ] Verify the live article, accepted ending, prompt record, and generated discovery representations; record deployment evidence separately.
+- [x] Commit and push scoped publication changes to main.
+- [x] Verify the live article, accepted ending, prompt record, and generated discovery representations; record deployment evidence separately.
 
 ## November 3 checkpoint
 
@@ -74,4 +75,16 @@ Local publication checks passed with Node 24.14.1 and pnpm 9.15.4: all 30 Markdo
 
 Checked generated article H1, canonical and description; accepted ending; three chronological prompt messages; two disclosed privacy omissions; HTML, Markdown, CSL-JSON and BibTeX files; and inclusion in feed, sitemap, `llms.txt`, and `posts.json`. Thirteen relative documentation links and scoped whitespace passed. Earlier prompt messages were compared byte-for-byte with their preceding committed versions; message 3 matches its preserved source. No application behavior changed, so a broader runtime test suite was not required.
 
-The source is ready for commit/push. Live activation and served acceptance remain to be recorded.
+The source was ready for commit/push at this checkpoint. The completed delivery and live checks are recorded below.
+
+## November 3 completion — live publication
+
+Source delivered: **`73bb13c`** was committed and pushed directly to `origin/main`, triggering the existing Cloudflare Git deployment. The exact full SHA is recorded in the [publication receipt](publication.json). No PR or external distribution post was created.
+
+Activation observed: fresh Wrangler 4.71.0 metadata listed the latest deployment at `2026-11-04T07:27:33.869Z` with Worker version `22177703-e4a7-40e4-99af-78242b683fef` at 100%. The CLI gives no source commit/message, so an exact source-to-Worker-version join is not claimed.
+
+Served acceptance: direct HTTPS checks at `2026-11-04T07:27:52–53Z` (November 3 Pacific time) returned 200 for the article, prompts, Markdown, feed, sitemap, and post index. The live article text and prompt-article text exactly match their checked local counterparts after whitespace normalization. The Markdown matches byte for byte. H1, canonical, description, date, section, accepted partial ending, three prompt messages, two explicit privacy omissions, and feed/sitemap inclusion passed. No excluded workplace detail appeared in the checked representations. These observations establish publication, not audience use or the outcome of the proposed constraint.
+
+Selected local artifacts and raw HTTP captures remain outside Git. The session's isolated source export was removed; the primary checkout and other sessions' outputs were preserved. No visual browser/viewport audit was performed. The public receipt contains methods, selected results, timestamps, hashes, and limits rather than raw operational captures.
+
+Completed: author-approved article, provenance, local checks, source delivery, activation metadata, and served acceptance. No required article work or access blocker remains. Next bounded action: none for this publication. A later personal resolution may inspire a new follow-up at Goga's discretion; do not reopen this completed worklist merely because the essay ends unresolved.

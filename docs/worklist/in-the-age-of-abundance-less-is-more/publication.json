@@ -1,0 +1,107 @@
+{
+  "checkedAt": "2026-11-04T07:28:49.429433+00:00",
+  "sourceCommit": "73bb13c424408fc49f93df0ee4e2c7d4379d3e1c",
+  "sourcePushedTo": "origin/main",
+  "articleUrl": "https://gkoreli.com/in-the-age-of-abundance-less-is-more",
+  "promptUrl": "https://gkoreli.com/in-the-age-of-abundance-less-is-more/prompts",
+  "publicationDatePacific": "2026-11-03",
+  "localChecks": {
+    "localNode": "24.14.1",
+    "pnpm": "9.15.4",
+    "validatedMarkdownPosts": 30,
+    "builtPosts": 41,
+    "buildMethod": "Isolated tracked-source export with scoped overlay; referral-policy check and production pipeline via node --import tsx after tsx CLI IPC was blocked by sandbox.",
+    "privateEnvCopied": false,
+    "canonical": "https://gkoreli.com/in-the-age-of-abundance-less-is-more",
+    "articleH1": "In the age of abundance, less is more",
+    "checks": [
+      "accepted ending",
+      "provenance disclosure",
+      "three-message prompt record",
+      "two privacy omissions",
+      "HTML/Markdown/CSL/BibTeX output",
+      "RSS/sitemap/llms/posts index inclusion"
+    ]
+  },
+  "deployment": {
+    "source": "Fresh Wrangler 4.71.0 deployments list for gkoreli-com",
+    "latestCreatedOn": "2026-11-04T07:27:33.869Z",
+    "workerVersion": "22177703-e4a7-40e4-99af-78242b683fef",
+    "allocationPercentage": 100,
+    "exactCommitToWorkerVersionJoinEstablished": false,
+    "limit": "CLI reports deployment source Unknown and no version message; do not infer a cryptographic source/version join. Served content independently matches the checked publication."
+  },
+  "served": {
+    "articleTextMatchesCheckedLocalArticle": true,
+    "promptArticleTextMatchesCheckedLocalPromptPage": true,
+    "markdownBytesMatchCheckedLocalArtifact": true,
+    "h1": "In the age of abundance, less is more",
+    "canonical": "https://gkoreli.com/in-the-age-of-abundance-less-is-more",
+    "acceptedPartialEndingPresent": true,
+    "promptMessages": 3,
+    "privacyOmissions": 2,
+    "feedAndSitemapContainArticle": true,
+    "postIndexMetadataMatches": true,
+    "httpReceipts": [
+      {
+        "label": "article",
+        "url": "https://gkoreli.com/in-the-age-of-abundance-less-is-more",
+        "status": 200,
+        "contentType": "text/html",
+        "bytes": 20751,
+        "sha256": "9b8ad87ad36651c8eab76106c94631b2065fa681a99b29639b7498a7a3851cbc",
+        "checkedAt": "2026-11-04T07:27:52.272719+00:00"
+      },
+      {
+        "label": "prompts",
+        "url": "https://gkoreli.com/in-the-age-of-abundance-less-is-more/prompts",
+        "status": 200,
+        "contentType": "text/html",
+        "bytes": 29999,
+        "sha256": "5be5fd85cbc28b4955d0cb698fb1e45e368a6e6ebccf1068604c1881060d8bd3",
+        "checkedAt": "2026-11-04T07:27:52.607052+00:00"
+      },
+      {
+        "label": "markdown",
+        "url": "https://gkoreli.com/in-the-age-of-abundance-less-is-more.md",
+        "status": 200,
+        "contentType": "text/markdown; charset=utf-8",
+        "bytes": 10265,
+        "sha256": "11b18f5d652a539f95fe04bf9631bfa1f895ef33463e535e5e995d2f4434ed65",
+        "checkedAt": "2026-11-04T07:27:52.766147+00:00"
+      },
+      {
+        "label": "feed",
+        "url": "https://gkoreli.com/feed.xml",
+        "status": 200,
+        "contentType": "application/xml",
+        "bytes": 20651,
+        "sha256": "061f178e9369236d8d5864c4e935bdfabefa321d0d88b415f62be6e0051a4995",
+        "checkedAt": "2026-11-04T07:27:52.889170+00:00"
+      },
+      {
+        "label": "sitemap",
+        "url": "https://gkoreli.com/sitemap.xml",
+        "status": 200,
+        "contentType": "application/xml",
+        "bytes": 7407,
+        "sha256": "a1fe11bc72d566be9841f2449b631807336d28620864e405c2bfe2c9c5c2cdcf",
+        "checkedAt": "2026-11-04T07:27:53.006962+00:00"
+      },
+      {
+        "label": "posts",
+        "url": "https://gkoreli.com/posts.json",
+        "status": 200,
+        "contentType": "application/json",
+        "bytes": 32445,
+        "sha256": "c68491e38681f9dd297bfed6b10882c118568b0bab11e34aee8b62985bb6a0ef",
+        "checkedAt": "2026-11-04T07:27:53.187751+00:00"
+      }
+    ]
+  },
+  "limits": [
+    "Acceptance uses generated markup and direct HTTPS content checks; no visual browser or viewport audit was performed.",
+    "No readership, impact, or successful narrower-focus experiment claimed."
+  ],
+  "status": "Article publication complete; personal inquiry intentionally remains unresolved."
+}
