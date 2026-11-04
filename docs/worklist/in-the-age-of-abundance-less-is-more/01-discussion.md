@@ -1,6 +1,6 @@
 # Discussion: productive breadth and the feeling that something is wrong
 
-November 3, 2026, Pacific time. The [shaping record](../../../packages/blog/prompts/in-the-age-of-abundance-less-is-more.prompts.md) preserves messages 1 and 3 completely and message 2 with two disclosed omissions for a workplace example Goga asked to exclude. The observations below paraphrase his material; they are not verbatim quotations. Do not restore excluded details from the private source into committed files.
+November 3, 2026, Pacific time. The [shaping record](../../../packages/blog/prompts/in-the-age-of-abundance-less-is-more.prompts.md) preserves messages 1, 3, and 4 completely and message 2 with two disclosed omissions for a workplace example Goga asked to exclude. Message 4 requests homepage-feature placement and does not change the essay's position. The observations below paraphrase his material; they are not verbatim quotations. Do not restore excluded details from the private source into committed files.
 
 ## Publication decision — third message
 
