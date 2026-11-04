@@ -1,25 +1,99 @@
 # In the age of abundance, less is more
 
-*Working draft, November 3, 2026. An essay of inquiry, developed from Goga's supplied thoughts. The title is provisional; the central question remains open. [Worklist](../../../docs/worklist/in-the-age-of-abundance-less-is-more/README.md) · [Discussion notes](../../../docs/worklist/in-the-age-of-abundance-less-is-more/01-discussion.md).*
+*Working draft, November 3, 2026. Expanded through the second brain dump. An essay of inquiry; the narrower-focus experiment has not been tried. [Worklist](../../../docs/worklist/in-the-age-of-abundance-less-is-more/README.md) · [Discussion notes](../../../docs/worklist/in-the-age-of-abundance-less-is-more/01-discussion.md).*
 
-I am working on several things at once, and they are progressing. With AI agents helping me, I can do much more than I could before. I don't feel like I am spreading myself thin. The work looks good on paper, and in practice as well.
+Recently, my mentor suggested that I was involved in too many things at the same time. After thinking about it, I agreed. Before that conversation, I hadn't really seen it as a problem.
 
-Still, something feels wrong about tackling five or six different work streams. I don't really know what, how, or why yet.
+The projects weren't becoming risky. I wasn't failing to manage them. With AI agents helping me, I could keep several work streams progressing, and I didn't feel spread thin. That is what makes the advice interesting to me. I can be doing useful work across several projects and still wonder whether I should be doing less.
 
-At work, I own and drive two projects. At the same time, I am improving the speed, resilience, and reliability of our testing infrastructure. I also want to see the results of that work, so I am building an insights dashboard or tooling to give me that visibility.
+I want to stay closer to a couple of projects, including through the boring parts. I already have ownership. The question is what I do when the project slows down, becomes less interesting, or reaches a point where the next move isn't obvious.
 
-Then there is the development tool I built to help me move faster on my project. I have more or less already built it, and I use it heavily. I am more laid back in that work stream now. I am not actively changing it over and over.
+My mind tries to optimize. I can go somewhere else and build visibility, build leverage, make an impact. There is always another useful thing to work on.
 
-But every time I use it, it collects logs and usage metrics. I want to understand how I am using my own tools so that, in a week or two, when I have more free time, I can improve them based on that accumulated usage.
+## The other work is useful
 
-So that work stream is parked, but it is still on my radar. I am still accumulating potential improvements I could make later.
+At work, I own and drive two projects. I am also improving the speed, resilience, and reliability of our testing infrastructure. I want to see the results of those improvements, so I am building an insights dashboard or tooling to give me that visibility.
 
-That is already about five different work streams. And I feel like I am forgetting something.
+There is also the development tool I built to help me move faster on my project. I use it heavily, although I am no longer actively changing it over and over. It collects usage logs and metrics so that, when I return to it, I can make improvements based on how I have actually used it. That work stream is parked, but it remains on my radar.
 
-Each one has a reason to exist. I want the projects to progress. I want the testing infrastructure to be faster and more reliable. I want to see whether my improvements are achieving something. I use the development tools I built, and I want to learn from that usage.
+The testing work comes from my own interest in increasing engineering velocity. It has been paying off. As a team, we have seen substantial improvements in flakiness, reliability, and speed. Fewer flaky tests mean fewer unnecessary restarts. Faster integration tests shorten the wait after each code-review change.
 
-The usual explanation does not quite fit what I am experiencing. I don't feel spread thin. I am doing more work, and each stream is moving forward. Yet I keep returning to the feeling that something about the combination is wrong.
+So I can't explain this away as work that merely looks productive. It has been useful and impactful.
 
-I think I am slowly realizing, retroactively, that being able to build many more capabilities and features does not mean I should build everything that comes to mind. In the age of abundance, less is more is the thought I am trying to explore.
+Still, feeling productive, getting work done, and making a large impact are different things. I am trying to understand what I might be giving up even when the additional work has real value.
 
-I don't yet know what that means for the work I have just listed. I can describe the progress. I am still trying to understand the discomfort.
+## Stay with the blocked project
+
+Here is the situation I want to think through. Treat it as a mental experiment.
+
+I have built the UI. The backend team is working on a dependency. There is an accountable person, the blocker has been communicated, and the PMs are aligned. When the dependency arrives, I will integrate with it, validate the result, and move toward releasing the feature.
+
+For the next twenty-four or forty-eight hours, imagine that I cannot make much progress on that implementation. Usually I could work on the testing infrastructure or one of my tools. I don't tend to sit with my legs crossed and wait to be unblocked.
+
+But now I want to impose a constraint: I cannot pick up another project. I cannot touch the testing infrastructure, the development tools, or the insights tooling. In the age of abundance, less is more is the tenet I want to try respecting.
+
+What would I do?
+
+At first, I have no idea. I could probably sit there and do nothing, except my mind wouldn't leave it there. I would start looking for something to do within the project.
+
+That is where the uncomfortable possibilities begin. Am I using the parallel work stream to avoid being bored? Is it a way to escape the uncertainty of a stalled project? Am I chasing the satisfaction of making visible progress?
+
+I don't want to jump to any of those conclusions. I want to stay in the situation long enough to see what else I can think of.
+
+## Planning work I already understand
+
+The first idea is planning. I hate planning, so perhaps there is something here that I am avoiding.
+
+But what exactly would I be planning? I already know the sequence. The dependency arrives. I build against it, validate the result, get the work reviewed, communicate what changed, let people try it, and move it toward release. I know I am going to do those things.
+
+I could write that down. But what benefit would I get from writing down a plan that already feels straightforward? Someone might say it will make the work easier. I am not convinced yet, because this part already feels easy to me.
+
+In my head, I give this idea about one or one and a half out of five. I want to keep looking for something that feels more consequential.
+
+## Updating a document that keeps changing
+
+Another possibility is refreshing the design document. Parts of it may need to change because the dependency is changing. I could mark unsettled sections as provisional and make the document ready for the final contract.
+
+There is a useful version of this. Once the dependency lands, I can give my agents the design, the relevant decisions, and what changed. They can work from a coherent description of what the UI needs to do, with open questions made visible.
+
+But the backend approach has already changed several times while it is being worked on. If I update my document every time, I can create confusion and unnecessary work.
+
+There is a boundary here too. My design document concerns the UI product work. It needs the contract with the backend. I don't suddenly need to own the backend service's changing implementation or duplicate every decision and rationale in my document.
+
+Updating the relevant parts once the contract is settled seems sensible. Continuously rewriting around an unsettled dependency seems messy. I initially give the documentation idea a little more weight, then bring it back down to about two out of five.
+
+## Anticipating what comes next
+
+Anticipation has already helped me in meetings, demos, and design reviews.
+
+When I prepare a document or presentation, I ask my agent to anticipate the questions we might receive. I use those questions to develop my own judgment and answers. I ask for references and cross-checks against the relevant documentation, services, and dependencies so that I understand the answers myself.
+
+Then, when some of those questions come up in the meeting, I have already thought about them. I can answer with an understanding I would otherwise have had to develop on the spot.
+
+I could do something similar while the project is blocked. What product questions, UX problems, or implementation questions might appear after the dependency lands? What can I understand now that would help me respond then?
+
+But only some of the possibilities I prepare for will happen. A lot of the preparation could be thrown away. That makes it feel like another kind of meta-work: getting ready for a problem instead of working on the problem itself.
+
+I give this about two out of five as well. Even though I have found anticipation useful in meetings, I am discounting it here because so much of it might never be used.
+
+I am having trouble finding an idea I would give a three, a four, or a five.
+
+## The follow-ups that never happen
+
+There is another possibility: pull some follow-up work forward.
+
+Follow-up sometimes feels like the biggest lie in the universe. We decide to release the feature now and return to something later. Then the feature is out, priorities move on, and the promised follow-up no longer seems important.
+
+Perhaps a period blocked on a dependency is a chance to do some of that work within the project. Instead of promising to return after release, I could do it while I am waiting.
+
+But I can already hear the objection. If the work could be postponed and then forgotten, perhaps it wasn't important enough to do. Why spend this time on something nobody would otherwise prioritize?
+
+I don't have a good answer yet. I do feel that follow-ups aren't all equal. Some may deserve to happen earlier. I haven't worked out how to distinguish them from the work that was right to leave behind.
+
+## I haven't found the answer yet
+
+I started with a feeling that my mentor was right: I am involved in too many things. I can now describe more precisely what I want to explore. When a project slows down, I can move to another useful project. I want to understand what would happen if I stayed.
+
+So far, the alternatives I have come up with don't feel as valuable as the work I would usually switch to. Some seem redundant, some seem premature, and some seem likely to be discarded. I don't want to pretend I have discovered a better way to spend that time.
+
+But I also don't want to dismiss the constraint before I have really sat with it. I want to allow myself to be bored for a little while and see what I would do next.

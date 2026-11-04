@@ -1,6 +1,39 @@
 # Discussion: productive breadth and the feeling that something is wrong
 
-November 3, 2026, Pacific time. The source is [Goga's initial complete shaping message](../../../packages/blog/drafts/prompts/in-the-age-of-abundance-less-is-more.prompts.md). The observations below paraphrase it; they are not verbatim quotations.
+November 3, 2026, Pacific time. The [shaping record](../../../packages/blog/drafts/prompts/in-the-age-of-abundance-less-is-more.prompts.md) preserves message 1 completely and message 2 with two disclosed omissions for a workplace example Goga asked to exclude. The observations below paraphrase his material; they are not verbatim quotations. Do not restore excluded details from the private source into committed files.
+
+## Latest material — second brain dump
+
+- Reflection followed advice from Goga's mentor that he was involved in too many things. He agreed after thinking about it. There was no triggering project failure, risk, or inability to cope.
+- He already has ownership. He wants to remain close to a few projects through their less interesting or blocked periods, instead of immediately finding another productive stream.
+- The testing work is self-directed and has real value in his account: fewer flaky tests and faster integration checks reduce repeated work and speed iteration. The draft must preserve this counterweight to the argument for less.
+- He recalled a fivefold-or-sevenfold flakiness reduction. No supporting measurement, denominator, window, or exact figure was supplied. Use qualitative reported improvement unless numerical evidence becomes available.
+- His mental experiment assumes the UI is built, the backend dependency has an accountable owner, and stakeholders already understand the block. For twenty-four or forty-eight hours, suppose he cannot switch to testing, development tools, or insights work. Do not solve a different scenario by reminding him to communicate a blocker he already communicated.
+- He wonders whether switching is a way to avoid boredom, uncertain work, or planning. These are his questions, not a diagnosis or established motive.
+- Planning feels low-value when he already knows the integration, review, validation, and communication steps. His rough score is about 1–1.5 out of 5.
+- Updating a design document could give agents coherent context, but the backend approach is changing. His UI document needs the relevant interface contract, not a duplicate history of the backend service's decisions. He reduces the idea's rough score to about 2.
+- Anticipating questions with agents already helps him prepare for meetings, demos, and reviews and develop his own understanding. He considers applying it to the waiting period, then scores it about 2 because much preparation may never be used. His 10–20% estimate is unmeasured and is not in the article.
+- Deferred follow-ups sometimes feel to him like promises that disappear after release. He proposes bringing some forward while blocked, then objects that a forgotten follow-up might never have deserved priority. He thinks follow-ups differ in importance but has not supplied a selection rule.
+- He explicitly requests opinions, blind spots, and practical examples in plain language. Article development is the primary objective; eliciting more material supports it. Do not continue with a question-only interview.
+
+## Agent proposals for the next exchange — not yet adopted by Goga
+
+These are possibilities to test, not conclusions or first-person article material. The examples are invented illustrations, not incidents from his work. No external research or behavioral experiment supports them yet.
+
+1. **Test whether the project is truly waiting before explaining the switch psychologically.** An open, consequential question inside the project would make staying potentially valuable. If all such questions are settled and implementation really awaits another team, the wait may be real. Less parallel work does not guarantee a hidden high-value task.
+2. **Judge preparation by the consequence it changes, not the share that gets used.** Preparing for ten questions and using one can be worthwhile if that one avoids a serious mistake. Preparing for many harmless possibilities can waste time. His existing account of useful meeting preparation is a reason to examine the low anticipation score, not proof that all anticipation is valuable.
+3. **Distinguish work that creates an artifact from work that changes a decision.** A written checklist may add little when the steps are already clear. A short investigation that changes a release decision could matter without producing much code. This is a hypothesis about how he is scoring the ideas, not a claim that he values only visible output.
+4. **Use one concrete user situation to find a consequential unknown.** Hypothetical example: a request succeeds on the server, the UI times out, and the person tries again. What should the UI show and what behavior does it need from the existing contract? Inspect the current design and raise only an actual missing contract question with its owner. Do not redesign the backend, create another test framework, or manufacture a new obligation if this is already covered.
+5. **Rehearse the integration only where it can reveal a real gap.** Hypothetical example: the payload and UI types agree in principle, but their interpretation of an absent value differs. A small example can expose an unresolved meaning before integration. If the meaning is already settled, documenting the known sequence again is unlikely to add value. This is illustrative; no such mismatch has been found in Goga's project.
+6. **Sort follow-ups by what was deferred and why.** A decorative refinement may properly remain undone. A known case where an error erases a person's entered work can deserve attention even if the happy path works. Deferral for launch scope and rejection for low value are different decisions. Only act on work still within the chosen outcome and agreed scope; clearing a backlog is not inherently impact.
+7. **Let a bounded review end without finding a task.** A short pass over unresolved consequential questions may find nothing. A hard rule to fill the entire wait with work on this project could reward unnecessary planning and documentation. The constraint can reveal something without becoming a permanent ban on helping elsewhere.
+8. **Apply selectivity inside the project too.** Agents can produce endless anticipated issues, documents, and reviews. Moving that abundance into one project would not establish greater impact. Prefer a specific decision or user consequence over a large pile of possible questions.
+
+Article direction under consideration: the opportunity may concern staying with a project after obvious implementation progress slows, long enough to find whether important thinking remains. The countercase is essential: switching to genuinely valuable testing work may be the best choice during a real wait. The current evidence does not settle between them.
+
+## Initial question bank — retained as history
+
+The material below records the first exchange. The mentor-origin correction and the request for opinions above supersede its interviewing instructions.
 
 ## What Goga has supplied
 
@@ -65,4 +98,4 @@ Possible explanation: the useful boundary could concern commitments, features, o
 
 Start with a concrete incident or a disagreement with one of these explanations. Preserve both the apparent success and the unease. An answer that shows the current breadth is worthwhile is material for the inquiry too.
 
-After each substantive reply, append the complete message to the prompt record, update these notes with the supplied observation and any changed interpretation, then revise the article. Do not turn an appealing question into the author's conclusion by repetition.
+After each substantive reply, preserve the message in the prompt record with any author-required omissions explicitly disclosed, update these notes with supplied observations and changed interpretations, then revise the article. Keep excluded details outside Git. Do not turn an appealing question into the author's conclusion by repetition.
