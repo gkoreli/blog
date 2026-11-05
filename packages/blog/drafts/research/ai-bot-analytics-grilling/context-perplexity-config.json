@@ -1,0 +1,5 @@
+{
+  "streams": ["tail.raw"],
+  "trialPrefix": "bot-grill-20261104-",
+  "assignedLabels": ["perplexity-01", "context-scrape-01", "context-crawl-01", "context-map-01"]
+}

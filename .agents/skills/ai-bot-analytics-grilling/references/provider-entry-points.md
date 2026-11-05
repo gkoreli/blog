@@ -38,6 +38,20 @@ Use the existing signed-in ChatGPT tab for a fresh public-page question. Record 
 
 Keep source cards and output-link tracking parameters separate from the original requested URL. Save the answer before inspecting citations, and distinguish any later browser-shaped hit from an identified answer-time fetch. Avoid publishing unrelated home suggestions, private chat history or account UI.
 
+## Context.dev
+
+Start with the [Scrape reference](https://docs.context.dev/api-reference/web-scraping/scrape), [MCP instructions](https://docs.context.dev/install-mcp), existing account and [public tools](https://www.context.dev/free-tools). The [URL to Markdown converter](https://www.context.dev/free-tools/url-to-markdown) can offer an anonymous retrieval path even when the dashboard and hosted MCP require authentication. Record its actual availability, output, cache controls and usage visibility separately from an authenticated API trial.
+
+The service MCP is `https://mcp.context.dev/mcp`; the docs-search MCP is a different server. An unauthenticated initialization challenge is an access result, not tools/list or a failed scrape. Do not follow onboarding documentation into account creation, persistent key creation or wider OAuth scopes without the appropriate authorization. For API responses, inspect each requested output's success and reported usage. Do not assume a public converter exposes `maxAgeMs` or the API's other options.
+
+Keep all clients reaching an assigned label, including browser claims and unexpected third-party bot declarations. The workflow assignment does not authenticate each declared operator or expose the provider's internal delegation.
+
+## Perplexity
+
+Use an existing signed-in browser session for a fresh exact-URL question. Record plan, Search versus Computer, and the actual visible model label; do not infer a model from upgrade choices. Preserve completed refusals and expanded tool activity without treating an activity label as a successful fetch.
+
+The [crawler documentation](https://docs.perplexity.ai/docs/resources/perplexity-crawlers) separates PerplexityBot and Perplexity-User and their address lists. Compare the actual request rather than assuming the user-fetcher must appear. No exact Worker match remains bounded to the stopped capture; inspect relevant retained security evidence before diagnosing edge blocking. API, MCP, CLI and Computer are separate interfaces, not interchangeable evidence for the website's Search answer.
+
 ## Extending the catalogue
 
-Potential additions include Jina Reader, Claude tools, Perplexity, Google/Gemini, Mistral and Grok. Add a current primary source and a runnable entry point before calling an adapter usable. Keep existing historical trials linked and dated; queue fresh repeats only when they change the comparison.
+Potential additions include Jina Reader, Claude tools, Google/Gemini, Mistral and Grok. Add a current primary source and a runnable entry point before calling an adapter usable. Keep existing historical trials linked and dated; queue fresh repeats only when they change the comparison.

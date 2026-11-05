@@ -1,0 +1,15 @@
+{
+  "privateRoot": "packages/blog/worklog/ai-bot-analytics-grilling-context-perplexity-20261104/",
+  "rawCapturesInGit": false,
+  "credentialUsed": "No Context.dev key or OAuth grant; Perplexity existing browser session; authorized Wrangler CLI authentication only",
+  "captureStoppedAt": "2026-11-05T06:59:36.794933+00:00",
+  "createdAt": "2026-11-05T14:59:36.276610+00:00",
+  "fileCount": 63,
+  "totalBytes": 1542522,
+  "manifestSha256": "8ad2e3ef33cd0ff06a24919922a17605e1d558076d5f13bed1e7c920b850958d",
+  "limits": [
+    "Preservation commitment, not platform-wide capture completeness",
+    "Only reviewed screenshots and allowlisted results are public",
+    "Later source-delivery metadata lies outside this frozen private manifest"
+  ]
+}

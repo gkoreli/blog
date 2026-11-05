@@ -1,12 +1,12 @@
 # Testing AI Search, Fetch, and Crawl Against My Analytics
 
-Working draft, November 4, 2026. Unpublished. The [first provider batch](research/ai-bot-analytics-grilling/01-first-batch.md) and [ChatGPT/Brave extension](research/ai-bot-analytics-grilling/02-chatgpt-and-brave.md) are complete. Authenticated Firecrawl/Agent tests and broader repeats remain open. [Research worklist](research/ai-bot-analytics-grilling/00-worklist.md).
+Working draft, updated November 5, 2026. Unpublished. The [first provider batch](research/ai-bot-analytics-grilling/01-first-batch.md), [ChatGPT/Brave extension](research/ai-bot-analytics-grilling/02-chatgpt-and-brave.md) and [Context.dev/Perplexity trials](research/ai-bot-analytics-grilling/03-context-and-perplexity.md) are complete. Authenticated Firecrawl/Agent and Context.dev operations, plus broader repeats, remain open. [Research worklist](research/ai-bot-analytics-grilling/00-worklist.md).
 
 An AI search result, a page fetch and a cited answer leave different evidence. In the first trials for this article, Exa returned search highlights, its separate fetch tool requested my page as `ExaUser`, and Duck.ai answered through a signed `DuckAssistBot` request. Bing's AI Mode cited my earlier study while dropping some of its limits. I want to compare the whole path: what I asked a service to do, what it returned, what reached Cloudflare, and what my analytics recorded.
 
 My [earlier fetcher study](/which-ai-fetchers-send-which-headers) captured ten assistants in September. The [follow-up](/ai-fetcher-research-from-experiments-to-a-cited-reference) explains later tests and external use of that work. This article starts a repeatable provider catalogue: separate operations, named conditions, real failures and open questions. The earlier results retain their dates.
 
-Codex operated the services with my authorization and existing account access. The first batch contains thirteen deliberately elicited observations: eight stored Browser, two Unresolved and three AI Assistant. The later ChatGPT/Brave extension adds a ChatGPT-User fetch and a separate post-answer Browser request whose operator remains unresolved. These are not organic growth measurements or counts of people.
+Codex operated the services with my authorization and existing account access. The first batch contains thirteen deliberately elicited observations: eight stored Browser, two Unresolved and three AI Assistant. The ChatGPT/Brave extension adds a ChatGPT-User fetch and a separate post-answer Browser request whose operator remains unresolved. Context.dev's public converter adds two Browser requests and one Preview or Feed request. These are not organic growth measurements or counts of people.
 
 ## The kinds of bots we need to distinguish
 
@@ -32,7 +32,7 @@ Each record names the product, operation, API/MCP/browser interface, account/mod
 
 The useful chain is submission → provider result → origin request → storage acknowledgement → exact stored row. I keep raw logs and references privately and publish reviewed facts. A successful signature is another field in that chain, with its covered components preserved. Each missing stage remains visible.
 
-For this batch, all thirteen exact assigned-label requests have matching stored rows and full receipt equality. The indexed Wrangler readback reported 26 rows read, zero writes and one attempt. A separate constant access check reported zero reads and writes. The existing collector performed the ordinary experimental inserts; I changed no runtime classification rule.
+For the first batch, all thirteen exact assigned-label requests have matching stored rows and full receipt equality. The indexed Wrangler readback reported 26 rows read, zero writes and one attempt. A separate constant access check reported zero reads and writes. The existing collector performed the ordinary experimental inserts; I changed no runtime classification rule.
 
 ### The answer and its evidence
 
@@ -126,6 +126,42 @@ Those results are preserved as UI evidence. The Data trees contained collapsed r
 
 Brave says its [crawler does not advertise a differentiated User-Agent](https://safe.search.brave.com/help/brave-search-crawler). That changes what a publisher can expect to recognize from declarations alone. It does not identify the later Chrome request in the ChatGPT trial as Brave traffic. A product name, a search answer and a received request each need their own evidence.
 
+## Context.dev
+
+### Public conversion worked while MCP required authentication
+
+Context.dev's login page required sign-in, and one credential-free initialization of its documented MCP endpoint returned HTTP 401 with an OAuth challenge. That establishes an access gate, without an executed scrape. I kept this provider to public access. [MCP documentation](https://docs.context.dev/install-mcp).
+
+Its separate [free URL to Markdown converter](https://www.context.dev/free-tools/url-to-markdown) accepted the labelled article and returned 54,069 characters across 329 lines. The downloaded file agrees with those displayed counts and contains the correct body H1, maintenance sentence and signature example. It also keeps navigation and footer content. Successful conversion and main-content-only extraction are different properties.
+
+### One conversion, two browser claims and a preview-bot claim
+
+Within three seconds of submission, the exact assigned URL received three HTTP 200 requests: Chrome 153 and Chrome 157 claims from AS5650, then a Slackbot-LinkExpanding declaration from AS14618. Both Chrome requests carried navigation Fetch Metadata, including `Sec-Fetch-User: ?1`, and were stored Browser. The third was stored Preview or Feed. All three were unsigned, without vendor-network checks.
+
+The assigned URL connects these requests to the converter workflow. It does not establish which internal component made each request or authenticate Slack as the operator of the third. No Slack message was sent. This is why I retain experimental assignment, received declaration and stored classification as separate dimensions.
+
+All three full stored receipts match their acknowledgements. The exact D1 readback used six reads and zero writes. The [batch record](research/ai-bot-analytics-grilling/03-context-and-perplexity.md) preserves a transient Wrangler metadata error, successful access check and completed readback.
+
+### API controls remain a separate test
+
+The [Scrape API](https://docs.context.dev/api-reference/web-scraping/scrape) documents Bearer authentication, individual output-success fields and `maxAgeMs: 0` for fresh retrieval. The public converter did not expose those controls or reported credits. I have not transferred the API defaults to this browser trial, measured billed cost, or tested authenticated Search, Map, Crawl and Answers.
+
+The result was saved promptly; a later browser export call remained pending for nearly eight hours while the bounded tail stopped independently. That research-tool delay is not an eight-hour provider-processing measurement.
+
+## Perplexity
+
+### Search declined the requested page task
+
+The existing signed-in Free-plan session had Search enabled and Computer disabled. I submitted the same three-part page question with a new assigned URL. Its completed answer displayed Finished 3s, reported a fetch error with no page content, and declined the H1, maintenance sentence, signature coverage and verified citation. Expanded tool activity showed the assigned URL under Reading web page.
+
+![Actual Perplexity question and completed answer declining the requested page details after a reported fetch error.](research/ai-bot-analytics-grilling/assets/perplexity-answer-20261104.png)
+
+### A missing request does not explain the failure
+
+No exact Perplexity label appears in this batch's eight-minute Worker GET capture. A corresponding retained edge-security check remains unavailable, so I cannot diagnose an edge block or rule one out. The answer's tool activity does not expose the underlying error code or retrieval path.
+
+Perplexity's [current crawler documentation](https://docs.perplexity.ai/docs/resources/perplexity-crawlers) separates PerplexityBot for search discovery from Perplexity-User for user actions, with distinct published address lists. Neither name appeared for this assigned URL. The September results stay dated; this fresh failure adds a separate observation. Its API, MCP, CLI and Computer product remain untested here.
+
 ## Tavily
 
 ### Search and page extraction
@@ -186,8 +222,11 @@ The catalogue tracks access/interface, operation, cache/freshness, output/format
 | ChatGPT signed-in Chat / Medium | All three requested parts correct, with source | One ChatGPT-User fetch stored AI Assistant; later Browser client kept separately |
 | Brave website / Ask | Related results and study mention / direct-page task declined | No exact Brave Ask label in the stopped GET capture |
 | Brave shared-demo LLM Context / Web Search API | Ten context sources / three web results; displayed HTTP 200 | UI evidence; no unique retrieval-URL causal join |
+| Context.dev public Markdown converter | Downloaded article, correct requested source fields; navigation/footer retained | Three HTTP 200 requests: two Browser, one Preview or Feed; exact receipts verified |
+| Context.dev unauthenticated MCP initialization | HTTP 401 and OAuth challenge | No executed retrieval tool |
+| Perplexity signed-in Search | Reported fetch error; requested details and citation declined | No exact match in the stopped GET capture; edge-security check unavailable |
 
-The first batch's thirteen receipts have unavailable native Cloudflare verified-bot/signed-agent booleans and zero vendor-network checks. The extension's ChatGPT-User receipt adds a positive configured network assessment; native booleans remain unavailable. I cannot turn missing assessments into negative verification or IP-list results. The [first-batch audit](research/ai-bot-analytics-grilling/01-first-batch.md) and [extension audit](research/ai-bot-analytics-grilling/02-chatgpt-and-brave.md) retain failed attempts, exact input distinctions and per-operation limits.
+The first batch's thirteen receipts have unavailable native Cloudflare verified-bot/signed-agent booleans and zero vendor-network checks. The ChatGPT-User receipt adds a positive configured network assessment; native booleans remain unavailable. Context.dev's three receipts likewise have unavailable native booleans and no vendor-network checks. I cannot turn missing assessments into negative verification or IP-list results. The [first-batch audit](research/ai-bot-analytics-grilling/01-first-batch.md), [ChatGPT/Brave audit](research/ai-bot-analytics-grilling/02-chatgpt-and-brave.md) and [Context.dev/Perplexity audit](research/ai-bot-analytics-grilling/03-context-and-perplexity.md) retain failed attempts, exact inputs and per-operation limits.
 
 ### Questions the next evidence should answer
 
@@ -209,3 +248,5 @@ The next unrun controls are a newly published body value absent from the prompt,
 | Thirteen request-to-row comparisons and full receipt equality | [Minimized evidence](research/ai-bot-analytics-grilling/first-batch-evidence.json), [checker](research/ai-bot-analytics-grilling/check-trial-storage.mjs) | November 5 UTC |
 | ChatGPT crawler roles and fresh browser trial | [OpenAI crawler documentation](https://developers.openai.com/api/docs/bots), [extension evidence](research/ai-bot-analytics-grilling/chatgpt-brave-evidence.json) | November 4, 2026 local |
 | Brave crawler policy, website and API trials | [Crawler documentation](https://safe.search.brave.com/help/brave-search-crawler), [extension results](research/ai-bot-analytics-grilling/chatgpt-brave-results.json) | November 4, 2026 local |
+| Context.dev public conversion, API controls and MCP access | [Public converter](https://www.context.dev/free-tools/url-to-markdown), [Scrape reference](https://docs.context.dev/api-reference/web-scraping/scrape), [MCP](https://docs.context.dev/install-mcp), [trial results](research/ai-bot-analytics-grilling/context-perplexity-results.json) | Trial November 4 local; export/review November 5 |
+| Perplexity crawler roles and failed Search retrieval | [Crawler documentation](https://docs.perplexity.ai/docs/resources/perplexity-crawlers), [batch record](research/ai-bot-analytics-grilling/03-context-and-perplexity.md) | Trial November 4, 2026 local |

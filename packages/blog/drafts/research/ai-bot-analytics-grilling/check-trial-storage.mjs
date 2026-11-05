@@ -58,7 +58,7 @@ if (mode === 'prepare') {
       ids.add(ack.storage.observationId); operations.add(ack.operationId);
       const headers = request.headers;
       const ua = headers['user-agent'] ?? '';
-      const products = [...ua.matchAll(/\b(ExaUser|ExaSearchBot|DuckAssistBot|ChatGPT-User|OAI-SearchBot|Chrome|Firefox|Safari|Version)\/([0-9.]+)/g)].map(match => match[0]);
+      const products = [...ua.matchAll(/\b(ExaUser|ExaSearchBot|DuckAssistBot|ChatGPT-User|OAI-SearchBot|Perplexity-User|PerplexityBot|Slackbot-LinkExpanding|Chrome|Firefox|Safari|Version)[ /]([0-9.]+)/g)].map(match => `${match[1]}/${match[2]}`);
       const components = [...(headers['signature-input'] ?? '').matchAll(/\(([^)]*)\)/g)]
         .flatMap(match => [...match[1].matchAll(/"([@a-z][@a-z0-9-]*)"/g)].map(value => value[1]));
       privateEvents.push(envelope);

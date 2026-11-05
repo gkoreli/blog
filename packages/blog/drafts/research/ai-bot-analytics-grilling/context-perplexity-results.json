@@ -1,0 +1,51 @@
+{
+  "contextMarkdown": {
+    "status": "completed",
+    "displayedCharacters": 54069,
+    "downloadCharacters": 54069,
+    "downloadUtf8Bytes": 54097,
+    "displayedLines": 329,
+    "downloadLines": 329,
+    "downloadSha256": "c01ac569452bc5f7172d637fc47094664fc05d307074440352f45d22fd57edcc",
+    "bodyH1Matches": true,
+    "maintenanceSentencePresent": true,
+    "signatureExamplePresent": true,
+    "navigationAndFooterRetained": true,
+    "resultSnapshotSavedAt": "2026-11-05T06:53:05.116Z",
+    "downloadCopiedAt": "2026-11-05T14:51:09.434Z",
+    "creditUsage": null,
+    "latency": "No isolated provider-processing measurement; browser export call delayed nearly eight hours after result save"
+  },
+  "contextMcp": {
+    "status": 401,
+    "elapsedSeconds": 1.143,
+    "bytes": 40,
+    "wwwAuthenticate": "Bearer resource_metadata=\"https://mcp.context.dev/.well-known/oauth-protected-resource/mcp\", scope=\"api.read api.write\"",
+    "operation": "initialize",
+    "noCredentials": true
+  },
+  "perplexity": {
+    "status": "completed-declined",
+    "displayedDurationSeconds": 3,
+    "h1Provided": false,
+    "maintenanceSentenceProvided": false,
+    "signatureCoverageProvided": false,
+    "verifiedPageCitationProvided": false,
+    "answer": "Reported an exact-URL fetch error with no page content; declined all three requested parts and a verified citation",
+    "toolActivity": "Reading web page, with the exact assigned URL visible when expanded",
+    "answerSavedAt": "2026-11-05T06:52:30.181Z",
+    "cost": null
+  },
+  "securityEvidence": {
+    "status": "unavailable",
+    "queryExecuted": false,
+    "reason": "Direct OAuth-credential use for a manual read was rejected by automatic approval review; specific approval not received. Wrangler CLI completed the D1 verification.",
+    "edgeBlockDiagnosis": false
+  },
+  "references": [
+    "https://www.context.dev/free-tools/url-to-markdown",
+    "https://docs.context.dev/api-reference/web-scraping/scrape",
+    "https://docs.context.dev/install-mcp",
+    "https://docs.perplexity.ai/docs/resources/perplexity-crawlers"
+  ]
+}

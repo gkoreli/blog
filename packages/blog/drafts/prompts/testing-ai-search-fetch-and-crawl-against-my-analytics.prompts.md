@@ -19,3 +19,23 @@ lets try firecrawl too. and lets try tavily too. here is the tavily api key if n
 ---
 
 im logged in the chatgpt website too, all these tabs should already be open. Lets try brave's search too and they should have api as well: [https://search.brave.com/](https://search.brave.com/)
+
+---
+
+lets try context.dev too, they seem to be also doing smth similar. lets try perplexity too, i should be logged in: [https://www.perplexity.ai/?login-new=false&login-source=floatingSignup](https://www.perplexity.ai/?login-new=false\&login-source=floatingSignup)
+
+---
+
+Use public access only for now
+
+---
+
+whats wrong with wrangler cli? don't we have an api token or are we not authenticated there
+
+---
+
+logged in the wrangler cli again, it should work i believe
+
+---
+
+you have my approval to use wrangler cli as needed

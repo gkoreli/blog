@@ -1,0 +1,79 @@
+{
+  "checkedAt": "2026-11-05T14:59:12.416272+00:00",
+  "nodeVersion": "v24.14.1",
+  "wranglerVersion": "4.71.0",
+  "scriptSyntax": "passed",
+  "skillValidator": "passed using cached PyYAML with uv --offline",
+  "nativeWorkerdPreflight": "passed exact three-ID selection and integer-primary-key plan",
+  "storageAcceptance": {
+    "checkedAt": "2026-11-05T14:55:08.340Z",
+    "exactRows": 3,
+    "fullReceiptMatches": 3,
+    "rowsRead": 6,
+    "rowsWritten": 0,
+    "statementAttempts": 1,
+    "responseSha256": "f91392ad4d65f1393f121f164fc6e62738571bb1ef7445baf027a5f715225823",
+    "readerKinds": {
+      "browser": 2,
+      "preview-or-feed": 1
+    },
+    "ownerExcluded": 0,
+    "limits": [
+      "Controlled test traffic; not organic audience growth, people, or independent cryptographic replay."
+    ]
+  },
+  "compatibility": [
+    {
+      "cohort": "first-batch-evidence.json",
+      "eventsEqual": 13,
+      "streamsEqual": true,
+      "nativeSqlSha256": "cdd5c84a1083d8b6ed68930ec46c2a39290c829feeaa618993a64bb55e804d6b",
+      "additionalProductionRead": false,
+      "comparison": "Generated fields equal; historical editorial phase/attribution annotations retained separately",
+      "originalSqlHashEqual": true
+    },
+    {
+      "cohort": "chatgpt-brave-evidence.json",
+      "eventsEqual": 2,
+      "streamsEqual": true,
+      "nativeSqlSha256": "eeadfb4a10bdbe156b4ad6a42a03410936ec7b3f3413344005021e2c361fe536",
+      "additionalProductionRead": false,
+      "comparison": "Generated fields equal; historical editorial phase/attribution annotations retained separately",
+      "originalSqlHashEqual": true
+    }
+  ],
+  "negativeControls": [
+    {
+      "control": "missing-row",
+      "rejected": true
+    },
+    {
+      "control": "changed-receipt",
+      "rejected": true
+    }
+  ],
+  "answerChecks": {
+    "downloadH1EqualsSource": true,
+    "completeMaintenanceSentenceEqualsSource": true,
+    "authorityAndSignatureAgentExamplePresent": true,
+    "downloadCountsEqualUi": true
+  },
+  "sourceHashes": {
+    "packages/blog/drafts/research/ai-bot-analytics-grilling/check-trial-storage.mjs": "521e46ff92d3073f3f5f343c386dab6934d1ea719c27b893888f891675cc4b47"
+  },
+  "validationScope": "Skill routing, evidence helper, dated research and unpublished draft; no runtime or publishable post change",
+  "productionBuild": "not-run",
+  "allOwnedCapturesStopped": true,
+  "securityQuery": "not-executed; approval review rejected direct credential route; CLI authorization reaffirmed",
+  "structure": {
+    "markdownFiles": 9,
+    "localLinks": 74,
+    "brokenLinks": 0,
+    "fences": "balanced",
+    "json": "parsed",
+    "humanPrompts": 11,
+    "privacyScan": "passed",
+    "rawCaptureIgnored": true,
+    "instructionDiff": "Reviewed additive provider routing against previous version; existing directions and exceptions preserved"
+  }
+}

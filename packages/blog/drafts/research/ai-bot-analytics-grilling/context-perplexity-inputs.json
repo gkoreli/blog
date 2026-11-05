@@ -1,0 +1,39 @@
+{
+  "trialLocalDate": "2026-11-04",
+  "utcDate": "2026-11-05",
+  "reviewLocalDate": "2026-11-05",
+  "conditions": {
+    "Perplexity": "Existing signed-in Free plan, Search checked, Computer unchecked; default model name not exposed, no model selection changed",
+    "Context.dev": "Public access only; no account, OAuth grant, key or subscription created"
+  },
+  "perplexity": {
+    "submittedAt": "2026-11-05T06:51:54.389Z",
+    "mode": "Search checked, Computer unchecked",
+    "model": "No selected model name exposed; chooser advertised upgrade-only models",
+    "submissions": 1,
+    "prompt": "Use web browsing to open this exact public URL: https://gkoreli.com/which-ai-fetchers-send-which-headers?probe=bot-grill-20261104-perplexity-01\nReport the body H1 and the first sentence under \"Maintaining this reference\". Then state which components the article's DuckAssistBot signature example covers. Cite this page. If you cannot access it, say so."
+  },
+  "contextMarkdown": {
+    "submittedAt": "2026-11-05T06:52:39.441Z",
+    "operation": "URL to Markdown",
+    "url": "https://gkoreli.com/which-ai-fetchers-send-which-headers?probe=bot-grill-20261104-context-scrape-01",
+    "credentials": false,
+    "submissions": 1
+  },
+  "contextMcp": {
+    "endpoint": "https://mcp.context.dev/mcp",
+    "method": "initialize",
+    "protocolVersion": "2025-03-26",
+    "authentication": "none",
+    "toolCallAttempted": false
+  },
+  "unexecutedReservedLabels": [
+    "context-crawl-01",
+    "context-map-01"
+  ],
+  "limits": [
+    "One submitted browser question and one public conversion; one MCP initialization",
+    "No explicit cache/freshness, timeout, browser-engine or proxy setting exposed by converter",
+    "Authenticated Search, Scrape, Map, Crawl and Answers remain untested"
+  ]
+}
