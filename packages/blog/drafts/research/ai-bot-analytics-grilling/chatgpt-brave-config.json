@@ -1,0 +1,5 @@
+{
+  "streams": ["tail.raw"],
+  "trialPrefix": "bot-grill-20261104-",
+  "assignedLabels": ["chatgpt-01", "brave-ask-01"]
+}

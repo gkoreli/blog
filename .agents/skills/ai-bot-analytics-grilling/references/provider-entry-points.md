@@ -24,6 +24,20 @@ Use the [official documentation index](https://docs.tavily.com/llms.txt) and sig
 
 Use the [official documentation index](https://docs.firecrawl.dev/llms.txt), available connected tools, or signed-in playground. Compare Search, Scrape, Map, Crawl and agent operations separately. Keep automatic retries, cache settings, rendering, discovered links and extracted content visible. Cap crawl pages/agent credits and follow asynchronous jobs through their actual terminal status or record the bounded unresolved result. Use an available plugin when sufficient; a plugin installation is a separate access change.
 
+## Brave
+
+Separate the search website, Ask, Web Search API, LLM Context API and Answers API. Start with the [official quickstart](https://api-dashboard.search.brave.com/documentation/quickstart), [LLM Context](https://api-dashboard.search.brave.com/documentation/services/llm-context), [Web Search](https://api-dashboard.search.brave.com/api-reference/web/search/get), and the [public playground](https://api-dashboard.search.brave.com/app/playground). API credentials use `X-Subscription-Token`; the playground may offer a shared demo with its own availability conditions. Record actual access without creating a new subscription or collecting a key unnecessarily.
+
+Switching playground endpoints can reset query parameters. Recheck the displayed request before sending. The Data view can contain collapsed placeholders; preserve it as a UI view unless an actual response export succeeds. Never call a partially displayed JSON tree a complete raw response.
+
+Brave's [crawler documentation](https://safe.search.brave.com/help/brave-search-crawler) says it does not advertise a differentiated User-Agent. Do not invent a Bravebot signature or interpret the absence of that name as absence of Brave traffic. Keep crawler documentation separate from the actual request, search result or Ask response observed.
+
+## ChatGPT / OpenAI
+
+Use the existing signed-in ChatGPT tab for a fresh public-page question. Record the visible Chat/Work mode and model label without guessing a hidden model ID. Consult the local openai-docs skill and [official crawler documentation](https://developers.openai.com/api/docs/bots) when comparing ChatGPT-User, OAI-SearchBot and GPTBot roles. A documented possible fetch path is not a promise that each answer uses it.
+
+Keep source cards and output-link tracking parameters separate from the original requested URL. Save the answer before inspecting citations, and distinguish any later browser-shaped hit from an identified answer-time fetch. Avoid publishing unrelated home suggestions, private chat history or account UI.
+
 ## Extending the catalogue
 
-Potential additions include Jina Reader, Brave Search, ChatGPT/OpenAI search and fetchers, Claude tools, Perplexity, Google/Gemini, Mistral and Grok. Add a current primary source and a runnable entry point before calling an adapter usable. Consult the local openai-docs skill for OpenAI-specific behavior. Keep existing historical trials linked and dated; queue fresh repeats only when they change the comparison.
+Potential additions include Jina Reader, Claude tools, Perplexity, Google/Gemini, Mistral and Grok. Add a current primary source and a runnable entry point before calling an adapter usable. Keep existing historical trials linked and dated; queue fresh repeats only when they change the comparison.

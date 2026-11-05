@@ -1,12 +1,12 @@
 # Testing AI Search, Fetch, and Crawl Against My Analytics
 
-Working draft, November 4, 2026. Unpublished. The [first provider batch](research/ai-bot-analytics-grilling/01-first-batch.md) and thirteen exact storage checks are complete; authenticated Firecrawl/Agent tests and broader repeats remain open. [Research worklist](research/ai-bot-analytics-grilling/00-worklist.md).
+Working draft, November 4, 2026. Unpublished. The [first provider batch](research/ai-bot-analytics-grilling/01-first-batch.md) and [ChatGPT/Brave extension](research/ai-bot-analytics-grilling/02-chatgpt-and-brave.md) are complete. Authenticated Firecrawl/Agent tests and broader repeats remain open. [Research worklist](research/ai-bot-analytics-grilling/00-worklist.md).
 
 An AI search result, a page fetch and a cited answer leave different evidence. In the first trials for this article, Exa returned search highlights, its separate fetch tool requested my page as `ExaUser`, and Duck.ai answered through a signed `DuckAssistBot` request. Bing's AI Mode cited my earlier study while dropping some of its limits. I want to compare the whole path: what I asked a service to do, what it returned, what reached Cloudflare, and what my analytics recorded.
 
 My [earlier fetcher study](/which-ai-fetchers-send-which-headers) captured ten assistants in September. The [follow-up](/ai-fetcher-research-from-experiments-to-a-cited-reference) explains later tests and external use of that work. This article starts a repeatable provider catalogue: separate operations, named conditions, real failures and open questions. The earlier results retain their dates.
 
-Codex operated the services for this batch, with my authorization and existing account access. These are deliberately elicited tests. Eight known trial requests were stored as Browser, two as Unresolved and three as AI Assistant; those thirteen observations are not an organic growth measurement or a count of people.
+Codex operated the services with my authorization and existing account access. The first batch contains thirteen deliberately elicited observations: eight stored Browser, two Unresolved and three AI Assistant. The later ChatGPT/Brave extension adds a ChatGPT-User fetch and a separate post-answer Browser request whose operator remains unresolved. These are not organic growth measurements or counts of people.
 
 ## The kinds of bots we need to distinguish
 
@@ -92,6 +92,40 @@ The answer described a DuckDuckGo signing-key-directory check as network verific
 
 That is useful evidence about this answer's fidelity. It does not reveal whether Bing used an old index version, selected misleading passages, or introduced the errors during synthesis.
 
+## ChatGPT
+
+### The signed-in browser question
+
+The existing ChatGPT session was in Chat mode with the displayed model label Medium. I asked it to browse a new assigned URL and return three things: the body H1, the maintenance sentence and the components in the article's DuckAssistBot signature example. It returned all three correctly, including authority and Signature-Agent coverage and the unsigned path, query, method and User-Agent.
+
+The assigned URL received an unsigned HTTP 200 request declaring `ChatGPT-User/1.0`, stored as AI Assistant. The collector's configured network assessment reported a listed address; I did not independently repeat that feed check. [OpenAI's documentation](https://developers.openai.com/api/docs/bots) separates ChatGPT-User actions from search and training crawlers. This trial records the path observed in one signed-in session.
+
+### A later client followed the output URL
+
+After the completed answer was saved, another request reached the same probe with `utm_source=chatgpt.com`, the extra parameter in ChatGPT's source link. It claimed Chrome and was stored Browser. I have not established its operator or whether it came from a source preview, another consumer or another service path. It stays separate from the demonstrated answer-time ChatGPT-User fetch.
+
+Both exact stored receipts match their log acknowledgements. Their readback reported four reads and zero writes. The [extension record](research/ai-bot-analytics-grilling/02-chatgpt-and-brave.md) preserves their timing and attribution boundaries.
+
+## Brave Search
+
+### Search results, an AI summary and an indirect reference
+
+For the same site-scoped query used earlier, Brave showed twelve distinct main-result URLs from my site. The original fetcher article was absent from that set. An AI summary separately named the study and me, cited companion analytics articles, and showed a related Vuink reference to the original. That is useful controlled discovery, even without the original as a direct main result. I have not validated the Vuink page's body or inferred an organic ranking trend.
+
+### Ask did not complete the direct-page task
+
+Brave Ask received a separate assigned URL and the same three-part question. It said it could not access the URL and declined to return the H1 and maintenance sentence. It named the right signature components from other sources, while withholding confirmation about this particular page. No exact assigned-label GET appears in the stopped capture. This is one answer and one observation window, rather than a provider-wide assertion about URL-fetching capability.
+
+### The Web Search and LLM Context APIs worked through the demo
+
+Brave's official playground offered a shared demo with its API-key field empty. The LLM Context call returned ten context sources. A separate Web Search call, with `count: 3`, returned three results. Both displayed HTTP 200, using the same site-scoped query. Neither set contained the original article's canonical URL; several companion pages supplied relevant content. [Playground](https://api-dashboard.search.brave.com/app/playground), [LLM Context](https://api-dashboard.search.brave.com/documentation/services/llm-context), [Web Search API](https://api-dashboard.search.brave.com/api-reference/web/search/get).
+
+Those results are preserved as UI evidence. The Data trees contained collapsed records, and the copy control did not export usable complete JSON through the available interface. I have not labelled those views raw response captures or measured billed cost. The shared demo working here does not establish personal API entitlement; the [normal API contract](https://api-dashboard.search.brave.com/documentation/quickstart) uses an `X-Subscription-Token` header.
+
+### Do not expect a named Brave crawler
+
+Brave says its [crawler does not advertise a differentiated User-Agent](https://safe.search.brave.com/help/brave-search-crawler). That changes what a publisher can expect to recognize from declarations alone. It does not identify the later Chrome request in the ChatGPT trial as Brave traffic. A product name, a search answer and a received request each need their own evidence.
+
 ## Tavily
 
 ### Search and page extraction
@@ -138,7 +172,7 @@ Authenticated Firecrawl API/MCP calls and its Agent operation remain open pendin
 
 The catalogue tracks access/interface, operation, cache/freshness, output/format, request count/status, identity evidence, signature coverage, stored classification, answer/citation fidelity, cost/timing, and failures. The [skill's dimension table](../../../.agents/skills/ai-bot-analytics-grilling/references/dimensions-and-reporting.md) is the working specification.
 
-| Operation in this batch | Provider-side outcome | Exact-label origin/storage outcome |
+| Operation tested | Provider-side outcome | Exact-label origin/storage outcome |
 | --- | --- | --- |
 | Exa MCP fetch and fresh API Contents | Both returned content | Two signed HTTP 200 requests, stored AI Assistant |
 | Exa one-subpage Contents | Provider crawl timeout | No exact match in the stopped capture |
@@ -149,8 +183,11 @@ The catalogue tracks access/interface, operation, cache/freshness, output/format
 | Firecrawl keyless MCP Search / Scrape | Tool access errors | No accepted MCP retrieval chain |
 | Firecrawl browser Crawl / Scrape | Two reported results / result UI crash | Two HTTP 200 requests, stored Browser |
 | Firecrawl browser Map / Search | One visible URL / three search results | Mapping side request recorded separately; search has no unique URL join |
+| ChatGPT signed-in Chat / Medium | All three requested parts correct, with source | One ChatGPT-User fetch stored AI Assistant; later Browser client kept separately |
+| Brave website / Ask | Related results and study mention / direct-page task declined | No exact Brave Ask label in the stopped GET capture |
+| Brave shared-demo LLM Context / Web Search API | Ten context sources / three web results; displayed HTTP 200 | UI evidence; no unique retrieval-URL causal join |
 
-All thirteen receipts have unavailable native Cloudflare verified-bot/signed-agent booleans and zero vendor-network checks. I cannot turn those missing assessments into negative verification or IP-list results. The [full method and claim audit](research/ai-bot-analytics-grilling/01-first-batch.md) retains the failed attempts, exact input distinctions and per-operation limits.
+The first batch's thirteen receipts have unavailable native Cloudflare verified-bot/signed-agent booleans and zero vendor-network checks. The extension's ChatGPT-User receipt adds a positive configured network assessment; native booleans remain unavailable. I cannot turn missing assessments into negative verification or IP-list results. The [first-batch audit](research/ai-bot-analytics-grilling/01-first-batch.md) and [extension audit](research/ai-bot-analytics-grilling/02-chatgpt-and-brave.md) retain failed attempts, exact input distinctions and per-operation limits.
 
 ### Questions the next evidence should answer
 
@@ -170,3 +207,5 @@ The next unrun controls are a newly published body value absent from the prompt,
 | Tavily retrieval and research operations | [Official documentation index](https://docs.tavily.com/llms.txt) and endpoint links above | November 4, 2026 local |
 | Firecrawl keyless access and Agent | [MCP instructions](https://docs.firecrawl.dev/mcp-server/keyless), [Agent](https://docs.firecrawl.dev/features/agent) | November 4, 2026 local |
 | Thirteen request-to-row comparisons and full receipt equality | [Minimized evidence](research/ai-bot-analytics-grilling/first-batch-evidence.json), [checker](research/ai-bot-analytics-grilling/check-trial-storage.mjs) | November 5 UTC |
+| ChatGPT crawler roles and fresh browser trial | [OpenAI crawler documentation](https://developers.openai.com/api/docs/bots), [extension evidence](research/ai-bot-analytics-grilling/chatgpt-brave-evidence.json) | November 4, 2026 local |
+| Brave crawler policy, website and API trials | [Crawler documentation](https://safe.search.brave.com/help/brave-search-crawler), [extension results](research/ai-bot-analytics-grilling/chatgpt-brave-results.json) | November 4, 2026 local |

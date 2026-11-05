@@ -39,6 +39,8 @@ Use the [operations reference](../blog-maintenance/references/operations-and-han
 
 Preserve malformed frames, incomplete suffixes, dropped-event notices and excluded side requests. A missing tail match means no match in that capture. Consult relevant retained Worker/security evidence before proposing an edge block; keep unavailable evidence explicit.
 
+Record when the answer completes and when citation cards, previews or source links are inspected. A later request to an output link can come from a different client. Keep it separate from the answer-time retrieval unless the evidence establishes the same operator or service path.
+
 ## Interpret without merging evidence
 
 Keep these separate: experimental assignment, User-Agent declaration, address/feed or DNS assessment, cryptographic verification and covered components, native Cloudflare fields, stored classifier verdict, answer accuracy, citation, and use. An unavailable field stays unavailable.

@@ -1,0 +1,62 @@
+{
+  "checkedAt": "2026-11-05T06:47:05.581072+00:00",
+  "nodeVersion": "v24.14.1",
+  "wranglerVersion": "4.71.0",
+  "skillValidator": "passed using existing cached PyYAML with uv --offline",
+  "scriptSyntax": "passed",
+  "nativeWorkerdPreflight": "passed: exact two-ID selection and primary-key plan",
+  "storageAcceptance": {
+    "checkedAt": "2026-11-05T06:39:47.424Z",
+    "exactRows": 2,
+    "fullReceiptMatches": 2,
+    "rowsRead": 4,
+    "rowsWritten": 0,
+    "statementAttempts": 1,
+    "responseSha256": "0d460df78e28a35d7f3daa4c6f7117b4ce4ceddb7baf5326143dceb05ac39f8f",
+    "readerKinds": {
+      "ai-assistant": 1,
+      "browser": 1
+    },
+    "ownerExcluded": 0,
+    "limits": [
+      "Controlled test traffic; not organic audience growth, people, or independent cryptographic replay."
+    ]
+  },
+  "firstBatchCompatibility": {
+    "status": "passed",
+    "firstBatchEventsEqual": 13,
+    "originalStreamsAndSqlHashUnchanged": true,
+    "additionalProductionQuery": false
+  },
+  "firstBatchSourcePinnedTo": "1e0b3d9",
+  "negativeControls": [
+    {
+      "control": "missing-row",
+      "rejected": true
+    },
+    {
+      "control": "changed-receipt",
+      "rejected": true
+    },
+    {
+      "control": "invalid-stream-path-config",
+      "rejected": true
+    }
+  ],
+  "sourceHashes": {
+    "packages/blog/drafts/research/ai-bot-analytics-grilling/check-trial-storage.mjs": "968bcf8f1351e7081137ab0eaac8ffa928a984dbc58f7d8b72bb005637d4a840",
+    "packages/analytics/src/observation-receipt.ts": "3b78f4efce7161e69cfbb31fc455fcf2b4464d55d634a2eb0d3d46fa38d65beb"
+  },
+  "validationScope": "Skill/references, private-evidence checker, research records and unpublished draft. No runtime or publishable post change; no production build performed.",
+  "build": "not-run",
+  "allOwnedCapturesStopped": true,
+  "structure": {
+    "markdownFiles": 8,
+    "localLinks": 52,
+    "brokenLinks": 0,
+    "fences": "balanced",
+    "json": "parsed",
+    "humanPrompts": 6
+  },
+  "privacyAndAnswerChecks": "passed"
+}

@@ -1,0 +1,40 @@
+{
+  "localDate": "2026-11-04",
+  "utcDate": "2026-11-05",
+  "conditions": {
+    "ChatGPT": "Existing signed-in session, Chat mode, displayed model Medium; hidden model ID unestablished",
+    "BraveSearchAndAsk": "Public browser interfaces; no new sign-in",
+    "BraveApi": "Official public playground, GET, shared demo, subscription-token field empty; no personal key/subscription created"
+  },
+  "chatgpt": {
+    "submittedAt": "2026-11-05T06:23:47.107Z",
+    "mode": "Chat",
+    "displayedModel": "Medium",
+    "prompt": "Use web browsing to open this exact public URL: https://gkoreli.com/which-ai-fetchers-send-which-headers?probe=bot-grill-20261104-chatgpt-01\nReport the body H1 and the first sentence under \"Maintaining this reference\". Then state which components the article's DuckAssistBot signature example covers. Cite this page. If you cannot access it, say so."
+  },
+  "braveAsk": {
+    "submittedAt": "2026-11-05T06:24:37.632Z",
+    "prompt": "Open this exact public URL: https://gkoreli.com/which-ai-fetchers-send-which-headers?probe=bot-grill-20261104-brave-ask-01 Report the body H1 and the first sentence under \"Maintaining this reference\". State which components its DuckAssistBot signature example covers, and cite the page. If you cannot access it, say so.",
+    "inputNormalization": "single-line search input"
+  },
+  "braveSearch": {
+    "query": "site:gkoreli.com which AI fetchers send which headers"
+  },
+  "braveApiContext": {
+    "endpoint": "https://api.search.brave.com/res/v1/llm/context",
+    "explicitParameters": {
+      "q": "site:gkoreli.com which AI fetchers send which headers"
+    },
+    "otherParameters": "Playground defaults; not overridden",
+    "wireRequestCaptured": false
+  },
+  "braveApiWeb": {
+    "submittedAt": "2026-11-05T06:33:00.718Z",
+    "endpoint": "https://api.search.brave.com/res/v1/web/search",
+    "authentication": "shared demo; credential field empty",
+    "query": {
+      "q": "site:gkoreli.com which AI fetchers send which headers",
+      "count": 3
+    }
+  }
+}

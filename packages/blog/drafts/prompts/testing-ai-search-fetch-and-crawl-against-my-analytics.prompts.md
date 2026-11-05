@@ -15,3 +15,7 @@ i logged in the exa as well, they have both search and crawl and fetch apis for 
 ---
 
 lets try firecrawl too. and lets try tavily too. here is the tavily api key if need be as well in the ~/tavily.env they also have search fetch crawl and agent chat all and i am logged in their website too in your browser. we should have it all
+
+---
+
+im logged in the chatgpt website too, all these tabs should already be open. Lets try brave's search too and they should have api as well: [https://search.brave.com/](https://search.brave.com/)

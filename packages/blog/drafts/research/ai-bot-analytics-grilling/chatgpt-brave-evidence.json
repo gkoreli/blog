@@ -1,0 +1,194 @@
+{
+  "checkedAt": "2026-11-05T06:38:04.876Z",
+  "streams": [
+    {
+      "file": "tail.raw",
+      "sha256": "ba6a8e6520ae8f2cef84d7cd546b2eb200741c28ea78b3f5f4567605a306b603",
+      "bytes": 193980,
+      "completedObjects": 36,
+      "malformedFrames": 0,
+      "outsideFragments": 0,
+      "suffixBytes": 0
+    }
+  ],
+  "matchedRequests": 2,
+  "nonexactProbeRequests": 0,
+  "returnedReferences": 2,
+  "events": [
+    {
+      "trialLabel": "chatgpt-01",
+      "timestamp": "2026-11-05T06:23:49.716Z",
+      "workerVersion": "9e865a5f-1dc9-49be-8e60-8682902f91e0",
+      "collectionVersion": "2026-10-30.1",
+      "originStatus": 200,
+      "userAgentProducts": [
+        "ChatGPT-User/1.0"
+      ],
+      "cloudflareFacts": {
+        "asn": 8075,
+        "country": "US",
+        "httpProtocol": "HTTP/2",
+        "tlsVersion": "TLSv1.3"
+      },
+      "fetchMetadata": {
+        "sec-fetch-mode": null,
+        "sec-fetch-dest": null,
+        "sec-fetch-site": null,
+        "sec-fetch-user": null
+      },
+      "signatureComponents": [],
+      "receipt": {
+        "status": "recorded",
+        "version": "2026-10-29.2",
+        "classifierProfile": "2026-10-31.1",
+        "readerKind": "ai-assistant",
+        "fetchMetadataBits": 585,
+        "declarations": {
+          "status": "single",
+          "candidateCount": 1,
+          "candidateNames": "ChatGPT-User"
+        },
+        "signature": {
+          "verifierProfile": "2026-10-31.3",
+          "source": "local-webbotauth",
+          "status": "absent",
+          "outcome": "absent",
+          "reasonNames": "none",
+          "reasonCount": 0,
+          "signer": "none",
+          "userAgentCovered": "unavailable",
+          "coverage": {
+            "status": "unavailable"
+          }
+        },
+        "native": {
+          "verifiedBot": "unavailable",
+          "signedAgent": "unavailable"
+        },
+        "vendorNetwork": {
+          "status": "recorded",
+          "checkCount": 1,
+          "summary": {
+            "listed": true,
+            "notListed": false,
+            "unavailable": false,
+            "notAssessed": false
+          }
+        }
+      },
+      "citationTrackingParameterPresent": false,
+      "attribution": "ChatGPT-User declaration and reported listed-network assessment during the answer trial",
+      "phase": "answer-time"
+    },
+    {
+      "trialLabel": "chatgpt-01",
+      "timestamp": "2026-11-05T06:26:12.921Z",
+      "workerVersion": "9e865a5f-1dc9-49be-8e60-8682902f91e0",
+      "collectionVersion": "2026-10-30.1",
+      "originStatus": 200,
+      "userAgentProducts": [
+        "Chrome/156.0.0.0",
+        "Safari/537.36"
+      ],
+      "cloudflareFacts": {
+        "asn": 62887,
+        "country": "US",
+        "httpProtocol": "HTTP/2",
+        "tlsVersion": "TLSv1.3"
+      },
+      "fetchMetadata": {
+        "sec-fetch-mode": "navigate",
+        "sec-fetch-dest": "document",
+        "sec-fetch-site": "cross-site",
+        "sec-fetch-user": "?1"
+      },
+      "signatureComponents": [],
+      "receipt": {
+        "status": "recorded",
+        "version": "2026-10-29.2",
+        "classifierProfile": "2026-10-31.1",
+        "readerKind": "browser",
+        "fetchMetadataBits": 1170,
+        "declarations": {
+          "status": "none",
+          "candidateCount": 0,
+          "candidateNames": "none"
+        },
+        "signature": {
+          "verifierProfile": "2026-10-31.3",
+          "source": "local-webbotauth",
+          "status": "absent",
+          "outcome": "absent",
+          "reasonNames": "none",
+          "reasonCount": 0,
+          "signer": "none",
+          "userAgentCovered": "unavailable",
+          "coverage": {
+            "status": "unavailable"
+          }
+        },
+        "native": {
+          "verifiedBot": "unavailable",
+          "signedAgent": "unavailable"
+        },
+        "vendorNetwork": {
+          "status": "recorded",
+          "checkCount": 0,
+          "summary": {
+            "listed": false,
+            "notListed": false,
+            "unavailable": false,
+            "notAssessed": false
+          }
+        }
+      },
+      "citationTrackingParameterPresent": true,
+      "attribution": "Later client to the output citation URL; operator and service path unresolved",
+      "phase": "after-completed-answer-snapshot"
+    }
+  ],
+  "answerSnapshotSavedAt": "2026-11-05T06:25:46.465670+00:00",
+  "storageAcceptance": {
+    "checkedAt": "2026-11-05T06:39:47.424Z",
+    "exactRows": 2,
+    "fullReceiptMatches": 2,
+    "rowsRead": 4,
+    "rowsWritten": 0,
+    "statementAttempts": 1,
+    "responseSha256": "0d460df78e28a35d7f3daa4c6f7117b4ce4ceddb7baf5326143dceb05ac39f8f",
+    "readerKinds": {
+      "ai-assistant": 1,
+      "browser": 1
+    },
+    "ownerExcluded": 0,
+    "limits": [
+      "Controlled test traffic; not organic audience growth, people, or independent cryptographic replay."
+    ]
+  },
+  "nativePreflight": {
+    "status": "passed-local-workerd-d1",
+    "selectedRows": 2,
+    "queryPlan": [
+      "SEARCH page_observations USING INTEGER PRIMARY KEY (rowid=?)"
+    ],
+    "sqlSha256": "eeadfb4a10bdbe156b4ad6a42a03410936ec7b3f3413344005021e2c361fe536",
+    "schemaSha256": "a53392e14c69a62ce1c73c9f8c24afff2e773f68d55831490896e45fa6f93099"
+  },
+  "captureWindow": {
+    "startedAt": "2026-11-05T06:23:08.345503+00:00",
+    "maxSeconds": 480,
+    "maxBytes": 16777216,
+    "stoppedAt": "2026-11-05T06:31:08.913217+00:00",
+    "bytes": 193980,
+    "exit": -15
+  },
+  "limits": [
+    "Only the first request is attributed to the observed ChatGPT-User fetch; the later Browser request is not counted as another ChatGPT backend retrieval.",
+    "Both exact assigned-label receipts match their independently read-back rows.",
+    "No exact Brave Ask label occurs in this stopped capture; this does not establish no request anywhere or a protection block.",
+    "Brave Web Search API was run after the tail stopped; search/API calls have no unique retrieval-URL causal join.",
+    "No independent published-network validation or signature replay was performed; network assessment is the collector receipt.",
+    "Native verifiedBot/signedAgent remain unavailable.",
+    "Controlled trials and a later unresolved client do not measure organic audience growth."
+  ]
+}

@@ -9,21 +9,28 @@ import { isObservationId } from '../../../../analytics/src/observation-storage.t
 import { storedObservationReceipt } from '../../../../analytics/src/observation-receipt.ts';
 
 // Run from the repository root with the blog's tsx loader. All outputs are private.
-// prepare PRIVATE_DIR NEW_OUTPUT; accept PRIVATE_OUTPUT WRANGLER_RESPONSE_JSON
-const [mode, inputPath, outputPath] = process.argv.slice(2);
+// prepare PRIVATE_DIR NEW_OUTPUT [PUBLIC_BATCH_CONFIG]; accept PRIVATE_OUTPUT WRANGLER_RESPONSE_JSON
+const [mode, inputPath, outputPath, configPath] = process.argv.slice(2);
 const hash = bytes => createHash('sha256').update(bytes).digest('hex');
 const read = file => JSON.parse(readFileSync(file, 'utf8'));
 const save = (file, data) => writeFileSync(file, JSON.stringify(data, null, 2) + '\n', { flag: 'wx', mode: 0o600 });
-const trialPrefix = 'bot-grill-20261104-';
-const assignedLabels = new Set(['exa-fetch-01', 'exa-api-fetch-01', 'exa-api-crawl-01', 'duck-02',
+const defaultLabels = ['exa-fetch-01', 'exa-api-fetch-01', 'exa-api-crawl-01', 'duck-02',
   'tavily-extract-01', 'tavily-map-01', 'tavily-crawl-01', 'tavily-research-01',
-  'firecrawl-scrape-01', 'firecrawl-crawl-01', 'firecrawl-map-01', 'firecrawl-browser-scrape-01']);
+  'firecrawl-scrape-01', 'firecrawl-crawl-01', 'firecrawl-map-01', 'firecrawl-browser-scrape-01'];
+const config = configPath ? read(configPath) : { streams: ['tail.raw', 'tail2.raw'], trialPrefix: 'bot-grill-20261104-', assignedLabels: defaultLabels };
+assert.ok(Array.isArray(config.streams) && config.streams.length > 0 && config.streams.length <= 4
+  && config.streams.every(file => typeof file === 'string' && /^[a-z0-9][a-z0-9.-]*\.raw$/.test(file)));
+assert.ok(typeof config.trialPrefix === 'string' && /^[a-z0-9-]{1,80}$/.test(config.trialPrefix));
+assert.ok(Array.isArray(config.assignedLabels) && config.assignedLabels.length > 0
+  && config.assignedLabels.every(label => typeof label === 'string' && /^[a-z0-9-]{1,80}$/.test(label)));
+const trialPrefix = config.trialPrefix;
+const assignedLabels = new Set(config.assignedLabels);
 
 if (mode === 'prepare') {
   assert.ok(inputPath && outputPath, 'prepare PRIVATE_DIR NEW_OUTPUT');
   const output = resolve(outputPath);
   mkdirSync(output, { mode: 0o700 });
-  const inputs = ['tail.raw', 'tail2.raw'].map(file => {
+  const inputs = config.streams.map(file => {
     const bytes = readFileSync(resolve(inputPath, file));
     const parsed = parseStream(bytes.toString('utf8'));
     return { file, bytes, parsed };
@@ -51,7 +58,7 @@ if (mode === 'prepare') {
       ids.add(ack.storage.observationId); operations.add(ack.operationId);
       const headers = request.headers;
       const ua = headers['user-agent'] ?? '';
-      const products = [...ua.matchAll(/\b(ExaUser|ExaSearchBot|DuckAssistBot|Chrome|Firefox|Safari|Version)\/([0-9.]+)/g)].map(match => match[0]);
+      const products = [...ua.matchAll(/\b(ExaUser|ExaSearchBot|DuckAssistBot|ChatGPT-User|OAI-SearchBot|Chrome|Firefox|Safari|Version)\/([0-9.]+)/g)].map(match => match[0]);
       const components = [...(headers['signature-input'] ?? '').matchAll(/\(([^)]*)\)/g)]
         .flatMap(match => [...match[1].matchAll(/"([@a-z][@a-z0-9-]*)"/g)].map(value => value[1]));
       privateEvents.push(envelope);

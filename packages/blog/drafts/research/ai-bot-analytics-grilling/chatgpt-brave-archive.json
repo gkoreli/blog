@@ -1,0 +1,15 @@
+{
+  "privateRoot": "packages/blog/worklog/ai-bot-analytics-grilling-chatgpt-brave-20261104/",
+  "rawCapturesInGit": false,
+  "credentialUsed": "Shared Brave demo only; no personal key collected",
+  "captureStoppedAt": "2026-11-05T06:31:08.913217+00:00",
+  "limits": [
+    "Private preservation commitment, not proof of platform-wide log completeness.",
+    "Only the reviewed screenshot and allowlisted outcome projections are public.",
+    "Later source-delivery metadata is outside this frozen private evidence manifest."
+  ],
+  "createdAt": "2026-11-05T06:47:05.683509+00:00",
+  "fileCount": 57,
+  "totalBytes": 1446471,
+  "manifestSha256": "0309d872184cd72753a84a5cee77fecedb929e92a64c6dc1ea6fb6007cf82474"
+}

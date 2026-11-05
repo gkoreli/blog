@@ -1,0 +1,109 @@
+{
+  "chatgpt": {
+    "bodyH1": "Which AI Fetchers Send Which Headers, Measured on a Live Site",
+    "firstMaintenanceSentence": "The current analytics retain separate declaration, network, signature-coverage and unresolved evidence; the later build log explains those changes.",
+    "signatureComponentsReturned": [
+      "@authority",
+      "signature-agent"
+    ],
+    "unsignedFieldsCorrectlyNamed": [
+      "path",
+      "query",
+      "method",
+      "User-Agent"
+    ],
+    "allThreeRequestedPartsMatchSource": true,
+    "sourceCitationPreservesProbe": true,
+    "sourceCitationAddsUtmSource": "chatgpt.com",
+    "screenshot": "assets/chatgpt-answer-20261104.png"
+  },
+  "braveWebsite": {
+    "query": "site:gkoreli.com which AI fetchers send which headers",
+    "mainResultUrls": [
+      "https://gkoreli.com/first-party-analytics-for-a-personal-blog",
+      "https://gkoreli.com/how-i-separate-readers-from-bots-without-javascript",
+      "https://gkoreli.com/what-if-the-agent-was-better-before-we-helped",
+      "https://gkoreli.com/how-ghx-was-born",
+      "https://gkoreli.com/oss-radar-03-buzz-is-slack-on-airoids",
+      "https://gkoreli.com/oss-radar",
+      "https://gkoreli.com/openwiki-validates-my-bet",
+      "https://gkoreli.com/",
+      "https://gkoreli.com/linux-signal-stack-conflict",
+      "https://gkoreli.com/topologies-of-thoughts",
+      "https://gkoreli.com/the-agentic-product-engineer",
+      "https://gkoreli.com/oss-radar-01-vercel-winter-2026-cohort"
+    ],
+    "targetCanonicalAmongTheseMainResults": false,
+    "generatedSummary": "Names Goga Koreli and the original study; cites two companion articles",
+    "relatedSourceCard": "https://vuink.com/post/txberyv-d-dpbz/which-ai-fetchers-send-which-headers",
+    "relatedSourceBodyValidated": false,
+    "limits": "One query and rendered result page; absence is not proof of index exclusion"
+  },
+  "braveAsk": {
+    "directRetrievalResult": "Reports inability to access the exact URL",
+    "bodyH1Returned": false,
+    "maintenanceSentenceReturned": false,
+    "signatureComponentsFromOtherSources": [
+      "@authority",
+      "signature-agent"
+    ],
+    "pageSpecificConfirmation": "Explicitly withheld by answer",
+    "mentionsVuinkUrl": true,
+    "providerWideDirectFetchCapabilityEstablished": false
+  },
+  "braveApi": {
+    "context": {
+      "reportedHttpStatus": 200,
+      "rawResponseExported": false,
+      "viewCapture": "Viewer and partially collapsed Data tree",
+      "billedCost": "not independently measured",
+      "displayedServerTime": "1012ms",
+      "displayedBrowserTime": "1286ms",
+      "displayedResponseSize": "18.1kB",
+      "displayedContextSources": 10,
+      "sourceUrlsFromDisplayedMetadataKeys": [
+        "https://gkoreli.com/first-party-analytics-for-a-personal-blog",
+        "https://gkoreli.com/how-i-separate-readers-from-bots-without-javascript",
+        "https://gkoreli.com/what-if-the-agent-was-better-before-we-helped",
+        "https://gkoreli.com/how-ghx-was-born",
+        "https://gkoreli.com/oss-radar-03-buzz-is-slack-on-airoids",
+        "https://gkoreli.com/oss-radar",
+        "https://gkoreli.com/openwiki-validates-my-bet",
+        "https://gkoreli.com/topologies-of-thoughts",
+        "https://gkoreli.com/the-agentic-product-engineer",
+        "https://gkoreli.com/oss-radar-01-vercel-winter-2026-cohort"
+      ],
+      "targetCanonicalReturnedAmongTheseSources": false
+    },
+    "web": {
+      "reportedHttpStatus": 200,
+      "rawResponseExported": false,
+      "viewCapture": "Viewer and partially collapsed Data tree",
+      "billedCost": "not independently measured",
+      "displayedServerTime": "726ms",
+      "displayedBrowserTime": "776ms",
+      "displayedResponseSize": "8.3kB",
+      "requestedWebCount": 3,
+      "displayedWebResultTitles": [
+        "How I Built First-Party Analytics for a Personal Blog",
+        "Bot Detection Without JavaScript: What My Blog Measured",
+        "What If the Agent Was Better Before We Helped? \u2014 ghx, Agent Sidecars, and Evals"
+      ],
+      "targetCanonicalAmongDisplayedWebResults": false
+    }
+  },
+  "uiFailuresAndLimits": [
+    "Initial multiline value rejected by Brave single-line search input; normalized to spaces before submission.",
+    "Source-popover inspection stalled for 300 seconds; browser bindings were later recovered without resubmitting either question.",
+    "Data views contained collapsed {n properties} placeholders and were not valid complete response exports.",
+    "Copy-response control did not provide the expected JSON through the available clipboard interface.",
+    "No manual CAPTCHA challenge was solved; the playground verification completed automatically after Send."
+  ],
+  "sourceSha256": {
+    "article": "af46ba4707e412c148f70296e9ae1dd09a67eff6d217806fc72c517bcf5bc85d",
+    "chatgptAnswer": "9f390dc0db02344a5a0048e093ea453c0219d2c9dd1aa5a15bad0bf271d2ec53",
+    "braveAsk": "d0285a06fd9de40d010156f6add2ffc7a6b7ab2a064189f66c2a93b6b1ddad24",
+    "apiContextView": "f8814d36c969b604645f209c71ca99d7064dde2f90451fd8e177763676707b73",
+    "apiWebView": "ab66f0133b45360ce586bde8b87bc9105f76fe5b16134e3c8453a364130b15a6"
+  }
+}
