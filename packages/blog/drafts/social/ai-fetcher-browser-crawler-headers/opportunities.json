@@ -1,0 +1,142 @@
+{
+  "reviewedAt": "2026-11-05T16:58:31.852941+00:00",
+  "x": [
+    {
+      "priority": 1,
+      "title": "Nullprint: Grok signing and detection",
+      "url": "https://x.com/nullprintai/status/2118177545007042677",
+      "visibleDate": "Nov 4; observed Nov 5",
+      "copy": "same issue in my nov 5 test: grok sent 11 unsigned requests, chrome/safari claims, all stored Browser by my own classifier. no grok token.\n\nmy captures + the fixes i shipped: https://gkoreli.com/ai-fetcher-browser-crawler-headers",
+      "weightedCharacters": 198,
+      "state": "reviewed-draft-not-submitted"
+    },
+    {
+      "priority": 2,
+      "title": "Aleyda Solis: Clarity Agent Activity dashboard",
+      "url": "https://x.com/aleyda/status/2118275935753437672",
+      "visibleDate": "Nov 5",
+      "copy": "one agent can look like two clients: chatgpt used chrome and curl on my site, both signed by the same publisher. i keep client claim, verified signer and covered fields separate.\n\nmy tests: https://gkoreli.com/ai-fetcher-browser-crawler-headers",
+      "weightedCharacters": 213,
+      "state": "reviewed-draft-not-submitted"
+    },
+    {
+      "priority": 3,
+      "title": "MiniMailer: Web Bot Auth versus webhook payload proof",
+      "url": "https://x.com/minimailerapp/status/2118312376311427203",
+      "visibleDate": "Nov 5",
+      "copy": "the covered fields matter too. chatgpt's chrome + curl verified on my site, but path + user-agent were unsigned. i replayed the captured proofs to check it.\n\nmy coverage tests: https://gkoreli.com/ai-fetcher-browser-crawler-headers",
+      "weightedCharacters": 200,
+      "state": "reviewed-draft-not-submitted"
+    },
+    {
+      "priority": 4,
+      "title": "Kong: sessions, steps and request-level observability",
+      "url": "https://x.com/kong/status/2118074573358780573",
+      "visibleDate": "Nov 4",
+      "copy": "one agent task wasn't one request: dot's curl made 2 GETs after its output got truncated. i joined each request to its stored row separately.\n\nmy task -> request -> storage checks: https://gkoreli.com/ai-fetcher-browser-crawler-headers",
+      "weightedCharacters": 204,
+      "state": "reviewed-draft-not-submitted"
+    },
+    {
+      "priority": 5,
+      "title": "Canonry: server logs, AI fetches and referrals",
+      "url": "https://x.com/canonry_ai/status/2118019048847954147",
+      "visibleDate": "Nov 4",
+      "copy": "there's also automation without an AI name: grok's 11 requests looked like chrome/safari and all landed in my Browser bucket. the assigned test URL exposed that gap.\n\nmy headers + fixes: https://gkoreli.com/ai-fetcher-browser-crawler-headers",
+      "weightedCharacters": 210,
+      "state": "reviewed-draft-not-submitted"
+    },
+    {
+      "priority": 6,
+      "title": "AIScan Site: Cloudflare personal-agent policies",
+      "url": "https://x.com/AIScanSite/status/2117980193986068664",
+      "visibleDate": "Nov 4",
+      "copy": "personal agents aren't just named fetchers. dot's chrome + curl shared a verified chatgpt publisher; their UA didn't say ChatGPT-User. i fixed the signer mapping.\n\nmy live tests: https://gkoreli.com/ai-fetcher-browser-crawler-headers",
+      "weightedCharacters": 202,
+      "state": "reviewed-draft-not-submitted"
+    },
+    {
+      "priority": 7,
+      "title": "JK: robots, firewalls and real access checks",
+      "url": "https://x.com/_junaidkhalid1/status/2117978079570342294",
+      "visibleDate": "Nov 4",
+      "copy": "a query label can change the access test too. perplexity failed on ?probe=, then read the canonical/# URL. # never reaches the server, so it can't identify a log row.\n\nmy controls: https://gkoreli.com/ai-fetcher-browser-crawler-headers",
+      "weightedCharacters": 204,
+      "state": "reviewed-draft-not-submitted"
+    }
+  ],
+  "reddit": [
+    {
+      "priority": 1,
+      "title": "r/SearchAPIs: comparing Exa, Tavily and Firecrawl",
+      "url": "https://www.reddit.com/r/SearchAPIs/comments/1wn9zke/has_anyone_compared_exa_tavily_and_firecrawl_for/",
+      "route": "Top-level answer; visible age one month.",
+      "rules": "Good topical fit. Expanded rules allow meaningful technical contributions but prohibit primarily promotional use and misleading comparisons. Include the single-page scope; do not imply a provider ranking or speed benchmark.",
+      "copy": "search success and answer accuracy need separate tests. tavily extract returned my page's text, but its mini research missed the requested heading/sentence, misstated the signature coverage and returned no sources.\n\none page, not a provider ranking. my API/MCP/browser results and settings: https://gkoreli.com/ai-fetcher-browser-crawler-headers",
+      "words": 42,
+      "state": "reviewed-draft-not-submitted"
+    },
+    {
+      "priority": 2,
+      "title": "r/AISearchLab: gotchas in server-log interpretation",
+      "url": "https://www.reddit.com/r/AISearchLab/comments/1v4g7bw/went_deep_on_server_log_analysis_for_ai_bot/",
+      "route": "Answer OP\u2019s request for verification gotchas; visible age four months.",
+      "rules": "Expanded rules require value first, application, and no generic/copy-pasted AI comments. Near-duplicate comments in multiple threads within 24 hours trigger a seven-day ban. This is a distinct IP-assessment finding; keep it to this discussion.",
+      "copy": "an IP-list miss doesn't automatically mean a fake bot. claude's signed-in free chat fetched my test URL; the labelled Claude-User request came from an address outside its current published feed.\n\ni store 'not listed' separately from the UA claim and the controlled test, so a missing match doesn't turn into an impersonation verdict. my headers + exact stored-row checks: https://gkoreli.com/ai-fetcher-browser-crawler-headers",
+      "words": 60,
+      "state": "reviewed-draft-not-submitted"
+    },
+    {
+      "priority": 3,
+      "title": "r/website: the current pinned self-promotion thread",
+      "url": "https://www.reddit.com/r/website/comments/1tp25b1/self_promotion_thread/",
+      "route": "Top-level comment in the pinned sharing thread, not the ordinary analytics question.",
+      "rules": "Clearest explicit invitation. The mod-team post invites self-made websites; the community rule confines self-promotion here. Five-month-old but still pinned with recent replies observed. A locked AutoModerator comment is not a whole-thread lock. Recheck the composer/archive state before posting.",
+      "copy": "grok read my blog and my analytics stored all 11 requests as Browser. dot's chrome + curl both sent verified chatgpt signatures that left the path unsigned.\n\ni tested the providers against my own cloudflare analytics and published the headers, failures and fixes here: https://gkoreli.com/ai-fetcher-browser-crawler-headers",
+      "words": 45,
+      "state": "reviewed-draft-not-submitted"
+    },
+    {
+      "priority": 4,
+      "title": "r/CloudFlare: update the existing technical discussion",
+      "url": "https://www.reddit.com/r/CloudFlare/comments/1xle2vd/one_grok_prompt_produced_11_browserstyle_requests/",
+      "route": "A new results update in Goga\u2019s own four-day-old discussion; do not create another near-duplicate post.",
+      "rules": "The existing post by u/ggaua was reopened and read. Current community wiki asks for helpful, relevant detail, appropriate flair and Reddit-policy compliance; no additional AI-specific restriction was recovered there. This update adds the new signing/verification findings rather than repeating the old Grok pitch.",
+      "copy": "new data from the follow-up: dot's chrome and curl both arrived with verified chatgpt signatures, but path/query/UA were unsigned. claude named itself, yet its address wasn't in the current vendor feed.\n\ni fixed the signer mapping + feed assessment and checked the new rows in D1. headers, proof coverage and the changes on my blog: https://gkoreli.com/ai-fetcher-browser-crawler-headers",
+      "words": 56,
+      "state": "reviewed-draft-not-submitted"
+    },
+    {
+      "priority": 5,
+      "title": "r/TechSEO: verified crawlers and AI-friendly files",
+      "url": "https://www.reddit.com/r/TechSEO/comments/1xn8g06/i_logged_18_days_of_verified_ai_crawler_traffic/",
+      "route": "Technical reply about the meaning of a verified signature; visible age two days.",
+      "rules": "Expanded \u201cDon\u2019t be a shill\u201d rule excludes advertising/promotion-only posts. Supply the finding directly and use the link as inspectable evidence. Lower priority than the explicit invitation and direct questions. Do not claim their Cloudflare verdict used our local verifier or dispute their crawler totals.",
+      "copy": "worth keeping signature coverage next to the verified label. my chatgpt browser + curl requests passed the local verifier, but didn't sign the path, query or user-agent. changing those fields still verified in a local replay.\n\nthat's publisher proof with a specific coverage boundary. my actual captures + replay: https://gkoreli.com/ai-fetcher-browser-crawler-headers",
+      "words": 50,
+      "state": "reviewed-draft-not-submitted"
+    },
+    {
+      "priority": 6,
+      "title": "r/grok: follow up on the existing author reply",
+      "url": "https://www.reddit.com/r/grok/comments/1x9f9hu/comment/19rzvebx4uc2q/",
+      "route": "Reply to Goga\u2019s existing Nov 1 contribution; the parent discussion is 18 days old.",
+      "rules": "Conditional: the old contribution and parent discussion were recovered, but current full community rules were not. No fresh top-level duplicate. Recheck rules and the exact existing-comment composer before posting; earlier acceptance is not current approval.",
+      "copy": "retested nov 5, signed in, Fast: still 11 unsigned chrome/safari-style requests, all stored Browser in that run. no grok declaration. the new comparison also covers dot's signed browser/curl and gemini's bare Google UA.\n\nmy new captures + analytics fixes: https://gkoreli.com/ai-fetcher-browser-crawler-headers",
+      "words": 40,
+      "state": "conditional-draft"
+    },
+    {
+      "priority": 7,
+      "title": "r/Superframeworks: crawler logs versus browser analytics",
+      "url": "https://www.reddit.com/r/Superframeworks/comments/1wwhxq0/1m_ai_bot_requests_hit_one_saas_in_30_days_heres/",
+      "route": "Reply about the blanket \u201cAI skips JavaScript\u201d claim; visible age one month.",
+      "rules": "Conditional: context read, but complete current community rules/AI policy were not recovered. Do not post until checked. The reply distinguishes hosted browser access from named crawlers; it does not claim that our Grok sample ran a GA tag or refute their million-request dataset.",
+      "copy": "there's another path besides raw fetchers: dot used a real cloud browser on my site, and grok sent browser-style headers that my own classifier accepted as Browser.\n\nso i'd keep named crawler hits and agent-driven browser access separate. my controlled headers + stored rows: https://gkoreli.com/ai-fetcher-browser-crawler-headers",
+      "words": 45,
+      "state": "conditional-draft"
+    }
+  ],
+  "xRepliesSubmitted": 0,
+  "redditSubmissions": 0
+}

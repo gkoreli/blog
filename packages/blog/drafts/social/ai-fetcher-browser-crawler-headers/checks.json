@@ -1,0 +1,29 @@
+{
+  "checkedAt": "2026-11-05T17:02:37.640484+00:00",
+  "articleCommit": "9764836",
+  "articlePublished": true,
+  "xOriginalsPublished": 1,
+  "xReplyDrafts": 7,
+  "redditCandidates": 7,
+  "redditPriorityRoutes": 5,
+  "redditConditionalRoutes": 2,
+  "xRepliesSubmitted": 0,
+  "redditSubmissions": 0,
+  "allXDraftsUnder280": true,
+  "allDraftsLinkCanonical": true,
+  "files": {
+    "packages/blog/drafts/social/ai-fetcher-browser-crawler-headers/reddit-opportunities.md": "1a92892c159e52b21318568e46f5d821852ac639556573fe46008870a69b62a7",
+    "packages/blog/drafts/social/ai-fetcher-browser-crawler-headers/launch-brief.md": "fc2a38a75091eabbf813ff6b3cbff67e4559598e8d27f7a4aee10d1dc16687ff",
+    "packages/blog/drafts/social/ai-fetcher-browser-crawler-headers/x-publication.json": "1b4779fc6e4f91acb1a3322d674a2e2b3ef7da451b5f923144220ab5e5c1a917",
+    "packages/blog/drafts/social/ai-fetcher-browser-crawler-headers/execution-2026-11-05.md": "2b67c2b498a61c80e1f69ac003be57c01a00a366d526d5414ce5cab3a0ced8db",
+    "packages/blog/drafts/social/ai-fetcher-browser-crawler-headers/x-opportunities.md": "b4bd7224d87e0255ed911dd47a79ab1c3c6578d0e92ec5457d1e7dc4b1974dcc",
+    "packages/blog/drafts/social/ai-fetcher-browser-crawler-headers/metrics.md": "023c4c35da82075b1ac0d3fd0ca65452d7d29bb3e6039dad5b229c09a146e082",
+    "packages/blog/drafts/social/ai-fetcher-browser-crawler-headers/copy.md": "f89e1f9ca137a7c6eb8a6a0d5ae7d789b2b90947f4b3f82d0a988c0518a201ed",
+    "packages/blog/drafts/social/ai-fetcher-browser-crawler-headers/publication.json": "d4b8b1df27d90cdcc16cb40cc395caf222570ec9c74a6e958361835b424b5681",
+    "packages/blog/drafts/social/ai-fetcher-browser-crawler-headers/opportunities.json": "4c020123d734b24c83da757cbec70c5a8346f7e24239818fe9de49b6f3500623",
+    "packages/blog/drafts/social/ai-fetcher-browser-crawler-headers/x-post-proof.png": "a4dadc4e70f162a4d061c9baa288cb35322e2c31619a39b0871b19a656659db4"
+  },
+  "draftsMatchStructuredCopies": true,
+  "relativeLinksChecked": 4,
+  "credentialScan": "passed"
+}

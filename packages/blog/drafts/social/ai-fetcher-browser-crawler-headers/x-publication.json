@@ -1,0 +1,9 @@
+{
+  "url": "https://x.com/GogaKoreli/status/2118383948061688196",
+  "verifiedAt": "2026-11-05T16:45:18.652Z",
+  "copy": "grok read my page, 11 requests. my analytics called all 11 browsers.\n\nchatgpt's browser + curl both sent verified signatures, but the path and user-agent weren't signed.\n\nheaders, comparisons and the fixes i shipped:\nhttps://gkoreli.com/ai-fetcher-browser-crawler-headers",
+  "weightedCharacters": 240,
+  "submissions": 1,
+  "cardVisible": true,
+  "signedInOwnerView": true
+}

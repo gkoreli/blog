@@ -1,0 +1,30 @@
+{
+  "isolatedBuildPosts": 42,
+  "validMarkdownPosts": 31,
+  "bodyH1s": 1,
+  "canonical": "https://gkoreli.com/ai-fetcher-browser-crawler-headers",
+  "title": "AI Fetchers, Browsers, and Crawlers: Their Headers and How to Detect Them in Analytics",
+  "images": [
+    "/icons/logo.svg",
+    "/icons/github.svg",
+    "/icons/x.svg",
+    "/icons/linkedin.svg",
+    "/icons/transparency.svg",
+    "/images/ai-fetcher-browser-crawler-headers/duck-ai-answer-20261104.png",
+    "/images/ai-fetcher-browser-crawler-headers/dot-http-acceptance-20261105.png",
+    "/images/ai-fetcher-browser-crawler-headers/perplexity-fragment-20261105.png",
+    "/icons/transparency.svg"
+  ],
+  "htmlSha256": "29ac1b483df763739af2af93a0d3ee7150a116b452cdd56826d9dbffdb8dff5e",
+  "promptCount": 15,
+  "repoLinks": "absolute GitHub links",
+  "initialBuildFailure": "Unloaded http grammar for a component-list fence; changed that fence to text, preserving content",
+  "typecheck": "passed",
+  "publication": "not yet pushed",
+  "publicationCommit": "9764836",
+  "pushedToMain": true,
+  "liveBrowserCheckAt": "2026-11-05T16:43:51.675012+00:00",
+  "liveH1AndCanonical": "matched",
+  "livePromptCount": 15,
+  "liveImagesLoaded": 3
+}
