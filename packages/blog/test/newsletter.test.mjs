@@ -642,3 +642,20 @@ test('webhook payload size is enforced without Content-Length', async t => {
   assert.equal(h.row(email).status, 'pending');
   assert.equal(h.attempts()[0].revoked, 0);
 });
+
+test('client attempt references correlate request logs without accepting arbitrary header text', async t => {
+  const h = harness(t);
+  const clientId = '12345678-1234-4234-8234-123456789abc';
+  h.setVerifier(async () => Response.json({ success: false, 'error-codes': ['timeout-or-duplicate', 'private-provider-text'] }));
+  assert.equal((await h.submit('correlation@example.invalid', { headers: { 'x-subscription-attempt-id': clientId } })).status, 400);
+  const event = h.logs.find(([label, data]) => label === '[newsletter:confirmation]' && data.stage === 'verification_failed')[1];
+  assert.equal(event.clientAttemptId, clientId);
+  assert.equal(event.reason, 'timeout_or_duplicate');
+  assert.equal(event.verifierCodes, 'timeout-or-duplicate');
+  assert.equal(event.verifierAttempts, 1);
+  assert.equal(event.verifierStatus, 200);
+  assert.equal(typeof event.verifierElapsedMs, 'number');
+  await h.submit('other@example.invalid', { headers: { 'x-subscription-attempt-id': 'private@example.invalid' } });
+  assert.equal(h.logs.at(-1)[1].clientAttemptId, null);
+  assert.doesNotMatch(JSON.stringify(h.logs), /private@example|private-provider-text|correlation@example/);
+});

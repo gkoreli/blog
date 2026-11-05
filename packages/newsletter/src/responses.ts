@@ -40,6 +40,7 @@ const JSON_HEADERS: Record<string, string> = {
   'cache-control': 'no-store',
   'x-content-type-options': 'nosniff',
   'referrer-policy': 'strict-origin-when-cross-origin',
+  'access-control-expose-headers': 'x-request-id, retry-after',
 };
 
 const HTML_HEADERS: Record<string, string> = {
@@ -80,7 +81,7 @@ export function corsPreflightResponse(origin: string): Response {
     headers: {
       'access-control-allow-origin': origin,
       'access-control-allow-methods': 'POST, OPTIONS',
-      'access-control-allow-headers': 'content-type',
+      'access-control-allow-headers': 'content-type, x-subscription-attempt-id',
       'access-control-max-age': '86400',
       'cache-control': 'no-store',
     },

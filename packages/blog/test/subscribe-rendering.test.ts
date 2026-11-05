@@ -51,6 +51,8 @@ test('the actual client initializes verification from an actual SSG form', async
   const before = document.body.innerHTML, api = window.turnstile;
   t.after(() => { document.body.innerHTML = before; window.turnstile = api; });
   document.body.innerHTML = snapshot;
+  assert.equal(document.querySelector('button')?.disabled, true, 'uninitialized form cannot submit an email as a URL query');
+  assert.equal(document.querySelector('form')?.method, 'post');
   let renders = 0;
   window.turnstile = {
     render(_slot, options) { renders++; assert.equal(options.sitekey, 'fixture-client-key'); return 'fixture-widget'; },
@@ -59,5 +61,6 @@ test('the actual client initializes verification from an actual SSG form', async
   };
   initSubscribeForm({ logger: { report() { assert.fail('Rendered configuration must not report missing verification'); } } });
   assert.equal(renders, 1);
+  assert.equal(document.querySelector('button')?.disabled, false);
   assert.equal(document.getElementById('sub-form')?.dataset['subscribeInit'], 'true');
 });

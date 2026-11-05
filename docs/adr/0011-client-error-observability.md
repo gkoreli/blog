@@ -4,6 +4,10 @@
 
 Accepted — 2026-04-11. Core reporting implemented April 11. Subscription-form coverage and recovery were repaired in `86dad93`; broader transport, correlation, ingestion and alerting gaps remain open as of the September 9 UTC checkpoint.
 
+### November 5 recovery and diagnostic context
+
+[Research 28](../../packages/blog/drafts/research/newsletter-reliability/28-managed-verification-and-diagnostics.md) records the authoritative setup review, implementation and separate release/live acceptance. New v3 evidence adds closed attempt timing/readiness/recovery context and a random per-attempt reference that can match server logs without a received response. These fields remain unverified browser evidence; legacy profiles stay supported. The default transport now seeks the existing 204 storage acknowledgment with keepalive fetch, limited to twenty page reports and three matching signatures. A separate early inline reporter permits three deduplicated fixed resource/CSP stages before the main client loads. Delivery can still fail, and local warnings do not establish server receipt. No database migration or historical backfill is required. General outage alerts, broader bootstrap coverage and population delivery rates remain open.
+
 ### Current checkpoint — October 29, 2026
 
 New subscription diagnostics have a versioned closed evidence object for active phase and a syntax-bounded provider error code, with separate unrecorded, malformed and unsupported states. Failure detection preserves phase before clearing the active attempt. Codes stay separate from HTTP status and do not establish provider authenticity, bot identity or human operation. New rows can preserve client-reported `occurred_at` separately from server ingestion time; older rows remain null. Actual build identity, correlation, transport acknowledgment, admission and bootstrap coverage remain open. [Implementation, native tests and separate schema/release acceptance](../../packages/blog/drafts/research/newsletter-reliability/19-subscription-error-phase-and-provider-evidence.md).

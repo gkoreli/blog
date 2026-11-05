@@ -3,6 +3,8 @@ import type { PageDocument } from '../lib/ssg.js';
 import type { Section } from '../lib/frontmatter.js';
 import { typedLinkElements } from '../lib/typed-links.js';
 import { DispatchSlip } from './artifacts.js';
+import { clientBootstrap } from './client-bootstrap.js';
+import { clientDefines } from '../pipeline/client-mode.js';
 
 function turnstileSiteKey(): string {
   return process.env['TURNSTILE_SITE_KEY'] ?? '';
@@ -85,6 +87,7 @@ export function pageShell({ title, description, content, canonicalPath, currentS
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap">
   <link rel="stylesheet" href="/main.css">
   <script>document.documentElement.setAttribute('data-theme',localStorage.getItem('theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light'))</script>
+  <script>${clientBootstrap(clientDefines(true, process.env)['__GK_CLIENT_BUILD_ID__'] ?? 'undefined')}</script>
   ${TURNSTILE_SITE_KEY ? `<script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" defer></script>` : ''}
   ${head ?? ''}
 `;

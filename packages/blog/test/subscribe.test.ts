@@ -250,6 +250,19 @@ for (const [callbackName, stage] of [
   });
 }
 
+function contextOf(event: ClientErrorInput | undefined) {
+  const evidence = event?.subscriptionEvidence;
+  assert.ok(evidence?.state === 'recorded' && evidence.profile === 'subscribe-error-v3');
+  return evidence.context;
+}
+
+function evidenceFields(event: ClientErrorInput | undefined) {
+  const evidence = event?.subscriptionEvidence;
+  assert.ok(evidence?.state === 'recorded' && evidence.profile === 'subscribe-error-v3');
+  const { context, ...fields } = evidence;
+  return fields;
+}
+
 test('an idle widget error is a diagnostic without a submitted signup', t => {
   const h = harness(t);
   h.form.input.value = '';
@@ -259,11 +272,14 @@ test('an idle widget error is a diagnostic without a submitted signup', t => {
   assert.ok(callback);
   callback('110100');
   assert.deepEqual(h.reports.map(event => event.message), ['subscribe_widget_error']);
-  assert.deepEqual(h.reports[0]?.subscriptionEvidence, {
-    state: 'recorded', profile: 'subscribe-error-v2', phase: 'idle',
+  assert.deepEqual(evidenceFields(h.reports[0]), {
+    state: 'recorded', profile: 'subscribe-error-v3', phase: 'idle',
     operation: { state: 'not-started' },
     turnstileError: { state: 'bounded-code', code: '110100' },
   });
+  assert.equal(contextOf(h.reports[0]).attemptId, null);
+  assert.equal(contextOf(h.reports[0]).recovery, 'no-attempt');
+  assert.equal(h.form.message.textContent, '', 'idle failure must not claim a submitted signup failed');
   assert.equal(h.executions.length, 0);
   assert.equal(h.requests.length, 0);
   assert.equal(h.form.input.value, '');
@@ -276,11 +292,14 @@ test('widget diagnostics retain the active verification phase before failure cle
   h.initialize();
   h.submit();
   h.options()['error-callback']?.('200500');
-  assert.deepEqual(h.reports[0]?.subscriptionEvidence, {
-    state: 'recorded', profile: 'subscribe-error-v2', phase: 'verifying',
+  assert.deepEqual(evidenceFields(h.reports[0]), {
+    state: 'recorded', profile: 'subscribe-error-v3', phase: 'verifying',
     operation: { state: 'not-started' },
     turnstileError: { state: 'bounded-code', code: '200500' },
   });
+  assert.match(contextOf(h.reports[0]).attemptId ?? '', /^[a-f0-9-]{36}$/);
+  assert.equal(contextOf(h.reports[0]).recovery, 'automatic-retry');
+  assert.equal(h.form.button.disabled, true, 'first transient error leaves the bounded automatic retry running');
   assert.equal(h.reports[0]?.status, undefined, 'provider codes must not become HTTP statuses');
   assert.equal(h.requests.length, 0);
 });
@@ -294,8 +313,8 @@ test('API failure diagnostics retain sending phase and keep provider errors inap
   await settle();
   assert.equal(h.reports[0]?.message, 'subscribe_api_rejected');
   assert.equal(h.reports[0]?.status, 503);
-  assert.deepEqual(h.reports[0]?.subscriptionEvidence, {
-    state: 'recorded', profile: 'subscribe-error-v2', phase: 'sending',
+  assert.deepEqual(evidenceFields(h.reports[0]), {
+    state: 'recorded', profile: 'subscribe-error-v3', phase: 'sending',
     operation: { state: 'response-id-missing' },
     turnstileError: { state: 'not-applicable' },
   });
@@ -387,7 +406,7 @@ test('request timeout aborts, restores retry, and ignores a late success', async
   assert.match(h.form.message.textContent, /Request received/);
 });
 
-test('expiry during an API request reports and ignores its eventual response', async t => {
+test('expiry after token handoff cannot abort an API request or discard its response', async t => {
   const h = harness(t);
   const pending = Promise.withResolvers<Response>();
   h.setFetch(() => pending.promise);
@@ -395,12 +414,13 @@ test('expiry during an API request reports and ignores its eventual response', a
   h.submit();
   h.options().callback?.('synthetic-challenge-token');
   h.options()['expired-callback']?.();
-  assert.equal(h.requests[0]?.init?.signal?.aborted, true);
-  assert.equal(h.reports[0]?.message, 'subscribe_widget_expired');
-  assert.equal(h.form.button.disabled, false);
+  assert.equal(h.requests[0]?.init?.signal?.aborted, false);
+  assert.equal(h.reports.length, 0);
+  assert.equal(h.form.button.disabled, true);
   pending.resolve(new Response(null, { status: 202 }));
   await settle();
-  assert.equal(h.form.innerHTML, '');
+  assert.match(h.form.message.textContent, /Request received/);
+  assert.equal(h.form.button.disabled, false);
 });
 
 for (const status of [400, 429, 503, 500, 200]) {
@@ -476,7 +496,7 @@ const REQUEST_B = '22345678-1234-4234-8234-123456789abc';
 
 function operationOf(event: ClientErrorInput | undefined) {
   const evidence = event?.subscriptionEvidence;
-  assert.ok(evidence?.state === 'recorded' && evidence.profile === 'subscribe-error-v2');
+  assert.ok(evidence?.state === 'recorded' && evidence.profile === 'subscribe-error-v3');
   return evidence.operation;
 }
 
@@ -490,10 +510,9 @@ test('rejected signup retains only the response request ID, including cleanup er
   h.initialize(); h.submit(); h.options().callback?.('synthetic-token');
   await settle();
   assert.equal(h.reports.length, 2);
-  for (const event of h.reports) {
-    assert.deepEqual(operationOf(event), { state: 'response-id', requestId: REQUEST_A });
-    assert.equal(event.subscriptionEvidence?.state === 'recorded' && event.subscriptionEvidence.phase, 'sending');
-  }
+  assert.deepEqual(operationOf(h.reports[0]), { state: 'not-started' }, 'cleanup precedes the API response');
+  assert.deepEqual(operationOf(h.reports[1]), { state: 'response-id', requestId: REQUEST_A });
+  assert.equal(contextOf(h.reports[0]).attemptId, contextOf(h.reports[1]).attemptId);
   id = REQUEST_B;
   h.submit(); h.options().callback?.('synthetic-retry'); await settle();
   assert.deepEqual(operationOf(h.reports.at(-1)), { state: 'response-id', requestId: REQUEST_B });
@@ -526,6 +545,9 @@ test('network exceptions and sending-phase widget failures leave server receipt 
   h.setFetch(() => new Promise(() => {}));
   h.submit(); h.options().callback?.('synthetic-retry');
   h.options()['expired-callback']?.();
+  assert.equal(h.reports.length, 1, 'removed widget cannot fail the next sending request');
+  assert.equal(h.form.button.disabled, true);
+  h.tick(35_000);
   assert.deepEqual(operationOf(h.reports.at(-1)), { state: 'response-unavailable' });
 });
 
@@ -534,4 +556,46 @@ test('response metadata cannot turn a successful 202 into a failure report', asy
   h.setFetch(async () => new Response(null, { status: 202, headers: { 'x-request-id': 'private-invalid-id' } }));
   h.initialize(); h.submit(); h.options().callback?.('synthetic-token'); await settle();
   assert.equal(h.reports.length, 0); assert.match(h.form.message.textContent, /Request received/);
+});
+
+test('one transient error recovers automatically without a second click or a duplicate API request', async t => {
+  const h = harness(t); h.initialize(); h.submit();
+  assert.equal(h.options().retry, 'auto');
+  h.options()['error-callback']?.('300031');
+  assert.equal(h.form.button.disabled, true);
+  assert.equal(contextOf(h.reports[0]).recovery, 'automatic-retry');
+  h.options().callback?.('recovered-token');
+  h.options().callback?.('duplicate-token');
+  await settle();
+  assert.equal(h.requests.length, 1);
+  assert.equal(new Headers(h.requests[0]?.init?.headers).get('x-subscription-attempt-id'), contextOf(h.reports[0]).attemptId);
+  assert.match(h.form.message.textContent, /Request received/);
+});
+
+test('a second transient failure stops automatic retry and preserves the next manual attempt', t => {
+  const h = harness(t); h.initialize(); h.submit();
+  h.options()['error-callback']?.('300031');
+  const first = contextOf(h.reports[0]).attemptId;
+  h.options()['error-callback']?.('300031');
+  assert.equal(contextOf(h.reports[1]).attemptId, first);
+  assert.equal(contextOf(h.reports[1]).recovery, 'manual-retry');
+  assert.equal(h.form.button.disabled, false);
+  assert.equal(h.timers.size, 0);
+  h.submit(); h.options()['error-callback']?.('110200');
+  assert.notEqual(contextOf(h.reports[2]).attemptId, first);
+  assert.equal(contextOf(h.reports[2]).recovery, 'manual-retry', 'configuration failure never retries automatically');
+  assert.equal(h.form.button.disabled, false);
+});
+
+test('an interactive challenge receives a bounded two-minute window that callbacks cannot keep extending', t => {
+  const h = harness(t); h.initialize(); h.submit();
+  h.options()['before-interactive-callback']?.();
+  assert.equal(h.options().appearance, 'interaction-only');
+  assert.equal(h.options().size, 'compact');
+  assert.match(h.form.message.textContent, /Complete the verification/);
+  h.tick(30_000); assert.equal(h.form.button.disabled, true);
+  h.options()['before-interactive-callback']?.();
+  h.tick(89_999); assert.equal(h.form.button.disabled, true);
+  h.tick(1); assert.equal(h.form.button.disabled, false);
+  assert.equal(contextOf(h.reports[0]).widget, 'interactive');
 });

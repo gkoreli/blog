@@ -1,4 +1,4 @@
-import { captureSubscriptionError, captureSubscriptionResponse, type ClientLogger, type SubscriptionPhase, type SubscriptionOperationEvidence } from '@gkoreli/client-observability/client';
+import { captureSubscriptionError, captureSubscriptionResponse, type ClientLogger, type SubscriptionPhase, type SubscriptionOperationEvidence, type SubscriptionDiagnosticContext } from '@gkoreli/client-observability/client';
 
 /** Minimal Turnstile API surface we use */
 interface Turnstile {
@@ -10,6 +10,7 @@ interface Turnstile {
       appearance?: 'always' | 'execute' | 'interaction-only';
       theme?: 'auto' | 'light' | 'dark';
       action?: string;
+      size?: 'normal' | 'compact' | 'flexible';
       retry?: 'auto' | 'never';
       'refresh-expired'?: 'auto' | 'manual' | 'never';
       'refresh-timeout'?: 'auto' | 'manual' | 'never';
@@ -19,6 +20,8 @@ interface Turnstile {
       'expired-callback'?: () => void;
       'timeout-callback'?: () => void;
       'unsupported-callback'?: () => void;
+      'before-interactive-callback'?: () => void;
+      'after-interactive-callback'?: () => void;
     }
   ): string;
   execute(widgetId: string): void;
@@ -37,9 +40,14 @@ interface SubscribeOptions {
 
 const ATTRIBUTION_PARAMS = ['utm_source', 'utm_campaign'] as const;
 const VERIFICATION_TIMEOUT_MS = 30_000;
+const INTERACTIVE_TIMEOUT_MS = 120_000;
 const REQUEST_TIMEOUT_MS = 35_000;
 
 interface Attempt {
+  id: string;
+  startedAt: number;
+  retries: number;
+  interactive: boolean;
   email: string;
   operation: SubscriptionOperationEvidence;
   phase: 'verifying' | 'sending';
@@ -100,6 +108,7 @@ export function initSubscribeForm({ logger }: SubscribeOptions): void {
 
   let widget: { id: string | null; api: Turnstile } | null = null;
   let active: Attempt | null = null;
+  let widgetState: SubscriptionDiagnosticContext['widget'] = 'unknown';
 
   form.addEventListener('submit', e => {
     e.preventDefault();
@@ -107,6 +116,7 @@ export function initSubscribeForm({ logger }: SubscribeOptions): void {
     if (!emailInput.checkValidity()) { emailInput.reportValidity(); return; }
 
     const attempt: Attempt = {
+      id: crypto.randomUUID(), startedAt: performance.now(), retries: 0, interactive: false,
       email: emailInput.value.trim(), phase: 'verifying', timer: null, controller: null,
       operation: { state: 'not-started' },
     };
@@ -118,13 +128,14 @@ export function initSubscribeForm({ logger }: SubscribeOptions): void {
     // Retry initialization here when the external script arrived after our module.
     if (!initWidget(true) || !widget || widget.id === null
       || active !== attempt || attempt.phase !== 'verifying') return;
-    attempt.timer = window.setTimeout(() => {
+    if (attempt.timer === null) attempt.timer = window.setTimeout(() => {
       if (active === attempt) {
         fail('subscribe_widget_deadline', 'Verification took too long. Please try again.');
       }
     }, VERIFICATION_TIMEOUT_MS);
 
     try {
+      if (!attempt.interactive) widgetState = 'verifying';
       widget.api.execute(widget.id);
     } catch {
       if (active === attempt) {
@@ -133,6 +144,7 @@ export function initSubscribeForm({ logger }: SubscribeOptions): void {
     }
   });
 
+  btn.disabled = false;
   initWidget(false);
 
   function initWidget(reportMissing: boolean): boolean {
@@ -154,16 +166,46 @@ export function initSubscribeForm({ logger }: SubscribeOptions): void {
 
     const current: { id: string | null; api: Turnstile } = { id: null, api };
     widget = current;
+    widgetState = 'rendering';
     try {
       const id = api.render(slot, {
-        sitekey, execution: 'execute', appearance: 'execute', theme: 'auto', action: 'subscribe',
-        retry: 'never', 'refresh-expired': 'manual', 'refresh-timeout': 'manual', 'response-field': false,
+        sitekey, execution: 'execute', appearance: 'interaction-only', size: 'compact', theme: 'auto', action: 'subscribe',
+        retry: 'auto', 'refresh-expired': 'manual', 'refresh-timeout': 'manual', 'response-field': false,
         callback(token) {
           if (widget === current && active?.phase === 'verifying') void doSubmit(active, token);
         },
         'error-callback'(errorCode) {
-          if (widget === current) fail('subscribe_widget_error', 'Verification failed. Please try again.', undefined, { errorCode });
+          if (widget !== current) return true;
+          // Let Turnstile retry one documented transient failure within our deadline.
+          // Configuration errors and repeated failures still recover to a usable form.
+          const retryable = /^(300|600)[0-9]{3}$/.test(errorCode)
+            || errorCode === '200500' || errorCode === '110600' || errorCode === '110620';
+          if (active?.phase === 'verifying' && active.retries === 0 && retryable) {
+            active.retries++;
+            report('subscribe_widget_error', undefined, active.phase, { errorCode }, active.operation,
+              diagnosticContext(active, 'automatic-retry'));
+            msg.textContent = 'Verification interrupted. Retrying…';
+          } else {
+            fail('subscribe_widget_error', 'Verification failed. Please try again.', undefined, { errorCode });
+          }
           return true;
+        },
+        'before-interactive-callback'() {
+          if (widget !== current || active?.phase !== 'verifying' || active.interactive) return;
+          const attempt = active;
+          attempt.interactive = true;
+          widgetState = 'interactive';
+          clearDeadline(attempt);
+          attempt.timer = window.setTimeout(() => {
+            if (active === attempt) fail('subscribe_widget_deadline', 'Verification took too long. Please try again.');
+          }, INTERACTIVE_TIMEOUT_MS);
+          msg.textContent = 'Complete the verification below to subscribe.';
+        },
+        'after-interactive-callback'() {
+          if (widget === current && active?.phase === 'verifying') {
+            widgetState = 'verifying';
+            msg.textContent = 'Verifying…';
+          }
         },
         'expired-callback'() {
           if (widget !== current) return;
@@ -188,6 +230,7 @@ export function initSubscribeForm({ logger }: SubscribeOptions): void {
         api.remove(id);
         return false;
       }
+      if (widgetState === 'rendering') widgetState = 'ready';
       return true;
     } catch {
       if (widget === current) {
@@ -204,7 +247,10 @@ export function initSubscribeForm({ logger }: SubscribeOptions): void {
     }
     // Consume this callback before fetch so duplicate callbacks cannot send twice.
     attempt.phase = 'sending';
+    widgetState = 'token-received';
     clearDeadline(attempt);
+    // The token has been handed off. Late widget events must not abort a mail request.
+    removeWidget(attempt);
     const controller = new AbortController();
     attempt.controller = controller;
     attempt.timer = window.setTimeout(() => {
@@ -219,7 +265,7 @@ export function initSubscribeForm({ logger }: SubscribeOptions): void {
       attempt.operation = { state: 'response-unavailable' };
       const res = await fetch('/api/subscribe', {
         method: 'POST',
-        headers: { 'content-type': 'application/json' },
+        headers: { 'content-type': 'application/json', 'x-subscription-attempt-id': attempt.id },
         body: JSON.stringify({ email: attempt.email, turnstile: token, source: subscriptionSource() }),
         signal: controller.signal,
       });
@@ -251,11 +297,21 @@ export function initSubscribeForm({ logger }: SubscribeOptions): void {
     }
   }
 
-  function report(stage: string, status?: number, phase: SubscriptionPhase = active?.phase ?? 'idle', provider?: { errorCode: unknown }, operation: SubscriptionOperationEvidence = active?.operation ?? { state: 'not-started' }): void {
+  function diagnosticContext(attempt: Attempt | null, recovery: SubscriptionDiagnosticContext['recovery']): SubscriptionDiagnosticContext {
+    return {
+      attemptId: attempt?.id ?? null,
+      elapsedMs: attempt ? Math.min(300_000, Math.max(0, Math.floor(performance.now() - attempt.startedAt))) : null,
+      online: typeof navigator.onLine === 'boolean' ? navigator.onLine ? 'online' : 'offline' : 'unknown',
+      visibility: document.visibilityState === 'visible' || document.visibilityState === 'hidden' ? document.visibilityState : 'unknown',
+      widget: widgetState, script: window.turnstile ? 'available' : 'unavailable', recovery,
+    };
+  }
+
+  function report(stage: string, status?: number, phase: SubscriptionPhase = active?.phase ?? 'idle', provider?: { errorCode: unknown }, operation: SubscriptionOperationEvidence = active?.operation ?? { state: 'not-started' }, context = diagnosticContext(active, active ? 'manual-retry' : 'no-attempt')): void {
     try {
       logger.report({
         type: 'interaction_error', component: 'subscribe_form', message: stage, status,
-        subscriptionEvidence: captureSubscriptionError(phase, provider, operation),
+        subscriptionEvidence: captureSubscriptionError(phase, provider, operation, context),
       });
     } catch {
       // Reporting must not break the form's recovery path.
@@ -270,6 +326,7 @@ export function initSubscribeForm({ logger }: SubscribeOptions): void {
   function removeWidget(attempt: Attempt | null = active): void {
     const previous = widget;
     widget = null; // Ignore callbacks from a removed or failed challenge.
+    widgetState = 'removed';
     if (previous && previous.id !== null) {
       try {
         previous.api.remove(previous.id);
@@ -285,15 +342,17 @@ export function initSubscribeForm({ logger }: SubscribeOptions): void {
   function fail(stage: string, text: string, status?: number, provider?: { errorCode: unknown }): void {
     const attempt = active;
     const phase = attempt?.phase ?? 'idle';
+    const context = diagnosticContext(attempt, attempt ? 'manual-retry' : 'no-attempt');
     active = null;
     if (attempt) {
       clearDeadline(attempt);
       attempt.controller?.abort();
     }
     removeWidget(attempt);
-    msg.textContent = text;
+    // An idle provider failure is useful evidence, not a failed subscription.
+    if (attempt) msg.textContent = text;
     form.removeAttribute('aria-busy');
     btn.disabled = false;
-    report(stage, status, phase, provider, attempt?.operation ?? { state: 'not-started' });
+    report(stage, status, phase, provider, attempt?.operation ?? { state: 'not-started' }, context);
   }
 }

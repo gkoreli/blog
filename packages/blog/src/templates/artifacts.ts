@@ -51,14 +51,15 @@ interface ReplySlipProps {
 }
 
 export function ReplySlip({ turnstileSiteKey }: ReplySlipProps) {
-  return html`<form id="sub-form" class="dispatch-form subscribe-form" novalidate data-turnstile-sitekey=${turnstileSiteKey}>
+  return html`<form id="sub-form" class="dispatch-form subscribe-form" method="post" action="/api/subscribe" novalidate data-turnstile-sitekey=${turnstileSiteKey}>
     <label for="subscribe-email" class="dispatch-email-label">Email address</label>
     <div class="dispatch-form-row">
       <input id="subscribe-email" type="email" name="email" class="dispatch-input subscribe-input" placeholder="your@email.com" required autocomplete="email">
-      <button type="submit" class="dispatch-submit subscribe-btn">Subscribe</button>
+      <button type="submit" class="dispatch-submit subscribe-btn" disabled>Subscribe</button>
     </div>
     <p class="dispatch-note">One piece per send · no schedule · unsubscribe anytime</p>
     <p class="subscribe-msg" aria-live="polite" role="status"></p>
+    <noscript><p>Enable JavaScript to verify an email subscription, or <a href="/feed.xml">follow by RSS</a>.</p></noscript>
     ${turnstileSiteKey ? html`<div class="turnstile-slot"></div>` : ''}
   </form>`;
 }

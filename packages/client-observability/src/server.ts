@@ -116,11 +116,15 @@ export async function handleClientError(
     colo: event.colo ?? '',
     stage: 'received',
     storage: 'pending',
+    eventId: event.id,
+    buildId: event.buildId ?? null,
+    occurredAt: event.occurredAt,
+    subscriptionEvidence: event.subscriptionEvidence ?? null,
   });
 
   const confirmation = recordClientError(env.DB, event).then(
     () => {
-      console.info('[client:error:storage]', { outcome: 'confirmed' });
+      console.info('[client:error:storage]', { outcome: 'confirmed', eventId: event.id, ray: event.ray });
       return true;
     },
     err => {

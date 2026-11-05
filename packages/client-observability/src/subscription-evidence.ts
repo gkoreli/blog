@@ -1,5 +1,15 @@
 export type SubscriptionPhase = 'idle' | 'verifying' | 'sending' | 'unknown';
 
+export interface SubscriptionDiagnosticContext {
+  attemptId: string | null;
+  elapsedMs: number | null;
+  online: 'online' | 'offline' | 'unknown';
+  visibility: 'visible' | 'hidden' | 'unknown';
+  widget: 'rendering' | 'ready' | 'verifying' | 'interactive' | 'token-received' | 'removed' | 'unknown';
+  script: 'available' | 'unavailable' | 'unknown';
+  recovery: 'automatic-retry' | 'manual-retry' | 'no-attempt' | 'unknown';
+}
+
 export type TurnstileErrorEvidence =
   | { state: 'not-applicable' }
   | { state: 'not-provided' }
@@ -26,6 +36,14 @@ export type SubscriptionErrorEvidence =
     phase: SubscriptionPhase;
     turnstileError: TurnstileErrorEvidence;
     operation: SubscriptionOperationEvidence;
+  }
+  | {
+    state: 'recorded';
+    profile: 'subscribe-error-v3';
+    phase: SubscriptionPhase;
+    turnstileError: TurnstileErrorEvidence;
+    operation: SubscriptionOperationEvidence;
+    context: SubscriptionDiagnosticContext;
   };
 
 function requestId(value: unknown): value is string {
@@ -68,11 +86,30 @@ export function captureSubscriptionError(
   phase: SubscriptionPhase,
   provider?: { errorCode: unknown },
   operation: SubscriptionOperationEvidence = { state: 'unrecorded' },
+  context?: SubscriptionDiagnosticContext,
 ): SubscriptionErrorEvidence {
-  return {
-    state: 'recorded', profile: 'subscribe-error-v2', phase,
-    turnstileError: provider ? captureProviderCode(provider.errorCode) : { state: 'not-applicable' },
+  const common = {
+    state: 'recorded' as const, phase,
+    turnstileError: provider ? captureProviderCode(provider.errorCode) : { state: 'not-applicable' as const },
     operation: parseOperation(operation),
+  };
+  return context ? { ...common, profile: 'subscribe-error-v3', context: parseDiagnosticContext(context) }
+    : { ...common, profile: 'subscribe-error-v2' };
+}
+
+function parseDiagnosticContext(value: unknown): SubscriptionDiagnosticContext {
+  const raw = typeof value === 'object' && value !== null ? value : {};
+  return {
+    attemptId: 'attemptId' in raw && requestId(raw.attemptId) ? raw.attemptId.toLowerCase() : null,
+    elapsedMs: 'elapsedMs' in raw && typeof raw.elapsedMs === 'number' && Number.isFinite(raw.elapsedMs)
+      && raw.elapsedMs >= 0 && raw.elapsedMs <= 300_000 ? Math.floor(raw.elapsedMs) : null,
+    online: 'online' in raw && (raw.online === 'online' || raw.online === 'offline') ? raw.online : 'unknown',
+    visibility: 'visibility' in raw && (raw.visibility === 'visible' || raw.visibility === 'hidden') ? raw.visibility : 'unknown',
+    widget: 'widget' in raw && (raw.widget === 'rendering' || raw.widget === 'ready' || raw.widget === 'verifying'
+      || raw.widget === 'interactive' || raw.widget === 'token-received' || raw.widget === 'removed') ? raw.widget : 'unknown',
+    script: 'script' in raw && (raw.script === 'available' || raw.script === 'unavailable') ? raw.script : 'unknown',
+    recovery: 'recovery' in raw && (raw.recovery === 'automatic-retry' || raw.recovery === 'manual-retry'
+      || raw.recovery === 'no-attempt') ? raw.recovery : 'unknown',
   };
 }
 
@@ -98,14 +135,19 @@ export function parseSubscriptionErrorEvidence(value: unknown): SubscriptionErro
   if (typeof value !== 'object' || value === null || !('state' in value)) return { state: 'invalid' };
   if (value.state === 'invalid' || value.state === 'unsupported-profile') return { state: value.state };
   if (value.state !== 'recorded') return { state: 'invalid' };
-  if (!('profile' in value) || (value.profile !== 'subscribe-error-v1' && value.profile !== 'subscribe-error-v2')) return { state: 'unsupported-profile' };
+  if (!('profile' in value) || (value.profile !== 'subscribe-error-v1' && value.profile !== 'subscribe-error-v2'
+    && value.profile !== 'subscribe-error-v3')) return { state: 'unsupported-profile' };
   const common = {
     state: 'recorded' as const,
     phase: parsePhase('phase' in value ? value.phase : undefined),
     turnstileError: parseProvider('turnstileError' in value ? value.turnstileError : undefined),
   };
-  return value.profile === 'subscribe-error-v1' ? { ...common, profile: value.profile } : {
-    ...common, profile: value.profile,
-    operation: parseOperation('operation' in value ? value.operation : undefined),
+  if (value.profile === 'subscribe-error-v1') return { ...common, profile: value.profile };
+  const operation = parseOperation('operation' in value ? value.operation : undefined);
+  return value.profile === 'subscribe-error-v2' ? {
+    ...common, profile: value.profile, operation,
+  } : {
+    ...common, profile: value.profile, operation,
+    context: parseDiagnosticContext('context' in value ? value.context : undefined),
   };
 }

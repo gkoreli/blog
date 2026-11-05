@@ -48,15 +48,24 @@ export async function handleConfirmationRequest(
 ): Promise<Response> {
   const origin = allowedOrigin(request);
   const id = crypto.randomUUID();
+  const startedAt = performance.now();
+  const rawClientId = request.headers.get('x-subscription-attempt-id');
+  const clientAttemptId = rawClientId?.length === 36 && /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(rawClientId)
+    ? rawClientId.toLowerCase() : null;
   const respond = (response: Response): Response => {
     response.headers.set('x-request-id', id);
     return response;
   };
   const log = (stage: string, details: Record<string, string | number | null> = {}): void => {
-    console.log('[newsletter:confirmation]', { attemptId: id, mode, stage, ...details });
+    console.log('[newsletter:confirmation]', { attemptId: id, clientAttemptId, mode, stage,
+      elapsedMs: Math.max(0, Math.floor(performance.now() - startedAt)), ...details });
   };
-  if (request.headers.has('origin') && !origin) return respond(jsonError('This signup request is not allowed.', 403));
+  if (request.headers.has('origin') && !origin) {
+    log('origin_rejected');
+    return respond(jsonError('This signup request is not allowed.', 403));
+  }
   if (request.headers.get('content-type')?.split(';')[0]?.trim().toLowerCase() !== 'application/json') {
+    log('content_type_rejected');
     return respond(jsonError('Expected a JSON request.', 415, origin));
   }
   const ip = request.headers.get('cf-connecting-ip') ?? '0.0.0.0';
@@ -73,19 +82,27 @@ export async function handleConfirmationRequest(
     }
     const body = await readBody(request);
     if (typeof body !== 'object' || body === null || !('email' in body)) {
+      log('body_rejected');
       return respond(jsonError('Invalid or oversized signup request.', 400, origin));
     }
     const email = typeof body.email === 'string' ? body.email.trim().toLowerCase() : '';
-    if (email.length > 254 || !EMAIL_RE.test(email)) return respond(jsonError('Please enter a valid email address.', 400, origin));
+    if (email.length > 254 || !EMAIL_RE.test(email)) {
+      log('email_invalid');
+      return respond(jsonError('Please enter a valid email address.', 400, origin));
+    }
     const token = 'turnstile' in body && typeof body.turnstile === 'string' ? body.turnstile : '';
     const verification = await verifyTurnstile(token, env.TURNSTILE_SECRET_KEY, ip, new URL(request.url).hostname);
     if (!verification.ok) {
-      log('verification_failed', { reason: verification.reason });
+      log('verification_failed', { reason: verification.reason, verifierStatus: verification.httpStatus,
+        verifierCodes: verification.errorCodes.join(','), verifierAttempts: verification.attempts,
+        verifierElapsedMs: verification.elapsedMs, verifierRetryReason: verification.retryReason });
       return respond(jsonError(verification.kind === 'unavailable'
         ? 'Verification is temporarily unavailable. Please try again later.'
         : 'Verification could not be completed. Please try again.',
       verification.kind === 'unavailable' ? 503 : 400, origin));
     }
+    log('verification_passed', { verifierStatus: verification.httpStatus, verifierAttempts: verification.attempts,
+      verifierElapsedMs: verification.elapsedMs, verifierRetryReason: verification.retryReason });
     const confirmToken = generateToken();
     const admission = await admitConfirmation(env.DB, {
       id, email, tokenHash: await hashToken(confirmToken), subscriberId: generateToken(),

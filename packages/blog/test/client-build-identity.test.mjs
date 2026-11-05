@@ -22,11 +22,11 @@ test('client identity requires complete bounded Workers metadata and is absent f
 
 async function compiledReport(env){
  const output=await build({stdin:{contents:'import {clientBuildId} from "./src/client/build-identity.ts"; import {createDefaultClientLogger,initClientErrorReporting} from "@gkoreli/client-observability/client"; initClientErrorReporting(createDefaultClientLogger({buildId:clientBuildId()}));',resolveDir:ROOT},bundle:true,platform:'browser',format:'iife',target:'es2024',write:false,minify:true,define:clientDefines(true,env)});
- const listeners=new Map(),blobs=[];
+ const listeners=new Map(),bodies=[];
  const location={pathname:'/owner',origin:'https://fixture.invalid'};
- runInNewContext(output.outputFiles[0].text,{Blob,Date,location,document:{referrer:''},navigator:{userAgent:'FixtureBrowser/1',sendBeacon(_url,blob){blobs.push(blob);return true}},window:{addEventListener(name,callback){listeners.set(name,callback)}}});
+ runInNewContext(output.outputFiles[0].text,{Blob,Date,location,fetch:async(_url,init)=>{bodies.push(init.body);return new Response(null,{status:204});},document:{referrer:''},navigator:{userAgent:'FixtureBrowser/1'},window:{addEventListener(name,callback){listeners.set(name,callback)}}});
  listeners.get('error')({message:'client_build_fixture',filename:'https://fixture.invalid/main.js',lineno:1,colno:1});
- assert.equal(blobs.length,1);const event=JSON.parse(await blobs[0].text());return{event,code:output.outputFiles[0].text};
+ assert.equal(bodies.length,1);const event=JSON.parse(bodies[0]);return{event,code:output.outputFiles[0].text};
 }
 
 test('compiled default logger carries the complete client-build identity through redaction and server parsing',async()=>{
