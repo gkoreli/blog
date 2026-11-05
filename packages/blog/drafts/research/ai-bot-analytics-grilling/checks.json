@@ -39,5 +39,17 @@
     "packages/blog/drafts/research/fetcher-study-v2/extract-live-fetches.mjs": "5999c6f79376f6d1c7dde8a5b91e3b5cd06b8fd147eb887aaf2c7334b1d9bf80"
   },
   "literalSuppliedCredentialScan": "passed",
-  "wranglerVersion": "4.71.0"
+  "wranglerVersion": "4.71.0",
+  "quoteAudit": {
+    "status": "passed",
+    "literalBingExcerpts": 3,
+    "initialFailure": "A nonbreaking hyphen in server-side was normalized in one excerpt; corrected from the saved UI text before final delivery.",
+    "semanticClaimChanged": false
+  },
+  "sourceDelivery": {
+    "initialCommit": "ea37349",
+    "pushedToMain": true,
+    "articlePublication": "unpublished draft; no served new article claimed",
+    "rawProviderCaptures": "private, outside Git"
+  }
 }

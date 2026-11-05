@@ -232,7 +232,7 @@
     "reviewedExcerpts": {
       "DuckAssistBot network bullet": "Verified via DuckDuckGo\u2019s published key directory.",
       "Grok impact label": "eight human visitors",
-      "Grok generalized limit": "no server-side rule could reliably detect them as AI."
+      "Grok generalized limit": "no server\u2011side rule could reliably detect them as AI."
     },
     "audit": {
       "networkEvidenceConflatedWithSigningKey": true,
