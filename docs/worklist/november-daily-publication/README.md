@@ -38,9 +38,22 @@ TypeScript metadata rollback. Nine relative documentation links resolve and code
 fences balance. The active development output was not touched; no private local
 environment files were copied into the isolated build.
 
-The queue has no articles. No scheduled article publication has occurred.
-Remaining: scoped commit/push, hosted check of the registered workflow, and the
-first real queued-article release. The last step needs a finished article and
-cannot be established by an empty-queue dry run. Next bounded action: deliver the
-checked source and run the hosted check. Keep source delivery, hosted workflow
-activation and actual live publication acceptance separate below.
+Source delivered directly to `main` in
+[`9382248`](https://github.com/gkoreli/blog/commit/9382248d34cfd6c2b58599b21195540dec6b1a77).
+The unrelated, untracked Ahrefs captures were left untouched.
+
+Activation observed November 5: GitHub registered workflow `408698342` as active.
+The manually dispatched, non-publishing
+[hosted check](https://github.com/gkoreli/blog/actions/runs/42118994554) succeeded
+on that exact commit. Checkout, runtime pin extraction, Node setup, pnpm setup,
+frozen-lockfile installation and the empty-queue check all passed. Promotion,
+validation, commit/push and live acceptance steps were skipped as intended.
+No scheduled article was published, and this manual run does not prove the
+future cron wakeup or the GitHub-token-to-Cloudflare article deployment path.
+
+Setup and hosted activation are complete. The queue has no articles. Remaining:
+finish and explicitly queue the November 6 article, then inspect the first actual
+08:00 release's source delivery and live acceptance. The job will fail visibly
+if nothing is queued. GitHub notification preferences were not changed. The
+first real publication needs finished source and cannot be established by an
+empty-queue dry run; no speculative draft is selected on the owner's behalf.
