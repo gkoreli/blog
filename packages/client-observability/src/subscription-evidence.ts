@@ -5,7 +5,7 @@ export interface SubscriptionDiagnosticContext {
   elapsedMs: number | null;
   online: 'online' | 'offline' | 'unknown';
   visibility: 'visible' | 'hidden' | 'unknown';
-  widget: 'rendering' | 'ready' | 'verifying' | 'interactive' | 'token-received' | 'removed' | 'unknown';
+  widget: 'waiting-api' | 'rendering' | 'ready' | 'verifying' | 'interactive' | 'token-received' | 'removed' | 'unknown';
   script: 'available' | 'unavailable' | 'unknown';
   recovery: 'automatic-retry' | 'manual-retry' | 'no-attempt' | 'unknown';
 }
@@ -105,7 +105,7 @@ function parseDiagnosticContext(value: unknown): SubscriptionDiagnosticContext {
       && raw.elapsedMs >= 0 && raw.elapsedMs <= 300_000 ? Math.floor(raw.elapsedMs) : null,
     online: 'online' in raw && (raw.online === 'online' || raw.online === 'offline') ? raw.online : 'unknown',
     visibility: 'visibility' in raw && (raw.visibility === 'visible' || raw.visibility === 'hidden') ? raw.visibility : 'unknown',
-    widget: 'widget' in raw && (raw.widget === 'rendering' || raw.widget === 'ready' || raw.widget === 'verifying'
+    widget: 'widget' in raw && (raw.widget === 'waiting-api' || raw.widget === 'rendering' || raw.widget === 'ready' || raw.widget === 'verifying'
       || raw.widget === 'interactive' || raw.widget === 'token-received' || raw.widget === 'removed') ? raw.widget : 'unknown',
     script: 'script' in raw && (raw.script === 'available' || raw.script === 'unavailable') ? raw.script : 'unknown',
     recovery: 'recovery' in raw && (raw.recovery === 'automatic-retry' || raw.recovery === 'manual-retry'

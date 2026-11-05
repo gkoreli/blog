@@ -62,7 +62,7 @@ try{
      return modified;
     })();tasks.push(task.catch(error=>{failures.push(String(error))}));return task;
    };
-   runInNewContext(bundle.outputFiles[0].text,{Blob,Date,Response,URL,URLSearchParams,AbortController,HTMLElement:Element,HTMLInputElement:Input,HTMLButtonElement:Button,HTMLFormElement:Form,location:{origin:'https://fixture.invalid',pathname:'/owner',search:''},document:{getElementById:()=>form,referrer:''},navigator:{userAgent:'FixtureBrowser/1',sendBeacon(){return false}},window:{setTimeout(){return 1},clearTimeout(){},turnstile:{render(_slot,value){options=value;return'fixture-widget'},execute(){},remove(){}}},fetch});
+   runInNewContext(bundle.outputFiles[0].text,{Blob,Date,Response,URL,URLSearchParams,AbortController,crypto,performance,HTMLElement:Element,HTMLInputElement:Input,HTMLButtonElement:Button,HTMLFormElement:Form,location:{origin:'https://fixture.invalid',pathname:'/owner',search:''},document:{getElementById:()=>form,referrer:''},navigator:{userAgent:'FixtureBrowser/1',sendBeacon(){return false}},window:{setTimeout(){return 1},clearTimeout(){},turnstile:{ready(callback){callback()},render(_slot,value){options=value;return'fixture-widget'},execute(){},remove(){}}},fetch});
    if(mode==='idle')options['error-callback']('110100');
    else{form.dispatchEvent(new Event('submit',{cancelable:true}));options.callback('synthetic-no-real-token');}
    let deadline;
@@ -81,6 +81,7 @@ try{
    const matched=operation.state==='response-id'&&operation.requestId===stages[0]?.attemptId;
    assert.equal(matched,variant==='after'&&mode==='config');
    if(variant==='after')assert.equal(operation.state,({config:'response-id',missing:'response-id-missing',invalid:'response-id-invalid',redirected:'redirected-response','lost-response':'response-unavailable',idle:'not-started'})[mode]);
+   if(variant==='after'&&apiCalls)assert.equal(evidence.context.attemptId,stages[0].clientAttemptId,'client attempt reference survives response loss and matches the server log');
    assert.equal(stored.results[0].ray,'fixture-ingestion-ray');
    assert.ok(!JSON.stringify(evidence).match(/fixture@example|synthetic-no-real-token|private-invalid-header|fixture-ingestion-ray/));
    rows.push({mode,apiCalls,reportsStored:1,diagnosticStatus:204,phase:evidence.phase,operationState:operation.state,matchedServerLog:matched,ingestionRaySeparate:true,serverStages:stages.map(s=>s.stage),actualResponseRequestId:stages[0]?.attemptId??null,evidence});

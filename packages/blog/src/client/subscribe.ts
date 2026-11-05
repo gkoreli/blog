@@ -2,6 +2,7 @@ import { captureSubscriptionError, captureSubscriptionResponse, type ClientLogge
 
 /** Minimal Turnstile API surface we use */
 interface Turnstile {
+  ready(callback: () => void): void;
   render(
     container: string | HTMLElement,
     options: {
@@ -48,6 +49,7 @@ interface Attempt {
   startedAt: number;
   retries: number;
   interactive: boolean;
+  executed: boolean;
   email: string;
   operation: SubscriptionOperationEvidence;
   phase: 'verifying' | 'sending';
@@ -109,6 +111,8 @@ export function initSubscribeForm({ logger }: SubscribeOptions): void {
   let widget: { id: string | null; api: Turnstile } | null = null;
   let active: Attempt | null = null;
   let widgetState: SubscriptionDiagnosticContext['widget'] = 'unknown';
+  let readyApi: Turnstile | null = null;
+  let waitingApi: Turnstile | null = null;
 
   form.addEventListener('submit', e => {
     e.preventDefault();
@@ -116,24 +120,29 @@ export function initSubscribeForm({ logger }: SubscribeOptions): void {
     if (!emailInput.checkValidity()) { emailInput.reportValidity(); return; }
 
     const attempt: Attempt = {
-      id: crypto.randomUUID(), startedAt: performance.now(), retries: 0, interactive: false,
+      id: crypto.randomUUID(), startedAt: performance.now(), retries: 0, interactive: false, executed: false,
       email: emailInput.value.trim(), phase: 'verifying', timer: null, controller: null,
       operation: { state: 'not-started' },
     };
     active = attempt;
     btn.disabled = true;
     form.setAttribute('aria-busy', 'true');
+    form.dataset['subscribeStatus'] = 'pending';
     msg.textContent = 'Verifying…';
 
-    // Retry initialization here when the external script arrived after our module.
-    if (!initWidget(true) || !widget || widget.id === null
-      || active !== attempt || attempt.phase !== 'verifying') return;
-    if (attempt.timer === null) attempt.timer = window.setTimeout(() => {
+    // This deadline also bounds a provider ready callback that never arrives.
+    attempt.timer = window.setTimeout(() => {
       if (active === attempt) {
         fail('subscribe_widget_deadline', 'Verification took too long. Please try again.');
       }
     }, VERIFICATION_TIMEOUT_MS);
+    initWidget(true);
+    executeVerification(attempt);
+  });
 
+  function executeVerification(attempt: Attempt): void {
+    if (!widget || widget.id === null || active !== attempt || attempt.phase !== 'verifying' || attempt.executed) return;
+    attempt.executed = true;
     try {
       if (!attempt.interactive) widgetState = 'verifying';
       widget.api.execute(widget.id);
@@ -142,7 +151,7 @@ export function initSubscribeForm({ logger }: SubscribeOptions): void {
         fail('subscribe_widget_execute_exception', 'Verification could not start. Please try again.');
       }
     }
-  });
+  }
 
   btn.disabled = false;
   initWidget(false);
@@ -162,6 +171,25 @@ export function initSubscribeForm({ logger }: SubscribeOptions): void {
         fail('subscribe_widget_unavailable', 'Verification has not loaded. Please wait a moment and try again.');
       }
       return false;
+    }
+    if (readyApi !== api) {
+      widgetState = 'waiting-api';
+      if (waitingApi !== api) {
+        waitingApi = api;
+        try {
+          api.ready(() => {
+            if (window.turnstile !== api) return;
+            readyApi = api;
+            waitingApi = null;
+            initWidget(active !== null);
+            if (active) executeVerification(active);
+          });
+        } catch {
+          waitingApi = null;
+          fail('subscribe_widget_ready_exception', 'Verification could not load. Please refresh the page and try again.');
+        }
+      }
+      return widget !== null;
     }
 
     const current: { id: string | null; api: Turnstile } = { id: null, api };
@@ -185,6 +213,7 @@ export function initSubscribeForm({ logger }: SubscribeOptions): void {
             report('subscribe_widget_error', undefined, active.phase, { errorCode }, active.operation,
               diagnosticContext(active, 'automatic-retry'));
             msg.textContent = 'Verification interrupted. Retrying…';
+            return false; // Documented native retry path; we have not handled a terminal failure.
           } else {
             fail('subscribe_widget_error', 'Verification failed. Please try again.', undefined, { errorCode });
           }
@@ -277,7 +306,8 @@ export function initSubscribeForm({ logger }: SubscribeOptions): void {
         removeWidget(attempt);
         form.removeAttribute('aria-busy');
         btn.disabled = false;
-        msg.textContent = 'Request received. If confirmation is needed, check your inbox and spam folder. No email? You can try again in ten minutes.';
+        form.dataset['subscribeStatus'] = 'success';
+        msg.textContent = 'Request accepted. New subscriptions need email confirmation—check your inbox and spam folder. Already subscribed? You’re all set. No confirmation email? You can try again in ten minutes.';
         return;
       }
       const message = res.status === 429
@@ -350,7 +380,10 @@ export function initSubscribeForm({ logger }: SubscribeOptions): void {
     }
     removeWidget(attempt);
     // An idle provider failure is useful evidence, not a failed subscription.
-    if (attempt) msg.textContent = text;
+    if (attempt) {
+      form.dataset['subscribeStatus'] = 'error';
+      msg.textContent = text;
+    }
     form.removeAttribute('aria-busy');
     btn.disabled = false;
     report(stage, status, phase, provider, attempt?.operation ?? { state: 'not-started' }, context);

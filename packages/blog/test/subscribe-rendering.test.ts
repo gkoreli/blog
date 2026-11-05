@@ -55,6 +55,7 @@ test('the actual client initializes verification from an actual SSG form', async
   assert.equal(document.querySelector('form')?.method, 'post');
   let renders = 0;
   window.turnstile = {
+    ready(callback) { callback(); },
     render(_slot, options) { renders++; assert.equal(options.sitekey, 'fixture-client-key'); return 'fixture-widget'; },
     execute() { assert.fail('Initialization must not execute a challenge'); },
     remove() {},

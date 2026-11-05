@@ -57,6 +57,7 @@ function harness(t: TestContext, withApi = true) {
   let fetchImpl: typeof fetch = async () => new Response(null, { status: 202 });
   let onRender: ((options: WidgetOptions) => void) | undefined;
   const api: TurnstileApi = {
+    ready(callback) { callback(); },
     render(_slot, options) {
       renders.push(options);
       if (renderFails) throw new Error('synthetic token=private-render-detail');
@@ -154,11 +155,12 @@ test('a late widget script can initialize on submit; repeated initialization add
   h.options().callback?.('synthetic-challenge-token');
   await settle();
   assert.equal(h.requests.length, 1);
-  assert.match(h.form.message.textContent, /If confirmation is needed/);
+  assert.match(h.form.message.textContent, /New subscriptions need email confirmation/);
   assert.doesNotMatch(h.form.message.textContent, /link on the way|email was sent/);
   assert.match(h.form.message.textContent, /try again in ten minutes/);
   assert.equal(h.form.innerHTML, '');
   assert.equal(h.form.button.disabled, false);
+  assert.equal(h.form.dataset['subscribeStatus'], 'success');
   assert.equal(h.form.input.value, ' reader@example.invalid ');
   assert.equal(h.timers.size, 0);
 });
@@ -403,7 +405,7 @@ test('request timeout aborts, restores retry, and ignores a late success', async
   h.submit();
   h.options().callback?.('new-challenge-token');
   await settle();
-  assert.match(h.form.message.textContent, /Request received/);
+  assert.match(h.form.message.textContent, /Request accepted/);
 });
 
 test('expiry after token handoff cannot abort an API request or discard its response', async t => {
@@ -419,7 +421,7 @@ test('expiry after token handoff cannot abort an API request or discard its resp
   assert.equal(h.form.button.disabled, true);
   pending.resolve(new Response(null, { status: 202 }));
   await settle();
-  assert.match(h.form.message.textContent, /Request received/);
+  assert.match(h.form.message.textContent, /Request accepted/);
   assert.equal(h.form.button.disabled, false);
 });
 
@@ -555,7 +557,7 @@ test('response metadata cannot turn a successful 202 into a failure report', asy
   const h = harness(t);
   h.setFetch(async () => new Response(null, { status: 202, headers: { 'x-request-id': 'private-invalid-id' } }));
   h.initialize(); h.submit(); h.options().callback?.('synthetic-token'); await settle();
-  assert.equal(h.reports.length, 0); assert.match(h.form.message.textContent, /Request received/);
+  assert.equal(h.reports.length, 0); assert.match(h.form.message.textContent, /Request accepted/);
 });
 
 test('one transient error recovers automatically without a second click or a duplicate API request', async t => {
@@ -569,7 +571,7 @@ test('one transient error recovers automatically without a second click or a dup
   await settle();
   assert.equal(h.requests.length, 1);
   assert.equal(new Headers(h.requests[0]?.init?.headers).get('x-subscription-attempt-id'), contextOf(h.reports[0]).attemptId);
-  assert.match(h.form.message.textContent, /Request received/);
+  assert.match(h.form.message.textContent, /Request accepted/);
 });
 
 test('a second transient failure stops automatic retry and preserves the next manual attempt', t => {
@@ -598,4 +600,44 @@ test('an interactive challenge receives a bounded two-minute window that callbac
   h.tick(89_999); assert.equal(h.form.button.disabled, true);
   h.tick(1); assert.equal(h.form.button.disabled, false);
   assert.equal(contextOf(h.reports[0]).widget, 'interactive');
+});
+
+test('native ready defers render and starts a waiting submission exactly once', async t => {
+  const h = harness(t); let ready: (() => void) | undefined; let registrations = 0;
+  h.api.ready = callback => { registrations++; ready = callback; };
+  h.initialize(); h.submit();
+  assert.equal(registrations, 1); assert.equal(h.renders.length, 0); assert.equal(h.executions.length, 0);
+  assert.equal(h.form.dataset['subscribeStatus'], 'pending');
+  assert.ok(ready); ready(); ready();
+  assert.equal(h.renders.length, 1); assert.equal(h.executions.length, 1);
+  h.options().callback?.('ready-token'); await settle();
+  assert.equal(h.requests.length, 1); assert.equal(h.form.dataset['subscribeStatus'], 'success');
+});
+
+test('a never-ready API times out without rendering or executing an unready widget', t => {
+  const h = harness(t); h.api.ready = () => {};
+  h.initialize(); h.submit(); h.tick(30_000);
+  assert.equal(h.renders.length, 0); assert.equal(h.executions.length, 0);
+  assert.equal(h.form.button.disabled, false); assert.equal(h.form.dataset['subscribeStatus'], 'error');
+  assert.equal(contextOf(h.reports[0]).widget, 'waiting-api');
+});
+
+test('ready exceptions and stale API callbacks cannot execute a replaced provider instance', t => {
+  const h = harness(t); let ready: (() => void) | undefined;
+  h.api.ready = callback => { ready = callback; };
+  h.initialize(); h.browser.turnstile = undefined; assert.ok(ready); ready();
+  assert.equal(h.renders.length, 0);
+  h.browser.turnstile = { ...h.api, ready() { throw new Error('private-ready-detail'); } };
+  h.submit();
+  assert.equal(h.form.button.disabled, false); assert.equal(h.requests.length, 0);
+  assert.equal(h.reports[0]?.message, 'subscribe_widget_ready_exception');
+  assert.equal(h.timers.size, 0);
+  assert.doesNotMatch(JSON.stringify(h.reports), /private-ready-detail/);
+});
+
+test('documented native retry return values distinguish recovery from a terminal error', t => {
+  const h = harness(t); h.initialize(); h.submit();
+  assert.equal(h.options()['error-callback']?.('300031'), false);
+  assert.equal(h.options()['error-callback']?.('300031'), true);
+  assert.equal(h.form.dataset['subscribeStatus'], 'error');
 });

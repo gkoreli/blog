@@ -54,6 +54,25 @@ Resend's [DMARC guidance](https://resend.com/docs/dashboard/domains/dmarc) advis
 
 ## Remaining acceptance
 
+### Further native API and success-state review
+
+Goga correctly flags the generic request-received text as confusing. It is the normal HTTP 202 branch, also used for an already-active address to avoid exposing subscription membership. The message's inherited rust color incorrectly made accepted requests look like failures. The refined client gives pending, accepted and error states separate styling, explains the already-subscribed case, and preserves the ten-minute retry guidance without claiming an email was sent or a subscription activated.
+
+Further review uses Cloudflare's actual [JavaScript API examples](https://developers.cloudflare.com/turnstile/get-started/client-side-rendering/) and [retry callback example](https://developers.cloudflare.com/turnstile/troubleshooting/client-side-errors/), plus the installed `@nisli/core` README and actual SSG/client tests. Native HTML attributes and DOM APIs remain appropriate for this form; adding another framework or SDK is not required for correctness.
+
+| Native capability | Applied decision |
+|---|---|
+| `turnstile.ready()` | Wait before rendering; a waiting submission starts exactly once after readiness. A never-ready callback remains bounded by the form deadline. |
+| Error callback return value | Return false during the single automatic retry, matching the documented example; terminal handling returns true. |
+| `remove()` versus `reset()` | Fresh attempts retain fresh widgets; removal is documented and prevents old callbacks from being attributed to a new attempt. |
+| `getResponse()` / hidden response field | Success callback hands the token directly to the existing JSON request; no second token copy or response field is needed. |
+| `isExpired()` / expiry callback | Fresh callback token goes immediately to Siteverify; expiry handling and mandatory server validation remain the gates. |
+| Action / hostname / optional cData | Existing `subscribe` action and exact hostname remain checked. The separate bounded attempt reference supplies correlation; no extra personal cData is needed. |
+| Pre-clearance | Remains disabled: signup protection does not need an additional zone-clearance cookie. |
+| Server API / native fetch | Direct JSON Siteverify is supported, including the shared idempotency key. A new dependency is unnecessary. |
+
+All 189 tests, workspace types, Markdown validation and the isolated 41-post build pass. Six paired compiled-client/native Worker/D1 controls also pass; the updated fixture verifies the client attempt reference against the server log even for a constructed lost response. These are controlled local cases, not current browser/provider delivery evidence.
+
 Publish the checked source, verify the active Worker and served client, then change the existing widget to Managed with its hostname/key/pre-clearance preserved. The designated address is currently active: exercise an ordinary unsubscribe POST followed by browser signup, one new confirmation receipt and confirmation activation, leaving it active. Record browser, provider, mailbox and D1 evidence separately. Verify one labelled browser diagnostic through the deployed logger with independent readback and guarded fixture cleanup. Keep the recipient, tokens, provider message details and raw logs outside Git.
 
 Broader configuration-failure alerts, provider webhook setup and population delivery/false-rejection rates remain separate open work. This repair must not be described as proof that no future signup can fail or that historical lost subscribers were recovered.

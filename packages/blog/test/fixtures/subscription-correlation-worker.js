@@ -8,7 +8,7 @@ export default {async fetch(request,env){
   const path=new URL(request.url).pathname;
   if(path==='/api/subscribe'){
     const previous=console.log;
-    console.log=(label,event)=>{if(label==='[newsletter:confirmation]')stages.push({attemptId:event.attemptId,stage:event.stage});};
+    console.log=(label,event)=>{if(label==='[newsletter:confirmation]')stages.push({attemptId:event.attemptId,clientAttemptId:event.clientAttemptId,stage:event.stage});};
     try{return await handleConfirmationRequest(request,{DB:env.DB},'subscribe');}
     finally{console.log=previous;}
   }

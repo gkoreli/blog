@@ -167,6 +167,9 @@
   line-height: 1.4;
 }
 
+.subscribe-form[data-subscribe-status="success"] .subscribe-msg { color: var(--color-link); }
+.subscribe-form[data-subscribe-status="pending"] .subscribe-msg { color: var(--color-text-muted); }
+
 .subscribe-done {
   font-size: var(--text-sm);
   color: var(--color-link);
