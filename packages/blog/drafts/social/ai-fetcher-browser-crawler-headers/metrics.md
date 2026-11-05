@@ -13,3 +13,7 @@ Planned observations, not scheduled: about one hour, 24 hours and seven days if 
 ## Discussion distribution, November 5
 
 Seven X replies and seven Reddit comments were submitted and individually verified on their canonical permalinks in the signed-in owner browser. [Receipt and links](replies-2026-11-05.md). The Superframeworks pinned project-sharing invitation replaced the earlier conditional target. Independent public visibility, moderation placement, reader use, clicks and organic engagement are unmeasured. No monitoring was scheduled.
+
+## Additional discussion batch, November 5
+
+[Five new X replies and five Reddit comments](followups-2026-11-05.md) were published and all ten canonical owner views verified. Campaign delivery now totals one original X post, twelve X replies and twelve Reddit comments. No new article-related responses were found in the two notification feeds, original launch and two earlier contributions checked; this is bounded coverage. The original X status displayed 10 views, including possible owner/repeated views. An older Reddit 2,062-view notification is not a current snapshot. No organic clicks, public moderation placement, comparable performance baseline or reader-use result is established. No monitoring was scheduled.

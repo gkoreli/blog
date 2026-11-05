@@ -13,3 +13,5 @@ No new video required: the article card and concrete result carry this single-po
 Success signals: a relevant technical response, correction, reported use or attributable article contact. Views are distribution context. No guaranteed traction or follow-up automation.
 
 [Completed discussion publication](replies-2026-11-05.md): seven X replies and seven Reddit comments, all canonical owner views checked.
+
+[Additional November 5 batch](followups-2026-11-05.md): five more X replies and five more Reddit comments, each in a new discussion. Notification and selected canonical-page checks found no campaign response requiring a direct follow-up.

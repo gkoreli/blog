@@ -1,0 +1,177 @@
+{
+  "recordedAt": "2026-11-05T22:16:47.693278+00:00",
+  "scope": "One additional batch requested twice in identical messages; executed once: five new discussions per platform. Earlier explicit authorization to submit persists.",
+  "xRepliesPublished": 5,
+  "redditCommentsPublished": 5,
+  "campaignTotals": {
+    "xOriginals": 1,
+    "xReplies": 12,
+    "redditComments": 12
+  },
+  "checksForResponses": [
+    {
+      "platform": "x",
+      "surface": "notifications",
+      "checkedAt": "2026-11-05T22:05:46.785Z",
+      "result": "No bot-header campaign response visible in loaded notification feed; older unrelated responses excluded."
+    },
+    {
+      "platform": "reddit",
+      "surface": "notifications",
+      "checkedAt": "2026-11-05T22:05:46.787Z",
+      "result": "No response to the new seven bot-header comments visible; an older CloudFlare milestone notification is not a fresh view count."
+    },
+    {
+      "platform": "x",
+      "surface": "canonical original launch",
+      "checkedAt": "2026-11-05T22:09:06.854Z",
+      "url": "https://x.com/GogaKoreli/status/2118383948061688196",
+      "result": "0 replies; 10 views displayed, including possible owner views. No engagement conclusion."
+    },
+    {
+      "platform": "x",
+      "surface": "prior Nullprint reply",
+      "checkedAt": "2026-11-05T22:09:06.854Z",
+      "url": "https://x.com/GogaKoreli/status/2118412327909523945",
+      "result": "0 replies on own canonical reply; parent count kept separate."
+    },
+    {
+      "platform": "reddit",
+      "surface": "prior SearchAPIs comment",
+      "url": "https://www.reddit.com/r/SearchAPIs/comments/1wn9zke/comment/19s6uw96uik3n/",
+      "checkedAt": "2026-11-05T22:10:29.560Z",
+      "result": "Own comment visible; no child response displayed under it. Commentstats value 2 is not a reply count."
+    }
+  ],
+  "responseCheckConclusion": "No new bot-header campaign response found in either loaded notification feed, original X launch, prior Nullprint reply or prior SearchAPIs comment. This is bounded coverage, not an exhaustive claim about every hidden or unnotified response.",
+  "independentPublicVisibility": "Not checked for this batch; owner-view verification does not establish anonymous visibility or absence of moderation filtering.",
+  "traction": "Not measured. Original X showed 10 views at its check; owner and repeated views may contribute. An old Reddit milestone notification is not a current traffic measurement.",
+  "timestampMeaning": "receiptRecordedAt is local receipt collection time, not the server publication timestamp.",
+  "items": [
+    {
+      "platform": "x",
+      "index": 1,
+      "title": "Massive: IP-list verification",
+      "parent": "https://x.com/joinmassive/status/2118433861180760195",
+      "url": "https://x.com/GogaKoreli/status/2118465476112392588",
+      "copy": "IP verification needs a third result besides real/fake. my controlled Claude-User fetch came from outside Anthropic's current feed, so i store 'not listed' without calling it an impersonator.\n\nmy tests: https://gkoreli.com/ai-fetcher-browser-crawler-headers",
+      "receiptRecordedAt": "2026-11-05T22:08:43.268Z",
+      "state": "canonical-owner-view-verified",
+      "verification": "Canonical permalink reopened in signed-in owner browser; published text and blog link/card visible.",
+      "weightedCharacters": 226
+    },
+    {
+      "platform": "reddit",
+      "index": 1,
+      "title": "Logwick: classifier test fixtures",
+      "parent": "https://www.reddit.com/r/SEO_tool_dev/comments/1up07ai/logwick_selfhosted_ai_bot_crawler_analytics_from/",
+      "url": "https://www.reddit.com/r/SEO_tool_dev/comments/1up07ai/comment/19s746xxtvn7o/",
+      "copy": "an API scraper can arrive with browser headers too. my authenticated context.dev search/scrape/crawl/answer trials produced 11 labelled page requests, all unsigned and without a vendor declaration; my collector stored 10 Browser and 1 Cloud Browser.\n\ni'd keep operation, received headers and classifier result separate in test fixtures. my exact controls + stored rows: https://gkoreli.com/ai-fetcher-browser-crawler-headers",
+      "receiptRecordedAt": "2026-11-05T22:09:05.320Z",
+      "state": "canonical-owner-view-verified",
+      "rules": "Expanded No Spam or Self-Promotion rule prohibits spam or unwanted commercial content; OP explicitly requests feedback. Reply supplies controlled noncommercial classifier fixtures.",
+      "verification": "Canonical permalink reopened in signed-in owner browser; published text and blog link/card visible.",
+      "words": 54
+    },
+    {
+      "platform": "x",
+      "index": 2,
+      "title": "Phillip Shoemaker: claims versus verified identity",
+      "parent": "https://x.com/pbsIdentity/status/2118428920022229211",
+      "url": "https://x.com/GogaKoreli/status/2118465769076031773",
+      "copy": "i log the client claim, verified publisher and signed fields separately. chatgpt's browser and curl shared a signer on my site, but needed different client labels. a trusted name alone loses that detail.\n\nmy live tests: https://gkoreli.com/ai-fetcher-browser-crawler-headers",
+      "receiptRecordedAt": "2026-11-05T22:10:01.369Z",
+      "state": "canonical-owner-view-verified",
+      "verification": "Canonical permalink reopened in signed-in owner browser; published text and blog link/card visible.",
+      "weightedCharacters": 243
+    },
+    {
+      "platform": "reddit",
+      "index": 2,
+      "title": "SEOToolTips: freeze historical receipt provenance",
+      "parent": "https://www.reddit.com/r/SEOToolTips/comments/1x5zp5b/ai_in_server_logs_is_basically_an_archaeological/",
+      "url": "https://www.reddit.com/r/SEOToolTips/comments/1x5zp5b/comment/19s749cc4xr2b/",
+      "copy": "also freeze the catalogue that renders the verdict. my receipt replay used today's publisher-name table, so adding ChatGPT/ExaUser would change an older 'Other' display. i now store the display profile with new evidence and keep a historical baseline for legacy rows.\n\n46 saved receipts still reproduce after the fix. my code + acceptance checks: https://gkoreli.com/ai-fetcher-browser-crawler-headers",
+      "receiptRecordedAt": "2026-11-05T22:10:45.458Z",
+      "state": "canonical-owner-view-verified",
+      "rules": "Current sidebar has one expanded rule requiring civility; community description invites tutorials/case studies/tool discussion. Existing thread discusses dated IP-list snapshots.",
+      "verification": "Canonical permalink reopened in signed-in owner browser; published text and blog link/card visible.",
+      "words": 55
+    },
+    {
+      "platform": "x",
+      "index": 3,
+      "title": "John: Web Bot Auth component coverage",
+      "parent": "https://x.com/hottubjohn/status/2118423336674037810",
+      "url": "https://x.com/GogaKoreli/status/2118466124098785464",
+      "copy": "the coverage is worth checking too. dot's chrome + curl had valid chatgpt signatures on my site, but path/query/UA weren't covered. changing those fields still passed my local replay.\n\nmy captured proofs + checks: https://gkoreli.com/ai-fetcher-browser-crawler-headers",
+      "receiptRecordedAt": "2026-11-05T22:11:11.268Z",
+      "state": "canonical-owner-view-verified",
+      "verification": "Canonical permalink reopened in signed-in owner browser; published text and blog link/card visible.",
+      "weightedCharacters": 237
+    },
+    {
+      "platform": "x",
+      "index": 4,
+      "title": "Valerion: URL controls for access testing",
+      "parent": "https://x.com/AetherC0de/status/2118409822076809614",
+      "url": "https://x.com/GogaKoreli/status/2118466438608625807",
+      "copy": "URL controls can change an access test. perplexity failed on my ?probe= URL, then answered correctly from canonical/# inputs. # doesn't reach the origin, so a working citation can't label a fresh request.\n\nmy controls: https://gkoreli.com/ai-fetcher-browser-crawler-headers",
+      "receiptRecordedAt": "2026-11-05T22:12:25.323Z",
+      "state": "canonical-owner-view-verified",
+      "verification": "Canonical permalink reopened in signed-in owner browser; published text and blog link/card visible.",
+      "weightedCharacters": 242
+    },
+    {
+      "platform": "reddit",
+      "index": 3,
+      "title": "GEO optimization: answer correctness versus fresh fetch",
+      "parent": "https://www.reddit.com/r/GEO_optimization/comments/1w71sqk/i_probed_1046_sites_with_8_ai_crawler_useragents/",
+      "url": "https://www.reddit.com/r/GEO_optimization/comments/1w71sqk/comment/19s74cjs8qpfm/",
+      "copy": "even a correct cited answer doesn't prove a fresh fetch. in my controlled Perplexity tests, canonical/fragment inputs returned the right source details, but no attributable request appeared in the bounded Worker tail; the separately labelled synthetic control did appear.\n\ni record answer correctness, provider disclosure and received requests separately. my prompts, URL controls and capture limits: https://gkoreli.com/ai-fetcher-browser-crawler-headers",
+      "receiptRecordedAt": "2026-11-05T22:12:25.323Z",
+      "state": "canonical-owner-view-verified",
+      "rules": "Expanded rules prohibit spam links and posts selling products/services. This technical reply adds a bounded provider-control finding and identifies the linked study as ours; it does not sell a service.",
+      "verification": "Canonical permalink reopened in signed-in owner browser; published text and blog link/card visible.",
+      "words": 57
+    },
+    {
+      "platform": "x",
+      "index": 5,
+      "title": "Google Cloud Tech: validate telemetry persistence",
+      "parent": "https://x.com/GoogleCloudTech/status/2118459932525863420",
+      "url": "https://x.com/GogaKoreli/status/2118466766771003604",
+      "copy": "keep delivery and storage checks separate too. i joined each labelled Worker request to its insert acknowledgement and exact D1 row. HTTP 200 alone wouldn't prove the analytics event survived.\n\nmy request-to-storage checks: https://gkoreli.com/ai-fetcher-browser-crawler-headers",
+      "receiptRecordedAt": "2026-11-05T22:13:47.862Z",
+      "state": "canonical-owner-view-verified",
+      "verification": "Canonical permalink reopened in signed-in owner browser; published text and blog link/card visible.",
+      "weightedCharacters": 247
+    },
+    {
+      "platform": "reddit",
+      "index": 4,
+      "title": "CloudFlare: real Gemini request versus UA probes",
+      "parent": "https://www.reddit.com/r/CloudFlare/comments/1vi78ao/ai_bots_allowed_in_robotstxt_full_prerendered/",
+      "url": "https://www.reddit.com/r/CloudFlare/comments/1vi78ao/comment/19s74f33um4w2/",
+      "copy": "match the assigned URL in your logs before filtering on bot names. my real Gemini follow-up arrived with the entire user-agent Google, no signature, and stayed Unresolved in my analytics. named-bot filters would've missed it.\n\ncheck edge-security events separately; a missing Worker hit doesn't prove a Cloudflare block. my actual prompts + received headers: https://gkoreli.com/ai-fetcher-browser-crawler-headers",
+      "receiptRecordedAt": "2026-11-05T22:14:10.554Z",
+      "state": "canonical-owner-view-verified",
+      "rules": "Current community sidebar and linked wiki read; helpful relevant technical detail, appropriate scope and Reddit-policy compliance. No security setting change or block diagnosis claimed.",
+      "verification": "Canonical permalink reopened in signed-in owner browser; published text and blog link/card visible.",
+      "words": 55
+    },
+    {
+      "platform": "reddit",
+      "index": 5,
+      "title": "CloudFlare: browser claims do not prove JavaScript execution",
+      "parent": "https://www.reddit.com/r/CloudFlare/comments/1x3jnw9/metaexternalagent_generated_over_125k/",
+      "url": "https://www.reddit.com/r/CloudFlare/comments/1x3jnw9/comment/19s74gjczmyhw/",
+      "copy": "browser-style headers don't establish that the crawler ran JavaScript. my controlled Grok task produced 11 unsigned Chrome/Safari-looking GETs, all stored Browser by my own collector; that experiment didn't prove JS execution either.\n\ni'd keep the native Cloudflare identity/action and raw UA on the same request before connecting those browser-shaped hits to Meta. my headers + stored-row checks: https://gkoreli.com/ai-fetcher-browser-crawler-headers",
+      "receiptRecordedAt": "2026-11-05T22:15:29.394Z",
+      "state": "canonical-owner-view-verified",
+      "rules": "Same current CloudFlare wiki and sidebar context reviewed; OP explicitly asks whether others observed browser-shaped crawler traffic. Reply supplies a bounded counterexample without identifying their traffic or claiming JavaScript execution.",
+      "verification": "Canonical permalink reopened in signed-in owner browser; published text and blog link/card visible.",
+      "words": 58
+    }
+  ]
+}

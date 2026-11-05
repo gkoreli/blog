@@ -170,5 +170,13 @@
   "xRepliesSubmitted": 7,
   "redditSubmissions": 7,
   "publishedAtRecord": "2026-11-05T18:46:46.114404+00:00",
-  "publicationReceipt": "replies-publication.json"
+  "publicationReceipt": "replies-publication.json",
+  "additionalPublicationReceipts": [
+    "followups-publication-2026-11-05.json"
+  ],
+  "campaignTotals": {
+    "xOriginals": 1,
+    "xReplies": 12,
+    "redditComments": 12
+  }
 }
