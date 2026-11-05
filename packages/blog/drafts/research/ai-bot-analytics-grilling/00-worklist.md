@@ -18,6 +18,7 @@ Reader payoff: choose a trigger, distinguish returned content from a live fetch,
 - [Validation receipt](checks.json) and [private archive commitment](private-archive.json) record checks and preservation without publishing raw operations.
 - [ChatGPT/Brave extension](02-chatgpt-and-brave.md), [inputs](chatgpt-brave-inputs.json), [results](chatgpt-brave-results.json), [origin/storage evidence](chatgpt-brave-evidence.json), [checks](chatgpt-brave-checks.json) and [archive commitment](chatgpt-brave-archive.json) continue the first batch without replacing it.
 - [Context.dev/Perplexity extension](03-context-and-perplexity.md), [inputs](context-perplexity-inputs.json), [results](context-perplexity-results.json), [origin/storage evidence](context-perplexity-evidence.json), [checks](context-perplexity-checks.json) and [archive commitment](context-perplexity-archive.json) add public conversion, an MCP authentication gate and a declined Search retrieval.
+- [Perplexity URL controls](04-perplexity-url-controls.md), [inputs](perplexity-controls-inputs.json), [results](perplexity-controls-results.json), [evidence](perplexity-controls-evidence.json), [checks](perplexity-controls-checks.json) and [archive commitment](perplexity-controls-archive.json) add the owner's follow-ups and three fresh correct cited answers. They supersede treating the first refusal as a sufficient capability test, while preserving it as a dated attempt.
 - Private evidence: ignored `packages/blog/worklog/ai-bot-analytics-grilling-20261104/`; raw account UI, requests, exact references and SQL do not enter Git.
 
 ## Accepted starting scope
@@ -51,6 +52,16 @@ November 4 local trials / November 5 UTC; export and review completed November 5
 Perplexity's existing signed-in Free-plan Search session completed one question with a displayed three-second fetch failure and declined the three requested details and citation. No exact assigned-label GET appears in the bounded stream. Retained edge-security evidence is unavailable; no edge-block diagnosis follows.
 
 The eight-minute tail stopped independently with eleven complete objects and three exact matches. Native three-ID D1 preflight passed. Initial Wrangler metadata failed authentication; a constant query, metadata recheck and one exact data query succeeded. All three full receipts agree, at six data reads and zero writes. The owner later reported CLI reauthentication and reaffirmed CLI authorization; the earlier error's cause remains unknown. A manual OAuth-based security query was rejected by automatic approval review before execution, and that distinct direct-credential route was not approved. No workaround was attempted. A browser export call remained pending for nearly eight hours after saving the result; this is not provider latency. No trial was resubmitted.
+
+## Completed Perplexity URL controls
+
+November 5 local/UTC. The owner continued the Perplexity conversation, showing correct retrieval from the canonical and fragment-only URLs alongside repeated query-bearing failures. The complete material conversation was inspected and its rendered follow-up prompts preserved. Those turns were outside the earlier tail; no retrospective request attribution is made.
+
+Three new Free-plan Search conversations repeat one question with query, fragment and plain URLs. All return the correct H1, maintenance sentence and signature coverage, with citations. The query trial explicitly falls back to the canonical URL; the fragment trial discloses correcting a malformed tool URL. A new bounded stream and a separately labelled synthetic controller GET check the observable request side. Synthetic control traffic is excluded from Perplexity outcomes.
+
+The eight-minute stream stops with three complete objects and no malformed fragments. Its only request for the tested article is the synthetic positive control; no Perplexity query label or other canonical article request appears. Native preflight and one exact Wrangler SELECT verify that control's full receipt for one read and zero writes. No Perplexity stored row is claimed. All owned capture processes have stopped.
+
+The skill now calls for bounded ordinary-URL/search/fragment controls after an otherwise accessible retrieval fails, preserves fallback URLs and explains why fragments cannot label HTTP requests. The new record keeps provider outcomes, tool disclosures, capture facts and freshness limits separate. The precise internal cause and retained edge-security outcome remain unresolved.
 
 ## Delivery and continuation
 

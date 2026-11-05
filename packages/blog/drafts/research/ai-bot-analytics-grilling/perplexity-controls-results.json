@@ -1,0 +1,45 @@
+{
+  "query": {
+    "displayedDurationSeconds": 8,
+    "exactQueryAccess": "reported fetch failure",
+    "fallbackUrl": "https://gkoreli.com/which-ai-fetchers-send-which-headers",
+    "h1Correct": true,
+    "maintenanceSentenceCorrect": true,
+    "signatureCoverageCorrect": true,
+    "citedSource": true,
+    "displayedSourceCount": 2
+  },
+  "fragment": {
+    "displayedDurationSeconds": 3,
+    "retrieval": "reported success for fragment URL",
+    "h1Correct": true,
+    "maintenanceSentenceCorrect": true,
+    "signatureCoverageCorrect": true,
+    "citedSource": true,
+    "displayedSourceCount": 2,
+    "reportedCorrection": "Initial URL accidentally included duplicated Markdown-link text; tool input then corrected",
+    "sourceCardNote": "One displayed source retains malformed extra text after the fragment; no HTTP request target inferred from it"
+  },
+  "plain": {
+    "displayedDurationSeconds": 3,
+    "retrieval": "reported success for exact plain URL",
+    "h1Correct": true,
+    "maintenanceSentenceCorrect": true,
+    "signatureCoverageCorrect": true,
+    "citedSource": true,
+    "displayedSourceCount": 1
+  },
+  "ownerConversation": {
+    "cleanUrl": "correct three-part cited answer after a reported query failure",
+    "fragmentOnlyUrl": "reported successful article retrieval",
+    "queryVariants": "repeated reported fetch errors, including a query plus fragment",
+    "cause": "unverified; generic error exposes no status, cache outcome or internal route"
+  },
+  "cost": "No API usage/billing measurement; signed-in website trials",
+  "interpretation": [
+    "Successful source-grounded answers are observed controlled agent-mediated use",
+    "Failure is query-dependent in these tested inputs, not proof of a provider-wide prohibition",
+    "Fragments distinguish prompt inputs but do not identify HTTP request targets",
+    "No newly published unknown body value tested; content freshness remains unresolved"
+  ]
+}

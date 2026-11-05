@@ -1,0 +1,61 @@
+{
+  "localDate": "2026-11-05",
+  "utcDate": "2026-11-05",
+  "conditions": "Existing signed-in Free-plan Search; Computer disabled, default model name not exposed; three fresh conversations in query, fragment, plain order",
+  "trials": [
+    {
+      "variant": "query",
+      "url": "https://gkoreli.com/which-ai-fetchers-send-which-headers?probe=bot-grill-20261105-perplexity-query-01",
+      "prompt": "Use web browsing to open this public URL: https://gkoreli.com/which-ai-fetchers-send-which-headers?probe=bot-grill-20261105-perplexity-query-01\nReport the body H1 and the first sentence under \"Maintaining this reference\". Then state which components the article's DuckAssistBot signature example covers. Cite the source you actually used. If you use a different URL or cannot access this one, say so.",
+      "submissions": 1,
+      "interface": "fresh browser Search conversation",
+      "submittedAt": "2026-11-05T15:03:12.990Z",
+      "mode": "Search",
+      "plan": "Free",
+      "completionSaved": "2026-11-05T15:03:41.856Z"
+    },
+    {
+      "variant": "fragment",
+      "url": "https://gkoreli.com/which-ai-fetchers-send-which-headers#bot-grill-20261105-perplexity-fragment-01",
+      "prompt": "Use web browsing to open this public URL: https://gkoreli.com/which-ai-fetchers-send-which-headers#bot-grill-20261105-perplexity-fragment-01\nReport the body H1 and the first sentence under \"Maintaining this reference\". Then state which components the article's DuckAssistBot signature example covers. Cite the source you actually used. If you use a different URL or cannot access this one, say so.",
+      "submissions": 1,
+      "interface": "fresh browser Search conversation",
+      "submittedAt": "2026-11-05T15:03:41.924Z",
+      "mode": "Search",
+      "plan": "Free",
+      "completionSaved": "2026-11-05T15:04:41.843Z"
+    },
+    {
+      "variant": "plain",
+      "url": "https://gkoreli.com/which-ai-fetchers-send-which-headers",
+      "prompt": "Use web browsing to open this public URL: https://gkoreli.com/which-ai-fetchers-send-which-headers\nReport the body H1 and the first sentence under \"Maintaining this reference\". Then state which components the article's DuckAssistBot signature example covers. Cite the source you actually used. If you use a different URL or cannot access this one, say so.",
+      "submissions": 1,
+      "interface": "fresh browser Search conversation",
+      "submittedAt": "2026-11-05T15:04:49.953Z",
+      "mode": "Search",
+      "plan": "Free",
+      "completionSaved": "2026-11-05T15:05:30.774Z"
+    }
+  ],
+  "syntheticCollectorControl": {
+    "addedBeforeExecutionAt": "2026-11-05T15:06:03.637381+00:00",
+    "url": "https://gkoreli.com/which-ai-fetchers-send-which-headers?probe=bot-grill-20261105-collector-control-01",
+    "userAgent": "ai-bot-analytics-grilling-control/1.0",
+    "purpose": "Confirm tail receives a known request; synthetic controller traffic excluded from provider attribution",
+    "requests": 1
+  },
+  "ownerConversation": {
+    "representation": "Complete material follow-up prompts as rendered in the existing browser conversation; original serialization not exported",
+    "prompts": [
+      "dont u have web tools?",
+      "i want you to read that https://gkoreli.com/which-ai-fetchers-send-which-headers?probe=bot-grill-20261104-perplexity-01",
+      "try again, why would the fetch fail",
+      "do some random funny query param at the end for probe, do differently i need query param",
+      "you have my approval to do something about it, i need query param",
+      "come up with some other idea, maybe use #",
+      "why is perplexity's fetch tool blocking the query params, really interesting"
+    ],
+    "window": "UI shows November 5 local, about 06:57–06:59; outside the earlier and fresh tails",
+    "rawAccountUiInGit": false
+  }
+}

@@ -1,0 +1,5 @@
+{
+  "streams": ["tail.raw"],
+  "trialPrefix": "bot-grill-20261105-",
+  "assignedLabels": ["perplexity-query-01", "collector-control-01"]
+}

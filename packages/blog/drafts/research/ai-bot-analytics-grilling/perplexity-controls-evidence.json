@@ -1,0 +1,133 @@
+{
+  "checkedAt": "2026-11-05T15:11:25.851Z",
+  "streams": [
+    {
+      "file": "tail.raw",
+      "sha256": "1d0e6efdf8d037fd67a7b6376d6a61949e42df85cba8ab7cd20e75593dd796fe",
+      "bytes": 22757,
+      "completedObjects": 3,
+      "malformedFrames": 0,
+      "outsideFragments": 0,
+      "suffixBytes": 0
+    }
+  ],
+  "matchedRequests": 1,
+  "nonexactProbeRequests": 0,
+  "returnedReferences": 1,
+  "events": [
+    {
+      "trialLabel": "collector-control-01",
+      "timestamp": "2026-11-05T15:06:08.362Z",
+      "workerVersion": "7339fca2-3513-4fb8-a485-b3e671b0a150",
+      "collectionVersion": "2026-10-30.1",
+      "originStatus": 200,
+      "userAgentProducts": [],
+      "cloudflareFacts": {
+        "asn": 62887,
+        "country": "US",
+        "httpProtocol": "HTTP/1.1",
+        "tlsVersion": "TLSv1.3"
+      },
+      "fetchMetadata": {
+        "sec-fetch-mode": null,
+        "sec-fetch-dest": null,
+        "sec-fetch-site": null,
+        "sec-fetch-user": null
+      },
+      "signatureComponents": [],
+      "receipt": {
+        "status": "recorded",
+        "version": "2026-10-29.2",
+        "classifierProfile": "2026-10-31.1",
+        "readerKind": "other-bot",
+        "fetchMetadataBits": 585,
+        "declarations": {
+          "status": "none",
+          "candidateCount": 0,
+          "candidateNames": "none"
+        },
+        "signature": {
+          "verifierProfile": "2026-10-31.3",
+          "source": "local-webbotauth",
+          "status": "absent",
+          "outcome": "absent",
+          "reasonNames": "none",
+          "reasonCount": 0,
+          "signer": "none",
+          "userAgentCovered": "unavailable",
+          "coverage": {
+            "status": "unavailable"
+          }
+        },
+        "native": {
+          "verifiedBot": "unavailable",
+          "signedAgent": "unavailable"
+        },
+        "vendorNetwork": {
+          "status": "recorded",
+          "checkCount": 0,
+          "summary": {
+            "listed": false,
+            "notListed": false,
+            "unavailable": false,
+            "notAssessed": false
+          }
+        }
+      },
+      "role": "synthetic-controller-positive-control"
+    }
+  ],
+  "capture": {
+    "startedAt": "2026-11-05T15:03:01.693159+00:00",
+    "maxSeconds": 480,
+    "maxBytes": 16777216,
+    "stoppedAt": "2026-11-05T15:11:02.555588+00:00",
+    "bytes": 22757,
+    "exitCode": -15
+  },
+  "syntheticControlStorageAcceptance": {
+    "checkedAt": "2026-11-05T15:12:26.866Z",
+    "exactRows": 1,
+    "fullReceiptMatches": 1,
+    "rowsRead": 1,
+    "rowsWritten": 0,
+    "statementAttempts": 1,
+    "responseSha256": "2272774134d8045c714c95e17649496e4c4c5ffabbe9a5a485ee68d67bef60a3",
+    "readerKinds": {
+      "other-bot": 1
+    },
+    "ownerExcluded": 0,
+    "limits": [
+      "Controlled test traffic; not organic audience growth, people, or independent cryptographic replay."
+    ]
+  },
+  "nativePreflight": {
+    "status": "passed-local-workerd-d1",
+    "sqlSha256": "296d357bb7d605637a2248825d24047dad6bc35eb7a629e28005a7e58691590d",
+    "schemaSha256": "a53392e14c69a62ce1c73c9f8c24afff2e773f68d55831490896e45fa6f93099",
+    "selectedRows": 1,
+    "queryPlan": [
+      "SEARCH page_observations USING INTEGER PRIMARY KEY (rowid=?)"
+    ],
+    "productionReadPlanned": {
+      "maxReturnedRows": 1,
+      "maxStatements": 1,
+      "exactIds": true,
+      "writes": false
+    },
+    "limits": [
+      "Native seeded query/plan only; production cost and row contents remain untested."
+    ]
+  },
+  "providerObservations": {
+    "exactPerplexityQueryMatches": 0,
+    "nonControlArticleRequestsIncludingCanonical": 0,
+    "perplexityStoredRowsVerified": 0
+  },
+  "limits": [
+    "Positive control is synthetic and excluded from provider outcomes",
+    "Fragments are not origin labels; zero candidates is bounded to this capture, not proof of no provider retrieval anywhere",
+    "Positive control receipt proves that event, not capture completeness",
+    "Owner follow-ups predate this stream; retained edge-security evidence unavailable"
+  ]
+}

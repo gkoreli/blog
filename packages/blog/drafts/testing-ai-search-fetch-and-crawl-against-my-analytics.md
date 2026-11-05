@@ -1,6 +1,6 @@
 # Testing AI Search, Fetch, and Crawl Against My Analytics
 
-Working draft, updated November 5, 2026. Unpublished. The [first provider batch](research/ai-bot-analytics-grilling/01-first-batch.md), [ChatGPT/Brave extension](research/ai-bot-analytics-grilling/02-chatgpt-and-brave.md) and [Context.dev/Perplexity trials](research/ai-bot-analytics-grilling/03-context-and-perplexity.md) are complete. Authenticated Firecrawl/Agent and Context.dev operations, plus broader repeats, remain open. [Research worklist](research/ai-bot-analytics-grilling/00-worklist.md).
+Working draft, updated November 5, 2026. Unpublished. Completed research: [first provider batch](research/ai-bot-analytics-grilling/01-first-batch.md), [ChatGPT/Brave](research/ai-bot-analytics-grilling/02-chatgpt-and-brave.md), [Context.dev/Perplexity](research/ai-bot-analytics-grilling/03-context-and-perplexity.md), and [Perplexity URL controls](research/ai-bot-analytics-grilling/04-perplexity-url-controls.md). Authenticated Firecrawl/Agent and Context.dev operations, plus broader repeats, remain open. [Research worklist](research/ai-bot-analytics-grilling/00-worklist.md).
 
 An AI search result, a page fetch and a cited answer leave different evidence. In the first trials for this article, Exa returned search highlights, its separate fetch tool requested my page as `ExaUser`, and Duck.ai answered through a signed `DuckAssistBot` request. Bing's AI Mode cited my earlier study while dropping some of its limits. I want to compare the whole path: what I asked a service to do, what it returned, what reached Cloudflare, and what my analytics recorded.
 
@@ -150,15 +150,33 @@ The result was saved promptly; a later browser export call remained pending for 
 
 ## Perplexity
 
-### Search declined the requested page task
+### The first probe failed; the ordinary page worked
 
 The existing signed-in Free-plan session had Search enabled and Computer disabled. I submitted the same three-part page question with a new assigned URL. Its completed answer displayed Finished 3s, reported a fetch error with no page content, and declined the H1, maintenance sentence, signature coverage and verified citation. Expanded tool activity showed the assigned URL under Reading web page.
 
-![Actual Perplexity question and completed answer declining the requested page details after a reported fetch error.](research/ai-bot-analytics-grilling/assets/perplexity-answer-20261104.png)
+I kept asking in the same conversation. Perplexity then returned the correct details from the ordinary URL while continuing to report failures for several query-bearing variants. A fragment-only `#probe=...` URL worked; a real `?probe=...` followed by a fragment still failed. Codex's initial test had stopped too soon. That first refusal was a result for one instrumented URL, not a sufficient test of the provider's retrieval capability.
 
-### A missing request does not explain the failure
+### Three fresh conversations confirmed the distinction
 
-No exact Perplexity label appears in this batch's eight-minute Worker GET capture. A corresponding retained edge-security check remains unavailable, so I cannot diagnose an edge block or rule one out. The answer's tool activity does not expose the underlying error code or retrieval path.
+Codex repeated the same question in three new Search conversations, changing only the supplied URL and asking Perplexity to disclose its actual source. All three completed answers returned the correct H1, sentence and signature coverage, with citations:
+
+| URL input | Reported retrieval path |
+| --- | --- |
+| New `?probe=...` | Exact URL failed; explicit fallback to the query-free article succeeded |
+| New `#...` fragment | Returned the article and cited the fragment URL |
+| Plain canonical URL | Returned the article and cited that URL |
+
+The fragment answer also disclosed repairing an initial tool URL containing duplicated Markdown-link text. That remains a service-reported tool correction, alongside the correct final answer. The [control record](research/ai-bot-analytics-grilling/04-perplexity-url-controls.md) preserves this detail and the owner's earlier retries.
+
+![Actual fresh Perplexity fragment-URL answer showing the correct body H1 and maintenance sentence.](research/ai-bot-analytics-grilling/assets/perplexity-fragment-20261105.png)
+
+### A working fragment cannot identify an HTTP request
+
+The fragment is separated before retrieving the resource, so it does not supply a unique origin-log label. It distinguishes prompt and citation inputs while the underlying HTTP target is the ordinary article URL. [RFC 3986 §3.5](https://www.rfc-editor.org/rfc/rfc3986#section-3.5).
+
+This exposes a limit in the experiment itself: adding a query label can change the retrieval path or result. Successful content use and a uniquely attributed live fetch are separate outcomes. The three correct cited answers establish the former. They do not establish fresh content, an internal cache path or a blanket Perplexity policy against query parameters.
+
+No exact Perplexity label appears in the initial eight-minute Worker GET capture. The repeat's separate eight-minute stream contains no request for the tested article except the deliberately synthetic positive control, whose stored receipt is independently verified. Its [evidence](research/ai-bot-analytics-grilling/perplexity-controls-evidence.json) keeps that request out of provider attribution. A retained edge-security check remains unavailable, so I cannot diagnose an edge block or rule one out. The tool's generic fetch error does not reveal its cause.
 
 Perplexity's [current crawler documentation](https://docs.perplexity.ai/docs/resources/perplexity-crawlers) separates PerplexityBot for search discovery from Perplexity-User for user actions, with distinct published address lists. Neither name appeared for this assigned URL. The September results stay dated; this fresh failure adds a separate observation. Its API, MCP, CLI and Computer product remain untested here.
 
@@ -224,7 +242,8 @@ The catalogue tracks access/interface, operation, cache/freshness, output/format
 | Brave shared-demo LLM Context / Web Search API | Ten context sources / three web results; displayed HTTP 200 | UI evidence; no unique retrieval-URL causal join |
 | Context.dev public Markdown converter | Downloaded article, correct requested source fields; navigation/footer retained | Three HTTP 200 requests: two Browser, one Preview or Feed; exact receipts verified |
 | Context.dev unauthenticated MCP initialization | HTTP 401 and OAuth challenge | No executed retrieval tool |
-| Perplexity signed-in Search | Reported fetch error; requested details and citation declined | No exact match in the stopped GET capture; edge-security check unavailable |
+| Perplexity initial signed-in Search | Exact-query fetch error; details and citation declined | No exact match in the initial stopped GET capture |
+| Perplexity fresh query / fragment / plain controls | Three correct cited answers; query trial disclosed a clean-URL fallback | No article request except the synthetic positive control in the separate stopped stream |
 
 The first batch's thirteen receipts have unavailable native Cloudflare verified-bot/signed-agent booleans and zero vendor-network checks. The ChatGPT-User receipt adds a positive configured network assessment; native booleans remain unavailable. Context.dev's three receipts likewise have unavailable native booleans and no vendor-network checks. I cannot turn missing assessments into negative verification or IP-list results. The [first-batch audit](research/ai-bot-analytics-grilling/01-first-batch.md), [ChatGPT/Brave audit](research/ai-bot-analytics-grilling/02-chatgpt-and-brave.md) and [Context.dev/Perplexity audit](research/ai-bot-analytics-grilling/03-context-and-perplexity.md) retain failed attempts, exact inputs and per-operation limits.
 
@@ -249,4 +268,5 @@ The next unrun controls are a newly published body value absent from the prompt,
 | ChatGPT crawler roles and fresh browser trial | [OpenAI crawler documentation](https://developers.openai.com/api/docs/bots), [extension evidence](research/ai-bot-analytics-grilling/chatgpt-brave-evidence.json) | November 4, 2026 local |
 | Brave crawler policy, website and API trials | [Crawler documentation](https://safe.search.brave.com/help/brave-search-crawler), [extension results](research/ai-bot-analytics-grilling/chatgpt-brave-results.json) | November 4, 2026 local |
 | Context.dev public conversion, API controls and MCP access | [Public converter](https://www.context.dev/free-tools/url-to-markdown), [Scrape reference](https://docs.context.dev/api-reference/web-scraping/scrape), [MCP](https://docs.context.dev/install-mcp), [trial results](research/ai-bot-analytics-grilling/context-perplexity-results.json) | Trial November 4 local; export/review November 5 |
-| Perplexity crawler roles and failed Search retrieval | [Crawler documentation](https://docs.perplexity.ai/docs/resources/perplexity-crawlers), [batch record](research/ai-bot-analytics-grilling/03-context-and-perplexity.md) | Trial November 4, 2026 local |
+| Perplexity crawler roles, failed probe and successful URL controls | [Crawler documentation](https://docs.perplexity.ai/docs/resources/perplexity-crawlers), [initial batch](research/ai-bot-analytics-grilling/03-context-and-perplexity.md), [URL controls](research/ai-bot-analytics-grilling/04-perplexity-url-controls.md) | November 4–5, 2026 local |
+| Fragments are separated before resource retrieval | [RFC 3986 §3.5](https://www.rfc-editor.org/rfc/rfc3986#section-3.5) | January 2005; checked November 5, 2026 |

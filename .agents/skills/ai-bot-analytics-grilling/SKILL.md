@@ -19,6 +19,8 @@ Keep one article draft and research index moving with the experiments. Use the r
 
 - Record the provider, product/model, operation, interface, auth state, exact prompt or redacted request, current tool schema, UTC window, cache/freshness settings, page/result limits, and expected observable outcome.
 - Assign a unique URL label per controlled attempt. Keep the expected answer out of the prompt. Query labels connect events by experimental assignment; they neither force a cache miss nor authenticate a client.
+- If a retrieval fails with existing access, test a small set of useful input controls before stopping: the canonical query-free URL, a search for the page, or a fragment variant where relevant. Preserve the initial failure and any fallback URL. One refused answer or a model's statement about its tools does not establish provider-wide incapability. Keep each control bounded rather than retrying indefinitely.
+- A query label can change retrieval behavior. Compare the measurement input with the ordinary URL when that might explain a failure. A `#fragment` is removed before HTTP retrieval and cannot provide an origin-log label; record successful content use separately from uniquely attributed requests. See [RFC 3986 §3.5](https://www.rfc-editor.org/rfc/rfc3986#section-3.5).
 - Use a known existing page for the first retrieval. Add deliberately absent pages, HTML/Markdown, redirects, fresh-body markers, or repeated fetches only when they answer a defined question. Never relabel an accidental 404 as a planned control.
 - Set provider job/page/credit and capture time/byte bounds. Record actual API/credit costs and failures. A local stopwatch is end-to-end latency; provider processing time is a separate measure.
 - Use existing account access and authorized credentials without printing them. Keep keys out of URLs, prompts, screenshots, Git and ordinary tool output. Prefer the signed-in playground or a secret read directly by the request process.
@@ -38,6 +40,8 @@ For each assigned URL, reconcile:
 Use the [operations reference](../blog-maintenance/references/operations-and-handoffs.md) for production SQL, native local D1 preflight, metering and authorization/quota failures. Select exact returned IDs through the primary key; keep SQL and identifiers private. Run no broad traffic census merely to verify a handful of test rows. An acknowledgement is evidence of the reported insert; independent readback is a further stage.
 
 Preserve malformed frames, incomplete suffixes, dropped-event notices and excluded side requests. A missing tail match means no match in that capture. Consult relevant retained Worker/security evidence before proposing an edge block; keep unavailable evidence explicit.
+
+When a capture is unexpectedly quiet, a separately labelled controller request can check that it receives a known event. Freeze that control before execution, identify it as synthetic and exclude it from provider outcomes. It proves receipt of that control, not completeness of every earlier or later request.
 
 Record when the answer completes and when citation cards, previews or source links are inspected. A later request to an output link can come from a different client. Keep it separate from the answer-time retrieval unless the evidence establishes the same operator or service path.
 

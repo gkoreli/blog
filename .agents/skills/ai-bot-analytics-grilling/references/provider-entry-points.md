@@ -50,6 +50,8 @@ Keep all clients reaching an assigned label, including browser claims and unexpe
 
 Use an existing signed-in browser session for a fresh exact-URL question. Record plan, Search versus Computer, and the actual visible model label; do not infer a model from upgrade choices. Preserve completed refusals and expanded tool activity without treating an activity label as a successful fetch.
 
+If a query-bearing URL fails, test the ordinary canonical URL and, when useful, a fragment-only input in fresh conversations under a new capture. Ask for the actual source used so a clean-URL fallback remains visible. Preserve owner-led retries from the original conversation separately: their UI evidence cannot be assigned retrospectively to a tail that had already stopped. Correct returned content demonstrates useful retrieval even when no uniquely labelled live request is observed. Query-dependent failures do not establish a blanket query-parameter ban or its cause.
+
 The [crawler documentation](https://docs.perplexity.ai/docs/resources/perplexity-crawlers) separates PerplexityBot and Perplexity-User and their address lists. Compare the actual request rather than assuming the user-fetcher must appear. No exact Worker match remains bounded to the stopped capture; inspect relevant retained security evidence before diagnosing edge blocking. API, MCP, CLI and Computer are separate interfaces, not interchangeable evidence for the website's Search answer.
 
 ## Extending the catalogue

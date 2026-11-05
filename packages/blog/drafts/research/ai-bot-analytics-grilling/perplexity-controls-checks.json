@@ -1,0 +1,66 @@
+{
+  "checkedAt": "2026-11-05T15:12:26.975258+00:00",
+  "skillValidator": "passed using cached PyYAML with uv --offline",
+  "answerChecks": {
+    "freshConversations": 3,
+    "correctH1s": 3,
+    "correctCompleteMaintenanceSentences": 3,
+    "correctSignatureCoverage": 3,
+    "fallbackAndMalformedInputDisclosuresRetained": true,
+    "reviewedScreenshots": 3
+  },
+  "nativePreflight": {
+    "status": "passed-local-workerd-d1",
+    "sqlSha256": "296d357bb7d605637a2248825d24047dad6bc35eb7a629e28005a7e58691590d",
+    "schemaSha256": "a53392e14c69a62ce1c73c9f8c24afff2e773f68d55831490896e45fa6f93099",
+    "selectedRows": 1,
+    "queryPlan": [
+      "SEARCH page_observations USING INTEGER PRIMARY KEY (rowid=?)"
+    ],
+    "productionReadPlanned": {
+      "maxReturnedRows": 1,
+      "maxStatements": 1,
+      "exactIds": true,
+      "writes": false
+    },
+    "limits": [
+      "Native seeded query/plan only; production cost and row contents remain untested."
+    ]
+  },
+  "syntheticControlAcceptance": {
+    "checkedAt": "2026-11-05T15:12:26.866Z",
+    "exactRows": 1,
+    "fullReceiptMatches": 1,
+    "rowsRead": 1,
+    "rowsWritten": 0,
+    "statementAttempts": 1,
+    "responseSha256": "2272774134d8045c714c95e17649496e4c4c5ffabbe9a5a485ee68d67bef60a3",
+    "readerKinds": {
+      "other-bot": 1
+    },
+    "ownerExcluded": 0,
+    "limits": [
+      "Controlled test traffic; not organic audience growth, people, or independent cryptographic replay."
+    ]
+  },
+  "providerRowAcceptance": "No provider request selected or claimed",
+  "allOwnedCapturesStopped": true,
+  "validationScope": "Additive skill procedure/routing, dated evidence and unpublished article; existing helper unchanged",
+  "productionBuild": "not-run",
+  "noRuntimeChange": true,
+  "sourceHashes": {
+    "packages/blog/drafts/research/ai-bot-analytics-grilling/check-trial-storage.mjs": "521e46ff92d3073f3f5f343c386dab6934d1ea719c27b893888f891675cc4b47"
+  },
+  "structure": {
+    "markdownFiles": 10,
+    "localLinks": 95,
+    "brokenLinks": 0,
+    "fences": "balanced",
+    "json": "parsed",
+    "mainHumanPrompts": 12,
+    "ownerBrowserPromptsInReviewedInputs": 7,
+    "privacyScan": "passed",
+    "rawCaptureIgnored": true,
+    "instructionDiff": "Reviewed additive failure controls, fragment semantics and positive-control guidance; existing authorization and evidence boundaries preserved"
+  }
+}

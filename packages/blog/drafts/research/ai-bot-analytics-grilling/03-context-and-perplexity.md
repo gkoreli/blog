@@ -2,6 +2,8 @@
 
 Trials: November 4, 2026 America/Los_Angeles / November 5 UTC. Export and review completed November 5 local. This batch extends the [worklist](00-worklist.md) and [article draft](../../testing-ai-search-fetch-and-crawl-against-my-analytics.md); the earlier accepted batches remain frozen.
 
+**Later evidence:** [November 5 URL controls](04-perplexity-url-controls.md) add the owner's further conversation and three fresh successful answers through clean/fragment URLs or an explicit fallback. The original refusal and capture below stay dated; they do not establish that Perplexity lacks retrieval capability.
+
 ## Conditions and artifacts
 
 The owner requested Context.dev and the existing signed-in Perplexity session, then limited Context.dev to public access. Perplexity showed a Free plan, Search checked and Computer unchecked. Its default model name was not exposed. No model, account, plan, key, connector or protection setting changed.

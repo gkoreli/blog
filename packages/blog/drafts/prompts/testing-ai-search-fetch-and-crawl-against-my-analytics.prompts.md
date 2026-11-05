@@ -39,3 +39,7 @@ logged in the wrangler cli again, it should work i believe
 ---
 
 you have my approval to use wrangler cli as needed
+
+---
+
+i just queried via perplexity, it feels like that they are blocking the query params but # worked, you can look at the entire conversation that i had with it in your browser, and next time please don't give up so easily, i feel like some providers block query params but you can use # instead, there is no way that these agents don't have web search or fetch tools you know

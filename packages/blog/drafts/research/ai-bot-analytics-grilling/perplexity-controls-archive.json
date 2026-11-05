@@ -1,0 +1,15 @@
+{
+  "privateRoot": "packages/blog/worklog/ai-bot-analytics-grilling-perplexity-controls-20261105/",
+  "rawCapturesInGit": false,
+  "createdAt": "2026-11-05T15:12:26.979252+00:00",
+  "captureStoppedAt": "2026-11-05T15:11:02.555588+00:00",
+  "fileCount": 42,
+  "totalBytes": 482365,
+  "manifestSha256": "f16779ef4cbc1b9737925f241d58ec24b1b0c969deb765aab0b15afa56cac4e4",
+  "limits": [
+    "Preservation commitment, not logging completeness",
+    "Raw account conversation, operational captures, exact IDs and SQL remain private",
+    "Only reviewed screenshots and allowlisted projections are public",
+    "Later delivery metadata outside this frozen manifest"
+  ]
+}
