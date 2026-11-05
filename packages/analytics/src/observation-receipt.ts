@@ -1,7 +1,7 @@
 import type { PageObservation } from './db.js';
 import type { ClassificationEvidence } from './classification-evidence.js';
 import type { VerificationEvidence } from './signature-evidence.js';
-import { publicSignerName, SIGNER_DISPLAY_PROFILE, type PublicSignerName } from './signers.js';
+import { publicSignerName, LEGACY_SIGNER_DISPLAY_PROFILE, isSignerDisplayProfile, type PublicSignerName, type SignerDisplayProfile } from './signers.js';
 import { vendorIpReceipt } from './vendor-ip-receipt.js';
 
 type ReceiptInput = Pick<PageObservation, 'readerKind' | 'signatureStatus' | 'signatureAgent' | 'vendorIpEvidence'> & {
@@ -17,14 +17,22 @@ function booleanState(value: boolean | null): 'true' | 'false' | 'unavailable' {
  * Snapshot before the insert; emit only after D1 acknowledges its one-row write.
  * The caller adds operation and returned database references outside this projection.
  */
-export function storedObservationReceipt(observation: ReceiptInput) {
+export function storedObservationReceipt(observation: ReceiptInput, legacyDisplayProfile?: SignerDisplayProfile) {
   const evidence = observation.signatureEvidence;
   const classification = observation.classificationEvidence;
+  // Legacy rows did not retain this fact. Their fallback is frozen, never today's
+  // catalogue. A historical capture may supply its external profile explicitly.
+  const displayProfile = evidence.signerDisplayProfile === undefined
+    ? legacyDisplayProfile ?? LEGACY_SIGNER_DISPLAY_PROFILE : evidence.signerDisplayProfile;
+  if (!isSignerDisplayProfile(displayProfile)) throw new Error('Unrecognized signer display profile');
+  if (evidence.signerDisplayProfile !== undefined && legacyDisplayProfile !== undefined && displayProfile !== legacyDisplayProfile) {
+    throw new Error('Conflicting signer display profile');
+  }
   const coverage = evidence.coverage;
   const selection = coverage?.version === '2026-10-28.1' ? coverage.selection : null;
   const signer: PublicSignerName | 'none' = evidence.source === 'local-webbotauth'
     && evidence.localOutcome === 'verified' && observation.signatureStatus === 'verified'
-    ? publicSignerName(observation.signatureAgent) : 'none';
+    ? publicSignerName(observation.signatureAgent, displayProfile) : 'none';
   return {
     // One retained export omitted nulls/empty arrays from the same v1 operations. Scalars
     // make those states queryable without reconstructing missing fields.
@@ -50,7 +58,7 @@ export function storedObservationReceipt(observation: ReceiptInput) {
       reasonCount: evidence.localReasons.length,
       reasonNames: [...evidence.localReasons].sort().join(',') || 'none',
       signer,
-      signerDisplayProfile: SIGNER_DISPLAY_PROFILE,
+      signerDisplayProfile: displayProfile,
       documentedVendorStatus: evidence.vendor.status,
       userAgentCovered: booleanState(evidence.vendor.userAgentCovered),
       ...(selection === null ? {} : { selection: { ...selection } }),

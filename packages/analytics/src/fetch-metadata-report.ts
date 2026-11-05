@@ -10,9 +10,9 @@ const tokens = (values: readonly string[]) => values.map(v => `'${v.replaceAll("
 function recordStateSql(): string {
   // The cache-evidence collection bump preserves this parser/record format.
   // Keep explicit compatibility; an arbitrary future collector must not inherit it.
-  const compatibleCollection = "collection_version IN ('2026-10-29.6','2026-10-30.1')";
+  const compatibleCollection = "collection_version IN ('2026-10-29.6','2026-10-30.1','2026-11-05.1')";
   // GoogleOther catalogue changes do not change Fetch Metadata parsing or encoding.
-  const compatibleClassifiers = "('2026-10-29.3','2026-10-31.1')";
+  const compatibleClassifiers = "('2026-10-29.3','2026-10-31.1','2026-11-05.1')";
   const compatibleClassifier = `classifier_version IN ${compatibleClassifiers}`;
   const j = (key: string) => `json_extract(metadata_json,'$.${key}')`;
   const t = (key: string) => `json_type(metadata_json,'$.${key}')`;

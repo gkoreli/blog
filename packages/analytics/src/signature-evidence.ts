@@ -4,6 +4,7 @@ import type { KnownAgentName } from './classify.js';
 import { vendorSignatureEvidence, type VendorSignatureEvidence } from './vendor-signatures.js';
 import { nativeCategoryEvidence, type NativeCategoryEvidence } from './native-bot-evidence.js';
 import { directoryPublicationEvidence, type DirectoryPublicationEvidence } from './directory-publication.js';
+import { SIGNER_DISPLAY_PROFILE, type SignerDisplayProfile } from './signers.js';
 
 /** These are local-profile outcomes, not universal RFC validity or intent verdicts. */
 export const FAILURE_OUTCOMES = {
@@ -48,6 +49,9 @@ export interface VerificationEvidence {
   version: '2026-10-27.5';
   source: 'local-webbotauth' | 'test-injected';
   verifierProfile: string | null;
+  /** Retained for locally verified publishers whose names use this catalogue.
+   * Absent in legacy rows and when no verified publisher name is displayed. */
+  signerDisplayProfile?: SignerDisplayProfile;
   localStatus: WebBotAuthResult['status'];
   localReason: string | null;
   localReasons: string[];
@@ -69,6 +73,7 @@ export function verificationEvidence(request: Request, result: WebBotAuthResult,
   return {
     version: '2026-10-27.5', source: injected ? 'test-injected' : 'local-webbotauth',
     verifierProfile: injected ? null : VERIFIER_PROFILE_VERSION,
+    ...(result.status === 'verified' && !injected ? { signerDisplayProfile: SIGNER_DISPLAY_PROFILE } : {}),
     localStatus: result.status,
     localReason: result.status === 'unverified' ? knownReason(result.reason) ? result.reason : UNKNOWN_REASON : null,
     localReasons: result.status === 'unverified' ? [...new Set([result.reason, ...result.reasons ?? []].map(reason => knownReason(reason) ? reason : UNKNOWN_REASON))].sort() : [],

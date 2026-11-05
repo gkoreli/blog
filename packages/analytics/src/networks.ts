@@ -16,10 +16,10 @@
 // AS46997 Black Mesa produced one request and its business is unclear.
 //
 // Every entry is verified against Team Cymru whois (`whois -h whois.cymru.com
-// " -v AS<n>"`) on checkedOn. Migrations 0006 and 0008 inline the same numbers;
-// the analytics test suite asserts the combined lists match.
+// " -v AS<n>"`) on checkedOn for the September list. Migrations 0006 and 0008
+// retain that snapshot; later additions apply prospectively with a new classifier.
 
-export const HOSTING_NETWORKS = [
+export const HOSTING_NETWORKS_20260904 = [
   { asn: 16509, provider: 'Amazon Web Services', checkedOn: '2026-09-02' },
   { asn: 14618, provider: 'Amazon Web Services', checkedOn: '2026-09-02' },
   { asn: 396982, provider: 'Google Cloud', checkedOn: '2026-09-02' },
@@ -51,6 +51,14 @@ export const HOSTING_NETWORKS = [
   { asn: 213230, provider: 'Hetzner Cloud (second ASN)', checkedOn: '2026-09-04' },
   { asn: 62610, provider: 'Zenlayer', checkedOn: '2026-09-04' },
   { asn: 139341, provider: 'Aceville', checkedOn: '2026-09-04' },
+] as const;
+
+export const HOSTING_NETWORKS = [
+  ...HOSTING_NETWORKS_20260904,
+  // RIPEstat AS overview and the operator's dedicated/cloud-server network:
+  // https://stat.ripe.net/data/as-overview/data.json?resource=AS7979
+  // https://www.servers.com/about/network
+  { asn: 7979, provider: 'Servers.com', checkedOn: '2026-11-05' },
 ] as const;
 
 export const HOSTING_ASNS: ReadonlySet<number> = new Set(

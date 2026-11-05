@@ -24,6 +24,9 @@ export const VENDOR_IP_SOURCES = [
   { id: 'amazon-user', vendor: 'Amazon', declarations: ['Amzn-User'], url: 'https://developer.amazon.com/amazonbot/live-ip-addresses/', documentation: 'https://developer.amazon.com/amazonbot', mediaTypes: ['text/html'], format: 'amazon-hosts-html' },
   // Shap-User has its own signing method; this published IP list is ShapBot-only.
   { id: 'parallel-shapbot', vendor: 'Parallel', declarations: ['ShapBot'], url: 'https://docs.parallel.ai/resources/shapbot.json', documentation: 'https://parallel.ai/parallel-web-systems-bots', mediaTypes: ['application/json'] },
+  // Classic robots only. Claude-Agent hosted browsers publish a separate SAIL
+  // document; neither this list nor Google Cloud membership verifies that agent.
+  { id: 'anthropic-bots', vendor: 'Anthropic', declarations: ['ClaudeBot', 'Claude-User', 'Claude-SearchBot'], url: 'https://claude.com/crawling/bots.json', documentation: 'https://privacy.claude.com/en/articles/8896518-does-anthropic-crawl-data-from-the-web-and-how-can-site-owners-block-the-crawler', mediaTypes: ['application/json'] },
 ] as const;
 export type VendorIpSource = typeof VENDOR_IP_SOURCES[number];
 export type VendorIpSourceId = VendorIpSource['id'];

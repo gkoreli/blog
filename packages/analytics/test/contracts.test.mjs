@@ -13,6 +13,7 @@ import {
   ARCHIVER_NETWORKS,
   HOSTING_ASNS,
   HOSTING_NETWORKS,
+  HOSTING_NETWORKS_20260904,
   isArchiverAsn,
   isHostingAsn,
 } from '../.test-dist/networks.js';
@@ -1564,7 +1565,7 @@ test('migration 0008 creates owner clients and narrowly reclassifies network his
   );
 });
 
-test('SQL reader-kind migrations inline exactly the current network registries', () => {
+test('SQL reader-kind migrations retain the September network registries', () => {
   const backfill = readFileSync(new URL('../migrations/0006_backfill_reader_kind.sql', import.meta.url), 'utf8');
   const originalLists = [...backfill.matchAll(/asn IN \(([^)]*)\)/g)].map(match =>
     match[1].split(',').map(value => Number(value.trim())).filter(Number.isFinite).sort((a, b) => a - b),
@@ -1585,11 +1586,11 @@ test('SQL reader-kind migrations inline exactly the current network registries',
   const originalSet = new Set(originalLists[0]);
   assert.deepEqual(
     additionLists[0],
-    [...HOSTING_ASNS].filter((asn) => !originalSet.has(asn)).sort((a, b) => a - b),
+    HOSTING_NETWORKS_20260904.map(n => n.asn).filter((asn) => !originalSet.has(asn)).sort((a, b) => a - b),
   );
   assert.deepEqual(
     [...new Set([...originalLists[0], ...additionLists[0]])].sort((a, b) => a - b),
-    [...HOSTING_ASNS].sort((a, b) => a - b),
+    HOSTING_NETWORKS_20260904.map(n => n.asn).sort((a, b) => a - b),
   );
   const archiverAsns = [...new Set([...migration.matchAll(/WHERE asn = (\d+)/g)]
     .map((match) => Number(match[1])))].sort((a, b) => a - b);
@@ -1871,8 +1872,8 @@ test('field hardening preserves unknown roots, validates ASN input, and versions
     assert.equal(row.asn_source, accepted ? 'request' : null);
     assert.equal(row.referrer_state, 'internal');
     assert.equal(row.internal_referrer_path, null);
-    assert.equal(row.collection_version, '2026-10-30.1');
-    assert.equal(row.classifier_version, '2026-10-31.1');
+    assert.equal(row.collection_version, '2026-11-05.1');
+    assert.equal(row.classifier_version, '2026-11-05.1');
   }
   for (const url of ['https://gkoreli.com/', 'http://www.gkoreli.com:8080/']) assert.equal(parseReferrer(url, 'gkoreli.com', new Set(['/'])).internalReferrerPath, null);
   assert.equal(parseReferrer('http://www.gkoreli.com:8080/article', 'gkoreli.com', new Set(['/article'])).internalReferrerPath, '/article');

@@ -7,6 +7,7 @@ import { pathToFileURL } from 'node:url';
 import { parseStream, publicReceipt } from '../fetcher-study-v2/extract-live-fetches.mjs';
 import { isObservationId } from '../../../../analytics/src/observation-storage.ts';
 import { storedObservationReceipt } from '../../../../analytics/src/observation-receipt.ts';
+import { isSignerDisplayProfile } from '../../../../analytics/src/signers.ts';
 
 // Run from the repository root with the blog's tsx loader. All outputs are private.
 // prepare PRIVATE_DIR NEW_OUTPUT [PUBLIC_BATCH_CONFIG]; accept PRIVATE_OUTPUT WRANGLER_RESPONSE_JSON
@@ -58,13 +59,14 @@ if (mode === 'prepare') {
       ids.add(ack.storage.observationId); operations.add(ack.operationId);
       const headers = request.headers;
       const ua = headers['user-agent'] ?? '';
-      const products = [...ua.matchAll(/\b(ExaUser|ExaSearchBot|DuckAssistBot|ChatGPT-User|OAI-SearchBot|Perplexity-User|PerplexityBot|Slackbot-LinkExpanding|Chrome|Firefox|Safari|Version)[ /]([0-9.]+)/g)].map(match => `${match[1]}/${match[2]}`);
+      const products = [...ua.matchAll(/\b(ExaUser|ExaSearchBot|DuckAssistBot|ChatGPT-User|OAI-SearchBot|Perplexity-User|PerplexityBot|Claude-User|Slackbot-LinkExpanding|curl|Chrome|Firefox|Safari|Version)[ /]([0-9.]+)/g)].map(match => `${match[1]}/${match[2]}`);
       const components = [...(headers['signature-input'] ?? '').matchAll(/\(([^)]*)\)/g)]
         .flatMap(match => [...match[1].matchAll(/"([@a-z][@a-z0-9-]*)"/g)].map(value => value[1]));
       privateEvents.push(envelope);
       events.push({ trialLabel: label, timestamp: new Date(envelope.eventTimestamp).toISOString(),
         workerVersion: envelope.scriptVersion?.id ?? null, collectionVersion: ack.collectionVersion,
         originStatus: envelope.event.response?.status ?? null, userAgentProducts: [...new Set(products)],
+        ...(ua === 'Google' ? { bareUserAgent: 'Google' } : {}),
         cloudflareFacts: { asn: Number.isInteger(request.cf?.asn) ? request.cf.asn : null,
           country: /^[A-Z]{2}$/.test(request.cf?.country ?? '') ? request.cf.country : null,
           httpProtocol: /^HTTP\/[123](?:\.[01])?$/.test(request.cf?.httpProtocol ?? '') ? request.cf.httpProtocol : null,
@@ -122,16 +124,21 @@ ORDER BY id LIMIT ${sortedIds.length + 1};\n`;
     const row = matches[0];
     assert.equal(row.path, new URL(envelope.event.request.url).pathname);
     assert.equal(row.collection_version, ack.collectionVersion);
+    assert.ok(isSignerDisplayProfile(ack.receipt.signature.signerDisplayProfile));
+    const evidence = JSON.parse(row.signature_evidence);
     const receipt = storedObservationReceipt({ readerKind: row.reader_kind, signatureStatus: row.signature_status,
       signatureAgent: row.signature_agent, signatureEvidence: JSON.parse(row.signature_evidence),
-      classificationEvidence: JSON.parse(row.classification_evidence), vendorIpEvidence: JSON.parse(row.vendor_ip_evidence) });
+      classificationEvidence: JSON.parse(row.classification_evidence), vendorIpEvidence: JSON.parse(row.vendor_ip_evidence) }, ack.receipt.signature.signerDisplayProfile);
     assert.deepEqual(receipt, ack.receipt);
+    assert.ok(evidence.signerDisplayProfile === undefined || evidence.signerDisplayProfile === ack.receipt.signature.signerDisplayProfile);
   }
   save(resolve(inputPath, 'acceptance.json'), { checkedAt: new Date().toISOString(), exactRows: rows.length,
     fullReceiptMatches: rows.length, rowsRead: result.meta.rows_read, rowsWritten: result.meta.rows_written,
     statementAttempts: result.meta.total_attempts ?? null, responseSha256: hash(readFileSync(outputPath)),
     readerKinds: rows.reduce((counts, row) => ({ ...counts, [row.reader_kind]: (counts[row.reader_kind] ?? 0) + 1 }), {}),
     ownerExcluded: rows.filter(row => row.is_owner === 1).length,
+    signerProfileBasis: { stored: rows.filter(row => JSON.parse(row.signature_evidence).signerDisplayProfile !== undefined).length,
+      externalAcknowledgement: rows.filter(row => JSON.parse(row.signature_evidence).signerDisplayProfile === undefined).length },
     limits: ['Controlled test traffic; not organic audience growth, people, or independent cryptographic replay.'] });
   console.log(JSON.stringify({ exactRows: rows.length, fullReceiptMatches: rows.length, rowsRead: result.meta.rows_read, rowsWritten: result.meta.rows_written }));
 } else throw new Error('Expected prepare or accept');

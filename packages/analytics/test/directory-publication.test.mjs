@@ -26,7 +26,7 @@ test('published directory provenance is separate from documented signing promise
   for (const [names,result,injected,status] of cases) assert.equal(directoryPublicationEvidence(names,result,injected).status,status);
   assert.equal(JSON.stringify(verified),before);
   for (const name of ['AhrefsBot','AhrefsSiteAudit','ExaSearchBot','ExaUser','Google-Agent']) {
-    const origin=name.startsWith('Ahrefs')?'https://ahrefs.com':name==='Google-Agent'?'https://agent.bot.goog':'https://crawler.exa.ai';
+    const origin=name.startsWith('Ahrefs')?'https://ahrefs.com':name==='Google-Agent'?'https://agent.bot.goog':name==='ExaUser'?'https://exauser.crawler.exa.ai':'https://crawler.exa.ai';
     assert.equal(directoryPublicationEvidence([name],{status:'verified',agent:origin}).status,'matching-publisher');
   }
 });
@@ -34,7 +34,7 @@ test('published directory provenance is separate from documented signing promise
 test('Google publisher review stays separate from client declarations, injected verdicts and related products', () => {
   const result={status:'verified',agent:'https://agent.bot.goog'};
   const evidence=directoryPublicationEvidence(['Google-Agent'],result);
-  assert.equal(evidence.profile,'2026-10-29.1');assert.equal(evidence.reviewedOn,'2026-10-29');
+  assert.equal(evidence.profile,'2026-11-05.1');assert.equal(evidence.reviewedOn,'2026-11-05');
   assert.equal(evidence.status,'matching-publisher');assert.equal(evidence.configuredDeclarationCount,1);
   assert.equal(directoryPublicationEvidence(['Google-Agent'],{status:'absent'}).status,'not-verified');
   assert.equal(directoryPublicationEvidence(['Google-GeminiNotebook'],result).status,'not-configured');

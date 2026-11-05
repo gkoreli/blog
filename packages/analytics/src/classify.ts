@@ -16,8 +16,9 @@ import type { DeviceType, TrafficClass } from './contracts.js';
  *
  * - OpenAI — GPTBot, ChatGPT-User, OAI-SearchBot, OAI-AdsBot (ad validation, not training):
  *   https://developers.openai.com/api/docs/bots
- * - Anthropic — ClaudeBot, Claude-User, Claude-SearchBot:
- *   https://support.claude.com/en/articles/8896518
+ * - Anthropic — ClaudeBot, Claude-User, Claude-SearchBot; Claude-Agent hosted
+ *   browsers (reviewed 2026-11-05): https://privacy.claude.com/en/articles/8896518
+ *   https://support.claude.com/en/articles/18234133
  * - Perplexity — PerplexityBot, Perplexity-User:
  *   https://docs.perplexity.ai/guides/bots
  * - Meta — Meta-ExternalAgent, Meta-ExternalFetcher, Meta-WebIndexer, FacebookBot:
@@ -36,7 +37,7 @@ import type { DeviceType, TrafficClass } from './contracts.js';
  * - DuckDuckGo — DuckAssistBot:
  *   https://duckduckgo.com/duckduckgo-help-pages/results/duckassistbot/
  * - Exa — ExaSearchBot and ExaUser (added 2026-10-25):
- *   https://crawler.exa.ai/ and https://crawler.exa.ai/exauser
+ *   https://crawler.exa.ai/ and https://exauser.crawler.exa.ai/
  * - Ahrefs — AhrefsBot and AhrefsSiteAudit (added 2026-10-25):
  *   https://ahrefs.com/robot
  * - Parallel — ShapBot (search indexing), Shap-User (retrieval on behalf of users):
@@ -71,6 +72,7 @@ const AI_RULES = [
   { name: 'ExaSearchBot', products: ['ExaSearchBot'] },
   { name: 'ChatGPT-User', products: ['ChatGPT-User'] },
   { name: 'Claude-User', products: ['Claude-User'] },
+  { name: 'Claude-Agent', products: ['Claude-Agent'] },
   { name: 'Perplexity-User', products: ['Perplexity-User'] },
   { name: 'Meta-ExternalFetcher', products: ['Meta-ExternalFetcher'] },
   { name: 'MistralAI-User', products: ['MistralAI-User'] },

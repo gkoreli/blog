@@ -3,14 +3,18 @@ import type { WebBotAuthResult } from './webbotauth.js';
 
 /** Documented key discovery, independent of the public signer display catalogue.
  * This comparison adds no trust to arbitrary origins and makes no IP/trigger claim.
- * Parallel sources checked 2026-10-29; earlier entries retain their dated evidence.
+ * Exa user-fetcher origin reviewed 2026-11-05; Parallel reviewed 2026-10-29.
  * Version the registry when its scope changes.
  */
-export const VENDOR_SIGNATURE_PROFILE = '2026-10-29.1';
+export const VENDOR_SIGNATURE_PROFILE = '2026-11-05.1';
 export const VENDOR_SIGNATURE_METHODS = [{
   vendor: 'Exa', origin: 'https://crawler.exa.ai',
-  declarations: ['ExaSearchBot', 'ExaUser'],
-  sources: ['https://crawler.exa.ai/', 'https://crawler.exa.ai/exauser'],
+  declarations: ['ExaSearchBot'],
+  sources: ['https://crawler.exa.ai/'],
+}, {
+  vendor: 'Exa', origin: 'https://exauser.crawler.exa.ai',
+  declarations: ['ExaUser'],
+  sources: ['https://exauser.crawler.exa.ai/'],
 }, {
   // Experimental, partial rollout: absence of a signature is not impersonation.
   vendor: 'Google', origin: 'https://agent.bot.goog',

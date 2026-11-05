@@ -34,7 +34,8 @@ test('closed reason evidence cannot retain injected free text; complete failure 
 test('documented Exa methods do not grant trust to arbitrary keys, unmapped declarations or injected verdicts', () => {
   const verified = { status: 'verified', agent: 'https://crawler.exa.ai' };
   const matching = vendorSignatureEvidence(['ExaUser', 'ExaSearchBot', 'GPTBot'], verified);
-  assert.equal(matching.status, 'matching-origin');
+  assert.equal(matching.status, 'conflicting-origins');
+  assert.equal(vendorSignatureEvidence(['ExaUser'], { status: 'verified', agent: 'https://exauser.crawler.exa.ai' }).status, 'matching-origin');
   assert.equal(matching.documentedDeclarationCount, 2); assert.equal(matching.unmappedDeclarationCount, 1);
   assert.equal(matching.userAgentCovered, null);
   for (const agent of ['https://crawler.exa.ai.evil.example', 'https://ahrefs.com', 'https://private-canary.example']) {
@@ -60,7 +61,7 @@ test('Google experimental signing and conflicting declarations preserve selected
   const related = vendorSignatureEvidence(['Google-GeminiNotebook'], google);
   assert.equal(related.status, 'not-configured'); assert.equal(related.matchingDeclarationCount, null);
   for (const names of [['ExaUser', 'Google-Agent', 'GPTBot', 'ExaUser'], ['GPTBot', 'Google-Agent', 'ExaUser']]) {
-    for (const agent of ['https://agent.bot.goog', 'https://crawler.exa.ai', 'https://private-canary.example']) {
+    for (const agent of ['https://agent.bot.goog', 'https://exauser.crawler.exa.ai', 'https://private-canary.example']) {
       const mixed = vendorSignatureEvidence(names, { status: 'verified', agent });
       assert.equal(mixed.status, 'conflicting-origins'); assert.equal(mixed.expectedOriginCount, 2);
       assert.equal(mixed.documentedDeclarationCount, 2); assert.equal(mixed.unmappedDeclarationCount, 1);

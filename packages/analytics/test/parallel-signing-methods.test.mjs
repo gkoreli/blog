@@ -14,7 +14,7 @@ test('Parallel signing methods bind exact declarations to distinct documented or
   for (const [name,origin,other] of [['ShapBot',bot,user],['Shap-User',user,bot]]) {
     const result = {status:'verified',agent:origin,evidence:{covered:{userAgent:false}}};
     const evidence = vendorSignatureEvidence([name],result);
-    assert.equal(evidence.profile,'2026-10-29.1');
+    assert.equal(evidence.profile,'2026-11-05.1');
     assert.equal(evidence.status,'matching-origin');assert.equal(evidence.documentedDeclarationCount,1);
     assert.equal(evidence.matchingDeclarationCount,1);assert.equal(evidence.userAgentCovered,false);
     assert.equal(directoryPublicationEvidence([name],result).status,'matching-publisher');

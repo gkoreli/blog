@@ -1,6 +1,6 @@
 /** Shared closed display vocabulary; no verifier or discovery dependency. */
-export const DIRECTORY_PUBLICATION_PROFILE = '2026-10-29.1';
-export const DIRECTORY_PUBLICATION_REVIEWED_ON = '2026-10-29';
+export const DIRECTORY_PUBLICATION_PROFILE = '2026-11-05.1';
+export const DIRECTORY_PUBLICATION_REVIEWED_ON = '2026-11-05';
 export const DIRECTORY_PUBLICATION_STATUSES = [
   'no-declaration', 'not-configured', 'not-verified', 'matching-publisher',
   'different-publisher', 'partial-mapping', 'conflicting-publishers', 'test-injected',

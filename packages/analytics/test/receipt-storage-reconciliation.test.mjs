@@ -14,6 +14,7 @@ function fixture() {
     Object.defineProperty(request,'cf',{value:{verifiedBotCategory:'Search Engine Crawler',botManagement:{verifiedBot:index===0?null:false,signedAgent:null}}});
     const e=verificationEvidence(request,{status:'verified',agent:'https://crawler.exa.ai',evidence:{version:'2026-10-27.1',headerForm:'dictionary',covered:{authority:true,targetUri:false,method:false,path:false,query:false,userAgent:false,contentDigest:false},otherComponentCount:0,validitySeconds:300,ageSeconds:1,replayPolicy:'expiry-only'}},false,['ExaSearchBot']);
     e.verifierProfile='2026-10-27.6';
+    e.signerDisplayProfile='2026-10-28.1';e.vendor.profile='2026-10-29.1';e.directoryPublication.profile='2026-10-29.1';e.directoryPublication.reviewedOn='2026-10-29';
     const row={privateReference:ref,observedAt:'2026-10-27 23:45:54',path:'/same-path',collectionVersion:'2026-10-27.10',classifierVersion:'2026-10-27.5',readerKind:'ai-search',signatureStatus:'verified',signatureAgent:'https://crawler.exa.ai',classificationEvidence:JSON.stringify(c),signatureEvidence:JSON.stringify(e)};
     candidates.push(row);receipts.push({timestamp:'2026-10-27T23:45:55.000Z',$metadata:{id:'record-'+index,type:'cf-worker',requestId:'request-'+index},$workers:{truncated:false},source:{message:'analytics.observation_stored',operationId:'operation-'+index,collectionVersion:row.collectionVersion,storage:{version:'2026-10-27.1',status:'returned',observationId:ref},receipt:storedObservationReceipt({readerKind:row.readerKind,signatureStatus:row.signatureStatus,signatureAgent:row.signatureAgent,classificationEvidence:c,signatureEvidence:e})}});
   }
@@ -82,6 +83,7 @@ test('matching copied facts do not turn contradictory stored status into a verif
   const result=reconcileReceiptStorage(f.candidates,f.receipts);
   assert.equal(result.identicalProjectionPairs,2);assert.equal(result.conflictingStoredStatusPairs,1);assert.equal(result.storedLocalVerifiedPairs,1);
   const injected=fixture();const e2=verificationEvidence(new Request('https://publication.example/article'),{status:'verified',agent:'https://crawler.exa.ai'},true,['ExaSearchBot']);
+  e2.vendor.profile='2026-10-29.1';e2.directoryPublication.profile='2026-10-29.1';e2.directoryPublication.reviewedOn='2026-10-29';
   injected.candidates[0].signatureEvidence=JSON.stringify(e2);resnapshot(injected.candidates[0],injected.receipts[0]);
   const injectedResult=reconcileReceiptStorage(injected.candidates,injected.receipts);
   assert.equal(injectedResult.identicalProjectionPairs,2);assert.equal(injectedResult.testInjectedPairs,1);

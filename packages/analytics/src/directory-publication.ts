@@ -10,8 +10,10 @@ export type { DirectoryPublicationEvidence, DirectoryPublicationBasis } from './
  * Key rotation is allowed; the comparison concerns the publisher origin, not frozen keys.
  */
 export const DIRECTORY_PUBLICATIONS = [
-  { origin: 'https://crawler.exa.ai', declarations: ['ExaSearchBot', 'ExaUser'],
+  { origin: 'https://crawler.exa.ai', declarations: ['ExaSearchBot'],
     source: 'https://crawler.exa.ai/.well-known/http-message-signatures-directory' },
+  { origin: 'https://exauser.crawler.exa.ai', declarations: ['ExaUser'],
+    source: 'https://exauser.crawler.exa.ai/.well-known/http-message-signatures-directory' },
   { origin: 'https://ahrefs.com', declarations: ['AhrefsBot', 'AhrefsSiteAudit'],
     source: 'https://ahrefs.com/.well-known/http-message-signatures-directory' },
   { origin: 'https://agent.bot.goog', declarations: ['Google-Agent'],
@@ -48,6 +50,8 @@ export function directoryPublicationBasisSql(): string {
           AND json_extract(signature_evidence, '$.directoryPublication.reviewedOn') IS '2026-10-27')
         OR (json_extract(signature_evidence, '$.directoryPublication.profile') IS '2026-10-28.1'
           AND json_extract(signature_evidence, '$.directoryPublication.reviewedOn') IS '2026-10-28')
+        OR (json_extract(signature_evidence, '$.directoryPublication.profile') IS '2026-10-29.1'
+          AND json_extract(signature_evidence, '$.directoryPublication.reviewedOn') IS '2026-10-29')
         OR (json_extract(signature_evidence, '$.directoryPublication.profile') IS '${DIRECTORY_PUBLICATION_PROFILE}'
           AND json_extract(signature_evidence, '$.directoryPublication.reviewedOn') IS '${DIRECTORY_PUBLICATION_REVIEWED_ON}'))
       OR json_extract(signature_evidence, '$.directoryPublication.method') IS NOT 'reviewed-first-party-directory'

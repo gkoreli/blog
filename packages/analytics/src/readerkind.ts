@@ -12,6 +12,7 @@ export const ON_DEMAND_FETCHERS = [
   'ExaUser',
   'ChatGPT-User',
   'Claude-User',
+  'Claude-Agent',
   'Perplexity-User',
   'Meta-ExternalFetcher',
   'MistralAI-User',

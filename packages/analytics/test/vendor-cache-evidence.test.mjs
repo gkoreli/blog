@@ -40,7 +40,7 @@ test('revalidation, failures and coalescing have their own access facts without 
 test('guards retain explicit inapplicability and maximum source fanout fits the unchanged storage cap',async()=>{
   const now=new Date(CACHE_EVIDENCE_CLOCK),fetcher=async()=>cacheEvidenceFeed({'Cache-Control':'no-store, private, no-cache, max-age=oops',Age:'oops'});
   const all=await verifyVendorIp(cacheEvidenceRequest(),KNOWN_AGENT_NAMES,{now,cache:createVendorIpCache(),fetcher});
-  assert.equal(all.checks.length,16);assert.equal(all.checks.slice(4).every(c=>c.cache===null&&c.reason==='request-budget'),true);
+  assert.equal(all.checks.length,17);assert.equal(all.checks.slice(4).every(c=>c.cache===null&&c.reason==='request-budget'),true);
   // Max accepted publisher-version width and prefix-count width, four accepted sources.
   for(const c of all.checks.slice(0,4)){c.snapshot.publisherVersion='2'.repeat(32);c.snapshot.prefixCount=4096;}
   const bytes=Buffer.byteLength(JSON.stringify(all));assert.ok(bytes<=4096,String(bytes));assert.equal(state(all),'recognized');
