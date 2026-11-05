@@ -1,0 +1,74 @@
+{
+  "checkedAt": "2026-11-05T15:56:13.018Z",
+  "sourceCommit": "5ac791eaca3a0e8a54ec2ae67a132a2c2801ad08",
+  "buildId": "9d3fc9bb-c6b2-43a2-a62d-61df4b12203c",
+  "workerVersion": "f5a3e7f6-0084-4a90-a87c-20615418f860",
+  "allocationPercent": 100,
+  "activatedAt": "2026-11-05T15:52:01.792591Z",
+  "client": {
+    "servedSha256": "ce34d4de7becbc5a45194c1050d6f1b073eed7ff399c0c8961e98a6fe4b60d2f",
+    "reconstructedSha256": "ce34d4de7becbc5a45194c1050d6f1b073eed7ff399c0c8961e98a6fe4b60d2f",
+    "exactMatch": true,
+    "bytes": 34068
+  },
+  "html": {
+    "checkedAt": "2026-11-05T15:56:13.018Z",
+    "status": 200,
+    "formUsesPost": true,
+    "initiallyDisabled": true,
+    "bootstrapPresent": true,
+    "bootstrapBuildIdentityMatches": true,
+    "bootstrapBeforeTurnstile": true,
+    "nonemptyKey": true,
+    "contentSecurityPolicy": "default-src 'self'; script-src 'self' 'unsafe-inline' https://challenges.cloudflare.com https://static.cloudflareinsights.com; frame-src 'self' https://challenges.cloudflare.com; connect-src 'self' https://challenges.cloudflare.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https:; font-src 'self' https:; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'",
+    "noScriptGuidance": true
+  },
+  "local": {
+    "blogTests": 185,
+    "workspaceTypes": true,
+    "markdownValidationCount": 30,
+    "isolatedBuildPosts": 41,
+    "nativeDiagnostics": {
+      "checkedAt": "2026-11-05T15:50:04.474Z",
+      "v3Readback": true,
+      "bootstrapToNativeD1": true,
+      "storedRows": 3,
+      "productionWrites": 0,
+      "privateExtraDiscarded": true
+    }
+  },
+  "liveAcceptance": {
+    "preChangeAlreadyActiveBrowserSubmit": "request-received UI observed; no confirmation send intended",
+    "managedModeActivated": false,
+    "freshConfirmationSent": false,
+    "freshMailboxReceipt": false,
+    "freshActivation": false,
+    "deployedBrowserDiagnosticReadback": false,
+    "blocker": "Native browser unavailable because Mac is locked; unlock requested."
+  },
+  "setupLeads": {
+    "requiredBindingNamesPresent": true,
+    "resendWebhookSecretPresent": false,
+    "availableResendCredential": "401 restricted_api_key on read-only webhooks/domains endpoints; send-only",
+    "turnstileApi": "403 with existing OAuth credential; dashboard previously readable",
+    "authoritativeDmarc": {
+      "checkedAt": "2026-11-05T15:56:39.534Z",
+      "answers": [
+        {
+          "nameserver": "aida.ns.cloudflare.com",
+          "error": "ENOTFOUND"
+        },
+        {
+          "nameserver": "dom.ns.cloudflare.com",
+          "error": "ENOTFOUND"
+        }
+      ]
+    }
+  },
+  "limits": [
+    "Activation metadata and exact static client match do not prove a complete signup.",
+    "A historical SPF/DKIM pass is not current-message acceptance.",
+    "No reader address/token/raw message is included in this receipt.",
+    "No production protection/key/DNS/subscriber mutation performed in this implementation checkpoint."
+  ]
+}

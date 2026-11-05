@@ -38,6 +38,20 @@ The initial native adapter rejected its unsupported keepalive option before thos
 
 The isolated production build and final release/live acceptance are recorded below when observed. Shared development `dist/` is untouched. No protection is removed, key rotated, subscriber directly edited in SQL or production fault burst performed. Existing confirmation admission ceilings remain in force.
 
+### Source and served release accepted; browser acceptance waiting
+
+[Release receipt](subscription-recovery-release.json): source `5ac791e` is pushed to main. Fresh CLI metadata allocates Worker `f5a3e7f6-0084-4a90-a87c-20615418f860` at 100% from 15:52:01 UTC. The 34,068-byte served client carries build `9d3fc9bb-c6b2-43a2-a62d-61df4b12203c` and that exact source; reconstruction with the actual bundler settings matches every byte. The fresh excluded `/owner` response independently has POST/disabled initial form behavior, no-script guidance, nonempty key and the early reporter before the external Turnstile script, with the same build identity. Its CSP already permits Turnstile scripts, frames and connections. The final isolated build covers 41 posts. No shared development output is used.
+
+The Mac locked before Managed activation or the post-deployment browser test. Manual unlock is requested. The widget remains Invisible at this checkpoint; no unsubscribe, fresh confirmation send, mailbox receipt, activation or deployed browser diagnostic readback is claimed. The designated address remains active. The prepared private test runner uses ordinary unsubscribe/confirmation HTTP actions and targeted metered reads; it has not been executed.
+
+### Additional sender and feedback findings
+
+Fresh production binding-name inspection finds the four required secrets but no `RESEND_WEBHOOK_SECRET`. The available local Resend key returns `401 restricted_api_key` for read-only `/webhooks` and `/domains`; this does not establish that no endpoint exists in the account. Existing Cloudflare OAuth returns 403 on the widget API, so that credential cannot substitute for the signed-in dashboard. No new credential is created or permission broadened.
+
+Both authoritative nameservers return no `_dmarc.gkoreli.com` TXT record. Public SPF and DKIM records are present. Newly accessible authentication headers on the retained September message independently show aligned `dkim=pass` and `spf=pass`, without a DMARC result. Its current Inbox label does not rewrite the original observed Spam placement or establish current mail delivery. No cause for that placement is inferred.
+
+Resend's [DMARC guidance](https://resend.com/docs/dashboard/domains/dmarc) advises checking authentication and starting with `p=none` before stricter enforcement. A bounded proposed next DNS change is one `_dmarc` TXT policy beginning `v=DMARC1; p=none`; no record, aggregate-report recipient or stricter policy is installed here. [Webhook guidance](https://resend.com/docs/webhooks/introduction) describes delivery/bounce feedback separately from API acceptance. Existing TASK-0142 owns inspection and activation of the signed bounce/complaint connection; TASK-0145 owns sender-policy acceptance and mailbox placement. The browser/account access needed to complete those changes remains unavailable at this checkpoint.
+
 ## Remaining acceptance
 
 Publish the checked source, verify the active Worker and served client, then change the existing widget to Managed with its hostname/key/pre-clearance preserved. The designated address is currently active: exercise an ordinary unsubscribe POST followed by browser signup, one new confirmation receipt and confirmation activation, leaving it active. Record browser, provider, mailbox and D1 evidence separately. Verify one labelled browser diagnostic through the deployed logger with independent readback and guarded fixture cleanup. Keep the recipient, tokens, provider message details and raw logs outside Git.
