@@ -1,5 +1,7 @@
 # November 5 publication and discussion research
 
+Historical first-stage record. The later owner clarification and actual submission of seven X replies and seven Reddit comments are recorded in [reply publication](replies-2026-11-05.md); that continuation supersedes the draft-only state below.
+
 The owner explicitly requested publication, an X post, and 5–10 X/Reddit discussion opportunities with concise lowercase copy and the blog link. Executed scope: article publication and one original X post; seven X threads and seven Reddit candidate pages with exact drafts. No X replies or Reddit submissions were made. These are reviewable alternatives, not a bulk-posting queue.
 
 ## Article

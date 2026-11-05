@@ -20,7 +20,7 @@
   "repoLinks": "absolute GitHub links",
   "initialBuildFailure": "Unloaded http grammar for a component-list fence; changed that fence to text, preserving content",
   "typecheck": "passed",
-  "publication": "not yet pushed",
+  "publication": "pushed-and-live-browser-verified",
   "publicationCommit": "9764836",
   "pushedToMain": true,
   "liveBrowserCheckAt": "2026-11-05T16:43:51.675012+00:00",

@@ -1,0 +1,155 @@
+{
+  "recordedAt": "2026-11-05T18:46:46.114404+00:00",
+  "authorization": "Owner explicitly instructed submission of the saved replies and comments on November 5 after clarifying the earlier scope interpretation.",
+  "xRepliesPublished": 7,
+  "redditCommentsPublished": 7,
+  "canonicalOwnerViewsVerified": 14,
+  "independentPublicVisibility": "Not checked for this reply batch; owner-view receipts do not establish anonymous visibility or absence of moderation filtering.",
+  "traction": "Not measured. Own verification views and Reddit default self-votes are not audience engagement.",
+  "timestampMeaning": "receiptRecordedAt records local receipt collection, not the server publication timestamp.",
+  "items": [
+    {
+      "platform": "x",
+      "priority": 1,
+      "parent": "https://x.com/nullprintai/status/2118177545007042677",
+      "url": "https://x.com/GogaKoreli/status/2118412327909523945",
+      "copy": "same issue in my nov 5 test: grok sent 11 unsigned requests, chrome/safari claims, all stored Browser by my own classifier. no grok token.\n\nmy captures + the fixes i shipped: https://gkoreli.com/ai-fetcher-browser-crawler-headers",
+      "state": "canonical-owner-view-verified",
+      "receiptRecordedAt": "2026-11-05T18:37:21.756Z",
+      "verification": "Reopened canonical permalink in the signed-in owner browser; exact text and article link/card visible."
+    },
+    {
+      "platform": "x",
+      "priority": 2,
+      "parent": "https://x.com/aleyda/status/2118275935753437672",
+      "url": "https://x.com/GogaKoreli/status/2118412485489516967",
+      "copy": "one agent can look like two clients: chatgpt used chrome and curl on my site, both signed by the same publisher. i keep client claim, verified signer and covered fields separate.\n\nmy tests: https://gkoreli.com/ai-fetcher-browser-crawler-headers",
+      "state": "canonical-owner-view-verified",
+      "receiptRecordedAt": "2026-11-05T18:37:58.998Z",
+      "verification": "Reopened canonical permalink in the signed-in owner browser; exact text and article link/card visible."
+    },
+    {
+      "platform": "x",
+      "priority": 3,
+      "parent": "https://x.com/minimailerapp/status/2118312376311427203",
+      "url": "https://x.com/GogaKoreli/status/2118412638812328256",
+      "copy": "the covered fields matter too. chatgpt's chrome + curl verified on my site, but path + user-agent were unsigned. i replayed the captured proofs to check it.\n\nmy coverage tests: https://gkoreli.com/ai-fetcher-browser-crawler-headers",
+      "state": "canonical-owner-view-verified",
+      "receiptRecordedAt": "2026-11-05T18:38:33.621Z",
+      "verification": "Reopened canonical permalink in the signed-in owner browser; exact text and article link/card visible."
+    },
+    {
+      "platform": "x",
+      "priority": 4,
+      "parent": "https://x.com/kong/status/2118074573358780573",
+      "url": "https://x.com/GogaKoreli/status/2118412883902247292",
+      "copy": "one agent task wasn't one request: dot's curl made 2 GETs after its output got truncated. i joined each request to its stored row separately.\n\nmy task -> request -> storage checks: https://gkoreli.com/ai-fetcher-browser-crawler-headers",
+      "state": "canonical-owner-view-verified",
+      "receiptRecordedAt": "2026-11-05T18:39:31.677Z",
+      "verification": "Reopened canonical permalink in the signed-in owner browser; exact text and article link/card visible."
+    },
+    {
+      "platform": "x",
+      "priority": 5,
+      "parent": "https://x.com/canonry_ai/status/2118019048847954147",
+      "url": "https://x.com/GogaKoreli/status/2118413072591368231",
+      "copy": "there's also automation without an AI name: grok's 11 requests looked like chrome/safari and all landed in my Browser bucket. the assigned test URL exposed that gap.\n\nmy headers + fixes: https://gkoreli.com/ai-fetcher-browser-crawler-headers",
+      "state": "canonical-owner-view-verified",
+      "receiptRecordedAt": "2026-11-05T18:40:22.830Z",
+      "verification": "Reopened canonical permalink in the signed-in owner browser; exact text and article link/card visible."
+    },
+    {
+      "platform": "reddit",
+      "priority": 1,
+      "parent": "https://www.reddit.com/r/SearchAPIs/comments/1wn9zke/has_anyone_compared_exa_tavily_and_firecrawl_for/",
+      "url": "https://www.reddit.com/r/SearchAPIs/comments/1wn9zke/comment/19s6uw96uik3n/",
+      "copy": "search success and answer accuracy need separate tests. tavily extract returned my page's text, but its mini research missed the requested heading/sentence, misstated the signature coverage and returned no sources.\n\none page, not a provider ranking. my API/MCP/browser results and settings: https://gkoreli.com/ai-fetcher-browser-crawler-headers",
+      "state": "canonical-owner-view-verified",
+      "receiptRecordedAt": "2026-11-05T18:40:30.180Z",
+      "verification": "Reopened canonical permalink in the signed-in owner browser; exact text and article link/card visible."
+    },
+    {
+      "platform": "x",
+      "priority": 6,
+      "parent": "https://x.com/AIScanSite/status/2117980193986068664",
+      "url": "https://x.com/GogaKoreli/status/2118413246558527980",
+      "copy": "personal agents aren't just named fetchers. dot's chrome + curl shared a verified chatgpt publisher; their UA didn't say ChatGPT-User. i fixed the signer mapping.\n\nmy live tests: https://gkoreli.com/ai-fetcher-browser-crawler-headers",
+      "state": "canonical-owner-view-verified",
+      "receiptRecordedAt": "2026-11-05T18:41:02.069Z",
+      "verification": "Reopened canonical permalink in the signed-in owner browser; exact text and article link/card visible."
+    },
+    {
+      "platform": "reddit",
+      "priority": 2,
+      "parent": "https://www.reddit.com/r/AISearchLab/comments/1v4g7bw/went_deep_on_server_log_analysis_for_ai_bot/",
+      "url": "https://www.reddit.com/r/AISearchLab/comments/1v4g7bw/comment/19s6uxs6ds4wy/",
+      "copy": "an IP-list miss doesn't automatically mean a fake bot. claude's signed-in free chat fetched my test URL; the labelled Claude-User request came from an address outside its current published feed.\n\ni store 'not listed' separately from the UA claim and the controlled test, so a missing match doesn't turn into an impersonation verdict. my headers + exact stored-row checks: https://gkoreli.com/ai-fetcher-browser-crawler-headers",
+      "state": "canonical-owner-view-verified",
+      "receiptRecordedAt": "2026-11-05T18:41:21.233Z",
+      "verification": "Reopened canonical permalink in the signed-in owner browser; exact text and article link/card visible."
+    },
+    {
+      "platform": "x",
+      "priority": 7,
+      "parent": "https://x.com/_junaidkhalid1/status/2117978079570342294",
+      "url": "https://x.com/GogaKoreli/status/2118413400036569361",
+      "copy": "a query label can change the access test too. perplexity failed on ?probe=, then read the canonical/# URL. # never reaches the server, so it can't identify a log row.\n\nmy controls: https://gkoreli.com/ai-fetcher-browser-crawler-headers",
+      "state": "canonical-owner-view-verified",
+      "receiptRecordedAt": "2026-11-05T18:41:35.512Z",
+      "verification": "Reopened canonical permalink in the signed-in owner browser; exact text and article link/card visible."
+    },
+    {
+      "platform": "reddit",
+      "priority": 3,
+      "parent": "https://www.reddit.com/r/website/comments/1tp25b1/self_promotion_thread/",
+      "url": "https://www.reddit.com/r/website/comments/1tp25b1/comment/19s6uyv90ummb/",
+      "copy": "grok read my blog and my analytics stored all 11 requests as Browser. dot's chrome + curl both sent verified chatgpt signatures that left the path unsigned.\n\ni tested the providers against my own cloudflare analytics and published the headers, failures and fixes here: https://gkoreli.com/ai-fetcher-browser-crawler-headers",
+      "state": "canonical-owner-view-verified",
+      "receiptRecordedAt": "2026-11-05T18:42:14.595Z",
+      "verification": "Reopened canonical permalink in the signed-in owner browser; exact text and article link/card visible."
+    },
+    {
+      "platform": "reddit",
+      "priority": 6,
+      "parent": "https://www.reddit.com/r/grok/comments/1x9f9hu/comment/19rzvebx4uc2q/",
+      "url": "https://www.reddit.com/r/grok/comments/1x9f9hu/comment/19s6v0531an4x/",
+      "copy": "retested nov 5, signed in, Fast: still 11 unsigned chrome/safari-style requests, all stored Browser in that run. no grok declaration. the new comparison also covers dot's signed browser/curl and gemini's bare Google UA.\n\nmy new captures + analytics fixes: https://gkoreli.com/ai-fetcher-browser-crawler-headers",
+      "state": "canonical-owner-view-verified",
+      "rules": "Own projects allowed when built with/for Grok and explained; current expanded rule reviewed.",
+      "receiptRecordedAt": "2026-11-05T18:42:53.908Z",
+      "verification": "Reopened canonical permalink in the signed-in owner browser; exact text and article link/card visible."
+    },
+    {
+      "platform": "reddit",
+      "priority": 4,
+      "parent": "https://www.reddit.com/r/CloudFlare/comments/1xle2vd/one_grok_prompt_produced_11_browserstyle_requests/",
+      "url": "https://www.reddit.com/r/CloudFlare/comments/1xle2vd/comment/19s6v09sbnjxh/",
+      "copy": "new data from the follow-up: dot's chrome and curl both arrived with verified chatgpt signatures, but path/query/UA were unsigned. claude named itself, yet its address wasn't in the current vendor feed.\n\ni fixed the signer mapping + feed assessment and checked the new rows in D1. headers, proof coverage and the changes on my blog: https://gkoreli.com/ai-fetcher-browser-crawler-headers",
+      "state": "canonical-owner-view-verified",
+      "receiptRecordedAt": "2026-11-05T18:43:03.188Z",
+      "verification": "Reopened canonical permalink in the signed-in owner browser; exact text and article link/card visible."
+    },
+    {
+      "platform": "reddit",
+      "priority": 5,
+      "parent": "https://www.reddit.com/r/TechSEO/comments/1xn8g06/i_logged_18_days_of_verified_ai_crawler_traffic/",
+      "url": "https://www.reddit.com/r/TechSEO/comments/1xn8g06/comment/19s6v21gdzdwg/",
+      "copy": "worth keeping signature coverage next to the verified label. my chatgpt browser + curl requests passed the local verifier, but didn't sign the path, query or user-agent. changing those fields still verified in a local replay.\n\nthat's publisher proof with a specific coverage boundary. my actual captures + replay: https://gkoreli.com/ai-fetcher-browser-crawler-headers",
+      "state": "canonical-owner-view-verified",
+      "receiptRecordedAt": "2026-11-05T18:44:23.626Z",
+      "verification": "Reopened canonical permalink in the signed-in owner browser; exact text and article link/card visible."
+    },
+    {
+      "platform": "reddit",
+      "priority": 7,
+      "parent": "https://www.reddit.com/r/Superframeworks/comments/1xnmzo8/share_your_project/",
+      "originalCandidate": "https://www.reddit.com/r/Superframeworks/comments/1wwhxq0/1m_ai_bot_requests_hit_one_saas_in_30_days_heres/",
+      "url": "https://www.reddit.com/r/Superframeworks/comments/1xnmzo8/comment/19s6v3cpvbhs4/",
+      "copy": "gemini fetched my page with a bare Google user-agent, my analytics left it Unresolved. i'm building bot analytics that keeps those evidence gaps visible, live tests + headers + fixes: https://gkoreli.com/ai-fetcher-browser-crawler-headers",
+      "state": "canonical-owner-view-verified",
+      "rules": "Pinned moderator invitation explicitly asks for one-line project pitch and link; used instead of earlier conditional destination.",
+      "receiptRecordedAt": "2026-11-05T18:45:07.358Z",
+      "verification": "Reopened canonical permalink in the signed-in owner browser; exact text and article link/card visible."
+    }
+  ]
+}
