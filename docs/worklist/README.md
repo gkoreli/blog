@@ -1,5 +1,6 @@
 # Worklists
 
+- [November daily publication](november-daily-publication/README.md) — hosted 08:00 Pacific release attempts for approved articles November 6–30; queue setup, checks and activation evidence. No articles queued yet.
 - [In the age of abundance, less is more](in-the-age-of-abundance-less-is-more/README.md) — published November 3 with the accepted partial closure and unresolved tension; local build, deployment metadata, and live article/prompt/feed checks recorded. Article complete; a possible personal follow-up is not active work.
 - [Weight-space programming](weight-space-programming/README.md) — November 2 initial research into agents reading and editing neural weights; pinned source audit, checked score arithmetic, article-form recommendation, and proposed reproduction. No article or model experiment published.
 - [Blog navigation and Nisli SSG](blog-design-and-nisli-ssg/README.md) — October 20 framework migration and approved sidebar cleanup; local checks and delivery evidence.

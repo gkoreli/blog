@@ -1,0 +1,66 @@
+name: November article publication
+
+on:
+  schedule:
+    - cron: '0 8 6-30 11 *'
+      timezone: America/Los_Angeles
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: Check the queue, or publish today's approved article after 08:00 Pacific
+        type: choice
+        options: [check, publish]
+        default: check
+
+permissions:
+  contents: write
+
+concurrency:
+  group: november-article-publication
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          ref: main
+      - name: Read the pinned Node version
+        id: runtime
+        run: python3 -c 'import tomllib; print("version=" + tomllib.load(open(".mise.toml", "rb"))["tools"]["node"])' >> "$GITHUB_OUTPUT"
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7
+        with:
+          node-version: ${{ steps.runtime.outputs.version }}
+          package-manager-cache: false
+      - uses: pnpm/action-setup@73e46992e05b19abd31f2f3c20e0e7370d762115 # v6
+      - run: pnpm install --frozen-lockfile
+      - name: Select today's approved article
+        id: article
+        env:
+          MODE: ${{ github.event_name == 'schedule' && 'publish' || inputs.mode }}
+        run: pnpm -C packages/blog publication "$MODE"
+      - name: Validate publication
+        if: steps.article.outputs.changed == 'true'
+        run: |
+          pnpm typecheck
+          pnpm -C packages/blog validate
+          pnpm build
+      - name: Commit and push the checked article
+        if: steps.article.outputs.changed == 'true'
+        env:
+          PUBLICATION_DATE: ${{ steps.article.outputs.date }}
+        run: |
+          git config user.name 'Goga Koreli'
+          git config user.email 'gogakoreli@icloud.com'
+          git add -- packages/blog/posts packages/blog/prompts packages/blog/scheduled
+          git commit -m "Publish article for $PUBLICATION_DATE"
+          git push origin HEAD:main
+      - name: Verify the live publication
+        if: steps.article.outputs.slug != '' && steps.article.outputs.slug != null
+        env:
+          ARTICLE_SLUG: ${{ steps.article.outputs.slug }}
+          PUBLICATION_DATE: ${{ steps.article.outputs.date }}
+        run: pnpm -C packages/blog publication verify "$ARTICLE_SLUG" "$PUBLICATION_DATE"
