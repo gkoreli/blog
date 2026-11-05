@@ -1,0 +1,168 @@
+{
+  "checkedAt": "2026-11-05T16:47:05.587Z",
+  "supersedes": "subscription-recovery-release.json",
+  "runtimeSourceCommit": "9c0b6743a85ce697b7fa0e0f9f4842e50e11cf45",
+  "buildId": "ebcb434f-aa65-405c-9ef5-54789f905e67",
+  "runtimeWorkerVersion": "671c28f4-b3cc-4bcb-80dc-f7a16a482000",
+  "runtimeActivatedAt": "2026-11-05T16:30:37.705991Z",
+  "runtimeAllocationPercent": 100,
+  "client": {
+    "observedAt": "2026-11-05T16:30:50.746Z",
+    "buildIdentity": "cf:ebcb434f-aa65-405c-9ef5-54789f905e67:9c0b6743a85ce697b7fa0e0f9f4842e50e11cf45",
+    "servedSha256": "b7206ebd41bd9c32352e409ed9c64fe55ed66bc7dd790ae0e2a473e04c00ba93",
+    "reconstructedSha256": "b7206ebd41bd9c32352e409ed9c64fe55ed66bc7dd790ae0e2a473e04c00ba93",
+    "exactMatch": true,
+    "bytes": 34443
+  },
+  "local": {
+    "blogTests": 189,
+    "workspaceTypes": true,
+    "markdownValidationCount": 30,
+    "isolatedBuildPosts": 41,
+    "compiledClientNativeCorrelationCases": 6,
+    "nativeV3BootstrapStoredRows": 3
+  },
+  "configuration": {
+    "turnstileMode": "Managed",
+    "hostnameAndPublicKeyPreserved": true,
+    "preClearance": false,
+    "contentSecurityPolicyRelaxed": false,
+    "dmarc": {
+      "checkedAt": "2026-11-05T16:25:33.247Z",
+      "answers": [
+        {
+          "nameserver": "dom.ns.cloudflare.com",
+          "records": [
+            [
+              "v=DMARC1; p=none"
+            ]
+          ]
+        },
+        {
+          "nameserver": "aida.ns.cloudflare.com",
+          "records": [
+            [
+              "v=DMARC1; p=none"
+            ]
+          ]
+        }
+      ]
+    }
+  },
+  "liveAcceptance": {
+    "browser": "ChatGPT in-app browser",
+    "excludedPath": "/owner",
+    "acceptedFeedback": true,
+    "ordinaryUnsubscribePost": true,
+    "pendingStateIndependentlyRead": true,
+    "confirmationAdmissions": 1,
+    "providerOutcome": "accepted",
+    "providerStatus": 200,
+    "realWorkerLog": {
+      "workerVersion": "8cdeaec7-38c1-4393-9874-e5e37cf6170c",
+      "sourceCommit": "c679b4f0586654034aa578a6f4596df5aaaee970",
+      "verificationStatus": 200,
+      "verificationAttempts": 1,
+      "verificationElapsedMs": 41,
+      "providerAcceptedElapsedMs": 347,
+      "clientAttemptReferencePresent": true,
+      "serverReferenceMatchesAdmission": true
+    },
+    "mailbox": {
+      "receivedAt": "2026-11-05T16:33:20.000Z",
+      "placement": "Inbox",
+      "alignedDkimPass": true,
+      "spfPass": true,
+      "dmarcPass": true
+    },
+    "activation": {
+      "performedBy": "owner; reported before agent opened the confirmation link",
+      "status": "active",
+      "confirmedAtUtc": "2026-11-05 16:33:35",
+      "confirmationHashCleared": true,
+      "createdAtPreserved": true,
+      "agentObservedAlreadyConfirmedPage": true,
+      "livePendingPreviewIsolationMeasured": false
+    },
+    "browserDiagnostics": {
+      "controlledRuntimeSourceCommit": "b1d8be1b2ec5402baab939f435b0b1d56359289c",
+      "stage": "subscribe_widget_ready_exception",
+      "reportsStored": 2,
+      "phaseCounts": {
+        "idle": 1,
+        "verifying": 1
+      },
+      "profile": "subscribe-error-v3",
+      "submittedAttemptReferenceStored": true,
+      "buildAndContextStored": true,
+      "sqlReadback": true,
+      "wireAcknowledgmentCaptured": false,
+      "controlledReportsRetained": true
+    }
+  },
+  "providerFeedback": {
+    "status": "not-connected",
+    "reason": "Available Google login opens a team with only another domain; correct sender account needs access.",
+    "wrongTeamEndpointDisabled": true,
+    "incorrectNewWorkerSecretRemoved": true,
+    "requiredFourSecretNamesStillPresent": true,
+    "providerNativeInertBounceControl": {
+      "apiAccepted": true,
+      "webhookReceipt": false,
+      "subscriberSuppressionMeasured": false
+    },
+    "remainingTask": "TASK-0142"
+  },
+  "sql": {
+    "statements": [
+      {
+        "statement": "target-before",
+        "rowsRead": 1,
+        "rowsWritten": 0
+      },
+      {
+        "statement": "cycle-original-private",
+        "rowsRead": 1,
+        "rowsWritten": 0
+      },
+      {
+        "statement": "cycle-unsubscribed",
+        "rowsRead": 1,
+        "rowsWritten": 0
+      },
+      {
+        "statement": "cycle-pending",
+        "rowsRead": 1,
+        "rowsWritten": 0
+      },
+      {
+        "statement": "cycle-attempts",
+        "rowsRead": 1,
+        "rowsWritten": 0
+      },
+      {
+        "statement": "cycle-final",
+        "rowsRead": 1,
+        "rowsWritten": 0
+      },
+      {
+        "statement": "browser-report-readback",
+        "rowsRead": 3,
+        "rowsWritten": 0
+      }
+    ],
+    "rowsRead": 9,
+    "rowsWritten": 0,
+    "applicationEndpointCosts": "Additional; not metered by these diagnostic SELECT receipts",
+    "initialDiagnosisRowsRead": 372,
+    "initialDiagnosisIncluded": false
+  },
+  "limits": [
+    "One authorized mailbox cycle does not measure population deliverability or Turnstile false rejection.",
+    "The controlled readiness failure was introduced during this work, caught in the live browser and corrected by the final runtime source.",
+    "Subsequent concurrent main deployments include the corrected runtime; the live server version is recorded separately from the loaded client build.",
+    "No signup token, address, message identifier, credential or raw operational log is included.",
+    "The failed native-control session reported a locked computer; the owner clarified it was not locked and the requested in-app browser worked.",
+    "No historical lost subscriber count or recovery is established."
+  ]
+}

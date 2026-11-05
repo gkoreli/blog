@@ -1,5 +1,6 @@
 {
   "checkedAt": "2026-11-05T15:56:13.018Z",
+  "supersededBy": "subscription-recovery-live-acceptance.json",
   "sourceCommit": "5ac791eaca3a0e8a54ec2ae67a132a2c2801ad08",
   "buildId": "9d3fc9bb-c6b2-43a2-a62d-61df4b12203c",
   "workerVersion": "f5a3e7f6-0084-4a90-a87c-20615418f860",
@@ -44,7 +45,7 @@
     "freshMailboxReceipt": false,
     "freshActivation": false,
     "deployedBrowserDiagnosticReadback": false,
-    "blocker": "Native browser unavailable because Mac is locked; unlock requested."
+    "blocker": "Native control reported a locked computer; physical lock state was not established. Owner later clarified it was not locked and requested the in-app browser, which worked. Superseding acceptance is linked above."
   },
   "setupLeads": {
     "requiredBindingNamesPresent": true,
