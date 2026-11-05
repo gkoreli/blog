@@ -73,7 +73,10 @@ function harness(t: TestContext, withApi = true) {
       if (removeFails) throw new Error('synthetic cleanup error');
     },
   };
-  const browser: { turnstile?: TurnstileApi; setTimeout: (callback: () => void, delay: number) => number; clearTimeout: (id: number) => void } = {
+  const apiEvents = new EventTarget();
+  const browser: { turnstile?: TurnstileApi; gkTurnstileScriptState?: 'loading' | 'ready' | 'failed'; addEventListener: EventTarget['addEventListener']; dispatchEvent: EventTarget['dispatchEvent']; setTimeout: (callback: () => void, delay: number) => number; clearTimeout: (id: number) => void } = {
+    addEventListener: apiEvents.addEventListener.bind(apiEvents),
+    dispatchEvent: apiEvents.dispatchEvent.bind(apiEvents),
     setTimeout(callback, delay) {
       const id = ++timerId;
       timers.set(id, { at: clock + delay, callback });
@@ -602,37 +605,31 @@ test('an interactive challenge receives a bounded two-minute window that callbac
   assert.equal(contextOf(h.reports[0]).widget, 'interactive');
 });
 
-test('native ready defers render and starts a waiting submission exactly once', async t => {
-  const h = harness(t); let ready: (() => void) | undefined; let registrations = 0;
-  h.api.ready = callback => { registrations++; ready = callback; };
+test('deferred script onload starts a waiting submission exactly once', async t => {
+  const h = harness(t, false); h.browser.gkTurnstileScriptState = 'loading';
   h.initialize(); h.submit();
-  assert.equal(registrations, 1); assert.equal(h.renders.length, 0); assert.equal(h.executions.length, 0);
+  assert.equal(h.renders.length, 0); assert.equal(h.executions.length, 0);
   assert.equal(h.form.dataset['subscribeStatus'], 'pending');
-  assert.ok(ready); ready(); ready();
+  h.browser.turnstile = h.api; h.browser.gkTurnstileScriptState = 'ready';
+  h.browser.dispatchEvent(new Event('gk-turnstile-ready'));
+  h.browser.dispatchEvent(new Event('gk-turnstile-ready'));
   assert.equal(h.renders.length, 1); assert.equal(h.executions.length, 1);
   h.options().callback?.('ready-token'); await settle();
   assert.equal(h.requests.length, 1); assert.equal(h.form.dataset['subscribeStatus'], 'success');
 });
 
-test('a never-ready API times out without rendering or executing an unready widget', t => {
-  const h = harness(t); h.api.ready = () => {};
+test('a deferred script that never loads times out without executing an unready widget', t => {
+  const h = harness(t, false); h.browser.gkTurnstileScriptState = 'loading';
   h.initialize(); h.submit(); h.tick(30_000);
   assert.equal(h.renders.length, 0); assert.equal(h.executions.length, 0);
   assert.equal(h.form.button.disabled, false); assert.equal(h.form.dataset['subscribeStatus'], 'error');
   assert.equal(contextOf(h.reports[0]).widget, 'waiting-api');
 });
 
-test('ready exceptions and stale API callbacks cannot execute a replaced provider instance', t => {
-  const h = harness(t); let ready: (() => void) | undefined;
-  h.api.ready = callback => { ready = callback; };
-  h.initialize(); h.browser.turnstile = undefined; assert.ok(ready); ready();
-  assert.equal(h.renders.length, 0);
-  h.browser.turnstile = { ...h.api, ready() { throw new Error('private-ready-detail'); } };
-  h.submit();
-  assert.equal(h.form.button.disabled, false); assert.equal(h.requests.length, 0);
-  assert.equal(h.reports[0]?.message, 'subscribe_widget_ready_exception');
-  assert.equal(h.timers.size, 0);
-  assert.doesNotMatch(JSON.stringify(h.reports), /private-ready-detail/);
+test('deferred integration never calls the native ready method that rejects async/defer loading', t => {
+  const h = harness(t); h.api.ready = () => { throw new Error('Native error 3857: Remove async/defer before using ready'); };
+  h.initialize(); h.submit();
+  assert.equal(h.renders.length, 1); assert.equal(h.executions.length, 1); assert.equal(h.reports.length, 0);
 });
 
 test('documented native retry return values distinguish recovery from a terminal error', t => {

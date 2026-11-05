@@ -62,7 +62,7 @@ Further review uses Cloudflare's actual [JavaScript API examples](https://develo
 
 | Native capability | Applied decision |
 |---|---|
-| `turnstile.ready()` | Wait before rendering; a waiting submission starts exactly once after readiness. A never-ready callback remains bounded by the form deadline. |
+| Deferred script `onload` callback | Use the explicit loader's documented callback. A waiting submission starts exactly once when the script loads and remains bounded if it never loads. The synchronous-script `ready()` pattern is incompatible with our deferred tag. |
 | Error callback return value | Return false during the single automatic retry, matching the documented example; terminal handling returns true. |
 | `remove()` versus `reset()` | Fresh attempts retain fresh widgets; removal is documented and prevents old callbacks from being attributed to a new attempt. |
 | `getResponse()` / hidden response field | Success callback hands the token directly to the existing JSON request; no second token copy or response field is needed. |
@@ -72,6 +72,8 @@ Further review uses Cloudflare's actual [JavaScript API examples](https://develo
 | Server API / native fetch | Direct JSON Siteverify is supported, including the shared idempotency key. A new dependency is unnecessary. |
 
 All 189 tests, workspace types, Markdown validation and the isolated 41-post build pass. Six paired compiled-client/native Worker/D1 controls also pass; the updated fixture verifies the client attempt reference against the server log even for a constructed lost response. These are controlled local cases, not current browser/provider delivery evidence.
+
+The first live in-app-browser test of source `b1d8be1` catches a regression introduced during this work: the readiness integration uses `ready()` with a deferred API script. Cloudflare's actual public `api.js` rejects that combination with error 3857. The advanced documentation's synchronous-script example was applied to the wrong loading mode; the fake ready implementation did not reproduce that restriction. The corrected integration uses the documented `onload` query callback while retaining `defer`, waits for a loading script, and tests an API whose `ready()` throws. No unsubscribe or new email send occurs before this compatibility correction. The production report from that controlled failure must not be relabeled as a natural reader failure.
 
 Publish the checked source, verify the active Worker and served client, then change the existing widget to Managed with its hostname/key/pre-clearance preserved. The designated address is currently active: exercise an ordinary unsubscribe POST followed by browser signup, one new confirmation receipt and confirmation activation, leaving it active. Record browser, provider, mailbox and D1 evidence separately. Verify one labelled browser diagnostic through the deployed logger with independent readback and guarded fixture cleanup. Keep the recipient, tokens, provider message details and raw logs outside Git.
 

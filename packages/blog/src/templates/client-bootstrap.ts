@@ -3,6 +3,11 @@
  */
 export function clientBootstrap(buildIdLiteral: string): string {
   return `(() => {
+  window.gkTurnstileScriptState = 'loading';
+  window.gkTurnstileReady = () => {
+    window.gkTurnstileScriptState = 'ready';
+    window.dispatchEvent(new Event('gk-turnstile-ready'));
+  };
   const seen = new Set();
   function report(stage) {
     if (seen.has(stage) || seen.size >= 3) return;
@@ -31,6 +36,7 @@ export function clientBootstrap(buildIdLiteral: string): string {
   window.addEventListener('error', event => {
     if (!event.target || event.target.tagName !== 'SCRIPT') return;
     const kind = resource(event.target.src);
+    if (kind === 'turnstile') window.gkTurnstileScriptState = 'failed';
     if (kind) report(kind + '_script_load_error');
   }, true);
   document.addEventListener('securitypolicyviolation', event => {

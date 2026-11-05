@@ -62,7 +62,7 @@ try{
      return modified;
     })();tasks.push(task.catch(error=>{failures.push(String(error))}));return task;
    };
-   runInNewContext(bundle.outputFiles[0].text,{Blob,Date,Response,URL,URLSearchParams,AbortController,crypto,performance,HTMLElement:Element,HTMLInputElement:Input,HTMLButtonElement:Button,HTMLFormElement:Form,location:{origin:'https://fixture.invalid',pathname:'/owner',search:''},document:{getElementById:()=>form,referrer:''},navigator:{userAgent:'FixtureBrowser/1',sendBeacon(){return false}},window:{setTimeout(){return 1},clearTimeout(){},turnstile:{ready(callback){callback()},render(_slot,value){options=value;return'fixture-widget'},execute(){},remove(){}}},fetch});
+   runInNewContext(bundle.outputFiles[0].text,{Blob,Date,Response,URL,URLSearchParams,AbortController,crypto,performance,HTMLElement:Element,HTMLInputElement:Input,HTMLButtonElement:Button,HTMLFormElement:Form,location:{origin:'https://fixture.invalid',pathname:'/owner',search:''},document:{getElementById:()=>form,referrer:''},navigator:{userAgent:'FixtureBrowser/1',sendBeacon(){return false}},window:{addEventListener(){},setTimeout(){return 1},clearTimeout(){},turnstile:{ready(callback){callback()},render(_slot,value){options=value;return'fixture-widget'},execute(){},remove(){}}},fetch});
    if(mode==='idle')options['error-callback']('110100');
    else{form.dispatchEvent(new Event('submit',{cancelable:true}));options.callback('synthetic-no-real-token');}
    let deadline;

@@ -88,7 +88,7 @@ export function pageShell({ title, description, content, canonicalPath, currentS
   <link rel="stylesheet" href="/main.css">
   <script>document.documentElement.setAttribute('data-theme',localStorage.getItem('theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light'))</script>
   <script>${clientBootstrap(clientDefines(true, process.env)['__GK_CLIENT_BUILD_ID__'] ?? 'undefined')}</script>
-  ${TURNSTILE_SITE_KEY ? `<script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" defer></script>` : ''}
+  ${TURNSTILE_SITE_KEY ? `<script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit&onload=gkTurnstileReady" defer></script>` : ''}
   ${head ?? ''}
 `;
 

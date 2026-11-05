@@ -32,6 +32,7 @@ interface Turnstile {
 declare global {
   interface Window {
     turnstile?: Turnstile;
+    gkTurnstileScriptState?: 'loading' | 'ready' | 'failed';
   }
 }
 
@@ -111,8 +112,10 @@ export function initSubscribeForm({ logger }: SubscribeOptions): void {
   let widget: { id: string | null; api: Turnstile } | null = null;
   let active: Attempt | null = null;
   let widgetState: SubscriptionDiagnosticContext['widget'] = 'unknown';
-  let readyApi: Turnstile | null = null;
-  let waitingApi: Turnstile | null = null;
+  window.addEventListener('gk-turnstile-ready', () => {
+    initWidget(false);
+    if (active) executeVerification(active);
+  });
 
   form.addEventListener('submit', e => {
     e.preventDefault();
@@ -130,7 +133,7 @@ export function initSubscribeForm({ logger }: SubscribeOptions): void {
     form.dataset['subscribeStatus'] = 'pending';
     msg.textContent = 'Verifying…';
 
-    // This deadline also bounds a provider ready callback that never arrives.
+    // This deadline also bounds a deferred provider script that never loads.
     attempt.timer = window.setTimeout(() => {
       if (active === attempt) {
         fail('subscribe_widget_deadline', 'Verification took too long. Please try again.');
@@ -167,29 +170,12 @@ export function initSubscribeForm({ logger }: SubscribeOptions): void {
     }
     const api = window.turnstile;
     if (!api) {
+      widgetState = 'waiting-api';
+      if (window.gkTurnstileScriptState === 'loading') return false;
       if (reportMissing) {
         fail('subscribe_widget_unavailable', 'Verification has not loaded. Please wait a moment and try again.');
       }
       return false;
-    }
-    if (readyApi !== api) {
-      widgetState = 'waiting-api';
-      if (waitingApi !== api) {
-        waitingApi = api;
-        try {
-          api.ready(() => {
-            if (window.turnstile !== api) return;
-            readyApi = api;
-            waitingApi = null;
-            initWidget(active !== null);
-            if (active) executeVerification(active);
-          });
-        } catch {
-          waitingApi = null;
-          fail('subscribe_widget_ready_exception', 'Verification could not load. Please refresh the page and try again.');
-        }
-      }
-      return widget !== null;
     }
 
     const current: { id: string | null; api: Turnstile } = { id: null, api };
