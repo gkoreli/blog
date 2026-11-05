@@ -1,0 +1,272 @@
+{
+  "localDate": "2026-11-04",
+  "utcDate": "2026-11-05",
+  "inputs": [
+    {
+      "trial": "exa-search-01",
+      "kind": "captured-request-body-without-authentication",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": "exa-search-01",
+        "method": "tools/call",
+        "params": {
+          "name": "web_search_exa",
+          "arguments": {
+            "query": "site:gkoreli.com which AI fetchers send which headers",
+            "objective": "Find the original gkoreli.com measured AI fetcher headers article. Return its title, canonical URL and relevant evidence about request verification.",
+            "numResults": 3
+          }
+        }
+      }
+    },
+    {
+      "trial": "exa-fetch-01",
+      "kind": "captured-request-body-without-authentication",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": "exa-fetch-01",
+        "method": "tools/call",
+        "params": {
+          "name": "web_fetch_exa",
+          "arguments": {
+            "urls": [
+              "https://gkoreli.com/which-ai-fetchers-send-which-headers?probe=bot-grill-20261104-exa-fetch-01"
+            ],
+            "maxCharacters": 24000
+          }
+        }
+      }
+    },
+    {
+      "trial": "tavily-search-01",
+      "kind": "captured-request-body-without-authentication",
+      "request": {
+        "query": "site:gkoreli.com which AI fetchers send which headers",
+        "search_depth": "basic",
+        "max_results": 3,
+        "include_answer": false,
+        "include_raw_content": false,
+        "include_usage": true
+      }
+    },
+    {
+      "trial": "tavily-extract-01",
+      "kind": "captured-request-body-without-authentication",
+      "request": {
+        "urls": [
+          "https://gkoreli.com/which-ai-fetchers-send-which-headers?probe=bot-grill-20261104-tavily-extract-01"
+        ],
+        "extract_depth": "basic",
+        "format": "markdown",
+        "timeout": 30,
+        "include_usage": true
+      }
+    },
+    {
+      "trial": "tavily-map-01",
+      "kind": "captured-request-body-without-authentication",
+      "request": {
+        "url": "https://gkoreli.com/which-ai-fetchers-send-which-headers?probe=bot-grill-20261104-tavily-map-01",
+        "max_depth": 1,
+        "max_breadth": 2,
+        "limit": 2,
+        "allow_external": false,
+        "timeout": 30,
+        "include_usage": true
+      }
+    },
+    {
+      "trial": "tavily-crawl-01",
+      "kind": "captured-request-body-without-authentication",
+      "request": {
+        "url": "https://gkoreli.com/which-ai-fetchers-send-which-headers?probe=bot-grill-20261104-tavily-crawl-01",
+        "max_depth": 1,
+        "max_breadth": 2,
+        "limit": 2,
+        "allow_external": false,
+        "extract_depth": "basic",
+        "format": "markdown",
+        "timeout": 45,
+        "include_usage": true
+      }
+    },
+    {
+      "trial": "tavily-research-01",
+      "kind": "captured-request-body-without-authentication",
+      "request": {
+        "input": "Read only https://gkoreli.com/which-ai-fetchers-send-which-headers?probe=bot-grill-20261104-tavily-research-01. Report the body H1 and the first sentence under Maintaining this reference, cite the page, and explain in one sentence what its DuckAssistBot signature does not cover. Do not research other topics.",
+        "model": "mini",
+        "stream": false,
+        "output_length": "short",
+        "include_domains": [
+          "gkoreli.com"
+        ],
+        "citation_format": "numbered"
+      }
+    },
+    {
+      "trial": "firecrawl-search-01",
+      "kind": "captured-request-body-without-authentication",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": "firecrawl-search-01",
+        "method": "tools/call",
+        "params": {
+          "name": "firecrawl_search",
+          "arguments": {
+            "query": "site:gkoreli.com which AI fetchers send which headers",
+            "limit": 3,
+            "sources": [
+              "web"
+            ],
+            "objective": "Compare how AI web tooling retrieves this public article with the requests and analytics recorded by its publisher."
+          }
+        }
+      }
+    },
+    {
+      "trial": "firecrawl-scrape-01",
+      "kind": "captured-request-body-without-authentication",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": "firecrawl-scrape-01",
+        "method": "tools/call",
+        "params": {
+          "name": "firecrawl_scrape",
+          "arguments": {
+            "url": "https://gkoreli.com/which-ai-fetchers-send-which-headers?probe=bot-grill-20261104-firecrawl-scrape-01",
+            "formats": [
+              "markdown"
+            ],
+            "maxAge": 0,
+            "timeout": 45000,
+            "objective": "Compare how AI web tooling retrieves this public article with the requests and analytics recorded by its publisher."
+          }
+        }
+      }
+    },
+    {
+      "trial": "exa-api-fetch-01",
+      "kind": "browser-inspected-configuration-not-wire-capture",
+      "operation": "Contents",
+      "options": {
+        "urls": [
+          "https://gkoreli.com/which-ai-fetchers-send-which-headers?probe=bot-grill-20261104-exa-api-fetch-01"
+        ],
+        "maxAgeHours": 0,
+        "text": true
+      }
+    },
+    {
+      "trial": "exa-api-crawl-01",
+      "kind": "browser-inspected-configuration-not-wire-capture",
+      "operation": "Contents",
+      "options": {
+        "urls": [
+          "https://gkoreli.com/which-ai-fetchers-send-which-headers?probe=bot-grill-20261104-exa-api-crawl-01"
+        ],
+        "maxAgeHours": 0,
+        "text": true,
+        "subpages": 1,
+        "subpageTarget": [
+          "prompts"
+        ]
+      }
+    },
+    {
+      "trial": "duck-01-and-02",
+      "kind": "submitted-browser-prompts",
+      "modelShown": "GPT-6 Luna",
+      "prompts": [
+        "Open this exact URL: https://gkoreli.com/which-ai-fetchers-send-which-headers?probe=bot-grill-20261104-duck-01\nReport the body H1 and the first sentence under \"Maintaining this reference\". Cite the URL. If you cannot access it, say so.",
+        "Open this exact URL: https://gkoreli.com/which-ai-fetchers-send-which-headers?probe=bot-grill-20261104-duck-02\nReport the body H1 and the first sentence under \"Maintaining this reference\". Cite the URL. If you cannot access it, say so."
+      ]
+    },
+    {
+      "trial": "duck-search-and-bing-search-ai-mode",
+      "kind": "submitted-browser-query",
+      "query": "site:gkoreli.com which AI fetchers send which headers"
+    },
+    {
+      "trial": "firecrawl-crawl-01",
+      "kind": "browser-inspected-configuration-not-wire-capture",
+      "url": "https://gkoreli.com/which-ai-fetchers-send-which-headers?probe=bot-grill-20261104-firecrawl-crawl-01",
+      "options": {
+        "limit": 2,
+        "discoveryDepth": 1,
+        "maxAge": 0,
+        "crawlEntireWebsite": false,
+        "ignoreSitemap": false,
+        "parsePdf": false,
+        "mainContentOnly": true,
+        "format": "markdown"
+      }
+    },
+    {
+      "trial": "firecrawl-map-01",
+      "kind": "browser-inspected-configuration-not-wire-capture",
+      "url": "https://gkoreli.com/which-ai-fetchers-send-which-headers?probe=bot-grill-20261104-firecrawl-map-01",
+      "options": {
+        "limit": 2,
+        "includeSubdomains": false,
+        "ignoreSitemap": false
+      }
+    },
+    {
+      "trial": "firecrawl-browser-scrape-01",
+      "kind": "browser-inspected-configuration-not-wire-capture",
+      "url": "https://gkoreli.com/which-ai-fetchers-send-which-headers?probe=bot-grill-20261104-firecrawl-browser-scrape-01",
+      "options": {
+        "maxAge": 0,
+        "timeout": 45000,
+        "parsePdf": false,
+        "mainContentOnly": true,
+        "format": "markdown"
+      }
+    },
+    {
+      "trial": "firecrawl-browser-search-01",
+      "kind": "browser-inspected-configuration-not-wire-capture",
+      "query": "site:gkoreli.com which AI fetchers send which headers",
+      "options": {
+        "limit": 3,
+        "scrapeContent": false,
+        "sources": [
+          "web"
+        ]
+      }
+    },
+    {
+      "trial": "firecrawl-initialized-search-control",
+      "kind": "executed-json-rpc-lifecycle",
+      "initialize": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "initialize",
+        "params": {
+          "protocolVersion": "2025-03-26",
+          "capabilities": {},
+          "clientInfo": {
+            "name": "gkoreli-ai-bot-research",
+            "version": "1.0.0"
+          }
+        }
+      },
+      "afterInitialization": [
+        "notifications/initialized",
+        "tools/list"
+      ],
+      "toolCall": {
+        "name": "firecrawl_search",
+        "arguments": {
+          "query": "site:gkoreli.com which AI fetchers send which headers",
+          "limit": 3,
+          "sources": [
+            "web"
+          ],
+          "objective": "Compare how AI search retrieves this public article with the evidence available to its publisher."
+        }
+      }
+    }
+  ]
+}

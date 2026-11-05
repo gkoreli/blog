@@ -1,0 +1,16 @@
+{
+  "createdAt": "2026-11-05T06:17:24.125682+00:00",
+  "privateRoot": "packages/blog/worklog/ai-bot-analytics-grilling-20261104/",
+  "fileCount": 135,
+  "totalBytes": 3391692,
+  "manifestSha256": "2c2c7009b240c4d83b1dd4eb5e499f14cd0ceb91b0f804fad0c43464a0c3d67d",
+  "rawCapturesInGit": false,
+  "credentialFileCopied": false,
+  "capturesStopped": true,
+  "researchJobTerminalStatus": "completed",
+  "limits": [
+    "A private preservation commitment, not a claim of full platform log retention.",
+    "The supplied credential stays in its owner-provided location outside this archive.",
+    "Later delivery metadata is outside this frozen private evidence manifest."
+  ]
+}

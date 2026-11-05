@@ -1,0 +1,936 @@
+{
+  "checkedAt": "2026-11-05T05:55:21.077Z",
+  "streams": [
+    {
+      "file": "tail.raw",
+      "sha256": "a3ba6acc47be23b4d436601be470e6cbc74b705c43e3e2062261ce6d8bc1f38e",
+      "bytes": 57218,
+      "completedObjects": 6,
+      "malformedFrames": 0,
+      "outsideFragments": 0,
+      "suffixBytes": 0
+    },
+    {
+      "file": "tail2.raw",
+      "sha256": "7f349bdad7bd2cbc6f5628e9a31b724bd42a2d96a081ea7cdad03424a47bd093",
+      "bytes": 537218,
+      "completedObjects": 80,
+      "malformedFrames": 0,
+      "outsideFragments": 0,
+      "suffixBytes": 0
+    }
+  ],
+  "matchedRequests": 13,
+  "nonexactProbeRequests": 1,
+  "returnedReferences": 13,
+  "events": [
+    {
+      "trialLabel": "exa-fetch-01",
+      "timestamp": "2026-11-05T05:42:50.820Z",
+      "workerVersion": "e2adb53c-fa46-477e-9eb1-737e6b666d66",
+      "collectionVersion": "2026-10-30.1",
+      "originStatus": 200,
+      "userAgentProducts": [
+        "ExaUser/1.0"
+      ],
+      "cloudflareFacts": {
+        "asn": 30058,
+        "country": "US",
+        "httpProtocol": "HTTP/2",
+        "tlsVersion": "TLSv1.3"
+      },
+      "fetchMetadata": {
+        "sec-fetch-mode": null,
+        "sec-fetch-dest": null,
+        "sec-fetch-site": null,
+        "sec-fetch-user": null
+      },
+      "signatureComponents": [
+        "@authority",
+        "signature-agent"
+      ],
+      "receipt": {
+        "status": "recorded",
+        "version": "2026-10-29.2",
+        "classifierProfile": "2026-10-31.1",
+        "readerKind": "ai-assistant",
+        "fetchMetadataBits": 585,
+        "declarations": {
+          "status": "single",
+          "candidateCount": 1,
+          "candidateNames": "ExaUser"
+        },
+        "signature": {
+          "verifierProfile": "2026-10-31.3",
+          "source": "local-webbotauth",
+          "status": "verified",
+          "outcome": "verified",
+          "reasonNames": "none",
+          "reasonCount": 0,
+          "signer": "Other",
+          "userAgentCovered": "false",
+          "coverage": {
+            "status": "recorded",
+            "authority": true,
+            "targetUri": false,
+            "method": false,
+            "path": false,
+            "query": false,
+            "userAgent": false,
+            "contentDigest": false
+          }
+        },
+        "native": {
+          "verifiedBot": "unavailable",
+          "signedAgent": "unavailable"
+        },
+        "vendorNetwork": {
+          "status": "recorded",
+          "checkCount": 0,
+          "summary": {
+            "listed": false,
+            "notListed": false,
+            "unavailable": false,
+            "notAssessed": false
+          }
+        }
+      }
+    },
+    {
+      "trialLabel": "exa-api-fetch-01",
+      "timestamp": "2026-11-05T05:43:23.372Z",
+      "workerVersion": "e2adb53c-fa46-477e-9eb1-737e6b666d66",
+      "collectionVersion": "2026-10-30.1",
+      "originStatus": 200,
+      "userAgentProducts": [
+        "ExaUser/1.0"
+      ],
+      "cloudflareFacts": {
+        "asn": 30058,
+        "country": "US",
+        "httpProtocol": "HTTP/2",
+        "tlsVersion": "TLSv1.3"
+      },
+      "fetchMetadata": {
+        "sec-fetch-mode": null,
+        "sec-fetch-dest": null,
+        "sec-fetch-site": null,
+        "sec-fetch-user": null
+      },
+      "signatureComponents": [
+        "@authority",
+        "signature-agent"
+      ],
+      "receipt": {
+        "status": "recorded",
+        "version": "2026-10-29.2",
+        "classifierProfile": "2026-10-31.1",
+        "readerKind": "ai-assistant",
+        "fetchMetadataBits": 585,
+        "declarations": {
+          "status": "single",
+          "candidateCount": 1,
+          "candidateNames": "ExaUser"
+        },
+        "signature": {
+          "verifierProfile": "2026-10-31.3",
+          "source": "local-webbotauth",
+          "status": "verified",
+          "outcome": "verified",
+          "reasonNames": "none",
+          "reasonCount": 0,
+          "signer": "Other",
+          "userAgentCovered": "false",
+          "coverage": {
+            "status": "recorded",
+            "authority": true,
+            "targetUri": false,
+            "method": false,
+            "path": false,
+            "query": false,
+            "userAgent": false,
+            "contentDigest": false
+          }
+        },
+        "native": {
+          "verifiedBot": "unavailable",
+          "signedAgent": "unavailable"
+        },
+        "vendorNetwork": {
+          "status": "recorded",
+          "checkCount": 0,
+          "summary": {
+            "listed": false,
+            "notListed": false,
+            "unavailable": false,
+            "notAssessed": false
+          }
+        }
+      }
+    },
+    {
+      "trialLabel": "duck-02",
+      "timestamp": "2026-11-05T05:43:34.477Z",
+      "workerVersion": "e2adb53c-fa46-477e-9eb1-737e6b666d66",
+      "collectionVersion": "2026-10-30.1",
+      "originStatus": 200,
+      "userAgentProducts": [
+        "DuckAssistBot/1.2"
+      ],
+      "cloudflareFacts": {
+        "asn": 8075,
+        "country": "US",
+        "httpProtocol": "HTTP/2",
+        "tlsVersion": "TLSv1.3"
+      },
+      "fetchMetadata": {
+        "sec-fetch-mode": null,
+        "sec-fetch-dest": null,
+        "sec-fetch-site": null,
+        "sec-fetch-user": null
+      },
+      "signatureComponents": [
+        "@authority",
+        "signature-agent"
+      ],
+      "receipt": {
+        "status": "recorded",
+        "version": "2026-10-29.2",
+        "classifierProfile": "2026-10-31.1",
+        "readerKind": "ai-assistant",
+        "fetchMetadataBits": 585,
+        "declarations": {
+          "status": "single",
+          "candidateCount": 1,
+          "candidateNames": "DuckAssistBot"
+        },
+        "signature": {
+          "verifierProfile": "2026-10-31.3",
+          "source": "local-webbotauth",
+          "status": "verified",
+          "outcome": "verified",
+          "reasonNames": "none",
+          "reasonCount": 0,
+          "signer": "DuckDuckGo",
+          "userAgentCovered": "false",
+          "coverage": {
+            "status": "recorded",
+            "authority": true,
+            "targetUri": false,
+            "method": false,
+            "path": false,
+            "query": false,
+            "userAgent": false,
+            "contentDigest": false
+          }
+        },
+        "native": {
+          "verifiedBot": "unavailable",
+          "signedAgent": "unavailable"
+        },
+        "vendorNetwork": {
+          "status": "recorded",
+          "checkCount": 0,
+          "summary": {
+            "listed": false,
+            "notListed": false,
+            "unavailable": false,
+            "notAssessed": false
+          }
+        }
+      }
+    },
+    {
+      "trialLabel": "tavily-extract-01",
+      "timestamp": "2026-11-05T05:49:35.955Z",
+      "workerVersion": "e2adb53c-fa46-477e-9eb1-737e6b666d66",
+      "collectionVersion": "2026-10-30.1",
+      "originStatus": 200,
+      "userAgentProducts": [
+        "Chrome/138.0.0.0",
+        "Safari/537.36"
+      ],
+      "cloudflareFacts": {
+        "asn": 7029,
+        "country": "US",
+        "httpProtocol": "HTTP/1.1",
+        "tlsVersion": "TLSv1.3"
+      },
+      "fetchMetadata": {
+        "sec-fetch-mode": "navigate",
+        "sec-fetch-dest": "document",
+        "sec-fetch-site": "none",
+        "sec-fetch-user": "?1"
+      },
+      "signatureComponents": [],
+      "receipt": {
+        "status": "recorded",
+        "version": "2026-10-29.2",
+        "classifierProfile": "2026-10-31.1",
+        "readerKind": "browser",
+        "fetchMetadataBits": 1170,
+        "declarations": {
+          "status": "none",
+          "candidateCount": 0,
+          "candidateNames": "none"
+        },
+        "signature": {
+          "verifierProfile": "2026-10-31.3",
+          "source": "local-webbotauth",
+          "status": "absent",
+          "outcome": "absent",
+          "reasonNames": "none",
+          "reasonCount": 0,
+          "signer": "none",
+          "userAgentCovered": "unavailable",
+          "coverage": {
+            "status": "unavailable"
+          }
+        },
+        "native": {
+          "verifiedBot": "unavailable",
+          "signedAgent": "unavailable"
+        },
+        "vendorNetwork": {
+          "status": "recorded",
+          "checkCount": 0,
+          "summary": {
+            "listed": false,
+            "notListed": false,
+            "unavailable": false,
+            "notAssessed": false
+          }
+        }
+      }
+    },
+    {
+      "trialLabel": "tavily-extract-01",
+      "timestamp": "2026-11-05T05:49:35.964Z",
+      "workerVersion": "e2adb53c-fa46-477e-9eb1-737e6b666d66",
+      "collectionVersion": "2026-10-30.1",
+      "originStatus": 200,
+      "userAgentProducts": [
+        "Firefox/154.0"
+      ],
+      "cloudflareFacts": {
+        "asn": 7029,
+        "country": "US",
+        "httpProtocol": "HTTP/1.1",
+        "tlsVersion": "TLSv1.3"
+      },
+      "fetchMetadata": {
+        "sec-fetch-mode": null,
+        "sec-fetch-dest": null,
+        "sec-fetch-site": null,
+        "sec-fetch-user": null
+      },
+      "signatureComponents": [],
+      "receipt": {
+        "status": "recorded",
+        "version": "2026-10-29.2",
+        "classifierProfile": "2026-10-31.1",
+        "readerKind": "unresolved",
+        "fetchMetadataBits": 585,
+        "declarations": {
+          "status": "none",
+          "candidateCount": 0,
+          "candidateNames": "none"
+        },
+        "signature": {
+          "verifierProfile": "2026-10-31.3",
+          "source": "local-webbotauth",
+          "status": "absent",
+          "outcome": "absent",
+          "reasonNames": "none",
+          "reasonCount": 0,
+          "signer": "none",
+          "userAgentCovered": "unavailable",
+          "coverage": {
+            "status": "unavailable"
+          }
+        },
+        "native": {
+          "verifiedBot": "unavailable",
+          "signedAgent": "unavailable"
+        },
+        "vendorNetwork": {
+          "status": "recorded",
+          "checkCount": 0,
+          "summary": {
+            "listed": false,
+            "notListed": false,
+            "unavailable": false,
+            "notAssessed": false
+          }
+        }
+      }
+    },
+    {
+      "trialLabel": "tavily-map-01",
+      "timestamp": "2026-11-05T05:49:37.975Z",
+      "workerVersion": "e2adb53c-fa46-477e-9eb1-737e6b666d66",
+      "collectionVersion": "2026-10-30.1",
+      "originStatus": 200,
+      "userAgentProducts": [
+        "Chrome/138.0.0.0",
+        "Safari/537.36"
+      ],
+      "cloudflareFacts": {
+        "asn": 5650,
+        "country": "US",
+        "httpProtocol": "HTTP/1.1",
+        "tlsVersion": "TLSv1.3"
+      },
+      "fetchMetadata": {
+        "sec-fetch-mode": "navigate",
+        "sec-fetch-dest": "document",
+        "sec-fetch-site": "none",
+        "sec-fetch-user": "?1"
+      },
+      "signatureComponents": [],
+      "receipt": {
+        "status": "recorded",
+        "version": "2026-10-29.2",
+        "classifierProfile": "2026-10-31.1",
+        "readerKind": "browser",
+        "fetchMetadataBits": 1170,
+        "declarations": {
+          "status": "none",
+          "candidateCount": 0,
+          "candidateNames": "none"
+        },
+        "signature": {
+          "verifierProfile": "2026-10-31.3",
+          "source": "local-webbotauth",
+          "status": "absent",
+          "outcome": "absent",
+          "reasonNames": "none",
+          "reasonCount": 0,
+          "signer": "none",
+          "userAgentCovered": "unavailable",
+          "coverage": {
+            "status": "unavailable"
+          }
+        },
+        "native": {
+          "verifiedBot": "unavailable",
+          "signedAgent": "unavailable"
+        },
+        "vendorNetwork": {
+          "status": "recorded",
+          "checkCount": 0,
+          "summary": {
+            "listed": false,
+            "notListed": false,
+            "unavailable": false,
+            "notAssessed": false
+          }
+        }
+      }
+    },
+    {
+      "trialLabel": "tavily-crawl-01",
+      "timestamp": "2026-11-05T05:49:38.982Z",
+      "workerVersion": "e2adb53c-fa46-477e-9eb1-737e6b666d66",
+      "collectionVersion": "2026-10-30.1",
+      "originStatus": 200,
+      "userAgentProducts": [
+        "Chrome/138.0.0.0",
+        "Safari/537.36"
+      ],
+      "cloudflareFacts": {
+        "asn": 7029,
+        "country": "US",
+        "httpProtocol": "HTTP/1.1",
+        "tlsVersion": "TLSv1.3"
+      },
+      "fetchMetadata": {
+        "sec-fetch-mode": "navigate",
+        "sec-fetch-dest": "document",
+        "sec-fetch-site": "none",
+        "sec-fetch-user": "?1"
+      },
+      "signatureComponents": [],
+      "receipt": {
+        "status": "recorded",
+        "version": "2026-10-29.2",
+        "classifierProfile": "2026-10-31.1",
+        "readerKind": "browser",
+        "fetchMetadataBits": 1170,
+        "declarations": {
+          "status": "none",
+          "candidateCount": 0,
+          "candidateNames": "none"
+        },
+        "signature": {
+          "verifierProfile": "2026-10-31.3",
+          "source": "local-webbotauth",
+          "status": "absent",
+          "outcome": "absent",
+          "reasonNames": "none",
+          "reasonCount": 0,
+          "signer": "none",
+          "userAgentCovered": "unavailable",
+          "coverage": {
+            "status": "unavailable"
+          }
+        },
+        "native": {
+          "verifiedBot": "unavailable",
+          "signedAgent": "unavailable"
+        },
+        "vendorNetwork": {
+          "status": "recorded",
+          "checkCount": 0,
+          "summary": {
+            "listed": false,
+            "notListed": false,
+            "unavailable": false,
+            "notAssessed": false
+          }
+        }
+      }
+    },
+    {
+      "trialLabel": "tavily-extract-01",
+      "timestamp": "2026-11-05T05:49:38.995Z",
+      "workerVersion": "e2adb53c-fa46-477e-9eb1-737e6b666d66",
+      "collectionVersion": "2026-10-30.1",
+      "originStatus": 200,
+      "userAgentProducts": [
+        "Chrome/138.0.0.0",
+        "Safari/537.36"
+      ],
+      "cloudflareFacts": {
+        "asn": 6697,
+        "country": "BY",
+        "httpProtocol": "HTTP/1.1",
+        "tlsVersion": "TLSv1.3"
+      },
+      "fetchMetadata": {
+        "sec-fetch-mode": "navigate",
+        "sec-fetch-dest": "document",
+        "sec-fetch-site": "none",
+        "sec-fetch-user": "?1"
+      },
+      "signatureComponents": [],
+      "receipt": {
+        "status": "recorded",
+        "version": "2026-10-29.2",
+        "classifierProfile": "2026-10-31.1",
+        "readerKind": "browser",
+        "fetchMetadataBits": 1170,
+        "declarations": {
+          "status": "none",
+          "candidateCount": 0,
+          "candidateNames": "none"
+        },
+        "signature": {
+          "verifierProfile": "2026-10-31.3",
+          "source": "local-webbotauth",
+          "status": "absent",
+          "outcome": "absent",
+          "reasonNames": "none",
+          "reasonCount": 0,
+          "signer": "none",
+          "userAgentCovered": "unavailable",
+          "coverage": {
+            "status": "unavailable"
+          }
+        },
+        "native": {
+          "verifiedBot": "unavailable",
+          "signedAgent": "unavailable"
+        },
+        "vendorNetwork": {
+          "status": "recorded",
+          "checkCount": 0,
+          "summary": {
+            "listed": false,
+            "notListed": false,
+            "unavailable": false,
+            "notAssessed": false
+          }
+        }
+      }
+    },
+    {
+      "trialLabel": "tavily-crawl-01",
+      "timestamp": "2026-11-05T05:49:39.827Z",
+      "workerVersion": "e2adb53c-fa46-477e-9eb1-737e6b666d66",
+      "collectionVersion": "2026-10-30.1",
+      "originStatus": 200,
+      "userAgentProducts": [
+        "Version/26.6",
+        "Safari/604.1"
+      ],
+      "cloudflareFacts": {
+        "asn": 7029,
+        "country": "US",
+        "httpProtocol": "HTTP/1.1",
+        "tlsVersion": "TLSv1.3"
+      },
+      "fetchMetadata": {
+        "sec-fetch-mode": null,
+        "sec-fetch-dest": null,
+        "sec-fetch-site": null,
+        "sec-fetch-user": null
+      },
+      "signatureComponents": [],
+      "receipt": {
+        "status": "recorded",
+        "version": "2026-10-29.2",
+        "classifierProfile": "2026-10-31.1",
+        "readerKind": "unresolved",
+        "fetchMetadataBits": 585,
+        "declarations": {
+          "status": "none",
+          "candidateCount": 0,
+          "candidateNames": "none"
+        },
+        "signature": {
+          "verifierProfile": "2026-10-31.3",
+          "source": "local-webbotauth",
+          "status": "absent",
+          "outcome": "absent",
+          "reasonNames": "none",
+          "reasonCount": 0,
+          "signer": "none",
+          "userAgentCovered": "unavailable",
+          "coverage": {
+            "status": "unavailable"
+          }
+        },
+        "native": {
+          "verifiedBot": "unavailable",
+          "signedAgent": "unavailable"
+        },
+        "vendorNetwork": {
+          "status": "recorded",
+          "checkCount": 0,
+          "summary": {
+            "listed": false,
+            "notListed": false,
+            "unavailable": false,
+            "notAssessed": false
+          }
+        }
+      }
+    },
+    {
+      "trialLabel": "tavily-crawl-01",
+      "timestamp": "2026-11-05T05:49:39.826Z",
+      "workerVersion": "e2adb53c-fa46-477e-9eb1-737e6b666d66",
+      "collectionVersion": "2026-10-30.1",
+      "originStatus": 200,
+      "userAgentProducts": [
+        "Chrome/138.0.0.0",
+        "Safari/537.36"
+      ],
+      "cloudflareFacts": {
+        "asn": 7029,
+        "country": "US",
+        "httpProtocol": "HTTP/1.1",
+        "tlsVersion": "TLSv1.3"
+      },
+      "fetchMetadata": {
+        "sec-fetch-mode": "navigate",
+        "sec-fetch-dest": "document",
+        "sec-fetch-site": "none",
+        "sec-fetch-user": "?1"
+      },
+      "signatureComponents": [],
+      "receipt": {
+        "status": "recorded",
+        "version": "2026-10-29.2",
+        "classifierProfile": "2026-10-31.1",
+        "readerKind": "browser",
+        "fetchMetadataBits": 1170,
+        "declarations": {
+          "status": "none",
+          "candidateCount": 0,
+          "candidateNames": "none"
+        },
+        "signature": {
+          "verifierProfile": "2026-10-31.3",
+          "source": "local-webbotauth",
+          "status": "absent",
+          "outcome": "absent",
+          "reasonNames": "none",
+          "reasonCount": 0,
+          "signer": "none",
+          "userAgentCovered": "unavailable",
+          "coverage": {
+            "status": "unavailable"
+          }
+        },
+        "native": {
+          "verifiedBot": "unavailable",
+          "signedAgent": "unavailable"
+        },
+        "vendorNetwork": {
+          "status": "recorded",
+          "checkCount": 0,
+          "summary": {
+            "listed": false,
+            "notListed": false,
+            "unavailable": false,
+            "notAssessed": false
+          }
+        }
+      }
+    },
+    {
+      "trialLabel": "tavily-crawl-01",
+      "timestamp": "2026-11-05T05:49:41.633Z",
+      "workerVersion": "e2adb53c-fa46-477e-9eb1-737e6b666d66",
+      "collectionVersion": "2026-10-30.1",
+      "originStatus": 200,
+      "userAgentProducts": [
+        "Chrome/138.0.0.0",
+        "Safari/537.36"
+      ],
+      "cloudflareFacts": {
+        "asn": 268323,
+        "country": "BR",
+        "httpProtocol": "HTTP/1.1",
+        "tlsVersion": "TLSv1.3"
+      },
+      "fetchMetadata": {
+        "sec-fetch-mode": "navigate",
+        "sec-fetch-dest": "document",
+        "sec-fetch-site": "none",
+        "sec-fetch-user": "?1"
+      },
+      "signatureComponents": [],
+      "receipt": {
+        "status": "recorded",
+        "version": "2026-10-29.2",
+        "classifierProfile": "2026-10-31.1",
+        "readerKind": "browser",
+        "fetchMetadataBits": 1170,
+        "declarations": {
+          "status": "none",
+          "candidateCount": 0,
+          "candidateNames": "none"
+        },
+        "signature": {
+          "verifierProfile": "2026-10-31.3",
+          "source": "local-webbotauth",
+          "status": "absent",
+          "outcome": "absent",
+          "reasonNames": "none",
+          "reasonCount": 0,
+          "signer": "none",
+          "userAgentCovered": "unavailable",
+          "coverage": {
+            "status": "unavailable"
+          }
+        },
+        "native": {
+          "verifiedBot": "unavailable",
+          "signedAgent": "unavailable"
+        },
+        "vendorNetwork": {
+          "status": "recorded",
+          "checkCount": 0,
+          "summary": {
+            "listed": false,
+            "notListed": false,
+            "unavailable": false,
+            "notAssessed": false
+          }
+        }
+      }
+    },
+    {
+      "trialLabel": "firecrawl-crawl-01",
+      "timestamp": "2026-11-05T05:50:17.102Z",
+      "workerVersion": "e2adb53c-fa46-477e-9eb1-737e6b666d66",
+      "collectionVersion": "2026-10-30.1",
+      "originStatus": 200,
+      "userAgentProducts": [
+        "Chrome/156.0.0.0",
+        "Safari/537.36"
+      ],
+      "cloudflareFacts": {
+        "asn": 22773,
+        "country": "US",
+        "httpProtocol": "HTTP/2",
+        "tlsVersion": "TLSv1.3"
+      },
+      "fetchMetadata": {
+        "sec-fetch-mode": "navigate",
+        "sec-fetch-dest": "document",
+        "sec-fetch-site": "cross-site",
+        "sec-fetch-user": "?1"
+      },
+      "signatureComponents": [],
+      "receipt": {
+        "status": "recorded",
+        "version": "2026-10-29.2",
+        "classifierProfile": "2026-10-31.1",
+        "readerKind": "browser",
+        "fetchMetadataBits": 1170,
+        "declarations": {
+          "status": "none",
+          "candidateCount": 0,
+          "candidateNames": "none"
+        },
+        "signature": {
+          "verifierProfile": "2026-10-31.3",
+          "source": "local-webbotauth",
+          "status": "absent",
+          "outcome": "absent",
+          "reasonNames": "none",
+          "reasonCount": 0,
+          "signer": "none",
+          "userAgentCovered": "unavailable",
+          "coverage": {
+            "status": "unavailable"
+          }
+        },
+        "native": {
+          "verifiedBot": "unavailable",
+          "signedAgent": "unavailable"
+        },
+        "vendorNetwork": {
+          "status": "recorded",
+          "checkCount": 0,
+          "summary": {
+            "listed": false,
+            "notListed": false,
+            "unavailable": false,
+            "notAssessed": false
+          }
+        }
+      }
+    },
+    {
+      "trialLabel": "firecrawl-browser-scrape-01",
+      "timestamp": "2026-11-05T05:51:42.923Z",
+      "workerVersion": "e2adb53c-fa46-477e-9eb1-737e6b666d66",
+      "collectionVersion": "2026-10-30.1",
+      "originStatus": 200,
+      "userAgentProducts": [
+        "Chrome/156.0.0.0",
+        "Safari/537.36"
+      ],
+      "cloudflareFacts": {
+        "asn": 22773,
+        "country": "US",
+        "httpProtocol": "HTTP/2",
+        "tlsVersion": "TLSv1.3"
+      },
+      "fetchMetadata": {
+        "sec-fetch-mode": "navigate",
+        "sec-fetch-dest": "document",
+        "sec-fetch-site": "cross-site",
+        "sec-fetch-user": "?1"
+      },
+      "signatureComponents": [],
+      "receipt": {
+        "status": "recorded",
+        "version": "2026-10-29.2",
+        "classifierProfile": "2026-10-31.1",
+        "readerKind": "browser",
+        "fetchMetadataBits": 1170,
+        "declarations": {
+          "status": "none",
+          "candidateCount": 0,
+          "candidateNames": "none"
+        },
+        "signature": {
+          "verifierProfile": "2026-10-31.3",
+          "source": "local-webbotauth",
+          "status": "absent",
+          "outcome": "absent",
+          "reasonNames": "none",
+          "reasonCount": 0,
+          "signer": "none",
+          "userAgentCovered": "unavailable",
+          "coverage": {
+            "status": "unavailable"
+          }
+        },
+        "native": {
+          "verifiedBot": "unavailable",
+          "signedAgent": "unavailable"
+        },
+        "vendorNetwork": {
+          "status": "recorded",
+          "checkCount": 0,
+          "summary": {
+            "listed": false,
+            "notListed": false,
+            "unavailable": false,
+            "notAssessed": false
+          }
+        }
+      }
+    }
+  ],
+  "storageAcceptance": {
+    "checkedAt": "2026-11-05T05:56:28.872Z",
+    "exactRows": 13,
+    "fullReceiptMatches": 13,
+    "rowsRead": 26,
+    "rowsWritten": 0,
+    "statementAttempts": 1,
+    "responseSha256": "a394f41d7917432a4b4f2f14768f1be8327f56c2e2d77e5852461e7ab49e7581",
+    "readerKinds": {
+      "ai-assistant": 3,
+      "browser": 8,
+      "unresolved": 2
+    },
+    "ownerExcluded": 0,
+    "limits": [
+      "Controlled test traffic; not organic audience growth, people, or independent cryptographic replay."
+    ]
+  },
+  "nativePreflight": {
+    "status": "passed-local-workerd-d1",
+    "selectedRows": 13,
+    "queryPlan": [
+      "SEARCH page_observations USING INTEGER PRIMARY KEY (rowid=?)"
+    ],
+    "sqlSha256": "cdd5c84a1083d8b6ed68930ec46c2a39290c829feeaa618993a64bb55e804d6b",
+    "schemaSha256": "a53392e14c69a62ce1c73c9f8c24afff2e773f68d55831490896e45fa6f93099"
+  },
+  "negativeControls": [
+    {
+      "control": "missing-row",
+      "rejected": true
+    },
+    {
+      "control": "changed-receipt",
+      "rejected": true
+    }
+  ],
+  "captureWindows": [
+    {
+      "startedAt": "2026-11-05T05:42:14.912144+00:00",
+      "maxSeconds": 600,
+      "maxBytes": 16777216,
+      "stoppedAt": "2026-11-05T05:45:08.595396+00:00",
+      "bytes": 57218,
+      "exit": -15
+    },
+    {
+      "startedAt": "2026-11-05T05:48:56.435484+00:00",
+      "maxSeconds": 600,
+      "maxBytes": 16777216,
+      "stoppedAt": "2026-11-05T05:53:17.436433+00:00",
+      "bytes": 537218,
+      "exit": -15
+    }
+  ],
+  "limits": [
+    "Controlled assigned-URL trials, not organic growth or a count of people.",
+    "No independent cryptographic replay was run for this new batch; verification outcomes are the Worker receipts.",
+    "Capture completeness is not established by absence of malformed frames.",
+    "Only exact assigned-label observations were read back; side requests and unrelated traffic are not in the 13-row cohort.",
+    "Native Cloudflare verifiedBot and signedAgent fields are unavailable throughout this cohort.",
+    "A later use of an earlier assigned URL does not prove which internal service task caused that request."
+  ]
+}

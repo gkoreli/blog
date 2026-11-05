@@ -1,0 +1,43 @@
+{
+  "checkedAt": "2026-11-05T06:09:38.342231+00:00",
+  "nodeVersion": "v24.14.1",
+  "pnpmVersion": "9.15.4",
+  "skillValidator": "passed (temporary PyYAML environment; no repository dependency change)",
+  "workspaceTypecheck": "passed",
+  "existingMarkdownPostValidation": {
+    "status": "passed",
+    "posts": 30
+  },
+  "structure": {
+    "markdownFiles": 7,
+    "localLinks": 34,
+    "brokenLinks": [],
+    "balancedFences": true,
+    "jsonParsed": true
+  },
+  "scriptSyntax": "passed",
+  "nativeStoragePreflight": "passed",
+  "exactProductionRows": 13,
+  "fullReceiptMatches": 13,
+  "productionDataRowsRead": 26,
+  "productionDataRowsWritten": 0,
+  "negativeControls": [
+    {
+      "control": "missing-row",
+      "rejected": true
+    },
+    {
+      "control": "changed-receipt",
+      "rejected": true
+    }
+  ],
+  "build": "not-run: draft/skill/research changes; publishable posts and runtime untouched",
+  "sources": {
+    "packages/blog/drafts/research/ai-bot-analytics-grilling/check-trial-storage.mjs": "60809ec8d6f7626c893ebc4d02a37634f783918455229092c2919e528da5e7db",
+    "packages/analytics/src/observation-receipt.ts": "3b78f4efce7161e69cfbb31fc455fcf2b4464d55d634a2eb0d3d46fa38d65beb",
+    "packages/analytics/src/signers.ts": "22bb1ff00ace0b2c59c907037c8252a3011217135506b993cebda3a8ea499fb1",
+    "packages/blog/drafts/research/fetcher-study-v2/extract-live-fetches.mjs": "5999c6f79376f6d1c7dde8a5b91e3b5cd06b8fd147eb887aaf2c7334b1d9bf80"
+  },
+  "literalSuppliedCredentialScan": "passed",
+  "wranglerVersion": "4.71.0"
+}

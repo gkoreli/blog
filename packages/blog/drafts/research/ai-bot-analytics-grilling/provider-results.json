@@ -1,0 +1,245 @@
+{
+  "checkedAt": "2026-11-05T05:57:46.877432+00:00",
+  "httpCalls": [
+    {
+      "startedAt": "2026-11-05T05:42:48.160690+00:00",
+      "finishedAt": "2026-11-05T05:42:49.341062+00:00",
+      "elapsedSeconds": 1.18,
+      "httpStatus": 200,
+      "bytes": 8486,
+      "sha256": "817665ced2d056ed539321b2d3a0214b185281553bf3c281de3e958f804624fc",
+      "trial": "exa-search-01"
+    },
+    {
+      "startedAt": "2026-11-05T05:42:49.341517+00:00",
+      "finishedAt": "2026-11-05T05:42:54.077228+00:00",
+      "elapsedSeconds": 4.736,
+      "httpStatus": 200,
+      "bytes": 24525,
+      "sha256": "3579a7bc386f7b6aafb2348700aad44ebe8e10094de95ae910f6ab266329f38d",
+      "trial": "exa-fetch-01"
+    },
+    {
+      "startedAt": "2026-11-05T05:49:33.759569+00:00",
+      "finishedAt": "2026-11-05T05:49:35.658630+00:00",
+      "elapsedSeconds": 1.899,
+      "httpStatus": 200,
+      "bytes": 1934,
+      "credentialRedacted": false,
+      "trial": "tavily-search-01",
+      "reportedUsage": {
+        "credits": 1
+      },
+      "reportedResponseTime": 1.62,
+      "status": null,
+      "returnedUrls": [
+        "https://gkoreli.com/which-ai-fetchers-send-which-headers",
+        "https://gkoreli.com/first-party-analytics-for-a-personal-blog",
+        "https://gkoreli.com/oss-radar-05-bun-1-4"
+      ],
+      "failedResults": 0
+    },
+    {
+      "startedAt": "2026-11-05T05:49:35.659159+00:00",
+      "finishedAt": "2026-11-05T05:49:37.574635+00:00",
+      "elapsedSeconds": 1.915,
+      "httpStatus": 200,
+      "bytes": 53359,
+      "credentialRedacted": false,
+      "trial": "tavily-extract-01",
+      "reportedUsage": {
+        "credits": 0
+      },
+      "reportedResponseTime": 1.52,
+      "status": null,
+      "returnedUrls": [
+        "https://gkoreli.com/which-ai-fetchers-send-which-headers?probe=bot-grill-20261104-tavily-extract-01"
+      ],
+      "failedResults": 0
+    },
+    {
+      "startedAt": "2026-11-05T05:49:37.574887+00:00",
+      "finishedAt": "2026-11-05T05:49:38.618698+00:00",
+      "elapsedSeconds": 1.044,
+      "httpStatus": 200,
+      "bytes": 373,
+      "credentialRedacted": false,
+      "trial": "tavily-map-01",
+      "reportedUsage": {
+        "credits": 0
+      },
+      "reportedResponseTime": 0.8,
+      "status": null,
+      "returnedUrls": [
+        "https://gkoreli.com/which-ai-fetchers-send-which-headers?probe=bot-grill-20261104-tavily-map-01",
+        "https://gkoreli.com/which-ai-fetchers-send-which-headers"
+      ],
+      "failedResults": 0
+    },
+    {
+      "startedAt": "2026-11-05T05:49:38.618895+00:00",
+      "finishedAt": "2026-11-05T05:49:41.003232+00:00",
+      "elapsedSeconds": 2.384,
+      "httpStatus": 200,
+      "bytes": 106474,
+      "credentialRedacted": false,
+      "trial": "tavily-crawl-01",
+      "reportedUsage": {
+        "credits": 0
+      },
+      "reportedResponseTime": 1.92,
+      "status": null,
+      "returnedUrls": [
+        "https://gkoreli.com/which-ai-fetchers-send-which-headers?probe=bot-grill-20261104-tavily-crawl-01",
+        "https://gkoreli.com/which-ai-fetchers-send-which-headers"
+      ],
+      "failedResults": 0
+    },
+    {
+      "startedAt": "2026-11-05T05:49:41.003475+00:00",
+      "finishedAt": "2026-11-05T05:49:41.272074+00:00",
+      "elapsedSeconds": 0.269,
+      "httpStatus": 200,
+      "bytes": 476,
+      "credentialRedacted": false,
+      "trial": "tavily-research-01",
+      "reportedUsage": null,
+      "reportedResponseTime": 0.06,
+      "status": "pending",
+      "returnedUrls": [],
+      "failedResults": 0
+    },
+    {
+      "startedAt": "2026-11-05T05:49:33.759766+00:00",
+      "finishedAt": "2026-11-05T05:49:33.988341+00:00",
+      "elapsedSeconds": 0.229,
+      "httpStatus": 200,
+      "bytes": 381,
+      "credentialRedacted": false,
+      "trial": "firecrawl-search-01",
+      "toolIsError": true,
+      "outcome": "Anonymous keyless access unavailable for this request"
+    },
+    {
+      "startedAt": "2026-11-05T05:49:33.988543+00:00",
+      "finishedAt": "2026-11-05T05:49:34.208613+00:00",
+      "elapsedSeconds": 0.22,
+      "httpStatus": 200,
+      "bytes": 666,
+      "credentialRedacted": false,
+      "trial": "firecrawl-scrape-01",
+      "toolIsError": true,
+      "outcome": "Anonymous keyless access unavailable for this request"
+    }
+  ],
+  "tavilyResearch": {
+    "status": "completed",
+    "content": "The page\u2019s main heading (H1) is not available on the retrieved content .  \nThe first sentence under the \u201cMaintaining\u201d section is also not present in the accessed material .  \nAccording to the page, the DuckAssistBot signature does not cover any HTTP headers beyond the standard\u202fUser\u2011Agent string .",
+    "sources": [],
+    "reportedResponseTime": 29.52,
+    "usage": "not-returned",
+    "pollsToCompletion": 3,
+    "answerAudit": {
+      "requestedH1Returned": false,
+      "requestedSentenceReturned": false,
+      "signatureCoverageClaimCorrect": false,
+      "sourcesReturned": 0,
+      "sourceSignatureComponents": [
+        "@authority",
+        "signature-agent"
+      ],
+      "sourceUserAgentCovered": false,
+      "internalFailureCause": "unknown"
+    }
+  },
+  "exaBrowserResults": {
+    "freshContents": {
+      "resultCount": 1,
+      "perUrlStatus": "success",
+      "perUrlSource": "crawled",
+      "reportedCostDollars": 0.001,
+      "reportedSearchTimeMilliseconds": 1234.5099539998919,
+      "returnedPublishedDate": "2026-11-04T00:00:00.000Z"
+    },
+    "subpagesContents": {
+      "resultCount": 0,
+      "perUrlStatus": "error",
+      "perUrlHttpStatusCode": 504,
+      "tag": "CRAWL_TIMEOUT",
+      "reportedCostDollars": 0,
+      "reportedSearchTimeMilliseconds": 7519.486171000171
+    }
+  },
+  "firecrawlBrowserResults": {
+    "search": {
+      "results": 3,
+      "originalArticleReturned": true,
+      "scrapeContent": false
+    },
+    "map": {
+      "limit": 2,
+      "visibleUrls": 1,
+      "canonicalUrl": "https://gkoreli.com/which-ai-fetchers-send-which-headers",
+      "fullLinksAndJson": "account-gated"
+    },
+    "crawl": {
+      "limit": 2,
+      "visibleResults": 2,
+      "jsonDownload": "account-gated"
+    },
+    "scrape": {
+      "visiblePage": "client-error",
+      "message": "Cannot read properties of undefined (reading 'join')",
+      "recentRunStatusAfterNavigation": "Success",
+      "assignedOriginStatus": 200
+    }
+  },
+  "limits": [
+    "Browser settings are inspected configuration, not raw network request bodies.",
+    "UI error does not establish a failed origin delivery.",
+    "Reported zero credits are not an independently measured free billing outcome.",
+    "Search rankings/results are one controlled sample; no organic discovery rate."
+  ],
+  "firecrawlProtocolControl": {
+    "steps": [
+      {
+        "method": "initialize",
+        "httpStatus": 200
+      },
+      {
+        "method": "notifications/initialized",
+        "httpStatus": 202
+      },
+      {
+        "method": "tools/list",
+        "httpStatus": 200
+      },
+      {
+        "method": "tools/call firecrawl_search",
+        "httpStatus": 200,
+        "isError": true
+      }
+    ],
+    "negotiatedProtocolVersion": "2025-03-26",
+    "serverName": "firecrawl-fastmcp",
+    "serverVersion": "3.37.0",
+    "outcome": "Same anonymous-keyless-access-unavailable tool error",
+    "originCapture": "No unique retrieval URL; no causal origin join attempted"
+  },
+  "bingAiMode": {
+    "originEvidence": "not captured: interaction preceded approved tail",
+    "originalArticleCited": true,
+    "reviewedExcerpts": {
+      "DuckAssistBot network bullet": "Verified via DuckDuckGo\u2019s published key directory.",
+      "Grok impact label": "eight human visitors",
+      "Grok generalized limit": "no server-side rule could reliably detect them as AI."
+    },
+    "audit": {
+      "networkEvidenceConflatedWithSigningKey": true,
+      "browserClassificationPromotedToHumanCount": true,
+      "testedDetectionLimitGeneralized": true,
+      "indexOrSynthesisCause": "unknown"
+    },
+    "privateSourceSha256": "f92c0952c3064aefa98d14007e56675e7636c12301e4961d94893227c5d3e85e"
+  }
+}

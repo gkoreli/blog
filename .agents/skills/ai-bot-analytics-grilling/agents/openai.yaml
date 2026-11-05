@@ -1,0 +1,4 @@
+interface:
+  display_name: "AI Bot Analytics Grilling"
+  short_description: "Test AI web providers against request evidence"
+  default_prompt: "Use $ai-bot-analytics-grilling to compare a provider's search, fetch, crawl, and research operations with Cloudflare request and analytics evidence."
