@@ -15,6 +15,7 @@ Choose the dimensions relevant to the trial; do not manufacture a full factorial
 | Origin behavior | First/last request, count, status, redirects, side resources, retries, ASN/country facts | One question can yield several requests; no match is capture-bounded |
 | Identity evidence | Declared UA, network method/feed date, signing publisher/key/coverage/lifetime, native booleans/provenance | Keep declarations, network evidence and authentication separate |
 | Analytics | Worker/collector/classifier/verifier versions, receipt, storage reference, exact row, representation, exclusions | An AI-assistant label is a classifier outcome; a readback validates storage rather than audience size |
+| Calibration and repair | Controlled automation label versus stored verdict, native source for a rule change, historical profiles, storage budgets, deployment/acceptance | A detected defect supports a scoped repair, not complete provider attribution or a universal detection rate |
 | Answer and citation | Expected body text, returned claim, quote fidelity, URL retention, source selection, lost caveats | Cite observed controlled use positively; don't convert one question into an organic citation rate |
 | Reliability | Errors, partial output, denied access, timeout, repeat conditions, alternative explanations | One failure is an outcome under stated conditions, not a general outage |
 | Cost and time | Reported credits/dollars, metered D1 reads/writes/attempts, end-to-end and provider timing | Estimated credits, billed cost and measured account deltas differ |

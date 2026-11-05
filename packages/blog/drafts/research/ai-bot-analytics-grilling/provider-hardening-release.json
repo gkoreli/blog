@@ -1,0 +1,287 @@
+{
+  "checkedAt": "2026-11-05T16:22:08.501800+00:00",
+  "sourceCommit": "05f5548",
+  "activationAt": "2026-11-05T16:11:25.488893Z",
+  "activationPercentage": 100,
+  "exactWorkerVersionMatches": 3,
+  "acceptedPageRows": 3,
+  "storedVerifiedDisplayProfiles": 2,
+  "newCollectorAndClassifierProfile": "2026-11-05.1",
+  "verifierProfileUnchanged": "2026-10-31.3",
+  "pageStorage": {
+    "checkedAt": "2026-11-05T16:19:52.015Z",
+    "exactRows": 3,
+    "fullReceiptMatches": 3,
+    "rowsRead": 6,
+    "rowsWritten": 0,
+    "statementAttempts": 1,
+    "responseSha256": "4b7ba9b8a295fba59dc235bf0f25f557f30a9d724535a97f698ae1ffcc483a87",
+    "readerKinds": {
+      "ai-assistant": 2,
+      "signed-agent": 1
+    },
+    "ownerExcluded": 0,
+    "signerProfileBasis": {
+      "stored": 2,
+      "externalAcknowledgement": 1
+    },
+    "limits": [
+      "Controlled test traffic; not organic audience growth, people, or independent cryptographic replay."
+    ]
+  },
+  "captureStreams": [
+    {
+      "file": "tail.raw",
+      "sha256": "dfbb33dc8150826f5b8050be4080a021e2d98b2a75f9557d1ba60f7cbf0d5930",
+      "bytes": 150956,
+      "completedObjects": 27,
+      "malformedFrames": 0,
+      "outsideFragments": 0,
+      "suffixBytes": 0
+    }
+  ],
+  "events": [
+    {
+      "trialLabel": "accept-claude-01",
+      "timestamp": "2026-11-05T16:13:33.762Z",
+      "workerVersion": "f23c0774-ad19-4e63-8316-a8f5d86b47bc",
+      "collectionVersion": "2026-11-05.1",
+      "originStatus": 200,
+      "userAgentProducts": [
+        "Claude-User/1.0"
+      ],
+      "cloudflareFacts": {
+        "asn": 396982,
+        "country": "US",
+        "httpProtocol": "HTTP/1.1",
+        "tlsVersion": "TLSv1.3"
+      },
+      "fetchMetadata": {
+        "sec-fetch-mode": null,
+        "sec-fetch-dest": null,
+        "sec-fetch-site": null,
+        "sec-fetch-user": null
+      },
+      "signatureComponents": [],
+      "receipt": {
+        "status": "recorded",
+        "version": "2026-10-29.2",
+        "classifierProfile": "2026-11-05.1",
+        "readerKind": "ai-assistant",
+        "fetchMetadataBits": 585,
+        "declarations": {
+          "status": "single",
+          "candidateCount": 1,
+          "candidateNames": "Claude-User"
+        },
+        "signature": {
+          "verifierProfile": "2026-10-31.3",
+          "source": "local-webbotauth",
+          "status": "absent",
+          "outcome": "absent",
+          "reasonNames": "none",
+          "reasonCount": 0,
+          "signer": "none",
+          "userAgentCovered": "unavailable",
+          "coverage": {
+            "status": "unavailable"
+          }
+        },
+        "native": {
+          "verifiedBot": "unavailable",
+          "signedAgent": "unavailable"
+        },
+        "vendorNetwork": {
+          "status": "recorded",
+          "checkCount": 1,
+          "summary": {
+            "listed": false,
+            "notListed": true,
+            "unavailable": false,
+            "notAssessed": false
+          }
+        }
+      },
+      "acceptedMethodFacts": {
+        "signerDisplayProfile": "2026-10-28.1",
+        "storedSignerDisplayProfile": "not-applicable",
+        "documentedVendorStatus": "not-configured",
+        "directoryPublicationStatus": "not-configured",
+        "vendorIpProfile": "2026-11-05.1",
+        "anthropicClassicFeedOutcome": "not-listed"
+      }
+    },
+    {
+      "trialLabel": "accept-dot-http-01",
+      "timestamp": "2026-11-05T16:13:50.281Z",
+      "workerVersion": "f23c0774-ad19-4e63-8316-a8f5d86b47bc",
+      "collectionVersion": "2026-11-05.1",
+      "originStatus": 200,
+      "userAgentProducts": [
+        "curl/8.5.0"
+      ],
+      "cloudflareFacts": {
+        "asn": 13335,
+        "country": "US",
+        "httpProtocol": "HTTP/2",
+        "tlsVersion": "TLSv1.3"
+      },
+      "fetchMetadata": {
+        "sec-fetch-mode": null,
+        "sec-fetch-dest": null,
+        "sec-fetch-site": null,
+        "sec-fetch-user": null
+      },
+      "signatureComponents": [
+        "@authority",
+        "@method",
+        "signature-agent"
+      ],
+      "receipt": {
+        "status": "recorded",
+        "version": "2026-10-29.2",
+        "classifierProfile": "2026-11-05.1",
+        "readerKind": "signed-agent",
+        "fetchMetadataBits": 585,
+        "declarations": {
+          "status": "none",
+          "candidateCount": 0,
+          "candidateNames": "none"
+        },
+        "signature": {
+          "verifierProfile": "2026-10-31.3",
+          "source": "local-webbotauth",
+          "status": "verified",
+          "outcome": "verified",
+          "reasonNames": "none",
+          "reasonCount": 0,
+          "signer": "ChatGPT",
+          "userAgentCovered": "false",
+          "coverage": {
+            "status": "recorded",
+            "authority": true,
+            "targetUri": false,
+            "method": true,
+            "path": false,
+            "query": false,
+            "userAgent": false,
+            "contentDigest": false
+          }
+        },
+        "native": {
+          "verifiedBot": "unavailable",
+          "signedAgent": "unavailable"
+        },
+        "vendorNetwork": {
+          "status": "recorded",
+          "checkCount": 0,
+          "summary": {
+            "listed": false,
+            "notListed": false,
+            "unavailable": false,
+            "notAssessed": false
+          }
+        }
+      },
+      "acceptedMethodFacts": {
+        "signerDisplayProfile": "2026-11-05.1",
+        "storedSignerDisplayProfile": "2026-11-05.1",
+        "documentedVendorStatus": "no-declaration",
+        "directoryPublicationStatus": "no-declaration",
+        "vendorIpProfile": "2026-11-05.1",
+        "anthropicClassicFeedOutcome": "not-applicable"
+      }
+    },
+    {
+      "trialLabel": "accept-exa-api-01",
+      "timestamp": "2026-11-05T16:14:43.857Z",
+      "workerVersion": "f23c0774-ad19-4e63-8316-a8f5d86b47bc",
+      "collectionVersion": "2026-11-05.1",
+      "originStatus": 200,
+      "userAgentProducts": [
+        "ExaUser/1.0"
+      ],
+      "cloudflareFacts": {
+        "asn": 30058,
+        "country": "US",
+        "httpProtocol": "HTTP/2",
+        "tlsVersion": "TLSv1.3"
+      },
+      "fetchMetadata": {
+        "sec-fetch-mode": null,
+        "sec-fetch-dest": null,
+        "sec-fetch-site": null,
+        "sec-fetch-user": null
+      },
+      "signatureComponents": [
+        "@authority",
+        "signature-agent"
+      ],
+      "receipt": {
+        "status": "recorded",
+        "version": "2026-10-29.2",
+        "classifierProfile": "2026-11-05.1",
+        "readerKind": "ai-assistant",
+        "fetchMetadataBits": 585,
+        "declarations": {
+          "status": "single",
+          "candidateCount": 1,
+          "candidateNames": "ExaUser"
+        },
+        "signature": {
+          "verifierProfile": "2026-10-31.3",
+          "source": "local-webbotauth",
+          "status": "verified",
+          "outcome": "verified",
+          "reasonNames": "none",
+          "reasonCount": 0,
+          "signer": "Exa",
+          "userAgentCovered": "false",
+          "coverage": {
+            "status": "recorded",
+            "authority": true,
+            "targetUri": false,
+            "method": false,
+            "path": false,
+            "query": false,
+            "userAgent": false,
+            "contentDigest": false
+          }
+        },
+        "native": {
+          "verifiedBot": "unavailable",
+          "signedAgent": "unavailable"
+        },
+        "vendorNetwork": {
+          "status": "recorded",
+          "checkCount": 0,
+          "summary": {
+            "listed": false,
+            "notListed": false,
+            "unavailable": false,
+            "notAssessed": false
+          }
+        }
+      },
+      "acceptedMethodFacts": {
+        "signerDisplayProfile": "2026-11-05.1",
+        "storedSignerDisplayProfile": "2026-11-05.1",
+        "documentedVendorStatus": "matching-origin",
+        "directoryPublicationStatus": "matching-publisher",
+        "vendorIpProfile": "2026-11-05.1",
+        "anthropicClassicFeedOutcome": "not-applicable"
+      }
+    }
+  ],
+  "serviceControls": {
+    "Dot": "Completed, reported exactly one curl GET, correct H1",
+    "Claude": "Completed, reported one labelled fetch, correct H1",
+    "ExaMcp": "Initialization HTTP 403; fetch not executed",
+    "ExaApi": "Separate signed-in Contents call, one livecrawled result, maxAgeHours 0, 1200-character cap, subpages off, displayed 2.245 seconds; billing not exported"
+  },
+  "limits": [
+    "Observed behavior and Worker version join establish activation acceptance; no complete provider-attribution claim.",
+    "A separate attempt to read public main.js for native client source metadata returned HTTP 403; no served-asset source/build-ID equality is claimed.",
+    "No historical rows reclassified, no independent historical directory-snapshot equality, no verified human labels."
+  ]
+}

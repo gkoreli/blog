@@ -1,0 +1,295 @@
+{
+  "checkedAt": "2026-11-05T16:28:31.025517+00:00",
+  "scope": "Selected reviewed headers at the Worker for the original 27-page cohort; no raw addresses, User-Agent strings or request identifiers",
+  "profiles": [
+    {
+      "trialLabel": "claude-01",
+      "variants": [
+        {
+          "requests": 1,
+          "acceptAtWorker": "*/*",
+          "acceptEncodingAtWorker": "gzip, br",
+          "acceptLanguagePresent": false,
+          "clientAcceptEncodingFromCloudflare": "gzip, deflate",
+          "fetchMetadata": {
+            "sec-fetch-dest": null,
+            "sec-fetch-mode": null,
+            "sec-fetch-site": null,
+            "sec-fetch-user": null
+          }
+        }
+      ]
+    },
+    {
+      "trialLabel": "grok-01",
+      "variants": [
+        {
+          "requests": 1,
+          "acceptAtWorker": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
+          "acceptEncodingAtWorker": "gzip, br",
+          "acceptLanguagePresent": true,
+          "clientAcceptEncodingFromCloudflare": "gzip, deflate",
+          "fetchMetadata": {
+            "sec-fetch-dest": "document",
+            "sec-fetch-mode": "navigate",
+            "sec-fetch-site": "none",
+            "sec-fetch-user": null
+          }
+        },
+        {
+          "requests": 6,
+          "acceptAtWorker": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+          "acceptEncodingAtWorker": "gzip, br",
+          "acceptLanguagePresent": true,
+          "clientAcceptEncodingFromCloudflare": "gzip, deflate",
+          "fetchMetadata": {
+            "sec-fetch-dest": "document",
+            "sec-fetch-mode": "navigate",
+            "sec-fetch-site": "none",
+            "sec-fetch-user": null
+          }
+        },
+        {
+          "requests": 4,
+          "acceptAtWorker": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
+          "acceptEncodingAtWorker": "gzip, br",
+          "acceptLanguagePresent": true,
+          "clientAcceptEncodingFromCloudflare": "gzip, deflate, br",
+          "fetchMetadata": {
+            "sec-fetch-dest": "document",
+            "sec-fetch-mode": "navigate",
+            "sec-fetch-site": "none",
+            "sec-fetch-user": null
+          }
+        }
+      ]
+    },
+    {
+      "trialLabel": "dot-browser-01",
+      "variants": [
+        {
+          "requests": 1,
+          "acceptAtWorker": "text/html,application/xhtml+xml,application/xml;q=0.9,image/jxl,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+          "acceptEncodingAtWorker": "gzip, br",
+          "acceptLanguagePresent": true,
+          "clientAcceptEncodingFromCloudflare": "gzip, deflate, br",
+          "fetchMetadata": {
+            "sec-fetch-dest": "document",
+            "sec-fetch-mode": "navigate",
+            "sec-fetch-site": "none",
+            "sec-fetch-user": "?1"
+          }
+        }
+      ]
+    },
+    {
+      "trialLabel": "context-api-scrape-01",
+      "variants": [
+        {
+          "requests": 1,
+          "acceptAtWorker": "text/html,application/xhtml+xml,application/xml;q=0.9,image/jxl,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+          "acceptEncodingAtWorker": "gzip, br",
+          "acceptLanguagePresent": true,
+          "clientAcceptEncodingFromCloudflare": "gzip, deflate, br",
+          "fetchMetadata": {
+            "sec-fetch-dest": "document",
+            "sec-fetch-mode": "navigate",
+            "sec-fetch-site": "none",
+            "sec-fetch-user": "?1"
+          }
+        },
+        {
+          "requests": 1,
+          "acceptAtWorker": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
+          "acceptEncodingAtWorker": "gzip, br",
+          "acceptLanguagePresent": true,
+          "clientAcceptEncodingFromCloudflare": "gzip, deflate, br",
+          "fetchMetadata": {
+            "sec-fetch-dest": "document",
+            "sec-fetch-mode": "navigate",
+            "sec-fetch-site": "none",
+            "sec-fetch-user": "?1"
+          }
+        }
+      ]
+    },
+    {
+      "trialLabel": "dot-http-01",
+      "variants": [
+        {
+          "requests": 2,
+          "acceptAtWorker": "*/*",
+          "acceptEncodingAtWorker": "gzip, br",
+          "acceptLanguagePresent": false,
+          "clientAcceptEncodingFromCloudflare": "unavailable",
+          "fetchMetadata": {
+            "sec-fetch-dest": null,
+            "sec-fetch-mode": null,
+            "sec-fetch-site": null,
+            "sec-fetch-user": null
+          }
+        }
+      ]
+    },
+    {
+      "trialLabel": "context-raw-scrape-01",
+      "variants": [
+        {
+          "requests": 1,
+          "acceptAtWorker": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
+          "acceptEncodingAtWorker": "gzip, br",
+          "acceptLanguagePresent": true,
+          "clientAcceptEncodingFromCloudflare": "gzip, deflate, br",
+          "fetchMetadata": {
+            "sec-fetch-dest": "document",
+            "sec-fetch-mode": "navigate",
+            "sec-fetch-site": "none",
+            "sec-fetch-user": "?1"
+          }
+        },
+        {
+          "requests": 1,
+          "acceptAtWorker": "text/html,application/xhtml+xml,application/xml;q=0.9,image/jxl,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+          "acceptEncodingAtWorker": "gzip, br",
+          "acceptLanguagePresent": true,
+          "clientAcceptEncodingFromCloudflare": "gzip, deflate, br",
+          "fetchMetadata": {
+            "sec-fetch-dest": "document",
+            "sec-fetch-mode": "navigate",
+            "sec-fetch-site": "none",
+            "sec-fetch-user": "?1"
+          }
+        }
+      ]
+    },
+    {
+      "trialLabel": "context-crawl-01",
+      "variants": [
+        {
+          "requests": 1,
+          "acceptAtWorker": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
+          "acceptEncodingAtWorker": "gzip, br",
+          "acceptLanguagePresent": true,
+          "clientAcceptEncodingFromCloudflare": "gzip, deflate, br",
+          "fetchMetadata": {
+            "sec-fetch-dest": "document",
+            "sec-fetch-mode": "navigate",
+            "sec-fetch-site": "none",
+            "sec-fetch-user": "?1"
+          }
+        },
+        {
+          "requests": 1,
+          "acceptAtWorker": "text/html,application/xhtml+xml,application/xml;q=0.9,image/jxl,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+          "acceptEncodingAtWorker": "gzip, br",
+          "acceptLanguagePresent": true,
+          "clientAcceptEncodingFromCloudflare": "gzip, deflate, br",
+          "fetchMetadata": {
+            "sec-fetch-dest": "document",
+            "sec-fetch-mode": "navigate",
+            "sec-fetch-site": "none",
+            "sec-fetch-user": "?1"
+          }
+        }
+      ]
+    },
+    {
+      "trialLabel": "context-answers-01",
+      "variants": [
+        {
+          "requests": 1,
+          "acceptAtWorker": "text/html,application/xhtml+xml,application/xml,text/xml,application/rss+xml,application/atom+xml,application/json,text/plain,text/csv,text/markdown,*/*;q=0.8",
+          "acceptEncodingAtWorker": "gzip, br",
+          "acceptLanguagePresent": true,
+          "clientAcceptEncodingFromCloudflare": "gzip, deflate, br",
+          "fetchMetadata": {
+            "sec-fetch-dest": null,
+            "sec-fetch-mode": null,
+            "sec-fetch-site": null,
+            "sec-fetch-user": null
+          }
+        },
+        {
+          "requests": 1,
+          "acceptAtWorker": "text/html,application/xhtml+xml,application/xml;q=0.9,image/jxl,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+          "acceptEncodingAtWorker": "gzip, br",
+          "acceptLanguagePresent": true,
+          "clientAcceptEncodingFromCloudflare": "gzip, deflate, br",
+          "fetchMetadata": {
+            "sec-fetch-dest": "document",
+            "sec-fetch-mode": "navigate",
+            "sec-fetch-site": "none",
+            "sec-fetch-user": "?1"
+          }
+        },
+        {
+          "requests": 1,
+          "acceptAtWorker": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
+          "acceptEncodingAtWorker": "gzip, br",
+          "acceptLanguagePresent": true,
+          "clientAcceptEncodingFromCloudflare": "gzip, deflate, br",
+          "fetchMetadata": {
+            "sec-fetch-dest": "document",
+            "sec-fetch-mode": "navigate",
+            "sec-fetch-site": "none",
+            "sec-fetch-user": "?1"
+          }
+        }
+      ]
+    },
+    {
+      "trialLabel": "gemini-coverage-01",
+      "variants": [
+        {
+          "requests": 1,
+          "acceptAtWorker": "*/*",
+          "acceptEncodingAtWorker": "gzip, br",
+          "acceptLanguagePresent": false,
+          "clientAcceptEncodingFromCloudflare": "gzip, deflate, br",
+          "fetchMetadata": {
+            "sec-fetch-dest": null,
+            "sec-fetch-mode": null,
+            "sec-fetch-site": null,
+            "sec-fetch-user": null
+          }
+        }
+      ]
+    },
+    {
+      "trialLabel": "context-mcp-scrape-01",
+      "variants": [
+        {
+          "requests": 1,
+          "acceptAtWorker": "text/html,application/xhtml+xml,application/xml;q=0.9,image/jxl,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+          "acceptEncodingAtWorker": "gzip, br",
+          "acceptLanguagePresent": true,
+          "clientAcceptEncodingFromCloudflare": "gzip, deflate, br",
+          "fetchMetadata": {
+            "sec-fetch-dest": "document",
+            "sec-fetch-mode": "navigate",
+            "sec-fetch-site": "none",
+            "sec-fetch-user": "?1"
+          }
+        },
+        {
+          "requests": 1,
+          "acceptAtWorker": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
+          "acceptEncodingAtWorker": "gzip, br",
+          "acceptLanguagePresent": true,
+          "clientAcceptEncodingFromCloudflare": "gzip, deflate, br",
+          "fetchMetadata": {
+            "sec-fetch-dest": "document",
+            "sec-fetch-mode": "navigate",
+            "sec-fetch-site": "none",
+            "sec-fetch-user": "?1"
+          }
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "User-Agent product claims and signature components are in provider-expansion-evidence.json.",
+    "Accept-Encoding at Worker is not necessarily the client value. cf.clientAcceptEncoding is separate supplied metadata; an unavailable property is not proof of a missing client header.",
+    "No purpose, provider identity or human trigger is inferred from compression preferences."
+  ]
+}

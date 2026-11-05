@@ -1,0 +1,188 @@
+{
+  "recordedAt": "2026-11-05T16:15:28.500515+00:00",
+  "scope": "November 5 Grok, Claude, Dot, Context.dev and Gemini expansion; post-activation controls recorded separately",
+  "uiPrompts": {
+    "grok": "Use your web tools to open this public URL: https://gkoreli.com/which-ai-fetchers-send-which-headers?probe=bot-grill-20261105-grok-01 Report the body H1 and the first sentence under \"Maintaining this reference\". Then state which components the article's DuckAssistBot signature example covers. Cite the source you actually use. If that URL fails, try the same article without the query string or search for it, and clearly report any fallback URL. Do not answer these details from memory.",
+    "claude": "Use your web tools to open this public URL: https://gkoreli.com/which-ai-fetchers-send-which-headers?probe=bot-grill-20261105-claude-01\nReport the body H1 and the first sentence under \"Maintaining this reference\". Then state which components the article's DuckAssistBot signature example covers. Cite the source you actually use. If that URL fails, try the same article without the query string or search for it, and clearly report any fallback URL. Do not answer these details from memory.",
+    "dot": "Dot, I am testing how my own public site's analytics register your browser versus your fetch tooling. Please perform these two separate read-only operations, using your available tools, and keep the results separate:\n\n1. BROWSER: Use your computer/browser to navigate to https://gkoreli.com/which-ai-fetchers-send-which-headers?probe=bot-grill-20261105-dot-browser-01 . Read the rendered body H1 and the first sentence under \"Maintaining this reference\". Save a screenshot if your browser supports it. Do not substitute a web-search or HTTP-fetch result for this browser step.\n2. FETCH: Separately use an HTTP fetch or web-open/content-retrieval tool, without browser navigation, for https://gkoreli.com/which-ai-fetchers-send-which-headers?probe=bot-grill-20261105-dot-fetch-01 . Report the body H1 and the same maintenance sentence from that tool result, then identify the components covered by the article's DuckAssistBot signature example.\n\nFor each operation, name the actual tool/path used and the actual URL, report success or failure and any fallback, and cite the source. Keep the two assigned URL labels separate. If the requested tool is unavailable, say which part you could not perform; then try the ordinary query-free article as a content control without calling it a successful labelled operation. The expected answers are not supplied here. No sign-in, account changes or form submission on the target site is needed.",
+    "dot-http": "Please add one separate HTTP-client control, keeping the completed browser and web-open results unchanged. If your existing cloud computer or code/shell tool can make a normal HTTP GET, use its ordinary client (for example curl or Python urllib, without setting a custom User-Agent) to request https://gkoreli.com/which-ai-fetchers-send-which-headers?probe=bot-grill-20261105-dot-http-01 . This is my public site and I authorize this read-only request. Do not use browser navigation or the web-search service for this control. Report the actual tool/client used, HTTP status, body H1 and the first maintenance sentence, or the concrete access error if unavailable. No credential, installation or account change is needed.",
+    "gemini": "Use your web tools to open this public URL: https://gkoreli.com/which-ai-fetchers-send-which-headers?probe=bot-grill-20261105-gemini-01\nReport the body H1 and the exact first sentence under \"Maintaining this reference\". Then state which components the article's DuckAssistBot signature example covers. Cite the source you actually use. If that URL fails, try the same article without the query string or search for it, and clearly report any fallback URL. Do not answer these details from memory.",
+    "gemini-coverage": "Please complete the coverage part: what exact component names appear inside the DuckAssistBot Signature-Input component list? Retrieve or inspect https://gkoreli.com/which-ai-fetchers-send-which-headers?probe=bot-grill-20261105-gemini-coverage-01 with your available web tools, use the ordinary URL or Google Search as a disclosed fallback if needed, and quote the component list. Name the actual source/path used. If you cannot see that example, say so. A fetch or search failure alone does not establish whether a URL is individually indexed."
+  },
+  "contextRest": {
+    "auth": "Existing Default key in Authorization header; not retained here",
+    "batchReportedCreditCap": 20,
+    "alreadyReportedUiCredits": 1,
+    "requests": [
+      {
+        "name": "context-raw-scrape",
+        "method": "POST",
+        "path": "/web/scrape",
+        "body": {
+          "url": "https://gkoreli.com/which-ai-fetchers-send-which-headers?probe=bot-grill-20261105-context-raw-scrape-01",
+          "formats": {
+            "markdown": true
+          },
+          "maxAgeMs": 0
+        },
+        "plannedMaxCredits": 1
+      },
+      {
+        "name": "context-search",
+        "method": "POST",
+        "path": "/web/search",
+        "body": {
+          "query": "site:gkoreli.com which AI fetchers send which headers",
+          "numResults": 3,
+          "includeDomains": [
+            "gkoreli.com"
+          ],
+          "markdownOptions": {
+            "enabled": false
+          },
+          "highlightsOptions": {
+            "enabled": false
+          }
+        },
+        "plannedMaxCredits": 1
+      },
+      {
+        "name": "context-map",
+        "method": "GET",
+        "path": "/web/urls",
+        "query": {
+          "domain": "gkoreli.com",
+          "maxLinks": 3,
+          "includeSubdomains": "false",
+          "sitemapUrl": "https://gkoreli.com/sitemap.xml?probe=bot-grill-20261105-context-map-01"
+        },
+        "plannedMaxCredits": 1
+      },
+      {
+        "name": "context-crawl",
+        "method": "POST",
+        "path": "/web/crawl",
+        "body": {
+          "url": "https://gkoreli.com/which-ai-fetchers-send-which-headers?probe=bot-grill-20261105-context-crawl-01",
+          "maxPages": 2,
+          "maxDepth": 1,
+          "urlRegex": "^https://gkoreli\\.com/which-ai-fetchers-send-which-headers(?:[?/#]|$)",
+          "followSubdomains": false,
+          "maxAgeMs": 0,
+          "useMainContentOnly": true
+        },
+        "plannedMaxCredits": 2
+      },
+      {
+        "name": "context-answers",
+        "method": "POST",
+        "path": "/web/answers",
+        "body": {
+          "mode": "fast",
+          "task": "Read https://gkoreli.com/which-ai-fetchers-send-which-headers?probe=bot-grill-20261105-context-answers-01 . Return the body H1 and quote exactly the first sentence under Maintaining this reference. State which components the DuckAssistBot signature example covers and which are unsigned. Cite sources actually read and disclose any fallback URL or inaccessible page. Do not guess unavailable content.",
+          "json_format": {
+            "body_h1": "",
+            "maintenance_first_sentence": "",
+            "covered_components": [],
+            "unsigned_components": [],
+            "accessed_url": "",
+            "limitations": ""
+          }
+        },
+        "plannedMaxCredits": 10
+      }
+    ]
+  },
+  "contextMcp": {
+    "jsonrpc": "2.0",
+    "id": 3,
+    "method": "tools/call",
+    "params": {
+      "name": "web-scrape",
+      "arguments": {
+        "url": "https://gkoreli.com/which-ai-fetchers-send-which-headers?probe=bot-grill-20261105-context-mcp-scrape-01",
+        "formats": {
+          "markdown": true
+        },
+        "maxAgeMs": 0,
+        "responseMode": "full"
+      }
+    }
+  },
+  "contextCli": {
+    "argv": [
+      "context-dev (official v1.24.0 macos_arm64 binary)",
+      "--format",
+      "json",
+      "web",
+      "search",
+      "--query",
+      "site:gkoreli.com which AI fetchers send which headers",
+      "--num-results",
+      "3",
+      "--include-domain",
+      "gkoreli.com"
+    ],
+    "authentication": "CONTEXT_DEV_API_KEY environment, existing key never in argv",
+    "maxResults": 3,
+    "plannedMaxCredits": 1,
+    "startedAt": "2026-11-05T15:45:03.484101+00:00"
+  },
+  "postActivationControls": {
+    "capturePlan": {
+      "createdAt": "2026-11-05T16:12:51.663218+00:00",
+      "maxSeconds": 240,
+      "maxBytes": 4194304,
+      "labels": [
+        "accept-dot-http-01",
+        "accept-claude-01",
+        "accept-exa-01",
+        "accept-exa-api-01"
+      ],
+      "providerLimits": {
+        "Dot": "one curl GET only",
+        "Claude": "one labelled page question",
+        "Exa": "one MCP fetch with maxCharacters 1200"
+      },
+      "purpose": "Fresh post-activation evidence; separate from original provider trial and synthetic regression cases",
+      "exaMcpInitialization": {
+        "httpStatus": 403,
+        "fetchExecuted": false
+      },
+      "exaFallback": {
+        "interface": "Authenticated Exa Contents playground",
+        "maxPages": 1,
+        "maxCharacters": 1200,
+        "maxAgeHours": 0,
+        "subpages": false,
+        "addedAt": "2026-11-05T16:14:28.473Z"
+      }
+    },
+    "dotPrompt": "Please make exactly one ordinary HTTP GET with curl from the existing shell/code environment to https://gkoreli.com/which-ai-fetchers-send-which-headers?probe=bot-grill-20261105-accept-dot-http-01 . Use the default User-Agent; no browser or search fallback and no retries. Capture the response once to a local temporary file and extract the HTTP status and body H1 locally from that same response, so no second GET is needed. This is an authorized read-only acceptance check of my own public site. Report the actual tool path and number of GETs. Do not contact any other service or reveal credentials.",
+    "claudePrompt": "Please fetch https://gkoreli.com/which-ai-fetchers-send-which-headers?probe=bot-grill-20261105-accept-claude-01 once with your available web tool and report its body H1. This is a fresh read-only analytics acceptance check of my own public site. Name the actual URL used, and disclose any fallback or inability to fetch. Do not guess the heading from the URL.",
+    "exaContents": {
+      "submittedAt": "2026-11-05T16:14:42.095Z",
+      "urls": [
+        "https://gkoreli.com/which-ai-fetchers-send-which-headers?probe=bot-grill-20261105-accept-exa-api-01"
+      ],
+      "maxAgeHours": 0,
+      "text": {
+        "maxCharacters": 1200
+      },
+      "subpages": 0
+    },
+    "failedExaMcpInitialization": {
+      "jsonrpc": "2.0",
+      "id": 1,
+      "method": "initialize",
+      "params": {
+        "protocolVersion": "2025-03-26",
+        "capabilities": {},
+        "clientInfo": {
+          "name": "gkoreli-provider-acceptance",
+          "version": "1.0"
+        }
+      }
+    }
+  }
+}

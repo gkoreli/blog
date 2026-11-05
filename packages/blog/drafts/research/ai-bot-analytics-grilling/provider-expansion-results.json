@@ -1,0 +1,243 @@
+{
+  "scope": "Service-side outcomes; UI labels as observed, no inferred hidden model IDs",
+  "ui": [
+    {
+      "provider": "Grok",
+      "mode": "Fast",
+      "signedIn": true,
+      "bodyH1": "correct",
+      "maintenanceSentence": "exact",
+      "coverage": "correct",
+      "exactLabelRequests": 11
+    },
+    {
+      "provider": "Claude",
+      "plan": "Free",
+      "model": "Sonnet 5.5 Medium",
+      "bodyH1": "correct",
+      "maintenanceSentence": "explicit paraphrase, not an exact quotation",
+      "coverage": "correct",
+      "exactLabelRequests": 1
+    },
+    {
+      "provider": "ChatGPT Dot",
+      "mode": "Work",
+      "model": "GPT-6.1 Sol Light (2/6)",
+      "browser": "cloud Chrome, successful rendered page",
+      "webOpen": "labelled URL tool error; canonical fallback successful",
+      "httpClient": "curl, two disclosed GETs, correct status/H1/maintenance sentence",
+      "exactLabelRequests": 3
+    },
+    {
+      "provider": "Gemini",
+      "mode": "Pro",
+      "initial": "Correct H1 and maintenance sentence; omitted covered components, disclosed Google Search/base-URL fallback",
+      "followup": "Correct exact covered pair, reported labelled tool fetch then Google Search fallback after extraction truncation",
+      "exactLabelRequests": 1,
+      "userAgent": "Google",
+      "literalCitationMarkers": "[3.2.1], not validated clickable source chips"
+    }
+  ],
+  "context": {
+    "accountObservedCredits": 300,
+    "creditCap": 20,
+    "reportedCreditsIncludingUiRestCli": 17,
+    "mcpUsage": "Not exposed by returned structured response; do not infer an exact balance or total",
+    "uiScrape": {
+      "success": true,
+      "requestedFormats": [
+        "html",
+        "markdown"
+      ],
+      "maxAgeMs": 0,
+      "providerDisplayedSeconds": 1.5,
+      "reportedCredits": 1,
+      "exportLimit": "Copy JSON did not produce an accepted validated complete export; raw REST response captured separately"
+    },
+    "rest": [
+      {
+        "operation": "context-raw-scrape",
+        "startedAt": "2026-11-05T15:38:47.915076+00:00",
+        "completedAt": "2026-11-05T15:38:49.470476+00:00",
+        "httpStatus": 200,
+        "elapsedSeconds": 1.555,
+        "responseBytes": 60863,
+        "creditsConsumed": 1,
+        "creditsRemaining": 298,
+        "errorCode": null,
+        "topLevelKeys": [
+          "url",
+          "html",
+          "markdown",
+          "screenshot",
+          "images",
+          "bytes",
+          "parsed",
+          "highlights",
+          "json",
+          "product",
+          "profile",
+          "metadata",
+          "request_id",
+          "cache_metadata",
+          "key_metadata"
+        ],
+        "partial": null,
+        "batchReportedCreditsIncludingUi": 2
+      },
+      {
+        "operation": "context-search",
+        "startedAt": "2026-11-05T15:38:49.470747+00:00",
+        "completedAt": "2026-11-05T15:38:52.885209+00:00",
+        "httpStatus": 200,
+        "elapsedSeconds": 3.414,
+        "responseBytes": 1439,
+        "creditsConsumed": 1,
+        "creditsRemaining": 297,
+        "errorCode": null,
+        "topLevelKeys": [
+          "results",
+          "query",
+          "cache_metadata",
+          "key_metadata",
+          "request_id"
+        ],
+        "partial": null,
+        "batchReportedCreditsIncludingUi": 3
+      },
+      {
+        "operation": "context-map",
+        "startedAt": "2026-11-05T15:38:52.885607+00:00",
+        "completedAt": "2026-11-05T15:38:54.510461+00:00",
+        "httpStatus": 200,
+        "elapsedSeconds": 1.625,
+        "responseBytes": 271,
+        "creditsConsumed": 1,
+        "creditsRemaining": 296,
+        "errorCode": null,
+        "topLevelKeys": [
+          "success",
+          "domain",
+          "urls",
+          "key_metadata",
+          "request_id"
+        ],
+        "partial": null,
+        "batchReportedCreditsIncludingUi": 4
+      },
+      {
+        "operation": "context-crawl",
+        "startedAt": "2026-11-05T15:38:54.510613+00:00",
+        "completedAt": "2026-11-05T15:39:06.248881+00:00",
+        "httpStatus": 200,
+        "elapsedSeconds": 11.738,
+        "responseBytes": 68572,
+        "creditsConsumed": 2,
+        "creditsRemaining": 294,
+        "errorCode": null,
+        "topLevelKeys": [
+          "results",
+          "metadata",
+          "cache_metadata",
+          "key_metadata",
+          "request_id"
+        ],
+        "partial": null,
+        "batchReportedCreditsIncludingUi": 6
+      },
+      {
+        "operation": "context-answers",
+        "startedAt": "2026-11-05T15:39:06.249430+00:00",
+        "completedAt": "2026-11-05T15:39:09.871791+00:00",
+        "httpStatus": 200,
+        "elapsedSeconds": 3.622,
+        "responseBytes": 657,
+        "creditsConsumed": 10,
+        "creditsRemaining": 284,
+        "errorCode": null,
+        "topLevelKeys": [
+          "json_content",
+          "sources",
+          "key_metadata",
+          "request_id"
+        ],
+        "partial": null,
+        "batchReportedCreditsIncludingUi": 16
+      }
+    ],
+    "searchUrls": [
+      "https://gkoreli.com/does-llms-txt-work",
+      "https://gkoreli.com/which-ai-fetchers-send-which-headers",
+      "https://gkoreli.com/how-i-separate-readers-from-bots-without-javascript"
+    ],
+    "mapUrls": [
+      "https://gkoreli.com/",
+      "https://gkoreli.com/essays",
+      "https://gkoreli.com/engineering"
+    ],
+    "crawl": {
+      "succeeded": 2,
+      "failed": 0,
+      "skipped": 14,
+      "returnedPaths": [
+        "/which-ai-fetchers-send-which-headers?probe=bot-grill-20261105-context-crawl-01",
+        "/which-ai-fetchers-send-which-headers/prompts"
+      ],
+      "markdownCharacters": [
+        52480,
+        7000
+      ]
+    },
+    "answers": {
+      "bodyH1": "correct",
+      "maintenanceSentence": "wrong section: returned article opening sentence",
+      "coveredComponents": "hostname and Signature-Agent; gist correct",
+      "unsignedComponents": "incomplete; path, query and method omitted",
+      "source": "Exact assigned URL cited",
+      "limitationsReturned": ""
+    },
+    "rawScrape": {
+      "markdownSuccess": true,
+      "markdownCharacters": 54073,
+      "bodyH1": "correct",
+      "maintenanceSection": "correct"
+    },
+    "cli": {
+      "release": "v1.24.0",
+      "platform": "macos_arm64",
+      "assetAndPublishedChecksumsVerified": true,
+      "searchExit": 0,
+      "searchResults": 3,
+      "reportedCredits": 1,
+      "localElapsedSeconds": 1.424,
+      "noScrapeOrMapCommand": true
+    },
+    "mcp": {
+      "protocol": "2025-03-26",
+      "server": "context 1.0.0",
+      "toolsListed": 50,
+      "tool": "web-scrape",
+      "responseMode": "full",
+      "maxAgeMs": 0,
+      "httpStatus": 200,
+      "isError": false,
+      "markdownSuccess": true,
+      "markdownCharacters": 54073,
+      "cache": {
+        "status": "miss",
+        "age_ms": 0
+      },
+      "usage": "unavailable"
+    },
+    "credentialCaptureFailure": {
+      "firstAttempt": "Only displayed key prefix captured; raw scrape returned HTTP 401 NOT_FOUND",
+      "operatorCorrection": "Captured complete existing key, then repeated planned request; no new key or OAuth grant",
+      "temporaryKeyRemoved": true
+    }
+  },
+  "limits": [
+    "Local elapsed time, provider processing time and UI saved-at timestamps are different quantities.",
+    "REST/CLI usage is service-reported, not an independent billing audit.",
+    "No provider-wide query-parameter policy, freshness guarantee or universal detection rate established."
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "privateRoot": "packages/blog/worklog/ai-bot-analytics-grilling-grok-dot-claude-context-20261105/",
+  "rawCapturesInGit": false,
+  "createdAt": "2026-11-05T16:26:17.616741+00:00",
+  "fileCount": 198,
+  "totalBytes": 4983137,
+  "manifestSha256": "0041e612467a8b9758defc68004c5456043b39f5dc0becb0baabd41392f2b858",
+  "allCaptureStreamsStopped": true,
+  "temporaryKeyFileRemoved": true,
+  "limits": [
+    "Preservation commitment, not logging completeness.",
+    "Raw account UI, request/row references, captures, SQL and service responses remain private.",
+    "Only reviewed screenshots and allowlisted projections enter Git.",
+    "Later delivery metadata outside this frozen manifest."
+  ]
+}

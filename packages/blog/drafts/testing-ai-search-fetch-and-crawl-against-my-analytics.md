@@ -1,12 +1,60 @@
-# Testing AI Search, Fetch, and Crawl Against My Analytics
+# AI Fetchers, Browsers, and Crawlers: Their Headers and How to Detect Them in Analytics
 
-Working draft, updated November 5, 2026. Unpublished. Completed research: [first provider batch](research/ai-bot-analytics-grilling/01-first-batch.md), [ChatGPT/Brave](research/ai-bot-analytics-grilling/02-chatgpt-and-brave.md), [Context.dev/Perplexity](research/ai-bot-analytics-grilling/03-context-and-perplexity.md), and [Perplexity URL controls](research/ai-bot-analytics-grilling/04-perplexity-url-controls.md). Authenticated Firecrawl/Agent and Context.dev operations, plus broader repeats, remain open. [Research worklist](research/ai-bot-analytics-grilling/00-worklist.md).
+Working draft, updated November 5, 2026. Unpublished. This continues [Which AI Fetchers Send Which Headers](/which-ai-fetchers-send-which-headers) with fresh provider trials and repairs to my analytics. [Research worklist](research/ai-bot-analytics-grilling/00-worklist.md), [latest methods and results](research/ai-bot-analytics-grilling/05-provider-expansion-and-hardening.md).
 
-An AI search result, a page fetch and a cited answer leave different evidence. In the first trials for this article, Exa returned search highlights, its separate fetch tool requested my page as `ExaUser`, and Duck.ai answered through a signed `DuckAssistBot` request. Bing's AI Mode cited my earlier study while dropping some of its limits. I want to compare the whole path: what I asked a service to do, what it returned, what reached Cloudflare, and what my analytics recorded.
+An AI assistant can retrieve a page with a named fetcher, open Chrome, or run curl. Those paths can occur in one conversation and leave different evidence. To measure AI browsing, analytics needs to preserve the client declaration, network assessment, verified publisher and request shape separately.
 
-My [earlier fetcher study](/which-ai-fetchers-send-which-headers) captured ten assistants in September. The [follow-up](/ai-fetcher-research-from-experiments-to-a-cited-reference) explains later tests and external use of that work. This article starts a repeatable provider catalogue: separate operations, named conditions, real failures and open questions. The earlier results retain their dates.
+I tested search, fetch, crawl and answer products against this blog, then checked what my Cloudflare Worker received and what D1 actually stored. In the latest batch, 21 of 27 labelled page requests were stored Browser even though the controlled tasks supplied automation context. Dot's Chrome and curl requests carried verified ChatGPT publisher signatures. Gemini's request declared only `Google` and remained Unresolved. Exa and Dot also exposed missing publisher names and a historical-receipt bug in my code.
 
-Codex operated the services with my authorization and existing account access. The first batch contains thirteen deliberately elicited observations: eight stored Browser, two Unresolved and three AI Assistant. The ChatGPT/Brave extension adds a ChatGPT-User fetch and a separate post-answer Browser request whose operator remains unresolved. Context.dev's public converter adds two Browser requests and one Preview or Feed request. These are not organic growth measurements or counts of people.
+This article explains how to make those distinctions, reproduce the checks, and improve a classifier without inventing provider identity. It includes Exa, DuckDuckGo, Bing, ChatGPT, Grok, Claude, Gemini, Brave, Context.dev, Perplexity, Tavily and Firecrawl. Each product and operation keeps its own conditions, failures and limits. Codex operated the services with my authorization and existing account access. These are deliberately elicited trials, separate from organic growth and counts of people.
+
+## Start with evidence your classifier can actually retain
+
+### A declaration, a network and a signature answer different questions
+
+| Evidence | What I retain or inspect | What it supports |
+| --- | --- | --- |
+| Experimental assignment | Provider operation, exact prompt, unique URL label and time window | Connecting this controlled workflow to received requests |
+| User-Agent declaration | Exact product-token matches, browser family and conflicting candidates | What the client claims; tokens are copyable |
+| Network | Cloudflare ASN, curated hosting classification, client-specific published-feed assessment and snapshot hash | Network context or membership in the specified vendor feed |
+| Signature | Publisher origin, local verifier/profile outcome and covered components | Verification under that profile for those covered fields |
+| Request shape | Parsed Fetch Metadata states, HTML acceptance and language-header presence | Whether the request resembles a browser navigation |
+| Native edge assessment | Available Cloudflare bot fields, with missing values explicit | A distinct native assessment when actually supplied |
+| Persistence | Attempt, insert acknowledgement and exact row readback | What the analytics stored for this request |
+| Answer and citation | Actual quoted content, source used, fallbacks and completion | Whether this answer used or accurately represented the page |
+
+A provider's IP method must apply to that particular client. A Google Cloud ASN cannot verify Claude; a Cloudflare ASN cannot identify ChatGPT. A matching publisher key does not authenticate an unsigned User-Agent. I keep those facts as separate dimensions rather than compressing them into one provider confidence score.
+
+The main observation table keeps derived evidence and daily pseudonymous client IDs. It does not store raw IPs, raw User-Agents or query strings. Bounded private operational captures supply the extra wire evidence for this investigation; only reviewed projections enter the research artifacts. [Privacy details](/privacy), [classifier implementation](../../analytics/src/readerkind.ts).
+
+### The current classification order
+
+My collector checks response eligibility, parses request evidence, assesses applicable vendor feeds, and verifies any supported signature before inserting the observation. Named client declarations retain their role: prompted assistant, search crawler, broader AI crawler, search-engine crawler, preview/feed or declared automation. Conflicting declarations stay visible.
+
+For requests without a named role, a verified signature can produce Signed Agent. A declared HTTP client, hosting-network browser, navigation-shaped browser and unresolved request have separate outcomes. Browser requires the tested navigation shape and is still compatible with automation. `Sec-Fetch-User: ?1` is an activation claim, and my rule does not require it to call a request Browser. See the [implementation](../../analytics/src/readerkind.ts) and [Fetch Metadata parsing](../../analytics/src/fetch-metadata.ts).
+
+A useful minimal design is therefore to store the decision **and the evidence that produced it**, with method versions. Keep signature publisher separate from declared client. Record unavailable assessments explicitly. Preserve old decisions when a registry changes, and give any historical reclassification its own audit trail.
+
+### What arrived in the new trials
+
+These are selected observed headers and the verdicts stored before the repairs below. One question can produce several requests.
+
+| Controlled path | Received declaration / browser product | Network context | Signature | Stored result |
+| --- | --- | --- | --- | --- |
+| Grok Fast | Chrome 142/143 or Safari | Eight ASNs, including transit/VPN and Servers.com | Absent | Eleven Browser |
+| Claude Free fetch | Claude-User/1.0 | AS396982 Google Cloud; vendor feed unassessed then | Absent | One AI Assistant |
+| Dot cloud browser | Chrome 155 | AS13335 Cloudflare | Verified `chatgpt.com` publisher | One Signed Agent, display Other |
+| Dot ordinary HTTP | curl/8.5.0 | AS13335 Cloudflare | Same publisher and coverage profile | Two Signed Agent, display Other |
+| Gemini coverage follow-up | Entire User-Agent `Google` | AS15169 Google | Absent | One Unresolved |
+| Context.dev retrieval operations | Chrome 125/153/157 | Mainly AS5650; also Google Cloud and AS20012 | Absent | Ten Browser, one Cloud Browser |
+
+The experimental assignment lets me identify automation in this cohort. It does not provide a production rule for every similar browser request. A site that promises complete AI attribution from these headers would go beyond this evidence. The [27-row projection](research/ai-bot-analytics-grilling/provider-expansion-evidence.json) preserves each request, its Fetch Metadata and full storage outcome.
+
+### Accept and Fetch Metadata describe the path, too
+
+Dot's curl requests, Claude-User and the Gemini follow-up all arrived with `Accept: */*`, no Accept-Language and no Fetch Metadata. Dot still became Signed Agent because of its verified publisher. Grok supplied `navigate`, `document` and `none` for mode, destination and site, while omitting Sec-Fetch-User. The Context.dev navigation-shaped requests supplied those fields plus `?1`. Its separate Google Cloud request during Answers omitted Fetch Metadata and accepted a broader set including JSON, feeds, CSV and Markdown. The [header variants and request counts](research/ai-bot-analytics-grilling/provider-expansion-headers.json) retain these differences.
+
+All 27 Worker captures showed `Accept-Encoding: gzip, br`. That is a poor client fingerprint: Cloudflare can replace this header and expose the original separately as `request.cf.clientAcceptEncoding`. Here that separate field varied between gzip/deflate, gzip/deflate/Brotli and unavailable. These are headers and metadata at the observation point, not an untouched packet capture from the originating program. [Cloudflare Request documentation](https://developers.cloudflare.com/workers/runtime-apis/request/#incomingrequestcfproperties).
 
 ## The kinds of bots we need to distinguish
 
@@ -32,7 +80,7 @@ Each record names the product, operation, API/MCP/browser interface, account/mod
 
 The useful chain is submission → provider result → origin request → storage acknowledgement → exact stored row. I keep raw logs and references privately and publish reviewed facts. A successful signature is another field in that chain, with its covered components preserved. Each missing stage remains visible.
 
-For the first batch, all thirteen exact assigned-label requests have matching stored rows and full receipt equality. The indexed Wrangler readback reported 26 rows read, zero writes and one attempt. A separate constant access check reported zero reads and writes. The existing collector performed the ordinary experimental inserts; I changed no runtime classification rule.
+For the first batch, all thirteen exact assigned-label requests have matching stored rows and full receipt equality. The indexed Wrangler readback reported 26 rows read, zero writes and one attempt. A separate constant access check reported zero reads and writes. The existing collector performed those experimental inserts. That first batch predates the supported runtime repairs described below.
 
 ### The answer and its evidence
 
@@ -56,7 +104,7 @@ I enabled one subpage, targeted “prompts”, and kept the fresh-content settin
 
 The two matched Exa fetches had Worker-verified signatures over the authority and `Signature-Agent`. Their paths, query strings, methods and User-Agents were unsigned. Both exact stored rows are `ai-assistant`, with signer display `Other`.
 
-That display has a specific explanation: the [approved-name catalogue](../../analytics/src/signers.ts) contains `https://crawler.exa.ai`, while these requests name `https://exauser.crawler.exa.ai`. The exact-origin lookup returns Other for the latter. Display approval and successful verification are separate facts. I have not changed the catalogue or independently replayed the new proofs.
+That historical display has a specific explanation: the catalogue then approved `https://crawler.exa.ai`, while these requests named `https://exauser.crawler.exa.ai`. Exa now documents the [user-fetcher and its dedicated directory](https://exauser.crawler.exa.ai/). I updated the exact-origin display, per-client signing method and reviewed-directory mapping, while preserving the earlier Other receipts. The change grants no verification trust and does not independently replay those earlier Exa proofs.
 
 ### Metadata that needs checking
 
@@ -106,6 +154,66 @@ After the completed answer was saved, another request reached the same probe wit
 
 Both exact stored receipts match their log acknowledgements. Their readback reported four reads and zero writes. The [extension record](research/ai-bot-analytics-grilling/02-chatgpt-and-brave.md) preserves their timing and attribution boundaries.
 
+### Dot's cloud browser, web-open tool and ordinary curl
+
+I then switched a separate signed-in conversation to Work, showing GPT-6.1 Sol Light (2/6). I asked for browser navigation and web retrieval on separate labelled URLs. The cloud Chrome path rendered the page and returned the right H1 and maintenance sentence. The separate web-open call reported that the labelled URL was inaccessible through that tool; its disclosed canonical-URL control succeeded.
+
+A further HTTP-only control used the shell environment's curl. Dot disclosed making two GETs after output truncation, and the Worker received exactly two curl requests. Its Chrome navigation and both curl GETs were Signed Agent, with locally verified `Signature-Agent: "https://chatgpt.com"`. None declared ChatGPT-User. At capture time the public signer display was Other; the new catalogue recognizes that exact publisher.
+
+The received component list was:
+
+```http
+("@authority" "@method" "signature-agent")
+```
+
+The signatures bound hostname, method and publisher header, leaving path, query and User-Agent unsigned. I replayed all three captured proofs locally at their capture times against the later native directory snapshot. Changing the hostname or method failed verification; changing path, query and User-Agent together still passed. That tests the captured proof's coverage, without demonstrating nonce-reuse prevention or a human trigger. [Directory publication](https://chatgpt.com/.well-known/http-message-signatures-directory), [replay evidence](research/ai-bot-analytics-grilling/provider-expansion-evidence.json).
+
+The distinction answers my question about Dot's computer: its cloud browser and ordinary curl were recognizable as verified ChatGPT publisher traffic on this site, even though their client headers differed. The labelled web-open path failed while those other paths worked. This is one observed Work environment; it does not establish that all ChatGPT browsers, user accounts or tools take the same route. OpenAI's [computer-use guide](https://learn.chatgpt.com/use-cases/use-your-computer-with-codex) describes the cloud browser separately from local computer access.
+
+A fresh post-release control asked Dot to save one curl response and parse it locally, avoiding the earlier output-truncation reason for a second GET. It reported exactly one GET and returned the correct H1.
+
+![Dot's completed one-GET acceptance answer, showing the curl tool path, HTTP 200 and extracted body heading.](research/ai-bot-analytics-grilling/assets/dot-http-acceptance-20261105.png)
+
+## Grok
+
+### A correct answer can arrive through eleven browser-shaped requests
+
+The signed-in Fast question returned the correct H1, exact maintenance sentence and signature coverage, reporting the labelled source without a fallback. The Worker received eleven HTTP 200 requests for that label: Chrome 142/143 and Safari claims across eight ASNs. All were unsigned, with no named vendor declaration, and all were stored Browser.
+
+That repeats a consequential detection limit from the original study under new, signed-in conditions. A working browser can be driven by an agent, and proxies can supply ordinary navigation headers. The earlier signed-in observations included HeadlessChrome; this one did not. Account state alone does not explain the difference. xAI's [Web Search documentation](https://docs.x.ai/developers/tools/web-search) establishes available API search/browse operations, not the hidden implementation of this website trial.
+
+### Network corrections need a narrower basis than a Grok label
+
+The sample included AS7979, whose registry holder is Servers.com. I added it to the hosting list after checking [RIPEstat](https://stat.ripe.net/data/as-overview/data.json?resource=AS7979) and the [operator's dedicated-server network description](https://www.servers.com/about/network). Future otherwise unlabelled browser claims from that ASN become Cloud Browser under the revised classifier. The historical Grok row remains Browser.
+
+I kept transit, consumer and VPN networks outside that hosting rule. In particular, M247 and Datacamp membership cannot determine whether a request belongs to an assistant or a person using a VPN. The remaining Grok sample still shows the classifier's blind spot. Adding every exit network to a bot list would create a different error rather than solve provider attribution.
+
+## Claude
+
+### The Free-plan fetcher named itself
+
+Claude Free, showing Sonnet 5.5 Medium, successfully fetched the labelled article. It returned the correct body H1 and signature coverage, and explicitly paraphrased the maintenance sentence. I record that as an accurate paraphrase, not an exact-quote success. The Worker received one unsigned Claude-User/1.0 request on Google Cloud AS396982, stored AI Assistant.
+
+Anthropic's [current robot documentation](https://privacy.claude.com/en/articles/8896518-does-anthropic-crawl-data-from-the-web-and-how-can-site-owners-block-the-crawler) separates Claude-User, Claude-SearchBot and ClaudeBot. The declared role was already recognized in my code; the missing part was its configured network assessment.
+
+### The published IP check can return a negative result
+
+I added the [classic-bot JSON feed](https://claude.com/crawling/bots.json) for those three documented robots. The reviewed November 5 snapshot did not list the captured address. That does not turn the request into a verified vendor fetch, and it does not prove impersonation. It records the actual membership result instead of inferring identity from Google Cloud. Feed failure, no configured method and checked-but-not-listed are different states.
+
+### Hosted Claude browsers use a separate declaration and address publication
+
+Anthropic separately [documents Claude-Agent](https://support.claude.com/en/articles/18234133-how-do-anthropic-hosted-browsers-identify-themselves-when-they-browse-the-web-on-a-user-s-behalf), a token added to a hosted browser's own User-Agent. Its addresses are published under that service in a [SAIL document](https://claude.com/.well-known/sail), an evolving draft format. I added the exact token as a declared assistant role. I have not implemented the separate SAIL address method, and the classic robots' feed does not apply to it. This is a source-backed rule update with synthetic regression cases; the Free-plan trial exercised Claude-User, not that hosted-browser product.
+
+## Gemini
+
+### Search and browsing supplied different parts of the answer
+
+The signed-in Pro answer returned the correct H1 and maintenance sentence using a disclosed Google Search/base-URL path, but omitted the covered-component pair. I asked a bounded follow-up. It correctly named `@authority` and `signature-agent`, reported fetching the new labelled URL, then described extraction truncation and a Google Search fallback.
+
+One HTTP 200 request reached the follow-up label. Its entire User-Agent was `Google`; it used AS15169 and carried no signature or recognized product declaration. My analytics stored it Unresolved. That is the right evidence limit: the experiment connects this request to the Gemini task, while those production fields cannot reliably distinguish it from other Google-associated traffic.
+
+The initial answer's claim that the query URL was not individually indexed was a model explanation, not a measured index result. The follow-up's literal `[3.2.1]` markers were not validated clickable citations. Correct content, a disclosed tool path and a useful origin match can coexist with those limits.
+
 ## Brave Search
 
 ### Search results, an AI summary and an indirect reference
@@ -130,7 +238,7 @@ Brave says its [crawler does not advertise a differentiated User-Agent](https://
 
 ### Public conversion worked while MCP required authentication
 
-Context.dev's login page required sign-in, and one credential-free initialization of its documented MCP endpoint returned HTTP 401 with an OAuth challenge. That establishes an access gate, without an executed scrape. I kept this provider to public access. [MCP documentation](https://docs.context.dev/install-mcp).
+Context.dev's login page required sign-in, and one credential-free initialization of its documented MCP endpoint returned HTTP 401 with an OAuth challenge. That establishes an access gate, without an executed scrape. That earlier batch was limited to public access; the owner subsequently signed in and authorized the authenticated continuation below. [MCP documentation](https://docs.context.dev/install-mcp).
 
 Its separate [free URL to Markdown converter](https://www.context.dev/free-tools/url-to-markdown) accepted the labelled article and returned 54,069 characters across 329 lines. The downloaded file agrees with those displayed counts and contains the correct body H1, maintenance sentence and signature example. It also keeps navigation and footer content. Successful conversion and main-content-only extraction are different properties.
 
@@ -142,11 +250,27 @@ The assigned URL connects these requests to the converter workflow. It does not 
 
 All three full stored receipts match their acknowledgements. The exact D1 readback used six reads and zero writes. The [batch record](research/ai-bot-analytics-grilling/03-context-and-perplexity.md) preserves a transient Wrangler metadata error, successful access check and completed readback.
 
-### API controls remain a separate test
+### Authenticated Search, Scrape, Map, Crawl and Answers
 
-The [Scrape API](https://docs.context.dev/api-reference/web-scraping/scrape) documents Bearer authentication, individual output-success fields and `maxAgeMs: 0` for fresh retrieval. The public converter did not expose those controls or reported credits. I have not transferred the API defaults to this browser trial, measured billed cost, or tested authenticated Search, Map, Crawl and Answers.
+The now-signed-in dashboard exposed the existing Default key and a Free entitlement of 300 credits per month, with two concurrent requests. I bounded the comparison to 20 reported credits and reused that key without creating a credential or OAuth grant. The temporary local key file was removed afterward.
 
-The result was saved promptly; a later browser export call remained pending for nearly eight hours while the bounded tail stopped independently. That research-tool delay is not an eight-hour provider-processing measurement.
+The cache-disabled UI Scrape returned HTML and Markdown, reporting one credit and 1.5 seconds. Raw REST Scrape returned 54,073 Markdown characters containing the correct H1, maintenance section and signature example. REST Search returned the original article and two companion articles. Map returned three site URLs after requesting the actual labelled sitemap. Crawl returned the seed article and its prompts page, with two successes and 14 skipped URLs.
+
+Fast Answers then cited the exact tested page, returned the right H1, and selected the article's opening sentence instead of the requested maintenance sentence. Its unsigned-component answer omitted path, query and method. Direct extraction had the relevant section. This is a source-selection/answer-fidelity failure in a completed call, not evidence that retrieval was unavailable.
+
+### CLI and MCP are separate working interfaces
+
+The official v1.24.0 macos_arm64 CLI was checked against both the GitHub asset digest and published checksums. A three-result CLI Search completed with the same URLs and one reported credit. Actual help has no Scrape or Map command, even though the REST API supports those operations. [CLI installation](https://docs.context.dev/install-cli.md).
+
+Authenticated MCP initialization and tools/list exposed 50 tools. `web-scrape` with Markdown, `maxAgeMs: 0` and `responseMode: full` succeeded, returning 54,073 characters and a cache miss with age zero. Its returned response contained no usage field; I do not infer a precise final balance. Seventeen credits are explicitly reported across UI, REST and CLI. This accounting separates service-reported usage from unavailable billing evidence. [MCP installation](https://docs.context.dev/install-mcp), [Scrape](https://docs.context.dev/api-reference/web-scraping/scrape).
+
+An initial key capture selected only the visible prefix and produced a 401; capturing the complete existing key corrected the operator error. The UI's Copy JSON also did not yield an accepted validated full export. Both failures remain recorded beside the successful raw calls.
+
+### Successful retrieval still looks like ordinary browsing
+
+The authenticated operations produced eleven exact labelled page requests: ten Browser and one Cloud Browser, all unsigned with no named vendor declaration. Most claimed Chrome 153/157; Answers also produced a Chrome 125 request from Google Cloud, already classified Cloud Browser. A sitemap XML request reached the origin separately and created no page observation. My page collector counts eligible HTML or negotiated Markdown, so a successful link-discovery fetch is outside that metric.
+
+The raw API results, complete input controls, per-call timings/costs and stored request evidence are in the [continuation record](research/ai-bot-analytics-grilling/05-provider-expansion-and-hardening.md). The earlier public-converter export delay of nearly eight hours remains a research-tool delay, separate from provider processing time.
 
 ## Perplexity
 
@@ -178,7 +302,7 @@ This exposes a limit in the experiment itself: adding a query label can change t
 
 No exact Perplexity label appears in the initial eight-minute Worker GET capture. The repeat's separate eight-minute stream contains no request for the tested article except the deliberately synthetic positive control, whose stored receipt is independently verified. Its [evidence](research/ai-bot-analytics-grilling/perplexity-controls-evidence.json) keeps that request out of provider attribution. A retained edge-security check remains unavailable, so I cannot diagnose an edge block or rule one out. The tool's generic fetch error does not reveal its cause.
 
-Perplexity's [current crawler documentation](https://docs.perplexity.ai/docs/resources/perplexity-crawlers) separates PerplexityBot for search discovery from Perplexity-User for user actions, with distinct published address lists. Neither name appeared for this assigned URL. The September results stay dated; this fresh failure adds a separate observation. Its API, MCP, CLI and Computer product remain untested here.
+Perplexity's [current crawler documentation](https://docs.perplexity.ai/docs/resources/perplexity-crawlers) separates PerplexityBot for search discovery from Perplexity-User for user actions, with distinct published address lists. Neither name appeared for this assigned URL. The September results and this sequence of failed probes and successful content controls retain their dates. Its API, MCP, CLI and Computer product remain untested here.
 
 ## Tavily
 
@@ -220,6 +344,28 @@ One nearby request used a modified label ending in `/sitemap.xml`, with `undici`
 
 Authenticated Firecrawl API/MCP calls and its Agent operation remain open pending existing account credentials. The public-browser successes do not fill those cells in the catalogue. [Firecrawl Agent](https://docs.firecrawl.dev/features/agent).
 
+## The analytics repairs these trials justified
+
+### Preserve the display catalogue that produced a receipt
+
+My receipt projector originally looked up a verified publisher in today's mutable catalogue and wrote today's profile into the reconstructed receipt. The database evidence did not retain that profile. Adding ChatGPT and the ExaUser subdomain would therefore change a later replay of an earlier Other result.
+
+New locally verified observations retain `signerDisplayProfile` in their stored signature evidence. The projector uses that recorded version. Ordered catalogues preserve earlier name approvals, and unknown or conflicting versions reject. Legacy rows cannot acquire a missing fact retrospectively: their replay uses a frozen historical baseline or an explicit profile from the captured acknowledgement, with that external provenance stated. Current reports can use today's approved names while historical receipts still reproduce their earlier display.
+
+The snapshot applies to verified publisher names. Failed, absent and injected outcomes display no verified name and omit it. That choice preserves the existing 2 KiB evidence cap even for the complete closed failure set. Tests also protect the complete product/declaration lists; expanding a registry must not silently truncate either one. [Receipt projector](../../analytics/src/observation-receipt.ts), [versioned catalogue](../../analytics/src/signers.ts).
+
+### Keep vendor methods scoped and preserve history
+
+The new method profiles map ExaUser to its documented dedicated signing origin and directory, and add Anthropic's classic-bot IP source. Claude-Agent gets its documented declared role while its separate address method remains unmapped. Servers.com is a prospective hosting-list addition; the September migration registry and old row decisions stay frozen. Collection/classifier/method versions and the report-cache version changed. The cryptographic verifier did not change.
+
+Regression tests cover those scopes, old signer displays, unavailable feeds, mixed-network exclusions, stored-profile conflicts and JSON budgets. All 397 analytics and 185 blog tests pass, with workspace types, native portability checks and an isolated production build. Forty-six saved receipts across five cohorts still reproduce after the changes, using no additional production reads; those cohorts include the earlier synthetic control and an unresolved post-answer client, so they are not 46 identified provider fetches. [Decision and limits](../../../docs/adr/0016.20-provider-method-updates-and-receipt-display-provenance.md).
+
+### Validate storage separately from service success
+
+For the latest original batch, every one of the 27 exact page requests has an attempt, a matching acknowledged insert and an exact stored row with full receipt equality. The bounded primary-key query reported 54 reads, zero writes and one data-statement attempt after native local preflight. The first metadata request failed authentication; later metadata, a zero-read access check and the exact SELECT succeeded. That sequence does not establish the earlier error's cause.
+
+Three fresh post-release requests now also have full exact-row equality, at six reads and zero writes. Dot is Signed Agent / ChatGPT, ExaUser is AI Assistant / Exa with matching documented publisher, and Claude-User is AI Assistant with the actual vendor-feed result not-listed. Both verified publisher rows independently retain the new display profile. All three join the 100% active Worker version. The code commit, activation and these measured controls remain separate stages in the [release record](research/ai-bot-analytics-grilling/provider-hardening-release.json).
+
 ## The comparison we can support
 
 ### Dimensions shared by every provider
@@ -244,6 +390,12 @@ The catalogue tracks access/interface, operation, cache/freshness, output/format
 | Context.dev unauthenticated MCP initialization | HTTP 401 and OAuth challenge | No executed retrieval tool |
 | Perplexity initial signed-in Search | Exact-query fetch error; details and citation declined | No exact match in the initial stopped GET capture |
 | Perplexity fresh query / fragment / plain controls | Three correct cited answers; query trial disclosed a clean-URL fallback | No article request except the synthetic positive control in the separate stopped stream |
+| Grok signed-in Fast | Correct requested content and coverage | Eleven unsigned Browser requests across eight ASNs |
+| Claude Free / Sonnet 5.5 Medium | Correct H1/coverage, explicitly paraphrased sentence | One Claude-User request stored AI Assistant; old network method unconfigured |
+| Dot Work: cloud browser / web-open / curl | Browser success / labelled tool error with canonical success / HTTP success | Three verified ChatGPT-publisher Signed Agent requests; selected fields unsigned |
+| Gemini Pro and coverage follow-up | Correct content; disclosed search fallback, initial coverage omission corrected | One follow-up request, bare Google on AS15169, stored Unresolved |
+| Context.dev authenticated UI/REST/MCP retrieval | Scrape and Crawl return content; Map returns URLs; Fast Answers misselects a sentence | Eleven unsigned page rows: ten Browser, one Cloud Browser; separate sitemap delivery |
+| Context.dev REST and CLI Search | Original article among three returned URLs | Search outputs retained separately from uniquely labelled retrievals |
 
 The first batch's thirteen receipts have unavailable native Cloudflare verified-bot/signed-agent booleans and zero vendor-network checks. The ChatGPT-User receipt adds a positive configured network assessment; native booleans remain unavailable. Context.dev's three receipts likewise have unavailable native booleans and no vendor-network checks. I cannot turn missing assessments into negative verification or IP-list results. The [first-batch audit](research/ai-bot-analytics-grilling/01-first-batch.md), [ChatGPT/Brave audit](research/ai-bot-analytics-grilling/02-chatgpt-and-brave.md) and [Context.dev/Perplexity audit](research/ai-bot-analytics-grilling/03-context-and-perplexity.md) retain failed attempts, exact inputs and per-operation limits.
 
@@ -251,7 +403,7 @@ The first batch's thirteen receipts have unavailable native Cloudflare verified-
 
 Can two interfaces for the same provider produce different declared clients? Does a requested fresh retrieval actually reach the origin? Which returned date belongs to the source? Can a crawler's successful delivery coexist with an agent's inaccurate summary? These questions can change the next experiment; a provider ranking would outrun this small first sample.
 
-The next unrun controls are a newly published body value absent from the prompt, HTML versus explicit Markdown, and deliberate error/redirect pages. Fresh Bingbot triggering, authenticated Firecrawl Agent, regional/account repeats and robots compliance each need their own evidence. The first batch supplies a starting catalogue and specific failures to investigate.
+The next unrun controls are a newly published body value absent from the prompt, HTML versus explicit Markdown, and deliberate error/redirect pages. Fresh Bingbot triggering, authenticated Firecrawl Agent, regional/account repeats and robots compliance each need their own evidence. The controlled cohort provides specific detection failures and supported repairs. It does not estimate a universal automation-detection rate. For another site, the useful next step is to repeat one known client through each available tool path, retain the evidence dimensions, and check the resulting row before adding a rule.
 
 ---
 
@@ -270,3 +422,7 @@ The next unrun controls are a newly published body value absent from the prompt,
 | Context.dev public conversion, API controls and MCP access | [Public converter](https://www.context.dev/free-tools/url-to-markdown), [Scrape reference](https://docs.context.dev/api-reference/web-scraping/scrape), [MCP](https://docs.context.dev/install-mcp), [trial results](research/ai-bot-analytics-grilling/context-perplexity-results.json) | Trial November 4 local; export/review November 5 |
 | Perplexity crawler roles, failed probe and successful URL controls | [Crawler documentation](https://docs.perplexity.ai/docs/resources/perplexity-crawlers), [initial batch](research/ai-bot-analytics-grilling/03-context-and-perplexity.md), [URL controls](research/ai-bot-analytics-grilling/04-perplexity-url-controls.md) | November 4–5, 2026 local |
 | Fragments are separated before resource retrieval | [RFC 3986 §3.5](https://www.rfc-editor.org/rfc/rfc3986#section-3.5) | January 2005; checked November 5, 2026 |
+| New provider operations, headers and exact storage checks | [Inputs](research/ai-bot-analytics-grilling/provider-expansion-inputs.json), [results](research/ai-bot-analytics-grilling/provider-expansion-results.json), [evidence](research/ai-bot-analytics-grilling/provider-expansion-evidence.json) | November 5, 2026 |
+| Claude classic robots versus hosted browser declaration/address methods | [Robot documentation](https://privacy.claude.com/en/articles/8896518-does-anthropic-crawl-data-from-the-web-and-how-can-site-owners-block-the-crawler), [hosted-browser documentation](https://support.claude.com/en/articles/18234133-how-do-anthropic-hosted-browsers-identify-themselves-when-they-browse-the-web-on-a-user-s-behalf) | November 5, 2026 |
+| ExaUser publisher and ChatGPT public directory | [ExaUser](https://exauser.crawler.exa.ai/), [ChatGPT directory](https://chatgpt.com/.well-known/http-message-signatures-directory) | November 5, 2026 |
+| Prospective provider rules and historical receipt provenance | [ADR-0016.20](../../../docs/adr/0016.20-provider-method-updates-and-receipt-display-provenance.md) | November 5, 2026 |

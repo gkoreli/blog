@@ -8,6 +8,8 @@ Start with the [official MCP implementation](https://github.com/exa-labs/exa-mcp
 
 Keep search results/highlights, known-URL content retrieval, live refresh, subpage crawling and agent research separate. Check which freshness and subpage options the chosen interface actually exposes. Compare the observed request declaration with ExaSearchBot and ExaUser documentation; a crawl option's name does not dictate its origin User-Agent.
 
+Review the dedicated [ExaUser publisher](https://exauser.crawler.exa.ai/) separately from the indexing-crawler origin. Preserve earlier method profiles if that origin mapping changes. An MCP initialization failure is distinct from a fetch failure; use a separately labelled authorized playground/API control when useful.
+
 ## DuckDuckGo
 
 Compare normal search, Search Assist and Duck.ai as distinct products. Start with [DuckDuckBot](https://duckduckgo.com/duckduckgo-help-pages/results/duckduckbot), [DuckAssistBot](https://duckduckgo.com/duckduckgo-help-pages/results/duckassistbot), [Search Assist](https://duckduckgo.com/duckduckgo-help-pages/results/ai-assisted-answers) and [result sources](https://duckduckgo.com/duckduckgo-help-pages/results/sources). A Duck.ai question is a practical route for a prompted retrieval trial; only the actual request establishes which client arrived.
@@ -38,6 +40,8 @@ Use the existing signed-in ChatGPT tab for a fresh public-page question. Record 
 
 Keep source cards and output-link tracking parameters separate from the original requested URL. Save the answer before inspecting citations, and distinguish any later browser-shaped hit from an identified answer-time fetch. Avoid publishing unrelated home suggestions, private chat history or account UI.
 
+For Dot/Work, ask for separate cloud-browser, web-open/search and ordinary HTTP-client paths with distinct labels. Inspect actual activity and received requests; one failed tool does not establish the absence of another. Ask an HTTP client to save one response and parse it locally when a one-GET control matters. Browser and curl can carry the same verified publisher while their User-Agents differ; inspect signature coverage rather than inferring client identity from that publisher.
+
 ## Context.dev
 
 Start with the [Scrape reference](https://docs.context.dev/api-reference/web-scraping/scrape), [MCP instructions](https://docs.context.dev/install-mcp), existing account and [public tools](https://www.context.dev/free-tools). The [URL to Markdown converter](https://www.context.dev/free-tools/url-to-markdown) can offer an anonymous retrieval path even when the dashboard and hosted MCP require authentication. Record its actual availability, output, cache controls and usage visibility separately from an authenticated API trial.
@@ -45,6 +49,8 @@ Start with the [Scrape reference](https://docs.context.dev/api-reference/web-scr
 The service MCP is `https://mcp.context.dev/mcp`; the docs-search MCP is a different server. An unauthenticated initialization challenge is an access result, not tools/list or a failed scrape. Do not follow onboarding documentation into account creation, persistent key creation or wider OAuth scopes without the appropriate authorization. For API responses, inspect each requested output's success and reported usage. Do not assume a public converter exposes `maxAgeMs` or the API's other options.
 
 Keep all clients reaching an assigned label, including browser claims and unexpected third-party bot declarations. The workflow assignment does not authenticate each declared operator or expose the provider's internal delegation.
+
+When existing key access is authorized, prefer direct capture to a temporary private file and remove it afterward. A revealed UI key can be split across text spans; a prefix is not the full credential. Preserve any resulting operator error without calling it an entitlement failure. The [official CLI](https://docs.context.dev/install-cli.md) and MCP expose different operations: inspect pinned release help and live tool schemas. Verify official release digests/checksums before executing the CLI; pass the key through its documented environment variable, never argv. MCP compact/full output modes and per-format success matter. Missing MCP usage stays unavailable even when REST/CLI report credits.
 
 ## Perplexity
 
@@ -54,6 +60,20 @@ If a query-bearing URL fails, test the ordinary canonical URL and, when useful, 
 
 The [crawler documentation](https://docs.perplexity.ai/docs/resources/perplexity-crawlers) separates PerplexityBot and Perplexity-User and their address lists. Compare the actual request rather than assuming the user-fetcher must appear. No exact Worker match remains bounded to the stopped capture; inspect relevant retained security evidence before diagnosing edge blocking. API, MCP, CLI and Computer are separate interfaces, not interchangeable evidence for the website's Search answer.
 
+## Grok
+
+Use the existing signed-in website for a known-page question, retaining the visible mode and actual fallback. The [native Web Search API documentation](https://docs.x.ai/developers/tools/web-search) describes search and page browsing, but does not identify the website's hidden tool implementation or establish a universal Grok User-Agent. Keep multiple requests per question and rotating networks visible. A signed-in session can still produce unsigned browser claims; account state alone does not explain a different route.
+
+## Claude
+
+Record Free/paid plan and displayed model without upgrading. Distinguish a requested exact quote from an explicitly returned paraphrase. The [classic-robot documentation](https://privacy.claude.com/en/articles/8896518-does-anthropic-crawl-data-from-the-web-and-how-can-site-owners-block-the-crawler) covers ClaudeBot, Claude-User and Claude-SearchBot and links their JSON address publication. [Hosted browsers](https://support.claude.com/en/articles/18234133-how-do-anthropic-hosted-browsers-identify-themselves-when-they-browse-the-web-on-a-user-s-behalf) separately declare Claude-Agent and publish service addresses through SAIL. Do not transfer one pool's method to the other. A documented role rule tested synthetically is not a live trial of that product.
+
+## Gemini / Google
+
+Use the signed-in Gemini website for a bounded page question and coverage follow-up if needed. Preserve initial omissions, tool truncation and disclosed Search/base-URL fallback. Model explanations about indexing are not index measurements. Literal bracketed citation markers are not validated source links.
+
+Compare with [Google's client-specific fetcher documentation](https://developers.google.com/crawling/docs/crawlers-fetchers/google-user-triggered-fetchers). Google-Agent and Google-GeminiNotebook have documented tokens and scopes; bare Google from AS15169 does not establish either one. Keep experimental assignment separate from the production classifier's unresolved result.
+
 ## Extending the catalogue
 
-Potential additions include Jina Reader, Claude tools, Google/Gemini, Mistral and Grok. Add a current primary source and a runnable entry point before calling an adapter usable. Keep existing historical trials linked and dated; queue fresh repeats only when they change the comparison.
+Potential additions include Jina Reader, Mistral and additional product/tool paths. Add a current primary source and a runnable entry point before calling an adapter usable. Keep existing historical trials linked and dated; queue fresh repeats only when they change the comparison.

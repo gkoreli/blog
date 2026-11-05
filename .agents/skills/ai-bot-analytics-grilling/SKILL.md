@@ -53,6 +53,14 @@ Inspect `Signature-Input` and verifier coverage. A verified authority-only proof
 
 Compare returned H1s with body H1s, titles with title metadata, quoted sentences with their source, and publication/crawl dates with their named fields. Audit whether summaries preserve qualifications. A correct quote or visible citation can be reported as a controlled agent-mediated outcome even when no origin fetch is observed.
 
+## Calibrate and harden analytics when requested
+
+Use controlled automation to test the actual classifier, not just provider success. Publish the received declarations, request shape, network-method state, verified publisher/coverage and stored verdict together. Browser can include known automation; list nonmembership and an unavailable check are different outcomes. Do not infer a provider from a generic cloud ASN, a bare `Google` header or the experiment's label outside that trial.
+
+For a supported repair, inspect current native documentation/publications and the implementation. Scope IP methods to the documented client, keep hosted-browser and classic-crawler pools separate, and preserve mixed consumer/VPN/transit exclusions. Exact display-name approval grants no verification trust. Persist the applicable display/method profile before expanding mutable catalogues; reject conflicting retained provenance and disclose any historical profile supplied externally rather than stored in the row.
+
+Protect storage budgets and complete evidence when adding tokens or metadata. Keep old migrations, method snapshots and captured verdicts intact; a historical rewrite needs a separate explicit decision and audit. Test the actual regression and previous receipt projections with saved responses before new production reads. Separate synthetic mutations from provider traffic. Then record source delivery, activation and a fresh bounded request-to-row acceptance independently. A sitemap/robots/asset request outside page eligibility belongs in origin/resource evidence, never an invented page acknowledgement.
+
 Never generate vendor-looking headers and call that a provider trial. Local regression cases may test the collector, but must retain their synthetic label. Browser classification does not establish a person; controlled trials do not establish organic growth.
 
 ## Leave durable, reviewable results

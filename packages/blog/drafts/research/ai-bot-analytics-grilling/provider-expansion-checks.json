@@ -1,0 +1,107 @@
+{
+  "checkedAt": "2026-11-05T16:26:17.616741+00:00",
+  "codeCommit": "05f5548",
+  "analyticsTests": {
+    "passed": 397,
+    "failed": 0
+  },
+  "blogTests": {
+    "passed": 185,
+    "failed": 0
+  },
+  "workspaceTypecheck": "passed",
+  "markdownValidation": {
+    "passedPosts": 30
+  },
+  "nativePortability": "fresh-schema and minimal Worker passed",
+  "isolatedBuild": {
+    "sourceCommit": "05f5548",
+    "posts": 41,
+    "passed": true,
+    "sharedDistTouched": false,
+    "publicConfiguration": {
+      "publicTurnstileSiteKeyPresent": false,
+      "publicTurnstileSiteKeySha256": null,
+      "privateEnvCopied": false
+    }
+  },
+  "skillValidator": "passed with cached PyYAML via uv --offline",
+  "originalCohort": {
+    "checkedAt": "2026-11-05T15:59:27.528Z",
+    "exactRows": 27,
+    "fullReceiptMatches": 27,
+    "rowsRead": 54,
+    "rowsWritten": 0,
+    "statementAttempts": 1,
+    "responseSha256": "5ea5f6d9327f83544b469b0c69d756561733bc4a456ae7ec743fa51fff1ff1ce",
+    "readerKinds": {
+      "browser": 21,
+      "ai-assistant": 1,
+      "signed-agent": 3,
+      "cloud-browser": 1,
+      "unresolved": 1
+    },
+    "ownerExcluded": 0,
+    "limits": [
+      "Controlled test traffic; not organic audience growth, people, or independent cryptographic replay."
+    ]
+  },
+  "postActivationCohort": {
+    "checkedAt": "2026-11-05T16:19:52.015Z",
+    "exactRows": 3,
+    "fullReceiptMatches": 3,
+    "rowsRead": 6,
+    "rowsWritten": 0,
+    "statementAttempts": 1,
+    "responseSha256": "4b7ba9b8a295fba59dc235bf0f25f557f30a9d724535a97f698ae1ffcc483a87",
+    "readerKinds": {
+      "ai-assistant": 2,
+      "signed-agent": 1
+    },
+    "ownerExcluded": 0,
+    "signerProfileBasis": {
+      "stored": 2,
+      "externalAcknowledgement": 1
+    },
+    "limits": [
+      "Controlled test traffic; not organic audience growth, people, or independent cryptographic replay."
+    ]
+  },
+  "savedReceiptReplays": {
+    "cohorts": [
+      27,
+      13,
+      2,
+      3,
+      1
+    ],
+    "matches": 46,
+    "newProductionReads": 0
+  },
+  "independentLocalDotProofReplay": {
+    "verified": 3,
+    "unsignedMutationVerified": 3,
+    "methodAndAuthorityMutationsRejected": 3,
+    "providerRequestsAdded": 0
+  },
+  "allOwnedCapturesStopped": true,
+  "temporaryKeyRemoved": true,
+  "articlePublished": false,
+  "limitations": [
+    "Retained security evidence unavailable; rejected direct OAuth route was not retried.",
+    "Public main.js metadata read returned HTTP 403; no served client source/build equality.",
+    "Claude-Agent SAIL verification and authenticated Firecrawl/Agent remain open."
+  ],
+  "structure": {
+    "markdownFiles": 8,
+    "localLinks": 125,
+    "brokenLinks": 0,
+    "newJsonFiles": 8,
+    "humanPrompts": 14,
+    "fences": "balanced",
+    "secretAndPrivateIdScan": "passed",
+    "mainArticleTables": 5,
+    "mainArticleH1s": 1
+  },
+  "finalStructureCheckedAt": "2026-11-05T16:29:36.006241+00:00"
+}

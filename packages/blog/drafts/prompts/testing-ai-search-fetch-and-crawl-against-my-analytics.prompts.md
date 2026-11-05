@@ -43,3 +43,11 @@ you have my approval to use wrangler cli as needed
 ---
 
 i just queried via perplexity, it feels like that they are blocking the query params but # worked, you can look at the entire conversation that i had with it in your browser, and next time please don't give up so easily, i feel like some providers block query params but you can use # instead, there is no way that these agents don't have web search or fetch tools you know
+
+---
+
+lets do grok too, i should be logged in there as well. And lets to chatgpt bot as well, i am logged in the chatgpt site as you already know, ask my chatgpt Dot to try either via the browser to visit the url and both to fetch it as needed. I wonder how dot's computer will get registered you know\... lets do the claude doo: [https://claude.ai/new](https://claude.ai/new) but i only have free account with them but i should be signed in. I signed in context.dev too and it has all api key, cli, skill or web tools right there on the dashboard all.
+
+---
+
+lets test/verify gemini too. And the idea is to also additionally validate our analytics as well. Are we detecting all these bots, crawlers, fetches, browser access properly, are we distinguishing between the providers, are we labeling the network providers properly? Besides the article the idea is to improve and harden our code lmao. You are behaving as if we are just trying to show which ones succeeded lmao, no we are doing much more than that . Its like continuation of that article which ai fetchers send which headers in much more robust and informative, latest and greatest, and also talking about our own analytics how it all works, and lot more. The title should which ai fetchers, browsers, and crawlers and all that send which headers and how to detect them in analytics. Like the goal is to help people identify and improve their analytics in the ERA of AI based browsing. Like the objectie is much larger than you think. Update the title and improve the article and improve the blog analytics as well. We should be detecting and differentiating correctly and truthfully as well. Read authoritative and native docs and improve our code as needed if thats not the case.
