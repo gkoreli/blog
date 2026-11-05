@@ -1,0 +1,53 @@
+{
+  "checkedAt": "2026-11-05T17:05:04.135Z",
+  "draftSha256": "f0adef15459381402db6d76804b48588aec6694dd77f2eaf2551ee1e8390be6a",
+  "scope": "unpublished Turnstile companion draft; no served article or metadata acceptance",
+  "render": {
+    "pipeline": "actual blog Marked/Shiki",
+    "h1Count": 1,
+    "tables": 3,
+    "highlightedCodeBlocks": 4,
+    "rawExecutableScripts": 0
+  },
+  "provenance": {
+    "selectedCompletePrompts": 6,
+    "privateTestAuthorizationOmitted": true,
+    "completeConversationTranscript": false,
+    "researchFootprintMeasured": false
+  },
+  "links": {
+    "pinnedGitObjectsExist": true,
+    "publicHeadCheckedAt": "2026-11-05T17:02:02.271Z",
+    "method": "unauthenticated HTTPS HEAD",
+    "results": [
+      {
+        "url": "https://github.com/gkoreli/blog/blob/9c0b674/packages/blog/src/client/subscribe.ts",
+        "status": 200
+      },
+      {
+        "url": "https://github.com/gkoreli/blog/blob/ed00e62/packages/blog/drafts/research/newsletter-reliability/15-live-signup-acceptance.md",
+        "status": 200
+      },
+      {
+        "url": "https://github.com/gkoreli/blog/blob/ed00e62/packages/blog/drafts/research/newsletter-reliability/17-rendered-sitekey-regression.md",
+        "status": 200
+      },
+      {
+        "url": "https://github.com/gkoreli/blog/blob/ed00e62/packages/blog/drafts/research/newsletter-reliability/27-current-idle-widget-errors.md",
+        "status": 200
+      },
+      {
+        "url": "https://github.com/gkoreli/blog/blob/ed00e62/packages/blog/drafts/research/newsletter-reliability/28-managed-verification-and-diagnostics.md",
+        "status": 200
+      },
+      {
+        "url": "https://github.com/gkoreli/blog/blob/ed00e62/packages/blog/drafts/research/newsletter-reliability/subscription-recovery-live-acceptance.json",
+        "status": 200
+      }
+    ]
+  },
+  "productionQueries": 0,
+  "productionSignupAttempts": 0,
+  "newEmailSends": 0,
+  "sharedDistWrites": 0
+}
