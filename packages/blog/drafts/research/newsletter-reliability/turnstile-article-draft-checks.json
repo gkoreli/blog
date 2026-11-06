@@ -1,27 +1,44 @@
 {
-  "checkedAt": "2026-11-05T17:05:04.135Z",
-  "draftSha256": "f0adef15459381402db6d76804b48588aec6694dd77f2eaf2551ee1e8390be6a",
-  "scope": "unpublished Turnstile companion draft; no served article or metadata acceptance",
+  "checkedAt": "2026-11-06T05:55:48.553Z",
+  "draftSha256": "109b0e65206b4226d742366574f2b8bf7217327e564835c2ca848d8061dc7755",
+  "scope": "substantive unpublished editorial revision; release metadata and scheduling remain with coordinating chat",
   "render": {
     "pipeline": "actual blog Marked/Shiki",
     "h1Count": 1,
-    "tables": 3,
+    "tables": 2,
     "highlightedCodeBlocks": 4,
     "rawExecutableScripts": 0
   },
   "provenance": {
-    "selectedCompletePrompts": 6,
+    "selectedCompletePrompts": 7,
+    "latestOwnerPromptExactBytesMatched": true,
+    "latestOwnerPromptSha256": "ced25c5d8310b5a99262aaced3166627d586d7ea985e63da0c2c42f6e8909e8d",
+    "earlierSelectedPromptsUnchanged": true,
+    "agentBriefInHumanPromptRecord": false,
     "privateTestAuthorizationOmitted": true,
     "completeConversationTranscript": false,
     "researchFootprintMeasured": false
   },
+  "pinnedGitTargets": 8,
+  "productionQueriesDuringEditorialRevision": 0,
+  "productionSignupAttemptsDuringEditorialRevision": 0,
+  "newEmailSendsDuringEditorialRevision": 0,
+  "sharedDistWrites": 0,
+  "runtimeChanges": 0,
+  "schedulerChanges": 0,
   "links": {
-    "pinnedGitObjectsExist": true,
-    "publicHeadCheckedAt": "2026-11-05T17:02:02.271Z",
     "method": "unauthenticated HTTPS HEAD",
     "results": [
       {
         "url": "https://github.com/gkoreli/blog/blob/9c0b674/packages/blog/src/client/subscribe.ts",
+        "status": 200
+      },
+      {
+        "url": "https://github.com/gkoreli/blog/blob/9c0b674/packages/newsletter/src/turnstile.ts",
+        "status": 200
+      },
+      {
+        "url": "https://github.com/gkoreli/blog/blob/e089f77/packages/blog/drafts/research/newsletter-reliability/30-signed-resend-feedback-acceptance.md",
         "status": 200
       },
       {
@@ -46,8 +63,13 @@
       }
     ]
   },
-  "productionQueries": 0,
-  "productionSignupAttempts": 0,
-  "newEmailSends": 0,
-  "sharedDistWrites": 0
+  "coordinatingReview": {
+    "state": "reported by coordinating chat",
+    "draftSha256": "109b0e65206b4226d742366574f2b8bf7217327e564835c2ca848d8061dc7755",
+    "promptsSha256": "97e2e29196cd69f1aa59692c131111e3947ca75745c2a70ae85a803c35aa7a96",
+    "substantiveProseAccepted": true,
+    "isolatedReleasePreviewPosts": 43,
+    "scheduledBoundaryPreview": "07:59:59 blocks / 08:00 Pacific permits; reported by release owner",
+    "publicationActivated": false
+  }
 }

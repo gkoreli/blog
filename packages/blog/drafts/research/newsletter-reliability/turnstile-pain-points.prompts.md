@@ -21,3 +21,8 @@ I already confirmed it lmao
 ---
 
 Lets write a blog article about all the pain points of the turnstile
+
+---
+
+next article will be the Drafted **[Cloudflare Turnstile: What Kept Breaking My Signup Form](/Users/goga/Documents/goga/blog/packages/blog/drafts/research/newsletter-reliability/turnstile-pain-points.md)**.
+but i want you to take it notch further and improve it. Can you coordinate and delegate via the builder that built it?
