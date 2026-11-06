@@ -1,7 +1,7 @@
 /** Manual native-browser acceptance fixture. No production credentials or email sends.
  * pnpm -C packages/blog exec node --import tsx test/fixtures/subscription-browser.ts hold
  * Scenarios: hold | accepted | html | redirect | failure | loader-failure | main-failure
- *           | late-provider | late-loader-failure.
+ *           | late-provider | late-loader-failure | gateway | stalled-body.
  */
 import { createServer } from 'node:http';
 import { fileURLToPath } from 'node:url';
@@ -14,7 +14,7 @@ import { parseClientErrorPayload } from '../../../client-observability/src/schem
 import type { SubscriptionErrorEvidence } from '@gkoreli/client-observability/client';
 
 const scenario = process.argv[2] ?? 'accepted';
-if (!['hold', 'accepted', 'html', 'redirect', 'failure', 'loader-failure', 'main-failure', 'late-provider', 'late-loader-failure'].includes(scenario)) throw new Error('Unknown fixture scenario');
+if (!['hold', 'accepted', 'html', 'redirect', 'failure', 'loader-failure', 'main-failure', 'late-provider', 'late-loader-failure', 'gateway', 'stalled-body'].includes(scenario)) throw new Error('Unknown fixture scenario');
 const sitekey = scenario === 'failure' ? '2x00000000000000000000AB' : '1x00000000000000000000AA';
 const lateProvider = scenario === 'late-provider' || scenario === 'late-loader-failure';
 const forms = await renderContent(['first', 'second'].map(formId => ReplySlip({ turnstileSiteKey: sitekey, formId })));
@@ -55,7 +55,10 @@ const html = `<!doctype html><html lang="en"><head><meta charset="utf-8"><title>
 const evidence: {
   scenario: string; clientSha256: string; signupPosts: number; acceptedDummyTokens: number; redirectTargetRequests: number;
   attemptIds: string[]; diagnosticStages: string[]; subscriptionEvidence: SubscriptionErrorEvidence[]; heldResponses: number;
-} = { scenario, clientSha256, signupPosts: 0, acceptedDummyTokens: 0, redirectTargetRequests: 0, attemptIds: [], diagnosticStages: [], subscriptionEvidence: [], heldResponses: 0 };
+  diagnosticStatuses: (number | null)[];
+  stalledBodiesStarted: number; stalledBodiesClosed: number; requestToStreamCloseMs: number | null;
+} = { scenario, clientSha256, signupPosts: 0, acceptedDummyTokens: 0, redirectTargetRequests: 0, attemptIds: [], diagnosticStages: [], subscriptionEvidence: [], heldResponses: 0,
+  diagnosticStatuses: [], stalledBodiesStarted: 0, stalledBodiesClosed: 0, requestToStreamCloseMs: null };
 let released = scenario !== 'hold';
 const pending: (() => void)[] = [];
 const server = createServer(async (request, response) => {
@@ -90,6 +93,7 @@ const server = createServer(async (request, response) => {
       const event = parseClientErrorPayload(value, `http://${request.headers.host}`);
       if (!event || !/^[a-z_-]{1,80}$/.test(event.message)) { response.writeHead(400).end(); return; }
       evidence.diagnosticStages.push(event.message);
+      evidence.diagnosticStatuses.push(event.status ?? null);
       if (event.subscriptionEvidence) evidence.subscriptionEvidence.push(event.subscriptionEvidence);
       response.writeHead(204).end(); return;
     }
@@ -104,6 +108,12 @@ const server = createServer(async (request, response) => {
     const send = () => {
       response.setHeader('x-request-id', crypto.randomUUID());
       if (scenario === 'redirect') { response.writeHead(302, { location: '/fixture/redirect-target' }).end(); return; }
+      if (scenario === 'gateway') { response.writeHead(502, { 'content-type': 'text/html' }).end('<html>Unconfirmed intermediary response</html>'); return; }
+      if (scenario === 'stalled-body') {
+        const startedAt = performance.now(); evidence.stalledBodiesStarted++;
+        response.once('close', () => { evidence.stalledBodiesClosed++; evidence.requestToStreamCloseMs = Math.round(performance.now() - startedAt); });
+        response.writeHead(202, { 'content-type': 'application/json' }); response.write('{"ok":'); return;
+      }
       response.setHeader('content-type', scenario === 'html' ? 'text/html' : 'application/json');
       response.writeHead(202).end(scenario === 'html' ? '<html>Unexpected intermediary response</html>' : '{"ok":true}');
     };
