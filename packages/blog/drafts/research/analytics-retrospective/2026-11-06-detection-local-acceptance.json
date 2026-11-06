@@ -1,0 +1,780 @@
+{
+  "recordVersion": "2026-11-06.1",
+  "dateUtc": "2026-11-06",
+  "sourceCommit": "64a95314967f9b79a81c4f711dc27cae95fbb9c6",
+  "sourceManifestSha256": "2db4b4acbb73617837e51def271d68dcd431c38403c1ea989f50401d2a5ac22e",
+  "sourceManifestMeaning": "Digest supplied by release-source.json for the frozen source manifest; not a digest of this public record.",
+  "privacy": "Aggregates and byte commitments only. No trial/observation/client IDs, marker, raw invocation headers, addresses, ASN values, account metadata or credentials are published.",
+  "stage": "local-release-acceptance",
+  "status": "passed-with-explicit-scope",
+  "checks": {
+    "workspaceTests": {
+      "analytics": 433,
+      "blog": 403,
+      "siteAudit": 29,
+      "failures": 0
+    },
+    "workspaceTypecheck": "passed",
+    "markdownPostsValidated": 32,
+    "builtPosts": 43,
+    "isolatedProductionBuild": "passed",
+    "workerDryRun": "passed",
+    "productionRequests": 0
+  },
+  "composedWorker": {
+    "requests": 26,
+    "storedEvents": 8,
+    "attemptedAndAcknowledged": 8,
+    "exactStorageReadbacks": 8,
+    "fullCurrentReceiptMatches": 8,
+    "ownerExcluded": 8,
+    "publicEventsAfterMarksRemoved": 0,
+    "optionalDiagnosticRows": 0,
+    "externalRequests": 0,
+    "humanLabels": 0,
+    "profiles": [
+      {
+        "label": "cubot",
+        "kind": "browser",
+        "reason": "navigation-shaped-network-unlisted",
+        "candidates": 0,
+        "products": 0,
+        "classificationEvidenceBytes": 389
+      },
+      {
+        "label": "uri-negative",
+        "kind": "browser",
+        "reason": "navigation-shaped-network-unlisted",
+        "candidates": 0,
+        "products": 0,
+        "classificationEvidenceBytes": 389
+      },
+      {
+        "label": "gpt-positive",
+        "kind": "ai-crawler",
+        "reason": "GPTBot",
+        "candidates": 1,
+        "products": 1,
+        "classificationEvidenceBytes": 413
+      },
+      {
+        "label": "seo-name",
+        "kind": "seo-crawler",
+        "reason": "SemrushBot",
+        "candidates": 1,
+        "products": 1,
+        "classificationEvidenceBytes": 425
+      },
+      {
+        "label": "http-name",
+        "kind": "http-client",
+        "reason": "node-fetch",
+        "candidates": 1,
+        "products": 1,
+        "classificationEvidenceBytes": 432
+      },
+      {
+        "label": "all-products",
+        "kind": "unresolved",
+        "reason": "multiple-client-declarations",
+        "candidates": 63,
+        "products": 74,
+        "classificationEvidenceBytes": 1341
+      },
+      {
+        "label": "malformed-browser",
+        "kind": "unresolved",
+        "reason": "unrecognized-browser-claim",
+        "candidates": 0,
+        "products": 0,
+        "classificationEvidenceBytes": 393
+      },
+      {
+        "label": "missing-metadata",
+        "kind": "unresolved",
+        "reason": "fetch-metadata-absent",
+        "candidates": 0,
+        "products": 0,
+        "classificationEvidenceBytes": 377
+      }
+    ],
+    "limits": [
+      "Actual composed Worker and native D1/crypto with explicit synthetic edge ASN and a special-range test address; no vendor source is authenticated.",
+      "Outbound fetches have local unavailable-feed responses configured; the address guard can avoid them entirely.",
+      "A test-only Request adapter supplies canonical Fetch Metadata because Node transport rewrites Sec-Fetch-Mode; no wire-fidelity claim.",
+      "Node supplies HTTP requests; no real browser, vendor identity or population accuracy claim."
+    ]
+  },
+  "nativeReport": {
+    "syntheticRows": 512,
+    "selectors": 13,
+    "allNodeNativeEqual": true,
+    "allCommonBaselineValuesEqual": true,
+    "comparisonOrdering": "Unordered report tables compared as multisets; times and all field values retained.",
+    "defaultSevenDay": {
+      "includedEvents": 455,
+      "selectedNameViews": 115,
+      "noSelectedNameViews": 340,
+      "jointGroups": 15,
+      "baselineRowsRead": 36847,
+      "candidateRowsRead": 38169,
+      "increaseRowsRead": 1322,
+      "increasePercent": 3.588,
+      "rowsWritten": 0
+    },
+    "meterScope": "Local workerd D1, reported last-attempt counters with partial metadata; not production cost or a global bound.",
+    "selectorsChecked": [
+      {
+        "range": "7d",
+        "traffic": "all"
+      },
+      {
+        "range": "30d",
+        "traffic": "all"
+      },
+      {
+        "range": "all",
+        "traffic": "all"
+      },
+      {
+        "range": "7d",
+        "traffic": "browser"
+      },
+      {
+        "range": "7d",
+        "traffic": "agents"
+      },
+      {
+        "range": "7d",
+        "traffic": "crawlers"
+      },
+      {
+        "range": "7d",
+        "traffic": "automation"
+      },
+      {
+        "range": "7d",
+        "traffic": "unresolved"
+      },
+      {
+        "range": "7d",
+        "traffic": "all",
+        "path": "/article-a"
+      },
+      {
+        "range": "7d",
+        "traffic": "all",
+        "path": "/article-b"
+      },
+      {
+        "range": "7d",
+        "traffic": "all",
+        "path": "/missing"
+      },
+      {
+        "range": "7d",
+        "traffic": "all",
+        "kind": "other-bot"
+      },
+      {
+        "range": "7d",
+        "traffic": "all",
+        "agent": "GoogleOther"
+      }
+    ]
+  },
+  "browserUi": {
+    "scope": "Isolated built stats HTML/JS/CSS with 20 synthetic stored-event report fixtures; browser UI, not production data or physical-device operation.",
+    "nameCoverage": {
+      "selected": 8,
+      "noSingleSelection": 12,
+      "total": 20
+    },
+    "joinedRows": 5,
+    "checks": {
+      "joinedFactsVisible": true,
+      "namesReconcile": true,
+      "invalidBalancedCoverageRejected": true,
+      "invalidReportDashboardHidden": true,
+      "retryRecovered": true,
+      "ariaBusyCleared": true,
+      "keyboardHorizontalScroll": true,
+      "consoleErrorsOnValidFixture": 0
+    },
+    "viewports": [
+      {
+        "requested": {
+          "width": 1280,
+          "height": 900
+        },
+        "observedCssWidth": 1163,
+        "documentScrollWidth": 1163,
+        "tableViewport": 728,
+        "tableScrollWidth": 1152
+      },
+      {
+        "requested": {
+          "width": 390,
+          "height": 844
+        },
+        "observedCssWidth": 354,
+        "documentScrollWidth": 354,
+        "tableViewport": 319,
+        "tableScrollWidth": 1152,
+        "keyboardScrollLeft": 36.3636360168457
+      }
+    ],
+    "limits": [
+      "Actual CSS viewport widths differ from requested dimensions under the current browser scale; report both.",
+      "No actual phone, human readership, browser identity or production service claim.",
+      "Local fixture endpoint deliberately supplies one fixed report across filter requests; filter correctness is covered separately by native selector checks."
+    ],
+    "productionRequests": 0,
+    "viewportOverrideReset": true,
+    "taskTabClosed": true,
+    "observedOn": "2026-11-06 UTC",
+    "recordedAt": "2026-11-06T07:20:25.006395+00:00",
+    "timestampLimit": "Browser observations were recorded in this session; exact per-action UTC times were not captured."
+  },
+  "productionControlPreflight": {
+    "accepted": true,
+    "profile": "2026-11-06.1",
+    "controls": 6,
+    "closedProjectionChains": 6,
+    "negativeCases": 29,
+    "negativeLabels": [
+      "missing-invocation",
+      "duplicate-invocation",
+      "wrong-worker",
+      "changed-source-profile",
+      "changed-native-header",
+      "changed-manifest-header",
+      "changed-marker",
+      "changed-ray",
+      "missing-attempt",
+      "duplicate-operation",
+      "swapped-operation-link",
+      "swapped-storage-ids",
+      "numeric-storage-id",
+      "missing-readback-row",
+      "owner-zero",
+      "optional-capture",
+      "wrong-classifier",
+      "wrong-schema",
+      "unknown-product-profile",
+      "truncated-product-bits",
+      "balanced-page-responses-two-zero",
+      "balanced-observation-counts-two-zero",
+      "changed-acknowledgement-projection",
+      "unexpected-signature-header",
+      "duplicate-requested-row",
+      "execution-after-cutoff",
+      "native-missing-PK-retains-requested-row",
+      "native-extra-unacknowledged-owner-zero-row",
+      "expired-config-route-closed"
+    ],
+    "allProducts": {
+      "label": "all-products",
+      "readerKind": "unresolved",
+      "readerReason": "multiple-client-declarations",
+      "canonicalCandidates": 63,
+      "matchedProducts": 74,
+      "classificationBytes": 1341,
+      "permanentOwnerExclusion": true,
+      "urlUuidRedacted": false
+    },
+    "productionCalls": 0,
+    "settingsChanges": 0,
+    "externalFetches": 0,
+    "scope": "Current compiled collector and projection execute in Node; actual local workerd D1 executes schema, lookup, index plan and counters. Tail/HTTP manifests and counters are synthetic fixtures, not wire/provider/operator proof. The separate composed-Worker preflight and production settings/activation/cleanup receipts remain required."
+  },
+  "productionControlSql": {
+    "templateSha256": "a7fbce904fe88867412d20fadebf1a11ddc1e4e09b568b9a41b6d10986d40358",
+    "parameterizedMatchesLiteral": true,
+    "rowsReturned": 6,
+    "rowsRead": 54,
+    "rowsWritten": 0,
+    "explainUsesPathTimeIndex": true
+  },
+  "compiledGraph": {
+    "modules": 78,
+    "commitmentEncoding": "SHA-256 of JSON encoded with sorted object keys, compact separators, preserving array order",
+    "sha256": "0112b62ddc7897837202ece41fd8792570a460eafc14d00f77f6cc538a5ea1d4",
+    "requirement": "Driver compares every sorted top-level compiled .test-dist/*.js filename and byte hash against the native receipt before prepare, activation and execution."
+  },
+  "driverMock": {
+    "accepted": true,
+    "staleCompiledGraphRejected": true,
+    "cleanupAfterGraphChangePassed": true,
+    "preexistingBindingPrepareRejected": true,
+    "ambiguousTimestampRejected": true,
+    "splitAllocationRejected": true,
+    "concurrentExecuteRejected": true,
+    "concurrentCleanupPreservedSettings": true,
+    "unorderedDeploymentSelection": true,
+    "mockedStages": 5,
+    "repeatExecuteRejected": true,
+    "mockedRequests": 20,
+    "actualNetworkCalls": 0,
+    "actualSettingsChanges": 0
+  },
+  "failuresPreserved": [
+    {
+      "kind": "native-schema-loader",
+      "result": "Two earlier harness attempts failed: na\u00efve schema splitting produced an empty statement, then split comment text near no. Fresh-schema loader repairs precede passing native comparisons; failures are not runtime D1 findings."
+    },
+    {
+      "kind": "local-build-sandbox",
+      "result": "First final-build attempt failed on tsx IPC EPERM; isolated approved retry passed."
+    },
+    {
+      "kind": "Node-header-transport",
+      "result": "Node transport rewrote Sec-Fetch-Mode. A test-only adapter supplies canonical Fetch Metadata; composed controls do not prove wire fidelity."
+    },
+    {
+      "kind": "stale-compiled-graph",
+      "result": "Initial native control preflight used stale shared compiled output and rejected URI-negative as ai. Source was not changed to fit it. Current release-checkout graph passes; driver separately rejects graph drift."
+    },
+    {
+      "kind": "deployment-ordering",
+      "result": "Private driver initially assumed first deployment was newest. Metadata exposed oldest-first ordering before eligible production requests. Driver now validates timestamps, uniqueness, single latest deployment and 100% single-version allocation; unordered/ambiguous/split-allocation mocks pass."
+    }
+  ],
+  "artifactCommitments": [
+    {
+      "artifact": "release-source.json",
+      "sha256": "306d44a7e1a6c5fb708e320cabf2969b7b27dad5980879401df18d9456ee2f49"
+    },
+    {
+      "artifact": "release-workspace-tests.log",
+      "sha256": "d5313e2e84d5d159657f7f1531b24b251156e0afd2034d5058228f2c93dbd111"
+    },
+    {
+      "artifact": "release-typecheck.log",
+      "sha256": "35c8a22d6fd9b716c2f3b4cc3ffb69f70d5ae681ea104fd053400f562f06ebbe"
+    },
+    {
+      "artifact": "release-content-validation.log",
+      "sha256": "639d9c0b74efd5303cbfd68861ea7776d46250a7b91123b69ecb2fe926ce2ef5"
+    },
+    {
+      "artifact": "release-build.log",
+      "sha256": "ad91312dd0cd57bbe21d90b320b1698404e1ba820ab2ecce6bd57e069af8f458"
+    },
+    {
+      "artifact": "release-dryrun.log",
+      "sha256": "b2d0182eae2d508c73c1a9f16e9ca0dc71b5a9faabf0d4fc6eb64396057056b3"
+    },
+    {
+      "artifact": "final-client-evidence-native.json",
+      "sha256": "a390b73358e6fbc1c51165566905174863ac2fa9af2416428a8494e2830317c1"
+    },
+    {
+      "artifact": "minimal-worker-full-receipt.json",
+      "sha256": "4f985f68c100136207fc27367868b642287f3e5b4bd1e3156b19886e5306e3c0"
+    },
+    {
+      "artifact": "ui-acceptance.json",
+      "sha256": "ca2eab5c6f357c2332c67737ddfeefc323ad6dc3a0fd48b8f5b9d222a41ecd25"
+    },
+    {
+      "artifact": "production-driver-local-receipt.json",
+      "sha256": "519dbea0d3bf48a58d07752ac0e3cad2f0b080300a673928907df963ca261a19"
+    },
+    {
+      "artifact": "client-evidence-native-schema-loader-failure.log",
+      "sha256": "02f05f809a8d7e5bc51d1b3b1f4e5e0df7cd63e18d9ef5d020d03570b37e89e5"
+    },
+    {
+      "artifact": "client-evidence-native-comment-split-failure.log",
+      "sha256": "896a6be0815291f78bd9e5de48c72823029f999791c98a3bf4a67655bb58f7d8"
+    },
+    {
+      "artifact": "final-build.log",
+      "sha256": "77cf7cee80299754b9538612b5a3a166a9bb0dc14e489ac5934eb482cd8ed991"
+    },
+    {
+      "artifact": "final-build-retry.log",
+      "sha256": "20488621ce060bc33e98a732f518531f469bfa84f9e9b4bb24acd89fffba94c1"
+    },
+    {
+      "artifact": "detection-control-native-20261106-2.json",
+      "sha256": "92f0680f495cf6577a21e8ffc9c889e707337d18ec9656f8b03d3363b1de55cc"
+    },
+    {
+      "artifact": "production-driver.mjs",
+      "sha256": "b9dad781c3b45285f8b6b6775f4764f8ddf3a393c26995ab5a1309c031708b45"
+    },
+    {
+      "artifact": "detection-live-control.mjs",
+      "sha256": "04fcd19b83c14763bc562f1e5b25f9623a046791b11b094bd4c3db05eb575a4f"
+    },
+    {
+      "artifact": "check-detection-live-control-native.mjs",
+      "sha256": "a300247259cebd2b1ff665c0e2a0d0d580456453ec18d14b7ebe95e651b3fae5"
+    },
+    {
+      "artifact": "lexical-benchmark-final.json",
+      "sha256": "287dba712cea7d7bfe11886e47e812a7658f21e8e85dc88ab8fcfd8eb2bc03b6"
+    },
+    {
+      "artifact": "analytics-bundle-final.json",
+      "sha256": "1e70d478d8a544b98e8b9f0def4ee488647ab7252c6ede0f191da052bdd427ee"
+    },
+    {
+      "artifact": "lexical-benchmark.json",
+      "sha256": "a71e2962f4780f9fbb6832607472f5dce057da10e10dfc7b16433af2a2b6e99c"
+    }
+  ],
+  "limits": [
+    "Local controls are synthetic; roles and capabilities are retained declarations, not vendor/operator/browser/human authentication.",
+    "UI observation was recorded in-session with requested and actual CSS viewport widths; exact per-action UTC timing and raw UI/build-screen pixels were not byte-archived.",
+    "Earlier 427-test baseline and 50 focused post-conflict tests have different scope; current integrated acceptance is 433 analytics tests, not their sum.",
+    "Research132 preserves the independent production aggregate cost failure of 85639 reads against its planned 50000 threshold. Local report work rose approximately 3.6%; no read saving is claimed."
+  ],
+  "remaining": [],
+  "lexicalBenchmark": {
+    "checkedAt": "2026-11-06T08:09:50.590Z",
+    "runtime": "v24.14.1",
+    "cpu": "Apple M5",
+    "iterationsPerBatch": 2000,
+    "rounds": 5,
+    "coldImportMeasured": false,
+    "fixtureSha256": "101a5df350ea3741729d1ac0d890028b4fcbc4f3273526622097b41b0ebead75",
+    "baselineCompiledGraphSha256": "950703c3c0aa69bfb465b9e8063511aecdf7ddf12d0bef0b90b11dadb36fe37e",
+    "currentCompiledGraphSha256": "be6a11d97f38354846466abc8aeecea2a917a95606b6c45ad0f1289a513fb4bb",
+    "intermediateReceiptSha256": "a71e2962f4780f9fbb6832607472f5dce057da10e10dfc7b16433af2a2b6e99c",
+    "releaseCheckoutHead": "64a95314967f9b79a81c4f711dc27cae95fbb9c6",
+    "requestInspectorUserAgentCharacterLimit": 8192,
+    "productionCalls": 0,
+    "limits": [
+      "Warmed Node CPU microbenchmark of lexical declarations only; not Worker billing, end-to-end latency, corpus accuracy or population prevalence.",
+      "Five batch means are reported; no per-request tail percentile or allocation claim.",
+      "Input order and before/after order alternate deterministically; JIT/GC/host contention remain uncontrolled.",
+      "Outputs deliberately differ under the new policy; this measures the cost of those semantics, not equivalent accuracy.",
+      "Inputs above 8192 characters exceed the separate request-inspector API limit; the observer collector has no equivalent explicit UA limit in the inspected source. These are synthetic stress inputs, not measured traffic."
+    ],
+    "method": "Five warmed batch means of 2000 analyzeTraffic calls per input/graph; case order and before/after order alternate deterministically. Reported minimum/median/maximum describe those batch means.",
+    "cases": [
+      {
+        "label": "plain-browser",
+        "bytes": 91,
+        "characters": 91,
+        "before": {
+          "minimum": 2.053625000000011,
+          "median": 2.133478999999852,
+          "maximum": 2.507583000000004,
+          "unit": "microseconds per analyzeTraffic call; five batch means"
+        },
+        "after": {
+          "minimum": 1.4110415000000103,
+          "median": 1.4659375000001091,
+          "maximum": 1.6656045000000006,
+          "unit": "microseconds per analyzeTraffic call; five batch means"
+        },
+        "sameDecisionAsBaseline": true,
+        "sameDecisionAsIntermediate": true,
+        "withinRequestInspectorUserAgentLimit": true
+      },
+      {
+        "label": "cubot",
+        "bytes": 104,
+        "characters": 104,
+        "before": {
+          "minimum": 2.105687499999931,
+          "median": 2.20181249999996,
+          "maximum": 2.4900420000000025,
+          "unit": "microseconds per analyzeTraffic call; five batch means"
+        },
+        "after": {
+          "minimum": 1.544499999999971,
+          "median": 1.6121875000003456,
+          "maximum": 1.8318960000001425,
+          "unit": "microseconds per analyzeTraffic call; five batch means"
+        },
+        "sameDecisionAsBaseline": false,
+        "sameDecisionAsIntermediate": true,
+        "withinRequestInspectorUserAgentLimit": true
+      },
+      {
+        "label": "gpt",
+        "bytes": 10,
+        "characters": 10,
+        "before": {
+          "minimum": 1.453479000000243,
+          "median": 1.4864164999999048,
+          "maximum": 2.0866874999999965,
+          "unit": "microseconds per analyzeTraffic call; five batch means"
+        },
+        "after": {
+          "minimum": 0.32622900000023947,
+          "median": 0.3416664999999739,
+          "maximum": 0.4523334999999946,
+          "unit": "microseconds per analyzeTraffic call; five batch means"
+        },
+        "sameDecisionAsBaseline": true,
+        "sameDecisionAsIntermediate": true,
+        "withinRequestInspectorUserAgentLimit": true
+      },
+      {
+        "label": "seo",
+        "bytes": 75,
+        "characters": 75,
+        "before": {
+          "minimum": 1.6988335000000916,
+          "median": 1.7121459999998478,
+          "maximum": 2.2288955,
+          "unit": "microseconds per analyzeTraffic call; five batch means"
+        },
+        "after": {
+          "minimum": 0.8151040000000194,
+          "median": 0.8537499999999909,
+          "maximum": 0.878020499999998,
+          "unit": "microseconds per analyzeTraffic call; five batch means"
+        },
+        "sameDecisionAsBaseline": false,
+        "sameDecisionAsIntermediate": true,
+        "withinRequestInspectorUserAgentLimit": true
+      },
+      {
+        "label": "http",
+        "bytes": 10,
+        "characters": 10,
+        "before": {
+          "minimum": 1.366895999999997,
+          "median": 1.4224999999999,
+          "maximum": 1.8006875000000022,
+          "unit": "microseconds per analyzeTraffic call; five batch means"
+        },
+        "after": {
+          "minimum": 0.3166040000000976,
+          "median": 0.3242499999998927,
+          "maximum": 0.3743959999999973,
+          "unit": "microseconds per analyzeTraffic call; five batch means"
+        },
+        "sameDecisionAsBaseline": false,
+        "sameDecisionAsIntermediate": true,
+        "withinRequestInspectorUserAgentLimit": true
+      },
+      {
+        "label": "compatible-names",
+        "bytes": 25,
+        "characters": 25,
+        "before": {
+          "minimum": 1.6509579999997186,
+          "median": 1.716207999999824,
+          "maximum": 2.1478540000000024,
+          "unit": "microseconds per analyzeTraffic call; five batch means"
+        },
+        "after": {
+          "minimum": 0.5477289999998902,
+          "median": 0.5767499999999472,
+          "maximum": 0.6677920000001905,
+          "unit": "microseconds per analyzeTraffic call; five batch means"
+        },
+        "sameDecisionAsBaseline": true,
+        "sameDecisionAsIntermediate": true,
+        "withinRequestInspectorUserAgentLimit": true
+      },
+      {
+        "label": "conflicting-names",
+        "bytes": 22,
+        "characters": 22,
+        "before": {
+          "minimum": 1.7069794999999885,
+          "median": 1.7813329999999041,
+          "maximum": 2.285333499999993,
+          "unit": "microseconds per analyzeTraffic call; five batch means"
+        },
+        "after": {
+          "minimum": 0.5374794999997903,
+          "median": 0.5697079999999914,
+          "maximum": 0.6585415000001831,
+          "unit": "microseconds per analyzeTraffic call; five batch means"
+        },
+        "sameDecisionAsBaseline": true,
+        "sameDecisionAsIntermediate": true,
+        "withinRequestInspectorUserAgentLimit": true
+      },
+      {
+        "label": "uri-negative",
+        "bytes": 74,
+        "characters": 74,
+        "before": {
+          "minimum": 1.7379169999999249,
+          "median": 1.8485624999998436,
+          "maximum": 2.2360419999999976,
+          "unit": "microseconds per analyzeTraffic call; five batch means"
+        },
+        "after": {
+          "minimum": 0.7916665000002467,
+          "median": 0.8097710000001825,
+          "maximum": 0.8550625000000309,
+          "unit": "microseconds per analyzeTraffic call; five batch means"
+        },
+        "sameDecisionAsBaseline": false,
+        "sameDecisionAsIntermediate": true,
+        "withinRequestInspectorUserAgentLimit": true
+      },
+      {
+        "label": "long-nonmatch",
+        "bytes": 8192,
+        "characters": 8192,
+        "before": {
+          "minimum": 29.25464550000015,
+          "median": 29.49191700000006,
+          "maximum": 30.128957999999997,
+          "unit": "microseconds per analyzeTraffic call; five batch means"
+        },
+        "after": {
+          "minimum": 35.3256454999996,
+          "median": 36.01147900000001,
+          "maximum": 36.37012499999991,
+          "unit": "microseconds per analyzeTraffic call; five batch means"
+        },
+        "sameDecisionAsBaseline": true,
+        "sameDecisionAsIntermediate": true,
+        "withinRequestInspectorUserAgentLimit": true
+      },
+      {
+        "label": "long-uri",
+        "bytes": 8225,
+        "characters": 8225,
+        "before": {
+          "minimum": 195.57339600000023,
+          "median": 201.46529150000015,
+          "maximum": 204.256771,
+          "unit": "microseconds per analyzeTraffic call; five batch means"
+        },
+        "after": {
+          "minimum": 19.77647900000011,
+          "median": 20.0092085,
+          "maximum": 20.287896000000273,
+          "unit": "microseconds per analyzeTraffic call; five batch means"
+        },
+        "sameDecisionAsBaseline": false,
+        "sameDecisionAsIntermediate": true,
+        "withinRequestInspectorUserAgentLimit": false
+      },
+      {
+        "label": "many-products",
+        "bytes": 10389,
+        "characters": 10389,
+        "before": {
+          "minimum": 71.55450000000002,
+          "median": 72.49614550000025,
+          "maximum": 73.16533300000015,
+          "unit": "microseconds per analyzeTraffic call; five batch means"
+        },
+        "after": {
+          "minimum": 119.00381249999998,
+          "median": 120.63277100000005,
+          "maximum": 122.87522899999999,
+          "unit": "microseconds per analyzeTraffic call; five batch means"
+        },
+        "sameDecisionAsBaseline": true,
+        "sameDecisionAsIntermediate": true,
+        "withinRequestInspectorUserAgentLimit": false
+      },
+      {
+        "label": "scheme-runs",
+        "bytes": 8100,
+        "characters": 8100,
+        "before": {
+          "minimum": 35.39891650000004,
+          "median": 35.956708500000104,
+          "maximum": 36.331916500000034,
+          "unit": "microseconds per analyzeTraffic call; five batch means"
+        },
+        "after": {
+          "minimum": 39.23302100000001,
+          "median": 39.89837499999999,
+          "maximum": 40.47485400000005,
+          "unit": "microseconds per analyzeTraffic call; five batch means"
+        },
+        "sameDecisionAsBaseline": true,
+        "sameDecisionAsIntermediate": true,
+        "withinRequestInspectorUserAgentLimit": true
+      }
+    ],
+    "changedFromBaseline": [
+      "cubot",
+      "seo",
+      "http",
+      "uri-negative",
+      "long-uri"
+    ],
+    "untimedCrossFamily": {
+      "includedInTimedTwelve": false,
+      "beforeFamily": "chromium",
+      "afterFamily": "unrecognized",
+      "meaning": "Separate synthetic conflicting Chrome/Firefox products; no execution or real-engine claim."
+    }
+  },
+  "observerBundle": {
+    "checkedAt": "2026-11-06T08:10:36.759Z",
+    "runtime": "v24.14.1",
+    "esbuildVersion": "0.27.3",
+    "ipaddrVersion": "2.5.0",
+    "settings": {
+      "bundle": true,
+      "format": "esm",
+      "platform": "browser",
+      "target": "es2022",
+      "minify": true,
+      "treeShaking": true,
+      "legalComments": "none",
+      "sourcemap": false,
+      "write": false,
+      "metafile": true
+    },
+    "gzip": {
+      "level": 9,
+      "implementation": "node:zlib gzipSync",
+      "zlibVersion": "1.3.1-e00f703"
+    },
+    "sharedDependencyInputsIdentical": true,
+    "outputs": {
+      "before": {
+        "entrySha256": "6b61ac2f7a1645f18ec6e20c20e5c71516bd530d69da9cda83faa453f55bf1ea",
+        "rawBytes": 135340,
+        "rawSha256": "934dc0ba6ebb2733a73268aa16922769a69026d539ef3500f1e2dea8be6b26a8",
+        "gzipBytes": 45244,
+        "gzipSha256": "0c88319f7d6758dfafb5212f0b781f82dd4f4599aed72a82681b287c88f0fe25"
+      },
+      "after": {
+        "entrySha256": "e09ca807a30be7e3c312b14a9bb6b6f4bb823abbe464f30f1ed6440d8174022a",
+        "rawBytes": 143920,
+        "rawSha256": "203a02d556a790d1016c75b6ac445fc527e4aa3f00ac1e5ea725b63dd287ba74",
+        "gzipBytes": 46723,
+        "gzipSha256": "726ccb7d95dc0fcdeb2ec72e19aa44f24289386cb88c8b4ef67033e99a076789"
+      }
+    },
+    "delta": {
+      "rawBytes": 8580,
+      "gzipBytes": 1479,
+      "rawPercent": 6.339589182798866,
+      "gzipPercent": 3.268941738131015
+    },
+    "limits": [
+      "Equivalent observePageResponse-only analytics exports, bundled with identical release dependencies and esbuild settings. No whole-blog bundle or competing feature is included.",
+      "Raw and gzip artifacts quantify this standalone tree-shaken bundle, not deployed Worker size, startup latency, memory allocation, request CPU, billing or detection accuracy.",
+      "The current collector includes the new parsing/registry/evidence behavior; baseline and current semantics deliberately differ."
+    ],
+    "productionCalls": 0,
+    "settingsChanges": 0
+  },
+  "archive": {
+    "accepted": true,
+    "verifiedAt": "2026-11-06T08:44:32.742958+00:00",
+    "archivePath": "/Users/goga/.local/share/gkoreli/analytics-evidence/2026-11-06-detection-improvement",
+    "manifestSha256": "7bf11ce8f580546c3c44f70cab6f96f4c65f0f00505084101e5ff1cd679de1e7",
+    "filesVerified": 4982,
+    "bytesVerified": 88222417,
+    "allPrivateModes": true,
+    "ephemeralGrantAbsent": true,
+    "articleReconstructionsLabeled": true,
+    "snapshotMeaning": "Preserved executed inputs/captures and pre-pointer working records; later evidence pointers and article link pinning remain in delivered Git history."
+  },
+  "relatedAcceptance": "Research134 separately records production controls and served report/cache acceptance."
+}

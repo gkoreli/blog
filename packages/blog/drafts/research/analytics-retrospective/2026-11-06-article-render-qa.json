@@ -1,0 +1,360 @@
+{
+  "checkedAt": "2026-11-06T07:35:52.878810+00:00",
+  "sourceCommit": "3a13cb5ba5fdc79526c12c32dc9fc36c60033210",
+  "method": "Real isolated full pipeline build; initial HTML parsed without executing site scripts. Exact selected prompt blocks compared after HTML entity decoding.",
+  "checks": {
+    "articleH1": 1,
+    "tables": 3,
+    "codeBlocks": 2,
+    "exactPrompts": 3,
+    "metadataCanonicalAndDescription": true,
+    "completeEndingAndGlossary": true,
+    "markdownAndCitationExports": true,
+    "postsJSONIncludesArticle": true
+  },
+  "artifacts": {
+    "source/unknown-clients-and-evidence-based-bot-detection.md": {
+      "sha256": "a8a6c92d6bee35a4f82125daf6a55a8a0f48fc5320683260a336660a9d2cc4e6",
+      "bytes": 15039
+    },
+    "source/prompts/unknown-clients-and-evidence-based-bot-detection.prompts.md": {
+      "sha256": "1c2afad40d40974665f8689b72f9ecf6a653c4ab0aa0c1828f1ea61ef84c7837",
+      "bytes": 2184
+    },
+    "dist/unknown-clients-and-evidence-based-bot-detection/index.html": {
+      "sha256": "1ab7e76e738bb785cd5983d929dbfec6ba312d8675ca4813d03dd39a5eb43c18",
+      "bytes": 30789
+    },
+    "dist/unknown-clients-and-evidence-based-bot-detection/prompts/index.html": {
+      "sha256": "c0d5e7d8263e00bcae3618e639fa7baa7220a972637dcd5c54637d17f4ae9085",
+      "bytes": 12197
+    },
+    "dist/unknown-clients-and-evidence-based-bot-detection.md": {
+      "sha256": "6a1a3bc8c0cdecb93ce6c14bdff9230a444ad1af7aa3e0b7d4d236d892c7b314",
+      "bytes": 14993
+    },
+    "dist/unknown-clients-and-evidence-based-bot-detection.bib": {
+      "sha256": "a0cdb85c242f91c44fc8ad6b484a428410d42fbc16cd60603d5467e28ddad299",
+      "bytes": 274
+    },
+    "dist/unknown-clients-and-evidence-based-bot-detection.csl.json": {
+      "sha256": "bb4a03decfe7e66e6c0cf6d97d41df4f5a7708579128439b381449d5814e3809",
+      "bytes": 512
+    }
+  },
+  "limits": [
+    "Draft is temporarily discoverable only in owned loopback preview; not published.",
+    "Implementation and production acceptance are separate from this render check."
+  ],
+  "runtime": {
+    "node": "24.14.1",
+    "pnpm": "9.15.4"
+  },
+  "pipeline": {
+    "validate": "passed: 33 Markdown posts",
+    "build": "passed: 44 total posts",
+    "isolatedPreview": true,
+    "actualPublication": false
+  },
+  "attempts": [
+    "Unpinned offline install failed: wrangler4.71.0 missing in selected store.",
+    "Copied installed dependency trees into owned preview; source checkout unchanged. Pinned mise offline frozen install then passed.",
+    "First build blocked by sandbox tsx local IPC socket; same pinned build passed with sandbox escalation."
+  ],
+  "http": {
+    "status": 200,
+    "contentLength": 30789,
+    "contentSecurityPolicy": "script-src 'none'",
+    "cacheControl": "no-store"
+  },
+  "browser": {
+    "status": "passed, root IAB inspection",
+    "recordedAt": "2026-11-06 07:39:06 UTC",
+    "timingLimit": "Record timestamp, not a reconstructed browser action timestamp.",
+    "reportedBy": "Root agent, after actual IAB inspection",
+    "viewportCSSWidths": [
+      1280,
+      390
+    ],
+    "documentWidthsMatchViewport": true,
+    "pageOverflow": false,
+    "readableElements": [
+      "H1",
+      "opening",
+      "ending",
+      "both code blocks",
+      "three tables"
+    ],
+    "mobileTables": {
+      "clientWidths": [
+        354,
+        354,
+        354
+      ],
+      "scrollWidths": [
+        354,
+        537,
+        365
+      ]
+    },
+    "mobilePre": {
+      "clientWidths": [
+        352,
+        352
+      ],
+      "scrollWidths": [
+        358,
+        441
+      ]
+    },
+    "overflowScope": "Wide content uses internal horizontal scrolling; no document-level overflow.",
+    "promptPage": {
+      "viewportCSSWidth": 390,
+      "fullWidth": true,
+      "allThreeLabelsVisible": true,
+      "exactTextVerification": "All three prompt blocks already matched source after HTML decoding."
+    },
+    "cleanup": {
+      "viewportReset": true,
+      "ownedTabClosed": true,
+      "CUACompletionSent": true,
+      "ownedServerStopped": true,
+      "serverExitCode": 130
+    },
+    "scopeLimit": "Served with CSP script-src 'none'; not a physical-phone test or a browser JavaScript-disabled setting."
+  },
+  "subsequentDraftRevision": {
+    "recordedAt": "2026-11-06 08:04:02 UTC",
+    "sha256": "fc274faa12f6ed4ddee6bcd6bf9cd175c58b8cc3fc3658ac9a4caae86294e8a7",
+    "reason": "Accepted six live controls added; metadata and opening updated from local-only to bounded deployed result.",
+    "bodyRender": "parsePost plus initialized renderMarkdown passed; one H1 and four tables.",
+    "fullPageVisualStatus": "Earlier full build and root visual pass apply to the earlier committed artifact hashes, not this revised four-table draft. Full current-page rebuild/reader QA remains pending.",
+    "attemptLimits": "Two root-directory tsx resolution attempts and one missing initMarkdown call failed before corrected package-directory initialized render passed."
+  },
+  "finalRevisedPreview": {
+    "recordedAt": "2026-11-06 08:26:25 UTC",
+    "previewSourceCommit": "3a13cb5ba5fdc79526c12c32dc9fc36c60033210",
+    "sourceNote": "Same owned preview checkout from earlier merged release source; current draft and exact prompts recopied. Runtime-source links remain pinned to accepted64a953; this is rendering QA, not a current runtime acceptance.",
+    "checks": {
+      "articleH1": 1,
+      "tables": 4,
+      "codeBlocks": 2,
+      "exactPrompts": 3,
+      "metadataCanonicalAndDescription": true,
+      "completeEndingAndGlossary": true,
+      "markdownAndCitationExports": true,
+      "postsJSONIncludesArticle": true
+    },
+    "artifacts": {
+      "source/unknown-clients-and-evidence-based-bot-detection.md": {
+        "sha256": "a9e29f5e970409b5f7d4da18dce61808d133d01c26755651a8f8848ddb765ac0",
+        "bytes": 18011
+      },
+      "source/prompts/unknown-clients-and-evidence-based-bot-detection.prompts.md": {
+        "sha256": "1c2afad40d40974665f8689b72f9ecf6a653c4ab0aa0c1828f1ea61ef84c7837",
+        "bytes": 2184
+      },
+      "dist/unknown-clients-and-evidence-based-bot-detection/index.html": {
+        "sha256": "a1d41f37aa93d927583647838199ce1dbe91a36d33d19bbbe08636c5e19a9f44",
+        "bytes": 34247
+      },
+      "dist/unknown-clients-and-evidence-based-bot-detection/prompts/index.html": {
+        "sha256": "c0d5e7d8263e00bcae3618e639fa7baa7220a972637dcd5c54637d17f4ae9085",
+        "bytes": 12197
+      },
+      "dist/unknown-clients-and-evidence-based-bot-detection.md": {
+        "sha256": "f99a8c6aa85c10fabc68f011c9045d1a1ee447198ac7e42cacde796df0e14a19",
+        "bytes": 17971
+      },
+      "dist/unknown-clients-and-evidence-based-bot-detection.bib": {
+        "sha256": "a0cdb85c242f91c44fc8ad6b484a428410d42fbc16cd60603d5467e28ddad299",
+        "bytes": 274
+      },
+      "dist/unknown-clients-and-evidence-based-bot-detection.csl.json": {
+        "sha256": "bb4a03decfe7e66e6c0cf6d97d41df4f5a7708579128439b381449d5814e3809",
+        "bytes": 512
+      }
+    },
+    "validate": "33 Markdown posts passed",
+    "build": "44 total posts passed in5680ms",
+    "browser": {
+      "status": "passed root IAB reader QA",
+      "recordedAt": "2026-11-06 08:32:58 UTC",
+      "timestampLimit": "Record time, not an invented browser action timestamp.",
+      "viewportCSSWidths": [
+        1280,
+        390
+      ],
+      "documentScrollWidths": [
+        1280,
+        390
+      ],
+      "pageOverflow": false,
+      "mobileTables": {
+        "clientWidths": [
+          354,
+          354,
+          354,
+          354
+        ],
+        "scrollWidths": [
+          354,
+          537,
+          354,
+          365
+        ]
+      },
+      "mobileCode": {
+        "clientWidths": [
+          352,
+          352
+        ],
+        "scrollWidths": [
+          358,
+          441
+        ]
+      },
+      "readable": "Opening, ending, both code blocks and all four tables, including corrected generic-bot wording and hosting/archiver condition.",
+      "scope": "Served CSP script-src 'none'; no physical-device or browser-wide JavaScript-disabled claim.",
+      "cleanup": {
+        "viewportReset": true,
+        "ownedTabClosed": true,
+        "CUACompletionSent": true,
+        "server20894Stopped": true,
+        "serverExitCode": 130
+      }
+    },
+    "publication": false,
+    "wordingCorrection": "Browser-signals control network matched neither hosting nor archiver lists; vendor-published IP feeds are a separate method.",
+    "semanticCorrections": [
+      "Phone brand no longer triggers the generic bot rule; no claim that old generic bug selected a catalogue name.",
+      "Temporary test pages closed; not a claim the handler code was removed."
+    ],
+    "privateByteArchive": "Seven source/output files copied and hash-verified under private final-prepin before final visual acceptance; root will archive outside Git."
+  },
+  "preNetworkWordingCorrectionPreview": {
+    "recordedAt": "2026-11-06 08:19:18 UTC",
+    "previewSourceCommit": "3a13cb5ba5fdc79526c12c32dc9fc36c60033210",
+    "sourceNote": "Same owned preview checkout from earlier merged release source; current draft and exact prompts recopied. Runtime-source links remain pinned to accepted64a953; this is rendering QA, not a current runtime acceptance.",
+    "checks": {
+      "articleH1": 1,
+      "tables": 4,
+      "codeBlocks": 2,
+      "exactPrompts": 3,
+      "metadataCanonicalAndDescription": true,
+      "completeEndingAndGlossary": true,
+      "markdownAndCitationExports": true,
+      "postsJSONIncludesArticle": true
+    },
+    "artifacts": {
+      "source/unknown-clients-and-evidence-based-bot-detection.md": {
+        "sha256": "cb6e774cb2ce6e397a88753315623c1ddab788dc9c78315c12a45c5e15aacf40",
+        "bytes": 17990
+      },
+      "source/prompts/unknown-clients-and-evidence-based-bot-detection.prompts.md": {
+        "sha256": "1c2afad40d40974665f8689b72f9ecf6a653c4ab0aa0c1828f1ea61ef84c7837",
+        "bytes": 2184
+      },
+      "dist/unknown-clients-and-evidence-based-bot-detection/index.html": {
+        "sha256": "5bcdb6b6f6b9357f1c0f6fb338eeb2fd100723d57c6ea484cb7395bbbb24002f",
+        "bytes": 34226
+      },
+      "dist/unknown-clients-and-evidence-based-bot-detection/prompts/index.html": {
+        "sha256": "c0d5e7d8263e00bcae3618e639fa7baa7220a972637dcd5c54637d17f4ae9085",
+        "bytes": 12197
+      },
+      "dist/unknown-clients-and-evidence-based-bot-detection.md": {
+        "sha256": "0ffb99588ebeecb08b210c6d9619b4468c52aff8c7653c5d373e249be4a1461f",
+        "bytes": 17950
+      },
+      "dist/unknown-clients-and-evidence-based-bot-detection.bib": {
+        "sha256": "a0cdb85c242f91c44fc8ad6b484a428410d42fbc16cd60603d5467e28ddad299",
+        "bytes": 274
+      },
+      "dist/unknown-clients-and-evidence-based-bot-detection.csl.json": {
+        "sha256": "bb4a03decfe7e66e6c0cf6d97d41df4f5a7708579128439b381449d5814e3809",
+        "bytes": 512
+      }
+    },
+    "validate": "33 Markdown posts passed",
+    "build": "44 total posts passed in5802ms",
+    "browser": "Root final1280/390 check pending",
+    "publication": false
+  },
+  "preFinalSemanticsPreview": {
+    "recordedAt": "2026-11-06 08:26:25 UTC",
+    "previewSourceCommit": "3a13cb5ba5fdc79526c12c32dc9fc36c60033210",
+    "sourceNote": "Same owned preview checkout from earlier merged release source; current draft and exact prompts recopied. Runtime-source links remain pinned to accepted64a953; this is rendering QA, not a current runtime acceptance.",
+    "checks": {
+      "articleH1": 1,
+      "tables": 4,
+      "codeBlocks": 2,
+      "exactPrompts": 3,
+      "metadataCanonicalAndDescription": true,
+      "completeEndingAndGlossary": true,
+      "markdownAndCitationExports": true,
+      "postsJSONIncludesArticle": true
+    },
+    "artifacts": {
+      "source/unknown-clients-and-evidence-based-bot-detection.md": {
+        "sha256": "ab21cd78277a8e4b1995a3a0b9c3c229c5750c1c266476e5351a8541717e4f25",
+        "bytes": 18002
+      },
+      "source/prompts/unknown-clients-and-evidence-based-bot-detection.prompts.md": {
+        "sha256": "1c2afad40d40974665f8689b72f9ecf6a653c4ab0aa0c1828f1ea61ef84c7837",
+        "bytes": 2184
+      },
+      "dist/unknown-clients-and-evidence-based-bot-detection/index.html": {
+        "sha256": "e7c6ff9ca2ec19ffc8ff50ffe99570472ce049b100968f9e039e06226063151e",
+        "bytes": 34238
+      },
+      "dist/unknown-clients-and-evidence-based-bot-detection/prompts/index.html": {
+        "sha256": "c0d5e7d8263e00bcae3618e639fa7baa7220a972637dcd5c54637d17f4ae9085",
+        "bytes": 12197
+      },
+      "dist/unknown-clients-and-evidence-based-bot-detection.md": {
+        "sha256": "30ef33414ad0ce8244286de9a911418bf53a27dd8d291549bb22be0da22ac22e",
+        "bytes": 17962
+      },
+      "dist/unknown-clients-and-evidence-based-bot-detection.bib": {
+        "sha256": "a0cdb85c242f91c44fc8ad6b484a428410d42fbc16cd60603d5467e28ddad299",
+        "bytes": 274
+      },
+      "dist/unknown-clients-and-evidence-based-bot-detection.csl.json": {
+        "sha256": "bb4a03decfe7e66e6c0cf6d97d41df4f5a7708579128439b381449d5814e3809",
+        "bytes": 512
+      }
+    },
+    "validate": "33 Markdown posts passed",
+    "build": "44 total posts passed in6505ms",
+    "browser": "Root final1280/390 check pending",
+    "publication": false,
+    "wordingCorrection": "Browser-signals control network matched neither hosting nor archiver lists; vendor-published IP feeds are a separate method."
+  },
+  "historicalArtifactRecovery": {
+    "status": "All previously committed artifact hashes recovered exactly",
+    "versions": {
+      "initial-three-table": {
+        "method": "Rebuilt using exact hash-matched source and original preview code; reconstructed bytes, not original raw captures.",
+        "matchedArtifacts": 7,
+        "expectedArtifacts": 7,
+        "manifestSHA256": "f4ca02c03a7cc73243180ea1ea33a19136b0ab4a669ed3afa054c6a29707f32c"
+      },
+      "pre-network-four-table": {
+        "method": "Rebuilt using exact hash-matched source and original preview code; reconstructed bytes, not original raw captures.",
+        "matchedArtifacts": 7,
+        "expectedArtifacts": 7,
+        "manifestSHA256": "bd5daee06f2856966849116c60449d20a83e71d96bcb0a6e37c841d338fdb375"
+      },
+      "pre-final-semantics": {
+        "method": "Rebuilt using exact hash-matched source and original preview code; reconstructed bytes, not original raw captures.",
+        "matchedArtifacts": 7,
+        "expectedArtifacts": 7,
+        "manifestSHA256": "1ba49b4e357f1d5953eba42feb29ceab9dbb15d31945af8517f851b4c98d230e"
+      }
+    },
+    "firstLiveSourceOnlyRevision": "Exact recorded source SHA256 matched; no historical full-page output had been claimed for this intermediate revision.",
+    "limit": "These are hash-matched regenerated artifacts, not original raw captures preserved at action time. Original temporary paths had been overwritten.",
+    "finalBytes": "Final-prepin seven artifacts remain byte-preserved independently."
+  }
+}
