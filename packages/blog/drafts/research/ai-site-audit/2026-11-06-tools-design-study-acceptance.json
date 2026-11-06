@@ -1,0 +1,79 @@
+{
+  "checkedAt": "2026-11-06T18:34:48.800944+00:00",
+  "sourceCommit": "e6bcc4a77cb45de3d4ff23cba919b26be69c433d",
+  "cloudflareBuild": "283808b5-6f99-4558-acba-c8a17bb97a00",
+  "deploymentCheck": "success",
+  "local": {
+    "blogTests": 432,
+    "workspaceTypecheck": "pass",
+    "markdownValidated": 32,
+    "builtPosts": 43,
+    "referralPolicy": "pass",
+    "nativeHttpRequests": 55,
+    "nativeExternalRequests": 0,
+    "publicTurnstileSiteKeyPresent": false
+  },
+  "served": {
+    "checkedAt": "2026-11-06T18:33:42.067Z",
+    "requestHeaders": {
+      "Sec-Purpose": "prefetch"
+    },
+    "paths": [
+      {
+        "path": "/tools",
+        "status": 200,
+        "sourceAndBuildMatch": true
+      },
+      {
+        "path": "/ai-check",
+        "status": 200,
+        "sourceAndBuildMatch": true
+      },
+      {
+        "path": "/tools/robots",
+        "status": 200,
+        "sourceAndBuildMatch": true
+      },
+      {
+        "path": "/tools/compare",
+        "status": 200,
+        "sourceAndBuildMatch": true
+      },
+      {
+        "path": "/ai-check/example",
+        "status": 200,
+        "sourceAndBuildMatch": true
+      }
+    ],
+    "directoryNativeForm": true,
+    "robotsPresetMarkup": true,
+    "comparisonExampleMarkup": true,
+    "savedReportFactSummary": true
+  },
+  "browser": {
+    "localWidths": [
+      375,
+      1280
+    ],
+    "publicWidths": [
+      375,
+      1280
+    ],
+    "localThemes": [
+      "light",
+      "dark"
+    ],
+    "publicDirectoryNativePost": "reddit.com normalized to https://reddit.com/; existing daily limit rendered and received focus",
+    "publicSavedReport": "Dated report shows the score and captured response, text and policy facts",
+    "publicRobotsExample": "Client-specific supplied policy disallows GPTBot; explicit evaluation focuses the result",
+    "publicComparisonExample": "Labeled illustrative pair derives 90 to 100; one improved and two changed observations; result focused",
+    "mobile": "Directory, full-width policy picker, local results, saved facts and horizontally scrollable comparison inspected"
+  },
+  "limits": [
+    "Reference products were studied without submitting new external scans; the Lighthouse comparison used its supplied dated example.",
+    "Local audit responses are supplied fixtures, not current target measurements.",
+    "The public Reddit submission remained quota-limited; no allowance was reset or bypassed.",
+    "Robots and comparison examples are supplied demonstrations, not live evidence.",
+    "Browser inspection and passing checks do not establish owner design approval or reader adoption."
+  ]
+}

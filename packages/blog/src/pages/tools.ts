@@ -1,24 +1,22 @@
 import { html } from '@nisli/core';
+import { toolNavigation } from './tool-navigation.js';
+import { siteCheckForm } from './site-check-form.js';
 
 export function toolsPage() {
-  return html`<article class="tools-page tool-app">
-    <header class="tools-hero">
-      <p class="tool-kicker">The engineering workbench</p>
-      <h1>A clearer view of<br>your site’s access.</h1>
-      <p class="tools-lead">Find what stands between your page and an AI agent. Check a URL, test crawler rules, or compare the evidence after a change.</p>
-      <div class="tools-hero-actions"><a class="tool-button" href="/ai-check">Check a page <span aria-hidden="true">↗</span></a><a class="tool-text-link" href="/ai-check/example">Explore an example report</a></div>
-      <p class="tool-caption">Free tools. Open methods. Evidence you can inspect.</p>
-      <div class="tools-instrument" aria-hidden="true"><span class="instrument-label">THE ACCESS CHAIN</span><div class="instrument-track"><span><b>01</b>Delivery</span><i></i><span><b>02</b>Content</span><i></i><span><b>03</b>Indexing</span></div><p>Observe → understand → improve</p></div>
-    </header>
-    <section class="tools-collection" aria-labelledby="tools-collection-heading">
-      <div class="tool-section-heading"><h2 id="tools-collection-heading">Choose your next question</h2><span>Four practical tools</span></div>
-      <div class="tools-grid">
-        <a href="/ai-check" class="tool-card tool-card-featured"><span class="tool-card-top"><span class="tool-number">01 / SITE CHECK</span><span class="tool-badge">10 free checks / day</span></span><h3>Can agents access<br>this page?</h3><p>Get a technical access score, the fixes that matter, and the exact evidence behind them.</p><span class="tool-card-detail">HTTP delivery · source content · crawler policy · indexing</span><span class="tool-card-action">Check a public URL <span aria-hidden="true">↗</span></span></a>
-        <a href="/tools/robots" class="tool-card"><span class="tool-card-top"><span class="tool-number">02 / POLICY PLAYGROUND</span><span class="tool-badge">Local · unlimited</span></span><h3>What do these<br>crawler rules allow?</h3><p>Paste a robots.txt, choose a client and path, and see which rule wins before you publish.</p><span class="tool-card-detail">Merged groups · longest match · Allow tie-break</span><span class="tool-card-action">Test your robots rules <span aria-hidden="true">↗</span></span></a>
-        <a href="/tools/compare" class="tool-card"><span class="tool-card-top"><span class="tool-number">03 / REPORT COMPARISON</span><span class="tool-badge">Local · unlimited</span></span><h3>What changed<br>after the fix?</h3><p>Open two saved reports to compare scores, check states, policies and response evidence.</p><span class="tool-card-detail">Your files stay in your browser. No upload.</span><span class="tool-card-action">Compare saved reports <span aria-hidden="true">↗</span></span></a>
-        <a href="/ai-check#ai-check-request-heading" class="tool-card"><span class="tool-card-top"><span class="tool-number">04 / REQUEST INSPECTOR</span><span class="tool-badge">Shared daily allowance</span></span><h3>What does your<br>request reveal?</h3><p>Inspect client declarations, network context and signature evidence as separate facts.</p><span class="tool-card-detail">The request reaching this service, not another site’s traffic.</span><span class="tool-card-action">Inspect an incoming request <span aria-hidden="true">↗</span></span></a>
-      </div>
+  return html`<article class="tools-page tool-app ai-check">
+    ${toolNavigation('overview')}
+    <header class="tools-hero"><p class="tool-kicker">The publication’s workbench</p><h1>Tools for a more<br>readable web.</h1><p class="tools-lead">Check what reaches a client. Understand a crawler policy. See what changed after a fix.</p></header>
+    <section class="tools-start" aria-labelledby="tools-check-heading">
+      <div class="tools-start-description"><span class="tool-number">01 / START WITH A PAGE</span><h2 id="tools-check-heading">AI access check</h2><p>A technical score, the evidence behind it, and your next steps.</p><a href="/ai-check/example#access-report">Explore a saved report <span aria-hidden="true">↗</span></a><span class="tool-caption">No check used</span></div>
+      <div class="tools-start-form">${siteCheckForm()}<p class="tool-caption">Checking requests the public page and a bounded set of files on its site. <a href="/privacy">Privacy</a> · <a href="/ai-check#score-method">How it works</a></p></div>
     </section>
-    <section class="tools-principle"><span class="tool-kicker">Built for decisions</span><h2>A score gives you the overview.<br>The evidence tells you what to do.</h2><p>Every deduction points to an observed check and a next step. Optional formats stay optional. Unknown evidence stays visible.</p><p><a href="/api/ai-check/schema">Use the free JSON API</a> · <a href="/stats">Explore this publication’s analytics</a> · <a href="https://github.com/gkoreli/blog/tree/main/packages/site-audit" target="_blank" rel="noopener">Inspect the source</a></p></section>
+    <div class="tools-section-label"><h2>Work with the evidence</h2><span>Local tools · unlimited · nothing uploaded</span></div>
+    <div class="tools-local-grid">
+      <a href="/tools/robots" class="tool-workbench-link"><span class="tool-number">02 / CRAWLER POLICY</span><h2>Robots playground <span aria-hidden="true">↗</span></h2><p>Try a client and a path. See the exact rule that allows or disallows crawling.</p><div class="tool-code-preview" aria-hidden="true"><span>User-agent: OAI-SearchBot</span><span>Allow: /guides/</span><span class="tool-preview-result">/guides/article <b>→ Allowed</b></span></div><span class="tool-workbench-action">Test a policy <span aria-hidden="true">→</span></span></a>
+      <a href="/tools/compare" class="tool-workbench-link"><span class="tool-number">03 / BEFORE & AFTER</span><h2>Report comparison <span aria-hidden="true">↗</span></h2><p>Open two saved reports. Find the improvements, regressions and changes behind the total.</p><div class="tool-compare-preview" aria-hidden="true"><span>Before report <b>→</b> After report</span><span>Scores <i>·</i> Checks <i>·</i> Response evidence</span></div><span class="tool-workbench-action">Compare reports <span aria-hidden="true">→</span></span></a>
+    </div>
+    <section class="tools-request-row"><span class="tool-number">04</span><div><h2>Request inspector</h2><p>See what your own request tells this service: client declarations, network context and signature evidence.</p><span class="tool-caption">Uses the shared daily allowance</span></div><a href="/ai-check#ai-check-request-heading">Inspect a request <span aria-hidden="true">↗</span></a></section>
+    <div class="separator"><img src="/icons/sparkle.svg" class="separator-icon" width="14" height="14" alt=""></div>
+    <section class="tools-provenance"><h2>Built from the field notes.</h2><div><p>These tools grew out of this publication’s investigations into AI clients and the web. The methods and code are open; the observations come with their limits.</p><a href="/ai-site-check-evidence">Read the investigation</a><a href="https://github.com/gkoreli/blog/tree/main/packages/site-audit" target="_blank" rel="noopener">Source & scoring rules</a><a href="/api/ai-check/schema">Free JSON API</a></div></section>
   </article>`;
 }

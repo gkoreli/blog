@@ -11,7 +11,7 @@ test('daily exhaustion gives one reset explanation and useful free alternatives'
   assert.equal(feedback.meta, '0 of 10 checks remaining');
   const html = checkErrorHtml('Old repeated error', 429, quota);
   assert.match(html, /Daily limit reached/); assert.match(html, /UTC/);
-  assert.match(html, /href="\/ai-check\/example"/); assert.match(html, /href="\/tools\/robots"/);
+  assert.match(html, /href="\/ai-check\/example#access-report"/); assert.match(html, /href="\/tools\/robots"/);
   assert.doesNotMatch(html, /Old repeated error/);
 });
 
