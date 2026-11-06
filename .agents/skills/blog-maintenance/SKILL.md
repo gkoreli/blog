@@ -18,7 +18,7 @@ Work from the relevant implementation, accepted decision, and latest task eviden
 | Existing technology choices or architecture rationale | [Project decision register](../../../docs/reference/project-decisions.md), then the relevant ADR |
 | Documentation organization or instruction changes | [ADR-0017](../../../docs/adr/0017-on-demand-project-guidance.md) |
 
-For article work, start with [shape-article](../shape-article/SKILL.md). Read the [metadata contract](../article-discovery-positioning/references/metadata-and-discovery.md) when implementation changes metadata behavior, and the [research-footprint contract](../blog-writing/references/research-footprint.md) when changing provenance extraction. Before quoting Goga, read [owner quotations](../blog-writing/references/owner-quotations.md).
+For prose and article work, use [writing](../writing/SKILL.md). Read its [metadata contract](../writing/references/headlines-and-discovery.md) when implementation changes metadata behavior, its [footprint procedure](../writing/references/research-footprint.md) when changing usage extraction, and its [provenance rules](../writing/references/provenance.md) before attributing Goga’s words.
 
 ## Keep the records useful
 

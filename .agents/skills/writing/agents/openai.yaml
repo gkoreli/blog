@@ -1,0 +1,4 @@
+interface:
+  display_name: "Writing"
+  short_description: "Write clear, grounded articles and practical prose"
+  default_prompt: "Use $writing to improve this piece while preserving its form, voice and evidence."

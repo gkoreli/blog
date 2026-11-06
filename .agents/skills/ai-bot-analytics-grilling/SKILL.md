@@ -13,7 +13,7 @@ Start with the [current worklist](../../../packages/blog/drafts/research/ai-bot-
 
 Name the decision the next trial can change: can we trigger a fetch, distinguish an operation, recognize the request, verify selected fields, reproduce a stored classification, or trust an answer's citation? Select the relevant rows from [dimensions and reporting](references/dimensions-and-reporting.md). Use [provider entry points](references/provider-entry-points.md) for routing; recheck live schemas and primary docs before execution.
 
-Keep one article draft and research index moving with the experiments. Use the repository's shape-article and blog-writing workflows for prose and complete human prompt provenance. Report failures and gaps beside successful trials.
+Keep one article draft and research index moving with the experiments. Use [writing](../writing/SKILL.md) for prose and [complete material human prompt provenance](../writing/references/provenance.md). Report failures and gaps beside successful trials.
 
 ## Freeze a bounded trial
 

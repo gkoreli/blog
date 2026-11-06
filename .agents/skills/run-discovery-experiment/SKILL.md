@@ -1,6 +1,6 @@
 ---
 name: run-discovery-experiment
-description: Run a bounded gkoreli.com discovery or reader-use experiment from a real question through diagnosis, one intervention, publication checks, and an evidence-based next decision. Use for testing a growth or visibility idea; ordinary metadata edits use article-discovery-positioning.
+description: Run a bounded gkoreli.com discovery or reader-use experiment from a real question through diagnosis, one intervention, publication checks, and an evidence-based next decision. Use for testing a growth or visibility idea; ordinary metadata or prose edits use writing.
 ---
 
 # Run a discovery experiment
@@ -9,9 +9,7 @@ Turn a publishing or site-owner question into one inspectable experiment. Delive
 
 ## Audience and growth
 
-People and agents are both audience under [ADR-0016.19](../../../docs/adr/0016.19-agent-mediated-audience-growth.md). A person may discover, retrieve, understand and apply the work through an agent without visiting the page directly. Count observed agent access, answer citations, distribution and supported use at their actual stages. Missing human identity or a human-trigger label is not a reason to erase those results or require direct human acquisition as the sole success measure.
-
-Declare the outcome being tested. Comparable growth in eligible declared-agent requests is growth in observed agent access; a captured supported answer is task evidence; an attributed external copy is distribution evidence. None needs a human browser visit to count. Preserve source, sample and method limits without turning a limit on a stronger claim into a verdict of no value. Controlled owner/agent trials remain separate from organic counts. Human/device calibration gates apply to human/device claims, not all discovery work.
+Declare the tested outcome under [writing’s audience and learning contract](../writing/references/publication-and-learning.md#people-and-agents-are-both-audience). Recognize supported human and agent outcomes at their observed stages, keep controlled trials separate from organic counts, and apply human/device calibration gates only to those claims. This skill owns the frozen experiment and comparisons, not a separate editorial policy.
 
 For a discovery request, collect actual question/source-selection evidence before calling a presentation edit an experiment result. Keep QA, delivered access, observed discovery and supported use distinct, and report each positively at its supported stage. Read exact external sources for claim-version drift; an older copy may remain discoverable after the canonical article is corrected.
 
@@ -23,7 +21,7 @@ Make a small question-to-existing-page map. Distinguish observed reader/search/u
 
 Diagnose the gap: absent coverage, inadequate answer, unclear entry point, delivery/crawl/index problem, or a specific external source. Read structured metadata completely with the repository parser or inspect the full object; a clipped preview cannot establish that a field, link, or relationship is absent. Inspect rendered HTML and Markdown separately when both matter. A URL supplied by the researcher tests access or retrieval, not organic discovery.
 
-Improve an existing page when it already owns the question. Create a page only for a distinct supported need. Preserve a useful page unchanged when no consequential defect is found. Use [article-discovery-positioning](../article-discovery-positioning/SKILL.md) for metadata and relationships; use the governing writing workflow for prose changes.
+Improve an existing page when it already owns the question. Create a page only for a distinct supported need. Preserve a useful page unchanged when no consequential defect is found. Use [writing](../writing/SKILL.md) for prose, metadata and article relationships.
 
 ## Freeze the experiment before intervention
 
@@ -40,7 +38,7 @@ Save the baseline before editing. Keep exact inputs, outputs, logs, hashes, fail
 
 ## Act, check, and deliver
 
-Apply the smallest useful intervention. Change source files, not generated output. For collaborative articles, preserve complete material human prompts and update modification metadata under the [metadata contract](../article-discovery-positioning/references/metadata-and-discovery.md). Keep an entry-point note proportional to the article; research detail belongs in the linked experiment record.
+Apply the smallest useful intervention. Change source files, not generated output. For collaborative articles, follow writing’s [prompt provenance](../writing/references/provenance.md) and [metadata contract](../writing/references/headlines-and-discovery.md#metadata-contract). Keep an entry-point note proportional to the article; research detail belongs in the linked experiment record.
 
 Follow [blog-maintenance](../blog-maintenance/SKILL.md) for isolation, checks, identity, commit/push, deployment, and evidence. Use an isolated checkout for builds. Compare baseline and candidate under recorded conditions; test the actual artifact or task, not just that an edit exists. Verify destinations and content parity when claiming a working trail. Do not add a testing framework for a simple reversible edit.
 
@@ -48,7 +46,7 @@ For controlled own-site checks, inspect current eligibility before choosing an e
 
 Inspect exact third-party sources when they shape a result. Separate owned pages, maintainable profiles, independent coverage, and substantiated errors. This skill does not authorize outreach, account changes, paid tools, or unrequested posts. Prepare usable material within the request; publish externally only within the user's authorization.
 
-For promotion or trial recruitment through GitHub issues, follow [Goga's invitation requirement](../blog-writing/references/editorial-learning-loop.md#owner-direction-github-outreach-needs-an-invitation).
+For promotion or trial recruitment through GitHub issues, follow [Goga's invitation requirement](../writing/references/publication-and-learning.md#owner-direction-github-outreach-needs-an-invitation).
 
 ## Interpret each layer separately
 

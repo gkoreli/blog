@@ -16,11 +16,7 @@ Maintain detailed knowledge at its task-specific owner:
 
 | Knowledge | Owner |
 |---|---|
-| Article form, purpose, skill order, openings | `shape-article` and its references |
-| Substantive reader value and the author in the work | `earned-trust-writing` |
-| Evidence, exact prompts, quotations, footprint accounting, feedback | `blog-writing` and its references |
-| Metadata, search diagnosis, series and article relationships | `article-discovery-positioning` and its references |
-| Voice and exposed authorship; sentence-level prose rules | `personal-essays`; `polish-prose` |
+| Article form, author-present teaching, openings, evidence, provenance, positioning and prose | [writing](../../.agents/skills/writing/SKILL.md), with only the applicable focused references |
 | Repository implementation, build, design, operations, delivery | `blog-maintenance` and its references |
 | Technology decisions and rationale | Relevant existing ADRs, reached through the [decision register](../reference/project-decisions.md) |
 | Measured results, status, next actions, recovery receipts | Relevant task, worklist, research artifact, or dated handoff |
@@ -40,6 +36,8 @@ The root should grow only for a broadly applicable constraint. Add new detailed 
 ## Migration and acceptance
 
 The [migration record](../editorial/2026-09-28-instruction-migration.md) identifies the exact original Git source, maps every source range, lists corrections, and records validation. [TASK-0148](../tasks/TASK-0148-reorganize-project-guidance-on-demand.md) tracks this work. This change does not publish or revise an article and adds no material to a released article's prompt file or research footprint.
+
+The owner’s November 6, 2026 UTC consolidation replaces eight overlapping writing triggers with one mode-aware `writing` skill. The [writing migration map and coverage audit](../reference/writing-guidance-migration.md) preserve the former paths, source commitments, consequential exceptions and reasons for removing duplicated or conflicting prescriptions. This is a current ownership amendment; the September migration and dated research receipts remain historical.
 
 ## Amendment — Active guidance
 

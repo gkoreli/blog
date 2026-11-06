@@ -37,7 +37,7 @@ For a material engineering or discovery investigation:
 5. Separate code completion, deployment activation, measured behavior, and actual reader or operator value. Publish supported lessons while unresolved outcomes remain explicit.
 6. Stop expanding when the material claim is supported, narrowed, rejected, or explicitly deferred and further work no longer changes the decision. Thoroughness should improve decisions and delivery.
 
-Existing [writing evidence rules](../../.agents/skills/blog-writing/SKILL.md), [investigation procedure](../../.agents/skills/blog-writing/references/evidence-led-engineering-investigations.md), and [editorial learning loop](../../.agents/skills/blog-writing/references/editorial-learning-loop.md) remain the procedural owners.
+The consolidated [writing skill](../../.agents/skills/writing/SKILL.md), [investigation procedure](../../.agents/skills/writing/references/evidence-and-investigations.md), and [publication/learning contract](../../.agents/skills/writing/references/publication-and-learning.md) own these procedures. The [writing migration record](../reference/writing-guidance-migration.md) preserves the previous owners and their consequential rules.
 
 ## Discovery and visibility loop
 

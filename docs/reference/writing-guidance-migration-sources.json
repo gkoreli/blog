@@ -1,0 +1,246 @@
+{
+  "checkedAt": "2026-11-06",
+  "specification": "https://agentskills.io/specification",
+  "sourceFiles": [
+    {
+      "path": ".agents/skills/shape-article/SKILL.md",
+      "bytes": 4999,
+      "lines": 54,
+      "sha256": "e6969e2e0bd2c52625fe4c1e4a0d4fb499addd51766cc284ccd05b2f85b3b9fa",
+      "baselineCommit": "d63ea5b62cbd86ab427348f8df67cdd1c0227651",
+      "baselineBlobSha256": "e6969e2e0bd2c52625fe4c1e4a0d4fb499addd51766cc284ccd05b2f85b3b9fa",
+      "workingSourceDiffersFromCommit": false,
+      "baselineUrl": "https://github.com/gkoreli/blog/blob/d63ea5b62cbd86ab427348f8df67cdd1c0227651/.agents/skills/shape-article/SKILL.md"
+    },
+    {
+      "path": ".agents/skills/shape-article/agents/openai.yaml",
+      "bytes": 241,
+      "lines": 4,
+      "sha256": "2de42b1ddf788ad269872a8b4794dc812a18943f5db766c10eb5d6947247a0fb",
+      "baselineCommit": "d63ea5b62cbd86ab427348f8df67cdd1c0227651",
+      "baselineBlobSha256": "2de42b1ddf788ad269872a8b4794dc812a18943f5db766c10eb5d6947247a0fb",
+      "workingSourceDiffersFromCommit": false,
+      "baselineUrl": "https://github.com/gkoreli/blog/blob/d63ea5b62cbd86ab427348f8df67cdd1c0227651/.agents/skills/shape-article/agents/openai.yaml"
+    },
+    {
+      "path": ".agents/skills/shape-article/references/editorial-workflow.md",
+      "bytes": 1969,
+      "lines": 15,
+      "sha256": "da7b925baa4497eb555952af7371d131160500af18c5b78f59804488b3bd3872",
+      "baselineCommit": "d63ea5b62cbd86ab427348f8df67cdd1c0227651",
+      "baselineBlobSha256": "da7b925baa4497eb555952af7371d131160500af18c5b78f59804488b3bd3872",
+      "workingSourceDiffersFromCommit": false,
+      "baselineUrl": "https://github.com/gkoreli/blog/blob/d63ea5b62cbd86ab427348f8df67cdd1c0227651/.agents/skills/shape-article/references/editorial-workflow.md"
+    },
+    {
+      "path": ".agents/skills/shape-article/references/opening-discipline.md",
+      "bytes": 4060,
+      "lines": 37,
+      "sha256": "ca1891d650cf4d8c484a6e5f21a27f92a3d2ce574835b3e4188da3c7a26bb187",
+      "baselineCommit": "d63ea5b62cbd86ab427348f8df67cdd1c0227651",
+      "baselineBlobSha256": "205e46302d06641e9c09db30b776f66e99b471b1c8a71b97684e3f03cf5063f4",
+      "workingSourceDiffersFromCommit": true,
+      "baselineUrl": "https://github.com/gkoreli/blog/blob/d63ea5b62cbd86ab427348f8df67cdd1c0227651/.agents/skills/shape-article/references/opening-discipline.md"
+    },
+    {
+      "path": ".agents/skills/shape-article/references/publication-context.md",
+      "bytes": 3072,
+      "lines": 33,
+      "sha256": "4ddc9c1790e168678a057227aab8f045ff3a7003fff4feca72c9c6c2d55f2788",
+      "baselineCommit": "d63ea5b62cbd86ab427348f8df67cdd1c0227651",
+      "baselineBlobSha256": "4ddc9c1790e168678a057227aab8f045ff3a7003fff4feca72c9c6c2d55f2788",
+      "workingSourceDiffersFromCommit": false,
+      "baselineUrl": "https://github.com/gkoreli/blog/blob/d63ea5b62cbd86ab427348f8df67cdd1c0227651/.agents/skills/shape-article/references/publication-context.md"
+    },
+    {
+      "path": ".agents/skills/blog-writing/SKILL.md",
+      "bytes": 9521,
+      "lines": 123,
+      "sha256": "29a00c2dceb14f30eda1e51ae1b90c69d61a05ec249a3cb9f0d23f86cc800594",
+      "baselineCommit": "d63ea5b62cbd86ab427348f8df67cdd1c0227651",
+      "baselineBlobSha256": "0b8c772c755a9756b060f0ae7fc511a769276f8eb2b950f4e52c6c853f3d85b1",
+      "workingSourceDiffersFromCommit": true,
+      "baselineUrl": "https://github.com/gkoreli/blog/blob/d63ea5b62cbd86ab427348f8df67cdd1c0227651/.agents/skills/blog-writing/SKILL.md"
+    },
+    {
+      "path": ".agents/skills/blog-writing/references/editorial-learning-loop.md",
+      "bytes": 5764,
+      "lines": 39,
+      "sha256": "65096de20b0bf69b27a9ecd7c3ad3e621e2774d54977f8ce2a15473903e72099",
+      "baselineCommit": "d63ea5b62cbd86ab427348f8df67cdd1c0227651",
+      "baselineBlobSha256": "65096de20b0bf69b27a9ecd7c3ad3e621e2774d54977f8ce2a15473903e72099",
+      "workingSourceDiffersFromCommit": false,
+      "baselineUrl": "https://github.com/gkoreli/blog/blob/d63ea5b62cbd86ab427348f8df67cdd1c0227651/.agents/skills/blog-writing/references/editorial-learning-loop.md"
+    },
+    {
+      "path": ".agents/skills/blog-writing/references/evidence-led-engineering-investigations.md",
+      "bytes": 9188,
+      "lines": 141,
+      "sha256": "bc5be1257e0445503e82a7742aef0cd8d30f3895d6d2f40ebefe7ffefc352460",
+      "baselineCommit": "d63ea5b62cbd86ab427348f8df67cdd1c0227651",
+      "baselineBlobSha256": "bc5be1257e0445503e82a7742aef0cd8d30f3895d6d2f40ebefe7ffefc352460",
+      "workingSourceDiffersFromCommit": false,
+      "baselineUrl": "https://github.com/gkoreli/blog/blob/d63ea5b62cbd86ab427348f8df67cdd1c0227651/.agents/skills/blog-writing/references/evidence-led-engineering-investigations.md"
+    },
+    {
+      "path": ".agents/skills/blog-writing/references/firsthand-evidence-and-credibility.md",
+      "bytes": 6978,
+      "lines": 52,
+      "sha256": "1b9eed0a6cdeaafe7706cf6054e139c2b9e176ad22963e37ad0471c287d101cd",
+      "baselineCommit": "d63ea5b62cbd86ab427348f8df67cdd1c0227651",
+      "baselineBlobSha256": "1b9eed0a6cdeaafe7706cf6054e139c2b9e176ad22963e37ad0471c287d101cd",
+      "workingSourceDiffersFromCommit": false,
+      "baselineUrl": "https://github.com/gkoreli/blog/blob/d63ea5b62cbd86ab427348f8df67cdd1c0227651/.agents/skills/blog-writing/references/firsthand-evidence-and-credibility.md"
+    },
+    {
+      "path": ".agents/skills/blog-writing/references/owner-quotations.md",
+      "bytes": 719,
+      "lines": 7,
+      "sha256": "ccad9558882a07ef9ed917f3cee597ec1bd45b74a1aa63ec10616eea8c7c1f7d",
+      "baselineCommit": "d63ea5b62cbd86ab427348f8df67cdd1c0227651",
+      "baselineBlobSha256": "ccad9558882a07ef9ed917f3cee597ec1bd45b74a1aa63ec10616eea8c7c1f7d",
+      "workingSourceDiffersFromCommit": false,
+      "baselineUrl": "https://github.com/gkoreli/blog/blob/d63ea5b62cbd86ab427348f8df67cdd1c0227651/.agents/skills/blog-writing/references/owner-quotations.md"
+    },
+    {
+      "path": ".agents/skills/blog-writing/references/research-footprint.md",
+      "bytes": 6877,
+      "lines": 52,
+      "sha256": "1eb8e40e445051e65eccc93bb1425ac40c7c0f60c7706180018666b957c1268f",
+      "baselineCommit": "d63ea5b62cbd86ab427348f8df67cdd1c0227651",
+      "baselineBlobSha256": "1eb8e40e445051e65eccc93bb1425ac40c7c0f60c7706180018666b957c1268f",
+      "workingSourceDiffersFromCommit": false,
+      "baselineUrl": "https://github.com/gkoreli/blog/blob/d63ea5b62cbd86ab427348f8df67cdd1c0227651/.agents/skills/blog-writing/references/research-footprint.md"
+    },
+    {
+      "path": ".agents/skills/earned-trust-writing/SKILL.md",
+      "bytes": 11217,
+      "lines": 105,
+      "sha256": "90746f35c80c798742640fc82019097ae6176492e1c62cc76bd3e48dc5689f1f",
+      "baselineCommit": "d63ea5b62cbd86ab427348f8df67cdd1c0227651",
+      "baselineBlobSha256": "90746f35c80c798742640fc82019097ae6176492e1c62cc76bd3e48dc5689f1f",
+      "workingSourceDiffersFromCommit": false,
+      "baselineUrl": "https://github.com/gkoreli/blog/blob/d63ea5b62cbd86ab427348f8df67cdd1c0227651/.agents/skills/earned-trust-writing/SKILL.md"
+    },
+    {
+      "path": ".agents/skills/personal-essays/SKILL.md",
+      "bytes": 5544,
+      "lines": 67,
+      "sha256": "15ddc7f7e1b9a0fca4e823da1ea0ac605ea642630db8ca852c8a7ddbadf0db99",
+      "baselineCommit": "d63ea5b62cbd86ab427348f8df67cdd1c0227651",
+      "baselineBlobSha256": "15ddc7f7e1b9a0fca4e823da1ea0ac605ea642630db8ca852c8a7ddbadf0db99",
+      "workingSourceDiffersFromCommit": false,
+      "baselineUrl": "https://github.com/gkoreli/blog/blob/d63ea5b62cbd86ab427348f8df67cdd1c0227651/.agents/skills/personal-essays/SKILL.md"
+    },
+    {
+      "path": ".agents/skills/oss-radar/SKILL.md",
+      "bytes": 10619,
+      "lines": 199,
+      "sha256": "6a06251a170d7986e9e15100abcf0d474e852a712fc496a074aa886661150f2b",
+      "baselineCommit": "d63ea5b62cbd86ab427348f8df67cdd1c0227651",
+      "baselineBlobSha256": "6a06251a170d7986e9e15100abcf0d474e852a712fc496a074aa886661150f2b",
+      "workingSourceDiffersFromCommit": false,
+      "baselineUrl": "https://github.com/gkoreli/blog/blob/d63ea5b62cbd86ab427348f8df67cdd1c0227651/.agents/skills/oss-radar/SKILL.md"
+    },
+    {
+      "path": ".agents/skills/oss-radar/references/cohort-scan.md",
+      "bytes": 1888,
+      "lines": 56,
+      "sha256": "0773a10fe8b4f92d9cfb43461acb3d60244ebf868660b1a38f0dd5728abe4ba3",
+      "baselineCommit": "d63ea5b62cbd86ab427348f8df67cdd1c0227651",
+      "baselineBlobSha256": "0773a10fe8b4f92d9cfb43461acb3d60244ebf868660b1a38f0dd5728abe4ba3",
+      "workingSourceDiffersFromCommit": false,
+      "baselineUrl": "https://github.com/gkoreli/blog/blob/d63ea5b62cbd86ab427348f8df67cdd1c0227651/.agents/skills/oss-radar/references/cohort-scan.md"
+    },
+    {
+      "path": ".agents/skills/oss-radar/references/project-deep-dive.md",
+      "bytes": 5349,
+      "lines": 112,
+      "sha256": "7ef3df1478b67f7ffaf46164bfd7cc4ace8305de63a8486cb089e8d8fd718aa4",
+      "baselineCommit": "d63ea5b62cbd86ab427348f8df67cdd1c0227651",
+      "baselineBlobSha256": "7ef3df1478b67f7ffaf46164bfd7cc4ace8305de63a8486cb089e8d8fd718aa4",
+      "workingSourceDiffersFromCommit": false,
+      "baselineUrl": "https://github.com/gkoreli/blog/blob/d63ea5b62cbd86ab427348f8df67cdd1c0227651/.agents/skills/oss-radar/references/project-deep-dive.md"
+    },
+    {
+      "path": ".agents/skills/oss-radar/references/typescript-posts.md",
+      "bytes": 2744,
+      "lines": 63,
+      "sha256": "983253e1ff57672e3eac9c4448549d0687df9a875bb63cdbb388f3e3557d6f50",
+      "baselineCommit": "d63ea5b62cbd86ab427348f8df67cdd1c0227651",
+      "baselineBlobSha256": "983253e1ff57672e3eac9c4448549d0687df9a875bb63cdbb388f3e3557d6f50",
+      "workingSourceDiffersFromCommit": false,
+      "baselineUrl": "https://github.com/gkoreli/blog/blob/d63ea5b62cbd86ab427348f8df67cdd1c0227651/.agents/skills/oss-radar/references/typescript-posts.md"
+    },
+    {
+      "path": ".agents/skills/polish-prose/SKILL.md",
+      "bytes": 4181,
+      "lines": 41,
+      "sha256": "48e6f18d45c3f8df6ed7d23946fc769ab239ac36cb8636eac4c85529bdcd76f7",
+      "baselineCommit": "d63ea5b62cbd86ab427348f8df67cdd1c0227651",
+      "baselineBlobSha256": "48e6f18d45c3f8df6ed7d23946fc769ab239ac36cb8636eac4c85529bdcd76f7",
+      "workingSourceDiffersFromCommit": false,
+      "baselineUrl": "https://github.com/gkoreli/blog/blob/d63ea5b62cbd86ab427348f8df67cdd1c0227651/.agents/skills/polish-prose/SKILL.md"
+    },
+    {
+      "path": ".agents/skills/polish-prose/agents/openai.yaml",
+      "bytes": 200,
+      "lines": 4,
+      "sha256": "fc026ef975cab4bcec1e860be10ae0524f63fbcf99e1261e167261c2da7caf14",
+      "baselineCommit": "d63ea5b62cbd86ab427348f8df67cdd1c0227651",
+      "baselineBlobSha256": "fc026ef975cab4bcec1e860be10ae0524f63fbcf99e1261e167261c2da7caf14",
+      "workingSourceDiffersFromCommit": false,
+      "baselineUrl": "https://github.com/gkoreli/blog/blob/d63ea5b62cbd86ab427348f8df67cdd1c0227651/.agents/skills/polish-prose/agents/openai.yaml"
+    },
+    {
+      "path": ".agents/skills/article-discovery-positioning/SKILL.md",
+      "bytes": 7351,
+      "lines": 78,
+      "sha256": "01f63ef29d28266502c4dc5884acbaa66a9950269bab9ce4f03fa76ee659cb2f",
+      "baselineCommit": "d63ea5b62cbd86ab427348f8df67cdd1c0227651",
+      "baselineBlobSha256": "01f63ef29d28266502c4dc5884acbaa66a9950269bab9ce4f03fa76ee659cb2f",
+      "workingSourceDiffersFromCommit": false,
+      "baselineUrl": "https://github.com/gkoreli/blog/blob/d63ea5b62cbd86ab427348f8df67cdd1c0227651/.agents/skills/article-discovery-positioning/SKILL.md"
+    },
+    {
+      "path": ".agents/skills/article-discovery-positioning/references/metadata-and-discovery.md",
+      "bytes": 4643,
+      "lines": 49,
+      "sha256": "b0cb0f4272f556f92fee9c51eb4ab96b152eeaecdeb83232acb9b6e9aa7a215a",
+      "baselineCommit": "d63ea5b62cbd86ab427348f8df67cdd1c0227651",
+      "baselineBlobSha256": "ecc4ccb210a62cda8e99a516f3ad07bc9eba7d958563b64898ef6b17e2dc7ca6",
+      "workingSourceDiffersFromCommit": true,
+      "baselineUrl": "https://github.com/gkoreli/blog/blob/d63ea5b62cbd86ab427348f8df67cdd1c0227651/.agents/skills/article-discovery-positioning/references/metadata-and-discovery.md"
+    },
+    {
+      "path": ".agents/skills/article-discovery-positioning/references/series-and-cross-references.md",
+      "bytes": 2110,
+      "lines": 46,
+      "sha256": "41b8b4a177cd84aebcb664f3848b7027f7fd01e3053a680cc53f61f880d0d5c0",
+      "baselineCommit": "d63ea5b62cbd86ab427348f8df67cdd1c0227651",
+      "baselineBlobSha256": "41b8b4a177cd84aebcb664f3848b7027f7fd01e3053a680cc53f61f880d0d5c0",
+      "workingSourceDiffersFromCommit": false,
+      "baselineUrl": "https://github.com/gkoreli/blog/blob/d63ea5b62cbd86ab427348f8df67cdd1c0227651/.agents/skills/article-discovery-positioning/references/series-and-cross-references.md"
+    },
+    {
+      "path": ".agents/skills/shareable-engineering/SKILL.md",
+      "bytes": 5104,
+      "lines": 59,
+      "sha256": "af7d165ab9f3e79b49e6b83bc47ef410807b7755cd6173aa0d671b99aa80f818",
+      "baselineCommit": "d63ea5b62cbd86ab427348f8df67cdd1c0227651",
+      "baselineBlobSha256": "af7d165ab9f3e79b49e6b83bc47ef410807b7755cd6173aa0d671b99aa80f818",
+      "workingSourceDiffersFromCommit": false,
+      "baselineUrl": "https://github.com/gkoreli/blog/blob/d63ea5b62cbd86ab427348f8df67cdd1c0227651/.agents/skills/shareable-engineering/SKILL.md"
+    }
+  ],
+  "workingSourcePatch": {
+    "path": "docs/reference/writing-guidance-preconsolidation.patch.b64",
+    "encoding": "base64",
+    "bytes": 7636,
+    "sha256": "fb617d565959a61565322cc6bcd90b8c96def82b4dcda433c9e3159593d6d616",
+    "decodedBytes": 5651,
+    "decodedSha256": "2c8357e07a648aaf36b45496b2e65f0a9d7a8b45b0a92110186b917e494f27b0",
+    "purpose": "Reconstruct the three owner-opening-rule edits already present before consolidation, applied to each recorded baseline source.",
+    "decodeProcedure": "Decode the base64 file to a private temporary .patch file, then apply with patch -p1 from a disposable checkout of each recorded baseline source."
+  }
+}

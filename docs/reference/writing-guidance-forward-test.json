@@ -1,0 +1,193 @@
+{
+  "checkedAt": "2026-11-06T06:36:13.339738+00:00",
+  "scope": "Independent four-case behavioral forward test; actual generated outputs then assessment. Bounded acceptance of mode routing, proportionality, authorship and evidence boundaries, not exhaustive skill reliability.",
+  "arrangement": "Four sequential requests in one independent agent context; each reread entrypoint and selected references. Not four isolated model sessions.",
+  "operations": {
+    "network": false,
+    "production": false,
+    "gitMutation": false,
+    "newRuntimeDependency": false
+  },
+  "cases": [
+    {
+      "case": "technical article copy",
+      "artifact": "01-article.md",
+      "observed": "Concrete phone-brand hook, local/production boundary, request units and task-specific references retained.",
+      "limit": "Broad title needed description/opening to expose the exact CUBOT mechanism; no skill defect established."
+    },
+    {
+      "case": "exposed personal paragraph",
+      "artifact": "02-personal.md",
+      "observed": "Feedback only, no replacement prose, no metadata or interview expansion.",
+      "limit": "Possible over-tightening advice about supplied uncertainty remains an editorial limitation."
+    },
+    {
+      "case": "routine PR prose",
+      "artifact": "03-pr.md",
+      "observed": "Proportionate routing but original output introduced unsupported implementation-stage wording.",
+      "disposition": "Original failure preserved; separate 03-pr-corrected.md removes the unsupported stage under existing rules. No new universal instruction justified."
+    },
+    {
+      "case": "two-project offline OSS comparison",
+      "artifact": "04-oss.md",
+      "observed": "Pinned-source comparison with code facts, conditional recommendation and no invented execution, accuracy winner or published-package verification.",
+      "limit": "Archive-to-SHA associations supplied, not independently integrity-verified; incidental wider path inventory did not read non-target contents."
+    }
+  ],
+  "files": [
+    {
+      "path": "01-article.md",
+      "bytes": 794,
+      "sha256": "157e99f34778f8c6fd3057f13aa28245f67782d15bc3b601216fe3702d418276"
+    },
+    {
+      "path": "02-personal.md",
+      "bytes": 719,
+      "sha256": "885e0169256ed2c5f112951a53fbd078142de1f4cab240d5848508a4bb148cef"
+    },
+    {
+      "path": "03-pr-corrected.md",
+      "bytes": 214,
+      "sha256": "32db4069cdf650b4af0e77fa12a115e6b7fab7b3f24d8191794def595fd816a1"
+    },
+    {
+      "path": "03-pr.md",
+      "bytes": 225,
+      "sha256": "20e7ee6f9e033a9c01130467f9d8910adf69893721da376af47eb85fbeed993f"
+    },
+    {
+      "path": "04-oss-claims.md",
+      "bytes": 3930,
+      "sha256": "51c284fad2439437306baf5dcc6424e07a22db601d8fc4f7b9da7d5287b18777"
+    },
+    {
+      "path": "04-oss.md",
+      "bytes": 2265,
+      "sha256": "e1659bfb9ea5a095c1dc9fe1b3fad077ab5ff13d24ba228d1fd8da22e386846a"
+    },
+    {
+      "path": "assessment.md",
+      "bytes": 7723,
+      "sha256": "dbbeb43f34fcd9cd6191414bf1e144456d2c22f5855beb4d324ad30b9abf7b9f"
+    }
+  ],
+  "skillFilesAtAcceptanceCheck": [
+    {
+      "path": ".agents/skills/writing/SKILL.md",
+      "sha256": "8ccab93ae90ee0148b11e4d92220ef21e5b57a35fe510045cf281c63bf422138"
+    },
+    {
+      "path": ".agents/skills/writing/agents/openai.yaml",
+      "sha256": "dae0127302a9a8e1cad222f6eed63d5c3529c8a6f17c912e7988acf1a432db21"
+    },
+    {
+      "path": ".agents/skills/writing/references/article-design.md",
+      "sha256": "0888e6f434756706a11fb948f1b8b3f46ab815e42235cde8a52b800a4639cf2e"
+    },
+    {
+      "path": ".agents/skills/writing/references/evidence-and-investigations.md",
+      "sha256": "7f904cddd1d5637ae8af00668b0d3625a6fd574e549e6ba580e3ffa3be525413"
+    },
+    {
+      "path": ".agents/skills/writing/references/headlines-and-discovery.md",
+      "sha256": "9c3a7a60fcf74fe36e02e0839f50d219ce58002b2f66d0c7330376f3d7a99373"
+    },
+    {
+      "path": ".agents/skills/writing/references/oss-research.md",
+      "sha256": "fe0cadee5d0a2a072fd5c9f9f38440d6fb8c6c188d86cb82efeac82c2eb14a1e"
+    },
+    {
+      "path": ".agents/skills/writing/references/personal-authorship.md",
+      "sha256": "e8bd7c2e2160834c522707826652c298e0f5fb5afb28207995bcca8f6d1caea8"
+    },
+    {
+      "path": ".agents/skills/writing/references/prose-and-messages.md",
+      "sha256": "145cc776cb1b70ff03576d3c08d515d2d775a8cd1d099e3b5e303c430a46b5a4"
+    },
+    {
+      "path": ".agents/skills/writing/references/provenance.md",
+      "sha256": "c4018db977e1a1cc6ef2a8defd40e381e549e06cd3d9fc1e17ba897a712751ee"
+    },
+    {
+      "path": ".agents/skills/writing/references/publication-and-learning.md",
+      "sha256": "7d23d14e098abee2ad33bf206f7b4408a502d919796c3836cb7132913a347a41"
+    },
+    {
+      "path": ".agents/skills/writing/references/research-footprint.md",
+      "sha256": "fb50b603c4cb3426eaad52d8fa3c261899d72afa22292053d32879a8f2f385a6"
+    },
+    {
+      "path": ".agents/skills/writing/references/typescript-articles.md",
+      "sha256": "a1039da17c420e237b17639d0c1389fe70803ceb64598a6081f276137e8fc823"
+    }
+  ],
+  "privateArchive": "/Users/goga/.local/share/gkoreli/analytics-evidence/2026-11-06-writing-forward-test",
+  "limits": [
+    "No complete frozen dispatch/input transcript is included in this seven-file output archive.",
+    "The source/hash check records skill files at acceptance, not a per-case source snapshot.",
+    "Behavioral outputs do not establish exhaustive coverage, live link correctness, model-independent reliability or human reader reception."
+  ],
+  "acceptance": "The requested bounded consolidation acceptance is complete with the original PR failure, its correction and remaining evaluation limits preserved.",
+  "postAcceptanceFormatting": {
+    "scope": "Terminal formatting correction only; no substantive guidance change or behavioral rerun.",
+    "changes": [
+      {
+        "path": ".agents/skills/writing/references/research-footprint.md",
+        "atAcceptanceSha256": "fb50b603c4cb3426eaad52d8fa3c261899d72afa22292053d32879a8f2f385a6",
+        "afterFormattingSha256": "abc2a03f769f73db86d5279895ec323fa4a3c6d21783d0cee8369c359c62c617",
+        "correction": "Removed one extra blank line at EOF."
+      }
+    ],
+    "archivePackaging": "Raw preconsolidation patch is now base64 encoded to preserve exact context whitespace while passing repository whitespace checks; decoded bytes/hash remain committed."
+  },
+  "skillFilesAfterTerminalFormatting": [
+    {
+      "path": ".agents/skills/writing/SKILL.md",
+      "sha256": "8ccab93ae90ee0148b11e4d92220ef21e5b57a35fe510045cf281c63bf422138"
+    },
+    {
+      "path": ".agents/skills/writing/agents/openai.yaml",
+      "sha256": "dae0127302a9a8e1cad222f6eed63d5c3529c8a6f17c912e7988acf1a432db21"
+    },
+    {
+      "path": ".agents/skills/writing/references/article-design.md",
+      "sha256": "0888e6f434756706a11fb948f1b8b3f46ab815e42235cde8a52b800a4639cf2e"
+    },
+    {
+      "path": ".agents/skills/writing/references/evidence-and-investigations.md",
+      "sha256": "7f904cddd1d5637ae8af00668b0d3625a6fd574e549e6ba580e3ffa3be525413"
+    },
+    {
+      "path": ".agents/skills/writing/references/headlines-and-discovery.md",
+      "sha256": "9c3a7a60fcf74fe36e02e0839f50d219ce58002b2f66d0c7330376f3d7a99373"
+    },
+    {
+      "path": ".agents/skills/writing/references/oss-research.md",
+      "sha256": "fe0cadee5d0a2a072fd5c9f9f38440d6fb8c6c188d86cb82efeac82c2eb14a1e"
+    },
+    {
+      "path": ".agents/skills/writing/references/personal-authorship.md",
+      "sha256": "e8bd7c2e2160834c522707826652c298e0f5fb5afb28207995bcca8f6d1caea8"
+    },
+    {
+      "path": ".agents/skills/writing/references/prose-and-messages.md",
+      "sha256": "145cc776cb1b70ff03576d3c08d515d2d775a8cd1d099e3b5e303c430a46b5a4"
+    },
+    {
+      "path": ".agents/skills/writing/references/provenance.md",
+      "sha256": "c4018db977e1a1cc6ef2a8defd40e381e549e06cd3d9fc1e17ba897a712751ee"
+    },
+    {
+      "path": ".agents/skills/writing/references/publication-and-learning.md",
+      "sha256": "7d23d14e098abee2ad33bf206f7b4408a502d919796c3836cb7132913a347a41"
+    },
+    {
+      "path": ".agents/skills/writing/references/research-footprint.md",
+      "sha256": "abc2a03f769f73db86d5279895ec323fa4a3c6d21783d0cee8369c359c62c617"
+    },
+    {
+      "path": ".agents/skills/writing/references/typescript-articles.md",
+      "sha256": "a1039da17c420e237b17639d0c1389fe70803ceb64598a6081f276137e8fc823"
+    }
+  ]
+}

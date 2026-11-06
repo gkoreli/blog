@@ -25,6 +25,7 @@ Audience and growth: [ADR-0016.19](../adr/0016.19-agent-mediated-audience-growth
 
 ## Implementation conventions
 
+- Editorial guidance uses one [writing skill](../../.agents/skills/writing/SKILL.md) with task-specific references under [ADR-0017](../adr/0017-on-demand-project-guidance.md); the [migration map](writing-guidance-migration.md) records the former paths and coverage audit.
 - Use pnpm and the Node version in [the runtime pin](../../.mise.toml); [package.json](../../package.json) defines the supported major version.
 - Use strict TypeScript, marked for Markdown, Shiki for build-time code highlighting, Zod for Markdown frontmatter, esbuild for bundles, and vanilla CSS. TypeScript targets ESNext; browser bundles target es2024.
 - [The production build](../../packages/blog/src/pipeline/prod.ts) validates generated HTML. The standalone Markdown validator fails on invalid frontmatter; it does not validate TypeScript post exports.

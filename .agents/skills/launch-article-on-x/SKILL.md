@@ -1,6 +1,6 @@
 ---
 name: launch-article-on-x
-description: Design, render, publish, and measure evidence-led X launches for finished gkoreli.com articles. Use when turning an article or its preamble into a high-quality looping MP4 or GIF, writing a single post or short thread, inspecting the author's recent X baseline, publishing through the signed-in browser when explicitly requested, or iterating on distribution without clickbait.
+description: Design, render, publish, and measure evidence-led X launches for finished gkoreli.com articles. Use when turning an article or its preamble into a high-quality looping MP4 or GIF, writing a single post or short thread, inspecting the author's recent X baseline, publishing through the signed-in browser when explicitly requested, or iterating on distribution.
 ---
 
 # Launch Article On X
@@ -13,16 +13,7 @@ Use this skill after the article is shaped, fact-checked, and positioned. It may
 
 ## Authority and sequence
 
-Run the blog skills in this order when they apply:
-
-1. `shape-article`
-2. The governing form skill: `personal-essays`, `blog-writing`, or `oss-radar`
-3. `article-discovery-positioning`
-4. `shareable-engineering`
-5. `launch-article-on-x`
-6. `polish-prose` for final social copy only
-
-`personal-essays` protects personal article material; `oss-radar` governs evidence and verdicts. For posts and informal replies, use [Goga's informal voice](../polish-prose/SKILL.md#gogas-informal-voice): useful point first, ordinary words and his natural punctuation. Do not import an article's formal structure into a reply. This skill owns the distribution artifact, capture quality, publication workflow, and post-launch learning loop.
+Use [writing](../writing/SKILL.md) for the article’s form, authorship, evidence, positioning and prose. For social copy, load its [prose and informal voice guidance](../writing/references/prose-and-messages.md#gogas-informal-voice), without importing the article’s research apparatus. This skill owns the distribution artifact, capture quality, publication workflow and post-launch learning loop.
 
 ## Working directory
 
@@ -44,9 +35,9 @@ A copy request can finish with supported text, checked links, and recorded lengt
 
 Read the article, launch metadata, preamble implementation, and relevant evidence artifacts. State in one sentence why a technically serious reader should care now.
 
-For broader promotion or adoption requests, follow the [owner's equal-attention direction](../blog-writing/references/editorial-learning-loop.md#owner-direction-promotion-deserves-equal-attention). Research specific destinations beyond X when they fit; prepare exact materials and check destination rules. Separate comparable coverage from measured success and untested experiments. An X post alone is not a complete distribution strategy.
+For broader promotion or adoption requests, follow [requested distribution guidance](../writing/references/publication-and-learning.md#requested-distribution-deserves-concrete-work). Research specific destinations beyond X when they fit; prepare exact materials and check destination rules. Separate comparable coverage from measured success and untested experiments. An X post alone is not a complete distribution strategy.
 
-For promotion or trial recruitment through GitHub issues, follow [Goga's invitation requirement](../blog-writing/references/editorial-learning-loop.md#owner-direction-github-outreach-needs-an-invitation).
+For promotion or trial recruitment through GitHub issues, follow [Goga's invitation requirement](../writing/references/publication-and-learning.md#owner-direction-github-outreach-needs-an-invitation).
 
 When the user asks what performs on their account, inspect 10–20 recent original posts. Prefer the X analytics export (Premium: Analytics → Content → export CSV, columns Post id, Date, Post text, Post Link, Impressions, Likes, Engagements, Bookmarks, Shares, New follows, Replies, Reposts, Profile visits, Detail Expands, URL Clicks) over reading the profile in a browser; it gives exact counts for every post in the window. Check visible reply and native-quote context when the export does not identify post type: a leading `@` is only a clue, since native quote posts can also start with a mention. The export path is `~/Downloads/account_analytics_content_<from>_<to>.csv`; do not commit it. Separate originals from replies, reposts, and quote posts. Compare posts at similar ages; a six-month total is not comparable to a one-hour total. Record visible impressions, likes, replies, reposts, bookmarks when available, media type, opening move, topic, link placement, and whether the post created qualified conversation. Record the export's acquisition time and any unknown data cutoff; refresh per-post analytics after a delayed export instead of treating file arrival as fresh measurement.
 
