@@ -1,0 +1,127 @@
+{
+  "checkedAt": "2026-11-06T07:02:10.505Z",
+  "scope": "Local paired workerd/D1 campaign admission; no production deployment or provider email acceptance",
+  "baseline": "18606bd538c3899ea8786abd71517519df5834cd",
+  "compatibilityDate": "2026-03-06",
+  "method": "Paired actual workerd handlers and D1; before pins send.ts, email.ts and db.ts to the baseline campaign slice, while after uses current code. Token generation and the native runtime are shared. Provider effects are local outboundService controls, never external email.",
+  "providerAdapterCommit": "a1c524784d86e548f471b31e800acfdb35e3c443",
+  "focusedHandlerTests": 16,
+  "newsletterTypecheck": "pass",
+  "nativeCasesPerVariant": 4,
+  "productionCalls": 0,
+  "realRecipients": 0,
+  "migrationSha256": "e0d61fedb62c94563009255a5648de1f77cdd1a286b9f0420a99d1bdd730d075",
+  "beforeWorkerSha256": "9ae6806236d9945c12e71cc18d00e9a5428d7274c11743de1e6a3fd7d1df466b",
+  "afterWorkerSha256": "50a4f51c73d425230bd38d256b30d67549175f86121614cf047e7eb12e28c755",
+  "cases": [
+    {
+      "case": "concurrent-same-id",
+      "before": {
+        "firstStatus": 200,
+        "secondStatus": 200,
+        "providerCalls": 2,
+        "stableOperationKey": false
+      },
+      "after": {
+        "firstStatus": 200,
+        "secondStatus": 409,
+        "providerCalls": 1,
+        "stableOperationKey": true,
+        "campaign": {
+          "state": "completed",
+          "accepted_count": 1,
+          "failed_count": 0,
+          "unknown_count": 0,
+          "not_attempted_count": 0,
+          "interruption_reason": null
+        }
+      }
+    },
+    {
+      "case": "unreadable-provider-success-receipt",
+      "before": {
+        "firstStatus": 500,
+        "repeatStatus": 500,
+        "providerCalls": 2
+      },
+      "after": {
+        "firstStatus": 503,
+        "repeatStatus": 409,
+        "providerCalls": 1,
+        "campaign": {
+          "state": "interrupted",
+          "accepted_count": 0,
+          "failed_count": 0,
+          "unknown_count": 1,
+          "not_attempted_count": 0,
+          "interruption_reason": "delivery-unconfirmed"
+        }
+      }
+    },
+    {
+      "case": "accepted-send-log-failure",
+      "before": {
+        "firstStatus": 500,
+        "repeatStatus": 500,
+        "providerCalls": 2
+      },
+      "after": {
+        "firstStatus": 503,
+        "repeatStatus": 409,
+        "providerCalls": 1,
+        "campaign": {
+          "state": "interrupted",
+          "accepted_count": 1,
+          "failed_count": 0,
+          "unknown_count": 0,
+          "not_attempted_count": 0,
+          "interruption_reason": "delivery-log-unconfirmed"
+        }
+      }
+    },
+    {
+      "case": "uncertain-batch-stops-later-effects",
+      "before": {
+        "status": 200,
+        "providerCalls": 2,
+        "result": {
+          "campaign_id": "native-campaign",
+          "sent": 101,
+          "failed": 0,
+          "total": 101
+        }
+      },
+      "after": {
+        "status": 503,
+        "providerCalls": 1,
+        "campaign": {
+          "state": "interrupted",
+          "accepted_count": 0,
+          "failed_count": 0,
+          "unknown_count": 100,
+          "not_attempted_count": 1,
+          "interruption_reason": "delivery-unconfirmed"
+        }
+      }
+    }
+  ],
+  "remaining": [
+    "Source delivery follows confirmed schema activation and checked shared dependencies",
+    "Deployment activation and live operator acceptance are separate; no real campaign is sent by this subtask"
+  ],
+  "combinedNewsletterTests": 157,
+  "transportDependencyCommit": "941cbbcb7410e2e7c7e2254c35cdb58e3d0607fb",
+  "productionSchemaGate": {
+    "reportedBy": "coordinator",
+    "status": "applied-and-read-back",
+    "migrationSha256": "e0d61fedb62c94563009255a5648de1f77cdd1a286b9f0420a99d1bdd730d075",
+    "schemaMatchesFrozenDdl": true,
+    "campaignRows": 0,
+    "remoteStatements": 4,
+    "rowsRead": 98,
+    "rowsWritten": 4,
+    "providerAttemptsPerStatement": 1,
+    "subscriberOrHistoryQuery": false,
+    "emailCalls": 0
+  }
+}
