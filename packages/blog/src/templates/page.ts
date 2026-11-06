@@ -36,6 +36,7 @@ interface PageShellBaseProps {
   noindex?: boolean;
   seoTitle?: string;
   postSlug?: string;
+  markdownPath?: string;
 }
 
 type PageShellProps = PageShellBaseProps & (
@@ -43,7 +44,7 @@ type PageShellProps = PageShellBaseProps & (
   | { ogImage?: undefined; ogImageAlt?: undefined }
 );
 
-export function pageShell({ title, description, content, canonicalPath, currentSlug, currentSection, ogImage, ogImageAlt, head, gutter, preamble, layout, scripts, ogType = 'website', noindex = false, seoTitle, postSlug }: PageShellProps): PageDocument {
+export function pageShell({ title, description, content, canonicalPath, currentSlug, currentSection, ogImage, ogImageAlt, head, gutter, preamble, layout, scripts, ogType = 'website', noindex = false, seoTitle, postSlug, markdownPath }: PageShellProps): PageDocument {
   const TURNSTILE_SITE_KEY = turnstileSiteKey();
   const canonical = canonicalUrl(canonicalPath);
   const layoutClass = layout && layout !== 'default' ? ` layout-${layout}` : '';
@@ -52,7 +53,7 @@ export function pageShell({ title, description, content, canonicalPath, currentS
   const isHome = !currentSlug && !currentSection;
   const pageTitle = seoTitle ?? `${title} — Goga Koreli`;
   const typedLinks = typedLinkElements({
-    ...(postSlug ? { markdownPath: `/${postSlug}.md`, postSlug } : {}),
+    ...(postSlug ? { markdownPath: `/${postSlug}.md`, postSlug } : markdownPath ? { markdownPath } : {}),
   });
 
   const documentHead = `
@@ -115,6 +116,7 @@ export function pageShell({ title, description, content, canonicalPath, currentS
           <a href="/essays" class="${currentSection === 'essays' ? 'active' : ''}"><span class="sb-dot"></span>Essays</a>
           <a href="/engineering" class="${currentSection === 'engineering' ? 'active' : ''}"><span class="sb-dot"></span>Engineering</a>
           <a href="/oss-radar" class="${currentSection === 'oss-radar' ? 'active' : ''}"><span class="sb-dot"></span>OSS Radar</a>
+          <a href="/tools" class="${currentSlug === 'tools' ? 'active' : ''}"><span class="sb-dot"></span>Tools</a>
           <a href="/about" class="${currentSlug === 'about' ? 'active' : ''}"><span class="sb-dot"></span>About</a>
           <a href="/stats" class="${currentSlug === 'stats' ? 'active' : ''}"><span class="sb-dot"></span>Stats</a>
         </nav>

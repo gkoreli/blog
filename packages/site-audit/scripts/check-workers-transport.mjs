@@ -37,6 +37,10 @@ try {
   assert.equal(report.resources.length,8);
   assert.ok(report.resources.every(resource=>resource.outcome==='received' && resource.status===200));
   assert.equal(report.page.title,'Native transport');
+  assert.equal(report.assessment.profile,'technical-access/2026-11-06.1');
+  assert.deepEqual(report.assessment.score,{lower:100,upper:100,max:100,coveragePercent:100});
+  assert.match(report.page.textPreview,/Useful answer in source/);
+  assert.deepEqual(report.page.headingOutline,[{level:1,text:'Article'}]);
   assert.equal(report.discovery.markdown,'negotiated');
   assert.equal(requests.filter(request=>new URL(request.url).hostname==='cloudflare-dns.com').length,16);
   assert.equal(requests.filter(request=>new URL(request.url).hostname==='public.site').length,8);

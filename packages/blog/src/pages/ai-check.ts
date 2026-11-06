@@ -2,58 +2,19 @@ import { html } from '@nisli/core';
 
 export function aiCheckPage() {
   return html`<article class="ai-check post-content">
-    <header class="ai-check-header">
-      <p class="ai-check-eyebrow">Public engineering tools</p>
-      <h1>Can AI agents access your page?</h1>
-      <p class="ai-check-lead">Check crawler rules, delivered HTML, indexing controls and machine-readable links. Get the evidence and a list of fixes for one public URL.</p>
-      <p class="ai-check-note">A successful fetch is one step toward discovery. It does not promise that an assistant will find, cite or use the page.</p>
-    </header>
-
-    <div id="ai-check-server-result"></div>
+    <header class="ai-check-header"><a class="tool-back" href="/tools">← All tools</a><p class="tool-kicker">AI access check</p><h1>Find what stands<br>between agents<br>and your page.</h1><p class="ai-check-lead">A technical access score. The fixes that matter. The evidence behind every check.</p></header>
     <site-audit-check>
-      <form class="ai-check-form" action="/ai-check" method="post">
-        <label for="ai-check-url">Public HTTPS page</label>
-        <div class="ai-check-input-row">
-          <input id="ai-check-url" name="url" type="url" placeholder="https://example.com/article" required maxlength="2048" autocomplete="url" aria-describedby="ai-check-input-help">
-          <button type="submit">Check access</button>
-        </div>
-        <p id="ai-check-input-help" class="ai-check-note">Ten checks per network address per UTC day, shared by this form and the free API. Use a public HTTPS URL without credentials, a query or a fragment.</p>
-        <p class="ai-check-note">Checking sends requests from this service to the page and a bounded set of public files on its site. <a href="/privacy">Privacy and retention</a>.</p>
-      </form>
-      <p data-audit-status role="status" aria-live="polite" aria-atomic="true"></p>
-      <div data-audit-results></div>
-      <noscript><p>The form works without JavaScript and returns an HTML report. The same check is available as <a href="/api/ai-check/schema">a documented JSON API</a>.</p></noscript>
+      <form class="ai-check-form" action="/ai-check" method="post"><label for="ai-check-url">Your public page URL</label><div class="ai-check-input-row"><input id="ai-check-url" name="url" type="url" placeholder="https://your-site.com/article" required maxlength="2048" autocomplete="url" aria-describedby="ai-check-input-help"><button type="submit">Check this page <span aria-hidden="true">↗</span></button></div><p id="ai-check-input-help" class="tool-caption">10 free checks per network address per UTC day. No account or API key.</p></form>
+      <div class="ai-check-underform"><a href="/ai-check/example" data-example-check>See an example report <span aria-hidden="true">↗</span></a><span class="tool-caption">Free preview · no check used</span></div>
+      <details class="ai-check-input-details"><summary>What happens when I check a page?</summary><p>We request the public HTTPS page, its origin’s discovery files and synthetic client comparisons. Use a URL without credentials, queries or fragments. The form and API share ten checks per network address per UTC day; shared networks share that allowance. Admitted checks count even when fetching fails.</p><p>These are technical access checks, not a prediction of ranking or citation. <a href="/privacy">Privacy and retention</a> · <a href="/api/ai-check/schema">API contract</a></p></details>
+      <p data-audit-status role="status" aria-live="polite" aria-atomic="true"></p><div data-audit-results></div><noscript><p>This form works without JavaScript. <a href="/ai-check/example">View the example report</a> without using a check.</p></noscript>
     </site-audit-check>
-
-    <section class="ai-check-method" aria-labelledby="ai-check-method-heading">
-      <h2 id="ai-check-method-heading">Follow the access chain</h2>
-      <ol class="ai-check-chain">
-        <li><strong>Permission</strong><span>Which robots rules apply to this exact path, separately for search, assistant and training controls?</span></li>
-        <li><strong>Delivery</strong><span>What status, redirects, headers and HTML reach this checker? Do synthetic client declarations change the response?</span></li>
-        <li><strong>Interpretation</strong><span>Is text already in the HTML? Are canonical, indexing, structured-data and alternate-format signals available?</span></li>
-      </ol>
-      <p class="ai-check-note">The checker does not run JavaScript or log into the site. A synthetic request with an AI bot’s name comes from this checker, not that provider’s network. Optional files such as llms.txt are reported as observed; their presence is no citation guarantee.</p>
-    </section>
-
-    <section class="ai-check-request" aria-labelledby="ai-check-request-heading">
-      <h2 id="ai-check-request-heading">What does your request reveal?</h2>
-      <p>Our analytics library keeps client declarations, browser-shaped headers, network evidence and verification separate. Inspect the request sent by this browser to see those distinctions. This uses one check from the same daily allowance.</p>
-      <request-evidence-check>
-        <button type="button" data-request-check hidden>Inspect this request</button>
-        <p data-request-status role="status" aria-live="polite" aria-atomic="true"></p>
-        <div data-request-results></div>
-      </request-evidence-check>
-      <p class="ai-check-note"><a href="/api/request-check">Inspect this request as JSON</a>. The JSON link examines a navigation request; the button examines its own fetch request. Their header shapes can differ. A declared name does not authenticate a provider or identify a person.</p>
-    </section>
-
-    <section class="ai-check-api" aria-labelledby="ai-check-api-heading">
-      <h2 id="ai-check-api-heading">Use the free API</h2>
-      <p>The same report is available to scripts and agents. No API key is required. The daily allowance is shared with the form above. Admitted checks count even when fetching fails.</p>
-      <pre><code>curl https://gkoreli.com/api/ai-check \\
+    <div id="ai-check-server-result"></div>
+    <section class="ai-check-method"><div class="tool-section-heading"><h2>Three layers. One practical answer.</h2></div><ol class="ai-check-chain"><li><strong>Delivery</strong><span>Does the page arrive successfully? What happens when the declared client changes?</span></li><li><strong>Content</strong><span>Is useful text already in the HTML? Are the page’s identity and links available?</span></li><li><strong>Indexing</strong><span>Which search and assistant policies apply? What do the indexing controls say?</span></li></ol><p class="tool-caption">Your report distinguishes required checks, optional support and unknown evidence. <a href="#score-method">See the score breakdown</a>.</p></section>
+    <section class="ai-check-request" aria-labelledby="ai-check-request-heading"><p class="tool-kicker">A different question</p><h2 id="ai-check-request-heading">What does your request reveal?</h2><p>Inspect the request reaching this service: client declarations, network context and verification, kept separate.</p><request-evidence-check><button type="button" data-request-check hidden>Inspect this request</button><p data-request-status role="status" aria-live="polite" aria-atomic="true"></p><div data-request-results></div></request-evidence-check><p class="tool-caption">Uses one check from the shared daily allowance. <a href="/api/request-check">Open as JSON (uses a check)</a>. This examines your request to us, not traffic arriving at another site.</p></section>
+    <section class="ai-check-api" aria-labelledby="ai-check-api-heading"><p class="tool-kicker">For scripts and agents</p><h2 id="ai-check-api-heading">The same evidence, as JSON.</h2><p>Use the free API in your own workflow. Reports include the scoring profile, the observed evidence and the next steps.</p><details><summary>API request example</summary><pre><code>curl https://gkoreli.com/api/ai-check \\
   -H 'Content-Type: application/json' \\
-  -d '{"url":"https://example.com/article"}'</code></pre>
-      <p><a href="/api/ai-check/schema">Request, response and quota contract</a> · <a href="https://github.com/gkoreli/blog/tree/main/packages/site-audit" target="_blank" rel="noopener">Source and tests</a></p>
-      <p class="ai-check-note">Reports describe the bounded requests made at the recorded time. Firewall rules, location, authentication and provider-specific behavior can change what another client receives. Use the result to choose the next test.</p>
-    </section>
+  -d '{"url":"https://example.com/article"}'</code></pre></details><p><a href="/api/ai-check/schema">API reference</a> · <a href="/tools/robots">Robots playground</a> · <a href="/tools/compare">Compare saved reports</a></p></section>
+    <section class="ai-check-method" id="score-method"><h2>What the score means</h2><p>The technical access score combines delivery, HTML content and indexing checks on a fixed 100-point rubric. A range shows points that could not be assessed. Expand each component in a report to inspect its checks and deductions.</p><p>Markdown, llms.txt, sitemaps and structured data are reported as optional support. Their absence does not deduct points. Blocking training controls does not reduce the score. Synthetic requests come from this checker, not from the named AI providers.</p><p class="tool-caption">A successful check does not promise discovery, citation or understanding. It gives you concrete evidence for the next improvement. <a href="https://github.com/gkoreli/blog/tree/main/packages/site-audit" target="_blank" rel="noopener">Read the scoring source and tests</a>.</p></section>
   </article>`;
 }

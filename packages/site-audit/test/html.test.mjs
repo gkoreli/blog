@@ -40,3 +40,12 @@ test('bounded HTML with more than 50,000 tags is inspected through the final met
   assert.equal(result.description, 'Last metadata');
   assert.equal(result.links, 1);
 });
+test('bounded source preview and heading outline remain text observations', () => {
+  const source=`<html><body><nav>Navigation</nav><h1>A &amp; B <em>heading</em></h1><p>&lt;script&gt;Text only&lt;/script&gt; ${'body '.repeat(400)}</p>${'<h2>More</h2>'.repeat(20)}</body></html>`;
+  const result=inspectHtml(source,base);
+  assert.equal(result.textPreview.length,1200);
+  assert.match(result.textPreview,/Navigation/);
+  assert.match(result.textPreview,/<script>Text only<\/script>/);
+  assert.deepEqual(result.headingOutline[0],{level:1,text:'A & B heading'});
+  assert.equal(result.headingOutline.length,12);
+});

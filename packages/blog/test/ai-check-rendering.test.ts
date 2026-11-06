@@ -29,7 +29,7 @@ test('actual static snapshot preserves no-JavaScript form, API access and server
   assert.match(snapshot, /action="\/ai-check" method="post"/);
   assert.match(snapshot, /name="url" type="url"/);
   assert.match(snapshot, /href="\/api\/request-check"/);
-  assert.match(snapshot, /Ten checks per network address per UTC day/);
+  assert.match(snapshot, /10 free checks per network address per UTC day/);
   assert.match(snapshot, /does not promise/);
 });
 

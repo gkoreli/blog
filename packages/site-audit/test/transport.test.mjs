@@ -85,5 +85,7 @@ test('stalled body and ignored abort fetch both return within resource deadline'
 });
 test('oversized headers are omitted rather than presented as complete values', async () => {
   const transport = createWorkersTransport({ resolve: publicDns, fetch: async () => new Response('ok', { headers: { 'X-Robots-Tag': 'x'.repeat(2049) } }) });
-  assert.equal((await transport.retrieve(request)).evidence.headers.robots, null);
+  const result = await transport.retrieve(request);
+  assert.equal(result.evidence.headers.robots, null);
+  assert.deepEqual(result.evidence.headersOmitted, ['robots']);
 });

@@ -103,7 +103,7 @@ export function createWorkersTransport(dependencies: TransportDependencies = {})
       const begun = now();
       const evidence: ResourceEvidence = { kind: request.kind, requestedUrl: request.url, finalUrl: request.url,
         outcome: 'network-error', status: null, contentType: null, bytes: 0, elapsedMs: 0, redirects: 0,
-        probeAgent: request.probeAgent ?? null, headers: { robots: null, link: null, contentLocation: null, vary: null } };
+        probeAgent: request.probeAgent ?? null, headersOmitted: [], headers: { robots: null, link: null, contentLocation: null, vary: null } };
       const controller = new AbortController();
       const remaining = Math.min(RESOURCE_TIMEOUT_MS, AUDIT_TIMEOUT_MS - (now() - started));
       if (remaining <= 0) return { evidence: { ...evidence, outcome: 'timeout' }, text: null };
@@ -126,6 +126,10 @@ export function createWorkersTransport(dependencies: TransportDependencies = {})
           const response = await abortable(fetchOperation(current.href, { method: 'GET', redirect: 'manual', headers, signal: controller.signal }), controller.signal, value => { void value.body?.cancel(); });
           evidence.finalUrl = current.href;
           evidence.status = response.status;
+          evidence.headersOmitted = [];
+          for (const [name, wireName] of [['contentType', 'Content-Type'], ['robots', 'X-Robots-Tag'], ['link', 'Link'], ['contentLocation', 'Content-Location'], ['vary', 'Vary']] as const) {
+            if ((response.headers.get(wireName)?.length ?? 0) > 2048) evidence.headersOmitted.push(name);
+          }
           evidence.contentType = boundedHeader(response.headers.get('Content-Type'));
           evidence.headers = { robots: boundedHeader(response.headers.get('X-Robots-Tag')), link: boundedHeader(response.headers.get('Link')),
             contentLocation: boundedHeader(response.headers.get('Content-Location')), vary: boundedHeader(response.headers.get('Vary')) };

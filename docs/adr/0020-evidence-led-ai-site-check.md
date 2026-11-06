@@ -2,7 +2,7 @@
 
 ## Status
 
-Accepted implementation direction, November 5, 2026 Pacific / November 6 UTC. Delivery, activation and measured acceptance remain separate in the [worklist](../../packages/blog/drafts/research/ai-site-audit/00-worklist.md). This decision implements the owner's requested tool and article within the [analytics ambition](0019-agentic-engineering-publication-and-analytics-ambition.md).
+Accepted implementation direction, November 5, 2026 Pacific / November 6 UTC. The score presentation is amended by [ADR-0021](0021-tools-and-technical-access-assessment.md) on November 6: a bounded technical-access rubric is permitted with explicit unknown points, while universal AI-readiness predictions remain unsupported. Delivery, activation and measured acceptance remain separate in the [worklist](../../packages/blog/drafts/research/ai-site-audit/00-worklist.md). This decision implements the owner's requested tool and article within the [analytics ambition](0019-agentic-engineering-publication-and-analytics-ambition.md).
 
 ## Context
 
@@ -35,7 +35,7 @@ Keep parsing and findings independently testable through explicit contracts and 
 - Inspect a bounded set of public discovery resources and negotiated Markdown. Optional `llms.txt`, citation links and agent/discovery declarations are informational. Their presence is not a ranking or citation guarantee, and their absence carries no invented readiness penalty.
 - Label every changed-User-Agent request as a synthetic probe from the checker. Differences concern those responses from this infrastructure. Do not call them real provider fetches or a proof of provider access.
 - Keep current-request evidence independent from remote site observations. Header claims, network context and available native/local verification remain distinct, with missing or unassessed inputs explicit. Do not identify people or infer intent from a browser shape.
-- Publish findings with evidence and an actionable next check rather than a universal numerical AI-readiness score.
+- Publish findings with evidence and an actionable next check. [ADR-0021](0021-tools-and-technical-access-assessment.md) permits a transparent, fixed-denominator technical access score with explicit unknown points and evidence coverage; it does not permit a universal AI-readiness or citation prediction.
 
 ### Egress boundary
 
@@ -55,7 +55,7 @@ This is the quota store's scope. It does not imply that platform request logs or
 
 ## Alternatives and costs
 
-An all-in-one score is easy to compare but would combine unrelated stages without a calibrated denominator. A named-bot-only checker misses the demonstrated browser paths. Running real providers for every check would add account access, cost, changing product behavior and answer-quality evaluation. A full browser would answer a rendering question but expands the dependency and security surface. These may be separate future capabilities justified by actual use; they are not silently simulated here.
+A universal AI-readiness score would combine unrelated stages without calibration. The owner's subsequent request accepts a narrower, explicitly heuristic technical assessment under [ADR-0021](0021-tools-and-technical-access-assessment.md), with a fixed ledger and visible unknowns. A named-bot-only checker misses the demonstrated browser paths. Running real providers for every check would add account access, cost, changing product behavior and answer-quality evaluation. A full browser would answer a rendering question but expands the dependency and security surface. These may be separate future capabilities justified by actual use; they are not silently simulated here.
 
 The selected service adds bounded outbound traffic and quota writes to the existing Worker/D1 deployment. A successful own-site run does not establish broad compatibility, operator adoption, detector accuracy or million-site readiness. DNS, CDN policy, network location and changing source documents can change a later report. Version report semantics and retain timestamps.
 

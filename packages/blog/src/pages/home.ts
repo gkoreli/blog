@@ -34,6 +34,7 @@ export function homePage(posts: PostMeta[]) {
 
   return html`<div class="home">
   ${featured ? CoverStory({ post: featured }) : ''}
+  <section class="home-tools-strip" aria-label="Engineering tools"><p><strong>From field notes to working tools.</strong><br>Check page access, test crawler rules and compare the evidence.</p><a href="/tools">Explore the tools ↗</a></section>
 
   <div class="separator"><img src="/icons/sparkle.svg" class="separator-icon" width="14" height="14" alt=""></div>
 

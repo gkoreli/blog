@@ -1,0 +1,714 @@
+{
+  "report": {
+    "version": "2026-11-06.1",
+    "checkedAt": "2026-11-06T16:33:45.697Z",
+    "target": "https://gkoreli.com/",
+    "complete": true,
+    "resources": [
+      {
+        "kind": "page",
+        "requestedUrl": "https://gkoreli.com/",
+        "finalUrl": "https://gkoreli.com/",
+        "outcome": "received",
+        "status": 200,
+        "contentType": "text/html",
+        "bytes": 33307,
+        "elapsedMs": 587,
+        "redirects": 0,
+        "probeAgent": null,
+        "headersOmitted": [],
+        "headers": {
+          "robots": null,
+          "link": "</about>; rel=\"author\", <https://creativecommons.org/licenses/by-nc-nd/4.0/>; rel=\"license\"",
+          "contentLocation": null,
+          "vary": null
+        }
+      },
+      {
+        "kind": "robots",
+        "requestedUrl": "https://gkoreli.com/robots.txt",
+        "finalUrl": "https://gkoreli.com/robots.txt",
+        "outcome": "received",
+        "status": 200,
+        "contentType": "text/plain; charset=utf-8",
+        "bytes": 342,
+        "elapsedMs": 110,
+        "redirects": 0,
+        "probeAgent": null,
+        "headersOmitted": [],
+        "headers": {
+          "robots": null,
+          "link": null,
+          "contentLocation": null,
+          "vary": null
+        }
+      },
+      {
+        "kind": "llms",
+        "requestedUrl": "https://gkoreli.com/llms.txt",
+        "finalUrl": "https://gkoreli.com/llms.txt",
+        "outcome": "received",
+        "status": 200,
+        "contentType": "text/plain; charset=utf-8",
+        "bytes": 18003,
+        "elapsedMs": 410,
+        "redirects": 0,
+        "probeAgent": null,
+        "headersOmitted": [],
+        "headers": {
+          "robots": null,
+          "link": null,
+          "contentLocation": null,
+          "vary": null
+        }
+      },
+      {
+        "kind": "sitemap",
+        "requestedUrl": "https://gkoreli.com/sitemap.xml",
+        "finalUrl": "https://gkoreli.com/sitemap.xml",
+        "outcome": "received",
+        "status": 200,
+        "contentType": "application/xml",
+        "bytes": 7884,
+        "elapsedMs": 303,
+        "redirects": 0,
+        "probeAgent": null,
+        "headersOmitted": [],
+        "headers": {
+          "robots": null,
+          "link": null,
+          "contentLocation": null,
+          "vary": null
+        }
+      },
+      {
+        "kind": "markdown",
+        "requestedUrl": "https://gkoreli.com/",
+        "finalUrl": "https://gkoreli.com/",
+        "outcome": "received",
+        "status": 200,
+        "contentType": "text/html",
+        "bytes": 32940,
+        "elapsedMs": 101,
+        "redirects": 0,
+        "probeAgent": null,
+        "headersOmitted": [],
+        "headers": {
+          "robots": null,
+          "link": "</about>; rel=\"author\", <https://creativecommons.org/licenses/by-nc-nd/4.0/>; rel=\"license\"",
+          "contentLocation": null,
+          "vary": null
+        }
+      },
+      {
+        "kind": "probe",
+        "requestedUrl": "https://gkoreli.com/",
+        "finalUrl": "https://gkoreli.com/",
+        "outcome": "received",
+        "status": 200,
+        "contentType": "text/html",
+        "bytes": 33307,
+        "elapsedMs": 109,
+        "redirects": 0,
+        "probeAgent": "ChatGPT-User",
+        "headersOmitted": [],
+        "headers": {
+          "robots": null,
+          "link": "</about>; rel=\"author\", <https://creativecommons.org/licenses/by-nc-nd/4.0/>; rel=\"license\"",
+          "contentLocation": null,
+          "vary": null
+        }
+      },
+      {
+        "kind": "probe",
+        "requestedUrl": "https://gkoreli.com/",
+        "finalUrl": "https://gkoreli.com/",
+        "outcome": "received",
+        "status": 200,
+        "contentType": "text/html",
+        "bytes": 33307,
+        "elapsedMs": 99,
+        "redirects": 0,
+        "probeAgent": "Claude-User",
+        "headersOmitted": [],
+        "headers": {
+          "robots": null,
+          "link": "</about>; rel=\"author\", <https://creativecommons.org/licenses/by-nc-nd/4.0/>; rel=\"license\"",
+          "contentLocation": null,
+          "vary": null
+        }
+      },
+      {
+        "kind": "probe",
+        "requestedUrl": "https://gkoreli.com/",
+        "finalUrl": "https://gkoreli.com/",
+        "outcome": "received",
+        "status": 200,
+        "contentType": "text/html",
+        "bytes": 33307,
+        "elapsedMs": 105,
+        "redirects": 0,
+        "probeAgent": "Perplexity-User",
+        "headersOmitted": [],
+        "headers": {
+          "robots": null,
+          "link": "</about>; rel=\"author\", <https://creativecommons.org/licenses/by-nc-nd/4.0/>; rel=\"license\"",
+          "contentLocation": null,
+          "vary": null
+        }
+      }
+    ],
+    "page": {
+      "title": "Goga Koreli — Agentic Engineering Field Notes",
+      "description": "Field notes from building and evaluating AI agents, developer tools, and agentic systems — including experiments that fail.",
+      "canonical": "https://gkoreli.com/",
+      "language": "en",
+      "textCharacters": 10713,
+      "textPreview": "gkoreli.com Where excitement ends, depth begins. Contents Home Essays Engineering OSS Radar About Stats Subscribe · RSS Featured · Essays Nov 3, 2026 In the age of abundance, less is more AI agents let me keep several projects moving. A mentor's advice made me question whether useful parallel work keeps me from staying with one project. Engineering Nov 5, 2026 1 prompt Check What AI Crawlers Can Reach on Your Site A free site checker and API for robots rules, page content, indexing controls and machine-readable links—with the evidence and limits behind each finding. Engineering Nov 5, 2026 15 prompts AI Fetchers, Browsers, and Crawlers: Their Headers and How to Detect Them in Analytics Live tests of AI search, fetch, crawl and browser tools: their HTTP headers, signature coverage, analytics blind spots, and the fixes I deployed. Engineering Nov 1, 2026 2 prompts Bun AOT in Express and Fastify: memory, CPU and serializers Bun AOT cut app memory by about half in Express and Fastify SQLite tests. I measured CPU, startup and a serializer built before compilation. Engineering Oct 31, 2026 9 prompts My AI Agent Read My Blog. My Analytics Called It a Browser. Actual Duck.ai, ChatGPT and G",
+      "headingOutline": [
+        {
+          "level": 1,
+          "text": "In the age of abundance, less is more"
+        },
+        {
+          "level": 2,
+          "text": "Check What AI Crawlers Can Reach on Your Site"
+        },
+        {
+          "level": 2,
+          "text": "AI Fetchers, Browsers, and Crawlers: Their Headers and How to Detect Them in Analytics"
+        },
+        {
+          "level": 2,
+          "text": "Bun AOT in Express and Fastify: memory, CPU and serializers"
+        },
+        {
+          "level": 2,
+          "text": "My AI Agent Read My Blog. My Analytics Called It a Browser."
+        },
+        {
+          "level": 2,
+          "text": "OSS Radar #13: Hob Wrote Correct Files with Network Access Blocked"
+        },
+        {
+          "level": 2,
+          "text": "OSS Radar #12: Claude Code’s Status Labels Make Their Own Model Calls"
+        },
+        {
+          "level": 2,
+          "text": "OSS Radar #11: Qwenputer Ran My Program Inside Qwen’s Layers"
+        },
+        {
+          "level": 2,
+          "text": "OSS Radar #10: PaperPilot Left the Secret in My Redacted PDF"
+        },
+        {
+          "level": 2,
+          "text": "OSS Radar #09: tsrs Checks VS Code Faster with 56% Less RAM"
+        },
+        {
+          "level": 2,
+          "text": "A Linux VM on My Mac Beat macOS at Installing Dependencies"
+        },
+        {
+          "level": 2,
+          "text": "OSS Radar #08: Bun AOT — Don't Rewrite TypeScript in Rust Yet"
+        }
+      ],
+      "headings": 44,
+      "links": 57,
+      "scriptElements": 6,
+      "metaRobots": [],
+      "structuredDataTypes": [
+        "WebSite"
+      ],
+      "structuredDataBlocks": 1,
+      "invalidStructuredDataBlocks": 0,
+      "alternateLinks": [
+        {
+          "type": "application/rss+xml",
+          "href": "https://gkoreli.com/feed.xml"
+        }
+      ],
+      "parseState": "parsed",
+      "indexingAssessmentComplete": true
+    },
+    "robots": {
+      "state": "parsed",
+      "groups": 1,
+      "rules": 1,
+      "sitemaps": [
+        "https://gkoreli.com/sitemap.xml"
+      ],
+      "bots": [
+        {
+          "token": "GPTBot",
+          "provider": "OpenAI",
+          "role": "training-control",
+          "source": "https://developers.openai.com/api/docs/bots",
+          "decision": "allowed",
+          "matchedGroups": [
+            "*"
+          ],
+          "matchedRule": "Allow: /",
+          "reason": "Longest matching path rule (line 2); Allow wins an equal-length tie."
+        },
+        {
+          "token": "OAI-SearchBot",
+          "provider": "OpenAI",
+          "role": "search",
+          "source": "https://developers.openai.com/api/docs/bots",
+          "decision": "allowed",
+          "matchedGroups": [
+            "*"
+          ],
+          "matchedRule": "Allow: /",
+          "reason": "Longest matching path rule (line 2); Allow wins an equal-length tie."
+        },
+        {
+          "token": "ChatGPT-User",
+          "provider": "OpenAI",
+          "role": "assistant",
+          "source": "https://developers.openai.com/api/docs/bots",
+          "decision": "allowed",
+          "matchedGroups": [
+            "*"
+          ],
+          "matchedRule": "Allow: /",
+          "reason": "Longest matching path rule (line 2); Allow wins an equal-length tie."
+        },
+        {
+          "token": "ClaudeBot",
+          "provider": "Anthropic",
+          "role": "training-control",
+          "source": "https://privacy.claude.com/en/articles/8896518",
+          "decision": "allowed",
+          "matchedGroups": [
+            "*"
+          ],
+          "matchedRule": "Allow: /",
+          "reason": "Longest matching path rule (line 2); Allow wins an equal-length tie."
+        },
+        {
+          "token": "Claude-SearchBot",
+          "provider": "Anthropic",
+          "role": "search",
+          "source": "https://privacy.claude.com/en/articles/8896518",
+          "decision": "allowed",
+          "matchedGroups": [
+            "*"
+          ],
+          "matchedRule": "Allow: /",
+          "reason": "Longest matching path rule (line 2); Allow wins an equal-length tie."
+        },
+        {
+          "token": "Claude-User",
+          "provider": "Anthropic",
+          "role": "assistant",
+          "source": "https://privacy.claude.com/en/articles/8896518",
+          "decision": "allowed",
+          "matchedGroups": [
+            "*"
+          ],
+          "matchedRule": "Allow: /",
+          "reason": "Longest matching path rule (line 2); Allow wins an equal-length tie."
+        },
+        {
+          "token": "PerplexityBot",
+          "provider": "Perplexity",
+          "role": "search",
+          "source": "https://docs.perplexity.ai/guides/bots",
+          "decision": "allowed",
+          "matchedGroups": [
+            "*"
+          ],
+          "matchedRule": "Allow: /",
+          "reason": "Longest matching path rule (line 2); Allow wins an equal-length tie."
+        },
+        {
+          "token": "Perplexity-User",
+          "provider": "Perplexity",
+          "role": "assistant",
+          "source": "https://docs.perplexity.ai/guides/bots",
+          "decision": "allowed",
+          "matchedGroups": [
+            "*"
+          ],
+          "matchedRule": "Allow: /",
+          "reason": "Longest matching path rule (line 2); Allow wins an equal-length tie."
+        },
+        {
+          "token": "Googlebot",
+          "provider": "Google",
+          "role": "search",
+          "source": "https://developers.google.com/search/docs/crawling-indexing/overview-google-crawlers",
+          "decision": "allowed",
+          "matchedGroups": [
+            "*"
+          ],
+          "matchedRule": "Allow: /",
+          "reason": "Longest matching path rule (line 2); Allow wins an equal-length tie."
+        },
+        {
+          "token": "Google-Extended",
+          "provider": "Google",
+          "role": "training-control",
+          "source": "https://developers.google.com/search/docs/crawling-indexing/overview-google-crawlers",
+          "decision": "allowed",
+          "matchedGroups": [
+            "*"
+          ],
+          "matchedRule": "Allow: /",
+          "reason": "Longest matching path rule (line 2); Allow wins an equal-length tie."
+        },
+        {
+          "token": "GoogleOther",
+          "provider": "Google",
+          "role": "other",
+          "source": "https://developers.google.com/search/docs/crawling-indexing/overview-google-crawlers",
+          "decision": "allowed",
+          "matchedGroups": [
+            "*"
+          ],
+          "matchedRule": "Allow: /",
+          "reason": "Longest matching path rule (line 2); Allow wins an equal-length tie."
+        },
+        {
+          "token": "bingbot",
+          "provider": "Microsoft",
+          "role": "search",
+          "source": "https://www.bing.com/webmasters/help/which-crawlers-does-bing-use-8c184ec0",
+          "decision": "allowed",
+          "matchedGroups": [
+            "*"
+          ],
+          "matchedRule": "Allow: /",
+          "reason": "Longest matching path rule (line 2); Allow wins an equal-length tie."
+        },
+        {
+          "token": "Applebot",
+          "provider": "Apple",
+          "role": "search",
+          "source": "https://support.apple.com/en-us/119829",
+          "decision": "allowed",
+          "matchedGroups": [
+            "*"
+          ],
+          "matchedRule": "Allow: /",
+          "reason": "Longest matching path rule (line 2); Allow wins an equal-length tie."
+        },
+        {
+          "token": "Applebot-Extended",
+          "provider": "Apple",
+          "role": "training-control",
+          "source": "https://support.apple.com/en-us/119829",
+          "decision": "allowed",
+          "matchedGroups": [
+            "*"
+          ],
+          "matchedRule": "Allow: /",
+          "reason": "Longest matching path rule (line 2); Allow wins an equal-length tie."
+        },
+        {
+          "token": "CCBot",
+          "provider": "Common Crawl",
+          "role": "training-control",
+          "source": "https://commoncrawl.org/ccbot",
+          "decision": "allowed",
+          "matchedGroups": [
+            "*"
+          ],
+          "matchedRule": "Allow: /",
+          "reason": "Longest matching path rule (line 2); Allow wins an equal-length tie."
+        },
+        {
+          "token": "Amazonbot",
+          "provider": "Amazon",
+          "role": "other",
+          "source": "https://developer.amazon.com/amazonbot",
+          "decision": "allowed",
+          "matchedGroups": [
+            "*"
+          ],
+          "matchedRule": "Allow: /",
+          "reason": "Longest matching path rule (line 2); Allow wins an equal-length tie."
+        },
+        {
+          "token": "DuckAssistBot",
+          "provider": "DuckDuckGo",
+          "role": "assistant",
+          "source": "https://duckduckgo.com/duckduckgo-help-pages/results/duckassistbot/",
+          "decision": "allowed",
+          "matchedGroups": [
+            "*"
+          ],
+          "matchedRule": "Allow: /",
+          "reason": "Longest matching path rule (line 2); Allow wins an equal-length tie."
+        },
+        {
+          "token": "MistralAI-User",
+          "provider": "Mistral AI",
+          "role": "assistant",
+          "source": "https://docs.mistral.ai/robots",
+          "decision": "allowed",
+          "matchedGroups": [
+            "*"
+          ],
+          "matchedRule": "Allow: /",
+          "reason": "Longest matching path rule (line 2); Allow wins an equal-length tie."
+        },
+        {
+          "token": "MistralAI-Index",
+          "provider": "Mistral AI",
+          "role": "search",
+          "source": "https://docs.mistral.ai/robots",
+          "decision": "allowed",
+          "matchedGroups": [
+            "*"
+          ],
+          "matchedRule": "Allow: /",
+          "reason": "Longest matching path rule (line 2); Allow wins an equal-length tie."
+        },
+        {
+          "token": "MistralAI-Training",
+          "provider": "Mistral AI",
+          "role": "training-control",
+          "source": "https://docs.mistral.ai/robots",
+          "decision": "allowed",
+          "matchedGroups": [
+            "*"
+          ],
+          "matchedRule": "Allow: /",
+          "reason": "Longest matching path rule (line 2); Allow wins an equal-length tie."
+        },
+        {
+          "token": "ShapBot",
+          "provider": "Parallel",
+          "role": "search",
+          "source": "https://parallel.ai/parallel-web-systems-bots",
+          "decision": "allowed",
+          "matchedGroups": [
+            "*"
+          ],
+          "matchedRule": "Allow: /",
+          "reason": "Longest matching path rule (line 2); Allow wins an equal-length tie."
+        },
+        {
+          "token": "Shap-User",
+          "provider": "Parallel",
+          "role": "assistant",
+          "source": "https://parallel.ai/parallel-web-systems-bots",
+          "decision": "allowed",
+          "matchedGroups": [
+            "*"
+          ],
+          "matchedRule": "Allow: /",
+          "reason": "Longest matching path rule (line 2); Allow wins an equal-length tie. Parallel describes Shap-User as a visibility identifier rather than a token intended for automated controls; this is only a declared-token policy interpretation."
+        },
+        {
+          "token": "ExaSearchBot",
+          "provider": "Exa",
+          "role": "search",
+          "source": "https://crawler.exa.ai/",
+          "decision": "unknown",
+          "matchedGroups": [],
+          "matchedRule": null,
+          "reason": "Exa documents an additional major-search-engine fallback when no ExaSearchBot-specific group exists; this generic RFC policy evaluator cannot resolve that vendor policy."
+        },
+        {
+          "token": "ExaUser",
+          "provider": "Exa",
+          "role": "assistant",
+          "source": "https://exauser.crawler.exa.ai/",
+          "decision": "allowed",
+          "matchedGroups": [
+            "*"
+          ],
+          "matchedRule": "Allow: /",
+          "reason": "Longest matching path rule (line 2); Allow wins an equal-length tie."
+        },
+        {
+          "token": "meta-externalagent",
+          "provider": "Meta",
+          "role": "training-control",
+          "source": "https://developers.facebook.com/docs/sharing/webmasters/web-crawlers/",
+          "decision": "allowed",
+          "matchedGroups": [
+            "*"
+          ],
+          "matchedRule": "Allow: /",
+          "reason": "Longest matching path rule (line 2); Allow wins an equal-length tie."
+        },
+        {
+          "token": "meta-externalfetcher",
+          "provider": "Meta",
+          "role": "assistant",
+          "source": "https://developers.facebook.com/docs/sharing/webmasters/web-crawlers/",
+          "decision": "allowed",
+          "matchedGroups": [
+            "*"
+          ],
+          "matchedRule": "Allow: /",
+          "reason": "Longest matching path rule (line 2); Allow wins an equal-length tie."
+        }
+      ]
+    },
+    "discovery": {
+      "llms": "present",
+      "llmsLinks": 77,
+      "sitemap": "xml-observed",
+      "markdown": "not-negotiated"
+    },
+    "findings": [
+      {
+        "id": "llms-present",
+        "severity": "info",
+        "title": "An llms.txt response was observed",
+        "evidence": "18003 response bytes; links are counted without fetching them.",
+        "recommendation": "Keep the directory accurate if you maintain it. Presence does not prove discovery, ranking, use or citation."
+      }
+    ],
+    "limits": [
+      "complete means every planned resource returned a bounded response and robots parsing/evaluation did not exceed a local policy budget. It does not mean every policy is known, every response succeeds, or an AI provider can use the site.",
+      "One page and fixed root discovery paths; no site crawl, browser execution, provider login, search-result check or citation trial.",
+      "Robots decisions apply to the final page path and declared product token. They are policy interpretations, not access authorization or proof that a provider follows them.",
+      "Training-control groups are policy tokens for training or secondary reuse, not evidence that a particular request trains a model. Google-Extended also governs some grounding uses; Applebot-Extended controls secondary reuse, and CCBot builds a general web corpus. Consult each provider source for its exact scope.",
+      "The three named User-Agent probes are synthetic requests from this audit. They do not authenticate or reproduce OpenAI, Anthropic or Perplexity infrastructure.",
+      "HTML text and metadata are bounded source-level observations. Response header values longer than 2,048 characters are omitted and remain unassessed. These observations do not establish rendered visibility, schema validity, answer quality or what an assistant extracts.",
+      "llms.txt, Markdown, sitemap and structured-data presence do not establish ranking, recommendation, training use or citation.",
+      "At most 12 target GETs including redirects, three redirects per resource, 512 KiB per response and a 22-second transport deadline. Robots parsing is limited to 10,000 lines/5,000 rules/8,192 characters per line and wildcard comparison to 200,000 steps per token; policy-limit results remain unknown. Partial failures remain visible.",
+      "Public HTTPS only. Production safety depends on Cloudflare Workers global_fetch_strictly_public connection-time network filtering, in addition to URL and DNS preflight checks.",
+      "Saved controlled example captured with Sec-Purpose: prefetch on own-site requests to exclude these controls from routine audience observations. This header is not sent by the hosted checker. The capture predates the homepage Markdown repair."
+    ],
+    "assessment": {
+      "profile": "technical-access/2026-11-06.1",
+      "label": "Technical access score",
+      "score": {
+        "lower": 100,
+        "upper": 100,
+        "max": 100,
+        "coveragePercent": 100
+      },
+      "counts": {
+        "passed": 6,
+        "failed": 0,
+        "unknown": 0
+      },
+      "components": [
+        {
+          "id": "delivery",
+          "title": "Page delivery",
+          "checks": [
+            {
+              "id": "page-status",
+              "title": "Successful page response",
+              "weight": 30,
+              "state": "pass",
+              "evidence": "received; HTTP 200.",
+              "nextStep": "For a public page, compare a direct fetch and edge logs when this response fails. This checker is not a real provider trial."
+            },
+            {
+              "id": "page-html",
+              "title": "HTML response type",
+              "weight": 10,
+              "state": "pass",
+              "evidence": "Content-Type: text/html.",
+              "nextStep": "Serve the intended HTML with its correct media type. Other resource types may be intentional and fall outside this page baseline."
+            }
+          ],
+          "earned": 40,
+          "unknown": 0,
+          "max": 40
+        },
+        {
+          "id": "content",
+          "title": "Initial HTML source",
+          "checks": [
+            {
+              "id": "source-text",
+              "title": "Text in the initial HTML",
+              "weight": 20,
+              "state": "pass",
+              "evidence": "10713 source text characters were observed outside excluded elements.",
+              "nextStep": "Put useful content in the initial HTML when possible. This count can include navigation and does not establish meaningful answers or rendered visibility."
+            },
+            {
+              "id": "page-title",
+              "title": "Nonempty page title",
+              "weight": 10,
+              "state": "pass",
+              "evidence": "Title: Goga Koreli — Agentic Engineering Field Notes",
+              "nextStep": "Give the page a descriptive title. This checklist weight is a local heuristic, not a ranking weight."
+            },
+            {
+              "id": "page-heading",
+              "title": "At least one source heading",
+              "weight": 10,
+              "state": "pass",
+              "evidence": "44 H1–H6 elements were observed.",
+              "nextStep": "Use headings that explain the content. A heading count does not validate hierarchy or make a claim about provider extraction."
+            }
+          ],
+          "earned": 40,
+          "unknown": 0,
+          "max": 40
+        },
+        {
+          "id": "indexing",
+          "title": "General indexing controls",
+          "checks": [
+            {
+              "id": "general-indexing",
+              "title": "No general noindex directive observed",
+              "weight": 20,
+              "state": "pass",
+              "evidence": "The captured general controls contain no noindex/none directive.",
+              "nextStep": "If public indexing is your goal, review generic noindex/none controls. They may be intentional. Provider-scoped controls, crawl policy, actual indexing and assistant use remain separate."
+            }
+          ],
+          "earned": 20,
+          "unknown": 0,
+          "max": 20
+        }
+      ],
+      "optional": [
+        {
+          "id": "llms",
+          "title": "Optional llms.txt directory",
+          "state": "available",
+          "evidence": "received; HTTP 200; Content-Type text/plain; charset=utf-8.",
+          "nextStep": "Keep the directory accurate. Presence does not establish ranking, discovery or citation."
+        },
+        {
+          "id": "sitemap",
+          "title": "Sitemap at the fixed root path",
+          "state": "available",
+          "evidence": "received; HTTP 200; Content-Type application/xml.",
+          "nextStep": "Maintain the sitemap with canonical URLs. The checker observes its root element and does not validate every entry."
+        },
+        {
+          "id": "markdown",
+          "title": "Optional Markdown negotiation",
+          "state": "not-negotiated",
+          "evidence": "received; HTTP 200; Content-Type text/html.",
+          "nextStep": "This URL returned HTML when Markdown was requested. That optional format is not required for the HTML to be readable. Check a declared alternate or add negotiation only if useful."
+        },
+        {
+          "id": "structured-data",
+          "title": "Optional JSON-LD syntax",
+          "state": "available",
+          "evidence": "1 JSON-LD blocks; 0 did not parse as JSON.",
+          "nextStep": "Publish accurate structured data when it serves your page. Absence does not lower this score."
+        }
+      ],
+      "limits": [
+        "This is a versioned local technical checklist for a public HTML page, not a calibrated AI-readiness, ranking, citation or quality predictor. The displayed weights are product heuristics.",
+        "Delivery contributes 40 points, initial HTML source 40 and general indexing controls 20. Intentional generic noindex can lower the index without being a defect.",
+        "Unknown points form the displayed lower–upper interval over 100. Coverage counts points with observed pass/fail outcomes; missing evidence never becomes a passed or failed check.",
+        "Training/reuse blocks, provider-specific robots decisions and optional Markdown, llms.txt, sitemap, JSON-LD or citation-format absence do not deduct points.",
+        "Header omission, metadata capture limits, legacy reports without completeness flags and ambiguous provider-scoped headers keep indexing points unknown unless a generic restriction is positively observed.",
+        "This report does not establish actual indexing or the access, selection, citation, training use or answer quality of any AI provider."
+      ]
+    }
+  }
+}

@@ -1,4 +1,5 @@
 import { analyzeSite } from '@gkoreli/site-audit';
+import { isSiteAuditReport } from '@gkoreli/site-audit/report-validation';
 import { normalizeTarget, TargetValidationError } from '@gkoreli/site-audit/target';
 import { assessRequest, trustedEdgeAddress } from '@gkoreli/analytics/request-assessment';
 import { admitCheck, d1QuotaStore, quotaCallerKey, type CheckQuota } from './ai-check-quota.js';
@@ -101,6 +102,21 @@ async function htmlResponse(request: Request, env: AiCheckEnv, result: string, s
 export async function handleAiCheck(request: Request, env: AiCheckEnv, dependencies: AiCheckDependencies = {}): Promise<Response> {
   const path = new URL(request.url).pathname;
   const htmlForm = path === '/ai-check';
+  if (path === '/ai-check/example') {
+    if (request.method !== 'GET' && request.method !== 'HEAD') {
+      const response = json({ error: 'Use GET or HEAD for the saved example.' }, 405);
+      response.headers.set('Allow', 'GET, HEAD');
+      return response;
+    }
+    const asset = await env.ASSETS.fetch(new Request(new URL('/ai-check-example.json', request.url)));
+    let value: unknown;
+    try { value = await asset.json(); } catch { return json({ error: 'The saved example is unavailable.' }, 503); }
+    const report = typeof value === 'object' && value !== null && 'report' in value ? value.report : value;
+    if (!asset.ok || !isSiteAuditReport(report)) return json({ error: 'The saved example is unavailable.' }, 503);
+    const result = '<section class="ai-check-example-note"><h2>Saved example</h2><p>This is a dated report, not a fresh check. Viewing it uses no API allowance.</p></section>' + checkResultHtml(report);
+    const response = await htmlResponse(request, env, result, 200);
+    return request.method === 'HEAD' ? new Response(null, { status: response.status, headers: response.headers }) : response;
+  }
   if (path === '/api/ai-check/schema') {
     if (request.method !== 'GET') {
       const response = json({ error: 'Use GET for the API schema.' }, 405);

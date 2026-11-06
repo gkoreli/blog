@@ -38,7 +38,7 @@ export default {async fetch(request,env){
     ...(headers.get('X-Fixture-Config')==='missing'?{ANALYTICS_HASH_KEY:''}:{}),
     AI_CHECK_RATE_LIMITER:{limit:async()=>({success:headers.get('X-Fixture-Burst')!=='deny'})},
     AI_CHECK_GLOBAL_LIMITER:{limit:async()=>({success:true})},
-    ASSETS:{fetch:async()=>new Response('<!doctype html><html><main><h1>AI site check</h1><div id="ai-check-server-result"></div></main></html>',{headers:{'Content-Type':'text/html'}})},
+    ASSETS:{fetch:async assetRequest=>new URL(assetRequest.url).pathname==='/ai-check-example.json'?Response.json({report:fixture}):new Response('<!doctype html><html><main><h1>AI site check</h1><div id="ai-check-server-result"></div></main></html>',{headers:{'Content-Type':'text/html'}})},
   },{audit:async target=>({...fixture,target}),
     // Explicit missing-edge-address fixture: actual parser/signature, no vendor feed I/O.
     requestAssessment:input=>assessRequest(input,{verifyNetwork:(_request,names)=>verifyVendorIp(new Request(input.url),names)}),now:()=>new Date(day+'T12:00:00Z')});
@@ -109,6 +109,14 @@ try {
   assert.equal(requestEvidence.request.signature.native.verifiedBot, null);
   assert.equal(requestEvidence.request.classification.readerKind, 'http-client');
   assert.doesNotMatch(JSON.stringify(requestEvidence), /private-secret|example.invalid|208\.67\.222\.222/);
+  for(const method of ['GET','HEAD']) {
+    const sample=await visit('/ai-check/example',{method,body:undefined},'8.8.8.8');
+    assert.equal(sample.status,200);
+    const text=await sample.text();
+    assert.equal(sample.headers.get('X-RateLimit-Remaining'),null);
+    if(method==='GET'){assert.match(text,/Saved example/);assert.match(text,/Technical access score/);assert.doesNotMatch(text,/checks remaining/);}
+    else assert.equal(text,'');
+  }
   const apiSchema = await visit('/api/ai-check/schema', { method: 'GET', body: undefined });
   assert.equal(apiSchema.status, 200);
   const contract = await apiSchema.json();
