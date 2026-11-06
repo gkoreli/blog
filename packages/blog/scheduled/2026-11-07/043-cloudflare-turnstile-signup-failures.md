@@ -1,7 +1,7 @@
 ---
 title: "Cloudflare Turnstile: What Kept Breaking My Signup Form"
 seoTitle: "Debugging Cloudflare Turnstile Signup Failures"
-date: "2026-11-06"
+date: "2026-11-07"
 description: "In a controlled test, my form aborted its signup request after Turnstile reported success. Here's how I traced the races and uncertain email sends."
 section: "engineering"
 tags: ["cloudflare", "turnstile", "observability"]

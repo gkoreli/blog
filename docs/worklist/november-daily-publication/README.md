@@ -1,8 +1,13 @@
 # November daily publication
 
-**Current November 6 Pacific checkpoint:** The deeper code/article iteration has
-passed its local and native acceptance, and the revised Turnstile article is
-re-registered for **November 6 at 08:00 America/Los_Angeles**. The [new release
+**Current November 6 Pacific checkpoint:** Goga reports that another builder has
+already released today's article. Turnstile is therefore moved to **November 7
+at 08:00 America/Los_Angeles**. Its finished Markdown and exact prompts now live
+in `packages/blog/scheduled/2026-11-07/`, selected by the release manifest.
+No article is selected for November 6. This is a repository/GitHub Actions queue;
+it is not a CMS entry or a Codex reminder. The article remains unpublished.
+
+The deeper code/article iteration passed its local and native acceptance. Its [release
 receipt](2026-11-06-turnstile-engineering-checks.json) supersedes the earlier
 seven-prompt rehearsal without rewriting it. The [engineering worklist](../../../packages/blog/drafts/research/newsletter-reliability/32-four-hour-engineering-iteration.md)
 keeps the fixed 06:07:25–10:07:25 UTC window and separate source/production receipts.
@@ -11,7 +16,7 @@ separate non-publishing job-token push reaches a native Cloudflare build and
 100% activation, with matching served source/build identity. The [delivery
 receipt](2026-11-06-turnstile-delivery-checks.json) retains those dated results
 and private-capture hashes. Actual cron wakeup and article publication remain
-future evidence; November 7–30 still need approved queue entries.
+future evidence; November 8–30 still need approved queue entries.
 
 Started November 5, 2026, Pacific time. Owner wants a new article each day this
 month, published at 08:00; the November 5 article is already published and its

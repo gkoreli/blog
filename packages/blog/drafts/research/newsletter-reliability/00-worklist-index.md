@@ -1,3 +1,9 @@
+**November 6 Pacific schedule correction:** Goga reports that another builder
+already covered today's article. The finished Turnstile source/prompts and
+manifest entry are moved to **November 7, 08:00 America/Los_Angeles**, preserving
+the body and exact prompts. The [publication worklist](../../../../../docs/worklist/november-daily-publication/README.md)
+owns the corrected release date. Earlier November 6 rehearsals remain historical.
+
 **November 6, 09:40 UTC:** The deeper implementation is frozen and passes 405 blog
 and 433 analytics tests, workspace types and native browser/provider/D1/HTTP
 controls. The revised article and eight selected prompts pass the 44-post release
