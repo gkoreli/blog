@@ -77,7 +77,7 @@ export function deriveTechnicalAssessment(report: SiteAuditReport): TechnicalAss
         pageResource ? `${pageResource.outcome}; HTTP ${pageResource.status ?? 'unavailable'}.` : 'No baseline page response was captured.',
         'For a public page, compare a direct fetch and edge logs when this response fails. This checker is not a real provider trial.'),
       check('page-html', 'HTML response type', 10, !successful(pageResource) || pageResource?.headersOmitted?.includes('contentType') ? 'unknown' : html(pageResource) ? 'pass' : 'fail',
-        `Content-Type: ${pageResource?.contentType ?? 'unavailable'}.`, 'Serve the intended HTML with its correct media type. Other resource types may be intentional and fall outside this page baseline.'),
+        `${!successful(pageResource) ? 'No successful baseline response was captured, so the intended page type is unassessed. ' : pageResource?.headersOmitted?.includes('contentType') ? 'The Content-Type header exceeded the capture limit. ' : ''}Content-Type: ${pageResource?.contentType ?? 'unavailable'}.`, 'Serve the intended HTML with its correct media type. Other resource types may be intentional and fall outside this page baseline.'),
     ]),
     component('content', 'Initial HTML source', [
       check('source-text', 'Text in the initial HTML', 20, !parsed ? 'unknown' : report.page.textCharacters > 0 ? 'pass' : 'fail',

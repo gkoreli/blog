@@ -157,3 +157,63 @@ test('malformed attached scores are rejected and a valid-looking forged total is
   assert.notEqual(result.querySelector('.access-score strong')?.textContent, '100', 'displayed score comes from current evidence, not the supplied total');
   assert.match(result.textContent ?? '', /HTTP 403/);
 });
+
+test('robots validation identifies and focuses the field without browser validation bubbles', async t => {
+  const view = constructors(t);
+  const [snapshot] = await renderContent([robotsPlaygroundPage()]); assert.ok(snapshot);
+  await import('../src/client/tools-workbench.js'); document.body.innerHTML = snapshot;
+  const form = document.querySelector('[data-robots-form]'), token = document.querySelector('input[name="token"]');
+  assert.ok(form instanceof HTMLFormElement); assert.equal(form.noValidate, true); assert.ok(token instanceof HTMLInputElement);
+  token.value = '';
+  form.dispatchEvent(new view.Event('submit', { bubbles: true, cancelable: true }));
+  assert.equal(token.getAttribute('aria-invalid'), 'true'); assert.equal(document.activeElement, token);
+  assert.match(document.getElementById('robots-status')?.textContent ?? '', /Enter a crawler token/);
+  token.value = 'GPTBot'; token.dispatchEvent(new view.Event('input', { bubbles: true }));
+  assert.equal(token.hasAttribute('aria-invalid'), false);
+  form.dispatchEvent(new view.Event('submit', { bubbles: true, cancelable: true }));
+  assert.match(document.querySelector('[data-workbench-result]')?.textContent ?? '', /Disallowed for GPTBot/);
+});
+
+test('comparison focuses the missing file input with an adjacent actionable error', async t => {
+  const view = constructors(t); const [snapshot] = await renderContent([reportComparePage()]); assert.ok(snapshot);
+  await import('../src/client/tools-workbench.js'); document.body.innerHTML = snapshot;
+  const form = document.querySelector('[data-compare-form]'), before = document.querySelector('textarea[name="before"]'); assert.ok(form); assert.ok(before instanceof HTMLTextAreaElement);
+  form.dispatchEvent(new view.Event('submit', { bubbles: true, cancelable: true }));
+  const file = document.getElementById('compare-before-file'); assert.ok(file);
+  assert.equal(before.closest('details')?.open, false); assert.equal(document.activeElement, file);
+  assert.equal(file.getAttribute('aria-invalid'), 'true');
+  assert.match(document.getElementById('compare-before-error')?.textContent ?? '', /Choose a before report/);
+});
+
+test('comparison does not let a stale file read overwrite a newer choice or edited JSON', async t => {
+  const view = constructors(t); const [snapshot] = await renderContent([reportComparePage()]); assert.ok(snapshot);
+  await import('../src/client/tools-workbench.js'); document.body.innerHTML = snapshot;
+  const input = document.querySelector('input[data-report-file="before"]'), target = document.querySelector('textarea[name="before"]');
+  assert.ok(input instanceof HTMLInputElement); assert.ok(target instanceof HTMLTextAreaElement);
+  const result = document.querySelector('[data-workbench-result]'); assert.ok(result); result.textContent = 'Previous comparison';
+  let resolveOld: (value: string) => void = () => { throw new Error('Old read was not started'); };
+  Object.defineProperty(input, 'files', { configurable: true, value: [{ name: 'old.json', size: 100, text: () => new Promise<string>(resolve => { resolveOld = resolve; }) }] });
+  input.dispatchEvent(new view.Event('change', { bubbles: true }));
+  assert.equal(document.querySelector('report-comparison button')?.hasAttribute('disabled'), true);
+  assert.equal(result.textContent, '', 'Changing an input removes the previous comparison');
+  Object.defineProperty(input, 'files', { configurable: true, value: [{ name: 'new.json', size: 100, text: async () => JSON.stringify(fixture()) }] });
+  input.dispatchEvent(new view.Event('change', { bubbles: true })); await new Promise(resolve => setImmediate(resolve));
+  const chosen = target.value; resolveOld('invalid old content'); await new Promise(resolve => setImmediate(resolve));
+  assert.equal(target.value, chosen); assert.equal(document.querySelector('[data-file-name="before"]')?.textContent, 'new.json');
+  assert.equal(document.querySelector('report-comparison button')?.hasAttribute('disabled'), false);
+  Object.defineProperty(input, 'files', { configurable: true, value: [{ name: 'pending.json', size: 100, text: () => new Promise<string>(resolve => { resolveOld = resolve; }) }] });
+  input.dispatchEvent(new view.Event('change', { bubbles: true })); target.value = 'manually edited'; target.dispatchEvent(new view.Event('input', { bubbles: true }));
+  resolveOld(JSON.stringify(fixture())); await new Promise(resolve => setImmediate(resolve)); assert.equal(target.value, 'manually edited');
+});
+
+test('report overview and section destinations agree in enhanced and script-free renderers', async () => {
+  const { renderSiteAudit } = await import('../src/client/ai-check.js'); const { checkResultHtml } = await import('../src/worker/ai-check-html.js');
+  const report = fixture(); report.page.indexingAssessmentComplete = false; report.page.title = null;
+  const client = renderSiteAudit(report), server = document.createElement('div'); server.innerHTML = checkResultHtml(report);
+  assert.equal(client.querySelector('.access-score strong')?.textContent, server.querySelector('.access-score strong')?.textContent);
+  assert.equal(client.querySelector('.access-summary h3')?.textContent, server.querySelector('.access-summary h3')?.textContent);
+  for (const property of ['--score-earned', '--score-possible']) assert.equal(client.querySelector<HTMLElement>('.access-score')?.style.getPropertyValue(property), server.querySelector<HTMLElement>('.access-score')?.style.getPropertyValue(property));
+  for (const root of [client, server]) for (const link of root.querySelectorAll('.report-navigation a')) {
+    const target = link.getAttribute('href'); assert.ok(target); assert.ok(root.querySelector(target), `Report destination ${target} exists`);
+  }
+});

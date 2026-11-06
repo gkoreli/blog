@@ -15,7 +15,7 @@ Use [shared tokens](../../../../packages/design/tokens.css), [layout CSS](../../
 
 ## Typography and color
 
-- Tool interfaces use system sans-serif for controls, feedback, reports and utility copy, with Lora reserved for their editorial page headings. Scope this treatment to `.tool-app`; tool pages do not inherit `.post-content`. Quota exhaustion is a neutral state with a reset time and useful next actions.
+- Tool interfaces use the publication’s Lora for editorial text and monospace for controls, numbers and metadata. Scope sizing and spacing to `.tool-app`; do not inherit article spacing through `.post-content`. Prefer typographic hierarchy, open rows and neutral horizontal rules over nested cards. Do not add colored left-border callouts. Quota exhaustion is a neutral state with a reset time and useful next actions.
 - Use Lora with a Georgia fallback for article body text. Use monospace for code and compact UI metadata. Keep body line height at least 1.7 and headings tighter.
 - Use the same typography in both themes. Honor saved theme preference, then system preference; light is the base CSS palette.
 - Light background: `#faf8f5`; dark background: `#1a1a1a`. Light-theme text: `#2d2a24`; muted text: `#7a7568`. Preserve readable contrast when changing colors.

@@ -89,7 +89,7 @@ async function htmlResponse(request: Request, env: AiCheckEnv, result: string, s
   if (!shell.ok) return new Response(`<!doctype html><html lang="en"><meta charset="utf-8"><title>AI site check</title><main><a href="/ai-check">Try another check</a>${result || (formState?.error ? checkErrorHtml(formState.error) : '')}</main></html>`, { status, headers: { ...Object.fromEntries(headers(quota)), 'Content-Type': 'text/html; charset=utf-8', 'X-Robots-Tag': 'noindex' } });
   const body = await shell.text();
   const marker = '<div id="ai-check-server-result"></div>';
-  const rendered = body.includes(marker) ? body.replace(marker, result) : body.replace('</main>', `${result}</main>`);
+  const rendered = body.includes(marker) ? body.replace(marker, `<div id="ai-check-server-result">${result}</div>`) : body.replace('</main>', `${result}</main>`);
   const responseHeaders = headers(quota);
   for (const name of ['Content-Security-Policy', 'Permissions-Policy', 'Referrer-Policy']) {
     const value = shell.headers.get(name);
@@ -125,7 +125,7 @@ export async function handleAiCheck(request: Request, env: AiCheckEnv, dependenc
     try { value = await asset.json(); } catch { return json({ error: 'The saved example is unavailable.' }, 503); }
     const report = typeof value === 'object' && value !== null && 'report' in value ? value.report : value;
     if (!asset.ok || !isSiteAuditReport(report)) return json({ error: 'The saved example is unavailable.' }, 503);
-    const result = '<section class="ai-check-example-note"><h2>Saved example</h2><p>This is a dated report, not a fresh check. Viewing it uses no API allowance.</p></section>' + checkResultHtml(report);
+    const result = checkResultHtml(report, undefined, true);
     const response = await htmlResponse(request, env, result, 200);
     return request.method === 'HEAD' ? new Response(null, { status: response.status, headers: response.headers }) : response;
   }

@@ -23,3 +23,21 @@ export function optionalSupportLabel(capability: TechnicalAssessment['optional']
   if (capability.id === 'markdown' && capability.state === 'not-negotiated') return 'HTML returned; Markdown optional';
   return capability.state === 'not-provided' ? 'Not offered · optional' : capability.state.replaceAll('-', ' ');
 }
+
+/** Human-readable report identity; both renderers keep the same observation boundary. */
+export function reportIdentity(report: SiteAuditReport): { host: string; observed: string } {
+  let host = report.target;
+  try { host = new URL(report.target).hostname; } catch { /* Retain the supplied text safely. */ }
+  const date = new Date(report.checkedAt);
+  const observed = Number.isFinite(date.getTime()) ? new Intl.DateTimeFormat('en-US', {
+    month: 'short', day: 'numeric', year: 'numeric', hour: 'numeric', minute: '2-digit', timeZone: 'UTC', timeZoneName: 'short',
+  }).format(date) : report.checkedAt;
+  return { host, observed };
+}
+
+export function assessmentVerdict(assessment: TechnicalAssessment): string {
+  if (assessment.score.coveragePercent === 0) return 'This check couldn’t assess the page.';
+  return assessment.counts.failed > 0 ? 'Some access checks need attention.'
+    : assessment.counts.unknown > 0 ? 'Some evidence is still unavailable.'
+    : 'The core access checks passed.';
+}
