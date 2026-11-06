@@ -14,7 +14,7 @@ Our [provider investigation](../../packages/blog/posts/041-ai-fetcher-browser-cr
 
 ## Decision
 
-Provide `/ai-check`, JSON `POST /api/ai-check` accepting `{ "url": "https://public.example/path" }`, and complementary `GET /api/request-check` for the current received request. Use ten accepted checks per trusted public edge source address per UTC day, shared between endpoints. A native rate limiter also bounds bursts. Address sharing and address changes limit the interpretation of this allowance; it is not an account or person quota.
+Provide `/ai-check`, JSON `POST /api/ai-check` accepting `{ "url": "https://public.example/path" }`, and complementary `GET /api/request-check` for the current received request. Use ten accepted checks per trusted public edge source address per UTC day, shared between endpoints. Native rate limiters provide local, eventually consistent burst protection; they are not an exact global admission counter. The atomic D1 operation enforces the daily allowance. Address sharing and address changes limit the interpretation of this allowance; it is not an account or person quota.
 
 ### Bounded contexts and dependencies
 

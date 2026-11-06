@@ -1,0 +1,235 @@
+{
+  "recordedAt": "2026-11-06T07:22:28.745947+00:00",
+  "sourceCommit": "8bb87df2400f5894e49232cc7f5ef601e663a04e",
+  "buildId": "b03de2cf-72c9-45d5-a552-d6f31553150b",
+  "workerVersion": "de69aa4e-9356-49c6-9187-a0676ae7aa2a",
+  "allocationPercent": 100,
+  "checks": {
+    "analyticsTests": 401,
+    "blogTests": 366,
+    "siteAuditTests": 29,
+    "uiTestsIncludedInBlog": 4,
+    "nativeHttpRequests": 43,
+    "nativeConcurrentQuota": {
+      "attempted": 30,
+      "admitted": 10,
+      "rejected": 20
+    },
+    "nativeDefaultTransport": {
+      "targetGets": 8,
+      "dnsGets": 16,
+      "received200": 8,
+      "unsupportedRedirectCounterexample": true,
+      "resolverRedirectRefused": true
+    },
+    "workspaceTypecheck": "passed",
+    "frontmatterValidation": 32,
+    "isolatedBuildPosts": 43,
+    "productionPagesSchemaMethodAndTarget": "passed",
+    "noJavaScriptReport": "passed"
+  },
+  "productionReports": {
+    "ownSite": {
+      "complete": true,
+      "resources": [
+        {
+          "kind": "page",
+          "outcome": "received",
+          "status": 200,
+          "probeAgent": null
+        },
+        {
+          "kind": "robots",
+          "outcome": "received",
+          "status": 200,
+          "probeAgent": null
+        },
+        {
+          "kind": "llms",
+          "outcome": "received",
+          "status": 200,
+          "probeAgent": null
+        },
+        {
+          "kind": "sitemap",
+          "outcome": "received",
+          "status": 200,
+          "probeAgent": null
+        },
+        {
+          "kind": "markdown",
+          "outcome": "received",
+          "status": 200,
+          "probeAgent": null
+        },
+        {
+          "kind": "probe",
+          "outcome": "received",
+          "status": 200,
+          "probeAgent": "ChatGPT-User"
+        },
+        {
+          "kind": "probe",
+          "outcome": "received",
+          "status": 200,
+          "probeAgent": "Claude-User"
+        },
+        {
+          "kind": "probe",
+          "outcome": "received",
+          "status": 200,
+          "probeAgent": "Perplexity-User"
+        }
+      ],
+      "textCharacters": 48737,
+      "discovery": {
+        "llms": "present",
+        "llmsLinks": 77,
+        "sitemap": "xml-observed",
+        "markdown": "negotiated"
+      },
+      "version": "2026-11-06.1",
+      "checkedAt": "2026-11-06T07:15:40.624Z",
+      "target": "https://gkoreli.com/ai-fetcher-browser-crawler-headers"
+    },
+    "external": {
+      "target": "https://www.rfc-editor.org/rfc/rfc9309.html",
+      "complete": true,
+      "page": {
+        "title": "RFC 9309: Robots Exclusion Protocol",
+        "textCharacters": 21363,
+        "parseState": "parsed"
+      },
+      "resources": [
+        {
+          "kind": "page",
+          "outcome": "received",
+          "status": 200,
+          "probeAgent": null
+        },
+        {
+          "kind": "robots",
+          "outcome": "received",
+          "status": 200,
+          "probeAgent": null
+        },
+        {
+          "kind": "llms",
+          "outcome": "received",
+          "status": 404,
+          "probeAgent": null
+        },
+        {
+          "kind": "sitemap",
+          "outcome": "received",
+          "status": 200,
+          "probeAgent": null
+        },
+        {
+          "kind": "markdown",
+          "outcome": "received",
+          "status": 200,
+          "probeAgent": null
+        },
+        {
+          "kind": "probe",
+          "outcome": "received",
+          "status": 200,
+          "probeAgent": "ChatGPT-User"
+        },
+        {
+          "kind": "probe",
+          "outcome": "received",
+          "status": 200,
+          "probeAgent": "Claude-User"
+        },
+        {
+          "kind": "probe",
+          "outcome": "received",
+          "status": 200,
+          "probeAgent": "Perplexity-User"
+        }
+      ],
+      "version": "2026-11-06.1",
+      "checkedAt": "2026-11-06T07:17:55.692Z"
+    }
+  },
+  "dailyAllowance": {
+    "admitted": 10,
+    "remainingSequence": [
+      9,
+      8,
+      7,
+      6,
+      5,
+      4,
+      3,
+      2,
+      1,
+      0
+    ],
+    "nextRequest": {
+      "status": 429,
+      "quota": {
+        "limit": 10,
+        "remaining": 0,
+        "resetAt": "2026-11-07T00:00:00.000Z"
+      },
+      "retryAfterSeconds": 60036
+    },
+    "failedAdmittedAuditCounted": true,
+    "burstObservation": "Four quick checks were admitted from one observed Cloudflare location; native burst limiting is local/eventually consistent, not a strict global cap."
+  },
+  "schemaDelivery": {
+    "statements": 4,
+    "initialMatchingObjects": 0,
+    "finalMatchingObjects": 2,
+    "rowsRead": 97,
+    "rowsWritten": 3
+  },
+  "limits": [
+    "Two successful live URL audits; no broad-site compatibility rate or real-provider/citation/answer trial.",
+    "Controlled acceptance requests are not organic audience growth; the two successful own-site audits issue baseline, Markdown and synthetic named page requests.",
+    "Local browser screenshots unavailable; no-JavaScript SSG, native DOM interaction and served HTML are verified.",
+    "The first live site audit failed before receiving HTTP; its partial report and consumed allowance are preserved in the worklist.",
+    "Raw response bodies/headers and execution logs remain outside Git."
+  ],
+  "productionWindow": {
+    "firstRequestAt": "2026-11-06T07:07:02.506522+00:00",
+    "lastRequestAt": "2026-11-06T07:19:24.540496+00:00",
+    "requests": 27
+  },
+  "firstFailedAudit": {
+    "sourceCommit": "8b8f5bcad0f2578c2c4a34199c44f548e36aa8c8",
+    "at": "2026-11-06T07:07:39.950391+00:00",
+    "httpStatus": 200,
+    "resourceOutcomes": [
+      "network-error",
+      "network-error",
+      "network-error",
+      "network-error",
+      "network-error",
+      "network-error",
+      "network-error",
+      "network-error"
+    ]
+  },
+  "runtime": {
+    "compatibilityDate": "2026-03-06",
+    "compatibilityFlags": [
+      "global_fetch_strictly_public"
+    ],
+    "configuredRateLimits": [
+      {
+        "name": "AI_CHECK_GLOBAL_LIMITER",
+        "limit": 30,
+        "period": 60
+      },
+      {
+        "name": "AI_CHECK_RATE_LIMITER",
+        "limit": 3,
+        "period": 60
+      }
+    ]
+  }
+}

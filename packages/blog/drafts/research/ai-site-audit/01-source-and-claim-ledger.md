@@ -14,7 +14,7 @@ Inspected November 5, 2026 Pacific / November 6 UTC. This ledger supports the [a
 | Arbitrary IP pinning is not available through resolveOverride | Primary [Cloudflare Request docs](https://developers.cloudflare.com/workers/runtime-apis/request/), retrieved via web | resolveOverride is zone-restricted. A custom general HTTP transport is not justified by this feature. |
 | TCP sockets are unsuitable for the general checker | Primary [TCP sockets docs](https://developers.cloudflare.com/workers/runtime-apis/tcp-sockets/), retrieved via web | Cloudflare IP ranges and private addresses are blocked; custom parser/TLS code would add cost and lose broad site coverage. |
 | Initial HTML and negotiated Markdown are concrete owned representations | Inspected [build source](../../../src/pipeline/build.ts), [negotiation](../../../src/worker/negotiate.ts), existing publication guidance | Source establishes intended production; isolated build and fresh served checks must establish the actual release. No JavaScript execution is performed by the audit. |
-| Ten/day shared quota with HMAC-only counter storage | Accepted design in ADR; root implementing atomic D1 policy | Must inspect final schema, code and concurrent/midnight tests before marking implemented. No statement that platform logs retain nothing. |
+| Ten/day shared quota with HMAC-only counter storage | Accepted design in ADR; root implementing atomic D1 policy | Accepted: final schema/code, thirty-concurrent native admission, second-day native reset and live ten-use exhaustion are recorded in the release receipt. No statement that platform logs retain nothing. |
 
 ## Rejected or deliberately unclaimed
 
@@ -27,6 +27,8 @@ Inspected November 5, 2026 Pacific / November 6 UTC. This ledger supports the [a
 - Separate DNS preflight eliminates rebinding or supplies connection-time address pinning.
 - Green tests or a Git commit prove the current production deployment.
 
-## Release audit still required
+## Release audit
 
-Compare the article against final endpoint paths, quota response semantics, input restrictions, assessed fields and report limits. Preserve failures and partial checks. Add actual test commands/results and deployment/served evidence to the worklist after they occur; do not replace pending cells with intent.
+The article was checked against final paths, quota/error semantics, input restrictions, assessed fields and report limits. The dated worklist and receipt retain failures, repairs, local/native tests, source activation and fresh served results.
+
+Final fields, paths, limits and quota semantics were compared with the released code. The [acceptance receipt](2026-11-06-acceptance.json) and [worklist](00-worklist.md) preserve the failed first audit, native repair and fresh positive checks. The fixed bot catalogue has 26 reviewed primary-source profiles; the Mistral, Parallel and Exa documents were rechecked on November 6 UTC. Exa’s additional major-search fallback remains unknown when no specific group exists. No comparison score, real-provider access or adoption result is claimed.
