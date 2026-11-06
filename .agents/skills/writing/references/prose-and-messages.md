@@ -19,10 +19,13 @@ Compare the polished version with its source for changes in meaning, emphasis, c
 For Reddit, X, casual replies and outreach written as Goga:
 
 - Lead with the useful result or practical point; explain afterward. A research-process preamble, greeting, article announcement or biography should not delay the value.
-- Use ordinary language and the natural rhythm of the supplied voice. Lowercase openings, comma-led thoughts and unfinished sentences are welcome when they fit; do not regularize them into corporate copy or manufacture typos and slang.
+- Follow the supplied reasoning as well as its punctuation: a concrete observation can grow into a tentative explanation, another possibility and a useful next check. Preserve those connections instead of turning every thought into a standalone slogan or a confident verdict.
+- Use ordinary language and the natural rhythm of the supplied voice. Lowercase openings, comma-led thoughts and unfinished sentences are welcome when they fit; do not regularize them into corporate copy. Follow explicit owner preferences for casual roughness without making typos or slang a substitute for the thinking.
 - Keep relevant firsthand context. Do not remove a useful account of the actual work to make the reply generic.
 - State strong supplied opinions as opinions. Keep the conditions that change a result’s meaning.
 - Do not append a question, invitation, pitch or follow request automatically. Add one only when wanted and useful.
+
+The [November 5 voice observations](../../../../packages/blog/drafts/social/ai-fetcher-browser-crawler-headers/voice-observations-2026-11-05.md) connect these preferences to the owner’s actual prompts. Use them as source context, not a mandatory sentence template.
 
 The article’s formal structure, glossary and research apparatus do not belong in an ordinary reply. Evidence standards still apply, and preparing copy does not authorize sending it.
 

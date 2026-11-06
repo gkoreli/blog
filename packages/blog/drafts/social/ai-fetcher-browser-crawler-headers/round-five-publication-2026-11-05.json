@@ -1,0 +1,173 @@
+{
+  "recordedAt": "2026-11-06T06:57:19.738969+00:00",
+  "clientDate": "2026-11-05",
+  "authorization": "Owner explicitly requested five more posted replies/follow-ups on each platform and a closer reading of how his prompts reason and structure sentences.",
+  "xRepliesPublished": 5,
+  "redditRepliesPublished": 5,
+  "canonicalOwnerViewsVerified": 10,
+  "article": "https://gkoreli.com/ai-fetcher-browser-crawler-headers",
+  "voiceObservationRecord": "voice-observations-2026-11-05.md",
+  "timestampMeaning": "Local receipt-recording and verification times, not server publication timestamps.",
+  "independentPublicVisibility": "Not established; all ten verified views use the signed-in owner session.",
+  "responses": {
+    "check": "Bounded X and Reddit notification-feed checks at the start of this batch. No additional campaign response beyond the already-handled imagiself and parsestream replies was observed.",
+    "follows": "X notifications show follows by Laxman Kafle and Angela. The owner supplied an earlier screenshot with those notifications; the current signed-in feed independently shows both.",
+    "interpretation": "Laxman was a prior outreach recipient; these follows are platform engagement signals. No causal attribution to a particular reply, article visit or confirmed reader use is established."
+  },
+  "destinationRules": {
+    "SearchAPIs": "No spam/excessive promotion and no misleading benchmarks; one bounded date discrepancy is supplied with source conditions, without a provider ranking.",
+    "AISearchLab": "Value-first and nonrepetitive comments required. New pathname/query finding is a substantive follow-up to the earlier IP-feed comment; the source link is already in that ancestor.",
+    "AISearchAnalytics": "Community explicitly invites own measurement experiments; no additional community-specific rule block appeared in the fully loaded sidebar.",
+    "SEO_for_AI": "Expanded honesty/self-promotion and evidence rules reviewed. Relevant exact-quote test supplied with a screenshot explicitly captioned as the published test record.",
+    "CloudFlare": "Current thread, sidebar, existing community wiki context and expanded moderator sticky reviewed. AI allowance observation is distinguished from the unresolved ranking-drop cause.",
+    "excluded": "StopBadBots prohibits promotion and limits external links. Rag restricts self-promotion to a 10/90 ratio not established here. No submissions to either. Prior exclusions for AI-content bans remain respected."
+  },
+  "items": [
+    {
+      "platform": "x",
+      "parent": "https://x.com/Codivion/status/2118483256194617697",
+      "url": "https://x.com/GogaKoreli/status/2118594676672614444",
+      "copy": "how are you deciding which ones lie btw? my Claude-User test came from outside Anthropic's published IP feed. i know which prompt caused it, but the feed miss alone wouldnt prove impersonation\nhttps://gkoreli.com/ai-fetcher-browser-crawler-headers",
+      "weighted": 216,
+      "receiptRecordedAt": "2026-11-06T06:42:46.712Z",
+      "verifiedAt": "2026-11-06T06:42:47.723Z",
+      "label": "Codivion: evidence for impersonation",
+      "state": "canonical-owner-view-verified",
+      "verification": "Canonical signed-in permalink reopened; submitted body and source link (or source in existing parent comment) visible; private screenshot saved.",
+      "privateProofBasename": "x-1"
+    },
+    {
+      "platform": "x",
+      "parent": "https://x.com/stonewatchai/status/2118484364732645420",
+      "url": "https://x.com/GogaKoreli/status/2118595412118634522",
+      "copy": "do you make it quote something from the page too? Context cited mine, but picked the wrong sentence even though extraction had the right text. just opening the URL would've missed that\nhttps://gkoreli.com/ai-fetcher-browser-crawler-headers",
+      "weighted": 208,
+      "receiptRecordedAt": "2026-11-06T06:47:46.521Z",
+      "verifiedAt": "2026-11-06T06:47:52.556Z",
+      "label": "Stonewatch: preflight answer check",
+      "state": "canonical-owner-view-verified",
+      "verification": "Canonical signed-in permalink reopened; submitted body and source link (or source in existing parent comment) visible; private screenshot saved.",
+      "privateProofBasename": "x-2"
+    },
+    {
+      "platform": "x",
+      "parent": "https://x.com/prabhat_pgp/status/2118560050629509582",
+      "url": "https://x.com/GogaKoreli/status/2118596346097864864",
+      "copy": "what are you using to split them? i sent Grok to my site, got 11 requests with ordinary Chrome/Safari headers, my analytics called all 11 Browser. the prompt told me more than the headers there lol\nhttps://gkoreli.com/ai-fetcher-browser-crawler-headers",
+      "weighted": 221,
+      "receiptRecordedAt": "2026-11-06T06:48:35.719Z",
+      "verifiedAt": "2026-11-06T06:48:36.885Z",
+      "label": "Prabhat: browser-labelled agent requests",
+      "state": "canonical-owner-view-verified",
+      "verification": "Canonical signed-in permalink reopened; submitted body and source link (or source in existing parent comment) visible; private screenshot saved.",
+      "privateProofBasename": "x-3"
+    },
+    {
+      "platform": "x",
+      "parent": "https://x.com/paulrodturner/status/2118468346261967138",
+      "url": "https://x.com/GogaKoreli/status/2118596500716708147",
+      "copy": "i ended up checking the stored analytics row too. Context fetched my sitemap fine, but XML isnt a page view in my collector, so that successful fetch never belonged in that chart\nhttps://gkoreli.com/ai-fetcher-browser-crawler-headers",
+      "weighted": 202,
+      "receiptRecordedAt": "2026-11-06T06:49:21.915Z",
+      "verifiedAt": "2026-11-06T06:49:23.036Z",
+      "label": "Paul Turner: eligible page observations",
+      "state": "canonical-owner-view-verified",
+      "verification": "Canonical signed-in permalink reopened; submitted body and source link (or source in existing parent comment) visible; private screenshot saved.",
+      "privateProofBasename": "x-4"
+    },
+    {
+      "platform": "x",
+      "parent": "https://x.com/arbuge/status/2118455003736326411",
+      "url": "https://x.com/GogaKoreli/status/2118596823883690152",
+      "copy": "what about fetches that never load the pixel? i asked dot to try browser + curl, both verified as chatgpt at my server. curl got the page twice. i'd want those in the numbers too\nhttps://gkoreli.com/ai-fetcher-browser-crawler-headers",
+      "weighted": 202,
+      "receiptRecordedAt": "2026-11-06T06:50:31.580Z",
+      "verifiedAt": "2026-11-06T06:50:32.881Z",
+      "label": "Alex Bugeja: pixel coverage",
+      "state": "canonical-owner-view-verified",
+      "verification": "Canonical signed-in permalink reopened; submitted body and source link (or source in existing parent comment) visible; private screenshot saved.",
+      "privateProofBasename": "x-5"
+    },
+    {
+      "platform": "reddit",
+      "parent": "https://www.reddit.com/r/SearchAPIs/comments/1wm5wq2/whats_the_best_way_to_evaluate_a_search_api_for/",
+      "url": "https://www.reddit.com/r/SearchAPIs/comments/1wm5wq2/comment/19s7rd09vynz4/",
+      "copy": "how are you checking freshness? Exa Search and Contents gave different publication dates for my same page, Sep 3 vs Nov 4. source was Sep 3, modified Nov 1. i wouldnt use that date alone.\nmy captures: https://gkoreli.com/ai-fetcher-browser-crawler-headers",
+      "receiptRecordedAt": "2026-11-06T06:48:23.423Z",
+      "verifiedAt": "2026-11-06T06:48:24.634Z",
+      "label": "SearchAPIs: publication-date disagreement",
+      "state": "canonical-owner-view-verified",
+      "verification": "Canonical signed-in permalink reopened; submitted body and source link (or source in existing parent comment) visible; private screenshot saved.",
+      "privateProofBasename": "reddit-1",
+      "wordCount": 38
+    },
+    {
+      "platform": "reddit",
+      "parent": "https://www.reddit.com/r/AISearchLab/comments/1v4g7bw/comment/19s6uxs6ds4wy/",
+      "url": "https://www.reddit.com/r/AISearchLab/comments/1v4g7bw/comment/19s7reww6shd1/",
+      "copy": "oh and a URL ending in /sitemap.xml can still be an article request, mine had that suffix inside ?probe=. 200 response too. counting the suffix would've told a different story from the actual pathname.",
+      "linkPlacement": "existing parent comment",
+      "receiptRecordedAt": "2026-11-06T06:49:50.810Z",
+      "verifiedAt": "2026-11-06T06:49:52.268Z",
+      "label": "AISearchLab: query suffix versus pathname",
+      "state": "canonical-owner-view-verified",
+      "verification": "Canonical signed-in permalink reopened; submitted body and source link (or source in existing parent comment) visible; private screenshot saved.",
+      "privateProofBasename": "reddit-2",
+      "wordCount": 34
+    },
+    {
+      "platform": "reddit",
+      "parent": "https://www.reddit.com/r/AISearchAnalytics/comments/1xb733o/urls_that_rank_but_are_not_cited_your_geoaeo/",
+      "url": "https://www.reddit.com/r/AISearchAnalytics/comments/1xb733o/comment/19s7rls0hxebl/",
+      "copy": "are you matching those by exact URL? Brave's AI summary named my study and cited companion posts, while the original wasnt in the 12 main results i captured. a page-level report and a study-level report would count that differently.\nmy capture: https://gkoreli.com/ai-fetcher-browser-crawler-headers",
+      "receiptRecordedAt": "2026-11-06T06:54:22.121Z",
+      "verifiedAt": "2026-11-06T06:54:23.776Z",
+      "label": "AISearchAnalytics: page versus study discovery",
+      "state": "canonical-owner-view-verified",
+      "verification": "Canonical signed-in permalink reopened; submitted body and source link (or source in existing parent comment) visible; private screenshot saved.",
+      "privateProofBasename": "reddit-4",
+      "wordCount": 42
+    },
+    {
+      "platform": "reddit",
+      "parent": "https://www.reddit.com/r/SEO_for_AI/comments/1xofgge/before_tracking_ai_visibility_check_the_engines/",
+      "url": "https://www.reddit.com/r/SEO_for_AI/comments/1xofgge/comment/19s7rnxjaz29x/",
+      "copy": "i'd add one exact-quote check after the fetch. Context cited my page and got the heading right, then picked the wrong sentence. the requested text was in its extraction, so being readable still didnt settle it.\n\nmy test: https://gkoreli.com/ai-fetcher-browser-crawler-headers\n\n\npublished test record:",
+      "attachment": "Screenshot of the already-published Context.dev test record, captioned published test record; not a fresh provider UI capture.",
+      "receiptRecordedAt": "2026-11-06T06:55:41.112Z",
+      "verifiedAt": "2026-11-06T06:55:42.717Z",
+      "label": "SEO_for_AI: exact-quote check",
+      "state": "canonical-owner-view-verified",
+      "verification": "Canonical signed-in permalink reopened; submitted body and source link (or source in existing parent comment) visible; private screenshot saved.",
+      "privateProofBasename": "reddit-3",
+      "wordCount": 42
+    },
+    {
+      "platform": "reddit",
+      "parent": "https://www.reddit.com/r/CloudFlare/comments/1vgvunb/did_cloudflare_blocked_real_bot/",
+      "url": "https://www.reddit.com/r/CloudFlare/comments/1vgvunb/comment/19s7rnylho1xh/",
+      "copy": "one wrinkle for the AI allowance part: dot's browser and curl both verified as chatgpt on my site. so allowing only something named ChatGPT-User would miss a working path. that doesnt explain your ranking drop, but worth separating.\nmy checks: https://gkoreli.com/ai-fetcher-browser-crawler-headers",
+      "receiptRecordedAt": "2026-11-06T06:55:42.718Z",
+      "verifiedAt": "2026-11-06T06:55:44.490Z",
+      "label": "CloudFlare: allow-rule client variants",
+      "state": "canonical-owner-view-verified",
+      "verification": "Canonical signed-in permalink reopened; submitted body and source link (or source in existing parent comment) visible; private screenshot saved.",
+      "privateProofBasename": "reddit-5",
+      "wordCount": 41
+    }
+  ],
+  "limits": [
+    "No new provider trial, Cloudflare query or traffic measurement in this batch. Earlier request/referral windows remain frozen.",
+    "Nine new-destination replies contain the canonical blog link; one substantive follow-up uses the link already in its parent comment.",
+    "One attached image reproduces the public article excerpt; it is not a new independent capture of the provider answer.",
+    "No manual votes, DMs, follows, moderation changes, deletions or monitoring. Automatic Reddit self-votes are not manually cast engagement.",
+    "Article prompts and frozen research footprint are unchanged; these are post-publication distribution records."
+  ],
+  "campaignDeliveryTotals": {
+    "xOriginals": 1,
+    "xOutreachReplies": 27,
+    "xClarificationReplies": 2,
+    "redditCommentsAndFollowups": 27,
+    "redditNewStandaloneArticles": 1
+  }
+}
