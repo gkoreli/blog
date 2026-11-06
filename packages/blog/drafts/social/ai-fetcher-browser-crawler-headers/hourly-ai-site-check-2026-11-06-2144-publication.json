@@ -1,0 +1,183 @@
+{
+  "automationId": "ai-site-check-hourly-x-replies",
+  "triggeredAt": "2026-11-06T21:44:33.357Z",
+  "completedPublicationAt": "2026-11-06T21:51:37.679Z",
+  "clientDate": "2026-11-06",
+  "timezone": "America/Los_Angeles",
+  "authorization": "Explicit hourly heartbeat authorizes up to five useful X replies; no recurring Reddit, DMs, likes, follows, original posts or new schedulers.",
+  "preflight": "Read latest chat state, article/tools worklist and shared social receipts. Tools UI acceptance remains complete; the separate AI Fetchers chat is inactive with its latest turn completed after round ten. No active one-time batch or newer posting session was found. Fresh origin/main remained 587fa257 at run start and final integration. No overlap or missed-hour catch-up.",
+  "currentEvidence": "Live AI Site Check article and current site-audit README read at start; live tool landing rechecked before linking. Relevant current project documentation and the exact Gcore release source were read. No hosted audit, runtime benchmark or provider trial performed.",
+  "xRepliesPublished": 5,
+  "xNewConversationRepliesPublished": 4,
+  "xConversationFollowupsPublished": 1,
+  "canonicalOwnerViewsVerified": 5,
+  "countNote": "Five in this run, twenty across the four AI Site Check hourly receipts. The historical original-campaign baseline of 63 remains separately identified.",
+  "notificationCoverage": "Bounded initial signed-in notifications reviewed before search. mpgn’s substantive permissions response received the first reply. Ikenna’s migration extension, Peter’s merge-risk observation and Karim’s acknowledgement did not require another round of advice. No exhaustive account-wide census.",
+  "selection": "One focused Latest X search for MCP/coding-agent/AI-crawler builders and problems, then visible result scrolling. Read each complete selected parent chain and its relevant product/method. Generic aggregation, video-product promotion and weak matches were skipped. Four new conversations each received one concrete contribution; no duplicate destination.",
+  "closedWithoutReply": [
+    {
+      "handle": "ikennaiheuwa",
+      "url": "https://x.com/ikennaiheuwa/status/2118817036738732393",
+      "observation": "Adds rerunning hostname/path checks after a docs migration. Useful extension of the prior reply; no new question or missing correction requiring another contribution."
+    },
+    {
+      "handle": "PeterMunkholm",
+      "url": "https://x.com/PeterMunkholm/status/2118812867843740102",
+      "observation": "Notes that every merge carries risk. Earlier advice already preserved serial integration and combined-result testing; no redundant reply."
+    },
+    {
+      "handle": "babykswanson",
+      "url": "https://x.com/babykswanson/status/2118807069973266665",
+      "observation": "Acknowledges the lease-ledger explanation. Loop closed."
+    }
+  ],
+  "observedEngagement": "Initial notifications showed Ikenna and Daniil liking the prior run’s replies, plus Ikenna’s substantive migration extension. A grouped notification named Daryll Jr. and Laxman Kafle as followers; Laxman was already noted historically, so this is not counted as two newly gained unique followers. No causal attribution or traffic/adoption inference.",
+  "items": [
+    {
+      "kind": "followup",
+      "handle": "mpgn_x64",
+      "parent": "https://x.com/mpgn_x64/status/2118807857277616588",
+      "copy": "i left the model's permissions out of that comparison. giving the CLI arm a general shell would change the security boundary too. a fair test needs the same allowed operations in both, including your no-shell constraint.",
+      "basis": "Read full five-post chain and current author implementation article. Acknowledge the recipient’s no-shell constraint and correct the earlier comparison to hold granted operations constant. No new security evaluation or claim of a recipient defect; the implementation link already exists in the ancestor.",
+      "url": "https://x.com/GogaKoreli/status/2118822203391398051",
+      "verifiedAt": "2026-11-06T21:46:17.941Z",
+      "platform": "x",
+      "label": "mpgn / hold permissions constant",
+      "state": "canonical-owner-view-verified",
+      "sourceReads": [
+        {
+          "url": "https://mpgn.fr/building-a-mcp-for-netexec/",
+          "scope": "Fresh full author implementation read; no-shell constraint and server-owned argument assembly. Correction to our proposed comparison, not a new security result."
+        }
+      ],
+      "privateProofBasename": "ai-site-check-hourly-x-20261106-2144/01",
+      "weighted": 220,
+      "publishedTimeUi": "1:45 PM · Nov 6, 2026",
+      "publishedTimeZone": "America/Los_Angeles"
+    },
+    {
+      "kind": "new-conversation",
+      "handle": "ivebenfreed",
+      "parent": "https://x.com/ivebenfreed/status/2118821274914889964",
+      "copy": "the adapter version belongs next to the config SHA in a run receipt. the same bundle can produce different files after a runner update. a fixed bundle per harness, with expected output files, would make adapter regressions reproducible.",
+      "basis": "Read the complete twelve-post rordi thread, expanding all four truncated posts. Author already describes immutable publication, session pins, canary promotion, rollback and R2 fallback. Suggest recording the separate adapter version and using fixed input/output fixtures; no implementation defect, reproduced regression, public release, or comparison claim. No additional product URL was supplied in the thread.",
+      "url": "https://x.com/GogaKoreli/status/2118822550331609283",
+      "verifiedAt": "2026-11-06T21:47:38.287Z",
+      "platform": "x",
+      "label": "Ben / adapter version and fixtures",
+      "state": "canonical-owner-view-verified",
+      "sourceReads": [
+        {
+          "url": "https://x.com/ivebenfreed/status/2118821258544500856",
+          "scope": "Complete twelve-post author thread read, including full publishing, versioning, adapter and fallback descriptions. Recommendation adds adapter-version receipts and fixed input/output fixtures; implementation not inspected."
+        }
+      ],
+      "privateProofBasename": "ai-site-check-hourly-x-20261106-2144/02",
+      "weighted": 236,
+      "publishedTimeUi": "1:47 PM · Nov 6, 2026",
+      "publishedTimeZone": "America/Los_Angeles"
+    },
+    {
+      "kind": "new-conversation",
+      "handle": "AnovaCEO",
+      "parent": "https://x.com/AnovaCEO/status/2118820290448806097",
+      "copy": "backlog-mcp's pattern is: brief once, recall the topic, expand selected records and their relations. the whole archive doesn't need to enter every prompt. check age and correction links before reusing a fact: https://github.com/gkoreli/backlog-mcp/blob/main/docs/guides/memory-protocol.md",
+      "basis": "Read the full two-post chain with expanded original method. Fresh default-branch backlog-mcp README and memory protocol support explicit wakeup, topical recall and selective relational expansion, plus age/provenance/correction checks. Offer the matching implementation pattern; no enterprise deployment, connector coverage, permission model, guaranteed recall or measured token-saving claim.",
+      "url": "https://x.com/GogaKoreli/status/2118822774777291231",
+      "verifiedAt": "2026-11-06T21:48:31.262Z",
+      "platform": "x",
+      "label": "Jake / selective context retrieval",
+      "state": "canonical-owner-view-verified",
+      "sourceReads": [
+        {
+          "url": "https://github.com/gkoreli/backlog-mcp/blob/main/README.md",
+          "fileBlobSha": "ced131bc3ac87059efc6186d2426785085d2c4c3",
+          "scope": "Fresh default-branch README through GitHub connector; local memory and selective expansion."
+        },
+        {
+          "url": "https://github.com/gkoreli/backlog-mcp/blob/main/docs/guides/memory-protocol.md",
+          "fileBlobSha": "087d741e305bb0fd4fd029fdb8fa2e677d721b18",
+          "scope": "Fresh default-branch protocol: explicit initial briefing, topical recall, relational stubs, provenance/age/correction review. No performance claim."
+        }
+      ],
+      "privateProofBasename": "ai-site-check-hourly-x-20261106-2144/03",
+      "weighted": 232,
+      "publishedTimeUi": "1:48 PM · Nov 6, 2026",
+      "publishedTimeZone": "America/Los_Angeles"
+    },
+    {
+      "kind": "new-conversation",
+      "handle": "sergei_grach",
+      "parent": "https://x.com/sergei_grach/status/2118818966454124759",
+      "copy": "small docs fix in v1.0.0: the upgrade note says an unmatched GCORE_TOOLS opens the whole API, but create_server raises ConfigError. that note should say startup fails, so users know what a bad filter does.",
+      "basis": "Read full release post, current main README, tagged v1.0.0 README, and tagged server.py/server_config.py. The tagged README upgrade block contradicts its own patterns section. create_server checks has_selection and raises ConfigError; main converts it to exit status 2. Static source finding, not a runtime test or security-vulnerability claim. Existing parent links the release; no repeated product pitch.",
+      "url": "https://x.com/GogaKoreli/status/2118823146254180673",
+      "verifiedAt": "2026-11-06T21:50:37.491Z",
+      "platform": "x",
+      "label": "Sergei / tagged documentation correction",
+      "state": "canonical-owner-view-verified",
+      "sourceReads": [
+        {
+          "url": "https://github.com/G-Core/gcore-mcp-server/blob/main/README.md",
+          "fileBlobSha": "4197b663b0c5e7c5dcddf2871f0980d8df5abe5c",
+          "scope": "Current README read, then switched to the release tag for the actual finding."
+        },
+        {
+          "url": "https://github.com/G-Core/gcore-mcp-server/blob/v1.0.0/README.md",
+          "fileBlobSha": "a8505f9f165ec09a893b185302f2488f8b9df029",
+          "scope": "The upgrade note describes broad fallback for an unmatched GCORE_TOOLS value, contradicting the patterns section."
+        },
+        {
+          "url": "https://github.com/G-Core/gcore-mcp-server/blob/v1.0.0/gcore_mcp_server/server.py",
+          "fileBlobSha": "5ab7ef5aa6a922f7aeb6488c60bab6be9be288b3",
+          "scope": "create_server raises ConfigError when a nonempty selection matches no operation; main converts it to exit status 2. Static source inspection only."
+        },
+        {
+          "url": "https://github.com/G-Core/gcore-mcp-server/blob/v1.0.0/gcore_mcp_server/config/server_config.py",
+          "fileBlobSha": "ab85f902d27b9ecdb9bb8820970e4633cbe9712e",
+          "scope": "has_selection evaluates configured patterns against catalog operations; source read with server.py."
+        }
+      ],
+      "privateProofBasename": "ai-site-check-hourly-x-20261106-2144/04",
+      "weighted": 205,
+      "publishedTimeUi": "1:49 PM · Nov 6, 2026",
+      "publishedTimeZone": "America/Los_Angeles"
+    },
+    {
+      "kind": "new-conversation",
+      "handle": "asaio87",
+      "parent": "https://x.com/asaio87/status/2118816770589167913",
+      "copy": "after theme edits, I'd check the public URL too: expected text in the response, then layout + keyboard use in a browser. my free checker shows an initial-HTML excerpt and headings, it doesn't run JS or test accessibility: https://gkoreli.com/ai-check",
+      "basis": "Read full two-post WordPress chain and the linked current portfolio in the browser. The original reports an Axe DevTools check; neither it nor the custom MCP plugin was independently audited. Current AI Site Check live landing/article and site-audit README support bounded initial-HTML excerpt/headings with no browser execution. Suggest public readback plus separate browser checks; no recipient bug or accessibility result claimed. An older search extraction differed from the live portfolio and was not used for a current-site claim.",
+      "url": "https://x.com/GogaKoreli/status/2118823557321089059",
+      "verifiedAt": "2026-11-06T21:51:37.679Z",
+      "platform": "x",
+      "label": "Andrei / public-page readback",
+      "state": "canonical-owner-view-verified",
+      "sourceReads": [
+        {
+          "url": "https://psykrotek.co.za/",
+          "scope": "Fresh live browser read of the portfolio linked by the original post. Earlier web extraction showed a different historical page; not used as current evidence. No accessibility audit performed."
+        },
+        {
+          "url": "https://gkoreli.com/ai-check",
+          "scope": "Fresh live browser landing page read; web extraction was unavailable. No hosted check submitted."
+        },
+        {
+          "url": "https://gkoreli.com/ai-site-check-evidence",
+          "localSource": "packages/site-audit/README.md",
+          "scope": "Fresh article and current README confirm bounded initial-HTML excerpt/headings and no browser execution or accessibility test."
+        }
+      ],
+      "privateProofBasename": "ai-site-check-hourly-x-20261106-2144/05",
+      "weighted": 245,
+      "publishedTimeUi": "1:51 PM · Nov 6, 2026",
+      "publishedTimeZone": "America/Los_Angeles"
+    }
+  ],
+  "verification": "Exact final text saved before each submission and checked in composer. Each canonical status reopened; body, parent context and relevant link preview checked in the signed-in owner view. Public UI times are minute-resolution; verifiedAt records later canonical inspection/evidence saving. No uncertain submission was retried.",
+  "independentPublicVisibility": "Not tested; signed-in owner visibility only.",
+  "privacy": "Raw signed-in captures, screenshots and source captures remain outside Git in private temporary storage. Public records contain exact published copy and normalized evidence only.",
+  "limits": "No new traffic query, click/adoption measurement, real-provider experiment, target-site audit, anonymous visibility test, Reddit write, DM, like, follow, original post or scheduler change. The Gcore finding is a documentation/source inconsistency, not a reproduced runtime vulnerability. An X Show more locator changed during expansion; a fresh state resolved the remaining text before composing, with no publication retry. A stale web portfolio extraction was superseded by a fresh browser read.",
+  "nextBoundedAction": "Complete at five replies. At the next scheduled run reconcile current chat state and shared receipts, then read new substantive notifications before selecting destinations. Do not duplicate these parents or accumulate missed hours."
+}
