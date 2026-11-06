@@ -24,7 +24,7 @@ When growth or distribution is requested, give it the same serious planning atte
 
 Publish on `gkoreli.com` first; authorized cross-posts use its canonical URL. Choose the channel and copy for the article. A copy, preview or strategy request does not authorize posting. Keep draft, reviewed, published and measured states separate. Use `launch-article-on-x` for its media/account/publication mechanics and `run-discovery-experiment` for a bounded discovery trial rather than duplicating their procedures here.
 
-For X, follow the owner’s [conversation and useful-outreach direction](../../launch-article-on-x/references/publication-verification.md#x-conversations-and-useful-outreach): respond to people and make the publication’s findings useful in their specific context.
+For X, follow the owner’s [conversation and useful-outreach direction](../../launch-article-on-x/references/publication-verification.md#x-conversations-and-useful-outreach): respond to people, understand their engineering problem and connect the relevant implementation or finding. Draw from the [public project index](../../../../docs/reference/owned-open-source-projects.md) as well as articles; the useful source may be code, package docs, an example or a question that changes the decision.
 
 For Hacker News, check current guidelines before a requested submission; titles must remain faithful to the article. **HN comment composition stays with the author.** One submission’s reception does not isolate a title effect.
 

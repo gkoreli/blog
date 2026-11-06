@@ -1,0 +1,40 @@
+{
+  "clientDate": "2026-11-06",
+  "authorization": "Owner explicitly suggests replying to Chris Simpson with Nisli, asks for an index of his public open-source project descriptions, and broadens outreach from article findings to relevant implementations and recommendations. Standing X posting authorization remains in force.",
+  "xProjectSolutionRepliesPublished": 1,
+  "canonicalOwnerViewsVerified": 1,
+  "independentPublicVisibility": "Not established; signed-in canonical owner visibility verified.",
+  "item": {
+    "platform": "x",
+    "kind": "project-solution",
+    "parent": "https://x.com/ChrisSimpson/status/2118406042945982640",
+    "url": "https://x.com/GogaKoreli/status/2118749174837694487",
+    "copy": "thats why i built nisli, the same templates can emit static HTML or run in the browser, with web components for interaction. Vite integration too. thats how i built https://gkoreli.com\nhttps://github.com/gkoreli/nisli",
+    "weighted": 212,
+    "verifiedAt": "2026-11-06T16:56:11.873Z",
+    "timestampMeaning": "Local canonical UI verification time, not an exact server publication timestamp.",
+    "state": "canonical-owner-view-verified",
+    "verification": "Reopened the new permalink after the pending composer settled; exact body, author, parent and displayed source/example links verified. Private screenshot retained.",
+    "privateProofBasename": "nisli-solution-reply-20261106/canonical",
+    "sourceBaseline": "gkoreli/nisli@45303135b4e1500f6edd6f93799b82e4ee22a0a9",
+    "claimBasis": "Pinned README and SSG documentation, plus the blog's SSG integration decision and package/source configuration. No comparative performance or SEO outcome is asserted."
+  },
+  "projectInventory": {
+    "publicRepositories": 8,
+    "owner": "gkoreli",
+    "method": "Connected repository inventory filtered to public repositories; public repository metadata and pinned READMEs, plus tap formula/root listing and relevant package READMEs. Each first README blob matched its pinned refetch.",
+    "index": "../../../../../docs/reference/owned-open-source-projects.md",
+    "scope": "Returned public owner repositories, including one fork and relevant nested packages; organization-owned coverage is not established."
+  },
+  "campaignAgentRecordedTotals": {
+    "xOriginalPosts": 1,
+    "xOutreachReplies": 37,
+    "xClarifications": 2,
+    "xConversationFollowups": 4,
+    "xProjectSolutionReplies": 1,
+    "xRepliesTotal": 44,
+    "redditCommentsAndFollowups": 27,
+    "redditNativeArticles": 1
+  },
+  "limits": "No anonymous visibility, fresh traffic attribution, new provider trial, runtime benchmark or production acceptance was measured. No Reddit action, GitHub outreach or monitoring was performed."
+}
