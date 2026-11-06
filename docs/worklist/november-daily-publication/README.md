@@ -1,5 +1,12 @@
 # November daily publication
 
+**Current November 5 Pacific checkpoint:** Goga requests four more hours of code
+and article improvement after the first queued revision. The old entry is held
+while [the expanded engineering work](../../../packages/blog/drafts/research/newsletter-reliability/32-four-hour-engineering-iteration.md)
+is active. Its source is preserved. Re-register the November 6 08:00 Pacific
+release after the new code/article acceptance; the earlier no-blocker statement
+and queue checks below are historical checkpoints.
+
 Started November 5, 2026, Pacific time. Owner wants a new article each day this
 month, published at 08:00; the November 5 article is already published and its
 later publication time is accepted. The environment's America/Los_Angeles
