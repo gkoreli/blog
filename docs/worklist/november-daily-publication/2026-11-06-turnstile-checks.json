@@ -42,5 +42,14 @@
   "productionRequestsDuringRehearsal": 0,
   "productionSignupAttemptsDuringRehearsal": 0,
   "newEmailSendsDuringRehearsal": 0,
-  "remaining": "Push the prepared queue and check it on GitHub. First actual cron-triggered promotion, Cloudflare activation and live article acceptance remain future evidence."
+  "remaining": "First actual cron-triggered promotion, Cloudflare activation and live article acceptance remain future evidence. The workflow verifies the live article after the scheduled push.",
+  "queueCommit": "d4e5544d9ceec0737e92cb24bcdf0e1e8c70528c",
+  "hostedCheck": {
+    "runId": 42171716487,
+    "url": "https://github.com/gkoreli/blog/actions/runs/42171716487",
+    "headSha": "d4e5544d9ceec0737e92cb24bcdf0e1e8c70528c",
+    "mode": "check",
+    "conclusion": "success",
+    "promotionAndPublicationStepsSkipped": true
+  }
 }

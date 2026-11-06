@@ -94,8 +94,15 @@ development output or private environment file was used.
 
 Prepared source is outside `posts/` and `prompts/`. It is intended for the
 **November 6, 2026, 08:00 America/Los_Angeles** release attempt (16:00 UTC).
-Queue delivery and a hosted non-publishing check are recorded after they finish.
+Queue source was committed and pushed in
+[`d4e5544`](https://github.com/gkoreli/blog/commit/d4e5544d9ceec0737e92cb24bcdf0e1e8c70528c).
+The populated queue then passed a
+[hosted non-publishing check](https://github.com/gkoreli/blog/actions/runs/42171716487)
+on that exact source. Checkout, pinned setup, installation and queue validation
+passed; promotion, commit/push and live publication steps were skipped as intended.
+The configured queue is active, with no remaining preparation blocker.
+
 Actual timed promotion, Cloudflare deployment and live publication remain
-unverified until that run. Next bounded action after queue activation: inspect
-the release's commit/push and live-check result; do not infer acceptance from this
-rehearsal or the article's scheduled date.
+unverified until the November 6 run. Next bounded action: inspect the release's
+commit/push and live-check result; do not infer acceptance from this rehearsal,
+manual hosted check or the article's scheduled date.
