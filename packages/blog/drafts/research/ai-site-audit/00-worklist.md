@@ -31,3 +31,15 @@ The article focuses on what a site operator can determine and fix from a public 
 The selected title promises a crawl/access inspection, with the first paragraph narrowing it to this checker. Candidate framing around an AI-readiness score was rejected because the evidence does not calibrate such a score. Search/discovery routes such as robots debugging and AI crawler access are reader-task hypotheses, not measured query demand.
 
 Next bounded action: finish code/tests, audit article statements against the final contracts, inspect the generated page and representations, then record code delivery, activation and fresh acceptance separately here.
+
+## Local acceptance and quota schema delivery
+
+November 6 UTC: the isolated implementation passes workspace typechecking and Markdown validation. The site-audit package has 29 passing domain/transport tests, including hostile redirects, private/mixed DNS, shared request budgets, noncooperative fetch/stream timeouts, RFC path cases and a >100,000-tag HTML regression. Four UI tests cover the no-JavaScript form/SSG insertion slot, nested response validation, target XSS and an actual enhanced form submission. The initial full blog suite passes 246 tests; analytics passes its existing 397 tests plus four new current-request/admission-boundary tests. Final integration checks follow the latest main source before release.
+
+The native Miniflare/D1 acceptance harness exercises the atomic quota with thirty simultaneous calls: exactly ten allowed and twenty rejected. HTTP checks cover a second UTC day, independent addresses, form rendering/escaping, shared request assessment, malformed/oversized/cross-site inputs and failure behavior. Commands: `pnpm typecheck`, `pnpm -C packages/blog validate`, package suites and `pnpm -C packages/blog test:ai-check`. Loopback permission is required by Miniflare in this sandbox; no external request is allowed by the native fixture.
+
+The quota-only migration was applied after a metadata check and native D1 acceptance. Four production statements inspected the two schema objects, created the table/index and inspected them again: initially zero matching objects, finally two. Statement meters total **97 rows read and three rows written**, including DDL accounting. No observations, diagnostics, newsletter rows or raw request records were read. Migration source: [0001_ai_check_quota.sql](../../../migrations/0001_ai_check_quota.sql). Table installation is separate from Writer activation and served acceptance.
+
+A new privacy test exposed a raw signer URI in the reader-kind reason for the unsigned-name signed-agent fallback. The public request assessment now returns a closed reason marker and reviewed signer display; it does not publish that URI. This projection change leaves stored analytics semantics intact.
+
+Code delivery, active deployment and fresh public acceptance remain pending at this checkpoint. Browser screenshots remain unavailable because local computer/browser access is disabled; SSG and native DOM tests are the UI evidence presently available.

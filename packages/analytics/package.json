@@ -30,7 +30,8 @@
     "./article-reach": "./src/article-reach.ts",
     "./article-reach-contract": "./src/article-reach-contract.ts",
     "./resource-reach": "./src/resource-reach.ts",
-    "./access-evidence": "./src/access-evidence.ts"
+    "./access-evidence": "./src/access-evidence.ts",
+    "./request-assessment": "./src/request-assessment.ts"
   },
   "scripts": {
     "typecheck": "tsc --noEmit",
