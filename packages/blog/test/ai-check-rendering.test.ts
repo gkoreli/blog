@@ -27,7 +27,10 @@ test('actual static snapshot preserves no-JavaScript form, API access and server
   assert.ok(snapshot);
   assert.match(snapshot, /<div id="ai-check-server-result"><\/div>/);
   assert.match(snapshot, /action="\/ai-check" method="post"/);
-  assert.match(snapshot, /name="url" type="url"/);
+  assert.match(snapshot, /name="url" type="text" inputmode="url"/);
+  assert.match(snapshot, /method="post" novalidate/);
+  assert.match(snapshot, /aria-describedby="ai-check-input-help ai-check-url-error"/);
+  assert.match(snapshot, /data-audit-field-error="" role="alert" hidden/);
   assert.match(snapshot, /href="\/api\/request-check"/);
   assert.match(snapshot, /10 free checks per network address per UTC day/);
   assert.match(snapshot, /does not promise/);

@@ -17,3 +17,9 @@ export function additionalReviewFindings(report: SiteAuditReport, assessment: Te
   return report.findings.filter(finding => finding.severity !== 'info' && !scoredIssues.has(SCORED_EQUIVALENTS[finding.id] ?? ''))
     .sort((left, right) => priority(left) - priority(right));
 }
+
+/** Optional formats are capabilities, not access failures. Used by both report renderers. */
+export function optionalSupportLabel(capability: TechnicalAssessment['optional'][number]): string {
+  if (capability.id === 'markdown' && capability.state === 'not-negotiated') return 'HTML returned; Markdown optional';
+  return capability.state === 'not-provided' ? 'Not offered · optional' : capability.state.replaceAll('-', ' ');
+}

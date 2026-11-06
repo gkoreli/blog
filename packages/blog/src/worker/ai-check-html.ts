@@ -1,6 +1,6 @@
 import type { SiteAuditReport } from '@gkoreli/site-audit/contracts';
 import { deriveTechnicalAssessment } from '@gkoreli/site-audit/product';
-import { additionalReviewFindings } from '../lib/site-audit-presentation.js';
+import { additionalReviewFindings, optionalSupportLabel } from '../lib/site-audit-presentation.js';
 import type { CheckQuota } from './ai-check-quota.js';
 
 function escape(value: string | number): string {
@@ -37,7 +37,7 @@ ${quota ? `<p class="ai-check-note">${escape(quota.remaining)} of ${escape(quota
 ${nextChecks.length ? nextChecks.slice(0, 3).map(check => `<section class="ai-check-finding" data-severity="${check.state === 'fail' ? 'action' : 'review'}"><h4>${escape(check.title)}</h4><p>${escape(check.evidence)}</p><p>${escape(check.nextStep)}</p><small>${escape(check.weight)} ${check.state === 'unknown' ? 'unassessed' : 'lost'} points · ${escape(check.id)}</small></section>`).join('') : '<p>No scored access issue was identified. Review optional capabilities and the evidence below for your task.</p>'}</section>
 ${additionalFindings.length ? `<section><h3>Other observations to review</h3><p class="ai-check-note">These diagnostics do not deduct score points. Interpret crawler policies and optional features according to your intent.</p>${additionalFindings.slice(0,3).map(finding=>`<section class="ai-check-finding" data-severity="${escape(finding.severity)}"><h4>${escape(finding.title)}</h4><p>${escape(finding.evidence)}</p><p>${escape(finding.recommendation)}</p></section>`).join('')}</section>` : ''}
 <section><h3>Optional capabilities</h3><p class="ai-check-note">These observations do not change the score. HTML can work without Markdown, llms.txt or structured data.</p>
-<div class="access-optional">${assessment.optional.map(capability => `<section class="access-optional-item"><h4>${escape(capability.title)}</h4><p class="access-optional-state">${escape(capability.state)}</p><p>${escape(capability.evidence)}</p><p>${escape(capability.nextStep)}</p></section>`).join('')}</div></section>
+<div class="access-optional">${assessment.optional.map(capability => `<section class="access-optional-item"><h4>${escape(capability.title)}</h4><p class="access-optional-state">${escape(optionalSupportLabel(capability))}</p><p>${escape(capability.evidence)}</p><p>${escape(capability.nextStep)}</p></section>`).join('')}</div></section>
 <details class="access-evidence"><summary>All findings and next checks (${escape(report.findings.length)})</summary><div class="access-evidence-body">${report.findings.map(finding => `<section><h4>${escape(finding.title)} <small>(${escape(finding.severity)})</small></h4><p>${escape(finding.evidence)}</p><p>${escape(finding.recommendation)}</p></section>`).join('')}</div></details>
 <details class="access-evidence"><summary>Published crawler policy for this path</summary><div class="access-evidence-body">
 <p>Robots state: ${escape(report.robots.state)}. ${escape(report.robots.groups)} groups, ${escape(report.robots.rules)} rules. These are policy evaluations, not proof of provider access.</p>

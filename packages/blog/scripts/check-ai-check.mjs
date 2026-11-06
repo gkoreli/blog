@@ -15,9 +15,10 @@ const vendorEntry = fileURLToPath(new URL('../../analytics/src/vendor-ip.ts', im
 const quotaEntry = fileURLToPath(new URL('../src/worker/ai-check-quota.ts', import.meta.url));
 const fixture = {
   version: '2026-11-06.1', checkedAt: '2026-11-06T12:00:00.000Z', target: 'https://public.site/article', complete: true,
-  resources: [], page: { title: '<script>private-attack()</script>', description: null, canonical: null, language: null, textCharacters: 123, headings: 1, links: 2, scriptElements: 0, metaRobots: [], structuredDataTypes: [], structuredDataBlocks: 0, invalidStructuredDataBlocks: 0, alternateLinks: [], parseState: 'parsed' },
+  resources: [{ kind: 'markdown', requestedUrl: 'https://public.site/article', finalUrl: 'https://public.site/article', outcome: 'received', status: 200, contentType: 'text/html', bytes: 123, elapsedMs: 1, redirects: 0, probeAgent: null, headersOmitted: [], headers: { robots: null, link: null, contentLocation: null, vary: null } }], page: { title: '<script>private-attack()</script>', description: null, canonical: null, language: null, textCharacters: 123, headings: 1, links: 2, scriptElements: 0, metaRobots: [], structuredDataTypes: [], structuredDataBlocks: 0, invalidStructuredDataBlocks: 0, alternateLinks: [], parseState: 'parsed' },
   robots: { state: 'missing', groups: 0, rules: 0, sitemaps: [], bots: [] }, discovery: { llms: 'missing', llmsLinks: 0, sitemap: 'missing', markdown: 'not-negotiated' }, findings: [], limits: ['Bounded fixture'],
 };
+const formShell = '<!doctype html><html><main><h1>AI site check</h1><form action="/ai-check" method="post" novalidate><label for="ai-check-url">Your public page URL</label><input id="ai-check-url" name="url" type="text" inputmode="url" aria-describedby="ai-check-input-help ai-check-url-error"><p id="ai-check-input-help">A public domain or HTTPS URL.</p><p id="ai-check-url-error" data-audit-field-error role="alert" hidden></p><button>Check this page</button></form><div id="ai-check-server-result"></div></main></html>';
 const bundle = await build({ stdin: { contents: `import {handleAiCheck} from ${JSON.stringify(entry)};
 import {assessRequest} from ${JSON.stringify(assessmentEntry)};
 import {verifyVendorIp} from ${JSON.stringify(vendorEntry)};
@@ -38,7 +39,7 @@ export default {async fetch(request,env){
     ...(headers.get('X-Fixture-Config')==='missing'?{ANALYTICS_HASH_KEY:''}:{}),
     AI_CHECK_RATE_LIMITER:{limit:async()=>({success:headers.get('X-Fixture-Burst')!=='deny'})},
     AI_CHECK_GLOBAL_LIMITER:{limit:async()=>({success:true})},
-    ASSETS:{fetch:async assetRequest=>new URL(assetRequest.url).pathname==='/ai-check-example.json'?Response.json({report:fixture}):new Response('<!doctype html><html><main><h1>AI site check</h1><div id="ai-check-server-result"></div></main></html>',{headers:{'Content-Type':'text/html'}})},
+    ASSETS:{fetch:async assetRequest=>new URL(assetRequest.url).pathname==='/ai-check-example.json'?Response.json({report:fixture}):new Response(${JSON.stringify(formShell)},{headers:{'Content-Type':'text/html'}})},
   },{audit:async target=>({...fixture,target}),
     // Explicit missing-edge-address fixture: actual parser/signature, no vendor feed I/O.
     requestAssessment:input=>assessRequest(input,{verifyNetwork:(_request,names)=>verifyVendorIp(new Request(input.url),names)}),now:()=>new Date(day+'T12:00:00Z')});
@@ -81,7 +82,37 @@ try {
   assert.match(rendered, /&lt;script&gt;private-attack\(\)&lt;\/script&gt;/);
   assert.doesNotMatch(rendered, /<script>private-attack/);
   assert.match(rendered, /Page and discovery evidence/);
+  assert.match(rendered, /class="access-optional-state">HTML returned; Markdown optional<\/p>/);
   assert.equal(nojs.headers.get('X-Robots-Tag'), 'noindex');
+  assert.match(rendered, /<input[^>]*value="https:\/\/public.site\/article"/);
+  const nojsBare = await visit('/ai-check', { body: new URLSearchParams({ url: '  reddit.com/r/programming  ' }).toString(), headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }, '9.9.9.9');
+  assert.equal(nojsBare.status, 200);
+  const bareHtml = await nojsBare.text();
+  assert.match(bareHtml, /<input[^>]*value="https:\/\/reddit.com\/r\/programming"/);
+  assert.match(bareHtml, /https:\/\/reddit.com\/r\/programming/);
+  const bareApi = await visit('/api/ai-check', { body: JSON.stringify({ url: 'reddit.com' }) }, '9.9.9.9');
+  assert.equal(bareApi.status, 200);
+  assert.equal((await bareApi.json()).report.target, 'https://reddit.com/');
+  const quotaBeforeInvalid = await db.prepare('SELECT SUM(used) AS used, COUNT(*) AS rows FROM ai_check_daily_quota').first();
+  for (const url of ['', 'http://reddit.com', 'https://reddit.com/?q=secret', 'https://127.0.0.1/', 'https://public.site/" onfocus="attack']) {
+    const invalidForm = await visit('/ai-check', { body: new URLSearchParams({ url }).toString(), headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }, '9.9.9.9');
+    assert.equal(invalidForm.status, 400);
+    assert.equal(invalidForm.headers.get('X-RateLimit-Remaining'), null);
+    const invalidHtml = await invalidForm.text();
+    assert.match(invalidHtml, /<form[^>]*action="\/ai-check"[^>]*novalidate/);
+    assert.match(invalidHtml, /<input[^>]*aria-invalid="true"[^>]*autofocus/);
+    assert.match(invalidHtml, /<p id="ai-check-url-error"[^>]*role="alert">[^<]+<\/p>/);
+    assert.doesNotMatch(invalidHtml, /<input[^>]* onfocus="attack/);
+    if (url.includes('onfocus')) assert.match(invalidHtml, /value="https:\/\/public.site\/&quot; onfocus=&quot;attack"/);
+  }
+  const strictApi = await visit('/api/ai-check', { body: JSON.stringify({ url: ' reddit.com ' }) }, '9.9.9.9');
+  assert.equal(strictApi.status, 400);
+  assert.deepEqual(await db.prepare('SELECT SUM(used) AS used, COUNT(*) AS rows FROM ai_check_daily_quota').first(), quotaBeforeInvalid);
+  const nojsQuota = await visit('/ai-check', { body: new URLSearchParams({ url: 'reddit.com' }).toString(), headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }, '8.8.8.8');
+  assert.equal(nojsQuota.status, 429);
+  const quotaHtml = await nojsQuota.text();
+  assert.match(quotaHtml, /<input[^>]*value="https:\/\/reddit.com\/"/);
+  assert.doesNotMatch(quotaHtml, /aria-invalid="true"/);
   for (const [init, status] of [
     [{ method: 'GET', body: undefined }, 405],
     [{ body: 'not json' }, 400],
@@ -169,5 +200,5 @@ try {
   assert.equal(stored.length, 6); // Native, caller/two days, independent caller, no-JS, request assessment.
   assert.doesNotMatch(JSON.stringify(stored), /public.site|8\.8\.8\.8|private-test|private-secret/);
   assert.equal(outbound, 0);
-  console.log(JSON.stringify({ result: 'passed', httpRequests: count, nativeConcurrentAdmissions: 10, rejectedNativeAdmissions: 20, quotaRows: stored.length, externalRequests: outbound, noJavaScriptHtml: 'passed', escapedRemoteHtml: 'passed', inputAndOriginBoundaries: 'passed', requestEvidence: 'passed', actualResponsesMatchOpenApi: 2, compactAliasRoundtrip: RETAINED_CLIENT_PRODUCTS_20261106.length, additionalCodecSchemaCases: 75, malformedSchemaRejections: 12, networkFixture: 'missing-edge-address'  }));
+  console.log(JSON.stringify({ result: 'passed', httpRequests: count, nativeConcurrentAdmissions: 10, rejectedNativeAdmissions: 20, quotaRows: stored.length, externalRequests: outbound, noJavaScriptHtml: 'passed', noJavaScriptBareDomain: 'normalized', invalidFormQuotaUse: 0, retainedEscapedInput: 'passed', escapedRemoteHtml: 'passed', inputAndOriginBoundaries: 'passed', requestEvidence: 'passed', actualResponsesMatchOpenApi: 2, compactAliasRoundtrip: RETAINED_CLIENT_PRODUCTS_20261106.length, additionalCodecSchemaCases: 75, malformedSchemaRejections: 12, networkFixture: 'missing-edge-address'  }));
 } finally { await runtime.dispose(); }
