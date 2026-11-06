@@ -82,9 +82,11 @@ function json(value: unknown, status = 200, quota?: CheckQuota): Response {
   return Response.json(value, { status, headers: headers(quota) });
 }
 
-async function htmlResponse(request: Request, env: AiCheckEnv, result: string, status: number, quota?: CheckQuota): Promise<Response> {
+interface HtmlFormState { value: string; error?: string; }
+
+async function htmlResponse(request: Request, env: AiCheckEnv, result: string, status: number, quota?: CheckQuota, formState?: HtmlFormState): Promise<Response> {
   const shell = await env.ASSETS.fetch(new Request(new URL('/ai-check', request.url), { headers: { Accept: 'text/html' } }));
-  if (!shell.ok) return new Response(`<!doctype html><html lang="en"><meta charset="utf-8"><title>AI site check</title><main><a href="/ai-check">Try another check</a>${result}</main></html>`, { status, headers: { ...Object.fromEntries(headers(quota)), 'Content-Type': 'text/html; charset=utf-8', 'X-Robots-Tag': 'noindex' } });
+  if (!shell.ok) return new Response(`<!doctype html><html lang="en"><meta charset="utf-8"><title>AI site check</title><main><a href="/ai-check">Try another check</a>${result || (formState?.error ? checkErrorHtml(formState.error) : '')}</main></html>`, { status, headers: { ...Object.fromEntries(headers(quota)), 'Content-Type': 'text/html; charset=utf-8', 'X-Robots-Tag': 'noindex' } });
   const body = await shell.text();
   const marker = '<div id="ai-check-server-result"></div>';
   const rendered = body.includes(marker) ? body.replace(marker, result) : body.replace('</main>', `${result}</main>`);
@@ -95,7 +97,17 @@ async function htmlResponse(request: Request, env: AiCheckEnv, result: string, s
   }
   responseHeaders.set('Content-Type', 'text/html; charset=utf-8');
   responseHeaders.set('X-Robots-Tag', 'noindex');
-  return new Response(rendered, { status, headers: responseHeaders });
+  const response = new Response(rendered, { status, headers: responseHeaders });
+  if (!formState) return response;
+  return new HTMLRewriter()
+    .on('#ai-check-url', { element(element) {
+      element.setAttribute('value', formState.value);
+      if (formState.error) { element.setAttribute('aria-invalid', 'true'); element.setAttribute('autofocus', ''); }
+    } })
+    .on('#ai-check-url-error', { element(element) {
+      if (formState.error) { element.removeAttribute('hidden'); element.setInnerContent(formState.error); }
+    } })
+    .transform(response);
 }
 
 /** HTTP adapter. The audit engine never sees bindings, caller identity or quota state. */
@@ -132,17 +144,23 @@ export async function handleAiCheck(request: Request, env: AiCheckEnv, dependenc
     response.headers.set('Allow', expectedMethod);
     return response;
   }
-  const failure = (message: string, status: number, quota?: CheckQuota) => htmlForm
-    ? htmlResponse(request, env, checkErrorHtml(message), status, quota)
+  let formState: HtmlFormState | undefined;
+  const failure = (message: string, status: number, quota?: CheckQuota, fieldError = false) => htmlForm
+    ? htmlResponse(request, env, fieldError ? '' : checkErrorHtml(message), status, quota, formState ? { ...formState, ...(fieldError ? { error: message } : {}) } : undefined)
     : Promise.resolve(json({ error: message, ...(quota ? { quota } : {}) }, status, quota));
   const origin = request.headers.get('Origin');
   if (origin !== null && origin !== new URL(request.url).origin || request.headers.get('Sec-Fetch-Site') === 'cross-site') return failure('Run browser checks from this site. Server API clients may omit Origin.', 403);
   let target = '';
   try {
-    if (!ownRequest) target = normalizeTarget(await readInput(request, htmlForm)).toString();
+    if (!ownRequest) {
+      const submitted = await readInput(request, htmlForm);
+      if (htmlForm) formState = { value: submitted };
+      target = normalizeTarget(htmlForm ? submitted.trim() : submitted).toString();
+      if (htmlForm) formState = { value: target };
+    }
     else if ((request.headers.get('User-Agent')?.length ?? 0) > 8192) throw new InputError('User-Agent exceeds the request-assessment limit.', 413);
   } catch (error: unknown) {
-    return failure(error instanceof TargetValidationError || error instanceof InputError ? error.message : 'Could not read the request.', error instanceof InputError ? error.status : 400);
+    return failure(error instanceof TargetValidationError || error instanceof InputError ? error.message : 'Could not read the request.', error instanceof InputError ? error.status : 400, undefined, error instanceof TargetValidationError);
   }
   const ip = trustedEdgeAddress(request);
   if (!ip || !env.ANALYTICS_HASH_KEY || !env.AI_CHECK_RATE_LIMITER || !env.AI_CHECK_GLOBAL_LIMITER) return failure('The checker is temporarily unavailable. Try again later.', 503);
@@ -168,7 +186,7 @@ export async function handleAiCheck(request: Request, env: AiCheckEnv, dependenc
     }
     if (ownRequest) return json({ request: await (dependencies.requestAssessment ?? assessRequest)(request), quota }, 200, quota);
     const report = await (dependencies.audit ?? analyzeSite)(target);
-    return htmlForm ? htmlResponse(request, env, checkResultHtml(report, quota), 200, quota) : json({ report, quota }, 200, quota);
+    return htmlForm ? htmlResponse(request, env, checkResultHtml(report, quota), 200, quota, formState) : json({ report, quota }, 200, quota);
   } catch {
     // Never serialize the target, body, raw address, upstream text or DB error.
     return failure('The checker could not finish. Try again later. An admitted check may have used one allowance.', 503, quota);

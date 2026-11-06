@@ -11,6 +11,10 @@ site-audit-check, request-evidence-check { display: block; }
 .ai-check button:disabled { opacity: 0.65; cursor: wait; }
 .ai-check button:focus-visible, .ai-check input:focus-visible, .ai-check summary:focus-visible, .ai-check-download:focus-visible { outline: 3px solid var(--color-link); outline-offset: 4px; }
 .ai-check-form p { margin: var(--space-3) 0 0; }
+.ai-check input[aria-invalid="true"] { border-color: var(--color-accent-rust); }
+.ai-check input[aria-invalid="true"]:focus-visible { outline-color: var(--color-accent-rust); }
+.ai-check .ai-check-field-error { color: var(--color-text); border-left: 2px solid var(--color-accent-rust); padding-left: 0.65rem; font-size: 0.78rem; line-height: 1.65; font-weight: 600; }
+.ai-check .ai-check-field-error[hidden] { display: none; }
 .ai-check [role="status"]:not(:empty) { padding: var(--space-3) 0; font-size: var(--text-sm); }
 .ai-check [data-state="error"] { border-left: 3px solid var(--color-accent-rust); padding-left: var(--space-4); }
 .ai-check .ai-check-method, .ai-check .ai-check-request, .ai-check .ai-check-api { border-top: 1px solid var(--color-border); margin-top: var(--space-12); padding-top: var(--space-6); }
@@ -99,6 +103,7 @@ site-audit-check, request-evidence-check { display: block; }
 .ai-check-input-row button { font-size: 0.78rem; white-space: nowrap; }
 .ai-check-underform { display: flex; align-items: baseline; flex-wrap: wrap; justify-content: space-between; gap: 0.4rem 1rem; padding: 0.8rem 0; }
 .ai-check-underform a { font-size: 0.78rem; }
+.ai-check-underform a[aria-disabled="true"] { opacity: 0.65; cursor: wait; }
 .ai-check .ai-check-input-details { margin-top: 0; border: 0; padding: 0 0 0.5rem; }
 .ai-check-input-details summary { color: var(--color-text-muted); font-size: 0.7rem; font-weight: 400; }
 .ai-check-input-details p { font-size: 0.76rem; }
