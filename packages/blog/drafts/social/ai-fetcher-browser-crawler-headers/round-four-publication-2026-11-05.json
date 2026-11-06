@@ -1,0 +1,156 @@
+{
+  "recordedAt": "2026-11-06T06:24:45.577287+00:00",
+  "clientDate": "2026-11-05",
+  "authorization": "Owner explicitly requested five more replies/follow-ups per platform, with concise informal copy in his established voice.",
+  "xRepliesPublished": 5,
+  "redditRepliesPublished": 5,
+  "canonicalOwnerViewsVerified": 10,
+  "style": "Finding first, lowercase openings, natural comma rhythm and omitted apostrophes; no invented experiences, false measurements or disguised authorship.",
+  "article": "https://gkoreli.com/ai-fetcher-browser-crawler-headers",
+  "timestampMeaning": "Local receipt/verification timestamps, not server publication timestamps.",
+  "independentPublicVisibility": "Not established for this batch; signed-in owner access is the verified state.",
+  "responses": {
+    "initialCheck": "No additional campaign responses in the two notification feeds beyond the previously handled Superframeworks reply.",
+    "duringBatch": "A new parsestream response and first-upvote notification appeared on the r/LLMTraffic article. The response recommends Mentiondesk; its product claims and reader identity are unverified.",
+    "newResponse": "https://www.reddit.com/r/LLMTraffic/comments/1xp569x/comment/19s7q41kg922p/",
+    "followedUp": "https://www.reddit.com/r/LLMTraffic/comments/1xp569x/comment/19s7q642cqf29/",
+    "coverage": "Bounded notification-feed checks, not an exhaustive child-thread census or current traffic measurement."
+  },
+  "destinationRules": "Current TechSEO rules/expanded promotion rule, CloudFlare wiki and relevant thread context, GEO rules and existing LLMTraffic self-post rules were reviewed. r/cybersecurity explicitly forbids machine-generated content and was excluded.",
+  "items": [
+    {
+      "platform": "x",
+      "parent": "https://x.com/Laxmankafle1995/status/2118569422554365981",
+      "url": "https://x.com/GogaKoreli/status/2118587007308046400",
+      "copy": "the bot-name check misses some fetches btw. grok sent 11 chrome/safari-style requests in my nov 5 run, no grok token and all stored Browser. worth testing the actual tool too\nhttps://gkoreli.com/ai-fetcher-browser-crawler-headers",
+      "weighted": 198,
+      "receiptRecordedAt": "2026-11-06T06:12:01.133Z",
+      "verifiedAt": "2026-11-06T06:12:02.371Z",
+      "label": "Laxman: actual-tool control",
+      "state": "canonical-owner-view-verified",
+      "verification": "Reopened canonical signed-in permalink; exact submitted body and source link or existing parent-post source visible; private screenshot saved."
+    },
+    {
+      "platform": "x",
+      "parent": "https://x.com/cooldaddpj/status/2118518962241880523",
+      "url": "https://x.com/GogaKoreli/status/2118587463967113471",
+      "copy": "yeah i wouldnt relabel Direct as ChatGPT either. my Gemini fetch had just Google as its UA, unsigned. without the test URL i couldnt have named the provider\nhttps://gkoreli.com/ai-fetcher-browser-crawler-headers",
+      "weighted": 180,
+      "receiptRecordedAt": "2026-11-06T06:13:48.872Z",
+      "verifiedAt": "2026-11-06T06:13:50.061Z",
+      "label": "Daryll: Direct attribution",
+      "state": "canonical-owner-view-verified",
+      "verification": "Reopened canonical signed-in permalink; exact submitted body and source link or existing parent-post source visible; private screenshot saved."
+    },
+    {
+      "platform": "x",
+      "parent": "https://x.com/ekohe/status/2118534668018696572",
+      "url": "https://x.com/GogaKoreli/status/2118588090377982397",
+      "copy": "on the receiving side, i keep raw IPs and UAs out of my main analytics table. parsed evidence + method versions stay, raw headers only go in bounded private captures\nmy setup: https://gkoreli.com/ai-fetcher-browser-crawler-headers",
+      "weighted": 199,
+      "receiptRecordedAt": "2026-11-06T06:16:10.493Z",
+      "verifiedAt": "2026-11-06T06:16:11.786Z",
+      "label": "Ekohe: private request evidence",
+      "state": "canonical-owner-view-verified",
+      "verification": "Reopened canonical signed-in permalink; exact submitted body and source link or existing parent-post source visible; private screenshot saved."
+    },
+    {
+      "platform": "x",
+      "parent": "https://x.com/emanuelbalsa/status/2118433708499779801",
+      "url": "https://x.com/GogaKoreli/status/2118588540493951138",
+      "copy": "curious what the 1,700% counts, requests or agent tasks? dot's curl made 2 GETs for one question in my test. one job != one request, makes these growth numbers hard to compare\nhttps://gkoreli.com/ai-fetcher-browser-crawler-headers",
+      "weighted": 199,
+      "receiptRecordedAt": "2026-11-06T06:18:39.076Z",
+      "verifiedAt": "2026-11-06T06:18:40.259Z",
+      "label": "Balsa: tasks versus requests",
+      "state": "canonical-owner-view-verified",
+      "verification": "Reopened canonical signed-in permalink; exact submitted body and source link or existing parent-post source visible; private screenshot saved."
+    },
+    {
+      "platform": "x",
+      "parent": "https://x.com/yenkel/status/2118380446740582554",
+      "url": "https://x.com/GogaKoreli/status/2118589008431485149",
+      "copy": "Context cited my page, then gave the wrong sentence from it. the extractor had the right one, so a fetch-success check would've passed. that's the AX problem i'd test too\nhttps://gkoreli.com/ai-fetcher-browser-crawler-headers",
+      "weighted": 194,
+      "receiptRecordedAt": "2026-11-06T06:20:06.081Z",
+      "verifiedAt": "2026-11-06T06:20:07.408Z",
+      "label": "yenkel: answer quality",
+      "state": "canonical-owner-view-verified",
+      "verification": "Reopened canonical signed-in permalink; exact submitted body and source link or existing parent-post source visible; private screenshot saved."
+    },
+    {
+      "platform": "reddit",
+      "parent": "https://www.reddit.com/r/TechSEO/comments/1xjqp77/i_checked_robotstxt_and_llmstxt_on_118_aeo_vendor/",
+      "url": "https://www.reddit.com/r/TechSEO/comments/1xjqp77/comment/19s7pr0gupijp/",
+      "copy": "i'd try one real chat fetch alongside the robots audit. grok sent 11 chrome/safari-style GETs in my nov 5 run, none named grok. all ended up Browser in my collector.\nmy headers/logs: https://gkoreli.com/ai-fetcher-browser-crawler-headers",
+      "receiptRecordedAt": "2026-11-06T06:13:05.273Z",
+      "verifiedAt": "2026-11-06T06:13:06.991Z",
+      "label": "TechSEO: robots audit",
+      "state": "canonical-owner-view-verified",
+      "verification": "Reopened canonical signed-in permalink; exact submitted body and source link or existing parent-post source visible; private screenshot saved.",
+      "wordCount": 33
+    },
+    {
+      "platform": "reddit",
+      "parent": "https://www.reddit.com/r/TechSEO/comments/1wo5kqt/does_anyone_actually_check_what_ai_crawlers_get/",
+      "url": "https://www.reddit.com/r/TechSEO/comments/1wo5kqt/comment/19s7ptwmiav34/",
+      "copy": "the query string can change the test too, perplexity failed on my labelled ?probe= URL then answered from the canonical one. # worked too, but never reaches the server so you lose the log label.\nmy controls + actual requests: https://gkoreli.com/ai-fetcher-browser-crawler-headers",
+      "receiptRecordedAt": "2026-11-06T06:16:10.493Z",
+      "verifiedAt": "2026-11-06T06:20:09.206Z",
+      "label": "TechSEO: CDN URL controls",
+      "state": "canonical-owner-view-verified",
+      "verification": "Reopened canonical signed-in permalink; exact submitted body and source link or existing parent-post source visible; private screenshot saved.",
+      "wordCount": 41
+    },
+    {
+      "platform": "reddit",
+      "parent": "https://www.reddit.com/r/CloudFlare/comments/1wh08fp/have_it_both_ways_stay_discoverable_in_search/",
+      "url": "https://www.reddit.com/r/CloudFlare/comments/1wh08fp/comment/19s7q03hfew83/",
+      "copy": "yeah, same operator doesnt mean same job. dot's chrome and curl both verified as chatgpt on my site, i keep the client claim and signer separate. neither told me whether the content would be used for training.\nmy captures: https://gkoreli.com/ai-fetcher-browser-crawler-headers",
+      "receiptRecordedAt": "2026-11-06T06:20:06.081Z",
+      "verifiedAt": "2026-11-06T06:20:27.306Z",
+      "label": "CloudFlare: operator versus purpose",
+      "state": "canonical-owner-view-verified",
+      "verification": "Reopened canonical signed-in permalink; exact submitted body and source link or existing parent-post source visible; private screenshot saved.",
+      "wordCount": 40
+    },
+    {
+      "platform": "reddit",
+      "parent": "https://www.reddit.com/r/GEO_optimization/comments/1w0kjb5/i_tracked_ai_crawlers_on_my_new_geo_site_for_30/",
+      "url": "https://www.reddit.com/r/GEO_optimization/comments/1w0kjb5/comment/19s7q2v3ewrc5/",
+      "copy": "a citation doesnt prove a fresh crawl either. perplexity answered from my page but i couldnt match an attributable GET in the bounded Worker capture. i'd keep answer/citation checks next to the request counts.\nmy test: https://gkoreli.com/ai-fetcher-browser-crawler-headers",
+      "receiptRecordedAt": "2026-11-06T06:20:25.826Z",
+      "verifiedAt": "2026-11-06T06:20:29.003Z",
+      "label": "GEO: citations versus fresh requests",
+      "state": "canonical-owner-view-verified",
+      "verification": "Reopened canonical signed-in permalink; exact submitted body and source link or existing parent-post source visible; private screenshot saved.",
+      "wordCount": 37
+    },
+    {
+      "platform": "reddit",
+      "parent": "https://www.reddit.com/r/LLMTraffic/comments/1xp569x/comment/19s7q41kg922p/",
+      "url": "https://www.reddit.com/r/LLMTraffic/comments/1xp569x/comment/19s7q642cqf29/",
+      "copy": "yeah the citation can be right while the answer is wrong, Context did that on my page. do you check the answer against the source too, or mainly count mentions/citations?",
+      "articleLinkLocation": "Existing original post contains the canonical blog link; not repeated in the genuine follow-up.",
+      "receiptRecordedAt": "2026-11-06T06:22:37.784Z",
+      "verifiedAt": "2026-11-06T06:22:39.221Z",
+      "label": "LLMTraffic: response to parsestream",
+      "state": "canonical-owner-view-verified",
+      "verification": "Reopened canonical signed-in permalink; exact submitted body and source link or existing parent-post source visible; private screenshot saved.",
+      "wordCount": 30
+    }
+  ],
+  "limits": [
+    "No new provider trials, Cloudflare reads or traffic measurements in this batch.",
+    "No manual votes, DMs, moderation changes, deletions or monitoring.",
+    "One genuine follow-up keeps the article link in the original post rather than repeating it.",
+    "Published copies remain separate from the article research footprint."
+  ],
+  "campaignDeliveryTotals": {
+    "xOriginals": 1,
+    "xOutreachReplies": 22,
+    "xClarificationReplies": 2,
+    "redditCommentsAndFollowups": 22,
+    "redditNewStandaloneArticles": 1
+  }
+}
