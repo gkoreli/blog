@@ -152,7 +152,10 @@ export async function unsubscribeByToken(
 export async function markBounced(db: D1Database, email: string): Promise<void> {
   await db.batch([
     db.prepare('UPDATE confirmation_attempts SET revoked = 1 WHERE email = ?').bind(email),
-    db.prepare(`UPDATE subscribers SET status = 'bounced', bounced_at = datetime('now'),
+    // A duplicate event must not restart the inactive-row retention interval.
+    db.prepare(`UPDATE subscribers SET status = 'bounced',
+      bounced_at = CASE WHEN status != 'bounced' OR bounced_at IS NULL
+        THEN datetime('now') ELSE bounced_at END,
       suppression_reason = COALESCE(suppression_reason, 'bounce'),
       confirm_token = NULL, confirm_token_expires_at = NULL WHERE email = ?`).bind(email),
   ]);
@@ -164,7 +167,10 @@ export async function markBounced(db: D1Database, email: string): Promise<void> 
 export async function markComplained(db: D1Database, email: string): Promise<void> {
   await db.batch([
     db.prepare('UPDATE confirmation_attempts SET revoked = 1 WHERE email = ?').bind(email),
-    db.prepare(`UPDATE subscribers SET status = 'unsubscribed', unsubscribed_at = datetime('now'),
+    db.prepare(`UPDATE subscribers SET status = 'unsubscribed',
+      unsubscribed_at = CASE WHEN status != 'unsubscribed'
+        OR suppression_reason IS NOT 'complaint' OR unsubscribed_at IS NULL
+        THEN datetime('now') ELSE unsubscribed_at END,
       suppression_reason = 'complaint', confirm_token = NULL, confirm_token_expires_at = NULL
       WHERE email = ?`).bind(email),
   ]);

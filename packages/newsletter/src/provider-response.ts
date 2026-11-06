@@ -36,7 +36,10 @@ export async function readProviderJson(
   try {
     while (true) {
       const chunk = await reader.read();
-      if (timedOut || performance.now() >= budget.deadline) return { ok: false, reason: 'timeout' };
+      if (timedOut || performance.now() >= budget.deadline) {
+        stop();
+        return { ok: false, reason: 'timeout' };
+      }
       if (chunk.done) break;
       size += chunk.value.byteLength;
       if (size > budget.maxBytes) {
