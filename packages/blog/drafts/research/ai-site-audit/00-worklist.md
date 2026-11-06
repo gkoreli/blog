@@ -2,21 +2,21 @@
 
 Started November 5, 2026 Pacific / November 6 UTC. The owner requests a substantial article and a tool inspired by the supplied X post, using the existing analytics capability, DDD principles, an ADR and a possible five-to-ten-use free daily API, within three hours. The full human shaping message is in the [prompt record](../../../prompts/ai-site-check-evidence.prompts.md).
 
-This is a separate bounded delivery from the concurrent [detection-improvement worklist](../analytics-retrospective/128-detection-improvement-worklist.md). Existing provider measurements are reused with their original conditions; no new detector-accuracy or provider trial is implied.
+This is a separate bounded delivery from the concurrent [detection work under TASK-0119](../../../../../docs/tasks/TASK-0119.md). Existing provider measurements are reused with their original conditions; no new detector-accuracy or provider trial is implied.
 
 ## Acceptance and current state
 
-| Requirement | Evidence required | State at editorial checkpoint |
+| Requirement | Evidence required | Current acceptance state |
 | --- | --- | --- |
 | Understand reference | Official oEmbed/post context and linked product inspection | Root resolved Exepal `/check`; [source ledger](01-source-and-claim-ledger.md) records limits |
-| More informative public URL audit | Versioned report and visible evidence for policy, responses, initial HTML, discovery and synthetic probes | Engineering active in isolated checkout |
-| Existing analytics capability | Current-request endpoint preserving independent dimensions | Engineering active; no provider attribution inferred from spoofed headers |
-| Free limited API | Atomic shared ten/day address quota, UTC reset, burst limit, failure semantics, API documentation | Implementation/testing pending root acceptance |
+| More informative public URL audit | Versioned report and visible evidence for policy, responses, initial HTML, discovery and synthetic probes | Accepted: 26 policy tokens, eight resources, source metadata/discovery and visible fixes; fresh own-site and external checks pass |
+| Existing analytics capability | Current-request endpoint preserving independent dimensions | Accepted: current-request endpoint and closed public projection; independent signature/network/native fields |
+| Free limited API | Atomic shared ten/day address quota, UTC reset, burst limit, failure semantics, API documentation | Accepted: native concurrent admission and current production sequence ten through zero, then daily 429 |
 | DDD and ADR | Package/context boundaries, pure parsers, explicit adapter, rationale and alternatives | [ADR-0020](../../../../../docs/adr/0020-evidence-led-ai-site-check.md) authored |
-| Substantial article | Useful first 50 words, claims/sources/limits, exact prompt, API examples | [Article](../../../posts/042-ai-site-check-evidence.md) authored; release claims await final code audit |
-| Checks | Relevant package tests, typecheck, validation, isolated generated HTML/Markdown inspection | Pending root execution and receipts |
-| Delivery | Scoped main commit/push, actual deployment association | Pending |
-| Served acceptance | Current tool/API behavior, quota behavior, synthetic provenance and page availability | Pending; local tests do not substitute |
+| Substantial article | Useful first 50 words, claims/sources/limits, exact prompt, API examples | [Article](../../../posts/042-ai-site-check-evidence.md) published and audited against final API/limits; live transport failure and repair retained |
+| Checks | Relevant package tests, typecheck, validation, isolated generated HTML/Markdown inspection | Accepted: 401 analytics, 366 blog, 29 audit tests, both native harnesses, typecheck, validation and isolated build |
+| Delivery | Scoped main commit/push, actual deployment association | Delivered on main; source-linked build and 100% Worker allocation accepted |
+| Served acceptance | Current tool/API behavior, quota behavior, synthetic provenance and page availability | Accepted: fresh served pages/API/form, two URL audits and actual shared daily exhaustion |
 
 ## Working boundaries
 
@@ -55,3 +55,17 @@ A new native default-transport test reproduced the mechanism: workerd rejects `r
 `pnpm -C packages/site-audit test:workers` now covers the actual default `analyzeSite` transport with an outbound fixture, no injected fetch/resolver: eight received 200 resources, sixteen DNS requests and eight target requests. It preserves the rejected option as a native negative control with zero outbound requests, plus a resolver redirect refusal. The 29 domain tests and typecheck pass. Raw exception logging used during local diagnosis was removed before commit `757cddf7`.
 
 The correction must activate and pass fresh served checks before site-audit acceptance. Raw HTTP bodies/headers remain in ignored `packages/blog/worklog/ai-site-audit-20261106/`; they are not copied into Git. The admitted failed check counts under the documented quota policy.
+
+## Accepted release behavior
+
+The [normalized acceptance receipt](2026-11-06-acceptance.json) records successful source `8bb87df2400f5894e49232cc7f5ef601e663a04e`, build `b03de2cf-72c9-45d5-a552-d6f31553150b` and Worker `de69aa4e-9356-49c6-9187-a0676ae7aa2a` at 100%. Fresh tool HTML embeds that commit/build pair. The live tool, article, Markdown twin, prompt page, client bundle and API schema return their expected representations. Invalid private target/method cases are rejected before daily admission.
+
+After the native repair, all eight resource checks on the provider-study page returned HTTP 200. The source parser counted 48,737 text characters; Markdown negotiation, sitemap and optional directory responses were observed. The no-JavaScript POST returned a full HTML report with preserved content-security policy and noindex. An independent RFC Editor page check received eight bounded responses, including the expected `llms.txt` 404, with 21,363 text characters. These are two real URL checks, not an all-site success rate or evidence that an AI provider visited or cited either page.
+
+The production daily counter decreased exactly **9, 8, 7, 6, 5, 4, 3, 2, 1, 0** across the request inspector, failed admitted audit, repaired audits and HTML form. The next request returned **429**, remaining zero and the next UTC-midnight reset with Retry-After. The earlier failed audit was not silently refunded or omitted. The separate native test proves thirty concurrent operations admit exactly ten, and its second-day case verifies reset without waiting for production midnight.
+
+A stronger initial burst expectation failed: a fourth quick request was admitted at the same observed Cloudflare location. The native limiter is local/eventually consistent; it is not the daily enforcement mechanism. API/ADR/article wording now states that boundary. No production burst-rejection guarantee is claimed.
+
+Final local integration includes the concurrent campaign and social commits. Workspace types and validation pass; package results are 401 analytics, 366 blog and 29 audit tests. The default-transport native test verifies all eight resources, its historical unsupported-option counterexample and DNS redirect refusal; the separate 43-request HTTP/D1 harness verifies quota, input, origin, streaming, failure and HTML behavior. The configured isolated build was checked separately from the unconfigured later content snapshot. CI supplies public configuration in the active build; no secret or private environment file was copied into Git.
+
+Implementation, source delivery, activation and current bounded acceptance are complete. Independent operator adoption, broad compatibility, real-provider access/citation trials and browser screenshots are not claimed. No further work is required by this task; an additional capability should begin from a demonstrated user need. Raw acceptance captures remain ignored under `packages/blog/worklog/ai-site-audit-20261106/`.

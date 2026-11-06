@@ -2,6 +2,7 @@
 	"$schema": "node_modules/wrangler/config-schema.json",
 	"name": "gkoreli-com",
 	"compatibility_date": "2026-03-06",
+	// ADR-0020: keep URL audits on the public front door, including our own zone.
 	"compatibility_flags": ["global_fetch_strictly_public"],
 	"main": "packages/blog/src/worker/index.ts",
 	"routes": [
@@ -45,7 +46,7 @@
 			"migrations_dir": "packages/analytics/migrations"
 		}
 	],
-	// Native Workers Rate Limiting: separate diagnostic and signup/resend budgets.
+	// Native Workers Rate Limiting: separate audit, diagnostic and signup budgets.
 	// Local, eventually consistent protection; D1 admission enforces shared mail limits.
 	// (Cloudflare only supports period=10 or period=60; 60s chosen.)
 	// Signup runs before Turnstile. Namespace IDs are arbitrary; created on deploy.

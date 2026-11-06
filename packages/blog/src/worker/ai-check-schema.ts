@@ -44,7 +44,7 @@ export const aiCheckSchema = {
   openapi: '3.1.0',
   info: {
     title: 'Evidence-led AI site check', version: SITE_AUDIT_VERSION,
-    description: 'Free public API; no API key or account. Ten admitted checks per trusted public Cloudflare edge source address per UTC day, shared by the site audit, request inspector and HTML form. Partial and failed admitted checks count; shared networks share an allowance. Short-burst controls also apply. Reports preserve unavailable evidence and method versions. They do not establish provider access, JavaScript rendering, citation, human identity or organic discovery.',
+    description: 'Free public API; no API key or account. Ten admitted checks per trusted public Cloudflare edge source address per UTC day, shared by the site audit, request inspector and HTML form. Partial and failed admitted checks count; shared networks share an allowance. Native short-burst controls are local and eventually consistent; the daily D1 allowance is atomic. Reports preserve unavailable evidence and method versions. They do not establish provider access, JavaScript rendering, citation, human identity or organic discovery.',
     license: { name: 'MIT (code); CC BY-NC-ND 4.0 (publication content)', url: 'https://gkoreli.com/license' },
   },
   servers: [{ url: 'https://gkoreli.com' }],

@@ -48,7 +48,7 @@ export function aiCheckPage() {
 
     <section class="ai-check-api" aria-labelledby="ai-check-api-heading">
       <h2 id="ai-check-api-heading">Use the free API</h2>
-      <p>The same report is available to scripts and agents. No API key is required. The daily allowance is shared with the form above.</p>
+      <p>The same report is available to scripts and agents. No API key is required. The daily allowance is shared with the form above. Admitted checks count even when fetching fails.</p>
       <pre><code>curl https://gkoreli.com/api/ai-check \\
   -H 'Content-Type: application/json' \\
   -d '{"url":"https://example.com/article"}'</code></pre>
