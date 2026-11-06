@@ -1,0 +1,216 @@
+{
+  "recordedAt": "2026-11-06T16:47:10.769727+00:00",
+  "clientDate": "2026-11-06",
+  "authorization": "Owner explicitly requested answering and liking incoming comments, five additional useful X threads, and mindful distribution grounded in the articles.",
+  "xNewThreadRepliesPublished": 5,
+  "xConversationFollowupsPublished": 4,
+  "xCommentsNewlyLiked": 4,
+  "canonicalOwnerViewsVerified": 9,
+  "timestampMeaning": "Local UI receipt/verification times, not exact server publication timestamps.",
+  "independentPublicVisibility": "Not established for these nine new replies; canonical signed-in owner visibility verified.",
+  "articles": [
+    "https://gkoreli.com/ai-fetcher-browser-crawler-headers",
+    "https://gkoreli.com/ai-site-check-evidence"
+  ],
+  "observedReception": {
+    "incomingComments": "Current notifications show Adam Lawson’s acknowledgment, Paul Turner’s direct identity question and page-type discussion, and E1ev3n’s response about applying the split.",
+    "likes": "Current notifications show Paul Turner and E1ev3n liking the page-eligibility reply, Alex/LLMention liking the crawler-role reply, and a separate notification that another prior recipient liked two posts.",
+    "followsVisible": [
+      "Ekohe",
+      "Alex | LLMention",
+      "Laxman Kafle",
+      "Angela"
+    ],
+    "ownerReportedFollowerChange": {
+      "newFollowers": 5,
+      "window": "last two days",
+      "independentBaselineVerified": false
+    },
+    "reportedUse": "Paul says he now tags resource types and says he is bookmarking the article. E1ev3n says the split feels useful. These are public reports/intent, not an independently inspected implementation.",
+    "interpretation": "Supported technical conversation, account engagement and recognition. No per-reply traffic attribution or causal uplift claim is made."
+  },
+  "method": "Responded to all four supplied current comments and liked them after inspecting each canonical thread. Then read five new discussions, HoneyWeRank and Luminara product scopes, and SD SEO Suite’s full linked announcement. The model-versus-production simulation boundary was already explicit, so feedback instead addresses explanations versus observed retrieval.",
+  "roleCheckSources": [
+    "https://developers.openai.com/api/docs/bots",
+    "https://support.claude.com/en/articles/8896518-does-anthropic-crawl-data-from-the-web-and-how-can-site-owners-block-the-crawler"
+  ],
+  "liveArticleCheck": "The independent web fetcher could not load the newer site-check article; a browser inspection verified its current title, body and the 200-report/eight-failed-resources passage before sharing it. No audit API or provider trial was run.",
+  "items": [
+    {
+      "platform": "x",
+      "kind": "followup",
+      "parent": "https://x.com/paulrodturner/status/2118724545993674788",
+      "url": "https://x.com/GogaKoreli/status/2118744214490202236",
+      "copy": "mixed in my controlled runs. ExaUser and DuckAssistBot had names; Grok gave 11 Chrome/Safari-style requests, Context mostly browser claims too. i can show the missing declarations, but i can't infer an intent to hide from those headers.",
+      "label": "Paul: declared names versus intent",
+      "weighted": 236,
+      "articleLinkLocation": "existing ancestor reply contains article",
+      "receiptRecordedAt": "2026-11-06T16:36:00.152Z",
+      "privateProofBasename": "followup-1",
+      "verifiedAt": "2026-11-06T16:36:00.845Z",
+      "state": "canonical-owner-view-verified",
+      "verification": "Exact body and source link or existing linked ancestor verified after reopening the signed-in canonical permalink; private screenshot saved."
+    },
+    {
+      "platform": "x",
+      "kind": "followup",
+      "parent": "https://x.com/adm_lawson/status/2118735235038769583",
+      "url": "https://x.com/GogaKoreli/status/2118744353040691207",
+      "copy": "yeah, SSR is where i'd start too. small naming nit: GPTBot/ClaudeBot are training; OAI-SearchBot/Claude-SearchBot are search. i keep that job separate from browser vs fetch, otherwise the charts mix two different questions.",
+      "label": "Adam: separate crawler role and client shape",
+      "weighted": 223,
+      "articleLinkLocation": "existing ancestor reply contains article",
+      "receiptRecordedAt": "2026-11-06T16:36:33.129Z",
+      "privateProofBasename": "followup-2",
+      "verifiedAt": "2026-11-06T16:36:34.169Z",
+      "state": "canonical-owner-view-verified",
+      "verification": "Exact body and source link or existing linked ancestor verified after reopening the signed-in canonical permalink; private screenshot saved."
+    },
+    {
+      "platform": "x",
+      "kind": "followup",
+      "parent": "https://x.com/paulrodturner/status/2118725215987417364",
+      "url": "https://x.com/GogaKoreli/status/2118744445537673618",
+      "copy": "small distinction in mine: i count eligible HTML/Markdown responses, not confirmed renders. server logs don't prove a browser painted the page. i keep that count useful for agent reach, just separate from client-side views.",
+      "label": "Paul: page responses versus confirmed rendering",
+      "weighted": 223,
+      "articleLinkLocation": "existing ancestor reply contains article",
+      "receiptRecordedAt": "2026-11-06T16:36:55.204Z",
+      "privateProofBasename": "followup-3",
+      "verifiedAt": "2026-11-06T16:36:55.936Z",
+      "state": "canonical-owner-view-verified",
+      "verification": "Exact body and source link or existing linked ancestor verified after reopening the signed-in canonical permalink; private screenshot saved."
+    },
+    {
+      "platform": "x",
+      "kind": "followup",
+      "parent": "https://x.com/harden_369741/status/2118728903397368249",
+      "url": "https://x.com/GogaKoreli/status/2118744640539214326",
+      "copy": "yeah i'd start with one known request and trace it through to storage. check the content type + stored classification, then keep that receipt as a regression fixture. makes later chart changes much easier to trust.",
+      "label": "E1ev3n: turn one receipt into a regression fixture",
+      "weighted": 214,
+      "articleLinkLocation": "existing ancestor reply contains article",
+      "receiptRecordedAt": "2026-11-06T16:37:41.694Z",
+      "privateProofBasename": "followup-4",
+      "verifiedAt": "2026-11-06T16:37:42.673Z",
+      "state": "canonical-owner-view-verified",
+      "verification": "Exact body and source link or existing linked ancestor verified after reopening the signed-in canonical permalink; private screenshot saved."
+    },
+    {
+      "platform": "x",
+      "kind": "outreach",
+      "parent": "https://x.com/uriel_builds/status/2118724471662297251",
+      "url": "https://x.com/GogaKoreli/status/2118744910618931536",
+      "copy": "i'd keep the source's published/modified fields in your research step. Exa Search said Sep 3 for my page, Contents Nov 4; source was Sep 3 published, Nov 1 modified. same page, different freshness signal\nhttps://gkoreli.com/ai-fetcher-browser-crawler-headers",
+      "label": "HoneyWeRank: source date provenance",
+      "weighted": 227,
+      "articleLinkLocation": "copy",
+      "receiptRecordedAt": "2026-11-06T16:38:46.065Z",
+      "privateProofBasename": "outreach-1",
+      "verifiedAt": "2026-11-06T16:38:47.180Z",
+      "state": "canonical-owner-view-verified",
+      "verification": "Exact body and source link or existing linked ancestor verified after reopening the signed-in canonical permalink; private screenshot saved."
+    },
+    {
+      "platform": "x",
+      "kind": "outreach",
+      "parent": "https://x.com/Tunjiwill333/status/2118667886118265206",
+      "url": "https://x.com/GogaKoreli/status/2118745380242509955",
+      "copy": "one fixture for those Measured/Not measured rows: report HTTP 200, but every resource fetch failed. my first live release did that. checking the wrapper alone missed a Workers-specific fetch error\nhttps://gkoreli.com/ai-site-check-evidence",
+      "label": "Luminara: partial-report transport acceptance",
+      "weighted": 220,
+      "articleLinkLocation": "copy",
+      "receiptRecordedAt": "2026-11-06T16:40:38.009Z",
+      "privateProofBasename": "outreach-2",
+      "verifiedAt": "2026-11-06T16:40:38.963Z",
+      "state": "canonical-owner-view-verified",
+      "verification": "Exact body and source link or existing linked ancestor verified after reopening the signed-in canonical permalink; private screenshot saved."
+    },
+    {
+      "platform": "x",
+      "kind": "outreach",
+      "parent": "https://x.com/Ukhan1243/status/2118715490344345760",
+      "url": "https://x.com/GogaKoreli/status/2118745593476694182",
+      "copy": "in my tests i separate fetch / citation / answer accuracy. Context cited my page, correct H1, wrong requested sentence. extraction had the right text. a citation hit can hide that failure\nhttps://gkoreli.com/ai-fetcher-browser-crawler-headers",
+      "label": "Hawkscan conversation: separate retrieval, citation and fidelity",
+      "weighted": 211,
+      "articleLinkLocation": "copy",
+      "receiptRecordedAt": "2026-11-06T16:42:07.028Z",
+      "privateProofBasename": "outreach-3",
+      "verifiedAt": "2026-11-06T16:42:08.218Z",
+      "state": "canonical-owner-view-verified",
+      "verification": "Exact body and source link or existing linked ancestor verified after reopening the signed-in canonical permalink; private screenshot saved."
+    },
+    {
+      "platform": "x",
+      "kind": "outreach",
+      "parent": "https://x.com/myintelbrief/status/2118621775848407399",
+      "url": "https://x.com/GogaKoreli/status/2118745965796675959",
+      "copy": "i'd keep plain/query/fragment URL controls too. Perplexity failed my ?probe= URL, then answered from canonical/# versions. # helped test the answer, but can't label the request in your logs because it never goes over HTTP\nhttps://gkoreli.com/ai-fetcher-browser-crawler-headers",
+      "label": "MyIntelBrief: URL controls and fragment attribution",
+      "weighted": 245,
+      "articleLinkLocation": "copy",
+      "receiptRecordedAt": "2026-11-06T16:42:57.657Z",
+      "privateProofBasename": "outreach-4",
+      "verifiedAt": "2026-11-06T16:42:58.751Z",
+      "state": "canonical-owner-view-verified",
+      "verification": "Exact body and source link or existing linked ancestor verified after reopening the signed-in canonical permalink; private screenshot saved."
+    },
+    {
+      "platform": "x",
+      "kind": "outreach",
+      "parent": "https://x.com/KonradSzymaniak/status/2118624439403475131",
+      "url": "https://x.com/GogaKoreli/status/2118746270093426878",
+      "copy": "for the 'why this source' view, i'd keep model explanations separate from observed tool traces. Perplexity cited my page but i couldn't match an attributable GET in a bounded capture. the citation alone didn't explain retrieval\nhttps://gkoreli.com/ai-fetcher-browser-crawler-headers",
+      "label": "SD SEO Suite: explanations versus observed retrieval",
+      "weighted": 251,
+      "articleLinkLocation": "copy",
+      "receiptRecordedAt": "2026-11-06T16:44:10.326Z",
+      "privateProofBasename": "outreach-5",
+      "verifiedAt": "2026-11-06T16:44:11.478Z",
+      "state": "canonical-owner-view-verified",
+      "verification": "Exact body and source link or existing linked ancestor verified after reopening the signed-in canonical permalink; private screenshot saved."
+    }
+  ],
+  "likes": [
+    {
+      "url": "https://x.com/paulrodturner/status/2118724545993674788",
+      "action": "liked",
+      "verifiedAt": "2026-11-06T16:35:59.336Z",
+      "privateProofBasename": "like-1"
+    },
+    {
+      "url": "https://x.com/adm_lawson/status/2118735235038769583",
+      "action": "liked",
+      "verifiedAt": "2026-11-06T16:36:32.408Z",
+      "privateProofBasename": "like-2"
+    },
+    {
+      "url": "https://x.com/paulrodturner/status/2118725215987417364",
+      "action": "liked",
+      "verifiedAt": "2026-11-06T16:36:54.389Z",
+      "privateProofBasename": "like-3"
+    },
+    {
+      "url": "https://x.com/harden_369741/status/2118728903397368249",
+      "action": "liked",
+      "verifiedAt": "2026-11-06T16:37:40.858Z",
+      "privateProofBasename": "like-4"
+    }
+  ],
+  "limits": [
+    "One submitted reply appeared after a delayed UI refresh. Its canonical URL was recovered without resubmission and then verified.",
+    "Recipient products and proposed fixtures were not tested. No defect or measured improvement in those products is asserted.",
+    "Four follow-ups retain the article link already in their ancestor rather than repeating a pitch. All five new-thread replies link the relevant article.",
+    "Older already-liked E1ev3n content was left unchanged and is not counted as a new like.",
+    "No new follows, DMs, Reddit action, Cloudflare query, traffic measurement or monitor. Earlier measurement windows and article research footprints remain frozen."
+  ],
+  "campaignDeliveryTotals": {
+    "xOriginals": 1,
+    "xOutreachReplies": 37,
+    "xClarificationReplies": 2,
+    "xConversationFollowups": 4,
+    "redditCommentsAndFollowups": 27,
+    "redditNewStandaloneArticles": 1
+  }
+}

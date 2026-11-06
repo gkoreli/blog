@@ -4,6 +4,20 @@ User authorization establishes the requested scope. Before carrying this X workf
 
 A signed-out submission page may omit later requirements. When account access is available, inspect the signed-in path before calling a submission ready. Record account creation, required newsletter subscriptions, editorial receipt and actual selection separately; never silently turn an approved newsletter-off choice on to pass a gate. The [Changelog execution receipt](../../../../packages/blog/drafts/social/oss-radar-08-bun-aot/execution-2026-10-28.md) records one such discovery and the owner's explicit changed preference.
 
+## X conversations and useful outreach
+
+Within authorized X distribution work, make the relationship and the useful finding the point:
+
+- Read substantive incoming replies before finding more destinations. Answer the question or build on the observation; acknowledge useful comments with a like when that is within scope. Do not turn reactions into bulk liking, reciprocal follow requests or unrequested DMs.
+- Read the actual thread and relevant product/method before offering advice. Check earlier campaign receipts so another reply does not repeat the same pitch to the same person. Distinguish new-thread outreach from genuine conversation follow-ups in the delivery count.
+- Bring one relevant result, counterexample, fixture or decision from the publication’s actual work. Keep its conditions intact. Do not invent insider knowledge, secrets, certainty, recipient-product bugs or completed improvements to make the reply sound more valuable.
+- Write to the specific point in the conversation. Do not force every response into the same question/correction/counterexample template, add empty praise, or fill a requested count with loosely related promotion.
+- Give enough practical detail to help before the click. Link the matching canonical article when it supplies the evidence or fuller method. In a genuine follow-up, an article link already in the ancestor can remain there; another pitch is unnecessary unless the new reference helps.
+- Work through curated conversations one at a time and honor actual restriction notices. The Reddit-specific pacing rule below is not a documented X quota. Do not infer that a particular cadence or wording guarantees protection from spam classification.
+- Recognize supported replies, likes, follows, citations and reports of use as positive signals at their observed stage. Keep owner-reported growth separate from a measured baseline, and reported application separate from an inspected implementation. Do not turn those signals into an unmeasured traffic or causal-uplift claim.
+
+The [November 6 conversation receipt](../../../../packages/blog/drafts/social/ai-fetcher-browser-crawler-headers/round-seven-conversations-2026-11-06.md) records the owner’s explicit direction and its first application. This does not schedule monitoring, expand authorization beyond the requested work, or override a destination’s rules.
+
 ## Reddit pacing and account restrictions
 
 Reddit documents [limits on posting and commenting](https://support.reddithelp.com/hc/en-us/articles/204579879-Why-am-I-being-told-You-re-doing-that-too-much) that can depend on account/community standing. That guidance supplies no universal safe posting interval. The [Data API request budget](https://support.reddithelp.com/hc/en-us/articles/16160319875092-Reddit-Data-API-Wiki) is a separate limit, not a browser posting allowance.
