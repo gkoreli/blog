@@ -829,3 +829,45 @@ test('an opaque callback value that cannot fit the wire budget never starts a PO
   assert.equal(h.timers.size, 0);
   assert.doesNotMatch(JSON.stringify(h.reports), /é/);
 });
+
+test('a failing native removal and DOM fallback cannot interrupt verification recovery reporting', t => {
+  const h = harness(t); h.failRemove();
+  assert.ok(h.form.slot);
+  h.form.slot.replaceChildren = () => { throw new Error('private fallback failure'); };
+  h.initialize(); h.submit();
+  assert.doesNotThrow(() => h.options()['error-callback']('110200'));
+  assert.equal(h.form.button.disabled, false);
+  assert.equal(h.timers.size, 0);
+  assert.deepEqual(h.reports.map(report => report.message), ['subscribe_widget_remove_exception', 'subscribe_widget_error']);
+  assert.doesNotMatch(JSON.stringify(h.reports), /private fallback/);
+});
+
+test('cleanup failures after token handoff cannot prevent the only signup POST', async t => {
+  const h = harness(t); h.failRemove();
+  assert.ok(h.form.slot);
+  h.form.slot.replaceChildren = () => { throw new Error('private fallback failure'); };
+  h.initialize(); h.submit(); h.options().callback('synthetic-token'); await settle();
+  assert.equal(h.requests.length, 1);
+  assert.equal(h.form.dataset['subscribeStatus'], 'success');
+  assert.equal(h.form.button.disabled, false);
+  assert.equal(h.timers.size, 0);
+  assert.equal(h.reports.length, 1);
+  assert.equal(h.reports[0]?.message, 'subscribe_widget_remove_exception');
+  assert.equal(evidenceFields(h.reports[0]).phase, 'sending');
+  assert.equal(operationOf(h.reports[0]).state, 'not-started');
+  assert.equal(contextOf(h.reports[0]).recovery, 'unknown', 'a cleanup report alone does not establish that retry was required');
+});
+
+for (const status of [500, 502, 503, 504, 520]) {
+  test(`HTTP ${status} cannot establish that the server-side signup effect did not happen`, async t => {
+    const h = harness(t);
+    h.setFetch(async () => new Response('private gateway text', { status }));
+    h.initialize(); h.submit(); h.options().callback('synthetic-token'); await settle();
+    assert.equal(h.requests.length, 1);
+    assert.equal(h.form.button.disabled, false);
+    assert.match(h.form.message.textContent, /Check your inbox before trying again in ten minutes/);
+    assert.doesNotMatch(h.form.message.textContent, /private gateway/);
+    assert.equal(h.reports[0]?.status, status);
+    assert.equal(h.reports[0]?.message, 'subscribe_api_rejected');
+  });
+}
