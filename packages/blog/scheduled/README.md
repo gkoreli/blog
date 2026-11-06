@@ -4,8 +4,9 @@ Publish one finished article each day from **November 6–30, 2026**, with relea
 attempts starting at **08:00 America/Los_Angeles**. November 5 is already covered
 by [AI Fetchers, Browsers, and Crawlers](https://gkoreli.com/ai-fetcher-browser-crawler-headers).
 
-The queue is currently empty. A schedule cannot publish an unfinished article.
-Writing reminders are separate from this release workflow.
+The [manifest](../publication-schedule.json) lists finished articles selected for
+release. A schedule cannot publish an unfinished article. Writing reminders are
+separate from this release workflow.
 
 ## Queue a finished article
 

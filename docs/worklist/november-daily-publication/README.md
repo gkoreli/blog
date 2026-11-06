@@ -51,9 +51,51 @@ validation, commit/push and live acceptance steps were skipped as intended.
 No scheduled article was published, and this manual run does not prove the
 future cron wakeup or the GitHub-token-to-Cloudflare article deployment path.
 
-Setup and hosted activation are complete. The queue has no articles. Remaining:
-finish and explicitly queue the November 6 article, then inspect the first actual
-08:00 release's source delivery and live acceptance. The job will fail visibly
-if nothing is queued. GitHub notification preferences were not changed. The
-first real publication needs finished source and cannot be established by an
-empty-queue dry run; no speculative draft is selected on the owner's behalf.
+Setup and hosted activation are complete. The owner's later article selection
+and its release preparation follow below. GitHub notification preferences were
+not changed. The first actual cron-triggered publication remains separate from
+the earlier empty-queue check and the later isolated release rehearsal.
+
+## November 5 Pacific: Turnstile selected for November 6
+
+Goga selected **Cloudflare Turnstile: What Kept Breaking My Signup Form** as the
+next article and asked this chat to coordinate a substantive improvement through
+its original builder. The exact instruction is the seventh message in the
+[selected prompt record](../../../packages/blog/drafts/research/newsletter-reliability/turnstile-pain-points.prompts.md).
+The original builder's existing thread, **Investigate client_errors subscription…**,
+completed the revision in `7f02173`. It led with the fake-versus-real API failure,
+added a diagnostic map, clarified callback/retry boundaries, compressed tangents
+and preserved the unknown causes and measurement limits. Its
+[revision record](../../../packages/blog/drafts/research/newsletter-reliability/31-turnstile-diagnostic-method-revision.md)
+and [draft](../../../packages/blog/drafts/research/newsletter-reliability/turnstile-pain-points.md)
+remain discoverable in the existing research worklist.
+
+The coordinator independently reviewed the full prose and requested two narrow
+corrections: remove unsupported attribution of the old secret's installation,
+and distinguish observed results from verifier policies in the diagnostic map.
+Both corrections were applied before release preparation.
+
+The reviewed body and seven exact selected prompts are frozen in the November 6
+queue, registered in the [manifest](../../../packages/blog/publication-schedule.json).
+The H1 and slug are retained; the search title and description adopt the builder's
+revised diagnostic positioning. No unmeasured research footprint is added. The
+earlier private-authorization omission remains disclosed in the research record;
+agent instructions are not presented as human prompts.
+
+[Release-rehearsal receipt](2026-11-06-turnstile-checks.json): an isolated copy
+blocks promotion at 07:59:59 and selects this article at 08:00 Pacific. All 32
+Markdown posts validate and the production pipeline builds 43 posts. Output
+checks pass for one H1, two tables, canonical/date, final search title/description,
+the full Markdown body, seven-prompt page, post index, RSS, sitemap and llms index.
+The checked body/prompt hashes match the builder's final revision. The tsx CLI
+could not create its local IPC pipe; equivalent `node --import tsx` entrypoints
+ran the same referral-policy check and production build successfully. No shared
+development output or private environment file was used.
+
+Prepared source is outside `posts/` and `prompts/`. It is intended for the
+**November 6, 2026, 08:00 America/Los_Angeles** release attempt (16:00 UTC).
+Queue delivery and a hosted non-publishing check are recorded after they finish.
+Actual timed promotion, Cloudflare deployment and live publication remain
+unverified until that run. Next bounded action after queue activation: inspect
+the release's commit/push and live-check result; do not infer acceptance from this
+rehearsal or the article's scheduled date.

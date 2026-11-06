@@ -1,0 +1,46 @@
+{
+  "checkedAt": "2026-11-06T05:59:04.515832Z",
+  "scope": "Isolated release rehearsal of the reviewed article; not live publication acceptance",
+  "builderCommit": "7f02173c893359ad3d3488f0fa139bd3af8ed57a",
+  "release": {
+    "date": "2026-11-06",
+    "time": "08:00",
+    "timeZone": "America/Los_Angeles",
+    "earliestPromotionUtc": "2026-11-06T16:00:00Z",
+    "slug": "cloudflare-turnstile-signup-failures",
+    "livePublicationVerified": false
+  },
+  "sources": {
+    "draft": "packages/blog/drafts/research/newsletter-reliability/turnstile-pain-points.md",
+    "draftSha256": "109b0e65206b4226d742366574f2b8bf7217327e564835c2ca848d8061dc7755",
+    "promptsSha256": "97e2e29196cd69f1aa59692c131111e3947ca75745c2a70ae85a803c35aa7a96",
+    "queuedPostSha256": "32c49835e79e6439461f370805fb94c5d5b465f065c7dc55fcbae8c490dc9da1",
+    "selectedCompletePrompts": 7,
+    "completeConversationTranscript": false,
+    "privateAuthorizationOmissionDisclosed": true,
+    "researchFootprintMeasured": false
+  },
+  "checks": {
+    "beforeEightBlocksPromotion": true,
+    "atEightPromotesOnlySelectedArticle": true,
+    "markdownPostsValidated": 32,
+    "productionBuildPosts": 43,
+    "articleH1": 1,
+    "tables": 2,
+    "canonicalAndDate": true,
+    "seoTitleAndDescription": true,
+    "markdownPreservesFullDraft": true,
+    "sevenPromptPage": true,
+    "postIndex": true,
+    "rss": true,
+    "sitemap": true,
+    "llmsIndex": true,
+    "sourceHashesUnchangedAfterPreview": true
+  },
+  "method": "Temporary archive with workspace dependency links; same referral-policy and production-build entrypoints through node --import tsx; no private environment files copied. The tsx CLI IPC pipe was denied in the sandbox, so equivalent Node entrypoints ran the same checks successfully.",
+  "sharedDistWrites": 0,
+  "productionRequestsDuringRehearsal": 0,
+  "productionSignupAttemptsDuringRehearsal": 0,
+  "newEmailSendsDuringRehearsal": 0,
+  "remaining": "Push the prepared queue and check it on GitHub. First actual cron-triggered promotion, Cloudflare activation and live article acceptance remain future evidence."
+}
