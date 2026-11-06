@@ -85,6 +85,11 @@ function requestAddress(request: Request): { address: Address | null; evidence: 
   return { address, evidence: { state: 'usable', header, family: address.kind() } };
 }
 
+/** Trusted Cloudflare address for admission controls; never serialize it in reports. */
+export function trustedEdgeAddress(request: Request): string | null {
+  return requestAddress(request).address?.toString() ?? null;
+}
+
 export function parseVendorIpFeed(value: unknown): { prefixes: Prefix[]; publisherVersion: string | null } | null {
   if (!object(value) || !Array.isArray(value.prefixes) || value.prefixes.length === 0 || value.prefixes.length > VENDOR_IP_MAX_PREFIXES) return null;
   const prefixes: Prefix[] = [];

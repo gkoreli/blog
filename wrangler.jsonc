@@ -2,6 +2,7 @@
 	"$schema": "node_modules/wrangler/config-schema.json",
 	"name": "gkoreli-com",
 	"compatibility_date": "2026-03-06",
+	"compatibility_flags": ["global_fetch_strictly_public"],
 	"main": "packages/blog/src/worker/index.ts",
 	"routes": [
 		{
@@ -49,6 +50,8 @@
 	// (Cloudflare only supports period=10 or period=60; 60s chosen.)
 	// Signup runs before Turnstile. Namespace IDs are arbitrary; created on deploy.
 	"ratelimits": [
+		{ "name": "AI_CHECK_RATE_LIMITER", "namespace_id": "1003", "simple": { "limit": 3, "period": 60 } },
+		{ "name": "AI_CHECK_GLOBAL_LIMITER", "namespace_id": "1004", "simple": { "limit": 30, "period": 60 } },
 		{
 			"name": "CLIENT_ERROR_RATE_LIMITER",
 			"namespace_id": "1002",

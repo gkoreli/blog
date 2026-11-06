@@ -33,9 +33,11 @@ import { negotiateRepresentation, type NegotiatedRepresentation } from './negoti
 import { createStatsHandler } from './stats-cache.js';
 import { createArticleReachHandler } from './article-reach.js';
 import { publicPagePaths } from './referrer-pages.js';
+import { handleAiCheck, type AiCheckEnv } from './ai-check.js';
+import { purgeCheckQuota } from './ai-check-quota.js';
 
 /** Merged bindings for the packages composed by this Worker. */
-type Env = AnalyticsEnv & NewsletterEnv & ClientObservabilityEnv & { ASSETS: Fetcher };
+type Env = AnalyticsEnv & NewsletterEnv & ClientObservabilityEnv & AiCheckEnv;
 
 const cachedStats = createStatsHandler({
   match: request => caches.default.match(request),
@@ -208,6 +210,9 @@ export default {
     const { pathname } = new URL(request.url);
     const { method } = request;
 
+    if (pathname === '/api/ai-check' || pathname === '/api/ai-check/schema' || pathname === '/api/request-check'
+      || pathname === '/ai-check' && method === 'POST') return handleAiCheck(request, env);
+
     if (pathname === '/api/stats' && method === 'GET') {
       return cachedStats(request, env);
     }
@@ -278,6 +283,7 @@ export default {
   async scheduled(controller: ScheduledController, env: Env, _ctx: ExecutionContext): Promise<void> {
     await Promise.all([
       handleScheduled(controller, env),
+      purgeCheckQuota(env.DB).catch(() => console.warn('ai-check.quota_cleanup_failed')),
       purgeExpiredDiagnostics(env.DB).then(result => {
         console.log('analytics.diagnostic_cleanup', result);
         if (result.atLimit) console.warn('analytics.diagnostic_cleanup_limit_reached');
