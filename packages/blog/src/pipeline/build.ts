@@ -27,6 +27,7 @@ import { privacyPage } from '../pages/privacy.js';
 import { ownerPage } from '../pages/owner.js';
 import { statsPage, statsHead } from '../pages/stats.js';
 import { articleReachPage } from '../pages/article-reach.js';
+import { aiCheckPage } from '../pages/ai-check.js';
 import { designLanguagePage } from '../pages/design-language.js';
 import { animationsLabPage } from '../pages/animations-lab.js';
 import { essaysPage } from '../pages/essays.js';
@@ -294,6 +295,8 @@ export async function buildHTML(): Promise<void> {
   addPage('stats', statsShell);
   addPage('stats/readership', pageShell({ title: 'Browser-signal article reach', description: 'Browser-signal article reach, completed weeks and reported source concentration.', content: articleReachPage(), canonicalPath: '/stats/readership', currentSlug: 'stats', noindex: true, ogImage: publicationOgImage, ogImageAlt: PUBLICATION_OG_IMAGE_ALT, head: '<link rel="stylesheet" href="/article-reach.css">', scripts: ['/article-reach.js'] }));
 
+  addPage('ai-check', pageShell({ title: 'Can AI agents access your page?', description: 'Check crawler rules, delivered HTML, indexing controls and machine-readable links, with evidence and fixes for one public URL.', content: aiCheckPage(), canonicalPath: '/ai-check', currentSlug: 'ai-check', ogImage: publicationOgImage, ogImageAlt: PUBLICATION_OG_IMAGE_ALT, scripts: ['/ai-check.js'] }));
+
   addPage('owner', pageShell({ title: 'Exclude my browser', description: 'Owner browser exclusion for analytics', content: ownerPage(), canonicalPath: '/owner', currentSlug: 'owner', ogImage: publicationOgImage, ogImageAlt: PUBLICATION_OG_IMAGE_ALT, noindex: true, scripts: ['/owner.js'] }));
 
   const privacyBody = privacyPage();
@@ -516,7 +519,8 @@ export function validateHtmlOutput(): void {
         problems.push(`${page.file}: expected exactly one #subscribe-email input`);
       }
       const liveStatuses = tags(body, 'p').filter(tag =>
-        attribute(tag, 'role') === 'status' && attribute(tag, 'aria-live') === 'polite');
+        attribute(tag, 'role') === 'status' && attribute(tag, 'aria-live') === 'polite'
+        && (attribute(tag, 'class') ?? '').split(/\s+/).includes('subscribe-msg'));
       if (liveStatuses.length !== 1) {
         problems.push(`${page.file}: subscription status must be one polite live region`);
       }

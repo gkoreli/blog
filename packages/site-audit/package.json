@@ -1,0 +1,25 @@
+{
+  "name": "@gkoreli/site-audit",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "src/index.ts",
+  "exports": {
+    ".": "./src/index.ts",
+    "./contracts": "./src/contracts.ts",
+    "./target": "./src/target.ts",
+    "./report-validation": "./src/report-validation.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "test": "tsc -p tsconfig.test.json && node --test test/*.test.mjs",
+    "test:workers": "node scripts/check-workers-transport.mjs"
+  },
+  "dependencies": {
+    "ipaddr.js": "2.5.0"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20250306.0",
+    "typescript": "^7.0.2"
+  }
+}

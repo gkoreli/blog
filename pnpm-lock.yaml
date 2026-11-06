@@ -52,6 +52,9 @@ importers:
       '@gkoreli/newsletter':
         specifier: workspace:*
         version: link:../newsletter
+      '@gkoreli/site-audit':
+        specifier: workspace:*
+        version: link:../site-audit
       '@nisli/core':
         specifier: ^0.57.0
         version: 0.57.0
@@ -126,6 +129,19 @@ importers:
   packages/design: {}
 
   packages/newsletter:
+    devDependencies:
+      '@cloudflare/workers-types':
+        specifier: ^4.20250306.0
+        version: 4.20260306.1
+      typescript:
+        specifier: ^7.0.2
+        version: 7.0.2
+
+  packages/site-audit:
+    dependencies:
+      ipaddr.js:
+        specifier: 2.5.0
+        version: 2.5.0
     devDependencies:
       '@cloudflare/workers-types':
         specifier: ^4.20250306.0

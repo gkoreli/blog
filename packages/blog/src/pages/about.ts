@@ -24,6 +24,10 @@ export function aboutPage() {
 
   <p><a href="https://github.com/gkoreli/blog" target="_blank" rel="noopener">gkoreli.com</a> — This publication. Built with @nisli/core and deployed on Cloudflare Workers. The source is public.</p>
 
+  <h2>Tools</h2>
+
+  <p><a href="/ai-check">AI Access Check</a> inspects crawler rules, delivered HTML, indexing controls and machine-readable links for a public page. Inspect the evidence in the browser or use the free daily API allowance.</p>
+
   <h2>Explore the site</h2>
 
   <p>The <a href="/design-language">Design Language</a> collects the site's typography, colors, and visual ideas. The <a href="/animations-lab">Animations Lab</a> is a collection of motion experiments behind the articles.</p>
