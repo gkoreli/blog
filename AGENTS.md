@@ -21,6 +21,7 @@ People and agents are part of the audience. Count agent reach, agent-mediated us
 - In practical articles, teach something useful and show the basis in the author's work. Personal essays follow their experience and form.
 - Do not invent experiences, feelings, measurements, quotations, or a completed outcome.
 - Preserve exact shaping prompts for collaborative articles; exposed essays and OSS Radar have no prompt file. Exclude unrelated repository housekeeping.
+- For Reddit distribution, follow the [pacing and stop conditions](.agents/skills/launch-article-on-x/references/publication-verification.md#reddit-pacing-and-account-restrictions); respect cooldowns and account restrictions.
 
 ## Evidence and continuity
 
