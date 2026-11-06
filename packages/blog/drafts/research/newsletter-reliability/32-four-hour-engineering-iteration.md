@@ -161,3 +161,39 @@ Implementation is now frozen absent a concrete defect. Remaining work: final
 article flow/claim/rendering and release checks, current code delivery, exact
 eight-prompt/copy reconciliation, and hosted queue acceptance. The fixed window
 still ends at 10:07:25 UTC.
+
+## Release preparation accepted — 08:43 UTC
+
+The revised body and eight selected human prompts are frozen in the November 6
+queue as `043-cloudflare-turnstile-signup-failures.md`; its public slug is unchanged.
+The [new release receipt](../../../../../docs/worklist/november-daily-publication/2026-11-06-turnstile-engineering-checks.json)
+records the actual 44-post rehearsal, 33 Markdown validations, complete rendered
+prompts, canonical/metadata/Markdown/feed/sitemap/index/citation checks and the
+07:59:59/08:00/repeat promotion controls. The previous seven-prompt receipt remains
+historical. The final standalone agent reader review resolves retry eligibility,
+rolling-cap scope and the 21-report uncertainty; it is not human reception.
+
+The original builder's desktop/narrow review catches one concrete rendering
+defect: prompt 7's long preserved path has client width 337 and scroll width 660
+at a 375-pixel viewport, clipped by its parent. The one-line prompt wrapping
+repair preserves every source/DOM text byte. Its final browser readback finds
+all eight blocks at client/scroll width 337, with no page overflow. The article's
+four tables and four code blocks scroll locally where needed. The native preview
+viewport is reset and the builder closes only its preview tab; the coordinator's
+independent read-only preview tab is closed too. The root-owned server is stopped
+after acceptance. This is the concrete rendering exception to implementation
+freeze; no API/domain changes follow b94063aa.
+
+The [dated production no-send receipt](2026-11-06-browser-production-no-send.md)
+is integrated with its original commit ancestry. It joins a page-bootstrap
+identity from 0825a053 to an actual receiving Worker from 64a95314, rather than
+misattributing the request to the preflight Worker. Retained verification-passed,
+unchanged and 202 observations share one invocation. Independent active-state
+and ledger-count readback is unchanged; four statements cost eight reads and
+zero writes. No repeat production POST, opt-out or fresh email cycle is added.
+
+Remaining gates in this fixed window: push the scoped revised queue/CSS/evidence,
+run the revised hosted non-publishing check and record its actual checked source,
+join current activation of the frozen implementation, update the shared working
+copy without disturbing other work, and perform the final requirement audit.
+Actual timed article publication remains November 6 after the 08:00 trigger.

@@ -1,3 +1,11 @@
+**November 6, 08:43 UTC:** The deeper implementation is frozen and passes 405 blog
+and 433 analytics tests, workspace types and native browser/provider/D1/HTTP
+controls. The revised article and eight selected prompts pass a 44-post release
+rehearsal and narrow layout checks; a clipped prompt path is repaired without
+editing its text. The November 6 08:00 Pacific entry is restored. [Research 32](32-four-hour-engineering-iteration.md)
+keeps the fixed deadline and remaining hosted-check/current-activation/delivery
+gates; this is prepared source, not actual article publication.
+
 # Subscription bombing: implementation and article worklist
 
 **November 5 Pacific / November 6 UTC deeper engineering iteration:** The owner rejects the prior result as insufficient and authorizes four further hours of code and article work, with DDD, primary/native-source review, useful diagnostics and original-builder delegation. [Research 32](32-four-hour-engineering-iteration.md) fixes the window at 06:07:25–10:07:25 UTC, assigns ownership and acceptance, and records the first controlled provider/raw-body defects. The old queue entry is held during revision; the November 6 release must be revalidated and re-registered. Prior dated editorial/queue checks below do not establish this expanded objective complete.

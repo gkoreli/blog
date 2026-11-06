@@ -1,0 +1,106 @@
+{
+  "checkedAt": "2026-11-06T08:28:13.802165+00:00",
+  "scope": "Final isolated promotion/render rehearsal; no live article publication",
+  "sourceIntegrationCommit": "70bc2aef469eea3ef67fc2c1b8ddf229955161e1",
+  "release": {
+    "date": "2026-11-06",
+    "timeZone": "America/Los_Angeles",
+    "trigger": "08:00",
+    "earliestPromotionUtc": "2026-11-06T16:00:00Z",
+    "slug": "cloudflare-turnstile-signup-failures"
+  },
+  "hashes": {
+    "draftBodySha256": "3b7164784ce9ce260ec05b11b4770257f866173c7d28a32656bd834841bb9103",
+    "queuedPostSha256": "39f2bfa2c67eb136012dad20b83b7bf5a28941662a29fe987ec9b7955a32836a",
+    "promptsSha256": "dbfeccbb076fdae0413cfea706611147c950d17f6036231f94f1eefbb6723e57",
+    "renderedHtmlSha256": "529d065c110b38fd9d5e50b9c8e50d86c76d8dea872d08d0ec0038b3c35b76f1",
+    "socialImageSha256": "570d9b3b94b488872d0397f48697d570b5e6c30e1db36df3645d021bea24b421",
+    "stylesheetSha256": "4c163fd15a0d7c095d828034ef0760a20e996cafaaabbdd424a07901310a8c6d"
+  },
+  "checks": {
+    "beforeEightBlocksPromotion": true,
+    "atEightPromotesOnlySelectedArticle": true,
+    "repeatDoesNotRepublish": true,
+    "markdownPostsValidated": 33,
+    "builtPosts": 44,
+    "h1": 1,
+    "tables": 4,
+    "highlightedCodeBlocks": 4,
+    "articleExecutableScripts": 0,
+    "exactSelectedPromptsRendered": 8,
+    "canonicalMetadataAndDate": true,
+    "fullMarkdownBodyPreserved": true,
+    "postIndex": true,
+    "rss": true,
+    "sitemap": true,
+    "llmsIndex": true,
+    "cslAndBibtex": true,
+    "pinnedGitTargetsExist": 14,
+    "omissionDisclosureVisible": true,
+    "compiledPromptWrapRule": true,
+    "standaloneAgentReaderReview": "Targeted retry, threshold and report-population concerns resolved; no human reception claim",
+    "blogTests": 405,
+    "analyticsTests": 433,
+    "workspaceTypes": "pass"
+  },
+  "limits": {
+    "livePublicationVerified": false,
+    "completeConversationTranscript": false,
+    "researchFootprintMeasured": false,
+    "productionRequests": 0,
+    "newEmailSends": 0,
+    "sharedDistWrites": 0
+  },
+  "method": "Independent detached rehearsal checkout; frozen-lockfile workspace install; explicit pre-release and due instants; actual production SSG/Marked/Shiki/citation/feed pipelines; no private env file copied",
+  "configuration": {
+    "publicTurnstileKeyConfigured": false,
+    "providerScriptIncluded": false,
+    "noPrivateEnvironmentFileCopied": true,
+    "scope": "Article and prompt rendering only; production signup is measured separately"
+  },
+  "rehearsalBaseCommit": "6f5a1a5c",
+  "browserReview": {
+    "reviewedAt": "2026-11-06T08:35:00Z",
+    "reviewer": "original implementation builder; agent review, not human reception",
+    "desktopViewport": [
+      1280,
+      720
+    ],
+    "narrowViewport": [
+      375,
+      812
+    ],
+    "articleDocumentOverflow": false,
+    "tablesAndCodeScrollIndependently": true,
+    "promptCount": 8,
+    "promptBlockClientWidths": [
+      337,
+      337,
+      337,
+      337,
+      337,
+      337,
+      337,
+      337
+    ],
+    "promptBlockScrollWidths": [
+      337,
+      337,
+      337,
+      337,
+      337,
+      337,
+      337,
+      337
+    ],
+    "prompt7FullTextPreserved": true,
+    "prompt7OverflowWrap": "anywhere",
+    "prompt7BeforeClientWidth": 337,
+    "prompt7BeforeScrollWidth": 660,
+    "viewportReset": true,
+    "reviewerPreviewTabClosed": true,
+    "privateScreenshotsExcluded": true,
+    "socialImageVisualReview": "coordinator checked legible, unclipped title"
+  },
+  "remaining": "Actual cron promotion, GitHub-token push, Cloudflare article activation and live article acceptance remain future evidence."
+}

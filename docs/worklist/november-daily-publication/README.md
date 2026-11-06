@@ -1,11 +1,13 @@
 # November daily publication
 
-**Current November 5 Pacific checkpoint:** Goga requests four more hours of code
-and article improvement after the first queued revision. The old entry is held
-while [the expanded engineering work](../../../packages/blog/drafts/research/newsletter-reliability/32-four-hour-engineering-iteration.md)
-is active. Its source is preserved. Re-register the November 6 08:00 Pacific
-release after the new code/article acceptance; the earlier no-blocker statement
-and queue checks below are historical checkpoints.
+**Current November 6 Pacific checkpoint:** The deeper code/article iteration has
+passed its local and native acceptance, and the revised Turnstile article is
+re-registered for **November 6 at 08:00 America/Los_Angeles**. The [new release
+receipt](2026-11-06-turnstile-engineering-checks.json) supersedes the earlier
+seven-prompt rehearsal without rewriting it. The [engineering worklist](../../../packages/blog/drafts/research/newsletter-reliability/32-four-hour-engineering-iteration.md)
+keeps the fixed 06:07:25–10:07:25 UTC window and separate source/production receipts.
+Hosted checking of the revised queue is the next gate; actual timed publication
+remains future evidence.
 
 Started November 5, 2026, Pacific time. Owner wants a new article each day this
 month, published at 08:00; the November 5 article is already published and its
@@ -113,3 +115,46 @@ Actual timed promotion, Cloudflare deployment and live publication remain
 unverified until the November 6 run. Next bounded action: inspect the release's
 commit/push and live-check result; do not infer acceptance from this rehearsal,
 manual hosted check or the article's scheduled date.
+
+## November 6: deeper engineering revision and final queue
+
+The owner reopened the earlier editorial result and asked for four further hours
+improving implementation and prose together. The original builder owned browser
+attempt/resource ownership and native browser checks; independent reviewers
+covered provider knowledge/contracts and durable campaign/suppression behavior.
+The coordinator integrated confirmation policy/application/HTTP/D1 boundaries,
+bounded request reading, original-byte webhook authentication and the article.
+Research 32–39 retain methods, measured failures, selected native checks and limits.
+
+The revised article now leads with a reproduced callback race that could cancel
+an in-flight signup. It distinguishes widget recovery, signup POST handling,
+Siteverify identity and email retry knowledge; native API/runtime capabilities;
+transactional admission; deliberate no-send acceptance; and the dated full Inbox
+cycle. A later production check joins page-bootstrap and receiving-Worker
+versions separately. It does not claim a conversion improvement or infer that
+48 widget reports are lost subscribers.
+
+The final body and **eight complete selected human prompts** match their queued
+copies. The private authorization omission is visible in the article. Title,
+public slug and November 6 date remain stable; the description leads with the
+controlled cancellation finding. The queued file now uses prefix **043**, since
+another author-owned article already occupies 042. Neither its prose nor its
+release is changed by this preparation.
+
+The current integration passes 405 blog and 433 analytics tests plus workspace
+types. The isolated release rehearsal validates 33 Markdown posts and builds 44
+posts. It blocks at 07:59:59 Pacific, promotes only this article/prompts at 08:00,
+and refuses duplicate promotion. It verifies full Markdown, canonical/date,
+search/share metadata, eight exact rendered prompts, index, RSS, sitemap, llms
+and citation files. Desktop and 375-pixel browser checks pass. They caught a
+clipped long prompt path; `overflow-wrap:anywhere` repairs its display without
+editing any prompt bytes. All eight narrow prompt blocks now have equal client
+and scroll widths. The generated social card is legible and unclipped.
+
+Only a frozen-lockfile dependency installation and public source/asset copies
+were used in the separate rehearsal checkout; no private environment file or
+active development `dist/` was copied or overwritten. One offline installation
+first lacked a cached package; the frozen prefer-offline retry completed with
+286 reused packages and zero downloads. These are preparation checks, not a
+future-cron or live-article result. The original successful seven-prompt hosted
+check remains historical until the revised queue gets its own hosted receipt.

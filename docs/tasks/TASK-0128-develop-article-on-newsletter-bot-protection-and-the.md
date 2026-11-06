@@ -4,12 +4,21 @@ title: Develop article on newsletter bot protection and the failures our logs mi
 status: in_progress
 parent_id: FLDR-0010
 created_at: '2026-09-07T05:09:30.966Z'
-updated_at: '2026-11-06T05:57:15Z'
+updated_at: '2026-11-06T08:43:00Z'
 type: task
 ---
 P2 editorial. Governing form: evidence-led engineering investigation with an active field-note state. Owned trigger: Goga's friend could not subscribe, invalid production Turnstile secret, and uncertainty about earlier readers. Test whether the newsletter's protection and observability are proportionate; do not presuppose Turnstile is bad. Draft alongside evidence. Show the value and gaps of existing first-party logging, earlier April incident, retention and identity limits, alternatives and current repair status. Protect the skepticism as an unresolved question. Exact human prompts must be preserved intact; no invented or trimmed owner quotes. Draft and research live outside posts/ pending author review and publication decision. Apply shape-article, blog-writing investigation reference, discovery/share passes when release is intended, and final prose/fact-check passes.
 
 ## Investigation checkpoint
+
+**November 6, 08:43 UTC preparation:** [Research 32](../../packages/blog/drafts/research/newsletter-reliability/32-four-hour-engineering-iteration.md)
+records the expanded code/article work, independent reviews and distinct native
+receipts. The revised Turnstile body and eight complete selected prompts pass
+the current 44-post rehearsal and desktop/narrow checks. A prompt wrapping defect
+is repaired without editing its bytes. The November 6 08:00 Pacific entry is
+restored; the [publication worklist](../worklist/november-daily-publication/README.md)
+owns the revised hosted check and future timed publication. Current source and
+activation association plus the fixed-window audit still remain in progress.
 
 **November 5 Pacific / November 6 UTC expanded goal:** The owner requests four additional hours improving code and article with DDD, authoritative/native-source inspection, useful logging, refactoring and original-builder delegation. [Research 32](../../packages/blog/drafts/research/newsletter-reliability/32-four-hour-engineering-iteration.md) owns the fixed 06:07:25–10:07:25 UTC window, file ownership, first reproduced defects and requirement-by-requirement acceptance. The previous November 6 manifest entry is held during revision; source remains preserved. Eight selected prompts now include the complete new direction. Re-register the release only after integrated code/article acceptance; prior editorial completion below does not close this wider work.
 

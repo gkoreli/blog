@@ -23,8 +23,11 @@ four-statement admission transaction and its exact SQL predicates.
 The relevant aggregate invariant is shared durable admission, not a counter in
 one JavaScript object. Cloudflare documents [D1 batch execution](https://developers.cloudflare.com/d1/worker-api/d1-database/)
 as sequential transactional statements with rollback on failure. The [native D1
-wrapper](https://github.com/cloudflare/workerd/blob/main/src/cloudflare/internal/d1-api.ts)
-routes the ordinary binding through its primary session; local D1 controls below
+wrapper](https://github.com/cloudflare/workerd/blob/3189460a0784060d4618d810de56551578ce73b6/src/cloudflare/internal/d1-api.ts)
+at inspected upstream revision `3189460a` routes the ordinary binding through its
+primary session. That November 6 upstream snapshot is not asserted to be the
+source embedded in local workerd `1.20260301.1` or the production service; the
+local D1 controls below
 exercise the actual SQL rather than emulate the budget with a mock counter.
 This uses the domain/application separation described by [Microsoft's DDD
 architecture guidance](https://learn.microsoft.com/en-us/dotnet/architecture/microservices/microservice-ddd-cqrs-patterns/ddd-oriented-microservice),

@@ -350,6 +350,7 @@
   text-transform: uppercase;
 }
 .prompt-text {
+  overflow-wrap: anywhere;
   font-family: var(--font-mono);
   font-size: 0.8rem;
   line-height: 1.6;

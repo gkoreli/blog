@@ -3,5 +3,11 @@
   "startDate": "2026-11-06",
   "endDate": "2026-11-30",
   "releaseTime": "08:00",
-  "articles": []
+  "articles": [
+    {
+      "date": "2026-11-06",
+      "file": "043-cloudflare-turnstile-signup-failures.md",
+      "prompts": true
+    }
+  ]
 }
