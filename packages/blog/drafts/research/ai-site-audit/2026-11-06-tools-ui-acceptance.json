@@ -1,0 +1,57 @@
+{
+  "checkedAt": "2026-11-06T18:12:47Z",
+  "sourceCommit": "81944b014b1d4ed88ee2f1b2689ba9a0e01c38e8",
+  "cloudflareBuild": "ea287d79-48c5-45be-aa52-ae4efd711b24",
+  "deploymentCheck": "success",
+  "local": {
+    "blogTests": 428,
+    "siteAuditTests": 46,
+    "nativeHttpRequests": 55,
+    "nativeExternalRequests": 0,
+    "typecheck": "workspace pass",
+    "markdownValidated": 32,
+    "builtPosts": 43,
+    "publicTurnstileSiteKeyPresent": false
+  },
+  "served": {
+    "checkedAt": "2026-11-06T18:11:54.915Z",
+    "requestHeaders": {
+      "Sec-Purpose": "prefetch"
+    },
+    "paths": [
+      "/tools",
+      "/ai-check",
+      "/tools/robots",
+      "/tools/compare",
+      "/ai-check/example"
+    ],
+    "allStatus": 200,
+    "allSourceAndBuildMarkersMatch": true,
+    "exampleRetainsReplacementContainer": true
+  },
+  "browser": {
+    "publicWidths": [
+      1440,
+      375
+    ],
+    "localWidths": [
+      1280,
+      375
+    ],
+    "localThemes": [
+      "light",
+      "dark"
+    ],
+    "liveBareDomain": "reddit.com normalized to https://reddit.com/; existing daily allowance exhausted",
+    "quota": "One local reset explanation, remaining count and two useful alternatives; no allowance reset or bypass",
+    "example": "Loaded from the exhausted-quota state without a daily check; dated observation, 100-point ledger and report focus verified",
+    "mobile": "Score and components remain readable in the 375px viewport",
+    "scriptFreeLocal": "Zero script elements; native bare-domain POST normalized and displayed the controlled exhausted allowance"
+  },
+  "limits": [
+    "Supplied local audit reports exercise rendering and adapters; they are not current measurements of entered targets.",
+    "The public browser did not complete a fresh Reddit audit because its network allowance remained exhausted.",
+    "The saved homepage example is explicitly a dated observation.",
+    "Visual inspection is not owner approval or evidence of reader adoption."
+  ]
+}
