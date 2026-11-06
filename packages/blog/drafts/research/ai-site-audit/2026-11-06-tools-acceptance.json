@@ -1,0 +1,140 @@
+{
+  "checkedAt": "2026-11-06T16:47:42.553699+00:00",
+  "results": [
+    {
+      "path": "/",
+      "accept": "text/markdown",
+      "status": 200,
+      "contentType": "text/markdown; charset=utf-8",
+      "vary": "Accept",
+      "contentLocation": "/index.md",
+      "sha256": "390bec35fb9fe3450a43ca920b0ebfba9aff057123e68276f3699e504bd3926b"
+    },
+    {
+      "path": "/",
+      "accept": "text/html",
+      "status": 200,
+      "contentType": "text/html",
+      "vary": "Accept",
+      "contentLocation": null,
+      "sha256": "8d91a5162222483d177f69fc197a5be7e7f63167d3988314b9e5e03e2973dcd7",
+      "buildId": "14663169-7666-4522-86a1-46593907aa80",
+      "sourceCommit": "bc2d26d512b0485fa4d44fd22d851c9fa9e2b1db"
+    },
+    {
+      "path": "/tools",
+      "accept": "text/html",
+      "status": 200,
+      "contentType": "text/html",
+      "vary": null,
+      "contentLocation": null,
+      "sha256": "d63dbd6db08932b1073fda7cb7a662c254012861c5f878c259a699d0e11c95c5",
+      "buildId": "14663169-7666-4522-86a1-46593907aa80",
+      "sourceCommit": "bc2d26d512b0485fa4d44fd22d851c9fa9e2b1db"
+    },
+    {
+      "path": "/tools/robots",
+      "accept": "text/html",
+      "status": 200,
+      "contentType": "text/html",
+      "vary": null,
+      "contentLocation": null,
+      "sha256": "16acf8399da740bd92ac0665519b7bf19f5300625e6a2740b518d940ca57cb34",
+      "buildId": "14663169-7666-4522-86a1-46593907aa80",
+      "sourceCommit": "bc2d26d512b0485fa4d44fd22d851c9fa9e2b1db"
+    },
+    {
+      "path": "/tools/compare",
+      "accept": "text/html",
+      "status": 200,
+      "contentType": "text/html",
+      "vary": null,
+      "contentLocation": null,
+      "sha256": "070e7aa08fb6e426e08891dfcbb6d548d6ec873ddd54bed5a62d21c23f2daa53",
+      "buildId": "14663169-7666-4522-86a1-46593907aa80",
+      "sourceCommit": "bc2d26d512b0485fa4d44fd22d851c9fa9e2b1db"
+    },
+    {
+      "path": "/ai-check/example",
+      "accept": "text/html",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "vary": null,
+      "contentLocation": null,
+      "sha256": "ac032b49a6c359a18b419c3b5e772571df14a5adb79ebc4accb22849b3a33508",
+      "buildId": "14663169-7666-4522-86a1-46593907aa80",
+      "sourceCommit": "bc2d26d512b0485fa4d44fd22d851c9fa9e2b1db"
+    },
+    {
+      "path": "/ai-check-example.json",
+      "accept": "application/json",
+      "status": 200,
+      "contentType": "application/json",
+      "vary": null,
+      "contentLocation": null,
+      "sha256": "3a6c426227596c48cc4893a5ef035b15cb15376fec48a35f45f71bbaa87d5533",
+      "sampleObservedAt": "2026-11-06T16:33:45.697Z",
+      "sampleScore": {
+        "lower": 100,
+        "upper": 100,
+        "max": 100,
+        "coveragePercent": 100
+      }
+    },
+    {
+      "path": "/api/ai-check/schema",
+      "accept": "application/json",
+      "status": 200,
+      "contentType": "application/json",
+      "vary": null,
+      "contentLocation": null,
+      "sha256": "0cd46c5af4e2f163f3b7d748ab3061187d88750c3564c5ef21b2961da5f2bb07"
+    }
+  ],
+  "controlledDomainCheck": {
+    "scope": "Fresh production responses through the local domain, fixed host allowlist and analytics-excluded prefetch; not an admitted hosted API response.",
+    "target": "https://gkoreli.com/",
+    "checkedAt": "2026-11-06T16:49:09.249Z",
+    "complete": true,
+    "markdown": "negotiated",
+    "score": {
+      "lower": 100,
+      "upper": 100,
+      "max": 100,
+      "coveragePercent": 100
+    },
+    "resourceStatuses": [
+      200,
+      200,
+      200,
+      200,
+      200,
+      200,
+      200,
+      200
+    ]
+  },
+  "localChecks": {
+    "siteAuditTests": 41,
+    "blogTests": 416,
+    "focusedUiTests": 13,
+    "nativeHttpRequests": 46,
+    "nativeDefaultTransport": "passed",
+    "typecheck": "passed",
+    "frontmatterValid": 32,
+    "buildPosts": 43
+  },
+  "browserChecks": {
+    "widths": [
+      550,
+      1280,
+      375
+    ],
+    "robotsAllowedException": "passed",
+    "robotsDisallowedPath": "passed",
+    "equalScoreDifferentEvidence": "90/100 on both supplied synthetic reports; lost title and gained heading both shown",
+    "liveSavedExample": "100/100 with dated observation and no quota use",
+    "liveHostedCheck": "429: existing test-client allowance exhausted; no fresh admitted hosted report claimed",
+    "exampleErrorStyleRegression": "found in browser after quota rejection; ready-state reset repaired and focused test passed"
+  }
+}
