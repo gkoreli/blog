@@ -146,7 +146,7 @@ export async function handleAiCheck(request: Request, env: AiCheckEnv, dependenc
   }
   let formState: HtmlFormState | undefined;
   const failure = (message: string, status: number, quota?: CheckQuota, fieldError = false) => htmlForm
-    ? htmlResponse(request, env, fieldError ? '' : checkErrorHtml(message), status, quota, formState ? { ...formState, ...(fieldError ? { error: message } : {}) } : undefined)
+    ? htmlResponse(request, env, fieldError ? '' : checkErrorHtml(message, status, quota), status, quota, formState ? { ...formState, ...(fieldError ? { error: message } : {}) } : undefined)
     : Promise.resolve(json({ error: message, ...(quota ? { quota } : {}) }, status, quota));
   const origin = request.headers.get('Origin');
   if (origin !== null && origin !== new URL(request.url).origin || request.headers.get('Sec-Fetch-Site') === 'cross-site') return failure('Run browser checks from this site. Server API clients may omit Origin.', 403);

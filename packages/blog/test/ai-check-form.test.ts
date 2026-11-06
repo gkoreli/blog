@@ -76,7 +76,7 @@ test('correcting an inline error submits normally and a quota response retains p
   input.value = 'http://reddit.com'; form.requestSubmit(); assert.equal(error.hidden, false); assert.equal(calls, 0);
   input.value = 'reddit.com'; input.dispatchEvent(new view.Event('input', { bubbles: true })); form.requestSubmit(); await settle();
   assert.equal(calls, 1); assert.equal(error.hidden, true); assert.equal(input.hasAttribute('aria-invalid'), false);
-  assert.equal(status.dataset['state'], 'error'); assert.match(status.textContent ?? '', /0 of 10 checks remaining/); assert.equal(results.textContent, 'Previous report');
+  assert.equal(status.dataset['state'], 'limited'); assert.match(status.textContent ?? '', /0 of 10 checks remaining/); assert.equal(results.textContent, 'Previous report');
 });
 
 test('one pending operation prevents repeated checks and example requests from racing', async t => {

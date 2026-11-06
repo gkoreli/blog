@@ -1,7 +1,7 @@
 import { html } from '@nisli/core';
 
 export function reportComparePage() {
-  return html`<article class="ai-check tools-workbench post-content">
+  return html`<article class="ai-check tools-workbench tool-app">
     <header class="ai-check-header"><a class="tool-back" href="/tools">← All tools</a><p class="tool-kicker">Report comparison · local and unlimited</p><h1>See what changed<br>after the fix.</h1><p class="ai-check-lead">Compare two saved access reports. Follow changes in scores, checks, crawler policies and delivery evidence.</p></header>
     <report-comparison>
       <form data-compare-form class="workbench-form">
