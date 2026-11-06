@@ -1,0 +1,1889 @@
+{
+  "scope": "Public aggregate reports; stored included events, not unique people, all edge requests, or a fresh row-level census.",
+  "investigationDatePacific": "2026-11-05",
+  "sourceCommitInspected": "e089f77260ec549fd6896a3754e57e2c96929b38",
+  "reports": {
+    "30d": {
+      "sourceUrl": "https://gkoreli.com/api/stats?range=30d&traffic=all",
+      "capturedAt": "2026-11-06T05:54:20.046743+00:00",
+      "status": 200,
+      "cache": "HIT",
+      "bodyBytes": 53086,
+      "bodySha256": "d364c5db6db427190598e83160d93baffa50b9af40267a3a8c0c711ee20539a5",
+      "period": {
+        "start": "2026-10-08",
+        "end": "2026-11-06",
+        "timeZone": "UTC",
+        "granularity": "day",
+        "updatedAt": "2026-11-06T05:42:28.713Z"
+      },
+      "totals": {
+        "events": 12004
+      },
+      "recognizedClientDeclarationEvents": 2704,
+      "noRecognizedClientDeclarationEvents": 9300,
+      "byKind": {
+        "other-bot": 1556,
+        "browser": 1889,
+        "unresolved": 1266,
+        "signed-agent": 941,
+        "cloud-browser": 2816,
+        "ai-search": 1475,
+        "http-client": 642,
+        "ai-crawler": 634,
+        "search-crawler": 317,
+        "legacy-browser": 191,
+        "seo-crawler": 128,
+        "ai-assistant": 105,
+        "preview-or-feed": 33,
+        "headless-browser": 11
+      },
+      "bySignatureBasis": {
+        "not-recorded": 4984,
+        "verified-outcome-only": 909,
+        "unsigned": 5191,
+        "verified-ua-uncovered": 898,
+        "not-verified": 22
+      },
+      "byKindAndSignatureBasis": {
+        "cloud-browser": {
+          "not-recorded": 1465,
+          "unsigned": 1351
+        },
+        "browser": {
+          "not-recorded": 1111,
+          "unsigned": 778
+        },
+        "signed-agent": {
+          "verified-outcome-only": 868,
+          "verified-ua-uncovered": 73
+        },
+        "unresolved": {
+          "unsigned": 1264,
+          "not-verified": 2
+        },
+        "other-bot": {
+          "not-recorded": 627,
+          "unsigned": 925,
+          "not-verified": 4
+        },
+        "http-client": {
+          "not-recorded": 562,
+          "unsigned": 80
+        },
+        "ai-search": {
+          "verified-ua-uncovered": 696,
+          "not-recorded": 401,
+          "unsigned": 341,
+          "verified-outcome-only": 35,
+          "not-verified": 2
+        },
+        "ai-crawler": {
+          "not-recorded": 372,
+          "unsigned": 262
+        },
+        "legacy-browser": {
+          "not-recorded": 191
+        },
+        "search-crawler": {
+          "not-recorded": 180,
+          "unsigned": 123,
+          "not-verified": 14
+        },
+        "seo-crawler": {
+          "verified-ua-uncovered": 120,
+          "verified-outcome-only": 6,
+          "unsigned": 2
+        },
+        "ai-assistant": {
+          "not-recorded": 57,
+          "unsigned": 39,
+          "verified-ua-uncovered": 9
+        },
+        "preview-or-feed": {
+          "unsigned": 20,
+          "not-recorded": 13
+        },
+        "headless-browser": {
+          "not-recorded": 5,
+          "unsigned": 6
+        }
+      },
+      "kindReasons": [
+        {
+          "kind": "other-bot",
+          "reason": "generic-bot",
+          "views": 1549
+        },
+        {
+          "kind": "browser",
+          "reason": "navigation-shaped",
+          "views": 1116
+        },
+        {
+          "kind": "unresolved",
+          "reason": "fetch-metadata-absent",
+          "views": 973
+        },
+        {
+          "kind": "signed-agent",
+          "reason": "Exa",
+          "views": 835
+        },
+        {
+          "kind": "cloud-browser",
+          "reason": "hosting-asn:132203",
+          "views": 801
+        },
+        {
+          "kind": "browser",
+          "reason": "navigation-shaped-network-unlisted",
+          "views": 773
+        },
+        {
+          "kind": "ai-search",
+          "reason": "ExaSearchBot",
+          "views": 621
+        },
+        {
+          "kind": "cloud-browser",
+          "reason": "hosting-asn:396982",
+          "views": 562
+        },
+        {
+          "kind": "http-client",
+          "reason": "no-fetch-metadata",
+          "views": 546
+        },
+        {
+          "kind": "ai-search",
+          "reason": "Meta-WebIndexer",
+          "views": 489
+        },
+        {
+          "kind": "cloud-browser",
+          "reason": "hosting-asn:16276",
+          "views": 420
+        },
+        {
+          "kind": "cloud-browser",
+          "reason": "hosting-asn:24940",
+          "views": 284
+        },
+        {
+          "kind": "ai-crawler",
+          "reason": "Amazonbot",
+          "views": 247
+        },
+        {
+          "kind": "cloud-browser",
+          "reason": "hosting-asn:31898",
+          "views": 224
+        },
+        {
+          "kind": "unresolved",
+          "reason": "unrecognized-browser-claim",
+          "views": 222
+        },
+        {
+          "kind": "ai-crawler",
+          "reason": "PetalBot",
+          "views": 218
+        },
+        {
+          "kind": "search-crawler",
+          "reason": "Googlebot",
+          "views": 214
+        },
+        {
+          "kind": "legacy-browser",
+          "reason": "pre-fetch-metadata-ua",
+          "views": 189
+        },
+        {
+          "kind": "ai-search",
+          "reason": "PerplexityBot",
+          "views": 160
+        },
+        {
+          "kind": "ai-search",
+          "reason": "ShapBot",
+          "views": 111
+        },
+        {
+          "kind": "cloud-browser",
+          "reason": "hosting-asn:45090",
+          "views": 99
+        },
+        {
+          "kind": "http-client",
+          "reason": "not-navigation-shaped",
+          "views": 96
+        },
+        {
+          "kind": "ai-crawler",
+          "reason": "Bytespider",
+          "views": 87
+        },
+        {
+          "kind": "cloud-browser",
+          "reason": "hosting-asn:18779",
+          "views": 87
+        },
+        {
+          "kind": "cloud-browser",
+          "reason": "hosting-asn:51167",
+          "views": 78
+        },
+        {
+          "kind": "seo-crawler",
+          "reason": "AhrefsSiteAudit",
+          "views": 76
+        },
+        {
+          "kind": "cloud-browser",
+          "reason": "hosting-asn:14061",
+          "views": 74
+        },
+        {
+          "kind": "ai-assistant",
+          "reason": "ChatGPT-User",
+          "views": 72
+        },
+        {
+          "kind": "signed-agent",
+          "reason": "Other",
+          "views": 71
+        },
+        {
+          "kind": "unresolved",
+          "reason": "fetch-metadata-support-unknown",
+          "views": 70
+        },
+        {
+          "kind": "ai-search",
+          "reason": "OAI-SearchBot",
+          "views": 68
+        },
+        {
+          "kind": "cloud-browser",
+          "reason": "hosting-asn:14618",
+          "views": 61
+        },
+        {
+          "kind": "cloud-browser",
+          "reason": "hosting-asn:16509",
+          "views": 54
+        },
+        {
+          "kind": "seo-crawler",
+          "reason": "AhrefsBot",
+          "views": 52
+        },
+        {
+          "kind": "ai-crawler",
+          "reason": "ClaudeBot",
+          "views": 47
+        },
+        {
+          "kind": "search-crawler",
+          "reason": "Bingbot",
+          "views": 45
+        },
+        {
+          "kind": "cloud-browser",
+          "reason": "hosting-asn:45102",
+          "views": 43
+        },
+        {
+          "kind": "signed-agent",
+          "reason": "Ahrefs",
+          "views": 31
+        },
+        {
+          "kind": "preview-or-feed",
+          "reason": "FacebookBot",
+          "views": 26
+        },
+        {
+          "kind": "ai-search",
+          "reason": "Applebot",
+          "views": 25
+        },
+        {
+          "kind": "ai-assistant",
+          "reason": "Claude-User",
+          "views": 23
+        },
+        {
+          "kind": "search-crawler",
+          "reason": "Baiduspider",
+          "views": 22
+        },
+        {
+          "kind": "search-crawler",
+          "reason": "DuckDuckBot; signature:bare-uri-signature-agent",
+          "views": 18
+        },
+        {
+          "kind": "ai-crawler",
+          "reason": "GPTBot",
+          "views": 17
+        },
+        {
+          "kind": "ai-crawler",
+          "reason": "Meta-ExternalAgent",
+          "views": 16
+        },
+        {
+          "kind": "search-crawler",
+          "reason": "DuckDuckBot",
+          "views": 14
+        },
+        {
+          "kind": "headless-browser",
+          "reason": "HeadlessChrome",
+          "views": 11
+        },
+        {
+          "kind": "other-bot",
+          "reason": "GoogleOther",
+          "views": 7
+        },
+        {
+          "kind": "ai-assistant",
+          "reason": "ExaUser",
+          "views": 6
+        },
+        {
+          "kind": "cloud-browser",
+          "reason": "hosting-asn:8075",
+          "views": 6
+        },
+        {
+          "kind": "preview-or-feed",
+          "reason": "archiver-asn:7941",
+          "views": 6
+        },
+        {
+          "kind": "cloud-browser",
+          "reason": "hosting-asn:213230",
+          "views": 5
+        },
+        {
+          "kind": "cloud-browser",
+          "reason": "hosting-asn:20473",
+          "views": 4
+        },
+        {
+          "kind": "cloud-browser",
+          "reason": "hosting-asn:24940; signature:missing-signature-agent",
+          "views": 4
+        },
+        {
+          "kind": "search-crawler",
+          "reason": "YandexBot",
+          "views": 4
+        },
+        {
+          "kind": "signed-agent",
+          "reason": "ChatGPT",
+          "views": 4
+        },
+        {
+          "kind": "ai-assistant",
+          "reason": "DuckAssistBot",
+          "views": 3
+        },
+        {
+          "kind": "cloud-browser",
+          "reason": "hosting-asn:211590",
+          "views": 3
+        },
+        {
+          "kind": "ai-crawler",
+          "reason": "CCBot",
+          "views": 2
+        },
+        {
+          "kind": "cloud-browser",
+          "reason": "hosting-asn:12876",
+          "views": 2
+        },
+        {
+          "kind": "legacy-browser",
+          "reason": "pre-fetch-metadata-ua; signature:missing-signature-agent",
+          "views": 2
+        },
+        {
+          "kind": "ai-assistant",
+          "reason": "Perplexity-User",
+          "views": 1
+        },
+        {
+          "kind": "ai-search",
+          "reason": "Meta-WebIndexer; signature:key-unavailable",
+          "views": 1
+        },
+        {
+          "kind": "cloud-browser",
+          "reason": "hosting-asn:150436",
+          "views": 1
+        },
+        {
+          "kind": "cloud-browser",
+          "reason": "hosting-asn:25820",
+          "views": 1
+        },
+        {
+          "kind": "cloud-browser",
+          "reason": "hosting-asn:30058",
+          "views": 1
+        },
+        {
+          "kind": "cloud-browser",
+          "reason": "hosting-asn:40021",
+          "views": 1
+        },
+        {
+          "kind": "cloud-browser",
+          "reason": "hosting-asn:8560",
+          "views": 1
+        },
+        {
+          "kind": "preview-or-feed",
+          "reason": "Slackbot-LinkExpanding",
+          "views": 1
+        },
+        {
+          "kind": "unresolved",
+          "reason": "request-context-conflict",
+          "views": 1
+        }
+      ],
+      "byAgent": [
+        {
+          "agentName": "ExaSearchBot",
+          "trafficClass": "ai",
+          "views": 621
+        },
+        {
+          "agentName": "Meta-WebIndexer",
+          "trafficClass": "ai",
+          "views": 490
+        },
+        {
+          "agentName": "Amazonbot",
+          "trafficClass": "ai",
+          "views": 247
+        },
+        {
+          "agentName": "PetalBot",
+          "trafficClass": "ai",
+          "views": 218
+        },
+        {
+          "agentName": "Googlebot",
+          "trafficClass": "bot",
+          "views": 214
+        },
+        {
+          "agentName": "PerplexityBot",
+          "trafficClass": "ai",
+          "views": 160
+        },
+        {
+          "agentName": "ShapBot",
+          "trafficClass": "ai",
+          "views": 111
+        },
+        {
+          "agentName": "Bytespider",
+          "trafficClass": "ai",
+          "views": 87
+        },
+        {
+          "agentName": "AhrefsSiteAudit",
+          "trafficClass": "bot",
+          "views": 76
+        },
+        {
+          "agentName": "ChatGPT-User",
+          "trafficClass": "ai",
+          "views": 72
+        },
+        {
+          "agentName": "OAI-SearchBot",
+          "trafficClass": "ai",
+          "views": 68
+        },
+        {
+          "agentName": "AhrefsBot",
+          "trafficClass": "bot",
+          "views": 52
+        },
+        {
+          "agentName": "ClaudeBot",
+          "trafficClass": "ai",
+          "views": 47
+        },
+        {
+          "agentName": "Bingbot",
+          "trafficClass": "bot",
+          "views": 45
+        },
+        {
+          "agentName": "DuckDuckBot",
+          "trafficClass": "bot",
+          "views": 32
+        },
+        {
+          "agentName": "FacebookBot",
+          "trafficClass": "bot",
+          "views": 26
+        },
+        {
+          "agentName": "Applebot",
+          "trafficClass": "ai",
+          "views": 25
+        },
+        {
+          "agentName": "Claude-User",
+          "trafficClass": "ai",
+          "views": 23
+        },
+        {
+          "agentName": "Baiduspider",
+          "trafficClass": "bot",
+          "views": 22
+        },
+        {
+          "agentName": "GPTBot",
+          "trafficClass": "ai",
+          "views": 17
+        },
+        {
+          "agentName": "Meta-ExternalAgent",
+          "trafficClass": "ai",
+          "views": 16
+        },
+        {
+          "agentName": "HeadlessChrome",
+          "trafficClass": "bot",
+          "views": 11
+        },
+        {
+          "agentName": "ExaUser",
+          "trafficClass": "ai",
+          "views": 6
+        },
+        {
+          "agentName": "GoogleOther",
+          "trafficClass": "ai",
+          "views": 5
+        },
+        {
+          "agentName": "YandexBot",
+          "trafficClass": "bot",
+          "views": 4
+        },
+        {
+          "agentName": "DuckAssistBot",
+          "trafficClass": "ai",
+          "views": 3
+        },
+        {
+          "agentName": "CCBot",
+          "trafficClass": "ai",
+          "views": 2
+        },
+        {
+          "agentName": "GoogleOther",
+          "trafficClass": "bot",
+          "views": 2
+        },
+        {
+          "agentName": "Perplexity-User",
+          "trafficClass": "ai",
+          "views": 1
+        },
+        {
+          "agentName": "Slackbot-LinkExpanding",
+          "trafficClass": "bot",
+          "views": 1
+        }
+      ],
+      "bySigner": [
+        {
+          "signatureAgent": "Exa",
+          "views": 1461
+        },
+        {
+          "signatureAgent": "Other",
+          "views": 182
+        },
+        {
+          "signatureAgent": "Ahrefs",
+          "views": 157
+        },
+        {
+          "signatureAgent": "ChatGPT",
+          "views": 4
+        },
+        {
+          "signatureAgent": "DuckDuckGo",
+          "views": 3
+        }
+      ],
+      "byKindNativeCategory": [
+        {
+          "kind": "cloud-browser",
+          "basis": "not-recorded",
+          "views": 1493
+        },
+        {
+          "kind": "cloud-browser",
+          "basis": "empty",
+          "views": 1314
+        },
+        {
+          "kind": "unresolved",
+          "basis": "empty",
+          "views": 1248
+        },
+        {
+          "kind": "browser",
+          "basis": "not-recorded",
+          "views": 1141
+        },
+        {
+          "kind": "signed-agent",
+          "basis": "not-recorded",
+          "views": 868
+        },
+        {
+          "kind": "browser",
+          "basis": "empty",
+          "views": 748
+        },
+        {
+          "kind": "other-bot",
+          "basis": "not-recorded",
+          "views": 644
+        },
+        {
+          "kind": "other-bot",
+          "basis": "empty",
+          "views": 634
+        },
+        {
+          "kind": "ai-search",
+          "basis": "Search Engine Crawler",
+          "views": 601
+        },
+        {
+          "kind": "http-client",
+          "basis": "not-recorded",
+          "views": 562
+        },
+        {
+          "kind": "ai-search",
+          "basis": "not-recorded",
+          "views": 443
+        },
+        {
+          "kind": "ai-crawler",
+          "basis": "not-recorded",
+          "views": 382
+        },
+        {
+          "kind": "ai-search",
+          "basis": "Page Preview",
+          "views": 238
+        },
+        {
+          "kind": "ai-crawler",
+          "basis": "AI Crawler",
+          "views": 212
+        },
+        {
+          "kind": "legacy-browser",
+          "basis": "not-recorded",
+          "views": 191
+        },
+        {
+          "kind": "search-crawler",
+          "basis": "not-recorded",
+          "views": 182
+        },
+        {
+          "kind": "other-bot",
+          "basis": "Search Engine Optimization",
+          "views": 133
+        },
+        {
+          "kind": "search-crawler",
+          "basis": "Search Engine Crawler",
+          "views": 133
+        },
+        {
+          "kind": "ai-search",
+          "basis": "AI Search",
+          "views": 131
+        },
+        {
+          "kind": "seo-crawler",
+          "basis": "Search Engine Optimization",
+          "views": 121
+        },
+        {
+          "kind": "http-client",
+          "basis": "empty",
+          "views": 80
+        },
+        {
+          "kind": "signed-agent",
+          "basis": "AI Crawler",
+          "views": 69
+        },
+        {
+          "kind": "ai-search",
+          "basis": "empty",
+          "views": 61
+        },
+        {
+          "kind": "ai-assistant",
+          "basis": "not-recorded",
+          "views": 60
+        },
+        {
+          "kind": "other-bot",
+          "basis": "Page Preview",
+          "views": 56
+        },
+        {
+          "kind": "other-bot",
+          "basis": "Search Engine Crawler",
+          "views": 35
+        },
+        {
+          "kind": "ai-assistant",
+          "basis": "AI Assistant",
+          "views": 32
+        },
+        {
+          "kind": "other-bot",
+          "basis": "Archiver",
+          "views": 30
+        },
+        {
+          "kind": "ai-crawler",
+          "basis": "empty",
+          "views": 22
+        },
+        {
+          "kind": "ai-crawler",
+          "basis": "Search Engine Crawler",
+          "views": 18
+        },
+        {
+          "kind": "preview-or-feed",
+          "basis": "not-recorded",
+          "views": 13
+        },
+        {
+          "kind": "unresolved",
+          "basis": "Search Engine Crawler",
+          "views": 13
+        },
+        {
+          "kind": "other-bot",
+          "basis": "AI Crawler",
+          "views": 11
+        },
+        {
+          "kind": "other-bot",
+          "basis": "Monitoring & Analytics",
+          "views": 11
+        },
+        {
+          "kind": "preview-or-feed",
+          "basis": "Page Preview",
+          "views": 11
+        },
+        {
+          "kind": "cloud-browser",
+          "basis": "Monitoring & Analytics",
+          "views": 9
+        },
+        {
+          "kind": "preview-or-feed",
+          "basis": "empty",
+          "views": 9
+        },
+        {
+          "kind": "ai-assistant",
+          "basis": "empty",
+          "views": 7
+        },
+        {
+          "kind": "seo-crawler",
+          "basis": "not-recorded",
+          "views": 7
+        },
+        {
+          "kind": "ai-assistant",
+          "basis": "Search Engine Crawler",
+          "views": 6
+        },
+        {
+          "kind": "headless-browser",
+          "basis": "empty",
+          "views": 6
+        },
+        {
+          "kind": "headless-browser",
+          "basis": "not-recorded",
+          "views": 5
+        },
+        {
+          "kind": "unresolved",
+          "basis": "not-recorded",
+          "views": 5
+        },
+        {
+          "kind": "signed-agent",
+          "basis": "AI Assistant",
+          "views": 4
+        },
+        {
+          "kind": "other-bot",
+          "basis": "AI Search",
+          "views": 2
+        },
+        {
+          "kind": "search-crawler",
+          "basis": "empty",
+          "views": 2
+        },
+        {
+          "kind": "ai-search",
+          "basis": "AI Assistant",
+          "views": 1
+        }
+      ],
+      "nativeCategoryTotals": {
+        "not-recorded": 5996,
+        "empty": 4131,
+        "Search Engine Crawler": 806,
+        "Page Preview": 305,
+        "AI Crawler": 292,
+        "Search Engine Optimization": 254,
+        "AI Search": 133,
+        "AI Assistant": 37,
+        "Archiver": 30,
+        "Monitoring & Analytics": 20
+      },
+      "verification": {
+        "vendorCheckUnrecognizedViews": 0,
+        "vendorCheckRecognizedViews": 6090,
+        "unrecognizedLocalViews": 0,
+        "coverageNotRecordedVerifiedViews": 0,
+        "coverageUnrecognizedVerifiedViews": 0,
+        "nativeUnavailableViews": 6111,
+        "nativeNotRecordedViews": 5893,
+        "nativeUnrecognizedViews": 0,
+        "localInvalidViews": 16,
+        "localUnsupportedViews": 0,
+        "localUnavailableViews": 6,
+        "localPolicyRejectedViews": 0,
+        "localNotApplicableViews": 0,
+        "localIndeterminateViews": 0,
+        "unverifiedOutcomeNotRecordedViews": 0,
+        "vendorDocumentedViews": 703,
+        "vendorMatchingOriginViews": 699,
+        "vendorDifferentOriginViews": 3,
+        "vendorOriginConflictViews": 0,
+        "vendorConflictWithMatchingOriginViews": 0,
+        "vendorNotVerifiedViews": 1,
+        "vendorUnmappedDeclarationViews": 926,
+        "vendorUserAgentBoundViews": 0,
+        "vendorCheckNotRecordedViews": 5914,
+        "recordedViews": 6111,
+        "notRecordedViews": 5893,
+        "localVerifiedViews": 898,
+        "localUnverifiedViews": 22,
+        "localAbsentViews": 5191,
+        "testVerdictViews": 0,
+        "selectionUnrecognizedVerifiedViews": 0,
+        "selectionRecordedViews": 884,
+        "selectionNotRecordedVerifiedViews": 14,
+        "multipleTaggedCandidateViews": 0,
+        "unassessedCandidateViews": 0,
+        "coverageRecordedViews": 898,
+        "userAgentBoundViews": 0,
+        "resourceBoundViews": 0,
+        "methodBoundViews": 4,
+        "authorityOnlyViews": 894,
+        "nativeAvailableViews": 0,
+        "nativeVerifiedBotAvailableViews": 0,
+        "nativeSignedAgentAvailableViews": 0,
+        "nativeVerifiedBotViews": 0,
+        "nativeSignedAgentViews": 0,
+        "localVerifiedNativeNotVerifiedViews": 0
+      },
+      "vendorNetwork": {
+        "recognizedViews": 6083,
+        "unrecognizedViews": 0,
+        "recordedViews": 6083,
+        "notRecordedViews": 5921,
+        "configuredDeclarationViews": 588,
+        "unmappedDeclarationViews": 1040,
+        "noDeclarationViews": 4455,
+        "listedViews": 567,
+        "notListedViews": 3,
+        "unavailableViews": 1,
+        "notAssessedViews": 17,
+        "addressUnavailableViews": 0
+      },
+      "fetchMetadata": {
+        "records": {
+          "recognizedViews": 4623,
+          "notRecordedViews": 7381,
+          "unrecognizedViews": 0,
+          "inconsistentViews": 0
+        },
+        "fields": {
+          "mode": {
+            "notAssessedViews": 7381,
+            "absentViews": 3554,
+            "validViews": 1069,
+            "unrecognizedViews": 0,
+            "invalidViews": 0,
+            "policyLimitedViews": 0,
+            "parametersViews": 0
+          },
+          "destination": {
+            "notAssessedViews": 7381,
+            "absentViews": 3575,
+            "validViews": 1048,
+            "unrecognizedViews": 0,
+            "invalidViews": 0,
+            "policyLimitedViews": 0,
+            "parametersViews": 0
+          },
+          "site": {
+            "notAssessedViews": 7381,
+            "absentViews": 3646,
+            "validViews": 977,
+            "unrecognizedViews": 0,
+            "invalidViews": 0,
+            "policyLimitedViews": 0,
+            "parametersViews": 0
+          },
+          "activation": {
+            "notAssessedViews": 7381,
+            "absentViews": 3803,
+            "validViews": 820,
+            "unrecognizedViews": 0,
+            "invalidViews": 0,
+            "policyLimitedViews": 0,
+            "parametersViews": 0
+          }
+        },
+        "activation": {
+          "trueClaimViews": 820,
+          "falseValueViews": 0
+        }
+      },
+      "byDirectoryPublication": [
+        {
+          "basis": "not-recorded",
+          "views": 6034
+        },
+        {
+          "basis": "no-declaration",
+          "views": 4372
+        },
+        {
+          "basis": "matching-publisher",
+          "views": 809
+        },
+        {
+          "basis": "not-configured",
+          "views": 783
+        },
+        {
+          "basis": "different-publisher",
+          "views": 3
+        },
+        {
+          "basis": "not-verified",
+          "views": 3
+        }
+      ],
+      "referralPolicy": {
+        "version": "2026-09-06.2",
+        "sha256": "25d4655bd67b0a63e9fc1f59586c6d85f924671024874198a678e8b82a00d7c4",
+        "excludedViews": 47
+      },
+      "checks": {
+        "kindPartition": 12004,
+        "signaturePartition": 12004,
+        "nativeCategoryPartition": 12004,
+        "timeSeriesPartition": 12004,
+        "pathPartition": 12004
+      }
+    },
+    "7d": {
+      "sourceUrl": "https://gkoreli.com/api/stats?range=7d&traffic=all",
+      "capturedAt": "2026-11-06T05:54:44.776094+00:00",
+      "status": 200,
+      "cache": "HIT",
+      "bodyBytes": 38916,
+      "bodySha256": "ff9c9d4a7ac277d7337a8cd0fc2fb50e13b998d5da0cae0def13d4756710bce5",
+      "period": {
+        "start": "2026-10-31",
+        "end": "2026-11-06",
+        "timeZone": "UTC",
+        "granularity": "hour",
+        "updatedAt": "2026-11-06T05:42:48.678Z"
+      },
+      "totals": {
+        "events": 3960
+      },
+      "recognizedClientDeclarationEvents": 1150,
+      "noRecognizedClientDeclarationEvents": 2810,
+      "byKind": {
+        "other-bot": 622,
+        "unresolved": 836,
+        "browser": 571,
+        "ai-search": 727,
+        "cloud-browser": 689,
+        "seo-crawler": 112,
+        "signed-agent": 73,
+        "ai-crawler": 164,
+        "search-crawler": 87,
+        "ai-assistant": 40,
+        "http-client": 15,
+        "preview-or-feed": 19,
+        "headless-browser": 5
+      },
+      "bySignatureBasis": {
+        "unsigned": 3250,
+        "verified-ua-uncovered": 697,
+        "not-verified": 13
+      },
+      "byKindAndSignatureBasis": {
+        "unresolved": {
+          "unsigned": 836
+        },
+        "other-bot": {
+          "unsigned": 618,
+          "not-verified": 4
+        },
+        "cloud-browser": {
+          "unsigned": 689
+        },
+        "browser": {
+          "unsigned": 571
+        },
+        "ai-search": {
+          "verified-ua-uncovered": 505,
+          "unsigned": 222
+        },
+        "ai-crawler": {
+          "unsigned": 164
+        },
+        "seo-crawler": {
+          "verified-ua-uncovered": 110,
+          "unsigned": 2
+        },
+        "search-crawler": {
+          "unsigned": 78,
+          "not-verified": 9
+        },
+        "signed-agent": {
+          "verified-ua-uncovered": 73
+        },
+        "ai-assistant": {
+          "unsigned": 31,
+          "verified-ua-uncovered": 9
+        },
+        "preview-or-feed": {
+          "unsigned": 19
+        },
+        "http-client": {
+          "unsigned": 15
+        },
+        "headless-browser": {
+          "unsigned": 5
+        }
+      },
+      "kindReasons": [
+        {
+          "kind": "other-bot",
+          "reason": "generic-bot",
+          "views": 620
+        },
+        {
+          "kind": "unresolved",
+          "reason": "fetch-metadata-absent",
+          "views": 602
+        },
+        {
+          "kind": "browser",
+          "reason": "navigation-shaped-network-unlisted",
+          "views": 571
+        },
+        {
+          "kind": "ai-search",
+          "reason": "ExaSearchBot",
+          "views": 394
+        },
+        {
+          "kind": "cloud-browser",
+          "reason": "hosting-asn:132203",
+          "views": 183
+        },
+        {
+          "kind": "cloud-browser",
+          "reason": "hosting-asn:396982",
+          "views": 172
+        },
+        {
+          "kind": "unresolved",
+          "reason": "unrecognized-browser-claim",
+          "views": 168
+        },
+        {
+          "kind": "ai-search",
+          "reason": "Meta-WebIndexer",
+          "views": 154
+        },
+        {
+          "kind": "ai-search",
+          "reason": "ShapBot",
+          "views": 111
+        },
+        {
+          "kind": "cloud-browser",
+          "reason": "hosting-asn:24940",
+          "views": 95
+        },
+        {
+          "kind": "seo-crawler",
+          "reason": "AhrefsSiteAudit",
+          "views": 76
+        },
+        {
+          "kind": "signed-agent",
+          "reason": "Other",
+          "views": 69
+        },
+        {
+          "kind": "cloud-browser",
+          "reason": "hosting-asn:16276",
+          "views": 68
+        },
+        {
+          "kind": "cloud-browser",
+          "reason": "hosting-asn:51167",
+          "views": 68
+        },
+        {
+          "kind": "unresolved",
+          "reason": "fetch-metadata-support-unknown",
+          "views": 65
+        },
+        {
+          "kind": "ai-crawler",
+          "reason": "Amazonbot",
+          "views": 64
+        },
+        {
+          "kind": "search-crawler",
+          "reason": "Googlebot",
+          "views": 62
+        },
+        {
+          "kind": "ai-crawler",
+          "reason": "PetalBot",
+          "views": 53
+        },
+        {
+          "kind": "ai-search",
+          "reason": "PerplexityBot",
+          "views": 45
+        },
+        {
+          "kind": "seo-crawler",
+          "reason": "AhrefsBot",
+          "views": 36
+        },
+        {
+          "kind": "cloud-browser",
+          "reason": "hosting-asn:14618",
+          "views": 31
+        },
+        {
+          "kind": "ai-assistant",
+          "reason": "ChatGPT-User",
+          "views": 25
+        },
+        {
+          "kind": "cloud-browser",
+          "reason": "hosting-asn:45102",
+          "views": 18
+        },
+        {
+          "kind": "cloud-browser",
+          "reason": "hosting-asn:45090",
+          "views": 17
+        },
+        {
+          "kind": "ai-crawler",
+          "reason": "Bytespider",
+          "views": 16
+        },
+        {
+          "kind": "http-client",
+          "reason": "not-navigation-shaped",
+          "views": 15
+        },
+        {
+          "kind": "ai-crawler",
+          "reason": "ClaudeBot",
+          "views": 13
+        },
+        {
+          "kind": "ai-crawler",
+          "reason": "GPTBot",
+          "views": 12
+        },
+        {
+          "kind": "ai-search",
+          "reason": "OAI-SearchBot",
+          "views": 12
+        },
+        {
+          "kind": "preview-or-feed",
+          "reason": "FacebookBot",
+          "views": 12
+        },
+        {
+          "kind": "ai-search",
+          "reason": "Applebot",
+          "views": 11
+        },
+        {
+          "kind": "cloud-browser",
+          "reason": "hosting-asn:14061",
+          "views": 11
+        },
+        {
+          "kind": "cloud-browser",
+          "reason": "hosting-asn:31898",
+          "views": 11
+        },
+        {
+          "kind": "search-crawler",
+          "reason": "Bingbot",
+          "views": 10
+        },
+        {
+          "kind": "search-crawler",
+          "reason": "DuckDuckBot",
+          "views": 9
+        },
+        {
+          "kind": "ai-assistant",
+          "reason": "Claude-User",
+          "views": 6
+        },
+        {
+          "kind": "ai-assistant",
+          "reason": "ExaUser",
+          "views": 6
+        },
+        {
+          "kind": "ai-crawler",
+          "reason": "Meta-ExternalAgent",
+          "views": 6
+        },
+        {
+          "kind": "cloud-browser",
+          "reason": "hosting-asn:16509",
+          "views": 6
+        },
+        {
+          "kind": "preview-or-feed",
+          "reason": "archiver-asn:7941",
+          "views": 6
+        },
+        {
+          "kind": "headless-browser",
+          "reason": "HeadlessChrome",
+          "views": 5
+        },
+        {
+          "kind": "search-crawler",
+          "reason": "Baiduspider",
+          "views": 5
+        },
+        {
+          "kind": "signed-agent",
+          "reason": "ChatGPT",
+          "views": 4
+        },
+        {
+          "kind": "ai-assistant",
+          "reason": "DuckAssistBot",
+          "views": 3
+        },
+        {
+          "kind": "cloud-browser",
+          "reason": "hosting-asn:211590",
+          "views": 3
+        },
+        {
+          "kind": "cloud-browser",
+          "reason": "hosting-asn:12876",
+          "views": 2
+        },
+        {
+          "kind": "other-bot",
+          "reason": "GoogleOther",
+          "views": 2
+        },
+        {
+          "kind": "cloud-browser",
+          "reason": "hosting-asn:150436",
+          "views": 1
+        },
+        {
+          "kind": "cloud-browser",
+          "reason": "hosting-asn:18779",
+          "views": 1
+        },
+        {
+          "kind": "cloud-browser",
+          "reason": "hosting-asn:40021",
+          "views": 1
+        },
+        {
+          "kind": "cloud-browser",
+          "reason": "hosting-asn:8560",
+          "views": 1
+        },
+        {
+          "kind": "preview-or-feed",
+          "reason": "Slackbot-LinkExpanding",
+          "views": 1
+        },
+        {
+          "kind": "search-crawler",
+          "reason": "YandexBot",
+          "views": 1
+        },
+        {
+          "kind": "unresolved",
+          "reason": "request-context-conflict",
+          "views": 1
+        }
+      ],
+      "byAgent": [
+        {
+          "agentName": "ExaSearchBot",
+          "trafficClass": "ai",
+          "views": 394
+        },
+        {
+          "agentName": "Meta-WebIndexer",
+          "trafficClass": "ai",
+          "views": 154
+        },
+        {
+          "agentName": "ShapBot",
+          "trafficClass": "ai",
+          "views": 111
+        },
+        {
+          "agentName": "AhrefsSiteAudit",
+          "trafficClass": "bot",
+          "views": 76
+        },
+        {
+          "agentName": "Amazonbot",
+          "trafficClass": "ai",
+          "views": 64
+        },
+        {
+          "agentName": "Googlebot",
+          "trafficClass": "bot",
+          "views": 62
+        },
+        {
+          "agentName": "PetalBot",
+          "trafficClass": "ai",
+          "views": 53
+        },
+        {
+          "agentName": "PerplexityBot",
+          "trafficClass": "ai",
+          "views": 45
+        },
+        {
+          "agentName": "AhrefsBot",
+          "trafficClass": "bot",
+          "views": 36
+        },
+        {
+          "agentName": "ChatGPT-User",
+          "trafficClass": "ai",
+          "views": 25
+        },
+        {
+          "agentName": "Bytespider",
+          "trafficClass": "ai",
+          "views": 16
+        },
+        {
+          "agentName": "ClaudeBot",
+          "trafficClass": "ai",
+          "views": 13
+        },
+        {
+          "agentName": "FacebookBot",
+          "trafficClass": "bot",
+          "views": 12
+        },
+        {
+          "agentName": "GPTBot",
+          "trafficClass": "ai",
+          "views": 12
+        },
+        {
+          "agentName": "OAI-SearchBot",
+          "trafficClass": "ai",
+          "views": 12
+        },
+        {
+          "agentName": "Applebot",
+          "trafficClass": "ai",
+          "views": 11
+        },
+        {
+          "agentName": "Bingbot",
+          "trafficClass": "bot",
+          "views": 10
+        },
+        {
+          "agentName": "DuckDuckBot",
+          "trafficClass": "bot",
+          "views": 9
+        },
+        {
+          "agentName": "Claude-User",
+          "trafficClass": "ai",
+          "views": 6
+        },
+        {
+          "agentName": "ExaUser",
+          "trafficClass": "ai",
+          "views": 6
+        },
+        {
+          "agentName": "Meta-ExternalAgent",
+          "trafficClass": "ai",
+          "views": 6
+        },
+        {
+          "agentName": "Baiduspider",
+          "trafficClass": "bot",
+          "views": 5
+        },
+        {
+          "agentName": "HeadlessChrome",
+          "trafficClass": "bot",
+          "views": 5
+        },
+        {
+          "agentName": "DuckAssistBot",
+          "trafficClass": "ai",
+          "views": 3
+        },
+        {
+          "agentName": "GoogleOther",
+          "trafficClass": "bot",
+          "views": 2
+        },
+        {
+          "agentName": "Slackbot-LinkExpanding",
+          "trafficClass": "bot",
+          "views": 1
+        },
+        {
+          "agentName": "YandexBot",
+          "trafficClass": "bot",
+          "views": 1
+        }
+      ],
+      "bySigner": [
+        {
+          "signatureAgent": "Exa",
+          "views": 400
+        },
+        {
+          "signatureAgent": "Other",
+          "views": 180
+        },
+        {
+          "signatureAgent": "Ahrefs",
+          "views": 110
+        },
+        {
+          "signatureAgent": "ChatGPT",
+          "views": 4
+        },
+        {
+          "signatureAgent": "DuckDuckGo",
+          "views": 3
+        }
+      ],
+      "byKindNativeCategory": [
+        {
+          "kind": "unresolved",
+          "basis": "empty",
+          "views": 823
+        },
+        {
+          "kind": "cloud-browser",
+          "basis": "empty",
+          "views": 685
+        },
+        {
+          "kind": "browser",
+          "basis": "empty",
+          "views": 571
+        },
+        {
+          "kind": "other-bot",
+          "basis": "empty",
+          "views": 412
+        },
+        {
+          "kind": "ai-search",
+          "basis": "Search Engine Crawler",
+          "views": 406
+        },
+        {
+          "kind": "ai-search",
+          "basis": "Page Preview",
+          "views": 154
+        },
+        {
+          "kind": "ai-crawler",
+          "basis": "AI Crawler",
+          "views": 148
+        },
+        {
+          "kind": "ai-search",
+          "basis": "AI Search",
+          "views": 122
+        },
+        {
+          "kind": "seo-crawler",
+          "basis": "Search Engine Optimization",
+          "views": 112
+        },
+        {
+          "kind": "other-bot",
+          "basis": "Search Engine Optimization",
+          "views": 100
+        },
+        {
+          "kind": "search-crawler",
+          "basis": "Search Engine Crawler",
+          "views": 85
+        },
+        {
+          "kind": "signed-agent",
+          "basis": "AI Crawler",
+          "views": 69
+        },
+        {
+          "kind": "ai-search",
+          "basis": "empty",
+          "views": 45
+        },
+        {
+          "kind": "other-bot",
+          "basis": "Page Preview",
+          "views": 36
+        },
+        {
+          "kind": "other-bot",
+          "basis": "Archiver",
+          "views": 30
+        },
+        {
+          "kind": "ai-assistant",
+          "basis": "AI Assistant",
+          "views": 28
+        },
+        {
+          "kind": "other-bot",
+          "basis": "Search Engine Crawler",
+          "views": 25
+        },
+        {
+          "kind": "ai-crawler",
+          "basis": "empty",
+          "views": 15
+        },
+        {
+          "kind": "http-client",
+          "basis": "empty",
+          "views": 15
+        },
+        {
+          "kind": "unresolved",
+          "basis": "Search Engine Crawler",
+          "views": 13
+        },
+        {
+          "kind": "preview-or-feed",
+          "basis": "Page Preview",
+          "views": 11
+        },
+        {
+          "kind": "other-bot",
+          "basis": "AI Crawler",
+          "views": 10
+        },
+        {
+          "kind": "preview-or-feed",
+          "basis": "empty",
+          "views": 8
+        },
+        {
+          "kind": "other-bot",
+          "basis": "Monitoring & Analytics",
+          "views": 7
+        },
+        {
+          "kind": "ai-assistant",
+          "basis": "Search Engine Crawler",
+          "views": 6
+        },
+        {
+          "kind": "ai-assistant",
+          "basis": "empty",
+          "views": 6
+        },
+        {
+          "kind": "headless-browser",
+          "basis": "empty",
+          "views": 5
+        },
+        {
+          "kind": "cloud-browser",
+          "basis": "Monitoring & Analytics",
+          "views": 4
+        },
+        {
+          "kind": "signed-agent",
+          "basis": "AI Assistant",
+          "views": 4
+        },
+        {
+          "kind": "other-bot",
+          "basis": "AI Search",
+          "views": 2
+        },
+        {
+          "kind": "search-crawler",
+          "basis": "empty",
+          "views": 2
+        },
+        {
+          "kind": "ai-crawler",
+          "basis": "Search Engine Crawler",
+          "views": 1
+        }
+      ],
+      "nativeCategoryTotals": {
+        "empty": 2587,
+        "Search Engine Crawler": 536,
+        "Page Preview": 201,
+        "AI Crawler": 227,
+        "AI Search": 124,
+        "Search Engine Optimization": 212,
+        "Archiver": 30,
+        "AI Assistant": 32,
+        "Monitoring & Analytics": 11
+      },
+      "verification": {
+        "vendorCheckUnrecognizedViews": 0,
+        "vendorCheckRecognizedViews": 3960,
+        "unrecognizedLocalViews": 0,
+        "coverageNotRecordedVerifiedViews": 0,
+        "coverageUnrecognizedVerifiedViews": 0,
+        "nativeUnavailableViews": 3960,
+        "nativeNotRecordedViews": 0,
+        "nativeUnrecognizedViews": 0,
+        "localInvalidViews": 9,
+        "localUnsupportedViews": 0,
+        "localUnavailableViews": 4,
+        "localPolicyRejectedViews": 0,
+        "localNotApplicableViews": 0,
+        "localIndeterminateViews": 0,
+        "unverifiedOutcomeNotRecordedViews": 0,
+        "vendorDocumentedViews": 511,
+        "vendorMatchingOriginViews": 508,
+        "vendorDifferentOriginViews": 3,
+        "vendorOriginConflictViews": 0,
+        "vendorConflictWithMatchingOriginViews": 0,
+        "vendorNotVerifiedViews": 0,
+        "vendorUnmappedDeclarationViews": 639,
+        "vendorUserAgentBoundViews": 0,
+        "vendorCheckNotRecordedViews": 0,
+        "recordedViews": 3960,
+        "notRecordedViews": 0,
+        "localVerifiedViews": 697,
+        "localUnverifiedViews": 13,
+        "localAbsentViews": 3250,
+        "testVerdictViews": 0,
+        "selectionUnrecognizedVerifiedViews": 0,
+        "selectionRecordedViews": 697,
+        "selectionNotRecordedVerifiedViews": 0,
+        "multipleTaggedCandidateViews": 0,
+        "unassessedCandidateViews": 0,
+        "coverageRecordedViews": 697,
+        "userAgentBoundViews": 0,
+        "resourceBoundViews": 0,
+        "methodBoundViews": 4,
+        "authorityOnlyViews": 693,
+        "nativeAvailableViews": 0,
+        "nativeVerifiedBotAvailableViews": 0,
+        "nativeSignedAgentAvailableViews": 0,
+        "nativeVerifiedBotViews": 0,
+        "nativeSignedAgentViews": 0,
+        "localVerifiedNativeNotVerifiedViews": 0
+      },
+      "vendorNetwork": {
+        "recognizedViews": 3960,
+        "unrecognizedViews": 0,
+        "recordedViews": 3960,
+        "notRecordedViews": 0,
+        "configuredDeclarationViews": 478,
+        "unmappedDeclarationViews": 672,
+        "noDeclarationViews": 2810,
+        "listedViews": 461,
+        "notListedViews": 3,
+        "unavailableViews": 1,
+        "notAssessedViews": 13,
+        "addressUnavailableViews": 0
+      },
+      "fetchMetadata": {
+        "records": {
+          "recognizedViews": 3960,
+          "notRecordedViews": 0,
+          "unrecognizedViews": 0,
+          "inconsistentViews": 0
+        },
+        "fields": {
+          "mode": {
+            "notAssessedViews": 0,
+            "absentViews": 2979,
+            "validViews": 981,
+            "unrecognizedViews": 0,
+            "invalidViews": 0,
+            "policyLimitedViews": 0,
+            "parametersViews": 0
+          },
+          "destination": {
+            "notAssessedViews": 0,
+            "absentViews": 2997,
+            "validViews": 963,
+            "unrecognizedViews": 0,
+            "invalidViews": 0,
+            "policyLimitedViews": 0,
+            "parametersViews": 0
+          },
+          "site": {
+            "notAssessedViews": 0,
+            "absentViews": 3068,
+            "validViews": 892,
+            "unrecognizedViews": 0,
+            "invalidViews": 0,
+            "policyLimitedViews": 0,
+            "parametersViews": 0
+          },
+          "activation": {
+            "notAssessedViews": 0,
+            "absentViews": 3214,
+            "validViews": 746,
+            "unrecognizedViews": 0,
+            "invalidViews": 0,
+            "policyLimitedViews": 0,
+            "parametersViews": 0
+          }
+        },
+        "activation": {
+          "trueClaimViews": 746,
+          "falseValueViews": 0
+        }
+      },
+      "byDirectoryPublication": [
+        {
+          "basis": "no-declaration",
+          "views": 2810
+        },
+        {
+          "basis": "matching-publisher",
+          "views": 618
+        },
+        {
+          "basis": "not-configured",
+          "views": 527
+        },
+        {
+          "basis": "different-publisher",
+          "views": 3
+        },
+        {
+          "basis": "not-verified",
+          "views": 2
+        }
+      ],
+      "referralPolicy": {
+        "version": "2026-09-06.2",
+        "sha256": "25d4655bd67b0a63e9fc1f59586c6d85f924671024874198a678e8b82a00d7c4",
+        "excludedViews": 0
+      },
+      "checks": {
+        "kindPartition": 3960,
+        "signaturePartition": 3960,
+        "nativeCategoryPartition": 3960,
+        "timeSeriesPartition": 3960,
+        "pathPartition": 3960
+      }
+    }
+  },
+  "inferences": {
+    "otherBotWithNativeAiCrawlerCategory": 10,
+    "namedOtherBotUpperBound": 2,
+    "minimumWithoutRecognizedClientDeclaration": 8,
+    "method": "10 AI Crawler-category Other bots minus at most 2 named Other bots; conservative aggregate set bound, not a row-level join."
+  },
+  "operations": {
+    "successfulPublicReportGets": 2,
+    "bothReportedCacheHit": true,
+    "directProductionSqlStatements": 0,
+    "newControlledPageVisits": 0,
+    "runtimeOrCollectionChanges": false,
+    "d1ReadMeter": "Not exposed by the cache-hit responses; no numeric read-cost claim."
+  }
+}
