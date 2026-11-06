@@ -1,35 +1,18 @@
-/** Shared, transactional admission for every public confirmation-email send. */
-export const CONFIRMATION_LIMITS = {
-  addressCooldown: 10 * 60,
-  addressPerDay: 3,
-  globalPerHour: 25,
-  globalPerDay: 100,
-  tokenLifetime: 24 * 60 * 60,
-  retention: 7 * 24 * 60 * 60,
-} as const;
-
-interface ConfirmationInput {
-  id: string;
-  email: string;
-  tokenHash: string;
-  subscriberId: string;
-  unsubscribeToken: string;
-  source: string | null;
-  consentIp: string | null;
-  userAgent: string | null;
-  mode: 'subscribe' | 'resend';
-}
+import { CONFIRMATION_LIMITS } from './confirmation.js';
+import type { ConfirmationAdmission, ConfirmationOutcome, ConfirmationReservation } from './confirmation.js';
+export { CONFIRMATION_LIMITS } from './confirmation.js';
 
 interface AdmissionRow {
-  decision: 'admitted' | 'capacity' | 'unchanged';
-  unsubscribe_token: string | null;
+  decision: unknown;
+  unsubscribe_token: unknown;
 }
 
 export async function admitConfirmation(
   db: D1Database,
-  input: ConfirmationInput,
-): Promise<AdmissionRow> {
+  input: ConfirmationReservation,
+): Promise<ConfirmationAdmission> {
   const limits = CONFIRMATION_LIMITS;
+  const email = input.email.value;
   const result = await db.batch<AdmissionRow>([
     db.prepare(`
       INSERT INTO confirmation_attempts (id, email, token_hash, reserved_at, expires_at)
@@ -51,9 +34,9 @@ export async function admitConfirmation(
         WHERE outcome != 'legacy' AND reserved_at > unixepoch() - 3600) < ?
       AND (SELECT COUNT(*) FROM confirmation_attempts
         WHERE outcome != 'legacy' AND reserved_at > unixepoch() - 86400) < ?
-    `).bind(input.id, input.email, input.tokenHash, limits.tokenLifetime,
-      input.email, input.mode, input.email, input.email, limits.addressCooldown,
-      input.email, limits.addressPerDay, limits.globalPerHour, limits.globalPerDay),
+    `).bind(input.id, email, input.tokenHash, limits.tokenLifetime,
+      email, input.mode, email, email, limits.addressCooldown,
+      email, limits.addressPerDay, limits.globalPerHour, limits.globalPerDay),
 
     // Preserve a token issued by the previous deployment during schema rollout.
     // This statement runs only after admission and never extends that token's TTL.
@@ -66,7 +49,7 @@ export async function admitConfirmation(
         AND unixepoch(confirm_token_expires_at) IS NOT NULL
         AND EXISTS (SELECT 1 FROM confirmation_attempts WHERE id = ?)
         AND NOT EXISTS (SELECT 1 FROM confirmation_attempts WHERE token_hash = subscribers.confirm_token)
-    `).bind(input.email, input.id),
+    `).bind(email, input.id),
 
     db.prepare(`
       INSERT INTO subscribers
@@ -93,25 +76,27 @@ export async function admitConfirmation(
           WHERE outcome != 'legacy' AND reserved_at > unixepoch() - 86400) >= ? THEN 'capacity'
         ELSE 'unchanged' END AS decision,
         (SELECT unsubscribe_token FROM subscribers WHERE email = ?) AS unsubscribe_token
-    `).bind(input.id, limits.globalPerHour, limits.globalPerDay, input.email),
+    `).bind(input.id, limits.globalPerHour, limits.globalPerDay, email),
   ]);
   const row = result[3]?.results[0];
-  if (!row || (row.decision === 'admitted' && !row.unsubscribe_token)) {
-    throw new Error('Confirmation admission result missing');
+  if (row?.decision === 'admitted' && typeof row.unsubscribe_token === 'string' && row.unsubscribe_token.length > 0) {
+    return { decision: 'admitted', unsubscribeToken: row.unsubscribe_token };
   }
-  return row;
+  if (row?.decision === 'capacity' || row?.decision === 'unchanged') return { decision: row.decision };
+  throw new Error('Confirmation admission result missing');
 }
 
 export async function recordConfirmationOutcome(
   db: D1Database,
   id: string,
-  outcome: 'accepted' | 'failed' | 'unknown',
+  outcome: ConfirmationOutcome,
   providerId: string | null,
   providerStatus: number | null,
 ): Promise<void> {
-  await db.prepare(`
+  const result = await db.prepare(`
     UPDATE confirmation_attempts SET outcome = ?, provider_id = ?, provider_status = ? WHERE id = ?
   `).bind(outcome, providerId, providerStatus, id).run();
+  if (!result.success || result.meta.changes !== 1) throw new Error('Confirmation receipt write unconfirmed');
 }
 
 export async function purgeConfirmationAttempts(db: D1Database): Promise<number> {

@@ -97,3 +97,24 @@ test('provider attempt starts its deadline before any response arrives', async (
   const result = await readProviderJson(Response.json({ ok: true }), { ...attempt, maxBytes: 100 });
   assert.deepEqual(result, { ok: true, value: { ok: true } });
 });
+
+test('elapsed deadline during read cancels before clearing its pending timer', async t => {
+  let clock = 0;
+  let cancelled = false;
+  t.mock.method(performance, 'now', () => clock);
+  const response = new Response(new ReadableStream({
+    pull(controller) {
+      // Body progress can be observed after the elapsed deadline before the
+      // timer callback gets a turn. This signal deliberately never aborts.
+      clock = 20;
+      controller.enqueue(new TextEncoder().encode('{'));
+    },
+    cancel() { cancelled = true; return new Promise(() => {}); },
+  }));
+  const result = await readProviderJson(response, {
+    signal: new AbortController().signal, deadline: 10, maxBytes: 100,
+  });
+  assert.deepEqual(result, { ok: false, reason: 'timeout' });
+  assert.equal(cancelled, true);
+  assert.equal(response.body.locked, false);
+});

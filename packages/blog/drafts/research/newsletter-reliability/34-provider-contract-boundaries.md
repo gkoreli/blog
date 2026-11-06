@@ -281,3 +281,32 @@ signal, stops after 107 ms in this local run. The batch stalled-body control sti
 stops at its original eight-second budget (8,003ms here). This establishes local
 runtime behavior and bounded policy; it does not measure production latency or
 current provider behavior. No provider calls, emails or deployment occur.
+
+## Fifth bounded increment — elapsed-read timeout cleanup (2026-11-06)
+
+A follow-up review reproduced a cleanup gap in the fourth increment's response
+reader. If a body read completes after the deadline before the timer callback
+runs, the elapsed-clock check returns timeout. Previously that path released the
+reader lock and cleared its pending timer without cancelling the unread body.
+A detached response stream therefore remained open even though the caller had
+already received an honest unknown/unavailable result. This was a resource
+cleanup defect, not an accepted response or an extension of the returned result's
+budget.
+
+The elapsed-read timeout path now invokes the same nonblocking cancellation used
+by the timer and abort listener before returning. The new regression advances a
+controlled clock during the stream's pull, leaves the signal unaborted, and makes
+the cancel hook never settle. It verifies timeout, initiated cancellation and a
+released reader lock without waiting for that hook. The three focused provider
+suites pass 91 tests; newsletter typecheck passes. No public result shape,
+provider retry policy, action compatibility or application behavior changes.
+
+The existing local native controls still accept ordinary provider requests,
+reject redirect targets, and enforce response size/receipt boundaries. A detached
+100 ms reader budget with 60 ms spent awaiting headers stops after 103 ms in this
+run. These local timing observations are not a production CPU-inclusive real-time
+limit: [Cloudflare's timer documentation](https://developers.cloudflare.com/workers/runtime-apis/performance/)
+explains that deployed performance/Date clocks advance after I/O, while local
+Wrangler clocks also advance during CPU execution. The bounded response sizes
+limit decoding/parsing work; the deadline controls establish waiting/read policy.
+No production calls, emails or deployment are part of this repair.

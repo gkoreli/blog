@@ -38,9 +38,14 @@ function parseVerifierReply(value: unknown): VerifierReply | null {
 }
 
 /** Verification does not establish control of an email address or human identity. */
+export type VerificationFailureReason = 'missing_secret' | 'invalid_token' | 'verifier_redirect'
+  | 'verifier_timeout' | 'invalid_verifier_response' | 'verifier_http_error' | 'invalid_secret'
+  | 'verifier_internal_error' | 'verifier_bad_request' | 'timeout_or_duplicate'
+  | 'hostname_mismatch' | 'action_mismatch' | 'verifier_network_error' | 'verifier_unavailable';
+
 export type TurnstileVerification = VerificationDiagnostics & (
   | { ok: true }
-  | { ok: false; kind: 'rejected' | 'unavailable'; reason: string }
+  | { ok: false; kind: 'rejected' | 'unavailable'; reason: VerificationFailureReason }
 );
 
 export async function verifyTurnstile(
@@ -48,7 +53,7 @@ export async function verifyTurnstile(
 ): Promise<TurnstileVerification> {
   const started = performance.now();
   const diagnostics: VerificationDiagnostics = { httpStatus: null, errorCodes: [], attempts: 0, elapsedMs: 0, retryReason: 'none' };
-  const failed = (reason: string, kind: 'rejected' | 'unavailable' = 'unavailable'): TurnstileVerification => ({
+  const failed = (reason: VerificationFailureReason, kind: 'rejected' | 'unavailable' = 'unavailable'): TurnstileVerification => ({
     ...diagnostics, elapsedMs: Math.max(0, Math.floor(performance.now() - started)), ok: false, kind, reason,
   });
   if (!secret) return failed('missing_secret');

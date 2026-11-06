@@ -1,14 +1,19 @@
-// Run: pnpm -C packages/blog exec tsx drafts/research/newsletter-reliability/repro/d1-admission.mjs
+// Run: pnpm -C packages/blog exec node --import tsx drafts/research/newsletter-reliability/repro/d1-admission.mjs /absolute/new-results.json
 // Actual local workerd D1; temporary storage, synthetic addresses, no provider calls.
 import assert from 'node:assert/strict';
 import { readFileSync, realpathSync, writeFileSync } from 'node:fs';
 import { createRequire } from 'node:module';
 import { admitConfirmation } from '../../../../../newsletter/src/confirmation-store.ts';
+import { SubscriberAddress } from '../../../../../newsletter/src/confirmation.ts';
+
+const outputPath = process.argv[2];
+assert.ok(outputPath?.startsWith('/'), 'Pass a new absolute result path; historical receipts must remain intact');
 
 const requireWrangler = createRequire(realpathSync(new URL('../../../../../../node_modules/wrangler/package.json', import.meta.url)));
 const { Miniflare } = requireWrangler('miniflare');
 const mf = new Miniflare({
   modules: true,
+  compatibilityDate: '2026-03-06',
   script: 'export default { fetch() { return new Response("local D1 fixture"); } }',
   d1Databases: ['DB'],
 });
@@ -16,7 +21,9 @@ const results = [];
 let sequence = 0;
 function input(email, mode = 'subscribe') {
   const id = `fixture-${++sequence}`;
-  return { id, email, mode, tokenHash: id, subscriberId: id, unsubscribeToken: `unsub-${id}`,
+  const address = SubscriberAddress.parse(email);
+  assert.ok(address, 'Fixture requires a valid synthetic address');
+  return { id, email: address, mode, tokenHash: id, subscriberId: id, unsubscribeToken: `unsub-${id}`,
     source: null, consentIp: null, userAgent: null };
 }
 
@@ -78,7 +85,7 @@ try {
     scope: 'Admission store and fresh migration path. No remote database, Turnstile, Resend, browser, or production-quota acceptance.',
     results,
   };
-  writeFileSync(new URL('./d1-admission-results.json', import.meta.url), `${JSON.stringify(output, null, 2)}\n`);
+  writeFileSync(outputPath, `${JSON.stringify(output, null, 2)}\n`, { mode: 0o600, flag: 'wx' });
   console.log(JSON.stringify(output, null, 2));
 } finally {
   await mf.dispose();

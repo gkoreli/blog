@@ -5,9 +5,16 @@ import { allowedOrigin, jsonError, jsonOk } from './responses.js';
 import { generateToken, hashToken, truncateIp } from './tokens.js';
 import { verifyTurnstile } from './turnstile.js';
 import { readRequestBytes } from './request-body.js';
+import { SubscriberAddress } from './confirmation.js';
+import type { ConfirmationMode } from './confirmation.js';
+import { requestConfirmation } from './request-confirmation.js';
+import type { ConfirmationObservation } from './request-confirmation.js';
 
 const MAX_BODY_BYTES = 4096;
-const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+type TransportObservation =
+  | { stage: 'origin_rejected' | 'content_type_rejected' | 'configuration_unavailable'
+    | 'request_limited' | 'email_invalid' | 'service_unavailable' }
+  | { stage: 'body_rejected'; reason?: 'too-large' | 'timeout' | 'aborted' | 'unreadable' };
 
 function sanitizeSource(raw: unknown): string | null {
   if (typeof raw !== 'string' || !raw.startsWith('/') || raw.startsWith('//')) return null;
@@ -24,7 +31,7 @@ function sanitizeSource(raw: unknown): string | null {
 
 /** Same validation, verifier, admission, and delivery policy on both public routes. */
 export async function handleConfirmationRequest(
-  request: Request, env: NewsletterEnv, mode: 'subscribe' | 'resend',
+  request: Request, env: NewsletterEnv, mode: ConfirmationMode,
 ): Promise<Response> {
   const origin = allowedOrigin(request);
   const id = crypto.randomUUID();
@@ -36,33 +43,35 @@ export async function handleConfirmationRequest(
     response.headers.set('x-request-id', id);
     return response;
   };
-  const log = (stage: string, details: Record<string, string | number | null> = {}): void => {
-    console.log('[newsletter:confirmation]', { attemptId: id, clientAttemptId, mode, stage,
+  const log = (event: ConfirmationObservation | TransportObservation): void => {
+    const details = event.stage === 'verification_failed'
+      ? { ...event, verifierCodes: event.verifierCodes.join(',') } : event;
+    console.log('[newsletter:confirmation]', { attemptId: id, clientAttemptId, mode,
       elapsedMs: Math.max(0, Math.floor(performance.now() - startedAt)), ...details });
   };
   if (request.headers.has('origin') && !origin) {
-    log('origin_rejected');
+    log({ stage: 'origin_rejected' });
     return respond(jsonError('This signup request is not allowed.', 403));
   }
   if (request.headers.get('content-type')?.split(';')[0]?.trim().toLowerCase() !== 'application/json') {
-    log('content_type_rejected');
+    log({ stage: 'content_type_rejected' });
     return respond(jsonError('Expected a JSON request.', 415, origin));
   }
   const ip = request.headers.get('cf-connecting-ip') ?? '0.0.0.0';
   try {
     if (!env.RESEND_API_KEY || !env.TURNSTILE_SECRET_KEY || !env.SUBSCRIBE_RATE_LIMITER) {
-      log('configuration_unavailable');
+      log({ stage: 'configuration_unavailable' });
       return respond(jsonError('Subscriptions are temporarily unavailable. Please try again later.', 503, origin));
     }
     if (!(await env.SUBSCRIBE_RATE_LIMITER.limit({ key: ip })).success) {
-      log('request_limited');
+      log({ stage: 'request_limited' });
       const response = jsonError('Too many requests. Please wait a minute and try again.', 429, origin);
       response.headers.set('retry-after', '60');
       return respond(response);
     }
     const received = await readRequestBytes(request, { maxBytes: MAX_BODY_BYTES });
     if (!received.ok) {
-      log('body_rejected', { reason: received.reason });
+      log({ stage: 'body_rejected', reason: received.reason });
       return respond(jsonError(received.status === 408
         ? 'The signup request did not finish. Please try again.'
         : 'Invalid or oversized signup request.', received.status, origin));
@@ -71,63 +80,53 @@ export async function handleConfirmationRequest(
     try { body = JSON.parse(new TextDecoder('utf-8', { fatal: true, ignoreBOM: false }).decode(received.bytes)); }
     catch { body = null; }
     if (typeof body !== 'object' || body === null || !('email' in body)) {
-      log('body_rejected');
+      log({ stage: 'body_rejected' });
       return respond(jsonError('Invalid or oversized signup request.', 400, origin));
     }
-    const email = typeof body.email === 'string' ? body.email.trim().toLowerCase() : '';
-    if (email.length > 254 || !EMAIL_RE.test(email)) {
-      log('email_invalid');
+    const email = SubscriberAddress.parse(body.email);
+    if (!email) {
+      log({ stage: 'email_invalid' });
       return respond(jsonError('Please enter a valid email address.', 400, origin));
     }
-    const token = 'turnstile' in body && typeof body.turnstile === 'string' ? body.turnstile : '';
-    const verification = await verifyTurnstile(token, env.TURNSTILE_SECRET_KEY, ip, new URL(request.url).hostname);
-    if (!verification.ok) {
-      log('verification_failed', { reason: verification.reason, verifierStatus: verification.httpStatus,
-        verifierCodes: verification.errorCodes.join(','), verifierAttempts: verification.attempts,
-        verifierElapsedMs: verification.elapsedMs, verifierRetryReason: verification.retryReason });
-      return respond(jsonError(verification.kind === 'unavailable'
+    const site = new URL(request.url);
+    const decision = await requestConfirmation({
+      id, email, challengeToken: 'turnstile' in body && typeof body.turnstile === 'string' ? body.turnstile : '',
+      mode, source: sanitizeSource('source' in body ? body.source : null),
+      consentIp: truncateIp(ip), userAgent: request.headers.get('user-agent')?.slice(0, 512) ?? null,
+    }, {
+      verify: token => verifyTurnstile(token, env.TURNSTILE_SECRET_KEY, ip, site.hostname),
+      async issue() {
+        const confirmationToken = generateToken();
+        return { confirmationToken, tokenHash: await hashToken(confirmationToken),
+          subscriberId: generateToken(), unsubscribeToken: generateToken() };
+      },
+      admit: reservation => admitConfirmation(env.DB, reservation),
+      deliver: (address, token, unsubscribeToken, operationId) => sendConfirmationEmail(env.RESEND_API_KEY,
+        address, `${site.origin}/api/confirm/${token}`,
+        `${site.origin}/api/unsubscribe/${unsubscribeToken}?confirmations=off`, operationId),
+      record: (operationId, delivery) => recordConfirmationOutcome(env.DB, operationId,
+        delivery.outcome, delivery.providerId, delivery.providerStatus),
+      observe: log,
+    });
+    if (decision === 'verification-unavailable' || decision === 'verification-rejected') {
+      return respond(jsonError(decision === 'verification-unavailable'
         ? 'Verification is temporarily unavailable. Please try again later.'
         : 'Verification could not be completed. Please try again.',
-      verification.kind === 'unavailable' ? 503 : 400, origin));
+      decision === 'verification-unavailable' ? 503 : 400, origin));
     }
-    log('verification_passed', { verifierStatus: verification.httpStatus, verifierAttempts: verification.attempts,
-      verifierElapsedMs: verification.elapsedMs, verifierRetryReason: verification.retryReason });
-    const confirmToken = generateToken();
-    const admission = await admitConfirmation(env.DB, {
-      id, email, tokenHash: await hashToken(confirmToken), subscriberId: generateToken(),
-      unsubscribeToken: generateToken(), source: sanitizeSource('source' in body ? body.source : null),
-      consentIp: truncateIp(ip), userAgent: request.headers.get('user-agent')?.slice(0, 512) ?? null, mode,
-    });
-    if (admission.decision === 'capacity') {
-      log('capacity_limited');
+    if (decision === 'capacity') {
       const response = jsonError('Subscriptions are busy right now. Please try again later.', 429, origin);
       response.headers.set('retry-after', '3600');
       return respond(response);
     }
-    if (admission.decision === 'unchanged' || !admission.unsubscribe_token) {
-      log('unchanged');
-      return respond(jsonOk({ ok: true }, 202, origin));
-    }
-    log('reserved');
-    const site = new URL(request.url).origin;
-    const delivery = await sendConfirmationEmail(env.RESEND_API_KEY, email,
-      `${site}/api/confirm/${confirmToken}`,
-      `${site}/api/unsubscribe/${admission.unsubscribe_token}?confirmations=off`, id);
-    try {
-      await recordConfirmationOutcome(env.DB, id, delivery.outcome, delivery.providerId, delivery.providerStatus);
-    } catch {
-      // The reservation is already durable. Do not resend because this write failed.
-      log('outcome_write_failed', { delivery: delivery.outcome });
-    }
-    log(delivery.outcome, { providerStatus: delivery.providerStatus });
-    if (delivery.outcome !== 'accepted') {
+    if (decision === 'delivery-unconfirmed') {
       const response = jsonError('We could not confirm the email was sent. Check your inbox before trying again in ten minutes.', 503, origin);
       response.headers.set('retry-after', '600');
       return respond(response);
     }
     return respond(jsonOk({ ok: true }, 202, origin));
   } catch {
-    log('service_unavailable');
+    log({ stage: 'service_unavailable' });
     return respond(jsonError('Subscriptions are temporarily unavailable. Please try again later.', 503, origin));
   }
 }

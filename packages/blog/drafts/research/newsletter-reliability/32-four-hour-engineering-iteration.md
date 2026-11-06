@@ -93,3 +93,42 @@ admission. A separate owner is implementing a minimal campaign identity latch,
 with additive migration 0006 and native controls. No campaign automation or live
 campaign send is authorized by that implementation. The coordinator retains the
 production migration/deployment gate.
+
+## Integration checkpoint — 07:25 UTC
+
+Source delivery includes browser attempt ownership (`594cfbd4`) and its cleanup/
+unknown-response follow-up (local `cd1684de`, integrated `91ba4781`), provider
+contracts through `a1c52478`, bounded request/wire authentication (`941cbbcb`),
+and campaign admission (`a7e423ae`). Research 33–36 preserve their distinct
+controlled receipts. Campaign schema 0006 has a separately recorded production
+application receipt in Research 35; do not rerun it. No production campaign was
+sent.
+
+The [confirmation application extraction](37-confirmation-application-boundary.md)
+is under independent review with fourteen application cases and fresh native D1
+admission/body controls. Integration moved to the clean detached checkout
+`/private/tmp/gkoreli-campaign-delivery-20261106` after concurrent remote-main
+changes; the original shared main and its unrelated dirty work remain intact.
+
+Remaining: finish independent source review, revise the article from these new
+results, perform joined checks/build/native acceptance, push scoped source, join
+actual deployment separately, reconcile eight complete prompts and release
+copies, then restore and check the November 6 queue. The fixed deadline remains
+10:07:25 UTC.
+
+## Joined local acceptance — 07:28 UTC
+
+The integrated blog suite passes **403/403**, workspace types pass, referral
+policy check passes, and the isolated production build renders **43** current
+posts (32 Markdown plus 11 TypeScript). A concurrently published AI Site Check
+article now uses prefix 042; the queued Turnstile file will use 043 with the
+same public slug. The earlier 43-post Turnstile rehearsal is historical, not
+this new release's count.
+
+Independent reviews repaired an active saved-fixture caller and an unexpected
+delivery-port escape in the confirmation extraction. They also reproduced and
+repaired response-reader cancellation after an elapsed read and repeated
+suppression timestamps. [Research 38](38-suppression-transition-idempotence.md)
+records fifteen production-SQL tests and eight actual local workerd/D1 controls,
+including trigger rollback and day-91 cleanup. These are local controls; source
+delivery and current Worker activation remain to be joined.

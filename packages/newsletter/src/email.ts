@@ -1,4 +1,5 @@
 import { providerAttempt, readProviderJson, validProviderId } from './provider-response.js';
+import type { ConfirmationReceipt } from './confirmation.js';
 
 /**
  * email.ts — Resend email delivery + HTML templates.
@@ -25,9 +26,7 @@ const BASE_URL = 'https://gkoreli.com';
 /** Max recipients per Resend batch API call. */
 export const RESEND_BATCH_LIMIT = 100;
 
-type ConfirmationDeliveryOutcome =
-  | { outcome: 'accepted'; providerId: string; providerStatus: number }
-  | { outcome: 'failed' | 'unknown'; providerId: null; providerStatus: number | null };
+type ConfirmationDeliveryOutcome = ConfirmationReceipt;
 
 export interface ConfirmationDeliveryDiagnostics {
   attempts: number;

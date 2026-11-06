@@ -31,7 +31,11 @@ A public signup request is not authenticated consent. Turnstile assesses a reque
 
 ## Request and delivery behavior
 
-Both public POST routes share `confirmation-request.ts` and `confirmation-store.ts`:
+Both public POST routes compose the same application in `request-confirmation.ts`.
+`confirmation.ts` owns address/receipt vocabulary and policy; `confirmation-request.ts`
+handles HTTP and `confirmation-store.ts` enforces durable admission. The
+[extraction and acceptance](../../packages/blog/drafts/research/newsletter-reliability/37-confirmation-application-boundary.md)
+records the boundary and preserved SQL behavior:
 
 1. Reject a supplied foreign Origin and non-JSON content type. Apply the existing native per-IP limiter. Bound actual body bytes at 4 KiB and reading at five seconds, then validate and normalize the address. Oversize returns 413; a body timeout/cancellation 408. Producer cancellation is not awaited before rejecting input.
 2. Verify Turnstile with a five-second deadline and expected hostname. New widgets use action `subscribe`; empty/missing action supports older cached clients. Missing configuration or verifier unavailability returns 503; invalid proof returns 400. No mail is sent on either path.
@@ -43,7 +47,7 @@ The starting policy is one admission per normalized address per ten minutes, at 
 
 Native rate limiting remains three requests per sixty seconds per IP, shared by both routes. Its counters are local and eventually consistent, so the D1 transaction supplies the shared email-admission ceiling. The cap covers new-path confirmation admissions, not historical sends, all API calls, campaigns or D1 read work.
 
-The D1 transaction cannot include the email provider. There is no outbox or background crash replay. A Worker crash can leave a charged reservation without an email, and an already admitted send can finish after an opt-out. A failed outcome write does not trigger another send. See the design artifact for these remaining tradeoffs and the review criteria.
+The D1 transaction cannot include the email provider. There is no outbox or background crash replay. A Worker crash can leave a charged reservation without an email, and an already admitted send can finish after an opt-out. An unconfirmed outcome-write acknowledgment does not trigger another send or revoke known provider acceptance. An unexpected delivery-adapter exception records unknown outcome and the same check-inbox/retry guidance without inventing provider-call diagnostics. See the design artifact for these remaining tradeoffs and the review criteria.
 
 ## Browser, tokens and suppression
 
@@ -53,7 +57,7 @@ Confirmation tokens contain 256 random bits and are stored as SHA-256 hashes. Ea
 
 Unsubscribe tokens are stored raw so newsletter footers can include stable links while the row exists. A database disclosure would expose addresses and usable opt-out tokens; hashing confirmation tokens does not protect those other fields. Unsubscribe GET previews and POST applies the action. Confirmation-email links can also block further confirmation requests.
 
-An ordinary unsubscribe permits later renewed confirmation. Bounce, complaint, explicit confirmation-mail opt-out, and conservatively migrated legacy inactive state suppress admissions. Activation and opt-outs revoke issued confirmation tokens. The inactive-row retention policy removes suppression after ninety days; the interface therefore advertises a confirmation block of up to ninety days, not a permanent one.
+An ordinary unsubscribe permits later renewed confirmation. Bounce, complaint, explicit confirmation-mail opt-out, and conservatively migrated legacy inactive state suppress admissions. Activation and opt-outs revoke issued confirmation tokens. Repeated bounce/complaint processing in the same suppression state preserves its retention anchor; a real state transition or missing anchor starts one. This is state idempotence, not event-ID deduplication: cross-family replays and a later new row remain explicit limits in [Research 38](../../packages/blog/drafts/research/newsletter-reliability/38-suppression-transition-idempotence.md). The inactive-row retention policy removes suppression after ninety days; the interface therefore advertises a confirmation block of up to ninety days, not a permanent one.
 
 ## Storage, diagnostics and cleanup
 
@@ -66,7 +70,7 @@ An ordinary unsubscribe permits later renewed confirmation. Bounce, complaint, e
 
 The newsletter shares D1 capacity with analytics and browser diagnostics. Investigations must budget production reads and preserve private captures outside Git. A second database in the same account would not itself isolate account-level allowances.
 
-Routine confirmation logs contain the opaque request ID, mode, stage, static reason and provider HTTP status. Webhook observations use a generated request UUID, closed stage/reason and, for suppression, event family and recipient count. Neither logs addresses or raw signatures/payloads. The webhook adapter authenticates original bytes before UTF-8/JSON decoding and bounds reading at 64 KiB and five seconds; see the [contract repair](../../packages/blog/drafts/research/newsletter-reliability/36-request-body-and-webhook-contracts.md). These statements do not establish the retention or redaction of separate provider history or Cloudflare request logs. Pre-admission diagnostics intentionally do not retain the submitted address.
+Routine confirmation logs contain opaque request/client attempt references, mode, closed stage/reason, provider HTTP status and bounded call/retry/timing facts when observed. Provider acceptance and receipt-write acknowledgment remain distinct. Webhook observations use a generated request UUID, closed stage/reason and, for suppression, event family and recipient count. Neither logs addresses or raw signatures/payloads. The webhook adapter authenticates original bytes before UTF-8/JSON decoding and bounds reading at 64 KiB and five seconds; see the [contract repair](../../packages/blog/drafts/research/newsletter-reliability/36-request-body-and-webhook-contracts.md). These statements do not establish the retention or redaction of separate provider history or Cloudflare request logs. Pre-admission diagnostics intentionally do not retain the submitted address.
 
 Nightly cleanup at 03:00 UTC removes expired pending rows, inactive rows older than ninety days using status-event timestamps, and confirmation attempts older than seven days. Those are this blog's storage policies, not categorical legal requirements or proof of compliance. Signed complaint/bounce processing is part of the implemented protection; live webhook configuration still requires its own receipt.
 
@@ -74,9 +78,9 @@ Nightly cleanup at 03:00 UTC removes expired pending rows, inactive rows older t
 
 Start with the saved receipt: **production migration 0005 completed September 9 at 01:58:35 UTC and must not be rerun**. A break or new session does not require another schema query. Newsletter migrations are explicit files against the shared database; the root Wrangler `migrations_dir` points to analytics and is not the newsletter migration history.
 
-- A fresh newsletter schema uses `0001_create_subscribers.sql`, then `0003_add_bounced_at.sql`, `0004_delivery_logs.sql`, and `0005_confirmation_admission.sql`.
+- A fresh newsletter schema uses `0001_create_subscribers.sql`, then `0003_add_bounced_at.sql`, `0004_delivery_logs.sql`, `0005_confirmation_admission.sql`, and `0006_campaign_admission.sql`.
 - `0002_for_existing_installs.sql` is only a compatibility patch for a pre-April-8 schema. Never execute it after the current fresh-install 0001, and never rerun ALTER migrations blindly.
-- The current installation has 0001/0003/0004/0005. For a different installation verified to lack 0005, apply it once before activating dependent code. It adds a nullable column/table, imports known pending token hashes and preserves old inactive-state uncertainty while leaving the old Worker compatible.
+- The current installation has 0001/0003/0004/0005 and the additive campaign identity table from 0006. [Research 35](../../packages/blog/drafts/research/newsletter-reliability/35-campaign-admission.md) records its November 6 application and exact schema acceptance; do not rerun it. For a different installation verified to lack 0005, apply it once before activating dependent code. It adds a nullable column/table, imports known pending token hashes and preserves old inactive-state uncertainty while leaving the old Worker compatible.
 
 The historical command below produced the saved migration receipt. It is **not a command to run on the current production database**:
 
