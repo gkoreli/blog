@@ -1,10 +1,17 @@
 import { captureSubscriptionError, captureSubscriptionResponse, type ClientLogger, type SubscriptionPhase, type SubscriptionOperationEvidence, type SubscriptionDiagnosticContext } from '@gkoreli/client-observability/client';
 import { SubscriptionAttempt, verificationToken, type RequestObservation } from './subscription-attempt.js';
 import { readTurnstileApi, observeTurnstileLoad, type TurnstileApi } from './turnstile-adapter.js';
-import { readAcceptedResponse, rejectedRequestMessage, discard } from './subscription-response.js';
+import { readAcceptedResponse, rejectedRequestMessage, discard, type AcceptedResponseBody } from './subscription-response.js';
 import { serializeSubscriptionRequest } from './subscription-request.js';
 
 interface SubscribeOptions { logger: ClientLogger; }
+type VerificationFailureStage = `subscribe_widget_${'deadline' | 'configuration_missing' | 'unavailable'
+  | 'empty_token' | 'invalid_token' | 'unexpected_token' | 'error' | 'expired' | 'timeout'
+  | 'unsupported' | 'render_exception' | 'execute_exception'}` | 'subscribe_request_too_large';
+type RequestFailureStage = 'subscribe_request_timeout' | 'subscribe_response_unexpected_status'
+  | 'subscribe_api_rejected' | 'subscribe_network_error'
+  | `subscribe_response_${Extract<AcceptedResponseBody, { confirmed: false }>['reason']}`;
+type DiagnosticStage = VerificationFailureStage | RequestFailureStage | 'subscribe_widget_remove_exception';
 interface WidgetLease { api: TurnstileApi; id: string | undefined; retired: boolean; }
 interface AttemptResources {
   attempt: SubscriptionAttempt;
@@ -233,15 +240,21 @@ function installForm(form: HTMLFormElement, input: HTMLInputElement, button: HTM
     // A late render return can be cleaned up after its replacement already exists.
     // Only the slot's current lease may use a whole-container fallback.
     const mayClearSlot = () => (!current || owns(resource)) && (!resource.widget || resource.widget === widget);
+    const clearSlot = (): boolean => {
+      try { if (mayClearSlot() && slot) slot.replaceChildren(); return true; }
+      catch { return false; }
+    };
+    let failed = false;
     try {
       if (widget.id !== undefined) widget.api.remove(widget.id);
-      else if (mayClearSlot() && slot) slot.replaceChildren();
+      else failed = !clearSlot();
     } catch {
-      if (mayClearSlot() && slot) slot.replaceChildren();
-      report(resource, 'subscribe_widget_remove_exception', resource.attempt.state.phase === 'sending' ? 'sending' : 'verifying');
+      failed = true;
+      clearSlot();
     }
+    if (failed) report(resource, 'subscribe_widget_remove_exception', resource.attempt.state.phase === 'sending' ? 'sending' : 'verifying');
   }
-  function failVerification(resource: AttemptResources, stage: string, text: string, provider?: { errorCode: unknown }): void {
+  function failVerification(resource: AttemptResources, stage: VerificationFailureStage, text: string, provider?: { errorCode: unknown }): void {
     if (!owns(resource)) return;
     const evidence = diagnosticContext(resource, 'manual-retry');
     if (!resource.attempt.failVerification()) return;
@@ -276,7 +289,7 @@ function installForm(form: HTMLFormElement, input: HTMLInputElement, button: HTM
         if (!owns(resource)) return;
         if (resource.attempt.expired(now())) { expire(resource); return; }
         if (body.confirmed) finishRequest(resource, 'accepted-response');
-        else finishRequest(resource, 'response-unavailable', 'subscribe_response_' + body.reason, UNCONFIRMED_MESSAGE);
+        else finishRequest(resource, 'response-unavailable', `subscribe_response_${body.reason}`, UNCONFIRMED_MESSAGE);
       } else if (response.redirected || (response.status >= 200 && response.status < 300)) {
         discard(response);
         finishRequest(resource, 'response-unavailable', 'subscribe_response_unexpected_status', UNCONFIRMED_MESSAGE);
@@ -288,7 +301,7 @@ function installForm(form: HTMLFormElement, input: HTMLInputElement, button: HTM
       if (owns(resource)) finishRequest(resource, 'response-unavailable', 'subscribe_network_error', 'Connection failed. Check for a confirmation email before trying again.');
     }
   }
-  function finishRequest(resource: AttemptResources, observation: RequestObservation, stage?: string, text = ''): void {
+  function finishRequest(resource: AttemptResources, observation: RequestObservation, stage?: RequestFailureStage, text = ''): void {
     if (!owns(resource)) return;
     const evidence = diagnosticContext(resource, 'manual-retry');
     if (!resource.attempt.settleRequest(observation, now())) {
@@ -310,7 +323,7 @@ function installForm(form: HTMLFormElement, input: HTMLInputElement, button: HTM
       widget: resource.widgetState, script: readTurnstileApi() ? 'available' : 'unavailable', recovery,
     };
   }
-  function report(resource: AttemptResources, stage: string, phase: SubscriptionPhase, status?: number, provider?: { errorCode: unknown }, context = diagnosticContext(resource, 'manual-retry')): void {
+  function report(resource: AttemptResources, stage: DiagnosticStage, phase: SubscriptionPhase, status?: number, provider?: { errorCode: unknown }, context = diagnosticContext(resource, 'unknown')): void {
     try {
       logger.report({ type: 'interaction_error', component: 'subscribe_form', message: stage, status,
         subscriptionEvidence: captureSubscriptionError(phase, provider, resource.operation, context) });

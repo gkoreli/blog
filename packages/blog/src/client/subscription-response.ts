@@ -76,7 +76,8 @@ export function rejectedRequestMessage(status: number, retryAfter: string | null
   }
   if (status === 503) return retryAfter === '600'
     ? 'Subscriptions are temporarily unavailable. Check your inbox before retrying in ten minutes.'
-    : 'Subscriptions are temporarily unavailable. Please try again later.';
+    : 'Subscriptions are temporarily unavailable. Check your inbox before trying again in ten minutes.';
+  if (status >= 500) return 'We could not confirm the request. Check your inbox before trying again in ten minutes.';
   if (status === 400) return 'We could not verify this request. Please try again.';
   return 'We could not complete the request. Please try again.';
 }

@@ -1,6 +1,7 @@
 /** Manual native-browser acceptance fixture. No production credentials or email sends.
  * pnpm -C packages/blog exec node --import tsx test/fixtures/subscription-browser.ts hold
- * Scenarios: hold | accepted | html | redirect | failure | loader-failure | main-failure.
+ * Scenarios: hold | accepted | html | redirect | failure | loader-failure | main-failure
+ *           | late-provider | late-loader-failure.
  */
 import { createServer } from 'node:http';
 import { fileURLToPath } from 'node:url';
@@ -13,14 +14,21 @@ import { parseClientErrorPayload } from '../../../client-observability/src/schem
 import type { SubscriptionErrorEvidence } from '@gkoreli/client-observability/client';
 
 const scenario = process.argv[2] ?? 'accepted';
-if (!['hold', 'accepted', 'html', 'redirect', 'failure', 'loader-failure', 'main-failure'].includes(scenario)) throw new Error('Unknown fixture scenario');
+if (!['hold', 'accepted', 'html', 'redirect', 'failure', 'loader-failure', 'main-failure', 'late-provider', 'late-loader-failure'].includes(scenario)) throw new Error('Unknown fixture scenario');
 const sitekey = scenario === 'failure' ? '2x00000000000000000000AB' : '1x00000000000000000000AA';
+const lateProvider = scenario === 'late-provider' || scenario === 'late-loader-failure';
 const forms = await renderContent(['first', 'second'].map(formId => ReplySlip({ turnstileSiteKey: sitekey, formId })));
 const bundle = await build({
   stdin: { contents: `
     import {initSubscribeForm} from './src/client/subscribe.ts';
     import {createDefaultClientLogger} from '@gkoreli/client-observability/client';
     initSubscribeForm({logger:createDefaultClientLogger({buildId:'native-browser-fixture'})});
+    document.getElementById('load-provider')?.addEventListener('click',()=>{
+      if(document.querySelector('script[data-native-provider]'))return;
+      const script=document.createElement('script');
+      script.src='https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit&onload=gkTurnstileReady';
+      script.async=true;script.defer=true;script.dataset.nativeProvider='true';document.head.append(script);
+    });
     document.getElementById('repeat-ready').addEventListener('click',()=>window.gkTurnstileReady());
     document.getElementById('release').addEventListener('click',async()=>{await fetch('/fixture/release',{method:'POST'});});
     document.getElementById('refresh').addEventListener('click',async()=>{
@@ -37,11 +45,11 @@ const script = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=exp
 const html = `<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Native subscription acceptance fixture</title>
   <style>body{font:17px system-ui;max-width:780px;margin:40px auto;padding:0 24px;background:#f5f2e9;color:#232823}h1{font-size:28px}form{padding:20px;margin:20px 0;border:1px solid #aaa;border-radius:8px;background:white}input,button{padding:10px;font:inherit}button{cursor:pointer}button:disabled{cursor:wait}label{display:block;margin-bottom:8px}.dispatch-note{font-size:13px}.subscribe-msg{font-weight:600}form[data-subscribe-status=success]{border-color:#267548}form[data-subscribe-status=error]{border-color:#a64d2e}pre{white-space:pre-wrap;word-break:break-word;background:white;padding:15px;font-size:12px}</style>
   <script>${clientBootstrap(JSON.stringify('native-browser-fixture'))}</script>
-  <script src="${script}" defer></script><script src="${scenario === 'main-failure' ? '/main.js' : '/fixture/client.js'}" type="module"></script>
+  ${lateProvider ? '' : `<script src="${script}" data-native-provider="true" defer></script>`}<script src="${scenario === 'main-failure' ? '/main.js' : '/fixture/client.js'}" type="module"></script>
   </head><body><h1>Native subscription acceptance fixture</h1>
   <p>Scenario: <strong>${scenario}</strong>. Actual SSG form, subscription client, bootstrap and Cloudflare API. Official dummy sitekey. Local receiver only; no email sends.</p>
   <h2>First form</h2>${forms[0]}<h2>Second form</h2>${forms[1]}
-  <p><button id="repeat-ready">Repeat provider readiness signal</button> <button id="release">Release pending responses</button> <button id="refresh">Refresh evidence</button></p>
+  <p>${lateProvider ? '<button id="load-provider">Load provider script</button> ' : ''}<button id="repeat-ready">Repeat provider readiness signal</button> <button id="release">Release pending responses</button> <button id="refresh">Refresh evidence</button></p>
   <pre id="evidence">No evidence requested yet.</pre></body></html>`;
 
 const evidence: {
@@ -56,7 +64,7 @@ const server = createServer(async (request, response) => {
   if (request.method === 'GET' && url.pathname === '/') {
     response.setHeader('content-type', 'text/html; charset=utf-8');
     // Controlled enforced policy, exercising a real resource error for the actual provider URL.
-    if (scenario === 'loader-failure') response.setHeader('content-security-policy', "script-src 'self' 'unsafe-inline'; connect-src 'self'; frame-src https://challenges.cloudflare.com");
+    if (scenario === 'loader-failure' || scenario === 'late-loader-failure') response.setHeader('content-security-policy', "script-src 'self' 'unsafe-inline'; connect-src 'self'; frame-src https://challenges.cloudflare.com");
     response.end(html); return;
   }
   if (request.method === 'GET' && url.pathname === '/fixture/client.js') { response.setHeader('content-type', 'text/javascript'); response.end(client); return; }
