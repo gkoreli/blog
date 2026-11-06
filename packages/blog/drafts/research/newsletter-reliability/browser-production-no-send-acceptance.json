@@ -1,0 +1,89 @@
+{
+  "observedAtUtc": "2026-11-06T07:45:29.865Z",
+  "scope": "One authorized already-active designated-address production check. Real silent Turnstile validation and no-send202; not a fresh email, confirmation/activation cycle, population success rate or acceptance of later server changes.",
+  "preflightDeployment": {
+    "sourceCommit": "0825a053ddd478e359b096952769db7531c717c5",
+    "buildId": "b17d6b3f-6472-4f59-ba7b-cd7c616f0be6",
+    "workerVersion": "b46ac412-df88-4d80-8131-64aaf2989c06",
+    "nativeUiAllocationObserved": 100,
+    "deployLogSuccessAtUtc": "2026-11-06T07:30:50.277Z"
+  },
+  "page": {
+    "path": "/owner",
+    "bootstrapBuildIdentity": "cf:b17d6b3f-6472-4f59-ba7b-cd7c616f0be6:0825a053ddd478e359b096952769db7531c717c5",
+    "handlerInitialized": true,
+    "publicSitekeyPresent": true,
+    "idleIframeCount": 0,
+    "bootstrapIdentityIsBrowserBundleByteProof": false
+  },
+  "measuredRequest": {
+    "method": "POST",
+    "path": "/api/subscribe",
+    "workerVersion": "7d12bcd3-e61d-4742-b511-dfa22defa7c9",
+    "serverSourceCommit": "64a95314967f9b79a81c4f711dc27cae95fbb9c6",
+    "nativeBuildId": "2f0bad79-6930-42a6-a6d3-f1cecb5493b0",
+    "nativeDeployLogVersionAtUtc": "2026-11-06T07:43:06.260Z",
+    "nativeDeployLogSuccessAtUtc": "2026-11-06T07:43:06.364Z",
+    "serverBrowserAndLoggerFilesByteEqualToNativeTestedCommit": "cd1684dede77bf2b64c7665beaceb55df4e005eb",
+    "matchedSourceFiles": 14,
+    "currentAllocationAtRequestNotIndependentlyMeasured": true
+  },
+  "liveAcceptance": {
+    "signupPosts": 1,
+    "interactiveCheckboxCompleted": false,
+    "verificationPassed": true,
+    "verifierStatus": 200,
+    "verifierAttempts": 1,
+    "verifierElapsedMs": 25,
+    "verificationRetryReason": "none",
+    "admissionDecision": "unchanged",
+    "responseStatus": 202,
+    "invocationWallMs": 66,
+    "sameClientAttemptReferenceAcrossStages": true,
+    "sameServerAttemptAndInvocationAcrossStages": true,
+    "browserStatus": "success",
+    "browserBusyCleared": true,
+    "browserButtonUsable": true,
+    "remainingIframeCount": 0
+  },
+  "stateGuardAndReadback": {
+    "designatedAddressAlreadyAuthorized": true,
+    "freshBeforeClickActiveConfirmedHashAbsent": true,
+    "afterStateExactlyMatchesBefore": true,
+    "confirmationAttemptsBefore": 1,
+    "confirmationAttemptsAfter": 1,
+    "noNewConfirmationAdmission": true,
+    "noSendBranchConfirmedBySourceTraceAndState": true,
+    "newOptoutOrReseedOperations": 0,
+    "independentNewMailboxOrProviderSendReadback": false
+  },
+  "queryBudget": {
+    "targetedSqlStatements": 4,
+    "reportedRowsRead": 8,
+    "reportedRowsWritten": 0,
+    "applicationDatabaseWorkMetered": false
+  },
+  "logging": {
+    "initialVersionFilteredTailBytes": 0,
+    "tailFilterWorkerVersion": "b46ac412-df88-4d80-8131-64aaf2989c06",
+    "persistedNativeLookupFoundMeasuredRequest": true,
+    "measuredStages": [
+      "verification_passed",
+      "unchanged"
+    ],
+    "queryWindow": "Single existing invocation, recent15-minute window",
+    "rawReferencesAndRequestMetadataOutsideGit": true
+  },
+  "limits": [
+    "Page bootstrap identity is recorded separately from actual request Worker identity; deployment advanced between them.",
+    "Later manual Worker deployments and the final server-domain snapshot are not certified by this earlier request.",
+    "No fresh recipient send, Inbox placement, owner activation, real interactive checkbox or population completion trial was repeated.",
+    "This controlled request and client-supplied reference are not authenticated evidence about other operators or lost subscribers."
+  ],
+  "cleanup": {
+    "tailStopped": true,
+    "noOwnedFixtureServersRunning": true,
+    "noProductionTestRowsCreatedOrDeleted": true
+  },
+  "rawCapturesPublished": false
+}
