@@ -1,0 +1,154 @@
+{
+  "recordedAt": "2026-11-06T06:00:47.788985+00:00",
+  "clientDate": "2026-11-05",
+  "authorization": "Owner explicitly requested response/traffic checks, five additional replies or follow-ups per platform, and one additional Reddit article. Earlier authorization covers relevant public social submissions and bounded private Cloudflare logs.",
+  "xNewOutreachDestinations": 5,
+  "xOutreachReplies": 5,
+  "xClarificationReplies": 2,
+  "redditNewCommentsAndFollowups": 5,
+  "redditStandaloneArticles": 1,
+  "canonicalOwnerViewsVerified": 13,
+  "timestampMeaning": "receiptRecordedAt and verifiedAt are local observation receipts, not server publication timestamps.",
+  "independentPublicVisibility": "Independent web fetches of the new Reddit article and original X post returned cache misses. This does not establish removal, suppression or anonymous visibility.",
+  "items": [
+    {
+      "platform": "x",
+      "parent": "https://x.com/benny617/status/2118559408741609667",
+      "url": "https://x.com/GogaKoreli/status/2118580889466863776",
+      "copy": "check the covered fields too. dot's browser + curl verified as chatgpt on my site, but path/query/UA were unsigned. changing those still passed my local replay; hostname/method changes failed.\n\nmy coverage tests: https://gkoreli.com/ai-fetcher-browser-crawler-headers",
+      "weighted": 236,
+      "verifiedAt": "2026-11-06T05:57:42.311Z",
+      "verification": "Canonical owner view; submitted body and article link visible. Card presentation varies.",
+      "receiptRecordedAt": "2026-11-06T05:47:06.554Z",
+      "state": "canonical-owner-view-verified"
+    },
+    {
+      "platform": "x",
+      "parent": "https://x.com/a_jfedor/status/2118475848374514050",
+      "url": "https://x.com/GogaKoreli/status/2118581079796006933",
+      "copy": "that grep misses unsigned agent browsers. grok made 11 chrome/safari-style requests in my controlled run, all stored Browser. i'd keep the UA matches, but label them as a lower bound.\n\nmy headers + log checks: https://gkoreli.com/ai-fetcher-browser-crawler-headers",
+      "weighted": 233,
+      "verifiedAt": "2026-11-06T05:57:43.645Z",
+      "verification": "Canonical owner view; submitted body and article link visible. Card presentation varies.",
+      "receiptRecordedAt": "2026-11-06T05:47:56.963Z",
+      "state": "canonical-owner-view-verified"
+    },
+    {
+      "platform": "x",
+      "parent": "https://x.com/rpvibs10/status/2118514159336006036",
+      "url": "https://x.com/GogaKoreli/status/2118581510991421562",
+      "copy": "worth testing the real tools alongside the UA probes. my Context API/CLI/MCP trials made 11 unsigned page requests with no vendor declaration: 10 Browser + 1 Cloud Browser in my collector.\n\nmy operation-by-operation checks: https://gkoreli.com/ai-fetcher-browser-crawler-headers",
+      "weighted": 247,
+      "verifiedAt": "2026-11-06T05:57:44.370Z",
+      "verification": "Canonical owner view; submitted body and article link visible. Card presentation varies.",
+      "receiptRecordedAt": "2026-11-06T05:49:46.841Z",
+      "state": "canonical-owner-view-verified"
+    },
+    {
+      "platform": "x",
+      "parent": "https://x.com/GogaKoreli/status/2118581510991421562",
+      "url": "https://x.com/GogaKoreli/status/2118581881809854954",
+      "copy": "small precision on that count: the 11 labelled page requests came from the authenticated UI/REST/MCP retrieval trials. CLI Search was a separate result check; i didn't attribute a fresh page request to it.",
+      "weighted": 205,
+      "purpose": "Scope clarification, not an additional outreach destination",
+      "verifiedAt": "2026-11-06T05:57:45.511Z",
+      "verification": "Canonical owner view; submitted clarification visible; source link not repeated.",
+      "receiptRecordedAt": "2026-11-06T05:51:28.252Z",
+      "state": "canonical-owner-view-verified"
+    },
+    {
+      "platform": "x",
+      "parent": "https://x.com/POTATOCHEAPGAM1/status/2118574567253999735",
+      "url": "https://x.com/GogaKoreli/status/2118582179643215879",
+      "copy": "save the directory-derived publisher profile with each receipt too. mine used today's catalog to display old signatures; a catalog update changed historical labels. freezing that profile fixed 46 saved receipts.\n\nmy fix: https://gkoreli.com/ai-fetcher-browser-crawler-headers",
+      "weighted": 244,
+      "verifiedAt": "2026-11-06T05:57:46.531Z",
+      "verification": "Canonical owner view; submitted body and article link visible. Card presentation varies.",
+      "receiptRecordedAt": "2026-11-06T05:52:48.923Z",
+      "state": "canonical-owner-view-verified"
+    },
+    {
+      "platform": "x",
+      "parent": "https://x.com/adm_lawson/status/2118480570867187950",
+      "url": "https://x.com/GogaKoreli/status/2118582484745290065",
+      "copy": "i'd split named crawlers from user-directed browsers too. dot used both chrome and curl on my site, verified as one chatgpt publisher. a browser UA alone still wouldn't establish JS execution.\n\nmy fetch/browser comparison: https://gkoreli.com/ai-fetcher-browser-crawler-headers",
+      "weighted": 246,
+      "verifiedAt": "2026-11-06T05:57:47.861Z",
+      "verification": "Canonical owner view; submitted body and article link visible. Card presentation varies.",
+      "receiptRecordedAt": "2026-11-06T05:53:38.039Z",
+      "state": "canonical-owner-view-verified"
+    },
+    {
+      "platform": "x",
+      "parent": "https://x.com/GogaKoreli/status/2118582179643215879",
+      "url": "https://x.com/GogaKoreli/status/2118584004790354427",
+      "copy": "46 is the size of the saved-receipt regression corpus, not a count of changed labels. the fix made those historical projections stable against later catalog edits.",
+      "weighted": 163,
+      "purpose": "Corpus denominator clarification, not an additional outreach destination",
+      "verifiedAt": "2026-11-06T05:59:33.912Z",
+      "verification": "Canonical owner view; submitted clarification visible; source link not repeated.",
+      "receiptRecordedAt": "2026-11-06T05:59:33.048Z",
+      "state": "canonical-owner-view-verified"
+    },
+    {
+      "platform": "reddit",
+      "parent": "https://www.reddit.com/r/CloudFlare/comments/1xnu88t/anyone_else_seeing_aggressive_crawling_from/",
+      "url": "https://www.reddit.com/r/CloudFlare/comments/1xnu88t/comment/19s7op3eo2602/",
+      "copy": "requesting JS/CSS doesn't tell you whether the crawler executed JS. i'd keep the page requests, asset requests and expensive dynamic endpoints separate when comparing the burst with origin CPU.\n\ni hit a similar attribution gap while testing my own site: grok used chrome/safari-style headers for 11 requests, all unsigned. those headers alone didn't prove browser execution or operator identity. my controlled requests + Cloudflare log checks: https://gkoreli.com/ai-fetcher-browser-crawler-headers",
+      "verifiedAt": "2026-11-06T05:57:55.516Z",
+      "verification": "canonical owner view; text and source link visible, except follow-up source is in ancestor",
+      "receiptRecordedAt": "2026-11-06T05:48:41.711Z",
+      "state": "canonical-owner-view-verified"
+    },
+    {
+      "platform": "reddit",
+      "parent": "https://www.reddit.com/r/GEO_optimization/comments/1wss6rn/we_process_400_million_crawler_requests_per_month/",
+      "url": "https://www.reddit.com/r/GEO_optimization/comments/1wss6rn/comment/19s7ou02qsk4l/",
+      "copy": "i'd keep 'outside the published IP feed' separate from 'fake'. my controlled Claude-User fetch reached a uniquely labelled URL from an address outside Anthropic's current feed. the test tied it to that operation; the feed miss alone couldn't establish impersonation.\n\nmy headers and stored-row checks: https://gkoreli.com/ai-fetcher-browser-crawler-headers",
+      "verifiedAt": "2026-11-06T05:57:57.051Z",
+      "verification": "canonical owner view; text and source link visible, except follow-up source is in ancestor",
+      "receiptRecordedAt": "2026-11-06T05:52:06.302Z",
+      "state": "canonical-owner-view-verified"
+    },
+    {
+      "platform": "reddit",
+      "parent": "https://www.reddit.com/r/SearchAPIs/comments/1xne0se/multiagent_research_assistant_with_tavily_search/",
+      "url": "https://www.reddit.com/r/SearchAPIs/comments/1xne0se/comment/19s7p08dg25eq/",
+      "copy": "one regression case i'd add for claim validation: successful extraction, wrong final answer. tavily extract returned my page text, but mini research missed the requested heading/sentence, misstated the signature coverage and returned no sources in that run.\n\ni'd check the retrieved source, exact requested field and supported claim separately. this was one page, not a ranking or a test of your assistant. my inputs + results: https://gkoreli.com/ai-fetcher-browser-crawler-headers",
+      "verifiedAt": "2026-11-06T05:57:58.357Z",
+      "verification": "canonical owner view; text and source link visible, except follow-up source is in ancestor",
+      "receiptRecordedAt": "2026-11-06T05:56:23.905Z",
+      "state": "canonical-owner-view-verified"
+    },
+    {
+      "platform": "reddit",
+      "parent": "https://www.reddit.com/r/SearchAPIs/comments/1xonwy9/parallel_mcp_20_one_server_for_web_search_page/",
+      "url": "https://www.reddit.com/r/SearchAPIs/comments/1xonwy9/comment/19s7p1joqb729/",
+      "copy": "for the freshness controls, i'd test the input URL and canonical fallback separately. perplexity failed on my query-bearing URL, then answered from canonical/# inputs. # never reaches the server, so that success couldn't label a fresh origin request.\n\ndoes web_fetch expose cache versus fresh-origin retrieval in its result? i haven't tested Parallel yet; my URL controls + logs are here: https://gkoreli.com/ai-fetcher-browser-crawler-headers",
+      "verifiedAt": "2026-11-06T05:57:59.717Z",
+      "verification": "canonical owner view; text and source link visible, except follow-up source is in ancestor",
+      "receiptRecordedAt": "2026-11-06T05:56:23.905Z",
+      "state": "canonical-owner-view-verified"
+    },
+    {
+      "platform": "reddit",
+      "parent": "https://www.reddit.com/r/Superframeworks/comments/1xnmzo8/comment/19s78gp47t136/",
+      "url": "https://www.reddit.com/r/Superframeworks/comments/1xnmzo8/comment/19s7p2e8wuapt/",
+      "copy": "one task can produce a bunch of pulls, that's why i'm keeping requests separate from agent tasks. grok made 11 GETs from one prompt in my test.\n\ndo you publish how those 14M were identified, named user-agent, network match or verified signature? would be useful to compare methods.",
+      "articleLink": "Present in ancestor own comment; not repeated in this genuine follow-up",
+      "verifiedAt": "2026-11-06T05:58:01.764Z",
+      "verification": "canonical owner view; text and source link visible, except follow-up source is in ancestor",
+      "receiptRecordedAt": "2026-11-06T05:57:30.460Z",
+      "state": "canonical-owner-view-verified"
+    },
+    {
+      "title": "i tested AI fetchers against my own logs. a bot name wasn't enough to explain who read the page",
+      "body": "grok read my page and every one of its 11 requests ended up in my Browser bucket. chrome/safari user-agents, no grok token, no signature. that was one signed-in Fast run on nov 5, not a claim about every grok request.\n\ni tested search, fetch and browser tools against my own Cloudflare Worker, with Codex helping run the trials and write up the results. the useful bit was separating three checks that are easy to collapse into one:\n\n1. did a request reach the site? i assigned a test URL, watched the Worker logs, then matched the insert acknowledgement to the exact D1 row. a 200 response alone doesn't prove your analytics stored it.\n\n2. what identity did the request actually prove? chatgpt's browser and curl used different user-agents but verified as the same publisher. their signatures covered hostname and method, while path, query and user-agent were unsigned. i checked that by mutating captured requests locally. a verified publisher isn't proof that every field was signed, or that a human clicked.\n\n3. did the answer use the page correctly? the Context provider cited the right article but returned the wrong requested maintenance sentence. tavily extract returned the page text, while its mini research missed the requested heading/sentence and supplied no sources in that run. those are different failures from never fetching the page. one page isn't a provider ranking.\n\nfor an AI visibility report, i'd keep fetch observations, verified identity, citations and answer accuracy as separate columns. matching a known crawler user-agent is useful evidence, but it misses things like that grok run. a citation also doesn't establish a fresh origin request.\n\none testing gotcha: perplexity failed with a query-bearing URL, then answered from canonical/# inputs. the fragment never reaches the server, so it can't label an origin log row.\n\nmy full headers, exact prompts, settings and fixes: https://gkoreli.com/ai-fetcher-browser-crawler-headers",
+      "platform": "reddit",
+      "url": "https://www.reddit.com/r/LLMTraffic/comments/1xp569x/i_tested_ai_fetchers_against_my_own_logs_a_bot/",
+      "state": "canonical-owner-view-verified",
+      "verification": "Canonical signed-in title, author and body verified; screenshot saved privately. Codex involvement disclosed in body.",
+      "receiptRecordedAt": "2026-11-06T05:47:36.933703+00:00"
+    }
+  ]
+}
