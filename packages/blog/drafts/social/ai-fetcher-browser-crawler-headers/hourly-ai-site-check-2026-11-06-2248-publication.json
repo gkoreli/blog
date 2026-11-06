@@ -1,0 +1,178 @@
+{
+  "automationId": "ai-site-check-hourly-x-replies",
+  "triggeredAt": "2026-11-06T22:48:04.154Z",
+  "completedPublicationAt": "2026-11-06T22:56:09.214Z",
+  "clientDate": "2026-11-06",
+  "timezone": "America/Los_Angeles",
+  "authorization": "Explicit hourly heartbeat authorizes up to five useful X replies, with no Reddit writes, DMs, likes, follows, original posts or new schedulers.",
+  "preflight": "Latest state, article worklist and shared receipts reviewed. UI acceptance remains complete at 18:33 UTC. Separate AI Fetchers chat is inactive with its latest turn completed after round ten; no active one-time batch or overlapping posting session found. Fresh origin/main remained 0147698b. No catch-up burst.",
+  "currentEvidence": "Live AI Site Check article and current site-audit README read. Current primary protocol, product and source documents checked for the selected replies. No hosted audit, new provider trial or runtime benchmark performed.",
+  "xRepliesPublished": 5,
+  "xNewConversationRepliesPublished": 3,
+  "xConversationFollowupsPublished": 2,
+  "canonicalOwnerViewsVerified": 5,
+  "countNote": "Five this run; twenty-five across five AI Site Check hourly receipts. The original campaign historical baseline of sixty-three replies remains separate.",
+  "notificationCoverage": "Bounded initial signed-in notifications reviewed. New mpgn and Daryll responses received the first two replies. No exhaustive account-wide census.",
+  "selection": "One focused Latest search for AI-crawler, MCP and coding-agent builders/problems, then visible scrolling and full selected conversation reads. The Firewall 1 benchmark conversation was read but not selected: no specific product implementation was inspected and stronger matches existed. OpenSEO README was read, but its announcement did not yield a sufficiently specific additional contribution. Generic connection requests, aggregation and unrelated promotion were skipped.",
+  "closedWithoutReply": [
+    {
+      "handle": "sergei_grach",
+      "url": "https://x.com/sergei_grach/status/2118826307341427118",
+      "observation": "Maintainer reports Fixed now. Fresh default-branch README now says an unmatched GCORE_TOOLS selection logs an error and exits code 2. Documentation correction confirmed by source read, without another reply or runtime claim.",
+      "sourceUrl": "https://github.com/G-Core/gcore-mcp-server/blob/main/README.md",
+      "fileBlobSha": "5cb805713ffaea854d025903d9f1a8ca692bd9b0"
+    },
+    {
+      "handle": "ikennaiheuwa",
+      "url": "https://x.com/ikennaiheuwa/status/2118817036738732393",
+      "observation": "Previously recorded hostname-migration extension; no new question."
+    },
+    {
+      "handle": "PeterMunkholm",
+      "url": "https://x.com/PeterMunkholm/status/2118812867843740102",
+      "observation": "Previously recorded merge-risk observation; no repeated advice."
+    },
+    {
+      "handle": "babykswanson",
+      "url": "https://x.com/babykswanson/status/2118807069973266665",
+      "observation": "Previously recorded acknowledgement; closed."
+    }
+  ],
+  "observedEngagement": "Initial notifications showed Jake liking the backlog-mcp reply, Daryll liking and substantively responding to the attribution reply, and Sergei liking and reporting the documentation fix. The source read confirms the README correction only. Previously recorded grouped follower notification is not counted again. No causal traffic or adoption inference.",
+  "items": [
+    {
+      "kind": "follow-up",
+      "handle": "mpgn_x64",
+      "parent": "https://x.com/mpgn_x64/status/2118831301906079985",
+      "copy": "yeah, I shifted the question. your comparison is the tools someone can use today; mine would require building another wrapper to isolate the input format. useful as a separate experiment, but it doesn't answer why you'd hand an agent raw nxc now.",
+      "basis": "Full conversation and current NetExec MCP article; corrects the scope of our proposed comparison, no experiment performed.",
+      "url": "https://x.com/GogaKoreli/status/2118838650633175089",
+      "verifiedAt": "2026-11-06T22:51:34.696Z",
+      "platform": "x",
+      "label": "mpgn / comparison scope",
+      "state": "canonical-owner-view-verified",
+      "sourceReads": [
+        {
+          "url": "https://mpgn.fr/building-a-mcp-for-netexec/",
+          "scope": "Fresh complete implementation article and entire reply chain. Corrects the scope of our proposed experiment; no security test or runtime comparison performed."
+        }
+      ],
+      "weighted": 246,
+      "publishedTimeUi": "2:51 PM · Nov 6, 2026",
+      "publishedTimeZone": "America/Los_Angeles",
+      "privateProofBasename": "ai-site-check-hourly-x-20261106-2248/01"
+    },
+    {
+      "kind": "follow-up",
+      "handle": "cooldaddpj",
+      "parent": "https://x.com/cooldaddpj/status/2118828205381677292",
+      "copy": "I'd store the attribution basis alongside the label: declared UA, verified publisher, or controlled test. that Gemini result belongs in the last bucket. you can use the experiment's context without teaching production analytics that every Google UA is Gemini.",
+      "basis": "Current AI Site Check article and full existing attribution conversation; implementation suggestion preserves controlled-test context versus production header inference.",
+      "url": "https://x.com/GogaKoreli/status/2118838803188343225",
+      "verifiedAt": "2026-11-06T22:52:06.000Z",
+      "platform": "x",
+      "label": "Daryll / attribution provenance",
+      "state": "canonical-owner-view-verified",
+      "sourceReads": [
+        {
+          "url": "https://gkoreli.com/ai-site-check-evidence",
+          "scope": "Fresh live article preserves controlled Gemini context separately from header-only inference. Full existing conversation read. No claim about the proportion of all bots with verifiable identities."
+        }
+      ],
+      "weighted": 259,
+      "publishedTimeUi": "2:51 PM · Nov 6, 2026",
+      "publishedTimeZone": "America/Los_Angeles",
+      "privateProofBasename": "ai-site-check-hourly-x-20261106-2248/02"
+    },
+    {
+      "kind": "new-thread",
+      "handle": "daviddryparry",
+      "parent": "https://x.com/daviddryparry/status/2118836133253788118",
+      "copy": "I'd turn that into a regression test around the packaged launcher: capture stdout from process start, complete initialize + one tool call, and validate every line as an MCP message. a tool-handler unit test won't see a startup banner leaking onto the wire.",
+      "basis": "Full post and existing Powerduck reply; MCP 2025-11-25 stdio transport specification; proposed process-boundary regression test, not a claim of a bug in this workshop/server.",
+      "url": "https://x.com/GogaKoreli/status/2118839129110991225",
+      "verifiedAt": "2026-11-06T22:53:27.697Z",
+      "platform": "x",
+      "label": "David / packaged stdio test",
+      "state": "canonical-owner-view-verified",
+      "sourceReads": [
+        {
+          "url": "https://modelcontextprotocol.io/specification/2025-11-25/basic/transports",
+          "scope": "Primary stdio specification: stdout contains valid MCP messages, newline framing and separate stderr logging."
+        },
+        {
+          "url": "https://qconsf.com/training/nov2026",
+          "scope": "Current training listing confirms David Parry Java MCP workshop context. Full post and existing Powerduck reply read; proposed regression test, no recipient bug or workshop execution claimed."
+        }
+      ],
+      "weighted": 256,
+      "publishedTimeUi": "2:53 PM · Nov 6, 2026",
+      "publishedTimeZone": "America/Los_Angeles",
+      "privateProofBasename": "ai-site-check-hourly-x-20261106-2248/03"
+    },
+    {
+      "kind": "new-thread",
+      "handle": "Vasu_Prathipati",
+      "parent": "https://x.com/Vasu_Prathipati/status/2118835705803600082",
+      "copy": "i'd test a workload with retries and shared quotas. my free API's '10/day' is per public IP, across two endpoints, and failed admitted checks count. an agent needs those terms to compare the offer: https://gkoreli.com/ai-site-check-evidence#use-the-api-or-inspect-your-own-request",
+      "basis": "Full pricing proposal; live AI Site Check article quota contract and current site-audit package boundary. Practical answer-fidelity evaluation, no pricing outcome or recipient defect claimed.",
+      "url": "https://x.com/GogaKoreli/status/2118839398007800006",
+      "verifiedAt": "2026-11-06T22:54:41.039Z",
+      "platform": "x",
+      "label": "Vasu / quota conditions",
+      "state": "canonical-owner-view-verified",
+      "sourceReads": [
+        {
+          "url": "https://gkoreli.com/ai-site-check-evidence#use-the-api-or-inspect-your-own-request",
+          "localSource": "packages/site-audit/README.md",
+          "scope": "Live quota description: ten admitted checks per public edge source address per UTC day, shared with request inspector, including failed admitted checks. The package README confirms quota admission belongs to the blog, not direct library calls."
+        }
+      ],
+      "weighted": 221,
+      "publishedTimeUi": "2:54 PM · Nov 6, 2026",
+      "publishedTimeZone": "America/Los_Angeles",
+      "privateProofBasename": "ai-site-check-hourly-x-20261106-2248/04"
+    },
+    {
+      "kind": "new-thread",
+      "handle": "ashwinsuriya",
+      "parent": "https://x.com/ashwinsuriya/status/2118831862558937396",
+      "copy": "for the sub-agent gap in your benchmark, I'd carry the child's trace ID into the handoff. ghx returns an evidence report + artifact pointers for inspection, but schema validity alone can't prove a claim: https://github.com/gkoreli/ghx#full-visibility-under-ghx",
+      "basis": "Full Ashwin conversation, current ThruLine home and Done-Claims Benchmark limitations; current ghx README and ADR-0021. Proposed handoff provenance, not a completed ThruLine integration or correctness guarantee.",
+      "url": "https://x.com/GogaKoreli/status/2118839761792356508",
+      "verifiedAt": "2026-11-06T22:56:09.214Z",
+      "platform": "x",
+      "label": "Ashwin / sub-agent trace handoffs",
+      "state": "canonical-owner-view-verified",
+      "sourceReads": [
+        {
+          "url": "https://thrulinehq.com/",
+          "scope": "Current product description separates observed records, acceptance versions and unproven claims; no runtime evaluation performed."
+        },
+        {
+          "url": "https://thrulinehq.com/research/done-claims-benchmark",
+          "scope": "Read complete benchmark and limitations. Sub-agent handoffs are explicitly out of scope; this reply proposes handoff provenance, without repeating benchmark performance claims."
+        },
+        {
+          "url": "https://github.com/gkoreli/ghx/blob/mainline/README.md",
+          "fileBlobSha": "58702be26790569882ad50c65b5be017aa9dd7b4",
+          "scope": "Fresh connector read: report fields, session artifacts and root trace pointer. No universal performance or correctness claim."
+        },
+        {
+          "url": "https://github.com/gkoreli/ghx/blob/mainline/docs/adr/0021-report-contract-enforcement.md",
+          "fileBlobSha": "41976bdb1914dbf19393e3f256db6eb7c35f7846",
+          "scope": "Validated report submission and bounded completion loop; schema validity is distinct from truth."
+        }
+      ],
+      "weighted": 227,
+      "publishedTimeUi": "2:55 PM · Nov 6, 2026",
+      "publishedTimeZone": "America/Los_Angeles",
+      "privateProofBasename": "ai-site-check-hourly-x-20261106-2248/05"
+    }
+  ],
+  "verification": "Exact final copy saved before submission and checked in each composer. Every canonical reply reopened; body, parent and relevant card inspected. Both outbound short links were followed to the intended article anchor and ghx section. Publication times are minute-resolution UI values; verifiedAt records later canonical evidence saving. Five submissions, no retries of uncertain writes.",
+  "independentPublicVisibility": "Not tested; signed-in owner visibility only.",
+  "privacy": "Raw signed-in captures and screenshots remain outside Git in private temporary storage. Public records preserve exact published copy and normalized evidence only.",
+  "limits": "No traffic query, click/adoption measurement, real-provider experiment, target-site audit, anonymous visibility test, Reddit write, DM, like, follow, original post or scheduler change. ThruLine integration and proposed regression/evaluation methods were not executed. The ghx link card uses repository metadata; its token-reduction wording is not a new benchmark claim from this run.",
+  "nextBoundedAction": "Complete at five replies. Next authorized run: reconcile current chat state and shared receipts, then read substantive incoming responses. Do not duplicate these parents or accumulate missed hours."
+}
