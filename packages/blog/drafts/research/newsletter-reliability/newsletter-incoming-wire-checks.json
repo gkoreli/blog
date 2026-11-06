@@ -1,0 +1,60 @@
+{
+  "checkedAt": "2026-11-06T07:32:46.206Z",
+  "runtime": "Miniflare.ready local HTTP proxy + workerd",
+  "compatibilityDate": "2026-03-06",
+  "sourceSha256": "5f566873979518593cf98cb176c6d76cbc9e02efb24254067dbd0a494ad0b488",
+  "fixtureSha256": "df155608f819c8260261b541ac4338b86f1dca2194a352b19d5a1ccd93188475",
+  "bundleSha256": "b9b57d564040459898de28dddc6041c29802ef15302d7fb8fbabb14fc6eba1e4",
+  "versions": {
+    "node": "24.14.1",
+    "esbuild": "0.27.3",
+    "miniflare": "4.20260301.1",
+    "workerd": "1.20260301.1"
+  },
+  "limits": [
+    "Local Miniflare proxy and workerd only; production front door unmeasured",
+    "Conflicting/malformed framing, chunked input and disconnect propagation unmeasured"
+  ],
+  "actualClientSocketFraming": true,
+  "constructedRequestStreams": false,
+  "providerCalls": 0,
+  "productionCalls": 0,
+  "results": [
+    {
+      "label": "partial JSON Content-Length held open",
+      "status": 408,
+      "elapsedMs": 5016,
+      "handlerExecuted": true,
+      "declaredLength": 100,
+      "sentBytes": 9,
+      "requestEndedByClient": false
+    },
+    {
+      "label": "webhook missing auth before body finish",
+      "status": 401,
+      "elapsedMs": 2,
+      "handlerExecuted": true,
+      "declaredLength": 100,
+      "sentBytes": 1,
+      "requestEndedByClient": false
+    },
+    {
+      "label": "declared oversized body before body finish",
+      "status": 413,
+      "elapsedMs": 1,
+      "handlerExecuted": true,
+      "declaredLength": 5000,
+      "sentBytes": 1,
+      "requestEndedByClient": false
+    },
+    {
+      "label": "completed malformed address control",
+      "status": 400,
+      "elapsedMs": 2,
+      "handlerExecuted": true,
+      "declaredLength": 12,
+      "sentBytes": 12,
+      "requestEndedByClient": true
+    }
+  ]
+}

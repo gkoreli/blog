@@ -1,5 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
+import { execFileSync } from 'node:child_process';
+import { fileURLToPath } from 'node:url';
 import { SubscriberAddress } from '../../newsletter/src/confirmation.ts';
 import { requestConfirmation } from '../../newsletter/src/request-confirmation.ts';
 import { recordConfirmationOutcome } from '../../newsletter/src/confirmation-store.ts';
@@ -7,6 +9,14 @@ import { recordConfirmationOutcome } from '../../newsletter/src/confirmation-sto
 const address = SubscriberAddress.parse(' Reader@Example.Invalid ');
 const command = { id: 'operation-id', email: address, challengeToken: 'proof', mode: 'subscribe',
   source: null, consentIp: null, userAgent: null };
+
+test('the compiler rejects unchecked address lookalikes and mutation', () => {
+  const compiler = fileURLToPath(new URL('../node_modules/.bin/tsc', import.meta.url));
+  const fixture = fileURLToPath(new URL('./fixtures/confirmation-domain-types.ts', import.meta.url));
+  execFileSync(compiler, ['--ignoreConfig', '--noEmit', '--strict', '--skipLibCheck',
+    '--target', 'ES2024', '--module', 'NodeNext', '--moduleResolution', 'NodeNext', fixture],
+  { stdio: 'pipe' });
+});
 function scenario(overrides = {}) {
   const calls = [];
   const observations = [];
@@ -69,6 +79,27 @@ test('admission failure prevents an external effect', async () => {
   const h = scenario({ async admit() { throw new Error('storage unavailable'); } });
   await assert.rejects(requestConfirmation(command, h.ports), /storage unavailable/);
   assert.deepEqual(h.calls.map(call => call[0]), ['verify', 'issue']);
+});
+
+test('the initial intent survives a caller changing its DTO while proof is pending', async () => {
+  const mutable = { ...command };
+  const h = scenario();
+  const verify = h.ports.verify;
+  h.ports.verify = async token => {
+    mutable.id = 'replacement-operation';
+    mutable.email = SubscriberAddress.parse('replacement@example.invalid');
+    mutable.mode = 'resend';
+    mutable.source = '/replacement';
+    return verify(token);
+  };
+  assert.equal(await requestConfirmation(mutable, h.ports), 'accepted');
+  assert.equal(h.calls[2][1].id, command.id);
+  assert.equal(h.calls[2][1].email, address);
+  assert.equal(h.calls[2][1].mode, 'subscribe');
+  assert.equal(h.calls[2][1].source, null);
+  assert.equal(h.calls[3][1], address.value);
+  assert.equal(h.calls[3].at(-1), command.id);
+  assert.equal(h.calls[4][1], command.id);
 });
 
 for (const outcome of ['accepted', 'unknown', 'failed']) {

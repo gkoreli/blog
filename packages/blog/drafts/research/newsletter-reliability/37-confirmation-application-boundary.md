@@ -86,3 +86,33 @@ and `/private/tmp/gkoreli-newsletter-request-boundaries-20261106-integrated/nati
 Historical committed outputs remain intact. Neither these local controls nor a
 source push establishes current Worker activation, actual delivery or a change
 in subscriber completion rates.
+
+## Final domain contract — 07:49 UTC
+
+A compiler control showed that a class with only a public readonly value still
+accepted an unchecked structural lookalike. The address now keeps its normalized
+value in a private field and exposes a getter. The factory is the typed entry
+point; an automatic compiler fixture rejects lookalikes and mutation. Native D1
+still reads the value explicitly. No new address syntax or wire policy is added.
+
+The application also snapshots the complete command before its first await. A
+paired synthetic-port control mutates the caller's DTO during proof verification:
+`ddb71a2d` admits/sends/records the replacement identity, while the new version
+keeps all three on the original intent. This is a public application-boundary
+control, not evidence that the existing HTTP adapter exposed its private command
+to another caller. The original `.ts` private harness was interpreted as CommonJS
+by the loader; an unchanged `.mts` source snapshot fixes that harness before
+the measured comparison. Private results preserve that distinction.
+
+Sixteen application/compile-contract cases pass, newsletter types pass, and five
+fresh native D1 controls pass after the private-field change. [Research 39](39-native-confirmation-lifecycle.md)
+then exercises the joined final handlers, application, provider adapters, Web
+Crypto and native D1 through six selected lifecycle/failure cases. Only outbound
+provider replies and limiter success are synthetic. Its acceptance includes an
+actual D1 trigger rejecting the outcome UPDATE after synthetic mail acceptance:
+202 remains honest, receipt acknowledgment is false, the reservation stays
+charged and a repeat does not send again.
+
+These final controls do not send a real message. Implementation is frozen after
+this bounded domain check; subsequent work is article/release/production
+association unless a concrete defect requires a repair.

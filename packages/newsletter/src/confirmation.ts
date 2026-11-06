@@ -16,7 +16,13 @@ export const CONFIRMATION_LIMITS = {
 
 /** This site's existing address policy, represented once as an immutable value. */
 export class SubscriberAddress {
-  private constructor(readonly value: string) { Object.freeze(this); }
+  readonly #value: string;
+  private constructor(value: string) {
+    this.#value = value;
+    Object.freeze(this);
+  }
+
+  get value(): string { return this.#value; }
 
   static parse(value: unknown): SubscriberAddress | null {
     if (typeof value !== 'string') return null;
@@ -27,13 +33,13 @@ export class SubscriberAddress {
 }
 
 export interface ConfirmationCommand {
-  id: string;
-  email: SubscriberAddress;
-  challengeToken: string;
-  mode: ConfirmationMode;
-  source: string | null;
-  consentIp: string | null;
-  userAgent: string | null;
+  readonly id: string;
+  readonly email: SubscriberAddress;
+  readonly challengeToken: string;
+  readonly mode: ConfirmationMode;
+  readonly source: string | null;
+  readonly consentIp: string | null;
+  readonly userAgent: string | null;
 }
 
 export interface IssuedConfirmation {

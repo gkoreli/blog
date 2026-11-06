@@ -1,0 +1,73 @@
+{
+  "checkedAt": "2026-11-06T07:49:36.278Z",
+  "compatibilityDate": "2026-03-06",
+  "workerSha256": "772c1672734c4ea07c32f6a984229b3921b7c3936e960ba7e3d1f238dac71fa6",
+  "scope": "Actual handlers/application/provider adapters/WebCrypto/production SQL in local workerd/nativeD1; synthetic fixed Siteverify and Resend responses through owned outboundService; limiter stubbed success; no external network or production/mailbox acceptance",
+  "migrations": [
+    {
+      "file": "0001_create_subscribers.sql",
+      "sha256": "831a9aeab15e34cbb7df4d6cd8912ee6caece19b692036386bb021adb3ef988d"
+    },
+    {
+      "file": "0003_add_bounced_at.sql",
+      "sha256": "28cfc4c89025d2e91bf187ba52487d1834de0ff21b44eb79a80d5c279d6f8826"
+    },
+    {
+      "file": "0004_delivery_logs.sql",
+      "sha256": "e34870051bc08fb8a536861c76b660039cef3859bc18f3fc4a7eb1b54dcf83be"
+    },
+    {
+      "file": "0005_confirmation_admission.sql",
+      "sha256": "b7dd00ba6233f7244671d457a58602d27b2640bc832503dfef965b5d6ab7e662"
+    }
+  ],
+  "selectedCases": 6,
+  "syntheticVerifierCalls": 6,
+  "syntheticEmailCalls": 2,
+  "reservedBeforeEachSend": true,
+  "productionCalls": 0,
+  "realEmailCalls": 0,
+  "cases": [
+    {
+      "case": "verified-admitted-synthetic-accepted",
+      "status": 202,
+      "providerCalls": 1,
+      "receiptConfirmed": true,
+      "clientIntentCorrelated": true
+    },
+    {
+      "case": "cooldown-no-extra-send",
+      "status": 202,
+      "providerCalls": 1
+    },
+    {
+      "case": "confirmation-preview-then-activation",
+      "getStatus": 200,
+      "postStatus": 200,
+      "previewStayedPending": true,
+      "postActive": true,
+      "tokensRevoked": true
+    },
+    {
+      "case": "active-no-extra-send",
+      "status": 202,
+      "providerCalls": 1
+    },
+    {
+      "case": "signed-bounce-suppresses-public-send-and-old-token",
+      "webhookStatus": 200,
+      "signupStatus": 202,
+      "oldTokenStatus": 400,
+      "providerCalls": 1,
+      "tokensRevoked": true
+    },
+    {
+      "case": "accepted-with-unconfirmed-receipt-remains-charged",
+      "status": 202,
+      "receiptConfirmed": false,
+      "persistedOutcome": "reserved",
+      "repeatStatus": 202,
+      "additionalProviderCalls": 0
+    }
+  ]
+}

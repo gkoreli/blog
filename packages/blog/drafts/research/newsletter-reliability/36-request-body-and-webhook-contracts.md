@@ -93,3 +93,84 @@ real D1 effects, not incoming wire framing, browser populations or delivered mai
 No production request, schema mutation, credential change or email is needed for
 these controls. Next: deliver this scoped repair, then extract explicit server
 confirmation policy and integrate the independently owned browser/provider work.
+
+## Additional incoming HTTP framing control — November 6 UTC
+
+The earlier constructed-stream controls remain separate evidence. A new reusable
+[local socket driver](../../../scripts/check-newsletter-incoming-wire.mjs) sends
+actual Node HTTP requests to `Miniflare.ready` and workerd. For the first three
+cases it flushes headers, writes only a prefix of the declared Content-Length,
+and deliberately leaves the client request unfinished. Responses carry a closed
+fixture marker proving that the handler executed. A fourth completed request
+with an invalid address exercises the ordinary parsing path rather than treating
+every early response as acceptance.
+
+Run from the repository with a new absolute private receipt path:
+
+```sh
+mise exec -- node packages/blog/scripts/check-newsletter-incoming-wire.mjs /private/tmp/new-newsletter-wire-receipt.json
+```
+
+The output uses exclusive creation (`wx`) to preserve earlier evidence and
+records script/fixture/bundle SHA-256 digests, runtime versions, controlled case
+names, sent/declared byte counts, statuses and elapsed times. Response text,
+generated request IDs, raw headers and runtime logs are not retained. The driver
+blocks every provider outbound call and has no real credentials. A failed run
+may leave its newly reserved output file empty; reruns need another new path.
+
+The [sanitized receipt](newsletter-incoming-wire-checks.json) records four
+passing cases: incomplete signup input returns 408 at about five seconds;
+authentication-free webhook input returns 401 before the body finishes; a declared
+5,000-byte signup body returns 413 after only one byte; a completed invalid address
+returns 400. Provider and production calls are zero. The original private wire
+fixture/results remain intact; this is an additional dated run, not a rewrite of
+those measurements.
+
+This measures actual client socket framing through the local Miniflare HTTP
+proxy and workerd. No proxy buffering obstruction was observed for these cases.
+Cloudflare's production front door, conflicting/malformed framing, chunked input
+and disconnect propagation remain unmeasured. It does not establish production
+latency, origin disconnect notification or real email delivery.
+
+### Chunked request extension — November 6 UTC
+
+The four-case receipt above is preserved unchanged. The same driver now also
+omits Content-Length and explicitly sends chunked HTTP bodies. In the two new
+controls it flushes headers, writes a body prefix and never calls end; it checks
+Node's native `writableEnded` state at response completion. Both responses also
+carry the handler-executed marker. The completed-request parsing control remains
+and is the only case with `writableEnded: true`.
+
+The separate [dated six-case receipt](2026-11-06-newsletter-incoming-wire-chunked-checks.json)
+records a 4,097-byte chunked body held open returning 413 in 2 ms, and a nine-byte
+incomplete JSON body held open returning 408 in 5,003 ms. Both have no declared
+length and `requestEndedByClient: false`. The earlier four cases pass again;
+provider and production calls remain zero. Actual received bytes therefore
+trigger the size boundary through this local proxy without relying on a
+Content-Length declaration. No chunked buffering obstruction was observed.
+
+The driver/source hash changes with this extension; the earlier receipt retains
+its original source hash and date. Production front-door behavior, conflicting
+or malformed framing and disconnect propagation remain unmeasured. These two
+chunked cases are not a general framing audit. No handler source changes.
+
+### Final fixture containment and source preservation — November 6 UTC
+
+The socket callback's end-state guard now destroys the request and rejects its
+Promise explicitly on mismatch. It returns from the callback rather than
+throwing outside the Promise executor, allowing the awaited failure to reach
+the driver's finally/dispose path. This changes fixture failure containment only.
+
+The [final six-case receipt](2026-11-06-newsletter-incoming-wire-final-checks.json)
+passes all six controls with zero provider/production calls. Its source SHA-256
+is `c6daee92a9e78c37e8daf9096b99f0bc01c1da61f1c857986b5435f2bfdf4b65`, verified against
+the current driver and a private exact source snapshot. The preceding six-case
+receipt also has a private exact source snapshot matching its recorded digest.
+Neither historical receipt was rewritten.
+
+The earlier four-case reusable receipt remains historical evidence with its
+original date and source digest, but its exact reusable source snapshot was not
+saved before extension. The original private four-case exploratory fixture does
+still exist; it is not the exact source represented by that later reusable
+receipt's digest. No reconstruction is presented as an original snapshot. The
+final checked driver/receipt pair supplies the preserved reproducible checkpoint.

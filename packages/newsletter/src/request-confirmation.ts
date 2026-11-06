@@ -32,7 +32,9 @@ export type ConfirmationDecision =
 
 /** Orchestrate one intent. Only durable admission permits the external send. */
 export async function requestConfirmation(command: ConfirmationCommand, ports: ConfirmationPorts): Promise<ConfirmationDecision> {
-  const verification = await ports.verify(command.challengeToken);
+  // One captured intent survives awaits even if a caller retains a mutable DTO.
+  const intent = Object.freeze({ ...command });
+  const verification = await ports.verify(intent.challengeToken);
   if (!verification.ok) {
     ports.observe({ stage: 'verification_failed', reason: verification.reason,
       verifierStatus: verification.httpStatus, verifierCodes: verification.errorCodes,
@@ -44,9 +46,9 @@ export async function requestConfirmation(command: ConfirmationCommand, ports: C
     verifierAttempts: verification.attempts, verifierElapsedMs: verification.elapsedMs,
     verifierRetryReason: verification.retryReason });
   const issued = await ports.issue();
-  const admission = await ports.admit({ id: command.id, email: command.email,
+  const admission = await ports.admit({ id: intent.id, email: intent.email,
     tokenHash: issued.tokenHash, subscriberId: issued.subscriberId, unsubscribeToken: issued.unsubscribeToken,
-    source: command.source, consentIp: command.consentIp, userAgent: command.userAgent, mode: command.mode });
+    source: intent.source, consentIp: intent.consentIp, userAgent: intent.userAgent, mode: intent.mode });
   if (admission.decision === 'capacity') {
     ports.observe({ stage: 'capacity_limited' });
     return 'capacity';
@@ -58,12 +60,12 @@ export async function requestConfirmation(command: ConfirmationCommand, ports: C
   ports.observe({ stage: 'reserved' });
   let delivery: ConfirmationDelivery;
   try {
-    delivery = await ports.deliver(command.email.value, issued.confirmationToken, admission.unsubscribeToken, command.id);
+    delivery = await ports.deliver(intent.email.value, issued.confirmationToken, admission.unsubscribeToken, intent.id);
   } catch {
     // Even an unexpected adapter escape cannot prove that no external effect occurred.
     // Record only that uncertainty; provider attempts/status/timing are unobserved.
     let receiptConfirmed = true;
-    try { await ports.record(command.id, { outcome: 'unknown', providerId: null, providerStatus: null }); }
+    try { await ports.record(intent.id, { outcome: 'unknown', providerId: null, providerStatus: null }); }
     catch {
       receiptConfirmed = false;
       ports.observe({ stage: 'outcome_write_unconfirmed', delivery: 'unknown' });
@@ -72,7 +74,7 @@ export async function requestConfirmation(command: ConfirmationCommand, ports: C
     return 'delivery-unconfirmed';
   }
   let receiptConfirmed = true;
-  try { await ports.record(command.id, delivery); }
+  try { await ports.record(intent.id, delivery); }
   catch {
     // A lost write acknowledgment does not revoke admission or permit another send.
     receiptConfirmed = false;

@@ -1,0 +1,84 @@
+{
+  "checkedAt": "2026-11-06T07:35:49.664Z",
+  "runtime": "Miniflare.ready local HTTP proxy + workerd",
+  "compatibilityDate": "2026-03-06",
+  "sourceSha256": "4c0287426ec156bb9960bfee34f45359cf43b3b8644362edb8b5de3a4d8592c1",
+  "fixtureSha256": "df155608f819c8260261b541ac4338b86f1dca2194a352b19d5a1ccd93188475",
+  "bundleSha256": "b9b57d564040459898de28dddc6041c29802ef15302d7fb8fbabb14fc6eba1e4",
+  "versions": {
+    "node": "24.14.1",
+    "esbuild": "0.27.3",
+    "miniflare": "4.20260301.1",
+    "workerd": "1.20260301.1"
+  },
+  "limits": [
+    "Local Miniflare proxy and workerd only; production front door unmeasured",
+    "Conflicting/malformed framing and disconnect propagation unmeasured; chunked controls are limited to overflow and incomplete JSON"
+  ],
+  "actualClientSocketFraming": true,
+  "constructedRequestStreams": false,
+  "providerCalls": 0,
+  "productionCalls": 0,
+  "results": [
+    {
+      "label": "partial JSON Content-Length held open",
+      "status": 408,
+      "elapsedMs": 5009,
+      "handlerExecuted": true,
+      "declaredLength": 100,
+      "framing": "content-length",
+      "sentBytes": 9,
+      "requestEndedByClient": false
+    },
+    {
+      "label": "webhook missing auth before body finish",
+      "status": 401,
+      "elapsedMs": 2,
+      "handlerExecuted": true,
+      "declaredLength": 100,
+      "framing": "content-length",
+      "sentBytes": 1,
+      "requestEndedByClient": false
+    },
+    {
+      "label": "declared oversized body before body finish",
+      "status": 413,
+      "elapsedMs": 1,
+      "handlerExecuted": true,
+      "declaredLength": 5000,
+      "framing": "content-length",
+      "sentBytes": 1,
+      "requestEndedByClient": false
+    },
+    {
+      "label": "completed malformed address control",
+      "status": 400,
+      "elapsedMs": 1,
+      "handlerExecuted": true,
+      "declaredLength": 12,
+      "framing": "content-length",
+      "sentBytes": 12,
+      "requestEndedByClient": true
+    },
+    {
+      "label": "chunked actual-byte overflow held open",
+      "status": 413,
+      "elapsedMs": 2,
+      "handlerExecuted": true,
+      "declaredLength": null,
+      "framing": "chunked",
+      "sentBytes": 4097,
+      "requestEndedByClient": false
+    },
+    {
+      "label": "chunked partial JSON held open",
+      "status": 408,
+      "elapsedMs": 5003,
+      "handlerExecuted": true,
+      "declaredLength": null,
+      "framing": "chunked",
+      "sentBytes": 9,
+      "requestEndedByClient": false
+    }
+  ]
+}

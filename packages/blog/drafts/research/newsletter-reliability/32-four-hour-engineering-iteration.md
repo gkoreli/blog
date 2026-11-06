@@ -132,3 +132,32 @@ suppression timestamps. [Research 38](38-suppression-transition-idempotence.md)
 records fifteen production-SQL tests and eight actual local workerd/D1 controls,
 including trigger rollback and day-91 cleanup. These are local controls; source
 delivery and current Worker activation remain to be joined.
+
+## Implementation freeze — 07:53 UTC
+
+Final domain checks make the address value nominal and snapshot intent before
+awaiting proof. Independent review passes. [Research 37](37-confirmation-application-boundary.md)
+records the compiler and paired mutation controls; [Research 39](39-native-confirmation-lifecycle.md)
+joins the actual final handlers/application/adapters/Web Crypto/D1 through six
+selected lifecycle and receipt-failure cases with synthetic outbound responses.
+The frozen integrated suite passes **405/405**, workspace types pass and an
+isolated build renders the current 43 posts.
+
+[Research 36](36-request-body-and-webhook-contracts.md) additionally preserves six
+actual local HTTP-socket controls, including unknown-length chunked overflow and
+unfinished JSON, with exclusive-output receipts and a reusable driver. Earlier
+receipts and the one missing historical exact driver snapshot are distinguished
+explicitly. No current mail, provider reliability or production latency claim
+follows from those controls.
+
+Source `0825a053` has a separately joined native build `b17d6b3f`, active Worker
+`b46ac412` at 100%, and byte-equal served main.js (41,059 bytes; SHA-256
+`7a0c9b3d445659e28a015ead472042979c162b9b1e7d131ffe76d2900c6a7ee8`).
+The guarded active-address production check and its evidence are being recorded
+by the original builder. The final private-value/intent-snapshot delta follows
+that production source; it must receive its own source/activation association.
+
+Implementation is now frozen absent a concrete defect. Remaining work: final
+article flow/claim/rendering and release checks, current code delivery, exact
+eight-prompt/copy reconciliation, and hosted queue acceptance. The fixed window
+still ends at 10:07:25 UTC.
