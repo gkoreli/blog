@@ -185,3 +185,52 @@ Article implication: standards-compatible options and a passing Node test do
 not establish the deployed runtime's capability. Record which native runtime was
 tested, exercise its positive path, and keep endpoint confinement separate from
 provider acceptance and delivery knowledge.
+
+## Third bounded increment — campaign batch adapter (2026-11-06)
+
+This increment preserves the first repair (`d63ea5b`) and the second repair
+(`9f6346f`). It changes only the provider boundary; the separately owned campaign
+admission work decides whether a campaign may start. Resend's finite idempotency
+window is extra protection, not durable campaign admission.
+
+`sendNewsletterBatch` now accepts an optional sixth `idempotencyKey` argument.
+Each result keeps `email`, `resend_id` and `error`, adding
+`outcome: accepted | failed | unknown`. Only a complete response with one valid,
+unique ID per requested recipient produces accepted results with a null error.
+The [Resend batch contract](https://resend.com/docs/api-reference/emails/send-batch-emails)
+assigns response IDs by request index; missing, extra, duplicate or malformed
+rows make the entire receipt unknown. Acceptance describes the provider receipt,
+not mailbox delivery. Definite request rejection is called failed; transport,
+408/409/server failures and malformed success remain unknown. All errors are
+closed static codes, with no provider text, tokens or addresses copied into them.
+
+The audience is copied before awaiting the provider so receipt mapping cannot be
+changed by a caller mutating its input. The optional identity is supplied as an
+Idempotency-Key header after bounded printable-ASCII validation. Empty batches
+make no request; batches above the documented 100-message maximum are rejected
+before effects. Existing callers may omit the key. There is exactly one provider
+call per nonempty admitted batch, with no automatic replay.
+
+Fetch uses manual redirects with explicit 3xx refusal. One eight-second elapsed
+signal covers both request and response reading. The response reader separately
+observes that signal, caps declared and received bytes at 64 KiB, validates UTF-8,
+and releases its lock. Cancellation is initiated without waiting for an arbitrary
+stream cancel hook. These are application limits, not claimed provider defaults.
+
+The new [batch tests](../../../test/newsletter-batch-provider.test.mjs) cover ordered
+acceptance, optional/supplied identity, malformed/partial/extra/duplicate IDs,
+closed rejection and uncertainty outcomes, redirects, broken JSON/UTF-8,
+body-size enforcement without Content-Length, stalled stream cancellation,
+nonsettling cancellation hooks, caller mutation and pre-effect input guards.
+The focused provider, batch and campaign set passes 91 tests, and the active
+newsletter package typecheck passes at this checkpoint.
+
+The [native script](../../../scripts/check-newsletter-provider-redirects.mjs) now
+also runs the batch adapter. Node's three redirected adapter calls reach the
+owned origin three times and the redirect target zero times. Workerd's normal
+batch returns two accepted IDs; redirected, partial and oversized receipts
+remain unknown, each after one provider call and zero redirect-target calls.
+An actual unfinished response body returns provider_timeout after 8,008 ms in
+this local run. The intentional default-follow counterexample remains separate
+and still forwards its synthetic body once. No external provider call, email,
+production change or migration is made by these controls.

@@ -201,6 +201,74 @@ export interface BatchSendResult {
   email: string;
   resend_id: string | null;
   error: string | null;
+  outcome: 'accepted' | 'failed' | 'unknown';
+}
+
+type BatchProviderError = 'invalid_batch_size' | 'invalid_idempotency_key'
+  | 'provider_redirect' | 'provider_rejected' | 'provider_unavailable'
+  | 'provider_network' | 'provider_timeout' | 'provider_response_too_large'
+  | 'provider_response_unreadable' | 'provider_response_invalid';
+
+const MAX_BATCH_RESPONSE_BYTES = 64 * 1024;
+
+async function readBatchResponse(response: Response, signal: AbortSignal): Promise<
+  { ok: true; value: unknown } | { ok: false; error: BatchProviderError }
+> {
+  if (!response.body) return { ok: false, error: 'provider_response_invalid' };
+  const declared = response.headers.get('content-length');
+  if (declared !== null && /^\d+$/.test(declared) && Number(declared) > MAX_BATCH_RESPONSE_BYTES) {
+    void response.body.cancel().catch(() => {});
+    return { ok: false, error: 'provider_response_too_large' };
+  }
+  const reader = response.body.getReader();
+  let timedOut = false;
+  const stop = (): void => {
+    timedOut = true;
+    void reader.cancel().catch(() => {});
+  };
+  signal.addEventListener('abort', stop, { once: true });
+  if (signal.aborted) stop();
+  const chunks: Uint8Array[] = [];
+  let size = 0;
+  try {
+    while (true) {
+      const chunk = await reader.read();
+      if (timedOut) return { ok: false, error: 'provider_timeout' };
+      if (chunk.done) break;
+      size += chunk.value.byteLength;
+      if (size > MAX_BATCH_RESPONSE_BYTES) {
+        void reader.cancel().catch(() => {});
+        return { ok: false, error: 'provider_response_too_large' };
+      }
+      chunks.push(chunk.value);
+    }
+    const bytes = new Uint8Array(size);
+    let offset = 0;
+    for (const chunk of chunks) { bytes.set(chunk, offset); offset += chunk.byteLength; }
+    let value: unknown;
+    try { value = JSON.parse(new TextDecoder('utf-8', { fatal: true, ignoreBOM: false }).decode(bytes)); }
+    catch { return { ok: false, error: 'provider_response_invalid' }; }
+    return { ok: true, value };
+  } catch {
+    return { ok: false, error: timedOut ? 'provider_timeout' : 'provider_response_unreadable' };
+  } finally {
+    signal.removeEventListener('abort', stop);
+    reader.releaseLock();
+  }
+}
+
+function batchProviderIds(value: unknown, count: number): string[] | null {
+  if (typeof value !== 'object' || value === null || Array.isArray(value)
+    || !('data' in value) || !Array.isArray(value.data) || value.data.length !== count) return null;
+  const rows: unknown[] = value.data;
+  const ids: string[] = [];
+  for (const row of rows) {
+    if (typeof row !== 'object' || row === null || Array.isArray(row) || !('id' in row)
+      || typeof row.id !== 'string' || !row.id || row.id.length > 128
+      || row.id.trim() !== row.id || /[\u0000-\u001f\u007f]/.test(row.id)) return null;
+    ids.push(row.id);
+  }
+  return new Set(ids).size === ids.length ? ids : null;
 }
 
 /**
@@ -208,7 +276,8 @@ export interface BatchSendResult {
  * Each email gets personalised List-Unsubscribe headers (RFC 8058).
  *
  * Caller is responsible for chunking to RESEND_BATCH_LIMIT before calling.
- * Returns per-recipient results (resend_id on success, error on failure).
+ * Acceptance requires a complete, ordered provider receipt. The caller owns
+ * durable admission; this adapter never retries an uncertain campaign batch.
  */
 export async function sendNewsletterBatch(
   apiKey: string,
@@ -216,8 +285,19 @@ export async function sendNewsletterBatch(
   subject: string,
   html: string,
   text: string,
+  idempotencyKey?: string,
 ): Promise<BatchSendResult[]> {
-  const batch: ResendBatchItem[] = recipients.map(r => {
+  // Bind receipts to the audience actually used to construct this request.
+  const audience = recipients.map(recipient => ({ ...recipient }));
+  const fail = (outcome: 'failed' | 'unknown', error: BatchProviderError): BatchSendResult[] => audience.map(recipient => ({
+    email: recipient.email, resend_id: null, error, outcome,
+  }));
+  if (audience.length === 0) return [];
+  if (audience.length > RESEND_BATCH_LIMIT) return fail('failed', 'invalid_batch_size');
+  if (idempotencyKey !== undefined && !/^[\x21-\x7e]{1,256}$/.test(idempotencyKey)) {
+    return fail('failed', 'invalid_idempotency_key');
+  }
+  const batch: ResendBatchItem[] = audience.map(r => {
     const unsubUrl = `${BASE_URL}/api/unsubscribe/${r.unsubscribeToken}`;
     return {
       from: FROM,
@@ -232,28 +312,38 @@ export async function sendNewsletterBatch(
     };
   });
 
-  const res = await fetch('https://api.resend.com/emails/batch', {
-    method: 'POST',
-    headers: {
-      Authorization: `Bearer ${apiKey}`,
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(batch),
-  });
-
-  if (!res.ok) {
-    const body = await res.text().catch(() => '');
-    const err = `Resend batch error ${res.status}: ${body}`;
-    // Whole batch failed — return error for every recipient
-    return recipients.map(r => ({ email: r.email, resend_id: null, error: err }));
+  try {
+    const signal = AbortSignal.timeout(8_000);
+    const res = await fetch('https://api.resend.com/emails/batch', {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${apiKey}`, 'Content-Type': 'application/json',
+        ...(idempotencyKey !== undefined && { 'Idempotency-Key': idempotencyKey }),
+      },
+      body: JSON.stringify(batch), signal, redirect: 'manual',
+    });
+    if (res.status >= 300 && res.status < 400) {
+      void res.body?.cancel().catch(() => {});
+      return fail('unknown', 'provider_redirect');
+    }
+    if (!res.ok) {
+      void res.body?.cancel().catch(() => {});
+      return res.status >= 400 && res.status < 500 && res.status !== 408 && res.status !== 409
+        ? fail('failed', 'provider_rejected') : fail('unknown', 'provider_unavailable');
+    }
+    const parsed = await readBatchResponse(res, signal);
+    if (!parsed.ok) return fail('unknown', parsed.error);
+    const ids = batchProviderIds(parsed.value, audience.length);
+    if (!ids) return fail('unknown', 'provider_response_invalid');
+    return audience.map((recipient, index): BatchSendResult => {
+      const id = ids[index];
+      return id
+        ? { email: recipient.email, resend_id: id, error: null, outcome: 'accepted' }
+        : { email: recipient.email, resend_id: null, error: 'provider_response_invalid', outcome: 'unknown' };
+    });
+  } catch (error) {
+    return fail('unknown', transportFailure(error) === 'timeout' ? 'provider_timeout' : 'provider_network');
   }
-
-  const json = await res.json<{ data: Array<{ id?: string }> }>();
-  return recipients.map((r, i) => ({
-    email: r.email,
-    resend_id: json.data[i]?.id ?? null,
-    error: null,
-  }));
 }
 
 /** Append plain-text unsubscribe footer. */

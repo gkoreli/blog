@@ -3,7 +3,7 @@ import http from 'node:http';
 import { createRequire } from 'node:module';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
-import { sendConfirmationEmail } from '../../newsletter/src/email.ts';
+import { sendConfirmationEmail, sendNewsletterBatch } from '../../newsletter/src/email.ts';
 import { verifyTurnstile } from '../../newsletter/src/turnstile.ts';
 
 // Local native Fetch control only. Actual adapter inputs/options are retained;
@@ -38,7 +38,7 @@ try {
   const address = origin.address();
   if (!address || typeof address === 'string') throw new Error('Missing owned origin address');
   globalThis.fetch = (url, init) => {
-    assert.ok(['https://api.resend.com/emails', 'https://challenges.cloudflare.com/turnstile/v0/siteverify'].includes(String(url)),
+    assert.ok(['https://api.resend.com/emails', 'https://api.resend.com/emails/batch', 'https://challenges.cloudflare.com/turnstile/v0/siteverify'].includes(String(url)),
       'Only provider calls from the adapters are allowed');
     return nativeFetch(`http://127.0.0.1:${address.port}/provider`, init);
   };
@@ -54,7 +54,11 @@ try {
   assert.equal(delivery.diagnostics.attempts, 1);
   assert.equal(delivery.diagnostics.retryReason, 'none');
   assert.equal(delivery.diagnostics.stopReason, 'redirect-rejected');
-  assert.equal(originCalls, 2);
+  const batch = await sendNewsletterBatch('synthetic-key', [{ email: 'reader@example.invalid', unsubscribeToken: 'synthetic' }],
+    'Synthetic subject', '<p>Synthetic body</p>', 'Synthetic body', 'synthetic-campaign/redirect');
+  assert.equal(batch[0].outcome, 'unknown');
+  assert.equal(batch[0].error, 'provider_redirect');
+  assert.equal(originCalls, 3);
   assert.equal(targetCalls, 0, 'Redirect targets must never receive secret or message bodies');
   console.log(JSON.stringify({ control: 'local native 307 redirect', originCalls, targetCalls,
     verification: verification.reason, delivery: delivery.outcome, deliveryStop: delivery.diagnostics.stopReason }));
@@ -79,8 +83,14 @@ const bundle = await build({
     resolveDir: `${repo}/packages/blog`,
     contents: `
       import { verifyTurnstile } from '../newsletter/src/turnstile.ts';
-      import { sendConfirmationEmail } from '../newsletter/src/email.ts';
+      import { sendConfirmationEmail, sendNewsletterBatch } from '../newsletter/src/email.ts';
       export default { async fetch(request) {
+        if (new URL(request.url).pathname === '/batch') {
+          return Response.json(await sendNewsletterBatch('synthetic-key', [
+            { email: 'reader@example.invalid', unsubscribeToken: 'synthetic-one' },
+            { email: 'other@example.invalid', unsubscribeToken: 'synthetic-two' },
+          ], 'Synthetic subject', '<p>Synthetic body</p>', 'Synthetic body', 'synthetic-campaign/batch'));
+        }
         if (new URL(request.url).pathname === '/follow-control') {
           const response = await fetch('https://api.resend.com/emails', {
             method: 'POST', headers: { Authorization: 'Bearer synthetic-key', 'Idempotency-Key': 'synthetic-follow-control' },
@@ -126,6 +136,10 @@ const worker = new Miniflare({
     if (url.hostname === 'challenges.cloudflare.com') {
       assert.equal(body.secret, 'synthetic-secret');
       assert.equal(body.response, 'synthetic-token');
+    } else if (url.pathname === '/emails/batch') {
+      assert.equal(body.length, 2);
+      assert.equal(body[0].to, 'reader@example.invalid');
+      assert.equal(request.headers.get('Idempotency-Key'), 'synthetic-campaign/batch');
     } else {
       assert.equal(body.to, 'reader@example.invalid');
       assert.ok(request.headers.get('Idempotency-Key'));
@@ -133,6 +147,14 @@ const worker = new Miniflare({
     if (mode === 'redirect') return new Response(null, {
       status: 307, headers: { location: 'https://redirect-target.invalid/capture' },
     });
+    if (url.pathname === '/emails/batch') {
+      if (mode === 'partial') return Response.json({ data: [{ id: 'synthetic-one' }] });
+      if (mode === 'oversized') return Response.json({ padding: 'x'.repeat(70_000) });
+      if (mode === 'stalled') return new Response(new ReadableStream({
+        start(controller) { controller.enqueue(new TextEncoder().encode('{')); },
+      }));
+      return Response.json({ data: [{ id: 'synthetic-one' }, { id: 'synthetic-two' }] });
+    }
     return Response.json(url.hostname === 'challenges.cloudflare.com'
       ? { success: true, hostname: 'gkoreli.com', action: 'subscribe' }
       : { id: 'synthetic-provider-id' });
@@ -158,6 +180,27 @@ try {
     errorMode: capability.errorMode, providerCalls: workerdProviderCalls, targetCalls: workerdTargetCalls,
     ordinaryVerification: positive.verification.ok, ordinaryConfirmation: positive.delivery.outcome,
     redirectedVerification: refused.verification.reason, redirectedDelivery: refused.delivery.diagnostics.stopReason }));
+  const batchResults = [];
+  for (const [batchMode, expectedOutcome, expectedError] of [
+    ['ok', 'accepted', null], ['redirect', 'unknown', 'provider_redirect'],
+    ['partial', 'unknown', 'provider_response_invalid'],
+    ['oversized', 'unknown', 'provider_response_too_large'],
+    ['stalled', 'unknown', 'provider_timeout'],
+  ]) {
+    mode = batchMode;
+    const callsBefore = workerdProviderCalls;
+    const startedAt = performance.now();
+    const rows = await (await worker.dispatchFetch('https://fixture.invalid/batch')).json();
+    assert.equal(rows.length, 2);
+    assert.ok(rows.every(row => row.outcome === expectedOutcome && row.error === expectedError));
+    assert.equal(workerdProviderCalls - callsBefore, 1, 'A batch must never replay automatically');
+    assert.equal(workerdTargetCalls, 0);
+    const elapsedMs = Math.round(performance.now() - startedAt);
+    if (batchMode === 'stalled') assert.ok(elapsedMs >= 7_500 && elapsedMs < 12_000);
+    batchResults.push({ mode: batchMode, outcome: rows[0].outcome, error: rows[0].error, elapsedMs });
+  }
+  console.log(JSON.stringify({ control: 'workerd batch receipt and body budgets', batchResults }));
+  mode = 'redirect';
   const defaultFollow = await (await worker.dispatchFetch('https://fixture.invalid/follow-control')).json();
   assert.equal(defaultFollow.status, 200);
   assert.equal(workerdTargetCalls, 1);
