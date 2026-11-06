@@ -152,3 +152,11 @@ Browser verification used the actual local Worker and assets at 550px and 1280px
 The first local test pass also exposed a missing argument when the server renderer adopted the shared diagnostic selector; it returned 503 in the native form case. That call was corrected and the full native harness passed. This preserves the rejected result rather than substituting a green static-page check.
 
 Source delivery and fresh production acceptance are pending below. Existing November 6 launch receipts retain their earlier scope; this follow-up does not rewrite them as evidence for the redesigned tools.
+
+## Source delivery and served acceptance
+
+The tools release was delivered as `bc2d26d512b0485fa4d44fd22d851c9fa9e2b1db`, source-linked build `14663169-7666-4522-86a1-46593907aa80`. Eight fresh public representation/route checks passed. The homepage now returns `text/markdown`, `Content-Location: /index.md`, and `Vary: Accept` when requested; HTML remains the normal representation. Tools, robots, comparison, no-JavaScript example, sample JSON and OpenAPI are served. The [normalized receipt](2026-11-06-tools-acceptance.json) records exact conditions and hashes.
+
+A fresh controlled domain run against the deployed homepage received eight 200 responses, negotiated Markdown and a fully observed 100-point ledger. It used fixed public-host allowlisting and Sec-Purpose prefetch; it was not an admitted hosted API call. The public browser's hosted request returned 429 because the prior daily allowance remained exhausted. That result was preserved rather than bypassing or resetting the quota. The static example loaded successfully from the same page without allowance, as intended.
+
+The final browser check also covered the phone-sized 375px layout. After a quota rejection, successful example loading retained the prior error style despite showing correct example text. The example operation now sets loading/ready/error presentation explicitly, with a regression assertion. This small repair does not alter admission, fetch policy or scoring. The shared score, neutral optional result, source preview, local tools and links remain accepted within the stated scope. Broader operator adoption and AI citation outcomes remain unmeasured.

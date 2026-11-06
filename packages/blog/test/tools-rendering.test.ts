@@ -87,9 +87,11 @@ test('example action loads only a static saved report and never enters quota adm
   t.mock.method(globalThis, 'fetch', async (input: unknown) => { requests.push(input); return Response.json({ report: fixture() }); });
   document.body.innerHTML = snapshot;
   const link = document.querySelector('[data-example-check]'); assert.ok(link);
+  const status = document.querySelector('[data-audit-status]'); assert.ok(status instanceof HTMLElement); status.dataset['state'] = 'error';
   link.dispatchEvent(new view.MouseEvent('click', { bubbles: true, cancelable: true }));
   await new Promise(resolve => setImmediate(resolve));
   assert.deepEqual(requests, ['/ai-check-example.json']);
+  assert.equal(status.dataset['state'], 'ready', 'successful example clears a previous quota-error presentation');
   assert.match(document.querySelector('[data-audit-status]')?.textContent ?? '', /No live request to the target and no daily check used/);
   assert.match(document.querySelector('[data-audit-results]')?.textContent ?? '', /Example report · saved observation/);
   assert.doesNotMatch(document.querySelector('[data-audit-status]')?.textContent ?? '', /checks remaining/);

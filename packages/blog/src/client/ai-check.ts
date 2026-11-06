@@ -169,7 +169,8 @@ export class SiteAuditCheck extends HTMLElement {
   disconnectedCallback(): void { this.removeEventListener('submit', this.onSubmit); this.removeEventListener('click', this.onExample); this.abort?.abort(); this.clearDownload(); }
   private clearDownload(): void { if (this.downloadUrl !== null) URL.revokeObjectURL(this.downloadUrl); this.downloadUrl = null; }
   private async example(): Promise<void> {
-    const status = this.querySelector('[data-audit-status]'), results = this.querySelector('[data-audit-results]'); if (!status || !results) return;
+    const status = this.querySelector('[data-audit-status]'), results = this.querySelector('[data-audit-results]'); if (!(status instanceof HTMLElement) || !(results instanceof HTMLElement)) return;
+    status.dataset['state'] = 'loading';
     status.textContent = 'Opening the saved example. No check used…';
     try {
       const response = await fetch('/ai-check-example.json', { headers: { Accept: 'application/json' }, redirect: 'error' });
@@ -179,9 +180,10 @@ export class SiteAuditCheck extends HTMLElement {
       document.getElementById('ai-check-server-result')?.replaceChildren(); results.replaceChildren(renderSiteAudit(report, true));
       this.clearDownload(); this.downloadUrl = URL.createObjectURL(new Blob([JSON.stringify(report, null, 2)], { type: 'application/json' }));
       const download = node('a', 'Download example JSON', 'ai-check-download'); download.href = this.downloadUrl; download.download = 'ai-access-example.json'; results.append(download);
+      status.dataset['state'] = 'ready';
       status.textContent = 'Saved example report. No live request to the target and no daily check used.';
       results.scrollIntoView({ block: 'start', behavior: 'auto' });
-    } catch { status.textContent = 'The example could not load. No daily check was used.'; }
+    } catch { status.dataset['state'] = 'error'; status.textContent = 'The example could not load. No daily check was used.'; }
   }
   private async check(): Promise<void> {
     const form = this.querySelector('form'), input = this.querySelector('input'), button = this.querySelector('button'), status = this.querySelector('[data-audit-status]'), results = this.querySelector('[data-audit-results]');
