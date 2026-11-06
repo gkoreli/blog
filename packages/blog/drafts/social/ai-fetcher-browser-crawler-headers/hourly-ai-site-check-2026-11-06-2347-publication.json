@@ -1,0 +1,152 @@
+{
+  "automationId": "ai-site-check-hourly-x-replies",
+  "triggeredAt": "2026-11-06T23:47:04.840Z",
+  "completedPublicationAt": "2026-11-06T23:56:20.337Z",
+  "clientDate": "2026-11-06",
+  "timezone": "America/Los_Angeles",
+  "authorization": "Explicit hourly heartbeat authorizes up to five useful X replies. No Reddit writes, DMs, likes, follows, original posts or new schedulers.",
+  "preflight": "Latest chat state, article worklist and shared social receipts reviewed. UI work remains accepted at 18:33 UTC. The separate AI Fetchers chat was inactive with its latest posting turn completed after round ten. No active one-time batch or overlapping session found. Fresh origin/main was 5775f246157532d0ce7d5e7f2c85c12c67399d40. No catch-up burst.",
+  "currentEvidence": "Live AI Site Check article and current site-audit README read. Selected primary policy/method sources read. Two supplied-policy cases evaluated in the live local robots playground; no hosted URL audit or real-provider experiment.",
+  "xRepliesPublished": 5,
+  "xNewConversationRepliesPublished": 5,
+  "xConversationFollowupsPublished": 0,
+  "canonicalOwnerViewsVerified": 5,
+  "countNote": "Five this run; thirty across six hourly receipts. The original campaign historical baseline of sixty-three remains separate.",
+  "notificationCoverage": "Bounded initial signed-in notifications reviewed. The only new conversational response was mpgn closing the comparison discussion; it did not require another reply. No exhaustive account-wide census.",
+  "closedWithoutReply": [
+    {
+      "handle": "mpgn_x64",
+      "url": "https://x.com/mpgn_x64/status/2118840364823990341",
+      "observation": "Acknowledges the comparison clarification and says he will keep the experiment in mind. Conversation closed without a redundant acknowledgement. This is consideration, not an executed experiment or adoption."
+    }
+  ],
+  "selection": "One focused Latest query for robots.txt, AI crawlers, llms.txt and agent analytics, with visible scrolling. Selected complete conversation branches and relevant source material were read one at a time. Neej's complete repository roundup was read but not selected because no specific unresolved issue or additional contribution emerged. General promotion, broad AEO assertions and unrelated results were skipped. Hanan's concrete question under the fully read XERJ article was selected instead of adding another broad response to its announcement.",
+  "items": [
+    {
+      "index": 1,
+      "parent": "https://x.com/JonLClark/status/2118844065311580205",
+      "weightedLength": 228,
+      "source": "https://www.bloomberg.com/robots.txt",
+      "url": "https://x.com/GogaKoreli/status/2118853592312648101",
+      "verifiedAt": "2026-11-06T23:50:50.932Z",
+      "copy": "the debug parameter lets them match a prompted fetch to Fastly logs. I'd keep an untagged discovery run beside it: a successful explicit fetch proves access, but doesn't tell you whether the agent would find llms.txt on its own.",
+      "platform": "x",
+      "label": "Jon / prompted fetch versus discovery",
+      "state": "canonical-owner-view-verified",
+      "sourceReads": [
+        {
+          "url": "https://www.bloomberg.com/robots.txt",
+          "scope": "Fresh browser read confirms the debug-query Allow twins and the comment describing matching test fetches in Fastly logs. The web-search representation was stale and was not used as current policy evidence. Suggested untagged discovery control was not executed."
+        },
+        {
+          "url": "https://gkoreli.com/ai-site-check-evidence",
+          "scope": "Fresh live article distinguishes delivery checks, actual provider requests, discovery and citation outcomes."
+        }
+      ],
+      "publishedTimeUi": "3:50 PM · Nov 6, 2026",
+      "publishedTimeZone": "America/Los_Angeles",
+      "privateProofBasename": "ai-site-check-hourly-x-20261106-2347/01"
+    },
+    {
+      "index": 2,
+      "parent": "https://x.com/otoclip/status/2118852011273892165",
+      "weightedLength": 251,
+      "source": "https://gkoreli.com/ai-site-check-evidence",
+      "url": "https://x.com/GogaKoreli/status/2118853743030808737",
+      "verifiedAt": "2026-11-06T23:51:26.332Z",
+      "copy": "I'd save a baseline of answers/citations now and log /llms.txt fetches separately from GA sessions. rerun the same prompts later, keeping model and search mode fixed. that gives you something to compare, even if it can't isolate llms.txt as the cause.",
+      "platform": "x",
+      "label": "Otoclip / experiment baseline",
+      "state": "canonical-owner-view-verified",
+      "sourceReads": [
+        {
+          "url": "https://gkoreli.com/ai-site-check-evidence",
+          "scope": "Fresh live article preserves the distinction between requests and answer/citation evidence. Full Otoclip/Brick & Mortar chain read; proposed same-prompt baseline is not a controlled causal result or an executed experiment."
+        }
+      ],
+      "publishedTimeUi": "3:51 PM · Nov 6, 2026",
+      "publishedTimeZone": "America/Los_Angeles",
+      "privateProofBasename": "ai-site-check-hourly-x-20261106-2347/02"
+    },
+    {
+      "index": 3,
+      "parent": "https://x.com/xyzhani/status/2118848021282873851",
+      "weightedLength": 219,
+      "source": "https://xerj.org/blog/xerj-query-ai-model#headtohead",
+      "url": "https://x.com/GogaKoreli/status/2118854122846015824",
+      "verifiedAt": "2026-11-06T23:52:59.466Z",
+      "copy": "the article's employer/occupation example shows the gap: a valid program can choose the wrong relation. I'd test prompt pairs that change only the requested relation, and score that separately from executor correctness.",
+      "platform": "x",
+      "label": "Hanan / semantic validation",
+      "state": "canonical-owner-view-verified",
+      "sourceReads": [
+        {
+          "url": "https://xerj.org/blog/xerj-query-ai-model#headtohead",
+          "scope": "Complete current article read, including its disclosed employer-versus-occupation wrong-pointer example, evaluation caveats and program traces. Parent article and available replies read before the specific unanswered semantic-validation question. Prompt-pair test is a proposal; no XERJ execution, benchmark replication or own runtime defect discovery claimed."
+        }
+      ],
+      "publishedTimeUi": "3:52 PM · Nov 6, 2026",
+      "publishedTimeZone": "America/Los_Angeles",
+      "privateProofBasename": "ai-site-check-hourly-x-20261106-2347/03"
+    },
+    {
+      "index": 4,
+      "parent": "https://x.com/croatxy/status/2118833174205943940",
+      "weightedLength": 228,
+      "source": "https://claude.com/crawling/bots.json",
+      "url": "https://x.com/GogaKoreli/status/2118854426018590988",
+      "verifiedAt": "2026-11-06T23:54:27.707Z",
+      "linkVerified": "https://claude.com/crawling/bots.json",
+      "copy": "the IP you posted is in Anthropic's published range. for the CPU spike, compare edge blocks with origin requests: an application-level denial can still consume CPU. were those hits stopped before the app? https://claude.com/crawling/bots.json",
+      "platform": "x",
+      "label": "Memento mori / crawler attribution and load",
+      "state": "canonical-owner-view-verified",
+      "sourceReads": [
+        {
+          "url": "https://claude.com/crawling/bots.json",
+          "creationTime": "2026-10-20T00:00:00Z",
+          "scope": "Current official list includes 216.73.216.0/22. Local Python ipaddress membership check confirms the single publicly posted address belongs to that range. Does not verify the recipient log, all claimed hits, robots behavior or cause of CPU exhaustion."
+        },
+        {
+          "url": "https://support.claude.com/en/articles/8896518-does-anthropic-crawl-data-from-the-web-and-how-can-site-owners-block-the-crawler",
+          "scope": "Current primary crawler documentation identifies the published range list as an Anthropic source-address signal. The reply proposes edge-versus-origin comparison, not a finding about the recipient firewall."
+        }
+      ],
+      "publishedTimeUi": "3:53 PM · Nov 6, 2026",
+      "publishedTimeZone": "America/Los_Angeles",
+      "privateProofBasename": "ai-site-check-hourly-x-20261106-2347/04"
+    },
+    {
+      "index": 5,
+      "parent": "https://x.com/snowopsdev/status/2118827508925669712",
+      "weightedLength": 207,
+      "source": "https://www.rfc-editor.org/rfc/rfc9309.html#section-2.2.1",
+      "url": "https://x.com/GogaKoreli/status/2118854908820828278",
+      "verifiedAt": "2026-11-06T23:56:20.337Z",
+      "linkVerified": "https://gkoreli.com/tools/robots",
+      "copy": "one easy trap: a named OAI-SearchBot group won't inherit a Disallow under '*'. test /guide and /private for each bot separately. my local playground shows the selected group and rule: https://gkoreli.com/tools/robots",
+      "platform": "x",
+      "label": "aj / robots group selection",
+      "state": "canonical-owner-view-verified",
+      "sourceReads": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc9309.html#section-2.2.1",
+          "scope": "Named matching groups are selected and combined; the wildcard group applies when no matching named group exists."
+        },
+        {
+          "url": "https://gkoreli.com/tools/robots",
+          "localSource": "packages/site-audit/README.md",
+          "scope": "Fresh live page inspected and two local cases evaluated: wildcard Disallow /private plus a named OAI-SearchBot Allow / yields Allowed for /private; repeating Disallow /private in the named group yields Disallowed. Selected group/rule displayed. No target fetch, hosted quota admission or provider behavior tested."
+        }
+      ],
+      "publishedTimeUi": "3:55 PM · Nov 6, 2026",
+      "publishedTimeZone": "America/Los_Angeles",
+      "privateProofBasename": "ai-site-check-hourly-x-20261106-2347/05"
+    }
+  ],
+  "verification": "Exact final text saved before submission and checked in each composer. Each canonical reply reopened; body and parent inspected. Both outbound short links followed to the official Anthropic JSON and the robots playground. UI publication times have minute precision; verifiedAt records later canonical capture. Five submissions; no retries of uncertain writes.",
+  "independentPublicVisibility": "Not tested; signed-in owner visibility only.",
+  "privacy": "Raw signed-in captures and screenshots remain outside Git in private temporary storage. Public records contain exact published text and normalized evidence.",
+  "limits": "No traffic query, click/adoption measurement, anonymous visibility test, target-site diagnosis, hosted audit, new provider trial, XERJ benchmark execution, Reddit write, DM, like, follow, original post or scheduler change. No site or article edits. The source-address membership check does not establish the recipient traffic volume or cause of load.",
+  "nextBoundedAction": "Complete at five replies. Next authorized run: reconcile state and shared receipts, then prioritize substantive incoming responses. Do not duplicate these parents or accumulate missed hours."
+}
