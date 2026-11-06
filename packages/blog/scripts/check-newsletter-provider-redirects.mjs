@@ -84,7 +84,18 @@ const bundle = await build({
     contents: `
       import { verifyTurnstile } from '../newsletter/src/turnstile.ts';
       import { sendConfirmationEmail, sendNewsletterBatch } from '../newsletter/src/email.ts';
+      import { providerAttempt, readProviderJson } from '../newsletter/src/provider-response.ts';
       export default { async fetch(request) {
+        if (new URL(request.url).pathname === '/body-budget') {
+          const started = performance.now();
+          const budget = providerAttempt(100);
+          const response = await fetch('https://api.resend.com/body-budget');
+          const result = await readProviderJson(response, {
+            // Deliberately detach the response from any transport signal.
+            ...budget, signal: new AbortController().signal, maxBytes: 100,
+          });
+          return Response.json({ result, elapsedMs: performance.now() - started });
+        }
         if (new URL(request.url).pathname === '/batch') {
           return Response.json(await sendNewsletterBatch('synthetic-key', [
             { email: 'reader@example.invalid', unsubscribeToken: 'synthetic-one' },
@@ -132,6 +143,12 @@ const worker = new Miniflare({
     }
     assert.ok(['challenges.cloudflare.com', 'api.resend.com'].includes(url.hostname), 'Unexpected external destination');
     workerdProviderCalls++;
+    if (url.pathname === '/body-budget') {
+      await new Promise(resolve => setTimeout(resolve, 60));
+      return new Response(new ReadableStream({
+        start(controller) { controller.enqueue(new TextEncoder().encode('{')); },
+      }));
+    }
     const body = await request.json();
     if (url.hostname === 'challenges.cloudflare.com') {
       assert.equal(body.secret, 'synthetic-secret');
@@ -155,6 +172,9 @@ const worker = new Miniflare({
       }));
       return Response.json({ data: [{ id: 'synthetic-one' }, { id: 'synthetic-two' }] });
     }
+    if (mode === 'provider-oversized') return new Response('x'.repeat(17_000));
+    if (mode === 'malformed-id' && url.hostname === 'api.resend.com') return Response.json({ id: ' ' });
+    if (mode === 'request-timeout' && url.hostname === 'api.resend.com') return new Response(null, { status: 408 });
     return Response.json(url.hostname === 'challenges.cloudflare.com'
       ? { success: true, hostname: 'gkoreli.com', action: 'subscribe' }
       : { id: 'synthetic-provider-id' });
@@ -180,6 +200,22 @@ try {
     errorMode: capability.errorMode, providerCalls: workerdProviderCalls, targetCalls: workerdTargetCalls,
     ordinaryVerification: positive.verification.ok, ordinaryConfirmation: positive.delivery.outcome,
     redirectedVerification: refused.verification.reason, redirectedDelivery: refused.delivery.diagnostics.stopReason }));
+  const responseBudget = await (await worker.dispatchFetch('https://fixture.invalid/body-budget')).json();
+  assert.deepEqual(responseBudget.result, { ok: false, reason: 'timeout' });
+  assert.ok(responseBudget.elapsedMs >= 90 && responseBudget.elapsedMs < 150,
+    'Headers consuming60ms must leave about40ms, not a fresh100ms response budget');
+  const providerResponseResults = [];
+  for (const providerMode of ['provider-oversized', 'malformed-id', 'request-timeout']) {
+    mode = providerMode;
+    const callsBefore = workerdProviderCalls;
+    const result = await (await worker.dispatchFetch('https://fixture.invalid/providers')).json();
+    assert.equal(result.delivery.outcome, 'unknown');
+    assert.equal(workerdProviderCalls - callsBefore, providerMode === 'provider-oversized' ? 4 : providerMode === 'malformed-id' ? 3 : 2);
+    assert.equal(result.verification.ok, providerMode !== 'provider-oversized');
+    if (providerMode === 'provider-oversized') assert.equal(result.verification.reason, 'invalid_verifier_response');
+    providerResponseResults.push({ mode: providerMode, verification: result.verification.ok, delivery: result.delivery.outcome });
+  }
+  console.log(JSON.stringify({ control: 'workerd bounded provider responses', responseBudget, providerResponseResults }));
   const batchResults = [];
   for (const [batchMode, expectedOutcome, expectedError] of [
     ['ok', 'accepted', null], ['redirect', 'unknown', 'provider_redirect'],

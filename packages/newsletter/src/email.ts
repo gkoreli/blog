@@ -1,3 +1,5 @@
+import { providerAttempt, readProviderJson, validProviderId } from './provider-response.js';
+
 /**
  * email.ts — Resend email delivery + HTML templates.
  *
@@ -70,6 +72,7 @@ export async function sendConfirmationEmail(
     let providerStatus: number | null = null;
     let retryReason: ConfirmationDeliveryDiagnostics['retryReason'] = 'network';
     try {
+      const budget = providerAttempt(8_000);
       const res = await fetch('https://api.resend.com/emails', {
         method: 'POST',
         headers: {
@@ -77,7 +80,7 @@ export async function sendConfirmationEmail(
           'Idempotency-Key': `newsletter-confirmation/${attemptId}`,
         },
         // Workers does not support redirect:error. Inspect manual responses instead.
-        body, signal: AbortSignal.timeout(8_000), redirect: 'manual',
+        body, signal: budget.signal, redirect: 'manual',
       });
       providerStatus = res.status;
       if (res.status >= 300 && res.status < 400) {
@@ -85,22 +88,17 @@ export async function sendConfirmationEmail(
         return finish({ outcome: 'unknown', providerId: null, providerStatus }, 'redirect-rejected');
       }
       if (res.ok) {
-        let data: unknown;
-        let readFailed = false;
-        try { data = await res.json(); } catch (error) {
-          readFailed = true;
-          retryReason = error instanceof SyntaxError ? 'invalid-response' : transportFailure(error);
-        }
-        if (typeof data === 'object' && data !== null && 'id' in data
-          && typeof data.id === 'string' && data.id.length > 0 && data.id.length <= 128) {
+        const parsed = await readProviderJson(res, { ...budget, maxBytes: 16 * 1024 });
+        const data = parsed.ok ? parsed.value : undefined;
+        if (typeof data === 'object' && data !== null && 'id' in data && validProviderId(data.id)) {
           return finish({ outcome: 'accepted', providerId: data.id, providerStatus: res.status }, 'accepted');
         }
+        retryReason = !parsed.ok && parsed.reason === 'timeout' ? 'timeout' : 'invalid-response';
         acceptanceUncertain = true;
         last = { outcome: 'unknown', providerId: null, providerStatus: res.status };
-        if (!readFailed) retryReason = 'invalid-response';
       } else {
         // Provider bodies may contain addresses; retain only the HTTP status.
-        acceptanceUncertain ||= res.status >= 500 || res.status === 409;
+        acceptanceUncertain ||= res.status >= 500 || res.status === 409 || res.status === 408;
         last = { outcome: acceptanceUncertain ? 'unknown' : 'failed',
           providerId: null, providerStatus: res.status };
         // Cleanup must not extend the interactive response budget.
@@ -211,52 +209,6 @@ type BatchProviderError = 'invalid_batch_size' | 'invalid_idempotency_key'
 
 const MAX_BATCH_RESPONSE_BYTES = 64 * 1024;
 
-async function readBatchResponse(response: Response, signal: AbortSignal): Promise<
-  { ok: true; value: unknown } | { ok: false; error: BatchProviderError }
-> {
-  if (!response.body) return { ok: false, error: 'provider_response_invalid' };
-  const declared = response.headers.get('content-length');
-  if (declared !== null && /^\d+$/.test(declared) && Number(declared) > MAX_BATCH_RESPONSE_BYTES) {
-    void response.body.cancel().catch(() => {});
-    return { ok: false, error: 'provider_response_too_large' };
-  }
-  const reader = response.body.getReader();
-  let timedOut = false;
-  const stop = (): void => {
-    timedOut = true;
-    void reader.cancel().catch(() => {});
-  };
-  signal.addEventListener('abort', stop, { once: true });
-  if (signal.aborted) stop();
-  const chunks: Uint8Array[] = [];
-  let size = 0;
-  try {
-    while (true) {
-      const chunk = await reader.read();
-      if (timedOut) return { ok: false, error: 'provider_timeout' };
-      if (chunk.done) break;
-      size += chunk.value.byteLength;
-      if (size > MAX_BATCH_RESPONSE_BYTES) {
-        void reader.cancel().catch(() => {});
-        return { ok: false, error: 'provider_response_too_large' };
-      }
-      chunks.push(chunk.value);
-    }
-    const bytes = new Uint8Array(size);
-    let offset = 0;
-    for (const chunk of chunks) { bytes.set(chunk, offset); offset += chunk.byteLength; }
-    let value: unknown;
-    try { value = JSON.parse(new TextDecoder('utf-8', { fatal: true, ignoreBOM: false }).decode(bytes)); }
-    catch { return { ok: false, error: 'provider_response_invalid' }; }
-    return { ok: true, value };
-  } catch {
-    return { ok: false, error: timedOut ? 'provider_timeout' : 'provider_response_unreadable' };
-  } finally {
-    signal.removeEventListener('abort', stop);
-    reader.releaseLock();
-  }
-}
-
 function batchProviderIds(value: unknown, count: number): string[] | null {
   if (typeof value !== 'object' || value === null || Array.isArray(value)
     || !('data' in value) || !Array.isArray(value.data) || value.data.length !== count) return null;
@@ -264,8 +216,7 @@ function batchProviderIds(value: unknown, count: number): string[] | null {
   const ids: string[] = [];
   for (const row of rows) {
     if (typeof row !== 'object' || row === null || Array.isArray(row) || !('id' in row)
-      || typeof row.id !== 'string' || !row.id || row.id.length > 128
-      || row.id.trim() !== row.id || /[\u0000-\u001f\u007f]/.test(row.id)) return null;
+      || !validProviderId(row.id)) return null;
     ids.push(row.id);
   }
   return new Set(ids).size === ids.length ? ids : null;
@@ -313,14 +264,14 @@ export async function sendNewsletterBatch(
   });
 
   try {
-    const signal = AbortSignal.timeout(8_000);
+    const budget = providerAttempt(8_000);
     const res = await fetch('https://api.resend.com/emails/batch', {
       method: 'POST',
       headers: {
         Authorization: `Bearer ${apiKey}`, 'Content-Type': 'application/json',
         ...(idempotencyKey !== undefined && { 'Idempotency-Key': idempotencyKey }),
       },
-      body: JSON.stringify(batch), signal, redirect: 'manual',
+      body: JSON.stringify(batch), signal: budget.signal, redirect: 'manual',
     });
     if (res.status >= 300 && res.status < 400) {
       void res.body?.cancel().catch(() => {});
@@ -331,8 +282,13 @@ export async function sendNewsletterBatch(
       return res.status >= 400 && res.status < 500 && res.status !== 408 && res.status !== 409
         ? fail('failed', 'provider_rejected') : fail('unknown', 'provider_unavailable');
     }
-    const parsed = await readBatchResponse(res, signal);
-    if (!parsed.ok) return fail('unknown', parsed.error);
+    const parsed = await readProviderJson(res, { ...budget, maxBytes: MAX_BATCH_RESPONSE_BYTES });
+    if (!parsed.ok) {
+      const error: BatchProviderError = parsed.reason === 'timeout' ? 'provider_timeout'
+        : parsed.reason === 'too-large' ? 'provider_response_too_large'
+        : parsed.reason === 'unreadable' ? 'provider_response_unreadable' : 'provider_response_invalid';
+      return fail('unknown', error);
+    }
     const ids = batchProviderIds(parsed.value, audience.length);
     if (!ids) return fail('unknown', 'provider_response_invalid');
     return audience.map((recipient, index): BatchSendResult => {

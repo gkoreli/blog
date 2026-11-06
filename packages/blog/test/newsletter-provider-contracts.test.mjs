@@ -139,7 +139,9 @@ for (const hint of [null, '0', '2', '3']) {
   test(`confirmation records a bounded rate wait for ${String(hint)} before accepted replay`, async t => {
     const waits = [];
     let calls = 0;
-    t.mock.method(globalThis, 'setTimeout', (callback, delay) => {
+    const nativeSetTimeout = globalThis.setTimeout;
+    t.mock.method(globalThis, 'setTimeout', (callback, delay, ...args) => {
+      if (delay > 3_000) return nativeSetTimeout(callback, delay, ...args);
       waits.push(delay); queueMicrotask(callback); return 0;
     });
     t.mock.method(globalThis, 'fetch', async () => ++calls === 1

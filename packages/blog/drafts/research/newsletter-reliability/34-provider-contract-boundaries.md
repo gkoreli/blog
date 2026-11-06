@@ -234,3 +234,50 @@ An actual unfinished response body returns provider_timeout after 8,008 ms in
 this local run. The intentional default-follow counterexample remains separate
 and still forwards its synthetic body once. No external provider call, email,
 production change or migration is made by these controls.
+
+## Fourth bounded increment — response consumption (2026-11-06)
+
+The first three increments remain separate accepted code checkpoints. This repair
+adds an adapter-specific [provider response reader](../../../../newsletter/src/provider-response.ts),
+without changing the request-body boundary used by webhook/campaign handlers.
+Each provider attempt records its deadline before fetch: five seconds for
+Siteverify and eight seconds for confirmation/batch delivery. Response headers
+do not grant another full timeout. Reading observes both the original signal and
+an independent timer for the remaining time, then validates bounded UTF-8 JSON.
+This covers custom response streams which do not inherit a fetch signal.
+Actual and declared body caps are 16 KiB for Siteverify/confirmation and the
+existing 64 KiB for batch. Cancellation hooks are never awaited during rejection.
+
+Confirmation IDs now use the batch structural check: nonempty, at most 128
+characters, no leading/trailing whitespace or control characters. The previous
+sender reproduced accepted results for a single space or newline; these now
+remain unknown after the existing bounded retry. This does not assert that any
+structurally valid synthetic ID exists at the provider.
+
+A first HTTP 408 now remains unknown and stops after one call, with the existing
+HTTP-rejected stop diagnostic. That diagnostic names the transport stop, not
+proof of nonacceptance. This is a conservative application policy: [RFC 9110
+section 15.5.9](https://www.rfc-editor.org/rfc/rfc9110.html#section-15.5.9)
+describes a request reception timeout and permits repeating an outstanding
+request; it does not prescribe our email knowledge model. The [Resend error
+contract](https://resend.com/docs/api-reference/errors) does not document 408 as a
+permanent email validation rejection. No claim is made that a conforming origin
+necessarily accepted an incomplete request. We decline to treat this status alone
+as an application-level receipt proving that an email was never accepted.
+
+The new [response tests](../../../test/newsletter-provider-response.test.mjs)
+exercise malformed IDs, first 408, declared/actual byte caps in both adapters,
+and stalled bodies detached from transport cancellation. Controlled elapsed time
+consumes all but 20 ms before headers and verifies each original attempt has only
+that remainder; neither adapter receives a fresh body timeout. The earlier rate
+wait test now mocks only the short wait, allowing independent deadline timers
+to remain real. All 163 combined newsletter/provider/campaign/request-boundary/
+diagnostics tests pass, and the active newsletter typecheck passes.
+
+Native workerd controls accept normal requests and reject oversized provider
+replies, whitespace IDs and first 408 as expected. An independent 100 ms body
+budget, with 60 ms deliberately spent awaiting headers and no transport abort
+signal, stops after 107 ms in this local run. The batch stalled-body control still
+stops at its original eight-second budget (8,003ms here). This establishes local
+runtime behavior and bounded policy; it does not measure production latency or
+current provider behavior. No provider calls, emails or deployment occur.

@@ -1,3 +1,5 @@
+import { providerAttempt, readProviderJson } from './provider-response.js';
+
 /** Closed provider facts only: never retain secrets, challenge tokens or response bodies. */
 const PROVIDER_CODES = ['missing-input-secret', 'invalid-input-secret', 'missing-input-response',
   'invalid-input-response', 'bad-request', 'timeout-or-duplicate', 'internal-error'] as const;
@@ -58,23 +60,26 @@ export async function verifyTurnstile(
     diagnostics.httpStatus = null;
     diagnostics.errorCodes = [];
     try {
+      const budget = providerAttempt(5_000);
       const res = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
         method: 'POST', headers: { 'content-type': 'application/json' }, body,
-        signal: AbortSignal.timeout(5_000), redirect: 'manual',
+        signal: budget.signal, redirect: 'manual',
       });
       diagnostics.httpStatus = res.status;
       if (res.status >= 300 && res.status < 400) {
         void res.body?.cancel().catch(() => {});
         return failed('verifier_redirect');
       }
-      let rawData: unknown;
-      try { rawData = await res.json(); } catch {
+      const parsed = await readProviderJson(res, { ...budget, maxBytes: 16 * 1024 });
+      if (!parsed.ok) {
         if (attempt < 2 && (res.ok || res.status >= 500)) {
-          diagnostics.retryReason = res.ok ? 'invalid-response' : 'http';
+          diagnostics.retryReason = parsed.reason === 'timeout' ? 'timeout' : res.ok ? 'invalid-response' : 'http';
           continue;
         }
-        return failed(res.ok ? 'invalid_verifier_response' : 'verifier_http_error');
+        return failed(parsed.reason === 'timeout' ? 'verifier_timeout'
+          : res.ok ? 'invalid_verifier_response' : 'verifier_http_error');
       }
+      const rawData = parsed.value;
       const data = parseVerifierReply(rawData);
       if (!data) {
         if (attempt < 2) { diagnostics.retryReason = 'invalid-response'; continue; }
