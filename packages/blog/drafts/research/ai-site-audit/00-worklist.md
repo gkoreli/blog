@@ -43,3 +43,15 @@ The quota-only migration was applied after a metadata check and native D1 accept
 A new privacy test exposed a raw signer URI in the reader-kind reason for the unsigned-name signed-agent fallback. The public request assessment now returns a closed reason marker and reviewed signer display; it does not publish that URI. This projection change leaves stored analytics semantics intact.
 
 Code delivery, active deployment and fresh public acceptance remain pending at this checkpoint. Browser screenshots remain unavailable because local computer/browser access is disabled; SSG and native DOM tests are the UI evidence presently available.
+
+## First activation and native transport correction
+
+Source `8b8f5bcad0f2578c2c4a34199c44f548e36aa8c8` activated through source-linked build `52fb68a7-6428-4107-945f-632adfca9df9`; the served tool embeds both identifiers. Active Worker `690165b8-c93a-4d5d-85a6-12f83e9fec23` has 100% allocation, the public-fetch compatibility flag and both configured rate limiters. Fresh public reads accepted the tool, article, Markdown/prompt/client representations, schema, unsupported method and rejected private target. The request inspector consumed the first allowance (nine remaining).
+
+The second admitted check exposed a failure: HTTP 200 contained an appropriately partial report with all eight resources `network-error`, status null and zero received bytes. HTML extraction was unavailable. Acceptance stopped there with eight daily checks remaining; no fresh positive site-audit claim was made. Direct CLI access to the fixed resolver returned DNS status zero, but that does not establish the Worker path.
+
+A new native default-transport test reproduced the mechanism: workerd rejects `redirect: 'error'` before outbound I/O. The initial native HTTP harness had stubbed the complete audit; Node transport tests had supplied fetch implementations. Neither covered the production fetch option. The repair changes only the fixed DNS resolver request to manual redirect handling; its existing non-success check refuses 3xx without following them. The domain recommendation also asks for a direct-fetch/log comparison before blaming an unavailable robots response on the target site.
+
+`pnpm -C packages/site-audit test:workers` now covers the actual default `analyzeSite` transport with an outbound fixture, no injected fetch/resolver: eight received 200 resources, sixteen DNS requests and eight target requests. It preserves the rejected option as a native negative control with zero outbound requests, plus a resolver redirect refusal. The 29 domain tests and typecheck pass. Raw exception logging used during local diagnosis was removed before commit `757cddf7`.
+
+The correction must activate and pass fresh served checks before site-audit acceptance. Raw HTTP bodies/headers remain in ignored `packages/blog/worklog/ai-site-audit-20261106/`; they are not copied into Git. The admitted failed check counts under the documented quota policy.
