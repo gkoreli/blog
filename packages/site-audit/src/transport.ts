@@ -67,7 +67,7 @@ async function readBounded(response: Response, signal: AbortSignal, maxBytes = M
 async function publicDns(hostname: string, signal: AbortSignal, fetchOperation: FetchOperation): Promise<readonly string[]> {
   const values = await Promise.all(['A', 'AAAA'].map(async type => {
     const url = `https://cloudflare-dns.com/dns-query?name=${encodeURIComponent(hostname)}&type=${type}`;
-    const response = await fetchOperation(url, { method: 'GET', redirect: 'error', headers: { Accept: 'application/dns-json' }, signal });
+    const response = await fetchOperation(url, { method: 'GET', redirect: 'manual', headers: { Accept: 'application/dns-json' }, signal });
     if (!response.ok) { await response.body?.cancel(); throw new RetrievalError('dns-error'); }
     let document: unknown;
     try { document = JSON.parse(new TextDecoder().decode(await readBounded(response, signal, 32_768))); } catch (error) {

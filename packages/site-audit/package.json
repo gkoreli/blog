@@ -12,7 +12,8 @@
   },
   "scripts": {
     "typecheck": "tsc --noEmit",
-    "test": "tsc -p tsconfig.test.json && node --test test/*.test.mjs"
+    "test": "tsc -p tsconfig.test.json && node --test test/*.test.mjs",
+    "test:workers": "node scripts/check-workers-transport.mjs"
   },
   "dependencies": {
     "ipaddr.js": "2.5.0"
