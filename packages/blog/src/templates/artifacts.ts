@@ -48,23 +48,27 @@ export function ArtifactSurface({ id, className, labelledBy, label, code, meta =
 
 interface ReplySlipProps {
   turnstileSiteKey: string;
+  formId?: string;
 }
 
-export function ReplySlip({ turnstileSiteKey }: ReplySlipProps) {
-  return html`<form id="sub-form" class="dispatch-form subscribe-form" method="post" action="/api/subscribe" novalidate data-turnstile-sitekey=${turnstileSiteKey}>
-    <label for="subscribe-email" class="dispatch-email-label">Email address</label>
+export function ReplySlip({ turnstileSiteKey, formId }: ReplySlipProps) {
+  const id = formId ?? 'sub-form';
+  const emailId = formId ? `${formId}-email` : 'subscribe-email';
+  const messageId = `${id}-status`;
+  return html`<form id=${id} class="dispatch-form subscribe-form" method="post" action="/api/subscribe" novalidate data-turnstile-sitekey=${turnstileSiteKey}>
+    <label for=${emailId} class="dispatch-email-label">Email address</label>
     <div class="dispatch-form-row">
-      <input id="subscribe-email" type="email" name="email" class="dispatch-input subscribe-input" placeholder="your@email.com" required autocomplete="email">
+      <input id=${emailId} type="email" name="email" class="dispatch-input subscribe-input" placeholder="your@email.com" required maxlength="254" autocomplete="email" aria-describedby=${messageId}>
       <button type="submit" class="dispatch-submit subscribe-btn" disabled>Subscribe</button>
     </div>
     <p class="dispatch-note">One piece per send · no schedule · unsubscribe anytime</p>
-    <p class="subscribe-msg" aria-live="polite" role="status"></p>
+    <p id=${messageId} class="subscribe-msg" aria-live="polite" role="status"></p>
     <noscript><p>Enable JavaScript to verify an email subscription, or <a href="/feed.xml">follow by RSS</a>.</p></noscript>
     ${turnstileSiteKey ? html`<div class="turnstile-slot"></div>` : ''}
   </form>`;
 }
 
-export function DispatchSlip({ turnstileSiteKey }: ReplySlipProps) {
+export function DispatchSlip({ turnstileSiteKey, formId }: ReplySlipProps) {
   return ArtifactSurface({
     id: 'dispatch',
     className: 'dispatch-slip',
@@ -73,6 +77,6 @@ export function DispatchSlip({ turnstileSiteKey }: ReplySlipProps) {
     code: 'GK-001',
     body: html`<h2 id="dispatch-title" class="dispatch-headline"><em>A note when there is signal.</em></h2>
       <p class="dispatch-copy">Engineering records, failed experiments, and the life around the work.</p>`,
-    action: ReplySlip({ turnstileSiteKey }),
+    action: ReplySlip(formId === undefined ? { turnstileSiteKey } : { turnstileSiteKey, formId }),
   });
 }

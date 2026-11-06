@@ -38,7 +38,7 @@ test('sitekey values stay in their attribute through the native snapshot rendere
   }
 });
 
-test('the actual client initializes verification from an actual SSG form', async t => {
+test('the actual client enhances an SSG form without an idle provider session', async t => {
   const [snapshot] = await renderContent([ReplySlip({ turnstileSiteKey: 'fixture-client-key' })]);
   assert.ok(snapshot);
   const view = document.defaultView;
@@ -61,7 +61,7 @@ test('the actual client initializes verification from an actual SSG form', async
     remove() {},
   };
   initSubscribeForm({ logger: { report() { assert.fail('Rendered configuration must not report missing verification'); } } });
-  assert.equal(renders, 1);
+  assert.equal(renders, 0, 'a widget belongs to a submitted attempt');
   assert.equal(document.querySelector('button')?.disabled, false);
   assert.equal(document.getElementById('sub-form')?.dataset['subscribeInit'], 'true');
 });

@@ -13,8 +13,9 @@ export function clientBootstrap(buildIdLiteral: string): string {
     if (seen.has(stage) || seen.size >= 3) return;
     seen.add(stage);
     if (stage === 'client_entry_script_load_error') {
-      const message = document.querySelector('#sub-form .subscribe-msg');
-      if (message) message.textContent = 'Subscriptions could not load. Please refresh the page and try again.';
+      for (const message of document.querySelectorAll('.subscribe-form .subscribe-msg, #sub-form .subscribe-msg')) {
+        message.textContent = 'Subscriptions could not load. Please refresh the page and try again.';
+      }
     }
     const event = {type:'interaction_error', component:'client_bootstrap', message:stage,
       path:location.pathname, occurredAt:new Date().toISOString(), buildId:${buildIdLiteral}};
@@ -36,7 +37,10 @@ export function clientBootstrap(buildIdLiteral: string): string {
   window.addEventListener('error', event => {
     if (!event.target || event.target.tagName !== 'SCRIPT') return;
     const kind = resource(event.target.src);
-    if (kind === 'turnstile') window.gkTurnstileScriptState = 'failed';
+    if (kind === 'turnstile') {
+      window.gkTurnstileScriptState = 'failed';
+      window.dispatchEvent(new Event('gk-turnstile-load-failed'));
+    }
     if (kind) report(kind + '_script_load_error');
   }, true);
   document.addEventListener('securitypolicyviolation', event => {

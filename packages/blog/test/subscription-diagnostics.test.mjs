@@ -23,7 +23,7 @@ test('v3 context is closed, bounded and compatible with historical profiles',()=
 
 test('early script/CSP reporting works with no main client, deduplicates and excludes private resource URLs',async()=>{
  const windowListeners=new Map(),documentListeners=new Map(),requests=[];
- runInNewContext(clientBootstrap(JSON.stringify('fixture-build')),{Set,URL,Date,location:{origin:'https://fixture.invalid',pathname:'/owner'},console:{warn(){}},window:{addEventListener(name,callback){windowListeners.set(name,callback)}},document:{querySelector(){return null},addEventListener(name,callback){documentListeners.set(name,callback)}},fetch:async(url,init)=>{requests.push({url,...init});return new Response(null,{status:204});}});
+ runInNewContext(clientBootstrap(JSON.stringify('fixture-build')),{Set,URL,Date,Event,location:{origin:'https://fixture.invalid',pathname:'/owner'},console:{warn(){}},window:{dispatchEvent(){},addEventListener(name,callback){windowListeners.set(name,callback)}},document:{querySelectorAll(){return []},addEventListener(name,callback){documentListeners.set(name,callback)}},fetch:async(url,init)=>{requests.push({url,...init});return new Response(null,{status:204});}});
  const error=windowListeners.get('error'),csp=documentListeners.get('securitypolicyviolation');
  error({target:{tagName:'SCRIPT',src:'https://fixture.invalid/main.js?email=private@example.invalid'}});
  for(let i=0;i<5;i++)error({target:{tagName:'SCRIPT',src:'https://challenges.cloudflare.com/turnstile/v0/api.js?token=private'}});

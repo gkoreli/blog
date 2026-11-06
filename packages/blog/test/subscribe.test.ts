@@ -8,10 +8,11 @@ type WidgetOptions = Parameters<TurnstileApi['render']>[1];
 
 class ElementFixture extends EventTarget {
   textContent = '';
+  clears = 0;
   attributes = new Map<string, string>();
   setAttribute(name: string, value: string) { this.attributes.set(name, value); }
   removeAttribute(name: string) { this.attributes.delete(name); }
-  replaceChildren() {}
+  replaceChildren() { this.clears++; }
 }
 
 class InputFixture extends ElementFixture {
@@ -54,15 +55,16 @@ function harness(t: TestContext, withApi = true) {
   let executeFails = false;
   let removeFails = false;
   let loggerFails = false;
-  let fetchImpl: typeof fetch = async () => new Response(null, { status: 202 });
+  let fetchImpl: typeof fetch = async () => Response.json({ ok: true }, { status: 202 });
   let onRender: ((options: WidgetOptions) => void) | undefined;
   const api: TurnstileApi = {
     ready(callback) { callback(); },
     render(_slot, options) {
       renders.push(options);
+      const id = `widget-${renders.length}`;
       if (renderFails) throw new Error('synthetic token=private-render-detail');
       onRender?.(options);
-      return `widget-${renders.length}`;
+      return id;
     },
     execute(id) {
       executions.push(id);
@@ -74,8 +76,9 @@ function harness(t: TestContext, withApi = true) {
     },
   };
   const apiEvents = new EventTarget();
-  const browser: { turnstile?: TurnstileApi; gkTurnstileScriptState?: 'loading' | 'ready' | 'failed'; addEventListener: EventTarget['addEventListener']; dispatchEvent: EventTarget['dispatchEvent']; setTimeout: (callback: () => void, delay: number) => number; clearTimeout: (id: number) => void } = {
+  const browser: { turnstile?: TurnstileApi; gkTurnstileScriptState?: 'loading' | 'ready' | 'failed'; addEventListener: EventTarget['addEventListener']; removeEventListener: EventTarget['removeEventListener']; dispatchEvent: EventTarget['dispatchEvent']; setTimeout: (callback: () => void, delay: number) => number; clearTimeout: (id: number) => void } = {
     addEventListener: apiEvents.addEventListener.bind(apiEvents),
+    removeEventListener: apiEvents.removeEventListener.bind(apiEvents),
     dispatchEvent: apiEvents.dispatchEvent.bind(apiEvents),
     setTimeout(callback, delay) {
       const id = ++timerId;
@@ -103,7 +106,8 @@ function harness(t: TestContext, withApi = true) {
   install('HTMLFormElement', FormFixture);
   install('HTMLInputElement', InputFixture);
   install('HTMLButtonElement', ButtonFixture);
-  install('document', { getElementById: () => form, referrer: 'https://www.example.org/private?email=secret@example.invalid' });
+  install('document', { querySelectorAll: () => [form], referrer: 'https://www.example.org/private?email=secret@example.invalid' });
+  install('performance', { now: () => clock });
   install('location', {
     origin: 'https://gkoreli.com', pathname: '/article',
     search: '?utm_source=news&utm_campaign=launch&email=secret@example.invalid&token=private',
@@ -132,6 +136,7 @@ function harness(t: TestContext, withApi = true) {
         }
       }
     },
+    advanceWithoutTimers(ms: number) { clock += ms; },
     setFetch(implementation: typeof fetch) { fetchImpl = implementation; },
     failRender(value = true) { renderFails = value; },
     failExecute(value = true) { executeFails = value; },
@@ -142,8 +147,7 @@ function harness(t: TestContext, withApi = true) {
 }
 
 async function settle() {
-  await Promise.resolve();
-  await Promise.resolve();
+  await new Promise<void>(resolve => setImmediate(resolve));
 }
 
 test('a late widget script can initialize on submit; repeated initialization adds no listener', async t => {
@@ -212,7 +216,7 @@ for (const stage of ['render', 'execute']) {
     if (stage === 'render') h.failRender();
     else h.failExecute();
     h.initialize();
-    if (stage === 'execute') h.submit();
+    h.submit();
     assert.equal(h.reports[0]?.message, `subscribe_widget_${stage}_exception`);
     assert.equal(h.form.button.disabled, false);
     assert.equal(h.requests.length, 0);
@@ -268,22 +272,15 @@ function evidenceFields(event: ClientErrorInput | undefined) {
   return fields;
 }
 
-test('an idle widget error is a diagnostic without a submitted signup', t => {
+test('an idle form has no widget or provider callback session to misreport as a failed signup', t => {
   const h = harness(t);
   h.form.input.value = '';
   h.initialize();
   assert.equal(h.reports.length, 0);
-  const callback = h.options()['error-callback'];
-  assert.ok(callback);
-  callback('110100');
-  assert.deepEqual(h.reports.map(event => event.message), ['subscribe_widget_error']);
-  assert.deepEqual(evidenceFields(h.reports[0]), {
-    state: 'recorded', profile: 'subscribe-error-v3', phase: 'idle',
-    operation: { state: 'not-started' },
-    turnstileError: { state: 'bounded-code', code: '110100' },
-  });
-  assert.equal(contextOf(h.reports[0]).attemptId, null);
-  assert.equal(contextOf(h.reports[0]).recovery, 'no-attempt');
+  assert.equal(h.renders.length, 0);
+  h.browser.dispatchEvent(new Event('gk-turnstile-ready'));
+  assert.equal(h.renders.length, 0);
+  assert.equal(h.reports.length, 0);
   assert.equal(h.form.message.textContent, '', 'idle failure must not claim a submitted signup failed');
   assert.equal(h.executions.length, 0);
   assert.equal(h.requests.length, 0);
@@ -379,7 +376,7 @@ test('one valid callback sends one captured email and only allowed attribution',
     email: 'reader@example.invalid', turnstile: 'synthetic-challenge-token',
     source: '/article?utm_source=news&utm_campaign=launch&ref=example.org',
   }));
-  pending.resolve(new Response(null, { status: 202 }));
+  pending.resolve(Response.json({ ok: true }, { status: 202 }));
   await settle();
   assert.equal(h.reports.length, 0);
   h.options().callback?.('late-challenge-token');
@@ -401,10 +398,10 @@ test('request timeout aborts, restores retry, and ignores a late success', async
   assert.equal(h.requests[0]?.init?.signal?.aborted, true);
   assert.equal(h.reports[0]?.message, 'subscribe_request_timeout');
   assert.match(h.form.message.textContent, /Check for a confirmation email/);
-  pending.resolve(new Response(null, { status: 202 }));
+  pending.resolve(Response.json({ ok: true }, { status: 202 }));
   await settle();
   assert.equal(h.form.innerHTML, '');
-  h.setFetch(async () => new Response(null, { status: 202 }));
+  h.setFetch(async () => Response.json({ ok: true }, { status: 202 }));
   h.submit();
   h.options().callback?.('new-challenge-token');
   await settle();
@@ -422,13 +419,13 @@ test('expiry after token handoff cannot abort an API request or discard its resp
   assert.equal(h.requests[0]?.init?.signal?.aborted, false);
   assert.equal(h.reports.length, 0);
   assert.equal(h.form.button.disabled, true);
-  pending.resolve(new Response(null, { status: 202 }));
+  pending.resolve(Response.json({ ok: true }, { status: 202 }));
   await settle();
   assert.match(h.form.message.textContent, /Request accepted/);
   assert.equal(h.form.button.disabled, false);
 });
 
-for (const status of [400, 429, 503, 500, 200]) {
+for (const status of [400, 429, 503, 500]) {
   test(`HTTP ${status} keeps the form usable and logs status without response details`, async t => {
     const h = harness(t);
     h.setFetch(async () => new Response('private-response reader@example.invalid token=secret', { status }));
@@ -443,7 +440,7 @@ for (const status of [400, 429, 503, 500, 200]) {
     assert.equal(h.timers.size, 0);
     assert.doesNotMatch(JSON.stringify(h.reports) + h.form.message.textContent, /private-response|example.invalid|token=secret/);
     if (status === 503) assert.match(h.form.message.textContent, /temporarily unavailable/);
-    if (status === 429) assert.match(h.form.message.textContent, /wait a few minutes/);
+    if (status === 429) assert.match(h.form.message.textContent, /wait before trying again/);
   });
 }
 
@@ -558,15 +555,19 @@ test('network exceptions and sending-phase widget failures leave server receipt 
 
 test('response metadata cannot turn a successful 202 into a failure report', async t => {
   const h = harness(t);
-  h.setFetch(async () => new Response(null, { status: 202, headers: { 'x-request-id': 'private-invalid-id' } }));
+  h.setFetch(async () => Response.json({ ok: true }, { status: 202, headers: { 'x-request-id': 'private-invalid-id' } }));
   h.initialize(); h.submit(); h.options().callback?.('synthetic-token'); await settle();
   assert.equal(h.reports.length, 0); assert.match(h.form.message.textContent, /Request accepted/);
 });
 
 test('one transient error recovers automatically without a second click or a duplicate API request', async t => {
   const h = harness(t); h.initialize(); h.submit();
-  assert.equal(h.options().retry, 'auto');
+  assert.equal(h.options().retry, 'never');
+  const failedWidget = h.options();
   h.options()['error-callback']?.('300031');
+  assert.equal(h.renders.length, 2, 'one application-owned fresh widget replaces the failed one');
+  failedWidget.callback?.('stale-token');
+  assert.equal(h.requests.length, 0);
   assert.equal(h.form.button.disabled, true);
   assert.equal(contextOf(h.reports[0]).recovery, 'automatic-retry');
   h.options().callback?.('recovered-token');
@@ -632,9 +633,199 @@ test('deferred integration never calls the native ready method that rejects asyn
   assert.equal(h.renders.length, 1); assert.equal(h.executions.length, 1); assert.equal(h.reports.length, 0);
 });
 
-test('documented native retry return values distinguish recovery from a terminal error', t => {
+test('handled callbacks suppress native logging while the application owns bounded recovery', t => {
   const h = harness(t); h.initialize(); h.submit();
-  assert.equal(h.options()['error-callback']?.('300031'), false);
+  assert.equal(h.options()['error-callback']?.('300031'), true);
   assert.equal(h.options()['error-callback']?.('300031'), true);
   assert.equal(h.form.dataset['subscribeStatus'], 'error');
+});
+
+test('a repeated provider readiness signal cannot create a widget during an in-flight signup', async t => {
+  const h = harness(t);
+  const pending = Promise.withResolvers<Response>();
+  h.setFetch(() => pending.promise);
+  h.initialize(); h.submit(); h.options().callback?.('synthetic-token');
+  h.browser.dispatchEvent(new Event('gk-turnstile-ready'));
+  assert.equal(h.renders.length, 1, 'the sending attempt must not own another verification widget');
+  assert.equal(h.requests[0]?.init?.signal?.aborted, false);
+  pending.resolve(Response.json({ ok: true }, { status: 202 })); await settle();
+  assert.equal(h.form.dataset['subscribeStatus'], 'success');
+});
+
+test('a readiness callback during sending cannot let a new idle widget abort the signup', async t => {
+  const h = harness(t);
+  const pending = Promise.withResolvers<Response>();
+  h.setFetch(() => pending.promise);
+  h.initialize(); h.submit(); h.options().callback?.('synthetic-token');
+  h.browser.dispatchEvent(new Event('gk-turnstile-ready'));
+  h.options()['error-callback']?.('110200');
+  assert.equal(h.requests[0]?.init?.signal?.aborted, false);
+  assert.equal(h.form.button.disabled, true);
+  pending.resolve(Response.json({ ok: true }, { status: 202 })); await settle();
+  assert.equal(h.form.dataset['subscribeStatus'], 'success');
+});
+
+test('an execute exception after synchronous token handoff cannot abort its request', async t => {
+  const h = harness(t);
+  const pending = Promise.withResolvers<Response>();
+  h.setFetch(() => pending.promise);
+  h.api.execute = () => {
+    h.options().callback?.('synthetic-token');
+    throw new Error('controlled exception after callback');
+  };
+  h.initialize(); h.submit();
+  assert.equal(h.requests.length, 1);
+  assert.equal(h.requests[0]?.init?.signal?.aborted, false);
+  pending.resolve(Response.json({ ok: true }, { status: 202 })); await settle();
+  assert.equal(h.form.dataset['subscribeStatus'], 'success');
+});
+
+for (const [name, makeResponse, stage] of [
+  ['HTML', () => new Response('<html>private@example.invalid</html>', { status: 202 }), 'media-type'],
+  ['empty JSON', () => new Response(null, { status: 202, headers: { 'content-type': 'application/json' } }), 'empty'],
+  ['malformed JSON', () => new Response('{"ok":true', { status: 202, headers: { 'content-type': 'application/json' } }), 'invalid'],
+  ['oversized JSON', () => new Response(' '.repeat(4097), { status: 202, headers: { 'content-type': 'application/json' } }), 'too-large'],
+] as const) {
+  test(`202 with ${name} is unconfirmed and never replays the signup POST`, async t => {
+    const h = harness(t);
+    h.setFetch(async () => makeResponse());
+    h.initialize(); h.submit(); h.options().callback('synthetic-token');
+    await settle();
+    assert.equal(h.requests.length, 1);
+    assert.equal(h.form.dataset['subscribeStatus'], 'error');
+    assert.match(h.form.message.textContent, /Check your inbox/);
+    assert.equal(h.reports[0]?.message, `subscribe_response_${stage}`);
+    assert.equal(h.reports[0]?.status, 202);
+    assert.equal(h.timers.size, 0);
+    assert.doesNotMatch(JSON.stringify(h.reports) + h.form.message.textContent, /private@example|synthetic-token|<html>/);
+  });
+}
+
+for (const status of [200, 201, 204, 206]) {
+  test(`unexpected HTTP ${status} cannot claim acceptance or safely encourage an immediate replay`, async t => {
+    const h = harness(t);
+    h.setFetch(async () => new Response(null, { status }));
+    h.initialize(); h.submit(); h.options().callback('synthetic-token');
+    await settle();
+    assert.equal(h.requests.length, 1);
+    assert.equal(h.reports[0]?.message, 'subscribe_response_unexpected_status');
+    assert.equal(h.reports[0]?.status, status);
+    assert.match(h.form.message.textContent, /Check your inbox/);
+    assert.equal(h.form.dataset['subscribeStatus'], 'error');
+  });
+}
+
+test('response body reading shares the absolute 35s deadline and retains received headers', async t => {
+  const h = harness(t);
+  let cancelCount = 0;
+  h.setFetch(async () => new Response(new ReadableStream<Uint8Array>({
+    start(controller) { controller.enqueue(new TextEncoder().encode('{"ok":')); },
+    cancel() { cancelCount++; return new Promise<void>(() => {}); },
+  }), { status: 202, headers: { 'content-type': 'application/json', 'x-request-id': REQUEST_A } }));
+  h.initialize(); h.submit(); h.options().callback('synthetic-token');
+  await settle();
+  h.tick(34_999);
+  assert.equal(h.form.button.disabled, true);
+  h.tick(1);
+  await settle();
+  assert.equal(h.form.button.disabled, false);
+  assert.equal(h.requests[0]?.init?.signal?.aborted, true);
+  assert.equal(cancelCount, 1);
+  assert.equal(h.reports.length, 1);
+  assert.equal(h.reports[0]?.message, 'subscribe_request_timeout');
+  assert.equal(h.reports[0]?.status, 202);
+  assert.deepEqual(evidenceFields(h.reports[0]).operation, { state: 'response-id', requestId: REQUEST_A });
+  assert.equal(h.timers.size, 0);
+});
+
+test('throttled timers cannot let an expired provider callback start a request', t => {
+  const h = harness(t);
+  h.initialize(); h.submit();
+  h.advanceWithoutTimers(30_000);
+  h.options().callback('late-token');
+  assert.equal(h.requests.length, 0);
+  assert.equal(h.reports[0]?.message, 'subscribe_widget_deadline');
+  assert.equal(h.form.button.disabled, false);
+  assert.equal(h.timers.size, 0);
+});
+
+test('a complete response observed after the request deadline remains unconfirmed without a timer callback', async t => {
+  const h = harness(t);
+  const pending = Promise.withResolvers<Response>();
+  h.setFetch(() => pending.promise);
+  h.initialize(); h.submit(); h.options().callback('synthetic-token');
+  h.advanceWithoutTimers(35_000);
+  pending.resolve(Response.json({ ok: true }, { status: 202, headers: { 'x-request-id': REQUEST_B } }));
+  await settle();
+  assert.equal(h.form.dataset['subscribeStatus'], 'error');
+  assert.equal(h.reports[0]?.message, 'subscribe_request_timeout');
+  assert.deepEqual(evidenceFields(h.reports[0]).operation, { state: 'response-id', requestId: REQUEST_B });
+});
+
+test('a deferred provider script load failure immediately releases its waiting attempt', t => {
+  const h = harness(t, false);
+  h.browser.gkTurnstileScriptState = 'loading';
+  h.initialize(); h.submit();
+  assert.equal(h.form.button.disabled, true);
+  h.browser.gkTurnstileScriptState = 'failed';
+  h.browser.dispatchEvent(new Event('gk-turnstile-load-failed'));
+  assert.equal(h.reports[0]?.message, 'subscribe_widget_unavailable');
+  assert.equal(h.form.button.disabled, false);
+  assert.equal(h.timers.size, 0);
+  h.browser.turnstile = h.api;
+  h.browser.dispatchEvent(new Event('gk-turnstile-ready'));
+  assert.equal(h.renders.length, 0, 'the settled attempt removed its readiness listeners');
+});
+
+test('failed cleanup of a render that returned late cannot clear its replacement widget', async t => {
+  const h = harness(t);
+  h.onRender(options => { if (h.renders.length === 1) options['error-callback']('600010'); });
+  h.failRemove();
+  h.initialize(); h.submit();
+  assert.equal(h.renders.length, 2);
+  assert.equal(h.executions.length, 1, 'only the current replacement executes');
+  assert.equal(h.form.slot?.clears, 1, 'only the unassigned old lease clears its original slot');
+  assert.equal(h.form.dataset['subscribeStatus'], 'pending');
+  h.options().callback('replacement-token'); await settle();
+  assert.equal(h.requests.length, 1);
+  assert.equal(h.form.dataset['subscribeStatus'], 'success');
+});
+
+test('reentrant cleanup and logging cannot overwrite a new manual attempt or its identity', async t => {
+  const h = harness(t);
+  let retry = true;
+  h.api.remove = () => {
+    if (retry) { retry = false; h.submit(); }
+    throw new Error('private cleanup failure');
+  };
+  h.initialize(); h.submit();
+  const oldOptions = h.options();
+  oldOptions['error-callback']('110200');
+  assert.equal(h.renders.length, 2);
+  assert.equal(h.form.dataset['subscribeStatus'], 'pending');
+  assert.equal(h.form.message.textContent, 'Verifying…');
+  assert.equal(h.form.button.disabled, true);
+  const oldId = contextOf(h.reports[0]).attemptId;
+  assert.ok(oldId);
+  assert.equal(contextOf(h.reports[1]).attemptId, oldId);
+  oldOptions.callback('old-token');
+  assert.equal(h.requests.length, 0);
+  h.options().callback('new-token'); await settle();
+  assert.equal(h.requests.length, 1);
+  const headers = new Headers(h.requests[0]?.init?.headers);
+  assert.notEqual(headers.get('x-subscription-attempt-id'), oldId);
+  assert.equal(h.form.dataset['subscribeStatus'], 'success');
+  assert.equal(h.timers.size, 0);
+  assert.doesNotMatch(JSON.stringify(h.reports), /private cleanup|old-token|new-token/);
+});
+
+test('an opaque callback value that cannot fit the wire budget never starts a POST', t => {
+  const h = harness(t); h.initialize(); h.submit();
+  h.options().callback('é'.repeat(2048));
+  assert.equal(h.requests.length, 0);
+  assert.equal(h.reports[0]?.message, 'subscribe_request_too_large');
+  assert.equal(operationOf(h.reports[0]).state, 'not-started');
+  assert.equal(h.form.button.disabled, false);
+  assert.equal(h.timers.size, 0);
+  assert.doesNotMatch(JSON.stringify(h.reports), /é/);
 });
