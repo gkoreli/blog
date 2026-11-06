@@ -1,0 +1,449 @@
+{
+  "version": "source-product-review/2026-11-06.1",
+  "assessedOn": "2026-11-06",
+  "timeZone": "America/Los_Angeles",
+  "sourceCommit": "7559a8551967443f27f5b85393846a0cb8cd3b5e",
+  "method": "Tracked source archive, inspected entry points and callers, existing local suites, transport-denying capability probes, and offline reanalysis of an existing saved public evidence pack.",
+  "runtime": {
+    "node": "v24.14.1",
+    "pnpm": "9.15.4",
+    "dependencySetup": "Reused existing installed dependency trees; generated outputs confined to the archive. Not a fresh install."
+  },
+  "checks": [
+    {
+      "name": "analytics",
+      "command": "pnpm -C packages/analytics test",
+      "passed": 433,
+      "failed": 0,
+      "skipped": 0,
+      "rawLogSha256": "19cee090c9ab1ef0c1463d27f3e6f3b21f4cba0af502da132b8f3589acc27e5f"
+    },
+    {
+      "name": "site-audit",
+      "command": "pnpm -C packages/site-audit test",
+      "passed": 41,
+      "failed": 0,
+      "skipped": 0,
+      "rawLogSha256": "c158b00e248c36670685a40549d6f78ec9ab56c61e40ceeec75b6dd0e95c01c7"
+    },
+    {
+      "name": "research-footprint",
+      "command": "pnpm -C packages/blog exec node --import tsx --test test/research-footprint.test.ts",
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "rawLogSha256": "1857e6ace115c83f083343c5e6351003a09d392aa549c3ee83cbfcfec05dcb04"
+    }
+  ],
+  "totalSelectedTestsPassed": 475,
+  "catalogueCoverage": {
+    "method": "Static configured method coverage; not vendor authenticity, request incidence, feed freshness or detection accuracy.",
+    "counts": {
+      "recognizedDeclarations": 63,
+      "ipFeedSources": 17,
+      "declarationsWithConfiguredIpMethod": 22,
+      "documentedSigningOrigins": 5,
+      "declarationsWithDocumentedSigningMethod": 5,
+      "declarationsWithAnyConfiguredPerDeclarationMethod": 25,
+      "declarationsWithoutConfiguredPerDeclarationMethod": 38,
+      "reviewedDirectoryOrigins": 6,
+      "declarationsWithReviewedDirectoryPublisher": 7,
+      "publicDisplayApprovals": 6
+    }
+  },
+  "probes": {
+    "sourceCommit": "7559a8551967443f27f5b85393846a0cb8cd3b5e",
+    "nodeVersion": "v24.14.1",
+    "probeCount": 10,
+    "forbiddenNetworkAttempts": 0,
+    "scriptSha256": "1045816d39e0402c99f3c36cc95d212444e7a1a45b92420c1cb0aa1995712138",
+    "results": [
+      {
+        "id": "ambiguous-client-declarations",
+        "provenance": "synthetic",
+        "output": {
+          "trafficClass": "bot",
+          "agentName": null,
+          "declarations": {
+            "status": "multiple",
+            "candidates": [
+              "ChatGPT-User",
+              "GPTBot"
+            ],
+            "matchedProducts": [
+              "ChatGPT-User",
+              "GPTBot"
+            ],
+            "browserFamily": "unrecognized"
+          }
+        }
+      },
+      {
+        "id": "portable-request-without-trusted-edge-context",
+        "provenance": "synthetic",
+        "output": {
+          "classification": {
+            "trafficClass": "browser",
+            "readerKind": "unresolved",
+            "reason": "network-evidence-missing"
+          },
+          "addressState": "edge-context-unavailable",
+          "signatureOutcome": "absent"
+        }
+      },
+      {
+        "id": "local-robots-path-policy",
+        "provenance": "synthetic",
+        "output": {
+          "docs": {
+            "decision": "allowed",
+            "rule": "Allow: /docs/"
+          },
+          "private": {
+            "decision": "disallowed",
+            "rule": "Disallow: /"
+          }
+        }
+      },
+      {
+        "id": "page-report-regression",
+        "provenance": "synthetic-change-to-saved-report",
+        "output": {
+          "comparable": true,
+          "changes": [
+            {
+              "path": "assessment.score",
+              "label": "Technical score interval under the current rubric",
+              "before": "100\u2013100/100",
+              "after": "80\u201380/100",
+              "meaning": "changed"
+            },
+            {
+              "path": "checks.general-indexing",
+              "label": "No general noindex directive observed",
+              "before": "pass",
+              "after": "fail",
+              "meaning": "regressed"
+            },
+            {
+              "path": "page.metaRobots",
+              "label": "Page robots metadata",
+              "before": "[]",
+              "after": "[{\"agent\":\"robots\",\"value\":\"noindex\"}]",
+              "meaning": "changed"
+            }
+          ]
+        }
+      },
+      {
+        "id": "search-console-slice",
+        "provenance": "synthetic",
+        "output": {
+          "totals": {
+            "selectedRowClicks": 15,
+            "selectedRowImpressions": 455,
+            "selectedRowCtr": 0.03296703296703297
+          },
+          "mapping": [
+            {
+              "mapping": "article",
+              "rows": 5,
+              "clicks": 7,
+              "impressions": 375
+            },
+            {
+              "mapping": "url-variant",
+              "rows": 1,
+              "clicks": 1,
+              "impressions": 10
+            },
+            {
+              "mapping": "other-page",
+              "rows": 1,
+              "clicks": 3,
+              "impressions": 30
+            },
+            {
+              "mapping": "other-origin",
+              "rows": 1,
+              "clicks": 4,
+              "impressions": 40
+            }
+          ],
+          "followUps": {
+            "observedClickQueries": [
+              0,
+              7
+            ],
+            "impressionsWithoutClicks": [
+              1,
+              2
+            ],
+            "interpretation": "inspection-candidates-only"
+          },
+          "incompleteAggregationRejected": true
+        }
+      },
+      {
+        "id": "article-and-evidence-resource-accounting",
+        "provenance": "synthetic",
+        "output": {
+          "accounting": {
+            "selectedEvents": 8,
+            "includedEvents": 5,
+            "ownerExcludedEvents": 1,
+            "referralExcludedEvents": 1,
+            "unassessedEvents": 1
+          },
+          "roles": [
+            {
+              "role": "article",
+              "accounting": {
+                "selectedEvents": 4,
+                "includedEvents": 2,
+                "ownerExcludedEvents": 1,
+                "referralExcludedEvents": 0,
+                "unassessedEvents": 1
+              }
+            },
+            {
+              "role": "evidence",
+              "accounting": {
+                "selectedEvents": 2,
+                "includedEvents": 1,
+                "ownerExcludedEvents": 0,
+                "referralExcludedEvents": 1,
+                "unassessedEvents": 0
+              }
+            },
+            {
+              "role": "site",
+              "accounting": {
+                "selectedEvents": 1,
+                "includedEvents": 1,
+                "ownerExcludedEvents": 0,
+                "referralExcludedEvents": 0,
+                "unassessedEvents": 0
+              }
+            },
+            {
+              "role": "unmapped",
+              "accounting": {
+                "selectedEvents": 1,
+                "includedEvents": 1,
+                "ownerExcludedEvents": 0,
+                "referralExcludedEvents": 0,
+                "unassessedEvents": 0
+              }
+            }
+          ],
+          "articleRelatedResourceEvents": [
+            {
+              "id": "article-a",
+              "events": 3
+            }
+          ]
+        }
+      },
+      {
+        "id": "page-event-eligibility-sandbox",
+        "provenance": "synthetic",
+        "output": [
+          {
+            "name": "ordinary-html-get",
+            "included": true
+          },
+          {
+            "name": "html-head",
+            "included": false
+          },
+          {
+            "name": "html-prefetch",
+            "included": false
+          },
+          {
+            "name": "negotiated-markdown",
+            "included": true
+          },
+          {
+            "name": "direct-markdown-file",
+            "included": false
+          }
+        ]
+      },
+      {
+        "id": "saved-discovery-analysis",
+        "provenance": "historical-saved-observations-no-new-search",
+        "output": {
+          "questionSet": "2026-10-31.1",
+          "runs": [
+            {
+              "id": "initial",
+              "completed": 4,
+              "failed": 0,
+              "missing": 0,
+              "matches": [
+                {
+                  "sourceId": "canonical",
+                  "found": 3,
+                  "completed": 4
+                },
+                {
+                  "sourceId": "web-pulse",
+                  "found": 1,
+                  "completed": 4
+                },
+                {
+                  "sourceId": "arcjet",
+                  "found": 1,
+                  "completed": 4
+                }
+              ]
+            },
+            {
+              "id": "repeat",
+              "completed": 4,
+              "failed": 0,
+              "missing": 0,
+              "matches": [
+                {
+                  "sourceId": "canonical",
+                  "found": 3,
+                  "completed": 4
+                },
+                {
+                  "sourceId": "web-pulse",
+                  "found": 1,
+                  "completed": 4
+                },
+                {
+                  "sourceId": "arcjet",
+                  "found": 1,
+                  "completed": 4
+                }
+              ]
+            }
+          ],
+          "comparisons": [
+            {
+              "status": "new-baseline-required",
+              "sameDeclaredMethod": false
+            }
+          ]
+        }
+      },
+      {
+        "id": "worker-log-classification-replay",
+        "provenance": "synthetic",
+        "output": {
+          "inputRows": 3,
+          "invalidRows": 0,
+          "duplicateEventIds": 1,
+          "readerKind": {
+            "browser": 1,
+            "cloud-browser": 1,
+            "unresolved": 1
+          },
+          "declarationStatus": {
+            "none": 2,
+            "multiple": 1
+          }
+        }
+      },
+      {
+        "id": "signature-scope-debugging",
+        "provenance": "synthetic-local-cryptography-with-injected-directory",
+        "output": {
+          "original": "verified",
+          "unsignedUserAgentAndPathChange": "verified",
+          "coveredAuthorityChange": "unverified",
+          "coverage": {
+            "authority": true,
+            "targetUri": false,
+            "method": false,
+            "path": false,
+            "query": false,
+            "userAgent": false,
+            "contentDigest": false
+          },
+          "fixtureDirectoryCalls": 1
+        }
+      }
+    ]
+  },
+  "sourceSha256": {
+    "packages/analytics/package.json": "ddcc9d2f83a48695c60cec574f426ea1dfd68cef03f5db279b95b2b0fc2a217b",
+    "packages/site-audit/package.json": "af36d6d53391b7e9b5046ff4872803c59fbc34289c20b992401a8bc3a243dcc6",
+    "packages/analytics/src/request-assessment.ts": "1bafac39f460d7367badbddefbded3c09c927065f010b1b05e98f0e6d67dff49",
+    "packages/analytics/src/classify.ts": "46cefcf89649f4b57286384ee40cbc07929ca4a964f785d9b51a0b5fbd929db0",
+    "packages/analytics/src/client-registry.ts": "cb26de61e79f23c3909fdcced98ced92442b961ea3433b0f7890807419fe85c9",
+    "packages/analytics/src/client-evidence.ts": "162672cc3cb8a02daed837d254fc65ccc59d03a017e1fd3c008a4b527f687dc3",
+    "packages/analytics/src/readerkind.ts": "925e8542929c408a1cdea063d6bc9f26265a37c5b57fc65ca85454eaf30ed368",
+    "packages/analytics/src/webbotauth.ts": "54348a11b372528ae042dc31b17b42c06104ec16e72e32b1e025b1f94aa38411",
+    "packages/analytics/src/webbotauth-audit.ts": "9ca43ed0c717f96d320c56194e092f7d19f6c7d9280c70ea96f5523c06cc00c9",
+    "packages/analytics/src/retained-signature-audit.ts": "2b920e76fcf15c96d148b760bf6e2bf8867386d8e256c77b1f9c2a733cfe45eb",
+    "packages/analytics/src/webbotauth-reuse-audit.ts": "35e05fb6d9acc3d579d23ab33bf30f589bfc61876107696028e20fafe34beac5",
+    "packages/analytics/src/vendor-ip.ts": "06c713591844455451d9b63d78fcae4050f5f753f7804743bd02ffd61127b481",
+    "packages/analytics/src/vendor-ip-sources.ts": "7783990a91b956861f581120fbf9b2f480805764b1dc22a159f788de1746b6cc",
+    "packages/analytics/src/referral-policy.ts": "a5e0a92dd2d9986cbb10e795ca9733fcb9a3b70cbf100901646232b09d55dc3a",
+    "packages/analytics/src/eligibility.ts": "4b3cfdb2f1696ad093ac890b47337e9d5f2d053e65ef1844dc092f024193a2e8",
+    "packages/analytics/src/search-evidence.ts": "2dcca61325112b040e30c39d1f5ebb0281da270ad7de164bfe13dc7e47fb8c8c",
+    "packages/analytics/src/agent-discovery-evidence.ts": "5b190bc71f4808d2b95e00deb4f398404800a36ec82b5e4b49dc54beec4b5d92",
+    "packages/analytics/src/resource-reach.ts": "a2d5341e3870a902be4c740f308aadd55ff166f4b48277de352ce75383d32718",
+    "packages/analytics/src/article-reach.ts": "17379b45e0c7c3f251e19b69632b830cfb051318433ef2b53d89b080f83854f9",
+    "packages/analytics/src/article-reach-contract.ts": "38cd7b99af5ae8384fab0a53692e682088fc2b70fba33548703cf487965e2321",
+    "packages/analytics/src/access-evidence.ts": "7422813c2d32af9ab0358ffc96d1bad45e6218d6bc8d056ef4c3af32ef68c1e4",
+    "packages/analytics/src/report-cost.ts": "670f54adf014056ed4464f368f4bb264accf56b96492f70bfd7345e9ca1b74d0",
+    "packages/analytics/schema/0001_fresh_analytics.sql": "e775603c1253673d37ca40a52fae64e82b5eca0de258250d0a856e970e22a9dc",
+    "packages/site-audit/src/index.ts": "8804826d4be7a796c836471e8c9bf12f77d307df69d7386989755ae2e8dbb29d",
+    "packages/site-audit/src/transport.ts": "3668fede993f39e45a071a30b2b1b06d97ee9d4ca2092464807596bc1d2d7410",
+    "packages/site-audit/src/technical-assessment.ts": "56e794fc0a8d83af305b68221f82e36b72e49edc4c859b4d748105c4448e6855",
+    "packages/site-audit/src/robots-workbench.ts": "7309a9a779cf3b9fdfbc949b1b59bc6bb9b579ecdd467359a894a8ecea25fa73",
+    "packages/site-audit/src/report-diff.ts": "3199f43726dfe20a125a4da30cb2ecc0c837e12929a17956113edb38d414518e",
+    "packages/site-audit/src/product-contracts.ts": "8e167132e757b29613dc45172b4363cc62fdec2fcbb734ed32af697a1fb90776",
+    "packages/blog/src/worker/ai-check.ts": "6176a0460d34dd68ef296d1c948e31ee217fe38cc540fd55a3879a1fdd6fd0f5",
+    "packages/blog/src/worker/ai-check-quota.ts": "c134dabb8c038782a20d34cd267a40643a8761dd1d8215cecab73f333ca459cb",
+    "packages/blog/src/worker/stats-cache.ts": "a206eebc4f2fa1c395f3421255060102016b6d57cc536b63b0f9075cba9374ad",
+    "packages/blog/src/pages/tools.ts": "faa2f754ab0fc82e632cbe0230fa69b254828a1d0b03574b73e85078d9f155b3",
+    "packages/blog/scripts/research-footprint.ts": "d3ec9ae9316dea76430e37dd4e3b53db8ad572252802110807fb614aeb00e511",
+    "packages/blog/scripts/research-footprint.models.ts": "9b1745b0519145d8ae039c0bb844bac1a2685ade5067a2f21b2d8cd594321b60",
+    "packages/blog/scripts/omp-research-footprint.ts": "198842aa227c12354d8485b0f277a51a9b81617904e22c6b11fe04efa32df3a4",
+    "packages/blog/drafts/research/analytics-retrospective/analyze-worker-cohort.mjs": "9f25a2ec93b351b66c4d0152003280579c722537b0009ebfd868b9de9193f053",
+    "packages/blog/scripts/audit-analytics-capabilities.mjs": "745b44e18fa071c5bddb5ae9fc1e6f8a083776aab89378f98e6ec15c63cd37e6",
+    "packages/blog/src/templates/citation.ts": "ac99149e724f184da41cf95b2aa6fe9c3f5876c21936bce1090df3f498d665f7",
+    "packages/blog/src/worker/negotiate.ts": "730dba6f8b364eee984b37f36d4e840895651447704f26e32e0018ed010aa99b",
+    "packages/newsletter/src/dispatch-campaign.ts": "6cf552389e1e29b1069009e6c6a37393e35122b226c42f6fe6a005f131b53884",
+    "packages/newsletter/src/confirm.ts": "77d8eeffa2d029e2391e29819de7e5066ecbb4f88de4d10e2de4e2b9f741a982",
+    "packages/client-observability/src/server.ts": "cc5fc93a650b69932e04aaf00563ae4421188c64f4bc1b9e6ba0da5cdd615587",
+    "packages/client-observability/src/transport.ts": "e26816564ce57c11c6b6924083d24d71664967f2cd5d301d4610ccc0973e0a96",
+    "packages/client-observability/src/sanitization.ts": "ae160e34000f1c03930dd67b77d835e1d7bcaf8e2c853c96167c89cf04705cee",
+    "packages/blog/tools/bun-aot-check/compare.py": "88483f02b3c72e84dba66eda73f37ec4bfbc69ac4edcccd236c7c906b033212f",
+    "packages/blog/public/ai-check-example.json": "3a6c426227596c48cc4893a5ef035b15cb15376fec48a35f45f71bbaa87d5533",
+    "packages/blog/scripts/examples/search-evidence.demo.json": "095e55a005817957490025809f67180905d34130066e9337564d58acf5523661",
+    "packages/blog/scripts/examples/resource-reach.demo.json": "65738a36c8b4ca4f96f924713a7fca819b4fb553937a49e2fe3e527eca89cb76",
+    "packages/blog/drafts/research/discovery-experiment-02/agent-discovery-evidence.json": "c3f9bb99b997d7329d2ad78e43a058e8382880aa90713760ee6f4ad1c58d3429"
+  },
+  "setupFailures": [
+    {
+      "condition": "Exported site-audit package initially lacked its node_modules link.",
+      "result": "Compiler could not resolve Cloudflare worker types.",
+      "resolution": "Used the existing analytics dependency tree with the same declared ipaddr.js, TypeScript and worker-types dependencies; package suite then passed.",
+      "rawLogSha256": "42f00e359f3c355d25b497327339cd2af69fd711a6f5428ff1d51a98787146d8"
+    },
+    {
+      "condition": "tsx CLI attempted to open its IPC socket in the sandbox.",
+      "result": "EPERM before test execution.",
+      "resolution": "Ran the existing test through node --import tsx; integration test passed.",
+      "rawLogSha256": "e388f022c3ca6fc9350197433a5bfb48494e14005a8f085630f5935d5ed7552b"
+    }
+  ],
+  "notEstablished": [
+    "Current production behavior or deployment activation.",
+    "Independent installation, customer adoption, repeat use or willingness to pay.",
+    "Population completeness, human identification or classifier accuracy.",
+    "A new search result, provider operation, answer citation or causal discovery effect.",
+    "Fresh dependency installation, native workerd/browser acceptance, or new newsletter/observability/benchmark execution.",
+    "A general multi-vendor analytics reconciler, generic answer-fidelity evaluator or generic transcript billing reconciler."
+  ],
+  "implementationAuthorizedByThisRecord": false
+}

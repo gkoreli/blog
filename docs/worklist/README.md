@@ -1,5 +1,6 @@
 # Worklists
 
+- [Tools and product opportunities](tools-product-opportunities/README.md) — November 6 source review of existing analytics, publishing and agent-engineering capabilities; local execution evidence and proposed offers. Research complete; customer experiments and new implementation remain proposals.
 - [November daily publication](november-daily-publication/README.md) — November 6 is covered; Turnstile is selected for November 7 at 08:00 Pacific. Preparation is accepted, actual publication remains pending, and November 8–30 need approved articles.
 - [In the age of abundance, less is more](in-the-age-of-abundance-less-is-more/README.md) — published November 3 with the accepted partial closure and unresolved tension; local build, deployment metadata, and live article/prompt/feed checks recorded. Article complete; a possible personal follow-up is not active work.
 - [Weight-space programming](weight-space-programming/README.md) — November 2 initial research into agents reading and editing neural weights; pinned source audit, checked score arithmetic, article-form recommendation, and proposed reproduction. No article or model experiment published.
