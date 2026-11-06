@@ -1,4 +1,12 @@
 {
+  "currentStatus": {
+    "accepted": true,
+    "articleState": "unpublished-draft",
+    "fullPipeline": "passed",
+    "readerLayout": "Root checks at 1280 and 390 CSS pixels with site scripts blocked; no page-wide overflow.",
+    "finalPinning": "eight exact research URL prefix changes only; normalized full source/HTML/Markdown bytes identical",
+    "historicalStatusMeaning": "Earlier pending values belong to their dated revision checkpoints and are superseded by the final visual/pinning records."
+  },
   "checkedAt": "2026-11-06T07:35:52.878810+00:00",
   "sourceCommit": "3a13cb5ba5fdc79526c12c32dc9fc36c60033210",
   "method": "Real isolated full pipeline build; initial HTML parsed without executing site scripts. Exact selected prompt blocks compared after HTML entity decoding.",
@@ -356,5 +364,102 @@
     "firstLiveSourceOnlyRevision": "Exact recorded source SHA256 matched; no historical full-page output had been claimed for this intermediate revision.",
     "limit": "These are hash-matched regenerated artifacts, not original raw captures preserved at action time. Original temporary paths had been overwritten.",
     "finalBytes": "Final-prepin seven artifacts remain byte-preserved independently."
+  },
+  "finalPinnedEvidence": {
+    "recordedAt": "2026-11-06 09:02:47 UTC",
+    "evidenceCommit": "4aad5cd9a1cab8e3986af1a7ed8bf716fa73925f",
+    "runtimeSourceCommit": "64a95314967f9b79a81c4f711dc27cae95fbb9c6",
+    "checks": {
+      "articleH1": 1,
+      "tables": 4,
+      "codeBlocks": 2,
+      "exactPrompts": 3,
+      "metadataCanonicalAndDescription": true,
+      "completeEndingAndGlossary": true,
+      "markdownAndCitationExports": true,
+      "postsJSONIncludesArticle": true
+    },
+    "validate": "33 Markdown posts passed",
+    "build": "44 total posts passed in6198ms",
+    "normalization": "Only exact own research URL prefix changed back from pinned evidence commit to main for comparison. No other normalization.",
+    "equivalence": {
+      "source/unknown-clients-and-evidence-based-bot-detection.md": {
+        "normalizedExactMatch": true,
+        "normalizedPrefixOccurrences": 8,
+        "byteIdenticalWithoutNormalization": false
+      },
+      "source/prompts/unknown-clients-and-evidence-based-bot-detection.prompts.md": {
+        "normalizedExactMatch": true,
+        "normalizedPrefixOccurrences": 0,
+        "byteIdenticalWithoutNormalization": true
+      },
+      "dist/unknown-clients-and-evidence-based-bot-detection/index.html": {
+        "normalizedExactMatch": true,
+        "normalizedPrefixOccurrences": 8,
+        "byteIdenticalWithoutNormalization": false
+      },
+      "dist/unknown-clients-and-evidence-based-bot-detection/prompts/index.html": {
+        "normalizedExactMatch": true,
+        "normalizedPrefixOccurrences": 0,
+        "byteIdenticalWithoutNormalization": true
+      },
+      "dist/unknown-clients-and-evidence-based-bot-detection.md": {
+        "normalizedExactMatch": true,
+        "normalizedPrefixOccurrences": 8,
+        "byteIdenticalWithoutNormalization": false
+      },
+      "dist/unknown-clients-and-evidence-based-bot-detection.bib": {
+        "normalizedExactMatch": true,
+        "normalizedPrefixOccurrences": 0,
+        "byteIdenticalWithoutNormalization": true
+      },
+      "dist/unknown-clients-and-evidence-based-bot-detection.csl.json": {
+        "normalizedExactMatch": true,
+        "normalizedPrefixOccurrences": 0,
+        "byteIdenticalWithoutNormalization": true
+      }
+    },
+    "artifacts": {
+      "source/unknown-clients-and-evidence-based-bot-detection.md": {
+        "sha256": "3d47c02b570296727a5f10dac98db0a6b5d5fe2c64b39e7c7ac8bdba87346621",
+        "bytes": 18299
+      },
+      "source/prompts/unknown-clients-and-evidence-based-bot-detection.prompts.md": {
+        "sha256": "1c2afad40d40974665f8689b72f9ecf6a653c4ab0aa0c1828f1ea61ef84c7837",
+        "bytes": 2184
+      },
+      "dist/unknown-clients-and-evidence-based-bot-detection/index.html": {
+        "sha256": "6497efe92c558cd8c58fe27cd86d87fa74eedcaa6074aa0affe98a631117cef9",
+        "bytes": 34535
+      },
+      "dist/unknown-clients-and-evidence-based-bot-detection/prompts/index.html": {
+        "sha256": "c0d5e7d8263e00bcae3618e639fa7baa7220a972637dcd5c54637d17f4ae9085",
+        "bytes": 12197
+      },
+      "dist/unknown-clients-and-evidence-based-bot-detection.md": {
+        "sha256": "1b7e7f6304e190562a5275f6627f81db2ec917b20d497401700a1fa789e0fe78",
+        "bytes": 18259
+      },
+      "dist/unknown-clients-and-evidence-based-bot-detection.bib": {
+        "sha256": "a0cdb85c242f91c44fc8ad6b484a428410d42fbc16cd60603d5467e28ddad299",
+        "bytes": 274
+      },
+      "dist/unknown-clients-and-evidence-based-bot-detection.csl.json": {
+        "sha256": "bb4a03decfe7e66e6c0cf6d97d41df4f5a7708579128439b381449d5814e3809",
+        "bytes": 512
+      }
+    },
+    "scope": "No prose/layout change. Prior root1280/390 CSP-blocked visual acceptance applies to identical rendered body after URL-only normalization. No new CUA, server or production calls; draft unpublished."
+  },
+  "sourceCommitMeaning": "The isolated preview/template checkout base. Article source bytes, evidence-link pins and production runtime source are recorded separately; this is not a current Worker identity.",
+  "finalPinnedArchive": {
+    "accepted": true,
+    "verifiedAt": "2026-11-06T09:08:33.243775+00:00",
+    "archivePath": "/Users/goga/.local/share/gkoreli/analytics-evidence/2026-11-06-detection-improvement-article-links",
+    "manifestSha256": "385a625cdcad28cc91fdfe1cea4c198480c4f9be5a747b7be4eca0a78b0def67",
+    "filesVerified": 14,
+    "bytesVerified": 93300,
+    "parentManifestSha256": "7bf11ce8f580546c3c44f70cab6f96f4c65f0f00505084101e5ff1cd679de1e7",
+    "allPrivateModes": true
   }
 }

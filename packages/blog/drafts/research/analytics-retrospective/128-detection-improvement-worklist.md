@@ -18,7 +18,7 @@ Improve useful detection and correctness without converting absent evidence into
 | Improve the blog and analytics library together | API/UI semantics, useful visible evidence, accessible/JS-independent content and appropriate native/browser checks | Joint API/UI live; local keyboard/error/recovery checks plus exact served JS/CSS, current report reconciliation and cache reuse accepted |
 | Production acceptance | Source commit/build/Worker association, bounded served/API/cache checks and prospective controls where needed | Source `64a953` delivered; source-linked activation, six exact production chains, cleanup and later served/cache acceptance in Research134 |
 | Delegated article developed iteratively | Shape and claim ledger, exact selected prompts, source/engineering revisions, evidence audit, positioning and prose review | Delegated four-table draft and exact three prompts reviewed; opening rule, full render, exports and final script-blocked desktop/narrow reading accepted; draft remains unpublished |
-| Safe integration and continuity | Scoped main commits/pushes, concurrent work preserved, private captures outside Git, remaining limits recorded | Runtime delivered and concurrent work preserved; final private archive and evidence/article commits in progress |
+| Safe integration and continuity | Scoped main commits/pushes, concurrent work preserved, private captures outside Git, remaining limits recorded | Runtime/evidence delivered; concurrent work preserved; core archive verified. Final pinned-draft delivery closes this worklist. |
 
 ## Working tracks
 
@@ -77,3 +77,25 @@ Remaining bounded actions: verify the durable private archive/recovery manifest,
 The private archive verifies 4,982 files / 88,222,417 bytes against manifest SHA-256 `7bf11ce8f580546c3c44f70cab6f96f4c65f0f00505084101e5ff1cd679de1e7`. All 55 operational artifact commitments and 28 article byte commitments match archived files. Recovery mappings, source archives, compiled graphs, replays and explicit article reconstructions are preserved outside Git with private permissions; the ephemeral grant is absent. This supersedes the temporary-only continuity limit. Research 133/134 contain the recoverable-archive receipt.
 
 Every engineering, source-research, production, cleanup, writing-guidance and draft-reader acceptance requirement now has bounded evidence. Remaining delivery work is a checked scoped main commit/push, final article evidence-link pinning and its exact-output check. The article remains unpublished; missing general operator/human/native identity is an evidence boundary, not an uncompleted claim of this improvement.
+
+## Final requirement audit
+
+The renewed bounded objective is complete in scope; final Git delivery carries this audit and the evidence-pinned draft. The older TASK-0119 remains open for its separate identity/search/human questions.
+
+| Owner requirement | Accepted result |
+|---|---|
+| Explore with evidence | Frozen baseline 127, exact joined production 132, counterexamples 130 and current served/control134 results with scopes and costs |
+| Read competing OSS source | Ten pinned repositories, source/file commitments, supplied corpus comparisons and explicit adoption/rejection lessons 129 |
+| Improve detection/correctness/truthfulness | Phone/app/URI and browser-coherence repairs; 63 reviewed names/74 aliases; complete versioned storage; reconciled joint API/UI; unknowns retained |
+| Iterate engineering and validation | Successive reproduced failures, implementation changes, independent review, native gates and six exact live request/storage chains; failures preserved |
+| DDD/refactor/cleanup | Shared lexical claims, current declaration registry, frozen codec, distinct role/identity methods and reporting value modules; public request-check contract version repaired |
+| ADR with rationale/cross-references | ADR-0016.21 links primary sources, prior decisions, alternatives, costs and accepted tests/production scopes |
+| Improve library and blog | Source `64a953` and consumer-contract repair delivered; live joint view, exact served assets and MISS→HIT cache check accepted |
+| High-quality delegated article | Concrete title/result within 50 words, three exact prompts, four tables, source/claim review, full exports and script-blocked reading at 1280 and 390 CSS pixels; final URL pinning preserves exact body bytes |
+| Logging/privacy judgement | Existing retained operational sources suffice; no new raw collection/settings, optional capture absent in all six controls, temporary grants removed |
+| Consolidate writing guidance | One specification-validated writing skill, ten focused references, preserved exceptions/history and independent forward cases; delivered `2d72f9c1` |
+| Delivery/continuity | Checked main delivery, preserved concurrent work, verified private core/archive appendix, exact evidence pins; article remains an unpublished draft |
+
+Current report uncertainty remains material: 2,942/4,142 have no single selected catalogue name and 3,418 lack signature headers. That does not invalidate the accepted repairs or identify the remaining clients. No general human/vendor accuracy, training, indexing or citation outcome was claimed. Publication or a new measurement question is a separate next decision; accepted controls need not be repeated.
+
+Final article-link appendix: 14 files / 93,300 bytes, manifest SHA-256 `385a625cdcad28cc91fdfe1cea4c198480c4f9be5a747b7be4eca0a78b0def67`, linked from the article QA record. Full final build/exports pass; the eight evidence links resolve within pushed commit `4aad5cd9a1cab8e3986af1a7ed8bf716fa73925f`. Exact source/render normalization proves only those URLs changed after the accepted visual pass. All acceptance work is complete; final scoped Git delivery carries this closure.

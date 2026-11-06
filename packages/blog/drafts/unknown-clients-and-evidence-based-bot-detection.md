@@ -42,13 +42,13 @@ AppleWebKit/537.36 (KHTML, like Gecko)
 Chrome/72.0.3626.121 Mobile Safari/537.36
 ```
 
-The line breaks above are for reading; the test uses one header value. My classifier called it Other bot even though the match was a phone-model token. A broad `phantom` match made a similar mistake with Phantom’s mobile-app header instead of the automation tool PhantomJS. A URL ending in `/robot` could also trigger the generic bot rule. [The source audit and controls record those failures](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/130-detection-domain-audit.md).
+The line breaks above are for reading; the test uses one header value. My classifier called it Other bot even though the match was a phone-model token. A broad `phantom` match made a similar mistake with Phantom’s mobile-app header instead of the automation tool PhantomJS. A URL ending in `/robot` could also trigger the generic bot rule. [The source audit and controls record those failures](https://github.com/gkoreli/blog/blob/4aad5cd9a1cab8e3986af1a7ed8bf716fa73925f/packages/blog/drafts/research/analytics-retrospective/130-detection-domain-audit.md).
 
 The repair separates the names and versions sent in the header, called product tokens, before applying the matching rules. Named-client matching and the check for expected browser-navigation headers now share those parsed tokens. The generic rule keeps reviewed tool names and bot-name conventions, with narrow treatment of the phone and wallet cases.
 
 The first repair had another hole: a contact URL containing `;GPTBot/1.0` could still supply a GPTBot name. The released parser excludes recognized contact-link spans before matching names. A separately appended `GPTBot/1.0` outside the link still matches.
 
-The optional diagnostics had a related problem. They could read Chrome 150 from a contact URL, yet miss lowercase `chrome/150.0` that the main parser recognized. They now use the same token boundaries. The fuller diagnostic can still distinguish Edge or Opera; it no longer gets a browser name from the checked URL forms. [The preserved failures and six exact local replay controls](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/131-detection-article-editorial-work.md#local-editorial-regression-replay) show the scope of that change. It handles the documented scheme-prefixed link forms, not every possible header or link syntax.
+The optional diagnostics had a related problem. They could read Chrome 150 from a contact URL, yet miss lowercase `chrome/150.0` that the main parser recognized. They now use the same token boundaries. The fuller diagnostic can still distinguish Edge or Opera; it no longer gets a browser name from the checked URL forms. [The preserved failures and six exact local replay controls](https://github.com/gkoreli/blog/blob/4aad5cd9a1cab8e3986af1a7ed8bf716fa73925f/packages/blog/drafts/research/analytics-retrospective/131-detection-article-editorial-work.md#local-editorial-regression-replay) show the scope of that change. It handles the documented scheme-prefixed link forms, not every possible header or link syntax.
 
 The useful regression tests check more than the clean example:
 
@@ -74,7 +74,7 @@ We compared the earlier and candidate implementations on the same supplied strin
 
 That first token-based candidate removed matches based only on contact URLs, embedded substrings and malformed product text. Those losses remain visible rather than being called successful detections. In its separate 551-entry browser-fixture subset, six changed results were the four CUBOT and two Phantom cases. Two other entries remained non-browser: Yahoo Slurp and the explicitly named Amzn-User fetcher. An upstream file called “browsers” is useful test material, not ground truth for my site’s client-role rules.
 
-These upstream sets overlap, so I do not combine their denominators. They contain declared examples, not authenticated operators or a representative sample of my traffic. The [comparison conditions and remaining losses](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/130-detection-domain-audit.md#local-lexical-candidate-and-rejected-recall-tradeoff) are part of accepting the narrower rule.
+These upstream sets overlap, so I do not combine their denominators. They contain declared examples, not authenticated operators or a representative sample of my traffic. The [comparison conditions and remaining losses](https://github.com/gkoreli/blog/blob/4aad5cd9a1cab8e3986af1a7ed8bf716fa73925f/packages/blog/drafts/research/analytics-retrospective/130-detection-domain-audit.md#local-lexical-candidate-and-rejected-recall-tradeoff) are part of accepting the narrower rule.
 
 ## Other detectors helped by exposing different mistakes
 
@@ -86,19 +86,19 @@ The useful lesson from reading competing implementations was more specific than 
 
 The JavaScript isbot project supplied the browser counterexamples. Its [preparation code imports examples from Matomo and crawler-user-agents](https://github.com/omrilotan/isbot/blob/3f9c982acd95b1be033fa3c14b2a7ece565ba10a/scripts/prepare/externals/index.js#L7-L29). Agreement among those projects is partly shared source material, so it cannot serve as independent confirmation of accuracy.
 
-I used those sources to find test cases and review candidates. No new detection dependency was added. The [pinned-source review](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/129-oss-detection-source-review.md) separates inspected code, executed comparisons, first-party documentation and untested parsers.
+I used those sources to find test cases and review candidates. No new detection dependency was added. The [pinned-source review](https://github.com/gkoreli/blog/blob/4aad5cd9a1cab8e3986af1a7ed8bf716fa73925f/packages/blog/drafts/research/analytics-retrospective/129-oss-detection-source-review.md) separates inspected code, executed comparisons, first-party documentation and untested parsers.
 
 ## A name, a job and a signature answer different questions
 
 A bot’s name is text supplied with a request. A provider category such as AI Crawler describes a reported role. A verified signature authenticates its covered components against a key. Combining those facts is useful; replacing one with another would make the report harder to trust.
 
-The production baseline made that distinction concrete. In the frozen 3,960-event scope, a joined query found exactly **eight generic-bot events with no recognized name, no signature headers and Cloudflare’s AI Crawler category**, plus two with AI Search. Another two Other-bot events marked AI Crawler did have a recognized GoogleOther name. [The joined evidence resolves the earlier aggregate lower bound](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/132-joined-client-evidence-and-retained-headers.md).
+The production baseline made that distinction concrete. In the frozen 3,960-event scope, a joined query found exactly **eight generic-bot events with no recognized name, no signature headers and Cloudflare’s AI Crawler category**, plus two with AI Search. Another two Other-bot events marked AI Crawler did have a recognized GoogleOther name. [The joined evidence resolves the earlier aggregate lower bound](https://github.com/gkoreli/blog/blob/4aad5cd9a1cab8e3986af1a7ed8bf716fa73925f/packages/blog/drafts/research/analytics-retrospective/132-joined-client-evidence-and-retained-headers.md).
 
 There is already a useful job label on those eight requests. That still does not name a particular crawler or service, and the query cannot tell me that most other unnamed traffic is AI. The same report contains 164 named AI-crawler events, all unsigned. Lack of a signature does not make a declared name disappear.
 
 The new report view shows selected-name state, provider category and signature result together. Its totals must reconcile with the existing tables. It distinguishes one selected catalogue name from no single selection, because the latter can also mean multiple recognized claims. A header containing `ChatGPT-User/1.0 ExaUser/1.0` has two recognized names; selecting neither is different from finding none.
 
-The deployed view passed a separate live check: its totals reconciled, and a cache hit returned the same report body and update time as the initial miss. That mixed-version report is not a before-and-after accuracy test. [The served-report checks and their limits are recorded with production acceptance](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/134-detection-production-acceptance.md).
+The deployed view passed a separate live check: its totals reconciled, and a cache hit returned the same report body and update time as the initial miss. That mixed-version report is not a before-and-after accuracy test. [The served-report checks and their limits are recorded with production acceptance](https://github.com/gkoreli/blog/blob/4aad5cd9a1cab8e3986af1a7ed8bf716fa73925f/packages/blog/drafts/research/analytics-retrospective/134-detection-production-acceptance.md).
 
 The frozen production scope happens to contain 2,810 records with no recognized name and 1,150 with one. It contains no multiple-name record. That measured equality does not justify coding “no selected name means no recognized names” as a permanent rule.
 
@@ -114,7 +114,7 @@ The parser extracts request claims. Classification interprets those claims and r
 
 It also caught a persistence problem. Repeating the expanded name and alias lists could produce **2,378 bytes of classification JSON**, exceeding the existing **2,048-byte limit**. Dropping aliases would have made the record fit while losing the explanation for its result.
 
-The repair stores matched aliases by their positions in a frozen, versioned list. Candidate names remain explicit. A worst-case control containing all 63 names and 74 aliases now occupies **1,355 bytes**. An actual local D1 insert and read-back preserves that complete record; the helper also verifies byte-for-byte preservation of a legacy control. Unknown future profiles remain unassessed rather than being decoded under today’s list. [The catalogue and storage acceptance are recorded with the source review](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/129-oss-detection-source-review.md#scope-and-continuity).
+The repair stores matched aliases by their positions in a frozen, versioned list. Candidate names remain explicit. A worst-case control containing all 63 names and 74 aliases now occupies **1,355 bytes**. An actual local D1 insert and read-back preserves that complete record; the helper also verifies byte-for-byte preservation of a legacy control. Unknown future profiles remain unassessed rather than being decoded under today’s list. [The catalogue and storage acceptance are recorded with the source review](https://github.com/gkoreli/blog/blob/4aad5cd9a1cab8e3986af1a7ed8bf716fa73925f/packages/blog/drafts/research/analytics-retrospective/129-oss-detection-source-review.md#scope-and-continuity).
 
 ## Six live requests tested the whole path
 
@@ -133,7 +133,7 @@ The first two deliberately included browser-navigation headers and came from a n
 
 The all-alias control retained all 63 names and 74 matched aliases in **1,341 bytes** of production classification evidence. That is a separate live record from the 1,355-byte local control above. All six requests were permanently excluded as owner controls; no optional diagnostic captures were collected. The direct read-back used one SELECT, 54 rows read and zero writes in one attempt. That is the cost of that query, not the whole experiment.
 
-The temporary test pages were closed before their authorization expired and returned 404. These checks establish six supplied cases through the live request-and-storage path. They do not measure accuracy across ordinary traffic or identify the operators behind it. [The production acceptance record preserves the chains, conditions and cleanup](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/134-detection-production-acceptance.md).
+The temporary test pages were closed before their authorization expired and returned 404. These checks establish six supplied cases through the live request-and-storage path. They do not measure accuracy across ordinary traffic or identify the operators behind it. [The production acceptance record preserves the chains, conditions and cleanup](https://github.com/gkoreli/blog/blob/4aad5cd9a1cab8e3986af1a7ed8bf716fa73925f/packages/blog/drafts/research/analytics-retrospective/134-detection-production-acceptance.md).
 
 ## What the fix establishes
 
