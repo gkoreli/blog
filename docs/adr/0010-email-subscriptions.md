@@ -2,7 +2,7 @@
 
 ## Status
 
-Accepted April 8, 2026; initial implementation shipped that day. Revised September 9, 2026 UTC. Implementation `86dad93` is deployed, migration 0005 is applied, and one [authorized live signup](../../packages/blog/drafts/research/newsletter-reliability/15-live-signup-acceptance.md) completed after repairing the production verifier binding. The confirmation arrived in Gmail Spam. Inbox placement, provider webhook connection and general logging repairs remain open. Local tests, deployment and this one observed completion retain separate evidence limits.
+Accepted April 8, 2026; initial implementation shipped that day. Revised November 6, 2026 UTC. Migration 0005 was applied September 9 and must not be repeated. The [September acceptance](../../packages/blog/drafts/research/newsletter-reliability/15-live-signup-acceptance.md) observed Gmail Spam after repairing the verifier binding. The later [November signup receipt](../../packages/blog/drafts/research/newsletter-reliability/subscription-recovery-live-acceptance.json) observes one completed Inbox/activation cycle, and [signed feedback acceptance](../../packages/blog/drafts/research/newsletter-reliability/30-signed-resend-feedback-acceptance.md) closes the provider-connection setup. These dated results do not establish a population rate or perpetual current health. The [expanded engineering iteration](../../packages/blog/drafts/research/newsletter-reliability/32-four-hour-engineering-iteration.md) now owns further code/article improvements and their distinct local, deployment and measured acceptance gates.
 
 The [worklist and research index](../../packages/blog/drafts/research/newsletter-reliability/00-worklist-index.md) contains the current design, primary sources, tests, review, raw shaping prompts and unpublished article. The [detailed implementation decision](../../packages/blog/drafts/research/newsletter-reliability/09-design-and-implementation.md) governs the current subscription flow. Earlier versions of this ADR remain in Git history; their setup instructions and gap lists are not current acceptance receipts.
 
@@ -25,7 +25,7 @@ Keep the existing Worker, shared `blog-analytics` D1 binding, Resend, and Turnst
 | `/api/confirm/:token` | GET, POST | GET previews; POST activates an eligible pending address |
 | `/api/unsubscribe/:token` | GET, POST | GET previews; POST opts out, including mailbox-provider one-click POST |
 | `/api/send` | POST | Existing newsletter campaign sender, bearer `ADMIN_SECRET` |
-| `/api/webhooks/resend` | POST | Implemented signed bounce/complaint suppression; production connection pending in TASK-0142 |
+| `/api/webhooks/resend` | POST | Signed bounce/complaint suppression; provider connection has its dated acceptance in Research 30 |
 
 A public signup request is not authenticated consent. Turnstile assesses a request; email confirmation establishes a later activation action. Neither identifies who first submitted the address. CORS controls browser access and is not an abuse budget or authentication system.
 
@@ -33,7 +33,7 @@ A public signup request is not authenticated consent. Turnstile assesses a reque
 
 Both public POST routes share `confirmation-request.ts` and `confirmation-store.ts`:
 
-1. Reject a supplied foreign Origin and non-JSON content type. Apply the existing native per-IP limiter. Read at most 4 KiB of actual body bytes, then validate and normalize the address.
+1. Reject a supplied foreign Origin and non-JSON content type. Apply the existing native per-IP limiter. Bound actual body bytes at 4 KiB and reading at five seconds, then validate and normalize the address. Oversize returns 413; a body timeout/cancellation 408. Producer cancellation is not awaited before rejecting input.
 2. Verify Turnstile with a five-second deadline and expected hostname. New widgets use action `subscribe`; empty/missing action supports older cached clients. Missing configuration or verifier unavailability returns 503; invalid proof returns 400. No mail is sent on either path.
 3. In one D1 batch transaction, check the budget, reserve the attempt, preserve any legacy pending token, and update eligible subscriber state. A subscriber-write failure rolls back the reservation.
 4. For an admitted request, await Resend with at most two eight-second attempts using the same serialized body and idempotency key. A short provider rate-limit hint can add up to three seconds of waiting; a longer hint stops the inline retry. Record accepted, failed or unknown outcome and available provider message ID/status.
@@ -66,7 +66,7 @@ An ordinary unsubscribe permits later renewed confirmation. Bounce, complaint, e
 
 The newsletter shares D1 capacity with analytics and browser diagnostics. Investigations must budget production reads and preserve private captures outside Git. A second database in the same account would not itself isolate account-level allowances.
 
-Routine confirmation logs contain the opaque request ID, mode, stage, static reason and provider HTTP status. Signed webhook logs contain event and recipient count, not addresses. These statements do not establish the retention or redaction of separate provider history or Cloudflare request logs. Pre-admission diagnostics intentionally do not retain the submitted address.
+Routine confirmation logs contain the opaque request ID, mode, stage, static reason and provider HTTP status. Webhook observations use a generated request UUID, closed stage/reason and, for suppression, event family and recipient count. Neither logs addresses or raw signatures/payloads. The webhook adapter authenticates original bytes before UTF-8/JSON decoding and bounds reading at 64 KiB and five seconds; see the [contract repair](../../packages/blog/drafts/research/newsletter-reliability/36-request-body-and-webhook-contracts.md). These statements do not establish the retention or redaction of separate provider history or Cloudflare request logs. Pre-admission diagnostics intentionally do not retain the submitted address.
 
 Nightly cleanup at 03:00 UTC removes expired pending rows, inactive rows older than ninety days using status-event timestamps, and confirmation attempts older than seven days. Those are this blog's storage policies, not categorical legal requirements or proof of compliance. Signed complaint/bounce processing is part of the implemented protection; live webhook configuration still requires its own receipt.
 
@@ -93,7 +93,7 @@ The package's lack of runtime dependencies is a maintenance choice, not a ban on
 
 ## Remaining work
 
-TASK-0124, TASK-0129 and TASK-0137 are complete with distinct local, deployment and live receipts. TASK-0145 investigates the observed Gmail Spam placement; the DNS observation alone does not diagnose it. TASK-0142 requires the provider webhook connection and a signed-event receipt. TASK-0125/0126 retain broader client-report correlation, transport, ingestion and alerting work; TASK-0130 retains incomplete historical recovery. The [current handoff](../../packages/blog/drafts/research/newsletter-reliability/14-handoff.md) gives the next bounded actions. Structured logs are not alerts, provider acceptance is not Inbox placement, and this test recovered no historical address.
+TASK-0124, TASK-0129, TASK-0137 and TASK-0142 have their distinct acceptance receipts; the worklist's latest dated records supersede the older September handoff. The historical Spam cause and population delivery/false-rejection rates remain unknown. TASK-0125/0126 retain broader diagnostic/alerting work; TASK-0130 retains incomplete historical recovery. [Research 32](../../packages/blog/drafts/research/newsletter-reliability/32-four-hour-engineering-iteration.md) owns the current bounded iteration. Structured logs are not alerts, provider acceptance is not Inbox placement, and no historical address recovery is established.
 
 The article remains outside `posts/` and unpublished. Future provider migration, removal of Turnstile, permanent suppression storage, campaign automation and a subscriber dashboard are possible decisions, not work automatically authorized by this repair.
 

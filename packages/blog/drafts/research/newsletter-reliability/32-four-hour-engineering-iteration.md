@@ -76,3 +76,20 @@ These are controlled findings, not observed production incidents or lost-reader
 counts. The provider reviewer owns the first two repairs; the coordinator owns
 the raw-body boundary. Next: reproduce request/body/signature conditions, then
 implement bounded transport handling and explicit server confirmation decisions.
+
+## First accepted local increments
+
+Provider repairs are delivered in `d63ea5b6` (monotone send knowledge and verifier
+protocol decoding) and `9f6346f4` (Workers-compatible endpoint confinement and
+closed delivery diagnostics). Research 34 preserves their separate evidence.
+
+[Transport repair](36-request-body-and-webhook-contracts.md) passes 51 combined
+handler tests, newsletter types and ten paired local workerd/Web Crypto/D1 cases
+per version. Its raw-byte authentication, nonblocking cancellation and read
+deadline remain local acceptance, not an assertion about current production.
+
+The campaign audit also reproduces duplicate provider calls before durable
+admission. A separate owner is implementing a minimal campaign identity latch,
+with additive migration 0006 and native controls. No campaign automation or live
+campaign send is authorized by that implementation. The coordinator retains the
+production migration/deployment gate.

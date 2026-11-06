@@ -4,30 +4,10 @@ import { sendConfirmationEmail } from './email.js';
 import { allowedOrigin, jsonError, jsonOk } from './responses.js';
 import { generateToken, hashToken, truncateIp } from './tokens.js';
 import { verifyTurnstile } from './turnstile.js';
+import { readRequestBytes } from './request-body.js';
 
 const MAX_BODY_BYTES = 4096;
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-async function readBody(request: Request): Promise<unknown> {
-  const reader = request.body?.getReader();
-  if (!reader) return null;
-  const chunks: Uint8Array[] = [];
-  let size = 0;
-  try {
-    while (true) {
-      const next = await reader.read();
-      if (next.done) break;
-      size += next.value.byteLength;
-      if (size > MAX_BODY_BYTES) { await reader.cancel(); return null; }
-      chunks.push(next.value);
-    }
-    const bytes = new Uint8Array(size);
-    let offset = 0;
-    for (const chunk of chunks) { bytes.set(chunk, offset); offset += chunk.byteLength; }
-    const body: unknown = JSON.parse(new TextDecoder().decode(bytes));
-    return body;
-  } catch { return null; } finally { reader.releaseLock(); }
-}
 
 function sanitizeSource(raw: unknown): string | null {
   if (typeof raw !== 'string' || !raw.startsWith('/') || raw.startsWith('//')) return null;
@@ -80,7 +60,16 @@ export async function handleConfirmationRequest(
       response.headers.set('retry-after', '60');
       return respond(response);
     }
-    const body = await readBody(request);
+    const received = await readRequestBytes(request, { maxBytes: MAX_BODY_BYTES });
+    if (!received.ok) {
+      log('body_rejected', { reason: received.reason });
+      return respond(jsonError(received.status === 408
+        ? 'The signup request did not finish. Please try again.'
+        : 'Invalid or oversized signup request.', received.status, origin));
+    }
+    let body: unknown;
+    try { body = JSON.parse(new TextDecoder('utf-8', { fatal: true, ignoreBOM: false }).decode(received.bytes)); }
+    catch { body = null; }
     if (typeof body !== 'object' || body === null || !('email' in body)) {
       log('body_rejected');
       return respond(jsonError('Invalid or oversized signup request.', 400, origin));

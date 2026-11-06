@@ -13,7 +13,9 @@ import { hashToken } from '../../newsletter/src/tokens.ts';
 test('provider rate-limit retry honors a short wait and reuses the same operation', async t => {
   const h = harness(t);
   const waits = [];
-  t.mock.method(globalThis, 'setTimeout', (callback, delay) => {
+  const nativeTimeout = globalThis.setTimeout;
+  t.mock.method(globalThis, 'setTimeout', (callback, delay, ...args) => {
+    if (delay !== 2000) return nativeTimeout(callback, delay, ...args);
     waits.push(delay);
     queueMicrotask(callback);
     return 0;
@@ -540,7 +542,7 @@ test('invalid body, missing token, foreign Origin, and oversized body stop befor
   assert.equal((await h.submit('bad')).status, 400);
   assert.equal((await h.submit('valid@example.invalid', { body: { turnstile: '' } })).status, 400);
   assert.equal((await h.submit('valid@example.invalid', { headers: { origin: 'https://elsewhere.invalid' } })).status, 403);
-  assert.equal((await h.submit('valid@example.invalid', { rawBody: 'x'.repeat(4097) })).status, 400);
+  assert.equal((await h.submit('valid@example.invalid', { rawBody: 'x'.repeat(4097) })).status, 413);
   assert.equal(h.mail.length, 0);
   assert.equal(h.attempts().length, 0);
 });
@@ -599,7 +601,11 @@ test('signed webhooks normalize every valid current and legacy recipient and ded
   }
   assert.ok(h.attempts().every(row => row.revoked === 1));
   const webhookLog = h.logs.find(entry => entry[0] === '[newsletter:webhook]');
-  assert.deepEqual(webhookLog?.[1], { event: 'email.complained', recipients: 3 });
+  assert.equal(webhookLog?.[1].event, 'email.complained');
+  assert.equal(webhookLog?.[1].recipients, 3);
+  assert.equal(webhookLog?.[1].stage, 'suppression_applied');
+  assert.match(webhookLog?.[1].requestId, /^[0-9a-f-]{36}$/);
+  assert.deepEqual(Object.keys(webhookLog[1]).sort(), ['event', 'recipients', 'requestId', 'stage']);
   assert.doesNotMatch(JSON.stringify(h.logs), /first@example.invalid|second@example.invalid|third@example.invalid/);
 });
 

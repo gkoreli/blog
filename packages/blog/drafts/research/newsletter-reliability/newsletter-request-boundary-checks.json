@@ -1,0 +1,191 @@
+{
+  "checkedAt": "2026-11-06T06:41:13.153Z",
+  "baseline": "d63ea5b62cbd86ab427348f8df67cdd1c0227651",
+  "compatibilityDate": "2026-03-06",
+  "runtime": "actual local workerd, Web Crypto and D1; constructed request-stream controls",
+  "casesPerVariant": 10,
+  "providerCalls": 0,
+  "productionCalls": 0,
+  "actualIncomingWireFramingMeasured": false,
+  "before": {
+    "workerSha256": "697262354e39bcf427546817f2b297fda2334fedb7e758a679ba2d0468348951",
+    "rows": [
+      {
+        "mode": "ordinary",
+        "status": 200,
+        "exception": null,
+        "pulls": 0,
+        "cancels": 0,
+        "subscriberStatus": "bounced"
+      },
+      {
+        "mode": "unsigned-bom",
+        "status": 200,
+        "exception": null,
+        "pulls": 0,
+        "cancels": 0,
+        "subscriberStatus": "bounced"
+      },
+      {
+        "mode": "signed-bom",
+        "status": 401,
+        "exception": null,
+        "pulls": 0,
+        "cancels": 0,
+        "subscriberStatus": "pending"
+      },
+      {
+        "mode": "invalid-utf8",
+        "status": 401,
+        "exception": null,
+        "pulls": 0,
+        "cancels": 0,
+        "subscriberStatus": "pending"
+      },
+      {
+        "mode": "missing-headers",
+        "status": "pending",
+        "exception": null,
+        "pulls": 1,
+        "cancels": 0,
+        "subscriberStatus": "pending"
+      },
+      {
+        "mode": "overflow",
+        "status": "pending",
+        "exception": null,
+        "pulls": 1,
+        "cancels": 1,
+        "subscriberStatus": "pending"
+      },
+      {
+        "mode": "confirmation-overflow",
+        "status": "pending",
+        "exception": null,
+        "pulls": 1,
+        "cancels": 1,
+        "subscriberStatus": "pending"
+      },
+      {
+        "mode": "aborted",
+        "status": "pending",
+        "exception": null,
+        "pulls": 1,
+        "cancels": 0,
+        "subscriberStatus": "pending"
+      },
+      {
+        "mode": "bad-secret",
+        "status": "exception",
+        "exception": "DataError",
+        "pulls": 0,
+        "cancels": 0,
+        "subscriberStatus": "pending"
+      },
+      {
+        "mode": "slow-confirmation",
+        "status": "pending",
+        "exception": null,
+        "pulls": 1,
+        "cancels": 0,
+        "subscriberStatus": "pending"
+      }
+    ]
+  },
+  "after": {
+    "workerSha256": "007c5f2807ac8f4c5f380eb183eafcd38b062b67b2314ec476be0ff9ff766f50",
+    "rows": [
+      {
+        "mode": "ordinary",
+        "status": 200,
+        "exception": null,
+        "pulls": 0,
+        "cancels": 0,
+        "subscriberStatus": "bounced"
+      },
+      {
+        "mode": "unsigned-bom",
+        "status": 401,
+        "exception": null,
+        "pulls": 0,
+        "cancels": 0,
+        "subscriberStatus": "pending"
+      },
+      {
+        "mode": "signed-bom",
+        "status": 200,
+        "exception": null,
+        "pulls": 0,
+        "cancels": 0,
+        "subscriberStatus": "bounced"
+      },
+      {
+        "mode": "invalid-utf8",
+        "status": 400,
+        "exception": null,
+        "pulls": 0,
+        "cancels": 0,
+        "subscriberStatus": "pending"
+      },
+      {
+        "mode": "missing-headers",
+        "status": 401,
+        "exception": null,
+        "pulls": 0,
+        "cancels": 0,
+        "subscriberStatus": "pending"
+      },
+      {
+        "mode": "overflow",
+        "status": 413,
+        "exception": null,
+        "pulls": 1,
+        "cancels": 1,
+        "subscriberStatus": "pending"
+      },
+      {
+        "mode": "confirmation-overflow",
+        "status": 413,
+        "exception": null,
+        "pulls": 1,
+        "cancels": 1,
+        "subscriberStatus": "pending"
+      },
+      {
+        "mode": "aborted",
+        "status": 408,
+        "exception": null,
+        "pulls": 0,
+        "cancels": 1,
+        "subscriberStatus": "pending"
+      },
+      {
+        "mode": "bad-secret",
+        "status": 503,
+        "exception": null,
+        "pulls": 0,
+        "cancels": 0,
+        "subscriberStatus": "pending"
+      },
+      {
+        "mode": "slow-confirmation",
+        "status": 408,
+        "exception": null,
+        "pulls": 1,
+        "cancels": 1,
+        "subscriberStatus": "pending"
+      }
+    ]
+  },
+  "scope": "Paired local actual-handler transport and cryptographic controls; not production or population acceptance",
+  "nodeRegressionBaseline": {
+    "cases": 9,
+    "passed": 1,
+    "failed": 8
+  },
+  "nodeCurrent": {
+    "requestBoundaryCases": 11,
+    "combinedNewsletterCases": 51,
+    "passed": 51
+  }
+}
