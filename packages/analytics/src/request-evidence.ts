@@ -1,8 +1,9 @@
-import { classifyTraffic } from './classify.js';
-import { claimsFetchMetadataBrowser } from './readerkind.js';
+import { analyzeTraffic } from './classify.js';
+import { clientReaderKind } from './client-registry.js';
+import { claimsFetchMetadataFromProducts, hasConflictingBrowserClaims, userAgentClaimText, userAgentEngineVersion, userAgentProducts, type UserAgentProduct } from './user-agent-products.js';
 
 /** This is an extraction contract, not an anonymity or verified-client claim. */
-export const REQUEST_EVIDENCE_VERSION = '2026-10-26.1';
+export const REQUEST_EVIDENCE_VERSION = '2026-11-06.1';
 export const MAX_UA_EVIDENCE_BYTES = 1024;
 export const MAX_ACCEPT_EVIDENCE_BYTES = 512;
 const encoder = new TextEncoder();
@@ -50,16 +51,20 @@ function major(value: string | undefined): number | null {
   return parsed <= 65535 ? parsed : null;
 }
 
-function browser(userAgent: string): { family: BrowserFamily; major: number | null } {
-  for (const [family, pattern] of [
-    ['edge', /\bEdg(?:A|iOS)?\/(\d+)/],
-    ['opera', /\bOPR\/(\d+)/],
-    ['firefox', /\b(?:Firefox|FxiOS)\/(\d+)/],
-    ['chromium', /\b(?:Chrome|Chromium|CriOS)\/(\d+)/],
-    ['safari', /\bVersion\/(\d+)[^ ]* (?:Mobile\/\S+ )?Safari\//],
+function browser(products: readonly UserAgentProduct[]): { family: BrowserFamily; major: number | null } {
+  if (hasConflictingBrowserClaims(products)) return { family: 'unknown', major: null };
+  for (const [family, names] of [
+    ['edge', ['edg', 'edga', 'edgios']],
+    ['opera', ['opr']],
+    ['firefox', ['firefox', 'fxios']],
+    ['chromium', ['chrome', 'chromium', 'crios']],
   ] as const) {
-    const match = pattern.exec(userAgent);
-    if (match) return { family, major: major(match[1]) };
+    if (products.some(product => names.some(name => name === product.name))) {
+      return { family, major: userAgentEngineVersion(products, names)?.major ?? null };
+    }
+  }
+  if (products.some(product => product.name === 'safari') && products.some(product => product.name === 'version')) {
+    return { family: 'safari', major: userAgentEngineVersion(products, ['version'])?.major ?? null };
   }
   return { family: 'unknown', major: null };
 }
@@ -79,10 +84,13 @@ function os(userAgent: string): { family: OsFamily; major: number | null } {
   return { family: 'unknown', major: null };
 }
 
-function clientForm(userAgent: string, family: BrowserFamily): DeclaredClientForm {
-  if (/\bHeadlessChrome\/|\bCypress\/|\bLightpanda\//i.test(userAgent)) return 'headless';
-  if (/\b(?:curl\/|Wget\/|python-requests\/|Go-http-client\/|okhttp\/)/i.test(userAgent)) return 'http-client';
-  if (classifyTraffic(userAgent).trafficClass !== 'browser') return 'bot';
+function clientForm(userAgent: string, products: readonly UserAgentProduct[], family: BrowserFamily): DeclaredClientForm {
+  const traffic = analyzeTraffic(userAgent);
+  if (traffic.declarations.candidates.length > 0
+    && traffic.declarations.candidates.every(name => clientReaderKind(name) === 'http-client')) return 'http-client';
+  if (products.some(product => product.version !== null && ['headlesschrome', 'cypress', 'lightpanda'].includes(product.name))) return 'headless';
+  if (products.some(product => product.version !== null && ['curl', 'wget', 'python-requests', 'go-http-client', 'okhttp'].includes(product.name))) return 'http-client';
+  if (traffic.trafficClass !== 'browser') return 'bot';
   if (/;\s*wv\)|\b(?:WebView|Redroid)\b/i.test(userAgent)) return 'webview';
   return family === 'unknown' ? 'unknown' : 'browser';
 }
@@ -104,8 +112,11 @@ function primaryLanguage(value: string | null): string | null {
 }
 
 export function extractRequestEvidence(request: Request, response: Response): RequestEvidence {
-  const userAgent = request.headers.get('User-Agent') ?? '';
-  const browserClaim = browser(userAgent);
+  // One shared URI exclusion supplies all derived claims; raw source evidence
+  // has its separate bounded/redacted extraction below and is never substituted.
+  const userAgent = userAgentClaimText(request.headers.get('User-Agent') ?? '');
+  const products = userAgentProducts(userAgent);
+  const browserClaim = browser(products);
   const osClaim = os(userAgent);
   return {
     version: REQUEST_EVIDENCE_VERSION,
@@ -113,8 +124,8 @@ export function extractRequestEvidence(request: Request, response: Response): Re
     browserMajor: browserClaim.major,
     osFamily: osClaim.family,
     osMajor: osClaim.major,
-    declaredClientForm: clientForm(userAgent, browserClaim.family),
-    claimsFetchMetadataSupport: claimsFetchMetadataBrowser(userAgent),
+    declaredClientForm: clientForm(userAgent, products, browserClaim.family),
+    claimsFetchMetadataSupport: claimsFetchMetadataFromProducts(userAgent, products),
     primaryLanguage: primaryLanguage(request.headers.get('Accept-Language')),
     responseStatus: response.status,
   };

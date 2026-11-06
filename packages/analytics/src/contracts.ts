@@ -6,6 +6,7 @@ import type { SignatureBasis } from './signature-basis.js';
 import type { ReportedVerifierProfile } from './verifier-profile.js';
 import type { NativeCategoryBasis } from './native-bot-evidence.js';
 import type { DirectoryPublicationBasis } from './directory-publication-contract.js';
+import type { ClientEvidenceRow, ClientNameCoverage } from './client-evidence.js';
 
 /** Prepared private-evidence policy shared by collector and disclosure. */
 export const DIAGNOSTIC_RETENTION_DAYS = 60;
@@ -184,6 +185,10 @@ export interface StatsResponse {
   byClientForm: Array<{ form: ReportedClientForm; views: number }>;
   clientFormEvidence: { recordedViews: number; historicalViews: number; unrecognizedRecordViews: number; unsupportedHintViews: number; differingSignalsViews: number; legacyDefaultedViews: number };
   byAgent: Array<{ agentName: string; trafficClass: Exclude<TrafficClass, 'browser'>; views: number }>;
+  /** A missing selected name is not necessarily an absent declaration or unknown signer. */
+  clientNameCoverage: ClientNameCoverage;
+  /** Joint stored facts preserve the difference between names, provider roles and proof. */
+  byKindClientEvidence: ClientEvidenceRow[];
   /** Reviewed display names or Other, never arbitrary signing origins; independent of role. */
   bySigner: Array<{ signatureAgent: PublicSignerName; views: number }>;
   /** Independent local and native outcomes; overlapping counts, never people. */

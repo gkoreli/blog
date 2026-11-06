@@ -1,5 +1,6 @@
 import { SITE_AUDIT_VERSION } from '@gkoreli/site-audit/contracts';
 import { REQUEST_ASSESSMENT_VERSION } from '@gkoreli/analytics/request-assessment';
+import { RETAINED_CLIENT_PRODUCT_PROFILE } from '@gkoreli/analytics/retained-client-products';
 import { READER_KINDS } from '@gkoreli/analytics/contracts';
 
 const text = { type: 'string' } as const;
@@ -119,8 +120,16 @@ export const aiCheckSchema = {
       signature: ref('SignatureEvidence'), limits: list(text),
     }, 'Current-request assessment; declarations, network, local verification and native provider evidence remain independent. Raw request headers and addresses are not returned.'),
     ClassificationEvidence: profiledEvidence('Closed derived facts under the reported classifierProfile and evidence version. Bit fields retain separately versioned encodings; missing evidence is not a negative identity result.', {
-      version: text, classifierProfile: text,
-      declarations: object({ status: choices(['none', 'single', 'multiple']), candidates: list(text), matchedProducts: list(text), browserFamily }),
+      version: { const: '2026-11-06.1' }, classifierProfile: text,
+      declarations: object({
+        status: choices(['none', 'single', 'multiple']), candidates: list(text), browserFamily,
+        productProfile: { const: RETAINED_CLIENT_PRODUCT_PROFILE },
+        matchedProductBits: {
+          type: 'string', minLength: 1, maxLength: 19,
+          pattern: '^(?:0|[1-9a-f][0-9a-f]{0,17}|[1-3][0-9a-f]{18})$',
+          description: 'Canonical minimal lowercase hexadecimal bitset, at most 74 bits. Decode with retainedMatchedProducts from @gkoreli/analytics/retained-client-products; the immutable RETAINED_CLIENT_PRODUCTS_20261106 alias order belongs to productProfile, independently of the live registry. Unknown profiles or malformed encodings are unavailable evidence.',
+        },
+      }),
       declaredCategoryBits: count, fetchMetadataBits: count,
       categoryAgreement: choices(['no-match', 'single-match', 'multiple-same-category', 'multiple-categories']),
       network: choices(['missing', 'hosting-listed', 'archiver-listed', 'not-listed']), navigationShaped: boolean,

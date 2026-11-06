@@ -42,6 +42,7 @@ export function statsPage() {
   </div>
 
   <p class="stats-status" id="stats-status" role="status" aria-atomic="true">Loading stats…</p>
+  <noscript><p>JavaScript loads the interactive report. You can still <a href="/api/stats?range=30d&amp;traffic=all">read the 30-day report as JSON</a> and the measurement notes below.</p></noscript>
   <div class="stats-period" id="stats-period" hidden></div>
   <p class="stats-scope" id="stats-scope" hidden></p>
 
@@ -115,9 +116,18 @@ export function statsPage() {
       <p class="stats-section-note">The stored verifier profile shows which implementation produced each result. Current means its identifier matches today's verifier; it does not mean this report reverified the request. Historical profiles can have different checks. Missing profiles, inconsistent records and injected verdicts remain explicit. Each included event appears once across this table.</p>
     </section>
     <section class="stats-section" id="stats-declarations">
-      <h2>Selected client declarations <span>single stored name</span></h2>
+      <h2>Named crawlers, tools and services</h2>
+      <p class="stats-section-note" id="stats-client-name-coverage">Names come from this site's catalogue of client claims. Browser-family signals are reported separately and do not identify the operator.</p>
       ${listSkeleton(2)}
     </section>
+    <details class="stats-cache-details">
+      <summary>Compare client names, crawler categories and signatures</summary>
+      <section class="stats-section stats-signature-basis" id="stats-client-evidence">
+        <h2>What we know about the same requests</h2>
+        <p class="stats-section-note">A crawler category can be available while its software name is missing. An unsigned request can match a vendor's published network ranges elsewhere in this report. A selected name is a claim from the request, and a signature authenticates only its covered components. Neither establishes human reading or the initiating party.</p>
+        <div id="stats-client-evidence-rows" role="region" aria-label="Client names and verification table; scroll horizontally if needed" tabindex="0">${listSkeleton(3)}</div>
+      </section>
+    </details>
     <section class="stats-section" id="stats-signers">
       <h2>Stored verified signing outcomes <span>reviewed names</span></h2>
       <p class="stats-section-note">These counts follow the top-level stored verified flag, including earlier records without proof detail or with inconsistent detailed records. The classification table separates those cases and stored verifier profiles. Reports do not reverify historical requests. A reviewed display name does not establish a request’s role or purpose.</p>

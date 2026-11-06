@@ -1,0 +1,709 @@
+{
+  "schema": "oss-detection-source-review-v1",
+  "checkedOn": "2026-11-06",
+  "scope": "Public pinned OSS source and offline controls only; no production queries or accuracy/prevalence estimate.",
+  "repositoryBase": "18606bd538c3899ea8786abd71517519df5834cd",
+  "sources": [
+    {
+      "id": "matomo",
+      "repository": "matomo-org/device-detector",
+      "sha": "0ca48a37aa7a4388e9ec5897f033aaef9155ed90",
+      "commitDate": "2026-11-05T12:46:00Z",
+      "checkedOn": "2026-11-06",
+      "declaredLicense": "LGPL-3.0-or-later",
+      "files": [
+        {
+          "path": "Parser/Bot.php",
+          "sha256": "c9d75670e40917eafce333e0dc4185d4305497ec58eefd2fb8e3227c45f00ce2",
+          "bytes": 2212,
+          "lines": 97,
+          "url": "https://github.com/matomo-org/device-detector/blob/0ca48a37aa7a4388e9ec5897f033aaef9155ed90/Parser/Bot.php"
+        },
+        {
+          "path": "Parser/AbstractParser.php",
+          "sha256": "962ccb6460038fa3e2a60e0affafab81988a73b3fa8300aecbb20e6673d175b9",
+          "bytes": 13945,
+          "lines": 514,
+          "url": "https://github.com/matomo-org/device-detector/blob/0ca48a37aa7a4388e9ec5897f033aaef9155ed90/Parser/AbstractParser.php"
+        },
+        {
+          "path": "regexes/bots.yml",
+          "sha256": "57a80c5dce23dc9430f40978bcdec911f21076d8adfd45075e734a655423b777",
+          "bytes": 152283,
+          "lines": 6172,
+          "url": "https://github.com/matomo-org/device-detector/blob/0ca48a37aa7a4388e9ec5897f033aaef9155ed90/regexes/bots.yml"
+        },
+        {
+          "path": "regexes/client/libraries.yml",
+          "sha256": "96b2accf8d30d055b54fa6651dc9bec015f8f21b51c27999364b85c5d793b133",
+          "bytes": 16680,
+          "lines": 736,
+          "url": "https://github.com/matomo-org/device-detector/blob/0ca48a37aa7a4388e9ec5897f033aaef9155ed90/regexes/client/libraries.yml"
+        },
+        {
+          "path": "LICENSE",
+          "sha256": "e3a994d82e644b03a792a930f574002658412f62407f5fee083f2555c5f23118",
+          "bytes": 7652,
+          "lines": 165,
+          "url": "https://github.com/matomo-org/device-detector/blob/0ca48a37aa7a4388e9ec5897f033aaef9155ed90/LICENSE"
+        }
+      ]
+    },
+    {
+      "id": "isbot",
+      "repository": "omrilotan/isbot",
+      "sha": "3f9c982acd95b1be033fa3c14b2a7ece565ba10a",
+      "commitDate": "2026-10-01T10:50:26Z",
+      "checkedOn": "2026-11-06",
+      "declaredLicense": "Unlicense",
+      "files": [
+        {
+          "path": "src/index.ts",
+          "sha256": "1ab5f715e5f6e7034f01c9370420fa727e486bf8fa7360260ae1913ff7054e43",
+          "bytes": 3685,
+          "lines": 131,
+          "url": "https://github.com/omrilotan/isbot/blob/3f9c982acd95b1be033fa3c14b2a7ece565ba10a/src/index.ts"
+        },
+        {
+          "path": "src/patterns.json",
+          "sha256": "0decc128730972c123c9c638a34e98a1a5153bbfd2a96e5af0bbf4e31cfea8d2",
+          "bytes": 3342,
+          "lines": 209,
+          "url": "https://github.com/omrilotan/isbot/blob/3f9c982acd95b1be033fa3c14b2a7ece565ba10a/src/patterns.json"
+        },
+        {
+          "path": "fixtures/browsers.yml",
+          "sha256": "0789d389584d37e1fc041a77a17bb9a059ae4075e5e1d3e49c54230cee598fd0",
+          "bytes": 71692,
+          "lines": 741,
+          "url": "https://github.com/omrilotan/isbot/blob/3f9c982acd95b1be033fa3c14b2a7ece565ba10a/fixtures/browsers.yml"
+        },
+        {
+          "path": "scripts/prepare/externals/index.js",
+          "sha256": "869663a05cd891811487825840b62eb904f4ce62c64e8f9e273d4cbdb6584221",
+          "bytes": 8052,
+          "lines": 259,
+          "url": "https://github.com/omrilotan/isbot/blob/3f9c982acd95b1be033fa3c14b2a7ece565ba10a/scripts/prepare/externals/index.js"
+        },
+        {
+          "path": "LICENSE",
+          "sha256": "472f8bb212250d2b07f2484f2bee03d65eec36a52902b80244e2e52f1990b090",
+          "bytes": 1224,
+          "lines": 26,
+          "url": "https://github.com/omrilotan/isbot/blob/3f9c982acd95b1be033fa3c14b2a7ece565ba10a/LICENSE"
+        }
+      ]
+    },
+    {
+      "id": "crawler-user-agents",
+      "repository": "monperrus/crawler-user-agents",
+      "sha": "db662d2787f984ed4fe3043744a12eb067b89218",
+      "commitDate": "2026-10-31T06:45:00Z",
+      "checkedOn": "2026-11-06",
+      "declaredLicense": "MIT",
+      "files": [
+        {
+          "path": "crawler-user-agents.json",
+          "sha256": "25ea6326102d7abd5be233765f5b60ef7f680b3a40b68d43d5fcb692bd468172",
+          "bytes": 545335,
+          "lines": 18452,
+          "url": "https://github.com/monperrus/crawler-user-agents/blob/db662d2787f984ed4fe3043744a12eb067b89218/crawler-user-agents.json"
+        },
+        {
+          "path": "validate.go",
+          "sha256": "0cd3d1d58b5a511dd76a787147ac8e844ed24d7f0777d151b17987b49b8d465b",
+          "bytes": 12830,
+          "lines": 545,
+          "url": "https://github.com/monperrus/crawler-user-agents/blob/db662d2787f984ed4fe3043744a12eb067b89218/validate.go"
+        },
+        {
+          "path": "__init__.py",
+          "sha256": "8daa38cdf7cde85c76e5c28340aeb838cb553bb732afaa5f11afad876794e0d3",
+          "bytes": 2207,
+          "lines": 71,
+          "url": "https://github.com/monperrus/crawler-user-agents/blob/db662d2787f984ed4fe3043744a12eb067b89218/__init__.py"
+        },
+        {
+          "path": "LICENSE",
+          "sha256": "bd1d54278c29a12c1c3009259965a620c59363b8d7f5740d98d3fc38f319d7a5",
+          "bytes": 1083,
+          "lines": 20,
+          "url": "https://github.com/monperrus/crawler-user-agents/blob/db662d2787f984ed4fe3043744a12eb067b89218/LICENSE"
+        }
+      ]
+    },
+    {
+      "id": "goatcounter",
+      "repository": "arp242/goatcounter",
+      "sha": "c031008a8d28c85b36708824f23b28957e7ed262",
+      "commitDate": "2026-09-27T23:23:37Z",
+      "checkedOn": "2026-11-06",
+      "declaredLicense": "modified EUPL-1.2; see source",
+      "files": [
+        {
+          "path": "go.mod",
+          "sha256": "e68cf8831de4ee654079e6c0f64e15cb4ea463b7b7bf01a1548fb0df6ba041f3",
+          "bytes": 1950,
+          "lines": 58,
+          "url": "https://github.com/arp242/goatcounter/blob/c031008a8d28c85b36708824f23b28957e7ed262/go.mod"
+        },
+        {
+          "path": "user_agent.go",
+          "sha256": "669e283d2c3d7997d543a913433092d6dfbeead4214148d1d10cb865a6a956a3",
+          "bytes": 2466,
+          "lines": 114,
+          "url": "https://github.com/arp242/goatcounter/blob/c031008a8d28c85b36708824f23b28957e7ed262/user_agent.go"
+        },
+        {
+          "path": "handlers/count.go",
+          "sha256": "adf35c3de4a284a0f5fafe0ba9a0b27493743e8185518fcf4c919aa2162ece17",
+          "bytes": 3218,
+          "lines": 107,
+          "url": "https://github.com/arp242/goatcounter/blob/c031008a8d28c85b36708824f23b28957e7ed262/handlers/count.go"
+        },
+        {
+          "path": "LICENSE",
+          "sha256": "cfaff7a8e4c3998ed24b07e9cfa026b5d264d734b3a08909a859cf40f4844e93",
+          "bytes": 24366,
+          "lines": 500,
+          "url": "https://github.com/arp242/goatcounter/blob/c031008a8d28c85b36708824f23b28957e7ed262/LICENSE"
+        }
+      ]
+    },
+    {
+      "id": "go-isbot",
+      "repository": "arp242/isbot",
+      "sha": "305a021896f64c75ccbd18f5ba89183e8bdcdb07",
+      "commitDate": "2026-08-17T00:29:23Z",
+      "ref": "v1.1.0",
+      "checkedOn": "2026-11-06",
+      "declaredLicense": "MIT",
+      "files": [
+        {
+          "path": "isbot.go",
+          "sha256": "fc2b1966e8c0a8a33021144adbe672cbc5924aeef13b85468191d70a60a6082b",
+          "bytes": 3867,
+          "lines": 134,
+          "url": "https://github.com/arp242/isbot/blob/305a021896f64c75ccbd18f5ba89183e8bdcdb07/isbot.go"
+        },
+        {
+          "path": "user_agent.go",
+          "sha256": "d8344859eddf4feaeca5f44e88655009209b0c6e4fcb39e97e1c512d780fff14",
+          "bytes": 2839,
+          "lines": 123,
+          "url": "https://github.com/arp242/isbot/blob/305a021896f64c75ccbd18f5ba89183e8bdcdb07/user_agent.go"
+        },
+        {
+          "path": "ip.go",
+          "sha256": "d54bf364ac14d3d166ee55007247091f6dcc0a6125f92c1813bfae6f51deeac2",
+          "bytes": 1883,
+          "lines": 95,
+          "url": "https://github.com/arp242/isbot/blob/305a021896f64c75ccbd18f5ba89183e8bdcdb07/ip.go"
+        },
+        {
+          "path": "LICENSE",
+          "sha256": "f3ebd7d4e0283bf0b50e6818667dc2a45e74fc33422b0ee7c77d5a948d06f9d7",
+          "bytes": 1076,
+          "lines": 21,
+          "url": "https://github.com/arp242/isbot/blob/305a021896f64c75ccbd18f5ba89183e8bdcdb07/LICENSE"
+        }
+      ]
+    },
+    {
+      "id": "plausible",
+      "repository": "plausible/analytics",
+      "sha": "a93b615b3af980399123eb9112f6c88255f8f943",
+      "commitDate": "2026-11-05T13:55:24Z",
+      "checkedOn": "2026-11-06",
+      "declaredLicense": "AGPL-3.0",
+      "files": [
+        {
+          "path": "lib/plausible/ingestion/event.ex",
+          "sha256": "78a692702cec3605cd310a231d020d2138947a082981bf3350c7cb1c60d5473b",
+          "bytes": 17554,
+          "lines": 611,
+          "url": "https://github.com/plausible/analytics/blob/a93b615b3af980399123eb9112f6c88255f8f943/lib/plausible/ingestion/event.ex"
+        },
+        {
+          "path": "config/config.exs",
+          "sha256": "65067b3a6069a38924b1a386b77e7a1508800c6bd1ebf01f60fe16bf6bf213d6",
+          "bytes": 2986,
+          "lines": 97,
+          "url": "https://github.com/plausible/analytics/blob/a93b615b3af980399123eb9112f6c88255f8f943/config/config.exs"
+        },
+        {
+          "path": "mix.lock",
+          "sha256": "5d656fc31ed3257d84fcda844038fbac0eb7a0b60b52c3924789a99d38ee0758",
+          "bytes": 58801,
+          "lines": 172,
+          "url": "https://github.com/plausible/analytics/blob/a93b615b3af980399123eb9112f6c88255f8f943/mix.lock"
+        },
+        {
+          "path": "LICENSE.md",
+          "sha256": "8486a10c4393cee1c25392769ddd3b2d6c242d6ec7928e1414efff7dfb2f07ef",
+          "bytes": 34523,
+          "lines": 661,
+          "url": "https://github.com/plausible/analytics/blob/a93b615b3af980399123eb9112f6c88255f8f943/LICENSE.md"
+        }
+      ]
+    },
+    {
+      "id": "uap-core",
+      "repository": "ua-parser/uap-core",
+      "sha": "73e7340c3ed8055051607b296bf46ead7aa5f19e",
+      "commitDate": "2026-08-24T12:09:38Z",
+      "checkedOn": "2026-11-06",
+      "declaredLicense": "Apache-2.0",
+      "files": [
+        {
+          "path": "regexes.yaml",
+          "sha256": "acf2c9af91158a00c444c3b795e7769f8af3d894106327a299c70bd64a81c8e6",
+          "bytes": 222536,
+          "lines": 6266,
+          "url": "https://github.com/ua-parser/uap-core/blob/73e7340c3ed8055051607b296bf46ead7aa5f19e/regexes.yaml"
+        },
+        {
+          "path": "README.md",
+          "sha256": "4f455e6af10b55eb8f88496e1d742b833b2e8f43ae381409092dd68ad9930598",
+          "bytes": 2688,
+          "lines": 59,
+          "url": "https://github.com/ua-parser/uap-core/blob/73e7340c3ed8055051607b296bf46ead7aa5f19e/README.md"
+        },
+        {
+          "path": "LICENSE",
+          "sha256": "0c6f6cd66573dd12f68c71bffca774e58087c3c9168aed0eabf0a5ae10d3800f",
+          "bytes": 608,
+          "lines": 16,
+          "url": "https://github.com/ua-parser/uap-core/blob/73e7340c3ed8055051607b296bf46ead7aa5f19e/LICENSE"
+        }
+      ]
+    },
+    {
+      "id": "httpx",
+      "repository": "encode/httpx",
+      "sha": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254",
+      "commitDate": "2026-02-23T10:40:42Z",
+      "ref": "HEAD",
+      "checkedOn": "2026-11-06",
+      "declaredLicense": "BSD-3-Clause",
+      "files": [
+        {
+          "path": "httpx/_client.py",
+          "sha256": "ed717b3ac00debb48d089daeb4dd7fbaf47cb5642ebc4a6e76f3a2fc6cfc0f70",
+          "bytes": 65713,
+          "lines": 2019,
+          "url": "https://github.com/encode/httpx/blob/b5addb64f0161ff6bfe94c124ef76f6a1fba5254/httpx/_client.py"
+        },
+        {
+          "path": "LICENSE.md",
+          "sha256": "4ec59d544f12b5f539a3a716fd321ac58ccd8030b465221f2c880200cdf28d8d",
+          "bytes": 1508,
+          "lines": 12,
+          "url": "https://github.com/encode/httpx/blob/b5addb64f0161ff6bfe94c124ef76f6a1fba5254/LICENSE.md"
+        }
+      ]
+    },
+    {
+      "id": "axios",
+      "repository": "axios/axios",
+      "sha": "1fcaf82dd3637afd57454fc5abd5e3458f619bcf",
+      "commitDate": "2026-11-05T07:37:28Z",
+      "ref": "HEAD",
+      "checkedOn": "2026-11-06",
+      "declaredLicense": "MIT",
+      "files": [
+        {
+          "path": "lib/adapters/http.js",
+          "sha256": "a0ba54558263bc5eb4bc3d06e09a885fcb47a8cf61c49cd7ee0139e2f50c007b",
+          "bytes": 56092,
+          "lines": 1609,
+          "url": "https://github.com/axios/axios/blob/1fcaf82dd3637afd57454fc5abd5e3458f619bcf/lib/adapters/http.js"
+        },
+        {
+          "path": "LICENSE",
+          "sha256": "82761059eaedacb3356803aea8a170d8298609f91b14fc32ee1bfb40d690183c",
+          "bytes": 1084,
+          "lines": 7,
+          "url": "https://github.com/axios/axios/blob/1fcaf82dd3637afd57454fc5abd5e3458f619bcf/LICENSE"
+        }
+      ]
+    },
+    {
+      "id": "node-fetch",
+      "repository": "node-fetch/node-fetch",
+      "sha": "8b3320d2a7c07bce4afc6b2bf6c3bbddda85b01f",
+      "commitDate": "2023-07-25T11:49:44Z",
+      "ref": "HEAD",
+      "checkedOn": "2026-11-06",
+      "declaredLicense": "MIT",
+      "files": [
+        {
+          "path": "src/request.js",
+          "sha256": "4a57dfc72f98d37646d7d0b464ad6157700fc875116618cb7af40238d0cbae4c",
+          "bytes": 8619,
+          "lines": 313,
+          "url": "https://github.com/node-fetch/node-fetch/blob/8b3320d2a7c07bce4afc6b2bf6c3bbddda85b01f/src/request.js"
+        },
+        {
+          "path": "LICENSE.md",
+          "sha256": "3e2c11dcf3f17ab585baab8faba54772d7872f1c6e026022acd4b4006665efb0",
+          "bytes": 1090,
+          "lines": 22,
+          "url": "https://github.com/node-fetch/node-fetch/blob/8b3320d2a7c07bce4afc6b2bf6c3bbddda85b01f/LICENSE.md"
+        }
+      ]
+    }
+  ],
+  "sizes": {
+    "matomoBotRules": 847,
+    "matomoBotYamlBytes": 152283,
+    "isbotPatterns": 207,
+    "isbotPatternsJsonBytes": 3342,
+    "crawlerRecords": 1505,
+    "crawlerJsonBytes": 545335,
+    "uapYamlBytes": 222536
+  },
+  "firstPartyWebSources": [
+    {
+      "url": "https://www.semrush.com/bot/",
+      "checkedOn": "2026-11-06",
+      "supports": "Named SEO/link-analysis and audit declarations; explicitly listed product variants; no fixed consecutive IP blocks."
+    },
+    {
+      "url": "https://www.mj12bot.com/",
+      "checkedOn": "2026-11-06",
+      "supports": "MJ12bot backlink webgraph and distributed community crawler; no limited fixed IP range."
+    },
+    {
+      "url": "https://moz.com/help/moz-procedures/crawlers/dotbot",
+      "checkedOn": "2026-11-06",
+      "status": "main URL failed web open; CDN-hosted document read below"
+    },
+    {
+      "url": "https://dc8hdnsmzapvm.cloudfront.net/help/moz-procedures/crawlers/dotbot",
+      "checkedOn": "2026-11-06",
+      "supports": "Moz-branded help document states Dotbot user-agent and link-index crawler, separate from Rogerbot."
+    },
+    {
+      "url": "https://allenai.org/crawler",
+      "checkedOn": "2026-11-06",
+      "supports": "AI2Bot exact UA and use for open language-model training; does not document every Ai2Bot-* variant."
+    },
+    {
+      "url": "https://www.checklyhq.com/blog/changelog-march-2021/",
+      "checkedOn": "2026-11-06",
+      "supports": "Historical first-party Checkly API/browser default markers, explicitly overridable."
+    },
+    {
+      "url": "https://feedback.checklyhq.com/changelog/checkly-cli-461",
+      "checkedOn": "2026-11-06",
+      "supports": "2024 first-party global userAgent/device macro override behavior."
+    },
+    {
+      "url": "https://radar.cloudflare.com/bots/directory/checkly",
+      "checkedOn": "2026-11-06",
+      "supports": "Current provider-directory monitoring classification and Checkly/1.0 marker; not local request verification."
+    },
+    {
+      "url": "https://help.phantom.com/articles/connect-phantom-to-an-app-29995498642195",
+      "checkedOn": "2026-11-06",
+      "supports": "First-party existence/use of Phantom mobile in-app browser; exact UA examples originate in pinned public fixtures."
+    }
+  ],
+  "unavailableSources": [
+    {
+      "target": "UAInspector 3.12.0 internals",
+      "observed": "Plausible mix.lock pins Hex ua_inspector3.12.0. Attempted beam-community/ua_inspector v3.12.0 returned404; elixir-inspector/ua_inspector v3.12.0 returned422. Listed Git tags begin v3.11.0. No dependency source implementation conclusion."
+    },
+    {
+      "target": "Manus-User first-party role declaration",
+      "observed": "Not located in bounded first-party search. Pinned crawler dataset points to third-party knownagents.com. Defer vendor-role certification."
+    }
+  ],
+  "replay": {
+    "checkedAt": "2026-11-06T06:08:49.400Z",
+    "node": "v24.14.1",
+    "sourceSha256": "b76f28781d1cf12e00a60b68cf71735014543c414f159e60098e4fbe08705fe2",
+    "method": "current source analyzeTraffic via Node native TypeScript stripping; competitor JS regexes instantiated from pinned patterns, no PHP or Go execution",
+    "cases": [
+      {
+        "id": "semrush",
+        "userAgent": "Mozilla/5.0 (compatible; SemrushBot/7~bl; +http://www.semrush.com/bot.html)",
+        "current": {
+          "trafficClass": "bot",
+          "agentName": null,
+          "browserFamily": "unrecognized"
+        },
+        "isbot": true,
+        "crawlerPatterns": [
+          "S[eE][mM]rushBot"
+        ]
+      },
+      {
+        "id": "mj12",
+        "userAgent": "Mozilla/5.0 (compatible; MJ12bot/v1.4.8; http://mj12bot.com/)",
+        "current": {
+          "trafficClass": "bot",
+          "agentName": null,
+          "browserFamily": "unrecognized"
+        },
+        "isbot": true,
+        "crawlerPatterns": [
+          "MJ12bot"
+        ]
+      },
+      {
+        "id": "dotbot",
+        "userAgent": "Mozilla/5.0 (compatible; DotBot/1.1; +http://www.opensiteexplorer.org/dotbot)",
+        "current": {
+          "trafficClass": "bot",
+          "agentName": null,
+          "browserFamily": "unrecognized"
+        },
+        "isbot": true,
+        "crawlerPatterns": [
+          "dotbot"
+        ]
+      },
+      {
+        "id": "ai2bot",
+        "userAgent": "Mozilla/5.0 (compatible) AI2Bot (+https://www.allenai.org/crawler)",
+        "current": {
+          "trafficClass": "bot",
+          "agentName": null,
+          "browserFamily": "unrecognized"
+        },
+        "isbot": true,
+        "crawlerPatterns": [
+          "AI2Bot"
+        ]
+      },
+      {
+        "id": "manus-browser",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36; Manus-User/1.0",
+        "current": {
+          "trafficClass": "browser",
+          "agentName": null,
+          "browserFamily": "chromium"
+        },
+        "isbot": true,
+        "crawlerPatterns": [
+          "Manus-User"
+        ]
+      },
+      {
+        "id": "checkly-browser",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36 (Checkly, https://www.checklyhq.com)",
+        "current": {
+          "trafficClass": "browser",
+          "agentName": null,
+          "browserFamily": "chromium"
+        },
+        "isbot": true,
+        "crawlerPatterns": [
+          "Checkly"
+        ]
+      },
+      {
+        "id": "httpx",
+        "userAgent": "python-httpx/0.28.1",
+        "current": {
+          "trafficClass": "browser",
+          "agentName": null,
+          "browserFamily": "unrecognized"
+        },
+        "isbot": true,
+        "crawlerPatterns": [
+          "httpx"
+        ]
+      },
+      {
+        "id": "axios",
+        "userAgent": "axios/1.8.0",
+        "current": {
+          "trafficClass": "browser",
+          "agentName": null,
+          "browserFamily": "unrecognized"
+        },
+        "isbot": true,
+        "crawlerPatterns": [
+          "axios"
+        ]
+      },
+      {
+        "id": "node-fetch",
+        "userAgent": "node-fetch/1.0 (+https://github.com/bitinn/node-fetch)",
+        "current": {
+          "trafficClass": "browser",
+          "agentName": null,
+          "browserFamily": "unrecognized"
+        },
+        "isbot": true,
+        "crawlerPatterns": [
+          "Fetch\\/",
+          "node-fetch"
+        ]
+      },
+      {
+        "id": "cubot-max",
+        "userAgent": "Mozilla/5.0 (Linux; Android 6.0; CUBOT MAX) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Mobile Safari/537.36",
+        "current": {
+          "trafficClass": "bot",
+          "agentName": null,
+          "browserFamily": "chromium"
+        },
+        "isbot": false,
+        "crawlerPatterns": []
+      },
+      {
+        "id": "cubot-plus-bot",
+        "userAgent": "Mozilla/5.0 (Linux; Android 6.0; CUBOT MAX) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Mobile Safari/537.36 GPTBot/1.0",
+        "current": {
+          "trafficClass": "ai",
+          "agentName": "GPTBot",
+          "browserFamily": "chromium"
+        },
+        "isbot": true,
+        "crawlerPatterns": [
+          "GPTBot"
+        ]
+      },
+      {
+        "id": "browser-control",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",
+        "current": {
+          "trafficClass": "browser",
+          "agentName": null,
+          "browserFamily": "chromium"
+        },
+        "isbot": false,
+        "crawlerPatterns": []
+      },
+      {
+        "id": "unknown-addon-control",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36 MySearch/1.0",
+        "current": {
+          "trafficClass": "browser",
+          "agentName": null,
+          "browserFamily": "chromium"
+        },
+        "isbot": false,
+        "crawlerPatterns": []
+      },
+      {
+        "id": "url-name-injection",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36 (+https://example.com/SemrushBot)",
+        "current": {
+          "trafficClass": "bot",
+          "agentName": null,
+          "browserFamily": "chromium"
+        },
+        "isbot": true,
+        "crawlerPatterns": [
+          "S[eE][mM]rushBot"
+        ]
+      },
+      {
+        "id": "known-name-lookalike",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36 NotGPTBot/1.0",
+        "current": {
+          "trafficClass": "bot",
+          "agentName": null,
+          "browserFamily": "chromium"
+        },
+        "isbot": true,
+        "crawlerPatterns": [
+          "GPTBot"
+        ]
+      },
+      {
+        "id": "whatsapp",
+        "userAgent": "WhatsApp/2.24.7.81 A",
+        "current": {
+          "trafficClass": "browser",
+          "agentName": null,
+          "browserFamily": "unrecognized"
+        },
+        "isbot": true,
+        "crawlerPatterns": [
+          "WhatsApp"
+        ]
+      },
+      {
+        "id": "python-urllib",
+        "userAgent": "Python-urllib/3.13",
+        "current": {
+          "trafficClass": "browser",
+          "agentName": null,
+          "browserFamily": "unrecognized"
+        },
+        "isbot": true,
+        "crawlerPatterns": [
+          "Python-urllib"
+        ]
+      }
+    ]
+  },
+  "browserFixtureReplay": {
+    "inspected": 551,
+    "nonBrowser": 8,
+    "method": "Only unquoted single-line entries beginning two spaces hyphen space; no general YAML parser. These upstream browser fixtures are syntactic controls, not authenticated human traffic.",
+    "disagreementCases": [
+      {
+        "sourceLine": 149,
+        "userAgent": "Mozilla/5.0 (Linux; Android 4.2.2; CUBOT C11 Build/JDQ39) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.57 Mobile Safari/537.36 OPR/18.0.1290.66961",
+        "trafficClass": "bot",
+        "agentName": null
+      },
+      {
+        "sourceLine": 150,
+        "userAgent": "Mozilla/5.0 (Linux; Android 6.0; CUBOT DINOSAUR Build/MRA58K; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/44.0.2403.119 Mobile Safari/537.36",
+        "trafficClass": "bot",
+        "agentName": null
+      },
+      {
+        "sourceLine": 151,
+        "userAgent": "Mozilla/5.0 (Linux; Android 6.0; CUBOT MAX Build/MRA58K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.81 Mobile Safari/537.36",
+        "trafficClass": "bot",
+        "agentName": null
+      },
+      {
+        "sourceLine": 152,
+        "userAgent": "Mozilla/5.0 (Linux; Android 6.0; CUBOT MAX) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Mobile Safari/537.36",
+        "trafficClass": "bot",
+        "agentName": null
+      },
+      {
+        "sourceLine": 484,
+        "userAgent": "Mozilla/5.0 (iPad; CPU OS 16_6_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 Phantom/ios/24.3.0.16061",
+        "trafficClass": "bot",
+        "agentName": null
+      },
+      {
+        "sourceLine": 485,
+        "userAgent": "Mozilla/5.0 (Linux; Android 13; 23106RN0DA Build/TP1A.220624.014; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/122.0.6261.120 Mobile Safari/537.36 Phantom/android/24.4.0.15916",
+        "trafficClass": "bot",
+        "agentName": null
+      },
+      {
+        "sourceLine": 735,
+        "userAgent": "Mozilla/5.0 (compatible; Yahoo! Slurp)",
+        "trafficClass": "bot",
+        "agentName": null
+      },
+      {
+        "sourceLine": 740,
+        "userAgent": "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; Amzn-User/0.1) Chrome/119.0.6045.214 Safari/537.36",
+        "trafficClass": "ai",
+        "agentName": "Amzn-User"
+      }
+    ]
+  },
+  "limits": [
+    "JS regex replay is not PHP/PCRE or Go/Python runtime acceptance.",
+    "Fixture disagreements are not field false-positive rates.",
+    "Most OSS comparisons have shared upstream inputs and are not independent validation.",
+    "No runtime performance benchmark or deployed acceptance was performed.",
+    "Every declared client name remains spoofable without independent evidence; unsigned is not unidentified."
+  ]
+}

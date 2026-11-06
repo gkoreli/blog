@@ -3,80 +3,21 @@ import type { ReaderKind, TrafficClass, ReferrerState } from './contracts.js';
 import { isArchiverAsn, isHostingAsn, networkEvidence } from './networks.js';
 import { analyzeTraffic, type ClientDeclarations } from './classify.js';
 import type { WebBotAuthResult } from './webbotauth.js';
+import { claimsFetchMetadataFromProducts, userAgentProducts } from './user-agent-products.js';
+import { CLIENT_REGISTRY, clientReaderKind } from './client-registry.js';
 
 export { READER_KINDS } from './contracts.js';
 export type { ReaderKind } from './contracts.js';
 
-export const ON_DEMAND_FETCHERS = [
-  'Shap-User',
-  'ExaUser',
-  'ChatGPT-User',
-  'Claude-User',
-  'Claude-Agent',
-  'Perplexity-User',
-  'Meta-ExternalFetcher',
-  'MistralAI-User',
-  'DuckAssistBot',
-  'Amzn-User',
-  'Google-Agent',
-  'Google-GeminiNotebook',
-] as const;
-
-export const AI_SEARCH_CRAWLERS = [
-  'ShapBot',
-  'ExaSearchBot',
-  'OAI-SearchBot',
-  'Claude-SearchBot',
-  'PerplexityBot',
-  'MistralAI-Index',
-  'Amzn-SearchBot',
-  'Meta-WebIndexer',
-  'Applebot',
-] as const;
-
-/** Broad declared AI-related crawling, not a per-request training conclusion. */
-export const AI_CRAWLERS = [
-  'GPTBot',
-  'ClaudeBot',
-  'MistralAI-Training',
-  'Meta-ExternalAgent',
-  'Amazonbot',
-  'CCBot',
-  'Google-CloudVertexBot',
-  'Bytespider',
-  'PetalBot',
-  'Cohere-AI',
-] as const;
-
-export const SEARCH_CRAWLERS = [
-  'Googlebot',
-  'Bingbot',
-  'DuckDuckBot',
-  'YandexBot',
-  'Baiduspider',
-] as const;
-
-export const SEO_CRAWLERS = ['AhrefsBot', 'AhrefsSiteAudit'] as const;
-
-export const PREVIEW_OR_FEED_AGENTS = [
-  'FacebookBot',
-  'LinkedInBot',
-  'Slackbot-LinkExpanding',
-  'Slack-ImgProxy',
-] as const;
-
-export const HEADLESS_BROWSERS = [
-  'HeadlessChrome',
-  'Cypress',
-  'Lightpanda',
-] as const;
-
-const onDemandFetchers: ReadonlySet<string> = new Set(ON_DEMAND_FETCHERS);
-const aiSearchCrawlers: ReadonlySet<string> = new Set(AI_SEARCH_CRAWLERS);
-const aiCrawlers: ReadonlySet<string> = new Set(AI_CRAWLERS);
-const searchCrawlers: ReadonlySet<string> = new Set(SEARCH_CRAWLERS);
-const seoCrawlers: ReadonlySet<string> = new Set(SEO_CRAWLERS);
-const previewOrFeedAgents: ReadonlySet<string> = new Set(PREVIEW_OR_FEED_AGENTS);
+// Compatibility exports derive from the current registry; historical profiles
+// and stored classifications remain independent snapshots.
+export const ON_DEMAND_FETCHERS = CLIENT_REGISTRY.filter(client => client.readerKind === 'ai-assistant').map(client => client.name);
+export const AI_SEARCH_CRAWLERS = CLIENT_REGISTRY.filter(client => client.readerKind === 'ai-search').map(client => client.name);
+export const AI_CRAWLERS = CLIENT_REGISTRY.filter(client => client.readerKind === 'ai-crawler').map(client => client.name);
+export const SEARCH_CRAWLERS = CLIENT_REGISTRY.filter(client => client.readerKind === 'search-crawler').map(client => client.name);
+export const SEO_CRAWLERS = CLIENT_REGISTRY.filter(client => client.readerKind === 'seo-crawler').map(client => client.name);
+export const PREVIEW_OR_FEED_AGENTS = CLIENT_REGISTRY.filter(client => client.readerKind === 'preview-or-feed').map(client => client.name);
+export const HEADLESS_BROWSERS = CLIENT_REGISTRY.filter(client => client.readerKind === 'headless-browser').map(client => client.name);
 const headlessBrowsers: ReadonlySet<string> = new Set(HEADLESS_BROWSERS);
 
 export interface ReaderKindFacts {
@@ -110,35 +51,12 @@ export interface ReaderKindResult {
  * human operation. Missing headers now abstain instead of proving automation.
  */
 export function claimsFetchMetadataBrowser(userAgent: string): boolean {
-  const chromium = /\bChrome\/(\d+)/.exec(userAgent);
-  if (chromium) return Number(chromium[1]) >= 76;
-  const firefox = /\bFirefox\/(\d+)/.exec(userAgent);
-  if (firefox) return Number(firefox[1]) >= 90;
-  const ios = /\bOS (\d+)_(\d+)/.exec(userAgent);
-  if (ios && /\bAppleWebKit\//.test(userAgent)) {
-    const major = Number(ios[1]);
-    const minor = Number(ios[2]);
-    return major > 16 || (major === 16 && minor >= 4);
-  }
-  const safari = /\bVersion\/(\d+)\.(\d+)[^ ]* (?:Mobile\/\S+ )?Safari\//.exec(userAgent);
-  if (safari) {
-    const major = Number(safari[1]);
-    const minor = Number(safari[2]);
-    return major > 16 || (major === 16 && minor >= 4);
-  }
-  return false;
+  return claimsFetchMetadataFromProducts(userAgent, userAgentProducts(userAgent));
 }
 
 /** The reader kind a named User-Agent rule maps to, for filter validation. */
 export function agentReaderKind(agentName: string): ReaderKind {
-  if (onDemandFetchers.has(agentName)) return 'ai-assistant';
-  if (aiSearchCrawlers.has(agentName)) return 'ai-search';
-  if (aiCrawlers.has(agentName)) return 'ai-crawler';
-  if (searchCrawlers.has(agentName)) return 'search-crawler';
-  if (seoCrawlers.has(agentName)) return 'seo-crawler';
-  if (previewOrFeedAgents.has(agentName)) return 'preview-or-feed';
-  if (headlessBrowsers.has(agentName)) return 'headless-browser';
-  return 'other-bot';
+  return clientReaderKind(agentName) ?? 'other-bot';
 }
 
 function unsignedReaderKind(facts: ReaderKindFacts): ReaderKindResult {
@@ -151,23 +69,11 @@ function unsignedReaderKind(facts: ReaderKindFacts): ReaderKindResult {
       ? { kind: 'unresolved', reason: 'multiple-client-declarations' }
       : { kind: onlyCategory, reason: 'multiple-declarations-same-category' };
   }
-  if (agentName !== null && onDemandFetchers.has(agentName)) {
-    return { kind: 'ai-assistant', reason: agentName };
-  }
-  if (agentName !== null && aiSearchCrawlers.has(agentName)) {
-    return { kind: 'ai-search', reason: agentName };
-  }
-  if (agentName !== null && aiCrawlers.has(agentName)) {
-    return { kind: 'ai-crawler', reason: agentName };
-  }
-  if (agentName !== null && searchCrawlers.has(agentName)) {
-    return { kind: 'search-crawler', reason: agentName };
-  }
-  if (agentName !== null && seoCrawlers.has(agentName)) {
-    return { kind: 'seo-crawler', reason: agentName };
-  }
-  if (agentName !== null && previewOrFeedAgents.has(agentName)) {
-    return { kind: 'preview-or-feed', reason: agentName };
+  // The declaration registry owns named roles, including HTTP software claims.
+  // Browser-shaped headers or a hosting ASN cannot replace that declared role.
+  if (agentName !== null) {
+    const namedKind = clientReaderKind(agentName);
+    if (namedKind !== null) return { kind: namedKind, reason: agentName };
   }
 
   const headlessName = agentName !== null && headlessBrowsers.has(agentName)

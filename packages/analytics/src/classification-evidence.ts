@@ -4,12 +4,16 @@ import { networkEvidence, type NetworkEvidence } from './networks.js';
 import { agentReaderKind, type ReaderKindFacts } from './readerkind.js';
 import { isReaderKind, type ReaderKind } from './contracts.js';
 import { CLASSIFIER_VERSION } from './versions.js';
+import { encodeMatchedProducts, type EncodedMatchedProducts } from './retained-client-products.js';
+export { retainedMatchedProducts } from './retained-client-products.js';
+
+export interface PersistedDeclarations extends Pick<ClientDeclarations, 'status' | 'candidates' | 'browserFamily'>, EncodedMatchedProducts {}
 
 /** Closed derived facts; no raw UA, IP, free-text product or arbitrary URL. */
 export interface ClassificationEvidence {
-  version: '2026-10-29.2';
+  version: '2026-11-06.1';
   classifierProfile: string;
-  declarations: ClientDeclarations;
+  declarations: PersistedDeclarations;
   /** Fixed bit assignments below; names and matched product aliases remain complete. */
   declaredCategoryBits: number;
   fetchMetadataBits: number;
@@ -46,11 +50,12 @@ export function retainedDeclaredCategories(value: unknown): ReaderKind[] | null 
   if (!record(value)) return null;
   if (value.version === '2026-10-27.2') {
     const kinds = value.declaredCategories;
-    if (!Array.isArray(kinds) || !kinds.every((kind: unknown): kind is ReaderKind => typeof kind === 'string' && isReaderKind(kind))
-      || new Set(kinds).size !== kinds.length) return null;
-    return [...kinds].sort();
+    if (!Array.isArray(kinds) || new Set(kinds).size !== kinds.length) return null;
+    const dense = Array.from(kinds);
+    if (!dense.every((kind: unknown): kind is ReaderKind => typeof kind === 'string' && isReaderKind(kind))) return null;
+    return dense.sort();
   }
-  if (value.version !== '2026-10-29.1' && value.version !== '2026-10-29.2') return null;
+  if (value.version !== '2026-10-29.1' && value.version !== '2026-10-29.2' && value.version !== '2026-11-06.1') return null;
   const bits = value.declaredCategoryBits;
   if (typeof bits !== 'number' || !Number.isSafeInteger(bits) || bits < 0 || bits > ALL_CATEGORY_BITS || (bits & ALL_CATEGORY_BITS) !== bits) return null;
   return Object.entries(CATEGORY_BITS).flatMap(([kind, bit]) => isReaderKind(kind) && (bits & bit) !== 0 ? [kind] : []).sort();
@@ -60,7 +65,9 @@ export function classificationEvidence(facts: ReaderKindFacts, declarations: Cli
   const userState = fetchMetadataFields(facts.fetchMetadataBits)?.states[3];
   const declaredCategories = [...new Set(declarations.candidates.map(agentReaderKind))].sort();
   return {
-    version: '2026-10-29.2', classifierProfile: CLASSIFIER_VERSION, declarations,
+    version: '2026-11-06.1', classifierProfile: CLASSIFIER_VERSION,
+    declarations: { status: declarations.status, candidates: [...declarations.candidates], browserFamily: declarations.browserFamily,
+      ...encodeMatchedProducts(declarations.matchedProducts) },
     fetchMetadataBits: facts.fetchMetadataBits ?? 0,
     declaredCategoryBits: declaredCategories.reduce((bits, kind) => bits | CATEGORY_BITS[kind], 0),
     categoryAgreement: declarations.status === 'none' ? 'no-match' : declarations.status === 'single' ? 'single-match'
