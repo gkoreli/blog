@@ -1,0 +1,109 @@
+{
+  "checkedAt": "2026-11-06T05:46:07.179Z",
+  "localDate": "2026-11-05 America/Los_Angeles",
+  "configuration": {
+    "accountScope": "Verified gkoreli.com domain and exact existing provider controls in signed-in Resend account",
+    "existingWebhooksBefore": 0,
+    "endpoint": "https://gkoreli.com/api/webhooks/resend",
+    "events": [
+      "email.bounced",
+      "email.complained"
+    ],
+    "enabled": true,
+    "signingSecretBindingPresent": true,
+    "otherFourRequiredBindingsPreserved": true,
+    "sendingKeyRotated": false,
+    "broaderApiCredentialCreated": false
+  },
+  "activation": {
+    "workerVersion": "8a43b7c0-c675-4372-b29c-cfc5888729de",
+    "allocationPercent": 100,
+    "activatedAt": "2026-11-06T05:40:45.898807Z",
+    "sourceChange": false,
+    "webhookSourceSha256": "ff464080e87eaab5c461e50968b9ee2bad409125f1af7aef2f00938d24bb41b7",
+    "webhookSourceLastCommit": "86dad937e8d57bbe66085fcf2687272203d93506"
+  },
+  "native": {
+    "checkedAt": "2026-11-06T05:42:27.942Z",
+    "actualWebhookHandler": true,
+    "nativeWorkerdD1": true,
+    "unsignedRejected": true,
+    "signedBounce": true,
+    "signedComplaint": true,
+    "sqlPreflightSeedReadbackCleanup": true,
+    "wrongSourceCleanupRejected": true,
+    "ownedFixtureCleanup": true
+  },
+  "live": {
+    "unsignedRequestStatus": 401,
+    "providerNativeInertControls": 2,
+    "realRecipientEmailsSent": 0,
+    "callbacks": [
+      {
+        "event": "email.bounced",
+        "httpStatus": 200,
+        "attempts": 1,
+        "exactProviderPayloadMatched": true,
+        "result": "bounced",
+        "suppressionReason": "bounce",
+        "confirmationHashCleared": true
+      },
+      {
+        "event": "email.complained",
+        "httpStatus": 200,
+        "attempts": 1,
+        "exactProviderPayloadMatched": true,
+        "result": "unsubscribed",
+        "suppressionReason": "complaint",
+        "confirmationHashCleared": true
+      }
+    ],
+    "ownedPendingFixturesCreated": 2,
+    "ownedFixturesDeletedWithExactGuards": 2,
+    "finalTargetAbsenceConfirmed": true
+  },
+  "sql": {
+    "statements": [
+      {
+        "name": "preflight",
+        "rowsRead": 2,
+        "rowsWritten": 0,
+        "changes": 0
+      },
+      {
+        "name": "seed",
+        "rowsRead": 8,
+        "rowsWritten": 14,
+        "changes": 2
+      },
+      {
+        "name": "readback",
+        "rowsRead": 4,
+        "rowsWritten": 0,
+        "changes": 0
+      },
+      {
+        "name": "cleanup",
+        "rowsRead": 2,
+        "rowsWritten": 2,
+        "changes": 2
+      },
+      {
+        "name": "absence",
+        "rowsRead": 2,
+        "rowsWritten": 0,
+        "changes": 0
+      }
+    ],
+    "rowsRead": 18,
+    "rowsWritten": 16,
+    "applicationCallbackCosts": "Additional; not metered by diagnostic CLI receipts"
+  },
+  "limits": [
+    "Native provider test addresses simulate events; this is not a report of a real subscriber bouncing or complaining.",
+    "This setup acceptance is separate from the November 5 16:33 UTC signup/Inbox/owner-activation cycle.",
+    "No new real signup, reader send, historical event backfill, population delivery rate or universal callback guarantee is established.",
+    "Provider message/event identifiers, signing secret, fixture tokens and raw captures remain outside Git.",
+    "Earlier wrong-team endpoint remains disabled at its last observation; it is not reused for this connection."
+  ]
+}
