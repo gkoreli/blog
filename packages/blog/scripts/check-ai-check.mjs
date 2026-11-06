@@ -4,10 +4,14 @@ import { readFileSync } from 'node:fs';
 import { dirname } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { build } from 'esbuild';
+import { validateOpenApiValue } from '../test/fixtures/validate-openapi.mjs';
+import { RETAINED_CLIENT_PRODUCTS_20261106, retainedMatchedProducts, encodeMatchedProducts } from '../../analytics/src/retained-client-products.ts';
 
 const require = createRequire(new URL('../../../package.json', import.meta.url));
 const { Miniflare, Log, LogLevel } = await import(pathToFileURL(require.resolve('miniflare', { paths: [dirname(require.resolve('wrangler/package.json'))] })));
 const entry = fileURLToPath(new URL('../src/worker/ai-check.ts', import.meta.url));
+const assessmentEntry = fileURLToPath(new URL('../../analytics/src/request-assessment.ts', import.meta.url));
+const vendorEntry = fileURLToPath(new URL('../../analytics/src/vendor-ip.ts', import.meta.url));
 const quotaEntry = fileURLToPath(new URL('../src/worker/ai-check-quota.ts', import.meta.url));
 const fixture = {
   version: '2026-11-06.1', checkedAt: '2026-11-06T12:00:00.000Z', target: 'https://public.site/article', complete: true,
@@ -15,6 +19,8 @@ const fixture = {
   robots: { state: 'missing', groups: 0, rules: 0, sitemaps: [], bots: [] }, discovery: { llms: 'missing', llmsLinks: 0, sitemap: 'missing', markdown: 'not-negotiated' }, findings: [], limits: ['Bounded fixture'],
 };
 const bundle = await build({ stdin: { contents: `import {handleAiCheck} from ${JSON.stringify(entry)};
+import {assessRequest} from ${JSON.stringify(assessmentEntry)};
+import {verifyVendorIp} from ${JSON.stringify(vendorEntry)};
 import {quotaCallerKey,admitCheck,d1QuotaStore} from ${JSON.stringify(quotaEntry)};
 const fixture=${JSON.stringify(fixture)};
 export default {async fetch(request,env){
@@ -33,7 +39,9 @@ export default {async fetch(request,env){
     AI_CHECK_RATE_LIMITER:{limit:async()=>({success:headers.get('X-Fixture-Burst')!=='deny'})},
     AI_CHECK_GLOBAL_LIMITER:{limit:async()=>({success:true})},
     ASSETS:{fetch:async()=>new Response('<!doctype html><html><main><h1>AI site check</h1><div id="ai-check-server-result"></div></main></html>',{headers:{'Content-Type':'text/html'}})},
-  },{audit:async target=>({...fixture,target}),now:()=>new Date(day+'T12:00:00Z')});
+  },{audit:async target=>({...fixture,target}),
+    // Explicit missing-edge-address fixture: actual parser/signature, no vendor feed I/O.
+    requestAssessment:input=>assessRequest(input,{verifyNetwork:(_request,names)=>verifyVendorIp(new Request(input.url),names)}),now:()=>new Date(day+'T12:00:00Z')});
 }};`, resolveDir: dirname(entry) }, bundle: true, format: 'esm', platform: 'browser', write: false });
 let outbound = 0;
 const runtime = new Miniflare({ modules: true, script: bundle.outputFiles[0].text, compatibilityDate: '2026-03-06', compatibilityFlags: ['global_fetch_strictly_public'],
@@ -103,11 +111,55 @@ try {
   assert.doesNotMatch(JSON.stringify(requestEvidence), /private-secret|example.invalid|208\.67\.222\.222/);
   const apiSchema = await visit('/api/ai-check/schema', { method: 'GET', body: undefined });
   assert.equal(apiSchema.status, 200);
-  assert.equal((await apiSchema.json()).openapi, '3.1.0');
+  const contract = await apiSchema.json();
+  assert.equal(contract.openapi, '3.1.0');
+  const responseSchema = contract.paths['/api/request-check'].get.responses['200'].content['application/json'].schema;
+  validateOpenApiValue(contract, responseSchema, requestEvidence);
+  assert.equal(requestEvidence.request.version, '2026-11-06.2');
+  const catalogueResponse = await visit('/api/request-check', { method: 'GET', body: undefined, headers: {
+    'User-Agent': RETAINED_CLIENT_PRODUCTS_20261106.map(product => `${product}/1.0`).join(' '),
+  } }, '208.67.222.222');
+  assert.equal(catalogueResponse.status, 200);
+  const catalogue = await catalogueResponse.json();
+  validateOpenApiValue(contract, responseSchema, catalogue);
+  assert.deepEqual(retainedMatchedProducts(catalogue.request.evidence), [...RETAINED_CLIENT_PRODUCTS_20261106].sort());
+  assert.equal(catalogue.request.evidence.declarations.matchedProductBits, '3ffffffffffffffffff');
+  // Zero, every individual bit and full budget agree between the public schema
+  // and the independently frozen decoder; no live registry order is inferred.
+  for (const products of [[], ...RETAINED_CLIENT_PRODUCTS_20261106.map(product => [product])]) {
+    const encoded = structuredClone(catalogue);
+    Object.assign(encoded.request.evidence.declarations, encodeMatchedProducts(products));
+    validateOpenApiValue(contract, responseSchema, encoded);
+    assert.deepEqual(retainedMatchedProducts(encoded.request.evidence), products);
+  }
+  const invalidDeclarations = [
+    declarations => { declarations.matchedProducts = []; },
+    declarations => { delete declarations.productProfile; },
+    declarations => { delete declarations.matchedProductBits; },
+    declarations => { declarations.productProfile = 'future'; },
+    declarations => { declarations.matchedProductBits = '4000000000000000000'; },
+    declarations => { declarations.matchedProductBits = '00'; },
+    declarations => { declarations.matchedProductBits = 'a'.repeat(20); },
+    declarations => { declarations.matchedProductBits = 'A'; },
+    declarations => { declarations.unknown = true; },
+  ];
+  for (const mutate of invalidDeclarations) {
+    const invalid = structuredClone(catalogue);
+    mutate(invalid.request.evidence.declarations);
+    assert.throws(() => validateOpenApiValue(contract, responseSchema, invalid));
+  }
+  for (const version of ['2026-10-29.2', 'future']) {
+    const invalid = structuredClone(catalogue);
+    invalid.request.evidence.version = version;
+    assert.throws(() => validateOpenApiValue(contract, responseSchema, invalid));
+  }
+  const obsoleteEnvelope = structuredClone(catalogue);
+  obsoleteEnvelope.request.version = '2026-11-06.1';
+  assert.throws(() => validateOpenApiValue(contract, responseSchema, obsoleteEnvelope));
   const stored = (await db.prepare('SELECT * FROM ai_check_daily_quota').all()).results;
   assert.ok(stored.every(row => /^[a-f0-9]{64}$/.test(row.caller_key) && row.used <= 10));
   assert.equal(stored.length, 6); // Native, caller/two days, independent caller, no-JS, request assessment.
   assert.doesNotMatch(JSON.stringify(stored), /public.site|8\.8\.8\.8|private-test|private-secret/);
   assert.equal(outbound, 0);
-  console.log(JSON.stringify({ result: 'passed', httpRequests: count, nativeConcurrentAdmissions: 10, rejectedNativeAdmissions: 20, quotaRows: stored.length, externalRequests: outbound, noJavaScriptHtml: 'passed', escapedRemoteHtml: 'passed', inputAndOriginBoundaries: 'passed', requestEvidence: 'passed' }));
+  console.log(JSON.stringify({ result: 'passed', httpRequests: count, nativeConcurrentAdmissions: 10, rejectedNativeAdmissions: 20, quotaRows: stored.length, externalRequests: outbound, noJavaScriptHtml: 'passed', escapedRemoteHtml: 'passed', inputAndOriginBoundaries: 'passed', requestEvidence: 'passed', actualResponsesMatchOpenApi: 2, compactAliasRoundtrip: RETAINED_CLIENT_PRODUCTS_20261106.length, additionalCodecSchemaCases: 75, malformedSchemaRejections: 12, networkFixture: 'missing-edge-address'  }));
 } finally { await runtime.dispose(); }

@@ -11,7 +11,7 @@ import type { WebBotAuthResult } from './webbotauth.js';
 
 export { trustedEdgeAddress } from './vendor-ip.js';
 
-export const REQUEST_ASSESSMENT_VERSION = '2026-11-06.1';
+export const REQUEST_ASSESSMENT_VERSION = '2026-11-06.2';
 
 export interface RequestAssessmentDependencies {
   verifySignature?: (request: Request) => Promise<WebBotAuthResult>;
