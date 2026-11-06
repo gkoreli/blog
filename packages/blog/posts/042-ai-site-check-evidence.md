@@ -2,6 +2,7 @@
 title: "Check What AI Crawlers Can Reach on Your Site"
 seoTitle: "AI Site Check: Robots Rules, Page Content and Request Evidence"
 date: "2026-11-05"
+lastModified: "2026-11-06"
 description: "A free site checker and API for robots rules, page content, indexing controls and machine-readable links—with the evidence and limits behind each finding."
 section: "engineering"
 tags: ["ai-agents", "analytics", "http", "robots-txt", "cloudflare-workers"]
@@ -33,6 +34,22 @@ The report brings several questions together:
 This is a bounded inspection. It does not crawl the entire site, execute JavaScript, log in, call paid AI providers or ask a model whether it would cite the page. A failed or incomplete check stays visible. A timeout does not establish a robots prohibition.
 
 URLs with credentials, query strings, fragments, IP literals and custom ports are outside this tool's input contract. If the page you need depends on one of those features, use a controlled test appropriate to that route rather than substituting a different page and treating its result as equivalent.
+
+## A score you can inspect
+
+The report now leads with a **Technical access score** and its complete point ledger. It is a heuristic for one public page: 40 points for successful HTML delivery, 40 for text and orientation in that source, and 20 for observing no general indexing restriction. A title and heading are useful orientation checks in this rubric, not proof that an assistant understands the page.
+
+Every point is earned, lost or unknown. If a response fails before it can be inspected, the missing evidence does not become a pass. For example, 70 earned points and 20 unknown points produce a 70–90 range, with 80% of the rubric assessed. That is an example calculation, not a measured site result. Open the breakdown to see each rule, its weight, evidence and next step.
+
+The indexing component describes a public, discoverable-page objective. An intentional `noindex` may be the right choice for your page. Training restrictions do not cost points, and missing Markdown, `llms.txt` or optional JSON-LD does not reduce the score. The score cannot predict an AI citation, validate rendered content or authenticate a provider.
+
+The design borrows transparent inputs and separate diagnostics from [Lighthouse](https://developer.chrome.com/docs/lighthouse/performance/performance-scoring), contextual rule severity from [webhint](https://webhint.io/docs/user-guide/concepts/hints/), and component drilldowns from [SSL Labs](https://www.ssllabs.com/ssltest/). Their scoring models apply to their own measured domains; these weights are our published engineering judgment. [The product research](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/ai-site-audit/02-tools-product-exploration.md) records what was inspected and which ideas were rejected.
+
+## More value without another API call
+
+The [tools directory](/tools) brings the page checker together with a [robots playground](/tools/robots), [saved-report comparison](/tools/compare) and the incoming-request inspector. The playground evaluates pasted rules against a product token and path, showing the selected group and rule. The comparison reads two downloaded reports locally and exposes changed checks, policies and responses, including changes that leave the total unchanged. Mismatched targets or methods stay explicit.
+
+Those two local tools do not submit their input or spend the hosted API allowance. A [dated example report](/ai-check/example) also lets you inspect the result before using a check. The report's source preview shows a bounded excerpt and heading outline from received HTML; it does not execute JavaScript or apply the page's CSS.
 
 ## Read robots rules as path policy
 

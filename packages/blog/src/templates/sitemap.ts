@@ -22,6 +22,9 @@ ${url('/engineering')}
 ${url('/oss-radar')}
 ${postUrls.join('\n')}
 ${url('/about')}
+${url('/tools')}
+${url('/tools/robots')}
+${url('/tools/compare')}
 ${url('/ai-check')}
 ${url('/privacy')}
 ${url('/license')}

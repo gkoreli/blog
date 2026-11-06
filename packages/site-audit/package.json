@@ -8,7 +8,8 @@
     ".": "./src/index.ts",
     "./contracts": "./src/contracts.ts",
     "./target": "./src/target.ts",
-    "./report-validation": "./src/report-validation.ts"
+    "./report-validation": "./src/report-validation.ts",
+    "./product": "./src/product.ts"
   },
   "scripts": {
     "typecheck": "tsc --noEmit",

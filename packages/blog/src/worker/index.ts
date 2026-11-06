@@ -66,7 +66,7 @@ function contentTypeIs(response: Response, mediaType: string): boolean {
 }
 
 function pagePath(pathname: string): string | null {
-  if (pathname === '/') return null;
+  if (pathname === '/') return '/';
   const normalized = pathname.replace(/\/+$/, '');
   const lastSegment = normalized.split('/').at(-1) ?? '';
   return lastSegment.includes('.') ? null : normalized;
@@ -75,6 +75,7 @@ function pagePath(pathname: string): string | null {
 function representationPath(pathname: string, representation: NegotiatedRepresentation): string | null {
   const path = pagePath(pathname);
   if (path === null || representation === 'html') return null;
+  if (path === '/') return representation === 'markdown' ? '/index.md' : null;
   if (representation === 'markdown') return `${path}.md`;
   if (representation === 'csl-json') return `${path}.csl.json`;
   return `${path}.bib`;
@@ -108,7 +109,7 @@ function withPageHeaders(
     ? normalizedPagePath.slice(1)
     : undefined;
   headers.set('Link', typedLinkHeaderValue({
-    ...(options.hasMarkdown && normalizedPagePath ? { markdownPath: `${normalizedPagePath}.md` } : {}),
+    ...(options.hasMarkdown && normalizedPagePath ? { markdownPath: normalizedPagePath === '/' ? '/index.md' : `${normalizedPagePath}.md` } : {}),
     ...(postSlug ? { postSlug } : {}),
   }));
   if (options.hasMarkdown) addVaryAccept(headers);
@@ -150,8 +151,8 @@ async function negotiatedAsset(
     statusText: asset.statusText,
     headers,
   });
-  const isPost = representation !== 'markdown'
-    || await assetExists(request, env, `${normalizedPagePath}.csl.json`);
+  const isPost = normalizedPagePath !== '/' && (representation !== 'markdown'
+    || await assetExists(request, env, `${normalizedPagePath}.csl.json`));
   return {
     response: withPageHeaders(typedResponse, pathname, {
       hasMarkdown: true,
@@ -184,8 +185,8 @@ async function serveContent(request: Request, env: Env): Promise<ServedResponse>
       };
     }
     const [hasMarkdown, isPost] = await Promise.all([
-      assetExists(request, env, `${path}.md`),
-      assetExists(request, env, `${path}.csl.json`),
+      assetExists(request, env, path === '/' ? '/index.md' : `${path}.md`),
+      path === '/' ? false : assetExists(request, env, `${path}.csl.json`),
     ]);
     return {
       response: withPageHeaders(response, pathname, { hasMarkdown, isPost }),
@@ -194,8 +195,8 @@ async function serveContent(request: Request, env: Env): Promise<ServedResponse>
   }
 
   if (response.ok && pathname.endsWith('.md') && contentTypeIs(response, 'text/markdown')) {
-    const originalPagePath = pathname.slice(0, -'.md'.length);
-    const isPost = await assetExists(request, env, `${originalPagePath}.csl.json`);
+    const originalPagePath = pathname === '/index.md' ? '/' : pathname.slice(0, -'.md'.length);
+    const isPost = originalPagePath === '/' ? false : await assetExists(request, env, `${originalPagePath}.csl.json`);
     return {
       response: withPageHeaders(response, originalPagePath, { hasMarkdown: true, isPost }),
       representation: null,
@@ -211,7 +212,7 @@ export default {
     const { method } = request;
 
     if (pathname === '/api/ai-check' || pathname === '/api/ai-check/schema' || pathname === '/api/request-check'
-      || pathname === '/ai-check' && method === 'POST') return handleAiCheck(request, env);
+      || pathname === '/ai-check/example' || pathname === '/ai-check' && method === 'POST') return handleAiCheck(request, env);
 
     if (pathname === '/api/stats' && method === 'GET') {
       return cachedStats(request, env);

@@ -33,6 +33,9 @@ ${postLinks}
 
 ## API
 
+- [Tools](${SITE}/tools): Free engineering tools: page access checks, local robots policy playground, local report comparison and request evidence
+- [Robots Playground](${SITE}/tools/robots): Evaluate pasted robots.txt against a client token and path locally, without using a daily API check
+- [Report Comparison](${SITE}/tools/compare): Compare saved JSON access reports locally without uploading files or consuming a check
 - [AI Access Check](${SITE}/ai-check): Inspect a public HTTPS page’s crawler policies, delivered HTML, indexing controls and machine-readable links; free daily allowance
 - [AI Access API](${SITE}/api/ai-check/schema): JSON request/response contract and shared daily quota
 - [Request Evidence](${SITE}/api/request-check): Assess this incoming request’s declarations, network and verification evidence; shares the daily allowance

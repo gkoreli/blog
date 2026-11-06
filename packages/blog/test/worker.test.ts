@@ -16,6 +16,8 @@ function contentType(pathname: string): string {
 
 function harness() {
   const files = new Map([
+    ['', HTML],
+    ['/index.md', MARKDOWN],
     ['/post', HTML],
     ['/post.md', MARKDOWN],
     ['/post.csl.json', CSL],
@@ -122,4 +124,29 @@ test('Worker negotiates CSL-JSON and does not observe direct Markdown assets', a
   assert.equal(directMarkdown.headers.get('Content-Type'), 'text/markdown; charset=utf-8');
   assert.match(directMarkdown.headers.get('Link') ?? '', /<\/post\.md>; rel="alternate"/);
   assert.equal(markdownHarness.pending.length, 0);
+});
+
+
+test('homepage negotiates Markdown for GET/HEAD and advertises the real root twin without post citations', async () => {
+  for (const method of ['GET', 'HEAD']) {
+    const { ctx, env, pending } = harness();
+    const response = await worker.fetch(postRequest('/', { method, headers: { Accept: 'text/markdown', 'Sec-Purpose': 'prefetch' } }), env, ctx);
+    assert.equal(response.status, 200);
+    assert.match(response.headers.get('Content-Type') ?? '', /^text\/markdown/);
+    assert.equal(response.headers.get('Content-Location'), '/index.md');
+    assert.equal(response.headers.get('Vary'), 'Accept');
+    assert.match(response.headers.get('Link') ?? '', /<\/index.md>; rel="alternate"/);
+    assert.doesNotMatch(response.headers.get('Link') ?? '', /csl\.json|posts\.json/);
+    assert.equal(await response.text(), method === 'HEAD' ? '' : MARKDOWN);
+    await Promise.all(pending);
+  }
+  const { ctx, env, pending } = harness();
+  const html = await worker.fetch(postRequest('/', { headers: { Accept: 'text/html', 'Sec-Purpose': 'prefetch' } }), env, ctx);
+  assert.match(html.headers.get('Content-Type') ?? '', /^text\/html/);
+  assert.match(html.headers.get('Link') ?? '', /<\/index.md>; rel="alternate"/);
+  assert.equal(html.headers.get('Vary'), 'Accept');
+  const direct = await worker.fetch(postRequest('/index.md'), env, ctx);
+  assert.match(direct.headers.get('Link') ?? '', /<\/index.md>; rel="alternate"/);
+  assert.doesNotMatch(direct.headers.get('Link') ?? '', /csl\.json|posts\.json/);
+  await Promise.all(pending);
 });

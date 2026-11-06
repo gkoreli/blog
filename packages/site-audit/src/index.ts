@@ -1,3 +1,4 @@
+import { deriveTechnicalAssessment } from './technical-assessment.js';
 import { SITE_AUDIT_VERSION, type SiteAuditReport, type BotRuleAssessment, type Finding } from './contracts.js';
 import { BOT_PROFILES } from './bots.js';
 import { parseRobots, evaluateRobots } from './robots.js';
@@ -90,7 +91,7 @@ export async function analyzeSite(input: string, dependencies: AuditDependencies
   for (const probe of probes) {
     if (probe.evidence.status !== pageResource.evidence.status || probe.evidence.outcome !== pageResource.evidence.outcome) finding(`probe-${probe.evidence.probeAgent}`, 'review', `${probe.evidence.probeAgent} declaration received a different outcome`, `Audit client: ${pageResource.evidence.outcome}, HTTP ${pageResource.evidence.status ?? 'unavailable'}; synthetic declaration: ${probe.evidence.outcome}, HTTP ${probe.evidence.status ?? 'unavailable'}.`, 'Inspect edge rules and logs, then test the real provider. These requests originate from this audit and change only the User-Agent declaration; they do not reproduce provider IPs, signatures or browser behavior.');
   }
-  return { version: SITE_AUDIT_VERSION, checkedAt, target: target.href, complete: all.every(received) && document.complete && !bots.some(bot => bot.reason.includes('comparison budget')), resources: all.map(resource => resource.evidence), page,
+  const report: SiteAuditReport = { version: SITE_AUDIT_VERSION, checkedAt, target: target.href, complete: all.every(received) && document.complete && !bots.some(bot => bot.reason.includes('comparison budget')), resources: all.map(resource => resource.evidence), page,
     robots: { state: robotsState, groups: document.groups.length, rules: document.groups.reduce((sum, group) => sum + group.rules.length, 0), sitemaps: document.sitemaps, bots },
     discovery: { llms: llmsPresent ? 'present' : missing(llmsResource) ? 'missing' : 'unavailable', llmsLinks: llmsPresent ? [...(llmsResource.text ?? '').matchAll(/\[[^\]\n]*\]\([^\s)]+\)/g)].length : 0,
       sitemap: sitemapXml ? 'xml-observed' : missing(sitemapResource) ? 'missing' : success(sitemapResource) ? 'unexpected-content' : 'unavailable',
@@ -106,4 +107,5 @@ export async function analyzeSite(input: string, dependencies: AuditDependencies
       'At most 12 target GETs including redirects, three redirects per resource, 512 KiB per response and a 22-second transport deadline. Robots parsing is limited to 10,000 lines/5,000 rules/8,192 characters per line and wildcard comparison to 200,000 steps per token; policy-limit results remain unknown. Partial failures remain visible.',
       'Public HTTPS only. Production safety depends on Cloudflare Workers global_fetch_strictly_public connection-time network filtering, in addition to URL and DNS preflight checks.',
     ] };
+  return { ...report, assessment: deriveTechnicalAssessment(report) };
 }

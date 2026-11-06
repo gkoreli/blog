@@ -26,7 +26,7 @@ export function aboutPage() {
 
   <h2>Tools</h2>
 
-  <p><a href="/ai-check">AI Access Check</a> inspects crawler rules, delivered HTML, indexing controls and machine-readable links for a public page. Inspect the evidence in the browser or use the free daily API allowance.</p>
+  <p>The <a href="/tools">engineering tools</a> include page access checks, a local robots playground and saved-report comparison. <a href="/ai-check">AI Access Check</a> inspects crawler rules, delivered HTML, indexing controls and machine-readable links for a public page. Inspect the evidence in the browser or use the free daily API allowance.</p>
 
   <h2>Explore the site</h2>
 

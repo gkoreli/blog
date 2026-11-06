@@ -1,4 +1,5 @@
 import { SITE_AUDIT_VERSION } from '@gkoreli/site-audit/contracts';
+import { TECHNICAL_ASSESSMENT_PROFILE } from '@gkoreli/site-audit/product';
 import { REQUEST_ASSESSMENT_VERSION } from '@gkoreli/analytics/request-assessment';
 import { RETAINED_CLIENT_PRODUCT_PROFILE } from '@gkoreli/analytics/retained-client-products';
 import { READER_KINDS } from '@gkoreli/analytics/contracts';
@@ -15,6 +16,9 @@ const list = (items: object) => ({ type: 'array', items });
 const choices = (values: readonly string[]) => ({ type: 'string', enum: values });
 function object(properties: Record<string, unknown>, description?: string, required = Object.keys(properties)) {
   return { type: 'object', additionalProperties: false, required, properties, ...(description ? { description } : {}) };
+}
+function optionalObject(properties: Record<string, unknown>, optional: readonly string[], description?: string) {
+  return object(properties, description, Object.keys(properties).filter(key => !optional.includes(key)));
 }
 /** Lower-level analytics evidence evolves under its own retained profile. */
 function profiledEvidence(description: string, properties: Record<string, unknown>, required: string[]) {
@@ -83,25 +87,29 @@ export const aiCheckSchema = {
     Error: object({ error: text, quota: ref('Quota'), schema: { type: 'string', const: '/api/ai-check/schema' } }, 'Closed error message. Quota is included only after daily admission is assessed; schema is an optional contract link.', ['error']),
     SiteCheckResponse: object({ report: ref('SiteAuditReport'), quota: ref('Quota') }),
     RequestCheckResponse: object({ request: ref('RequestAssessment'), quota: ref('Quota') }),
-    SiteAuditReport: object({
+    SiteAuditReport: optionalObject({
       version: { const: SITE_AUDIT_VERSION }, checkedAt: timestamp, target: uri,
       complete: { type: 'boolean', description: 'All planned resources were received and robots parsing/evaluation stayed within policy limits; does not mean every vendor policy is known, HTTP success, provider access or absence of findings.' },
-      resources: list(ref('ResourceEvidence')), page: ref('PageEvidence'), robots: ref('RobotsEvidence'), discovery: ref('DiscoveryEvidence'), findings: list(ref('Finding')), limits: list(text),
-    }),
-    ResourceEvidence: object({
+      resources: list(ref('ResourceEvidence')), page: ref('PageEvidence'), robots: ref('RobotsEvidence'), discovery: ref('DiscoveryEvidence'), findings: list(ref('Finding')), limits: list(text), assessment: ref('TechnicalAssessment'),
+    }, ['assessment'], 'Assessment is an additive derived field; historical reports may omit it. The site observation version remains unchanged; scoring has its own profile.'),
+    ResourceEvidence: optionalObject({
       kind: choices(['page', 'robots', 'llms', 'sitemap', 'markdown', 'probe']), requestedUrl: uri, finalUrl: uri,
       outcome: choices(['received', 'blocked-target', 'dns-error', 'network-error', 'timeout', 'too-large', 'redirect-limit', 'budget-exhausted']),
       status: { type: ['integer', 'null'], minimum: 100, maximum: 599 }, contentType: nullableText,
       bytes: count, elapsedMs: { type: 'number', minimum: 0 }, redirects: count,
       probeAgent: { ...nullableText, description: 'Synthetic User-Agent product used by this checker, or null for ordinary resources. Never provider authentication.' },
-      headers: object({ robots: nullableText, link: nullableText, contentLocation: nullableText, vary: nullableText }, 'Selected bounded response headers: X-Robots-Tag, Link, Content-Location and Vary. Null means no value was captured.'),
-    }),
-    PageEvidence: object({
+      headersOmitted: { ...list(choices(['contentType', 'robots', 'link', 'contentLocation', 'vary'])), uniqueItems: true, description: 'Fields omitted by capture-size policy, rather than observed absent. Historical reports may omit this completeness marker.' },
+      headers: object({ robots: nullableText, link: nullableText, contentLocation: nullableText, vary: nullableText }, 'Selected bounded response headers: X-Robots-Tag, Link, Content-Location and Vary. Null means no value was captured; inspect headersOmitted to distinguish policy omission from absence.'),
+    }, ['headersOmitted']),
+    PageEvidence: optionalObject({
       title: nullableText, description: nullableText, canonical: nullableText, language: nullableText,
       textCharacters: count, headings: count, links: count, scriptElements: count,
       metaRobots: list(object({ agent: text, value: text })), structuredDataTypes: list(text), structuredDataBlocks: count, invalidStructuredDataBlocks: count,
       alternateLinks: list(object({ type: text, href: text })), parseState: choices(['parsed', 'not-html', 'unavailable']),
-    }, 'Observations from initial HTML only. Canonical/alternate href values are untrusted claims. JSON-LD observations do not establish schema validity or rich-result eligibility.'),
+      indexingAssessmentComplete: { type: 'boolean', description: 'Whether the initial HTML indexing metadata was assessed completely within capture bounds. Historical reports may omit it, which is unassessed rather than true.' },
+      textPreview: { type: 'string', maxLength: 1200, description: 'Bounded text from the initial HTML, not browser-rendered or model-specific extraction.' },
+      headingOutline: { ...list(object({ level: { type: 'integer', minimum: 1, maximum: 6 }, text: { type: 'string', maxLength: 160 } })), maxItems: 12 },
+    }, ['indexingAssessmentComplete', 'textPreview', 'headingOutline'], 'Observations from initial HTML only. Canonical/alternate href values are untrusted claims. JSON-LD observations do not establish schema validity or rich-result eligibility.'),
     RobotsEvidence: object({ state: choices(['parsed', 'missing', 'unreachable', 'unavailable']), groups: count, rules: count, sitemaps: list(text), bots: list(ref('BotRuleAssessment')) }),
     BotRuleAssessment: object({
       token: text, provider: text, role: choices(['training-control', 'search', 'assistant', 'other']), source: uri,
@@ -112,6 +120,24 @@ export const aiCheckSchema = {
       sitemap: choices(['xml-observed', 'missing', 'unavailable', 'unexpected-content']), markdown: choices(['negotiated', 'not-negotiated', 'unavailable']),
     }, 'Optional discovery and representation observations. Presence does not prove indexing, ranking, citations or endpoint behavior.'),
     Finding: object({ id: text, severity: choices(['action', 'review', 'info']), title: text, evidence: text, recommendation: text }),
+    TechnicalAssessment: object({
+      profile: { const: TECHNICAL_ASSESSMENT_PROFILE }, label: { const: 'Technical access score' },
+      score: object({ lower: { type: 'integer', minimum: 0, maximum: 100 }, upper: { type: 'integer', minimum: 0, maximum: 100 }, max: { const: 100 }, coveragePercent: { type: 'integer', minimum: 0, maximum: 100 } }, 'Fixed 100 points: earned=lower; unknown=upper−lower; lost=100−upper. Coverage is assessed weighted points (100−unknown), not statistical confidence. Unknown points never shrink the denominator.'),
+      counts: object({ passed: count, failed: count, unknown: count }),
+      components: { ...list(ref('TechnicalComponent')), minItems: 3, maxItems: 3 },
+      optional: list(ref('OptionalCapability')), limits: list(text),
+    }, 'Heuristic public-HTML technical rubric, not calibrated AI-readiness, actual provider access, indexing or citation. Profile 2026-11-06.1 weights: delivery 40 (status30+HTML10), source40 (text20+title10+heading10), general indexing20. Optional formats/files and intentional training blocks deduct no points. Derived values can be recomputed from historical reports; missing completeness flags keep affected checks unknown.'),
+    TechnicalComponent: object({
+      id: choices(['delivery', 'content', 'indexing']), title: text, earned: { type: 'integer', minimum: 0, maximum: 40 }, unknown: { type: 'integer', minimum: 0, maximum: 40 }, max: { enum: [20, 40] }, checks: list(ref('TechnicalCheck')),
+    }, 'Versioned rubric component. Earned, unknown and max are sums of check weights; the three component maxima reconcile to100.'),
+    TechnicalCheck: object({
+      id: choices(['page-status', 'page-html', 'source-text', 'page-title', 'page-heading', 'general-indexing']), title: text,
+      state: choices(['pass', 'fail', 'unknown']), weight: { enum: [10, 20, 30] }, evidence: text, nextStep: text,
+    }, 'Stable check identifier and public weight under the assessment profile. Network/capture failure is unknown, not a silent pass or an invented page defect.'),
+    OptionalCapability: object({
+      id: choices(['llms', 'sitemap', 'markdown', 'structured-data']), title: text,
+      state: choices(['available', 'not-provided', 'not-negotiated', 'http-error', 'unavailable', 'unexpected-content']), evidence: text, nextStep: text,
+    }, 'Informational capability; never changes the fixed score. A successful HTML response to a Markdown request is not-negotiated, distinct from HTTP/network errors.'),
     RequestAssessment: object({
       version: { const: REQUEST_ASSESSMENT_VERSION }, checkedAt: timestamp, provenance: { const: 'incoming-request' },
       classification: object({ trafficClass: choices(['browser', 'bot', 'ai']), readerKind: choices(READER_KINDS), reason: text }),

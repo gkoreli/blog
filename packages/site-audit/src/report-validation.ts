@@ -1,4 +1,5 @@
 import { SITE_AUDIT_VERSION, type SiteAuditReport } from './contracts.js';
+import { isTechnicalAssessment } from './product-validation.js';
 
 const record = (value: unknown): value is Record<string, unknown> => typeof value === 'object' && value !== null && !Array.isArray(value);
 const text = (value: unknown): value is string => typeof value === 'string' && value.length <= 32_768;
@@ -11,10 +12,12 @@ const array = (value: unknown, check: (item: unknown) => boolean, max = 1000): b
 /** Boundary validation for the complete public JSON report, including nested evidence. */
 export function isSiteAuditReport(value: unknown): value is SiteAuditReport {
   if (!record(value) || value['version'] !== SITE_AUDIT_VERSION || !text(value['checkedAt']) || !text(value['target'])
-    || typeof value['complete'] !== 'boolean' || !strings(value['limits'])) return false;
+    || typeof value['complete'] !== 'boolean' || !strings(value['limits'])
+    || (value['assessment'] !== undefined && !isTechnicalAssessment(value['assessment']))) return false;
   const resources = value['resources'];
   if (!array(resources, resource => record(resource)
     && oneOf(resource['kind'], ['page', 'robots', 'llms', 'sitemap', 'markdown', 'probe'])
+    && (resource['headersOmitted'] === undefined || array(resource['headersOmitted'], field => oneOf(field, ['contentType', 'robots', 'link', 'contentLocation', 'vary']), 5))
     && text(resource['requestedUrl']) && text(resource['finalUrl'])
     && oneOf(resource['outcome'], ['received', 'blocked-target', 'dns-error', 'network-error', 'timeout', 'too-large', 'redirect-limit', 'budget-exhausted'])
     && (resource['status'] === null || count(resource['status'])) && optionalText(resource['contentType'])
@@ -28,6 +31,9 @@ export function isSiteAuditReport(value: unknown): value is SiteAuditReport {
     || !count(page['invalidStructuredDataBlocks']) || !oneOf(page['parseState'], ['parsed', 'not-html', 'unavailable'])
     || !array(page['metaRobots'], item => record(item) && text(item['agent']) && text(item['value']))
     || !array(page['alternateLinks'], item => record(item) && text(item['type']) && text(item['href']))) return false;
+  if (page['indexingAssessmentComplete'] !== undefined && typeof page['indexingAssessmentComplete'] !== 'boolean') return false;
+  if (page['textPreview'] !== undefined && (typeof page['textPreview'] !== 'string' || page['textPreview'].length > 1200)) return false;
+  if (page['headingOutline'] !== undefined && !array(page['headingOutline'], heading => record(heading) && typeof heading['level'] === 'number' && [1, 2, 3, 4, 5, 6].includes(heading['level']) && typeof heading['text'] === 'string' && heading['text'].length <= 160, 12)) return false;
   const robots = value['robots'];
   if (!record(robots) || !oneOf(robots['state'], ['parsed', 'missing', 'unreachable', 'unavailable'])
     || !count(robots['groups']) || !count(robots['rules']) || !strings(robots['sitemaps'])

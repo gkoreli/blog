@@ -1,3 +1,4 @@
+import type { TechnicalAssessment } from './product-contracts.js';
 export const SITE_AUDIT_VERSION = '2026-11-06.1';
 
 export type ResourceKind = 'page' | 'robots' | 'llms' | 'sitemap' | 'markdown' | 'probe';
@@ -14,6 +15,8 @@ export interface ResourceEvidence {
   redirects: number;
   /** Synthetic declaration, never a request from this provider. */
   probeAgent: string | null;
+  /** New captures distinguish absent headers from values omitted by size policy. */
+  headersOmitted?: Array<'contentType' | 'robots' | 'link' | 'contentLocation' | 'vary'>;
   headers: { robots: string | null; link: string | null; contentLocation: string | null; vary: string | null };
 }
 export interface BotRuleAssessment {
@@ -39,6 +42,9 @@ export interface PageEvidence {
   canonical: string | null;
   language: string | null;
   textCharacters: number;
+  /** Bounded normalized source text, not rendered or provider-extracted text. */
+  textPreview?: string;
+  headingOutline?: Array<{ level: 1 | 2 | 3 | 4 | 5 | 6; text: string }>;
   headings: number;
   links: number;
   scriptElements: number;
@@ -48,6 +54,8 @@ export interface PageEvidence {
   invalidStructuredDataBlocks: number;
   alternateLinks: Array<{ type: string; href: string }>;
   parseState: 'parsed' | 'not-html' | 'unavailable';
+  /** False for unparsed source or when robots metadata exceeds capture bounds. */
+  indexingAssessmentComplete?: boolean;
 }
 export interface SiteAuditReport {
   version: typeof SITE_AUDIT_VERSION;
@@ -60,4 +68,6 @@ export interface SiteAuditReport {
   discovery: { llms: 'present' | 'missing' | 'unavailable'; llmsLinks: number; sitemap: 'xml-observed' | 'missing' | 'unavailable' | 'unexpected-content'; markdown: 'negotiated' | 'not-negotiated' | 'unavailable' };
   findings: Finding[];
   limits: string[];
+  /** Additive derived product assessment; historical v1 reports may omit it. */
+  assessment?: TechnicalAssessment;
 }

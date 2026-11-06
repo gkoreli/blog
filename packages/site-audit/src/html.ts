@@ -1,8 +1,8 @@
 import type { PageEvidence } from './contracts.js';
 
 export function emptyPage(parseState: PageEvidence['parseState'] = 'unavailable'): PageEvidence {
-  return { title: null, description: null, canonical: null, language: null, textCharacters: 0, headings: 0, links: 0, scriptElements: 0,
-    metaRobots: [], structuredDataTypes: [], structuredDataBlocks: 0, invalidStructuredDataBlocks: 0, alternateLinks: [], parseState };
+  return { title: null, description: null, canonical: null, language: null, textCharacters: 0, textPreview: '', headingOutline: [], headings: 0, links: 0, scriptElements: 0,
+    metaRobots: [], structuredDataTypes: [], structuredDataBlocks: 0, invalidStructuredDataBlocks: 0, alternateLinks: [], parseState, indexingAssessmentComplete: parseState === 'parsed' };
 }
 function decode(value: string): string {
   return value.replace(/&(?:amp|lt|gt|quot|apos|nbsp|#\d{1,7}|#x[0-9a-f]{1,6});/gi, entity => {
@@ -49,11 +49,19 @@ export function inspectHtml(source: string, base: URL): PageEvidence {
   let inTitle = false;
   let title = '';
   let inHead = false;
+  let heading: { level: 1 | 2 | 3 | 4 | 5 | 6; text: string } | null = null;
+  function finishHeading() {
+    if (heading !== null && page.headingOutline !== undefined && page.headingOutline.length < 12) {
+      page.headingOutline.push({ level: heading.level, text: decode(heading.text).replace(/\s+/g, ' ').trim().slice(0, 160) });
+    }
+    heading = null;
+  }
   while (cursor < source.length) {
     const opening = source.indexOf('<', cursor);
     const until = opening === -1 ? source.length : opening;
     const chunk = source.slice(cursor, until);
     if (inTitle) title += chunk;
+    if (heading !== null) heading.text += `${chunk} `;
     if (!inHead) text += `${chunk} `;
     if (opening === -1) break;
     if (source.startsWith('<!--', opening)) {
@@ -77,15 +85,20 @@ export function inspectHtml(source: string, base: URL): PageEvidence {
     const kind = name[2]?.toLowerCase();
     if (kind === 'head') { inHead = !closing; continue; }
     if (kind === 'title') { inTitle = !closing; continue; }
-    if (closing) continue;
+    if (closing) { if (/^h[1-6]$/.test(kind ?? '')) finishHeading(); continue; }
     const attrs = attributes(tag);
     if (kind === 'html') page.language = bounded(attrs.get('lang'), 64);
     if (kind === 'meta') {
       const agent = (attrs.get('name') ?? '').toLowerCase();
       if (agent === 'description' && page.description === null) page.description = bounded(attrs.get('content'));
-      if ((agent === 'robots' || /bot$|-user$/.test(agent)) && page.metaRobots.length < 32) {
-        const value = bounded(attrs.get('content'));
-        if (value !== null) page.metaRobots.push({ agent: agent.slice(0, 100), value });
+      if (agent === 'robots' || /bot$|-user$/.test(agent)) {
+        const original = attrs.get('content');
+        if (page.metaRobots.length >= 32) page.indexingAssessmentComplete = false;
+        else {
+          const value = bounded(original);
+          if (original !== undefined && original.trim().length > 500) page.indexingAssessmentComplete = false;
+          if (value !== null) page.metaRobots.push({ agent: agent.slice(0, 100), value });
+        }
       }
     }
     if (kind === 'link') {
@@ -95,7 +108,12 @@ export function inspectHtml(source: string, base: URL): PageEvidence {
       if (rel.includes('alternate') && href && page.alternateLinks.length < 32) page.alternateLinks.push({ type: (attrs.get('type') ?? '').slice(0, 100), href });
     }
     if (kind === 'a' && attrs.has('href')) page.links++;
-    if (/^h[1-6]$/.test(kind ?? '')) page.headings++;
+    if (/^h[1-6]$/.test(kind ?? '')) {
+      page.headings++;
+      finishHeading();
+      const level = Number(kind?.slice(1));
+      if (level === 1 || level === 2 || level === 3 || level === 4 || level === 5 || level === 6) heading = { level, text: '' };
+    }
     if (kind === 'script' || kind === 'style' || kind === 'template' || kind === 'noscript' || kind === 'svg') {
       const endRaw = lower.indexOf(`</${kind}`, cursor);
       const raw = source.slice(cursor, endRaw === -1 ? source.length : endRaw);
@@ -109,8 +127,11 @@ export function inspectHtml(source: string, base: URL): PageEvidence {
       cursor = endRaw === -1 ? source.length : endRaw;
     }
   }
+  finishHeading();
   page.title = decode(title).replace(/\s+/g, ' ').trim().slice(0, 500) || null;
-  page.textCharacters = decode(text).replace(/\s+/g, ' ').trim().length;
+  const normalizedText = decode(text).replace(/\s+/g, ' ').trim();
+  page.textCharacters = normalizedText.length;
+  page.textPreview = normalizedText.slice(0, 1200);
   page.structuredDataTypes = [...dataTypes].sort();
   return page;
 }
