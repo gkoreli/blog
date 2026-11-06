@@ -1,0 +1,165 @@
+{
+  "automationId": "ai-site-check-hourly-x-replies",
+  "triggeredAt": "2026-11-06T18:41:01.423Z",
+  "clientDate": "2026-11-06",
+  "timezone": "America/Los_Angeles",
+  "authorization": "Explicit hourly heartbeat authorizes up to five useful X replies; no recurring Reddit, DMs, likes, follows, original posts or new schedulers.",
+  "preflight": "Read current AI Site Check chat state, tools worklist/acceptance, shared campaign receipts and other chat completion. Tools UI acceptance was complete at 18:33 UTC. The other posting chat was idle after round ten; no active one-time posting batch was found. This run did not overlap that batch or catch up missed hours.",
+  "xRepliesPublished": 5,
+  "xNewConversationRepliesPublished": 4,
+  "xConversationFollowupsPublished": 1,
+  "canonicalOwnerViewsVerified": 5,
+  "countNote": "These five belong to the AI Site Check hourly run. The shared original-campaign baseline of 63 replies is historical and is not silently rewritten; the fifth contribution continues one of those earlier conversations.",
+  "notificationCoverage": "Initial bounded signed-in feed had no unhandled substantive response. A later check found a new Valerion method question and an E1ev3n beacon clarification. Valerion received the fifth reply. This is not an exhaustive account-wide census.",
+  "pendingConversations": [
+    {
+      "handle": "harden_369741",
+      "url": "https://x.com/harden_369741/status/2118776636258787766",
+      "observation": "New public response reports that the painted signal was a client beacon and says the column is now labelled as a beacon. This is a recipient report, not inspected implementation evidence.",
+      "nextAction": "Re-read the full conversation and check later receipts in the next authorized run before deciding whether another substantive response adds value. No sixth reply in this run."
+    }
+  ],
+  "selection": "One focused X query, Top then Latest; actual parent chains and relevant product/method context read. Previously handled Soon_Iter and myintelbrief destinations were skipped after receipt deduplication. Older generic promotional posts and unrelated model/keyword discussions were not used to fill the batch.",
+  "items": [
+    {
+      "handle": "JustHippie",
+      "parent": "https://x.com/JustHippie/status/2118676906035884493",
+      "kind": "new-conversation",
+      "copy": "for the recheck, look for a sentence from the book description in the raw HTML, then repeat the same AI search. a higher word count could just be more navigation. my checker shows source text and headings without running scripts: https://gkoreli.com/ai-check",
+      "basis": "Live AI Site Check article: initial HTML, source preview and actual-provider recheck boundaries; target reports 37 words and contact form, no independent cookbook audit claimed.",
+      "url": "https://x.com/GogaKoreli/status/2118776710346990069",
+      "verifiedAt": "2026-11-06T18:45:45.636Z",
+      "weighted": 253,
+      "platform": "x",
+      "label": "Dawn / cookbook source text",
+      "state": "canonical-owner-view-verified",
+      "sourceReads": [
+        {
+          "url": "https://gkoreli.com/ai-site-check-evidence",
+          "scope": "Live article read in browser; initial HTML, source preview, headings and provider-recheck limits."
+        },
+        {
+          "localSource": "packages/site-audit/README.md",
+          "scope": "Current audit contract; no new cookbook audit performed."
+        }
+      ],
+      "privateProofBasename": "ai-site-check-hourly-x-20261106-1841/01",
+      "publishedTimeUi": "10:45 AM · Nov 6, 2026",
+      "publishedTimeZone": "America/Los_Angeles"
+    },
+    {
+      "handle": "SEOsageapp",
+      "parent": "https://x.com/SEOsageapp/status/2118560877750481122",
+      "kind": "new-conversation",
+      "copy": "one useful fixture for Claude's fix list: in the same group, Disallow: /private/ + Allow: /private/public/. the article under /private/public/ should stay allowed, without deleting the broader block. i added that example here: https://gkoreli.com/tools/robots",
+      "basis": "Read full target post and seosage.co current homepage, including Ask Claude read-only crawl-data workflow. Proposed regression fixture, not a claim of an existing SEOSage bug. Current robots parser and example source preserve the longer Allow rule.",
+      "url": "https://x.com/GogaKoreli/status/2118777163092832285",
+      "verifiedAt": "2026-11-06T18:49:23.225Z",
+      "weighted": 250,
+      "platform": "x",
+      "label": "SEOSage / robots exception fixture",
+      "state": "canonical-owner-view-verified",
+      "sourceReads": [
+        {
+          "url": "https://seosage.co/",
+          "scope": "Current homepage and Ask Claude workflow read; no recipient implementation test."
+        },
+        {
+          "localSource": "packages/site-audit/src/robots.ts",
+          "scope": "Selected group and longest matching rule."
+        },
+        {
+          "url": "https://gkoreli.com/tools/robots",
+          "scope": "Private-path exception example; fresh production acceptance from completed tools task, plus current source read."
+        }
+      ],
+      "privateProofBasename": "ai-site-check-hourly-x-20261106-1841/02",
+      "publishedTimeUi": "10:46 AM · Nov 6, 2026",
+      "publishedTimeZone": "America/Los_Angeles"
+    },
+    {
+      "handle": "BrianRoemmele",
+      "parent": "https://x.com/BrianRoemmele/status/2118585006235037787",
+      "copy": "for the 503 product pages, id keep 'couldnt inspect' separate from 'markup missing'. otherwise fixing one challenge can look like several unrelated improvements. i show unresolved checks as a score range in mine: https://gkoreli.com/ai-site-check-evidence",
+      "basis": "Read full auditor announcement, expanded visible conversation and linked x.ai bot description. Suggest a diagnostic distinction for the reported 503 pages; did not run the bot or claim a reproduced implementation bug. Live AI Site Check article explains unresolved checks and score ranges.",
+      "url": "https://x.com/GogaKoreli/status/2118778083394416932",
+      "verifiedAt": "2026-11-06T18:50:55.284Z",
+      "weighted": 236,
+      "kind": "new-conversation",
+      "platform": "x",
+      "label": "Brian / unassessed versus missing data",
+      "state": "canonical-owner-view-verified",
+      "sourceReads": [
+        {
+          "url": "https://x.ai/bot/xCJAJ-ED4qO8Ub7KFtWNj",
+          "scope": "Public bot description read; bot not installed or run."
+        },
+        {
+          "url": "https://gkoreli.com/ai-site-check-evidence",
+          "scope": "Live article read; unknown checks remain a score range."
+        }
+      ],
+      "privateProofBasename": "ai-site-check-hourly-x-20261106-1841/03",
+      "publishedTimeUi": "10:50 AM · Nov 6, 2026",
+      "publishedTimeZone": "America/Los_Angeles"
+    },
+    {
+      "handle": "loganix",
+      "parent": "https://x.com/loganix/status/2118491624778961058",
+      "copy": "when you recheck Gemini, dont look for a Google-Extended user-agent in the logs, it has no separate HTTP UA. its a usage control for training and Gemini grounding, so compare the same Gemini query before/after too. Google spells it out here: https://developers.google.com/crawling/docs/crawlers-fetchers/google-common-crawlers#google-extended",
+      "basis": "Read entire parent chain, sibling exchange and both public screenshots. Recipient already reports resolving the policy; this adds the separate HTTP UA versus usage-control distinction and a bounded recheck. Fresh Google common-crawlers documentation verifies Google-Extended has no separate HTTP UA and governs training/Gemini grounding; not proof of the cause of their missing result.",
+      "url": "https://x.com/GogaKoreli/status/2118778404938109079",
+      "verifiedAt": "2026-11-06T18:52:26.752Z",
+      "weighted": 265,
+      "kind": "new-conversation",
+      "platform": "x",
+      "label": "Loganix / Google-Extended recheck",
+      "state": "canonical-owner-view-verified",
+      "sourceReads": [
+        {
+          "url": "https://developers.google.com/crawling/docs/crawlers-fetchers/google-common-crawlers#google-extended",
+          "scope": "Fresh official documentation: no separate HTTP UA; training and Gemini grounding usage controls."
+        },
+        {
+          "url": "https://developers.cloudflare.com/bots/additional-configurations/managed-robots-txt/",
+          "scope": "Current managed-policy context read; not used to assert the historical cause of the recipient setting."
+        }
+      ],
+      "privateProofBasename": "ai-site-check-hourly-x-20261106-1841/04",
+      "publishedTimeUi": "10:51 AM · Nov 6, 2026",
+      "publishedTimeZone": "America/Los_Angeles"
+    },
+    {
+      "kind": "followup",
+      "handle": "AetherC0de",
+      "parent": "https://x.com/AetherC0de/status/2118777885662257234",
+      "copy": "in that Perplexity run i used query labels + an 8-minute Worker tail, but no new content marker. only my synthetic control produced an article GET in that window. so the result is correct source use, with freshness and the cache path still unknown.",
+      "basis": "Read complete visible ancestor chain and new question. Re-read published article Perplexity section and dated 04-perplexity-url-controls.md: three source-correct answers, eight-minute stopped stream, only the synthetic control article GET, no fresh marker intervention in the method. Existing ancestor already links the full controls, so no repeated link.",
+      "url": "https://x.com/GogaKoreli/status/2118778718999228731",
+      "verifiedAt": "2026-11-06T18:53:36.864Z",
+      "weighted": 248,
+      "platform": "x",
+      "label": "Valerion / Perplexity freshness method",
+      "state": "canonical-owner-view-verified",
+      "sourceReads": [
+        {
+          "localSource": "packages/blog/posts/041-ai-fetcher-browser-crawler-headers.md",
+          "scope": "Perplexity section and dated conditions re-read."
+        },
+        {
+          "url": "https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/ai-bot-analytics-grilling/04-perplexity-url-controls.md",
+          "scope": "Local source re-read: query/fragment/plain controls and bounded stream, no fresh-body intervention."
+        }
+      ],
+      "privateProofBasename": "ai-site-check-hourly-x-20261106-1841/05",
+      "publishedTimeUi": "10:53 AM · Nov 6, 2026",
+      "publishedTimeZone": "America/Los_Angeles"
+    }
+  ],
+  "verification": "Each exact final copy was saved before submission, composer checked, and canonical reply reopened once available. Full body, parent context and relevant link/card were verified in the signed-in owner browser. Pending UI states were resolved without resubmitting. Public UI timestamps are minute-resolution; verifiedAt is the later canonical inspection time.",
+  "independentPublicVisibility": "Not tested; signed-in owner visibility only.",
+  "signals": "The bounded feed also showed likes from cendicott, atulbothe1 and harden_369741 on earlier contributions. These are platform signals, not proven adoption, visits or causal growth.",
+  "privacy": "Raw signed-in captures and screenshots are outside Git in private temporary storage. Public records contain exact published copy and normalized evidence only. An initial attempted raw-capture path inside the repository was automatically rejected before execution; it was replaced with an outside-repository path.",
+  "limits": "No fresh provider experiment, target-site audit, Cloudflare traffic query, anonymous visibility test, click/adoption measurement, Reddit action, DM, like, follow or original post. The existing automation was viewed but not changed. No claim that the reported third-party problem was independently reproduced.",
+  "nextBoundedAction": "This run is complete at the five-reply ceiling. In the next scheduled run, first reconcile current chat/receipts and any new substantive responses; do not repost these destinations or accumulate missed hours."
+}
