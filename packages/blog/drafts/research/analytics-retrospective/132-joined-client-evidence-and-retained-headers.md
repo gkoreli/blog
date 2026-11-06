@@ -36,3 +36,7 @@ The existing retained headers are sufficient to investigate immediate catalogue 
 The proposed report change adds a joint table of stored selected-name state, provider category and local signature basis/profile. It must reconcile with the existing name, provider-category and signature tables. It should say **no single selected name**, since several recognized names can intentionally abstain from selecting one. A matching total validates a partition; matching marginals do not independently authenticate the underlying event correlation. The SQL supplies that join and native fixtures must exercise it.
 
 Runtime implementation, native performance comparison, public presentation and production acceptance remain separate from the measurements above. The active worklist owns those gates. Private captures and the runner are under `/tmp/analytics-detection-improvement-20261106/` pending durable archive; a later archive receipt must replace this temporary-only continuity limit.
+
+## Superseding acceptance and recovery
+
+The preceding temporary paths and pending actions describe their original checkpoints. [Local acceptance133](133-detection-release-local-acceptance.md) and [production acceptance134](134-detection-production-acceptance.md) record the completed subsequent checks and durable private archive. Their manifest/recovery receipt supersedes the temporary-only continuity limit; it does not change any earlier measurement or failed cost check.

@@ -110,3 +110,86 @@ This is a proposed acceptance procedure, not an executed result. The current dra
 The earlier body-only Markdown render already passed one H1 and three tables. It is not the full-page or browser acceptance proposed here and does not satisfy those pending checks by itself.
 
 The latest post-audit draft check passes `parsePost` and the actual Markdown renderer with one H1, three tables and the literal regex backslash preserved (no backspace character). Title/SEO/description remain 39 whitespace-delimited words; the Markdown body is 1,942 whitespace-delimited words, not a rendered read-time measurement. Seventeen local or own-repository links and fragments resolve against the current source or the cited historical commit. The three-message prompt record remains unchanged; its first message is 193 characters and fits the existing 200-character teaser without truncation. This is still a body/metadata/source check, not a complete page, browser, production or publication result.
+
+
+## Executed isolated render QA — November 6, 2026, 07:36 UTC
+
+[Machine-readable bounded receipt](2026-11-06-article-render-qa.json). Created a new temporary clone of merged release source `3a13cb5ba5fdc79526c12c32dc9fc36c60033210`; copied the current draft and its selected prompt file into that clone's posts/prompts only. No article was added to the actual publication source. Used Node 24.14.1 and pnpm 9.15.4. The real validator passed 33 Markdown posts; the real production pipeline built 44 total posts into that clone's own `dist`. No shared development or release output was used.
+
+The initial unpinned offline install failed on a missing Wrangler tarball. Installed dependency trees were independently copied into the owned preview without modifying the source checkout, then pinned `mise exec -- pnpm install --offline --frozen-lockfile` passed. The first build hit a sandbox restriction on tsx's local IPC socket; rerunning the same pinned build with escalation passed. These are failed attempts, not hidden successful first runs.
+
+Parsed the generated initial HTML without executing site scripts. Confirmed one article H1, three complete tables, two complete code blocks including the literal `\b`, the practical title/SEO title/description, canonical URL, glossary and substantive ending. Compared all three full prompt blocks after HTML entity decoding with the selected source: exact equality. Confirmed article inclusion in `posts.json`, complete Markdown export and populated BibTeX/CSL citation artifacts. Source and output byte lengths/hashes are in the receipt. The preview's provisional date remains draft metadata, not a publication decision.
+
+Owned loopback server returned HTTP 200 with `Content-Security-Policy: script-src 'none'` and `Cache-Control: no-store`. This demonstrates the page is served with site scripts blocked; it is not a claim that browser JavaScript was globally disabled. The article body, code, tables, glossary, prompts and citation exports are present before client execution.
+
+**Visual reader QA is still pending.** This child agent's CUA context reported IAB unavailable and an empty browser inventory; a direct owned-tab attempt also failed. No tab was created, no viewport was changed, and the required CUA completion was recorded. Root has an available IAB context and received the owned preview URL/server session for actual desktop/narrow CSS-width inspection. No Chrome/Cloudflare tab was touched. The server is temporarily retained for that handoff; root will stop it after inspection. Raw scripts and source audit stay outside Git in the temporary QA directory. This render check does not accept source behavior, deployment activation or production results.
+
+
+## Root visual reader acceptance — recorded November 6, 2026, 07:39:06 UTC
+
+This is the record timestamp, not an invented browser action timestamp. Root completed actual IAB inspection of the owned preview under the served `script-src 'none'` policy. At CSS viewport widths 1280 and 390, document width matched the viewport: no page-level horizontal overflow. The H1, opening, ending, both code blocks and all three tables were visible and readable. At width 390, table client widths were 354 pixels and scroll widths were 354, 537 and 365 pixels; code-block client widths were 352 pixels and scroll widths were 358 and 441 pixels. Wider content therefore scrolls within its own container.
+
+Root also inspected the prompt page at CSS width 390: it occupied the full available width and all three prompt labels were visible. Exact full prompt text equality comes from the separate decoded-HTML/source assertion above, not from assuming every character was visually compared. Root reset the viewport, closed the owned tab and sent the required CUA completion. The child then stopped only its owned server session 37705; it exited on the requested interrupt (130).
+
+This accepts the preview's desktop and narrow-width reader presentation with site scripts blocked by CSP. It does not claim a physical-phone test, a browser-wide JavaScript-disabled setting, source/runtime correctness, publication, or production acceptance. Final production evidence and any resulting article wording remain pending root's separate receipt.
+
+
+## Accepted live controls incorporated — recorded November 6, 2026, 08:04:02 UTC
+
+Read the private accepted read-back, cleanup and release-source receipts. The source receipt lives at the experiment root, not inside `production-run`. Accepted source is `64a95314967f9b79a81c4f711dc27cae95fbb9c6`; activation and the six exact execution/tail/acknowledgement/row/current-receipt chains are separately recorded by root. The draft now reports the bounded live result while preserving the copied-header hook and the 39-word title/SEO/description total. Runtime implementation link is pinned to that source. Research134 is linked as root's forthcoming production record; its final immutable pin remains pending.
+
+Added six-row practical live-control table: CUBOT and contact-URL negatives; GPTBot, SemrushBot and node-fetch claims; all aliases. Browser signals on the first two depended on intentionally supplied navigation headers and the actual unlisted network. Both were independently known curl controls; zero human labels. All-alias production evidence retained 63 names/74 aliases in 1,341 bytes, explicitly distinguished from the 1,355-byte local control. The six owner controls remain excluded and collected no optional captures. One direct SELECT read 54 rows and wrote zero in one attempt; the article does not call this the entire experiment cost. Cleanup removed the temporary route before expiry and returned404; it did not erase the control rows.
+
+Frozen3960 population and its2810 unnamed catalogue requests are unchanged. No claim is made about vendor authenticity, operator attribution, phone-brand incidence, population accuracy or how many old unnamed records a new catalogue could identify. First public cache-served acceptance remains root's pending record and is not inferred from these controls.
+
+`parsePost` and the actual initialized Markdown renderer passed on the revised body: one H1, four tables and explicit live-control limits. Two attempts from repository roots failed to resolve package-scoped tsx; the next package-directory attempt omitted required Markdown initialization and failed; corrected initialized render passed. These are invocation failures, not article-render failures hidden from the record. Full-page build/visual acceptance above belongs to its earlier hashes and three-table body; this revised four-table draft needs current-page verification before publication. The QA JSON now explicitly records that distinction. No publication, scheduling or source posting occurred.
+
+
+## Final four-table preview rebuild — recorded November 6, 2026, 08:19:18 UTC
+
+Read root's accepted served-report receipt (checked08:12:12.394UTC). Added only the reader-relevant outcome: live joint-report totals reconciled and the cache hit returned the same body/update time as the miss. Kept the frozen3960 denominator rather than adding another population. This mixed-method historical report cannot measure a detection uplift. The initially expected cleanup Worker was superseded by a concurrent newsletter build; the guard stopped before any report HTTP request, source/components were reconciled, then the bounded served check proceeded. Research134 retains the operational details and cost. Its immutable evidence link will be pinned when root supplies that commit. No further production calls were made by this editorial pass.
+
+Re-copied the current draft and unchanged selected prompts into the same owned isolated preview checkout, then reran real validation (33 Markdown posts) and full production build (44 posts,5802ms). The generated initial HTML passed updated source assertions: one H1, four tables, two complete code blocks, all three exact decoded prompts, expected title/SEO/description/canonical, full ending/glossary, Markdown and citation exports, and postsJSON inclusion. New source/output commitments are separately retained in the QA JSON; the earlier three-table acceptance remains historical.
+
+Restarted only the owned loopback script-blocking server for root's final1280/390 inspection. That visual acceptance is pending; no browser result is inferred from the HTML checks. Draft date2026-11-05 remains an original working date, not a chosen publication date or slot. The draft remains unpublished.
+
+
+### Network-list wording correction — recorded November 6, 2026, 08:26:25 UTC
+
+Independent final review caught an inaccurate shorthand: Browser signals on the two controlled requests used the hosting/archiver ASN exclusions, not vendor-published network feeds. The live-control paragraph now says the request “came from a network that matched neither our hosting list nor our archiver list.” This also corrects the earlier editorial shorthand “actual unlisted network”; those domains must remain distinct.
+
+Refreshed the owned preview with this wording; real validation33posts and full build44posts (6505ms) passed. Updated initial-HTML/exact-prompt assertions passed, including four tables and two code blocks. QA JSON preserves the earlier preview commitments and records all seven current artifact hashes separately. Server20894 continues serving only the owned preview; root's final visual QA remains pending.
+
+
+### Final semantics and byte preservation — recorded November 6, 2026, 08:30:47 UTC
+
+Corrected the CUBOT table's check to “The phone brand no longer triggers the generic bot rule”: the old substring mistake was a generic verdict, not selection of a specific catalogue name. Changed cleanup wording to “temporary test pages were closed,” because disabling the test surface does not mean deleting its handler code. Real validate33/build44 (5680ms) and the complete source assertions passed again.
+
+Before root's final visual check, copied all seven current source/output artifacts to a private `final-prepin` directory and verified every SHA256 against the current receipt. Earlier receipts had commitments but their temporary paths were reused by later rebuilds. That distinction is now explicit: old hashes are not claims that old raw output captures remained archived at those paths. An initial three-table source recovered from git `db8abd3c` exactly matches its recorded SHA256; a bounded reversal of the latest wording changes reconstructs the pre-network four-table source with its exact recorded SHA256. These recovered sources are labeled reconstructions, not original raw captures. Reconstructing matching rendered outputs will occur in a separate output location after root's current-page visual check, or any failure to match will be recorded precisely.
+
+
+## Final root four-table reader acceptance — recorded November 6, 2026, 08:32:58 UTC
+
+Root reported final actual IAB CSS widths1280/390 with matching document scroll widths and no page-level overflow. At390, all four tables had client width354 and scroll widths354/537/354/365; the two code blocks had width352 and scroll widths358/441. Root found the full opening/ending, code and tables readable, including the six-row live table's corrected generic-bot wording and the hosting/archiver condition. This is a record timestamp, not a reconstructed browser action timestamp.
+
+The page was served with CSP blocking scripts; no physical-device or browser-wide JavaScript-disabled test is claimed. Root reset the viewport, closed its owned tab and sent CUA completion. The child then interrupted only its server20894, which exited130. Current seven byte-preserved final-prepin artifacts remain untouched while separate historical reconstructions run.
+
+
+### Historical output regeneration completed
+
+After the final reader check and owned-server stop, rebuilt the exact recovered sources in the offline owned preview code. Initial three-table version: all seven recorded source/output SHA256 hashes matched (build5636ms). Pre-network-wording four-table version: all seven matched (5361ms). Also recovered the network-corrected/pre-final-semantics version: all seven matched (5405ms). The intermediate first-live-update source-only commitment matched after bounded removal of the later served-report paragraph; no full-page artifact had been claimed for that intermediate source. There are no nonrecoverable prior hashes in these receipts.
+
+Private payload includes final-prepin's original retained final bytes, three separately named reconstruction directories with exact-match manifests, recovered source variants and the invocation/audit scripts. The regenerated files are explicitly labeled hash-matched reconstructions, never original raw captures. Earlier temporary paths were overwritten during ordinary rebuilds; matching reconstruction does not rewrite that history. The source article and final-prepin bytes were preserved. Restored the preview post source to final-prepin after reconstruction, but left the server off; historical regeneration is not another live reader pass. Root will archive the private payload outside Git and handle final134 immutable evidence pinning.
+
+
+## Final immutable evidence links — recorded November 6, 2026, 09:02:47 UTC
+
+Pinned all eight formerly-main own research links in the draft to pushed evidence commit `4aad5cd9a1cab8e3986af1a7ed8bf716fa73925f`, including134. Runtime code remains pinned64a953 and upstream source pins are unchanged. Re-copied current source to the owned preview, ran real validation33posts and full build44posts (6198ms), then passed the same initial-HTML/exact-prompt/metadata/citation checks.
+
+Saved all seven new source/output files, their manifest and a final pin check under private `final-pinned`, without changing `final-prepin` or historical reconstruction files. Source, article HTML and exported Markdown compare exactly to archived final-prepin bytes when only this exact own-research URL prefix is replaced back to main. The prompt source/page, BibTeX and CSL are byte-identical with no normalization. There is no prose or layout change; the preceding1280/390 root visual acceptance therefore covers the same body, with the new destination URLs checked through this bounded byte comparison. No new CUA/server or production calls were made.
+
+The QA JSON retains earlier hashes and adds the final pinned hashes, exact normalization method and per-file results. This is link pinning/reproducibility acceptance, not a new reader experiment, publication or scheduled slot. Root will preserve a separate sealed appendix for these seven files and handle the final commit/push.
+
+## Sealed final appendix and delivery
+
+The final pinned seven source/output artifacts and equivalence check are sealed separately at `/Users/goga/.local/share/gkoreli/analytics-evidence/2026-11-06-detection-improvement-article-links`, manifest SHA-256 `385a625cdcad28cc91fdfe1cea4c198480c4f9be5a747b7be4eca0a78b0def67`. All 14 appendix files / 93300 bytes verify with private permissions. The parent core manifest remains unchanged. This closes the earlier archive and pinning actions without overwriting any historical receipt. Final copy remains an unpublished draft; Git history records its checked scoped delivery.

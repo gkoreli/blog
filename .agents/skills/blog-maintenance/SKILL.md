@@ -1,6 +1,6 @@
 ---
 name: blog-maintenance
-description: Maintain the gkoreli.com repository, build pipeline, interface, operational evidence, and project bookkeeping. Use for implementation, debugging, delivery, incident investigation, handoffs, or reorganizing repository guidance; article prose is governed by the writing skills.
+description: Maintain the gkoreli.com repository, build pipeline, interface, operational evidence, and project bookkeeping. Use for implementation, debugging, delivery, incident investigation, handoffs, or reorganizing repository guidance; article prose uses the writing skill.
 ---
 
 # Blog Maintenance

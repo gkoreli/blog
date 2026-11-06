@@ -1,0 +1,1355 @@
+{
+  "recordVersion": "2026-11-06.1",
+  "dateUtc": "2026-11-06",
+  "sourceCommit": "64a95314967f9b79a81c4f711dc27cae95fbb9c6",
+  "sourceManifestSha256": "2db4b4acbb73617837e51def271d68dcd431c38403c1ea989f50401d2a5ac22e",
+  "sourceManifestMeaning": "Digest supplied by release-source.json for the frozen source manifest; not a digest of this public record.",
+  "privacy": "Aggregates and byte commitments only. No trial/observation/client IDs, marker, raw invocation headers, addresses, control-request ASN values, account metadata or credentials are published. Already-public aggregate hosting-ASN reasons remain in the served-report snapshot.",
+  "stage": "bounded-production-control-acceptance",
+  "status": "six-controls-cleaned-up-and-served-report-cache-accepted",
+  "checkedAt": "2026-11-06T07:54:01.672Z",
+  "profile": "2026-11-06.1",
+  "buildAssociation": {
+    "recordedAt": "2026-11-06T07:46:42.534741+00:00",
+    "method": "Root read authenticated Cloudflare build page and visible deployment log; transcribed these fields. Raw UI pixels/text were not separately byte-archived.",
+    "buildId": "2f0bad79-6930-42a6-a6d3-f1cecb5493b0",
+    "sourceCommit": "64a95314967f9b79a81c4f711dc27cae95fbb9c6",
+    "workerVersion": "7d12bcd3-e61d-4742-b511-dfa22defa7c9",
+    "deployedLogUtc": "2026-11-06T07:43:06.260Z",
+    "buildRuntime": "Node24.22.1/pnpm9.15.4",
+    "publicTurnstileBuildVariablePresent": true,
+    "uploadKiB": 1095.59,
+    "gzipKiB": 217.58,
+    "uploadedAssets": 84,
+    "alreadyUploadedAssets": 216,
+    "scope": "Successful source-linked build/deploy log; actual allocation and prospective request/storage behavior have their own checks."
+  },
+  "localDryrunWorkerSha256": "7a966f2b13b099edcbbe15684996e4cc052863f730ba6052c28d377d0b74ddcc",
+  "allocation": {
+    "base": "7d12bcd3-e61d-4742-b511-dfa22defa7c9",
+    "control": "2c045cc3-12ed-4812-bedb-7d550f8a72cb",
+    "afterCalibrationRemoval": "1134342c-9810-4c45-b03b-04f76cf62b5b",
+    "afterGrantRemoval": "f10721e4-3c72-4947-b44c-328ec33cff76",
+    "allCapturedAllocations": "one version at 100%",
+    "scriptEtag": "b5c4f5f658fbe49ec856121c27080cf913bebf4e1da55cc6534939c3d3f9b14a",
+    "scriptEtagUnchanged": true,
+    "runtimeUnchanged": true,
+    "runtimeSha256": "05b5c08b750a9b0e6a2c162379330a38ca51b627e5a1980860b5dede052d8674",
+    "runtimeCommitmentEncoding": "SHA-256 of JSON encoded with sorted object keys and compact separators",
+    "nonTestResourcesAndExistingSecretMetadataUnchanged": true,
+    "originalSecretValuesAccessed": false,
+    "newRawLoggingConfiguration": false
+  },
+  "controlResults": [
+    {
+      "label": "cubot",
+      "readerKind": "browser",
+      "readerReason": "navigation-shaped-network-unlisted",
+      "canonicalCandidates": 0,
+      "matchedProducts": 0,
+      "classificationBytes": 389,
+      "permanentOwnerExclusion": true,
+      "urlUuidRedacted": true
+    },
+    {
+      "label": "uri-negative",
+      "readerKind": "browser",
+      "readerReason": "navigation-shaped-network-unlisted",
+      "canonicalCandidates": 0,
+      "matchedProducts": 0,
+      "classificationBytes": 389,
+      "permanentOwnerExclusion": true,
+      "urlUuidRedacted": true
+    },
+    {
+      "label": "gpt-positive",
+      "readerKind": "ai-crawler",
+      "readerReason": "GPTBot",
+      "canonicalCandidates": 1,
+      "matchedProducts": 1,
+      "classificationBytes": 413,
+      "permanentOwnerExclusion": true,
+      "urlUuidRedacted": true
+    },
+    {
+      "label": "seo-name",
+      "readerKind": "seo-crawler",
+      "readerReason": "SemrushBot",
+      "canonicalCandidates": 1,
+      "matchedProducts": 1,
+      "classificationBytes": 425,
+      "permanentOwnerExclusion": true,
+      "urlUuidRedacted": true
+    },
+    {
+      "label": "http-name",
+      "readerKind": "http-client",
+      "readerReason": "node-fetch",
+      "canonicalCandidates": 1,
+      "matchedProducts": 1,
+      "classificationBytes": 432,
+      "permanentOwnerExclusion": true,
+      "urlUuidRedacted": true
+    },
+    {
+      "label": "all-products",
+      "readerKind": "unresolved",
+      "readerReason": "multiple-client-declarations",
+      "canonicalCandidates": 63,
+      "matchedProducts": 74,
+      "classificationBytes": 1341,
+      "permanentOwnerExclusion": true,
+      "urlUuidRedacted": true
+    }
+  ],
+  "exactChains": 6,
+  "knownControlledRequests": 6,
+  "humanLabels": 0,
+  "optionalCaptures": 0,
+  "operatorAttribution": "not-implemented",
+  "nativeIdentityAgreement": "not-assessed",
+  "window": {
+    "start": "2026-11-06 07:47:13",
+    "cutoff": "2026-11-06 07:59:13",
+    "meaning": "Counts observed by the single readback SELECT within these bounds; no completeness claim for unelapsed time."
+  },
+  "directReadback": {
+    "agentAttempts": 1,
+    "statements": 1,
+    "rows_read": 54,
+    "rows_written": 0,
+    "total_attempts": 1,
+    "readReviewThreshold": 100,
+    "databaseEnforcedReadCap": false
+  },
+  "requestAccounting": {
+    "scope": "Only this six-control production-run directory; excludes build service, earlier aggregate research and subsequent served-report checks.",
+    "ownSiteHttpRequests": 20,
+    "eligiblePageGets": 6,
+    "ownerMarkPosts": 6,
+    "readyGets": 6,
+    "tailReadinessGets": 1,
+    "cleanupReadyGets": 1,
+    "readOnlyCliMetadataCommands": 57,
+    "secretMutations": 3,
+    "secretBulkCommands": 1,
+    "secretDeleteCommands": 2,
+    "directD1SelectStatements": 1,
+    "directD1AgentAttempts": 1,
+    "subsequentServedPhase": {
+      "ownSiteGets": 6,
+      "assetsAndSchemaGets": 4,
+      "reportGets": 2,
+      "eligiblePageRequests": 0,
+      "naturalCacheFills": 1,
+      "reportedCalculationRowsRead": 371322,
+      "reportedCalculationRowsWritten": 0,
+      "reportedCalculationAttempts": 1,
+      "scope": "Separate from the earlier twenty control-phase own-site requests and its direct 54-read SELECT. App guards, metadata operations and earlier aggregates are not included in these calculation meters."
+    }
+  },
+  "cleanup": {
+    "completedAt": "2026-11-06T07:54:28.327Z",
+    "beforeExpiry": true,
+    "remainingOwnedBindings": [],
+    "routeRemoval": "404 while original config unexpired",
+    "physicalRowErasure": false
+  },
+  "planRevision": {
+    "baseWorkerVersion": "7d12bcd3-e61d-4742-b511-dfa22defa7c9",
+    "workerVersion": "2c045cc3-12ed-4812-bedb-7d550f8a72cb",
+    "basePlanSha256": "ed3e2cc3f08c727e453d0f2c81d1c923a2c2f9cf6097c53ae98a3b2eaf843420",
+    "frozenPlanSha256": "31b6a73d96227d7c4d47756a3494b6f8f85419e287d1f6da9faa27fb6b3e6329",
+    "frozenAt": "2026-11-06T07:50:18.951Z"
+  },
+  "method": "Forced-IPv4 curl supplied one eligible GET per planned label, without retry/redirect. Manifest, native invocation version/marker/header/Ray, one attempt operation, returned decimal-text observation ID, exact D1 row, per-trial counters and full current storedObservationReceipt were reconciled. Raw IDs, UAs, marker and tail captures stay private. Known UUID tail URL redaction was allowed only for the exact planned path.",
+  "storageChecks": {
+    "perTrialPageResponses": 1,
+    "perPathObservationsAcrossOwnerZeroAndOne": 1,
+    "permanentlyOwnerExcludedRows": 6,
+    "optionalRequestEvidenceRows": 0,
+    "optionalDiagnosticRows": 0,
+    "collectionProfile": "2026-11-06.1",
+    "classifierProfile": "2026-11-06.1",
+    "classificationSchema": "2026-11-06.1",
+    "allProducts": {
+      "aliases": 74,
+      "canonicalCandidates": 63,
+      "classificationBytes": 1341,
+      "readerKind": "unresolved",
+      "readerReason": "multiple-client-declarations"
+    }
+  },
+  "artifactCommitments": [
+    {
+      "artifact": "accepted-readback.json",
+      "sha256": "93ff8b35da0bf36f0301bf7b3fcafc0b3a8def72f69657c5fbf60a1b28f3385e"
+    },
+    {
+      "artifact": "cleanup.json",
+      "sha256": "cb08c3ee6acf5a330ead463c4857545496ae29d2f8196075361c4183b0f3e180"
+    },
+    {
+      "artifact": "readback-execution.json",
+      "sha256": "56b0181218858b2071ad713e3258276ab127f4495f90bbfc093e42583da5fbcb"
+    },
+    {
+      "artifact": "readback.sql",
+      "sha256": "4ad536e4279128cb2f0d357799e3b09bb9cf5e7a79cf6e153a789731e725e3f7"
+    },
+    {
+      "artifact": "readback.stdout",
+      "sha256": "08a5800578e8b7b454b8beeba7406d18b1e54eef899c497adfc7ba2722067896"
+    },
+    {
+      "artifact": "readback-plan.json",
+      "sha256": "1ff9dc1b9820b0832ba1adb6f8a705ee168d769dc44c0195a92489e74f41cae8"
+    },
+    {
+      "artifact": "prepared.json",
+      "sha256": "8386c512eba416ac25887bf0e0c4d2735ac5ea477adcb90dc5701ce4a6b4bbbe"
+    },
+    {
+      "artifact": "frozen-plan.json",
+      "sha256": "1d3af020b5ab578c4bd520ef251c181deb7b939e33d84ad5de719b50c7094ff6"
+    },
+    {
+      "artifact": "plan-revision.json",
+      "sha256": "bc1f9a4435b8676dcf72d8ee9af0edb02625330ab952763ec8c74b8939ba3857"
+    },
+    {
+      "artifact": "base.json",
+      "sha256": "b0dadc511ecca23f7ae786ac712191f7e2aca871906ec8c4ea179bcac4b2b78d"
+    },
+    {
+      "artifact": "active.json",
+      "sha256": "9078cee9a4ce369a3a09a1233f64f1cb1d33473e9432de844fdf0a7c3781d313"
+    },
+    {
+      "artifact": "after-delete-ANALYTICS_CALIBRATION.json",
+      "sha256": "1badb5c981df991c4687eb3c31e1fe358d3f1c45028155f4f826f6b752f3cfb5"
+    },
+    {
+      "artifact": "after-delete-OWNER_MARK_GRANT.json",
+      "sha256": "c178ca36622faaf54a143e06bc6fd0926924f54aac64382a73d9d69e4c4b7e09"
+    },
+    {
+      "artifact": "responses.json",
+      "sha256": "4a508f69b952954b59f175ce64f17cc9604387fcd2272a7b68d4cc09d5cb1e29"
+    },
+    {
+      "artifact": "tail.json-stream",
+      "sha256": "f6c8d7d6932d423cf49e7da1b90403a107653cd02aa7d85ae660912cecec95c7"
+    },
+    {
+      "artifact": "tail-readiness-check.json",
+      "sha256": "2827d408da3ca2667d9a5d1f31d87f84c7a1dc041ba2384e89027295e8bc5cdc"
+    },
+    {
+      "artifact": "release-source.json",
+      "sha256": "306d44a7e1a6c5fb708e320cabf2969b7b27dad5980879401df18d9456ee2f49"
+    },
+    {
+      "artifact": "detection-control-native-20261106-2.json",
+      "sha256": "92f0680f495cf6577a21e8ffc9c889e707337d18ec9656f8b03d3363b1de55cc"
+    },
+    {
+      "artifact": "production-driver.mjs",
+      "sha256": "b9dad781c3b45285f8b6b6775f4764f8ddf3a393c26995ab5a1309c031708b45"
+    },
+    {
+      "artifact": "detection-live-control.mjs",
+      "sha256": "04fcd19b83c14763bc562f1e5b25f9623a046791b11b094bd4c3db05eb575a4f"
+    },
+    {
+      "artifact": "served-report/accepted.json",
+      "sha256": "4441939de439780c35831381637a7cc8fb5e6dae31dd84226c56c9aa2497ba38"
+    },
+    {
+      "artifact": "served-report/plan.json",
+      "sha256": "07a1f1888e92e5c5787522ab5ab595f043cba40efcfaa31081507dad0908e977"
+    },
+    {
+      "artifact": "served-report/plan-v2.json",
+      "sha256": "696ed8a2f89e82e0480816b53dcb9e93223c13b3923b9526198a93e0ec79f922"
+    },
+    {
+      "artifact": "served-report/asset-tail-ready.json",
+      "sha256": "5c1429cca7b7636a90cd41712d97d6e5dfee3f513260728e26a4d42321c459ac"
+    },
+    {
+      "artifact": "served-report/tail.json-stream",
+      "sha256": "bce773d4294882d711e6b7b25f73d4bc422374d7f22b571da63e0033e80f25f5"
+    },
+    {
+      "artifact": "served-report/report-first.body",
+      "sha256": "433fedb37d5c5a4654066bec965cba9705627978911b5aa61123df3b998e0d2c"
+    },
+    {
+      "artifact": "served-report/report-repeat.body",
+      "sha256": "433fedb37d5c5a4654066bec965cba9705627978911b5aa61123df3b998e0d2c"
+    },
+    {
+      "artifact": "served-report/report-first.headers",
+      "sha256": "fa3ed93949a2c80a28ecd28ecd9c410c6677a9da326fefadf20a8becc67b55e0"
+    },
+    {
+      "artifact": "served-report/report-repeat.headers",
+      "sha256": "cc0c06f7407e73945a550e9f77c96c0af766d1c4cb97e12a82c89f96d448623e"
+    },
+    {
+      "artifact": "served-report/stats-js.body",
+      "sha256": "d5fdd7db6c480994fad06fd24153d6f890e3899d99fb02158959c2b0fd4b024e"
+    },
+    {
+      "artifact": "served-report/stats-css.body",
+      "sha256": "36b7d3fc8464fadaba3494294fc927e9ff90cab985e066f7eec716c0604c4d63"
+    },
+    {
+      "artifact": "served-report/api-schema.body",
+      "sha256": "35d266ac994349e85a382d21da6e0ffa4f11acd14c627fa67c791b66edf5eb81"
+    },
+    {
+      "artifact": "fetch-served.mjs",
+      "sha256": "dde697ad292991e6591d783538bdfee81c288a30f00bf79a5e8b6186ed1bc93c"
+    },
+    {
+      "artifact": "validate-served.mjs",
+      "sha256": "a54f23d7ce77db5038e468c22380ac9c2a3527eb201fc4fbedbbd6d47f7903bd"
+    }
+  ],
+  "limits": [
+    "All six requests were controlled curl traffic. Imitable User-Agent and navigation headers are not genuine vendor, browser execution, human readership or cryptographic identity proof.",
+    "The fixed cutoff was still in the future at SELECT. Counts describe that single SELECT within the planned bounds, not completeness of the unelapsed interval.",
+    "Native retained identity facts are projected consistently; independent Cloudflare identity agreement and operator attribution are not established.",
+    "The read review threshold is checked after execution, not a database-enforced cap. One bounded control query does not prove report cost or account-wide quota health.",
+    "Build association was transcribed from an authenticated visible build page/log; raw UI pixels/text were not separately byte-archived. Script ETag equality establishes unchanged script across temporary binding revisions, not local-dryrun byte equality.",
+    "Six retained rows remain permanently owner-excluded after temporary binding removal; physical erasure is not claimed.",
+    "accepted-readback.json records cleanupPending:true at its earlier boundary; cleanup.json supersedes that operational status without rewriting the original receipt.",
+    "Production cache expiry waits/failure injections and a report filter grid were not part of this acceptance.",
+    "These bounded controls and mixed-history report do not resolve the remaining unknown-client population or measure population detection improvement."
+  ],
+  "remaining": [],
+  "servedAcceptance": {
+    "accepted": true,
+    "checkedAt": "2026-11-06T08:12:12.394Z",
+    "sourceCommit": "6f5a1a5c951a569da5cc1cb6f402242881e2d59b",
+    "componentBaselineCommit": "64a95314967f9b79a81c4f711dc27cae95fbb9c6",
+    "workerVersion": "3f5ec6f5-65d3-4c64-8263-b71be7e1493d",
+    "buildAssociation": {
+      "buildId": "bf31c658-95ab-4760-9f53-658f9973e9cd",
+      "method": "Authenticated Cloudflare Deployments UI shows this full source commit, Ready42s and100% for the matching version prefix; raw UI not separately byte-archived."
+    },
+    "sourceComponentsUnchanged": true,
+    "requestCount": 6,
+    "eligiblePageRequests": 0,
+    "report": {
+      "selector": "range=7d&traffic=all",
+      "period": {
+        "start": "2026-10-31",
+        "end": "2026-11-06",
+        "timeZone": "UTC",
+        "granularity": "hour",
+        "updatedAt": "2026-11-06T08:07:28.609Z"
+      },
+      "totals": {
+        "views": 4142,
+        "dailyClients": 2100,
+        "unattributedViews": 3996
+      },
+      "clientNameCoverage": {
+        "selectedNameViews": 1200,
+        "noSelectedNameViews": 2942
+      },
+      "jointGroups": 69,
+      "jointRows": [
+        {
+          "kind": "unresolved",
+          "nameSelection": "not-selected",
+          "nativeCategory": "empty",
+          "signatureBasis": "unsigned",
+          "verifierProfile": "2026-10-31.3",
+          "views": 687
+        },
+        {
+          "kind": "cloud-browser",
+          "nameSelection": "not-selected",
+          "nativeCategory": "empty",
+          "signatureBasis": "unsigned",
+          "verifierProfile": "2026-10-31.3",
+          "views": 569
+        },
+        {
+          "kind": "browser",
+          "nameSelection": "not-selected",
+          "nativeCategory": "empty",
+          "signatureBasis": "unsigned",
+          "verifierProfile": "2026-10-31.3",
+          "views": 506
+        },
+        {
+          "kind": "other-bot",
+          "nameSelection": "not-selected",
+          "nativeCategory": "empty",
+          "signatureBasis": "unsigned",
+          "verifierProfile": "2026-10-31.3",
+          "views": 404
+        },
+        {
+          "kind": "ai-search",
+          "nameSelection": "selected",
+          "nativeCategory": "Search Engine Crawler",
+          "signatureBasis": "verified-ua-uncovered",
+          "verifierProfile": "2026-10-31.3",
+          "views": 356
+        },
+        {
+          "kind": "ai-crawler",
+          "nameSelection": "selected",
+          "nativeCategory": "AI Crawler",
+          "signatureBasis": "unsigned",
+          "verifierProfile": "2026-10-31.3",
+          "views": 137
+        },
+        {
+          "kind": "ai-search",
+          "nameSelection": "selected",
+          "nativeCategory": "Page Preview",
+          "signatureBasis": "unsigned",
+          "verifierProfile": "2026-10-31.3",
+          "views": 132
+        },
+        {
+          "kind": "ai-search",
+          "nameSelection": "selected",
+          "nativeCategory": "AI Search",
+          "signatureBasis": "verified-ua-uncovered",
+          "verifierProfile": "2026-10-31.3",
+          "views": 111
+        },
+        {
+          "kind": "unresolved",
+          "nameSelection": "not-selected",
+          "nativeCategory": "empty",
+          "signatureBasis": "unsigned",
+          "verifierProfile": "2026-10-31.2",
+          "views": 110
+        },
+        {
+          "kind": "seo-crawler",
+          "nameSelection": "selected",
+          "nativeCategory": "Search Engine Optimization",
+          "signatureBasis": "verified-ua-uncovered",
+          "verifierProfile": "2026-10-31.3",
+          "views": 107
+        },
+        {
+          "kind": "other-bot",
+          "nameSelection": "not-selected",
+          "nativeCategory": "Search Engine Optimization",
+          "signatureBasis": "unsigned",
+          "verifierProfile": "2026-10-31.3",
+          "views": 94
+        },
+        {
+          "kind": "cloud-browser",
+          "nameSelection": "not-selected",
+          "nativeCategory": "empty",
+          "signatureBasis": "unsigned",
+          "verifierProfile": "2026-10-31.2",
+          "views": 83
+        },
+        {
+          "kind": "browser",
+          "nameSelection": "not-selected",
+          "nativeCategory": "empty",
+          "signatureBasis": "unsigned",
+          "verifierProfile": "2026-10-31.1",
+          "views": 74
+        },
+        {
+          "kind": "search-crawler",
+          "nameSelection": "selected",
+          "nativeCategory": "Search Engine Crawler",
+          "signatureBasis": "unsigned",
+          "verifierProfile": "2026-10-31.3",
+          "views": 72
+        },
+        {
+          "kind": "signed-agent",
+          "nameSelection": "not-selected",
+          "nativeCategory": "AI Crawler",
+          "signatureBasis": "verified-ua-uncovered",
+          "verifierProfile": "2026-10-31.3",
+          "views": 69
+        },
+        {
+          "kind": "cloud-browser",
+          "nameSelection": "not-selected",
+          "nativeCategory": "empty",
+          "signatureBasis": "unsigned",
+          "verifierProfile": "2026-10-31.1",
+          "views": 63
+        },
+        {
+          "kind": "other-bot",
+          "nameSelection": "not-selected",
+          "nativeCategory": "Page Preview",
+          "signatureBasis": "unsigned",
+          "verifierProfile": "2026-10-31.3",
+          "views": 58
+        },
+        {
+          "kind": "unresolved",
+          "nameSelection": "not-selected",
+          "nativeCategory": "empty",
+          "signatureBasis": "unsigned",
+          "verifierProfile": "2026-10-31.1",
+          "views": 58
+        },
+        {
+          "kind": "ai-search",
+          "nameSelection": "selected",
+          "nativeCategory": "empty",
+          "signatureBasis": "unsigned",
+          "verifierProfile": "2026-10-31.3",
+          "views": 46
+        },
+        {
+          "kind": "browser",
+          "nameSelection": "not-selected",
+          "nativeCategory": "empty",
+          "signatureBasis": "unsigned",
+          "verifierProfile": "2026-10-31.2",
+          "views": 32
+        },
+        {
+          "kind": "ai-search",
+          "nameSelection": "selected",
+          "nativeCategory": "Search Engine Crawler",
+          "signatureBasis": "verified-ua-uncovered",
+          "verifierProfile": "2026-10-31.2",
+          "views": 31
+        },
+        {
+          "kind": "other-bot",
+          "nameSelection": "not-selected",
+          "nativeCategory": "Archiver",
+          "signatureBasis": "unsigned",
+          "verifierProfile": "2026-10-31.3",
+          "views": 30
+        },
+        {
+          "kind": "ai-assistant",
+          "nameSelection": "selected",
+          "nativeCategory": "AI Assistant",
+          "signatureBasis": "unsigned",
+          "verifierProfile": "2026-10-31.3",
+          "views": 25
+        },
+        {
+          "kind": "preview-or-feed",
+          "nameSelection": "selected",
+          "nativeCategory": "Page Preview",
+          "signatureBasis": "unsigned",
+          "verifierProfile": "2026-10-31.3",
+          "views": 22
+        },
+        {
+          "kind": "ai-search",
+          "nameSelection": "selected",
+          "nativeCategory": "Search Engine Crawler",
+          "signatureBasis": "verified-ua-uncovered",
+          "verifierProfile": "2026-10-31.1",
+          "views": 19
+        },
+        {
+          "kind": "other-bot",
+          "nameSelection": "not-selected",
+          "nativeCategory": "Search Engine Crawler",
+          "signatureBasis": "unsigned",
+          "verifierProfile": "2026-10-31.3",
+          "views": 18
+        },
+        {
+          "kind": "ai-search",
+          "nameSelection": "selected",
+          "nativeCategory": "Page Preview",
+          "signatureBasis": "unsigned",
+          "verifierProfile": "2026-10-31.2",
+          "views": 17
+        },
+        {
+          "kind": "ai-search",
+          "nameSelection": "selected",
+          "nativeCategory": "AI Search",
+          "signatureBasis": "unsigned",
+          "verifierProfile": "2026-10-31.3",
+          "views": 16
+        },
+        {
+          "kind": "ai-assistant",
+          "nameSelection": "selected",
+          "nativeCategory": "empty",
+          "signatureBasis": "unsigned",
+          "verifierProfile": "2026-10-31.3",
+          "views": 14
+        },
+        {
+          "kind": "ai-crawler",
+          "nameSelection": "selected",
+          "nativeCategory": "empty",
+          "signatureBasis": "unsigned",
+          "verifierProfile": "2026-10-31.3",
+          "views": 14
+        },
+        {
+          "kind": "unresolved",
+          "nameSelection": "not-selected",
+          "nativeCategory": "Search Engine Crawler",
+          "signatureBasis": "unsigned",
+          "verifierProfile": "2026-10-31.3",
+          "views": 13
+        },
+        {
+          "kind": "ai-crawler",
+          "nameSelection": "selected",
+          "nativeCategory": "AI Crawler",
+          "signatureBasis": "unsigned",
+          "verifierProfile": "2026-10-31.2",
+          "views": 11
+        },
+        {
+          "kind": "ai-search",
+          "nameSelection": "selected",
+          "nativeCategory": "Search Engine Crawler",
+          "signatureBasis": "unsigned",
+          "verifierProfile": "2026-10-31.3",
+          "views": 11
+        },
+        {
+          "kind": "http-client",
+          "nameSelection": "not-selected",
+          "nativeCategory": "empty",
+          "signatureBasis": "unsigned",
+          "verifierProfile": "2026-10-31.3",
+          "views": 10
+        },
+        {
+          "kind": "search-crawler",
+          "nameSelection": "selected",
+          "nativeCategory": "Search Engine Crawler",
+          "signatureBasis": "not-verified",
+          "verifierProfile": "2026-10-31.3",
+          "views": 9
+        },
+        {
+          "kind": "other-bot",
+          "nameSelection": "not-selected",
+          "nativeCategory": "AI Crawler",
+          "signatureBasis": "unsigned",
+          "verifierProfile": "2026-10-31.3",
+          "views": 8
+        },
+        {
+          "kind": "other-bot",
+          "nameSelection": "not-selected",
+          "nativeCategory": "empty",
+          "signatureBasis": "unsigned",
+          "verifierProfile": "2026-10-31.1",
+          "views": 8
+        },
+        {
+          "kind": "other-bot",
+          "nameSelection": "not-selected",
+          "nativeCategory": "Monitoring & Analytics",
+          "signatureBasis": "unsigned",
+          "verifierProfile": "2026-10-31.3",
+          "views": 7
+        },
+        {
+          "kind": "other-bot",
+          "nameSelection": "not-selected",
+          "nativeCategory": "Search Engine Optimization",
+          "signatureBasis": "unsigned",
+          "verifierProfile": "2026-10-31.2",
+          "views": 7
+        },
+        {
+          "kind": "ai-assistant",
+          "nameSelection": "selected",
+          "nativeCategory": "Search Engine Crawler",
+          "signatureBasis": "verified-ua-uncovered",
+          "verifierProfile": "2026-10-31.3",
+          "views": 6
+        },
+        {
+          "kind": "ai-search",
+          "nameSelection": "selected",
+          "nativeCategory": "Page Preview",
+          "signatureBasis": "unsigned",
+          "verifierProfile": "2026-10-31.1",
+          "views": 6
+        },
+        {
+          "kind": "preview-or-feed",
+          "nameSelection": "not-selected",
+          "nativeCategory": "empty",
+          "signatureBasis": "unsigned",
+          "verifierProfile": "2026-10-31.3",
+          "views": 6
+        },
+        {
+          "kind": "ai-crawler",
+          "nameSelection": "selected",
+          "nativeCategory": "AI Crawler",
+          "signatureBasis": "unsigned",
+          "verifierProfile": "2026-10-31.1",
+          "views": 5
+        },
+        {
+          "kind": "headless-browser",
+          "nameSelection": "selected",
+          "nativeCategory": "empty",
+          "signatureBasis": "unsigned",
+          "verifierProfile": "2026-10-31.3",
+          "views": 5
+        },
+        {
+          "kind": "http-client",
+          "nameSelection": "not-selected",
+          "nativeCategory": "empty",
+          "signatureBasis": "unsigned",
+          "verifierProfile": "2026-10-31.2",
+          "views": 5
+        },
+        {
+          "kind": "signed-agent",
+          "nameSelection": "not-selected",
+          "nativeCategory": "AI Assistant",
+          "signatureBasis": "verified-ua-uncovered",
+          "verifierProfile": "2026-10-31.3",
+          "views": 5
+        },
+        {
+          "kind": "other-bot",
+          "nameSelection": "not-selected",
+          "nativeCategory": "Search Engine Crawler",
+          "signatureBasis": "not-verified",
+          "verifierProfile": "2026-10-31.3",
+          "views": 4
+        },
+        {
+          "kind": "other-bot",
+          "nameSelection": "not-selected",
+          "nativeCategory": "empty",
+          "signatureBasis": "unsigned",
+          "verifierProfile": "2026-10-31.2",
+          "views": 4
+        },
+        {
+          "kind": "ai-assistant",
+          "nameSelection": "selected",
+          "nativeCategory": "AI Assistant",
+          "signatureBasis": "verified-ua-uncovered",
+          "verifierProfile": "2026-10-31.3",
+          "views": 3
+        },
+        {
+          "kind": "cloud-browser",
+          "nameSelection": "not-selected",
+          "nativeCategory": "Monitoring & Analytics",
+          "signatureBasis": "unsigned",
+          "verifierProfile": "2026-10-31.3",
+          "views": 3
+        },
+        {
+          "kind": "other-bot",
+          "nameSelection": "not-selected",
+          "nativeCategory": "Search Engine Crawler",
+          "signatureBasis": "unsigned",
+          "verifierProfile": "2026-10-31.2",
+          "views": 3
+        },
+        {
+          "kind": "search-crawler",
+          "nameSelection": "selected",
+          "nativeCategory": "Search Engine Crawler",
+          "signatureBasis": "unsigned",
+          "verifierProfile": "2026-10-31.1",
+          "views": 3
+        },
+        {
+          "kind": "seo-crawler",
+          "nameSelection": "selected",
+          "nativeCategory": "Search Engine Optimization",
+          "signatureBasis": "unsigned",
+          "verifierProfile": "2026-10-31.3",
+          "views": 3
+        },
+        {
+          "kind": "seo-crawler",
+          "nameSelection": "selected",
+          "nativeCategory": "Search Engine Optimization",
+          "signatureBasis": "verified-ua-uncovered",
+          "verifierProfile": "2026-10-31.1",
+          "views": 3
+        },
+        {
+          "kind": "other-bot",
+          "nameSelection": "not-selected",
+          "nativeCategory": "AI Search",
+          "signatureBasis": "unsigned",
+          "verifierProfile": "2026-10-31.3",
+          "views": 2
+        },
+        {
+          "kind": "other-bot",
+          "nameSelection": "selected",
+          "nativeCategory": "AI Crawler",
+          "signatureBasis": "unsigned",
+          "verifierProfile": "2026-10-31.3",
+          "views": 2
+        },
+        {
+          "kind": "preview-or-feed",
+          "nameSelection": "selected",
+          "nativeCategory": "empty",
+          "signatureBasis": "unsigned",
+          "verifierProfile": "2026-10-31.3",
+          "views": 2
+        },
+        {
+          "kind": "search-crawler",
+          "nameSelection": "selected",
+          "nativeCategory": "Search Engine Crawler",
+          "signatureBasis": "unsigned",
+          "verifierProfile": "2026-10-31.2",
+          "views": 2
+        },
+        {
+          "kind": "search-crawler",
+          "nameSelection": "selected",
+          "nativeCategory": "empty",
+          "signatureBasis": "unsigned",
+          "verifierProfile": "2026-10-31.3",
+          "views": 2
+        },
+        {
+          "kind": "ai-assistant",
+          "nameSelection": "selected",
+          "nativeCategory": "AI Assistant",
+          "signatureBasis": "unsigned",
+          "verifierProfile": "2026-10-31.2",
+          "views": 1
+        },
+        {
+          "kind": "ai-assistant",
+          "nameSelection": "selected",
+          "nativeCategory": "empty",
+          "signatureBasis": "unsigned",
+          "verifierProfile": "2026-10-31.2",
+          "views": 1
+        },
+        {
+          "kind": "ai-crawler",
+          "nameSelection": "selected",
+          "nativeCategory": "Search Engine Crawler",
+          "signatureBasis": "unsigned",
+          "verifierProfile": "2026-10-31.3",
+          "views": 1
+        },
+        {
+          "kind": "ai-crawler",
+          "nameSelection": "selected",
+          "nativeCategory": "empty",
+          "signatureBasis": "unsigned",
+          "verifierProfile": "2026-10-31.1",
+          "views": 1
+        },
+        {
+          "kind": "ai-search",
+          "nameSelection": "selected",
+          "nativeCategory": "AI Search",
+          "signatureBasis": "unsigned",
+          "verifierProfile": "2026-10-31.1",
+          "views": 1
+        },
+        {
+          "kind": "ai-search",
+          "nameSelection": "selected",
+          "nativeCategory": "Search Engine Crawler",
+          "signatureBasis": "unsigned",
+          "verifierProfile": "2026-10-31.2",
+          "views": 1
+        },
+        {
+          "kind": "ai-search",
+          "nameSelection": "selected",
+          "nativeCategory": "empty",
+          "signatureBasis": "unsigned",
+          "verifierProfile": "2026-10-31.2",
+          "views": 1
+        },
+        {
+          "kind": "cloud-browser",
+          "nameSelection": "not-selected",
+          "nativeCategory": "Monitoring & Analytics",
+          "signatureBasis": "unsigned",
+          "verifierProfile": "2026-10-31.1",
+          "views": 1
+        },
+        {
+          "kind": "other-bot",
+          "nameSelection": "not-selected",
+          "nativeCategory": "Page Preview",
+          "signatureBasis": "unsigned",
+          "verifierProfile": "2026-10-31.1",
+          "views": 1
+        },
+        {
+          "kind": "seo-crawler",
+          "nameSelection": "selected",
+          "nativeCategory": "Search Engine Optimization",
+          "signatureBasis": "verified-ua-uncovered",
+          "verifierProfile": "2026-10-31.2",
+          "views": 1
+        }
+      ],
+      "signatureCounts": {
+        "unsigned": 3418,
+        "verified-ua-uncovered": 711,
+        "not-verified": 13
+      },
+      "kindCounts": [
+        {
+          "kind": "other-bot",
+          "reason": "generic-bot",
+          "views": 648,
+          "dailyClients": 248
+        },
+        {
+          "kind": "unresolved",
+          "reason": "fetch-metadata-absent",
+          "views": 619,
+          "dailyClients": 158
+        },
+        {
+          "kind": "browser",
+          "reason": "navigation-shaped-network-unlisted",
+          "views": 612,
+          "dailyClients": 382
+        },
+        {
+          "kind": "ai-search",
+          "reason": "ExaSearchBot",
+          "views": 406,
+          "dailyClients": 220
+        },
+        {
+          "kind": "cloud-browser",
+          "reason": "hosting-asn:132203",
+          "views": 187,
+          "dailyClients": 182
+        },
+        {
+          "kind": "cloud-browser",
+          "reason": "hosting-asn:396982",
+          "views": 184,
+          "dailyClients": 73
+        },
+        {
+          "kind": "unresolved",
+          "reason": "unrecognized-browser-claim",
+          "views": 175,
+          "dailyClients": 59
+        },
+        {
+          "kind": "ai-search",
+          "reason": "Meta-WebIndexer",
+          "views": 155,
+          "dailyClients": 145
+        },
+        {
+          "kind": "ai-search",
+          "reason": "ShapBot",
+          "views": 111,
+          "dailyClients": 10
+        },
+        {
+          "kind": "cloud-browser",
+          "reason": "hosting-asn:24940",
+          "views": 96,
+          "dailyClients": 16
+        },
+        {
+          "kind": "seo-crawler",
+          "reason": "AhrefsSiteAudit",
+          "views": 76,
+          "dailyClients": 61
+        },
+        {
+          "kind": "unresolved",
+          "reason": "fetch-metadata-support-unknown",
+          "views": 73,
+          "dailyClients": 13
+        },
+        {
+          "kind": "cloud-browser",
+          "reason": "hosting-asn:16276",
+          "views": 69,
+          "dailyClients": 57
+        },
+        {
+          "kind": "signed-agent",
+          "reason": "Other",
+          "views": 69,
+          "dailyClients": 1
+        },
+        {
+          "kind": "cloud-browser",
+          "reason": "hosting-asn:51167",
+          "views": 68,
+          "dailyClients": 17
+        },
+        {
+          "kind": "ai-crawler",
+          "reason": "Amazonbot",
+          "views": 66,
+          "dailyClients": 64
+        },
+        {
+          "kind": "search-crawler",
+          "reason": "Googlebot",
+          "views": 63,
+          "dailyClients": 51
+        },
+        {
+          "kind": "ai-crawler",
+          "reason": "PetalBot",
+          "views": 53,
+          "dailyClients": 31
+        },
+        {
+          "kind": "ai-search",
+          "reason": "PerplexityBot",
+          "views": 46,
+          "dailyClients": 26
+        },
+        {
+          "kind": "cloud-browser",
+          "reason": "hosting-asn:14618",
+          "views": 38,
+          "dailyClients": 17
+        },
+        {
+          "kind": "seo-crawler",
+          "reason": "AhrefsBot",
+          "views": 37,
+          "dailyClients": 36
+        },
+        {
+          "kind": "ai-assistant",
+          "reason": "ChatGPT-User",
+          "views": 29,
+          "dailyClients": 21
+        },
+        {
+          "kind": "preview-or-feed",
+          "reason": "FacebookBot",
+          "views": 23,
+          "dailyClients": 21
+        },
+        {
+          "kind": "cloud-browser",
+          "reason": "hosting-asn:45090",
+          "views": 18,
+          "dailyClients": 18
+        },
+        {
+          "kind": "cloud-browser",
+          "reason": "hosting-asn:45102",
+          "views": 18,
+          "dailyClients": 18
+        },
+        {
+          "kind": "ai-search",
+          "reason": "Applebot",
+          "views": 17,
+          "dailyClients": 17
+        },
+        {
+          "kind": "ai-crawler",
+          "reason": "Bytespider",
+          "views": 16,
+          "dailyClients": 16
+        },
+        {
+          "kind": "ai-crawler",
+          "reason": "ClaudeBot",
+          "views": 16,
+          "dailyClients": 4
+        },
+        {
+          "kind": "http-client",
+          "reason": "not-navigation-shaped",
+          "views": 15,
+          "dailyClients": 9
+        },
+        {
+          "kind": "ai-search",
+          "reason": "OAI-SearchBot",
+          "views": 13,
+          "dailyClients": 13
+        },
+        {
+          "kind": "ai-crawler",
+          "reason": "GPTBot",
+          "views": 12,
+          "dailyClients": 2
+        },
+        {
+          "kind": "cloud-browser",
+          "reason": "hosting-asn:14061",
+          "views": 11,
+          "dailyClients": 11
+        },
+        {
+          "kind": "cloud-browser",
+          "reason": "hosting-asn:31898",
+          "views": 11,
+          "dailyClients": 11
+        },
+        {
+          "kind": "search-crawler",
+          "reason": "Bingbot",
+          "views": 10,
+          "dailyClients": 10
+        },
+        {
+          "kind": "ai-assistant",
+          "reason": "Claude-User",
+          "views": 9,
+          "dailyClients": 8
+        },
+        {
+          "kind": "search-crawler",
+          "reason": "DuckDuckBot",
+          "views": 9,
+          "dailyClients": 7
+        },
+        {
+          "kind": "cloud-browser",
+          "reason": "hosting-asn:16509",
+          "views": 8,
+          "dailyClients": 4
+        },
+        {
+          "kind": "ai-assistant",
+          "reason": "ExaUser",
+          "views": 6,
+          "dailyClients": 6
+        },
+        {
+          "kind": "ai-crawler",
+          "reason": "Meta-ExternalAgent",
+          "views": 6,
+          "dailyClients": 6
+        },
+        {
+          "kind": "preview-or-feed",
+          "reason": "archiver-asn:7941",
+          "views": 6,
+          "dailyClients": 5
+        },
+        {
+          "kind": "headless-browser",
+          "reason": "HeadlessChrome",
+          "views": 5,
+          "dailyClients": 3
+        },
+        {
+          "kind": "search-crawler",
+          "reason": "Baiduspider",
+          "views": 5,
+          "dailyClients": 5
+        },
+        {
+          "kind": "signed-agent",
+          "reason": "ChatGPT",
+          "views": 5,
+          "dailyClients": 3
+        },
+        {
+          "kind": "cloud-browser",
+          "reason": "hosting-asn:12876",
+          "views": 4,
+          "dailyClients": 2
+        },
+        {
+          "kind": "ai-assistant",
+          "reason": "DuckAssistBot",
+          "views": 3,
+          "dailyClients": 2
+        },
+        {
+          "kind": "ai-assistant",
+          "reason": "Perplexity-User",
+          "views": 3,
+          "dailyClients": 2
+        },
+        {
+          "kind": "cloud-browser",
+          "reason": "hosting-asn:211590",
+          "views": 3,
+          "dailyClients": 1
+        },
+        {
+          "kind": "other-bot",
+          "reason": "GoogleOther",
+          "views": 2,
+          "dailyClients": 2
+        },
+        {
+          "kind": "cloud-browser",
+          "reason": "hosting-asn:150436",
+          "views": 1,
+          "dailyClients": 1
+        },
+        {
+          "kind": "cloud-browser",
+          "reason": "hosting-asn:18779",
+          "views": 1,
+          "dailyClients": 1
+        },
+        {
+          "kind": "cloud-browser",
+          "reason": "hosting-asn:40021",
+          "views": 1,
+          "dailyClients": 1
+        },
+        {
+          "kind": "cloud-browser",
+          "reason": "hosting-asn:8560",
+          "views": 1,
+          "dailyClients": 1
+        },
+        {
+          "kind": "preview-or-feed",
+          "reason": "Slackbot-LinkExpanding",
+          "views": 1,
+          "dailyClients": 1
+        },
+        {
+          "kind": "search-crawler",
+          "reason": "YandexBot",
+          "views": 1,
+          "dailyClients": 1
+        },
+        {
+          "kind": "seo-crawler",
+          "reason": "SemrushBot",
+          "views": 1,
+          "dailyClients": 1
+        },
+        {
+          "kind": "unresolved",
+          "reason": "request-context-conflict",
+          "views": 1,
+          "dailyClients": 1
+        }
+      ],
+      "cacheStates": [
+        "MISS",
+        "HIT"
+      ],
+      "identicalResponseBodies": true,
+      "preservedCalculationTime": true,
+      "expires": "Fri, 06 Nov 2026 09:07:28 GMT",
+      "ttlSeconds": 3599.391,
+      "calculation": {
+        "version": "2026-10-28.1",
+        "event": "stats-report-calculation",
+        "outcome": "returned",
+        "submittedStatements": 1,
+        "returnedResults": 1,
+        "metadata": "complete",
+        "counterScope": "last-attempt",
+        "reportedRowsRead": 371322,
+        "reportedRowsWritten": 0,
+        "totalAttempts": 1,
+        "unexpectedWrites": false
+      },
+      "rowsReadReviewThreshold": 500000,
+      "databaseEnforcedReadCap": false
+    },
+    "assets": {
+      "stats.js": {
+        "servedSha256": "d5fdd7db6c480994fad06fd24153d6f890e3899d99fb02158959c2b0fd4b024e",
+        "localSha256": "d5fdd7db6c480994fad06fd24153d6f890e3899d99fb02158959c2b0fd4b024e",
+        "equal": true
+      },
+      "stats.css": {
+        "servedSha256": "36b7d3fc8464fadaba3494294fc927e9ff90cab985e066f7eec716c0604c4d63",
+        "localSha256": "36b7d3fc8464fadaba3494294fc927e9ff90cab985e066f7eec716c0604c4d63",
+        "equal": true
+      }
+    },
+    "servedSchemaVersion": "2026-11-06.2",
+    "allTailInvocationsSameWorker": true,
+    "noCollectionLogs": true,
+    "failedOriginalVersionGate": {
+      "expectedWorker": "f10721e4-3c72-4947-b44c-328ec33cff76",
+      "observedWorker": "3f5ec6f5-65d3-4c64-8263-b71be7e1493d",
+      "reportHttpRequestsBeforeReconciliation": 0
+    },
+    "limits": [
+      "The initial cleanup-version expectation was superseded by a concurrent source build; no report request occurred until its source/component reconciliation.",
+      "Only one selected all-audience report and its identical repeat were fetched; no filter grid or deliberate cache bypass.",
+      "Report meters describe the returned statement attempt, not account billing or all experiment operations.",
+      "Historical records retain their producer rules; this mixed-method snapshot cannot measure detection improvement by subtracting the earlier baseline.",
+      "No selected catalogue name can include multiple claims or earlier missing detail; it is not a human/AI identity verdict.",
+      "Advertised expiry and reuse are observed here; no production expiry wait or failure injection was performed."
+    ],
+    "tailScope": {
+      "invocations": 6,
+      "sameWorkerVersion": true,
+      "truncated": false,
+      "exceptions": 0,
+      "observationCollectionLogs": 0,
+      "calculationLogs": 1,
+      "cacheHitCalculationLogs": 0
+    },
+    "componentComparison": {
+      "baseCommit": "64a95314967f9b79a81c4f711dc27cae95fbb9c6",
+      "servedCommit": "6f5a1a5c951a569da5cc1cb6f402242881e2d59b",
+      "method": "git diff --name-only across the two commits; all changed paths concern newsletter implementation, tests and dated research. Analytics, stats presentation/cache and API-schema components are unchanged."
+    },
+    "assetsChecked": [
+      "/stats",
+      "/stats.js",
+      "/stats.css",
+      "/api/ai-check/schema"
+    ],
+    "originalReportHelperAttempt": {
+      "outcome": "stopped-before-HTTP",
+      "reason": "Asset/version prerequisite not accepted after expected cleanup Worker was superseded.",
+      "eligibleReportHttpRequests": 0,
+      "separateRawFailureTranscriptArchived": false,
+      "evidence": "Original plan and revised plan preserve the expected/observed version failure; the operator observed the stopped helper invocation. No independent byte archive of that invocation transcript is asserted."
+    },
+    "tailsStopped": true
+  },
+  "archive": {
+    "accepted": true,
+    "verifiedAt": "2026-11-06T08:44:32.742958+00:00",
+    "archivePath": "/Users/goga/.local/share/gkoreli/analytics-evidence/2026-11-06-detection-improvement",
+    "manifestSha256": "7bf11ce8f580546c3c44f70cab6f96f4c65f0f00505084101e5ff1cd679de1e7",
+    "filesVerified": 4982,
+    "bytesVerified": 88222417,
+    "allPrivateModes": true,
+    "ephemeralGrantAbsent": true,
+    "articleReconstructionsLabeled": true,
+    "snapshotMeaning": "Preserved executed inputs/captures and pre-pointer working records; later evidence pointers and article link pinning remain in delivered Git history."
+  }
+}
