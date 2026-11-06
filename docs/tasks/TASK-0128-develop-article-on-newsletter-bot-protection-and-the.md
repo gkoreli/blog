@@ -4,12 +4,24 @@ title: Develop article on newsletter bot protection and the failures our logs mi
 status: in_progress
 parent_id: FLDR-0010
 created_at: '2026-09-07T05:09:30.966Z'
-updated_at: '2026-11-06T08:43:00Z'
+updated_at: '2026-11-06T09:40:00Z'
 type: task
 ---
 P2 editorial. Governing form: evidence-led engineering investigation with an active field-note state. Owned trigger: Goga's friend could not subscribe, invalid production Turnstile secret, and uncertainty about earlier readers. Test whether the newsletter's protection and observability are proportionate; do not presuppose Turnstile is bad. Draft alongside evidence. Show the value and gaps of existing first-party logging, earlier April incident, retention and identity limits, alternatives and current repair status. Protect the skepticism as an unresolved question. Exact human prompts must be preserved intact; no invented or trimmed owner quotes. Draft and research live outside posts/ pending author review and publication decision. Apply shape-article, blog-writing investigation reference, discovery/share passes when release is intended, and final prose/fact-check passes.
 
 ## Investigation checkpoint
+
+**November 6, 09:40 UTC delivery:** The revised hosted queue check passes on
+actual checkout 17efb44b; that source has its own native activation and served-byte
+acceptance. A separate non-publishing Actions-token control reaches Cloudflare
+and 100% activation, preserving its initial build failure and later success;
+the temporary workflow/control are removed after capture. The [delivery
+receipt](../worklist/november-daily-publication/2026-11-06-turnstile-delivery-checks.json)
+and [Research 32 audit](../../packages/blog/drafts/research/newsletter-reliability/32-four-hour-engineering-iteration.md)
+separate implementation, eight-prompt article/rehearsal, no-send production
+verification, source delivery and future article publication. The wider article
+task remains in progress through scheduled publication; no population conversion
+improvement or new mailbox cycle is claimed.
 
 **November 6, 08:43 UTC preparation:** [Research 32](../../packages/blog/drafts/research/newsletter-reliability/32-four-hour-engineering-iteration.md)
 records the expanded code/article work, independent reviews and distinct native

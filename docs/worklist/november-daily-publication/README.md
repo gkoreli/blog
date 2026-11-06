@@ -6,8 +6,12 @@ re-registered for **November 6 at 08:00 America/Los_Angeles**. The [new release
 receipt](2026-11-06-turnstile-engineering-checks.json) supersedes the earlier
 seven-prompt rehearsal without rewriting it. The [engineering worklist](../../../packages/blog/drafts/research/newsletter-reliability/32-four-hour-engineering-iteration.md)
 keeps the fixed 06:07:25–10:07:25 UTC window and separate source/production receipts.
-Hosted checking of the revised queue is the next gate; actual timed publication
-remains future evidence.
+The revised hosted queue check passes on the actual checked-out source. A
+separate non-publishing job-token push reaches a native Cloudflare build and
+100% activation, with matching served source/build identity. The [delivery
+receipt](2026-11-06-turnstile-delivery-checks.json) retains those dated results
+and private-capture hashes. Actual cron wakeup and article publication remain
+future evidence; November 7–30 still need approved queue entries.
 
 Started November 5, 2026, Pacific time. Owner wants a new article each day this
 month, published at 08:00; the November 5 article is already published and its
@@ -157,4 +161,38 @@ active development `dist/` was copied or overwritten. One offline installation
 first lacked a cached package; the frozen prefer-offline retry completed with
 286 reused packages and zero downloads. These are preparation checks, not a
 future-cron or live-article result. The original successful seven-prompt hosted
-check remains historical until the revised queue gets its own hosted receipt.
+check remains historical.
+
+### Revised hosted check and delivery control — November 6 UTC
+
+The [revised hosted check](https://github.com/gkoreli/blog/actions/runs/42190430355)
+passes queue validation. Its job log independently confirms actual checkout
+`17efb44bee6fd7df0332a4b968932affc6e20047`, with one approved entry and Node
+24.14.1. Promotion, publication validation, commit/push and live checks are
+skipped in this mode. Source 17efb44b separately reaches native build
+`687573a1-40bf-4e19-93f0-a00acb9e8d42` and Worker
+`8e596821-aecc-44de-9a7f-0888d09df7e0` at 100%; fresh served client/CSS bytes
+equal their source/build reconstruction. Nine read-only pre-release requests at
+09:00:45 UTC find no article route, prompt route or index/feed/citation entry.
+This is a dated absence check, not a future publication result.
+
+A separate [manual delivery control](https://github.com/gkoreli/blog/actions/runs/42195993273)
+uses the existing contents-write job token and the publication job's pinned
+checkout path to push only a non-publishing JSON control. The pushed source
+`740bf1ec6b2e25f31aca85774375cdeb17021807` reaches native Cloudflare build
+`a58681fa-85a1-4cb1-804c-e0ed19788c93`, Worker
+`b5a050a8-e0fa-4159-bdec-3bc82da863dc` at 100%, and matching served page/client
+source/build identity at 09:38:48 UTC. The native log retains an initial
+09:33:58 initialization failure and a later successful build/deploy ending
+09:36:15; its retry initiator and failure cause are unestablished. No manual
+retry, signup, email or recipient query occurs. This establishes the observed
+job-token-to-external-host path for the control, while actual article promotion
+and the scheduled wakeup remain future checks. The temporary manual workflow
+and JSON control are removed in the receipt's cleanup commit.
+
+Selected private captures are preserved in a Git-ignored, permission-restricted
+archive with verified hashes. A separate delivery supplement preserves the new
+control without changing the original archive manifest. Raw operational records
+remain outside Git. The [delivery receipt](2026-11-06-turnstile-delivery-checks.json)
+records those boundaries and counts; it is not a complete session transcript or
+a research-cost footprint.

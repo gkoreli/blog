@@ -1,10 +1,13 @@
-**November 6, 08:43 UTC:** The deeper implementation is frozen and passes 405 blog
+**November 6, 09:40 UTC:** The deeper implementation is frozen and passes 405 blog
 and 433 analytics tests, workspace types and native browser/provider/D1/HTTP
-controls. The revised article and eight selected prompts pass a 44-post release
-rehearsal and narrow layout checks; a clipped prompt path is repaired without
-editing its text. The November 6 08:00 Pacific entry is restored. [Research 32](32-four-hour-engineering-iteration.md)
-keeps the fixed deadline and remaining hosted-check/current-activation/delivery
-gates; this is prepared source, not actual article publication.
+controls. The revised article and eight selected prompts pass the 44-post release
+rehearsal, narrow rendering and revised hosted queue check. Source 17efb44b has
+its own activation/static-byte receipt; a separate non-publishing job-token
+control establishes external Cloudflare delivery and is removed after capture.
+[Research 32](32-four-hour-engineering-iteration.md) records the fixed-window
+audit and links the distinct receipts. The article remains queued for November 6
+08:00 Pacific; future cron wakeup/publication and population outcomes are not
+established by these checks.
 
 # Subscription bombing: implementation and article worklist
 

@@ -1,0 +1,396 @@
+{
+  "recordedAt": "2026-11-06T09:41:34.362465+00:00",
+  "scope": "Dated source-17 activation, non-publishing hosted queue and job-token-to-Cloudflare control; not future article publication or a new mailbox cycle",
+  "sourceCommit": "17efb44bee6fd7df0332a4b968932affc6e20047",
+  "hostedQueueCheck": {
+    "runId": 42190430355,
+    "jobId": 127800805764,
+    "url": "https://github.com/gkoreli/blog/actions/runs/42190430355",
+    "mode": "check",
+    "conclusion": "success",
+    "runHeadSha": "17efb44bee6fd7df0332a4b968932affc6e20047",
+    "actualCheckoutSha": "17efb44bee6fd7df0332a4b968932affc6e20047",
+    "actualCheckoutMeasuredFromJobLog": true,
+    "node": "24.14.1",
+    "queueEntries": 1,
+    "queueValidationPassed": true,
+    "publicationValidationCommitPushAndLiveStepsSkipped": true,
+    "promotionPerformed": false
+  },
+  "activation": {
+    "buildId": "687573a1-40bf-4e19-93f0-a00acb9e8d42",
+    "workerVersion": "8e596821-aecc-44de-9a7f-0888d09df7e0",
+    "allocationPercent": 100,
+    "nativeDeploySuccessAt": "2026-11-06T08:48:09.693Z",
+    "nativeBuildLogSha256": "147586318e9d5d824c8ebc71cbdfc05a1d6745d196a7691bf9c44d9b2b0bc2e7",
+    "nativeUiObservationBefore": "2026-11-06T08:54:09Z",
+    "cliAndNativeUiAgree": true,
+    "servedObservationAt": "2026-11-06T08:55:44.717450+00:00",
+    "publicSitekeyPresent": true,
+    "promptWrapRulePresent": true,
+    "assetsByteEqualToReconstruction": [
+      {
+        "file": "main.js",
+        "byteEqual": true,
+        "bytes": 41059,
+        "sha256": "3ca2486a136c0b2dd31e829a93a87a8bc3a4ccd9425035fb5905be26517b7a05"
+      },
+      {
+        "file": "main.css",
+        "byteEqual": true,
+        "bytes": 102902,
+        "sha256": "4c163fd15a0d7c095d828034ef0760a20e996cafaaabbdd424a07901310a8c6d"
+      }
+    ],
+    "staticPrefetchGets": 3,
+    "signupPosts": 0,
+    "directD1Queries": 0,
+    "limits": "Source/build/allocation/static assets only; the earlier real no-send request pins a different receiving Worker."
+  },
+  "preReleaseVisibility": {
+    "checkedAt": "2026-11-06T09:00:45.027482+00:00",
+    "scope": "Point-in-time early-publication check before the November6 08:00Pacific trigger; not proof of future publication",
+    "slug": "cloudflare-turnstile-signup-failures",
+    "staticPrefetchGets": 9,
+    "signupPosts": 0,
+    "d1Queries": 0,
+    "results": [
+      {
+        "path": "/cloudflare-turnstile-signup-failures",
+        "status": 404,
+        "bytes": 2384,
+        "sha256": "8fbdf24732eddbff77d54bb86e5bc62d405b89d4e66add3447cba504ffbd2b87"
+      },
+      {
+        "path": "/cloudflare-turnstile-signup-failures.md",
+        "status": 404,
+        "bytes": 2017,
+        "sha256": "b798ffa57ce01eaca0d36341022cb6b37cda096e27fcd6976e11ac1c193d2188"
+      },
+      {
+        "path": "/cloudflare-turnstile-signup-failures.csl.json",
+        "status": 404,
+        "bytes": 2017,
+        "sha256": "b798ffa57ce01eaca0d36341022cb6b37cda096e27fcd6976e11ac1c193d2188"
+      },
+      {
+        "path": "/cloudflare-turnstile-signup-failures.bib",
+        "status": 404,
+        "bytes": 2017,
+        "sha256": "b798ffa57ce01eaca0d36341022cb6b37cda096e27fcd6976e11ac1c193d2188"
+      },
+      {
+        "path": "/cloudflare-turnstile-signup-failures/prompts",
+        "status": 404,
+        "bytes": 2384,
+        "sha256": "8fbdf24732eddbff77d54bb86e5bc62d405b89d4e66add3447cba504ffbd2b87"
+      },
+      {
+        "path": "/posts.json",
+        "status": 200,
+        "bytes": 33930,
+        "sha256": "3b8a7b7069dd44e952e524dabb7ceb0a3cfe209b9edea9b9ccd0cb34c012a81c",
+        "queuedSlugAbsent": true
+      },
+      {
+        "path": "/feed.xml",
+        "status": 200,
+        "bytes": 21623,
+        "sha256": "f239f0a8a131d6dfe19678fff5ee00d79717642e0c5be3ead30bf1bcd8296ad3",
+        "queuedSlugAbsent": true
+      },
+      {
+        "path": "/sitemap.xml",
+        "status": 200,
+        "bytes": 7884,
+        "sha256": "0cc967a36eea7b6be8266054a644adb200fd9a35d04a6baea52bf8a9608ee0a8",
+        "queuedSlugAbsent": true
+      },
+      {
+        "path": "/llms.txt",
+        "status": 200,
+        "bytes": 18003,
+        "sha256": "3e06a9f4f587590bc1537928fa99a967f2616afbc168067967a80a9d1f2e5b29",
+        "queuedSlugAbsent": true
+      }
+    ]
+  },
+  "freshLocalNativeSource17": {
+    "sourceCommit": "17efb44bee6fd7df0332a4b968932affc6e20047",
+    "incomingWire": {
+      "checkedAt": "2026-11-06T09:03:31.413Z",
+      "runtime": "Miniflare.ready local HTTP proxy + workerd",
+      "compatibilityDate": "2026-03-06",
+      "sourceSha256": "c6daee92a9e78c37e8daf9096b99f0bc01c1da61f1c857986b5435f2bfdf4b65",
+      "fixtureSha256": "df155608f819c8260261b541ac4338b86f1dca2194a352b19d5a1ccd93188475",
+      "bundleSha256": "c6f5a246d2761ccbfee8dcd4e12c49304abcfb7603404a37ad968a3cc5ef0d56",
+      "versions": {
+        "node": "24.14.1",
+        "esbuild": "0.27.3",
+        "miniflare": "4.20260301.1",
+        "workerd": "1.20260301.1"
+      },
+      "limits": [
+        "Local Miniflare proxy and workerd only; production front door unmeasured",
+        "Conflicting/malformed framing and disconnect propagation unmeasured; chunked controls are limited to overflow and incomplete JSON"
+      ],
+      "actualClientSocketFraming": true,
+      "constructedRequestStreams": false,
+      "providerCalls": 0,
+      "productionCalls": 0,
+      "results": [
+        {
+          "label": "partial JSON Content-Length held open",
+          "status": 408,
+          "elapsedMs": 5022,
+          "handlerExecuted": true,
+          "declaredLength": 100,
+          "framing": "content-length",
+          "sentBytes": 9,
+          "requestEndedByClient": false
+        },
+        {
+          "label": "webhook missing auth before body finish",
+          "status": 401,
+          "elapsedMs": 3,
+          "handlerExecuted": true,
+          "declaredLength": 100,
+          "framing": "content-length",
+          "sentBytes": 1,
+          "requestEndedByClient": false
+        },
+        {
+          "label": "declared oversized body before body finish",
+          "status": 413,
+          "elapsedMs": 1,
+          "handlerExecuted": true,
+          "declaredLength": 5000,
+          "framing": "content-length",
+          "sentBytes": 1,
+          "requestEndedByClient": false
+        },
+        {
+          "label": "completed malformed address control",
+          "status": 400,
+          "elapsedMs": 2,
+          "handlerExecuted": true,
+          "declaredLength": 12,
+          "framing": "content-length",
+          "sentBytes": 12,
+          "requestEndedByClient": true
+        },
+        {
+          "label": "chunked actual-byte overflow held open",
+          "status": 413,
+          "elapsedMs": 1,
+          "handlerExecuted": true,
+          "declaredLength": null,
+          "framing": "chunked",
+          "sentBytes": 4097,
+          "requestEndedByClient": false
+        },
+        {
+          "label": "chunked partial JSON held open",
+          "status": 408,
+          "elapsedMs": 5005,
+          "handlerExecuted": true,
+          "declaredLength": null,
+          "framing": "chunked",
+          "sentBytes": 9,
+          "requestEndedByClient": false
+        }
+      ]
+    },
+    "providerControlRecords": [
+      {
+        "control": "local native 307 redirect",
+        "originCalls": 3,
+        "targetCalls": 0,
+        "verification": "verifier_redirect",
+        "delivery": "unknown",
+        "deliveryStop": "redirect-rejected"
+      },
+      {
+        "control": "workerd provider and redirect boundaries",
+        "compatibilityDate": "2026-03-06",
+        "errorMode": "throws-TypeError",
+        "providerCalls": 4,
+        "targetCalls": 0,
+        "ordinaryVerification": true,
+        "ordinaryConfirmation": "accepted",
+        "redirectedVerification": "verifier_redirect",
+        "redirectedDelivery": "redirect-rejected"
+      },
+      {
+        "control": "workerd bounded provider responses",
+        "responseBudget": {
+          "result": {
+            "ok": false,
+            "reason": "timeout"
+          },
+          "elapsedMs": 108
+        },
+        "providerResponseResults": [
+          {
+            "mode": "provider-oversized",
+            "verification": false,
+            "delivery": "unknown"
+          },
+          {
+            "mode": "malformed-id",
+            "verification": true,
+            "delivery": "unknown"
+          },
+          {
+            "mode": "request-timeout",
+            "verification": true,
+            "delivery": "unknown"
+          }
+        ]
+      },
+      {
+        "control": "workerd batch receipt and body budgets",
+        "batchResults": [
+          {
+            "mode": "ok",
+            "outcome": "accepted",
+            "error": null,
+            "elapsedMs": 2
+          },
+          {
+            "mode": "redirect",
+            "outcome": "unknown",
+            "error": "provider_redirect",
+            "elapsedMs": 1
+          },
+          {
+            "mode": "partial",
+            "outcome": "unknown",
+            "error": "provider_response_invalid",
+            "elapsedMs": 1
+          },
+          {
+            "mode": "oversized",
+            "outcome": "unknown",
+            "error": "provider_response_too_large",
+            "elapsedMs": 2
+          },
+          {
+            "mode": "stalled",
+            "outcome": "unknown",
+            "error": "provider_timeout",
+            "elapsedMs": 8006
+          }
+        ]
+      },
+      {
+        "control": "workerd default-follow counterexample",
+        "targetCalls": 1,
+        "authorizationForwarded": false,
+        "bodyForwarded": true
+      }
+    ],
+    "providerStdoutSha256": "7a0b4dbb13744fa1a8028d45e6bcde6a5c1898e663abe15b2113b688f665b821",
+    "providerScriptSha256": "b6f095aa53415ddbd1be579cf56f8da34d485500ef32009b6def93dce4aa4220",
+    "scope": "Distinct final-source local runs; all external provider destinations intercepted/remapped; no production request or real email. Earlier receipts are historical, not overwritten."
+  },
+  "privateArchive": {
+    "createdAt": "2026-11-06T09:15:57.374975+00:00",
+    "archiveRelativePath": "packages/blog/worklog/newsletter-engineering-20261106",
+    "fileCount": 265,
+    "captureBytes": 2380523,
+    "manifestSha256": "0716cdff6e7009c09c0fc7cbf3700dc724ea8764f45f008eae9c7dc254e22ce6",
+    "copiedFilesHashVerified": true,
+    "gitIgnored": true,
+    "directoryMode": "0700",
+    "fileMode": "0600",
+    "missingCount": 0,
+    "skippedCount": 0,
+    "completeTranscript": false,
+    "knownPreservationLimits": true
+  },
+  "sharedCheckout": {
+    "fastForwardedTo": "17efb44bee6fd7df0332a4b968932affc6e20047",
+    "unrelatedDirtyFilesBytePreservedAtIntegration": 18,
+    "rootOwnedPreviewServerStopped": true
+  },
+  "limits": {
+    "scheduledCronWakeupMeasured": false,
+    "githubTokenToCloudflareArticlePublicationMeasured": false,
+    "liveArticlePublished": false,
+    "newMailboxCyclePerformed": false,
+    "conversionImprovementMeasured": false,
+    "subsequentBuildsInheritThisAcceptance": false,
+    "githubTokenToExternalCloudflareNonPublishingControlMeasured": true
+  },
+  "nonPublishingJobTokenControl": {
+    "runId": 42195993273,
+    "jobId": 127819266941,
+    "url": "https://github.com/gkoreli/blog/actions/runs/42195993273",
+    "conclusion": "success",
+    "actualCheckoutSha": "782c3f9a074cf5f07e5ebe30c36bcef7f459941f",
+    "pushedCommit": "740bf1ec6b2e25f31aca85774375cdeb17021807",
+    "pushObservedAt": "2026-11-06T09:33:56.4529207Z",
+    "changedPaths": [
+      "packages/blog/scheduled/delivery-control.json"
+    ],
+    "usedExistingContentsWriteJobToken": true,
+    "promotedArticle": false,
+    "served": {
+      "checkedAt": "2026-11-06T09:38:48.166447+00:00",
+      "buildId": "a58681fa-85a1-4cb1-804c-e0ed19788c93",
+      "sourceCommit": "740bf1ec6b2e25f31aca85774375cdeb17021807",
+      "publicSitekeyPresent": true,
+      "promptWrapRulePresent": true,
+      "requests": [
+        {
+          "url": "https://gkoreli.com/ai-fetcher-browser-crawler-headers",
+          "status": 200,
+          "bytes": 81119,
+          "sha256": "8f191812d5ae0793a561803d2abed88b63df18c27a45325671624dc05334c2a6"
+        },
+        {
+          "url": "https://gkoreli.com/main.js",
+          "status": 200,
+          "bytes": 41059,
+          "sha256": "553a68f03845bbb555f5be531bbe2a52f937b3713c9ad2b40afe2f95f5db3c7b"
+        },
+        {
+          "url": "https://gkoreli.com/main.css",
+          "status": 200,
+          "bytes": 102902,
+          "sha256": "4c163fd15a0d7c095d828034ef0760a20e996cafaaabbdd424a07901310a8c6d"
+        }
+      ],
+      "scope": "Fresh static/prefetch GETs; no browser execution, signup, email or D1 query; redirect following disabled"
+    },
+    "scope": "Manual control establishes the observed job-token push to external Cloudflare static delivery. Future cron wakeup and actual article promotion/publication remain unmeasured.",
+    "nativeActivation": {
+      "buildId": "a58681fa-85a1-4cb1-804c-e0ed19788c93",
+      "workerVersion": "b5a050a8-e0fa-4159-bdec-3bc82da863dc",
+      "allocationPercent": 100,
+      "nativeUiObservationBefore": "2026-11-06T09:38:53Z",
+      "nativeDeploySuccessAt": "2026-11-06T09:36:15.336Z",
+      "nativeBuildLogSha256": "e8e96f72c1227c6c86098c60ccfcaff7e734c6b5c51654f4f9f72c8a12b3983c",
+      "cliAllocationAgrees": true,
+      "retainedInitializationFailureAt": "2026-11-06T09:33:58.494Z",
+      "laterInitializationAt": "2026-11-06T09:35:32.294Z",
+      "failureCauseEstablished": false,
+      "retryInitiatorEstablished": false,
+      "manualRetryPerformed": false
+    },
+    "temporaryFilesRemovedInContainingCommit": [
+      ".github/workflows/november-delivery-control.yml",
+      "packages/blog/scheduled/delivery-control.json"
+    ],
+    "privateArchiveSupplement": {
+      "createdAt": "2026-11-06T09:40:08.231392+00:00",
+      "archiveRelativePath": "packages/blog/worklog/newsletter-engineering-20261106/delivery-control",
+      "fileCount": 12,
+      "captureBytes": 401732,
+      "manifestSha256": "256da8deed7655a4ee46028818fe4a8df613c87c77754201efb57368008c50d9",
+      "originalManifestUnchanged": true,
+      "copiedFilesHashVerified": true
+    }
+  }
+}

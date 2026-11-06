@@ -213,3 +213,47 @@ a scoped commit. No credential, hook or account permission is added. The first
 Python YAML-parser attempt was unavailable; the installed Ruby YAML parser then
 validated the manual trigger, permissions and non-publishing command scope before
 delivery. This is a bounded delivery check, not a permanent publication mode.
+
+## Delivery and requirement audit — 09:40 UTC
+
+The final revised queue/source is `17efb44b`. The [delivery receipt](../../../../../docs/worklist/november-daily-publication/2026-11-06-turnstile-delivery-checks.json)
+joins its actual hosted checkout, source/build/Worker association, served-byte
+reconstruction and dated pre-release absence checks. Its non-publishing hosted
+queue check passes. The separate job-token control pushes `740bf1ec`; native
+Cloudflare and fresh served assets independently join that source to build
+`a58681fa` and Worker `b5a050a8` at 100%. Its retained log includes an initial
+build-initialization failure and later successful build, with cause and retry
+initiator unknown. No manual retry occurs. The temporary workflow and control
+JSON are removed in the containing cleanup commit. No new persistent credential,
+hook or permission is introduced.
+
+| Owner requirement | Final result and boundary |
+|---|---|
+| Improve code and article together | Reproduced widget/request ownership races, uncertain-send downgrade, verifier contradiction, raw-byte signature mismatch, duplicate campaign admission and suppression-retention reset inform both repairs and prose. Research 33–39 preserve selected counterexamples and limits. |
+| Respect DDD | Nominal immutable subscriber address and pure confirmation policy; application orchestration through proof, issuance, durable admission, delivery and recording ports; browser attempt lifecycle isolated from widget/DOM transport. HTTP/provider/D1 adapters retain their wire and transaction contracts. No framework or dependency added. |
+| Inspect primary docs/native source/capabilities | Official Turnstile, Workers, D1, Resend and standard-webhook contracts are linked in the research. Native deferred loading, workerd redirect/body behavior, raw-byte Web Crypto and transactional D1 controls distinguish documentation from executable acceptance. Pinned upstream source is not asserted identical to the deployed runtime. |
+| Useful logging | Closed reason/stage/outcome fields preserve verification, unknown delivery and receipt acknowledgment separately. Addresses, tokens, secrets, raw provider payloads and free-form response errors are excluded from the new diagnostic fields. |
+| Meaningful failure checks | Final suites pass 405 blog and 433 analytics tests plus workspace types. Native browser, real local HTTP sockets, intercepted provider transport, actual local D1 rollback/lifecycle and receipt-write failure controls cover the selected boundaries. They do not measure population reliability or all network/runtime conditions. |
+| Refactor and clean up proportionately | Policy/value/application extraction, generation leases, bounded reusable body reading, original-byte authentication and explicit durable campaign admission replace concrete failure-prone coupling. Existing SQL admission policy and deliberate at-most-once campaign tradeoffs remain explicit. |
+| Improve evidence-led prose | Final 3,454-word article leads with the controlled cancellation failure and teaches a diagnostic method. Four tables/four code blocks, eight complete selected human prompts and the disclosed private-authorization omission pass source/render reconciliation. No human-reader trial, footprint or lost-subscriber count is invented. |
+| Deliver and verify release preparation | Scoped code/article source is pushed to main; schema 0006 has its separate prior application receipt. Exact queue copies, promotion clock/repeat guards, 44-post isolated rendering, metadata/feed/citation outputs and narrow layout pass. Actual hosted queue source and non-publishing token-to-Cloudflare delivery are measured separately. |
+
+The original builder owns the browser work and native production/version joins;
+independent provider and campaign reviewers deliver bounded source reviews and
+native controls. Their agent reviews are not human reception. The selected
+private evidence archive preserves 265 files with verified copies; its separate
+12-file delivery supplement leaves the original manifest unchanged. Raw captures
+remain Git-ignored and permission-restricted. Historical missing/reused capture
+limits are disclosed rather than reconstructed.
+
+The real production no-send check remains pinned to its actual earlier receiving
+Worker; the new source activation is not a repeated signup or mailbox cycle.
+Prior Inbox/SPF/DKIM/DMARC/owner activation remains a separate dated result.
+Neither code acceptance nor the job-token control proves conversion improvement,
+human/bot identity, future cron wakeup or actual article publication.
+
+Next bounded publication action is the existing November 6 **08:00 Pacific**
+workflow's promotion, commit/push and live-check result. It is a trigger followed
+by checks/hosting delay, not an exact public-visibility guarantee. November 7–30
+need approved articles. No unrelated draft is admitted automatically. The fixed
+engineering window remains 06:07:25–10:07:25 UTC; no continuation resets it.
