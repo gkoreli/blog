@@ -82,7 +82,7 @@ try {
   assert.match(rendered, /&lt;script&gt;private-attack\(\)&lt;\/script&gt;/);
   assert.doesNotMatch(rendered, /<script>private-attack/);
   assert.match(rendered, /Page and discovery evidence/);
-  assert.match(rendered, /<div id="ai-check-server-result"><section id="access-report"/, 'The server result keeps its replaceable container for later enhanced checks');
+  assert.match(rendered, /<div id="ai-check-server-result" tabindex="-1" autofocus><section id="access-report"/, 'A completed native POST focuses its replaceable result container');
   assert.match(rendered, /class="access-optional-state">HTML returned; Markdown optional<\/(?:p|span)>/);
   assert.equal(nojs.headers.get('X-Robots-Tag'), 'noindex');
   assert.match(rendered, /<input[^>]*value="https:\/\/public.site\/article"/);

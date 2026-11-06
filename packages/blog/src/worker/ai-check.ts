@@ -89,7 +89,8 @@ async function htmlResponse(request: Request, env: AiCheckEnv, result: string, s
   if (!shell.ok) return new Response(`<!doctype html><html lang="en"><meta charset="utf-8"><title>AI site check</title><main><a href="/ai-check">Try another check</a>${result || (formState?.error ? checkErrorHtml(formState.error) : '')}</main></html>`, { status, headers: { ...Object.fromEntries(headers(quota)), 'Content-Type': 'text/html; charset=utf-8', 'X-Robots-Tag': 'noindex' } });
   const body = await shell.text();
   const marker = '<div id="ai-check-server-result"></div>';
-  const rendered = body.includes(marker) ? body.replace(marker, `<div id="ai-check-server-result">${result}</div>`) : body.replace('</main>', `${result}</main>`);
+  const resultFocus = request.method === 'POST' && result ? ' tabindex="-1" autofocus' : '';
+  const rendered = body.includes(marker) ? body.replace(marker, `<div id="ai-check-server-result"${resultFocus}>${result}</div>`) : body.replace('</main>', `${result}</main>`);
   const responseHeaders = headers(quota);
   for (const name of ['Content-Security-Policy', 'Permissions-Policy', 'Referrer-Policy']) {
     const value = shell.headers.get(name);

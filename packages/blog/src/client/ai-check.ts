@@ -1,6 +1,6 @@
 import type { SiteAuditReport } from '@gkoreli/site-audit/contracts';
 import { isSiteAuditReport } from '@gkoreli/site-audit/report-validation';
-import { additionalReviewFindings, optionalSupportLabel, reportIdentity, assessmentVerdict } from '../lib/site-audit-presentation.js';
+import { additionalReviewFindings, optionalSupportLabel, reportIdentity, assessmentVerdict, reportFacts } from '../lib/site-audit-presentation.js';
 import { deriveTechnicalAssessment } from '@gkoreli/site-audit/product';
 import { normalizeTarget, TargetValidationError } from '@gkoreli/site-audit/target';
 import { failureFeedback, feedbackQuota, type CheckFeedback } from '../lib/check-feedback.js';
@@ -51,6 +51,9 @@ export function renderSiteAudit(report: SiteAuditReport, example = false): HTMLE
     item.append(bar); components.append(item);
   }
   article.append(components);
+  const facts = node('dl', undefined, 'report-facts');
+  for (const fact of reportFacts(report)) { const item = node('div'); item.append(node('dt', fact.label), node('dd', fact.value), node('dd', fact.detail, 'report-fact-detail')); facts.append(item); }
+  article.append(facts);
   const nextHeading = node('h3', 'Your next steps', 'access-next-heading'); nextHeading.id = 'report-next'; article.append(nextHeading);
   const next = assessment.components.flatMap(component => component.checks).filter(check => check.state !== 'pass').sort((a, b) => (a.state === 'fail' ? 0 : 1) - (b.state === 'fail' ? 0 : 1) || b.weight - a.weight);
   if (next.length === 0) article.append(node('p', 'No issue was identified in these scored checks. Review your crawler policies and optional support below for choices specific to your site.', 'ai-check-note'));
@@ -76,6 +79,7 @@ export function renderSiteAudit(report: SiteAuditReport, example = false): HTMLE
   article.append(allFindings.details);
   for (const component of assessment.components) {
     const group = disclosure(`${component.title} · ${component.checks.length} ${component.checks.length === 1 ? 'check' : 'checks'}`);
+    group.details.open = component.checks.some(check => check.state !== 'pass');
     for (const check of component.checks) {
       const row = node('div', undefined, 'access-check-row'); row.dataset['state'] = check.state;
       const description = node('div'); description.append(node('strong', check.title), node('small', ` · ${check.state === 'pass' ? 'Passed' : check.state === 'fail' ? 'Needs attention' : 'Unassessed'}`), node('p', check.evidence));

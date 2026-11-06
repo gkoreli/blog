@@ -1,3 +1,5 @@
+import { comparisonExample } from '../lib/report-comparison-example.js';
+import { ROBOTS_EXAMPLES } from '../lib/robots-examples.js';
 import { evaluateRobotsWorkbench, compareSiteReports, deriveTechnicalAssessment, WorkbenchInputError } from '@gkoreli/site-audit/product';
 import { isSiteAuditReport } from '@gkoreli/site-audit/report-validation';
 import { reportIdentity } from '../lib/site-audit-presentation.js';
@@ -19,27 +21,37 @@ export function parseSavedReport(source: string): SiteAuditReport {
 }
 
 export class RobotsWorkbench extends HTMLElement {
-  private readonly submit = (event: SubmitEvent): void => { event.preventDefault(); this.evaluate(); };
-  private readonly input = (event: Event): void => { if (event.target instanceof HTMLElement) event.target.removeAttribute('aria-invalid'); const status = this.querySelector('[data-workbench-status]'); if (status) { status.textContent = ''; status.removeAttribute('data-state'); } this.querySelector('[data-workbench-result]')?.replaceChildren(); };
-  connectedCallback(): void { this.addEventListener('submit', this.submit); this.addEventListener('input', this.input); const button = this.querySelector('button'); if (button instanceof HTMLButtonElement) button.disabled = false; }
-  disconnectedCallback(): void { this.removeEventListener('submit', this.submit); this.removeEventListener('input', this.input); }
-  private evaluate(): void {
+  private readonly submit = (event: SubmitEvent): void => { event.preventDefault(); this.evaluate(true); };
+  private readonly example = (event: Event): void => {
+    if (!(event.target instanceof HTMLSelectElement) || !event.target.hasAttribute('data-robots-example')) return;
+    const id = event.target.value; const selected = ROBOTS_EXAMPLES.find(example => example.id === id);
+    if (!selected) return;
+    const source = this.querySelector('textarea[name="robots"]'), token = this.querySelector('input[name="token"]'), path = this.querySelector('input[name="path"]');
+    if (!(source instanceof HTMLTextAreaElement) || !(token instanceof HTMLInputElement) || !(path instanceof HTMLInputElement)) return;
+    source.value = selected.robots; token.value = selected.token; path.value = selected.path; this.evaluate();
+  };
+  private readonly input = (event: Event): void => { if (event.target instanceof HTMLElement) event.target.removeAttribute('aria-invalid'); if (event.target instanceof HTMLInputElement || event.target instanceof HTMLTextAreaElement) { const picker = this.querySelector('[data-robots-example]'); if (picker instanceof HTMLSelectElement) picker.value = ''; } const status = this.querySelector('[data-workbench-status]'); if (status) { status.textContent = ''; status.removeAttribute('data-state'); } this.querySelector('[data-workbench-result]')?.replaceChildren(); };
+  connectedCallback(): void { this.addEventListener('submit', this.submit); this.addEventListener('input', this.input); this.addEventListener('change', this.example); const picker = this.querySelector('[data-robots-example]'); if (picker instanceof HTMLSelectElement) { picker.disabled = false; picker.closest('.workbench-example-picker')?.removeAttribute('hidden'); } const button = this.querySelector<HTMLButtonElement>('button[type="submit"]'); if (button instanceof HTMLButtonElement) button.disabled = false; }
+  disconnectedCallback(): void { this.removeEventListener('submit', this.submit); this.removeEventListener('input', this.input); this.removeEventListener('change', this.example); }
+  private evaluate(focusResult = false): void {
     const source = this.querySelector('textarea[name="robots"]'), token = this.querySelector('input[name="token"]'), path = this.querySelector('input[name="path"]'), status = this.querySelector('[data-workbench-status]'), output = this.querySelector('[data-workbench-result]');
     if (!(source instanceof HTMLTextAreaElement) || !(token instanceof HTMLInputElement) || !(path instanceof HTMLInputElement) || !status || !output) return;
     for (const field of [source, token, path]) field.removeAttribute('aria-invalid');
     try {
       const result = evaluateRobotsWorkbench({ robots: source.value, token: token.value.trim(), path: path.value.trim() });
-      const verdict = node('section', undefined, 'workbench-verdict'); verdict.dataset['state'] = result.decision;
+      const verdict = node('section', undefined, 'workbench-verdict'); verdict.dataset['state'] = result.decision; verdict.tabIndex = -1; verdict.setAttribute('aria-label', 'Robots policy result');
       verdict.append(node('span', 'Policy result', 'tool-kicker'), node('h2', `${result.decision === 'allowed' ? 'Allowed' : result.decision === 'disallowed' ? 'Disallowed' : 'Unknown'} for ${token.value.trim()}`), node('p', result.reason),
         definition([['Requested path', path.value.trim()], ['Selected groups', result.matchedGroups.join(', ') || 'No named group'], ['Selected rule', result.matchedRule ?? 'No matching rule'], ['Parsed policy', `${result.groups} groups · ${result.rules} rules`]]));
       const limits = node('ul', undefined, 'ai-check-limits'); for (const limit of result.limits) limits.append(node('li', limit)); verdict.append(limits, rawEvidence(result, 'Full policy evaluation'));
       output.replaceChildren(verdict); workbenchStatus(status, `Evaluated locally. ${result.complete ? 'Policy parsing completed.' : 'Some policy evidence is unavailable; see the limits.'} No daily check used.`, 'ready');
+      if (focusResult) { verdict.focus({ preventScroll: true }); verdict.scrollIntoView({ block: 'start', behavior: 'auto' }); }
     } catch (error: unknown) { output.replaceChildren(); workbenchStatus(status, error instanceof Error ? error.message : 'The policy could not be evaluated.', 'error'); if (error instanceof WorkbenchInputError) { const field = { robots: source, token, path }[error.field]; field.setAttribute('aria-invalid', 'true'); field.focus(); } }
   }
 }
 
 export function renderReportComparison(before: SiteAuditReport, after: SiteAuditReport): HTMLElement {
-  const diff = compareSiteReports(before, after), section = node('section');
+  const diff = compareSiteReports(before, after), section = node('section', undefined, 'comparison-result'); section.tabIndex = -1; section.setAttribute('aria-label', 'Report comparison result');
+  if ([before, after].some(report => report.limits.some(limit => limit.startsWith('ILLUSTRATIVE EXAMPLE:')))) section.append(node('p', 'Illustrative example data · Supplied demonstration values are not live measurements.', 'comparison-example-note'));
   section.append(node('h2', diff.comparable ? 'Here is what changed.' : 'Review the comparison conditions.', 'comparison-heading'));
   const context = definition([['Before', `${diff.baselineTarget} · ${reportIdentity(before).observed}`], ['After', `${diff.currentTarget} · ${reportIdentity(after).observed}`]]); section.append(context);
   for (const reason of diff.reasons) section.append(node('p', reason, 'ai-check-note'));
@@ -49,11 +61,12 @@ export function renderReportComparison(before: SiteAuditReport, after: SiteAudit
     const card = node('div', undefined, 'access-component'); card.append(node('h3', label), node('strong', score.lower === score.upper ? String(score.lower) : `${score.lower}–${score.upper}`), node('small', ' / 100'), node('span', `${score.coveragePercent}% assessed`, 'access-component-state')); summaries.append(card);
   }
   section.append(summaries);
+  if (diff.comparable && diff.changes.length) { const counts = node('div', undefined, 'comparison-change-counts'); for (const meaning of ['improved', 'regressed', 'changed', 'unknown'] as const) { const count = diff.changes.filter(change => change.meaning === meaning).length; if (count) { const item = node('span', `${count} ${meaning}`); item.dataset['meaning'] = meaning; counts.append(item); } } section.append(counts); }
   if (diff.changes.length === 0) section.append(node('p', diff.comparable ? 'No assessed evidence differences were found in these saved reports.' : 'No comparison was made; resolve the conditions above.'));
   else {
     const table = makeTable(`${diff.changes.length} evidence changes`, ['Check or observation', 'Before', 'After', 'Direction']);
     for (const change of diff.changes) {
-      const row = table.body.insertRow(); row.insertCell().textContent = change.label; row.insertCell().textContent = change.before; row.insertCell().textContent = change.after; row.insertCell().textContent = change.meaning;
+      const row = table.body.insertRow(); row.insertCell().textContent = change.label; row.insertCell().textContent = change.before; row.insertCell().textContent = change.after; const direction = row.insertCell(); direction.textContent = change.meaning; direction.dataset['meaning'] = change.meaning;
     }
     section.append(table.wrapper);
   }
@@ -61,6 +74,18 @@ export function renderReportComparison(before: SiteAuditReport, after: SiteAudit
 }
 
 export class ReportComparison extends HTMLElement {
+  private readonly example = (event: Event): void => {
+    if (!(event.target instanceof Element) || !event.target.closest('[data-comparison-example]')) return;
+    const reports = comparisonExample();
+    for (const side of ['before', 'after'] as const) {
+      const target = this.querySelector(`textarea[name="${side}"]`); if (!(target instanceof HTMLTextAreaElement)) return;
+      this.reads[side]++; this.loading.delete(side); target.value = JSON.stringify(reports[side], null, 2); this.clearError(side);
+      const file = this.querySelector(`input[data-report-file="${side}"]`); if (file instanceof HTMLInputElement) file.value = '';
+      const name = this.querySelector(`[data-file-name="${side}"]`); if (name) name.textContent = `Illustrative ${side} report`;
+      file?.closest('.report-file-zone')?.setAttribute('data-loaded', 'true');
+    }
+    this.syncBusy(); this.compare();
+  };
   private readonly reads = { before: 0, after: 0 };
   private readonly loading = new Set<string>();
   private readonly input = (event: Event): void => {
@@ -80,11 +105,11 @@ export class ReportComparison extends HTMLElement {
     const error = this.querySelector(`[data-report-error="${side}"]`);
     if (error instanceof HTMLElement) { error.textContent = message; error.hidden = false; }
   }
-  private syncBusy(): void { const button = this.querySelector('button'); if (button) button.disabled = this.loading.size > 0; }
+  private syncBusy(): void { const button = this.querySelector<HTMLButtonElement>('button[type="submit"]'); if (button) button.disabled = this.loading.size > 0; }
   private readonly submit = (event: SubmitEvent): void => { event.preventDefault(); this.compare(); };
   private readonly change = (event: Event): void => { if (event.target instanceof HTMLInputElement && event.target.type === 'file') void this.loadFile(event.target); };
-  connectedCallback(): void { this.addEventListener('submit', this.submit); this.addEventListener('change', this.change); this.addEventListener('input', this.input); const button = this.querySelector('button'); if (button instanceof HTMLButtonElement) button.disabled = false; }
-  disconnectedCallback(): void { this.removeEventListener('submit', this.submit); this.removeEventListener('change', this.change); this.removeEventListener('input', this.input); this.reads.before++; this.reads.after++; this.loading.clear(); }
+  connectedCallback(): void { this.addEventListener('click', this.example); const example = this.querySelector('[data-comparison-example]'); if (example instanceof HTMLElement) { example.hidden = false; example.closest('.comparison-demo')?.removeAttribute('hidden'); } this.addEventListener('submit', this.submit); this.addEventListener('change', this.change); this.addEventListener('input', this.input); const button = this.querySelector<HTMLButtonElement>('button[type="submit"]'); if (button instanceof HTMLButtonElement) button.disabled = false; }
+  disconnectedCallback(): void { this.removeEventListener('click', this.example); this.removeEventListener('submit', this.submit); this.removeEventListener('change', this.change); this.removeEventListener('input', this.input); this.reads.before++; this.reads.after++; this.loading.clear(); }
   private async loadFile(input: HTMLInputElement): Promise<void> {
     const file = input.files?.[0], name = input.dataset['reportFile'], status = this.querySelector('[data-workbench-status]');
     if (!file || !status || (name !== 'before' && name !== 'after')) return;
@@ -117,7 +142,7 @@ export class ReportComparison extends HTMLElement {
       const baseline = parseSavedReport(before.value); active = after;
       if (!after.value.trim()) throw new Error('Choose an after report or paste its JSON.');
       const current = parseSavedReport(after.value);
-      output.replaceChildren(renderReportComparison(baseline, current)); workbenchStatus(status, 'Compared locally. No upload or daily check used.', 'ready');
+      const result = renderReportComparison(baseline, current); output.replaceChildren(result); result.focus({ preventScroll: true }); result.scrollIntoView({ block: 'start', behavior: 'auto' }); workbenchStatus(status, 'Compared locally. No upload or daily check used.', 'ready');
     } catch (error: unknown) {
       status.textContent = ''; const side = active === before ? 'before' : 'after'; this.showError(side, error instanceof Error ? error.message : 'The reports could not be compared.');
       if (!active.value.trim()) { const input = this.querySelector<HTMLInputElement>(`[data-report-file="${side}"]`); input?.setAttribute('aria-invalid', 'true'); input?.focus(); }

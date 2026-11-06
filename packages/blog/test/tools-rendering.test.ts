@@ -18,7 +18,7 @@ function fixture(): SiteAuditReport {
 }
 function constructors(t: TestContext): Window {
   const view = document.defaultView; assert.ok(view);
-  for (const name of ['Element', 'HTMLFormElement', 'HTMLInputElement', 'HTMLButtonElement', 'HTMLTextAreaElement'] as const) {
+  for (const name of ['Element', 'HTMLFormElement', 'HTMLInputElement', 'HTMLButtonElement', 'HTMLTextAreaElement', 'HTMLSelectElement'] as const) {
     const previous = Object.getOwnPropertyDescriptor(globalThis, name);
     Object.defineProperty(globalThis, name, { configurable: true, value: view[name] });
     t.after(() => { if (previous) Object.defineProperty(globalThis, name, previous); else Reflect.deleteProperty(globalThis, name); });
@@ -172,6 +172,7 @@ test('robots validation identifies and focuses the field without browser validat
   assert.equal(token.hasAttribute('aria-invalid'), false);
   form.dispatchEvent(new view.Event('submit', { bubbles: true, cancelable: true }));
   assert.match(document.querySelector('[data-workbench-result]')?.textContent ?? '', /Disallowed for GPTBot/);
+  assert.equal(document.activeElement, document.querySelector('.workbench-verdict'));
 });
 
 test('comparison focuses the missing file input with an adjacent actionable error', async t => {
@@ -194,13 +195,13 @@ test('comparison does not let a stale file read overwrite a newer choice or edit
   let resolveOld: (value: string) => void = () => { throw new Error('Old read was not started'); };
   Object.defineProperty(input, 'files', { configurable: true, value: [{ name: 'old.json', size: 100, text: () => new Promise<string>(resolve => { resolveOld = resolve; }) }] });
   input.dispatchEvent(new view.Event('change', { bubbles: true }));
-  assert.equal(document.querySelector('report-comparison button')?.hasAttribute('disabled'), true);
+  assert.equal(document.querySelector('report-comparison button[type="submit"]')?.hasAttribute('disabled'), true);
   assert.equal(result.textContent, '', 'Changing an input removes the previous comparison');
   Object.defineProperty(input, 'files', { configurable: true, value: [{ name: 'new.json', size: 100, text: async () => JSON.stringify(fixture()) }] });
   input.dispatchEvent(new view.Event('change', { bubbles: true })); await new Promise(resolve => setImmediate(resolve));
   const chosen = target.value; resolveOld('invalid old content'); await new Promise(resolve => setImmediate(resolve));
   assert.equal(target.value, chosen); assert.equal(document.querySelector('[data-file-name="before"]')?.textContent, 'new.json');
-  assert.equal(document.querySelector('report-comparison button')?.hasAttribute('disabled'), false);
+  assert.equal(document.querySelector('report-comparison button[type="submit"]')?.hasAttribute('disabled'), false);
   Object.defineProperty(input, 'files', { configurable: true, value: [{ name: 'pending.json', size: 100, text: () => new Promise<string>(resolve => { resolveOld = resolve; }) }] });
   input.dispatchEvent(new view.Event('change', { bubbles: true })); target.value = 'manually edited'; target.dispatchEvent(new view.Event('input', { bubbles: true }));
   resolveOld(JSON.stringify(fixture())); await new Promise(resolve => setImmediate(resolve)); assert.equal(target.value, 'manually edited');
@@ -216,4 +217,52 @@ test('report overview and section destinations agree in enhanced and script-free
   for (const root of [client, server]) for (const link of root.querySelectorAll('.report-navigation a')) {
     const target = link.getAttribute('href'); assert.ok(target); assert.ok(root.querySelector(target), `Report destination ${target} exists`);
   }
+});
+
+test('tools directory submits the shared native form without requiring a client bundle', async t => {
+  constructors(t);
+  const [home, checker] = await renderContent([toolsPage(), aiCheckPage()]); assert.ok(home); assert.ok(checker);
+  document.body.innerHTML = home;
+  const homeForm = document.querySelector('form.ai-check-form'); assert.ok(homeForm instanceof HTMLFormElement);
+  const markup = homeForm.outerHTML;
+  assert.equal(homeForm.getAttribute('action'), '/ai-check'); assert.equal(homeForm.method, 'post'); assert.equal(homeForm.noValidate, true);
+  assert.equal(homeForm.querySelector('input')?.type, 'text');
+  document.body.innerHTML = checker;
+  assert.equal(document.querySelector('form.ai-check-form')?.outerHTML, markup);
+});
+
+test('policy examples update all three inputs and remain entirely local', async t => {
+  const view = constructors(t); const [snapshot] = await renderContent([robotsPlaygroundPage()]); assert.ok(snapshot);
+  await import('../src/client/tools-workbench.js'); t.mock.method(globalThis, 'fetch', async () => { assert.fail('Examples must remain local'); });
+  document.body.innerHTML = snapshot;
+  const picker = document.querySelector('[data-robots-example]'), path = document.querySelector('input[name="path"]');
+  assert.ok(picker instanceof HTMLSelectElement); assert.ok(path instanceof HTMLInputElement); assert.equal(picker.disabled, false);
+  picker.value = 'exception'; picker.dispatchEvent(new view.Event('change', { bubbles: true }));
+  assert.equal(path.value, '/private/public/article'); assert.match(document.querySelector('[data-workbench-result]')?.textContent ?? '', /Allow: \/private\/public\//);
+  picker.value = 'specific'; picker.dispatchEvent(new view.Event('change', { bubbles: true }));
+  assert.match(document.querySelector('[data-workbench-result]')?.textContent ?? '', /Disallowed for GPTBot/);
+  path.value = '/edited'; path.dispatchEvent(new view.Event('input', { bubbles: true }));
+  assert.equal(picker.value, ''); assert.equal(document.querySelector('[data-workbench-result]')?.textContent, '');
+});
+
+test('comparison example validates its reports, explains the illustration and focuses the result without fetching', async t => {
+  const view = constructors(t); const [snapshot] = await renderContent([reportComparePage()]); assert.ok(snapshot);
+  const { comparisonExample } = await import('../src/lib/report-comparison-example.js'); const samples = comparisonExample();
+  assert.equal(isSiteAuditReport(samples.before), true); assert.equal(isSiteAuditReport(samples.after), true);
+  await import('../src/client/tools-workbench.js'); t.mock.method(globalThis, 'fetch', async () => { assert.fail('Comparison example must not fetch'); });
+  document.body.innerHTML = snapshot;
+  const trigger = document.querySelector('[data-comparison-example]'); assert.ok(trigger);
+  trigger.dispatchEvent(new view.MouseEvent('click', { bubbles: true }));
+  const result = document.querySelector('.comparison-result'); assert.ok(result);
+  assert.match(result.textContent ?? '', /Illustrative example/); assert.match(result.textContent ?? '', /not live measurements/);
+  assert.match(result.textContent ?? '', /1 improved/); assert.equal(document.activeElement, result);
+});
+
+test('report facts preserve unavailable evidence and agree across both renderers', async () => {
+  const { reportFacts } = await import('../src/lib/site-audit-presentation.js');
+  const { renderSiteAudit } = await import('../src/client/ai-check.js'); const { checkResultHtml } = await import('../src/worker/ai-check-html.js');
+  const report = fixture(); report.resources = []; report.page.parseState = 'unavailable'; report.robots.bots = [];
+  const facts = reportFacts(report); assert.equal(facts[0]?.value, 'Unavailable'); assert.equal(facts[1]?.value, 'Unassessed'); assert.equal(facts[2]?.value, 'Unassessed');
+  const enhanced = renderSiteAudit(report).querySelector('.report-facts')?.textContent ?? '';
+  for (const fact of facts) { assert.ok(enhanced.includes(fact.value)); assert.ok(checkResultHtml(report).includes(fact.value)); }
 });
