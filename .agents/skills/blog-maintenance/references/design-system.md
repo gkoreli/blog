@@ -15,7 +15,8 @@ Use [shared tokens](../../../../packages/design/tokens.css), [layout CSS](../../
 
 ## Typography and color
 
-- Use Lora with a Georgia fallback for body text. Use monospace for code and compact UI metadata. Keep body line height at least 1.7 and headings tighter.
+- Tool interfaces use system sans-serif for controls, feedback, reports and utility copy, with Lora reserved for their editorial page headings. Scope this treatment to `.tool-app`; tool pages do not inherit `.post-content`. Quota exhaustion is a neutral state with a reset time and useful next actions.
+- Use Lora with a Georgia fallback for article body text. Use monospace for code and compact UI metadata. Keep body line height at least 1.7 and headings tighter.
 - Use the same typography in both themes. Honor saved theme preference, then system preference; light is the base CSS palette.
 - Light background: `#faf8f5`; dark background: `#1a1a1a`. Light-theme text: `#2d2a24`; muted text: `#7a7568`. Preserve readable contrast when changing colors.
 - Link accent: `#1a6b4e` in light mode and `#6ec9a8` in dark mode.

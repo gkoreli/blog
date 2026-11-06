@@ -3,6 +3,7 @@ import { isSiteAuditReport } from '@gkoreli/site-audit/report-validation';
 import { additionalReviewFindings, optionalSupportLabel } from '../lib/site-audit-presentation.js';
 import { deriveTechnicalAssessment } from '@gkoreli/site-audit/product';
 import { normalizeTarget, TargetValidationError } from '@gkoreli/site-audit/target';
+import { failureFeedback, feedbackQuota, type CheckFeedback } from '../lib/check-feedback.js';
 import { node, definition, makeTable, safeLink, rawEvidence, disclosure, object } from './tool-dom.js';
 
 /** Remote values become text nodes. Scores are recalculated from the evidence. */
@@ -150,10 +151,23 @@ export function renderRequestEvidence(value: Record<string, unknown>): HTMLEleme
   return section;
 }
 function quotaLabel(value: unknown): string | null {
-  if (!object(value) || typeof value['limit'] !== 'number' || typeof value['remaining'] !== 'number' || typeof value['resetAt'] !== 'string') return null;
-  const parsed = new Date(value['resetAt']);
-  const reset = Number.isNaN(parsed.getTime()) ? value['resetAt'] : parsed.toLocaleString(undefined, { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit', timeZoneName: 'short' });
-  return `${value['remaining']} of ${value['limit']} checks remaining · resets ${reset}.`;
+  const quota = feedbackQuota(value);
+  return quota ? `${quota.remaining} of ${quota.limit} checks remaining` : null;
+}
+export function showCheckFeedback(status: HTMLElement, feedback: CheckFeedback): void {
+  status.dataset['state'] = feedback.tone;
+  const card = node('div', undefined, 'tool-feedback'); card.dataset['tone'] = feedback.tone;
+  const icon = node('span', undefined, 'tool-feedback-icon'); icon.setAttribute('aria-hidden', 'true');
+  const symbol = node('img'); symbol.src = `/icons/${feedback.tone === 'error' ? 'close' : feedback.tone === 'ready' ? 'transparency' : 'clock'}.svg`; symbol.alt = ''; symbol.width = 18; symbol.height = 18; icon.append(symbol);
+  const content = node('div'); content.append(node('strong', feedback.title, 'tool-feedback-title'), node('p', feedback.detail, 'tool-feedback-detail'));
+  if (feedback.meta) content.append(node('span', feedback.meta, 'tool-feedback-meta'));
+  if (feedback.alternatives) {
+    const actions = node('div', undefined, 'tool-feedback-actions');
+    const example = node('a', 'View example report'); example.href = '/ai-check/example'; example.setAttribute('data-example-check', '');
+    const robots = node('a', 'Try robots playground'); robots.href = '/tools/robots';
+    actions.append(example, robots); content.append(actions);
+  }
+  card.append(icon, content); status.replaceChildren(card);
 }
 function errorMessage(value: unknown): string {
   if (object(value) && typeof value['error'] === 'string' && value['error'].length <= 1000) return value['error'];
@@ -192,8 +206,7 @@ export class SiteAuditCheck extends HTMLElement {
   private async example(): Promise<void> {
     const status = this.querySelector('[data-audit-status]'), results = this.querySelector('[data-audit-results]'); if (!(status instanceof HTMLElement) || !(results instanceof HTMLElement)) return;
     const controller = this.begin(); if (!controller) return;
-    status.dataset['state'] = 'loading';
-    status.textContent = 'Opening the saved example. No check used…';
+    showCheckFeedback(status, { tone: 'loading', title: 'Opening example', detail: 'Loading a saved report. No check used.' });
     try {
       const response = await fetch('/ai-check-example.json', { headers: { Accept: 'application/json' }, redirect: 'error', signal: controller.signal });
       const value: unknown = await response.json();
@@ -203,10 +216,9 @@ export class SiteAuditCheck extends HTMLElement {
       document.getElementById('ai-check-server-result')?.replaceChildren(); results.replaceChildren(renderSiteAudit(report, true));
       this.clearDownload(); this.downloadUrl = URL.createObjectURL(new Blob([JSON.stringify(report, null, 2)], { type: 'application/json' }));
       const download = node('a', 'Download example JSON', 'ai-check-download'); download.href = this.downloadUrl; download.download = 'ai-access-example.json'; results.append(download);
-      status.dataset['state'] = 'ready';
-      status.textContent = 'Saved example report. No live request to the target and no daily check used.';
+      showCheckFeedback(status, { tone: 'ready', title: 'Saved example report.', detail: 'No live request to the target and no daily check used.' });
       results.scrollIntoView({ block: 'start', behavior: 'auto' });
-    } catch { if (!controller.signal.aborted) { status.dataset['state'] = 'error'; status.textContent = 'The example could not load. No daily check was used.'; } }
+    } catch { if (!controller.signal.aborted) showCheckFeedback(status, { tone: 'error', title: 'Example unavailable', detail: 'The example could not load. No daily check was used.' }); }
     finally { this.finish(controller); }
   }
   private async check(): Promise<void> {
@@ -222,21 +234,21 @@ export class SiteAuditCheck extends HTMLElement {
     }
     this.clearFieldError(input); input.value = target;
     const controller = this.begin(); if (!controller) return;
-    status.dataset['state'] = 'loading'; status.textContent = 'Checking the page and public discovery files…';
+    showCheckFeedback(status, { tone: 'loading', title: 'Checking your page', detail: 'Fetching the page, crawler policies and public discovery files…' });
     try {
       const response = await fetch('/api/ai-check', { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify({ url: target }), signal: controller.signal, redirect: 'error' });
       const value: unknown = await response.json();
       if (controller.signal.aborted) return;
-      if (!response.ok) { status.dataset['state'] = 'error'; status.textContent = `${errorMessage(value)} ${object(value) ? quotaLabel(value['quota']) ?? '' : ''}`.trim(); return; }
+      if (!response.ok) { showCheckFeedback(status, failureFeedback(errorMessage(value), response.status, object(value) ? value['quota'] : null)); return; }
       if (!object(value) || !isSiteAuditReport(value['report'])) throw new Error('The service returned an incomplete report.');
       document.getElementById('ai-check-server-result')?.replaceChildren();
       results.replaceChildren(renderSiteAudit(value['report']));
       this.clearDownload(); this.downloadUrl = URL.createObjectURL(new Blob([JSON.stringify(value, null, 2)], { type: 'application/json' }));
       const download = node('a', 'Download JSON report', 'ai-check-download'); download.href = this.downloadUrl; download.download = 'ai-access-report.json'; results.append(download);
-      status.dataset['state'] = 'ready'; status.textContent = `${value['report'].complete ? 'Report ready.' : 'Partial report ready; unavailable evidence is labeled below.'} ${quotaLabel(value['quota']) ?? ''}`.trim();
+      showCheckFeedback(status, { tone: 'ready', title: value['report'].complete ? 'Report ready' : 'Partial report ready', detail: 'Your results and supporting evidence are below.', meta: quotaLabel(value['quota']) ?? '' });
     } catch (error: unknown) {
       if (controller.signal.aborted) return;
-      status.dataset['state'] = 'error'; status.textContent = error instanceof Error && error.message === 'The service returned an incomplete report.' ? error.message : 'The response could not be read. If the connection was lost after submission, that check may have used one of today’s allowance.';
+      showCheckFeedback(status, failureFeedback(error instanceof Error && error.message === 'The service returned an incomplete report.' ? error.message : 'The response could not be read. If the connection was lost after submission, that check may have used one of today’s allowance.', 503, null));
     } finally { this.finish(controller); }
   }
 }
@@ -248,15 +260,15 @@ export class RequestEvidenceCheck extends HTMLElement {
   private async inspect(): Promise<void> {
     const button = this.querySelector('[data-request-check]'), status = this.querySelector('[data-request-status]'), results = this.querySelector('[data-request-results]');
     if (!(button instanceof HTMLButtonElement) || !(status instanceof HTMLElement) || !(results instanceof HTMLElement)) return;
-    button.disabled = true; status.textContent = 'Inspecting this fetch request…';
+    button.disabled = true; showCheckFeedback(status, { tone: 'loading', title: 'Inspecting your request', detail: 'Reading the request evidence received by this service…' });
     try {
       const response = await fetch('/api/request-check', { headers: { Accept: 'application/json' }, redirect: 'error' });
       const value: unknown = await response.json();
-      if (!response.ok) { status.textContent = errorMessage(value); return; }
+      if (!response.ok) { showCheckFeedback(status, failureFeedback(errorMessage(value), response.status, object(value) ? value['quota'] : null)); return; }
       if (!object(value) || !object(value['request'])) throw new Error('Request evidence unavailable');
       results.replaceChildren(renderRequestEvidence(value['request']));
-      status.textContent = `Request evidence ready. ${quotaLabel(value['quota']) ?? ''}`.trim();
-    } catch { status.textContent = 'This request could not be inspected. Try the JSON link below.'; }
+      showCheckFeedback(status, { tone: 'ready', title: 'Request evidence ready', detail: 'Client declarations and verification are shown below.', meta: quotaLabel(value['quota']) ?? '' });
+    } catch { showCheckFeedback(status, failureFeedback('This request could not be inspected. Try the JSON link below.', 503, null)); }
     finally { button.disabled = false; }
   }
 }

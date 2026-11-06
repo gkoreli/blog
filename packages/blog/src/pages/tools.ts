@@ -1,7 +1,7 @@
 import { html } from '@nisli/core';
 
 export function toolsPage() {
-  return html`<article class="tools-page">
+  return html`<article class="tools-page tool-app">
     <header class="tools-hero">
       <p class="tool-kicker">The engineering workbench</p>
       <h1>A clearer view of<br>your site’s access.</h1>

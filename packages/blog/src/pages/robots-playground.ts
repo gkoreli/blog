@@ -3,7 +3,7 @@ import { html } from '@nisli/core';
 export const ROBOTS_EXAMPLE = `User-agent: *\nAllow: /\n\nUser-agent: GPTBot\nDisallow: /\n\nUser-agent: OAI-SearchBot\nAllow: /\n`;
 
 export function robotsPlaygroundPage() {
-  return html`<article class="ai-check tools-workbench post-content">
+  return html`<article class="ai-check tools-workbench tool-app">
     <header class="ai-check-header"><a class="tool-back" href="/tools">← All tools</a><p class="tool-kicker">Policy playground · local and unlimited</p><h1>Know which crawler<br>rule wins.</h1><p class="ai-check-lead">Test a robots.txt against one client and path. See the matching groups, the selected rule, and the reason for the decision.</p></header>
     <robots-workbench>
       <form data-robots-form class="workbench-form">
