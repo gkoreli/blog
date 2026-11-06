@@ -31,3 +31,12 @@ test('unsafe link schemes and credentials never become canonical links', () => {
   assert.equal(inspectHtml('<link rel=canonical href="javascript:alert(1)">', base).canonical, null);
   assert.equal(inspectHtml('<link rel=canonical href="https://user:pass@public-site.com/">', base).canonical, null);
 });
+test('bounded HTML with more than 50,000 tags is inspected through the final metadata', () => {
+  const source = `<html><body>${'<h1>x</h1>'.repeat(50_001)}<meta name="description" content="Last metadata"><a href="/last">Last</a></body></html>`;
+  assert.ok(new TextEncoder().encode(source).byteLength < 524_288);
+  const result = inspectHtml(source, base);
+  assert.equal(result.parseState, 'parsed');
+  assert.equal(result.headings, 50_001);
+  assert.equal(result.description, 'Last metadata');
+  assert.equal(result.links, 1);
+});
