@@ -33,6 +33,9 @@ ${postLinks}
 
 ## API
 
+- [AI Access Check](${SITE}/ai-check): Inspect a public HTTPS page’s crawler policies, delivered HTML, indexing controls and machine-readable links; free daily allowance
+- [AI Access API](${SITE}/api/ai-check/schema): JSON request/response contract and shared daily quota
+- [Request Evidence](${SITE}/api/request-check): Assess this incoming request’s declarations, network and verification evidence; shares the daily allowance
 - [Public Analytics](${SITE}/stats): Public reports and methodology; results may be cached for up to one hour
 - [Post Index](${SITE}/posts.json): All posts with metadata (JSON)
 - [RSS Feed](${SITE}/feed.xml): Subscribe to new posts
