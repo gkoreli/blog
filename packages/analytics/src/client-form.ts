@@ -1,7 +1,9 @@
 import { classifyDevice, userAgentProductNames, type ClientDeclarations } from './classify.js';
 import type { DeviceType } from './contracts.js';
 
-export const CLIENT_FORM_PROFILE = '2026-10-27.1';
+export const CLIENT_FORM_PROFILE = '2026-11-06.1';
+/** Stored records keep their original normalization policy. */
+export const CLIENT_FORM_PROFILES = ['2026-10-27.1', '2026-11-06.1'] as const;
 export const CLIENT_FORMS = ['mobile-marker', 'tablet-marker', 'conflicting-markers', 'mobile-preference', 'non-mobile-preference', 'no-form-marker', 'unknown'] as const;
 export type ClientForm = typeof CLIENT_FORMS[number];
 export const REPORTED_CLIENT_FORMS = [...CLIENT_FORMS, 'historical-desktop-default', 'historical-mobile-heuristic', 'historical-tablet-heuristic', 'unrecognized-record'] as const;
@@ -48,6 +50,9 @@ export function clientFormEvidence(userAgent: string, hint: string | null, brows
       : browserFamily !== 'unrecognized' ? 'no-form-marker' : 'unknown';
   const comparison = form === 'mobile-marker' && mobileHint === 'mobile' ? 'aligned-mobile'
     : form === 'mobile-marker' && mobileHint === 'non-mobile' || !mobile && !tablet && browserFamily !== 'unrecognized' && mobileHint === 'mobile' ? 'different-indicators' : 'not-comparable';
+  // Preserve the deprecated raw-UA counterfactual, including its URL substring
+  // behavior. Modern markers above use URI-excluded lexical products; this
+  // compatibility value is neither their replacement nor a hardware claim.
   const legacy = classifyDevice(userAgent);
   return { profile: CLIENT_FORM_PROFILE, form, markers, browserFamily, mobileHint, comparison,
     legacyCompatibility: { value: legacy, defaulted: legacy === 'desktop' } };

@@ -19,7 +19,7 @@ import {
 } from './contracts.js';
 import type { Env } from './db.js';
 import { KNOWN_AGENT_NAMES } from './classify.js';
-import { CLIENT_FORMS, CLIENT_FORM_PROFILE, isReportedClientForm } from './client-form.js';
+import { CLIENT_FORMS, CLIENT_FORM_PROFILES, isReportedClientForm } from './client-form.js';
 import { agentReaderKinds } from './readerkind.js';
 import { PUBLIC_SIGNERS, isPublicSignerName } from './signers.js';
 import {
@@ -37,6 +37,7 @@ import { signatureBasisSql, signatureLocalStateSql, isSignatureBasis } from './s
 import { verifierProfileSql, isReportedVerifierProfile, CURRENT_VERIFIER_PROFILE } from './verifier-profile.js';
 import { nativeCategoryBasisSql, isNativeCategoryBasis } from './native-bot-evidence.js';
 import { directoryPublicationBasisSql, isDirectoryPublicationBasis } from './directory-publication.js';
+import { decodeClientEvidenceRows, clientNameCoverage, consistentClientEvidence } from './client-evidence.js';
 import type { ReferralPolicy } from './referral-policy.js';
 
 export type { StatsResponse, TrafficFilter } from './contracts.js';
@@ -305,7 +306,7 @@ function payloadRows(row: Record<string, unknown>): Record<string, unknown>[] {
 function reportSections(rows: Record<string, unknown>[], includeBoundary: boolean): Map<string, Record<string, unknown>[]> {
   const expected = new Set([
     'totals', 'path', 'country', 'series', 'referrer', 'device', 'agent', 'kind', 'excluded',
-    'referrer-state', 'transitions', 'referrer-details', 'signer', 'verification', 'vendor-ip', 'vendor-cache', 'kind-signature', 'native-category', 'directory-publication', 'fetch-metadata',
+    'referrer-state', 'transitions', 'referrer-details', 'signer', 'verification', 'vendor-ip', 'vendor-cache', 'kind-signature', 'native-category', 'directory-publication', 'fetch-metadata', 'client-evidence',
   ]);
   if (includeBoundary) expected.add('boundary');
   const sections = new Map<string, Record<string, unknown>[]>();
@@ -408,7 +409,7 @@ function reportSql(selected: QueryPredicate, bucketSql: string, includeBoundary:
         SELECT json_array(json_object('firstObservedAt', first_observed_at)) FROM boundary
       )`
     : '';
-  const formProfile = `json_extract(client_form_evidence, '$.profile') = '${CLIENT_FORM_PROFILE}'`;
+  const formProfile = `json_extract(client_form_evidence, '$.profile') IN (${CLIENT_FORM_PROFILES.map(profile => `'${profile}'`).join(',')})`;
   const currentForm = `${formProfile} AND json_extract(client_form_evidence, '$.form') IN (${CLIENT_FORMS.map(value => `'${value}'`).join(', ')})`;
   const form = `CASE WHEN client_form_evidence IS NOT NULL THEN
     CASE WHEN ${currentForm}
@@ -420,7 +421,7 @@ function reportSql(selected: QueryPredicate, bucketSql: string, includeBoundary:
     "('totals', 0)", "('path', 1)", "('country', 2)", "('series', 3)", "('referrer', 4)",
     "('device', 5)", "('agent', 6)", "('kind', 7)", "('excluded', 8)",
     "('referrer-state', 9)", "('transitions', 10)", "('referrer-details', 11)",
-    "('signer', 12)", "('verification', 14)", "('vendor-ip', 15)", "('kind-signature', 16)", "('native-category', 17)", "('directory-publication', 18)", "('fetch-metadata', 19)", "('vendor-cache', 20)",
+    "('signer', 12)", "('verification', 14)", "('vendor-ip', 15)", "('kind-signature', 16)", "('native-category', 17)", "('directory-publication', 18)", "('fetch-metadata', 19)", "('vendor-cache', 20)", "('client-evidence', 21)",
   ];
   if (includeBoundary) sectionValues.push("('boundary', 13)");
 
@@ -448,6 +449,13 @@ function reportSql(selected: QueryPredicate, bucketSql: string, includeBoundary:
       ),
       included AS MATERIALIZED (
         SELECT * FROM report_scope WHERE referral_excluded = 0
+      ),
+      client_evidence_facts AS MATERIALIZED (
+        SELECT CASE WHEN reader_kind IN (${READER_KINDS.map(kind => "'" + kind + "'").join(',')}) THEN reader_kind ELSE NULL END AS evidence_kind,
+          CASE WHEN agent_name IS NULL THEN 'not-selected' ELSE 'selected' END AS name_selection,
+          ${nativeCategoryBasisSql()} AS native_category,
+          ${signatureBasisSql()} AS signature_basis, ${verifierProfileSql()} AS verifier_profile
+        FROM included
       ),
       vendor_network_facts AS MATERIALIZED (
         SELECT vendor_ip_evidence, ${vendorNetworkStateSql()} AS network_state FROM included
@@ -481,8 +489,8 @@ function reportSql(selected: QueryPredicate, bucketSql: string, includeBoundary:
         )
         WHEN 'native-category' THEN (
           SELECT COALESCE(json_group_array(json(row_json)), json('[]')) FROM (
-            SELECT json_object('key1', CASE WHEN reader_kind IN (${READER_KINDS.map(kind => "'" + kind + "'").join(',')}) THEN reader_kind ELSE NULL END, 'key2', ${nativeCategoryBasisSql()}, 'views', COUNT(*)) AS row_json
-            FROM included GROUP BY CASE WHEN reader_kind IN (${READER_KINDS.map(kind => "'" + kind + "'").join(',')}) THEN reader_kind ELSE NULL END, ${nativeCategoryBasisSql()} ORDER BY COUNT(*) DESC, reader_kind, ${nativeCategoryBasisSql()}
+            SELECT json_object('key1', evidence_kind, 'key2', native_category, 'views', COUNT(*)) AS row_json
+            FROM client_evidence_facts GROUP BY evidence_kind, native_category ORDER BY COUNT(*) DESC, evidence_kind, native_category
           )
         )
         WHEN 'totals' THEN (
@@ -552,10 +560,17 @@ function reportSql(selected: QueryPredicate, bucketSql: string, includeBoundary:
         )
         WHEN 'kind-signature' THEN (
           SELECT COALESCE(json_group_array(json(row_json)), json('[]')) FROM (
-            SELECT json_object('key1', evidence_kind, 'key2', basis, 'key3', profile, 'views', COUNT(*)) AS row_json
-            FROM (SELECT CASE WHEN reader_kind IN (${READER_KINDS.map(kind => `'${kind}'`).join(', ')})
-              THEN reader_kind ELSE NULL END AS evidence_kind, ${signatureBasisSql()} AS basis, ${verifierProfileSql()} AS profile FROM included)
-            GROUP BY evidence_kind, basis, profile ORDER BY COUNT(*) DESC, evidence_kind, basis, profile
+            SELECT json_object('key1', evidence_kind, 'key2', signature_basis, 'key3', verifier_profile, 'views', COUNT(*)) AS row_json
+            FROM client_evidence_facts
+            GROUP BY evidence_kind, signature_basis, verifier_profile ORDER BY COUNT(*) DESC, evidence_kind, signature_basis, verifier_profile
+          )
+        )
+        WHEN 'client-evidence' THEN (
+          SELECT COALESCE(json_group_array(json(row_json)), json('[]')) FROM (
+            SELECT json_object('key1', evidence_kind, 'key2', name_selection, 'key3', native_category,
+              'key4', signature_basis, 'key5', verifier_profile, 'views', COUNT(*)) AS row_json
+            FROM client_evidence_facts GROUP BY evidence_kind, name_selection, native_category, signature_basis, verifier_profile
+            ORDER BY COUNT(*) DESC, evidence_kind, name_selection, native_category, signature_basis, verifier_profile
           )
         )
         WHEN 'excluded' THEN (
@@ -741,6 +756,7 @@ export async function queryStats(db: D1Database, query: StatsQuery, now = new Da
     addressUnavailableViews: summaryNumberField(vendorNetworkRow, 'addressUnavailableViews'),
   };
   if (!consistentVendorNetworkSummary(vendorNetwork, countField(totalsRow, 'views'))) return malformedReport();
+  const clientEvidence = decodeClientEvidenceRows(requiredSection(sections, 'client-evidence'), countField(totalsRow, 'views'));
   const response: StatsResponse = {
     period: {
       start: window.start,
@@ -783,6 +799,8 @@ export async function queryStats(db: D1Database, query: StatsQuery, now = new Da
     byClientForm: clientForms.rows,
     clientFormEvidence: clientForms.evidence,
     byAgent: agentRows(requiredSection(sections, 'agent')),
+    clientNameCoverage: clientNameCoverage(clientEvidence),
+    byKindClientEvidence: clientEvidence,
     bySigner: requiredSection(sections, 'signer').map(row => {
       const signatureAgent = stringField(row, 'key1');
       if (!isPublicSignerName(signatureAgent)) return malformedReport();
@@ -798,6 +816,8 @@ export async function queryStats(db: D1Database, query: StatsQuery, now = new Da
     fetchMetadata: decodeFetchMetadataRows(requiredSection(sections, 'fetch-metadata'), countField(totalsRow, 'views')),
     verification,
   };
+  if (!consistentClientEvidence(response.byKindClientEvidence, response.clientNameCoverage, response.totals.views,
+    response.byKindSignature, response.byKindNativeCategory, response.byAgent)) return malformedReport();
   validateReportCounts(response, populatedSeries, rawReferrers);
   return response;
 }

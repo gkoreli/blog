@@ -3,7 +3,7 @@ import test from 'node:test';
 import { readFileSync } from 'node:fs';
 import { DatabaseSync } from 'node:sqlite';
 import { analyzeTraffic } from '../.test-dist/classify.js';
-import { clientFormEvidence, CLIENT_FORMS } from '../.test-dist/client-form.js';
+import { clientFormEvidence, CLIENT_FORMS, CLIENT_FORM_PROFILE, CLIENT_FORM_PROFILES } from '../.test-dist/client-form.js';
 import { queryStats } from '../.test-dist/stats.js';
 
 const browser='Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 Chrome/150.0.0.0 Safari/537.36';
@@ -42,6 +42,19 @@ test('unsupported hint text and unknown products cannot enter retained evidence;
   const e=evidence('Mobile iPhone iPod IEMobile iPad Tablet PlayBook','?0');assert.equal(e.markers.length,7);assert.ok(Buffer.byteLength(JSON.stringify(e))<=1024);assert.equal(e.form,'conflicting-markers');
 });
 
+test('new modern URI-excluded form markers preserve recognized history and the deprecated raw heuristic',()=>{
+  assert.equal(CLIENT_FORM_PROFILE,'2026-11-06.1');
+  assert.deepEqual(CLIENT_FORM_PROFILES,['2026-10-27.1','2026-11-06.1']);
+  for(const ua of ['https://example.test/iPad','https://example.test/;iPad','https://example.test/;Mobile']){
+    const e=evidence(ua);assert.equal(e.profile,CLIENT_FORM_PROFILE);assert.equal(e.form,'unknown');assert.deepEqual(e.markers,[]);
+    assert.equal(e.legacyCompatibility.value,ua.endsWith('Mobile')?'mobile':'tablet','raw compatibility is retained without claiming hardware');
+  }
+  const e=evidence(`${browser} (+https://example.test/;iPad;Mobile)`);
+  assert.equal(e.form,'no-form-marker');assert.deepEqual(e.markers,[]);
+  assert.equal(e.legacyCompatibility.value,'tablet');
+  assert.equal(evidence(`iPhone (+https://example.test/;iPad)`).form,'mobile-marker','real form marker outside URI survives');
+});
+
 test('client-form migration preserves history and rejects invalid/oversized JSON',()=>{
   const sqlite=new DatabaseSync(':memory:');sqlite.exec(readFileSync(new URL('../schema.sql',import.meta.url),'utf8').split('\n').filter(s=>!s.trim().startsWith('client_form_evidence ')).join('\n'));
   sqlite.exec("INSERT INTO page_observations(path,daily_client_id,traffic_class,device_type,is_owner) VALUES('/old','00000000000000000000000000000000','browser','desktop',0)");sqlite.exec(readFileSync(new URL('../migrations/0015_client_form_evidence.sql',import.meta.url),'utf8'));
@@ -64,4 +77,27 @@ test('form reporting partitions every selected row, preserves history/unsupporte
   assert.equal(JSON.stringify(report).includes('private-canary'),false);
   assert.ok(report.byClientForm.every(r=>!['desktop','mobile','tablet'].includes(r.form)));
   const empty=await queryStats(db,{range:'7d',traffic:'all',path:'/missing'},new Date('2026-10-27T02:00:00Z'));assert.deepEqual(empty.byClientForm,[]);assert.ok(Object.values(empty.clientFormEvidence).every(n=>n===0));
+});
+
+test('form reporting recognizes both frozen producer profiles without reinterpreting their markers',async()=>{
+  const sqlite=new DatabaseSync(':memory:');
+  try {
+    sqlite.exec(readFileSync(new URL('../schema.sql',import.meta.url),'utf8'));
+    const db={prepare(sql){return{bind(...v){return{execute(){return{results:sqlite.prepare(sql).all(...v)}}}}}},async batch(statements){return statements.map(s=>s.execute())}};
+    const insert=sqlite.prepare("INSERT INTO page_observations(path,daily_client_id,traffic_class,device_type,is_owner,reader_kind,reader_reason,observed_at,client_form_evidence)VALUES('/mixed',?,'browser','tablet',0,'browser','fixture','2026-11-06 01:00:00',?)");
+    const records=[
+      {...evidence('iPad'),profile:'2026-10-27.1'},
+      evidence('https://example.test/;iPad'),
+      {...evidence('iPad'),profile:'future-profile'},
+    ];
+    records.forEach((record,index)=>insert.run(String(index+1).padStart(32,'0'),JSON.stringify(record)));
+    const report=await queryStats(db,{range:'7d',traffic:'all',path:'/mixed'},new Date('2026-11-06T02:00:00Z'));
+    assert.equal(report.totals.views,3);
+    assert.equal(report.clientFormEvidence.recordedViews,2);
+    assert.equal(report.clientFormEvidence.unrecognizedRecordViews,1);
+    assert.equal(report.clientFormEvidence.historicalViews,0);
+    assert.deepEqual(report.byClientForm.map(({form,views})=>({form,views})).sort((a,b)=>a.form.localeCompare(b.form)),[
+      {form:'tablet-marker',views:1},{form:'unknown',views:1},{form:'unrecognized-record',views:1},
+    ]);
+  } finally { sqlite.close(); }
 });

@@ -10,9 +10,9 @@ const tokens = (values: readonly string[]) => values.map(v => `'${v.replaceAll("
 function recordStateSql(): string {
   // The cache-evidence collection bump preserves this parser/record format.
   // Keep explicit compatibility; an arbitrary future collector must not inherit it.
-  const compatibleCollection = "collection_version IN ('2026-10-29.6','2026-10-30.1','2026-11-05.1')";
-  // GoogleOther catalogue changes do not change Fetch Metadata parsing or encoding.
-  const compatibleClassifiers = "('2026-10-29.3','2026-10-31.1','2026-11-05.1')";
+  const compatibleCollection = "collection_version IN ('2026-10-29.6','2026-10-30.1','2026-11-05.1','2026-11-06.1')";
+  // Catalogue/compact-product changes do not change Fetch Metadata bit encoding.
+  const compatibleClassifiers = "('2026-10-29.3','2026-10-31.1','2026-11-05.1','2026-11-06.1')";
   const compatibleClassifier = `classifier_version IN ${compatibleClassifiers}`;
   const j = (key: string) => `json_extract(metadata_json,'$.${key}')`;
   const t = (key: string) => `json_type(metadata_json,'$.${key}')`;
@@ -41,9 +41,10 @@ function recordStateSql(): string {
     WHEN json_type(metadata_json) <> 'object' THEN 'unrecognized'
     WHEN ${j('version')} IN ('2026-10-27.2','2026-10-29.1') AND ${t('fetchMetadataBits')} IS NULL THEN
       CASE WHEN ${compatibleCollection} OR ${compatibleClassifier} OR ${j('classifierProfile')} IN ${compatibleClassifiers} THEN 'inconsistent' ELSE 'not-recorded' END
-    WHEN ${j('version')} IS NULL OR ${j('version')} <> '2026-10-29.2' THEN 'unrecognized'
+    WHEN ${j('version')} IS NULL OR ${j('version')} NOT IN ('2026-10-29.2','2026-11-06.1') THEN 'unrecognized'
     WHEN NOT COALESCE(${t('classifierProfile')} = 'text' AND ${j('classifierProfile')} = classifier_version,0) THEN 'inconsistent'
     WHEN collection_version IS NULL OR classifier_version IS NULL OR NOT (${compatibleCollection}) OR NOT (${compatibleClassifier}) THEN 'unrecognized'
+    WHEN (${j('version')} = '2026-11-06.1') <> (classifier_version = '2026-11-06.1') THEN 'inconsistent'
     WHEN NOT COALESCE((${checks.join(' AND ')}),0) THEN 'inconsistent'
     ELSE 'recognized' END`;
 }

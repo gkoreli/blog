@@ -1,0 +1,42 @@
+{
+  "checkedAt": "2026-11-06T06:55:41.538Z",
+  "runtime": "v24.14.1",
+  "scope": "Synthetic local TypeScript-source extraction checks; optional evidence only, no production activation/frequency, real-browser or operator claim.",
+  "sourceHashes": {
+    "classify.ts": "354d4c98509ac6359942283b358eca94709c01eec09ec9c9acfe4a7325f6f71a",
+    "request-evidence.ts": "9e09a3ec82f85b1f199e77a8d2f5c6bf9b43222063515898b7a2b2e47993c776",
+    "user-agent-products.ts": "33bc5036623e36ca22d39e50a9cd6d5fe55ff3dec7bf6b0ec78f007ba814effe"
+  },
+  "sourceStableAcrossReplay": true,
+  "cases": [
+    {
+      "input": "Chrome/150.0",
+      "declaredBrowserFamily": "chromium",
+      "diagnosticBrowserFamily": "chromium",
+      "diagnosticBrowserMajor": 150,
+      "diagnosticClientForm": "browser",
+      "supportsMetadata": true,
+      "evidenceVersion": "2026-11-06.1"
+    },
+    {
+      "input": "chrome/150.0",
+      "declaredBrowserFamily": "chromium",
+      "diagnosticBrowserFamily": "unknown",
+      "diagnosticBrowserMajor": null,
+      "diagnosticClientForm": "unknown",
+      "supportsMetadata": true,
+      "evidenceVersion": "2026-11-06.1"
+    },
+    {
+      "input": "Publisher/1.0 (+https://example.test/Chrome/150.0)",
+      "declaredBrowserFamily": "unrecognized",
+      "diagnosticBrowserFamily": "chromium",
+      "diagnosticBrowserMajor": 150,
+      "diagnosticClientForm": "browser",
+      "supportsMetadata": false,
+      "evidenceVersion": "2026-11-06.1"
+    }
+  ],
+  "originalObservedFailure": "Lowercase chrome/150.0 has recognized Chromium claim but unknown optional diagnostic family/form while support=true; a URL-only Chrome/150.0 has unrecognized claim but diagnostic Chromium/150/browser while support=false.",
+  "repairOwner": "Root/domain-agent owns shared lexical boundary repair and final acceptance."
+}

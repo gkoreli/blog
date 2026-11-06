@@ -33,6 +33,61 @@ test('keeps WebView, headless, HTTP client, bot and unknown declarations distinc
   assert.equal(absent.primaryLanguage, null);
 });
 
+test('registered HTTP software claims keep the optional form coherent even with a browser-shaped prefix', () => {
+  const browser = 'Mozilla/5.0 AppleWebKit/537.36 Chrome/150.0 Safari/537.36';
+  for (const token of ['python-httpx/0.28.1', 'axios/1.13.1', 'node-fetch']) {
+    for (const ua of [token, `${browser} ${token}`]) {
+      const evidence = extractRequestEvidence(req({ 'User-Agent': ua }), response);
+      assert.equal(evidence.declaredClientForm, 'http-client', ua);
+      assert.equal(evidence.version, '2026-11-06.1');
+    }
+  }
+  assert.equal(extractRequestEvidence(req({ 'User-Agent': `${browser} node-fetch axios/1.13.1` }), response).declaredClientForm, 'http-client', 'compatible software claims preserve their shared form without choosing one identity');
+  assert.equal(extractRequestEvidence(req({ 'User-Agent': `${browser} node-fetch GPTBot/1.0` }), response).declaredClientForm, 'bot', 'conflicting role claims do not silently select the HTTP software form');
+});
+
+test('optional browser, OS and software form claims share URI exclusion and exact browser products', () => {
+  for (const ua of ['https://example.test/Chrome/150.0', 'https://example.test/;Chrome/150.0',
+    'https://example.test/;Edg/150.0', 'https://example.test/;OPR/150.0',
+    'https://example.test/;HeadlessChrome/150.0', 'https://example.test/;curl/8.0',
+    'https://example.test/Android 14', 'https://example.test/iPhone OS 17_0']) {
+    const e = extractRequestEvidence(req({ 'User-Agent': ua }), response);
+    assert.equal(e.browserFamily, 'unknown', ua);
+    assert.equal(e.browserMajor, null, ua);
+    assert.equal(e.osFamily, 'unknown', ua);
+    assert.equal(e.osMajor, null, ua);
+    assert.equal(e.declaredClientForm, 'unknown', ua);
+    assert.equal(e.claimsFetchMetadataSupport, false, ua);
+  }
+  for (const [ua, family, version] of [['Edg/150.0', 'edge', 150], ['EdgA/130.0', 'edge', 130],
+    ['EdgiOS/130.0', 'edge', 130], ['OPR/120.0', 'opera', 120], ['firefox/150.0', 'firefox', 150],
+    ['Chromium/150.0', 'chromium', 150], ['CriOS/150.0', 'chromium', 150],
+    ['Version/17.0 Mobile/15E148 Safari/604.1', 'safari', 17]]) {
+    const e = extractRequestEvidence(req({ 'User-Agent': ua }), response);
+    assert.equal(e.browserFamily, family, ua); assert.equal(e.browserMajor, version, ua);
+  }
+  const ua = 'Chrome/150.0 AppleWebKit/605.1 (+https://example.test/iPhone OS 16_3)';
+  const e = extractRequestEvidence(req({ 'User-Agent': ua }), response);
+  assert.equal(e.browserFamily, 'chromium'); assert.equal(e.browserMajor, 150);
+  assert.equal(e.osFamily, 'unknown'); assert.equal(e.claimsFetchMetadataSupport, true);
+});
+
+test('optional selected browser and capability abstain together on incompatible family declarations', () => {
+  for (const ua of ['Firefox/89.0 Chrome/150.0', 'Firefox/150.0 Chrome/75.0', 'Chrome/150.0 Firefox/89.0',
+    'Edg/150.0 Firefox/150.0', 'OPR/120.0 Firefox/150.0',
+    '(iPhone; CPU iPhone OS 17_0) AppleWebKit/605.1 FxiOS/150.0 CriOS/150.0']) {
+    const e = extractRequestEvidence(req({ 'User-Agent': ua }), response);
+    assert.equal(e.browserFamily, 'unknown', ua); assert.equal(e.browserMajor, null, ua);
+    assert.equal(e.claimsFetchMetadataSupport, false, ua);
+    assert.equal(e.declaredClientForm, 'unknown', ua);
+  }
+  for (const [ua, family] of [['Chrome/150.0 Edg/150.0 Safari/537.36', 'edge'],
+    ['Chrome/150.0 OPR/120.0 Safari/537.36', 'opera'], ['Chrome/150.0 Safari/537.36', 'chromium']]) {
+    const e = extractRequestEvidence(req({ 'User-Agent': ua }), response);
+    assert.equal(e.browserFamily, family, ua); assert.equal(e.claimsFetchMetadataSupport, true, ua);
+  }
+});
+
 test('limits source evidence by UTF-8 bytes with explicit loss flags and preserves absent values', () => {
   const bounded = privateHeaderEvidence('é'.repeat(600), MAX_UA_EVIDENCE_BYTES);
   assert.equal(new TextEncoder().encode(bounded.value).byteLength, MAX_UA_EVIDENCE_BYTES);

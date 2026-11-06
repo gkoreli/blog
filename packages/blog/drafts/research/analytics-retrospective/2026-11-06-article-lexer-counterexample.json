@@ -1,0 +1,52 @@
+{
+  "checkedAt": "2026-11-06T06:49:49.263Z",
+  "scope": "Synthetic local lexer checks only; no native Worker, production incidence or authenticated-client claim.",
+  "runtime": "v24.14.1",
+  "sourcePath": "packages/analytics/src/user-agent-products.ts",
+  "sourceSha256": "6213a09182916fe604282fd05dd83b0d56562ba8331c3a7e92e197bcb1060a0e",
+  "sourceStableAcrossReplay": true,
+  "cases": [
+    {
+      "condition": "semicolon-named-product-url",
+      "input": "Mozilla/5.0 (+https://example.test/;GPTBot/1.0)",
+      "products": [
+        {
+          "name": "mozilla",
+          "version": "5.0"
+        },
+        {
+          "name": "gptbot",
+          "version": "1.0"
+        }
+      ],
+      "genericAutomation": true
+    },
+    {
+      "condition": "semicolon-generic-product-url",
+      "input": "Mozilla/5.0 (+https://example.test/path;UnknownBot/1.0)",
+      "products": [
+        {
+          "name": "mozilla",
+          "version": "5.0"
+        },
+        {
+          "name": "unknownbot",
+          "version": "1.0"
+        }
+      ],
+      "genericAutomation": true
+    },
+    {
+      "condition": "ordinary-product-path-url",
+      "input": "Mozilla/5.0 (+https://example.test/GPTBot/1.0)",
+      "products": [
+        {
+          "name": "mozilla",
+          "version": "5.0"
+        }
+      ],
+      "genericAutomation": false
+    }
+  ],
+  "conclusion": "Semicolon inside a contiguous URL is treated as a product boundary by this local candidate. The ordinary slash-path control remains unrecognized. Root owns repair and regression acceptance."
+}

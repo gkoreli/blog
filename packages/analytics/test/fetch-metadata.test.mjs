@@ -44,6 +44,6 @@ test('closed bit encoding preserves states and parameters under the existing JSO
  assert.deepEqual(fetchMetadataFields(0),{states:Array(4).fill('not-assessed'),parameters:Array(4).fill(false)});
  for(const bits of [-1,1.5,65536,7,null,4096]) assert.equal(fetchMetadataFields(bits),null);
  const e=inspect({'Sec-Fetch-Mode':'navigate;x="private-canary"'},[...KNOWN_CLIENT_PRODUCTS].join(' ')).evidence;
- assert.equal(e.version,'2026-10-29.2');assert.ok(Buffer.byteLength(JSON.stringify(e))<=2048);assert.equal(JSON.stringify(e).includes('private-canary'),false);
+ assert.equal(e.version,'2026-11-06.1');assert.ok(Buffer.byteLength(JSON.stringify(e))<=2048);assert.equal(JSON.stringify(e).includes('private-canary'),false);
  for(const suffix of [';x=999999999999999',';x=-999999999999999',';x=999999999999.999',';x=@999999999999999',';x="a\\\\b"']) assert.doesNotThrow(()=>parseMetadataItem('navigate'+suffix));
 });

@@ -134,6 +134,10 @@ a.stats-label { color: var(--color-link); }
 #stats-kind-signature-rows table { min-width: 40rem; }
 #stats-kind-signature-rows th,
 #stats-kind-signature-rows td { overflow-wrap: normal; }
+#stats-client-evidence-rows { overflow-x: auto; }
+#stats-client-evidence-rows table { min-width: 64rem; }
+#stats-client-evidence-rows th,
+#stats-client-evidence-rows td { overflow-wrap: normal; }
 .stats-signature-basis caption { text-align: left; color: var(--color-text-muted); padding: 0.5rem 0; }
 .stats-signature-basis a { color: var(--color-link); }
 .stats-signature-basis th,

@@ -86,7 +86,7 @@ The build generates publication files from discovered posts, metadata, and site-
 **Requires periodic manual update:**
 - `llms.txt` intro/API/Source sections — only if site mission, API endpoints, or repo URL change
 - `jsonld.ts` author info — hardcoded single author
-- AI crawler regex in `packages/analytics/src/classify.ts` — sync from `ai-robots-txt/ai.robots.txt` (~quarterly)
+- Client catalogue in `packages/analytics/src/client-registry.ts` — review candidate aliases against vendor documentation and pinned source fixtures; regenerate `packages/analytics/CLIENTS.md`. Candidate lists are discovery inputs, not proof of vendor identity.
 
 `buildHTML()` in `build.ts` coordinates these outputs. Generated article representations share the discovered metadata and content; Markdown posts supply raw Markdown and TypeScript posts supply converted rendered content. Site-level routes and author/license constants are additional inputs. See `docs/adr/0006-ai-readable-blog.md` Resilience Matrix for the full mapping.
 - **External links** — the Markdown renderer sets `target="_blank" rel="noopener"` on non-root-relative/non-fragment links. Internal links (`/about`, `/hello-world`, `#section`) stay in the same tab. Raw HTML and TypeScript templates must set their own link attributes; the Markdown rule does not automatically rewrite them.

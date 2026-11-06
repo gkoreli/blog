@@ -11,6 +11,7 @@ import { REVIEWED_VERIFIER_PROFILES, isReportedVerifierProfile, verifierProfileL
 import { nativeCategoryLabel } from '@gkoreli/analytics/native-bot-evidence';
 import { DIRECTORY_PUBLICATION_LABELS } from '@gkoreli/analytics/directory-publication';
 import { HOSTING_NETWORKS } from '@gkoreli/analytics/networks';
+import { CLIENT_NAME_SELECTION_LABELS, consistentClientEvidence } from '@gkoreli/analytics/client-evidence';
 import '../styles/stats.css';
 
 type RangeFilter = '7d' | '30d' | '90d' | 'all';
@@ -210,6 +211,9 @@ async function fetchStats(state: ViewState, signal: AbortSignal): Promise<StatsR
   if (!consistentVendorCacheSummary(data.vendorCache, data.totals.views)) throw new Error('Vendor cache diagnostics are missing or inconsistent. Please reload.');
   if (!consistentVendorNetworkSummary(data.vendorNetwork, data.totals.views)) throw new Error('Inconsistent vendor network summary. Please reload.');
   if (!consistentSignatureSummary(data.verification, data.totals.views, data.byKindSignature)) throw new Error('Inconsistent signature summary. Please reload.');
+  if (data.byKindClientEvidence === undefined || data.clientNameCoverage === undefined
+    || !consistentClientEvidence(data.byKindClientEvidence, data.clientNameCoverage, data.totals.views,
+      data.byKindSignature, data.byKindNativeCategory, data.byAgent)) throw new Error('Client-name and verification evidence is incomplete or inconsistent. Please reload.');
   if (!Number.isSafeInteger(data.verification.vendorOriginConflictViews) || data.verification.vendorOriginConflictViews < 0
     || !Number.isSafeInteger(data.verification.vendorConflictWithMatchingOriginViews) || data.verification.vendorConflictWithMatchingOriginViews < 0) {
     throw new Error('Updated signing-origin conflicts are unavailable. Please reload.');
@@ -431,7 +435,7 @@ function renderClientForms(rows: StatsResponse['byClientForm'], evidence: StatsR
   const section = element('stats-client-form-section');
   section.hidden = false;
   const note = section.querySelector('.stats-section-note');
-  if (note) note.textContent = `Request headers describe software claims and preferences; hardware is unverified. ${formatNumber(evidence.recordedViews)} current records, ${formatNumber(evidence.historicalViews)} earlier heuristic records, ${formatNumber(evidence.unrecognizedRecordViews)} unrecognized records. Earlier desktop includes default guesses. ${formatNumber(evidence.unsupportedHintViews)} unsupported hints and ${formatNumber(evidence.differingSignalsViews)} differing indicators stay explicit; differing indicators can reflect preferences.`;
+  if (note) note.textContent = `Request headers describe software claims and preferences; hardware is unverified. ${formatNumber(evidence.recordedViews)} recognized form records, ${formatNumber(evidence.historicalViews)} earlier heuristic records, ${formatNumber(evidence.unrecognizedRecordViews)} unrecognized records. Recognized records can span parser profiles. Earlier desktop includes default guesses. ${formatNumber(evidence.unsupportedHintViews)} unsupported hints and ${formatNumber(evidence.differingSignalsViews)} differing indicators stay explicit; differing indicators can reflect preferences.`;
   replaceSectionRows('stats-client-form-section', rows.map(row => ({ label: CLIENT_FORM_LABELS[row.form], views: row.views })), null);
 }
 
@@ -629,6 +633,31 @@ function renderClassificationEvidenceTable(containerId: string, evidenceLabel: s
 function renderKindSignatures(data: StatsResponse, state: ViewState): void {
   renderClassificationEvidenceTable('stats-kind-signature-rows', 'Stored local signature evidence', data.byKindSignature.map(row => ({ ...row, label: SIGNATURE_BASIS_LABELS[row.basis], profileLabel: verifierProfileLabel(row.profile, data.verifierProfile.current) })), state, true);
   renderClassificationEvidenceTable('stats-native-category-rows', 'Cloudflare category evidence', data.byKindNativeCategory.map(row => ({ ...row, label: nativeCategoryLabel(row.basis) })), state);
+  const coverage = data.clientNameCoverage;
+  element('stats-client-name-coverage').textContent = `${formatNumber(coverage.selectedNameViews)} requests have one selected name from our catalogue of crawlers, tools and services; ${formatNumber(coverage.noSelectedNameViews)} have no single selected catalogue name. These add up to the headline. Browser-family signals are reported separately. A missing selected name can mean no catalogue match, several competing names, or earlier missing data. It does not identify a person or tell us whether a signer is known.`;
+  const container = element('stats-client-evidence-rows');
+  if (data.byKindClientEvidence.length === 0) { container.textContent = 'No requests for this selection.'; return; }
+  const table = document.createElement('table');
+  const caption = document.createElement('caption'); caption.textContent = 'Software names, provider categories and local signature checks on the same requests. Each request appears once.';
+  const head = document.createElement('thead'), header = document.createElement('tr');
+  for (const label of ['Classification', 'Catalogue name', 'Cloudflare category', 'Signature check', 'Verifier profile', 'Requests']) {
+    const th = document.createElement('th'); th.scope = 'col'; th.textContent = label; header.appendChild(th);
+  }
+  head.appendChild(header);
+  const body = document.createElement('tbody');
+  for (const row of data.byKindClientEvidence) {
+    const tr = document.createElement('tr');
+    const values = [row.kind === null ? 'Kind unrecorded or unrecognized' : KIND_LABELS[row.kind],
+      CLIENT_NAME_SELECTION_LABELS[row.nameSelection], nativeCategoryLabel(row.nativeCategory),
+      SIGNATURE_BASIS_LABELS[row.signatureBasis], verifierProfileLabel(row.verifierProfile, data.verifierProfile.current), formatNumber(row.views)];
+    for (const [index, value] of values.entries()) {
+      const cell = document.createElement(index === 0 ? 'th' : 'td');
+      if (cell instanceof HTMLTableCellElement && index === 0) cell.scope = 'row';
+      cell.textContent = value; tr.appendChild(cell);
+    }
+    body.appendChild(tr);
+  }
+  table.append(caption, head, body); container.replaceChildren(table);
 }
 
 function renderTransitions(data: StatsResponse, state: ViewState): void {
