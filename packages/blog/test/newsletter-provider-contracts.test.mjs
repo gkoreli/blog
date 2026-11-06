@@ -9,6 +9,15 @@ const confirmation = [
   'https://example.invalid/opt-out', '12345678-1234-4234-8234-123456789abc',
 ];
 
+function deliveryOutcome(receipt) {
+  const { diagnostics, ...outcome } = receipt;
+  assert.equal(Number.isInteger(diagnostics.attempts), true);
+  assert.ok(diagnostics.attempts >= 1 && diagnostics.attempts <= 2);
+  assert.equal(Number.isInteger(diagnostics.elapsedMs), true);
+  assert.ok(diagnostics.elapsedMs >= 0);
+  return outcome;
+}
+
 for (const [label, first] of [
   ['lost response', () => { throw new TypeError('synthetic response loss'); }],
   ['malformed accepted response', () => Response.json({ accepted: true })],
@@ -26,9 +35,11 @@ for (const [label, first] of [
         });
       });
       const result = await sendConfirmationEmail(...confirmation);
-      assert.deepEqual(result, { outcome: 'unknown', providerId: null, providerStatus: status });
+      assert.deepEqual(deliveryOutcome(result), { outcome: 'unknown', providerId: null, providerStatus: status });
+      assert.equal(result.diagnostics.stopReason, status === 400 ? 'http-rejected' : 'retry-exhausted');
       assert.equal(calls.length, 2);
       assert.equal(calls[0].body, calls[1].body);
+      assert.ok(calls.every(call => call.redirect === 'manual'));
       assert.equal(new Headers(calls[0].headers).get('Idempotency-Key'),
         new Headers(calls[1].headers).get('Idempotency-Key'));
     });
@@ -41,25 +52,34 @@ test('a valid accepted replay resolves earlier confirmation uncertainty', async 
     if (++calls === 1) throw new TypeError('synthetic response loss');
     return Response.json({ id: 'synthetic-provider-id' });
   });
-  assert.deepEqual(await sendConfirmationEmail(...confirmation), {
+  const result = await sendConfirmationEmail(...confirmation);
+  assert.deepEqual(deliveryOutcome(result), {
     outcome: 'accepted', providerId: 'synthetic-provider-id', providerStatus: 200,
   });
+  assert.equal(result.diagnostics.retryReason, 'network');
+  assert.equal(result.diagnostics.stopReason, 'accepted');
 });
 
 test('a known first-call rejection stays failed without an unnecessary retry', async t => {
   let calls = 0;
   t.mock.method(globalThis, 'fetch', async () => { calls++; return new Response(null, { status: 400 }); });
-  assert.deepEqual(await sendConfirmationEmail(...confirmation), {
+  const result = await sendConfirmationEmail(...confirmation);
+  assert.deepEqual(deliveryOutcome(result), {
     outcome: 'failed', providerId: null, providerStatus: 400,
   });
+  assert.equal(result.diagnostics.retryReason, 'none');
+  assert.equal(result.diagnostics.stopReason, 'http-rejected');
   assert.equal(calls, 1);
 });
 
 test('an unparseable successful confirmation response retains its observed HTTP status', async t => {
   t.mock.method(globalThis, 'fetch', async () => new Response('{', { status: 200 }));
-  assert.deepEqual(await sendConfirmationEmail(...confirmation), {
+  const result = await sendConfirmationEmail(...confirmation);
+  assert.deepEqual(deliveryOutcome(result), {
     outcome: 'unknown', providerId: null, providerStatus: 200,
   });
+  assert.equal(result.diagnostics.retryReason, 'invalid-response');
+  assert.equal(result.diagnostics.stopReason, 'retry-exhausted');
 });
 
 for (const [label, reply] of [
@@ -86,6 +106,7 @@ for (const [label, reply] of [
     assert.deepEqual(result.errorCodes, []);
     assert.equal(calls.length, 2);
     assert.equal(calls[0].body, calls[1].body);
+    assert.ok(calls.every(call => call.redirect === 'manual'));
     assert.doesNotMatch(JSON.stringify(result), /private-provider-detail|synthetic-token|synthetic-secret/);
   });
 }
@@ -101,6 +122,103 @@ test('Siteverify accepts a documented successful reply and preserves cached-acti
     t.mock.restoreAll();
   }
 });
+
+for (const [status, reason] of [[500, 'server'], [409, 'idempotency']]) {
+  test(`confirmation diagnoses bounded ${status} retries without provider text`, async t => {
+    t.mock.method(globalThis, 'fetch', async () => new Response('private-provider-detail', { status }));
+    const result = await sendConfirmationEmail(...confirmation);
+    assert.equal(result.outcome, 'unknown');
+    assert.equal(result.diagnostics.attempts, 2);
+    assert.equal(result.diagnostics.retryReason, reason);
+    assert.equal(result.diagnostics.stopReason, 'retry-exhausted');
+    assert.doesNotMatch(JSON.stringify(result), /private-provider-detail/);
+  });
+}
+
+for (const hint of [null, '0', '2', '3']) {
+  test(`confirmation records a bounded rate wait for ${String(hint)} before accepted replay`, async t => {
+    const waits = [];
+    let calls = 0;
+    t.mock.method(globalThis, 'setTimeout', (callback, delay) => {
+      waits.push(delay); queueMicrotask(callback); return 0;
+    });
+    t.mock.method(globalThis, 'fetch', async () => ++calls === 1
+      ? new Response(null, { status: 429, headers: hint === null ? {} : { 'retry-after': hint } })
+      : Response.json({ id: 'synthetic-provider-id' }));
+    const result = await sendConfirmationEmail(...confirmation);
+    assert.equal(result.outcome, 'accepted');
+    assert.deepEqual(waits, [Math.max(1, Number(hint ?? 1)) * 1000]);
+    assert.equal(result.diagnostics.attempts, 2);
+    assert.equal(result.diagnostics.retryReason, 'rate-limit');
+    assert.equal(result.diagnostics.stopReason, 'accepted');
+  });
+}
+
+for (const [hint, stopReason] of [
+  ['120', 'rate-wait-too-long'], ['2e0', 'rate-wait-invalid'],
+  ['0x2', 'rate-wait-invalid'], ['1.5', 'rate-wait-invalid'],
+  ['', 'rate-wait-invalid'], ['-1', 'rate-wait-invalid'],
+  ['private-provider-detail', 'rate-wait-invalid'],
+]) {
+  test(`confirmation stops without retrying ahead of ${JSON.stringify(hint)}`, async t => {
+    let calls = 0;
+    t.mock.method(globalThis, 'fetch', async () => {
+      calls++;
+      return new Response(null, { status: 429, headers: { 'retry-after': hint } });
+    });
+    const result = await sendConfirmationEmail(...confirmation);
+    assert.equal(result.outcome, 'failed');
+    assert.equal(calls, 1);
+    assert.equal(result.diagnostics.retryReason, 'none');
+    assert.equal(result.diagnostics.stopReason, stopReason);
+    assert.doesNotMatch(JSON.stringify(result), /private-provider-detail/);
+  });
+}
+
+test('confirmation classifies timeout by its native error name without copying its message', async t => {
+  t.mock.method(globalThis, 'fetch', async () => { throw new DOMException('private-provider-detail', 'TimeoutError'); });
+  const result = await sendConfirmationEmail(...confirmation);
+  assert.equal(result.outcome, 'unknown');
+  assert.equal(result.diagnostics.attempts, 2);
+  assert.equal(result.diagnostics.retryReason, 'timeout');
+  assert.equal(result.diagnostics.stopReason, 'retry-exhausted');
+  assert.doesNotMatch(JSON.stringify(result), /private-provider-detail/);
+});
+
+test('rejection receipt does not wait for an unresolved body-cancellation hook', async t => {
+  t.mock.method(globalThis, 'fetch', async () => new Response(new ReadableStream({
+    cancel() { return new Promise(() => {}); },
+  }), { status: 400 }));
+  const result = await Promise.race([
+    sendConfirmationEmail(...confirmation),
+    new Promise((_, reject) => setTimeout(() => reject(new Error('Cancellation extended the response budget')), 50)),
+  ]);
+  assert.equal(result.outcome, 'failed');
+  assert.equal(result.diagnostics.stopReason, 'http-rejected');
+});
+
+for (const status of [301, 302, 303, 307, 308]) {
+  test(`provider adapters explicitly reject ${status} without following or replaying`, async t => {
+    const calls = [];
+    t.mock.method(globalThis, 'fetch', async (_url, init) => {
+      calls.push(init);
+      return new Response(null, { status, headers: { location: 'https://private-redirect.invalid/path' } });
+    });
+    const verification = await verifyTurnstile('synthetic-token', 'synthetic-secret', '192.0.2.1', 'gkoreli.com');
+    const delivery = await sendConfirmationEmail(...confirmation);
+    assert.equal(verification.ok, false);
+    assert.equal(verification.reason, 'verifier_redirect');
+    assert.equal(verification.attempts, 1);
+    assert.equal(delivery.outcome, 'unknown');
+    assert.equal(delivery.providerStatus, status);
+    assert.equal(delivery.diagnostics.attempts, 1);
+    assert.equal(delivery.diagnostics.stopReason, 'redirect-rejected');
+    assert.equal(delivery.diagnostics.retryReason, 'none');
+    assert.equal(calls.length, 2);
+    assert.ok(calls.every(call => call.redirect === 'manual'));
+    assert.doesNotMatch(JSON.stringify({ verification, delivery }), /private-redirect/);
+  });
+}
 
 test('a known token rejection remains rejected while unknown provider text is discarded', async t => {
   t.mock.method(globalThis, 'fetch', async () => Response.json({

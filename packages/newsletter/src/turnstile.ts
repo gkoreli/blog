@@ -60,9 +60,13 @@ export async function verifyTurnstile(
     try {
       const res = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
         method: 'POST', headers: { 'content-type': 'application/json' }, body,
-        signal: AbortSignal.timeout(5_000),
+        signal: AbortSignal.timeout(5_000), redirect: 'manual',
       });
       diagnostics.httpStatus = res.status;
+      if (res.status >= 300 && res.status < 400) {
+        void res.body?.cancel().catch(() => {});
+        return failed('verifier_redirect');
+      }
       let rawData: unknown;
       try { rawData = await res.json(); } catch {
         if (attempt < 2 && (res.ok || res.status >= 500)) {

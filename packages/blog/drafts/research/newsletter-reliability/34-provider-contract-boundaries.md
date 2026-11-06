@@ -104,3 +104,84 @@ and [native implementation](https://github.com/standard-webhooks/standard-webhoo
 require exact payload bytes. This is a distinct authentication-boundary issue;
 the coordinator owns its repair and integration. This increment does not edit
 `webhook.ts` or claim that issue fixed.
+
+## Second increment: confine endpoints and explain the stop
+
+The first increment above was committed as
+[`d63ea5b6`](https://github.com/gkoreli/blog/commit/d63ea5b62cbd86ab427348f8df67cdd1c0227651).
+This continuation adds endpoint policy and a closed delivery receipt. It keeps
+the earlier uncertainty and provider-verdict checks intact.
+
+Both adapters previously used default redirect following. A local native Node
+Fetch control remaps their provider endpoints onto an owned HTTP server that
+returns a 307 to another owned origin. The destination receives both synthetic
+Siteverify secret/token JSON and the synthetic confirmation-message body. The
+Node runtime strips cross-origin Authorization, but still forwards the body.
+No real credentials, recipients or external endpoints are used in this control.
+An additional default-follow workerd control also forwards the synthetic body
+to the constructed destination. Its outbound-service bridge observes a stripped
+Authorization header; that local observation is not a cross-runtime credential
+forwarding guarantee. The repair prevents the destination call altogether.
+
+The first proposed repair uses the Fetch standard's `redirect: 'error'`. A Node
+control accepts it and blocks forwarding. That is insufficient evidence for a
+Workers deployment. Cloudflare's [native Request contract](https://developers.cloudflare.com/workers/runtime-apis/request/)
+does not implement that mode: it throws before sending. An added workerd control
+reproduces the TypeError at this site's `2026-03-06` compatibility date. The
+incompatible proposal is corrected before this increment is committed or
+deployed; it is not described as a production regression.
+
+The repair uses `redirect: 'manual'` and explicitly rejects 3xx responses.
+Siteverify returns unavailable / `verifier_redirect`, without replaying.
+Confirmation delivery remains unknown and stops as `redirect-rejected` without
+forwarding or retrying. The [native control](../../../scripts/check-newsletter-provider-redirects.mjs)
+proves ordinary provider requests still work in workerd, then proves redirect
+targets receive zero calls. A redirect-only failure test could have hidden a
+configuration that prevented every upstream call.
+
+The confirmation receipt retains outcome, provider ID and HTTP status and adds
+only these closed facts:
+
+| Diagnostic | Meaning |
+|---|---|
+| `attempts` | Actual provider calls started, one or two |
+| `elapsedMs` | Nonnegative elapsed operation time |
+| `retryReason` | Trigger of the second call: none, network, timeout, server, idempotency, rate-limit or invalid-response |
+| `stopReason` | Accepted, HTTP rejected, retry exhausted, rate wait too long/invalid, or redirect rejected |
+
+These live under `delivery.diagnostics`. An unknown outcome can accompany an
+HTTP-rejected stop when an earlier response was ambiguous; the stop describes
+the last adapter decision, not proof that nothing was sent. Native exception
+messages and raw provider bodies are never copied into these facts. Portable
+transport error names distinguish timeout from other network failure.
+
+The existing interactive wait budget still permits only short delta-seconds
+Retry-After values, up to three seconds, with a one-second default/minimum. The
+parser now rejects fractional, hexadecimal, exponent, negative or empty values
+instead of coercing them with Number. Longer or unsupported hints stop without
+an early retry. A bounded policy declining a hint is not a claim that every
+possible HTTP-date Retry-After representation is implemented. Response-body
+cancellation is started without waiting on an arbitrary cancellation hook.
+
+Checks after this change: all 45 provider tests pass. Newsletter typecheck passes
+for the committed newsletter tree plus this owned adapter patch in an isolated
+copy. The active worktree's later campaign caller awaits the separately assigned
+batch-key/outcome contract and therefore is not called integrated type acceptance
+at this checkpoint.
+The native script passes Node and workerd controls: Node redirect origin calls
+2, target calls 0; workerd provider calls 4 across a normal and redirected run,
+target calls 0, normal verification true and confirmation accepted. The
+capability control records `errorMode: throws-TypeError`. No production calls,
+sends, shared build output or migration occur.
+
+The earlier combined 87-test check passed before the final redirect cases and
+concurrent application/client work. The next combined check exposes two fixture
+assumptions outside this increment's ownership: a global timer mock also fires
+the newly added request-body deadline, and the bootstrap VM lacks the native
+Event used by its updated readiness handling. Both are handed to the integration
+owner; this note does not call that combined check accepted until repaired.
+
+Article implication: standards-compatible options and a passing Node test do
+not establish the deployed runtime's capability. Record which native runtime was
+tested, exercise its positive path, and keep endpoint confinement separate from
+provider acceptance and delivery knowledge.

@@ -23,9 +23,23 @@ const BASE_URL = 'https://gkoreli.com';
 /** Max recipients per Resend batch API call. */
 export const RESEND_BATCH_LIMIT = 100;
 
-export type ConfirmationDelivery =
+type ConfirmationDeliveryOutcome =
   | { outcome: 'accepted'; providerId: string; providerStatus: number }
   | { outcome: 'failed' | 'unknown'; providerId: null; providerStatus: number | null };
+
+export interface ConfirmationDeliveryDiagnostics {
+  attempts: number;
+  elapsedMs: number;
+  retryReason: 'none' | 'network' | 'timeout' | 'server' | 'idempotency' | 'rate-limit' | 'invalid-response';
+  stopReason: 'accepted' | 'http-rejected' | 'retry-exhausted' | 'rate-wait-too-long' | 'rate-wait-invalid' | 'redirect-rejected';
+}
+
+export type ConfirmationDelivery = ConfirmationDeliveryOutcome & { diagnostics: ConfirmationDeliveryDiagnostics };
+
+function transportFailure(error: unknown): 'timeout' | 'network' {
+  return error instanceof Error && (error.name === 'TimeoutError' || error.name === 'AbortError')
+    ? 'timeout' : 'network';
+}
 
 /** Two bounded attempts with the same idempotency key and exact message body. */
 export async function sendConfirmationEmail(
@@ -35,16 +49,26 @@ export async function sendConfirmationEmail(
   optOutUrl: string,
   attemptId: string,
 ): Promise<ConfirmationDelivery> {
+  const startedAt = performance.now();
+  const diagnostics: ConfirmationDeliveryDiagnostics = {
+    attempts: 0, elapsedMs: 0, retryReason: 'none', stopReason: 'retry-exhausted',
+  };
+  const finish = (result: ConfirmationDeliveryOutcome, stopReason: ConfirmationDeliveryDiagnostics['stopReason']): ConfirmationDelivery => ({
+    ...result,
+    diagnostics: { ...diagnostics, stopReason, elapsedMs: Math.max(0, Math.floor(performance.now() - startedAt)) },
+  });
   const body = JSON.stringify({
     from: FROM, to, subject: 'Confirm your blog subscription',
     html: confirmationHtml(confirmUrl, optOutUrl), text: confirmationText(confirmUrl, optOutUrl),
   });
-  let last: ConfirmationDelivery = { outcome: 'unknown', providerId: null, providerStatus: null };
+  let last: ConfirmationDeliveryOutcome = { outcome: 'unknown', providerId: null, providerStatus: null };
   // A later rejected retry does not prove an earlier ambiguous call sent nothing.
   // Only a valid accepted response can resolve that uncertainty for this operation.
   let acceptanceUncertain = false;
   for (let attempt = 0; attempt < 2; attempt++) {
+    diagnostics.attempts = attempt + 1;
     let providerStatus: number | null = null;
+    let retryReason: ConfirmationDeliveryDiagnostics['retryReason'] = 'network';
     try {
       const res = await fetch('https://api.resend.com/emails', {
         method: 'POST',
@@ -52,38 +76,56 @@ export async function sendConfirmationEmail(
           Authorization: `Bearer ${apiKey}`, 'Content-Type': 'application/json',
           'Idempotency-Key': `newsletter-confirmation/${attemptId}`,
         },
-        body, signal: AbortSignal.timeout(8_000),
+        // Workers does not support redirect:error. Inspect manual responses instead.
+        body, signal: AbortSignal.timeout(8_000), redirect: 'manual',
       });
       providerStatus = res.status;
+      if (res.status >= 300 && res.status < 400) {
+        void res.body?.cancel().catch(() => {});
+        return finish({ outcome: 'unknown', providerId: null, providerStatus }, 'redirect-rejected');
+      }
       if (res.ok) {
-        const data: unknown = await res.json();
+        let data: unknown;
+        let readFailed = false;
+        try { data = await res.json(); } catch (error) {
+          readFailed = true;
+          retryReason = error instanceof SyntaxError ? 'invalid-response' : transportFailure(error);
+        }
         if (typeof data === 'object' && data !== null && 'id' in data
           && typeof data.id === 'string' && data.id.length > 0 && data.id.length <= 128) {
-          return { outcome: 'accepted', providerId: data.id, providerStatus: res.status };
+          return finish({ outcome: 'accepted', providerId: data.id, providerStatus: res.status }, 'accepted');
         }
         acceptanceUncertain = true;
         last = { outcome: 'unknown', providerId: null, providerStatus: res.status };
+        if (!readFailed) retryReason = 'invalid-response';
       } else {
         // Provider bodies may contain addresses; retain only the HTTP status.
         acceptanceUncertain ||= res.status >= 500 || res.status === 409;
         last = { outcome: acceptanceUncertain ? 'unknown' : 'failed',
           providerId: null, providerStatus: res.status };
-        await res.body?.cancel();
-        if (res.status !== 409 && res.status !== 429 && res.status < 500) return last;
+        // Cleanup must not extend the interactive response budget.
+        void res.body?.cancel().catch(() => {});
+        if (res.status !== 409 && res.status !== 429 && res.status < 500) return finish(last, 'http-rejected');
+        retryReason = res.status === 409 ? 'idempotency' : res.status === 429 ? 'rate-limit' : 'server';
         if (res.status === 429 && attempt === 0) {
           // Respect a short provider reset without exceeding the interactive wait budget.
           // A longer or malformed hint returns the failure; never retry ahead of it.
-          const seconds = Number(res.headers.get('retry-after') ?? '1');
-          if (!Number.isFinite(seconds) || seconds < 0 || seconds > 3) return last;
+          const hint = res.headers.get('retry-after') ?? '1';
+          if (!/^\d+$/.test(hint)) return finish(last, 'rate-wait-invalid');
+          const seconds = Number(hint);
+          if (!Number.isSafeInteger(seconds)) return finish(last, 'rate-wait-invalid');
+          if (seconds > 3) return finish(last, 'rate-wait-too-long');
           await new Promise<void>(resolve => setTimeout(resolve, Math.max(1, seconds) * 1000));
         }
       }
-    } catch {
+    } catch (error) {
       acceptanceUncertain = true;
       last = { outcome: 'unknown', providerId: null, providerStatus };
+      retryReason = transportFailure(error);
     }
+    if (attempt === 0) diagnostics.retryReason = retryReason;
   }
-  return last;
+  return finish(last, 'retry-exhausted');
 }
 
 function confirmationHtml(confirmUrl: string, optOutUrl: string): string {
