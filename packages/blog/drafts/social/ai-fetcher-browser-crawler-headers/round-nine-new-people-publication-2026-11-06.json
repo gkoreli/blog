@@ -1,0 +1,152 @@
+{
+  "clientDate": "2026-11-06",
+  "authorization": "Owner: \"five more and find new genuine people that we would benefit to be correlated with.\" Existing authorization covers publishing useful X replies with relevant source links.",
+  "xNewThreadRepliesPublished": 5,
+  "newRecipientAccountsInCampaign": 5,
+  "canonicalOwnerViewsVerified": 5,
+  "projectRepositoryReplies": 3,
+  "articleReplies": 2,
+  "verification": "Full parents and profiles read; relevant linked articles and fresh project docs inspected. Exact bodies saved and canonical signed-in reply views reopened. Screenshots and raw UI receipts remain private. Pending submissions were resolved from settled UI without resubmitting.",
+  "identityLimit": "Public work and current discussion establish topical fit, not a proof of account humanity, endorsement or a relationship. All five handles were absent from earlier campaign receipts.",
+  "voice": "Short connected suggestions, lowercase openings, commas and occasional omitted apostrophes. No invented experience, deliberate technical errors or claim of unassisted authorship.",
+  "items": [
+    {
+      "name": "cendicott",
+      "parent": "https://x.com/cendicott/status/2118739971372892518",
+      "project": "https://github.com/gkoreli/agentport",
+      "copy": "i'd keep auth + spam checks on the submit endpoint, with a short-lived grant for that action. agentport uses scoped tools + per-call approval, useful for delegation but it doesnt prove a caller is human\nhttps://github.com/gkoreli/agentport",
+      "weighted": 226,
+      "url": "https://x.com/GogaKoreli/status/2118760991622406316",
+      "verifiedAt": "2026-11-06T17:43:02.315Z",
+      "platform": "x",
+      "kind": "new-person-new-thread",
+      "handle": "cendicott",
+      "label": "Scoped delegation and form abuse",
+      "fit": "The profile and current TechSEO Connect discussion show a practitioner asking how agents can use forms while spam controls remain effective. The reply separates delegated tool authority from evidence that a caller is human; AgentPort is not presented as a Turnstile bypass or spam detector.",
+      "sourceReads": [
+        {
+          "url": "https://github.com/gkoreli/agentport/blob/main/docs/APP-BUILDER.md",
+          "fileBlobSha": "5ec1aeeb45e41ffd54c0992ab351a9dae91f6f66"
+        }
+      ],
+      "state": "canonical-owner-view-verified",
+      "privateProofBasename": "new-people-20261106/1"
+    },
+    {
+      "name": "Soon / Rspress maintainer",
+      "parent": "https://x.com/Soon_Iter/status/2118625057090257368",
+      "project": "https://gkoreli.com/ai-fetcher-browser-crawler-headers",
+      "copy": "just tried get_current_page, it kept the ssg:false / llms:false caveat. i'd test whether the final answer keeps it too, one of my bot trials cited the right page and still gave the wrong answer\nhttps://gkoreli.com/ai-fetcher-browser-crawler-headers",
+      "weighted": 217,
+      "url": "https://x.com/GogaKoreli/status/2118761704775688430",
+      "verifiedAt": "2026-11-06T17:46:15.609Z",
+      "platform": "x",
+      "kind": "new-person-new-thread",
+      "handle": "Soon_Iter",
+      "label": "Rspress tool output and final-answer fidelity",
+      "fit": "Soon's profile identifies Rspress maintenance and Rspack contribution, and the parent introduces the Rspress 2.1 release. A direct read-only get_current_page call returned the SSG-MD upgrade caveat. The reply proposes checking its survival into a final answer, grounded in the author's earlier citation-with-wrong-answer trial.",
+      "sourceReads": [
+        {
+          "url": "https://rspress.rs/blog/rspress-v2-1",
+          "method": "Browser article read and one read-only page-defined get_current_page call; returned Markdown included both ssg:false and llms:false requirements."
+        },
+        {
+          "url": "https://gkoreli.com/ai-fetcher-browser-crawler-headers",
+          "localSource": "packages/blog/posts/041-ai-fetcher-browser-crawler-headers.md",
+          "section": "Context.dev Fast Answers selected the wrong maintenance sentence despite citing the tested page; full extraction contained the requested section."
+        }
+      ],
+      "state": "canonical-owner-view-verified",
+      "privateProofBasename": "new-people-20261106/2"
+    },
+    {
+      "name": "Marek Lecián",
+      "parent": "https://x.com/MarekLecian/status/2118665604555005989",
+      "project": "https://gkoreli.com/ai-fetcher-browser-crawler-headers",
+      "copy": "try the same 'find 3 articles' task without mentioning WebMCP, that separates support from tool choice. i keep supplied-URL trials separate from discovery for the same reason, a working route doesnt prove it gets picked\nhttps://gkoreli.com/ai-fetcher-browser-crawler-headers",
+      "weighted": 243,
+      "url": "https://x.com/GogaKoreli/status/2118762538951475656",
+      "verifiedAt": "2026-11-06T17:50:41.695Z",
+      "platform": "x",
+      "kind": "new-person-new-thread",
+      "handle": "MarekLecian",
+      "label": "Measuring WebMCP discovery",
+      "fit": "Marek's profile and linked implementation article describe web/data analytics and a WordPress WebMCP experiment. His example prompt explicitly requests WebMCP. The reply proposes the same task without that instruction to separate exposed support from spontaneous selection; it does not dispute his observed usage or assume he omitted analytics distinctions already in the article.",
+      "sourceReads": [
+        {
+          "url": "https://mareklecian.cz/en/webmcp-in-practice-why-i-give-ai-agents-their-own-tools/",
+          "method": "Full article read in the browser, including example prompt and measurement caveats."
+        },
+        {
+          "url": "https://gkoreli.com/ai-fetcher-browser-crawler-headers",
+          "localSource": "packages/blog/posts/041-ai-fetcher-browser-crawler-headers.md"
+        }
+      ],
+      "state": "canonical-owner-view-verified",
+      "privateProofBasename": "new-people-20261106/3"
+    },
+    {
+      "name": "Atul Bothe",
+      "parent": "https://x.com/atulbothe1/status/2118761744516665846",
+      "project": "https://github.com/gkoreli/ghx",
+      "copy": "one production trap, auth can fail on the first real prompt even after a successful handshake. i added doctor --live to ghx to exercise that path and print the failed stage + stderr, the source has the failure notes too\nhttps://github.com/gkoreli/ghx",
+      "weighted": 243,
+      "url": "https://x.com/GogaKoreli/status/2118763372355391630",
+      "verifiedAt": "2026-11-06T17:52:47.300Z",
+      "platform": "x",
+      "kind": "new-person-new-thread",
+      "handle": "atulbothe1",
+      "label": "Production agent authentication",
+      "fit": "Atul's profile describes Lifetrons and current agent work. His full post asks for production lessons and resources covering reliability beyond demos. The reply shares ghx's documented first-prompt authentication failure and live-doctor path; no experience with his proposed book or performance comparison is invented.",
+      "sourceReads": [
+        {
+          "url": "https://github.com/gkoreli/ghx/blob/mainline/README.md",
+          "fileBlobSha": "58702be26790569882ad50c65b5be017aa9dd7b4"
+        }
+      ],
+      "state": "canonical-owner-view-verified",
+      "privateProofBasename": "new-people-20261106/4"
+    },
+    {
+      "name": "Sunil Kumar",
+      "parent": "https://x.com/sunilkumar_ai/status/2118711900527825036",
+      "project": "https://github.com/gkoreli/backlog-mcp",
+      "copy": "add a corrected fact to that model-swap test, the new agent should retrieve the replacement and still trace the old decision. my backlog-mcp keeps a supersedes link and expires the previous memory, thats a useful portability fixture\nhttps://github.com/gkoreli/backlog-mcp",
+      "weighted": 256,
+      "url": "https://x.com/GogaKoreli/status/2118764246305780154",
+      "verifiedAt": "2026-11-06T18:03:08.918Z",
+      "platform": "x",
+      "kind": "new-person-new-thread",
+      "handle": "sunilkumar_ai",
+      "label": "Portable corrected memory",
+      "fit": "Sunil's profile and memory article show ongoing agent-memory and orchestration interests. His article already proposes swapping models; the reply adds a corrected-fact fixture with replacement retrieval and old-decision lineage. It does not endorse unverified market-share, retention, legal or business-result claims in that article.",
+      "sourceReads": [
+        {
+          "url": "https://sunilkumar.ai/writing/ai-agent-memory/",
+          "method": "Full article read in the browser."
+        },
+        {
+          "url": "https://github.com/gkoreli/backlog-mcp/blob/main/docs/guides/memory-protocol.md",
+          "fileBlobSha": "087d741e305bb0fd4fd029fdb8fa2e677d721b18"
+        }
+      ],
+      "state": "canonical-owner-view-verified",
+      "privateProofBasename": "new-people-20261106/5"
+    }
+  ],
+  "sourceScope": "GitHub file hashes identify freshly read file contents, not repository commits or newly tested runtime behavior. One bounded Rspress page WebMCP read was actually performed. Its tool output is not a final-model-answer test or a Cloudflare attribution trial.",
+  "campaignAgentRecordedTotals": {
+    "xOriginalPosts": 1,
+    "xOutreachReplies": 37,
+    "xClarifications": 2,
+    "xConversationFollowups": 4,
+    "xProjectSolutionReplies": 6,
+    "xNewPeopleReplies": 5,
+    "xRepliesTotal": 54,
+    "redditCommentsAndFollowups": 27,
+    "redditNativeArticles": 1
+  },
+  "countScope": "Original campaign receipts through this batch; categories are disjoint. These five are included in the total, not an additional count. Separate AI Site Check launch work is not presumed completed or counted.",
+  "coordination": "AI Site Check chat 01a1af96-ffb2-7910-bc6a-3c926b870ac1 was notified before this batch to avoid overlapping X writes. The previously requested hourly automation belongs to that chat; this batch creates no new schedule.",
+  "limits": "Signed-in owner visibility established. Anonymous visibility, engagement response, relationship formation, post-specific traffic and causal growth remain unmeasured. No Reddit write, follow, like, DM, Cloudflare query or own-site provider trial was added."
+}
