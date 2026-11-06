@@ -6,6 +6,7 @@ import { normalizeTarget } from './target.js';
 import { createWorkersTransport, type AuditTransport, type ResourceRequest, type RetrievedResource } from './transport.js';
 
 export type { SiteAuditReport } from './contracts.js';
+export type { AuditTransport, ResourceRequest, RetrievedResource, TransportDependencies } from './transport.js';
 export { TargetValidationError, normalizeTarget } from './target.js';
 export { createWorkersTransport } from './transport.js';
 export interface AuditDependencies { transport?: AuditTransport; now?: () => Date }
@@ -89,12 +90,13 @@ export async function analyzeSite(input: string, dependencies: AuditDependencies
   for (const probe of probes) {
     if (probe.evidence.status !== pageResource.evidence.status || probe.evidence.outcome !== pageResource.evidence.outcome) finding(`probe-${probe.evidence.probeAgent}`, 'review', `${probe.evidence.probeAgent} declaration received a different outcome`, `Audit client: ${pageResource.evidence.outcome}, HTTP ${pageResource.evidence.status ?? 'unavailable'}; synthetic declaration: ${probe.evidence.outcome}, HTTP ${probe.evidence.status ?? 'unavailable'}.`, 'Inspect edge rules and logs, then test the real provider. These requests originate from this audit and change only the User-Agent declaration; they do not reproduce provider IPs, signatures or browser behavior.');
   }
-  return { version: SITE_AUDIT_VERSION, checkedAt, target: target.href, complete: all.every(received) && bots.every(bot => bot.decision !== 'unknown'), resources: all.map(resource => resource.evidence), page,
+  return { version: SITE_AUDIT_VERSION, checkedAt, target: target.href, complete: all.every(received) && document.complete && !bots.some(bot => bot.reason.includes('comparison budget')), resources: all.map(resource => resource.evidence), page,
     robots: { state: robotsState, groups: document.groups.length, rules: document.groups.reduce((sum, group) => sum + group.rules.length, 0), sitemaps: document.sitemaps, bots },
     discovery: { llms: llmsPresent ? 'present' : missing(llmsResource) ? 'missing' : 'unavailable', llmsLinks: llmsPresent ? [...(llmsResource.text ?? '').matchAll(/\[[^\]\n]*\]\([^\s)]+\)/g)].length : 0,
       sitemap: sitemapXml ? 'xml-observed' : missing(sitemapResource) ? 'missing' : success(sitemapResource) ? 'unexpected-content' : 'unavailable',
       markdown: markdownNegotiated ? 'negotiated' : received(markdownResource) ? 'not-negotiated' : 'unavailable' }, findings,
     limits: [
+      'complete means every planned resource returned a bounded response and robots parsing/evaluation did not exceed a local policy budget. It does not mean every policy is known, every response succeeds, or an AI provider can use the site.',
       'One page and fixed root discovery paths; no site crawl, browser execution, provider login, search-result check or citation trial.',
       'Robots decisions apply to the final page path and declared product token. They are policy interpretations, not access authorization or proof that a provider follows them.',
       'Training-control groups are policy tokens for training or secondary reuse, not evidence that a particular request trains a model. Google-Extended also governs some grounding uses; Applebot-Extended controls secondary reuse, and CCBot builds a general web corpus. Consult each provider source for its exact scope.',

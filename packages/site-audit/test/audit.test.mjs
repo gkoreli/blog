@@ -25,7 +25,7 @@ function fixture(overrides = {}) {
 test('rich report keeps independent access, rules, representations and source facts', async () => {
   const { transport, requested } = fixture();
   const report = await analyzeSite('https://public-site.com/article', { transport, now: () => new Date('2026-11-06T12:00:00Z') });
-  assert.equal(report.complete, false); // Exa's undocumented major-search fallback remains unknown.
+  assert.equal(report.complete, true); // A documented unsupported vendor fallback can remain unknown in a completed plan.
   assert.equal(report.resources.length, 8);
   assert.equal(report.checkedAt, '2026-11-06T12:00:00.000Z');
   assert.equal(report.robots.bots.find(bot => bot.token === 'GPTBot').decision, 'disallowed');
