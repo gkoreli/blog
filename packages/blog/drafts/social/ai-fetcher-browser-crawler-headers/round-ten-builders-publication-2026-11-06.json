@@ -1,0 +1,231 @@
+{
+  "clientDate": "2026-11-06",
+  "timezone": "America/Los_Angeles",
+  "authorization": "Owner requested checking for replies, responding, then five more new genuine builders with useful contributions and relevant project links.",
+  "xConversationFollowupsPublished": 4,
+  "xNewBuilderRepliesPublished": 5,
+  "canonicalOwnerViewsVerified": 9,
+  "incomingResponsesLiked": 4,
+  "newRecipientAccounts": 5,
+  "newOutreachParentStatuses": 5,
+  "newOutreachRootConversations": 4,
+  "countNote": "Dustin was discovered inside Imran’s discussion. They are distinct new recipients and parent statuses in the same root conversation, not two independent root threads.",
+  "notificationCoverage": "Initial signed-in All notifications feed covered four new responses: one from Renée and three from E1ev3n. Their full parent conversations were read before responding. Previously handled Adam/Paul comments were not answered again. This was a bounded feed check, not an exhaustive account-wide census or continuous monitoring.",
+  "newSignals": "The feed also showed Renée liking the AgentPort reply, E1ev3n liking the analytics replies and Adam liking the prior crawler-role clarification. These are platform signals, not proven project adoption or blog visits.",
+  "items": [
+    {
+      "kind": "followup",
+      "handle": "rerosillo",
+      "parent": "https://x.com/rerosillo/status/2118762982729711979",
+      "copy": "curious where you would try this first, a workflow inside your own product or one of the outside services muse uses? the site opting in is still the hard boundary, thats the bit i want to make easier",
+      "url": "https://x.com/GogaKoreli/status/2118768727286251612",
+      "likedParent": true,
+      "verifiedAt": "2026-11-06T18:14:04.364Z",
+      "label": "Renée / possible AgentPort integration",
+      "fit": "A new reaction to the prior AgentPort reply. Ask which actual workflow she would try first; retain site participation as a boundary rather than repeat the repository pitch.",
+      "platform": "x",
+      "weighted": 199,
+      "state": "canonical-owner-view-verified",
+      "privateProofBasename": "builders-followups-20261106/followup-1",
+      "sourceReads": [
+        {
+          "url": "https://github.com/gkoreli/agentport/blob/main/docs/APP-BUILDER.md",
+          "fileBlobSha": "5ec1aeeb45e41ffd54c0992ab351a9dae91f6f66"
+        }
+      ]
+    },
+    {
+      "kind": "followup",
+      "handle": "harden_369741",
+      "parent": "https://x.com/harden_369741/status/2118758119362757076",
+      "likedParent": true,
+      "copy": "what produces the painted count in yours, a client beacon or a browser trace? id keep that signal named explicitly too, otherwise the next person reading the chart might assume it proves somebody actually saw the page",
+      "url": "https://x.com/GogaKoreli/status/2118769020866597045",
+      "verifiedAt": "2026-11-06T18:15:15.042Z",
+      "label": "E1ev3n / rendering measurement",
+      "fit": "A new claim of separate eligible and painted columns. Ask what supplies the painted signal before interpreting it as a confirmed view; no reader implementation was inspected.",
+      "platform": "x",
+      "weighted": 217,
+      "state": "canonical-owner-view-verified",
+      "privateProofBasename": "builders-followups-20261106/followup-2",
+      "sourceReads": [
+        {
+          "localSource": "packages/blog/posts/041-ai-fetcher-browser-crawler-headers.md",
+          "scope": "Existing controlled evidence, measurement boundaries and historical classification provenance; no fresh provider experiment."
+        }
+      ]
+    },
+    {
+      "kind": "followup",
+      "handle": "harden_369741",
+      "parent": "https://x.com/harden_369741/status/2118750808363630771",
+      "likedParent": true,
+      "copy": "mine still cant tell sloppy from deliberate, it can verify specific evidence but the motive stays unknown. i leave that unknown in the data, otherwise the checker just gives the guess a more official looking label",
+      "url": "https://x.com/GogaKoreli/status/2118769363318882464",
+      "verifiedAt": "2026-11-06T18:17:13.036Z",
+      "label": "E1ev3n / motive versus evidence",
+      "fit": "A new comment says a checker tells sloppy and careful setups apart. Clarify that our evidence checks do not establish motive.",
+      "platform": "x",
+      "weighted": 213,
+      "state": "canonical-owner-view-verified",
+      "privateProofBasename": "builders-followups-20261106/followup-3",
+      "sourceReads": [
+        {
+          "localSource": "packages/blog/posts/041-ai-fetcher-browser-crawler-headers.md",
+          "scope": "Existing controlled evidence, measurement boundaries and historical classification provenance; no fresh provider experiment."
+        }
+      ]
+    },
+    {
+      "kind": "followup",
+      "handle": "harden_369741",
+      "parent": "https://x.com/harden_369741/status/2118746197133541633",
+      "likedParent": true,
+      "copy": "keep the classifier version with that receipt too, then replay it against a new version. if the bucket changes you can explain the change, without quietly rewriting what the old chart meant",
+      "url": "https://x.com/GogaKoreli/status/2118769786759065861",
+      "verifiedAt": "2026-11-06T18:18:32.797Z",
+      "label": "E1ev3n / regression fixture provenance",
+      "fit": "A new response welcomes the saved-request fixture. Add classifier-version provenance and explicit replay comparison without rewriting the old chart.",
+      "platform": "x",
+      "weighted": 189,
+      "state": "canonical-owner-view-verified",
+      "privateProofBasename": "builders-followups-20261106/followup-4",
+      "sourceReads": [
+        {
+          "localSource": "packages/blog/posts/041-ai-fetcher-browser-crawler-headers.md",
+          "scope": "Existing controlled evidence, measurement boundaries and historical classification provenance; no fresh provider experiment."
+        }
+      ]
+    },
+    {
+      "kind": "new-builder",
+      "handle": "itsAhOh",
+      "parent": "https://x.com/itsAhOh/status/2118753140019187872",
+      "project": "https://github.com/gkoreli/backlog-mcp",
+      "copy": "id add a fixture where two notes share nearly every word but one reverses the decision, diversity and correctness can pull apart there. in backlog-mcp i keep explicit supersession links so the old decision stays traceable\nhttps://github.com/gkoreli/backlog-mcp",
+      "url": "https://x.com/GogaKoreli/status/2118770310799626694",
+      "verifiedAt": "2026-11-06T18:21:21.450Z",
+      "label": "Ah Oh / Co-memo",
+      "fit": "The current release describes stemming and limiting look-alike notes in automatic context. Fresh README inspection shows conflict review already exists. The proposed near-identical/opposite-decision fixture is a test suggestion, not a reproduced bug or a claim that Co-memo lacks conflict handling.",
+      "platform": "x",
+      "weighted": 245,
+      "state": "canonical-owner-view-verified",
+      "privateProofBasename": "builders-followups-20261106/builder-1",
+      "profile": "https://x.com/itsAhOh",
+      "sourceReads": [
+        {
+          "url": "https://github.com/gkoreli/backlog-mcp/blob/main/docs/guides/memory-protocol.md",
+          "fileBlobSha": "087d741e305bb0fd4fd029fdb8fa2e677d721b18"
+        },
+        {
+          "url": "https://github.com/its-ahoh/co-memo/blob/main/README.md",
+          "fileBlobSha": "f629e7c2cbd3614099b86127df3651664a642319"
+        }
+      ]
+    },
+    {
+      "kind": "new-builder",
+      "handle": "Kaustub48915726",
+      "parent": "https://x.com/Kaustub48915726/status/2118546416054476848",
+      "project": "https://github.com/gkoreli/backlog-mcp",
+      "copy": "Meristem for me, id test expiry followed by \"why did we choose this?\" too. in backlog-mcp expired facts leave recall but stay auditable, so losing a current claim doesnt also erase the reasoning you need to replace it\nhttps://github.com/gkoreli/backlog-mcp",
+      "url": "https://x.com/GogaKoreli/status/2118771031787880781",
+      "verifiedAt": "2026-11-06T18:23:10.497Z",
+      "label": "Kaustubh / Meristem",
+      "fit": "The builder explains symbol/pattern/SQL checks and reconfirmation in the visible conversation. The reply answers his which-first question and proposes testing historical why-questions after expiry, using backlog-mcp soft expiry as an implementation reference. It does not claim that Meristem deletes history.",
+      "platform": "x",
+      "weighted": 241,
+      "state": "canonical-owner-view-verified",
+      "privateProofBasename": "builders-followups-20261106/builder-2",
+      "profile": "https://x.com/Kaustub48915726",
+      "sourceReads": [
+        {
+          "url": "https://github.com/gkoreli/backlog-mcp/blob/main/docs/guides/memory-protocol.md",
+          "fileBlobSha": "087d741e305bb0fd4fd029fdb8fa2e677d721b18"
+        }
+      ]
+    },
+    {
+      "kind": "new-builder",
+      "handle": "ImranWebsites",
+      "parent": "https://x.com/ImranWebsites/status/2118720483273142751",
+      "project": "https://github.com/gkoreli/agentport",
+      "copy": "one more test for client sites, disconnect after an action runs but before its reply arrives. reconnecting doesnt mean the action failed, so blindly retrying can duplicate it. agentport exposes session history for checking what happened\nhttps://github.com/gkoreli/agentport",
+      "url": "https://x.com/GogaKoreli/status/2118771981315432488",
+      "verifiedAt": "2026-11-06T18:26:55.997Z",
+      "label": "Imran / client websites",
+      "fit": "The website builder discusses agent actions, and an existing reply already covers permission and failure handling. This reply adds the lost-response/duplicate-retry case. AgentPort history is an inspection aid, not an exactly-once execution guarantee.",
+      "platform": "x",
+      "weighted": 260,
+      "state": "canonical-owner-view-verified",
+      "privateProofBasename": "builders-followups-20261106/builder-3",
+      "profile": "https://x.com/ImranWebsites",
+      "sourceReads": [
+        {
+          "url": "https://github.com/gkoreli/agentport/blob/main/docs/APP-BUILDER.md",
+          "fileBlobSha": "5ec1aeeb45e41ffd54c0992ab351a9dae91f6f66"
+        }
+      ]
+    },
+    {
+      "kind": "new-builder",
+      "handle": "FoundForAI",
+      "parent": "https://x.com/FoundForAI/status/2118761350755500179",
+      "project": "https://github.com/gkoreli/agentport/blob/main/docs/APP-BUILDER.md",
+      "copy": "make the confirmation show the actual recipient + request, then recheck ownership and current state in the handler. a valid tool schema doesnt authorize the action, i keep that boundary explicit in agentports app guide\nhttps://github.com/gkoreli/agentport/blob/main/docs/APP-BUILDER.md",
+      "url": "https://x.com/GogaKoreli/status/2118772524268028011",
+      "verifiedAt": "2026-11-06T18:29:31.352Z",
+      "label": "Dustin / Found For AI",
+      "fit": "His profile and reply identify customer-confirmed requests for local businesses. The reply distinguishes valid input schema from runtime authorization, using the app-builder guide. No claim is made about a defect in his implementation.",
+      "platform": "x",
+      "weighted": 242,
+      "state": "canonical-owner-view-verified",
+      "privateProofBasename": "builders-followups-20261106/builder-4",
+      "profile": "https://x.com/FoundForAI",
+      "sourceReads": [
+        {
+          "url": "https://github.com/gkoreli/agentport/blob/main/docs/APP-BUILDER.md",
+          "fileBlobSha": "5ec1aeeb45e41ffd54c0992ab351a9dae91f6f66"
+        }
+      ]
+    },
+    {
+      "kind": "new-builder",
+      "handle": "GOROman",
+      "parent": "https://x.com/GOROman/status/2118679074000531563",
+      "project": "https://github.com/gkoreli/agentport",
+      "copy": "your store could reuse those tools for a visitors own agent too, thats what im building with agentport. one integration gotcha, load connect.js before registering WebMCP tools, it snapshots them when the session opens\nhttps://github.com/gkoreli/agentport",
+      "url": "https://x.com/GogaKoreli/status/2118773112305340615",
+      "verifiedAt": "2026-11-06T18:31:15.078Z",
+      "label": "GOROman / WebMCP storefront",
+      "fit": "The original Japanese post says his Amazon-like demo exposes WebMCP. The reply proposes reusing that surface with a visitor-owned agent and gives the documented AgentPort script-registration order. The storefront itself was not run or verified; compatibility is proposed, not accepted.",
+      "platform": "x",
+      "weighted": 241,
+      "state": "canonical-owner-view-verified",
+      "privateProofBasename": "builders-followups-20261106/builder-5",
+      "profile": "https://x.com/GOROman",
+      "sourceReads": [
+        {
+          "url": "https://github.com/gkoreli/agentport/blob/main/docs/APP-BUILDER.md",
+          "fileBlobSha": "5ec1aeeb45e41ffd54c0992ab351a9dae91f6f66"
+        }
+      ]
+    }
+  ],
+  "selection": "Read current parent posts, visible replies and profiles. All five new-recipient handles were absent from earlier campaign receipts. Co-memo source and owned project guides were freshly read. Imran and Dustin are related prospects, with distinct suggestions. Generic event coverage, organizational roundups and an agent-security discussion without a specific inspected build were skipped.",
+  "identityLimit": "Public work and discussion support topical fit. No account-humanity, endorsement, collaboration, successful recipient integration or independent adoption is established.",
+  "sourceScope": "GitHub hashes identify file contents, not repository commits or fresh runtime acceptance. Found For AI’s public homepage was also read through the web fetcher; it was labelled crawled two weeks earlier, so it was not used as proof of a current deployed action flow. GOROman’s original Japanese wording was checked against the displayed translation. No private/protected reply content is included in this public receipt.",
+  "publicationMethod": "Exact copy preserved before submission; each post submitted once, pending states resolved through settled UI, canonical signed-in status reopened and exact body/parent verified. Raw snapshots and screenshots remain private and ignored by Git.",
+  "campaignTotalsScope": "Original outreach campaign only. Separate AI Site Check work is not presumed completed or counted.",
+  "campaignAgentRecordedTotals": {
+    "previousXReplies": 54,
+    "thisBatchConversationFollowups": 4,
+    "thisBatchNewBuilderReplies": 5,
+    "xRepliesTotal": 63,
+    "xOriginalPosts": 1,
+    "redditCommentsAndFollowups": 27,
+    "redditNativeArticles": 1
+  },
+  "coordination": "AI Site Check chat was notified before work to prevent overlapping X writes. Completion and five handles are shared after publication for deduplication; its previously authorized schedule is unchanged.",
+  "limits": "All nine signed-in owner views verified. Independent anonymous visibility, post-specific traffic, causal growth and recipient uptake are unmeasured. No new Reddit work, DM, follow, provider trial, Cloudflare query or schedule."
+}
