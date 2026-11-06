@@ -1,0 +1,159 @@
+{
+  "automationId": "ai-site-check-hourly-x-replies",
+  "triggeredAt": "2026-11-06T19:42:02.391Z",
+  "completedPublicationAt": "2026-11-06T19:52:14.509Z",
+  "clientDate": "2026-11-06",
+  "timezone": "America/Los_Angeles",
+  "authorization": "Explicit hourly heartbeat authorizes up to five useful X replies; no recurring Reddit, DMs, likes, follows, original posts or new schedulers.",
+  "preflight": "Read latest chat state, article/tools worklists and shared social receipts. Tools UI acceptance was complete at 18:33 UTC; the separate AI Fetchers chat remained idle after round ten. No active one-time batch or newer posting session was found. Fresh origin/main remained 6c3ad906 at run start. No overlap or missed-hour catch-up.",
+  "currentEvidence": "Live AI Site Check article read in the signed-in browser; current site-audit and analytics READMEs read. No new hosted audit or provider trial performed.",
+  "xRepliesPublished": 5,
+  "xNewConversationRepliesPublished": 3,
+  "xConversationFollowupsPublished": 2,
+  "canonicalOwnerViewsVerified": 5,
+  "countNote": "Five in this run, ten across the two AI Site Check hourly receipts. The historical original-campaign baseline of 63 remains separately identified.",
+  "notificationCoverage": "Bounded initial signed-in notifications reviewed. Emanuel’s new question and E1ev3n’s classifier follow-up received replies before new destinations. Valerion’s acknowledgement and E1ev3n’s beacon relabelling closed their respective loops; no redundant acknowledgement was posted. Not an exhaustive account-wide census.",
+  "selection": "One focused current X search for builders using MCP/AI agents and memory/websites. Read the full selected parent chains and relevant methods. Karim’s concrete unanswered file-collision question was found inside Peter Munkholm’s harness discussion. Native article and visible substantive replies were read before answering Daniel. Both author implementation/evaluation articles were read before answering mpgn. Generic promotion and aggregator reposts were skipped.",
+  "closedWithoutReply": [
+    {
+      "handle": "AetherC0de",
+      "url": "https://x.com/AetherC0de/status/2118782102950891786",
+      "observation": "Acknowledges the previous Perplexity-method answer and proposes a fresh marker. No new question requiring another reply observed in the notification."
+    },
+    {
+      "handle": "harden_369741",
+      "url": "https://x.com/harden_369741/status/2118776636258787766",
+      "observation": "Prior pending beacon clarification reports relabelling. No additional reply needed; implementation change remains recipient-reported rather than independently inspected."
+    }
+  ],
+  "items": [
+    {
+      "kind": "followup",
+      "handle": "emanuelbalsa",
+      "parent": "https://x.com/emanuelbalsa/status/2118782807623258129",
+      "copy": "i checked the source now, Socure says daily requests on Cloudflare's network. that answers my requests-vs-jobs question, i shouldve checked first. id compare the counted population + detection method next: https://www.socure.com/blog/introducing-agent-intelligence",
+      "basis": "Read entire three-post chain and current official Socure launch/blog. The source explicitly identifies daily agent requests on Cloudflare; correct the earlier uncertainty rather than repeat it. No independent verification of the 1,700% growth or Socure accuracy claim.",
+      "url": "https://x.com/GogaKoreli/status/2118791477983924665",
+      "verifiedAt": "2026-11-06T19:44:17.278Z",
+      "weighted": 229,
+      "platform": "x",
+      "label": "Emanuel / source correction",
+      "state": "canonical-owner-view-verified",
+      "sourceReads": [
+        {
+          "url": "https://www.socure.com/blog/introducing-agent-intelligence",
+          "scope": "Fresh official source identifies daily requests on Cloudflare; the reply corrects the earlier unit uncertainty."
+        },
+        {
+          "url": "https://www.socure.com/news-and-press/agent-intelligence-launch",
+          "scope": "Official launch context read; no independent verification of vendor accuracy or growth claims."
+        }
+      ],
+      "privateProofBasename": "ai-site-check-hourly-x-20261106-1942/01",
+      "publishedTimeUi": "11:43 AM · Nov 6, 2026",
+      "publishedTimeZone": "America/Los_Angeles"
+    },
+    {
+      "kind": "followup",
+      "handle": "harden_369741",
+      "parent": "https://x.com/harden_369741/status/2118780781028130964",
+      "copy": "if your classifier uses provider IP feeds, freeze those too. the same code can produce a different network verdict after a feed update. replay new code against the old feed first, then change the feed, otherwise two inputs move at once.",
+      "basis": "Read full ancestor chain and complete new reply. Current analytics README preserves independent network profiles and historical network snapshots. Conditional experiment suggestion; no assertion that the recipient uses feeds or that a feed caused the reported chart change. Existing ancestor links the provider study.",
+      "url": "https://x.com/GogaKoreli/status/2118791716279074890",
+      "verifiedAt": "2026-11-06T19:45:25.303Z",
+      "weighted": 236,
+      "platform": "x",
+      "label": "E1ev3n / classifier input snapshots",
+      "state": "canonical-owner-view-verified",
+      "sourceReads": [
+        {
+          "localSource": "packages/analytics/README.md",
+          "scope": "Current independent network profiles and historical network snapshots; conditional replay-method recommendation."
+        }
+      ],
+      "privateProofBasename": "ai-site-check-hourly-x-20261106-1942/02",
+      "publishedTimeUi": "11:44 AM · Nov 6, 2026",
+      "publishedTimeZone": "America/Los_Angeles"
+    },
+    {
+      "parent": "https://x.com/babykswanson/status/2118789121233563979",
+      "handle": "babykswanson",
+      "kind": "new-conversation",
+      "copy": "id give each coding agent its own git worktree + branch, then merge one at a time and test the combined result. they can still make conflicting decisions, but they wont overwrite each others working files. give each build its own output dir too. https://git-scm.com/docs/git-worktree",
+      "basis": "Read Peter Munkholm’s complete original and Karim’s unanswered collision question. Fresh official Git worktree documentation describes separate working trees and branch/index metadata. Integration tests and separate build outputs are recommendations, not claims about their existing harness. The repository AGENTS.md also requires build-output isolation.",
+      "url": "https://x.com/GogaKoreli/status/2118792751747842467",
+      "verifiedAt": "2026-11-06T19:49:22.777Z",
+      "weighted": 269,
+      "platform": "x",
+      "label": "Karim / concurrent file edits",
+      "state": "canonical-owner-view-verified",
+      "sourceReads": [
+        {
+          "url": "https://git-scm.com/docs/git-worktree",
+          "scope": "Fresh official multiple-working-tree and branch/index documentation."
+        },
+        {
+          "localSource": "AGENTS.md",
+          "scope": "Current repository requirement to preserve concurrent work and isolate build outputs."
+        }
+      ],
+      "privateProofBasename": "ai-site-check-hourly-x-20261106-1942/03",
+      "publishedTimeUi": "11:48 AM · Nov 6, 2026",
+      "publishedTimeZone": "America/Los_Angeles"
+    },
+    {
+      "parent": "https://x.com/swombat/status/2118790487733575764",
+      "handle": "swombat",
+      "kind": "new-conversation",
+      "copy": "for the throwaway helpers you mention, id require claims + source locations + commands + unknowns back, and keep action authority with the caller. my ghx tool implements the report part, though passing its schema doesnt prove the claims true. https://github.com/gkoreli/ghx",
+      "basis": "Read entire native X article, including its explicit exception for throwaway code-search helpers, plus all displayed substantive replies. Fresh default-branch ghx README via GitHub connector, blob 58702be26790569882ad50c65b5be017aa9dd7b4, supports evidence report fields and schema validation. Authority restriction is a recommendation, not a claim that the report schema enforces authorization. No performance or trustworthiness superiority claimed.",
+      "url": "https://x.com/GogaKoreli/status/2118793161476817105",
+      "verifiedAt": "2026-11-06T19:50:52.849Z",
+      "weighted": 266,
+      "platform": "x",
+      "label": "Daniel / evidence reports for helpers",
+      "state": "canonical-owner-view-verified",
+      "sourceReads": [
+        {
+          "url": "https://github.com/gkoreli/ghx/blob/mainline/README.md",
+          "fileBlobSha": "58702be26790569882ad50c65b5be017aa9dd7b4",
+          "scope": "Fresh default-branch read through GitHub connector: claims, source evidence, commands, unknowns and schema validation; no benchmark result repeated."
+        }
+      ],
+      "privateProofBasename": "ai-site-check-hourly-x-20261106-1942/04",
+      "publishedTimeUi": "11:50 AM · Nov 6, 2026",
+      "publishedTimeZone": "America/Los_Angeles"
+    },
+    {
+      "parent": "https://x.com/mpgn_x64/status/2118783010564927993",
+      "handle": "mpgn_x64",
+      "kind": "new-conversation",
+      "copy": "for a CLI comparison, id put the same parsers, scope gates and argv builder behind a typed CLI. then count malformed calls, correct refusals and completed tasks in both. that isolates interface choice from the protections your wrapper adds.",
+      "basis": "Read complete three-post X chain and both linked author articles: Building a MCP for NetExec and You’re Building Your MCP Wrong. They already describe scope enforcement, argv assembly, structured results, parser limitations and static-versus-dynamic MCP evaluations. Proposed a separate controlled CLI-interface comparison; no claim that their existing benchmark did this, that MCP alone enforces safety, or that an actual vulnerability exists. No link repeated because the implementation article is already in the parent.",
+      "url": "https://x.com/GogaKoreli/status/2118793501957919164",
+      "verifiedAt": "2026-11-06T19:52:14.509Z",
+      "weighted": 240,
+      "platform": "x",
+      "label": "mpgn / controlled CLI comparison",
+      "state": "canonical-owner-view-verified",
+      "sourceReads": [
+        {
+          "url": "https://mpgn.fr/building-a-mcp-for-netexec/",
+          "scope": "Complete author implementation article read: scope gates, argument assembly, parsers, audit records and limits."
+        },
+        {
+          "url": "https://mpgn.fr/youre-building-your-mcp-wrong/",
+          "scope": "Complete evaluation article read: static/dynamic MCP comparison and confounds. The suggested typed CLI arm is a proposed additional comparison, not a reproduced result."
+        }
+      ],
+      "privateProofBasename": "ai-site-check-hourly-x-20261106-1942/05",
+      "publishedTimeUi": "11:51 AM · Nov 6, 2026",
+      "publishedTimeZone": "America/Los_Angeles"
+    }
+  ],
+  "verification": "Exact final text saved before each submission and checked in composer. Each canonical status reopened; body, parent context and relevant link were checked in the signed-in owner view. Public UI times are minute-resolution; verifiedAt records later canonical inspection. No uncertain submission was retried.",
+  "independentPublicVisibility": "Not tested; signed-in owner visibility only.",
+  "privacy": "Raw signed-in captures, screenshots and source captures remain outside Git in private temporary storage. Public records contain exact published copy and normalized evidence only.",
+  "limits": "No new traffic query, click/adoption measurement, real-provider experiment, target-site audit, anonymous visibility test, Reddit write, DM, like, follow, original post or scheduler change. No recipient defect or unmeasured performance improvement claimed. A malformed navigation caused a local browser error; the stale tab was replaced and canonical verification completed without repeating a submission.",
+  "nextBoundedAction": "Complete at five replies. At the next scheduled run reconcile current chat state and shared receipts, then prioritize new substantive responses. Do not duplicate these destinations or accumulate missed hours."
+}
