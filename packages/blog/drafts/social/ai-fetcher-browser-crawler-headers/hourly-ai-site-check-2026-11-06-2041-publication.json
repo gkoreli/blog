@@ -1,0 +1,169 @@
+{
+  "automationId": "ai-site-check-hourly-x-replies",
+  "triggeredAt": "2026-11-06T20:41:32.676Z",
+  "completedPublicationAt": "2026-11-06T20:50:47.031Z",
+  "clientDate": "2026-11-06",
+  "timezone": "America/Los_Angeles",
+  "authorization": "Explicit hourly heartbeat authorizes up to five useful X replies; no recurring Reddit, DMs, likes, follows, original posts or new schedulers.",
+  "preflight": "Read latest chat state, article/tools worklists and shared social receipts. Tools UI acceptance was complete at 18:33 UTC; the separate AI Fetchers chat remained idle after round ten. No active one-time batch or newer posting session was found. Fresh origin/main remained b03c84f6 at run start and final integration. No overlap or missed-hour catch-up.",
+  "currentEvidence": "Live AI Site Check article and current site-audit README read. Current provider-study Bing section read live and locally before relying on its dated result. No new hosted audit or provider trial.",
+  "xRepliesPublished": 5,
+  "xNewConversationRepliesPublished": 4,
+  "xConversationFollowupsPublished": 1,
+  "canonicalOwnerViewsVerified": 5,
+  "countNote": "Five in this run, fifteen across the three AI Site Check hourly receipts. The historical original-campaign baseline of 63 remains separately identified.",
+  "notificationCoverage": "Bounded initial signed-in notifications reviewed. Karim’s new lease-ledger question received the first reply. Peter’s explanation was incorporated into that same chain. E1ev3n’s feed-freezing acknowledgement and Daniel’s helper-trust response supplied no new question requiring another contribution. Not an exhaustive account-wide census. Notification count increased later; those contents were not opened after reaching the five-reply ceiling.",
+  "selection": "One focused Latest X search for AI-crawler/robots builders and checks. Read the complete selected discussions and relevant products or methods. Four specific additions: separate search/training controls, answer fidelity as an experiment outcome, product data consistency, and hostname/path coverage. Generic promotion was skipped. No repeated destination or second pitch to an already-handled parent.",
+  "closedWithoutReply": [
+    {
+      "handle": "babykswanson",
+      "url": "https://x.com/babykswanson/status/2118797428769825082",
+      "observation": "Acknowledges worktree suggestion; his later substantive ledger question was answered separately in this run."
+    },
+    {
+      "handle": "harden_369741",
+      "url": "https://x.com/harden_369741/status/2118796312963592396",
+      "observation": "Recipient reports a prior feed-refresh confound and acknowledges freezing inputs. This is a recipient report, not inspected implementation or a verified adoption outcome."
+    },
+    {
+      "handle": "swombat",
+      "url": "https://x.com/swombat/status/2118795144376057884",
+      "observation": "Recipient describes trust in existing helper management and reports experience without failures. No new question; no unsolicited argument or repeated pitch."
+    }
+  ],
+  "observedEngagement": "The initial notification feed also showed likes on earlier replies from E1ev3n, Ah Oh, Daniel and Renée. These are platform reactions; no traffic, causal attribution or inspected adoption is inferred.",
+  "items": [
+    {
+      "parent": "https://x.com/babykswanson/status/2118802048821199123",
+      "handle": "babykswanson",
+      "kind": "followup",
+      "copy": "the lease ledger is an extra coordination layer. git worktree gives each branch its own working files and index, it doesnt assign file owners. even \"git worktree lock\" protects worktree metadata from cleanup, it isnt an edit lock.",
+      "basis": "Read complete six-post chain, including Peter’s new lease-ledger description and Karim’s question. Fresh official Git worktree documentation distinguishes separate trees/indexes from administrative locking. No claim about the undisclosed implementation of Peter’s ledger; existing ancestor already links the manual.",
+      "url": "https://x.com/GogaKoreli/status/2118806386343842292",
+      "verifiedAt": "2026-11-06T20:43:22.786Z",
+      "weighted": 230,
+      "platform": "x",
+      "label": "Karim / lease ledger versus worktree lock",
+      "state": "canonical-owner-view-verified",
+      "sourceReads": [
+        {
+          "url": "https://git-scm.com/docs/git-worktree",
+          "scope": "Fresh official documentation: separate working trees/indexes and administrative locking; existing ancestor already links it."
+        }
+      ],
+      "privateProofBasename": "ai-site-check-hourly-x-20261106-2041/01",
+      "publishedTimeUi": "12:43 PM · Nov 6, 2026",
+      "publishedTimeZone": "America/Los_Angeles"
+    },
+    {
+      "parent": "https://x.com/ZofloqDev/status/2118805200555446548",
+      "handle": "ZofloqDev",
+      "kind": "new-conversation",
+      "copy": "for the ChatGPT search check, id give OAI-SearchBot its own row. GPTBot controls training use, so blocking it can be intentional while search remains allowed. that keeps the fix list from undoing an owners training opt-out. https://developers.openai.com/api/docs/bots",
+      "basis": "Read the complete three-post chain and the linked Zofloq homepage/tools menu. The checker described in the post was not available in that menu; no execution or implementation audit claimed. Fresh official OpenAI crawler documentation separately identifies OAI-SearchBot and GPTBot and explicitly permits search allowance with training disallowance. Suggestion concerns the named roles in the post, not a claimed reproduced product bug.",
+      "url": "https://x.com/GogaKoreli/status/2118806707963109643",
+      "verifiedAt": "2026-11-06T20:45:06.266Z",
+      "weighted": 247,
+      "platform": "x",
+      "label": "Enoch / search and training controls",
+      "state": "canonical-owner-view-verified",
+      "sourceReads": [
+        {
+          "url": "https://developers.openai.com/api/docs/bots",
+          "scope": "Fresh official independent search/training controls; supports permitting OAI-SearchBot while disallowing GPTBot."
+        },
+        {
+          "url": "https://zofloq.online/",
+          "scope": "Current homepage and tools menu read; described crawler checker not located, so no implementation or execution claim."
+        }
+      ],
+      "privateProofBasename": "ai-site-check-hourly-x-20261106-2041/02",
+      "publishedTimeUi": "12:44 PM · Nov 6, 2026",
+      "publishedTimeZone": "America/Los_Angeles"
+    },
+    {
+      "parent": "https://x.com/NiceDaniilak/status/2118791502335730080",
+      "handle": "NiceDaniilak",
+      "kind": "new-conversation",
+      "copy": "in my Bing trial, a cited answer turned a \"Browser\" request classification into human visitors. for an HTML vs Markdown test, id score whether the answer preserves those distinctions alongside fetch counts: https://gkoreli.com/ai-fetcher-browser-crawler-headers#the-qualifications-lost-in-the-answer",
+      "basis": "Read full post and both displayed replies, then Dries Buytaert’s original March 5 log study. Re-read own published Bing section: source-linked summary called anonymous Grok requests human visitors; origin requests were unobserved. Suggest answer-fidelity measurement as a separate experiment. No claim that Markdown caused or fixes the error, and no verification asserted for the other numerical studies in the target post.",
+      "url": "https://x.com/GogaKoreli/status/2118807180954771790",
+      "verifiedAt": "2026-11-06T20:48:23.327Z",
+      "platform": "x",
+      "label": "Daniil / answer fidelity measurement",
+      "state": "canonical-owner-view-verified",
+      "sourceReads": [
+        {
+          "url": "https://dri.es/markdown-llms-txt-and-ai-crawlers",
+          "scope": "Original March 5 log study read; negotiation and duplicate-fetch observations do not measure answer fidelity."
+        },
+        {
+          "url": "https://gkoreli.com/ai-fetcher-browser-crawler-headers#the-qualifications-lost-in-the-answer",
+          "localSource": "packages/blog/posts/041-ai-fetcher-browser-crawler-headers.md",
+          "scope": "Fresh live and local read of the dated Bing result. Source-linked answer lost Browser-versus-human qualification; origin requests were not observed. No new trial or Markdown causal claim."
+        }
+      ],
+      "privateProofBasename": "ai-site-check-hourly-x-20261106-2041/03",
+      "weighted": 230,
+      "publishedTimeUi": "12:46 PM · Nov 6, 2026",
+      "publishedTimeZone": "America/Los_Angeles"
+    },
+    {
+      "parent": "https://x.com/DevMarDe/status/2118793074465817032",
+      "handle": "DevMarDe",
+      "kind": "new-conversation",
+      "copy": "one cheap retailer check: compare price, currency and stock in the initial HTML, Product/Offer markup and rendered page for the same URL. a readable page can still disagree with itself. Google's markup guide is a useful starting point: https://developers.google.com/search/docs/appearance/structured-data/product-snippet",
+      "basis": "Read the full two-post discussion, including the expanded retail parent, and current DevMarDe links/Crawl Audit landing page. Fresh Google Product structured-data documentation supports checking price, currency and availability and recommends initial HTML for merchants. Suggested consistency check; no retailer audit, adoption survey, target defect or AI-shortlist guarantee claimed.",
+      "weighted": 259,
+      "url": "https://x.com/GogaKoreli/status/2118808028107735518",
+      "verifiedAt": "2026-11-06T20:50:10.264Z",
+      "platform": "x",
+      "label": "Zain / product data consistency",
+      "state": "canonical-owner-view-verified",
+      "sourceReads": [
+        {
+          "url": "https://devmarde.com/links",
+          "scope": "Author product context read."
+        },
+        {
+          "url": "https://crawlaudit.devmarde.com/",
+          "scope": "Current audit landing page and sample claims read; no audit submitted."
+        },
+        {
+          "url": "https://developers.google.com/search/docs/appearance/structured-data/product-snippet",
+          "scope": "Fresh Google documentation for price, currency, availability and initial HTML; consistency test is a recommendation, not a tested target defect."
+        }
+      ],
+      "privateProofBasename": "ai-site-check-hourly-x-20261106-2041/04",
+      "publishedTimeUi": "12:49 PM · Nov 6, 2026",
+      "publishedTimeZone": "America/Los_Angeles"
+    },
+    {
+      "parent": "https://x.com/ikennaiheuwa/status/2118796492026552772",
+      "handle": "ikennaiheuwa",
+      "kind": "new-conversation",
+      "copy": "id make that a hostname + path checklist. www, docs and blog can each serve different robots.txt files, so a pass on the homepage can hide an open docs subdomain. save the fetched file and matched ClaudeBot rule with each result.",
+      "basis": "Read full post and its linked official Anthropic documentation, including explicit ClaudeBot precedence and the requirement to configure every subdomain. No substantive replies existed on the target. Proposed auditable host/path coverage, not a claim of a recipient configuration bug, completed rollout, crawler compliance, or legal effectiveness. Parent already links the official source, so no repeated link.",
+      "weighted": 229,
+      "url": "https://x.com/GogaKoreli/status/2118808210341769464",
+      "verifiedAt": "2026-11-06T20:50:47.031Z",
+      "platform": "x",
+      "label": "Ikenna / hostname and path coverage",
+      "state": "canonical-owner-view-verified",
+      "sourceReads": [
+        {
+          "url": "https://support.claude.com/en/articles/8896518-does-anthropic-crawl-data-from-the-web-and-how-can-site-owners-block-the-crawler",
+          "scope": "Fresh full official source read: per-subdomain robots configuration, named ClaudeBot precedence and ongoing training-preference rollout. Parent already links it."
+        }
+      ],
+      "privateProofBasename": "ai-site-check-hourly-x-20261106-2041/05",
+      "publishedTimeUi": "12:50 PM · Nov 6, 2026",
+      "publishedTimeZone": "America/Los_Angeles"
+    }
+  ],
+  "verification": "Exact final text saved before each submission and checked in composer. Each canonical status reopened; body, parent context and relevant link preview checked in the signed-in owner view. Public UI times are minute-resolution; verifiedAt records later canonical inspection/evidence saving. No uncertain submission was retried.",
+  "independentPublicVisibility": "Not tested; signed-in owner visibility only.",
+  "privacy": "Raw signed-in captures, screenshots and source captures remain outside Git in private temporary storage. Public records contain exact published copy and normalized evidence only.",
+  "limits": "No new traffic query, click/adoption measurement, real-provider experiment, target-site audit, anonymous visibility test, Reddit write, DM, like, follow, original post or scheduler change. No recipient defect or unmeasured improvement claimed. Draft training-preference rollout is not represented as universally complete, and the checker is not claimed to verify that new signal.",
+  "nextBoundedAction": "Complete at five replies. At the next scheduled run reconcile chat state and shared receipts, then read new substantive notifications before selecting destinations. Do not duplicate these parents or accumulate missed hours."
+}
