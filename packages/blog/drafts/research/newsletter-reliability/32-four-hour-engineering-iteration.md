@@ -1,5 +1,13 @@
 # Turnstile and newsletter engineering iteration
 
+**Current publication handoff — November 6 Pacific:** Goga confirms that today's
+article is already published and Turnstile goes **November 7 at 08:00
+America/Los_Angeles**. The [publication worklist](../../../../../docs/worklist/november-daily-publication/README.md)
+owns that current date and remaining release checks. Schedule/source correction
+`ceef0a41` is pushed; its queued article changes only date metadata, and all eight
+prompts are unchanged. Local queue validation passes. The November 6 checks below
+retain their dated conditions; actual November 7 publication remains pending.
+
 Started November 5, 2026 Pacific / November 6 UTC under the owner's explicit
 request to continue improving code and article for four more hours. The exact
 instruction is preserved as the eighth selected article prompt. This reopens
@@ -9,8 +17,9 @@ the previously accepted editorial result; it does not rewrite its dated checks.
 
 The active goal began **2026-11-06 06:07:25 UTC**. Its fixed deadline is
 **2026-11-06 10:07:25 UTC**, November 6 at 02:07:25 America/Los_Angeles.
-Continuations must not reset that window. The intended article release remains
-November 6 at 08:00 Pacific, six hours after this work deadline.
+Continuations must not reset that window. During this iteration the intended
+release was November 6 at 08:00 Pacific, six hours after this work deadline.
+The owner-confirmed November 7 handoff above supersedes that release date.
 
 - Coordinator: server confirmation application/domain boundaries, request-body
   handling, webhook verification/suppression review, integration and article
@@ -252,8 +261,9 @@ Prior Inbox/SPF/DKIM/DMARC/owner activation remains a separate dated result.
 Neither code acceptance nor the job-token control proves conversion improvement,
 human/bot identity, future cron wakeup or actual article publication.
 
-Next bounded publication action is the existing November 6 **08:00 Pacific**
-workflow's promotion, commit/push and live-check result. It is a trigger followed
-by checks/hosting delay, not an exact public-visibility guarantee. November 7–30
-need approved articles. No unrelated draft is admitted automatically. The fixed
+At the 09:40 UTC audit, the next publication action was the November 6 release;
+the later owner-confirmed handoff above moves it to November 7 **08:00 Pacific**.
+Promotion, commit/push, deployment and live checks remain the next bounded action.
+08:00 is a trigger followed by checks/hosting delay. November 8–30 need approved
+articles. No unrelated draft is admitted automatically. The fixed
 engineering window remains 06:07:25–10:07:25 UTC; no continuation resets it.

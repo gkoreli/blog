@@ -1,8 +1,10 @@
-**November 6 Pacific schedule correction:** Goga reports that another builder
-already covered today's article. The finished Turnstile source/prompts and
+**November 6 Pacific schedule correction:** Goga confirms that another builder
+already published today's article. The finished Turnstile source/prompts and
 manifest entry are moved to **November 7, 08:00 America/Los_Angeles**, preserving
-the body and exact prompts. The [publication worklist](../../../../../docs/worklist/november-daily-publication/README.md)
-owns the corrected release date. Earlier November 6 rehearsals remain historical.
+the body and eight exact prompts, committed and pushed in `ceef0a41`. Queue
+validation passes. The [publication worklist](../../../../../docs/worklist/november-daily-publication/README.md)
+owns the corrected date and pending promotion/deployment/live checks. Earlier
+November 6 rehearsals remain historical; TASK-0128 remains in progress.
 
 **November 6, 09:40 UTC:** The deeper implementation is frozen and passes 405 blog
 and 433 analytics tests, workspace types and native browser/provider/D1/HTTP
@@ -73,7 +75,7 @@ Goga asked to build the protection on his own platform and write **Subscription 
 | Browser verification and request failures | TASK-0125 | Partial: recovery, build/time/context, no-response correlation and bounded acknowledged reporting implemented; selected live storage accepted, broader alerts/population delivery remain |
 | Initial protection decision | TASK-0127 | Complete: retain platform and Turnstile with shared limits; no comparative efficacy result claimed |
 | Production signup acceptance | TASK-0124 | Complete: September acceptance retained; November 5 fresh verification, Inbox receipt and owner activation accepted separately |
-| Engineering article and evidence ledger | TASK-0128 | In progress: updated draft remains unpublished, with nine shaping prompts and no frozen footprint |
+| Engineering article and evidence ledger | TASK-0128 | In progress: Turnstile companion prepared with eight prompts, selected for November 7 08:00 Pacific; actual publication pending. Broader subscription-bombing draft retains its separate nine prompts. No frozen footprint |
 | Connect provider bounce/complaint events | TASK-0142 | Complete: correct account/endpoint/secret accepted; two signed native controls and independent suppression/owned cleanup accepted separately from real signup |
 | Investigate confirmation placement in Gmail Spam | TASK-0145 | Bounded investigation complete: original aligned authentication inspected; initial DMARC published; fresh Inbox/SPF/DKIM/DMARC pass. Historical Spam cause and population deliverability remain unknown |
 | Historical impact and address recovery | TASK-0123 / TASK-0130 | Incomplete access: reuse saved captures; no historical address recovered |

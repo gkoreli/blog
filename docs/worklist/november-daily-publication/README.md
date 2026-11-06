@@ -1,11 +1,24 @@
 # November daily publication
 
-**Current November 6 Pacific checkpoint:** Goga reports that another builder has
-already released today's article. Turnstile is therefore moved to **November 7
+**Current November 6 Pacific checkpoint:** Goga confirms that another builder has
+already published today's article. Turnstile is selected for **November 7
 at 08:00 America/Los_Angeles**. Its finished Markdown and exact prompts now live
 in `packages/blog/scheduled/2026-11-07/`, selected by the release manifest.
-No article is selected for November 6. This is a repository/GitHub Actions queue;
-it is not a CMS entry or a Codex reminder. The article remains unpublished.
+No Turnstile release is selected for November 6. The repository manifest and
+GitHub Actions workflow own this release. The article remains unpublished.
+
+The date correction is committed and pushed in
+[`ceef0a41`](https://github.com/gkoreli/blog/commit/ceef0a41).
+The [queued article](../../../packages/blog/scheduled/2026-11-07/043-cloudflare-turnstile-signup-failures.md)
+has November 7 frontmatter; its [exact prompts](../../../packages/blog/scheduled/2026-11-07/cloudflare-turnstile-signup-failures.prompts.md)
+and article body are preserved. Local queue validation passes after the move.
+This operational confirmation does not add article shaping prompts or rewrite
+the earlier rehearsal/delivery receipts.
+
+**Remaining acceptance:** inspect the November 7 workflow's promotion,
+commit/push, Cloudflare deployment and live article/Markdown/index/feed/sitemap
+checks. 08:00 Pacific starts the release attempt; public visibility follows
+checks and deployment. No publication blocker is known at this checkpoint.
 
 The deeper code/article iteration passed its local and native acceptance. Its [release
 receipt](2026-11-06-turnstile-engineering-checks.json) supersedes the earlier
@@ -26,9 +39,11 @@ the optional writing-reminder preference was asked separately and is unanswered.
 
 ## Implementation choice
 
-25 release dates remain: November 6–30. A hosted GitHub Actions schedule starts
-at 08:00 Pacific and promotes only the finished article explicitly listed for
-that date. No automatic drafting or publication of arbitrary existing drafts.
+The campaign is bounded to November 6–30. November 6 is covered outside this
+queue, November 7 selects Turnstile, and November 8–30 need approved articles.
+A hosted GitHub Actions schedule starts at 08:00 Pacific and promotes only the
+finished article explicitly listed for that date. No automatic drafting or
+publication of arbitrary existing drafts.
 An empty day fails visibly. The clock guard prevents early, December or later-year
 publication, and missed dates are not caught up automatically.
 
@@ -45,7 +60,7 @@ visibility would require a separate server-side release design.
 - [CLI and live acceptance](../../../packages/blog/src/pipeline/publish-scheduled.ts)
 - [Focused regression checks](../../../packages/blog/test/publication-schedule.test.ts)
 
-## Delivery and acceptance
+## Dated delivery and acceptance — November 5 setup
 
 Local checks passed November 5: workspace typecheck, validation of all 31 Markdown
 posts, eight new scheduling tests plus the existing cross-timezone date test,
@@ -125,7 +140,7 @@ unverified until the November 6 run. Next bounded action: inspect the release's
 commit/push and live-check result; do not infer acceptance from this rehearsal,
 manual hosted check or the article's scheduled date.
 
-## November 6: deeper engineering revision and final queue
+## November 6: engineering acceptance before rescheduling
 
 The owner reopened the earlier editorial result and asked for four further hours
 improving implementation and prose together. The original builder owned browser

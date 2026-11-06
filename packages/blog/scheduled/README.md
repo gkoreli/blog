@@ -4,6 +4,14 @@ Publish one finished article each day from **November 6–30, 2026**, with relea
 attempts starting at **08:00 America/Los_Angeles**. November 5 is already covered
 by [AI Fetchers, Browsers, and Crawlers](https://gkoreli.com/ai-fetcher-browser-crawler-headers).
 
+**Current selection, confirmed November 6:** today's article is already
+published through another builder. The [finished Turnstile article](2026-11-07/043-cloudflare-turnstile-signup-failures.md)
+and [exact prompts](2026-11-07/cloudflare-turnstile-signup-failures.prompts.md)
+are selected for **November 7, 2026 at 08:00 America/Los_Angeles**. No Turnstile
+release is selected for November 6; November 8–30 need approved entries. The
+[publication worklist](../../../docs/worklist/november-daily-publication/README.md)
+records the date correction, accepted preparation and remaining live checks.
+
 The [manifest](../publication-schedule.json) lists finished articles selected for
 release. A schedule cannot publish an unfinished article. Writing reminders are
 separate from this release workflow.
@@ -20,7 +28,7 @@ separate from this release workflow.
 4. Add one entry to [publication-schedule.json](../publication-schedule.json):
 
    ```json
-   { "date": "2026-11-06", "file": "042-article-slug.md", "prompts": true }
+   { "date": "2026-11-07", "file": "043-article-slug.md", "prompts": true }
    ```
 
 5. Run `pnpm -C packages/blog publication check`, then commit and push the scoped

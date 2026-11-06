@@ -2,9 +2,27 @@
 id: FLDR-0010
 title: Newsletter Reliability and Bot Protection Worklist
 created_at: '2026-09-07T05:07:50.125Z'
-updated_at: '2026-09-09T03:07:27.448Z'
+updated_at: '2026-11-06T16:29:49.871Z'
 type: folder
 ---
+## Current handoff — November 6 Pacific
+
+Start at the [newsletter worklist](../../packages/blog/drafts/research/newsletter-reliability/00-worklist-index.md)
+and its latest linked receipts. Engineering and the Turnstile companion article
+are prepared. Goga confirms that November 6 is covered by another published
+article; **Turnstile is selected for November 7 at 08:00 America/Los_Angeles**
+in the [publication worklist](../worklist/november-daily-publication/README.md).
+TASK-0128 remains in progress until the scheduled publication is accepted.
+
+TASK-0124, TASK-0127, TASK-0129 and TASK-0137 retain their accepted outcomes.
+The later November receipts separately record Inbox/authentication/owner
+activation and signed bounce/complaint acceptance; TASK-0145 and TASK-0142 are
+done. TASK-0125/0126 broader diagnostics and TASK-0123/0130 historical impact and
+recovery remain unfinished. Historical checkpoints below do not authorize
+repeating migrations, changing secrets or sending new test mail.
+
+## September 9 break checkpoint — historical
+
 Current break checkpoint — September 9 UTC: the platform/Turnstile decision, atomic admission, verifier repair and lifecycle acceptance are complete (TASK-0127, TASK-0137, TASK-0124, TASK-0129). One authorized confirmation arrived in Gmail Spam and its POST activated the address. Migration 0005 is already applied. Gmail placement (TASK-0145), signed provider events (TASK-0142), broader logging/alerts (TASK-0125/0126), historical impact/recovery (TASK-0123/0130) and the unpublished article (TASK-0128) remain open. Start at [the current handoff](../../packages/blog/drafts/research/newsletter-reliability/14-handoff.md) and [worklist index](../../packages/blog/drafts/research/newsletter-reliability/00-worklist-index.md). Earlier sections below preserve their original stages; they do not authorize replaying a migration, changing a secret, migrating to Buttondown or sending new test mail.
 
 ## Original scope — September 7 UTC

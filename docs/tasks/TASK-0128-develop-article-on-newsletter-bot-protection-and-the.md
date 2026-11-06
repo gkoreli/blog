@@ -4,12 +4,31 @@ title: Develop article on newsletter bot protection and the failures our logs mi
 status: in_progress
 parent_id: FLDR-0010
 created_at: '2026-09-07T05:09:30.966Z'
-updated_at: '2026-11-06T09:40:00Z'
+updated_at: '2026-11-06T16:29:49.629Z'
 type: task
 ---
 P2 editorial. Governing form: evidence-led engineering investigation with an active field-note state. Owned trigger: Goga's friend could not subscribe, invalid production Turnstile secret, and uncertainty about earlier readers. Test whether the newsletter's protection and observability are proportionate; do not presuppose Turnstile is bad. Draft alongside evidence. Show the value and gaps of existing first-party logging, earlier April incident, retention and identity limits, alternatives and current repair status. Protect the skepticism as an unresolved question. Exact human prompts must be preserved intact; no invented or trimmed owner quotes. Draft and research live outside posts/ pending author review and publication decision. Apply shape-article, blog-writing investigation reference, discovery/share passes when release is intended, and final prose/fact-check passes.
 
-## Investigation checkpoint
+## Current publication handoff — November 6 Pacific
+
+Goga confirms that today's article is already published and **Turnstile goes
+November 7, 2026 at 08:00 America/Los_Angeles**. The corrected schedule/source
+was committed and pushed in `ceef0a41`. The [manifest](../../packages/blog/publication-schedule.json)
+selects the [finished article](../../packages/blog/scheduled/2026-11-07/043-cloudflare-turnstile-signup-failures.md)
+and its [eight exact prompts](../../packages/blog/scheduled/2026-11-07/cloudflare-turnstile-signup-failures.prompts.md).
+No Turnstile release is selected for November 6. Its body and prompt bytes are
+preserved; only queued date metadata and directory changed. Local queue validation
+passed after the move. The [publication worklist](../worklist/november-daily-publication/README.md)
+owns the remaining November 7 promotion, push, deployment and live checks.
+
+Engineering/article preparation is accepted; actual Turnstile publication remains
+pending. Keep this task in progress. The broader subscription-bombing draft has
+its own nine-prompt record and remains unpublished; the Turnstile companion has
+eight selected prompts. Earlier November 6 rehearsal and delivery receipts retain
+their original dates and are not proof of the rescheduled publication. This date
+confirmation is operational bookkeeping, outside the article's shaping prompts.
+
+## Dated investigation checkpoints
 
 **November 6, 09:40 UTC delivery:** The revised hosted queue check passes on
 actual checkout 17efb44b; that source has its own native activation and served-byte
