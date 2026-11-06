@@ -197,3 +197,19 @@ run the revised hosted non-publishing check and record its actual checked source
 join current activation of the frozen implementation, update the shared working
 copy without disturbing other work, and perform the final requirement audit.
 Actual timed article publication remains November 6 after the 08:00 trigger.
+
+## Bounded publication delivery control — 09:33 UTC
+
+The hosted `check` run intentionally skips the GitHub-token push. A temporary
+manual workflow now checks that credential path by committing only
+`scheduled/delivery-control.json`, outside discovered publication source. It
+uses the same pinned checkout, personal Git author and contents-write job token;
+no article or prompt promotion is invoked. The expected result is one control
+commit and a separately observed Cloudflare build/source association. This does
+not establish the future cron wakeup or actual article publication.
+
+After recording the result, remove both temporary workflow and control JSON in
+a scoped commit. No credential, hook or account permission is added. The first
+Python YAML-parser attempt was unavailable; the installed Ruby YAML parser then
+validated the manual trigger, permissions and non-publishing command scope before
+delivery. This is a bounded delivery check, not a permanent publication mode.
