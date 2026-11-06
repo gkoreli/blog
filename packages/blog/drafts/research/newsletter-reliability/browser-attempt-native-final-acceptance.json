@@ -1,0 +1,123 @@
+{
+  "checkedAtUtc": "2026-11-06T07:33:49Z",
+  "testedBrowserSourceCommit": "cd1684dede77bf2b64c7665beaceb55df4e005eb",
+  "browserAndLoggerSourcesByteEqualToIntegratedCommit": "0825a053ddd478e359b096952769db7531c717c5",
+  "sourceSha256": {
+    "packages/blog/src/client/subscribe.ts": "8fa65e950a919cab44988495290234686aee9601cab59b70c235c2dd9048090e",
+    "packages/blog/src/client/subscription-attempt.ts": "e89a12dd3b5b5daecf5b9567093df9337f9b73609fad2a67911e50a6749bc1c8",
+    "packages/blog/src/client/subscription-request.ts": "0b6718126af490e3ea12e459d31806a02f4451c15f47ef534006a66ef046a0da",
+    "packages/blog/src/client/subscription-response.ts": "4359073824731cd14fa0478621a81c51b4f3829d4e9aa554eccad18135e8cd57",
+    "packages/blog/src/client/turnstile-adapter.ts": "32f139aa86fcd058f8cf8ed988ae248451638554d31e07491967e5b8e09bcd98",
+    "packages/blog/src/templates/artifacts.ts": "7ed7ecef7ddad8964b5cc282f9f083f635d4be4b3a960a8dde030d3fd1ecaa30",
+    "packages/blog/src/templates/client-bootstrap.ts": "238957a78bee59455fdb9d6289d2a34e67d38675344c4c2f650242b541b39082",
+    "packages/client-observability/src/client.ts": "8f9c6ebbd334f5a05367e5260b7fd598156329b0d9e5f8fd2ee9b193eaef340a",
+    "packages/client-observability/src/redact.ts": "a6207e275cae4bc42acd13dc2dd170003718ec1d7da24ddcc5bf19224f4489bd",
+    "packages/client-observability/src/schema.ts": "d04a2d4ccb7576ac987dc6fb318564e7420048b864818a9d4aa4da20660e794f",
+    "packages/client-observability/src/sanitization.ts": "ae160e34000f1c03930dd67b77d835e1d7bcaf8e2c853c96167c89cf04705cee",
+    "packages/client-observability/src/subscription-evidence.ts": "732cab5d195b2880b708011e9f655dc5bf6e15b8266e90c1b259690e02886f68",
+    "packages/client-observability/src/transport.ts": "e26816564ce57c11c6b6924083d24d71664967f2cd5d301d4610ccc0973e0a96",
+    "packages/client-observability/src/types.ts": "c6168c69eb16ba9db6cbf115e73d10fc6ec4d9a86d3c4c2eba442836b556054f"
+  },
+  "fixtureBundleSha256": "afea9be4d4cfcf69a01d3cee43b64bd7357bd2911b34f86f32bf326050efbcc5",
+  "scope": "Nine native IAB/official Turnstile dummy-key controls of committed browser sources with a loopback HTTP receiver and the actual default logger. This is not production activation, server admission, real checkbox, email delivery or conversion acceptance.",
+  "previousReceipt": "browser-attempt-native-acceptance.json",
+  "supersedes": "Final committed-source controls repeat the earlier supplementary native cases; the earlier receipt remains historical evidence.",
+  "cases": {
+    "concurrentHold": {
+      "initialIframeCount": 0,
+      "pendingForms": 2,
+      "signupPosts": 2,
+      "distinctAttemptIds": 2,
+      "repeatedReadinessDuringSending": true,
+      "bothSuccessAfterRelease": true,
+      "finalIframeCount": 0,
+      "diagnostics": 0
+    },
+    "nativeFailure": {
+      "code": "600010",
+      "reports": 2,
+      "distinctAttemptIds": 1,
+      "recoveries": [
+        "automatic-retry",
+        "manual-retry"
+      ],
+      "signupPosts": 0,
+      "finalRetryUsable": true,
+      "providerWarningErrorLogs": 0
+    },
+    "html202": {
+      "signupPosts": 1,
+      "accepted": false,
+      "checkInboxGuidance": true,
+      "diagnosticStage": "subscribe_response_media-type",
+      "responseRequestIdRetained": true
+    },
+    "redirect302": {
+      "signupPosts": 1,
+      "redirectTargetRequests": 0,
+      "operation": "response-unavailable",
+      "automaticPostReplay": false
+    },
+    "gateway502": {
+      "signupPosts": 1,
+      "accepted": false,
+      "checkInboxGuidance": true,
+      "diagnosticStage": "subscribe_api_rejected"
+    },
+    "missingMain": {
+      "bothButtonsDisabled": true,
+      "bothFormsGuidance": true,
+      "bootstrapReceiverStage": "client_entry_script_load_error",
+      "productionStorageVerified": false
+    },
+    "lateProvider": {
+      "pendingBeforeInsertion": true,
+      "waitingIframeCount": 0,
+      "waitingPosts": 0,
+      "nativeAsyncDeferredOnloadResumed": true,
+      "signupPosts": 1,
+      "accepted": true,
+      "diagnostics": 0
+    },
+    "lateCspFailure": {
+      "pendingBeforeInsertion": true,
+      "waitingPosts": 0,
+      "signupPosts": 0,
+      "busyAttributeRemoved": true,
+      "stages": [
+        "subscribe_widget_unavailable",
+        "turnstile_csp_blocked",
+        "turnstile_script_load_error"
+      ],
+      "phase": "verifying",
+      "operation": "not-started",
+      "widget": "waiting-api"
+    },
+    "stalled202Body": {
+      "signupPosts": 1,
+      "bodyStarted": 1,
+      "bodyClosedByClient": 1,
+      "requestToStreamCloseMs": 34999,
+      "reportedElapsedFromAttemptMs": 36634,
+      "reportedStatus": 202,
+      "responseRequestIdRetained": true,
+      "diagnosticStage": "subscribe_request_timeout",
+      "retryUsable": true,
+      "busyAttributeRemoved": true,
+      "automaticPostReplay": false
+    }
+  },
+  "limits": {
+    "realPersonEmailsSent": 0,
+    "productionRequests": 0,
+    "productionRowMutations": 0,
+    "newsletterServerAdmissionValidated": false,
+    "productionHostnameActionValidated": false,
+    "humanCheckboxValidated": false,
+    "productionClientAssetByteEqualityValidated": false,
+    "customerLossMeasured": false,
+    "singleBrowserEngineControlledNetworkOnly": true
+  },
+  "privacy": "Only source digests, counts, bounded codes/stages and timing are public. Raw captures, attempt/request UUIDs and fixture inputs remain outside Git.",
+  "ownedFixtureServersStopped": true
+}
