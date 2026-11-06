@@ -10,6 +10,31 @@ interface VerificationDiagnostics {
   retryReason: 'none' | 'http' | 'internal-error' | 'invalid-response' | 'network' | 'timeout';
 }
 
+type VerifierReply =
+  | { success: true; hostname: string; action: string | undefined; errorCodes: ProviderCode[] }
+  | { success: false; errorCodes: ProviderCode[] };
+
+/** Provider transport data is not a domain verdict until its relevant fields agree. */
+function parseVerifierReply(value: unknown): VerifierReply | null {
+  if (typeof value !== 'object' || value === null || Array.isArray(value)
+    || !('success' in value) || typeof value.success !== 'boolean') return null;
+  const errors = 'error-codes' in value ? value['error-codes'] : undefined;
+  if (errors !== undefined && !Array.isArray(errors)) return null;
+  const rawCodes: unknown[] = Array.isArray(errors) ? errors : [];
+  if (!rawCodes.every(code => typeof code === 'string' && code.length > 0)) return null;
+  const errorCodes = PROVIDER_CODES.filter(code => rawCodes.includes(code));
+  if (!value.success) {
+    // An absent or wholly unrecognized failure is a provider-contract problem,
+    // not evidence that the visitor supplied an invalid token.
+    return errorCodes.length ? { success: false, errorCodes } : null;
+  }
+  if (rawCodes.length || !('hostname' in value)
+    || typeof value.hostname !== 'string' || !value.hostname) return null;
+  const action = 'action' in value ? value.action : undefined;
+  if (action !== undefined && typeof action !== 'string') return null;
+  return { success: true, hostname: value.hostname, action, errorCodes };
+}
+
 /** Verification does not establish control of an email address or human identity. */
 export type TurnstileVerification = VerificationDiagnostics & (
   | { ok: true }
@@ -38,20 +63,20 @@ export async function verifyTurnstile(
         signal: AbortSignal.timeout(5_000),
       });
       diagnostics.httpStatus = res.status;
-      let data: unknown;
-      try { data = await res.json(); } catch {
+      let rawData: unknown;
+      try { rawData = await res.json(); } catch {
         if (attempt < 2 && (res.ok || res.status >= 500)) {
           diagnostics.retryReason = res.ok ? 'invalid-response' : 'http';
           continue;
         }
         return failed(res.ok ? 'invalid_verifier_response' : 'verifier_http_error');
       }
-      if (typeof data !== 'object' || data === null || !('success' in data) || typeof data.success !== 'boolean') {
+      const data = parseVerifierReply(rawData);
+      if (!data) {
         if (attempt < 2) { diagnostics.retryReason = 'invalid-response'; continue; }
         return failed('invalid_verifier_response');
       }
-      const rawCodes: unknown[] = 'error-codes' in data && Array.isArray(data['error-codes']) ? data['error-codes'] : [];
-      diagnostics.errorCodes = PROVIDER_CODES.filter(code => rawCodes.includes(code));
+      diagnostics.errorCodes = data.errorCodes;
       if (diagnostics.errorCodes.includes('missing-input-secret') || diagnostics.errorCodes.includes('invalid-input-secret')) return failed('invalid_secret');
       if (!res.ok || diagnostics.errorCodes.includes('internal-error')) {
         if (attempt < 2 && (res.status >= 500 || diagnostics.errorCodes.includes('internal-error'))) {
@@ -62,9 +87,9 @@ export async function verifyTurnstile(
       }
       if (diagnostics.errorCodes.includes('bad-request')) return failed('verifier_bad_request');
       if (!data.success) return failed(diagnostics.errorCodes.includes('timeout-or-duplicate') ? 'timeout_or_duplicate' : 'invalid_token', 'rejected');
-      if (!('hostname' in data) || data.hostname !== hostname) return failed('hostname_mismatch', 'rejected');
+      if (data.hostname !== hostname) return failed('hostname_mismatch', 'rejected');
       // Keep cached clients without action compatible; reject another action.
-      if ('action' in data && data.action !== '' && data.action !== 'subscribe') return failed('action_mismatch', 'rejected');
+      if (data.action !== undefined && data.action !== '' && data.action !== 'subscribe') return failed('action_mismatch', 'rejected');
       return { ...diagnostics, elapsedMs: Math.max(0, Math.floor(performance.now() - started)), ok: true };
     } catch (error) {
       const timeout = error instanceof Error && (error.name === 'TimeoutError' || error.name === 'AbortError');

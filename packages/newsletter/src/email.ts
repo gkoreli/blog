@@ -40,7 +40,11 @@ export async function sendConfirmationEmail(
     html: confirmationHtml(confirmUrl, optOutUrl), text: confirmationText(confirmUrl, optOutUrl),
   });
   let last: ConfirmationDelivery = { outcome: 'unknown', providerId: null, providerStatus: null };
+  // A later rejected retry does not prove an earlier ambiguous call sent nothing.
+  // Only a valid accepted response can resolve that uncertainty for this operation.
+  let acceptanceUncertain = false;
   for (let attempt = 0; attempt < 2; attempt++) {
+    let providerStatus: number | null = null;
     try {
       const res = await fetch('https://api.resend.com/emails', {
         method: 'POST',
@@ -50,16 +54,19 @@ export async function sendConfirmationEmail(
         },
         body, signal: AbortSignal.timeout(8_000),
       });
+      providerStatus = res.status;
       if (res.ok) {
         const data: unknown = await res.json();
         if (typeof data === 'object' && data !== null && 'id' in data
           && typeof data.id === 'string' && data.id.length > 0 && data.id.length <= 128) {
           return { outcome: 'accepted', providerId: data.id, providerStatus: res.status };
         }
+        acceptanceUncertain = true;
         last = { outcome: 'unknown', providerId: null, providerStatus: res.status };
       } else {
         // Provider bodies may contain addresses; retain only the HTTP status.
-        last = { outcome: res.status >= 500 || res.status === 409 ? 'unknown' : 'failed',
+        acceptanceUncertain ||= res.status >= 500 || res.status === 409;
+        last = { outcome: acceptanceUncertain ? 'unknown' : 'failed',
           providerId: null, providerStatus: res.status };
         await res.body?.cancel();
         if (res.status !== 409 && res.status !== 429 && res.status < 500) return last;
@@ -72,7 +79,8 @@ export async function sendConfirmationEmail(
         }
       }
     } catch {
-      last = { outcome: 'unknown', providerId: null, providerStatus: null };
+      acceptanceUncertain = true;
+      last = { outcome: 'unknown', providerId: null, providerStatus };
     }
   }
   return last;
