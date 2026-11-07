@@ -207,3 +207,9 @@ The run stops at two, with three unused slots expiring. Fifty-eight replies are 
 [Three new-conversation replies](hourly-ai-site-check-2026-11-07-1408.md) are published and canonically owner-verified: a benchmark round-trip check, a proposed stale-approval fixture, and an in-flight-work check at migration cutover. [Exact copy, timestamps, source blobs and limits](hourly-ai-site-check-2026-11-07-1408-publication.json). Each used one submission click. No runtime was executed, and none of the replies claims a reproduced recipient failure.
 
 The run stops at three, with two unused slots expiring. Sixty-one replies are recorded across twenty completed hourly runs, eighteen of which published replies; the owner-directed five and original-chat sixty-eight remain separate. Independent public visibility, traffic and adoption remain unmeasured. No extra account action or scheduler change occurred.
+
+## AI Site Check hourly run, November 7 at 15:04 UTC
+
+[Two new-conversation replies](hourly-ai-site-check-2026-11-07-1504.md) are published and canonically owner-verified: an explicit program/test scope suggestion for TypeSOL’s generated instructions, and feedback from one Nexez generator input that produced a Contact link to the publication’s missing page. [Exact copy, timestamps, sources, method and limits](hourly-ai-site-check-2026-11-07-1504-publication.json). Each used one submission click; the published reproduction-input link resolved correctly. TypeSOL was inspected statically; the generator finding is limited to one browser UI result.
+
+The run stops at two, with three unused slots expiring. Sixty-three replies are recorded across twenty-one completed hourly runs, nineteen of which published replies; the owner-directed five and original-chat sixty-eight remain separate. Independent public visibility, traffic and adoption remain unmeasured. No extra account action or scheduler change occurred.

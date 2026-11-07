@@ -1,0 +1,132 @@
+{
+  "automationId": "ai-site-check-hourly-x-replies",
+  "triggeredAt": "2026-11-07T15:04:15.434Z",
+  "completedPublicationAt": "2026-11-07T15:12:22.951509+00:00",
+  "timezone": "America/Los_Angeles",
+  "authorization": "Explicit hourly heartbeat authorizes up to five useful X replies, fewer when useful matches are insufficient. Scope excludes Reddit, DMs, likes, follows, original posts and scheduler changes.",
+  "preflight": "Latest worklist, previous run and shared receipts read. Required launch/publication guidance, informal voice and owned-project index reviewed. Accepted UI work and earlier batches remain complete. Start and end coordination checks show the original posting chat inactive with its latest turn completed. Fresh origin/main and clean isolated checkout agree at 921b36e6e563ab09b988b56ff3ab243281b54913. No overlap or catch-up burst.",
+  "currentEvidence": "Fresh live AI Site Check article read. TypeSOL advice uses current public source; Nexez feedback uses one current generator UI result and a separate opening of its generated destination. No hosted AI Site Check API call or provider trial.",
+  "xRepliesPublished": 2,
+  "xNewConversationRepliesPublished": 2,
+  "xConversationFollowupsPublished": 0,
+  "canonicalOwnerViewsVerified": 2,
+  "countNote": "Sixty-three replies across twenty-one completed hourly runs, nineteen of which published replies. The separate owner-directed five and original-chat sixty-eight remain separate.",
+  "notificationCoverage": "No new substantive incoming response selected in the bounded initial notification view. Peter’s newest visible response was already answered in the 12:06 run; other visible exchanges were previously handled. This is not an account-wide census.",
+  "selection": "One focused Latest search and one downward scroll. Investigated TypeSOL and Nexez individually, reading authored context and relevant source or product method. Shared receipts checked for duplicate destinations and prior contact.",
+  "searchQuery": "(robots.txt OR llms.txt OR crawler) (AI OR agents) since:2026-11-07 -filter:replies",
+  "fewerThanFiveReason": "Two conversations yielded concrete contributions in the bounded review. Other previews were news summaries, broad market commentary, promotion or already-contacted authors without a selected new contribution. Three unused slots expire; useful conversations elsewhere are not ruled out.",
+  "skippedExamples": [
+    {
+      "url": "https://x.com/AIBandwagon/status/2119082219629371536",
+      "reason": "Third-party opt-out news summary preview; underlying policy announcement was not investigated or adopted."
+    },
+    {
+      "url": "https://x.com/bestuseragent/status/2119072012446609631",
+      "reason": "Broad advertising/cache economics preview; no specific implementation contribution selected."
+    },
+    {
+      "url": "https://x.com/AIScanSite/status/2119067356571820133",
+      "reason": "Study-summary preview from an account already contacted in the earlier campaign; no new distinct contribution selected and numbers not independently verified."
+    },
+    {
+      "url": "https://x.com/AIAgentsArchive/status/2119065696655057096",
+      "reason": "Promotional research-marketplace preview; not fully investigated or selected."
+    },
+    {
+      "url": "https://x.com/brendenvonhouse/status/2119064678622199949",
+      "reason": "A different documentation-study post by an author contacted in the 13:05 run. No incoming response or selected new contribution; did not repeat outreach."
+    },
+    {
+      "url": "https://x.com/zshjzls/status/2119062217815683291",
+      "reason": "Third-party policy-news preview; underlying announcements not reviewed and claims not repeated."
+    }
+  ],
+  "items": [
+    {
+      "index": 1,
+      "parent": "https://x.com/Type_SOL/status/2119070041303826505",
+      "url": "https://x.com/GogaKoreli/status/2119084606393864259",
+      "copy": "i'd add one line to the generated rules: 'tests use normal TypeScript; the subset restrictions apply to programs/.' your LiteSVM template needs async + Vitest imports, so that distinction helps when an agent switches from program code to tests.",
+      "weightedLength": 244,
+      "canonicalCaptureSavedAt": "2026-11-07T15:09:17.081830+00:00",
+      "publishedTimeUi": "7:08 AM · Nov 7, 2026",
+      "publishedTimeZone": "America/Los_Angeles",
+      "kind": "new-conversation",
+      "platform": "x",
+      "state": "canonical-owner-view-verified",
+      "privateProofBasename": "ai-site-check-hourly-x-20261107-1504/01-canonical",
+      "label": "TypeSOL / scope program rules separately from tests",
+      "selectionEvidence": "Read the complete written article and both visible replies, including the reply behind Show probable spam. Inspected authored release/project history and the contextual GitHub availability response in the Replies view. The linked repository points back to this X account. No prior campaign contact found. The suggestion makes a program-versus-test distinction explicit; it does not claim a reproduced agent failure or compiler defect.",
+      "sourceReads": [
+        {
+          "url": "https://github.com/typesol-lang/typesol/blob/main/README.md",
+          "blobSha": "f47ae9094255449767860947fae176f42bc08a17",
+          "scope": "Read the introduction, quick start, architecture and tooling sections for project context. The long README was not read in full; benchmark and mainnet claims were not independently checked or repeated."
+        },
+        {
+          "url": "https://github.com/typesol-lang/typesol/blob/main/docs/ai.md",
+          "blobSha": "2012fecc39e9e5d815d0ab3cc81eac489b85221f",
+          "scope": "Full agent guide read: generated project instructions, diagnostics, docs and four MCP tools. No agent or MCP execution."
+        },
+        {
+          "url": "https://github.com/typesol-lang/typesol/blob/main/src/ai.ts",
+          "blobSha": "670151e51577cca93d7da36036f47b73ad2ff9bd",
+          "scope": "Full source read. AGENT_RULES states the subset restrictions, including no async and imports from typesol. The Cursor rule includes program and test globs and embeds these rules. The reply recommends explicit prose scoping, without claiming tested Cursor matching behavior."
+        },
+        {
+          "url": "https://github.com/typesol-lang/typesol/blob/main/docs/test-your-program.md",
+          "blobSha": "d8be503660cb5d85b19a2e2098f48353d76d52bf",
+          "scope": "Full testing guide read; its example imports Vitest and uses async/await for LiteSVM tests."
+        },
+        {
+          "url": "https://github.com/typesol-lang/typesol/blob/main/src/templates.ts",
+          "blobSha": "151729de0c29e6210bc1d598cb00a9daff0e46c7",
+          "scope": "Full template source read. The shared generated test imports Vitest and uses an async beforeAll; program templates follow the subset. No template or compiler test executed."
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "parent": "https://x.com/Nexez_AI/status/2119067351169540545",
+      "url": "https://x.com/GogaKoreli/status/2119085383334207674",
+      "copy": "the draft added /contact, which opens our 404 page. i'd mark that link inline as a placeholder or omit it until supplied, so the download doesn't present it as discovered. input: https://gkoreli.com/ai-site-check-evidence",
+      "weightedLength": 202,
+      "canonicalCaptureSavedAt": "2026-11-07T15:12:22.951509+00:00",
+      "publishedTimeUi": "7:11 AM · Nov 7, 2026",
+      "publishedTimeZone": "America/Los_Angeles",
+      "kind": "new-conversation",
+      "platform": "x",
+      "state": "canonical-owner-view-verified",
+      "privateProofBasename": "ai-site-check-hourly-x-20261107-1504/02-canonical",
+      "label": "Nexez / generated contact link reaches a missing page",
+      "publishedLink": "https://t.co/Fn9bYOdKCA",
+      "selectionEvidence": "Read the complete generator post; no replies were rendered before ours. Inspected authored product posts and contextual commerce replies, then read the linked generator page. No prior campaign contact found. One public article was submitted to the free generator, and its generated Contact destination was opened separately. The reply reports this one observed result and provides its input URL.",
+      "sourceReads": [
+        {
+          "url": "https://nexez.ai/tools/llms-txt-generator",
+          "scope": "Read the full page and its stated one-page title/description/navigation extraction method. Submitted https://gkoreli.com/ai-site-check-evidence once. The rendered draft included [Contact](https://gkoreli.com/contact): How to reach a human under Optional; that link was not marked inline as a placeholder. A general Review the placeholders note was visible below the draft. No generator source read, backend inference, file download or ranking study validation."
+        },
+        {
+          "url": "https://gkoreli.com/contact",
+          "scope": "Opened the exact generated destination in the browser. It displayed Page not found, 404 / NOT FOUND and This page does not exist. This is a browser-observed missing-page result, not an independently inspected HTTP response status."
+        },
+        {
+          "url": "https://gkoreli.com/ai-site-check-evidence",
+          "scope": "Fresh full article read before selection; used the same public URL as the single generator input. After publication, the reply’s t.co link resolved back to this exact page."
+        }
+      ],
+      "reproduction": {
+        "method": "Public generator browser UI; one input and one Generate llms.txt click. No account creation or download.",
+        "input": "https://gkoreli.com/ai-site-check-evidence",
+        "generatedDestination": "https://gkoreli.com/contact",
+        "observedResult": "Generated draft included a Contact link; opening it separately showed the site’s 404 page.",
+        "boundary": "One input at this time. Does not establish behavior for other pages, how the generator chose the URL, HTTP status from a network capture, or a completed recipient fix."
+      }
+    }
+  ],
+  "verification": "Exact final text preserved before submission. Each reply used one submission click, with accepted views yielding canonical URLs. Each canonical page was reopened and its body, parent and minute-precision Pacific time checked. Private canonical text and screenshots saved for both. The second reply’s t.co link resolved to the exact reproduction input. canonicalCaptureSavedAt records the saved canonical capture’s filesystem timestamp in UTC; UI publication times remain minute-precision.",
+  "independentPublicVisibility": "Not tested; signed-in owner visibility only.",
+  "privacy": "Raw account views, source captures, generator output and screenshots remain outside Git. Public records contain published copy, public destinations and normalized evidence only.",
+  "limits": "TypeSOL was inspected statically; no compiler, agent or MCP run. Nexez was tested once through its public UI; no source inspection, network/log capture, download or comprehensive audit. No security or comparative-performance claim, recipient fix, hosted AI Site Check audit, provider trial, independent anonymous visibility check, traffic/adoption measurement, extra account action or scheduler change. No account restriction observed.",
+  "nextBoundedAction": "Run complete at two. Next authorized run: reconcile shared state and receipts, prioritize substantive incoming replies, and do not repeat these destinations or carry over unused slots."
+}
