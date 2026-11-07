@@ -159,3 +159,9 @@ No new substantive incoming response appeared in the bounded notification view. 
 [The bounded review completed with zero replies](hourly-ai-site-check-2026-11-07-0557.md). No new substantive incoming response appeared. Five of eight visible search candidates were already handled project discussions; the other three were third-party summaries without another distinct contribution selected. [Exact selection reasons and outcome](hourly-ai-site-check-2026-11-07-0557-publication.json). No submission was attempted and no account restriction was observed.
 
 Forty-three replies remain recorded across twelve completed hourly runs, eleven of which published replies. The owner-directed five and original-chat sixty-eight remain separate. All five unused slots expire. No new visibility, traffic, adoption or runtime result is claimed; no additional account action or scheduler change occurred.
+
+## AI Site Check hourly run, November 7 at 06:54 UTC
+
+[Three further replies](hourly-ai-site-check-2026-11-07-0654.md) are published and canonically owner-verified. They propose a recovery fault-injection fixture, ask Fibr to identify its request origin/method, and separate page rewrites from an llms.txt experiment. [Exact copy, timestamps, source evidence and selection](hourly-ai-site-check-2026-11-07-0654-publication.json). No recipient-product bug, executed fixture or measured experiment result is claimed.
+
+No new substantive incoming response appeared in the bounded notification view. The remaining reviewed candidates did not support another distinct contribution, so two unused slots expire. Forty-six replies are recorded across thirteen completed hourly runs, twelve of which published replies; the owner-directed five and original-chat sixty-eight remain separate. Independent public visibility, traffic and adoption remain unmeasured. No extra account action or scheduler change occurred.
