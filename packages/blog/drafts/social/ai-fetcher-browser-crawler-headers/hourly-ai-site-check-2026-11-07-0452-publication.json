@@ -1,0 +1,81 @@
+{
+  "automationId": "ai-site-check-hourly-x-replies",
+  "triggeredAt": "2026-11-07T04:52:38.236Z",
+  "completedPublicationAt": "2026-11-07T05:01:41.201Z",
+  "timezone": "America/Los_Angeles",
+  "authorization": "Explicit hourly heartbeat permits up to five useful X replies, with fewer when insufficient useful matches are found. Scope excludes Reddit writes, DMs, likes, follows, original posts and scheduler changes.",
+  "preflight": "Latest worklist, shared receipts and chat state reviewed. UI work remains accepted at 18:33 UTC November 6; the original posting chat and separate owner-directed five-reply batch are complete. Start and end compact coordination snapshots show the original posting chat idle. Fresh origin/main and clean isolated checkout agree at df07e194dfe228cd07b10ebb739c7b2058172676. No posting overlap or catch-up burst.",
+  "currentEvidence": "Fresh live AI Site Check article read in the browser; normalized rendered text and links matched the preceding run. Current AtMem product and training documentation read before composing. Distribution does not alter frozen article research provenance.",
+  "xRepliesPublished": 1,
+  "xNewConversationRepliesPublished": 1,
+  "xConversationFollowupsPublished": 0,
+  "canonicalOwnerViewsVerified": 1,
+  "countNote": "Forty-three replies across eleven hourly runs, plus the separate completed five-reply owner-directed batch. The original chat’s sixty-eight replies remain separately counted.",
+  "notificationCoverage": "No new substantive incoming response appeared in the bounded signed-in notification view. Daryll’s newest visible response had already been answered in the 03:47 run; other acknowledgements and reactions were recorded earlier. This is not an account-wide census or a new growth measurement.",
+  "selection": "One focused Latest search for repo context, agent memory or headless terminal with built/released/open-source terms since November 6, followed by visible scrolling through results about twenty hours old. Read the selected full discussion, current authored profile history and relevant product documentation individually. Prior receipts checked for duplicate destinations and earlier selection decisions.",
+  "fewerThanFiveReason": "Only the AtMem experiment yielded a distinct, grounded contribution in this reviewed window. The concrete Lore context-transfer thread was already handled, another walkthrough already specified its iteration bound, and remaining reviewed candidates were summaries, declared automation, repeated promotion or lacked sufficient implementation context. This bounded selection does not establish that no other useful discussion exists; four unused slots do not carry over.",
+  "skippedExamples": [
+    {
+      "url": "https://x.com/tana_shahh/status/2118682354365661434",
+      "reason": "Same Lore branch-aware recall discussion already handled in the 01:48 run; no new incoming response selected."
+    },
+    {
+      "url": "https://x.com/vishwanath_tns/status/2118892490338283995",
+      "reason": "Read the complete quoted walkthrough, expanded its posts and inspected the visible discussion and authored histories. The walkthrough already specifies max_iterations=5. No additional source-backed implementation contribution selected; no publicly inspectable implementation link was found in the reviewed thread/profile."
+    },
+    {
+      "url": "https://x.com/MAGNEMO_AI/status/2118902076587880538",
+      "reason": "Read the full post and authored profile history. Repeated similarly structured promotional prompts did not meet the owner’s selection preference; no public identity or automation accusation follows."
+    },
+    {
+      "url": "https://x.com/deltaxevaluate/status/2118856007086690525",
+      "reason": "Search result explicitly labeled the account automated; skipped under the owner’s outreach selection preference."
+    },
+    {
+      "url": "https://x.com/MichaelGannotti/status/2118830906735579596",
+      "reason": "Search preview was a broad AI news roundup, without a selected project-specific implementation question. Full article not read."
+    },
+    {
+      "url": "https://x.com/AnotherCodingX/status/2118667236676423681",
+      "reason": "Search preview was a broad daily AI newsletter; no distinct implementation contribution selected."
+    }
+  ],
+  "items": [
+    {
+      "index": 1,
+      "label": "AtMem / residency-change artifact continuity",
+      "kind": "new-thread",
+      "parent": "https://x.com/AtMemAi/status/2118927196161257532",
+      "url": "https://x.com/GogaKoreli/status/2118931071408726202",
+      "copy": "try changing the residency requirement after reviewing the AWS pack, then reopen the project and export again. check the Terraform region, pricing source and REQ together, the failure to catch is a fresh chat answer paired with a stale delivery ZIP.",
+      "weightedLength": 249,
+      "verifiedAt": "2026-11-07T05:01:41.201Z",
+      "platform": "x",
+      "state": "canonical-owner-view-verified",
+      "publishedTimeUi": "8:58 PM · Nov 6, 2026",
+      "publishedTimeZone": "America/Los_Angeles",
+      "sourceReads": [
+        {
+          "url": "https://atmem.ai/",
+          "scope": "Read the current product page, requirements/residency workflow, delivery-kit scope and implementation status. The page identifies maintainer Javad Taghia. It distinguishes design exports from real deployment and limits Terraform support to selected AWS S3 foundations. Its self-reported benchmark was not used in the reply."
+        },
+        {
+          "url": "https://atmem.ai/ai-architect/training",
+          "sourceRevisionUrl": "https://github.com/aetna000/atmem-ai-architect/blob/661324c0dae2e167570eb162eab84d2e113b7a35/docs/TRAINING.md",
+          "scope": "Read the complete live training page. It documents stable REQ numbers, requirements that can reopen earlier checkpoints, estimate service/region/date/source fields, reviewed ZIP snapshots, regeneration after project changes, partial Terraform output and saving/reopening editable project files. The source revision URL is the provenance link displayed by the live page; the GitHub file was not independently fetched. The reply proposes one late residency-change regression fixture spanning these outputs; it does not claim an observed stale artifact or a completed test."
+        },
+        {
+          "url": "https://gkoreli.com/ai-site-check-evidence",
+          "scope": "Fresh live article read for campaign context. Its technical-access heuristic, optional Markdown treatment and attribution limits remain unchanged in the normalized comparison. No article claim or promotional link was forced into this product-specific reply."
+        }
+      ],
+      "selectionEvidence": "The initial AtMem announcement led to authored profile history and a newer concrete seven-scenario AWS experiment. Read that complete experiment post before replying; it had no replies at inspection. Profile posts included current implementation work and a linked project associated with Javad Taghia; the current product footer supplied matching maintainer context. This supports project-specific selection, not authenticated operator identity.",
+      "privateProofBasename": "ai-site-check-hourly-x-20261107-0452/01"
+    }
+  ],
+  "verification": "Saved exact final copy and composer before submission. Clicked Reply once, resolved the pending UI through its accepted canonical URL, and reopened that canonical page. Body, parent and minute-precision UI time verified; screenshot saved. No uncertain submission was retried. No outbound link in final copy.",
+  "independentPublicVisibility": "Not tested; signed-in owner visibility only.",
+  "privacy": "Raw account views, source captures and screenshots remain outside Git in private temporary storage. Public receipts contain published copy and normalized evidence only.",
+  "limits": "No recipient software execution, cloud deployment, hosted audit, provider trial, traffic/adoption measurement, anonymous visibility test, extra account action, site edit or scheduler change. The suggested fixture was not executed and is not evidence of a recipient-product bug.",
+  "nextBoundedAction": "Run complete at one. Next authorized run: reconcile current state and receipts, prioritize substantive incoming responses, and do not repeat this parent or accumulate unused slots."
+}
