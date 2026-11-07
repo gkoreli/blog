@@ -1,0 +1,124 @@
+{
+  "automationId": "ai-site-check-hourly-x-replies",
+  "triggeredAt": "2026-11-07T12:06:13.062Z",
+  "completedPublicationAt": "2026-11-07T12:17:23.843765+00:00",
+  "timezone": "America/Los_Angeles",
+  "authorization": "Explicit hourly heartbeat authorizes up to five useful X replies, fewer when useful matches are insufficient. Scope excludes Reddit, DMs, likes, follows, original posts and scheduler changes.",
+  "preflight": "Latest worklist, previous run and shared receipts read. Required guidance and public project index reviewed; fresh diff found no change in owner direction. Accepted UI work and earlier batches remain complete. Start and end coordination checks show the original posting chat inactive with its latest turn completed. Fresh origin/main and the clean isolated checkout agree at 916d8cfbe5741af1698074e7346e6a77bc536507. No overlap or catch-up burst.",
+  "currentEvidence": "Fresh live AI Site Check article read; normalized rendered text and links matched the preceding capture. Replies rely on the current discussion and primary source material. No hosted audit or provider trial.",
+  "xRepliesPublished": 3,
+  "xNewConversationRepliesPublished": 2,
+  "xConversationFollowupsPublished": 1,
+  "canonicalOwnerViewsVerified": 3,
+  "countNote": "Fifty-six replies across eighteen completed hourly runs, sixteen of which published replies. The separate owner-directed five and original-chat sixty-eight remain separate.",
+  "notificationCoverage": "A new substantive Peter response was selected first. Other visible notifications were previously recorded conversations and acknowledgements. This is a bounded signed-in view, not an account-wide census or a traffic measurement.",
+  "selection": "After the incoming follow-up, one focused Latest search supplied two selected new conversations. Both were investigated one at a time before publication. Receipts were checked for prior contact and duplicate destinations.",
+  "searchQuery": "(MCP OR agents) (built OR shipped) (context OR repository) since:2026-11-07 -filter:replies",
+  "fewerThanFiveReason": "Three conversations yielded a specific contribution in the bounded review. Other initially visible search previews were broad articles or a model release without another selected implementation question. Those candidates were not fully investigated. Two unused slots expire; no claim that useful conversations do not exist elsewhere.",
+  "skippedExamples": [
+    {
+      "url": "https://x.com/NewsGurus/status/2119036439635640625",
+      "reason": "Broad article preview; no matching implementation contribution selected. Not fully investigated."
+    },
+    {
+      "url": "https://x.com/MatthieuM_oreau/status/2119031887775584584",
+      "reason": "Company knowledge/context article preview; not fully read or selected for another distinct reply."
+    },
+    {
+      "url": "https://x.com/dahou_yasser/status/2119029692653359585",
+      "reason": "Owned perception-model release preview; no contribution matching this bounded outreach selected. No technical assessment of the model."
+    }
+  ],
+  "items": [
+    {
+      "index": 1,
+      "kind": "follow-up",
+      "parent": "https://x.com/PeterMunkholm/status/2119037244271173797",
+      "url": "https://x.com/GogaKoreli/status/2119039247869218970",
+      "copy": "how do you handle a paused leaseholder coming back after reassignment? I'd test A pauses, B takes over, A resumes. the merger should check the current lease generation, so A can't merge using stale ownership. https://martin.kleppmann.com/2016/02/08/how-to-do-distributed-locking.html",
+      "weightedLength": 232,
+      "publishedTimeUi": "4:08 AM \u00b7 Nov 7, 2026",
+      "verifiedAt": "2026-11-07T12:09:10.767Z",
+      "publishedLink": "https://t.co/9hEWVHDEmJ",
+      "platform": "x",
+      "state": "canonical-owner-view-verified",
+      "publishedTimeZone": "America/Los_Angeles",
+      "privateProofBasename": "ai-site-check-hourly-x-20261107-1206/01-canonical",
+      "label": "Peter / stale lease ownership",
+      "selectionEvidence": "New substantive incoming reply. Read the complete visible ancestor chain from Peter\u2019s harness description through Karim\u2019s worktree and lease questions, including our earlier two contributions. Peter clarified that leases are part of his own Agent Harness Skill. The new reply asks about pause/reassignment/resume and proposes enforcement at merge time; it does not presume an observed defect or an existing lease-generation implementation.",
+      "sourceReads": [
+        {
+          "url": "https://martin.kleppmann.com/2016/02/08/how-to-do-distributed-locking.html",
+          "scope": "Read the primary authored explanation, especially stale clients and fencing tokens checked by the receiving resource. Applying that pattern to a merger is our recommendation. No Peter harness source was linked in the inspected conversation, and no fixture was executed."
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "kind": "new-conversation",
+      "platform": "x",
+      "state": "canonical-owner-view-verified",
+      "copy": "it has an escape hatch: the builder names conflicting checks, the planner can add an amending task, and the reviewer judges it against the spec. ADR 0009 traces this to invented image thresholds that couldn't coexist: https://github.com/aartiles/tenaz/blob/v0.5.0/docs/adr/0009-a-card-that-conflicts-with-a-done-check.md",
+      "weightedLength": 241,
+      "parent": "https://x.com/amirsadjady/status/2119039649020588084",
+      "url": "https://x.com/GogaKoreli/status/2119040809966412038",
+      "verifiedAt": "2026-11-07T12:15:15.843Z",
+      "publishedLink": "https://t.co/VwvWRjprXj",
+      "privateProofBasename": "ai-site-check-hourly-x-20261107-1206/02-canonical",
+      "publishedTimeZone": "America/Los_Angeles",
+      "publishedTimeUi": "4:14 AM \u00b7 Nov 7, 2026",
+      "label": "Tenaz / conflicting generated checks",
+      "conversationRoot": "https://x.com/aartiles24/status/2119038225553477940",
+      "selectionEvidence": "Read Alfredo\u2019s full release post, visible replies under Relevant and Recent, authored profile with his pinned Tenaz introduction, current README, release notes and relevant ADRs. Amir\u2019s nested question about incorrect checks had no visible replies before submission. Answered that specific question with the project\u2019s documented amendment mechanism. Root reply counts exceeded rendered replies; no exhaustive hidden-reply claim. This is first contact in this conversation, counted as new-conversation outreach.",
+      "sourceReads": [
+        {
+          "url": "https://github.com/aartiles/tenaz/blob/v0.5.0/docs/adr/0009-a-card-that-conflicts-with-a-done-check.md",
+          "blobSha": "cea7b92dbac1c6083447f1c01491652263590707",
+          "scope": "Full ADR read. It records a visual requirement blocked by incompatible generated thresholds, a builder-declared conflict, a planner-created amending card, and review against the specification. The top note preserves changes made by ADR 0018. This is documented design and reported history, not our reproduction or proof of enforcement against hostile edits."
+        },
+        {
+          "url": "https://github.com/aartiles/tenaz/blob/main/README.md",
+          "blobSha": "10b3d0ece8b5d8b65d7d051a3ff33d35440355c7",
+          "scope": "Current workflow, verify gate, conflict/amendment path, worktree isolation and limitations read. No installation, run, or performance claim."
+        },
+        {
+          "url": "https://github.com/aartiles/tenaz/releases/tag/v0.5.0",
+          "commit": "f8d7668f6735d5b9998791d651688ba1ecaed0d9",
+          "scope": "Current release published 2026-11-07T11:50:38Z; release notes read. ADRs 0021 and 0026 also read for tool-effect and context-cap context, but no claims about those mechanisms were included in the reply."
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "kind": "new-conversation",
+      "parent": "https://x.com/alex09x_dev/status/2119040850550542643",
+      "url": "https://x.com/GogaKoreli/status/2119041441444094204",
+      "copy": "i'd replay that handoff with a stubbed job: one case says 'start processing', the other 'wait for my approval'. score starting and waiting separately, after compaction too. fewer questions alone can reward crossing the boundary.",
+      "publishedTimeUi": "4:17 AM \u00b7 Nov 7, 2026",
+      "verifiedAt": "2026-11-07T12:17:23.843765+00:00",
+      "weightedLength": 228,
+      "platform": "x",
+      "state": "canonical-owner-view-verified",
+      "publishedTimeZone": "America/Los_Angeles",
+      "privateProofBasename": "ai-site-check-hourly-x-20261107-1206/03-canonical",
+      "label": "Alexander / handoff autonomy evaluation",
+      "conversationRoot": "https://x.com/alex09x_dev/status/2119032281461621201",
+      "selectionEvidence": "Read the full X article, all three rendered response chains and the exact nested author clarification to Powerduck. Read the linked public aggregate audit through the browser after the web reader failed. The authored article gives concrete Mitts and KYB examples; our prior KYB startup-memory reply is in a separate conversation. This contribution proposes a paired stubbed-job evaluation after handoff/compaction, without repeating that repository link or claiming an executed benchmark.",
+      "sourceReads": [
+        {
+          "url": "https://x.com/alex09x_dev/status/2119032281461621201",
+          "scope": "Entire written article read: overnight waiting, repeated stop-hook firings, context loss, authority boundaries and desired outcome/cost/involvement measures. Author explicitly separates personal experience and descriptive log evidence from controlled comparisons."
+        },
+        {
+          "url": "https://prod.codes/data/agent-rules-log-audit-2026-11-07.json",
+          "scope": "Full public method and aggregate JSON read. Regex markers are not hand-labelled unnecessary approvals or causal evidence; selected main Claude Code sessions only. No raw private logs accessed. The reply suggests a new paired fixture rather than adopting the aggregate as evidence of instruction effectiveness."
+        }
+      ]
+    }
+  ],
+  "verification": "Exact final text saved before each single submission. Every accepted canonical URL reopened; body, parent and minute-precision Pacific UI time verified. Private canonical text captures retained for all three and screenshots for replies one and two. Transient submission views were resolved without resubmitting. The two published t.co links were followed and resolved to the intended primary pages. Reply three contains no link.",
+  "independentPublicVisibility": "Not tested; signed-in owner visibility only.",
+  "privacy": "Raw account views, source captures and screenshots remain outside Git. Public records contain published copy, public destinations and normalized evidence only.",
+  "limits": "No recipient runtime test, fixture execution, installation, source edit, hosted audit, provider trial, independent anonymous visibility check, traffic/adoption measurement, extra account action or scheduler change. No account restriction observed. Proposed tests and documented mechanisms are not verified product outcomes.",
+  "nextBoundedAction": "Run complete at three. Next authorized run: reconcile current shared state and receipts, prioritize substantive incoming replies, and do not repeat these destinations or carry over unused slots."
+}
