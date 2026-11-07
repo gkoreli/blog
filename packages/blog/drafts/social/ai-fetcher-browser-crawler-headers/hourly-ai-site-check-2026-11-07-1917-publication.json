@@ -1,0 +1,51 @@
+{
+  "automationId": "ai-site-check-hourly-x-replies",
+  "triggeredAt": "2026-11-07T19:17:46.315Z",
+  "completedReviewAt": "2026-11-07T19:26:47.194507+00:00",
+  "timezone": "America/Los_Angeles",
+  "authorization": "Explicit hourly heartbeat authorizes up to five useful X replies, fewer when useful matches are insufficient. No Reddit, DMs, likes, follows, original posts or scheduler changes.",
+  "preflight": "Read current worklist, prior run and shared receipts, required launch/publication guidance, informal voice and owned-project index. Accepted UI work and earlier batches remain complete. Start and end snapshots show the original posting chat inactive with its latest turn completed. The isolated checkout and origin/main agreed at a1781d7b6613d075694136bab90b01f4b1ed3f47. No overlapping posting session or catch-up burst.",
+  "currentEvidence": "Fresh live AI Site Check article read in native Chrome after web lookup could not access it. Read the incoming Balsa conversation from the original November 5 post through the latest question. The Socure web result exposed introductory material but not the complete body; no new numeric growth claim or causal ranking relies on that result.",
+  "xRepliesPublished": 0,
+  "xNewConversationRepliesPublished": 0,
+  "xConversationFollowupsPublished": 0,
+  "canonicalOwnerViewsVerified": 0,
+  "items": [],
+  "countNote": "Sixty-nine replies remain recorded across twenty-five completed hourly runs, twenty-two of which published replies. The separate owner-directed five and original-chat sixty-eight remain separate.",
+  "notificationCoverage": "The bounded latest notification view contained one new substantive incoming question from Balsa. LiveaAi was the previously reviewed acknowledgment; Peter, Daryll, mpgn, Sergei and Ikenna exchanges were already handled in prior receipts. No account-wide census is claimed.",
+  "incomingReviewed": [
+    {
+      "url": "https://x.com/emanuelbalsa/status/2119145067898126706",
+      "outcome": "Full conversation read and one contextual follow-up prepared; publication was not established. No repeated article link was added because relevant links already exist in ancestors."
+    }
+  ],
+  "pendingDrafts": [
+    {
+      "parent": "https://x.com/emanuelbalsa/status/2119145067898126706",
+      "copy": "i can't rank them from that figure. i'd rerun old/new detection on the same saved requests, then compare a fixed set of sites over time with detection held constant. that helps separate relabeling from traffic growth, changing both at once hides the cause.",
+      "weightedLength": 256,
+      "kind": "conversation-followup",
+      "state": "saved-unpublished-after-browser-interruption",
+      "publishedUrl": null,
+      "sourceReads": [
+        {
+          "url": "https://x.com/emanuelbalsa/status/2119145067898126706",
+          "scope": "Read the entire rendered chain: original growth claim, requests-versus-jobs question, author response, prior source correction and latest question asking whether population or detection would move the figure more."
+        },
+        {
+          "url": "https://gkoreli.com/ai-site-check-evidence",
+          "scope": "Fresh live article read, including controlled requests whose provider context differed from stored Browser labels. This supports keeping detection and observed traffic distinct; it does not rank their effect on the third-party growth figure."
+        }
+      ],
+      "recommendationBoundary": "Proposed comparison: apply old and new detection to identical saved requests, then inspect a fixed site cohort over time with detection held constant. No experiment performed, magnitude estimated, population effect ranked or recipient data inspected."
+    }
+  ],
+  "selection": "Prioritized the new incoming question. No new-thread search or additional destination was attempted after browser interference.",
+  "fewerThanFiveReason": "The in-app browser was unavailable. Native Chrome allowed source and conversation inspection, but repeated computer-use guards reported that the user changed Chrome. The final state showed the shared browser on unrelated owner activity. Stopped account actions rather than competing for the browser. Unused slots expire.",
+  "submissionResolution": "Exact 256-character ASCII draft saved and observed in the correct composer. The first Reply action returned a user-changed-application guard, with no success receipt. The subsequent state retained the draft and showed zero replies. A focused parent refresh, including its reload warning, completed despite another guard result: fresh view showed zero replies, empty composer and no matching published body. A later attempt to restore the draft was also guarded before a second submission. Final read showed unrelated owner browser activity. No successful submission or canonical reply URL was observed; recheck the destination before resuming this draft.",
+  "accountState": "No X account restriction, cooldown or security lock observed. This was browser availability and concurrent owner use, not a platform restriction. No alternate interface used to evade an account restriction.",
+  "independentPublicVisibility": "Not applicable to this run: no new canonical reply was established.",
+  "privacy": "Raw account views, browser state, source captures and draft files remain outside Git. Public records contain only public conversation URLs, the proposed text and normalized evidence.",
+  "limits": "No new publication, new-thread search, hosted audit, actual provider trial, runtime test, growth measurement or scheduler change. A prepared draft is not a published reply. The absence check is the refreshed signed-in parent view, not independent anonymous verification.",
+  "nextBoundedAction": "Next authorized run: reconcile shared receipts and available browser state; check Balsa’s conversation for any intervening response or duplicate before deciding whether this draft is still useful. Do not carry over the unused quota."
+}

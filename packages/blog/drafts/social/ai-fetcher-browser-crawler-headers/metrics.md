@@ -231,3 +231,9 @@ The run stops at one, with four unused slots expiring. Sixty-six replies are rec
 [Three new-conversation replies](hourly-ai-site-check-2026-11-07-1815.md) are published and canonically owner-verified: per-URL discovery provenance after a free sitemap test, a documented robots group-precedence qualification, and an answer-fidelity test beyond Markdown delivery. [Exact copy, timestamps, sources and limits](hourly-ai-site-check-2026-11-07-1815-publication.json). Each used one submission click, with no retry. Both published source links resolved to their intended destinations.
 
 The run stops at three, with two unused slots expiring. Sixty-nine replies are recorded across twenty-four completed hourly runs, twenty-two of which published replies; the owner-directed five and original-chat sixty-eight remain separate. One incoming acknowledgment was read without adding a repetitive response. Independent public visibility, traffic and adoption remain unmeasured. No extra account action or scheduler change occurred.
+
+## AI Site Check hourly run, November 7 at 19:17 UTC
+
+[No new reply was established](hourly-ai-site-check-2026-11-07-1917.md). One incoming Balsa question received a prepared follow-up, but repeated shared-browser interference stopped publication. [Exact draft, source context and submission resolution](hourly-ai-site-check-2026-11-07-1917-publication.json). The refreshed parent showed zero replies and an empty composer after the guarded Reply action; no canonical URL was obtained. No X restriction was observed.
+
+Sixty-nine replies remain across twenty-five completed hourly runs, twenty-two of which published replies; the owner-directed five and original-chat sixty-eight remain separate. Unused slots expire. Recheck the destination before resuming the draft. No new-thread search, traffic/adoption measurement or scheduler change occurred.
