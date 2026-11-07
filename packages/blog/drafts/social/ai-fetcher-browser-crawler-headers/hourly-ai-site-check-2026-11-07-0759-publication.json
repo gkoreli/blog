@@ -1,0 +1,112 @@
+{
+  "automationId": "ai-site-check-hourly-x-replies",
+  "triggeredAt": "2026-11-07T07:59:40.343Z",
+  "completedPublicationAt": "2026-11-07T08:08:27.106Z",
+  "timezone": "America/Los_Angeles",
+  "authorization": "Explicit hourly heartbeat authorizes up to five useful X replies, fewer when useful matches are insufficient. Scope excludes Reddit, DMs, likes, follows, original posts and scheduler changes.",
+  "preflight": "Latest worklist and shared receipts read; previously read required guidance checked for changes and unchanged. Accepted UI work and earlier batches remain complete. Both compact coordination checks show the original posting chat inactive with its latest turn completed. Fresh origin/main and the clean isolated checkout agree at 7907d1dae49aaebe2013c4e03a1c902b48af010d. No overlap or catch-up burst.",
+  "currentEvidence": "Fresh live AI Site Check article read; normalized rendered text and links matched the preceding capture. Current ghx README read through GitHub (blob 58702be26790569882ad50c65b5be017aa9dd7b4) as owned-project context for auditable reconnaissance; no performance claim or installation recommendation followed. Selected discussions, authored histories and primary method sources read. No hosted audit or provider trial.",
+  "xRepliesPublished": 2,
+  "xNewConversationRepliesPublished": 2,
+  "xConversationFollowupsPublished": 0,
+  "canonicalOwnerViewsVerified": 2,
+  "countNote": "Forty-eight replies across fourteen completed hourly runs, thirteen of which published replies. The separate owner-directed five and original-chat sixty-eight remain separate.",
+  "notificationCoverage": "No new substantive response appeared in the bounded initial signed-in notification view. The newest visible Daryll question was already answered in the 03:47 run; other visible questions and acknowledgements were previously recorded. No account-wide census or fresh growth measurement is claimed.",
+  "selection": "One focused Latest search: (repository OR codebase) (context OR tokens) (built OR shipped OR released) since:2026-11-06 -filter:replies. Visible scrolling reached results about thirteen hours old. Selected conversations were inspected one at a time and checked against prior receipts.",
+  "fewerThanFiveReason": "Two contributions met the evidence and selection bar. Other visible matches included broad essays/news summaries, promotional recaps, unrelated topics and a previously handled XERJ conversation. The Salvor recap was opened and read without identifying another specific contribution. This bounded review does not establish that no useful discussion exists elsewhere; three unused slots expire.",
+  "skippedExamples": [
+    {
+      "url": "https://x.com/Wfrankee_/status/2118930339510796365",
+      "reason": "Complete post and visible reply read. A third-party Salvor promotional recap; no distinct implementation question selected. Product and runtime claims were not adopted."
+    },
+    {
+      "url": "https://x.com/d0znpp/status/2118840938147770450",
+      "reason": "XERJ conversation previously handled with a concrete semantic-validation reply; no new incoming response selected."
+    },
+    {
+      "url": "https://x.com/edinsoncode/status/2118963953082507348",
+      "reason": "Broad platform-growth article preview, without a matching concrete implementation contribution selected. Full article not read."
+    },
+    {
+      "url": "https://x.com/m_yudysky/status/2118957005134086144",
+      "reason": "Historical documentary discussion outside this run's engineering scope."
+    },
+    {
+      "url": "https://x.com/BestBlogsDev/status/2118876671256437046",
+      "reason": "Daily news digest preview; no distinct contribution selected."
+    },
+    {
+      "url": "https://x.com/PiebaldAI/status/2118805632925208748",
+      "reason": "System-prompt change summary; no new project-specific question selected."
+    }
+  ],
+  "items": [
+    {
+      "parent": "https://x.com/kiamlord/status/2118958038552121784",
+      "url": "https://x.com/GogaKoreli/status/2118978095650910377",
+      "copy": "for the next run, I'd record cache_read/cache_write on the first request, then separate cold and warm starts. bench.py runs four jobs at once, and a fresh repo copy doesn't establish a cold prompt cache. task totals mix that with later turns.",
+      "weightedLength": 257,
+      "verifiedAt": "2026-11-07T08:05:58.136Z",
+      "index": 1,
+      "label": "Kevin / benchmark cache provenance",
+      "kind": "new-thread",
+      "platform": "x",
+      "state": "canonical-owner-view-verified",
+      "publishedTimeZone": "America/Los_Angeles",
+      "publishedTimeUi": "12:05 AM · Nov 7, 2026",
+      "sourceReads": [
+        {
+          "url": "https://github.com/kevinismus/claude-code-measured-setup/blob/main/bench/bench.py",
+          "blobSha": "586b0fd579ccd594b590d3891bcfd71df61e76a1",
+          "scope": "Read the complete current harness through the GitHub connector and the repository README in the browser. The harness uses ThreadPoolExecutor(4), copies the task repo per job and extracts cache_read/cache_write from final result usage. The reply proposes recording first-request usage separately. No benchmark was executed or reported cost delta recomputed. An initial request for bench/README.md returned 404; the linked root repository and actual harness were accessible."
+        },
+        {
+          "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-caching",
+          "scope": "Read current primary guidance on prefix matching, cache lifetime, response usage and cache availability for concurrent requests. Applying it to this harness motivates the proposed cold/warm distinction. It does not establish which prefixes were shared in the published runs or explain their measured cost difference."
+        }
+      ],
+      "selectionEvidence": "Read the complete article, all three visible root responses and the author's reply, profile/pinned authored history, linked repository README and full harness. The author already qualifies sample size, easy tasks and API-equivalent cost. The contribution adds first-request cache instrumentation rather than restating those limits or promoting a competing tool.",
+      "privateProofBasename": "ai-site-check-hourly-x-20261107-0759/01",
+      "automaticLink": {
+        "displayText": "bench.py",
+        "observedHref": "https://t.co/hC8arDWX3z",
+        "note": "X automatically linked the literal filename. This is not the intended GitHub source link and its external destination was not followed. The exact typed/published wording is preserved. Weighted length includes the 23-character URL substitution; use plain filename descriptions in future copy to avoid unintended links."
+      }
+    },
+    {
+      "parent": "https://x.com/rae1101x/status/2118961042697142693",
+      "url": "https://x.com/GogaKoreli/status/2118978740751564843",
+      "copy": "I'd add the review target to step 3: exact base/head SHAs and a readable patch, including uncommitted changes. the isolated default-branch checkout won't automatically contain the feature being reviewed, and Read/Grep/Glob can't produce a git diff.",
+      "weightedLength": 248,
+      "verifiedAt": "2026-11-07T08:08:27.106Z",
+      "index": 2,
+      "label": "Minglei / review revision handoff",
+      "kind": "new-thread",
+      "platform": "x",
+      "state": "canonical-owner-view-verified",
+      "publishedTimeZone": "America/Los_Angeles",
+      "publishedTimeUi": "12:07 AM · Nov 7, 2026",
+      "sourceReads": [
+        {
+          "url": "https://code.claude.com/docs/en/worktrees",
+          "scope": "Read current primary worktree guidance. Subagent worktrees use the default branch unless worktree.baseRef selects head; a new checkout starts from committed repository state. The reply proposes explicit revision/patch provenance for the author's stated default-branch review workflow. No recipient configuration was installed or exercised."
+        },
+        {
+          "url": "https://code.claude.com/docs/en/sub-agents",
+          "scope": "Read current primary subagent guidance and its tool restriction model. The target explicitly limits audit to Read, Grep and Glob, which do not invoke git diff. Providing a readable patch is a handoff recommendation, not a claim of an observed failed review."
+        },
+        {
+          "url": "https://git-scm.com/docs/git-worktree",
+          "scope": "Consulted primary Git worktree documentation as supporting context. No worktree fixture was run for this reply."
+        }
+      ],
+      "selectionEvidence": "Read the complete written post, both response chains, authored profile history and current primary worktree/subagent documentation. The contribution addresses the explicit read-only audit recipe. The quoted promotional video was not transcribed; model-routing, advisor-cost and savings claims were not adopted or repeated.",
+      "privateProofBasename": "ai-site-check-hourly-x-20261107-0759/02"
+    }
+  ],
+  "verification": "Exact final text saved before each single submission. Reopened both accepted canonical URLs; verified body, parent and minute-precision Pacific UI time. Canonical text captures and screenshots retained for both. The first transient submission state was resolved without resubmitting. X auto-linked the literal filename in reply one; see its automaticLink record.",
+  "independentPublicVisibility": "Not tested; signed-in owner visibility only.",
+  "privacy": "Raw account views, source captures and screenshots remain outside Git. Public records contain published copy, public destinations and normalized evidence only.",
+  "limits": "No benchmark rerun, recipient configuration change, failed-review reproduction, hosted audit, provider trial, traffic/adoption measurement, anonymous visibility check, extra account action, site edit or scheduler change. Proposals do not establish causal cost explanations or measured review failures.",
+  "nextBoundedAction": "Run complete at two. Next authorized run: reconcile shared state and receipts, prioritize substantive incoming replies, and do not repeat these parents or carry over unused slots. Avoid filename-shaped text that X may turn into an unintended domain link."
+}
