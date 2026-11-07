@@ -1,0 +1,169 @@
+{
+  "clientDate": "2026-11-06",
+  "timezone": "America/Los_Angeles",
+  "authorization": "Owner requested five further new genuine people, expressly excluding bot-like accounts, then asked to instruct AI Site Check on execution, writing style and five more.",
+  "xRepliesPublished": 5,
+  "canonicalOwnerViewsVerified": 5,
+  "newRecipientHandlesInSharedReceipts": 5,
+  "newFollows": 0,
+  "selectionRule": "Inspect authored technical work, substantive conversations and corroborating project/release/source evidence. Exclude declared bots/agents, repetitive paraphrase replies, generic AI-summary feeds and mass promotion. Weak ownership evidence means choose another person. This is a practical outreach filter, not proof of human identity or a public accusation.",
+  "newMeaning": "Five recipients absent from prior original and hourly outreach receipts. Mitchell and Dax were already followed; this does not claim five previously unknown people or five new relationships.",
+  "items": [
+    {
+      "handle": "mitchellh",
+      "parent": "https://x.com/mitchellh/status/2118848233762078971",
+      "project": "https://github.com/gkoreli/ghostty-vt-js",
+      "copy": "the public C ABI let me keep ghostty-vt-js on an unpatched upstream build, same engine in the browser and headless HTML/ANSI export. useful for agent tooling too, you can inspect terminal state on the backend\nhttps://github.com/gkoreli/ghostty-vt-js",
+      "url": "https://x.com/GogaKoreli/status/2118873094907658412",
+      "verifiedAt": "2026-11-07T01:08:56.241Z",
+      "label": "Mitchell Hashimoto / Ghostty",
+      "platform": "x",
+      "kind": "new-recipient-project-reply",
+      "profile": "https://x.com/mitchellh",
+      "selectionEvidence": "The original release, current profile and linked author site identify the Ghostty creator. His release article links back to the same X account and gives concrete ABI/packaging details. Strong inspectable project ownership; selection does not rely on follower count. The account was already followed before this batch.",
+      "contribution": "An actual embedding use case: unpatched public C ABI and one engine across browser/headless output. No claim that our pinned WASM has already upgraded to 1.0.",
+      "sourceReads": [
+        {
+          "url": "https://github.com/gkoreli/ghostty-vt-js/blob/main/README.md",
+          "fileBlobSha": "d42bb23f16cc7c153b178ff5c461eb1da4321c5b"
+        },
+        {
+          "url": "https://mitchellh.com/writing/libghostty-1-0",
+          "method": "Full release article read in browser; identity cross-link and implementation details inspected."
+        }
+      ],
+      "weighted": 232,
+      "state": "canonical-owner-view-verified",
+      "privateProofBasename": "new-builders-20261106-round11/1"
+    },
+    {
+      "handle": "maddada",
+      "parent": "https://x.com/maddada/status/2118841603716771858",
+      "project": "https://github.com/gkoreli/ghx",
+      "copy": "for worker handoffs, id return an artifact path with each report. ghx keeps the raw session on disk and gives the parent claims + refs + uncertainty, so it can reopen the exact evidence when a claim looks wrong\nhttps://github.com/gkoreli/ghx",
+      "url": "https://x.com/GogaKoreli/status/2118873441902395587",
+      "verifiedAt": "2026-11-07T01:10:16.694Z",
+      "label": "maddada / Ghostex",
+      "platform": "x",
+      "kind": "new-recipient-project-reply",
+      "profile": "https://x.com/maddada",
+      "selectionEvidence": "Current profile links the maintained Ghostex repository. Authored release updates, a coordinator demonstration and detailed self-replies explain specific implementation choices. Fresh README inspection corroborates the coordinator feature.",
+      "contribution": "A worker report can carry a path to its raw session artifacts, allowing a coordinator to reopen the evidence. No claim Ghostex lacks this feature or that schema validity proves correctness.",
+      "sourceReads": [
+        {
+          "url": "https://github.com/maddada/Ghostex/blob/main/README.md",
+          "fileBlobSha": "502057dfcec55a5818c7abee7f5a1c5e15a673c9"
+        },
+        {
+          "url": "https://github.com/gkoreli/ghx/blob/mainline/README.md",
+          "fileBlobSha": "58702be26790569882ad50c65b5be017aa9dd7b4"
+        }
+      ],
+      "weighted": 234,
+      "state": "canonical-owner-view-verified",
+      "privateProofBasename": "new-builders-20261106-round11/2"
+    },
+    {
+      "handle": "thdxr",
+      "parent": "https://x.com/thdxr/status/2118755687274532893",
+      "project": "https://github.com/gkoreli/ghx/blob/mainline/docs/evals/gate-run-2026-07/verdict.md",
+      "copy": "our preliminary ghx run passed compression but failed correctness + evidence. id keep those as joint gates when changing workers, a smaller handoff can hide a worse answer. kept the failed run alongside later fixes\nhttps://github.com/gkoreli/ghx/blob/mainline/docs/evals/gate-run-2026-07/verdict.md",
+      "url": "https://x.com/GogaKoreli/status/2118873927607071230",
+      "verifiedAt": "2026-11-07T01:11:53.951Z",
+      "label": "Dax / OpenCode",
+      "platform": "x",
+      "kind": "new-recipient-project-reply",
+      "profile": "https://x.com/thdxr",
+      "selectionEvidence": "Current authored posts describe OpenCode deployment and the coordinator/worker experiment; substantive author replies discuss packaging uncertainty. The profile links the OpenCode/Anomaly work and its current repository was read. The account was already followed before this batch.",
+      "contribution": "The preliminary ghx trial passed compression and failed correctness/evidence gates. Joint gates prevent treating short reports as success. The linked report is explicitly preliminary and under the registered sample threshold; later fixes and runs exist.",
+      "sourceReads": [
+        {
+          "url": "https://github.com/anomalyco/opencode/blob/dev/README.md",
+          "fileBlobSha": "79100ce69f4e0740918bdf7f2b9a969c73a1a0db"
+        },
+        {
+          "url": "https://github.com/gkoreli/ghx/blob/mainline/docs/evals/gate-run-2026-07/verdict.md",
+          "fileBlobSha": "9666d0e3b098c67c3d31adc0daa65375c15db27a"
+        },
+        {
+          "url": "https://github.com/gkoreli/ghx/blob/mainline/README.md",
+          "fileBlobSha": "58702be26790569882ad50c65b5be017aa9dd7b4"
+        }
+      ],
+      "weighted": 238,
+      "state": "canonical-owner-view-verified",
+      "privateProofBasename": "new-builders-20261106-round11/3"
+    },
+    {
+      "handle": "ggs4ns",
+      "parent": "https://x.com/ggs4ns/status/2118369762514227468",
+      "project": "https://github.com/gkoreli/nisli/tree/main/packages/ssg",
+      "copy": "for native page transitions, both documents need @view-transition { navigation: auto }. i emit it at build time in nisli ssg so one route cant silently miss it, same templates for static output and browser components\nhttps://github.com/gkoreli/nisli/tree/main/packages/ssg",
+      "url": "https://x.com/GogaKoreli/status/2118874539241394468",
+      "verifiedAt": "2026-11-07T01:15:04.026Z",
+      "label": "Guillem Garcia / Designobo",
+      "platform": "x",
+      "kind": "new-recipient-project-reply",
+      "profile": "https://x.com/ggs4ns",
+      "selectionEvidence": "Profile links Designobo; authored launch/demo posts and extended technical exchanges show specific implementation work. Its public product page corroborates the HTML/MCP canvas direction. No performance ranking from the page or thread is adopted.",
+      "contribution": "Nisli SSG emits native cross-document transition opt-in consistently across pages and shares normal templates with browser components. This is a document-navigation detail, not evidence of a replacement for X’s full application.",
+      "sourceReads": [
+        {
+          "url": "https://github.com/gkoreli/nisli/blob/main/packages/ssg/README.md",
+          "fileBlobSha": "936e4d6654451a45def20b278f35a17a9f4f5da3"
+        },
+        {
+          "url": "https://designobo.com/",
+          "method": "Public product page read; labelled crawled last week, not runtime validation."
+        }
+      ],
+      "weighted": 240,
+      "state": "canonical-owner-view-verified",
+      "privateProofBasename": "new-builders-20261106-round11/4",
+      "presentationLimit": "X auto-linked the literal CSS @view prefix as an account mention while retaining the typed directive in the canonical title/text. The owner reply menu offered no Edit action; no deletion or extra correction post was made. Avoid literal at-rule spelling in future X prose when a source link suffices."
+    },
+    {
+      "handle": "sdairs",
+      "parent": "https://x.com/sdairs/status/2118700443710701852",
+      "project": "https://github.com/gkoreli/ghostty-vt-js/tree/main/packages/ghostty-mcp",
+      "copy": "did yours use the AppleScript API? one thing i made explicit in ghostty-mcp, a successful action response only means accepted. rename/select/close get a fresh layout check and a verified/unverified receipt\nhttps://github.com/gkoreli/ghostty-vt-js/tree/main/packages/ghostty-mcp",
+      "url": "https://x.com/GogaKoreli/status/2118875057330307364",
+      "verifiedAt": "2026-11-07T01:16:30.585Z",
+      "label": "Al Brown / agent experience",
+      "platform": "x",
+      "kind": "new-recipient-project-reply",
+      "profile": "https://x.com/sdairs",
+      "selectionEvidence": "The profile links an author site with a multi-year technical archive, a first-person ClickHouse CLI build record and the official clickhousectl repository. The current Ghostty multiplexer post provides a concrete adjacent project. The private multiplexer source was not inspected.",
+      "contribution": "Condition the suggestion on AppleScript use; distinguish low-level action acceptance from verified rename/select/close receipts in ghostty-mcp. No claim of a flaw in his tool or Rex.",
+      "sourceReads": [
+        {
+          "url": "https://github.com/gkoreli/ghostty-vt-js/blob/main/packages/ghostty-mcp/README.md",
+          "fileBlobSha": "a14dbf61e7da989cd07169549f03c5974d7ed0a8"
+        },
+        {
+          "url": "https://alasdairb.com/"
+        },
+        {
+          "url": "https://alasdairb.com/posts/agent-experience-building-a-cli"
+        },
+        {
+          "url": "https://github.com/ClickHouse/clickhousectl"
+        }
+      ],
+      "weighted": 229,
+      "state": "canonical-owner-view-verified",
+      "privateProofBasename": "new-builders-20261106-round11/5"
+    }
+  ],
+  "sourceScope": "Fresh public source reads support implementation claims; file hashes are blob hashes, not commits. No new runtime acceptance or benchmark was performed. The failed ghx run is a preliminary historical result, not the current project verdict. Public-site crawl age is preserved where relevant.",
+  "publication": "Exact copy saved and composer checked before a single submission. Delayed state resolved without resubmission. Each canonical owner URL, body, parent and screenshot retained. New link targets were freshly read as source files or documented package paths.",
+  "coordination": "AI Site Check was read before handoff. The owner-authorized instruction specifies one further five-reply X batch after this batch finishes, the stricter selection rule, Goga’s connected informal reasoning, relevant project links, verification and deduplication. No new scheduler, Reddit scope, DM or follow was added.",
+  "voice": "Useful point first, connected informal clauses, lowercase openings and ordinary commas. Do not manufacture mistakes, experiences or certainty. Different contributions: actual embedding use, evidence handoff, evaluation result, document-build behavior and an API acceptance/completion distinction.",
+  "originalChatTotals": {
+    "previousXReplies": 63,
+    "thisBatchReplies": 5,
+    "xRepliesTotal": 68
+  },
+  "countScope": "Original chat continuation only. Thirty-four replies in seven separately recorded AI Site Check hourly runs remain a separate historical ledger; the newly requested target-chat batch is not counted as completed.",
+  "limits": "Signed-in owner publication verified. Independent public visibility, recipient uptake, traffic, causal growth and new relationship formation are unmeasured. One CSS prefix was auto-linked by X; no edit action was available. Raw captures remain private."
+}
