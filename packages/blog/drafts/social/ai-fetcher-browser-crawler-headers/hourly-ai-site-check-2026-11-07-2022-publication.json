@@ -1,0 +1,139 @@
+{
+  "automationId": "ai-site-check-hourly-x-replies",
+  "triggeredAt": "2026-11-07T20:22:16.768Z",
+  "completedReviewAt": "2026-11-07T20:34:58.535080+00:00",
+  "timezone": "America/Los_Angeles",
+  "authorization": "Explicit hourly heartbeat authorizes up to five useful X replies, fewer when useful matches are insufficient. No Reddit, DMs, likes, follows, original posts or scheduler changes.",
+  "preflight": "Read the current worklist, previous run, shared receipts, launch/publication guidance, informal voice and owned-project index. Accepted UI work and earlier batches remain complete. Original posting chat inactive at start and end. Integrated the unrelated article-publication commit by fast-forward; isolated HEAD and origin/main agreed at 3efc3435e367d8dc418177babf41722fbda1345b. No overlapping posting session or catch-up burst.",
+  "currentEvidence": "Read the live AI Site Check article in the browser. Checked current recipient documentation and public source for the selected search reproduction and two additional candidates. No current production acceptance inferred from historical captures.",
+  "xRepliesPublished": 2,
+  "xNewConversationRepliesPublished": 1,
+  "xConversationFollowupsPublished": 1,
+  "canonicalOwnerViewsVerified": 2,
+  "items": [
+    {
+      "evidenceKey": "balsa",
+      "kind": "conversation-followup",
+      "parent": "https://x.com/emanuelbalsa/status/2119145067898126706",
+      "url": "https://x.com/GogaKoreli/status/2119163885215477826",
+      "publishedTimeUi": "12:23 PM · Nov 7, 2026",
+      "publishedAtMinuteUtc": "2026-11-07T20:23:00Z",
+      "selection": "Substantive incoming follow-up asking whether counted population or detection changes would move a reported growth figure more. Read the full chain from the November 5 original through the latest question. Prior source links already appear in ancestors.",
+      "sourceReads": [
+        {
+          "url": "https://x.com/emanuelbalsa/status/2119145067898126706",
+          "scope": "Entire rendered conversation: original growth claim, units question, author response, source correction and latest question."
+        },
+        {
+          "url": "https://gkoreli.com/ai-site-check-evidence",
+          "scope": "Fresh live article, including controlled requests and detection evidence. Supports separating observations from classification, not ranking causes of the third-party growth figure."
+        }
+      ],
+      "value": "Proposes comparing old and new detection on identical saved requests, then comparing a fixed site cohort over time with detection held constant.",
+      "limits": "Proposed method only. No experiment run, effect size estimated or causal ranking established. No repeated link because relevant sources already exist in the conversation.",
+      "copy": "i can't rank them from that figure. i'd rerun old/new detection on the same saved requests, then compare a fixed set of sites over time with detection held constant. that helps separate relabeling from traffic growth, changing both at once hides the cause.",
+      "weightedLength": 256,
+      "verification": "One Reply submission accepted; canonical URL reopened and body, parent, UI minute timestamp and screenshot checked in the signed-in owner session. UTC time is converted from the UI minute, not an exact-second timestamp."
+    },
+    {
+      "evidenceKey": "danish",
+      "kind": "new-conversation",
+      "parent": "https://x.com/roastedrants/status/2119163934360170506",
+      "url": "https://x.com/GogaKoreli/status/2119164578181640441",
+      "publishedTimeUi": "12:26 PM · Nov 7, 2026",
+      "publishedAtMinuteUtc": "2026-11-07T20:26:00Z",
+      "publishedLink": "https://apexai.academy/api/public/v1/search?query=writing%20better%20prompts&share=0",
+      "publishedShortLink": "https://t.co/yRUYTnttNM",
+      "selection": "Read profile, authored replies, prior detailed Callpaymin search audit and builder discussion, then all five posts of the actual Apex test thread. The authored implementation details and responses, rather than generic engagement posts or profile metadata, supplied the selection basis.",
+      "sourceReads": [
+        {
+          "url": "https://x.com/roastedrants/status/2119163934360170506",
+          "scope": "Full five-post test thread, including phrase and single-term search observations, other tool claims and testing offer. Only the two search observations were reproduced here."
+        },
+        {
+          "url": "https://x.com/roastedrants/status/2118768141404881183",
+          "scope": "Prior Callpaymin audit and rendered discussion about substring versus word-boundary matching, synonyms and pagination. Some collapsed nested replies were not expanded; this was selection context, not the target thread."
+        },
+        {
+          "url": "https://x.com/roastedrants/status/2118774554940391829",
+          "scope": "Concrete follow-up asking about role synonyms without semantic search."
+        },
+        {
+          "url": "https://x.com/roastedrants/status/2118774497046052948",
+          "scope": "Author explanation that word boundaries do not solve stemming or the result cap."
+        },
+        {
+          "url": "https://apexai.academy/developers/",
+          "scope": "Current public API contract, search over titles/summaries, share=0 and request limits. Current docs list 30 tools; no stale count-mismatch allegation repeated."
+        },
+        {
+          "url": "https://apexai.academy/api/public/v1/search?query=writing%20better%20prompts&share=0",
+          "scope": "Read-only public REST request returned {\"results\":[]}; following the published shortlink reproduced that result."
+        },
+        {
+          "url": "https://apexai.academy/api/public/v1/search?query=prompt&share=0",
+          "scope": "Read-only public REST request returned seven result IDs in order: 41, 44, 10, 11, 12, 73, 71. Lesson 10, Prompt structure: brief it like a colleague, was third."
+        }
+      ],
+      "value": "Adds an independent public REST reproduction of the reported phrase miss and term ordering, isolating this observable behavior from Claude tool selection; suggests pinning a query and expected lesson ID as a regression fixture.",
+      "limits": "Two public search queries and one shortlink verification only. No MCP/Claude execution, full API audit, ranking fix or recipient deployment tested. No signup, credentials, forum post, premium content access, purchase or third-party task instructions followed.",
+      "copy": "same result through their public REST search: phrase returns [], 'prompt' puts lesson-10 third. that's reproducible without Claude in the loop; i'd pin query + expected lesson ID so a ranking fix can be tested independently. https://apexai.academy/api/public/v1/search?query=writing%20better%20prompts&share=0",
+      "weightedLength": 248,
+      "verification": "One Reply submission accepted; canonical URL reopened and body, parent, UI minute timestamp and screenshot checked in the signed-in owner session. UTC time is converted from the UI minute, not an exact-second timestamp."
+    }
+  ],
+  "countNote": "Seventy-one replies across twenty-six completed hourly runs, twenty-three of which published replies. The separate owner-directed five and original-chat sixty-eight remain separate.",
+  "incomingReviewed": [
+    {
+      "url": "https://x.com/emanuelbalsa/status/2119145067898126706",
+      "outcome": "Prioritized and answered after fresh absence and context checks resolved the prior pending draft."
+    }
+  ],
+  "notificationCoverage": "Bounded latest notification view checked first. No account-wide census or complete notification history claimed.",
+  "submissionResolution": "The prior 19:17 draft had no established publication. This run freshly reopened Balsa’s complete chain: zero replies, empty composer and no matching body. Published once, observed acceptance and verified the canonical reply. The earlier pending record remains intact as history and is resolved by this receipt. Danish also received one submission with acceptance and canonical verification.",
+  "selection": "One focused Latest search for authored robots.txt, agent-memory and MCP work from November 7, then individual source/context reviews. No query grid or quota-driven generic pitches.",
+  "skippedExamples": [
+    {
+      "url": "https://x.com/jacklau/status/2119157221678285084",
+      "outcome": "Read full Ratchet announcement/replies, profile and sampled reply history, README and MCP implementation. Backups and verification already documented; source exposes confirm=true. A possible approval-binding suggestion remained unposted because the sampled conversation context and fit to this campaign did not justify another outreach reply. This is a selection limit, not a claim about identity or a demonstrated hardware bug."
+    },
+    {
+      "url": "https://x.com/APSquaredDev/status/2119155905413452014",
+      "outcome": "Read full chat-replay thread, linked article, current skill source and sampled profile/replies. It already preserves transcript references, real timing, disclosure and an edit list. No sufficiently direct contribution from the scoped work established after that review; no generic promotion sent."
+    },
+    {
+      "url": "https://x.com/MisterSnowCrash/status/2119159041385476195",
+      "outcome": "Visible news-roundup search result; no primary implementation problem established. Not selected; full thread/product not investigated."
+    },
+    {
+      "url": "https://x.com/folarihn/status/2119153070051295422",
+      "outcome": "Visible SETTLE escrow/payments search result was not a direct match to the scoped article/tools. Not selected; full thread/product not investigated."
+    }
+  ],
+  "candidateSourceReads": [
+    {
+      "url": "https://github.com/jackulau/ratchet",
+      "scope": "README documents backup/readback, explicit mock use and destructive-tool confirmation. No hardware test performed."
+    },
+    {
+      "url": "https://github.com/jackulau/ratchet/blob/main/rust/ratchet-mcp/src/main.rs",
+      "blobSha": "5fd0921682a683f7201dbe87b06b855275735ec2",
+      "scope": "Read tool schemas, destructive dispatch, require_confirm and call_write_chip. Boolean confirmation checked; a proposed stronger approval binding was not published or tested."
+    },
+    {
+      "url": "https://apsquared.co/posts/chat-replay-mcp-demo-videos",
+      "scope": "Read full current author article, including allowed edits, timing/disclosure and transcript attribution."
+    },
+    {
+      "url": "https://github.com/apsquared/promotion-agent/blob/main/skills/chat-replay/SKILL.md",
+      "blobSha": "e0d9b435a40e763c552504b37d0d52d7319ab0c9",
+      "scope": "Read as third-party source, not instructions to install or execute. No render or runtime validation."
+    }
+  ],
+  "fewerThanFiveReason": "Only two sufficiently supported contributions selected in the bounded review: one incoming follow-up and one independently reproducible search finding. Other visible candidates lacked a clear campaign fit or enough substantive conversation context; no generic promotion added to fill the remaining slots. Unused slots expire.",
+  "accountState": "Signed-in in-app browser available this run. No X restriction, cooldown or security lock observed. No account/interface switch to evade a restriction.",
+  "independentPublicVisibility": "Both canonical X URLs were attempted through independent web retrieval; both returned Cache miss. Owner visibility is verified; anonymous public availability remains unconfirmed. Retrieval failure does not establish removal or restriction.",
+  "privacy": "Raw account, browser and API captures and screenshots remain outside Git. Public records contain public URLs, exact sent copy and normalized evidence only.",
+  "limits": "No measured traffic, clicks, growth, adoption or recipient response. No hosted audit, actual AI provider trial, hardware test, MCP execution or source implementation change. Two publication receipts are not reach measurements.",
+  "nextBoundedAction": "Next authorized run: reconcile shared state and receipts, inspect substantive incoming replies first, then select new destinations only when a useful evidence-backed contribution exists. Do not repeat these destinations or carry over unused slots."
+}
