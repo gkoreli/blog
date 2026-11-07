@@ -1,0 +1,154 @@
+{
+  "automationId": "ai-site-check-hourly-x-replies",
+  "triggeredAt": "2026-11-07T10:00:41.658Z",
+  "completedPublicationAt": "2026-11-07T10:12:34.804Z",
+  "timezone": "America/Los_Angeles",
+  "authorization": "Explicit hourly heartbeat authorizes up to five useful X replies, fewer when useful matches are insufficient. Scope excludes Reddit, DMs, likes, follows, original posts and scheduler changes.",
+  "preflight": "Latest worklist, previous run and shared receipts read. Required guidance and public project index reviewed; no changed owner direction found. Accepted UI work and earlier batches remain complete. Start and end coordination checks show the original posting chat inactive with its latest turn completed. Fresh origin/main and the clean isolated checkout agree at 97fa4b26ea369afcfc89ae85333f16efe6cdbe08. No overlap or catch-up burst.",
+  "currentEvidence": "Fresh live AI Site Check article read; normalized rendered text and links matched the preceding capture. Contributions use current linked project sources and the package-published revision where available. No hosted audit, provider trial or product installation.",
+  "xRepliesPublished": 3,
+  "xNewConversationRepliesPublished": 3,
+  "xConversationFollowupsPublished": 0,
+  "canonicalOwnerViewsVerified": 3,
+  "countNote": "Fifty-three replies across sixteen completed hourly runs, fifteen of which published replies. The separate owner-directed five and original-chat sixty-eight remain separate.",
+  "notificationCoverage": "No new substantive response appeared in the bounded initial signed-in notification view. The newest visible Daryll question was already answered at 03:47; other visible questions and acknowledgements were previously recorded. No account-wide census or fresh growth measurement is claimed.",
+  "selection": "One focused Latest search: (MCP OR memory) (built OR released OR shipped) (agent OR agents) since:2026-11-07 -filter:replies. Visible scrolling reached results about one hour old. Selected conversations were inspected one at a time and checked against prior receipts.",
+  "fewerThanFiveReason": "Three discussions yielded a distinct source-grounded contribution in the bounded review. The remaining visible previews were generic primers, third-party summaries or promotions, or did not establish a selected implementation question. They were not all fully investigated. Two unused slots expire; this is not a claim that useful conversations do not exist elsewhere.",
+  "skippedExamples": [
+    {
+      "url": "https://x.com/IDEric_/status/2119005755974041887",
+      "reason": "Generic Hermes overview in the search preview; no owned implementation contribution selected."
+    },
+    {
+      "url": "https://x.com/0xKravn/status/2119003708079902835",
+      "reason": "Third-party reverse-engineering product promotion in the preview; no distinct owned-project question selected."
+    },
+    {
+      "url": "https://x.com/cai_smart/status/2118996068834955530",
+      "reason": "Interview-course preview; no matching implementation contribution selected."
+    },
+    {
+      "url": "https://x.com/QianCherry2102/status/2119005602223444412",
+      "reason": "Hackathon simulation project preview; not investigated fully or selected. No financial or product claim adopted."
+    }
+  ],
+  "items": [
+    {
+      "parent": "https://x.com/Joshua_WD/status/2119004984238879056",
+      "url": "https://x.com/GogaKoreli/status/2119007898386980910",
+      "copy": "for the snapshot test, add a menu where selection changes only by color. plain-text snapshots can stay identical while Enter picks a different action. my Ghostty wrapper exposes HTML/ANSI too: https://github.com/gkoreli/ghostty-vt-js/blob/main/docs/getting-started.md#headless-terminal",
+      "weightedLength": 216,
+      "publishedTimeUi": "2:03 AM · Nov 7, 2026",
+      "verifiedAt": "2026-11-07T10:04:34.827Z",
+      "publishedLink": "https://t.co/BcVnPfR9R7",
+      "index": 1,
+      "kind": "new-thread",
+      "platform": "x",
+      "state": "canonical-owner-view-verified",
+      "publishedTimeZone": "America/Los_Angeles",
+      "privateProofBasename": "ai-site-check-hourly-x-20261107-1000/01",
+      "label": "Josh Builds / terminal snapshots",
+      "selectionEvidence": "Read the full written X article, authored profile with the pinned Armadai release and current Armadai product page. Read current upstream libghostty documentation and Goga's wrapper README, getting-started guide, package exports and emulator source. The reply proposes a color-only selection fixture and points to the existing wrapper, without asserting that its current build has migrated to libghostty 1.0.",
+      "sourceReads": [
+        {
+          "url": "https://github.com/gkoreli/ghostty-vt-js/blob/main/docs/getting-started.md#headless-terminal",
+          "blobSha": "94cd290ead31f25d26b0182b458d518142764857",
+          "scope": "Current docs expose createTerminalScreen and PlainText, Html and AnsiEscapes output. They require the packaged WASM to match the wrapper; arbitrary upstream binaries are not compatible."
+        },
+        {
+          "url": "https://github.com/gkoreli/ghostty-vt-js/blob/main/packages/ghostty-vt-js/src/terminal-screen-emulator/emulator.ts",
+          "blobSha": "b53f18aa482014c2aff797e21ad97b5f88f69bce",
+          "scope": "Inspected formatter wiring and normalized render output; the default is plain text. No new fixture or compatibility test was executed."
+        },
+        {
+          "url": "https://github.com/gkoreli/ghostty-vt-js/blob/main/README.md",
+          "blobSha": "d42bb23f16cc7c153b178ff5c461eb1da4321c5b",
+          "scope": "Current wrapper scope, public C ABI to WASM and headless output formats. Credits and incomplete surface remain explicit; no benchmark or upstream-version compatibility claim adopted."
+        },
+        {
+          "url": "https://github.com/gkoreli/ghostty-vt-js/blob/main/packages/ghostty-vt-js/package.json",
+          "blobSha": "be161049a3ec89f59b61347e253d48b640d051d8",
+          "scope": "Current version 0.6.0 and exported entry points inspected."
+        },
+        {
+          "url": "https://lib.ghostty.org/vt/",
+          "scope": "Current 1.0.0 primary documentation read through the browser after web fetch failed. Plain formatting omits styling; the proposed color-selection case illustrates the consequence, not a measured recipient bug."
+        },
+        {
+          "url": "https://armadai.sh/",
+          "scope": "Current product context matches Josh's authored project release. No installation or product acceptance claim."
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "parent": "https://x.com/DerrickJoeptlz/status/2118995931173650495",
+      "url": "https://x.com/GogaKoreli/status/2119008673561289083",
+      "copy": "does the 7B executor receive the judge's explanation, or only the needle? your July 11 note says the needle was present in all 10 rechecks. I'd compare needle-only with needle + a labelled inference, keeping the original quote separate.",
+      "weightedLength": 236,
+      "publishedTimeUi": "2:06 AM · Nov 7, 2026",
+      "verifiedAt": "2026-11-07T10:10:25.124Z",
+      "kind": "new-thread",
+      "platform": "x",
+      "state": "canonical-owner-view-verified",
+      "publishedTimeZone": "America/Los_Angeles",
+      "privateProofBasename": "ai-site-check-hourly-x-20261107-1000/02",
+      "label": "Derrick / memory handoff",
+      "selectionEvidence": "Read the full written root, sole author follow-up, authored profile and linked MASE README, NoLiMa comparison and relevant July decision entries. The question uses the author's ten-case diagnostic and asks about handoff content rather than alleging an uninspected implementation defect. The repository link already exists in the author's follow-up, so no extra promotion link was added.",
+      "sourceReads": [
+        {
+          "url": "https://github.com/zbl1998-sdjn/MASE-agent-memory/blob/main/DECISIONS.md",
+          "blobSha": "e4a814d347bd2720a22057a75e852d1a78600f74",
+          "scope": "Relevant July 7–12 entries read. July 11 records a 14B relevance judge followed by a 7B executor; in ten selected failed cases the needle was present in all ten, and swapping to a larger thinking executor changed eight to passes. This is the author's reported diagnostic, not our rerun or a representative success-rate estimate. The reply proposes needle-only versus needle plus labelled inference, preserving the quote."
+        },
+        {
+          "url": "https://github.com/zbl1998-sdjn/MASE-agent-memory/blob/main/docs/NOLIMA_3WAY.md",
+          "blobSha": "4e19119c3a5a90561c3631457da2549ab0ef9d39",
+          "scope": "Full comparison read for literal/nonliteral distinctions and failed embedding approaches. No result was remeasured or generalized beyond the reported conditions."
+        },
+        {
+          "url": "https://github.com/zbl1998-sdjn/MASE-agent-memory",
+          "scope": "Current rendered README read, including the diagnostic judge approach and smaller executor limitation. Pipeline handoff source and private run artifacts were not inspected. The quoted Anthropic figures were not relied upon or repeated."
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "parent": "https://x.com/magithar/status/2119009305672516010",
+      "url": "https://x.com/GogaKoreli/status/2119009997225156950",
+      "copy": "try two candidates with the other three factors at 8: maintenance 2 gives 7.1, N/A gives 8.0. a small '85% of weight evaluated' note beside the latter would explain the ranking without treating missing evidence as zero.",
+      "weightedLength": 219,
+      "publishedTimeUi": "2:12 AM · Nov 7, 2026",
+      "verifiedAt": "2026-11-07T10:12:34.804Z",
+      "kind": "new-thread",
+      "platform": "x",
+      "state": "canonical-owner-view-verified",
+      "publishedTimeZone": "America/Los_Angeles",
+      "privateProofBasename": "ai-site-check-hourly-x-20261107-1000/03",
+      "label": "magithar / missing scoring evidence",
+      "conversationRoot": "https://x.com/magithar/status/2118990600599183776",
+      "selectionEvidence": "Read the full root and all three visible response chains, including the author's new answer to Akshat about N/A maintenance. Authored profile contains matching owned skill-tool releases and repository identity. Read the entire published npm README and relevant published source and specification. This is first contact in this conversation, despite replying to a nested author answer; it is counted as new-conversation outreach.",
+      "sourceReads": [
+        {
+          "url": "https://www.npmjs.com/package/skillmama",
+          "scope": "Current npm page showed 0.2.0 and source commit 0e2ba87461ffa5b2e299daa0aa62ba487b3bde43. README explicitly separates judgment from arithmetic, documents N/A renormalization and says omitted evidence is reported."
+        },
+        {
+          "url": "https://github.com/Magithar/SKILLmama/blob/0e2ba87461ffa5b2e299daa0aa62ba487b3bde43/packages/core/src/mechanical/index.ts",
+          "blobSha": "6205c8700e45792f0de6d9f2b3aad12a051ffb4b",
+          "scope": "Read scoreCandidate: weights 0.40/0.30/0.15/0.15; N/A factors excluded and remaining weights renormalized; exclusions already recorded in notes. Independent arithmetic check gives 7.1 for other factors 8 and maintenance 2, versus 8.0 when maintenance is N/A. This is arithmetic checked against source, not execution of the package."
+        },
+        {
+          "url": "https://github.com/Magithar/SKILLmama/blob/0e2ba87461ffa5b2e299daa0aa62ba487b3bde43/skillmama/SKILL.md",
+          "blobSha": "61c4c8c46e564f68fcbd54e4203fea247d3a79ee",
+          "scope": "Read Phases 4 and 5 and closing rules as product evidence, not agent instructions. Score factors are 1–10; N/A is displayed, with proportional weighting. Suggested an adjacent 85%-of-weight-evaluated note; no claim that existing output hides N/A or that missing data should be zero."
+        }
+      ]
+    }
+  ],
+  "verification": "Exact final text preserved before each single submission. All three accepted canonical URLs reopened; body, parent and minute-precision Pacific UI time verified. Canonical text captures and screenshots retained. Transient submission states for replies one and two were resolved without resubmitting. Reply one's t.co link was followed and resolved to the intended GitHub headless-terminal guide; its preview card is visible. Replies two and three contain no links.",
+  "independentPublicVisibility": "Not tested; signed-in owner visibility only.",
+  "privacy": "Raw account views, source captures and screenshots remain outside Git. Public records contain published copy, public destinations and normalized evidence only.",
+  "limits": "No recipient runtime test, benchmark rerun, installation, source change, hosted audit, provider trial, traffic/adoption measurement, anonymous visibility check, extra account action, site edit or scheduler change. The scoring arithmetic was independently calculated; no recipient package was executed. No account restriction was observed. Source findings and proposed fixtures are not runtime acceptance or comprehensive product audits.",
+  "nextBoundedAction": "Run complete at three. Next authorized run: reconcile shared state and receipts, prioritize substantive incoming replies, and do not repeat these parents or carry over unused slots."
+}
