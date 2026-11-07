@@ -1,0 +1,93 @@
+{
+  "automationId": "ai-site-check-hourly-x-replies",
+  "triggeredAt": "2026-11-07T23:24:49.227Z",
+  "completedReviewAt": "2026-11-07T23:33:55.901367+00:00",
+  "timezone": "America/Los_Angeles",
+  "authorization": "Up to five useful X replies in this run; fewer when suitable contributions are insufficient. No catch-up or other account actions.",
+  "preflight": "Read current worklist, previous receipt and shared destination records. Required launch/publication guidance, informal voice reference and owned-project index were carried forward from the preceding full read and checked unchanged. Original posting chat inactive at start, before publication and at end. Accepted UI work and earlier batches remain complete. Isolated HEAD and freshly fetched origin/main agree at b22bfcd1a85b7de6af9a9407bd02be2085a7e01d. No overlapping posting session.",
+  "currentEvidence": "Fresh full live AI Site Check article read; current backlog-mcp README read through GitHub while considering memory discussions. The selected article’s evaluation method was checked against Anthropic’s primary guide. No hosted audit, provider trial or recipient runtime execution.",
+  "xRepliesPublished": 1,
+  "xNewConversationRepliesPublished": 1,
+  "xConversationFollowupsPublished": 0,
+  "canonicalOwnerViewsVerified": 1,
+  "items": [
+    {
+      "evidenceKey": "quentin",
+      "kind": "new-conversation",
+      "recipient": "Quentin Felice / quentinfelice",
+      "parent": "https://x.com/quentinfelice/status/2119180927850979575",
+      "url": "https://x.com/GogaKoreli/status/2119211085706449291",
+      "copy": "for those 50 closed exceptions, i'd freeze each case at the moment the clerk had to decide. keep the eventual resolution + rationale on the grader side, outside the agent's retrieval. otherwise it could just find the answer written after the fact.",
+      "weightedLength": 247,
+      "publishedTimeUi": "3:31 PM · Nov 7, 2026",
+      "publishedAtMinuteUtc": "2026-11-07T23:31:00Z",
+      "timestampPrecision": "Minute from native canonical UI; Pacific time.",
+      "conversationEvidence": [
+        "https://x.com/quentinfelice/status/2118301470021800032",
+        "https://x.com/quentinfelice/status/2118303754110017624",
+        "https://x.com/quentinfelice/status/2117347336376730017"
+      ],
+      "selection": "Read the complete written article, its rendered reply, authored profile and Replies history. The author develops an invoice-agent example across articles and participates in contextual exchanges about tool expenditure and review of model changes. No prior campaign contact found. The article already covers domain-expert ownership, evaluation cases, access controls and independent approval; the reply adds a specific evaluation-input boundary instead of restating those recommendations.",
+      "value": "Proposes reconstructing each closed exception using only the information available at decision time, while keeping later resolution and rationale available only to the grader. This tests the original decision rather than retrieval of its later answer. No project link was forced into the conversation.",
+      "sourceReads": [
+        {
+          "url": "https://www.anthropic.com/research/demystifying-evals-for-ai-agents",
+          "scope": "Fresh primary-source read, especially Step 4 on clean isolated environments and inflated results from previous trial history, and Step 5 on graders resistant to shortcuts. The time-frozen invoice fixture is an application proposed here, not a direct quotation or an observed recipient defect."
+        }
+      ],
+      "verification": "Exact ASCII copy saved; enabled composer named quentinfelice. One Reply click produced Your post was sent and the canonical URL. Reopened canonical page and verified exact text, parent and native timestamp. Screenshot saved outside Git.",
+      "independentPublicVisibility": "Independent web retrieval returned Cache miss. Signed-in owner visibility verified; anonymous public visibility remains unverified.",
+      "limits": "Implementation suggestion only. No invoice data, recipient runtime or evaluation harness inspected. No claim that the author currently leaks answers, that this test has been run, or that its scores improve. The article’s model, benchmark, pricing, accounting and regulatory claims were not independently validated or repeated."
+    }
+  ],
+  "countNote": "Seventy-three unique replies across twenty-nine completed hourly runs, twenty-five of which published replies. The separate owner-directed five and original-chat sixty-eight remain separate.",
+  "notificationCoverage": "Bounded notifications contained previously handled conversations. CryptoBurrito’s planned sitemap improvement was already recorded at 22:17, and Balsa’s question answered at 20:22. No new substantive response requiring a reply was selected. No account-wide census or engagement measurement.",
+  "searchQuery": "(\"agent memory\" OR \"context window\" OR \"web components\") (built OR shipped OR debugging OR issue) since:2026-11-07 -filter:replies",
+  "selection": "One focused Latest search and two downward scroll actions. Three states saved; the first scroll’s accessibility state was unchanged even though its screenshot showed the viewport had moved. Two complete written posts/articles and their authored profile/reply context were reviewed, with one selected. Other previews were not full investigations.",
+  "skippedExamples": [
+    {
+      "url": "https://x.com/iblai_/status/2119195815545631144",
+      "reason": "Read the full written memory-portability post, authored profile and Replies history. Recent generic AI summaries and repeated paraphrases in sampled replies did not supply enough substantive relationship context. No identity or automation accusation. Attached image and product implementation were not inspected, and release/count claims were not adopted."
+    },
+    {
+      "url": "https://x.com/Joshua_WD/status/2119205668846555515",
+      "reason": "Configuration/secrets article preview. The author was already contacted on a different terminal discussion at 10:00; this new preview did not supply a directly matching contribution. Full article not read; security statistics not adopted."
+    },
+    {
+      "url": "https://x.com/nahjuin/status/2119184881267962264",
+      "reason": "Cost-effective Grok-bot article preview; full article not read and no sufficiently direct contribution selected."
+    },
+    {
+      "url": "https://x.com/MAGNEMO_AI/status/2119179443331911986",
+      "reason": "Memory promotion preview. Prior 04:52 profile review had already recorded repetitive promotional prompts; that receipt was consulted as historical selection context, not proof of current implementation. No fresh full discussion/profile review or reply."
+    },
+    {
+      "url": "https://x.com/OptionKing666/status/2119191449623576806",
+      "reason": "Broad markets and memory-hardware article preview, not a matching implementation discussion; full article not read."
+    },
+    {
+      "url": "https://x.com/Eminweb3/status/2119179764552360343",
+      "reason": "General long-task capability preview, without a specific matching project question selected; full article not read."
+    },
+    {
+      "url": "https://x.com/ahatamiz1/status/2119177793317765359",
+      "reason": "Model architecture preview outside the selected implementation scope; full article not read and model claims not adopted."
+    }
+  ],
+  "additionalSourceReads": [
+    {
+      "url": "https://gkoreli.com/ai-site-check-evidence",
+      "scope": "Fresh complete live article; technical access, optional representations, score limits, robots and provider evidence distinctions."
+    },
+    {
+      "url": "https://github.com/gkoreli/backlog-mcp/blob/main/README.md",
+      "blobSha": "ced131bc3ac87059efc6186d2426785085d2c4c3",
+      "scope": "Current local Markdown/YAML tasks, decisions and memory; selective recall, expansion and correction lineage. Read while assessing memory candidates; no runtime test or project recommendation published."
+    }
+  ],
+  "fewerThanFiveReason": "One concrete evaluation suggestion met the selection bar. Incoming entries were already handled, the other fully read post lacked substantive conversation context, and remaining previews did not establish a sufficiently direct addition. Four unused slots expire; no catch-up or generic filler.",
+  "accountState": "Signed-in in-app browser available; no restriction, cooldown or security lock observed. No uncertain submission or pending draft remains.",
+  "privacy": "Raw signed-in views and screenshots stay outside Git. Public records contain normalized methods, public links, exact published copy and limitations.",
+  "limits": "No Reddit, DM, like, follow, original post, hosted audit, provider trial, installed software, site change, traffic/adoption measurement or scheduler change.",
+  "nextBoundedAction": "Next authorized run: reconcile shared state, prioritize new substantive replies, and select new destinations only when a useful supported contribution exists. Do not repeat this evaluation suggestion or earlier accepted recommendations."
+}

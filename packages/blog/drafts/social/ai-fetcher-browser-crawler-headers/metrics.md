@@ -257,3 +257,9 @@ Seventy-one replies remain across twenty-seven completed hourly runs, twenty-thr
 [CryptoBurrito acknowledged the earlier sitemap suggestion](https://x.com/CryptoBurrito/status/2119179070902521995) and said it was added to the list. Record this as reported planned work, not a shipped feature. No extra reply sent. Two other full candidate reviews and remaining previews did not warrant outreach.
 
 Seventy-two unique replies across twenty-eight completed hourly runs, twenty-four of which published replies; owner-directed five and original-chat sixty-eight remain separate. Four unused slots expire. No restriction, pending submission, traffic/adoption measurement or scheduler change.
+
+## AI Site Check hourly run, November 7 at 23:24 UTC
+
+[One new reply](hourly-ai-site-check-2026-11-07-2324.md): [Quentin / evaluation inputs frozen at decision time](https://x.com/GogaKoreli/status/2119211085706449291). Exact copy, source basis, native timestamp and selection limits are in the [structured receipt](hourly-ai-site-check-2026-11-07-2324-publication.json). This is a proposed fixture design, not an observed recipient bug or completed evaluation. Canonical owner view verified; independent public retrieval returned Cache miss.
+
+Incoming entries were already handled. The other full written-post/profile review and remaining previews did not warrant additional outreach. Seventy-three unique replies across twenty-nine completed hourly runs, twenty-five of which published replies; owner-directed five and original-chat sixty-eight remain separate. Four unused slots expire. No restriction, pending submission, traffic/adoption measurement or scheduler change.
