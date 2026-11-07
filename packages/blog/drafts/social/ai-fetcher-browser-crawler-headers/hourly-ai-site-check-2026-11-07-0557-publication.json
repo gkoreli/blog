@@ -1,0 +1,58 @@
+{
+  "automationId": "ai-site-check-hourly-x-replies",
+  "triggeredAt": "2026-11-07T05:57:09.033Z",
+  "completedReviewAt": "2026-11-07T05:59:38Z",
+  "timezone": "America/Los_Angeles",
+  "authorization": "Explicit hourly heartbeat permits up to five useful X replies and fewer when useful matches are insufficient. No unused slots carry over.",
+  "preflight": "Read the latest worklist, shared receipts, launch and informal writing guidance, and owned-project index. Accepted UI work and both earlier posting batches remain complete. Start and end compact coordination snapshots show the original posting chat not loaded, with its latest turn completed and no new activity. Fresh origin/main and the clean isolated checkout agree at 4665d2235223ec8eb912ffe26108b4db608d5e2c. Unrelated root-workspace files preserved.",
+  "currentEvidence": "Fresh live AI Site Check article read in the browser. Normalized rendered text and links matched the 04:52 capture. No product capability claim was published, so no recipient software, provider operation or hosted audit was run.",
+  "xRepliesPublished": 0,
+  "xNewConversationRepliesPublished": 0,
+  "xConversationFollowupsPublished": 0,
+  "canonicalOwnerViewsVerified": 0,
+  "items": [],
+  "countNote": "Forty-three replies across twelve completed hourly runs, eleven of which published replies. The separate owner-directed five and original-chat sixty-eight remain separate.",
+  "notificationCoverage": "The bounded signed-in notification view contained no new substantive response. The newest visible Daryll response was already answered in the 03:47 run; other visible acknowledgements, questions and reactions were previously recorded. No account-wide census or fresh engagement measurement is claimed.",
+  "selection": "One focused Latest search for WebMCP, Ghostty or AI crawler with built/shipped/released/issue terms since November 6, excluding replies. Visible scrolling yielded eight distinct root posts, spanning about twenty-one hours. Checked earlier receipts, read RichardWu’s complete thread including its expanded source/caveat follow-up and visible replies, and inspected RichardWu and The Henry Labs authored profile history.",
+  "searchQuery": "(\"WebMCP\" OR \"Ghostty\" OR \"AI crawler\") (built OR shipped OR released OR issue) since:2026-11-06 -filter:replies",
+  "fewerThanFiveReason": "Five direct project discussions were already handled. The remaining three were third-party release or tool summaries without a distinct source-backed contribution selected in this bounded review. Stopped at zero rather than repeat a contribution or invent a generic addition. This is not proof that no useful discussion exists elsewhere. All five unused slots expire with this run.",
+  "skippedExamples": [
+    {
+      "url": "https://x.com/mitchellh/status/2118848233762078971",
+      "reason": "Already handled in the original chat’s round-eleven project batch; no new incoming response selected."
+    },
+    {
+      "url": "https://x.com/arthurjdev/status/2118815423437078633",
+      "reason": "Already handled in the 02:47 hourly run with delivery-aware retry guidance."
+    },
+    {
+      "url": "https://x.com/dipxsyy/status/2118711069254603030",
+      "reason": "Already handled in the 02:47 hourly run with a configuration-preview proposal."
+    },
+    {
+      "url": "https://x.com/sdairs/status/2118700443710701852",
+      "reason": "Already handled in the original chat’s round-eleven project batch."
+    },
+    {
+      "url": "https://x.com/Soon_Iter/status/2118625057090257368",
+      "reason": "Previously handled Rspress release; no new incoming response selected."
+    },
+    {
+      "url": "https://x.com/WuRichard_/status/2118770079236026421",
+      "reason": "Read the complete root, expanded source/caveat follow-up and visible exchange. The author explicitly says they have not run terminal-mac. The discussion already identifies the release-candidate and non-hardened-sandbox limits. Reviewed profile history did not supply an original implementation or test context for a distinct contribution. No repository execution or independent security assessment performed."
+    },
+    {
+      "url": "https://x.com/thehenrylabs/status/2118935594512388220",
+      "reason": "Search preview and authored profile show a third-party libghostty release summary; the original release author already received our specific embedding contribution. No new distinct angle selected. Full summary thread not read; no claim about operator identity or automation is made."
+    },
+    {
+      "url": "https://x.com/Tuminha_dds/status/2118614394699493841",
+      "reason": "Third-party agent-browser notes preview, already recorded as unselected in the 03:47 run. No new contribution selected; full discussion not reread."
+    }
+  ],
+  "verification": "No composer was filled and no submission was attempted; no pending or uncertain publication exists. Canonical verification is not applicable to this run.",
+  "independentPublicVisibility": "No new publication to test; previous owner/public distinctions remain unchanged.",
+  "privacy": "Raw signed-in account views and page captures remain outside Git in private temporary storage. Public records contain normalized selection reasons and public destinations only.",
+  "limits": "Bounded search and notification review, not exhaustive discovery. No account restriction was observed. No Reddit write, DM, like, follow, original post, site edit, recipient runtime test, provider trial, traffic/adoption measurement or scheduler change occurred.",
+  "nextBoundedAction": "Run complete at zero. At the next authorized run, reconcile current state and receipts, prioritize substantive incoming responses, and do not repeat handled parents or accumulate unused slots."
+}
