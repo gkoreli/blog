@@ -1,0 +1,142 @@
+{
+  "automationId": "ai-site-check-hourly-x-replies",
+  "triggeredAt": "2026-11-07T00:46:05.492Z",
+  "completedPublicationAt": "2026-11-07T00:53:29.947Z",
+  "clientDate": "2026-11-06",
+  "timezone": "America/Los_Angeles",
+  "authorization": "Explicit hourly heartbeat authorizes up to five useful X replies. No Reddit writes, DMs, likes, follows, original posts or new schedulers.",
+  "preflight": "Latest chat state, article worklist and shared social receipts reviewed. UI work remains accepted at 18:33 UTC. Compact coordination snapshot found the separate AI Fetchers chat inactive with its latest posting turn completed after round ten. No active one-time batch or overlapping session found. Fresh origin/main was 7b83cdee1429cd33217441ab84f6e2f979c61483. No catch-up burst.",
+  "currentEvidence": "Live AI Site Check article re-read. Current AgentPort and backlog-mcp READMEs inspected. Selected Anthropic article, complete WebMCP guide and official Chrome API/security/best-practice references read. No hosted audit or provider experiment.",
+  "xRepliesPublished": 4,
+  "xNewConversationRepliesPublished": 4,
+  "xConversationFollowupsPublished": 0,
+  "canonicalOwnerViewsVerified": 4,
+  "countNote": "Four this run; thirty-four across seven hourly receipts. The original campaign historical baseline of sixty-three remains separate.",
+  "notificationCoverage": "Bounded initial signed-in notification view contained no new substantive response since the sixth run. The previously recorded mpgn acknowledgement was not counted again. No exhaustive account-wide census.",
+  "selection": "One focused Latest search for robots.txt, agent memory, WebMCP and AI crawlers, with visible scrolling. Complete selected branches and relevant methods were read one at a time. No previously handled parent was reused.",
+  "fewerThanFiveReason": "Four distinct actionable contributions emerged in the bounded current search window. Remaining results were largely overlapping summaries of the same memory article, broad product promotion, or unrelated requests. Stopped rather than repeating the same advice or adding a generic fifth pitch. This is a selection judgment, not proof that no useful conversation exists elsewhere.",
+  "skippedExamples": [
+    {
+      "url": "https://x.com/kay_eth1989/status/2118859695880609916",
+      "reason": "Search preview overlaps the already selected Pokemon-memory discussion; not expanded into a second similar contribution."
+    },
+    {
+      "url": "https://x.com/Sametheus/status/2118858059410026921",
+      "reason": "Same memory comparison; no distinct additional contribution selected."
+    },
+    {
+      "url": "https://x.com/fugumen/status/2118860892247146519",
+      "reason": "Translation permission request is for its author, outside this outreach purpose."
+    },
+    {
+      "url": "https://x.com/buildwithneej/status/2118847269864722821",
+      "reason": "Previously reviewed roundup, no new specific question identified."
+    },
+    {
+      "url": "https://x.com/byrehan/status/2118839121946738916",
+      "reason": "Search preview is a memory-product comparison; no claims about its alternatives or pricing were adopted, and no contribution selected."
+    }
+  ],
+  "items": [
+    {
+      "index": 1,
+      "parent": "https://x.com/wonkylamp/status/2118861461048983611",
+      "weightedLength": 270,
+      "source": "https://www.anthropic.com/research/components-of-agent-memory",
+      "url": "https://x.com/GogaKoreli/status/2118868461288071525",
+      "verifiedAt": "2026-11-07T00:49:58.068Z",
+      "copy": "the stale-state bit feels especially relevant to coding agents, keep the command that established a rule beside it, plus the commit it was checked against. a changed dependency then gives the next session a reason to recheck, instead of treating 'verified' as permanent.",
+      "platform": "x",
+      "label": "wonkylamp / memory freshness",
+      "state": "canonical-owner-view-verified",
+      "sourceReads": [
+        {
+          "url": "https://www.anthropic.com/research/components-of-agent-memory",
+          "scope": "Fresh primary article read, including the Pokemon comparison, stale game-state notes and transcript-based correction. Reply proposes retaining a command and checked commit for coding-agent rules; no new experiment, automatic invalidation capability or file-count causal result is claimed."
+        }
+      ],
+      "publishedTimeUi": "4:49 PM · Nov 6, 2026",
+      "publishedTimeZone": "America/Los_Angeles",
+      "privateProofBasename": "ai-site-check-hourly-x-20261107-0046/01"
+    },
+    {
+      "index": 2,
+      "parent": "https://x.com/unseriouscomms/status/2118856464307822836",
+      "weightedLength": 240,
+      "source": "https://github.com/gkoreli/agentport/blob/main/README.md",
+      "url": "https://x.com/GogaKoreli/status/2118868729924915658",
+      "verifiedAt": "2026-11-07T00:51:15.300Z",
+      "linkVerified": "https://github.com/gkoreli/agentport",
+      "copy": "a useful middle step: let the shopper's agent read inventory and build a cart, then ask the shopper before checkout. my AgentPort prototype explores session-scoped tool grants, though it isn't a commerce integration: https://github.com/gkoreli/agentport",
+      "platform": "x",
+      "label": "Kevin / scoped agent permissions",
+      "state": "canonical-owner-view-verified",
+      "sourceReads": [
+        {
+          "url": "https://github.com/gkoreli/agentport/blob/main/README.md",
+          "blobSha": "272b0194178412ba298394670e9758228161153a",
+          "scope": "Current README shows a user-chosen agent receiving a site-defined toolset for a session, with an approval-gated write example. The shopping workflow is a proposal, explicitly not an existing commerce integration. No new runtime acceptance or claim about merchant adoption."
+        }
+      ],
+      "publishedTimeUi": "4:50 PM · Nov 6, 2026",
+      "publishedTimeZone": "America/Los_Angeles",
+      "privateProofBasename": "ai-site-check-hourly-x-20261107-0046/02"
+    },
+    {
+      "index": 3,
+      "parent": "https://x.com/mustafaskyer/status/2118849441147093165",
+      "weightedLength": 253,
+      "source": "https://developer.chrome.com/docs/ai/webmcp/best-practices",
+      "url": "https://x.com/GogaKoreli/status/2118869066752672195",
+      "verifiedAt": "2026-11-07T00:52:42.429Z",
+      "copy": "your schema warning would make a good test in the cart example: call it with quantity 0, -1 and \"2\", assert an error and an unchanged cart. route execute through the same validator as the UI, so adding an agent path doesn't create a second set of rules.",
+      "platform": "x",
+      "label": "Mustafa / shared input validation",
+      "state": "canonical-owner-view-verified",
+      "sourceReads": [
+        {
+          "url": "https://medium.com/@mustafaskyer/webmcp-the-full-guide-in-one-article-dd73457f9814",
+          "scope": "Entire current guide read. It warns that schemas do not enforce inputs and shows an add_to_cart handler; reply proposes quantity 0, -1 and string 2 cases with unchanged-state assertions. No recipient runtime test or deployed defect claim."
+        },
+        {
+          "url": "https://developer.chrome.com/docs/ai/webmcp/best-practices",
+          "scope": "Current primary guidance recommends sharing validation/permissions/side effects between UI and WebMCP, strict code validation, and descriptive errors. Imperative API and tool-security pages also read; no universal browser-support claim."
+        }
+      ],
+      "publishedTimeUi": "4:52 PM · Nov 6, 2026",
+      "publishedTimeZone": "America/Los_Angeles",
+      "privateProofBasename": "ai-site-check-hourly-x-20261107-0046/03"
+    },
+    {
+      "index": 4,
+      "parent": "https://x.com/tech/status/2118854130135679311",
+      "weightedLength": 252,
+      "source": "https://www.anthropic.com/research/components-of-agent-memory",
+      "url": "https://x.com/GogaKoreli/status/2118869313440649660",
+      "verifiedAt": "2026-11-07T00:53:29.947Z",
+      "copy": "that gate could review a proposed diff: old note, new note, source turns and reason for the change. keep the next session pinned to the accepted revision, with a rollback path. I'd flag edits to permissions separately from corrections to factual notes.",
+      "platform": "x",
+      "label": "@Tech / reviewing memory changes",
+      "state": "canonical-owner-view-verified",
+      "sourceReads": [
+        {
+          "url": "https://www.anthropic.com/research/components-of-agent-memory",
+          "scope": "Primary article discusses checking notes against source transcripts and the risk of injecting an incorrect note into later sessions. Full target branch under Lance Martin read. Diff review, accepted-revision pinning, rollback and separate permission review are proposed implementation choices, not reported existing Anthropic behavior."
+        },
+        {
+          "url": "https://github.com/gkoreli/backlog-mcp/blob/main/README.md",
+          "blobSha": "ced131bc3ac87059efc6186d2426785085d2c4c3",
+          "scope": "Current project read for implementation context: directly readable/diffable Markdown and explicit correction lineage. No link or capability claim was added to the reply; this README does not establish an implemented approval gate."
+        }
+      ],
+      "publishedTimeUi": "4:53 PM · Nov 6, 2026",
+      "publishedTimeZone": "America/Los_Angeles",
+      "privateProofBasename": "ai-site-check-hourly-x-20261107-0046/04"
+    }
+  ],
+  "verification": "Exact final copy saved before each submission and checked in its composer. Every canonical reply reopened; full body and correct parent inspected. The sole outbound short link was followed to the intended AgentPort repository. UI publication times have minute precision; verifiedAt records the later canonical capture. Four submissions; no uncertain-write retries.",
+  "independentPublicVisibility": "Not tested; signed-in owner visibility only.",
+  "privacy": "Raw signed-in captures, source captures and screenshots remain outside Git in private temporary storage. Public records contain exact published text and normalized evidence.",
+  "limits": "No traffic query, click/adoption measurement, anonymous visibility test, recipient runtime test, hosted audit, new provider trial, Reddit write, DM, like, follow, original post or scheduler change. No site/article edits. Proposed validation and review mechanisms are not measured results or current product capabilities.",
+  "nextBoundedAction": "Run complete at four replies. Next authorized run: reconcile state and shared receipts, then prioritize substantive incoming responses. Do not duplicate these parents or carry the unused fifth slot into a later burst."
+}
