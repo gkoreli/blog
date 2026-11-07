@@ -1,0 +1,85 @@
+{
+  "automationId": "ai-site-check-hourly-x-replies",
+  "triggeredAt": "2026-11-07T21:21:17.292Z",
+  "completedReviewAt": "2026-11-07T21:25:56.065728+00:00",
+  "timezone": "America/Los_Angeles",
+  "authorization": "Up to five useful X replies in this run, fewer when suitable contributions are insufficient. No catch-up or other account actions.",
+  "preflight": "Read current worklist, previous receipt and shared destination records. Required launch/publication and informal-voice guidance and owned-project index remain in context; their diff from the prior checked baseline is empty. Original posting chat inactive at start and end; accepted UI work and earlier batches remain complete. Isolated HEAD and freshly fetched origin/main agree at e219b2ac84c705bc2ad4733027c8ff13e910a8fc. No concurrent posting or missed-hour catch-up.",
+  "currentEvidence": "Read the full live AI Site Check article in the in-app browser after web extraction failed. Checked the primary IETF draft and a relevant mailing-list response while investigating one prospective discussion. No new claim was published or runtime tested.",
+  "xRepliesPublished": 0,
+  "xNewConversationRepliesPublished": 0,
+  "xConversationFollowupsPublished": 0,
+  "canonicalOwnerViewsVerified": 0,
+  "items": [],
+  "countNote": "Seventy-one replies remain across twenty-seven completed hourly runs, twenty-three of which published replies. The separate owner-directed five and original-chat sixty-eight remain separate.",
+  "notificationCoverage": "No new substantive incoming reply selected in the bounded latest notification view. Balsa’s question was answered in the 20:22 run. LiveaAi’s acknowledgment was already reviewed at 18:15; Peter, Daryll, mpgn, Sergei and Ikenna exchanges were previously handled. No account-wide census or engagement measurement claimed.",
+  "searchQuery": "(\"agent memory\" OR \"robots.txt\" OR \"web components\") (built OR issue OR debugging OR shipped) since:2026-11-07 -filter:replies",
+  "selection": "One focused Latest search with four saved result states and visible scrolling. Read Ashish’s full native article, its empty reply area, authored profile and rendered Replies history; inspected relevant primary standards material. Reconciled previously handled or reviewed destinations rather than repeating outreach. Other results received preview-level review only.",
+  "skippedExamples": [
+    {
+      "url": "https://x.com/ashdhawan/status/2119165272456413345",
+      "reason": "Full native article read, including draft status, rollout caveats, separate crawler rules and the wildcard exception. Profile showed a continuing AI-analysis series; rendered Replies history exposed older general exchanges, not a substantive current implementation discussion. Primary-source review added context but did not establish a strong relationship-building contribution from the scoped work. No reply drafted or sent; no claim about human identity or automation."
+    },
+    {
+      "url": "https://x.com/CryptoBurrito/status/2119131601523106098",
+      "reason": "Exact sitemap-tool destination already answered at 18:15. No new incoming response selected."
+    },
+    {
+      "url": "https://x.com/DerrickJoeptlz/status/2118995931173650495",
+      "reason": "Exact memory discussion already answered at 10:00; no new incoming response selected."
+    },
+    {
+      "url": "https://x.com/stretchcloud/status/2119019279492485368",
+      "reason": "Third-party Anthropic memory recap, previously unselected at 11:05. Current preview supplied no new implementation problem."
+    },
+    {
+      "url": "https://x.com/Pa3ck3/status/2118978935417606495",
+      "reason": "Third-party kniv summary, previously unselected at 11:05. No owned implementation question selected; model claims not adopted."
+    },
+    {
+      "url": "https://x.com/clawdtalk/status/2119114701627945166",
+      "reason": "Memory-study recap preview, previously unselected at 17:12. Not fully investigated this run."
+    },
+    {
+      "url": "https://x.com/professorclawai/status/2119114088290615498",
+      "reason": "News-roundup preview, previously unselected at 17:12. Not fully investigated this run."
+    },
+    {
+      "url": "https://x.com/EntrepreneursAI/status/2119127808215507402",
+      "reason": "Broad newsletter preview; no specific relevant implementation contribution selected."
+    },
+    {
+      "url": "https://x.com/Austen/status/2119041327383924961",
+      "reason": "Broad news-roundup preview; no specific relevant implementation contribution selected."
+    },
+    {
+      "url": "https://x.com/dovanson91/status/2119035888223322248",
+      "reason": "Third-party Anthropic research summary preview; no owned method or implementation question selected."
+    },
+    {
+      "url": "https://x.com/mathur_ankit_/status/2118990330121138593",
+      "reason": "Playwright release-analysis preview; not a direct match for the scoped contribution. Version and compatibility claims not adopted."
+    }
+  ],
+  "sourceReads": [
+    {
+      "url": "https://gkoreli.com/ai-site-check-evidence",
+      "scope": "Fresh full live article, including score boundaries, robots policy, initial HTML, optional representations, synthetic declarations and actual-provider evidence."
+    },
+    {
+      "url": "https://datatracker.ietf.org/doc/html/draft-kelley-aipref-training-preference-signal-00",
+      "scope": "Read draft status, introduction, definitions and preference/crawler separation; search extraction also exposed precedence. This is work in progress, not production provider acceptance. No claim that AI Site Check implements the new token."
+    },
+    {
+      "url": "https://mailarchive.ietf.org/arch/msg/ai-control/60V9tZ56eL0OsnSgO2BsfXlXfCc/",
+      "scope": "Read Mark Nottingham’s November 5, 23:53 UTC response on the proposal, consensus process and possible identifier changes. Suggested alternative spellings are discussion, not a finalized replacement. No rollout or legal conclusion adopted."
+    }
+  ],
+  "fewerThanFiveReason": "No distinct contribution met both the evidence and relationship-selection bar in this bounded review. Existing project discussions were already handled; remaining previews were mostly summaries, and the fully read new article lacked enough current substantive conversation context. No generic promotion or repeated advice filled the quota. This does not establish that useful conversations do not exist elsewhere; all five unused slots expire.",
+  "verification": "No composer filled, no submission attempted, no pending or uncertain publication. Canonical publication checks are not applicable.",
+  "accountState": "Signed-in in-app browser available. No restriction, cooldown or security lock observed.",
+  "independentPublicVisibility": "No new publication to verify; prior owner/public visibility limits remain unchanged.",
+  "privacy": "Raw signed-in views and captures remain outside Git. Only public URLs and normalized methods, outcomes and limits are recorded here.",
+  "limits": "No post, reply, Reddit write, DM, like, follow, hosted audit, provider trial, recipient runtime test, site change, traffic/adoption measurement or scheduler change.",
+  "nextBoundedAction": "Next authorized run: reconcile shared state and receipts, prioritize new substantive incoming responses and choose new destinations only when there is a useful supported contribution. No unused quota carries over."
+}
