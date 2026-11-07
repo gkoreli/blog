@@ -1,0 +1,114 @@
+{
+  "automationId": "ai-site-check-hourly-x-replies",
+  "triggeredAt": "2026-11-07T16:03:46.166Z",
+  "completedPublicationAt": "2026-11-07T16:11:57.489039+00:00",
+  "timezone": "America/Los_Angeles",
+  "authorization": "Explicit hourly heartbeat authorizes up to five useful X replies, fewer when useful matches are insufficient. No Reddit, DMs, likes, follows, original posts or scheduler changes.",
+  "preflight": "Read latest worklist, previous run and shared receipts, required launch/publication guidance, informal voice and owned-project index. Accepted UI work and earlier batches remain complete. Start and end coordination snapshots show the original posting chat inactive with its latest turn completed. Fresh origin/main and clean isolated checkout agree at 3f371235acc4913b83603c51b3a5258e5c9c63ab. No overlapping posting or catch-up burst.",
+  "currentEvidence": "Fresh live AI Site Check article read. Jesse advice is a proposed verification step based on the published workflow. KORRO feedback is grounded in pinned public source. No hosted AI Site Check API call or provider trial.",
+  "xRepliesPublished": 2,
+  "xNewConversationRepliesPublished": 2,
+  "xConversationFollowupsPublished": 0,
+  "canonicalOwnerViewsVerified": 2,
+  "countNote": "Sixty-five replies across twenty-two completed hourly runs, twenty of which published replies. The separate owner-directed five and original-chat sixty-eight remain separate.",
+  "notificationCoverage": "No new substantive incoming response selected in the bounded initial notification view. Peter’s newest visible response was already answered in the 12:06 run; other visible exchanges were previously handled. This is not an account-wide census.",
+  "selection": "One focused Latest search, followed by two downward scrolls. Investigated Jesse and KORRO individually before each submission. Subsequently read Juliano’s full post, authored context and current quick-start documentation; no distinct additional contribution selected. Shared receipts checked for duplicate destinations and prior contact.",
+  "searchQuery": "(WebMCP OR MCP) (browser OR website) (built OR shipped OR open-source) since:2026-11-07 -filter:replies",
+  "fewerThanFiveReason": "Two conversations yielded specific contributions in this bounded review. The additional browser-session candidate already discussed handoff verification and was not given repetitive advice; the other previews did not yield a distinct relevant contribution. Three unused slots expire. This does not establish that useful conversations do not exist elsewhere.",
+  "skippedExamples": [
+    {
+      "url": "https://x.com/jul1anodev/status/2119089289455968626",
+      "reason": "Full post, authored context and docs.easi.run quick-start read. Their visible earlier post already discusses checking unfinished 2FA after handback, with a credited contributor; recent replies also discuss evidence after uncertain submission. No distinct extra contribution selected. No installation or runtime trial."
+    },
+    {
+      "url": "https://x.com/MetaMami_G/status/2119092696040038876",
+      "reason": "Payment-product article preview; not fully investigated or selected. No financial or product claim adopted."
+    },
+    {
+      "url": "https://x.com/QianCherry2102/status/2119091793551851689",
+      "reason": "Simulation/hackathon article preview; not fully investigated or selected. An earlier different post was also skipped in the 10:00 run. No prior publication to this author found."
+    },
+    {
+      "url": "https://x.com/alexrashkov/status/2119087028377944468",
+      "reason": "Third-party browser-project summary preview; no distinct implementation contribution selected. Star count and performance positioning not verified or repeated."
+    },
+    {
+      "url": "https://x.com/ahhhhfs/status/2119086609295663314",
+      "reason": "Email-hosting promotion preview; no matching implementation contribution selected. Pricing and capacity claims not verified or repeated."
+    }
+  ],
+  "items": [
+    {
+      "index": 1,
+      "evidenceKey": "jesse",
+      "parent": "https://x.com/jesse_altman/status/2119091317833703627",
+      "url": "https://x.com/GogaKoreli/status/2119099793259868244",
+      "copy": "i'd attach the build, enabled plans/regions and a live verification time to each demo, then recheck availability before Postiz publishes. a staging walkthrough can stay accurate while a rollout changes, so changed availability should send the draft back to review.",
+      "weightedLength": 264,
+      "canonicalCaptureSavedAt": "2026-11-07T16:09:18.328999+00:00",
+      "publishedTimeUi": "8:08 AM · Nov 7, 2026",
+      "publishedTimeZone": "America/Los_Angeles",
+      "kind": "new-conversation",
+      "platform": "x",
+      "state": "canonical-owner-view-verified",
+      "privateProofBasename": "ai-site-check-hourly-x-20261107-1603/jesse-canonical",
+      "label": "Jesse / recheck availability before scheduled publication",
+      "selectionEvidence": "Read the full written release-workflow post, all five rendered replies across Relevant and Recent views, authored posts and contextual replies. The author describes owning the workflow across portfolio companies and explicitly invites suggestions. No prior campaign contact found. The reply builds on the stated product fact-checking step with a specific availability check at publication time; it does not assert that their pipeline currently lacks one or that their demos use staging.",
+      "sourceReads": [
+        {
+          "url": "https://x.com/jesse_altman/status/2119091317833703627",
+          "scope": "Full written method read: sprint notification, launch tier and Jira subtasks, narrated Easy Demo walkthrough, brand repository, Content Studio and Postiz scheduling, with product confirming facts. Embedded media was not analyzed; no private pipeline or runtime inspected."
+        },
+        {
+          "url": "https://gkoreli.com/ai-site-check-evidence",
+          "scope": "Fresh full live article read during preflight. Its evidence boundaries inform the recommendation; no current hosted audit or citation result was measured."
+        }
+      ],
+      "recommendationBoundary": "A proposed build/availability/verification-time record and publication-time recheck. No claim of an observed recipient failure, tested integration, feature availability or resulting adoption."
+    },
+    {
+      "index": 2,
+      "evidenceKey": "korro",
+      "parent": "https://x.com/korrocorp/status/2119092741002908111",
+      "url": "https://x.com/GogaKoreli/status/2119100418307620965",
+      "copy": "reading src/core.js, checkRecipe returns the pre-repair health counts after rediscovery. i'd rerun the read-only probes and return before/after results, so the agent gets evidence that the repaired calls work. haven't run it, this is from the source.",
+      "weightedLength": 250,
+      "canonicalCaptureSavedAt": "2026-11-07T16:11:57.489039+00:00",
+      "publishedTimeUi": "8:11 AM · Nov 7, 2026",
+      "publishedTimeZone": "America/Los_Angeles",
+      "kind": "new-conversation",
+      "platform": "x",
+      "state": "canonical-owner-view-verified",
+      "privateProofBasename": "ai-site-check-hourly-x-20261107-1603/korro-canonical",
+      "label": "KORRO / verify calls after recipe repair",
+      "selectionEvidence": "Read the full written project post and its sole visible reply about endpoint drift. Inspected authored project posts and contextual replies, including the game-state response about another owned project. The linked repository identifies Korrocorp. No prior campaign contact found. An automated YouTube project mentioned in their posts was not treated as proof that the X account is automated. Selection is based on attributable project work and context, not proof of human identity.",
+      "sourceReads": [
+        {
+          "url": "https://github.com/KorroAi/unwalled",
+          "scope": "Read the rendered README for the capture-to-recipe method, health/repair description and limitations. Performance and safety claims were not independently verified or repeated."
+        },
+        {
+          "url": "https://github.com/KorroAi/unwalled/blob/0d40f946ebc27d0ef277d65c428b8bf9c5ea2c77/docs/REFERENCE.md",
+          "blobSha": "9a1e2bfda09f7b4837b57e0e228bf86426ef4679",
+          "scope": "Read relevant reference sections on how discovery and tools work, staying logged in, site changes, health checks and limits; not the complete reference. check_recipe is documented to probe read-only tools with recorded examples and rediscover on repair."
+        },
+        {
+          "url": "https://github.com/KorroAi/unwalled/blob/0d40f946ebc27d0ef277d65c428b8bf9c5ea2c77/src/core.js",
+          "blobSha": "c6aaf58c30c1d60f86d8e41c88e6c8799c8407ad",
+          "scope": "Read the complete checkRecipe method beginning at line 921. It computes and saves health counts before repair, rediscovers or reimports, reports added/removed tools, then returns the original results and counts. This is static source evidence, not an executed repair trial."
+        },
+        {
+          "url": "https://github.com/KorroAi/unwalled/blob/0d40f946ebc27d0ef277d65c428b8bf9c5ea2c77/src/server.js",
+          "blobSha": "bc6c4ebe662db604f0a691c652751d18e02e4d3e",
+          "scope": "Read the check_recipe dispatch branch. It calls checkRecipe once, notifies tools changed for repair, and returns that result. No MCP execution."
+        }
+      ],
+      "recommendationBoundary": "Proposes another read-only probe pass after repair and separate before/after results. The published text explicitly says the project was not run. No claim of a reproduced outage, security flaw, completed fix or comprehensive audit."
+    }
+  ],
+  "verification": "Final text saved before submission. Each reply used one submission click; pending submission states were resolved without retry. Each canonical page was reopened, and body, parent URL and minute-precision Pacific time checked. Private canonical text and screenshots saved for both. Neither reply adds a link: Jesse’s suggestion stands on its own, and KORRO’s ancestor already links the repository. canonicalCaptureSavedAt is the saved canonical capture filesystem timestamp in UTC, not an exact publication timestamp.",
+  "independentPublicVisibility": "Not tested; signed-in owner visibility only.",
+  "privacy": "Raw account views, source captures and screenshots remain outside Git. Public records contain published copy, public destinations and normalized evidence only.",
+  "limits": "No recipient runtime test, private pipeline inspection, completed recipient fix, hosted AI Site Check audit, provider trial, independent anonymous visibility check or traffic/adoption measurement. No security or comparative-performance claim. No account restriction observed, extra account action or scheduler change.",
+  "nextBoundedAction": "Run complete at two. Next authorized run: reconcile shared state and receipts, prioritize substantive incoming replies, and do not repeat these destinations or carry over unused slots."
+}
