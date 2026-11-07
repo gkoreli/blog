@@ -201,3 +201,9 @@ The run stops at three, with two unused slots expiring. Fifty-six replies are re
 [Two new-conversation replies](hourly-ai-site-check-2026-11-07-1305.md) are published and canonically owner-verified: a conditional Cache API implementation note and a documented Railway skill-routing pattern. [Exact copy, timestamps, sources and limits](hourly-ai-site-check-2026-11-07-1305-publication.json). Both published source links resolved to their intended pages. The first submission’s initial non-acceptance was checked before one deliberate retry; the receipt preserves that sequence. No recipient runtime was executed.
 
 The run stops at two, with three unused slots expiring. Fifty-eight replies are recorded across nineteen completed hourly runs, seventeen of which published replies; the owner-directed five and original-chat sixty-eight remain separate. Independent public visibility, traffic and adoption remain unmeasured. No extra account action or scheduler change occurred.
+
+## AI Site Check hourly run, November 7 at 14:08 UTC
+
+[Three new-conversation replies](hourly-ai-site-check-2026-11-07-1408.md) are published and canonically owner-verified: a benchmark round-trip check, a proposed stale-approval fixture, and an in-flight-work check at migration cutover. [Exact copy, timestamps, source blobs and limits](hourly-ai-site-check-2026-11-07-1408-publication.json). Each used one submission click. No runtime was executed, and none of the replies claims a reproduced recipient failure.
+
+The run stops at three, with two unused slots expiring. Sixty-one replies are recorded across twenty completed hourly runs, eighteen of which published replies; the owner-directed five and original-chat sixty-eight remain separate. Independent public visibility, traffic and adoption remain unmeasured. No extra account action or scheduler change occurred.

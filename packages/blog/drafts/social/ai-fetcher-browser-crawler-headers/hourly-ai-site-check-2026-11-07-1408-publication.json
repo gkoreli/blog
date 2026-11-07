@@ -1,0 +1,171 @@
+{
+  "automationId": "ai-site-check-hourly-x-replies",
+  "triggeredAt": "2026-11-07T14:08:14.430Z",
+  "completedPublicationAt": "2026-11-07T14:20:22.388Z",
+  "timezone": "America/Los_Angeles",
+  "authorization": "Explicit hourly heartbeat authorizes up to five useful X replies, fewer when useful matches are insufficient. Scope excludes Reddit, DMs, likes, follows, original posts and scheduler changes.",
+  "preflight": "Latest worklist, previous run and shared receipts read. Required guidance and owned-project index reviewed. Accepted UI work and earlier batches remain complete. Start and end coordination checks show the original posting chat inactive with its latest turn completed. Fresh origin/main and clean isolated checkout agree at fee7bbfa97bf8854d7a43cc26155467144fa4644. No overlap or catch-up burst.",
+  "currentEvidence": "Fresh live AI Site Check article read; normalized rendered text and links matched the preceding capture. Replies rely on the actual discussions and current public repository sources. No hosted audit or provider trial.",
+  "xRepliesPublished": 3,
+  "xNewConversationRepliesPublished": 3,
+  "xConversationFollowupsPublished": 0,
+  "canonicalOwnerViewsVerified": 3,
+  "countNote": "Sixty-one replies across twenty completed hourly runs, eighteen of which published replies. The separate owner-directed five and original-chat sixty-eight remain separate.",
+  "notificationCoverage": "No new substantive incoming response selected in the bounded initial notification view. Peter’s newest visible response was already answered in the 12:06 run; other visible exchanges were previously handled. This is not an account-wide census.",
+  "selection": "One focused Latest search and one downward scroll. Investigated Kelly, Hrutik and Wecko individually, including linked source and authored context. Selected three distinct contributions. Shared receipts checked for duplicate destinations and prior contact.",
+  "searchQuery": "(MCP OR agents) (memory OR context) (built OR shipped OR open-source) since:2026-11-07 -filter:replies",
+  "fewerThanFiveReason": "Three conversations yielded concrete, source-grounded contributions in the bounded review. Remaining inspected previews were broad commentary, promotion or third-party summaries without another selected implementation contribution. Two unused slots expire; useful conversations elsewhere are not ruled out.",
+  "skippedExamples": [
+    {
+      "url": "https://x.com/0xarcos/status/2119068641740091716",
+      "reason": "Course and productivity-claim preview; no source-backed implementation contribution selected, and claims not adopted."
+    },
+    {
+      "url": "https://x.com/FiFrontierX/status/2119068289485644251",
+      "reason": "Broad AI market commentary preview; not fully investigated or selected."
+    },
+    {
+      "url": "https://x.com/joshuagold_/status/2119068252940767350",
+      "reason": "General agent-trust article preview; no concrete implementation question selected."
+    },
+    {
+      "url": "https://x.com/ContextWindow_/status/2119067836945703072",
+      "reason": "Third-party physics benchmark summary preview. Paper not reviewed and reported numbers not adopted."
+    },
+    {
+      "url": "https://x.com/TechWithTimm/status/2119067570313842777",
+      "reason": "Broad software-engineering article preview; no matching implementation contribution selected."
+    },
+    {
+      "url": "https://x.com/NaVishinka35282/status/2119067346283246074",
+      "reason": "Third-party memory-study summary preview; no new source-grounded contribution selected or reported result verified."
+    }
+  ],
+  "items": [
+    {
+      "index": 1,
+      "parent": "https://x.com/Kellycryptos/status/2119068453361320344",
+      "url": "https://x.com/GogaKoreli/status/2119070347454751068",
+      "copy": "small benchmark fix: the round-trip total is hardcoded to 100%, while each case checks only for a substring. compare the full retrieved line with the original, assert on mismatches, and compute the total from those results so it reflects what was checked.",
+      "weightedLength": 255,
+      "verifiedAt": "2026-11-07T14:12:30.997Z",
+      "publishedTimeUi": "6:11 AM · Nov 7, 2026",
+      "kind": "new-conversation",
+      "platform": "x",
+      "state": "canonical-owner-view-verified",
+      "publishedTimeZone": "America/Los_Angeles",
+      "privateProofBasename": "ai-site-check-hourly-x-20261107-1408/01-canonical",
+      "label": "Kelly / benchmark round-trip checks",
+      "root": "https://x.com/Kellycryptos/status/2119068376085458987",
+      "selectionEvidence": "Read the full project post and expanded benchmark child, then opened that child as the reply destination. Inspected authored project history and contextual replies. No prior campaign contact found. The contribution concerns the benchmark code, not a reproduced storage failure or an independent performance result.",
+      "sourceReads": [
+        {
+          "url": "https://github.com/kellycryptos/hermes-detox/blob/main/README.md",
+          "blobSha": "5b965d505710635823282afea12e36fa7d9ad9d0",
+          "scope": "Full project overview read for the pre-truncation storage and retrieval design. Its performance claims were not independently validated."
+        },
+        {
+          "url": "https://github.com/kellycryptos/hermes-detox/blob/main/benchmarks/run_benchmark.py",
+          "blobSha": "9cb44844f97cfa4b870f385e3f5b72795624f17c",
+          "scope": "Full source read. Each storage round-trip checks expected_snippet membership in retrieved_line and records a result without asserting it; the summary storage_roundtrip_rate is a literal 100%. Marker-preservation assertions are separate and do exist. No benchmark execution."
+        },
+        {
+          "url": "https://github.com/kellycryptos/hermes-detox/blob/main/report.py",
+          "blobSha": "35d578d094d735fbe48c9f67ce23dc4eeb51fe11",
+          "scope": "Read diagnostic extraction, report construction and evidence-reference context. No runtime test."
+        },
+        {
+          "url": "https://github.com/kellycryptos/hermes-detox/blob/main/extractors/extract_terminal.py",
+          "blobSha": "48aaa3c34eb605a40f30fed28f3b109116e9a20e",
+          "scope": "Read terminal extraction source for context. No extractor claim added to the reply."
+        },
+        {
+          "url": "https://github.com/kellycryptos/hermes-detox/blob/main/detox_tools/tool_inspect.py",
+          "blobSha": "f16ed03be355912b0603698e818c403cd0bd530e",
+          "scope": "Read the tool path that retrieves stored lines and returns structured output. No fidelity result independently measured."
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "parent": "https://x.com/bushido_hk/status/2119069572561244288",
+      "url": "https://x.com/GogaKoreli/status/2119070955947577482",
+      "copy": "i'd add a stale-approval test: Finance reviews D-1001, the CRM seat count changes, then the old approval arrives. bind approval to a deal revision (seats, term, price, discount) and reject it if that revision changed before issuing the quote.",
+      "weightedLength": 242,
+      "verifiedAt": "2026-11-07T14:14:56.461Z",
+      "publishedTimeUi": "6:14 AM · Nov 7, 2026",
+      "kind": "new-conversation",
+      "platform": "x",
+      "state": "canonical-owner-view-verified",
+      "publishedTimeZone": "America/Los_Angeles",
+      "privateProofBasename": "ai-site-check-hourly-x-20261107-1408/02-canonical",
+      "label": "Hrutik / stale approval fixture",
+      "selectionEvidence": "Read the entire written deal-desk article, its linked implementation and current policy tests; no replies were rendered before ours. Inspected authored project history and contextual replies. No prior campaign contact found. The reply proposes a fixture and revision binding; it does not claim an observed stale approval, policy bypass or failed runtime.",
+      "sourceReads": [
+        {
+          "url": "https://github.com/hrutik7/outry-agent/blob/main/README.md",
+          "blobSha": "c064c079c4887171656c940f1a5f17d8dcef22eb",
+          "scope": "Full overview read for the owner-agent gate, policy checks, CRM update and audit flow."
+        },
+        {
+          "url": "https://github.com/hrutik7/outry-agent/blob/main/scripts/deskctl.py",
+          "blobSha": "a1b6c293015ff6e0d897df56ed1965476e24711b",
+          "scope": "Full source read. Approval takes a deal ID, discount, actor, decision and note, then loads the current deal and evaluates policy; no expected deal-revision argument is present in this command. Proposal is based on this static interface, not a reproduced incident."
+        },
+        {
+          "url": "https://github.com/hrutik7/outry-agent/blob/main/switch/deal-desk.template.yaml",
+          "blobSha": "1fe87dc5b91f4fe661be976d2fec7db69feddf7a",
+          "scope": "Full agent template read, including owner-agent addressing and explicit deal-ID approval instructions."
+        },
+        {
+          "url": "https://github.com/hrutik7/outry-agent/blob/main/tests/test_policy.py",
+          "blobSha": "f842010dbb7ee64854f0ccaee1bd088ee216b76d",
+          "scope": "Read existing policy and record fixtures. Did not run them or claim a complete repository test audit. Linked video was not played; article images were not comprehensively inspected."
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "parent": "https://x.com/wecko_ai/status/2119068677081563400",
+      "url": "https://x.com/GogaKoreli/status/2119072278466179462",
+      "copy": "does the pause confirmation cover runs already in flight? i'd list their IDs and pending outputs, then wait for completion or confirmed cancellation before resuming Hermes. that makes the 'one active copy' rule checkable at cutover.",
+      "weightedLength": 232,
+      "verifiedAt": "2026-11-07T14:20:22.388Z",
+      "publishedTimeUi": "6:19 AM · Nov 7, 2026",
+      "kind": "new-conversation",
+      "platform": "x",
+      "state": "canonical-owner-view-verified",
+      "publishedTimeZone": "America/Los_Angeles",
+      "privateProofBasename": "ai-site-check-hourly-x-20261107-1408/03-canonical",
+      "label": "Wecko / in-flight work at migration cutover",
+      "selectionEvidence": "Read the full written migration article and four linked kit documents. No replies were rendered before ours. Inspected authored migration/project posts and varied contextual replies. No prior campaign contact found. The author already covers paused schedules and an active-side registry; the reply adds a question and explicit check for runs already in progress. It does not claim an observed duplicate or known platform cancellation behavior.",
+      "sourceReads": [
+        {
+          "url": "https://github.com/Wecko-ai/grokbot-to-hermes/blob/main/README.md",
+          "blobSha": "8942d0492458eb4e0a4514690be79a24e8d53df8",
+          "scope": "Full kit overview read. The reported migration outcomes and platform limits were not independently verified."
+        },
+        {
+          "url": "https://github.com/Wecko-ai/grokbot-to-hermes/blob/main/MIGRATE.md",
+          "blobSha": "fa36d0864198972eef2083b41e69a1ca4f9eda53",
+          "scope": "Full runbook read as source material, not executed. Phase 8 requests confirmation of paused routines before resuming the new side; phase 9 covers first-run verification and rollback."
+        },
+        {
+          "url": "https://github.com/Wecko-ai/grokbot-to-hermes/blob/main/prompts/pause-confirmation-request.md",
+          "blobSha": "d2da57517afb66fe618a42a8de24b6fab34a4ae2",
+          "scope": "Full confirmation prompt read. Requests routine name, trigger and paused/could-not-pause state, and instructs no further sends. It does not explicitly request in-flight run IDs, pending outputs or their final outcomes."
+        },
+        {
+          "url": "https://github.com/Wecko-ai/grokbot-to-hermes/blob/main/docs/bridge-design.md",
+          "blobSha": "3c7af5ad246f5a94d850978d84949c55698bc943",
+          "scope": "Full design note read. Describes stable package IDs and an active-side registry checked before acting. It is labeled a pattern, not implementation code. No migration or failure injection performed."
+        }
+      ]
+    }
+  ],
+  "verification": "Exact final text preserved before submission. Each reply used one submission click; settled accepted views yielded canonical URLs. Each canonical page was reopened and its body, parent and minute-precision Pacific time checked. Private canonical text and screenshots saved for all three. Replies contain no links; relevant source repositories already appear in their ancestor discussions.",
+  "independentPublicVisibility": "Not tested; signed-in owner visibility only.",
+  "privacy": "Raw account views, source captures and screenshots remain outside Git. Public records contain published copy, public destinations and normalized evidence only.",
+  "limits": "No recipient runtime test, benchmark/fixture execution, installation, migration, deployment, source edit, hosted audit, provider trial, independent anonymous visibility check, traffic/adoption measurement, extra account action or scheduler change. No account restriction observed. Static source findings, proposals and questions are not verified recipient outcomes.",
+  "nextBoundedAction": "Run complete at three. Next authorized run: reconcile current shared state and receipts, prioritize substantive incoming replies, and do not repeat these destinations or carry over unused slots."
+}
