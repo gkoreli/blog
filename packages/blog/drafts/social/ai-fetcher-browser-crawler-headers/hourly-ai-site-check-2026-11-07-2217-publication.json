@@ -1,0 +1,115 @@
+{
+  "automationId": "ai-site-check-hourly-x-replies",
+  "triggeredAt": "2026-11-07T22:17:47.937Z",
+  "completedReviewAt": "2026-11-07T22:27:55.791827+00:00",
+  "timezone": "America/Los_Angeles",
+  "authorization": "Up to five useful X replies in this run; fewer when suitable contributions are insufficient. No catch-up or other account actions.",
+  "preflight": "Read current worklist, previous receipt and shared destination records. Required launch/publication and informal-voice guidance and owned-project index were reread and unchanged from the prior checked baseline. Original posting chat inactive at start, before publication and at end. Accepted UI work and earlier batches remain complete. Isolated HEAD and freshly fetched origin/main agree at cc4ef2fdefd18616b3ab9283e9d51fa4c957b44f. No overlapping posting session.",
+  "currentEvidence": "Fresh full live AI Site Check article read. Current AgentPort README and app-builder guide read through GitHub; linked example verified in the browser. Other candidate methods read as documented below. No hosted audit, provider trial or recipient runtime execution.",
+  "xRepliesPublished": 1,
+  "xNewConversationRepliesPublished": 1,
+  "xConversationFollowupsPublished": 0,
+  "canonicalOwnerViewsVerified": 1,
+  "items": [
+    {
+      "recipient": "Harry Sanders / HarrySandersSEO",
+      "timestampPrecision": "minute from native canonical UI: 2:24 PM · Nov 7, 2026 Pacific",
+      "conversationEvidence": [
+        "https://x.com/HarrySandersSEO/status/2113465895213498483",
+        "https://x.com/HarrySandersSEO/status/1647710045520502784"
+      ],
+      "verification": "Exact ASCII copy preserved before submission; URL weighted as 23. Composer named Harry and enabled Reply. One submission produced a canonical URL. Reopened canonical page and checked text, parent, native timestamp and GitHub card; saved screenshot privately. Followed t.co/BiZOt8kFAh to https://github.com/gkoreli/agentport#agentport and inspected the example.",
+      "independentPublicVisibility": "Web retrieval of the canonical URL returned Cache miss. Owner visibility verified; independent public visibility remains unverified.",
+      "limits": "Source/example contribution only. No new integration run, deployment acceptance, universal browser compatibility, autonomous-edit success rate, ranking or citation claim. AgentPort is presented as its own early project, not as a browser standard.",
+      "kind": "new-conversation",
+      "parent": "https://x.com/HarrySandersSEO/status/2119188440445333925",
+      "url": "https://x.com/GogaKoreli/status/2119194410558824615",
+      "copy": "one concrete job in my AgentPort example: your own agent tightens the opening paragraph. the page lends read + replace tools for that document, with approval before replacement. small enough to inspect the result. early code here: https://github.com/gkoreli/agentport#agentport",
+      "weightedLength": 254,
+      "publishedAtMinuteUtc": "2026-11-07T22:24:00Z",
+      "selection": "Read the complete written post, attached schema/WebMCP comparison image, authored profile and rendered Replies history. The author answers a current naming question and has a substantive earlier site-review exchange. This supplied conversation context beyond a bio or badge. No earlier campaign contact found. The reply gives a specific implementation example for the post’s instruction to name a job.",
+      "value": "A document-editing example: lend the user’s chosen agent read and replace tools, with approval on replacement, and inspect the result. Links directly to the small AgentPort example and calls the code early.",
+      "sourceReads": [
+        {
+          "url": "https://github.com/gkoreli/agentport#agentport",
+          "path": "README.md",
+          "blobSha": "272b0194178412ba298394670e9758228161153a",
+          "scope": "Current example defines inkwell.document.read and inkwell.document.replace, requiresApproval on replace, and the prompt Tighten the opening paragraph."
+        },
+        {
+          "url": "https://github.com/gkoreli/agentport/blob/main/docs/APP-BUILDER.md",
+          "blobSha": "5ec1aeeb45e41ffd54c0992ab351a9dae91f6f66",
+          "scope": "Tool definitions, handler validation, user gesture, session scope, approval UI and separate WebMCP integration."
+        }
+      ],
+      "evidenceKey": "harry",
+      "publishedTimeUi": "2:24 PM · Nov 7, 2026",
+      "publishedLink": "https://github.com/gkoreli/agentport#agentport",
+      "publishedShortLink": "https://t.co/BiZOt8kFAh"
+    }
+  ],
+  "countNote": "Seventy-two unique replies across twenty-eight completed hourly runs, twenty-four of which published replies. The separate owner-directed five and original-chat sixty-eight remain separate.",
+  "incomingObservation": {
+    "url": "https://x.com/CryptoBurrito/status/2119179070902521995",
+    "ancestorReply": "https://x.com/GogaKoreli/status/2119132378480476162",
+    "observedAt": "2026-11-07T22:18:00Z",
+    "observationTimePrecision": "approximate minute of bounded notification and full-chain review",
+    "nativeTimestamp": "1:23 PM · Nov 7, 2026 Pacific",
+    "reportedOutcome": "The tool author agreed that aggregate counts do not identify differing URLs and said the per-URL page link / sitemap / both tag was being added to the list.",
+    "action": "Read the full original post, our prior reply and this acknowledgment. No extra acknowledgment, repeated suggestion or link was sent.",
+    "limit": "Author-reported planned work, not a verified shipped feature, adoption count or traffic effect."
+  },
+  "notificationCoverage": "One new acknowledgment selected for outcome recording. Balsa’s question was already answered at 20:22; LiveaAi, Peter, Daryll, mpgn and Sergei entries were handled previously. No account-wide census or engagement measurement.",
+  "searchQuery": "(\"MCP\" OR \"WebMCP\" OR \"AI crawlers\") (built OR shipped OR debugging OR issue) since:2026-11-07 -filter:replies",
+  "selection": "One focused Latest search and one two-page downward scroll, with two saved search states. Three full discussions/profile histories reviewed one at a time; one selected. Other result previews were not fully investigated.",
+  "skippedExamples": [
+    {
+      "url": "https://x.com/1000xDigital/status/2119189109218664771",
+      "reason": "Full launch and rendered reply, authored profile, Replies history, by-the-numbers page and complete 53-point gate documentation read. The gate already separates must-pass/advice and states that some rules are its own. A possible per-rule provenance distinction was checked against Google’s indexable-file documentation, but no advice was drafted or published. Rendered account replies were older promotional/general exchanges and did not establish enough substantive current conversation context for this selection."
+    },
+    {
+      "url": "https://x.com/BenchBrex/status/2119193081681776835",
+      "reason": "Full launch, authored profile, Replies history, repository README and pinned SECURITY.md read. Documentation already covers exact hashes, approval expiry, checkpointing, unresolved outcomes without automatic retries, verification limits and local trust boundaries. No distinct scoped contribution selected; did not repeat these existing controls. The sampled replies did not add substantive implementation context. No installation, execution or security conclusion."
+    },
+    {
+      "url": "https://x.com/revenueaireport/status/2119191246765994296",
+      "reason": "Broad business-analysis preview; no specific matching implementation question selected. Full article not read."
+    },
+    {
+      "url": "https://x.com/Sanemavcil/status/2119188780162937048",
+      "reason": "Third-party game-development recap preview; no owned project question matching this outreach selected. Full thread/video not read."
+    }
+  ],
+  "additionalSourceReads": [
+    {
+      "url": "https://gkoreli.com/ai-site-check-evidence",
+      "scope": "Fresh full live article; evidence boundaries, scoring, robots, source HTML, optional representations and provider access."
+    },
+    {
+      "url": "https://micrositegenerator.com/by-the-numbers",
+      "scope": "Read page and measurement caveats; author-reported effort figures and developer-year estimates were not adopted."
+    },
+    {
+      "url": "https://micrositegenerator.com/the-compliance-gate",
+      "scope": "Read the full documented gate and limits. No grader or paid product used."
+    },
+    {
+      "url": "https://developers.google.com/search/docs/crawling-indexing/indexable-file-types",
+      "scope": "Fresh official documentation explicitly lists HTML including .htm and .html; considered as context for an unselected candidate, not published as advice."
+    },
+    {
+      "url": "https://github.com/benchbrex-USA/pi-engineering",
+      "scope": "Rendered README read at observed head 25d988219777a99b6268d82ef9a6e4fa93954c3b. Test and scanner claims not independently reproduced."
+    },
+    {
+      "url": "https://github.com/benchbrex-USA/pi-engineering/blob/25d988219777a99b6268d82ef9a6e4fa93954c3b/Pi_Engineering_CLI/SECURITY.md",
+      "blobSha": "0d28457248561aa1e3bd34d325315d645e8b791c",
+      "scope": "Full security/deployment boundary read as project data. No commands run or outside instructions adopted."
+    }
+  ],
+  "fewerThanFiveReason": "One concrete sourced example met the selection bar. The incoming reply acknowledged an existing suggestion, two investigated new destinations lacked enough additional contribution/context, and remaining previews were a weaker fit. Four unused slots expire; no catch-up or generic filler.",
+  "accountState": "Signed-in in-app browser available; no restriction, cooldown or security lock observed. No uncertain submission or pending draft remains.",
+  "privacy": "Raw signed-in views, source captures and screenshots stay outside Git. Public records contain normalized methods, public links, exact published copy and limitations.",
+  "limits": "No Reddit, DM, like, follow, original post, hosted audit, provider trial, installed software, site change, traffic/adoption measurement or scheduler change.",
+  "nextBoundedAction": "Next authorized run: reconcile shared state, prioritize new substantive replies, and select new destinations only when a useful supported contribution exists. Do not repeat Harry’s example or CryptoBurrito’s accepted suggestion."
+}

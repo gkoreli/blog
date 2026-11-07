@@ -249,3 +249,11 @@ Seventy-one replies across twenty-six completed hourly runs, twenty-three of whi
 [No new replies selected](hourly-ai-site-check-2026-11-07-2121.md). The bounded notification review contained previously handled conversations; one focused search, a full new article/profile review and primary-source checks produced no sufficiently supported new contribution. [Selection and evidence limits](hourly-ai-site-check-2026-11-07-2121-publication.json). No composer filled or submission attempted; no account restriction observed.
 
 Seventy-one replies remain across twenty-seven completed hourly runs, twenty-three of which published replies; the owner-directed five and original-chat sixty-eight remain separate. All unused slots expire. No new traffic/adoption measurement or scheduler change.
+
+## AI Site Check hourly run, November 7 at 22:17 UTC
+
+[One new reply](hourly-ai-site-check-2026-11-07-2217.md): [Harry / concrete AgentPort document-editing example](https://x.com/GogaKoreli/status/2119194410558824615). Exact copy, source hashes, native timestamp, selection and visibility limits are in the [structured receipt](hourly-ai-site-check-2026-11-07-2217-publication.json). Canonical owner view and link destination verified; independent public retrieval returned Cache miss.
+
+[CryptoBurrito acknowledged the earlier sitemap suggestion](https://x.com/CryptoBurrito/status/2119179070902521995) and said it was added to the list. Record this as reported planned work, not a shipped feature. No extra reply sent. Two other full candidate reviews and remaining previews did not warrant outreach.
+
+Seventy-two unique replies across twenty-eight completed hourly runs, twenty-four of which published replies; owner-directed five and original-chat sixty-eight remain separate. Four unused slots expire. No restriction, pending submission, traffic/adoption measurement or scheduler change.
