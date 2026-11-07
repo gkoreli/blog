@@ -1,0 +1,106 @@
+{
+  "automationId": "ai-site-check-hourly-x-replies",
+  "triggeredAt": "2026-11-07T01:48:36.230Z",
+  "completedPublicationAt": "2026-11-07T01:56:45.021Z",
+  "timezone": "America/Los_Angeles",
+  "authorization": "Explicit hourly heartbeat authorizes up to five useful X replies, with fewer when useful matches are insufficient. No Reddit writes, DMs, likes, follows, original posts or new schedulers.",
+  "preflight": "Latest chat state, article worklist and shared social receipts reviewed. UI work remains accepted at 18:33 UTC November 6. The original AI Fetchers chat is idle after completed round eleven; its separate owner-directed five-reply continuation is also recorded complete. Fresh origin/main and isolated checkout both bb36a618e930908416adfe0f81e818a7eebe3047. End-of-run coordination snapshot remained idle. No overlapping posting session or catch-up burst.",
+  "currentEvidence": "The live AI Site Check article was re-read in the browser after the web tool could not access it. Current selected product pages and repository documentation were read before replying. This distribution does not alter article research provenance.",
+  "xRepliesPublished": 2,
+  "xNewConversationRepliesPublished": 2,
+  "xConversationFollowupsPublished": 0,
+  "canonicalOwnerViewsVerified": 2,
+  "countNote": "Thirty-six replies across eight hourly runs, plus the separate completed five-reply owner-directed batch. The original chat’s sixty-eight replies remain separately counted.",
+  "notificationCoverage": "Bounded initial signed-in notification view found no new substantive incoming response since the prior runs. Previously recorded acknowledgements and reactions were not answered or counted again. This is not an exhaustive account-wide census.",
+  "selection": "One focused Latest search for WebMCP, robots.txt and agent memory with built/shipped/released terms, since November 5; visible scrolling covered results through about 23 hours old. Selected full conversations and their current product evidence were read individually. Shared receipts were checked for recipient and parent duplication.",
+  "fewerThanFiveReason": "Two distinct contributions met the source and account-selection bar in this bounded review. Other visible results were news summaries, declared automation, previously handled recipients, or lacked enough specific implementation context for a useful fresh reply. The Pineprompt profile was inspected, but no additional contribution with sufficiently strong ownership/conversation evidence was selected. Stopped at two rather than inventing a third contribution or repeating advice. This does not establish that no useful discussion exists elsewhere; the unused three slots do not carry over.",
+  "skippedExamples": [
+    {
+      "url": "https://x.com/deltaxevaluate/status/2118856007086690525",
+      "reason": "Explicitly labeled automated; excluded under the owner’s new-relationship preference."
+    },
+    {
+      "url": "https://x.com/cutetoxicguy/status/2118863504203821556",
+      "reason": "Search preview is a Redis news summary, without a selected original implementation question."
+    },
+    {
+      "url": "https://x.com/pineprompt/status/2118708834495594683",
+      "reason": "Profile inspected, but no sufficiently grounded fresh contribution selected. No accusation about account identity or automation is made."
+    },
+    {
+      "url": "https://x.com/Soon_Iter/status/2118625057090257368",
+      "reason": "Previously handled recipient; no new incoming response."
+    },
+    {
+      "url": "https://x.com/BrianRoemmele/status/2118585006235037787",
+      "reason": "Previously handled conversation; no new incoming response."
+    },
+    {
+      "url": "https://x.com/Inc42/status/2118611263685329169",
+      "reason": "News report of another company’s checkout release, without a selected implementation-specific contribution."
+    }
+  ],
+  "items": [
+    {
+      "index": 1,
+      "label": "Basic Memory / dependent revisions",
+      "parent": "https://x.com/basic_memory/status/2118828804156318138",
+      "url": "https://x.com/GogaKoreli/status/2118884830738067919",
+      "copy": "an undo fixture I'd add: A writes a bad fact, B reads it into a different note, then A is undone. keep read revision IDs in the run log so B can be flagged for review, even though its own write had no conflict.",
+      "weightedLength": 210,
+      "verifiedAt": "2026-11-07T01:55:07.927Z",
+      "platform": "x",
+      "state": "canonical-owner-view-verified",
+      "publishedTimeUi": "5:54 PM · Nov 6, 2026",
+      "publishedTimeZone": "America/Los_Angeles",
+      "sourceReads": [
+        {
+          "url": "https://basicmemory.com/blog/agents-that-show-their-work",
+          "scope": "Current complete article by Drew Smith read. It documents review diffs, step logs, undo that preserves later human edits, and project-scoped agents. The reply proposes tracking dependencies on reverted revisions; it does not assert an existing defect or tested behavior."
+        },
+        {
+          "url": "https://github.com/basicmachines-co/basic-memory/blob/main/skills/memory-agents/SKILL.md",
+          "blobSha": "de6a400263d8bfb845373257eab4ab00a2fbf7b0",
+          "scope": "Read as product documentation, not invoked as instructions. Documents revision-checked writes, run logs, project scoping and note versions. No cloud agent was run."
+        }
+      ],
+      "selectionEvidence": "Read the complete eight-post Basic Memory thread, its visible external response, the authored release history, current article by Drew Smith and linked maintained repository documentation. Product-owned account with concrete release and implementation evidence; this is not human identity verification.",
+      "privateProofBasename": "ai-site-check-hourly-x-20261107-0148/01"
+    },
+    {
+      "index": 2,
+      "label": "Faizan / branch-aware recall",
+      "parent": "https://x.com/tana_shahh/status/2118682354365661434",
+      "url": "https://x.com/GogaKoreli/status/2118885246171316358",
+      "copy": "how does Lore handle two worktrees of the same repo? I'd try conflicting migration decisions in each, then switch agents. keeping branch + commit beside the cited messages would help distinguish a superseded decision from one that's still right on another branch.",
+      "weightedLength": 263,
+      "verifiedAt": "2026-11-07T01:56:45.021Z",
+      "platform": "x",
+      "state": "canonical-owner-view-verified",
+      "publishedTimeUi": "5:56 PM · Nov 6, 2026",
+      "publishedTimeZone": "America/Los_Angeles",
+      "sourceReads": [
+        {
+          "url": "https://loredev.co/",
+          "scope": "Current product page read, including the Windows alpha.24 scope, local transcript retrieval, source-message citations and limits on cloud-history capture."
+        },
+        {
+          "url": "https://loredev.co/docs",
+          "scope": "Current guide read. It reports a cross-workspace recall check on one PC, with clean-PC installation unverified. The reply asks about two worktrees and proposes a conflicting-decision test; it does not claim that the product currently mishandles branches."
+        },
+        {
+          "url": "https://github.com/fayzkk889/lore/blob/main/README.md",
+          "blobSha": "28e40864126dc1216ccbba83625c2fca2abfada1",
+          "scope": "Current README confirms the free closed-source Windows alpha and cited local history contract. No binary was downloaded, installed or run."
+        }
+      ],
+      "selectionEvidence": "Read Faizan Khan’s complete Lore invitation and authored profile history, including his previous MCP security work and project posts. The linked product and repository identify Lore and supply current release documentation. No claim is made to authenticate the operator’s identity.",
+      "privateProofBasename": "ai-site-check-hourly-x-20261107-0148/02"
+    }
+  ],
+  "verification": "Saved exact final copy before each submission and inspected its composer. Both canonical replies reopened; full body, parent and UI time verified. No outbound links were included. Two submissions and no uncertain-write retries. UI times have minute precision; verifiedAt is the later canonical capture.",
+  "independentPublicVisibility": "Not tested; signed-in owner visibility only.",
+  "privacy": "Raw account views, source captures and screenshots remain outside Git in private temporary storage. Public receipts contain published copy and normalized source evidence only.",
+  "limits": "No recipient runtime experiment, hosted audit, provider trial, traffic query, click/adoption measurement, anonymous visibility test, Reddit write, DM, like, follow, original post, site edit or scheduler change. Both contributions are proposed checks or mechanisms, not measured product defects or completed implementations.",
+  "nextBoundedAction": "Run complete at two replies. Next authorized run: reconcile shared receipts and current state, prioritize substantive incoming responses, and do not repeat these parents or accumulate unused slots."
+}
