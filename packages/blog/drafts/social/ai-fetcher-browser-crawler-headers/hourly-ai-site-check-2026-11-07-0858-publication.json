@@ -1,0 +1,122 @@
+{
+  "automationId": "ai-site-check-hourly-x-replies",
+  "triggeredAt": "2026-11-07T08:58:41.033Z",
+  "completedPublicationAt": "2026-11-07T09:08:58.943Z",
+  "timezone": "America/Los_Angeles",
+  "authorization": "Explicit hourly heartbeat authorizes up to five useful X replies, fewer when useful matches are insufficient. Scope excludes Reddit, DMs, likes, follows, original posts and scheduler changes.",
+  "preflight": "Latest worklist, previous run and shared receipts read. Required guidance and public project index reviewed; no changed owner direction found. Accepted UI work and earlier batches remain complete. Start and end coordination checks show the original posting chat inactive with its latest turn completed. Fresh origin/main and the clean isolated checkout agree at ef970763bf4e32ec210630c08b43dd499bc0c418. No overlap or catch-up burst.",
+  "currentEvidence": "Fresh live AI Site Check article read; normalized rendered text and links matched the preceding capture. Current site-audit README read for the distinction between optional representations and resource outcomes. Selected contributions use current linked product sources; no hosted audit, provider trial or product installation.",
+  "xRepliesPublished": 2,
+  "xNewConversationRepliesPublished": 2,
+  "xConversationFollowupsPublished": 0,
+  "canonicalOwnerViewsVerified": 2,
+  "countNote": "Fifty replies across fifteen completed hourly runs, fourteen of which published replies. The separate owner-directed five and original-chat sixty-eight remain separate.",
+  "notificationCoverage": "No new substantive response appeared in the bounded initial signed-in notification view. The newest visible Daryll question was already answered at 03:47; other visible questions and acknowledgements were previously recorded. No account-wide census or fresh growth measurement is claimed.",
+  "selection": "One focused Latest search: (robots.txt OR llms.txt OR crawler) (built OR launched OR blocked OR debugging) since:2026-11-06 -filter:replies. Visible scrolling reached results about nineteen hours old. Selected conversations were inspected one at a time and checked against prior receipts.",
+  "fewerThanFiveReason": "Two contributions met the evidence and selection bar. Other reviewed results were summaries, unrelated game crawlers, already handled discussions, or offered no distinct additional contribution after reading. Helen Bird already separates access, indexing and recommendation evidence in her report and methods; no generic restatement was posted. This bounded review is not exhaustive; three unused slots expire.",
+  "skippedExamples": [
+    {
+      "url": "https://x.com/Chan4Nixon/status/2118962869421437258",
+      "reason": "Full written post and authored profile read. Generic third-party summaries and no concrete owned implementation question selected. No claim about human identity."
+    },
+    {
+      "url": "https://x.com/bird_helen67403/status/2118709716360798541",
+      "reason": "Full root, visible response chains, linked learning report and complete methods appendix read. Existing work already states the relevant evidence boundaries; no distinct contribution selected. The displayed six-reply count was not independently reconciled against every potentially hidden response."
+    },
+    {
+      "url": "https://x.com/aitrothu/status/2118911177136935039",
+      "reason": "AEORank discussion already handled in the 03:47 run."
+    },
+    {
+      "url": "https://x.com/d0znpp/status/2118840938147770450",
+      "reason": "XERJ semantic-validation conversation previously handled; no new incoming response selected."
+    },
+    {
+      "url": "https://x.com/Chumakway/status/2118744197054468384",
+      "reason": "Earlier review already inspected the product and study; no new contribution selected from this preview."
+    },
+    {
+      "url": "https://x.com/ValonHajredini/status/2118980336616923172",
+      "reason": "Legal-policy news preview; no legal claim adopted or matching engineering contribution selected."
+    }
+  ],
+  "items": [
+    {
+      "parent": "https://x.com/angusbuilds/status/2118802880966611085",
+      "url": "https://x.com/GogaKoreli/status/2118992480838578277",
+      "verifiedAt": "2026-11-07T09:06:10.751Z",
+      "copy": "your README has the current one-minute cadence, but the implementation guide still says 600 seconds in two places. PollSeconds is 60 in the shipped source. I'd generate the schedule docs from that constant so operators see one schedule.",
+      "publishedTimeUi": "1:02 AM \u00b7 Nov 7, 2026",
+      "index": 1,
+      "kind": "new-thread",
+      "platform": "x",
+      "state": "canonical-owner-view-verified",
+      "publishedTimeZone": "America/Los_Angeles",
+      "weightedLength": 236,
+      "privateProofBasename": "ai-site-check-hourly-x-20261107-0858/01",
+      "label": "Angus / polling schedule documentation",
+      "selectionEvidence": "Read the full written release discussion, authored profile history with matching project releases, linked repository README, implementation guide, benchmarks and relevant source. The contribution identifies a documentation/source mismatch. The attached eight-second video was not transcribed; leak statistics, breach-cost claims and runtime detection results were not adopted.",
+      "sourceReads": [
+        {
+          "url": "https://github.com/hangryclaude/api-key-crawler/blob/ff479e8bbfc08e31155c4ca564f12ee5f76089cd/docs/HOW-IT-WORKS.md",
+          "blobSha": "a00c77da0610bac0161d748d77dc9ad67ec1b098",
+          "scope": "Current implementation guide says 600-second polling in the watcher table and again in its source table. Read the full guide through the GitHub connector."
+        },
+        {
+          "url": "https://github.com/hangryclaude/api-key-crawler/blob/ff479e8bbfc08e31155c4ca564f12ee5f76089cd/internal/install/launchd.go",
+          "blobSha": "ac2367dad6459c4c4c3cf318c99da68d477aa397",
+          "scope": "Current source sets PollSeconds to 60, uses it in the polling job interval and emits StartInterval in the launchd plist. This verifies configuration, not a runtime cadence or detection-latency measurement."
+        },
+        {
+          "url": "https://github.com/hangryclaude/api-key-crawler/blob/ff479e8bbfc08e31155c4ca564f12ee5f76089cd/README.md",
+          "scope": "Current browser-rendered README describes the one-minute cadence, agreeing with the source constant. Proposal: generate schedule documentation from that constant."
+        },
+        {
+          "url": "https://github.com/hangryclaude/api-key-crawler/blob/ff479e8bbfc08e31155c4ca564f12ee5f76089cd/docs/BENCHMARKS.md",
+          "blobSha": "4ca0b54eff3f29eac05e45807be5e5e4872e3059",
+          "scope": "Read as surrounding product context; no benchmark was executed or performance claim repeated."
+        },
+        {
+          "url": "https://github.com/hangryclaude/api-key-crawler/blob/ff479e8bbfc08e31155c4ca564f12ee5f76089cd/internal/guard/guard.go",
+          "blobSha": "47e784a4305fe612f201114b0d734ddfa70e1821",
+          "scope": "Read current guard source as product context. Reply makes no broader guard correctness, credential coverage or security-audit claim."
+        }
+      ]
+    },
+    {
+      "parent": "https://x.com/woochaq/status/2118718081623044518",
+      "url": "https://x.com/GogaKoreli/status/2118993994025955659",
+      "verifiedAt": "2026-11-07T09:08:58.943Z",
+      "copy": "your sitemap caveat could become two checks: fetch/parse status, then whether the homepage is listed. a valid product sitemap can omit the homepage. that would separate 'not listed' from 'no sitemap' in the 0% pass result.",
+      "publishedTimeUi": "1:08 AM \u00b7 Nov 7, 2026",
+      "index": 2,
+      "kind": "new-thread",
+      "platform": "x",
+      "state": "canonical-owner-view-verified",
+      "publishedTimeZone": "America/Los_Angeles",
+      "weightedLength": 222,
+      "privateProofBasename": "ai-site-check-hourly-x-20261107-0858/02",
+      "label": "Woo / sitemap result separation",
+      "selectionEvidence": "Read the complete written root and author follow-up, authored profile history including both research releases, full e-commerce report and current methodology. The report already discloses homepage-only sampling, synthetic user agents and optional formats. The reply builds on its explicit sitemap caveat rather than alleging an unobserved implementation bug. No additional claim relies on the attached chart image.",
+      "sourceReads": [
+        {
+          "url": "https://crawlwise.dev/research/ecommerce-100-ai-readiness-2026",
+          "scope": "The November 6 report uses checkset 0.4.10 and reports zero percent passing the sitemap check. Its limits explicitly say a sitemap listing products but not the homepage, or behind a challenge, is reported as missing even when the shop publishes one. Suggested separate fetch/parse and URL-membership findings; no customer site was scanned or aggregate recomputed."
+        },
+        {
+          "url": "https://crawlwise.dev/methodology",
+          "scope": "Read current checkset 0.4.10 scope and scoring, including the two-point sitemap criterion labelled valid and current. No claim that this audit predicts citations or that a particular implementation change was completed."
+        },
+        {
+          "url": "https://www.sitemaps.org/protocol.html",
+          "scope": "Read current primary sitemap format and index guidance. It specifies required XML/URL fields and permits multiple sitemap files. Homepage membership and document validity are separate properties; the proposed split is our engineering recommendation."
+        }
+      ]
+    }
+  ],
+  "verification": "Exact final text saved before each single submission. Both accepted canonical URLs reopened; body, parent and minute-precision Pacific UI time verified. Canonical text captures and screenshots retained for both. The first transient submission state was resolved without resubmitting. No unintended automatic links observed in either reply.",
+  "independentPublicVisibility": "Not tested; signed-in owner visibility only.",
+  "privacy": "Raw account views, source captures and screenshots remain outside Git. Public records contain published copy, public destinations and normalized evidence only.",
+  "limits": "No benchmark rerun, repository installation, credential scan, customer-site audit, source modification, fixture execution, hosted audit, provider trial, traffic/adoption measurement, anonymous visibility check, extra account action, site edit or scheduler change. No restriction notice was observed. Source findings are not runtime acceptance or comprehensive product audits.",
+  "nextBoundedAction": "Run complete at two. Next authorized run: reconcile shared state and receipts, prioritize substantive incoming replies, and do not repeat these parents or carry over unused slots."
+}
