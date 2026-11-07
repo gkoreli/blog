@@ -1,0 +1,149 @@
+{
+  "automationId": "ai-site-check-hourly-x-replies",
+  "triggeredAt": "2026-11-07T18:15:47.094Z",
+  "completedPublicationAt": "2026-11-07T18:22:34.384339+00:00",
+  "timezone": "America/Los_Angeles",
+  "authorization": "Explicit hourly heartbeat authorizes up to five useful X replies, fewer when useful matches are insufficient. No Reddit, DMs, likes, follows, original posts or scheduler changes.",
+  "preflight": "Read latest worklist, previous run and shared receipts, required launch/publication guidance, informal voice and owned-project index. Accepted UI work and earlier batches remain complete. Start and end coordination snapshots show the original posting chat inactive with its latest turn completed. Fresh origin/main and clean isolated checkout agree at 81a2f9d65d12b68ab459bf6c3d2e0b97e1da4c61. No overlapping posting or catch-up burst.",
+  "currentEvidence": "Fresh full live AI Site Check article read. One free public sitemap extraction tested on the owner’s homepage; current Google robots documentation and recipient methods read. No hosted AI Site Check API call or actual AI-provider trial.",
+  "xRepliesPublished": 3,
+  "xNewConversationRepliesPublished": 3,
+  "xConversationFollowupsPublished": 0,
+  "canonicalOwnerViewsVerified": 3,
+  "countNote": "Sixty-nine replies across twenty-four completed hourly runs, twenty-two of which published replies. The separate owner-directed five and original-chat sixty-eight remain separate.",
+  "notificationCoverage": "Read the newest incoming LiveaAi acknowledgment in its parent context. It responds to a separate owner prompting post, contains no new question or concrete finding, and received no repetitive follow-up. Other visible incoming campaign exchanges were already handled. This is a bounded notification view, not an account-wide census.",
+  "incomingReviewed": [
+    {
+      "url": "https://x.com/LiveaAi/status/2119125070521958877",
+      "outcome": "Acknowledgment read with its parent; no additional contribution selected and no account action taken."
+    }
+  ],
+  "selection": "One focused Latest search and two downward scrolls, with three saved search states. Investigated and published to CryptoBurrito, Bobo and Caliper one at a time. Subsequently read Al’s full written post and rendered discussion; no added advice selected. Shared receipts checked for prior destinations and prior contact.",
+  "searchQuery": "(\"robots.txt\" OR \"llms.txt\" OR \"AI crawlers\") (built OR blocked OR check OR why) since:2026-11-06 -filter:replies",
+  "fewerThanFiveReason": "Three conversations yielded distinct supported contributions in this bounded review. Al’s rendered discussion already covered verifying Googlebot identity, caching and overload handling. TypeSOL had already received a reply at this destination; Brenden had prior campaign contact and the same post had already been skipped. Other previews did not yield a selected contribution. Two unused slots expire; this is not a claim that no useful conversations exist elsewhere.",
+  "skippedExamples": [
+    {
+      "url": "https://x.com/AlDev0/status/2119092741581746536",
+      "reason": "Full written post and rendered replies read, including cache advice and reverse-plus-forward DNS verification. No distinct additional contribution selected. A collapsed nested reply was not opened; no claim of exhaustive thread coverage or validation of every timing assertion."
+    },
+    {
+      "url": "https://x.com/Type_SOL/status/2119070041303826505",
+      "reason": "Already replied to this exact destination in the 15:04 run; not repeated."
+    },
+    {
+      "url": "https://x.com/brendenvonhouse/status/2119064678622199949",
+      "reason": "Author contacted in the 13:05 run and this other post already skipped at 15:04. No substantive incoming response or distinct new contribution selected."
+    },
+    {
+      "url": "https://x.com/louiejancevski/status/2119098667281907814",
+      "reason": "Google AI-features guide summary preview; no distinct implementation contribution selected. Not fully investigated."
+    },
+    {
+      "url": "https://x.com/_sumitjha_/status/2119082290508951724",
+      "reason": "Broad website-testing preview; not fully investigated or selected."
+    },
+    {
+      "url": "https://x.com/stretchcloud/status/2119093015692111936",
+      "reason": "Legal-news commentary preview; underlying complaint not inspected and allegations not adopted."
+    }
+  ],
+  "items": [
+    {
+      "index": 1,
+      "evidenceKey": "burrito",
+      "parent": "https://x.com/CryptoBurrito/status/2119131601523106098",
+      "url": "https://x.com/GogaKoreli/status/2119132378480476162",
+      "copy": "my blog returned 80 URLs. a per-URL 'page link / sitemap / both' tag would let me spot pages missing from the sitemap without comparing exports, the aggregate counts don't tell me which ones differ.",
+      "weightedLength": 198,
+      "canonicalCaptureSavedAt": "2026-11-07T18:18:42.344607+00:00",
+      "publishedTimeUi": "10:18 AM · Nov 7, 2026",
+      "publishedTimeZone": "America/Los_Angeles",
+      "kind": "new-conversation",
+      "platform": "x",
+      "state": "canonical-owner-view-verified",
+      "privateProofBasename": "ai-site-check-hourly-x-20261107-1815/burrito-canonical",
+      "label": "CryptoBurrito / show discovery source per URL",
+      "selectionEvidence": "Read the full written sitemap-extractor post, with no existing replies rendered, authored product posts and replies. The author describes building switch402 and YourAITools; a contextual reply explains their tool descriptions and router endpoint. A separate engagement-bait response was also visible and was not used as evidence of technical substance. Selection rests on attributable product work and the concrete test, not proof of human identity. No prior campaign contact found.",
+      "sourceReads": [
+        {
+          "url": "https://switch402.com/tools/sitemap-extractor",
+          "scope": "Read the complete free-tool page and its method: same-site page links plus robots.txt and up to four same-site sitemaps, including index children. Submitted https://gkoreli.com/ once through the free form. The result displayed 80 URLs from 52 page links and 28 sitemap entries, and named https://gkoreli.com/sitemap.xml as read. The visible list had no per-URL discovery-source tag. These are observed UI results, not an independent count of the entire site or backend inspection."
+        }
+      ],
+      "recommendationBoundary": "Suggests a page-link / sitemap / both tag on each URL to expose differences without comparing exports. Does not claim a broken parser, missing indexed pages, exhaustive crawl or recipient fix. No paid endpoint, wallet, signup or purchase used."
+    },
+    {
+      "index": 2,
+      "evidenceKey": "bobo",
+      "parent": "https://x.com/BoboZivkovic/status/2119105014207508829",
+      "url": "https://x.com/GogaKoreli/status/2119132731288486178",
+      "copy": "one qualification for step 2: a wildcard Disallow: / doesn't block Googlebot when a separate Googlebot group allows /. select the bot's group before matching the path, otherwise a checker can flag a block that doesn't apply. https://developers.google.com/crawling/docs/robots-txt/robots-txt-spec#order-of-precedence-for-user-agents",
+      "weightedLength": 248,
+      "canonicalCaptureSavedAt": "2026-11-07T18:20:10.096418+00:00",
+      "publishedTimeUi": "10:19 AM · Nov 7, 2026",
+      "publishedTimeZone": "America/Los_Angeles",
+      "kind": "new-conversation",
+      "platform": "x",
+      "state": "canonical-owner-view-verified",
+      "privateProofBasename": "ai-site-check-hourly-x-20261107-1815/bobo-canonical",
+      "label": "Bobo Zivkovic / qualify the wildcard robots rule",
+      "selectionEvidence": "Read the full target discussion and its sole existing author reply linking the guide, then the complete Medium article. Read the author profile, authored launch posts and a contextual reply describing the three products he runs. The article explicitly identifies his relationship to IndieHacked and its checker. No prior campaign contact found.",
+      "sourceReads": [
+        {
+          "url": "https://bobozivkovic.medium.com/how-to-seo-optimize-your-website-10-fixes-in-order-434de805a72a",
+          "scope": "Full publicly rendered article read. Step 2 states that a wildcard Disallow: / shuts every crawler out. The reply qualifies that statement; other checklist claims and reported audit results were not independently verified or adopted."
+        },
+        {
+          "url": "https://developers.google.com/crawling/docs/robots-txt/robots-txt-spec#order-of-precedence-for-user-agents",
+          "scope": "Current official documentation read through web lookup and rendered browser page. It specifies most-specific user-agent group selection, merging applicable specific groups, and not combining specific groups with the global wildcard group. The published example is a direct application of that rule. The published short link was followed and resolved to this section."
+        }
+      ],
+      "publishedLink": "https://developers.google.com/crawling/docs/robots-txt/robots-txt-spec#order-of-precedence-for-user-agents",
+      "publishedShortLink": "https://t.co/tbISXHoqLV",
+      "recommendationBoundary": "A guide qualification and checker design consideration, not an allegation that the recipient checker misparses robots.txt. No account created, checker run, backend inspected or fix claimed."
+    },
+    {
+      "index": 3,
+      "evidenceKey": "caliper",
+      "parent": "https://x.com/caliperdynamics/status/2119122554065662449",
+      "url": "https://x.com/GogaKoreli/status/2119133321456456054",
+      "copy": "i'd add a sixth step: ask the actual agent a question whose answer is deep in the post, then check answer + citation against that paragraph. a Markdown response alone can't tell you whether the answer kept your caveats. https://gkoreli.com/ai-site-check-evidence",
+      "weightedLength": 243,
+      "canonicalCaptureSavedAt": "2026-11-07T18:22:34.384339+00:00",
+      "publishedTimeUi": "10:22 AM · Nov 7, 2026",
+      "publishedTimeZone": "America/Los_Angeles",
+      "kind": "new-conversation",
+      "platform": "x",
+      "state": "canonical-owner-view-verified",
+      "privateProofBasename": "ai-site-check-hourly-x-20261107-1815/caliper-canonical",
+      "label": "Caliper Dynamics / test answer fidelity after serving content",
+      "selectionEvidence": "Read the entire written five-step blog-readiness post, with no existing replies rendered, authored posts and contextual conversations about animation tooling and harness coverage. The linked blog lists the RNN/LSTM writing described in those posts and links back to this X account and its GitHub owner. No prior campaign contact found. This is attributable writing context, not proof of human identity.",
+      "sourceReads": [
+        {
+          "url": "https://x.com/caliperdynamics/status/2119122554065662449",
+          "scope": "Full written method read: robots controls, usage preferences, Markdown copies, llms.txt and discovery pointers. The reply adds a concrete check for the concern about an answer deep in the page; it does not adopt blanket assertions about all agents seeing raw HTML or obeying preferences."
+        },
+        {
+          "url": "https://isitagentready.com/",
+          "scope": "Read the current linked checker landing page and listed categories. No scan submitted and no advertised WebMCP tool invoked."
+        },
+        {
+          "url": "https://caliperdynamics.com/",
+          "scope": "Read homepage to confirm the writing context and reciprocal profile link. Did not audit the blog or read the full RNN/LSTM articles."
+        },
+        {
+          "url": "https://gkoreli.com/ai-site-check-evidence",
+          "scope": "Fresh full live article read, including the separation between access, source selection and answer fidelity. The reply recommends an actual agent task followed by comparison with the source paragraph. Its published short link was followed and resolved to this article."
+        }
+      ],
+      "publishedLink": "https://gkoreli.com/ai-site-check-evidence",
+      "publishedShortLink": "https://t.co/Fn9bYOdKCA",
+      "recommendationBoundary": "Proposed answer-and-citation check. No actual provider trial, claim of failure on the recipient blog, measured citation likelihood or recommendation that a file checklist guarantees use."
+    }
+  ],
+  "verification": "Exact final text saved before submission and checked in each composer. One submission click per reply, no retry. Each canonical page reopened; body, parent and minute-precision Pacific time checked. For linked replies, the visible shortened URL was followed and its final destination checked. Private canonical captures and screenshots saved for all three. canonicalCaptureSavedAt is the canonical capture filesystem timestamp in UTC, not an exact publication timestamp.",
+  "independentPublicVisibility": "Not tested; signed-in owner visibility only.",
+  "privacy": "Raw account views, source captures and screenshots remain outside Git. Public records contain published copy, public destinations and normalized evidence only.",
+  "limits": "The mapper test is one input and observed output, without backend inspection. No recipient source audit, completed fix, account creation, paid service call, hosted AI Site Check audit, provider trial, independent anonymous visibility check or traffic/adoption measurement. No account restriction observed, extra account action or scheduler change.",
+  "nextBoundedAction": "Run complete at three. Next authorized run: reconcile shared state and receipts, prioritize substantive incoming replies, and do not repeat these destinations or carry over unused slots."
+}

@@ -225,3 +225,9 @@ The run stops at two, with three unused slots expiring. Sixty-five replies are r
 [One new-conversation reply](hourly-ai-site-check-2026-11-07-1712.md) is published and canonically owner-verified: keeping commit, test command, result and run evidence alongside bug-fix memories. [Exact copy, timestamp, sources and limits](hourly-ai-site-check-2026-11-07-1712-publication.json). One submission click, with no retry. The recommendation follows the current MemoryRouter capture guide; no product runtime was tested.
 
 The run stops at one, with four unused slots expiring. Sixty-six replies are recorded across twenty-three completed hourly runs, twenty-one of which published replies; the owner-directed five and original-chat sixty-eight remain separate. Independent public visibility, traffic and adoption remain unmeasured. No extra account action or scheduler change occurred.
+
+## AI Site Check hourly run, November 7 at 18:15 UTC
+
+[Three new-conversation replies](hourly-ai-site-check-2026-11-07-1815.md) are published and canonically owner-verified: per-URL discovery provenance after a free sitemap test, a documented robots group-precedence qualification, and an answer-fidelity test beyond Markdown delivery. [Exact copy, timestamps, sources and limits](hourly-ai-site-check-2026-11-07-1815-publication.json). Each used one submission click, with no retry. Both published source links resolved to their intended destinations.
+
+The run stops at three, with two unused slots expiring. Sixty-nine replies are recorded across twenty-four completed hourly runs, twenty-two of which published replies; the owner-directed five and original-chat sixty-eight remain separate. One incoming acknowledgment was read without adding a repetitive response. Independent public visibility, traffic and adoption remain unmeasured. No extra account action or scheduler change occurred.
