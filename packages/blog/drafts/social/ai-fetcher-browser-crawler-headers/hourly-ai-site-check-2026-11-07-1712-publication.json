@@ -1,0 +1,91 @@
+{
+  "automationId": "ai-site-check-hourly-x-replies",
+  "triggeredAt": "2026-11-07T17:12:16.456Z",
+  "completedPublicationAt": "2026-11-07T17:17:14.565362+00:00",
+  "timezone": "America/Los_Angeles",
+  "authorization": "Explicit hourly heartbeat authorizes up to five useful X replies, fewer when useful matches are insufficient. No Reddit, DMs, likes, follows, original posts or scheduler changes.",
+  "preflight": "Read latest worklist, previous run and shared receipts, required launch/publication guidance, informal voice and owned-project index. Accepted UI work and earlier batches remain complete. Start and end coordination snapshots show the original posting chat inactive with its latest turn completed. Fresh origin/main and clean isolated checkout agree at f781909909d812047dbf33783350c8f30997b29f. No overlapping posting or catch-up burst.",
+  "currentEvidence": "Fresh live AI Site Check article read. The published recommendation is grounded in the current MemoryRouter guide and the target discussion, with its linked primary research read for context. No recipient runtime test, hosted AI Site Check API call or provider trial.",
+  "xRepliesPublished": 1,
+  "xNewConversationRepliesPublished": 1,
+  "xConversationFollowupsPublished": 0,
+  "canonicalOwnerViewsVerified": 1,
+  "countNote": "Sixty-six replies across twenty-three completed hourly runs, twenty-one of which published replies. The separate owner-directed five and original-chat sixty-eight remain separate.",
+  "notificationCoverage": "No new substantive incoming response selected in the bounded initial notification view. Peter’s newest visible response was already answered in the 12:06 run; visible Daryll, mpgn and Sergei exchanges were previously handled. This is not an account-wide census.",
+  "selection": "One focused Latest search followed by five downward scrolls. Read the full written ELYRAON post but found insufficient linked implementation context for a specific contribution. Investigated John’s full discussion, authored context, product guide and linked primary research before submitting. Other results received preview-level review only. Shared receipts checked for duplicate destinations and prior contact.",
+  "searchQuery": "(MCP OR agents) (memory OR context) (built OR shipped OR \"open source\") since:2026-11-07 -filter:replies",
+  "fewerThanFiveReason": "One conversation yielded a concrete supported contribution in this bounded review. The other reviewed results were mostly broad summaries or promotions, or did not provide enough specific method context for useful advice. Four unused slots expire. This does not establish that useful conversations do not exist elsewhere.",
+  "skippedExamples": [
+    {
+      "url": "https://x.com/ELYRAON_SYSTEMS/status/2119112649694753237",
+      "reason": "Full written continuity-engine post read; no repository or method link in the target and no specific implementation contribution selected. Embedded video was not analyzed and profile was not inspected. No account-identity claim."
+    },
+    {
+      "url": "https://x.com/clawdtalk/status/2119114701627945166",
+      "reason": "Anthropic memory-study summary preview; not fully investigated or selected."
+    },
+    {
+      "url": "https://x.com/professorclawai/status/2119114088290615498",
+      "reason": "Morning news-roundup preview; not fully investigated or selected. No account-identity claim."
+    },
+    {
+      "url": "https://x.com/3amer_osama/status/2119115873059570076",
+      "reason": "Third-party crypto-agent-kit promotion preview; no implementation contribution selected. Product claims unverified and not adopted."
+    },
+    {
+      "url": "https://x.com/amitmuflis/status/2119111934587105430",
+      "reason": "Hermes how-to guide preview; not fully investigated or selected."
+    },
+    {
+      "url": "https://x.com/loudernet/status/2119104655061823561",
+      "reason": "MCP-server roundup preview; not fully investigated or selected. Capability claims not adopted."
+    },
+    {
+      "url": "https://x.com/singhaditya21/status/2119099445954408723",
+      "reason": "Broad persistent-agent preview; no distinct specific contribution selected. Not fully investigated."
+    }
+  ],
+  "items": [
+    {
+      "index": 1,
+      "evidenceKey": "john",
+      "label": "John Rood / preserve the basis of bug-fix memories",
+      "parent": "https://x.com/johnroodepic/status/2119107824961884399",
+      "url": "https://x.com/GogaKoreli/status/2119116837803995195",
+      "copy": "for bug-fix memories, i'd keep commit + test command + result + a link to the run alongside the turn. your guide excludes tool output, so that gives the next session a way to check what a remembered 'fixed' was based on.",
+      "weightedLength": 220,
+      "canonicalCaptureSavedAt": "2026-11-07T17:17:14.565362+00:00",
+      "publishedTimeUi": "9:16 AM · Nov 7, 2026",
+      "publishedTimeZone": "America/Los_Angeles",
+      "kind": "new-conversation",
+      "platform": "x",
+      "state": "canonical-owner-view-verified",
+      "privateProofBasename": "ai-site-check-hourly-x-20261107-1712/john-canonical",
+      "selectionEvidence": "Read the full written target post, which had no existing replies rendered. Read authored posts and contextual replies, including comments about independent code review and the originating conditions of older memory notes. The profile identifies the author as the MemoryRouter builder; the product site links his SDK repository. No prior campaign contact found. This supports attributable project context, not proof of human identity.",
+      "sourceReads": [
+        {
+          "url": "https://x.com/johnroodepic/status/2119107824961884399",
+          "scope": "Full written discussion read. It connects an Anthropic shared-memory experiment to keeping original records and describes MemoryRouter retaining full turns. No private implementation inspected."
+        },
+        {
+          "url": "https://memoryrouter.ai/claude-code",
+          "scope": "Full current rendered guide read, including hook lifecycle and capture scope. It describes saving the user prompt and final assistant answer while excluding tool calls, patches, thinking and subagent chatter. Documentation inspection only; no installation, source review or runtime test. Pricing, performance and comparative claims were not adopted."
+        },
+        {
+          "url": "https://www.anthropic.com/research/components-of-agent-memory",
+          "scope": "Full current primary research article read, including the contract-wiki experiment discussed by the parent. Used to understand the conversation; no study reproduction or claim that its results generalize to MemoryRouter. The reply does not repeat the study measurements."
+        },
+        {
+          "url": "https://gkoreli.com/ai-site-check-evidence",
+          "scope": "Fresh full live article read during preflight. No hosted check, API request or provider trial."
+        }
+      ],
+      "recommendationBoundary": "Proposes storing a commit, test command, result and run link alongside a bug-fix memory so a later session can check its basis. Does not claim the recipient has an observed bug, lacks every proposed metadata field, or has implemented a fix. The factual premise is explicitly attributed to the guide."
+    }
+  ],
+  "verification": "Final text saved before submission. One submission click; the pending state was resolved without retry. The canonical page was reopened and its body, parent URL and minute-precision Pacific time checked. Private canonical text and screenshot saved. No link added: the parent already supplies the product guide and research context. canonicalCaptureSavedAt is the saved canonical capture filesystem timestamp in UTC, not an exact publication timestamp.",
+  "independentPublicVisibility": "Not tested; signed-in owner visibility only.",
+  "privacy": "Raw account views, source captures and screenshots remain outside Git. Public records contain published copy, public destinations and normalized evidence only.",
+  "limits": "No recipient installation, runtime test, source audit, reproduced bug, completed fix, hosted AI Site Check audit, provider trial, independent anonymous visibility check or traffic/adoption measurement. No account restriction observed, extra account action or scheduler change.",
+  "nextBoundedAction": "Run complete at one. Next authorized run: reconcile shared state and receipts, prioritize substantive incoming replies, and do not repeat this destination or carry over unused slots."
+}

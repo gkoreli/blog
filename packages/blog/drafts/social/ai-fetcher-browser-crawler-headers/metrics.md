@@ -219,3 +219,9 @@ The run stops at two, with three unused slots expiring. Sixty-three replies are 
 [Two new-conversation replies](hourly-ai-site-check-2026-11-07-1603.md) are published and canonically owner-verified: a publication-time availability check for Jesse’s demo-to-marketing workflow, and a post-repair probe pass for KORRO’s generated MCP tools. [Exact copy, timestamps, sources and limits](hourly-ai-site-check-2026-11-07-1603-publication.json). Each used one submission click. The first is a proposed workflow improvement; the second is explicitly limited to source inspection.
 
 The run stops at two, with three unused slots expiring. Sixty-five replies are recorded across twenty-two completed hourly runs, twenty of which published replies; the owner-directed five and original-chat sixty-eight remain separate. Independent public visibility, traffic and adoption remain unmeasured. No extra account action or scheduler change occurred.
+
+## AI Site Check hourly run, November 7 at 17:12 UTC
+
+[One new-conversation reply](hourly-ai-site-check-2026-11-07-1712.md) is published and canonically owner-verified: keeping commit, test command, result and run evidence alongside bug-fix memories. [Exact copy, timestamp, sources and limits](hourly-ai-site-check-2026-11-07-1712-publication.json). One submission click, with no retry. The recommendation follows the current MemoryRouter capture guide; no product runtime was tested.
+
+The run stops at one, with four unused slots expiring. Sixty-six replies are recorded across twenty-three completed hourly runs, twenty-one of which published replies; the owner-directed five and original-chat sixty-eight remain separate. Independent public visibility, traffic and adoption remain unmeasured. No extra account action or scheduler change occurred.
