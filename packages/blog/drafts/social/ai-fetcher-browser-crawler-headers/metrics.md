@@ -195,3 +195,9 @@ Fifty-three replies remain recorded across seventeen completed hourly runs, fift
 [Three further replies](hourly-ai-site-check-2026-11-07-1206.md) are published and canonically owner-verified: one incoming lease-ledger follow-up, one answer grounded in Tenaz’s conflict/amendment ADR, and one paired handoff evaluation suggestion. [Exact copy, timestamps, sources and limits](hourly-ai-site-check-2026-11-07-1206-publication.json). Both published source links resolved to their intended pages. No recipient fixture or runtime was executed.
 
 The run stops at three, with two unused slots expiring. Fifty-six replies are recorded across eighteen completed hourly runs, sixteen of which published replies; the owner-directed five and original-chat sixty-eight remain separate. Independent public visibility, traffic and adoption remain unmeasured. No extra account action or scheduler change occurred.
+
+## AI Site Check hourly run, November 7 at 13:05 UTC
+
+[Two new-conversation replies](hourly-ai-site-check-2026-11-07-1305.md) are published and canonically owner-verified: a conditional Cache API implementation note and a documented Railway skill-routing pattern. [Exact copy, timestamps, sources and limits](hourly-ai-site-check-2026-11-07-1305-publication.json). Both published source links resolved to their intended pages. The first submission’s initial non-acceptance was checked before one deliberate retry; the receipt preserves that sequence. No recipient runtime was executed.
+
+The run stops at two, with three unused slots expiring. Fifty-eight replies are recorded across nineteen completed hourly runs, seventeen of which published replies; the owner-directed five and original-chat sixty-eight remain separate. Independent public visibility, traffic and adoption remain unmeasured. No extra account action or scheduler change occurred.

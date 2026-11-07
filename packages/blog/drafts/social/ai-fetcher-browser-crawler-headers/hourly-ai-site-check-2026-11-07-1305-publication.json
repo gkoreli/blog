@@ -1,0 +1,101 @@
+{
+  "automationId": "ai-site-check-hourly-x-replies",
+  "triggeredAt": "2026-11-07T13:05:13.723Z",
+  "completedPublicationAt": "2026-11-07T13:16:55.093Z",
+  "timezone": "America/Los_Angeles",
+  "authorization": "Explicit hourly heartbeat authorizes up to five useful X replies, fewer when useful matches are insufficient. Scope excludes Reddit, DMs, likes, follows, original posts and scheduler changes.",
+  "preflight": "Latest worklist, previous run and shared receipts read. Required guidance and public project index reviewed. Accepted UI work and earlier batches remain complete. Start and end coordination checks show the original posting chat inactive with its latest turn completed. Fresh origin/main and clean isolated checkout agree at d5865882f5c3612100cffa5cf748ce538662e20a. No overlap or catch-up burst.",
+  "currentEvidence": "Fresh live AI Site Check article read; normalized rendered text and links matched the preceding capture. Both replies rely on current primary pages and the actual discussions. No hosted audit or provider trial.",
+  "xRepliesPublished": 2,
+  "xNewConversationRepliesPublished": 2,
+  "xConversationFollowupsPublished": 0,
+  "canonicalOwnerViewsVerified": 2,
+  "countNote": "Fifty-eight replies across nineteen completed hourly runs, seventeen of which published replies. The separate owner-directed five and original-chat sixty-eight remain separate.",
+  "notificationCoverage": "No new substantive incoming response selected in the bounded initial notification view. Peter’s newest visible response was already answered in the preceding run; other visible exchanges were previously handled. This is not an account-wide census.",
+  "selection": "One focused Latest search, initial results and two downward scrolls. Investigated Edo, Justin and Brenden individually. Selected Edo and Brenden for distinct source-backed contributions. Receipts checked for duplicate parents and prior contact.",
+  "searchQuery": "(robots.txt OR llms.txt OR crawler) (AI OR agents) since:2026-11-07 -filter:replies",
+  "fewerThanFiveReason": "Two conversations yielded a distinct contribution in the bounded review. Justin’s post and authored feed were read, but the Replies view contained no reply history and no concrete implementation was available in the inspected material. Other previews were general tips, third-party summaries or promotion without another selected contribution. Three unused slots expire; useful conversations elsewhere are not ruled out.",
+  "skippedExamples": [
+    {
+      "url": "https://x.com/justinjacobsseo/status/2119048554257985918",
+      "reason": "Relevant crawler tip, but inspected profile and empty Replies view supplied insufficient substantive conversation or implementation context for this selection. No account-identity judgment."
+    },
+    {
+      "url": "https://x.com/_junaidkhalid1/status/2119046851861364971",
+      "reason": "Third-party study summary in the search preview; earlier campaign contact already exists. No new distinct contribution selected or study verified."
+    },
+    {
+      "url": "https://x.com/wlzh/status/2119036489946550630",
+      "reason": "Third-party resource roundup preview; not fully investigated or selected."
+    },
+    {
+      "url": "https://x.com/CiteRadar/status/2119031695592820760",
+      "reason": "Tool promotion preview; no distinct implementation contribution selected. No tool audit performed."
+    },
+    {
+      "url": "https://x.com/Team_Thor_AI/status/2119019980070985757",
+      "reason": "Daily news summary preview; no matching implementation question selected."
+    }
+  ],
+  "items": [
+    {
+      "index": 1,
+      "parent": "https://x.com/edo_lunardi/status/2119040128223945064",
+      "url": "https://x.com/GogaKoreli/status/2119054717938704638",
+      "copy": "if you're using the Cache API, restore Cache-Tag when putting a matched response back. cache.match() strips it, so a purge between match and put can leave the replacement untagged and missed by later tag purges: https://developers.cloudflare.com/workers/runtime-apis/cache/#put",
+      "weightedLength": 235,
+      "publishedTimeUi": "5:09 AM · Nov 7, 2026",
+      "verifiedAt": "2026-11-07T13:12:50.960Z",
+      "publishedLink": "https://t.co/uwVOuffKGN",
+      "kind": "new-conversation",
+      "platform": "x",
+      "state": "canonical-owner-view-verified",
+      "publishedTimeZone": "America/Los_Angeles",
+      "privateProofBasename": "ai-site-check-hourly-x-20261107-1305/01-canonical",
+      "label": "Edo / preserving cache tags",
+      "selectionEvidence": "Read the full project post and estimate image, expanded the visible reply chains, followed the Sanity clarification and nested response, and inspected authored project history. Edo is still testing an Astro/Sanity project with tag-based cache purging. No prior campaign contact found. The reply is conditional on using the Cache API; it does not endorse the cost estimates or claim a reproduced defect.",
+      "sourceReads": [
+        {
+          "url": "https://developers.cloudflare.com/workers/runtime-apis/cache/#put",
+          "scope": "Read the current Cache API reference, including the documented loss of Cache-Tag on match and restoration requirement when storing a response again. No runtime reproduction."
+        },
+        {
+          "url": "https://www.sanity.io/docs/visual-editing",
+          "scope": "Read the linked visual-editing overview and inspected the Astro guide for project context. No Sanity compatibility or runtime claim in the reply."
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "parent": "https://x.com/brendenvonhouse/status/2119030272029233338",
+      "url": "https://x.com/GogaKoreli/status/2119056317910548527",
+      "copy": "their skills write-up adds a useful piece: twelve separate skills became one use-railway entry point, routing to deploy/debug/config references. worth copying that task routing when building a similar agent on-ramp: https://blog.railway.com/p/skills-issue-writing-skills",
+      "weightedLength": 239,
+      "verifiedAt": "2026-11-07T13:16:55.093Z",
+      "publishedLink": "https://t.co/QafbGRXMZR",
+      "publishedTimeUi": "5:16 AM · Nov 7, 2026",
+      "kind": "new-conversation",
+      "platform": "x",
+      "state": "canonical-owner-view-verified",
+      "publishedTimeZone": "America/Los_Angeles",
+      "privateProofBasename": "ai-site-check-hourly-x-20261107-1305/02-canonical",
+      "label": "Brenden / routing agent skills",
+      "selectionEvidence": "Read the entire Railway study post; no replies were rendered before ours. Inspected authored posts about his own study and comparisons, and varied contextual reply history. Read Railway’s current agent documentation and full skills write-up. No prior campaign contact found. The contribution adds a documented task-routing pattern without adopting the post’s page counts or causal explanation for agent recommendations.",
+      "sourceReads": [
+        {
+          "url": "https://blog.railway.com/p/skills-issue-writing-skills",
+          "scope": "Full June 24 authored write-up read. Describes replacing twelve skills with a use-railway entry point that selects task references. The reply recommends that pattern; it does not independently validate the reported improvement."
+        },
+        {
+          "url": "https://docs.railway.com/agents",
+          "scope": "Current official integration overview read for CLI, MCP and skills context. No installation, deployment or comparison performed."
+        }
+      ]
+    }
+  ],
+  "verification": "Exact final text preserved before submission. Reply one required two clicks: the first left the populated composer open; the settled view and a fresh signed-in Replies history showed no accepted reply before the second click. The second produced the canonical reply, which was reopened and verified. Reply two used one submission click. Both canonical bodies, parents and minute-precision Pacific times were checked; both published t.co links resolved to the intended primary pages. Private canonical text and screenshots saved for both.",
+  "independentPublicVisibility": "Not tested; signed-in owner visibility only.",
+  "privacy": "Raw account views, source captures and screenshots remain outside Git. Public records contain published copy, public destinations and normalized evidence only.",
+  "limits": "No recipient runtime test, fixture execution, installation, deployment, source edit, hosted audit, provider trial, independent anonymous visibility check, traffic/adoption measurement, extra account action or scheduler change. No account restriction observed. Documented mechanisms and recommendations are not verified recipient outcomes.",
+  "nextBoundedAction": "Run complete at two. Next authorized run: reconcile current shared state and receipts, prioritize substantive incoming replies, and do not repeat these destinations or carry over unused slots."
+}
