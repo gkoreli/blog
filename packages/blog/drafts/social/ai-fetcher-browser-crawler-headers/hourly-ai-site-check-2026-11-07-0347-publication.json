@@ -1,0 +1,139 @@
+{
+  "automationId": "ai-site-check-hourly-x-replies",
+  "triggeredAt": "2026-11-07T03:47:07.939Z",
+  "completedPublicationAt": "2026-11-07T03:56:26.512Z",
+  "timezone": "America/Los_Angeles",
+  "authorization": "Explicit hourly heartbeat permits up to five useful X replies, with fewer when insufficient useful matches are found. Scope excludes Reddit writes, DMs, likes, follows, original posts and scheduler changes.",
+  "preflight": "Latest worklist, shared receipts and chat state reviewed. UI work remains accepted at 18:33 UTC November 6; the original posting chat and separate owner-directed five-reply batch are complete. Start and end compact coordination snapshots show the original posting chat idle. Fresh origin/main and clean isolated checkout agree at e86ef8c703d0771f487aff051eef37e1667c3a10. No posting overlap or catch-up burst.",
+  "currentEvidence": "Fresh live AI Site Check article read in the browser after the web fetch could not access it. Current owned implementation and selected external product/documentation evidence inspected before claims. Distribution does not alter frozen article research provenance.",
+  "xRepliesPublished": 3,
+  "xNewConversationRepliesPublished": 2,
+  "xConversationFollowupsPublished": 1,
+  "canonicalOwnerViewsVerified": 3,
+  "countNote": "Forty-two replies across ten hourly runs, plus the separate completed five-reply owner-directed batch. The original chat’s sixty-eight replies remain separately counted.",
+  "notificationCoverage": "The initial bounded signed-in notification view contained a new Daryll response about attribution evidence and historical analytics; it was read in full context and answered first. Other visible replies and reactions were already recorded. This is not an account-wide census or a new growth measurement.",
+  "selection": "One focused Latest search for llms.txt, AI crawler or WebMCP with built/shipped/debugging terms since November 5, followed by visible scrolling through results about twenty hours old. Each selected discussion, authored account history and relevant product evidence was read individually. Prior receipts checked for duplicate destinations and earlier selection decisions.",
+  "fewerThanFiveReason": "The new incoming follow-up and two new project-specific findings met the evidence bar. Other reviewed matches were a previously covered XERJ discussion, an already handled Rspress release, a previously researched discussion without a new contribution, or third-party news/release summaries. Stopped at three rather than forcing another contribution. This bounded review does not establish that no other useful discussion exists; two unused slots do not carry over.",
+  "skippedExamples": [
+    {
+      "url": "https://x.com/d0znpp/status/2118840938147770450",
+      "reason": "Same XERJ article/conversation context already researched in the 23:47 run, which answered Hanan’s concrete semantic-validation question. No fresh distinct contribution selected."
+    },
+    {
+      "url": "https://x.com/Chumakway/status/2118744197054468384",
+      "reason": "Earlier owner-directed receipt records full discussion/product/study review without a distinct contribution. No new basis to repeat the research or reply appeared here."
+    },
+    {
+      "url": "https://x.com/Soon_Iter/status/2118625057090257368",
+      "reason": "Previously handled Rspress release; no new incoming response."
+    },
+    {
+      "url": "https://x.com/nickstarz/status/2118780560764268886",
+      "reason": "Third-party shopping benchmark summary without a selected original implementation question."
+    },
+    {
+      "url": "https://x.com/Inc42/status/2118611263685329169",
+      "reason": "Third-party checkout release news, without a distinct contribution selected."
+    },
+    {
+      "url": "https://x.com/Tuminha_dds/status/2118614394699493841",
+      "reason": "Third-party agent-browser notes preview; no additional source-grounded contribution selected in this bounded run."
+    }
+  ],
+  "items": [
+    {
+      "index": 1,
+      "label": "Daryll / versioned attribution",
+      "kind": "follow-up",
+      "parent": "https://x.com/cooldaddpj/status/2118901083053666333",
+      "url": "https://x.com/GogaKoreli/status/2118913611498414182",
+      "copy": "yeah, that also needs a rule version. our receipts keep classifier and verifier profiles, so a later rule change can be separated from new traffic. i'd keep historical reclassification as a separate view, with the old result still inspectable.",
+      "weightedLength": 243,
+      "verifiedAt": "2026-11-07T03:50:04.239Z",
+      "platform": "x",
+      "state": "canonical-owner-view-verified",
+      "publishedTimeUi": "7:49 PM · Nov 6, 2026",
+      "publishedTimeZone": "America/Los_Angeles",
+      "sourceReads": [
+        {
+          "url": "https://gkoreli.com/ai-site-check-evidence",
+          "scope": "Fresh live article read. It preserves controlled-test attribution separately from declarations and verified publisher evidence. The complete incoming conversation was read before responding; its existing article link was not repeated."
+        },
+        {
+          "url": "https://github.com/gkoreli/blog/blob/e86ef8c703d0771f487aff051eef37e1667c3a10/packages/analytics/src/observation-receipt.ts",
+          "blobSha": "a871f8f35fbe47d31f102a35b9401ca214d7e790",
+          "scope": "Read from the clean checkout matching freshly fetched origin/main. storedObservationReceipt retains classifierProfile, verifierProfile and signerDisplayProfile. This supports the implementation statement in the reply. A separate historical reclassification view is a recommendation, not a claim that a new replay feature was implemented."
+        },
+        {
+          "url": "https://github.com/gkoreli/blog/blob/e86ef8c703d0771f487aff051eef37e1667c3a10/packages/analytics/src/article-reach-contract.ts",
+          "blobSha": "040448ed26d5f5b93fb755be740837ec7f6a1fe7",
+          "scope": "Read the measurement-history contract and retained classifier/collection stamps. No production query, reclassification or new traffic measurement was performed."
+        }
+      ],
+      "selectionEvidence": "Substantive new response in an existing conversation, selected before new outreach. Read the full ancestor chain: original Direct-traffic post, Daryll’s responses and our two earlier replies. His new concern about rewriting historical analytics supports the versioned-receipt extension. No extra like or repeated article pitch.",
+      "privateProofBasename": "ai-site-check-hourly-x-20261107-0347/01"
+    },
+    {
+      "index": 2,
+      "label": "Khoa / consistent rule severity",
+      "kind": "new-thread",
+      "parent": "https://x.com/aitrothu/status/2118911177136935039",
+      "url": "https://x.com/GogaKoreli/status/2118914536581578994",
+      "copy": "your public spec lists CFA-02 as low/editorial, while the landing-page sample shows High (P1). could the sample read the same rule metadata as the report? that would keep repair priorities consistent as the rules change.",
+      "weightedLength": 220,
+      "verifiedAt": "2026-11-07T03:53:40.282Z",
+      "platform": "x",
+      "state": "canonical-owner-view-verified",
+      "publishedTimeUi": "7:52 PM · Nov 6, 2026",
+      "publishedTimeZone": "America/Los_Angeles",
+      "sourceReads": [
+        {
+          "url": "https://aeorank.app/",
+          "scope": "Read the current landing page and CFA-02 sample row: Sitemap Uniform Lastmod is shown as High (P1), with an over-80-percent threshold. Read the patch safety explanation and inspected the static Chapter 02 robots preview through its UI WebMCP tab-switch tool; no live audit or patch-generation API was invoked."
+        },
+        {
+          "url": "https://github.com/aizaloapp/aeorank/blob/main/README.md",
+          "blobSha": "c506f61e6a63979b5395d513006bf0927122f869",
+          "scope": "Read current scoring and rule documentation, including CFA-02: low severity, Editorial Convention, all sitemap URLs sharing an identical lastmod. The reply reports the observed public-documentation severity mismatch and proposes sharing rule metadata. It does not assert which metadata the deployed engine uses or claim a generated audit was wrong."
+        }
+      ],
+      "selectionEvidence": "Read Khoa’s complete release post, expanded author follow-up and the other visible reply. Inspected authored profile posts and the linked functioning product, CLI documentation and maintained public specification. These provide product-specific ownership context beyond a badge or follower count; operator identity was not authenticated.",
+      "privateProofBasename": "ai-site-check-hourly-x-20261107-0347/02"
+    },
+    {
+      "index": 3,
+      "label": "Kudo / inspectable validator source",
+      "kind": "new-thread",
+      "parent": "https://x.com/kudo_archi/status/2118724084343431303",
+      "url": "https://x.com/GogaKoreli/status/2118915262611365954",
+      "copy": "the validator source linked from Evaluator & hooks is returning 404 for me. is there a new public path? that's the piece I'd read to understand how the X-post hook distinguishes a post existing from the promised work being done.",
+      "weightedLength": 228,
+      "verifiedAt": "2026-11-07T03:56:26.512Z",
+      "platform": "x",
+      "state": "canonical-owner-view-verified",
+      "publishedTimeUi": "7:55 PM · Nov 6, 2026",
+      "publishedTimeZone": "America/Los_Angeles",
+      "sourceReads": [
+        {
+          "url": "https://docs.kudo.archi/",
+          "scope": "Read the current project overview, source links, evaluator role and distinction between current capabilities and roadmap. Its official X link matches the recipient account."
+        },
+        {
+          "url": "https://docs.kudo.archi/how-it-works/evaluator-and-hooks",
+          "scope": "Read the complete page. It describes an LLM-based evaluator that reads proof through hooks, including X posts, with public validator instructions linked on GitHub. No covenant, transaction, wallet or evaluator was run."
+        },
+        {
+          "url": "https://github.com/Kudo-Dev-tech/kudo-agents/tree/main/kudo-agent/agents/validator",
+          "scope": "The exact documented source link displayed a 404 in the browser. The corresponding GitHub contents API returned NOT_FOUND as well. The reply says the link returns 404 for us; it does not infer deletion, repository privacy, malicious intent or failure of the evaluator itself."
+        }
+      ],
+      "selectionEvidence": "Read the complete ship log and its visible reply, authored release history and concrete integration posts. Current project docs link back to the same X account and expose the specific validator source path. Product-owned release evidence supplied selection context; this is not human identity verification.",
+      "privateProofBasename": "ai-site-check-hourly-x-20261107-0347/03"
+    }
+  ],
+  "verification": "Saved exact final copy and composer before each submission. All three canonical URLs reopened; body, parent and minute-precision UI time verified and screenshots saved. Pending UI states were allowed to settle before reading accepted URLs; no uncertain submission was retried. No outbound links in final copy.",
+  "independentPublicVisibility": "Not tested; signed-in owner visibility only.",
+  "privacy": "Raw account views, source captures and screenshots remain outside Git in private temporary storage. Public receipts contain published copy and normalized evidence only.",
+  "limits": "No hosted audit, recipient software execution, provider trial, wallet or financial action, traffic/adoption measurement, anonymous visibility test, extra account action, site edit or scheduler change. The Kudo 404 is an observed access result with unknown cause; the AEORank mismatch is between displayed documentation, not a measured engine defect.",
+  "nextBoundedAction": "Run complete at three. Next authorized run: reconcile current state and receipts, prioritize substantive incoming responses, and do not repeat these parent statuses or accumulate unused slots."
+}
