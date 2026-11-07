@@ -1,0 +1,150 @@
+{
+  "automationId": "ai-site-check-hourly-x-replies",
+  "triggeredAt": "2026-11-07T02:47:06.892Z",
+  "completedPublicationAt": "2026-11-07T03:12:02.910217Z",
+  "timezone": "America/Los_Angeles",
+  "authorization": "Explicit hourly heartbeat authorizes up to five useful X replies, with fewer when useful matches are insufficient. This run is X replies only.",
+  "preflight": "Latest chat state, article worklist and shared social receipts reviewed. UI work remains accepted at 18:33 UTC November 6. The original AI Fetchers chat and separate owner-directed five-reply batch are complete. Fresh origin/main and isolated checkout both a6a532f38002b2f15c09ab17c114c0eba56a6e57. Start and end compact coordination snapshots showed the other posting chat idle. No overlap or catch-up burst.",
+  "currentEvidence": "The live AI Site Check article was re-read in the browser. Current selected product and source evidence was read before each reply. Distribution does not alter the article’s frozen research provenance.",
+  "xRepliesPublished": 3,
+  "xNewConversationRepliesPublished": 3,
+  "xConversationFollowupsPublished": 0,
+  "canonicalOwnerViewsVerified": 3,
+  "countNote": "Thirty-nine replies across nine hourly runs, plus the separate completed five-reply owner-directed batch. The original chat’s sixty-eight replies remain separately counted.",
+  "notificationCoverage": "The bounded initial signed-in notification view contained previously recorded replies and reactions, with no new substantive incoming response selected. This is not an account-wide census.",
+  "selection": "One focused Latest search for Ghostty, web components or repository context with built/shipped/released terms since November 5. Visible results through November 5 were reviewed, then selected conversations and source evidence individually. Shared receipts were checked for recipient and parent duplication.",
+  "fewerThanFiveReason": "Three distinct contributions met the source and account-selection bar in this bounded review. Other visible results were already-handled conversations, release/news summaries, declared automation or lacked enough original implementation context for a useful fresh contribution. Stopped at three rather than repeating advice or filling a quota. This does not establish that no useful discussion exists elsewhere; the two unused slots do not carry over.",
+  "skippedExamples": [
+    {
+      "url": "https://x.com/mitchellh/status/2118848233762078971",
+      "reason": "Previously handled in round eleven; no new incoming response."
+    },
+    {
+      "url": "https://x.com/sdairs/status/2118700443710701852",
+      "reason": "Previously handled in round eleven; no new incoming response."
+    },
+    {
+      "url": "https://x.com/HermesAgentLog/status/2118456786051354657",
+      "reason": "Explicitly described as automated by tinkerlog; excluded under the owner’s new-relationship preference."
+    },
+    {
+      "url": "https://x.com/minhng92/status/2118587025054187934",
+      "reason": "Hermes release summary without a selected original implementation question."
+    },
+    {
+      "url": "https://x.com/VaseGod/status/2118474691010789708",
+      "reason": "Someone-else-built roundup; no sufficiently specific project-owned discussion selected."
+    },
+    {
+      "url": "https://x.com/zoomeye_team/status/2118653130770645159",
+      "reason": "Unrelated PHP security-news result."
+    }
+  ],
+  "items": [
+    {
+      "index": 1,
+      "label": "Arthur / delivery-aware retries",
+      "parent": "https://x.com/arthurjdev/status/2118815423437078633",
+      "url": "https://x.com/GogaKoreli/status/2118898746079784989",
+      "copy": "i'd put a retry note beside no_signal: delivered:true, started:null means the prompt is already in the PTY. read the pane before retrying, otherwise a wrapper that retries every unconfirmed start can submit the same prompt twice.",
+      "weightedLength": 229,
+      "verifiedAt": "2026-11-07T02:50:24.807Z",
+      "platform": "x",
+      "state": "canonical-owner-view-verified",
+      "publishedTimeUi": "6:50 PM · Nov 6, 2026",
+      "publishedTimeZone": "America/Los_Angeles",
+      "sourceReads": [
+        {
+          "url": "https://github.com/arthjean/paneflow/blob/v0.19.0/README.md",
+          "blobSha": "693867713a4f92678091e2dbee7af89a8e9144c8",
+          "scope": "Read the release README and complete author article on OSC 7501 status. No performance claim or local Paneflow execution is made."
+        },
+        {
+          "url": "https://github.com/arthjean/paneflow/blob/v0.19.0/docs/user/scripting.md",
+          "blobSha": "2c6dd423dad4191690663d5927b3b4eb50173dae",
+          "scope": "The submit contract distinguishes text and CR delivery from observed state transitions: delivered true means bytes were written; started null with no_signal means no OSC signal. Current main documentation was also read and had the same blob. The duplicate-retry warning is an inference from this contract, not an observed wrapper bug."
+        }
+      ],
+      "selectionEvidence": "Read Arthur’s complete agent-status article, all six visible root replies and loaded author follow-ups. His authored Paneflow development history and linked versioned source supplied project ownership evidence beyond the profile badge. Existing delivery/status questions made retry semantics relevant.",
+      "privateProofBasename": "ai-site-check-hourly-x-20261107-0247/01"
+    },
+    {
+      "index": 2,
+      "label": "Deepanshu / configuration preview",
+      "parent": "https://x.com/dipxsyy/status/2118711069254603030",
+      "url": "https://x.com/GogaKoreli/status/2118899156895092938",
+      "copy": "Files.Recording already keeps the old/new config and queued actions, that seems like most of a useful sync --dry-run. print per-app diffs plus reload commands, so people can inspect the first sync before handing over their editor and terminal configs.",
+      "weightedLength": 251,
+      "verifiedAt": "2026-11-07T02:52:04.680Z",
+      "platform": "x",
+      "state": "canonical-owner-view-verified",
+      "publishedTimeUi": "6:51 PM · Nov 6, 2026",
+      "publishedTimeZone": "America/Los_Angeles",
+      "sourceReads": [
+        {
+          "url": "https://github.com/DeepanshuMishraa/rexeme",
+          "commit": "6bdcdc4dc11a445d12ff1e790f9b4834a06146b8",
+          "scope": "Read the complete README and linked macOS theme-sync workflow. No installer, application or watcher was run."
+        },
+        {
+          "url": "https://github.com/DeepanshuMishraa/rexeme/blob/6bdcdc4dc11a445d12ff1e790f9b4834a06146b8/src/main.ts",
+          "blobSha": "d4daa6537eabb90d2386435572c651cb85650100",
+          "scope": "Current command dispatch read; sync exposes its app selection flag, with no exposed dry-run option in the inspected source."
+        },
+        {
+          "url": "https://github.com/DeepanshuMishraa/rexeme/blob/6bdcdc4dc11a445d12ff1e790f9b4834a06146b8/src/Files.ts",
+          "blobSha": "71abb2cf29f3b99532526167f1f6354b77eb3d8a",
+          "scope": "Recording stores writes with base and new content and queued Signal/Run/Notify/Remove actions. This is the source basis for a proposed preview mode, not a claim that it exists."
+        },
+        {
+          "url": "https://github.com/DeepanshuMishraa/rexeme/blob/6bdcdc4dc11a445d12ff1e790f9b4834a06146b8/src/Stage.ts",
+          "blobSha": "5e22d58a396e268a6128836cef97cdbd994d52d4",
+          "scope": "Read the recording-to-staging flow and revision checks. Stage.prepare itself writes staging files; no claim is made that calling it would already be a side-effect-free dry run."
+        }
+      ],
+      "selectionEvidence": "Read Deepanshu’s release post and its visible reply, authored project history, linked repository README and implementation. Profile history includes other concrete editor, PDF and wallpaper projects. The repository contributor matches the release author. This is project-selection evidence, not operator identity verification.",
+      "privateProofBasename": "ai-site-check-hourly-x-20261107-0247/02"
+    },
+    {
+      "index": 3,
+      "label": "Frostfire / snapshot-aware leak measurement",
+      "parent": "https://x.com/frosty575/status/2118260945164075059",
+      "url": "https://x.com/GogaKoreli/status/2118901293288935621",
+      "copy": "the 5-minute reset could hide this in a slow CI run. log full-snapshot events alongside post-GC node counts, then compare growth after warmup within each interval, so periodic cleanup cannot make the old recorder look fixed.",
+      "weightedLength": 224,
+      "verifiedAt": "2026-11-07T03:12:02.910217Z",
+      "platform": "x",
+      "state": "canonical-owner-view-verified",
+      "publishedTimeUi": "7:00 PM · Nov 6, 2026",
+      "publishedTimeZone": "America/Los_Angeles",
+      "sourceReads": [
+        {
+          "url": "https://x.com/frosty575/status/2118260945164075059",
+          "scope": "Read the complete author article, two root replies and author follow-ups. The article reports forced-GC navigation loops, periodic full-snapshot cleanup, and a first-navigation increase followed by a plateau. Its measurements are the author’s reported results, not our independent experiment."
+        },
+        {
+          "url": "https://github.com/PostHog/posthog-js/issues/5419",
+          "scope": "Read the original issue body documenting retained shadow roots until the next full snapshot and the blockSelector workaround. The reply adds a proposed measurement boundary; it does not assert a current unfixed PostHog defect."
+        },
+        {
+          "url": "https://github.com/PostHog/posthog-js/pull/5421",
+          "headCommit": "6b588a3b5a6b4968615eb8e5c5b98465061c0ed1",
+          "mergedAt": "2026-10-28T14:32:06Z",
+          "scope": "Read the merged PR body, port scope, tests and reset behavior. Logging full snapshots beside post-GC counts is a proposed way to distinguish between-snapshot retention from periodic cleanup in a slow test. No recipient CI failure or test run is claimed."
+        },
+        {
+          "url": "https://github.com/rrweb-io/rrweb/pull/1971",
+          "headCommit": "04f48c9bd0805740c2ac5ee2b70f59494c068cfc",
+          "scope": "Read the upstream PR description to distinguish the broader recorder cleanup work from the narrower PostHog port. No claim is made about current upstream defects."
+        }
+      ],
+      "selectionEvidence": "Read Frostfire’s complete article and conversation, authored profile history and linked GitHub profile. The linked merged PostHog PR is authored by frostfire575 and describes the same investigation. Selection rests on that concrete contribution and discussion, not verification status or follower count.",
+      "privateProofBasename": "ai-site-check-hourly-x-20261107-0247/03"
+    }
+  ],
+  "verification": "Exact final copy saved before each submission and inspected in the composer. All three canonical URLs reopened; full body, parent and UI time verified. No outbound links. Three submissions; the third initially remained pending, was observed to settle and was not resubmitted. UI times have minute precision; verifiedAt records the later canonical capture.",
+  "independentPublicVisibility": "Not tested; signed-in owner visibility only.",
+  "privacy": "Raw account views, source captures and screenshots remain outside Git in private temporary storage. Public receipts contain published copy and normalized source evidence only.",
+  "limits": "No recipient software execution, hosted audit, provider trial, traffic/adoption measurement, anonymous visibility test, Reddit write, DM, like, follow, original post, site edit or scheduler change. Contributions are supported inferences or proposed mechanisms, not measured recipient defects or completed implementations.",
+  "nextBoundedAction": "Run complete at three. Next authorized run: reconcile current state and receipts, prioritize substantive incoming responses, do not repeat these parents and do not accumulate unused slots."
+}
