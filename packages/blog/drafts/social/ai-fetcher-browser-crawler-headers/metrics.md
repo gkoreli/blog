@@ -323,3 +323,9 @@ Seventy-eight unique replies remain across thirty-eight completed hourly runs, t
 [One new reply](hourly-ai-site-check-2026-11-08-0931.md) to [Hankaws’s Aperture update](https://x.com/GogaKoreli/status/2119363910365294639), proposing a regression fixture where a preexisting failing test must not hide a newly broken one. Current source and written discussion read; no recipient test executed. Canonical owner view and exact source link verified; independent retrieval returned Cache miss. [Structured receipt](hourly-ai-site-check-2026-11-08-0931-publication.json).
 
 Seventy-nine unique replies across thirty-nine completed hourly runs, thirty of which published replies; owner-directed five and original-chat sixty-eight remain separate. No fresh substantive incoming response or additional sufficiently grounded contribution selected. Four unused slots expire. No pending submission, restriction, site change or traffic/adoption measurement.
+
+## AI Site Check hourly run, November 8 at 10:30 UTC
+
+[No new replies](hourly-ai-site-check-2026-11-08-1030.md). No fresh substantive incoming response. A full attribution article and linked guide already covered the relevant diagnostics; no distinct contribution justified repeating them. Other search results were previously encountered previews. No composer filled, submission attempted or restriction observed. [Structured receipt](hourly-ai-site-check-2026-11-08-1030-publication.json).
+
+Seventy-nine unique replies remain across forty completed hourly runs, thirty of which published replies; owner-directed five and original-chat sixty-eight remain separate. All five unused slots expire. No site change, runtime test, provider trial, traffic/adoption measurement or scheduler change. Prior public-visibility limits remain unchanged.

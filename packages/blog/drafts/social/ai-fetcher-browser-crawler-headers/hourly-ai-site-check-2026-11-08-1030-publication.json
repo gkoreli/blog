@@ -1,0 +1,57 @@
+{
+  "automationId": "ai-site-check-hourly-x-replies",
+  "triggeredAt": "2026-11-08T10:30:56.117Z",
+  "completedReviewAt": "2026-11-08T10:33:15Z",
+  "timezone": "America/Los_Angeles",
+  "authorization": "Up to five useful X replies; fewer when suitable contributions are insufficient. No catch-up or other account actions.",
+  "preflight": "Latest worklist, 09:31 publication receipt and shared destination records read. Required launch skill, prose guidance and owned-project index retained from full prior reads and checked unchanged; publication-verification reread. Original posting chat inactive at start and end. Accepted UI and earlier batches remain complete. Isolated HEAD matches freshly fetched origin/main at 1ee771dc10eeda978aa3d724900b912de94d06a5. No overlapping posting session.",
+  "currentEvidence": "Fresh full live AI Site Check article read. Current package technical-assessment/local-tools contract reread from checkout matching fetched main; remainder retained from full unchanged README read. Full written X attribution article and linked Medium guide read. No hosted audit, provider trial, recipient test or site change.",
+  "xRepliesPublished": 0,
+  "xNewConversationRepliesPublished": 0,
+  "xConversationFollowupsPublished": 0,
+  "canonicalOwnerViewsVerified": 0,
+  "items": [],
+  "countNote": "Seventy-nine unique replies remain across forty completed hourly runs, thirty of which published replies. Owner-directed five and original-chat sixty-eight remain separate.",
+  "notificationCoverage": "No fresh substantive incoming response selected. CryptoBurrito, Balsa, LiveaAi, Peter, Daryll, mpgn and Sergei entries were previously handled. Planned sitemap changes remain reported intentions. No new Hankaws response appeared in the loaded notification view; this is not an account-wide conversation census.",
+  "searchQuery": "(\"AI crawler\" OR \"AI traffic\" OR \"robots.txt\") (built OR testing OR blocked OR debugging) since:2026-11-08 -filter:replies",
+  "selection": "One focused Latest search and one downward scroll action of two pages. Three results were previously encountered article previews; a fourth attribution article received full written-post and linked-guide review, plus profile and loaded Replies context. No X composer filled.",
+  "skippedExamples": [
+    {
+      "url": "https://x.com/iamdeepoo/status/2119340487866015909",
+      "reason": "Read full written X article, linked seven-minute Medium guide, profile and loaded Replies. The guide already separates missing source data from recoverable channel regrouping, labels Direct-based reconstruction an estimate, and instructs testing query preservation across redirects. No distinct contribution justified repeating those points or adding a synthetic-UA/provider-identity explanation to a click-attribution discussion. Profile contains owned-product claims and author-linked guide; product implementations and source analytics were not independently inspected. Generic recent replies supplied limited additional method context. No identity inference."
+    },
+    {
+      "url": "https://x.com/iamdeepoo/status/2119345690648223984",
+      "reason": "Previously encountered source-selection article preview; full article not investigated this run. No new specific contribution selected."
+    },
+    {
+      "url": "https://x.com/KagawaTomo/status/2119343266890236005",
+      "reason": "Previously encountered CDN business-analysis article preview; full article, financial and performance claims not inspected or adopted."
+    },
+    {
+      "url": "https://x.com/iamdeepoo/status/2119341438106587459",
+      "reason": "Previously encountered website-building article preview; full method not read, no distinct contribution selected."
+    }
+  ],
+  "sourceReads": [
+    {
+      "url": "https://gkoreli.com/ai-site-check-evidence",
+      "scope": "Fresh full live article. Access, source policy, request identity, attribution and answer fidelity retain their separate evidence boundaries."
+    },
+    {
+      "url": "https://github.com/gkoreli/blog/blob/1ee771dc10eeda978aa3d724900b912de94d06a5/packages/site-audit/README.md",
+      "scope": "Current technical assessment, unknown coverage, optional representations and local comparison/workbench contract reread; remainder retained from full unchanged read. No fresh runtime acceptance."
+    },
+    {
+      "url": "https://medium.com/@thedeepammishra/chatgpt-traffic-vanished-from-ga4-in-october-how-to-track-ai-traffic-in-ga4-properly-9dc53d10c666",
+      "scope": "Full rendered guide prose through FAQs and conclusion read, including its qualifications around a reported private response. Timeline, GA4 capabilities and third-party aggregate counts were not independently verified or adopted. Article illustrations were not visually audited."
+    }
+  ],
+  "fewerThanFiveReason": "No new substantive incoming response. The fully read attribution guide already covers the directly relevant diagnostic advice, and the remaining bounded results were previously encountered previews. No distinct, sufficiently grounded addition was selected. All five unused slots expire; this does not establish that no useful conversation exists elsewhere.",
+  "verification": "No composer filled, submission attempted or uncertain publication. New canonical publication checks not applicable.",
+  "accountState": "Signed-in X available; no restriction, cooldown or security lock observed.",
+  "independentPublicVisibility": "No new publication to verify. Prior visibility limits remain unchanged.",
+  "privacy": "Raw signed-in captures and article captures remain outside Git. Public records retain normalized scope, public URLs, methods, outcome and limits.",
+  "limits": "No reply, Reddit write, DM, like, follow, original post, upload, installation, site/code change, browser fixture, recipient test, hosted audit, provider trial, traffic/adoption measurement or scheduler change.",
+  "nextBoundedAction": "Next authorized run: reconcile shared state and prioritize substantive incoming responses. Do not repeat handled destinations or turn unused quota into a catch-up batch."
+}
