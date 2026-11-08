@@ -1,0 +1,93 @@
+{
+  "automationId": "ai-site-check-hourly-x-replies",
+  "triggeredAt": "2026-11-08T08:32:24.081Z",
+  "completedReviewAt": "2026-11-08T08:40:02.027748+00:00",
+  "timezone": "America/Los_Angeles",
+  "authorization": "Up to five useful X replies; fewer when suitable contributions are insufficient. No catch-up or other account actions.",
+  "preflight": "Latest worklist, 07:31 publication receipt and shared destination records read. Launch skill, prose guidance and owned-project index retained from full reads and checked unchanged; publication-verification reread. Original posting chat inactive at start and end. Accepted UI and prior batches remain complete. Isolated HEAD and freshly fetched origin/main agree at eee928cf23d71c5a801fab10d6040dcbe9573c80. No overlapping posting session.",
+  "currentEvidence": "Fresh full live AI Site Check article read. Current package assessment, optional capability, report comparison and robots-workbench contract reread from checkout matching fetched main; rest of README retained and checked unchanged. One third-party browser score fixture performed; no provider query, hosted audit or site code change.",
+  "xRepliesPublished": 0,
+  "xNewConversationRepliesPublished": 0,
+  "xConversationFollowupsPublished": 0,
+  "canonicalOwnerViewsVerified": 0,
+  "items": [],
+  "countNote": "Seventy-eight unique replies remain across thirty-eight completed hourly runs, twenty-nine of which published replies. Owner-directed five and original-chat sixty-eight remain separate.",
+  "notificationCoverage": "No fresh substantive incoming response selected. CryptoBurrito, Balsa, LiveaAi, Peter, Daryll, mpgn and Sergei entries previously handled. Planned sitemap changes remain reported intentions. No account-wide census or engagement measurement.",
+  "searchQuery": "(\"robots.txt\" OR \"llms.txt\" OR \"AI visibility\") (testing OR blocked OR built OR debugging) since:2026-11-07 -filter:replies",
+  "selection": "One focused Latest search and two downward scroll actions of two pages each. Two complete written root posts received deeper review, with explicit discussion-coverage limits below. The first linked to a case study and a working score tool; a synthetic fixture was checked. No X composer filled.",
+  "skippedExamples": [
+    {
+      "url": "https://x.com/MikeBruceDesign/status/2119339280594243658",
+      "reason": "Read complete written root and its author continuation through Discover more, case-study prose, score-tool interface and three relevant FAQs, profile and loaded Replies plus two downward scrolls. Ownership of the linked site/tool is explicit, but sampled account context repeats the same case-study promotion and self-replies without a substantive outside exchange. Skipped under relationship-selection guidance; no bot/human identity conclusion. Root media and dashboard images were not visually inspected; reported traffic and geographic totals not independently verified."
+    },
+    {
+      "url": "https://x.com/MikeBruceDesign/status/2119339511402451341",
+      "reason": "Author continuation links the case study and visibility tool; read in the root discussion. No contact made. One local synthetic score fixture is recorded separately, without claiming an actual business result."
+    },
+    {
+      "url": "https://x.com/itsSanwalZia/status/2119314528101867559",
+      "reason": "Complete written root distinguishes training and AI-search crawling. Read the one rendered Chen response, profile and loaded Replies view; end-of-thread screenshot exposed no additional reply despite a count of two. Sampled history includes a substantive citation-variability exchange, greetings and broader commentary. No named implementation or specific unresolved policy issue was supplied, and no distinct contribution justified adding a generic role explanation or tool pitch. Full discussion coverage is unverified; third-party citation and news claims not adopted."
+    },
+    {
+      "url": "https://x.com/iamdeepoo/status/2119345690648223984",
+      "reason": "Source-selection article preview; full article and author history not inspected, no specific contribution selected."
+    },
+    {
+      "url": "https://x.com/iamdeepoo/status/2119342856859271463",
+      "reason": "AI-visibility audit article preview; full article and claims not investigated."
+    },
+    {
+      "url": "https://x.com/iamdeepoo/status/2119341438106587459",
+      "reason": "AI website-building article preview; full method not read, no specific supported contribution selected."
+    },
+    {
+      "url": "https://x.com/KagawaTomo/status/2119343266890236005",
+      "reason": "CDN business-analysis article preview; financial and performance claims not inspected or adopted."
+    },
+    {
+      "url": "https://x.com/Templiqa06/status/2119343081602306484",
+      "reason": "Twenty-minute visibility exercise preview; full post, product and author context not read."
+    },
+    {
+      "url": "https://x.com/web3l0var/status/2119296797789097990",
+      "reason": "Agent/lending protocol preview outside selected implementation scope; full post and image not investigated."
+    },
+    {
+      "url": "https://x.com/therascalsfun/status/2119267723004072362",
+      "reason": "Previously encountered memecoin-protocol preview; no new contribution selected or product investigation."
+    }
+  ],
+  "recipientToolFixture": {
+    "url": "https://mikebrucedesign.com/tools/ai-visibility-check/",
+    "purpose": "Check whether a partial, recognition-only sample supports the result label, before deciding whether there is a useful contribution.",
+    "method": "Initial state had zero of 48 answers scored and empty business fields. Set score 2 (accurate) for prompts 1–3, Group A Recognition, across all four displayed assistants: twelve synthetic selections. Left the other 36 cells unscored. Clicked Reveal my result once and read the resulting UI. No actual prompt was sent to an AI provider and no business data entered.",
+    "observed": "UI displayed 67/100, 12/48 scored, On the shortlist, Recognition 67%, and Accuracy/Recommendation/Comparison Not scored. This demonstrates that this recognition-only fixture receives a shortlist interpretation despite no recommendation answers being scored; it does not establish any brand’s visibility.",
+    "cleanup": "Clicked Clear scores once. All twelve changed dropdowns returned to blank and the UI showed 0/48 scored. The prior 67 display and group result remained visible with You changed your answers and a disabled Reveal again button. No claim of clearing historical score or XP storage.",
+    "interactionLimits": "Two exact-name Playwright button lookups found no match and performed no action; fresh observed accessibility controls were then used. The tool FAQ says inputs/scores stay on-device; network/storage behavior was not independently audited. Raw captures and fixture screenshot remain outside Git. No outreach was published from the finding."
+  },
+  "sourceReads": [
+    {
+      "url": "https://gkoreli.com/ai-site-check-evidence",
+      "scope": "Fresh full live article; technical access, request identity, provider output and answer fidelity remain separate."
+    },
+    {
+      "url": "https://github.com/gkoreli/blog/blob/eee928cf23d71c5a801fab10d6040dcbe9573c80/packages/site-audit/README.md",
+      "scope": "Current scoring, unknown coverage, optional representations, local comparison and robots-workbench contract reread. Source-level evidence, not fresh production acceptance."
+    },
+    {
+      "url": "https://mikebrucedesign.com/work/website-traffic-growth/",
+      "scope": "Rendered case-study prose includes user-agent-based split and explicit no-before/after, uncertain human attribution and missing-referrer limits. Dashboard images were not visually inspected and no underlying analytics accessed."
+    },
+    {
+      "url": "https://mikebrucedesign.com/tools/ai-visibility-check/",
+      "scope": "All twelve visible prompts, four-provider score grid, instructions and monthly-retest/score/privacy FAQs read. One synthetic recognition-only fixture as recorded above."
+    }
+  ],
+  "fewerThanFiveReason": "No fresh substantive incoming response. The inspected tool supplied a concrete fixture but sampled author conversations did not meet relationship-selection guidance; the other inspected thread offered general correct policy advice without an identified implementation or distinct unresolved need. Remaining results were previews or previously reviewed. No generic promotion filled the quota. All five unused slots expire; this bounded selection does not establish that no suitable conversation exists elsewhere.",
+  "verification": "No X composer filled or submission attempted; no pending or uncertain publication. Canonical publication checks not applicable.",
+  "accountState": "Signed-in X available; no restriction, cooldown or security lock observed.",
+  "independentPublicVisibility": "No new publication to verify. Earlier visibility limits remain unchanged.",
+  "privacy": "Raw signed-in captures and fixture screenshots remain outside Git. Public records preserve normalized methods, public URLs, outcomes and limits.",
+  "limits": "No reply, Reddit write, DM, like, follow, original post, upload, installation, site/code change, hosted audit, provider trial, traffic/adoption measurement or scheduler change. The only recipient interaction was the explicit browser score fixture and clearing its input scores.",
+  "nextBoundedAction": "Next authorized run: reconcile shared state and prioritize substantive incoming responses. Do not carry unused quota forward or contact an already-reviewed destination without new relevant context."
+}
