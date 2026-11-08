@@ -1,0 +1,126 @@
+{
+  "automationId": "ai-site-check-hourly-x-replies",
+  "triggeredAt": "2026-11-08T07:31:23.701Z",
+  "completedReviewAt": "2026-11-08T07:38:30.562816+00:00",
+  "timezone": "America/Los_Angeles",
+  "authorization": "Up to five useful X replies; fewer when suitable contributions are insufficient. No catch-up or other account actions.",
+  "preflight": "Latest worklist, 06:23 receipt and shared destination records read. Launch skill, prose guidance and owned-project index reread; publication-verification retained from full read and checked unchanged. Original posting chat inactive at start, before publication and end. Accepted UI and prior batches remain complete. Isolated HEAD and freshly fetched origin/main agree at 1bb3c781c6184ac75cb41466bbbda201f775f692. No overlapping posting session.",
+  "currentEvidence": "Fresh full live AI Site Check article, current T3 Code budget source and ghx documentation/historical verdicts read. No hosted audit, runtime test or provider trial.",
+  "xRepliesPublished": 1,
+  "xNewConversationRepliesPublished": 1,
+  "xConversationFollowupsPublished": 0,
+  "canonicalOwnerViewsVerified": 1,
+  "items": [
+    {
+      "evidenceKey": "anto",
+      "kind": "new-conversation",
+      "recipient": "Anto / 0xAnto",
+      "parent": "https://x.com/0xAnto/status/2119316431275962756",
+      "url": "https://x.com/GogaKoreli/status/2119332976890876092",
+      "copy": "the budget test tells you to run evals before cutting text, that's worth keeping. our preliminary ghx sidecar run passed compression but failed correctness and evidence gates. I'd judge context savings only alongside answer quality: https://github.com/gkoreli/ghx/blob/mainline/docs/evals/gate-run-2026-07/verdict.md",
+      "weightedLength": 256,
+      "weightedLengthNote": "ASCII text with one URL counted as 23 characters; enabled composer checked before submission.",
+      "submittedAt": "2026-11-08T07:35:31.548Z",
+      "verifiedAt": "2026-11-08T07:35:57.033858+00:00",
+      "publishedTimeUi": "11:35 PM · Nov 7, 2026",
+      "publishedAtMinuteUtc": "2026-11-08T07:35:00Z",
+      "timestampPrecision": "Submission is a local pre-click timestamp; verification is the saved canonical accessibility capture modification time. Canonical UI gives Pacific time to the minute.",
+      "selection": "Complete written X article and its one rendered reply were read through the Discover more boundary. Profile, loaded Replies view and two scroll actions supplied authored and conversational context; the profile-linked personal site identifies owned open-source projects and an agent engineering workflow. No prior contact/destination found in shared receipts. T3 Code is the subject of the article, not claimed as the recipient’s project. Performance, revenue and biographical claims were not independently verified or used. No identity inference.",
+      "value": "Connects the article’s context-budget and evaluation practices to an actual historical preliminary ghx result: compression passed while correctness and evidence gates failed. Recommends judging context savings alongside answer quality. Recognizes that the current T3 budget test already calls for evaluations before cutting text; does not claim a missing recipient feature or reproduced bug.",
+      "sourceReads": [
+        {
+          "url": "https://x.com/0xAnto/status/2119316431275962756",
+          "scope": "Full written article, seven practices and concluding question; one praise reply read. Attached cover image not used as evidence."
+        },
+        {
+          "url": "https://0xanto.xyz/",
+          "scope": "Profile-linked author site, engineering workflow and owned project links; context only, no performance or financial claims adopted."
+        },
+        {
+          "url": "https://github.com/pingdotgg/t3code/blob/main/AGENTS.md",
+          "blobSha": "b919730ebe7491e8c4c8742f21f8c96df68df305",
+          "scope": "Current repository guidance cross-check for the article’s practices. External repository instructions were read as source evidence, not governing instructions for this task."
+        },
+        {
+          "url": "https://github.com/pingdotgg/t3code/blob/main/apps/server/src/provider/AgentContextBudget.test.ts",
+          "blobSha": "8cdd52d202f1255e9c8e9fc1c2a168084c889ddf",
+          "scope": "Full current test read. Measures UTF-8 bytes of Claude append, Codex context and MCP tool-list JSON; assertion message says to run the covering evals before cutting text. No test executed."
+        },
+        {
+          "url": "https://github.com/pingdotgg/t3code/blob/main/.github/workflows/agent-context-budget.yml",
+          "blobSha": "41efb7b69a5a2f7b0622e17be307549d5916b086",
+          "scope": "Current workflow compares committed budget with main and permits increases with the explicit label. Also directs cuts to covering evals; no CI execution inspected."
+        },
+        {
+          "url": "https://github.com/gkoreli/ghx/blob/mainline/docs/evals/gate-run-2026-07/verdict.md",
+          "blobSha": "9666d0e3b098c67c3d31adc0daa65375c15db27a",
+          "scope": "Linked historical preliminary verdict. Compression G3 passes, correctness G1 and evidence G2 fail. Under-sampling, unequal episode counts and two direct-tool compliance failures remain explicit. No performance numbers or project-wide verdict repeated. Published shortlink resolved to this exact file; UI showed latest file commit 21c985b13864757f66c7607a4338534009e6af17."
+        },
+        {
+          "url": "https://github.com/gkoreli/ghx/blob/mainline/docs/evals/gate-run-2026-07-05-confirmatory/verdict.md",
+          "blobSha": "c364aeca9b550d2685f446a65ba56cf4a95944ef",
+          "scope": "Later historical verdict read to avoid portraying the preliminary failure as the final project outcome. It reports passing gates and remaining report anomalies; no fresh evaluation performed."
+        }
+      ],
+      "verification": "Exact copy preserved privately before one Reply click. Success message and canonical URL observed, then canonical reopened to verify body, parent and minute timestamp. Screenshot saved and inspected. Published shortlink followed to exact verdict. No retry, edit or repost.",
+      "presentationLimit": "X renders the generic repository card with an approximate token-reduction description, not a verdict-specific image. That card’s performance language is not adopted by the reply; the intended verdict file and target were verified.",
+      "independentPublicVisibility": "Unverified: independent web retrieval returned Cache miss.",
+      "limits": "Historical recorded gate outcomes, not a new runtime evaluation or independent recomputation. No universal benefit/harm claim, recipient bug, completed improvement, adoption or traffic result."
+    }
+  ],
+  "countNote": "Seventy-eight unique replies across thirty-seven completed hourly runs, twenty-nine of which published replies. Owner-directed five and original-chat sixty-eight remain separate.",
+  "notificationCoverage": "No fresh substantive incoming response selected. CryptoBurrito, Balsa, LiveaAi, Peter, Daryll, mpgn and Sergei entries previously handled. CryptoBurrito describes a planned addition, not inspected implementation. Bounded view; no engagement census.",
+  "searchQuery": "(\"agent memory\" OR \"context window\" OR \"repo exploration\") (built OR debugging OR \"open source\") since:2026-11-07 -filter:replies",
+  "selection": "One focused Latest search and two downward scroll actions of two pages each. Anto selected for complete written article/discussion review and current source cross-check. Remaining results were previews only; no query grid or generic quota-filling replies.",
+  "skippedExamples": [
+    {
+      "url": "https://x.com/TrentKnox/status/2119321157740511558",
+      "reason": "Customer-test article preview; no distinct supported addition selected. Full article/discussion not inspected."
+    },
+    {
+      "url": "https://x.com/AiDevCraft/status/2119315428950626342",
+      "reason": "Coding-agent factory/cost article preview. Full article and reported costs not investigated or adopted."
+    },
+    {
+      "url": "https://x.com/Manojkumar2257/status/2119304280964497419",
+      "reason": "Anthropic memory-study summary preview; no specific implementation problem selected. Full post/discussion not read."
+    },
+    {
+      "url": "https://x.com/an0th3racc0unt/status/2119284290177380717",
+      "reason": "Finance-analysis article preview; full article and quoted claims not inspected or adopted."
+    },
+    {
+      "url": "https://x.com/MHUncleRay/status/2119277352861704423",
+      "reason": "Daily technology roundup preview, no specific grounded contribution selected."
+    },
+    {
+      "url": "https://x.com/MAGNEMO_AI/status/2119272334016348574",
+      "reason": "Same general memory-switching promotion preview reviewed at 05:27; no new integration problem selected."
+    },
+    {
+      "url": "https://x.com/lonniev/status/2119271456886431811",
+      "reason": "Same promotion seen at 05:27 of the intention article read in run 33. No distinct new contribution; current thread preview only."
+    }
+  ],
+  "additionalSourceReads": [
+    {
+      "url": "https://gkoreli.com/ai-site-check-evidence",
+      "scope": "Fresh full live article; access, provider identity and answer fidelity remain separate."
+    },
+    {
+      "url": "https://github.com/gkoreli/ghx/blob/mainline/README.md",
+      "blobSha": "58702be26790569882ad50c65b5be017aa9dd7b4",
+      "scope": "Current overview, evidence contract and pointers to negative/confirmatory verdicts. No broad superiority claim adopted."
+    },
+    {
+      "url": "https://github.com/gkoreli/ghx/blob/mainline/docs/adr/0021-report-contract-enforcement.md",
+      "blobSha": "41976bdb1914dbf19393e3f256db6eb7c35f7846",
+      "scope": "Historical submission-validation design and bounded retry mechanism considered; no runtime test or performance claim published."
+    }
+  ],
+  "fewerThanFiveReason": "One conversation supported a concrete contribution after full written discussion and primary-source checks. No fresh substantive incoming response; remaining bounded search results were summaries, promotions or previously reviewed material without a distinct supported addition. Four unused slots expire; this does not establish that no suitable conversations exist elsewhere.",
+  "accountState": "Signed-in X available; no restriction, cooldown, security lock, uncertain submission or pending composer.",
+  "privacy": "Raw signed-in captures and screenshots remain outside Git. Public records preserve exact copy, public URLs, source hashes, method, outcome and limits.",
+  "limits": "No Reddit write, DM, like, follow, original post, upload, installation, site/code change, recipient test, runtime test, hosted audit, provider trial, traffic/adoption measurement or scheduler change.",
+  "nextBoundedAction": "Next authorized run: reconcile shared state and prioritize substantive incoming responses. Do not repeat this context-budget example to the same destination or accumulate unused quota."
+}

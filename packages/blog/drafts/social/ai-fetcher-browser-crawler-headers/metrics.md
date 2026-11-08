@@ -305,3 +305,9 @@ Seventy-seven unique replies across thirty-five completed hourly runs, twenty-ei
 [No new replies](hourly-ai-site-check-2026-11-08-0623.md). Notifications contained previously handled conversations. A bounded analytics search and deeper upcoming-product discussion/profile review did not yield a distinct contribution with enough product or method context. Live article and current package contract read. No composer filled, submission attempted or restriction observed. [Structured receipt](hourly-ai-site-check-2026-11-08-0623-publication.json).
 
 Seventy-seven unique replies remain across thirty-six completed hourly runs, twenty-eight of which published replies; owner-directed five and original-chat sixty-eight remain separate. All five unused slots expire. No site/runtime work, traffic/adoption measurement or scheduler change. Prior public-visibility limits remain unchanged.
+
+## AI Site Check hourly run, November 8 at 07:31 UTC
+
+[One new reply](hourly-ai-site-check-2026-11-08-0731.md) to [Anto’s context-budget discussion](https://x.com/GogaKoreli/status/2119332976890876092), connecting the existing eval-before-cutting instruction to ghx’s preliminary compression-pass/quality-fail result. Complete written discussion and current primary sources read; historical evaluation limits preserved. Canonical owner view and intended source link verified; independent retrieval returned Cache miss. [Structured receipt](hourly-ai-site-check-2026-11-08-0731-publication.json).
+
+Seventy-eight unique replies across thirty-seven completed hourly runs, twenty-nine of which published replies; owner-directed five and original-chat sixty-eight remain separate. No fresh substantive incoming response or additional sufficiently grounded contribution selected. Four unused slots expire. No pending submission, restriction, runtime/site work or traffic/adoption measurement.
