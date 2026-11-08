@@ -1,0 +1,82 @@
+{
+  "automationId": "ai-site-check-hourly-x-replies",
+  "triggeredAt": "2026-11-08T12:36:27.252Z",
+  "completedReviewAt": "2026-11-08T12:43:38Z",
+  "timezone": "America/Los_Angeles",
+  "authorization": "Up to five useful X replies; fewer when suitable contributions are insufficient. No catch-up or other account actions.",
+  "preflight": "Latest worklist, preceding receipt and shared destinations read. Required guidance verified unchanged from preceding full read. Original posting chat inactive at start, before publication and end. Accepted UI and earlier batches remain complete. Isolated HEAD matches freshly fetched origin/main at e5bd5f4a41ee0203fd92ecddfeb08a11c195a6f2. No overlapping posting session.",
+  "currentEvidence": "Fresh full live article read; current site-audit README verified unchanged from preceding full read. Relevant third-party checker methods, completed result and primary Google documentation inspected. No own hosted audit, provider trial or enforcement test.",
+  "xRepliesPublished": 1,
+  "xNewConversationRepliesPublished": 1,
+  "xConversationFollowupsPublished": 0,
+  "canonicalOwnerViewsVerified": 1,
+  "items": [
+    {
+      "evidenceKey": "nirmal",
+      "kind": "new-conversation",
+      "recipient": "Nirmal",
+      "parent": "https://x.com/nirmalparmar_/status/2119381824095043843",
+      "url": "https://x.com/GogaKoreli/status/2119410238290100318",
+      "copy": "i'd split Google-Extended out of the 'opt out of training' snippet, it controls Gemini grounding too. your table notes this, but that warning would help beside the copy button as well. Google Search inclusion is unaffected. https://developers.google.com/crawling/docs/crawlers-fetchers/google-common-crawlers#google-extended",
+      "weightedLength": 247,
+      "weightedLengthNote": "ASCII text with one URL counted as 23 characters. Composer enabled Reply and displayed 88 percent progress.",
+      "submittedAt": "2026-11-08T12:42:32.014Z",
+      "verifiedAt": "2026-11-08T12:43:18.808Z",
+      "publishedTimeUi": "4:42 AM · Nov 8, 2026",
+      "publishedAtMinuteUtc": "2026-11-08T12:42:00Z",
+      "timestampPrecision": "Submission timestamp immediately before single click. Verification timestamp immediately before saving canonical text and screenshot. Native UI supplies Pacific time to the minute.",
+      "selection": "Read complete written root, with zero replies displayed, author posts and loaded Replies. The author links the product and posts its launch; authored directory-pricing discussion contains specific constraints rather than only generic promotion. Supports substantive selection, not verified human identity or independent proof of ownership. No prior recipient or destination found in shared social records.",
+      "value": "Separates Google-Extended's combined training and grounding choice from a general training opt-out snippet and proposes moving the existing table warning beside the copy action. Links Google's exact primary section rather than adding an unrelated product pitch.",
+      "sourceReads": [
+        {
+          "url": "https://usedatasense.com/tools/ai-crawler-checker",
+          "scope": "Full rendered landing page and crawler table; relevant FAQs on method, actual visits and blocking. Already distinguishes roles, user-agent spoofing and policy versus visits. Tracking-product marketing was not independently verified."
+        },
+        {
+          "url": "https://usedatasense.com/tools/ai-crawler-checker?url=gkoreli.com%2Fai-site-check-evidence",
+          "scope": "One completed report after submitting the owner's public article URL. Report displays 6/6 answer, 7/7 index and 10/10 training tokens allowed, page 200 and generated training opt-out snippet including Google-Extended. These are observed checker outputs, not independently measured provider access or citation outcomes."
+        },
+        {
+          "url": "https://developers.google.com/crawling/docs/crawlers-fetchers/google-common-crawlers#google-extended",
+          "scope": "Current primary section read before publishing and exact published shortlink verified afterward. Google-Extended controls training of future Gemini models and specified Gemini Apps/Vertex AI grounding uses, with no effect on Google Search inclusion. It is a control token, not a separate request user agent. Page states updated 2026-10-30."
+        }
+      ],
+      "verification": "Final copy saved privately before one Reply click. Submission toast and canonical URL appeared. Canonical reopened; exact text, parent, timestamp, source card and saved screenshot inspected. Shortlink https://t.co/k44N2WN9DG opened the exact Google documentation section. No retry, edit, repost or unresolved submission.",
+      "independentPublicVisibility": "Unverified: independent web retrieval returned Cache miss.",
+      "limits": "Presentation suggestion based on one current public checker result and primary policy documentation. No claim of an absent table warning, recipient implementation defect, universal policy enforcement, actual provider visit or citation likelihood. No site robots configuration changed."
+    }
+  ],
+  "countNote": "Eighty-one unique replies across forty-two completed hourly runs, thirty-two of which published replies. Owner-directed five and original-chat sixty-eight remain separate.",
+  "notificationCoverage": "No fresh substantive incoming response selected. CryptoBurrito, Balsa, LiveaAi, Peter, Daryll, mpgn and Sergei entries were previously handled. Planned changes remain reported intentions. No fresh Pavel or Hankaws response in loaded view; not an account-wide census.",
+  "searchQuery": "(\"AI crawler\" OR \"llms.txt\" OR \"robots.txt\") (blocked OR blocking OR built OR testing OR shipped) since:2026-11-08 -filter:replies",
+  "selection": "One focused Latest search, initial four results. Strongest new candidate received full written-discussion and relevant product review. Other three were previously encountered previews. No search scroll, query grid or quota-filling.",
+  "skippedExamples": [
+    {
+      "url": "https://x.com/iamdeepoo/status/2119345690648223984",
+      "reason": "Previously encountered source-selection article preview; no new full review or distinct contribution selected."
+    },
+    {
+      "url": "https://x.com/iamdeepoo/status/2119341438106587459",
+      "reason": "Previously encountered AI-website article preview; no new full review or distinct contribution selected."
+    },
+    {
+      "url": "https://x.com/MikeBruceDesign/status/2119339280594243658",
+      "reason": "Score-tool destination investigated in run thirty-eight. No new context selected to justify repeating the earlier investigation or posting now."
+    }
+  ],
+  "additionalSourceReads": [
+    {
+      "url": "https://gkoreli.com/ai-site-check-evidence",
+      "scope": "Fresh full live article; technical access, request identity, source policy and answer fidelity remain separate."
+    },
+    {
+      "url": "https://github.com/gkoreli/blog/blob/e5bd5f4a41ee0203fd92ecddfeb08a11c195a6f2/packages/site-audit/README.md",
+      "scope": "Verified unchanged from preceding full read; historical acceptance was not treated as a new production test."
+    }
+  ],
+  "fewerThanFiveReason": "One distinct actionable contribution supported by current product observation and primary documentation. No fresh substantive incoming response. Remaining bounded results were previously encountered previews without a new selected contribution. Four unused slots expire; this is not an exhaustive census of useful conversations.",
+  "accountState": "Signed-in X available; no restriction, cooldown, security lock, uncertain submission or pending composer.",
+  "privacy": "Raw signed-in captures and screenshots remain outside Git. Public records retain exact copy, public destinations, methods, outcomes and limits.",
+  "limits": "No Reddit write, DM, like, follow, original post, upload, installation, site/code change, own hosted audit, provider trial, traffic/adoption measurement or scheduler change. Third-party checker received only a public URL.",
+  "nextBoundedAction": "Next authorized run: reconcile shared state and prioritize substantive incoming responses. Do not repeat this suggestion to the same destination or carry unused quota forward."
+}
