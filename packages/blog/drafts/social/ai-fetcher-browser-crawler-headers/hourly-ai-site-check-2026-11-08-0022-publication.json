@@ -1,0 +1,135 @@
+{
+  "automationId": "ai-site-check-hourly-x-replies",
+  "triggeredAt": "2026-11-08T00:22:49.793Z",
+  "completedReviewAt": "2026-11-08T00:36:16.131894+00:00",
+  "timezone": "America/Los_Angeles",
+  "authorization": "Up to five useful X replies; fewer when suitable contributions are insufficient. No catch-up or other account actions.",
+  "preflight": "Current worklist, previous receipt and shared records read. Launch skill, prose/messages guidance and owned-project index reread; publication-verification reference carried forward from its full read and checked unchanged. Original posting chat inactive at start, before each publication and at end. Accepted UI and one-time batches remain complete. Isolated HEAD and freshly fetched origin/main agreed at bc4aa6c2aef5382631ac38c312301d8eb90cff90. No overlapping posting session.",
+  "currentEvidence": "Fresh full live AI Site Check article read; current site-audit README and relevant provider article/source evidence read. Current Cloudflare and Vercel primary pages checked. No hosted API quota consumed, fresh provider trial or recipient runtime test.",
+  "xRepliesPublished": 2,
+  "xNewConversationRepliesPublished": 2,
+  "xConversationFollowupsPublished": 0,
+  "canonicalOwnerViewsVerified": 2,
+  "items": [
+    {
+      "evidenceKey": "vinay",
+      "kind": "new-conversation",
+      "recipient": "Vinay Ahuja / vinayah",
+      "parent": "https://x.com/vinayah/status/2119213559628329239",
+      "url": "https://x.com/GogaKoreli/status/2119225034657194456",
+      "copy": "for step 6, test the exact URL and match path + time in CDN logs. a missing citation alone doesn't diagnose a block. Bing cited my article in an inaccurate summary, so i also compare the answer with the source: https://gkoreli.com/ai-fetcher-browser-crawler-headers#bing-and-its-ai-mode",
+      "weightedLength": 234,
+      "publishedTimeUi": "4:26 PM · Nov 7, 2026",
+      "publishedAtMinuteUtc": "2026-11-08T00:26:00Z",
+      "timestampPrecision": "Minute from native canonical UI; Pacific time.",
+      "conversationEvidence": [
+        "https://x.com/vinayah/status/2119213560328765542",
+        "https://x.com/vinayah/status/1981226459",
+        "https://genmark.ai/about"
+      ],
+      "selection": "Full written checklist, source reply and attached graphic read. Authored profile, three Replies states and Genmark homepage/platform/about pages read. The about page names Vinay as founder and CEO. Recent sampled replies were mostly own threads and generic congratulations; an older technical reply asked about weighted criteria in an architecture choice. Selection rests on the specific authored method and product ownership, not an assertion of recent deep conversation or verified human identity. No prior campaign contact found.",
+      "value": "Adds exact-URL/path/time correlation in CDN logs to step 6, where absence of a citation was used as a block/rendering clue. Adds checking the answer against its cited source, supported by Goga’s recorded Bing summary. No diagnosis of a recipient site.",
+      "sourceReads": [
+        {
+          "url": "https://blog.cloudflare.com/content-independence-day-ai-options",
+          "scope": "Full current page read in browser: July 2026 policy description, September 15 defaults for new domains, ads pages and crawler roles. No account settings changed."
+        },
+        {
+          "url": "https://blog.cloudflare.com/personal-agents-visibility-control/",
+          "scope": "Full current page read in browser: November 4 per-agent controls and request analytics. Search/training and agent roles remain distinct."
+        },
+        {
+          "url": "https://gkoreli.com/ai-fetcher-browser-crawler-headers#bing-and-its-ai-mode",
+          "scope": "Fresh article and current local source read. Historical Bing answer cited the article but lost qualifications about signing-directory/network verification and visitor classification. Origin was unobserved in that trial; no fresh test or cause claim."
+        }
+      ],
+      "verification": "One Reply click produced Your post was sent. Reopened canonical and checked exact text, parent and native timestamp; saved screenshot. Followed the published article link to the exact Bing section.",
+      "independentPublicVisibility": "Canonical signed-in owner view verified. Independent web retrieval returned Cache miss; anonymous public visibility remains unverified.",
+      "limits": "Genmark pages establish product context, not tested performance. No Genmark integration, recipient configuration, hosted audit, provider trial or citation-causality test. No assertion that a missing citation proves a block or a present citation proves accuracy."
+    },
+    {
+      "evidenceKey": "tomas",
+      "kind": "new-conversation",
+      "recipient": "Tomas Ward / tomasward__",
+      "parent": "https://x.com/tomasward__/status/2119189400135295382",
+      "url": "https://x.com/GogaKoreli/status/2119226544463999148",
+      "copy": "Vercel's bit is headless too now: `vc metrics vercel.ai_traffic.count --group-by botName` (Observability Plus). i'd keep it next to your judge's results, requests and recommendations are separate events. https://vercel.com/changelog/ai-traffic-insights-now-available-in-vercel-observability",
+      "weightedLength": 241,
+      "weightedLengthNote": "X also auto-linked the nine-character vercel.ai substring inside the metric name. Both that detected URL and the explicit changelog URL count as 23 characters; an explicit-URL-only calculation would incorrectly give 227.",
+      "publishedTimeUi": "4:32 PM · Nov 7, 2026",
+      "publishedAtMinuteUtc": "2026-11-08T00:32:00Z",
+      "timestampPrecision": "Minute from native canonical UI; Pacific time.",
+      "conversationEvidence": [
+        "https://x.com/tomasward__/status/2119147406545858617",
+        "https://x.com/tomasward__/status/2118857137455579239",
+        "https://x.com/rainbrandai",
+        "https://www.rainbrand.com/"
+      ],
+      "selection": "Read the complete written GEO article, rendered discussion with zero replies before publication, authored profile and Replies history, Rainbrand profile and live product homepage. The author reports building Rainbrand Review and replies to a headless real-estate launch with the specific read-only web-app choice. This is context beyond a bio or badge. No prior campaign contact found. Embedded Profound announcement/video and reaction GIFs were not fully reviewed; no claim about those products or media was adopted.",
+      "value": "Gives a current Vercel CLI command that fits the author’s existing Vercel and isolated-CLI workflow, states the Observability Plus requirement, and keeps request counts separate from judged recommendations. Links directly to primary documentation rather than forcing an owned-project link.",
+      "sourceReads": [
+        {
+          "url": "https://vercel.com/changelog/ai-traffic-insights-now-available-in-vercel-observability",
+          "scope": "Fresh full primary changelog read; October 28 release, exact command and Observability Plus prerequisite. Published link followed to the same page."
+        },
+        {
+          "url": "https://vercel.com/changelog/view-and-query-bot-verification-data-in-vercel-observability",
+          "scope": "Fresh full primary changelog read: verified/spoofed/unverifiable dimensions; avoids treating all bot identification as user-agent parsing."
+        },
+        {
+          "url": "https://vercel.com/docs/bot-management",
+          "scope": "Relevant opening methods and protection sections read. No platform configuration, dashboard, traffic sample or runtime check."
+        },
+        {
+          "url": "https://www.rainbrand.com/",
+          "scope": "Fresh browser read: shared brand context, briefs, generation and review through agents/products. Product positioning only; no sign-in, installation or integration test."
+        }
+      ],
+      "verification": "Exact copy preserved and enabled composer named tomasward__. One Reply click returned to parent with one reply. Located canonical through own Replies and reopened it; verified text, parent and native time. Saved screenshot and followed the explicit changelog shortlink successfully.",
+      "presentationLimit": "X auto-linked vercel.ai inside the command and used its generic Vercel card. The visible command text remains correct and the explicit changelog link reaches the intended page. No edit or repost was performed.",
+      "independentPublicVisibility": "Canonical signed-in owner view verified. Independent web retrieval returned Cache miss; anonymous public visibility remains unverified.",
+      "limits": "Documentation-supported recommendation, not an executed CLI query or measured recipient result. No claim that the author already has Observability Plus or confuses requests with recommendations. No endorsement of the article’s broad GEO predictions or unassisted-human-authorship claim."
+    }
+  ],
+  "countNote": "Seventy-five unique replies across thirty completed hourly runs, twenty-six of which published replies. Owner-directed five and original-chat sixty-eight remain separate.",
+  "notificationCoverage": "No new substantive incoming response selected. CryptoBurrito’s acknowledgment/planned feature was already recorded at 22:17; Balsa’s question was answered at 20:22. Other rendered incoming entries were previously handled. No account-wide census or engagement measurement.",
+  "searchQuery": "(\"robots.txt\" OR \"AI crawlers\" OR \"llms.txt\") (blocked OR built OR tested OR issue) since:2026-11-07 -filter:replies",
+  "selection": "One focused Latest search and one downward action of two pages, two saved result states. Two full written target discussions and author/product context reviewed and selected. Other result previews were not full investigations.",
+  "skippedExamples": [
+    {
+      "url": "https://x.com/rednishat/status/2119204002952822967",
+      "reason": "Newsletter roundup preview across backlinks, robots, AI overviews and analytics. No specific implementation problem or non-generic contribution selected; full roundup/profile not read."
+    },
+    {
+      "url": "https://x.com/ashdhawan/status/2119165272456413345",
+      "reason": "Current preview only. The 21:21 receipt already records full written article/profile review without enough relationship context. No repeat contribution or fresh implementation claim."
+    },
+    {
+      "url": "https://x.com/CryptoBurrito/status/2119131601523106098",
+      "reason": "Already contacted about per-URL discovery provenance; acknowledgment of planned work recorded at 22:17. No repeat of the accepted suggestion and no inference that the plan shipped."
+    }
+  ],
+  "additionalSourceReads": [
+    {
+      "url": "https://gkoreli.com/ai-site-check-evidence",
+      "scope": "Fresh complete live article; technical access score and uncertainty, optional Markdown, shared daily quota and synthetic-versus-provider boundaries."
+    },
+    {
+      "url": "https://genmark.ai/",
+      "scope": "Product context homepage read, without runtime acceptance claims."
+    },
+    {
+      "url": "https://genmark.ai/platform",
+      "scope": "Product descriptions read; log analytics and answer outcomes distinguished."
+    },
+    {
+      "url": "https://genmark.ai/about",
+      "scope": "About page names Vinay as founder/CEO."
+    }
+  ],
+  "fewerThanFiveReason": "Two specific contributions met the bar. No fresh substantive incoming response; remaining bounded search results were a broad roundup or already reviewed/handled destinations. Three unused slots expire; no generic filler or catch-up.",
+  "accountState": "Signed-in browser available. No restriction, cooldown or security lock observed. No uncertain submission or pending draft remains.",
+  "privacy": "Raw signed-in captures and screenshots stay outside Git; records contain normalized methods, public links, exact published text and limits.",
+  "limits": "No Reddit, DM, like, follow, original post, site change, recipient integration, runtime test, hosted audit, provider trial, traffic/adoption measurement or scheduler change.",
+  "nextBoundedAction": "Next authorized run: reconcile shared state, prioritize substantive incoming responses and select new discussions only with a distinct useful contribution. Do not repeat accepted suggestions."
+}
