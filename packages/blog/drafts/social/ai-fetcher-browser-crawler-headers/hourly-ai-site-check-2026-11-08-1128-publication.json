@@ -1,0 +1,123 @@
+{
+  "automationId": "ai-site-check-hourly-x-replies",
+  "triggeredAt": "2026-11-08T11:28:56.410Z",
+  "completedReviewAt": "2026-11-08T11:33:49Z",
+  "timezone": "America/Los_Angeles",
+  "authorization": "Up to five useful X replies; fewer when suitable contributions are insufficient. No catch-up or other account actions.",
+  "preflight": "Latest worklist, 10:30 receipt and shared destination records read. Required launch, publication-verification, prose and owned-project guidance refreshed. Original posting chat inactive at start, before publication and end. Accepted UI and earlier batches remain complete. Isolated HEAD matches freshly fetched origin/main at e164d682fedde5fac85313442d59efff2ef91012. No overlapping posting session.",
+  "currentEvidence": "Fresh full live AI Site Check article and current site-audit README read. Full primary Anthropic memory article, backlog-mcp guide and relevant implementation read. No hosted audit, provider trial or runtime test.",
+  "xRepliesPublished": 1,
+  "xNewConversationRepliesPublished": 1,
+  "xConversationFollowupsPublished": 0,
+  "canonicalOwnerViewsVerified": 1,
+  "items": [
+    {
+      "evidenceKey": "pavel",
+      "kind": "new-conversation",
+      "recipient": "Pavel Fabrikantov",
+      "parent": "https://x.com/p_fabrikantov/status/2119388016204460337",
+      "url": "https://x.com/GogaKoreli/status/2119392581226533345",
+      "copy": "I'd model 'who owns what' as a state key, e.g. billing.owner. backlog-mcp expires the old fact on replacement but keeps its text. still needs a current source check before routing an incident, that history can't discover an unrecorded team move. https://github.com/gkoreli/backlog-mcp/blob/main/docs/guides/memory-protocol.md",
+      "weightedLength": 269,
+      "weightedLengthNote": "ASCII text with one URL counted as 23 characters; composer displayed 11 characters remaining.",
+      "submittedAt": "2026-11-08T11:32:22.335Z",
+      "verifiedAt": "2026-11-08T11:32:51.425Z",
+      "publishedTimeUi": "3:32 AM · Nov 8, 2026",
+      "publishedAtMinuteUtc": "2026-11-08T11:32:00Z",
+      "timestampPrecision": "Submission timestamp recorded immediately before the single click. Verification timestamp recorded immediately before saving the canonical text and screenshot after reading its full rendered state. UI supplies Pacific time to the minute.",
+      "selection": "Read complete written root and its one rendered reply by Jun; displayed count was one before posting. Root describes the author's SoloHQ AI work and current company-ownership problem. Profile contains distinct product, connector and operating-process posts; loaded Replies includes specific questions about how learned facts enter skills and how to detect stale notes before action. This supports a substantive conversation selection, not a claim of verified identity or an independently inspected SoloHQ deployment. No prior recipient or destination found in shared social records.",
+      "value": "Offers a concrete state_key example for evolving ownership facts. backlog-mcp's replacement path expires prior live holders while preserving their bodies; the reply keeps an unrecorded organizational change outside that capability. Links the actionable memory protocol rather than repeating the AI Site Check article.",
+      "sourceReads": [
+        {
+          "url": "https://github.com/gkoreli/backlog-mcp/blob/main/README.md",
+          "blobSha": "ced131bc3ac87059efc6186d2426785085d2c4c3",
+          "scope": "Full current README: local Markdown store, selected-home operations, progressive recall and correction semantics."
+        },
+        {
+          "url": "https://github.com/gkoreli/backlog-mcp/blob/main/docs/guides/memory-protocol.md",
+          "blobSha": "087d741e305bb0fd4fd029fdb8fa2e677d721b18",
+          "scope": "Full current guide: supersedes/state_key, expiry, current-contract precedence and provenance. Exact published link."
+        },
+        {
+          "url": "https://github.com/gkoreli/backlog-mcp/blob/main/packages/server/src/core/remember.ts",
+          "blobSha": "a98ae29a8420e90c4288f468c9c6190d508c5df7",
+          "scope": "Full current source: validated remembered entry passes state_key metadata to the configured store."
+        },
+        {
+          "url": "https://github.com/gkoreli/backlog-mcp/blob/main/packages/server/src/memory/backlog-memory-store.ts",
+          "blobSha": "bac45c8cbcee40444d0642b8fddc74863ec20974",
+          "scope": "Full source read: correction path used for state keys and recall excludes non-live memories."
+        },
+        {
+          "url": "https://github.com/gkoreli/backlog-mcp/blob/main/packages/server/src/storage/local/docs-native-filesystem-storage.ts",
+          "blobSha": "74a44d2529a8a013107722cf2d55a8557f6a006a",
+          "scope": "Imports and correctMemory implementation inspected, not the full file. Builds a correction plan from the current corpus under the home mutation boundary."
+        },
+        {
+          "url": "https://github.com/gkoreli/backlog-mcp/blob/main/packages/server/src/core/memory-correction.ts",
+          "blobSha": "1850c75feba8a553c7e293fede188435546d0e18",
+          "scope": "Full current plan: selects live same-key predecessors and changes valid_until/updated_at while preserving content."
+        },
+        {
+          "url": "https://github.com/gkoreli/backlog-mcp/blob/main/docs/adr/0092.13-contradiction-detection.md",
+          "blobSha": "bc6e1ac8f388c6703a55868e5adcc9e8baeeaa7d",
+          "scope": "Full rationale read; historical test and delivery claims were not rerun or adopted as current acceptance."
+        }
+      ],
+      "verification": "Final copy preserved privately before one Reply click. Submission toast and canonical URL appeared. Canonical reopened; exact text, parent, timestamp, link card and saved screenshot inspected. Published shortlink https://t.co/7GU86UKvDs opened the exact memory-protocol.md page. No retry, edit, repost or unresolved submission.",
+      "independentPublicVisibility": "Unverified: independent web retrieval returned Cache miss.",
+      "limits": "Source-level mechanism, not a fresh runtime test or measured recall improvement. billing.owner is an illustrative key, not an inspected organizational record. No claim that the recipient lacks this feature or that memory storage verifies the truth of its contents."
+    }
+  ],
+  "countNote": "Eighty unique replies across forty-one completed hourly runs, thirty-one of which published replies. Owner-directed five and original-chat sixty-eight remain separate.",
+  "notificationCoverage": "No fresh substantive incoming response selected. CryptoBurrito, Balsa, LiveaAi, Peter, Daryll, mpgn and Sergei entries were previously handled. Planned sitemap changes remain reported intentions. No new Hankaws response in the loaded notification view; not an account-wide census.",
+  "searchQuery": "(\"agent memory\" OR \"context engineering\" OR \"repo context\") (built OR testing OR shipped OR \"open source\") since:2026-11-08 -filter:replies",
+  "selection": "One focused Latest search. Two complete written discussions received deeper review; one reply published. Remaining results stayed previews. No query grid or quota-filling.",
+  "skippedExamples": [
+    {
+      "url": "https://x.com/weilinwang_ai/status/2119387778853253264",
+      "reason": "Read full written article, profile, linked Open Ontology README and full evaluation design. Article already distinguishes transcripts from truth and describes reviewed definitions, golden questions and version history. Repository documents version/freshness provenance and planned frozen-snapshot, key-sensitive table, warning-disclosure and golden-answer review controls. No additional distinct contribution selected. Proposed design and reported test results were not treated as completed current runtime guarantees. Article diagrams and a full reply-history review were not inspected."
+    },
+    {
+      "url": "https://x.com/ibidfear/status/2119376934899683409",
+      "reason": "Token/infrastructure thesis preview; full research and sources not investigated. No distinct engineering contribution selected; no financial claims adopted."
+    },
+    {
+      "url": "https://x.com/contradnamhq/status/2119370046552039695",
+      "reason": "Coding-agent memory post preview; full method and media not inspected. No sufficiently grounded contribution selected at this depth."
+    },
+    {
+      "url": "https://x.com/AbanHResearch/status/2119368773287444714",
+      "reason": "Continual-learning article preview; full article and method not inspected. No distinct contribution selected."
+    }
+  ],
+  "additionalSourceReads": [
+    {
+      "url": "https://gkoreli.com/ai-site-check-evidence",
+      "scope": "Fresh full live article: separate access, source policy, request identity and answer-fidelity evidence."
+    },
+    {
+      "url": "https://github.com/gkoreli/blog/blob/e164d682fedde5fac85313442d59efff2ef91012/packages/site-audit/README.md",
+      "scope": "Full current package README, including unknown coverage, local comparison and optional representations. No fresh production acceptance."
+    },
+    {
+      "url": "https://www.anthropic.com/research/components-of-agent-memory",
+      "scope": "Complete rendered primary article prose and figure descriptions read. Its reported experiments were not reproduced; no claim of universal memory benefit. Figures not separately visually audited."
+    },
+    {
+      "url": "https://github.com/puppyone-ai/open-ontology/blob/master/README.md",
+      "blobSha": "186d6416543b908731d155cb061fb62db01701e6",
+      "scope": "Full current README, including early-preview, source/reconciliation, knowledge-version and deployment limits."
+    },
+    {
+      "url": "https://github.com/puppyone-ai/open-ontology/blob/master/docs/13-evaluation-and-benchmarks.md",
+      "blobSha": "fb398a8848100e73d58d42355414bedf717a0a16",
+      "scope": "Full evaluation design, explicitly Proposed. Frozen snapshots, exact key matching, quality-warning checks and gold-answer review are design commitments, not verified execution."
+    }
+  ],
+  "fewerThanFiveReason": "One discussion supported a distinct, source-backed implementation suggestion. No new substantive incoming response. The second fully reviewed article and repository already covered the relevant evaluation controls; remaining bounded candidates stayed previews without a selected useful addition. Four unused slots expire; this does not establish that no useful conversation exists elsewhere.",
+  "accountState": "Signed-in X available; no restriction, cooldown, security lock, uncertain submission or pending composer.",
+  "privacy": "Raw signed-in captures and screenshots remain outside Git. Public records retain exact copy, public destinations, source hashes, methods, outcomes and limits.",
+  "limits": "No Reddit write, DM, like, follow, original post, upload, installation, site/code change, recipient test, hosted audit, provider trial, traffic/adoption measurement or scheduler change.",
+  "nextBoundedAction": "Next authorized run: reconcile shared state and prioritize substantive incoming responses. Do not repeat this suggestion to the same destination or carry unused quota forward."
+}

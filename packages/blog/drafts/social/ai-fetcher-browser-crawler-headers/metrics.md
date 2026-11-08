@@ -329,3 +329,9 @@ Seventy-nine unique replies across thirty-nine completed hourly runs, thirty of 
 [No new replies](hourly-ai-site-check-2026-11-08-1030.md). No fresh substantive incoming response. A full attribution article and linked guide already covered the relevant diagnostics; no distinct contribution justified repeating them. Other search results were previously encountered previews. No composer filled, submission attempted or restriction observed. [Structured receipt](hourly-ai-site-check-2026-11-08-1030-publication.json).
 
 Seventy-nine unique replies remain across forty completed hourly runs, thirty of which published replies; owner-directed five and original-chat sixty-eight remain separate. All five unused slots expire. No site change, runtime test, provider trial, traffic/adoption measurement or scheduler change. Prior public-visibility limits remain unchanged.
+
+## AI Site Check hourly run, November 8 at 11:28 UTC
+
+[One new reply](hourly-ai-site-check-2026-11-08-1128.md) to [Pavel’s company-memory discussion](https://x.com/GogaKoreli/status/2119392581226533345), offering backlog-mcp’s state-key replacement mechanism for evolving ownership facts while preserving the need for a current source check. Full written discussion, primary memory article and current implementation read. Canonical owner view, exact documentation link and screenshot verified; independent retrieval returned Cache miss. [Structured receipt](hourly-ai-site-check-2026-11-08-1128-publication.json).
+
+Eighty unique replies across forty-one completed hourly runs, thirty-one of which published replies; owner-directed five and original-chat sixty-eight remain separate. No fresh substantive incoming response. A second fully read article and repository already covered the relevant evaluation controls. Four unused slots expire. No pending submission, restriction, site change, runtime test or traffic/adoption measurement.
