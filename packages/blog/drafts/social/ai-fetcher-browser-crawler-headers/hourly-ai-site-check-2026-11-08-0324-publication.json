@@ -1,0 +1,130 @@
+{
+  "automationId": "ai-site-check-hourly-x-replies",
+  "triggeredAt": "2026-11-08T03:24:51.113Z",
+  "completedReviewAt": "2026-11-08T03:33:24.868328+00:00",
+  "timezone": "America/Los_Angeles",
+  "authorization": "Up to five useful X replies; fewer when suitable contributions are insufficient. No catch-up or other account actions.",
+  "preflight": "Current worklist, latest 02:24 receipt and shared destination records read. Launch skill, publication verification, prose/messages and owned-project index reread. Original posting chat inactive at start and end. Accepted UI and prior batches remain complete. Isolated HEAD and freshly fetched origin/main agreed at a1d15eb7a0b9301b6aa12e717774770b10cd7ae1. No overlapping posting session.",
+  "currentEvidence": "Fresh full live AI Site Check article, current site-audit README, native regression source and dated worklist incident read. Current backlog-mcp README/memory protocol and Mnemosyne README read while considering memory discussions. No runtime test, hosted audit or provider trial performed.",
+  "xRepliesPublished": 1,
+  "xNewConversationRepliesPublished": 1,
+  "xConversationFollowupsPublished": 0,
+  "canonicalOwnerViewsVerified": 1,
+  "items": [
+    {
+      "evidenceKey": "ifeanyi",
+      "kind": "new-conversation",
+      "recipient": "Ifeanyi Obasi / INFINIKXS",
+      "parent": "https://x.com/INFINIKXS/status/2119189821394395312",
+      "url": "https://x.com/GogaKoreli/status/2119271243774054752",
+      "copy": "we had green tests while AI Site Check couldn't fetch anything, our mocks hid Workers rejecting redirect: 'error'. the regression runs the real transport in Miniflare and intercepts outbound I/O. keep the failing runtime inside the test: https://github.com/gkoreli/blog/blob/a1d15eb7a0b9301b6aa12e717774770b10cd7ae1/packages/site-audit/scripts/check-workers-transport.mjs",
+      "weightedLength": 261,
+      "weightedLengthNote": "ASCII text with one URL counted as 23 characters; composer independently showed 19 remaining out of 280.",
+      "submittedAt": "2026-11-08T03:30:13.229Z",
+      "verifiedAt": "2026-11-08T03:30:42.974Z",
+      "publishedTimeUi": "7:30 PM · Nov 7, 2026",
+      "publishedAtMinuteUtc": "2026-11-08T03:30:00Z",
+      "timestampPrecision": "Submission and verification times are local observation timestamps; native canonical UI gives publication time to the minute in Pacific time.",
+      "conversationEvidence": [
+        "https://x.com/talesbytim/status/2119191675268636737",
+        "https://x.com/INFINIKXS/status/2119194273962774976",
+        "https://x.com/talesbytim/status/2119213821734625388",
+        "https://x.com/INFINIKXS",
+        "https://x.com/INFINIKXS/with_replies",
+        "https://writingtoolz.com/"
+      ],
+      "selection": "Read complete written root, Tim’s regression comment, the author’s response and the remaining nested reply through Show replies. Authored profile, rendered Replies history and linked WritingToolz homepage read. The author describes building its PDF editor and discusses testing/debugging beyond the bio. The related cursor-debugging post was a preview, not a full investigation. No prior campaign destination/contact found. No human-identity claim.",
+      "value": "Answers the request for a real debugging example with the recorded AI Site Check failure. Adds a concrete test-boundary choice to a discussion already advocating regression tests: keep the actual runtime/transport and intercept outbound I/O. Direct link to inspectable regression source, with no diagnosis of the recipient’s code.",
+      "sourceReads": [
+        {
+          "url": "https://gkoreli.com/ai-site-check-evidence#keep-the-domains-and-their-evidence-separate",
+          "scope": "Live article read fully. Historical first release failure and repair, not fresh production acceptance."
+        },
+        {
+          "url": "https://github.com/gkoreli/blog/blob/a1d15eb7a0b9301b6aa12e717774770b10cd7ae1/packages/site-audit/scripts/check-workers-transport.mjs",
+          "scope": "Current local source at fetched main read before publication; published shortlink followed to this exact pinned GitHub file. Bundles the real audit, uses Miniflare outboundService, checks rejected redirect:error before outbound I/O and all eight fixture responses. No test rerun this hour."
+        },
+        {
+          "url": "https://github.com/gkoreli/blog/blob/a1d15eb7a0b9301b6aa12e717774770b10cd7ae1/packages/blog/drafts/research/ai-site-audit/00-worklist.md",
+          "scope": "Dated incident and native-test evidence read separately from current source. Both the original substituted fetch and substituted audit boundaries are recorded."
+        },
+        {
+          "url": "https://writingtoolz.com/",
+          "scope": "Live homepage read for product context; optional cookies rejected. No file uploaded, sign-in, editor workflow, runtime test or acceptance of performance/privacy claims."
+        }
+      ],
+      "verification": "Exact final copy preserved privately; composer named INFINIKXS and showed 19 remaining. One Reply click exposed the new canonical URL. Reopened canonical and verified exact text, parent and native time; saved screenshot. Published shortlink reached the intended pinned regression file.",
+      "presentationLimit": "The link card uses the generic repository image with the intended file title. The link destination was verified; no edit or repost.",
+      "independentPublicVisibility": "Unverified: independent web retrieval returned Cache miss",
+      "limits": "Historical own-site failure and current source-level mechanism. No claim that the recipient uses Workers, has this bug, or applied the method. No new runtime result or general provider-access claim."
+    }
+  ],
+  "countNote": "Seventy-six unique replies across thirty-three completed hourly runs, twenty-seven of which published replies. Owner-directed five and original-chat sixty-eight remain separate.",
+  "notificationCoverage": "No fresh substantive incoming response selected. CryptoBurrito’s planned feature, Balsa’s answered question, LiveaAi’s acknowledgment and earlier Peter/Daryll/mpgn/Sergei entries were previously handled. No new Vinay/Tomas response visible. Bounded view, not an account-wide census or engagement measurement.",
+  "searchQuery": "(\"agent memory\" OR \"context window\" OR \"codebase context\") (built OR building OR forgetting OR debugging) since:2026-11-07 -filter:replies",
+  "selection": "One focused Latest search, one downward action of two pages, and a full loaded snapshot resolving initially incomplete result text. Three full written root investigations; one selected after discussion, author, product and source review. Remaining previews were not full investigations.",
+  "skippedExamples": [
+    {
+      "url": "https://x.com/lonniev/status/2119241517537611865",
+      "reason": "Complete written root, linked intention-memory article, profile and rendered Replies history read. Product ownership and a concrete scheduler explanation were visible, but the recent profile clustered several templated product/shop promotions; this destination was not selected under the relationship preference. The article already distinguishes agent opinion from operator doctrine. No runtime, economic, security, benchmark or identity verdict; no claim that the hypothetical token story occurred."
+    },
+    {
+      "url": "https://x.com/abdiisan/status/2119188933145932000",
+      "reason": "Complete written root, visible Meridian response, authored profile and two Replies states read. Relevant and Recent views plus a scroll/screenshot exposed only one reply despite a count of two; full discussion coverage cannot be claimed. The linked site said Deployment Paused; current public repository README was fetched instead. It already describes lifecycle/conflict gates and temporal version chains; no distinct sufficiently grounded addition selected from the inspected material. No claim about unseen core enforcement or a recipient bug."
+    },
+    {
+      "url": "https://x.com/quentinfelice/status/2119180927850979575",
+      "reason": "Exact destination already answered in the 23:24 run; current preview only and no new incoming response selected."
+    },
+    {
+      "url": "https://x.com/Oluwaphilemon1/status/2119268751782609066",
+      "reason": "Model-release recap preview; performance/download claims and embedded media not investigated or adopted."
+    },
+    {
+      "url": "https://x.com/ContextWindow_/status/2119254344898117836",
+      "reason": "Paper-summary preview; no distinct matching implementation contribution selected. Full paper and quantitative claims not investigated."
+    },
+    {
+      "url": "https://x.com/Dshyam03/status/2119250261080416572",
+      "reason": "Summary/quote of a memory article; no specific owned implementation problem selected. Original article not read in this run."
+    },
+    {
+      "url": "https://x.com/Tugrul_Guner/status/2119203118110187856",
+      "reason": "Memory-article summary preview; full article and reported outcome not investigated."
+    },
+    {
+      "url": "https://x.com/PatchOnChain/status/2119178320462164098",
+      "reason": "Flaky-test article preview with a broader active discussion. Full article/thread and zero-flake claims not investigated; the selected regression example was not repeated into this destination."
+    }
+  ],
+  "additionalSourceReads": [
+    {
+      "url": "https://github.com/gkoreli/backlog-mcp/blob/main/README.md",
+      "blobSha": "ced131bc3ac87059efc6186d2426785085d2c4c3",
+      "scope": "Current README through GitHub while evaluating memory discussions; no installation or recommendation published."
+    },
+    {
+      "url": "https://github.com/gkoreli/backlog-mcp/blob/main/docs/guides/memory-protocol.md",
+      "blobSha": "087d741e305bb0fd4fd029fdb8fa2e677d721b18",
+      "scope": "Current supersedes/state_key, correction lineage, recall and expiry guidance; no runtime acceptance."
+    },
+    {
+      "url": "https://github.com/mnemosyne-oss/mnemosyne/blob/main/README.md",
+      "blobSha": "536098b5389e17b97e49bfc846d8bcdef5f67d4d",
+      "scope": "Current README via GitHub after focused source discovery. Product/method context only; historical benchmarks, comparisons and security claims not adopted or tested."
+    },
+    {
+      "url": "https://cafe.tollbooth-dpyc.com/blogs/our-value/curating-design-and-decision-intention",
+      "scope": "Full linked article read in browser after web shortlink retrieval failed. Hypothetical example and described doctrine/opinion separation; no operation of the paid graph or shopping tools."
+    },
+    {
+      "url": "https://mnemosyne.site/",
+      "scope": "Web retrieval returned 402; browser showed Deployment Paused. This is a site observation, not a conclusion about package availability."
+    }
+  ],
+  "fewerThanFiveReason": "One specific contribution met the bar. No fresh substantive incoming response; two other root investigations did not justify publication at their reviewed depth. Other results were summaries, an already handled destination or uninvestigated previews. No generic filler. Four unused slots expire; this bounded review is not a claim that useful discussions do not exist elsewhere.",
+  "accountState": "Signed-in X available; no restriction, cooldown or security lock observed. No uncertain submission or pending composer remains.",
+  "privacy": "Raw signed-in captures and screenshots stay outside Git. Records contain public URLs, exact final text, normalized methods, results and limits.",
+  "limits": "No Reddit write, DM, like, follow, original post, paid query, upload, site/code change, recipient integration, runtime test, hosted audit, provider trial, traffic/adoption measurement or scheduler change.",
+  "nextBoundedAction": "Next authorized run: reconcile shared state and prioritize substantive incoming replies. Do not repeat this regression example to the same destination or accumulate unused quota."
+}
