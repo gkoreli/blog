@@ -1,0 +1,73 @@
+{
+  "automationId": "ai-site-check-hourly-x-replies",
+  "triggeredAt": "2026-11-08T01:25:50.379Z",
+  "completedReviewAt": "2026-11-08T01:29:08.233178+00:00",
+  "timezone": "America/Los_Angeles",
+  "authorization": "Up to five useful X replies; fewer when suitable contributions are insufficient. No catch-up or other account actions.",
+  "preflight": "Current worklist, latest 00:22 receipt and shared destination records read. Publication-verification, prose/messages and owned-project index reread. Launch skill retained from the preceding full read and checked unchanged. Original posting chat inactive at start and end. Accepted UI and one-time batches remain complete. Isolated HEAD and freshly fetched origin/main agree at 0b2bd4a9c7c5bde78d53abdd511e673a7af3e81d. No overlapping posting session.",
+  "currentEvidence": "Fresh full live AI Site Check article read in browser after web extraction failed; current site-audit README read locally. Score uncertainty, optional representations, transport/runtime assumptions and synthetic-versus-provider limits remain explicit. No new source-dependent claim was published or runtime tested.",
+  "xRepliesPublished": 0,
+  "xNewConversationRepliesPublished": 0,
+  "xConversationFollowupsPublished": 0,
+  "canonicalOwnerViewsVerified": 0,
+  "items": [],
+  "countNote": "Seventy-five unique replies remain across thirty-one completed hourly runs, twenty-six of which published replies. Owner-directed five and original-chat sixty-eight remain separate.",
+  "notificationCoverage": "Bounded notification view showed previously handled conversations, with no new substantive response selected. CryptoBurrito’s planned provenance change was recorded at 22:17; Balsa’s question was answered at 20:22. No new response from the latest Vinay/Tomas destinations was visible. No account-wide census, shipped-feature claim or engagement measurement.",
+  "searchQuery": "(\"agent memory\" OR \"repo context\" OR \"web components\") (built OR shipped OR issue) since:2026-11-07 -filter:replies",
+  "selection": "One focused Latest search and two downward scroll actions, three saved states. Newest results were briefing previews; older matches repeated already reviewed destinations or broad third-party summaries. No candidate was advanced to a new full thread/profile/product investigation, and no advice was published from preview text.",
+  "skippedExamples": [
+    {
+      "url": "https://x.com/BestBlogsDev/status/2119234062766510080",
+      "reason": "Daily briefing preview linking its own roundup; no specific owned implementation problem or distinct contribution selected. Full post, linked article and account history not investigated."
+    },
+    {
+      "url": "https://x.com/BestBlogsDev/status/2119234019586154521",
+      "reason": "Same daily briefing article preview; not a second conversation opportunity. No claim about account identity or authorship."
+    },
+    {
+      "url": "https://x.com/Joshua_WD/status/2119205668846555515",
+      "reason": "Configuration/secrets article preview previously considered at 23:24. Author already contacted on a different terminal discussion. No new matching contribution selected, full article not read and security statistics not adopted."
+    },
+    {
+      "url": "https://x.com/iblai_/status/2119195815545631144",
+      "reason": "Current preview; 23:24 receipt records its prior full written post/profile/Replies review and insufficient substantive relationship context. No fresh investigation or repeat pitch."
+    },
+    {
+      "url": "https://x.com/MAGNEMO_AI/status/2119179443331911986",
+      "reason": "Current promotional preview; 23:24 receipt carries the earlier selection context. No fresh implementation or account-identity claim."
+    },
+    {
+      "url": "https://x.com/EntrepreneursAI/status/2119127808215507402",
+      "reason": "Broad newsletter preview previously considered at 21:21; no specific relevant implementation contribution selected."
+    },
+    {
+      "url": "https://x.com/clawdtalk/status/2119114701627945166",
+      "reason": "Third-party memory-study recap preview previously considered at 21:21; no new specific problem selected."
+    },
+    {
+      "url": "https://x.com/professorclawai/status/2119114088290615498",
+      "reason": "News-roundup preview previously considered at 21:21; no new specific implementation contribution selected."
+    },
+    {
+      "url": "https://x.com/Atheerium/status/2119102805273157793",
+      "reason": "Short third-party Anthropic memory summary. No implementation question or owned project context selected; full discussion/profile not investigated."
+    }
+  ],
+  "sourceReads": [
+    {
+      "url": "https://gkoreli.com/ai-site-check-evidence",
+      "scope": "Fresh full live article read through signed-in browser; page itself public. No hosted audit call."
+    },
+    {
+      "url": "https://github.com/gkoreli/blog/blob/0b2bd4a9c7c5bde78d53abdd511e673a7af3e81d/packages/site-audit/README.md",
+      "scope": "Current local package README read at fetched main baseline; source contract only, no runtime acceptance test."
+    }
+  ],
+  "fewerThanFiveReason": "No fresh substantive incoming response, and no distinct contribution met the bar among the bounded search results. Existing reviews were reconciled instead of repeated, and broad summaries did not justify generic promotion. This is not a claim that useful conversations do not exist elsewhere. All five unused slots expire.",
+  "verification": "No composer filled or submission attempted; no pending or uncertain publication. Canonical publication checks are not applicable.",
+  "accountState": "Signed-in in-app browser available; no restriction, cooldown or security lock observed.",
+  "independentPublicVisibility": "No new publication to verify; previous owner/public visibility limits remain unchanged.",
+  "privacy": "Raw signed-in captures remain outside Git. Records contain only public URLs and normalized methods, outcome and limits.",
+  "limits": "No post, reply, Reddit write, DM, like, follow, hosted audit, provider trial, recipient runtime test, site change, traffic/adoption measurement or scheduler change.",
+  "nextBoundedAction": "Next authorized run: reconcile shared records, prioritize new substantive incoming responses and choose new destinations only when there is a useful supported contribution. Do not carry over unused quota."
+}

@@ -269,3 +269,9 @@ Incoming entries were already handled. The other full written-post/profile revie
 [Two new replies](hourly-ai-site-check-2026-11-08-0022.md): [Vinay / access diagnosis and answer fidelity](https://x.com/GogaKoreli/status/2119225034657194456), and [Tomas / Vercel metrics through the CLI](https://x.com/GogaKoreli/status/2119226544463999148). Exact text, source basis, native timestamps and presentation limits are in the [structured receipt](hourly-ai-site-check-2026-11-08-0022-publication.json). Both canonical owner views and intended outgoing links were verified. Independent retrieval returned Cache miss; anonymous public visibility remains unverified.
 
 No new substantive incoming response was selected; remaining search matches were broad or previously handled. Seventy-five unique replies across thirty completed hourly runs, twenty-six of which published replies; owner-directed five and original-chat sixty-eight remain separate. Three unused slots expire. No restriction, pending submission, runtime test, traffic/adoption measurement or scheduler change.
+
+## AI Site Check hourly run, November 8 at 01:25 UTC
+
+[No additional replies](hourly-ai-site-check-2026-11-08-0125.md). Notifications contained previously handled conversations. One focused search and two scroll actions yielded broad briefing previews and older reviewed destinations; no distinct contribution was selected. No composer filled, submission attempted or restriction observed. [Structured receipt](hourly-ai-site-check-2026-11-08-0125-publication.json).
+
+Seventy-five unique replies remain across thirty-one completed hourly runs, twenty-six of which published replies; owner-directed five and original-chat sixty-eight remain separate. All five unused slots expire. No site/runtime work, traffic/adoption measurement or scheduler change. Previous public-visibility limits remain unchanged.
