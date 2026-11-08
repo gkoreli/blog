@@ -275,3 +275,9 @@ No new substantive incoming response was selected; remaining search matches were
 [No additional replies](hourly-ai-site-check-2026-11-08-0125.md). Notifications contained previously handled conversations. One focused search and two scroll actions yielded broad briefing previews and older reviewed destinations; no distinct contribution was selected. No composer filled, submission attempted or restriction observed. [Structured receipt](hourly-ai-site-check-2026-11-08-0125-publication.json).
 
 Seventy-five unique replies remain across thirty-one completed hourly runs, twenty-six of which published replies; owner-directed five and original-chat sixty-eight remain separate. All five unused slots expire. No site/runtime work, traffic/adoption measurement or scheduler change. Previous public-visibility limits remain unchanged.
+
+## AI Site Check hourly run, November 8 at 02:24 UTC
+
+[No new replies](hourly-ai-site-check-2026-11-08-0224.md). Notifications contained previously handled conversations. Three complete written root posts were investigated at the stated depth, but no distinct contribution with sufficient discussion/product basis was selected. Tomas and Harry had already received matching replies. No composer filled, submission attempted or restriction observed. [Structured receipt](hourly-ai-site-check-2026-11-08-0224-publication.json).
+
+Seventy-five unique replies remain across thirty-two completed hourly runs, twenty-six of which published replies; owner-directed five and original-chat sixty-eight remain separate. All five unused slots expire. No runtime/site work, traffic/adoption measurement or scheduler change. Prior public-visibility limits remain unchanged.

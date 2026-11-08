@@ -1,0 +1,74 @@
+{
+  "automationId": "ai-site-check-hourly-x-replies",
+  "triggeredAt": "2026-11-08T02:24:51.104Z",
+  "completedReviewAt": "2026-11-08T02:29:52.609071+00:00",
+  "timezone": "America/Los_Angeles",
+  "authorization": "Up to five useful X replies; fewer when suitable contributions are insufficient. No catch-up or other account actions.",
+  "preflight": "Current worklist, latest 01:25 receipt and shared destination records read. Launch/publication, prose/messages and owned-project guidance retained from their preceding full reads and checked unchanged, along with the site-audit README. Original posting chat inactive at start and end. Accepted UI and prior batches remain complete. Isolated HEAD and freshly fetched origin/main agree at 8ede8c4ab130c2abb40cf556072ada96f17c65c5. No overlapping posting session.",
+  "currentEvidence": "Fresh full live AI Site Check article read. Current AgentPort README fetched through GitHub while considering relay discussions. No hosted audit, project installation, recipient runtime or provider trial.",
+  "xRepliesPublished": 0,
+  "xNewConversationRepliesPublished": 0,
+  "xConversationFollowupsPublished": 0,
+  "canonicalOwnerViewsVerified": 0,
+  "items": [],
+  "countNote": "Seventy-five unique replies remain across thirty-two completed hourly runs, twenty-six of which published replies. Owner-directed five and original-chat sixty-eight remain separate.",
+  "notificationCoverage": "No fresh substantive incoming response selected in the bounded notification view. CryptoBurrito, Balsa, LiveaAi, Peter, Daryll, mpgn and Sergei entries were previously handled. No new response from Vinay or Tomas visible. No engagement measurement or account-wide census.",
+  "searchQuery": "(WebMCP OR \"headless browser\" OR \"agent tools\") (built OR shipped OR debugging) since:2026-11-07 -filter:replies",
+  "selection": "One focused Latest search and two downward scroll actions, with three saved states. The first scroll returned unchanged accessibility content; a screenshot confirmed the viewport had moved. Read three complete written root posts and available discussion context; reviewed profiles and Replies for two of them. Review depth and media limits are recorded separately. No composer filled.",
+  "skippedExamples": [
+    {
+      "url": "https://x.com/jacksunny18/status/2119181982760608042",
+      "reason": "Read the complete written relay-scope post, profile and rendered Replies history. Recent authored posts repeatedly used broad contrast framing; sampled replies supplied generalized commentary rather than a concrete shared implementation problem. The parent counted one reply, but the rendered discussion and screenshot went directly to Discover more without exposing it, so full discussion coverage is not claimed. Product site/source not inspected. No grounded addition selected, no identity accusation or security verdict."
+    },
+    {
+      "url": "https://x.com/VishalsProjects/status/2119169046310519081",
+      "reason": "Read the complete written Three.js science-video pipeline post, rendered reply and visible follow-up quote about cost. The post already describes frame-by-frame rendering. No distinct contribution tied closely enough to the scoped article/projects was selected. The 49-second video, linked channel and implementation were not inspected; profile/Replies investigation was not pursued. No cost, model-performance or science claim adopted."
+    },
+    {
+      "url": "https://x.com/NashBriggsy/status/2119123091880100081",
+      "reason": "Read the complete written tool-call analytics post, empty reply area, authored profile and Replies history; sampled a frame of the animated chart. The post reports request groups and absent payment headers, but no inspectable endpoint or implementation was identified in the reviewed context. Generic payment-funnel advice would require assumptions about the method. No distinct fully supported contribution selected. The full clip and protocol/runtime were not examined; reported totals were not verified and no UA-to-person inference was made."
+    },
+    {
+      "url": "https://x.com/WuRichard_/status/2119252692409221450",
+      "reason": "GitHub Trending recap preview; no owned implementation problem selected. The 05:57 receipt supplies historical author-review context for a different post, not evidence of this post’s claims. Star counts not adopted; new full discussion not read."
+    },
+    {
+      "url": "https://x.com/fivebar_xyz/status/2119238229517852976",
+      "reason": "Solana tool-release preview. No specific contribution from the scoped work selected; product, tool behavior and attached media not inspected."
+    },
+    {
+      "url": "https://x.com/tomasward__/status/2119189400135295382",
+      "reason": "Exact destination already answered at 00:22 with Vercel CLI guidance; no new incoming response selected."
+    },
+    {
+      "url": "https://x.com/HarrySandersSEO/status/2119188440445333925",
+      "reason": "Exact destination already answered at 22:17 with AgentPort’s document-tool example; no new incoming response selected."
+    },
+    {
+      "url": "https://x.com/OxEnsooo/status/2119165823919226980",
+      "reason": "AI-video production article preview. No specific matching contribution selected; full article and claimed cost ratios not investigated."
+    },
+    {
+      "url": "https://x.com/markfenner/status/2119156501088473256",
+      "reason": "Broad daily AI roundup preview; no specific implementation problem selected. Full post and model claims not investigated."
+    }
+  ],
+  "sourceReads": [
+    {
+      "url": "https://gkoreli.com/ai-site-check-evidence",
+      "scope": "Fresh complete live article, keeping technical access, provider operations, optional representations and answer fidelity separate."
+    },
+    {
+      "url": "https://github.com/gkoreli/agentport/blob/main/README.md",
+      "blobSha": "272b0194178412ba298394670e9758228161153a",
+      "scope": "Current README through GitHub: user-chosen agent, site-defined tools, scoped session, approval-gated replace example and connection fallbacks. Deployment and test statements remain historical reports, not fresh runtime acceptance. No recommendation published."
+    }
+  ],
+  "fewerThanFiveReason": "No new substantive incoming response. Two matching destinations were already handled; the three written-post investigations did not produce a distinct contribution with sufficient discussion/product basis. Remaining previews were broad recaps or outside the selected implementation scope. No generic promotion filled the quota. This does not establish that useful discussions do not exist elsewhere; all five unused slots expire.",
+  "verification": "No composer filled or submission attempted; no pending or uncertain publication. Canonical checks are not applicable.",
+  "accountState": "Signed-in browser available; no restriction, cooldown or security lock observed.",
+  "independentPublicVisibility": "No new publication to verify. Prior owner/public visibility limits remain unchanged.",
+  "privacy": "Raw signed-in captures stay outside Git. Only public URLs and normalized methods, outcome and limits are committed.",
+  "limits": "No post, reply, Reddit write, DM, like, follow, hosted audit, provider trial, recipient test, installation, site change, traffic/adoption measurement or scheduler change.",
+  "nextBoundedAction": "Next authorized run: reconcile shared state, prioritize substantive incoming responses and select a new destination only when a concrete useful contribution is supported. Unused quota does not carry over."
+}
