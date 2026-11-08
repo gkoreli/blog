@@ -1,0 +1,121 @@
+{
+  "automationId": "ai-site-check-hourly-x-replies",
+  "triggeredAt": "2026-11-08T09:31:54.875Z",
+  "completedReviewAt": "2026-11-08T09:39:58Z",
+  "timezone": "America/Los_Angeles",
+  "authorization": "Up to five useful X replies; fewer when suitable contributions are insufficient. No catch-up or other account actions.",
+  "preflight": "Latest worklist, 08:32 receipt and shared destination records read. Required launch, publication-verification, prose and owned-project guidance retained and refreshed. Original posting chat inactive at start, before publication and end. Accepted UI and prior batches remain complete. Isolated HEAD and freshly fetched origin/main agree at bc33c1af8391ebd4fccfc80d1e082775fffff5bd. No overlapping posting session.",
+  "currentEvidence": "Full live AI Site Check article read through browser after web retrieval failed. Current site-audit README reread from checkout matching fetched main. Recipient README, Agent Check docs and relevant implementation/tests read using browser and GitHub connector. No hosted audit, provider trial or runtime test.",
+  "xRepliesPublished": 1,
+  "xNewConversationRepliesPublished": 1,
+  "xConversationFollowupsPublished": 0,
+  "canonicalOwnerViewsVerified": 1,
+  "items": [
+    {
+      "evidenceKey": "hankaws",
+      "kind": "new-conversation",
+      "recipient": "Hankaws / Aperture",
+      "parent": "https://x.com/Hankaws/status/2119352020314235072",
+      "url": "https://x.com/GogaKoreli/status/2119363910365294639",
+      "copy": "reading testsFor, two failing runs set preexisting without comparing failures. I'd add a fixture: base fails A; edit also breaks B, tests unchanged. Compare failed test IDs before making that amber, so an old failure can't mask a new one. https://github.com/Hankaws/aperture/blob/main/packages/agent-check/src/main.ts",
+      "weightedLength": 262,
+      "weightedLengthNote": "ASCII text with one URL counted as 23 characters; composer displayed 18 characters remaining.",
+      "submittedAt": "2026-11-08T09:38:26.603Z",
+      "verifiedAt": "2026-11-08T09:38:58.381Z",
+      "publishedTimeUi": "1:38 AM · Nov 8, 2026",
+      "publishedAtMinuteUtc": "2026-11-08T09:38:00Z",
+      "timestampPrecision": "Submission timestamp saved immediately before the single click; verification timestamp saved after canonical capture and screenshot. UI supplies Pacific time to the minute.",
+      "selection": "Read complete written root and its one rendered response from Mikhail; the displayed count was one before posting. Profile shows distinct editor, MCP and Agent Check releases; loaded Replies includes a substantive test-tampering explanation to SunsetSyntax alongside acknowledgments. Linked repository ownership matches the author and contains the implementation discussed. No prior recipient or destination found in shared receipts. Profile previews and older media were not treated as measured evidence; no identity conclusion.",
+      "value": "A source-grounded regression fixture: a base already failing A while an unchanged test suite gains failure B after a code edit. The current Agent Check path compares run-level pass/fail when marking the head failure preexisting. Recommends comparing failing test identities before downgrading to amber. This follows the evidence-led comparison principle; the link is the recipient's exact implementation, with no forced blog promotion.",
+      "sourceReads": [
+        {
+          "url": "https://github.com/Hankaws/aperture/blob/main/packages/agent-check/action/README.md",
+          "blobSha": "f976ef6317c6007d3010b31900fcb4a5dc86e56f",
+          "scope": "Full current Agent Check README: static checks, before/after tests, base caching and coverage limits. Benchmark numbers are owner reports, not independently reproduced."
+        },
+        {
+          "url": "https://github.com/Hankaws/aperture/blob/main/packages/agent-check/smoke.mjs",
+          "blobSha": "7e5802187710be03dd62b4221c68e144262b8979",
+          "scope": "Full bundle smoke fixture read: untouched caller regression, annotations, summary, output and correct-change control. Not executed."
+        },
+        {
+          "url": "https://github.com/Hankaws/aperture/blob/main/packages/agent-check/src/main.ts",
+          "blobSha": "d31df07453416a6e863286fde9b5a7d6a990b28d",
+          "scope": "Full current main.ts read. testsFor returns after a passing head; for a failing head it sets preexisting from base.run.ran && !base.run.passed, without comparing failures. This is the exact linked source."
+        },
+        {
+          "url": "https://github.com/Hankaws/aperture/blob/main/packages/agent-check/src/main.test.ts",
+          "blobSha": "c27787975113a8f99b30846b1e602018ad8d6cdf",
+          "scope": "Full current main.test.ts read. Existing fixtures cover a still-identical base failure and installed-package type changes. No claim of exhaustive repository test coverage."
+        },
+        {
+          "url": "https://github.com/Hankaws/aperture/blob/main/packages/agent-check/src/tests.ts",
+          "blobSha": "7b5a0eab80fa0dc0987696ddabeec9f401bb6be2",
+          "scope": "Full current tests.ts read: test process output, base worktree and borrowed installed dependencies. No recipient code executed."
+        },
+        {
+          "url": "https://github.com/Hankaws/aperture/blob/main/src/lib/workspace/static-checks.ts",
+          "blobSha": "fad4afa1872d83db4dce31285bc5b745eb9e0d18",
+          "scope": "Full static-checks.ts read to trace input.tests into changeChecks without replacing the preexisting result."
+        },
+        {
+          "url": "https://github.com/Hankaws/aperture/blob/main/src/lib/workspace/checks.ts",
+          "blobSha": "ed6033a6c8aee4eec8517a32a530abd62b2fdac6",
+          "scope": "Full checks.ts read: browserRow maps preexisting to warn, unless later test-tampering evidence changes the row. Proposed fixture leaves tests unchanged and concerns the Agent Check path, not all browser or MCP behavior."
+        }
+      ],
+      "verification": "Exact final copy preserved privately before one Reply click. After the transient submission state cleared, the new canonical URL appeared in the parent. Canonical reopened and text, parent, minute timestamp and screenshot inspected. Published shortlink https://t.co/Sdjoc3e5aj resolved to the exact main.ts file. No retry, edit, repost or pending composer.",
+      "independentPublicVisibility": "Unverified: independent web retrieval returned Cache miss.",
+      "limits": "Source inspection supports the branch behavior. The proposed fixture was not executed and no observed production failure, exploit, completed fix or exhaustive test absence is claimed. Other checks may independently fail a change; the suggestion isolates unchanged tests and a new behavioral failure."
+    }
+  ],
+  "countNote": "Seventy-nine unique replies across thirty-nine completed hourly runs, thirty of which published replies. Owner-directed five and original-chat sixty-eight remain separate.",
+  "notificationCoverage": "No fresh substantive incoming response selected. CryptoBurrito, Balsa, LiveaAi, Peter, Daryll, mpgn and Sergei entries previously handled. Planned sitemap changes remain reported intentions. Bounded notification view, no engagement census.",
+  "searchQuery": "(\"WebMCP\" OR \"MCP server\") (built OR shipped OR \"open source\") since:2026-11-08 -filter:replies",
+  "selection": "One focused Latest search and two downward scroll actions of two pages each. One complete written discussion received deeper author/source review and a reply. Other candidates remained previews; no query grid.",
+  "skippedExamples": [
+    {
+      "url": "https://x.com/prompt48/status/2119362227627270644",
+      "reason": "NVIDIA ontology article preview; full method and author conversation context not inspected, no distinct supported addition selected."
+    },
+    {
+      "url": "https://x.com/useKyte/status/2119354244855923119",
+      "reason": "Options-market integration announcement preview. Product, ownership mechanism and video not investigated; financial or safety claims not adopted."
+    },
+    {
+      "url": "https://x.com/cutetoxicguy/status/2119354244696302011",
+      "reason": "Hybrid computer-use research summary preview. Performance figures and screenshots not independently checked; no specific implementation need selected."
+    },
+    {
+      "url": "https://x.com/shippedbond/status/2119353663302893592",
+      "reason": "Upcoming-features announcement preview, no distinct supported contribution selected. Product not investigated."
+    },
+    {
+      "url": "https://x.com/WojakTheDev/status/2119347895916958150",
+      "reason": "Reverse-engineering distraction-tool summary preview. Full post, source and video not investigated."
+    },
+    {
+      "url": "https://x.com/Arindam_1729/status/2119346997614501943",
+      "reason": "Reverse-engineering tool promotion preview; full post and technical or popularity claims not investigated."
+    }
+  ],
+  "additionalSourceReads": [
+    {
+      "url": "https://gkoreli.com/ai-site-check-evidence",
+      "scope": "Fresh full live article. Technical access, request identity, provider output and answer fidelity remain distinct."
+    },
+    {
+      "url": "https://github.com/gkoreli/blog/blob/bc33c1af8391ebd4fccfc80d1e082775fffff5bd/packages/site-audit/README.md",
+      "scope": "Full current package README reread, including source-level evidence, native-runtime fixtures, unknown coverage and per-observation comparisons. No fresh production acceptance."
+    },
+    {
+      "url": "https://github.com/Hankaws/aperture",
+      "scope": "Rendered root README and repository context read. Ownership and documented capabilities, not fresh benchmark reproduction or hosted-product acceptance."
+    }
+  ],
+  "fewerThanFiveReason": "One conversation supported a concrete source-level finding and useful proposed fixture. No fresh substantive incoming response; other bounded search results were summaries, announcements or promotions without a selected distinct contribution. Four unused slots expire; this is not an exhaustive claim about available conversations.",
+  "accountState": "Signed-in X available; no restriction, cooldown, security lock, uncertain submission or pending composer.",
+  "privacy": "Raw signed-in captures and screenshots remain outside Git. Public records retain exact copy, public destinations, source hashes, methods, outcomes and limits.",
+  "limits": "No Reddit write, DM, like, follow, original post, upload, installation, site/code change, recipient test, hosted audit, provider trial, traffic/adoption measurement or scheduler change.",
+  "nextBoundedAction": "Next authorized run: reconcile shared state and prioritize substantive incoming responses. Do not repeat this fixture to the same destination or carry unused quota forward."
+}
