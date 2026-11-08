@@ -1,0 +1,73 @@
+{
+  "automationId": "ai-site-check-hourly-x-replies",
+  "triggeredAt": "2026-11-08T06:23:53.044Z",
+  "completedReviewAt": "2026-11-08T06:30:34.502162+00:00",
+  "timezone": "America/Los_Angeles",
+  "authorization": "Up to five useful X replies; fewer when suitable contributions are insufficient. No catch-up or other account actions.",
+  "preflight": "Current worklist, latest 05:27 receipt and shared destination records read. Required launch/publication, prose/messages and owned-project guidance retained and checked unchanged; publication verification reread. Original posting chat inactive at start and end. Accepted UI and prior batches remain complete. Isolated HEAD and freshly fetched origin/main agree at bb6446330a9a774c411de956a22e0d615a84b81e. No overlapping posting session.",
+  "currentEvidence": "Fresh full live AI Site Check article and current site-audit README read. Source-level evidence only; no hosted audit, runtime test or provider trial.",
+  "xRepliesPublished": 0,
+  "xNewConversationRepliesPublished": 0,
+  "xConversationFollowupsPublished": 0,
+  "canonicalOwnerViewsVerified": 0,
+  "items": [],
+  "countNote": "Seventy-seven unique replies remain across thirty-six completed hourly runs, twenty-eight of which published replies. Owner-directed five and original-chat sixty-eight remain separate.",
+  "notificationCoverage": "No fresh substantive incoming response in the bounded notification view. CryptoBurrito, Balsa, LiveaAi, Peter, Daryll, mpgn and Sergei entries were previously handled. CryptoBurrito still reports a planned addition, not an inspected implementation. No new Pulkit response observed. No account-wide census or engagement measurement.",
+  "searchQuery": "(\"AI traffic\" OR \"bot traffic\" OR \"AI crawler\") (measure OR analytics OR building OR logs) since:2026-11-07 -filter:replies",
+  "selection": "One focused Latest search and two downward scroll actions of two pages each; a screenshot established the intermediate timeline position. One new written root, several visible discussion sections, profile and one loaded Replies view received deeper review. Other results were previews only or deduplicated against receipts. No composer filled.",
+  "skippedExamples": [
+    {
+      "url": "https://x.com/eliadeleoai/status/2119267777563533748",
+      "reason": "Read complete written root, successive visible discussion sections, profile and a loaded Replies view. The root mentions an upcoming analytics product without identifying it. Ace asks whether AI crawlers get separate categories; the author replies that every AI will be separated. No inspectable analytics product or classification method was identified in this bounded context, and sampled conversation history mainly contained greetings and engagement-growth exchanges. No sufficiently grounded distinct contribution selected. The whole discussion, attached image and external profile sites were not inspected; no revenue, growth, product capability or identity inference adopted."
+    },
+    {
+      "url": "https://x.com/eliadeleoai/status/2119279169397993802",
+      "reason": "Read in root discussion as the response to Ace about separate AI categories. No contact made and no recipient classification bug inferred. This remains an unverified product intention."
+    },
+    {
+      "url": "https://x.com/ccdotla/status/2119271291564032132",
+      "reason": "Access-log article preview describes combined logs, awk, 404s, bots and slow responses. Full article, discussion and author history not inspected; no specific unresolved problem selected."
+    },
+    {
+      "url": "https://x.com/ashdhawan/status/2119165272456413345",
+      "reason": "Exact article destination already reviewed at 21:21 and encountered again at 00:22. No new substantive response or distinct addition selected; discussion not reopened."
+    },
+    {
+      "url": "https://x.com/TheValueist/status/2119225729452007727",
+      "reason": "Earnings-investment preview outside this implementation scope. Full post and financial claims not investigated or adopted."
+    },
+    {
+      "url": "https://x.com/AyalinCreator/status/2119221046595535238",
+      "reason": "Broad web3 metrics and agent economic-participation preview. Full post and discussion not read; no supported technical contribution selected."
+    },
+    {
+      "url": "https://x.com/CernBasher/status/2119133402406232122",
+      "reason": "Satellite-network article preview outside the selected web-analytics problem. Full article not read; claims not adopted."
+    },
+    {
+      "url": "https://x.com/CernBasher/status/2119128571591774364",
+      "reason": "6G economy article preview outside the selected implementation scope. Full article not read; claims not adopted."
+    },
+    {
+      "url": "https://x.com/dackdrewETH/status/2119115869322350879",
+      "reason": "Agent-payment post and article correction visible in search. Full article, discussion and seller implementations not inspected; no recommendation or claim adopted."
+    }
+  ],
+  "sourceReads": [
+    {
+      "url": "https://gkoreli.com/ai-site-check-evidence",
+      "scope": "Fresh full live article; technical access, optional representations, provider operations and answer fidelity remain separate."
+    },
+    {
+      "url": "https://github.com/gkoreli/blog/blob/bb6446330a9a774c411de956a22e0d615a84b81e/packages/site-audit/README.md",
+      "scope": "Current package contract in checkout matching freshly fetched origin/main. Source-level evidence only; no new runtime acceptance."
+    }
+  ],
+  "fewerThanFiveReason": "No fresh substantive incoming response. The selected analytics discussion lacked an identified product or inspectable classification method; sampled author context did not support a stronger contribution. Other results were already reviewed, broad previews or outside the implementation scope. No generic promotion filled the quota. This bounded selection does not establish that no suitable conversation exists elsewhere; all five unused slots expire.",
+  "verification": "No composer filled or submission attempted; no pending or uncertain publication. Canonical checks not applicable.",
+  "accountState": "Signed-in browser available; no restriction, cooldown or security lock observed.",
+  "independentPublicVisibility": "No new publication to verify. Prior owner/public visibility limits remain unchanged.",
+  "privacy": "Raw signed-in captures remain outside Git. Public records contain normalized method, public URLs, outcome and limits.",
+  "limits": "No reply, Reddit write, DM, like, follow, hosted audit, provider trial, recipient test, installation, site change, traffic/adoption measurement or scheduler change.",
+  "nextBoundedAction": "Next authorized run: reconcile shared state, prioritize substantive incoming responses, and select a new conversation only with a concrete supported contribution. Unused quota does not carry over."
+}
