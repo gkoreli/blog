@@ -1,0 +1,86 @@
+{
+  "automationId": "ai-site-check-hourly-x-replies",
+  "triggeredAt": "2026-11-08T15:36:59.483Z",
+  "completedReviewAt": "2026-11-08T15:42:15Z",
+  "timezone": "America/Los_Angeles",
+  "authorization": "Up to five useful X replies; fewer when suitable contributions are insufficient. No catch-up or other account actions.",
+  "preflight": "Latest worklist, preceding receipt and shared destinations read. Required launch, publication-verification, prose and owned-project guidance refreshed; the truncated publication-verification middle was reread explicitly. Fresh origin/main equals isolated HEAD ddd6cc03d17714f4d603cce30ba2faf894ca74c7. Accepted UI and earlier batches complete. Original posting chat inactive at start, before publication and after submission. No overlapping posting session.",
+  "currentEvidence": "Fresh full live article and current site-audit README read. Target's full written experiment report and benchmark figure inspected, along with prior demo description, authored posts and substantive replies. No recipient source code or executable benchmark supplied in the inspected discussion; open-source release remains an author-stated future plan.",
+  "xRepliesPublished": 1,
+  "xNewConversationRepliesPublished": 1,
+  "xConversationFollowupsPublished": 0,
+  "canonicalOwnerViewsVerified": 1,
+  "items": [
+    {
+      "evidenceKey": "sumeet",
+      "kind": "new-conversation",
+      "recipient": "Sumeet Debnath / @falcon001x",
+      "parent": "https://x.com/falcon001x/status/2119451033588166703",
+      "url": "https://x.com/GogaKoreli/status/2119455157130027368",
+      "copy": "for the impossible tasks, i'd reset a seeded DB per run and grade both the answer and the state diff. that catches 'done' with no change, or a refusal after an unintended write. are you verifying Umami's state directly?",
+      "weightedLength": 219,
+      "weightedLengthNote": "ASCII copy without a URL; exact composer value inspected before submission.",
+      "submittedAt": "2026-11-08T15:41:01.594Z",
+      "verifiedAt": "2026-11-08T15:41:33.686Z",
+      "publishedTimeUi": "7:41 AM · Nov 8, 2026",
+      "publishedAtMinuteUtc": "2026-11-08T15:41:00Z",
+      "timestampPrecision": "Submission timestamp immediately before the single Reply click. Verification timestamp immediately before saving the canonical screenshot. Native UI supplies Pacific time to the minute.",
+      "selection": "Complete written root and benchmark figure inspected; zero replies displayed. Prior written demo description, authored technical posts and loaded Replies reviewed, including harness composition and a specific Rust/code-versus-configuration question. This supports substantive selection, not verified identity or independent benchmark reproduction. Shared social records contained no prior recipient or destination.",
+      "value": "Proposes a resettable seeded database and separate answer/state grading for impossible tasks, then asks how the existing experiment verifies application state. A direct methodological contribution; no project link was needed.",
+      "sourceReads": [
+        {
+          "url": "https://x.com/falcon001x/status/2119451033588166703",
+          "scope": "Full written report: twenty tasks including questions, changes and impossible tasks, three runs each, reported setup comparison and intended future release. Figure read in enlarged image viewer. Reported performance and model/version statements were not independently verified or repeated as established facts."
+        },
+        {
+          "url": "https://x.com/falcon001x/status/2115838305606725887",
+          "scope": "Full written prior demo description read. Its video was not fully watched or independently reproduced. No UI mechanism or cost claim was adopted from the demo."
+        },
+        {
+          "url": "https://x.com/falcon001x/status/2117289570517856292",
+          "scope": "Expanded authored reply describes a conversation/tool/permission/context-compaction harness; selection context only."
+        },
+        {
+          "url": "https://x.com/falcon001x/status/2114228840793010366",
+          "scope": "Substantive authored question distinguishes editing Rust harness code from changing configuration; selection context only."
+        }
+      ],
+      "verification": "Final copy saved privately before one Reply click. X showed Your post was sent and a canonical URL. Canonical reopened; exact text, parent and timestamp inspected, and screenshot saved. No outbound link or media attached to verify. No retry, edit, repost or unresolved submission.",
+      "independentPublicVisibility": "Unverified: independent web retrieval returned Cache miss.",
+      "limits": "A proposed benchmark design and clarification question, not a finding that the recipient's grader is wrong. No database reset, application mutation, benchmark run, code audit or comparative-performance verification was performed. The reply does not claim the suggested method is already implemented."
+    }
+  ],
+  "countNote": "Eighty-four unique replies across forty-five completed hourly runs, thirty-five of which published replies. Owner-directed five and original-chat sixty-eight remain separate.",
+  "notificationCoverage": "No fresh substantive incoming response selected. CryptoBurrito, Balsa, LiveaAi, Peter, Daryll, mpgn and Sergei entries were previously handled. Planned changes remain reported intentions. No new response from the recent Rick, Johnny, Nirmal, Pavel or Hankaws conversations in the loaded view; not an account-wide census.",
+  "searchQuery": "(\"MCP\" OR \"WebMCP\" OR \"agent memory\") (built OR shipped OR \"open source\") since:2026-11-08 -filter:replies",
+  "selection": "One focused Latest search; four initial candidates, no search scroll. Sumeet's discussion and author context received deeper review. A second full written manufacturing proposal and its sole reply were read before ending selection. Author Replies were scrolled to inspect substantive conversation history, not to collect extra destinations.",
+  "skippedExamples": [
+    {
+      "url": "https://x.com/lucieplan/status/2119449620166148212",
+      "reason": "Full written manufacturing proposal and sole existing reply read. The reply already raised stale specifications. No concrete implementation, tool contract or public source was linked in the inspected discussion; no distinct sufficiently grounded addition selected. Author history and claimed company implementation not separately verified."
+    },
+    {
+      "url": "https://x.com/thanhmam/status/2119452499212144738",
+      "reason": "Repository-promotion preview. Full discussion and scan method not inspected; popularity and no-risk-pattern claims not adopted."
+    },
+    {
+      "url": "https://x.com/0x_kaize/status/2119451111501308065",
+      "reason": "Fifteen-project roundup preview. Full thread, media and projects not inspected; no distinct concrete contribution selected at this depth."
+    }
+  ],
+  "additionalSourceReads": [
+    {
+      "url": "https://gkoreli.com/ai-site-check-evidence",
+      "scope": "Fresh full live article; observed results, inferred behavior and provider outcomes remain separate."
+    },
+    {
+      "url": "https://github.com/gkoreli/blog/blob/ddd6cc03d17714f4d603cce30ba2faf894ca74c7/packages/site-audit/README.md",
+      "scope": "Full current package contract, including deterministic transport/clock fixtures and separation of application and quota tests. Historical runtime acceptance was not rerun."
+    }
+  ],
+  "fewerThanFiveReason": "One concrete evaluation suggestion supported by the complete written target discussion and benchmark figure. No fresh substantive incoming response. The second complete proposal lacked inspectable implementation detail, and remaining previews did not yield another grounded contribution at their inspected depth. Four unused slots expire; not an exhaustive census.",
+  "accountState": "Signed-in X available; no restriction, cooldown, security lock, uncertain submission or pending composer.",
+  "privacy": "Raw signed-in captures, benchmark screenshot and publication proof remain outside Git. Public records retain exact copy, public destinations, methods, outcomes and limits.",
+  "limits": "No Reddit write, DM, like, follow, original post, upload, installation, site/code change, runtime test, hosted audit, provider trial, traffic/adoption measurement or scheduler change.",
+  "nextBoundedAction": "Next authorized run: reconcile shared state and prioritize substantive incoming responses, especially the benchmark-grading answer if supplied. Do not repeat this question or carry unused quota forward."
+}
