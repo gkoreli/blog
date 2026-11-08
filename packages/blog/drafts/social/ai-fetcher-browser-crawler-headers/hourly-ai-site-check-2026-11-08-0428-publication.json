@@ -1,0 +1,85 @@
+{
+  "automationId": "ai-site-check-hourly-x-replies",
+  "triggeredAt": "2026-11-08T04:28:51.533Z",
+  "completedReviewAt": "2026-11-08T04:35:30.875020+00:00",
+  "timezone": "America/Los_Angeles",
+  "authorization": "Up to five useful X replies; fewer when suitable contributions are insufficient. No catch-up or other account actions.",
+  "preflight": "Current worklist, latest 03:24 receipt and shared destination records read. Launch/publication, prose/messages and owned-project guidance read or retained and checked unchanged. Original posting chat inactive at start and end. Accepted UI and prior batches remain complete. Isolated HEAD and freshly fetched origin/main agree at 464d9188ecfd6c4a7af02dd71f179d23f62b8310. No overlapping posting session.",
+  "currentEvidence": "Fresh complete live AI Site Check article read, with a full accessibility capture after an unchanged diff. Current site-audit README read from the checkout matching fetched origin/main. No hosted audit, runtime test or provider trial.",
+  "xRepliesPublished": 0,
+  "xNewConversationRepliesPublished": 0,
+  "xConversationFollowupsPublished": 0,
+  "canonicalOwnerViewsVerified": 0,
+  "items": [],
+  "countNote": "Seventy-six unique replies remain across thirty-four completed hourly runs, twenty-seven of which published replies. Owner-directed five and original-chat sixty-eight remain separate.",
+  "notificationCoverage": "No fresh substantive incoming response in the bounded notification view. CryptoBurrito, Balsa, LiveaAi, Peter, Daryll, mpgn and Sergei entries were previously handled. CryptoBurrito still reports a planned addition, not an inspected implementation. No account-wide census or engagement measurement.",
+  "searchQuery": "(\"robots.txt\" OR \"llms.txt\" OR \"AI crawler\") (blocked OR problem OR testing OR built) since:2026-11-07 -filter:replies",
+  "selection": "One focused Latest search, one successful downward scroll of two pages, and a full capture to resolve partially loaded results. An initial coordinate scroll was rejected as outside the viewport and had no effect; an observed timeline element was then used. One new root discussion, its quoted predecessor, profile, two Replies states and root attached image were inspected. Other results were previews only or deduplicated against receipts. No composer filled.",
+  "skippedExamples": [
+    {
+      "url": "https://x.com/luc2web/status/2119000349063405875",
+      "reason": "Read complete written root (zero replies), quoted November 6 predecessor, profile and two rendered Replies states; inspected root image, a RevenueCat transaction screenshot. The method already covers useful free tools, localized linking, sourced comparisons and placement-tracked app CTAs. No named app/site or inspectable implementation was identified in this bounded context, and the sampled conversation history did not supply a specific technical problem. No distinct grounded addition selected. The older nested November 3 post was preview-only; full quote ancestry and recipient product were not inspected. Revenue and SEO attribution remain recipient reports, not verified results. No inference of bot or human identity."
+    },
+    {
+      "url": "https://x.com/vinayah/status/2119213559628329239",
+      "reason": "Exact destination already answered at 00:22. No fresh substantive incoming response selected; no repeated access-diagnosis pitch."
+    },
+    {
+      "url": "https://x.com/brendenvonhouse/status/2119030272029233338",
+      "reason": "Exact destination already answered at 13:05. No new response selected."
+    },
+    {
+      "url": "https://x.com/Type_SOL/status/2119070041303826505",
+      "reason": "Partially loaded search entry identified the exact destination already answered at 15:04; no second reply."
+    },
+    {
+      "url": "https://x.com/justinjacobsseo/status/2119048554257985918",
+      "reason": "Previously reviewed at 13:05; current preview repeats the robots-versus-firewall distinction. No distinct new contribution selected; discussion not reopened."
+    },
+    {
+      "url": "https://x.com/SatyamJha126822/status/2119059799061205270",
+      "reason": "Tactic-ranking preview from a recipient already contacted about experiment confounding at 06:54. No new question or distinct supported addition selected. Full new discussion not read; ranking claims not adopted."
+    },
+    {
+      "url": "https://x.com/nikhilgoyalai/status/2119242248391209079",
+      "reason": "Broad site-checklist quote preview. No specific implementation problem selected; full post and quoted discussion not read."
+    },
+    {
+      "url": "https://x.com/sinanyorulmazz/status/2119201340739977642",
+      "reason": "Preview about an unreleased business-console screen. No relevant tested contribution selected; full discussion and beta claims not investigated or adopted."
+    },
+    {
+      "url": "https://x.com/nbfs_app/status/2119256110049976525",
+      "reason": "App-spotlight preview; no specific builder problem selected. App and full discussion not inspected."
+    },
+    {
+      "url": "https://x.com/therascalsfun/status/2119267723004072362",
+      "reason": "Memecoin-protocol guide preview outside the selected implementation scope; article/product not inspected."
+    },
+    {
+      "url": "https://x.com/DirkBartz/status/2119060085921972583",
+      "reason": "AI-news roundup preview; no specific matching implementation problem selected. Article and claims not investigated."
+    },
+    {
+      "url": "https://x.com/Team_Thor_AI/status/2119019980070985757",
+      "reason": "Daily AI-news brief preview; no specific matching contribution selected. Article and claims not investigated."
+    }
+  ],
+  "sourceReads": [
+    {
+      "url": "https://gkoreli.com/ai-site-check-evidence",
+      "scope": "Fresh full live article; technical access, optional representations, provider operations and answer fidelity remain separate."
+    },
+    {
+      "url": "https://github.com/gkoreli/blog/blob/464d9188ecfd6c4a7af02dd71f179d23f62b8310/packages/site-audit/README.md",
+      "scope": "Current package contract in checkout matching freshly fetched origin/main. Source-level evidence only; no new test or production acceptance."
+    }
+  ],
+  "fewerThanFiveReason": "No fresh substantive incoming response. Matching technical destinations were already handled; remaining search previews were broad summaries, unrelated products or unverified news. The complete new root and quoted-method investigation did not supply enough product detail or a distinct useful contribution. No generic promotion filled the quota. This is a bounded selection outcome, not evidence that no suitable conversation exists elsewhere; all five unused slots expire.",
+  "verification": "No composer filled or submission attempted; no pending or uncertain publication. Canonical checks not applicable.",
+  "accountState": "Signed-in browser available; no restriction, cooldown or security lock observed.",
+  "independentPublicVisibility": "No new publication to verify. Prior owner/public visibility limits remain unchanged.",
+  "privacy": "Raw signed-in captures remain outside Git. Public records contain only normalized method, public URLs, outcome and limits.",
+  "limits": "No post, reply, Reddit write, DM, like, follow, hosted audit, provider trial, recipient test, installation, site change, traffic/adoption measurement or scheduler change.",
+  "nextBoundedAction": "Next authorized run: reconcile shared state, prioritize substantive incoming responses, and select a new conversation only with a concrete supported contribution. Unused quota does not carry over."
+}
