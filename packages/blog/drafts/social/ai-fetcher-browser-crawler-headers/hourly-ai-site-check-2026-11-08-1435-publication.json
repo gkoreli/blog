@@ -1,0 +1,103 @@
+{
+  "automationId": "ai-site-check-hourly-x-replies",
+  "triggeredAt": "2026-11-08T14:35:58.764Z",
+  "completedReviewAt": "2026-11-08T14:45:02Z",
+  "timezone": "America/Los_Angeles",
+  "authorization": "Up to five useful X replies; fewer when suitable contributions are insufficient. No catch-up or other account actions.",
+  "preflight": "Latest worklist, preceding receipt and shared destinations read. Required launch, publication-verification, prose and owned-project guidance verified unchanged from preceding full reads. Original posting chat inactive at start, before publication and after submission. Accepted UI and earlier batches complete. Isolated HEAD matches freshly fetched origin/main at 923a7e1e661fdb7ea7238c872577b58ee9617700. No overlapping posting session.",
+  "currentEvidence": "Fresh full live article read. Current site-audit package contract verified unchanged, analytics README read, and relevant source-preview extraction/rendering excerpts inspected. Live own-article checker fixture completed and its source preview expanded.",
+  "xRepliesPublished": 1,
+  "xNewConversationRepliesPublished": 1,
+  "xConversationFollowupsPublished": 0,
+  "canonicalOwnerViewsVerified": 1,
+  "items": [
+    {
+      "evidenceKey": "rick",
+      "kind": "new-conversation",
+      "recipient": "Rick / @pierrickselas",
+      "parent": "https://x.com/pierrickselas/status/2119405324473934228",
+      "url": "https://x.com/GogaKoreli/status/2119440882403590627",
+      "copy": "for mePad i'd put a text preview beside the bot counts, so creators can inspect how their bio + services arrive without JS. my checker has a bounded version, it shows what our fetch received, not what an assistant understood: https://gkoreli.com/ai-check",
+      "weightedLength": 249,
+      "weightedLengthNote": "ASCII text with one URL counted as 23 characters; exact final composer value inspected before submission.",
+      "submittedAt": "2026-11-08T14:44:18.215Z",
+      "verifiedAt": "2026-11-08T14:44:48.146Z",
+      "publishedTimeUi": "6:44 AM · Nov 8, 2026",
+      "publishedAtMinuteUtc": "2026-11-08T14:44:00Z",
+      "timestampPrecision": "Submission timestamp immediately before the single Reply click. Verification timestamp immediately before saving the canonical screenshot. Native UI supplies Pacific time to the minute.",
+      "selection": "Complete root and sole existing reply read, then refreshed before composition. Existing reply already proposed separate traffic views and identity evidence. Authored posts, loaded Replies and reciprocal product/profile links inspected; product landing page and FAQ read. Supports a substantive builder/product context, not verified identity, revenue or authorship independence. No prior recipient or destination found in shared social records.",
+      "value": "Proposes a source-text preview beside bot counts so creators can inspect how bio/services arrive without JavaScript. Adds a concrete diagnostic beyond the existing reply's segmentation advice. Links the live bounded preview and explicitly separates received text from assistant understanding.",
+      "sourceReads": [
+        {
+          "url": "https://mep.ad/",
+          "scope": "Live landing page and FAQ: creator pages, bios/portfolio content, cards, bookings and analytics. No account created, user page audited, source-code inspection or recipient defect asserted."
+        },
+        {
+          "url": "https://gkoreli.com/ai-check",
+          "scope": "Live page and one completed check of the owner's public article. Expanded Initial HTML text preview and its source-level limitation. Exact published link verified through https://t.co/gjfKIyVOkz."
+        },
+        {
+          "url": "https://github.com/gkoreli/blog/blob/923a7e1e661fdb7ea7238c872577b58ee9617700/packages/site-audit/src/html.ts",
+          "blobSha": "3fd674f0325fe240004bdf7dc2b62412cda6c03e",
+          "scope": "Relevant source excerpt inspected: raw script/style/template exclusions, normalized text and 1,200-character slice. Not a complete parser audit."
+        },
+        {
+          "url": "https://github.com/gkoreli/blog/blob/923a7e1e661fdb7ea7238c872577b58ee9617700/packages/blog/src/client/ai-check.ts",
+          "blobSha": "39cf5826f03783f930632f4ba44aa34e09117a42",
+          "scope": "Relevant source excerpt inspected: preview rendering and warning that navigation/CSS-hidden text may be included; not a browser-rendered comparison."
+        }
+      ],
+      "verification": "Final copy saved privately before one Reply click. X showed Your post was sent and a canonical URL. Canonical reopened; exact text, parent, timestamp and source card inspected. Saved screenshot shows published copy. Shortlink opened https://gkoreli.com/ai-check. No retry, edit, repost or unresolved submission.",
+      "independentPublicVisibility": "Unverified: independent web retrieval returned Cache miss.",
+      "limits": "Suggested mePad feature, not a claim that its pages are broken or currently support this preview. The checker observes its own fetch; bounded previews cannot prove content absence, provider access, reading, recommendation, citation or conversion."
+    }
+  ],
+  "countNote": "Eighty-three unique replies across forty-four completed hourly runs, thirty-four of which published replies. Owner-directed five and original-chat sixty-eight remain separate.",
+  "notificationCoverage": "No fresh substantive incoming response selected. CryptoBurrito, Balsa, LiveaAi, Peter, Daryll, mpgn and Sergei entries were previously handled. Planned changes remain reported intentions. No fresh Johnny, Nirmal, Pavel or Hankaws response in the loaded view; not an account-wide census.",
+  "searchQuery": "(\"AI crawler\" OR \"bot traffic\" OR \"llms.txt\") (built OR blocked OR testing OR checker) since:2026-11-08 -filter:replies",
+  "selection": "One focused Latest search, initial four results and one successful two-page scroll exposing one additional preview. Rick's thread/product and the full Haginota article received deeper review. Two attempted scrolls failed before movement; no account submission was affected. No query grid or catch-up.",
+  "skippedExamples": [
+    {
+      "url": "https://x.com/haginota/status/2119422176344559866",
+      "reason": "Full written article read. Already distinguishes associations from interventions, composite-score uncertainty, optional llms.txt, source limitations and content-specific audits. No distinct source-backed addition selected. Underlying SISTRIX study and author history were not separately investigated; study figures not adopted."
+    },
+    {
+      "url": "https://x.com/nirmalparmar_/status/2119381824095043843",
+      "reason": "Already replied in run 42. No fresh substantive response; no repeated destination."
+    },
+    {
+      "url": "https://x.com/x_research_kr/status/2119422186025021482",
+      "reason": "Preview concerns native X bots and platform automation claims, not a concrete website-access problem. Full source and discussion not inspected; platform claims not adopted as policy or account-state evidence."
+    },
+    {
+      "url": "https://x.com/gasparjayena/status/2119358705653178652",
+      "reason": "Paid-partnership crypto promotion preview outside the concrete engineering contribution selected here. No financial claims adopted or advice given."
+    }
+  ],
+  "additionalSourceReads": [
+    {
+      "url": "https://gkoreli.com/ai-site-check-evidence",
+      "scope": "Fresh full live article; technical access, request identity, source policy and answer fidelity remain separate."
+    },
+    {
+      "url": "https://github.com/gkoreli/blog/blob/923a7e1e661fdb7ea7238c872577b58ee9617700/packages/analytics/README.md",
+      "scope": "Full current README: request events, client declarations/verification, evidence groups and interpretation. No new analytics runtime acceptance or traffic measurements."
+    },
+    {
+      "url": "https://x.com/marclou/status/2118694392664039734",
+      "scope": "Full quoted root text and loaded reply excerpt read for context. The 119-reply discussion and image were not fully inspected. Traffic/conversion figures were not independently verified, used or repeated in our contribution."
+    }
+  ],
+  "fixture": {
+    "tool": "https://gkoreli.com/ai-check",
+    "target": "https://gkoreli.com/ai-site-check-evidence",
+    "reportTimeUi": "Nov 8, 2026, 2:42 PM UTC",
+    "result": "Report ready; HTTP 200, 16,346 source-text characters, 13 headings, scripts not run. Expanded initial-HTML preview present, ending at the source cap and accompanied by the rendering warning. UI showed 9 of 10 checks remaining.",
+    "scope": "One own-public-article submission, no recipient-site check. The displayed 100/100 is this checker's technical-access rubric, not an AI recommendation or citation result. No named provider invoked. Raw result retained privately."
+  },
+  "fewerThanFiveReason": "One distinct product diagnostic supported by the complete target discussion, current product and a live own-tool fixture. No fresh substantive incoming response. Other inspected results were already handled, already covered the relevant caveats or did not yield a grounded contribution at their inspected depth. Four unused slots expire; this is not an exhaustive census.",
+  "accountState": "Signed-in X available; no restriction, cooldown, security lock, uncertain submission or pending composer.",
+  "privacy": "Raw signed-in captures, fixture output and screenshots remain outside Git. Public records retain exact copy, public destinations, source hashes, methods, outcomes and limits.",
+  "limits": "No Reddit write, DM, like, follow, original post, upload, installation, site/code change, named-provider trial, traffic/adoption measurement or scheduler change. One own hosted checker fixture as recorded.",
+  "nextBoundedAction": "Next authorized run: reconcile shared state and prioritize substantive incoming responses. Do not repeat this suggestion to the same destination or carry unused quota forward."
+}
