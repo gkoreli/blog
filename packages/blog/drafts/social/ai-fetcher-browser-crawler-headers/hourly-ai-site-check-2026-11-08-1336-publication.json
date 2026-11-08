@@ -1,0 +1,94 @@
+{
+  "automationId": "ai-site-check-hourly-x-replies",
+  "triggeredAt": "2026-11-08T13:36:28.517Z",
+  "completedReviewAt": "2026-11-08T13:42:41Z",
+  "timezone": "America/Los_Angeles",
+  "authorization": "Up to five useful X replies; fewer when suitable contributions are insufficient. No catch-up or other account actions.",
+  "preflight": "Latest worklist, preceding receipt and shared destinations read. Launch, prose and owned-project guidance refreshed; publication-verification guidance verified unchanged from preceding full read. Original posting chat inactive at start, before publication and after submission. Accepted UI and earlier batches complete. Isolated HEAD matches freshly fetched origin/main at f4faaca6c717ff73f19827ffde8ecc7d2a9f375f. No overlapping posting session.",
+  "currentEvidence": "Fresh full live article and current site-audit README read. Full current AgentPort README and app-builder guide read, with relevant client grant and gated-call source inspected. No runtime or production acceptance test.",
+  "xRepliesPublished": 1,
+  "xNewConversationRepliesPublished": 1,
+  "xConversationFollowupsPublished": 0,
+  "canonicalOwnerViewsVerified": 1,
+  "items": [
+    {
+      "evidenceKey": "johnny",
+      "kind": "new-conversation",
+      "recipient": "Johnny 5",
+      "parent": "https://x.com/macncrash/status/2119423201037910321",
+      "url": "https://x.com/GogaKoreli/status/2119424619203702792",
+      "copy": "for the CAD example, i'd separate quoting from starting fabrication, then approve each fabrication call with its exact arguments. AgentPort has session-scoped tools + requiresApproval for that boundary; part quality still needs its own check. https://github.com/gkoreli/agentport/blob/main/docs/APP-BUILDER.md",
+      "weightedLength": 266,
+      "weightedLengthNote": "ASCII text with one URL counted as 23 characters; composer displayed 14 characters remaining.",
+      "submittedAt": "2026-11-08T13:39:40.710Z",
+      "verifiedAt": "2026-11-08T13:40:28.266Z",
+      "publishedTimeUi": "5:39 AM · Nov 8, 2026",
+      "publishedAtMinuteUtc": "2026-11-08T13:39:00Z",
+      "timestampPrecision": "Submission timestamp immediately before single click. Verification timestamp immediately before saving canonical text and screenshot. Native UI supplies Pacific time to the minute.",
+      "selection": "Complete written root read, with zero replies displayed. Proposal concerns a maker-services exchange with digital work, physical goods and trust/safety. Authored posts and loaded Replies include distinct simulation work and specific hardware discussion. Supports substantive selection, not verified identity, career claims or an implemented marketplace. No prior recipient or destination found in shared social records.",
+      "value": "Maps the author's CAD example to separately granted quote and fabrication operations, with a decision on each fabrication call. Points to current AgentPort session tools and requiresApproval while preserving physical quality as a separate check.",
+      "sourceReads": [
+        {
+          "url": "https://github.com/gkoreli/agentport/blob/main/README.md",
+          "blobSha": "272b0194178412ba298394670e9758228161153a",
+          "scope": "Full current README: integration example, session tools, approvals and early-project limits. Historical release/deployment claims were not rerun or adopted as current acceptance."
+        },
+        {
+          "url": "https://github.com/gkoreli/agentport/blob/main/docs/APP-BUILDER.md",
+          "blobSha": "5ec1aeeb45e41ffd54c0992ab351a9dae91f6f66",
+          "scope": "Full guide: per-session tools, requiresApproval/alwaysAsk, decider receiving call arguments and handler-level validation. Exact published link. Historical mixed version references were not used to claim current deployment compatibility."
+        },
+        {
+          "url": "https://github.com/gkoreli/agentport/blob/main/packages/client/src/session.ts",
+          "blobSha": "e31e37858db1f6cde376a76f4948a6c5f5233a34",
+          "scope": "Relevant source inspected, not a complete file audit: tool map, gated call path, decision failure/refusal, handler invocation and call arguments passed to the decider. Initial full retrieval output truncated; relevant excerpts were explicitly reread."
+        },
+        {
+          "url": "https://github.com/gkoreli/agentport/blob/main/packages/client/src/wallet.ts",
+          "blobSha": "cdcd32c07b630772fc9e5767d17803b6b1f5564f",
+          "scope": "Relevant source inspected, not a complete file audit: buildGrant tools/alwaysAsk/expiry and makeSession default refusing decider. Initial retrieval output truncated; relevant excerpts were explicitly reread."
+        }
+      ],
+      "verification": "Final copy saved privately before one Reply click. Submission produced canonical URL. Canonical reopened; exact text, parent, timestamp, source card and saved screenshot inspected. Shortlink https://t.co/8tpoZClitB opened the exact app-builder guide. No retry, edit, repost or unresolved submission.",
+      "independentPublicVisibility": "Unverified: independent web retrieval returned Cache miss.",
+      "limits": "Proposed integration grounded in source; no fabrication, payment, fulfillment or quality-assurance workflow claimed as implemented. No recipient defect asserted. No runtime test, hosted compatibility check or broad security assessment performed."
+    }
+  ],
+  "countNote": "Eighty-two unique replies across forty-three completed hourly runs, thirty-three of which published replies. Owner-directed five and original-chat sixty-eight remain separate.",
+  "notificationCoverage": "No fresh substantive incoming response selected. CryptoBurrito, Balsa, LiveaAi, Peter, Daryll, mpgn and Sergei entries were previously handled. Planned changes remain reported intentions. No fresh Nirmal, Pavel or Hankaws response in loaded view; not an account-wide census.",
+  "searchQuery": "(\"MCP\" OR \"WebMCP\" OR \"agent tools\") (built OR shipped OR \"open source\") since:2026-11-08 -filter:replies",
+  "selection": "One focused Latest search, initial five results. Selected proposal received complete written-discussion and author-context review. Other four stayed previews. No query grid, search scroll or quota-filling.",
+  "skippedExamples": [
+    {
+      "url": "https://x.com/thanhmam/status/2119422307081097404",
+      "reason": "Database-connector promotion preview. Full discussion, project method and account history not inspected; no distinct source-backed addition selected. Scan and popularity claims not adopted."
+    },
+    {
+      "url": "https://x.com/dextune/status/2119422188369359086",
+      "reason": "Sprite-editor preview. Full product, discussion and media not inspected; no distinct relevant contribution selected at this depth."
+    },
+    {
+      "url": "https://x.com/Bitcoinhabebe/status/2119421434950754615",
+      "reason": "Token-promotion preview outside the engineering contribution selected for this run. No financial claims adopted or advice provided."
+    },
+    {
+      "url": "https://x.com/btibor91/status/2119417996850381229",
+      "reason": "Weekly industry-roundup preview. Full article and its claims were not investigated; no distinct implementation contribution selected."
+    }
+  ],
+  "additionalSourceReads": [
+    {
+      "url": "https://gkoreli.com/ai-site-check-evidence",
+      "scope": "Fresh full live article; technical access, request identity, source policy and answer fidelity remain separate."
+    },
+    {
+      "url": "https://github.com/gkoreli/blog/blob/f4faaca6c717ff73f19827ffde8ecc7d2a9f375f/packages/site-audit/README.md",
+      "scope": "Full current package README. Historical acceptance was not treated as a new production test."
+    }
+  ],
+  "fewerThanFiveReason": "One concrete implementation suggestion supported by full discussion and current owned source. No fresh substantive incoming response. Remaining bounded previews did not yield another sufficiently grounded contribution at their inspected depth. Four unused slots expire; this is not an exhaustive census of useful conversations.",
+  "accountState": "Signed-in X available; no restriction, cooldown, security lock, uncertain submission or pending composer.",
+  "privacy": "Raw signed-in captures and screenshots remain outside Git. Public records retain exact copy, public destinations, source hashes, methods, outcomes and limits.",
+  "limits": "No Reddit write, DM, like, follow, original post, upload, installation, site/code change, runtime test, hosted audit, provider trial, traffic/adoption measurement or scheduler change.",
+  "nextBoundedAction": "Next authorized run: reconcile shared state and prioritize substantive incoming responses. Do not repeat this recommendation to the same destination or carry unused quota forward."
+}
