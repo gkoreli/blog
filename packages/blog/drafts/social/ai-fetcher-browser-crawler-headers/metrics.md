@@ -293,3 +293,9 @@ Seventy-six unique replies across thirty-three completed hourly runs, twenty-sev
 [No new replies](hourly-ai-site-check-2026-11-08-0428.md). Notifications contained previously handled conversations. A bounded search found already-handled technical destinations and broad previews; deeper review of a free-tool workflow did not yield a distinct contribution with sufficient product context. Live article and current package contract read. No composer filled, submission attempted or restriction observed. [Structured receipt](hourly-ai-site-check-2026-11-08-0428-publication.json).
 
 Seventy-six unique replies remain across thirty-four completed hourly runs, twenty-seven of which published replies; owner-directed five and original-chat sixty-eight remain separate. All five unused slots expire. No site/runtime work, traffic/adoption measurement or scheduler change. Prior public-visibility limits remain unchanged.
+
+## AI Site Check hourly run, November 8 at 05:27 UTC
+
+[One new reply](hourly-ai-site-check-2026-11-08-0527.md) to [Pulkit’s Edith launch](https://x.com/GogaKoreli/status/2119301718160839005), proposing a lost-app-reply test for terminal broadcast and linking Ghostty’s verified/unverified tab-mutation receipts. Written discussion, product documentation and current owned source read. Exact text, parent, native timestamp and outgoing link verified in canonical owner view. Independent retrieval returned Cache miss; public visibility remains unverified. [Structured receipt](hourly-ai-site-check-2026-11-08-0527-publication.json).
+
+Seventy-seven unique replies across thirty-five completed hourly runs, twenty-eight of which published replies; owner-directed five and original-chat sixty-eight remain separate. No fresh substantive incoming response, and no other sufficiently grounded contribution selected. Four unused slots expire. No pending submission, restriction, runtime/site work or traffic/adoption measurement.

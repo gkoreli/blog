@@ -1,0 +1,160 @@
+{
+  "automationId": "ai-site-check-hourly-x-replies",
+  "triggeredAt": "2026-11-08T05:27:21.863Z",
+  "completedReviewAt": "2026-11-08T05:34:16.976571+00:00",
+  "timezone": "America/Los_Angeles",
+  "authorization": "Up to five useful X replies; fewer when suitable contributions are insufficient. No catch-up or other account actions.",
+  "preflight": "Current worklist, latest 04:28 receipt and shared records read. Required launch/publication, prose/messages and owned-project guidance retained from full reads and checked unchanged against freshly fetched main. Original posting chat inactive at start, before publication and end. Accepted UI and prior batches remain complete. Isolated HEAD and origin/main agree at 312b5fb4cc48c507485181710b7af24b37dba729. No overlapping posting session.",
+  "currentEvidence": "Fresh full live AI Site Check article; current recipient product/CLI/MCP/terminal documentation and Ghostty MCP README read. No runtime test, hosted audit or provider trial.",
+  "xRepliesPublished": 1,
+  "xNewConversationRepliesPublished": 1,
+  "xConversationFollowupsPublished": 0,
+  "canonicalOwnerViewsVerified": 1,
+  "items": [
+    {
+      "evidenceKey": "pulkit",
+      "kind": "new-conversation",
+      "recipient": "Pulkit / puulkit",
+      "parent": "https://x.com/puulkit/status/2119271191965769900",
+      "url": "https://x.com/GogaKoreli/status/2119301718160839005",
+      "copy": "one terminal-broadcast case to test: the line arrives, the app reply is lost. an automatic retry can execute it twice. I'd return outcome unknown and require inspection. we use verified/unverified receipts for Ghostty tab changes: https://github.com/gkoreli/ghostty-vt-js/blob/main/packages/ghostty-mcp/README.md#workspace-operations",
+      "weightedLength": 254,
+      "weightedLengthNote": "ASCII text with one URL counted as 23 characters. Composer enabled Reply and displayed 90 percent of the 280-character allowance.",
+      "submittedAt": "2026-11-08T05:31:18.884Z",
+      "verifiedAt": "2026-11-08T05:31:39.888833+00:00",
+      "publishedTimeUi": "9:31 PM · Nov 7, 2026",
+      "publishedAtMinuteUtc": "2026-11-08T05:31:00Z",
+      "timestampPrecision": "Submission is a local pre-click timestamp; verification time is the saved canonical accessibility capture modification time. Canonical UI gives publication time to the minute in Pacific time.",
+      "conversationEvidence": [
+        "https://x.com/puulkit/status/2119271192750096822",
+        "https://x.com/puulkit/status/2119271193060467100",
+        "https://x.com/puulkit/status/2119271193366675782",
+        "https://x.com/puulkit/status/2119271193681285588",
+        "https://x.com/boardyai/status/2119271655176618213",
+        "https://x.com/not_sacke/status/2119274485945606190",
+        "https://x.com/puulkit/status/2119274964801229297",
+        "https://x.com/not_sacke/status/2119276378914721811",
+        "https://x.com/puulkit",
+        "https://x.com/puulkit/with_replies"
+      ],
+      "selection": "Read complete written launch and four author continuations, Boardy comment and expanded S4ck3/Pulkit exchange through its closing reply. Profile and two Replies states show owned project work and contextual exchanges beyond the bio. No previous destination/contact found in campaign receipts. Linked product homepage, agent guide and relevant repository documentation read. Launch video was not reviewed end-to-end; no media-only claim used. No human-identity claim.",
+      "value": "A concrete failure-injection case for the documented terminal broadcast: deliver the line but lose the app reply. Suggest an unknown-outcome result and inspection before retrying; link the owned Ghostty tab-mutation receipt contract. This is a proposed test and design pattern, not a reproduced Edith failure or a claim that its tests lack the case.",
+      "sourceReads": [
+        {
+          "url": "https://edith.pulkit.page/",
+          "scope": "Current product context and ownership link; advertised size, performance and privacy not tested."
+        },
+        {
+          "url": "https://edith.pulkit.page/agents.html",
+          "scope": "Current MCP discovery, enabled-extension tooling and preview/confirm contract; no installation or operation."
+        },
+        {
+          "url": "https://github.com/pulkitxm/edith/blob/main/docs/cli/mcp/README.md",
+          "blobSha": "9f3ca28642b4e21ba96c393eff9717120087eb31",
+          "scope": "MCP routes share CLI JSON and exit semantics. Preview/confirm and list-changed behavior read, not tested."
+        },
+        {
+          "url": "https://github.com/pulkitxm/edith/blob/main/docs/cli/machines-terminal/README.md",
+          "blobSha": "a89bf271c543091baa733542f4116650b8cc82a7",
+          "scope": "Stable machine UUID, unique request/reply IDs and timeout/partial-delivery outcomes. Correlation IDs were not treated as proof of replay deduplication."
+        },
+        {
+          "url": "https://github.com/pulkitxm/edith/blob/main/docs/cli/machines-terminal/broadcast.md",
+          "blobSha": "78ea11cbcffb4b17ed781ad94e2ed3eef2274271",
+          "scope": "Writes one line and newline to running existing terminal processes; reports delivery counts; unresponsive app exits 4. Distinct from remote SSH execution and remote exit status. No source-level or runtime claim about retry enforcement."
+        },
+        {
+          "url": "https://github.com/gkoreli/ghostty-vt-js/blob/main/packages/ghostty-mcp/README.md#workspace-operations",
+          "blobSha": "a14dbf61e7da989cd07169549f03c5974d7ed0a8",
+          "scope": "Current README via GitHub before posting; tab rename/select/close return verified/unverified observed postconditions and instruct inspection after uncertain timeout. Does not verify arbitrary shell-command effects. Outgoing published shortlink followed to this exact file/anchor."
+        }
+      ],
+      "verification": "Exact final copy preserved privately before one Reply click. Submission resolved to canonical URL; reopened and verified body, parent, native timestamp and source link. Screenshot saved. No retry, edit or repost.",
+      "presentationLimit": "Generic repository image on the card; intended package README title and target verified.",
+      "independentPublicVisibility": "Unverified: independent web retrieval returned Cache miss.",
+      "limits": "Proposed lost-reply test, not a performed failure injection or observed recipient bug. No recipient installation, command execution, implementation review, test run, adoption or traffic result."
+    }
+  ],
+  "countNote": "Seventy-seven unique replies across thirty-five completed hourly runs, twenty-eight of which published replies. Owner-directed five and original-chat sixty-eight remain separate.",
+  "notificationCoverage": "No fresh substantive incoming response selected. CryptoBurrito, Balsa, LiveaAi, Peter, Daryll, mpgn and Sergei entries were previously handled. CryptoBurrito describes a planned feature, not verified implementation. Bounded view, no engagement census.",
+  "searchQuery": "(MCP OR \"agent memory\" OR \"coding agent\") (debugging OR shipped OR \"open source\") since:2026-11-07 -filter:replies",
+  "selection": "Initial focused query with since:2026-11-08 returned no results. The visible search field was used once to include the preceding day. Read loaded Latest results and one downward scroll, selecting Edith for full written discussion/product review. No query grid or quota-filling publication.",
+  "skippedExamples": [
+    {
+      "url": "https://x.com/marketcallsHQ/status/2119300271373492458",
+      "reason": "Preview concerns child safety; no scoped engineering contribution selected. Full post/media not read."
+    },
+    {
+      "url": "https://x.com/InfraScopeHQ/status/2119297861661958479",
+      "reason": "Broad cloud-desktop use-case list preview; no specific implementation problem selected. Full article/product not inspected."
+    },
+    {
+      "url": "https://x.com/Mohiniuni/status/2119297420832264701",
+      "reason": "Website/resource list preview, with no owned implementation problem selected. Linked projects and claims not investigated."
+    },
+    {
+      "url": "https://x.com/Android_966/status/2119294702675808279",
+      "reason": "Tool roundup/promotion preview; full thread, model/runtime and star-count claims not investigated."
+    },
+    {
+      "url": "https://x.com/elijahintek/status/2119293350616482183",
+      "reason": "Hot Bot article preview. No distinct contribution selected from preview; article, product and replies not investigated."
+    },
+    {
+      "url": "https://x.com/MAGNEMO_AI/status/2119272334016348574",
+      "reason": "General memory-switching promotion preview; no concrete integration problem selected. Product and full thread not inspected."
+    },
+    {
+      "url": "https://x.com/nullprintai/status/2119271827381870933",
+      "reason": "Multi-profile browser promotion preview; no scoped contribution selected. Product capabilities not investigated."
+    },
+    {
+      "url": "https://x.com/lonniev/status/2119271456886431811",
+      "reason": "New promotion of the same intention article fully reviewed in run 33. No distinct new contribution selected; this new thread was preview-only."
+    },
+    {
+      "url": "https://x.com/Lawrence11225/status/2119270913783066712",
+      "reason": "Broad opinion/engagement preview; no relevant implementation problem selected."
+    },
+    {
+      "url": "https://x.com/therascalsfun/status/2119267723004072362",
+      "reason": "Same memecoin-protocol article preview seen last hour, outside selected implementation scope; no article/product investigation."
+    }
+  ],
+  "additionalSourceReads": [
+    {
+      "url": "https://gkoreli.com/ai-site-check-evidence",
+      "scope": "Fresh full live article; access, optional files, provider operations and answer fidelity remain separate."
+    },
+    {
+      "url": "https://github.com/pulkitxm/edith/blob/main/README.md",
+      "blobSha": "a845dbfc98d286fff9d7270a175e0dab03be0ba2",
+      "scope": "Current repository overview and product ownership; no acceptance of performance/privacy claims."
+    },
+    {
+      "url": "https://github.com/pulkitxm/edith/blob/main/docs/cli/README.md",
+      "blobSha": "c4a6fced578f81ed8f4b53627a9507665e11472e",
+      "scope": "Discovery, stdout/exit contract and extension verification fields."
+    },
+    {
+      "url": "https://github.com/pulkitxm/edith/blob/main/docs/cli/seo/README.md",
+      "blobSha": "4d9a118724cfe297d106b48bae2643ad27d555cf",
+      "scope": "Site-audit commands considered; no SEO recommendation published."
+    },
+    {
+      "url": "https://github.com/pulkitxm/edith/blob/main/docs/cli/seo/run.md",
+      "blobSha": "f87f7b9b38d23c803e38c5a70465dc9bfa65793a",
+      "scope": "Saved-run selection and output fields; no audit run."
+    },
+    {
+      "url": "https://github.com/pulkitxm/edith/blob/main/docs/cli/seo/start.md",
+      "blobSha": "1779ffe76dc68b993295006a76b9aee207c4a5a0",
+      "scope": "Queued-versus-waited audit contract; no audit run."
+    }
+  ],
+  "fewerThanFiveReason": "One new conversation supported a specific contribution after product and discussion review. No fresh substantive incoming response; other bounded search matches were broad summaries, promotions, unrelated topics or previously reviewed material. No generic filler. Four unused slots expire; this is not a claim that suitable conversations do not exist elsewhere.",
+  "accountState": "Signed-in X available; no restriction, cooldown or security lock observed. No uncertain submission or pending composer.",
+  "privacy": "Raw signed-in captures and screenshots stay outside Git; public records preserve exact copy, public URLs, source hashes, method, outcome and limits.",
+  "limits": "No Reddit write, DM, like, follow, original post, upload, installation, site/code change, recipient test, runtime test, hosted audit, provider trial, traffic/adoption measurement or scheduler change.",
+  "nextBoundedAction": "Next authorized run: reconcile state and prioritize substantive incoming responses. Do not repeat this proposed timeout case to the same destination or accumulate unused quota."
+}
