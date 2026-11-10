@@ -55,3 +55,7 @@ overall i want you to think bigger, like you did fix the Cubot related issue, bu
 ---
 
 Lets dive into our wrangler cli cloudflare logs what calue can we extract from it like we have lots of data and it would be great to understand from our own data and findings too.
+
+---
+
+I feel like the entry point should start the big pain across the industry like what do people get wrong across the field and how large is the problem, like the reader needs to fully understand in numbers how large is the pain and who all is affected.

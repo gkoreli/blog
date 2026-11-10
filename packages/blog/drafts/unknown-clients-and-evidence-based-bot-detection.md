@@ -3,7 +3,7 @@ title: "Please Stop Misreading User-Agent. It’s Messing Up Your Analytics."
 seoTitle: "User-Agent Parsing Mistakes That Distort Your Analytics"
 alternativeHeadline: "A browser header is a claim, not a verified device or identity. Here is how to keep that distinction in your analytics."
 date: "2026-11-05"
-description: "Frozen OS versions, desktop-looking tablets and false bot labels can distort analytics. A twelve-part audit, concrete repairs and reusable tools explain what User-Agent can support."
+description: "Windows 11 can look like Windows 10. An iPad can look like a Mac. See how widely sites read User-Agent, how crawler counts go wrong, and how to audit your own analytics."
 section: engineering
 tags: [analytics, bots, cloudflare-workers, testing, ai-agents]
 ---
@@ -14,34 +14,17 @@ tags: [analytics, bots, cloudflare-workers, testing, ai-agents]
 > this baseline and publish it. No publication date is assigned. See the
 > [article disposition register](README.md); the other audited candidates are closed.
 
-**1,049 of 2,414 captured request records carried Windows or macOS versions that browsers also use as compatibility values.** The population is one UTC day of retained Cloudflare logs. Those pattern matches leave the operating systems behind the requests unresolved.
+**Across nine sites, counting `Googlebot` by name alone would have reported about 2.8 times as many requests as passed origin checks.** A dashboard that takes `User-Agent` literally can also file Windows 11 under Windows 10 and iPads under Mac. [Crawler audit](https://brandmentions.link/server-log-vs-cloudflare/#nine-sites-the-same-impostors) · [Microsoft’s Windows guidance](https://learn.microsoft.com/en-us/microsoft-edge/web-platform/how-to-detect-win11) · [WebKit’s iPad guidance](https://webkit.org/blog/9674/new-webkit-features-in-safari-13/)
 
-Android 10, macOS 10.15.7 and iOS 18.6 can be compatibility labels. An iPad can send the same `User-Agent` as a Mac. A program can call itself Googlebot. Parsing those words correctly does not make the resulting device or identity claim true.
+The operator’s 14-day audit found that **36% of an estimated 35,355 requests claiming Googlebot** met its verification criteria. The share ranged from 10% to 99% by site. The audit used Cloudflare’s bot labels or the crawler operator’s published IP ranges to check origin. [September–October 2026 audit](https://brandmentions.link/server-log-vs-cloudflare/#what-we-measured)
 
-The header is useful. It describes what the requester chooses to say about its software. Browsers also use it to stay compatible with websites and limit fingerprinting. Those purposes do not always produce the inventory an analytics dashboard wants.
+In a June 2023 study, scripts accessed `navigator.userAgent` on **88.3% of the 89,763 homepages** the researchers successfully visited from Chrome’s list of popular sites. In May that year, Chrome enabled its reduced User-Agent for **100% of Android clients on Chrome 110 and above** through its rollout system. The reduced string reports Android 10 and a model of `K` across devices. A dashboard that treats those as the actual OS and model puts different phones and OS versions in the same bucket. [Senol and Acar’s crawl](https://www.esat.kuleuven.be/cosic/publications/article-3692.pdf) · [Chromium’s rollout and string format](https://www.chromium.org/updates/ua-reduction/)
+
+Analytics and support teams can lose track of the tablets they need to test. A Sentry user reported iPad sessions recorded as macOS. Site teams can send someone the wrong installer when an Android tablet asks for the desktop site. For ad buyers using browser and platform data to target bids, Google exposes whether those values came from the string or from Client Hints. [Sentry issue](https://github.com/getsentry/sentry-javascript/issues/12127) · [Chrome’s download example](https://developer.chrome.com/blog/desktop-mode) · [Google’s bidding API](https://developers.google.com/authorized-buyers/rtb/useragent-targeting)
+
+A web-wide error rate for analytics would require comparing what reports say with independent evidence about the devices and senders.
 
 My own detector had a simpler mistake: it called a copied CUBOT phone header a bot because the brand ends in “bot.” Fixing that led to a wider audit. I mapped twelve overlapping failure families, found more gaps in our browser/OS diagnostics, and built a reusable way to inspect the claims without presenting them as verified facts.
-
-## What one day of our own logs contained
-
-For November 9, 2026, I exported the blog Worker's retained invocation events and assessed their supplied headers locally. The first export hit its 2,000-record cap. An overlapping early-hours export returned 535 records; all 120 overlapping records matched exactly. Combining them preserved 2,414 HTTP request records and one separate scheduled invocation. The log service's sampling/completeness remains unverified, and the requests include assets, APIs, feeds, failed probes and pages.
-
-| Supplied evidence in the 2,414 HTTP records | Records | What it supports |
-| --- | ---: | --- |
-| Chromium selection with a Safari product token | 1,158 | A Safari word is not a count of Safari browsers. |
-| `Windows NT 10.0` or `Mac OS X 10_15_7` | 1,049 | The reported version also matches a documented compatibility value. |
-| No User-Agent header | 29 | The header is missing; the operator remains unidentified. |
-| WebView marker | 25 | An embedded-browser declaration, without a genuine-device label. |
-| No catalogue-name candidate | 1,743 | Our named-client catalogue did not resolve a name. |
-| Provider category present, with no catalogue name | 89 | Provider category and software-name extraction answer different questions. |
-
-The 1,049 version-pattern records split into 694 Windows and 355 macOS claims. They are not 1,049 demonstrated mistakes: a requester could really run the reported OS, copy a browser string or use a reduced one. The data establishes the ambiguity our report must preserve.
-
-The audit also corrected our own new warning. Two Firefox-shaped headers reported only `Mac OS X 10.15`. My first caution treated that partial value as matching the full frozen `10_15_7` pattern. It now requires the complete documented version; the reported partial version stays intact. That reduces the caution count from 1,051 to 1,049, without changing browser/OS selection or traffic categories. None of this day's records reproduces the contradictory browser/OS or malformed mobile-hint cases below. Their repairs remain supported by controlled counterexamples.
-
-A separate bounded D1 query finds **595 retained page observations** for the same day: 388 with no catalogue candidate and 207 with one. All have classification and signature-detail records; none contains the optional browser/OS request-evidence record. Among 101 stored verified signature outcomes, none has a recorded true User-Agent coverage flag. This is a historical stored-evidence result, not a new signature verification. Owner flags/marks are zero in this selection; current referral exclusions have not been applied. These 595 observations are not the 2,414 log records or a public included-view total.
-
-The raw headers stay private. The [dated method and aggregate findings](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/139-own-data-user-agent-audit.md) preserve selectors, export limits, failed assumptions and the separate populations. They also retain catalogue-review leads, including Sofyabot, Twitterbot and FreshRSS declarations; seeing a product does not authenticate its operator.
 
 ## The problem is larger than one phone brand
 
@@ -66,11 +49,9 @@ There is no defensible total of affected people behind this table. Some cases co
 
 ### A modern OS can report an old version
 
-Chrome deliberately reduces information in its header. Its [documented compatibility values](https://www.chromium.org/updates/ua-reduction/) include `Android 10; K`, `Mac OS X 10_15_7` and `Windows NT 10.0`. Chromium records the Android phase reaching **100% of Android clients on Chrome 110 and above via Finch on May 11, 2023**. That is a scoped rollout figure, not a percentage of broken sites. Reading the number is not the same as discovering the current operating system or device model.
+Chrome deliberately reduces information in its header. Its [documented compatibility values](https://www.chromium.org/updates/ua-reduction/) include `Android 10; K`, `Mac OS X 10_15_7` and `Windows NT 10.0`. A report can retain those values as supplied claims and leave the actual operating system version and device model unresolved.
 
 [Safari 26 makes the distinction particularly visible](https://webkit.org/blog/17333/webkit-features-in-safari-26-0/): its iOS header still says `CPU iPhone OS 18_6`, while the browser product says `Version/26.0`. Apple describes this as freezing the OS part for compatibility. A more complete regular expression cannot recover information the browser deliberately stopped sending.
-
-This is a much broader scope than a CUBOT spelling collision. It applies under the documented browser/version policy. It does not mean every site using that header is broken, or give me a percentage of dashboards showing the wrong OS.
 
 ### A tablet can ask to look like a desktop
 
@@ -79,6 +60,27 @@ WebKit documented [Mac-identical headers on iPad in its Safari 13 release](https
 Chrome documents another example: [desktop mode on supported premium Android tablets](https://developer.chrome.com/blog/desktop-mode) can send a Linux-shaped desktop header. The model and platform Client Hints can change too. Chrome specifically warns that a site relying on these values might offer the user a Linux download.
 
 That is why our form report describes **markers and preferences**. No mobile marker does not establish desktop hardware. A `?0` mobile hint does not authenticate a laptop. I have not added touch-point probes or reconstructed hidden device identities to fill that gap.
+
+## What one day of our own logs contained
+
+For November 9, 2026, I exported the blog Worker's retained invocation events and assessed their supplied headers locally. The first export hit its 2,000-record cap. An overlapping early-hours export returned 535 records; all 120 overlapping records matched exactly. Combining them preserved 2,414 HTTP request records and one separate scheduled invocation. The log service's sampling/completeness remains unverified, and the requests include assets, APIs, feeds, failed probes and pages.
+
+| Supplied evidence in the 2,414 HTTP records | Records | What it supports |
+| --- | ---: | --- |
+| Chromium selection with a Safari product token | 1,158 | A Safari word is not a count of Safari browsers. |
+| `Windows NT 10.0` or `Mac OS X 10_15_7` | 1,049 | The reported version also matches a documented compatibility value. |
+| No User-Agent header | 29 | The header is missing; the operator remains unidentified. |
+| WebView marker | 25 | An embedded-browser declaration, without a genuine-device label. |
+| No catalogue-name candidate | 1,743 | Our named-client catalogue did not resolve a name. |
+| Provider category present, with no catalogue name | 89 | Provider category and software-name extraction answer different questions. |
+
+The 1,049 version-pattern records split into 694 Windows and 355 macOS claims. They are not 1,049 demonstrated mistakes: a requester could really run the reported OS, copy a browser string or use a reduced one. The data establishes the ambiguity our report must preserve.
+
+The audit also corrected our own new warning. Two Firefox-shaped headers reported only `Mac OS X 10.15`. My first caution treated that partial value as matching the full frozen `10_15_7` pattern. It now requires the complete documented version; the reported partial version stays intact. That reduces the caution count from 1,051 to 1,049, without changing browser/OS selection or traffic categories. None of this day's records reproduces the contradictory browser/OS or malformed mobile-hint cases below. Their repairs remain supported by controlled counterexamples.
+
+A separate bounded D1 query finds **595 retained page observations** for the same day: 388 with no catalogue candidate and 207 with one. All have classification and signature-detail records; none contains the optional browser/OS request-evidence record. Among 101 stored verified signature outcomes, none has a recorded true User-Agent coverage flag. This is a historical stored-evidence result, not a new signature verification. Owner flags/marks are zero in this selection; current referral exclusions have not been applied. These 595 observations are not the 2,414 log records or a public included-view total.
+
+The raw headers stay private. The [dated method and aggregate findings](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/139-own-data-user-agent-audit.md) preserve selectors, export limits, failed assumptions and the separate populations. They also retain catalogue-review leads, including Sofyabot, Twitterbot and FreshRSS declarations; seeing a product does not authenticate its operator.
 
 ## First, parse the right part of the header
 

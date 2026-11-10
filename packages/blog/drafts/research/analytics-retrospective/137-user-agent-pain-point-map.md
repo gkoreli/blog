@@ -21,6 +21,16 @@ November 10, 2026. Evidence map for [worklist 136](136-user-agent-trust-and-hard
 
 ## What scale can be established
 
+The November 10 industry-first opening draws on three measurements with explicit populations:
+
+| Evidence | Measured population and result | Editorial use |
+| --- | --- | --- |
+| Senol and Acar’s 2023 crawl, §§3.6 and 5.1 | Scripts accessed the JavaScript User-Agent property on 88.3% of the 89,763 successfully visited homepages. The crawl began with the top 100,000 sites from April 2023 CrUX, excluded duplicate fully qualified domain names and ran from a US host in June. | Measures how widely scripts read the string in this study. A downstream error rate would require observing the reports and checking their labels independently. [Primary paper](https://www.esat.kuleuven.be/cosic/publications/article-3692.pdf) |
+| Chromium Android reduction rollout | On May 11, 2023, Chrome reported enabling the reduction for 100% of Android clients on M110 and above via Finch. The reduced header supplies `Android 10; K`. | Quantifies one browser rollout population. A literal OS/model report loses differences hidden by the format. [Rollout record](https://www.chromium.org/updates/ua-reduction/) |
+| Jordan Ellis’s operator audit, September 22–October 5, 2026 | Across nine managed sites, 36% of 35,355 estimated requests claiming Googlebot met the operator’s verification criteria. The per-site verified share ranged from 10% to 99%. The source combines Cloudflare analytics with published operator IP checks and reports sampling in its analytics. | Quantifies how far a name-only count can drift in a specific cohort. The headline comparison uses the rounded source percentage, yielding about 2.8 times the count that met the checks. [Operator audit](https://brandmentions.link/server-log-vs-cloudflare/#nine-sites-the-same-impostors) |
+
+The affected decisions include OS/device reporting and test coverage, desktop-mode download selection, publisher crawler attribution and ad bidding based on browser/platform properties. A reported Sentry incident illustrates the first, and the browser and bidding providers document the latter data contracts. These sources leave a web-wide dashboard error rate open. [Sentry](https://github.com/getsentry/sentry-javascript/issues/12127) · [Chrome desktop mode](https://developer.chrome.com/blog/desktop-mode) · [Google bidding API](https://developers.google.com/authorized-buyers/rtb/useragent-targeting)
+
 The platform families are broader than the original phone-brand defect: browsers deliberately reduce versions or change presentation identity. The relevant population is defined by browser/version/mode/customization, not by a total count of people or broken sites. Reported library incidents establish specific experiences; our reproductions establish supplied-input mechanisms. We do not sum these populations or turn package downloads into affected deployments.
 
 The code audit initially isolates two repair domains: single-browser selection and OS/version selection in optional diagnostics. Existing final collection/role classification does not consume the optional OS values. The new reusable supplied-input assessment exposes these distinctions without granting trust to pasted headers. Unsolvable missing identity or hidden OS details remain explicit limits rather than engineering TODOs.
