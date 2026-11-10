@@ -1,6 +1,6 @@
 # Analytics and D1 Handoff — September 7, 2026 UTC
 
-**November 10 continuation:** a separate [public-stats SQL incident](05-public-stats-503-2026-11-10.md) records the new production 503, reproduced engine regression and transactional workaround. The September read-budget repair below remains completed; its historical successful report does not establish present health.
+**November 10 continuation:** a separate [public-stats SQL incident](05-public-stats-503-2026-11-10.md) records the new production 503, reproduced engine regression and transactional workaround. Recovery is accepted for the reported seven-day/all-audience endpoint: 200 MISS → identical HIT, one 839,029-read/zero-write calculation, and durable private evidence. The September read-budget repair below remains completed; its historical successful report does not establish present health.
 
 Resume here after the break. This checkpoint records completed work and open questions; it does not require an agent to remain running. [Decision](../../../../../docs/adr/0016.7-budget-d1-reads-and-cache-public-reports.md), [current production acceptance](02-recovery.md), [task](../../../../../docs/tasks/TASK-0131-d1-analytics-read-budget.md).
 

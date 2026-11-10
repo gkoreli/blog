@@ -1,0 +1,139 @@
+{
+  "date": "2026-11-10",
+  "sourceCommit": "57fd4a287b8063974c7079140261e3205deb09aa",
+  "buildId": "d9380585-0782-44f4-94f9-ba72d7ae91f0",
+  "workerVersion": "f71049fd-f9ca-49e5-a9cd-082c3ba06d33",
+  "deploymentCreatedAt": "2026-11-10T16:41:43.346478Z",
+  "reportStatuses": [
+    200,
+    200
+  ],
+  "cacheStates": [
+    "MISS",
+    "HIT"
+  ],
+  "sameResponseBytes": true,
+  "bodySha256": "bff50ca54cc29ceef932936791c357ff025bbbc92577a255cb3d3da8c8bf991c",
+  "period": {
+    "start": "2026-11-04",
+    "end": "2026-11-10",
+    "timeZone": "UTC",
+    "granularity": "hour",
+    "updatedAt": "2026-11-10T16:42:31.665Z"
+  },
+  "totals": {
+    "views": 4502,
+    "dailyClients": 2686,
+    "unattributedViews": 4312
+  },
+  "calculationLogs": 1,
+  "calculation": {
+    "version": "2026-11-10.1",
+    "event": "stats-report-calculation",
+    "outcome": "returned",
+    "submittedStatements": 6,
+    "returnedResults": 6,
+    "metadata": "complete",
+    "counterScope": "last-attempt",
+    "reportedRowsRead": 839029,
+    "reportedRowsWritten": 0,
+    "totalAttempts": null,
+    "unexpectedWrites": false,
+    "statementCosts": [
+      {
+        "reportedRowsRead": 143939,
+        "reportedRowsWritten": 0,
+        "totalAttempts": 1
+      },
+      {
+        "reportedRowsRead": 109199,
+        "reportedRowsWritten": 0,
+        "totalAttempts": 1
+      },
+      {
+        "reportedRowsRead": 116756,
+        "reportedRowsWritten": 0,
+        "totalAttempts": 1
+      },
+      {
+        "reportedRowsRead": 136735,
+        "reportedRowsWritten": 0,
+        "totalAttempts": 1
+      },
+      {
+        "reportedRowsRead": 128474,
+        "reportedRowsWritten": 0,
+        "totalAttempts": 1
+      },
+      {
+        "reportedRowsRead": 203926,
+        "reportedRowsWritten": 0,
+        "totalAttempts": 1
+      }
+    ]
+  },
+  "reviewThresholdRowsRead": 1000000,
+  "withinReviewThreshold": true,
+  "nativeParity": {
+    "selectors": 33,
+    "syntheticRows": 47,
+    "statementsPerReport": 6,
+    "firstReport": {
+      "version": "2026-11-10.1",
+      "event": "stats-report-calculation",
+      "outcome": "returned",
+      "submittedStatements": 6,
+      "returnedResults": 6,
+      "metadata": "partial",
+      "counterScope": "last-attempt",
+      "reportedRowsRead": 33442,
+      "reportedRowsWritten": 0,
+      "totalAttempts": null,
+      "unexpectedWrites": false,
+      "statementCosts": [
+        {
+          "reportedRowsRead": 5465,
+          "reportedRowsWritten": 0,
+          "totalAttempts": null
+        },
+        {
+          "reportedRowsRead": 5382,
+          "reportedRowsWritten": 0,
+          "totalAttempts": null
+        },
+        {
+          "reportedRowsRead": 5520,
+          "reportedRowsWritten": 0,
+          "totalAttempts": null
+        },
+        {
+          "reportedRowsRead": 5466,
+          "reportedRowsWritten": 0,
+          "totalAttempts": null
+        },
+        {
+          "reportedRowsRead": 5633,
+          "reportedRowsWritten": 0,
+          "totalAttempts": null
+        },
+        {
+          "reportedRowsRead": 5976,
+          "reportedRowsWritten": 0,
+          "totalAttempts": null
+        }
+      ]
+    },
+    "parity": true
+  },
+  "limits": [
+    "One production range and traffic selection; no filter grid or expiry wait.",
+    "Cache locality does not establish a global hit rate or read budget.",
+    "Production engine version and precise outage onset remain unknown.",
+    "The cold-fill meter is not a paired comparison with the earlier single-statement report."
+  ],
+  "privateEvidence": {
+    "files": 104,
+    "bytes": 3959483,
+    "manifestSha256": "7b35e7580883102712df22d25495461782615ff580bf5173cf0d3c77b24cbeba"
+  }
+}
