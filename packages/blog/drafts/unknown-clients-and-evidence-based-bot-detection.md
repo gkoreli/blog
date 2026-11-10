@@ -1,34 +1,38 @@
 ---
-title: "My Bot Detector Mistook a Phone Brand for a Bot"
-seoTitle: "CUBOT Exposed a Bug in My Bot Detector"
-alternativeHeadline: "A copied phone header exposed a word-matching bug. I fixed it while keeping names, request clues and verified signatures separate."
+title: "Please Stop Misreading User-Agent. It’s Messing Up Your Analytics."
+seoTitle: "User-Agent Parsing Mistakes That Distort Your Analytics"
+alternativeHeadline: "Phone names became bots. URLs became software names. Here is how to test what your analytics claims."
 date: "2026-11-05"
-description: "A copied CUBOT header triggered a broad bot match. The live fix stops that mistake without pretending it found a human."
+description: "Phone names and contact URLs can become false bot labels. Historical reports, live fixes and a reusable test pack show how to check your analytics."
 section: engineering
 tags: [analytics, bots, cloudflare-workers, testing, ai-agents]
 ---
 
-# My Bot Detector Mistook a Phone Brand for a Bot
+# Please Stop Misreading `User-Agent`. It’s Messing Up Your Analytics.
 
 > **Active article — November 10, 2026:** Goga intends to substantially rewrite
 > this baseline and publish it. No publication date is assigned. See the
 > [article disposition register](README.md); the other audited candidates are closed.
 
-My bot detector called a copied **CUBOT phone header** a bot because the brand ends in “bot.” A controlled live request now avoids that mistake. It still does not establish that a person sent the request.
+**Two phone names became bot evidence:** `FEVER` in Matomo’s detector and `CUBOT` in isbot reports. Neither was a bot declaration. I later reproduced a CUBOT false match in my own analytics. A phone brand had become a reason to call a request a bot.
 
-That distinction matters on my blog. In a seven-day report, **2,810 of 3,960 recorded page requests had no crawler, tool or service name recognized by my catalogue**. Their browser family could still be recognizable. I asked agents to investigate those gaps, read competing detectors’ source code and improve our library. The first useful result was a mistake in a rule I already had.
+The input was the **`User-Agent` HTTP header**: text a requester sends about its software, often with an operating system, device model or reference URL. My code searched that text and gave the request a category. Searching the wrong part produced the wrong explanation.
 
-The changes address three problems:
+That affects the question a publisher actually cares about: what is reaching the work? Mislabel a visit and the browser/bot breakdown changes. Discard it as a bot and the visit can disappear from the report. My collector retained the observations; the demonstrated error was their classification, not an invented page request. Agents and crawlers are worth measuring too. They need labels supported by the evidence.
 
-- **Match software names in the right place.** A phone model, wallet app or URL containing bot-related text should not become a bot declaration.
-- **Keep names, reported jobs and proof separate.** A request can lack a recognized name while carrying useful provider-category or signing evidence.
-- **Preserve what the database can explain later.** New names need source records, versioned storage and tests that actually write and read the evidence.
+## Other projects have encountered the same kind of mistake
 
-Local regressions were followed by six controlled requests through the deployed collector and database. Those live checks establish the tested behavior, not how often the old phone-brand bug occurred.
+In **2016**, a Matomo user reported an Android header containing the phone-model text `FEVER`. The detector treated it as the **Fever feed reader**. A maintainer confirmed the false positive and [changed the matching expression from `Fever` to `Fever/[0-9]`](https://github.com/matomo-org/device-detector/commit/d5514b275b9f6b0b6f65c8aa9f4ae72b1b32dba8). The software name now needed its version form; a phone model alone was insufficient.
 
-The production figures cover included stored page events from **October 31 through a partial November 6, 2026 UTC**; the report was calculated at 05:42 UTC on November 6. The copied-header tests are separate controls. They are not added to those traffic counts. [The dated baseline preserves the collector’s scope and exclusions](https://github.com/gkoreli/blog/blob/da3cf39eb578a34d9d523e6460fe6b6b5bb58003/packages/blog/drafts/research/analytics-retrospective/127-current-unidentified-and-unsigned-traffic.md).
+In **2018**, an isbot user [reported four CUBOT Android headers being flagged as bots](https://github.com/omrilotan/isbot/issues/29). A second user reported the same problem in that thread. The maintainer [addressed it through an exclusion/customization change in 2019](https://github.com/omrilotan/isbot/pull/35). The [current inspected pattern list includes a CUBOT-specific exclusion](https://github.com/omrilotan/isbot/blob/fb724fa942d1f2229e0df43fbf45318f2bf56f6f/src/patterns.json). These are historical failures and repairs, not evidence that current isbot or Matomo still makes those mistakes.
 
-The [earlier bot-detection study](/how-i-separate-readers-from-bots-without-javascript) explains the network and navigation rules. This investigation tests the names feeding those rules.
+A **2026 Rybbit report** shows the wider consequence: an operator said Android WebView sessions stopped appearing after a bot-filtering upgrade and returned after a downgrade. Their [follow-up identifies three client-side signals](https://github.com/rybbit-io/rybbit/issues/971#issuecomment-4321563785), including a missing Chrome-specific browser property despite a Chrome-looking header. That is an adjacent browser-heuristic problem, not a reproduction of our substring bug. I have not independently run that deployment.
+
+These reports establish recurrence across projects and years. They do **not** establish how many sites or visits are affected. Package downloads would not supply that number either. The useful question is whether a specific rule misinterprets specific inputs in the system you run.
+
+For my blog, the starting point was **2,810 of 3,960 recorded page requests with no recognized crawler, tool or service name**. That was about 71%, not a 71% error rate: browser families could still be recognizable, and an absent catalogue name is not a wrong label. The [frozen report](https://github.com/gkoreli/blog/blob/da3cf39eb578a34d9d523e6460fe6b6b5bb58003/packages/blog/drafts/research/analytics-retrospective/127-current-unidentified-and-unsigned-traffic.md) covers October 31 through a partial November 6, 2026 UTC, calculated at 05:42 UTC on November 6. It motivated the investigation; it cannot measure the incidence of the mistakes below.
+
+I reviewed competing implementations, tested counterexamples, rejected a repair that lost useful matches, then followed the accepted changes through the live collector and database. The [earlier bot-detection study](/how-i-separate-readers-from-bots-without-javascript) covers network and navigation evidence. This article examines what the header itself can legitimately contribute.
 
 ## Three letters were enough
 
@@ -104,21 +108,7 @@ The new report view shows selected-name state, provider category and signature r
 
 The deployed view passed a separate live check: its totals reconciled, and a cache hit returned the same report body and update time as the initial miss. That mixed-version report is not a before-and-after accuracy test. [The served-report checks and their limits are recorded with production acceptance](https://github.com/gkoreli/blog/blob/4aad5cd9a1cab8e3986af1a7ed8bf716fa73925f/packages/blog/drafts/research/analytics-retrospective/134-detection-production-acceptance.md).
 
-The frozen production scope happens to contain 2,810 records with no recognized name and 1,150 with one. It contains no multiple-name record. That measured equality does not justify coding “no selected name means no recognized names” as a permanent rule.
-
-The query also exposed a cost: **85,639 rows read**, above the planned 50,000-read review threshold, with zero writes and one attempt. The data result was complete; the cost check failed. I kept both facts and did not rerun the query to obtain a cleaner receipt.
-
-## Keeping the code’s responsibilities separate
-
-The refactor has a practical boundary: parsing a name must not grant trust to it.
-
-The new catalogue contains **63 crawler, tool and service names and 74 exact product aliases**, their declared roles and source records. Browser families are a separate measurement. Reviewed additions include SEO crawlers and HTTP libraries such as `python-httpx`, `axios` and `node-fetch`. A library name can explain how a request was made without identifying its operator or making it an AI request.
-
-The parser extracts request claims. Classification interprets those claims and request context. Separate signature and published-network checks retain their own results. Observations retain their collection version, and reports describe the stored evidence. Keeping those responsibilities apart lets me add a name without accidentally adding a verification method or rewriting old traffic.
-
-It also caught a persistence problem. Repeating the expanded name and alias lists could produce **2,378 bytes of classification JSON**, exceeding the existing **2,048-byte limit**. Dropping aliases would have made the record fit while losing the explanation for its result.
-
-The repair stores matched aliases by their positions in a frozen, versioned list. Candidate names remain explicit. A worst-case control containing all 63 names and 74 aliases now occupies **1,355 bytes**. An actual local D1 insert and read-back preserves that complete record; the helper also verifies byte-for-byte preservation of a legacy control. Unknown future profiles remain unassessed rather than being decoded under today’s list. [The catalogue and storage acceptance are recorded with the source review](https://github.com/gkoreli/blog/blob/4aad5cd9a1cab8e3986af1a7ed8bf716fa73925f/packages/blog/drafts/research/analytics-retrospective/129-oss-detection-source-review.md#scope-and-continuity).
+That distinction must survive storage. The expanded catalogue contains **63 names and 74 exact product aliases**. Repeating all the aliases in each record could exceed the database’s 2,048-byte evidence limit. A frozen, versioned encoding now retains them without truncating candidates; old records remain readable under their own formats. [The storage checks](https://github.com/gkoreli/blog/blob/4aad5cd9a1cab8e3986af1a7ed8bf716fa73925f/packages/blog/drafts/research/analytics-retrospective/129-oss-detection-source-review.md#scope-and-continuity) include actual insertion and read-back. A parser fix is incomplete if the database drops the explanation for it.
 
 ## Six live requests tested the whole path
 
@@ -135,9 +125,21 @@ After deployment, I sent six controlled `curl` requests through the live collect
 
 The first two deliberately included browser-navigation headers and came from a network that matched neither our hosting list nor our archiver list. That is why they received Browser signals here, while the earlier missing-context local controls remained Unresolved. I know these were `curl` requests because I sent them. **None received a human label.** A GPTBot name supplied by this test is not genuine OpenAI traffic or a verified operator.
 
-The all-alias control retained all 63 names and 74 matched aliases in **1,341 bytes** of production classification evidence. That is a separate live record from the 1,355-byte local control above. All six requests were permanently excluded as owner controls; no optional diagnostic captures were collected. The direct read-back used one SELECT, 54 rows read and zero writes in one attempt. That is the cost of that query, not the whole experiment.
+The all-alias control retained every name and matched alias in production storage. All six requests were permanently excluded as owner controls; no optional diagnostic captures were collected. These checks establish six supplied cases through the live request-and-storage path, not accuracy across ordinary traffic. [The production acceptance record preserves the exact chains, costs and cleanup](https://github.com/gkoreli/blog/blob/4aad5cd9a1cab8e3986af1a7ed8bf716fa73925f/packages/blog/drafts/research/analytics-retrospective/134-detection-production-acceptance.md).
 
-The temporary test pages were closed before their authorization expired and returned 404. These checks establish six supplied cases through the live request-and-storage path. They do not measure accuracy across ordinary traffic or identify the operators behind it. [The production acceptance record preserves the chains, conditions and cleanup](https://github.com/gkoreli/blog/blob/4aad5cd9a1cab8e3986af1a7ed8bf716fa73925f/packages/blog/drafts/research/analytics-retrospective/134-detection-production-acceptance.md).
+## Run the same checks against your own parser
+
+The [User-Agent check pack](https://github.com/gkoreli/blog/tree/main/packages/blog/tools/user-agent-check) contains **16 selected examples**, a standalone runner and an adapter for this blog’s actual parser. It tests whether names come from the right part of the header, whether phone/app exceptions hide separately appended bots, and whether reversing two declarations changes which names survive.
+
+The current blog parser passes all 16 local controls. A deliberately weak whole-header matcher is included to demonstrate failing cases. Neither result estimates accuracy on ordinary traffic, and the demonstration is not another library’s implementation.
+
+To check your own parser, write a small adapter returning every recognized client name and whether the text supplies an automation declaration. The runner needs no network service or private traffic export:
+
+```sh
+node check.mjs --adapter /absolute/path/to/your-adapter.mjs
+```
+
+Its extraction policy is explicit. A boolean bot library may intentionally use broader signals or choose only a first match; failure to satisfy this pack does not establish a defect under that library’s own contract. Inspect whether its output supports the stronger names and categories your report puts on it. In particular, **no bot declaration found does not mean a person was found**.
 
 ## What the fix establishes
 
@@ -145,7 +147,7 @@ The phone-brand case gives me a concrete improvement, checked locally and throug
 
 I have not measured how often the old mistake occurred in production or how many of the 2,810 unnamed requests the new catalogue would recognize. The local and controlled live results identify specific mistakes and supported additions; they do not turn the remaining requests into people or identified services.
 
-For another analytics implementation, the useful tests are small: put a phone model, an app name and a contact URL through the detector; append a known bot name to each; then check the stored explanation as well as the label. A reduction in Unknown is useful only when the evidence has become more informative.
+For another analytics implementation, start with those small cases, then check the stored explanation as well as the parser’s return value. Record the rule/version that supplied each label. A change in category counts after an upgrade may reflect a different interpretation of the same traffic, so preserve that boundary before calling it audience growth or decline. A reduction in Unknown is useful only when the evidence has become more informative.
 
 ---
 
@@ -154,5 +156,6 @@ For another analytics implementation, the useful tests are small: put a phone mo
 | Term | Meaning here | Source |
 |---|---|---|
 | User-Agent | Request text containing client product claims; it can be imitated | [HTTP semantics, section 10.1.5](https://www.rfc-editor.org/rfc/rfc9110.html#section-10.1.5), June 2022; checked November 6, 2026 |
+| Historical misclassification | FEVER phone-model text selected a feed-reader rule; CUBOT reports led to a matcher-customization remedy | [Matomo’s April 2016 fix](https://github.com/matomo-org/device-detector/commit/d5514b275b9f6b0b6f65c8aa9f4ae72b1b32dba8), [isbot’s May 2019 change](https://github.com/omrilotan/isbot/pull/35); checked November 10, 2026 |
 | Product token | A parsed software-name claim, distinct from a name hidden inside a URL or another word | [Local lexical implementation](https://github.com/gkoreli/blog/blob/64a95314967f9b79a81c4f711dc27cae95fbb9c6/packages/analytics/src/user-agent-products.ts), deployed source, checked November 6, 2026 |
 | Signature coverage | The request components authenticated by a signature; uncovered names and paths need separate evidence | [HTTP Message Signatures, section 7.2.1](https://www.rfc-editor.org/rfc/rfc9421.html#section-7.2.1), February 2024; checked November 6, 2026 |

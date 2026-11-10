@@ -28,7 +28,7 @@ conversations; an unavailable time total is explicitly "not recovered."
 
 | Article | Current state | Next action |
 | --- | --- | --- |
-| [My Bot Detector Mistook a Phone Brand for a Bot](unknown-clients-and-evidence-based-bot-detection.md) — CUBOT | Research, implementation and reviewed baseline retained; unpublished. The earlier editorial acceptance does not freeze the new version. | Goga's substantial rewrite, then publication preparation. No date assigned. |
+| [Please Stop Misreading User-Agent. It’s Messing Up Your Analytics.](unknown-clients-and-evidence-based-bot-detection.md) — CUBOT | Research, implementation and reviewed baseline retained; unpublished. November 10 owner-selected title, external recurrence research and reusable extraction checks now shape the rewrite. The earlier editorial acceptance does not freeze the new version. | Complete the substantial rewrite and publication preparation. No date assigned. |
 
 **Recorded investment:** the November 5–6 CUBOT baseline took approximately
 **3h22m across two completed main-chat turns**. It produced a roughly 2,400-word

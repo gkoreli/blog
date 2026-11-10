@@ -7,3 +7,43 @@ you have 10 hours to work on this. Improve the detection and correctness and tru
 ---
 
 give the article more human understandable senses title, give it a clickbait intro and title, avoid AI jargon, write in human understandable practical senses. In the intro start with the most important what, don't start with preface or background context. It must catch the attention of the humans and ai crawlers right away, within the first 50 words including the title description and seo title and all that. make sure to respect this rule in the articles all the time properly. Write in human understandable senses. PLEASE
+
+---
+
+what part of the analytics have we not tackled yet? need to plan for today/tomorrow work and article both at the same time
+
+---
+
+what value does it provide: Finish **“My Bot Detector Mistook a Phone Brand for a Bot”**, whose implementation and live controls already exist. While building the audit, preserve the examples and decisions for tomorrow’s piece.
+
+---
+
+what is net new?
+
+---
+
+yeah but is this like 15 minutes or work or many hours of research distilled into a really high value article that will get referenced a ton?
+
+---
+
+we need a name to be upfront opinionated and triggering sensations (almost like a clickbait but grounded into the article)
+
+---
+
+no, this needs to be understandable in human terms, its confusing what you mean, like what was the problem in the grand scheme
+
+---
+
+Then I found my detector identifying software from phone brands and contact URLs.
+
+what property are we reading like what values did we misrepresent
+
+---
+
+see, my title would be, Please stop misrepresenting what you read in the `User-Agent`, its messing up your analytics
+
+---
+
+**Please Stop Misreading `User-Agent`. It’s Messing Up Your Analytics.**
+
+lets do this, and now that this is a title. We need a to work better and write a better article. We can start with some numbers, and problems, like how can we know that lots of people are also having this problem?

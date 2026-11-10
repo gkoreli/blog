@@ -1,5 +1,7 @@
 # Detection improvement article — editorial record
 
+**November 10 rewrite continuation:** The owner selected **Please Stop Misreading User-Agent. It’s Messing Up Your Analytics.**, challenged the reader value and asked how to establish relevance beyond this blog. [Research 135](135-user-agent-errors-beyond-this-blog.md) owns the new external reports, source-inspected remedies, prevalence limits, test pack and validation. The paired prompt record adds nine complete shaping messages. This supersedes the November 6 title/shape acceptance for the new unpublished version; prior runtime and live-control results retain their original dates and scopes. The active-draft disposition and unassigned publication date remain intact.
+
 ## Current disposition — November 10, 2026
 
 **Active for Goga's substantial rewrite and publication.** Earlier editorial,

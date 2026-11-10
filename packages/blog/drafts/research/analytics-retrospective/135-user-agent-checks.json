@@ -1,0 +1,112 @@
+{
+  "checkedOn": "2026-11-10",
+  "sourceBase": "7b2af3e42c98efa0c18200eed064e171fc744ccb",
+  "scope": "Draft and local extraction tool. No production query, new provider trial, publication or scheduling.",
+  "tool": {
+    "demo": {
+      "exitCode": 1,
+      "stderr": "",
+      "cases": 16,
+      "passed": 9,
+      "failed": 7,
+      "fixtureSha256": "46ae2147824e76ac452513fe5a963e8ef96260556a965bacf71cd5bf52442774"
+    },
+    "blog-parser": {
+      "exitCode": 0,
+      "stderr": "",
+      "cases": 16,
+      "passed": 16,
+      "failed": 0,
+      "fixtureSha256": "46ae2147824e76ac452513fe5a963e8ef96260556a965bacf71cd5bf52442774"
+    },
+    "invalid-arguments": {
+      "exitCode": 2,
+      "stderr": "Usage: node check.mjs --demo | --adapter /absolute/path/to/adapter.mjs\n"
+    },
+    "deterministicRepeat": true,
+    "collectorSourceChanged": false
+  },
+  "sources": {
+    "isbot29": {
+      "url": "https://github.com/omrilotan/isbot/issues/29",
+      "created_at": "2018-12-19T08:09:57Z",
+      "closed_at": "2019-05-29T07:05:01Z",
+      "issue_number": 29,
+      "state": "closed"
+    },
+    "isbot208": {
+      "url": "https://github.com/omrilotan/isbot/issues/208",
+      "created_at": "2023-03-13T12:30:55Z",
+      "closed_at": "2023-03-13T14:49:17Z",
+      "issue_number": 208,
+      "state": "closed"
+    },
+    "uaSource0": {
+      "url": "https://github.com/matomo-org/device-detector/issues/5484",
+      "created_at": "2016-04-14T19:02:59Z",
+      "closed_at": "2016-04-14T20:57:50Z",
+      "issue_number": 5484,
+      "state": "closed"
+    }
+  },
+  "preview": {
+    "h1": [
+      "Please Stop Misreading User-Agent. It\u2019s Messing Up Your Analytics."
+    ],
+    "tables": 4,
+    "codeBlocks": 3,
+    "prompts": 12,
+    "representations": [
+      "html",
+      "md",
+      "bib",
+      "csl.json"
+    ],
+    "draftAdministrationOmittedFromPreview": true,
+    "initialIncorrectTableExpectation": 5,
+    "actualTableCount": 4
+  },
+  "validation": {
+    "mainPublishedPosts": 33,
+    "isolatedBuildPostsIncludingDraft": 45,
+    "isolatedWorkspaceTypes": "passed",
+    "referralPolicy": "passed",
+    "relativeLinksChecked": 39,
+    "promptCount": 12,
+    "relativeLinkScope": "Five changed Markdown records; active-article register includes only the scoped row change."
+  },
+  "layout": {
+    "desktop": {
+      "width": 1280,
+      "pageWidth": 1280
+    },
+    "narrow": {
+      "width": 390,
+      "pageWidth": 390,
+      "h1Width": 354,
+      "tableScrollWidths": [
+        354,
+        537,
+        354,
+        417
+      ]
+    },
+    "promptNavigation": "Click produced no observed destination before cleanup; no browser prompt-page acceptance claimed.",
+    "viewportReset": true,
+    "tabClosed": true,
+    "temporaryServerStopped": true
+  },
+  "preservedFailures": [
+    "Root typecheck could not resolve existing site-audit worker types; isolated local dependency links restored successful checking.",
+    "Initial isolated bundle could not resolve existing site-audit workspace package; repaired only isolated dependency links.",
+    "Initial structural assertion expected five tables; article contains four; corrected assertion without changing source.",
+    "Sandbox loopback bind denied; loopback-only preview server ran after approved escalation.",
+    "npm download API web access failed; sandbox direct request failed DNS; no count used.",
+    "Generated upstream src/pattern.ts was absent; no published default-matcher execution claimed."
+  ],
+  "archive": {
+    "pathRelativeToRepository": "packages/blog/worklog/user-agent-article-2026-11-10",
+    "selectedFiles": 27,
+    "manifestSha256": "c9d0f0059426dbf025e619878a25b2fd779ae0f319e38daedc183c8de57238b8"
+  }
+}
