@@ -2,7 +2,7 @@
 
 Cookieless page analytics for a Cloudflare Worker and D1. It records eligible page responses, preserves client declarations and verification separately, and reports included request events. People and agents both count as audience at their observed stages; a request alone establishes neither reading nor its initiating party. See [ADR-0016.19](../../docs/adr/0016.19-agent-mediated-audience-growth.md).
 
-This is private workspace source with one pinned runtime dependency, `ipaddr.js`. Code is MIT. This document describes the checked implementation; code, migration, deployment activation and measured production behavior require separate evidence. The [current investigation worklist](../blog/drafts/research/analytics-retrospective/128-detection-improvement-worklist.md) records that work.
+This is private workspace source with one pinned runtime dependency, `ipaddr.js`. Code is MIT. This document describes the checked implementation; code, migration, deployment activation and measured production behavior require separate evidence. The [User-Agent trust worklist](../blog/drafts/research/analytics-retrospective/136-user-agent-trust-and-hardening.md) continues the [accepted detection investigation](../blog/drafts/research/analytics-retrospective/128-detection-improvement-worklist.md).
 
 ## Start locally
 
@@ -69,6 +69,16 @@ Directory admission requires a default-port HTTPS DNS origin, rejects IP literal
 Current method scope lives in [`vendor-signatures.ts`](src/vendor-signatures.ts) and [`vendor-ip-sources.ts`](src/vendor-ip-sources.ts). Related clients do not inherit a method automatically. Unsigned requests can have positive address evidence; an absent signature or nonlisted address does not establish impersonation. Missing native verified-bot/signed-agent booleans remain unavailable, independently of the top-level provider category. Workers Paid alone does not establish Bot Management entitlement. [Native-field evidence](../blog/drafts/research/analytics-retrospective/25-native-category-and-entitlement.md).
 
 Published-IP checks use fixed reviewed publisher URLs, no request-derived feed URL and no reverse DNS. They distinguish listed, not-listed, unavailable and skipped results. Current bounds are a 1.5-second deadline, four sources per request, 262,144 response bytes and 4,096 prefixes. JSON feeds and documented HTML code blocks pass whole-feed validation; invalid/ambiguous content rejects the feed without loading page assets. Cache snapshots, policy/reuse reasons and refresh cooldowns retain their recorded scope; they do not prove present freshness or a shared cache instance. [Feed adapters](src/vendor-ip-document.ts), [cache evidence](src/vendor-ip-cache-evidence.ts) and [assignment consistency](src/vendor-declaration-assessment.ts) remain separate assessments.
+
+## Inspect supplied User-Agent claims without a collector
+
+`@gkoreli/analytics/user-agent` exports `assessUserAgent(userAgent, mobileHint?)` as a pure supplied-input assessment. The package remains private workspace source; this is not an npm installation promise. The local [inspection command and regression pack](../blog/tools/user-agent-check/README.md) require no Worker, database, account, network request or private traffic export.
+
+The result distinguishes missing/empty/present input, all catalogue-name candidates, selected browser and platform claims, conflicting/unusable versions, form markers/mobile preference, and a compatibility claim about Fetch Metadata. `authentication` is always `not-performed`. Cautions flag known frozen-version patterns and policy tokens; they do not recover the actual OS, hardware, operator or purpose. A false automation declaration result is not a human verdict. Raw input, arbitrary product names, addresses and URL details are not returned.
+
+Ordinary Chrome+Safari and Chrome+Edge/Opera compatibility tokens survive. Competing Edge/Opera selections and conflicting OS families or versions abstain instead of choosing a priority match. Android/Linux and ChromeOS/Linux compatibility markers remain usable. The same browser/platform values now supply optional request diagnostics under profile `2026-11-10.1`. Mobile hint parsing uses HTTP SP/HTAB padding, leaving NBSP-padded values unsupported; collection, form and incoming-request profiles advance prospectively while old profiles remain readable. Classifier/signature profiles and historical rows are unchanged. A claimed OS version may be a browser compatibility value.
+
+The extractor intentionally supports a reviewed lexical dialect, not every HTTP product/comment syntax or every browser/device. Client Hints are client claims too. It consumes only an already-supplied mobile preference and requests no high-entropy hints. Use feature detection for actual client capabilities and independent network/signature evidence for attribution, preserving each method's limits. The [twelve-family evidence map](../blog/drafts/research/analytics-retrospective/137-user-agent-pain-point-map.md) describes scope and incidents.
 
 ## Public API and interpretation
 

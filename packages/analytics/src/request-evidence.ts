@@ -1,15 +1,17 @@
 import { analyzeTraffic } from './classify.js';
 import { clientReaderKind } from './client-registry.js';
-import { claimsFetchMetadataFromProducts, hasConflictingBrowserClaims, userAgentClaimText, userAgentEngineVersion, userAgentProducts, type UserAgentProduct } from './user-agent-products.js';
+import { claimsFetchMetadataFromProducts, userAgentClaimText, userAgentProducts, type UserAgentProduct } from './user-agent-products.js';
+import { browserClaim, type BrowserFamily } from './user-agent-browser.js';
+import { platformClaim, type OsFamily } from './user-agent-platform.js';
+export type { BrowserFamily } from './user-agent-browser.js';
+export type { OsFamily } from './user-agent-platform.js';
 
 /** This is an extraction contract, not an anonymity or verified-client claim. */
-export const REQUEST_EVIDENCE_VERSION = '2026-11-06.1';
+export const REQUEST_EVIDENCE_VERSION = '2026-11-10.1';
 export const MAX_UA_EVIDENCE_BYTES = 1024;
 export const MAX_ACCEPT_EVIDENCE_BYTES = 512;
 const encoder = new TextEncoder();
 
-export type BrowserFamily = 'chromium' | 'edge' | 'opera' | 'firefox' | 'safari' | 'unknown';
-export type OsFamily = 'windows-nt' | 'android' | 'ios' | 'macos' | 'chromeos' | 'linux' | 'unknown';
 export type DeclaredClientForm = 'browser' | 'webview' | 'headless' | 'http-client' | 'bot' | 'unknown';
 
 export interface RequestEvidence {
@@ -45,45 +47,6 @@ export interface RequestDiagnosticInputs {
   transport: TransportEvidence;
 }
 
-function major(value: string | undefined): number | null {
-  if (value === undefined || !/^\d{1,5}$/.test(value)) return null;
-  const parsed = Number(value);
-  return parsed <= 65535 ? parsed : null;
-}
-
-function browser(products: readonly UserAgentProduct[]): { family: BrowserFamily; major: number | null } {
-  if (hasConflictingBrowserClaims(products)) return { family: 'unknown', major: null };
-  for (const [family, names] of [
-    ['edge', ['edg', 'edga', 'edgios']],
-    ['opera', ['opr']],
-    ['firefox', ['firefox', 'fxios']],
-    ['chromium', ['chrome', 'chromium', 'crios']],
-  ] as const) {
-    if (products.some(product => names.some(name => name === product.name))) {
-      return { family, major: userAgentEngineVersion(products, names)?.major ?? null };
-    }
-  }
-  if (products.some(product => product.name === 'safari') && products.some(product => product.name === 'version')) {
-    return { family: 'safari', major: userAgentEngineVersion(products, ['version'])?.major ?? null };
-  }
-  return { family: 'unknown', major: null };
-}
-
-function os(userAgent: string): { family: OsFamily; major: number | null } {
-  for (const [family, pattern] of [
-    ['ios', /\b(?:CPU (?:iPhone )?OS|iPhone OS) (\d+)[_.]/],
-    ['android', /\bAndroid (\d+)/],
-    ['windows-nt', /\bWindows NT (\d+)/],
-    ['macos', /\bMac OS X (\d+)[_.]/],
-    ['chromeos', /\bCrOS\b/],
-    ['linux', /\bLinux\b/],
-  ] as const) {
-    const match = pattern.exec(userAgent);
-    if (match) return { family, major: major(match[1]) };
-  }
-  return { family: 'unknown', major: null };
-}
-
 function clientForm(userAgent: string, products: readonly UserAgentProduct[], family: BrowserFamily): DeclaredClientForm {
   const traffic = analyzeTraffic(userAgent);
   if (traffic.declarations.candidates.length > 0
@@ -116,15 +79,15 @@ export function extractRequestEvidence(request: Request, response: Response): Re
   // has its separate bounded/redacted extraction below and is never substituted.
   const userAgent = userAgentClaimText(request.headers.get('User-Agent') ?? '');
   const products = userAgentProducts(userAgent);
-  const browserClaim = browser(products);
-  const osClaim = os(userAgent);
+  const selectedBrowser = browserClaim(products);
+  const osClaim = platformClaim(userAgent);
   return {
     version: REQUEST_EVIDENCE_VERSION,
-    browserFamily: browserClaim.family,
-    browserMajor: browserClaim.major,
+    browserFamily: selectedBrowser.family,
+    browserMajor: selectedBrowser.major,
     osFamily: osClaim.family,
     osMajor: osClaim.major,
-    declaredClientForm: clientForm(userAgent, products, browserClaim.family),
+    declaredClientForm: clientForm(userAgent, products, selectedBrowser.family),
     claimsFetchMetadataSupport: claimsFetchMetadataFromProducts(userAgent, products),
     primaryLanguage: primaryLanguage(request.headers.get('Accept-Language')),
     responseStatus: response.status,

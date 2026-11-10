@@ -35,7 +35,7 @@ test('exact markers preserve mobile/tablet compatibility, explicit conflicts and
 });
 
 test('unsupported hint text and unknown products cannot enter retained evidence; worst marker set fits budget',()=>{
-  for(const hint of ['true','?2','?1, ?0','?1;x=private-canary','private-canary'.repeat(1000)]){
+  for(const hint of ['true','?2','?1, ?0','?1;x=private-canary','\u00a0?1\u00a0','\u00a0?0\u00a0','private-canary'.repeat(1000)]){
     const e=evidence('private-canary',hint);assert.equal(e.mobileHint,'unsupported');assert.equal(e.form,'unknown');assert.equal(JSON.stringify(e).includes('private-canary'),false);
   }
   assert.equal(evidence('',' ?0 ').mobileHint,'non-mobile');
@@ -43,8 +43,8 @@ test('unsupported hint text and unknown products cannot enter retained evidence;
 });
 
 test('new modern URI-excluded form markers preserve recognized history and the deprecated raw heuristic',()=>{
-  assert.equal(CLIENT_FORM_PROFILE,'2026-11-06.1');
-  assert.deepEqual(CLIENT_FORM_PROFILES,['2026-10-27.1','2026-11-06.1']);
+  assert.equal(CLIENT_FORM_PROFILE,'2026-11-10.1');
+  assert.deepEqual(CLIENT_FORM_PROFILES,['2026-10-27.1','2026-11-06.1','2026-11-10.1']);
   for(const ua of ['https://example.test/iPad','https://example.test/;iPad','https://example.test/;Mobile']){
     const e=evidence(ua);assert.equal(e.profile,CLIENT_FORM_PROFILE);assert.equal(e.form,'unknown');assert.deepEqual(e.markers,[]);
     assert.equal(e.legacyCompatibility.value,ua.endsWith('Mobile')?'mobile':'tablet','raw compatibility is retained without claiming hardware');
@@ -60,6 +60,24 @@ test('client-form migration preserves history and rejects invalid/oversized JSON
   sqlite.exec("INSERT INTO page_observations(path,daily_client_id,traffic_class,device_type,is_owner) VALUES('/old','00000000000000000000000000000000','browser','desktop',0)");sqlite.exec(readFileSync(new URL('../migrations/0015_client_form_evidence.sql',import.meta.url),'utf8'));
   assert.equal(sqlite.prepare('SELECT client_form_evidence FROM page_observations').get().client_form_evidence,null);
   assert.throws(()=>sqlite.prepare('UPDATE page_observations SET client_form_evidence=?').run('bad'));assert.throws(()=>sqlite.prepare('UPDATE page_observations SET client_form_evidence=?').run(JSON.stringify({x:'x'.repeat(1024)})));
+});
+
+test('new hint normalization preserves the recorded interpretation of both earlier form profiles',async()=>{
+  const sqlite=new DatabaseSync(':memory:');
+  try {
+    sqlite.exec(readFileSync(new URL('../schema.sql',import.meta.url),'utf8'));
+    const db={prepare(sql){return{bind(...v){return{execute(){return{results:sqlite.prepare(sql).all(...v)}}}}}},async batch(statements){return statements.map(s=>s.execute())}};
+    const insert=sqlite.prepare("INSERT INTO page_observations(path,daily_client_id,traffic_class,device_type,is_owner,reader_kind,reader_reason,observed_at,client_form_evidence)VALUES('/history',?,'browser','desktop',0,'browser','fixture','2026-11-10 01:00:00',?)");
+    const current=evidence(browser,'\u00a0?1\u00a0');
+    const records=[{...evidence(browser,'?1'),profile:'2026-10-27.1'}, {...evidence(browser,'?1'),profile:'2026-11-06.1'},current];
+    records.forEach((record,index)=>insert.run(String(index+1).padStart(32,'0'),JSON.stringify(record)));
+    const report=await queryStats(db,{range:'7d',traffic:'all',path:'/history'},new Date('2026-11-10T02:00:00Z'));
+    assert.equal(report.clientFormEvidence.recordedViews,3);
+    assert.equal(report.clientFormEvidence.unrecognizedRecordViews,0);
+    assert.equal(report.clientFormEvidence.unsupportedHintViews,1);
+    assert.equal(report.byClientForm.find(row=>row.form==='mobile-preference')?.views,2);
+    assert.equal(report.byClientForm.find(row=>row.form==='no-form-marker')?.views,1);
+  } finally {sqlite.close();}
 });
 
 test('form reporting partitions every selected row, preserves history/unsupported records and all exclusions',async()=>{

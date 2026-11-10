@@ -47,3 +47,7 @@ see, my title would be, Please stop misrepresenting what you read in the `User-A
 **Please Stop Misreading `User-Agent`. It’s Messing Up Your Analytics.**
 
 lets do this, and now that this is a title. We need a to work better and write a better article. We can start with some numbers, and problems, like how can we know that lots of people are also having this problem?
+
+---
+
+overall i want you to think bigger, like you did fix the Cubot related issue, but i feel like the pain is larger, and applies to many more things for the User-Agent, like we can spend a ton more time distilling and working out the truthfulness, how to trust User-Agent, what are the pain points besides this Cubot issue that we faced, and what other problems are people facing, how large is the problem, how many actual pain points exist in parallel within the User-Agent umbrella, like lets break it down, and then understand each problem how large it is, and then for each pain point some incidents that happen. Then holistically approach our code, lets read authoritative docs, and native libraries and capabilities, find the source of truth and harden our code and library overal. Respect DDD patterns and principles and also iterate on the article and the engineering of our analytics library both. The objective is that the article and the analytics library is both our product that we are putting out there. Like slowly, i would love to if people start adopting our analytics library and analytics tools that we have.

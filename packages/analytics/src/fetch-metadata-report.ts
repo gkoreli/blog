@@ -10,7 +10,7 @@ const tokens = (values: readonly string[]) => values.map(v => `'${v.replaceAll("
 function recordStateSql(): string {
   // The cache-evidence collection bump preserves this parser/record format.
   // Keep explicit compatibility; an arbitrary future collector must not inherit it.
-  const compatibleCollection = "collection_version IN ('2026-10-29.6','2026-10-30.1','2026-11-05.1','2026-11-06.1')";
+  const compatibleCollection = "collection_version IN ('2026-10-29.6','2026-10-30.1','2026-11-05.1','2026-11-06.1','2026-11-10.1')";
   // Catalogue/compact-product changes do not change Fetch Metadata bit encoding.
   const compatibleClassifiers = "('2026-10-29.3','2026-10-31.1','2026-11-05.1','2026-11-06.1')";
   const compatibleClassifier = `classifier_version IN ${compatibleClassifiers}`;

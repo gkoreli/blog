@@ -46,6 +46,8 @@ Provider method updates and historical receipt display provenance: [ADR-0016.20]
 
 Client claims, frozen alias storage and same-event reporting: [ADR-0016.21](../adr/0016.21-client-claims-and-joint-evidence.md).
 
+User-Agent compatibility claims, ambiguous browser/platform values and pure supplied-input assessment: [ADR-0016.22](../adr/0016.22-user-agent-claims-and-platform-ambiguity.md).
+
 Current role/signer semantics: [ADR-0016.8](../adr/0016.8-declared-client-roles-and-signer-evidence.md) preserves named declared roles across verification and reports signer evidence independently.
 
 Retain method boundaries and source provenance when classifications change. Public labels describe request evidence, not a claim to identify a human. Reader groups must remain disjoint and add up to All; use `READER_GROUPS` and the stored `reader_kind` contract. Preserve documented legacy evidence levels rather than deleting history.

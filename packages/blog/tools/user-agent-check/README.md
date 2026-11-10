@@ -1,5 +1,27 @@
 # Check what your User-Agent parser claims
 
+## Inspect one supplied header privately
+
+Create a regular UTF-8 JSON file with `userAgent` as a string or null and optional `mobileHint` as a string or null. For example, `{"userAgent":"Mozilla/5.0 (Linux; Android 10; K) Chrome/150.0.0.0 Mobile Safari/537.36","mobileHint":"?1"}`. Then run from this source repository with its dependencies installed:
+
+```sh
+pnpm -C packages/blog exec node --import tsx tools/user-agent-check/inspect.mjs /absolute/path/to/input.json
+```
+
+The report includes declared names, browser/platform conflicts, reported versions, form preferences and cautions about known frozen-version patterns. A reported Android 10 token is not evidence the actual device runs Android 10. Authentication is never performed. Missing, empty and unrecognized inputs remain distinct. No raw header, arbitrary URL, address or contact text is echoed. No network call or file write occurs. Inputs above 262144 bytes, unsupported fields, malformed UTF-8/JSON, devices and FIFOs are rejected with a fixed error; there is no silent truncation. Your local input/output can still be private evidence; choose where to retain them.
+
+Library consumers can import `assessUserAgent` from `@gkoreli/analytics/user-agent` in this private TypeScript workspace source. It is not yet a published npm package. It takes supplied text and optional already-received mobile preference; no caller-provided headers, hints or tokens acquire identity authority. This is a useful interpretation primitive, not a full browser/device detector or complete HTTP grammar validator.
+
+For a plain JavaScript project, the same pure entry can be bundled from the checked source without a Worker or collector:
+
+```sh
+pnpm -C packages/blog exec esbuild ../analytics/src/user-agent-assessment.ts --bundle --platform=neutral --format=esm --outfile=/tmp/user-agent-claims.mjs
+```
+
+Import `assessUserAgent` from that file in your own code. Keep the emitted profile and source version with results. The portable bundle was loaded outside the repository with external transport disabled; that is local portability evidence, not an independent operator trial.
+
+## Exercise the extraction contract
+
 Sixteen selected examples test one explicit contract: extract software declarations without obtaining them from a phone name, an app-name lookalike or a recognized absolute URI. Preserve real appended products and all competing named declarations. A result is a lexical claim, not a verified vendor, person, device or purpose.
 
 Run the deliberately weak demonstration with Node 24:

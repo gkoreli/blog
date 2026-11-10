@@ -1,5 +1,5 @@
 /** Bump when eligibility, metadata normalization or persistence semantics change. */
-export const COLLECTION_VERSION = '2026-11-06.1';
+export const COLLECTION_VERSION = '2026-11-10.1';
 /** Includes the evidence normalization used as input to the reader-kind rules. */
 export const CLASSIFIER_VERSION = '2026-11-06.1';
 

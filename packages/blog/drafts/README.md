@@ -28,7 +28,7 @@ conversations; an unavailable time total is explicitly "not recovered."
 
 | Article | Current state | Next action |
 | --- | --- | --- |
-| [Please Stop Misreading User-Agent. It’s Messing Up Your Analytics.](unknown-clients-and-evidence-based-bot-detection.md) — CUBOT | Research, implementation and reviewed baseline retained; unpublished. November 10 owner-selected title, external recurrence research and reusable extraction checks now shape the rewrite. The earlier editorial acceptance does not freeze the new version. | Complete the substantial rewrite and publication preparation. No date assigned. |
+| [Please Stop Misreading User-Agent. It’s Messing Up Your Analytics.](unknown-clients-and-evidence-based-bot-detection.md) — CUBOT continuation | Substantially rewritten and locally reviewed; unpublished. The [twelve-family audit](research/analytics-retrospective/137-user-agent-pain-point-map.md), shared browser/platform repairs, strict mobile-hint parsing and reusable inspection API now support the article. [Current acceptance](research/analytics-retrospective/138-user-agent-hardening-acceptance.md) supersedes the narrower November 10 shape. | Owner editorial review and publication preparation; separate operator trial remains proposed. No date assigned. |
 
 **Recorded investment:** the November 5–6 CUBOT baseline took approximately
 **3h22m across two completed main-chat turns**. It produced a roughly 2,400-word

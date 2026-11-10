@@ -1,9 +1,9 @@
 import { classifyDevice, userAgentProductNames, type ClientDeclarations } from './classify.js';
 import type { DeviceType } from './contracts.js';
 
-export const CLIENT_FORM_PROFILE = '2026-11-06.1';
+export const CLIENT_FORM_PROFILE = '2026-11-10.1';
 /** Stored records keep their original normalization policy. */
-export const CLIENT_FORM_PROFILES = ['2026-10-27.1', '2026-11-06.1'] as const;
+export const CLIENT_FORM_PROFILES = ['2026-10-27.1', '2026-11-06.1', '2026-11-10.1'] as const;
 export const CLIENT_FORMS = ['mobile-marker', 'tablet-marker', 'conflicting-markers', 'mobile-preference', 'non-mobile-preference', 'no-form-marker', 'unknown'] as const;
 export type ClientForm = typeof CLIENT_FORMS[number];
 export const REPORTED_CLIENT_FORMS = [...CLIENT_FORMS, 'historical-desktop-default', 'historical-mobile-heuristic', 'historical-tablet-heuristic', 'unrecognized-record'] as const;
@@ -43,7 +43,11 @@ export function clientFormEvidence(userAgent: string, hint: string | null, brows
   const tablet = markers.some(marker => marker === 'iPad' || marker === 'Tablet' || marker === 'PlayBook');
   const phone = markers.some(marker => marker === 'iPhone' || marker === 'iPod' || marker === 'IEMobile');
   const mobile = phone || markers.includes('Mobile');
-  const mobileHint = hint === null ? 'absent' : hint.trim() === '?1' ? 'mobile' : hint.trim() === '?0' ? 'non-mobile' : 'unsupported';
+  // HTTP optional whitespace is SP/HTAB, not JavaScript's Unicode whitespace.
+  // Native Headers retains NBSP; accepting it here would promote an invalid
+  // Structured Fields boolean into a mobile preference.
+  const normalizedHint = hint?.replace(/^[ \t]+|[ \t]+$/g, '');
+  const mobileHint = hint === null ? 'absent' : normalizedHint === '?1' ? 'mobile' : normalizedHint === '?0' ? 'non-mobile' : 'unsupported';
   // iPad commonly includes Mobile for compatibility; that pair is not a conflict.
   const form = tablet && phone ? 'conflicting-markers' : tablet ? 'tablet-marker' : mobile ? 'mobile-marker'
     : mobileHint === 'mobile' ? 'mobile-preference' : mobileHint === 'non-mobile' ? 'non-mobile-preference'

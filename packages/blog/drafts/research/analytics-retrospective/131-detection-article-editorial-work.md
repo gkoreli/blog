@@ -204,3 +204,7 @@ The QA JSON retains earlier hashes and adds the final pinned hashes, exact norma
 ## Sealed final appendix and delivery
 
 The final pinned seven source/output artifacts and equivalence check are sealed separately at `/Users/goga/.local/share/gkoreli/analytics-evidence/2026-11-06-detection-improvement-article-links`, manifest SHA-256 `385a625cdcad28cc91fdfe1cea4c198480c4f9be5a747b7be4eca0a78b0def67`. All 14 appendix files / 93300 bytes verify with private permissions. The parent core manifest remains unchanged. This closes the earlier archive and pinning actions without overwriting any historical receipt. Final copy remains an unpublished draft; Git history records its checked scoped delivery.
+
+## November 10: broader User-Agent product iteration
+
+The owner's selected title and subsequent direction reopen the article's substance beyond CUBOT. [Worklist 136](136-user-agent-trust-and-hardening.md), [evidence map 137](137-user-agent-pain-point-map.md) and [acceptance 138](138-user-agent-hardening-acceptance.md) own the new twelve-family audit, library/domain repairs, pure supplied-input tool and substantial rewrite. The final isolated preview passes desktop/mobile checks and displays all thirteen complete shaping prompts. This supersedes the earlier editorial shape, without altering its historical receipts or claiming its live controls were rerun. The manuscript remains unpublished with no assigned release date; other retired article directions stay closed.

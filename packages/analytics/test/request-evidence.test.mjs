@@ -39,7 +39,7 @@ test('registered HTTP software claims keep the optional form coherent even with 
     for (const ua of [token, `${browser} ${token}`]) {
       const evidence = extractRequestEvidence(req({ 'User-Agent': ua }), response);
       assert.equal(evidence.declaredClientForm, 'http-client', ua);
-      assert.equal(evidence.version, '2026-11-06.1');
+      assert.equal(evidence.version, '2026-11-10.1');
     }
   }
   assert.equal(extractRequestEvidence(req({ 'User-Agent': `${browser} node-fetch axios/1.13.1` }), response).declaredClientForm, 'http-client', 'compatible software claims preserve their shared form without choosing one identity');

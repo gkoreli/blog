@@ -1,0 +1,260 @@
+{
+  "version": 1,
+  "checkedDate": "2026-11-10",
+  "sourceBase": "e03efbd7157c6b9d32ef8dfc5b8924ec9b3c7f3a",
+  "profiles": {
+    "assessment": "user-agent-claims/2026-11-10.1",
+    "collection": "2026-11-10.1",
+    "clientForm": "2026-11-10.1",
+    "requestEvidence": "2026-11-10.1",
+    "requestAssessment": "2026-11-10.1",
+    "classifier": "2026-11-06.1"
+  },
+  "tests": {
+    "analytics": 442,
+    "site": 432,
+    "workspaceTypes": "passed",
+    "freshSchema": "passed",
+    "referralPolicy": "passed"
+  },
+  "native": {
+    "version": 1,
+    "cases": 35,
+    "exactNodeNativeMatches": 35,
+    "nativeD1StoredAndReadBack": 35,
+    "bundleSha256": "a6e1d68e3eefd1dacecf38c1a3e08dd4871cbb997cb3b7d4e52f1d99f3c7a62f",
+    "externalRequests": 0,
+    "productionRequests": 0,
+    "humanLabels": 0,
+    "limits": "Synthetic supplied-header values in local workerd and a fixture D1 table; not collector acceptance, browser fidelity or population accuracy."
+  },
+  "collector": {
+    "baselineRequests": 22,
+    "baselineStoredEvents": 6,
+    "detection": {
+      "checkedAt": "2026-11-10T16:51:16.280Z",
+      "bundleSha256": "a89fc7c1a7d1bfd3cfea2fd30cc634a2266e2467d9f547d89f7037d269da2114",
+      "actualExecutor": "Node supplies synthetic HTTP inputs; planned calibration operator labels are not execution proof",
+      "requests": 26,
+      "storedEvents": 8,
+      "publicEventsAfterMarksRemoved": 0,
+      "ownerExcluded": 8,
+      "attemptedAndAcknowledged": 8,
+      "exactStorageReadbacks": 8,
+      "fullCurrentReceiptMatches": 8,
+      "profiles": [
+        {
+          "label": "cubot",
+          "kind": "browser",
+          "reason": "navigation-shaped-network-unlisted",
+          "candidates": 0,
+          "products": 0,
+          "classificationEvidenceBytes": 389
+        },
+        {
+          "label": "uri-negative",
+          "kind": "browser",
+          "reason": "navigation-shaped-network-unlisted",
+          "candidates": 0,
+          "products": 0,
+          "classificationEvidenceBytes": 389
+        },
+        {
+          "label": "gpt-positive",
+          "kind": "ai-crawler",
+          "reason": "GPTBot",
+          "candidates": 1,
+          "products": 1,
+          "classificationEvidenceBytes": 413
+        },
+        {
+          "label": "seo-name",
+          "kind": "seo-crawler",
+          "reason": "SemrushBot",
+          "candidates": 1,
+          "products": 1,
+          "classificationEvidenceBytes": 425
+        },
+        {
+          "label": "http-name",
+          "kind": "http-client",
+          "reason": "node-fetch",
+          "candidates": 1,
+          "products": 1,
+          "classificationEvidenceBytes": 432
+        },
+        {
+          "label": "all-products",
+          "kind": "unresolved",
+          "reason": "multiple-client-declarations",
+          "candidates": 63,
+          "products": 74,
+          "classificationEvidenceBytes": 1341
+        },
+        {
+          "label": "malformed-browser",
+          "kind": "unresolved",
+          "reason": "unrecognized-browser-claim",
+          "candidates": 0,
+          "products": 0,
+          "classificationEvidenceBytes": 393
+        },
+        {
+          "label": "missing-metadata",
+          "kind": "unresolved",
+          "reason": "fetch-metadata-absent",
+          "candidates": 0,
+          "products": 0,
+          "classificationEvidenceBytes": 377
+        }
+      ],
+      "collection": "2026-11-10.1",
+      "classifier": "2026-11-06.1",
+      "optionalDiagnosticRows": 0,
+      "mockedFeedRequests": 0,
+      "externalRequests": 0,
+      "productionRequests": 0,
+      "humanLabels": 0,
+      "limits": [
+        "Actual composed Worker and native D1/crypto with explicit synthetic edge ASN and a special-range test address; no vendor source is authenticated.",
+        "Outbound fetches have local unavailable-feed responses configured; the address guard can avoid them entirely.",
+        "A test-only Request adapter supplies canonical Fetch Metadata because Node transport rewrites Sec-Fetch-Mode; no wire-fidelity claim.",
+        "Node supplies HTTP requests; no real browser, vendor identity or population accuracy claim."
+      ]
+    }
+  },
+  "api": {
+    "result": "passed",
+    "httpRequests": 55,
+    "nativeConcurrentAdmissions": 10,
+    "rejectedNativeAdmissions": 20,
+    "quotaRows": 6,
+    "externalRequests": 0,
+    "noJavaScriptHtml": "passed",
+    "noJavaScriptBareDomain": "normalized",
+    "invalidFormQuotaUse": 0,
+    "retainedEscapedInput": "passed",
+    "escapedRemoteHtml": "passed",
+    "inputAndOriginBoundaries": "passed",
+    "requestEvidence": "passed",
+    "actualResponsesMatchOpenApi": 2,
+    "compactAliasRoundtrip": 74,
+    "additionalCodecSchemaCases": 75,
+    "malformedSchemaRejections": 12,
+    "networkFixture": "missing-edge-address"
+  },
+  "extractionCases": 16,
+  "cli": {
+    "valid": {
+      "exitCode": 0,
+      "rawHeaderEchoed": false
+    },
+    "unknownField": {
+      "exitCode": 2,
+      "rawHeaderEchoed": false
+    },
+    "invalidUtf8": {
+      "exitCode": 2,
+      "rawHeaderEchoed": false
+    },
+    "oversize": {
+      "exitCode": 2,
+      "rawHeaderEchoed": false
+    }
+  },
+  "portabilityAndCost": {
+    "sourceBase": "e03efbd7157c6b9d32ef8dfc5b8924ec9b3c7f3a",
+    "observationBundle": {
+      "baselineBytes": 242181,
+      "candidateBytes": 243348,
+      "baselineGzip": 70964,
+      "candidateGzip": 71332
+    },
+    "portableBundle": {
+      "bytes": 15567,
+      "gzip": 4524,
+      "importedOutsideRepository": true,
+      "workerDatabaseBrowserGlobalsRequired": false,
+      "networkRequests": 0
+    },
+    "metamorphicComparisons": 39,
+    "limits": "Local synthetic checks and byte sizes; no population accuracy, production CPU/billing or independent adoption claim."
+  },
+  "article": {
+    "articleHtmlAndMarkdownContainBody": true,
+    "administrativeNoteRetainedInDraftOnly": true,
+    "promptCount": 13,
+    "metadataAndCitationsAgree": true,
+    "isolatedBuildPosts": 45,
+    "validatedMarkdownPosts": 34,
+    "localRelativeLinksChecked": 519,
+    "desktop": {
+      "viewport": 1280,
+      "pageWidth": 1280,
+      "tableWidths": [
+        728,
+        728,
+        728,
+        728
+      ]
+    },
+    "mobile": {
+      "viewport": 390,
+      "pageWidth": 390,
+      "tableClientWidths": [
+        354,
+        354,
+        354,
+        354
+      ],
+      "tableScrollWidths": [
+        354,
+        504,
+        371,
+        486
+      ],
+      "tableAndCodeOverflow": "auto"
+    },
+    "promptLinkNavigation": "observed page with all 13 complete prompts",
+    "temporaryViewportReset": true,
+    "ownedTabAndServerClosed": true,
+    "sourceSha256": {
+      "packages/analytics/README.md": "6b72a02943ca0fdeb5385b810bc05ce7d4752cb632c2ac4b42ba196fa6d13c50",
+      "packages/analytics/package.json": "33939f3eedb3cbadbe2f5c263b2babbd94f860c524295a465bce37d633e5f3ca",
+      "packages/analytics/scripts/check-user-agent-native.mjs": "327260738ef14508ca5b68a3c69a8ea9ddf34f7931677d75ae01077b34a07532",
+      "packages/analytics/src/client-form.ts": "c792684da79d9a25d269cb3759d79e2dcad694ebfff81860355df1c54f711c71",
+      "packages/analytics/src/fetch-metadata-report.ts": "8f96d4f56ba5b287e6271d9e446c0972c545af225bd1acfb8223b9ee89c5b4e0",
+      "packages/analytics/src/request-assessment.ts": "cf12b2e054cf98df22c5642b816c26b1ca600c11b7ee71528eda18c16a7f5d9c",
+      "packages/analytics/src/request-evidence.ts": "83bd933f3656939e04e089833aa072d596af27681b7126df23ead5eb3cd32a33",
+      "packages/analytics/src/user-agent-assessment.ts": "a4b72c13a476704e40b7f4046f3e8a459d6b761f8fce0e84630c33ca84bd0a3f",
+      "packages/analytics/src/user-agent-browser.ts": "82062afb7aac25450bc0bf054bc50310a81d38f93114636fe115572b38c0bfc7",
+      "packages/analytics/src/user-agent-platform.ts": "2e86f0de5c1a932aaf2a34b7f1ffee2bffb2f704a79e3bfed1b4c89fc72f0588",
+      "packages/analytics/src/versions.ts": "9d3cb36b5be9bb3d8077f922b024153aae246bf2cb3e9110715c64b98968d723",
+      "packages/analytics/test/client-form.test.mjs": "8e0a1ee3b648e5cb57e8d3390984398a66c062c5bd55d6b59a342e01b10f28a3",
+      "packages/analytics/test/contracts.test.mjs": "70eac862690ab4d14ffa9655d9973377fa4466e2368333bb154a3d3d98fd5d91",
+      "packages/analytics/test/request-evidence.test.mjs": "715bba5128f5e5e59c2b7cb6ddc8a2620a7ec57a36bcbb9bfd24a060dbd87c7d",
+      "packages/analytics/test/user-agent-assessment.test.mjs": "f696378c65d8319dc0e70d19869e6a423758722659aa436bb0c4b5fc4f9069bc",
+      "packages/blog/drafts/prompts/unknown-clients-and-evidence-based-bot-detection.prompts.md": "2c619401c1fa320837d4c219bd88d8fdb66ad03b127f8ac068357f814ca5a8ae",
+      "packages/blog/drafts/unknown-clients-and-evidence-based-bot-detection.md": "4590ac547d1873a319410566a83e57dab5203434f3685e2062823a4600c9c253",
+      "packages/blog/scripts/check-ai-check.mjs": "06caed940ee766144e2a4da5042073812fafc720c2c398b1754504934949f2bf",
+      "packages/blog/tools/user-agent-check/README.md": "96dce2c11b35b3923d24d1a6e1a788ac9f7b61b0b4e6991db157472d053f1a1a",
+      "packages/blog/tools/user-agent-check/inspect.mjs": "c13a84ce820631862d250295a52852d0106da3e384a0e7eda5bad60f230b33f1"
+    },
+    "limits": "Isolated local preview; no article publication or production acceptance."
+  },
+  "privateArchive": {
+    "path": "packages/blog/worklog/user-agent-trust-2026-11-10/",
+    "gitIgnored": true,
+    "manifestSha256": "fb5428511fca254ecae19748e10b2456095ccdedbca77cf23c930cf92a7f73a4",
+    "filesVerified": 80,
+    "totalBytes": 61923552,
+    "directoryMode": "0700",
+    "fileMode": "0600"
+  },
+  "delivery": "Scoped Git commit/push; this receipt does not establish deployment activation.",
+  "limits": [
+    "Synthetic local inputs, not genuine-device labels or population accuracy.",
+    "No new production requests, external network requests, human labels or optional diagnostic activation.",
+    "No article publication, registry package release or independent adoption."
+  ]
+}

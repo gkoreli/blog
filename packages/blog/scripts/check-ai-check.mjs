@@ -155,7 +155,7 @@ try {
   assert.equal(contract.openapi, '3.1.0');
   const responseSchema = contract.paths['/api/request-check'].get.responses['200'].content['application/json'].schema;
   validateOpenApiValue(contract, responseSchema, requestEvidence);
-  assert.equal(requestEvidence.request.version, '2026-11-06.2');
+  assert.equal(requestEvidence.request.version, '2026-11-10.1');
   const catalogueResponse = await visit('/api/request-check', { method: 'GET', body: undefined, headers: {
     'User-Agent': RETAINED_CLIENT_PRODUCTS_20261106.map(product => `${product}/1.0`).join(' '),
   } }, '208.67.222.222');
