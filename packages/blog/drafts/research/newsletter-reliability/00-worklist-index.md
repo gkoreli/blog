@@ -1,3 +1,17 @@
+## Current disposition — November 10, 2026
+
+**Subscription-bombing article retired by owner; TASK-0128 closed.** The
+[September manuscript](article.md) and completed research/engineering are retained
+as reference, with no obligation to revise or publish that article. The separate
+Turnstile source was promoted by `3efc3435` to its
+[maintained post](../../../posts/043-cloudflare-turnstile-signup-failures.md); the
+old queued-source and publication-pending checkpoints below are historical.
+This is source-history reconciliation, not a new live/deployment check.
+Separate newsletter maintenance tasks retain their own evidence and status.
+See the [article disposition register](../../README.md).
+
+## Historical checkpoints
+
 **November 6 Pacific schedule correction:** Goga confirms that another builder
 already published today's article. The finished Turnstile source/prompts and
 manifest entry are moved to **November 7, 08:00 America/Los_Angeles**, preserving

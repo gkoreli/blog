@@ -1,5 +1,17 @@
 # Detection, correctness and truthful analytics — ten-hour worklist
 
+## Current disposition — November 10, 2026
+
+**CUBOT article remains active.** The November 6 bounded research and engineering
+acceptance is retained. Goga now intends a substantial rewrite of the
+[manuscript](../../unknown-clients-and-evidence-based-bot-detection.md), followed
+by publication. Earlier prose/render acceptance applies to that baseline; no
+rewrite, new publication date or new production result is claimed here. The
+[article disposition register](../../README.md) closes the other audited article
+directions. This note does not reopen the completed engineering objective.
+
+## Historical record
+
 Started November 5, 2026 Pacific / November 6 at 06:05 UTC. The owner authorizes up to ten hours of evidence-led research, source inspection, engineering, validation, ADR work and a delegated article. This continues TASK-0119 from [the current uncertainty baseline](127-current-unidentified-and-unsigned-traffic.md). The previous turn made progress: it measured current served reports and committed their evidence. It did not complete this broader objective.
 
 ## Objective and acceptance

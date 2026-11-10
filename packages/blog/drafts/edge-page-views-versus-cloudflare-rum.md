@@ -1,5 +1,10 @@
 # Why Edge Page Views Disagree With Cloudflare Web Analytics
 
+> **Archived manuscript — November 10, 2026:** Goga retired this standalone
+> article. The draft and dated research remain reference; older experiment
+> prerequisites are not publication obligations. Separate technical tasks retain
+> their own status. See the [article disposition register](README.md).
+
 Working draft, September 6, 2026. Unpublished; the browser and beacon experiments are pending.
 
 My edge counter recorded 95 browser-classified HTML requests while Cloudflare's script counter recorded 14 page loads over the same two complete UTC days. The first controlled checks found something I could fix before explaining that gap: seven selected HTTP headers were interpreted incorrectly, and every test request lost its network-provenance marker on the way into the database. Correcting those defects gives the next experiment a better starting point. It does not tell me what generated the historical difference.

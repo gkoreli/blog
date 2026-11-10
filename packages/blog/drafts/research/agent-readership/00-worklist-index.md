@@ -1,5 +1,17 @@
 # Personal-blog analytics, Matomo, and agent subscriptions
 
+## Current disposition — November 10, 2026
+
+**Closed research; article direction retired by owner.** TASK-0141 was already
+completed. Goga now retires a standalone article and withdraws the optional
+agent-follow lifecycle, publication-grant and paired Matomo experiments.
+Unrun extensions remain unrun; prior code inspection, feed and signature checks
+retain their recorded scope. No next action remains for this research track.
+Separate analytics/newsletter maintenance tasks are not completed by this
+decision. See the [article disposition register](../../README.md).
+
+## Historical record
+
 Started September 9 UTC / September 8 PDT, 2026. [TASK-0141](../../../../../docs/tasks/TASK-0141-compare-blog-analytics-with-matomo-and-research-agent.md).
 
 **Completed and pushed in `c42ab3a`.** The comparison, protocol reviews, measured checks, and experiment designs below fulfill TASK-0141. The [break checkpoint](../../../../../docs/handoffs/2026-09-09-analytics-and-agent-research-checkpoint.md) distinguishes this completed research from proposed extensions and separate unfinished implementation tasks.

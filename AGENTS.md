@@ -48,6 +48,7 @@ People and agents are part of the audience. Count agent reach, agent-mediated us
 - Keep this file at **50–100 lines**. Add details to the relevant skill/reference, not to this entry point.
 - Procedures belong in skills; decisions and rationale in ADRs; dated evidence and status in tasks, research, or handoffs.
 - Reuse existing worklists and tasks. Preserve history and link superseding evidence explicitly.
+- Start unpublished-article inventories at [draft dispositions](packages/blog/drafts/README.md); honor recorded retirements before reading old worktrees or conversations.
 - Record completed work, remaining checks, concrete blockers, and the next bounded action before a handoff.
 - Keep proposed experiments separate from accepted work; do not silently reopen completed tasks.
 - Every moved reference needs a working link from its owning skill or document.

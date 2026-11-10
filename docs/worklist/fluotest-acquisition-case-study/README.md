@@ -1,5 +1,16 @@
 # FluoTest: acquisition, publishing, and the story that spread
 
+## Current disposition — November 10, 2026
+
+**Closed by owner.** The public-source research, CSV inventories and interactive
+field guide are complete and retained. Goga retired the standalone article
+direction and withdrew the proposed visibility and reader-use experiments.
+Those proposals remain unrun; there is no remaining article or experiment
+obligation. The earlier proposed next actions below are historical reference.
+See the [article disposition register](../../../packages/blog/drafts/README.md).
+
+## Historical record
+
 Research checked October 17, 2026 (America/Los_Angeles), with a deeper follow-up the same day at Goga's request. This is a public-source investigation, not a published article or a live analytics audit. It covers the founder, his product and content, human exchanges, and the people who repackaged the story.
 
 [Explore the interactive HTML field guide](explorer.html) — a self-contained adaptation created October 18: two connected journeys, 14 events, publishing categories, reach comparison, six exchanges, denominator explorer, and proposed applications to three existing blog articles. Source dates and uncertainty remain visible. The guide does not add new acquisition evidence.
@@ -196,4 +207,4 @@ Goga asked to focus on actual customer adoption rather than the audience attract
 
 The [public reviewer](https://www.trustpilot.com/review/fluotest.com) again describes specific assessment needs and useful ChatGPT discovery. That is a use/fit statement, not proof of payment or independently verified attribution. The October retrospective and external leadership page failed fresh web retrieval; their prior observations remain dated historical evidence.
 
-The accepted future direction is recorded in [Editorial Feedback and Measurement](../../../.agents/skills/blog-writing/references/editorial-learning-loop.md#owner-direction-growth-through-reader-value): prioritize relevant understanding, use, return reading, and meaningful continuation; use audience counters as distribution context. No reader outreach, new article revision, or growth experiment was initiated by this clarification.
+The accepted future direction is recorded in [Editorial Feedback and Measurement](../../../.agents/skills/writing/references/publication-and-learning.md#learn-from-the-actual-result): prioritize relevant understanding, use, return reading, and meaningful continuation; use audience counters as distribution context. No reader outreach, new article revision, or growth experiment was initiated by this clarification.

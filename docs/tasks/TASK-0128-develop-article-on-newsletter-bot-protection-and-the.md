@@ -1,12 +1,28 @@
 ---
 id: TASK-0128
 title: Develop article on newsletter bot protection and the failures our logs missed
-status: in_progress
+status: done
 parent_id: FLDR-0010
 created_at: '2026-09-07T05:09:30.966Z'
-updated_at: '2026-11-06T16:29:49.629Z'
+updated_at: '2026-11-10'
 type: task
 ---
+
+## Current disposition — November 10, 2026
+
+**Closed by owner.** Goga retired the standalone subscription-bombing manuscript
+and any obligation to update or publish it. Completed research and engineering
+remain available. The separate Turnstile article source was promoted in
+`3efc3435` and now lives in
+[posts](../../packages/blog/posts/043-cloudflare-turnstile-signup-failures.md),
+with its [prompts](../../packages/blog/prompts/cloudflare-turnstile-signup-failures.prompts.md).
+This source-history fact is not fresh production acceptance. `done` closes this
+article task; it does not complete separate maintenance tasks. Earlier
+instructions to keep this task in progress are superseded. See the
+[article disposition register](../../packages/blog/drafts/README.md).
+
+## Historical task record
+
 P2 editorial. Governing form: evidence-led engineering investigation with an active field-note state. Owned trigger: Goga's friend could not subscribe, invalid production Turnstile secret, and uncertainty about earlier readers. Test whether the newsletter's protection and observability are proportionate; do not presuppose Turnstile is bad. Draft alongside evidence. Show the value and gaps of existing first-party logging, earlier April incident, retention and identity limits, alternatives and current repair status. Protect the skepticism as an unresolved question. Exact human prompts must be preserved intact; no invented or trimmed owner quotes. Draft and research live outside posts/ pending author review and publication decision. Apply shape-article, blog-writing investigation reference, discovery/share passes when release is intended, and final prose/fact-check passes.
 
 ## Current publication handoff — November 6 Pacific
@@ -14,8 +30,8 @@ P2 editorial. Governing form: evidence-led engineering investigation with an act
 Goga confirms that today's article is already published and **Turnstile goes
 November 7, 2026 at 08:00 America/Los_Angeles**. The corrected schedule/source
 was committed and pushed in `ceef0a41`. The [manifest](../../packages/blog/publication-schedule.json)
-selects the [finished article](../../packages/blog/scheduled/2026-11-07/043-cloudflare-turnstile-signup-failures.md)
-and its [eight exact prompts](../../packages/blog/scheduled/2026-11-07/cloudflare-turnstile-signup-failures.prompts.md).
+selects the [finished article](https://github.com/gkoreli/blog/blob/ceef0a41dce62b9f04f6d82abaa13b87d4d88b32/packages/blog/scheduled/2026-11-07/043-cloudflare-turnstile-signup-failures.md)
+and its [eight exact prompts](https://github.com/gkoreli/blog/blob/ceef0a41dce62b9f04f6d82abaa13b87d4d88b32/packages/blog/scheduled/2026-11-07/cloudflare-turnstile-signup-failures.prompts.md).
 No Turnstile release is selected for November 6. Its body and prompt bytes are
 preserved; only queued date metadata and directory changed. Local queue validation
 passed after the move. The [publication worklist](../worklist/november-daily-publication/README.md)

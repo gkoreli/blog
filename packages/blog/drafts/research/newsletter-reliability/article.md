@@ -1,5 +1,11 @@
 # Subscription Bombing: How I Protect My Blog
 
+> **Archived manuscript — November 10, 2026:** Goga retired this article plan.
+> Completed engineering and dated research remain reference; no update or
+> publication is pending. Separate newsletter maintenance and the maintained
+> Turnstile post retain their own records. See the
+> [article disposition register](../../README.md).
+
 Working engineering draft, updated September 8 PDT / September 9 UTC, 2026. The protection is committed and deployed. Controlled server/client tests, local D1 checks and one authorized live signup passed. That live check required a production verifier-binding repair, and Gmail placed the confirmation in Spam. The provider webhook connection is still missing. Outside `posts/`; unpublished, with no release metadata.
 
 A newsletter signup form lets someone ask my server to email an address they may not own. I want readers to subscribe to my personal blog, and I want to keep the platform I built. The new implementation puts shared limits before confirmation mail, preserves a usable retry after failure, and records which stage the request reached. It uses the Worker, D1 database, Resend, and Turnstile already in the blog.

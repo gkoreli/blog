@@ -1,3 +1,8 @@
+/**
+ * Archived manuscript — November 10, 2026, by Goga's decision.
+ * Publication plan retired; retained as historical reference.
+ * Current article dispositions: packages/blog/drafts/README.md.
+ */
 import { html } from '@nisli/core';
 import type { PostMeta } from "../src/lib/frontmatter.js";
 import {

@@ -1,5 +1,16 @@
 # Weight-space programming: article research
 
+## Current disposition — November 10, 2026
+
+**Closed by owner.** Initial source research and the score-arithmetic audit are
+complete. Goga retired the article direction and withdrew the proposed model
+execution, patch rebuild, comparison and reproduction. Those experiments did
+not run; the audit remains an audit of upstream labels, not independent model
+behavior. The recommendations and next steps below are historical reference,
+with no remaining action. See the [article disposition register](../../../packages/blog/drafts/README.md).
+
+## Historical record
+
 Checked November 2, 2026, Pacific time. Status: initial source research and score-arithmetic audit complete. Article drafting, model execution, and publication have not happened. Proposed experiments below are unrun.
 
 ## Recommendation

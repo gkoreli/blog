@@ -10,6 +10,10 @@ tags: [analytics, bots, cloudflare-workers, testing, ai-agents]
 
 # My Bot Detector Mistook a Phone Brand for a Bot
 
+> **Active article — November 10, 2026:** Goga intends to substantially rewrite
+> this baseline and publish it. No publication date is assigned. See the
+> [article disposition register](README.md); the other audited candidates are closed.
+
 My bot detector called a copied **CUBOT phone header** a bot because the brand ends in “bot.” A controlled live request now avoids that mistake. It still does not establish that a person sent the request.
 
 That distinction matters on my blog. In a seven-day report, **2,810 of 3,960 recorded page requests had no crawler, tool or service name recognized by my catalogue**. Their browser family could still be recognizable. I asked agents to investigate those gaps, read competing detectors’ source code and improve our library. The first useful result was a mistake in a rule I already had.

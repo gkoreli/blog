@@ -1,5 +1,14 @@
 # Detection improvement article — editorial record
 
+## Current disposition — November 10, 2026
+
+**Active for Goga's substantial rewrite and publication.** Earlier editorial,
+render and source checks belong to the reviewed baseline, not a newly approved
+final manuscript. No new article prose or publication date is selected by this
+bookkeeping. See the [article disposition register](../../README.md).
+
+## Historical record
+
 November 5, 2026 Pacific / November 6 UTC. Article track for the ten-hour research and engineering effort. [Draft](../../unknown-clients-and-evidence-based-bot-detection.md), [selected shaping prompts](../../prompts/unknown-clients-and-evidence-based-bot-detection.prompts.md), [fresh baseline](127-current-unidentified-and-unsigned-traffic.md). This record owns article shape, claims and revisions; runtime engineering, the ADR and production acceptance remain in their owning records.
 
 ## Shape and scope

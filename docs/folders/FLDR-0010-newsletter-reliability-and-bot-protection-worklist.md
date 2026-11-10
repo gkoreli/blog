@@ -2,9 +2,22 @@
 id: FLDR-0010
 title: Newsletter Reliability and Bot Protection Worklist
 created_at: '2026-09-07T05:07:50.125Z'
-updated_at: '2026-11-06T16:29:49.871Z'
+updated_at: '2026-11-10'
 type: folder
 ---
+
+## Current disposition — November 10, 2026
+
+The [subscription-bombing article task](../tasks/TASK-0128-develop-article-on-newsletter-bot-protection-and-the.md)
+is closed by owner choice. Its manuscript is archived; separate maintenance
+tasks keep their own scope and status. The Turnstile source was promoted in
+`3efc3435` to the [maintained post](../../packages/blog/posts/043-cloudflare-turnstile-signup-failures.md).
+Earlier publication-pending handoffs below are historical, not fresh production
+checks. Start article inventories at the
+[disposition register](../../packages/blog/drafts/README.md).
+
+## Historical task record
+
 ## Current handoff — November 6 Pacific
 
 Start at the [newsletter worklist](../../packages/blog/drafts/research/newsletter-reliability/00-worklist-index.md)

@@ -1,12 +1,24 @@
 ---
 id: TASK-0149
 title: Verify FFmpeg DVB subtitle improvements and preserve article research
-status: in_progress
+status: done
 parent_id: FLDR-0003
 created_at: '2026-11-03T08:34:54Z'
-updated_at: '2026-11-03T09:27:21Z'
+updated_at: '2026-11-10'
 type: task
 ---
+
+## Current disposition — November 10, 2026
+
+**Closed by owner; completed bounded research retained.** Goga withdrew the
+article, upstream submission and optional further verification. `done` records
+this closure, not a claim that all proposed experiments ran, a general proof was
+established, default-path timing was resolved or a PR/article was published.
+The [research worklist](../../packages/blog/drafts/research/ffmpeg-dvbsub/00-worklist-index.md)
+preserves the results and limits. No next action remains unless Goga explicitly
+reopens the topic. See the [article disposition register](../../packages/blog/drafts/README.md).
+
+## Historical task record
 
 ## Requested outcome
 

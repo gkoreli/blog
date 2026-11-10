@@ -10,6 +10,10 @@ tags: [agentic-engineering, computer-use, agent-skills, files-api, product-strat
 
 # The Obvious Agent Products Were Impossible Until Yesterday
 
+> **Archived manuscript — November 10, 2026:** Goga retired this article plan.
+> The text and provenance remain historical reference, with no pending rewrite
+> or publication. See the [article disposition register](README.md).
+
 Anthropic made [computer use, browser use, the Skills API, and the Files API generally available](https://claude.com/blog/computer-use-skills-api-files-api). The announcement sounds almost embarrassingly obvious: let an agent use software, teach it a procedure, give it documents, and let it return finished files.
 
 Why did that require a 2026 product launch?

@@ -1,5 +1,18 @@
 # Edge page observations versus Cloudflare RUM
 
+## Current disposition — November 10, 2026
+
+**Standalone article retired by owner.** The
+[September manuscript](../../edge-page-views-versus-cloudflare-rum.md) is archived,
+with no pending rewrite or publication. Retained comparisons and later executed
+local/production trials keep their original dates, scopes and limits; later
+evidence does not make the old draft a current article. TASK-0104 and TASK-0120
+retain their separate technical status, without a publication obligation.
+Earlier article gates and draft next steps below are superseded. See the
+[article disposition register](../../README.md).
+
+## Historical record
+
 **Owner direction — October 27:** Continue without human trials for now. No new human window or label is authorized by this continuation; human-specific rates stay unmeasured while independent native/vendor research proceeds. [Native-category research](../analytics-retrospective/25-native-category-and-entitlement.md) separates provider metadata from signature verdicts and leaves the classifier unchanged.
 
 **October 27 per-trial reconciliation:** [Research 09](09-trial-ledger-and-selective-evaluation.md) reproduces an aggregate acceptance gap with native synthetic D1 records: duplicate/missing observations and 2/1/0 response counts can balance totals. The repaired helper and requested-population ledger reject incomplete trials. Original saved arrays are one-per-trial; a single later 166-read/zero-write SELECT confirms all twelve executed production controls individually complete and owner-excluded. Evaluation keeps three automation decisions, nine abstentions and zero human labels explicit; human rates remain null. No new visits, lab activation, diagnostic mode or population-accuracy claim. Source/publication acceptance is separate; human/device/actual-JS-off and native/vendor work remains open.

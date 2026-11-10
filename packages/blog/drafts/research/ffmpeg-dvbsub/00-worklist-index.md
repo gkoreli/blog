@@ -1,5 +1,17 @@
 # FFmpeg DVB subtitle optimization: research worklist
 
+## Current disposition — November 10, 2026
+
+**Closed by owner.** The bounded research, implemented patches, executed
+experiments and verification are retained with their measured limits. Goga
+retired the article, upstream submission and proposed further proof, architecture,
+benchmark and sample work. No manuscript or upstream PR was published. There is
+no remaining action for this research/article track; an unrun extension is
+withdrawn, not an accepted experiment. The earlier next steps below are
+historical. See the [article disposition register](../../README.md).
+
+## Historical record
+
 Started November 3, 2026 (America/Los_Angeles). Tracking [TASK-0149](../../../../../docs/tasks/TASK-0149-verify-ffmpeg-dvb-subtitle-improvements.md). The bounded verification and native-comparison iteration are complete; article/upstream work remains in progress. This is research for a future engineering article and an upstream contribution; neither is published or submitted.
 
 ## Question and outcome
