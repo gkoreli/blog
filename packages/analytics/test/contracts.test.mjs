@@ -819,7 +819,7 @@ test('referral abuse is excluded consistently from every group and aggregate wit
   const scoped = await queryStats(d1, { range: '7d', traffic: 'all', path: '/page-signed-agent', kind: 'signed-agent' }, now);
   assert.equal(scoped.totals.views, 1);
   assert.equal(scoped.referralPolicy.excludedViews, 3);
-  assert.deepEqual(d1.batchSizes, [1, 1, 1, 1, 1, 1]);
+  assert.deepEqual(d1.batchSizes, [6, 6, 6, 6, 6, 6]);
   assert.equal(d1.preparedSql.every(sql => (sql.match(/\bUNION(?:\s+ALL)?\b/g) ?? []).length === 1), true);
   assert.deepEqual(sqlite.prepare('SELECT * FROM page_observations ORDER BY id').all(), before);
 });
@@ -857,7 +857,7 @@ test('consolidated stats preserve local referral precedence and suppress unknown
   assert.deepEqual(stats.byReferrer, [{ referrerHost: 'reader.spam.example', views: 1 }]);
   assert.equal(stats.otherReferrerViews, 3);
   assert.equal(JSON.stringify(stats).includes('unknown.example'), false);
-  assert.deepEqual(d1.batchSizes, [1]);
+  assert.deepEqual(d1.batchSizes, [6]);
 });
 
 test('referrer policy resists rotated names and lookalikes without suppressing unfamiliar readership', async () => {
@@ -904,7 +904,7 @@ test('referral exclusions preserve scoped agent counts and handle all-excluded h
   assert.equal(restored.period.start, '2026-08-01');
   assert.deepEqual(restored.byAgent, [{ agentName: 'GPTBot', trafficClass: 'ai', views: 1 }]);
   assert.equal(restored.referralPolicy.excludedViews, 1);
-  assert.deepEqual(d1.batchSizes, [1, 1, 1]);
+  assert.deepEqual(d1.batchSizes, [6, 6, 6]);
   assert.equal(sqlite.prepare('SELECT COUNT(*) AS count FROM page_observations').get().count, 2);
 });
 
@@ -979,7 +979,7 @@ test('stats result decoding rejects malformed, duplicate, missing, and misplaced
   ];
   const database = rows => ({
     prepare() { return { bind() { return {}; } }; },
-    async batch() { return [{ results: rows }]; },
+    async batch(statements) { return statements.map((_, index) => ({ results: index === 0 ? rows : [] })); },
   });
   const query = { range: '30d', traffic: 'browser' };
   const now = new Date('2026-09-07T05:00:00Z');
@@ -1711,7 +1711,7 @@ test('page-focused transitions include both directions without changing page tot
   assert.equal(report.internalReferrerDetails.selfReferrals, 1);
   assert.equal(report.internalReferrerDetails.unrecognizedPathViews, 1);
   assert.equal(report.byPath.length, 1);
-  assert.equal(d1.batchSizes.at(-1), 1);
+  assert.equal(d1.batchSizes.at(-1), 6);
 });
 
 test('migration 0009 leaves old evidence unknown and rejects unsafe internal path shapes', () => {

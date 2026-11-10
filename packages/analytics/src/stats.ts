@@ -394,7 +394,21 @@ function signerLabelSql(column: 'signature_agent' | 'reader_reason'): string {
   return `CASE ${column} ${cases.join(' ')} ELSE 'Other' END`;
 }
 
-function reportSql(selected: QueryPredicate, bucketSql: string, includeBoundary: boolean): QueryPredicate {
+/** Keep each statement below the affected D1 engine's CTE expansion counter.
+ * One transactional batch preserves the common population; section decoders
+ * still reject a missing, duplicate or inconsistent result. See D1 incident 05.
+ */
+const REPORT_SECTION_GROUPS = [
+  ['fetch-metadata', 'directory-publication', 'native-category', 'totals'],
+  ['path', 'country', 'series', 'referrer'],
+  ['device', 'agent', 'kind', 'signer'],
+  ['kind-signature', 'client-evidence', 'excluded', 'referrer-details'],
+  ['vendor-cache'],
+  ['vendor-ip', 'verification', 'referrer-state', 'transitions'],
+] as const;
+type ReportSection = typeof REPORT_SECTION_GROUPS[number][number] | 'boundary';
+
+function reportSql(selected: QueryPredicate, bucketSql: string, includeBoundary: boolean, sectionNames: readonly ReportSection[]): QueryPredicate {
   const publicReason = reportedReasonSql();
   const publicKind = reportedKindSql();
   const publicSigner = signerLabelSql('signature_agent');
@@ -402,11 +416,6 @@ function reportSql(selected: QueryPredicate, bucketSql: string, includeBoundary:
     ? `, boundary AS MATERIALIZED (
         SELECT MIN(observed_at) AS first_observed_at
         FROM page_observations WHERE ${PUBLIC_OBSERVATION_PREDICATE}
-      )`
-    : '';
-  const boundaryProjection = includeBoundary
-    ? `WHEN 'boundary' THEN (
-        SELECT json_array(json_object('firstObservedAt', first_observed_at)) FROM boundary
       )`
     : '';
   const formProfile = `json_extract(client_form_evidence, '$.profile') IN (${CLIENT_FORM_PROFILES.map(profile => `'${profile}'`).join(',')})`;
@@ -417,13 +426,203 @@ function reportSql(selected: QueryPredicate, bucketSql: string, includeBoundary:
     WHEN device_type = 'desktop' THEN 'historical-desktop-default'
     WHEN device_type = 'mobile' THEN 'historical-mobile-heuristic'
     WHEN device_type = 'tablet' THEN 'historical-tablet-heuristic' ELSE 'unrecognized-record' END`;
-  const sectionValues = [
-    "('totals', 0)", "('path', 1)", "('country', 2)", "('series', 3)", "('referrer', 4)",
-    "('device', 5)", "('agent', 6)", "('kind', 7)", "('excluded', 8)",
-    "('referrer-state', 9)", "('transitions', 10)", "('referrer-details', 11)",
-    "('signer', 12)", "('verification', 14)", "('vendor-ip', 15)", "('kind-signature', 16)", "('native-category', 17)", "('directory-publication', 18)", "('fetch-metadata', 19)", "('vendor-cache', 20)", "('client-evidence', 21)",
-  ];
-  if (includeBoundary) sectionValues.push("('boundary', 13)");
+  const projections: Readonly<Record<ReportSection, string>> = {
+    'fetch-metadata': `(${fetchMetadataReportProjectionSql()})`,
+    'directory-publication': `(
+          SELECT COALESCE(json_group_array(json(row_json)), json('[]')) FROM (
+            SELECT json_object('key1', basis, 'views', COUNT(*)) AS row_json
+            FROM (SELECT ${directoryPublicationBasisSql()} AS basis FROM included)
+            GROUP BY basis ORDER BY COUNT(*) DESC, basis
+          )
+        )`,
+    'native-category': `(
+          SELECT COALESCE(json_group_array(json(row_json)), json('[]')) FROM (
+            SELECT json_object('key1', evidence_kind, 'key2', native_category, 'views', COUNT(*)) AS row_json
+            FROM client_evidence_facts GROUP BY evidence_kind, native_category ORDER BY COUNT(*) DESC, evidence_kind, native_category
+          )
+        )`,
+    'totals': `(
+          SELECT json_array(json_object(
+            'views', COUNT(*), 'dailyClients', COUNT(DISTINCT daily_client_id),
+            'unattributedViews', SUM(CASE WHEN referrer_host IS NULL THEN 1 ELSE 0 END)
+          )) FROM included
+        )`,
+    'path': `(
+          SELECT COALESCE(json_group_array(json(row_json)), json('[]')) FROM (
+            SELECT json_object('key1', path, 'views', COUNT(*),
+              'dailyClients', COUNT(DISTINCT daily_client_id)) AS row_json
+            FROM included GROUP BY path ORDER BY COUNT(*) DESC, path
+          )
+        )`,
+    'country': `(
+          SELECT COALESCE(json_group_array(json(row_json)), json('[]')) FROM (
+            SELECT json_object('key1', country, 'views', COUNT(*)) AS row_json
+            FROM included WHERE country IS NOT NULL GROUP BY country ORDER BY COUNT(*) DESC, country
+          )
+        )`,
+    'series': `(
+          SELECT COALESCE(json_group_array(json(row_json)), json('[]')) FROM (
+            SELECT json_object('key1', ${bucketSql}, 'views', COUNT(*),
+              'dailyClients', COUNT(DISTINCT daily_client_id)) AS row_json
+            FROM included GROUP BY ${bucketSql} ORDER BY ${bucketSql}
+          )
+        )`,
+    'referrer': `(
+          SELECT COALESCE(json_group_array(json(row_json)), json('[]')) FROM (
+            SELECT json_object('key1', referrer_host, 'views', COUNT(*)) AS row_json
+            FROM included WHERE referrer_host IS NOT NULL
+            GROUP BY referrer_host ORDER BY COUNT(*) DESC, referrer_host
+          )
+        )`,
+    'device': `(
+          SELECT COALESCE(json_group_array(json(row_json)), json('[]')) FROM (
+            SELECT json_object('key1', ${form}, 'views', COUNT(*),
+              'recordedViews', SUM(COALESCE(${currentForm}, 0)),
+              'unsupportedHintViews', SUM(${formProfile} AND json_extract(client_form_evidence, '$.mobileHint') = 'unsupported'),
+              'differingSignalsViews', SUM(${formProfile} AND json_extract(client_form_evidence, '$.comparison') = 'different-indicators'),
+              'legacyDefaultedViews', SUM(${formProfile} AND json_extract(client_form_evidence, '$.legacyCompatibility.defaulted') = 1)) AS row_json
+            FROM included GROUP BY ${form} ORDER BY COUNT(*) DESC, ${form}
+          )
+        )`,
+    'agent': `(
+          SELECT COALESCE(json_group_array(json(row_json)), json('[]')) FROM (
+            SELECT json_object('key1', agent_name, 'key2', traffic_class, 'views', COUNT(*)) AS row_json
+            FROM included WHERE agent_name IS NOT NULL
+            GROUP BY agent_name, traffic_class ORDER BY COUNT(*) DESC, agent_name
+          )
+        )`,
+    'kind': `(
+          SELECT COALESCE(json_group_array(json(row_json)), json('[]')) FROM (
+            SELECT json_object('key1', ${publicKind}, 'key2', ${publicReason}, 'views', COUNT(*),
+              'dailyClients', COUNT(DISTINCT daily_client_id)) AS row_json
+            FROM included
+            GROUP BY ${publicKind}, ${publicReason} ORDER BY COUNT(*) DESC, ${publicKind}, ${publicReason}
+          )
+        )`,
+    'signer': `(
+          SELECT COALESCE(json_group_array(json(row_json)), json('[]')) FROM (
+            SELECT json_object('key1', ${publicSigner}, 'views', COUNT(*)) AS row_json
+            FROM included WHERE signature_status = 'verified' AND signature_agent IS NOT NULL
+            GROUP BY ${publicSigner} ORDER BY COUNT(*) DESC, ${publicSigner}
+          )
+        )`,
+    'kind-signature': `(
+          SELECT COALESCE(json_group_array(json(row_json)), json('[]')) FROM (
+            SELECT json_object('key1', evidence_kind, 'key2', signature_basis, 'key3', verifier_profile, 'views', COUNT(*)) AS row_json
+            FROM client_evidence_facts
+            GROUP BY evidence_kind, signature_basis, verifier_profile ORDER BY COUNT(*) DESC, evidence_kind, signature_basis, verifier_profile
+          )
+        )`,
+    'client-evidence': `(
+          SELECT COALESCE(json_group_array(json(row_json)), json('[]')) FROM (
+            SELECT json_object('key1', evidence_kind, 'key2', name_selection, 'key3', native_category,
+              'key4', signature_basis, 'key5', verifier_profile, 'views', COUNT(*)) AS row_json
+            FROM client_evidence_facts GROUP BY evidence_kind, name_selection, native_category, signature_basis, verifier_profile
+            ORDER BY COUNT(*) DESC, evidence_kind, name_selection, native_category, signature_basis, verifier_profile
+          )
+        )`,
+    'excluded': `(
+          SELECT json_array(json_object('views', COUNT(*)))
+          FROM report_scope WHERE referral_excluded = 1
+        )`,
+    'vendor-cache': `(${vendorCacheReportProjectionSql()})`,
+    'vendor-ip': `(
+          SELECT json_array(json_object(
+            'recordedViews', SUM(vendor_ip_evidence IS NOT NULL),
+            'notRecordedViews', SUM(network_state = 'not-recorded'),
+            'recognizedViews', SUM(network_state = 'recognized'),
+            'unrecognizedViews', SUM(network_state = 'unrecognized'),
+            'configuredDeclarationViews', SUM(network_state = 'recognized' AND json_extract(vendor_ip_evidence, '$.configuredDeclarationCount') > 0),
+            'unmappedDeclarationViews', SUM(network_state = 'recognized' AND json_extract(vendor_ip_evidence, '$.unmappedDeclarationCount') > 0),
+            'noDeclarationViews', SUM(network_state = 'recognized' AND json_extract(vendor_ip_evidence, '$.declarationCount') = 0),
+            'listedViews', SUM(network_state = 'recognized' AND json_extract(vendor_ip_evidence, '$.summary.listed') = 1),
+            'notListedViews', SUM(network_state = 'recognized' AND json_extract(vendor_ip_evidence, '$.summary.notListed') = 1),
+            'unavailableViews', SUM(network_state = 'recognized' AND json_extract(vendor_ip_evidence, '$.summary.unavailable') = 1),
+            'notAssessedViews', SUM(network_state = 'recognized' AND json_extract(vendor_ip_evidence, '$.summary.notAssessed') = 1),
+            'addressUnavailableViews', SUM(network_state = 'recognized' AND json_extract(vendor_ip_evidence, '$.configuredDeclarationCount') > 0 AND json_extract(vendor_ip_evidence, '$.address.state') <> 'usable')
+          )) FROM vendor_network_facts
+        )`,
+    'verification': `(
+          SELECT json_array(${boundedJsonObjectSql({
+            localInvalidViews: "SUM(local_state = 'unverified' AND json_extract(signature_evidence, '$.localOutcome') = 'invalid')",
+            localUnsupportedViews: "SUM(local_state = 'unverified' AND json_extract(signature_evidence, '$.localOutcome') = 'unsupported')",
+            localUnavailableViews: "SUM(local_state = 'unverified' AND json_extract(signature_evidence, '$.localOutcome') = 'unavailable')",
+            localPolicyRejectedViews: "SUM(local_state = 'unverified' AND json_extract(signature_evidence, '$.localOutcome') = 'policy-rejected')",
+            localNotApplicableViews: "SUM(local_state = 'unverified' AND json_extract(signature_evidence, '$.localOutcome') = 'not-applicable')",
+            localIndeterminateViews: "SUM(local_state = 'unverified' AND json_extract(signature_evidence, '$.localOutcome') = 'indeterminate')",
+            unverifiedOutcomeNotRecordedViews: "SUM(local_state = 'unverified' AND json_type(signature_evidence, '$.localOutcome') IS NULL)",
+            vendorDocumentedViews: "SUM(vendor_state NOT IN ('not-recorded','unrecognized','test-injected') AND json_extract(signature_evidence, '$.vendor.documentedDeclarationCount') > 0)",
+            vendorMatchingOriginViews: "SUM(vendor_state = 'matching-origin')",
+            vendorDifferentOriginViews: "SUM(vendor_state = 'different-origin')",
+            vendorOriginConflictViews: "SUM(vendor_state = 'conflicting-origins')",
+            vendorConflictWithMatchingOriginViews: "SUM(vendor_state = 'conflicting-origins' AND local_state = 'verified' AND json_extract(signature_evidence, '$.vendor.matchingDeclarationCount') > 0)",
+            vendorNotVerifiedViews: "SUM(vendor_state = 'not-verified')",
+            vendorUnmappedDeclarationViews: "SUM(vendor_state NOT IN ('not-recorded','unrecognized','test-injected') AND json_extract(signature_evidence, '$.vendor.unmappedDeclarationCount') > 0)",
+            vendorUserAgentBoundViews: "SUM(vendor_state = 'matching-origin' AND json_type(signature_evidence, '$.vendor.userAgentCovered') = 'true')",
+            vendorCheckNotRecordedViews: "SUM(vendor_state = 'not-recorded')",
+            vendorCheckUnrecognizedViews: "SUM(vendor_state = 'unrecognized')",
+            vendorCheckRecognizedViews: "SUM(vendor_state NOT IN ('unrecognized','not-recorded'))",
+            recordedViews: "SUM(signature_evidence IS NOT NULL)",
+            notRecordedViews: "SUM(signature_evidence IS NULL)",
+            localVerifiedViews: "SUM(local_state = 'verified')",
+            localUnverifiedViews: "SUM(local_state = 'unverified')",
+            localAbsentViews: "SUM(local_state = 'absent')",
+            unrecognizedLocalViews: "SUM(local_state = 'unrecognized')",
+            testVerdictViews: "SUM(local_state = 'test-injected')",
+            coverageRecordedViews: "SUM(local_state = 'verified' AND coverage_valid = 1)",
+            coverageNotRecordedVerifiedViews: "SUM(local_state = 'verified' AND COALESCE(json_type(signature_evidence, '$.coverage'), 'null') = 'null')",
+            coverageUnrecognizedVerifiedViews: "SUM(local_state = 'verified' AND coverage_valid = 0 AND COALESCE(json_type(signature_evidence, '$.coverage'), 'null') <> 'null')",
+            selectionRecordedViews: "SUM(local_state = 'verified' AND coverage_valid = 1 AND selection_valid = 1)",
+            selectionNotRecordedVerifiedViews: "SUM(local_state = 'verified' AND json_type(signature_evidence, '$.coverage.selection') IS NULL AND COALESCE(json_extract(signature_evidence, '$.coverage.version'), '2026-10-27.1') = '2026-10-27.1')",
+            selectionUnrecognizedVerifiedViews: "SUM(local_state = 'verified' AND NOT (coverage_valid = 1 AND selection_valid = 1) AND NOT (json_type(signature_evidence, '$.coverage.selection') IS NULL AND COALESCE(json_extract(signature_evidence, '$.coverage.version'), '2026-10-27.1') = '2026-10-27.1'))",
+            multipleTaggedCandidateViews: "SUM(local_state = 'verified' AND coverage_valid = 1 AND selection_valid = 1 AND json_extract(signature_evidence, '$.coverage.selection.taggedCandidates') > 1)",
+            unassessedCandidateViews: "SUM(local_state = 'verified' AND coverage_valid = 1 AND selection_valid = 1 AND json_extract(signature_evidence, '$.coverage.selection.unassessedCandidates') > 0)",
+            userAgentBoundViews: "SUM(local_state = 'verified' AND coverage_valid = 1 AND json_type(signature_evidence, '$.coverage.covered.userAgent') = 'true')",
+            resourceBoundViews: "SUM(local_state = 'verified' AND coverage_valid = 1 AND (json_type(signature_evidence, '$.coverage.covered.path') = 'true' OR json_type(signature_evidence, '$.coverage.covered.targetUri') = 'true'))",
+            methodBoundViews: "SUM(local_state = 'verified' AND coverage_valid = 1 AND json_type(signature_evidence, '$.coverage.covered.method') = 'true')",
+            authorityOnlyViews: "SUM(local_state = 'verified' AND coverage_valid = 1 AND json_type(signature_evidence, '$.coverage.covered.authority') = 'true' AND json_type(signature_evidence, '$.coverage.covered.targetUri') = 'false' AND json_type(signature_evidence, '$.coverage.covered.path') = 'false' AND json_type(signature_evidence, '$.coverage.covered.method') = 'false' AND json_type(signature_evidence, '$.coverage.covered.query') = 'false')",
+            nativeAvailableViews: "SUM(native_state = 'available')",
+            nativeVerifiedBotAvailableViews: "SUM(native_state = 'available' AND json_type(signature_evidence, '$.native.verifiedBot') IN ('true','false'))",
+            nativeSignedAgentAvailableViews: "SUM(native_state = 'available' AND json_type(signature_evidence, '$.native.signedAgent') IN ('true','false'))",
+            nativeUnavailableViews: "SUM(native_state = 'unavailable')",
+            nativeNotRecordedViews: "SUM(native_state = 'not-recorded')",
+            nativeUnrecognizedViews: "SUM(native_state = 'unrecognized')",
+            nativeVerifiedBotViews: "SUM(native_state = 'available' AND json_type(signature_evidence, '$.native.verifiedBot') = 'true')",
+            nativeSignedAgentViews: "SUM(native_state = 'available' AND json_type(signature_evidence, '$.native.signedAgent') = 'true')",
+            localVerifiedNativeNotVerifiedViews: "SUM(local_state = 'verified' AND native_state = 'available' AND json_type(signature_evidence, '$.native.verifiedBot') = 'false')",
+          })}) FROM signature_summary
+        )`,
+    'referrer-state': `(
+          SELECT COALESCE(json_group_array(json(row_json)), json('[]')) FROM (
+            SELECT json_object('key1', COALESCE(referrer_state,
+              CASE WHEN referrer_host IS NOT NULL THEN 'external' ELSE 'legacy-unknown' END),
+              'views', COUNT(*)) AS row_json
+            FROM included GROUP BY COALESCE(referrer_state,
+              CASE WHEN referrer_host IS NOT NULL THEN 'external' ELSE 'legacy-unknown' END)
+          )
+        )`,
+    'transitions': `(
+          SELECT COALESCE(json_group_array(json(row_json)), json('[]')) FROM (
+            SELECT json_object('key1', internal_referrer_path, 'key2', path, 'views', COUNT(*)) AS row_json
+            FROM assessed WHERE referral_excluded = 0 AND representation = 'html'
+              AND referrer_state = 'internal' AND internal_referrer_path IS NOT NULL
+              AND internal_referrer_path <> path
+            GROUP BY internal_referrer_path, path ORDER BY COUNT(*) DESC, internal_referrer_path, path
+          )
+        )`,
+    'referrer-details': `(
+          SELECT json_array(json_object(
+            'firstCapturedAt', MIN(CASE WHEN referrer_state IS NOT NULL THEN observed_at END),
+            'unrecognizedPathViews', SUM(CASE WHEN referrer_state = 'internal'
+              AND internal_referrer_path IS NULL AND representation = 'html' THEN 1 ELSE 0 END),
+            'selfReferrals', SUM(CASE WHEN referrer_state = 'internal'
+              AND internal_referrer_path = path AND representation = 'html' THEN 1 ELSE 0 END)
+          )) FROM assessed WHERE referral_excluded = 0
+        )`,
+    boundary: `(SELECT json_array(json_object('firstObservedAt', first_observed_at)) FROM boundary)`,
+  };
+  const names: readonly ReportSection[] = includeBoundary ? [...sectionNames, 'boundary'] : sectionNames;
+  const sectionValues = names.map((name,index) => `('${name}', ${index})`);
 
   return {
     sql: `WITH RECURSIVE
@@ -477,201 +676,8 @@ function reportSql(selected: QueryPredicate, bucketSql: string, includeBoundary:
       sections(section, section_order) AS MATERIALIZED (
         VALUES ${sectionValues.join(', ')}
       )
-    SELECT section,
-      CASE section
-        WHEN 'fetch-metadata' THEN (${fetchMetadataReportProjectionSql()})
-        WHEN 'directory-publication' THEN (
-          SELECT COALESCE(json_group_array(json(row_json)), json('[]')) FROM (
-            SELECT json_object('key1', basis, 'views', COUNT(*)) AS row_json
-            FROM (SELECT ${directoryPublicationBasisSql()} AS basis FROM included)
-            GROUP BY basis ORDER BY COUNT(*) DESC, basis
-          )
-        )
-        WHEN 'native-category' THEN (
-          SELECT COALESCE(json_group_array(json(row_json)), json('[]')) FROM (
-            SELECT json_object('key1', evidence_kind, 'key2', native_category, 'views', COUNT(*)) AS row_json
-            FROM client_evidence_facts GROUP BY evidence_kind, native_category ORDER BY COUNT(*) DESC, evidence_kind, native_category
-          )
-        )
-        WHEN 'totals' THEN (
-          SELECT json_array(json_object(
-            'views', COUNT(*), 'dailyClients', COUNT(DISTINCT daily_client_id),
-            'unattributedViews', SUM(CASE WHEN referrer_host IS NULL THEN 1 ELSE 0 END)
-          )) FROM included
-        )
-        WHEN 'path' THEN (
-          SELECT COALESCE(json_group_array(json(row_json)), json('[]')) FROM (
-            SELECT json_object('key1', path, 'views', COUNT(*),
-              'dailyClients', COUNT(DISTINCT daily_client_id)) AS row_json
-            FROM included GROUP BY path ORDER BY COUNT(*) DESC, path
-          )
-        )
-        WHEN 'country' THEN (
-          SELECT COALESCE(json_group_array(json(row_json)), json('[]')) FROM (
-            SELECT json_object('key1', country, 'views', COUNT(*)) AS row_json
-            FROM included WHERE country IS NOT NULL GROUP BY country ORDER BY COUNT(*) DESC, country
-          )
-        )
-        WHEN 'series' THEN (
-          SELECT COALESCE(json_group_array(json(row_json)), json('[]')) FROM (
-            SELECT json_object('key1', ${bucketSql}, 'views', COUNT(*),
-              'dailyClients', COUNT(DISTINCT daily_client_id)) AS row_json
-            FROM included GROUP BY ${bucketSql} ORDER BY ${bucketSql}
-          )
-        )
-        WHEN 'referrer' THEN (
-          SELECT COALESCE(json_group_array(json(row_json)), json('[]')) FROM (
-            SELECT json_object('key1', referrer_host, 'views', COUNT(*)) AS row_json
-            FROM included WHERE referrer_host IS NOT NULL
-            GROUP BY referrer_host ORDER BY COUNT(*) DESC, referrer_host
-          )
-        )
-        WHEN 'device' THEN (
-          SELECT COALESCE(json_group_array(json(row_json)), json('[]')) FROM (
-            SELECT json_object('key1', ${form}, 'views', COUNT(*),
-              'recordedViews', SUM(COALESCE(${currentForm}, 0)),
-              'unsupportedHintViews', SUM(${formProfile} AND json_extract(client_form_evidence, '$.mobileHint') = 'unsupported'),
-              'differingSignalsViews', SUM(${formProfile} AND json_extract(client_form_evidence, '$.comparison') = 'different-indicators'),
-              'legacyDefaultedViews', SUM(${formProfile} AND json_extract(client_form_evidence, '$.legacyCompatibility.defaulted') = 1)) AS row_json
-            FROM included GROUP BY ${form} ORDER BY COUNT(*) DESC, ${form}
-          )
-        )
-        WHEN 'agent' THEN (
-          SELECT COALESCE(json_group_array(json(row_json)), json('[]')) FROM (
-            SELECT json_object('key1', agent_name, 'key2', traffic_class, 'views', COUNT(*)) AS row_json
-            FROM included WHERE agent_name IS NOT NULL
-            GROUP BY agent_name, traffic_class ORDER BY COUNT(*) DESC, agent_name
-          )
-        )
-        WHEN 'kind' THEN (
-          SELECT COALESCE(json_group_array(json(row_json)), json('[]')) FROM (
-            SELECT json_object('key1', ${publicKind}, 'key2', ${publicReason}, 'views', COUNT(*),
-              'dailyClients', COUNT(DISTINCT daily_client_id)) AS row_json
-            FROM included
-            GROUP BY ${publicKind}, ${publicReason} ORDER BY COUNT(*) DESC, ${publicKind}, ${publicReason}
-          )
-        )
-        WHEN 'signer' THEN (
-          SELECT COALESCE(json_group_array(json(row_json)), json('[]')) FROM (
-            SELECT json_object('key1', ${publicSigner}, 'views', COUNT(*)) AS row_json
-            FROM included WHERE signature_status = 'verified' AND signature_agent IS NOT NULL
-            GROUP BY ${publicSigner} ORDER BY COUNT(*) DESC, ${publicSigner}
-          )
-        )
-        WHEN 'kind-signature' THEN (
-          SELECT COALESCE(json_group_array(json(row_json)), json('[]')) FROM (
-            SELECT json_object('key1', evidence_kind, 'key2', signature_basis, 'key3', verifier_profile, 'views', COUNT(*)) AS row_json
-            FROM client_evidence_facts
-            GROUP BY evidence_kind, signature_basis, verifier_profile ORDER BY COUNT(*) DESC, evidence_kind, signature_basis, verifier_profile
-          )
-        )
-        WHEN 'client-evidence' THEN (
-          SELECT COALESCE(json_group_array(json(row_json)), json('[]')) FROM (
-            SELECT json_object('key1', evidence_kind, 'key2', name_selection, 'key3', native_category,
-              'key4', signature_basis, 'key5', verifier_profile, 'views', COUNT(*)) AS row_json
-            FROM client_evidence_facts GROUP BY evidence_kind, name_selection, native_category, signature_basis, verifier_profile
-            ORDER BY COUNT(*) DESC, evidence_kind, name_selection, native_category, signature_basis, verifier_profile
-          )
-        )
-        WHEN 'excluded' THEN (
-          SELECT json_array(json_object('views', COUNT(*)))
-          FROM report_scope WHERE referral_excluded = 1
-        )
-        WHEN 'vendor-cache' THEN (${vendorCacheReportProjectionSql()})
-        WHEN 'vendor-ip' THEN (
-          SELECT json_array(json_object(
-            'recordedViews', SUM(vendor_ip_evidence IS NOT NULL),
-            'notRecordedViews', SUM(network_state = 'not-recorded'),
-            'recognizedViews', SUM(network_state = 'recognized'),
-            'unrecognizedViews', SUM(network_state = 'unrecognized'),
-            'configuredDeclarationViews', SUM(network_state = 'recognized' AND json_extract(vendor_ip_evidence, '$.configuredDeclarationCount') > 0),
-            'unmappedDeclarationViews', SUM(network_state = 'recognized' AND json_extract(vendor_ip_evidence, '$.unmappedDeclarationCount') > 0),
-            'noDeclarationViews', SUM(network_state = 'recognized' AND json_extract(vendor_ip_evidence, '$.declarationCount') = 0),
-            'listedViews', SUM(network_state = 'recognized' AND json_extract(vendor_ip_evidence, '$.summary.listed') = 1),
-            'notListedViews', SUM(network_state = 'recognized' AND json_extract(vendor_ip_evidence, '$.summary.notListed') = 1),
-            'unavailableViews', SUM(network_state = 'recognized' AND json_extract(vendor_ip_evidence, '$.summary.unavailable') = 1),
-            'notAssessedViews', SUM(network_state = 'recognized' AND json_extract(vendor_ip_evidence, '$.summary.notAssessed') = 1),
-            'addressUnavailableViews', SUM(network_state = 'recognized' AND json_extract(vendor_ip_evidence, '$.configuredDeclarationCount') > 0 AND json_extract(vendor_ip_evidence, '$.address.state') <> 'usable')
-          )) FROM vendor_network_facts
-        )
-        WHEN 'verification' THEN (
-          SELECT json_array(${boundedJsonObjectSql({
-            localInvalidViews: "SUM(local_state = 'unverified' AND json_extract(signature_evidence, '$.localOutcome') = 'invalid')",
-            localUnsupportedViews: "SUM(local_state = 'unverified' AND json_extract(signature_evidence, '$.localOutcome') = 'unsupported')",
-            localUnavailableViews: "SUM(local_state = 'unverified' AND json_extract(signature_evidence, '$.localOutcome') = 'unavailable')",
-            localPolicyRejectedViews: "SUM(local_state = 'unverified' AND json_extract(signature_evidence, '$.localOutcome') = 'policy-rejected')",
-            localNotApplicableViews: "SUM(local_state = 'unverified' AND json_extract(signature_evidence, '$.localOutcome') = 'not-applicable')",
-            localIndeterminateViews: "SUM(local_state = 'unverified' AND json_extract(signature_evidence, '$.localOutcome') = 'indeterminate')",
-            unverifiedOutcomeNotRecordedViews: "SUM(local_state = 'unverified' AND json_type(signature_evidence, '$.localOutcome') IS NULL)",
-            vendorDocumentedViews: "SUM(vendor_state NOT IN ('not-recorded','unrecognized','test-injected') AND json_extract(signature_evidence, '$.vendor.documentedDeclarationCount') > 0)",
-            vendorMatchingOriginViews: "SUM(vendor_state = 'matching-origin')",
-            vendorDifferentOriginViews: "SUM(vendor_state = 'different-origin')",
-            vendorOriginConflictViews: "SUM(vendor_state = 'conflicting-origins')",
-            vendorConflictWithMatchingOriginViews: "SUM(vendor_state = 'conflicting-origins' AND local_state = 'verified' AND json_extract(signature_evidence, '$.vendor.matchingDeclarationCount') > 0)",
-            vendorNotVerifiedViews: "SUM(vendor_state = 'not-verified')",
-            vendorUnmappedDeclarationViews: "SUM(vendor_state NOT IN ('not-recorded','unrecognized','test-injected') AND json_extract(signature_evidence, '$.vendor.unmappedDeclarationCount') > 0)",
-            vendorUserAgentBoundViews: "SUM(vendor_state = 'matching-origin' AND json_type(signature_evidence, '$.vendor.userAgentCovered') = 'true')",
-            vendorCheckNotRecordedViews: "SUM(vendor_state = 'not-recorded')",
-            vendorCheckUnrecognizedViews: "SUM(vendor_state = 'unrecognized')",
-            vendorCheckRecognizedViews: "SUM(vendor_state NOT IN ('unrecognized','not-recorded'))",
-            recordedViews: "SUM(signature_evidence IS NOT NULL)",
-            notRecordedViews: "SUM(signature_evidence IS NULL)",
-            localVerifiedViews: "SUM(local_state = 'verified')",
-            localUnverifiedViews: "SUM(local_state = 'unverified')",
-            localAbsentViews: "SUM(local_state = 'absent')",
-            unrecognizedLocalViews: "SUM(local_state = 'unrecognized')",
-            testVerdictViews: "SUM(local_state = 'test-injected')",
-            coverageRecordedViews: "SUM(local_state = 'verified' AND coverage_valid = 1)",
-            coverageNotRecordedVerifiedViews: "SUM(local_state = 'verified' AND COALESCE(json_type(signature_evidence, '$.coverage'), 'null') = 'null')",
-            coverageUnrecognizedVerifiedViews: "SUM(local_state = 'verified' AND coverage_valid = 0 AND COALESCE(json_type(signature_evidence, '$.coverage'), 'null') <> 'null')",
-            selectionRecordedViews: "SUM(local_state = 'verified' AND coverage_valid = 1 AND selection_valid = 1)",
-            selectionNotRecordedVerifiedViews: "SUM(local_state = 'verified' AND json_type(signature_evidence, '$.coverage.selection') IS NULL AND COALESCE(json_extract(signature_evidence, '$.coverage.version'), '2026-10-27.1') = '2026-10-27.1')",
-            selectionUnrecognizedVerifiedViews: "SUM(local_state = 'verified' AND NOT (coverage_valid = 1 AND selection_valid = 1) AND NOT (json_type(signature_evidence, '$.coverage.selection') IS NULL AND COALESCE(json_extract(signature_evidence, '$.coverage.version'), '2026-10-27.1') = '2026-10-27.1'))",
-            multipleTaggedCandidateViews: "SUM(local_state = 'verified' AND coverage_valid = 1 AND selection_valid = 1 AND json_extract(signature_evidence, '$.coverage.selection.taggedCandidates') > 1)",
-            unassessedCandidateViews: "SUM(local_state = 'verified' AND coverage_valid = 1 AND selection_valid = 1 AND json_extract(signature_evidence, '$.coverage.selection.unassessedCandidates') > 0)",
-            userAgentBoundViews: "SUM(local_state = 'verified' AND coverage_valid = 1 AND json_type(signature_evidence, '$.coverage.covered.userAgent') = 'true')",
-            resourceBoundViews: "SUM(local_state = 'verified' AND coverage_valid = 1 AND (json_type(signature_evidence, '$.coverage.covered.path') = 'true' OR json_type(signature_evidence, '$.coverage.covered.targetUri') = 'true'))",
-            methodBoundViews: "SUM(local_state = 'verified' AND coverage_valid = 1 AND json_type(signature_evidence, '$.coverage.covered.method') = 'true')",
-            authorityOnlyViews: "SUM(local_state = 'verified' AND coverage_valid = 1 AND json_type(signature_evidence, '$.coverage.covered.authority') = 'true' AND json_type(signature_evidence, '$.coverage.covered.targetUri') = 'false' AND json_type(signature_evidence, '$.coverage.covered.path') = 'false' AND json_type(signature_evidence, '$.coverage.covered.method') = 'false' AND json_type(signature_evidence, '$.coverage.covered.query') = 'false')",
-            nativeAvailableViews: "SUM(native_state = 'available')",
-            nativeVerifiedBotAvailableViews: "SUM(native_state = 'available' AND json_type(signature_evidence, '$.native.verifiedBot') IN ('true','false'))",
-            nativeSignedAgentAvailableViews: "SUM(native_state = 'available' AND json_type(signature_evidence, '$.native.signedAgent') IN ('true','false'))",
-            nativeUnavailableViews: "SUM(native_state = 'unavailable')",
-            nativeNotRecordedViews: "SUM(native_state = 'not-recorded')",
-            nativeUnrecognizedViews: "SUM(native_state = 'unrecognized')",
-            nativeVerifiedBotViews: "SUM(native_state = 'available' AND json_type(signature_evidence, '$.native.verifiedBot') = 'true')",
-            nativeSignedAgentViews: "SUM(native_state = 'available' AND json_type(signature_evidence, '$.native.signedAgent') = 'true')",
-            localVerifiedNativeNotVerifiedViews: "SUM(local_state = 'verified' AND native_state = 'available' AND json_type(signature_evidence, '$.native.verifiedBot') = 'false')",
-          })}) FROM signature_summary
-        )
-        WHEN 'referrer-state' THEN (
-          SELECT COALESCE(json_group_array(json(row_json)), json('[]')) FROM (
-            SELECT json_object('key1', COALESCE(referrer_state,
-              CASE WHEN referrer_host IS NOT NULL THEN 'external' ELSE 'legacy-unknown' END),
-              'views', COUNT(*)) AS row_json
-            FROM included GROUP BY COALESCE(referrer_state,
-              CASE WHEN referrer_host IS NOT NULL THEN 'external' ELSE 'legacy-unknown' END)
-          )
-        )
-        WHEN 'transitions' THEN (
-          SELECT COALESCE(json_group_array(json(row_json)), json('[]')) FROM (
-            SELECT json_object('key1', internal_referrer_path, 'key2', path, 'views', COUNT(*)) AS row_json
-            FROM assessed WHERE referral_excluded = 0 AND representation = 'html'
-              AND referrer_state = 'internal' AND internal_referrer_path IS NOT NULL
-              AND internal_referrer_path <> path
-            GROUP BY internal_referrer_path, path ORDER BY COUNT(*) DESC, internal_referrer_path, path
-          )
-        )
-        WHEN 'referrer-details' THEN (
-          SELECT json_array(json_object(
-            'firstCapturedAt', MIN(CASE WHEN referrer_state IS NOT NULL THEN observed_at END),
-            'unrecognizedPathViews', SUM(CASE WHEN referrer_state = 'internal'
-              AND internal_referrer_path IS NULL AND representation = 'html' THEN 1 ELSE 0 END),
-            'selfReferrals', SUM(CASE WHEN referrer_state = 'internal'
-              AND internal_referrer_path = path AND representation = 'html' THEN 1 ELSE 0 END)
-          )) FROM assessed WHERE referral_excluded = 0
-        )
-        ${boundaryProjection}
+    SELECT section, CASE section
+      ${names.map(name => `WHEN '${name}' THEN ${projections[name]}`).join('\n')}
         ELSE json('[]')
       END AS payload
     FROM sections ORDER BY section_order`,
@@ -685,10 +691,13 @@ export async function queryStats(db: D1Database, query: StatsQuery, now = new Da
   const bucketSql = initialWindow.granularity === 'hour'
     ? "strftime('%Y-%m-%dT%H:00:00Z', observed_at)"
     : "strftime('%Y-%m-%d', observed_at)";
-  const report = reportSql(selected, bucketSql, query.range === 'all');
-  const statement = db.prepare(report.sql).bind(...report.values, referralRulesJson(policy), query.path ?? null, query.path ?? null);
-  const results = await measuredReportBatch(db, statement, observeCalculation);
-  const rows = results[0]?.results ?? [];
+  const rules = referralRulesJson(policy);
+  const statements = REPORT_SECTION_GROUPS.map((names, index) => {
+    const report = reportSql(selected, bucketSql, query.range === 'all' && index === 0, names);
+    return db.prepare(report.sql).bind(...report.values, rules, query.path ?? null, query.path ?? null);
+  });
+  const results = await measuredReportBatch(db, statements, observeCalculation);
+  const rows = results.flatMap(result => result.results ?? []);
   const sections = reportSections(rows, query.range === 'all');
   const firstObservedRow = query.range === 'all' ? requiredSection(sections, 'boundary')[0] : undefined;
   const firstObservedAt = firstObservedRow ? nullableString(firstObservedRow, 'firstObservedAt') : null;

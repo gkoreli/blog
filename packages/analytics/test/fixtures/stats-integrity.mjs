@@ -23,7 +23,7 @@ export function statsIntegrityValues() {
 export function applyStatsFault(rows, fault) {
   if (!fault) return;
   const section = rows.find(row => row.section===fault.section);
-  if (!section) throw Error('Fixture section missing');
+  if (!section) return; // The report's transactional batch partitions its sections.
   const payload = JSON.parse(section.payload), index = fault.index??0;
   if (fault.operation==='delete-field') delete payload[index][fault.field];
   else if (fault.operation==='set') payload[index][fault.field]=fault.value;

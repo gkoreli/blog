@@ -80,7 +80,7 @@ test('report decoding fails closed if either signer output channel contains an u
       prepare: db.prepare,
       async batch(statements) {
         const results = await db.batch(statements);
-        for (const row of results[0].results) {
+        for (const row of results.flatMap(result => result.results)) {
           if (row.section !== section) continue;
           row.payload = JSON.stringify([{ key1: section === 'signer' ? 'https://private.example' : 'signed-agent', key2: 'https://private.example', views: 1, dailyClients: 1 }]);
         }

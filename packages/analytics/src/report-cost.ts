@@ -1,9 +1,9 @@
 /** Provider counters describe the returned attempt, not all retry work or account billing. */
 export interface ReportCalculation {
-  version: '2026-10-28.1';
+  version: '2026-11-10.1';
   event: 'stats-report-calculation';
   outcome: 'returned' | 'threw';
-  submittedStatements: 1;
+  submittedStatements: number;
   returnedResults: number | null;
   metadata: 'complete' | 'partial' | 'unavailable' | 'inconsistent';
   counterScope: 'last-attempt';
@@ -12,9 +12,16 @@ export interface ReportCalculation {
   totalAttempts: number | null;
   unexpectedWrites: boolean | null;
   failure?: ReportFailure;
+  statementCosts?: ReportStatementCost[];
 }
 
 export type ReportCalculationObserver = (event: ReportCalculation) => void;
+
+interface ReportStatementCost {
+  reportedRowsRead: number | null;
+  reportedRowsWritten: number | null;
+  totalAttempts: number | null;
+}
 
 export type ReportFailure = 'read-limit' | 'write-limit' | 'storage-limit' | 'overloaded'
   | 'memory-limit' | 'timeout' | 'response-limit' | 'query-limit' | 'schema' | 'invalid-json'
@@ -32,7 +39,7 @@ export function reportFailure(error: unknown): ReportFailure {
     if (message.includes('memory limit')) return 'memory-limit';
     if (message.includes('timeout') || message.includes('CPU time limit')) return 'timeout';
     if (message.includes('maximum response size')) return 'response-limit';
-    if (/too many SQL variables|too many terms|too many arguments|query.*too (large|long)|statement.*too (large|long)|Expression tree is too large|parser stack overflow/i.test(message)) return 'query-limit';
+    if (/too many SQL variables|too many terms|too many arguments|query.*too (large|long)|statement.*too (large|long)|Expression tree is too large|parser stack overflow|subqueries nested too deep/i.test(message)) return 'query-limit';
     if (/no such (table|column)|D1_COLUMN_NOTFOUND/.test(message)) return 'schema';
     if (message.includes('malformed JSON')) return 'invalid-json';
     if (/authorization|authentication|not authorized|SQLITE_AUTH/i.test(message)) return 'authorization';
@@ -54,21 +61,36 @@ function counter(value: unknown, minimum = 0): number | null {
 }
 
 /** Closed projection: never forward SQL, parameters, provider identifiers or raw errors. */
-export function reportCalculation(value: unknown, outcome: ReportCalculation['outcome']): ReportCalculation {
+export function reportCalculation(value: unknown, outcome: ReportCalculation['outcome'], submittedStatements = 1): ReportCalculation {
   const returnedResults = Array.isArray(value) ? value.length : null;
-  const result: unknown = Array.isArray(value) && value.length === 1 ? value[0] : null;
-  const meta = record(result) && record(result.meta) ? result.meta : {};
-  const reportedRowsRead = counter(meta.rows_read);
-  const reportedRowsWritten = counter(meta.rows_written);
-  const totalAttempts = counter(meta.total_attempts, 1);
-  const known = [reportedRowsRead, reportedRowsWritten, totalAttempts].filter(n => n !== null).length;
-  const inconsistent = outcome === 'returned' && (returnedResults !== 1 || !record(result) || result.success === false);
+  const costs = Array.from({ length: submittedStatements }, (_, index) => {
+    const result: unknown = Array.isArray(value) ? value[index] : null;
+    const meta = record(result) && record(result.meta) ? result.meta : {};
+    return { reportedRowsRead: counter(meta.rows_read), reportedRowsWritten: counter(meta.rows_written), totalAttempts: counter(meta.total_attempts, 1) };
+  });
+  const sum = (field: 'reportedRowsRead' | 'reportedRowsWritten'): number | null => {
+    let total = 0;
+    for (const cost of costs) {
+      const count = cost[field];
+      if (count === null || !Number.isSafeInteger(total + count)) return null;
+      total += count;
+    }
+    return total;
+  };
+  const reportedRowsRead = sum('reportedRowsRead');
+  const reportedRowsWritten = sum('reportedRowsWritten');
+  // Attempts belong to individual returned statements; do not invent a batch retry count.
+  const totalAttempts = submittedStatements === 1 ? costs[0]?.totalAttempts ?? null : null;
+  const known = costs.reduce((total,cost) => total + Object.values(cost).filter(n => n !== null).length, 0);
+  const inconsistent = outcome === 'returned' && (returnedResults !== submittedStatements || !Array.isArray(value)
+    || !value.every((result: unknown) => record(result) && result.success !== false));
   return {
-    version: '2026-10-28.1', event: 'stats-report-calculation', outcome,
-    submittedStatements: 1, returnedResults,
-    metadata: inconsistent ? 'inconsistent' : known === 3 ? 'complete' : known === 0 ? 'unavailable' : 'partial',
+    version: '2026-11-10.1', event: 'stats-report-calculation', outcome,
+    submittedStatements, returnedResults,
+    metadata: inconsistent ? 'inconsistent' : known === costs.length * 3 ? 'complete' : known === 0 ? 'unavailable' : 'partial',
     counterScope: 'last-attempt', reportedRowsRead, reportedRowsWritten, totalAttempts,
     unexpectedWrites: reportedRowsWritten === null ? null : reportedRowsWritten > 0,
+    ...(submittedStatements > 1 ? { statementCosts: costs } : {}),
   };
 }
 
@@ -77,19 +99,24 @@ function notify(observer: ReportCalculationObserver | undefined, event: ReportCa
   try { observer?.(event); } catch { /* Deliberately omit arbitrary observer errors. */ }
 }
 
+function isStatementList(value: D1PreparedStatement | readonly D1PreparedStatement[]): value is readonly D1PreparedStatement[] {
+  return Array.isArray(value);
+}
+
 export async function measuredReportBatch(
   db: D1Database,
-  statement: D1PreparedStatement,
+  statement: D1PreparedStatement | readonly D1PreparedStatement[],
   observer?: ReportCalculationObserver,
 ): Promise<D1Result<Record<string, unknown>>[]> {
   let results: D1Result<Record<string, unknown>>[];
+  const statements = isStatementList(statement) ? [...statement] : [statement];
   try {
-    results = await db.batch<Record<string, unknown>>([statement]);
+    results = await db.batch<Record<string, unknown>>(statements);
   } catch (error) {
-    notify(observer, { ...reportCalculation(null, 'threw'), failure: reportFailure(error) });
+    notify(observer, { ...reportCalculation(null, 'threw', statements.length), failure: reportFailure(error) });
     throw error;
   }
-  const event = reportCalculation(results, 'returned');
+  const event = reportCalculation(results, 'returned', statements.length);
   notify(observer, event);
   if (event.metadata === 'inconsistent') throw new Error('Invalid statistics batch result');
   return results;

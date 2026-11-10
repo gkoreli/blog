@@ -8,7 +8,7 @@ import { queryStats } from '../.test-dist/stats.js';
 const meta = { rows_read: 12, rows_written: 0, total_attempts: 2, served_by: 'PRIVATE', last_row_id: 999, sql: 'PRIVATE' };
 test('report counters retain last-attempt scope and omit arbitrary provider fields', () => {
   const e = reportCalculation([{ success: true, meta }], 'returned');
-  assert.deepEqual(e, { version: '2026-10-28.1', event: 'stats-report-calculation', outcome: 'returned', submittedStatements: 1, returnedResults: 1, metadata: 'complete', counterScope: 'last-attempt', reportedRowsRead: 12, reportedRowsWritten: 0, totalAttempts: 2, unexpectedWrites: false });
+  assert.deepEqual(e, { version: '2026-11-10.1', event: 'stats-report-calculation', outcome: 'returned', submittedStatements: 1, returnedResults: 1, metadata: 'complete', counterScope: 'last-attempt', reportedRowsRead: 12, reportedRowsWritten: 0, totalAttempts: 2, unexpectedWrites: false });
   assert.ok(!JSON.stringify(e).includes('PRIVATE'));
   assert.equal(reportCalculation([{ meta: { ...meta, rows_written: 3 } }], 'returned').unexpectedWrites, true);
 });
@@ -35,6 +35,7 @@ test('database failures retain only closed categories and inspect wrapped causes
     ['D1_ERROR: D1 DB exceeded its CPU time limit and was reset.', 'timeout'],
     ['D1_ERROR: D1 query result exceeded the maximum response size limit of 50 MB', 'response-limit'],
     ['D1_ERROR: SQL query was too large', 'query-limit'],
+    ['D1_ERROR: VIEWs and/or subqueries nested too deep: SQLITE_ERROR', 'query-limit'],
     ['D1_ERROR: no such column: PRIVATE_VALUE: SQLITE_ERROR', 'schema'],
     ['D1_ERROR: malformed JSON: SQLITE_ERROR', 'invalid-json'],
     ['D1_ERROR: not authorized', 'authorization'],
@@ -50,6 +51,18 @@ test('database failures retain only closed categories and inspect wrapped causes
   for (const value of [null, undefined, 'PRIVATE_VALUE', { message: 'malformed JSON' }]) assert.equal(reportFailure(value), 'unknown');
   const cycle = new Error('PRIVATE_VALUE'); cycle.cause = cycle;
   assert.equal(reportFailure(cycle), 'unknown');
+});
+
+test('transactional batch costs retain every statement and unknown meters do not become a zero total', () => {
+  const results = [{ success: true, meta }, { success: true, meta: { rows_read: 5, rows_written: 0, total_attempts: 1 } }];
+  const event = reportCalculation(results, 'returned', 2);
+  assert.equal(event.reportedRowsRead, 17); assert.equal(event.reportedRowsWritten, 0);
+  assert.equal(event.totalAttempts, null); assert.equal(event.metadata, 'complete');
+  assert.deepEqual(event.statementCosts.map(cost => cost.totalAttempts), [2, 1]);
+  const partial = reportCalculation([results[0], { success: true }], 'returned', 2);
+  assert.equal(partial.reportedRowsRead, null); assert.equal(partial.reportedRowsWritten, null);
+  assert.equal(partial.metadata, 'partial');
+  assert.equal(reportCalculation(results.slice(0,1), 'returned', 2).metadata, 'inconsistent');
 });
 
 test('one batch emits once before decoding, preserves failures, and isolates observer errors', async () => {
@@ -78,9 +91,9 @@ test('query output and statement are unchanged with telemetry; decoding failures
   const before = await queryStats(db, q, now);
   const after = await queryStats(db, q, now, undefined, e => events.push(e));
   assert.deepEqual(after, before); assert.deepEqual(submitted[1], submitted[0]);
-  assert.equal(submitted.length, 2); assert.equal(submitted[0].length, 1); assert.equal(events.length, 1);
+  assert.equal(submitted.length, 2); assert.equal(submitted[0].length, 6); assert.equal(events.length, 1);
   assert.ok(!JSON.stringify(after).includes('reportedRowsRead'));
   await assert.rejects(queryStats({ ...db, async batch() { return [{ success: true, meta, results: [] }]; } }, q, now, undefined, e => events.push(e)));
-  assert.equal(events.length, 2); assert.equal(events[1].reportedRowsRead, 12);
+  assert.equal(events.length, 2); assert.equal(events[1].reportedRowsRead, null);
   sqlite.close();
 });
