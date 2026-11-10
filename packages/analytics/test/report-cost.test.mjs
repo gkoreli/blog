@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 import { readFileSync } from 'node:fs';
 import { DatabaseSync } from 'node:sqlite';
-import { reportCalculation, measuredReportBatch } from '../.test-dist/report-cost.js';
+import { reportCalculation, measuredReportBatch, reportFailure } from '../.test-dist/report-cost.js';
 import { queryStats } from '../.test-dist/stats.js';
 
 const meta = { rows_read: 12, rows_written: 0, total_attempts: 2, served_by: 'PRIVATE', last_row_id: 999, sql: 'PRIVATE' };
@@ -25,6 +25,33 @@ test('unknown and malformed counters never become zero or an all-attempt total',
   }
 });
 
+test('database failures retain only closed categories and inspect wrapped causes', () => {
+  for (const [message, expected] of [
+    ["D1_ERROR: Your account has exceeded D1's free tier daily row read limit.", 'read-limit'],
+    ["D1_ERROR: Your account has exceeded D1's free tier daily row write limit.", 'write-limit'],
+    ['D1_ERROR: Exceeded maximum DB size.', 'storage-limit'],
+    ['D1_ERROR: D1 DB is overloaded. Too many requests queued.', 'overloaded'],
+    ["D1_ERROR: D1 DB's isolate exceeded its memory limit and was reset.", 'memory-limit'],
+    ['D1_ERROR: D1 DB exceeded its CPU time limit and was reset.', 'timeout'],
+    ['D1_ERROR: D1 query result exceeded the maximum response size limit of 50 MB', 'response-limit'],
+    ['D1_ERROR: SQL query was too large', 'query-limit'],
+    ['D1_ERROR: no such column: PRIVATE_VALUE: SQLITE_ERROR', 'schema'],
+    ['D1_ERROR: malformed JSON: SQLITE_ERROR', 'invalid-json'],
+    ['D1_ERROR: not authorized', 'authorization'],
+    ['D1_ERROR: Network connection lost.', 'connection'],
+    ['D1_ERROR: D1 DB reset because its code was updated.', 'reset'],
+    ['D1_TYPE_ERROR: PRIVATE_VALUE', 'type'],
+    ['D1_ERROR: near PRIVATE_VALUE: SQLITE_ERROR', 'sql'],
+    ['PRIVATE_VALUE', 'unknown'],
+  ]) {
+    assert.equal(reportFailure(new Error(message)), expected);
+    assert.equal(reportFailure(new Error('Wrapper', { cause: new Error(message) })), expected);
+  }
+  for (const value of [null, undefined, 'PRIVATE_VALUE', { message: 'malformed JSON' }]) assert.equal(reportFailure(value), 'unknown');
+  const cycle = new Error('PRIVATE_VALUE'); cycle.cause = cycle;
+  assert.equal(reportFailure(cycle), 'unknown');
+});
+
 test('one batch emits once before decoding, preserves failures, and isolates observer errors', async () => {
   let calls = 0; const events = [], statement = {};
   const db = { async batch(stmts) { calls++; assert.deepEqual(stmts, [statement]); return [{ success: true, meta, results: [] }]; } };
@@ -33,6 +60,8 @@ test('one batch emits once before decoding, preserves failures, and isolates obs
   const failure = new Error('PRIVATE database failure');
   await assert.rejects(measuredReportBatch({ async batch() { throw failure; } }, statement, e => events.push(e)), e => e === failure);
   assert.deepEqual([events[1].outcome, events[1].metadata, events[1].reportedRowsRead], ['threw', 'unavailable', null]);
+  assert.equal(events[1].failure, 'unknown');
+  assert.ok(!JSON.stringify(events).includes('PRIVATE'));
   for (const results of [[], [{}, {}], [{ success: false }]]) {
     const bad = [];
     await assert.rejects(measuredReportBatch({ async batch() { return results; } }, statement, e => bad.push(e)), /Invalid statistics batch/);

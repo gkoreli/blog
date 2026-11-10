@@ -11,9 +11,39 @@ export interface ReportCalculation {
   reportedRowsWritten: number | null;
   totalAttempts: number | null;
   unexpectedWrites: boolean | null;
+  failure?: ReportFailure;
 }
 
 export type ReportCalculationObserver = (event: ReportCalculation) => void;
+
+export type ReportFailure = 'read-limit' | 'write-limit' | 'storage-limit' | 'overloaded'
+  | 'memory-limit' | 'timeout' | 'response-limit' | 'query-limit' | 'schema' | 'invalid-json'
+  | 'authorization' | 'connection' | 'reset' | 'type' | 'sql' | 'unknown';
+
+/** Closed diagnostic labels only: provider messages can contain SQL and private values. */
+export function reportFailure(error: unknown): ReportFailure {
+  let current = error;
+  for (let depth = 0; depth < 4 && current instanceof Error; depth++) {
+    const message = current.message;
+    if (message.includes('daily row read limit')) return 'read-limit';
+    if (message.includes('daily row write limit')) return 'write-limit';
+    if (message.includes('maximum account storage limit') || message.includes('maximum DB size')) return 'storage-limit';
+    if (message.includes('D1 DB is overloaded')) return 'overloaded';
+    if (message.includes('memory limit')) return 'memory-limit';
+    if (message.includes('timeout') || message.includes('CPU time limit')) return 'timeout';
+    if (message.includes('maximum response size')) return 'response-limit';
+    if (/too many SQL variables|too many terms|too many arguments|query.*too (large|long)|statement.*too (large|long)|Expression tree is too large|parser stack overflow/i.test(message)) return 'query-limit';
+    if (/no such (table|column)|D1_COLUMN_NOTFOUND/.test(message)) return 'schema';
+    if (message.includes('malformed JSON')) return 'invalid-json';
+    if (/authorization|authentication|not authorized|SQLITE_AUTH/i.test(message)) return 'authorization';
+    if (/Network connection lost|Replica disconnected|Cannot resolve D1 DB|client disconnected/.test(message)) return 'connection';
+    if (message.includes('reset')) return 'reset';
+    if (message.includes('D1_TYPE_ERROR')) return 'type';
+    if (message.includes('SQLITE_ERROR')) return 'sql';
+    current = current.cause;
+  }
+  return 'unknown';
+}
 
 function record(value: unknown): value is Record<string, unknown> {
   return typeof value === 'object' && value !== null && !Array.isArray(value);
@@ -56,7 +86,7 @@ export async function measuredReportBatch(
   try {
     results = await db.batch<Record<string, unknown>>([statement]);
   } catch (error) {
-    notify(observer, reportCalculation(null, 'threw'));
+    notify(observer, { ...reportCalculation(null, 'threw'), failure: reportFailure(error) });
     throw error;
   }
   const event = reportCalculation(results, 'returned');
