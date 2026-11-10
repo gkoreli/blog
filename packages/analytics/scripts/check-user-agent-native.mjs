@@ -32,6 +32,12 @@ inputs.push(
   { id: 'duplicate-malformed-os', userAgent: '(Windows NT 10.0; Windows NT nope) Chrome/150.0' },
   { id: 'hint-http-whitespace', userAgent: 'Chrome/150.0', mobileHint: ' \t?1\t ' },
   { id: 'hint-nbsp-not-whitespace', userAgent: 'Chrome/150.0', mobileHint: '\u00a0?1\u00a0' },
+  { id: 'partial-mac-not-frozen-pattern', userAgent: '(Mac OS X 10.15) Firefox/145.0' },
+  { id: 'near-mac-not-frozen-pattern', userAgent: '(Mac OS X 10_15_6) Version/26.0 Safari/605.1' },
+  { id: 'frozen-mac-exact', userAgent: '(Mac OS X 10_15_7) Version/26.0 Safari/605.1' },
+  { id: 'near-windows-not-frozen-pattern', userAgent: '(Windows NT 10.1) Chrome/150.0' },
+  { id: 'near-ios-not-frozen-pattern', userAgent: '(CPU iPhone OS 18_6_1) AppleWebKit/605.1 Version/26.0 Safari/604.1' },
+  { id: 'android-k-model-not-frozen-pattern', userAgent: '(Android 10; K-Touch) Chrome/150.0' },
 );
 const assessment = fileURLToPath(new URL('../src/user-agent-assessment.ts', import.meta.url));
 const evidence = fileURLToPath(new URL('../src/request-evidence.ts', import.meta.url));

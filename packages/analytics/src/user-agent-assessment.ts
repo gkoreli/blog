@@ -4,7 +4,7 @@ import { browserClaim, type BrowserClaim } from './user-agent-browser.js';
 import { platformClaim, type PlatformClaim } from './user-agent-platform.js';
 import { claimsFetchMetadataFromProducts, userAgentClaimText, userAgentProducts } from './user-agent-products.js';
 
-export const USER_AGENT_ASSESSMENT_PROFILE = 'user-agent-claims/2026-11-10.1';
+export const USER_AGENT_ASSESSMENT_PROFILE = 'user-agent-claims/2026-11-10.2';
 export type UserAgentCaution = 'missing-header' | 'empty-header' | 'self-declared-input'
   | 'multiple-client-names' | 'conflicting-browser-claims' | 'unresolved-browser-version'
   | 'conflicting-platform-claims' | 'matches-frozen-platform-pattern'
@@ -44,10 +44,11 @@ export function assessUserAgent(value: string | null, mobileHint: string | null 
   if (platform.state === 'conflicting') cautions.push('conflicting-platform-claims');
   // These match documented compatibility patterns. They do not prove that the
   // sender is a genuine reduced browser or reveal its hidden actual OS.
-  if (platform.family === 'macos' && platform.major === 10 && platform.minor === 15
-    || platform.family === 'windows-nt' && platform.major === 10
-    || platform.family === 'android' && platform.major === 10 && /\bAndroid 10; K\b/i.test(claimText)
-    || platform.family === 'ios' && platform.major === 18 && platform.minor === 6 && browser.family === 'safari' && (browser.major ?? 0) >= 26) {
+  if (platform.family === 'macos' && /\bMac OS X 10[_.]15[_.]7(?=[ \t;),]|$)/i.test(claimText)
+    || platform.family === 'windows-nt' && /\bWindows NT 10[_.]0(?=[ \t;),]|$)/i.test(claimText)
+    || platform.family === 'android' && platform.major === 10 && /\bAndroid 10; K(?=[ \t;),]|$)/i.test(claimText)
+    || platform.family === 'ios' && /\b(?:CPU (?:iPhone )?OS|iPhone OS) 18[_.]6(?=[ \t;),]|$)/i.test(claimText)
+      && browser.family === 'safari' && (browser.major ?? 0) >= 26) {
     cautions.push('matches-frozen-platform-pattern');
   }
   if (form.mobileHint === 'unsupported') cautions.push('unsupported-mobile-hint');

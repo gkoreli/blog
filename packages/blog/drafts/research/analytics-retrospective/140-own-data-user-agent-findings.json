@@ -1,0 +1,366 @@
+{
+  "version": 1,
+  "observedDate": "2026-11-10",
+  "window": {
+    "startInclusive": "2026-11-09T00:00:00.000Z",
+    "endExclusive": "2026-11-10T00:00:00.000Z"
+  },
+  "sourceCommitBeforeChanges": "693efd2e7bacc4b06e736ef651c1ccd22ddc0704",
+  "access": {
+    "wranglerVersion": "4.71.0",
+    "d1Metadata": "authentication-error-10000",
+    "nativeDashboard": "signed-in",
+    "constantQueryAccess": "passed",
+    "liveTailStarted": false,
+    "settingsChanged": false
+  },
+  "sources": [
+    {
+      "name": "nov09-cf-worker-event-limit2000.json",
+      "sha256": "ef277e3d6b88c9722c91cb198eeb8ffc8c984fe8a266fa60577e541ead5e2597",
+      "records": 2000,
+      "cap": 2000
+    },
+    {
+      "name": "nov09-early-cf-worker-event-limit2000.json",
+      "sha256": "4f23538e54b982bcc5d67d3328ad024ff4b222f1291e99102a24a9f3e9a606ed",
+      "records": 535,
+      "cap": 2000
+    }
+  ],
+  "initialUnfilteredExport": {
+    "records": 1000,
+    "metadataTypes": {
+      "cf-worker-event": 191,
+      "span": 653,
+      "cf-worker": 156
+    },
+    "usableAsRequestDenominator": false
+  },
+  "merge": {
+    "requestedDay": {
+      "startInclusive": "2026-11-09T00:00:00.000Z",
+      "endExclusive": "2026-11-10T00:00:00.000Z"
+    },
+    "earlyRecords": 535,
+    "lateRecords": 2000,
+    "overlapExactRecords": 120,
+    "overlapWindowPayloadsMatchExactly": true,
+    "mergeMethod": "Canonical full-record multiset union, preserving within-export multiplicity; not ID-only deduplication.",
+    "mergedRecords": 2415,
+    "fetchRecords": 2414,
+    "scheduledRecords": 1,
+    "earliest": "2026-11-09T00:00:07.163Z",
+    "latest": "2026-11-09T23:56:29.518Z",
+    "earlyExportBelowLimit": true,
+    "lateExportAtLimit": true,
+    "rawUaPresent": 2385,
+    "invocationTruncated": 0,
+    "uniqueMetadataIds": 2300,
+    "reusedMetadataIds": 97,
+    "extraRecordsSharingMetadataId": 115,
+    "uniqueRequestIds": 2414,
+    "limits": "Retained exported request envelopes, not independently established complete unsampled requests or D1 included page observations."
+  },
+  "assessment": {
+    "profile": "user-agent-claims/2026-11-10.2",
+    "sourceSha256": "909df986772d60d3b722e14a3af29769df427535c8b6a91eea276342b3075abf",
+    "exportedRecords": 2415,
+    "exportedFetchRecords": 2414,
+    "distinctSuppliedUaValuesIncludingMissing": 222,
+    "counts": {
+      "sourceState": {
+        "present": 2385,
+        "missing": 29
+      },
+      "browser": {
+        "unknown": 1086,
+        "chromium": 1237,
+        "firefox": 7,
+        "safari": 78,
+        "edge": 6
+      },
+      "browserState": {
+        "unrecognized": 1086,
+        "recognized": 1325,
+        "version-unresolved": 3
+      },
+      "platform": {
+        "windows-nt": 711,
+        "android": 86,
+        "unknown": 968,
+        "linux": 224,
+        "macos": 393,
+        "ios": 29,
+        "chromeos": 3
+      },
+      "platformState": {
+        "reported": 1219,
+        "unrecognized": 968,
+        "version-unresolved": 227
+      },
+      "mobileHint": {
+        "absent": 1894,
+        "non-mobile": 520
+      },
+      "form": {
+        "unknown": 1044,
+        "mobile-marker": 90,
+        "non-mobile-preference": 520,
+        "no-form-marker": 760
+      },
+      "declarationStatus": {
+        "none": 1743,
+        "single": 671
+      },
+      "automationDeclaration": {
+        "false": 1456,
+        "true": 958
+      },
+      "providerCategory": {
+        "": 1933,
+        "Search Engine Optimization": 39,
+        "Page Preview": 94,
+        "AI Crawler": 57,
+        "Search Engine Crawler": 254,
+        "AI Search": 33,
+        "AI Assistant": 4
+      },
+      "nativeVerifiedBotAvailable": {
+        "false": 2414
+      },
+      "status": {
+        "200": 1467,
+        "204": 6,
+        "304": 148,
+        "307": 28,
+        "400": 1,
+        "403": 13,
+        "404": 741,
+        "405": 4,
+        "415": 1,
+        "missing": 5
+      },
+      "outcome": {
+        "ok": 2409,
+        "canceled": 5
+      },
+      "method": {
+        "GET": 2266,
+        "HEAD": 124,
+        "POST": 24
+      },
+      "historicalDiagnosticChangedFields": {
+        "none": 2414
+      },
+      "cautions": {
+        "self-declared-input": 2414,
+        "form-is-not-hardware": 2414,
+        "matches-frozen-platform-pattern": 1049,
+        "unresolved-browser-version": 3,
+        "missing-header": 29
+      },
+      "categoryByNameState": {
+        "[\"\",\"none\"]": 1654,
+        "[\"\",\"single\"]": 279,
+        "[\"Search Engine Optimization\",\"single\"]": 39,
+        "[\"Page Preview\",\"single\"]": 88,
+        "[\"AI Crawler\",\"single\"]": 47,
+        "[\"Search Engine Crawler\",\"none\"]": 72,
+        "[\"Search Engine Crawler\",\"single\"]": 182,
+        "[\"Page Preview\",\"none\"]": 6,
+        "[\"AI Search\",\"single\"]": 32,
+        "[\"AI Search\",\"none\"]": 1,
+        "[\"AI Crawler\",\"none\"]": 10,
+        "[\"AI Assistant\",\"single\"]": 4
+      },
+      "routeClass": {
+        "feed-or-discovery": 351,
+        "other-page-shaped": 1391,
+        "asset": 487,
+        "api": 98,
+        "prompt-page": 87
+      },
+      "frozenPatternByRoute": {
+        "[false,\"feed-or-discovery\"]": 320,
+        "[false,\"other-page-shaped\"]": 841,
+        "[false,\"asset\"]": 136,
+        "[true,\"other-page-shaped\"]": 550,
+        "[true,\"asset\"]": 351,
+        "[true,\"api\"]": 70,
+        "[true,\"prompt-page\"]": 47,
+        "[true,\"feed-or-discovery\"]": 31,
+        "[false,\"prompt-page\"]": 40,
+        "[false,\"api\"]": 28
+      },
+      "frozenPatternByPlatform": {
+        "[false,\"windows-nt\"]": 17,
+        "[false,\"android\"]": 86,
+        "[true,\"windows-nt\"]": 694,
+        "[false,\"unknown\"]": 968,
+        "[false,\"linux\"]": 224,
+        "[true,\"macos\"]": 355,
+        "[false,\"macos\"]": 38,
+        "[false,\"ios\"]": 29,
+        "[false,\"chromeos\"]": 3
+      },
+      "frozenPatternByAutomation": {
+        "[false,false]": 541,
+        "[false,true]": 824,
+        "[true,false]": 915,
+        "[true,true]": 134
+      },
+      "compatibilityProducts": {
+        "mozilla": 2084,
+        "safari": 1284,
+        "applewebkit": 1565,
+        "chrome": 1243,
+        "wv": 25
+      },
+      "names": {
+        "Bytespider": 22,
+        "SemrushBot": 11,
+        "Meta-WebIndexer": 108,
+        "PerplexityBot": 18,
+        "FacebookBot": 2,
+        "PetalBot": 23,
+        "ExaSearchBot": 96,
+        "ExaUser": 7,
+        "Googlebot": 85,
+        "Applebot": 41,
+        "Amazonbot": 32,
+        "AhrefsBot": 19,
+        "OAI-SearchBot": 14,
+        "GPTBot": 11,
+        "Bingbot": 18,
+        "GoogleOther": 1,
+        "Meta-ExternalAgent": 15,
+        "MJ12bot": 8,
+        "Claude-User": 20,
+        "Baiduspider": 13,
+        "ChatGPT-User": 21,
+        "Perplexity-User": 7,
+        "Cohere-AI": 10,
+        "DuckAssistBot": 9,
+        "Meta-ExternalFetcher": 10,
+        "Claude-SearchBot": 14,
+        "ClaudeBot": 12,
+        "OAI-AdsBot": 16,
+        "CCBot": 7,
+        "DotBot": 1
+      },
+      "crossClaims": {
+        "chromium-with-safari-token": 1158,
+        "webview-marker": 25
+      }
+    },
+    "limits": [
+      "Retained exported records, not a completeness estimate, D1 public pages, people or genuine devices.",
+      "Offline assessment of supplied headers, no authentication or historical rewrite."
+    ]
+  },
+  "patternRepair": {
+    "beforeProfile": "user-agent-claims/2026-11-10.1",
+    "afterProfile": "user-agent-claims/2026-11-10.2",
+    "previousCautions": 1051,
+    "currentCautions": 1049,
+    "changedRecords": 2,
+    "reportedBrowserOrOsChanges": 0,
+    "trafficReclassification": false,
+    "cause": "Partial Mac OS X 10.15 does not match complete frozen 10.15.7.",
+    "windowsNt10_0": 694,
+    "macOs10_15_7": 355
+  },
+  "d1": {
+    "source": "Native signed-in D1 Console result cell; transcribed closed JSON aggregate, not raw API response.",
+    "sqlSha256": "48b80393aa05b3f353e5f31c9ca238b9dce867a6d8f9e2366d258c4459ce210e",
+    "successfulDataSelects": 1,
+    "constantAccessControls": 1,
+    "rejectedSyntaxAttempts": 1,
+    "rawProviderRowsRead": null,
+    "rawProviderRowsWritten": null,
+    "readBudgetAcceptance": "Not established: Console exposes elapsed times but no per-statement row meters. Stop further production data SELECTs.",
+    "responseTimeMs": 232,
+    "queryTimeMs": 18.89,
+    "result": {
+      "retainedPageObservations": 595,
+      "firstObservedAt": "2026-11-09 00:00:18",
+      "lastObservedAt": "2026-11-09 23:49:38",
+      "ownerAtIngestion": 0,
+      "matchingDailyOwnerMark": 0,
+      "classificationRecorded": 595,
+      "declarationNone": 388,
+      "declarationSingle": 207,
+      "declarationMultiple": 0,
+      "optionalRequestEvidenceRecorded": 0,
+      "signatureDetailRecorded": 595,
+      "storedVerifiedOutcome": 101,
+      "storedVerifiedWithUaCoverage": 0,
+      "nativeVerifiedBotBooleanRecorded": 0,
+      "clientFormRecorded": 595,
+      "collectionProfiles": [
+        "2026-11-06.1"
+      ],
+      "classifierProfiles": [
+        "2026-11-06.1"
+      ]
+    },
+    "scope": "All retained Nov9 page observations; owner flags/marks measured separately, current referral exclusions not applied; not public included views or an exact log-record join."
+  },
+  "deliveryAndActivation": {
+    "earlierHardeningSource": "693efd2e7bacc4b06e736ef651c1ccd22ddc0704",
+    "dashboardWorkerVersionPrefix": "889ef6a4",
+    "dashboardBuildId": "027f98c1-caa9-44a4-854c-0d51214bdc4f",
+    "dashboardStatus": "Ready",
+    "dashboardAllocationPercent": 100,
+    "scope": "Native overview source-linked row observed November10; no original-code download/full-version join, new controlled write or current traffic acceptance."
+  },
+  "limits": [
+    "No worldwide prevalence or true-device/bot precision/recall estimate.",
+    "Retained logs, persisted page observations and public included events have separate populations.",
+    "Native verified-bot boolean availability is not inferred from a category.",
+    "Zero changed diagnostic selections in this captured day does not invalidate synthetic counterexamples.",
+    "No new raw collection, security/billing/retention change, operator authentication or human label."
+  ],
+  "checks": {
+    "analyticsTestsPassed": 443,
+    "workspaceTypes": "passed",
+    "validatedMarkdownPosts": 34,
+    "isolatedBuildPosts": 45,
+    "articleTables": 5,
+    "prompts": 14,
+    "relativeLinksChecked": 465,
+    "htmlMarkdownAndCitations": "passed",
+    "exactAssessmentComparisons": 2414,
+    "nonCautionAssessmentFieldsUnchanged": true,
+    "privateCliPartialMacCase": "passed",
+    "nativeFixture": {
+      "version": 1,
+      "cases": 41,
+      "exactNodeNativeMatches": 41,
+      "nativeD1StoredAndReadBack": 41,
+      "bundleSha256": "09d3eac7294dbf182e5cd59a18a42a306e7cd101a5dff5d5a94a460b62343c9b",
+      "externalRequests": 0,
+      "productionRequests": 0,
+      "humanLabels": 0,
+      "limits": "Synthetic supplied-header values in local workerd and a fixture D1 table; not collector acceptance, browser fidelity or population accuracy."
+    },
+    "sourceSha256": {
+      "packages/analytics/README.md": "f902a133c3aca476a51036966eb1f11abc86403f564045c99fe2bc70a4ac837d",
+      "packages/analytics/scripts/check-user-agent-native.mjs": "819d9d03d70341d3fc4e57fc218a1a1e7f4b4f155121a65e962ff54fde4d7f3a",
+      "packages/analytics/src/user-agent-assessment.ts": "cf0c59a96e0520af4f54cf5b2ee0d92c9931bba7189359b6e871317ba12f9959",
+      "packages/analytics/test/user-agent-assessment.test.mjs": "a7f5d8462dd0cd3b83b670b320ce21bc33658847fed9065fcfe135062a4e9afa",
+      "packages/blog/drafts/prompts/unknown-clients-and-evidence-based-bot-detection.prompts.md": "8845b1b61f27c48eb85e8071f84e59e83e057e3d7258bcd761c7819c03e8e0a2",
+      "packages/blog/drafts/unknown-clients-and-evidence-based-bot-detection.md": "4375e28f97ebeefc0e89e9488c650bc2b51b02d9f26fd7e8e1e3ca9f39c17a6c"
+    }
+  },
+  "privateArchive": {
+    "gitIgnoredPath": "packages/blog/worklog/user-agent-own-data-2026-11-10/",
+    "verifiedFiles": 68,
+    "verifiedBytes": 38871314,
+    "manifestSha256": "32f8d032bd5d3b6f42691fc9a292b147aa685a7b9777169f6806452f5b5e5f15",
+    "directoryMode": "0700",
+    "fileMode": "0600"
+  },
+  "currentSourceDelivery": "Scoped Git commit/push; no new deployment verification or article publication."
+}

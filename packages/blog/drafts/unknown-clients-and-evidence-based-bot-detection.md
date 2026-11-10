@@ -14,11 +14,34 @@ tags: [analytics, bots, cloudflare-workers, testing, ai-agents]
 > this baseline and publish it. No publication date is assigned. See the
 > [article disposition register](README.md); the other audited candidates are closed.
 
-**Android 10, macOS 10.15.7 and iOS 18.6 can be compatibility labels, not the operating systems your audience uses.** An iPad can send the same `User-Agent` as a Mac. A program can call itself Googlebot. Parsing those words correctly does not make the resulting device or identity claim true.
+**1,049 of 2,414 captured request records carried Windows or macOS versions that browsers also use as compatibility values.** The population is one UTC day of retained Cloudflare logs. Those pattern matches leave the operating systems behind the requests unresolved.
+
+Android 10, macOS 10.15.7 and iOS 18.6 can be compatibility labels. An iPad can send the same `User-Agent` as a Mac. A program can call itself Googlebot. Parsing those words correctly does not make the resulting device or identity claim true.
 
 The header is useful. It describes what the requester chooses to say about its software. Browsers also use it to stay compatible with websites and limit fingerprinting. Those purposes do not always produce the inventory an analytics dashboard wants.
 
 My own detector had a simpler mistake: it called a copied CUBOT phone header a bot because the brand ends in “bot.” Fixing that led to a wider audit. I mapped twelve overlapping failure families, found more gaps in our browser/OS diagnostics, and built a reusable way to inspect the claims without presenting them as verified facts.
+
+## What one day of our own logs contained
+
+For November 9, 2026, I exported the blog Worker's retained invocation events and assessed their supplied headers locally. The first export hit its 2,000-record cap. An overlapping early-hours export returned 535 records; all 120 overlapping records matched exactly. Combining them preserved 2,414 HTTP request records and one separate scheduled invocation. The log service's sampling/completeness remains unverified, and the requests include assets, APIs, feeds, failed probes and pages.
+
+| Supplied evidence in the 2,414 HTTP records | Records | What it supports |
+| --- | ---: | --- |
+| Chromium selection with a Safari product token | 1,158 | A Safari word is not a count of Safari browsers. |
+| `Windows NT 10.0` or `Mac OS X 10_15_7` | 1,049 | The reported version also matches a documented compatibility value. |
+| No User-Agent header | 29 | The header is missing; the operator remains unidentified. |
+| WebView marker | 25 | An embedded-browser declaration, without a genuine-device label. |
+| No catalogue-name candidate | 1,743 | Our named-client catalogue did not resolve a name. |
+| Provider category present, with no catalogue name | 89 | Provider category and software-name extraction answer different questions. |
+
+The 1,049 version-pattern records split into 694 Windows and 355 macOS claims. They are not 1,049 demonstrated mistakes: a requester could really run the reported OS, copy a browser string or use a reduced one. The data establishes the ambiguity our report must preserve.
+
+The audit also corrected our own new warning. Two Firefox-shaped headers reported only `Mac OS X 10.15`. My first caution treated that partial value as matching the full frozen `10_15_7` pattern. It now requires the complete documented version; the reported partial version stays intact. That reduces the caution count from 1,051 to 1,049, without changing browser/OS selection or traffic categories. None of this day's records reproduces the contradictory browser/OS or malformed mobile-hint cases below. Their repairs remain supported by controlled counterexamples.
+
+A separate bounded D1 query finds **595 retained page observations** for the same day: 388 with no catalogue candidate and 207 with one. All have classification and signature-detail records; none contains the optional browser/OS request-evidence record. Among 101 stored verified signature outcomes, none has a recorded true User-Agent coverage flag. This is a historical stored-evidence result, not a new signature verification. Owner flags/marks are zero in this selection; current referral exclusions have not been applied. These 595 observations are not the 2,414 log records or a public included-view total.
+
+The raw headers stay private. The [dated method and aggregate findings](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/139-own-data-user-agent-audit.md) preserve selectors, export limits, failed assumptions and the separate populations. They also retain catalogue-review leads, including Sofyabot, Twitterbot and FreshRSS declarations; seeing a product does not authenticate its operator.
 
 ## The problem is larger than one phone brand
 
@@ -149,7 +172,7 @@ The file reader has an explicit 262,144-byte limit and rejects unsupported field
 
 The original repair had six controlled curl requests traced through the deployed collector and exact stored rows on November 6. They checked CUBOT, a contact URL, separate GPTBot/SemrushBot/node-fetch declarations and the full alias set. They were permanently owner-excluded. Browser-shaped curl inputs remained Browser signals, never human labels. [The dated acceptance](https://github.com/gkoreli/blog/blob/4aad5cd9a1cab8e3986af1a7ed8bf716fa73925f/packages/blog/drafts/research/analytics-retrospective/134-detection-production-acceptance.md) preserves those conditions.
 
-For the new work, I compared **35 supplied cases** between Node and actual local workerd and stored/read each closed result through a fixture D1 table. Those comparisons test runtime and serialization agreement, including the native header behavior behind the whitespace mistake. They do not rerun production, label real devices or exercise an independent vendor verifier.
+For the current work, I compared **41 supplied cases** between Node and actual local workerd and stored/read each closed result through a fixture D1 table. Those comparisons include the complete-version controls added after inspecting our logs and the native header behavior behind the whitespace mistake. They test runtime and serialization agreement, without labelling real devices or exercising an independent vendor verifier.
 
 Parser work itself also needs scrutiny. UAParser’s [historical ReDoS fix](https://github.com/faisalman/ua-parser-js/commit/a6140a17dd0300a35cfc9cff999545f267889411) removed an unsafe regex from a trimming function. A length limit did not help when expensive work occurred before that limit. I have not installed a vulnerable parser or claimed our implementation is vulnerable; the incident is a reason to inspect actual code paths and costs rather than trust a reassuring API name.
 

@@ -70,6 +70,18 @@ test('flags reported compatibility versions without recovering hidden hardware o
   assert.equal('device' in desktop, false);
 });
 
+test('frozen-pattern cautions require the complete documented version rather than a nearby or partial claim', () => {
+  const frozen = ua => assessUserAgent(ua).cautions.includes('matches-frozen-platform-pattern');
+  for (const ua of ['(Mac OS X 10.15) Firefox/145.0', '(Mac OS X 10_15_6) Version/26.0 Safari/605.1',
+    '(Mac OS X 10_15_70) Chrome/150.0', '(Windows NT 10.1) Chrome/150.0', '(Windows NT 10.0.1) Chrome/150.0',
+    '(Android 10; K-Touch) Chrome/150.0',
+    '(CPU iPhone OS 18_6_1) AppleWebKit/605.1 Version/26.0 Safari/604.1',
+    'Chrome/150.0 (+https://example.test/Mac OS X 10_15_7)']) assert.equal(frozen(ua), false, ua);
+  assert.equal(frozen('(Mac OS X 10.15.7) Firefox/145.0'), true);
+  assert.equal(assessUserAgent('(Mac OS X 10.15)').platform.minor, 15, 'the partial reported version is preserved');
+  assert.equal(assessUserAgent(null).profile, 'user-agent-claims/2026-11-10.2');
+});
+
 test('missing, empty and spoofed headers stay supplied claims, not verified clients', () => {
   assert.equal(assessUserAgent(null).sourceState, 'missing');
   assert.equal(assessUserAgent('').sourceState, 'empty');
