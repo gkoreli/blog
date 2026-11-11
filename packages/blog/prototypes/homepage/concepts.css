@@ -1,0 +1,113 @@
+/* Local design studies. The publication's shared tokens remain the source palette. */
+.home-tool-study {
+  --study-radius: 14px;
+  --study-accent: var(--color-link);
+  --study-tint: color-mix(in srgb, var(--study-accent) 8%, var(--color-bg));
+  --study-line: color-mix(in srgb, var(--study-accent) 23%, var(--color-border));
+  margin-top: 2rem;
+}
+.home-tool-study a, .home-tool-study a:visited { color: inherit; text-decoration: none; }
+.home-tool-study :is(a, button):focus-visible { outline: 2px solid var(--color-link); outline-offset: 5px; }
+.home-tool-study h2 { font-size: 1.5rem; line-height: 1.2; letter-spacing: -.035em; font-weight: 500; }
+.study-kicker { display: block; font: 500 .56rem/1.5 var(--font-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--color-link); }
+.home-tool-study svg:not(.tool-drawing) { width: 19px; height: 19px; stroke: currentColor; stroke-width: 1.5; flex-shrink: 0; }
+.study-action { display: flex; align-items: center; justify-content: space-between; gap: .6rem; font: 500 .64rem/1.5 var(--font-mono); min-height: 44px; }
+.tool-drawing { width: 100%; height: auto; overflow: visible; }
+.tool-drawing * { vector-effect: non-scaling-stroke; }
+.drawing-grid { stroke: var(--study-accent); opacity: .08; stroke-width: .65; }
+.drawing-paper { fill: var(--color-bg); stroke: var(--study-line); stroke-width: 1.2; }
+.drawing-front { fill: color-mix(in srgb, var(--color-bg) 92%, var(--study-accent)); }
+.drawing-ink { stroke: var(--study-accent); stroke-width: 1.2; stroke-linecap: round; stroke-linejoin: round; opacity: .6; }
+.drawing-trace { stroke: var(--study-accent); stroke-width: 1.3; stroke-linecap: round; stroke-linejoin: round; opacity: .65; }
+.drawing-node { fill: var(--study-accent); stroke: var(--study-tint); stroke-width: 3; }
+.drawing-chip { fill: var(--study-accent); stroke: var(--study-tint); stroke-width: 3; }
+.drawing-accent { stroke: var(--color-bg); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+
+/* 01 — A single illustrated invitation with a deliberate end-to-end action. */
+.field-kit { background: var(--study-tint); border: 1px solid var(--study-line); border-radius: var(--study-radius); padding: 1.1rem 1.3rem .7rem; position: relative; overflow: hidden; }
+.kit-topline { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+.kit-mark { font: .48rem/1 var(--font-mono); letter-spacing: .09em; color: var(--color-link); opacity: .65; }
+.kit-body { display: grid; grid-template-columns: 1fr 45%; align-items: center; gap: .3rem; padding: .75rem 0 .65rem; }
+.kit-copy p { font-size: .74rem; line-height: 1.6; color: var(--color-text-muted); margin-top: .65rem; }
+.kit-illustration { transform: rotate(3deg); margin: -.5rem -.45rem 0 0; transition: transform .28s ease; }
+.field-kit:has(.kit-action:hover) .kit-illustration { transform: rotate(0) translateY(-3px); }
+.kit-action { border-top: 1px solid var(--study-line); padding-top: .5rem; color: var(--color-link) !important; }
+.action-disc { width: 30px; height: 30px; display: grid; place-items: center; border: 1px solid var(--study-line); border-radius: 50%; transition: background .2s, transform .2s; }
+.kit-action:hover .action-disc { background: var(--color-link); color: var(--color-bg); transform: translateX(2px); }
+.kit-footnote { display: flex; flex-wrap: wrap; gap: .3rem .75rem; padding: .4rem 0 0; font: .53rem/1.6 var(--font-mono); color: var(--color-text-muted); }
+.kit-footnote span + span::before { content: '/'; margin-right: .75rem; opacity: .5; }
+
+/* 02 — Three independent destinations, differentiated through task illustrations. */
+.shelf-heading { display: flex; align-items: flex-end; justify-content: space-between; gap: 1rem; margin-bottom: 1rem; }
+.shelf-heading h2 { margin-top: .35rem; }
+.shelf-all { display: flex; align-items: center; gap: .3rem; font: .56rem/1.5 var(--font-mono); min-height: 44px; color: var(--color-text-muted) !important; }
+.shelf-all svg { width: 13px !important; height: 13px !important; }
+.shelf-items { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .65rem; }
+.shelf-item { min-width: 0; display: flex; flex-direction: column; padding-bottom: .75rem; border-bottom: 1px solid var(--color-border); }
+.shelf-rules { --study-accent: var(--color-accent-blue); }
+.shelf-compare { --study-accent: var(--color-accent-warm); }
+.shelf-item { --study-line: color-mix(in srgb, var(--study-accent) 23%, var(--color-border)); --study-tint: color-mix(in srgb, var(--study-accent) 8%, var(--color-bg)); }
+.shelf-visual { position: relative; background: var(--study-tint); border: 1px solid var(--study-line); border-radius: 9px; padding: .9rem .4rem .35rem; overflow: hidden; transition: background .2s; }
+.shelf-number { position: absolute; top: .45rem; left: .55rem; font: .46rem/1 var(--font-mono); color: var(--study-accent); }
+.shelf-launch { position: absolute; right: .4rem; top: .35rem; color: var(--study-accent); opacity: .7; }
+.shelf-launch svg { width: 12px !important; height: 12px !important; }
+.shelf-visual > svg { transition: transform .25s ease; }
+.shelf-item:hover .shelf-visual > svg { transform: translateY(-4px) rotate(-3deg); }
+.shelf-item:hover .shelf-visual { background: color-mix(in srgb, var(--study-accent) 14%, var(--color-bg)); }
+.shelf-name { position: relative; font-size: .91rem; font-weight: 500; letter-spacing: -.02em; line-height: 1.25; padding-top: .7rem; }
+.shelf-caption { font: .56rem/1.6 var(--font-mono); color: var(--color-text-muted); margin-top: .45rem; }
+
+/* 03 — Switch the lens; show the task's input/output before the reader commits. */
+.lens-heading h2 { margin-top: .35rem; }
+.lens-heading > p { font-size: .78rem; color: var(--color-text-muted); margin: .4rem 0 1rem; }
+prototype-tool-lens { display: block; border: 1px solid var(--color-border); border-radius: var(--study-radius); overflow: hidden; background: var(--color-surface); }
+.lens-tabs { display: none; }
+prototype-tool-lens[data-enhanced] .lens-tabs { display: flex; padding: .35rem; gap: .2rem; border-bottom: 1px solid var(--color-border); }
+.lens-tabs button { flex: 1; min-height: 44px; border: 0; border-radius: 8px; background: transparent; font: .61rem/1.3 var(--font-mono); color: var(--color-text-muted); cursor: pointer; padding: .35rem .2rem; }
+.lens-tabs button[aria-selected="true"] { background: var(--color-bg); color: var(--color-link); box-shadow: 0 1px 4px #0000000a; }
+.lens-tabs button:hover { color: var(--color-text); }
+.lens-tabs button:focus-visible { outline-offset: -3px; }
+.lens-panel { display: grid; grid-template-columns: 44% 1fr; background: var(--color-bg); }
+.lens-panel + .lens-panel { border-top: 1px solid var(--color-border); }
+.lens-panel[hidden] { display: none; }
+.lens-visual { display: flex; flex-direction: column; justify-content: center; padding: .55rem .7rem; background: var(--study-tint); border-right: 1px solid var(--color-border); overflow: hidden; }
+.lens-rules { --study-accent: var(--color-accent-blue); }
+.lens-compare { --study-accent: var(--color-accent-warm); }
+.lens-visual { --study-tint: color-mix(in srgb, var(--study-accent) 8%, var(--color-bg)); --study-line: color-mix(in srgb, var(--study-accent) 23%, var(--color-border)); }
+.lens-annotation { font: .5rem/1.5 var(--font-mono); color: var(--color-text-muted); text-align: center; margin: .25rem 0 .5rem; }
+.lens-detail { padding: 1.15rem 1rem .65rem; display: flex; flex-direction: column; justify-content: space-between; }
+.lens-detail h3 { font-size: .91rem; font-weight: 500; letter-spacing: -.02em; line-height: 1.3; }
+.lens-detail p { font-size: .74rem; color: var(--color-text-muted); line-height: 1.6; margin: .45rem 0 .7rem; }
+.lens-detail .study-action { color: var(--color-link); font-size: .61rem; border-top: 1px solid var(--color-border); padding-top: .3rem; }
+.lens-detail .study-action:hover svg { transform: translateX(3px); }
+.lens-detail .study-action svg { transition: transform .15s; }
+.lens-directory { display: flex; align-items: center; justify-content: flex-end; gap: .35rem; font: .56rem/1.5 var(--font-mono); min-height: 44px; color: var(--color-text-muted) !important; }
+.lens-directory svg { width: 12px !important; height: 12px !important; }
+.lens-directory:hover { color: var(--color-link) !important; }
+
+/* Keep the illustration and the action visible on the narrowest phones. */
+@media (max-width: 480px) {
+  .home-tool-study { margin-top: 1.6rem; }
+  .home-tool-study h2 { font-size: 1.33rem; }
+  .field-kit { padding: .9rem 1rem .65rem; }
+  .kit-body { grid-template-columns: 1fr 42%; padding: .8rem 0; }
+  .kit-copy p { font-size: .72rem; line-height: 1.6; }
+  .kit-illustration { margin-right: -.5rem; }
+  .kit-footnote { font-size: .5rem; gap: .2rem .5rem; }
+  .kit-footnote span + span::before { margin-right: .5rem; }
+  .shelf-items { gap: .45rem; }
+  .shelf-heading { gap: .5rem; margin-bottom: .85rem; }
+  .shelf-all { font-size: .58rem; }
+  .shelf-name { font-size: .8rem; }
+  .shelf-caption { font-size: .55rem; }
+  .shelf-visual { padding: .9rem .1rem .25rem; }
+  .lens-panel { grid-template-columns: 41% 1fr; }
+  .lens-detail { padding: .9rem .8rem .4rem; }
+  .lens-detail h3 { font-size: .86rem; }
+  .lens-detail p { font-size: .72rem; }
+  .lens-visual { padding: .4rem .2rem; }
+  .lens-annotation { font-size: .48rem; padding: 0 .25rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .home-tool-study *, .home-tool-study *::before, .home-tool-study *::after { transition: none !important; animation: none !important; }
+}

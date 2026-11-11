@@ -1,0 +1,84 @@
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap">
+<div id="gk-home-studies" aria-label="Homepage appearance">
+  <div class="viz-carousel viz-dotted-background" aria-label="Homepage tools design alternatives">
+    <!-- STUDIES -->
+  </div>
+</div>
+<style>
+  #gk-home-studies .study-stage { min-block-size: 770px; padding: 14px 0; }
+  #gk-home-studies .study-screen {
+    color-scheme: var(--gk-scheme, inherit);
+    --font-sans: 'Lora', Georgia, serif;
+    --font-mono: 'SF Mono', Menlo, monospace;
+    --color-bg: light-dark(#faf8f5, #1a1a1a);
+    --color-surface: light-dark(#f0ece6, #242424);
+    --color-surface-2: light-dark(#e8e4dd, #2c2c2c);
+    --color-text: light-dark(#2d2a24, #e0ddd5);
+    --color-text-muted: light-dark(#7a7568, #9a9589);
+    --color-link: light-dark(#1a6b4e, #6ec9a8);
+    --color-border: light-dark(#ddd8cf, #3a3a3a);
+    --color-accent-warm: light-dark(#a88a2a, #e8c87a);
+    --color-accent-blue: light-dark(#4a7a94, #5b8fa8);
+    --section-engineering: var(--color-accent-blue);
+    --section-essays: var(--color-accent-warm);
+    --text-sm: 15.3px;
+    --text-2xs: 10px;
+    --text-lg: 21.6px;
+    display: block;
+    width: min(100%, 406px);
+    margin-inline: auto;
+    container: gk-prototype / inline-size;
+    overflow: hidden;
+    border-radius: 12px;
+    border: 1px solid var(--color-border);
+    background: var(--color-bg);
+    color: var(--color-text);
+    font: 18px/1.7 var(--font-sans);
+    text-align: left;
+
+    *, *::before, *::after { box-sizing: border-box; }
+    :is(p, h1, h2, h3) { margin: 0; font-family: inherit; }
+    svg { display: block; max-width: 100%; }
+    .study-masthead { padding: 13px 18px; display: flex; align-items: center; gap: 10px; font-size: 16px; font-weight: 650; border-bottom: 1px solid var(--color-border); }
+    .study-masthead svg { width: 24px; height: 24px; }
+    .study-context { padding: 0 18px 19px; }
+
+    /* HOME_STYLES */
+    /* CONCEPT_STYLES */
+
+    a.cover { margin-top: 24px; }
+    .cover-title { font-size: 28px; }
+    .cover-desc { font-size: 15px; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; }
+    .home-tool-study { margin-top: 20px; }
+    .stream { margin-top: 15px; padding-top: 10px; border-top: 1px solid var(--color-border); }
+    a.stream-item { padding-block: 0; }
+    .stream-title { font-size: 17px; }
+    @container gk-prototype (max-width: 355px) {
+      .study-context { padding-inline: 14px; }
+      .cover-title { font-size: 25px; }
+      .kit-copy h2 { font-size: 21px; }
+    }
+  }
+  @media (max-width: 385px) { #gk-home-studies .study-stage { min-block-size: 850px; } }
+  /* TARGET_STYLES */
+</style>
+<script>
+  /* LENS_SCRIPT */
+  {
+    const product = document.getElementById('gk-home-studies');
+    const appearance = { theme: 'Match chat', radius: 14 };
+    function paintAppearance() {
+      if (appearance.theme === 'Match chat') product.style.removeProperty('--gk-scheme');
+      else product.style.setProperty('--gk-scheme', appearance.theme.toLowerCase());
+      product.style.setProperty('--gk-study-radius', `${appearance.radius}px`);
+      /* TARGET_RENDER */
+    }
+    paintAppearance();
+    if (globalThis.Tweak) {
+      const tweak = new Tweak({ container: product, onChange: paintAppearance });
+      tweak.addSelect(appearance, 'theme', { label: 'Theme', options: ['Match chat', 'Dark', 'Light'] });
+      tweak.addSlider(appearance, 'radius', { label: 'Panel corner radius', min: 4, max: 24, unit: 'px', reference: '--gk-study-radius' });
+      /* TARGET_CONTROL */
+    }
+  }
+</script>

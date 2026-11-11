@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>A smaller invitation · gkoreli.com</title>
+  <link rel="icon" href="/icons/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap">
+  <link rel="stylesheet" href="/_design/homepage/lab.css">
+  <style>
+    .studies { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 900px; margin-inline: auto; gap: 40px; }
+    .lab-intro h1 { font-size: clamp(34px, 3.4vw, 46px); }
+    @media (max-width: 740px) { .studies { grid-template-columns: minmax(0, 1fr); max-width: 440px; } }
+  </style>
+  <script type="module" src="/_design/homepage/lab.js"></script>
+</head>
+<body>
+  <header class="lab-masthead"><a href="/_design/homepage/" class="lab-brand"><img src="/icons/logo.svg" width="24" height="24" alt="">gkoreli.com <span>/ Design studies</span></a><span class="lab-status">Refining the selected direction</span></header>
+  <main>
+    <section class="lab-intro"><div><p class="lab-eyebrow">One clear invitation / Round two</p><h1>Less space.<br>Same invitation.</h1></div><div class="lab-intro-note"><p>Shorter copy, no repeated labels, a smaller illustration. Two proportions of the direction you liked.</p></div></section>
+    <div class="lab-toolbar"><div class="lab-toolbar-left"><div class="control-group" aria-label="Preview size"><button type="button" data-size="mobile" aria-pressed="true">Mobile <span>393</span></button><button type="button" data-size="narrow" aria-pressed="false">Small <span>320</span></button><button type="button" data-size="desktop" aria-pressed="false">Desktop <span>1280</span></button></div><div class="control-group" aria-label="Preview theme"><button type="button" data-theme-choice="dark" aria-pressed="true">Dark</button><button type="button" data-theme-choice="light" aria-pressed="false">Light</button></div></div><button class="jump-control" type="button" id="jump-tools" aria-pressed="false">Focus on the tools <span aria-hidden="true">↓</span></button></div>
+    <nav class="desktop-picker" aria-label="Desktop concept"><button type="button" data-concept="compact-invitation" aria-pressed="true">Compact invitation</button><button type="button" data-concept="inline-invitation" aria-pressed="false">Inline invitation</button></nav>
+    <section class="studies" aria-label="Two compact invitations">
+      <article class="study" data-concept-card="compact-invitation"><header class="study-heading"><span class="study-index">COMPACT INVITATION</span><a href="/_design/homepage/compact-invitation/?theme=dark" target="_blank" rel="noopener" data-open="compact-invitation">Open full page <span aria-hidden="true">↗</span></a><h2>The original, tightened.</h2><p>Keep the drawing beside the title.<br>A short action row gives it a clear finish.</p></header><div class="preview-shell"><div class="preview-frame"><iframe src="/_design/homepage/compact-invitation/?theme=dark" title="Compact invitation homepage" data-preview="compact-invitation"></iframe></div></div></article>
+      <article class="study" data-concept-card="inline-invitation"><header class="study-heading"><span class="study-index">INLINE INVITATION</span><a href="/_design/homepage/inline-invitation/?theme=dark" target="_blank" rel="noopener" data-open="inline-invitation">Open full page <span aria-hidden="true">↗</span></a><h2>A smaller editorial object.</h2><p>A small illustration leads one compact row.<br>The article stream moves up further.</p></header><div class="preview-shell"><div class="preview-frame"><iframe src="/_design/homepage/inline-invitation/?theme=dark" title="Inline invitation homepage" data-preview="inline-invitation"></iframe></div></div></article>
+    </section>
+  </main>
+</body>
+</html>

@@ -46,6 +46,8 @@
 .dl-flat-example h3 { font-size: 0.9rem; margin-bottom: 0.35rem; }
 .dl-flat-example p { font-size: 0.8rem; color: var(--color-text-muted); line-height: 1.6; }
 .dl-surface-label { font-family: var(--font-mono); font-size: var(--text-2xs); color: var(--color-text-muted); margin-top: 0.75rem; }
+.dl-pattern-title { margin: 2rem 0 .6rem; font-size: var(--text-lg); font-weight: 500; }
+.dl-page .home-tools-invitation { margin-top: 0; }
 
 /* ── Brand gradient ── */
 .dl-grad-strip { height: 48px; background: var(--gradient-brand); border-radius: 4px; margin-bottom: 0.85rem; }

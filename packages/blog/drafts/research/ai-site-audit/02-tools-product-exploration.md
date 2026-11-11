@@ -220,3 +220,17 @@ Acceptance: **432 blog tests**, full workspace typecheck, **32 Markdown validati
 ### Further study: deployed acceptance
 
 Source revision `e6bcc4a77cb45de3d4ff23cba919b26be69c433d` deployed successfully through Cloudflare build `283808b5-6f99-4558-acba-c8a17bb97a00`. Fresh reads at 18:33 UTC returned 200 and matching build/source markers on all five tool/report routes. The public browser exercised the new tools-home native form, both local example flows, result focus and the saved report's fact summary. The native `reddit.com` submission normalized to HTTPS and retained the exhausted allowance; no fresh Reddit audit or quota bypass occurred. The production directory was inspected at 1280px and 375px. Local dark-mode comparison and the revised mobile scroll table were also inspected. The [normalized design-study acceptance receipt](2026-11-06-tools-design-study-acceptance.json) preserves these scopes; screenshots are private session artifacts. The requested implementation and delivery are complete. The next evidence to collect is owner feedback or actual reader use, rather than treating this inspection as either.
+
+### November 10: homepage tools design alternatives
+
+The owner flagged the homepage tools strip after seeing it on a phone and asked to compare two or three design approaches in a worktree. The [homepage design study](../../../prototypes/homepage/README.md) records three working directions, local review, and the next design decision. This is a separate design exploration. It does not change the prior release or establish reader use.
+
+The owner then selected “One clear invitation” (Field kit). The worktree's actual homepage now uses that component, and Design Language shows the same pattern. This selection establishes the design direction; implementation checks and eventual delivery remain distinct from production acceptance or reader outcomes.
+
+On reviewing the implementation, the owner asked for a smaller footprint and further iteration. The worktree now compares Compact and Inline invitations within the selected direction; neither is accepted as final. The design study keeps this feedback, the local review baseline, and the next bounded review together.
+
+The owner subsequently preferred Inline and flagged its small click target. The [interaction study](../../../prototypes/homepage/interaction-study.md) compares first-party card guidance with the actual previous hit area, then verifies the refined full-surface native link. Artwork, padding and keyboard activation work locally; one link covers all nine sampled interior positions without increasing the card's measured height at the original viewport. The broader visual design remains in review, with no production activation claimed.
+
+### November 11: selected homepage invitation
+
+The owner selected **Refined inline** as the version to keep. The [selection and release record](../../../prototypes/homepage/README.md#selected-version--november-11) tracks its checked main delivery and fresh production verification. The compact layout, full-card native target and Design Language example are the accepted scope; this selection supersedes the preceding pending visual-review state.

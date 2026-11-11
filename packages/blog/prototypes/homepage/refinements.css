@@ -1,0 +1,21 @@
+/* Alternate proportions of the selected invitation, for local review only. */
+.home-tools-invitation-inline {
+  display: grid;
+  grid-template-columns: 80px minmax(0, 1fr);
+  align-items: center;
+  column-gap: .8rem;
+  padding: .8rem 1rem .55rem;
+}
+.home-tools-invitation-inline .home-tools-body { display: contents; }
+.home-tools-invitation-inline .home-tools-illustration { grid-column: 1; grid-row: 1 / 3; margin: 0 -.25rem 0 -.5rem; max-width: none; align-self: center; }
+.home-tools-invitation-inline .home-tools-copy { grid-column: 2; grid-row: 1; }
+.home-tools-invitation-inline .home-tools-copy h2 { font-size: 1.12rem; }
+.home-tools-invitation-inline .home-tools-copy h2 span { display: inline; }
+.home-tools-invitation-inline .home-tools-copy p { margin-top: .3rem; }
+.home-tools-invitation-inline .home-tools-action { grid-column: 2; grid-row: 2; border-top: none; padding-top: .2rem; }
+.home-tools-invitation-inline .home-tools-action-disc { width: 26px; height: 26px; border-color: transparent; }
+@media (max-width: 380px) {
+  .home-tools-invitation-inline { grid-template-columns: 60px minmax(0, 1fr); column-gap: .6rem; }
+  .home-tools-invitation-inline .home-tools-copy h2 { font-size: 1.05rem; }
+  .home-tools-invitation-inline .home-tools-action { font-size: .63rem; }
+}

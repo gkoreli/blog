@@ -2,6 +2,7 @@ import { html } from '@nisli/core';
 import type { PostMeta } from '../lib/frontmatter.js';
 import { SECTION_LABELS } from '../lib/frontmatter.js';
 import { formatDateShort } from '../lib/dates.js';
+import { homeToolsInvitation } from './home-tools-invitation.js';
 
 function CoverStory({ post }: { post: PostMeta }) {
   return html`<a href="/${post.slug}" class="cover">
@@ -34,7 +35,7 @@ export function homePage(posts: PostMeta[]) {
 
   return html`<div class="home">
   ${featured ? CoverStory({ post: featured }) : ''}
-  <section class="home-tools-strip" aria-label="Engineering tools"><p><strong>From field notes to working tools.</strong><br>Check page access, test crawler rules and compare the evidence.</p><a href="/tools">Explore the tools ↗</a></section>
+  ${homeToolsInvitation()}
 
   <div class="separator"><img src="/icons/sparkle.svg" class="separator-icon" width="14" height="14" alt=""></div>
 

@@ -1,4 +1,5 @@
 import { html } from '@nisli/core';
+import { homeToolsInvitation } from './home-tools-invitation.js';
 
 const PALETTE = [
   { name: 'Paper',        token: '--color-bg',           light: '#faf8f5', dark: '#1a1a1a',  role: 'Page background — warm, not white' },
@@ -108,6 +109,10 @@ export function designLanguagePage() {
       <div class="dl-surface-label">Flat — <code>--color-surface</code></div>
     </div>
   </div>
+
+  <h3 class="dl-pattern-title">Illustrated invitation</h3>
+  <p class="dl-body-note">Give the move from reading to doing a compact, illustrated surface. For one destination, the whole surface responds: title, artwork and padding. Keep one clear link, show focus around its full target, and let the writing around it stay open and editorial.</p>
+  ${homeToolsInvitation('dl-tools-invitation-heading')}
 
   ${GradSep()}
 
