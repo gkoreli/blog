@@ -8,11 +8,13 @@ export function referralRulesJson(policy: ReferralPolicy): string {
 }
 
 /** Shared host-suffix evaluator CTEs. Callers supply a trusted host-selection query. */
-export function referralAssessmentCtes(hostsQuery: string): string {
+export function referralAssessmentCtes(hostsQuery: string, rulesParameterIndex?: number): string {
+  if (rulesParameterIndex !== undefined && (!Number.isSafeInteger(rulesParameterIndex) || rulesParameterIndex < 1)) throw new Error('Invalid referral parameter index');
+  const rulesParameter = rulesParameterIndex === undefined ? '?' : `?${rulesParameterIndex}`;
   return `rules AS MATERIALIZED (
         SELECT json_extract(value, '$[0]') AS host, json_extract(value, '$[1]') AS exact_host,
                json_extract(value, '$[2]') AS excluded, json_extract(value, '$[3]') AS priority
-        FROM json_each(?)
+        FROM json_each(${rulesParameter})
       ),
       hosts AS MATERIALIZED (
         ${hostsQuery}

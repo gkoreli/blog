@@ -53,7 +53,8 @@ function predicateFor(window: StatsWindow, query: StatsQuery, includeOutgoing = 
     if (query.kind === 'unresolved') sql += ` AND ${unresolvedKindSql()}`;
     else { sql += ' AND reader_kind = ?'; values.push(query.kind); }
   }
-  return { sql, values };
+  let parameter = 0;
+  return { sql: sql.replaceAll('?', () => `?${++parameter}`), values };
 }
 
 /** Exact origins only: no suffix matching, normalization or caller-controlled SQL. */
@@ -215,7 +216,7 @@ function reportSql(selected: QueryPredicate, bucketSql: string, includeBoundary:
         )`,
     'excluded': `(
           SELECT json_array(json_object('views', COUNT(*)))
-          FROM assessed WHERE referral_excluded = 1 AND ${pathScope}
+          FROM page_observations WHERE ${selected.sql} AND COALESCE(referrer_host IN (SELECT original FROM abusive_hosts), 0) = 1 AND ${pathScope}
         )`,
     'vendor-cache': `(${vendorCacheReportProjectionSql()})`,
     'vendor-ip': `(
@@ -316,22 +317,26 @@ function reportSql(selected: QueryPredicate, bucketSql: string, includeBoundary:
   const names: readonly ReportSection[] = includeBoundary ? [...sectionNames, 'boundary'] : sectionNames;
   const sectionValues = names.map((name,index) => `('${name}', ${index})`);
 
-  const ctes = [
-    `selected AS MATERIALIZED (
+  // Host assessment reads only its own columns. Keeping it independent of the
+  // event projection avoids expanding a wide CTE for every aggregate reference.
+  const ctes = [referralAssessmentCtes(`
+    SELECT DISTINCT referrer_host AS original, lower(rtrim(referrer_host, '.')) AS normalized
+    FROM page_observations WHERE ${selected.sql}
+      AND referrer_host IS NOT NULL AND length(rtrim(referrer_host, '.')) <= 253
+  `, selected.values.length + 1)];
+  if (includeOutgoing) {
+    ctes.push(`assessed AS MATERIALIZED (
+      SELECT ${selectedColumns.join(', ')}, COALESCE(referrer_host IN (SELECT original FROM abusive_hosts), 0) AS referral_excluded
+      FROM page_observations ${projectionJoin} WHERE ${selected.sql}
+    )`, `included AS (SELECT * FROM assessed WHERE referral_excluded = 0 AND ${pathScope})`);
+  } else {
+    ctes.push(`included AS MATERIALIZED (
       SELECT ${selectedColumns.join(', ')}${evidenceCohorts ? ', COUNT(*) AS event_views' : ''}
       FROM page_observations ${projectionJoin} WHERE ${selected.sql}
+        AND COALESCE(referrer_host IN (SELECT original FROM abusive_hosts), 0) = 0
       ${evidenceCohorts ? `GROUP BY ${inputColumns.join(', ')}` : ''}
-    )`,
-    referralAssessmentCtes(`
-      SELECT DISTINCT referrer_host AS original, lower(rtrim(referrer_host, '.')) AS normalized
-      FROM selected WHERE referrer_host IS NOT NULL AND length(rtrim(referrer_host, '.')) <= 253
-    `),
-    `assessed AS MATERIALIZED (
-      SELECT selected.*, COALESCE(referrer_host IN (SELECT original FROM abusive_hosts), 0) AS referral_excluded
-      FROM selected
-    )`,
-    `included AS (SELECT * FROM assessed WHERE referral_excluded = 0 AND ${pathScope})`,
-  ];
+    )`);
+  }
   if (sectionNames.includes('directory-publication')) ctes.push(`directory_inputs AS MATERIALIZED (
     SELECT signature_evidence, signature_status, SUM(event_views) AS directory_views
     FROM included GROUP BY signature_evidence, signature_status
