@@ -1,0 +1,127 @@
+{
+  "capturedOnPacific": "2026-11-11",
+  "scope": "Date-matched aggregate comparison; requests, classifications and search clicks are different units. No person or individual click is identified.",
+  "window": {
+    "startDateInclusive": "2026-08-10",
+    "endDateInclusive": "2026-11-09",
+    "timeZone": "America/Los_Angeles",
+    "days": 92,
+    "startUtcInclusive": "2026-08-10T07:00:00+00:00",
+    "endUtcExclusive": "2026-11-10T08:00:00+00:00"
+  },
+  "searchConsole": {
+    "property": "sc-domain:gkoreli.com",
+    "searchType": "Web (text-based)",
+    "clicks": 11,
+    "impressions": 1585,
+    "daysExported": 92,
+    "pageClickSum": 11,
+    "queryRowClickSum": 1,
+    "clickedPages": [
+      {
+        "url": "https://gkoreli.com/",
+        "clicks": 6
+      },
+      {
+        "url": "https://gkoreli.com/topologies-of-thoughts",
+        "clicks": 2
+      },
+      {
+        "url": "https://gkoreli.com/oss-radar-04-the-agent-multiplexer-is-becoming-a-runtime",
+        "clicks": 1
+      },
+      {
+        "url": "https://gkoreli.com/how-i-separate-readers-from-bots-without-javascript",
+        "clicks": 1
+      },
+      {
+        "url": "https://gkoreli.com/bring-your-own-ai-agent",
+        "clicks": 1
+      }
+    ],
+    "sourceExportSha256": "ad2dc12524a9d00b1681c0a0854b51a3391a45ad6533d6f1f671d9558995724e",
+    "aiReport": {
+      "impressions": 9,
+      "clickMetricAvailableInObservedView": false
+    }
+  },
+  "googleReferrerObservations": {
+    "allTime": 759,
+    "outsideMatchedWindow": 77,
+    "matchedWindow": 682,
+    "byStoredKind": {
+      "cloud-browser": 504,
+      "browser": 91,
+      "http-client": 57,
+      "search-crawler": 13,
+      "unresolved": 9,
+      "preview-or-feed": 5,
+      "legacy-browser": 3
+    },
+    "browser": 91,
+    "outsideBrowser": 591,
+    "browserOnZeroWebTextClickDates": 79,
+    "zeroWebTextClickDatesWithBrowserObservations": 32,
+    "browserByReason": {
+      "navigation-shaped": 47,
+      "navigation-shaped-network-unlisted": 35,
+      "beacon-script-ran": 6,
+      "user-agent-only": 3
+    }
+  },
+  "recovery": {
+    "reportedFailure": "Earlier unmarked request returned HTTP 503; original response headers and Worker event were not retained. Cause remains unestablished.",
+    "codeChange": false,
+    "statementsEach": 6,
+    "rowsReadEach": 972693,
+    "rowsWrittenEach": 0,
+    "coldWorkerVersion": "ddae0c8d-551f-4e02-8d22-1632a2839500",
+    "cacheHitWorkerVersion": "134dfb75-e01e-42b0-85b1-1dd07c76408b",
+    "cachePair": [
+      {
+        "status": 200,
+        "cache": "HIT",
+        "ray": "a58e6668fa8c703b-SEA",
+        "sha256": "83fcb041c1adbd0e4f774689dc734b1581f0f7bade1ed52c4e1fb9549c7039f2",
+        "updatedAt": "2026-11-11T15:40:13.015Z",
+        "bytes": 37639
+      },
+      {
+        "status": 200,
+        "cache": "HIT",
+        "ray": "a58e6669cca2703b-SEA",
+        "sha256": "83fcb041c1adbd0e4f774689dc734b1581f0f7bade1ed52c4e1fb9549c7039f2",
+        "updatedAt": "2026-11-11T15:40:13.015Z",
+        "bytes": 37639
+      }
+    ],
+    "ui": {
+      "range": "90d",
+      "traffic": "browser",
+      "startUtcDate": "2026-08-14",
+      "endUtcDate": "2026-11-11",
+      "views": 6778,
+      "googleReferrerViews": 92,
+      "rendered": true
+    },
+    "markedColdCalculations": 2,
+    "unmarkedUiRequestCost": "unavailable"
+  },
+  "comparisonQuery": {
+    "sqlSha256": "334bd4ccecb5bcd71ca89c41d4520711c448374c06d29d9588ef1b70aa43ad9c",
+    "nativeCases": 11,
+    "nativeCheckPassed": true,
+    "rowsRead": 46851,
+    "rowsWritten": 0,
+    "reviewThreshold": 200000,
+    "ownerExclusion": "is_owner=0 and no owner_clients match",
+    "referrerSelection": "lower(rtrim(referrer_host, \".\")) in (google.com, www.google.com); both included under inspected referral policy"
+  },
+  "limits": [
+    "Browser and hosting-network labels do not authenticate people, automation or Google click-throughs.",
+    "Only dates are aligned; request counts and Search Console click counts are not interchangeable.",
+    "A same-date aggregate join does not match individual requests to clicks.",
+    "Missing source pages, replays, non-Web Google navigation and collector loss are not quantified.",
+    "No persistent 90-day Browser failure was reproduced; successful current responses establish recovery, not root cause or permanent availability."
+  ]
+}

@@ -1,5 +1,7 @@
 # Analytics and D1 Handoff — September 7, 2026 UTC
 
+**November 11 continuation:** the [90-day Browser check and Google comparison](06-browser-report-and-google-reconciliation-2026-11-11.md) verify current 200 cold responses, actual cache hits and browser rendering without a runtime change. The earlier isolated 503 is not reproduced and its cause remains unknown. For August 10–November 9 Pacific, Search Console records 11 Web (text) clicks; retained observations reporting Google total 682, including 91 Browser signals. Raw exports and diagnostics remain private; the aggregate does not identify individual search clicks.
+
 **November 10 continuation:** a separate [public-stats SQL incident](05-public-stats-503-2026-11-10.md) records the new production 503, reproduced engine regression and transactional workaround. Recovery is accepted for the reported seven-day/all-audience endpoint: 200 MISS → identical HIT, one 839,029-read/zero-write calculation, and durable private evidence. The September read-budget repair below remains completed; its historical successful report does not establish present health.
 
 Resume here after the break. This checkpoint records completed work and open questions; it does not require an agent to remain running. [Decision](../../../../../docs/adr/0016.7-budget-d1-reads-and-cache-public-reports.md), [current production acceptance](02-recovery.md), [task](../../../../../docs/tasks/TASK-0131-d1-analytics-read-budget.md).
