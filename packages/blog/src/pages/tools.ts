@@ -1,6 +1,11 @@
 import { html } from '@nisli/core';
-import { navigationChoices } from '../templates/navigation-choice.js';
+import { navigationChoices, type NavigationChoice } from '../templates/navigation-choice.js';
 import { toolCatalogue } from './tool-catalogue.js';
+
+const exampleReport: readonly NavigationChoice[] = [{
+  id: 'report', href: '/ai-check/example#access-report', label: 'View an example report',
+  summary: 'A completed page check of gkoreli.com.', meta: 'Uses no daily checks', drawing: 'page',
+}];
 
 export function toolsPage() {
   return html`<article class="tools-page tool-app tools-library">
@@ -10,12 +15,21 @@ export function toolsPage() {
       <p>Check a page. Test a policy. Follow the evidence.</p>
     </header>
     ${navigationChoices(toolCatalogue, { label: 'Tools', idPrefix: 'tools' })}
-    <section class="tools-library-example">
-      <span>A good place to start</span>
-      <h2><a href="/ai-check/example#access-report">Explore a saved report</a></h2>
-      <p>No page to check? See how the evidence fits together.</p>
-    </section>
-    <p class="tools-library-allowance">No account needed. Page checks and request inspection share 10 checks per network address per UTC day. The local tools use no allowance.</p>
-    <footer class="tools-library-provenance"><span>From the field notes.</span><a href="/ai-site-check-evidence">Investigation</a><a href="/api/ai-check/schema">JSON API</a><a href="https://github.com/gkoreli/blog/tree/main/packages/site-audit" target="_blank" rel="noopener">Source</a></footer>
+    <div class="tools-library-example">
+      ${navigationChoices(exampleReport, { label: 'Example report', idPrefix: 'tools-example', layout: 'rows' })}
+    </div>
+    <details class="tools-library-usage">
+      <summary>Free usage &amp; limits</summary>
+      <div class="tools-library-usage-body">
+        <p>All four tools are free. No account or API key needed.</p>
+        <dl>
+          <dt>Page check &amp; Request inspector</dt>
+          <dd>10 checks per day, shared by both tools. The limit applies to your public IP address and resets at 00:00 UTC.</dd>
+          <dt>Robots playground &amp; Report comparison</dt>
+          <dd>Unlimited use in your browser. Your inputs aren’t uploaded.</dd>
+        </dl>
+      </div>
+    </details>
+    <nav class="tools-library-resources" aria-label="Documentation and source"><a href="/ai-site-check-evidence">How the checks work</a><a href="/api/ai-check/schema">API schema (JSON)</a><a href="https://github.com/gkoreli/blog/tree/main/packages/site-audit" target="_blank" rel="noopener">Source code</a></nav>
   </article>`;
 }

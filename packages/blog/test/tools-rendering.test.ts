@@ -223,7 +223,7 @@ test('compact tools directory links to the checker and preserves its native POST
   constructors(t);
   const [home, checker] = await renderContent([toolsPage(), aiCheckPage()]); assert.ok(home); assert.ok(checker);
   document.body.innerHTML = home;
-  const choices = [...document.querySelectorAll('.navigation-choice')];
+  const choices = [...document.querySelectorAll('nav[aria-label="Tools"] .navigation-choice')];
   assert.equal(choices.length, 4);
   assert.equal(document.querySelector('form'), null);
   for (const choice of choices) {
