@@ -1,9 +1,44 @@
 import { ACTIVE_REFERRAL_POLICY, parseStatsQuery } from '@gkoreli/analytics';
 
 /** Bump when report semantics, storage binding, or public selection rules change. */
-export const STATS_REPORT_VERSION = '2026-11-11.5';
+export const STATS_REPORT_VERSION = '2026-11-11.6';
 export const STATS_EDGE_TTL_SECONDS = 3600;
 const MAX_PENDING_REPORTS = 8;
+const LOOKUP_BUDGET_MS = 250;
+const PUBLICATION_BUDGET_MS = 1000;
+
+export interface StatsBackgroundWork { waitUntil(work: Promise<unknown>): void }
+export interface StatsCacheOperation {
+  version: '2026-11-11.1';
+  event: 'stats-cache-operation';
+  operation: 'lookup' | 'publication';
+  outcome: 'returned' | 'unavailable' | 'deadline';
+  elapsedMs: number;
+}
+
+type CacheResult<T> = { outcome: 'returned'; value: T } | { outcome: 'unavailable' | 'deadline' };
+
+/** Optional cache I/O has a finite budget; the source report keeps its own
+ * failure semantics. Late lookup bodies are released instead of being retained.
+ */
+async function cacheOperation<T>(operation: StatsCacheOperation['operation'], run: () => Promise<T>, budgetMs: number,
+  observe: ((event: StatsCacheOperation) => void) | undefined): Promise<CacheResult<T>> {
+  const started = performance.now();
+  let expired = false;
+  let timer: ReturnType<typeof setTimeout> | undefined;
+  const work: Promise<CacheResult<T>> = Promise.resolve().then(run).then(value => {
+    if (expired && value instanceof Response) void value.body?.cancel().catch(() => {});
+    return { outcome: 'returned', value };
+  }, () => ({ outcome: 'unavailable' }));
+  const deadline = new Promise<CacheResult<T>>(resolve => {
+    timer = setTimeout(() => { expired = true; resolve({ outcome: 'deadline' }); }, budgetMs);
+  });
+  const result = await Promise.race([work, deadline]);
+  if (timer !== undefined) clearTimeout(timer);
+  try { observe?.({ version: '2026-11-11.1', event: 'stats-cache-operation', operation, outcome: result.outcome, elapsedMs: performance.now() - started }); }
+  catch { /* Cache telemetry cannot affect a report. */ }
+  return result;
+}
 
 export interface StatsCacheStore {
   match(request: Request): Promise<Response | undefined>;
@@ -15,6 +50,9 @@ interface StatsCacheOptions {
   policyHash?: string;
   reportVersion?: string;
   onOutcome?: (event: StatsCacheOutcome) => void;
+  onOperation?: (event: StatsCacheOperation) => void;
+  lookupBudgetMs?: number;
+  publicationBudgetMs?: number;
 }
 
 export interface StatsCacheOutcome {
@@ -49,10 +87,13 @@ export function createStatsHandler<Environment>(
   cache: StatsCacheStore,
   load: (request: Request, env: Environment) => Promise<Response>,
   options: StatsCacheOptions = {},
-): (request: Request, env: Environment) => Promise<Response> {
+): (request: Request, env: Environment, background?: StatsBackgroundWork) => Promise<Response> {
   const now = options.now ?? Date.now;
   const policyHash = options.policyHash ?? ACTIVE_REFERRAL_POLICY.sha256;
   const reportVersion = options.reportVersion ?? STATS_REPORT_VERSION;
+  const lookupBudget = options.lookupBudgetMs ?? LOOKUP_BUDGET_MS;
+  const publicationBudget = options.publicationBudgetMs ?? PUBLICATION_BUDGET_MS;
+  if (![lookupBudget, publicationBudget].every(n => Number.isFinite(n) && n >= 1 && n <= 5000)) throw new Error('Invalid cache operation budget');
   // Coalesces cold fills only within this isolate. Cache storage is local to the Cloudflare data center.
   const pending = new Map<string, Promise<Response>>();
   const observed = (response: Response, state: StatsCacheOutcome['state']): Response => {
@@ -61,7 +102,7 @@ export function createStatsHandler<Environment>(
     return response;
   };
 
-  return async (request, env) => {
+  return async (request, env, background) => {
     if (request.method !== 'GET') return observed(new Response(null, { status: 405, headers: { Allow: 'GET' } }), 'INVALID');
     const url = new URL(request.url);
     const query = parseStatsQuery(url.searchParams);
@@ -80,21 +121,19 @@ export function createStatsHandler<Environment>(
     if (query.kind !== undefined) keyUrl.searchParams.set('kind', query.kind);
     const key = new Request(keyUrl);
 
-    try {
-      const cached = await cache.match(key);
-      if (cached !== undefined && cached.status === 200
-          && Date.parse(cached.headers.get('Expires') ?? '') > now()
-          && !cached.headers.has('Set-Cookie')) {
-        return observed(publicResponse(cached, 'HIT', now()), 'HIT');
-      }
-    } catch {
-      console.warn('stats-cache: lookup unavailable');
+    const lookup = await cacheOperation('lookup', () => cache.match(key), lookupBudget, options.onOperation);
+    const cached = lookup.outcome === 'returned' ? lookup.value : undefined;
+    if (cached !== undefined && cached.status === 200
+        && Date.parse(cached.headers.get('Expires') ?? '') > now()
+        && !cached.headers.has('Set-Cookie')) {
+      return observed(publicResponse(cached, 'HIT', now()), 'HIT');
     }
 
     const existing = pending.get(key.url);
     if (existing !== undefined) return observed(publicResponse((await existing).clone(), 'COALESCED', now()), 'COALESCED');
     if (pending.size >= MAX_PENDING_REPORTS) return observed(unavailable(), 'CAPACITY');
 
+    let publication: Promise<void> | undefined;
     const fill = (async () => {
       let response: Response;
       try {
@@ -111,12 +150,10 @@ export function createStatsHandler<Environment>(
       headers.set('Date', new Date(startedAt).toUTCString());
       const report = new Response(response.body, { status: response.status, statusText: response.statusText, headers });
       if (ttl > 0) {
-        try {
-          // Await publication so simultaneous callers can reuse the completed entry immediately.
-          await cache.put(key, report.clone());
-        } catch {
-          console.warn('stats-cache: storage unavailable');
-        }
+        publication = cacheOperation('publication', () => cache.put(key, report.clone()), publicationBudget, options.onOperation).then(() => {});
+        // Embedders without an execution context retain bounded synchronous
+        // publication. The composed Worker publishes after sending its report.
+        if (background === undefined) await publication;
       }
       return report;
     })();
@@ -124,7 +161,12 @@ export function createStatsHandler<Environment>(
     try {
       return observed(publicResponse((await fill).clone(), 'MISS', now()), 'MISS');
     } finally {
-      pending.delete(key.url);
+      if (publication !== undefined && background !== undefined) {
+        // Keep the completed report coalescible until publication settles or its
+        // budget expires, without retaining capacity indefinitely on cache failure.
+        const release = publication.then(() => { pending.delete(key.url); });
+        try { background.waitUntil(release); } catch { void release; }
+      } else pending.delete(key.url);
     }
   };
 }

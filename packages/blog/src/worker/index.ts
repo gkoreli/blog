@@ -44,6 +44,7 @@ const cachedStats = createStatsHandler({
   put: (request, response) => caches.default.put(request, response),
 }, (request, env: Env) => handleStats(request, env, event => console.info('stats-report-calculation', event)), {
   onOutcome: event => console.info('stats-report-cache', event),
+  onOperation: event => console.info('stats-cache-operation', event),
 });
 
 const cachedArticleReach = createArticleReachHandler({
@@ -227,7 +228,7 @@ export default {
       || pathname === '/ai-check/example' || pathname === '/ai-check' && method === 'POST') return handleAiCheck(request, env);
 
     if (pathname === '/api/stats' && method === 'GET') {
-      return cachedStats(request, env);
+      return cachedStats(request, env, ctx);
     }
     if (pathname === '/api/readership') return cachedArticleReach(request, env);
     if (pathname === '/api/owner') {

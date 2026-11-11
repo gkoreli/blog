@@ -207,3 +207,60 @@ test('telemetry failures preserve responses and invalid requests do not invoke c
   assert.equal((await failed(request(), {})).status, 503);
   assert.deepEqual(events.map(e => [e.state, e.status]), [['MISS', 503]]);
 });
+
+test('a stalled optional lookup yields a complete source report within its budget and releases a late body', async () => {
+  const gate = Promise.withResolvers<Response | undefined>();
+  const operations: { operation: string; outcome: string }[] = [];
+  let generations = 0;
+  const cache: StatsCacheStore = { match: () => gate.promise, async put() {} };
+  const serve = createStatsHandler(cache, async () => Response.json({ generation: ++generations }), {
+    lookupBudgetMs: 5, onOperation: event => operations.push(event),
+  });
+  const response = await serve(request(), {});
+  assert.equal(response.status, 200);
+  assert.deepEqual(await response.json(), { generation: 1 });
+  assert.equal(response.headers.get('X-Stats-Cache'), 'MISS');
+  assert.ok(operations.some(e => e.operation === 'lookup' && e.outcome === 'deadline'));
+  const late = Response.json({ stale: true });
+  gate.resolve(late);
+  await new Promise(resolve => setTimeout(resolve, 0));
+  assert.equal(late.bodyUsed, true);
+});
+
+test('Worker background publication does not delay delivery and equivalent calls coalesce until it settles', async () => {
+  const cache = memoryCache(), gate = Promise.withResolvers<void>();
+  const put = cache.put;
+  cache.put = async (key, value) => { await gate.promise; await put(key, value); };
+  const work: Promise<unknown>[] = [];
+  const ctx = { waitUntil(promise: Promise<unknown>) { work.push(promise); } };
+  let generations = 0;
+  const serve = createStatsHandler(cache, async () => Response.json({ generation: ++generations }), { publicationBudgetMs: 100 });
+  const first = await serve(request(), {}, ctx);
+  assert.equal(first.status, 200);
+  assert.equal(cache.entries.size, 0, 'Response is available before cache publication');
+  const same = await serve(request(), {}, ctx);
+  assert.equal(same.headers.get('X-Stats-Cache'), 'COALESCED');
+  assert.equal(generations, 1);
+  assert.deepEqual(await same.json(), await first.json());
+  gate.resolve(); await Promise.all(work);
+  assert.equal((await serve(request(), {}, ctx)).headers.get('X-Stats-Cache'), 'HIT');
+  assert.equal(generations, 1);
+});
+
+test('a stalled publication releases bounded capacity and observer failures do not affect complete responses', async () => {
+  const work: Promise<unknown>[] = [], operations: { operation: string; outcome: string }[] = [];
+  const ctx = { waitUntil(promise: Promise<unknown>) { work.push(promise); } };
+  const cache: StatsCacheStore = { async match() { return undefined; }, put: () => new Promise<void>(() => {}) };
+  let generations = 0;
+  const serve = createStatsHandler(cache, async () => Response.json({ generation: ++generations }), {
+    publicationBudgetMs: 5,
+    onOperation(event) { operations.push(event); throw new Error('private observer'); },
+  });
+  for (let i = 0; i < 8; i++) assert.equal((await serve(request(`path=/post-${i}`), {}, ctx)).status, 200);
+  assert.equal((await serve(request('path=/overflow'), {}, ctx)).status, 503);
+  await Promise.all(work);
+  assert.equal((await serve(request('path=/overflow'), {}, ctx)).status, 200);
+  assert.equal(generations, 9);
+  await Promise.all(work);
+  assert.equal(operations.filter(e => e.operation === 'publication' && e.outcome === 'deadline').length, 9);
+});
