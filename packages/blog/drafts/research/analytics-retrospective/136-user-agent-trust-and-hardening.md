@@ -39,3 +39,11 @@ The scoped source/local iteration is complete. Commit/push is the delivery recor
 ## Owner-authorized own-data continuation
 
 [Research 139](139-own-data-user-agent-audit.md) and [receipt 140](140-own-data-user-agent-findings.json) answer the later November 10 request for retained Wrangler/Cloudflare findings. They preserve separate populations, a fresh dashboard activation observation for the earlier source, the measured pure-assessment caution correction and the next article revision. The source/local and November 6 acceptances retain their original scopes.
+
+## Plain-language editorial revision
+
+Later November 10 owner feedback replaces the opening ratio with about 36 out of every 100 Googlebot claims passing the operator’s checks. The article now explains the source-address method before parser repairs, why verification belongs in collection, and how our existing collector calls the published-IP checker. Google’s verification guidance and the operator’s methods were rechecked; source links pin the inspected collection/checker code. Introductory outbound citations move to Sources. The own-data paragraphs now explain the separate log/database populations and why a signature without recorded User-Agent coverage cannot confirm that header’s software name.
+
+This is an editorial continuation, with no runtime change, new production query or activation claim. In the isolated preview, all 34 Markdown posts validate and the build renders 45 posts. HTML and Markdown checks cover the new explanation, six tables, nineteen complete shaping prompts, absence of introductory outbound links and removal of the administrative note only in the preview. Forty-seven repository references resolve locally. The draft register and evidence map reflect this revision; frozen own-data receipts remain unchanged.
+
+The article remains unpublished without an assigned release date. The next bounded action is owner editorial review and publication preparation; proposed catalogue review and independent adoption trials retain their previous status.

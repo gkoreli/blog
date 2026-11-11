@@ -14,17 +14,33 @@ tags: [analytics, bots, cloudflare-workers, testing, ai-agents]
 > this baseline and publish it. No publication date is assigned. See the
 > [article disposition register](README.md); the other audited candidates are closed.
 
-**Across nine sites, counting `Googlebot` by name alone would have reported about 2.8 times as many requests as passed origin checks.** A dashboard that takes `User-Agent` literally can also file Windows 11 under Windows 10 and iPads under Mac. [Crawler audit](https://brandmentions.link/server-log-vs-cloudflare/#nine-sites-the-same-impostors) · [Microsoft’s Windows guidance](https://learn.microsoft.com/en-us/microsoft-edge/web-platform/how-to-detect-win11) · [WebKit’s iPad guidance](https://webkit.org/blog/9674/new-webkit-features-in-safari-13/)
+**Out of every 100 requests calling themselves Googlebot, about 36 passed checks confirming they came from Google.** That was the result of one operator’s 14-day audit across nine websites, covering an estimated 35,355 requests using the name.
 
-The operator’s 14-day audit found that **36% of an estimated 35,355 requests claiming Googlebot** met its verification criteria. The share ranged from 10% to 99% by site. The audit used Cloudflare’s bot labels or the crawler operator’s published IP ranges to check origin. [September–October 2026 audit](https://brandmentions.link/server-log-vs-cloudflare/#what-we-measured)
+Googlebot is Google’s crawler: software that fetches pages for its search index. Any program can copy its name into `User-Agent`, the text software sends to describe itself. The audit checked the sender using Cloudflare’s verified-bot labels or the operators’ published IP address lists. The remaining requests were unverified; outdated address lists can leave genuine crawlers unverified too.
 
-In a June 2023 study, scripts accessed `navigator.userAgent` on **88.3% of the 89,763 homepages** the researchers successfully visited from Chrome’s list of popular sites. In May that year, Chrome enabled its reduced User-Agent for **100% of Android clients on Chrome 110 and above** through its rollout system. The reduced string reports Android 10 and a model of `K` across devices. A dashboard that treats those as the actual OS and model puts different phones and OS versions in the same bucket. [Senol and Acar’s crawl](https://www.esat.kuleuven.be/cosic/publications/article-3692.pdf) · [Chromium’s rollout and string format](https://www.chromium.org/updates/ua-reduction/)
+Those checks can run as requests arrive. If your report counts the name without checking the sender, it can give you a badly inflated picture of Google’s visits. Store the claimed name and the check result separately, then make clear which one your count represents.
 
-Analytics and support teams can lose track of the tablets they need to test. A Sentry user reported iPad sessions recorded as macOS. Site teams can send someone the wrong installer when an Android tablet asks for the desktop site. For ad buyers using browser and platform data to target bids, Google exposes whether those values came from the string or from Client Hints. [Sentry issue](https://github.com/getsentry/sentry-javascript/issues/12127) · [Chrome’s download example](https://developer.chrome.com/blog/desktop-mode) · [Google’s bidding API](https://developers.google.com/authorized-buyers/rtb/useragent-targeting)
+The problem extends beyond copied bot names. A Windows 11 computer can report `Windows NT 10.0`. An iPad can send the same header as a Mac. An Android tablet requesting the desktop site can look like Linux and get offered a Linux installer. These values can mislead the teams deciding which devices to test, which downloads to offer and which crawlers reach their work.
 
-A web-wide error rate for analytics would require comparing what reports say with independent evidence about the devices and senders.
+This is a widely used input. In a June 2023 study, scripts read the browser’s `navigator.userAgent` property on **88.3% of the 89,763 homepages** researchers successfully visited from Chrome’s list of popular sites. That measures how widely the text was read. How many sites turned it into incorrect analytics remains an open question.
 
-My own detector had a simpler mistake: it called a copied CUBOT phone header a bot because the brand ends in “bot.” Fixing that led to a wider audit. I mapped twelve overlapping failure families, found more gaps in our browser/OS diagnostics, and built a reusable way to inspect the claims without presenting them as verified facts.
+My own detector had a simpler mistake: it called a copied CUBOT phone header a bot because the brand ends in “bot.” Fixing that led to a wider audit. I found twelve overlapping types of failure, corrected more of our browser and OS reporting, and built a reusable way to inspect what the header actually supports.
+
+## Check where “Googlebot” came from
+
+The name and the sender’s network address are separate pieces of evidence. Google publishes address ranges for its crawlers, so you can check a request claiming to be Googlebot against those ranges:
+
+1. Read the request’s source IP address from your server’s connection or your trusted CDN. Use the original sender’s address supplied by that CDN when a proxy sits in front of the server.
+2. Compare it with Google’s published **common-crawler address ranges**. An address belonging to Google Cloud generally is not enough; another customer can run software there.
+3. Record whether it matched, did not match, or could not be checked. Keep the address-list version and check time so you can explain the result later.
+
+Google also documents a DNS method: look up the address’s hostname, check that it belongs to the appropriate Google crawler domain, then look up that hostname and confirm it returns the original address. The second lookup matters; accepting a Google-looking name alone would repeat the original mistake. The exact domains and lists are in Google’s verification guidance in the sources below.
+
+These methods are available before you make a traffic report. In the nine-site audit, the operator revisited three earlier analyses that had relied on server logs alone. Bringing in Cloudflare’s records supplied the missing verification and exposed requests served from cache that never reached the server. Those are two separate ways a crawler report can go wrong.
+
+Our collector already checks published crawler addresses during collection. When a supported name such as Googlebot appears, it takes the source address from the Cloudflare request context and compares it with the appropriate published list. It caches the list and stores the outcome with the check time and list snapshot. A failed lookup remains unavailable; it does not silently become “fake bot.” The [collection code](https://github.com/gkoreli/blog/blob/6ec953301cc146f9a84f23deabf7972e767f96f0/packages/analytics/src/index.ts#L74-L84) and [address checker](https://github.com/gkoreli/blog/blob/6ec953301cc146f9a84f23deabf7972e767f96f0/packages/analytics/src/vendor-ip.ts#L209-L222) show where this happens.
+
+That check supports a claim about the sending network. It does not establish that a person read the page, or authenticate every word in the header. The CUBOT mistake happened earlier: we extracted a bot name from a phone brand. Our library needs to answer both questions correctly: **what name was supplied, and what independent evidence supports the sender?**
 
 ## The problem is larger than one phone brand
 
@@ -49,7 +65,9 @@ There is no defensible total of affected people behind this table. Some cases co
 
 ### A modern OS can report an old version
 
-Chrome deliberately reduces information in its header. Its [documented compatibility values](https://www.chromium.org/updates/ua-reduction/) include `Android 10; K`, `Mac OS X 10_15_7` and `Windows NT 10.0`. A report can retain those values as supplied claims and leave the actual operating system version and device model unresolved.
+Chrome deliberately reduces information in its header. On May 11, 2023, its [rollout record](https://www.chromium.org/updates/ua-reduction/) reported enabling the reduced string for **100% of Android clients on Chrome 110 and above** through its rollout system. Different phones and Android releases can consequently report the same `Android 10; K`. Those fields no longer distinguish their actual OS version or model.
+
+Other documented compatibility values include `Mac OS X 10_15_7` and `Windows NT 10.0`. Microsoft explicitly documents that [Windows 10 and Windows 11 cannot be distinguished by that User-Agent value](https://learn.microsoft.com/en-us/microsoft-edge/web-platform/how-to-detect-win11). A report can preserve what was sent while leaving the actual OS version unresolved.
 
 [Safari 26 makes the distinction particularly visible](https://webkit.org/blog/17333/webkit-features-in-safari-26-0/): its iOS header still says `CPU iPhone OS 18_6`, while the browser product says `Version/26.0`. Apple describes this as freezing the OS part for compatibility. A more complete regular expression cannot recover information the browser deliberately stopped sending.
 
@@ -63,7 +81,9 @@ That is why our form report describes **markers and preferences**. No mobile mar
 
 ## What one day of our own logs contained
 
-For November 9, 2026, I exported the blog Worker's retained invocation events and assessed their supplied headers locally. The first export hit its 2,000-record cap. An overlapping early-hours export returned 535 records; all 120 overlapping records matched exactly. Combining them preserved 2,414 HTTP request records and one separate scheduled invocation. The log service's sampling/completeness remains unverified, and the requests include assets, APIs, feeds, failed probes and pages.
+I checked **2,414 HTTP request records** retained in the blog Worker’s Cloudflare logs for November 9, 2026. They include pages, assets, APIs, feeds and failed probes. I assessed the supplied headers locally; I have not established that the logs contain every request that day.
+
+Building that sample required two exports because the first reached its 2,000-record cap. A second returned 535 records; the 120 overlapping records matched exactly. Removing those duplicates left the 2,414 HTTP records and one separate scheduled invocation.
 
 | Supplied evidence in the 2,414 HTTP records | Records | What it supports |
 | --- | ---: | --- |
@@ -78,7 +98,9 @@ The 1,049 version-pattern records split into 694 Windows and 355 macOS claims. T
 
 The audit also corrected our own new warning. Two Firefox-shaped headers reported only `Mac OS X 10.15`. My first caution treated that partial value as matching the full frozen `10_15_7` pattern. It now requires the complete documented version; the reported partial version stays intact. That reduces the caution count from 1,051 to 1,049, without changing browser/OS selection or traffic categories. None of this day's records reproduces the contradictory browser/OS or malformed mobile-hint cases below. Their repairs remain supported by controlled counterexamples.
 
-A separate bounded D1 query finds **595 retained page observations** for the same day: 388 with no catalogue candidate and 207 with one. All have classification and signature-detail records; none contains the optional browser/OS request-evidence record. Among 101 stored verified signature outcomes, none has a recorded true User-Agent coverage flag. This is a historical stored-evidence result, not a new signature verification. Owner flags/marks are zero in this selection; current referral exclusions have not been applied. These 595 observations are not the 2,414 log records or a public included-view total.
+The analytics database separately retained **595 page observations** for that day: 388 without a recognized crawler, tool or service name and 207 with one. These are a different population from the log export. Current referral exclusions have not been applied, so 595 is not the public dashboard’s included-view total.
+
+Of those page records, 101 stored a successful signature-verification result. None recorded that the signature covered `User-Agent`, so I cannot use those signatures to confirm the software names in that header. This inspects previously stored results; it does not verify the signatures again. All 595 records have classification and signature details, but none has the optional browser/OS diagnostics needed to examine those claims from the database alone.
 
 The raw headers stay private. The [dated method and aggregate findings](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/analytics-retrospective/139-own-data-user-agent-audit.md) preserve selectors, export limits, failed assumptions and the separate populations. They also retain catalogue-review leads, including Sofyabot, Twitterbot and FreshRSS declarations; seeing a product does not authenticate its operator.
 
@@ -132,7 +154,7 @@ The same values now supply optional diagnostics under a new prospective profile,
 
 ## A name is still not identity, purpose or a person
 
-A script can send a genuine-looking header. [Chromium’s own emulation API](https://chromedevtools.github.io/devtools-protocol/tot/Emulation/#method-setUserAgentOverride) can override the string and Client Hint metadata. [Google documents separate verification](https://developers.google.com/crawling/docs/crawlers-fetchers/verify-google-requests) precisely because a request can claim to be Googlebot without coming from Google.
+A script can send a genuine-looking browser header too. [Chromium’s own emulation API](https://chromedevtools.github.io/devtools-protocol/tot/Emulation/#method-setUserAgentOverride) can override the string and Client Hint metadata. The same distinction between a supplied name and independent evidence applies beyond Googlebot.
 
 Our analytics therefore keeps declared names, roles, provider/network evidence and signatures separate. A signature authenticates only its covered components. A valid proof that omits `User-Agent` cannot authenticate its unsigned software name. My [earlier live agent investigation](/ai-fetcher-research-from-experiments-to-a-cited-reference) demonstrates this boundary and traces agent-operated browsers that the analytics classified as Browser signals.
 
@@ -192,6 +214,13 @@ The improvement is that the library can now explain more of what it knows and wh
 
 ## Sources and terms
 
+The opening draws on two studies with different populations:
+
+| Evidence | What it establishes | Source |
+| --- | --- | --- |
+| Nine-site crawler audit, September 22–October 5, 2026 | The reported 36 in 100 is a rounded, source-attributed result. Cloudflare analytics can be sampled. I have not independently reproduced the operator’s traffic measurements. | [Jordan Ellis’s audit and methods](https://brandmentions.link/server-log-vs-cloudflare/#what-we-measured) |
+| User-Agent access study, June 2023 | Scripts accessed the property on 88.3% of 89,763 successfully visited homepages selected from Chrome’s popular-site data. It measures access to the string, not analytics errors. | [Senol and Acar, WPES 2023, §§3.6 and 5.1](https://www.esat.kuleuven.be/cosic/publications/article-3692.pdf) |
+
 | Term | Meaning in this article | Source |
 | --- | --- | --- |
 | User-Agent | Client-supplied products/comments, including compatibility text | [RFC 9110 §10.1.5](https://www.rfc-editor.org/rfc/rfc9110.html#section-10.1.5), June 2022 |
@@ -199,5 +228,7 @@ The improvement is that the library can now explain more of what it knows and wh
 | Mobile hint | Reported preference, not physical-device authentication | [UA-CH §3.7](https://wicg.github.io/ua-client-hints/#sec-ch-ua-mobile) |
 | Verified origin | Evidence obtained through a specific independent method and scope | [Google verification](https://developers.google.com/crawling/docs/crawlers-fetchers/verify-google-requests); our existing signature/network contracts |
 | Assessment profile | The interpretation policy used for this supplied input | [Domain decision and source](https://github.com/gkoreli/blog/blob/main/docs/adr/0016.22-user-agent-claims-and-platform-ambiguity.md) |
+
+The opening’s device and download examples are documented by [Microsoft](https://learn.microsoft.com/en-us/microsoft-edge/web-platform/how-to-detect-win11), [WebKit](https://webkit.org/blog/9674/new-webkit-features-in-safari-13/) and [Chrome](https://developer.chrome.com/blog/desktop-mode). The sections above explain the browser versions and modes involved.
 
 External documents and incidents were checked November 10, 2026. Historical reports retain their dates and remedies; browser defaults retain their version/mode scope. The twelve-family evidence map links the fuller research and acceptance records.

@@ -59,3 +59,19 @@ Lets dive into our wrangler cli cloudflare logs what calue can we extract from i
 ---
 
 I feel like the entry point should start the big pain across the industry like what do people get wrong across the field and how large is the problem, like the reader needs to fully understand in numbers how large is the pain and who all is affected.
+
+---
+
+this is a very confusing way to say something, what are you trying to say? Across nine sites, counting `Googlebot` by name alone would have reported about 2.8 times as many requests as passed origin checks. And I don't like so many hyperlinks right from the get go, imagine someone clicks it, so what? we are encourageing people to leave our website or what?
+
+---
+
+explain to me first, i am still not understanding what you are trying to say, how will other people understand? let me help you to write this better
+
+---
+
+out of every 100 requests calling themselves Googlebot, about 36 passed checks confirming they came from Google. -> this is much better way to say it, so why were you confusing me earlier? clearly you can write in an understendable way, so whats the problem, why don't you write it like that from the get go. Also, how did they verify this: about 36 passed checks confirming they came from Google? Thats the most interesting part, if you can verify and confirm request is coming from Google then why are you getting blindsided from the get go?
+
+---
+
+update the article based on the direction that i am giving you
