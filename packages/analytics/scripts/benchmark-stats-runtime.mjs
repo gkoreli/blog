@@ -9,6 +9,7 @@ import { join, resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { performance } from 'node:perf_hooks';
 import wrangler from 'wrangler';
+import { networkReportProjectionSql } from '../.test-dist/network-report-projection.js';
 import { queryStats } from '../.test-dist/stats.js';
 import { summaryCases } from '../test/fixtures/signature-summary.mjs';
 import { networkSummaryCases } from '../test/fixtures/vendor-network-summary.mjs';
@@ -31,6 +32,7 @@ const insert = `INSERT INTO page_observations
 const scenarios = [
   { name: 'empty', rows: 0, distinct: false, query: { range: '7d', traffic: 'all' } },
   { name: 'repeated-4500', rows: 4500, distinct: false, query: { range: '7d', traffic: 'all' } },
+  { name: 'unique-network-4500', rows: 4500, distinct: false, distinctNetwork: true, query: { range: '7d', traffic: 'all' } },
   { name: 'distinct-4500', rows: 4500, distinct: true, query: { range: '7d', traffic: 'all' } },
   { name: 'wide-15000', rows: 15000, distinct: false, query: { range: '30d', traffic: 'all' } },
 ];
@@ -74,16 +76,20 @@ try {
         const at = scenario.name === 'wide-15000' ? `2026-10-${String(2 + i % 29).padStart(2,'0')} 10:00:00` : '2026-10-30 10:00:00';
         return db.prepare(insert).bind('/article-' + i % 50, (i % 2300).toString(16).padStart(32,'0'),
           i % 101 === 100 ? 1 : 0, at, i % 37 === 36 ? 'traffic2cash.xyz' : i % 3 === 0 ? 'google.com' : null,
-          signature.status, record(signature.e, scenario.distinct, i), record(network.e, scenario.distinct, i));
+          signature.status, record(signature.e, scenario.distinct, i), record(network.e, scenario.distinct || scenario.distinctNetwork, i));
       });
       await db.batch(statements);
     }
     const before = await measure(db, reference.queryStats, scenario.query);
     const after = await measure(db, queryStats, scenario.query);
     assert.deepEqual(after.report, before.report, scenario.name);
-    const measurement = { ...scenario, views: after.report.totals.views, before: before.metrics, after: after.metrics, parity: true };
+    const highWater = await db.prepare('SELECT COALESCE(MAX(id),0) AS n FROM page_observations').first();
+    const projection = await db.prepare(networkReportProjectionSql('range')).bind(0, highWater.n).run();
+    const projected = await measure(db, queryStats, scenario.query);
+    assert.deepEqual(projected.report, before.report, scenario.name + ': projected');
+    const measurement = { ...scenario, views: after.report.totals.views, before: before.metrics, after: after.metrics, projected: projected.metrics, projectionCost: projection.meta, parity: true };
     measurements.push(measurement);
-    console.log(JSON.stringify({ scenario: scenario.name, beforeMs: before.metrics.elapsedMs, afterMs: after.metrics.elapsedMs, parity: true }));
+    console.log(JSON.stringify({ scenario: scenario.name, beforeMs: before.metrics.elapsedMs, afterMs: after.metrics.elapsedMs, projectedMs: projected.metrics.elapsedMs, parity: true }));
   }
   await db.prepare(`WITH RECURSIVE archive(n) AS (VALUES(0) UNION ALL SELECT n+1 FROM archive WHERE n<29999)
     INSERT INTO page_observations(path,daily_client_id,traffic_class,device_type,is_owner,observed_at)

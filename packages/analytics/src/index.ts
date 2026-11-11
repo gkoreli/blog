@@ -1,3 +1,4 @@
+import { projectNetworkObservation } from './network-report-projection.js';
 import { allowsDiagnostics } from './diagnostics.js';
 import { extractRequestEvidence, extractDiagnosticInputs } from './request-evidence.js';
 import { COLLECTION_VERSION, VERIFIER_PROFILE_VERSION } from './versions.js';
@@ -142,6 +143,10 @@ async function persistObservation(
   } : undefined;
   const receipt = storedObservationReceipt(observation);
   const storage = await recordPageObservation(env.DB, observation, diagnostic);
+  if (storage.status === 'returned') {
+    try { await projectNetworkObservation(env.DB, storage.observationId); }
+    catch { console.warn('analytics.report_projection_unavailable', { operationId }); }
+  }
   return { receipt, storage };
 }
 

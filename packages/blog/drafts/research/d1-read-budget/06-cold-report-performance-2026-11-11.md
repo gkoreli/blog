@@ -54,3 +54,29 @@ Local checks pass: 445 analytics tests, 442 site tests, workspace typechecks, Ma
 ### Release gate
 
 Reconcile concurrent main changes, rerun affected integrated checks, and apply only the reviewed index migration. Then activate the scoped source and execute the predeclared seven-day cold/repeat pair. A separate 30-day/all cold/repeat pair is permitted only after seven-day acceptance; use a 2,000,000-read review ceiling for that wider single fill and the same sub-second response target. These ceilings are post-execution review gates, not enforced database limits. Preserve raw captures privately and record source, index delivery, activation and measured acceptance separately.
+
+
+## First production gate: latency target missed
+
+Source `d3afaed842c74ff2c89a04c77e5d0567ac337aae` is activated by native build `a89bd252-78ec-4482-b72b-ff841559a4bb` as Worker `1cd0bcd7-6b7c-4924-9631-a8ca05e155cb`, Ready/100%. The index migration applies alone, and its ledger/index columns plus an actual query-plan check confirm an owner-and-time range search (one total metadata read, zero writes for verification).
+
+The marked seven-day/all report returns 200/MISS from SEA in **1.588 seconds**, with **934.3152 ms SQL / 1,278 ms binding wall time**, **386,030 reads / zero writes**. All five statements succeed once. The final metadata/network statement accounts for **563.6545 ms**. The cost ceiling passes; the sub-second latency target fails, so default 30-day acceptance is deferred.
+
+The equivalent request is routed to SJC and returns another 200/MISS in **1.350 seconds**, with **988.7308 ms SQL / 1,028 ms binding wall time**, **386,392 reads / zero writes**. It has a new calculation and body; this is a second regional fill, not cache reuse. Both costs and unavailable global hit-rate claims remain explicit. The owned filtered tail is stopped. No further report fills are authorized by this checkpoint until a revised candidate is checked.
+
+The remaining measured bottleneck justifies a narrow persistent read projection under the ADR's materialized-view decision gate: retain the exact stored network interpretation by observation and rule fingerprint, invalidate on source changes, maintain it after acknowledged ingestion, and backfill a frozen ID window before activation. Missing/stale projections must run the same validator so data correctness does not depend on projection availability.
+
+
+## Network read projection candidate
+
+Migration 0018 adds an observation-linked network-state projection and source-update invalidation trigger. The application service projects an acknowledged source row as a separate best-effort operation; the source repository and public JSON contract are unchanged. Current-rule facts are reused across all selectors. Missing/stale facts still use the exact SQL interpreter. Repeated rebuilds skip current facts rather than write them again. The rule fingerprint is pinned by a compatibility test.
+
+The local affected-runtime comparison now runs all 33 selectors in both fallback and projected modes (66 exact comparisons), with no report writes. [Rebuild and report controls](2026-11-11-projection-performance.json) also cover repeated envelopes, uniquely varying network envelopes, distinct signature/network envelopes and 15,000 events over 29 dates. Each projected response equals its fallback and frozen prior report. Projection write costs are separate from report reads. Host contention is uncontrolled, so production latency remains the acceptance gate.
+
+All 449 analytics tests, 442 site tests, types and the isolated 45-post build pass for this candidate. Tests cover missing/stale facts, source invalidation/deletion, exact repeated-event weights, no-op rebuilds, fingerprint changes and a projection failure preserving exactly one acknowledged observation without replay.
+
+### Bounded projection delivery plan
+
+Apply only migration 0018 after final native/Worker checks. Capture the minimum and maximum IDs of retained non-null network evidence, then rebuild that fixed window in at-most-1,000-ID chunks with the prepared projection SQL. Record every result and cursor privately. Stop after any failed/unknown-cost batch, any batch above 200,000 reads, or cumulative 5,000,000 reads / 50,000 writes; these are post-execution review ceilings. Verify current-rule coverage through the fixed high-water mark. Preserve source high-water and any later tail-window reconciliation separately.
+
+Deploy the checked projector/read-adapter source with cache namespace `2026-11-11.2`. Reconcile a bounded post-activation tail if source rows arrived between the frozen high-water mark and forward projection. Repeat the seven-day and default 30-day acceptance using same-connection request pairs, so a connection changing SEA to SJC does not stand in for a cache-reuse test. Stop further report fills on failed cost/latency gates and retain earlier failed acceptance evidence.

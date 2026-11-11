@@ -9,6 +9,7 @@ import { tmpdir } from 'node:os';
 import { join, resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
 import wrangler from 'wrangler';
+import { networkReportProjectionSql } from '../.test-dist/network-report-projection.js';
 import { queryStats } from '../.test-dist/stats.js';
 import { STATS_INTEGRITY_INSERT, statsIntegrityValues } from '../test/fixtures/stats-integrity.mjs';
 import { networkSummaryCases } from '../test/fixtures/vendor-network-summary.mjs';
@@ -46,13 +47,16 @@ try {
   queries.push({ range: '7d', traffic: 'all', agent: 'ExaUser' });
   const now = new Date('2026-10-31T12:00:00Z');
   const costs = [];
-  for (const query of queries) {
+  for (const mode of ['fallback', 'projected']) {
+    if (mode === 'projected') await db.prepare(networkReportProjectionSql('range')).bind(0, Number.MAX_SAFE_INTEGER).run();
+    for (const query of queries) {
     const expected = await reference.queryStats(referenceDb, query, now);
     const actual = await queryStats(db, query, now, undefined, cost => costs.push(cost));
-    assert.deepEqual(actual, expected, JSON.stringify(query));
+    assert.deepEqual(actual, expected, JSON.stringify({ mode, query }));
+    }
   }
   assert.ok(costs.every(cost => cost.submittedStatements === 5 && cost.returnedResults === 5 && cost.reportedRowsWritten === 0));
-  console.log(JSON.stringify({ selectors: queries.length, syntheticRows: inserts.length, statementsPerReport: 5,
+  console.log(JSON.stringify({ selectors: queries.length, comparisons: costs.length, modes: ['fallback', 'projected'], syntheticRows: inserts.length, statementsPerReport: 5,
     firstReport: costs[0], parity: true }));
 } finally {
   sqlite.close();

@@ -1,5 +1,5 @@
 -- Empty databases only. Never apply to the blog's existing database.
--- Schema snapshot through migration 0017; no historical rows or backfills.
+-- Schema snapshot through migration 0018; no historical rows or backfills.
 -- Regenerate: node packages/analytics/scripts/fresh-schema.mjs --write
 -- Future schema changes must update this snapshot and provide an upgrade path.
 
@@ -32,6 +32,12 @@ CREATE TABLE page_observation_diagnostics (
   captured_at TEXT NOT NULL,
   expires_at TEXT NOT NULL CHECK (expires_at > captured_at),
   payload TEXT NOT NULL CHECK (json_valid(payload) AND length(CAST(payload AS BLOB)) <= 4096)
+);
+
+CREATE TABLE page_observation_network_facts (
+  observation_id INTEGER PRIMARY KEY REFERENCES page_observations(id) ON DELETE CASCADE,
+  rule_sha256 TEXT NOT NULL CHECK (length(rule_sha256) = 64 AND rule_sha256 NOT GLOB '*[^0-9a-f]*'),
+  network_state TEXT NOT NULL CHECK (network_state IN ('not-recorded', 'recognized', 'unrecognized'))
 );
 
 CREATE TABLE page_observations (
@@ -108,3 +114,9 @@ CREATE UNIQUE INDEX idx_page_observations_source_event
 
 CREATE INDEX idx_reader_kind_revisions_observation
   ON reader_kind_revisions(observation_id);
+
+CREATE TRIGGER invalidate_page_observation_network_facts
+AFTER UPDATE OF vendor_ip_evidence ON page_observations
+BEGIN
+  DELETE FROM page_observation_network_facts WHERE observation_id = NEW.id;
+END;

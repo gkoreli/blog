@@ -1,6 +1,7 @@
 /** D1 read adapter. Query-specific projections preserve one complete report
  * while keeping raw evidence out of unrelated materialized populations.
  */
+import { NETWORK_REPORT_RULE_SHA256 } from './network-report-projection.js';
 import { READER_KINDS, type StatsQuery } from './contracts.js';
 import type { StatsWindow } from './dates.js';
 import { partitionPredicate } from './partition.js';
@@ -86,7 +87,7 @@ const REPORT_INPUTS = {
   kind: ['reader_kind', 'reader_reason', 'daily_client_id'], signer: ['signature_agent', 'signature_status'],
   'kind-signature': ['reader_kind', 'agent_name', 'signature_evidence', 'signature_status'],
   'client-evidence': ['reader_kind', 'agent_name', 'signature_evidence', 'signature_status'],
-  excluded: [], 'vendor-cache': ['vendor_ip_evidence'], 'vendor-ip': ['vendor_ip_evidence'],
+  excluded: [], 'vendor-cache': ['vendor_ip_evidence', 'report_network_state'], 'vendor-ip': ['vendor_ip_evidence', 'report_network_state'],
   verification: ['signature_evidence', 'signature_status'], 'referrer-state': ['referrer_state'],
   transitions: ['internal_referrer_path', 'representation', 'referrer_state'],
   'referrer-details': ['internal_referrer_path', 'representation', 'referrer_state', 'observed_at'],
@@ -97,6 +98,9 @@ function reportSql(selected: QueryPredicate, bucketSql: string, includeBoundary:
   const scopedPath = `?${selected.values.length + 2}`;
   const pathScope = includeOutgoing ? `(${scopedPath} IS NULL OR path = ${scopedPath})` : '1';
   const inputColumns = [...new Set([...(evidenceCohorts ? [] : ['path']), 'referrer_host', ...sectionNames.flatMap(name => REPORT_INPUTS[name])])];
+  const selectedColumns = inputColumns.map(column => column === 'report_network_state' ? 'network_projection.network_state AS report_network_state' : column);
+  const projectionJoin = inputColumns.includes('report_network_state')
+    ? `LEFT JOIN page_observation_network_facts AS network_projection ON network_projection.observation_id = page_observations.id AND network_projection.rule_sha256 = '${NETWORK_REPORT_RULE_SHA256}'` : '';
   const publicReason = reportedReasonSql();
   const publicKind = reportedKindSql();
   const publicSigner = signerLabelSql('signature_agent');
@@ -314,8 +318,8 @@ function reportSql(selected: QueryPredicate, bucketSql: string, includeBoundary:
 
   const ctes = [
     `selected AS MATERIALIZED (
-      SELECT ${inputColumns.join(', ')}${evidenceCohorts ? ', COUNT(*) AS event_views' : ''}
-      FROM page_observations WHERE ${selected.sql}
+      SELECT ${selectedColumns.join(', ')}${evidenceCohorts ? ', COUNT(*) AS event_views' : ''}
+      FROM page_observations ${projectionJoin} WHERE ${selected.sql}
       ${evidenceCohorts ? `GROUP BY ${inputColumns.join(', ')}` : ''}
     )`,
     referralAssessmentCtes(`
@@ -346,9 +350,9 @@ function reportSql(selected: QueryPredicate, bucketSql: string, includeBoundary:
   }
   if (sectionNames.some(name => name === 'vendor-cache' || name === 'vendor-ip')) {
     ctes.push(`vendor_network_inputs AS MATERIALIZED (
-      SELECT vendor_ip_evidence, SUM(event_views) AS network_views FROM included GROUP BY vendor_ip_evidence
+      SELECT vendor_ip_evidence, report_network_state, SUM(event_views) AS network_views FROM included GROUP BY vendor_ip_evidence, report_network_state
     )`, `vendor_network_facts AS MATERIALIZED (
-      SELECT vendor_ip_evidence, network_views, ${vendorNetworkStateSql()} AS network_state FROM vendor_network_inputs
+      SELECT vendor_ip_evidence, network_views, CASE WHEN report_network_state IS NOT NULL THEN report_network_state ELSE (${vendorNetworkStateSql()}) END AS network_state FROM vendor_network_inputs
     )`);
   }
   if (sectionNames.includes('verification')) {
