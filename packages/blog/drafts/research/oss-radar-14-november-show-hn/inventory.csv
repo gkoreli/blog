@@ -1,0 +1,1456 @@
+objectID,created_at,title,url,points,num_comments
+50326821,2026-11-01T15:58:28Z,"Show HN: HackerBooks – HackerTube, but for books mentioned on HN",https://hackerbooks.org,1869,308
+50340088,2026-11-02T17:16:17Z,Show HN: Subvocal – Talk to your computer without making noise,,848,395
+50346755,2026-11-03T01:18:09Z,Show HN: HackerTV – HN's most-recommended Youtube videos as 24/7 TV channels,https://hackertv.org,490,83
+50346981,2026-11-03T01:53:34Z,"Show HN: Hacker Times, a New York Times-inspired version of Hacker News",https://hackertimes.ca/,476,149
+50428907,2026-11-09T17:51:31Z,"Show HN: Every satellite that passed over any place this week, and its photos",https://www.watched.earth,476,81
+50443812,2026-11-10T18:01:15Z,"Show HN: Get your coding agent off ~2019 JavaScript, onto modern web primitives",https://github.com/GoogleChrome/modern-web-guidance,414,137
+50333339,2026-11-02T05:06:30Z,"Show HN: Wikihack – HackerTube, but for Wikipedia articles mentioned on HN",https://wikihack.netlify.app,339,104
+50339221,2026-11-02T16:25:26Z,Show HN: Warsaw in voxels – An interactive 3D map of the city centre,https://p.migdal.pl/warsaw-vibe-voxel/,327,55
+50325253,2026-11-01T13:02:30Z,"Show HN: OmniDiff – Opensource, super fast, content aware Git difftool, in Rust",https://github.com/ivankovic/omnidiff,322,97
+50406292,2026-11-07T17:27:30Z,"Show HN: Coldframe, a honeypot that poses as a supermarket fridge controller",https://github.com/hedgerow-dev/coldframe,288,70
+50368208,2026-11-04T16:45:11Z,Show HN: A decent text-to-image model trained for ~$20K (Apache 2.0 Weights),https://www.linum.ai/field-notes/pjit-21k,286,30
+50369895,2026-11-04T18:51:27Z,"Show HN: After a decade of reversing, I got co-op working in DOS Wing Commander",https://fireflyk64.github.io/wcmulti/,256,41
+50441518,2026-11-10T15:12:16Z,"Show HN: Valencia, Spain in Sim City/Isometric View",https://tinyvalencia.com/,241,61
+50334704,2026-11-02T09:29:16Z,Show HN: I've updated my Linux System Call website and API,https://syscall.sh/,238,58
+50362963,2026-11-04T08:54:27Z,Show HN: Vegetable Gardening for Engineers,https://jrcpl.us/contrib/2020/gardening-for-engineers/,219,43
+50333877,2026-11-02T06:59:40Z,Show HN: HackerHack – HackerBooks but for Posts Posted on HN,https://news.ycombinator.com/,185,25
+50378643,2026-11-05T13:07:29Z,"Show HN: Firenook – Firebase emulators in Rust: 40× faster writes, 10× less RAM",https://firenook.dev/,176,30
+50439000,2026-11-10T11:51:19Z,Show HN: A 15 MB self-hosted Netflix and Spotify for your media server,https://github.com/HolyArrs/HolyArrs,167,135
+50358352,2026-11-03T21:20:03Z,"Show HN: Uncracked City, detective game where you question LLM suspects that lie",https://uncracked.city,128,69
+50421155,2026-11-09T04:43:12Z,Show HN: Flide: Make Jev-like decision models up to 9.5x faster,https://github.com/OmniJev/Flide,124,29
+50366929,2026-11-04T15:25:33Z,Show HN: I built a tool that prices a pre-built PC part by part,https://pcdealcheck.com/,122,85
+50427934,2026-11-09T16:36:38Z,Show HN: DBDelve – Open-Source DB Client Made with Rust and GPUI,,122,48
+50429636,2026-11-09T18:39:22Z,"Show HN: MeowDisplay Is iPhone Mirroring, but in Reverse",https://meowdisplay.app/,119,45
+50429812,2026-11-09T18:50:56Z,Show HN: Someone Was Here – Find out who used your Mac while you were away,https://someonewashere.app/,115,43
+50414117,2026-11-08T15:31:52Z,Show HN: Ghanaian street games you can play in the browser,https://www.ghanastreetgames.com/,113,22
+50429144,2026-11-09T18:05:44Z,Show HN: STE80 Humanizer – de-AI text by writing 80% of the way to ASD-STE100,https://github.com/Dodaios/ste80-humanizer,109,41
+50358314,2026-11-03T21:16:48Z,Show HN: Kairos – Open-source risk and fraud decisioning platform,https://github.com/finic-ai/kairos,107,37
+50380704,2026-11-05T15:54:41Z,Show HN: Stroq – a local audit of what your coding agent did and why,https://github.com/AGGIB/Stroq,96,34
+50379221,2026-11-05T14:06:31Z,Show HN: Waymark – A workflow engine that compiles jobs instead of replaying,https://github.com/piercefreeman/waymark,88,48
+50405263,2026-11-07T15:16:01Z,"Show HN: We compressed a 31B video+audio diffusion model to 14B, 6 steps, INT8",https://github.com/Video-Rebirth/hyperflow-h3-flash,83,14
+50347552,2026-11-03T03:10:04Z,Show HN: I built a little browser game to practice Vim commands,https://hjkl.duy.run,72,57
+50353386,2026-11-03T15:41:52Z,Show HN: HackerChurn – which SaaS tools HN wants to cancel,https://hissingkitty.com/hacker-churn,71,26
+50377613,2026-11-05T10:45:28Z,"Show HN: Spindle – a full-featured, type-safe web framework for OCaml 5",https://github.com/hyphatech/spindle,64,11
+50355009,2026-11-03T17:25:21Z,Show HN: Tmux-restore saves tmux windows and agent sessions across reboots,https://github.com/andrewboldi/tmux-restore,62,37
+50321522,2026-11-01T00:10:30Z,"Show HN: BBRouter – Ben Eater's 8-bit computer, simulated on 3D breadboards",https://bbrouter.com/bbrouter/ben-eater-sap-1,58,14
+50408082,2026-11-07T21:08:35Z,Show HN: Where Were We,https://wherewerewe.app/,58,19
+50339183,2026-11-02T16:23:37Z,Show HN: The DNA of DOOM – How code structure survives across 44 ports,https://squid-protocol.github.io/gitgalaxy/museum-of-code/doom-dna/,52,29
+50401844,2026-11-07T05:16:31Z,Show HN: JavaScript web apps with WASM layout and GPU rendering in 280 KB,https://github.com/rkaehn/uniform,46,23
+50366811,2026-11-04T15:18:24Z,Show HN: Codemap – one-page interactive map of any Go repository,https://github.com/peterretief/codemap,45,23
+50371090,2026-11-04T20:31:30Z,Show HN: Gauge – Open-Source CLI to recursively improve your docs,https://github.com/gauge-sh/gauge-cli,43,10
+50353468,2026-11-03T15:48:35Z,"Show HN: Interactive notes on RLHF, attention, LoRA and LLM evals",https://concepts.laxmena.com/,41,4
+50441350,2026-11-10T15:01:19Z,Show HN: Aircad – Professional drafting and 3D modeling in the browser,https://aircad.com,41,17
+50408350,2026-11-07T21:47:47Z,Show HN: An offline desktop companion to help maintain a healthy blink rhythm,https://eyesrhythm.com/,40,23
+50413970,2026-11-08T15:12:07Z,Show HN: Recalc – Spreadsheet where cells can be Claude Code or Codex terminals,https://github.com/sshah03/recalc,37,15
+50401451,2026-11-07T03:50:21Z,Show HN: Did prediction markets do any predicting this midterms?,https://app.artifactbin.dev/@vivek/AQTt2H-did-prediction-markets-predict-the-midterms,35,20
+50338891,2026-11-02T16:09:13Z,"Show HN: PyWolf3D, a wolfenstein3D clone written from scratch in Python",https://github.com/atifcodesalot/pyWolf3D,31,8
+50397325,2026-11-06T19:41:20Z,"Show HN: Agents infer Lego mechanisms from sources, then animate them",https://github.com/anteloc/ldraw-mecha/tree/v0.5.0,31,2
+50397435,2026-11-06T19:49:27Z,Show HN: CloneGuard – Scan a repo for credential-stealing tricks before it runs,https://github.com/tharun208/cloneguard,31,7
+50367630,2026-11-04T16:09:54Z,"Show HN: GPUWorks – A 40 MB GPU cluster manager for vLLM/SGLang, no K8s needed",https://github.com/flitai-io/gpuworks,30,4
+50347524,2026-11-03T03:06:53Z,Show HN: Rustable is an open source database client built in Rust,https://rustable.app,28,20
+50351404,2026-11-03T12:51:11Z,Show HN: Bema: Work messaging built for humans,https://getbema.app/,28,21
+50371886,2026-11-04T21:34:49Z,"Show HN: My compact, bio inspired distributed edge detection algorithm",https://github.com/RenderBear/haci,28,4
+50348740,2026-11-03T06:24:50Z,Show HN: ReBirth 338 in Browser,https://margeux.com/rb338.html,25,11
+50393235,2026-11-06T15:07:47Z,"Show HN: Agentic Identity Broker, OAuth Delegation for AI Agents",https://github.com/zalando-incubator/agentic-identity-broker,25,4
+50338871,2026-11-02T16:08:30Z,Show HN: VHS Camera – Run your camera or videos through a simulated VHS signal,https://fotojockovic.com/vhs,21,14
+50379073,2026-11-05T13:53:17Z,Show HN: TubeHaus – an open-source YouTube client with no Google account,https://github.com/biolend83/tubehaus,21,5
+50410253,2026-11-08T03:48:04Z,Show HN: Maple – Sub-2-BPW Moe Pruning to Run Gemma 4 26B at 45 TPS on a 6GB GPU,https://github.com/AmSach/maple,21,5
+50444761,2026-11-10T19:07:53Z,Show HN: I have trained 15 blood glucose forecasting models on my own data,https://github.com/0xdeadf1sh/T1DMAI,20,7
+50336025,2026-11-02T12:37:59Z,Show HN: Hacker News but for comments posted on HN,https://news.ycombinator.com/newcomments,19,6
+50348361,2026-11-03T05:13:30Z,"Show HN: Open a 300k-row XLSX in the browser in ~300ms, no server",https://github.com/p10node/office-engine,17,2
+50369277,2026-11-04T18:05:42Z,Show HN: Unclickbait – Replace clickbait YouTube thumbnails,https://unclickbait.app/,15,10
+50380134,2026-11-05T15:15:32Z,Show HN: Green tests are not proof – verifier for C/C++ and firmware fixes,https://unfix.dev/,15,2
+50392219,2026-11-06T13:45:07Z,Show HN: An open source webbluetooth and NFC browser for iOS,https://github.com/hito-dev/wand-browser,15,0
+50429031,2026-11-09T17:59:05Z,Show HN: Write GitHub Actions in any language: Loopt,https://github.com/preloopdev/loopt,15,5
+50394991,2026-11-06T17:00:23Z,Show HN: AegisKernel – Zero-trust POSIX runtime for AI agents in <0.016ms,https://adikshatriyag-crypto.github.io/aegis-kernel/,14,4
+50409986,2026-11-08T02:37:10Z,Show HN: LLM weight editing tool made by a 15-year-old,https://github.com/Miyamoto-Renya/LaplacesScissors,14,2
+50321663,2026-11-01T00:36:10Z,"Show HN: Vela, a New Linux Desktop Environment",https://velade.org/blog/vela-0-1/,13,14
+50342272,2026-11-02T19:26:53Z,"Show HN: Hnrepos.com, HackerTube for Repositories",https://hnrepos.com,13,0
+50390605,2026-11-06T10:30:15Z,"Show HN: Overhead – the planes overhead, painted on an e-ink frame",https://github.com/dmellok/tesserae-widget-overhead,13,1
+50401409,2026-11-07T03:39:46Z,Show HN: Backwords – Let AI teach you how to speak in reverse,https://backwords.greg.technology/,13,3
+50336349,2026-11-02T13:08:46Z,Show HN: Is Software Solved?,https://issoftwaresolved.com/,12,1
+50351427,2026-11-03T12:53:48Z,"Show HN: Kvittas, an Expense Splitting App",https://kvittas.app,12,11
+50364483,2026-11-04T12:09:11Z,Show HN: 13M opinions on 48k products extracted from Reddit and HN,https://www.trustmebro.reviews/,12,9
+50417478,2026-11-08T21:26:33Z,"Show HN: SafeScript, a safe version of JavaScript for executing untrusted code",https://github.com/SafeScript/safescript,12,16
+50442257,2026-11-10T16:04:02Z,Show HN: Y Recombinator – The HN threads HN keeps recommending,https://yrecombinator.org/,12,6
+50351830,2026-11-03T13:36:47Z,Show HN: Remene – Understand your MRI and prepare questions for your doctor,https://remene.si,11,0
+50368709,2026-11-04T17:25:29Z,Show HN: Curious HN – Hacker News without the snark,https://curioushn.com/about.html,11,13
+50385087,2026-11-05T22:00:07Z,"Show HN: Inference business simulator – don't go broke, rent GPUs, serve tokens",https://makermaker.ai/breakthroughs/inference/simulation/,11,6
+50385952,2026-11-05T23:18:43Z,Show HN: HackerRepos – HackerTube for repos mentioned on HN,https://HackerRepos.fyi/,11,4
+50431705,2026-11-09T20:37:28Z,Show HN: Airgap-check – find what your AI app silently downloads offline,https://github.com/humanethq/airgap-check,11,0
+50443596,2026-11-10T17:45:20Z,Show HN: WolveKafka – Consume Kafka with a plain HTTP endpoint,https://github.com/wolveflake/wolvekafka,11,3
+50333280,2026-11-02T04:53:05Z,Show HN: 13M opinions on 48k products extracted from Reddit and HN,https://www.trustmebro.reviews/r/hackernews,10,2
+50348456,2026-11-03T05:31:21Z,Show HN: Bitcoin-rs – An independent Bitcoin full node in Rust,https://github.com/gosuda/bitcoin-rs,10,0
+50404321,2026-11-07T13:17:09Z,Show HN: Logo Deal – Logos anyone can edit with text,https://logo.deal/,10,5
+50425203,2026-11-09T13:18:46Z,Show HN: Pgxio – a tiny PostgreSQL layer inside Nginx,https://github.com/mishabunte/pgxio,10,0
+50444276,2026-11-10T18:33:17Z,Show HN: TheoremSmith: Mass-Producing Hard Proof Problems to Train LLMs,https://charleshuang.me/2026/09/27/theoremsmith/,10,0
+50353127,2026-11-03T15:21:09Z,Show HN: Election.run – election night in one window,https://election.run/,9,2
+50354777,2026-11-03T17:11:53Z,Show HN: SIE Serverless – managed inference powered by self-hostable stack,https://superlinked.com/,9,1
+50359936,2026-11-04T00:02:30Z,"Show HN: Spooler – a simple, managed message queue",https://spooler.sh/,9,6
+50371859,2026-11-04T21:31:51Z,"Show HN: Diorama – Draw a world, play it with point and click",https://grzegorz.tanczyk.pl/diorama/,9,0
+50373795,2026-11-05T01:18:16Z,Show HN: I turned 18 Agatha Christie novels into SQL murder cases,https://querythemurder.com/,9,2
+50400374,2026-11-07T00:26:21Z,Show HN: Goethe – The infrastructure for self-hosted AI,https://github.com/meshapplied/Goethe,9,3
+50415581,2026-11-08T18:10:29Z,"Show HN: Notekpr – An open-source, E2EE alternative to Notion and Obsidian",https://notekpr.md,9,4
+50420069,2026-11-09T02:04:31Z,"Show HN: Jot – Select text anywhere on macOS, tap Shift twice, get Markdown",https://sayjot.xyz/,9,1
+50426593,2026-11-09T15:01:48Z,Show HN: My daily word puzzle Jointter revisited,,9,8
+50432589,2026-11-09T21:38:00Z,"Show HN: Emma, a real-time AI video persona from Nuance Labs",https://app.nuancelabs.ai/try,9,4
+50439141,2026-11-10T12:05:13Z,Show HN: Cosh – An open-source AI agent orchestrator,https://github.com/DiegoZaluski/co-sh,9,4
+50335401,2026-11-02T11:16:30Z,"Show HN: HackerTube for Apple TV. Videos HN Recommends, on Your TV",,8,4
+50342630,2026-11-02T19:48:47Z,Show HN: I used Jev to build an off-topic detector for meetings,https://maxharrison.me/posts/offtrackometer/,8,2
+50348805,2026-11-03T06:39:29Z,"Show HN: Mintype – Free, zero-knowledge notes app with whiteboards (AGPL)",https://mintype.app,8,2
+50357042,2026-11-03T19:35:38Z,"Show HN: Recto: A desktop app where you can design with AI, edit with your mouse",https://recto.design,8,10
+50367367,2026-11-04T15:53:28Z,Show HN: I built a Bible verse feed to replace doomscrolling,https://scrollhope.com/,8,9
+50377443,2026-11-05T10:20:10Z,Show HN: Grasmere: Markdown for Writers and Researchers,https://grasmere.app/,8,1
+50377469,2026-11-05T10:24:38Z,Show HN: Distill anyone's writing style into a skill,https://github.com/xatuke/mimic,8,0
+50380433,2026-11-05T15:35:31Z,"Show HN: Kids Shelf, your kids' own little internet",https://kidsshelf.org/,8,2
+50381741,2026-11-05T17:22:11Z,Show HN: A C++ Compiler That Is Faster Than GCC and Clang,https://github.com/vishvananda/cppgm-extended,8,3
+50384668,2026-11-05T21:25:49Z,Show HN: HackerGit – Every GitHub repo shared on HN,https://hackergit.org/,8,9
+50415638,2026-11-08T18:17:30Z,Show HN: Recto – A tool that lets you visually edit what coding agents create,https://recto.design/,8,4
+50433321,2026-11-09T22:41:43Z,Show HN: Every Job in the Observability Space,https://o11y.jobs/,8,1
+50322886,2026-11-01T05:11:28Z,Show HN: Multi-Layer ASCII Art,https://typeart.mitpit.com/,7,2
+50337363,2026-11-02T14:33:24Z,Show HN: The Public Eye – Agentic search for congressional bill legibility,https://the-public-eye.com,7,0
+50351465,2026-11-03T12:58:47Z,Show HN: I built an interactive visual playground for interaction nets,https://netties.adler.dev/,7,0
+50365560,2026-11-04T13:55:35Z,Show HN: I wanted OpenSCAD with fillets and a C-like language. So I made one,https://hackerscad.com/,7,5
+50365678,2026-11-04T14:04:41Z,Show HN: Chinese sentence checker with pinyin and English explanations,https://sentencecoach.com/chinese-grammar-checker,7,0
+50366425,2026-11-04T14:57:16Z,"Show HN: AI Gude – my feeds as a daily podcast, revived with AI",https://github.com/alex0ptr/aigude,7,0
+50369269,2026-11-04T18:05:05Z,"Show HN: ChannelVault, browse and search your Slack exports",https://github.com/mestr-io/channelvault,7,1
+50376244,2026-11-05T07:35:05Z,"Show HN: HackerFriction, HackerTube for what HN complains about",https://hackerfriction.org/,7,0
+50377851,2026-11-05T11:21:00Z,Show HN: Nico – a two-agent type personal agent on your Mac,https://nico.app/,7,2
+50415476,2026-11-08T17:57:01Z,"Show HN: Email-like interface to review, decide, and annotate agent work",https://plannotator.ai/inbox/,7,0
+50423154,2026-11-09T09:22:54Z,"Show HN: Glassbrain – Read your agent's brain, know what your agent knows",https://github.com/voidixyn/glassbrain,7,1
+50424580,2026-11-09T12:18:30Z,"Show HN: Harness Resource Bench – CPU, memory and disk of coding agents",https://leonardcser.github.io/harness-resource-bench,7,0
+50426990,2026-11-09T15:31:03Z,Show HN: One TUI to Manage MCP Servers for Claude Code and Codex,https://toolshed.run,7,0
+50429266,2026-11-09T18:14:27Z,Show HN: Rollare – Bracket maker with registration and live scoring,https://rollare.com/,7,1
+50444909,2026-11-10T19:18:18Z,Show HN: WallHang – Plan a gallery wall and get exact nail positions (iOS),https://wallhang.app,7,0
+50446649,2026-11-10T21:36:17Z,Show HN: AI agents that barter your stuff for things you want,https://barterpilot.com/,7,4
+50327900,2026-11-01T17:53:58Z,"Show HN: Hacker News – HackerBooks, but for all the posts on HN",https://news.ycombinator.com/,6,1
+50329086,2026-11-01T19:51:54Z,Show HN: Jik – a self-hosted language using region-based memory management,https://github.com/jik-lang/jik,6,0
+50331415,2026-11-02T00:19:11Z,Show HN: Better Together – AI agents team up against spam calls and texts,https://better-together.fun/,6,1
+50332869,2026-11-02T03:40:08Z,Show HN: Diwali in threejs – find crackers and send wishes into a shared sky,https://virtualdiwali.com/,6,5
+50350444,2026-11-03T11:02:20Z,Show HN: Globalize.now – translations that land in your pull request,,6,0
+50351684,2026-11-03T13:23:59Z,Show HN: Open-Source Searchable Job Board for HN's Hiring Threads,https://flaviaouyang.github.io/hackerjobs/hiring/,6,2
+50355827,2026-11-03T18:14:38Z,Show HN: Scroll from your own skeleton to the edge of the observable universe,https://vatsaltanna.com/traveltoinfinity/,6,1
+50360658,2026-11-04T01:52:24Z,"Show HN: Pauseless – Free silence/filler-word remover from videos, on-browser",https://tahaygun.github.io/pauseless/,6,1
+50366448,2026-11-04T14:58:16Z,"Show HN: Hyperbutler – Docker on Windows without WSL, 320 MB at idle",https://hyperbutler.dev/,6,0
+50372029,2026-11-04T21:48:18Z,"Show HN: Chronosphere, a tool for understanding large PRs",https://getchronosphere.com/,6,0
+50377390,2026-11-05T10:12:25Z,"Show HN: FranklyMail, business email and workspace tools for $9/year",https://franklymail.com/,6,6
+50380277,2026-11-05T15:25:51Z,Show HN: K8sman – A Native Kubernetes IDE,https://github.com/matty234/k8sman,6,4
+50380505,2026-11-05T15:41:02Z,"Show HN: Zenith, a developer platform for shipping and selling your app",https://zenith.hosting/developers,6,2
+50395134,2026-11-06T17:09:28Z,Show HN: Hacker Living – HN's most recommended places,https://hacker.living,6,2
+50397561,2026-11-06T19:59:25Z,Show HN: Tell the Sky – message lanterns drift on winds from live weather data,https://tellthesky.com,6,0
+50401039,2026-11-07T02:22:35Z,"Show HN: I built ivyNote, a local-first Markdown notes app",https://ivynote.app/,6,1
+50403954,2026-11-07T12:25:04Z,Show HN: An online shop where your friends can hurry the courier,https://www.dopaminechic.com/,6,3
+50413266,2026-11-08T13:40:08Z,Show HN: Micron – The Oberon with the Power of C,https://github.com/rochus-keller/Micron,6,6
+50426559,2026-11-09T14:59:42Z,"Show HN: Thrum – run Claude Code, Codex and other coding agents as one team",https://thrum.team/,6,8
+50432998,2026-11-09T22:11:51Z,Show HN: Vork – headless 3D and VFX engine for agents,https://github.com/voyager-so/vork,6,2
+50433154,2026-11-09T22:25:18Z,"Show HN: Totle, daily math puzzle game; Saturday puzzles have the fewest answers",https://playtotle.com/,6,2
+50435672,2026-11-10T03:21:56Z,Show HN: ZTHR – what replaces code review when AI agents write all the code,https://zthr.ai/,6,5
+50437839,2026-11-10T09:12:08Z,Show HN: Video Analysis with Homomorphic Encryption,https://github.com/belfortlabs/blindsight-demo,6,1
+50438113,2026-11-10T09:55:38Z,Show HN: A fan-made GTA 6 radio wheel with 12 playable stations,https://gta6radio.live,6,0
+50439050,2026-11-10T11:55:55Z,"Show HN: Commune, one feed for newsletters on Beehiiv, Kit, Ghost, and more",https://usecommune.com,6,1
+50442255,2026-11-10T16:03:56Z,Show HN: We built a way to remove inherited biases from decision models,https://www.hirundo.io/blog/decision-models-inherit-their-base-models-risks-hirundo-fixes-them,6,2
+50325296,2026-11-01T13:07:16Z,"Show HN: Egres, A Postgres-compatible database for heavy, multi-tenant workloads",https://manishrjain.com/egres/,5,1
+50325595,2026-11-01T13:39:38Z,Show HN: Breath of the Wild's Hyrule digital diorama,https://legendofhyrule.com/map/,5,2
+50327582,2026-11-01T17:19:55Z,Show HN: A browser game where you navigate home to Earth using pulsars,https://lightyears-home.pages.dev/,5,2
+50329627,2026-11-01T20:40:43Z,"Show HN: Quarter – A TUI launcher to browse, search and launch your games",https://github.com/stronxyo/quarter,5,2
+50333825,2026-11-02T06:48:12Z,Show HN: Northstar web browser engine 1.0.40 released,,5,2
+50334769,2026-11-02T09:40:15Z,"Show HN: How Enigma worked and was cracked, explained with moving figures",https://www.readfp.com/chapters/how-enigma-was-cracked,5,0
+50337410,2026-11-02T14:36:13Z,"Show HN: Aulico, my free tradingview alternative",https://www.aulico.com,5,3
+50337773,2026-11-02T15:05:23Z,Show HN: ClickBench inspired leaderboard for multiple database benchmarks,https://benchmark.pivotlake.io/,5,0
+50340138,2026-11-02T17:19:13Z,Show HN: Modern CSS Quiz,https://modern-css.com/quiz/,5,0
+50340526,2026-11-02T17:42:25Z,"Show HN: Jenesis, Java builds 18% faster, rebuilds up to 88% faster",https://jenesis.build/why/tool/,5,0
+50350400,2026-11-03T10:55:16Z,Show HN: I made a portals physics engine to prove my point,https://portalphysics.xyz/up-down,5,7
+50351409,2026-11-03T12:51:40Z,Show HN: LokaDB – store each SaaS clients rows in a separate Postgres database,https://github.com/lokadb/lokadb,5,3
+50352316,2026-11-03T14:19:29Z,Show HN: Run Conway's Game of Life in CSS,https://bucket.svc.moe/uploads/wss/life.html,5,0
+50355761,2026-11-03T18:10:57Z,Show HN: DrawDB – turn any live database into an ER diagram with one query,https://github.com/drawdb-io/drawdb,5,1
+50356974,2026-11-03T19:30:04Z,Show HN: Confetti – Start designing hardware with plain English prompts,https://confetti.build,5,0
+50357326,2026-11-03T19:58:59Z,"Show HN: ZapFast, Native WhatsApp for Linux, macOS, and Windows with Calls",https://zapfast.rocks/,5,5
+50359283,2026-11-03T22:42:14Z,Show HN: Google Trends for Reddit,https://slashtrends.com/,5,1
+50359805,2026-11-03T23:45:40Z,Show HN: Modelpeers – a changelog for the AI models and agents you use,https://modelpeers.com,5,0
+50362676,2026-11-04T08:13:41Z,Show HN: A privacy-first career toolkit (PDF manipulation runs in Browser/WASM),https://www.onestoplinkedin.com,5,6
+50362748,2026-11-04T08:22:57Z,Show HN: HackerEverything – Everything recommended by HN,https://hackereverything.pages.dev/,5,1
+50363166,2026-11-04T09:29:37Z,Show HN: Md2docx – Compile Markdown directly into native Word documents,https://md2docx.js.org/,5,0
+50363940,2026-11-04T11:10:40Z,Show HN: Agent-screenplay – Create beautiful screen recordings with one prompt,https://github.com/gmpetrov/agent-screenplay,5,0
+50365692,2026-11-04T14:05:46Z,Show HN: Scan-to-vector – rebuild scanned pages as vector PDFs with an AI agent,https://github.com/3351666087/scan-to-vector-skill,5,1
+50369251,2026-11-04T18:04:10Z,Show HN: An open source repo to use your personal context with any agent,https://predsymod.github.io/memex/,5,0
+50369457,2026-11-04T18:19:46Z,Show HN: Cassandra – free tool to check if you got affected by the Cursor hack,https://ciphero.ai/cassandra/hn,5,0
+50371992,2026-11-04T21:45:08Z,"Show HN: Aggregate Finance, your financial data in a spreadsheet you own",https://app.aggregatefi.com/,5,6
+50377069,2026-11-05T09:28:20Z,"Show HN: Anything to colors – To every dream, its colors",https://colors.void.app/,5,3
+50377933,2026-11-05T11:34:53Z,Show HN: Get Better at Piano with Noodle,,5,7
+50378582,2026-11-05T13:01:28Z,Show HN: Lmux – A Lightweight macOS Terminal for Claude Code and Codex,https://github.com/sooftware/lmux,5,0
+50379021,2026-11-05T13:48:29Z,"Show HN: Strive and Seek – original merch for builders, hackers and founders",https://shopstriveandseek.com/,5,0
+50380154,2026-11-05T15:16:39Z,Show HN: I built Postraid to help founders create social media content with AI,https://www.postraid.com,5,5
+50380882,2026-11-05T16:07:30Z,Show HN: An aquarium game with a real nitrogen cycle,https://fishtankatlas.com/play/aquarium/,5,1
+50382289,2026-11-05T18:09:44Z,Show HN: The web needs more creativity and whimsy,https://ignition.github.io/press/,5,0
+50382923,2026-11-05T18:56:40Z,Show HN: Ski Voice-First Multilingual Neutral Coding Harness,https://justski.it/,5,0
+50385092,2026-11-05T22:00:45Z,Show HN: Simulating three LA wildfires in the browser with WebGPU,https://mattduran.dev/firedemo/fire/woolsey-2018,5,0
+50386559,2026-11-06T00:27:03Z,Show HN: Cabinet of Distilled Pixels,https://cjauvin.github.io/pixel-cabinet/,5,1
+50389326,2026-11-06T07:39:38Z,Show HN: BeepGrid – Lightweight open source agent comms,https://github.com/beepgrid/beepgrid,5,0
+50391000,2026-11-06T11:23:27Z,"Show HN: Rindraw – drawing and animation app for iPad, iPhone and Mac",https://rindraw.com/,5,0
+50391185,2026-11-06T11:44:37Z,Show HN: Ueddit.com – Reddit Without Logging In,https://ueddit.com/,5,2
+50394162,2026-11-06T16:07:14Z,"Show HN: NASA's Swift telescope's 22 years in orbit, rebuilt from its archive",https://swift.rory.codes/,5,4
+50394952,2026-11-06T16:57:39Z,Show HN: Design guidance and UI checks for coding agents,https://github.com/smokeeaasd/flawless-ui-ux,5,1
+50395242,2026-11-06T17:15:44Z,Show HN: Ru-Jev – an open model that scores caller-supplied options on CPU (MIT),https://huggingface.co/besktech/ru-jev,5,0
+50396969,2026-11-06T19:16:13Z,Show HN: IMDb for YouTube (Long-Form Videos Only),https://vidtier.eamag.me/,5,3
+50397874,2026-11-06T20:19:58Z,"Show HN: An NLP based word game for users to play against Astra, Opus, and more",https://wordspies.com/,5,8
+50399637,2026-11-06T22:58:34Z,"Show HN: I asked HN about AI agentic setups, here are 750 of the comments mapped",,5,0
+50402421,2026-11-07T07:24:40Z,"Show HN: Ryph – Self-Hosted, Open-Source Coding Agents for Incident Response",https://github.com/ryph-hq/ryph,5,2
+50403007,2026-11-07T09:27:06Z,Show HN: I taught my Fujifilm X-T30 II to print on an instax Link 3 over BLE,https://ronangaillard.github.io/posts/fujifilm-x-t30-ii-instax-link-3/,5,0
+50404494,2026-11-07T13:48:09Z,Show HN: I made a guardrail against AI outreach slop (API/MCP),https://maildignity.com/,5,0
+50406700,2026-11-07T18:17:08Z,Show HN: We made a new theme to increase engagement on our website,https://zenmemes.com/threads/thread-20261107173646-27caa60f/,5,4
+50415219,2026-11-08T17:26:45Z,"Show HN: FELF – AppImage-like single binaries without FUSE, root, or a runtime",https://github.com/Rucadi/FELF,5,2
+50417974,2026-11-08T22:16:21Z,Show HN: Remedy – Prompt stuff out of your feeds,https://getremedyapp.com,5,0
+50423525,2026-11-09T10:07:32Z,SHOW HN: GerGit - A Free Open-Source Git GUI Client for Linux Inspired by Fork,https://github.com/IcaruzSoftware/GerGit,5,1
+50423912,2026-11-09T10:57:54Z,"Show HN: AI boom or bust, US war footing or not (four scenarios to 2029)",https://elviovicosa.com/war/,5,1
+50426495,2026-11-09T14:55:40Z,Show HN: SketchyCraft – Timed drawing sessions and a visual progress calendar,https://www.sketchycraft.com/,5,0
+50428375,2026-11-09T17:09:50Z,Show HN: Traccia – open-sourced AI agent runtime governance,https://github.com/traccia-ai/traccia-py,5,0
+50429172,2026-11-09T18:07:53Z,Show HN: Black Friday for Developers,https://www.blackfriday.dev,5,1
+50432613,2026-11-09T21:39:06Z,"Show HN: Agent-email-guard – agent tried to send 400 receipts, stopped at 5",https://github.com/agentisend/agent-email-guard,5,1
+50432776,2026-11-09T21:52:44Z,Show HN: Brick Atlas: Explore 1000+ LEGO sets on one zoomable canvas,https://showcase.zoomhub.net/ecommerce/brick-atlas,5,0
+50435336,2026-11-10T02:26:43Z,Show HN: Dating app based on your LinkedIn profile,https://synergy.dating/,5,1
+50436876,2026-11-10T06:44:36Z,"Show HN: Willder, an open source context layer that syncs apps, agents and teams",https://github.com/willderai/willder-core,5,0
+50441765,2026-11-10T15:29:37Z,Show HN: Mantis – Faster browser interaction than Playwright MCP,https://github.com/perzianhq/mantis/blob/main/README.md,5,2
+50441801,2026-11-10T15:32:22Z,"Show HN: NodusDB – Zanzibar-style authorization, embedded like SQLite",https://github.com/Pragadeesh-19/nodusdb,5,0
+50444913,2026-11-10T19:18:30Z,"Show HN: Umless, open-source on-device dictation that writes what you meant",https://github.com/jatinbishla/Umless,5,2
+50447169,2026-11-10T22:25:23Z,Show HN: A Git friendly open API client,https://github.com/awake-client/awake,5,0
+50322757,2026-11-01T04:39:54Z,Show HN: Create a Dumbphone on Android,https://beeswax.getflourish.org/,4,0
+50324087,2026-11-01T10:00:00Z,Show HN: HackerTube by Andrej Karpathy,https://hackertube.org/,4,1
+50326850,2026-11-01T16:02:24Z,Show HN: PewPewPew – Multiplayer Asteroids with deterministic rollback at 60hz,https://pewpewpew.io/,4,1
+50327937,2026-11-01T17:57:27Z,"Show HN: Offline project memory for coding agents – no API key, no vector DB",https://github.com/krapcys1-maker/adaptive-agent-memory-research,4,0
+50331387,2026-11-02T00:15:38Z,"Show HN: People you know, an end-to-end encrypted private Instagram replacement",https://peopleyouk.now/,4,0
+50332986,2026-11-02T04:01:33Z,"Show HN: GhostBase – 25MB terminal database studio for SQLite, Postgres, MySQL",https://github.com/4yk5/GhostBase,4,0
+50334185,2026-11-02T07:54:03Z,"Show HN: HNMovies – 2,280 films and docs distilled from 20 years of HN",https://www.hnmovies.org/,4,1
+50334295,2026-11-02T08:16:05Z,"Show HN: HackerBlogs – the 9,434 blogs HN people keep sharing",https://hackerblogs.app,4,0
+50335894,2026-11-02T12:24:26Z,Show HN: Orca Style Workspaces for Herdr,https://github.com/choam2426/herdr-paddock,4,0
+50336331,2026-11-02T13:07:54Z,Show HN: Aigenos Flow – Agents that are actually deterministic,https://aigenos.io/,4,2
+50336599,2026-11-02T13:31:47Z,"Show HN: Universal Tokens – like Universal Paperclips, but tokens",https://mani.wtf/apps/universal-tokens,4,1
+50337394,2026-11-02T14:35:12Z,Show HN: Nomos – A Go harness that stops coding agents from cheating on tests,https://github.com/mgantlett/nomos,4,0
+50337488,2026-11-02T14:43:09Z,Show HN: AgentTrafficCop – Stop AI agents from looping and burning money,https://agenttrafficcop.com,4,0
+50337736,2026-11-02T15:02:04Z,Show HN: Deedglass – An agent said it updated 1 row; Postgres changed 301,https://github.com/deedglass/deedglass,4,0
+50339050,2026-11-02T16:16:29Z,"Show HN: 3D pixel-art basketball game – no deps, no build step",https://vladsez.github.io/iso-hoops/,4,8
+50339634,2026-11-02T16:48:35Z,Show HN: Fooboard – deployment and promotion status of each repo per environment,https://www.fooboard.dev/demo,4,2
+50340631,2026-11-02T17:48:03Z,Show HN: Open-source silent speech with $20 EMG sensors and a webcam,https://github.com/thaimtl/Silent-Voice,4,5
+50341301,2026-11-02T18:29:09Z,"Show HN: Noctty – A fast, native terminal for Windows",https://github.com/amanthanvi/noctty,4,2
+50342520,2026-11-02T19:41:47Z,Show HN: Arvre – A TUI for Claude Code sessions' forks,https://github.com/victorcarrico/arvre,4,0
+50345881,2026-11-02T23:45:14Z,"Show HN: Hacker News, à la Lobsters",https://git-aarvin.github.io/hackers/,4,1
+50347408,2026-11-03T02:50:40Z,Show HN: PhoneUse – Phones for AI Agents,https://www.phoneuse.com/,4,0
+50348853,2026-11-03T06:47:06Z,"Show HN: Vectoys – 3D devices for landing pages, drawn as plain SVG",https://vectoys.com/,4,0
+50350976,2026-11-03T12:07:19Z,"Show HN: Airy Studio – Free TTS in 7 languages (zh, hi, ar, th, vi, ko, en)",https://airy.so/studio,4,1
+50351781,2026-11-03T13:32:58Z,"Show HN: Rigorix, Execution governance for AI agents, open-source engine",https://rigorix.eu/,4,0
+50352590,2026-11-03T14:41:52Z,Show HN: How to Disable Google AI Overview,https://howtodisableaioverview.com/,4,2
+50353773,2026-11-03T16:07:59Z,"Show HN: 8 years of ""Who's Hiring?"" in charts (hiring boom, bust, and AI trends)",https://hn-hiring-2019-2026.lancecj.chatgpt.site/,4,1
+50358143,2026-11-03T21:02:49Z,Show HN: DevBox – Open-source engineering harness from RudderStack,https://github.com/rudderlabs/devbox,4,0
+50360259,2026-11-04T00:50:50Z,Show HN: HackerReels - Short Videos for viral HN posts,https://wile.ai/v/BPOH3BHCRWWCAKU4OVNOTEQ73A,4,3
+50362730,2026-11-04T08:21:20Z,Show HN: Plugin to Create Product Videos,https://github.com/Flux-AI-Agent/fluxcut-plugin,4,1
+50365294,2026-11-04T13:32:41Z,"Show HN: AutoCua, one prompt drives computer, browser, phones, code at same time",https://github.com/ComputerUseAgent/AutoCua,4,1
+50366645,2026-11-04T15:08:55Z,Show HN: Iriszip – Audited post-quantum E2EE file transfer (SPAKE2M-KEM-768),https://github.com/iris-zip/iris,4,1
+50366894,2026-11-04T15:22:44Z,Show HN: An Open Source Superhuman Email Client Clone,https://github.com/michaelmagan/OpenHuman,4,0
+50371349,2026-11-04T20:53:07Z,Show HN: Night Map,https://night-map.surge.sh/,4,0
+50371428,2026-11-04T20:58:42Z,"Show HN: Mdview Desktop – light, fast and feature-rich Markdown viewer (Windows)",https://mdview.io/desktop,4,0
+50371709,2026-11-04T21:20:31Z,"Show HN: Zero-axiom Lean 4 proof that Yang-Mills on R^4 is a ""round square""",https://zenodo.org/records/23918639/files/RoundSquare.lean?download=1,4,1
+50371977,2026-11-04T21:43:41Z,"Show HN: Canopy, a cross-platform DAG engine for agents CLI",https://univerlab.org/canopy/,4,0
+50374993,2026-11-05T03:58:55Z,"Show HN: Ryzova UCE – A local-first, rule-based software compatibility analyzer",https://uce.ryzova.com/analyze,4,0
+50378102,2026-11-05T11:57:18Z,Show HN: Hyperbutler – Docker on Windows 11 Without WSL or Docker Desktop,https://github.com/Higangssh/hyperbutler,4,0
+50379051,2026-11-05T13:51:13Z,"Show HN: Aloud – native macOS TTS for selected text, PDFs and screenshots ($19)",https://aloudapp.app/,4,0
+50379213,2026-11-05T14:05:29Z,Show HN: XSDHub – checks correctness of invoice format and local standards,https://xsdhub.com/e-invoice-validator,4,1
+50379504,2026-11-05T14:29:17Z,Show HN: Spaceguesser – GeoGuessr for the Solar System,https://spaceguesser.com/,4,2
+50380091,2026-11-05T15:11:33Z,Show HN: Droplis – a one click logic game,https://droplis.lalo.li/,4,0
+50380157,2026-11-05T15:16:59Z,"Show HN: I moved to Barcelona and outgrew Duolingo, so I built this",https://noentiendo.app,4,0
+50380651,2026-11-05T15:51:25Z,Show HN: Securing GrokBot,,4,0
+50380827,2026-11-05T16:03:00Z,"Show HN: Gleanary – a personal knowledge library you can talk to, for macOS",https://gleanary.app/,4,0
+50381998,2026-11-05T17:44:36Z,Show HN: Sanctuary – Offline LLM Running on Apple Silicon Metal (iOS),https://testflight.apple.com/join/Z51G6g5G,4,0
+50383228,2026-11-05T19:22:23Z,Show HN: Thinker – Trim context and cache knowledge to extend agent usage limits,https://thinker.sh/how-it-works,4,2
+50386457,2026-11-06T00:14:15Z,Show HN: 3-minute desk breaks based on Radio Taiso and Wordle,https://www.audioround.com/,4,0
+50388956,2026-11-06T06:38:36Z,Show HN: Mantis – AI agents browse 36% faster than with Playwright MCP,https://github.com/perzianhq/mantis,4,0
+50389351,2026-11-06T07:44:56Z,"Show HN: Pixel Buddy, a pixel pet for Claude Code that grows from your work",https://github.com/SimakovIgor/pixel-buddy,4,0
+50390817,2026-11-06T11:00:34Z,Show HN: Black Pixel – 69-byte inverse of the Million Dollar Homepage,https://black-pixel-1x1.vercel.app,4,0
+50391362,2026-11-06T12:02:46Z,Show HN: UUMit – turn idle machines into model endpoints,https://uumit.ai/,4,1
+50391670,2026-11-06T12:43:04Z,"Show HN: The 100 prisoners, German tank and 61 more puzzles, with simulations",https://mathparadoxes.com/en/,4,0
+50391875,2026-11-06T13:07:31Z,Show HN: Antidraw – Open-source AI prototyping canvas for any React library,https://github.com/AntidrawHQ/antidraw,4,1
+50392347,2026-11-06T13:57:16Z,Show HN: Grid – A Hold'em arena where your AI agent plays your strategy (Beta),https://penguinbase.com/game-install?game=192471728&ref=hn,4,3
+50393793,2026-11-06T15:46:21Z,Show HN: Botel – always reachable agents you pay for only while they're working,https://botel.dev,4,3
+50394379,2026-11-06T16:19:42Z,Show HN: Infinity – Git-style branching for AI chats,https://infinitychat.app/,4,1
+50394761,2026-11-06T16:44:42Z,Show HN: Insane Pour,https://crux.quest/insane-pour/,4,0
+50404406,2026-11-07T13:31:07Z,"Show HN: Hosted dashboard for small VPS fleets, outbound-only agent",https://vpsmon.cloud/,4,0
+50406749,2026-11-07T18:24:57Z,Show HN: Live songbook for guitarists,https://kantamigo.com,4,0
+50407523,2026-11-07T20:00:13Z,Show HN: Good First Token – Spend your spare tokens on open source,https://goodfirsttoken.org/,4,2
+50409155,2026-11-07T23:48:58Z,"Show HN: I declared war on every country, one at a time. 77 of 133 survived",https://playgod.earth/every-country-vs-the-world,4,0
+50410056,2026-11-08T02:59:55Z,Show HN: I'm 15 and my personal website looks like iMessage,https://apanda.dev/,4,3
+50412646,2026-11-08T12:21:59Z,Show HN: No more code reviews. Fuzz instead,,4,1
+50413906,2026-11-08T15:04:09Z,Show HN: Aircheck shows every post your agents queued today on one screen,https://aircheck.dev,4,0
+50415106,2026-11-08T17:13:03Z,Show HN: Maple – Run Gemma 4 26B on a 6GB Laptop GPU at 45 TPS (Sub-2-BPW),https://amsach.github.io/maple/,4,0
+50415406,2026-11-08T17:48:19Z,"Show HN: psi, a 6.4 MB cross-platform portable coding agent in ANSI C & Lua",https://psicode.ai/,4,0
+50415474,2026-11-08T17:56:19Z,Show HN: 25 LTC Bounty to find a bug in Lean 4 formal Yang-Mills proof,https://github.com/Dr-Logvinovich/round-square/blob/main/README.md,4,1
+50415740,2026-11-08T18:32:31Z,Show HN: Is your product AI slop?,https://slopcalculator.com/,4,4
+50419025,2026-11-08T23:49:43Z,Show HN: Velorki - open-source bike navigation that works with just your phone,https://velorki.com,4,0
+50420808,2026-11-09T03:44:23Z,Show HN: I got laid off and built a competitor website change tracker,https://lifeadminpilot.com/tool,4,0
+50421519,2026-11-09T05:44:53Z,Show HN: Logcrux – An intelligent local log analyzer,https://logcrux.com,4,0
+50429817,2026-11-09T18:51:12Z,Show HN: MergeAtlas – A better way to review PRs,https://mergeatlas.dev/,4,0
+50432130,2026-11-09T21:06:16Z,"Show HN: ApiClay – Turn a Website, Google Sheet or Database into a Paid API",https://apiclay.com,4,1
+50432228,2026-11-09T21:12:17Z,Show HN: Secure browser sessions for agents,https://easi.run/,4,3
+50432836,2026-11-09T21:57:17Z,Show HN: Fable 5.2 made a fun Claude castaway clone,https://claude-castaway.zachy.dev/,4,0
+50437337,2026-11-10T07:54:05Z,Show HN: Clingon – Markdown cheatsheets that run in your real shell,https://github.com/con-dog/clingon/blob/master/README.md,4,0
+50438889,2026-11-10T11:38:51Z,"Show HN: You can now train your own LLMs with less memory, on your consumer GPUs",,4,0
+50438931,2026-11-10T11:42:45Z,Show HN: Tokspur a 3x faster open source inference engine for Macs,https://github.com/san-digital/tokspur,4,0
+50439073,2026-11-10T11:57:55Z,Show HN: Chatty – Open-source AI support engine with WooCommerce sync,https://github.com/PersonaliAI/chatty,4,0
+50440237,2026-11-10T13:44:19Z,Show HN: Pentimento – status and lineage for your coding agent's plan files,https://github.com/kjiwa/pentimento,4,1
+50442409,2026-11-10T16:14:40Z,Show HN: BasalFit – Recipes/meal planning/Tracking. Works Claude-ChatGPT via MCP,https://basalfit.com/,4,0
+50444231,2026-11-10T18:28:56Z,"Show HN: ElderVault – care records for aging parents, shared by section (iOS)",https://eldervault.app/,4,0
+50446378,2026-11-10T21:13:03Z,"Show HN: Aisync, advisory file claims so two AI agents don't edit one repo",https://github.com/MaxonT/aisync,4,0
+50447073,2026-11-10T22:17:55Z,Show HN: Movement breaks that only show up while Claude Code is working,https://github.com/mamrezme/30yr-uptime,4,0
+50321554,2026-11-01T00:15:39Z,Show HN: Bobby – Over Engineering PR Reviews,https://bobby.viraj.computer/,3,0
+50321911,2026-11-01T01:25:24Z,Show HN: Analog Video Feedback Fractals,https://www.youtube.com/watch?v=znkzM9-FVzw,3,0
+50322013,2026-11-01T01:45:24Z,Show HN: Make Python Great Again – Free tools and desktop apps built with Python,https://pythongreatagain.com/,3,1
+50322277,2026-11-01T02:42:30Z,Show HN: Show HN: Fig and Verse – daily Bible puzzles and trivia,https://figandverse.com/,3,0
+50323266,2026-11-01T06:52:46Z,Show HN: Janet LSP with VS Code Extension,https://marketplace.visualstudio.com/items?itemName=kulkarniniraj.yajlsp,3,0
+50323694,2026-11-01T08:40:45Z,Show HN: Geop – Open-source Nurbs CAD with MCP (MicroDuck example),https://app.geop-cad.dev/?example=duck,3,0
+50325252,2026-11-01T13:02:20Z,"Show HN: Learn to beatmatch on Winamp-skinned decks (vibe-coded, desktop only)",https://bit-cheer.com/,3,0
+50325860,2026-11-01T14:09:04Z,"Show HN: When a CEO buys their stock, does it beat the S&P 500? Check any trade",https://www.insiderprint.com/spy-mode,3,1
+50325969,2026-11-01T14:21:22Z,Show HN: WinSQLite Editor–Native C++/Qt SQLite with SQLite-vec and 3D graph,https://github.com/srdzank/WinSQLite-Editor,3,0
+50326217,2026-11-01T14:48:41Z,"Show HN: Jumble, a Word Game",https://www.quizingo.app/jumble,3,2
+50326635,2026-11-01T15:36:02Z,Show HN: Sweet-search – local code search for agents (5–33% cheaper runs),https://github.com/mrsladoje/sweet-search,3,0
+50327798,2026-11-01T17:42:42Z,Show HN: 2D world SIM where each creature runs a text classifier in the browser,https://id-le.com/?lab&halloween,3,1
+50329343,2026-11-01T20:18:54Z,Show HN: Nouli – A decision model TUI to branch and blend multiple histories,https://github.com/nouli-ai/nouli,3,0
+50329581,2026-11-01T20:38:02Z,Show HN: AirFlick Drop – AirDrop for Windows with zero mobile app installs,https://github.com/k39139215-gif/airflick-drop,3,0
+50330504,2026-11-01T22:16:24Z,"Show HN: Measure the carbon cost of everyday items: prompts, beef, flights",https://carboncost.me,3,0
+50330601,2026-11-01T22:29:45Z,Show HN: CheckOwners to find your repo's hidden single points of failure,https://github.com/smusali/checkOwners,3,0
+50331371,2026-11-02T00:12:54Z,Show HN: SleepSignal – App to calm down your nighttime racing thoughts,https://sleepsignal.app/,3,2
+50332594,2026-11-02T02:54:01Z,Show HN: Rufous – Agent attuned to small models,https://rufous.chat,3,0
+50333096,2026-11-02T04:25:07Z,Show HN: AWKLog – a minimalist Datalog interpreter in Awk,https://github.com/stass/awklog,3,0
+50333638,2026-11-02T06:11:27Z,Show HN: Open-sourced alternatives to every SaaS tool,https://www.saasalternatives.online,3,1
+50334102,2026-11-02T07:38:56Z,"Show HN: HackerPapers – 3,314 arXiv papers and the HN conversations behind them",https://hackerpaper.kaipfister.de,3,0
+50335668,2026-11-02T11:57:01Z,"Show HN: HackerTube for Apple TV. Videos HN Recommends, on Your TV",https://github.com/Jnaina/hackertube-tvos,3,0
+50335827,2026-11-02T12:17:58Z,"Show HN: Faro, an unofficial Signal client for the terminal",https://getfaro.dev/,3,1
+50336823,2026-11-02T13:53:51Z,Show HN: Maat – AI agents that can diagnose Ubuntu but can't change it,https://github.com/bolesawny7/maat,3,0
+50337697,2026-11-02T14:58:44Z,Show HN: A SQL parser and type checker written in TypeScript types,https://github.com/ismailkarsli/TypeSQL,3,1
+50338055,2026-11-02T15:22:49Z,Show HN: MxRaven – Programmable email infra for nothing in particular,https://sandbox.mxraven.com/,3,2
+50338144,2026-11-02T15:27:20Z,Show HN: Spy Back on Your TV: HDMI Man in the Middle,https://www.youtube.com/watch?v=ktMCGZ_xHi4,3,0
+50338267,2026-11-02T15:35:50Z,Show HN: Election-vibe – US midterm results in your terminal and Claude Code,https://www.npmjs.com/package/election-vibe,3,1
+50339128,2026-11-02T16:20:29Z,"Show HN: OpenDocBot - bring your own model to Word, Excel and PowerPoint",https://opendocbot.com/blog/introducing-opendocbot,3,0
+50339488,2026-11-02T16:40:14Z,"Show HN: Hacker News Aggregators, Aggregated",https://hackeragain.com/,3,2
+50339588,2026-11-02T16:46:16Z,Show HN: HackerZon – HackerTube but for Amazon products mentioned on HN,https://hackerzon.pages.dev/,3,0
+50339983,2026-11-02T17:09:29Z,"Show HN: My Mac wouldn't switch to my USB-C earbuds, so I made an app that does",https://github.com/ishanray/AudioAutoSwitch,3,0
+50340594,2026-11-02T17:46:12Z,Show HN: Browse PC Parts on Amazon.com without distractions,https://findpcpart.com/products?category_key=cpu,3,0
+50341631,2026-11-02T18:48:59Z,Show HN: A 14M-param world model of 2D Minecraft you can play on your phone,https://maharishiva.github.io/tinywmcraft/,3,2
+50341635,2026-11-02T18:49:06Z,"Show HN: HackerGames –  HackerTube, but for games mentioned on HN",https://architrixs.github.io/HackerGames/,3,0
+50341649,2026-11-02T18:49:44Z,"Show HN: Mago, an open source AI video studio, runs locally with Comfy",https://github.com/MagoStudio/MagoStudio,3,0
+50343521,2026-11-02T20:50:38Z,Show HN: ReadoutBench – forecast 653 clinical trials before they report,https://readoutbench.com,3,3
+50344247,2026-11-02T21:43:40Z,Show HN: HN Atlas – Discover tools to better engage with Hacker News,https://hn-atlas.bensontech.dev/,3,2
+50344705,2026-11-02T22:17:29Z,"Show HN: HackerProducts – HackerTube, but for products mentioned on HN",https://hackerproducts.pages.dev,3,2
+50347156,2026-11-03T02:18:53Z,Show HN: Tiny Tally - Free local only finances,https://apps.tarwin.art/tiny-tally/,3,1
+50347777,2026-11-03T03:42:52Z,Show HN: CheapGPT – a free local AI assistant powered by Chrome's Gemini Nano,https://www.predatorray.me/CheapGPT/,3,3
+50348411,2026-11-03T05:22:40Z,"Show HN: Run xv6-riscv(64Bit,MMU) with RP2350",https://github.com/kamisori-daijin/pico-rv64-emu,3,3
+50348804,2026-11-03T06:39:24Z,Show HN: Muxscape A graphical SSH client built on tmux,https://muxscape.com/,3,1
+50350133,2026-11-03T10:18:46Z,Show HN: Hacker News Analytics,https://hackernews-analytics.jerrysniffs.online/,3,2
+50350300,2026-11-03T10:41:02Z,"Show HN: Yopologame.com – A free, bot-proof human proximity ledger",https://www.yopologame.com/,3,0
+50350485,2026-11-03T11:07:59Z,Show HN: Ship AI features without losing sleep,https://sentrint.com/,3,3
+50351748,2026-11-03T13:30:05Z,Show HN: Diogenes – Account-less MCP Gateway to 45 Gemini models and guardrails,https://diogenesgateway.com/,3,2
+50351797,2026-11-03T13:34:04Z,Show HN: Hardcount – Self-hosted usage billing for AI products,https://github.com/gethardcount/hardcount,3,0
+50353615,2026-11-03T15:59:04Z,Show HN: CleanSlop – Find what breaks in AI-generated TypeScript/Node web apps,https://cleanslop.com,3,1
+50354016,2026-11-03T16:24:06Z,"Show HN: Unblock Dot/Grok Bot/Instinct with Amazon, etc.",https://browse.sophtron.com/,3,0
+50356198,2026-11-03T18:38:00Z,"Show HN: I got tired of GitHub trending, so I built my own",https://shadowgraph.io,3,3
+50356948,2026-11-03T19:28:07Z,"Show HN: Graftfork: rebase fork patches onto each upstream release, test-gated",https://graftfork.com/try,3,3
+50357117,2026-11-03T19:42:50Z,Show HN: Twitter but you can only use paint,https://peck.pikju.com/,3,1
+50357443,2026-11-03T20:06:53Z,Show HN: Traccia – Control what AI agents can do,https://github.com/traccia-ai/traccia-py,3,1
+50357605,2026-11-03T20:18:39Z,Show HN: Mallard: Git for the age of AI agents,https://mallard-ai.com/home,3,2
+50358282,2026-11-03T21:14:36Z,Show HN: A browser studio with a SPICE-modeled Juno 106 (playing Nightcall),https://browsertape.com/metro#share=7bcc8ad92b7a4f458d924e3ea7ebf8b5,3,2
+50359750,2026-11-03T23:39:45Z,"Show HN: RotateAd, a web directory and banner exchange",https://rotate.ad/,3,4
+50360315,2026-11-04T00:59:19Z,"Show HN: Retro: I rebuilt bomberman game, same gameplay, new interface",https://playbomber.com/,3,8
+50361230,2026-11-04T03:34:34Z,Show HN: Rendering 3D Models in the Terminal,https://muratbayraktar.dev/blog/3d-rendering-in-the-terminal/,3,0
+50361309,2026-11-04T03:50:03Z,Show HN: A live-built agent newsroom for tracking midterms today,https://midterms2026.noriagentic.com/,3,0
+50361375,2026-11-04T04:02:36Z,Show HN: Handball Logos – Collection of logos of handball clubs,https://handball-logos.com/,3,0
+50361842,2026-11-04T05:38:41Z,Show HN: A space for folks with ADHD and Anxiety (invite code in dscrptn),https://asyde.space,3,0
+50361850,2026-11-04T05:40:34Z,"Show HN: Dryplate – Image tools that run in the browser, no upload",https://dryplate.dev/,3,0
+50362025,2026-11-04T06:16:59Z,"Show HN: Lets1UP, birthday/party game kits that run on your TV",https://lets1up.com/,3,0
+50362615,2026-11-04T08:02:25Z,"Show HN: Meteosource MCP server, weather data for AI assistants",https://mcp.meteosource.com/,3,1
+50362952,2026-11-04T08:53:15Z,Show HN: Headline Redline – track changes in News Headlines,https://headlineredline.com/,3,0
+50364101,2026-11-04T11:26:00Z,"Show HN: Inbox Classic, a Outlook Express-like modern desktop mail client",https://inboxclassic.com/,3,1
+50364657,2026-11-04T12:28:23Z,Show HN: MarkovChat – Meet people who share your intellectual interests,https://markovchat.com/,3,3
+50364706,2026-11-04T12:33:39Z,Show HN: Shield KYA – Open-source audit trail and gate for AI agent tool calls,https://github.com/The-Pixel-Boys/shield-kya,3,0
+50366976,2026-11-04T15:28:57Z,Show HN: Decipher saves you from specs and docs you rubber stamp,https://github.com/amirimi/decipher,3,1
+50368308,2026-11-04T16:52:23Z,Show HN: PodBookCase – Discover books mentioned on popular podcast episodes,https://podbookcase.com/,3,0
+50369009,2026-11-04T17:45:40Z,Show HN: Cppbolt – A lightweight C++ to WebAssembly compiler written in Rust,https://github.com/AJTimePyro/cppbolt,3,4
+50369215,2026-11-04T18:01:31Z,"Show HN: Phonon TTS on WebGPU, 44MB, 115x real time, with live word timings",https://github.com/blixt/phonon,3,0
+50370142,2026-11-04T19:10:34Z,Show HN: OnCue – A clock my 4-year-old can read,https://www.oncueboard.com/,3,1
+50370248,2026-11-04T19:18:26Z,"Show HN: Homotope, vectorize images to SVG in the browser, MIT engine on NPM",https://github.com/stevenroman91/homotope-engine,3,1
+50371286,2026-11-04T20:48:19Z,Show HN: Who and where are your anagranames?,https://louisabraham.github.io/anagranames/,3,0
+50371403,2026-11-04T20:57:05Z,Show HN: Tjaz – create a quiz about anything,https://tjaz.com/,3,0
+50372176,2026-11-04T22:04:03Z,Show HN: I built a hosting for small AI-generated software,https://host0.ai,3,1
+50372201,2026-11-04T22:07:07Z,Show HN: Multiplayer context – a brainpot if you will,https://brainpot.cloud/,3,0
+50372207,2026-11-04T22:07:35Z,Show HN: Amigent – AI agent and remote desktop for Commodore Amiga over 50 KB/s,https://github.com/akustikrausch/amigent,3,0
+50373233,2026-11-05T00:10:04Z,"Show HN: Cinnamon – safer AI agent for household, private and shared context",https://getcinnamon.ai/,3,1
+50374584,2026-11-05T02:59:05Z,Show HN: A table view for all your Trello cards,https://trello.com/power-ups/6ae62312ef3825846d6e2499/table-view-%E2%9D%A4%EF%B8%8F,3,0
+50375049,2026-11-05T04:08:44Z,"Show HN: Hyperb – multiplatform browser for hypereffect apps (iroh, HTTP, WASM)",https://github.com/hypereffect/hyperb,3,0
+50376180,2026-11-05T07:24:33Z,"Show HN: A Go JSON library faster than Sonic, with encoding/JSON/v2 support",https://github.com/goccy/go-json,3,0
+50376232,2026-11-05T07:33:40Z,Show HN: L4H – our hypervisor built on the seL4 microkernel,https://github.com/losfair/l4h,3,0
+50376897,2026-11-05T09:02:23Z,"Show HN: Metrics, Monitoring, and Alerting for Agents",https://github.com/chirrop/chirrop-mcp,3,1
+50377439,2026-11-05T10:19:54Z,"Show HN: MyArc, an open-source Chromium browser that works like Arc",https://myarc.dev/,3,0
+50377718,2026-11-05T11:00:28Z,Show HN: Win Stats – open-source system monitoring in the Windows taskbar,https://vc067.github.io/win-stats/,3,0
+50378570,2026-11-05T13:00:07Z,"Show HN: Music theory drawn on a real guitar fretboard, one engine per diagram",https://guitartheorystudio.com/app,3,0
+50378796,2026-11-05T13:24:40Z,Show HN: Find people on X asking for a product like yours,https://ownfeed.dev/check,3,3
+50378872,2026-11-05T13:33:04Z,Show HN: AI Heat Map generated real-time from over 140 News Feeds,https://ai-news.jagular.io/,3,0
+50380059,2026-11-05T15:09:48Z,Show HN: Radio Dystopia,https://radiodystopia.com/,3,0
+50380178,2026-11-05T15:17:58Z,"Show HN: QuanterLab, describe a trading strategy, watch it build in front of you",https://quanterlab.com/,3,0
+50380536,2026-11-05T15:43:57Z,Show HN: SrcWranglr,https://github.com/jdefrancesco/SrcWranglr,3,0
+50380773,2026-11-05T15:59:11Z,Show HN: A Modern Agentic LaTeX Editor,https://papilot.ai/,3,0
+50381846,2026-11-05T17:30:09Z,Show HN: Flawless UI/UX – A design skill and inspection CLI for coding agents,https://github.com/smokeeaasd/flawless-ui-ux,3,0
+50382105,2026-11-05T17:53:46Z,Show HN: Markdown OKF-Schema Studio for VS Code,https://github.com/gsemet/markdown-okf-schema-studio,3,0
+50383006,2026-11-05T19:04:14Z,"Show HN: Sshole-audit – Find, prove and fix *sshole: the OpenSSH password bypass",https://github.com/schappim/sshole-audit,3,0
+50383335,2026-11-05T19:31:56Z,"Show HN: calsdk, one TypeScript API for Google Calendar, Outlook and iCloud",https://github.com/vkpdeveloper/calsdk,3,0
+50383785,2026-11-05T20:06:33Z,"Show HN: Teach a speech model (en) a name by saying it once, on your Mac",https://detailkeeper.com/,3,0
+50384357,2026-11-05T20:56:14Z,Show HN: Hand Your Markdown Tasks to Claude Code from a Kanban Board,https://blog.etherpk.com/hand-your-markdown-tasks-to-claude-code-from-a-kanban-board,3,0
+50386089,2026-11-05T23:31:34Z,Show HN: Lab Canary – Rating AI labs on whether their staff can speak up,https://labcanary.com/,3,0
+50387558,2026-11-06T02:51:51Z,Show HN: Firefox extension to upload text to rentry quickly,https://addons.mozilla.org/en-US/firefox/addon/rear-entry/,3,3
+50388417,2026-11-06T05:00:14Z,Show HN: Repairer – close the breach when a Linux flaw goes public,https://gno.security/repairer/,3,1
+50390550,2026-11-06T10:24:05Z,"Show HN: Free real-time order book heatmap for Bitcoin, gold and US 500",https://swiftedge.uk/depth,3,0
+50391595,2026-11-06T12:32:11Z,Show HN: Lost and Fought – a 90s Style RTS – browser with multiplayer,https://lostandfought.com/,3,1
+50391666,2026-11-06T12:42:43Z,Show HN: Weeny.Cloud – A Linux server for your coding agent's apps,https://weeny.cloud/,3,0
+50392000,2026-11-06T13:23:08Z,"Show HN: Dub Digger – dub techno, deep, ambient and experimental",https://dubdigger.com/,3,6
+50393198,2026-11-06T15:04:43Z,Show HN: Pico-WAM – smallest world-action-model,https://www.keivalya.com/pico-wam/,3,0
+50393233,2026-11-06T15:07:17Z,Show HN: A debug overlay for iPhone Duo apps that shows reserved screen areas,https://github.com/mikeakers/DuoDevOverlay,3,1
+50393349,2026-11-06T15:16:39Z,Show HN: DrawDock – Annotate Windows apps from an Android tablet,https://github.com/MikeCer/DrawDock,3,1
+50393589,2026-11-06T15:34:05Z,Show HN: Upvoted – Up First but with HN stories,https://upvoted.dev/,3,3
+50394371,2026-11-06T16:19:10Z,"Show HN: noise'r'us, like placekittens.com but for audio",https://noiserus.greg.technology/,3,0
+50394884,2026-11-06T16:52:32Z,Show HN: Checkered Chat – QR codes with decoy messages and Shamir splits,https://honeywired.com/apps/checkered-chat/,3,0
+50394931,2026-11-06T16:56:10Z,Show HN: Self-Annotating Stock Charts,https://portfoliogenius.ai/features/ai-annotated-charts,3,0
+50395009,2026-11-06T17:01:22Z,"Show HN: Mega API Universe – 76,000 free APIs in a searchable SQLite database",https://fullfreeapilist.netlify.app,3,1
+50395066,2026-11-06T17:05:23Z,"Show HN: A crawler found 2,900 TV apps on GitHub",https://github.com/wingedpanther/openshelf,3,0
+50395261,2026-11-06T17:16:56Z,Show HN: Wrapped – Your neighborhood's 311 story,https://311wrapped.com/,3,0
+50395405,2026-11-06T17:27:38Z,"Show HN: Thesis, checks every SEC filing against why you own a stock",https://www.mythesis.ai,3,0
+50395582,2026-11-06T17:39:22Z,show HN: Computer-Generated Asset Pipelines: Shading Language in Toy Story (1995),https://codeaihq.com/computer-generated-asset-pipelines-shading-language-in-toy-story-1995/,3,0
+50395793,2026-11-06T17:55:24Z,Show HN: ViewFit – Resize images to the size they are rendered at,https://github.com/andrea-bonacci/viewfit,3,0
+50395977,2026-11-06T18:06:46Z,Show HN: Should I Grade It? Estimates a Pokémon card's PSA grade from a photo,https://shouldigradeit.app/,3,3
+50396090,2026-11-06T18:15:25Z,Show HN: Search Danish supermarket offers in English,https://nyneon.net/denmark-supermarket-offers/,3,2
+50398489,2026-11-06T21:02:37Z,Show HN: XOR's NFL Challenge – after nearly 40 years,https://testflight.apple.com/join/aJWq3EcC,3,0
+50402907,2026-11-07T09:05:30Z,Show HN: I built a food recall tracker with ML classification and email alerts,https://brentbutkow.me/projects/recall-radar,3,0
+50403249,2026-11-07T10:23:03Z,"Show HN: Retex, a Faster LaTeX Engine",https://gitlab.com/severin-lemaignan/retex,3,0
+50405227,2026-11-07T15:12:04Z,Show HN: Fels – a systems language with compile-time code execution,https://github.com/fels-lang/fels,3,2
+50406532,2026-11-07T17:58:49Z,"Show HN: Jacq, a DSL that compiles model and kernel descriptions to CUDA",https://github.com/ImpossibleComputing/jacq,3,1
+50406748,2026-11-07T18:24:40Z,Show HN: Software Layoffs Tracker,https://hissingkitty.com/research/software-layoffs-2026,3,0
+50406797,2026-11-07T18:31:41Z,Show HN: Enmetu – Git auto-commit that holds conflicts,https://codefloe.com/fluado/enmetu,3,1
+50406983,2026-11-07T18:56:07Z,Show HN: Agent Manager – keyboard-first workflow for running many coding agents,https://github.com/wainmann/agent-manager,3,0
+50410242,2026-11-08T03:44:10Z,"Show HN: Reges Town – a 3D city run by AI citizens, in the browser",https://regestown.com,3,0
+50413282,2026-11-08T13:42:10Z,Show HN: OfflineVault – AI based offline library for when the internet is down,https://offlinevault.dev,3,0
+50413587,2026-11-08T14:19:07Z,Show HN: Lipwise,https://getlipwise.com/,3,0
+50413601,2026-11-08T14:20:43Z,"Show HN: Nino – Fastest C# serializer, safe on untrusted input, also TS/Go/Rust",https://github.com/JasonXuDeveloper/Nino,3,0
+50413876,2026-11-08T14:59:45Z,Show HN: Joggo – a self-hosted GitHub Actions runner for the Windows PC you use,https://github.com/telluric-dev/joggo,3,2
+50413968,2026-11-08T15:11:43Z,"Show HN: Loop – your coding agents, from your phone",https://github.com/j-asefa/loop,3,7
+50415379,2026-11-08T17:45:08Z,Show HN: Build a PC in 3D in the Browser,https://www.buildcores.com,3,2
+50415725,2026-11-08T18:29:42Z,"Show HN: Elo Ratings for Tests, ODIs, and T20Is",https://outside-edge.github.io/side_order/,3,2
+50416651,2026-11-08T20:11:32Z,Show HN: Claude Opus 5.5 (Max) best at generating startup ideas,https://asiprize.com/,3,0
+50417782,2026-11-08T21:58:08Z,"Show HN: Record, branch, and compare command runs in stdlib-only Python",https://github.com/Protention/ocura-oss,3,0
+50418158,2026-11-08T22:34:06Z,"Show HN: My first project, an AI-powered financial news analyzer",https://github.com/lamarcol/NotBot,3,2
+50418253,2026-11-08T22:42:12Z,Show HN:Free Web Tools,https://nyneon.net/tools/,3,3
+50419542,2026-11-09T00:50:13Z,Show HN: Midgarth Quest. Browser-Playable Mmorpg Written by AI,https://midgarth.quest/,3,0
+50419582,2026-11-09T00:55:37Z,Show HN: Replay your Claude Code logs to count parallel session collisions,https://github.com/dooly6276/claude-bulkhead,3,0
+50419615,2026-11-09T00:59:27Z,Show HN: Airlock – Policy-as-code for fleets of AI coding agents,https://airlock.lunareng.com/docs,3,0
+50420362,2026-11-09T02:43:53Z,Show HN: ICC display calibration QR code markers,https://iccqr.github.io,3,0
+50420455,2026-11-09T02:56:09Z,Show HN: A web based client for the 1995 virtual world WorldsAway,https://worldsaway.app/,3,0
+50423261,2026-11-09T09:36:19Z,Show HN: Fs-relay – Mount remote folders over HTTP 10x faster than s3fs (Go),https://jadmadi.net/posts/mounting-remote-directories-over-http/,3,0
+50424264,2026-11-09T11:44:08Z,Show HN: NekoTrail – Open-source Conductor alternative for 16 coding agents,https://github.com/Harshil-Jani/nekotrail,3,0
+50424323,2026-11-09T11:51:02Z,Show HN: MyBox – Isolate your projects in a Linux box,,3,0
+50424695,2026-11-09T12:29:37Z,Show HN: Sortaballs v2 – logical game with 10 modes and over 1000 puzzles,https://sortaballs.vercel.app,3,0
+50425003,2026-11-09T13:01:24Z,Show HN: Pay-as-you-go Windows workstations for solo developers,https://whitehirst.com,3,1
+50425827,2026-11-09T14:07:33Z,Show HN: Kiiwi – Mechanical Keyboard sounds for your Mac,https://kiiwi.app/,3,0
+50426194,2026-11-09T14:33:07Z,"Show HN: Raw RAG leaks 0%, but agent memory leaks 67%",https://github.com/harishbalasubramanian/sentinel-eval,3,0
+50426314,2026-11-09T14:42:01Z,"Show HN: Kiosk, a first-class AI assistants' intefrace to online services",https://kiosk.tech/,3,0
+50427089,2026-11-09T15:39:10Z,Show HN: FloodRoute – Scrub through the tide and watch which streets flood,https://floodroute.com,3,0
+50429010,2026-11-09T17:57:59Z,Show HN: Face analysis tools with on-device photo processing,https://faceanalysis.app/,3,0
+50429442,2026-11-09T18:26:01Z,"Show HN: Wimi, a mouse-first window manager for macOS",https://getwimi.app,3,0
+50429445,2026-11-09T18:26:13Z,Show HN: RicKaptcha,https://gudzpoz.github.io/rickaptcha/,3,0
+50429564,2026-11-09T18:35:17Z,"Show HN: I made every icon in 34 styles, including Christmas, Kawaii and Soft 3D",https://withicons.com/,3,0
+50430050,2026-11-09T19:04:39Z,Show HN: Attentry – a local checker that reviews each edit Claude Code makes,https://github.com/Aarv-1o/Attentry,3,0
+50430415,2026-11-09T19:24:57Z,Show HN: Website to test if you can detect someone staring at your back,https://sixthsense.fastmathfacts.io/,3,3
+50431297,2026-11-09T20:14:09Z,"Show HN: Static analysis for JavaScript/TS test suites, written in Rust",https://spirolo.com/,3,0
+50433609,2026-11-09T23:04:16Z,"Show HN: Drop, self hosted, OSS file transfer for agents",https://twitter.com/jalcowastaken/status/2119922971599057366,3,0
+50433678,2026-11-09T23:10:11Z,Show HN: Live counts of AI assistants reading a diaspora business directory,https://nibiashara.com/agent-index,3,1
+50436566,2026-11-10T05:49:45Z,Show HN: Android and iOS games running offline in the browser,https://phoam.app/demos,3,1
+50439596,2026-11-10T12:47:14Z,"Show HN: Wanim – Run Manim Python in the browser, 20× smaller than Pyodide",https://github.com/Acfboy/Wanim,3,2
+50439598,2026-11-10T12:47:21Z,"Show HN: Markview – a fast Markdown reader in Rust, Obsidian Vault compatible",https://github.com/szdytom/markview,3,3
+50439741,2026-11-10T13:03:53Z,Show HN: 25 years of municipal finances queried in-browser via DuckDB-WASM,https://taxwatchdog.ca/,3,2
+50440474,2026-11-10T13:58:41Z,Show HN: MyType FYI finds your type from the faces you tap,https://mytype.fyi/,3,1
+50440576,2026-11-10T14:05:12Z,"Show HN: Padwan AI, an LLM Client for Python with HTTP/2 and HTTP/3",https://polarsen-io.github.io/padwan-ai/,3,0
+50441216,2026-11-10T14:52:36Z,"Show HN: QueenMQ – slow LLM calls blocked our Kafka partitions, so we built it",https://github.com/queen-mq/queen,3,0
+50441876,2026-11-10T15:37:40Z,"Show HN: We wanted to build an AI application, not maintain RAG pipelines",https://akropolys.cloud/docs/,3,1
+50442804,2026-11-10T16:42:46Z,Show HN: I checked 66 AI tools' privacy policies for AI training,https://getpolicypeek.com/,3,0
+50443149,2026-11-10T17:06:45Z,Show HN: Retro-gaming interview script for assessing culture fit,https://phnd.net/branwash/,3,3
+50444078,2026-11-10T18:20:09Z,Show HN: Mitra MCP lets AI agents make calls from your phone number,https://www.getmitra.com/mcp,3,0
+50444590,2026-11-10T18:56:55Z,Show HN: Totpvault - a universal desktop app for your TOTPs,https://github.com/spapas/totpvault,3,0
+50444873,2026-11-10T19:15:40Z,"Show HN: CeeSafe – Rust-style ownership for kernels, compiled to C11",https://ceesafe.github.io/CeeSafe/blog/kernel-safety-through-c,3,0
+50445542,2026-11-10T20:03:18Z,"Show HN: A clean-room Red Alert 2: Yuri's Revenge engine remake (Rust,wgpu,WASM)",https://github.com/egeozcan/glasnost,3,4
+50446990,2026-11-10T22:10:04Z,"Show HN: Tabichat chat demo, LLMs (with thinking) remain in their Pi harnesses",https://tabichat.dev/demo.html,3,0
+50322794,2026-11-01T04:48:50Z,"Show HN: What [67] MCP servers do at startup, with the internet cut off",https://mcp.brydge-ai.com,2,0
+50323078,2026-11-01T06:04:03Z,"Show HN: StackVitals – CI failure triage and DORA metrics, no server",https://github.com/stackvitals/stackvitals,2,0
+50323498,2026-11-01T07:52:58Z,"Show HN: Dolly – A Tribute to ""The Birth and Death of JavaScript""",https://slopshare.dev/v0.1.4/,2,0
+50323747,2026-11-01T08:51:23Z,Show HN: Mach – A modern C++20 web framework inspired by ASP.NET Core,https://github.com/machframework/mach,2,0
+50323807,2026-11-01T09:06:06Z,Show HN: OpenProject Agent Engine – Automated Workflow and Agent Dispatch,https://github.com/310networks/openproject-agent-engine,2,0
+50324422,2026-11-01T10:52:21Z,Show HN: BeachFinder – Find beaches with the right conditions,https://getbeachfinder.com,2,2
+50325217,2026-11-01T12:58:26Z,Show HN: Modeljury – a jury of cheap LLMs that escalates the hard cases,https://github.com/YasserManss/modeljury,2,0
+50325221,2026-11-01T12:58:43Z,Show HN: A static recompilation of God of War Ascension for PC,https://github.com/snuri00/GoWA-pc,2,0
+50325709,2026-11-01T13:53:13Z,"Show HN: Shroom – screen recording and sharing, your own Cloudflare, 10M setup",https://shroom.am,2,0
+50325772,2026-11-01T14:01:11Z,Show HN: Ovok – FHIR R4 back end for remote patient monitoring apps,https://www.ovok.com,2,2
+50325973,2026-11-01T14:22:05Z,Show HN: Crystal Caves (1991) – C and WebAssembly port without an emulator,https://github.com/vital101/crystal-caves,2,1
+50326245,2026-11-01T14:51:55Z,"Show HN: Bowerbird – Open-source NotebookLM for any model, with checked quotes",https://github.com/jolovicdev/bowerbird,2,0
+50326366,2026-11-01T15:07:58Z,Show HN: Mantissa – a distributed scheduler and container orchestrator,https://github.com/MantissaLabs/mantissa,2,3
+50326859,2026-11-01T16:03:01Z,Show HN: Gradual Daylight Saving – Spread the 1-hour shifts over the whole year,https://gradual.johndimm.org,2,2
+50327243,2026-11-01T16:44:26Z,Show HN: RenderPDF.js – HTML to PDF preserving browser CSS layout,https://www.npmjs.com/package/renderpdf-js,2,1
+50327396,2026-11-01T17:00:11Z,Show HN: 3D Rendering in the Terminal,https://muratbayraktar.dev/blog/3d-rendering-in-the-terminal/,2,1
+50327492,2026-11-01T17:09:25Z,Show HN: DataQuest-Your website data in Telegram and Discord,https://questdata.web.app/,2,0
+50327527,2026-11-01T17:13:47Z,Show HN: Keypause – lock your Mac's keyboard while you clean it,https://github.com/destucr/Keypause,2,0
+50327689,2026-11-01T17:32:10Z,Show HN: Two-hour reverse transit isochrones for NYC/NJ in the browser,https://commutable.nyc/,2,0
+50328210,2026-11-01T18:24:58Z,Show HN: I vibe-coded a generator of Suprematist compositions with Claude,https://supremath.art/,2,0
+50328415,2026-11-01T18:45:35Z,Show HN: Doppinow – A Distraction Interrupter for Developers,https://doppinow.com/,2,0
+50329149,2026-11-01T19:59:55Z,Show HN: Castov – A local-first desktop automation engine using local AI,https://castov.com,2,0
+50329685,2026-11-01T20:46:45Z,"Show HN:Type It Big – full-screen signs, timer, scoreboard and teleprompter",https://typeitbig.com/,2,0
+50330158,2026-11-01T21:37:05Z,Show HN: Building an AI Traffic Guardrail(kilasec),https://kilasec.com,2,0
+50330213,2026-11-01T21:44:21Z,"Show HN: Nonce – Open-source, least-privilege Gmail access for AI agents",https://www.anonce.io/,2,2
+50330224,2026-11-01T21:45:36Z,"Show HN: Corollary, LaTeX Editor for Mac with On-Device Apple Foundation Models",https://calvinyz.github.io/corollary/,2,0
+50330243,2026-11-01T21:47:51Z,Show HN: Tower of Questions – Daily Trivia Game,https://towerofquestions.com/,2,1
+50330796,2026-11-01T23:00:12Z,"Show HN: A faster Python 3 interpreter implemented in C11, one week",,2,2
+50331579,2026-11-02T00:39:44Z,"Show HN: SecuBuzz – My Stack, filter security news by your vendors",https://secubuzz.com/,2,0
+50331840,2026-11-02T01:15:44Z,Show HN: EchoChain to see what happens when LLMs play telephone,https://github.com/smusali/echoChain,2,0
+50332216,2026-11-02T02:06:08Z,Show HN: Complete Trading Chart engine for web,https://tradecanvas.dev/,2,0
+50333115,2026-11-02T04:29:23Z,Show HN: Arken – cryptographic identity for AI agents calling MCP servers/APIs,https://github.com/arkenforge/arken-core,2,0
+50333971,2026-11-02T07:16:37Z,Show HN: SpotKat – a free cat register with a lost-cat network,https://spotkat.nl/en,2,4
+50333987,2026-11-02T07:19:27Z,Show HN: Roland T8 Interactive Tutorial,https://roland-t8.fokion.online,2,0
+50334683,2026-11-02T09:25:54Z,Show HN: LibreCosmos – navigate your space-ship through SSH,https://librecosmos.com/,2,1
+50334812,2026-11-02T09:45:58Z,Show HN: Zero-knowledge zero-overhead LLM routing mesh using pure web primitives,https://bringYourOwnBrain.org,2,0
+50335122,2026-11-02T10:34:38Z,"Show HN: Take a break, play some puzzles",https://gridmino.com/,2,5
+50335168,2026-11-02T10:40:01Z,Show HN: Individual podcast episodes as recommended by HN,https://sunmer.github.io/podcast-radio/,2,1
+50335256,2026-11-02T10:55:20Z,Show HN: Knock – stop Claude Code burning tokens exploring big codebases,https://github.com/HasanGilani/knock,2,0
+50336750,2026-11-02T13:47:44Z,Show HN: HakTok – TikTok for Hacker News,https://haktok.party,2,2
+50337364,2026-11-02T14:33:25Z,Show HN: NetIntel – Deterministic Operational Intelliegence for Linux,https://ni.gnsoftlab.com/releases/1.0.0/,2,0
+50337374,2026-11-02T14:34:00Z,"Show HN: A2Flow – A workflow engine built around ""Agent as Workflow""",https://kaitoy.github.io/a2flow/,2,0
+50337499,2026-11-02T14:43:49Z,Show HN: Blorgle – a word game with a community-driven word bank,https://blorgle.com/daily,2,0
+50337525,2026-11-02T14:45:08Z,"Show HN: Vaire, Self-Hosting Postgres Through the One Glorious CLI",https://github.com/mbvlabs/vaire,2,0
+50337688,2026-11-02T14:58:19Z,Show HN: Slop Node for Keeta,https://github.com/xescure/slop-node,2,0
+50337795,2026-11-02T15:06:47Z,Show HN: ViBrow – A custom browser writen in Python and Zig using 35MB RAM,https://github.com/HYXZKAKONHNK/ViBrow,2,5
+50339212,2026-11-02T16:25:00Z,Show HN: Mind Made Many – Platform to organize your agents into orgs,https://mindmademany.com/,2,0
+50339331,2026-11-02T16:31:36Z,Show HN: Wrapped – your neighborhood's year in complaints,https://311wrapped.com/,2,2
+50340215,2026-11-02T17:23:39Z,"Show HN: Build and explore a shared AI computer, just by talking",https://duplex.party/,2,0
+50340386,2026-11-02T17:34:10Z,"Show HN: aido – Spec-driven, test-driven engineering workflow for Claude Code",https://github.com/joebew42/aido,2,0
+50340570,2026-11-02T17:44:32Z,Show HN: ArchDocs – Shared context and verification for engineers and AI agents,https://archdocs.io,2,0
+50341053,2026-11-02T18:13:56Z,"Show HN: HackerWords – HackerTube, but for words used on HN",https://hackerwords.org/,2,0
+50341158,2026-11-02T18:20:46Z,Show HN: Prelay – Weather-based work planning for outdoor contractors,,2,0
+50341363,2026-11-02T18:33:28Z,"Show HN: Intent-lens – see what Claude Code is about to do, before it does it",https://github.com/Dhananjay-JSR/claude-mods/tree/main/plugins/intent-lens,2,1
+50343997,2026-11-02T21:25:25Z,Show HN: SignalScoop – turn customer messages into product insights,https://www.signalscoop.app/,2,0
+50344077,2026-11-02T21:31:12Z,Show HN: ChatGPT sees something else in this image,https://gavin.wtf/blog/chat-gpt-cant-see-this/,2,0
+50344535,2026-11-02T22:05:10Z,Show HN: Spielerando: A game creation workbench for coding assistants,https://spielerando.com/en,2,0
+50346162,2026-11-03T00:09:27Z,Show HN: Learn to speak French by watching Netflix,https://chromewebstore.google.com/detail/greetai-learn-speak-langu/hhildamloicfginbdnilakddipgkolbf,2,0
+50346214,2026-11-03T00:15:44Z,Show HN: Learn French by Watching Netflix,,2,2
+50346315,2026-11-03T00:28:11Z,Show HN: Flick – A sports scores app without spoilers,https://flick.kawaicheung.io/appstart.html,2,0
+50347644,2026-11-03T03:24:03Z,Show HN: Share agents and context across devices,https://smatt989.github.io/agentremote-site/,2,0
+50348480,2026-11-03T05:35:55Z,Show HN: Hacker GitHub – the GitHub repos HN links to most,https://hackergithub.novian.works/,2,2
+50348934,2026-11-03T07:00:21Z,Show HN: Building a Self-Evolving WAF Engine via Inductive Logic Programming,https://prologwaf.site/,2,0
+50348966,2026-11-03T07:05:12Z,"Show HN: Inline Logs, console.log values next to your code in VS Code",https://github.com/lagudafuadtosin/inline-logs,2,0
+50349003,2026-11-03T07:12:04Z,"Show HN: OpenYog, SQLyog Community Ported to Qt 6 for Linux and Windows",https://github.com/AbdulOhab/openyog,2,0
+50350526,2026-11-03T11:12:31Z,"Show HN: Syrinx, a censorship-resistant communications platform",https://github.com/var0xyz/syrinx,2,0
+50350825,2026-11-03T11:49:20Z,Show HN: Recursive Human Intelligence: Actionable feedback from your LLM chats,https://github.com/andrearitossa/recursive-human-intelligence,2,0
+50350918,2026-11-03T12:00:26Z,Show HN: A webhook tester for your agent (and you),https://inspect.hookdeck.com/,2,0
+50351277,2026-11-03T12:38:49Z,Show HN: A tool to optimize AI model cost without benchmark score trade-offs,https://jeff-kline.github.io/posts/same-ai-results-for-less/index.html,2,0
+50351291,2026-11-03T12:39:27Z,"Show HN: Zuno – a native, keyboard-driven API client written in Rust",https://github.com/aryanjha256/zuno,2,0
+50352162,2026-11-03T14:07:04Z,Show HN: ClickHouse alternative than runs on your Iceberg,https://github.com/pivotlake/pivot,2,1
+50352209,2026-11-03T14:11:02Z,Show HN: APIblaze: Kong and Auth0 and FGA but $0/month,https://www.apiblaze.com,2,0
+50352315,2026-11-03T14:19:28Z,Show HN: Isitslop.org: AI Can build anything. Was it worth it?,https://isitslop.org,2,1
+50352620,2026-11-03T14:43:40Z,Show HN: React and NextJS Interactions with MCP for AI Coding – Hyperiux Vault,https://vault.hyperiux.com,2,0
+50352961,2026-11-03T15:08:46Z,"Show HN: HackerX – Hacker News front page docked in x.com, newest first",https://mllearnerakash.github.io/HackerX/,2,3
+50353251,2026-11-03T15:31:06Z,Show HN: Speedwidget – macOS widget how fast and how stable internet is,https://github.com/franzenzenhofer/speedwidget,2,0
+50353601,2026-11-03T15:58:06Z,Show HN: I built Knemora – An Open-source AI Second brain,https://github.com/federicolaterra/knemora,2,0
+50353885,2026-11-03T16:15:01Z,"Show HN: Ramen Profitable, a browser game about bootstrapping a SaaS",https://ramenprofitable.dev,2,0
+50354044,2026-11-03T16:26:30Z,Show HN: Negative Space – Startup ideas from the gaps between YC companies,https://nh66.ai/negative-space/,2,0
+50354212,2026-11-03T16:37:22Z,"Show HN: Speedrunner – Faster Startup: Python, Ruby, PHP and Node CLI Tools",https://github.com/anthonyGosme/speedrunner,2,1
+50354314,2026-11-03T16:44:11Z,Show HN: Ads-Boy: Track Planes on Your Game Boy,https://www.bjmalicoat.com/projects/adsboy,2,0
+50354365,2026-11-03T16:47:53Z,"Show HN: Record Demo Video on Mac with auto zoom, full controll",https://rescreen.studio,2,0
+50354370,2026-11-03T16:48:13Z,Show HN: Oathshaper – A BioWare Inspired Open RPG Game Engine,https://github.com/oathshaper/oathshaper,2,1
+50354859,2026-11-03T17:16:59Z,"Show HN: A fast, lightweight U.S. midterm election tracker",https://whoswinningthis.com/,2,0
+50355461,2026-11-03T17:52:52Z,Show HN: Local in-browser privacy-redact for pdf and images using WASM,https://github.com/gitcommitshow/privacy-redact,2,1
+50355470,2026-11-03T17:53:26Z,Show HN: A landing page that shows every psychological trick it uses on you,https://kickstartsidehustle.com/,2,0
+50355512,2026-11-03T17:55:49Z,Show HN: Backuparr – Backups for the *ARR Stack and Plex/Jellyfin/Emby,https://github.com/rsaturns/backuparr,2,0
+50355591,2026-11-03T18:01:12Z,"Show HN: Bundle – I kept forgetting what I read, so I built a read-later app",https://bundle.ink/,2,1
+50356156,2026-11-03T18:35:04Z,Show HN: Animus AI Blocker:Block AI slop images/videos on your social media feed,https://chromewebstore.google.com/detail/animus-ai-blocker/ofpjilegndibkndcacajdgmkjicjgbck,2,0
+50356916,2026-11-03T19:25:30Z,Show HN: An MCP proxy that sends 97% fewer tool-definition tokens per request,https://github.com/datolabs-io/mcp-toolsearch-proxy,2,0
+50357221,2026-11-03T19:51:06Z,Show HN: HackerByte – Finding promising AI stories by analyzing HN discussions,https://hackerbyte.net,2,0
+50357691,2026-11-03T20:25:48Z,Show HN: Connect Agents to 550 Business Tools,https://conecto.chat/,2,0
+50358221,2026-11-03T21:09:01Z,"Show HN: Grai, a single-file offline writing desk that measures your voice DNA",https://grai.page/,2,0
+50358319,2026-11-03T21:17:06Z,Show HN: MoEShift - Faster large MoE inference with half the RAM,https://github.com/davide-troiani/moeshift,2,1
+50359168,2026-11-03T22:30:34Z,"Show HN: Elmway – iOS App for Tasks, Habits and Notes",https://elmway.app,2,0
+50360496,2026-11-04T01:27:41Z,"Show HN: Gesture Studio – Windows gesture shortcuts for touch, pen, and mouse",https://apps.microsoft.com/detail/9nz37wkhnbb3?hl=en-US&gl=US,2,0
+50360517,2026-11-04T01:31:03Z,"Show HN: Predictygraph – animated diagrams styled with CSS, no reshuffle on edit",https://predictygraph.github.io/,2,0
+50360663,2026-11-04T01:53:15Z,Show HN: Temp Email for Developers and Agents,https://tempmailboxes.com,2,1
+50360833,2026-11-04T02:25:19Z,Show HN: ADB dock a macOS menu bar app to wirelessly connect Android devices,https://github.com/tripathiamritansh/adbdock,2,0
+50361042,2026-11-04T02:59:04Z,Show HN: DropMyPage – turn an HTML file or PDF into a link and QR code,https://dropmypage.com,2,0
+50361289,2026-11-04T03:45:44Z,Show HN: Sigmajp – Integrated Japanese Reader,https://sigmajp.works/,2,0
+50361910,2026-11-04T05:55:31Z,"Show HN: Open-source proxy for per-tenant Postgres, no app changes",https://play.lokadb.com,2,1
+50362033,2026-11-04T06:19:17Z,Show HN: Threatintel.sh – Live threat intelligence dashboard,https://threatintel.sh/,2,0
+50362206,2026-11-04T06:49:10Z,Show HN: Readfirst – a repo map your coding agents read before they edit a file,https://github.com/jeonghun917/readfirst,2,0
+50362545,2026-11-04T07:52:04Z,"Show HN: HIPAA compliance evidence for Supabase RLS,functions,triggers,auditlogs",https://unitautogen.com/blog/hipaa-evidence-for-supabase.html,2,2
+50362922,2026-11-04T08:50:10Z,Show HN: Setforge – free lifting tracker; Apple Watch counts your reps,https://apps.apple.com/us/app/setforge-strength-tracker/id6823719830,2,0
+50362986,2026-11-04T08:57:29Z,Show HN: Unsquatted – fast domain checker and curated list,https://unsquatted.com,2,0
+50363115,2026-11-04T09:22:38Z,Show HN: Hormuz Signal – Iran war escalation risk from real data,https://www.HormuzSignal.com/,2,0
+50363746,2026-11-04T10:47:43Z,Show HN : I built Caloi AI – an AI-powered calorie tracker,https://play.google.com/store/apps/details?id=com.caloi.app&hl=en_US,2,0
+50363999,2026-11-04T11:16:42Z,"Show HN: Trainlint, static checks for ML bugs that don't crash",https://github.com/Satvik-jain/trainlint,2,0
+50364206,2026-11-04T11:36:36Z,"Show HN: Olo, an AI companion that labels each claim against",https://helius-olo.io/chat,2,0
+50364525,2026-11-04T12:13:58Z,"Show HN: Rivermark, a superfast AI graphic design canvas",https://rivermark.ai/,2,0
+50364666,2026-11-04T12:29:16Z,Show HN: Which colour has more dots? A quick visual guessing game,https://dotguess.com/,2,6
+50364892,2026-11-04T12:55:33Z,Show HN: React-axis-drag – pointer drags that lock to one axis,https://sorena-labs.github.io/react-axis-drag/,2,0
+50364996,2026-11-04T13:04:25Z,Show HN: Backup your ChatGPT and Claude conversation free,https://www.samewindow.com/,2,0
+50365747,2026-11-04T14:09:16Z,"Show HN: One Code, almost all of Claude Code's features on pi, with any model",https://github.com/IsuruMaduranga/one-code,2,0
+50365750,2026-11-04T14:09:29Z,Show HN: Swarm World – local LLM creatures living in a little tile world,https://swarm-world.4rc4de.com/public/app/,2,1
+50365832,2026-11-04T14:14:54Z,Show HN: An ant simulation whose search walk is tested against real ant tracks,https://hokapo-ants.pages.dev/,2,0
+50365885,2026-11-04T14:19:00Z,Show HN: SpaceApp – Self-hosted workspace running AI coding CLIs in parallel,https://github.com/oll4com/spaceapp,2,0
+50366061,2026-11-04T14:32:47Z,Show HN: QAmcp – an open-source tester and monitor for MCP servers,https://qamcp.dev/?from=hackernews,2,0
+50366081,2026-11-04T14:34:24Z,Show HN: A Lean 4 port of libexpat's XML 1.0 parsing semantics,https://github.com/scidonia/lexpat,2,0
+50367485,2026-11-04T16:00:31Z,Show HN: Skykeep – Your iPhone's iCloud as desktop apps for Windows and Linux,https://github.com/YashwanthKamireddi/Skykeep,2,0
+50367560,2026-11-04T16:04:54Z,Show HN: Meshword - crosswords meet nonograms,https://meshword.org/,2,0
+50367575,2026-11-04T16:06:20Z,Show HN: 25posts – Guess the impressions of real LinkedIn posts,https://25posts.com/play,2,1
+50368011,2026-11-04T16:32:26Z,Show HN: Audio Visuals for the Quiet Mind,https://harmonicautomata.bytejelly.com/,2,0
+50368495,2026-11-04T17:06:10Z,Show HN: Renor – one memory for all your AI agents,https://github.com/renorai/renor-engine,2,2
+50369493,2026-11-04T18:22:01Z,Show HN: HackerDatasets-Discover remarkable datasets on HN,https://hackerdatasets.remyli.com/en/,2,0
+50369671,2026-11-04T18:34:50Z,Show HN: Safe and lightweight VMs for Coding agents,https://github.com/skerrysoft/safeagent,2,0
+50370440,2026-11-04T19:33:34Z,"Show HN: MAVO – Ukrainian air alerts by distance to Poland, with analytics",https://mavo.org.pl/en,2,2
+50370859,2026-11-04T20:12:31Z,Show HN: Ratio – a notepad that calculates as you type,https://useratio.app/,2,0
+50371490,2026-11-04T21:03:44Z,"Show HN: Mastodon desktop client, made with Claude, using Rust and GTK4",https://github.com/aisloperator/fedigoo,2,0
+50371518,2026-11-04T21:06:02Z,Show HN: Review patch/diff files as VS Code diffs with on-demand loading,https://marketplace.visualstudio.com/items?itemName=mehmetoguzderin.patch-diff-review,2,0
+50372526,2026-11-04T22:43:54Z,Show HN: Using GPUs for other bs than AI – important prime record for the geeks,https://github.com/djuk8/beacon/,2,1
+50373378,2026-11-05T00:26:26Z,Show HN: Native HTML Partials and Native MFEs,,2,0
+50373689,2026-11-05T01:04:31Z,Show HN: Exact integer LLL lattice basis reduction in C99,https://github.com/qawbecrdtey/clll,2,0
+50373881,2026-11-05T01:29:21Z,Show HN: Botlark – HN for Agents,https://botlark.com/,2,1
+50374018,2026-11-05T01:45:40Z,"Show HN: Autorun-audit – find what runs when you open, CD into or install a repo",https://github.com/ag3ntsc4rn/autorun-audit,2,0
+50374433,2026-11-05T02:39:08Z,Show HN: Edgepad – Turn an Android phone into a trackpad for your laptop,https://github.com/akshit-bansal11/edgepad,2,1
+50374605,2026-11-05T03:01:21Z,Show HN: REMO – Free 4D web network connecting 24 cities with ad-free live radio,https://remoworld.com/,2,0
+50374736,2026-11-05T03:20:07Z,Show HN: Mailbox.bot – A real street address for AI agents,https://mailbox.bot,2,0
+50375029,2026-11-05T04:05:32Z,Show HN: Rendro – fills in security questionnaires and RFPs from your own docs,https://www.rendro.net,2,0
+50375559,2026-11-05T05:27:53Z,Show HN: Hosted MCP server for 16 crypto exchanges and MetaTrader 5,https://github.com/AlgoVesta/mcp,2,0
+50375585,2026-11-05T05:33:49Z,"Show HN: Sunlith, an Android calendar you can control through MCP",https://github.com/SunSinD/Sunlith,2,0
+50375616,2026-11-05T05:41:38Z,Show HN: Atlas Streak,https://crux.quest/atlas/,2,1
+50376039,2026-11-05T07:01:18Z,Show HN: I made a tool to share website growth without screenshots,https://pagzi.online/,2,0
+50376225,2026-11-05T07:32:09Z,"Show HN: Inspired by HackerTube, I Built HackerByte for HN and GitHub",https://hackerbyte.net/,2,0
+50376539,2026-11-05T08:16:02Z,Show HN: Formatide – Batch image conversion and collages without uploading,https://formatide.com/converter,2,0
+50376852,2026-11-05T08:56:32Z,Show HN: All Browser Cleaner – clear every installed browser at once on Windows,https://apps.microsoft.com/detail/9pjs3wd4ts8r?hl=en-US&gl=US,2,0
+50377022,2026-11-05T09:22:34Z,Show HN: Tao Browser – a WebKit browser with separate logins per space,https://tao.hostao.com/,2,0
+50377570,2026-11-05T10:40:10Z,Show HN: I built a calendar app that puts tasks directly inside your events,https://apps.apple.com/ph/app/daily-planner-tasks-zesfy/id6479947874,2,0
+50377639,2026-11-05T10:49:01Z,Show HN: Vector – a macOS app for engineering with agents,https://getvector.sh,2,0
+50377669,2026-11-05T10:53:23Z,Show HN: ChessGrind – Turn missed chess positions into training that sticks,https://chessgrind.fyi/,2,0
+50378066,2026-11-05T11:52:15Z,Show HN: A 69-byte on-chain PNG that turns OLED pixels off (0 nits),https://black-pixel-1x1.vercel.app/dossier.html,2,0
+50378593,2026-11-05T13:02:26Z,Show HN: ReadyTab – new-tab workspace with a desktop companion,https://readytab.cloud/,2,1
+50378603,2026-11-05T13:03:35Z,"Show HN: Cwist — Tiny, Easy, and Structured Web Framework for C",https://github.com/c4punks/cwist,2,1
+50378758,2026-11-05T13:20:07Z,"Show HN: Tunefield – DJ's music library as a 3D field (free, open source, macOS)",https://github.com/tunefield/lite,2,0
+50378844,2026-11-05T13:31:02Z,"Show HN: See an AI-drafted LinkedIn post and quote graphic, no signup or card",https://engine.goviralpromo.com/try,2,0
+50378953,2026-11-05T13:42:30Z,"Show HN: Ferry, a highly customizable and feature-rich file manager for macOS",https://ferry.indus3.org/,2,0
+50379109,2026-11-05T13:57:13Z,Show HN: Synaps – Turn your agents into autonomous daemons,https://github.com/HaseebKhalid1507/SynapsCLI,2,0
+50379247,2026-11-05T14:08:33Z,Show HN: Sleek Android <-> macOS file transfer app,https://phonemount.app/,2,1
+50379250,2026-11-05T14:08:39Z,"Show HN: Misogi - Do one hard thing this year, coached by your Muse",https://getmisogi.com/,2,1
+50379416,2026-11-05T14:22:52Z,"Show HN: FicScout – Like Goodreads, but see books rated by characters, plot etc.",https://ficscout.com,2,0
+50379521,2026-11-05T14:30:13Z,"Show HN: MeetCrate, export your Read AI and Fathom notes locally",https://lgdventures.github.io/meetcrate/,2,0
+50379536,2026-11-05T14:31:08Z,"Show HN: Open-source proxy for per-tenant Postgres, no app changes",https://github.com/lokadb/lokadb,2,0
+50379858,2026-11-05T14:56:21Z,Show HN: Typos – Render Typst Documents to Thermal Printers (Go and ESC/POS),,2,0
+50380012,2026-11-05T15:06:16Z,Show HN: Revline – An open-source AI-native video editor,https://tryrevline.com,2,0
+50380155,2026-11-05T15:16:44Z,"Show HN: PDF Reading, Annotation and Signing Inside Your Markdown Notes",https://blog.etherpk.com/pdf-reading-annotation-and-signing-inside-your-markdown-notes,2,0
+50380521,2026-11-05T15:42:38Z,Show HN: Resource Manager – Manage all resources on the computer,https://github.com/BIOcanse/Resource-Manager,2,0
+50380540,2026-11-05T15:44:16Z,Show HN: Trademark Screen – free plain-English trademark check with email watch,https://trademarkscreen.com/,2,1
+50380594,2026-11-05T15:48:13Z,Show HN: Northmeadow – encrypted shared memory for local AI agents and people,https://github.com/bavarian-studio/northmeadow/releases/tag/v0.1.0-alpha.1,2,1
+50380614,2026-11-05T15:49:00Z,Show HN: oldTunes – iTunes 4.9 for modern macOS (With GEISS),https://github.com/rib3ye/oldTunes,2,0
+50380797,2026-11-05T16:00:47Z,Show HN: Roblox game idea generator I built with AI as a non-coder,https://robloxideas.com/,2,0
+50380804,2026-11-05T16:01:11Z,Show HN: RippleMap – Map dependencies across GitHub repositories,https://github.com/Zintrivious/ripplemap,2,0
+50380814,2026-11-05T16:01:50Z,Show HN: PinSharing – OSM static maps and geocoding you can cache forever,https://pinsharing.com/,2,0
+50381016,2026-11-05T16:20:25Z,"Show HN: BeatBox – a cybersecurity lab on your own computer (QEMU, Rust)",https://github.com/0xthearchitect/beatbox,2,0
+50381848,2026-11-05T17:30:17Z,Show HN: Animated React components that also ship as single HTML files,https://teodoravadani.github.io/qodesign-free/,2,0
+50381940,2026-11-05T17:39:46Z,"Show HN: Tokenfund – back open source with your coding agent's tokens, not money",https://tokenfund.myclawn.com,2,0
+50381984,2026-11-05T17:43:09Z,Show HN: I made a tool that turns your Google Search Console data IN public page,,2,0
+50382213,2026-11-05T18:03:21Z,"Show HN: A terminal viewer for plain text data files (JSON,YAML,CSV,XML,)",https://aless.tabnas.dev/,2,0
+50382344,2026-11-05T18:13:57Z,"Show HN: Magertron – AI Orchestrator for agents' tools, APIs, LLMs and streams",https://magertron.com/#install,2,1
+50382372,2026-11-05T18:15:58Z,"Show HN: Resilient AI Worker Queue with Redis, BullMQ, and Budget Kill Switches",https://github.com/sidsri14/resilient-ai-worker-kit,2,0
+50382393,2026-11-05T18:17:19Z,"Show HN: Replay three AI agent approval failures in five seconds, in Python",https://github.com/salahmakboul/call4agents,2,0
+50382403,2026-11-05T18:18:00Z,Show HN: Lunar – a coding harness built for transparency and efficiency,,2,0
+50383215,2026-11-05T19:21:16Z,Show HN: Keynate – News sites and blogs installed on your own server in minutes,https://www.keynate.com,2,0
+50383438,2026-11-05T19:39:02Z,Show HN: Lo-fi layered over air traffic control (recorded myself),https://finalapproach.fm/,2,2
+50383912,2026-11-05T20:17:19Z,Show HN: Aireel.tv Paste your landing page. Get a produced promo film,https://aireel.tv/,2,3
+50384015,2026-11-05T20:25:46Z,"Show HN: Lantern Lattice – the call graph from your compiler, for coding agents",https://github.com/julymetodiev/lantern-lattice,2,0
+50384568,2026-11-05T21:16:49Z,"Show HN: Trace to Agent Session, open corresponding segment of dialogue",https://github.com/keepplain/keepplain-plugin,2,0
+50384727,2026-11-05T21:31:21Z,Show HN: I built a fast Java linter in Rust,https://github.com/rsmb7z/javaid,2,0
+50385004,2026-11-05T21:54:16Z,Show HN: Bisimia – A TLA+ environment that runs in the browser,https://bisimia.com,2,0
+50386034,2026-11-05T23:26:17Z,"Show HN: Stenvakt, a server hardening and patching tool",https://stenvakt.com/,2,0
+50386174,2026-11-05T23:40:38Z,Show HN: LLMBrake – Per-customer dollar caps for OpenAI/Anthropic API calls,https://github.com/llmbrake/llmbrake,2,0
+50386605,2026-11-06T00:32:05Z,Show HN: Taskivities – where tasks follow you till they are done,https://www.taskivities.com/,2,1
+50386766,2026-11-06T00:52:05Z,Show HN: Convert recorded class lectures into PDF/eBooks,https://lecturetobook.com/,2,0
+50387783,2026-11-06T03:24:13Z,Show HN: NextGen WAF – Native Prolog Server and Rule System,https://prologwaf.site/,2,0
+50388374,2026-11-06T04:51:24Z,Show HN: Document parsing 5B tokens on a single CPU thread,,2,0
+50388519,2026-11-06T05:19:36Z,Show HN: Stitch.ai – New all-in-one workspace with Stitchy the AI assistant,https://app.stitch.ai/auth/signup,2,0
+50389331,2026-11-06T07:40:12Z,"Show HN: Mall Bats, a nostalgic tycoon game with a twitst",https://mall-bats.vercel.app/,2,0
+50390066,2026-11-06T09:21:06Z,Show HN: Hackercasts – Podcasts Mentioned on HN,https://hackercast.org/,2,0
+50390450,2026-11-06T10:10:52Z,Show HN: flashjson,https://github.com/giancarloromeo/flashjson,2,0
+50390528,2026-11-06T10:21:32Z,Show HN: Liner Notes – an iPhone diary that drafts itself from your day,https://linernotes.aves.ltd/en/,2,1
+50390728,2026-11-06T10:48:09Z,"Show HN: Ostdb, an open database of official video game soundtrack",https://ostdb.net/,2,0
+50391075,2026-11-06T11:32:47Z,Show HN: Breath Harbor,https://breathharbor.com/tools,2,0
+50391261,2026-11-06T11:53:05Z,Show HN: PentestCanvas – Pentesting Workspace; with Claude and Kali,https://github.com/andrearitossa/pentest-canvas,2,1
+50391278,2026-11-06T11:54:06Z,Show HN: Nandfs – A computer made of folders that runs DOOM,https://github.com/zero11-0203/nandfs,2,0
+50391301,2026-11-06T11:56:56Z,Show HN: Chorono – Open-source 2D animation editor controllable via MCP,https://github.com/codie1982/chorono-editor,2,0
+50391790,2026-11-06T12:57:46Z,Show HN: CLI for Cybersecurity Triage,https://ceplang.org/start.html,2,0
+50391894,2026-11-06T13:08:35Z,Show HN: Local tier-1 SOC triage on Wazuh with a fine-tuned Gemma 4,https://github.com/oleg-vdv/kezekshi-l1,2,0
+50391995,2026-11-06T13:22:34Z,Show HN: KeepPlain – ask your coding agent why a line of code exists,https://keepplain.com,2,2
+50392224,2026-11-06T13:45:37Z,Show HN: Splitsetter – my attempt at a bill splitting app,https://app.splitsetter.com/,2,0
+50392297,2026-11-06T13:53:01Z,"Show HN: ECX – My Claude Code and Codex setup, where both agents share memory",https://github.com/saksham10arora-dotcom/everything-claude-codex,2,0
+50392413,2026-11-06T14:03:21Z,Show HN: Mercury 3 cost calculator (launch promo vs. list pricing),https://pulse.llmendpoint.com/mercury-3/calculator/,2,0
+50392579,2026-11-06T14:20:05Z,Show HN: Site Tools Box – Free webmaster tools with no login,https://sitetoolsbox.com/,2,0
+50392800,2026-11-06T14:36:10Z,"Show HN: UtmSnap – A fast, local-first UTM builder with team taxonomy governance",https://utmsnap.com,2,0
+50393113,2026-11-06T14:58:54Z,Show HN: EasyRunCraft – An office and creative suite for your AI agent,https://easyruncraft.com/,2,0
+50393255,2026-11-06T15:09:07Z,Show HN: Current – Change control for AI agents (Elixir),https://github.com/santosh79/current,2,0
+50393394,2026-11-06T15:19:47Z,Show HN: R/place for Git – Open-source Git server sustaining 567 pushes/s,https://reasonmachines.com/blog/aspen,2,0
+50393896,2026-11-06T15:52:31Z,Show HN: Bot scans DDoS your Django app? Hurricane 2.0 (now Rust-powered),https://django-hurricane.io,2,0
+50393973,2026-11-06T15:56:53Z,Show HN: Monetor – expense tracker for people whose banks have no API,https://www.monetor.co/,2,0
+50394380,2026-11-06T16:19:44Z,Show HN: A tool for looping and transcribing YouTube Videos,https://looptranscribe.com,2,1
+50394666,2026-11-06T16:37:29Z,Show HN: A weekly launch board for indie products ranked by unique clicks,,2,0
+50394904,2026-11-06T16:54:21Z,Show HN: Jev vs. OpenAI Decision vs. Small Financial World Models: FinBench [video],https://www.youtube.com/watch?v=UN1LIF01uHQ,2,0
+50396348,2026-11-06T18:33:15Z,Show HN: Church of Approximate Grace,https://approximategrace.church/,2,0
+50397064,2026-11-06T19:22:11Z,Show HN: Send to dot 0.9.5 – no computer has to stay on,https://github.com/bryanzk/send-to-dot/releases/tag/v0.9.5,2,0
+50398763,2026-11-06T21:27:38Z,Show HN: Realtime sync engine without any new infra,https://github.com/tanishqkancharla/tandem,2,0
+50399684,2026-11-06T23:02:58Z,"Show HN: Handbrake – a free, private driving log, no trackers, no ads",https://apps.apple.com/us/app/handbrake-driving-log/id6822426461,2,2
+50400711,2026-11-07T01:24:51Z,"Show HN: CLI calls spend their time starting up. I cut it by 4.5x, same output",https://github.com/anthonyGosme/speedrunner,2,0
+50401218,2026-11-07T03:00:50Z,Show HN: Combining Bursts of Images,https://github.com/skittleson/burst-superres,2,0
+50401533,2026-11-07T04:11:33Z,Show HN: S3mail – Serverless personal email on AWS with JMAP,https://github.com/zero11-0203/s3mail,2,0
+50402028,2026-11-07T05:53:40Z,Show HN: Tyler RSS – Open-source and feature-packed desktop RSS reader,https://goodapps.store/tyler-rss/,2,2
+50402682,2026-11-07T08:17:45Z,"Show HN: Kinrox – Spotify player in 196 MB RAM, Mac video player, iPhone remote",https://github.com/awaik/Kinrox,2,1
+50402836,2026-11-07T08:53:45Z,Show HN: Service for the parallel execution of AI agent tasks on remote devices,https://rungrid.space,2,0
+50402923,2026-11-07T09:09:52Z,Show HN: Mdt,https://github.com/VaibhavAcharya/mdt,2,0
+50403001,2026-11-07T09:26:45Z,Show HN: FastVM – MicroVMs that sleep on idle and wake when packets arrive,https://github.com/tuananh/fastvm,2,1
+50403825,2026-11-07T12:05:36Z,Show HN: Shiptape – Automated packing video proof for warehouse stations,https://shiptape.in,2,0
+50404183,2026-11-07T12:59:00Z,"Show HN: Stripe revenue, right in your notch",https://notchrevenue.com/?lang=en,2,0
+50404204,2026-11-07T13:01:33Z,"Show HN: Pentagonize, a connect 5 game with sliding rows and columns",https://pentagonize.com,2,0
+50404243,2026-11-07T13:07:13Z,Show HN: GC2 (Geo Compute Cloud),https://gc2.io/,2,0
+50404401,2026-11-07T13:30:44Z,Show HN: Let Claude write FL Studio projects by editing the .flp file directly,https://github.com/ProjectFlowmar/project5pi-midi-for-claude,2,0
+50404653,2026-11-07T14:07:09Z,"Show HN: Trailback – Offline, encrypted search for everything on your Mac/PC",https://trailback.app/,2,0
+50406146,2026-11-07T17:10:25Z,Show HN: FoilGateway–Linux firewall gateway with telemetry blocking (2×Ethernet),https://github.com/iBgeek/FoilGateway-Network,2,0
+50406341,2026-11-07T17:33:30Z,Show HN: I mapped all known crypto scams,https://dontgetrekt.today/,2,3
+50406439,2026-11-07T17:45:37Z,"Show HN: Digdeep.fyi – A DNS Debug Tool for DNSSEC, Mail, HTTP",https://digdeep.fyi/,2,0
+50406498,2026-11-07T17:54:31Z,Show HN: Tumblr Likes Calendar: Browse Your Likes by Date,https://www.hakuren-dev.blog/,2,0
+50406568,2026-11-07T18:02:42Z,Show HN: Grocery Offer in Denmark,https://nyneon.net/supermarket-offers-denmark/,2,5
+50406735,2026-11-07T18:23:18Z,Show HN: Laplace's Scissors – A tool for directly editing LLM weights,https://github.com/Miyamoto-Renya/LaplacesScissors,2,0
+50407925,2026-11-07T20:51:05Z,"Show HN: Conductor sold to Meta. Rebuilding the app (3 days, $170) (MIT)",https://github.com/jahala/conducted/,2,2
+50408300,2026-11-07T21:39:48Z,Show HN: Levithas,https://levithas.app,2,0
+50408429,2026-11-07T21:58:43Z,Show HN: R-eyesy: robo eyes that live on an old phone or a browser tab,https://wispplayer.com/reyesy/,2,0
+50408474,2026-11-07T22:03:55Z,Show HN: Models[.]Dev Index on a Globe,https://modex.aunai.org/,2,0
+50408722,2026-11-07T22:41:10Z,Show HN: Yahtzee – Probability Engine / Difficult CPU,https://slayyyyer.github.io/yahtzee/,2,1
+50409009,2026-11-07T23:23:21Z,Show HN: SF Title Alert,https://sftitlealert.com/,2,1
+50409020,2026-11-07T23:26:26Z,"Show HN: Sentient, Your Coding Agent Shouldn't Be a Black Box",https://nosaka.ai/sentient/,2,0
+50409129,2026-11-07T23:44:33Z,Show HN: An immutable local inference appliance with routing capability,https://github.com/diffsec/sibyl,2,0
+50409716,2026-11-08T01:29:30Z,Show HN: Learn Languages with Dual Subtitles,,2,2
+50410429,2026-11-08T04:32:44Z,Show HN: Reges Code – a free AI code editor that runs on local models,https://regescode.com/,2,0
+50410477,2026-11-08T04:44:14Z,Show HN: We Build Shareable Context Layer for Agent Teams,https://github.com/volcengine/OpenViking,2,1
+50410855,2026-11-08T06:12:09Z,Show HN: I built an AI code editor that for teams,https://www.rxcode.dev/,2,0
+50410979,2026-11-08T06:43:42Z,Show HN: ScrivenSpell,https://memalign.github.io/m/spell/,2,2
+50412226,2026-11-08T11:07:17Z,"Show HN: Throng, a project first, terminal 2nd IDE for command line people",https://github.com/Bidthedog/throng/,2,0
+50412316,2026-11-08T11:22:58Z,"Show HN: CloudShare app for iOS, simple way to share to your own S3 bucket",https://apps.apple.com/us/app/cloudshare-s3-file-sharing/id6823902669,2,2
+50412923,2026-11-08T13:04:06Z,Show HN: AIDA – agentic generated user guides,https://github.com/tryaida/aida,2,1
+50413455,2026-11-08T14:00:37Z,"Show HN: After decades, I have my almost perfect music player",https://github.com/skhaz/overdrive,2,0
+50413568,2026-11-08T14:16:27Z,"Show HN: Cross-device passkey auth on Android 9, synced with Bitwarden",https://rsnel.github.io/passkeychain/,2,1
+50414079,2026-11-08T15:28:04Z,Show HN: Apartment floor plan generator using discrete diffusion,https://playground.planfinder.xyz,2,1
+50414330,2026-11-08T15:57:33Z,Show HN: DoShare Personal Cloud – Cloud Storage for Humans,https://getcloud.doshare.me/,2,0
+50414691,2026-11-08T16:32:43Z,Show HN: Jabhook – Harnessing computer vision for martial arts training,https://jabhook.ai/,2,0
+50415469,2026-11-08T17:56:10Z,Show HN: Search Everywhere at Once. Instantly,https://antisoftworks.com/antifind,2,0
+50415745,2026-11-08T18:33:34Z,Show HN: Hackertube for Roku TV,https://github.com/piyushkhemka/hackertube-roku-app,2,0
+50415946,2026-11-08T18:57:22Z,"Show HN: Nexjoin – A C++ remote desktop alternative (Windows XP+, macOS 10.13)",https://nexjoin.io/README.html,2,1
+50416538,2026-11-08T19:56:25Z,Show HN: A medieval world where growth and citizens are pure functions of time,https://github.com/retrogames23/samenland,2,0
+50416757,2026-11-08T20:22:26Z,Show HN: APC Playground – Stop AI agents from modifying your API tool calls,https://playground.alephapc.com/,2,0
+50416782,2026-11-08T20:25:27Z,Show HN: Hyper Compress: The Best Open Source PDF Compression Engine,https://github.com/alam00000/bentopdf-hyper-compress,2,0
+50416829,2026-11-08T20:29:02Z,Show HN: Bulk-harden all your GitHub repos' settings without an API token,https://gist.github.com/1ch4k/ba726954db1cc509c2071d54f93b5304,2,2
+50417467,2026-11-08T21:25:54Z,Show HN: A kernel written in Rust that can boot Ubuntu with Plasma desktop,https://github.com/ozkl/ruxis,2,0
+50417585,2026-11-08T21:39:05Z,"Show HN: Fireside Folio – free books, comics and news editions for reMarkable",https://firesidefolio.com/,2,0
+50419299,2026-11-09T00:18:44Z,Show HN: TabVault – Export Chrome Tab Groups to Obsidian as Markdown,https://github.com/aryamantepal/tabvault,2,0
+50420270,2026-11-09T02:30:51Z,"Show HN: NLP capabilities of Opus, Astra, Argon measured by Codenames skills",https://wordspies.com/hn,2,0
+50420697,2026-11-09T03:30:04Z,Show HN: Mindfries- AI Interviewer based on real eng skill not on L**tC*de,https://company.mindfries.com/login,2,0
+50420962,2026-11-09T04:08:20Z,"Show HN: Just Dashboard, an open-source VPS management dashboard",https://github.com/JustDashboard/Just-Dashboard,2,0
+50421012,2026-11-09T04:16:07Z,"Show HN: A diffusion model that runs in pure CSS, no JavaScript",https://metrix187.github.io/diffusion.css/,2,0
+50421168,2026-11-09T04:46:12Z,Show HN: clap.cpp – Audio embedding inference in C++ (GGML),https://github.com/gorse-io/clap.cpp,2,0
+50421568,2026-11-09T05:54:45Z,Show HN: A bot attack forced me to rebuild my tools on Cloudflare Workers,https://sitetoolsbox.com/article.php?id=52,2,0
+50422308,2026-11-09T07:36:39Z,Show HN: CodeHub – Turning release notes into pictures so that it is fun to read,https://www.nadary.com/codehub,2,0
+50422605,2026-11-09T08:14:35Z,Show HN: Nearby Share:I built a browser-based file transfer tool,https://nearbyshare.app,2,0
+50422943,2026-11-09T08:57:52Z,Show HN: A lightweight RAG evaluator with golden-set metrics,https://github.com/infrixo-systems/rag-evaluation-starter,2,0
+50423233,2026-11-09T09:32:00Z,Show HN: Deterministic 15µs In-Material Lob Shock Damping for CCXT Traders,https://github.com/neoma-pcam/pcam-live,2,0
+50423648,2026-11-09T10:21:05Z,Show HN: nocopy – An APCu-compatible PHP extension with zero-copy reads,https://github.com/chrfritsch/nocopy,2,0
+50423957,2026-11-09T11:03:50Z,Show HN: Deepreed – preserve your writing style when using LLMs,https://deepreed.com/demo-v1,2,0
+50424070,2026-11-09T11:19:39Z,"Show HN: TimeScroll – an open-source, local replacement for Rewind on Mac",https://github.com/XInTheDark/TimeScrollApp,2,3
+50424556,2026-11-09T12:15:30Z,Show HN: Index of Mentour Pilot Videos since 2020,https://mentour-index.pages.dev/,2,0
+50425228,2026-11-09T13:21:13Z,"Show HN: Offline PDF Desk – one HTML file, redacts and merges PDFs offline",https://dowla0.gumroad.com/l/offline-pdf-desk,2,0
+50425480,2026-11-09T13:41:59Z,Show HN: Finding Wally/Waldo in CCTV Feeds,https://wallyfinder.com/,2,0
+50425521,2026-11-09T13:45:30Z,"Show HN: Malytics – Explore data, build dashboards",https://malytics.app/,2,0
+50426158,2026-11-09T14:30:22Z,Show HN: Product Analytics for your agent. 100x+ cheaper analytics/BI,https://slurp.run/,2,0
+50426638,2026-11-09T15:04:30Z,Show HN: Deedbell – Your daily call to a good deed,https://deedbell.com/today,2,0
+50426917,2026-11-09T15:25:38Z,"Show HN: GraphFlow – architecture diagrams that run, with queues and chaos",https://graph-flow-virid.vercel.app/?template=stripe-webhook-ledger,2,0
+50427028,2026-11-09T15:33:55Z,Show HN Offline free app to speak arabic,https://play.google.com/store/apps/details?id=com.bubblebees.saudisurvival&hl=en_US,2,1
+50427153,2026-11-09T15:44:59Z,"Show HN: 3D to 2D, point clouds flattening (geometry images)",https://github.com/Neighborhood-Grid/flatpoints,2,1
+50428435,2026-11-09T17:14:14Z,"Show HN: Compare, Filter and Visualize large datasets in the browser",https://slicelytics.com/,2,1
+50428595,2026-11-09T17:26:13Z,Show HN: A doc server where Claude or local agent edits based on added comments,https://smarchone.github.io/docs/,2,1
+50429147,2026-11-09T18:06:06Z,Show HN: ZeroPoint – CPU-only decision model that can answer 'none of these',https://github.com/Javihaus/zeropoint,2,0
+50429530,2026-11-09T18:32:12Z,Show HN: WebGL2 GPU Liquidity Heatmap for Hyperliquid L2 Orderbooks,https://velqiris-acquisition.netlify.app/heatmap.html,2,0
+50429558,2026-11-09T18:34:47Z,Show HN: Juggling multiple inboxes for customer support is a PITA,https://tryinboxnest.com,2,0
+50429960,2026-11-09T18:59:05Z,"Show HN: Search 17 years of ""What are you working on?""",https://stillworkingonit.vercel.app/,2,0
+50430860,2026-11-09T19:47:29Z,Show HN: Open-source app that lets LLMs control your iPhone (no Mac required),https://github.com/EliotAndres/iphone-use-app,2,0
+50431256,2026-11-09T20:12:16Z,Show HN: EtherPK Notes – An Agentic Kanban Board from Your Markdown Tasks [video],https://www.youtube.com/watch?v=6RpNgH8-Dsc,2,0
+50431764,2026-11-09T20:41:22Z,Show HN: Negs (Spektrafilm) brings spectral film simulations to the browser,https://getnegs.com/try/,2,0
+50432720,2026-11-09T21:47:30Z,Show HN: Bottled Reset Rune – auto-use spare Codex resets before they expire,https://github.com/sufferfml/reset-rune,2,1
+50433242,2026-11-09T22:33:16Z,"Show HN: Camwall – all your camera feeds on one screen, no black bars",https://github.com/vinodhalaharvi/camwall,2,0
+50434254,2026-11-10T00:05:38Z,"Show HN: Rat Race (After Dark, 1994), ported from 68k assembly to TypeScript",https://rat-race.heyitsjam.es/,2,0
+50434678,2026-11-10T00:55:51Z,"Show HN: FormaNest, Lay out a room in 3D in the browser and share it as a link",https://formanest.app/p/2LxQNrjg50vvxrbb,2,2
+50435166,2026-11-10T02:04:24Z,Show HN: Blabla Meter – Jev scores how useful page content is before you read it,https://github.com/maths-oliveira/blabla-meter,2,1
+50435241,2026-11-10T02:12:52Z,"Show HN: BetterMan – man pages for all of Debian, with explain and portability",https://betterman.sh,2,1
+50435624,2026-11-10T03:13:00Z,Show HN: AI Frothiness Index. Daily reading of how stretched the AI boom is,https://frothiness.jagular.io,2,1
+50436157,2026-11-10T04:45:56Z,Show HN: 3D Conformal Transformations via Geometric Algebra,https://static.laszlokorte.de/conformal-3d/,2,0
+50436369,2026-11-10T05:19:40Z,Show HN: Desires: privacy-first (kinky) interest matching app for adults,https://desires.be/,2,0
+50436387,2026-11-10T05:22:02Z,Show HN: Altcode Cheat Sheet,https://github.com/AdityaGavit/alt-code-cheat-sheet,2,0
+50436457,2026-11-10T05:31:28Z,Show HN: Calculators for token costs and Claude Code API budgets,https://modelfold.ai/tools/claude-code-cost,2,0
+50436473,2026-11-10T05:33:29Z,Show HN: Case converter with AP/APA/Chicago/MLA title case,https://simplecaseconverter.com/,2,0
+50437400,2026-11-10T08:03:01Z,Show HN: NanoLaunch - Submit Your Tool,https://nanolaunch.online/submit/,2,0
+50437978,2026-11-10T09:36:28Z,Show HN: Show HN: Sowbot – Open-hardware agricultural robot 8months progress,https://github.com/Agroecology-Lab/Sowbot,2,1
+50438403,2026-11-10T10:36:27Z,"Show HN: DayBreak, a stock brief where the AI never touches the numbers",https://github.com/XahidEx/DayBreak,2,1
+50438688,2026-11-10T11:13:36Z,Show HN: Secure dev boxes for your Mac,https://github.com/janpmz/mybox,2,0
+50438779,2026-11-10T11:23:09Z,Show HN: Storyfold – Interactive stories shaped by your choices,https://www.storyfold.games/,2,1
+50438913,2026-11-10T11:41:37Z,Show HN: Grai – A deterministic cadence gate for AI drafts,https://grai.page/#test,2,0
+50438932,2026-11-10T11:42:52Z,Show HN: I made an old-school IRC-style chat for talking about movies and series,https://irc.artconnects.club/,2,0
+50439089,2026-11-10T12:00:34Z,Show HN: Eigin. Local-first and no-shell personal AI for iOS,https://github.com/Eigin-AI/Eigin,2,1
+50439172,2026-11-10T12:08:45Z,Show HN: A linear model is an embedding table: using VW as transformer memory,https://www.liminalplanes.com/blog/vw,2,0
+50439591,2026-11-10T12:46:55Z,"Show HN: AI Vision Index, private tests of how well 36 AI models see",https://aivisionindex.com/,2,2
+50439622,2026-11-10T12:50:09Z,Show HN: Deep Cuts – music discovery via credits instead of algorithms,https://www.digdeepcuts.com/,2,1
+50439738,2026-11-10T13:03:32Z,Show HN: NeuroBrix – PyTorch-free local inference with a Rust grammar engine,https://github.com/NeuroBrix/neurobrix/releases/tag/v0.6.5,2,0
+50440055,2026-11-10T13:32:11Z,"Show HN: TeamOnly, free hosting for AI-built apps behind your company login",https://teamonly.dev/,2,1
+50440057,2026-11-10T13:32:21Z,Show HN: Kafuck – Apache Kafka Rewritten in Brainfuck,https://github.com/rmoff/kafuck/,2,0
+50440138,2026-11-10T13:37:19Z,Show HN: Nekolike – a coin pusher roguelike you rebuild between floors,https://pickthewheel.com/nekolike-coin-pusher/,2,0
+50440232,2026-11-10T13:43:38Z,Show HN: Usul – Express neural networks as raw math in C++23,https://github.com/crushr3sist/Usul-cpp,2,1
+50440317,2026-11-10T13:49:15Z,Show HN: A Hacker's Web Browser – Any Site to API (Open-Source),https://github.com/realsirjoe/relinos,2,0
+50440344,2026-11-10T13:51:06Z,"Show HN: RemoteCrab – an iPhone as your computer's camera, mic and screen",https://vgoapp.com/remotecrab/,2,0
+50440618,2026-11-10T14:08:44Z,Show HN: Distributed Langton Ant in Rust,https://sudo-giusppe.github.io/en/blog/langton-ga/,2,0
+50440754,2026-11-10T14:19:18Z,"Show HN: Monoprint – Beautiful code images, GPUI desktop app, CLI, Rust library",https://github.com/ozanvos/monoprint,2,0
+50441027,2026-11-10T14:38:07Z,Show HN: Offline First Ham Radio Tools,https://github.com/armysarge/ham-radio-tools,2,0
+50441321,2026-11-10T14:59:06Z,Show HN: Sugo – Turn PDFs and Screenshots into Compact Markdown for LLMs,https://github.com/Muralnick/sugo,2,0
+50441423,2026-11-10T15:06:08Z,"Show HN: Nixorium – NixOS fleet management, in daily use in my school's labs",https://github.com/giovantenne/nixorium,2,2
+50441490,2026-11-10T15:10:15Z,Show HN: Valin – your private memory for everything you save,https://www.valin.ai/,2,0
+50441622,2026-11-10T15:19:14Z,Show HN: Clikr – Virtual laser pointer that follows where you point your phone,https://chromewebstore.google.com/detail/clikr/oalndbmcbpchbbognlpkdafainaimhdk,2,0
+50441783,2026-11-10T15:30:50Z,"Show HN: Hadamask – Encrypt RAG metadata, keep exact vector search",https://github.com/cernica/hadamask,2,0
+50441792,2026-11-10T15:31:36Z,"Show HN: ArXiv papers as reflowable Kindle books, equations as MathML",https://dropkind.app/abs/1706.03762,2,0
+50441843,2026-11-10T15:35:13Z,"Show HN: ContentRank – web pages fight 1v1 matches, Glicko-2 ranks the winners",https://contentrank.app/,2,0
+50442186,2026-11-10T15:57:41Z,Show HN: Estimate the carbon footprint of your company's AI use (open data),https://somaai.earth/ai-footprint/calculator,2,0
+50442289,2026-11-10T16:05:43Z,Show HN: A Swift package that makes any macOS app translatable,https://github.com/FuzzyIdeas/LimbaKit,2,0
+50442523,2026-11-10T16:22:01Z,Show HN: Ramble – Message your agent directly from your Apple Watch,https://ramble.watch,2,2
+50442562,2026-11-10T16:24:33Z,Show HN: Glitch/Distorion page transitions with HTML-in-Canvas,https://amagi.dev/vfx-js-transitions/,2,0
+50443036,2026-11-10T16:58:17Z,Show HN:LiveKit Portal – Stream ROS 2 topics and video over WebRTC,https://github.com/livekit/ros-portal/,2,0
+50443075,2026-11-10T17:01:19Z,Show HN: Propylea – Sub-microsecond L7 reverse proxy and active defense in Rust,https://github.com/rmediatech/propylea,2,0
+50443256,2026-11-10T17:15:28Z,Show HN: Asm Lens – See the assembly of each function in VS Code,https://github.com/IdanShalom/asm-lens,2,0
+50443654,2026-11-10T17:49:44Z,"Show HN: Gauge, a 900 KB macOS menu bar app for what's using your RAM and disk",https://github.com/thisisvaze/Gauge,2,1
+50443847,2026-11-10T18:03:28Z,"Show HN: Gmessages-TUI, Google Messages (RCS and SMS) in the Terminal",https://github.com/louisrubet/gmessages-tui,2,0
+50444140,2026-11-10T18:23:24Z,Show HN: Relay – A multi-agent pipeline for AI-assisted front end engineering,https://github.com/rgadda/frontend-eng-team,2,0
+50444143,2026-11-10T18:23:34Z,Show HN: What happened to everyone who retired on the 4% rule since 1927,https://www.4percentcalc.com/,2,0
+50444188,2026-11-10T18:26:35Z,"Show HN: Fix Gate – verifies security-fix PRs, incl. AI-written ones",https://github.com/IWEBai/fix-gate-action,2,0
+50444623,2026-11-10T18:58:30Z,Show HN: AI agents found an unmapped Maya site in Mexico,https://twitter.com/PietroMiotti/status/2120219901814043087,2,0
+50445191,2026-11-10T19:36:52Z,Show HN: Small Wiki – a localized wiki/knowledge graph to your interest,https://nreff.github.io/small-wiki/,2,0
+50445502,2026-11-10T19:59:38Z,Show HN: I pasted 16 form generators' output into a blank page – none send,https://formgong.com/en/tools/html-form-generator/,2,0
+50445758,2026-11-10T20:20:03Z,Show HN: Zeus – Claude Code for AI voice agents,https://thunderphone.com/blog/introducing-zeus,2,0
+50446007,2026-11-10T20:39:46Z,Show HN: Cloakroom – Keeps secrets away from agents,https://github.com/shanjeevrajendran/cloakroom,2,0
+50446597,2026-11-10T21:32:11Z,Show HN: Tinctile – hex grid color puzzle that you solve using counts,https://crossnum.com/tinctile,2,0
+50446986,2026-11-10T22:09:53Z,Show HN: SketchUp compatible modeler with AI capabilities,https://pushform.io/,2,0
+50447187,2026-11-10T22:28:15Z,Show HN: Warmctl – Fast cold starts for vLLM inference,https://github.com/TensorRails/warmctl,2,1
+50447426,2026-11-10T22:52:13Z,Show HN: Python tool using torus math to audit duplex DNA against NCBI,https://github.com/Dr-Logvinovich/codon-torus-syntax/blob/main/README.md,2,0
+50447925,2026-11-10T23:45:15Z,Show HN: Cinnamon AI – an agent for your household,https://getcinnamon.ai/,2,3
+50322020,2026-11-01T01:46:05Z,Show HN: TariffPedia – HS code lookup and import duty comparison,https://tariffpedia.com/,1,0
+50322021,2026-11-01T01:46:21Z,Show HN: LinkedIn-ops – Zero-dependency CDP automation built for AI agents,https://github.com/shashtag-ventures/linkedin-ops,1,0
+50322117,2026-11-01T02:06:26Z,Show HN: Proxenos – a local-first agent for getting through the health system,https://github.com/mindemory/proxenos,1,0
+50322817,2026-11-01T04:52:59Z,Show HN: LanesMac – A scrolling tiling window manager for macOS,https://lanesmac.com,1,0
+50323175,2026-11-01T06:26:48Z,Show HN: Resticker – A tiny macOS menu bar app for reliable restic backups,https://github.com/marcboeker/resticker,1,0
+50323219,2026-11-01T06:38:39Z,Show HN: Nexus Doctor – A multi-language OS diagnostic engine (Rust/COBOL/Ruby),https://github.com/Aissamohammedi88/nexus-doctor.sh,1,0
+50323246,2026-11-01T06:48:11Z,Show HN: Kin – Natural language search for family voice notes and memories,https://kin.camera,1,0
+50323310,2026-11-01T07:04:15Z,Show HN: AnchorGit – Hardware-signed Git decision ledger for AI code,https://www.anchorgit.com,1,0
+50323549,2026-11-01T08:04:43Z,Show HN: See whether ChatGPT recommends your business (and who it names instead),https://citeon.dev,1,0
+50323586,2026-11-01T08:12:13Z,Show HN: OpenNorme – every law in Italy from 1861 in Git. One law per file,https://github.com/dej611/italian-laws-history,1,0
+50323638,2026-11-01T08:23:48Z,"Show HN: Overhear – mention monitoring billed per search, not per month",https://overhear.dev/,1,0
+50323660,2026-11-01T08:29:42Z,Show HN: Wafmeow – fast WAF fingerprinting in Go,https://github.com/Lu1sDV/wafmeow/,1,0
+50323784,2026-11-01T09:00:41Z,"Show HN: CardGroove – 52 on-line EMV tools, issuer, transactions simulator",https://cardgroove.polywickstudio.net/tools/,1,0
+50323906,2026-11-01T09:26:28Z,"Show HN: Portr – Expose local HTTP, TCP or WS connections to the public internet",https://github.com/amalshaji/portr,1,0
+50324018,2026-11-01T09:47:36Z,Show HN: Safely connect GrokBot to your PC/VM: chosen folders and Claude/Codex,https://github.com/janreges/safe-grokbot-bridge,1,0
+50324052,2026-11-01T09:52:30Z,"Show HN: Rust crawler for SEO and content audits, with optional LLM review",https://crawler.siteone.io/,1,0
+50324284,2026-11-01T10:30:24Z,Show HN: Turn websites into audio locally in the browser with WebGPU,https://storytella.io/,1,0
+50324396,2026-11-01T10:48:39Z,Show HN: AIOps Cockpit – An open-source AI SRE with human-in-the-loop safety,https://github.com/matricphase-dot/aiops,1,1
+50324411,2026-11-01T10:50:35Z,Show HN: tld - Create and explore nested diagrams like a map,https://github.com/Mertcikla/tld,1,0
+50324483,2026-11-01T11:07:01Z,Show HN: Detox Mode – A Flutter app to help reduce smartphone distractions,https://play.google.com/store/apps/details?id=com.saurabh.detox&hl=en_US,1,0
+50324564,2026-11-01T11:21:38Z,Show HN: EBI Space – Live floating timer for social feeds and mobile games,https://ebispace.app/,1,0
+50324766,2026-11-01T11:53:35Z,Show HN: Secret Key – Shamir-based emergency access to a password vault,https://github.com/mateuszkarpierz/secret-key,1,5
+50324875,2026-11-01T12:11:34Z,Show HN: Buzz 0.6.0 Release,https://github.com/buzz-language/buzz/releases/tag/0.6.0,1,0
+50325254,2026-11-01T13:02:35Z,Show HN: Wayside – A retro dark fantasy journal,https://waysideapp.io/,1,1
+50325483,2026-11-01T13:26:51Z,Show HN: Devloops – Adversarial agent loops so humans only make the key decision,https://github.com/fritzprix/devloops,1,0
+50325712,2026-11-01T13:54:09Z,Show HN: IsSiteDown – Chrome extension to check current site availability,https://chromewebstore.google.com/detail/issitedown/ifilnamlilffdbhbfmkkkajlgckimjlo,1,2
+50325878,2026-11-01T14:11:06Z,Show HN: Let formal specs test AI implementations,https://github.com/mrasu/spec-guardian,1,0
+50325965,2026-11-01T14:21:00Z,Show HN: DuckDB Micro – A Port of DuckDB to the ESP32-P4 Microcontroller,,1,0
+50326094,2026-11-01T14:34:14Z,Show HN: ElmTUI. Declarative terminal user interface framework in Common Lisp,https://github.com/fkr-0/elmtui,1,0
+50326172,2026-11-01T14:44:19Z,"Show HN: Pmstream, Milkdrop visualizations in the terminal (also in kew player)",https://github.com/ravachol/pmstream,1,0
+50326311,2026-11-01T15:00:25Z,Show HN: Mwmbl Index Dumps,https://mwmbl.org/dumps,1,0
+50326416,2026-11-01T15:12:52Z,"Show HN: Folio Refresh, a Mac Duplicate Photo Cleaner for Lightroom/Capture One",https://caddora.ie/folio,1,0
+50326425,2026-11-01T15:13:55Z,"Show HN: Say Cheese Game Hub – Roblox endings, board-game solver",https://saycheesegame.org/,1,0
+50326432,2026-11-01T15:15:03Z,"Show HN: Amidumb – scores how you direct Claude Code and Codex, from local logs",https://github.com/jjinendra3/amidumb,1,0
+50326775,2026-11-01T15:52:51Z,"Show HN: Black October: a month of hacks, breaches, and HN living up to its name",https://blackoctober.report/,1,0
+50326832,2026-11-01T15:59:24Z,"Show HN: Rbcop, RuboCop rewritten in Rust with identical output",https://github.com/costajohnt/rbcop,1,0
+50326853,2026-11-01T16:02:32Z,Show HN: LAN Commander – Native C++ TUI File Manager for Windows (700 KB),,1,0
+50326987,2026-11-01T16:15:59Z,Show HN: Relayvora – Hand unfinished work between Claude Code and Codex,https://github.com/Dagimassefa/Relayvora,1,0
+50327407,2026-11-01T17:00:42Z,"Show HN: PixelShrink, a private image compressor in the browser",https://compress-image.uk/,1,0
+50327694,2026-11-01T17:32:52Z,Show HN: Config parser written in TypeScript types,https://github.com/soml-lang/soml-typescript-types,1,0
+50327851,2026-11-01T17:48:24Z,"Show HN: Recento Pro (beta): CleanShot, Paste, AlDente-style tools in one app",https://1dot.ai/recento-pro,1,0
+50327881,2026-11-01T17:51:51Z,Show HN: Natively 3.0 – a local meeting assistant that hides from screen share,https://github.com/Natively-AI-assistant/natively-cluely-ai-assistant,1,0
+50328279,2026-11-01T18:32:10Z,Show HN: BoothWall – open-source live photo wall for Fire TV and any browser,https://github.com/boothwall/boothwall-oss,1,0
+50328748,2026-11-01T19:19:32Z,Show HN: DSP Explorables,,1,0
+50328826,2026-11-01T19:28:49Z,Show HN: Crosswalk – terminal manager to reduce sprawl,https://wareshq.com/crosswalk,1,0
+50329884,2026-11-01T21:06:17Z,Show HN: A modern reimagining of the Python progresssss bar,https://github.com/minimaxir/psnek,1,0
+50330154,2026-11-01T21:36:19Z,Show HN: Maintainers Coffee – Ship coffee to someone making something cool,https://maintainers.coffee/,1,2
+50330182,2026-11-01T21:39:33Z,Show HN: Search2o – An Agent Server for the Enterprise,https://search2o.com/,1,0
+50330726,2026-11-01T22:48:20Z,Show HN: Duckstring – Pull-orchestrated data pipelines on DuckDB,https://playground.duckstring.com/story,1,2
+50330862,2026-11-01T23:11:12Z,"Show HN: My Sports OS – A platform for sports scientists, teams, and coaches",https://mysportsos.com/,1,0
+50330889,2026-11-01T23:14:44Z,Show HN: TunaML – Renewable Energy Analytics,https://tunaml.com/,1,0
+50331451,2026-11-02T00:23:22Z,"Show HN: HeyGo - Cabs, freight, and ambulances in a single app",https://heygo.in/,1,0
+50331879,2026-11-02T01:20:00Z,Show HN: Skep – live cross-device sessions for AI coding agents,https://skepagent.com/,1,0
+50332362,2026-11-02T02:23:15Z,Show HN: The Agentic State,https://agenticstate.dev/,1,0
+50332827,2026-11-02T03:30:50Z,"Show HN: Paste your MCP config, see what each server does at startup",https://mcp.brydge-ai.com,1,0
+50332920,2026-11-02T03:50:53Z,Show HN: DodoCD – CI/CD for PHP Shared Hosting,https://github.com/YohanSandun/dodocd,1,0
+50333499,2026-11-02T05:42:08Z,Show HN: AI System Design Primer,https://github.com/daneb/ai-system-design-primer/,1,0
+50333766,2026-11-02T06:37:42Z,"Show HN: Spiceliner, a modern platform to navigate the markets",https://spiceliner.com,1,1
+50333957,2026-11-02T07:13:44Z,Show HN: Shipvo – open-source RN OTA updates and an AI-drivable simulator,https://github.com/shipvo/shipvo,1,0
+50334027,2026-11-02T07:25:50Z,Show HN: A battery runtime calculator for camping and off-grid loads,https://camppowercalc.com/en/calculator/battery-runtime/,1,0
+50334314,2026-11-02T08:20:03Z,Show HN: XButForY - Showcase your X but for Y websites,https://xbutfory.com/,1,0
+50334503,2026-11-02T08:54:58Z,Show HN: AgentTM – A time-travel debugger for AI coding agents built in Go,https://github.com/Jyotishmoy12/AgentTM,1,0
+50334607,2026-11-02T09:13:59Z,"Show HN: Konvene, private browser-to-browser video calls with on-device effects",https://konvene.app,1,0
+50334706,2026-11-02T09:29:46Z,Show HN: URL Shortener – A Chrome Extension by Shortener.dev,https://chromewebstore.google.com/detail/shortenerdev-url-shortene/ocpliefdcodaeidgjkfppecfbppljhfn,1,0
+50335055,2026-11-02T10:23:24Z,Show HN: Info.plist checker – catch App Store upload rejections before uploading,https://github.com/peterzhang0216/info-plist-checker,1,0
+50335339,2026-11-02T11:08:27Z,Show HN: Mistake Trainer – Spaced repetition from your own Lichess games,https://mistake-trainer.pages.dev/,1,0
+50335343,2026-11-02T11:09:17Z,Show HN: Sortaballs – alternative modes for classic sort ball puzzle,https://sortaballs.vercel.app,1,0
+50335493,2026-11-02T11:29:17Z,Show HN: Disable ACR on Sony Bravia TV's Without Rooting,https://github.com/joelio/bravia-guard,1,0
+50335719,2026-11-02T12:04:55Z,Show HN: An MCP server that runs 27 small web and open-data scrapers,https://github.com/emirmrkaljevic/tinyrex-mcp,1,0
+50335805,2026-11-02T12:15:00Z,Show HN: X Mode – macOS-style window management for Omarchy,https://github.com/timurguseynov/omarchy-x-mode,1,0
+50335910,2026-11-02T12:25:42Z,Show HN: Stories are being shadow banned from OGs,,1,4
+50336087,2026-11-02T12:45:15Z,Show HN: Infoboxing – Guess the Wikipedia article from its infobox,https://www.infoboxing.net/,1,1
+50336297,2026-11-02T13:05:44Z,Show HN: agentic system in python for financial statement research,https://ozanciga.github.io/agentic-system-design-for-beginners/#intro,1,0
+50336311,2026-11-02T13:06:36Z,Show HN: Kvark Sparkle 27B – reasoning model trained to think with fewer tokens,https://huggingface.co/Egzakta/Kvark-Sparkle-1.0-27B,1,0
+50336364,2026-11-02T13:10:14Z,Show HN: A game to learn about US state borders,https://borderrace.com,1,0
+50336477,2026-11-02T13:21:22Z,Show HN: Stream any GUI to a webpage in a single command (no noVNC included),https://github.com/lp1dev/WebX11,1,0
+50336534,2026-11-02T13:26:32Z,Show HN: Svoxx – A multilingual freelance marketplace with social features,https://freelancer.svoxx.com/int/en,1,0
+50336585,2026-11-02T13:30:56Z,Show HN: OpenMarkdown – A Markdown editor your coding agent edits with you,https://openmarkdown.dev/,1,0
+50336647,2026-11-02T13:36:48Z,"Show HN: Poinky – Claude Code you talk to, that sees your screen",https://github.com/tomyud1/poinky,1,0
+50337007,2026-11-02T14:08:58Z,Show HN: EvalCart – Evals and leaderboard for agent shoppers,https://www.evalcart.com,1,0
+50337142,2026-11-02T14:18:17Z,"Show HN: CREparser – CRE due diligence, every figure cited",https://creparser.com/,1,0
+50337215,2026-11-02T14:23:12Z,Show HN: Hands-on security exercises for students and instructors,https://sonukapoor.github.io/cve-lite-classroom/,1,0
+50337236,2026-11-02T14:24:39Z,Show HN: DeskAccess – Open-source remote access for Raspberry Pi,https://github.com/winnie264/deskaccess,1,0
+50337362,2026-11-02T14:33:19Z,"Show HN: AI portfolio with RAG, Browser TTS-Highlight Engine & Developer Area",https://venkatpabolu.onrender.com,1,0
+50338205,2026-11-02T15:31:23Z,Show HN: Devpush – Self-Hosted PaaS for Docker Compose,https://devpu.sh/,1,0
+50338295,2026-11-02T15:37:31Z,Show HN: Fish Tank Plus – a free 3D aquarium for the browser and Windows,https://play.fishtankplus.com/,1,0
+50338423,2026-11-02T15:45:38Z,Show HN: AtelierLab – Drawings that unlock when the client pays,https://www.atelierlab.in,1,0
+50338561,2026-11-02T15:53:08Z,"Show HN: Smalt – Talk to Claude Code by voice, hands-free, on your Mac",https://getsmalt.com/,1,0
+50339082,2026-11-02T16:18:37Z,"Show HN: Vivio House, an interactive 3D headquarters",https://vivio.house/en,1,0
+50339422,2026-11-02T16:36:00Z,Show HN: Go (style) linter for dangling package-level functions,https://github.com/nfx/go-ownfunc,1,0
+50339547,2026-11-02T16:43:47Z,"Show HN: Open-source, Lightroom Alternative RAW editor made by photographer",https://github.com/Duecki1/CalibRaw,1,0
+50339784,2026-11-02T16:58:12Z,Show HN: Agent Drift Game – short games about why AI agents drift,https://drift.seethis.dev/,1,0
+50339790,2026-11-02T16:58:25Z,Show HN: Prepd – System design interview practice with AI mock interviews,https://prepd.tech/,1,0
+50340014,2026-11-02T17:11:57Z,Show HN: Connect Ring doorbell to Home app,https://github.com/anubhavmalhotra/ring-homekit-secure-video,1,0
+50340083,2026-11-02T17:16:01Z,"Show HN: Hanging Context – news by an agent, for other agents",https://hangingcontext.com/,1,0
+50340125,2026-11-02T17:18:28Z,"Show HN: OpenCoaster, a theme park management game built for web/mobile",https://opencoaster.noriagentic.com/,1,0
+50340276,2026-11-02T17:26:19Z,Show HN: Relaynet – open-source relay that gives browser tabs a real network,https://github.com/beriberikix/relaynet,1,0
+50340303,2026-11-02T17:27:46Z,Show HN: Garrul – Comments system for your site on a single Cloudflare Worker,https://github.com/KingPin/Garrul,1,0
+50340609,2026-11-02T17:47:05Z,Show HN: Open Bot Avatars – a spec and renderer for interactive bot avatars,https://dominikscholz.github.io/open-bot-avatar/,1,0
+50340611,2026-11-02T17:47:12Z,Show HN: SDCGuard – Inspect vLLM KV-checksum coverage per request,https://github.com/hari-kancharla/sdcguard,1,0
+50340627,2026-11-02T17:47:51Z,"Show HN: Elections Archive: every election in the US, citable and open source",https://electionsarchive.com/,1,0
+50340718,2026-11-02T17:53:47Z,Show HN: A persistent Chrome cloud browser for AI agents,https://cloudbrowser.tv,1,1
+50340881,2026-11-02T18:04:12Z,"Show HN: Browser-only audio tools – song key finder, LUFS meter, fake-FLAC check",https://audiofetcher.com/tools/,1,0
+50340889,2026-11-02T18:04:45Z,"Show HN: I lost count of the snus I've tried, so I built a site to track them",https://snusrate.com/rankings,1,0
+50341099,2026-11-02T18:17:10Z,Show HN: Building a Magic the Gathering Benchmark,https://folds.ink/posts/mtg-benchmark,1,0
+50341163,2026-11-02T18:20:56Z,Show HN: Chrome Extension to Advertise to Yourself,https://chromewebstore.google.com/detail/advertise-to-yourself/pkjmonfjojnmpahfdebphddjjpifibhm,1,0
+50341435,2026-11-02T18:37:51Z,Show HN: Vantage – Early-Warning Signals,https://aditya-web-portfolio.vercel.app/blogs/vantage,1,0
+50341646,2026-11-02T18:49:38Z,Show HN: One Roof – mission control for many coding agents. You stay in charge,https://github.com/gaurav8936/oneroof,1,0
+50342027,2026-11-02T19:13:48Z,Show HN: Never forget what size you are in that brand again,https://sizewise.franzonlabs.se,1,1
+50342373,2026-11-02T19:33:23Z,"Show HN: Meeple Scan – photograph a board game shelf, get each game's BGG rating",https://meeple-scan.com/?ref=hn,1,0
+50342438,2026-11-02T19:37:28Z,Show HN: CpuTopBars and devTopBars – macOS menu bar system and AI monitors,https://halfmarble.com/devtopbars/,1,1
+50342493,2026-11-02T19:40:03Z,Show HN: An experiment in automated long-horizon builds with AMQP 0.9.1,https://github.com/siennathesane/switchboard,1,0
+50342524,2026-11-02T19:41:53Z,Show HN: Bruster - faster browser automation for agents,https://aliilyas.github.io/bruster/benchmarks/,1,1
+50342535,2026-11-02T19:42:28Z,Show HN: HiveOS – AI Chief of Staff with sub-1ms PII masking and offline swarms,https://gethiveos.com/,1,1
+50342691,2026-11-02T19:52:41Z,"Show HN: Claude Tandem – multi accounts, profiles, projects",https://github.com/altsang/claude-tandem,1,0
+50342767,2026-11-02T19:58:19Z,Show HN: Notes on Watchmen – A page-by-page exploration of the graphic novel,https://notesonwatchmen.com,1,0
+50343391,2026-11-02T20:40:26Z,"Show HN: CloudSlasher – Multi-Cloud FinOps for OCI, AWS, Azure, GCP and K8s",https://cloudslasher.com/,1,1
+50343684,2026-11-02T21:01:54Z,Show HN: Kubernetes Operator for the OpenAI Managed Agents API,https://github.com/softcane/codex-session-operator,1,0
+50343715,2026-11-02T21:04:04Z,Show HN: Silencio 2 – an 18M TTS with emotion tags that runs on a laptop,https://huggingface.co/BlueRoseLabs/Silencio-2,1,0
+50343851,2026-11-02T21:14:01Z,Show HN: A 20-line kernel that fixes float32 variance under XLA,https://github.com/tatopenn-cell/Dense-Armor,1,0
+50343938,2026-11-02T21:21:01Z,Show HN: I Built an HVAC Load Calculator Manual J,https://apps.apple.com/us/app/hvac-load-calculator-manual-j/id6824263129,1,1
+50344282,2026-11-02T21:45:55Z,Show HN: Trail Commons – A new open map of mountain bike trails,https://trailcommons.app/posts/announcing-trail-commons,1,0
+50344379,2026-11-02T21:54:10Z,"Show HN: TextoCAD – Text to editable CAD (STEP/STL), runs locally with your key",https://github.com/harisharandangi/textocad,1,0
+50345153,2026-11-02T22:49:47Z,Show HN: Synvora – a skincare app that tells you when a product is a bad match,https://apps.apple.com/ca/app/synvora-skin-ai-face-scan/id6795908716,1,0
+50345901,2026-11-02T23:46:17Z,Show HN: HN Books – the books Hacker News keeps recommending,https://www.hacker-books.io/,1,0
+50346487,2026-11-03T00:48:49Z,Show HN: Project Wisteria-A BYOK chatbot that saves thoughts and memory locally,https://negativeabsence.com/wisteria/,1,1
+50346615,2026-11-03T01:03:17Z,Show HN: Mealumo – log a meal's calories and macros from a photo (iOS),https://apps.apple.com/us/app/mealumo-ai-calorie-tracker/id6811904664,1,0
+50346747,2026-11-03T01:17:06Z,Show HN: Binge watch ideas from the best people across different domains,https://www.stealbrains.com/tv,1,0
+50347701,2026-11-03T03:30:25Z,"Show HN: Theirshelf - HackerBooks, but for books mentioned by influential people",https://theirshelf.org,1,0
+50348174,2026-11-03T04:43:46Z,Show HN: Followz – A simple RSS feed for the blogs of people you like,https://followz.vercel.app/,1,1
+50348211,2026-11-03T04:49:29Z,Show HN: Provenance – A Spec That Evolves with Your Code,https://github.com/quality-sh/provenance,1,0
+50348315,2026-11-03T05:07:22Z,Show HN: MCPgraphy – a proxy that learns when your agent's MCP tools work,https://github.com/hemanth1999k/mcpgraphy,1,0
+50348570,2026-11-03T05:54:09Z,Show HN: SFXMint – CC0 game SFX with a keyless API and MCP for coding agents,https://sfxmint.com,1,0
+50348682,2026-11-03T06:15:49Z,Show HN: Trifecta Checker – a pre-flight safety check for AI agents,https://meta-global-ai-hackathon-trifecta-c.vercel.app/,1,0
+50348836,2026-11-03T06:44:52Z,"Show HN: Privato - smart, scoped and temporary data access for personal agents",,1,0
+50349059,2026-11-03T07:21:49Z,Show HN: WorkProof – Discover Fresh Global Work Opportunities,https://www.worknproof.online/,1,0
+50349120,2026-11-03T07:30:39Z,Show HN: Tempo Match – find a Spotify song at any BPM,https://tempo-match.hadalin.me/,1,0
+50349335,2026-11-03T08:07:36Z,"Show HN: Unbubble – a free, open-source iMessage exporter for iPhone",https://thegreymirror.com/grey-mirror/unbubble,1,1
+50349339,2026-11-03T08:07:50Z,"Show HN: Clarpex – Free AI photo fixer, no sign-up needed",https://clarpex.ai/,1,0
+50349503,2026-11-03T08:32:32Z,Show HN: Echo – Offline semantic image search for Windows (CLIP and FAISS),https://github.com/kelvinolabanji/echo,1,0
+50349507,2026-11-03T08:32:50Z,Show HN: Solvedle – daily logic puzzles with unique solutions,https://solvedle.com/,1,0
+50349568,2026-11-03T08:43:55Z,Show HN: Try an AI agent wallet in the browser – buy a stamp from a bot,https://proof.zketernity.app/stamps/try.html,1,0
+50349646,2026-11-03T08:56:18Z,Show HN: Site/app blocker and usage tracker specifically for Linux,https://github.com/glocker-app/glocker,1,0
+50350109,2026-11-03T10:14:36Z,"Show HN: DevShelf Free, zero-paywall directory of 565 dev tools and MCP server",https://ritualdev.in/devshelf/,1,0
+50350115,2026-11-03T10:15:48Z,"Show HN: Count Anything using AI, for shops, people objects, crowd",https://pixoate.com/count-objects,1,0
+50350180,2026-11-03T10:24:53Z,Show HN: GhostLaunch – stealth wallet distribution for Pump.fun launches,https://ghostlaunch.framer.website/,1,0
+50350619,2026-11-03T11:23:19Z,"Show HN: HackerCinema, a portal for all the Movies/TV mentioned on Hacker News",https://hacker-cinema.chapra.co/,1,0
+50350834,2026-11-03T11:50:10Z,"Show HN: BikeZap, watch people cycling around the world on an old school TV",https://bikezap.pages.dev/,1,0
+50350847,2026-11-03T11:52:13Z,Show HN: Svoxx – A multilingual marketplace with social features,https://svoxx.com/int/en,1,0
+50350849,2026-11-03T11:52:33Z,Show HN: Elpis – Rust-style ownership for teams of coding agents,https://github.com/MasihMoafi/Elpis,1,0
+50350909,2026-11-03T11:59:33Z,"Show HN: Neodymium-Index|A static movie Index written in plain JS,HTML",https://hemanshudev.codeberg.page/Neodymium-Index-Frontend/,1,0
+50351109,2026-11-03T12:20:49Z,Show HN: TopoVoid-0.2B – Closed-form weight writing in concept null space,https://huggingface.co/Topovoid/TopoVoid-0.2B-Orthogonal-Preview,1,0
+50351190,2026-11-03T12:28:29Z,Show HN: Built a infinite Rar Runner game inspired by Subway Surfers using React,https://ratsurfers.pages.dev/,1,0
+50351269,2026-11-03T12:38:26Z,Show HN: Onira Self Hypnosis App,https://play.google.com/store/apps/details?id=com.oytaub.mindease&hl=en_US,1,1
+50351368,2026-11-03T12:47:28Z,Show HN: PaneSlide – a daily puzzle where overlapping glass panes mix colours,https://paneslide.com/,1,0
+50351370,2026-11-03T12:47:38Z,Show HN: Nive – a customizable sleep sound mixer for Android and iOS,https://www.niveapp.com,1,0
+50351559,2026-11-03T13:11:14Z,"Show HN: Attestlane – SOC 2 readiness for 1–50 person teams, from Sierra Leone",https://attestlane.to,1,0
+50351615,2026-11-03T13:17:28Z,Show HN: Duckity – Abuse protection for the AI agent era,https://duckity.com/,1,0
+50351658,2026-11-03T13:21:30Z,"Show HN: WeMD – Turn web pages and WeChat articles into clean Markdown, locally",https://github.com/stwhwing/wemd-extension,1,0
+50351732,2026-11-03T13:28:36Z,Show HN: Warli World – a folk-art village that lives above your taskbar,https://digital-troubadour.itch.io/warli-world,1,0
+50351982,2026-11-03T13:53:04Z,Show HN: LinguaFlick – An application for learning Chinese based on vocabulary,https://linguaflick.com/,1,0
+50352087,2026-11-03T14:00:44Z,Show HN: A Chrome extension to spot red flags Amazon isn't showing,https://chromewebstore.google.com/detail/hi-arthur/phbcjeeganjjjdkgohknifkmdbplhfeo,1,1
+50352158,2026-11-03T14:06:57Z,"Show HN: Track any YouTube title/thumbnail test via WebSub, hashes, and no OAuth",https://scoutyt.com,1,0
+50352173,2026-11-03T14:07:59Z,"Show HN: AllTheStatus, status page central dashboard",https://allthestatus.com/,1,0
+50352251,2026-11-03T14:13:43Z,"Show HN: Model Query, declare a JPA DTO projection once, query it many ways",https://github.com/rey5137/model-query,1,0
+50352266,2026-11-03T14:14:57Z,"Show HN: Kicklace – Lead follow-up for builders, not marketing experts",https://www.kicklace.com/demo,1,1
+50352351,2026-11-03T14:22:18Z,Show HN: An AI bot with its own Linux computer that delivers files (€39/mo),https://positrom.com/?lang=en,1,0
+50352374,2026-11-03T14:24:55Z,Show HN: Deputy – let Claude Code or Codex use your logged-in Chrome,https://github.com/RazinAI/deputy,1,0
+50352456,2026-11-03T14:31:56Z,Show HN: Toolang – What if agent loops were functions?,https://toolang.ai/,1,0
+50352485,2026-11-03T14:34:10Z,Show HN: See a web page the way ChatGPT and Claude's crawlers see it,https://kliqo.ai/tools/ai-page-audit,1,0
+50352636,2026-11-03T14:45:17Z,Show HN: JobsWorkers – A marketplace for home and personal services,https://jobsworkers.com/,1,0
+50352845,2026-11-03T15:00:06Z,Show HN: a Rust/Bevy rebuild of TEV Redguard (1998) that runs in the browser,https://github.com/michidk/cyrus,1,0
+50352862,2026-11-03T15:01:23Z,Show HN: Mixttape – Share songs like a kid from the 80s,https://mixttape.app/,1,1
+50352887,2026-11-03T15:02:23Z,Show HN: Deploy vLLM on RunPod with confirmation gates on every billable step,https://github.com/1solomonwakhungu/runpod-vllm-deployer,1,0
+50353011,2026-11-03T15:13:40Z,Show HN: A Visual Guide to How LLMs Work,https://ai.qu3vipon.com/llm/,1,0
+50353110,2026-11-03T15:20:20Z,"Show HN: Agent Trace, let agents query Codex and CC chat histories",https://github.com/wcook04/agent-trace-mechanism,1,0
+50353600,2026-11-03T15:58:04Z,Show HN: FindFreeAPI – Free public API directory with in-browser test sandbox,https://findfreeapi.com,1,0
+50353696,2026-11-03T16:03:13Z,Show HN: Neurolume – Fine-tune LLMs on a Mac and watch what changes per layer,https://github.com/Yiteng-CHEN/neurolume,1,1
+50353743,2026-11-03T16:06:19Z,Show HN: Association football / soccer in browser with online play,https://manvel.dev,1,2
+50353760,2026-11-03T16:07:00Z,Show HN: Websitevice – Real-world web design inspiration gallery,https://websitevice.com/,1,0
+50354161,2026-11-03T16:34:15Z,Show HN: Ifso.io – Plan financial decisions with no sign-in needed,https://ifso.io/try,1,0
+50354211,2026-11-03T16:37:16Z,Show HN: HN Pain Radar – product ideas mined from developer complaints on HN,https://hnpainradar.fly.dev/,1,0
+50354238,2026-11-03T16:39:13Z,"Show HN: Workspaces – Real desk setups from designers, developers, and founders",https://workspaces.xyz/setups,1,0
+50354367,2026-11-03T16:48:01Z,Show HN: Cinnamon - a household AI agent with private and shared context,https://getcinnamon.ai/,1,0
+50354530,2026-11-03T16:57:57Z,Show HN: Plot Odds – A daily puzzle where the clues are charts,https://plotodds.com/,1,0
+50354554,2026-11-03T16:59:18Z,Show HN: Fermat – plan a group trip without revealing everyone's budget,https://www.fermatlabs.org,1,0
+50354722,2026-11-03T17:09:11Z,Show HN: Gielinor Survivors,https://gielinorsurvivors.com/,1,0
+50355011,2026-11-03T17:25:29Z,Show HN: Fruitiger Aero Media Player on macOS,https://github.com/xdaedalusx/icarus,1,1
+50355020,2026-11-03T17:26:05Z,Show HN: Slopgrid – create your own AI model benchmarks without code,https://slopgrid.com/,1,0
+50355152,2026-11-03T17:33:25Z,Show HN: AIStoreHub – 1-Click CLI to Configure MCP Servers in Cursor and Claude,https://pypi.org/project/aistorehub/,1,0
+50355236,2026-11-03T17:39:13Z,Show HN: Watch an LLM program a neural net's weights instead of training it,https://github.com/lusob/model-booster,1,0
+50355392,2026-11-03T17:48:31Z,Show HN: A 3KB LLM inference engine in C,https://github.com/utsav1033/bytesized,1,0
+50355551,2026-11-03T17:58:18Z,Show HN: Replacing Turn-Based LLM Agents with SQLite and System One Models,https://github.com/DevLoops-ai/unified-brain,1,0
+50355555,2026-11-03T17:58:27Z,Show HN: Who can publish to your NPM dependencies?,https://www.whosthere.dev/,1,0
+50355595,2026-11-03T18:01:26Z,Show HN: Vanilla-web skill to replace all JavaScript frameworks,https://github.com/baalimago/skills/tree/main/skills/vanilla-web,1,0
+50355632,2026-11-03T18:04:04Z,Show HN: FinZot – financial planning Claude connector for US taxpayers,https://claude.ai/directory/finzot/,1,0
+50355739,2026-11-03T18:09:36Z,Show HN: AI Model Token Cost and Context Window Estimator,https://ai-token-estimator.pages.dev/,1,0
+50355931,2026-11-03T18:20:27Z,"Show HN: Every book, film and game HN has recommended since 2006",https://hn-recommends.vercel.app/,1,0
+50356281,2026-11-03T18:43:22Z,"Show HN: MT Ranked, competitive typing races with ELO ranking",https://mtranked.com/,1,0
+50356368,2026-11-03T18:48:43Z,Show HN: Ideas for building better cross-platform apps,https://github.com/rkaehn/uniform,1,0
+50356643,2026-11-03T19:07:07Z,Show HN: Scriptorium – Turning Lectures into Obsidian Notes and SR Flashcards,https://github.com/alessiocelentano/scriptorium,1,0
+50356694,2026-11-03T19:10:46Z,"Show HN: Home Poker Ledger – settle a poker game, one HTML file, no server",https://homepokerledger.com/,1,0
+50357137,2026-11-03T19:44:43Z,Show HN: A framework for Raspberry Pi pico projects,https://github.com/AdrianCX/picohive-firmware,1,0
+50357386,2026-11-03T20:03:34Z,"Show HN: Bookmarker - A minimal, private bookmark organizer for macOS",https://github.com/meraccos/bookmarker,1,3
+50358104,2026-11-03T20:59:13Z,Show HN: CogsIQ – True landed cost and profit per SKU for TikTok Shop sellers,https://www.cogsiq.io/,1,0
+50358109,2026-11-03T20:59:41Z,Show HN: Collabrun – affiliate creator outreach for TikTok Shop sellers,https://www.collabrun.com/,1,0
+50358169,2026-11-03T21:05:00Z,"Show HN: Agent server with framework, IDE, runtime, router and state management",https://search2o.com/,1,0
+50358171,2026-11-03T21:05:07Z,Show HN: Superbase – a SvelteKit rewrite of Supabase table editor,https://xl0.github.io/superbase/,1,0
+50358404,2026-11-03T21:24:51Z,Show HN: An MCP Server for Manpages,https://www.chainguard.dev/unchained/every-manual-page-in-chainguard-os-now-readable-by-your-agent,1,1
+50358556,2026-11-03T21:38:37Z,"Show HN: Small Print, see when an MCP server changes what it tells your agent",https://smallprint.dev,1,0
+50358826,2026-11-03T21:59:57Z,"Show HN: Shot-butcher: iOS, ipados, macOS apps screenshot maker skill",https://graphicmeat.com/shot-butcher,1,0
+50358844,2026-11-03T22:00:56Z,Show HN: Xecrets Ez – open-source mobile file encryption,https://github.com/xecrets/xecrets-mobile,1,0
+50358929,2026-11-03T22:07:37Z,Show HN: Business days calculator that shows which days it skipped,https://instantfreetools.com/business-days-calculator/,1,2
+50358991,2026-11-03T22:12:40Z,"Show HN: A browsable gallery of Nvidia's 2,677 free SimReady 3D assets",https://simready.geronimo-labs.com/,1,0
+50359044,2026-11-03T22:17:20Z,"Show HN: MyVideoStation, a morden recreation of Synology's VideoStation",,1,0
+50359400,2026-11-03T22:55:58Z,Show HN: LLVM Vulkan 1.1 – Drop-In LLVM Passes on Vulkan Compute,https://hecer.github.io/llvm-vulkan/,1,0
+50359514,2026-11-03T23:11:27Z,"Show HN: Claudinho – Claude Code's mascot on an ESP32, driven by hooks",https://github.com/argeuthiesen/claudinho,1,0
+50359691,2026-11-03T23:33:27Z,"Show HN: Export your Character.AI chats in minutes – open-source, runs locally",https://github.com/anima-universe/character-ai-chat-exporter,1,0
+50360046,2026-11-04T00:16:58Z,Show HN: An interactive map of midterm ads,https://admap.org/,1,0
+50360077,2026-11-04T00:21:10Z,Show HN: OpenPetCam – a self-hosted pet camera that goes looking for your dog,https://github.com/crimeacs/OpenPetCam,1,0
+50360508,2026-11-04T01:30:00Z,Show HN:Pptx-to-Pdf – Convert PowerPoint to PDF in Node.js Without LibreOffice,https://github.com/ahmedessam090/pptx-to-pdf,1,0
+50360529,2026-11-04T01:32:32Z,Show HN: NotLate – An iOS app for overthinking and restless nights,https://www.adribyte-studio.com/mobile-apps/notlate,1,0
+50361017,2026-11-04T02:54:36Z,Show HN: No-JS <dialog> in Blades CSS v3.1.1 (a Pico CSS fork),https://blades.dev/css/modal/,1,0
+50361191,2026-11-04T03:26:35Z,Show HN: Railyard – Git-push deploys and OSS templates on your own VPS,https://railyard.run/,1,0
+50361263,2026-11-04T03:40:31Z,"Show HN: TickerTown, a pixel-art stock market simulator",https://tickertown.ai,1,0
+50361318,2026-11-04T03:52:35Z,Show HN: Brim – Use the iPhone Duo's whole outer display in Safari,https://brim-app-rho.vercel.app/,1,1
+50361465,2026-11-04T04:20:56Z,Show HN: Droneship – sandbox for your coding agents,https://droneship.run/,1,0
+50361909,2026-11-04T05:55:22Z,Show HN: What games does HN talk about? (Project 24),https://nicobrenner.github.io/project24/,1,3
+50361927,2026-11-04T05:57:39Z,"Show HN: AgentFirstStack – analytics, tags, email and replay your agent sets up",https://agentfirststack.com/,1,0
+50362042,2026-11-04T06:20:46Z,Show HN: I built a tool to turn 3 photos into a Chipmunks Dance video,https://chipmunksdanceai.net/,1,0
+50363170,2026-11-04T09:30:16Z,Show HN: Umbra – An AI agent that uses Android apps while you use your phone,https://github.com/chengmatt416/umbra,1,1
+50363239,2026-11-04T09:44:35Z,Show HN: Rexfeed – A tech feed in a Rex side pane while your coding agent works,https://github.com/alpcanaydin/rexfeed,1,0
+50363367,2026-11-04T09:59:03Z,Show HN: An on-chain 1x1 black pixel in 69 bytes of pure SVG on Ethereum,https://black-pixel-1x1.vercel.app,1,0
+50363399,2026-11-04T10:03:08Z,Show HN: Evalship – find the flaws in your LLM evals,https://evalship.com/,1,1
+50363507,2026-11-04T10:17:51Z,"Show HN: TubeHaus – Open-source YouTube app for Android, desktop and TV",https://github.com/biolend83/tubehaus,1,0
+50363667,2026-11-04T10:37:49Z,Show HN: Alternative to Nvidia Auto-Ontology,https://github.com/GetCassis/ontology-skills,1,0
+50363684,2026-11-04T10:39:36Z,"Show HN: Tab Trail, a bookmarklet that draws a page's tab order and finds gaps",https://matjazkorosec.com/tools/tab-trail,1,0
+50364033,2026-11-04T11:19:55Z,Show HN: Hardcount – Self-hosted usage billing for AI products,https://github.com/gethardcount/hardcount,1,0
+50364066,2026-11-04T11:22:31Z,Show HN: Cerberus MCP – Flash and sandbox beats Argon 100% vs. 50% on ARC-AGI-2,https://github.com/MyceliaCognition/cerberus-agi-kernel,1,0
+50364204,2026-11-04T11:36:26Z,"Show HN: Nexity, Claude Code skills to add sections to Next.js + Sanity sites",https://github.com/Pagepro/nexity,1,0
+50364313,2026-11-04T11:49:42Z,Show HN: Terminal to web page in a single command,https://github.com/FenrirSec/xterm.rs,1,0
+50364411,2026-11-04T12:02:48Z,"Show HN: Planted 3 backdoors in my code; the agent swarm found 27, half noise",https://github.com/VictorAboba/DreamTeam/blob/master/docs/en/audits/2026-11-self-audit.md,1,0
+50364433,2026-11-04T12:04:14Z,"Show HN: Clootee, make Claude Code and codex easier to use",https://github.com/clootee/clootee,1,0
+50365053,2026-11-04T13:09:26Z,Show HN: Screenshot to Tokens – give a web app a design system from a screenshot,https://github.com/nhunsaker/screenshot-to-tokens,1,0
+50365056,2026-11-04T13:09:44Z,Show HN: Gradevibes-Is your AI-written app finished?,https://gradevibes.com/?tab=upload,1,0
+50365061,2026-11-04T13:10:11Z,Show HN: Agent-roast – send your coding agent back when it weakens a test,https://github.com/Nari-Ab/agent-roast,1,0
+50365088,2026-11-04T13:13:21Z,Show HN: KiviDB 1.2.0 is out and it is faster now [video],https://www.youtube.com/watch?v=kl1Jfgdli70,1,1
+50365150,2026-11-04T13:18:51Z,"Show HN: TerminalLynx – Cloud-like SSH device and team sync, without the cloud",https://terminallynx.com/,1,0
+50365277,2026-11-04T13:31:23Z,Show HN: Pipescan – CI/CD pipeline analytics (beta),https://pipescan.shipit.dev/,1,0
+50365352,2026-11-04T13:38:06Z,Show HN: ThreatStrata – A graph viewer for agent-generated threat models,https://threatstrata.com/,1,0
+50365607,2026-11-04T13:59:56Z,Show HN: The HTML Library of Babel,https://library.stone-red.net/,1,0
+50365736,2026-11-04T14:08:35Z,Show HN: CueHQ finds the threads asking for what you offer and drafts a reply,https://www.cuehq.social/demo,1,1
+50365816,2026-11-04T14:13:53Z,Show HN: Pacibook – read any book in 22 Indian languages with an AI reader,https://www.pacibook.com,1,0
+50365913,2026-11-04T14:21:06Z,Show HN: Turned my portfolio into an arcade room,https://chitown26.com/,1,0
+50366077,2026-11-04T14:34:00Z,Show HN: Kube-upgrade-check – find what breaks before a Kubernetes upgrade,https://github.com/runtimez-com/kube-upgrade-check,1,0
+50366100,2026-11-04T14:35:57Z,"Show HN: InstallRate – what Claude, GPT and Gemini npm install (20 categories)",https://installrate.com/leaderboard/,1,0
+50366142,2026-11-04T14:38:35Z,Show HN: A platform-neutral language for design systems,https://play.milda.dev,1,0
+50366175,2026-11-04T14:41:02Z,"Show HN: Id|le, little AI-creatures living in the browser (story mode)",https://id-le.com/?story,1,1
+50366204,2026-11-04T14:42:54Z,Show HN: Scriptable CLI tool for generating images using popular providers,https://github.com/michaeldmueller/etch-image,1,0
+50366317,2026-11-04T14:51:13Z,Show HN: WebsiteScanner – free passive security scan with plain-English fixes,https://websitescanner.dev/?lang=en,1,0
+50366876,2026-11-04T15:22:07Z,Show HN: Pinery Static – Export WordPress to a Static Site on Cloudflare Pages,https://www.pinery.pro/en/,1,0
+50367201,2026-11-04T15:43:29Z,Show HN: Posters – open prompt dataset for generated poster design,https://github.com/posterlet/amazing-posters,1,0
+50367205,2026-11-04T15:44:17Z,Show HN: RapAvatar – Turn any photo into a lip-synced rap video with AI,https://rapavatar.com/,1,0
+50367240,2026-11-04T15:46:22Z,Show HN: Upvoted - Hacker News as a daily magazine,https://upvoted.eng-atlas.dev/,1,0
+50367242,2026-11-04T15:46:28Z,"Show HN: Algorithms, Explained, Proved and Run",https://algorithm.tamnd.com/,1,0
+50367285,2026-11-04T15:49:26Z,"Show HN: Acoustic Orbit – a Mac app that plays your speakers together, in sync",https://acousticorbit.com/,1,0
+50367775,2026-11-04T16:18:44Z,Show HN: GTMshortlist – I asked Claude for the best AI SDR. It wasn't yours,https://gtmshortlist.ai/,1,0
+50368035,2026-11-04T16:33:54Z,Show HN: ScreenGuard – Open-source digital wellbeing and app limits for Linux,https://github.com/adityakrishnan005-a11y/ScreenGuard,1,1
+50368188,2026-11-04T16:43:49Z,Show HN: Hole Punch for iOS: Sling your spaceship around gravitational fields,https://apps.apple.com/gb/app/hole-punch/id6819102242,1,0
+50368207,2026-11-04T16:44:58Z,Show HN: Continuum Verifier – offline checks for AI data-provenance records,https://github.com/Dr-PampersMuffin/continuum-verifier,1,0
+50368283,2026-11-04T16:50:41Z,"Show HN: First Silicon, real chip bugs that AI models miss",https://umwelt.vision/first-silicon/,1,0
+50368393,2026-11-04T16:58:14Z,"Show HN: You all are sleeping on this, DSH just shipped this",https://github.com/Atri10/executor,1,0
+50368415,2026-11-04T16:59:56Z,Show HN: Life Coach Bot for Neurodivergents,https://www.neuroplusgbrain.net/,1,1
+50368770,2026-11-04T17:29:55Z,Show HN: Santa Rockstar – A Christmas rhythm game with a roguelike concert mode,https://bekho.io/wip/bekhoGames/santaRockstarXD/,1,1
+50368833,2026-11-04T17:33:43Z,Show HN: PyPI-tracker – keep and host download data and stats for your packages,https://github.com/yassi/pypi-tracker,1,0
+50368887,2026-11-04T17:37:35Z,"Show HN: CXAgent – a multi-agent coding workbench for the terminal, in .NET",https://nickprotop.github.io/cxagent/,1,1
+50369542,2026-11-04T18:25:20Z,Show HN: Atlas – Let AI agents use your Mac without taking over your screen,https://atlas.insanearts.io/,1,0
+50369556,2026-11-04T18:26:05Z,"Show HN: GraphPilot, a GraphQL edge cache that purges by entity",https://graphpilot.io/,1,0
+50370057,2026-11-04T19:03:31Z,Show HN: Fount – Verifiably private AI for your spreadsheets and documents,https://www.fount.sh/,1,0
+50370194,2026-11-04T19:15:03Z,"Show HN: Jinna, Company Brain& AI agents that run a one-person business with you",https://jinna.ai/,1,0
+50372961,2026-11-04T23:38:29Z,Show HN: A calm app for car shopping (MIT),https://lowkey.autos,1,0
+50373055,2026-11-04T23:50:07Z,"Show HN: BrowserForge – AI agents use your real browser, you approve the clicks",https://github.com/zoghlamimostafa/BrowserForge-MCP,1,0
+50376449,2026-11-05T08:05:08Z,"Show HN: CascadeHook – Webhook delivery with signing, retries, and replay",https://cascadehook.com,1,0
+50376630,2026-11-05T08:27:22Z,"Show HN: Solving a personal Problem, create internal tool for your App in mins",https://anadock.com/,1,0
+50376801,2026-11-05T08:49:17Z,"Show HN: ZeBridge – PostgreSQL replicas on devices, synchronized over NATS",https://github.com/ndrean/ZeBridge,1,0
+50376830,2026-11-05T08:53:13Z,"Show HN: X402 Music – API to search, license, and stream pre-cleared music stems",https://levievans.cloud,1,2
+50377174,2026-11-05T09:40:28Z,Show HN: IdeaAI – Local-first autonomous agent that refactors code overnight,https://apps.microsoft.com/detail/9p9sfwqgbsk7?hl=en-US&gl=US,1,0
+50377227,2026-11-05T09:47:26Z,Show HN: Review Lens – review pull requests inside your JetBrains IDE,https://github.com/vatsarishabh22/review-lens,1,0
+50377644,2026-11-05T10:49:44Z,Show HN: teletap – Your remote coding agents ask you when stuck,,1,0
+50377737,2026-11-05T11:03:27Z,"Show HN: Telegram AI assistant with projects, images and background jobs",https://github.com/watscho/chat-gpt-telegram-bot,1,1
+50377798,2026-11-05T11:13:06Z,"Show HN: Mooring, an agentic development environment for Claude Code",https://mooring.sh/download,1,0
+50378042,2026-11-05T11:49:33Z,Show HN: I made an iPhone app to find and delete duplicate photos,https://apps.apple.com/us/app/x-cleanup-storage-cleaner/id6796765379,1,0
+50378094,2026-11-05T11:56:11Z,Show HN: Vivonco – match patient's cancer reports to targeted drugs and trials,https://vivonco.com/,1,0
+50378105,2026-11-05T11:58:46Z,Show HN: OOO - Build your own YouTube recommendation feed,https://ooo.blue,1,0
+50378236,2026-11-05T12:20:00Z,Show HN: Ergon - build AI agents in code or on a canvas that generates Python,https://github.com/shipitamit/ergon,1,0
+50378447,2026-11-05T12:45:55Z,Show HN: Units to Draw – a math-only syringe units calculator,https://unitstodraw.com,1,0
+50378466,2026-11-05T12:48:03Z,Show HN: Cosyra – Steer coding agents on your machines from your phone,https://cosyra.com/,1,1
+50378506,2026-11-05T12:51:37Z,Show HN: MakeWorks 98 – a game in a desktop simulation,https://makeworks98.com/,1,0
+50378545,2026-11-05T12:56:56Z,Show HN: Change my website if the agent let you,https://actera.dev/playground,1,0
+50378639,2026-11-05T13:07:10Z,Show HN: Scribbles is a small drawing canvas and a gallery of what visitors send,https://scribbles.gallery/,1,0
+50378717,2026-11-05T13:16:13Z,Show HN: Dereliction – leave a web page alone and it falls apart,https://oripekelman.github.io/dereliction/,1,0
+50378797,2026-11-05T13:24:41Z,"Show HN: Maintenant, self-hosted monitoring for Docker and Kubernetes",https://github.com/kOlapsis/maintenant,1,1
+50378813,2026-11-05T13:27:20Z,"Show HN: Depquiet, Triage NPM/pip/Dependabot alerts by reachability",https://github.com/samuelrojas-dev/depquiet,1,0
+50378838,2026-11-05T13:30:23Z,"Show HN: Practical, change Mac calendar events by typing what's different",https://david-alves.com/practical/,1,0
+50378990,2026-11-05T13:46:20Z,Show HN: Vexus – tells Claude Code where to look before it greps your repo,https://github.com/faique43/vexus,1,0
+50379300,2026-11-05T14:13:51Z,"Show HN: I paid Claude US$1,070 to read the worst reviews of 30k places to stay",https://okstays.com,1,0
+50379564,2026-11-05T14:33:37Z,Show HN: Send to dot 0.3.0 – dot posts the original photo itself,https://github.com/bryanzk/send-to-dot/releases,1,0
+50379582,2026-11-05T14:35:21Z,Show HN: Steady-socket – A WebSocket client that survives dead connections,https://github.com/lalmachado/steady-socket,1,0
+50379624,2026-11-05T14:37:58Z,"Show HN: Penthera, offline pentest security scanner (open-source, rule-based)",https://github.com/danoszz/penthera,1,0
+50379825,2026-11-05T14:54:03Z,"Show HN: Meeting Timer for Google Slides, a countdown overlay for agenda topics",https://github.com/ashual/meeting-timer-overlay,1,0
+50379839,2026-11-05T14:55:03Z,"Show HN: LangLang – Meeting notes that work in Airplane Mode, on your iPhone",https://apps.apple.com/us/app/langlang-live/id6812655455,1,0
+50379909,2026-11-05T14:59:30Z,Show HN: MaidenRun – Deploy an AI agent to your AWS and collect tester feedback,https://github.com/kaushik333/MaidenRun,1,0
+50379970,2026-11-05T15:03:00Z,Show HN: Isoform – open-source Mac app that learns you and works as you,https://github.com/yubozhao/isoform,1,2
+50379977,2026-11-05T15:03:32Z,Show HN: Engine-X – Interactive 3D machines you can take apart in the browser,https://engx3d.com/,1,0
+50380037,2026-11-05T15:08:16Z,"Show HN: EpubCC, PDF to ePub that beats Calibre on 14/19 PDFs (loses on Arabic)",https://epubcc.com/,1,0
+50381119,2026-11-05T16:27:15Z,Show HN: Site/app blocker and usage tracker specifically for Linux,https://glockerapp.com/,1,0
+50381455,2026-11-05T16:57:30Z,Show HN: Training a SOTA Pangram-like detector on a 4070ti with Claude,https://huggingface.co/mesmertech/mesmer-ai-detector-4b,1,0
+50381642,2026-11-05T17:13:13Z,Show HN: MoneyVaults – An offline net worth and FIRE tracker App for Android,https://play.google.com/store/apps/details?id=com.compoundly.app&hl=en_US,1,0
+50381979,2026-11-05T17:42:48Z,Show HN: I built a feed of the best minutes of long interviews,https://realalpha.app/,1,0
+50382091,2026-11-05T17:52:40Z,"Show HN: Paste your MCP config, see what each server does at startup",https://mcp.brydge-ai.com/paste.html,1,0
+50382199,2026-11-05T18:01:52Z,Show HN: PitchFlip – Silicon Valley origin stories as flipbooks,https://pitchflip.shiptiffin.app,1,0
+50382567,2026-11-05T18:27:30Z,Show HN: GPT-Live and GPT-Realtime: Arch Trade-Offs Behind Continuous Voice AI,https://agentunicorn.ai/research/gpt-live-voice-ai-tradeoffs,1,1
+50382696,2026-11-05T18:36:38Z,Show HN: Is Android ready for AI agents? What broke in 3324 actions on 45 phones,https://getopposable.com/blog/how-ready-is-android-for-ai-agents,1,0
+50382830,2026-11-05T18:49:12Z,"Show HN: A calmer way to enjoy YouTube, without the algorithm",https://subnook.com/,1,1
+50382866,2026-11-05T18:52:42Z,Show HN: Escape the Room Puzzles,https://enigma-game.specr.net/,1,0
+50382892,2026-11-05T18:54:29Z,"Show HN: Tokenome – code provenance for AI-assisted work, on your machine",https://tokenome.ai/,1,0
+50383189,2026-11-05T19:18:18Z,Show HN: Umbel – Remote-control agent CLIs over tmux,https://github.com/jahala/umbel,1,0
+50383396,2026-11-05T19:35:59Z,"Show HN: Ls-service – minimal, namespaced, and typed localStorage wrapper",https://github.com/brysonbw/ls-service,1,0
+50383498,2026-11-05T19:44:09Z,"Show HN: Edit and Generate Videos, Audio, and Images from One MCP",https://www.kapwing.com/mcp,1,0
+50383648,2026-11-05T19:56:10Z,"Show HN: Data center build-out dashboard with interactive map, coverage, etc.",https://pressaudit.org/dashboards/datacenters?chart=datacenter-buildout&tab=buildout-map,1,0
+50383799,2026-11-05T20:08:03Z,Show HN: Zerg Client – a coding agent harness that drives its own terminal panes,https://zergai.com/ztc,1,0
+50383827,2026-11-05T20:10:18Z,"Show HN: GitHub-like reply with ""R"" for Basecamp and Slack",https://github.com/nashbridges/dial-r-for-reply,1,0
+50383948,2026-11-05T20:20:23Z,Show HN: CalmCanary – Uptime Monitoring Tool,https://www.calmcanary.co/,1,0
+50384397,2026-11-05T21:00:16Z,"Show HN: I made a retro game remix in under 5 minutes, 1 prompt",https://bring-your-own-brain.itch.io/turtz,1,1
+50384401,2026-11-05T21:00:23Z,Show HN: Agentshield Zero-leak kernel sandbox and secret defense for AI coding,https://ritualdev.in/agentshield/,1,0
+50384450,2026-11-05T21:05:29Z,Show HN: Hnollo – A Hacker News Reader in the Style of Apollo for Reddit,https://hnollo.com/,1,0
+50384501,2026-11-05T21:11:32Z,Show HN: Sandchest – Add a hacker to your team,https://www.sandchest.com/,1,0
+50384502,2026-11-05T21:11:50Z,Show HN: Cerea – yet another self-hosted LLM chat front end,https://github.com/paoloviviani/Cerea,1,0
+50384760,2026-11-05T21:34:18Z,Show HN: Turn JMH Benchmarks Results into Interactive Charts,https://github.com/mlangc/jmh-visualizer,1,0
+50384797,2026-11-05T21:37:09Z,Show HN: That is true daily news inspired satiric Frog and Toad comics,https://that-is-true.com/,1,1
+50385371,2026-11-05T22:26:25Z,Show HN: IndiePilot – find Reddit threads where people ask for what you sell,https://indiepilot.app,1,0
+50385803,2026-11-05T23:04:45Z,Show HN: Open-world text adventure played through AI agents,https://eremoterra.com/,1,0
+50386452,2026-11-06T00:13:29Z,Show HN: I made a game where you have to think of answers others wouldn't give,https://downtheline.io/,1,1
+50387120,2026-11-06T01:46:32Z,Show HN,https://reachmap.app/,1,0
+50388401,2026-11-06T04:57:40Z,Show HN: In-material physical solver for stiff 64-spin Ising problems (0.27ms),https://github.com/neoma-pcam/pcam-live,1,0
+50388727,2026-11-06T06:00:06Z,"Show HN: Moosik – open-source YouTube music client with discord, stats, & themes",https://github.com/AtotheY/moosik,1,0
+50388805,2026-11-06T06:14:38Z,Show HN: BollyQuiz for Diwali House Parties,https://bollyquiz.com/,1,1
+50389540,2026-11-06T08:12:50Z,Show HN: Phone Link for macOS – Use Your Android Phone on macOS,https://github.com/nnnlog/phone-link,1,0
+50389748,2026-11-06T08:44:09Z,"Show HN: Eski – an in-memory store in Odin, measured against Redis on one core",https://github.com/vighnesh-bheed/eski,1,0
+50396822,2026-11-06T19:05:26Z,"Show HN: HackerShow – Like HackerTube, but for Show HN Posts",https://www.hackershow.org/,1,0
+50396830,2026-11-06T19:05:58Z,"Show HN: Building iOS apps on Windows, without a Mac",https://github.com/ssilvestri15/openfruit,1,1
+50396831,2026-11-06T19:05:59Z,Show HN: Add your website to a world map and help your country score points,https://themapchallenge.com/,1,0
+50396871,2026-11-06T19:08:44Z,Show HN: Makoda: reuse your Codex or Claude subscriptions as API,https://makoda.ai/,1,0
+50396914,2026-11-06T19:12:14Z,"Show HN: Graphviz Dot in Go (CLI, Lib and WebAssembly)",https://github.com/ekalinin/gogv,1,0
+50397850,2026-11-06T20:18:12Z,"Show HN: Context by Altora (YC W27), screen, audio, location 24/7 for agents",https://trycontext.app,1,0
+50398327,2026-11-06T20:50:40Z,Show HN: Per Frame – film prices compared by cost per frame,https://perframe.app/,1,0
+50398779,2026-11-06T21:29:25Z,Show HN: We built an async interview engine to get published on HackerNoon,https://journalistic.tech/,1,0
+50399105,2026-11-06T22:03:26Z,Show HN: A Cyberpunk Music Mixer,https://un.bounded.cc/,1,0
+50399373,2026-11-06T22:31:02Z,Show HN: AJX – Find out where AI agents get stuck using your product,https://ajx.dev/,1,0
+50399417,2026-11-06T22:36:04Z,Show HN: Safegres – Audit Postgres RLS and Permissions,https://www.npmjs.com/package/safegres,1,1
+50399504,2026-11-06T22:44:58Z,Show HN: Holly Nokta,https://elestio.geta.team/web/holly-nokta/,1,0
+50399682,2026-11-06T23:02:53Z,Show HN: Budget Friendly City Discovery,https://geesling.ca/,1,1
+50399866,2026-11-06T23:21:03Z,Show HN: Trout: MIRC for the Terminal,https://github.com/MaxRenaud/trout,1,0
+50399875,2026-11-06T23:22:26Z,Show HN: Vitekube – Vitest on real Kubernetes clusters,https://github.com/vitekube/vitekube,1,0
+50400056,2026-11-06T23:44:55Z,Show HN: Cinnamon – a household AI agent with shared context and memories,https://getcinnamon.ai/,1,0
+50400306,2026-11-07T00:13:33Z,"Show HN: NKTgAI–Analyze the text first, generate second (and why that's not RAG)",https://nktg.org/,1,0
+50400511,2026-11-07T00:48:29Z,Show HN: SlopSlot – a slot machine inside Claude Code,https://github.com/gajus/slopslot,1,0
+50400854,2026-11-07T01:50:39Z,Show HN: We filmed a bird-themed Iliad using mallard,https://mallard-ai.com/Rika321/Homer?tab=files&file=The_Iliad_Complete.mp4,1,0
+50400882,2026-11-07T01:55:27Z,Show HN: Select – AI agents that earn autonomy through verified work,https://github.com/Kirby54/Select,1,0
+50400968,2026-11-07T02:07:58Z,Show HN: I built an AI photo editor powered by GPT-Image-2.6,https://getaiphotoeditor.com/,1,0
+50401209,2026-11-07T02:58:50Z,Show HN: Krea 2 Showcase,https://puzza.pages.dev,1,0
+50401374,2026-11-07T03:30:58Z,Show HN: Roomzine – turn a photo of your room into a redesign magazine,https://roomzine.com/,1,0
+50401468,2026-11-07T03:52:28Z,"Show HN: Promptcheckup – pass/fail check for prompt changes, with 95% intervals",https://github.com/gael55x/promptcheckup,1,0
+50401639,2026-11-07T04:32:24Z,Show HN: We tested our prompt injection filter in public,https://hodor.gatebolt.com/blog/secret-leak-test,1,0
+50401735,2026-11-07T04:54:01Z,Show HN: Help me pick a logo animation for my in-browser AI creature game,https://id-le.com/review/intro-logo-animation,1,2
+50401995,2026-11-07T05:47:35Z,Show HN:A tool your AI uses just changed. Would you know?,https://mcp.brydge-ai.com/diff.html,1,0
+50402445,2026-11-07T07:29:53Z,Show HN: Slate Terminal,https://slate.weichart.de/,1,0
+50402468,2026-11-07T07:34:15Z,"Show HN: Coding agent skills, tested on 15 backend tasks with hidden checks",https://github.com/globalmpc/backendskills,1,1
+50403233,2026-11-07T10:20:58Z,Show HN: One-script installer for TRELLIS.2 on Nvidia Blackwell under WSL2,https://github.com/Creepybits/trellis2-blackwell-wsl,1,0
+50403395,2026-11-07T10:50:57Z,"Show HN: Fermi Poker, a combination of poker betting mechanics with estimation",https://fermi.org,1,0
+50403433,2026-11-07T10:57:34Z,Show HN: First iOS personal agent that executes on device,https://apps.apple.com/us/app/result-your-personal-agent/id6825805595,1,0
+50403588,2026-11-07T11:27:35Z,Show HN: Give your agent a Mac it can control,https://offstage.cloud/,1,0
+50403797,2026-11-07T12:02:28Z,"Show HN: Rui, orchestrating 100 agents in 2.5 MB of RAM",https://github.com/DivyanshGolyan/rui,1,0
+50403907,2026-11-07T12:19:00Z,"Show HN: Hodos, a crowdsourced road-hazard map built from phone motion",https://hodos.devilabs.dev/,1,0
+50404110,2026-11-07T12:49:45Z,Show HN: Online Scoreboard,https://wescoreboard.com/,1,0
+50404124,2026-11-07T12:51:03Z,Show HN: Personaforge – Make your portfolio out of your resume in 3 minutes,https://personaforge-omega.vercel.app,1,0
+50404138,2026-11-07T12:52:37Z,Show HN: Web Potions – let ChatGPT or Claude restyle the web you browse,https://github.com/leofritsch/web-potions,1,1
+50404356,2026-11-07T13:22:40Z,Show HN: Tar-minefield – extracting tar files is harder than you think,https://stoppels.ch/tar/,1,0
+50404596,2026-11-07T13:59:59Z,Show HN: Chrome extension to block sites and increases attention span,https://chromewebstore.google.com/detail/distractfree/ajpmebphgmoblmkfplilfdnfkecbhhko,1,0
+50404764,2026-11-07T14:20:38Z,Show HN: Bobr – a rootless content-addressed build system for Linux,https://bobr.build/,1,1
+50404803,2026-11-07T14:24:25Z,Show HN: Compress Photos for Email,https://onlineimageoptimizer.com/compress-photos-for-email,1,0
+50404825,2026-11-07T14:26:11Z,Show HN: Image to Image AI: Free AI Image Editor Online – Tancky AI,https://tancky.io/,1,0
+50404884,2026-11-07T14:34:40Z,"Show HN: Solous, a journaling app like a social media for emotions inside of you",https://solous.net/,1,3
+50405003,2026-11-07T14:47:33Z,"Show HN: Certadomain – Free DMARC, subdomain takeover and lookalike checks",https://certadomain.com/en/index.html,1,0
+50405170,2026-11-07T15:06:46Z,"Show HN: Vondet – A planning board Claude keeps, so you don't have to",https://vondet.com/en?ref=hn,1,0
+50405189,2026-11-07T15:08:15Z,"Show HN: SpecStream, a web search API for questions with many answers",https://specstream.ai/search-api,1,0
+50405205,2026-11-07T15:10:10Z,Show HN: Twombly – A collaborative canvas for your agent's design explorations,https://twombly.app/,1,0
+50405346,2026-11-07T15:26:41Z,Show HN: My App: Ctrtool.com,https://ctrtool.com/,1,0
+50405353,2026-11-07T15:27:42Z,Show HN: My App: Fabric.Market,https://fabric.market/,1,0
+50405363,2026-11-07T15:29:10Z,Show HN: My app: Scrabble Offline for Scrabble lovers,https://scrabbleoffline.com/,1,0
+50405368,2026-11-07T15:29:39Z,Show HN: DAID – Intelligence Built for Smarter Decisions,https://daid-sandy.vercel.app,1,0
+50405477,2026-11-07T15:43:21Z,Show HN: Federal Reserve Game – You Run the Fed,https://my12parsecs.github.io/federalreserve-game/,1,0
+50405893,2026-11-07T16:39:45Z,"Show HN: AIVim – an open-source, Vim-inspired AI editor",,1,0
+50405983,2026-11-07T16:51:45Z,Show HN: CEF Python v147 – embed Chromium in desktop apps,https://github.com/cztomczak/cefpython/releases/tag/v147.0.dev1264,1,0
+50406012,2026-11-07T16:54:58Z,Show HN: Trendalyse – Explore Ideas with Google Trends and AI,https://trendalyse.com/,1,0
+50406189,2026-11-07T17:15:34Z,Show HN: LaunchZone Submissions – we submit your product to directories by hand,https://submit.launchzone.co,1,0
+50406456,2026-11-07T17:47:58Z,Show HN: Bodylang – ask anything about your body and watch it happen in 3D,https://bodylang.vercel.app/,1,0
+50406466,2026-11-07T17:49:59Z,Show HN: UK: Skip Royal Mail QR Code Queues with the Prince of Post,https://princeofpost.com,1,1
+50406477,2026-11-07T17:51:34Z,Show HN: A framework for prototyping web games in 2D and 3D,https://github.com/kadhirvelm/resync-games-framework,1,1
+50406534,2026-11-07T17:59:08Z,"Show HN: OS Grokbot, can run on Claude/codex subs",https://qorqbot.com,1,1
+50406784,2026-11-07T18:29:50Z,Show HN: MacGet – Open-source multi-connection download manager for macOS,https://github.com/Suryansh-Codes2209/Macget,1,0
+50407104,2026-11-07T19:09:14Z,Show HN: Spiral Nest – an ant colony simulation inside a bubble chamber,https://johnveds15-spiral-nest.static.hf.space/index.html,1,0
+50407241,2026-11-07T19:27:08Z,Show HN: I built a free trivia hosting app with no accounts or subscriptions,https://quiztoolkit.com/,1,0
+50407332,2026-11-07T19:36:16Z,Show HN: Atlas Streak v1.1,https://crux.quest/atlas/,1,0
+50407677,2026-11-07T20:19:20Z,"Show HN: Spot - press a key, say what you want, your computer does it",https://spot.deemwar.com,1,0
+50407700,2026-11-07T20:21:45Z,Show HN: TheySay – Turn Your Social Media Feeds into a Dashboard,https://github.com/laike9m/TheySay,1,0
+50407706,2026-11-07T20:22:34Z,Show HN: KeyContain – Fine-grained access to APIs your agents use,https://keycontain.com,1,0
+50408392,2026-11-07T21:54:16Z,Show HN: Browser extension shows where to buy current domain name,https://domdb.com/tools/browser-extension,1,0
+50408419,2026-11-07T21:57:20Z,"Show HN: NLP capabilities of Opus, Astra, Argon measured by Codenames skills",https://wordspies.com/hn,1,1
+50408717,2026-11-07T22:40:11Z,Show HN: Shelgon: A Framework for Building Interactive REPL Shells in Rust,https://github.com/NishantJoshi00/shelgon,1,0
+50408730,2026-11-07T22:42:08Z,"Show HN: Ywza, a computer-use agent for your own PC, drivable from anywhere",https://github.com/alielmorsy/ywza,1,0
+50408863,2026-11-07T23:00:45Z,"Show HN: No sign-ups, no ads. Just 20 free webmaster tools",https://sitetoolsbox.com/,1,0
+50409017,2026-11-07T23:25:26Z,Show HN: Nobuild TypeScript web framework with zero dependencies,https://ohne.dev/,1,1
+50409553,2026-11-08T00:57:11Z,Show HN: Calibron 12 Puzzle/Solver,https://dawnofthe.dad/calibron,1,0
+50409628,2026-11-08T01:12:02Z,"Show HN: RenderPixels – Generate images from any AI via MCP, 50 free renders",https://renderpixels.com,1,0
+50410454,2026-11-08T04:38:31Z,Show HN: Gimbap – A themeable replacement for the macOS Dock,https://minho42.github.io/gimbap/,1,0
+50410758,2026-11-08T05:49:42Z,Show HN: Codend – Build and publish web apps with AI agents,https://codend.dev,1,0
+50411013,2026-11-08T06:51:52Z,Show HN: SEC Fundamentals – free financial API,https://www.quotelinks.com/api/sec-fundamentals/,1,0
+50411182,2026-11-08T07:38:55Z,Show HN: Ramen – an AI agent that has to earn its own rent,https://usdt-kit-production.up.railway.app/ramen,1,1
+50411293,2026-11-08T08:02:18Z,Show HN: Hacker News Column View,https://hn.orbitalchicken.com,1,0
+50411346,2026-11-08T08:14:50Z,"Show HN: Ferrule – copy-in React Native UI components for iOS, Android and web",https://leoanimesh.github.io/ferrule/,1,0
+50411800,2026-11-08T09:50:33Z,Show HN: stardelt.io – a self-hosted lakehouse on k8s (pre-alpha),https://stardelt.io/,1,0
+50411910,2026-11-08T10:12:23Z,Show HN: Privacy First Compress – compress images without uploading them,https://github.com/Krunalio/Privacy-first-image-compress,1,0
+50411912,2026-11-08T10:12:46Z,"Show HN: Webpage to PDF with real text, working links, and nothing uploaded",https://pagecarry.com/,1,0
+50411918,2026-11-08T10:13:24Z,Show HN: RepoMagpie – your coding agent remembers the repos you've tried,https://github.com/Varshavia/RepoMagpie,1,0
+50411986,2026-11-08T10:27:56Z,"Show HN: PicoDiet – compress images to a visual quality score, not a setting",https://picodiet.com/,1,0
+50412135,2026-11-08T10:53:21Z,Show HN: An open-source IDE for software architecture,https://github.com/swiftbuild-ai/swiftbuild,1,2
+50412273,2026-11-08T11:15:05Z,Show HN: I Built Duolingo for Anything,https://www.lunalearn.app,1,1
+50412418,2026-11-08T11:44:16Z,Show HN: aiport – A self-improving local LLM gateway for the erratic vibe coder,https://github.com/harelix/aiport,1,0
+50412484,2026-11-08T11:55:11Z,Show HN: Gitbet – A free sourcetree style Git client for Linux,https://www.gitbet.dev/,1,0
+50412546,2026-11-08T12:05:48Z,Show HN: Cake Farm. Cozy multiplayer communal farm. Grow berries to bake cakes,https://cakefarm.net,1,0
+50412639,2026-11-08T12:20:08Z,"Show HN: Shutdown Watch – App shutdowns, export deadlines, and alternatives",https://shutdownwatch.com/,1,0
+50412710,2026-11-08T12:32:52Z,Show HN: Neural Network Formal Verification,https://github.com/giovanni-norbedo/awesome-nn-formal-verification,1,0
+50412914,2026-11-08T13:03:05Z,Show HN: Grade or Skip – measure a Pokémon card's centering and grading ROI,https://github.com/0x4rch/gradeorskip,1,1
+50413458,2026-11-08T14:01:09Z,"Show HN: Fuel prices in 11 European countries, with maps and border comparisons",https://fuelpriceatlas.com/,1,1
+50413544,2026-11-08T14:13:29Z,"Show HN: Study Scout, a novelty search with no NOVEL verdict",https://github.com/inspectorSlap/Study-Scout,1,0
+50414095,2026-11-08T15:29:57Z,Show HN: Jurex in House – Handles Legal Side of Your Business with AI,https://inhouse.jurex.ai/login,1,0
+50414111,2026-11-08T15:31:19Z,"Show HN: Velork – Design and Code, Together",https://velork.com,1,3
+50414185,2026-11-08T15:38:44Z,"Show HN: XMarkdown – Markdown with charts, controls and validated SVG",https://xmarkdown-zeta.vercel.app/,1,0
+50414396,2026-11-08T16:03:36Z,"Show HN: Webcrawl – Open-source Firecrawl alternative, runs locally, no API key",https://github.com/brainfish-ai/webcrawl-anything,1,0
+50414398,2026-11-08T16:03:49Z,"Show HN: HackerPodcast – YouTube for podcasts, from HN comments 2007 to 2026",https://hackerpodcast.org/,1,0
+50414485,2026-11-08T16:13:44Z,Show HN: Cinnamon AI – an agent you can share with your household,https://getcinnamon.ai/,1,0
+50414575,2026-11-08T16:21:19Z,Show HN: emcee – macOS Stage Manager alternative,https://fuzzyfoundry.com/emcee,1,0
+50414668,2026-11-08T16:31:01Z,Show HN: ModelRefs – Interactive reference hub for AI models,https://modelrefs.com/,1,0
+50414894,2026-11-08T16:53:00Z,Show HN: Kinesis API for Tests and CI,https://github.com/saidsef/aws-kinesis-local,1,0
+50415020,2026-11-08T17:04:36Z,"Show HN: Just a Pause – Blur your Mac's screen when you turn away, using AirPods",https://justapause.com,1,0
+50415185,2026-11-08T17:22:41Z,"Show HN: Recap Studio – A Mac screen recorder for clean, polished demos",https://recap.studio/,1,0
+50415399,2026-11-08T17:47:39Z,"Show HN: Claude Code status line, hooks and permissions builders (in-browser)",https://orbtile.com/tools/claude-code-statusline-builder,1,0
+50415544,2026-11-08T18:04:23Z,Show HN: Figma for Investing,https://www.aulico.com/tradespaces/new,1,0
+50415664,2026-11-08T18:20:56Z,Show HN: 3-SAT: Let me show you 500K variables,https://zenodo.org/records/23933428,1,0
+50415785,2026-11-08T18:39:34Z,Show HN: LLM-cost-watch – Ask Claude why your LLM bill jumped,https://github.com/rohith0707/llm-cost-watch,1,0
+50416107,2026-11-08T19:15:01Z,Show HN: Models Engineering Index,https://git-aarvin.github.io/mei/,1,1
+50416248,2026-11-08T19:27:58Z,Show HN: Tab-league – archive Chrome tabs locally so closing them feels safe,https://github.com/Shann5/tab-league,1,0
+50416470,2026-11-08T19:49:45Z,"Show HN: Vynyo – AI creative studio for hairstyle, image and video",https://vynyo.com,1,0
+50416492,2026-11-08T19:51:55Z,Show HN: Minimalistic roguelike game about hiking in Clojure,https://github.com/postboy/roguehike,1,0
+50416992,2026-11-08T20:43:09Z,Show HN: A free Gameboy–style music tracker in the browser with shareable URLs,https://chiptunes.studio/,1,0
+50421297,2026-11-09T05:05:59Z,Show HN: Huobidex – A handpicked hub for tools and products,https://huobidex.com,1,0
+50421306,2026-11-09T05:07:24Z,"Show HN: An Ad-Free, 100%",https://minitooldesk.com/vs/,1,1
+50422109,2026-11-09T07:11:04Z,Show HN: Wallpaper that adapts to your icon layout,https://deskland.app/,1,0
+50422137,2026-11-09T07:16:05Z,Show HN: Dependency free RSS reader (vibecoded with DeepSeek),https://github.com/bipinKrishnan/rss_feed,1,1
+50422557,2026-11-09T08:08:30Z,Show HN: A 40MB TTS model hand-ported to run in the browser (TS and WGSL),https://ttslab.dev,1,0
+50422833,2026-11-09T08:43:54Z,Show HN: Control Layer Demo for AI Coding Agents,https://github.com/MintCoderpro/mintigate-demo,1,0
+50423113,2026-11-09T09:17:34Z,Show HN: Software Job Title Family Tree,https://ianmiell.github.io/sw-job-title-family-tree/,1,0
+50423820,2026-11-09T10:46:31Z,Show HN: Open-source customer-facing agents,https://github.com/radioso-ai/radioso,1,0
+50424056,2026-11-09T11:17:20Z,Show HN: Filepeek: a viewer for 658 file formats that runs in the browser,https://filepeek.io/,1,0
+50424544,2026-11-09T12:14:25Z,Show HN: HackerTube – Videos Recommended by Hacker News,https://hackertubes.com,1,0
+50424579,2026-11-09T12:18:20Z,"Show HN: Slopie, Spotify wrapped for your Claude Code and Codex history",,1,0
+50424588,2026-11-09T12:20:01Z,Show HN: Nörth – a simple app for humane collaboration,https://north.social/,1,1
+50424621,2026-11-09T12:22:34Z,Show HN: I run 19 production APIs on a free-tier VPS,https://github.com/hhellll/dev-utility-APIs,1,0
+50424978,2026-11-09T12:58:14Z,Show HN: MemSeal – provenance containment for agent long-term memory,https://github.com/NagaYu/memseal,1,0
+50425076,2026-11-09T13:07:45Z,"Show HN: Spatium, a 3D gym floor planner that runs in the browser",https://www.spatium.fit/demo,1,0
+50425195,2026-11-09T13:17:46Z,Show HN: Forced to build my own Harvest alternative tracking and invoicing,,1,1
+50425429,2026-11-09T13:37:53Z,Show HN: LockoutCase – a case-file kit if Meta/PayPal/Stripe locks your account,https://lockoutcase.com/,1,0
+50425494,2026-11-09T13:43:21Z,Show HN: Askaboard – A canvas your AI agent can draw on,https://askaboard.com,1,4
+50425580,2026-11-09T13:51:06Z,Show HN: antennasim – Visualize Electromagnetism,https://www.antennasim.com/,1,0
+50425734,2026-11-09T14:01:18Z,Show HN: LinkMartin – your bookmarks shown in a private card on Google search,https://linkmartin.com/,1,1
+50425778,2026-11-09T14:03:52Z,Show HN ::Duo Vibe–Couples App: Connect with yours and enjoy there,https://play.google.com/store/apps/details?id=com.duovibe.app&hl=en_US,1,0
+50425901,2026-11-09T14:12:29Z,Show HN: ISBN Books in Claude,https://claude.ai/artifact/Q97dQ1R6C2qRt4mvqKmiDD,1,1
+50426075,2026-11-09T14:24:37Z,Show HN: Timestamping API Backed into Blockchain,https://www.postman.com/scoredetect/scoredetect-docs/collection/1a6bm1v/scoredetect-api,1,0
+50426141,2026-11-09T14:29:38Z,Show HN: TraderWAI – MCP server for AI agents to backtest/trade on your broker,https://github.com/leonardo-mazzitelli/traderwai-agent-recipes,1,0
+50426379,2026-11-09T14:47:01Z,"Show HN: Native Screen, a screen recorder built twice: Swift/Metal and C#/D3D11",https://github.com/maitrungduc1410/NativeScreen,1,3
+50426388,2026-11-09T14:47:35Z,"Show HN: slcc, a C compiler that doesn't need semicolons or braces",https://github.com/itzmetanjim/slcc,1,1
+50426461,2026-11-09T14:52:48Z,Show HN: Playing classical music on a classic PC with GentleOS [video],https://www.youtube.com/watch?v=Vp16LLOvegw,1,0
+50426474,2026-11-09T14:53:39Z,Show HN: Native Tcl/Tk Wayland and Android Port,https://github.com/pounceandmiss/tkabber-demo,1,0
+50427110,2026-11-09T15:42:00Z,Show HN: Lampjack - live 3D visuals that follow your music,https://lampjack.app/,1,1
+50427445,2026-11-09T16:07:20Z,"Show HN: No, *really* show them. What'd you commit in 2026?",https://0gsd.github.io/repo-shipped/,1,1
+50427582,2026-11-09T16:15:50Z,"Show HN: Warden MCP, an MCP server for agents to quote and trade onchain",https://wardenprotocol.org/mcp,1,0
+50427707,2026-11-09T16:23:46Z,Show HN: Wealthnow – a read-only financial data MCP server with OAuth sign-in,https://wealthnow.io/mcp,1,0
+50427746,2026-11-09T16:25:29Z,Show HN: SteamPunk – swipe through and explore games on Steam,https://steampunk.sh/,1,2
+50428173,2026-11-09T16:54:03Z,"Show HN: Divorce – an agent skill for native HTML, verified with Nu and axe",https://github.com/ElRaxy/divorce,1,0
+50428274,2026-11-09T17:00:42Z,Show HN: A visualization map of the funding of public companies,https://github.com/feeRnt/whofundsit/tree/post_demo_cloudflare_cdn,1,1
+50428496,2026-11-09T17:19:06Z,Show HN: Venzx – Pause AI agent tool calls until a human approves,https://venzx.com/try,1,0
+50428669,2026-11-09T17:31:01Z,Show HN: Annotated – a public annotation layer for the web,https://annotated-repo.vercel.app/,1,0
+50428670,2026-11-09T17:31:05Z,Show HN: We Gave AI Coding Agents Production Memory,https://usecodela.com/,1,0
+50429609,2026-11-09T18:37:25Z,"Show HN: A free replacement for House Stock Watcher, since 2015",https://optimistfi.com/congress,1,0
+50429920,2026-11-09T18:57:00Z,"Show HN: Claude Code memories that save the fix, not just a note",https://github.com/GDM-Digital-Media-Group/fmp-plugins,1,0
+50430522,2026-11-09T19:30:38Z,Show HN: Desk - Open-source macOS workspace for CLI coding agents,https://github.com/s-nish/desk,1,1
+50430620,2026-11-09T19:35:15Z,Show HN: BigHits. Best comments viewer and listener,https://bighits.future-secured.com,1,0
+50430916,2026-11-09T19:51:18Z,Show HN: Markolis – Market microstructure and MCP server for AI agents,https://www.markolis.com,1,0
+50432121,2026-11-09T21:05:08Z,"Show HN: A Terminal UI for Hacker News, and CLI for Agents",https://github.com/kaushalvivek/hn-cli,1,0
+50433486,2026-11-09T22:54:37Z,"Show HN: First-year vs. renewal prices for 532 domain extensions, updated weekly",https://github.com/AlonDrilich/tld-renewal-prices,1,0
+50433490,2026-11-09T22:54:54Z,Show HN: FetchIndex – cost calculator for 19 scraping and search APIs,https://fetchindex.com/calculator/,1,0
+50434208,2026-11-10T00:01:40Z,"Show HN: Nenya, a 0.5B-active base trained on 60B tokens, rivals Qwen3.5-2B",https://huggingface.co/ArsalanZ/Nenya-2.5B-A0.5B-Base,1,0
+50434318,2026-11-10T00:11:58Z,"Show HN: Stop Walking – A 10-level, one-button 3D rage game in the browser",https://stopwalking.online,1,1
+50434431,2026-11-10T00:24:17Z,Show HN: I abandoned my AVX2 128-bit fixed-point library,https://github.com/arjavsharma91/v4q128,1,1
+50434751,2026-11-10T01:06:29Z,Show HN: I built a tool that babysits your agents,https://www.physicsbase.ai/,1,4
+50434819,2026-11-10T01:16:30Z,"Show HN: CMusee – C/C++ timeless debugger, record every function called",https://veefuse.com/en/cmusee/,1,3
+50435283,2026-11-10T02:18:35Z,"Show HN: KeyPad – Universal Control like keyboard/mouse for iPhone, iPhone Duo",https://apps.apple.com/us/app/keypad-bluetooth-keyboard/id1491684442?mt=12,1,0
+50435403,2026-11-10T02:36:41Z,Show HN: Fynepdf-pdfa – PDF/A conversion without Ghostscript (MIT),https://github.com/fynepdf/fynepdf-pdfa,1,0
+50435628,2026-11-10T03:13:42Z,Show HN: Kinsona – a hotel booking site that shows its cut on every booking,https://kinsona.com/,1,5
+50437552,2026-11-10T08:28:50Z,"Show HN: Patchlag – Kernel CVE fix delay: Debian 13 median 12 days, Ubuntu 109",https://thewingthewong.github.io/patchlag/,1,0
+50437593,2026-11-10T08:35:18Z,Show HN: Track known vulnerabilities in the firmware your devices run,https://pinscope.dev/cra,1,0
+50437720,2026-11-10T08:55:56Z,Show HN: Pg-interleave (Postgres proxy for reproducible race-condition tests),https://github.com/alt-f6/pg-interleave,1,0
+50437743,2026-11-10T08:58:22Z,Show HN: Run multiple Claude Desktop instances side by side on macOS,https://github.com/Yuix-Networks/claude-orchestrator,1,0
+50437874,2026-11-10T09:18:09Z,Show HN: Tracecards – Swap space for the brain,https://github.com/visualrecall/tracecards,1,4
+50438714,2026-11-10T11:16:08Z,"Show HN: An alien pressing against wired glass, in Three.js (Claude Fable 5.2)",https://wired-glass.sandcastle.ffmux.com/alien.html,1,0
+50438940,2026-11-10T11:43:39Z,"Show HN: GameRAGKit, lore-grounded NPC dialogue in C#",https://gameragkit.up.railway.app/,1,0
+50439101,2026-11-10T12:01:40Z,Show HN: MbSCADA – Open-Source Modbus Poll and Scada in Rust,https://github.com/kostyk348/mbscada-rs,1,1
+50439136,2026-11-10T12:04:29Z,Show HN: AI Hustle Team – an AI on its own computer that does your daily work,https://aihustleteam.com/,1,0
+50439152,2026-11-10T12:06:21Z,Show HN: VoxaDub – Open-source AI video dubbing with speaker-aware voices,https://github.com/kadirb4rut/voxadub,1,0
+50439384,2026-11-10T12:29:20Z,Show HN: KubeSilicon – Linux VMs and Mac GPU Jobs from Kubernetes Objects,https://github.com/Matheus-Thurler/KubeSilicon,1,0
+50439585,2026-11-10T12:46:32Z,Show HN: A sanctions and PEP screening API,https://screen.unbackoffice.com/,1,0
+50439671,2026-11-10T12:56:17Z,Show HN: Simstim – local call transcription on Mac into .md files,https://github.com/pgrekovich/simstim,1,0
+50439845,2026-11-10T13:14:08Z,"Show HN: Natel, a self-hosted contacts editor for CardDAV servers in 20MB of RAM",https://github.com/KewinDousse/natel,1,0
+50439846,2026-11-10T13:14:09Z,Show HN: Agentlink – Messaging for Claude Code agents on different accounts,https://github.com/tombaldwin/agentlink,1,0
+50439905,2026-11-10T13:19:26Z,"Show HN: PDF library for Java, C#, Go and Swift developers",https://github.com/edragoev1/pdfjet,1,0
+50439924,2026-11-10T13:21:40Z,Show HN: Rambler: An open-source local journal in C++,https://github.com/eoind08/Rambler,1,0
+50439967,2026-11-10T13:25:13Z,"Show HN: View Markdown like you would on GitHub/Obsidian, right in your terminal",https://mddog.pages.dev,1,0
+50439989,2026-11-10T13:27:29Z,Show HN: ApesTogether - Earn subscription income from your paper-trading bot,https://apestogether.ai/developers,1,0
+50439992,2026-11-10T13:27:31Z,Show HN: FileOctopus – Finder-style macOS file manager with split panes,https://www.fileoctopus.com/,1,0
+50440034,2026-11-10T13:31:04Z,Show HN: Todaypad – a day planner that stores everything in the browser,https://todaypad.vercel.app,1,0
+50440062,2026-11-10T13:32:30Z,Show HN: GuestVine – follow a person across every podcast they guest on,https://guestvine.fm,1,0
+50440083,2026-11-10T13:33:23Z,Show HN: pvewarden – let an AI agent patch Proxmox VMs without giving it a shell,https://github.com/matousfiser/pvewarden,1,0
+50440165,2026-11-10T13:38:49Z,"Show HN: Skyloons – a balloon-popping Android game, 1,000 levels, works offline",https://play.google.com/store/apps/details?id=com.maniar.balloonpopquest&hl=en_US,1,0
+50440181,2026-11-10T13:40:00Z,"Show HN: Turnus – find cron, launchd and systemd jobs that won't run, and why",https://github.com/sanifhimani/turnus,1,0
+50440427,2026-11-10T13:56:35Z,Show HN: Taskman – open-source Rust TUI to manage many Claude/Codex sessions,https://github.com/sanagnos/taskman,1,0
+50440513,2026-11-10T14:01:15Z,Show HN: Running MiniCPM-v4.7 35B-A3B on a 2020 Android phone with 8 GB RAM,https://github.com/mlguyYT/MiniCPM-V-Apps,1,0
+50440567,2026-11-10T14:04:38Z,Show HN: Silos – an open source local agent sandbox CLI orchestrator,https://siloslabs.com/,1,0
+50440581,2026-11-10T14:05:42Z,"Show HN: ChatCairn, a local, searchable library of your AI chats",https://lgdventures.github.io/chatcairn/,1,0
+50440624,2026-11-10T14:09:13Z,Show HN: AppTraction – A Native Mac App for Apple's App Store Connect,https://apptraction.dev,1,0
+50440838,2026-11-10T14:24:52Z,Show HN: Laterwise – A read-later app for iPhone and Mac with no server,https://www.veloworkspaces.com/laterwise/,1,0
+50440953,2026-11-10T14:32:39Z,Show HN: Pico Bay – manage Pico and ESP32 boards via browser and/or MCP,https://github.com/ctrlpi/pico-bay,1,0
+50441040,2026-11-10T14:38:39Z,Show HN: A media server designed to be hosted on a VPS [more in the text],https://github.com/maury91/miauflix,1,0
+50441169,2026-11-10T14:48:47Z,Show HN: Sales tool in one Chrome extension,https://salesutils.app/,1,0
+50441213,2026-11-10T14:52:33Z,Show HN:Auto-CLI – Generate verified CLIs so agents can drive Windows apps,https://github.com/Northernator/Auto-CLI,1,0
+50441287,2026-11-10T14:57:03Z,Show HN: Production-grade developer tools that never leave your machine,https://github.com/sanmak/LocalGearbox,1,0
+50441291,2026-11-10T14:57:06Z,Show HN: I rebuilt Akira Toriyama's drawing room in 3D,https://bird.jacomakes.com,1,0
+50441314,2026-11-10T14:58:39Z,"Show HN: Dev-prune, a disk cleaner that only deletes what it can rebuild",https://github.com/Life-Experimentalist/dev-prune,1,0
+50441365,2026-11-10T15:02:13Z,Show HN: Practical Data: a Chrome extension that conditionally shades web tables,https://practicaldata.dev/,1,1
+50441369,2026-11-10T15:02:22Z,Show HN: A reproducible Typst and Pandoc dev container,https://github.com/1solomonwakhungu/typst-dev-container,1,0
+50441458,2026-11-10T15:08:28Z,"Show HN: Linux driver for a 1999 DSP sound card, reverse engineered from Windows",https://github.com/faghy/SONIC_CORE_SCOPE_PCI_x64-Linux-driver,1,0
+50441539,2026-11-10T15:13:26Z,Show HN: 37% of open jobs on company career sites were posted over 3+ months ago,https://github.com/AnointedxWolf/career-site-jobs-sample,1,0
+50441652,2026-11-10T15:21:18Z,"Show HN: TriLog – a personal data logger for mood, energy, and symptoms",https://trilog.app/,1,0
+50441736,2026-11-10T15:27:25Z,"Show HN: Users search and combine focused agents in a conversation, no prewiring",https://search2o.com/,1,0
+50441869,2026-11-10T15:37:08Z,Show HN: RiffWright – A browser guitar tab editor with real guitar tones,https://riffipedia.com/tabs/try,1,0
+50441923,2026-11-10T15:40:34Z,Show HN: Deedglass – Verify AI Agent SQL Changes Using Postgres WAL,https://github.com/deedglass/deedglass,1,0
+50442036,2026-11-10T15:47:43Z,Show HN: Leftagraph – a way to chart a company's finances over time,https://leftagraph.com/,1,1
+50442087,2026-11-10T15:50:19Z,"Show HN: Dryplate MCP – local image tools for AI agents (HEIC, strip metadata)",https://github.com/dryplate/dryplate,1,0
+50442093,2026-11-10T15:50:33Z,Show HN: Git-dupe – plain Git per-project private versioning for agent files,https://github.com/BrianWeiHaoMa/git-dupe,1,0
+50442108,2026-11-10T15:51:38Z,"Show HN: meles – malware scanner for container images, layer by layer",https://github.com/movray/meles,1,0
+50442141,2026-11-10T15:54:15Z,"Show HN: Ziperu is rubyzip with a Rust core, same API but faster and safer",https://github.com/caplanmaor/ziperu,1,0
+50442219,2026-11-10T16:01:07Z,Show HN: Ghost Runner – Race your past self on Apple Watch,https://getghostrunner.com/,1,0
+50442251,2026-11-10T16:03:32Z,"Show HN: Memsaga – Git versioning of Claude Code memory and skills, by session",https://github.com/grimmerk/memsaga,1,0
+50442258,2026-11-10T16:04:08Z,Show HN: Ilo Musi 8 – Handheld Game Console Emulating CHIP-8 Platform,https://ilomusi8.sadale.net/en/welcome,1,0
+50442441,2026-11-10T16:16:32Z,Show HN: Locatic – Discover developers and projects in your city,https://locatic.dev/,1,0
+50442518,2026-11-10T16:21:37Z,Show HN: Vesputio – A Put.io Client for iOS and Android,https://vesputio.app/android/beta,1,0
+50442692,2026-11-10T16:34:46Z,"Show HN: Crewplane, you design and own the workflows, agents run them",https://github.com/crewplaneai/crewplane,1,0
+50442697,2026-11-10T16:35:07Z,Show HN: ReplayGuard – Exploring replay attack prevention for APIs,https://github.com/ashvolt/replayguard,1,0
+50442771,2026-11-10T16:40:17Z,Show HN: Free2Genius – A growth system where a model decides who to contact,https://github.com/ashvolt/free2Genius,1,0
+50442946,2026-11-10T16:52:37Z,Show HN: Faux Show – a homemade alternative to the Amazon Show,https://overdesigned.org/faux-show/,1,0
+50442991,2026-11-10T16:55:11Z,Show HN: AI solved software. Now it's time to raise the bar. Introducing Brigade,https://github.com/gmpetrov/brigade,1,0
+50443021,2026-11-10T16:57:07Z,"Show HN: Jaxammon, Daily Backgammon Puzzles",https://jaxammon.com,1,0
+50443128,2026-11-10T17:05:40Z,"Show HN: Mismo – Share UI and navigation between web, desktop and React Native",https://mismo.dev/,1,0
+50443539,2026-11-10T17:41:32Z,Show HN: AI Gude - Personal Podcast News Aggregator,https://github.com/alex0ptr/aigude,1,0
+50443955,2026-11-10T18:11:24Z,"Show HN: Lautli, Swiss German transcriptions on-device",https://ameetmadan.github.io/lautli/,1,1
+50443969,2026-11-10T18:13:06Z,Show HN: Qitt – A proactive AI chief of staff built on T3 Code,https://github.com/bquenin/qitt,1,1
+50443987,2026-11-10T18:13:56Z,"Show HN: Whizra – Local, offline-first command bar to manage files on Mac",https://whizra.com/,1,0
+50444369,2026-11-10T18:40:20Z,Show HN: Educational crystallography game built with Fable 5.2,https://alum-builder.pages.dev/,1,0
+50444480,2026-11-10T18:49:01Z,Show HN: Uplumo – See which pages AI answers cite,https://uplumo.com/,1,3
+50444516,2026-11-10T18:51:25Z,Show HN: Tabthrough – a browser side panel that holds your live demo agenda,https://tabthrough.com,1,0
+50444931,2026-11-10T19:20:18Z,Show HN: Lovable for Photoshop,https://pixlpal.com/,1,0
+50445318,2026-11-10T19:45:13Z,"Show HN: BuildBakery, cloud builds for iOS, Android, desktop from a YAML recipe",https://buildbakery.com/,1,0
+50445550,2026-11-10T20:03:40Z,"Show HN: Dizata, Social Modelling and Reference Site",https://dizata.com/d,1,1
+50445615,2026-11-10T20:08:54Z,Show HN: Incremental Delta-Bar-Delta (Sutton's 1992 Rule) in Rust,https://github.com/minikin/idbd,1,1
+50445779,2026-11-10T20:22:18Z,Show HN: Graphon Labs now leads 7 benchmarks on Memory and raised $35M Series-A,https://www.graphonlabs.ai/#benchmarks,1,0
+50445864,2026-11-10T20:29:25Z,Show HN: why use many tools when one do trick,https://docktopus.app/#features,1,1
+50446158,2026-11-10T20:51:25Z,"Show HN: Sprites. A calm, streak free habit tracker",https://play.google.com/store/apps/details?id=net.retcurve.sprites&hl=en_US,1,0
+50446468,2026-11-10T21:21:25Z,Show HN: Tellable – For students: offline TTS that highlights every word in PDFs,https://apps.apple.com/us/app/tellable-offline-read-aloud/id6822751387,1,0
+50446588,2026-11-10T21:31:17Z,Show HN: Notebook AI – local-first meeting notes for Mac,https://github.com/sridharchaildn/notebook-ai,1,0
+50446651,2026-11-10T21:36:32Z,Show HN: CodeLens AI-Augmented Code Review Tool,https://github.com/blong8334/codeLens,1,0
+50447386,2026-11-10T22:48:11Z,Show HN: Python suite for spectral geometry analysis of 1.5M+ MPCORB orbits,https://github.com/Dr-Logvinovich/IT3-Solar-System-Quantum-Architecture/blob/main/README.md,1,0
+50447636,2026-11-10T23:11:42Z,"Show HN: Codemm – your coding agent writes exercises, a sandbox rejects bad ones",https://github.com/iignaite/Codemm,1,0
+50447724,2026-11-10T23:21:13Z,Show HN: Socialize/Presence multiplayer interaction on blog posts,https://namar0x0309.com/blog/2026/05/the-kind-of-ai-adoption-i-actually-believe-in/,1,0
+50447812,2026-11-10T23:31:36Z,Show HN: A map of skate parks and spots,https://nollie.city/spots/LDN-5,1,0

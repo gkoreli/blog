@@ -1,5 +1,9 @@
 # Drafts and article dispositions
 
+## New active writing
+
+- **November 11, 2026:** [OSS Radar #14: Coding Agents Need Recovery, Review and Rules](oss-radar-14-november-show-hn.md) — first manuscript from a declared twelve-project November 1–10 Show HN sample. [Research and limits](research/oss-radar-14-november-show-hn/README.md). Unpublished; next step is author review. This is new work and does not reopen the retired backlog below.
+
 **Publication update — November 11, 2026, America/Los_Angeles:** Goga authorized
 immediate publication of the User-Agent article. Its maintained source and exact
 prompt record are now in `posts/` and `prompts/`. No unpublished article remains

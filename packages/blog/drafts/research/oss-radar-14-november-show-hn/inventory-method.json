@@ -1,0 +1,65 @@
+{
+  "capturedAt": "2026-11-11T15:47:07.978534+00:00",
+  "windowStart": "2026-11-01T00:00:00Z",
+  "windowEndExclusive": "2026-11-11T00:00:00Z",
+  "sources": [
+    {
+      "day": "2026-11-01",
+      "source": "https://hn.algolia.com/api/v1/search?tags=show_hn&numericFilters=created_at_i%3E%3D1793491200%2Ccreated_at_i%3C1793577600&hitsPerPage=1000",
+      "count": 110
+    },
+    {
+      "day": "2026-11-02",
+      "source": "https://hn.algolia.com/api/v1/search?tags=show_hn&numericFilters=created_at_i%3E%3D1793577600%2Ccreated_at_i%3C1793664000&hitsPerPage=1000",
+      "count": 165
+    },
+    {
+      "day": "2026-11-03",
+      "source": "https://hn.algolia.com/api/v1/search?tags=show_hn&numericFilters=created_at_i%3E%3D1793664000%2Ccreated_at_i%3C1793750400&hitsPerPage=1000",
+      "count": 187
+    },
+    {
+      "day": "2026-11-04",
+      "source": "https://hn.algolia.com/api/v1/search?tags=show_hn&numericFilters=created_at_i%3E%3D1793750400%2Ccreated_at_i%3C1793836800&hitsPerPage=1000",
+      "count": 163
+    },
+    {
+      "day": "2026-11-05",
+      "source": "https://hn.algolia.com/api/v1/search?tags=show_hn&numericFilters=created_at_i%3E%3D1793836800%2Ccreated_at_i%3C1793923200&hitsPerPage=1000",
+      "count": 180
+    },
+    {
+      "day": "2026-11-06",
+      "source": "https://hn.algolia.com/api/v1/search?tags=show_hn&numericFilters=created_at_i%3E%3D1793923200%2Ccreated_at_i%3C1794009600&hitsPerPage=1000",
+      "count": 108
+    },
+    {
+      "day": "2026-11-07",
+      "source": "https://hn.algolia.com/api/v1/search?tags=show_hn&numericFilters=created_at_i%3E%3D1794009600%2Ccreated_at_i%3C1794096000&hitsPerPage=1000",
+      "count": 112
+    },
+    {
+      "day": "2026-11-08",
+      "source": "https://hn.algolia.com/api/v1/search?tags=show_hn&numericFilters=created_at_i%3E%3D1794096000%2Ccreated_at_i%3C1794182400&hitsPerPage=1000",
+      "count": 96
+    },
+    {
+      "day": "2026-11-09",
+      "source": "https://hn.algolia.com/api/v1/search?tags=show_hn&numericFilters=created_at_i%3E%3D1794182400%2Ccreated_at_i%3C1794268800&hitsPerPage=1000",
+      "count": 136
+    },
+    {
+      "day": "2026-11-10",
+      "source": "https://hn.algolia.com/api/v1/search?tags=show_hn&numericFilters=created_at_i%3E%3D1794268800%2Ccreated_at_i%3C1794355200&hitsPerPage=1000",
+      "count": 198
+    }
+  ],
+  "count": 1455,
+  "inventoryFile": "inventory.csv",
+  "reviewThresholdPoints": 50,
+  "aboveThreshold": 37,
+  "directGitHubSample": 12,
+  "sampleFile": "sample.csv",
+  "scoreMeaning": "Scores at retrieval; not scores at the end of the submission window. Later submissions have had less time to collect votes.",
+  "coverageBoundary": "Available Algolia-indexed items tagged show_hn; not a census of every open-source launch or every historical HN item."
+}

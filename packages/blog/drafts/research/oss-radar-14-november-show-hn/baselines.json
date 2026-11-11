@@ -1,0 +1,142 @@
+{
+  "checkedOn": "2026-11-11",
+  "evidenceState": "Documentation and source inspection; no featured product was installed, benchmarked, or used with real user data",
+  "repositories": [
+    {
+      "repository": "GoogleChrome/modern-web-guidance",
+      "branch": "main",
+      "commit": "4dd968349e54ca45a05dd5c818fb035c9054b022",
+      "license": "Apache-2.0",
+      "licenseBasis": "GitHub repository license metadata; SPDX identifier",
+      "sourceFiles": [
+        "skills/modern-web-guidance/SKILL.md",
+        "skills/modern-web-guidance/guides/ui-components/navigation-drawer.md"
+      ]
+    },
+    {
+      "repository": "ivankovic/omnidiff",
+      "branch": "main",
+      "commit": "ed150471f295de64b48e2ae98b2d317937cc5da5",
+      "license": "AGPL-3.0-only",
+      "licenseBasis": "Pinned LICENSE and Cargo.toml; GitHub metadata returned NOASSERTION",
+      "sourceFiles": [
+        "LICENSE",
+        "Cargo.toml",
+        "src/diff.rs",
+        "src/diff/content.rs"
+      ]
+    },
+    {
+      "repository": "hedgerow-dev/coldframe",
+      "branch": "main",
+      "commit": "e6b126af0ab08c24b48de77abfe063e98ff1b12f",
+      "license": "MIT",
+      "licenseBasis": "GitHub repository license metadata; SPDX identifier",
+      "sourceFiles": [
+        "honeypot.py"
+      ]
+    },
+    {
+      "repository": "HolyArrs/HolyArrs",
+      "branch": "main",
+      "commit": "ddb423156fcb2e0829f1ab7ea647e81908197b83",
+      "license": "AGPL-3.0",
+      "licenseBasis": "GitHub repository license metadata; SPDX identifier",
+      "sourceFiles": [
+        "app/backend/internal/core/webserver/static.go",
+        "app/backend/internal/metadata/hosted.go",
+        "app/backend/internal/metadata/hosted_service.go"
+      ]
+    },
+    {
+      "repository": "OmniJev/Flide",
+      "branch": "main",
+      "commit": "ee6a919c2c1740743a3f4673ecd731145d23f358",
+      "license": "Apache-2.0",
+      "licenseBasis": "GitHub repository license metadata; SPDX identifier",
+      "sourceFiles": [
+        "flide/runtime/session.py",
+        "flide/api/answers.py"
+      ]
+    },
+    {
+      "repository": "Dodaios/ste80-humanizer",
+      "branch": "main",
+      "commit": "99bc468482599f5d75f595e2c1adf893ebff4d8f",
+      "license": "MIT",
+      "licenseBasis": "GitHub repository license metadata; SPDX identifier",
+      "sourceFiles": [
+        "scripts/ste_check.py"
+      ]
+    },
+    {
+      "repository": "finic-ai/kairos",
+      "branch": "main",
+      "commit": "7ecac21b631a005f0ef9b4f4e4ff6f3d78422327",
+      "license": "Apache-2.0",
+      "licenseBasis": "GitHub repository license metadata; SPDX identifier",
+      "sourceFiles": [
+        "apps/server/src/modules/workflows/libs/runner.ts",
+        "docs/deployment/self-hosting.md",
+        "apps/server/src/modules/workflows/libs/models.ts",
+        "apps/server/src/modules/workflows/libs/steps.ts"
+      ]
+    },
+    {
+      "repository": "AGGIB/Stroq",
+      "branch": "main",
+      "commit": "4a0011353d7004c9710490a2cd6d52ab4ff80327",
+      "license": "Apache-2.0",
+      "licenseBasis": "GitHub repository license metadata; SPDX identifier",
+      "sourceFiles": [
+        "packages/cli/src/commands/hook.ts",
+        "packages/core/src/engine.ts",
+        "SECURITY.md"
+      ]
+    },
+    {
+      "repository": "piercefreeman/waymark",
+      "branch": "main",
+      "commit": "d40e7d53a484ad53a7d1e93baec4d02a81539ea6",
+      "license": "MIT",
+      "licenseBasis": "GitHub repository license metadata; SPDX identifier",
+      "sourceFiles": [
+        "crates/lib/vm-runtime/src/snapshot.rs",
+        "python/src/waymark/compiler/validation.py",
+        "python/src/waymark/compiler/__init__.py"
+      ]
+    },
+    {
+      "repository": "Video-Rebirth/hyperflow-h3-flash",
+      "branch": "main",
+      "commit": "0767e9cd7c72bf7aa832b07ebe1cdbd5daa80295",
+      "license": "Apache-2.0",
+      "licenseBasis": "GitHub repository license metadata; SPDX identifier",
+      "sourceFiles": [
+        "src/hyperflow_h3_flash/schedule.py",
+        "THIRD_PARTY_NOTICES.md"
+      ]
+    },
+    {
+      "repository": "hyphatech/spindle",
+      "branch": "main",
+      "commit": "9ed528817b74e4cd13cc1595d1e986dc9580e75f",
+      "license": "MIT",
+      "licenseBasis": "GitHub repository license metadata; SPDX identifier",
+      "sourceFiles": [
+        "core/openapi.ml"
+      ]
+    },
+    {
+      "repository": "andrewboldi/tmux-restore",
+      "branch": "main",
+      "commit": "a2020e5ee24488dc5404290ca2387cc0b350d103",
+      "license": "MIT",
+      "licenseBasis": "GitHub repository license metadata; SPDX identifier",
+      "sourceFiles": [
+        "agents/codex.sh",
+        "docs/caveats.md"
+      ]
+    }
+  ]
+}
