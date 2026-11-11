@@ -234,3 +234,5 @@ The owner subsequently preferred Inline and flagged its small click target. The 
 ### November 11: selected homepage invitation
 
 The owner selected **Refined inline** as the version to keep. The [selection and release record](../../../prototypes/homepage/README.md#selected-version--november-11) tracks its checked main delivery and fresh production verification. The compact layout, full-card native target and Design Language example are the accepted scope; this selection supersedes the preceding pending visual-review state.
+
+Source `3134918f` was pushed to main and Cloudflare build `60b619b8-40e8-4f87-9650-12cb0a55f8e3` succeeded. The [fresh acceptance receipt](2026-11-11-homepage-invitation-acceptance.json) verifies served source identity, exact stylesheet, HTML/Markdown discovery, the Design Language example, unpublished prototype routes and actual public pointer/keyboard navigation. The requested homepage change is delivered; reader-use outcomes remain unmeasured.

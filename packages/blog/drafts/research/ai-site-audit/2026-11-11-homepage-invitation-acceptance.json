@@ -1,0 +1,139 @@
+{
+  "checkedAt": "2026-11-11T14:32:56.391610+00:00",
+  "scope": "Fresh public frontend reads; explicit acceptance User-Agent and Sec-Purpose prefetch; no tool scan or form submission.",
+  "localCssSha256": "271a46c9508b1ec05b8e8b74f656c541487db5def95df307f0ebc867ab641b34",
+  "results": [
+    {
+      "route": "/",
+      "accept": "text/html",
+      "status": 200,
+      "sha256": "19df9b85ada2a461b2cea99ccf861983c4efc06ea9ae1128d9e073f5d8989f23",
+      "contentType": "text/html",
+      "clientBuild": {
+        "id": "60b619b8-40e8-4f87-9650-12cb0a55f8e3",
+        "source": "3134918f610b4f7acda4deeef56ce0aa19bca09f"
+      },
+      "invitationCount": 1,
+      "invitationLinks": [
+        "/tools"
+      ]
+    },
+    {
+      "route": "/main.css",
+      "accept": "text/css",
+      "status": 200,
+      "sha256": "271a46c9508b1ec05b8e8b74f656c541487db5def95df307f0ebc867ab641b34",
+      "contentType": "text/css"
+    },
+    {
+      "route": "/icons/arrow-right.svg",
+      "accept": "image/svg+xml",
+      "status": 200,
+      "sha256": "1d7e39f56a37374326e9cc432a274e924a3255e158d27e9752a7068ac0ae6302",
+      "contentType": "image/svg+xml"
+    },
+    {
+      "route": "/tools",
+      "accept": "text/html",
+      "status": 200,
+      "sha256": "b438b308aaf2cf110160087a55ba9af0cb11ac1bb2af89c30c52091377c81e2e",
+      "contentType": "text/html",
+      "clientBuild": {
+        "id": "60b619b8-40e8-4f87-9650-12cb0a55f8e3",
+        "source": "3134918f610b4f7acda4deeef56ce0aa19bca09f"
+      }
+    },
+    {
+      "route": "/design-language",
+      "accept": "text/html",
+      "status": 200,
+      "sha256": "d7bb053b4f1d6ad82e2fc72a1ec745eb8ffb30197c95fce50b54cecb0f50fe81",
+      "contentType": "text/html",
+      "clientBuild": {
+        "id": "60b619b8-40e8-4f87-9650-12cb0a55f8e3",
+        "source": "3134918f610b4f7acda4deeef56ce0aa19bca09f"
+      },
+      "invitationCount": 1,
+      "invitationLinks": [
+        "/tools"
+      ]
+    },
+    {
+      "route": "/_design/homepage/",
+      "accept": "text/html",
+      "status": 404,
+      "sha256": "8fbdf24732eddbff77d54bb86e5bc62d405b89d4e66add3447cba504ffbd2b87",
+      "contentType": "text/html"
+    },
+    {
+      "route": "/",
+      "accept": "text/markdown",
+      "status": 200,
+      "sha256": "eb98aca0c80aac16b9db2451c8866b964abea28f8d28fb126d870450af4b8899",
+      "contentType": "text/markdown; charset=utf-8"
+    }
+  ],
+  "checks": {
+    "homeCard": true,
+    "cssMatchesCheckedBuild": true,
+    "arrowServed": true,
+    "toolsServed": true,
+    "designLanguageExample": true,
+    "prototypesNotPublished": true,
+    "markdownPreserved": true
+  },
+  "release": {
+    "sourceCommit": "3134918f610b4f7acda4deeef56ce0aa19bca09f",
+    "cloudflareBuild": "60b619b8-40e8-4f87-9650-12cb0a55f8e3",
+    "checkName": "Workers Builds: gkoreli-com",
+    "checkStatus": "completed",
+    "checkConclusion": "success"
+  },
+  "localChecks": {
+    "workspaceTypecheck": "passed",
+    "markdownValidation": {
+      "passed": 33
+    },
+    "productionBuild": {
+      "posts": 44,
+      "isolated": true
+    },
+    "referralPolicy": "passed",
+    "prototypeRoutesBuilt": false
+  },
+  "browser": {
+    "url": "https://gkoreli.com/",
+    "viewportCssPx": 550,
+    "cardCssPx": {
+      "width": 514,
+      "height": 120.5234375
+    },
+    "linksInCard": 1,
+    "sample": {
+      "xFractions": [
+        0.1,
+        0.5,
+        0.9
+      ],
+      "yFractions": [
+        0.15,
+        0.5,
+        0.85
+      ],
+      "nativeLinkHits": 9,
+      "points": 9
+    },
+    "horizontalOverflow": false,
+    "artworkClickNavigatesTo": "https://gkoreli.com/tools",
+    "keyboardTabFocusesLink": true,
+    "focusOutline": "solid 2px around full target",
+    "keyboardEnterNavigatesTo": "https://gkoreli.com/tools",
+    "formSubmitted": false,
+    "toolScanSubmitted": false
+  },
+  "limits": [
+    "Bounded fresh frontend and browser acceptance, not a site-wide service audit or measured reader adoption.",
+    "Embedded client build metadata identifies the served client source; no global Worker allocation claim is made.",
+    "Later documentation-only commits may change build metadata without changing the accepted component."
+  ]
+}

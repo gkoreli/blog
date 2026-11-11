@@ -46,3 +46,5 @@ The in-chat sandbox wrapper was checked independently: refined target **9/9**, p
 The owner prefers inline as the current direction. The overall design remains in review; the next bounded step is feedback on the enlarged target and its visual affordance.
 
 **November 11 selection:** the owner chose Refined inline as the version to keep. The [design study](README.md#selected-version--november-11) tracks delivery of this accepted component separately from the preceding local checks.
+
+**November 11 delivered:** [fresh production acceptance](../../drafts/research/ai-site-audit/2026-11-11-homepage-invitation-acceptance.json) verifies the served component, matching stylesheet and live pointer/keyboard behavior after source `3134918f` deployed. The selected interaction is now the publication baseline; the earlier alternatives remain historical review artifacts.
