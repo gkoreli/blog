@@ -34,7 +34,7 @@ conversations; an unavailable time total is explicitly "not recovered."
 
 | Article | Current state | Next action |
 | --- | --- | --- |
-| [Please Stop Misreading User-Agent. It’s Messing Up Your Analytics.](../posts/044-please-stop-misreading-user-agent.md) — CUBOT continuation | Publication source dated November 11, 2026, promoted with twenty complete shaping prompts. The [twelve-family audit](research/analytics-retrospective/137-user-agent-pain-point-map.md), [checked library changes](research/analytics-retrospective/138-user-agent-hardening-acceptance.md) and [own-data evidence](research/analytics-retrospective/139-own-data-user-agent-audit.md) support the article. | Complete release verification under the publication record. Source review of the catalogue leads and a separate operator trial remain proposed. |
+| [Please Stop Misreading User-Agent. It’s Messing Up Your Analytics.](../posts/044-please-stop-misreading-user-agent.md) — CUBOT continuation | [Published November 11, 2026](https://gkoreli.com/please-stop-misreading-user-agent), with twenty complete shaping prompts. Cloudflare deployment and live representations are verified in the publication record. The [twelve-family audit](research/analytics-retrospective/137-user-agent-pain-point-map.md), [checked library changes](research/analytics-retrospective/138-user-agent-hardening-acceptance.md) and [own-data evidence](research/analytics-retrospective/139-own-data-user-agent-audit.md) support the article. | Publication complete. Source review of the catalogue leads and a separate operator trial remain proposed. |
 
 **Recorded investment:** the November 5–6 CUBOT baseline took approximately
 **3h22m across two completed main-chat turns**. It produced a roughly 2,400-word
@@ -117,7 +117,8 @@ unknown, not zero; do not estimate it from gaps between commits or task dates.
 The aggregate provenance above is enough for ordinary status questions; raw
 conversation/tool logs are not part of this register. Research, local tests,
 deployment activation, historical live controls and publication remain distinct
-states. No new production test or article publication is claimed by this update.
+states. The November 10 inventory did not itself run a production test or publish
+an article; the November 11 publication record above documents the later release.
 
 ## Storage and publication
 
