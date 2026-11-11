@@ -1,3 +1,5 @@
+import {buildProjectedStatsQueryPlan} from '../.test-dist/stats-query.js';
+import {createStatsWindow} from '../.test-dist/dates.js';
 import {referralReportProjectionSql,REFERRAL_REPORT_RULES_JSON} from '../.test-dist/referral-report-projection.js';
 /** Native D1/SQLite parity over synthetic events. Optional first argument is an
  * earlier bundled stats module for before/after comparison. MINIFLARE_WORKERD_PATH
@@ -73,9 +75,14 @@ try {
     assert.deepEqual(actual, expected, JSON.stringify({ mode, query }));
     }
   }
+  const [plan]=buildProjectedStatsQueryPlan({range:'30d',traffic:'all'},createStatsWindow('30d',now));
+  const explained=await db.prepare('EXPLAIN QUERY PLAN '+plan.sql).bind(...plan.values).all();
+  const coveringPlans=explained.results.filter(row=>typeof row.detail==='string' && row.detail.includes('COVERING INDEX')).map(row=>row.detail);
+  assert.ok(coveringPlans.some(step=>step.includes('idx_page_observation_report_facts_public_cover')));
+  assert.ok(coveringPlans.some(step=>step.includes('idx_page_observations_public_time')));
   assert.ok(costs.every(cost => [2,5].includes(cost.submittedStatements) && cost.returnedResults === cost.submittedStatements && cost.reportedRowsWritten === 0));
   console.log(JSON.stringify({ selectors: queries.length, comparisons: queries.length * 2, meteredBatches: costs.length, modes: ['fallback', 'projected'], syntheticRows: inserts.length, projectedStatementsPerReport: 2, sourceStatementsPerReport: 5,
-    firstReport: costs[0], parity: true }));
+    firstReport: costs[0], coveringPlans, parity: true }));
 } finally {
   sqlite.close();
   await proxy?.dispose();

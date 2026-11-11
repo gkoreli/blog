@@ -274,6 +274,9 @@ function reportSql(selected: QueryPredicate, bucketSql: string, includeBoundary:
     boundary: `(SELECT json_array(json_object('firstObservedAt', first_observed_at)) FROM boundary)`,
   };
   if (projected) {
+    const context = `FROM ${source} WHERE ${selected.sql} AND report_referral_excluded=0`;
+    projections.transitions = projections.transitions.replace('FROM assessed WHERE referral_excluded = 0', context);
+    projections['referrer-details'] = projections['referrer-details'].replace('FROM assessed WHERE referral_excluded = 0', context);
     const groupedFact = (column: string) => `(SELECT COALESCE(json_group_array(json(row_json)),json('[]')) FROM (
       SELECT json_set(${column},'$.views',SUM(event_views)) AS row_json FROM included GROUP BY ${column} ORDER BY ${column}))`;
     projections['fetch-metadata'] = groupedFact('report_metadata');
@@ -298,7 +301,14 @@ function reportSql(selected: QueryPredicate, bucketSql: string, includeBoundary:
     FROM ${source} WHERE ${selected.sql}
       AND referrer_host IS NOT NULL AND length(rtrim(referrer_host, '.')) <= 253
   `, selected.values.length + 1)];
-  if (includeOutgoing) {
+  if (includeOutgoing && projected) {
+    // Filter once before chart scans. Repeated equality filters over a wide
+    // assessed CTE caused SQLite to build a separate automatic index per panel.
+    ctes.push(`included AS MATERIALIZED (
+      SELECT ${selectedColumns.join(', ')}, 1 AS event_views FROM ${source}
+      WHERE ${selected.sql} AND report_referral_excluded=0 AND ${pathScope}
+    )`);
+  } else if (includeOutgoing) {
     ctes.push(`assessed AS MATERIALIZED (
       SELECT ${selectedColumns.join(', ')}${projected ? ', 1 AS event_views' : ''}, ${abusive} AS referral_excluded
       FROM ${source} ${projectionJoin} WHERE ${selected.sql}
@@ -394,13 +404,15 @@ export function buildProjectedStatsQueryPlan(query: StatsQuery, window: StatsWin
     const selected = { ...selection, sql: `${selection.sql} AND rule_sha256='${REPORT_PROJECTION_RULE_SHA256}' AND report_referral_rule_sha256='${REFERRAL_REPORT_RULE_SHA256}' AND report_referral_excluded IS NOT NULL` };
     const report = reportSql(selected, bucketSql, query.range === 'all' && index === 0, names, outgoing, !outgoing, true);
     if (index !== 0) return report;
-    // The source selection covers outgoing context in the same transaction.
-    const start = selected.values.length + 2;
-    const coverageSql = selection.sql.replace(/\?(\d+)/g, (_,number) => `?${Number(number) + start - 1}`);
-    const guard = `NOT EXISTS (SELECT 1 FROM main.page_observations AS page_observations WHERE ${coverageSql}
-      AND NOT EXISTS (SELECT 1 FROM page_observation_report_facts AS facts WHERE facts.observation_id=page_observations.id
-        AND facts.rule_sha256='${REPORT_PROJECTION_RULE_SHA256}' AND facts.report_referral_rule_sha256='${REFERRAL_REPORT_RULE_SHA256}' AND facts.report_referral_excluded IS NOT NULL))`;
+    // Facts are an observation-linked subset with copied dimensions: source
+    // updates invalidate them and deletion cascades. Equal current-row counts
+    // over the whole non-owner window therefore prove selected-path coverage.
+    // This deliberately includes registry-owner/excluded/filter-missing rows.
+    const bounds = 'is_owner=0 AND observed_at >= ?1 AND observed_at < ?2';
+    const guard = `(SELECT COUNT(*) FROM main.page_observations WHERE ${bounds}) =
+      (SELECT COUNT(*) FROM page_observation_report_facts WHERE ${bounds}
+        AND rule_sha256='${REPORT_PROJECTION_RULE_SHA256}' AND report_referral_rule_sha256='${REFERRAL_REPORT_RULE_SHA256}' AND report_referral_excluded IS NOT NULL)`;
     report.sql = report.sql.replace('SELECT section, CASE section', `SELECT ${guard} AS projection_complete, section, CASE section`);
-    return { sql: report.sql, values: [...report.values, query.path ?? null, ...selection.values] };
+    return { sql: report.sql, values: [...report.values, query.path ?? null] };
   });
 }

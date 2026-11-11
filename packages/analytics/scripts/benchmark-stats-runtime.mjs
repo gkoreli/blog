@@ -93,6 +93,12 @@ try {
     measurements.push(measurement);
     console.log(JSON.stringify({ scenario: scenario.name, beforeMs: before.metrics.elapsedMs, afterMs: after.metrics.elapsedMs, projectedMs: projected.metrics.elapsedMs, parity: true }));
   }
+  await db.prepare('DROP INDEX idx_page_observation_report_facts_public_cover').run();
+  const withoutCover=await measure(db,queryProjectedStats,{range:'30d',traffic:'all'});
+  const indexResults=await db.batch(wrangler.unstable_splitSqlQuery(readFileSync(new URL('../migrations/0021_reporting_core_cover.sql',import.meta.url),'utf8')).map(sql=>db.prepare(sql)));
+  const withCover=await measure(db,queryProjectedStats,{range:'30d',traffic:'all'});
+  assert.deepEqual(withCover.report,withoutCover.report);
+  const coveringIndex={selectedSourceRows:15000,without:withoutCover.metrics,with:withCover.metrics,indexCosts:indexResults.map(r=>r.meta),parity:true};
   await db.prepare(`WITH RECURSIVE archive(n) AS (VALUES(0) UNION ALL SELECT n+1 FROM archive WHERE n<29999)
     INSERT INTO page_observations(path,daily_client_id,traffic_class,device_type,is_owner,observed_at)
     SELECT '/archive',printf('%032x',n+100000),'browser','desktop',0,'2025-01-01 00:00:00' FROM archive`).run();
@@ -103,7 +109,7 @@ try {
   assert.deepEqual(withIndex.report, withoutIndex.report);
   const historyIndex = { archivedRows: 30000, selectedSourceRows: 15000, withoutIndex: withoutIndex.metrics, withIndex: withIndex.metrics, parity: true };
   assert.ok(withIndex.metrics.reads < withoutIndex.metrics.reads, 'Time bounds must avoid unrelated archive reads');
-  console.log(JSON.stringify({ synthetic: true, cacheUsed: false, measurements, historyIndex }));
+  console.log(JSON.stringify({ synthetic: true, cacheUsed: false, measurements, historyIndex, coveringIndex }));
 } finally {
   await proxy?.dispose();
   rmSync(directory, { recursive: true, force: true });

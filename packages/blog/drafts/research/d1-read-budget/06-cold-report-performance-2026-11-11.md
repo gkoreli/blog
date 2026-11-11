@@ -123,3 +123,22 @@ Apply only migration 0020 after final tests, types, portability, isolated build 
 The exact local CLI ID-gap fixture verifies only `(10,11]` is projected and the earlier row stays unassessed. Local Wrangler omits row meters, so both rebuild commands intentionally stop after the acknowledged first batch; native metering and complete remote meters remain required. Wrangler renders local SQL NULL as a string in JSON; direct `IS NULL` predicates verify storage without inferring from that representation.
 
 Activate cache namespace `2026-11-11.4`. Preserve the original sub-second response target and seven-day / 30-day read-review ceilings, exact deployment attribution, same-connection reuse checks and stop conditions.
+
+
+## Two-part production gate and covering-index follow-up
+
+Source `d7b69c812749f792a98a8a4adbdd1de034790dc0`, build `6693c680-81e5-4617-95e3-6893b790c74f`, activates Worker `d209b240-3881-4569-95f0-653d5d32bedc` at 100%. Seven-day/all SJC passes: **689.5 ms MISS / 103.6 ms HIT**, **298.5944 ms SQL / 341 ms binding wall**, **157,313 reads / zero writes**. Both statements run once, current projections are used and bytes/calculation time are identical on reuse.
+
+The permitted default 30-day/all SEA pair returns **1,133.0 ms MISS / 42.9 ms HIT**, **882.4282 ms SQL / 943 ms binding wall**, **483,205 reads / zero writes**. Its core statement costs 752.7619 ms / 447,364 reads. Read ceilings pass; the 30-day sub-second target fails. No further fills occur at that gate.
+
+Migration 0020 applies alone (three commands, 1,600.96 ms; complete row counters unavailable). The policy-only rebuild through 42,040 costs **367,925 reads / 42,039 derived writes**. Both fingerprints cover all 42,039 source rows afterward (84,079 reads / zero writes). At activation, nine newer rows include four already maintained by the live projector and five missing only referral facts. The bounded evidence tail is a no-op (23 reads); policy reconciliation writes five rows at 2,385 reads. A repeat tail control finds nine/nine current facts, zero missing (18 reads). The pre-reconciliation receipt is preserved separately.
+
+The final query-plan correction prefilters included core rows once, avoiding repeated automatic indexes on the same wide intermediate table. Migration 0021 adds a partial covering index for core dimensions; a conservative full-window coverage count uses the authoritative source time index and current fact covering index in one snapshot. The foreign-key/copied-dimension/invalidation lifecycle makes current facts a subset of source, so equal counts prove coverage. Missing facts outside the requested public filter can conservatively trigger source fallback. Native plans verify both covering range searches, and all 66 expanded exact comparisons still pass.
+
+### Cover delivery gate
+
+After final checks, create only the reviewed covering index through the metered remote query path: stop after unknown/failed cost or more than **100,000 reads / 50,000 writes** for that one creation. Apply migration 0021 idempotently to record it and run `PRAGMA optimize`. Verify the actual production first-statement plan uses covering range searches without executing a report. Retained observations/fact values remain unchanged; no interpretation rebuild is needed.
+
+Activate namespace `2026-11-11.5` and repeat the same exact-source seven-day gate, then the default 30-day gate only after seven-day acceptance. Targets and review ceilings remain unchanged. Preserve all intermediate failed gates and the evidence archive.
+
+[Final covering/prefilter controls](2026-11-11-covering-report-performance.json) preserve exact reports: the 15,000-event case takes 79.0 ms versus 2,810.6 ms for frozen source, and 4,500 distinct events take 29.4 ms versus 865.1 ms. The separate with/without-index comparison isolates the covering index; earlier controls also contain repeated automatic-index work. Final checks pass: 458 analytics tests, 445 site tests, types, fresh-schema/minimal-Worker portability, 66 native comparisons with explicit covering plans, isolated 45-post build and Worker dry-run.

@@ -1,3 +1,5 @@
+import {buildProjectedStatsQueryPlan} from '../.test-dist/stats-query.js';
+import {createStatsWindow} from '../.test-dist/dates.js';
 import {referralReportProjectionSql,REFERRAL_REPORT_RULES_JSON,REFERRAL_REPORT_RULE_SHA256,referralReportRuleDefinition} from '../.test-dist/referral-report-projection.js';
 import test from 'node:test';
 import assert from 'node:assert/strict';
@@ -81,5 +83,15 @@ test('forward projection guards the acknowledged referral input and policy chang
     const events=[];
     assert.deepEqual(await queryProjectedStats(f.db,query,now,undefined,event=>events.push(event)),await queryStats(f.db,query,now));
     assert.deepEqual(events.map(e=>e.readModel),['projection','source-fallback']);
+  }finally{f.sqlite.close();}
+});
+
+
+test('core report and complete-window coverage use covering range searches',()=>{
+  const f=fixture();try{
+    const [plan]=buildProjectedStatsQueryPlan(query,createStatsWindow(query.range,now));
+    const steps=f.sqlite.prepare('EXPLAIN QUERY PLAN '+plan.sql).all(...plan.values).map(row=>row.detail);
+    assert.ok(steps.some(step=>step.includes('COVERING INDEX idx_page_observation_report_facts_public_cover')));
+    assert.ok(steps.some(step=>step.includes('COVERING INDEX idx_page_observations_public_time')));
   }finally{f.sqlite.close();}
 });
