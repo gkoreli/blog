@@ -22,7 +22,6 @@ function StreamItem({ post }: { post: PostMeta }) {
   <div class="stream-meta">
     <span class="stream-sec" style="color:var(--section-${post.section})">${SECTION_LABELS[post.section]}</span>
     <span class="stream-date">${formatDateShort(post.date)}</span>
-    ${post.promptCount ? html`<span class="stream-badge">${post.promptCount} prompt${post.promptCount === 1 ? '' : 's'}</span>` : ''}
   </div>
   <h2 class="stream-title">${post.title}</h2>
   <p class="stream-desc">${post.description}</p>

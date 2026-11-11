@@ -1,6 +1,6 @@
 # Release, adoption, and founder opportunity
 
-Checked October 4, 2026 UTC. This pass answers Goga's question about hype, everyday interaction, and an unprecedented wave of founders. The full request is in the [canonical prompt record](../../../packages/blog/prompts/chatgpt-plugin-apps.prompts.md). It continues the article research; no prototype, customer interview, or paid experiment was performed.
+Checked October 4, 2026 UTC. This pass answers Goga's question about hype, everyday interaction, and an unprecedented wave of founders. The full request is in the [canonical prompt record](../../adr/0003-prompt-transparency.md#withdrawn-records). It continues the article research; no prototype, customer interview, or paid experiment was performed.
 
 ## Verdict
 

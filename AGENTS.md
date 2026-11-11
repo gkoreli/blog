@@ -8,7 +8,7 @@ People and agents are part of the audience. Count agent reach, agent-mediated us
 
 ## Repository essentials
 
-- `packages/blog/` owns the site; `posts/` and `prompts/` live inside that package.
+- `packages/blog/` owns the site; articles live in its `posts/` directory.
 - Use pnpm and the runtime pinned by `.mise.toml` / `package.json`.
 - Content is Markdown with YAML frontmatter, or TypeScript for custom layouts; interactive elements are native web components.
 - Keep content readable without JavaScript. Use progressive enhancement; no JSX/MDX or unnecessary dependencies.
@@ -20,7 +20,7 @@ People and agents are part of the audience. Count agent reach, agent-mediated us
 
 - In practical articles, teach something useful and show the basis in the author's work. Personal essays follow their experience and form.
 - Do not invent experiences, feelings, measurements, quotations, or a completed outcome.
-- Preserve exact shaping prompts for collaborative articles; exposed essays and OSS Radar have no prompt file. Exclude unrelated repository housekeeping.
+- Keep raw shaping prompts and personal working notes private for every article, including essays. Do not publish prompt pages or commit new prompt records. [Prompt publication decision](docs/adr/0003-prompt-transparency.md).
 - For Reddit distribution, follow the [pacing and stop conditions](.agents/skills/launch-article-on-x/references/publication-verification.md#reddit-pacing-and-account-restrictions); respect cooldowns and account restrictions.
 
 ## Evidence and continuity

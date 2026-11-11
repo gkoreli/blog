@@ -1,6 +1,6 @@
 # Goga’s informal voice: November 5 observations
 
-The owner asked for more than lowercase and punctuation: learn how his prompts move through an idea and structure sentences. These are observations from this conversation and the [complete material article prompts](../../../prompts/ai-fetcher-browser-crawler-headers.prompts.md), not a claim about his personality or a fixed template for everything he writes. [Published batch and exact copy](round-five-publication-2026-11-05.json).
+The owner asked for more than lowercase and punctuation: learn how his prompts move through an idea and structure sentences. These are observations from this conversation and the [complete material article prompts](../../../../../docs/adr/0003-prompt-transparency.md#withdrawn-records), not a claim about his personality or a fixed template for everything he writes. [Published batch and exact copy](round-five-publication-2026-11-05.json).
 
 The latest direction is preserved verbatim:
 

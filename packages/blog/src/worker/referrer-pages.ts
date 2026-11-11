@@ -1,17 +1,17 @@
 import { z } from 'zod';
 
-// Public non-post routes rendered by build.ts. Article and prompt routes come
+// Public non-post routes rendered by build.ts. Article routes come
 // from the published posts.json asset, never from the incoming Referer value.
 const fixedPaths = [
   '/', '/about', '/engineering', '/essays', '/oss-radar', '/privacy', '/license',
   '/stats', '/stats/readership', '/design-language', '/animations-lab',
 ];
-const publicPath = z.string().regex(/^\/[a-z0-9-]+(?:\/prompts)?$/);
-const indexSchema = z.array(z.object({ url: publicPath, prompts: publicPath.optional() }));
+const publicPath = z.string().regex(/^\/[a-z0-9-]+$/);
+const indexSchema = z.array(z.object({ url: publicPath }));
 
 export function publicPathsFromIndex(value: unknown): ReadonlySet<string> {
   const posts = indexSchema.parse(value);
-  return new Set([...fixedPaths, ...posts.flatMap(post => post.prompts ? [post.url, post.prompts] : [post.url])]);
+  return new Set([...fixedPaths, ...posts.map(post => post.url)]);
 }
 
 interface CachedPaths {

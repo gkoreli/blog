@@ -117,4 +117,4 @@ I would rather keep that pressure unresolved than manufacture a conclusion I don
 
 ---
 
-*Writing provenance: This essay was developed with AI from my [source prompts](/in-the-age-of-abundance-less-is-more/prompts). One message contains two explicit privacy omissions for a workplace example I asked to exclude.*
+*Writing provenance: This essay was developed with AI.*

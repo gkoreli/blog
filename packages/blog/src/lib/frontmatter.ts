@@ -1,8 +1,6 @@
-import { readFileSync, readdirSync } from 'node:fs';
-import { join } from 'node:path';
+import { readFileSync } from 'node:fs';
 import matter from 'gray-matter';
 import { z } from 'zod/v4';
-import { PROMPTS_DIR } from './paths.js';
 
 export const sectionSchema = z.enum(['essays', 'engineering', 'oss-radar']);
 export type Section = z.infer<typeof sectionSchema>;
@@ -52,7 +50,7 @@ const frontmatterSchema = z.object({
   })).optional().default([]),
 });
 
-export type PostMeta = z.infer<typeof frontmatterSchema> & { slug: string; date: string; promptCount?: number };
+export type PostMeta = z.infer<typeof frontmatterSchema> & { slug: string; date: string };
 
 export const postMetaSchema = frontmatterSchema.extend({
   slug: z.string().min(1),
@@ -111,23 +109,4 @@ export function validatePosts(files: string[]): ValidationResult[] {
       throw e;
     }
   });
-}
-
-export interface PromptsData {
-  count: number;
-  prompts: string[];
-  preview: string;
-}
-
-/** Parse prompts file for a given post slug. Returns null if no prompts file exists. */
-export function parsePrompts(slug: string): PromptsData | null {
-  const filename = readdirSync(PROMPTS_DIR).find(f => f.endsWith(`${slug}.prompts.md`));
-  if (!filename) return null;
-
-  const raw = readFileSync(join(PROMPTS_DIR, filename), 'utf-8');
-  const prompts = raw.split(/^---$/m).map(s => s.trim()).filter(Boolean);
-  if (!prompts.length) return null;
-
-  const preview = prompts[0]!.slice(0, 200) + (prompts[0]!.length > 200 ? '…' : '');
-  return { count: prompts.length, prompts, preview };
 }

@@ -37,9 +37,6 @@ export function article() {
   return html`
 <article class="post-content pc-article">
   <p class="post-orient">A code-backed guide to inference state, API cache rules, SDK translation, and context management in coding agents.</p>
-  <p>
-  <a href="/prompt-cache-context-edits/prompts">Thoughts by human, co-written by AI</a>
-</p>
   ${StatRow({ items: [
     { value: '35', label: html`live Sonnet 5.5 requests across two small experiments` },
     { value: '7,870', label: html`cached tokens preserved after an appended system update` },

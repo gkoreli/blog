@@ -221,5 +221,3 @@ The blog still uses Turnstile. The repairs give each attempt a lifecycle and kee
 | Sequential transactional admission | [D1 batch](https://developers.cloudflare.com/d1/worker-api/d1-database/) | Checked November 5 Pacific / November 6 UTC |
 
 The wider audit also repaired [webhook authentication of decoded rather than original bytes](https://github.com/gkoreli/blog/blob/b94063aa/packages/blog/drafts/research/newsletter-reliability/36-request-body-and-webhook-contracts.md) and [campaign sends without durable admission](https://github.com/gkoreli/blog/blob/b94063aa/packages/blog/drafts/research/newsletter-reliability/35-campaign-admission.md); those adjacent defects do not explain Turnstile's generic challenge errors.
-
-The [prompt record](/cloudflare-turnstile-signup-failures/prompts) preserves eight selected shaping messages in full. An operational authorization containing a private email and unrelated housekeeping are omitted.

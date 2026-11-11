@@ -8,7 +8,6 @@ import { buildDocuments, renderContent } from '../src/lib/ssg.js';
 import { parsePostModule } from '../src/lib/post-module.js';
 import { pageShell } from '../src/templates/page.js';
 import { postPage } from '../src/pages/post.js';
-import { promptsPage } from '../src/pages/prompts.js';
 
 const meta = {
   title: 'Quotes " & <markup>',
@@ -57,16 +56,13 @@ test('SSG retains the complete document, escaped metadata, and client islands', 
   }
 });
 
-test('Markdown content keeps code markup, while prompt text remains escaped and exact', async () => {
+test('Markdown content keeps code markup without a prompt link or teaser', async () => {
   const post = postModule().meta;
-  const prompt = 'Preserve <literal> & "quoted" text.\n  Keep this indentation.';
-  const [article, prompts] = await renderContent([
+  const [article] = await renderContent([
     postPage(post, '<h1>Article</h1><pre><code>&lt;unsafe&gt; &amp; safe</code></pre>'),
-    promptsPage(post, { count: 1, prompts: [prompt], preview: prompt }),
   ]);
   assert.match(article ?? '', /<pre><code>&lt;unsafe&gt; &amp; safe<\/code><\/pre>/);
-  assert.match(prompts ?? '', /Preserve &lt;literal&gt; &amp; "quoted" text\.\n  Keep this indentation\./);
-  assert.doesNotMatch(prompts ?? '', /<literal>/);
+  assert.doesNotMatch(article ?? '', /\/prompts|prompts-teaser|Thoughts by human/);
 });
 
 test('TypeScript posts reject invalid metadata, missing exports, and non-template results', () => {

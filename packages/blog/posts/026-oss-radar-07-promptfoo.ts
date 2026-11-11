@@ -242,7 +242,7 @@ export function preamble() {
     title: html`<h1>AI Citations: Do Agents Preserve the Evidence <em>Behind an Answer?</em></h1>`,
     subtitle: 'How citations can misrepresent evidence, and what open-source tools can check, improve, and preserve.',
     author: 'Goga Koreli', readTime: '15 min read', canvasMode: 'evidence', canvasSeed: 7,
-    footprint: { label: `${(researchFootprint.totalTokens / 1_000_000).toFixed(1)}M tokens from earlier research · partial footprint`, url: '/oss-radar-07-ai-citations/prompts#research-footprint' },
+    footprint: { label: `${(researchFootprint.totalTokens / 1_000_000).toFixed(1)}M tokens from earlier research · partial footprint`, url: '#research-footprint' },
   });
 }
 
@@ -437,7 +437,7 @@ export function article() {
 <tbody>${sources.map(s => html`<tr><td style="white-space:normal">${s.claim}</td><td><a href="${s.url}" target="_blank" rel="noopener">${s.ref}</a><p>${s.why}</p></td><td>${s.date}</td></tr>`)}</tbody>
 </table></div>
 <h3>Research record</h3>
-<p>This issue combines primary-paper review, pinned code inspection, and the two real CLI runs linked above. Codex performed the research and experiments; Goga supplied the question, publication direction, and editorial judgment. The <a href="/oss-radar-07-ai-citations/prompts">complete shaping prompts</a> are public at his request. The <a href="https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/oss-radar-07/00-worklist-index.md" target="_blank" rel="noopener">worklist</a> preserves the narrower earlier Promptfoo investigation and the full rewrite. Historical local mock-response tests remain labeled in that record; they were not OpenRouter service or model calls.</p>
-<p>The <a href="/oss-radar-07-ai-citations/prompts#research-footprint">partial research footprint</a> measures <strong>43,272,331 tokens across eight recovered sessions from the earlier investigation</strong>. It excludes the September rewrites, the later real CLI experiment, and other disclosed work. Its frozen manifest records integrity commitments to private logs; it is auditable by the author, not independently reconstructible by readers. Token volume is not evidence that the claims are correct.</p>
+<p>This issue combines primary-paper review, pinned code inspection, and the two real CLI runs linked above. Codex performed the research and experiments; Goga supplied the question, publication direction, and editorial judgment. The <a href="https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/oss-radar-07/00-worklist-index.md" target="_blank" rel="noopener">worklist</a> preserves the narrower earlier Promptfoo investigation and the full rewrite. Historical local mock-response tests remain labeled in that record; they were not OpenRouter service or model calls.</p>
+<p>The <a href="#research-footprint">partial research footprint</a> measures <strong>43,272,331 tokens across eight recovered sessions from the earlier investigation</strong>. It excludes the September rewrites, the later real CLI experiment, and other disclosed work. Its frozen manifest records integrity commitments to private logs; it is auditable by the author, not independently reconstructible by readers. Token volume is not evidence that the claims are correct.</p>
 </article>`;
 }

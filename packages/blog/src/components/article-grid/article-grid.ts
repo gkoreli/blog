@@ -18,7 +18,6 @@ export function ArticleGrid({
     <div class="ag-title">${p.title}</div>
     <div class="ag-meta">
       <span>${formatDateShort(p.date)}</span>
-      ${p.promptCount ? html`<span class="ag-badge">${p.promptCount} prompt${p.promptCount === 1 ? '' : 's'}</span>` : ''}
     </div>
     <p class="ag-desc">${p.description}</p>
   </a>`)}

@@ -1,6 +1,6 @@
 # Three questions, prior art, and the second editorial pass
 
-October 3, 2026 UTC. Owner asked for three additional interesting questions answered with evidence, ideas borrowed from prior art, a stronger Hacker News title/opening, and practical plain prose. The exact request is in the [article prompt record](../../../packages/blog/prompts/chatgpt-plugin-apps.prompts.md).
+October 3, 2026 UTC. Owner asked for three additional interesting questions answered with evidence, ideas borrowed from prior art, a stronger Hacker News title/opening, and practical plain prose. The exact request is in the [article prompt record](../../adr/0003-prompt-transparency.md#withdrawn-records).
 
 ## 1. What changed since the earlier ChatGPT apps?
 

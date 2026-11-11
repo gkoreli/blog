@@ -14,7 +14,7 @@ Started: 2026-09-28. Status: expanded teaching chapters, upstream context-manage
 
 The direct Sonnet 5.5 run cost an estimated **$0.1777092**. It observed 7,870-token reuse after an appended system update, zero reads after an early replacement, and 5,371-token reuse after a middle edit. It did not establish general instruction equivalence or a speedup. The second eight-request experiment cost $0.0308808; total inference spend is **$0.20859**. Appending corrected evidence reused more cached input but cost more than replacing a short late source in that layout. No further paid run is needed to inspect the retained analysis.
 
-The [source register](sources.md) points into the reports; [the lock file](sources.lock.json) pins eleven cloned repositories and their inspected local paths. Exact shaping prompts are preserved in [the initial request](initial.prompt.md), [research direction](research-direction.prompt.md), and [follow-up messages](follow-up.prompts.md).
+The [source register](sources.md) points into the reports; [the lock file](sources.lock.json) pins eleven cloned repositories and their inspected local paths. Exact shaping prompts are preserved in [the initial request](../../adr/0003-prompt-transparency.md#withdrawn-records), [research direction](../../adr/0003-prompt-transparency.md#withdrawn-records), and [follow-up messages](../../adr/0003-prompt-transparency.md#withdrawn-records).
 
 To render the isolated draft preview from the repository root:
 
@@ -35,7 +35,7 @@ Working form: a learning journal that can become an evidence-led engineering exp
 - **Reader promise:** explain a cache hit or miss from an API request, understand provider differences, and inspect an agent's request construction and usage accounting.
 - **Author promise:** preserve Goga's actual questions, predictions, experiments, and judgments as he learns. The initial curiosity is documented; further firsthand material must come from the work.
 
-Keep [the original prompt](initial.prompt.md) verbatim. Use [the source register](sources.md) to start research and record provenance. This directory owns the worklist; link future research and draft artifacts here as they are created.
+Keep [the original prompt](../../adr/0003-prompt-transparency.md#withdrawn-records) verbatim. Use [the source register](sources.md) to start research and record provenance. This directory owns the worklist; link future research and draft artifacts here as they are created.
 
 ## Original investigation plan
 

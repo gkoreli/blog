@@ -6,7 +6,7 @@ Accepted implementation direction, November 5, 2026 Pacific / November 6 UTC. Th
 
 ## Context
 
-The owner requested a more informative article and tool inspired by [Laxman Kafle's post](https://x.com/laxmankafle1995/status/2118569422554365981), with a possible five-to-ten-use free daily API, DDD boundaries and an ADR. The complete shaping message is preserved in the article's [prompt record](../../packages/blog/prompts/ai-site-check-evidence.prompts.md).
+The owner requested a more informative article and tool inspired by [Laxman Kafle's post](https://x.com/laxmankafle1995/status/2118569422554365981), with a possible five-to-ten-use free daily API, DDD boundaries and an ADR. The complete shaping message is preserved in the article's [prompt record](0003-prompt-transparency.md#withdrawn-records).
 
 Official X oEmbed and the linked [Exepal checker](https://exepal.com/check) identify a site audit: robots product rules, discovery files, rendering-related checks, metadata and synthetic User-Agent comparisons. Inspecting public presentation establishes its advertised workflow; it does not reproduce its hidden implementation or validate its score.
 

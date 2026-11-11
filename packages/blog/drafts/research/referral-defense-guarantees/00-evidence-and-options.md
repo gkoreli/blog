@@ -1,6 +1,6 @@
 # Deterministic guarantees for public analytics and referral defenses
 
-Reviewed September 9, 2026 UTC / September 8 PDT. [TASK-0140](../../../../../docs/tasks/TASK-0140-audit-deterministic-guarantees-and-prior-art-for-referral.md), [complete owner prompt](source.prompts.md), [referral-abuse worklist](../../../../../docs/folders/FLDR-0009.md).
+Reviewed September 9, 2026 UTC / September 8 PDT. [TASK-0140](../../../../../docs/tasks/TASK-0140-audit-deterministic-guarantees-and-prior-art-for-referral.md), [complete owner prompt](../../../../../docs/adr/0003-prompt-transparency.md#withdrawn-records), [referral-abuse worklist](../../../../../docs/folders/FLDR-0009.md).
 
 We can enforce rules about which names appear, which observations count, and which operations are admitted. We cannot guarantee that every anonymous request represents a person or a genuine external referral. This distinction gives us concrete engineering work without describing a deterministic classifier as an infallible account of the world.
 

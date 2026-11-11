@@ -1,6 +1,6 @@
 # Article passport: Subscription Bombing
 
-Created September 8 PDT / September 9 UTC, 2026. Working title: **Subscription Bombing: How I Protect My Blog**. This is the article lane of the existing newsletter reliability worklist. [Draft](article.md), [source ledger](07-source-ledger.md), [claims ledger](08-claims-ledger.md), [human prompts](source.prompts.md).
+Created September 8 PDT / September 9 UTC, 2026. Working title: **Subscription Bombing: How I Protect My Blog**. This is the article lane of the existing newsletter reliability worklist. [Draft](article.md), [source ledger](07-source-ledger.md), [claims ledger](08-claims-ledger.md), [human prompts](../../../../../docs/adr/0003-prompt-transparency.md#withdrawn-records).
 
 Current evidence update: the [authorized live flow](15-live-signup-acceptance.md) completed after a fresh production verifier-binding repair. Gmail placed the confirmation in Spam. Earlier implementation-only and acceptance-pending passages below are dated shaping history; this new receipt governs the current draft. The same investigation form and reader problem remain. Do not turn one completed subscription into an audience-wide success claim or omit the Spam result to manufacture closure.
 

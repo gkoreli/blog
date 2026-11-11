@@ -7,7 +7,7 @@ test('public route recognition uses the published index and rejects arbitrary or
   assert.equal(paths.has('/'), true);
   assert.equal(paths.has('/engineering'), true);
   assert.equal(paths.has('/article'), true);
-  assert.equal(paths.has('/article/prompts'), true);
+  assert.equal(paths.has('/article/prompts'), false);
   assert.equal(paths.has('/unpublished'), false);
   for (const url of ['/api/confirm/secret', '/article?token=secret', '//evil.example', 'https://evil.example']) {
     assert.throws(() => publicPathsFromIndex([{ url }]));

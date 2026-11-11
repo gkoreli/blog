@@ -19,7 +19,7 @@ Form: **essay of inquiry**, collaboratively drafted at Goga's explicit request. 
 - [Article](../../../packages/blog/posts/040-in-the-age-of-abundance-less-is-more.md) — finalized essay; November 3, 2026 publication date in the author's Pacific timezone.
 - [Live article](https://gkoreli.com/in-the-age-of-abundance-less-is-more) and [publication receipt](publication.json) — source delivery, deployment metadata, and served-content checks recorded separately.
 - [Discussion and competing explanations](01-discussion.md) — author-supplied observations, accepted ending, and unadopted agent proposals retained as history.
-- [Shaping prompts](../../../packages/blog/prompts/in-the-age-of-abundance-less-is-more.prompts.md) — four chronological messages. Messages 1, 3, and 4 are complete; message 2 has two explicit omissions for a workplace example Goga asked to exclude. The unredacted message remains outside Git. Do not call this a complete transcript or put excluded details in the article, public prompt record, notes, or commit text. This author instruction takes precedence over the default complete-public-prompt convention. The article discloses the omissions beside its provenance link.
+- [Shaping prompts](../../adr/0003-prompt-transparency.md#withdrawn-records) — four chronological messages. Messages 1, 3, and 4 are complete; message 2 has two explicit omissions for a workplace example Goga asked to exclude. The unredacted message remains outside Git. Do not call this a complete transcript or put excluded details in the article, public prompt record, notes, or commit text. This author instruction takes precedence over the default complete-public-prompt convention. The article discloses the omissions beside its provenance link.
 
 The article and prompt record now live in the discovered `posts/` and `prompts/` directories. Git delivery, deployment activation, and actual served representations must be recorded separately below.
 
@@ -71,7 +71,7 @@ Migration map:
 | Former draft path | Current source |
 | --- | --- |
 | `packages/blog/drafts/in-the-age-of-abundance-less-is-more.md` | [Published article source](../../../packages/blog/posts/040-in-the-age-of-abundance-less-is-more.md) |
-| `packages/blog/drafts/prompts/in-the-age-of-abundance-less-is-more.prompts.md` | [Published prompt source](../../../packages/blog/prompts/in-the-age-of-abundance-less-is-more.prompts.md) |
+| `packages/blog/drafts/prompts/in-the-age-of-abundance-less-is-more.prompts.md` | [Published prompt source](../../adr/0003-prompt-transparency.md#withdrawn-records) |
 
 Active callers are updated; earlier checkpoints remain as dated history. The full private example remains outside Git and the prompt record explicitly marks its two omissions. Publication checks and activation evidence follow when completed.
 

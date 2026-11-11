@@ -94,7 +94,7 @@ the earlier empty-queue check and the later isolated release rehearsal.
 Goga selected **Cloudflare Turnstile: What Kept Breaking My Signup Form** as the
 next article and asked this chat to coordinate a substantive improvement through
 its original builder. The exact instruction is the seventh message in the
-[selected prompt record](../../../packages/blog/drafts/research/newsletter-reliability/turnstile-pain-points.prompts.md).
+[selected prompt record](../../adr/0003-prompt-transparency.md#withdrawn-records).
 The original builder's existing thread, **Investigate client_errors subscription…**,
 completed the revision in `7f02173`. It led with the fake-versus-real API failure,
 added a diagnostic map, clarified callback/retry boundaries, compressed tangents

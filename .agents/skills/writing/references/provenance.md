@@ -1,6 +1,6 @@
 # Provenance, quotations and source notes
 
-Use when attributing Goga’s words, preserving collaborative prompts, preparing source notes or auditing authorship claims.
+Use when attributing Goga’s words, protecting private author notes, preparing source notes or auditing authorship claims.
 
 ## Owner quotations
 
@@ -8,13 +8,13 @@ A quotation attributed to Goga in any artifact must reproduce a **complete promp
 
 If only a fragment or unchecked recollection exists, paraphrase without quotation marks and disclose that the exact message was not preserved. Identify passages by location or paraphrase when giving draft feedback. This applies to articles, prompts, ADRs, tasks, research notes, comments and commit messages. Never originate an attributed experience, feeling or opinion.
 
-## Collaborative prompt record
+## Private author notes
 
-For AI-assisted collaborative articles, retain complete human messages that materially shaped the article, research, claims, metadata, provenance or publication decision, in chronological order. A message changing shared editorial policy and the article belongs in both the relevant policy history and the article’s provenance accounting. Exclude unrelated later repository housekeeping and private third-party transcript material; describe omissions rather than calling a selected record complete.
+Raw shaping prompts and personal working notes stay private for every article form, including collaborative engineering articles, essays and OSS Radar. Do not create or extend public prompt records, copy conversation messages into research artifacts, or generate prompt pages. A request to work on or publish an article does not authorize publishing its working notes. Publish a specified message or excerpt only when Goga explicitly asks for that material to be public.
 
-Save the released prompt record at `packages/blog/prompts/{slug}.prompts.md`, matching the article slug. Use a line containing `---` between complete messages, no frontmatter and no edited message formatting. Drafts may keep their paired record under `drafts/prompts/` until moved with the article. The pipeline exposes `/{slug}/prompts` with the “Thoughts by human, co-written by AI” label and article link/teaser.
+Keep any necessary local record outside Git, including the ignored `packages/blog/worklog/` directory. Do not reproduce private material in an ADR, task, commit message or handoff. Record the resulting decision in ordinary prose. Preserve existing authorship disclosures and put usable evidence beside its claims.
 
-Exposed essays and OSS Radar have **no prompt file** under their respective authorship models. This is not proof of authorship to readers. Private session logs stay outside Git even when their hashes support a public provenance record.
+[The prompt publication decision](../../../../docs/adr/0003-prompt-transparency.md) records the withdrawal of earlier prompt pages and dedicated public source records. Older Git revisions and third-party copies may retain those records; removal from the current branch is not historical erasure. Private session logs remain outside Git even when their hashes support a public research-footprint record.
 
 ## Public source notes
 

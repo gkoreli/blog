@@ -7,7 +7,7 @@ October 31, 2026 UTC. Governing form: evidence-led engineering follow-up. Title:
 - Reader: distinguish signature coverage, profile compatibility, retained-input fidelity and observed audience outcomes; obtain a runnable controlled experiment and a minimal analytics integration.
 - Author: see how Goga's agent-assisted hands-on research became a source for another technical guide, what he corrected, which current decisions the new tests support, and why he wants to continue this form of publishing.
 
-Owner excitement and intended publishing model are supplied directly in the complete preserved [shaping messages](../../../prompts/ai-fetcher-research-from-experiments-to-a-cited-reference.prompts.md). No feelings, dialogue or causal growth story are invented. Earlier study and analytics investigations retain their original provenance. The follow-up reports their dated results rather than relabelling them as experiments of this session. No new usage total is estimated; article023's frozen footprint remains unchanged.
+Owner excitement and intended publishing model are supplied directly in the complete preserved [shaping messages](../../../../../docs/adr/0003-prompt-transparency.md#withdrawn-records). No feelings, dialogue or causal growth story are invented. Earlier study and analytics investigations retain their original provenance. The follow-up reports their dated results rather than relabelling them as experiments of this session. No new usage total is estimated; article023's frozen footprint remains unchanged.
 
 ## Position and relationships
 

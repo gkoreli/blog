@@ -9,20 +9,6 @@
 .post-header-author:hover { color: var(--color-link); }
 
 .post-header-sep { color: var(--color-text-muted); }
-.post-header-prompts {
-  font-size: 0.85rem;
-  color: var(--color-text-muted);
-  text-decoration: none;
-  font-style: italic;
-}
-.post-header-prompts:hover { color: var(--color-link); }
-.post-header-prompts-icon {
-  display: inline-block;
-  vertical-align: -0.1em;
-  margin-right: 0.15rem;
-}
-.post-header-prompts-count { font-style: normal; opacity: 0.8; }
-
 /* Tags */
 .tags { margin-top: 0.5rem; display: flex; gap: 0.75rem; flex-wrap: wrap; }
 .tag { font-size: 0.75rem; color: var(--color-text-muted); opacity: 0.6; }
@@ -268,44 +254,6 @@
   background-color: var(--shiki-dark-bg) !important;
 }
 
-/* Prompts teaser */
-.prompts-teaser {
-  margin-top: 3rem;
-  padding: 1.25rem 1.5rem;
-  border: 1px solid var(--color-border);
-  border-radius: 0.5rem;
-  background: var(--color-surface);
-}
-.prompts-teaser-header {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin-bottom: 0.5rem;
-  font-size: 0.95rem;
-}
-.prompts-teaser-header img { display: block; flex-shrink: 0; }
-.prompts-teaser-count { font-size: 0.8rem; color: var(--color-text-muted); font-weight: 400; }
-.prompts-teaser-preview {
-  font-size: 0.85rem;
-  color: var(--color-text-muted);
-  font-style: italic;
-  line-height: 1.5;
-  margin-bottom: 0.75rem;
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-}
-.prompts-teaser-link { font-size: 0.85rem; color: var(--color-link); text-decoration: none; font-weight: 600; }
-.prompts-teaser-link:hover { text-decoration: underline; }
-
-/* Prompts page */
-.prompts-back { font-size: 0.85rem; color: var(--color-text-muted); text-decoration: none; display: inline-block; margin-bottom: 0.5rem; }
-.prompts-back:hover { color: var(--color-link); }
-.prompts-subtitle { font-size: 0.95rem; color: var(--color-text-muted); margin-top: 0.25rem; }
-.prompts-subtitle a { color: var(--color-link); }
-.prompts-intro { color: var(--color-text-muted); font-size: 0.9rem; margin-bottom: 2rem; font-style: italic; }
-
 .research-footprint {
   margin: 0 0 2.25rem;
   padding: 1.25rem;
@@ -338,23 +286,3 @@
 .research-footprint-stats span { color: var(--color-text-muted); font-size: 0.78rem; }
 .research-footprint p { margin: 0.75rem 0 0; font-size: 0.86rem; }
 .research-footprint-note { color: var(--color-text-muted); }
-.prompt-block { margin-bottom: 1.5rem; border: 1px solid var(--color-border); border-radius: 0.5rem; overflow: hidden; }
-.prompt-label {
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: var(--color-text-muted);
-  padding: 0.5rem 1rem;
-  border-bottom: 1px solid var(--color-border);
-  background: var(--color-surface);
-  letter-spacing: 0.03em;
-  text-transform: uppercase;
-}
-.prompt-text {
-  overflow-wrap: anywhere;
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
-  line-height: 1.6;
-  padding: 1rem;
-  white-space: pre-wrap;
-  color: var(--color-text);
-}

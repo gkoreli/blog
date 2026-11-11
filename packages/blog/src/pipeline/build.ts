@@ -8,7 +8,7 @@ import { build as esbuild } from 'esbuild';
 import { DIST, SRC, ESBUILD_ENTRIES, REPO_ROOT } from '../lib/paths.js';
 import { discoverPosts, writeRoot, copyAssets } from '../lib/fs.js';
 import { initMarkdown, renderMarkdown } from '../lib/markdown.js';
-import { parsePost, validatePosts, parsePrompts } from '../lib/frontmatter.js';
+import { parsePost, validatePosts } from '../lib/frontmatter.js';
 import type { Post } from '../lib/frontmatter.js';
 import { pageShell } from '../templates/page.js';
 import { rssFeed } from '../templates/rss.js';
@@ -21,8 +21,8 @@ import { blogPostingJsonLd, profilePageJsonLd, websiteJsonLd } from '../template
 import { SECTION_LABELS, SECTION_DESCRIPTIONS } from '../lib/frontmatter.js';
 import { homePage } from '../pages/home.js';
 import { aboutPage } from '../pages/about.js';
+import { researchFootprint } from '../pages/research-footprint.js';
 import { postAfterword, postPage, seriesTrailBlock, seriesTrailMarkdown } from '../pages/post.js';
-import { promptsPage } from '../pages/prompts.js';
 import { privacyPage } from '../pages/privacy.js';
 import { ownerPage } from '../pages/owner.js';
 import { statsPage, statsHead } from '../pages/stats.js';
@@ -219,9 +219,7 @@ export async function buildHTML(): Promise<void> {
     const post = mdPosts[i]!;
     const htmlContent = await renderMarkdown(post.content);
     const ogImage = await generateOgImage(post.meta.title, post.meta.slug);
-    const prompts = parsePrompts(post.meta.slug);
-    if (prompts) post.meta.promptCount = prompts.count;
-    const body = postPage(post.meta, htmlContent, prompts, allPosts);
+    const body = postPage(post.meta, htmlContent, allPosts);
     const jsonLd = blogPostingJsonLd(post.meta, ogImage);
     const ogImageAlt = postOgImageAlt(post.meta.title);
     const page = pageShell({ title: post.meta.title, description: post.meta.description, content: body, canonicalPath: `/${post.meta.slug}`, currentSlug: post.meta.slug, currentSection: post.meta.section, ogImage, ogImageAlt, head: jsonLd, layout: 'post', ogType: 'article', postSlug: post.meta.slug, ...(post.meta.seoTitle !== undefined && { seoTitle: post.meta.seoTitle }) });
@@ -230,23 +228,16 @@ export async function buildHTML(): Promise<void> {
     writeRoot(`${post.meta.slug}.csl.json`, cslJson(post.meta));
     writeRoot(`${post.meta.slug}.bib`, `${bibtex(post.meta)}\n`);
 
-    if (prompts) {
-      const promptsBody = promptsPage(post.meta, prompts);
-      const promptsShell = pageShell({ title: `Thoughts by human, co-written by AI — ${post.meta.title}`, description: `${prompts.count} raw notes that shaped "${post.meta.title}"`, content: promptsBody, canonicalPath: `/${post.meta.slug}/prompts`, currentSlug: `${post.meta.slug}/prompts`, currentSection: post.meta.section, ogImage, ogImageAlt, ogType: 'website' });
-      addPage(`${post.meta.slug}/prompts`, promptsShell);
-    }
   }
 
   // Build TypeScript posts — content controls its own structure
   for (const { post, article, preamble: renderPreamble, htmlContent } of tsPosts) {
     const ogImage = await generateOgImage(post.meta.title, post.meta.slug);
-    const prompts = parsePrompts(post.meta.slug);
-    if (prompts) post.meta.promptCount = prompts.count;
     const jsonLd = blogPostingJsonLd(post.meta, ogImage);
     const scripts = post.meta.layout === 'immersive' ? ['/immersive.js'] : [];
     const trail = seriesTrailBlock(post.meta, allPosts);
     const afterword = postAfterword(post.meta, allPosts);
-    const content = html`${article()}${trail}${afterword}`;
+    const content = html`${article()}${researchFootprint(post.meta)}${trail}${afterword}`;
     const preamble = renderPreamble?.();
     const ogImageAlt = postOgImageAlt(post.meta.title);
     const page = pageShell({ title: post.meta.title, description: post.meta.description, content, canonicalPath: `/${post.meta.slug}`, currentSlug: post.meta.slug, currentSection: post.meta.section, ogImage, ogImageAlt, head: jsonLd, layout: post.meta.layout, scripts, ...(preamble && { preamble }), ogType: 'article', postSlug: post.meta.slug, ...(post.meta.seoTitle !== undefined && { seoTitle: post.meta.seoTitle }) });
@@ -255,11 +246,6 @@ export async function buildHTML(): Promise<void> {
     writeRoot(`${post.meta.slug}.csl.json`, cslJson(post.meta));
     writeRoot(`${post.meta.slug}.bib`, `${bibtex(post.meta)}\n`);
 
-    if (prompts) {
-      const promptsBody = promptsPage(post.meta, prompts);
-      const promptsShell = pageShell({ title: `Thoughts by human, co-written by AI — ${post.meta.title}`, description: `${prompts.count} raw notes that shaped "${post.meta.title}"`, content: promptsBody, canonicalPath: `/${post.meta.slug}/prompts`, currentSlug: `${post.meta.slug}/prompts`, currentSection: post.meta.section, ogImage, ogImageAlt, ogType: 'website' });
-      addPage(`${post.meta.slug}/prompts`, promptsShell);
-    }
   }
 
   // Collect all raw content for llms-full.txt

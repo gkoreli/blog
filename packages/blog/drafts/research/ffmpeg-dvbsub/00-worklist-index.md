@@ -46,7 +46,7 @@ Raw logs, binaries, tool downloads, private session logs and large bitmap captur
 
 - [Baseline reproduction](repro/baseline/results.txt) and `bootstrap.py` pin FFmpeg `aab6cec3e8415154b3f0570f8d131db07a9901de` and the public FATE sample hash. Extract/copy into a disposable directory before running; scripts write binaries and checkout files alongside themselves.
 - [Formal harness generator](repro/formal/generate.py) extracts functions from the exact candidate rather than maintaining independent helper copies.
-- [Shaping prompts](../../../prompts/ffmpeg-dvbsub-verification.prompts.md) preserve the supplied research/article direction. No footprint is frozen while work continues.
+- [Shaping prompts](../../../../../docs/adr/0003-prompt-transparency.md#withdrawn-records) preserve the supplied research/article direction. No footprint is frozen while work continues.
 
 ## Current evidence and next action
 

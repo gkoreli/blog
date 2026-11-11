@@ -6,11 +6,7 @@ const SITE = 'https://gkoreli.com';
 /** llms.txt — index for AI agents (llmstxt.org spec) */
 export function llmsTxt(posts: PostMeta[]): string {
   const postLinks = posts
-    .flatMap(p => {
-      const links = [`- [${p.title}](${SITE}/${p.slug}.md): [${SECTION_LABELS[p.section]}] ${p.description}`];
-      if (p.promptCount) links.push(`- [Prompts: ${p.title}](${SITE}/${p.slug}/prompts): The ${p.promptCount} prompts that shaped this post`);
-      return links;
-    })
+    .map(p => `- [${p.title}](${SITE}/${p.slug}.md): [${SECTION_LABELS[p.section]}] ${p.description}`)
     .join('\n');
 
   const sectionLinks = (Object.keys(SECTION_LABELS) as (keyof typeof SECTION_LABELS)[])
@@ -83,7 +79,6 @@ export function postsJson(posts: PostMeta[]): string {
     ...(p.series && { series: p.series }),
     url: `/${p.slug}`,
     markdown: `/${p.slug}.md`,
-    ...(p.promptCount && { prompts: `/${p.slug}/prompts`, promptCount: p.promptCount }),
   })), null, 2);
 }
 

@@ -37,15 +37,17 @@ test('uses Pacific time and never promotes before 08:00', async () => {
   assert.ok(existsSync(join(root, 'posts', filename)));
 });
 
-test('moves exact article and prompt bytes and is idempotent on retry', async () => {
-  const { root, source } = fixture({ prompts: true });
+test('moves exact article bytes, leaves private notes alone, and is idempotent on retry', async () => {
+  const { root, source } = fixture();
+  writeFileSync(join(root, 'scheduled', date, 'scheduled-test.prompts.md'), 'Private shaping prompt.\n');
   const original = readFileSync(source, 'utf8');
   const result = await publishScheduledArticle(root, atEight);
   assert.deepEqual({ changed: result.changed, date: result.date, slug: result.slug }, {
     changed: true, date, slug: 'scheduled-test',
   });
   assert.equal(readFileSync(join(root, 'posts', filename), 'utf8'), original);
-  assert.equal(readFileSync(join(root, 'prompts', 'scheduled-test.prompts.md'), 'utf8'), 'Exact shaping prompt.\n');
+  assert.equal(existsSync(join(root, 'prompts', 'scheduled-test.prompts.md')), false);
+  assert.equal(readFileSync(join(root, 'scheduled', date, 'scheduled-test.prompts.md'), 'utf8'), 'Private shaping prompt.\n');
   assert.equal((await publishScheduledArticle(root, atEight)).changed, false);
 });
 
@@ -79,20 +81,24 @@ test('rejects duplicate dates and path traversal', () => {
   assert.throws(() => readPublicationSchedule(root));
 });
 
-test('refuses collisions and missing declared prompts without moving the article', async () => {
-  const { root, source } = fixture({ prompts: true });
+test('refuses collisions without moving the article', async () => {
+  const { root, source } = fixture();
   writeFileSync(join(root, 'posts', '001-scheduled-test.ts'), 'existing article');
   await assert.rejects(publishScheduledArticle(root, atEight), /already uses this slug/);
   assert.ok(existsSync(source));
-  rmSync(join(root, 'scheduled', date, 'scheduled-test.prompts.md'));
-  assert.throws(() => readPublicationSchedule(root), /missing scheduled-test.prompts.md/);
+
 });
 
 test('checks TypeScript metadata after moving and restores files on failure', async () => {
-  const { root, source } = fixture({ file: '042-scheduled-test.ts', prompts: true });
+  const { root, source } = fixture({ file: '042-scheduled-test.ts' });
   writeFileSync(source, `export const meta = { title: 'Test', description: 'Test', section: 'engineering', date: '2026-11-07', slug: 'scheduled-test' };\nexport const article = () => null;\n`);
   await assert.rejects(publishScheduledArticle(root, atEight), /date and slug must match/);
   assert.ok(existsSync(source));
-  assert.ok(existsSync(join(root, 'scheduled', date, 'scheduled-test.prompts.md')));
   assert.ok(!existsSync(join(root, 'posts', '042-scheduled-test.ts')));
+});
+
+test('rejects a schedule that tries to publish prompts', () => {
+  const { root, source } = fixture({ prompts: true });
+  assert.throws(() => readPublicationSchedule(root));
+  assert.ok(existsSync(source));
 });

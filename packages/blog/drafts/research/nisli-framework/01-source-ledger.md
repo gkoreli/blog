@@ -27,7 +27,7 @@ Public npm registry read through `npm view`: Lit 3.3.3; `@lit-labs/signals` 0.3.
 
 ## Author material
 
-Goga explicitly supplied the framework’s origin in this conversation: long experience across Angular, React, Svelte, Web Components, Vue and others; combining the semantics and ergonomics he preferred; native web capabilities and fast targeted rendering. Earlier preserved prompts for the [backlog-mcp article](../../../prompts/one-hundred-pull-requests.prompts.md) supply the concrete lost-state problem and Angular/React background. Paraphrase these accounts; do not invent quotations, regret, production incidents, or comparative results.
+Goga explicitly supplied the framework’s origin in this conversation: long experience across Angular, React, Svelte, Web Components, Vue and others; combining the semantics and ergonomics he preferred; native web capabilities and fast targeted rendering. Earlier preserved prompts for the [backlog-mcp article](../../../../../docs/adr/0003-prompt-transparency.md#withdrawn-records) supply the concrete lost-state problem and Angular/React background. Paraphrase these accounts; do not invent quotations, regret, production incidents, or comparative results.
 
 ## Verification additions
 

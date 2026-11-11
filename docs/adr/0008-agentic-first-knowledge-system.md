@@ -17,7 +17,7 @@ This separation means:
 
 - **backlog-mcp**: semantic search across all work — tasks, decisions, research artifacts, ADRs. Disk-first storage, agent-native CRUD, live activity panel.
 - **Blog SSG**: custom pipeline, markdown → HTML, @nisli/core components, Cloudflare Workers.
-- **Prompt transparency**: raw prompts published as first-class routes (`/{slug}/prompts`).
+- **Historical prompt transparency**: raw prompt routes were retired under [ADR-0003](0003-prompt-transparency.md) on November 11, 2026; author notes now stay private.
 - **AI-readable layer** (ADR-0006): llms.txt, llms-full.txt, posts.json, .md endpoints, JSON-LD, sitemap — all auto-generated at build time.
 - **Custom analytics**: cookieless, D1-backed, public /stats dashboard.
 

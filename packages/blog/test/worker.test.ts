@@ -150,3 +150,26 @@ test('homepage negotiates Markdown for GET/HEAD and advertises the real root twi
   assert.doesNotMatch(direct.headers.get('Link') ?? '', /csl\.json|posts\.json/);
   await Promise.all(pending);
 });
+
+test('withdrawn prompt routes return Gone before assets or analytics for every representation', async () => {
+  const { ctx, env, pending, writes } = harness();
+  let assetCalls = 0;
+  env.ASSETS.fetch = async () => {
+    assetCalls++;
+    return new Response('Retained private notes');
+  };
+  for (const path of ['/post/prompts', '/post/prompts/', '/post/prompts/index.html', '/post/prompts.md', '/please-stop-misreading-user-agent/prompts?old=1']) {
+    for (const method of ['GET', 'HEAD']) {
+      for (const accept of ['text/html', 'text/markdown', 'application/vnd.citationstyles.csl+json']) {
+        const response = await worker.fetch(postRequest(path, { method, headers: { Accept: accept } }), env, ctx);
+        assert.equal(response.status, 410);
+        assert.equal(response.headers.get('X-Robots-Tag'), 'noindex');
+        assert.equal(response.headers.get('Cache-Control'), 'no-store');
+        assert.equal(await response.text(), method === 'HEAD' ? '' : 'This page is no longer published.\n');
+      }
+    }
+  }
+  assert.equal(assetCalls, 0);
+  assert.equal(pending.length, 0);
+  assert.equal(writes.length, 0);
+});

@@ -211,6 +211,18 @@ export default {
     const { pathname } = new URL(request.url);
     const { method } = request;
 
+    // Withdrawn author notes must never fall through to a retained static asset.
+    if (/^\/[a-z0-9-]+\/prompts(?:\/index\.html|\.md|\/)?$/.test(pathname)) {
+      return new Response(method === 'HEAD' ? null : 'This page is no longer published.\n', {
+        status: 410,
+        headers: {
+          'Content-Type': 'text/plain; charset=utf-8',
+          'Cache-Control': 'no-store',
+          'X-Robots-Tag': 'noindex',
+        },
+      });
+    }
+
     if (pathname === '/api/ai-check' || pathname === '/api/ai-check/schema' || pathname === '/api/request-check'
       || pathname === '/ai-check/example' || pathname === '/ai-check' && method === 'POST') return handleAiCheck(request, env);
 

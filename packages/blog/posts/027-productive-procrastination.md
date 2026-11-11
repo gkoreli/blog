@@ -189,4 +189,4 @@ I want the energy. I want the work. I want to sleep. I still need to learn how t
 
 The planning approach and five-step sequence are a proposed practical synthesis. The studies examine separate questions; they do not validate the combined method. Personal experiences are the author's account, and the outcome of the planned attempt remains open.
 
-*Writing provenance: The [source prompts](/productive-procrastination/prompts) preserve selected complete messages behind this AI-assisted essay. A mixed-speaker conversation also informed the article; its transcript is omitted for privacy.*
+*Writing provenance: This essay was developed with AI. A mixed-speaker conversation also informed the article; its transcript is omitted for privacy.*

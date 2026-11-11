@@ -15,7 +15,7 @@ and any obligation to update or publish it. Completed research and engineering
 remain available. The separate Turnstile article source was promoted in
 `3efc3435` and now lives in
 [posts](../../packages/blog/posts/043-cloudflare-turnstile-signup-failures.md),
-with its [prompts](../../packages/blog/prompts/cloudflare-turnstile-signup-failures.prompts.md).
+with its [prompts](../adr/0003-prompt-transparency.md#withdrawn-records).
 This source-history fact is not fresh production acceptance. `done` closes this
 article task; it does not complete separate maintenance tasks. Earlier
 instructions to keep this task in progress are superseded. See the

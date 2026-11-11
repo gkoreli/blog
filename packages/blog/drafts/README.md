@@ -55,7 +55,7 @@ remain in Git history; active Markdown callers now point to these maintained fil
 | Former draft path, relative to `packages/blog/` | Maintained source |
 | --- | --- |
 | `drafts/unknown-clients-and-evidence-based-bot-detection.md` | [Article](../posts/044-please-stop-misreading-user-agent.md) |
-| `drafts/prompts/unknown-clients-and-evidence-based-bot-detection.prompts.md` | [Exact prompts](../prompts/please-stop-misreading-user-agent.prompts.md) |
+| `drafts/prompts/unknown-clients-and-evidence-based-bot-detection.prompts.md` | [Exact prompts](../../../docs/adr/0003-prompt-transparency.md#withdrawn-records) |
 
 ## Closed by owner — November 10, 2026
 

@@ -8,7 +8,7 @@ import { parsePostModule } from './post-module.js';
 const articleSchema = z.object({
   date: z.iso.date(),
   file: z.string().regex(/^\d+-[a-z0-9]+(?:-[a-z0-9]+)*\.(md|ts)$/),
-  prompts: z.boolean().default(false),
+  prompts: z.literal(false).optional(),
 });
 
 const scheduleSchema = z.object({
@@ -38,11 +38,6 @@ export function readPublicationSchedule(root: string) {
     const target = join(root, 'posts', article.file);
     if (existsSync(source) === existsSync(target)) {
       throw new Error(`${article.file}: expected exactly one queued or published source`);
-    }
-    if (article.prompts) {
-      const prompts = `${slug}.prompts.md`;
-      const directory = existsSync(source) ? join(root, 'scheduled', article.date) : join(root, 'prompts');
-      if (!existsSync(join(directory, prompts))) throw new Error(`${article.file}: missing ${prompts}`);
     }
     if (article.file.endsWith('.md')) {
       const post = parsePost(existsSync(source) ? source : target);
@@ -81,12 +76,6 @@ export async function publishScheduledArticle(root: string, now = new Date()) {
     throw new Error(`${slug}: a published article already uses this slug`);
   }
   const moves = [[source, target]];
-  if (article.prompts) {
-    const filename = `${slug}.prompts.md`;
-    const promptsTarget = join(root, 'prompts', filename);
-    if (existsSync(promptsTarget)) throw new Error(`${filename}: published prompt file already exists`);
-    moves.push([join(root, 'scheduled', date, filename), promptsTarget]);
-  }
   const completed: { from: string; to: string }[] = [];
   try {
     for (const move of moves) {

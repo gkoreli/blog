@@ -18,7 +18,7 @@ Started September 9 UTC / September 8 PDT, 2026. [TASK-0141](../../../../../docs
 
 The owner wants an evidence-based account of what this blog should build itself, what Matomo already supplies, and how a publication could serve agents that subscribe for people. The intended result is a working example other engineering blogs can inspect. Advantage claims need a defined comparison and measured result.
 
-- [Exact human prompts](source.prompts.md): four complete messages in received order, including the repeated preservation request and the question about human delegation. These belong to this new investigation, outside article 024's frozen provenance.
+- [Exact human prompts](../../../../../docs/adr/0003-prompt-transparency.md#withdrawn-records): four complete messages in received order, including the repeated preservation request and the question about human delegation. These belong to this new investigation, outside article 024's frozen provenance.
 - [Comparison with Matomo](01-matomo-and-agent-subscriptions.md): shared features, one demonstrated verification difference, costs and limits, and the live feed check.
 - [Delegation prior art](02-delegation-prior-art.md): established authorization standards, current agent-specific proposals, and what an approval record can establish.
 - [Subscription protocols and implementations](03-agent-subscription-protocols.md): existing readers, feeds, WebSub, Microsub/IndieAuth, ActivityPub, MCP, and WebMCP.

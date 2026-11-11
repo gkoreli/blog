@@ -1,5 +1,7 @@
 # ADR-0006: Discoverability — Search Engines, AI Agents, and Transparent Content
 
+> November 11, 2026 amendment: [ADR-0003](0003-prompt-transparency.md) retires prompt routes and their discovery entries. References to prompt-page generation below describe the historical implementation; current generated outputs contain articles only.
+
 ## Status
 
 Phase 1 deployed — 2026-03-07. Phase 2 (AI traffic intelligence) proposed.

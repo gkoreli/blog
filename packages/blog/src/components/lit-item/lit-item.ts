@@ -6,7 +6,6 @@ export function LitItem({ post, accentColor }: { post: PostMeta; accentColor?: s
   return html`<a href="/${post.slug}" class="lit">
   <div class="lit-meta" style=${accentColor ? `color:${accentColor}` : undefined}>
     <span>${formatDateShort(post.date)}</span>
-    ${post.promptCount ? html`<span>·</span><span>${post.promptCount} prompts</span>` : ''}
   </div>
   <div class="lit-title">${post.title}</div>
   <p class="lit-desc">${post.description}</p>

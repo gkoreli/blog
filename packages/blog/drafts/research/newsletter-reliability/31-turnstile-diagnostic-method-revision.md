@@ -1,6 +1,6 @@
 # Turnstile article revision: prove each handoff
 
-November 5, 2026 Pacific / November 6 UTC. Follows [initial shaping](29-turnstile-article-shape-and-review.md) and the separately completed [signed feedback acceptance](30-signed-resend-feedback-acceptance.md). The owner asks the publishing chat to improve the next article and delegate to its original builder. The full request is checked against the actual human message and appended intact to the [selected prompt record](turnstile-pain-points.prompts.md). The coordinating agent's editorial brief is agent-authored input, not an owner quotation, prompt or experience.
+November 5, 2026 Pacific / November 6 UTC. Follows [initial shaping](29-turnstile-article-shape-and-review.md) and the separately completed [signed feedback acceptance](30-signed-resend-feedback-acceptance.md). The owner asks the publishing chat to improve the next article and delegate to its original builder. The full request is checked against the actual human message and appended intact to the [selected prompt record](../../../../../docs/adr/0003-prompt-transparency.md#withdrawn-records). The coordinating agent's editorial brief is agent-authored input, not an owner quotation, prompt or experience.
 
 ## Revised center and reader payoff
 

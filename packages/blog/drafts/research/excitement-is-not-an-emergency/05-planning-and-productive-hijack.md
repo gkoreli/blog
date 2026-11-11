@@ -4,7 +4,7 @@ Recorded: 2026-09-21. This is an editorial record, not a report of a completed b
 
 ## Author source and state
 
-The complete second walk message is preserved, without editorial headings or corrections, in [04-walk-dictation-planning.prompt.md](04-walk-dictation-planning.prompt.md). A final newline terminates the file. The first walk message and founding Earned-Trust Writing prompt remain unchanged. These are selected shaping prompts, not a complete transcript of every conversation. The earlier mixed-speaker transcript is still not published.
+The complete second walk message is preserved, without editorial headings or corrections, in [04-walk-dictation-planning.prompt.md](../../../../../docs/adr/0003-prompt-transparency.md#withdrawn-records). A final newline terminates the file. The first walk message and founding Earned-Trust Writing prompt remain unchanged. These are selected shaping prompts, not a complete transcript of every conversation. The earlier mixed-speaker transcript is still not published.
 
 The author explicitly corrects an anti-excitement reading. He values the energy and exploration. He wants to preserve meaningful project work and his other priorities, not become less curious or abandon his ambitions. The new account supplies the personal stakes: in two or three years he wants his engineering writing and open-source work to be useful, recognized, and followed by a genuine audience.
 

@@ -21,7 +21,7 @@ Audience and growth: [ADR-0016.19](../adr/0016.19-agent-mediated-audience-growth
 | Report cost | Meter complete reports and preserve the versioned cache contract | [Read budget](../adr/0016.7-budget-d1-reads-and-cache-public-reports.md) |
 | Newsletter | D1 state, Resend delivery, and Turnstile protection | [Subscriptions](../adr/0010-email-subscriptions.md) |
 | Diagnostics | Shared client-error reporting with explicit data and operational limits | [Observability](../adr/0011-client-error-observability.md) |
-| Prompts | Separate prompt pages linked from the article header and teaser | [Prompt transparency](../adr/0003-prompt-transparency.md) |
+| Prompts | Private working notes for every article form; public prompt pages retired | [Prompt publication decision](../adr/0003-prompt-transparency.md) |
 | Design | Shared navigation and typography; custom article layouts where useful | [Navigation](../adr/0007-navigation-and-layout.md), [layout](../adr/0009-layout-system.md), [visual system](../adr/0013.1-publication-visual-layer.md) |
 
 ## Implementation conventions

@@ -22,20 +22,19 @@ separate from this release workflow.
 2. Put its final source at `scheduled/YYYY-MM-DD/NNN-article-slug.md` or `.ts`
    within this package. Set its publication date to that day. TypeScript imports
    must work from the final `posts/` location.
-3. For a collaborative article, put its exact shaping prompts at
-   `scheduled/YYYY-MM-DD/article-slug.prompts.md` and set `prompts: true` below.
-   Exposed essays and OSS Radar follow their existing exceptions.
-4. Add one entry to [publication-schedule.json](../publication-schedule.json):
+3. Add one entry to [publication-schedule.json](../publication-schedule.json):
 
    ```json
-   { "date": "2026-11-07", "file": "043-article-slug.md", "prompts": true }
+   { "date": "2026-11-07", "file": "043-article-slug.md" }
    ```
 
-5. Run `pnpm -C packages/blog publication check`, then commit and push the scoped
+4. Run `pnpm -C packages/blog publication check`, then commit and push the scoped
    sources and schedule. Listing an article in this queue authorizes its release
    on that day. Keep unfinished work in `drafts/` without a schedule entry.
 
-Assets belong in their normal package locations. Queued article and prompt files
+Raw author prompts and personal working notes remain private; do not queue them. The scheduler rejects `prompts: true`.
+
+Assets belong in their normal package locations. Queued article files
 are outside the SSG's discovered directories, so they do not appear in the live
 site or generated feeds before promotion. **The GitHub repository is public**;
 this mechanism does not make source files private.
@@ -44,7 +43,7 @@ this mechanism does not make source files private.
 
 [The hosted workflow](../../../.github/workflows/november-publication.yml) uses
 the pinned Node runtime and pnpm version. It promotes only today's explicitly
-listed source and prompts, runs types, metadata validation and an isolated runner
+listed source, runs types, metadata validation and an isolated runner
 build, then commits and pushes to `main` using the repository's personal identity.
 The existing Cloudflare Git integration performs deployment.
 

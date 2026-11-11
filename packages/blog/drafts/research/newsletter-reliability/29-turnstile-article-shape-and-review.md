@@ -1,6 +1,6 @@
 # Turnstile pain-points article: shape, evidence and review
 
-November 5, 2026. Owner request: write about the pain points of Turnstile. [Full draft](turnstile-pain-points.md), [selected exact prompts](turnstile-pain-points.prompts.md). This is a new companion draft in the existing newsletter worklist, under TASK-0128. The broader [subscription-bombing draft](article.md) retains its first-email abuse/admission subject. Neither article is published by this drafting task.
+November 5, 2026. Owner request: write about the pain points of Turnstile. [Full draft](turnstile-pain-points.md), [selected exact prompts](../../../../../docs/adr/0003-prompt-transparency.md#withdrawn-records). This is a new companion draft in the existing newsletter worklist, under TASK-0128. The broader [subscription-bombing draft](article.md) retains its first-email abuse/admission subject. Neither article is published by this drafting task.
 
 **Later revision:** [Research 31](31-turnstile-diagnostic-method-revision.md) supersedes this initial editorial shape after the owner delegates a substantive improvement through the publishing chat. It preserves the historical evidence below, adds a diagnostic method and a seventh exact selected prompt, and keeps publication/queue ownership in that chat.
 

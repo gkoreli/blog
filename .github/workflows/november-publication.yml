@@ -55,7 +55,7 @@ jobs:
         run: |
           git config user.name 'Goga Koreli'
           git config user.email 'gogakoreli@icloud.com'
-          git add -- packages/blog/posts packages/blog/prompts packages/blog/scheduled
+          git add -- packages/blog/posts packages/blog/scheduled
           git commit -m "Publish article for $PUBLICATION_DATE"
           git push origin HEAD:main
       - name: Verify the live publication

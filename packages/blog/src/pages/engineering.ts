@@ -4,10 +4,8 @@ import { SECTION_LABELS, SECTION_DESCRIPTIONS } from '../lib/frontmatter.js';
 import { PageHero, LitItem } from '../components/index.js';
 
 export function engineeringPage(posts: PostMeta[]) {
-  const totalPrompts = posts.reduce((s, p) => s + (p.promptCount ?? 0), 0);
   const stats = [
     { value: String(posts.length), label: 'Articles' },
-    ...(totalPrompts > 0 ? [{ value: `${totalPrompts}+`, label: 'Prompts logged' }] : []),
   ];
 
   return html`<div class="section-archive" data-section="engineering">

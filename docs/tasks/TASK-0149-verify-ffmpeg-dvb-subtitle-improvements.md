@@ -26,7 +26,7 @@ Investigate the optimization claimed in Romain Hédouin's X post, find the upstr
 
 ## Canonical record
 
-[Research worklist](../../packages/blog/drafts/research/ffmpeg-dvbsub/00-worklist-index.md) owns the current state, evidence map, limits and next bounded action. [Exact shaping prompts](../../packages/blog/prompts/ffmpeg-dvbsub-verification.prompts.md) preserve the supplied article direction. Raw logs, downloaded tools, binaries and bitmap captures stay outside Git.
+[Research worklist](../../packages/blog/drafts/research/ffmpeg-dvbsub/00-worklist-index.md) owns the current state, evidence map, limits and next bounded action. [Exact shaping prompts](../adr/0003-prompt-transparency.md#withdrawn-records) preserve the supplied article direction. Raw logs, downloaded tools, binaries and bitmap captures stay outside Git.
 
 ## Acceptance and current state
 

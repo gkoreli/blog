@@ -1,7 +1,8 @@
 import { html, raw, type TemplateResult } from '@nisli/core';
-import type { PostMeta, PromptsData, Section } from '../lib/frontmatter.js';
+import type { PostMeta, Section } from '../lib/frontmatter.js';
 import { formatDateLong } from '../lib/dates.js';
 import { SectionLabel } from '../components/index.js';
+import { researchFootprint } from './research-footprint.js';
 
 function resolveSeriesPosts(meta: PostMeta, allPosts: PostMeta[]) {
   if (!meta.series) return null;
@@ -29,12 +30,6 @@ const CURATED_READS: Record<Section, string[]> = {
 interface NextRead {
   post: PostMeta;
   label: string;
-}
-
-function compactTokenCount(tokens: number): string {
-  if (tokens >= 1_000_000) return `${(tokens / 1_000_000).toFixed(1)}M`;
-  if (tokens >= 1_000) return `${Math.round(tokens / 1_000)}K`;
-  return String(tokens);
 }
 
 function resolveNextRead(meta: PostMeta, allPosts: PostMeta[]): NextRead | null {
@@ -118,30 +113,20 @@ export function postAfterword(meta: PostMeta, allPosts: PostMeta[]): TemplateRes
 </section>`;
 }
 
-export function postPage(meta: PostMeta, htmlContent: string, prompts?: PromptsData | null, allPosts?: PostMeta[]) {
+export function postPage(meta: PostMeta, htmlContent: string, allPosts?: PostMeta[]) {
   const dateStr = formatDateLong(meta.date);
-  const footprint = meta.researchFootprint;
 
   return html`<article>
   <header class="post-header">
     ${SectionLabel({ section: meta.section })}
-    <time datetime="${meta.date}">${dateStr}</time><span class="post-header-sep"> · </span><a href="/about" rel="author" class="post-header-author">Goga Koreli</a>${prompts ? html`<span class="post-header-sep"> · </span><a href="/${meta.slug}/prompts${footprint ? '#research-footprint' : ''}" class="post-header-prompts"><img src="/icons/transparency.svg" width="14" height="14" alt="" class="post-header-prompts-icon">Thoughts by human, co-written by AI<span class="post-header-prompts-count"> — ${prompts.count} prompt${prompts.count === 1 ? '' : 's'}${footprint ? ` · ${compactTokenCount(footprint.totalTokens)} measured tokens` : ''}</span></a>` : ''}
+    <time datetime="${meta.date}">${dateStr}</time><span class="post-header-sep"> · </span><a href="/about" rel="author" class="post-header-author">Goga Koreli</a>
     ${meta.tags.length > 0
       ? html`<div class="tags">${meta.tags.map(t => html`<span class="tag">${t}</span>`)}</div>`
       : ''}
   </header>
   <div class="post-content" html:inner=${raw(htmlContent)}></div>
+  ${researchFootprint(meta)}
   ${allPosts ? seriesTrailBlock(meta, allPosts) : ''}
-  ${prompts ? html`
-  <section class="prompts-teaser">
-    <div class="prompts-teaser-header">
-      <img src="/icons/transparency.svg" width="16" height="16" alt="">
-      <strong>Thoughts by human, co-written by AI</strong>
-      <span class="prompts-teaser-count">${prompts.count} prompt${prompts.count === 1 ? '' : 's'}${footprint ? ` · ${footprint.sessions} sessions · ${footprint.artifacts} artifacts · ${compactTokenCount(footprint.totalTokens)} tokens` : ''}</span>
-    </div>
-    <p class="prompts-teaser-preview">"${prompts.preview}"</p>
-    <a href="/${meta.slug}/prompts" class="prompts-teaser-link">See behind the scenes →</a>
-  </section>` : ''}
   ${allPosts ? postAfterword(meta, allPosts) : ''}
 </article>`;
 }

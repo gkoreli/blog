@@ -32,7 +32,7 @@ For a material engineering or discovery investigation:
 
 1. Name the reader or site-owner decision and what evidence would change it. Trace consequential external claims to their original source; distinguish reported results, inspected code, reproductions, observations, and inference.
 2. Inspect the current implementation and existing work before building. Preserve versions, conditions, denominators, missing data, competing explanations, and failed checks. Scale the investigation to the consequences of being wrong.
-3. Use agents for bounded research, implementation, critique, and verification. Preserve material human shaping prompts under the existing article rules. Review the result against original evidence; agent agreement is not independent validation.
+3. Use agents for bounded research, implementation, critique, and verification. Keep raw shaping prompts private under the [current publication decision](0003-prompt-transparency.md). Review the result against original evidence; agent agreement is not independent validation.
 4. Produce a usable result: a repair, method, explanation, experiment, or justified no-change decision. Link the evidence needed to inspect it. Keep raw private data and logs outside Git.
 5. Separate code completion, deployment activation, measured behavior, and actual reader or operator value. Publish supported lessons while unresolved outcomes remain explicit.
 6. Stop expanding when the material claim is supported, narrowed, rejected, or explicitly deferred and further work no longer changes the decision. Thoroughness should improve decisions and delivery.

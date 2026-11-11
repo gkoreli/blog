@@ -4,7 +4,7 @@ import { basename, extname, join, relative } from 'node:path';
 import { existsSync, readFileSync } from 'node:fs';
 import { context } from 'esbuild';
 import browserSync from 'browser-sync';
-import { DIST, SRC, POSTS_DIR, PROMPTS_DIR, PUBLIC_DIR, ROOT, ESBUILD_ENTRIES } from '../lib/paths.js';
+import { DIST, SRC, POSTS_DIR, PUBLIC_DIR, ROOT, ESBUILD_ENTRIES } from '../lib/paths.js';
 import { loadLocalEnv } from './env.js';
 import { clientDefines } from './client-mode.js';
 
@@ -200,9 +200,6 @@ bs.watch(`${SRC}/client/**/*.ts`, { ignoreInitial: true })
   .on('change', (f: string) => queueRebuild('client', f));
 
 bs.watch(`${POSTS_DIR}/**/*.{md,ts}`, { ignoreInitial: true })
-  .on('change', (f: string) => queueRebuild('full', f));
-
-bs.watch(`${PROMPTS_DIR}/**/*.md`, { ignoreInitial: true })
   .on('change', (f: string) => queueRebuild('full', f));
 
 bs.watch(`${PUBLIC_DIR}/**/*`, { ignoreInitial: true })

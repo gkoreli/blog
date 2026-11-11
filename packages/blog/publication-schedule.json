@@ -6,8 +6,7 @@
   "articles": [
     {
       "date": "2026-11-07",
-      "file": "043-cloudflare-turnstile-signup-failures.md",
-      "prompts": true
+      "file": "043-cloudflare-turnstile-signup-failures.md"
     }
   ]
 }

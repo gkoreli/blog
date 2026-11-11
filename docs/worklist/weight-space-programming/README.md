@@ -113,4 +113,4 @@ Completed: original announcement read; primary post and release inspected; upstr
 
 Remaining for a publishable engineering investigation: independent model execution, decoding controls, a broader regression check, current source/PR recheck, and Goga's actual predictions and judgments. These are proposed follow-up work, not missing acceptance checks for this initial research request. Next bounded action is the CPU patch rebuild and hash verification, followed by a costed evaluation plan.
 
-The [original research request](initial.prompt.md) is preserved verbatim. Future collaborative engineering drafting should carry materially shaping prompts into the article's provenance; no article prompt page exists yet. No research-footprint total has been measured or claimed.
+The [original research request](../../adr/0003-prompt-transparency.md#withdrawn-records) is preserved verbatim. Future collaborative engineering drafting should carry materially shaping prompts into the article's provenance; no article prompt page exists yet. No research-footprint total has been measured or claimed.

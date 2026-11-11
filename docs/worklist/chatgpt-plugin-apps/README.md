@@ -11,8 +11,8 @@ Started September 29, 2026, Pacific time. Status: article and approved process f
 - [Claim ledger](claims.md)
 - [Three questions, prior art, and editorial review](prior-art-and-editorial-review.md)
 - [Release, adoption, and founder opportunity](release-and-founder-assessment.md)
-- [Complete article shaping prompts](../../../packages/blog/prompts/chatgpt-plugin-apps.prompts.md)
-- [Original research requests](source.prompts.md)
+- [Complete article shaping prompts](../../adr/0003-prompt-transparency.md#withdrawn-records)
+- [Original research requests](../../adr/0003-prompt-transparency.md#withdrawn-records)
 
 ## Purpose and form
 
@@ -53,7 +53,7 @@ Relationship: the ownership comparison links to `/bring-your-own-ai-agent`. No c
 
 ## October 3 promotion
 
-Owner direction: develop a real article that Goga can read to learn and get excited about opportunities in the news. The full message is preserved in the [canonical prompt record](../../../packages/blog/prompts/chatgpt-plugin-apps.prompts.md).
+Owner direction: develop a real article that Goga can read to learn and get excited about opportunities in the news. The full message is preserved in the [canonical prompt record](../../adr/0003-prompt-transparency.md#withdrawn-records).
 
 Title: **ChatGPT Plugins: What Becomes Worth Building Inside the Conversation?** Slug: `chatgpt-plugin-apps`; publication date: October 3, 2026 UTC. Reader payoff: distinguish plugin shapes, understand operations on a mounted app, see how context and version-checked saving support useful interfaces, and evaluate two concrete product probes. Reader language and plausible queries: ChatGPT plugin apps, building apps inside ChatGPT, MCP app file editors. These are positioning hypotheses, not measured search demand.
 

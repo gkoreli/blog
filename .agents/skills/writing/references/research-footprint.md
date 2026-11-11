@@ -2,7 +2,7 @@
 
 Read only when measuring, freezing, publishing, or auditing a research footprint. The scripts own extraction; this reference owns the accounting contract.
 
-Research-heavy collaborative posts may publish a `researchFootprint` beside their raw prompts. This is provenance, not a quality badge. The compact article header may show the measured token total; the transparency page must show human prompts, sessions, committed artifacts, wall-clock window, token breakdown, methodology, limitations, and the public research directory.
+Research-heavy collaborative posts may publish a `researchFootprint` section on the article. This is provenance, not a quality badge. Show sessions, committed artifacts, wall-clock window, token breakdown, methodology, limitations, and the public research directory. Raw prompts stay private; a footprint does not authorize their publication. Keep frozen historical totals intact.
 
 Use `packages/blog/scripts/research-footprint.ts` for Codex cumulative logs and for Claude Code transcripts (`--claude-transcript <~/.claude/projects/<project>/<sessionId>.jsonl>`; the script includes that session's `subagents/agent-*.jsonl` logs itself, counts one usage per API `message.id` because Claude Code repeats a message's usage on every content-block record, and reads reasoning from `output_tokens_details.thinking_tokens`). Use `packages/blog/scripts/omp-research-footprint.ts` for OMP per-response logs. Shared types, schemas and helpers live in `packages/blog/scripts/research-footprint.models.ts`. Never hand-count sessions or mix cumulative and per-response usage models, and do not write a new footprint script for a log format the existing ones already read.
 
@@ -14,7 +14,7 @@ Deterministic rule:
 4. For each included session, read every valid `event_msg` whose payload type is `token_count` and use only cumulative `info.total_token_usage` objects. Partition the records into monotonic epochs whenever `total_tokens` decreases, which can happen after compaction or a counter reset. Select the final cumulative object from each epoch. Never sum `last_token_usage` records or every cumulative record.
 5. Verify every selected epoch: `total_tokens = input_tokens + output_tokens`; `cached_input_tokens <= input_tokens`; `reasoning_output_tokens <= output_tokens`. Record each reset and epoch boundary; a no-reset session has one epoch and remains equivalent to selecting its final cumulative record.
 6. Sum the selected epoch-end cumulative fields within each session, then sum each session once across the included tree. Cached input is a subset of input, and reasoning output is a subset of output; neither is added again to total. Derive non-cached input as `input - cached input`.
-7. Count prompts with the same `---` delimiter rule as `parsePrompts()`. Report both Markdown files present in the declared research directory and files present in `HEAD`. Copy the committed count into public frontmatter only when both counts match; otherwise the provenance set is not yet releasable.
+7. When reproducing historical prompt accounting, count the private record with a `---` line delimiter. Report both Markdown files present in the declared research directory and files present in `HEAD`. Copy the committed count into public frontmatter only when both counts match; otherwise the provenance set is not yet releasable.
 8. Define `startedAt` from the root session metadata (the earliest included start for multiple sources), `measuredAt` as the latest selected usage event, and wall-clock minutes as the ceiling of that interval. Wall-clock time is not human hands-on time.
 9. Freeze immediately before the release commit. The script emits every included session ID, parent ID, agent path, selected epoch-end lines and values, reset count, and SHA-256 commitments to the log prefixes through those records. Save that manifest in the research artifact before copying totals into frontmatter.
 10. If work ran outside the root thread tree—for example an independent `codex exec` process or an automatic guardian session whose metadata has no parent-thread link—include it only through an explicit additional `--root-thread` supported by the existing extractor, with task or launch evidence connecting it to the article. The extractor rejects overlapping root closures. Disclose every such inclusion or known exclusion; never infer ownership from timestamp or working directory. Reusing a published source does not automatically import its sessions.
@@ -35,14 +35,14 @@ Example:
 pnpm -C packages/blog exec tsx scripts/research-footprint.ts \
   --root-thread <root-thread-id> \
   --research-dir drafts/research/<article> \
-  --prompts-file prompts/<slug>.prompts.md
+  --prompts-file worklog/private/<slug>.prompts.md
 ```
 
 ```bash
 pnpm -C packages/blog exec tsx scripts/omp-research-footprint.ts \
   --root-log <root-session.jsonl> \
   --research-dir drafts/research/<article> \
-  --prompts-file prompts/<slug>.prompts.md \
+  --prompts-file worklog/private/<slug>.prompts.md \
   --artifacts-file drafts/research/<article>/artifacts.txt \
   --output drafts/research/<article>/research-footprint.json
 ```

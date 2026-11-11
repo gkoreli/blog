@@ -24,7 +24,6 @@ export function HomeSectionBlock({ section, posts, maxPosts = 2 }: {
       <div class="home-section-post-title">${p.title}</div>
       <div class="home-section-post-meta">
         <time datetime="${p.date}">${formatDateLong(p.date)}</time>
-        ${p.promptCount ? html`<span> · ${p.promptCount} prompts</span>` : ''}
       </div>
       ${p.description ? html`<div class="home-section-post-desc">${p.description}</div>` : ''}
     </a>`)}

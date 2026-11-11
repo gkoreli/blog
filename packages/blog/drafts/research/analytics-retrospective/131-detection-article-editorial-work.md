@@ -11,7 +11,7 @@ bookkeeping. See the [article disposition register](../../README.md).
 
 ## Historical record
 
-November 5, 2026 Pacific / November 6 UTC. Article track for the ten-hour research and engineering effort. [Draft](../../../posts/044-please-stop-misreading-user-agent.md), [selected shaping prompts](../../../prompts/please-stop-misreading-user-agent.prompts.md), [fresh baseline](127-current-unidentified-and-unsigned-traffic.md). This record owns article shape, claims and revisions; runtime engineering, the ADR and production acceptance remain in their owning records.
+November 5, 2026 Pacific / November 6 UTC. Article track for the ten-hour research and engineering effort. [Draft](../../../posts/044-please-stop-misreading-user-agent.md), [selected shaping prompts](../../../../../docs/adr/0003-prompt-transparency.md#withdrawn-records), [fresh baseline](127-current-unidentified-and-unsigned-traffic.md). This record owns article shape, claims and revisions; runtime engineering, the ADR and production acceptance remain in their owning records.
 
 ## Shape and scope
 

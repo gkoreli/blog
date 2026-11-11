@@ -29,4 +29,4 @@ Compare current primary standards/provider documentation and pinned open-source 
 
 This task authorizes research and a concrete engineering recommendation. It does not by itself add visitor tracking, gate reading, configure WAF rules, alter billing, perform production probes, or open suspicious destinations.
 
-Evidence: [guarantees, pinned prior art, and acceptance plan](../../packages/blog/drafts/research/referral-defense-guarantees/00-evidence-and-options.md); [complete research prompt](../../packages/blog/drafts/research/referral-defense-guarantees/source.prompts.md). This continuation is outside article 025's frozen research measurement.
+Evidence: [guarantees, pinned prior art, and acceptance plan](../../packages/blog/drafts/research/referral-defense-guarantees/00-evidence-and-options.md); [complete research prompt](../adr/0003-prompt-transparency.md#withdrawn-records). This continuation is outside article 025's frozen research measurement.

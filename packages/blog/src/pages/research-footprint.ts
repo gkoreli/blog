@@ -1,27 +1,16 @@
 import { html } from '@nisli/core';
-import type { PostMeta, PromptsData } from '../lib/frontmatter.js';
+import type { PostMeta } from '../lib/frontmatter.js';
 
-export function promptsPage(meta: PostMeta, prompts: PromptsData) {
+export function researchFootprint(meta: PostMeta) {
   const footprint = meta.researchFootprint;
-  return html`<article>
-  <header class="post-header">
-    <a href="/${meta.slug}" class="prompts-back">← Back to article</a>
-    <h1>Thoughts by human, co-written by AI</h1>
-    <p class="prompts-subtitle">${prompts.count} prompt${prompts.count === 1 ? '' : 's'} that shaped
-      <a href="/${meta.slug}">"${meta.title}"</a></p>
-  </header>
-  <div class="post-content">
-    <p class="prompts-intro">These are the raw, unedited notes I wrote while shaping this article.
-    They are closer to a brain dump than a prompt library: my thinking, philosophy, corrections,
-    and direction. The ideas are mine. AI helped turn them into a smoother, more readable essay.</p>
-    ${footprint ? html`
+  if (!footprint) return '';
+  return html`
     <section class="research-footprint" id="research-footprint" aria-labelledby="research-footprint-title">
       <div class="research-footprint-heading">
         <h2 id="research-footprint-title">Research footprint</h2>
         <a href="${footprint.provenanceUrl}" target="_blank" rel="noopener">Open the evidence artifacts ↗</a>
       </div>
       <div class="research-footprint-stats">
-        <div><strong>${prompts.count}</strong><span>human prompts</span></div>
         <div><strong>${footprint.sessions}</strong><span>agent sessions</span></div>
         <div><strong>${footprint.artifacts}</strong><span>committed artifacts</span></div>
         <div><strong>${compactTokenCount(footprint.totalTokens)}</strong><span>tokens processed</span></div>
@@ -35,14 +24,7 @@ export function promptsPage(meta: PostMeta, prompts: PromptsData) {
       are already included in output. Elapsed time includes gaps between sessions and does not measure human hands-on work.</p>
       <p class="research-footprint-note">This is a provenance measure, not a quality score, cost estimate, or environmental-impact estimate.
       Token counts come from the private agent sessions identified in the public manifest, which records the log format, included session IDs, selected usage boundaries, and SHA-256 prefix commitments. The author can audit the totals against those logs; readers cannot independently reconstruct them without the private logs. The committed artifacts show the resulting work.</p>
-    </section>` : ''}
-    ${prompts.prompts.map((p, i) => html`
-    <div class="prompt-block">
-      <div class="prompt-label">Prompt ${i + 1}</div>
-      <div class="prompt-text">${p}</div>
-    </div>`)}
-  </div>
-</article>`;
+    </section>`;
 }
 
 function compactTokenCount(tokens: number): string {

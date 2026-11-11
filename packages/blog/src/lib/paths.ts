@@ -25,8 +25,6 @@ export const DIST = join(ROOT, 'dist');
 /** packages/blog/public/ — static assets copied as-is to dist */
 export const PUBLIC_DIR = join(ROOT, 'public');
 
-/** packages/blog/prompts/ — prompt source files */
-export const PROMPTS_DIR = join(ROOT, 'prompts');
 export const STYLES_SRC = join(SRC, 'styles', 'main.css');
 
 /** packages/blog/src/client/main.ts — browser entry point */

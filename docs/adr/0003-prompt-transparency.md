@@ -2,7 +2,21 @@
 
 ## Status
 
-Proposed — 2026-03-05
+Retired — 2026-11-11, at the owner's request to stop publishing prompts across all article forms, including essays.
+
+## Current decision
+
+Do not publish raw author prompts or personal working notes. Remove existing prompt pages, article links, teasers, counts, and discovery entries. Requests to the retired prompt routes return `410 Gone` with `noindex`. Scheduled publication must not promote prompt records.
+
+Keep research methods, code, measurements, sources, authorship disclosures and evidence boundaries where they help readers assess an article. Existing research-footprint measurements remain accessible on the article itself without the raw prompts. Prompt publication is not a condition of credible or useful writing.
+
+## Withdrawn records
+
+The dedicated author-prompt records were removed from the current public branch after their bytes were verified in a private local archive outside Git. Historical links to those files now point here to record their withdrawal; earlier dated descriptions remain historical. Git history, earlier deployments and third-party copies may retain the original material. This change does not rewrite Git history or claim erasure of those copies.
+
+The earlier proposal and implementation record below explain the retired design and are not current publication instructions. Current authorship and source-note rules live in [writing provenance](../../.agents/skills/writing/references/provenance.md).
+
+## Historical proposal — 2026-03-05
 
 ## Context
 

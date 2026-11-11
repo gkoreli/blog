@@ -1,6 +1,6 @@
 # What our blog analytics adds beyond Matomo—and what agent subscriptions need
 
-Research review, September 9 UTC / September 8 PDT, 2026. [Worklist](00-worklist-index.md) · [Exact owner prompts](source.prompts.md). This is a source and implementation comparison, with two small executed checks. It is not a full Matomo deployment benchmark or a published article.
+Research review, September 9 UTC / September 8 PDT, 2026. [Worklist](00-worklist-index.md) · [Exact owner prompts](../../../../../docs/adr/0003-prompt-transparency.md#withdrawn-records). This is a source and implementation comparison, with two small executed checks. It is not a full Matomo deployment benchmark or a published article.
 
 We are rebuilding some established analytics features. Matomo already offers page-transition reporting and server-side collection. Its current documentation also describes dedicated AI-agent and chatbot reports, including Cloudflare integration. A claim that our blog is distinctive simply because it observes agents without browser JavaScript would be wrong. [Matomo AI Chatbots Overview](https://matomo.org/faq/reports/ai-chatbots-overview-report/), [HTTP tracking integration](https://matomo.org/faq/how-to/set-up-ai-chatbot-tracking-with-the-http-tracking-api/).
 

@@ -1,6 +1,6 @@
 # AI site audit: article, tool and limited API
 
-Started November 5, 2026 Pacific / November 6 UTC. The owner requests a substantial article and a tool inspired by the supplied X post, using the existing analytics capability, DDD principles, an ADR and a possible five-to-ten-use free daily API, within three hours. The full human shaping message is in the [prompt record](../../../prompts/ai-site-check-evidence.prompts.md).
+Started November 5, 2026 Pacific / November 6 UTC. The owner requests a substantial article and a tool inspired by the supplied X post, using the existing analytics capability, DDD principles, an ADR and a possible five-to-ten-use free daily API, within three hours. The full human shaping message is in the [prompt record](../../../../../docs/adr/0003-prompt-transparency.md#withdrawn-records).
 
 This is a separate bounded delivery from the concurrent [detection work under TASK-0119](../../../../../docs/tasks/TASK-0119.md). Existing provider measurements are reused with their original conditions; no new detector-accuracy or provider trial is implied.
 
