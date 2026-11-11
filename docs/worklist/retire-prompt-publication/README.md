@@ -32,3 +32,19 @@ Local acceptance passed November 11:
 - Unrelated untracked Ahrefs captures remain untouched.
 
 The requested retirement is complete. No further publication action is required. Earlier Git revisions, preview deployments, third-party copies, and quotations embedded in historical research records may still retain material. This work withdraws the dedicated author-prompt records and public prompt pages; it is not a historical erasure or a repository-wide redaction audit.
+
+## Forward privacy — November 11
+
+The owner selected privacy going forward across all work. Historical cleanup remains undecided; no history rewrite or visibility change is part of this follow-up.
+
+- Added a global Codex default keeping raw source messages and personal working notes private. It routes preservation to approved private storage and requires explicit authorization for publishing specified wording. The active instruction chain includes this default. The global file contains the maintained policy, not copied conversation text.
+- Updated the repository entry point and provenance rules to cover public research artifacts, tasks, commits, issues and PRs as well as article prose. Exact-quotation rules apply only after authorization to publish the specified material.
+- Added ignore rules for dedicated author-prompt records, retired prompt directories and Git history bundles.
+- Added commit and push guards, installed through `pnpm prepare` / the `pnpm install` lifecycle. Push checks inspect every outgoing commit, so adding and then deleting a private record does not make it releasable. Previously public history remains outside this prospective check. The existing synthetic CLI experiment input is retained only when its original bytes match the pinned hash in each checked revision.
+- Added eight disposable-repository integration tests: ordinary ignore behavior, forced staging, intermediate commits, new branches, retained history, unavailable revisions, the pinned synthetic fixture, and preserving existing hooks / isolated source snapshots. All eight pass. Tracked-path inspection, all 34 Markdown metadata checks, the schedule check and the scoped whitespace check pass. No site-rendering or Worker change requires a production rebuild for this follow-up.
+
+The filename checks do not classify private prose in arbitrary files or public messages. Git hooks can be bypassed, new/other clones need hook installation, and custom hook setups need integration. Content review and the privacy instruction remain necessary. These checks do not promise erasure of historical copies or universal prevention of disclosure.
+
+The active checkout now uses `.githooks` through its local Git configuration; the installer reported success and the configured path was read back. All changed Markdown links resolve, instruction diffs preserve author and evidence boundaries, and `AGENTS.md` remains 56 lines. Source delivery is recorded by the accompanying scoped Git commit on main, separately from the earlier Worker deployment and live takedown receipt. Raw source notes remain in private storage; unrelated Ahrefs captures remain untouched.
+
+Next bounded action: preserve this boundary during future work and install the guards in additional checkouts when used. Historical cleanup remains undecided and is not an active task.

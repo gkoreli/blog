@@ -10,6 +10,10 @@ Do not publish raw author prompts or personal working notes. Remove existing pro
 
 Keep research methods, code, measurements, sources, authorship disclosures and evidence boundaries where they help readers assess an article. Existing research-footprint measurements remain accessible on the article itself without the raw prompts. Prompt publication is not a condition of credible or useful writing.
 
+The owner's later November 11 direction focuses on privacy going forward. Goga's raw prompts and personal working notes stay private across all work, including public research notes, tasks, commit messages, issues and PRs. Publishing specified wording requires explicit authorization for that material. No history rewrite is selected.
+
+Ignore rules exclude dedicated author-prompt records and Git bundles. Git commit and push guards installed by `pnpm install` reject those paths, including a file added and deleted between outgoing commits. Existing public history is excluded from this prospective check. The published synthetic CLI reproduction input is retained only with its pinned original bytes; it is not an author transcript. File-path checks do not detect private wording placed inside ordinary prose, screenshots or other arbitrary files, and hooks can be bypassed; human and agent content review remains necessary.
+
 ## Withdrawn records
 
 The dedicated author-prompt records were removed from the current public branch after their bytes were verified in a private local archive outside Git. Historical links to those files now point here to record their withdrawal; earlier dated descriptions remain historical. Git history, earlier deployments and third-party copies may retain the original material. This change does not rewrite Git history or claim erasure of those copies.

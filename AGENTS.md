@@ -20,7 +20,7 @@ People and agents are part of the audience. Count agent reach, agent-mediated us
 
 - In practical articles, teach something useful and show the basis in the author's work. Personal essays follow their experience and form.
 - Do not invent experiences, feelings, measurements, quotations, or a completed outcome.
-- Keep raw shaping prompts and personal working notes private for every article, including essays. Do not publish prompt pages or commit new prompt records. [Prompt publication decision](docs/adr/0003-prompt-transparency.md).
+- Keep Goga's raw prompts and personal working notes private across all work, including essays. Do not copy them into public files, research notes, tasks, commit messages, issues or PRs. [Prompt publication decision](docs/adr/0003-prompt-transparency.md).
 - For Reddit distribution, follow the [pacing and stop conditions](.agents/skills/launch-article-on-x/references/publication-verification.md#reddit-pacing-and-account-restrictions); respect cooldowns and account restrictions.
 
 ## Evidence and continuity

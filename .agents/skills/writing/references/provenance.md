@@ -4,7 +4,7 @@ Use when attributing Goga’s words, protecting private author notes, preparing 
 
 ## Owner quotations
 
-A quotation attributed to Goga in any artifact must reproduce a **complete prompt message exactly**. Check it against the transcript or preserved prompt file. Preserve spelling, punctuation and ellipses; do not trim, splice messages or add context inside the quotation.
+Publish Goga's conversation wording only when he explicitly authorizes publication of that specified message or excerpt. For an authorized quotation, reproduce the **complete prompt message exactly** unless Goga explicitly selected an excerpt. Check against the private transcript or preserved source. Preserve spelling, punctuation and ellipses; do not splice messages or add context inside the quotation. Verifying a quotation does not authorize publishing it.
 
 If only a fragment or unchecked recollection exists, paraphrase without quotation marks and disclose that the exact message was not preserved. Identify passages by location or paraphrase when giving draft feedback. This applies to articles, prompts, ADRs, tasks, research notes, comments and commit messages. Never originate an attributed experience, feeling or opinion.
 
@@ -12,7 +12,9 @@ If only a fragment or unchecked recollection exists, paraphrase without quotatio
 
 Raw shaping prompts and personal working notes stay private for every article form, including collaborative engineering articles, essays and OSS Radar. Do not create or extend public prompt records, copy conversation messages into research artifacts, or generate prompt pages. A request to work on or publish an article does not authorize publishing its working notes. Publish a specified message or excerpt only when Goga explicitly asks for that material to be public.
 
-Keep any necessary local record outside Git, including the ignored `packages/blog/worklog/` directory. Do not reproduce private material in an ADR, task, commit message or handoff. Record the resulting decision in ordinary prose. Preserve existing authorship disclosures and put usable evidence beside its claims.
+When saving source messages, use the approved private writing archive or ignored local `packages/blog/worklog/` storage. Keep them outside this public repository's Git history. This applies across all work, not only article drafting: do not reproduce private messages in an ADR, task, research artifact, commit message, issue, PR or handoff. Record the resulting decision in ordinary prose. Preserve existing authorship disclosures and put usable evidence beside its claims.
+
+The repository's ignore rules and installed Git hooks reject dedicated author-prompt files and archives, including files added and deleted between outgoing commits. They check paths, not the meaning of arbitrary prose. Review staged content and public messages for private wording even when a filename is ordinary; a successful guard check does not authorize disclosure.
 
 [The prompt publication decision](../../../../docs/adr/0003-prompt-transparency.md) records the withdrawal of earlier prompt pages and dedicated public source records. Older Git revisions and third-party copies may retain those records; removal from the current branch is not historical erasure. Private session logs remain outside Git even when their hashes support a public research-footprint record.
 

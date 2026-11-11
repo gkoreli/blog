@@ -4,11 +4,10 @@ Publish one finished article each day from **November 6–30, 2026**, with relea
 attempts starting at **08:00 America/Los_Angeles**. November 5 is already covered
 by [AI Fetchers, Browsers, and Crawlers](https://gkoreli.com/ai-fetcher-browser-crawler-headers).
 
-**Current selection, confirmed November 6:** today's article is already
-published through another builder. The [finished Turnstile article](2026-11-07/043-cloudflare-turnstile-signup-failures.md)
-and [exact prompts](2026-11-07/cloudflare-turnstile-signup-failures.prompts.md)
-are selected for **November 7, 2026 at 08:00 America/Los_Angeles**. No Turnstile
-release is selected for November 6; November 8–30 need approved entries. The
+**Current state, November 11:** the [Turnstile article](../posts/043-cloudflare-turnstile-signup-failures.md)
+selected for November 7 is published. Its author prompts are private under the
+[current publication decision](../../../docs/adr/0003-prompt-transparency.md).
+No Turnstile release was selected for November 6; November 8–30 need approved entries. The
 [publication worklist](../../../docs/worklist/november-daily-publication/README.md)
 records the date correction, accepted preparation and remaining live checks.
 

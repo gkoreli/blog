@@ -6,6 +6,15 @@ dist/
 *.tsbuildinfo
 .wrangler/
 packages/blog/worklog/
+# Author prompts belong in private storage, including when a retired path returns.
+docs/prompts/
+packages/blog/prompts/
+packages/blog/drafts/prompts/
+*.prompt.md
+*.prompts.md
+owner-prompt.md
+*-author-prompts.md
+*.bundle
 .env
 .env.local
 .dev.vars

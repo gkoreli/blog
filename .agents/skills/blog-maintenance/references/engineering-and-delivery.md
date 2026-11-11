@@ -6,5 +6,6 @@
 - Keep dependencies and infrastructure proportionate to the publication. The `blog-analytics` D1 binding serves analytics, newsletter state, and client-error reports; do not assume each package has a separate database.
 - Preserve complete readable HTML without client JavaScript. Add interactivity through `@nisli/core` components.
 - Use the repository's personal Git identity and configured credentials. Do not replace them with global work-account settings.
+- `pnpm install` installs the private-prompt commit and push guards through `prepare`; run `pnpm prepare` for an existing checkout. Preserve existing custom Git hooks and integrate these checks if the installer reports them. `pnpm check:private-prompts` checks tracked paths. These guards reject dedicated author-prompt files and archives, not private prose under arbitrary filenames; review the actual staged content and follow [provenance](../../writing/references/provenance.md) for every public surface.
 - Run relevant checks, then commit and push scoped changes directly to `main`. Create a PR only when requested. Preserve concurrent changes and use an isolated checkout when needed.
 - Publish after factual and functional checks pass; avoid indefinite cosmetic revisions. Cross-posts must use a canonical URL pointing to `gkoreli.com`.

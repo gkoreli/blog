@@ -9,6 +9,8 @@
     "node": ">=24 <25"
   },
   "scripts": {
+    "prepare": "node scripts/install-git-hooks.mjs",
+    "check:private-prompts": "node scripts/check-private-prompts.mjs tracked",
     "dev": "pnpm -C packages/blog dev",
     "build": "pnpm -C packages/blog build",
     "serve": "pnpm -C packages/blog serve",

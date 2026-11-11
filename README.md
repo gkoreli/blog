@@ -60,6 +60,8 @@ packages/blog/
 
 Raw author prompts and personal working notes are private. Public prompt pages have been retired; see [the prompt publication decision](docs/adr/0003-prompt-transparency.md).
 
+`pnpm install` installs Git commit and push guards for author-prompt files and private archives. Use `pnpm prepare` in an existing checkout and `pnpm check:private-prompts` to inspect tracked paths. Push checks include intermediate commits, so adding a prompt and deleting it before pushing is rejected. These are file-path checks, not a classifier of private prose; review staged content and public messages too. Existing custom hooks are preserved and require integrating the checks.
+
 ## Project guidance
 
 [AGENTS.md](AGENTS.md) holds shared repository constraints. Agents discover task-specific guidance in `.agents/skills/`; [project decisions](docs/reference/project-decisions.md) route to the relevant ADRs. The [instruction migration record](docs/editorial/2026-09-28-instruction-migration.md) preserves the locations of the accumulated guidance.
