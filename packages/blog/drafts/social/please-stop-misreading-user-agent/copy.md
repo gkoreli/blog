@@ -1,6 +1,6 @@
 # X launch copy
 
-Prepared November 11, 2026, America/Los_Angeles. **Draft; not posted.** One text post with the canonical article link. No media or thread is in scope. Composer and live X checks have not occurred.
+Prepared and published November 11, 2026, America/Los_Angeles. **Published:** [X post](https://x.com/GogaKoreli/status/2120531937656000711). The approved copy below was posted unchanged as one original post from @GogaKoreli. The composer showed nine characters remaining; the live post displays the article card. No uploaded media or thread was added. [Publication verification](metrics.md).
 
 ## Post — 271/280 weighted characters
 
@@ -22,3 +22,7 @@ https://gkoreli.com/please-stop-misreading-user-agent
 The complete material user instruction for this social copy is preserved below; this distribution work is separate from the article's released twenty-prompt record.
 
 > lets prepare an X post for this article, start with the 36 out of 100 requests claiming to be Googlebot and explain why it matters in human terms
+
+The complete publication authorization was:
+
+> post it
