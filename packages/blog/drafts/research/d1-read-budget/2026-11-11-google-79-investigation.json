@@ -1,0 +1,111 @@
+{
+  "datePacific": "2026-11-11",
+  "parentComparison": "2026-11-11-google-comparison.json",
+  "cohort": {
+    "observations": 79,
+    "pacificDates": 32,
+    "sourceWindow": [
+      "2026-08-10",
+      "2026-11-09"
+    ],
+    "webTextClicksOnSelectedDates": 0,
+    "byStoredReason": {
+      "beacon-script-ran": 4,
+      "user-agent-only": 3,
+      "navigation-shaped": 39,
+      "navigation-shaped-network-unlisted": 33
+    },
+    "byFetchSite": {
+      "cross-site": 43,
+      "none": 29,
+      "not-recorded": 7
+    },
+    "distinctDailyProfiles": 68,
+    "requestEvidenceRecords": 0,
+    "classificationEvidenceRecords": 33,
+    "retainedDiagnosticRecords": 0
+  },
+  "provenance": {
+    "savedControlCandidateFilesReviewed": 341,
+    "exactTestObservationIdMatches": 0,
+    "knownControlsExcluded": {
+      "october30Calibration": 12,
+      "november6DetectionControls": 6
+    },
+    "unmarkedHistoricalTestsRuledOut": false,
+    "authenticGoogleArrivalsEstablished": false,
+    "automationEstablishedForIndividualRows": false
+  },
+  "patterns": {
+    "sameSecondSamePathPairs": 3,
+    "pairsWithDifferentDailyIds": 3,
+    "byteIdenticalRowsApartFromId": 0,
+    "september7BotArticleEvents": 19,
+    "recentHomepageChromiumEventsWithoutActivation": 20,
+    "patternClaims": "These are leads, not verified operator or automation labels."
+  },
+  "localBrowserControl": {
+    "siteRequests": 0,
+    "sourceClicks": 1,
+    "targetRequests": 2,
+    "mechanism": "Cross-site navigation, then browser reload",
+    "sameExternalReferrer": true,
+    "fetchSiteOnBoth": "cross-site",
+    "reloadCacheControl": "max-age=0",
+    "scope": "Agent-operated in-app browser using two loopback hostnames. Does not establish the cause of any historical row. The initial single-threaded test server blocked a second connection; the corrected threaded run supplied both observations."
+  },
+  "classificationReplay": {
+    "scope": "Reapply current rules to the recorded declaration category and request facts only; unavailable raw User-Agent is not reconstructed. This checks rule agreement, not true operator identity.",
+    "recordedRows": 33,
+    "currentRuleBrowserMatches": 33,
+    "unreplayableEarlierRows": 46
+  },
+  "checks": {
+    "nativeCohortCases": 7,
+    "focusedContractTestsPassed": 7,
+    "cohortRowsRead": 42063,
+    "diagnosticRowsRead": 158,
+    "rowsWritten": 0,
+    "cohortReadReviewThreshold": 200000,
+    "diagnosticReadReviewThreshold": 500,
+    "classifierBundleSha256": "0bb7593aeaebd8a5952a23643a4b263448d2454509cf6671be781ceb87d43384",
+    "cohortSqlSha256": "447e11028d863ab70fbd6b266ef04754ae74a7cfdf67fde6d255109106c9e466"
+  },
+  "conclusion": {
+    "countingDefectDemonstrated": false,
+    "runtimeChange": false,
+    "historicalRowsChanged": false,
+    "attributionStatus": "The current counter reports request/page observations with supplied referrer evidence. This cohort cannot be authenticated as search clicks or exhaustively divided into own tests, automation and genuine Google arrivals."
+  },
+  "sources": [
+    {
+      "url": "https://support.google.com/webmasters/answer/7576553?hl=en",
+      "supports": "Search clicks and Web text search type are scoped Google-side metrics."
+    },
+    {
+      "url": "https://support.google.com/webmasters/answer/17010575?hl=en",
+      "supports": "Privacy removes rare query rows, while unfiltered chart totals include anonymized queries; time boundaries matter."
+    },
+    {
+      "url": "https://support.google.com/webmasters/answer/17011364",
+      "supports": "Property-level click deduplication differs from counting destination requests."
+    },
+    {
+      "url": "https://html.spec.whatwg.org/multipage/browsing-the-web.html",
+      "supports": "Session history stores request referrer and reuses it when fetching a history entry."
+    },
+    {
+      "url": "https://www.w3.org/TR/fetch-metadata/",
+      "supports": "Fetch Metadata describes request context; none is a user-agent-initiated context, not a bot label."
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc9110.html#section-10.1.3",
+      "supports": "Referer describes the source URI and can be omitted or minimized."
+    },
+    {
+      "url": "https://curl.se/docs/manpage.html#-e",
+      "supports": "A non-browser HTTP client can choose the Referer field."
+    }
+  ],
+  "sourceCommitInspected": "86d099fb0ddb1f04cdf6fdae8a55b9ede6f79f76"
+}

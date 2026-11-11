@@ -2,6 +2,8 @@
 
 November 11, 2026, Pacific time. This continues the [public-stats availability investigation](05-public-stats-503-2026-11-10.md). It does not reopen the completed September read-budget task. [Aggregate receipt](2026-11-11-google-comparison.json).
 
+**Later row-level investigation:** [the 79 zero-click-date observations](07-zero-click-google-referrer-investigation-2026-11-11.md) have no retained diagnostic headers or exact match to an inspected saved test receipt. Current rules agree on all 33 records with retained declaration evidence. A local browser click/reload preserves the same external referrer across two requests; zero-click dates alone do not demonstrate a defect. Counts below remain unchanged.
+
 ## Availability observed
 
 An earlier unmarked request to `/api/stats?range=90d&traffic=browser` returned HTTP 503. Its response headers and Worker event were not retained, so its failure layer and cause remain unknown. No persistent selector failure is reproduced in this continuation, and no runtime change is made or credited with recovery.
