@@ -21,7 +21,7 @@ Work from the actual subject, intended reader and evidence. For a small prose ed
 | Research, write or review OSS Radar | [OSS research](references/oss-research.md) |
 | Write titles, metadata, openings, series or contextual links | [Headlines and discovery](references/headlines-and-discovery.md) |
 | Polish prose, documentation, PRs, release notes or casual copy | [Prose and messages](references/prose-and-messages.md) |
-| Attribute Goga’s words, protect private notes or publish source notes | [Provenance](references/provenance.md) |
+| Save writing prompts privately, attribute Goga’s words or publish source notes | [Provenance](references/provenance.md) |
 | Measure or freeze research usage | [Research footprint](references/research-footprint.md) |
 | Prepare publication, distribution or learn from performance | [Publication and learning](references/publication-and-learning.md) |
 | Build a custom TypeScript article | [TypeScript articles](references/typescript-articles.md) |
@@ -29,6 +29,7 @@ Work from the actual subject, intended reader and evidence. For a small prose ed
 ## Preserve authorship and scope
 
 - Do not invent Goga’s experiences, feelings, intentions, judgments, quotations or completed outcomes. Supplied uncertainty and deliberate voice can be part of the work.
+- Preserve Goga's complete writing prompts in the approved private writing archive as work progresses, including essay prompts and shared editorial decisions. Associate them with the article or topic and sync scoped captures before handing work back; follow [provenance](references/provenance.md). Privacy does not mean stopping preservation.
 - Exposed essays are author-written: give editorial feedback without drafting replacement prose. They have no custom animated preamble. Raw shaping prompts and personal working notes stay private for all article forms, including essays, collaborative engineering articles and OSS Radar. Do not create public prompt records or pages.
 - Practical articles should teach something independently useful through Goga’s inspectable work and judgment. Give reader value and author-present substance roughly equal weight as an editorial judgment, never a word-count quota. Do not impose that form on an essay, poem or narrow reference.
 - Choose the form that fits the actual experience. Past lessons, unresolved questions and future intentions may coexist. An inquiry need not end in a verdict; a resolved result need not be made uncertain.
