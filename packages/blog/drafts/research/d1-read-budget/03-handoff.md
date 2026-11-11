@@ -6,7 +6,7 @@
 
 **November 10 continuation:** a separate [public-stats SQL incident](05-public-stats-503-2026-11-10.md) records the new production 503, reproduced engine regression and transactional workaround. Recovery is accepted for the reported seven-day/all-audience endpoint: 200 MISS → identical HIT, one 839,029-read/zero-write calculation, and durable private evidence. The September read-budget repair below remains completed; its historical successful report does not establish present health.
 
-**November 11 performance follow-up:** [Cold report engineering](06-cold-report-performance-2026-11-11.md) owns the new latency investigation and plan. The availability incident remains complete; fast cache hits do not establish fast report generation.
+**November 11 performance delivery:** [Cold report engineering](06-cold-report-performance-2026-11-11.md) records the deployed versioned facts, two-statement complete reports, covering reads and bounded background cache publication. Final seven-day / 30-day SQL is 133.2 / 612.5 ms with zero report writes; Worker wall time is 684 / 965 ms. Client cold samples are 1.10 / 1.29 seconds, so the original sub-second client target is not consistently met. Exact source/version, all failed gates, private evidence and the next bounded latency profile are preserved there. The availability incident remains complete.
 
 Resume here after the break. This checkpoint records completed work and open questions; it does not require an agent to remain running. [Decision](../../../../../docs/adr/0016.7-budget-d1-reads-and-cache-public-reports.md), [current production acceptance](02-recovery.md), [task](../../../../../docs/tasks/TASK-0131-d1-analytics-read-budget.md).
 

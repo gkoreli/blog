@@ -1,6 +1,6 @@
 # Cold public report performance
 
-November 11, 2026 Pacific. Engineering follow-up to the completed [D1 availability repair](05-public-stats-503-2026-11-10.md). Status: in progress; implementation and production acceptance are pending.
+November 11, 2026 Pacific. Engineering follow-up to the completed [D1 availability repair](05-public-stats-503-2026-11-10.md). Status: implementation delivered and measured; correctness, cost and server-generation checks are complete. The original sub-second client target is not consistently met on the verification routes.
 
 ## Evidence and architectural question
 
@@ -27,7 +27,7 @@ A local D1 baseline over 4,500 synthetic events takes about 1.1 seconds end to e
 - [Fowler on CQRS](https://martinfowler.com/bliki/CQRS.html): separate read/write models where beneficial within a bounded context; complexity must earn its place.
 - [Materialized View pattern](https://learn.microsoft.com/en-us/azure/architecture/patterns/materialized-view): persisted projections need rebuild, refresh, consistency and freshness policies.
 
-Private profiling files and the frozen reference currently reside under `/private/tmp/gkoreli-stats-performance-*`; archive durable evidence before handoff. No raw author messages belong in this record.
+Private profiling files initially reside under `/private/tmp/gkoreli-stats-*`; durable copies and reproduction conditions are now in the ignored `packages/blog/worklog/operations/stats-performance-20261111/` archive. The final production record commits to its manifest. No raw author messages belong in this record.
 
 
 ## Chosen implementation and local acceptance
@@ -159,3 +159,40 @@ The permitted DFW 30-day pair is **1,273.0 ms MISS / 110.4 ms HIT**, **471.8495 
 The final delivery correction budgets optional cache lookup at 250 ms and defers cache publication through `waitUntil`, with a 1,000-ms best-effort publication/coalescing budget. It adds separate stage telemetry and retains complete reports, existing expiry/key/privacy rules and strict primary-database behavior. This addresses an unbounded optional dependency visible in source; it does not assign an unsupported cause to the unmetered YYZ delay or claim control over external networking.
 
 Checks pass: **448 site tests**, including never-settling lookup/publication, late-body release, background coalescing and capacity recovery; workspace types; fresh-schema/minimal-Worker portability; isolated 45-post public-variable build and Worker dry-run. SQL is unchanged from the previously checked 458 analytics tests / 66 native exact comparisons. Activate namespace `2026-11-11.6`, verify exact source/version, and use the supervised stats-log/rejected-range control before the final seven-day then 30-day pairs under the same latency/read targets.
+
+
+### Final measurement boundary
+
+The cache-budget source `8c4ff039` is directly activated as Worker `95e7dc4b-3f23-433c-b666-bf2ad347981d`; the native build of the same commit subsequently activates `bf267c7e-a166-46c9-bc97-a96cc2f2d65e` (build `bf0c9b86-4eaa-4c39-94c6-ee3fd2ed0eba`). Native source/build/version are joined from the dashboard log and deployment metadata.
+
+On the direct release, seven-day server wall time is 726 ms, SQL 286.7812 ms, binding 617 ms, lookup 44 ms and background publication 43 ms; the client miss is 1,142.0 ms. Its HIT takes 121 ms server-side but 1,044.1 ms client-side. On the native release, seven-day server wall time is 684 ms, SQL 133.2275 ms, binding 431 ms, lookup 172 ms and background publication 45 ms; the client miss is 1,102.4 ms. Its HIT takes 21 ms server-side but 835.1 ms client-side. Each calculation reads 124,196 rows, writes zero, uses two statements once and requires no fallback; each repeat is byte-identical. Thus the original sub-second **client** target is not consistently met on these routes, including the warm controls, despite the measured server improvement.
+
+Two asset-only network controls return 316.5 ms over IPv4 and 318.4 ms over IPv6, so a stable address-family explanation is not established. Do not choose an address family to conceal the slower captures. No database is touched by these controls.
+
+Given the measured external transit/binding variation, permit one final native-release **30-day server-profile diagnostic** under the unchanged 2,000,000-read ceiling. Keep client latency, Worker wall time, database SQL/binding time and optional-cache operation timings separate, and keep the original client target flag explicit. This is a measurement-method refinement, not a claim that a missed target passed. No further source redesign is justified solely by latency outside the Worker; a fixed client route is needed before assigning such delay to application code.
+
+
+## Delivered state and remaining latency limit
+
+[Final production record](2026-11-11-production-performance.json) joins source **`8c4ff039d8cbe42f6d38d210f77d1ade2861306c`**, native build **`bf0c9b86-4eaa-4c39-94c6-ee3fd2ed0eba`**, and 100%-activated Worker **`bf267c7e-a166-46c9-bc97-a96cc2f2d65e`**. The native build uses Node 24.22.1 / pnpm 9.15.4 and builds 45 posts; local checks use pinned Node 24.14.1. The native release contains the same cache-budget source as the earlier directly tagged deployment; they are separate version receipts.
+
+| Final native sample | 7-day/all, EWR | 30-day/all, DFW |
+|---|---:|---:|
+| Client MISS / HIT | 1,102.4 / 835.1 ms | 1,287.4 / 395.5 ms |
+| Worker MISS wall, including background publication | 684 ms | 965 ms |
+| Worker HIT wall | 21 ms | 19 ms |
+| SQL / binding wall | 133.2275 / 431 ms | 612.4931 / 888 ms |
+| D1 reads / writes | 124,196 / 0 | 378,657 / 0 |
+| Lookup / background publication | 172 / 45 ms | 15 / 31 ms |
+
+Each marked pair has one complete two-statement calculation, one byte-identical HIT on the same connection, unchanged calculation/expiry time, complete row meters, one returned attempt per statement, no source fallback and no exceptions. Rejected-range controls demonstrate the supervised stats-log stream before each pair without database work. Private Ray/marker correlation verifies the exact requests. All owned live-tail processes are stopped.
+
+The read model, index-only coverage, prefiltered charts and bounded optional cache ports are delivered. Counts, historical interpretations, exact daily-client sets, live owner/publication policies, source fallback and the one-hour/midnight freshness cap remain intact. No retained source values were changed by the rebuilds. The earlier availability incident and Google-referrer investigations are not reopened.
+
+The original **sub-second client response target remains a measured limit**, not a passed gate. Server wall time is below one second in both final samples, but neither final cold client sample meets it; the warm controls also contain substantial outside-Worker delay. No universal region/network SLA or specific provider cause is established. Wider live filters/ranges are unmeasured; native differential checks cover them. Projection failure can be slower through the correct complete-source fallback.
+
+The next bounded action, if a strict client-latency target is required, is a fixed-route browser/network and binding-latency profile using these saved stage receipts. Do not repeat a production filter grid or add infrastructure solely to explain delay outside the measured application stages. Further rollups, replication or placement changes remain proposals requiring their own consistency/privacy and cost evidence.
+
+Local acceptance is **458 analytics tests, 448 site tests**, workspace typechecks, validation, fresh-schema/minimal-Worker portability, 66 exact native comparisons over 211 mixed events, isolated 45-post build and Worker dry-run. Meaningful failure tests cover source invalidation, missing/stale facts, policy changes, acknowledged-write preservation, hanging lookup/publication, late-body release, coalescing and capacity recovery. Raw captures and private headers remain in the ignored durable operations archive; its manifest commitment is recorded in the production JSON.
+
+The frozen private archive contains **608 files / 4,651,371 bytes**; manifest SHA-256 **`602c498e6b90fdb5bdc46d431baefda043076a305602b0353f0e7abcc457ea1f`**. Every file hash/size and private mode is verified before handoff. Wrangler debug logs, credentials/dependencies and local D1 state are excluded. The original code reference, native binary/lock hashes, complete checks, build/source/version joins, rebuild cursors, successful and failed transport captures, and final marked traces are retained privately.

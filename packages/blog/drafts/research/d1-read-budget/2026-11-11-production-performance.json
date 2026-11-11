@@ -1,0 +1,261 @@
+{
+  "measuredOn": "2026-11-11",
+  "implementationSource": "8c4ff039d8cbe42f6d38d210f77d1ade2861306c",
+  "nativeBuild": "bf0c9b86-4eaa-4c39-94c6-ee3fd2ed0eba",
+  "workerVersion": "bf267c7e-a166-46c9-bc97-a96cc2f2d65e",
+  "trafficPercent": 100,
+  "nativeBuildRuntime": {
+    "node": "24.22.1",
+    "pnpm": "9.15.4"
+  },
+  "localCheckRuntime": {
+    "node": "24.14.1",
+    "workerd": "1.20261108.1"
+  },
+  "cacheNamespace": "2026-11-11.6",
+  "evidenceRuleSha256": "2ca641b0fed3defaeb8bcc0556ec88a47abda3a7a8d4918655269007978569d2",
+  "referralRuleSha256": "34afd432d3a220c94317f3ed9597170ce6f73045da2c08d5ed950fae4f6f9609",
+  "checks": {
+    "analyticsTests": 458,
+    "siteTests": 448,
+    "nativeExactComparisons": 66,
+    "nativeSyntheticRows": 211,
+    "types": true,
+    "freshSchemaAndMinimalWorker": true,
+    "builtPosts": 45,
+    "workerDryRun": true
+  },
+  "delivery": {
+    "index0017": {
+      "method": "isolated migration",
+      "index": "is_owner, observed_at"
+    },
+    "networkProjection0018": {
+      "fixedRows": 9902,
+      "fixedReads": 106509,
+      "fixedWrites": 9902,
+      "tailReads": 36,
+      "tailWrites": 4
+    },
+    "evidenceFacts0019": {
+      "fixedThroughId": 42040,
+      "fixedRows": 42039,
+      "rebuildReads": 1376909,
+      "rebuildWritesIncludingIndex": 84078,
+      "coverageMissing": 0,
+      "coverageReads": 84078
+    },
+    "referralFacts0020": {
+      "fixedThroughId": 42040,
+      "fixedRows": 42039,
+      "rebuildReads": 367925,
+      "rebuildWrites": 42039,
+      "coverageMissing": 0,
+      "coverageReads": 84079,
+      "cutoverRows": 9,
+      "alreadyForwardProjectedBeforeTail": 4,
+      "tailEvidenceReads": 23,
+      "tailEvidenceWrites": 0,
+      "tailReferralReads": 2385,
+      "tailReferralWrites": 5,
+      "tailFinalMissing": 0
+    },
+    "coreIndex0021": {
+      "creationReads": 90182,
+      "creationWrites": 42028,
+      "creationSqlMs": 452.8327,
+      "productionPlanReads": 0,
+      "productionPlanWrites": 0,
+      "coveringPlansVerified": true
+    },
+    "sourceValuesChangedByRebuilds": 0,
+    "migrationCounterLimit": "Migration/ledger and optimization commands do not expose complete row counters; metered creation/rebuild/control costs are separate."
+  },
+  "measurements": [
+    {
+      "range": "7d",
+      "traffic": "all",
+      "completedAt": "2026-11-11T17:23:02.659332+00:00",
+      "colo": "EWR",
+      "client": {
+        "missSeconds": 1.102404,
+        "hitSeconds": 0.835093,
+        "targetSeconds": 1,
+        "coldTargetMet": false,
+        "sameConnection": true
+      },
+      "worker": {
+        "missWallMsIncludingBackground": 684,
+        "hitWallMs": 21,
+        "missCpuMs": 38,
+        "exceptions": 0,
+        "outcome": "ok"
+      },
+      "calculation": {
+        "version": "2026-11-11.1",
+        "event": "stats-report-calculation",
+        "outcome": "returned",
+        "submittedStatements": 2,
+        "returnedResults": 2,
+        "metadata": "complete",
+        "counterScope": "last-attempt",
+        "reportedRowsRead": 124196,
+        "reportedRowsWritten": 0,
+        "reportedSqlDurationMs": 133.2275,
+        "totalAttempts": null,
+        "unexpectedWrites": false,
+        "statementCosts": [
+          {
+            "reportedRowsRead": 112891,
+            "reportedRowsWritten": 0,
+            "reportedSqlDurationMs": 93.3748,
+            "totalAttempts": 1
+          },
+          {
+            "reportedRowsRead": 11305,
+            "reportedRowsWritten": 0,
+            "reportedSqlDurationMs": 39.8527,
+            "totalAttempts": 1
+          }
+        ],
+        "elapsedMs": 431,
+        "readModel": "projection"
+      },
+      "cacheOperations": [
+        {
+          "version": "2026-11-11.1",
+          "event": "stats-cache-operation",
+          "operation": "lookup",
+          "outcome": "returned",
+          "elapsedMs": 172
+        },
+        {
+          "version": "2026-11-11.1",
+          "event": "stats-cache-operation",
+          "operation": "publication",
+          "outcome": "returned",
+          "elapsedMs": 45
+        }
+      ],
+      "readReviewCeiling": 1000000,
+      "costGateMet": true,
+      "sameBytes": true,
+      "bodySha256": "1cb953f36de90de3181e949edc651e44334b22bfc1e70556f21977106a0d4705",
+      "period": {
+        "start": "2026-11-05",
+        "end": "2026-11-11",
+        "timeZone": "UTC",
+        "granularity": "hour",
+        "updatedAt": "2026-11-11T17:23:01.294Z"
+      },
+      "totals": {
+        "views": 4722,
+        "dailyClients": 2710,
+        "unattributedViews": 4537
+      },
+      "expires": "Wed, 11 Nov 2026 18:23:01 GMT",
+      "traceCorrelation": "Exact request Ray IDs and private marker match in retained tail; identifiers remain private."
+    },
+    {
+      "range": "30d",
+      "traffic": "all",
+      "completedAt": "2026-11-11T17:25:23.515354+00:00",
+      "colo": "DFW",
+      "client": {
+        "missSeconds": 1.287439,
+        "hitSeconds": 0.395507,
+        "targetSeconds": 1,
+        "coldTargetMet": false,
+        "sameConnection": true
+      },
+      "worker": {
+        "missWallMsIncludingBackground": 965,
+        "hitWallMs": 19,
+        "missCpuMs": 35,
+        "exceptions": 0,
+        "outcome": "ok"
+      },
+      "calculation": {
+        "version": "2026-11-11.1",
+        "event": "stats-report-calculation",
+        "outcome": "returned",
+        "submittedStatements": 2,
+        "returnedResults": 2,
+        "metadata": "complete",
+        "counterScope": "last-attempt",
+        "reportedRowsRead": 378657,
+        "reportedRowsWritten": 0,
+        "reportedSqlDurationMs": 612.4931,
+        "totalAttempts": null,
+        "unexpectedWrites": false,
+        "statementCosts": [
+          {
+            "reportedRowsRead": 342704,
+            "reportedRowsWritten": 0,
+            "reportedSqlDurationMs": 384.8286,
+            "totalAttempts": 1
+          },
+          {
+            "reportedRowsRead": 35953,
+            "reportedRowsWritten": 0,
+            "reportedSqlDurationMs": 227.6645,
+            "totalAttempts": 1
+          }
+        ],
+        "elapsedMs": 888,
+        "readModel": "projection"
+      },
+      "cacheOperations": [
+        {
+          "version": "2026-11-11.1",
+          "event": "stats-cache-operation",
+          "operation": "lookup",
+          "outcome": "returned",
+          "elapsedMs": 15
+        },
+        {
+          "version": "2026-11-11.1",
+          "event": "stats-cache-operation",
+          "operation": "publication",
+          "outcome": "returned",
+          "elapsedMs": 31
+        }
+      ],
+      "readReviewCeiling": 2000000,
+      "costGateMet": true,
+      "sameBytes": true,
+      "bodySha256": "29259ba843586157be21e367a4fa53bb39f2713f6d878ddb38ec4815a005335e",
+      "period": {
+        "start": "2026-10-13",
+        "end": "2026-11-11",
+        "timeZone": "UTC",
+        "granularity": "day",
+        "updatedAt": "2026-11-11T17:25:22.146Z"
+      },
+      "totals": {
+        "views": 14422,
+        "dailyClients": 8174,
+        "unattributedViews": 13584
+      },
+      "expires": "Wed, 11 Nov 2026 18:25:22 GMT",
+      "traceCorrelation": "Exact request Ray IDs and private marker match in retained tail; identifiers remain private."
+    }
+  ],
+  "originalClientSubsecondTargetMet": false,
+  "serverWallBelowOneSecondForBothFinalSamples": true,
+  "limits": [
+    "Samples cover seven-day and default thirty-day/all-traffic reports, not every live filter/range or an unlimited-scale SLA.",
+    "Worker wall time includes bounded background publication; SQL, binding wall and client timings are separate measurements.",
+    "Client latency is not consistently below one second. Warm controls also show substantial outside-Worker time; no specific network/provider cause is established.",
+    "Projection failure or stale fingerprints use complete source fallback and may be slower; reports never publish a partial snapshot.",
+    "Regional caches and isolate coalescing are not global read admission. D1 counters cover returned attempts, not account billing or all retry work.",
+    "Superseded timeout/slow/failed measurements and missing-tail captures are preserved; the timed-out request did not return its preexisting body file."
+  ],
+  "privateEvidence": {
+    "manifestSha256": "602c498e6b90fdb5bdc46d431baefda043076a305602b0353f0e7abcc457ea1f",
+    "credentialsExcluded": true,
+    "rawCapturesPublished": false,
+    "files": 608,
+    "bytes": 4651371
+  }
+}
