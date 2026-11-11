@@ -1,0 +1,229 @@
+{
+  "observedAt": "2026-11-11T15:05:24.268129+00:00",
+  "sourceCommit": "c74d35cc2697e7e236ddc337c1eb4b358fe91c08",
+  "promptRoutes": [
+    {
+      "path": "/the-agentic-product-engineer/prompts",
+      "status": 410,
+      "noindex": true
+    },
+    {
+      "path": "/slug/prompts",
+      "status": 410,
+      "noindex": true
+    },
+    {
+      "path": "/how-ghx-was-born/prompts",
+      "status": 410,
+      "noindex": true
+    },
+    {
+      "path": "/life-as-background-music/prompts",
+      "status": 410,
+      "noindex": true
+    },
+    {
+      "path": "/i-thought-building-was-enough/prompts",
+      "status": 410,
+      "noindex": true
+    },
+    {
+      "path": "/what-if-the-agent-was-better-before-we-helped/prompts",
+      "status": 410,
+      "noindex": true
+    },
+    {
+      "path": "/ai-fetcher-browser-crawler-headers/prompts",
+      "status": 410,
+      "noindex": true
+    },
+    {
+      "path": "/ai-fetcher-research-from-experiments-to-a-cited-reference/prompts",
+      "status": 410,
+      "noindex": true
+    },
+    {
+      "path": "/ai-site-check-evidence/prompts",
+      "status": 410,
+      "noindex": true
+    },
+    {
+      "path": "/bring-your-own-ai-agent/prompts",
+      "status": 410,
+      "noindex": true
+    },
+    {
+      "path": "/building-blog-analytics-what-the-numbers-can-prove/prompts",
+      "status": 410,
+      "noindex": true
+    },
+    {
+      "path": "/bun-aot-express-fastify-serializers/prompts",
+      "status": 410,
+      "noindex": true
+    },
+    {
+      "path": "/chatgpt-plugin-apps/prompts",
+      "status": 410,
+      "noindex": true
+    },
+    {
+      "path": "/cloudflare-turnstile-signup-failures/prompts",
+      "status": 410,
+      "noindex": true
+    },
+    {
+      "path": "/does-llms-txt-work/prompts",
+      "status": 410,
+      "noindex": true
+    },
+    {
+      "path": "/ffmpeg-dvbsub-verification/prompts",
+      "status": 410,
+      "noindex": true
+    },
+    {
+      "path": "/filter-referrer-spam-without-deleting-analytics-history/prompts",
+      "status": 410,
+      "noindex": true
+    },
+    {
+      "path": "/first-party-analytics-for-a-personal-blog/prompts",
+      "status": 410,
+      "noindex": true
+    },
+    {
+      "path": "/how-i-separate-readers-from-bots-without-javascript/prompts",
+      "status": 410,
+      "noindex": true
+    },
+    {
+      "path": "/in-the-age-of-abundance-less-is-more/prompts",
+      "status": 410,
+      "noindex": true
+    },
+    {
+      "path": "/my-evals-say-it-works-i-dont-use-it/prompts",
+      "status": 410,
+      "noindex": true
+    },
+    {
+      "path": "/one-hundred-pull-requests/prompts",
+      "status": 410,
+      "noindex": true
+    },
+    {
+      "path": "/oss-radar-07-ai-citations/prompts",
+      "status": 410,
+      "noindex": true
+    },
+    {
+      "path": "/please-stop-misreading-user-agent/prompts",
+      "status": 410,
+      "noindex": true
+    },
+    {
+      "path": "/productive-procrastination/prompts",
+      "status": 410,
+      "noindex": true
+    },
+    {
+      "path": "/prompt-cache-context-edits/prompts",
+      "status": 410,
+      "noindex": true
+    },
+    {
+      "path": "/the-obvious-agent-products-were-impossible-until-yesterday/prompts",
+      "status": 410,
+      "noindex": true
+    },
+    {
+      "path": "/which-ai-fetchers-send-which-headers/prompts",
+      "status": 410,
+      "noindex": true
+    },
+    {
+      "path": "/why-worktree-setup-is-slow-on-macos/prompts",
+      "status": 410,
+      "noindex": true
+    },
+    {
+      "path": "/please-stop-misreading-user-agent/prompts/",
+      "status": 410,
+      "noindex": true
+    },
+    {
+      "path": "/please-stop-misreading-user-agent/prompts/index.html",
+      "status": 410,
+      "noindex": true
+    },
+    {
+      "path": "/please-stop-misreading-user-agent/prompts.md",
+      "status": 410,
+      "noindex": true
+    }
+  ],
+  "representations": [
+    {
+      "path": "/posts.json",
+      "status": 200,
+      "matchesIsolatedBuild": true,
+      "sha256": "0098f0f98831760456eee609e85a4d97a7b33e5e2dd30043dbe102702255a2e0"
+    },
+    {
+      "path": "/sitemap.xml",
+      "status": 200,
+      "matchesIsolatedBuild": true,
+      "sha256": "46f771f0a39cfa802d54a5ab6e8ef9c19f7f9f66ed92e9f0a86552b9223e15ba"
+    },
+    {
+      "path": "/llms.txt",
+      "status": 200,
+      "matchesIsolatedBuild": true,
+      "sha256": "35d2ea61bd0119be917a4bd043a6a18a5071116121a6fca51b32aab91ff3bd54"
+    },
+    {
+      "path": "/llms-full.txt",
+      "status": 200,
+      "matchesIsolatedBuild": true,
+      "sha256": "c30443f05db36dbd972a2a1662614195f9bc0a13dba5330f4dfc64650c0e0793"
+    }
+  ],
+  "articles": [
+    {
+      "path": "/please-stop-misreading-user-agent",
+      "status": 200,
+      "promptUiAbsent": true,
+      "researchFootprintPresent": false
+    },
+    {
+      "path": "/productive-procrastination",
+      "status": 200,
+      "promptUiAbsent": true,
+      "researchFootprintPresent": false
+    },
+    {
+      "path": "/in-the-age-of-abundance-less-is-more",
+      "status": 200,
+      "promptUiAbsent": true,
+      "researchFootprintPresent": false
+    },
+    {
+      "path": "/oss-radar-07-ai-citations",
+      "status": 200,
+      "promptUiAbsent": true,
+      "researchFootprintPresent": true
+    }
+  ],
+  "limits": [
+    "No historical Git rewrite or third-party erasure is claimed.",
+    "The archive retains dedicated author-prompt records; published article prose and research test fixtures were not withdrawn."
+  ],
+  "deployment": {
+    "id": "04b017d7-6c89-40fa-950b-f5964c592ce1",
+    "createdOn": "2026-11-11T15:04:42.28042Z",
+    "versionId": "bad7661e-7c50-4dbc-b434-f2bb16fcddeb",
+    "percentage": 100,
+    "gitRevisionInVersionMetadata": null
+  }
+}

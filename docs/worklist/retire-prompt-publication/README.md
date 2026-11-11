@@ -23,6 +23,12 @@ Local acceptance passed November 11:
 - Generated HTML, Markdown and discovery inspection: no prompt routes, links, previews or teasers; all 45 index entries omit prompt metadata. Existing footprint sections remain accessible on articles.
 - Private archive: all 66 records match their pre-removal SHA-256 hashes, remain ignored by Git, and are absent from the public tree. All 104 added relative Markdown links resolve. `AGENTS.md` remains 56 lines; its diff and the writing/build guidance diffs preserve authorship and evidence requirements while deliberately retiring prompt publication.
 
-Source commit, deployment activation and live acceptance remain separate checkpoints.
+## Delivery and current production acceptance
 
-Next bounded action: commit and push the checked scoped changes to main; verify the cited prompt URL, essay prompt URLs, and representative article/discovery surfaces in production. No claim of historical or third-party erasure is made.
+- Source: `c74d35cc2697e7e236ddc337c1eb4b358fe91c08`, committed and pushed directly to main with the repository's personal identity.
+- Activation: Cloudflare deployment `04b017d7-6c89-40fa-950b-f5964c592ce1` was created at 15:04:42 UTC on November 11, with version `bad7661e-7c50-4dbc-b434-f2bb16fcddeb` at 100%. Native deployment/version captures are private; the version metadata did not expose a Git revision, so this is separate from the source attribution and served-content comparisons.
+- Live acceptance: [the sanitized receipt](production-acceptance.json), completed at 07:05:24 America/Los_Angeles / 15:05:24 UTC, verifies all 29 dedicated source slugs plus three alternate URL forms return `410 Gone`, the generic withdrawal text and `noindex`. This includes `/please-stop-misreading-user-agent/prompts` and essay prompt URLs. Some source slugs had no published article; the route checks do not imply all 29 were previously live pages.
+- `/posts.json`, `/sitemap.xml`, `/llms.txt` and `/llms-full.txt` match the isolated build byte for byte. Four live articles remain available without prompt links or teasers, with research-footprint presence matching their checked source.
+- Unrelated untracked Ahrefs captures remain untouched.
+
+The requested retirement is complete. No further publication action is required. Earlier Git revisions, preview deployments, third-party copies, and quotations embedded in historical research records may still retain material. This work withdraws the dedicated author-prompt records and public prompt pages; it is not a historical erasure or a repository-wide redaction audit.
