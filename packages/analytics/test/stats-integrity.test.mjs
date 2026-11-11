@@ -59,3 +59,26 @@ test('returned later-hour buckets survive clock boundaries without inventing lat
     assert.equal(r.period.updatedAt,'2026-10-31T12:59:59.000Z');
   }finally{sqlite.close();}
 });
+
+
+test('public time index upgrades existing observations without rewriting their evidence', () => {
+  const sqlite = new DatabaseSync(':memory:');
+  try {
+    const schema = readFileSync(new URL('../schema.sql', import.meta.url), 'utf8');
+    sqlite.exec(schema);
+    sqlite.exec('DROP INDEX idx_page_observations_public_time');
+    for (const row of statsIntegrityValues()) sqlite.prepare(STATS_INTEGRITY_INSERT).run(...row);
+    sqlite.exec(`WITH RECURSIVE archive(n) AS (VALUES(0) UNION ALL SELECT n+1 FROM archive WHERE n<499)
+      INSERT INTO page_observations(path,daily_client_id,traffic_class,device_type,is_owner,observed_at)
+      SELECT '/archive',printf('%032x',n+100000),'browser','desktop',0,'2025-01-01 00:00:00' FROM archive`);
+    const before = sqlite.prepare('SELECT * FROM page_observations ORDER BY id').all();
+    const migration = readFileSync(new URL('../migrations/0017_public_reporting_time_index.sql', import.meta.url), 'utf8');
+    sqlite.exec(migration);
+    sqlite.exec(migration);
+    assert.deepEqual(sqlite.prepare('SELECT * FROM page_observations ORDER BY id').all(), before);
+    const plan = sqlite.prepare(`EXPLAIN QUERY PLAN SELECT path FROM page_observations
+      WHERE is_owner = 0 AND observed_at >= ? AND observed_at < ?`).all('2026-10-25', '2026-11-01');
+    assert.ok(plan.some(row => row.detail.includes('idx_page_observations_public_time')
+      && row.detail.includes('observed_at>? AND observed_at<?')));
+  } finally { sqlite.close(); }
+});

@@ -1,0 +1,416 @@
+{
+  "synthetic": true,
+  "cacheUsed": false,
+  "measurements": [
+    {
+      "name": "empty",
+      "rows": 0,
+      "distinct": false,
+      "query": {
+        "range": "7d",
+        "traffic": "all"
+      },
+      "views": 0,
+      "before": {
+        "elapsedMs": 25.57574999999997,
+        "sqlMs": 6,
+        "reads": 128,
+        "writes": 0,
+        "statements": [
+          {
+            "sqlMs": 2,
+            "reads": 26,
+            "writes": 0
+          },
+          {
+            "sqlMs": 1,
+            "reads": 23,
+            "writes": 0
+          },
+          {
+            "sqlMs": 0,
+            "reads": 24,
+            "writes": 0
+          },
+          {
+            "sqlMs": 1,
+            "reads": 21,
+            "writes": 0
+          },
+          {
+            "sqlMs": 1,
+            "reads": 12,
+            "writes": 0
+          },
+          {
+            "sqlMs": 1,
+            "reads": 22,
+            "writes": 0
+          }
+        ]
+      },
+      "after": {
+        "elapsedMs": 17.44379200000003,
+        "sqlMs": 3,
+        "reads": 122,
+        "writes": 0,
+        "statements": [
+          {
+            "sqlMs": 0,
+            "reads": 27,
+            "writes": 0
+          },
+          {
+            "sqlMs": 0,
+            "reads": 22,
+            "writes": 0
+          },
+          {
+            "sqlMs": 1,
+            "reads": 14,
+            "writes": 0
+          },
+          {
+            "sqlMs": 1,
+            "reads": 35,
+            "writes": 0
+          },
+          {
+            "sqlMs": 1,
+            "reads": 24,
+            "writes": 0
+          }
+        ]
+      },
+      "parity": true
+    },
+    {
+      "name": "repeated-4500",
+      "rows": 4500,
+      "distinct": false,
+      "query": {
+        "range": "7d",
+        "traffic": "all"
+      },
+      "views": 4336,
+      "before": {
+        "elapsedMs": 839.1680420000002,
+        "sqlMs": 828,
+        "reads": 691171,
+        "writes": 0,
+        "statements": [
+          {
+            "sqlMs": 119,
+            "reads": 97094,
+            "writes": 0
+          },
+          {
+            "sqlMs": 65,
+            "reads": 66204,
+            "writes": 0
+          },
+          {
+            "sqlMs": 65,
+            "reads": 119530,
+            "writes": 0
+          },
+          {
+            "sqlMs": 99,
+            "reads": 91251,
+            "writes": 0
+          },
+          {
+            "sqlMs": 180,
+            "reads": 118502,
+            "writes": 0
+          },
+          {
+            "sqlMs": 300,
+            "reads": 198590,
+            "writes": 0
+          }
+        ]
+      },
+      "after": {
+        "elapsedMs": 68.82220899999993,
+        "sqlMs": 58,
+        "reads": 281236,
+        "writes": 0,
+        "statements": [
+          {
+            "sqlMs": 12,
+            "reads": 81260,
+            "writes": 0
+          },
+          {
+            "sqlMs": 12,
+            "reads": 119770,
+            "writes": 0
+          },
+          {
+            "sqlMs": 7,
+            "reads": 47484,
+            "writes": 0
+          },
+          {
+            "sqlMs": 14,
+            "reads": 15445,
+            "writes": 0
+          },
+          {
+            "sqlMs": 13,
+            "reads": 17277,
+            "writes": 0
+          }
+        ]
+      },
+      "parity": true
+    },
+    {
+      "name": "distinct-4500",
+      "rows": 4500,
+      "distinct": true,
+      "query": {
+        "range": "7d",
+        "traffic": "all"
+      },
+      "views": 4336,
+      "before": {
+        "elapsedMs": 915.3205419999995,
+        "sqlMs": 903,
+        "reads": 709434,
+        "writes": 0,
+        "statements": [
+          {
+            "sqlMs": 133,
+            "reads": 97094,
+            "writes": 0
+          },
+          {
+            "sqlMs": 73,
+            "reads": 66204,
+            "writes": 0
+          },
+          {
+            "sqlMs": 77,
+            "reads": 119530,
+            "writes": 0
+          },
+          {
+            "sqlMs": 99,
+            "reads": 91251,
+            "writes": 0
+          },
+          {
+            "sqlMs": 214,
+            "reads": 136765,
+            "writes": 0
+          },
+          {
+            "sqlMs": 307,
+            "reads": 198590,
+            "writes": 0
+          }
+        ]
+      },
+      "after": {
+        "elapsedMs": 614.2667920000004,
+        "sqlMs": 594,
+        "reads": 614183,
+        "writes": 0,
+        "statements": [
+          {
+            "sqlMs": 13,
+            "reads": 81260,
+            "writes": 0
+          },
+          {
+            "sqlMs": 13,
+            "reads": 119770,
+            "writes": 0
+          },
+          {
+            "sqlMs": 8,
+            "reads": 47484,
+            "writes": 0
+          },
+          {
+            "sqlMs": 385,
+            "reads": 203647,
+            "writes": 0
+          },
+          {
+            "sqlMs": 175,
+            "reads": 162022,
+            "writes": 0
+          }
+        ]
+      },
+      "parity": true
+    },
+    {
+      "name": "wide-15000",
+      "rows": 15000,
+      "distinct": false,
+      "query": {
+        "range": "30d",
+        "traffic": "all"
+      },
+      "views": 14451,
+      "before": {
+        "elapsedMs": 2844.7815410000003,
+        "sqlMs": 2831,
+        "reads": 2238865,
+        "writes": 0,
+        "statements": [
+          {
+            "sqlMs": 423,
+            "reads": 312515,
+            "writes": 0
+          },
+          {
+            "sqlMs": 224,
+            "reads": 209500,
+            "writes": 0
+          },
+          {
+            "sqlMs": 225,
+            "reads": 387334,
+            "writes": 0
+          },
+          {
+            "sqlMs": 338,
+            "reads": 293067,
+            "writes": 0
+          },
+          {
+            "sqlMs": 589,
+            "reads": 384294,
+            "writes": 0
+          },
+          {
+            "sqlMs": 1032,
+            "reads": 652155,
+            "writes": 0
+          }
+        ]
+      },
+      "after": {
+        "elapsedMs": 223.60766700000022,
+        "sqlMs": 212,
+        "reads": 869384,
+        "writes": 0,
+        "statements": [
+          {
+            "sqlMs": 49,
+            "reads": 259679,
+            "writes": 0
+          },
+          {
+            "sqlMs": 51,
+            "reads": 388136,
+            "writes": 0
+          },
+          {
+            "sqlMs": 29,
+            "reads": 147228,
+            "writes": 0
+          },
+          {
+            "sqlMs": 43,
+            "reads": 36237,
+            "writes": 0
+          },
+          {
+            "sqlMs": 40,
+            "reads": 38104,
+            "writes": 0
+          }
+        ]
+      },
+      "parity": true
+    }
+  ],
+  "historyIndex": {
+    "archivedRows": 30000,
+    "selectedSourceRows": 15000,
+    "withoutIndex": {
+      "elapsedMs": 223.89441600000282,
+      "sqlMs": 215,
+      "reads": 1062737,
+      "writes": 0,
+      "statements": [
+        {
+          "sqlMs": 48,
+          "reads": 304130,
+          "writes": 0
+        },
+        {
+          "sqlMs": 50,
+          "reads": 432587,
+          "writes": 0
+        },
+        {
+          "sqlMs": 35,
+          "reads": 191679,
+          "writes": 0
+        },
+        {
+          "sqlMs": 42,
+          "reads": 66237,
+          "writes": 0
+        },
+        {
+          "sqlMs": 40,
+          "reads": 68104,
+          "writes": 0
+        }
+      ]
+    },
+    "withIndex": {
+      "elapsedMs": 218.4806669999998,
+      "sqlMs": 209,
+      "reads": 912737,
+      "writes": 0,
+      "statements": [
+        {
+          "sqlMs": 47,
+          "reads": 274130,
+          "writes": 0
+        },
+        {
+          "sqlMs": 48,
+          "reads": 402587,
+          "writes": 0
+        },
+        {
+          "sqlMs": 34,
+          "reads": 161679,
+          "writes": 0
+        },
+        {
+          "sqlMs": 41,
+          "reads": 36237,
+          "writes": 0
+        },
+        {
+          "sqlMs": 39,
+          "reads": 38104,
+          "writes": 0
+        }
+      ]
+    },
+    "parity": true
+  },
+  "date": "2026-11-11",
+  "baselineSourceCommit": "d633d3f04c7baae3c339c895a0491ca5ee6abb82",
+  "baselineBundleSha256": "a6f2b5a4b16d411a0938f866b82a948d2143e9305a8bc06b44bd133ad13641c6",
+  "node": "24.14.1",
+  "workerd": "1.20261108.1",
+  "limits": [
+    "Synthetic fixtures on one local machine; not production forecasts.",
+    "Prior and candidate implementations share the same current schema in the paired comparison. The separate archive control removes and recreates the time index.",
+    "Before runs first; database page warmth and scheduler noise are not isolated. No HTTP/Worker report cache is used.",
+    "Entirely distinct envelopes preserve more work and show a smaller gain than repeated evidence."
+  ]
+}

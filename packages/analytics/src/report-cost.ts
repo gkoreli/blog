@@ -1,6 +1,6 @@
 /** Provider counters describe the returned attempt, not all retry work or account billing. */
 export interface ReportCalculation {
-  version: '2026-11-10.1';
+  version: '2026-11-11.1';
   event: 'stats-report-calculation';
   outcome: 'returned' | 'threw';
   submittedStatements: number;
@@ -9,8 +9,11 @@ export interface ReportCalculation {
   counterScope: 'last-attempt';
   reportedRowsRead: number | null;
   reportedRowsWritten: number | null;
+  reportedSqlDurationMs: number | null;
   totalAttempts: number | null;
   unexpectedWrites: boolean | null;
+  /** Wall time of the awaited binding call, including its transport. */
+  elapsedMs?: number;
   failure?: ReportFailure;
   statementCosts?: ReportStatementCost[];
 }
@@ -20,6 +23,7 @@ export type ReportCalculationObserver = (event: ReportCalculation) => void;
 interface ReportStatementCost {
   reportedRowsRead: number | null;
   reportedRowsWritten: number | null;
+  reportedSqlDurationMs: number | null;
   totalAttempts: number | null;
 }
 
@@ -60,13 +64,20 @@ function counter(value: unknown, minimum = 0): number | null {
   return typeof value === 'number' && Number.isSafeInteger(value) && value >= minimum ? value : null;
 }
 
+function duration(value: unknown): number | null {
+  return typeof value === 'number' && Number.isFinite(value) && value >= 0 ? value : null;
+}
+
 /** Closed projection: never forward SQL, parameters, provider identifiers or raw errors. */
 export function reportCalculation(value: unknown, outcome: ReportCalculation['outcome'], submittedStatements = 1): ReportCalculation {
   const returnedResults = Array.isArray(value) ? value.length : null;
   const costs = Array.from({ length: submittedStatements }, (_, index) => {
     const result: unknown = Array.isArray(value) ? value[index] : null;
     const meta = record(result) && record(result.meta) ? result.meta : {};
-    return { reportedRowsRead: counter(meta.rows_read), reportedRowsWritten: counter(meta.rows_written), totalAttempts: counter(meta.total_attempts, 1) };
+    const timings = record(meta.timings) ? meta.timings : {};
+    return { reportedRowsRead: counter(meta.rows_read), reportedRowsWritten: counter(meta.rows_written),
+      reportedSqlDurationMs: duration(timings.sql_duration_ms) ?? duration(meta.duration),
+      totalAttempts: counter(meta.total_attempts, 1) };
   });
   const sum = (field: 'reportedRowsRead' | 'reportedRowsWritten'): number | null => {
     let total = 0;
@@ -77,18 +88,25 @@ export function reportCalculation(value: unknown, outcome: ReportCalculation['ou
     }
     return total;
   };
+  let reportedSqlDurationMs: number | null = 0;
+  for (const cost of costs) {
+    if (cost.reportedSqlDurationMs === null || !Number.isFinite(reportedSqlDurationMs + cost.reportedSqlDurationMs)) {
+      reportedSqlDurationMs = null; break;
+    }
+    reportedSqlDurationMs += cost.reportedSqlDurationMs;
+  }
   const reportedRowsRead = sum('reportedRowsRead');
   const reportedRowsWritten = sum('reportedRowsWritten');
   // Attempts belong to individual returned statements; do not invent a batch retry count.
   const totalAttempts = submittedStatements === 1 ? costs[0]?.totalAttempts ?? null : null;
-  const known = costs.reduce((total,cost) => total + Object.values(cost).filter(n => n !== null).length, 0);
+  const known = costs.reduce((total,cost) => total + [cost.reportedRowsRead, cost.reportedRowsWritten, cost.totalAttempts].filter(n => n !== null).length, 0);
   const inconsistent = outcome === 'returned' && (returnedResults !== submittedStatements || !Array.isArray(value)
     || !value.every((result: unknown) => record(result) && result.success !== false));
   return {
-    version: '2026-11-10.1', event: 'stats-report-calculation', outcome,
+    version: '2026-11-11.1', event: 'stats-report-calculation', outcome,
     submittedStatements, returnedResults,
     metadata: inconsistent ? 'inconsistent' : known === costs.length * 3 ? 'complete' : known === 0 ? 'unavailable' : 'partial',
-    counterScope: 'last-attempt', reportedRowsRead, reportedRowsWritten, totalAttempts,
+    counterScope: 'last-attempt', reportedRowsRead, reportedRowsWritten, reportedSqlDurationMs, totalAttempts,
     unexpectedWrites: reportedRowsWritten === null ? null : reportedRowsWritten > 0,
     ...(submittedStatements > 1 ? { statementCosts: costs } : {}),
   };
@@ -110,13 +128,14 @@ export async function measuredReportBatch(
 ): Promise<D1Result<Record<string, unknown>>[]> {
   let results: D1Result<Record<string, unknown>>[];
   const statements = isStatementList(statement) ? [...statement] : [statement];
+  const startedAt = performance.now();
   try {
     results = await db.batch<Record<string, unknown>>(statements);
   } catch (error) {
-    notify(observer, { ...reportCalculation(null, 'threw', statements.length), failure: reportFailure(error) });
+    notify(observer, { ...reportCalculation(null, 'threw', statements.length), elapsedMs: Math.max(0, performance.now() - startedAt), failure: reportFailure(error) });
     throw error;
   }
-  const event = reportCalculation(results, 'returned', statements.length);
+  const event = { ...reportCalculation(results, 'returned', statements.length), elapsedMs: Math.max(0, performance.now() - startedAt) };
   notify(observer, event);
   if (event.metadata === 'inconsistent') throw new Error('Invalid statistics batch result');
   return results;

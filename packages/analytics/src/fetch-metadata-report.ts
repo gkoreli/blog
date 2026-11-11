@@ -49,11 +49,12 @@ function recordStateSql(): string {
     ELSE 'recognized' END`;
 }
 
-export function fetchMetadataReportCtes(): string {
+export function fetchMetadataReportCtes(multiplicity: 'events' | 'cohorts' = 'events'): string {
+  const views = multiplicity === 'cohorts' ? 'SUM(event_views)' : 'COUNT(*)';
   return `metadata_inputs AS MATERIALIZED (
     SELECT classification_evidence IS NULL AS metadata_missing,
       CASE WHEN typeof(classification_evidence) = 'text' AND json_valid(classification_evidence) THEN classification_evidence ELSE '{}' END AS metadata_json,
-      observation_source, collection_version, classifier_version, sec_fetch_mode, sec_fetch_dest, sec_fetch_site, sec_fetch_user, COUNT(*) AS metadata_views
+      observation_source, collection_version, classifier_version, sec_fetch_mode, sec_fetch_dest, sec_fetch_site, sec_fetch_user, ${views} AS metadata_views
     FROM included
     GROUP BY classification_evidence, observation_source, collection_version, classifier_version, sec_fetch_mode, sec_fetch_dest, sec_fetch_site, sec_fetch_user
   ), metadata_facts AS MATERIALIZED (

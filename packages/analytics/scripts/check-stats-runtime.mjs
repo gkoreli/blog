@@ -51,8 +51,8 @@ try {
     const actual = await queryStats(db, query, now, undefined, cost => costs.push(cost));
     assert.deepEqual(actual, expected, JSON.stringify(query));
   }
-  assert.ok(costs.every(cost => cost.submittedStatements === 6 && cost.returnedResults === 6 && cost.reportedRowsWritten === 0));
-  console.log(JSON.stringify({ selectors: queries.length, syntheticRows: inserts.length, statementsPerReport: 6,
+  assert.ok(costs.every(cost => cost.submittedStatements === 5 && cost.returnedResults === 5 && cost.reportedRowsWritten === 0));
+  console.log(JSON.stringify({ selectors: queries.length, syntheticRows: inserts.length, statementsPerReport: 5,
     firstReport: costs[0], parity: true }));
 } finally {
   sqlite.close();

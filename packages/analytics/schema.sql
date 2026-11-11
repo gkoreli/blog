@@ -48,6 +48,8 @@ CREATE TABLE page_observations (
 
 CREATE INDEX idx_page_observations_observed_at
   ON page_observations(observed_at);
+CREATE INDEX idx_page_observations_public_time
+  ON page_observations(is_owner, observed_at);
 CREATE INDEX idx_page_observations_public_traffic_time
   ON page_observations(is_owner, traffic_class, observed_at);
 CREATE INDEX idx_page_observations_public_path_time

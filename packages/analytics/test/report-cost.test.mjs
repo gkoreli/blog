@@ -8,7 +8,7 @@ import { queryStats } from '../.test-dist/stats.js';
 const meta = { rows_read: 12, rows_written: 0, total_attempts: 2, served_by: 'PRIVATE', last_row_id: 999, sql: 'PRIVATE' };
 test('report counters retain last-attempt scope and omit arbitrary provider fields', () => {
   const e = reportCalculation([{ success: true, meta }], 'returned');
-  assert.deepEqual(e, { version: '2026-11-10.1', event: 'stats-report-calculation', outcome: 'returned', submittedStatements: 1, returnedResults: 1, metadata: 'complete', counterScope: 'last-attempt', reportedRowsRead: 12, reportedRowsWritten: 0, totalAttempts: 2, unexpectedWrites: false });
+  assert.deepEqual(e, { version: '2026-11-11.1', event: 'stats-report-calculation', outcome: 'returned', submittedStatements: 1, returnedResults: 1, metadata: 'complete', counterScope: 'last-attempt', reportedRowsRead: 12, reportedRowsWritten: 0, reportedSqlDurationMs: null, totalAttempts: 2, unexpectedWrites: false });
   assert.ok(!JSON.stringify(e).includes('PRIVATE'));
   assert.equal(reportCalculation([{ meta: { ...meta, rows_written: 3 } }], 'returned').unexpectedWrites, true);
 });
@@ -91,9 +91,28 @@ test('query output and statement are unchanged with telemetry; decoding failures
   const before = await queryStats(db, q, now);
   const after = await queryStats(db, q, now, undefined, e => events.push(e));
   assert.deepEqual(after, before); assert.deepEqual(submitted[1], submitted[0]);
-  assert.equal(submitted.length, 2); assert.equal(submitted[0].length, 6); assert.equal(events.length, 1);
+  assert.equal(submitted.length, 2); assert.equal(submitted[0].length, 5); assert.equal(events.length, 1);
   assert.ok(!JSON.stringify(after).includes('reportedRowsRead'));
   await assert.rejects(queryStats({ ...db, async batch() { return [{ success: true, meta, results: [] }]; } }, q, now, undefined, e => events.push(e)));
   assert.equal(events.length, 2); assert.equal(events[1].reportedRowsRead, null);
   sqlite.close();
+});
+
+
+test('SQL duration retains fractional zero and missing provider timings independently of row counters', () => {
+  const results = [
+    { success: true, meta: { ...meta, duration: 7, timings: { sql_duration_ms: 0 } } },
+    { success: true, meta: { ...meta, duration: 0.125 } },
+  ];
+  const event = reportCalculation(results, 'returned', 2);
+  assert.equal(event.reportedSqlDurationMs, 0.125);
+  assert.deepEqual(event.statementCosts.map(cost => cost.reportedSqlDurationMs), [0, 0.125]);
+  assert.equal(event.metadata, 'complete');
+  for (const invalid of [undefined, null, '1', -1, NaN, Infinity]) {
+    const missing = reportCalculation([results[0], { success: true, meta: { ...meta, duration: invalid } }], 'returned', 2);
+    assert.equal(missing.reportedSqlDurationMs, null);
+    assert.equal(missing.statementCosts[0].reportedSqlDurationMs, 0);
+    assert.equal(missing.reportedRowsRead, 24);
+  }
+  assert.equal(reportCalculation([{ success: true, meta: { ...meta, duration: 1, timings: { sql_duration_ms: -1 } } }], 'returned').reportedSqlDurationMs, 1);
 });

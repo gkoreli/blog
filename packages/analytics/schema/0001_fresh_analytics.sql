@@ -1,5 +1,5 @@
 -- Empty databases only. Never apply to the blog's existing database.
--- Schema snapshot through migration 0016; no historical rows or backfills.
+-- Schema snapshot through migration 0017; no historical rows or backfills.
 -- Regenerate: node packages/analytics/scripts/fresh-schema.mjs --write
 -- Future schema changes must update this snapshot and provide an upgrade path.
 
@@ -95,6 +95,9 @@ CREATE INDEX idx_page_observations_public_internal_referrer_time
 
 CREATE INDEX idx_page_observations_public_path_time
   ON page_observations(is_owner, path, observed_at);
+
+CREATE INDEX idx_page_observations_public_time
+  ON page_observations(is_owner, observed_at);
 
 CREATE INDEX idx_page_observations_public_traffic_time
   ON page_observations(is_owner, traffic_class, observed_at);

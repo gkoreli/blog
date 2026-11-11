@@ -5,12 +5,13 @@ import { VENDOR_CACHE_ACCESS_FIELDS, VENDOR_CACHE_BLOCKER_FIELDS, emptyVendorCac
  * profile cannot acquire a cache assessment merely by carrying similarly named keys.
  * The bounded per-record source/blocker expansion is evaluated only for the new profile.
  */
-export function vendorCacheReportCtes(): string {
+export function vendorCacheReportCtes(multiplicity: 'events' | 'cohorts' = 'events'): string {
+  const views = multiplicity === 'cohorts' ? 'SUM(network_views)' : 'COUNT(*)';
   const access = VENDOR_CACHE_ACCESS.map((v,i) => `WHEN '${v}' THEN ${1 << i}`).join(' ');
   const blockers = VENDOR_CACHE_BLOCKERS.map((v,i) => `WHEN '${v}' THEN ${1 << i}`).join(' ');
   const union = VENDOR_CACHE_BLOCKERS.map((_,i) => `COALESCE(MAX(blocker_mask & ${1 << i}),0)`).join(' + ');
   return `vendor_cache_inputs AS MATERIALIZED (
-    SELECT vendor_ip_evidence,network_state,COUNT(*) AS cache_views FROM vendor_network_facts GROUP BY vendor_ip_evidence,network_state
+    SELECT vendor_ip_evidence,network_state,${views} AS cache_views FROM vendor_network_facts GROUP BY vendor_ip_evidence,network_state
   ), vendor_cache_records AS MATERIALIZED (
     SELECT cache_views,
       CASE WHEN network_state = 'unrecognized' THEN 'unrecognized'

@@ -206,3 +206,12 @@ export interface StatsResponse {
   /** Reporting compares stored identifiers; it never re-verifies historical requests. */
   verifierProfile: { current: string; assessment: 'stored-profile-not-reverified' };
 }
+
+/** Validated analytics report selection, independent of HTTP and D1. */
+export interface StatsQuery {
+  range: StatsRange;
+  traffic: TrafficFilter;
+  path?: string;
+  agent?: string;
+  kind?: ReaderKind;
+}
