@@ -1,4 +1,5 @@
-import { html } from '@nisli/core';
+import { html, raw } from '@nisli/core';
+import { reportCheckSectionHtml } from '../lib/site-audit-report.js';
 import { homeToolsInvitation } from './home-tools-invitation.js';
 import { navigationChoices } from '../templates/navigation-choice.js';
 import { toolCatalogue } from './tool-catalogue.js';
@@ -133,6 +134,15 @@ export function designLanguagePage() {
   <h3 class="dl-pattern-title">Illustrated invitation</h3>
   <p class="dl-body-note">Bring one relevant destination into the writing with a compact illustration and a restrained tint. The whole surface responds, including the artwork and padding. Keep forms and secondary controls in their own region.</p>
   ${homeToolsInvitation('dl-tools-invitation-heading')}
+  <h3 class="dl-pattern-title">Visible report results</h3>
+  <p class="dl-body-note">Show the outcome, evidence and useful next action together. Group related checks with a compact points summary. Keep passed, failed and unassessed results visible; label each state in words. Reserve disclosures for the method and raw data.</p>
+  <div class="ai-check tool-app ai-check-report dl-report-example" aria-label="Illustrative check states">
+    ${html`<div html:inner=${raw(reportCheckSectionHtml({ id: 'delivery', title: 'Example check states', earned: 30, unknown: 10, max: 50, checks: [
+      { id: 'example-pass', title: 'Successful page response', state: 'pass', weight: 30, evidence: 'The example response returned HTTP 200.', nextStep: '' },
+      { id: 'example-fail', title: 'Descriptive page title', state: 'fail', weight: 10, evidence: 'No title was found in this illustrative input.', nextStep: 'Add a title that describes the page.' },
+      { id: 'example-unknown', title: 'Indexing controls', state: 'unknown', weight: 10, evidence: 'The example capture is incomplete.', nextStep: 'Inspect the missing response headers.' },
+    ] }))}></div>`}
+  </div>
   </section>
 
   ${GradSep()}

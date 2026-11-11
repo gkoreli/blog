@@ -1,0 +1,124 @@
+/* Visible results, with quiet divisions. Disclosures are reserved for method and raw data. */
+.ai-check-report { font-size: 14px; line-height: 1.7; }
+.ai-check-report :is(h3, h4, p) { overflow-wrap: anywhere; }
+.ai-check-report-header { padding-bottom: 12px; }
+.ai-check-report-header h2 { font: 600 28px/1.25 var(--font-sans); margin: 6px 0; letter-spacing: -0.025em; }
+.ai-check-report .ai-check-target { font-size: 12px; }
+.ai-check-report .ai-check-report-label { font-size: 10px; }
+.ai-check-report-header .tool-caption { font-size: 12px; }
+.ai-check-report .report-actions { gap: 0; }
+.ai-check-report .report-actions a { display: flex; align-items: center; justify-content: flex-start; min-height: 44px; border: 0; padding: 6px 0; font-size: 12px; text-decoration: underline; }
+.ai-check-report .report-example-note { margin: 0; padding: 0 0 18px; font-size: 12px; }
+.ai-check-report .access-overview { grid-template-columns: 104px minmax(0, 1fr); gap: 22px; padding: 24px 0; border-top: 1px solid var(--color-border); text-align: left; justify-items: stretch; }
+.ai-check-report .access-score { width: 104px; height: 104px; padding: 5px; }
+.ai-check-report .access-score strong { font-size: 30px; }
+.ai-check-report .access-score[data-range="true"] strong { font-size: 23px; }
+.ai-check-report .access-score span { font-size: 10px; }
+.ai-check-report .access-summary { max-width: none; }
+.ai-check-report .access-summary h3 { font-size: 22px; line-height: 1.35; margin: 5px 0 8px; }
+.ai-check-report .access-coverage { display: flex; flex-wrap: wrap; column-gap: 16px; row-gap: 3px; font: 11px/1.7 var(--font-mono); }
+.ai-check-report .access-coverage span { white-space: nowrap; }
+.ai-check-report .access-summary .report-scope-note { margin-top: 8px; font-size: 13px; }
+.ai-check-report .report-facts { padding: 16px 0; gap: 18px; border-top: 1px solid var(--color-border); }
+.ai-check-report .report-facts dt { font: 11px/1.7 var(--font-mono); }
+.ai-check-report .report-facts dd { font: 13px/1.7 var(--font-mono); }
+.ai-check-report .report-facts .report-fact-detail { font: 12px/1.7 var(--font-sans); }
+.ai-check-report .report-navigation { flex-wrap: wrap; gap: 0 22px; padding: 6px 0; border-top: 0; }
+.ai-check-report .report-navigation a { display: flex; align-items: center; min-height: 44px; font-size: 12px; text-decoration: underline; }
+.report-next { padding: 22px 0 0; }
+.ai-check-report .report-next > h3 { font-size: 19px; margin: 0 0 6px; }
+.ai-check-report .ai-check-note { font-size: 14px; }
+.ai-check-report .ai-check-finding { margin: 14px 0; padding: 14px 0 0; }
+.ai-check-report .ai-check-finding h4 { font-size: 16px; margin: 5px 0; }
+.ai-check-report .ai-check-finding p { font-size: 14px; }
+.ai-check-report .ai-check-finding-label { font-size: 10px; }
+.report-section { margin-top: 32px; padding-top: 22px; border-top: 1px solid var(--color-border); }
+.report-section-heading { display: grid; grid-template-columns: 28px minmax(0, 1fr); gap: 10px; margin-bottom: 20px; }
+.report-section-number { color: var(--color-link); font: 11px/1.7 var(--font-mono); padding-top: 4px; }
+.ai-check-report .report-section-heading h3 { margin: 0 0 5px; font-size: 22px; }
+.report-section-heading p { color: var(--tool-muted); font-size: 14px; max-width: 44em; }
+.report-check-group { border: 1px solid var(--color-border); border-radius: 10px; padding: 0 16px; margin-top: 12px; }
+.report-check-group-heading { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 14px 0 10px; }
+.report-check-group-heading h4 { font: 600 16px/1.5 var(--font-sans); margin: 0; }
+.report-check-group-heading > span { font: 13px/1.6 var(--font-mono); white-space: nowrap; }
+.report-check-group-heading small { font-size: 11px; color: var(--tool-muted); }
+.report-check-group .access-component-bar { --score-ink: var(--color-link); height: 3px; margin: 0 0 4px; }
+.report-check-group[data-state="action"] .access-component-bar { --score-ink: var(--color-accent-rust); }
+.report-check-group .access-check-row { grid-template-columns: minmax(0, 1fr) auto; gap: 12px; padding: 14px 0; }
+.report-check-title { display: flex; align-items: baseline; flex-wrap: wrap; gap: 4px 12px; }
+.report-check-title strong { font: 500 14px/1.6 var(--font-sans); }
+.report-check-state { display: inline-flex; align-items: center; gap: 5px; font: 10px/1.6 var(--font-mono); color: var(--color-link); white-space: nowrap; }
+.report-check-state::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: currentColor; flex: none; }
+.access-check-row[data-state="fail"] .report-check-state { color: var(--color-accent-rust); }
+.access-check-row[data-state="unknown"] .report-check-state { color: var(--tool-muted); }
+.access-check-row[data-state="unknown"] .report-check-state::before { border: 1px solid currentColor; background: transparent; }
+.report-check-group .access-check-row p { font: 13px/1.7 var(--font-sans); margin-top: 5px; }
+.report-check-group .access-check-row .report-check-next { color: var(--color-text); }
+.report-check-next strong { font-size: inherit; }
+.report-check-group .access-check-points { font: 12px/1.7 var(--font-mono); padding-top: 2px; }
+.access-check-points > span { color: var(--tool-muted); }
+.report-policy-group { margin-top: 22px; }
+.report-policy-capture { color: var(--tool-muted); font: 11px/1.7 var(--font-mono); }
+.ai-check-report .report-policy-group h4 { font: 500 11px/1.7 var(--font-mono); text-transform: uppercase; letter-spacing: 0.05em; color: var(--tool-muted); margin: 0 0 8px; }
+.report-policy-list { list-style: none; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 24px; padding: 0; }
+.report-policy-list li { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 3px 10px; padding: 12px 0; border-top: 1px solid var(--color-border); min-width: 0; }
+.report-policy-list strong { display: block; font: 500 12px/1.7 var(--font-mono); overflow-wrap: anywhere; }
+.report-policy-list div > span { display: block; font-size: 11px; color: var(--tool-muted); }
+.report-policy-decision { font: 11px/1.7 var(--font-mono); color: var(--color-link); }
+.report-policy-list [data-policy="disallowed"] .report-policy-decision { color: var(--color-text); }
+.report-policy-list [data-policy="unknown"] .report-policy-decision { color: var(--tool-muted); }
+.report-policy-list li > p { grid-column: 1 / -1; color: var(--tool-muted); font: 11px/1.7 var(--font-mono); }
+.ai-check-report .report-page-facts { display: block; font-size: 13px; }
+.report-page-facts > div { display: grid; grid-template-columns: minmax(110px, 1fr) minmax(0, 3fr); gap: 8px 20px; border-bottom: 1px solid var(--color-border); padding: 10px 0; }
+.report-page-facts dt { color: var(--tool-muted); font-weight: 400; }
+.ai-check-report .report-page-facts dd { margin: 0; }
+.ai-check-report .report-page-facts ~ h4 { font-size: 14px; margin: 22px 0 8px; }
+.ai-check-report .access-source-preview { font-size: 12px !important; line-height: 1.8; background: var(--color-surface); border: 0; border-radius: 8px; padding: 16px; }
+.ai-check-report .access-heading-outline li { font: 13px/1.7 var(--font-sans); padding: 7px 0; }
+.access-heading-outline li > span { font: 11px/1.7 var(--font-mono); color: var(--tool-muted); margin-right: 8px; }
+.ai-check-report .access-optional { gap: 14px; }
+.ai-check-report .access-optional-item { border: 1px solid var(--color-border); border-radius: 10px; padding: 14px 16px; }
+.ai-check-report .access-optional-item h4 { font-size: 15px; margin: 0 0 6px; }
+.ai-check-report .access-optional-state { font: 11px/1.7 var(--font-mono); }
+.ai-check-report .access-optional-item p { font-size: 13px; margin-top: 8px; color: var(--tool-muted); }
+.ai-check-report .access-optional-item .report-optional-next { color: var(--color-text); }
+.report-observation { margin-top: 16px; }
+.ai-check-report .report-observation h4 { font-size: 15px; }
+.report-observation p { font-size: 13px; margin-top: 6px; }
+.report-request-list > div { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 2px 16px; padding: 10px 0; border-bottom: 1px solid var(--color-border); }
+.report-request-list strong, .report-request-list > div > span { font: 12px/1.7 var(--font-mono); overflow-wrap: anywhere; }
+.report-request-list small { grid-column: 1 / -1; color: var(--tool-muted); font-size: 12px; }
+.report-technical { margin-top: 32px; padding-top: 22px; border-top: 1px solid var(--color-border); }
+.ai-check-report .report-technical h3 { font-size: 19px; margin-bottom: 8px; }
+.report-technical .access-points-ledger { color: var(--tool-muted); font: 11px/1.7 var(--font-mono); }
+.ai-check-report .report-technical .tool-caption { font-size: 12px; margin-top: 6px; }
+.ai-check-report .access-evidence summary { font-size: 12px; min-height: 44px; }
+.ai-check-report .access-evidence-body { font-size: 13px; }
+.report-technical ul { padding-left: 18px; }
+.report-technical li + li { margin-top: 8px; }
+.dl-report-example { margin-top: 16px; padding-top: 0; border-top: 0; }
+@media (max-width: 600px) {
+  .ai-check-report-header { gap: 10px; }
+  .ai-check-report .report-actions { flex-direction: row; gap: 22px; }
+  .ai-check-report .access-overview { grid-template-columns: 80px minmax(0, 1fr); gap: 16px; padding-block: 20px; }
+  .ai-check-report .access-score { width: 80px; height: 80px; padding: 4px; }
+  .ai-check-report .access-score strong { font-size: 26px; }
+  .ai-check-report .access-score[data-range="true"] strong { font-size: 18px; }
+  .ai-check-report .access-summary h3 { font-size: 18px; }
+  .ai-check-report .access-coverage { font-size: 10px; gap: 3px 10px; }
+  .ai-check-report .access-summary .report-scope-note { font-size: 12px; }
+  .ai-check-report .report-facts { grid-template-columns: 1fr; gap: 12px; }
+  .ai-check-report .report-facts > div { grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr); gap: 0 12px; }
+  .ai-check-report .report-facts dt { margin: 0; }
+  .ai-check-report .report-facts .report-fact-detail { margin: 0; }
+  .ai-check-report .report-navigation { gap: 0 18px; }
+  .report-section { margin-top: 26px; padding-top: 18px; }
+  .report-section-heading { grid-template-columns: 20px minmax(0, 1fr); gap: 8px; }
+  .ai-check-report .report-section-heading h3 { font-size: 20px; }
+  .report-section-heading p { font-size: 13px; }
+  .report-check-group { padding-inline: 12px; }
+  .report-check-group-heading h4 { font-size: 15px; }
+  .report-check-group-heading small { font-size: 10px; }
+  .report-policy-list, .ai-check-report .access-optional { grid-template-columns: 1fr; }
+  .report-page-facts > div { grid-template-columns: 1fr; gap: 3px; }
+}

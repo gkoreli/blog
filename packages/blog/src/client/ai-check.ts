@@ -1,141 +1,17 @@
 import type { SiteAuditReport } from '@gkoreli/site-audit/contracts';
 import { isSiteAuditReport } from '@gkoreli/site-audit/report-validation';
-import { additionalReviewFindings, optionalSupportLabel, reportIdentity, assessmentVerdict, reportFacts } from '../lib/site-audit-presentation.js';
-import { deriveTechnicalAssessment } from '@gkoreli/site-audit/product';
+import { siteAuditReportHtml } from '../lib/site-audit-report.js';
 import { normalizeTarget, TargetValidationError } from '@gkoreli/site-audit/target';
 import { failureFeedback, feedbackQuota, type CheckFeedback } from '../lib/check-feedback.js';
-import { node, definition, makeTable, safeLink, rawEvidence, disclosure, object } from './tool-dom.js';
+import { node, definition, rawEvidence, object } from './tool-dom.js';
 
-/** Remote values become text nodes. Scores are recalculated from the evidence. */
+/** The common report renderer escapes captured values before parsing its fixed markup. */
 export function renderSiteAudit(report: SiteAuditReport, example = false): HTMLElement {
-  const assessment = deriveTechnicalAssessment(report);
-  const article = node('section', undefined, 'ai-check-report'); article.setAttribute('aria-label', 'Site access report');
-  article.id = 'access-report'; article.tabIndex = -1;
-  const reportMeta = reportIdentity(report);
-  const header = node('header', undefined, 'ai-check-report-header'), identity = node('div');
-  identity.append(node('span', example ? 'Example report · saved observation' : 'Your access report', 'ai-check-report-label'),
-    node('h2', reportMeta.host), node('p', report.target, 'ai-check-target'),
-    node('p', `Observed ${reportMeta.observed}${example ? ' · No live check performed' : ''}`, 'tool-caption'));
-  const actions = node('div', undefined, 'report-actions');
-  const compare = node('a', 'Compare reports'); compare.href = '/tools/compare'; actions.append(compare);
-  header.append(identity, actions); article.append(header);
-  if (example) article.append(node('p', 'Saved example · This is a dated report, not a fresh check. No daily check used.', 'report-example-note'));
-  const jump = node('nav', undefined, 'report-navigation'); jump.setAttribute('aria-label', 'Report sections');
-  for (const [label, id] of [['Overview', 'report-overview'], ['Next steps', 'report-next'], ['Evidence', 'report-evidence']] as const) { const link = node('a', label); link.href = `#${id}`; jump.append(link); }
-  article.append(jump);
-  const overview = node('div', undefined, 'access-overview'), score = node('div', undefined, 'access-score');
-  const total = assessment.score.lower === assessment.score.upper ? String(assessment.score.lower) : `${assessment.score.lower}–${assessment.score.upper}`;
-  score.dataset['range'] = String(assessment.score.lower !== assessment.score.upper);
-  score.dataset['state'] = assessment.counts.failed > 0 ? 'action' : assessment.counts.unknown > 0 ? 'review' : 'pass';
-  score.style.setProperty('--score-earned', `${assessment.score.lower}%`);
-  score.style.setProperty('--score-possible', `${assessment.score.upper}%`);
-  const scoreValue = node('div', undefined, 'access-score-value'); scoreValue.append(node('strong', total), node('span', 'out of 100')); score.append(scoreValue);
-  overview.id = 'report-overview';
-  score.setAttribute('aria-label', `Technical access score ${total} out of 100`);
-  const summary = node('div', undefined, 'access-summary');
-  const verdict = assessmentVerdict(assessment);
-  summary.append(node('span', assessment.label, 'ai-check-report-label'), node('h3', verdict),
-    node('p', `${assessment.counts.passed} passed · ${assessment.counts.failed} need attention · ${assessment.counts.unknown} unassessed`, 'access-coverage'),
-    node('p', `${assessment.score.lower} earned · ${100 - assessment.score.upper} deducted · ${assessment.score.upper - assessment.score.lower} unknown points`, 'access-points-ledger'),
-    node('p', `${assessment.score.coveragePercent}% of weighted checks assessed. ${assessment.score.upper > assessment.score.lower ? 'The range includes points with unknown evidence.' : 'Expand the checks below to see how the score adds up.'}`));
-  const method = node('a', 'How this score works'); method.href = '#score-method'; summary.append(method); overview.append(score, summary); article.append(overview);
-  const components = node('div', undefined, 'access-components');
-  for (const component of assessment.components) {
-    const item = node('div', undefined, 'access-component');
-    item.append(node('h3', component.title), node('strong', component.unknown ? `${component.earned}–${component.earned + component.unknown}` : String(component.earned)), node('small', ` / ${component.max}`),
-      node('span', component.checks.some(check => check.state === 'fail') ? 'Needs attention' : component.unknown ? 'Partial evidence' : 'Checks passed', 'access-component-state'));
-    const bar = node('div', undefined, 'access-component-bar'); bar.setAttribute('aria-hidden', 'true');
-    bar.style.setProperty('--bar-earned', `${component.earned / component.max * 100}%`);
-    bar.style.setProperty('--bar-possible', `${(component.earned + component.unknown) / component.max * 100}%`);
-    item.dataset['state'] = component.checks.some(check => check.state === 'fail') ? 'action' : component.unknown ? 'review' : 'pass';
-    item.append(bar); components.append(item);
-  }
-  article.append(components);
-  const facts = node('dl', undefined, 'report-facts');
-  for (const fact of reportFacts(report)) { const item = node('div'); item.append(node('dt', fact.label), node('dd', fact.value), node('dd', fact.detail, 'report-fact-detail')); facts.append(item); }
-  article.append(facts);
-  const nextHeading = node('h3', 'Your next steps', 'access-next-heading'); nextHeading.id = 'report-next'; article.append(nextHeading);
-  const next = assessment.components.flatMap(component => component.checks).filter(check => check.state !== 'pass').sort((a, b) => (a.state === 'fail' ? 0 : 1) - (b.state === 'fail' ? 0 : 1) || b.weight - a.weight);
-  if (next.length === 0) article.append(node('p', 'No issue was identified in these scored checks. Review your crawler policies and optional support below for choices specific to your site.', 'ai-check-note'));
-  for (const [index, check] of next.slice(0, 3).entries()) {
-    const item = node('div', undefined, 'ai-check-finding'); item.dataset['severity'] = check.state === 'fail' ? 'action' : 'review';
-    item.append(node('span', `0${index + 1} · ${check.state === 'fail' ? 'Improve' : 'Investigate'} · ${check.weight} points`, 'ai-check-finding-label'), node('h3', check.title), node('p', check.state === 'unknown' ? check.evidence : check.nextStep));
-    const evidence = node('details'); evidence.append(node('summary', check.state === 'unknown' ? 'How to investigate' : 'Why this was flagged'), node('p', check.state === 'unknown' ? check.nextStep : check.evidence)); item.append(evidence); article.append(item);
-  }
-  const otherFindings = additionalReviewFindings(report, assessment);
-  if (otherFindings.length) {
-    article.append(node('h3', 'Other observations to review', 'access-next-heading'), node('p', 'These observations do not deduct score points. They can still matter to your intended clients and publishing policy.', 'tool-caption'));
-    for (const finding of otherFindings.slice(0, 3)) {
-      const item = node('section', undefined, 'ai-check-finding'); item.dataset['severity'] = finding.severity;
-      item.append(node('span', 'Review · no score deduction', 'ai-check-finding-label'), node('h3', finding.title), node('p', finding.evidence), node('p', finding.recommendation)); article.append(item);
-    }
-  }
-  const evidenceHeading = node('h3', 'Explore the evidence', 'access-next-heading'); evidenceHeading.id = 'report-evidence'; article.append(evidenceHeading);
-  const allFindings = disclosure(`All observations and next checks · ${report.findings.length}`);
-  for (const finding of report.findings) {
-    const item = node('section'); item.append(node('h4', finding.title), node('p', finding.evidence), node('p', finding.recommendation)); allFindings.body.append(item);
-  }
-  if (!report.findings.length) allFindings.body.append(node('p', 'No additional observations were recorded.'));
-  article.append(allFindings.details);
-  for (const component of assessment.components) {
-    const group = disclosure(`${component.title} · ${component.checks.length} ${component.checks.length === 1 ? 'check' : 'checks'}`);
-    group.details.open = component.checks.some(check => check.state !== 'pass');
-    for (const check of component.checks) {
-      const row = node('div', undefined, 'access-check-row'); row.dataset['state'] = check.state;
-      const description = node('div'); description.append(node('strong', check.title), node('small', ` · ${check.state === 'pass' ? 'Passed' : check.state === 'fail' ? 'Needs attention' : 'Unassessed'}`), node('p', check.evidence));
-      if (check.state !== 'pass') description.append(node('p', check.nextStep));
-      row.append(node('span', check.state === 'pass' ? '✓' : check.state === 'fail' ? '×' : '?', 'access-check-indicator'), description,
-        node('span', check.state === 'unknown' ? `? / ${check.weight}` : `${check.state === 'pass' ? check.weight : 0} / ${check.weight}`, 'access-check-points'));
-      group.body.append(row);
-    }
-    article.append(group.details);
-  }
-  const optional = disclosure('Optional support · no score deductions');
-  const features = node('div', undefined, 'access-optional');
-  for (const feature of assessment.optional) {
-    const item = node('div', undefined, 'access-optional-item');
-    const label = optionalSupportLabel(feature);
-    item.append(node('h4', feature.title), node('span', label, 'access-optional-state'), node('p', feature.evidence), node('p', feature.nextStep)); features.append(item);
-  }
-  optional.body.append(features); article.append(optional.details);
-  const robots = disclosure(`Crawler policy · ${report.robots.bots.length} clients`);
-  robots.body.append(node('p', 'Search, assistant and training controls are separate choices. These published policies do not authenticate a provider or verify firewall access.', 'ai-check-note'));
-  const policies = makeTable('Declared crawler policies for this path', ['Client and stated role', 'Path policy', 'Matching evidence']);
-  for (const bot of report.robots.bots) {
-    const row = policies.body.insertRow(), who = row.insertCell(), decision = row.insertCell(), evidence = row.insertCell();
-    who.append(safeLink(bot.token, bot.source), node('small', `${bot.provider} · ${bot.role}`)); decision.textContent = bot.decision;
-    evidence.append(node('span', bot.matchedRule ?? 'No matching path rule'), node('small', bot.reason), node('small', `Groups: ${bot.matchedGroups.join(', ') || 'none'}`));
-  }
-  robots.body.append(policies.wrapper); article.append(robots.details);
-  const page = disclosure('Page source · text, metadata and links');
-  page.details.classList.add('access-source');
-  page.body.append(definition([
-    ['HTML assessment', report.page.parseState], ['Title', report.page.title ?? 'Not observed'], ['Description', report.page.description ?? 'Not observed'],
-    ['Canonical', report.page.canonical ?? 'Not observed'], ['Language', report.page.language ?? 'Not observed'],
-    ['Source text', `${report.page.textCharacters.toLocaleString()} characters; scripts were not executed`],
-    ['Headings / links / scripts', `${report.page.headings} / ${report.page.links} / ${report.page.scriptElements}`],
-    ['Meta indexing controls', report.page.metaRobots.map(item => `${item.agent}: ${item.value}`).join('; ') || 'Not observed'],
-    ['Structured data types', report.page.structuredDataTypes.join(', ') || 'No types observed'],
-    ['Alternate links', report.page.alternateLinks.map(item => `${item.type}: ${item.href}`).join('\n') || 'Not observed'],
-  ]));
-  if (report.page.textPreview) page.body.append(node('h4', 'Initial HTML text preview'), node('p', report.page.textPreview, 'access-source-preview'), node('p', 'This source-level estimate can include navigation or text hidden by CSS. It is not a rendered-browser comparison.', 'tool-caption'));
-  if (report.page.headingOutline?.length) { const outline = node('ul', undefined, 'access-heading-outline'); for (const heading of report.page.headingOutline) outline.append(node('li', `H${heading.level} · ${heading.text}`)); page.body.append(node('h4', 'Heading outline'), outline); }
-  article.append(page.details);
-  const delivery = disclosure('HTTP evidence · resources and synthetic probes');
-  delivery.body.append(node('p', 'Every row records a request made by this checker. A bot-named probe does not come from that bot’s provider and cannot verify that provider’s firewall treatment.', 'ai-check-note'));
-  const resources = makeTable('Bounded HTTP observations', ['Resource', 'Response', 'Delivery evidence']);
-  for (const resource of report.resources) {
-    const row = resources.body.insertRow(), name = row.insertCell(), outcome = row.insertCell(), facts = row.insertCell();
-    name.append(node('strong', resource.probeAgent ? `Synthetic ${resource.probeAgent}` : resource.kind), node('small', resource.requestedUrl));
-    if (resource.finalUrl !== resource.requestedUrl) name.append(node('small', `Final: ${resource.finalUrl}`));
-    outcome.append(node('span', resource.status === null ? resource.outcome : `${resource.status} · ${resource.outcome}`), node('small', resource.contentType ?? 'Content-Type unavailable'));
-    facts.append(node('span', `${resource.bytes.toLocaleString()} bytes · ${resource.elapsedMs} ms · ${resource.redirects} redirects`));
-    for (const [label, value] of [['X-Robots-Tag', resource.headers.robots], ['Link', resource.headers.link], ['Content-Location', resource.headers.contentLocation], ['Vary', resource.headers.vary]]) if (value !== null) facts.append(node('small', `${label}: ${value}`));
-  }
-  delivery.body.append(resources.wrapper); article.append(delivery.details);
-  const limits = disclosure('Method, coverage and limits'), list = node('ul', undefined, 'ai-check-limits');
-  for (const limit of [...assessment.limits, ...report.limits]) list.append(node('li', limit));
-  limits.body.append(node('p', `Scoring ${assessment.profile} · collection ${report.version}`, 'tool-caption'), list); article.append(limits.details, rawEvidence(report)); return article;
+  const container = node('div');
+  container.innerHTML = siteAuditReportHtml(report, { example });
+  const result = container.firstElementChild;
+  if (!(result instanceof HTMLElement)) throw new Error('Report markup did not produce a section.');
+  return result;
 }
 
 function at(value: unknown, ...keys: string[]): unknown {
@@ -237,8 +113,7 @@ export class SiteAuditCheck extends HTMLElement {
       const report = object(value) && object(value['report']) ? value['report'] : value;
       if (!response.ok || !isSiteAuditReport(report)) throw new Error('Example unavailable');
       document.getElementById('ai-check-server-result')?.replaceChildren(); results.replaceChildren(renderSiteAudit(report, true));
-      this.clearDownload(); this.downloadUrl = URL.createObjectURL(new Blob([JSON.stringify(report, null, 2)], { type: 'application/json' }));
-      const download = node('a', 'Download example JSON', 'ai-check-download'); download.href = this.downloadUrl; download.download = 'ai-access-example.json'; (results.querySelector('.report-actions') ?? results).prepend(download);
+      this.clearDownload();
       showCheckFeedback(status, { tone: 'ready', title: 'Saved example report.', detail: 'No live request to the target and no daily check used.' });
       const rendered = results.querySelector<HTMLElement>('.ai-check-report'); rendered?.focus({ preventScroll: true });
       results.scrollIntoView({ block: 'start', behavior: 'auto' });

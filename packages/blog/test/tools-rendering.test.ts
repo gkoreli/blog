@@ -275,3 +275,23 @@ test('report facts preserve unavailable evidence and agree across both renderers
   const enhanced = renderSiteAudit(report).querySelector('.report-facts')?.textContent ?? '';
   for (const fact of facts) { assert.ok(enhanced.includes(fact.value)); assert.ok(checkResultHtml(report).includes(fact.value)); }
 });
+
+test('all assessed results are visible without opening disclosures in both rendering paths', async () => {
+  const { renderSiteAudit } = await import('../src/client/ai-check.js');
+  const { checkResultHtml } = await import('../src/worker/ai-check-html.js');
+  for (const condition of ['pass', 'fail', 'unknown'] as const) {
+    const report = fixture();
+    if (condition === 'fail') { report.page.title = null; report.resources = report.resources.map(resource => ({ ...resource, status: 403 })); }
+    if (condition === 'unknown') { report.page.parseState = 'unavailable'; report.resources = []; }
+    const client = renderSiteAudit(report), server = document.createElement('div'); server.innerHTML = checkResultHtml(report);
+    for (const root of [client, server]) {
+      assert.equal(root.querySelectorAll('.access-check-row').length, 6);
+      assert.equal(root.querySelectorAll('.access-check-row[data-state="unknown"]').length > 0, condition !== 'pass');
+      const results = root.querySelectorAll('.access-check-row, .access-optional-item, .report-policy-list li, .report-page-facts, .report-request-list');
+      for (const result of results) assert.equal(result.closest('details, [hidden]'), null, 'The outcome and evidence are visible by default');
+      assert.equal(root.querySelector('.report-policy-decision')?.textContent, 'Disallowed');
+      for (const disclosure of root.querySelectorAll('details')) assert.ok(disclosure.closest('.report-technical'), 'Only method and raw-data sections use disclosures');
+    }
+    assert.equal(client.innerHTML, server.firstElementChild?.innerHTML, 'Enhanced and no-JavaScript reports share the same content');
+  }
+});

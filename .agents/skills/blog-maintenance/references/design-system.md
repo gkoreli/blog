@@ -39,3 +39,9 @@ Use [shared tokens](../../../../packages/design/tokens.css), [layout CSS](../../
 - Use the shared [navigation choice template](../../../../packages/blog/src/templates/navigation-choice.ts) and [styles](../../../../packages/blog/src/styles/navigation-choice.css) for compact tiles or illustrated rows. Use the illustrated homepage invitation for one featured destination. Design Language renders the same components as their callers.
 - Linked headings and full-surface states provide the navigation cue. Do not append decorative direction arrows or add a second action to a single-destination choice. Use icons only when they convey an action or object.
 - The [compact navigation study](../../../../packages/blog/prototypes/tools/design-language-study.md#accepted-implementation--november-11) records the selection, rationale and earlier alternatives. Compact tiles, readable 14px descriptions, 12px metadata, 16px tile padding and 10px corners are the accepted tools-directory pattern.
+
+## Reports and results
+
+- Keep check results, their evidence and actionable next steps visible while scrolling. Use section headings and native jump links for longer reports. Reserve disclosures for method explanations and raw data, rather than hiding passed, failed, optional or unassessed results.
+- Group related checks with a compact points summary. State each outcome in words; color is a secondary cue. Keep unknown points separate from failed points and preserve the observation date and scope near the overview.
+- The enhanced and server-rendered access reports use the same escaped [report template](../../../../packages/blog/src/lib/site-audit-report.ts). Design Language renders its check-group component with explicitly illustrative inputs.

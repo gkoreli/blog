@@ -1,6 +1,5 @@
 import type { SiteAuditReport } from '@gkoreli/site-audit/contracts';
-import { deriveTechnicalAssessment } from '@gkoreli/site-audit/product';
-import { additionalReviewFindings, optionalSupportLabel, reportIdentity, assessmentVerdict, reportFacts } from '../lib/site-audit-presentation.js';
+import { siteAuditReportHtml } from '../lib/site-audit-report.js';
 import type { CheckQuota } from './ai-check-quota.js';
 import { failureFeedback } from '../lib/check-feedback.js';
 
@@ -8,60 +7,8 @@ function escape(value: string | number): string {
   return String(value).replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[char] ?? char);
 }
 
-function list(values: readonly string[]): string {
-  return `<ul>${values.map(value => `<li>${escape(value)}</li>`).join('')}</ul>`;
-}
-
-/** All remote strings are text. Sample reports have no viewer quota to display. */
 export function checkResultHtml(report: SiteAuditReport, quota?: CheckQuota, example = false): string {
-  const page = report.page;
-  const assessment = deriveTechnicalAssessment(report);
-  const { lower, upper, max, coveragePercent } = assessment.score;
-  const nextChecks = assessment.components.flatMap(component => component.checks).filter(check => check.state !== 'pass');
-  nextChecks.sort((left, right) => Number(right.state === 'fail') - Number(left.state === 'fail') || right.weight - left.weight);
-  const additionalFindings = additionalReviewFindings(report, assessment);
-  const identity = reportIdentity(report);
-  const displayScore = lower === upper ? String(lower) : `${lower}–${upper}`;
-  return `<section id="access-report" aria-labelledby="audit-result-heading" class="ai-check-results ai-check-report">
-<header class="ai-check-report-header"><div><span class="ai-check-report-label">${example ? 'Example report · saved observation' : 'Your access report'}</span><h2 id="audit-result-heading">${escape(identity.host)}</h2>
-<p class="ai-check-target">${escape(report.target)}</p><p class="tool-caption">Observed ${escape(identity.observed)}${example ? ' · No live check performed' : ''}</p></div><div class="report-actions">${example ? '<a class="ai-check-download" href="/ai-check-example.json" download="ai-access-example.json">Download example JSON</a>' : ''}<a href="/tools/compare">Compare reports</a></div></header>
-${example ? '<p class="report-example-note">Saved example · This is a dated report, not a fresh check. No daily check used.</p>' : ''}
-${quota ? `<p class="ai-check-note">${escape(quota.remaining)} of ${escape(quota.limit)} checks remaining. Resets ${escape(quota.resetAt)}.</p>` : ''}
-<nav class="report-navigation" aria-label="Report sections"><a href="#report-overview">Overview</a><a href="#report-next">Next steps</a><a href="#report-evidence">Evidence</a></nav>
-<section class="access-overview" id="report-overview" aria-label="Technical access score">
-<div class="access-score" data-range="${lower !== upper}" style="--score-earned:${lower}%;--score-possible:${upper}%" data-state="${assessment.counts.failed ? 'action' : assessment.counts.unknown ? 'review' : 'pass'}"><div class="access-score-value"><strong>${escape(displayScore)}</strong><span>out of ${escape(max)}</span></div></div>
-<div class="access-summary"><span class="ai-check-report-label">${escape(assessment.label)}</span><h3>${escape(assessmentVerdict(assessment))}</h3>
-<p class="access-coverage">${escape(assessment.counts.passed)} passed · ${escape(assessment.counts.failed)} need attention · ${escape(assessment.counts.unknown)} unassessed</p><p class="access-points-ledger">${lower} earned · ${100 - upper} deducted · ${upper - lower} unknown points</p>
-<p>${escape(coveragePercent)}% of weighted checks assessed. ${upper > lower ? 'The range includes points with unknown evidence.' : 'Expand the checks below to see how the score adds up.'}</p><a href="#score-method">How this score works</a></div></section>
-<div class="access-components">${assessment.components.map(component => `<section class="access-component" data-state="${component.checks.some(check => check.state === 'fail') ? 'action' : component.unknown ? 'review' : 'pass'}"><h3>${escape(component.title)}</h3><strong>${escape(component.earned)}${component.unknown ? `–${escape(component.earned + component.unknown)}` : ''}</strong><small> / ${escape(component.max)}</small><span class="access-component-state">${component.checks.some(check => check.state === 'fail') ? 'Needs attention' : component.unknown ? 'Partial evidence' : 'Checks passed'}</span><div class="access-component-bar" aria-hidden="true" style="--bar-earned:${component.earned / component.max * 100}%;--bar-possible:${(component.earned + component.unknown) / component.max * 100}%"></div></section>`).join('')}</div>
-<dl class="report-facts">${reportFacts(report).map(fact => `<div><dt>${escape(fact.label)}</dt><dd>${escape(fact.value)}</dd><dd class="report-fact-detail">${escape(fact.detail)}</dd></div>`).join('')}</dl>
-<h3 id="report-next" class="access-next-heading">Your next steps</h3>
-${nextChecks.length ? nextChecks.slice(0, 3).map((check, index) => `<section class="ai-check-finding" data-severity="${check.state === 'fail' ? 'action' : 'review'}"><span class="ai-check-finding-label">0${index + 1} · ${check.state === 'fail' ? 'Improve' : 'Investigate'} · ${escape(check.weight)} points</span><h3>${escape(check.title)}</h3><p>${escape(check.state === 'unknown' ? check.evidence : check.nextStep)}</p><details><summary>${check.state === 'unknown' ? 'How to investigate' : 'Why this was flagged'}</summary><p>${escape(check.state === 'unknown' ? check.nextStep : check.evidence)}</p></details></section>`).join('') : '<p class="ai-check-note">No issue was identified in these scored checks. Review your crawler policies and optional support below for choices specific to your site.</p>'}
-${additionalFindings.length ? `<h3 class="access-next-heading">Other observations to review</h3><p class="tool-caption">These observations do not deduct score points. They can still matter to your intended clients and publishing policy.</p>${additionalFindings.slice(0,3).map(finding=>`<section class="ai-check-finding" data-severity="${escape(finding.severity)}"><span class="ai-check-finding-label">Review · no score deduction</span><h3>${escape(finding.title)}</h3><p>${escape(finding.evidence)}</p><p>${escape(finding.recommendation)}</p></section>`).join('')}` : ''}
-<h3 id="report-evidence" class="access-next-heading">Explore the evidence</h3>
-${assessment.components.map(component => `<details class="access-evidence"${component.checks.some(check => check.state !== 'pass') ? ' open' : ''}><summary>${escape(component.title)} · ${component.checks.length} ${component.checks.length === 1 ? 'check' : 'checks'}</summary><div class="access-evidence-body">${component.checks.map(check => `<div class="access-check-row" data-state="${escape(check.state)}"><span class="access-check-indicator" aria-hidden="true">${check.state === 'pass' ? '✓' : check.state === 'fail' ? '×' : '?'}</span><div><strong>${escape(check.title)}</strong> <small>· ${check.state === 'pass' ? 'Passed' : check.state === 'fail' ? 'Needs attention' : 'Unassessed'}</small><p>${escape(check.evidence)}</p>${check.state !== 'pass' ? `<p>${escape(check.nextStep)}</p>` : ''}</div><span class="access-check-points">${check.state === 'unknown' ? '?' : check.state === 'pass' ? check.weight : 0} / ${check.weight}</span></div>`).join('')}</div></details>`).join('')}
-<details class="access-evidence"><summary>Optional support · no score deductions</summary><div class="access-evidence-body"><div class="access-optional">${assessment.optional.map(capability => `<section class="access-optional-item"><h4>${escape(capability.title)}</h4><span class="access-optional-state">${escape(optionalSupportLabel(capability))}</span><p>${escape(capability.evidence)}</p><p>${escape(capability.nextStep)}</p></section>`).join('')}</div></div></details>
-<details class="access-evidence"><summary>All findings and next checks (${escape(report.findings.length)})</summary><div class="access-evidence-body">${report.findings.map(finding => `<section><h4>${escape(finding.title)} <small>(${escape(finding.severity)})</small></h4><p>${escape(finding.evidence)}</p><p>${escape(finding.recommendation)}</p></section>`).join('')}</div></details>
-<details class="access-evidence"><summary>Published crawler policy for this path</summary><div class="access-evidence-body">
-<p>Robots state: ${escape(report.robots.state)}. ${escape(report.robots.groups)} groups, ${escape(report.robots.rules)} rules. These are policy evaluations, not proof of provider access.</p>
-<div class="ai-check-table-wrap" tabindex="0" role="region" aria-label="Crawler policy evidence; scroll horizontally if needed"><table><thead><tr><th scope="col">Token / provider</th><th scope="col">Role</th><th scope="col">Policy</th><th scope="col">Matching evidence</th></tr></thead><tbody>${report.robots.bots.map(bot => `<tr><th scope="row">${escape(bot.token)}<br>${escape(bot.provider)}</th><td>${escape(bot.role)}</td><td>${escape(bot.decision)}</td><td>${escape(bot.reason)}${bot.matchedRule ? `<br><code>${escape(bot.matchedRule)}</code>` : ''}<br>Groups: ${escape(bot.matchedGroups.join(', ') || 'none')}<br>Source: ${escape(bot.source)}</td></tr>`).join('')}</tbody></table></div>
-${report.robots.sitemaps.length ? `<h4>Published sitemap declarations</h4>${list(report.robots.sitemaps)}` : ''}</div></details>
-<details class="access-evidence access-source"><summary>Page and discovery evidence</summary><div class="access-evidence-body">
-<dl><dt>HTML assessment</dt><dd>${escape(page.parseState)}</dd><dt>HTML title</dt><dd>${escape(page.title ?? 'Unavailable')}</dd><dt>Description</dt><dd>${escape(page.description ?? 'Absent or unavailable')}</dd><dt>Canonical claim</dt><dd>${escape(page.canonical ?? 'Absent or unavailable')}</dd><dt>Language</dt><dd>${escape(page.language ?? 'Absent or unavailable')}</dd>
-<dt>Text in received HTML</dt><dd>${escape(page.textCharacters)} characters; ${escape(page.headings)} headings; ${escape(page.links)} links; ${escape(page.scriptElements)} script elements. Scripts were not executed.</dd>
-<dt>Indexing assessment capture</dt><dd>${page.indexingAssessmentComplete === undefined ? 'Not recorded by this report version' : page.indexingAssessmentComplete ? 'Complete within the capture policy' : 'Incomplete; some evidence unassessed'}</dd>
-<dt>Structured data types</dt><dd>${escape(page.structuredDataTypes.join(', ') || 'None observed')} (${escape(page.structuredDataBlocks)} blocks; ${escape(page.invalidStructuredDataBlocks)} invalid JSON blocks)</dd>
-<dt>llms.txt</dt><dd>${escape(report.discovery.llms)} · ${escape(report.discovery.llmsLinks)} links; optional convention</dd><dt>Sitemap</dt><dd>${escape(report.discovery.sitemap)}</dd><dt>Markdown negotiation</dt><dd>${escape(report.discovery.markdown)}; optional representation</dd></dl>
-${page.textPreview !== undefined ? `<h4>Text observed in the HTML</h4><p class="access-source-preview">${escape(page.textPreview || 'No text observed')}</p>` : ''}
-${page.headingOutline?.length ? `<h4>Observed heading outline</h4>${list(page.headingOutline.map(heading => `H${heading.level}: ${heading.text}`))}` : ''}
-${page.metaRobots.length ? `<h4>Indexing directives</h4>${list(page.metaRobots.map(value => `${value.agent}: ${value.value}`))}` : ''}
-${page.alternateLinks.length ? `<h4>Alternate representations</h4>${list(page.alternateLinks.map(value => `${value.type}: ${value.href}`))}` : ''}</div></details>
-<details class="access-evidence"><summary>Requests made by this checker (${escape(report.resources.length)})</summary><div class="access-evidence-body">
-<p>Declared-UA probes are synthetic requests from this checker, not requests from the named providers.</p>
-<div class="ai-check-table-wrap" tabindex="0" role="region" aria-label="Request evidence; scroll horizontally if needed"><table><thead><tr><th scope="col">Resource / probe</th><th scope="col">Outcome</th><th scope="col">HTTP</th><th scope="col">Evidence</th></tr></thead><tbody>${report.resources.map(resource => `<tr><th scope="row">${escape(resource.probeAgent ?? resource.kind)}</th><td>${escape(resource.outcome)}</td><td>${escape(resource.status ?? '—')}</td><td>Requested: ${escape(resource.requestedUrl)}<br>Final: ${escape(resource.finalUrl)}<br>${escape(resource.contentType ?? 'No captured content type')} · ${escape(resource.bytes)} bytes · ${escape(resource.elapsedMs)} ms · ${escape(resource.redirects)} redirects${Object.entries(resource.headers).filter(([, value]) => value !== null).map(([name, value]) => `<br>${escape(name)}: ${escape(value ?? '')}`).join('')}${resource.headersOmitted?.length ? `<br>Omitted by header-size policy: ${escape(resource.headersOmitted.join(', '))}` : ''}</td></tr>`).join('')}</tbody></table></div></div></details>
-<details class="access-evidence"><summary>Method and limits</summary><div class="access-evidence-body">${list(assessment.limits)}${list(report.limits)}</div></details>
-<details class="access-evidence"><summary>Full versioned JSON report</summary><div class="access-evidence-body"><pre>${escape(JSON.stringify({ report: { ...report, assessment }, ...(quota ? { quota } : {}) }, null, 2))}</pre></div></details>
-</section>`;
+  return siteAuditReportHtml(report, { quota, example });
 }
 
 export function checkErrorHtml(message: string, status = 503, quota?: CheckQuota): string {
