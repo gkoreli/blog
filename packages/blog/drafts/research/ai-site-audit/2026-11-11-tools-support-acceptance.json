@@ -1,0 +1,88 @@
+{
+  "version": 1,
+  "measuredAt": "2026-11-11T15:57:10.875994+00:00",
+  "sourceCommit": "6a3087065e3d1f429bfaa6619e7807c1e7929e84",
+  "cloudflareBuild": "3a238a7c-b4f9-40aa-8192-532f2571d875",
+  "method": "Five fresh read-only GETs, source/build markers, rendered support content and exact stylesheet hash. No hosted audit or request inspection submitted.",
+  "localChecks": {
+    "typecheck": true,
+    "blogTests": 442,
+    "markdownValidation": 34,
+    "builtPosts": 45,
+    "referralPolicy": true,
+    "privatePromptGuard": true,
+    "turnstileConfigured": false
+  },
+  "responses": [
+    {
+      "path": "/tools",
+      "status": 200,
+      "sha256": "e5a59b775cad5834c6fd681780d30736b7443949f0abcd32ee7b403e6f710cd0",
+      "passed": true,
+      "source": "6a3087065e3d1f429bfaa6619e7807c1e7929e84",
+      "build": "3a238a7c-b4f9-40aa-8192-532f2571d875"
+    },
+    {
+      "path": "/ai-check/example",
+      "status": 200,
+      "sha256": "b0b16cf51531079866a97a325f46985d7dff0ff78dc6823b9643e2cc34132428",
+      "passed": true,
+      "source": "6a3087065e3d1f429bfaa6619e7807c1e7929e84",
+      "build": "3a238a7c-b4f9-40aa-8192-532f2571d875"
+    },
+    {
+      "path": "/ai-site-check-evidence",
+      "status": 200,
+      "sha256": "4dd908ac6af81fadee4f8d4e2b41de1110d0ebe1d1361327273fbf9b77c76d5c",
+      "passed": true,
+      "source": "6a3087065e3d1f429bfaa6619e7807c1e7929e84",
+      "build": "3a238a7c-b4f9-40aa-8192-532f2571d875"
+    },
+    {
+      "path": "/api/ai-check/schema",
+      "status": 200,
+      "sha256": "fc48f93321a0b82a0ee9c8476c4caa59f4b1ac2a4b70a9fc03f9034b314744f4",
+      "passed": true
+    },
+    {
+      "path": "/main.css",
+      "status": 200,
+      "sha256": "e953bf536900a532e3124c7f7fd266b2a6810938dae4c3d96e227462dd23d8db",
+      "passed": true
+    }
+  ],
+  "checks": {
+    "illustratedExampleRow": true,
+    "exampleUsesNoDailyChecks": true,
+    "nativeUsageDisclosure": true,
+    "clearSharedLimit": true,
+    "namedUnlimitedTools": true,
+    "descriptiveResourceLabels": true,
+    "previousAbstractSupportCopyRemoved": true,
+    "savedReportPresent": true,
+    "exactBuiltStylesheet": true
+  },
+  "limits": [
+    "Controlled rendering and navigation checks do not establish reader comprehension or audience outcomes.",
+    "Usage policy and audit execution were not changed."
+  ],
+  "browserMeasuredAt": "2026-11-11T16:00:15.814319+00:00",
+  "browserChecks": {
+    "exampleDestination": "/ai-check/example#access-report",
+    "savedReportPresent": true,
+    "disclosureOpensWithEnter": true,
+    "disclosureClosesWithSpace": true,
+    "mobileViewportWidth": 320,
+    "mobileExpandedHorizontalOverflow": false,
+    "localScriptFreeDisclosure": true,
+    "localExampleRow": {
+      "links": 1,
+      "interiorSamples": 9,
+      "interiorHits": 9
+    },
+    "liveScreenshotViewport": {
+      "width": 1280,
+      "height": 900
+    }
+  }
+}
