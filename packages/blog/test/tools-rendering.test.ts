@@ -219,16 +219,25 @@ test('report overview and section destinations agree in enhanced and script-free
   }
 });
 
-test('tools directory submits the shared native form without requiring a client bundle', async t => {
+test('compact tools directory links to the checker and preserves its native POST entry', async t => {
   constructors(t);
   const [home, checker] = await renderContent([toolsPage(), aiCheckPage()]); assert.ok(home); assert.ok(checker);
   document.body.innerHTML = home;
-  const homeForm = document.querySelector('form.ai-check-form'); assert.ok(homeForm instanceof HTMLFormElement);
-  const markup = homeForm.outerHTML;
-  assert.equal(homeForm.getAttribute('action'), '/ai-check'); assert.equal(homeForm.method, 'post'); assert.equal(homeForm.noValidate, true);
-  assert.equal(homeForm.querySelector('input')?.type, 'text');
+  const choices = [...document.querySelectorAll('.navigation-choice')];
+  assert.equal(choices.length, 4);
+  assert.equal(document.querySelector('form'), null);
+  for (const choice of choices) {
+    const links = choice.querySelectorAll('a'); assert.equal(links.length, 1);
+    const link = links[0]; assert.ok(link);
+    assert.ok(link.textContent?.trim());
+    for (const id of (link.getAttribute('aria-describedby') ?? '').split(' ')) assert.ok(document.getElementById(id));
+  }
+  assert.equal(choices[0]?.querySelector('a')?.getAttribute('href'), '/ai-check');
+  assert.ok(document.querySelector('a[href="/ai-check/example#access-report"]'));
   document.body.innerHTML = checker;
-  assert.equal(document.querySelector('form.ai-check-form')?.outerHTML, markup);
+  const checkerForm = document.querySelector('form.ai-check-form'); assert.ok(checkerForm instanceof HTMLFormElement);
+  assert.equal(checkerForm.getAttribute('action'), '/ai-check'); assert.equal(checkerForm.method, 'post'); assert.equal(checkerForm.noValidate, true);
+  assert.equal(checkerForm.querySelector('input')?.type, 'text');
 });
 
 test('policy examples update all three inputs and remain entirely local', async t => {

@@ -28,5 +28,14 @@ Use [shared tokens](../../../../packages/design/tokens.css), [layout CSS](../../
 - Highlight code at build time with Shiki's `github-light` and `github-dark` themes and `defaultColor: false`. CSS selects the inline theme variables from `data-theme`; do not add client-side highlighting or re-render code to switch themes.
 - Give code blocks enough width and padding to read comfortably within the content column.
 - Use SVG icons from `public/icons/`, not emoji. Social buttons are 28×28px. The two-button theme control uses an active sliding thumb; [theme-toggle.css](../../../../packages/blog/src/styles/theme-toggle.css) defines its treatment.
+- Utility icons use the shared [template](../../../../packages/blog/src/templates/utility-icon.ts): a 24-unit grid, 1.5-unit round strokes and inherited single color. Use 16px beside text or 20px in controls, with an accessible name on the control. Keep gradients for identity marks; keep technical illustrations separate from utility glyphs.
 - Use the sparkle separator between appropriate publication areas. Tags render as `#hashtags`, with the gradient on the hash, rather than badges.
 - Add motion only when it helps comprehension. Preserve readable content before interactive components load.
+
+## Interactive navigation
+
+- A single-destination invitation or navigation choice uses one native link with a concise name. Its hit area includes the artwork and padding, with one tab stop and visible focus across the surface. Preserve native keyboard activation.
+- Keep forms and secondary controls outside that link’s overlay. Use a separate interactive region when a surface contains multiple actual actions.
+- Use the shared [navigation choice template](../../../../packages/blog/src/templates/navigation-choice.ts) and [styles](../../../../packages/blog/src/styles/navigation-choice.css) for compact tiles or illustrated rows. Use the illustrated homepage invitation for one featured destination. Design Language renders the same components as their callers.
+- Linked headings and full-surface states provide the navigation cue. Do not append decorative direction arrows or add a second action to a single-destination choice. Use icons only when they convey an action or object.
+- The [compact navigation study](../../../../packages/blog/prototypes/tools/design-language-study.md#accepted-implementation--november-11) records the selection, rationale and earlier alternatives. Compact tiles, readable 14px descriptions, 12px metadata, 16px tile padding and 10px corners are the accepted tools-directory pattern.

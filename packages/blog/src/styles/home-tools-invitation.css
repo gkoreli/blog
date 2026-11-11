@@ -55,11 +55,8 @@
 .home-tools-action::after { content: ''; position: absolute; inset: 0; border-radius: var(--invitation-radius); z-index: 1; }
 .home-tools-action:focus-visible { outline: none; }
 .home-tools-action:focus-visible::after { outline: 2px solid var(--color-link); outline-offset: -4px; }
-.home-tools-action-disc { width: 28px; height: 28px; display: grid; place-items: center; flex-shrink: 0; border: 1px solid var(--invitation-line); border-radius: 50%; transition: background .16s, color .16s; }
-.home-tools-arrow { width: 17px; height: 17px; background: currentColor; mask-position: center; mask-size: contain; mask-repeat: no-repeat; }
 
 .home-tools-invitation:hover, .home-tools-invitation:focus-within { background: color-mix(in srgb, var(--color-link) 12%, var(--color-bg)); border-color: color-mix(in srgb, var(--color-link) 50%, var(--color-border)); }
-.home-tools-invitation:is(:hover, :focus-within) .home-tools-action-disc { background: var(--color-link); color: var(--color-bg); }
 .home-tools-invitation:is(:hover, :focus-within) .home-tools-action > span:first-child { text-decoration-color: currentColor; }
 .home-tools-invitation:active { background: color-mix(in srgb, var(--color-link) 17%, var(--color-bg)); border-color: var(--color-link); }
 
@@ -72,10 +69,9 @@
   .home-tools-copy h2 { font-size: 1.05rem; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .home-tools-invitation, .home-tools-action-disc { transition: none; }
+  .home-tools-invitation { transition: none; }
 }
 @media (forced-colors: active) {
   .home-tools-invitation { border-color: LinkText; }
   .home-tools-action:focus-visible::after { outline-color: Highlight; }
-  .home-tools-arrow { background: LinkText; }
 }

@@ -1,0 +1,25 @@
+.tools-library { container: tools-library / inline-size; font: 17px/1.7 var(--font-sans); }
+.tools-library-intro { margin: 8px 0 24px; }
+.tools-library-kicker { font: 11px/1.6 var(--font-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--color-link); }
+.tools-library h1 { font: 600 clamp(31px,4.8cqi,38px)/1.18 var(--font-sans); letter-spacing: -.035em; margin: 10px 0 0; }
+.tools-library-intro > p:last-child { font-size: 16px; color: var(--color-text-muted); margin: 12px 0 0; }
+.tools-library-example { position: relative; margin-top: 14px; padding: 22px 0; border-bottom: 1px solid var(--color-border); }
+.tools-library-example > span { font: 12px/1.6 var(--font-mono); color: var(--color-text-muted); }
+.tools-library-example h2 { font: 500 20px/1.35 var(--font-sans); margin: 3px 0; }
+.tools-library-example a { text-decoration-color: color-mix(in srgb,var(--color-link) 45%,transparent); text-underline-offset: 4px; }
+.tools-library-example a::after { content: ''; position: absolute; inset: 0; border-radius: 6px; }
+.tools-library-example a:focus-visible { outline: none; }
+.tools-library-example:has(a:focus-visible) { outline: 2px solid var(--color-link); outline-offset: 4px; }
+.tools-library-example a:hover { text-decoration-color: currentColor; }
+.tools-library-example p { font-size: 14px; line-height: 1.7; color: var(--color-text-muted); }
+.tools-library .tools-library-allowance { font: 12px/1.75 var(--font-mono); color: var(--color-text-muted); margin: 22px 0 15px; }
+.tools-library-provenance { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 22px; border-top: 1px solid var(--color-border); padding: 10px 0; margin: 0; }
+.tools-library-provenance > span { font-size: 14px; color: var(--color-text-muted); font-style: italic; margin-right: auto; }
+.tools-library-provenance a { display: inline-flex; min-height: 44px; align-items: center; font-size: 13px; }
+@container tools-library (max-width:560px) {
+  .tools-library-intro { margin: 4px 0 22px; }
+  .tools-library-example { padding-block: 19px; }
+  .tools-library .tools-library-allowance { margin-top: 18px; }
+  .tools-library-provenance { gap: 0 20px; }
+  .tools-library-provenance > span { flex-basis: 100%; }
+}

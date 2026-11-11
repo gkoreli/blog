@@ -26,7 +26,6 @@ export function homeToolsInvitation(headingId = 'home-tools-heading') {
     </div>
     <a class="home-tools-action" href="/tools">
       <span>Open the workbench</span>
-      <span class="home-tools-action-disc" aria-hidden="true"><span class="home-tools-arrow" style="mask-image:url('/icons/arrow-right.svg')"></span></span>
     </a>
   </section>`;
 }

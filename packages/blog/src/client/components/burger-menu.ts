@@ -1,4 +1,5 @@
 import { component, html, signal, computed, effect } from '@nisli/core';
+import { utilityIconStyle } from '../../templates/utility-icon.js';
 
 const open = signal(false);
 
@@ -6,7 +7,7 @@ component('nisli-burger-menu', () => {
   const toggle = () => { open.value = !open.value; };
   const close = () => { open.value = false; };
 
-  const iconSrc = computed(() => open.value ? '/icons/close.svg' : '/icons/menu.svg');
+  const iconStyle = computed(() => utilityIconStyle(open.value ? 'close' : 'menu'));
   const expanded = computed(() => String(open.value));
 
   effect(() => {
@@ -24,7 +25,7 @@ component('nisli-burger-menu', () => {
 
   return html`
     <button @click=${toggle} class="burger-btn" aria-label="Menu" aria-expanded=${expanded}>
-      <img src=${iconSrc} width="20" height="20" alt="">
+      <span class="ui-icon" aria-hidden="true" style=${iconStyle}></span>
     </button>
   `;
 });

@@ -1,0 +1,156 @@
+/* Scoped exploration: uses the publication palette; changes no live component. */
+.tool-study {
+  --ts-paper: var(--color-bg);
+  --ts-ink: var(--color-text);
+  --ts-muted: var(--color-text-muted);
+  --ts-line: var(--color-border);
+  --ts-accent: var(--color-link);
+  --ts-surface: var(--color-surface);
+  --ts-soft: color-mix(in srgb, var(--ts-accent) 6%, var(--ts-paper));
+  --ts-radius: 12px;
+  font-family: 'Lora', Georgia, serif;
+  color: var(--ts-ink);
+  font-size: 17px;
+  line-height: 1.6;
+  container: tools-study / inline-size;
+}
+.tool-study *, .tool-study *::before, .tool-study *::after { box-sizing: border-box; }
+.tool-study :is(h1,h2,p) { margin: 0; font-family: 'Lora', Georgia, serif; }
+.tool-study a { color: var(--ts-accent); text-underline-offset: 4px; font-family: inherit; }
+.tool-study :is(button,input,a):focus-visible { outline: 2px solid var(--ts-accent); outline-offset: 4px; }
+.tool-study .ts-meta, .tool-study .ts-kicker, .tool-study .ts-form-help, .tool-study .ts-preview-status, .tool-study .ts-footnote { font-family: var(--font-mono, ui-monospace, monospace); }
+.tool-study .ts-meta { font-size: 11px; line-height: 1.6; color: var(--ts-muted); }
+.tool-study .ts-kicker { font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--ts-accent); margin-bottom: 12px; }
+.tool-study .ts-intro { margin: 16px 0 28px; display: flex; align-items: center; gap: 20px; }
+.tool-study h1 { font-size: clamp(32px, 5.3cqi, 46px); font-weight: 600; line-height: 1.17; letter-spacing: -.035em; }
+.tool-study .ts-lead { color: var(--ts-muted); font-size: 17px; line-height: 1.65; max-width: 540px; margin-top: 14px; text-wrap: pretty; }
+.tool-study h2 { font-size: 23px; line-height: 1.3; font-weight: 500; letter-spacing: -.015em; }
+.tool-study .ts-intro-art { width: 194px; flex: 0 0 25%; }
+.tool-study .ts-illustration { display: block; width: 100%; height: auto; max-height: 180px; }
+.tool-study .ts-art-paper { fill: var(--ts-paper); stroke: color-mix(in srgb, var(--ts-ink) 35%, var(--ts-paper)); stroke-width: 1; }
+.tool-study .ts-art-line { stroke: color-mix(in srgb, var(--ts-ink) 32%, var(--ts-paper)); stroke-width: 1.2; stroke-linecap: round; stroke-linejoin: round; fill: none; }
+.tool-study .ts-art-tint { fill: color-mix(in srgb, var(--ts-accent) 17%, var(--ts-paper)); }
+.tool-study .ts-art-ink { fill: var(--ts-accent); }
+.tool-study .ts-art-check { stroke: var(--ts-paper); stroke-width: 1.5; fill: none; }
+.tool-study .ts-art-accent { stroke: var(--ts-accent); stroke-width: 2; stroke-linecap: round; fill: none; }
+.tool-study .ts-art-removed { stroke: var(--color-accent-rust); stroke-width: 2; stroke-linecap: round; stroke-dasharray: 3 4; }
+.tool-study .ts-arrow { display: inline-block; font-family: ui-monospace, monospace; font-size: 19px; line-height: 1; flex-shrink: 0; }
+.tool-study .ts-check-surface { background: var(--ts-soft); border: 1px solid color-mix(in srgb, var(--ts-accent) 16%, var(--ts-line)); border-radius: var(--ts-radius); padding: 25px; }
+.tool-study .ts-surface-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 20px; }
+.tool-study .ts-check-form label { display: block; font-family: var(--font-mono, ui-monospace, monospace); font-size: 12px; margin-bottom: 8px; }
+.tool-study .ts-input-row { display: flex; gap: 9px; align-items: stretch; }
+.tool-study .ts-input-row input { background: var(--ts-paper); color: var(--ts-ink); border: 1px solid color-mix(in srgb, var(--ts-ink) 30%, var(--ts-line)); border-radius: 6px; padding: 12px 14px; min-height: 48px; flex: 1; min-width: 0; width: 100%; font: 16px/1.4 var(--font-mono, ui-monospace, monospace); }
+.tool-study .ts-input-row input::placeholder { color: var(--ts-muted); opacity: 1; }
+.tool-study .ts-primary { display: inline-flex; align-items: center; justify-content: center; gap: 15px; min-height: 48px; padding: 12px 17px; border-radius: 6px; border: 1px solid transparent; background: var(--ts-accent); color: var(--ts-paper); font: 12px/1.5 var(--font-mono, ui-monospace, monospace); white-space: nowrap; text-decoration: none; cursor: pointer; }
+.tool-study .ts-primary:hover { background: color-mix(in srgb, var(--ts-accent) 85%, var(--ts-ink)); }
+.tool-study .ts-primary:active { transform: translateY(1px); }
+.tool-study .ts-form-help { margin-top: 8px; color: var(--ts-muted); font-size: 11px; line-height: 1.6; }
+.tool-study .ts-preview-status { margin-top: 12px; color: var(--ts-ink); font-size: 12px; line-height: 1.7; overflow-wrap: anywhere; }
+.tool-study .ts-preview-status[hidden] { display: none; }
+.tool-study .ts-check-bottom { margin-top: 17px; padding-top: 15px; border-top: 1px solid color-mix(in srgb, var(--ts-accent) 12%, var(--ts-line)); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 14px; }
+.tool-study .ts-check-bottom a { font-size: 13px; display: inline-flex; align-items: center; min-height: 32px; gap: 10px; }
+.tool-study .ts-section-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin: 32px 0 10px; }
+.tool-study .ts-section-heading h2 { font-size: 21px; }
+.tool-study .ts-tool-tile { position: relative; min-width: 0; }
+.tool-study .ts-stretched-link { color: var(--ts-ink); text-decoration: none; }
+.tool-study .ts-stretched-link::after { content: ''; position: absolute; inset: 0; border-radius: var(--ts-radius); }
+.tool-study .ts-tool-tile:has(.ts-stretched-link:focus-visible) { outline: 2px solid var(--ts-accent); outline-offset: 4px; }
+.tool-study .ts-stretched-link:focus-visible { outline: none; }
+.tool-study .ts-tool-tile:hover .ts-tile-action { text-decoration: underline; text-underline-offset: 4px; }
+.tool-study .ts-tile-copy p { font-size: 14px; color: var(--ts-muted); line-height: 1.65; margin-top: 8px; max-width: 33em; text-wrap: pretty; }
+.tool-study .ts-tile-action { color: var(--ts-accent); display: flex; gap: 10px; align-items: center; font-size: 13px; margin-top: 16px; }
+.tool-study .ts-bench-tools .ts-tool-tile { display: grid; grid-template-columns: 120px 1fr; gap: 22px; align-items: center; padding: 17px 4px; border-bottom: 1px solid var(--ts-line); }
+.tool-study .ts-bench-tools .ts-tool-tile:hover { background: color-mix(in srgb, var(--ts-accent) 3%, var(--ts-paper)); }
+.tool-study .ts-bench-tools .ts-tile-art { background: var(--ts-surface); border-radius: 10px; }
+.tool-study .ts-bench-tools .ts-meta { display: none; }
+.tool-study .ts-bench-tools h2 { font-size: 21px; }
+.tool-study .ts-bench-tools .ts-tile-action { position: absolute; right: 8px; top: 20px; font-size: 0; }
+.tool-study .ts-bench-tools .ts-tile-copy { padding-right: 28px; }
+.tool-study .ts-footnote { font-size: 11px; color: var(--ts-muted); line-height: 1.75; margin: 22px 0; }
+.tool-study .ts-provenance { border-top: 1px solid var(--ts-line); padding: 19px 0; display: flex; align-items: center; flex-wrap: wrap; gap: 8px 22px; margin: 0; }
+.tool-study .ts-provenance > span:first-child { font-style: italic; color: var(--ts-muted); font-size: 14px; margin-right: auto; }
+.tool-study .ts-provenance a { display: inline-flex; min-height: 36px; align-items: center; gap: 8px; font-size: 12px; }
+.tool-study .ts-provenance .ts-arrow { font-size: 15px; }
+.tool-study .ts-library-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.tool-study .ts-library-grid .ts-tool-tile { border: 1px solid var(--ts-line); border-radius: var(--ts-radius); padding: 0 23px 22px; display: flex; flex-direction: column; background: var(--ts-paper); transition: border-color .15s ease; }
+.tool-study .ts-library-grid .ts-tool-tile:hover { border-color: var(--ts-accent); }
+.tool-study .ts-library-grid .ts-tile-art { height: 140px; display: grid; place-items: center; margin-bottom: 8px; }
+.tool-study .ts-library-grid .ts-illustration { max-width: 240px; max-height: 140px; }
+.tool-study .ts-library-grid .ts-tile-copy { flex: 1; display: flex; flex-direction: column; }
+.tool-study .ts-library-grid h2 { margin-top: 8px; }
+.tool-study .ts-library-grid .ts-tile-action { margin-top: auto; padding-top: 18px; }
+.tool-study .ts-library-grid .ts-tile-copy p { margin-bottom: 8px; }
+.tool-study .ts-library-grid .ts-page { background: var(--ts-soft); border-color: color-mix(in srgb, var(--ts-accent) 22%, var(--ts-line)); }
+.tool-study .ts-example-invitation { position: relative; display: flex; align-items: center; gap: 22px; padding: 25px 5px; border-bottom: 1px solid var(--ts-line); }
+.tool-study .ts-example-invitation > .ts-arrow { margin-left: auto; color: var(--ts-accent); }
+.tool-study .ts-example-invitation h2 { font-size: 20px; margin: 4px 0 6px; }
+.tool-study .ts-example-invitation p:not(.ts-meta) { font-size: 13px; color: var(--ts-muted); }
+.tool-study .ts-example-invitation:has(a:focus-visible) { outline: 2px solid var(--ts-accent); outline-offset: 4px; }
+.tool-study .ts-example-stack { width: 46px; height: 52px; position: relative; flex-shrink: 0; }
+.tool-study .ts-example-stack span { position: absolute; width: 34px; height: 44px; border: 1px solid var(--ts-line); background: var(--ts-paper); border-radius: 3px; transform: rotate(-9deg); }
+.tool-study .ts-example-stack span + span { left: 9px; top: 5px; transform: rotate(6deg); background: var(--ts-soft); }
+.tool-study .ts-task-layout { display: grid; grid-template-columns: 210px minmax(0,1fr); border-top: 1px solid var(--ts-line); border-bottom: 1px solid var(--ts-line); }
+.tool-study .ts-task-choices { padding: 20px 20px 20px 0; display: flex; flex-direction: column; gap: 7px; }
+.tool-study .ts-task-choice { border-radius: 7px; min-height: 60px; padding: 12px; display: flex; align-items: center; gap: 13px; text-decoration: none; color: var(--ts-muted); font-size: 14px; line-height: 1.5; }
+.tool-study .ts-choice-mark { font-family: var(--font-mono,ui-monospace,monospace); font-size: 10px; color: var(--ts-muted); }
+.tool-study .ts-task-choice > .ts-arrow { margin-left: auto; font-size: 15px; }
+.tool-study .ts-task-choice:hover { color: var(--ts-ink); background: var(--ts-surface); }
+.tool-study .ts-task-choice.is-active { background: var(--ts-soft); color: var(--ts-accent); }
+.tool-study .ts-task-choice.is-active .ts-choice-mark { color: var(--ts-accent); }
+.tool-study .ts-task-panels { min-width: 0; padding: 20px 0 26px 27px; border-left: 1px solid var(--ts-line); }
+.tool-study .ts-task-panel { padding-bottom: 36px; }
+.tool-study.ts-enhanced .ts-task-panel { min-height: 500px; padding-bottom: 0; }
+.tool-study .ts-task-panel[hidden] { display: none; }
+.tool-study .ts-panel-art { border-radius: var(--ts-radius); background: var(--ts-soft); padding: 8px 14px 16px; margin-bottom: 23px; text-align: center; }
+.tool-study .ts-panel-art .ts-illustration { height: 145px; margin: 0 auto 5px; }
+.tool-study .ts-panel-copy > h2 { font-size: 25px; margin: 7px 0 10px; }
+.tool-study .ts-panel-copy > p { color: var(--ts-muted); font-size: 14px; line-height: 1.75; margin-bottom: 23px; }
+.tool-study .ts-panel-copy .ts-input-row { flex-wrap: wrap; }
+.tool-study .ts-panel-copy input { flex-basis: 180px; }
+.tool-study .ts-panel-copy .ts-primary { flex: 1; }
+.tool-study .ts-open-tool { min-width: 190px; }
+.tool-study .ts-panel-allowance { display: block; margin-top: 14px; }
+.tool-study .ts-quiet-link { font-size: 13px; display: inline-flex; align-items: center; gap: 12px; min-height: 44px; margin-top: 5px; }
+@container tools-study (max-width: 600px) {
+  .tool-study .ts-intro { margin-top: 5px; }
+  .tool-study .ts-intro-art { display: none; }
+  .tool-study .ts-surface-heading { align-items: start; flex-direction: column; gap: 3px; }
+  .tool-study .ts-check-surface { padding: 21px; }
+  .tool-study .ts-input-row { flex-direction: column; }
+  .tool-study .ts-input-row input { flex-basis: auto; }
+  .tool-study .ts-check-bottom { flex-direction: column; align-items: start; }
+  .tool-study .ts-section-heading > .ts-meta { display: none; }
+  .tool-study .ts-library-grid { gap: 12px; }
+  .tool-study .ts-library-grid .ts-tool-tile { padding: 0 16px 18px; }
+  .tool-study .ts-library-grid h2 { font-size: 21px; }
+  .tool-study .ts-task-layout { grid-template-columns: minmax(0,1fr); }
+  .tool-study .ts-task-choices { padding: 16px 0; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .tool-study .ts-task-choice { border: 1px solid var(--ts-line); min-height: 66px; padding: 10px; font-size: 13px; gap: 9px; }
+  .tool-study .ts-task-choice.is-active { border-color: color-mix(in srgb, var(--ts-accent) 32%, var(--ts-line)); }
+  .tool-study .ts-task-choice > .ts-arrow { display: none; }
+  .tool-study .ts-task-panels { padding: 20px 0 24px; border-left: 0; border-top: 1px solid var(--ts-line); }
+  .tool-study.ts-enhanced .ts-task-panel { min-height: 500px; }
+  .tool-study .ts-panel-art { display: grid; grid-template-columns: 140px minmax(0,1fr); align-items: center; text-align: left; padding: 5px 12px; }
+  .tool-study .ts-panel-art .ts-illustration { height: 100px; margin: 0; }
+  .tool-study .ts-panel-copy > h2 { font-size: 26px; }
+}
+@container tools-study (max-width: 420px) {
+  .tool-study .ts-lead { font-size: 16px; }
+  .tool-study .ts-check-surface { padding: 19px; }
+  .tool-study .ts-bench-tools .ts-tool-tile { grid-template-columns: 80px minmax(0,1fr); gap: 15px; padding-block: 21px; }
+  .tool-study .ts-bench-tools h2 { font-size: 19px; }
+  .tool-study .ts-bench-tools .ts-tile-copy p { font-size: 13px; margin-top: 5px; }
+  .tool-study .ts-bench-tools .ts-tile-copy { padding-right: 12px; }
+  .tool-study .ts-bench-tools .ts-tile-action { right: 0; }
+  .tool-study .ts-library-grid { grid-template-columns: 1fr; gap: 12px; }
+  .tool-study .ts-library-grid .ts-tool-tile { display: grid; grid-template-columns: 87px minmax(0,1fr); padding: 17px 16px 17px 5px; gap: 11px; }
+  .tool-study .ts-library-grid .ts-tile-art { height: auto; margin: 0; }
+  .tool-study .ts-library-grid .ts-tile-copy p { font-size: 13px; }
+  .tool-study .ts-library-grid .ts-tile-action { padding-top: 8px; }
+  .tool-study .ts-library-grid h2 { font-size: 21px; margin-top: 4px; }
+  .tool-study .ts-example-invitation { gap: 15px; }
+  .tool-study .ts-example-invitation h2 { font-size: 19px; }
+  .tool-study .ts-provenance { gap: 8px 18px; }
+  .tool-study .ts-provenance > span:first-child { flex-basis: 100%; }
+}
+@media (prefers-reduced-motion: reduce) { .tool-study * { transition: none !important; } }

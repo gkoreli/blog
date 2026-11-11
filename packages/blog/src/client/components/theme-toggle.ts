@@ -1,4 +1,5 @@
 import { component, html, signal, effect, computed } from '@nisli/core';
+import { utilityIcon } from '../../templates/utility-icon.js';
 
 const isDark = signal(false);
 
@@ -25,10 +26,10 @@ component('nisli-theme-toggle', () => {
   return html`
     <div class="theme-toggle">
       <button @click=${setLight} class=${lightActive} aria-label="Light mode" title="Light mode">
-        <img src="/icons/sun.svg" width="16" height="16" alt="">
+        ${utilityIcon('sun')}
       </button>
       <button @click=${setDark} class=${darkActive} aria-label="Dark mode" title="Dark mode">
-        <img src="/icons/moon.svg" width="16" height="16" alt="">
+        ${utilityIcon('moon')}
       </button>
     </div>
   `;

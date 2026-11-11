@@ -1,0 +1,72 @@
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap">
+<div id="gk-tools-studies" aria-label="Tools page design studies">
+  <div class="viz-carousel" aria-label="Tools page alternatives">
+    <!-- STUDIES -->
+  </div>
+</div>
+<style>
+#gk-tools-studies { width: 100%; }
+#gk-tools-studies [data-variant] { min-height: 1240px; }
+#gk-tools-studies:has(.study-product[data-viewport="Phone"]) [data-variant] { min-height: 1440px; }
+#gk-tools-studies .study-product {
+  --color-bg: light-dark(#faf8f5,#1a1a1a);
+  --color-surface: light-dark(#f0ece6,#242424);
+  --color-text: light-dark(#2d2a24,#e0ddd5);
+  --color-text-muted: light-dark(#7a7568,#9a9589);
+  --color-border: light-dark(#ddd8cf,#3a3a3a);
+  --color-link: light-dark(#1a6b4e,#6ec9a8);
+  --color-accent-rust: light-dark(#b04a24,#c05a2e);
+  --font-mono: 'SF Mono',ui-monospace,monospace;
+  color: var(--color-text); background: var(--color-bg);
+  font: 17px/1.6 'Lora',Georgia,serif;
+  display: grid; grid-template-columns: 170px minmax(0,1fr); gap: 32px;
+  padding: 32px 28px; min-width: 0; width: 100%; max-width: 1024px; margin: auto;
+}
+#gk-tools-studies .study-product[data-appearance="Light"] { color-scheme: light; }
+#gk-tools-studies .study-product[data-appearance="Dark"] { color-scheme: dark; }
+#gk-tools-studies .study-product[data-viewport="Phone"] { max-width: 393px; display: block; padding: 0 20px 20px; }
+#gk-tools-studies .study-sidebar { padding-top: 8px; font-size: 14px; }
+#gk-tools-studies .study-brand { font-weight: 600; font-size: 17px; color: var(--color-text); text-decoration: none; display: flex; align-items: center; gap: 8px; }
+#gk-tools-studies .study-brand svg { width: 22px; height: 22px; }
+#gk-tools-studies .study-sidebar p { font-style: italic; color: var(--color-text-muted); font-size: 12px; line-height: 1.6; margin: 9px 0 28px; }
+#gk-tools-studies .study-sidebar nav { display: grid; gap: 0; }
+#gk-tools-studies .study-sidebar nav a { color: var(--color-text-muted); text-decoration: none; min-height: 36px; display: flex; align-items: center; gap: 8px; }
+#gk-tools-studies .study-sidebar nav a[aria-current] { color: var(--color-text); font-weight: 600; }
+#gk-tools-studies .study-sidebar nav a[aria-current]::before { content:'·'; color:var(--color-link); margin-left:-11px; }
+#gk-tools-studies .study-mobile-brand { display: none; }
+#gk-tools-studies .study-body { min-width: 0; }
+#gk-tools-studies .study-product[data-viewport="Phone"] .study-sidebar { display: none; }
+#gk-tools-studies .study-product[data-viewport="Phone"] .study-mobile-brand { display: flex; padding: 20px 0; border-bottom:1px solid var(--color-border); margin-bottom: 26px; }
+#gk-tools-studies .tool-study { --ts-radius: var(--study-radius,12px); }
+/* PRODUCT_STYLES */
+@media(max-width:760px) {
+  #gk-tools-studies [data-variant] { min-height: 1320px; }
+  #gk-tools-studies .study-product { display:block; padding:0 22px 22px; }
+  #gk-tools-studies .study-sidebar { display:none; }
+  #gk-tools-studies .study-mobile-brand { display:flex; padding:20px 0; border-bottom:1px solid var(--color-border); margin-bottom:26px; }
+}
+@media(max-width:420px) {
+  #gk-tools-studies [data-variant], #gk-tools-studies:has(.study-product[data-viewport="Phone"]) [data-variant] { min-height: 1850px; }
+}
+</style>
+<script>
+/* PRODUCT_SCRIPT */
+const productRoot = document.getElementById('gk-tools-studies');
+const appearance = { theme: 'Match chat', viewport: 'Responsive', /* DESIGN_DEFAULTS */ };
+function renderAppearance() {
+  productRoot.querySelectorAll('.study-product').forEach(product => {
+    product.dataset.appearance = appearance.theme;
+    product.dataset.viewport = appearance.viewport;
+    product.style.setProperty('--study-radius', `${appearance.radius}px`);
+    /* DESIGN_RENDER */
+  });
+}
+renderAppearance();
+if (globalThis.Tweak) {
+  const tweak = new Tweak({container:productRoot,onChange:renderAppearance});
+  tweak.addSelect(appearance,'theme',{label:'Appearance',options:['Match chat','Light','Dark']});
+  tweak.addSelect(appearance,'viewport',{label:'Preview width',options:['Responsive','Phone']});
+  /* RADIUS_CONTROL */
+  /* DESIGN_CONTROLS */
+}
+</script>

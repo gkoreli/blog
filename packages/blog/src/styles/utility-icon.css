@@ -1,0 +1,6 @@
+/* Utility glyphs: 24-unit grid, 1.5-unit round strokes, inherited single color. */
+.ui-icon { display: inline-block; width: var(--ui-icon-size,16px); height: var(--ui-icon-size,16px); flex: 0 0 var(--ui-icon-size,16px); vertical-align: -.15em; background: currentColor; mask-image: var(--ui-icon-image); mask-position: center; mask-size: contain; mask-repeat: no-repeat; mask-mode: alpha; }
+.burger-btn { color: var(--color-link); }
+.burger-btn .ui-icon { --ui-icon-size: 20px; }
+.theme-toggle button { color: var(--color-link); }
+@media(forced-colors:active) { .ui-icon { forced-color-adjust: none; background: ButtonText; } }

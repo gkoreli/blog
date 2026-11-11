@@ -236,3 +236,15 @@ The owner subsequently preferred Inline and flagged its small click target. The 
 The owner selected **Refined inline** as the version to keep. The [selection and release record](../../../prototypes/homepage/README.md#selected-version--november-11) tracks its checked main delivery and fresh production verification. The compact layout, full-card native target and Design Language example are the accepted scope; this selection supersedes the preceding pending visual-review state.
 
 Source `3134918f` was pushed to main and Cloudflare build `60b619b8-40e8-4f87-9650-12cb0a55f8e3` succeeded. The [fresh acceptance receipt](2026-11-11-homepage-invitation-acceptance.json) verifies served source identity, exact stylesheet, HTML/Markdown discovery, the Design Language example, unpublished prototype routes and actual public pointer/keyboard navigation. The requested homepage change is delivered; reader-use outcomes remain unmeasured.
+
+### November 11: tools directory prototypes
+
+The owner subsequently requested a redesign of `/tools` with prototypes. The [tools-page design study](../../../prototypes/tools/README.md) compares Workbench, Tool library and Task chooser in an isolated worktree and the conversation. It records their different entry flows, shared visual language, local responsive and interaction checks, and the prototype-only form boundary. Tool library is proposed for review; no direction is selected and no tools-page deployment is claimed. Next action: refine the owner’s selected direction, then integrate it with the existing functional tools.
+
+The owner selected **Tool library** and asked for smaller cards, additional UX/design research and a stronger overall design language. The [compact-navigation study](../../../prototypes/tools/design-language-study.md) supersedes the pending direction choice above. It compares Compact tiles with Illustrated rows, retains the previous library as a measurement baseline, and proposes a shared navigation pattern family. This is a local design review; the refined layout has not been selected or deployed.
+
+### Compact tools implementation — November 11
+
+Compact tiles is selected for implementation, with the pattern family included in Design Language. The [implementation record](../../../prototypes/tools/README.md#selected-implementation--november-11) describes the shared template, linked-title treatment without decorative arrows, consistent utility icons and the preserved native checker entry. The prior pending-layout state is superseded.
+
+Workspace typecheck, 34 Markdown validations, all 442 blog tests, referral-policy verification, the private-prompt guard and an isolated 45-post build passed. No public Turnstile configuration was copied into the checkout. Local rendering and interaction checks remain distinct from source delivery and fresh public acceptance, which follow below.

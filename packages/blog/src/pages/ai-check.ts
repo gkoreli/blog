@@ -8,7 +8,7 @@ export function aiCheckPage() {
     <header class="ai-check-header"><p class="tool-kicker">Page access · free check</p><h1>AI access check</h1><p class="ai-check-lead">Find out what arrives when a client requests your page. Inspect delivery, HTML content and crawler policies.</p></header>
     <site-audit-check>
       <div class="ai-check-console">${siteCheckForm()}
-      <div class="ai-check-underform"><a href="/ai-check/example#access-report" data-example-check>See an example report <span aria-hidden="true">↗</span></a><span class="tool-caption">No check used</span></div>
+      <div class="ai-check-underform"><a href="/ai-check/example#access-report" data-example-check>See an example report</a><span class="tool-caption">No check used</span></div>
       <details class="ai-check-input-details"><summary>What happens when I check a page?</summary><p>We request the public HTTPS page, its origin’s discovery files and synthetic client comparisons. Use a URL without credentials, queries or fragments. The form and API share ten checks per network address per UTC day; shared networks share that allowance. Admitted checks count even when fetching fails.</p><p>These are technical access checks, not a prediction of ranking or citation. <a href="/privacy">Privacy and retention</a> · <a href="/api/ai-check/schema">API contract</a></p></details>
       <div data-audit-status role="status" aria-live="polite" aria-atomic="true"></div></div><div data-audit-results></div><noscript><p>This form works without JavaScript. <a href="/ai-check/example#access-report">View the example report</a> without using a check.</p></noscript>
     </site-audit-check>

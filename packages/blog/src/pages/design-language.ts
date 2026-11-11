@@ -1,5 +1,14 @@
 import { html } from '@nisli/core';
 import { homeToolsInvitation } from './home-tools-invitation.js';
+import { navigationChoices } from '../templates/navigation-choice.js';
+import { toolCatalogue } from './tool-catalogue.js';
+import { utilityIcon, utilityIconNames, type UtilityIconName } from '../templates/utility-icon.js';
+
+const ICON_LABELS: Record<UtilityIconName, string> = {
+  menu: 'Menu', close: 'Close', sun: 'Light appearance', moon: 'Dark appearance',
+  clock: 'Time', mail: 'Mail', pen: 'Edit', posts: 'Document',
+  desktop: 'Desktop', tablet: 'Tablet', phone: 'Phone',
+};
 
 const PALETTE = [
   { name: 'Paper',        token: '--color-bg',           light: '#faf8f5', dark: '#1a1a1a',  role: 'Page background — warm, not white' },
@@ -110,13 +119,34 @@ export function designLanguagePage() {
     </div>
   </div>
 
+  ${GradSep()}
+
+  <section id="navigation-patterns">
+  ${Chapter({ num: '04', title: 'Navigation Patterns' })}
+  <p class="dl-body-note">One destination per surface. A linked title names the move; artwork and padding share its target. Keep one tab stop, a full-surface focus outline and a visible link treatment. A direction arrow is unnecessary when the destination is already clear.</p>
+  <h3 class="dl-pattern-title">Compact choices</h3>
+  <p class="dl-body-note">Use a small grid for a few peer destinations. Keep the drawing beside the title, a short purpose beneath it and useful metadata last. Content grows naturally; descriptions stay readable at 14px.</p>
+  ${navigationChoices(toolCatalogue.slice(0, 2), { label: 'Compact choice examples', idPrefix: 'dl-choice', headingLevel: 3 })}
+  <h3 class="dl-pattern-title">Illustrated rows</h3>
+  <p class="dl-body-note">Use an open list for supporting destinations or longer collections. Keep the same type, drawings and native link behavior, with quiet horizontal divisions.</p>
+  ${navigationChoices(toolCatalogue.slice(2), { label: 'Illustrated row examples', idPrefix: 'dl-row', layout: 'rows', headingLevel: 3 })}
   <h3 class="dl-pattern-title">Illustrated invitation</h3>
-  <p class="dl-body-note">Give the move from reading to doing a compact, illustrated surface. For one destination, the whole surface responds: title, artwork and padding. Keep one clear link, show focus around its full target, and let the writing around it stay open and editorial.</p>
+  <p class="dl-body-note">Bring one relevant destination into the writing with a compact illustration and a restrained tint. The whole surface responds, including the artwork and padding. Keep forms and secondary controls in their own region.</p>
   ${homeToolsInvitation('dl-tools-invitation-heading')}
+  </section>
 
   ${GradSep()}
 
-  ${Chapter({ num: '04', title: 'Brand Gradient' })}
+  <section id="iconography">
+  ${Chapter({ num: '05', title: 'Icons & Illustrations' })}
+  <p class="dl-body-note">Utility icons identify a concrete action or object. Use a 24-unit grid, 1.5-unit strokes, round caps and one inherited color. Render at 16px alongside text or 20px in a control, with a generous target around the glyph. Label controls; decorative icons stay silent.</p>
+  <div class="dl-icon-family">${utilityIconNames.map(name => html`<div class="dl-icon-sample"><div class="dl-icon-glyph">${utilityIcon(name)}</div><span>${ICON_LABELS[name]}</span></div>`)}</div>
+  <p class="dl-body-note">Technical illustrations have a different job: show documents, rules, request structure and changed evidence. Compose them at their intended thumbnail size with paper faces and restrained accents. Keep the gradient for identity marks. Use text and interaction states when an extra icon adds no meaning.</p>
+  </section>
+
+  ${GradSep()}
+
+  ${Chapter({ num: '06', title: 'Brand Gradient' })}
   <p class="dl-body-note">Reserved exclusively for identity marks. Logo, sparkle separator, #tag hashes. Use sparingly so it lands with weight.</p>
   <div class="dl-grad-strip"></div>
   <div class="dl-grad-stops">
@@ -131,7 +161,7 @@ export function designLanguagePage() {
 
   ${GradSep()}
 
-  ${Chapter({ num: '05', title: 'Canvas Moods' })}
+  ${Chapter({ num: '07', title: 'Canvas Moods' })}
   <p class="dl-body-note">The neural canvas is the publication's life force — a post-level instrument for immersive posts and the Animations Lab. Archive surfaces stay quiet.</p>
   <div class="dl-canvas-demos">
     <div class="dl-canvas-cell">
@@ -158,7 +188,7 @@ export function designLanguagePage() {
 
   ${GradSep()}
 
-  ${Chapter({ num: '06', title: 'Motifs' })}
+  ${Chapter({ num: '08', title: 'Motifs' })}
   <p class="dl-body-note">Recurring visual signatures that appear across every page. Use them consistently — their power comes from repetition.</p>
   <div class="dl-motifs">
     <div class="dl-motif-cell">
@@ -186,7 +216,7 @@ export function designLanguagePage() {
 
   ${GradSep()}
 
-  ${Chapter({ num: '07', title: 'Section Identities' })}
+  ${Chapter({ num: '09', title: 'Section Identities' })}
 
   <p class="dl-body-note">Three sections — three emotional tones. Each has one accent color. The color appears in kickers, section headers, page hero rules, and canvas banner borders.</p>
   <div class="dl-section-ids">
@@ -202,7 +232,7 @@ export function designLanguagePage() {
 
   ${GradSep()}
 
-  ${Chapter({ num: '08', title: 'Philosophy' })}
+  ${Chapter({ num: '10', title: 'Philosophy' })}
   <p class="dl-body-note">Six principles that guide every design decision in this publication. The north star: <em>"The site should feel like a well-organized publication, even when each piece feels like a one-off artwork."</em></p>
   <div class="dl-principles">
     ${PRINCIPLES.map(p => html`<div class="dl-principle">

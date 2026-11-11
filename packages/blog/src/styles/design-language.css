@@ -48,6 +48,10 @@
 .dl-surface-label { font-family: var(--font-mono); font-size: var(--text-2xs); color: var(--color-text-muted); margin-top: 0.75rem; }
 .dl-pattern-title { margin: 2rem 0 .6rem; font-size: var(--text-lg); font-weight: 500; }
 .dl-page .home-tools-invitation { margin-top: 0; }
+.dl-icon-family { display: grid; grid-template-columns: repeat(auto-fit,minmax(110px,1fr)); gap: 12px; margin: 1.5rem 0; }
+.dl-icon-sample { padding: 14px 8px; text-align: center; border-bottom: 1px solid var(--color-border); }
+.dl-icon-glyph { --ui-icon-size: 20px; display: flex; justify-content: center; color: var(--color-text); margin-bottom: 10px; }
+.dl-icon-sample > span { font: 12px/1.5 var(--font-mono); color: var(--color-text-muted); }
 
 /* ── Brand gradient ── */
 .dl-grad-strip { height: 48px; background: var(--gradient-brand); border-radius: 4px; margin-bottom: 0.85rem; }
@@ -60,7 +64,7 @@
 .dl-grad-use strong { display: block; color: var(--color-text); margin-bottom: 0.2rem; font-size: var(--text-2xs); }
 
 /* ── Motifs ── */
-.dl-motifs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--color-border); border: 1px solid var(--color-border); }
+.dl-motifs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px; background: var(--color-border); border: 1px solid var(--color-border); }
 .dl-motif-cell { background: var(--color-bg); padding: 1.25rem 1rem; }
 .dl-motif-display { min-height: 60px; display: flex; align-items: center; justify-content: center; margin-bottom: 0.85rem; }
 .dl-motif-name { font-family: var(--font-mono); font-size: var(--text-2xs); letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-text); margin-bottom: 0.25rem; font-weight: 600; }
@@ -96,6 +100,7 @@
 .dl-principle-body em { color: var(--color-text); font-style: normal; font-weight: 500; }
 
 @media (max-width: 768px) {
+  .dl-motifs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .dl-palette { grid-template-columns: repeat(2, 1fr); }
   .dl-surface-demo, .dl-canvas-demos, .dl-section-ids { grid-template-columns: 1fr; }
   .dl-grad-usage { grid-template-columns: repeat(2, 1fr); }
