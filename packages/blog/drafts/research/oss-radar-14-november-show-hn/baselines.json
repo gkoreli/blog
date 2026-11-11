@@ -1,6 +1,6 @@
 {
   "checkedOn": "2026-11-11",
-  "evidenceState": "Documentation and source inspection; no featured product was installed, benchmarked, or used with real user data",
+  "evidenceState": "Pinned documentation/source inspection and public discussions for twelve projects; six small local functional trials; attempted Waymark setup did not reach workflows. See 04-local-trials.md.",
   "repositories": [
     {
       "repository": "GoogleChrome/modern-web-guidance",
@@ -10,7 +10,8 @@
       "licenseBasis": "GitHub repository license metadata; SPDX identifier",
       "sourceFiles": [
         "skills/modern-web-guidance/SKILL.md",
-        "skills/modern-web-guidance/guides/ui-components/navigation-drawer.md"
+        "skills/modern-web-guidance/guides/ui-components/navigation-drawer.md",
+        "skills/modern-web-guidance/guides/ui-components/dialog.md"
       ]
     },
     {
@@ -45,7 +46,8 @@
       "sourceFiles": [
         "app/backend/internal/core/webserver/static.go",
         "app/backend/internal/metadata/hosted.go",
-        "app/backend/internal/metadata/hosted_service.go"
+        "app/backend/internal/metadata/hosted_service.go",
+        "docs/run/outside-hosts.md"
       ]
     },
     {
@@ -56,7 +58,10 @@
       "licenseBasis": "GitHub repository license metadata; SPDX identifier",
       "sourceFiles": [
         "flide/runtime/session.py",
-        "flide/api/answers.py"
+        "flide/api/answers.py",
+        "flide/runtime/pack.py",
+        "flide/runtime/engine.py",
+        "flide/kernels/attention.py"
       ]
     },
     {
@@ -79,7 +84,9 @@
         "apps/server/src/modules/workflows/libs/runner.ts",
         "docs/deployment/self-hosting.md",
         "apps/server/src/modules/workflows/libs/models.ts",
-        "apps/server/src/modules/workflows/libs/steps.ts"
+        "apps/server/src/modules/workflows/libs/steps.ts",
+        "apps/server/src/modules/experiments/service.ts",
+        "packages/core/src/grayson.ts"
       ]
     },
     {
@@ -91,7 +98,8 @@
       "sourceFiles": [
         "packages/cli/src/commands/hook.ts",
         "packages/core/src/engine.ts",
-        "SECURITY.md"
+        "SECURITY.md",
+        "packages/cli/src/folder-check.ts"
       ]
     },
     {
@@ -103,7 +111,10 @@
       "sourceFiles": [
         "crates/lib/vm-runtime/src/snapshot.rs",
         "python/src/waymark/compiler/validation.py",
-        "python/src/waymark/compiler/__init__.py"
+        "python/src/waymark/compiler/__init__.py",
+        "docs/python/retries/page.mdx",
+        "docs/guides/production/page.mdx",
+        "crates/lib/action-runtime-convert/src/loss.rs"
       ]
     },
     {
@@ -114,7 +125,8 @@
       "licenseBasis": "GitHub repository license metadata; SPDX identifier",
       "sourceFiles": [
         "src/hyperflow_h3_flash/schedule.py",
-        "THIRD_PARTY_NOTICES.md"
+        "THIRD_PARTY_NOTICES.md",
+        "src/hyperflow_h3_flash/pipeline.py"
       ]
     },
     {
@@ -124,7 +136,10 @@
       "license": "MIT",
       "licenseBasis": "GitHub repository license metadata; SPDX identifier",
       "sourceFiles": [
-        "core/openapi.ml"
+        "core/openapi.ml",
+        "core/files.ml",
+        "core/route.ml",
+        "core/input.ml"
       ]
     },
     {
@@ -135,8 +150,57 @@
       "licenseBasis": "GitHub repository license metadata; SPDX identifier",
       "sourceFiles": [
         "agents/codex.sh",
-        "docs/caveats.md"
+        "docs/caveats.md",
+        "tests/agents-unit.sh"
       ]
+    }
+  ],
+  "additionalSources": [
+    {
+      "repository": "GoogleChrome/modern-web-guidance-src",
+      "commit": "596acbc75a330508591b07cd9e198b219341f619",
+      "reason": "Actual retrieval, scanning and telemetry implementation; separate from generated skill repository",
+      "sourceFiles": [
+        "src/rag/search.ts",
+        "src/rag/retrieve.ts",
+        "src/cli/telemetry/clearcut-logger.ts"
+      ]
+    },
+    {
+      "repository": "MiniMaxAI/MiniMax-H3",
+      "host": "huggingface.co",
+      "commit": "5d9b308a59ab12e67147f191e184baf704185bd1",
+      "sourceFiles": [
+        "LICENSE"
+      ],
+      "reason": "Separate model-weight agreement, not the Apache code license"
+    }
+  ],
+  "executedArtifacts": [
+    {
+      "package": "modern-web-guidance",
+      "version": "1.0.0",
+      "npmIntegrity": "sha512-vafIZwC8AS6QjM2yyoflZbnc7n3/TVOMLbEMRdPTwcFy0f9/Tq8s5rJQ8UIqRt2KPl9ixravyaMR4nTGuUrcmg=="
+    },
+    {
+      "package": "@stroq/cli",
+      "version": "0.32.0",
+      "npmIntegrity": "sha512-zgDlxUsglZJyM9fYtAgufnDJ3vmT+WYnVSbmbbkIz7W8njhG5IHH3LrcKnQkMHcPcy45L1+6QiKeuOuBAZ6amg=="
+    },
+    {
+      "repository": "ivankovic/omnidiff",
+      "release": "v0.4.0",
+      "commit": "c5821c27cbfd2bed80544b5be1645ac98c6b3770",
+      "archiveSha256": "ac5d75ad752a4738f24ffd72c7e93f4bb4c9caf6ee89cc79b8b09ad1d9fca42a",
+      "verification": "Matched release SHA256SUMS.txt; not independent publisher authentication"
+    }
+  ],
+  "attemptedArtifacts": [
+    {
+      "package": "waymark",
+      "version": "0.30.1",
+      "runtime": "Python 3.12.8 / Apple Silicon",
+      "outcome": "Installed, executor reached migrations; auxiliary pgserver 0.1.4 PostgreSQL 16.2 bundle lacks pgcrypto. No workflow recovery outcome."
     }
   ]
 }

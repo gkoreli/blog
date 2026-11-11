@@ -1,0 +1,9 @@
+{
+  "tmuxVersion": "tmux 3.6a",
+  "detachedSeconds": 5,
+  "detachedCallbacks": 0,
+  "attachedSeconds": 5,
+  "attachedCallbacks": 1,
+  "dedicatedSocket": true,
+  "scope": "Live status callback only; no continuum plugin installation, real agent or reboot"
+}

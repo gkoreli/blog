@@ -1,0 +1,37 @@
+{
+  "package": "modern-web-guidance@1.0.0",
+  "synthetic": {
+    "findingCount": 1,
+    "flaggedFiles": [
+      "legacy.js"
+    ],
+    "guardedFallbackFlagged": false
+  },
+  "staticCoverage": {
+    "rules": 35,
+    "guides": 33
+  },
+  "ownedPublicSnapshot": {
+    "commit": "0a6ee49aa0472505d79b9a922f1d79acb6924837",
+    "root": "packages/blog/src",
+    "findingCount": 2,
+    "candidates": [
+      {
+        "guide": "custom-text-decorations",
+        "file": "components/ecosystem/ecosystem.css",
+        "line": 18
+      },
+      {
+        "guide": "dark-mode-toggle",
+        "file": "client/components/theme-toggle.ts",
+        "line": 17
+      }
+    ]
+  },
+  "volatileGuide": {
+    "id": "language-model",
+    "exitCode": 1,
+    "result": "Explicit project opt-in required"
+  },
+  "scope": "Static scanner and retrieval. No generated-page quality or population precision measurement. Initial calls used default telemetry; only synthetic queries and a public source snapshot were used; network delivery was not measured."
+}

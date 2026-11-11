@@ -1,0 +1,17 @@
+{
+  "serverBoundTo": "127.0.0.1",
+  "wrongLoginDenied": true,
+  "defaultLoginGranted": true,
+  "fakeStateChanged": true,
+  "loggedControl": true,
+  "controlEvent": {
+    "persona": "danfoss",
+    "proto": "http",
+    "src_ip": "127.0.0.1",
+    "event": "control",
+    "action": "start_defrost",
+    "node": "2",
+    "defrost": true
+  },
+  "scope": "Real HTTP/XML handlers and logging; no real equipment, public listener or attacker attraction test"
+}

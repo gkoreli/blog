@@ -1,0 +1,6 @@
+{
+  "case": "malformed-codex-hook",
+  "exitCode": 2,
+  "stdout": "",
+  "stderr": "Stroq internal error (fail-closed): hook input is not valid JSON"
+}

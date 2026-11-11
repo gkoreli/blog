@@ -1,6 +1,6 @@
 # OSS Radar #14: November Show HN scan
 
-Status: research and first manuscript prepared November 11, 2026. **Unpublished.** Product evidence is documentation and pinned-source inspection. No featured product was installed, executed, benchmarked or deployed in this work.
+Status: revised research and manuscript prepared November 11, 2026. **Unpublished.** Documentation, pinned source and public discussions reviewed across all twelve projects; six small local product checks completed. Waymark setup stopped before workflow execution. No comparative benchmark, live agent integration, public product deployment or publication is claimed.
 
 - [Manuscript](../../oss-radar-14-november-show-hn.md)
 - [Inventory method and daily query URLs](inventory-method.json)
@@ -8,6 +8,10 @@ Status: research and first manuscript prepared November 11, 2026. **Unpublished.
 - [Selected twelve submissions](sample.csv)
 - [Repository baselines and inspected files](baselines.json)
 - [Claims and product map](claims.md)
+- [Declared deeper-review protocol](02-deep-review-protocol.md)
+- [Discussions, firsthand reports and design checks](03-discussions-and-design.md)
+- [Local methods, versions, results and limits](04-local-trials.md)
+- [Reproduction fixtures](repro/) and [normalized synthetic results](results/)
 
 ## Source and sample
 
@@ -25,15 +29,17 @@ Six selected projects explicitly address coding-agent behavior or agent workflow
 
 Hypothesis: tools that retain inspectability, continuity and control can become more valuable as producing output becomes cheaper. Rival explanation: the sample's audience, attention threshold and GitHub rule favor these projects. The scan proves neither adoption nor increased value. The hypothesis weakens if agent vendors reliably absorb these capabilities or operating the additional tools costs more attention than they save. Repeated workflow use, successful recovery and observed interception are needed to evaluate that question.
 
-The title promises recovery, review and rules; tmux-restore/Waymark, OmniDiff and Stroq deliver those mechanisms in the manuscript. November date, sample limits and source-only evidence appear in the introduction. Search terms and likely reader interest are editorial hypotheses; no query-demand measurement was performed.
+The revised title promises agent recovery, better diffs and partial self-hosting. tmux-restore/Waymark, OmniDiff and HolyArrs/Kairos supply the comparison. November date, sample limits and mixed evidence states appear in the introduction. Search terms and likely reader interest are editorial hypotheses; no query-demand measurement was performed.
 
 ## Remaining work
 
-Author review of the first manuscript and its judgments is next. Recheck any changed source or consequential issue/PR before publication. No maintainer contact, product trial, market-growth measurement, publication, production acceptance or distribution is claimed or authorized by this record. No issue/PR status is used as evidence; the tmux-resurrect upstream-PR claim was deliberately left out of reader copy because its live state was not checked.
+Author review of the revised manuscript and judgments is next. Recheck consequential live issues, package behavior and model terms before publication. No maintainer contact, market-growth measurement, publication, production acceptance or distribution is claimed. Waymark's retained recovery fixture is an attempted protocol, not a validated recipe or commitment to continue the unsuitable database setup.
 
 Publication, if requested, needs final metadata/date review and isolated rendering under the current repository workflow. Raw author messages remain in the approved private archive and do not belong in this directory.
 
-## Draft acceptance — November 11
+## Initial draft acceptance — November 11
+
+Historical source-only first pass. The deeper-review records above and revised acceptance below supersede its no-execution boundary.
 
 - First manuscript: approximately 2,015 whitespace-delimited body words, including tables and links; seven longer project entries and five shorter entries.
 - Parsed the draft through the repository's actual `parsePost()` frontmatter schema and Markdown renderer; valid metadata and exactly one matching H1. This is a parse/render check, not viewport QA or a production build.
@@ -42,3 +48,14 @@ Publication, if requested, needs final metadata/date review and isolated renderi
 - Recomputed the sample from the full inventory: 1,455 unique dated items, 37 at/above threshold, twelve direct GitHub submissions and twelve matching baseline repositories.
 - Normalized `inventory.csv` SHA-256: `88a9bd7e0ff28925fe45fef4a4c154f4dbe4a7c39da37628e59cc713662cbb0d`.
 - Source and product claims received a parent review against the inspected files and evidence-state limits. No independent reviewer or user acceptance is claimed. No product runtime trial or publication check was performed.
+
+## Revised acceptance — November 11
+
+- Revised manuscript: 2,863 whitespace-delimited body words as parsed by `parsePost()`; twelve project entries with unequal space. Six local product checks replace the original proposed-only execution boundary.
+- Actual frontmatter parser and Markdown renderer: valid metadata, exactly one H1 matching the title, twelve project headings. This is an HTML parse/render check, not viewport QA or live publication.
+- `pnpm -C packages/blog validate`: all 34 published Markdown posts valid. Draft parsed separately because drafts are outside published discovery.
+- Verified all twelve checkout SHAs plus the additional implementation-repository SHA, 47 recorded source paths and 36 pinned manuscript links. Original sample/inventory unchanged; CSV SHA-256 still matches the initial acceptance.
+- Reran the portable combined Modern Web Guidance / OmniDiff / STE80 fixture and checked reported values against the manuscript. A Stroq follow-up added the clean package-script control: benign npm test allowed, fetched/evaluated script asked for review. Seven normalized result files parse.
+- Checked local research links and reviewed public content for private prompts, credentials and raw operational captures. No private source message is included.
+- Discussion and source claims reviewed against the pinned implementations, attributed reports and issue/release distinctions. No independent reviewer, user acceptance, GPU result, Waymark recovery result or production outcome is claimed.
+- Next bounded action: author review of this manuscript. Publishing would additionally require current issue/license rechecks, final date/metadata and isolated page rendering under the repository workflow.

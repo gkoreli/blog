@@ -1,0 +1,130 @@
+{
+  "release": "v0.4.0",
+  "tagCommit": "c5821c27cbfd2bed80544b5be1645ac98c6b3770",
+  "archiveSha256": "ac5d75ad752a4738f24ffd72c7e93f4bb4c9caf6ee89cc79b8b09ad1d9fca42a",
+  "ordinaryGitArchiveResult": "Binary files differ",
+  "cases": [
+    {
+      "case": "moved-and-edited-code",
+      "exitCode": 1,
+      "result": {
+        "before": {
+          "path": "before.py",
+          "language": "Python",
+          "hunks": [
+            {
+              "operation": "update",
+              "range": {
+                "start_row": 1,
+                "start_column": 12,
+                "end_row": 1,
+                "end_column": 13
+              },
+              "reference_line": 0
+            }
+          ]
+        },
+        "after": {
+          "path": "after.py",
+          "language": "Python",
+          "hunks": [
+            {
+              "operation": "update",
+              "range": {
+                "start_row": 4,
+                "start_column": 12,
+                "end_row": 4,
+                "end_column": 13
+              },
+              "reference_line": 3
+            }
+          ]
+        },
+        "large_residual": false
+      }
+    },
+    {
+      "case": "archive-change",
+      "exitCode": 1,
+      "result": {
+        "before": {
+          "path": "before.zip",
+          "language": null,
+          "hunks": []
+        },
+        "after": {
+          "path": "after.zip",
+          "language": null,
+          "hunks": []
+        },
+        "large_residual": false,
+        "binary": true,
+        "content": {
+          "kind": "container",
+          "family": "archives",
+          "before": {
+            "format": "ZIP",
+            "bytes": 237,
+            "members": 2
+          },
+          "after": {
+            "format": "ZIP",
+            "bytes": 236,
+            "members": 2
+          },
+          "unchanged": 1,
+          "members": [
+            {
+              "key": "policy.txt",
+              "status": "changed",
+              "detail": {
+                "kind": "text",
+                "before_lines": 1,
+                "after_lines": 1,
+                "removed": 1,
+                "added": 1,
+                "words_kept": false
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "case": "identical",
+      "exitCode": 0,
+      "result": {
+        "before": {
+          "path": "before.py",
+          "language": "Python",
+          "hunks": []
+        },
+        "after": {
+          "path": "before.py",
+          "language": "Python",
+          "hunks": []
+        },
+        "large_residual": false,
+        "summary": "no_changes"
+      }
+    },
+    {
+      "case": "invalid-archive",
+      "exitCode": 1,
+      "result": {
+        "before": {
+          "path": "before.zip",
+          "language": null,
+          "hunks": []
+        },
+        "after": {
+          "path": "bad.zip",
+          "language": null,
+          "hunks": []
+        },
+        "large_residual": false,
+        "binary": true
+      }
+    }
+  ]
+}

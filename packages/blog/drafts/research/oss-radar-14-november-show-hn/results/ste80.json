@@ -1,0 +1,31 @@
+[
+  {
+    "case": "faithful",
+    "input": "The service may need two retries. The limit is 40 requests.",
+    "exitCode": 0,
+    "findingCount": 0,
+    "rules": []
+  },
+  {
+    "case": "fact-changed",
+    "input": "The service needs no retries. The limit is 400 requests.",
+    "exitCode": 0,
+    "findingCount": 0,
+    "rules": []
+  },
+  {
+    "case": "style-heavy",
+    "input": "Great question! It is important to note that we leverage robust solutions to seamlessly enhance the landscape.",
+    "exitCode": 1,
+    "findingCount": 7,
+    "rules": [
+      "chatbot",
+      "word",
+      "word",
+      "word",
+      "word",
+      "word",
+      "word"
+    ]
+  }
+]

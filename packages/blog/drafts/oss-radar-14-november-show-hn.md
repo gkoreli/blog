@@ -1,128 +1,180 @@
 ---
-title: "OSS Radar #14: Coding Agents Need Recovery, Review and Rules"
-seoTitle: "November 2026 Show HN: 12 Open-Source Projects Inspected"
-alternativeHeadline: "A November 1–10 Show HN scan finds tools for agent guidance, session recovery and inspection, alongside self-hosted services with outside dependencies"
+title: "OSS Radar #14: Agent Recovery, Better Diffs and Partial Self-Hosting"
+seoTitle: "November 2026 Show HN: 12 Projects Beyond the README"
+alternativeHeadline: "Twelve November Show HN projects, with local checks of six and a closer look at recovery, review and outside dependencies"
 date: "2026-11-11"
-description: "Twelve November Show HN projects, inspected in source: agent guidance, command checks, session recovery, durable jobs and the dependencies behind self-hosting."
+description: "Twelve November Show HN projects: six local trials, source and discussion checks, and the dependencies behind agent tools and self-hosted apps."
 section: oss-radar
 tags: [oss-radar, open-source, agents, developer-tools, self-hosting]
 ---
 
-# OSS Radar #14: Coding Agents Need Recovery, Review and Rules
+# OSS Radar #14: Agent Recovery, Better Diffs and Partial Self-Hosting
 
-November’s Show HN offers tools for the work around a coding agent: choosing current APIs, checking commands, reviewing changes and recovering conversations. The useful question is what each tool actually controls—and what still depends on the agent, another service or you.
+A diff tool found the changed file inside a ZIP. An agent hook asked for review of a suspicious `npm test`. A self-hosted media manager still needed its maintainer’s metadata service. November’s Show HN projects become more interesting when you follow the responsibility each one takes on.
 
-I inspected twelve projects from **November 1–10, 2026**. The source set was 1,455 submissions indexed as Show HN. Thirty-seven had at least 50 points when retrieved; twelve of those linked directly to GitHub repositories. Those twelve form this issue’s sample. Their code has an open-source license, though that does not establish the terms of every model or external service they use.
+This issue covers **twelve projects from November 1–10, 2026**. The review combines code and discussion reading with small local checks of six, performed with an AI research agent. These checks establish specific behavior, rather than comparative speed, security or production reliability. The results and reproduction fixtures are in the [research record](https://github.com/gkoreli/blog/tree/main/packages/blog/drafts/research/oss-radar-14-november-show-hn).
 
-This is a scan of that sample, with source checked November 11. It favors projects that attracted attention and linked to GitHub. Website-first launches and lower-scoring submissions can contain equally useful work. The submission dates describe their Show HN appearances, not necessarily when their development began. [The inventory, selection rule and pinned revisions are available here](https://github.com/gkoreli/blog/tree/main/packages/blog/drafts/research/oss-radar-14-november-show-hn).
+## The source
 
-The [first OSS Radar](/oss-radar-01-vercel-winter-2026-cohort) used a funding cohort to compare projects and find patterns. This time the common source is a ten-day launch window. I read documentation and source; I did not install or benchmark these products.
+The [first OSS Radar](/oss-radar-01-vercel-winter-2026-cohort) compared a funding cohort. This time the common source is a ten-day Show HN window: **1,455 indexed submissions**, of which 37 had at least 50 points when retrieved on November 11. All twelve above that threshold whose outbound link went directly to GitHub form this sample.
 
-## Give the agent current knowledge
+That rule favors attention and developer tooling. Website-first launches, lower-scoring submissions and missing index entries can contain equally useful work. Newer posts had less time to collect votes. These dates describe Show HN appearances, not when development began. The repositories have open-source code licenses; HyperFlow is an important example of why that says little about accompanying model weights.
 
-### Modern Web Guidance: browser expertise becomes an agent dependency
+Source links pin November 11 revisions. Executed packages have their own recorded versions, and public comments remain reports by their authors. A launch-day objection can be useful without describing the current code.
 
-[Modern Web Guidance](https://github.com/GoogleChrome/modern-web-guidance/blob/4dd968349e54ca45a05dd5c818fb035c9054b022/README.md) packages web-platform guidance for coding agents. Its practical audience is anyone getting elaborate JavaScript for a problem the browser can already solve.
+## Tools around a coding agent
 
-The interesting part is how the [skill directs retrieval](https://github.com/GoogleChrome/modern-web-guidance/blob/4dd968349e54ca45a05dd5c818fb035c9054b022/skills/modern-web-guidance/SKILL.md): search for a task, retrieve relevant guides, then check the implementation against them. It also distinguishes widely available features from features requiring a fallback, with an explicit project browser policy able to change the decision.
+### Modern Web Guidance: useful retrieval, limited scanning
 
-That is more useful than a blanket instruction to use modern CSS. The [navigation-drawer guide](https://github.com/GoogleChrome/modern-web-guidance/blob/4dd968349e54ca45a05dd5c818fb035c9054b022/skills/modern-web-guidance/guides/ui-components/navigation-drawer.md), for example, builds a swipe interaction around browser scrolling and scroll snap. The implementation choice is concrete enough to inspect and discuss.
+[Modern Web Guidance](https://github.com/GoogleChrome/modern-web-guidance/blob/4dd968349e54ca45a05dd5c818fb035c9054b022/README.md) gives coding agents searchable web-platform guidance. The practical use is replacing a pile of JavaScript with a browser capability while retaining the compatibility details that make the replacement safe to ship.
 
-The durable product here could be maintained implementation knowledge delivered at the moment of a decision. The hard question is whether an agent follows the relevant compatibility and accessibility details while adapting an example. A guide in context does not establish that the resulting page works. Generated behavior across a project’s supported browsers is the useful evaluation.
+The implementation is more deliberate than loading a large prompt. Its [search code](https://github.com/GoogleChrome/modern-web-guidance-src/blob/596acbc75a330508591b07cd9e198b219341f619/src/rag/search.ts) combines local vector retrieval and keyword ranking. The agent retrieves selected guides, then checks the implementation against them. Project settings describe the supported browser baseline; annotated volatile features require explicit opt-in.
 
-## Keep an account of what happened
+The released 1.0.0 CLI made those distinctions visible. A synthetic file with a manual dialog-backdrop click handler produced a modernization finding. The same handler inside a `closedBy` feature-detection fallback did not. Searching for dialog dismissal returned relevant guidance, while requesting the volatile `language-model` guide without opt-in was refused.
 
-### Stroq: the hook is part of the product
+A scan of this blog’s tracked source snapshot found two candidates: a border used as a text underline and a theme-toggle suggestion about synchronizing color-scheme metadata. Neither is an applied fix or a measured improvement. More significantly, the scanner announced its own limits: **35 deterministic rules across 33 guides**, roughly one fifth of the catalog. Passing that scan cannot establish that a project follows the rest of the guidance. [An issue about agents overreading scanner coverage](https://github.com/GoogleChrome/modern-web-guidance-src/issues/3268) makes the distinction especially relevant.
 
-[Stroq](https://github.com/AGGIB/Stroq/blob/4a0011353d7004c9710490a2cd6d52ab4ff80327/README.md) offers local inspection and controls for AI coding sessions. Reading an old session and intercepting a future action are separate capabilities: the first explains something that happened; the second needs an installed integration that the agent actually calls.
+There is also a deployment detail to know before using it on private work. Search is computed locally, but the [default telemetry path](https://github.com/GoogleChrome/modern-web-guidance-src/blob/596acbc75a330508591b07cd9e198b219341f619/src/cli/telemetry/clearcut-logger.ts) includes search queries and command metadata. `DISABLE_TELEMETRY=1` opts out. The initial checks used synthetic queries and public source with the default setting; network delivery was not measured. The saved reproduction explicitly opts out.
 
-The [hook dispatcher](https://github.com/AGGIB/Stroq/blob/4a0011353d7004c9710490a2cd6d52ab4ff80327/packages/cli/src/commands/hook.ts) makes that integration work visible. It chooses an adapter for the host agent, handles malformed input and supplies adapter-specific failure responses on exceptions or deadlines. A denial must be expressed in the form the host understands.
+This is a promising way to maintain implementation knowledge where an agent makes a decision. Its value still depends on the generated page: the right guide must become working behavior in the browsers the project supports.
 
-That distinction changes the adoption question. A rule can be sensible and still provide no protection if a call never reaches it, or if the host interprets its answer differently. Stroq’s [security documentation](https://github.com/AGGIB/Stroq/blob/4a0011353d7004c9710490a2cd6d52ab4ff80327/SECURITY.md) records substantial integration limits, including incomplete coverage for some MCP paths and host events.
+### Stroq: follow the command into the folder
 
-Inspect this as a policy and evidence tool, and verify coverage in the actual agent integration. I have not tested its resistance to bypasses. A useful first trial would check an allowed action, a denied action and an internal hook failure, while retaining the host’s observed result for each.
+[Stroq](https://github.com/AGGIB/Stroq/blob/4a0011353d7004c9710490a2cd6d52ab4ff80327/README.md) combines inspection of coding-agent sessions with hooks that judge future actions. The distinction matters: an audit explains what happened; prevention depends on the host invoking and honoring the integration.
 
-### tmux-restore: a conversation can survive when its process cannot
+The [launch discussion](https://news.ycombinator.com/item?id=50380704) raised a good objection to command filters: an ordinary-looking `npm test` can hide dangerous work in a script. The submitter acknowledged the limitation at launch. Current [folder inspection](https://github.com/AGGIB/Stroq/blob/4a0011353d7004c9710490a2cd6d52ab4ff80327/packages/cli/src/folder-check.ts) goes further, so that admission should not become a permanent verdict on the product.
 
-[tmux-restore](https://github.com/andrewboldi/tmux-restore/blob/a2020e5ee24488dc5404290ca2387cc0b350d103/README.md) addresses an ordinary interruption: rebooting a machine with several agent conversations open in terminal panes.
+In released 0.32.0, the actual engine and Claude Code adapter produced distinct results in a synthetic environment:
 
-It extends tmux-resurrect and tmux-continuum. Its [Codex adapter](https://github.com/andrewboldi/tmux-restore/blob/a2020e5ee24488dc5404290ca2387cc0b350d103/agents/codex.sh) finds the conversation’s rollout file among the native process’s open files, extracts its ID and constructs a resume command. That is a specific recovery mechanism, with a specific dependency on the agent’s internal file format.
+| Judged command | Result |
+| --- | --- |
+| `printf hello` | Allowed |
+| `npm test`, with a benign fixture script | Allowed |
+| Fetch a script and pipe it into `sh` | Denied |
+| `npm test`, with a fixture script that fetches text and calls `eval` | Asked for folder review |
 
-The [caveats](https://github.com/andrewboldi/tmux-restore/blob/a2020e5ee24488dc5404290ca2387cc0b350d103/docs/caveats.md) matter as much as the demo. Programs restart; an interrupted tool call is not checkpointed. Agent file-format changes can affect recovery. The periodic save also depends on an attached tmux client; the shutdown save is a separate path. Saved scrollback can retain anything a pane displayed.
+The commands were judged, not executed. A separate real CLI invocation of the Codex hook received malformed JSON and exited **2**, with empty stdout and a fail-closed explanation on stderr. These checks used temporary stores and a synthetic user home, without reading personal agent histories.
 
-This has a clear, bounded job. Test restoration with disposable conversations and your normal shell before relying on it. Reopening the right conversation is valuable even though it does not finish the command that was running.
+That is useful behavior, but it leaves another layer to test: what the installed host does with those answers. The [security documentation](https://github.com/AGGIB/Stroq/blob/4a0011353d7004c9710490a2cd6d52ab4ff80327/SECURITY.md) records integration and coverage limits. No live agent integration or bypass campaign was run here. The adoption test is the complete path from host event to observed interception, including errors.
 
-### Waymark: durable work needs durable state
+### tmux-restore: recover the conversation and its place
 
-[Waymark](https://github.com/piercefreeman/waymark/blob/d40e7d53a484ad53a7d1e93baec4d02a81539ea6/README.md) takes recovery into the application. It lets Python workflows coordinate actions while a Rust runtime and Postgres retain their progress. Its stated uses include ordinary background jobs and agents.
+[tmux-restore](https://github.com/andrewboldi/tmux-restore/blob/a2020e5ee24488dc5404290ca2387cc0b350d103/README.md) extends tmux-resurrect and tmux-continuum to reopen agent conversations in their terminal panes. Its [Codex adapter](https://github.com/andrewboldi/tmux-restore/blob/a2020e5ee24488dc5404290ca2387cc0b350d103/agents/codex.sh) finds an open rollout file, extracts the conversation ID and constructs a resume command.
 
-The consequential design choice is compilation. The Python [source validator](https://github.com/piercefreeman/waymark/blob/d40e7d53a484ad53a7d1e93baec4d02a81539ea6/python/src/waymark/compiler/validation.py) walks the syntax tree and dispatches checks through registered handlers. The Rust runtime’s [snapshot implementation](https://github.com/piercefreeman/waymark/blob/d40e7d53a484ad53a7d1e93baec4d02a81539ea6/crates/lib/vm-runtime/src/snapshot.rs) serializes and reconstructs runtime state. The workflow therefore has a representation the engine can preserve beyond the lifetime of a Python process.
+[One HN commenter](https://news.ycombinator.com/item?id=50403358) reports using it to restore long agent conversations into the right panes. That is a relevant firsthand report, although it is not an independently verified recovery. Comments praising years of tmux-resurrect use describe the foundation, rather than proving adoption of this new layer.
 
-That also defines the cost of the abstraction. Workflow code must fit the supported language constructs, actions still perform outside work, and someone operates Postgres and the executor. A recovered workflow also needs a policy for external effects whose completion is uncertain after a failure.
+The pinned upstream adapter suite passed **51 synthetic checks** locally. A separate dedicated tmux server confirmed a consequential caveat: its status callback ran zero times during five seconds detached, then once during five seconds with a client attached. Periodic status-driven saving depends on an attached client; the shutdown-save path is separate. This small experiment says nothing about the reliability of a particular save interval.
 
-This is worth examining when a multi-step job is expensive or awkward to restart. The decisive trial is a crash around an external side effect, followed by inspection of what runs again. I have not performed that trial, and the maintainer’s throughput claims remain reported results.
+The [caveats](https://github.com/andrewboldi/tmux-restore/blob/a2020e5ee24488dc5404290ca2387cc0b350d103/docs/caveats.md) define the promise well. Processes restart and conversations resume; an interrupted tool call is not checkpointed. Agent file formats remain a dependency, and saved scrollback retains what the pane displayed. No real conversation or reboot recovery was tested here. Reopening the right context is still a valuable, bounded job.
 
-## Make the result easier to inspect
+### Waymark: recovery must account for uncertain outside effects
 
-### OmniDiff: review has to reach beyond changed lines
+[Waymark](https://github.com/piercefreeman/waymark/blob/d40e7d53a484ad53a7d1e93baec4d02a81539ea6/README.md) moves recovery into the application: Python workflows compile into a representation executed by a Rust runtime, with progress retained in Postgres. Its [compiler](https://github.com/piercefreeman/waymark/blob/d40e7d53a484ad53a7d1e93baec4d02a81539ea6/python/src/waymark/compiler/validation.py) checks supported language constructs; the VM [snapshot code](https://github.com/piercefreeman/waymark/blob/d40e7d53a484ad53a7d1e93baec4d02a81539ea6/crates/lib/vm-runtime/src/snapshot.rs) serializes runtime state.
 
-[OmniDiff](https://github.com/ivankovic/omnidiff/blob/ed150471f295de64b48e2ae98b2d317937cc5da5/README.md) compares code and several binary content formats. It is relevant whenever a review includes an image, archive, font or PDF that a normal text diff cannot explain.
+The most useful detail is how the design treats an action whose worker disappears. Did an external request never start, or did it complete before its result could be recorded? Those conditions cannot safely share a retry policy.
 
-Its [content dispatcher](https://github.com/ivankovic/omnidiff/blob/ed150471f295de64b48e2ae98b2d317937cc5da5/src/diff/content.rs) recognizes formats from their bytes. That matters when Git gives an external diff temporary filenames without useful extensions. It routes compatible pairs to content-specific engines and applies a shared expansion budget across nested content and workers. The [code-diff pipeline](https://github.com/ivankovic/omnidiff/blob/ed150471f295de64b48e2ae98b2d317937cc5da5/src/diff.rs) separately matches syntax trees and derives changed text ranges.
+The [retry documentation](https://github.com/piercefreeman/waymark/blob/d40e7d53a484ad53a7d1e93baec4d02a81539ea6/docs/python/retries/page.mdx) distinguishes `ActionExecutionNotStarted` from `ActionExecutionLost`. The latter represents uncertainty and requires explicit retry opt-in, even when a policy retries ordinary exceptions. A timeout also does not cancel the original attempt: opting into retries can create overlapping work. An action that charges, sends or appends needs a way to tolerate repetition.
 
-Better inspection of generated artifacts is a useful companion to faster generation. The test is whether the display helps a reviewer catch a consequential change. The project’s accuracy and speed percentages come from its own evaluation; I did not reproduce them. The pinned [license](https://github.com/ivankovic/omnidiff/blob/ed150471f295de64b48e2ae98b2d317937cc5da5/LICENSE) specifies AGPL-3.0-only, despite GitHub’s license metadata returning an unclassified result during this scan.
+Operations deserve equal attention. The [production guide](https://github.com/piercefreeman/waymark/blob/d40e7d53a484ad53a7d1e93baec4d02a81539ea6/docs/guides/production/page.mdx) requires downtime for version upgrades, with applications, bridges and nodes stopped in order. A rolling upgrade is not supported at this revision.
 
-### Coldframe: a small project with a precise observation target
+The attempted crash/restart trial did not reach workflow execution. Waymark 0.30.1 installed, but the temporary PostgreSQL bundle lacked `pgcrypto` and migrations stopped. That is a setup limit, not a reproduced recovery defect. The semantics above are documented and code-inspected. They are also the right questions to settle before committing application logic to a durable runtime.
 
-[Coldframe](https://github.com/hedgerow-dev/coldframe/blob/e6b126af0ab08c24b48de77abfe063e98ff1b12f/README.md) is a decoy for supermarket refrigeration controllers. It is for operators and researchers who want to observe interactions aimed at that equipment.
+## Review what the tools produce
 
-The [Python implementation](https://github.com/hedgerow-dev/coldframe/blob/e6b126af0ab08c24b48de77abfe063e98ff1b12f/honeypot.py) implements vendor personas, fake login and control paths, and structured event logging. Its optional Modbus service is disabled unless configured. The fake control paths give an observer more information than a server that only records an incoming connection.
+### OmniDiff: a changed archive member becomes visible
 
-Specificity is the attraction. The unanswered question is whether real scanners and attackers treat the decoy as convincing enough to continue interacting. Source inspection establishes the simulation and logging paths; it does not establish field effectiveness. I have not deployed it or verified the incident history described in its README.
+[OmniDiff](https://github.com/ivankovic/omnidiff/blob/ed150471f295de64b48e2ae98b2d317937cc5da5/README.md) compares source structurally and understands several binary formats. It addresses a gap that grows when generated changes include archives, images, fonts or PDFs: a review needs to say more than “binary files differ.”
 
-## Self-hosting still has a service boundary
+The [dispatcher](https://github.com/ivankovic/omnidiff/blob/ed150471f295de64b48e2ae98b2d317937cc5da5/src/diff/content.rs) recognizes content from its bytes, useful when Git’s temporary filenames lack extensions. Nested decoding shares an expansion budget rather than giving every worker a fresh allowance.
 
-### HolyArrs: one application, with metadata supplied elsewhere
+The checksum-verified v0.4.0 executable passed a small, concrete trial. Two ZIPs contained an unchanged member and a changed `policy.txt`. Ordinary `git diff --no-index` reported a binary difference. OmniDiff’s JSON named the changed member and counted the other unchanged. Its summary counted the removed and added line; that summary did not reveal the new policy value.
 
-[HolyArrs](https://github.com/HolyArrs/HolyArrs/blob/ddb423156fcb2e0829f1ab7ea647e81908197b83/README.md) combines media-library and acquisition workflows that otherwise span several applications. Reducing the number of interfaces and connections an operator manages is a coherent product thesis.
+In Python code, a function moved below another and its return value changed from 10 to 11. OmniDiff located the changed digit at its before/after positions without marking the unchanged function body as a replacement. An identical-file control returned no changes; invalid archive bytes fell back to a generic binary difference without crashing. These are useful functional results, not an accuracy score over a representative corpus.
 
-The default metadata path is consequential. [`ServiceURL()`](https://github.com/HolyArrs/HolyArrs/blob/ddb423156fcb2e0829f1ab7ea647e81908197b83/app/backend/internal/metadata/hosted.go) selects an environment override or the project’s hosted API. The [hosted-service constructor](https://github.com/HolyArrs/HolyArrs/blob/ddb423156fcb2e0829f1ab7ea647e81908197b83/app/backend/internal/metadata/hosted_service.go) registers installation access and routes the default TMDB path through that service. It also contains options for supplying a TMDB key; those options alone do not establish independence for every metadata feature.
+The discussions add two adoption details. Three-way merge remains [future work](https://news.ycombinator.com/item?id=50329292). An [idle-CPU report](https://github.com/ivankovic/omnidiff/issues/72) under Kubuntu/Wayland led to a documented redraw fix in 0.4.0, but the original reporter had not confirmed it in the checked thread. Neither “still broken” nor “user-confirmed fixed” follows from closure alone. The code license is **AGPL-3.0-only**.
 
-Simplifying local operations by sharing a maintained metadata service can be a reasonable trade. It changes what an operator needs to evaluate: the service’s availability, operating model and available alternatives matter alongside the local application. I have not measured the advertised download size or memory use, or tested behavior during a metadata-service outage.
+### STE80 Humanizer: style checks cannot preserve facts
 
-## Five more, with different questions
+[STE80 Humanizer](https://github.com/Dodaios/ste80-humanizer/blob/99bc468482599f5d75f595e2c1adf893ebff4d8f/README.md) supplies a writing skill and a heuristic checker. Its maintainer [describes the goal](https://news.ycombinator.com/item?id=50429144) as clearer language, without claiming to manufacture an authorial voice or evade AI detectors.
 
-These projects belong in the same inventory, but each introduces a distinct decision. They do not all support an agent-tooling thesis.
+The [checker](https://github.com/Dodaios/ste80-humanizer/blob/99bc468482599f5d75f595e2c1adf893ebff4d8f/scripts/ste_check.py) accepts one text. In a synthetic check, “The service may need two retries. The limit is 40 requests.” passed. So did “The service needs no retries. The limit is 400 requests.” A control full of stock chatbot phrasing produced seven findings.
 
-| Project | What the inspected source adds | The question that remains |
-| --- | --- | --- |
-| [Flide](https://github.com/OmniJev/Flide/blob/ee6a919c2c1740743a3f4673ecd731145d23f358/README.md) | Its [session cache](https://github.com/OmniJev/Flide/blob/ee6a919c2c1740743a3f4673ecd731145d23f358/flide/runtime/session.py) reuses saved model state for matching token prefixes, with token-level confirmation and a memory budget. | Does its reported decision-inference speed advantage hold for the model, hardware and request pattern you need? I ran no GPU comparison. |
-| [STE80 Humanizer](https://github.com/Dodaios/ste80-humanizer/blob/99bc468482599f5d75f595e2c1adf893ebff4d8f/README.md) | A [Python checker](https://github.com/Dodaios/ste80-humanizer/blob/99bc468482599f5d75f595e2c1adf893ebff4d8f/scripts/ste_check.py) implements heuristic phrase, sentence and style checks alongside the writing skill. | Does a rewrite preserve qualifications, facts and the author’s voice? Passing a style checker cannot answer that. |
-| [Kairos](https://github.com/finic-ai/kairos/blob/7ecac21b631a005f0ef9b4f4e4ff6f3d78422327/README.md) | Its [workflow runner](https://github.com/finic-ai/kairos/blob/7ecac21b631a005f0ef9b4f4e4ff6f3d78422327/apps/server/src/modules/workflows/libs/runner.ts) budgets execution and schedules retries; its [self-hosting guide](https://github.com/finic-ai/kairos/blob/7ecac21b631a005f0ef9b4f4e4ff6f3d78422327/docs/deployment/self-hosting.md) requires Postgres and internet access to Finic’s model API. | What data and decisions cross that service boundary, and can the operator validate outcomes on representative data? No fraud-detection effectiveness is established here. |
-| [HyperFlow H3 Flash](https://github.com/Video-Rebirth/hyperflow-h3-flash/blob/0767e9cd7c72bf7aa832b07ebe1cdbd5daa80295/README.md) | Its [scheduler](https://github.com/Video-Rebirth/hyperflow-h3-flash/blob/0767e9cd7c72bf7aa832b07ebe1cdbd5daa80295/src/hyperflow_h3_flash/schedule.py) supplies explicit four-, six- and eight-step schedules for joint video/audio generation. | What quality and full memory footprint does the chosen runtime deliver? I did not generate a clip, validate its timings or audit the separate model-weight terms. |
-| [Spindle](https://github.com/hyphatech/spindle/blob/9ed528817b74e4cd13cc1595d1e986dc9580e75f/README.md) | Its [OpenAPI generator](https://github.com/hyphatech/spindle/blob/9ed528817b74e4cd13cc1595d1e986dc9580e75f/core/openapi.ml) derives schema and route descriptions from the application representation. | Does the framework cover the OCaml service you need, including its protocol and deployment requirements? I did not run its conformance suite. |
+This demonstrates the interface’s boundary, rather than a broken fidelity feature: a style linter cannot compare a rewrite with a source it never receives. The project has separate rewrite evaluations; those model-backed evaluations were not run here. Use a checker to find habitual phrasing, then compare qualifications, numbers and meaning separately. A clean style report is a poor acceptance criterion for edited prose.
 
-## The pattern to watch
+## Draw the hosting and model boundaries
 
-Six of the twelve explicitly address coding-agent behavior or agent workflows: Modern Web Guidance, Stroq, tmux-restore, Waymark, STE80 Humanizer and Kairos. They intervene at different points: knowledge, permission, recovery, orchestration, language and operational decisions.
+### HolyArrs: fewer local applications, a shared metadata dependency
 
-That suggests a useful product hypothesis: **as agent output gets cheaper, retaining control of the work becomes more valuable.** The sample supports the existence of these products. It does not establish demand, adoption or a market-wide shift. HN’s audience and this scan’s GitHub-link rule are plausible reasons for finding so much developer tooling.
+[HolyArrs](https://github.com/HolyArrs/HolyArrs/blob/ddb423156fcb2e0829f1ab7ea647e81908197b83/README.md) combines discovery, acquisition and library management. The maintainer [explicitly says](https://news.ycombinator.com/item?id=50439032) it does not play media: Plex or Jellyfin still handles playback. That distinction makes its consolidation claim easier to evaluate.
 
-The sharper distinction is how much responsibility a product takes on. A writing instruction can be copied. Maintaining browser guidance, decoding artifacts, preserving recoverable state and translating a policy into several hosts’ actual hook protocols creates continuing work. That work can justify a maintained tool—if users benefit enough to keep it in their workflow.
+A [Docker user running default-deny egress](https://github.com/HolyArrs/HolyArrs/issues/222) asked what outside connections were needed. The resulting [outside-address documentation](https://github.com/HolyArrs/HolyArrs/blob/ddb423156fcb2e0829f1ab7ea647e81908197b83/docs/run/outside-hosts.md) is unusually useful. The default metadata service supplies searches and new details. The docs say existing library and downloads continue without it; this was not outage-tested here.
 
-The hypothesis weakens if those capabilities arrive reliably inside existing agents and runtimes, or if the extra tools cost more attention than they save. The next evidence should come from repeated use: a recovered conversation, a caught change, a correctly handled failed job, or an action the installed integration actually stopped.
+Supplying your own TMDB key moves movie/show details, search, people and Explore lists directly to TMDB. Music, TVmaze details, trailer lists, ratings and other data still pass through the configured metadata service, and the installation still registers there. The [constructor](https://github.com/HolyArrs/HolyArrs/blob/ddb423156fcb2e0829f1ab7ea647e81908197b83/app/backend/internal/metadata/hosted_service.go) reflects that split. Overriding the service URL requires a compatible server, not merely a different hostname.
 
-Modern Web Guidance offers a small first evaluation: retrieve a guide for one real task and check the resulting page. tmux-restore offers a bounded recovery trial, while Waymark commits more of the application to a durable runtime. HolyArrs and Kairos supply the reminder to draw the hosting boundary before deciding how much control a self-hosted deployment gives you.
+There is a coherent trade here: consolidate local operations while sharing metadata infrastructure. An operator deciding whether to migrate should evaluate the maintenance and availability of both. “Bring a TMDB key” does not make the entire installation independent.
+
+### Kairos: inspectable experiments, externally served inference
+
+[Kairos](https://github.com/finic-ai/kairos/blob/7ecac21b631a005f0ef9b4f4e4ff6f3d78422327/README.md) lets agents configure and evaluate fraud/risk workflows. The interesting source goes beyond an MCP interface. Its [experiment service](https://github.com/finic-ai/kairos/blob/7ecac21b631a005f0ef9b4f4e4ff6f3d78422327/apps/server/src/modules/experiments/service.ts) splits rows chronologically into training, validation and test sets, selects candidates using validation metrics, and reports test metrics separately.
+
+That makes the evaluation machinery inspectable; it does not establish fraud-detection effectiveness. The reviewed launch discussion supplied no independently verified outcome on representative customer data.
+
+The [model client](https://github.com/finic-ai/kairos/blob/7ecac21b631a005f0ef9b4f4e4ff6f3d78422327/packages/core/src/grayson.ts) sends its context and questions to Finic’s `/v1/decide` endpoint by default. Self-hosting application state therefore leaves model inference with another operator. Review the actual request data and evaluation split before treating either local deployment or a reported score as sufficient assurance. No customer data or model API was used in this review.
+
+### HyperFlow H3 Flash: read the weight terms before the speed chart
+
+[HyperFlow H3 Flash](https://github.com/Video-Rebirth/hyperflow-h3-flash/blob/0767e9cd7c72bf7aa832b07ebe1cdbd5daa80295/README.md) compresses MiniMax-H3 for few-step video and synchronized audio generation. Its [scheduler](https://github.com/Video-Rebirth/hyperflow-h3-flash/blob/0767e9cd7c72bf7aa832b07ebe1cdbd5daa80295/src/hyperflow_h3_flash/schedule.py) provides four-, six- and eight-step schedules; six is the default. The [pipeline](https://github.com/Video-Rebirth/hyperflow-h3-flash/blob/0767e9cd7c72bf7aa832b07ebe1cdbd5daa80295/src/hyperflow_h3_flash/pipeline.py) still loads upstream text-encoding and VAE components, so a transformer-file size is not the complete system footprint.
+
+The immediate adoption constraint is licensing. The [repository notices](https://github.com/Video-Rebirth/hyperflow-h3-flash/blob/0767e9cd7c72bf7aa832b07ebe1cdbd5daa80295/THIRD_PARTY_NOTICES.md) distinguish Apache-licensed core code, separately licensed integrations and model weights. The [weights page](https://huggingface.co/VideoRebirthAI/hyperflow-h3-flash) says use in the EU, UK, South Korea or US requires prior MiniMax authorization under the [MiniMax H3 agreement](https://huggingface.co/MiniMaxAI/MiniMax-H3/blob/5d9b308a59ab12e67147f191e184baf704185bd1/LICENSE).
+
+That is consequential enough to resolve before downloading weights or estimating a deployment. No generation, quality comparison or accelerator benchmark was run here; the speed results remain the publisher’s measurements.
+
+## Specialized tools
+
+### Flide: its speed claim has a workload
+
+[Flide](https://github.com/OmniJev/Flide/blob/ee6a919c2c1740743a3f4673ecd731145d23f358/README.md) serves decision workloads where several questions share an input. The [packing code](https://github.com/OmniJev/Flide/blob/ee6a919c2c1740743a3f4673ecd731145d23f358/flide/runtime/pack.py) represents shared prefixes and separate question branches; an additional session cache can reuse matching prefixes across calls. That cache is [disabled by default](https://github.com/OmniJev/Flide/blob/ee6a919c2c1740743a3f4673ecd731145d23f358/flide/runtime/engine.py), so describing the product as just a session cache misses the main mechanism.
+
+The maintainer [bounds the reported 9.5× result](https://news.ycombinator.com/item?id=50423700) to Qwen3.5-0.8B on QuALITY: roughly 5.8k input tokens and 18 questions per state. One-question workloads can approach a tie under other model/input conditions. The number describes an opportunity to share computation, rather than a general replacement speed for language-model serving.
+
+[A laptop-GPU user](https://github.com/OmniJev/Flide/issues/2) followed up after 0.1.12, reporting that supplied kernels reduced their multi-minute cold-start problem to a responding health check after 43 seconds. That specific hardware report is useful without becoming a general startup benchmark. No GPU comparison was run here. Match model, hardware, question count and decision margins in an adoption trial.
+
+### Spindle: one route definition, several outputs
+
+[Spindle](https://github.com/hyphatech/spindle/blob/9ed528817b74e4cd13cc1595d1e986dc9580e75f/README.md) is an OCaml web framework whose typed route/schema representation feeds request validation, OpenAPI and client schemas. The [OpenAPI generator](https://github.com/hyphatech/spindle/blob/9ed528817b74e4cd13cc1595d1e986dc9580e75f/core/openapi.ml) is worth reading because it shows how those outputs stay related instead of being maintained independently.
+
+The [launch discussion](https://news.ycombinator.com/item?id=50377613) also illustrates why reading current code matters. A reviewer suggested constraining static-file access through Eio directory capabilities. The pinned [file implementation](https://github.com/hyphatech/spindle/blob/9ed528817b74e4cd13cc1595d1e986dc9580e75f/core/files.ml) uses `Eio.Path.with_subtree` across its lookup and serving paths. The historical suggestion is not evidence that the current version omits that protection.
+
+No OCaml conformance suite or deployed application was tested here. For an OCaml service, the useful evaluation is whether the shared representation covers the required request shapes and generated clients, followed by actual protocol and deployment checks.
+
+### Coldframe: a convincing interaction is not yet a convincing field result
+
+[Coldframe](https://github.com/hedgerow-dev/coldframe/blob/e6b126af0ab08c24b48de77abfe063e98ff1b12f/README.md) simulates supermarket refrigeration controllers. Its [Python server](https://github.com/hedgerow-dev/coldframe/blob/e6b126af0ab08c24b48de77abfe063e98ff1b12f/honeypot.py) offers vendor personas, fake login/control paths and structured events. The optional Modbus service is separate.
+
+On loopback, the real handler rejected a wrong login, accepted the default fake login, changed fake node 2 into defrost mode and recorded the control event. This establishes more than a listening port: an interaction changes a coherent fake state. No real controller or internet-facing decoy was involved.
+
+The [launch account](https://news.ycombinator.com/item?id=50406292) was more limited than the premise might suggest: the maintainer reported two instances online for one day, seeing generic scanners and Shodan. It did not report targeted sabotage captured by this tool. Commenters raised reasonable questions about fingerprints and whether a cloud-hosted decoy attracts the relevant operators.
+
+The project has a precise observation target. Its next meaningful evidence is what continues past discovery and login in the field. Local simulation correctness and field attraction answer different questions.
+
+## What this sample suggests
+
+Six of the twelve explicitly address coding-agent behavior or agent workflows. They add maintained knowledge, permission decisions, conversation recovery, durable execution, writing constraints and operational decisions. That establishes a group of products in this sample, rather than a market-wide shift or demonstrated demand.
+
+The stronger distinction is how far each tool carries its responsibility. Modern Web Guidance retrieves a relevant guide and refuses a volatile one without opt-in; the resulting page still needs browser checks. Stroq judges the package-script case; the installed host still needs to honor the hook. OmniDiff reveals a changed archive member; a reviewer still needs to inspect its meaning. Waymark preserves workflow state while explicitly exposing uncertainty around outside effects.
+
+Self-hosting has the same need for precision. HolyArrs can reduce local operational work while retaining shared metadata. Kairos can keep application state local while sending inference elsewhere. HyperFlow’s public code cannot grant rights its weight agreement withholds.
+
+For a first experiment, OmniDiff’s artifact review and Modern Web Guidance’s task-specific retrieval offer small, inspectable trials. Recovery and prevention deserve trials that include the failure path: a detached client, an unrecorded outside effect, a malformed hook input. Those conditions are where a useful tool’s actual promise becomes clear.
 
 ---
 
 ## Sources and terms
 
-Code links above use one pinned November 11 revision per repository. These are current-source inspections following November 1–10 Show HN submissions, not reproductions of every launch-day version.
-
-| Term or source | What it establishes |
+| Source or term | What it establishes |
 | --- | --- |
-| [Selection record and complete indexed inventory](https://github.com/gkoreli/blog/tree/main/packages/blog/drafts/research/oss-radar-14-november-show-hn) | Ten daily query partitions, the 50-point/direct-GitHub rule, all twelve selected submissions and source revisions. Points were captured at retrieval, so submissions had unequal time to collect votes. |
-| [HN’s official API](https://github.com/HackerNews/API) and [Algolia’s HN search API](https://hn.algolia.com/api) | The primary discussion service and the indexed search interface used to construct this scan. Indexed availability limits the inventory. |
-| Durable execution | A system retains workflow progress so work can continue after a process fails. Waymark’s linked implementation shows its state representation; external-effect behavior still needs testing. |
-| Agent hook | A host invokes an integration around an event such as a tool call. Its timing, payload and response handling determine what the integration can observe or stop. |
+| [Inventory, pinned source and discussion ledger](https://github.com/gkoreli/blog/tree/main/packages/blog/drafts/research/oss-radar-14-november-show-hn) | All 1,455 indexed submissions, the twelve-project selection, revisions, reports and claim boundaries. Checked November 11, 2026. |
+| [Local trials and reproduction fixtures](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/oss-radar-14-november-show-hn/04-local-trials.md) | Six small product checks, exact versions, synthetic inputs and results; the Waymark setup attempt did not establish recovery behavior. |
+| [HN API](https://github.com/HackerNews/API) and [Algolia HN search API](https://hn.algolia.com/api) | The discussion service and indexed search interface used for this scan. Index availability limits the inventory. |
+| Durable execution | Retaining workflow progress beyond a process failure; external effects still need explicit repetition and uncertainty policies. |
+| Agent hook | A host invokes an integration around an event. Its payload, timing and response handling determine what the integration can observe or stop. |
