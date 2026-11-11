@@ -1,0 +1,64 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {createHash} from 'node:crypto';
+import {DatabaseSync} from 'node:sqlite';
+import {readFileSync} from 'node:fs';
+import {reportProjectionSelectSql,reportProjectionSql,REPORT_PROJECTION_RULE_SHA256} from '../.test-dist/report-projection.js';
+import {queryStats,queryProjectedStats} from '../.test-dist/stats.js';
+import {STATS_INTEGRITY_INSERT,statsIntegrityValues} from './fixtures/stats-integrity.mjs';
+import {ACTIVE_REFERRAL_POLICY} from '../.test-dist/referral-policy.generated.js';
+
+function fixture() {
+  const sqlite = new DatabaseSync(':memory:');
+  sqlite.exec(readFileSync(new URL('../schema.sql',import.meta.url),'utf8'));
+  for (const values of statsIntegrityValues()) sqlite.prepare(STATS_INTEGRITY_INSERT).run(...values);
+  let batches=0;
+  const db={prepare(sql){return{bind(...values){return{sql,values};}};},async batch(statements){batches++;return statements.map(s=>({success:true,results:sqlite.prepare(s.sql).all(...s.values)}));}};
+  return {sqlite,db,batches:()=>batches};
+}
+const now=new Date('2026-10-31T12:00:00Z'),query={range:'7d',traffic:'all'};
+function rebuild(sqlite){return sqlite.prepare(reportProjectionSql('range')).run(0,Number.MAX_SAFE_INTEGER);}
+
+test('report projection fingerprint covers the complete interpretation and ordered metric layout',()=>{
+  assert.equal(createHash('sha256').update(reportProjectionSelectSql('id = ?')).digest('hex'),REPORT_PROJECTION_RULE_SHA256);
+});
+
+test('complete projection, missing/stale fallback, dimension repairs and rebuild preserve exact reports',async()=>{
+  const f=fixture();try{
+    const source=f.sqlite.prepare('SELECT * FROM page_observations ORDER BY id').all();
+    const expected=await queryStats(f.db,query,now);
+    let before=f.batches();assert.deepEqual(await queryProjectedStats(f.db,query,now),expected);assert.equal(f.batches()-before,2);
+    rebuild(f.sqlite);before=f.batches();assert.deepEqual(await queryProjectedStats(f.db,query,now),expected);assert.equal(f.batches()-before,1);
+    assert.equal(rebuild(f.sqlite).changes,0);
+    assert.deepEqual(f.sqlite.prepare('SELECT * FROM page_observations ORDER BY id').all(),source);
+    f.sqlite.prepare('UPDATE page_observation_report_facts SET rule_sha256=? WHERE observation_id=1').run('0'.repeat(64));
+    assert.deepEqual(await queryProjectedStats(f.db,query,now),expected);
+    rebuild(f.sqlite);
+    f.sqlite.prepare("UPDATE page_observations SET path='/repaired' WHERE id=1").run();
+    assert.equal(f.sqlite.prepare('SELECT COUNT(*) AS n FROM page_observation_report_facts WHERE observation_id=1').get().n,0);
+    assert.deepEqual(await queryProjectedStats(f.db,query,now),await queryStats(f.db,query,now));
+    rebuild(f.sqlite);
+    f.sqlite.prepare('DELETE FROM page_observations WHERE id=1').run();
+    assert.equal(f.sqlite.prepare('SELECT COUNT(*) AS n FROM page_observation_report_facts WHERE observation_id=1').get().n,0);
+    assert.deepEqual(await queryProjectedStats(f.db,query,now),await queryStats(f.db,query,now));
+  }finally{f.sqlite.close();}
+});
+
+test('owner registry, referral changes, outgoing path scope and global empty-filter boundary stay read-time policies',async()=>{
+  const f=fixture();try{
+    rebuild(f.sqlite);
+    const client=f.sqlite.prepare('SELECT daily_client_id FROM page_observations WHERE is_owner=0 LIMIT 1').get();
+    f.sqlite.prepare("INSERT INTO owner_clients(daily_client_id,utc_date) VALUES(?,'2026-10-30')").run(client.daily_client_id);
+    const policy={...ACTIVE_REFERRAL_POLICY,upstreamHosts:['google.com'],localRules:[],publicHosts:[]};
+    for(const q of [query,{...query,path:'/alpha'},{range:'all',traffic:'crawlers'},{...query,path:'/absent'}])
+      assert.deepEqual(await queryProjectedStats(f.db,q,now,policy),await queryStats(f.db,q,now,policy));
+  }finally{f.sqlite.close();}
+});
+
+test('malformed accepted facts fail closed rather than publishing partial evidence',async()=>{
+  const f=fixture();try{
+    rebuild(f.sqlite);
+    f.sqlite.prepare("UPDATE page_observation_report_facts SET report_native_category='invalid-fact' WHERE is_owner=0").run();
+    await assert.rejects(queryProjectedStats(f.db,query,now),/Malformed/);
+  }finally{f.sqlite.close();}
+});

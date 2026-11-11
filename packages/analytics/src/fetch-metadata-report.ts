@@ -7,7 +7,7 @@ const tokens = (values: readonly string[]) => values.map(v => `'${v.replaceAll("
 /** Trusted expressions only, with a guarded JSON document. Known format/profile
  * plus encoded states must agree with retained canonical scalars. This does not
  * authenticate the original header, other classification facts, or an operator. */
-function recordStateSql(): string {
+export function fetchMetadataRecordStateSql(): string {
   // The cache-evidence collection bump preserves this parser/record format.
   // Keep explicit compatibility; an arbitrary future collector must not inherit it.
   const compatibleCollection = "collection_version IN ('2026-10-29.6','2026-10-30.1','2026-11-05.1','2026-11-06.1','2026-11-10.1')";
@@ -58,7 +58,7 @@ export function fetchMetadataReportCtes(multiplicity: 'events' | 'cohorts' = 'ev
     FROM included
     GROUP BY classification_evidence, observation_source, collection_version, classifier_version, sec_fetch_mode, sec_fetch_dest, sec_fetch_site, sec_fetch_user
   ), metadata_facts AS MATERIALIZED (
-    SELECT ${recordStateSql()} AS metadata_state, json_extract(metadata_json,'$.fetchMetadataBits') AS metadata_bits, sec_fetch_user AS metadata_user, metadata_views
+    SELECT ${fetchMetadataRecordStateSql()} AS metadata_state, json_extract(metadata_json,'$.fetchMetadataBits') AS metadata_bits, sec_fetch_user AS metadata_user, metadata_views
     FROM metadata_inputs
   )`;
 }

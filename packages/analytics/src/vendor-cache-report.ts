@@ -5,15 +5,11 @@ import { VENDOR_CACHE_ACCESS_FIELDS, VENDOR_CACHE_BLOCKER_FIELDS, emptyVendorCac
  * profile cannot acquire a cache assessment merely by carrying similarly named keys.
  * The bounded per-record source/blocker expansion is evaluated only for the new profile.
  */
-export function vendorCacheReportCtes(multiplicity: 'events' | 'cohorts' = 'events'): string {
-  const views = multiplicity === 'cohorts' ? 'SUM(network_views)' : 'COUNT(*)';
+export function vendorCacheRecordColumnsSql(): string {
   const access = VENDOR_CACHE_ACCESS.map((v,i) => `WHEN '${v}' THEN ${1 << i}`).join(' ');
   const blockers = VENDOR_CACHE_BLOCKERS.map((v,i) => `WHEN '${v}' THEN ${1 << i}`).join(' ');
   const union = VENDOR_CACHE_BLOCKERS.map((_,i) => `COALESCE(MAX(blocker_mask & ${1 << i}),0)`).join(' + ');
-  return `vendor_cache_inputs AS MATERIALIZED (
-    SELECT vendor_ip_evidence,network_state,${views} AS cache_views FROM vendor_network_facts GROUP BY vendor_ip_evidence,network_state
-  ), vendor_cache_records AS MATERIALIZED (
-    SELECT cache_views,
+  return `
       CASE WHEN network_state = 'unrecognized' THEN 'unrecognized'
         WHEN network_state = 'recognized' AND json_extract(vendor_ip_evidence,'$.profile') IN ('2026-10-30.1','2026-10-31.1','2026-10-31.2','2026-11-05.1') THEN 'recognized'
         ELSE 'not-recorded' END AS cache_state,
@@ -28,7 +24,15 @@ export function vendorCacheReportCtes(multiplicity: 'events' | 'cohorts' = 'even
           FROM json_each(vendor_ip_evidence,'$.checks') AS check_row
           WHERE check_row.key < 4 AND json_type(check_row.value,'$.cache') = 'object'
         ) SELECT json_object('access',COALESCE(SUM(DISTINCT access_mask),0),'policy',COALESCE(SUM(DISTINCT policy_mask),0),'blockers',${union}) FROM cache_checks
-      ) ELSE NULL END AS cache_masks
+      ) ELSE NULL END AS cache_masks`;
+}
+
+export function vendorCacheReportCtes(multiplicity: 'events' | 'cohorts' = 'events'): string {
+  const views = multiplicity === 'cohorts' ? 'SUM(network_views)' : 'COUNT(*)';
+  return `vendor_cache_inputs AS MATERIALIZED (
+    SELECT vendor_ip_evidence,network_state,${views} AS cache_views FROM vendor_network_facts GROUP BY vendor_ip_evidence,network_state
+  ), vendor_cache_records AS MATERIALIZED (
+    SELECT cache_views, ${vendorCacheRecordColumnsSql()}
     FROM vendor_cache_inputs
   )`;
 }

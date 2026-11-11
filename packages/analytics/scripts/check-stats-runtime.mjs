@@ -9,12 +9,18 @@ import { tmpdir } from 'node:os';
 import { join, resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
 import wrangler from 'wrangler';
-import { networkReportProjectionSql } from '../.test-dist/network-report-projection.js';
-import { queryStats } from '../.test-dist/stats.js';
+import { reportProjectionSql as networkReportProjectionSql } from '../.test-dist/report-projection.js';
+import { queryProjectedStats as queryStats } from '../.test-dist/stats.js';
 import { STATS_INTEGRITY_INSERT, statsIntegrityValues } from '../test/fixtures/stats-integrity.mjs';
 import { networkSummaryCases } from '../test/fixtures/vendor-network-summary.mjs';
 
-const reference = process.argv[2] ? await import(pathToFileURL(resolve(process.argv[2])).href) : { queryStats };
+import {summaryCases} from '../test/fixtures/signature-summary.mjs';
+import {parsingCases} from '../test/fixtures/fetch-metadata-summary.mjs';
+import {vendorCacheSummaryCases} from '../test/fixtures/vendor-cache-summary.mjs';
+import {verifyVendorIp,createVendorIpCache} from '../.test-dist/vendor-ip.js';
+import {clientFormEvidence} from '../.test-dist/client-form.js';
+
+const reference = process.argv[2] ? await import(pathToFileURL(resolve(process.argv[2])).href) : await import('../.test-dist/stats.js');
 const directory = mkdtempSync(join(tmpdir(), 'gkoreli-stats-runtime-'));
 const configPath = join(directory, 'wrangler.json');
 writeFileSync(configPath, JSON.stringify({ name: 'stats-runtime-fixture', compatibility_date: '2026-03-06',
@@ -34,6 +40,14 @@ try {
       VALUES('/network',?,'browser','desktop',0,'browser','fixture','2026-10-30 11:00:00',?)`,
     values: [(index + 100).toString(16).padStart(32,'0'), item.e === null ? null : JSON.stringify(item.e)],
   });
+  const base={path:'/projection-fixture',daily_client_id:'f'.repeat(32),traffic_class:'ai',device_type:'desktop',is_owner:0,reader_kind:'ai-search',reader_reason:'fixture',observed_at:'2026-10-30 11:00:00'};
+  const records=[
+    ...summaryCases.map(item=>({...base,signature_status:item.status,signature_evidence:item.e===null?null:JSON.stringify(item.e)})),
+    ...parsingCases().map(([,row])=>row),
+    ...(await vendorCacheSummaryCases(verifyVendorIp,createVendorIpCache)).map(item=>({...base,vendor_ip_evidence:item.e===null?null:JSON.stringify(item.e)})),
+    ...['Mobile','iPhone iPad','Mozilla/5.0 Chrome/150.0.0.0 Safari/537.36',''].flatMap(ua=>[null,'?0','?1','unsupported'].map(hint=>({...base,client_form_evidence:JSON.stringify(clientFormEvidence(ua,hint,null))}))),
+  ];
+  for(const row of records) inserts.push({sql:`INSERT INTO page_observations(${Object.keys(row).join(',')}) VALUES(${Object.keys(row).map(()=>'?').join(',')})`,values:Object.values(row)});
   for (const {sql,values} of inserts) sqlite.prepare(sql).run(...values);
   await db.batch(inserts.map(({sql,values}) => db.prepare(sql).bind(...values)));
   const referenceDb = {
@@ -55,8 +69,8 @@ try {
     assert.deepEqual(actual, expected, JSON.stringify({ mode, query }));
     }
   }
-  assert.ok(costs.every(cost => cost.submittedStatements === 5 && cost.returnedResults === 5 && cost.reportedRowsWritten === 0));
-  console.log(JSON.stringify({ selectors: queries.length, comparisons: costs.length, modes: ['fallback', 'projected'], syntheticRows: inserts.length, statementsPerReport: 5,
+  assert.ok(costs.every(cost => cost.submittedStatements === 5 && cost.returnedResults === cost.submittedStatements && cost.reportedRowsWritten === 0));
+  console.log(JSON.stringify({ selectors: queries.length, comparisons: queries.length * 2, meteredBatches: costs.length, modes: ['fallback', 'projected'], syntheticRows: inserts.length, projectedStatementsPerReport: 5, sourceStatementsPerReport: 5,
     firstReport: costs[0], parity: true }));
 } finally {
   sqlite.close();

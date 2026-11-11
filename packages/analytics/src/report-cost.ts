@@ -12,6 +12,7 @@ export interface ReportCalculation {
   reportedSqlDurationMs: number | null;
   totalAttempts: number | null;
   unexpectedWrites: boolean | null;
+  readModel?: 'projection' | 'source-fallback';
   /** Wall time of the awaited binding call, including its transport. */
   elapsedMs?: number;
   failure?: ReportFailure;

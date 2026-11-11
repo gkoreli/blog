@@ -1,3 +1,5 @@
+import { REPORT_PROJECTION_RULE_SHA256 } from './report-projection.js';
+import { SIGNATURE_REPORT_FACTS, NETWORK_REPORT_FACTS } from './report-fact-expressions.js';
 /** D1 read adapter. Query-specific projections preserve one complete report
  * while keeping raw evidence out of unrelated materialized populations.
  */
@@ -95,10 +97,22 @@ const REPORT_INPUTS = {
   boundary: [],
 } as const satisfies Readonly<Record<ReportSection, readonly string[]>>;
 
-function reportSql(selected: QueryPredicate, bucketSql: string, includeBoundary: boolean, sectionNames: readonly ReportSection[], includeOutgoing: boolean, evidenceCohorts: boolean): QueryPredicate {
+const PROJECTED_INPUTS = {
+  ...REPORT_INPUTS,
+  'fetch-metadata': ['report_metadata'],
+  'vendor-cache': ['report_cache'], 'vendor-ip': ['report_network'],
+  'directory-publication': ['report_directory'],
+  'native-category': ['reader_kind','agent_name','report_native_category','report_signature_basis','report_verifier_profile'],
+  'kind-signature': ['reader_kind','agent_name','report_native_category','report_signature_basis','report_verifier_profile'],
+  'client-evidence': ['reader_kind','agent_name','report_native_category','report_signature_basis','report_verifier_profile'],
+  verification: ['report_verification'],
+  device: ['report_form','report_form_recorded','report_form_unsupported','report_form_differing','report_form_defaulted'],
+} as const satisfies Readonly<Record<ReportSection, readonly string[]>>;
+
+function reportSql(selected: QueryPredicate, bucketSql: string, includeBoundary: boolean, sectionNames: readonly ReportSection[], includeOutgoing: boolean, evidenceCohorts: boolean, projected = false): QueryPredicate {
   const scopedPath = `?${selected.values.length + 2}`;
   const pathScope = includeOutgoing ? `(${scopedPath} IS NULL OR path = ${scopedPath})` : '1';
-  const inputColumns = [...new Set([...(evidenceCohorts ? [] : ['path']), 'referrer_host', ...sectionNames.flatMap(name => REPORT_INPUTS[name])])];
+  const inputColumns = [...new Set([...(evidenceCohorts ? [] : ['path']), 'referrer_host', ...sectionNames.flatMap(name => projected ? PROJECTED_INPUTS[name] : REPORT_INPUTS[name])])];
   const selectedColumns = inputColumns.map(column => column === 'report_network_state' ? 'network_projection.network_state AS report_network_state' : column);
   const projectionJoin = inputColumns.includes('report_network_state')
     ? `LEFT JOIN page_observation_network_facts AS network_projection ON network_projection.observation_id = page_observations.id AND network_projection.rule_sha256 = '${NETWORK_REPORT_RULE_SHA256}'` : '';
@@ -108,7 +122,7 @@ function reportSql(selected: QueryPredicate, bucketSql: string, includeBoundary:
   const boundaryCte = includeBoundary
     ? `boundary AS MATERIALIZED (
         SELECT MIN(observed_at) AS first_observed_at
-        FROM page_observations WHERE ${PUBLIC_OBSERVATION_PREDICATE}
+        FROM ${projected ? 'main.page_observations AS page_observations' : 'page_observations'} WHERE ${PUBLIC_OBSERVATION_PREDICATE}
       )`
     : '';
   const formProfile = `json_extract(client_form_evidence, '$.profile') IN (${CLIENT_FORM_PROFILES.map(profile => `'${profile}'`).join(',')})`;
@@ -119,7 +133,7 @@ function reportSql(selected: QueryPredicate, bucketSql: string, includeBoundary:
     WHEN device_type = 'desktop' THEN 'historical-desktop-default'
     WHEN device_type = 'mobile' THEN 'historical-mobile-heuristic'
     WHEN device_type = 'tablet' THEN 'historical-tablet-heuristic' ELSE 'unrecognized-record' END`;
-  const projections: Readonly<Record<ReportSection, string>> = {
+  const projections: Record<ReportSection, string> = {
     'fetch-metadata': `(${fetchMetadataReportProjectionSql()})`,
     'directory-publication': `(
           SELECT COALESCE(json_group_array(json(row_json)), json('[]')) FROM (
@@ -221,69 +235,11 @@ function reportSql(selected: QueryPredicate, bucketSql: string, includeBoundary:
     'vendor-cache': `(${vendorCacheReportProjectionSql()})`,
     'vendor-ip': `(
           SELECT json_array(json_object(
-            'recordedViews', SUM(network_views * (vendor_ip_evidence IS NOT NULL)),
-            'notRecordedViews', SUM(network_views * (network_state = 'not-recorded')),
-            'recognizedViews', SUM(network_views * (network_state = 'recognized')),
-            'unrecognizedViews', SUM(network_views * (network_state = 'unrecognized')),
-            'configuredDeclarationViews', SUM(network_views * (network_state = 'recognized' AND json_extract(vendor_ip_evidence, '$.configuredDeclarationCount') > 0)),
-            'unmappedDeclarationViews', SUM(network_views * (network_state = 'recognized' AND json_extract(vendor_ip_evidence, '$.unmappedDeclarationCount') > 0)),
-            'noDeclarationViews', SUM(network_views * (network_state = 'recognized' AND json_extract(vendor_ip_evidence, '$.declarationCount') = 0)),
-            'listedViews', SUM(network_views * (network_state = 'recognized' AND json_extract(vendor_ip_evidence, '$.summary.listed') = 1)),
-            'notListedViews', SUM(network_views * (network_state = 'recognized' AND json_extract(vendor_ip_evidence, '$.summary.notListed') = 1)),
-            'unavailableViews', SUM(network_views * (network_state = 'recognized' AND json_extract(vendor_ip_evidence, '$.summary.unavailable') = 1)),
-            'notAssessedViews', SUM(network_views * (network_state = 'recognized' AND json_extract(vendor_ip_evidence, '$.summary.notAssessed') = 1)),
-            'addressUnavailableViews', SUM(network_views * (network_state = 'recognized' AND json_extract(vendor_ip_evidence, '$.configuredDeclarationCount') > 0 AND json_extract(vendor_ip_evidence, '$.address.state') <> 'usable'))
+            ${Object.entries(NETWORK_REPORT_FACTS).map(([key, expression]) => `'${key}', SUM(network_views * (${expression}))`).join(',\n            ')}
           )) FROM vendor_network_facts
         )`,
     'verification': `(
-          SELECT json_array(${boundedJsonObjectSql({
-            localInvalidViews: "SUM(signature_views * (local_state = 'unverified' AND json_extract(signature_evidence, '$.localOutcome') = 'invalid'))",
-            localUnsupportedViews: "SUM(signature_views * (local_state = 'unverified' AND json_extract(signature_evidence, '$.localOutcome') = 'unsupported'))",
-            localUnavailableViews: "SUM(signature_views * (local_state = 'unverified' AND json_extract(signature_evidence, '$.localOutcome') = 'unavailable'))",
-            localPolicyRejectedViews: "SUM(signature_views * (local_state = 'unverified' AND json_extract(signature_evidence, '$.localOutcome') = 'policy-rejected'))",
-            localNotApplicableViews: "SUM(signature_views * (local_state = 'unverified' AND json_extract(signature_evidence, '$.localOutcome') = 'not-applicable'))",
-            localIndeterminateViews: "SUM(signature_views * (local_state = 'unverified' AND json_extract(signature_evidence, '$.localOutcome') = 'indeterminate'))",
-            unverifiedOutcomeNotRecordedViews: "SUM(signature_views * (local_state = 'unverified' AND json_type(signature_evidence, '$.localOutcome') IS NULL))",
-            vendorDocumentedViews: "SUM(signature_views * (vendor_state NOT IN ('not-recorded','unrecognized','test-injected') AND json_extract(signature_evidence, '$.vendor.documentedDeclarationCount') > 0))",
-            vendorMatchingOriginViews: "SUM(signature_views * (vendor_state = 'matching-origin'))",
-            vendorDifferentOriginViews: "SUM(signature_views * (vendor_state = 'different-origin'))",
-            vendorOriginConflictViews: "SUM(signature_views * (vendor_state = 'conflicting-origins'))",
-            vendorConflictWithMatchingOriginViews: "SUM(signature_views * (vendor_state = 'conflicting-origins' AND local_state = 'verified' AND json_extract(signature_evidence, '$.vendor.matchingDeclarationCount') > 0))",
-            vendorNotVerifiedViews: "SUM(signature_views * (vendor_state = 'not-verified'))",
-            vendorUnmappedDeclarationViews: "SUM(signature_views * (vendor_state NOT IN ('not-recorded','unrecognized','test-injected') AND json_extract(signature_evidence, '$.vendor.unmappedDeclarationCount') > 0))",
-            vendorUserAgentBoundViews: "SUM(signature_views * (vendor_state = 'matching-origin' AND json_type(signature_evidence, '$.vendor.userAgentCovered') = 'true'))",
-            vendorCheckNotRecordedViews: "SUM(signature_views * (vendor_state = 'not-recorded'))",
-            vendorCheckUnrecognizedViews: "SUM(signature_views * (vendor_state = 'unrecognized'))",
-            vendorCheckRecognizedViews: "SUM(signature_views * (vendor_state NOT IN ('unrecognized','not-recorded')))",
-            recordedViews: "SUM(signature_views * (signature_evidence IS NOT NULL))",
-            notRecordedViews: "SUM(signature_views * (signature_evidence IS NULL))",
-            localVerifiedViews: "SUM(signature_views * (local_state = 'verified'))",
-            localUnverifiedViews: "SUM(signature_views * (local_state = 'unverified'))",
-            localAbsentViews: "SUM(signature_views * (local_state = 'absent'))",
-            unrecognizedLocalViews: "SUM(signature_views * (local_state = 'unrecognized'))",
-            testVerdictViews: "SUM(signature_views * (local_state = 'test-injected'))",
-            coverageRecordedViews: "SUM(signature_views * (local_state = 'verified' AND coverage_valid = 1))",
-            coverageNotRecordedVerifiedViews: "SUM(signature_views * (local_state = 'verified' AND COALESCE(json_type(signature_evidence, '$.coverage'), 'null') = 'null'))",
-            coverageUnrecognizedVerifiedViews: "SUM(signature_views * (local_state = 'verified' AND coverage_valid = 0 AND COALESCE(json_type(signature_evidence, '$.coverage'), 'null') <> 'null'))",
-            selectionRecordedViews: "SUM(signature_views * (local_state = 'verified' AND coverage_valid = 1 AND selection_valid = 1))",
-            selectionNotRecordedVerifiedViews: "SUM(signature_views * (local_state = 'verified' AND json_type(signature_evidence, '$.coverage.selection') IS NULL AND COALESCE(json_extract(signature_evidence, '$.coverage.version'), '2026-10-27.1') = '2026-10-27.1'))",
-            selectionUnrecognizedVerifiedViews: "SUM(signature_views * (local_state = 'verified' AND NOT (coverage_valid = 1 AND selection_valid = 1) AND NOT (json_type(signature_evidence, '$.coverage.selection') IS NULL AND COALESCE(json_extract(signature_evidence, '$.coverage.version'), '2026-10-27.1') = '2026-10-27.1')))",
-            multipleTaggedCandidateViews: "SUM(signature_views * (local_state = 'verified' AND coverage_valid = 1 AND selection_valid = 1 AND json_extract(signature_evidence, '$.coverage.selection.taggedCandidates') > 1))",
-            unassessedCandidateViews: "SUM(signature_views * (local_state = 'verified' AND coverage_valid = 1 AND selection_valid = 1 AND json_extract(signature_evidence, '$.coverage.selection.unassessedCandidates') > 0))",
-            userAgentBoundViews: "SUM(signature_views * (local_state = 'verified' AND coverage_valid = 1 AND json_type(signature_evidence, '$.coverage.covered.userAgent') = 'true'))",
-            resourceBoundViews: "SUM(signature_views * (local_state = 'verified' AND coverage_valid = 1 AND (json_type(signature_evidence, '$.coverage.covered.path') = 'true' OR json_type(signature_evidence, '$.coverage.covered.targetUri') = 'true')))",
-            methodBoundViews: "SUM(signature_views * (local_state = 'verified' AND coverage_valid = 1 AND json_type(signature_evidence, '$.coverage.covered.method') = 'true'))",
-            authorityOnlyViews: "SUM(signature_views * (local_state = 'verified' AND coverage_valid = 1 AND json_type(signature_evidence, '$.coverage.covered.authority') = 'true' AND json_type(signature_evidence, '$.coverage.covered.targetUri') = 'false' AND json_type(signature_evidence, '$.coverage.covered.path') = 'false' AND json_type(signature_evidence, '$.coverage.covered.method') = 'false' AND json_type(signature_evidence, '$.coverage.covered.query') = 'false'))",
-            nativeAvailableViews: "SUM(signature_views * (native_state = 'available'))",
-            nativeVerifiedBotAvailableViews: "SUM(signature_views * (native_state = 'available' AND json_type(signature_evidence, '$.native.verifiedBot') IN ('true','false')))",
-            nativeSignedAgentAvailableViews: "SUM(signature_views * (native_state = 'available' AND json_type(signature_evidence, '$.native.signedAgent') IN ('true','false')))",
-            nativeUnavailableViews: "SUM(signature_views * (native_state = 'unavailable'))",
-            nativeNotRecordedViews: "SUM(signature_views * (native_state = 'not-recorded'))",
-            nativeUnrecognizedViews: "SUM(signature_views * (native_state = 'unrecognized'))",
-            nativeVerifiedBotViews: "SUM(signature_views * (native_state = 'available' AND json_type(signature_evidence, '$.native.verifiedBot') = 'true'))",
-            nativeSignedAgentViews: "SUM(signature_views * (native_state = 'available' AND json_type(signature_evidence, '$.native.signedAgent') = 'true'))",
-            localVerifiedNativeNotVerifiedViews: "SUM(signature_views * (local_state = 'verified' AND native_state = 'available' AND json_type(signature_evidence, '$.native.verifiedBot') = 'false'))",
-          })}) FROM signature_summary
+          SELECT json_array(${boundedJsonObjectSql(Object.fromEntries(Object.entries(SIGNATURE_REPORT_FACTS).map(([key, expression]) => [key, `SUM(signature_views * (${expression}))`])))}) FROM signature_summary
         )`,
     'referrer-state': `(
           SELECT COALESCE(json_group_array(json(row_json)), json('[]')) FROM (
@@ -314,6 +270,21 @@ function reportSql(selected: QueryPredicate, bucketSql: string, includeBoundary:
         )`,
     boundary: `(SELECT json_array(json_object('firstObservedAt', first_observed_at)) FROM boundary)`,
   };
+  if (projected) {
+    const groupedFact = (column: string) => `(SELECT COALESCE(json_group_array(json(row_json)),json('[]')) FROM (
+      SELECT json_set(${column},'$.views',SUM(event_views)) AS row_json FROM included GROUP BY ${column} ORDER BY ${column}))`;
+    projections['fetch-metadata'] = groupedFact('report_metadata');
+    projections['vendor-cache'] = groupedFact('report_cache');
+    projections['vendor-ip'] = `(SELECT json_array(${boundedJsonObjectSql(Object.fromEntries(Object.keys(NETWORK_REPORT_FACTS).map((key,index) => [key, `SUM(event_views * json_extract(report_network,'$[${index}]'))`])))}) FROM included)`;
+    projections.verification = `(SELECT json_array(${boundedJsonObjectSql(Object.fromEntries(Object.keys(SIGNATURE_REPORT_FACTS).map((key,index) => [key, `SUM(event_views * json_extract(report_verification,'$[${index}]'))`])))}) FROM included)`;
+    projections.device = `(SELECT COALESCE(json_group_array(json(row_json)),json('[]')) FROM (
+      SELECT json_object('key1',report_form,'views',COUNT(*),'recordedViews',SUM(report_form_recorded),
+        'unsupportedHintViews',SUM(report_form_unsupported),'differingSignalsViews',SUM(report_form_differing),
+        'legacyDefaultedViews',SUM(report_form_defaulted)) AS row_json FROM included GROUP BY report_form ORDER BY COUNT(*) DESC,report_form))`;
+    projections['directory-publication'] = `(SELECT COALESCE(json_group_array(json(row_json)),json('[]')) FROM (
+      SELECT json_object('key1',report_directory,'views',SUM(event_views)) AS row_json FROM included GROUP BY report_directory ORDER BY SUM(event_views) DESC,report_directory))`;
+  }
+
   const names: readonly ReportSection[] = includeBoundary ? [...sectionNames, 'boundary'] : sectionNames;
   const sectionValues = names.map((name,index) => `('${name}', ${index})`);
 
@@ -337,12 +308,17 @@ function reportSql(selected: QueryPredicate, bucketSql: string, includeBoundary:
       ${evidenceCohorts ? `GROUP BY ${inputColumns.join(', ')}` : ''}
     )`);
   }
-  if (sectionNames.includes('directory-publication')) ctes.push(`directory_inputs AS MATERIALIZED (
+  if (!projected && sectionNames.includes('directory-publication')) ctes.push(`directory_inputs AS MATERIALIZED (
     SELECT signature_evidence, signature_status, SUM(event_views) AS directory_views
     FROM included GROUP BY signature_evidence, signature_status
   )`);
   if (sectionNames.some(name => name === 'native-category' || name === 'kind-signature' || name === 'client-evidence')) {
-    ctes.push(`client_inputs AS MATERIALIZED (
+    if (projected) ctes.push(`client_evidence_facts AS MATERIALIZED (
+      SELECT CASE WHEN reader_kind IN (${READER_KINDS.map(kind => "'" + kind + "'").join(',')}) THEN reader_kind ELSE NULL END AS evidence_kind,
+        CASE WHEN agent_name IS NOT NULL THEN 'selected' ELSE 'not-selected' END AS name_selection,
+        report_native_category AS native_category,report_signature_basis AS signature_basis,report_verifier_profile AS verifier_profile,event_views AS client_views FROM included
+    )`);
+    else ctes.push(`client_inputs AS MATERIALIZED (
       SELECT reader_kind, agent_name IS NOT NULL AS name_selected, signature_evidence, signature_status, SUM(event_views) AS client_views
       FROM included GROUP BY reader_kind, agent_name IS NOT NULL, signature_evidence, signature_status
     )`, `client_evidence_facts AS MATERIALIZED (
@@ -353,14 +329,14 @@ function reportSql(selected: QueryPredicate, bucketSql: string, includeBoundary:
         client_views FROM client_inputs
     )`);
   }
-  if (sectionNames.some(name => name === 'vendor-cache' || name === 'vendor-ip')) {
+  if (!projected && sectionNames.some(name => name === 'vendor-cache' || name === 'vendor-ip')) {
     ctes.push(`vendor_network_inputs AS MATERIALIZED (
       SELECT vendor_ip_evidence, report_network_state, SUM(event_views) AS network_views FROM included GROUP BY vendor_ip_evidence, report_network_state
     )`, `vendor_network_facts AS MATERIALIZED (
       SELECT vendor_ip_evidence, network_views, CASE WHEN report_network_state IS NOT NULL THEN report_network_state ELSE (${vendorNetworkStateSql()}) END AS network_state FROM vendor_network_inputs
     )`);
   }
-  if (sectionNames.includes('verification')) {
+  if (!projected && sectionNames.includes('verification')) {
     ctes.push(`signature_inputs AS MATERIALIZED (
       SELECT signature_evidence, signature_status, SUM(event_views) AS signature_views
       FROM included GROUP BY signature_evidence, signature_status
@@ -374,13 +350,13 @@ function reportSql(selected: QueryPredicate, bucketSql: string, includeBoundary:
         ${signatureSelectionRecordedSql()} AS selection_valid FROM signature_facts
     )`);
   }
-  if (sectionNames.includes('fetch-metadata')) ctes.push(fetchMetadataReportCtes('cohorts'));
-  if (sectionNames.includes('vendor-cache')) ctes.push(vendorCacheReportCtes('cohorts'));
+  if (!projected && sectionNames.includes('fetch-metadata')) ctes.push(fetchMetadataReportCtes('cohorts'));
+  if (!projected && sectionNames.includes('vendor-cache')) ctes.push(vendorCacheReportCtes('cohorts'));
   if (includeBoundary) ctes.push(boundaryCte);
   ctes.push(`sections(section, section_order) AS MATERIALIZED (VALUES ${sectionValues.join(', ')})`);
 
   return {
-    sql: `WITH RECURSIVE ${ctes.join(',\n')}
+    sql: `WITH RECURSIVE ${projected ? `page_observations AS (SELECT observation_id AS id,* FROM page_observation_report_facts WHERE rule_sha256='${REPORT_PROJECTION_RULE_SHA256}'),` : ''}${ctes.join(',\n')}
     SELECT section, CASE section
       ${names.map(name => `WHEN '${name}' THEN ${projections[name]}`).join('\n')}
       ELSE json('[]') END AS payload FROM sections ORDER BY section_order`,
@@ -400,5 +376,30 @@ export function buildStatsQueryPlan(query: StatsQuery, window: StatsWindow, poli
     const selected = predicateFor(window, query, includeOutgoing);
     const report = reportSql(selected, bucketSql, query.range === 'all' && index === 0, names, includeOutgoing, evidenceCohorts);
     return { sql: report.sql, values: [...report.values, rules, ...(includeOutgoing ? [query.path ?? null] : [])] };
+  });
+}
+
+/** A complete versioned read-model snapshot, with a source coverage guard in
+ * the same transaction. Incomplete facts are discarded before source fallback.
+ */
+export function buildProjectedStatsQueryPlan(query: StatsQuery, window: StatsWindow, policy: ReferralPolicy): QueryPredicate[] {
+  const bucketSql = window.granularity === 'hour' ? "strftime('%Y-%m-%dT%H:00:00Z', observed_at)" : "strftime('%Y-%m-%d', observed_at)";
+  const rules = referralRulesJson(policy);
+  return REPORT_SECTION_GROUPS.map((names,index) => {
+    const outgoing = names.some(name => name === 'transitions' || name === 'referrer-details');
+    const selected = predicateFor(window,query,outgoing);
+    const report = reportSql(selected,bucketSql,query.range==='all' && index===0,names,outgoing,names.some(name => name === 'verification' || name === 'vendor-ip'),true);
+    if (index===0) {
+      // Cover outgoing context as well as selected paths; policy-excluded missing
+      // rows conservatively trigger fallback. The owner registry stays live.
+      const coverage = predicateFor(window,query,true);
+      const start = selected.values.length + (outgoing ? 3 : 2);
+      const coverageSql = coverage.sql.replace(/\?(\d+)/g,(_,number) => `?${Number(number)+start-1}`);
+      const guard = `NOT EXISTS (SELECT 1 FROM main.page_observations AS page_observations WHERE ${coverageSql}
+        AND NOT EXISTS (SELECT 1 FROM page_observation_report_facts AS facts WHERE facts.observation_id=page_observations.id AND facts.rule_sha256='${REPORT_PROJECTION_RULE_SHA256}'))`;
+      report.sql = report.sql.replace('SELECT section, CASE section', `SELECT ${guard} AS projection_complete, section, CASE section`);
+      return {sql:report.sql,values:[...report.values,rules,...(outgoing?[query.path??null]:[]),...coverage.values]};
+    }
+    return {sql:report.sql,values:[...report.values,rules,...(outgoing?[query.path??null]:[])]};
   });
 }

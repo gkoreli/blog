@@ -75,7 +75,7 @@ test('a projection failure preserves the acknowledged observation and never repl
   try {
     let projectionAttempts = 0;
     const failing = { ...db, prepare(sql) {
-      if (sql.startsWith('INSERT INTO page_observation_network_facts')) return { bind() { return { async run() { projectionAttempts++; throw new Error('controlled projection failure'); } }; } };
+      if (sql.startsWith('INSERT INTO page_observation_report_facts')) return { bind() { return { async run() { projectionAttempts++; throw new Error('controlled projection failure'); } }; } };
       return db.prepare(sql);
     } };
     const pending = [];

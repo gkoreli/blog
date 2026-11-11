@@ -1,0 +1,715 @@
+{
+  "synthetic": true,
+  "cacheUsed": false,
+  "measurements": [
+    {
+      "name": "empty",
+      "rows": 0,
+      "distinct": false,
+      "query": {
+        "range": "7d",
+        "traffic": "all"
+      },
+      "views": 0,
+      "before": {
+        "elapsedMs": 24.428041999999948,
+        "sqlMs": 5,
+        "reads": 128,
+        "writes": 0,
+        "statements": [
+          {
+            "sqlMs": 1,
+            "reads": 26,
+            "writes": 0
+          },
+          {
+            "sqlMs": 1,
+            "reads": 23,
+            "writes": 0
+          },
+          {
+            "sqlMs": 1,
+            "reads": 24,
+            "writes": 0
+          },
+          {
+            "sqlMs": 0,
+            "reads": 21,
+            "writes": 0
+          },
+          {
+            "sqlMs": 1,
+            "reads": 12,
+            "writes": 0
+          },
+          {
+            "sqlMs": 1,
+            "reads": 22,
+            "writes": 0
+          }
+        ]
+      },
+      "after": {
+        "elapsedMs": 17.019833000000006,
+        "sqlMs": 2,
+        "reads": 117,
+        "writes": 0,
+        "statements": [
+          {
+            "sqlMs": 0,
+            "reads": 26,
+            "writes": 0
+          },
+          {
+            "sqlMs": 0,
+            "reads": 21,
+            "writes": 0
+          },
+          {
+            "sqlMs": 1,
+            "reads": 13,
+            "writes": 0
+          },
+          {
+            "sqlMs": 1,
+            "reads": 34,
+            "writes": 0
+          },
+          {
+            "sqlMs": 0,
+            "reads": 23,
+            "writes": 0
+          }
+        ]
+      },
+      "projected": {
+        "elapsedMs": 13.622665999999981,
+        "sqlMs": 2,
+        "reads": 100,
+        "writes": 0,
+        "statements": [
+          {
+            "sqlMs": 0,
+            "reads": 27,
+            "writes": 0
+          },
+          {
+            "sqlMs": 1,
+            "reads": 21,
+            "writes": 0
+          },
+          {
+            "sqlMs": 0,
+            "reads": 13,
+            "writes": 0
+          },
+          {
+            "sqlMs": 0,
+            "reads": 26,
+            "writes": 0
+          },
+          {
+            "sqlMs": 1,
+            "reads": 13,
+            "writes": 0
+          }
+        ]
+      },
+      "projectionCost": {
+        "served_by": "miniflare.db",
+        "duration": 1,
+        "changes": 0,
+        "last_row_id": 2,
+        "changed_db": false,
+        "size_after": 102400,
+        "rows_read": 6,
+        "rows_written": 0
+      },
+      "parity": true
+    },
+    {
+      "name": "repeated-4500",
+      "rows": 4500,
+      "distinct": false,
+      "query": {
+        "range": "7d",
+        "traffic": "all"
+      },
+      "views": 4336,
+      "before": {
+        "elapsedMs": 866.1313750000004,
+        "sqlMs": 854,
+        "reads": 691171,
+        "writes": 0,
+        "statements": [
+          {
+            "sqlMs": 133,
+            "reads": 97094,
+            "writes": 0
+          },
+          {
+            "sqlMs": 66,
+            "reads": 66204,
+            "writes": 0
+          },
+          {
+            "sqlMs": 67,
+            "reads": 119530,
+            "writes": 0
+          },
+          {
+            "sqlMs": 97,
+            "reads": 91251,
+            "writes": 0
+          },
+          {
+            "sqlMs": 185,
+            "reads": 118502,
+            "writes": 0
+          },
+          {
+            "sqlMs": 306,
+            "reads": 198590,
+            "writes": 0
+          }
+        ]
+      },
+      "after": {
+        "elapsedMs": 81.69212499999958,
+        "sqlMs": 67,
+        "reads": 277169,
+        "writes": 0,
+        "statements": [
+          {
+            "sqlMs": 15,
+            "reads": 68983,
+            "writes": 0
+          },
+          {
+            "sqlMs": 12,
+            "reads": 106163,
+            "writes": 0
+          },
+          {
+            "sqlMs": 9,
+            "reads": 43029,
+            "writes": 0
+          },
+          {
+            "sqlMs": 15,
+            "reads": 26598,
+            "writes": 0
+          },
+          {
+            "sqlMs": 16,
+            "reads": 32396,
+            "writes": 0
+          }
+        ]
+      },
+      "projected": {
+        "elapsedMs": 52.64387500000066,
+        "sqlMs": 37,
+        "reads": 235020,
+        "writes": 0,
+        "statements": [
+          {
+            "sqlMs": 13,
+            "reads": 77896,
+            "writes": 0
+          },
+          {
+            "sqlMs": 7,
+            "reads": 62803,
+            "writes": 0
+          },
+          {
+            "sqlMs": 6,
+            "reads": 43029,
+            "writes": 0
+          },
+          {
+            "sqlMs": 6,
+            "reads": 25714,
+            "writes": 0
+          },
+          {
+            "sqlMs": 5,
+            "reads": 25578,
+            "writes": 0
+          }
+        ]
+      },
+      "projectionCost": {
+        "served_by": "miniflare.db",
+        "duration": 376,
+        "changes": 4500,
+        "last_row_id": 4500,
+        "changed_db": true,
+        "size_after": 17092608,
+        "rows_read": 255063,
+        "rows_written": 9000
+      },
+      "parity": true
+    },
+    {
+      "name": "unique-network-4500",
+      "rows": 4500,
+      "distinct": false,
+      "distinctNetwork": true,
+      "query": {
+        "range": "7d",
+        "traffic": "all"
+      },
+      "views": 4336,
+      "before": {
+        "elapsedMs": 869.4287919999997,
+        "sqlMs": 859,
+        "reads": 709434,
+        "writes": 0,
+        "statements": [
+          {
+            "sqlMs": 128,
+            "reads": 97094,
+            "writes": 0
+          },
+          {
+            "sqlMs": 69,
+            "reads": 66204,
+            "writes": 0
+          },
+          {
+            "sqlMs": 70,
+            "reads": 119530,
+            "writes": 0
+          },
+          {
+            "sqlMs": 100,
+            "reads": 91251,
+            "writes": 0
+          },
+          {
+            "sqlMs": 194,
+            "reads": 136765,
+            "writes": 0
+          },
+          {
+            "sqlMs": 298,
+            "reads": 198590,
+            "writes": 0
+          }
+        ]
+      },
+      "after": {
+        "elapsedMs": 221.69337500000074,
+        "sqlMs": 212,
+        "reads": 398027,
+        "writes": 0,
+        "statements": [
+          {
+            "sqlMs": 12,
+            "reads": 68983,
+            "writes": 0
+          },
+          {
+            "sqlMs": 11,
+            "reads": 106163,
+            "writes": 0
+          },
+          {
+            "sqlMs": 9,
+            "reads": 43029,
+            "writes": 0
+          },
+          {
+            "sqlMs": 15,
+            "reads": 26598,
+            "writes": 0
+          },
+          {
+            "sqlMs": 165,
+            "reads": 153254,
+            "writes": 0
+          }
+        ]
+      },
+      "projected": {
+        "elapsedMs": 51.41645799999969,
+        "sqlMs": 35,
+        "reads": 235020,
+        "writes": 0,
+        "statements": [
+          {
+            "sqlMs": 11,
+            "reads": 77896,
+            "writes": 0
+          },
+          {
+            "sqlMs": 7,
+            "reads": 62803,
+            "writes": 0
+          },
+          {
+            "sqlMs": 6,
+            "reads": 43029,
+            "writes": 0
+          },
+          {
+            "sqlMs": 6,
+            "reads": 25714,
+            "writes": 0
+          },
+          {
+            "sqlMs": 5,
+            "reads": 25578,
+            "writes": 0
+          }
+        ]
+      },
+      "projectionCost": {
+        "served_by": "miniflare.db",
+        "duration": 372,
+        "changes": 4500,
+        "last_row_id": 9000,
+        "changed_db": true,
+        "size_after": 17448960,
+        "rows_read": 255063,
+        "rows_written": 9000
+      },
+      "parity": true
+    },
+    {
+      "name": "distinct-4500",
+      "rows": 4500,
+      "distinct": true,
+      "query": {
+        "range": "7d",
+        "traffic": "all"
+      },
+      "views": 4336,
+      "before": {
+        "elapsedMs": 877.5077500000007,
+        "sqlMs": 865,
+        "reads": 709434,
+        "writes": 0,
+        "statements": [
+          {
+            "sqlMs": 128,
+            "reads": 97094,
+            "writes": 0
+          },
+          {
+            "sqlMs": 70,
+            "reads": 66204,
+            "writes": 0
+          },
+          {
+            "sqlMs": 70,
+            "reads": 119530,
+            "writes": 0
+          },
+          {
+            "sqlMs": 98,
+            "reads": 91251,
+            "writes": 0
+          },
+          {
+            "sqlMs": 195,
+            "reads": 136765,
+            "writes": 0
+          },
+          {
+            "sqlMs": 304,
+            "reads": 198590,
+            "writes": 0
+          }
+        ]
+      },
+      "after": {
+        "elapsedMs": 493.79170800000065,
+        "sqlMs": 484,
+        "reads": 558171,
+        "writes": 0,
+        "statements": [
+          {
+            "sqlMs": 11,
+            "reads": 68983,
+            "writes": 0
+          },
+          {
+            "sqlMs": 11,
+            "reads": 106163,
+            "writes": 0
+          },
+          {
+            "sqlMs": 9,
+            "reads": 43029,
+            "writes": 0
+          },
+          {
+            "sqlMs": 288,
+            "reads": 186742,
+            "writes": 0
+          },
+          {
+            "sqlMs": 165,
+            "reads": 153254,
+            "writes": 0
+          }
+        ]
+      },
+      "projected": {
+        "elapsedMs": 42.861417000000074,
+        "sqlMs": 34,
+        "reads": 235020,
+        "writes": 0,
+        "statements": [
+          {
+            "sqlMs": 11,
+            "reads": 77896,
+            "writes": 0
+          },
+          {
+            "sqlMs": 7,
+            "reads": 62803,
+            "writes": 0
+          },
+          {
+            "sqlMs": 6,
+            "reads": 43029,
+            "writes": 0
+          },
+          {
+            "sqlMs": 6,
+            "reads": 25714,
+            "writes": 0
+          },
+          {
+            "sqlMs": 4,
+            "reads": 25578,
+            "writes": 0
+          }
+        ]
+      },
+      "projectionCost": {
+        "served_by": "miniflare.db",
+        "duration": 376,
+        "changes": 4500,
+        "last_row_id": 13500,
+        "changed_db": true,
+        "size_after": 17637376,
+        "rows_read": 255063,
+        "rows_written": 9000
+      },
+      "parity": true
+    },
+    {
+      "name": "wide-15000",
+      "rows": 15000,
+      "distinct": false,
+      "query": {
+        "range": "30d",
+        "traffic": "all"
+      },
+      "views": 14451,
+      "before": {
+        "elapsedMs": 2802.2222079999992,
+        "sqlMs": 2792,
+        "reads": 2238865,
+        "writes": 0,
+        "statements": [
+          {
+            "sqlMs": 408,
+            "reads": 312515,
+            "writes": 0
+          },
+          {
+            "sqlMs": 224,
+            "reads": 209500,
+            "writes": 0
+          },
+          {
+            "sqlMs": 230,
+            "reads": 387334,
+            "writes": 0
+          },
+          {
+            "sqlMs": 333,
+            "reads": 293067,
+            "writes": 0
+          },
+          {
+            "sqlMs": 594,
+            "reads": 384294,
+            "writes": 0
+          },
+          {
+            "sqlMs": 1003,
+            "reads": 652155,
+            "writes": 0
+          }
+        ]
+      },
+      "after": {
+        "elapsedMs": 250.23300000000017,
+        "sqlMs": 240,
+        "reads": 859095,
+        "writes": 0,
+        "statements": [
+          {
+            "sqlMs": 51,
+            "reads": 218740,
+            "writes": 0
+          },
+          {
+            "sqlMs": 46,
+            "reads": 342779,
+            "writes": 0
+          },
+          {
+            "sqlMs": 36,
+            "reads": 132377,
+            "writes": 0
+          },
+          {
+            "sqlMs": 55,
+            "reads": 74643,
+            "writes": 0
+          },
+          {
+            "sqlMs": 52,
+            "reads": 90556,
+            "writes": 0
+          }
+        ]
+      },
+      "projected": {
+        "elapsedMs": 204.74929200000042,
+        "sqlMs": 196,
+        "reads": 726473,
+        "writes": 0,
+        "statements": [
+          {
+            "sqlMs": 65,
+            "reads": 248445,
+            "writes": 0
+          },
+          {
+            "sqlMs": 38,
+            "reads": 198269,
+            "writes": 0
+          },
+          {
+            "sqlMs": 31,
+            "reads": 132377,
+            "writes": 0
+          },
+          {
+            "sqlMs": 33,
+            "reads": 73759,
+            "writes": 0
+          },
+          {
+            "sqlMs": 29,
+            "reads": 73623,
+            "writes": 0
+          }
+        ]
+      },
+      "projectionCost": {
+        "served_by": "miniflare.db",
+        "duration": 1282,
+        "changes": 15000,
+        "last_row_id": 28500,
+        "changed_db": true,
+        "size_after": 56868864,
+        "rows_read": 851370,
+        "rows_written": 30000
+      },
+      "parity": true
+    }
+  ],
+  "historyIndex": {
+    "archivedRows": 30000,
+    "selectedSourceRows": 15000,
+    "withoutIndex": {
+      "elapsedMs": 268.71250000000146,
+      "sqlMs": 255,
+      "reads": 1203546,
+      "writes": 0,
+      "statements": [
+        {
+          "sqlMs": 53,
+          "reads": 308740,
+          "writes": 0
+        },
+        {
+          "sqlMs": 48,
+          "reads": 402779,
+          "writes": 0
+        },
+        {
+          "sqlMs": 44,
+          "reads": 206828,
+          "writes": 0
+        },
+        {
+          "sqlMs": 56,
+          "reads": 134643,
+          "writes": 0
+        },
+        {
+          "sqlMs": 54,
+          "reads": 150556,
+          "writes": 0
+        }
+      ]
+    },
+    "withIndex": {
+      "elapsedMs": 253.93512499999997,
+      "sqlMs": 242,
+      "reads": 873546,
+      "writes": 0,
+      "statements": [
+        {
+          "sqlMs": 50,
+          "reads": 218740,
+          "writes": 0
+        },
+        {
+          "sqlMs": 46,
+          "reads": 342779,
+          "writes": 0
+        },
+        {
+          "sqlMs": 41,
+          "reads": 146828,
+          "writes": 0
+        },
+        {
+          "sqlMs": 53,
+          "reads": 74643,
+          "writes": 0
+        },
+        {
+          "sqlMs": 52,
+          "reads": 90556,
+          "writes": 0
+        }
+      ]
+    },
+    "parity": true
+  },
+  "measuredAt": "2026-11-11",
+  "runtime": "Workerd 1.20261108.1",
+  "node": "24.14.1",
+  "referenceSource": "d633d3f04c7baae3c339c895a0491ca5ee6abb82",
+  "projectionRuleSha256": "2ca641b0fed3defaeb8bcc0556ec88a47abda3a7a8d4918655269007978569d2",
+  "limits": [
+    "Synthetic fixtures; insertion/page warmth and host contention uncontrolled.",
+    "No report cache; elapsed includes local binding transport.",
+    "Before is frozen six-statement source, after is current source fallback, projected is compact read model.",
+    "Rebuild writes include the projection index; rebuild costs are separate from report reads.",
+    "Production latency is measured separately."
+  ]
+}

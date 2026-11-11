@@ -35,7 +35,7 @@ import { isDirectoryPublicationBasis } from './directory-publication.js';
 import { decodeClientEvidenceRows, clientNameCoverage, consistentClientEvidence } from './client-evidence.js';
 import type { ReferralPolicy } from './referral-policy.js';
 
-import { buildStatsQueryPlan } from './stats-query.js';
+import { buildStatsQueryPlan, buildProjectedStatsQueryPlan } from './stats-query.js';
 
 export type { StatsQuery, StatsResponse, TrafficFilter } from './contracts.js';
 
@@ -348,6 +348,22 @@ export async function queryStats(db: D1Database, query: StatsQuery, now = new Da
     .map(statement => db.prepare(statement.sql).bind(...statement.values));
   const results = await measuredReportBatch(db, statements, observeCalculation);
   const rows = results.flatMap(result => result.results ?? []);
+  return reportFromRows(query, now, rows, policy);
+}
+
+/** The read model is accepted only with transactional source coverage. */
+export async function queryProjectedStats(db: D1Database, query: StatsQuery, now = new Date(), policy: ReferralPolicy = ACTIVE_REFERRAL_POLICY, observeCalculation?: ReportCalculationObserver): Promise<StatsResponse> {
+  const statements = buildProjectedStatsQueryPlan(query, createStatsWindow(query.range, now), policy)
+    .map(statement => db.prepare(statement.sql).bind(...statement.values));
+  const results = await measuredReportBatch(db, statements, event => observeCalculation?.({ ...event, readModel: 'projection' }));
+  const rows = results.flatMap(result => result.results ?? []);
+  const complete = rows[0]?.projection_complete;
+  if (complete !== 0 && complete !== 1) return malformedReport();
+  if (complete === 0) return queryStats(db, query, now, policy, event => observeCalculation?.({ ...event, readModel: 'source-fallback' }));
+  return reportFromRows(query, now, rows, policy);
+}
+
+function reportFromRows(query: StatsQuery, now: Date, rows: Record<string, unknown>[], policy: ReferralPolicy): StatsResponse {
   const sections = reportSections(rows, query.range === 'all');
   const firstObservedRow = query.range === 'all' ? requiredSection(sections, 'boundary')[0] : undefined;
   const firstObservedAt = firstObservedRow ? nullableString(firstObservedRow, 'firstObservedAt') : null;
@@ -527,6 +543,6 @@ export function parseStatsQuery(params: URLSearchParams): StatsQuery | string {
 export async function handleStats(request: Request, env: Pick<Env, 'DB'>, observeCalculation?: ReportCalculationObserver): Promise<Response> {
   const query = parseStatsQuery(new URL(request.url).searchParams);
   if (typeof query === 'string') return jsonError(query);
-  const response = await queryStats(env.DB, query, new Date(), ACTIVE_REFERRAL_POLICY, observeCalculation);
+  const response = await queryProjectedStats(env.DB, query, new Date(), ACTIVE_REFERRAL_POLICY, observeCalculation);
   return Response.json(response, { headers: { 'Cache-Control': 'public, max-age=60' } });
 }
