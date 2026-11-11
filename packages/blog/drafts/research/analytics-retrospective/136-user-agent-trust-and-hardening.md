@@ -1,6 +1,6 @@
 # User-Agent trust, failure modes and library hardening
 
-Started November 10, 2026, America/Los_Angeles. Owner expands the [active article](../../unknown-clients-and-evidence-based-bot-detection.md) and analytics-library work beyond the [bounded CUBOT continuation](135-user-agent-errors-beyond-this-blog.md). The complete new shaping message is retained in the paired prompt record. Article, library and tools are intended products; independent adoption remains an outcome to test, not a claim supplied by our own installation.
+Started November 10, 2026, America/Los_Angeles. Owner expands the [active article](../../../posts/044-please-stop-misreading-user-agent.md) and analytics-library work beyond the [bounded CUBOT continuation](135-user-agent-errors-beyond-this-blog.md). The complete new shaping message is retained in the paired prompt record. Article, library and tools are intended products; independent adoption remains an outcome to test, not a claim supplied by our own installation.
 
 ## Objective
 
@@ -47,3 +47,13 @@ Later November 10 owner feedback replaces the opening ratio with about 36 out of
 This is an editorial continuation, with no runtime change, new production query or activation claim. In the isolated preview, all 34 Markdown posts validate and the build renders 45 posts. HTML and Markdown checks cover the new explanation, six tables, nineteen complete shaping prompts, absence of introductory outbound links and removal of the administrative note only in the preview. Forty-seven repository references resolve locally. The draft register and evidence map reflect this revision; frozen own-data receipts remain unchanged.
 
 The article remains unpublished without an assigned release date. The next bounded action is owner editorial review and publication preparation; proposed catalogue review and independent adoption trials retain their previous status.
+
+## Immediate publication — November 11
+
+The owner now authorizes publication. The maintained article moves from `drafts/unknown-clients-and-evidence-based-bot-detection.md` to [post 044](../../../posts/044-please-stop-misreading-user-agent.md), with original publication date November 11, 2026, America/Los_Angeles, and canonical path `/please-stop-misreading-user-agent`. The approved prose is preserved; the administrative draft note is removed. The [released prompt record](../../../prompts/please-stop-misreading-user-agent.prompts.md) retains the nineteen existing messages unchanged and appends the complete publication instruction as the twentieth. The draft register maps both former paths; dated machine receipts and their source hashes remain untouched.
+
+Release checks pass: all seven workspace typecheck projects, 34 Markdown posts validated, 45 posts built, the generated referral policy, and fourteen publication/date/heading/table tests. The isolated render checks the canonical URL, November 11 date in JSON-LD/index/RSS/citation data, HTML and Markdown body, all twenty prompts, six tables, homepage/engineering/LLM indexes, sitemap and generated PNG. Seventy-four relative repository links resolve. Approved prose is byte-identical after only the date change and draft-note removal; the nineteen previous prompts are unchanged.
+
+Local IAB review at actual CSS widths 1,163 and 354 shows no page-wide overflow; all six tables retain internal horizontal overflow handling, and the prompt page displays twenty messages including the release instruction. The social card is visually checked. The preview server is stopped. Initial checks encountered missing isolated site-audit dependency links and the sandbox's tsx CLI socket restriction; isolated links and the equivalent `node --import tsx` entry points resolve these without changing repository runtime source. Private render/check hashes are retained under Git-ignored `packages/blog/worklog/user-agent-publication-2026-11-11/`.
+
+The scoped publication commit/push records source delivery. Live acceptance remains pending until the deployed article and generated representations are observed. The proposed catalogue review and separate-operator trial remain outside this publication.

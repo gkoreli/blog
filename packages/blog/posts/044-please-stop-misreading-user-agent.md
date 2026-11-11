@@ -2,17 +2,13 @@
 title: "Please Stop Misreading User-Agent. It’s Messing Up Your Analytics."
 seoTitle: "User-Agent Parsing Mistakes That Distort Your Analytics"
 alternativeHeadline: "A browser header is a claim, not a verified device or identity. Here is how to keep that distinction in your analytics."
-date: "2026-11-05"
+date: "2026-11-11"
 description: "Windows 11 can look like Windows 10. An iPad can look like a Mac. See how widely sites read User-Agent, how crawler counts go wrong, and how to audit your own analytics."
 section: engineering
 tags: [analytics, bots, cloudflare-workers, testing, ai-agents]
 ---
 
 # Please Stop Misreading `User-Agent`. It’s Messing Up Your Analytics.
-
-> **Active article — November 10, 2026:** Goga intends to substantially rewrite
-> this baseline and publish it. No publication date is assigned. See the
-> [article disposition register](README.md); the other audited candidates are closed.
 
 **Out of every 100 requests calling themselves Googlebot, about 36 passed checks confirming they came from Google.** That was the result of one operator’s 14-day audit across nine websites, covering an estimated 35,355 requests using the name.
 

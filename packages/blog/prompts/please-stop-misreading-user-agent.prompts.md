@@ -75,3 +75,7 @@ out of every 100 requests calling themselves Googlebot, about 36 passed checks c
 ---
 
 update the article based on the direction that i am giving you
+
+---
+
+lets publish this now

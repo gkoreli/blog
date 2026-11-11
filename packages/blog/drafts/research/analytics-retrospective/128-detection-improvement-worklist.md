@@ -4,7 +4,7 @@
 
 **CUBOT article remains active.** The November 6 bounded research and engineering
 acceptance is retained. Goga now intends a substantial rewrite of the
-[manuscript](../../unknown-clients-and-evidence-based-bot-detection.md), followed
+[manuscript](../../../posts/044-please-stop-misreading-user-agent.md), followed
 by publication. Earlier prose/render acceptance applies to that baseline; no
 rewrite, new publication date or new production result is claimed here. The
 [article disposition register](../../README.md) closes the other audited article

@@ -1,5 +1,11 @@
 # Drafts and article dispositions
 
+**Publication update — November 11, 2026, America/Los_Angeles:** Goga authorized
+immediate publication of the User-Agent article. Its maintained source and exact
+prompt record are now in `posts/` and `prompts/`. No unpublished article remains
+active from this audited backlog. The [publication record](research/analytics-retrospective/136-user-agent-trust-and-hardening.md#immediate-publication--november-11)
+separates source delivery from live acceptance.
+
 **Owner decision — November 10, 2026, America/Los_Angeles:** CUBOT is the only
 active article from the audited backlog. Goga intends to rewrite it substantially
 and publish it. He retired the other article directions to close the backlog,
@@ -24,11 +30,11 @@ topics. Preserve useful investment context without making retirement a reason
 to resume work. Reuse the evidence snapshot below instead of rereading closed
 conversations; an unavailable time total is explicitly "not recovered."
 
-## Active article
+## Published from this backlog
 
 | Article | Current state | Next action |
 | --- | --- | --- |
-| [Please Stop Misreading User-Agent. It’s Messing Up Your Analytics.](unknown-clients-and-evidence-based-bot-detection.md) — CUBOT continuation | Unpublished draft. The opening uses “36 out of every 100” and explains crawler verification before the parser audit; introductory citations are collected in Sources. The [twelve-family audit](research/analytics-retrospective/137-user-agent-pain-point-map.md), [checked library changes](research/analytics-retrospective/138-user-agent-hardening-acceptance.md) and [own-data evidence](research/analytics-retrospective/139-own-data-user-agent-audit.md) support the rest of the article. | Owner editorial review and publication preparation. Source review of the catalogue leads and a separate operator trial remain proposed. No date assigned. |
+| [Please Stop Misreading User-Agent. It’s Messing Up Your Analytics.](../posts/044-please-stop-misreading-user-agent.md) — CUBOT continuation | Publication source dated November 11, 2026, promoted with twenty complete shaping prompts. The [twelve-family audit](research/analytics-retrospective/137-user-agent-pain-point-map.md), [checked library changes](research/analytics-retrospective/138-user-agent-hardening-acceptance.md) and [own-data evidence](research/analytics-retrospective/139-own-data-user-agent-audit.md) support the article. | Complete release verification under the publication record. Source review of the catalogue leads and a separate operator trial remain proposed. |
 
 **Recorded investment:** the November 5–6 CUBOT baseline took approximately
 **3h22m across two completed main-chat turns**. It produced a roughly 2,400-word
@@ -38,8 +44,18 @@ reviews, and desktop/narrow-width presentation checks. The
 [bounded worklist](research/analytics-retrospective/128-detection-improvement-worklist.md)
 and [editorial record](research/analytics-retrospective/131-detection-article-editorial-work.md)
 retain the evidence. **The November 10 rewrite is additional work:** use the
-active row above for its latest state; its ongoing elapsed time is not included
+publication row above for its latest state; its elapsed time is not included
 in this earlier baseline total. A ten-hour allowance was not ten hours spent.
+
+### Published-source migration
+
+Historical receipts retain their original paths and hashes. Their draft snapshots
+remain in Git history; active Markdown callers now point to these maintained files.
+
+| Former draft path, relative to `packages/blog/` | Maintained source |
+| --- | --- |
+| `drafts/unknown-clients-and-evidence-based-bot-detection.md` | [Article](../posts/044-please-stop-misreading-user-agent.md) |
+| `drafts/prompts/unknown-clients-and-evidence-based-bot-detection.prompts.md` | [Exact prompts](../prompts/please-stop-misreading-user-agent.prompts.md) |
 
 ## Closed by owner — November 10, 2026
 

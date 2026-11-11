@@ -1,6 +1,6 @@
 # User-Agent errors beyond this blog
 
-November 10, 2026, America/Los_Angeles. Continues the owner-selected rewrite of the [active draft](../../unknown-clients-and-evidence-based-bot-detection.md), following the accepted [November 6 investigation](128-detection-improvement-worklist.md). The owner chose **Please Stop Misreading User-Agent. It’s Messing Up Your Analytics.** and asked how we can know other people have this problem. This is new article research and a local companion tool, not a reopening of the accepted runtime release or deferred human/native-provider trials.
+November 10, 2026, America/Los_Angeles. Continues the owner-selected rewrite of the [active draft](../../../posts/044-please-stop-misreading-user-agent.md), following the accepted [November 6 investigation](128-detection-improvement-worklist.md). The owner chose **Please Stop Misreading User-Agent. It’s Messing Up Your Analytics.** and asked how we can know other people have this problem. This is new article research and a local companion tool, not a reopening of the accepted runtime release or deferred human/native-provider trials.
 
 ## Question and acceptance
 
