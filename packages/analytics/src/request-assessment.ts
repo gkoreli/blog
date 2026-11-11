@@ -11,7 +11,11 @@ import type { WebBotAuthResult } from './webbotauth.js';
 
 export { trustedEdgeAddress } from './vendor-ip.js';
 
-export const REQUEST_ASSESSMENT_VERSION = '2026-11-10.1';
+export const REQUEST_ASSESSMENT_VERSION = '2026-11-11.1';
+
+function reportedFetchSite(value: string | null): 'none' | 'same-origin' | 'same-site' | 'cross-site' | null {
+  return value === 'none' || value === 'same-origin' || value === 'same-site' || value === 'cross-site' ? value : null;
+}
 
 export interface RequestAssessmentDependencies {
   verifySignature?: (request: Request) => Promise<WebBotAuthResult>;
@@ -37,6 +41,7 @@ export async function assessRequest(request: Request, dependencies: RequestAsses
     version: REQUEST_ASSESSMENT_VERSION,
     checkedAt: (dependencies.now?.() ?? new Date()).toISOString(),
     provenance: 'incoming-request' as const,
+    context: { referrerState: metadata.referrerState, fetchSite: reportedFetchSite(metadata.secFetchSite) },
     classification: { trafficClass: traffic.trafficClass, readerKind: reader.kind,
       reason: reader.kind === 'signed-agent' ? dependencies.verifySignature === undefined ? 'verified-signing-publisher' : 'test-injected-signing-publisher' : reader.reason },
     evidence: classificationEvidence(facts, traffic.declarations),
@@ -48,6 +53,7 @@ export async function assessRequest(request: Request, dependencies: RequestAsses
       'Network lists, Cloudflare categories and signature coverage are independent evidence. A signature may not cover the User-Agent.',
       'Missing evidence stays unresolved. This request does not establish a human trigger, reading, citation or use for training.',
       'This endpoint assesses the request that reaches it; it does not inspect traffic arriving at another site.',
+      'A reported referrer does not authenticate its source or establish a new arrival or search click. Reloads and history can retain an earlier referrer.',
     ],
   };
 }

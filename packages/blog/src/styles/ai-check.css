@@ -87,6 +87,9 @@ site-audit-check, request-evidence-check, robots-workbench, report-comparison { 
 .ai-check-chain strong { display: block; font-size: 0.8rem; margin-bottom: 0.35rem; }
 .ai-check-chain span { font-size: 0.73rem; color: var(--tool-muted); }
 .ai-check-request .tool-kicker, .ai-check-api .tool-kicker { margin-bottom: 0.6rem; }
+.request-evidence-report { margin-top: 1.5rem; }
+.request-evidence-report h4 { margin: 1.2rem 0 0.7rem; }
+.request-evidence-report dl { margin-bottom: 0.7rem; }
 .ai-check-report { margin-top: 2.5rem; padding: 1.5rem 0 0; border-top: 1px solid var(--color-border); scroll-margin-top: 1rem; }
 .ai-check-report-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; padding-bottom: 1.1rem; }
 .ai-check-report-header > div:first-child { min-width: 0; }

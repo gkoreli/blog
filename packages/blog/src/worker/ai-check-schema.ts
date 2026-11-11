@@ -70,7 +70,7 @@ export const aiCheckSchema = {
     } },
     '/api/request-check': { get: {
       operationId: 'checkIncomingRequest', summary: 'Assess the actual request arriving at this endpoint',
-      description: 'Shares the daily allowance. Returns independent lexical declarations, reader category/reason, navigation and form claims, network context and local/native signature evidence. No JSON header bag is accepted, and no raw IP, raw User-Agent or arbitrary request headers are echoed or persisted by this assessment. The endpoint cannot inspect requests arriving at another site. The browser button sends a fetch request; navigating to this URL sends a navigation request with potentially different evidence.',
+      description: 'Shares the daily allowance. Returns referrer state, parsed site-relationship claim, independent lexical declarations, reader category/reason, navigation and form claims, network context and local/native signature evidence. Referrer and navigation context do not authenticate a source, new arrival or search click. No JSON header bag is accepted, and no raw IP, raw User-Agent, referrer hostname/URL or arbitrary request headers are echoed or persisted by this assessment. The endpoint cannot inspect requests arriving at another site. The browser button sends a fetch request; navigating to this URL sends a navigation request with potentially different evidence.',
       responses: {
         '200': { description: 'Versioned evidence for this received request and its remaining quota.', headers: quotaHeaders, content: jsonContent(ref('RequestCheckResponse')) },
         '403': forbidden, '405': methodRejected, '413': errorResponse('User-Agent exceeds the 8192-character request-assessment input limit.'),
@@ -140,6 +140,7 @@ export const aiCheckSchema = {
     }, 'Informational capability; never changes the fixed score. A successful HTML response to a Markdown request is not-negotiated, distinct from HTTP/network errors.'),
     RequestAssessment: object({
       version: { const: REQUEST_ASSESSMENT_VERSION }, checkedAt: timestamp, provenance: { const: 'incoming-request' },
+      context: object({ referrerState: choices(['external', 'internal', 'absent', 'unusable']), fetchSite: { enum: ['none', 'same-origin', 'same-site', 'cross-site', null] } }, 'Closed derived context. A null site claim is unavailable; the parsing state remains in evidence.fetchMetadataBits. No referrer hostname, path or query is exposed. Neither a compatible context nor a user-agent-initiated claim authenticates a source or search click.'),
       classification: object({ trafficClass: choices(['browser', 'bot', 'ai']), readerKind: choices(READER_KINDS), reason: text }),
       evidence: ref('ClassificationEvidence'), clientForm: ref('ClientFormEvidence'),
       network: object({ asn: { type: ['integer', 'null'], minimum: 1, maximum: 4294967294 }, vendorNetwork: ref('VendorNetworkEvidence') }),

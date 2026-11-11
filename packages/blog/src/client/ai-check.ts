@@ -3,6 +3,7 @@ import { isSiteAuditReport } from '@gkoreli/site-audit/report-validation';
 import { siteAuditReportHtml } from '../lib/site-audit-report.js';
 import { normalizeTarget, TargetValidationError } from '@gkoreli/site-audit/target';
 import { failureFeedback, feedbackQuota, type CheckFeedback } from '../lib/check-feedback.js';
+import { requestContextPresentation } from '../lib/request-context-presentation.js';
 import { node, definition, rawEvidence, object } from './tool-dom.js';
 
 /** The common report renderer escapes captured values before parsing its fixed markup. */
@@ -25,15 +26,23 @@ function display(value: unknown): string {
   return typeof value === 'object' ? JSON.stringify(value) : String(value);
 }
 export function renderRequestEvidence(value: Record<string, unknown>): HTMLElement {
-  const section = node('section'); section.append(node('h3', 'Evidence from this request'));
+  const section = node('section', undefined, 'request-evidence-report'); section.append(node('h3', 'Evidence from this request'));
+  const context = requestContextPresentation(at(value, 'context', 'referrerState'), at(value, 'context', 'fetchSite'), at(value, 'evidence', 'referrerContext'));
+  section.append(node('h4', 'Referrer and navigation context'), definition([
+    ['Reported source', context.referrer],
+    ['Site relationship claim', context.site],
+    ['Context check', context.consistency],
+    ['Navigation-shaped', display(at(value, 'evidence', 'navigationShaped'))],
+    ['Activation claim', display(at(value, 'evidence', 'activation'))],
+  ]), node('p', context.meaning, 'ai-check-note'));
+  if (context.review !== null) section.append(node('p', context.review, 'ai-check-note'));
+  section.append(node('p', 'Navigation and activation headers are request signals. They do not identify a person or authenticate a referring site.', 'ai-check-note'), node('h4', 'Declarations and verification'));
   section.append(definition([
     ['Request category', display(at(value, 'classification', 'readerKind'))],
     ['Classification reason', display(at(value, 'classification', 'reason'))],
     ['Declared client names', display(at(value, 'evidence', 'declarations', 'candidates'))],
     ['Declaration agreement', display(at(value, 'evidence', 'categoryAgreement'))],
     ['Browser-family claim', display(at(value, 'evidence', 'declarations', 'browserFamily'))],
-    ['Navigation-shaped', display(at(value, 'evidence', 'navigationShaped'))],
-    ['Activation claim', display(at(value, 'evidence', 'activation'))],
     ['Client-form markers', display(at(value, 'clientForm', 'form'))],
     ['Network list evidence', display(at(value, 'evidence', 'network'))],
     ['Network ASN', display(at(value, 'network', 'asn'))],

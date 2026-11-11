@@ -31,6 +31,40 @@ test('a missing browser signal stays unresolved, and a real navigation-shaped re
   assert.equal(navigation.evidence.navigationShaped, true);
   assert.equal(navigation.evidence.activation, 'true-claim');
   assert.equal(navigation.signature.localOutcome, 'absent');
+  assert.deepEqual(navigation.context, { referrerState: 'absent', fetchSite: 'none' });
+});
+
+test('external source context stays a claim for cross-site and UI-shaped requests, without leaking the referrer', async () => {
+  for (const site of ['cross-site','none']) {
+    const report = await assessRequest(incoming({ 'User-Agent': 'Mozilla/5.0 Chrome/130.0.0.0 Safari/537.36',
+      Accept: 'text/html', 'Accept-Language': 'en', 'Sec-Fetch-Mode': 'navigate', 'Sec-Fetch-Dest': 'document',
+      'Sec-Fetch-Site': site, 'Sec-Fetch-User': '?1', Referer: 'https://private-source.example/search?q=private-query#private-fragment' }));
+    assert.deepEqual(report.context, { referrerState: 'external', fetchSite: site });
+    assert.equal(report.classification.readerKind, 'browser');
+    assert.equal(report.evidence.referrerContext, 'no-conflict-observed');
+    assert.ok(report.limits.some(limit => limit.includes('Reloads and history')));
+    assert.doesNotMatch(JSON.stringify(report), /private-source|private-query|private-fragment/);
+  }
+});
+
+test('the request inspector exposes context conflict without making an automation verdict', async () => {
+  const report = await assessRequest(incoming({ 'User-Agent': 'Mozilla/5.0 Chrome/130.0.0.0 Safari/537.36',
+    Accept: 'text/html', 'Accept-Language': 'en', 'Sec-Fetch-Mode': 'navigate', 'Sec-Fetch-Dest': 'document',
+    'Sec-Fetch-Site': 'same-origin', Referer: 'https://www.google.com/' }));
+  assert.deepEqual(report.context, { referrerState: 'external', fetchSite: 'same-origin' });
+  assert.equal(report.evidence.referrerContext, 'external-with-same-origin');
+  assert.equal(report.classification.readerKind, 'unresolved');
+  assert.equal(report.classification.reason, 'request-context-conflict');
+});
+
+test('referrer absence, unsupported values and internal navigation remain distinct closed states', async () => {
+  for (const [referer, state] of [[undefined,'absent'],['not a supported URI','unusable'],['https://publication.site/private?secret=private-query','internal']]) {
+    const headers = { 'User-Agent': 'Mozilla/5.0 Chrome/130.0.0.0 Safari/537.36', 'Sec-Fetch-Site': 'unrecognized-value' };
+    if (referer !== undefined) headers.Referer=referer;
+    const report=await assessRequest(incoming(headers));
+    assert.deepEqual(report.context,{referrerState:state,fetchSite:null});
+    assert.doesNotMatch(JSON.stringify(report),/private-query|unrecognized-value|not a supported URI/);
+  }
 });
 
 test('partial or injected signature evidence never authenticates arbitrary source text', async () => {

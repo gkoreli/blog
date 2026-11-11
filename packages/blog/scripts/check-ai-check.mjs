@@ -155,7 +155,27 @@ try {
   assert.equal(contract.openapi, '3.1.0');
   const responseSchema = contract.paths['/api/request-check'].get.responses['200'].content['application/json'].schema;
   validateOpenApiValue(contract, responseSchema, requestEvidence);
-  assert.equal(requestEvidence.request.version, '2026-11-10.1');
+  assert.equal(requestEvidence.request.version, '2026-11-11.1');
+  assert.deepEqual(requestEvidence.request.context, { referrerState: 'absent', fetchSite: null });
+  for (const [fetchSite, expectedKind] of [['cross-site','http-client'],['none','http-client'],['same-origin','unresolved']]) {
+    const response = await visit('/api/request-check', { method: 'GET', body: undefined, headers: {
+      'User-Agent': 'Mozilla/5.0 Chrome/130.0.0.0 Safari/537.36', Accept: 'text/html', 'Accept-Language': 'en',
+      Referer: 'https://www.google.com/search?q=private-fixture', 'Sec-Fetch-Mode': 'navigate', 'Sec-Fetch-Dest': 'document', 'Sec-Fetch-Site': fetchSite, 'Sec-Fetch-User': '?1',
+    } }, '8.26.56.26');
+    if (fetchSite === 'cross-site') {
+      assert.equal(response.status,403);
+      assert.equal(response.headers.get('X-RateLimit-Remaining'),null);
+      continue;
+    }
+    assert.equal(response.status,200); const value=await response.json();
+    validateOpenApiValue(contract,responseSchema,value);
+    assert.deepEqual(value.request.context,{referrerState:'external',fetchSite});
+    // dispatchFetch emits mode=cors; retain the received context rather than
+    // pretending this transport produced the navigation used in domain fixtures.
+    assert.equal(value.request.classification.readerKind,expectedKind);
+    assert.equal(value.request.evidence.navigationShaped,false);
+    assert.doesNotMatch(JSON.stringify(value),/google\.com|private-fixture/);
+  }
   const catalogueResponse = await visit('/api/request-check', { method: 'GET', body: undefined, headers: {
     'User-Agent': RETAINED_CLIENT_PRODUCTS_20261106.map(product => `${product}/1.0`).join(' '),
   } }, '208.67.222.222');
@@ -198,8 +218,8 @@ try {
   assert.throws(() => validateOpenApiValue(contract, responseSchema, obsoleteEnvelope));
   const stored = (await db.prepare('SELECT * FROM ai_check_daily_quota').all()).results;
   assert.ok(stored.every(row => /^[a-f0-9]{64}$/.test(row.caller_key) && row.used <= 10));
-  assert.equal(stored.length, 6); // Native, caller/two days, independent caller, no-JS, request assessment.
+  assert.equal(stored.length, 7); // Native, caller/two days, independent caller, no-JS, request assessment/two callers.
   assert.doesNotMatch(JSON.stringify(stored), /public.site|8\.8\.8\.8|private-test|private-secret/);
   assert.equal(outbound, 0);
-  console.log(JSON.stringify({ result: 'passed', httpRequests: count, nativeConcurrentAdmissions: 10, rejectedNativeAdmissions: 20, quotaRows: stored.length, externalRequests: outbound, noJavaScriptHtml: 'passed', noJavaScriptBareDomain: 'normalized', invalidFormQuotaUse: 0, retainedEscapedInput: 'passed', escapedRemoteHtml: 'passed', inputAndOriginBoundaries: 'passed', requestEvidence: 'passed', actualResponsesMatchOpenApi: 2, compactAliasRoundtrip: RETAINED_CLIENT_PRODUCTS_20261106.length, additionalCodecSchemaCases: 75, malformedSchemaRejections: 12, networkFixture: 'missing-edge-address'  }));
+  console.log(JSON.stringify({ result: 'passed', httpRequests: count, nativeConcurrentAdmissions: 10, rejectedNativeAdmissions: 20, quotaRows: stored.length, externalRequests: outbound, noJavaScriptHtml: 'passed', noJavaScriptBareDomain: 'normalized', invalidFormQuotaUse: 0, retainedEscapedInput: 'passed', escapedRemoteHtml: 'passed', inputAndOriginBoundaries: 'passed', requestEvidence: 'passed', actualResponsesMatchOpenApi: 4, compactAliasRoundtrip: RETAINED_CLIENT_PRODUCTS_20261106.length, additionalCodecSchemaCases: 75, malformedSchemaRejections: 12, networkFixture: 'missing-edge-address'  }));
 } finally { await runtime.dispose(); }
