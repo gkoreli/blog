@@ -1,0 +1,196 @@
+{
+  "version": 1,
+  "measuredAt": "2026-11-11T15:41:06.852741+00:00",
+  "sourceCommit": "41aeceb3307fde4692279ce9ac1cf3b778992c48",
+  "cloudflareBuild": "47f0957e-84c2-44d6-a1f4-76010c54ada0",
+  "method": "Fresh public GETs with no-cache request header; HTML source identity, native destinations, shared patterns and static asset hashes. No hosted audit submitted.",
+  "localChecks": {
+    "typecheck": true,
+    "markdownPostsValid": 34,
+    "blogTestsPassed": 442,
+    "builtPosts": 45,
+    "referralPolicy": true,
+    "privatePromptGuard": true,
+    "turnstileConfigured": false
+  },
+  "responses": [
+    {
+      "path": "/",
+      "status": 200,
+      "expectedStatus": 200,
+      "sha256": "e0c370ccdb300c3168fe4abce7f470729e2a7d5c8b0538dfddb31c6b3d22d63d",
+      "build": "47f0957e-84c2-44d6-a1f4-76010c54ada0",
+      "source": "41aeceb3307fde4692279ce9ac1cf3b778992c48",
+      "passed": true
+    },
+    {
+      "path": "/tools",
+      "status": 200,
+      "expectedStatus": 200,
+      "sha256": "bf040b4c3654a1c5892567a4c182317ca3cb63bfccf444d19720ad9a971ecce3",
+      "build": "47f0957e-84c2-44d6-a1f4-76010c54ada0",
+      "source": "41aeceb3307fde4692279ce9ac1cf3b778992c48",
+      "passed": true
+    },
+    {
+      "path": "/design-language",
+      "status": 200,
+      "expectedStatus": 200,
+      "sha256": "fc35ad175e70300670bc5bf9f7f1900a83052dd076f3c3c20ab649136bd78a3e",
+      "build": "47f0957e-84c2-44d6-a1f4-76010c54ada0",
+      "source": "41aeceb3307fde4692279ce9ac1cf3b778992c48",
+      "passed": true
+    },
+    {
+      "path": "/ai-check",
+      "status": 200,
+      "expectedStatus": 200,
+      "sha256": "457c6cb4c7d4fbbe46cc5a17c664e4ad3ded22992a668061d649a6143a34b997",
+      "build": "47f0957e-84c2-44d6-a1f4-76010c54ada0",
+      "source": "41aeceb3307fde4692279ce9ac1cf3b778992c48",
+      "passed": true
+    },
+    {
+      "path": "/tools/robots",
+      "status": 200,
+      "expectedStatus": 200,
+      "sha256": "8472bc693a7cb0c55c532fa82ab5d8322edc9c96d664ec8b8372396d1892da55",
+      "build": "47f0957e-84c2-44d6-a1f4-76010c54ada0",
+      "source": "41aeceb3307fde4692279ce9ac1cf3b778992c48",
+      "passed": true
+    },
+    {
+      "path": "/tools/compare",
+      "status": 200,
+      "expectedStatus": 200,
+      "sha256": "1b3992d41f435969e1bdd76bac4dc7947a81d3c4e0b61fed4c659444d67ae6e6",
+      "build": "47f0957e-84c2-44d6-a1f4-76010c54ada0",
+      "source": "41aeceb3307fde4692279ce9ac1cf3b778992c48",
+      "passed": true
+    },
+    {
+      "path": "/ai-check/example",
+      "status": 200,
+      "expectedStatus": 200,
+      "sha256": "aab45fa88569b3cbc34b7b18cd709c29641e0c717b783d697f0abc4fbda0f97a",
+      "build": "47f0957e-84c2-44d6-a1f4-76010c54ada0",
+      "source": "41aeceb3307fde4692279ce9ac1cf3b778992c48",
+      "passed": true
+    },
+    {
+      "path": "/api/ai-check/schema",
+      "status": 200,
+      "expectedStatus": 200,
+      "sha256": "fc48f93321a0b82a0ee9c8476c4caa59f4b1ac2a4b70a9fc03f9034b314744f4",
+      "passed": true
+    },
+    {
+      "path": "/main.css",
+      "status": 200,
+      "expectedStatus": 200,
+      "sha256": "6481093cce6fe500471a4a4bf62c08046870759858e48c4adde26feca83eff39",
+      "passed": true
+    },
+    {
+      "path": "/icons/menu.svg",
+      "status": 200,
+      "expectedStatus": 200,
+      "sha256": "8e95633b1d20fb4fb7f161d03f020a37002d2c57f5a4b6da206edd22c3496323",
+      "passed": true
+    },
+    {
+      "path": "/icons/close.svg",
+      "status": 200,
+      "expectedStatus": 200,
+      "sha256": "50f770046acb0db8e1a6aa0b35b751adb7f8bf52a68055ff9da1cceabe158f1f",
+      "passed": true
+    },
+    {
+      "path": "/icons/sun.svg",
+      "status": 200,
+      "expectedStatus": 200,
+      "sha256": "f68ec0a844e8ad8a9d02685404ca5cf7724d3d82e9cad102ecda0c007242d347",
+      "passed": true
+    },
+    {
+      "path": "/icons/moon.svg",
+      "status": 200,
+      "expectedStatus": 200,
+      "sha256": "841261eb7c58106b3860db2553f89446cba0ab2e599dd0a47292cffc5e804fb2",
+      "passed": true
+    },
+    {
+      "path": "/_design/tools/",
+      "status": 404,
+      "expectedStatus": 404,
+      "sha256": "b798ffa57ce01eaca0d36341022cb6b37cda096e27fcd6976e11ac1c193d2188",
+      "passed": true
+    },
+    {
+      "path": "/_review/tools/",
+      "status": 404,
+      "expectedStatus": 404,
+      "sha256": "b798ffa57ce01eaca0d36341022cb6b37cda096e27fcd6976e11ac1c193d2188",
+      "passed": true
+    }
+  ],
+  "checks": {
+    "fourToolChoices": true,
+    "fourNativeDestinations": true,
+    "savedReportDestination": true,
+    "toolsIdsAndDescriptions": true,
+    "noDecorativeArrowsInDirectory": true,
+    "designUsesSharedChoices": true,
+    "designHasIconFamily": true,
+    "designIdsAndDescriptions": true,
+    "nativeCheckerPost": true,
+    "homepageInvitationKeepsLink": true,
+    "exactBuiltStylesheet": true,
+    "coreUtilityAssets": true
+  },
+  "limits": [
+    "Controlled acceptance requests and browser inspection do not establish reader use or audit-service availability.",
+    "No hosted page check or request-inspector quota admission was performed."
+  ],
+  "browserMeasuredAt": "2026-11-11T15:43:54.076552+00:00",
+  "browserChecks": {
+    "tools": {
+      "desktopWidth": 1280,
+      "linksPerChoice": 1,
+      "interiorSamplesPerChoice": 9,
+      "interiorHitsPerChoice": [
+        9,
+        9,
+        9,
+        9
+      ],
+      "focusOutlinePixels": 2,
+      "keyboardDestination": "/tools/robots",
+      "mobileWidth": 393,
+      "mobileHorizontalOverflow": false
+    },
+    "menu": {
+      "openUsesCloseGlyph": true,
+      "escapeClosesMenu": true,
+      "escapeRestoresScrolling": true
+    },
+    "designLanguage": {
+      "viewportWidth": 320,
+      "horizontalOverflow": false,
+      "sharedChoiceExamples": 4,
+      "utilityIconExamples": 11
+    },
+    "homepageInvitation": {
+      "nativeLinks": 1,
+      "interiorHits": 9,
+      "interiorSamples": 9,
+      "decorativeArrowDisc": false,
+      "keyboardDestination": "/tools"
+    },
+    "localScriptFreeDirectory": {
+      "scriptElements": 0,
+      "toolLinks": 4,
+      "nativeCheckerMethod": "post"
+    }
+  }
+}
