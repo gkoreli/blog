@@ -1,3 +1,4 @@
+import { assessProjectedReferral, REFERRAL_REPORT_RULE_SHA256 } from './referral-report-projection.js';
 import { signatureLocalStateSql, signatureBasisSql } from './signature-basis.js';
 import { signatureCoverageRecordedSql } from './signature-coverage-report.js';
 import { signatureSelectionRecordedSql } from './signature-selection.js';
@@ -11,7 +12,7 @@ import { vendorCacheRecordColumnsSql } from './vendor-cache-report.js';
 import { SIGNATURE_REPORT_FACTS, NETWORK_REPORT_FACTS } from './report-fact-expressions.js';
 import { CLIENT_FORMS, CLIENT_FORM_PROFILES } from './client-form.js';
 
-/** Retained dimensions only. Owner/referral/publication policies remain read-time decisions. */
+/** Retained dimensions only. Owner/publication policies stay live; referral rules have a separate fingerprint. */
 export const REPORT_SOURCE_COLUMNS = [
   'path', 'referrer_host', 'referrer_state', 'internal_referrer_path', 'country',
   'daily_client_id', 'traffic_class', 'agent_name', 'is_owner', 'representation',
@@ -70,15 +71,15 @@ export function reportProjectionSelectSql(predicate: string): string {
 
 export function reportProjectionSql(scope: 'observation' | 'range'): string {
   const columns = ['observation_id', ...REPORT_SOURCE_COLUMNS, ...REPORT_DERIVED_COLUMNS];
-  const selected = reportProjectionSelectSql(`${scope === 'observation' ? 'id = ?' : 'id > ? AND id <= ?'}
-    AND NOT EXISTS (SELECT 1 FROM page_observation_report_facts AS current WHERE current.observation_id=page_observations.id AND current.rule_sha256='${REPORT_PROJECTION_RULE_SHA256}')`);
-  return `INSERT INTO page_observation_report_facts(${columns.join(', ')},rule_sha256)
-    SELECT ${columns.join(', ')}, '${REPORT_PROJECTION_RULE_SHA256}' FROM (${selected}) WHERE 1
-    ON CONFLICT(observation_id) DO UPDATE SET ${[...REPORT_SOURCE_COLUMNS,...REPORT_DERIVED_COLUMNS].map(c => `${c}=excluded.${c}`).join(', ')},rule_sha256=excluded.rule_sha256`;
+  const selected = reportProjectionSelectSql(`${scope === 'observation' ? 'id = ?1 AND referrer_host IS ?3' : 'id > ?1 AND id <= ?2'}
+    AND NOT EXISTS (SELECT 1 FROM page_observation_report_facts AS current WHERE current.observation_id=page_observations.id AND current.rule_sha256='${REPORT_PROJECTION_RULE_SHA256}'${scope === 'observation' ? ` AND current.report_referral_rule_sha256='${REFERRAL_REPORT_RULE_SHA256}' AND current.report_referral_excluded IS NOT NULL` : ''})`);
+  return `INSERT INTO page_observation_report_facts(${columns.join(', ')},rule_sha256,report_referral_excluded,report_referral_rule_sha256)
+    SELECT ${columns.join(', ')}, '${REPORT_PROJECTION_RULE_SHA256}', ${scope === 'observation' ? `?2, '${REFERRAL_REPORT_RULE_SHA256}'` : 'NULL, NULL'} FROM (${selected}) WHERE 1
+    ON CONFLICT(observation_id) DO UPDATE SET ${[...REPORT_SOURCE_COLUMNS,...REPORT_DERIVED_COLUMNS].map(c => `${c}=excluded.${c}`).join(', ')},rule_sha256=excluded.rule_sha256,report_referral_excluded=excluded.report_referral_excluded,report_referral_rule_sha256=excluded.report_referral_rule_sha256`;
 }
 
 /** A derived-write failure cannot revoke or replay an acknowledged observation. */
-export async function projectReportObservation(db: D1Database, observationId: string): Promise<void> {
-  const result = await db.prepare(reportProjectionSql('observation')).bind(observationId).run();
+export async function projectReportObservation(db: D1Database, observationId: string, referrerHost: string | null): Promise<void> {
+  const result = await db.prepare(reportProjectionSql('observation')).bind(observationId, Number(assessProjectedReferral(referrerHost).action === 'exclude'), referrerHost).run();
   if (result.success !== true) throw new Error('Report projection unavailable');
 }

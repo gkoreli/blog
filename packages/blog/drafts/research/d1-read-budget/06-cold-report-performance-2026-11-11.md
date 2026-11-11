@@ -104,3 +104,22 @@ Apply only migration 0019. Capture the retained source ID window with a separate
 Activate cache namespace `2026-11-11.3`, join exact build/source/Worker, and repeat the existing seven-day gate with the same sub-second latency and 1,000,000-read review ceiling. Only if it passes, permit the default 30-day pair with the original sub-second / 2,000,000-read review gate. Preserve all failed intermediate gates and private raw captures.
 
 [Final native controls](2026-11-11-report-facts-performance.json) preserve exact reports with 4,500 repeated, distinct and uniquely varying network records and 15,000 events over 29 dates. The distinct 4,500-event case falls from 878 ms to 42.9 ms; the wider 15,000-event case falls from 2,802 ms to 204.7 ms. These local values do not establish production latency. Final checks pass: 456 analytics tests, 445 site tests, workspace types, fresh-install/minimal-Worker portability, validation, isolated 45-post build and Worker dry-run.
+
+
+## Compact five-part gate and referral projection follow-up
+
+Source `b89d0caf6b6435e7211979f52808411cf02beda5`, native build `8060bcf0-8a37-4a54-a70c-49845d8f882e`, activates Worker `8f9ee22d-e637-4084-8ed1-a66d38d3fc28` at 100%. Its seven-day SJC MISS is **1.141 seconds**, with **472.7581 ms SQL / 530 ms binding wall time**, **247,310 reads / zero writes**. The byte-identical same-connection HIT is **152.0 ms**. The five-part projection is used without source fallback. Latency still fails, so no default 30-day fill is attempted.
+
+The complete evidence-fact rebuild covers all **42,039** retained observations, IDs 2–42,040, at **1,376,909 reads / 84,078 derived/index writes**. Verification finds 42,039 current facts and zero missing at 84,078 reads / zero writes. The source window control costs 42,039 reads; the post-activation tail is empty (one read). Source observations remain unchanged. Migration 0019 applies alone (four commands, 2.41 ms); its ledger command does not expose complete row counters.
+
+The intermediate narrow-projection measurement is now joined exactly: native build `20165191-475f-4c40-b765-9111854979a2`, source `8b644fac3f971b6ad0d9890be9c52278584a29f8` (a descendant of `f783c9ab`), serves Worker `0009b52d-2aed-4067-941e-ff43597f2822`. Native builds use pnpm 9.15.4 / Node 24.22.1; local checks use Node 24.14.1.
+
+The revised ADR accepts separately versioned referral exclusion facts. The guarded ingestion projector computes the domain policy once; a policy-only rebuild uses its equivalent SQL evaluator. The final direct-table adapter needs two statements in one transaction, rather than repeatedly expanding recursive policy/population CTEs. One statement still fails the affected engine locally. The expanded 66 exact comparisons pass for both complete projection and source fallback. Tests also cover stale referral fingerprints, a concurrent host repair, current owner/publication policy and custom referral-policy fallback.
+
+### Referral delivery gate
+
+Apply only migration 0020 after final tests, types, portability, isolated build and Worker dry-run. Reuse the already verified frozen evidence-fact window through 42,040. Rebuild referral decisions in at-most-1,000-ID chunks, stopping after unknown/failed costs, any batch over 200,000 reads, or cumulative **1,000,000 reads / 50,000 writes** for this separate policy rebuild. Verify both current fingerprints and a present exclusion bit through that mark. Reconcile later source/fact rows after activation. No source repair, report refresh bypass or TTL extension is introduced.
+
+The exact local CLI ID-gap fixture verifies only `(10,11]` is projected and the earlier row stays unassessed. Local Wrangler omits row meters, so both rebuild commands intentionally stop after the acknowledged first batch; native metering and complete remote meters remain required. Wrangler renders local SQL NULL as a string in JSON; direct `IS NULL` predicates verify storage without inferring from that representation.
+
+Activate cache namespace `2026-11-11.4`. Preserve the original sub-second response target and seven-day / 30-day read-review ceilings, exact deployment attribution, same-connection reuse checks and stop conditions.

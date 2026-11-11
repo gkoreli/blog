@@ -31,10 +31,10 @@ const maxWrites = integer(option('--max-writes','50000'),1,Number.MAX_SAFE_INTEG
 let reads = 0, writes = 0, cursor = after;
 while (cursor < through) {
   const end = Math.min(cursor + chunk, through);
-  let parameter = 0;
+  const parameters = new Set();
   const range = [cursor,end];
-  const sql = reportProjectionSql('range').replaceAll('?',() => String(range[parameter++]));
-  if (parameter !== 2) throw new Error('Unexpected projection parameter layout');
+  const sql = reportProjectionSql('range').replace(/\?([12])/g,(_,index) => { parameters.add(index); return String(range[Number(index)-1]); });
+  if (parameters.size !== 2 || sql.includes('?')) throw new Error('Unexpected projection parameter layout');
   const env = { ...process.env, WRANGLER_LOG_PATH: resolve(receipts,`wrangler-${cursor}-${end}.log`) };
   const result = spawnSync('pnpm',['exec','wrangler','d1','execute',database,remote?'--remote':'--local',
     '--config',config,'--json','--command='+sql],{encoding:'utf8',env,maxBuffer:5*1024*1024});

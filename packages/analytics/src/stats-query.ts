@@ -1,3 +1,4 @@
+import { REFERRAL_REPORT_RULE_SHA256 } from './referral-report-projection.js';
 import { REPORT_PROJECTION_RULE_SHA256 } from './report-projection.js';
 import { SIGNATURE_REPORT_FACTS, NETWORK_REPORT_FACTS } from './report-fact-expressions.js';
 /** D1 read adapter. Query-specific projections preserve one complete report
@@ -110,7 +111,9 @@ const PROJECTED_INPUTS = {
 } as const satisfies Readonly<Record<ReportSection, readonly string[]>>;
 
 function reportSql(selected: QueryPredicate, bucketSql: string, includeBoundary: boolean, sectionNames: readonly ReportSection[], includeOutgoing: boolean, evidenceCohorts: boolean, projected = false): QueryPredicate {
-  const scopedPath = `?${selected.values.length + 2}`;
+  const scopedPath = `?${selected.values.length + (projected ? 1 : 2)}`;
+  const abusive = projected ? 'report_referral_excluded' : 'COALESCE(referrer_host IN (SELECT original FROM abusive_hosts), 0)';
+  const source = projected ? 'page_observation_report_facts AS page_observations' : 'page_observations';
   const pathScope = includeOutgoing ? `(${scopedPath} IS NULL OR path = ${scopedPath})` : '1';
   const inputColumns = [...new Set([...(evidenceCohorts ? [] : ['path']), 'referrer_host', ...sectionNames.flatMap(name => projected ? PROJECTED_INPUTS[name] : REPORT_INPUTS[name])])];
   const selectedColumns = inputColumns.map(column => column === 'report_network_state' ? 'network_projection.network_state AS report_network_state' : column);
@@ -230,7 +233,7 @@ function reportSql(selected: QueryPredicate, bucketSql: string, includeBoundary:
         )`,
     'excluded': `(
           SELECT json_array(json_object('views', COUNT(*)))
-          FROM page_observations WHERE ${selected.sql} AND COALESCE(referrer_host IN (SELECT original FROM abusive_hosts), 0) = 1 AND ${pathScope}
+          FROM ${source} WHERE ${selected.sql} AND ${abusive} = 1 AND ${pathScope}
         )`,
     'vendor-cache': `(${vendorCacheReportProjectionSql()})`,
     'vendor-ip': `(
@@ -290,21 +293,21 @@ function reportSql(selected: QueryPredicate, bucketSql: string, includeBoundary:
 
   // Host assessment reads only its own columns. Keeping it independent of the
   // event projection avoids expanding a wide CTE for every aggregate reference.
-  const ctes = [referralAssessmentCtes(`
+  const ctes = projected ? [] : [referralAssessmentCtes(`
     SELECT DISTINCT referrer_host AS original, lower(rtrim(referrer_host, '.')) AS normalized
-    FROM page_observations WHERE ${selected.sql}
+    FROM ${source} WHERE ${selected.sql}
       AND referrer_host IS NOT NULL AND length(rtrim(referrer_host, '.')) <= 253
   `, selected.values.length + 1)];
   if (includeOutgoing) {
     ctes.push(`assessed AS MATERIALIZED (
-      SELECT ${selectedColumns.join(', ')}, COALESCE(referrer_host IN (SELECT original FROM abusive_hosts), 0) AS referral_excluded
-      FROM page_observations ${projectionJoin} WHERE ${selected.sql}
+      SELECT ${selectedColumns.join(', ')}${projected ? ', 1 AS event_views' : ''}, ${abusive} AS referral_excluded
+      FROM ${source} ${projectionJoin} WHERE ${selected.sql}
     )`, `included AS (SELECT * FROM assessed WHERE referral_excluded = 0 AND ${pathScope})`);
   } else {
     ctes.push(`included AS MATERIALIZED (
       SELECT ${selectedColumns.join(', ')}${evidenceCohorts ? ', COUNT(*) AS event_views' : ''}
-      FROM page_observations ${projectionJoin} WHERE ${selected.sql}
-        AND COALESCE(referrer_host IN (SELECT original FROM abusive_hosts), 0) = 0
+      FROM ${source} ${projectionJoin} WHERE ${selected.sql}
+        AND ${abusive} = 0
       ${evidenceCohorts ? `GROUP BY ${inputColumns.join(', ')}` : ''}
     )`);
   }
@@ -356,7 +359,7 @@ function reportSql(selected: QueryPredicate, bucketSql: string, includeBoundary:
   ctes.push(`sections(section, section_order) AS MATERIALIZED (VALUES ${sectionValues.join(', ')})`);
 
   return {
-    sql: `WITH RECURSIVE ${projected ? `page_observations AS (SELECT observation_id AS id,* FROM page_observation_report_facts WHERE rule_sha256='${REPORT_PROJECTION_RULE_SHA256}'),` : ''}${ctes.join(',\n')}
+    sql: `WITH RECURSIVE ${ctes.join(',\n')}
     SELECT section, CASE section
       ${names.map(name => `WHEN '${name}' THEN ${projections[name]}`).join('\n')}
       ELSE json('[]') END AS payload FROM sections ORDER BY section_order`,
@@ -382,24 +385,22 @@ export function buildStatsQueryPlan(query: StatsQuery, window: StatsWindow, poli
 /** A complete versioned read-model snapshot, with a source coverage guard in
  * the same transaction. Incomplete facts are discarded before source fallback.
  */
-export function buildProjectedStatsQueryPlan(query: StatsQuery, window: StatsWindow, policy: ReferralPolicy): QueryPredicate[] {
+export function buildProjectedStatsQueryPlan(query: StatsQuery, window: StatsWindow): QueryPredicate[] {
   const bucketSql = window.granularity === 'hour' ? "strftime('%Y-%m-%dT%H:00:00Z', observed_at)" : "strftime('%Y-%m-%d', observed_at)";
-  const rules = referralRulesJson(policy);
-  return REPORT_SECTION_GROUPS.map((names,index) => {
-    const outgoing = names.some(name => name === 'transitions' || name === 'referrer-details');
-    const selected = predicateFor(window,query,outgoing);
-    const report = reportSql(selected,bucketSql,query.range==='all' && index===0,names,outgoing,names.some(name => name === 'verification' || name === 'vendor-ip'),true);
-    if (index===0) {
-      // Cover outgoing context as well as selected paths; policy-excluded missing
-      // rows conservatively trigger fallback. The owner registry stays live.
-      const coverage = predicateFor(window,query,true);
-      const start = selected.values.length + (outgoing ? 3 : 2);
-      const coverageSql = coverage.sql.replace(/\?(\d+)/g,(_,number) => `?${Number(number)+start-1}`);
-      const guard = `NOT EXISTS (SELECT 1 FROM main.page_observations AS page_observations WHERE ${coverageSql}
-        AND NOT EXISTS (SELECT 1 FROM page_observation_report_facts AS facts WHERE facts.observation_id=page_observations.id AND facts.rule_sha256='${REPORT_PROJECTION_RULE_SHA256}'))`;
-      report.sql = report.sql.replace('SELECT section, CASE section', `SELECT ${guard} AS projection_complete, section, CASE section`);
-      return {sql:report.sql,values:[...report.values,rules,...(outgoing?[query.path??null]:[]),...coverage.values]};
-    }
-    return {sql:report.sql,values:[...report.values,rules,...(outgoing?[query.path??null]:[])]};
+  const groups = [[...REPORT_SECTION_GROUPS[0], ...REPORT_SECTION_GROUPS[1], ...REPORT_SECTION_GROUPS[2]], [...REPORT_SECTION_GROUPS[3], ...REPORT_SECTION_GROUPS[4]]];
+  return groups.map((names,index) => {
+    const outgoing = index === 0;
+    const selection = predicateFor(window, query, outgoing);
+    const selected = { ...selection, sql: `${selection.sql} AND rule_sha256='${REPORT_PROJECTION_RULE_SHA256}' AND report_referral_rule_sha256='${REFERRAL_REPORT_RULE_SHA256}' AND report_referral_excluded IS NOT NULL` };
+    const report = reportSql(selected, bucketSql, query.range === 'all' && index === 0, names, outgoing, !outgoing, true);
+    if (index !== 0) return report;
+    // The source selection covers outgoing context in the same transaction.
+    const start = selected.values.length + 2;
+    const coverageSql = selection.sql.replace(/\?(\d+)/g, (_,number) => `?${Number(number) + start - 1}`);
+    const guard = `NOT EXISTS (SELECT 1 FROM main.page_observations AS page_observations WHERE ${coverageSql}
+      AND NOT EXISTS (SELECT 1 FROM page_observation_report_facts AS facts WHERE facts.observation_id=page_observations.id
+        AND facts.rule_sha256='${REPORT_PROJECTION_RULE_SHA256}' AND facts.report_referral_rule_sha256='${REFERRAL_REPORT_RULE_SHA256}' AND facts.report_referral_excluded IS NOT NULL))`;
+    report.sql = report.sql.replace('SELECT section, CASE section', `SELECT ${guard} AS projection_complete, section, CASE section`);
+    return { sql: report.sql, values: [...report.values, query.path ?? null, ...selection.values] };
   });
 }

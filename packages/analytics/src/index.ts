@@ -144,7 +144,7 @@ async function persistObservation(
   const receipt = storedObservationReceipt(observation);
   const storage = await recordPageObservation(env.DB, observation, diagnostic);
   if (storage.status === 'returned') {
-    try { await projectReportObservation(env.DB, storage.observationId); }
+    try { await projectReportObservation(env.DB, storage.observationId, observation.referrerHost); }
     catch { console.warn('analytics.report_projection_unavailable', { operationId }); }
   }
   return { receipt, storage };

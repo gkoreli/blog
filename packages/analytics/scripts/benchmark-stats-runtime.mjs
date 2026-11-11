@@ -1,3 +1,4 @@
+import {referralReportProjectionSql,REFERRAL_REPORT_RULES_JSON} from '../.test-dist/referral-report-projection.js';
 /** Uncached, same-database report comparison over synthetic evidence.
  * First argument: frozen earlier stats bundle exporting queryStats.
  * MINIFLARE_WORKERD_PATH selects a local runtime; no remote database is used.
@@ -85,9 +86,10 @@ try {
     assert.deepEqual(after.report, before.report, scenario.name);
     const highWater = await db.prepare('SELECT COALESCE(MAX(id),0) AS n FROM page_observations').first();
     const projection = await db.prepare(networkReportProjectionSql('range')).bind(0, highWater.n).run();
+    const referral = await db.prepare(referralReportProjectionSql()).bind(0,highWater.n,REFERRAL_REPORT_RULES_JSON).run();
     const projected = await measure(db, queryProjectedStats, scenario.query);
     assert.deepEqual(projected.report, before.report, scenario.name + ': projected');
-    const measurement = { ...scenario, views: after.report.totals.views, before: before.metrics, after: after.metrics, projected: projected.metrics, projectionCost: projection.meta, parity: true };
+    const measurement = { ...scenario, views: after.report.totals.views, before: before.metrics, after: after.metrics, projected: projected.metrics, projectionCost: projection.meta, referralProjectionCost: referral.meta, parity: true };
     measurements.push(measurement);
     console.log(JSON.stringify({ scenario: scenario.name, beforeMs: before.metrics.elapsedMs, afterMs: after.metrics.elapsedMs, projectedMs: projected.metrics.elapsedMs, parity: true }));
   }

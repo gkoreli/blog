@@ -1,9 +1,10 @@
+import {referralReportProjectionSql,REFERRAL_REPORT_RULES_JSON,REFERRAL_REPORT_RULE_SHA256,referralReportRuleDefinition} from '../.test-dist/referral-report-projection.js';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {createHash} from 'node:crypto';
 import {DatabaseSync} from 'node:sqlite';
 import {readFileSync} from 'node:fs';
-import {reportProjectionSelectSql,reportProjectionSql,REPORT_PROJECTION_RULE_SHA256} from '../.test-dist/report-projection.js';
+import {reportProjectionSelectSql,reportProjectionSql,projectReportObservation,REPORT_PROJECTION_RULE_SHA256} from '../.test-dist/report-projection.js';
 import {queryStats,queryProjectedStats} from '../.test-dist/stats.js';
 import {STATS_INTEGRITY_INSERT,statsIntegrityValues} from './fixtures/stats-integrity.mjs';
 import {ACTIVE_REFERRAL_POLICY} from '../.test-dist/referral-policy.generated.js';
@@ -13,14 +14,15 @@ function fixture() {
   sqlite.exec(readFileSync(new URL('../schema.sql',import.meta.url),'utf8'));
   for (const values of statsIntegrityValues()) sqlite.prepare(STATS_INTEGRITY_INSERT).run(...values);
   let batches=0;
-  const db={prepare(sql){return{bind(...values){return{sql,values};}};},async batch(statements){batches++;return statements.map(s=>({success:true,results:sqlite.prepare(s.sql).all(...s.values)}));}};
+  const db={prepare(sql){return{bind(...values){return{sql,values,async run(){const result=sqlite.prepare(sql).run(...values);return{success:true,meta:{changes:result.changes}};}};}};},async batch(statements){batches++;return statements.map(s=>({success:true,results:sqlite.prepare(s.sql).all(...s.values)}));}};
   return {sqlite,db,batches:()=>batches};
 }
 const now=new Date('2026-10-31T12:00:00Z'),query={range:'7d',traffic:'all'};
-function rebuild(sqlite){return sqlite.prepare(reportProjectionSql('range')).run(0,Number.MAX_SAFE_INTEGER);}
+function rebuild(sqlite){const result=sqlite.prepare(reportProjectionSql('range')).run(0,Number.MAX_SAFE_INTEGER);sqlite.prepare(referralReportProjectionSql()).run(0,Number.MAX_SAFE_INTEGER,REFERRAL_REPORT_RULES_JSON);return result;}
 
 test('report projection fingerprint covers the complete interpretation and ordered metric layout',()=>{
   assert.equal(createHash('sha256').update(reportProjectionSelectSql('id = ?')).digest('hex'),REPORT_PROJECTION_RULE_SHA256);
+  assert.equal(createHash('sha256').update(referralReportRuleDefinition()).digest('hex'),REFERRAL_REPORT_RULE_SHA256);
 });
 
 test('complete projection, missing/stale fallback, dimension repairs and rebuild preserve exact reports',async()=>{
@@ -60,5 +62,24 @@ test('malformed accepted facts fail closed rather than publishing partial eviden
     rebuild(f.sqlite);
     f.sqlite.prepare("UPDATE page_observation_report_facts SET report_native_category='invalid-fact' WHERE is_owner=0").run();
     await assert.rejects(queryProjectedStats(f.db,query,now),/Malformed/);
+  }finally{f.sqlite.close();}
+});
+
+
+test('forward projection guards the acknowledged referral input and policy changes cannot reuse exclusions',async()=>{
+  const f=fixture();try{
+    const row=f.sqlite.prepare('SELECT id,referrer_host FROM page_observations WHERE is_owner=0 LIMIT 1').get();
+    f.sqlite.prepare("UPDATE page_observations SET referrer_host='traffic2cash.xyz' WHERE id=?").run(row.id);
+    await projectReportObservation(f.db,String(row.id),row.referrer_host);
+    assert.equal(f.sqlite.prepare('SELECT COUNT(*) AS n FROM page_observation_report_facts WHERE observation_id=?').get(row.id).n,0);
+    await projectReportObservation(f.db,String(row.id),'traffic2cash.xyz');
+    const fact=f.sqlite.prepare('SELECT report_referral_excluded,report_referral_rule_sha256 FROM page_observation_report_facts WHERE observation_id=?').get(row.id);
+    assert.equal(fact.report_referral_excluded,1);assert.equal(fact.report_referral_rule_sha256,REFERRAL_REPORT_RULE_SHA256);
+    rebuild(f.sqlite);
+    assert.equal(f.sqlite.prepare(referralReportProjectionSql()).run(0,Number.MAX_SAFE_INTEGER,REFERRAL_REPORT_RULES_JSON).changes,0);
+    f.sqlite.prepare('UPDATE page_observation_report_facts SET report_referral_rule_sha256=?').run('0'.repeat(64));
+    const events=[];
+    assert.deepEqual(await queryProjectedStats(f.db,query,now,undefined,event=>events.push(event)),await queryStats(f.db,query,now));
+    assert.deepEqual(events.map(e=>e.readModel),['projection','source-fallback']);
   }finally{f.sqlite.close();}
 });

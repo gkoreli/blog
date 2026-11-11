@@ -1,3 +1,4 @@
+import { matchesProjectedReferralPolicy } from './referral-report-projection.js';
 import { decodeVendorCacheRows } from './vendor-cache-report.js';
 import { decodeFetchMetadataRows } from './fetch-metadata-report.js';
 import { consistentVendorNetworkSummary } from './vendor-network-summary.js';
@@ -353,7 +354,8 @@ export async function queryStats(db: D1Database, query: StatsQuery, now = new Da
 
 /** The read model is accepted only with transactional source coverage. */
 export async function queryProjectedStats(db: D1Database, query: StatsQuery, now = new Date(), policy: ReferralPolicy = ACTIVE_REFERRAL_POLICY, observeCalculation?: ReportCalculationObserver): Promise<StatsResponse> {
-  const statements = buildProjectedStatsQueryPlan(query, createStatsWindow(query.range, now), policy)
+  if (!matchesProjectedReferralPolicy(policy)) return queryStats(db, query, now, policy, event => observeCalculation?.({ ...event, readModel: 'source-fallback' }));
+  const statements = buildProjectedStatsQueryPlan(query, createStatsWindow(query.range, now))
     .map(statement => db.prepare(statement.sql).bind(...statement.values));
   const results = await measuredReportBatch(db, statements, event => observeCalculation?.({ ...event, readModel: 'projection' }));
   const rows = results.flatMap(result => result.results ?? []);

@@ -1,5 +1,5 @@
 -- Empty databases only. Never apply to the blog's existing database.
--- Schema snapshot through migration 0019; no historical rows or backfills.
+-- Schema snapshot through migration 0020; no historical rows or backfills.
 -- Regenerate: node packages/analytics/scripts/fresh-schema.mjs --write
 -- Future schema changes must update this snapshot and provide an upgrade path.
 
@@ -71,7 +71,7 @@ CREATE TABLE page_observation_report_facts (
   report_network TEXT NOT NULL CHECK(json_valid(report_network) AND json_type(report_network)='array'),
   report_metadata TEXT NOT NULL CHECK(json_valid(report_metadata) AND json_type(report_metadata)='object'),
   report_cache TEXT NOT NULL CHECK(json_valid(report_cache) AND json_type(report_cache)='object')
-);
+, report_referral_excluded INTEGER CHECK(report_referral_excluded IN (0,1)), report_referral_rule_sha256 TEXT CHECK(report_referral_rule_sha256 IS NULL OR (length(report_referral_rule_sha256)=64 AND report_referral_rule_sha256 NOT GLOB '*[^0-9a-f]*')));
 
 CREATE TABLE page_observations (
   id INTEGER PRIMARY KEY AUTOINCREMENT,

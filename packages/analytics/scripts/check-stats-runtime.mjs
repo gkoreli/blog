@@ -1,3 +1,4 @@
+import {referralReportProjectionSql,REFERRAL_REPORT_RULES_JSON} from '../.test-dist/referral-report-projection.js';
 /** Native D1/SQLite parity over synthetic events. Optional first argument is an
  * earlier bundled stats module for before/after comparison. MINIFLARE_WORKERD_PATH
  * can select a separately installed runtime without changing workspace pins.
@@ -62,15 +63,18 @@ try {
   const now = new Date('2026-10-31T12:00:00Z');
   const costs = [];
   for (const mode of ['fallback', 'projected']) {
-    if (mode === 'projected') await db.prepare(networkReportProjectionSql('range')).bind(0, Number.MAX_SAFE_INTEGER).run();
+    if (mode === 'projected') {
+      await db.prepare(networkReportProjectionSql('range')).bind(0, Number.MAX_SAFE_INTEGER).run();
+      await db.prepare(referralReportProjectionSql()).bind(0, Number.MAX_SAFE_INTEGER, REFERRAL_REPORT_RULES_JSON).run();
+    }
     for (const query of queries) {
     const expected = await reference.queryStats(referenceDb, query, now);
     const actual = await queryStats(db, query, now, undefined, cost => costs.push(cost));
     assert.deepEqual(actual, expected, JSON.stringify({ mode, query }));
     }
   }
-  assert.ok(costs.every(cost => cost.submittedStatements === 5 && cost.returnedResults === cost.submittedStatements && cost.reportedRowsWritten === 0));
-  console.log(JSON.stringify({ selectors: queries.length, comparisons: queries.length * 2, meteredBatches: costs.length, modes: ['fallback', 'projected'], syntheticRows: inserts.length, projectedStatementsPerReport: 5, sourceStatementsPerReport: 5,
+  assert.ok(costs.every(cost => [2,5].includes(cost.submittedStatements) && cost.returnedResults === cost.submittedStatements && cost.reportedRowsWritten === 0));
+  console.log(JSON.stringify({ selectors: queries.length, comparisons: queries.length * 2, meteredBatches: costs.length, modes: ['fallback', 'projected'], syntheticRows: inserts.length, projectedStatementsPerReport: 2, sourceStatementsPerReport: 5,
     firstReport: costs[0], parity: true }));
 } finally {
   sqlite.close();

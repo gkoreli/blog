@@ -33,7 +33,7 @@ export function historicalSchema() {
 
 export function renderFreshSchema() {
   return `-- Empty databases only. Never apply to the blog's existing database.
--- Schema snapshot through migration 0019; no historical rows or backfills.
+-- Schema snapshot through migration 0020; no historical rows or backfills.
 -- Regenerate: node packages/analytics/scripts/fresh-schema.mjs --write
 -- Future schema changes must update this snapshot and provide an upgrade path.
 \n` + historicalSchema().map(row => row.sql + ';').join('\n\n') + '\n';
