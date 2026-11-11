@@ -1,0 +1,95 @@
+{
+  "version": 1,
+  "measuredAt": "2026-11-11T16:18:59.311166+00:00",
+  "implementationCommit": "d3e08ba55fa18d03e92d52b939126b301308d682",
+  "sourceCommit": "2b3aad279e3729a139b424f180346d309f69500f",
+  "cloudflareBuild": "4cf2abb3-41e9-4313-a30a-48df707df027",
+  "method": "Four marked public GETs verify source identity, API schema and exact built CSS/inspector bundle; one controlled request assessment supplies conflicting headers. No target audit submitted.",
+  "localChecks": {
+    "typecheck": true,
+    "analyticsTests": 448,
+    "blogTestsBeforeIntegration": 444,
+    "blogTestsIntegrated": 445,
+    "markdownValidation": 34,
+    "builtPosts": 45,
+    "workerDryRun": true,
+    "nativeHttpRequests": 58,
+    "nativeExternalRequests": 0,
+    "nativeOpenApiResponses": 4,
+    "privatePromptGuard": true,
+    "turnstileConfigured": false
+  },
+  "responses": [
+    {
+      "path": "/ai-check",
+      "status": 200,
+      "sha256": "2c6f0ec11380b8649f6411db1b01281e46e0687410b977744d12f76b8627337a"
+    },
+    {
+      "path": "/api/ai-check/schema",
+      "status": 200,
+      "sha256": "3a5ea333b8e9ed0ce5a1d1b18674c96515a156036f65c74732dc9c4a65355dd6"
+    },
+    {
+      "path": "/ai-check.js",
+      "status": 200,
+      "sha256": "f3917390a67687d811d99fa49d1c2898d7873e4885a6a5133ba4765adb0d9752"
+    },
+    {
+      "path": "/main.css",
+      "status": 200,
+      "sha256": "ee5bc86c10429418bb2d351557262b025071838e14525fe4fd659a82c546c875"
+    },
+    {
+      "path": "/api/request-check",
+      "status": 200,
+      "sha256": "6197c2b95028c948ac4e6be6059721f46ad9607f07ea6b3756c149305ac0e2b9"
+    }
+  ],
+  "checks": {
+    "servedSourceIdentity": true,
+    "inspectorIntro": true,
+    "referrerLimitCopy": true,
+    "closedApiContext": true,
+    "exactBuiltInspectorBundle": true,
+    "exactBuiltStylesheet": true,
+    "controlledContextConflict": true,
+    "referrerHostnameNotEchoed": true,
+    "requestAssessmentNoStore": true
+  },
+  "controlledRequest": {
+    "referrerState": "external",
+    "fetchSite": "same-origin",
+    "readerKind": "unresolved",
+    "reason": "request-context-conflict",
+    "newSearchClickAuthenticated": false
+  },
+  "browserChecks": {
+    "controlledBuiltPreview": true,
+    "scenarios": [
+      "external/cross-site",
+      "external/none",
+      "external/same-origin-conflict",
+      "absent"
+    ],
+    "phoneViewportWidth": 393,
+    "phoneScrollWidth": 393,
+    "publicInspectorVerified": true,
+    "publicButtonRequests": 1,
+    "publicReportedSource": "This site reported",
+    "publicSiteRelationship": "Same origin",
+    "publicContextCheck": "No conflict observed; source unverified",
+    "publicNavigationShaped": false,
+    "publicActivation": "absent",
+    "publicRequestCategory": "http-client",
+    "publicReason": "not-navigation-shaped"
+  },
+  "limits": [
+    "The referring hostname and navigation headers in the controlled API request were deliberately supplied; this was not a Google visit.",
+    "Controlled preview inputs exercise rendering and the real assessor, not provider authenticity or actual Search Console clicks.",
+    "No traffic counts, classifier rules, persisted analytics fields, quota policy or access score changed.",
+    "The historical 79 observations remain unattributed; no counting defect was established."
+  ],
+  "browserMeasuredAt": "2026-11-11T16:19:54.251804+00:00",
+  "productionRequestAssessments": 2
+}
