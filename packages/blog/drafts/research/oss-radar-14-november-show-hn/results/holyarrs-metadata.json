@@ -1,0 +1,29 @@
+{
+  "checkedOn": "2026-11-13",
+  "repository": "HolyArrs/HolyArrs",
+  "commit": "649795593b6f13ea26cdea326a7113b15c2c9371",
+  "release": "1.1.0",
+  "toolchain": "go1.27.4 darwin/arm64",
+  "command": "go test ./app/backend/internal/metadata -run '^(TestGateSendsNothingUnlessServerMode|TestGuardAllowsOnlyItsMode|TestOwnKeysAsksTMDBDirectly)$' -count=1 -v",
+  "tests": [
+    {
+      "name": "TestGateSendsNothingUnlessServerMode",
+      "result": "PASS"
+    },
+    {
+      "name": "TestGuardAllowsOnlyItsMode",
+      "result": "PASS"
+    },
+    {
+      "name": "TestOwnKeysAsksTMDBDirectly",
+      "result": "PASS"
+    }
+  ],
+  "packageExitCode": 0,
+  "conditions": [
+    "Temporary checkout and Go caches",
+    "Loopback stand-ins only; no real provider keys",
+    "No running full application, existing library or downloads"
+  ],
+  "conclusion": "Selected guards block hosted requests in own/off modes, positive hosted control reaches its stand-in, own-key TMDB lookup reaches direct stand-in without registration. Not a whole-install no-egress or migration certification."
+}

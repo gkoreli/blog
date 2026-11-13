@@ -1,6 +1,6 @@
 # OSS Radar #14: November Show HN scan
 
-Status: revised research and manuscript prepared November 11, 2026. **Unpublished.** Documentation, pinned source and public discussions reviewed across all twelve projects; six small local product checks completed. Waymark setup stopped before workflow execution. No comparative benchmark, live agent integration, public product deployment or publication is claimed.
+Status: revised cohort manuscript and product-mechanism review completed November 13, 2026. **Unpublished.** Documentation, source and discussions reviewed across all twelve. Six small local checks on November 11 plus three HolyArrs metadata tests on November 13; the new 1.1.0 baseline changes its dependency assessment. Waymark setup did not reach workflows. No comparative benchmark, live agent integration, public product deployment or publication is claimed.
 
 - [Manuscript](../../oss-radar-14-november-show-hn.md)
 - [Inventory method and daily query URLs](inventory-method.json)
@@ -8,6 +8,7 @@ Status: revised research and manuscript prepared November 11, 2026. **Unpublishe
 - [Selected twelve submissions](sample.csv)
 - [Repository baselines and inspected files](baselines.json)
 - [Claims and product map](claims.md)
+- [Current product mechanisms, positioning and dated follow-up](05-product-mechanisms-and-positioning.md)
 - [Declared deeper-review protocol](02-deep-review-protocol.md)
 - [Discussions, firsthand reports and design checks](03-discussions-and-design.md)
 - [Local methods, versions, results and limits](04-local-trials.md)
@@ -29,11 +30,11 @@ Six selected projects explicitly address coding-agent behavior or agent workflow
 
 Hypothesis: tools that retain inspectability, continuity and control can become more valuable as producing output becomes cheaper. Rival explanation: the sample's audience, attention threshold and GitHub rule favor these projects. The scan proves neither adoption nor increased value. The hypothesis weakens if agent vendors reliably absorb these capabilities or operating the additional tools costs more attention than they save. Repeated workflow use, successful recovery and observed interception are needed to evaluate that question.
 
-The revised title promises agent recovery, better diffs and partial self-hosting. tmux-restore/Waymark, OmniDiff and HolyArrs/Kairos supply the comparison. November date, sample limits and mixed evidence states appear in the introduction. Search terms and likely reader interest are editorial hypotheses; no query-demand measurement was performed.
+The current title identifies the source cohort. The opening and each project entry explain the problem, audience, implementation choice and product interpretation. The distillation compares specialization, agent context/control and consolidation responsibilities. It makes bounded editorial judgments rather than numerical market forecasts. Search/discovery interest remains an editorial hypothesis, not measured query demand.
 
 ## Remaining work
 
-Author review of the revised manuscript and judgments is next. Recheck consequential live issues, package behavior and model terms before publication. No maintainer contact, market-growth measurement, publication, production acceptance or distribution is claimed. Waymark's retained recovery fixture is an attempted protocol, not a validated recipe or commitment to continue the unsuitable database setup.
+Author review of the November 13 cohort manuscript and judgments is next. The narrower November 11 manuscript is retained in Git history, not a separate active draft. Recheck consequential live issues, package behavior and model terms before publication. No maintainer contact, market-growth measurement, publication, production acceptance or distribution is claimed. Waymark's retained recovery fixture is an attempted protocol, not a validated recipe or commitment to continue the unsuitable database setup.
 
 Publication, if requested, needs final metadata/date review and isolated rendering under the current repository workflow. Raw author messages remain in the approved private archive and do not belong in this directory.
 
@@ -59,3 +60,14 @@ Historical source-only first pass. The deeper-review records above and revised a
 - Checked local research links and reviewed public content for private prompts, credentials and raw operational captures. No private source message is included.
 - Discussion and source claims reviewed against the pinned implementations, attributed reports and issue/release distinctions. No independent reviewer, user acceptance, GPU result, Waymark recovery result or production outcome is claimed.
 - Next bounded action: author review of this manuscript. Publishing would additionally require current issue/license rechecks, final date/metadata and isolated page rendering under the repository workflow.
+
+## Cohort manuscript acceptance — November 13
+
+- Re-read the first issue's full source and reviewed its progression from a common source through project purpose, technical distinction, judgments and cohort distillation. The current manuscript adopts those editorial functions while retaining evidence boundaries and avoiding unsupported forecasts.
+- Revised manuscript: 4,705 whitespace-delimited body words via `parsePost()`. All twelve entries now explain the problem/audience, a called implementation path and why it matters, evidence that qualifies the interpretation, and a product judgment or hard question. Closing comparisons and distillation follow those mechanisms.
+- Added the dated [product reading and positioning record](05-product-mechanisms-and-positioning.md). Preserved prior source and trial receipts. HolyArrs 1.1.0 is an explicit later baseline, used consistently for its current manuscript links; its previous dependency verdict is superseded.
+- Three HolyArrs upstream metadata tests passed with loopback stand-ins and fake credentials. This adds selected transport-path evidence for a seventh project, not full-app egress or library migration acceptance. Existing six-project experiments retain their November 11 conditions. Waymark's incomplete setup remains incomplete.
+- Verified 69 recorded source paths across original and follow-up snapshots, all checkout SHAs, 52 pinned manuscript links, local Markdown references and eight normalized result JSON files. Inventory SHA-256 remains unchanged.
+- Actual frontmatter parser and Markdown renderer passed: one H1 matching the new title, twelve project entries. `pnpm -C packages/blog validate`: all 34 published Markdown posts valid. No shared build output or running server was touched; no viewport or production acceptance is claimed.
+- Reviewed the full revised manuscript against code, attributed reports and the claim table, including the distinction between a runnable inference implementation and unreviewed weight-training methods. Raw author wording and operational logs remain outside public files.
+- Next bounded action: author review of this cohort manuscript. It is unpublished. Publication would require current release/issue/weight-term checks and the normal isolated rendering workflow.

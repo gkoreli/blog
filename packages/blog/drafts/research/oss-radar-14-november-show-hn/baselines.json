@@ -1,6 +1,6 @@
 {
-  "checkedOn": "2026-11-11",
-  "evidenceState": "Pinned documentation/source inspection and public discussions for twelve projects; six small local functional trials; attempted Waymark setup did not reach workflows. See 04-local-trials.md.",
+  "checkedOn": "2026-11-13",
+  "evidenceState": "Documentation, source, public discussions and small local checks; six projects checked November 11 and three HolyArrs metadata tests November 13. Waymark setup did not reach workflows. Original source snapshots retained; explicit follow-up baseline used for every HolyArrs manuscript code link.",
   "repositories": [
     {
       "repository": "GoogleChrome/modern-web-guidance",
@@ -71,7 +71,9 @@
       "license": "MIT",
       "licenseBasis": "GitHub repository license metadata; SPDX identifier",
       "sourceFiles": [
-        "scripts/ste_check.py"
+        "scripts/ste_check.py",
+        "SKILL.md",
+        "evals/rewrite-readme-paragraph/graders/01-keeps-all-facts.md"
       ]
     },
     {
@@ -86,7 +88,9 @@
         "apps/server/src/modules/workflows/libs/models.ts",
         "apps/server/src/modules/workflows/libs/steps.ts",
         "apps/server/src/modules/experiments/service.ts",
-        "packages/core/src/grayson.ts"
+        "packages/core/src/grayson.ts",
+        "apps/server/src/modules/decisions/service.ts",
+        "docs/getting-started/overview.md"
       ]
     },
     {
@@ -99,7 +103,9 @@
         "packages/cli/src/commands/hook.ts",
         "packages/core/src/engine.ts",
         "SECURITY.md",
-        "packages/cli/src/folder-check.ts"
+        "packages/cli/src/folder-check.ts",
+        "packages/core/src/provenance/record.ts",
+        "packages/core/src/provenance/action-lookup.ts"
       ]
     },
     {
@@ -114,7 +120,8 @@
         "python/src/waymark/compiler/__init__.py",
         "docs/python/retries/page.mdx",
         "docs/guides/production/page.mdx",
-        "crates/lib/action-runtime-convert/src/loss.rs"
+        "crates/lib/action-runtime-convert/src/loss.rs",
+        "docs/guides/motivation/page.mdx"
       ]
     },
     {
@@ -126,7 +133,9 @@
       "sourceFiles": [
         "src/hyperflow_h3_flash/schedule.py",
         "THIRD_PARTY_NOTICES.md",
-        "src/hyperflow_h3_flash/pipeline.py"
+        "src/hyperflow_h3_flash/pipeline.py",
+        "src/hyperflow_h3_flash/transformer.py",
+        "src/hyperflow_h3_flash/int8.py"
       ]
     },
     {
@@ -139,7 +148,9 @@
         "core/openapi.ml",
         "core/files.ml",
         "core/route.ml",
-        "core/input.ml"
+        "core/input.ml",
+        "core/zod.ml",
+        "docs/src/content/docs/tutorial/client-schemas.mdx"
       ]
     },
     {
@@ -151,7 +162,9 @@
       "sourceFiles": [
         "agents/codex.sh",
         "docs/caveats.md",
-        "tests/agents-unit.sh"
+        "tests/agents-unit.sh",
+        "scripts/save-hook.sh",
+        "docs/how-it-works.md"
       ]
     }
   ],
@@ -163,7 +176,9 @@
       "sourceFiles": [
         "src/rag/search.ts",
         "src/rag/retrieve.ts",
-        "src/cli/telemetry/clearcut-logger.ts"
+        "src/cli/telemetry/clearcut-logger.ts",
+        "src/rag/README.md",
+        "src/harness/README.md"
       ]
     },
     {
@@ -193,6 +208,12 @@
       "commit": "c5821c27cbfd2bed80544b5be1645ac98c6b3770",
       "archiveSha256": "ac5d75ad752a4738f24ffd72c7e93f4bb4c9caf6ee89cc79b8b09ad1d9fca42a",
       "verification": "Matched release SHA256SUMS.txt; not independent publisher authentication"
+    },
+    {
+      "repository": "HolyArrs/HolyArrs",
+      "commit": "649795593b6f13ea26cdea326a7113b15c2c9371",
+      "scope": "Three upstream metadata tests only; Go 1.27.4, isolated caches and loopback stand-ins",
+      "result": "All three passed; see results/holyarrs-metadata.json"
     }
   ],
   "attemptedArtifacts": [
@@ -201,6 +222,25 @@
       "version": "0.30.1",
       "runtime": "Python 3.12.8 / Apple Silicon",
       "outcome": "Installed, executor reached migrations; auxiliary pgserver 0.1.4 PostgreSQL 16.2 bundle lacks pgcrypto. No workflow recovery outcome."
+    }
+  ],
+  "originalCheckedOn": "2026-11-11",
+  "followupBaselines": [
+    {
+      "repository": "HolyArrs/HolyArrs",
+      "commit": "649795593b6f13ea26cdea326a7113b15c2c9371",
+      "release": "1.1.0",
+      "checkedOn": "2026-11-13",
+      "reason": "New hosted/own/off metadata modes materially supersede the original November 11 dependency conclusion. Every HolyArrs code link in current manuscript uses this revision; original baseline retained above for historical trials and records.",
+      "sourceFiles": [
+        "README.md",
+        "docs/run/outside-hosts.md",
+        "app/backend/internal/downloads/grab.go",
+        "app/backend/internal/metadata/mode.go",
+        "app/backend/internal/metadata/gate.go",
+        "app/backend/internal/metadata/hosted_service.go",
+        "app/backend/internal/metadata/mode_test.go"
+      ]
     }
   ]
 }

@@ -1,6 +1,6 @@
-# Local trials — November 11, 2026
+# Local trials — November 11 and 13, 2026
 
-This record supersedes the first draft's no-execution boundary for the six completed product checks below. These are small functional trials, not comparative benchmarks, security certifications or population accuracy estimates. Raw logs, checkouts, package downloads and discussion captures remain outside Git.
+This record supersedes the first draft's no-execution boundary for the six November 11 product checks below. A seventh project, HolyArrs, received the separately dated November 13 metadata checks at the end. These are small functional trials, not comparative benchmarks, security certifications or population accuracy estimates. Raw logs, checkouts, package downloads and discussion captures remain outside Git.
 
 ## Environment and versions
 
@@ -81,3 +81,11 @@ The trial fixture prepares three cases: restart during durable sleep, loss of an
 Waymark 0.30.1 installed from its published Apple Silicon wheel into a temporary Python 3.12 environment. A temporary `pgserver==0.1.4` PostgreSQL 16.2 instance starts without IP listeners. The first attempt required a nonempty authority hostname for sqlx's URL parsing; after correcting that harness URL, the executor reached migrations and stopped because the auxiliary PostgreSQL package omits **pgcrypto**. This is an unsuitable database bundle for the trial, not a demonstrated Waymark recovery defect.
 
 A bounded attempt to add pgcrypto from the checksum-verified PostgreSQL 16.2 source encountered the bundle's old SDK/linker configuration. No product source or migration was patched to bypass the requirement. All owned database/executor processes stopped. Waymark's uncertain-action/retry semantics and upgrade downtime remain documented and code-inspected; they must not be labelled reproduced. The fixture scripts are retained as the attempted protocol, not as a successful recovery recipe for this auxiliary database package.
+
+## HolyArrs 1.1.0 metadata modes — November 13
+
+Separate source baseline: `649795593b6f13ea26cdea326a7113b15c2c9371`. The initial revision remains recorded; the current manuscript's HolyArrs links all use this follow-up. The [positioning record](05-product-mechanisms-and-positioning.md#material-update-holyarrs) declares the acceptance before execution.
+
+The upstream `TestGateSendsNothingUnlessServerMode`, `TestGuardAllowsOnlyItsMode` and `TestOwnKeysAsksTMDBDirectly` all passed. The tests use loopback HTTP stand-ins, a temporary vault/database and a fake TMDB credential: own/off modes block hosted requests, hosted mode has a positive control, and own mode sends a TMDB lookup directly without hosted registration. No real provider key, existing library or download was used. These are selected transport-path tests, not whole-install egress or migration acceptance.
+
+Reproduction from that checkout: run the `command` recorded in the [normalized result](results/holyarrs-metadata.json) with Go 1.27.4 and temporary `GOCACHE` / `GOMODCACHE`. The first attempt with Go 1.26.2 stopped before compilation because the module requires 1.27.4. A second invocation with `GOTOOLCHAIN=auto` downloaded the required toolchain into the temporary module cache and passed. Raw logs stay outside Git; no product source was modified.

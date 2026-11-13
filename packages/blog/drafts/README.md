@@ -2,7 +2,7 @@
 
 ## New active writing
 
-- **November 11, 2026:** [OSS Radar #14: Agent Recovery, Better Diffs and Partial Self-Hosting](oss-radar-14-november-show-hn.md) — revised manuscript from a declared twelve-project November 1–10 Show HN sample; source/discussion review plus six local product checks. [Research and limits](research/oss-radar-14-november-show-hn/README.md). Unpublished; next step is author review. This is new work and does not reopen the retired backlog below.
+- **Updated November 13, 2026:** [OSS Radar #14: November’s Show HN Open-Source Launches](oss-radar-14-november-show-hn.md) — cohort distillation of twelve November 1–10 launches, with each project’s problem, audience, implementation and product bet grounded in source/discussions. Six initial local checks plus a HolyArrs 1.1.0 metadata follow-up. [Research and limits](research/oss-radar-14-november-show-hn/README.md). Unpublished; next step is author review. This new work does not reopen the retired backlog below.
 
 **Publication update — November 11, 2026, America/Los_Angeles:** Goga authorized
 immediate publication of the User-Agent article. Its maintained source and exact

@@ -46,6 +46,8 @@ Current source represents workflow versions by a compiled IR/hash, serializes VM
 
 ## HolyArrs
 
+Historical November 11 state. The November 13 [source/test follow-up](05-product-mechanisms-and-positioning.md#material-update-holyarrs) supersedes the dependency conclusion below: issue 222 closed after 1.1.0 shipped distinct metadata modes.
+
 [Maintainer's launch explanation](https://news.ycombinator.com/item?id=50439032) explicitly says it does not play media: it handles discovery/acquisition/library work and keeps Plex or Jellyfin for playback. Image/download size is not a count of supported workflows. HN commenters express migration and stability concerns; these are interest and questions, not failed migrations.
 
 [Issue 222](https://github.com/HolyArrs/HolyArrs/issues/222), open, is a report from a Docker/Debian user with default-deny egress. The maintainer says outside-address documentation shipped in 1.0.16, while complete independence via own keys/server remains open. `docs/run/outside-hosts.md`, `metadata/hosted.go` and `hosted_service.go` confirm the split: a TMDB key changes those lookups, while music, trailers and other details still use the configured metadata service. Its docs say existing library/downloads keep working without new metadata; this is documented, not locally outage-tested.
