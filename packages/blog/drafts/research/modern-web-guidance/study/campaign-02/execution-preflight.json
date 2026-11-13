@@ -1,0 +1,60 @@
+{
+  "accepted": true,
+  "requestedModel": "gpt-6.1-sol",
+  "reasoningEffort": "medium",
+  "defaultLoginShellObserved": true,
+  "nodeVersionObserved": "v24.14.1",
+  "pinnedNpxResolved": true,
+  "lookupReceipts": [
+    {
+      "at": 1794584039.002049,
+      "runner": "npx",
+      "originalArgs": [
+        "--offline",
+        "--no-install",
+        "modern-web-guidance",
+        "search",
+        "dialog keyboard focus"
+      ],
+      "args": [
+        "search",
+        "dialog keyboard focus"
+      ],
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "at": 1794584039.133379,
+      "runner": "npx",
+      "originalArgs": [
+        "--offline",
+        "--no",
+        "modern-web-guidance@latest",
+        "search",
+        "accordion panels"
+      ],
+      "args": [
+        "search",
+        "accordion panels"
+      ],
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "at": 1794584039.2482848,
+      "runner": "pnpx",
+      "originalArgs": [
+        "modern-web-guidance@latest",
+        "retrieve",
+        "full-session-analytics"
+      ],
+      "args": [
+        "retrieve",
+        "full-session-analytics"
+      ],
+      "exitCode": 0,
+      "error": null
+    }
+  ],
+  "source": "Isolated Codex command-tool preflight; raw input/events/report remain private outside Git."
+}
