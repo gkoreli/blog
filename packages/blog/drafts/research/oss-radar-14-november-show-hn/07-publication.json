@@ -23,6 +23,177 @@
     "browser opening and sources at 675x766 without document overflow",
     "1200x600 social image visual inspection"
   ],
-  "sourceDelivery": "pending",
-  "liveAcceptance": "pending"
+  "sourceDelivery": {
+    "commit": "2e37733582bc8c392051d6b4ba1da67cac4cbcb9",
+    "branch": "main",
+    "remoteAccepted": true
+  },
+  "liveAcceptance": {
+    "checkedAt": "2026-11-13T15:01:01.413415+00:00",
+    "articleUrl": "https://gkoreli.com/oss-radar-14-november-show-hn",
+    "responses": {
+      "article": {
+        "path": "/oss-radar-14-november-show-hn",
+        "accept": "text/html",
+        "status": 200,
+        "headers": {
+          "Content-Type": "text/html",
+          "Link": "</oss-radar-14-november-show-hn.md>; rel=\"alternate\"; type=\"text/markdown\", </posts.json>; rel=\"describedby\"; type=\"application/json\", </about>; rel=\"author\", <https://creativecommons.org/licenses/by-nc-nd/4.0/>; rel=\"license\", </oss-radar-14-november-show-hn.csl.json>; rel=\"alternate\"; type=\"application/vnd.citationstyles.csl+json\"",
+          "CF-Ray": "a59ea638af1b347d-SEA"
+        },
+        "sha256": "b1545b67fd03784d65d01c33baf9fe97e3b6893389df4f4f05db131b3d6e20b6"
+      },
+      "markdown": {
+        "path": "/oss-radar-14-november-show-hn.md",
+        "accept": "text/markdown",
+        "status": 200,
+        "headers": {
+          "Content-Type": "text/markdown; charset=utf-8",
+          "Link": "</oss-radar-14-november-show-hn.md>; rel=\"alternate\"; type=\"text/markdown\", </posts.json>; rel=\"describedby\"; type=\"application/json\", </about>; rel=\"author\", <https://creativecommons.org/licenses/by-nc-nd/4.0/>; rel=\"license\", </oss-radar-14-november-show-hn.csl.json>; rel=\"alternate\"; type=\"application/vnd.citationstyles.csl+json\"",
+          "ETag": "\"3a0cde95e6d6c66717c07fe507eae855\"",
+          "CF-Ray": "a59ea638ae111846-SEA"
+        },
+        "sha256": "46d2a68d4207b93a9806694b7e8488c69b3c8e0ea4ce56f0e8169a6179405cb2"
+      },
+      "negotiatedMarkdown": {
+        "path": "/oss-radar-14-november-show-hn",
+        "accept": "text/markdown",
+        "status": 200,
+        "headers": {
+          "Content-Type": "text/markdown; charset=utf-8",
+          "Content-Location": "/oss-radar-14-november-show-hn.md",
+          "Link": "</oss-radar-14-november-show-hn.md>; rel=\"alternate\"; type=\"text/markdown\", </posts.json>; rel=\"describedby\"; type=\"application/json\", </about>; rel=\"author\", <https://creativecommons.org/licenses/by-nc-nd/4.0/>; rel=\"license\", </oss-radar-14-november-show-hn.csl.json>; rel=\"alternate\"; type=\"application/vnd.citationstyles.csl+json\"",
+          "ETag": "\"3a0cde95e6d6c66717c07fe507eae855\"",
+          "CF-Ray": "a59ea638a8582859-SEA"
+        },
+        "sha256": "46d2a68d4207b93a9806694b7e8488c69b3c8e0ea4ce56f0e8169a6179405cb2"
+      },
+      "index": {
+        "path": "/posts.json",
+        "accept": "application/json",
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json",
+          "ETag": "\"7bc80668ac08953b18f8c72e71ed72e9\"",
+          "CF-Ray": "a59ea638a8622859-SEA"
+        },
+        "sha256": "dc82883ace4facacd411a4ddec59b5ba868cc7a1f4711103b08e6bee89e7f27d"
+      },
+      "feed": {
+        "path": "/feed.xml",
+        "accept": "application/xml",
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/xml",
+          "ETag": "\"4393c223e101fcde9e188a57c08a1f11\"",
+          "CF-Ray": "a59ea63928115f03-PDX"
+        },
+        "sha256": "3afd67e1815a8a7f207dd1768f67bedc9f5f55e661d1addc1c86b482a2013b46"
+      },
+      "sitemap": {
+        "path": "/sitemap.xml",
+        "accept": "application/xml",
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/xml",
+          "ETag": "\"9d34d8280c85a7cae2b7fb07da6697f7\"",
+          "CF-Ray": "a59ea6394f06ebc3-SEA"
+        },
+        "sha256": "0b06c4f507c0bf20f45198978eb56d1a78daa80b45dbefdd2308333954863e39"
+      },
+      "section": {
+        "path": "/oss-radar",
+        "accept": "text/html",
+        "status": 200,
+        "headers": {
+          "Content-Type": "text/html",
+          "Link": "</about>; rel=\"author\", <https://creativecommons.org/licenses/by-nc-nd/4.0/>; rel=\"license\"",
+          "CF-Ray": "a59ea6395a0fdab7-PDX"
+        },
+        "sha256": "c6e374ba32edfa261a279b677c8395a42e20b63823e0e8a5edb271bd6cc4fc69"
+      },
+      "home": {
+        "path": "/",
+        "accept": "text/html",
+        "status": 200,
+        "headers": {
+          "Content-Type": "text/html",
+          "Link": "</index.md>; rel=\"alternate\"; type=\"text/markdown\", </about>; rel=\"author\", <https://creativecommons.org/licenses/by-nc-nd/4.0/>; rel=\"license\"",
+          "CF-Ray": "a59ea6395f1816ae-SEA"
+        },
+        "sha256": "765f632cbc1332171814db5233e0c34e66df13dcee59c917f1250c2c0f77b308"
+      },
+      "csl": {
+        "path": "/oss-radar-14-november-show-hn.csl.json",
+        "accept": "application/json",
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/vnd.citationstyles.csl+json",
+          "ETag": "\"d0fb90b2ef8ac5c1540ec296e91e8897\"",
+          "CF-Ray": "a59ea6399ed3ebbf-SEA"
+        },
+        "sha256": "28da41d03a58af937d18a1ece7ed8e0daa0fc2dddd87c51c5bde2ec71886f67e"
+      },
+      "bibtex": {
+        "path": "/oss-radar-14-november-show-hn.bib",
+        "accept": "application/x-bibtex",
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/x-bibtex; charset=utf-8",
+          "ETag": "\"6d1119a978b75960eb58ff3ab6db882a\"",
+          "CF-Ray": "a59ea63a0a48f500-SEA"
+        },
+        "sha256": "5e8d2684b0d8b319a3c3e87732e0e27ef0b53b5dd95c590b0eeb3abc3e7df59a"
+      },
+      "socialImage": {
+        "path": "/og/oss-radar-14-november-show-hn.png",
+        "accept": "image/png",
+        "status": 200,
+        "headers": {
+          "Content-Type": "image/png",
+          "ETag": "\"ae5a60d2af5f69bd7cde94736900870a\"",
+          "CF-Ray": "a59ea63a7d347de4-SEA"
+        },
+        "sha256": "8d078b44d5529bbfab3e996a6955fd24f06b249728e6f57738326d0eef33eed7"
+      }
+    },
+    "servedArticleMatchesIsolatedBuild": true,
+    "explicitAndNegotiatedMarkdownMatchIsolatedBuild": true,
+    "citationsAndSocialImageMatchIsolatedBuild": true,
+    "indexDateFeedSitemapHomeAndSection": "pass",
+    "livePublicTurnstileKeyPresent": true
+  },
+  "cloudflareBuild": {
+    "id": "0013291e-4003-491e-a1eb-fe4322091f5e",
+    "state": "completed",
+    "conclusion": "success",
+    "completedAt": "2026-11-13T15:00:44Z",
+    "commit": "2e37733582bc8c392051d6b4ba1da67cac4cbcb9"
+  },
+  "deployment": {
+    "id": "813323b5-7b60-41f1-bc98-80f7b0f37454",
+    "createdOn": "2026-11-13T15:00:37.388908Z",
+    "versions": [
+      {
+        "version_id": "c9a8ac97-066f-4a92-ae38-072f4c50af4b",
+        "percentage": 100
+      }
+    ],
+    "scope": "Deployment metadata observed after the commit-linked successful build; served-content comparison is recorded separately."
+  },
+  "integratedBuild": {
+    "commit": "2e37733582bc8c392051d6b4ba1da67cac4cbcb9",
+    "productionBuild": "pass",
+    "generatedPosts": 46,
+    "workspaceTypecheck": "pass",
+    "note": "Repeated after integrating the concurrent Stats commit; article and representations match the live release."
+  },
+  "browserAcceptance": {
+    "url": "https://gkoreli.com/oss-radar-14-november-show-hn",
+    "titleAndDate": "pass",
+    "editedOpening": "pass",
+    "viewportWidth": 675,
+    "documentWidth": 675,
+    "scope": "Opening inspected in the live browser; default viewport, no full breakpoint or interaction suite."
+  }
 }

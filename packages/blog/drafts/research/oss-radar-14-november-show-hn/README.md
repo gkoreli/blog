@@ -1,6 +1,6 @@
 # OSS Radar #14: November Show HN scan
 
-Status: publication prepared November 13, 2026; build and live acceptance pending. The article is now in published-post discovery. Source and discussions reviewed across all twelve; focused executed paths cover ten. The mechanism pass includes real Waymark 0.30.1 recovery, the post-release delivery-contract distinction, a Spindle contract change, Stroq source/false-positive controls, archive repacking, pure answer assembly and acquisition reconciliation. No GPU-model benchmark, Kairos model call or live agent integration is claimed.
+Status: [published November 13, 2026](https://gkoreli.com/oss-radar-14-november-show-hn); [delivery and live acceptance complete](07-publication.md). Source and discussions reviewed across all twelve; focused executed paths cover ten. The mechanism pass includes real Waymark 0.30.1 recovery, the post-release delivery-contract distinction, a Spindle contract change, Stroq source/false-positive controls, archive repacking, pure answer assembly and acquisition reconciliation. No GPU-model benchmark, Kairos model call or live agent integration is claimed.
 
 - [Article source](../../../posts/045-oss-radar-14-november-show-hn.md)
 - [Publication and acceptance](07-publication.md)
@@ -35,9 +35,9 @@ Hypothesis: tools that retain inspectability, continuity and control can become 
 
 The current title identifies the source cohort. The opening and each project entry explain the problem, audience, implementation choice and product interpretation. The distillation compares specialization, agent context/control and consolidation responsibilities. It makes bounded editorial judgments rather than numerical market forecasts. Search/discovery interest remains an editorial hypothesis, not measured query demand.
 
-## Remaining work
+## Completion
 
-The article has been edited for publication and moved into posts. Complete isolated build, generated-output and live acceptance checks. The narrower November 11 manuscript and November 13 drafts remain in Git history. No maintainer contact, market-growth measurement or distribution is claimed. Waymark's old auxiliary-database fixture remains an unsuccessful historical setup. The later standalone-Postgres fixture reached all three scenarios; distinguish its released 0.30.1 behavior from merged PR 886, whose runtime was not executed.
+The article is published. Isolated builds, generated-output checks, deployment and live acceptance passed; [the receipt](07-publication.md) distinguishes each stage. The narrower November 11 manuscript and November 13 drafts remain in Git history. No further publication work remains. No maintainer contact, market-growth measurement or distribution is claimed. Waymark's old auxiliary-database fixture remains an unsuccessful historical setup. The later standalone-Postgres fixture reached all three scenarios; distinguish its released 0.30.1 behavior from merged PR 886, whose runtime was not executed.
 
 Raw author messages remain in the approved private archive and do not belong in this directory. The dated acceptance sections below preserve their historical unpublished state; the current publication status is above.
 

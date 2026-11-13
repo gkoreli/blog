@@ -2,7 +2,7 @@
 
 ## New active writing
 
-- **Publication prepared November 13, 2026:** [OSS Radar #14: November’s Show HN Open-Source Launches](../posts/045-oss-radar-14-november-show-hn.md) — twelve November 1–10 launches, with implementation reading, discussion sources and focused executed paths for ten projects. Moved into published-post discovery; build and live acceptance pending. [Research and limits](research/oss-radar-14-november-show-hn/README.md). This work does not reopen the retired backlog below.
+- **Published November 13, 2026:** [OSS Radar #14: November’s Show HN Open-Source Launches](https://gkoreli.com/oss-radar-14-november-show-hn) — twelve November 1–10 launches, with implementation reading, discussion sources and focused executed paths for ten projects. [Source](../posts/045-oss-radar-14-november-show-hn.md); [research and publication acceptance](research/oss-radar-14-november-show-hn/README.md). Publication complete. This work does not reopen the retired backlog below.
 
 **Publication update — November 11, 2026, America/Los_Angeles:** Goga authorized
 immediate publication of the User-Agent article. Its maintained source and exact
