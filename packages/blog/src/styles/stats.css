@@ -82,6 +82,8 @@
 .stats-signature-basis :is(th,td):last-child, .stats-fetch-metadata :is(th,td):not(:first-child) { text-align: right; font: 12px/1.7 var(--font-mono); font-variant-numeric: tabular-nums; }
 .stats-signature-basis tbody th { min-width: 130px; font-weight: 500; overflow-wrap: normal; }
 .stats-fetch-metadata tbody th { min-width: 90px; font-weight: 500; white-space: nowrap; }
+.stats-fetch-metadata th, .stats-fetch-metadata td { padding-inline: 8px; }
+.stats-fetch-metadata thead th { overflow-wrap: normal; word-break: normal; }
 .stats-fetch-metadata td { white-space: nowrap; }
 #stats-kind-signature-rows, #stats-client-evidence-rows, #stats-fetch-metadata-rows, #stats-native-category-rows { overflow-x: auto; border: 1px solid var(--color-border); border-radius: 8px; }
 #stats-kind-signature-rows table { min-width: 600px; }
