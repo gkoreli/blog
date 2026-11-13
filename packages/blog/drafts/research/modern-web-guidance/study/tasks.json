@@ -1,0 +1,44 @@
+[
+  {
+    "id": "T01",
+    "name": "Saved-report deletion confirmation",
+    "lineage": "New owned report-management task; report context from packages/blog/src/pages/stats.ts. The confirmation interaction is a new fixture, not a production feature.",
+    "guides": ["dialog", "light-dismiss-a-dialog"],
+    "brief": "Finish the saved-report deletion confirmation. Delete opens an accessible modal named by its visible heading. Put initial focus on Cancel, keep keyboard focus and background interaction within the modal while it is open, and support Escape, Cancel and clicking the backdrop as cancellation. Cancelling must leave the saved report intact and restore focus to Delete. Confirm calls the provided removeSavedReport() exactly once and closes the modal. Preserve backdrop dismissal on browsers that lack the newest native light-dismiss behavior. Keep all existing element IDs and the provided data callback. This fixture has no server deletion."
+  },
+  {
+    "id": "T02",
+    "name": "Expandable report evidence: preservation control",
+    "lineage": "Independent native disclosure pattern adapted from packages/blog/src/pages/stats.ts and packages/blog/src/pages/request-inspector.ts.",
+    "guides": ["accordion"],
+    "brief": "Review the two expandable report-evidence panels for practical accessibility and small screens. Fix actual defects you find; preserve working behavior when there is no defect. Both panels must toggle with mouse and keyboard, remain independently openable, keep their labels and content, and fit a 360px viewport. Newly appended content must remain readable while a panel is open. They must remain usable with JavaScript disabled. Do not add exclusive one-open-at-a-time behavior or animation: neither is requested. Keep the existing element IDs. A verified no-change implementation is acceptable."
+  },
+  {
+    "id": "T03",
+    "name": "Mobile publication navigation",
+    "lineage": "State and Escape behavior adapted from packages/blog/src/client/components/burger-menu.ts; implementation reduced to dependency-free HTML/CSS/JS.",
+    "guides": ["navigation-drawer"],
+    "brief": "Finish the publication navigation. At narrow widths, Menu toggles the link panel and its accessible expanded state. Escape from a link closes the panel and restores focus to Menu. Clicking outside closes it without preventing the outside control's action; following a navigation link closes it too. Use ordinary website navigation semantics, not application-menu roles or a focus trap. At widths of 900px and above, show the links as normal navigation and hide the Menu control. Navigation links must still be available when JavaScript is disabled. Preserve existing IDs and destinations."
+  },
+  {
+    "id": "T04",
+    "name": "Newsletter inline form errors",
+    "lineage": "Label, error and action contracts adapted from packages/blog/src/pages/site-check-form.ts and packages/blog/src/client/subscribe.ts; no real subscription or Turnstile.",
+    "guides": ["accessible-error-announcement"],
+    "brief": "Finish the newsletter form's inline validation. Do not show an error before interaction. Empty or malformed email submission must show a useful inline message, associate it with the field and expose the invalid state to assistive technology, without calling acceptSubscription(). After correction, clear stale invalid state and error feedback. A valid submission calls the provided acceptSubscription(email) once and exposes its accepted result in the status area. Keep the visible label, native required/email constraints, form action and method, existing IDs, and the provided callback. With JavaScript disabled the form must retain native validation and its submit path. The callback is local and never sends mail."
+  },
+  {
+    "id": "T05",
+    "name": "Visit-end event queue",
+    "lineage": "Beacon acceptance versus server acknowledgment and fallback path adapted from packages/client-observability/src/transport.ts; synthetic lifecycle queue is new.",
+    "guides": ["full-session-analytics"],
+    "brief": "Repair the visit-end event queue while preserving window.recordEvent(event). Buffer the supplied synthetic events without sending while the page is visible. When the document becomes hidden, send the pending events as JSON to /events using sendBeacon when available. If it returns false or is unavailable, use POST fetch with keepalive. Remove events only when their transport accepts them; retain them when both paths fail so a later hidden transition can retry. Avoid duplicate batches when hidden is followed by pagehide. Resume correctly after a persisted pageshow and send only newly queued events. Preserve back/forward-cache eligibility: do not register unload or beforeunload handlers. The endpoint and events are study-local; no reader data or external service is involved."
+  },
+  {
+    "id": "T06",
+    "name": "Progressive scroll reveals and motion preference",
+    "lineage": "Adapted from packages/blog/src/client/components/scroll-reveal.ts, packages/blog/src/components/scroll-reveal/scroll-reveal.css and packages/blog/src/client/animations/signals/media.ts.",
+    "guides": ["motion"],
+    "brief": "Repair blog-reveal progressive enhancement. With ordinary motion enabled and JavaScript available, cards below the viewport may wait for entry and then reveal once. Keep all content readable if JavaScript or IntersectionObserver is unavailable. A reduced-motion preference must show all cards immediately without displacement or active animation, including a preference change while the page is open. Already revealed content must not disappear if the preference changes back. Disconnect any observation belonging to a removed element. Keep both reveal instances, content, links and IDs."
+  }
+]

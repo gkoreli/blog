@@ -1,0 +1,1 @@
+const toggle=document.querySelector('#menu-toggle');const nav=document.querySelector('#site-nav');toggle.onclick=()=>{nav.classList.toggle('open')};document.querySelector('#outside-action').onclick=()=>{document.querySelector('#outside-status').textContent='Outside action completed'};

@@ -1,0 +1,1 @@
+const events=[];window.recordEvent=event=>{events.push(event)};window.addEventListener('unload',()=>{navigator.sendBeacon('/events',JSON.stringify(events))});document.querySelector('#record-event').onclick=()=>{recordEvent({name:'sample'});document.querySelector('#event-status').textContent='Event queued'};

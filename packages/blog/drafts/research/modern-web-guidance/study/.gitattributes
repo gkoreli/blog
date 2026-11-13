@@ -1,0 +1,6 @@
+# Preserve the exact third-party stimuli and frozen empty-style fixture bytes.
+supplied-guides/*.txt whitespace=-blank-at-eof,-blank-at-eol
+fixtures/T05/style.css whitespace=-blank-at-eof
+controls/reference/T05/style.css whitespace=-blank-at-eof
+# Generated experimental artifacts retain their measured bytes.
+artifacts/** whitespace=-blank-at-eof,-blank-at-eol

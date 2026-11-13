@@ -1,0 +1,404 @@
+{
+  "schemaVersion": 1,
+  "seed": 20261113,
+  "runCount": 54,
+  "model": "gpt-6.1-sol",
+  "reasoningEffort": "medium",
+  "timeoutSeconds": 300,
+  "maximumConcurrentWorkers": 3,
+  "nodeVersion": "v24.14.1",
+  "cliVersion": "codex-cli 0.169.0",
+  "packageVersion": "1.0.0",
+  "packageSnapshotSha256": "6e031bbff99cd49281f08fe3560945393744c5807354bc5adb0aaf559e8c9c38",
+  "packageFileCount": 280,
+  "skillSha256": "37d68a514c25066840299356e5857b750bec3cc27c0cf57dbe88369b051b573e",
+  "cliSha256": "ce15b805ce2fd1e0150e36a128955b6dcebcb1a005253d9df55c8b1b3f4e9d41",
+  "trials": [
+    {
+      "artifact": "0aaa806da6ba",
+      "task": "T02",
+      "condition": "skill",
+      "repetition": 3,
+      "order": 1
+    },
+    {
+      "artifact": "982fd546d43f",
+      "task": "T03",
+      "condition": "skill",
+      "repetition": 2,
+      "order": 2
+    },
+    {
+      "artifact": "73238b0ba966",
+      "task": "T04",
+      "condition": "baseline",
+      "repetition": 2,
+      "order": 3
+    },
+    {
+      "artifact": "305fae09e815",
+      "task": "T03",
+      "condition": "supplied",
+      "repetition": 3,
+      "order": 4
+    },
+    {
+      "artifact": "b0cfefbb0811",
+      "task": "T06",
+      "condition": "skill",
+      "repetition": 2,
+      "order": 5
+    },
+    {
+      "artifact": "5cf35dff774d",
+      "task": "T06",
+      "condition": "skill",
+      "repetition": 3,
+      "order": 6
+    },
+    {
+      "artifact": "204030759c26",
+      "task": "T06",
+      "condition": "baseline",
+      "repetition": 1,
+      "order": 7
+    },
+    {
+      "artifact": "5bd311309cd0",
+      "task": "T02",
+      "condition": "skill",
+      "repetition": 2,
+      "order": 8
+    },
+    {
+      "artifact": "84c06d416b54",
+      "task": "T05",
+      "condition": "baseline",
+      "repetition": 3,
+      "order": 9
+    },
+    {
+      "artifact": "b5e2fc464080",
+      "task": "T03",
+      "condition": "baseline",
+      "repetition": 1,
+      "order": 10
+    },
+    {
+      "artifact": "8869c7bffc92",
+      "task": "T04",
+      "condition": "supplied",
+      "repetition": 1,
+      "order": 11
+    },
+    {
+      "artifact": "aabb87932a70",
+      "task": "T02",
+      "condition": "supplied",
+      "repetition": 3,
+      "order": 12
+    },
+    {
+      "artifact": "e1dc7e38096c",
+      "task": "T03",
+      "condition": "baseline",
+      "repetition": 3,
+      "order": 13
+    },
+    {
+      "artifact": "c86061e591d3",
+      "task": "T05",
+      "condition": "supplied",
+      "repetition": 2,
+      "order": 14
+    },
+    {
+      "artifact": "1250cb7d87a1",
+      "task": "T02",
+      "condition": "supplied",
+      "repetition": 2,
+      "order": 15
+    },
+    {
+      "artifact": "f7226c6d61ba",
+      "task": "T04",
+      "condition": "skill",
+      "repetition": 1,
+      "order": 16
+    },
+    {
+      "artifact": "e6b694903fac",
+      "task": "T06",
+      "condition": "baseline",
+      "repetition": 3,
+      "order": 17
+    },
+    {
+      "artifact": "4fd5ad63eb67",
+      "task": "T04",
+      "condition": "supplied",
+      "repetition": 2,
+      "order": 18
+    },
+    {
+      "artifact": "21dfbffd4e98",
+      "task": "T06",
+      "condition": "supplied",
+      "repetition": 3,
+      "order": 19
+    },
+    {
+      "artifact": "fbe3dfd72355",
+      "task": "T01",
+      "condition": "baseline",
+      "repetition": 3,
+      "order": 20
+    },
+    {
+      "artifact": "65d3c70a4a1a",
+      "task": "T01",
+      "condition": "skill",
+      "repetition": 3,
+      "order": 21
+    },
+    {
+      "artifact": "eff5582d5b97",
+      "task": "T06",
+      "condition": "baseline",
+      "repetition": 2,
+      "order": 22
+    },
+    {
+      "artifact": "8f7fc7454c8f",
+      "task": "T02",
+      "condition": "baseline",
+      "repetition": 1,
+      "order": 23
+    },
+    {
+      "artifact": "0703ada31fbe",
+      "task": "T03",
+      "condition": "skill",
+      "repetition": 1,
+      "order": 24
+    },
+    {
+      "artifact": "d557ddf64ea2",
+      "task": "T02",
+      "condition": "baseline",
+      "repetition": 2,
+      "order": 25
+    },
+    {
+      "artifact": "825249d5fff6",
+      "task": "T02",
+      "condition": "skill",
+      "repetition": 1,
+      "order": 26
+    },
+    {
+      "artifact": "b58b9f8b9b42",
+      "task": "T03",
+      "condition": "supplied",
+      "repetition": 1,
+      "order": 27
+    },
+    {
+      "artifact": "2a7eacd0cc07",
+      "task": "T02",
+      "condition": "supplied",
+      "repetition": 1,
+      "order": 28
+    },
+    {
+      "artifact": "7e0f1bd8bec2",
+      "task": "T05",
+      "condition": "baseline",
+      "repetition": 1,
+      "order": 29
+    },
+    {
+      "artifact": "2d7a6c07b92a",
+      "task": "T05",
+      "condition": "skill",
+      "repetition": 3,
+      "order": 30
+    },
+    {
+      "artifact": "fe2f8ae9e8cc",
+      "task": "T05",
+      "condition": "supplied",
+      "repetition": 3,
+      "order": 31
+    },
+    {
+      "artifact": "ae64039d1d66",
+      "task": "T04",
+      "condition": "baseline",
+      "repetition": 1,
+      "order": 32
+    },
+    {
+      "artifact": "97eb2a2dc3e9",
+      "task": "T05",
+      "condition": "skill",
+      "repetition": 1,
+      "order": 33
+    },
+    {
+      "artifact": "1f7b3aa623af",
+      "task": "T06",
+      "condition": "skill",
+      "repetition": 1,
+      "order": 34
+    },
+    {
+      "artifact": "1fa03f94826c",
+      "task": "T04",
+      "condition": "skill",
+      "repetition": 2,
+      "order": 35
+    },
+    {
+      "artifact": "a2d3a0a6ed35",
+      "task": "T05",
+      "condition": "baseline",
+      "repetition": 2,
+      "order": 36
+    },
+    {
+      "artifact": "cebb9524251f",
+      "task": "T06",
+      "condition": "supplied",
+      "repetition": 2,
+      "order": 37
+    },
+    {
+      "artifact": "42ac84268d85",
+      "task": "T03",
+      "condition": "baseline",
+      "repetition": 2,
+      "order": 38
+    },
+    {
+      "artifact": "b2fc3f4b2dd1",
+      "task": "T01",
+      "condition": "supplied",
+      "repetition": 2,
+      "order": 39
+    },
+    {
+      "artifact": "b408cd6e0f7b",
+      "task": "T04",
+      "condition": "supplied",
+      "repetition": 3,
+      "order": 40
+    },
+    {
+      "artifact": "80299f072561",
+      "task": "T05",
+      "condition": "supplied",
+      "repetition": 1,
+      "order": 41
+    },
+    {
+      "artifact": "b5c74898cfcb",
+      "task": "T03",
+      "condition": "supplied",
+      "repetition": 2,
+      "order": 42
+    },
+    {
+      "artifact": "139f359ac2ce",
+      "task": "T01",
+      "condition": "skill",
+      "repetition": 1,
+      "order": 43
+    },
+    {
+      "artifact": "131454e17994",
+      "task": "T01",
+      "condition": "supplied",
+      "repetition": 1,
+      "order": 44
+    },
+    {
+      "artifact": "bc0ce9300979",
+      "task": "T06",
+      "condition": "supplied",
+      "repetition": 1,
+      "order": 45
+    },
+    {
+      "artifact": "a1103a9d9635",
+      "task": "T04",
+      "condition": "skill",
+      "repetition": 3,
+      "order": 46
+    },
+    {
+      "artifact": "d6f12da0981f",
+      "task": "T01",
+      "condition": "skill",
+      "repetition": 2,
+      "order": 47
+    },
+    {
+      "artifact": "5dc6858c7027",
+      "task": "T04",
+      "condition": "baseline",
+      "repetition": 3,
+      "order": 48
+    },
+    {
+      "artifact": "a0f2e1ae0e7f",
+      "task": "T01",
+      "condition": "baseline",
+      "repetition": 1,
+      "order": 49
+    },
+    {
+      "artifact": "b7c48473392b",
+      "task": "T05",
+      "condition": "skill",
+      "repetition": 2,
+      "order": 50
+    },
+    {
+      "artifact": "e358c8ffa5b4",
+      "task": "T03",
+      "condition": "skill",
+      "repetition": 3,
+      "order": 51
+    },
+    {
+      "artifact": "a86200cabbd0",
+      "task": "T01",
+      "condition": "supplied",
+      "repetition": 3,
+      "order": 52
+    },
+    {
+      "artifact": "e3f238643709",
+      "task": "T01",
+      "condition": "baseline",
+      "repetition": 2,
+      "order": 53
+    },
+    {
+      "artifact": "5b97de7e4e44",
+      "task": "T02",
+      "condition": "baseline",
+      "repetition": 3,
+      "order": 54
+    }
+  ],
+  "fixtureCommits": {
+    "T01": "b01ce3a8870c90333e8ea081298e074990e4754f",
+    "T02": "445ece95971d07c7d4e4bb0e97544f37d0190bd0",
+    "T03": "5656b42c29829004fc502f6d679e359380fce3d9",
+    "T04": "4d6eda64b80dd82d74814706d0fa2f5eb2ac4238",
+    "T05": "5f386dd5746c553f2a27a6bc3f0cd5fb9bff4058",
+    "T06": "2e9d6c5c702477e8a7e9553046894de840a75862"
+  }
+}

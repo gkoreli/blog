@@ -1,0 +1,2167 @@
+{
+  "accepted": true,
+  "capturedAt": "2026-11-13T15:01:59.989Z",
+  "results": [
+    {
+      "task": "T02",
+      "positive": {
+        "task": "T02",
+        "checkCount": 14,
+        "passed": 14,
+        "results": [
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "mouse-toggle",
+            "passed": true
+          },
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "keyboard-toggle",
+            "passed": true
+          },
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "independent-panels",
+            "passed": true
+          },
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "dynamic-content-readable",
+            "passed": true
+          },
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "small-screen-layout",
+            "passed": true
+          },
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "no-javascript-disclosures",
+            "passed": true
+          },
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "no-unrequested-animation",
+            "passed": true
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "mouse-toggle",
+            "passed": true
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "keyboard-toggle",
+            "passed": true
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "independent-panels",
+            "passed": true
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "dynamic-content-readable",
+            "passed": true
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "small-screen-layout",
+            "passed": true
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "no-javascript-disclosures",
+            "passed": true
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "no-unrequested-animation",
+            "passed": true
+          }
+        ]
+      },
+      "negative": {
+        "task": "T02",
+        "checkCount": 14,
+        "passed": 0,
+        "results": [
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "mouse-toggle",
+            "passed": false,
+            "error": "locator.click: Timeout 1600ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#evidence-one-toggle')\u001b[22m\n\u001b[2m    - locator resolved to <summary id=\"evidence-one-toggle\">Request evidence</summary>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    3 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "keyboard-toggle",
+            "passed": false,
+            "error": "Enter did not open",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "independent-panels",
+            "passed": false,
+            "error": "locator.click: Timeout 1600ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#evidence-one-toggle')\u001b[22m\n\u001b[2m    - locator resolved to <summary id=\"evidence-one-toggle\">Request evidence</summary>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    3 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "dynamic-content-readable",
+            "passed": false,
+            "error": "locator.click: Timeout 1600ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#evidence-one-toggle')\u001b[22m\n\u001b[2m    - locator resolved to <summary id=\"evidence-one-toggle\">Request evidence</summary>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    3 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "small-screen-layout",
+            "passed": false,
+            "error": "locator.click: Timeout 1600ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#evidence-one-toggle')\u001b[22m\n\u001b[2m    - locator resolved to <summary id=\"evidence-one-toggle\">Request evidence</summary>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    3 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "no-javascript-disclosures",
+            "passed": false,
+            "error": "locator.click: Timeout 1600ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#evidence-one-toggle')\u001b[22m\n\u001b[2m    - locator resolved to <summary id=\"evidence-one-toggle\">Request evidence</summary>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    3 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "no-unrequested-animation",
+            "passed": false,
+            "error": "locator.click: Timeout 1600ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#evidence-one-toggle')\u001b[22m\n\u001b[2m    - locator resolved to <summary id=\"evidence-one-toggle\">Request evidence</summary>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    3 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "mouse-toggle",
+            "passed": false,
+            "error": "locator.click: Timeout 1600ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#evidence-one-toggle')\u001b[22m\n\u001b[2m    - locator resolved to <summary id=\"evidence-one-toggle\">Request evidence</summary>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    3 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "keyboard-toggle",
+            "passed": false,
+            "error": "Enter did not open",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "independent-panels",
+            "passed": false,
+            "error": "locator.click: Timeout 1600ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#evidence-one-toggle')\u001b[22m\n\u001b[2m    - locator resolved to <summary id=\"evidence-one-toggle\">Request evidence</summary>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    3 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "dynamic-content-readable",
+            "passed": false,
+            "error": "locator.click: Timeout 1600ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#evidence-one-toggle')\u001b[22m\n\u001b[2m    - locator resolved to <summary id=\"evidence-one-toggle\">Request evidence</summary>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    3 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "small-screen-layout",
+            "passed": false,
+            "error": "locator.click: Timeout 1600ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#evidence-one-toggle')\u001b[22m\n\u001b[2m    - locator resolved to <summary id=\"evidence-one-toggle\">Request evidence</summary>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    3 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "no-javascript-disclosures",
+            "passed": false,
+            "error": "locator.click: Timeout 1600ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#evidence-one-toggle')\u001b[22m\n\u001b[2m    - locator resolved to <summary id=\"evidence-one-toggle\">Request evidence</summary>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    3 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "no-unrequested-animation",
+            "passed": false,
+            "error": "locator.click: Timeout 1600ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#evidence-one-toggle')\u001b[22m\n\u001b[2m    - locator resolved to <summary id=\"evidence-one-toggle\">Request evidence</summary>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    3 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible",
+            "runtimeErrors": []
+          }
+        ]
+      },
+      "starter": {
+        "task": "T02",
+        "checkCount": 14,
+        "passed": 14,
+        "results": [
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "mouse-toggle",
+            "passed": true
+          },
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "keyboard-toggle",
+            "passed": true
+          },
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "independent-panels",
+            "passed": true
+          },
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "dynamic-content-readable",
+            "passed": true
+          },
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "small-screen-layout",
+            "passed": true
+          },
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "no-javascript-disclosures",
+            "passed": true
+          },
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "no-unrequested-animation",
+            "passed": true
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "mouse-toggle",
+            "passed": true
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "keyboard-toggle",
+            "passed": true
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "independent-panels",
+            "passed": true
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "dynamic-content-readable",
+            "passed": true
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "small-screen-layout",
+            "passed": true
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "no-javascript-disclosures",
+            "passed": true
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "no-unrequested-animation",
+            "passed": true
+          }
+        ]
+      }
+    },
+    {
+      "task": "T03",
+      "positive": {
+        "task": "T03",
+        "checkCount": 16,
+        "passed": 16,
+        "results": [
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "mobile-initial-state",
+            "passed": true
+          },
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "mobile-toggle-state",
+            "passed": true
+          },
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "escape-restores-trigger",
+            "passed": true
+          },
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "outside-action-survives",
+            "passed": true
+          },
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "navigation-closes-panel",
+            "passed": true
+          },
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "desktop-navigation",
+            "passed": true
+          },
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "no-javascript-navigation",
+            "passed": true
+          },
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "ordinary-navigation-semantics",
+            "passed": true
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "mobile-initial-state",
+            "passed": true
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "mobile-toggle-state",
+            "passed": true
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "escape-restores-trigger",
+            "passed": true
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "outside-action-survives",
+            "passed": true
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "navigation-closes-panel",
+            "passed": true
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "desktop-navigation",
+            "passed": true
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "no-javascript-navigation",
+            "passed": true
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "ordinary-navigation-semantics",
+            "passed": true
+          }
+        ]
+      },
+      "negative": {
+        "task": "T03",
+        "checkCount": 16,
+        "passed": 0,
+        "results": [
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "mobile-initial-state",
+            "passed": false,
+            "error": "Initial mobile state incorrect",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "mobile-toggle-state",
+            "passed": false,
+            "error": "locator.click: Timeout 1600ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#menu-toggle')\u001b[22m\n\u001b[2m    - locator resolved to <button id=\"menu-toggle\" aria-expanded=\"false\" aria-controls=\"site-nav\">Menu</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    3 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - eleme",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "escape-restores-trigger",
+            "passed": false,
+            "error": "locator.click: Timeout 1600ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#menu-toggle')\u001b[22m\n\u001b[2m    - locator resolved to <button id=\"menu-toggle\" aria-expanded=\"false\" aria-controls=\"site-nav\">Menu</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    3 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - eleme",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "outside-action-survives",
+            "passed": false,
+            "error": "locator.click: Timeout 1600ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#menu-toggle')\u001b[22m\n\u001b[2m    - locator resolved to <button id=\"menu-toggle\" aria-expanded=\"false\" aria-controls=\"site-nav\">Menu</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    3 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - eleme",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "navigation-closes-panel",
+            "passed": false,
+            "error": "locator.click: Timeout 1600ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#menu-toggle')\u001b[22m\n\u001b[2m    - locator resolved to <button id=\"menu-toggle\" aria-expanded=\"false\" aria-controls=\"site-nav\">Menu</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    3 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - eleme",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "desktop-navigation",
+            "passed": false,
+            "error": "Desktop navigation incorrect",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "no-javascript-navigation",
+            "passed": false,
+            "error": "Navigation hidden without JavaScript",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "ordinary-navigation-semantics",
+            "passed": false,
+            "error": "locator.click: Timeout 1600ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#menu-toggle')\u001b[22m\n\u001b[2m    - locator resolved to <button id=\"menu-toggle\" aria-expanded=\"false\" aria-controls=\"site-nav\">Menu</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    3 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - eleme",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "mobile-initial-state",
+            "passed": false,
+            "error": "Initial mobile state incorrect",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "mobile-toggle-state",
+            "passed": false,
+            "error": "locator.click: Timeout 1600ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#menu-toggle')\u001b[22m\n\u001b[2m    - locator resolved to <button id=\"menu-toggle\" aria-expanded=\"false\" aria-controls=\"site-nav\">Menu</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    3 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - eleme",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "escape-restores-trigger",
+            "passed": false,
+            "error": "locator.click: Timeout 1600ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#menu-toggle')\u001b[22m\n\u001b[2m    - locator resolved to <button id=\"menu-toggle\" aria-expanded=\"false\" aria-controls=\"site-nav\">Menu</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    3 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - eleme",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "outside-action-survives",
+            "passed": false,
+            "error": "locator.click: Timeout 1600ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#menu-toggle')\u001b[22m\n\u001b[2m    - locator resolved to <button id=\"menu-toggle\" aria-expanded=\"false\" aria-controls=\"site-nav\">Menu</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    3 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - eleme",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "navigation-closes-panel",
+            "passed": false,
+            "error": "locator.click: Timeout 1600ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#menu-toggle')\u001b[22m\n\u001b[2m    - locator resolved to <button id=\"menu-toggle\" aria-expanded=\"false\" aria-controls=\"site-nav\">Menu</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    3 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - eleme",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "desktop-navigation",
+            "passed": false,
+            "error": "Desktop navigation incorrect",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "no-javascript-navigation",
+            "passed": false,
+            "error": "Navigation hidden without JavaScript",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "ordinary-navigation-semantics",
+            "passed": false,
+            "error": "locator.click: Timeout 1600ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#menu-toggle')\u001b[22m\n\u001b[2m    - locator resolved to <button id=\"menu-toggle\" aria-expanded=\"false\" aria-controls=\"site-nav\">Menu</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    3 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - eleme",
+            "runtimeErrors": []
+          }
+        ]
+      },
+      "starter": {
+        "task": "T03",
+        "checkCount": 16,
+        "passed": 6,
+        "results": [
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "mobile-initial-state",
+            "passed": true
+          },
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "mobile-toggle-state",
+            "passed": false,
+            "error": "Open state not exposed",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "escape-restores-trigger",
+            "passed": false,
+            "error": "Escape did not close and restore focus",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "outside-action-survives",
+            "passed": false,
+            "error": "Outside click left navigation open",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "navigation-closes-panel",
+            "passed": false,
+            "error": "Link did not navigate and close",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "desktop-navigation",
+            "passed": false,
+            "error": "Desktop navigation incorrect",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "no-javascript-navigation",
+            "passed": true
+          },
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "ordinary-navigation-semantics",
+            "passed": true
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "mobile-initial-state",
+            "passed": true
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "mobile-toggle-state",
+            "passed": false,
+            "error": "Open state not exposed",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "escape-restores-trigger",
+            "passed": false,
+            "error": "Escape did not close and restore focus",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "outside-action-survives",
+            "passed": false,
+            "error": "Outside click left navigation open",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "navigation-closes-panel",
+            "passed": false,
+            "error": "Link did not navigate and close",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "desktop-navigation",
+            "passed": false,
+            "error": "Desktop navigation incorrect",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "no-javascript-navigation",
+            "passed": true
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "ordinary-navigation-semantics",
+            "passed": true
+          }
+        ]
+      }
+    },
+    {
+      "task": "T04",
+      "positive": {
+        "task": "T04",
+        "checkCount": 16,
+        "passed": 16,
+        "results": [
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "no-premature-error",
+            "passed": true
+          },
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "empty-submit-feedback",
+            "passed": true
+          },
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "malformed-submit-feedback",
+            "passed": true
+          },
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "invalid-state-and-association",
+            "passed": true
+          },
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "correction-clears-stale-feedback",
+            "passed": true
+          },
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "valid-submission-accepted-once",
+            "passed": true
+          },
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "native-form-contract",
+            "passed": true
+          },
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "no-javascript-native-submit",
+            "passed": true
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "no-premature-error",
+            "passed": true
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "empty-submit-feedback",
+            "passed": true
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "malformed-submit-feedback",
+            "passed": true
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "invalid-state-and-association",
+            "passed": true
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "correction-clears-stale-feedback",
+            "passed": true
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "valid-submission-accepted-once",
+            "passed": true
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "native-form-contract",
+            "passed": true
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "no-javascript-native-submit",
+            "passed": true
+          }
+        ]
+      },
+      "negative": {
+        "task": "T04",
+        "checkCount": 16,
+        "passed": 3,
+        "results": [
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "no-premature-error",
+            "passed": true
+          },
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "empty-submit-feedback",
+            "passed": false,
+            "error": "locator.click: Timeout 1600ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#subscribe-submit')\u001b[22m\n\u001b[2m    - locator resolved to <button type=\"submit\" id=\"subscribe-submit\">Subscribe</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    3 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "malformed-submit-feedback",
+            "passed": false,
+            "error": "locator.fill: Timeout 1600ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#email')\u001b[22m\n\u001b[2m    - locator resolved to <input id=\"email\" required=\"\" name=\"email\" type=\"email\" autocomplete=\"email\" aria-describedby=\"email-help\"/>\u001b[22m\n\u001b[2m    - fill(\"invalid-address\")\u001b[22m\n\u001b[2m  - attempting fill action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying fill action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying fill action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    3 × waiting for element ",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "invalid-state-and-association",
+            "passed": false,
+            "error": "locator.click: Timeout 1600ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#subscribe-submit')\u001b[22m\n\u001b[2m    - locator resolved to <button type=\"submit\" id=\"subscribe-submit\">Subscribe</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    3 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "correction-clears-stale-feedback",
+            "passed": false,
+            "error": "locator.click: Timeout 1600ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#subscribe-submit')\u001b[22m\n\u001b[2m    - locator resolved to <button type=\"submit\" id=\"subscribe-submit\">Subscribe</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    3 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "valid-submission-accepted-once",
+            "passed": false,
+            "error": "locator.fill: Timeout 1600ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#email')\u001b[22m\n\u001b[2m    - locator resolved to <input id=\"email\" required=\"\" name=\"email\" type=\"email\" autocomplete=\"email\" aria-describedby=\"email-help\"/>\u001b[22m\n\u001b[2m    - fill(\"reader@example.test\")\u001b[22m\n\u001b[2m  - attempting fill action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying fill action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying fill action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    3 × waiting for elem",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "native-form-contract",
+            "passed": true
+          },
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "no-javascript-native-submit",
+            "passed": false,
+            "error": "locator.fill: Timeout 1600ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#email')\u001b[22m\n\u001b[2m    - locator resolved to <input id=\"email\" required=\"\" name=\"email\" type=\"email\" autocomplete=\"email\" aria-describedby=\"email-help\"/>\u001b[22m\n\u001b[2m    - fill(\"reader@example.test\")\u001b[22m\n\u001b[2m  - attempting fill action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying fill action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying fill action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    3 × waiting for elem",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "no-premature-error",
+            "passed": false,
+            "error": "page.goto: Timeout 1600ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://127.0.0.1:58700/\", waiting until \"load\"\u001b[22m\n",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "empty-submit-feedback",
+            "passed": false,
+            "error": "locator.click: Timeout 1600ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#subscribe-submit')\u001b[22m\n\u001b[2m    - locator resolved to <button type=\"submit\" id=\"subscribe-submit\">Subscribe</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    3 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "malformed-submit-feedback",
+            "passed": false,
+            "error": "locator.fill: Timeout 1600ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#email')\u001b[22m\n\u001b[2m    - locator resolved to <input id=\"email\" required=\"\" name=\"email\" type=\"email\" autocomplete=\"email\" aria-describedby=\"email-help\"/>\u001b[22m\n\u001b[2m    - fill(\"invalid-address\")\u001b[22m\n\u001b[2m  - attempting fill action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying fill action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying fill action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    3 × waiting for element ",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "invalid-state-and-association",
+            "passed": false,
+            "error": "locator.click: Timeout 1600ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#subscribe-submit')\u001b[22m\n\u001b[2m    - locator resolved to <button type=\"submit\" id=\"subscribe-submit\">Subscribe</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    3 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "correction-clears-stale-feedback",
+            "passed": false,
+            "error": "locator.click: Timeout 1600ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#subscribe-submit')\u001b[22m\n\u001b[2m    - locator resolved to <button type=\"submit\" id=\"subscribe-submit\">Subscribe</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    3 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "valid-submission-accepted-once",
+            "passed": false,
+            "error": "locator.fill: Timeout 1600ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#email')\u001b[22m\n\u001b[2m    - locator resolved to <input id=\"email\" required=\"\" name=\"email\" type=\"email\" autocomplete=\"email\" aria-describedby=\"email-help\"/>\u001b[22m\n\u001b[2m    - fill(\"reader@example.test\")\u001b[22m\n\u001b[2m  - attempting fill action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying fill action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying fill action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    3 × waiting for elem",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "native-form-contract",
+            "passed": true
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "no-javascript-native-submit",
+            "passed": false,
+            "error": "locator.fill: Timeout 1600ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#email')\u001b[22m\n\u001b[2m    - locator resolved to <input id=\"email\" required=\"\" name=\"email\" type=\"email\" autocomplete=\"email\" aria-describedby=\"email-help\"/>\u001b[22m\n\u001b[2m    - fill(\"reader@example.test\")\u001b[22m\n\u001b[2m  - attempting fill action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying fill action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying fill action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    3 × waiting for elem",
+            "runtimeErrors": []
+          }
+        ]
+      },
+      "starter": {
+        "task": "T04",
+        "checkCount": 16,
+        "passed": 10,
+        "results": [
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "no-premature-error",
+            "passed": true
+          },
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "empty-submit-feedback",
+            "passed": false,
+            "error": "Missing inline error",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "malformed-submit-feedback",
+            "passed": false,
+            "error": "Malformed address lacks inline error",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "invalid-state-and-association",
+            "passed": false,
+            "error": "Error not associated with email",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "correction-clears-stale-feedback",
+            "passed": true
+          },
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "valid-submission-accepted-once",
+            "passed": true
+          },
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "native-form-contract",
+            "passed": true
+          },
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "no-javascript-native-submit",
+            "passed": true
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "no-premature-error",
+            "passed": true
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "empty-submit-feedback",
+            "passed": false,
+            "error": "Missing inline error",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "malformed-submit-feedback",
+            "passed": false,
+            "error": "Malformed address lacks inline error",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "invalid-state-and-association",
+            "passed": false,
+            "error": "Error not associated with email",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "correction-clears-stale-feedback",
+            "passed": true
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "valid-submission-accepted-once",
+            "passed": true
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "native-form-contract",
+            "passed": true
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "no-javascript-native-submit",
+            "passed": true
+          }
+        ]
+      }
+    },
+    {
+      "task": "T05",
+      "positive": {
+        "task": "T05",
+        "checkCount": 16,
+        "passed": 16,
+        "results": [
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "buffer-while-visible",
+            "passed": true
+          },
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "hidden-flush-preserves-payload",
+            "passed": true
+          },
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "hidden-pagehide-deduplicated",
+            "passed": true
+          },
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "beacon-false-fetch-fallback",
+            "passed": true
+          },
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "beacon-unavailable-fetch-fallback",
+            "passed": true
+          },
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "failed-transport-retains-for-retry",
+            "passed": true
+          },
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "persisted-pageshow-new-events-only",
+            "passed": true
+          },
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "no-bfcache-blocking-handlers",
+            "passed": true
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "buffer-while-visible",
+            "passed": true
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "hidden-flush-preserves-payload",
+            "passed": true
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "hidden-pagehide-deduplicated",
+            "passed": true
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "beacon-false-fetch-fallback",
+            "passed": true
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "beacon-unavailable-fetch-fallback",
+            "passed": true
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "failed-transport-retains-for-retry",
+            "passed": true
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "persisted-pageshow-new-events-only",
+            "passed": true
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "no-bfcache-blocking-handlers",
+            "passed": true
+          }
+        ]
+      },
+      "negative": {
+        "task": "T05",
+        "checkCount": 16,
+        "passed": 2,
+        "results": [
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "buffer-while-visible",
+            "passed": false,
+            "error": "page.evaluate: TypeError: window.recordEvent is not a function\n    at eval (eval at evaluate (:370:30), <anonymous>:1:16)\n    at UtilityScript.evaluate (<anonymous>:372:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "hidden-flush-preserves-payload",
+            "passed": false,
+            "error": "page.evaluate: TypeError: window.recordEvent is not a function\n    at eval (eval at evaluate (:370:30), <anonymous>:1:16)\n    at UtilityScript.evaluate (<anonymous>:372:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "hidden-pagehide-deduplicated",
+            "passed": false,
+            "error": "page.evaluate: TypeError: window.recordEvent is not a function\n    at eval (eval at evaluate (:370:30), <anonymous>:1:16)\n    at UtilityScript.evaluate (<anonymous>:372:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "beacon-false-fetch-fallback",
+            "passed": false,
+            "error": "page.evaluate: TypeError: window.recordEvent is not a function\n    at eval (eval at evaluate (:370:30), <anonymous>:1:16)\n    at UtilityScript.evaluate (<anonymous>:372:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "beacon-unavailable-fetch-fallback",
+            "passed": false,
+            "error": "page.evaluate: TypeError: window.recordEvent is not a function\n    at eval (eval at evaluate (:370:30), <anonymous>:1:16)\n    at UtilityScript.evaluate (<anonymous>:372:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "failed-transport-retains-for-retry",
+            "passed": false,
+            "error": "page.evaluate: TypeError: window.recordEvent is not a function\n    at eval (eval at evaluate (:370:30), <anonymous>:1:16)\n    at UtilityScript.evaluate (<anonymous>:372:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "persisted-pageshow-new-events-only",
+            "passed": false,
+            "error": "page.evaluate: TypeError: window.recordEvent is not a function\n    at eval (eval at evaluate (:370:30), <anonymous>:1:16)\n    at UtilityScript.evaluate (<anonymous>:372:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "no-bfcache-blocking-handlers",
+            "passed": true
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "buffer-while-visible",
+            "passed": false,
+            "error": "page.evaluate: TypeError: window.recordEvent is not a function. (In 'window.recordEvent({ name })', 'window.recordEvent' is undefined)",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "hidden-flush-preserves-payload",
+            "passed": false,
+            "error": "page.evaluate: TypeError: window.recordEvent is not a function. (In 'window.recordEvent({ name })', 'window.recordEvent' is undefined)",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "hidden-pagehide-deduplicated",
+            "passed": false,
+            "error": "page.evaluate: TypeError: window.recordEvent is not a function. (In 'window.recordEvent({ name })', 'window.recordEvent' is undefined)",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "beacon-false-fetch-fallback",
+            "passed": false,
+            "error": "page.evaluate: TypeError: window.recordEvent is not a function. (In 'window.recordEvent({ name })', 'window.recordEvent' is undefined)",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "beacon-unavailable-fetch-fallback",
+            "passed": false,
+            "error": "page.evaluate: TypeError: window.recordEvent is not a function. (In 'window.recordEvent({ name })', 'window.recordEvent' is undefined)",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "failed-transport-retains-for-retry",
+            "passed": false,
+            "error": "page.evaluate: TypeError: window.recordEvent is not a function. (In 'window.recordEvent({ name })', 'window.recordEvent' is undefined)",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "persisted-pageshow-new-events-only",
+            "passed": false,
+            "error": "page.evaluate: TypeError: window.recordEvent is not a function. (In 'window.recordEvent({ name })', 'window.recordEvent' is undefined)",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "no-bfcache-blocking-handlers",
+            "passed": true
+          }
+        ]
+      },
+      "starter": {
+        "task": "T05",
+        "checkCount": 16,
+        "passed": 2,
+        "results": [
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "buffer-while-visible",
+            "passed": true
+          },
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "hidden-flush-preserves-payload",
+            "passed": false,
+            "error": "Wrong hidden transport",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "hidden-pagehide-deduplicated",
+            "passed": false,
+            "error": "Duplicate batch across lifecycle events",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "beacon-false-fetch-fallback",
+            "passed": false,
+            "error": "Missing fallback",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "beacon-unavailable-fetch-fallback",
+            "passed": false,
+            "error": "Absent beacon not handled",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "failed-transport-retains-for-retry",
+            "passed": false,
+            "error": "Failed batch not retained",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "persisted-pageshow-new-events-only",
+            "passed": false,
+            "error": "Restoration duplicated or lost events",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "no-bfcache-blocking-handlers",
+            "passed": false,
+            "error": "Blocking lifecycle handler registered",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "buffer-while-visible",
+            "passed": true
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "hidden-flush-preserves-payload",
+            "passed": false,
+            "error": "Wrong hidden transport",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "hidden-pagehide-deduplicated",
+            "passed": false,
+            "error": "Duplicate batch across lifecycle events",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "beacon-false-fetch-fallback",
+            "passed": false,
+            "error": "Missing fallback",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "beacon-unavailable-fetch-fallback",
+            "passed": false,
+            "error": "Absent beacon not handled",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "failed-transport-retains-for-retry",
+            "passed": false,
+            "error": "Failed batch not retained",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "persisted-pageshow-new-events-only",
+            "passed": false,
+            "error": "Restoration duplicated or lost events",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "no-bfcache-blocking-handlers",
+            "passed": false,
+            "error": "Blocking lifecycle handler registered",
+            "runtimeErrors": []
+          }
+        ]
+      }
+    },
+    {
+      "task": "T06",
+      "positive": {
+        "task": "T06",
+        "checkCount": 16,
+        "passed": 16,
+        "results": [
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "no-javascript-readable",
+            "passed": true
+          },
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "reduced-motion-immediate",
+            "passed": true
+          },
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "missing-observer-readable",
+            "passed": true
+          },
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "offscreen-entry-reveals",
+            "passed": true
+          },
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "initial-visible-card-reveals",
+            "passed": true
+          },
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "live-motion-preference-change",
+            "passed": true
+          },
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "removed-element-observation-cleaned",
+            "passed": true
+          },
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "content-and-links-preserved",
+            "passed": true
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "no-javascript-readable",
+            "passed": true
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "reduced-motion-immediate",
+            "passed": true
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "missing-observer-readable",
+            "passed": true
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "offscreen-entry-reveals",
+            "passed": true
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "initial-visible-card-reveals",
+            "passed": true
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "live-motion-preference-change",
+            "passed": true
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "removed-element-observation-cleaned",
+            "passed": true
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "content-and-links-preserved",
+            "passed": true
+          }
+        ]
+      },
+      "negative": {
+        "task": "T06",
+        "checkCount": 16,
+        "passed": 2,
+        "results": [
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "no-javascript-readable",
+            "passed": false,
+            "error": "Content hidden without JavaScript",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "reduced-motion-immediate",
+            "passed": false,
+            "error": "Reduced motion still hides/displaces content",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "missing-observer-readable",
+            "passed": false,
+            "error": "Missing observer hides content",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "offscreen-entry-reveals",
+            "passed": false,
+            "error": "Offscreen enhancement never waits",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "initial-visible-card-reveals",
+            "passed": false,
+            "error": "Visible card remains hidden",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "live-motion-preference-change",
+            "passed": false,
+            "error": "Preference change did not reveal",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "removed-element-observation-cleaned",
+            "passed": false,
+            "error": "No observation cleanup after removal",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "content-and-links-preserved",
+            "passed": true
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "no-javascript-readable",
+            "passed": false,
+            "error": "Content hidden without JavaScript",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "reduced-motion-immediate",
+            "passed": false,
+            "error": "Reduced motion still hides/displaces content",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "missing-observer-readable",
+            "passed": false,
+            "error": "Missing observer hides content",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "offscreen-entry-reveals",
+            "passed": false,
+            "error": "Offscreen enhancement never waits",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "initial-visible-card-reveals",
+            "passed": false,
+            "error": "Visible card remains hidden",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "live-motion-preference-change",
+            "passed": false,
+            "error": "Preference change did not reveal",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "removed-element-observation-cleaned",
+            "passed": false,
+            "error": "No observation cleanup after removal",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "content-and-links-preserved",
+            "passed": true
+          }
+        ]
+      },
+      "starter": {
+        "task": "T06",
+        "checkCount": 16,
+        "passed": 6,
+        "results": [
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "no-javascript-readable",
+            "passed": false,
+            "error": "Content hidden without JavaScript",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "reduced-motion-immediate",
+            "passed": false,
+            "error": "Reduced motion still hides/displaces content",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "missing-observer-readable",
+            "passed": false,
+            "error": "Missing observer hides content",
+            "runtimeErrors": [
+              "IntersectionObserver is not defined",
+              "IntersectionObserver is not defined"
+            ]
+          },
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "offscreen-entry-reveals",
+            "passed": true
+          },
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "initial-visible-card-reveals",
+            "passed": true
+          },
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "live-motion-preference-change",
+            "passed": false,
+            "error": "Preference change did not reveal",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "removed-element-observation-cleaned",
+            "passed": false,
+            "error": "No observation cleanup after removal",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "content-and-links-preserved",
+            "passed": true
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "no-javascript-readable",
+            "passed": false,
+            "error": "Content hidden without JavaScript",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "reduced-motion-immediate",
+            "passed": false,
+            "error": "Reduced motion still hides/displaces content",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "missing-observer-readable",
+            "passed": false,
+            "error": "Missing observer hides content",
+            "runtimeErrors": [
+              "Can't find variable: IntersectionObserver"
+            ]
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "offscreen-entry-reveals",
+            "passed": true
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "initial-visible-card-reveals",
+            "passed": true
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "live-motion-preference-change",
+            "passed": false,
+            "error": "Preference change did not reveal",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "removed-element-observation-cleaned",
+            "passed": false,
+            "error": "No observation cleanup after removal",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "content-and-links-preserved",
+            "passed": true
+          }
+        ]
+      }
+    },
+    {
+      "task": "T01",
+      "positive": {
+        "task": "T01",
+        "checkCount": 18,
+        "passed": 18,
+        "results": [
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "named-modal",
+            "passed": true
+          },
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "initial-cancel-focus",
+            "passed": true
+          },
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "keyboard-focus-contained",
+            "passed": true
+          },
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "background-focus-blocked",
+            "passed": true
+          },
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "cancel-preserves-and-restores",
+            "passed": true
+          },
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "escape-cancels",
+            "passed": true
+          },
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "backdrop-cancels",
+            "passed": true
+          },
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "legacy-light-dismiss-fallback",
+            "passed": true
+          },
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "confirm-deletes-once",
+            "passed": true
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "named-modal",
+            "passed": true
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "initial-cancel-focus",
+            "passed": true
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "keyboard-focus-contained",
+            "passed": true
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "background-focus-blocked",
+            "passed": true
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "cancel-preserves-and-restores",
+            "passed": true
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "escape-cancels",
+            "passed": true
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "backdrop-cancels",
+            "passed": true
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "legacy-light-dismiss-fallback",
+            "passed": true
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "confirm-deletes-once",
+            "passed": true
+          }
+        ]
+      },
+      "negative": {
+        "task": "T01",
+        "checkCount": 18,
+        "passed": 0,
+        "results": [
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "named-modal",
+            "passed": false,
+            "error": "locator.click: Timeout 1600ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#delete-report')\u001b[22m\n\u001b[2m    - locator resolved to <button id=\"delete-report\">Delete saved report</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    3 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m ",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "initial-cancel-focus",
+            "passed": false,
+            "error": "locator.click: Timeout 1600ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#delete-report')\u001b[22m\n\u001b[2m    - locator resolved to <button id=\"delete-report\">Delete saved report</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    3 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m ",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "keyboard-focus-contained",
+            "passed": false,
+            "error": "locator.click: Timeout 1600ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#delete-report')\u001b[22m\n\u001b[2m    - locator resolved to <button id=\"delete-report\">Delete saved report</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    3 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m ",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "background-focus-blocked",
+            "passed": false,
+            "error": "locator.click: Timeout 1600ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#delete-report')\u001b[22m\n\u001b[2m    - locator resolved to <button id=\"delete-report\">Delete saved report</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    3 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m ",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "cancel-preserves-and-restores",
+            "passed": false,
+            "error": "locator.click: Timeout 1600ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#delete-report')\u001b[22m\n\u001b[2m    - locator resolved to <button id=\"delete-report\">Delete saved report</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    3 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m ",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "escape-cancels",
+            "passed": false,
+            "error": "locator.click: Timeout 1600ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#delete-report')\u001b[22m\n\u001b[2m    - locator resolved to <button id=\"delete-report\">Delete saved report</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    3 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m ",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "backdrop-cancels",
+            "passed": false,
+            "error": "locator.click: Timeout 1600ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#delete-report')\u001b[22m\n\u001b[2m    - locator resolved to <button id=\"delete-report\">Delete saved report</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    3 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m ",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "legacy-light-dismiss-fallback",
+            "passed": false,
+            "error": "locator.click: Timeout 1600ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#delete-report')\u001b[22m\n\u001b[2m    - locator resolved to <button id=\"delete-report\">Delete saved report</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    3 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m ",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "confirm-deletes-once",
+            "passed": false,
+            "error": "locator.click: Timeout 1600ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#delete-report')\u001b[22m\n\u001b[2m    - locator resolved to <button id=\"delete-report\">Delete saved report</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    3 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m ",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "named-modal",
+            "passed": false,
+            "error": "locator.click: Timeout 1600ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#delete-report')\u001b[22m\n\u001b[2m    - locator resolved to <button id=\"delete-report\">Delete saved report</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m ",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "initial-cancel-focus",
+            "passed": false,
+            "error": "locator.click: Timeout 1600ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#delete-report')\u001b[22m\n\u001b[2m    - locator resolved to <button id=\"delete-report\">Delete saved report</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    3 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m ",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "keyboard-focus-contained",
+            "passed": false,
+            "error": "locator.click: Timeout 1600ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#delete-report')\u001b[22m\n\u001b[2m    - locator resolved to <button id=\"delete-report\">Delete saved report</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    3 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m ",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "background-focus-blocked",
+            "passed": false,
+            "error": "locator.click: Timeout 1600ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#delete-report')\u001b[22m\n\u001b[2m    - locator resolved to <button id=\"delete-report\">Delete saved report</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    3 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m ",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "cancel-preserves-and-restores",
+            "passed": false,
+            "error": "locator.click: Timeout 1600ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#delete-report')\u001b[22m\n\u001b[2m    - locator resolved to <button id=\"delete-report\">Delete saved report</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    3 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m ",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "escape-cancels",
+            "passed": false,
+            "error": "locator.click: Timeout 1600ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#delete-report')\u001b[22m\n\u001b[2m    - locator resolved to <button id=\"delete-report\">Delete saved report</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    3 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m ",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "backdrop-cancels",
+            "passed": false,
+            "error": "locator.click: Timeout 1600ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#delete-report')\u001b[22m\n\u001b[2m    - locator resolved to <button id=\"delete-report\">Delete saved report</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    3 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m ",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "legacy-light-dismiss-fallback",
+            "passed": false,
+            "error": "locator.click: Timeout 1600ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#delete-report')\u001b[22m\n\u001b[2m    - locator resolved to <button id=\"delete-report\">Delete saved report</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    3 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m ",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "confirm-deletes-once",
+            "passed": false,
+            "error": "locator.click: Timeout 1600ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#delete-report')\u001b[22m\n\u001b[2m    - locator resolved to <button id=\"delete-report\">Delete saved report</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    3 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m ",
+            "runtimeErrors": []
+          }
+        ]
+      },
+      "starter": {
+        "task": "T01",
+        "checkCount": 18,
+        "passed": 5,
+        "results": [
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "named-modal",
+            "passed": true
+          },
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "initial-cancel-focus",
+            "passed": false,
+            "error": "Initial focus should be Cancel",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "keyboard-focus-contained",
+            "passed": false,
+            "error": "Tab reached a page control outside the modal",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "background-focus-blocked",
+            "passed": false,
+            "error": "Background control can take focus",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "cancel-preserves-and-restores",
+            "passed": false,
+            "error": "Focus not restored",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "escape-cancels",
+            "passed": false,
+            "error": "Escape cancellation incomplete",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "backdrop-cancels",
+            "passed": false,
+            "error": "Backdrop did not cancel safely",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "legacy-light-dismiss-fallback",
+            "passed": false,
+            "error": "Backdrop fallback absent when native light-dismiss is unavailable",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "chromium",
+            "browserVersion": "156.0.8078.4",
+            "id": "confirm-deletes-once",
+            "passed": true
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "named-modal",
+            "passed": true
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "initial-cancel-focus",
+            "passed": false,
+            "error": "Initial focus should be Cancel",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "keyboard-focus-contained",
+            "passed": true
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "background-focus-blocked",
+            "passed": false,
+            "error": "Background control can take focus",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "cancel-preserves-and-restores",
+            "passed": false,
+            "error": "Focus not restored",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "escape-cancels",
+            "passed": false,
+            "error": "Escape cancellation incomplete",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "backdrop-cancels",
+            "passed": false,
+            "error": "Backdrop did not cancel safely",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "legacy-light-dismiss-fallback",
+            "passed": false,
+            "error": "Backdrop fallback absent when native light-dismiss is unavailable",
+            "runtimeErrors": []
+          },
+          {
+            "engine": "webkit",
+            "browserVersion": "27.2",
+            "id": "confirm-deletes-once",
+            "passed": true
+          }
+        ]
+      }
+    }
+  ]
+}

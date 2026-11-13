@@ -1,0 +1,1 @@
+customElements.define('blog-reveal',class extends HTMLElement{connectedCallback(){this.observer=new IntersectionObserver(entries=>{for(const e of entries)if(e.isIntersecting){this.classList.add('revealed');this.observer.unobserve(this)}},{threshold:.06});this.observer.observe(this)}});

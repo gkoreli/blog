@@ -1,0 +1,1 @@
+const panel=document.querySelector('#confirm-modal');document.querySelector('#delete-report').onclick=()=>{panel.hidden=false};document.querySelector('#confirm-cancel').onclick=()=>{panel.hidden=true};document.querySelector('#confirm-delete').onclick=()=>{removeSavedReport();panel.hidden=true};
