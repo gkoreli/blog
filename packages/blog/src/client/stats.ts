@@ -10,10 +10,9 @@ import { SIGNATURE_BASIS_LABELS } from '@gkoreli/analytics/signature-basis';
 import { REVIEWED_VERIFIER_PROFILES, isReportedVerifierProfile, verifierProfileLabel } from '@gkoreli/analytics/verifier-profile';
 import { nativeCategoryLabel } from '@gkoreli/analytics/native-bot-evidence';
 import { DIRECTORY_PUBLICATION_LABELS } from '@gkoreli/analytics/directory-publication';
-import { HOSTING_NETWORKS } from '@gkoreli/analytics/networks';
 import { CLIENT_NAME_SELECTION_LABELS, consistentClientEvidence } from '@gkoreli/analytics/client-evidence';
-import { rankedRowHtml, type RankedItem } from '../lib/data-display.js';
-import { trafficMix } from '../lib/stats-presentation.js';
+import { dataFactsHtml, rankedRowHtml, type RankedItem } from '../lib/data-display.js';
+import { classificationReasonLabel, trafficMix } from '../lib/stats-presentation.js';
 import '../styles/stats.css';
 
 type RangeFilter = '7d' | '30d' | '90d' | 'all';
@@ -47,49 +46,6 @@ const KIND_LABELS: Record<ReaderKind, string> = {
   unresolved: 'Unresolved request evidence',
 };
 
-/** Public wording for the reason codes that are not agent names. */
-const REASON_LABELS: Record<string, string> = {
-  'classification-not-recorded': 'stored classification not recorded',
-  'unrecognized-stored-classification': 'unrecognized stored classification',
-  'classification-reason-unavailable': 'stored reason missing or empty',
-  'navigation-shaped': 'navigation headers; network unlisted or unavailable (earlier rule)',
-  'navigation-shaped-network-unlisted': 'browser claim and navigation headers; network not on hosting list',
-  'multiple-client-declarations': 'multiple recognized client declarations; no name selected',
-  'multiple-declarations-same-category': 'multiple names declare this category; no single identity selected',
-  'request-context-conflict': 'external referrer with same-origin Fetch Metadata',
-  'fetch-metadata-unrecognized': 'unrecognized Fetch Metadata value',
-  'fetch-metadata-invalid': 'invalid Fetch Metadata syntax or type',
-  'fetch-metadata-policy-limit': 'Fetch Metadata exceeded the parsing budget',
-  'fetch-metadata-unassessed': 'Fetch Metadata facts could not be assessed',
-  'unrecognized-browser-claim': 'no recognized browser-family product claim',
-  'network-evidence-missing': 'navigation-shaped browser claim; network evidence missing',
-  'fetch-metadata-absent': 'supporting browser-version claim; Fetch Metadata absent',
-  'fetch-metadata-support-unknown': 'browser/version support unresolved; Fetch Metadata absent',
-  'beacon-script-ran': 'site script ran in the page (before Aug 26, 2026)',
-  'user-agent-only': 'User-Agent only (Aug 26 to Sep 3, 2026)',
-  'not-navigation-shaped': 'not shaped like a page navigation',
-  'no-fetch-metadata': 'modern browser claim without Fetch Metadata',
-  'pre-fetch-metadata-ua': 'browser version that predates Fetch Metadata',
-  'generic-bot': 'generic bot token in the User-Agent',
-};
-
-function reasonLabel(kind: ReaderKind, reason: string): string {
-  const known = REASON_LABELS[reason];
-  if (known !== undefined) return known;
-  const hosting = /^hosting-asn:(\d+)$/.exec(reason);
-  if (hosting) {
-    const asn = Number(hosting[1]);
-    const provider = HOSTING_NETWORKS.find((network) => network.asn === asn)?.provider;
-    return provider === undefined ? `hosting network AS${asn}` : `${provider} (AS${asn})`;
-  }
-  if (kind === 'signed-agent') return reason === 'Other'
-    ? 'stored verified outcome; signer not publicly named'
-    : `stored signing outcome: ${reason}`;
-  if (reason.startsWith('signature-') || reason.startsWith('missing-') || reason.startsWith('invalid-')) {
-    return `signature not verified: ${reason.replace(/-/g, ' ')}`;
-  }
-  return reason;
-}
 const SPECIAL_COUNTRIES: Record<string, string> = {
   T1: 'Tor network',
   XX: 'Unknown location',
@@ -367,12 +323,9 @@ function renderScope(filters: StatsResponse['filters']): void {
 }
 
 function replaceSectionRows(containerId: string, items: RankedItem[], limit: number | null = MAX_ITEMS): void {
-  const section = element(containerId);
-  const heading = section.querySelector('h2, h3');
-  const note = section.querySelector('.stats-section-note');
+  const section = element(containerId).querySelector('.stats-section-results');
+  if (!section) throw new Error(`Missing results container: ${containerId}`);
   section.replaceChildren();
-  if (heading) section.appendChild(heading);
-  if (note) section.appendChild(note);
 
   if (items.length === 0) {
     const empty = document.createElement('p');
@@ -407,8 +360,13 @@ function pageItem(row: StatsResponse['byPath'][number], state: ViewState): Ranke
 function renderClientForms(rows: StatsResponse['byClientForm'], evidence: StatsResponse['clientFormEvidence']): void {
   const section = element('stats-client-form-section');
   section.hidden = false;
-  const note = section.querySelector('.stats-section-note');
-  if (note) note.textContent = `Request headers describe software claims and preferences; hardware is unverified. ${formatNumber(evidence.recordedViews)} recognized form records, ${formatNumber(evidence.historicalViews)} earlier heuristic records, ${formatNumber(evidence.unrecognizedRecordViews)} unrecognized records. Recognized records can span parser profiles. Earlier desktop includes default guesses. ${formatNumber(evidence.unsupportedHintViews)} unsupported hints and ${formatNumber(evidence.differingSignalsViews)} differing indicators stay explicit; differing indicators can reflect preferences.`;
+  element('stats-client-form-coverage').innerHTML = dataFactsHtml([
+    { label: 'Recognized form records', value: evidence.recordedViews },
+    { label: 'Earlier heuristic records', value: evidence.historicalViews },
+    { label: 'Unrecognized records', value: evidence.unrecognizedRecordViews },
+    { label: 'Unsupported hints', value: evidence.unsupportedHintViews },
+    { label: 'Differing indicators', value: evidence.differingSignalsViews },
+  ]);
   replaceSectionRows('stats-client-form-section', rows.map(row => ({ label: CLIENT_FORM_LABELS[row.form], views: row.views })), null);
 }
 
@@ -512,10 +470,9 @@ function reasonHref(kind: ReaderKind, reason: string, state: ViewState): string 
 }
 
 function renderComposition(data: StatsResponse, state: ViewState): void {
-  const section = element('stats-composition');
-  const heading = section.querySelector('h2, h3');
+  const section = element('stats-composition').querySelector('.stats-section-results');
+  if (!section) throw new Error('Missing classification results container');
   section.replaceChildren();
-  if (heading) section.appendChild(heading);
   if (data.byKind.length === 0) {
     const empty = document.createElement('p');
     empty.className = 'stats-empty';
@@ -538,7 +495,7 @@ function renderComposition(data: StatsResponse, state: ViewState): void {
   const groups = document.createElement('div'); groups.className = 'stats-composition-groups'; section.append(groups);
   for (const group of kinds) {
     const groupElement = document.createElement('section'); groupElement.className = 'stats-kind-group'; groups.append(groupElement);
-    const row = document.createElement('div');
+    const row = document.createElement('h4');
     row.className = 'stats-row stats-row-kind';
     const bar = document.createElement('span');
     bar.className = 'stats-bar';
@@ -554,6 +511,9 @@ function renderComposition(data: StatsResponse, state: ViewState): void {
     row.append(bar, label, value);
     groupElement.appendChild(row);
 
+    const reasonList = document.createElement('div');
+    reasonList.className = 'stats-kind-reasons';
+    groupElement.appendChild(reasonList);
     const reasons = group.rows;
     for (const reason of reasons) {
       const sub = document.createElement('div');
@@ -561,22 +521,14 @@ function renderComposition(data: StatsResponse, state: ViewState): void {
       const href = reasonHref(group.kind, reason.reason, state);
       const subLabel = href === undefined ? document.createElement('span') : document.createElement('a');
       subLabel.className = 'stats-label';
-      subLabel.textContent = reasonLabel(group.kind, reason.reason);
+      subLabel.title = reason.reason;
+      subLabel.textContent = classificationReasonLabel(group.kind, reason.reason);
       if (subLabel instanceof HTMLAnchorElement && href !== undefined) subLabel.href = href;
       const subValue = document.createElement('span');
       subValue.className = 'stats-value';
       subValue.textContent = formatNumber(reason.views);
       sub.append(subLabel, subValue);
-      groupElement.appendChild(sub);
-    }
-    if (group.rows.length > reasons.length) {
-      const more = document.createElement('div');
-      more.className = 'stats-row stats-row-reason stats-row-more';
-      const moreLabel = document.createElement('span');
-      moreLabel.className = 'stats-label';
-      moreLabel.textContent = `${group.rows.length - reasons.length} more reasons`;
-      more.appendChild(moreLabel);
-      groupElement.appendChild(more);
+      reasonList.appendChild(sub);
     }
   }
 }
@@ -613,7 +565,10 @@ function renderKindSignatures(data: StatsResponse, state: ViewState): void {
   renderClassificationEvidenceTable('stats-kind-signature-rows', 'Stored local signature evidence', data.byKindSignature.map(row => ({ ...row, label: SIGNATURE_BASIS_LABELS[row.basis], profileLabel: verifierProfileLabel(row.profile, data.verifierProfile.current) })), state, true);
   renderClassificationEvidenceTable('stats-native-category-rows', 'Cloudflare category evidence', data.byKindNativeCategory.map(row => ({ ...row, label: nativeCategoryLabel(row.basis) })), state);
   const coverage = data.clientNameCoverage;
-  element('stats-client-name-coverage').textContent = `${formatNumber(coverage.selectedNameViews)} requests have one selected name from our catalogue of crawlers, tools and services; ${formatNumber(coverage.noSelectedNameViews)} have no single selected catalogue name. These add up to the headline. Browser-family signals are reported separately. A missing selected name can mean no catalogue match, several competing names, or earlier missing data. It does not identify a person or tell us whether a signer is known.`;
+  element('stats-client-name-coverage').innerHTML = dataFactsHtml([
+    { label: 'One selected catalogue name', value: coverage.selectedNameViews },
+    { label: 'No single selected name', value: coverage.noSelectedNameViews },
+  ]);
   const container = element('stats-client-evidence-rows');
   if (data.byKindClientEvidence.length === 0) { container.textContent = 'No requests for this selection.'; return; }
   const table = document.createElement('table');
@@ -664,7 +619,12 @@ function renderTransitions(data: StatsResponse, state: ViewState): void {
 
 function renderFetchMetadata(data: StatsResponse): void {
   const summary = data.fetchMetadata, records = summary.records;
-  element('stats-fetch-metadata-records').textContent = `${formatNumber(records.recognizedViews)} observations have a recognized, consistent parsing record; ${formatNumber(records.notRecordedViews)} have no parsing record, ${formatNumber(records.unrecognizedViews)} have an unsupported record or profile, and ${formatNumber(records.inconsistentViews)} have inconsistent parsing facts.`;
+  element('stats-fetch-metadata-records').innerHTML = dataFactsHtml([
+    { label: 'Recognized, consistent parsing records', value: records.recognizedViews },
+    { label: 'No parsing record', value: records.notRecordedViews },
+    { label: 'Unsupported records or profiles', value: records.unrecognizedViews },
+    { label: 'Inconsistent parsing facts', value: records.inconsistentViews },
+  ]);
   const container = element('stats-fetch-metadata-rows');
   container.replaceChildren();
   const table = document.createElement('table');
@@ -684,7 +644,10 @@ function renderFetchMetadata(data: StatsResponse): void {
     }
   }
   container.appendChild(table);
-  element('stats-fetch-metadata-activation').textContent = `Parsed activation booleans: ${formatNumber(summary.activation.trueClaimViews)} true claims and ${formatNumber(summary.activation.falseValueViews)} false values. The browser generation algorithm omits this header when false. A true claim does not authenticate a human action.`;
+  element('stats-fetch-metadata-activation').innerHTML = dataFactsHtml([
+    { label: 'Parsed activation: true claims', value: summary.activation.trueClaimViews },
+    { label: 'Parsed activation: false values', value: summary.activation.falseValueViews },
+  ]);
 }
 
 function renderDashboard(data: StatsResponse, state: ViewState): void {

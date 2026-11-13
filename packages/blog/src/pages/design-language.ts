@@ -1,6 +1,7 @@
 import { html, raw } from '@nisli/core';
 import { reportCheckSectionHtml } from '../lib/site-audit-report.js';
-import { metricTileHtml, rankedRowHtml } from '../lib/data-display.js';
+import { dataFactsHtml, metricTileHtml, rankedRowHtml } from '../lib/data-display.js';
+import { dataNote } from '../templates/data-note.js';
 import { homeToolsInvitation } from './home-tools-invitation.js';
 import { navigationChoices } from '../templates/navigation-choice.js';
 import { toolCatalogue } from './tool-catalogue.js';
@@ -158,6 +159,14 @@ export function designLanguagePage() {
     { label: 'Engineering', views: 280, href: '/stats?path=%2Fengineering', openHref: '/engineering' },
     { label: 'Tools', views: 140, href: '/stats?path=%2Ftools', openHref: '/tools' },
   ].map(item => rankedRowHtml(item, 420)).join(''))}></div>
+  <h3 class="dl-pattern-title">Coverage and reading notes</h3>
+  <p class="dl-body-note">Lead with results, then separate coverage counts from interpretation. Keep explanations visible, in short paragraphs with a consistent label and a comfortable line length. State when facts overlap. Preserve zero, unknown and historical evidence. These counts are illustrative.</p>
+  <dl class="data-facts" aria-label="Illustrative record coverage" html:inner=${raw(dataFactsHtml([
+    { label: 'Recognized records', value: 1200 },
+    { label: 'Earlier records without detail', value: 48 },
+    { label: 'Inconsistent records', value: 0 },
+  ]))}></dl>
+  ${dataNote(html`<p>The coverage counts account for every request in this example. Earlier records remain part of the total even when detailed evidence was not collected.</p><p>Missing evidence is unknown. A recognized record describes what was measured; it does not establish who made the request.</p>`)}
   </section>
   </section>
 

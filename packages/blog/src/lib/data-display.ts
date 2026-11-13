@@ -12,6 +12,16 @@ export interface RankedItem {
   detail?: string;
 }
 
+export interface DataFact {
+  label: string;
+  value: number;
+}
+
+/** Coverage counts remain independent facts; adjacency does not imply additivity. */
+export function dataFactsHtml(facts: readonly DataFact[]): string {
+  return facts.map(fact => `<div><dt>${escape(fact.label)}</dt><dd>${fact.value.toLocaleString('en-US')}</dd></div>`).join('');
+}
+
 function escape(value: string): string {
   return value.replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[char] ?? char);
 }
