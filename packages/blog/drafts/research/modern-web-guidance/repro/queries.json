@@ -1,0 +1,13 @@
+[
+  {"id":"dialog-focus","kind":"in-domain","query":"dialog keyboard focus","expectedAny":["dialog"]},
+  {"id":"accordion-height","kind":"in-domain","query":"accordion expand unknown height","expectedAny":["animate-to-intrinsic-sizes"]},
+  {"id":"analytics-exit","kind":"in-domain","query":"send analytics when tab closes","expectedAny":["full-session-analytics"]},
+  {"id":"upstream-example","kind":"source-seeded","query":"confirm destructive action","expectedAny":["dialog"]},
+  {"id":"oos-postgres","kind":"out-of-domain","query":"postgres replication slot lag","expectedAny":[]},
+  {"id":"oos-python","kind":"out-of-domain","query":"python virtualenv dependency conflict","expectedAny":[]},
+  {"id":"oos-kubernetes","kind":"out-of-domain","query":"kubernetes pod restart policy","expectedAny":[]},
+  {"id":"oos-pizza","kind":"out-of-domain","query":"best pizza in new york","expectedAny":[]},
+  {"id":"unknown-control","kind":"unknown-control","query":"qzxvplmnbvcxz","expectedAny":[]},
+  {"id":"positive-animation","kind":"negation-diagnostic","query":"animate dialog","expectedAny":[]},
+  {"id":"negated-animation","kind":"negation-diagnostic","query":"not animate dialog","expectedAny":[]}
+]

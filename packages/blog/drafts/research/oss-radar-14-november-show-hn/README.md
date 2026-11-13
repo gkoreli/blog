@@ -9,6 +9,7 @@ Status: revised cohort manuscript and product-mechanism review completed Novembe
 - [Repository baselines and inspected files](baselines.json)
 - [Claims and product map](claims.md)
 - [Current product mechanisms, positioning and dated follow-up](05-product-mechanisms-and-positioning.md)
+- [Modern Web Guidance: November 13 retrieval pilot and proposed independent study](../modern-web-guidance/README.md) — separate follow-up research; no new agent-quality result or manuscript claim.
 - [Declared deeper-review protocol](02-deep-review-protocol.md)
 - [Discussions, firsthand reports and design checks](03-discussions-and-design.md)
 - [Local methods, versions, results and limits](04-local-trials.md)

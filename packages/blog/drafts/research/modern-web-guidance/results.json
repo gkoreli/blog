@@ -1,0 +1,821 @@
+{
+  "capturedAt": "2026-11-13T14:29:16.684Z",
+  "method": "Synthetic feasibility diagnostic; cases fixed before the first pilot search; no representative-sample or end-to-end agent claim.",
+  "environment": {
+    "node": "v24.14.1",
+    "platform": "darwin",
+    "arch": "arm64",
+    "cpu": "Apple M5"
+  },
+  "package": {
+    "version": "1.0.0",
+    "cliSha256": "ce15b805ce2fd1e0150e36a128955b6dcebcb1a005253d9df55c8b1b3f4e9d41"
+  },
+  "source": {
+    "commit": "596acbc75a330508591b07cd9e198b219341f619",
+    "staticEmbedderSha256": "1e831f9feba5800717712ef7c4cfe4f8abadf713032b908c14349d023f9c32e4"
+  },
+  "casesSha256": "b3904e75b2c60aac9284ba96fde6a4cfb32ce3c6466684691a45fd2a8185dfa2",
+  "queryTableHashes": [
+    {
+      "file": "query-words.json",
+      "sourceSha256": "14ddb88bf337a4726a62a13788241d84d656e798a7188b3cc655b1328c863966",
+      "packageSha256": "14ddb88bf337a4726a62a13788241d84d656e798a7188b3cc655b1328c863966"
+    },
+    {
+      "file": "query-words.i8",
+      "sourceSha256": "6c88bceb3b737ec4fdbaa7b1a1a9034f5cd46895c0d2f36aff5c7639d14be82b",
+      "packageSha256": "6c88bceb3b737ec4fdbaa7b1a1a9034f5cd46895c0d2f36aff5c7639d14be82b"
+    },
+    {
+      "file": "query-words.scale.f32",
+      "sourceSha256": "4067f3b83a2ae21ffa3df21db1b159b2c04f6058ab394a4e2647d81faf28deea",
+      "packageSha256": "4067f3b83a2ae21ffa3df21db1b159b2c04f6058ab394a4e2647d81faf28deea"
+    }
+  ],
+  "telemetryDisabled": true,
+  "observations": [
+    {
+      "id": "dialog-focus",
+      "kind": "in-domain",
+      "query": "dialog keyboard focus",
+      "expectedAny": [
+        "dialog"
+      ],
+      "count": 10,
+      "ids": [
+        "accessibility",
+        "menu",
+        "html",
+        "dialog",
+        "declarative-dialog-popover-control",
+        "drag",
+        "app-menus",
+        "faster-spa-view-transitions",
+        "platform-controls-dismiss-dialog",
+        "2d-panning"
+      ],
+      "calls": [
+        {
+          "wallMs": 239.08158299999997,
+          "ids": [
+            "accessibility",
+            "menu",
+            "html",
+            "dialog",
+            "declarative-dialog-popover-control",
+            "drag",
+            "app-menus",
+            "faster-spa-view-transitions",
+            "platform-controls-dismiss-dialog",
+            "2d-panning"
+          ]
+        },
+        {
+          "wallMs": 203.365792,
+          "ids": [
+            "accessibility",
+            "menu",
+            "html",
+            "dialog",
+            "declarative-dialog-popover-control",
+            "drag",
+            "app-menus",
+            "faster-spa-view-transitions",
+            "platform-controls-dismiss-dialog",
+            "2d-panning"
+          ]
+        },
+        {
+          "wallMs": 185.08920899999998,
+          "ids": [
+            "accessibility",
+            "menu",
+            "html",
+            "dialog",
+            "declarative-dialog-popover-control",
+            "drag",
+            "app-menus",
+            "faster-spa-view-transitions",
+            "platform-controls-dismiss-dialog",
+            "2d-panning"
+          ]
+        }
+      ],
+      "deterministicAcrossThreeCalls": true,
+      "expectedGuideRank": 4,
+      "subprocessMedianMs": 203.365792
+    },
+    {
+      "id": "accordion-height",
+      "kind": "in-domain",
+      "query": "accordion expand unknown height",
+      "expectedAny": [
+        "animate-to-intrinsic-sizes"
+      ],
+      "count": 10,
+      "ids": [
+        "accordion",
+        "search-hidden-content",
+        "html",
+        "respect-os-text-scale",
+        "animate-to-intrinsic-sizes",
+        "interactive-content-reveal",
+        "forms",
+        "size-aware-styling",
+        "calculate-with-intrinsic-sizes",
+        "content-first-noise-reduction"
+      ],
+      "calls": [
+        {
+          "wallMs": 186.36675000000002,
+          "ids": [
+            "accordion",
+            "search-hidden-content",
+            "html",
+            "respect-os-text-scale",
+            "animate-to-intrinsic-sizes",
+            "interactive-content-reveal",
+            "forms",
+            "size-aware-styling",
+            "calculate-with-intrinsic-sizes",
+            "content-first-noise-reduction"
+          ]
+        },
+        {
+          "wallMs": 222.68904199999997,
+          "ids": [
+            "accordion",
+            "search-hidden-content",
+            "html",
+            "respect-os-text-scale",
+            "animate-to-intrinsic-sizes",
+            "interactive-content-reveal",
+            "forms",
+            "size-aware-styling",
+            "calculate-with-intrinsic-sizes",
+            "content-first-noise-reduction"
+          ]
+        },
+        {
+          "wallMs": 301.5134580000001,
+          "ids": [
+            "accordion",
+            "search-hidden-content",
+            "html",
+            "respect-os-text-scale",
+            "animate-to-intrinsic-sizes",
+            "interactive-content-reveal",
+            "forms",
+            "size-aware-styling",
+            "calculate-with-intrinsic-sizes",
+            "content-first-noise-reduction"
+          ]
+        }
+      ],
+      "deterministicAcrossThreeCalls": true,
+      "expectedGuideRank": 5,
+      "subprocessMedianMs": 222.68904199999997
+    },
+    {
+      "id": "analytics-exit",
+      "kind": "in-domain",
+      "query": "send analytics when tab closes",
+      "expectedAny": [
+        "full-session-analytics"
+      ],
+      "count": 10,
+      "ids": [
+        "full-session-analytics",
+        "tabs",
+        "batch-analytics-events",
+        "forms",
+        "light-dismiss-a-dialog",
+        "platform-controls-dismiss-dialog",
+        "html",
+        "navigation-drawer",
+        "menu",
+        "detect-initial-visibility-state"
+      ],
+      "calls": [
+        {
+          "wallMs": 339.4825840000001,
+          "ids": [
+            "full-session-analytics",
+            "tabs",
+            "batch-analytics-events",
+            "forms",
+            "light-dismiss-a-dialog",
+            "platform-controls-dismiss-dialog",
+            "html",
+            "navigation-drawer",
+            "menu",
+            "detect-initial-visibility-state"
+          ]
+        },
+        {
+          "wallMs": 270.23775000000023,
+          "ids": [
+            "full-session-analytics",
+            "tabs",
+            "batch-analytics-events",
+            "forms",
+            "light-dismiss-a-dialog",
+            "platform-controls-dismiss-dialog",
+            "html",
+            "navigation-drawer",
+            "menu",
+            "detect-initial-visibility-state"
+          ]
+        },
+        {
+          "wallMs": 229.3006250000003,
+          "ids": [
+            "full-session-analytics",
+            "tabs",
+            "batch-analytics-events",
+            "forms",
+            "light-dismiss-a-dialog",
+            "platform-controls-dismiss-dialog",
+            "html",
+            "navigation-drawer",
+            "menu",
+            "detect-initial-visibility-state"
+          ]
+        }
+      ],
+      "deterministicAcrossThreeCalls": true,
+      "expectedGuideRank": 1,
+      "subprocessMedianMs": 270.23775000000023
+    },
+    {
+      "id": "upstream-example",
+      "kind": "source-seeded",
+      "query": "confirm destructive action",
+      "expectedAny": [
+        "dialog"
+      ],
+      "count": 10,
+      "ids": [
+        "agentic-forms",
+        "dialog",
+        "swipe-to-remove",
+        "custom-button-actions",
+        "passkey-reauthentication",
+        "autofill-sign-up-form",
+        "ime-safe-enter-submit",
+        "menu",
+        "webmcp",
+        "html"
+      ],
+      "calls": [
+        {
+          "wallMs": 205.1646249999999,
+          "ids": [
+            "agentic-forms",
+            "dialog",
+            "swipe-to-remove",
+            "custom-button-actions",
+            "passkey-reauthentication",
+            "autofill-sign-up-form",
+            "ime-safe-enter-submit",
+            "menu",
+            "webmcp",
+            "html"
+          ]
+        },
+        {
+          "wallMs": 225.21170800000027,
+          "ids": [
+            "agentic-forms",
+            "dialog",
+            "swipe-to-remove",
+            "custom-button-actions",
+            "passkey-reauthentication",
+            "autofill-sign-up-form",
+            "ime-safe-enter-submit",
+            "menu",
+            "webmcp",
+            "html"
+          ]
+        },
+        {
+          "wallMs": 230.95591700000023,
+          "ids": [
+            "agentic-forms",
+            "dialog",
+            "swipe-to-remove",
+            "custom-button-actions",
+            "passkey-reauthentication",
+            "autofill-sign-up-form",
+            "ime-safe-enter-submit",
+            "menu",
+            "webmcp",
+            "html"
+          ]
+        }
+      ],
+      "deterministicAcrossThreeCalls": true,
+      "expectedGuideRank": 2,
+      "subprocessMedianMs": 225.21170800000027
+    },
+    {
+      "id": "oos-postgres",
+      "kind": "out-of-domain",
+      "query": "postgres replication slot lag",
+      "expectedAny": [],
+      "count": 10,
+      "ids": [
+        "shadow-dom",
+        "prerendering-custom-elements",
+        "custom-elements",
+        "web-components",
+        "styling-web-components",
+        "drag-and-drop",
+        "css-layout",
+        "menu",
+        "rich-media-picker",
+        "interactions-in-complex-layouts"
+      ],
+      "calls": [
+        {
+          "wallMs": 189.49979200000007,
+          "ids": [
+            "shadow-dom",
+            "prerendering-custom-elements",
+            "custom-elements",
+            "web-components",
+            "styling-web-components",
+            "drag-and-drop",
+            "css-layout",
+            "menu",
+            "rich-media-picker",
+            "interactions-in-complex-layouts"
+          ]
+        },
+        {
+          "wallMs": 249.65204200000016,
+          "ids": [
+            "shadow-dom",
+            "prerendering-custom-elements",
+            "custom-elements",
+            "web-components",
+            "styling-web-components",
+            "drag-and-drop",
+            "css-layout",
+            "menu",
+            "rich-media-picker",
+            "interactions-in-complex-layouts"
+          ]
+        },
+        {
+          "wallMs": 217.24579200000016,
+          "ids": [
+            "shadow-dom",
+            "prerendering-custom-elements",
+            "custom-elements",
+            "web-components",
+            "styling-web-components",
+            "drag-and-drop",
+            "css-layout",
+            "menu",
+            "rich-media-picker",
+            "interactions-in-complex-layouts"
+          ]
+        }
+      ],
+      "deterministicAcrossThreeCalls": true,
+      "expectedGuideRank": null,
+      "subprocessMedianMs": 217.24579200000016
+    },
+    {
+      "id": "oos-python",
+      "kind": "out-of-domain",
+      "query": "python virtualenv dependency conflict",
+      "expectedAny": [],
+      "count": 10,
+      "ids": [
+        "conditional-async-dependencies",
+        "performance",
+        "security",
+        "coordinate-global-events",
+        "sanitize-untrusted-html",
+        "tabs",
+        "dark-mode",
+        "ime-safe-enter-submit",
+        "rich-media-picker",
+        "passkeys"
+      ],
+      "calls": [
+        {
+          "wallMs": 218.3006250000003,
+          "ids": [
+            "conditional-async-dependencies",
+            "performance",
+            "security",
+            "coordinate-global-events",
+            "sanitize-untrusted-html",
+            "tabs",
+            "dark-mode",
+            "ime-safe-enter-submit",
+            "rich-media-picker",
+            "passkeys"
+          ]
+        },
+        {
+          "wallMs": 228.14216700000043,
+          "ids": [
+            "conditional-async-dependencies",
+            "performance",
+            "security",
+            "coordinate-global-events",
+            "sanitize-untrusted-html",
+            "tabs",
+            "dark-mode",
+            "ime-safe-enter-submit",
+            "rich-media-picker",
+            "passkeys"
+          ]
+        },
+        {
+          "wallMs": 206.97395799999958,
+          "ids": [
+            "conditional-async-dependencies",
+            "performance",
+            "security",
+            "coordinate-global-events",
+            "sanitize-untrusted-html",
+            "tabs",
+            "dark-mode",
+            "ime-safe-enter-submit",
+            "rich-media-picker",
+            "passkeys"
+          ]
+        }
+      ],
+      "deterministicAcrossThreeCalls": true,
+      "expectedGuideRank": null,
+      "subprocessMedianMs": 218.3006250000003
+    },
+    {
+      "id": "oos-kubernetes",
+      "kind": "out-of-domain",
+      "query": "kubernetes pod restart policy",
+      "expectedAny": [],
+      "count": 10,
+      "ids": [
+        "security",
+        "trusted-types",
+        "privacy",
+        "move-dom-element-without-losing-state",
+        "secure-external-subresources",
+        "sanitize-untrusted-html",
+        "restrict-outbound-connections",
+        "copy-button",
+        "client-side-encryption",
+        "html"
+      ],
+      "calls": [
+        {
+          "wallMs": 283.98554199999944,
+          "ids": [
+            "security",
+            "trusted-types",
+            "privacy",
+            "move-dom-element-without-losing-state",
+            "secure-external-subresources",
+            "sanitize-untrusted-html",
+            "restrict-outbound-connections",
+            "copy-button",
+            "client-side-encryption",
+            "html"
+          ]
+        },
+        {
+          "wallMs": 266.155667,
+          "ids": [
+            "security",
+            "trusted-types",
+            "privacy",
+            "move-dom-element-without-losing-state",
+            "secure-external-subresources",
+            "sanitize-untrusted-html",
+            "restrict-outbound-connections",
+            "copy-button",
+            "client-side-encryption",
+            "html"
+          ]
+        },
+        {
+          "wallMs": 181.62079099999937,
+          "ids": [
+            "security",
+            "trusted-types",
+            "privacy",
+            "move-dom-element-without-losing-state",
+            "secure-external-subresources",
+            "sanitize-untrusted-html",
+            "restrict-outbound-connections",
+            "copy-button",
+            "client-side-encryption",
+            "html"
+          ]
+        }
+      ],
+      "deterministicAcrossThreeCalls": true,
+      "expectedGuideRank": null,
+      "subprocessMedianMs": 266.155667
+    },
+    {
+      "id": "oos-pizza",
+      "kind": "out-of-domain",
+      "query": "best pizza in new york",
+      "expectedAny": [],
+      "count": 10,
+      "ids": [
+        "accessibility",
+        "autofill-sign-up-form",
+        "performance",
+        "html",
+        "same-document-transitions",
+        "out-of-order-html-streaming",
+        "cross-document-transitions",
+        "persistent-top-layer-ui",
+        "dynamic-sort",
+        "forms"
+      ],
+      "calls": [
+        {
+          "wallMs": 230.50950000000012,
+          "ids": [
+            "accessibility",
+            "autofill-sign-up-form",
+            "performance",
+            "html",
+            "same-document-transitions",
+            "out-of-order-html-streaming",
+            "cross-document-transitions",
+            "persistent-top-layer-ui",
+            "dynamic-sort",
+            "forms"
+          ]
+        },
+        {
+          "wallMs": 311.75295800000004,
+          "ids": [
+            "accessibility",
+            "autofill-sign-up-form",
+            "performance",
+            "html",
+            "same-document-transitions",
+            "out-of-order-html-streaming",
+            "cross-document-transitions",
+            "persistent-top-layer-ui",
+            "dynamic-sort",
+            "forms"
+          ]
+        },
+        {
+          "wallMs": 311.54254200000014,
+          "ids": [
+            "accessibility",
+            "autofill-sign-up-form",
+            "performance",
+            "html",
+            "same-document-transitions",
+            "out-of-order-html-streaming",
+            "cross-document-transitions",
+            "persistent-top-layer-ui",
+            "dynamic-sort",
+            "forms"
+          ]
+        }
+      ],
+      "deterministicAcrossThreeCalls": true,
+      "expectedGuideRank": null,
+      "subprocessMedianMs": 311.54254200000014
+    },
+    {
+      "id": "unknown-control",
+      "kind": "unknown-control",
+      "query": "qzxvplmnbvcxz",
+      "expectedAny": [],
+      "count": 0,
+      "ids": [],
+      "calls": [
+        {
+          "wallMs": 283.7508339999995,
+          "ids": []
+        },
+        {
+          "wallMs": 258.48199999999997,
+          "ids": []
+        },
+        {
+          "wallMs": 256.6371670000008,
+          "ids": []
+        }
+      ],
+      "deterministicAcrossThreeCalls": true,
+      "expectedGuideRank": null,
+      "subprocessMedianMs": 258.48199999999997
+    },
+    {
+      "id": "positive-animation",
+      "kind": "negation-diagnostic",
+      "query": "animate dialog",
+      "expectedAny": [],
+      "count": 10,
+      "ids": [
+        "animate-to-from-top-layer",
+        "dialog",
+        "declarative-dialog-popover-control",
+        "animate-element-entry-exit",
+        "motion",
+        "navigation-drawer",
+        "animate-to-intrinsic-sizes",
+        "light-dismiss-a-dialog",
+        "carousel-slide-effects",
+        "persistent-top-layer-ui"
+      ],
+      "calls": [
+        {
+          "wallMs": 194.46133399999962,
+          "ids": [
+            "animate-to-from-top-layer",
+            "dialog",
+            "declarative-dialog-popover-control",
+            "animate-element-entry-exit",
+            "motion",
+            "navigation-drawer",
+            "animate-to-intrinsic-sizes",
+            "light-dismiss-a-dialog",
+            "carousel-slide-effects",
+            "persistent-top-layer-ui"
+          ]
+        },
+        {
+          "wallMs": 264.2412920000006,
+          "ids": [
+            "animate-to-from-top-layer",
+            "dialog",
+            "declarative-dialog-popover-control",
+            "animate-element-entry-exit",
+            "motion",
+            "navigation-drawer",
+            "animate-to-intrinsic-sizes",
+            "light-dismiss-a-dialog",
+            "carousel-slide-effects",
+            "persistent-top-layer-ui"
+          ]
+        },
+        {
+          "wallMs": 261.5791250000002,
+          "ids": [
+            "animate-to-from-top-layer",
+            "dialog",
+            "declarative-dialog-popover-control",
+            "animate-element-entry-exit",
+            "motion",
+            "navigation-drawer",
+            "animate-to-intrinsic-sizes",
+            "light-dismiss-a-dialog",
+            "carousel-slide-effects",
+            "persistent-top-layer-ui"
+          ]
+        }
+      ],
+      "deterministicAcrossThreeCalls": true,
+      "expectedGuideRank": null,
+      "subprocessMedianMs": 261.5791250000002
+    },
+    {
+      "id": "negated-animation",
+      "kind": "negation-diagnostic",
+      "query": "not animate dialog",
+      "expectedAny": [],
+      "count": 10,
+      "ids": [
+        "animate-to-from-top-layer",
+        "dialog",
+        "declarative-dialog-popover-control",
+        "animate-element-entry-exit",
+        "motion",
+        "navigation-drawer",
+        "animate-to-intrinsic-sizes",
+        "light-dismiss-a-dialog",
+        "carousel-slide-effects",
+        "persistent-top-layer-ui"
+      ],
+      "calls": [
+        {
+          "wallMs": 168.0625,
+          "ids": [
+            "animate-to-from-top-layer",
+            "dialog",
+            "declarative-dialog-popover-control",
+            "animate-element-entry-exit",
+            "motion",
+            "navigation-drawer",
+            "animate-to-intrinsic-sizes",
+            "light-dismiss-a-dialog",
+            "carousel-slide-effects",
+            "persistent-top-layer-ui"
+          ]
+        },
+        {
+          "wallMs": 198.62304200000017,
+          "ids": [
+            "animate-to-from-top-layer",
+            "dialog",
+            "declarative-dialog-popover-control",
+            "animate-element-entry-exit",
+            "motion",
+            "navigation-drawer",
+            "animate-to-intrinsic-sizes",
+            "light-dismiss-a-dialog",
+            "carousel-slide-effects",
+            "persistent-top-layer-ui"
+          ]
+        },
+        {
+          "wallMs": 253.73725000000013,
+          "ids": [
+            "animate-to-from-top-layer",
+            "dialog",
+            "declarative-dialog-popover-control",
+            "animate-element-entry-exit",
+            "motion",
+            "navigation-drawer",
+            "animate-to-intrinsic-sizes",
+            "light-dismiss-a-dialog",
+            "carousel-slide-effects",
+            "persistent-top-layer-ui"
+          ]
+        }
+      ],
+      "deterministicAcrossThreeCalls": true,
+      "expectedGuideRank": null,
+      "subprocessMedianMs": 198.62304200000017
+    }
+  ],
+  "negation": {
+    "positiveTokens": [
+      "animate",
+      "dialog"
+    ],
+    "negativeTokens": [
+      "animate",
+      "dialog"
+    ],
+    "vectorsExactlyEqual": true,
+    "rankedIdsExactlyEqual": true
+  },
+  "warmEmbedding": {
+    "queries": [
+      "dialog keyboard focus",
+      "accordion expand unknown height",
+      "send analytics when tab closes"
+    ],
+    "tableLoadMs": 11.905666999999994,
+    "warmupQueries": 1000,
+    "measuredQueries": 30000,
+    "batchSize": 1000,
+    "batchCount": 30,
+    "medianMicrosecondsPerQuery": 12.171770499999184,
+    "batchMicrosecondsPerQuery": [
+      51.15875000000051,
+      37.580666000001656,
+      33.95066699999916,
+      11.1784579999985,
+      11.712584000000788,
+      12.302750000000742,
+      11.834000000000742,
+      9.400249999998778,
+      11.598833000000013,
+      9.507583000000523,
+      11.475791999999274,
+      13.82104099999924,
+      12.148707999998805,
+      12.020375000000058,
+      12.194832999999562,
+      27.75537500000064,
+      48.29095799999959,
+      10.653374999999869,
+      8.533332999999402,
+      6.329666999999972,
+      107.460833000001,
+      46.088707999999315,
+      8.741083999999319,
+      12.694000000001324,
+      10.617167000000336,
+      13.793666999999914,
+      10.948707999999897,
+      17.183583,
+      22.674457999999504,
+      16.454791000000114
+    ],
+    "checksum": -550.3448512544855,
+    "boundary": "Source embedSync only, same process, tables resident, JIT warmed; not CLI or end-to-end retrieval latency."
+  }
+}
