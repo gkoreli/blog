@@ -1,0 +1,125 @@
+{
+  "version": 1,
+  "measuredAt": "2026-11-13T14:40:33.045316+00:00",
+  "sourceCommit": "eb271c100b1cc7fdec4ac56c70f039621d157532",
+  "cloudflareBuild": "e59955af-9b06-46d1-a0c9-4a55055a34b2",
+  "method": "Six fresh read-only page/asset GETs, served source/build markers and exact built asset hashes. Client assets reproduced with the public Cloudflare build metadata. API interaction acceptance recorded separately.",
+  "localChecks": {
+    "typecheck": true,
+    "siteTestsBeforeIntegration": 451,
+    "siteTestsAfterIntegration": 453,
+    "markdownValidation": 34,
+    "builtPosts": 45,
+    "privatePromptGuard": true,
+    "referralPolicy": true
+  },
+  "responses": [
+    {
+      "path": "/stats",
+      "status": 200,
+      "sha256": "48e46f03fee24e88b82990e2c6937fef441eebd2400fb2e9f6151330aea81786",
+      "passed": true,
+      "source": "eb271c100b1cc7fdec4ac56c70f039621d157532",
+      "build": "e59955af-9b06-46d1-a0c9-4a55055a34b2"
+    },
+    {
+      "path": "/design-language",
+      "status": 200,
+      "sha256": "4708eb5aad7549feaa783cf5dfc2ea172e39ef8c18bd171963937fb6676e08ef",
+      "passed": true,
+      "source": "eb271c100b1cc7fdec4ac56c70f039621d157532",
+      "build": "e59955af-9b06-46d1-a0c9-4a55055a34b2"
+    },
+    {
+      "path": "/stats.css",
+      "status": 200,
+      "sha256": "9c4dedfcdbddb75de0a8dd16c7f5445fb445d9dcc8cbf138a5c3aa51f93dbd9a",
+      "passed": true
+    },
+    {
+      "path": "/stats.js",
+      "status": 200,
+      "sha256": "0f6664e8ec2657b2765e49c2380625f91715f814d0dfe20ca50386817fac2936",
+      "passed": true
+    },
+    {
+      "path": "/main.css",
+      "status": 200,
+      "sha256": "6f644015ebadd51c283085961121996c49361f5ec8bdea2ab9f7f8529586297f",
+      "passed": true
+    },
+    {
+      "path": "/",
+      "status": 200,
+      "sha256": "dd532af249347491cd1cee4d550c745473f00e9e0d09e6b9587ef5f7a81a6141",
+      "passed": true,
+      "source": "eb271c100b1cc7fdec4ac56c70f039621d157532",
+      "build": "e59955af-9b06-46d1-a0c9-4a55055a34b2"
+    }
+  ],
+  "checks": {
+    "compactNativeFilters": true,
+    "definedMetrics": true,
+    "chartBeforeDetails": true,
+    "visibleReportChapters": true,
+    "trafficMixPresent": true,
+    "accessibleAlternative": true,
+    "sharedPatternExamples": true,
+    "homepageInvitationRetained": true,
+    "exact /stats.css": true,
+    "exact /stats.js": true,
+    "exact /main.css": true
+  },
+  "limits": [
+    "Layout and controlled interaction checks do not establish reader comprehension or audience growth.",
+    "The local data preview reused a dated saved report, not a fresh measurement.",
+    "This presentation change does not alter collection, classification, SQL or cache policy."
+  ],
+  "implementationCommit": "ef66ea11cb632ebeb0bdbd406fd1fb74e710c276",
+  "browserChecks": {
+    "measuredAt": "2026-11-13T14:38:49.520852+00:00",
+    "baselineViewport": {
+      "width": 1280,
+      "height": 720
+    },
+    "baselinePositions": {
+      "totals": 638,
+      "chart": 1380
+    },
+    "refinedPositions": {
+      "totals": 421,
+      "chart": 567
+    },
+    "localNativeFilterAndHistory": true,
+    "localFragmentNavigationWithoutExtraRequest": true,
+    "localErrorRetryAndEmptyStates": true,
+    "localPhoneWidths": [
+      393,
+      320
+    ],
+    "localDarkTheme": true,
+    "localFilterAndPageActionMinimumHeight": 44,
+    "liveFilterCombination": {
+      "traffic": "browser",
+      "range": "7d",
+      "ready": true,
+      "hourlyTableRows": 159
+    },
+    "livePhoneWidth": 320,
+    "liveHorizontalOverflow": false,
+    "liveChartReadout": true,
+    "liveKeyboardChartTable": true,
+    "liveSharedPatternMetricCount": 2,
+    "liveSharedPatternRowCount": 3,
+    "liveSharedPatternOverflow": false,
+    "scriptFreeFallback": "Visible API link and measurement notes; interactive report requires JavaScript",
+    "limits": "Controlled rendering and interaction checks do not establish reader comprehension or readership.",
+    "finalAnnouncementPresentation": {
+      "position": "absolute",
+      "clipPath": "inset(50%)",
+      "verifiedLive": true
+    },
+    "finalDefaultReportReady": true,
+    "finalCheckedAt": "2026-11-13T14:41:25.006062+00:00"
+  }
+}
