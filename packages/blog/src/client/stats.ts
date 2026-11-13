@@ -12,6 +12,8 @@ import { nativeCategoryLabel } from '@gkoreli/analytics/native-bot-evidence';
 import { DIRECTORY_PUBLICATION_LABELS } from '@gkoreli/analytics/directory-publication';
 import { HOSTING_NETWORKS } from '@gkoreli/analytics/networks';
 import { CLIENT_NAME_SELECTION_LABELS, consistentClientEvidence } from '@gkoreli/analytics/client-evidence';
+import { rankedRowHtml, type RankedItem } from '../lib/data-display.js';
+import { trafficMix } from '../lib/stats-presentation.js';
 import '../styles/stats.css';
 
 type RangeFilter = '7d' | '30d' | '90d' | 'all';
@@ -22,16 +24,9 @@ type ViewState = {
   agent: string | null;
   kind: ReaderKind | null;
 };
-type RankedItem = {
-  label: string;
-  views: number;
-  href?: string;
-  openHref?: string;
-  openAriaLabel?: string;
-};
 
 const MAX_ITEMS = 10;
-const CHART_HEIGHT = 300;
+const CHART_HEIGHT = 260;
 const DEFAULT_STATE: ViewState = { range: '30d', traffic: 'all', path: null, agent: null, kind: null };
 
 /** Public names describe stored rule matches and declared roles. */
@@ -96,11 +91,11 @@ function reasonLabel(kind: ReaderKind, reason: string): string {
   return reason;
 }
 const SPECIAL_COUNTRIES: Record<string, string> = {
-  T1: '🔒 Tor',
-  XX: '🌐 Unknown',
-  A1: '🔒 Proxy',
-  A2: '📡 Satellite',
-  AP: '🌏 Asia-Pacific',
+  T1: 'Tor network',
+  XX: 'Unknown location',
+  A1: 'Proxy network',
+  A2: 'Satellite network',
+  AP: 'Asia-Pacific',
 };
 
 function element(id: string): HTMLElement {
@@ -180,21 +175,26 @@ function pushState(state: ViewState): void {
 }
 
 function updateControls(state: ViewState): void {
-  document.querySelectorAll<HTMLButtonElement>('[data-traffic]').forEach(button => {
-    button.setAttribute('aria-pressed', String(button.dataset.traffic === state.traffic));
-  });
+  const traffic = document.getElementById('stats-traffic');
+  if (traffic instanceof HTMLSelectElement) traffic.value = state.traffic;
+  const json = document.getElementById('stats-json-link');
+  if (json instanceof HTMLAnchorElement) json.href = statsApiHref(state);
   const selectedDays = state.range === 'all' ? '0' : state.range.replace('d', '');
   document.querySelectorAll<HTMLButtonElement>('[data-days]').forEach(button => {
     button.setAttribute('aria-pressed', String(button.dataset.days === selectedDays));
   });
 }
 
-async function fetchStats(state: ViewState, signal: AbortSignal): Promise<StatsResponse> {
+function statsApiHref(state: ViewState): string {
   const params = new URLSearchParams({ range: state.range, traffic: state.traffic });
   if (state.path !== null) params.set('path', state.path);
   if (state.agent !== null) params.set('agent', state.agent);
   if (state.kind !== null) params.set('kind', state.kind);
-  const response = await fetch(`/api/stats?${params}`, { signal });
+  return `/api/stats?${params}`;
+}
+
+async function fetchStats(state: ViewState, signal: AbortSignal): Promise<StatsResponse> {
+  const response = await fetch(statsApiHref(state), { signal });
   if (!response.ok) throw new Error(`Stats request failed with ${response.status}`);
   const data: StatsResponse = await response.json();
   // An old cached API response must not restore arbitrary hostname display.
@@ -221,10 +221,11 @@ async function fetchStats(state: ViewState, signal: AbortSignal): Promise<StatsR
   return data;
 }
 
-function getColors(): { link: string; border: string; muted: string } {
+function getColors(): { link: string; border: string; muted: string; secondary: string } {
   const styles = getComputedStyle(document.documentElement);
   return {
     link: styles.getPropertyValue('--color-link').trim(),
+    secondary: styles.getPropertyValue('--color-accent-blue').trim(),
     border: styles.getPropertyValue('--color-border').trim(),
     muted: styles.getPropertyValue('--color-text-muted').trim(),
   };
@@ -238,13 +239,12 @@ function translucent(hex: string): string {
   return `rgba(${red},${green},${blue},0.15)`;
 }
 
+const countryNames = new Intl.DisplayNames(['en'], { type: 'region' });
 function countryLabel(code: string): string {
   const special = SPECIAL_COUNTRIES[code];
   if (special) return special;
-  if (code === 'EU') return '🇪🇺 EU';
-  if (!/^[A-Z]{2}$/.test(code)) return `🌐 ${code}`;
-  const points = [...code].map(character => 0x1F1E6 + character.charCodeAt(0) - 65);
-  return `${String.fromCodePoint(...points)} ${code}`;
+  if (!/^[A-Z]{2}$/.test(code)) return code;
+  return `${code} · ${countryNames.of(code) ?? code}`;
 }
 
 function formatNumber(value: number): string {
@@ -307,17 +307,20 @@ function renderPeriod(period: StatsResponse['period'], series: StatsResponse['ti
   const partial = period.granularity === 'hour' ? 'current UTC hour is partial' : 'current UTC day is partial';
   const laterBuckets = series.some(row => bucketTimestamp(row.bucket,period.granularity)*1000 > Date.parse(period.updatedAt));
   const clockNote = laterBuckets ? ' · Some returned bucket timestamps are later than the calculation clock' : '';
-  element('stats-period').textContent = `${period.start} through ${period.end} UTC · ${granularity} · ${partial} · Updated ${formatUpdatedAt(period.updatedAt)}${clockNote}`;
+  const dates = document.createElement('span'); dates.textContent = `${period.start} – ${period.end} UTC`;
+  const detail = document.createElement('span'); detail.textContent = `Updated ${formatUpdatedAt(period.updatedAt)}${clockNote}`;
+  element('stats-chart-context').textContent = `${granularity} · UTC · ${partial.replace(' UTC', '')}`;
+  element('stats-period').replaceChildren(dates, detail);
   element('stats-period').hidden = false;
 }
 
 function renderTotals(totals: StatsResponse['totals']): void {
   const values = [totals.views, totals.dailyClients];
-  element('stats-totals').querySelectorAll<HTMLElement>('.stats-card').forEach((card, index) => {
-    const value = card.querySelector<HTMLElement>('.skeleton, .stats-card-value');
+  element('stats-totals').querySelectorAll<HTMLElement>('.data-metric').forEach((card, index) => {
+    const value = card.querySelector<HTMLElement>('.data-metric-value');
     const total = values[index];
     if (!value || total === undefined) return;
-    value.className = 'stats-card-value';
+    value.className = 'data-metric-value';
     value.textContent = formatNumber(total);
   });
 }
@@ -365,7 +368,7 @@ function renderScope(filters: StatsResponse['filters']): void {
 
 function replaceSectionRows(containerId: string, items: RankedItem[], limit: number | null = MAX_ITEMS): void {
   const section = element(containerId);
-  const heading = section.querySelector('h2');
+  const heading = section.querySelector('h2, h3');
   const note = section.querySelector('.stats-section-note');
   section.replaceChildren();
   if (heading) section.appendChild(heading);
@@ -381,39 +384,9 @@ function replaceSectionRows(containerId: string, items: RankedItem[], limit: num
 
   const visibleItems = limit === null ? items : items.slice(0, limit);
   const max = visibleItems.reduce((highest, item) => Math.max(highest, item.views), 0);
-  for (const item of visibleItems) {
-    const row = document.createElement('div');
-    row.className = 'stats-row';
-
-    const bar = document.createElement('span');
-    bar.className = 'stats-bar';
-    bar.style.width = `${max > 0 ? (item.views / max) * 100 : 0}%`;
-    bar.setAttribute('aria-hidden', 'true');
-
-    const label = item.href ? document.createElement('a') : document.createElement('span');
-    label.className = 'stats-label';
-    label.textContent = item.label;
-    if (label instanceof HTMLAnchorElement && item.href) label.href = item.href;
-
-    const value = document.createElement('span');
-    value.className = 'stats-value';
-    value.textContent = formatViewCount(item.views);
-
-    const actions = document.createElement('span');
-    actions.className = 'stats-row-actions';
-    actions.appendChild(value);
-    if (item.openHref !== undefined) {
-      const open = document.createElement('a');
-      open.className = 'stats-open';
-      open.href = item.openHref;
-      open.textContent = 'open';
-      if (item.openAriaLabel !== undefined) open.setAttribute('aria-label', item.openAriaLabel);
-      actions.appendChild(open);
-    }
-
-    row.append(bar, label, actions);
-    section.appendChild(row);
-  }
+  const rows = document.createElement('div');
+  rows.innerHTML = visibleItems.map(item => rankedRowHtml(item, max)).join('');
+  section.append(...Array.from(rows.childNodes));
 }
 
 function pageHref(path: string): string | undefined {
@@ -513,15 +486,19 @@ function renderChart(data: StatsResponse): void {
     tzDate: timestamp => uPlot.tzDate(new Date(timestamp * 1000), 'Etc/UTC'),
     scales: { x: { time: true }, y: { range: (_plot, _minimum, maximum) => [0, Math.max(maximum, 1)] } },
     axes: [
-      { stroke: colors.muted, grid: { stroke: colors.border, width: 1 } },
-      { stroke: colors.muted, grid: { stroke: colors.border, width: 1 }, size: 50 },
+      { stroke: colors.muted, grid: { show: false }, font: '11px monospace' },
+      { stroke: colors.muted, grid: { stroke: colors.border, width: 1 }, size: 44, font: '11px monospace' },
     ],
     series: [
       {},
-      { label: 'Page views', stroke: colors.link, fill: translucent(colors.link), width: 2 },
-      { label: hourly ? 'Daily IDs seen in hour' : 'Daily clients', stroke: colors.muted, width: 2 },
+      { label: 'Page views', stroke: colors.link, fill: translucent(colors.link), width: 2, points: { show: false } },
+      { label: hourly ? 'Daily IDs seen in hour' : 'Daily clients', stroke: colors.secondary, width: 1.5, dash: [6, 4], points: { show: false } },
     ],
     legend: { live: true },
+    hooks: {
+      ready: [plot => plot.setLegend({ idx: timestamps.length - 1 })],
+      setCursor: [plot => { if (plot.cursor.idx === null || plot.cursor.idx === undefined) plot.setLegend({ idx: timestamps.length - 1 }); }],
+    },
   };
   chart = new uPlot(options, alignedData, container);
 }
@@ -536,7 +513,7 @@ function reasonHref(kind: ReaderKind, reason: string, state: ViewState): string 
 
 function renderComposition(data: StatsResponse, state: ViewState): void {
   const section = element('stats-composition');
-  const heading = section.querySelector('h2');
+  const heading = section.querySelector('h2, h3');
   section.replaceChildren();
   if (heading) section.appendChild(heading);
   if (data.byKind.length === 0) {
@@ -558,7 +535,9 @@ function renderComposition(data: StatsResponse, state: ViewState): void {
     .sort((a, b) => b.views - a.views);
   const max = kinds[0]?.views ?? 0;
 
+  const groups = document.createElement('div'); groups.className = 'stats-composition-groups'; section.append(groups);
   for (const group of kinds) {
+    const groupElement = document.createElement('section'); groupElement.className = 'stats-kind-group'; groups.append(groupElement);
     const row = document.createElement('div');
     row.className = 'stats-row stats-row-kind';
     const bar = document.createElement('span');
@@ -573,9 +552,9 @@ function renderComposition(data: StatsResponse, state: ViewState): void {
     value.className = 'stats-value';
     value.textContent = formatViewCount(group.views);
     row.append(bar, label, value);
-    section.appendChild(row);
+    groupElement.appendChild(row);
 
-    const reasons = group.rows.slice(0, MAX_ITEMS);
+    const reasons = group.rows;
     for (const reason of reasons) {
       const sub = document.createElement('div');
       sub.className = 'stats-row stats-row-reason';
@@ -588,7 +567,7 @@ function renderComposition(data: StatsResponse, state: ViewState): void {
       subValue.className = 'stats-value';
       subValue.textContent = formatNumber(reason.views);
       sub.append(subLabel, subValue);
-      section.appendChild(sub);
+      groupElement.appendChild(sub);
     }
     if (group.rows.length > reasons.length) {
       const more = document.createElement('div');
@@ -597,7 +576,7 @@ function renderComposition(data: StatsResponse, state: ViewState): void {
       moreLabel.className = 'stats-label';
       moreLabel.textContent = `${group.rows.length - reasons.length} more reasons`;
       more.appendChild(moreLabel);
-      section.appendChild(more);
+      groupElement.appendChild(more);
     }
   }
 }
@@ -722,6 +701,11 @@ function renderDashboard(data: StatsResponse, state: ViewState): void {
   }
   setDashboardVisible(true);
   renderTotals(data.totals);
+  replaceSectionRows('stats-traffic-mix', trafficMix(data.byKind).map(row => ({
+    label: row.label, views: row.views,
+    href: stateHref({ ...state, traffic: row.group, agent: null, kind: null }),
+    detail: `${(row.views / data.totals.views * 100).toFixed(1)}% of this selection`,
+  })), null);
   renderClientForms(data.byClientForm, data.clientFormEvidence);
   renderChart(data);
   replaceSectionRows('stats-pages', data.byPath.map((row) => pageItem(row, state)));
@@ -850,7 +834,10 @@ function renderDashboard(data: StatsResponse, state: ViewState): void {
   renderKindSignatures(data, state);
   renderFetchMetadata(data);
 
-  setStatus(`Showing ${formatViewCount(data.totals.views, true)}.${exclusionNotice}`, 'ready');
+  setStatus(excluded > 0 ? `${formatNumber(excluded)} excluded by the referral-abuse policy.` : 'Report loaded.', 'ready');
+  const announcement = document.createElement('span'); announcement.className = 'sr-only';
+  announcement.textContent = `Showing ${formatViewCount(data.totals.views, true)}. `;
+  element('stats-status').prepend(announcement);
 }
 
 let currentData: StatsResponse | null = null;
@@ -875,6 +862,7 @@ async function load(state: ViewState): Promise<void> {
     if (request !== activeRequest) return;
     currentData = data;
     renderDashboard(data, state);
+    if (location.hash.startsWith('#stats-')) document.getElementById(location.hash.slice(1))?.scrollIntoView({ block: 'start' });
   } catch (error) {
     if (request.signal.aborted || request !== activeRequest) return;
     setDashboardVisible(false);
@@ -889,35 +877,28 @@ async function load(state: ViewState): Promise<void> {
   }
 }
 
-document.querySelector('.stats-controls')?.addEventListener('click', event => {
-  if (!(event.target instanceof Element)) return;
-  const button = event.target.closest('button');
-  if (!(button instanceof HTMLButtonElement)) return;
-
-  const traffic = button.dataset.traffic;
-  const days = button.dataset.days;
-  const nextTraffic = traffic ? parseTraffic(traffic, currentState.traffic) : currentState.traffic;
-  let agent = currentState.agent;
-  let kind = currentState.kind;
-  if (traffic && nextTraffic !== currentState.traffic && nextTraffic !== 'all') {
+function changeSelection(nextTraffic: TrafficFilter, range: RangeFilter): void {
+  let agent = currentState.agent, kind = currentState.kind;
+  if (nextTraffic !== currentState.traffic && nextTraffic !== 'all') {
     const agentFits = currentData?.byKind.some(row => readerGroupOf(row.kind) === nextTraffic) ?? false;
     if (agent !== null && !agentFits) agent = null;
     if (kind !== null && !READER_GROUPS[nextTraffic].includes(kind)) kind = null;
   }
-  const state: ViewState = {
-    traffic: nextTraffic,
-    range: days ? parseRange(days === '0' ? 'all' : `${days}d`) : currentState.range,
-    path: currentState.path,
-    agent,
-    kind,
-  };
-  if (state.traffic === currentState.traffic
-    && state.range === currentState.range
-    && state.path === currentState.path
-    && state.agent === currentState.agent
-    && state.kind === currentState.kind) return;
+  const state: ViewState = { traffic: nextTraffic, range, path: currentState.path, agent, kind };
+  if (state.traffic === currentState.traffic && state.range === currentState.range
+    && state.path === currentState.path && state.agent === currentState.agent && state.kind === currentState.kind) return;
   pushState(state);
   void load(state);
+}
+
+document.getElementById('stats-traffic')?.addEventListener('change', event => {
+  if (event.target instanceof HTMLSelectElement) changeSelection(parseTraffic(event.target.value, currentState.traffic), currentState.range);
+});
+document.querySelector('.stats-controls')?.addEventListener('click', event => {
+  if (!(event.target instanceof Element)) return;
+  const button = event.target.closest('button');
+  if (!(button instanceof HTMLButtonElement) || button.dataset.days === undefined) return;
+  changeSelection(currentState.traffic, parseRange(button.dataset.days === '0' ? 'all' : `${button.dataset.days}d`));
 });
 
 element('stats-scope').addEventListener('click', event => {
@@ -937,7 +918,13 @@ element('stats-scope').addEventListener('click', event => {
   void load(state);
 });
 
-window.addEventListener('popstate', () => void load(getState()));
+window.addEventListener('popstate', () => {
+  const state = getState();
+  // Fragment navigation also emits popstate. Keep native section jumps in the page.
+  if (state.range === currentState.range && state.traffic === currentState.traffic
+    && state.path === currentState.path && state.agent === currentState.agent && state.kind === currentState.kind) return;
+  void load(state);
+});
 
 new MutationObserver(() => {
   if (currentData) renderChart(currentData);

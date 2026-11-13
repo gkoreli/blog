@@ -45,3 +45,10 @@ Use [shared tokens](../../../../packages/design/tokens.css), [layout CSS](../../
 - Keep check results, their evidence and actionable next steps visible while scrolling. Use section headings and native jump links for longer reports. Reserve disclosures for method explanations and raw data, rather than hiding passed, failed, optional or unassessed results.
 - Group related checks with a compact points summary. State each outcome in words; color is a secondary cue. Keep unknown points separate from failed points and preserve the observation date and scope near the overview.
 - The enhanced and server-rendered access reports use the same escaped [report template](../../../../packages/blog/src/lib/site-audit-report.ts). Design Language renders its check-group component with explicitly illustrative inputs.
+
+## Analytical reports
+
+- Put the principal metrics and trend chart before detailed evidence. Use visible, named sections and native jump links for longer reports. Keep report results in the page; disclosures can hold alternate chart data or operational method details.
+- Keep the metric label, number and definition together. Daily clients are per-day identifiers, not people; request categories describe signals and declared roles. Put the selected scope, UTC period, partial-bucket boundary and calculation time near the data they qualify.
+- Use the shared [data-display templates](../../../../packages/blog/src/lib/data-display.ts) and [styles](../../../../packages/blog/src/styles/data-display.css) for metric tiles and comparison rows. Rows print their value; the bar compares against the largest visible row. Keep filter links and Open actions distinct, with a visible focus outline and at least 44px targets.
+- Label filters explicitly. A native select suits one choice among long category names; a compact pressed-button group suits a few time ranges. Distinguish chart series with line style as well as color, retain an accessible data table, and show missing evidence without treating it as zero or false.

@@ -1,5 +1,6 @@
 import { html, raw } from '@nisli/core';
 import { reportCheckSectionHtml } from '../lib/site-audit-report.js';
+import { metricTileHtml, rankedRowHtml } from '../lib/data-display.js';
 import { homeToolsInvitation } from './home-tools-invitation.js';
 import { navigationChoices } from '../templates/navigation-choice.js';
 import { toolCatalogue } from './tool-catalogue.js';
@@ -143,6 +144,21 @@ export function designLanguagePage() {
       { id: 'example-unknown', title: 'Indexing controls', state: 'unknown', weight: 10, evidence: 'The example capture is incomplete.', nextStep: 'Inspect the missing response headers.' },
     ] }))}></div>`}
   </div>
+  <section id="data-patterns">
+  <h3 class="dl-pattern-title">Metrics with a definition</h3>
+  <p class="dl-body-note">Keep the label, number and unit definition together. Use two compact tiles for related totals, with tabular numerals and a short explanation. Show the selected scope and calculation time beside the report. These figures are illustrative.</p>
+  <div class="data-metrics" html:inner=${raw([
+    metricTileHtml({ label: 'Page views', value: '1,248', detail: 'Recorded page requests' }),
+    metricTileHtml({ label: 'Daily clients', value: '862', detail: 'Per-day identifiers, not people' }),
+  ].join(''))}></div>
+  <h3 class="dl-pattern-title">Comparison rows</h3>
+  <p class="dl-body-note">Print each value and use a quiet bar to support comparison. Keep the main filter destination and a separate Open action distinct, with generous keyboard and touch targets. Wrap long labels. These values illustrate the pattern; they are not site measurements.</p>
+  <div html:inner=${raw([
+    { label: 'Homepage', views: 420, href: '/stats?path=%2F', openHref: '/', openAriaLabel: 'Open homepage' },
+    { label: 'Engineering', views: 280, href: '/stats?path=%2Fengineering', openHref: '/engineering' },
+    { label: 'Tools', views: 140, href: '/stats?path=%2Ftools', openHref: '/tools' },
+  ].map(item => rankedRowHtml(item, 420)).join(''))}></div>
+  </section>
   </section>
 
   ${GradSep()}
