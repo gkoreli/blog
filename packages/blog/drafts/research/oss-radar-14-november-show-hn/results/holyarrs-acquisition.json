@@ -1,0 +1,30 @@
+{
+  "repository": "HolyArrs/HolyArrs",
+  "commit": "649795593b6f13ea26cdea326a7113b15c2c9371",
+  "toolchain": "Go 1.27.4; temporary caches",
+  "tests": [
+    {
+      "name": "TestGrabRetryAfterKillDoesNotDuplicate",
+      "result": "PASS"
+    },
+    {
+      "name": "TestNZBGetJournalSurvivesRestartAndPinsOriginal",
+      "result": "PASS"
+    },
+    {
+      "name": "TestNZBGetReconcilesAnAcceptedAppendWithALostResponse",
+      "result": "PASS"
+    },
+    {
+      "name": "TestOptionalTorrentJournalPinsUnknownOutcomeAcrossRestart",
+      "result": "PASS"
+    }
+  ],
+  "optionalTorrentSubcases": [
+    "transmission",
+    "deluge",
+    "rtorrent",
+    "aria2"
+  ],
+  "scope": "Upstream synthetic database/downloader tests. The crash state in some tests is constructed rather than an actual process kill. No real downloader, media or library migration."
+}

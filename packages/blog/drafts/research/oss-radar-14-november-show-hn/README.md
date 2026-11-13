@@ -1,6 +1,6 @@
 # OSS Radar #14: November Show HN scan
 
-Status: revised cohort manuscript and product-mechanism review completed November 13, 2026. **Unpublished.** Documentation, source and discussions reviewed across all twelve. Six small local checks on November 11 plus three HolyArrs metadata tests on November 13; the new 1.1.0 baseline changes its dependency assessment. Waymark setup did not reach workflows. No comparative benchmark, live agent integration, public product deployment or publication is claimed.
+Status: cohort manuscript and mechanism experiments revised November 13, 2026. **Unpublished.** Source and discussions reviewed across all twelve; focused executed paths now cover ten. The latest pass includes real Waymark 0.30.1 recovery, the post-release delivery-contract distinction, a Spindle contract change, Stroq source/false-positive controls, archive repacking, pure answer assembly and acquisition reconciliation. No GPU-model benchmark, Kairos model call, live agent integration or production acceptance is claimed.
 
 - [Manuscript](../../oss-radar-14-november-show-hn.md)
 - [Inventory method and daily query URLs](inventory-method.json)
@@ -8,7 +8,8 @@ Status: revised cohort manuscript and product-mechanism review completed Novembe
 - [Selected twelve submissions](sample.csv)
 - [Repository baselines and inspected files](baselines.json)
 - [Claims and product map](claims.md)
-- [Current product mechanisms, positioning and dated follow-up](05-product-mechanisms-and-positioning.md)
+- [Current executed mechanism experiments](06-mechanism-experiments.md)
+- [Product mechanisms, positioning and dated follow-up](05-product-mechanisms-and-positioning.md)
 - [Modern Web Guidance: November 13 retrieval pilot and proposed independent study](../modern-web-guidance/README.md) — separate follow-up research; no new agent-quality result or manuscript claim.
 - [Declared deeper-review protocol](02-deep-review-protocol.md)
 - [Discussions, firsthand reports and design checks](03-discussions-and-design.md)
@@ -35,7 +36,7 @@ The current title identifies the source cohort. The opening and each project ent
 
 ## Remaining work
 
-Author review of the November 13 cohort manuscript and judgments is next. The narrower November 11 manuscript is retained in Git history, not a separate active draft. Recheck consequential live issues, package behavior and model terms before publication. No maintainer contact, market-growth measurement, publication, production acceptance or distribution is claimed. Waymark's retained recovery fixture is an attempted protocol, not a validated recipe or commitment to continue the unsuitable database setup.
+Author review of the November 13 cohort manuscript and judgments is next. The narrower November 11 manuscript is retained in Git history, not a separate active draft. Recheck consequential live issues, package behavior and model terms before publication. No maintainer contact, market-growth measurement, publication, production acceptance or distribution is claimed. Waymark's old auxiliary-database fixture remains an unsuccessful historical setup. The later standalone-Postgres fixture reached all three scenarios; distinguish its released 0.30.1 behavior from merged PR 886, whose runtime was not executed.
 
 Publication, if requested, needs final metadata/date review and isolated rendering under the current repository workflow. Raw author messages remain in the approved private archive and do not belong in this directory.
 
@@ -64,6 +65,8 @@ Historical source-only first pass. The deeper-review records above and revised a
 
 ## Cohort manuscript acceptance — November 13
 
+Historical pre-mechanism revision; the acceptance below supersedes its then-unexecuted runtime boundaries.
+
 - Re-read the first issue's full source and reviewed its progression from a common source through project purpose, technical distinction, judgments and cohort distillation. The current manuscript adopts those editorial functions while retaining evidence boundaries and avoiding unsupported forecasts.
 - Revised manuscript: 4,705 whitespace-delimited body words via `parsePost()`. All twelve entries now explain the problem/audience, a called implementation path and why it matters, evidence that qualifies the interpretation, and a product judgment or hard question. Closing comparisons and distillation follow those mechanisms.
 - Added the dated [product reading and positioning record](05-product-mechanisms-and-positioning.md). Preserved prior source and trial receipts. HolyArrs 1.1.0 is an explicit later baseline, used consistently for its current manuscript links; its previous dependency verdict is superseded.
@@ -72,3 +75,13 @@ Historical source-only first pass. The deeper-review records above and revised a
 - Actual frontmatter parser and Markdown renderer passed: one H1 matching the new title, twelve project entries. `pnpm -C packages/blog validate`: all 34 published Markdown posts valid. No shared build output or running server was touched; no viewport or production acceptance is claimed.
 - Reviewed the full revised manuscript against code, attributed reports and the claim table, including the distinction between a runnable inference implementation and unreviewed weight-training methods. Raw author wording and operational logs remain outside public files.
 - Next bounded action: author review of this cohort manuscript. It is unpublished. Publication would require current release/issue/weight-term checks and the normal isolated rendering workflow.
+
+## Mechanism acceptance — November 13
+
+- Revised manuscript: 5,192 whitespace-delimited body words via the actual `parsePost()`. The twelve project entries retain purpose, implementation, interpretation and adoption questions; experiments change the judgments where they add evidence.
+- Completed the six questions in the [mechanism ledger](06-mechanism-experiments.md). Focused executed paths now cover ten projects across both dates. This adds real Waymark executor recovery, a Spindle contract change through HTTP/OpenAPI/generated Zod, Stroq provenance and inert-command controls, OmniDiff repacking, Flide's pure answer assembly and selected HolyArrs acquisition tests.
+- Waymark's unexpected default redelivery was resolved against the installed release, its own documentation and the intervening source change. Three completed workflows each had one successful database instance; outside effects repeated in both lost-action cases. Merged PR 886 was source-inspected, not runtime-tested. Spindle's stale-artifact check failed as intended and passed after regeneration. Stroq's literal-print false positive remains an explicit cost, not an inferred general bypass.
+- Verified 90 recorded source paths across fifteen checkout snapshots, all corresponding SHAs and all 52 pinned manuscript links. Local Markdown references resolve, thirteen normalized result JSON files parse, and the new experiment summaries match their recorded outputs. The original inventory hash remains unchanged.
+- Actual frontmatter parsing and Markdown rendering passed: one H1 matching the title, twelve entries in the projects section. `pnpm -C packages/blog validate`: all 34 published Markdown posts valid. No production build, viewport acceptance or live publication is claimed.
+- Public files contain synthetic fixtures and normalized outcomes. Author messages remain in the private archive; raw runtime/setup logs remain outside Git. Owned local database, executor and HTTP processes were stopped. No shared service or VM was started or stopped.
+- Next bounded action: author review of the revised cohort judgments. The draft remains unpublished. Consequential release, issue and model-term checks plus the normal isolated page-rendering workflow remain publication work; no GPU benchmark, Kairos model call or production acceptance is claimed.

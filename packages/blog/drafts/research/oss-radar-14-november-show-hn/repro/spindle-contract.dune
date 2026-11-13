@@ -1,0 +1,4 @@
+(executable
+ (name main)
+ (libraries spindle spindle-cli eio_main wiretype)
+ (preprocess (pps ppx_wiretype)))

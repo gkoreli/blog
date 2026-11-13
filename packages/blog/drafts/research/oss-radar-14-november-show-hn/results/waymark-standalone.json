@@ -1,0 +1,80 @@
+{
+  "package": "waymark==0.30.1",
+  "releaseCommit": "ed5bb7cd410bc36a051ba1384488ef9bfb252794",
+  "sourceComparisonCommit": "d40e7d53a484ad53a7d1e93baec4d02a81539ea6",
+  "postgres": "16.2 with pgcrypto; freshly built from checksum-verified source",
+  "cases": [
+    {
+      "case": "sleep",
+      "effects": [
+        {
+          "label": "sleep",
+          "step": "before-sleep"
+        },
+        {
+          "label": "sleep",
+          "step": "after-sleep"
+        }
+      ],
+      "clientExit": 0,
+      "outcome": {
+        "status": "completed",
+        "result": "after-sleep"
+      }
+    },
+    {
+      "case": "lost-default",
+      "effects": [
+        {
+          "label": "lost-default",
+          "step": "external-effect"
+        },
+        {
+          "label": "lost-default",
+          "step": "external-effect"
+        }
+      ],
+      "clientExit": 0,
+      "outcome": {
+        "status": "completed",
+        "result": "complete"
+      }
+    },
+    {
+      "case": "lost-retry",
+      "effects": [
+        {
+          "label": "lost-retry",
+          "step": "external-effect"
+        },
+        {
+          "label": "lost-retry",
+          "step": "external-effect"
+        }
+      ],
+      "clientExit": 0,
+      "outcome": {
+        "status": "completed",
+        "result": "complete"
+      }
+    }
+  ],
+  "databaseAudit": [
+    {
+      "name": "lostdefault",
+      "instances": 1,
+      "successful": 1
+    },
+    {
+      "name": "lostretry",
+      "instances": 1,
+      "successful": 1
+    },
+    {
+      "name": "sleeprecovery",
+      "instances": 1,
+      "successful": 1
+    }
+  ],
+  "scope": "One synthetic run per workflow, executor process-group killed after first journal effect; no external API or real data. Main-branch change #886 was not executed."
+}

@@ -26,6 +26,8 @@ The reading path now includes `packages/cli/src/folder-check.ts`, its inspection
 
 ## Waymark
 
+Historical source/discussion state. The later [release/runtime comparison](06-mechanism-experiments.md#waymark-the-released-delivery-contract-differs-from-the-later-source) establishes that released 0.30.1 and this later source differ on node-lost action delivery.
+
 [Launch discussion](https://news.ycombinator.com/item?id=50379221): maintainers place the design between replay-based workflows and a compiled state machine. A reader with prior orchestration work finds that separation useful; another asks about in-flight code versions. These are architectural discussion and interest, not successful Waymark adoption reports.
 
 Current source represents workflow versions by a compiled IR/hash, serializes VM state, and separates action-request/completion persistence. `docs/_internal/Architecture.md` also describes an older DAG implementation; its table names must not be treated as the current VM storage contract. Follow the actual `vm-*`, action-effect and Postgres modules instead.

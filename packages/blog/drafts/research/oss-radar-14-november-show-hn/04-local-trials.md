@@ -1,5 +1,7 @@
 # Local trials — November 11 and 13, 2026
 
+The later [mechanism experiments](06-mechanism-experiments.md) supersede the Waymark no-execution boundary below and add source-attribution, acquisition, answer-assembly and contract-change evidence. Earlier receipts retain their dated scope.
+
 This record supersedes the first draft's no-execution boundary for the six November 11 product checks below. A seventh project, HolyArrs, received the separately dated November 13 metadata checks at the end. These are small functional trials, not comparative benchmarks, security certifications or population accuracy estimates. Raw logs, checkouts, package downloads and discussion captures remain outside Git.
 
 ## Environment and versions
@@ -74,7 +76,9 @@ The checker accepts one text; comparing fact preservation is outside its interfa
 
 [Normalized result](results/ste80.json).
 
-## Waymark setup and unexecuted recovery protocol
+## Waymark initial setup and then-unexecuted recovery protocol
+
+Historical auxiliary-database attempt. The later standalone PostgreSQL trial in [mechanism experiments](06-mechanism-experiments.md#waymark-the-released-delivery-contract-differs-from-the-later-source) reached all three workflows; do not present this old setup gap as the latest result.
 
 The trial fixture prepares three cases: restart during durable sleep, loss of an in-flight action with default policy, and explicit retry of `ActionExecutionLost` after an append-only synthetic outside effect. The intended acceptance is respectively preserved progress, explicit uncertain-execution failure and possible duplicate effects under opt-in retry. **Those end-to-end outcomes have not been established.**
 

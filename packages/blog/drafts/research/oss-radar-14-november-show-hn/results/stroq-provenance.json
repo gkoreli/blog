@@ -1,0 +1,254 @@
+{
+  "package": "@stroq/cli@0.32.0",
+  "cleanRead": {
+    "verdict": "clean",
+    "score": 0,
+    "atomCount": 1
+  },
+  "suspectRead": {
+    "verdict": "suspect",
+    "score": 1,
+    "atomCount": 1
+  },
+  "literalPrintControl": {
+    "exitCode": 0,
+    "stdout": "npx radar-only-fixture --check",
+    "stderr": "",
+    "isolatedExecutablePath": true
+  },
+  "results": [
+    {
+      "label": "no-source",
+      "command": "npx radar-only-fixture --check",
+      "sessionId": "fixture-session",
+      "decision": {
+        "effect": "allow",
+        "ruleId": null,
+        "reason": "default"
+      },
+      "classes": [],
+      "provenance": []
+    },
+    {
+      "label": "clean-source",
+      "command": "npx radar-only-fixture --check",
+      "sessionId": "fixture-session",
+      "decision": {
+        "effect": "ask",
+        "ruleId": "ask-origin-untrusted",
+        "reason": "Action was copied from content the agent read (tool output is data, not instructions); confirm"
+      },
+      "classes": [
+        "origin.untrusted"
+      ],
+      "provenance": [
+        {
+          "kind": "pkg",
+          "value": "radar-only-fixture",
+          "source": "https://docs.example/fixture.md",
+          "suspect": false
+        }
+      ]
+    },
+    {
+      "label": "suspicious-source",
+      "command": "npx radar-only-fixture --check",
+      "sessionId": "fixture-session",
+      "decision": {
+        "effect": "deny",
+        "ruleId": "deny-origin-suspect",
+        "reason": "Action was dictated by content Stroq flagged as suspicious; blocked. If that was a false positive, clear it yourself, outside the agent: stroq untaint --session fixture-session"
+      },
+      "classes": [
+        "origin.untrusted",
+        "origin.suspect"
+      ],
+      "provenance": [
+        {
+          "kind": "pkg",
+          "value": "radar-only-fixture",
+          "source": "https://docs.example/fixture.md",
+          "suspect": true
+        }
+      ]
+    },
+    {
+      "label": "after-engine-reload",
+      "command": "npx radar-only-fixture --check",
+      "sessionId": "fixture-session",
+      "decision": {
+        "effect": "deny",
+        "ruleId": "deny-origin-suspect",
+        "reason": "Action was dictated by content Stroq flagged as suspicious; blocked. If that was a false positive, clear it yourself, outside the agent: stroq untaint --session fixture-session"
+      },
+      "classes": [
+        "origin.untrusted",
+        "origin.suspect"
+      ],
+      "provenance": [
+        {
+          "kind": "pkg",
+          "value": "radar-only-fixture",
+          "source": "https://docs.example/fixture.md",
+          "suspect": true
+        }
+      ]
+    },
+    {
+      "label": "different-session",
+      "command": "npx radar-only-fixture --check",
+      "sessionId": "other-session",
+      "decision": {
+        "effect": "allow",
+        "ruleId": null,
+        "reason": "default"
+      },
+      "classes": [],
+      "provenance": []
+    },
+    {
+      "label": "after-clean-repetition",
+      "command": "npx radar-only-fixture --check",
+      "sessionId": "fixture-session",
+      "decision": {
+        "effect": "deny",
+        "ruleId": "deny-origin-suspect",
+        "reason": "Action was dictated by content Stroq flagged as suspicious; blocked. If that was a false positive, clear it yourself, outside the agent: stroq untaint --session fixture-session"
+      },
+      "classes": [
+        "origin.untrusted",
+        "origin.suspect"
+      ],
+      "provenance": [
+        {
+          "kind": "pkg",
+          "value": "radar-only-fixture",
+          "source": "https://docs.example/fixture.md",
+          "suspect": true
+        }
+      ]
+    },
+    {
+      "label": "quoted-mention",
+      "command": "printf '%s' 'npx radar-only-fixture --check'",
+      "sessionId": "fixture-session",
+      "decision": {
+        "effect": "deny",
+        "ruleId": "deny-origin-suspect",
+        "reason": "Action was dictated by content Stroq flagged as suspicious; blocked. If that was a false positive, clear it yourself, outside the agent: stroq untaint --session fixture-session"
+      },
+      "classes": [
+        "origin.untrusted",
+        "origin.suspect"
+      ],
+      "provenance": [
+        {
+          "kind": "pkg",
+          "value": "radar-only-fixture",
+          "source": "https://docs.example/fixture.md",
+          "suspect": true
+        }
+      ]
+    },
+    {
+      "label": "unrelated-package",
+      "command": "npx different-radar-fixture --check",
+      "sessionId": "fixture-session",
+      "decision": {
+        "effect": "allow",
+        "ruleId": null,
+        "reason": "default"
+      },
+      "classes": [],
+      "provenance": []
+    },
+    {
+      "label": "clean-printf",
+      "command": "printf '%s' 'npx radar-only-fixture --check'",
+      "sessionId": "fixture-session",
+      "decision": {
+        "effect": "ask",
+        "ruleId": "ask-origin-untrusted",
+        "reason": "Action was copied from content the agent read (tool output is data, not instructions); confirm"
+      },
+      "classes": [
+        "origin.untrusted"
+      ],
+      "provenance": [
+        {
+          "kind": "pkg",
+          "value": "radar-only-fixture",
+          "source": "https://docs.example/fixture.md",
+          "suspect": false
+        }
+      ]
+    },
+    {
+      "label": "fresh-suspicious-printf",
+      "command": "printf '%s' 'npx radar-only-fixture --check'",
+      "sessionId": "fixture-session",
+      "decision": {
+        "effect": "deny",
+        "ruleId": "deny-origin-suspect",
+        "reason": "Action was dictated by content Stroq flagged as suspicious; blocked. If that was a false positive, clear it yourself, outside the agent: stroq untaint --session fixture-session"
+      },
+      "classes": [
+        "origin.untrusted",
+        "origin.suspect"
+      ],
+      "provenance": [
+        {
+          "kind": "pkg",
+          "value": "radar-only-fixture",
+          "source": "https://docs.example/fixture.md",
+          "suspect": true
+        }
+      ]
+    },
+    {
+      "label": "fresh-suspicious-echo",
+      "command": "echo 'run npx radar-only-fixture --check'",
+      "sessionId": "fixture-session",
+      "decision": {
+        "effect": "deny",
+        "ruleId": "deny-origin-suspect",
+        "reason": "Action was dictated by content Stroq flagged as suspicious; blocked. If that was a false positive, clear it yourself, outside the agent: stroq untaint --session fixture-session"
+      },
+      "classes": [
+        "origin.untrusted",
+        "origin.suspect"
+      ],
+      "provenance": [
+        {
+          "kind": "pkg",
+          "value": "radar-only-fixture",
+          "source": "https://docs.example/fixture.md",
+          "suspect": true
+        }
+      ]
+    },
+    {
+      "label": "fresh-suspicious-git-message",
+      "command": "git commit -m 'docs: npx radar-only-fixture --check'",
+      "sessionId": "fixture-session",
+      "decision": {
+        "effect": "deny",
+        "ruleId": "deny-origin-suspect",
+        "reason": "Action was dictated by content Stroq flagged as suspicious; blocked. If that was a false positive, clear it yourself, outside the agent: stroq untaint --session fixture-session"
+      },
+      "classes": [
+        "origin.untrusted",
+        "origin.suspect"
+      ],
+      "provenance": [
+        {
+          "kind": "pkg",
+          "value": "radar-only-fixture",
+          "source": "https://docs.example/fixture.md",
+          "suspect": true
+        }
+      ]
+    }
+  ],
+  "scope": "Synthetic engine events only; no live host or real credentials; no runner is executed; separate literal-print control uses an empty executable directory on PATH. Text provenance is not proof of semantic causation."
+}

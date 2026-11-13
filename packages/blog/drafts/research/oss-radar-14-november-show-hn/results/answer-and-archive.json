@@ -1,0 +1,141 @@
+{
+  "flideAnswers": {
+    "peaked_first": {
+      "type": "choice",
+      "choice": "first",
+      "probabilities": {
+        "first": 0.9,
+        "second": 0.1
+      },
+      "confidence": 0.8
+    },
+    "peaked_second": {
+      "type": "choice",
+      "choice": "second",
+      "probabilities": {
+        "first": 0.1,
+        "second": 0.9
+      },
+      "confidence": 0.8
+    },
+    "uniform_binary": {
+      "type": "choice",
+      "choice": "first",
+      "probabilities": {
+        "first": 0.5,
+        "second": 0.5
+      },
+      "confidence": 0.0
+    },
+    "uniform_four": {
+      "type": "choice",
+      "choice": "a",
+      "probabilities": {
+        "a": 0.25,
+        "b": 0.25,
+        "c": 0.25,
+        "d": 0.25
+      },
+      "confidence": 0.0
+    },
+    "bimodal_score": {
+      "type": "score",
+      "score": 1.0,
+      "legend": {
+        "0": "low",
+        "1": "middle",
+        "2": "high"
+      },
+      "probabilities": {
+        "0": 0.49,
+        "1": 0.02,
+        "2": 0.49
+      },
+      "confidence": 0.0
+    }
+  },
+  "archives": [
+    {
+      "case": "repacked",
+      "exitCode": 1,
+      "result": {
+        "before": {
+          "language": null,
+          "hunks": []
+        },
+        "after": {
+          "language": null,
+          "hunks": []
+        },
+        "large_residual": false,
+        "binary": true,
+        "content": {
+          "kind": "container",
+          "family": "archives",
+          "before": {
+            "format": "ZIP",
+            "bytes": 237,
+            "members": 2
+          },
+          "after": {
+            "format": "ZIP",
+            "bytes": 241,
+            "members": 2
+          },
+          "unchanged": 2,
+          "members": []
+        }
+      },
+      "gitExitCode": 1,
+      "gitReportsBinary": true
+    },
+    {
+      "case": "edited",
+      "exitCode": 1,
+      "result": {
+        "before": {
+          "language": null,
+          "hunks": []
+        },
+        "after": {
+          "language": null,
+          "hunks": []
+        },
+        "large_residual": false,
+        "binary": true,
+        "content": {
+          "kind": "container",
+          "family": "archives",
+          "before": {
+            "format": "ZIP",
+            "bytes": 237,
+            "members": 2
+          },
+          "after": {
+            "format": "ZIP",
+            "bytes": 240,
+            "members": 2
+          },
+          "unchanged": 1,
+          "members": [
+            {
+              "key": "policy.txt",
+              "status": "changed",
+              "detail": {
+                "kind": "text",
+                "before_lines": 1,
+                "after_lines": 1,
+                "removed": 1,
+                "added": 1,
+                "words_kept": false
+              }
+            }
+          ]
+        }
+      },
+      "gitExitCode": 1,
+      "gitReportsBinary": true
+    }
+  ],
+  "scope": "Pure answer formatting and synthetic archive contents; no GPU inference or population review accuracy."
+}

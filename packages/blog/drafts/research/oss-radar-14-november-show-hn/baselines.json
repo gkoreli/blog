@@ -1,6 +1,6 @@
 {
   "checkedOn": "2026-11-13",
-  "evidenceState": "Documentation, source, public discussions and small local checks; six projects checked November 11 and three HolyArrs metadata tests November 13. Waymark setup did not reach workflows. Original source snapshots retained; explicit follow-up baseline used for every HolyArrs manuscript code link.",
+  "evidenceState": "Twelve-project documentation/source/discussion review plus focused executed paths for ten projects across November 11 and 13. Includes real Waymark 0.30.1 recovery and Spindle contract-change trials. No GPU-model benchmark or Kairos model call. Original source pins and later HolyArrs baseline retained; Waymark release and post-release source explicitly distinguished.",
   "repositories": [
     {
       "repository": "GoogleChrome/modern-web-guidance",
@@ -24,7 +24,8 @@
         "LICENSE",
         "Cargo.toml",
         "src/diff.rs",
-        "src/diff/content.rs"
+        "src/diff/content.rs",
+        "src/main.rs"
       ]
     },
     {
@@ -61,7 +62,8 @@
         "flide/api/answers.py",
         "flide/runtime/pack.py",
         "flide/runtime/engine.py",
-        "flide/kernels/attention.py"
+        "flide/kernels/attention.py",
+        "flide/api/schema.py"
       ]
     },
     {
@@ -105,7 +107,12 @@
         "SECURITY.md",
         "packages/cli/src/folder-check.ts",
         "packages/core/src/provenance/record.ts",
-        "packages/core/src/provenance/action-lookup.ts"
+        "packages/core/src/provenance/action-lookup.ts",
+        "packages/core/src/provenance/action-atoms.ts",
+        "packages/core/src/provenance/command-map.ts",
+        "packages/core/src/provenance/command-kinds.ts",
+        "packages/core/test/engine-provenance-action.test.ts",
+        "packages/core/test/engine-provenance-position.test.ts"
       ]
     },
     {
@@ -121,7 +128,12 @@
         "docs/python/retries/page.mdx",
         "docs/guides/production/page.mdx",
         "crates/lib/action-runtime-convert/src/loss.rs",
-        "docs/guides/motivation/page.mdx"
+        "docs/guides/motivation/page.mdx",
+        "crates/lib/action-effect-reconciler/src/lost_execution.rs",
+        "crates/lib/action-effect-reconciler/src/adopting_action_settler.rs",
+        "crates/lib/backend-postgres-migrations/migrations/0012_vm_runtime_snapshots.sql",
+        "crates/lib/backend-postgres-migrations/migrations/0014_vm_execution_results.sql",
+        "crates/lib/backend-postgres-migrations/migrations/0015_vm_executables.sql"
       ]
     },
     {
@@ -150,7 +162,11 @@
         "core/route.ml",
         "core/input.ml",
         "core/zod.ml",
-        "docs/src/content/docs/tutorial/client-schemas.mdx"
+        "docs/src/content/docs/tutorial/client-schemas.mdx",
+        "core/spindle.mli",
+        "cli/spindle_cli.ml",
+        "core/dune",
+        "dune-project"
       ]
     },
     {
@@ -212,8 +228,26 @@
     {
       "repository": "HolyArrs/HolyArrs",
       "commit": "649795593b6f13ea26cdea326a7113b15c2c9371",
-      "scope": "Three upstream metadata tests only; Go 1.27.4, isolated caches and loopback stand-ins",
-      "result": "All three passed; see results/holyarrs-metadata.json"
+      "scope": "Three upstream metadata tests and four top-level synthetic acquisition tests; Go 1.27.4, isolated caches and loopback stand-ins. Some crash states are constructed; no real downloader or library.",
+      "result": "All selected tests passed; see results/holyarrs-metadata.json and results/holyarrs-acquisition.json"
+    },
+    {
+      "package": "waymark",
+      "version": "0.30.1",
+      "releaseCommit": "ed5bb7cd410bc36a051ba1384488ef9bfb252794",
+      "database": "Locally built PostgreSQL 16.2 with pgcrypto; Unix socket only",
+      "scope": "Three executor process-kill scenarios plus readback confirming one VM per case; see results/waymark-standalone.json"
+    },
+    {
+      "repository": "hyphatech/spindle",
+      "commit": "9ed528817b74e4cd13cc1595d1e986dc9580e75f",
+      "toolchain": "OCaml 5.5.0, opam 2.6.1, dune 3.25.0, wiretype/ppx_wiretype 0.7.0, Zod 4.3.6",
+      "scope": "One real loopback route, before/after bound, OpenAPI, generated Zod execution and CLI drift checks"
+    },
+    {
+      "repository": "OmniJev/Flide",
+      "commit": "ee6a919c2c1740743a3f4673ecd731145d23f358",
+      "scope": "Pure api/answers.py on supplied probabilities, Pydantic 2.14.3; no weights/GPU/inference"
     }
   ],
   "attemptedArtifacts": [
@@ -221,7 +255,8 @@
       "package": "waymark",
       "version": "0.30.1",
       "runtime": "Python 3.12.8 / Apple Silicon",
-      "outcome": "Installed, executor reached migrations; auxiliary pgserver 0.1.4 PostgreSQL 16.2 bundle lacks pgcrypto. No workflow recovery outcome."
+      "outcome": "Installed, executor reached migrations; auxiliary pgserver 0.1.4 PostgreSQL 16.2 bundle lacks pgcrypto. No workflow recovery outcome.",
+      "supersededBy": "results/waymark-standalone.json; the old auxiliary-pgserver failure remains historical, not the current execution limit."
     }
   ],
   "originalCheckedOn": "2026-11-11",
@@ -239,8 +274,30 @@
         "app/backend/internal/metadata/mode.go",
         "app/backend/internal/metadata/gate.go",
         "app/backend/internal/metadata/hosted_service.go",
-        "app/backend/internal/metadata/mode_test.go"
+        "app/backend/internal/metadata/mode_test.go",
+        "app/backend/internal/downloads/attempts_test.go",
+        "app/backend/internal/downloads/manager_test.go",
+        "app/backend/internal/downloads/client_nzbget_test.go"
       ]
     }
-  ]
+  ],
+  "releaseComparisons": [
+    {
+      "repository": "piercefreeman/waymark",
+      "release": "v0.30.1",
+      "commit": "ed5bb7cd410bc36a051ba1384488ef9bfb252794",
+      "sourceFiles": [
+        "docs/python/retries/page.mdx",
+        "crates/lib/action-effect-reconciler/src/adopting_action_settler.rs"
+      ],
+      "comparedWith": "d40e7d53a484ad53a7d1e93baec4d02a81539ea6",
+      "difference": "One intervening commit, PR 886 merged Nov 9. Release redelivers node-lost action calls; later source settles them as ActionExecutionLost. Only release runtime executed."
+    }
+  ],
+  "temporaryToolchains": {
+    "postgresSourceSha256": "446e88294dbc2c9085ab4b7061a646fa604b4bec03521d5ea671c2e5ad9b2952",
+    "opamBinarySha256": "3e7f67bda3ba0bf72f597917b17dc337ed5a1bd48224df8b747bb35ce05c569e",
+    "pkgconfSourceSha256": "d01a1b82f0884112d08c6dfad46f43f415d070a6a5a6aaa77ebf2674e973a9b5",
+    "scope": "Temporary prefixes/root/switch; no global install or shell setup. Checksums matched recorded publisher assets, not independent signature authentication."
+  }
 }

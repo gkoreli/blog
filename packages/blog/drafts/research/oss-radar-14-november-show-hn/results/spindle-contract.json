@@ -1,0 +1,225 @@
+{
+  "sourceCommit": "9ed528817b74e4cd13cc1595d1e986dc9580e75f",
+  "ocaml": "5.5.0",
+  "zodVersion": "4.3.6",
+  "staleCheckExit": 1,
+  "phases": [
+    {
+      "phase": "before",
+      "declaredBound": 10,
+      "openapiUnitsSchema": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 10
+      },
+      "http": [
+        {
+          "units": 0,
+          "status": 400,
+          "body": {
+            "error": "invalid",
+            "message": "Some of that request is not what it should be.",
+            "problems": [
+              {
+                "at": "body.units",
+                "code": "too_small",
+                "message": "This must be at least 1."
+              }
+            ]
+          }
+        },
+        {
+          "units": 1,
+          "status": 200,
+          "body": {
+            "units": 1
+          }
+        },
+        {
+          "units": 2,
+          "status": 200,
+          "body": {
+            "units": 2
+          }
+        },
+        {
+          "units": 3,
+          "status": 200,
+          "body": {
+            "units": 3
+          }
+        },
+        {
+          "units": 11,
+          "status": 400,
+          "body": {
+            "error": "invalid",
+            "message": "Some of that request is not what it should be.",
+            "problems": [
+              {
+                "at": "body.units",
+                "code": "too_large",
+                "message": "This must be at most 10."
+              }
+            ]
+          }
+        },
+        {
+          "units": "3",
+          "status": 400,
+          "body": {
+            "error": "invalid",
+            "message": "Some of that request is not what it should be.",
+            "problems": [
+              {
+                "at": "body.units",
+                "code": "unexpected_type",
+                "message": "This must be a whole number, not text."
+              }
+            ]
+          }
+        }
+      ],
+      "zod": [
+        {
+          "units": 0,
+          "success": false
+        },
+        {
+          "units": 1,
+          "success": true
+        },
+        {
+          "units": 2,
+          "success": true
+        },
+        {
+          "units": 3,
+          "success": true
+        },
+        {
+          "units": 11,
+          "success": false
+        },
+        {
+          "units": "3",
+          "success": false
+        }
+      ],
+      "freshCheckExit": 0
+    },
+    {
+      "phase": "after",
+      "declaredBound": 2,
+      "openapiUnitsSchema": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 2
+      },
+      "http": [
+        {
+          "units": 0,
+          "status": 400,
+          "body": {
+            "error": "invalid",
+            "message": "Some of that request is not what it should be.",
+            "problems": [
+              {
+                "at": "body.units",
+                "code": "too_small",
+                "message": "This must be at least 1."
+              }
+            ]
+          }
+        },
+        {
+          "units": 1,
+          "status": 200,
+          "body": {
+            "units": 1
+          }
+        },
+        {
+          "units": 2,
+          "status": 200,
+          "body": {
+            "units": 2
+          }
+        },
+        {
+          "units": 3,
+          "status": 400,
+          "body": {
+            "error": "invalid",
+            "message": "Some of that request is not what it should be.",
+            "problems": [
+              {
+                "at": "body.units",
+                "code": "too_large",
+                "message": "This must be at most 2."
+              }
+            ]
+          }
+        },
+        {
+          "units": 11,
+          "status": 400,
+          "body": {
+            "error": "invalid",
+            "message": "Some of that request is not what it should be.",
+            "problems": [
+              {
+                "at": "body.units",
+                "code": "too_large",
+                "message": "This must be at most 2."
+              }
+            ]
+          }
+        },
+        {
+          "units": "3",
+          "status": 400,
+          "body": {
+            "error": "invalid",
+            "message": "Some of that request is not what it should be.",
+            "problems": [
+              {
+                "at": "body.units",
+                "code": "unexpected_type",
+                "message": "This must be a whole number, not text."
+              }
+            ]
+          }
+        }
+      ],
+      "zod": [
+        {
+          "units": 0,
+          "success": false
+        },
+        {
+          "units": 1,
+          "success": true
+        },
+        {
+          "units": 2,
+          "success": true
+        },
+        {
+          "units": 3,
+          "success": false
+        },
+        {
+          "units": 11,
+          "success": false
+        },
+        {
+          "units": "3",
+          "success": false
+        }
+      ],
+      "freshCheckExit": 0
+    }
+  ],
+  "scope": "One synthetic route; real server, generated schemas, actual Zod parser and CLI drift check. No full protocol conformance or production app."
+}

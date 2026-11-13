@@ -1,5 +1,7 @@
 # Product mechanisms and positioning — November 13, 2026
 
+Later [mechanism experiments](06-mechanism-experiments.md) add the execution evidence and supersede this pass's then-unexecuted Waymark/Spindle/Flide boundaries. This record retains its pre-experiment interpretations.
+
 This pass changes the manuscript's governing form from a sequence of check results to a cohort distillation. The [first issue](../../../posts/002-oss-radar-01-vercel-winter-2026-cohort.md) establishes a project in its existing workflow, explains a consequential implementation choice, then asks what that means for its usefulness and future. Its strongest structural feature is the connection between mechanism and judgment. Reusing that structure does not require repeating its forecasts, metrics, slogans or unsupported comparative claims.
 
 The November sample remains fixed. Earlier local trials remain evidence with their recorded versions. No execution result is inferred from additional reading. Original November 11 source pins remain, with an explicitly separate HolyArrs 1.1.0 baseline because a material dependency changed after that review.
