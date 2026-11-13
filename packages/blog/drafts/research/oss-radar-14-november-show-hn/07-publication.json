@@ -1,0 +1,28 @@
+{
+  "date": "2026-11-13",
+  "articleUrl": "https://gkoreli.com/oss-radar-14-november-show-hn",
+  "sourcePath": "packages/blog/posts/045-oss-radar-14-november-show-hn.md",
+  "markdownPostsValid": 35,
+  "generatedPosts": 46,
+  "bodyWords": 4000,
+  "pinnedCodeLinks": 52,
+  "h1Count": 1,
+  "projectEntries": 12,
+  "localArticleSha256": "8e9c0637772a3cd832d5355c5dd9b4621c099ad12320cc70ff9aaa949944902c",
+  "localMarkdownSha256": "46d2a68d4207b93a9806694b7e8488c69b3c8e0ea4ce56f0e8169a6179405cb2",
+  "localOgSha256": "8d078b44d5529bbfab3e996a6955fd24f06b249728e6f57738326d0eef33eed7",
+  "localBuildPublicTurnstileKeyPresent": false,
+  "checks": [
+    "workspace typecheck",
+    "published Markdown validation",
+    "isolated production build and built-HTML validation",
+    "canonical/date/JSON-LD/OG metadata",
+    "HTML/Markdown/citations",
+    "index/RSS/sitemap/llms/section/home discovery",
+    "52 pinned code paths and local research links",
+    "browser opening and sources at 675x766 without document overflow",
+    "1200x600 social image visual inspection"
+  ],
+  "sourceDelivery": "pending",
+  "liveAcceptance": "pending"
+}

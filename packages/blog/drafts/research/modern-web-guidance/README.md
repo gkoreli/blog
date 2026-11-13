@@ -4,7 +4,7 @@ November 13, 2026, America/Los_Angeles. Initial source review and a small local 
 
 ## Editorial decision
 
-There is a useful standalone investigation here: **does maintained browser guidance improve the code an agent actually delivers under a project's constraints?** The launch alone already fits the unpublished [OSS Radar #14 entry](../../oss-radar-14-november-show-hn.md). A separate article should contribute independent task outcomes or a transferable retrieval method, rather than repeat the announcement.
+There is a useful standalone investigation here: **does maintained browser guidance improve the code an agent actually delivers under a project's constraints?** The launch is covered by the [OSS Radar #14 entry](../../../posts/045-oss-radar-14-november-show-hn.md). A separate article should contribute independent task outcomes or a transferable retrieval method, rather than repeat the announcement.
 
 The strongest initial direction is a controlled interface-building study using owned tasks. A narrower alternative is a retrieval engineering field note about where a distilled word table works and where the consuming agent must interpret its results. The pilot supports concrete questions for both; it establishes neither product superiority nor general failure.
 
