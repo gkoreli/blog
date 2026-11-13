@@ -1,0 +1,114 @@
+{
+  "capturedAt": "2026-11-13T15:21:42.887Z",
+  "method": "Read-only native-dialog timing and focus probe on preserved artifact; file URL, no source edits or generation.",
+  "observations": [
+    {
+      "artifact": "b2fc3f4b2dd1",
+      "engine": "chromium",
+      "browserVersion": "156.0.8078.4",
+      "action": "cancel",
+      "immediate": {
+        "active": "delete-report",
+        "reportHidden": false,
+        "modalOpen": false,
+        "deletions": 0
+      },
+      "after250ms": {
+        "active": "delete-report",
+        "reportHidden": false,
+        "modalOpen": false,
+        "deletions": 0
+      }
+    },
+    {
+      "artifact": "b2fc3f4b2dd1",
+      "engine": "chromium",
+      "browserVersion": "156.0.8078.4",
+      "action": "escape",
+      "immediate": {
+        "active": "delete-report",
+        "reportHidden": false,
+        "modalOpen": false,
+        "deletions": 0
+      },
+      "after250ms": {
+        "active": "delete-report",
+        "reportHidden": false,
+        "modalOpen": false,
+        "deletions": 0
+      }
+    },
+    {
+      "artifact": "b2fc3f4b2dd1",
+      "engine": "chromium",
+      "browserVersion": "156.0.8078.4",
+      "action": "confirm",
+      "immediate": {
+        "active": "delete-report",
+        "reportHidden": false,
+        "modalOpen": false,
+        "deletions": 0
+      },
+      "after250ms": {
+        "active": "delete-report",
+        "reportHidden": true,
+        "modalOpen": false,
+        "deletions": 1
+      }
+    },
+    {
+      "artifact": "b2fc3f4b2dd1",
+      "engine": "webkit",
+      "browserVersion": "27.2",
+      "action": "cancel",
+      "immediate": {
+        "active": "confirm-modal",
+        "reportHidden": false,
+        "modalOpen": false,
+        "deletions": 0
+      },
+      "after250ms": {
+        "active": "BODY",
+        "reportHidden": false,
+        "modalOpen": false,
+        "deletions": 0
+      }
+    },
+    {
+      "artifact": "b2fc3f4b2dd1",
+      "engine": "webkit",
+      "browserVersion": "27.2",
+      "action": "escape",
+      "immediate": {
+        "active": "confirm-cancel",
+        "reportHidden": false,
+        "modalOpen": false,
+        "deletions": 0
+      },
+      "after250ms": {
+        "active": "BODY",
+        "reportHidden": false,
+        "modalOpen": false,
+        "deletions": 0
+      }
+    },
+    {
+      "artifact": "b2fc3f4b2dd1",
+      "engine": "webkit",
+      "browserVersion": "27.2",
+      "action": "confirm",
+      "immediate": {
+        "active": "confirm-modal",
+        "reportHidden": true,
+        "modalOpen": false,
+        "deletions": 1
+      },
+      "after250ms": {
+        "active": "BODY",
+        "reportHidden": true,
+        "modalOpen": false,
+        "deletions": 1
+      }
+    }
+  ]
+}
