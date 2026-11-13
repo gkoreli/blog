@@ -31,7 +31,7 @@ test('tool entry pages expose actual tasks, local processing and a useful static
   assert.match(snapshots[0] ?? '', /href="\/ai-check"/);
   assert.match(snapshots[0] ?? '', /href="\/tools\/robots"/);
   assert.match(snapshots[0] ?? '', /href="\/tools\/compare"/);
-  assert.match(snapshots[0] ?? '', /href="\/ai-check#ai-check-request-heading"/);
+  assert.match(snapshots[0] ?? '', /href="\/tools\/request-inspector"/);
   assert.match(snapshots[1] ?? '', /Allowed for OAI-SearchBot/);
   assert.match(snapshots[1] ?? '', /Nothing is uploaded/);
   assert.match(snapshots[2] ?? '', /file contents stay in this browser/);

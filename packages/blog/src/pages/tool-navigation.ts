@@ -1,9 +1,10 @@
 import { html } from '@nisli/core';
 
-export function toolNavigation(current: 'overview' | 'check' | 'robots' | 'compare') {
+export function toolNavigation(current: 'overview' | 'check' | 'request' | 'robots' | 'compare') {
   const links = [
     { id: 'overview', href: '/tools', label: 'Overview' },
     { id: 'check', href: '/ai-check', label: 'Page check' },
+    { id: 'request', href: '/tools/request-inspector', label: 'Requests' },
     { id: 'robots', href: '/tools/robots', label: 'Robots' },
     { id: 'compare', href: '/tools/compare', label: 'Compare' },
   ];

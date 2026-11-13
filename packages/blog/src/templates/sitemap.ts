@@ -19,6 +19,7 @@ ${url('/oss-radar')}
 ${postUrls.join('\n')}
 ${url('/about')}
 ${url('/tools')}
+${url('/tools/request-inspector')}
 ${url('/tools/robots')}
 ${url('/tools/compare')}
 ${url('/ai-check')}

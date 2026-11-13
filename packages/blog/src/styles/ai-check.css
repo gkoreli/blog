@@ -12,7 +12,7 @@
 .tool-app [hidden] { display: none !important; }
 site-audit-check, request-evidence-check, robots-workbench, report-comparison { display: block; }
 /* One shared wayfinding strip across the toolkit. */
-.tool-navigation { display: flex; gap: 1.35rem; margin-bottom: 2rem; padding-bottom: 0.85rem; border-bottom: 1px solid var(--color-border); }
+.tool-navigation { display: flex; flex-wrap: wrap; gap: 0.2rem 1.35rem; margin-bottom: 2rem; padding-bottom: 0.85rem; border-bottom: 1px solid var(--color-border); }
 .tool-navigation a { padding: 0.2rem 0; font: 400 0.74rem/1.6 var(--font-mono); text-decoration: none; color: var(--tool-muted); }
 .tool-navigation a:visited { color: var(--tool-muted); }
 .tool-navigation a:hover { color: var(--color-link); }
@@ -79,16 +79,17 @@ site-audit-check, request-evidence-check, robots-workbench, report-comparison { 
 [data-workbench-status] { font-size: 0.75rem; color: var(--tool-muted); }
 [data-workbench-status][data-state]:not(:empty) { padding: 0.8rem 1rem; border-radius: 3px; background: var(--color-surface); border: 1px solid var(--color-border); }
 [data-workbench-status][data-state="error"] { color: var(--color-text); }
-.ai-check-method, .ai-check-request, .ai-check-api { margin-top: 2.2rem; padding-top: 1.6rem; border-top: 1px solid var(--color-border); }
-.ai-check-method > p, .ai-check-request > p, .ai-check-api > p { font-size: 0.8rem; color: var(--tool-muted); margin: 0.7rem 0; }
+.ai-check-method, .ai-check-api { margin-top: 2.2rem; padding-top: 1.6rem; border-top: 1px solid var(--color-border); }
+.ai-check-method > p, .ai-check-api > p { font-size: 0.8rem; color: var(--tool-muted); margin: 0.7rem 0; }
 .ai-check-chain { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; list-style: none; margin: 1rem 0; counter-reset: access-chain; }
 .ai-check-chain li { counter-increment: access-chain; }
 .ai-check-chain li::before { content: '0' counter(access-chain); display: block; font: 0.64rem/1.5 var(--font-mono); color: var(--color-link); margin-bottom: 0.5rem; }
 .ai-check-chain strong { display: block; font-size: 0.8rem; margin-bottom: 0.35rem; }
 .ai-check-chain span { font-size: 0.73rem; color: var(--tool-muted); }
-.ai-check-request .tool-kicker, .ai-check-api .tool-kicker { margin-bottom: 0.6rem; }
+.ai-check-api .tool-kicker { margin-bottom: 0.6rem; }
+.request-inspector > request-evidence-check > .tool-caption, .request-inspector > .ai-check-note { margin-top: 0.75rem; }
 .request-evidence-report { margin-top: 1.5rem; }
-.request-evidence-report h4 { margin: 1.2rem 0 0.7rem; }
+.request-evidence-report h3 { margin: 1.2rem 0 0.7rem; }
 .request-evidence-report dl { margin-bottom: 0.7rem; }
 .ai-check-report { margin-top: 2.5rem; padding: 1.5rem 0 0; border-top: 1px solid var(--color-border); scroll-margin-top: 1rem; }
 .ai-check-report-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; padding-bottom: 1.1rem; }
@@ -203,7 +204,7 @@ site-audit-check, request-evidence-check, robots-workbench, report-comparison { 
 @keyframes tool-spin { to { transform: rotate(360deg); } }
 @media (min-width: 1360px) { .layout:has(.tool-app) { --content-max: 940px; } }
 @media (max-width: 600px) {
-  .tool-navigation { gap: 1.1rem; margin-bottom: 1.6rem; }
+  .tool-navigation { column-gap: 1.1rem; margin-bottom: 1.6rem; }
   .tool-navigation a { font-size: 0.7rem; }
   .ai-check-header h1 { font-size: 2.15rem; }
   .ai-check-lead, .tools-lead { font-size: 0.87rem; }
@@ -253,7 +254,7 @@ site-audit-check, request-evidence-check, robots-workbench, report-comparison { 
   .access-components:not(.comparison-score-summary) .access-component h3 { min-height: 0; font-size: 0.7rem; margin: 0; }
   .access-components:not(.comparison-score-summary) .access-component-state { grid-column: 1 / -1; min-height: 0; margin-top: 0.2rem; }
   .access-components:not(.comparison-score-summary) .access-component-bar { grid-column: 1 / -1; margin-top: 0.5rem; }
-  .tool-navigation { gap: 1rem; }
+  .tool-navigation { column-gap: 1rem; }
   .tool-navigation a { font-size: 0.7rem; }
   .access-components:not(.comparison-score-summary) .access-component:last-child { border-bottom: 0; }
 }

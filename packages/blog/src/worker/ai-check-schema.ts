@@ -70,6 +70,7 @@ export const aiCheckSchema = {
     } },
     '/api/request-check': { get: {
       operationId: 'checkIncomingRequest', summary: 'Assess the actual request arriving at this endpoint',
+      externalDocs: { description: 'Request Inspector tool and evidence limits', url: 'https://gkoreli.com/tools/request-inspector' },
       description: 'Shares the daily allowance. Returns referrer state, parsed site-relationship claim, independent lexical declarations, reader category/reason, navigation and form claims, network context and local/native signature evidence. Referrer and navigation context do not authenticate a source, new arrival or search click. No JSON header bag is accepted, and no raw IP, raw User-Agent, referrer hostname/URL or arbitrary request headers are echoed or persisted by this assessment. The endpoint cannot inspect requests arriving at another site. The browser button sends a fetch request; navigating to this URL sends a navigation request with potentially different evidence.',
       responses: {
         '200': { description: 'Versioned evidence for this received request and its remaining quota.', headers: quotaHeaders, content: jsonContent(ref('RequestCheckResponse')) },

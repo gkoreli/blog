@@ -31,7 +31,8 @@ test('actual static snapshot preserves no-JavaScript form, API access and server
   assert.match(snapshot, /method="post" novalidate/);
   assert.match(snapshot, /aria-describedby="ai-check-input-help ai-check-url-error"/);
   assert.match(snapshot, /data-audit-field-error="" role="alert" hidden/);
-  assert.match(snapshot, /href="\/api\/request-check"/);
+  assert.match(snapshot, /href="\/tools\/request-inspector"/);
+  assert.doesNotMatch(snapshot, /request-evidence-check|data-request-check/);
   assert.match(snapshot, /10 free checks per network address per UTC day/);
   assert.match(snapshot, /does not promise/);
 });
@@ -83,32 +84,4 @@ test('enhanced form submits one JSON request, renders evidence and reports the s
   assert.match(document.querySelector('[data-audit-status]')?.textContent ?? '', /9 of 10 checks remaining/);
   assert.equal(document.querySelector('[data-audit-results]')?.querySelectorAll('table').length, 2);
   assert.equal(document.querySelector('site-audit-check button')?.hasAttribute('disabled'), false);
-});
-
-test('request inspector separates a reported referrer from a verified arrival and explains conflicting context', async () => {
-  const { renderRequestEvidence } = await import('../src/client/ai-check.js');
-  const base = { context: { referrerState: 'external', fetchSite: 'cross-site' }, evidence: { navigationShaped: true, activation: 'true-claim', referrerContext: 'no-conflict-observed' }, limits: [] };
-  const compatible = renderRequestEvidence(base);
-  assert.match(compatible.textContent ?? '', /External source reported/);
-  assert.match(compatible.textContent ?? '', /Reloads and history can retain it/);
-  assert.match(compatible.textContent ?? '', /source unverified/);
-  const uiContext = renderRequestEvidence({ ...base, context: { referrerState: 'external', fetchSite: 'none' } });
-  assert.match(uiContext.textContent ?? '', /No site initiator reported/);
-  assert.doesNotMatch(uiContext.textContent ?? '', /Needs review: conflicting context/);
-  const conflict = renderRequestEvidence({ ...base, context: { referrerState: 'external', fetchSite: 'same-origin' }, evidence: { ...base.evidence, referrerContext: 'external-with-same-origin' } });
-  assert.match(conflict.textContent ?? '', /Needs review: conflicting context/);
-  assert.match(conflict.textContent ?? '', /does not prove automation/);
-});
-
-test('request inspector treats earlier or malformed context as unrecorded rather than a source verdict', async () => {
-  const { renderRequestEvidence } = await import('../src/client/ai-check.js');
-  for (const context of [undefined, { referrerState: hostile, fetchSite: hostile }]) {
-    const result = renderRequestEvidence({ context, evidence: { referrerContext: 'no-conflict-observed' } });
-    assert.match(result.textContent ?? '', /Not recorded/);
-    assert.match(result.textContent ?? '', /Not assessed/);
-    assert.equal(result.querySelectorAll('img,script').length, 0);
-  }
-  const absent = renderRequestEvidence({ context: { referrerState: 'absent', fetchSite: 'none' } });
-  assert.match(absent.textContent ?? '', /source is unknown/i);
-  assert.match(absent.textContent ?? '', /privacy settings or automation/);
 });

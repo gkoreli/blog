@@ -28,6 +28,7 @@ import { ownerPage } from '../pages/owner.js';
 import { statsPage, statsHead } from '../pages/stats.js';
 import { articleReachPage } from '../pages/article-reach.js';
 import { aiCheckPage } from '../pages/ai-check.js';
+import { requestInspectorPage } from '../pages/request-inspector.js';
 import { toolsPage } from '../pages/tools.js';
 import { robotsPlaygroundPage } from '../pages/robots-playground.js';
 import { reportComparePage } from '../pages/report-compare.js';
@@ -286,7 +287,8 @@ export async function buildHTML(): Promise<void> {
   addPage('stats', statsShell);
   addPage('stats/readership', pageShell({ title: 'Browser-signal article reach', description: 'Browser-signal article reach, completed weeks and reported source concentration.', content: articleReachPage(), canonicalPath: '/stats/readership', currentSlug: 'stats', noindex: true, ogImage: publicationOgImage, ogImageAlt: PUBLICATION_OG_IMAGE_ALT, head: '<link rel="stylesheet" href="/article-reach.css">', scripts: ['/article-reach.js'] }));
 
-  addPage('tools', pageShell({ title: 'Engineering tools', description: 'Check page access, test robots rules and compare saved reports with free tools built for people and agents.', content: toolsPage(), canonicalPath: '/tools', currentSlug: 'tools', ogImage: publicationOgImage, ogImageAlt: PUBLICATION_OG_IMAGE_ALT }));
+  addPage('tools', pageShell({ title: 'Engineering tools', description: 'Check page access, inspect request evidence, test robots rules and compare saved reports with free tools for people and agents.', content: toolsPage(), canonicalPath: '/tools', currentSlug: 'tools', ogImage: publicationOgImage, ogImageAlt: PUBLICATION_OG_IMAGE_ALT }));
+  addPage('tools/request-inspector', pageShell({ title: 'Request inspector', description: 'Inspect the referrer, navigation context, client declarations and verification evidence of your incoming request.', content: requestInspectorPage(), canonicalPath: '/tools/request-inspector', currentSlug: 'tools', ogImage: publicationOgImage, ogImageAlt: PUBLICATION_OG_IMAGE_ALT, scripts: ['/request-inspector.js'] }));
   addPage('tools/robots', pageShell({ title: 'Robots policy playground', description: 'Test a robots.txt against a client token and path, locally and without a daily limit.', content: robotsPlaygroundPage(), canonicalPath: '/tools/robots', currentSlug: 'tools', ogImage: publicationOgImage, ogImageAlt: PUBLICATION_OG_IMAGE_ALT, scripts: ['/tools-workbench.js'] }));
   addPage('tools/compare', pageShell({ title: 'Compare access reports', description: 'Compare two saved AI access reports locally: scores, check states, crawler policies and HTTP evidence.', content: reportComparePage(), canonicalPath: '/tools/compare', currentSlug: 'tools', ogImage: publicationOgImage, ogImageAlt: PUBLICATION_OG_IMAGE_ALT, scripts: ['/tools-workbench.js'] }));
   addPage('ai-check', pageShell({ title: 'Can AI agents access your page?', description: 'Check crawler rules, delivered HTML, indexing controls and machine-readable links, with evidence and fixes for one public URL.', content: aiCheckPage(), canonicalPath: '/ai-check', currentSlug: 'tools', ogImage: publicationOgImage, ogImageAlt: PUBLICATION_OG_IMAGE_ALT, scripts: ['/ai-check.js'] }));
