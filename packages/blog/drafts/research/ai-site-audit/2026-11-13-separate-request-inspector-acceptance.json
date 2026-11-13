@@ -1,0 +1,107 @@
+{
+  "version": 1,
+  "measuredAt": "2026-11-13T14:25:52.283712+00:00",
+  "implementationCommit": "459aa5e5b1cb42adf12271cf58e4a2c7e86db8d1",
+  "sourceCommit": "459aa5e5b1cb42adf12271cf58e4a2c7e86db8d1",
+  "cloudflareBuild": "2a609497-4f13-4dd7-8830-31b195e18c46",
+  "method": "Ten marked public GETs verify independent pages, selected navigation, canonical URL, separate exact built tool bundles/CSS, discovery indexes, operation documentation and absence of the local-only preview route. No target audit or request assessment submitted by this script.",
+  "localChecks": {
+    "typecheck": true,
+    "blogTests": 450,
+    "markdownValidation": 34,
+    "builtPosts": 45,
+    "nativeHttpRequests": 58,
+    "nativeExternalRequests": 0,
+    "workerDryRun": true,
+    "privatePromptGuard": true,
+    "turnstileConfigured": false,
+    "productionSourceUnchangedAfterConcurrentArticleIntegration": true
+  },
+  "responses": [
+    {
+      "path": "/tools/request-inspector",
+      "status": 200,
+      "sha256": "60063e19b8057c66aa77b6d747e9ced2f945e55ea0a8142d0e405aecae13d507"
+    },
+    {
+      "path": "/ai-check",
+      "status": 200,
+      "sha256": "842560e7da8bc4a8de8e1f545026c7486d2e1d357991b80358e4e2b1495f9cf1"
+    },
+    {
+      "path": "/tools",
+      "status": 200,
+      "sha256": "94320887f9515ec202d9a4b8bdf7964b2ddb288c95b3b36f999b1ad282664895"
+    },
+    {
+      "path": "/request-inspector.js",
+      "status": 200,
+      "sha256": "ccba926f5639279c94bbc40da04889fb12e03c7b43e299976d95ab5b7a0dd956"
+    },
+    {
+      "path": "/ai-check.js",
+      "status": 200,
+      "sha256": "c644f42b9154509d4c0471dcdbf4fab919d1b334dff1006a70f15b7e6a12c588"
+    },
+    {
+      "path": "/main.css",
+      "status": 200,
+      "sha256": "3057cf0cd50e1b80e3b888084568ce78a91af0aee955b1ec236cd7430399edcd"
+    },
+    {
+      "path": "/sitemap.xml",
+      "status": 200,
+      "sha256": "e40563c515d3721a505a2e14a29dc5ef6659dcba76fb8185a9a92cb3d1b8b6d1"
+    },
+    {
+      "path": "/llms.txt",
+      "status": 200,
+      "sha256": "44280b5d3621bd38a2fb486fa9610f649a27c19f6dbc896c82090130e30862ce"
+    },
+    {
+      "path": "/api/ai-check/schema",
+      "status": 200,
+      "sha256": "61d1a6578f54b6109c7cc541d5058abc7d3db48423e3784f5aa7ad58afdae11c"
+    },
+    {
+      "path": "/__preview-script-free",
+      "status": 404,
+      "sha256": "8fbdf24732eddbff77d54bb86e5bc62d405b89d4e66add3447cba504ffbd2b87"
+    }
+  ],
+  "checks": {
+    "servedSourceIncludesImplementation": true,
+    "standaloneTitleAndCanonical": true,
+    "separateActionAndPageForm": true,
+    "selectedInspectorNavigation": true,
+    "directoryLink": true,
+    "exactIndependentToolBundles": true,
+    "exactBuiltStylesheet": true,
+    "sitemap": true,
+    "llmsIndex": true,
+    "apiOperationDocs": true,
+    "localPreviewNotPublished": true
+  },
+  "browserChecks": {
+    "localDirectoryNavigation": true,
+    "localStandaloneInspection": true,
+    "localQuotaRetainsResult": true,
+    "localPageCheckSavedExample": true,
+    "localScriptFreeJsonNavigation": true,
+    "localPhoneWidth": 320,
+    "localPhoneHorizontalOverflow": false,
+    "publicStandaloneInspection": true,
+    "publicDirectoryNavigation": true,
+    "publicRemainingAllowance": 9,
+    "publicPageCheckForm": true,
+    "publicPageCheckHasNoInspectorAction": true,
+    "publicToolNavigation": true
+  },
+  "productionRequestAssessments": 1,
+  "limits": [
+    "Local API responses were explicitly supplied fixtures; they do not measure production requests or provider authenticity.",
+    "The API endpoint, request assessment rules and shared ten-check allowance did not change.",
+    "No reader comprehension, adoption or new target-access outcome is established by this page separation."
+  ],
+  "browserMeasuredAt": "2026-11-13T14:26:56.354479+00:00"
+}
