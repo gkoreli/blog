@@ -1,0 +1,123 @@
+{
+  "artifact": "a86200cabbd0",
+  "version": "v3",
+  "capturedAt": "2026-11-13T15:28:57.840Z",
+  "originalChecksPassed": 15,
+  "task": "T01",
+  "checkCount": 18,
+  "passed": 16,
+  "results": [
+    {
+      "engine": "chromium",
+      "browserVersion": "156.0.8078.4",
+      "id": "named-modal",
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "browserVersion": "156.0.8078.4",
+      "id": "initial-cancel-focus",
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "browserVersion": "156.0.8078.4",
+      "id": "keyboard-focus-contained",
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "browserVersion": "156.0.8078.4",
+      "id": "background-focus-blocked",
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "browserVersion": "156.0.8078.4",
+      "id": "cancel-preserves-and-restores",
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "browserVersion": "156.0.8078.4",
+      "id": "escape-cancels",
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "browserVersion": "156.0.8078.4",
+      "id": "backdrop-cancels",
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "browserVersion": "156.0.8078.4",
+      "id": "legacy-light-dismiss-fallback",
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "browserVersion": "156.0.8078.4",
+      "id": "confirm-deletes-once",
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "browserVersion": "27.2",
+      "id": "named-modal",
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "browserVersion": "27.2",
+      "id": "initial-cancel-focus",
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "browserVersion": "27.2",
+      "id": "keyboard-focus-contained",
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "browserVersion": "27.2",
+      "id": "background-focus-blocked",
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "browserVersion": "27.2",
+      "id": "cancel-preserves-and-restores",
+      "passed": false,
+      "error": "page.waitForFunction: Timeout 1600ms exceeded.",
+      "runtimeErrors": []
+    },
+    {
+      "engine": "webkit",
+      "browserVersion": "27.2",
+      "id": "escape-cancels",
+      "passed": false,
+      "error": "page.waitForFunction: Timeout 1600ms exceeded.",
+      "runtimeErrors": []
+    },
+    {
+      "engine": "webkit",
+      "browserVersion": "27.2",
+      "id": "backdrop-cancels",
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "browserVersion": "27.2",
+      "id": "legacy-light-dismiss-fallback",
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "browserVersion": "27.2",
+      "id": "confirm-deletes-once",
+      "passed": true
+    }
+  ]
+}

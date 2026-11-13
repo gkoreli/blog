@@ -1,0 +1,145 @@
+{
+  "artifact": "73238b0ba966",
+  "task": "T04",
+  "condition": "baseline",
+  "repetition": 2,
+  "order": 3,
+  "model": "gpt-6.1-sol",
+  "reasoningEffort": "medium",
+  "startedAt": 1794582244.4840379,
+  "finishedAt": 1794582301.979133,
+  "durationSeconds": 57.495095014572144,
+  "exitCode": 0,
+  "timedOut": false,
+  "completedTurns": 1,
+  "workerCompleted": true,
+  "usage": {
+    "input_tokens": 76487,
+    "cached_input_tokens": 68992,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 2134,
+    "reasoning_output_tokens": 102
+  },
+  "commandCount": 5,
+  "failedCommandCount": 1,
+  "skillFileReadObserved": false,
+  "lookups": [],
+  "workerErrorCount": 0,
+  "modifiedTrackedFiles": [
+    "app.js",
+    "index.html",
+    "style.css"
+  ],
+  "extraTrackedChanges": [],
+  "patchAddedLines": 47,
+  "patchRemovedLines": 2,
+  "artifactSha256": {
+    "index.html": "ea63d0b7c3f8a2d0e73fe0015ca5be2126f273bbe55d66fbd471153b9693730a",
+    "app.js": "7e7b756f05f4a10bbc06b476a99c68eb79d14aac59e31d6ccde3ee4da8cba46c",
+    "style.css": "2b7cd2c23f1b669dcd332877aad94e480d7c142dfc54b07b37c410a39f68528b"
+  },
+  "browserGrade": {
+    "task": "T04",
+    "checkCount": 16,
+    "passed": 16,
+    "results": [
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "no-premature-error",
+        "passed": true
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "empty-submit-feedback",
+        "passed": true
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "malformed-submit-feedback",
+        "passed": true
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "invalid-state-and-association",
+        "passed": true
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "correction-clears-stale-feedback",
+        "passed": true
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "valid-submission-accepted-once",
+        "passed": true
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "native-form-contract",
+        "passed": true
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "no-javascript-native-submit",
+        "passed": true
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "no-premature-error",
+        "passed": true
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "empty-submit-feedback",
+        "passed": true
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "malformed-submit-feedback",
+        "passed": true
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "invalid-state-and-association",
+        "passed": true
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "correction-clears-stale-feedback",
+        "passed": true
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "valid-submission-accepted-once",
+        "passed": true
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "native-form-contract",
+        "passed": true
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "no-javascript-native-submit",
+        "passed": true
+      }
+    ]
+  },
+  "taskPassed": true
+}

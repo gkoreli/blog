@@ -1,0 +1,157 @@
+{
+  "artifact": "65d3c70a4a1a",
+  "task": "T01",
+  "condition": "skill",
+  "repetition": 3,
+  "order": 21,
+  "model": "gpt-6.1-sol",
+  "reasoningEffort": "medium",
+  "startedAt": 1794582729.165366,
+  "finishedAt": 1794582784.314827,
+  "durationSeconds": 55.14946103096008,
+  "exitCode": 0,
+  "timedOut": false,
+  "completedTurns": 1,
+  "workerCompleted": true,
+  "usage": {
+    "input_tokens": 88621,
+    "cached_input_tokens": 78080,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 2059,
+    "reasoning_output_tokens": 239
+  },
+  "commandCount": 6,
+  "failedCommandCount": 2,
+  "skillFileReadObserved": true,
+  "lookups": [],
+  "workerErrorCount": 0,
+  "modifiedTrackedFiles": [
+    "app.js",
+    "index.html",
+    "style.css"
+  ],
+  "extraTrackedChanges": [],
+  "patchAddedLines": 53,
+  "patchRemovedLines": 3,
+  "artifactSha256": {
+    "index.html": "507f0cc06d27ace42dd21a841d706d1c3b72a367f818321b161493445f361e0a",
+    "app.js": "2281a0479971a7377848d4054fe649a8e0d4349c08caae261a117ad7ec326426",
+    "style.css": "90571538eefb460667798aa7d20e4225fa2b78b4e281fcfd75c341d3201ef8e4"
+  },
+  "browserGrade": {
+    "task": "T01",
+    "checkCount": 18,
+    "passed": 18,
+    "results": [
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "named-modal",
+        "passed": true
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "initial-cancel-focus",
+        "passed": true
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "keyboard-focus-contained",
+        "passed": true
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "background-focus-blocked",
+        "passed": true
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "cancel-preserves-and-restores",
+        "passed": true
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "escape-cancels",
+        "passed": true
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "backdrop-cancels",
+        "passed": true
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "legacy-light-dismiss-fallback",
+        "passed": true
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "confirm-deletes-once",
+        "passed": true
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "named-modal",
+        "passed": true
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "initial-cancel-focus",
+        "passed": true
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "keyboard-focus-contained",
+        "passed": true
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "background-focus-blocked",
+        "passed": true
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "cancel-preserves-and-restores",
+        "passed": true
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "escape-cancels",
+        "passed": true
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "backdrop-cancels",
+        "passed": true
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "legacy-light-dismiss-fallback",
+        "passed": true
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "confirm-deletes-once",
+        "passed": true
+      }
+    ]
+  },
+  "taskPassed": true
+}

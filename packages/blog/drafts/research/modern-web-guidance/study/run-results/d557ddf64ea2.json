@@ -1,0 +1,129 @@
+{
+  "artifact": "d557ddf64ea2",
+  "task": "T02",
+  "condition": "baseline",
+  "repetition": 2,
+  "order": 25,
+  "model": "gpt-6.1-sol",
+  "reasoningEffort": "medium",
+  "startedAt": 1794582798.757976,
+  "finishedAt": 1794582829.588172,
+  "durationSeconds": 30.830195903778076,
+  "exitCode": 0,
+  "timedOut": false,
+  "completedTurns": 1,
+  "workerCompleted": true,
+  "usage": {
+    "input_tokens": 74046,
+    "cached_input_tokens": 62464,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 907,
+    "reasoning_output_tokens": 61
+  },
+  "commandCount": 6,
+  "failedCommandCount": 1,
+  "skillFileReadObserved": false,
+  "lookups": [],
+  "workerErrorCount": 0,
+  "modifiedTrackedFiles": [],
+  "extraTrackedChanges": [],
+  "patchAddedLines": 0,
+  "patchRemovedLines": 0,
+  "artifactSha256": {
+    "index.html": "6aad93f5d2e93ddbd900c88544e08e1391e47eea38800f548f65a65d81218182",
+    "app.js": "e10655819b1d8e571dc61c2782eecdae61868955eaba57bfad56cbb242ef79f7",
+    "style.css": "9ccee9d251f9b06d07d509ecf1edda01351f452f72ca95c367e6b431bd171bc3"
+  },
+  "browserGrade": {
+    "task": "T02",
+    "checkCount": 14,
+    "passed": 14,
+    "results": [
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "mouse-toggle",
+        "passed": true
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "keyboard-toggle",
+        "passed": true
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "independent-panels",
+        "passed": true
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "dynamic-content-readable",
+        "passed": true
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "small-screen-layout",
+        "passed": true
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "no-javascript-disclosures",
+        "passed": true
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "no-unrequested-animation",
+        "passed": true
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "mouse-toggle",
+        "passed": true
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "keyboard-toggle",
+        "passed": true
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "independent-panels",
+        "passed": true
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "dynamic-content-readable",
+        "passed": true
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "small-screen-layout",
+        "passed": true
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "no-javascript-disclosures",
+        "passed": true
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "no-unrequested-animation",
+        "passed": true
+      }
+    ]
+  },
+  "taskPassed": true
+}

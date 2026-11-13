@@ -1,0 +1,363 @@
+{
+  "version": "v2",
+  "capturedAt": "2026-11-13T15:27:03.655Z",
+  "positive": {
+    "task": "T06",
+    "checkCount": 16,
+    "passed": 16,
+    "results": [
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "no-javascript-readable",
+        "passed": true
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "reduced-motion-immediate",
+        "passed": true
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "missing-observer-readable",
+        "passed": true
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "offscreen-entry-reveals",
+        "passed": true
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "initial-visible-card-reveals",
+        "passed": true
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "live-motion-preference-change",
+        "passed": true
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "removed-element-observation-cleaned",
+        "passed": true
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "content-and-links-preserved",
+        "passed": true
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "no-javascript-readable",
+        "passed": true
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "reduced-motion-immediate",
+        "passed": true
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "missing-observer-readable",
+        "passed": true
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "offscreen-entry-reveals",
+        "passed": true
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "initial-visible-card-reveals",
+        "passed": true
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "live-motion-preference-change",
+        "passed": true
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "removed-element-observation-cleaned",
+        "passed": true
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "content-and-links-preserved",
+        "passed": true
+      }
+    ]
+  },
+  "negative": {
+    "task": "T06",
+    "checkCount": 16,
+    "passed": 4,
+    "results": [
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "no-javascript-readable",
+        "passed": false,
+        "error": "Content hidden without JavaScript",
+        "runtimeErrors": []
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "reduced-motion-immediate",
+        "passed": false,
+        "error": "Reduced motion still hides/displaces content",
+        "runtimeErrors": []
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "missing-observer-readable",
+        "passed": false,
+        "error": "Missing observer hides content",
+        "runtimeErrors": []
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "offscreen-entry-reveals",
+        "passed": false,
+        "error": "locator.scrollIntoViewIfNeeded: Timeout 1586.9700000000012ms exceeded.\nCall log:\n\u001b[2m  - attempting scroll into view action\u001b[22m\n\u001b[2m    2 × waiting for element to be stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying scroll into view action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying scroll into view action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    3 × waiting for element to be stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying scroll into view action\u001b[22m\n\u001b[2m      - waiting 500ms\u001b[22m\n",
+        "runtimeErrors": []
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "initial-visible-card-reveals",
+        "passed": false,
+        "error": "Visible card remains hidden",
+        "runtimeErrors": []
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "live-motion-preference-change",
+        "passed": false,
+        "error": "Preference change did not reveal",
+        "runtimeErrors": []
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "removed-element-observation-cleaned",
+        "passed": true
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "content-and-links-preserved",
+        "passed": true
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "no-javascript-readable",
+        "passed": false,
+        "error": "Content hidden without JavaScript",
+        "runtimeErrors": []
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "reduced-motion-immediate",
+        "passed": false,
+        "error": "Reduced motion still hides/displaces content",
+        "runtimeErrors": []
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "missing-observer-readable",
+        "passed": false,
+        "error": "Missing observer hides content",
+        "runtimeErrors": []
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "offscreen-entry-reveals",
+        "passed": false,
+        "error": "locator.scrollIntoViewIfNeeded: Timeout 1573.9820000000018ms exceeded.\nCall log:\n\u001b[2m  - attempting scroll into view action\u001b[22m\n\u001b[2m    2 × waiting for element to be stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying scroll into view action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying scroll into view action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    3 × waiting for element to be stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying scroll into view action\u001b[22m\n\u001b[2m      - waiting 500ms\u001b[22m\n",
+        "runtimeErrors": []
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "initial-visible-card-reveals",
+        "passed": false,
+        "error": "Visible card remains hidden",
+        "runtimeErrors": []
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "live-motion-preference-change",
+        "passed": false,
+        "error": "Preference change did not reveal",
+        "runtimeErrors": []
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "removed-element-observation-cleaned",
+        "passed": true
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "content-and-links-preserved",
+        "passed": true
+      }
+    ]
+  },
+  "starter": {
+    "task": "T06",
+    "checkCount": 16,
+    "passed": 6,
+    "results": [
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "no-javascript-readable",
+        "passed": false,
+        "error": "Content hidden without JavaScript",
+        "runtimeErrors": []
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "reduced-motion-immediate",
+        "passed": false,
+        "error": "Reduced motion still hides/displaces content",
+        "runtimeErrors": []
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "missing-observer-readable",
+        "passed": false,
+        "error": "Missing observer hides content",
+        "runtimeErrors": [
+          "IntersectionObserver is not defined",
+          "IntersectionObserver is not defined"
+        ]
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "offscreen-entry-reveals",
+        "passed": true
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "initial-visible-card-reveals",
+        "passed": true
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "live-motion-preference-change",
+        "passed": false,
+        "error": "Preference change did not reveal",
+        "runtimeErrors": []
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "removed-element-observation-cleaned",
+        "passed": false,
+        "error": "A removed element is still observed",
+        "runtimeErrors": []
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "content-and-links-preserved",
+        "passed": true
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "no-javascript-readable",
+        "passed": false,
+        "error": "Content hidden without JavaScript",
+        "runtimeErrors": []
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "reduced-motion-immediate",
+        "passed": false,
+        "error": "Reduced motion still hides/displaces content",
+        "runtimeErrors": []
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "missing-observer-readable",
+        "passed": false,
+        "error": "Missing observer hides content",
+        "runtimeErrors": [
+          "Can't find variable: IntersectionObserver"
+        ]
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "offscreen-entry-reveals",
+        "passed": true
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "initial-visible-card-reveals",
+        "passed": true
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "live-motion-preference-change",
+        "passed": false,
+        "error": "Preference change did not reveal",
+        "runtimeErrors": []
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "removed-element-observation-cleaned",
+        "passed": false,
+        "error": "A removed element is still observed",
+        "runtimeErrors": []
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "content-and-links-preserved",
+        "passed": true
+      }
+    ]
+  },
+  "accepted": true
+}

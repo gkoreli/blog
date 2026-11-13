@@ -1,0 +1,100 @@
+diff --git a/app.js b/app.js
+index ca7bee3..b6377f3 100644
+--- a/app.js
++++ b/app.js
+@@ -1 +1,77 @@
+-const events=[];window.recordEvent=event=>{events.push(event)};window.addEventListener('unload',()=>{navigator.sendBeacon('/events',JSON.stringify(events))});document.querySelector('#record-event').onclick=()=>{recordEvent({name:'sample'});document.querySelector('#event-status').textContent='Event queued'};
++(() => {
++  const events = [];
++  const status = document.querySelector('#event-status');
++  let departureAttempted = false;
++  let sending = false;
++
++  function showStatus(message) {
++    status.textContent = `${message} Pending events: ${events.length}.`;
++  }
++
++  window.recordEvent = event => {
++    events.push(event);
++    showStatus('Event queued.');
++  };
++
++  async function sendPending() {
++    if (departureAttempted || sending || events.length === 0) return;
++    departureAttempted = true;
++    sending = true;
++
++    // Keep this snapshot in the queue until a transport accepts it. Events
++    // recorded during a fetch belong to the next batch.
++    const batch = events.slice();
++    let accepted = false;
++    try {
++      const body = JSON.stringify(batch);
++      if (typeof navigator.sendBeacon === 'function') {
++        try {
++          accepted = navigator.sendBeacon(
++            '/events',
++            new Blob([body], { type: 'application/json' })
++          );
++        } catch {
++          // A thrown beacon error can still use the keepalive fallback.
++        }
++      }
++      if (!accepted && typeof window.fetch === 'function') {
++        try {
++          const response = await window.fetch('/events', {
++            method: 'POST',
++            headers: { 'Content-Type': 'application/json' },
++            body,
++            keepalive: true
++          });
++          accepted = response.ok;
++        } catch {
++          // Keep the batch for the next departure if the request fails.
++        }
++      }
++      if (accepted) events.splice(0, batch.length);
++    } catch {
++      // Unserializable input must not discard any queued events.
++    } finally {
++      sending = false;
++      showStatus(accepted ? 'Batch accepted.' : 'Delivery failed; retry on next departure.');
++    }
++  }
++
++  document.addEventListener('visibilitychange', () => {
++    if (document.visibilityState === 'hidden') {
++      void sendPending();
++    } else {
++      departureAttempted = false;
++    }
++  });
++
++  // Both events can describe the same departure, including entry into bfcache.
++  window.addEventListener('pagehide', () => { void sendPending(); });
++  window.addEventListener('pageshow', () => {
++    departureAttempted = false;
++  });
++
++  document.querySelector('#record-event').addEventListener('click', () => {
++    window.recordEvent({ name: 'sample' });
++  });
++  showStatus('Ready to record synthetic events.');
++})();
+diff --git a/index.html b/index.html
+index 433884b..f03e75f 100644
+--- a/index.html
++++ b/index.html
+@@ -1,2 +1,2 @@
+ <!doctype html>
+-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Visit-end event queue</title><script>document.documentElement.classList.add('js')</script><link rel="stylesheet" href="style.css"></head><body><main id="top"><h1>Visit-end event delivery</h1><p>Only synthetic events are recorded in this local fixture.</p><button id="record-event">Record sample event</button><p id="event-status" role="status"></p></main><script>window.fixtureState={deletions:0,subscriptions:[]};window.removeSavedReport=()=>{window.fixtureState.deletions++;document.querySelector('#saved-report').hidden=true};window.acceptSubscription=email=>{window.fixtureState.subscriptions.push(email);return 'Request accepted. Check your inbox.'};</script><script src="app.js"></script></body></html>
++<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Visit-end event queue</title><script>document.documentElement.classList.add('js')</script><link rel="stylesheet" href="style.css"></head><body><main id="top"><h1>Visit-end event delivery</h1><p>Only synthetic events are recorded in this local fixture. Events stay queued while this page is visible and are sent to <code>/events</code> when you leave. Failed deliveries stay queued for a later attempt.</p><noscript><p>JavaScript is required to queue synthetic events.</p></noscript><button type="button" id="record-event">Record sample event</button><p id="event-status" role="status" aria-live="polite" aria-atomic="true"></p></main><script>window.fixtureState={deletions:0,subscriptions:[]};window.removeSavedReport=()=>{window.fixtureState.deletions++;document.querySelector('#saved-report').hidden=true};window.acceptSubscription=email=>{window.fixtureState.subscriptions.push(email);return 'Request accepted. Check your inbox.'};</script><script src="app.js"></script></body></html>
+diff --git a/style.css b/style.css
+index d943e3d..6ea8e27 100644
+--- a/style.css
++++ b/style.css
+@@ -1,2 +1,4 @@
+ *{box-sizing:border-box}body{font:18px/1.5 system-ui,sans-serif;margin:0;color:#202520;background:#fbfaf5}main{max-width:760px;margin:auto;padding:24px}button,input{font:inherit}button,a,input{outline-offset:4px}button{padding:8px 14px}a{color:#075a46}button{cursor:pointer}[hidden]{display:none!important}section,article{margin-block:18px}h1{font-size:28px}h2{font-size:22px}input{max-width:100%;padding:8px}p{overflow-wrap:anywhere}
+ 
++
++#event-status{min-height:3em;padding:12px 16px;border-inline-start:4px solid #075a46;background:#edf3ef}code{font-size:.95em}

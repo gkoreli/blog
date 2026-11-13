@@ -1,0 +1,149 @@
+{
+  "artifact": "e6b694903fac",
+  "task": "T06",
+  "condition": "baseline",
+  "repetition": 3,
+  "order": 17,
+  "model": "gpt-6.1-sol",
+  "reasoningEffort": "medium",
+  "startedAt": 1794582599.089172,
+  "finishedAt": 1794582676.386183,
+  "durationSeconds": 77.29701113700867,
+  "exitCode": 0,
+  "timedOut": false,
+  "completedTurns": 1,
+  "workerCompleted": true,
+  "usage": {
+    "input_tokens": 78663,
+    "cached_input_tokens": 57856,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 3281,
+    "reasoning_output_tokens": 502
+  },
+  "commandCount": 4,
+  "failedCommandCount": 1,
+  "skillFileReadObserved": false,
+  "lookups": [],
+  "workerErrorCount": 0,
+  "modifiedTrackedFiles": [
+    "app.js",
+    "index.html",
+    "style.css"
+  ],
+  "extraTrackedChanges": [],
+  "patchAddedLines": 67,
+  "patchRemovedLines": 3,
+  "artifactSha256": {
+    "index.html": "ff8e31d941f7fcaa65951cabd5610459da2ecfab5c556ae95a1037153a508caa",
+    "app.js": "cf5601bc6ab778e37d49d26c8562d368a68ef466c4931f79ac9f883226de0c56",
+    "style.css": "04ef3742aef7d9e8854d270603945e4a7b21b13d308e80759b1723e5b5bc6103"
+  },
+  "browserGrade": {
+    "task": "T06",
+    "checkCount": 16,
+    "passed": 14,
+    "results": [
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "no-javascript-readable",
+        "passed": true
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "reduced-motion-immediate",
+        "passed": true
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "missing-observer-readable",
+        "passed": true
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "offscreen-entry-reveals",
+        "passed": false,
+        "error": "Offscreen enhancement never waits",
+        "runtimeErrors": []
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "initial-visible-card-reveals",
+        "passed": true
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "live-motion-preference-change",
+        "passed": true
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "removed-element-observation-cleaned",
+        "passed": true
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "content-and-links-preserved",
+        "passed": true
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "no-javascript-readable",
+        "passed": true
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "reduced-motion-immediate",
+        "passed": true
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "missing-observer-readable",
+        "passed": true
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "offscreen-entry-reveals",
+        "passed": false,
+        "error": "Offscreen enhancement never waits",
+        "runtimeErrors": []
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "initial-visible-card-reveals",
+        "passed": true
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "live-motion-preference-change",
+        "passed": true
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "removed-element-observation-cleaned",
+        "passed": true
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "content-and-links-preserved",
+        "passed": true
+      }
+    ]
+  },
+  "taskPassed": false
+}

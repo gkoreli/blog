@@ -1,0 +1,107 @@
+{
+  "artifact": "e6b694903fac",
+  "version": "v2",
+  "capturedAt": "2026-11-13T15:27:57.126Z",
+  "originalChecksPassed": 14,
+  "task": "T06",
+  "checkCount": 16,
+  "passed": 16,
+  "results": [
+    {
+      "engine": "chromium",
+      "browserVersion": "156.0.8078.4",
+      "id": "no-javascript-readable",
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "browserVersion": "156.0.8078.4",
+      "id": "reduced-motion-immediate",
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "browserVersion": "156.0.8078.4",
+      "id": "missing-observer-readable",
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "browserVersion": "156.0.8078.4",
+      "id": "offscreen-entry-reveals",
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "browserVersion": "156.0.8078.4",
+      "id": "initial-visible-card-reveals",
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "browserVersion": "156.0.8078.4",
+      "id": "live-motion-preference-change",
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "browserVersion": "156.0.8078.4",
+      "id": "removed-element-observation-cleaned",
+      "passed": true
+    },
+    {
+      "engine": "chromium",
+      "browserVersion": "156.0.8078.4",
+      "id": "content-and-links-preserved",
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "browserVersion": "27.2",
+      "id": "no-javascript-readable",
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "browserVersion": "27.2",
+      "id": "reduced-motion-immediate",
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "browserVersion": "27.2",
+      "id": "missing-observer-readable",
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "browserVersion": "27.2",
+      "id": "offscreen-entry-reveals",
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "browserVersion": "27.2",
+      "id": "initial-visible-card-reveals",
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "browserVersion": "27.2",
+      "id": "live-motion-preference-change",
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "browserVersion": "27.2",
+      "id": "removed-element-observation-cleaned",
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "browserVersion": "27.2",
+      "id": "content-and-links-preserved",
+      "passed": true
+    }
+  ]
+}

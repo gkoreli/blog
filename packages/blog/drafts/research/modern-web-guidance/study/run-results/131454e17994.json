@@ -1,0 +1,163 @@
+{
+  "artifact": "131454e17994",
+  "task": "T01",
+  "condition": "supplied",
+  "repetition": 1,
+  "order": 44,
+  "model": "gpt-6.1-sol",
+  "reasoningEffort": "medium",
+  "startedAt": 1794583278.468483,
+  "finishedAt": 1794583344.041672,
+  "durationSeconds": 65.57318902015686,
+  "exitCode": 0,
+  "timedOut": false,
+  "completedTurns": 1,
+  "workerCompleted": true,
+  "usage": {
+    "input_tokens": 98522,
+    "cached_input_tokens": 86784,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 2442,
+    "reasoning_output_tokens": 142
+  },
+  "commandCount": 6,
+  "failedCommandCount": 1,
+  "skillFileReadObserved": false,
+  "lookups": [],
+  "workerErrorCount": 0,
+  "modifiedTrackedFiles": [
+    "app.js",
+    "index.html",
+    "style.css"
+  ],
+  "extraTrackedChanges": [],
+  "patchAddedLines": 46,
+  "patchRemovedLines": 3,
+  "artifactSha256": {
+    "index.html": "57c4fff094dff687ad33e6fd4984ff2294dc4b9a7d1240e3d1c87920b48ead24",
+    "app.js": "6a5bf8adf45d80dec3cde46d6be47c5554c940b8a5a2f6e94884d041f373962d",
+    "style.css": "bc2cd00ad36a31af25e49ee77f26f0934636cf2f29ddd9333af1060de15b98a8"
+  },
+  "browserGrade": {
+    "task": "T01",
+    "checkCount": 18,
+    "passed": 15,
+    "results": [
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "named-modal",
+        "passed": true
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "initial-cancel-focus",
+        "passed": true
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "keyboard-focus-contained",
+        "passed": true
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "background-focus-blocked",
+        "passed": true
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "cancel-preserves-and-restores",
+        "passed": true
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "escape-cancels",
+        "passed": true
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "backdrop-cancels",
+        "passed": true
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "legacy-light-dismiss-fallback",
+        "passed": true
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "confirm-deletes-once",
+        "passed": false,
+        "error": "Confirm incomplete",
+        "runtimeErrors": []
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "named-modal",
+        "passed": true
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "initial-cancel-focus",
+        "passed": true
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "keyboard-focus-contained",
+        "passed": true
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "background-focus-blocked",
+        "passed": true
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "cancel-preserves-and-restores",
+        "passed": false,
+        "error": "Focus not restored",
+        "runtimeErrors": []
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "escape-cancels",
+        "passed": false,
+        "error": "Escape cancellation incomplete",
+        "runtimeErrors": []
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "backdrop-cancels",
+        "passed": true
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "legacy-light-dismiss-fallback",
+        "passed": true
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "confirm-deletes-once",
+        "passed": true
+      }
+    ]
+  },
+  "taskPassed": false
+}

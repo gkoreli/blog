@@ -1,0 +1,145 @@
+{
+  "artifact": "2d7a6c07b92a",
+  "task": "T05",
+  "condition": "skill",
+  "repetition": 3,
+  "order": 30,
+  "model": "gpt-6.1-sol",
+  "reasoningEffort": "medium",
+  "startedAt": 1794582916.394739,
+  "finishedAt": 1794582981.205525,
+  "durationSeconds": 64.81078600883484,
+  "exitCode": 0,
+  "timedOut": false,
+  "completedTurns": 1,
+  "workerCompleted": true,
+  "usage": {
+    "input_tokens": 105780,
+    "cached_input_tokens": 94976,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 2647,
+    "reasoning_output_tokens": 441
+  },
+  "commandCount": 6,
+  "failedCommandCount": 2,
+  "skillFileReadObserved": true,
+  "lookups": [],
+  "workerErrorCount": 0,
+  "modifiedTrackedFiles": [
+    "app.js",
+    "index.html",
+    "style.css"
+  ],
+  "extraTrackedChanges": [],
+  "patchAddedLines": 61,
+  "patchRemovedLines": 2,
+  "artifactSha256": {
+    "index.html": "1d507e2cade0b106de791a01eb8cc2ca90d0f0edcded8d46ccb56971139d131e",
+    "app.js": "bf687d4d9d6d38286ede2b440a05658dd1885e52b1d4769bbcbd28d2047b61bf",
+    "style.css": "36a877dfac0c9908caf4cedcb82c3853feb99154661ea8e8273ab3acc5259884"
+  },
+  "browserGrade": {
+    "task": "T05",
+    "checkCount": 16,
+    "passed": 16,
+    "results": [
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "buffer-while-visible",
+        "passed": true
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "hidden-flush-preserves-payload",
+        "passed": true
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "hidden-pagehide-deduplicated",
+        "passed": true
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "beacon-false-fetch-fallback",
+        "passed": true
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "beacon-unavailable-fetch-fallback",
+        "passed": true
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "failed-transport-retains-for-retry",
+        "passed": true
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "persisted-pageshow-new-events-only",
+        "passed": true
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "no-bfcache-blocking-handlers",
+        "passed": true
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "buffer-while-visible",
+        "passed": true
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "hidden-flush-preserves-payload",
+        "passed": true
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "hidden-pagehide-deduplicated",
+        "passed": true
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "beacon-false-fetch-fallback",
+        "passed": true
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "beacon-unavailable-fetch-fallback",
+        "passed": true
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "failed-transport-retains-for-retry",
+        "passed": true
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "persisted-pageshow-new-events-only",
+        "passed": true
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "no-bfcache-blocking-handlers",
+        "passed": true
+      }
+    ]
+  },
+  "taskPassed": true
+}

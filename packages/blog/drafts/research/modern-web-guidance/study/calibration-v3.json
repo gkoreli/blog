@@ -1,0 +1,412 @@
+{
+  "version": "v3",
+  "capturedAt": "2026-11-13T15:27:03.655Z",
+  "positive": {
+    "task": "T01",
+    "checkCount": 18,
+    "passed": 18,
+    "results": [
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "named-modal",
+        "passed": true
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "initial-cancel-focus",
+        "passed": true
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "keyboard-focus-contained",
+        "passed": true
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "background-focus-blocked",
+        "passed": true
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "cancel-preserves-and-restores",
+        "passed": true
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "escape-cancels",
+        "passed": true
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "backdrop-cancels",
+        "passed": true
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "legacy-light-dismiss-fallback",
+        "passed": true
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "confirm-deletes-once",
+        "passed": true
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "named-modal",
+        "passed": true
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "initial-cancel-focus",
+        "passed": true
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "keyboard-focus-contained",
+        "passed": true
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "background-focus-blocked",
+        "passed": true
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "cancel-preserves-and-restores",
+        "passed": true
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "escape-cancels",
+        "passed": true
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "backdrop-cancels",
+        "passed": true
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "legacy-light-dismiss-fallback",
+        "passed": true
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "confirm-deletes-once",
+        "passed": true
+      }
+    ]
+  },
+  "negative": {
+    "task": "T01",
+    "checkCount": 18,
+    "passed": 0,
+    "results": [
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "named-modal",
+        "passed": false,
+        "error": "locator.click: Timeout 1600ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#delete-report')\u001b[22m\n\u001b[2m    - locator resolved to <button id=\"delete-report\">Delete saved report</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    3 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m ",
+        "runtimeErrors": []
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "initial-cancel-focus",
+        "passed": false,
+        "error": "locator.click: Timeout 1600ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#delete-report')\u001b[22m\n\u001b[2m    - locator resolved to <button id=\"delete-report\">Delete saved report</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    3 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m ",
+        "runtimeErrors": []
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "keyboard-focus-contained",
+        "passed": false,
+        "error": "locator.click: Timeout 1600ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#delete-report')\u001b[22m\n\u001b[2m    - locator resolved to <button id=\"delete-report\">Delete saved report</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    3 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m ",
+        "runtimeErrors": []
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "background-focus-blocked",
+        "passed": false,
+        "error": "locator.click: Timeout 1600ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#delete-report')\u001b[22m\n\u001b[2m    - locator resolved to <button id=\"delete-report\">Delete saved report</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    3 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m ",
+        "runtimeErrors": []
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "cancel-preserves-and-restores",
+        "passed": false,
+        "error": "locator.click: Timeout 1600ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#delete-report')\u001b[22m\n\u001b[2m    - locator resolved to <button id=\"delete-report\">Delete saved report</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    3 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m ",
+        "runtimeErrors": []
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "escape-cancels",
+        "passed": false,
+        "error": "locator.click: Timeout 1600ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#delete-report')\u001b[22m\n\u001b[2m    - locator resolved to <button id=\"delete-report\">Delete saved report</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    3 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m ",
+        "runtimeErrors": []
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "backdrop-cancels",
+        "passed": false,
+        "error": "locator.click: Timeout 1600ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#delete-report')\u001b[22m\n\u001b[2m    - locator resolved to <button id=\"delete-report\">Delete saved report</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    3 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m ",
+        "runtimeErrors": []
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "legacy-light-dismiss-fallback",
+        "passed": false,
+        "error": "locator.click: Timeout 1600ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#delete-report')\u001b[22m\n\u001b[2m    - locator resolved to <button id=\"delete-report\">Delete saved report</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    3 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m ",
+        "runtimeErrors": []
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "confirm-deletes-once",
+        "passed": false,
+        "error": "locator.click: Timeout 1600ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#delete-report')\u001b[22m\n\u001b[2m    - locator resolved to <button id=\"delete-report\">Delete saved report</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    3 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m ",
+        "runtimeErrors": []
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "named-modal",
+        "passed": false,
+        "error": "locator.click: Timeout 1600ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#delete-report')\u001b[22m\n\u001b[2m    - locator resolved to <button id=\"delete-report\">Delete saved report</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    3 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m ",
+        "runtimeErrors": []
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "initial-cancel-focus",
+        "passed": false,
+        "error": "locator.click: Timeout 1600ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#delete-report')\u001b[22m\n\u001b[2m    - locator resolved to <button id=\"delete-report\">Delete saved report</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    3 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m ",
+        "runtimeErrors": []
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "keyboard-focus-contained",
+        "passed": false,
+        "error": "locator.click: Timeout 1600ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#delete-report')\u001b[22m\n\u001b[2m    - locator resolved to <button id=\"delete-report\">Delete saved report</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    3 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m ",
+        "runtimeErrors": []
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "background-focus-blocked",
+        "passed": false,
+        "error": "locator.click: Timeout 1600ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#delete-report')\u001b[22m\n\u001b[2m    - locator resolved to <button id=\"delete-report\">Delete saved report</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    3 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m ",
+        "runtimeErrors": []
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "cancel-preserves-and-restores",
+        "passed": false,
+        "error": "locator.click: Timeout 1600ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#delete-report')\u001b[22m\n\u001b[2m    - locator resolved to <button id=\"delete-report\">Delete saved report</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    3 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m ",
+        "runtimeErrors": []
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "escape-cancels",
+        "passed": false,
+        "error": "locator.click: Timeout 1600ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#delete-report')\u001b[22m\n\u001b[2m    - locator resolved to <button id=\"delete-report\">Delete saved report</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    3 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m ",
+        "runtimeErrors": []
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "backdrop-cancels",
+        "passed": false,
+        "error": "locator.click: Timeout 1600ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#delete-report')\u001b[22m\n\u001b[2m    - locator resolved to <button id=\"delete-report\">Delete saved report</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    3 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m ",
+        "runtimeErrors": []
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "legacy-light-dismiss-fallback",
+        "passed": false,
+        "error": "locator.click: Timeout 1600ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#delete-report')\u001b[22m\n\u001b[2m    - locator resolved to <button id=\"delete-report\">Delete saved report</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    3 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m ",
+        "runtimeErrors": []
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "confirm-deletes-once",
+        "passed": false,
+        "error": "locator.click: Timeout 1600ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#delete-report')\u001b[22m\n\u001b[2m    - locator resolved to <button id=\"delete-report\">Delete saved report</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    3 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m ",
+        "runtimeErrors": []
+      }
+    ]
+  },
+  "starter": {
+    "task": "T01",
+    "checkCount": 18,
+    "passed": 5,
+    "results": [
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "named-modal",
+        "passed": true
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "initial-cancel-focus",
+        "passed": false,
+        "error": "Initial focus should be Cancel",
+        "runtimeErrors": []
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "keyboard-focus-contained",
+        "passed": false,
+        "error": "Tab reached a page control outside the modal",
+        "runtimeErrors": []
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "background-focus-blocked",
+        "passed": false,
+        "error": "Background control can take focus",
+        "runtimeErrors": []
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "cancel-preserves-and-restores",
+        "passed": false,
+        "error": "page.waitForFunction: Timeout 1600ms exceeded.",
+        "runtimeErrors": []
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "escape-cancels",
+        "passed": false,
+        "error": "locator.waitFor: Timeout 1600ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#confirm-modal') to be hidden\u001b[22m\n\u001b[2m    17 × locator resolved to visible <section role=\"dialog\" id=\"confirm-modal\" aria-labelledby=\"confirm-title\">…</section>\u001b[22m\n",
+        "runtimeErrors": []
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "backdrop-cancels",
+        "passed": false,
+        "error": "locator.waitFor: Timeout 1600ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#confirm-modal') to be hidden\u001b[22m\n\u001b[2m    17 × locator resolved to visible <section role=\"dialog\" id=\"confirm-modal\" aria-labelledby=\"confirm-title\">…</section>\u001b[22m\n",
+        "runtimeErrors": []
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "legacy-light-dismiss-fallback",
+        "passed": false,
+        "error": "locator.waitFor: Timeout 1600ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#confirm-modal') to be hidden\u001b[22m\n\u001b[2m    17 × locator resolved to visible <section role=\"dialog\" id=\"confirm-modal\" aria-labelledby=\"confirm-title\">…</section>\u001b[22m\n",
+        "runtimeErrors": []
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "confirm-deletes-once",
+        "passed": true
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "named-modal",
+        "passed": true
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "initial-cancel-focus",
+        "passed": false,
+        "error": "Initial focus should be Cancel",
+        "runtimeErrors": []
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "keyboard-focus-contained",
+        "passed": true
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "background-focus-blocked",
+        "passed": false,
+        "error": "Background control can take focus",
+        "runtimeErrors": []
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "cancel-preserves-and-restores",
+        "passed": false,
+        "error": "page.waitForFunction: Timeout 1600ms exceeded.",
+        "runtimeErrors": []
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "escape-cancels",
+        "passed": false,
+        "error": "locator.waitFor: Timeout 1600ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#confirm-modal') to be hidden\u001b[22m\n\u001b[2m    17 × locator resolved to visible <section role=\"dialog\" id=\"confirm-modal\" aria-labelledby=\"confirm-title\">…</section>\u001b[22m\n",
+        "runtimeErrors": []
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "backdrop-cancels",
+        "passed": false,
+        "error": "locator.waitFor: Timeout 1600ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#confirm-modal') to be hidden\u001b[22m\n\u001b[2m    17 × locator resolved to visible <section role=\"dialog\" id=\"confirm-modal\" aria-labelledby=\"confirm-title\">…</section>\u001b[22m\n",
+        "runtimeErrors": []
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "legacy-light-dismiss-fallback",
+        "passed": false,
+        "error": "locator.waitFor: Timeout 1600ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#confirm-modal') to be hidden\u001b[22m\n\u001b[2m    17 × locator resolved to visible <section role=\"dialog\" id=\"confirm-modal\" aria-labelledby=\"confirm-title\">…</section>\u001b[22m\n",
+        "runtimeErrors": []
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "confirm-deletes-once",
+        "passed": true
+      }
+    ]
+  },
+  "accepted": true
+}

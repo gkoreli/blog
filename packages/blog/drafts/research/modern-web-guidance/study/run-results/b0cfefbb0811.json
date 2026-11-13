@@ -1,0 +1,145 @@
+{
+  "artifact": "b0cfefbb0811",
+  "task": "T06",
+  "condition": "skill",
+  "repetition": 2,
+  "order": 5,
+  "model": "gpt-6.1-sol",
+  "reasoningEffort": "medium",
+  "startedAt": 1794582309.235174,
+  "finishedAt": 1794582410.6266391,
+  "durationSeconds": 101.39146518707275,
+  "exitCode": 0,
+  "timedOut": false,
+  "completedTurns": 1,
+  "workerCompleted": true,
+  "usage": {
+    "input_tokens": 109812,
+    "cached_input_tokens": 90368,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 3434,
+    "reasoning_output_tokens": 485
+  },
+  "commandCount": 6,
+  "failedCommandCount": 3,
+  "skillFileReadObserved": true,
+  "lookups": [],
+  "workerErrorCount": 0,
+  "modifiedTrackedFiles": [
+    "app.js",
+    "index.html",
+    "style.css"
+  ],
+  "extraTrackedChanges": [],
+  "patchAddedLines": 51,
+  "patchRemovedLines": 3,
+  "artifactSha256": {
+    "index.html": "ff8e31d941f7fcaa65951cabd5610459da2ecfab5c556ae95a1037153a508caa",
+    "app.js": "b65998649dea757ea68afbeb8eb16f837fb1b3510dd4e76c7f730501df640886",
+    "style.css": "30c8cee16fce810afbbd3094e0153aaf566f6a29cf4a225618c4f4152f03462c"
+  },
+  "browserGrade": {
+    "task": "T06",
+    "checkCount": 16,
+    "passed": 16,
+    "results": [
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "no-javascript-readable",
+        "passed": true
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "reduced-motion-immediate",
+        "passed": true
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "missing-observer-readable",
+        "passed": true
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "offscreen-entry-reveals",
+        "passed": true
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "initial-visible-card-reveals",
+        "passed": true
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "live-motion-preference-change",
+        "passed": true
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "removed-element-observation-cleaned",
+        "passed": true
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "content-and-links-preserved",
+        "passed": true
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "no-javascript-readable",
+        "passed": true
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "reduced-motion-immediate",
+        "passed": true
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "missing-observer-readable",
+        "passed": true
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "offscreen-entry-reveals",
+        "passed": true
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "initial-visible-card-reveals",
+        "passed": true
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "live-motion-preference-change",
+        "passed": true
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "removed-element-observation-cleaned",
+        "passed": true
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "content-and-links-preserved",
+        "passed": true
+      }
+    ]
+  },
+  "taskPassed": true
+}

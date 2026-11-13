@@ -1,0 +1,92 @@
+diff --git a/app.js b/app.js
+index ca7bee3..43f2f1f 100644
+--- a/app.js
++++ b/app.js
+@@ -1 +1,70 @@
+-const events=[];window.recordEvent=event=>{events.push(event)};window.addEventListener('unload',()=>{navigator.sendBeacon('/events',JSON.stringify(events))});document.querySelector('#record-event').onclick=()=>{recordEvent({name:'sample'});document.querySelector('#event-status').textContent='Event queued'};
++const events = [];
++const status = document.querySelector('#event-status');
++let inFlight = false;
++let attemptedWhileHidden = false;
++
++function updateStatus() {
++  status.textContent = events.length
++    ? `${events.length} synthetic event${events.length === 1 ? '' : 's'} queued${inFlight ? ' (sending)' : ''}.`
++    : 'No events pending.';
++}
++
++window.recordEvent = event => {
++  events.push(event);
++  updateStatus();
++};
++
++async function sendPendingEvents() {
++  if (document.visibilityState !== 'hidden' || attemptedWhileHidden || inFlight || !events.length) return;
++  attemptedWhileHidden = true;
++  inFlight = true;
++  const count = events.length;
++
++  try {
++    const body = JSON.stringify(events.slice(0, count));
++    let accepted = false;
++    if (typeof navigator.sendBeacon === 'function') {
++      try {
++        accepted = navigator.sendBeacon('/events', new Blob([body], { type: 'application/json' }));
++      } catch {
++        // A rejected beacon can still use the keepalive transport.
++      }
++    }
++    if (!accepted) {
++      const response = await fetch('/events', {
++        method: 'POST',
++        headers: { 'Content-Type': 'application/json' },
++        body,
++        keepalive: true,
++      });
++      accepted = response.ok;
++    }
++    // Events appended during a fetch belong to the next batch.
++    if (accepted) events.splice(0, count);
++  } catch {
++    // Keep the entire batch for a later hidden transition.
++  } finally {
++    inFlight = false;
++    updateStatus();
++  }
++}
++
++document.addEventListener('visibilitychange', () => {
++  if (document.visibilityState === 'hidden') {
++    sendPendingEvents();
++  } else {
++    attemptedWhileHidden = false;
++  }
++});
++
++window.addEventListener('pagehide', sendPendingEvents);
++window.addEventListener('pageshow', event => {
++  if (event.persisted) attemptedWhileHidden = false;
++});
++
++const recordButton = document.querySelector('#record-event');
++recordButton.disabled = false;
++recordButton.addEventListener('click', () => {
++  window.recordEvent({ name: 'sample' });
++});
++updateStatus();
+diff --git a/index.html b/index.html
+index 433884b..2fa65d5 100644
+--- a/index.html
++++ b/index.html
+@@ -1,2 +1,2 @@
+ <!doctype html>
+-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Visit-end event queue</title><script>document.documentElement.classList.add('js')</script><link rel="stylesheet" href="style.css"></head><body><main id="top"><h1>Visit-end event delivery</h1><p>Only synthetic events are recorded in this local fixture.</p><button id="record-event">Record sample event</button><p id="event-status" role="status"></p></main><script>window.fixtureState={deletions:0,subscriptions:[]};window.removeSavedReport=()=>{window.fixtureState.deletions++;document.querySelector('#saved-report').hidden=true};window.acceptSubscription=email=>{window.fixtureState.subscriptions.push(email);return 'Request accepted. Check your inbox.'};</script><script src="app.js"></script></body></html>
++<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Visit-end event queue</title><script>document.documentElement.classList.add('js')</script><link rel="stylesheet" href="style.css"></head><body><main id="top"><h1>Visit-end event delivery</h1><p>Only synthetic events are recorded in this local fixture. Events stay queued while this page is visible and are sent to /events when you leave it.</p><button id="record-event" type="button" aria-describedby="event-status" disabled>Record sample event</button><p id="event-status" role="status">Enable JavaScript to queue synthetic events.</p></main><script>window.fixtureState={deletions:0,subscriptions:[]};window.removeSavedReport=()=>{window.fixtureState.deletions++;document.querySelector('#saved-report').hidden=true};window.acceptSubscription=email=>{window.fixtureState.subscriptions.push(email);return 'Request accepted. Check your inbox.'};</script><script src="app.js"></script></body></html>
+diff --git a/style.css b/style.css
+index d943e3d..5d48eb1 100644
+--- a/style.css
++++ b/style.css
+@@ -1,2 +1,2 @@
+ *{box-sizing:border-box}body{font:18px/1.5 system-ui,sans-serif;margin:0;color:#202520;background:#fbfaf5}main{max-width:760px;margin:auto;padding:24px}button,input{font:inherit}button,a,input{outline-offset:4px}button{padding:8px 14px}a{color:#075a46}button{cursor:pointer}[hidden]{display:none!important}section,article{margin-block:18px}h1{font-size:28px}h2{font-size:22px}input{max-width:100%;padding:8px}p{overflow-wrap:anywhere}
+-
++button:disabled{cursor:default;opacity:.6}#event-status{min-height:1.5em;color:#465446}

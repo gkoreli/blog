@@ -1,0 +1,153 @@
+{
+  "campaign": 1,
+  "use": "Diagnostic integration evidence; excluded from primary working-skill comparison.",
+  "skillRuns": 18,
+  "locallyLoggedSearchRuns": 4,
+  "cacheMissRuns": 13,
+  "runs": [
+    {
+      "artifact": "0703ada31fbe",
+      "task": "T03",
+      "skillReadObserved": true,
+      "locallyLoggedSearch": true,
+      "locallyLoggedRetrieve": true,
+      "npmCacheMissObserved": false
+    },
+    {
+      "artifact": "0aaa806da6ba",
+      "task": "T02",
+      "skillReadObserved": true,
+      "locallyLoggedSearch": false,
+      "locallyLoggedRetrieve": false,
+      "npmCacheMissObserved": true
+    },
+    {
+      "artifact": "139f359ac2ce",
+      "task": "T01",
+      "skillReadObserved": true,
+      "locallyLoggedSearch": false,
+      "locallyLoggedRetrieve": false,
+      "npmCacheMissObserved": true
+    },
+    {
+      "artifact": "1f7b3aa623af",
+      "task": "T06",
+      "skillReadObserved": true,
+      "locallyLoggedSearch": false,
+      "locallyLoggedRetrieve": false,
+      "npmCacheMissObserved": true
+    },
+    {
+      "artifact": "1fa03f94826c",
+      "task": "T04",
+      "skillReadObserved": true,
+      "locallyLoggedSearch": false,
+      "locallyLoggedRetrieve": false,
+      "npmCacheMissObserved": true
+    },
+    {
+      "artifact": "2d7a6c07b92a",
+      "task": "T05",
+      "skillReadObserved": true,
+      "locallyLoggedSearch": false,
+      "locallyLoggedRetrieve": false,
+      "npmCacheMissObserved": true
+    },
+    {
+      "artifact": "5bd311309cd0",
+      "task": "T02",
+      "skillReadObserved": true,
+      "locallyLoggedSearch": false,
+      "locallyLoggedRetrieve": false,
+      "npmCacheMissObserved": true
+    },
+    {
+      "artifact": "5cf35dff774d",
+      "task": "T06",
+      "skillReadObserved": true,
+      "locallyLoggedSearch": false,
+      "locallyLoggedRetrieve": false,
+      "npmCacheMissObserved": false
+    },
+    {
+      "artifact": "65d3c70a4a1a",
+      "task": "T01",
+      "skillReadObserved": true,
+      "locallyLoggedSearch": false,
+      "locallyLoggedRetrieve": false,
+      "npmCacheMissObserved": true
+    },
+    {
+      "artifact": "825249d5fff6",
+      "task": "T02",
+      "skillReadObserved": true,
+      "locallyLoggedSearch": false,
+      "locallyLoggedRetrieve": false,
+      "npmCacheMissObserved": true
+    },
+    {
+      "artifact": "97eb2a2dc3e9",
+      "task": "T05",
+      "skillReadObserved": true,
+      "locallyLoggedSearch": false,
+      "locallyLoggedRetrieve": false,
+      "npmCacheMissObserved": true
+    },
+    {
+      "artifact": "982fd546d43f",
+      "task": "T03",
+      "skillReadObserved": true,
+      "locallyLoggedSearch": true,
+      "locallyLoggedRetrieve": true,
+      "npmCacheMissObserved": false
+    },
+    {
+      "artifact": "a1103a9d9635",
+      "task": "T04",
+      "skillReadObserved": true,
+      "locallyLoggedSearch": false,
+      "locallyLoggedRetrieve": false,
+      "npmCacheMissObserved": true
+    },
+    {
+      "artifact": "b0cfefbb0811",
+      "task": "T06",
+      "skillReadObserved": true,
+      "locallyLoggedSearch": false,
+      "locallyLoggedRetrieve": false,
+      "npmCacheMissObserved": true
+    },
+    {
+      "artifact": "b7c48473392b",
+      "task": "T05",
+      "skillReadObserved": true,
+      "locallyLoggedSearch": true,
+      "locallyLoggedRetrieve": true,
+      "npmCacheMissObserved": false
+    },
+    {
+      "artifact": "d6f12da0981f",
+      "task": "T01",
+      "skillReadObserved": true,
+      "locallyLoggedSearch": false,
+      "locallyLoggedRetrieve": false,
+      "npmCacheMissObserved": true
+    },
+    {
+      "artifact": "e358c8ffa5b4",
+      "task": "T03",
+      "skillReadObserved": true,
+      "locallyLoggedSearch": false,
+      "locallyLoggedRetrieve": false,
+      "npmCacheMissObserved": true
+    },
+    {
+      "artifact": "f7226c6d61ba",
+      "task": "T04",
+      "skillReadObserved": true,
+      "locallyLoggedSearch": true,
+      "locallyLoggedRetrieve": true,
+      "npmCacheMissObserved": false
+    }
+  ]
+}

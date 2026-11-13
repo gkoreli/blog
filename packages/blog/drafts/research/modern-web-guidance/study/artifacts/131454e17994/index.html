@@ -1,0 +1,9 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Saved-report deletion confirmation</title><script>document.documentElement.classList.add('js')</script><link rel="stylesheet" href="style.css"></head><body><main id="top"><h1>Saved reports</h1><article id="saved-report"><h2>Agent traffic</h2><p>A locally saved report.</p></article><button id="delete-report" type="button">Delete saved report</button><button id="outside-action">Another action</button><dialog id="confirm-modal" aria-labelledby="confirm-title" closedby="any">
+  <h2 id="confirm-title">Delete saved report?</h2>
+  <p>This removes the saved view.</p>
+  <form method="dialog">
+    <button id="confirm-cancel" value="cancel" autofocus>Cancel</button>
+    <button id="confirm-delete" value="delete">Delete report</button>
+  </form>
+</dialog></main><script>window.fixtureState={deletions:0,subscriptions:[]};window.removeSavedReport=()=>{window.fixtureState.deletions++;document.querySelector('#saved-report').hidden=true};window.acceptSubscription=email=>{window.fixtureState.subscriptions.push(email);return 'Request accepted. Check your inbox.'};</script><script src="app.js"></script></body></html>

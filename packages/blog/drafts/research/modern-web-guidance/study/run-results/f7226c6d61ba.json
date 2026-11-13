@@ -1,0 +1,162 @@
+{
+  "artifact": "f7226c6d61ba",
+  "task": "T04",
+  "condition": "skill",
+  "repetition": 1,
+  "order": 16,
+  "model": "gpt-6.1-sol",
+  "reasoningEffort": "medium",
+  "startedAt": 1794582597.25316,
+  "finishedAt": 1794582683.3334231,
+  "durationSeconds": 86.08026313781738,
+  "exitCode": 0,
+  "timedOut": false,
+  "completedTurns": 1,
+  "workerCompleted": true,
+  "usage": {
+    "input_tokens": 248280,
+    "cached_input_tokens": 214528,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 2872,
+    "reasoning_output_tokens": 151
+  },
+  "commandCount": 8,
+  "failedCommandCount": 1,
+  "skillFileReadObserved": true,
+  "lookups": [
+    {
+      "at": 1794582613.91127,
+      "args": [
+        "search",
+        "inline form validation",
+        "--skill-version",
+        "2026_11_09-5bcc021b"
+      ]
+    },
+    {
+      "at": 1794582617.60306,
+      "args": [
+        "retrieve",
+        "validate-input-after-interaction,forms,accessible-error-announcement"
+      ]
+    }
+  ],
+  "workerErrorCount": 0,
+  "modifiedTrackedFiles": [
+    "app.js",
+    "index.html",
+    "style.css"
+  ],
+  "extraTrackedChanges": [],
+  "patchAddedLines": 48,
+  "patchRemovedLines": 2,
+  "artifactSha256": {
+    "index.html": "74ca93f93916e700aa04eb67b31a6730200c7b91b401c4a2fe225e3573aea59f",
+    "app.js": "a0cde93df150d383e06794c77e8b7d5ca5b1f48c5e4f0082ffca1543171c4efa",
+    "style.css": "ba4c92642950be98df165763cb43f50265e36c5c8758e73ccda6b5c85c79f264"
+  },
+  "browserGrade": {
+    "task": "T04",
+    "checkCount": 16,
+    "passed": 16,
+    "results": [
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "no-premature-error",
+        "passed": true
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "empty-submit-feedback",
+        "passed": true
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "malformed-submit-feedback",
+        "passed": true
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "invalid-state-and-association",
+        "passed": true
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "correction-clears-stale-feedback",
+        "passed": true
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "valid-submission-accepted-once",
+        "passed": true
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "native-form-contract",
+        "passed": true
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "no-javascript-native-submit",
+        "passed": true
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "no-premature-error",
+        "passed": true
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "empty-submit-feedback",
+        "passed": true
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "malformed-submit-feedback",
+        "passed": true
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "invalid-state-and-association",
+        "passed": true
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "correction-clears-stale-feedback",
+        "passed": true
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "valid-submission-accepted-once",
+        "passed": true
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "native-form-contract",
+        "passed": true
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "no-javascript-native-submit",
+        "passed": true
+      }
+    ]
+  },
+  "taskPassed": true
+}

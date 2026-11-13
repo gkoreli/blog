@@ -1,0 +1,149 @@
+{
+  "artifact": "5cf35dff774d",
+  "task": "T06",
+  "condition": "skill",
+  "repetition": 3,
+  "order": 6,
+  "model": "gpt-6.1-sol",
+  "reasoningEffort": "medium",
+  "startedAt": 1794582353.669875,
+  "finishedAt": 1794582422.830178,
+  "durationSeconds": 69.16030311584473,
+  "exitCode": 0,
+  "timedOut": false,
+  "completedTurns": 1,
+  "workerCompleted": true,
+  "usage": {
+    "input_tokens": 88326,
+    "cached_input_tokens": 74496,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 2422,
+    "reasoning_output_tokens": 282
+  },
+  "commandCount": 4,
+  "failedCommandCount": 1,
+  "skillFileReadObserved": true,
+  "lookups": [],
+  "workerErrorCount": 0,
+  "modifiedTrackedFiles": [
+    "app.js",
+    "index.html",
+    "style.css"
+  ],
+  "extraTrackedChanges": [],
+  "patchAddedLines": 66,
+  "patchRemovedLines": 3,
+  "artifactSha256": {
+    "index.html": "ff8e31d941f7fcaa65951cabd5610459da2ecfab5c556ae95a1037153a508caa",
+    "app.js": "cba1cf44abb5c92ff3b1c2e57822f7d95391a369034a45b03b58858fe4dc0c26",
+    "style.css": "0bf3d9bd6291bbe2630b96d80f8e7b10000221a5d10e6cb2627b39ef03bdaa73"
+  },
+  "browserGrade": {
+    "task": "T06",
+    "checkCount": 16,
+    "passed": 14,
+    "results": [
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "no-javascript-readable",
+        "passed": true
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "reduced-motion-immediate",
+        "passed": true
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "missing-observer-readable",
+        "passed": true
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "offscreen-entry-reveals",
+        "passed": false,
+        "error": "Offscreen enhancement never waits",
+        "runtimeErrors": []
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "initial-visible-card-reveals",
+        "passed": true
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "live-motion-preference-change",
+        "passed": true
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "removed-element-observation-cleaned",
+        "passed": true
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "content-and-links-preserved",
+        "passed": true
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "no-javascript-readable",
+        "passed": true
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "reduced-motion-immediate",
+        "passed": true
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "missing-observer-readable",
+        "passed": true
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "offscreen-entry-reveals",
+        "passed": false,
+        "error": "Offscreen enhancement never waits",
+        "runtimeErrors": []
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "initial-visible-card-reveals",
+        "passed": true
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "live-motion-preference-change",
+        "passed": true
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "removed-element-observation-cleaned",
+        "passed": true
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "content-and-links-preserved",
+        "passed": true
+      }
+    ]
+  },
+  "taskPassed": false
+}

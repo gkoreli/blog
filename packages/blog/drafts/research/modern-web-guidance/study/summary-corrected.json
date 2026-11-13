@@ -1,0 +1,226 @@
+{
+  "planned": 54,
+  "observed": 54,
+  "conditions": {
+    "baseline": {
+      "attempts": 18,
+      "workersCompleted": 18,
+      "tasksPassed": 18,
+      "timeouts": 0,
+      "gradingInfrastructureFailures": 0,
+      "checksPassed": 288,
+      "checksGraded": 288,
+      "meanRunCheckFraction": 1.0,
+      "medianDurationSeconds": 66.55137896537781,
+      "uncachedInputTokens": 265114,
+      "outputTokens": 42088,
+      "skillReadObserved": 0,
+      "searchObserved": 0,
+      "retrievalObserved": 0,
+      "medianAddedLines": 54.0
+    },
+    "skill": {
+      "attempts": 18,
+      "workersCompleted": 18,
+      "tasksPassed": 18,
+      "timeouts": 0,
+      "gradingInfrastructureFailures": 0,
+      "checksPassed": 288,
+      "checksGraded": 288,
+      "meanRunCheckFraction": 1.0,
+      "medianDurationSeconds": 68.55152308940887,
+      "uncachedInputTokens": 370770,
+      "outputTokens": 47655,
+      "skillReadObserved": 18,
+      "searchObserved": 4,
+      "retrievalObserved": 4,
+      "medianAddedLines": 51.5
+    },
+    "supplied": {
+      "attempts": 18,
+      "workersCompleted": 18,
+      "tasksPassed": 15,
+      "timeouts": 0,
+      "gradingInfrastructureFailures": 0,
+      "checksPassed": 282,
+      "checksGraded": 288,
+      "meanRunCheckFraction": 0.9814814814814815,
+      "medianDurationSeconds": 66.26863360404968,
+      "uncachedInputTokens": 300746,
+      "outputTokens": 44678,
+      "skillReadObserved": 0,
+      "searchObserved": 0,
+      "retrievalObserved": 0,
+      "medianAddedLines": 59.0
+    }
+  },
+  "byTask": {
+    "T01": {
+      "baseline": {
+        "passed": 3,
+        "attempts": 3,
+        "meanCheckFraction": 1.0
+      },
+      "skill": {
+        "passed": 3,
+        "attempts": 3,
+        "meanCheckFraction": 1.0
+      },
+      "supplied": {
+        "passed": 0,
+        "attempts": 3,
+        "meanCheckFraction": 0.8888888888888888
+      }
+    },
+    "T02": {
+      "baseline": {
+        "passed": 3,
+        "attempts": 3,
+        "meanCheckFraction": 1.0
+      },
+      "skill": {
+        "passed": 3,
+        "attempts": 3,
+        "meanCheckFraction": 1.0
+      },
+      "supplied": {
+        "passed": 3,
+        "attempts": 3,
+        "meanCheckFraction": 1.0
+      }
+    },
+    "T03": {
+      "baseline": {
+        "passed": 3,
+        "attempts": 3,
+        "meanCheckFraction": 1.0
+      },
+      "skill": {
+        "passed": 3,
+        "attempts": 3,
+        "meanCheckFraction": 1.0
+      },
+      "supplied": {
+        "passed": 3,
+        "attempts": 3,
+        "meanCheckFraction": 1.0
+      }
+    },
+    "T04": {
+      "baseline": {
+        "passed": 3,
+        "attempts": 3,
+        "meanCheckFraction": 1.0
+      },
+      "skill": {
+        "passed": 3,
+        "attempts": 3,
+        "meanCheckFraction": 1.0
+      },
+      "supplied": {
+        "passed": 3,
+        "attempts": 3,
+        "meanCheckFraction": 1.0
+      }
+    },
+    "T05": {
+      "baseline": {
+        "passed": 3,
+        "attempts": 3,
+        "meanCheckFraction": 1.0
+      },
+      "skill": {
+        "passed": 3,
+        "attempts": 3,
+        "meanCheckFraction": 1.0
+      },
+      "supplied": {
+        "passed": 3,
+        "attempts": 3,
+        "meanCheckFraction": 1.0
+      }
+    },
+    "T06": {
+      "baseline": {
+        "passed": 3,
+        "attempts": 3,
+        "meanCheckFraction": 1.0
+      },
+      "skill": {
+        "passed": 3,
+        "attempts": 3,
+        "meanCheckFraction": 1.0
+      },
+      "supplied": {
+        "passed": 3,
+        "attempts": 3,
+        "meanCheckFraction": 1.0
+      }
+    }
+  },
+  "comparisons": {
+    "skill-baseline": {
+      "taskSuccessDifferencePp": 0.0,
+      "taskClusterBootstrap95Pp": [
+        0.0,
+        0.0
+      ],
+      "clusters": 6,
+      "resamples": 10000,
+      "limit": "Descriptive task-cluster resampling across six purposively selected fixtures; not a population guarantee or independent human review."
+    },
+    "supplied-baseline": {
+      "taskSuccessDifferencePp": -16.666666666666664,
+      "taskClusterBootstrap95Pp": [
+        -50.0,
+        0.0
+      ],
+      "clusters": 6,
+      "resamples": 10000,
+      "limit": "Descriptive task-cluster resampling across six purposively selected fixtures; not a population guarantee or independent human review."
+    }
+  },
+  "gradingVersion": "v3 for every T01 artifact; v2 for every T06 artifact; v1 unchanged for other tasks",
+  "amendments": [
+    "amendment-01-reveal-grading.md",
+    "amendment-02-dialog-settling.md"
+  ],
+  "changedTaskSuccesses": [
+    {
+      "artifact": "5cf35dff774d",
+      "condition": "skill",
+      "originalTaskPassed": false,
+      "correctedTaskPassed": true
+    },
+    {
+      "artifact": "204030759c26",
+      "condition": "baseline",
+      "originalTaskPassed": false,
+      "correctedTaskPassed": true
+    },
+    {
+      "artifact": "e6b694903fac",
+      "condition": "baseline",
+      "originalTaskPassed": false,
+      "correctedTaskPassed": true
+    },
+    {
+      "artifact": "eff5582d5b97",
+      "condition": "baseline",
+      "originalTaskPassed": false,
+      "correctedTaskPassed": true
+    },
+    {
+      "artifact": "1f7b3aa623af",
+      "condition": "skill",
+      "originalTaskPassed": false,
+      "correctedTaskPassed": true
+    },
+    {
+      "artifact": "cebb9524251f",
+      "condition": "supplied",
+      "originalTaskPassed": false,
+      "correctedTaskPassed": true
+    }
+  ]
+}
