@@ -1,0 +1,23 @@
+{
+  "accepted": true,
+  "frozenManifestsVerified": 2,
+  "uniqueGenerationAttempts": 108,
+  "campaigns": [
+    {
+      "path": ".",
+      "attempts": 54,
+      "completed": 54,
+      "timeouts": 0,
+      "checks": 864
+    },
+    {
+      "path": "campaign-02",
+      "attempts": 54,
+      "completed": 54,
+      "timeouts": 0,
+      "checks": 864
+    }
+  ],
+  "artifactFilesHashed": 324,
+  "limit": "Integrity verification, not independent validation of every grader assumption."
+}

@@ -1,0 +1,196 @@
+{
+  "artifact": "858a5d8e7e68",
+  "task": "T01",
+  "condition": "skill",
+  "repetition": 3,
+  "order": 28,
+  "model": "gpt-6.1-sol",
+  "reasoningEffort": "medium",
+  "startedAt": 1794584849.134325,
+  "finishedAt": 1794584930.707155,
+  "durationSeconds": 81.57282996177673,
+  "exitCode": 0,
+  "timedOut": false,
+  "completedTurns": 1,
+  "workerCompleted": true,
+  "usage": {
+    "input_tokens": 188329,
+    "cached_input_tokens": 166144,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 3134,
+    "reasoning_output_tokens": 271
+  },
+  "commandCount": 10,
+  "failedCommandCount": 1,
+  "skillFileReadObserved": true,
+  "lookups": [
+    {
+      "at": 1794584858.785991,
+      "runner": "npx",
+      "originalArgs": [
+        "--offline",
+        "--no",
+        "modern-web-guidance",
+        "search",
+        "light dismiss dialog",
+        "--skill-version",
+        "2026_11_09-5bcc021b"
+      ],
+      "args": [
+        "search",
+        "light dismiss dialog",
+        "--skill-version",
+        "2026_11_09-5bcc021b"
+      ],
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "at": 1794584862.128478,
+      "runner": "npx",
+      "originalArgs": [
+        "--offline",
+        "--no",
+        "modern-web-guidance",
+        "retrieve",
+        "light-dismiss-a-dialog,dialog,html"
+      ],
+      "args": [
+        "retrieve",
+        "light-dismiss-a-dialog,dialog,html"
+      ],
+      "exitCode": 0,
+      "error": null
+    }
+  ],
+  "workerErrorCount": 0,
+  "modifiedTrackedFiles": [
+    "app.js",
+    "index.html",
+    "style.css"
+  ],
+  "extraTrackedChanges": [],
+  "patchAddedLines": 56,
+  "patchRemovedLines": 3,
+  "artifactSha256": {
+    "index.html": "0b515b27a9adb31478594a89a54544196f33741845d946f67a1208a0ebea9b06",
+    "app.js": "b7cd976e2c55a08af5323b541d0be3b605ee5cf39f11ad69ff8b704c3d3e038e",
+    "style.css": "3266ac76d016f33d8ba82d4ebe48399bd83bb0f99ced776c3913ee17e0ffe348"
+  },
+  "browserGrade": {
+    "task": "T01",
+    "checkCount": 18,
+    "passed": 18,
+    "results": [
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "named-modal",
+        "passed": true
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "initial-cancel-focus",
+        "passed": true
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "keyboard-focus-contained",
+        "passed": true
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "background-focus-blocked",
+        "passed": true
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "cancel-preserves-and-restores",
+        "passed": true
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "escape-cancels",
+        "passed": true
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "backdrop-cancels",
+        "passed": true
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "legacy-light-dismiss-fallback",
+        "passed": true
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "confirm-deletes-once",
+        "passed": true
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "named-modal",
+        "passed": true
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "initial-cancel-focus",
+        "passed": true
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "keyboard-focus-contained",
+        "passed": true
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "background-focus-blocked",
+        "passed": true
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "cancel-preserves-and-restores",
+        "passed": true
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "escape-cancels",
+        "passed": true
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "backdrop-cancels",
+        "passed": true
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "legacy-light-dismiss-fallback",
+        "passed": true
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "confirm-deletes-once",
+        "passed": true
+      }
+    ]
+  },
+  "taskPassed": true
+}

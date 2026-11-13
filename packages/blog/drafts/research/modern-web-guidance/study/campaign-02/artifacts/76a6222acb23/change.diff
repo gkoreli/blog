@@ -1,0 +1,87 @@
+diff --git a/app.js b/app.js
+index ca7bee3..a8b546a 100644
+--- a/app.js
++++ b/app.js
+@@ -1 +1,63 @@
+-const events=[];window.recordEvent=event=>{events.push(event)};window.addEventListener('unload',()=>{navigator.sendBeacon('/events',JSON.stringify(events))});document.querySelector('#record-event').onclick=()=>{recordEvent({name:'sample'});document.querySelector('#event-status').textContent='Event queued'};
++const events = [];
++let attemptedThisVisitEnd = false;
++let sending = false;
++
++window.recordEvent = event => {
++  events.push(event);
++};
++
++async function sendPendingEvents() {
++  if (attemptedThisVisitEnd || sending || events.length === 0) return;
++  attemptedThisVisitEnd = true;
++  sending = true;
++
++  // Keep the snapshot queued until accepted, preserving events added in flight.
++  const count = events.length;
++  try {
++    const body = JSON.stringify(events.slice(0, count));
++    let accepted = false;
++    try {
++      if (typeof navigator.sendBeacon === 'function') {
++        accepted = navigator.sendBeacon('/events', body);
++      }
++    } catch {
++      // A thrown beacon error uses the same fallback as a full beacon queue.
++    }
++
++    if (!accepted) {
++      const response = await fetch('/events', {
++        method: 'POST',
++        headers: { 'Content-Type': 'application/json' },
++        body,
++        keepalive: true,
++      });
++      accepted = response.ok;
++    }
++
++    if (accepted) events.splice(0, count);
++  } catch {
++    // Retain the batch for a later hidden transition if delivery fails.
++  } finally {
++    sending = false;
++  }
++}
++
++document.addEventListener('visibilitychange', () => {
++  if (document.visibilityState === 'hidden') {
++    sendPendingEvents();
++  } else {
++    attemptedThisVisitEnd = false;
++  }
++});
++
++// Fallback for navigation without a hidden notification. The guard prevents
++// pagehide from repeating a failed or still-pending attempt.
++window.addEventListener('pagehide', sendPendingEvents);
++window.addEventListener('pageshow', event => {
++  if (event.persisted) attemptedThisVisitEnd = false;
++});
++
++document.querySelector('#record-event').onclick = () => {
++  window.recordEvent({ name: 'sample' });
++  document.querySelector('#event-status').textContent = 'Event queued';
++};
+diff --git a/index.html b/index.html
+index 433884b..ce50a33 100644
+--- a/index.html
++++ b/index.html
+@@ -1,2 +1,2 @@
+ <!doctype html>
+-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Visit-end event queue</title><script>document.documentElement.classList.add('js')</script><link rel="stylesheet" href="style.css"></head><body><main id="top"><h1>Visit-end event delivery</h1><p>Only synthetic events are recorded in this local fixture.</p><button id="record-event">Record sample event</button><p id="event-status" role="status"></p></main><script>window.fixtureState={deletions:0,subscriptions:[]};window.removeSavedReport=()=>{window.fixtureState.deletions++;document.querySelector('#saved-report').hidden=true};window.acceptSubscription=email=>{window.fixtureState.subscriptions.push(email);return 'Request accepted. Check your inbox.'};</script><script src="app.js"></script></body></html>
++<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Visit-end event queue</title><script>document.documentElement.classList.add('js')</script><link rel="stylesheet" href="style.css"></head><body><main id="top"><h1>Visit-end event delivery</h1><p>Only synthetic events are recorded in this local fixture.</p><p id="queue-help">Events stay queued while this page is visible. Pending events are sent to the local endpoint when the page becomes hidden.</p><button id="record-event" type="button" aria-describedby="queue-help">Record sample event</button><p id="event-status" role="status"></p><noscript>JavaScript is required to queue sample events.</noscript></main><script>window.fixtureState={deletions:0,subscriptions:[]};window.removeSavedReport=()=>{window.fixtureState.deletions++;document.querySelector('#saved-report').hidden=true};window.acceptSubscription=email=>{window.fixtureState.subscriptions.push(email);return 'Request accepted. Check your inbox.'};</script><script src="app.js"></script></body></html>
+diff --git a/style.css b/style.css
+index d943e3d..f8c7ffb 100644
+--- a/style.css
++++ b/style.css
+@@ -1,2 +1,5 @@
+ *{box-sizing:border-box}body{font:18px/1.5 system-ui,sans-serif;margin:0;color:#202520;background:#fbfaf5}main{max-width:760px;margin:auto;padding:24px}button,input{font:inherit}button,a,input{outline-offset:4px}button{padding:8px 14px}a{color:#075a46}button{cursor:pointer}[hidden]{display:none!important}section,article{margin-block:18px}h1{font-size:28px}h2{font-size:22px}input{max-width:100%;padding:8px}p{overflow-wrap:anywhere}
+ 
++
++#queue-help{color:#465046;font-size:1rem}
++#event-status{min-height:1.5em}

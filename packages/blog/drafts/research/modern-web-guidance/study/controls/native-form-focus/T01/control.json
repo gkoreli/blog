@@ -1,0 +1,10 @@
+{
+  "purpose": "Post-run mechanism control, not a replacement experimental artifact.",
+  "derivedFrom": "b2fc3f4b2dd1",
+  "change": "Explicitly focus the known trigger in the native close handler.",
+  "originalSha256": {
+    "index.html": "4e2803601f0fdfe937644da41c205ac1e928b7f96d1927f6f9cfdf1552605e95",
+    "app.js": "67e0e4ded06ef8ea19dd23eb0b55c81aaa8be60e69885dcb717af1d4cda1a4bd",
+    "style.css": "f28a98d73e55c60506cdeb20358fbe13624b138d5a7827633f8c0fe9d8c06f46"
+  }
+}

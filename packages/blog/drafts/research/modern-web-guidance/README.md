@@ -1,6 +1,6 @@
-# Modern Web Guidance: research feasibility and retrieval pilot
+# Modern Web Guidance: source review and interface study
 
-November 13, 2026, America/Los_Angeles. Initial source review and a small local diagnostic are complete. No standalone manuscript, guided-versus-unguided agent evaluation, site change, or article publication is claimed. The larger experiment below is proposed.
+November 13, 2026, America/Los_Angeles. **The interface study is complete:** baseline and ordinary MWG availability passed 18/18 checked tasks each; directly supplied guides passed 16/18. See the [full report](study/report.md), [primary artifact index](study/campaign-02/artifacts.md) and [execution limits](study/campaign-02/execution-audit.json). A first 54-attempt batch with a launcher defect is retained as diagnostic evidence; the primary result comes from a complete repaired 54-attempt batch. No standalone article or production trial patch was created. The source review and small retrieval pilot below remain historical evidence.
 
 ## Editorial decision
 
@@ -61,7 +61,7 @@ node repro/retrieval-pilot.mjs \
 
 The fixture imports unchanged source modules for the embedding measurement and invokes the packaged CLI for search. It does not recreate training, replay the full upstream benchmark, or validate behavior in a browser. The source and package identities are checked/reported separately. Artificial queries and source-aware target selection are consequential limits.
 
-## Proposed next experiment
+## Initial experiment proposal — superseded by the completed study
 
 Use six small, owned interface tasks: a confirmation dialog, an expanding panel, a navigation menu, inline form errors, reliable visit-end analytics and a reduced-motion interaction. Define functional behavior and explicit browser targets before execution. Include at least one intentional compatibility fallback and one task where no modernization is needed.
 
@@ -83,4 +83,4 @@ An optional later retrieval study should compare BM25-only, dense-only and hybri
 
 The pilot ran twice; the final repeat added source/package table-identity checks and conventional even-sample median calculation. Ordered retrieval outcomes agreed. Source links, local links, result invariants, fixture syntax and scoped public diff were checked. Raw author messages are preserved only in the approved private archive. Existing [scanner trials](../oss-radar-14-november-show-hn/04-local-trials.md#modern-web-guidance) retain their original November 11 scope.
 
-Next bounded action: select/freeze the six interface fixtures and independent acceptance rubric before launching the proposed agent evaluation. No article title or result-dependent conclusion is committed in advance.
+The executed study and its two campaign boundaries supersede this initial next-step proposal. Next bounded action: author review of the [completed findings](study/report.md) before deciding whether to write an article. No further experiment or publication is automatically scheduled.

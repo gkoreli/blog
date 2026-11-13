@@ -1,0 +1,73 @@
+diff --git a/app.js b/app.js
+index 98d4351..b315f4b 100644
+--- a/app.js
++++ b/app.js
+@@ -1 +1,41 @@
+-const toggle=document.querySelector('#menu-toggle');const nav=document.querySelector('#site-nav');toggle.onclick=()=>{nav.classList.toggle('open')};document.querySelector('#outside-action').onclick=()=>{document.querySelector('#outside-status').textContent='Outside action completed'};
++const toggle = document.querySelector('#menu-toggle');
++const nav = document.querySelector('#site-nav');
++const wideNavigation = window.matchMedia('(min-width: 900px)');
++
++function setNavigationOpen(open) {
++  const expanded = open && !wideNavigation.matches;
++  nav.classList.toggle('open', expanded);
++  toggle.setAttribute('aria-expanded', String(expanded));
++}
++
++toggle.addEventListener('click', () => {
++  setNavigationOpen(toggle.getAttribute('aria-expanded') !== 'true');
++});
++
++nav.addEventListener('keydown', (event) => {
++  if (event.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
++    event.preventDefault();
++    setNavigationOpen(false);
++    toggle.focus();
++  }
++});
++
++nav.addEventListener('click', (event) => {
++  if (event.target.closest('a[href]')) {
++    setNavigationOpen(false);
++  }
++});
++
++document.addEventListener('click', (event) => {
++  if (!nav.contains(event.target) && !toggle.contains(event.target)) {
++    setNavigationOpen(false);
++  }
++});
++
++wideNavigation.addEventListener('change', () => setNavigationOpen(false));
++setNavigationOpen(false);
++document.documentElement.classList.add('js');
++
++document.querySelector('#outside-action').onclick = () => {
++  document.querySelector('#outside-status').textContent = 'Outside action completed';
++};
+diff --git a/index.html b/index.html
+index 2b92adc..803d1d7 100644
+--- a/index.html
++++ b/index.html
+@@ -1,2 +1,2 @@
+ <!doctype html>
+-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Mobile publication navigation</title><script>document.documentElement.classList.add('js')</script><link rel="stylesheet" href="style.css"></head><body><main id="top"><h1>Goga Koreli</h1><header id="site-header"><button id="menu-toggle" aria-controls="site-nav" aria-expanded="false">Menu</button><nav id="site-nav" aria-label="Publication"><a id="nav-engineering" href="#engineering">Engineering</a> <a id="nav-essays" href="#essays">Essays</a></nav></header><button id="outside-action">Inspect another report</button><p id="outside-status"></p><section id="engineering"><h2>Engineering</h2></section><section id="essays"><h2>Essays</h2></section></main><script>window.fixtureState={deletions:0,subscriptions:[]};window.removeSavedReport=()=>{window.fixtureState.deletions++;document.querySelector('#saved-report').hidden=true};window.acceptSubscription=email=>{window.fixtureState.subscriptions.push(email);return 'Request accepted. Check your inbox.'};</script><script src="app.js"></script></body></html>
++<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Mobile publication navigation</title><link rel="stylesheet" href="style.css"></head><body><main id="top"><h1>Goga Koreli</h1><header id="site-header"><button id="menu-toggle" type="button" aria-controls="site-nav" aria-expanded="false">Menu</button><nav id="site-nav" aria-label="Publication"><a id="nav-engineering" href="#engineering">Engineering</a> <a id="nav-essays" href="#essays">Essays</a></nav></header><button id="outside-action">Inspect another report</button><p id="outside-status"></p><section id="engineering"><h2>Engineering</h2></section><section id="essays"><h2>Essays</h2></section></main><script>window.fixtureState={deletions:0,subscriptions:[]};window.removeSavedReport=()=>{window.fixtureState.deletions++;document.querySelector('#saved-report').hidden=true};window.acceptSubscription=email=>{window.fixtureState.subscriptions.push(email);return 'Request accepted. Check your inbox.'};</script><script src="app.js"></script></body></html>
+diff --git a/style.css b/style.css
+index a352284..18a6c84 100644
+--- a/style.css
++++ b/style.css
+@@ -1,2 +1,12 @@
+ *{box-sizing:border-box}body{font:18px/1.5 system-ui,sans-serif;margin:0;color:#202520;background:#fbfaf5}main{max-width:760px;margin:auto;padding:24px}button,input{font:inherit}button,a,input{outline-offset:4px}button{padding:8px 14px}a{color:#075a46}button{cursor:pointer}[hidden]{display:none!important}section,article{margin-block:18px}h1{font-size:28px}h2{font-size:22px}input{max-width:100%;padding:8px}p{overflow-wrap:anywhere}
+-.js #site-nav{display:none}.js #site-nav.open{display:block}#site-nav{padding:16px;border:1px solid #718276}#site-nav a{display:block;padding:8px}
++#menu-toggle{display:none}
++.js #menu-toggle{display:inline-block}
++.js #site-nav{display:none}
++.js #site-nav.open{display:block}
++#site-nav{padding:16px;border:1px solid #718276}
++#site-nav a{display:block;padding:8px}
++@media (min-width:900px){
++  .js #menu-toggle{display:none}
++  #site-nav,.js #site-nav{display:block}
++  #site-nav a{display:inline-block}
++}

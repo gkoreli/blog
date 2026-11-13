@@ -1,0 +1,173 @@
+{
+  "campaign": 2,
+  "skillRuns": 18,
+  "skillReadRuns": 18,
+  "successfulSearchRuns": 16,
+  "successfulRetrieveRuns": 16,
+  "adapterFailures": 0,
+  "cacheMissRuns": 1,
+  "runs": [
+    {
+      "artifact": "08da12ae5e9a",
+      "task": "T02",
+      "skillReadObserved": true,
+      "searchSucceeded": true,
+      "retrieveSucceeded": true,
+      "adapterFailures": 0,
+      "npmCacheMissObserved": false
+    },
+    {
+      "artifact": "101d80edd9b6",
+      "task": "T05",
+      "skillReadObserved": true,
+      "searchSucceeded": true,
+      "retrieveSucceeded": true,
+      "adapterFailures": 0,
+      "npmCacheMissObserved": false
+    },
+    {
+      "artifact": "1435b48d3e52",
+      "task": "T01",
+      "skillReadObserved": true,
+      "searchSucceeded": true,
+      "retrieveSucceeded": true,
+      "adapterFailures": 0,
+      "npmCacheMissObserved": false
+    },
+    {
+      "artifact": "2fba0fab1e5a",
+      "task": "T03",
+      "skillReadObserved": true,
+      "searchSucceeded": false,
+      "retrieveSucceeded": false,
+      "adapterFailures": 0,
+      "npmCacheMissObserved": false
+    },
+    {
+      "artifact": "55bafff48101",
+      "task": "T04",
+      "skillReadObserved": true,
+      "searchSucceeded": true,
+      "retrieveSucceeded": true,
+      "adapterFailures": 0,
+      "npmCacheMissObserved": false
+    },
+    {
+      "artifact": "58273fbc50f6",
+      "task": "T06",
+      "skillReadObserved": true,
+      "searchSucceeded": true,
+      "retrieveSucceeded": true,
+      "adapterFailures": 0,
+      "npmCacheMissObserved": false
+    },
+    {
+      "artifact": "76a6222acb23",
+      "task": "T05",
+      "skillReadObserved": true,
+      "searchSucceeded": true,
+      "retrieveSucceeded": true,
+      "adapterFailures": 0,
+      "npmCacheMissObserved": false
+    },
+    {
+      "artifact": "7a2290604230",
+      "task": "T02",
+      "skillReadObserved": true,
+      "searchSucceeded": true,
+      "retrieveSucceeded": true,
+      "adapterFailures": 0,
+      "npmCacheMissObserved": false
+    },
+    {
+      "artifact": "7d88575b2b43",
+      "task": "T01",
+      "skillReadObserved": true,
+      "searchSucceeded": true,
+      "retrieveSucceeded": true,
+      "adapterFailures": 0,
+      "npmCacheMissObserved": false
+    },
+    {
+      "artifact": "7f13acc61102",
+      "task": "T03",
+      "skillReadObserved": true,
+      "searchSucceeded": true,
+      "retrieveSucceeded": true,
+      "adapterFailures": 0,
+      "npmCacheMissObserved": false
+    },
+    {
+      "artifact": "858a5d8e7e68",
+      "task": "T01",
+      "skillReadObserved": true,
+      "searchSucceeded": true,
+      "retrieveSucceeded": true,
+      "adapterFailures": 0,
+      "npmCacheMissObserved": false
+    },
+    {
+      "artifact": "a6e54086f0ca",
+      "task": "T04",
+      "skillReadObserved": true,
+      "searchSucceeded": true,
+      "retrieveSucceeded": true,
+      "adapterFailures": 0,
+      "npmCacheMissObserved": false
+    },
+    {
+      "artifact": "ca4567b1148f",
+      "task": "T05",
+      "skillReadObserved": true,
+      "searchSucceeded": true,
+      "retrieveSucceeded": true,
+      "adapterFailures": 0,
+      "npmCacheMissObserved": false
+    },
+    {
+      "artifact": "e1b103599d48",
+      "task": "T02",
+      "skillReadObserved": true,
+      "searchSucceeded": true,
+      "retrieveSucceeded": true,
+      "adapterFailures": 0,
+      "npmCacheMissObserved": false
+    },
+    {
+      "artifact": "e4e32c69d430",
+      "task": "T03",
+      "skillReadObserved": true,
+      "searchSucceeded": true,
+      "retrieveSucceeded": true,
+      "adapterFailures": 0,
+      "npmCacheMissObserved": false
+    },
+    {
+      "artifact": "e90f9264120c",
+      "task": "T06",
+      "skillReadObserved": true,
+      "searchSucceeded": false,
+      "retrieveSucceeded": false,
+      "adapterFailures": 0,
+      "npmCacheMissObserved": true
+    },
+    {
+      "artifact": "eb79058c5171",
+      "task": "T04",
+      "skillReadObserved": true,
+      "searchSucceeded": true,
+      "retrieveSucceeded": true,
+      "adapterFailures": 0,
+      "npmCacheMissObserved": false
+    },
+    {
+      "artifact": "fd0033a7dfcd",
+      "task": "T06",
+      "skillReadObserved": true,
+      "searchSucceeded": true,
+      "retrieveSucceeded": true,
+      "adapterFailures": 0,
+      "npmCacheMissObserved": false
+    }
+  ]
+}

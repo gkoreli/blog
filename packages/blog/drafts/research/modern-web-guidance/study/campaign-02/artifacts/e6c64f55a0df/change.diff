@@ -1,0 +1,69 @@
+diff --git a/app.js b/app.js
+index 9288e49..04a677d 100644
+--- a/app.js
++++ b/app.js
+@@ -1 +1,38 @@
+-const panel=document.querySelector('#confirm-modal');document.querySelector('#delete-report').onclick=()=>{panel.hidden=false};document.querySelector('#confirm-cancel').onclick=()=>{panel.hidden=true};document.querySelector('#confirm-delete').onclick=()=>{removeSavedReport();panel.hidden=true};
++const panel = document.querySelector('#confirm-modal');
++const deleteButton = document.querySelector('#delete-report');
++
++deleteButton.addEventListener('click', () => {
++  if (!panel.open) {
++    panel.returnValue = '';
++    panel.showModal();
++  }
++});
++
++panel.addEventListener('close', () => {
++  const confirmed = panel.returnValue === 'delete';
++  panel.returnValue = '';
++  if (confirmed) removeSavedReport();
++});
++
++// Native light-dismiss is newer than Baseline 2024. Keep backdrop
++// cancellation available without treating dialog padding as the backdrop.
++if (!('closedBy' in HTMLDialogElement.prototype)) {
++  const outside = (event) => {
++    const rect = panel.getBoundingClientRect();
++    return event.clientX < rect.left || event.clientX > rect.right ||
++      event.clientY < rect.top || event.clientY > rect.bottom;
++  };
++  let pressedOutside = false;
++
++  panel.addEventListener('pointerdown', (event) => {
++    pressedOutside = event.isPrimary && event.button === 0 && outside(event);
++  });
++  panel.addEventListener('pointerup', (event) => {
++    if (!event.isPrimary) return;
++    if (pressedOutside && outside(event)) panel.close();
++    pressedOutside = false;
++  });
++  panel.addEventListener('pointercancel', () => {
++    pressedOutside = false;
++  });
++}
+diff --git a/index.html b/index.html
+index 9e9293a..d9d9fcc 100644
+--- a/index.html
++++ b/index.html
+@@ -1,2 +1,9 @@
+ <!doctype html>
+-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Saved-report deletion confirmation</title><script>document.documentElement.classList.add('js')</script><link rel="stylesheet" href="style.css"></head><body><main id="top"><h1>Saved reports</h1><article id="saved-report"><h2>Agent traffic</h2><p>A locally saved report.</p></article><button id="delete-report">Delete saved report</button><button id="outside-action">Another action</button><section id="confirm-modal" role="dialog" aria-labelledby="confirm-title" hidden><h2 id="confirm-title">Delete saved report?</h2><p>This removes the saved view.</p><button id="confirm-cancel">Cancel</button><button id="confirm-delete">Delete report</button></section></main><script>window.fixtureState={deletions:0,subscriptions:[]};window.removeSavedReport=()=>{window.fixtureState.deletions++;document.querySelector('#saved-report').hidden=true};window.acceptSubscription=email=>{window.fixtureState.subscriptions.push(email);return 'Request accepted. Check your inbox.'};</script><script src="app.js"></script></body></html>
++<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Saved-report deletion confirmation</title><script>document.documentElement.classList.add('js')</script><link rel="stylesheet" href="style.css"></head><body><main id="top"><h1>Saved reports</h1><article id="saved-report"><h2>Agent traffic</h2><p>A locally saved report.</p></article><button id="delete-report" type="button">Delete saved report</button><button id="outside-action">Another action</button><dialog id="confirm-modal" closedby="any" aria-labelledby="confirm-title">
++  <h2 id="confirm-title">Delete saved report?</h2>
++  <p>This removes the saved view.</p>
++  <form method="dialog">
++    <button id="confirm-cancel" value="cancel" autofocus>Cancel</button>
++    <button id="confirm-delete" value="delete">Delete report</button>
++  </form>
++</dialog></main><script>window.fixtureState={deletions:0,subscriptions:[]};window.removeSavedReport=()=>{window.fixtureState.deletions++;document.querySelector('#saved-report').hidden=true};window.acceptSubscription=email=>{window.fixtureState.subscriptions.push(email);return 'Request accepted. Check your inbox.'};</script><script src="app.js"></script></body></html>
+diff --git a/style.css b/style.css
+index 0215b44..f8d56e2 100644
+--- a/style.css
++++ b/style.css
+@@ -1,2 +1,4 @@
+ *{box-sizing:border-box}body{font:18px/1.5 system-ui,sans-serif;margin:0;color:#202520;background:#fbfaf5}main{max-width:760px;margin:auto;padding:24px}button,input{font:inherit}button,a,input{outline-offset:4px}button{padding:8px 14px}a{color:#075a46}button{cursor:pointer}[hidden]{display:none!important}section,article{margin-block:18px}h1{font-size:28px}h2{font-size:22px}input{max-width:100%;padding:8px}p{overflow-wrap:anywhere}
+-#confirm-modal{position:fixed;inset:20% auto auto 50%;transform:translateX(-50%);width:min(420px,90vw);padding:24px;background:white;border:2px solid #345;z-index:5}dialog::backdrop{background:#0006}
++#confirm-modal{width:min(420px,90vw);max-height:90vh;overflow:auto;padding:24px;background:white;border:2px solid #345}
++#confirm-modal:modal{overscroll-behavior:contain}
++#confirm-modal::backdrop{background:#0006;overflow:hidden;overscroll-behavior:contain}

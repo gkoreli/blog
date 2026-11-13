@@ -1,0 +1,88 @@
+diff --git a/app.js b/app.js
+index ca7bee3..880c5b5 100644
+--- a/app.js
++++ b/app.js
+@@ -1 +1,65 @@
+-const events=[];window.recordEvent=event=>{events.push(event)};window.addEventListener('unload',()=>{navigator.sendBeacon('/events',JSON.stringify(events))});document.querySelector('#record-event').onclick=()=>{recordEvent({name:'sample'});document.querySelector('#event-status').textContent='Event queued'};
++const events = [];
++let inFlight = false;
++
++window.recordEvent = event => {
++  events.push(event);
++};
++
++function sendPendingEvents() {
++  if (inFlight || events.length === 0) return;
++
++  // Keep this prefix in the queue until a transport accepts it. Events recorded
++  // while fetch is pending belong to the next batch.
++  const batchSize = events.length;
++  let body;
++  try {
++    body = JSON.stringify(events.slice(0, batchSize));
++  } catch {
++    return;
++  }
++
++  if (typeof navigator.sendBeacon === 'function') {
++    try {
++      const payload = new Blob([body], { type: 'application/json' });
++      if (navigator.sendBeacon('/events', payload)) {
++        events.splice(0, batchSize);
++        return;
++      }
++    } catch {
++      // A throwing beacon is also a rejection; try the keepalive transport.
++    }
++  }
++
++  if (typeof window.fetch !== 'function') return;
++
++  inFlight = true;
++  try {
++    window.fetch('/events', {
++      method: 'POST',
++      headers: { 'Content-Type': 'application/json' },
++      body,
++      keepalive: true
++    }).then(response => {
++      if (response.ok) events.splice(0, batchSize);
++    }).catch(() => {
++      // Leave the batch queued for a later hidden transition.
++    }).finally(() => {
++      inFlight = false;
++    });
++  } catch {
++    inFlight = false;
++  }
++}
++
++document.addEventListener('visibilitychange', () => {
++  if (document.visibilityState === 'hidden') sendPendingEvents();
++});
++
++// Some navigations reach pagehide without a visibilitychange notification.
++// The queue and in-flight guard also survive a persisted pageshow unchanged.
++window.addEventListener('pagehide', sendPendingEvents);
++
++document.querySelector('#record-event').onclick = () => {
++  window.recordEvent({ name: 'sample' });
++  document.querySelector('#event-status').textContent = 'Event queued';
++};
+diff --git a/index.html b/index.html
+index 433884b..7e9899e 100644
+--- a/index.html
++++ b/index.html
+@@ -1,2 +1,2 @@
+ <!doctype html>
+-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Visit-end event queue</title><script>document.documentElement.classList.add('js')</script><link rel="stylesheet" href="style.css"></head><body><main id="top"><h1>Visit-end event delivery</h1><p>Only synthetic events are recorded in this local fixture.</p><button id="record-event">Record sample event</button><p id="event-status" role="status"></p></main><script>window.fixtureState={deletions:0,subscriptions:[]};window.removeSavedReport=()=>{window.fixtureState.deletions++;document.querySelector('#saved-report').hidden=true};window.acceptSubscription=email=>{window.fixtureState.subscriptions.push(email);return 'Request accepted. Check your inbox.'};</script><script src="app.js"></script></body></html>
++<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Visit-end event queue</title><script>document.documentElement.classList.add('js')</script><link rel="stylesheet" href="style.css"></head><body><main id="top"><h1>Visit-end event delivery</h1><p>Only synthetic events are recorded in this local fixture. Events stay queued while this page is visible and are sent when you leave or hide it.</p><button id="record-event" type="button">Record sample event</button><p id="event-status" role="status" aria-live="polite"></p><noscript><p>JavaScript is required to queue these sample events.</p></noscript></main><script>window.fixtureState={deletions:0,subscriptions:[]};window.removeSavedReport=()=>{window.fixtureState.deletions++;document.querySelector('#saved-report').hidden=true};window.acceptSubscription=email=>{window.fixtureState.subscriptions.push(email);return 'Request accepted. Check your inbox.'};</script><script src="app.js"></script></body></html>
+diff --git a/style.css b/style.css
+index d943e3d..f2b1135 100644
+--- a/style.css
++++ b/style.css
+@@ -1,2 +1,4 @@
+ *{box-sizing:border-box}body{font:18px/1.5 system-ui,sans-serif;margin:0;color:#202520;background:#fbfaf5}main{max-width:760px;margin:auto;padding:24px}button,input{font:inherit}button,a,input{outline-offset:4px}button{padding:8px 14px}a{color:#075a46}button{cursor:pointer}[hidden]{display:none!important}section,article{margin-block:18px}h1{font-size:28px}h2{font-size:22px}input{max-width:100%;padding:8px}p{overflow-wrap:anywhere}
+ 
++
++#event-status{min-height:1.5em;color:#075a46}

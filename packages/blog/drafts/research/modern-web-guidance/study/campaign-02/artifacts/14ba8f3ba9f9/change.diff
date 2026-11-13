@@ -1,0 +1,72 @@
+diff --git a/app.js b/app.js
+index c287e55..4741603 100644
+--- a/app.js
++++ b/app.js
+@@ -1 +1,50 @@
+-document.querySelector('#newsletter-form').addEventListener('submit',e=>{e.preventDefault();const message=acceptSubscription(document.querySelector('#email').value);document.querySelector('#subscribe-status').textContent=message});
++const form = document.querySelector('#newsletter-form');
++const email = document.querySelector('#email');
++const error = document.querySelector('#email-error');
++const status = document.querySelector('#subscribe-status');
++
++function clearError() {
++  email.removeAttribute('aria-invalid');
++  const descriptions = (email.getAttribute('aria-describedby') || '')
++    .split(/\s+/)
++    .filter(id => id && id !== error.id);
++  if (descriptions.length) {
++    email.setAttribute('aria-describedby', descriptions.join(' '));
++  } else {
++    email.removeAttribute('aria-describedby');
++  }
++  error.textContent = '';
++  error.hidden = true;
++}
++
++email.addEventListener('input', () => {
++  status.textContent = '';
++  if (email.validity.valid) clearError();
++});
++
++form.addEventListener('submit', event => {
++  event.preventDefault();
++  status.textContent = '';
++
++  if (!email.validity.valid) {
++    error.textContent = email.validity.valueMissing
++      ? 'Enter your email address.'
++      : 'Enter a valid email address, such as name@example.com.';
++    error.hidden = false;
++    email.setAttribute('aria-invalid', 'true');
++    const descriptions = (email.getAttribute('aria-describedby') || '')
++      .split(/\s+/)
++      .filter(Boolean);
++    if (!descriptions.includes(error.id)) descriptions.push(error.id);
++    email.setAttribute('aria-describedby', descriptions.join(' '));
++    email.focus();
++    return;
++  }
++
++  clearError();
++  status.textContent = acceptSubscription(email.value);
++});
++
++// Enable inline validation only after the handlers are installed.
++// Without JavaScript, native validation and the form's submit path remain active.
++form.noValidate = true;
+diff --git a/index.html b/index.html
+index f368a17..66474f3 100644
+--- a/index.html
++++ b/index.html
+@@ -1,2 +1,2 @@
+ <!doctype html>
+-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Newsletter inline form errors</title><script>document.documentElement.classList.add('js')</script><link rel="stylesheet" href="style.css"></head><body><main id="top"><h1>Engineering notes by email</h1><form id="newsletter-form" action="/subscribe" method="post"><label for="email">Email address</label><input id="email" name="email" type="email" required autocomplete="email" aria-describedby="email-help"><p id="email-help">We send a confirmation link.</p><p id="email-error" hidden></p><button id="subscribe-submit" type="submit">Subscribe</button><p id="subscribe-status" role="status"></p></form></main><script>window.fixtureState={deletions:0,subscriptions:[]};window.removeSavedReport=()=>{window.fixtureState.deletions++;document.querySelector('#saved-report').hidden=true};window.acceptSubscription=email=>{window.fixtureState.subscriptions.push(email);return 'Request accepted. Check your inbox.'};</script><script src="app.js"></script></body></html>
++<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Newsletter inline form errors</title><script>document.documentElement.classList.add('js')</script><link rel="stylesheet" href="style.css"></head><body><main id="top"><h1>Engineering notes by email</h1><form id="newsletter-form" action="/subscribe" method="post"><label for="email">Email address</label><input id="email" name="email" type="email" required autocomplete="email" aria-describedby="email-help"><p id="email-help">We send a confirmation link.</p><p id="email-error" role="alert" hidden></p><button id="subscribe-submit" type="submit">Subscribe</button><p id="subscribe-status" role="status"></p></form></main><script>window.fixtureState={deletions:0,subscriptions:[]};window.removeSavedReport=()=>{window.fixtureState.deletions++;document.querySelector('#saved-report').hidden=true};window.acceptSubscription=email=>{window.fixtureState.subscriptions.push(email);return 'Request accepted. Check your inbox.'};</script><script src="app.js"></script></body></html>
+diff --git a/style.css b/style.css
+index 9783f29..395bf9f 100644
+--- a/style.css
++++ b/style.css
+@@ -1,2 +1,3 @@
+ *{box-sizing:border-box}body{font:18px/1.5 system-ui,sans-serif;margin:0;color:#202520;background:#fbfaf5}main{max-width:760px;margin:auto;padding:24px}button,input{font:inherit}button,a,input{outline-offset:4px}button{padding:8px 14px}a{color:#075a46}button{cursor:pointer}[hidden]{display:none!important}section,article{margin-block:18px}h1{font-size:28px}h2{font-size:22px}input{max-width:100%;padding:8px}p{overflow-wrap:anywhere}
+ label{display:block}#email-error{color:#a01919}
++#email[aria-invalid="true"]{border:2px solid #a01919}

@@ -1,0 +1,184 @@
+{
+  "artifact": "fd0033a7dfcd",
+  "task": "T06",
+  "condition": "skill",
+  "repetition": 1,
+  "order": 14,
+  "model": "gpt-6.1-sol",
+  "reasoningEffort": "medium",
+  "startedAt": 1794584521.007898,
+  "finishedAt": 1794584601.7790132,
+  "durationSeconds": 80.77111506462097,
+  "exitCode": 0,
+  "timedOut": false,
+  "completedTurns": 1,
+  "workerCompleted": true,
+  "usage": {
+    "input_tokens": 135406,
+    "cached_input_tokens": 114688,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 3190,
+    "reasoning_output_tokens": 334
+  },
+  "commandCount": 8,
+  "failedCommandCount": 1,
+  "skillFileReadObserved": true,
+  "lookups": [
+    {
+      "at": 1794584532.92118,
+      "runner": "npx",
+      "originalArgs": [
+        "--offline",
+        "--no-install",
+        "modern-web-guidance",
+        "search",
+        "scroll reveal reduced motion",
+        "--skill-version",
+        "2026_11_09-5bcc021b"
+      ],
+      "args": [
+        "search",
+        "scroll reveal reduced motion",
+        "--skill-version",
+        "2026_11_09-5bcc021b"
+      ],
+      "exitCode": 0,
+      "error": null
+    },
+    {
+      "at": 1794584535.8266351,
+      "runner": "npx",
+      "originalArgs": [
+        "--offline",
+        "--no-install",
+        "modern-web-guidance",
+        "retrieve",
+        "motion"
+      ],
+      "args": [
+        "retrieve",
+        "motion"
+      ],
+      "exitCode": 0,
+      "error": null
+    }
+  ],
+  "workerErrorCount": 0,
+  "modifiedTrackedFiles": [
+    "app.js",
+    "index.html",
+    "style.css"
+  ],
+  "extraTrackedChanges": [],
+  "patchAddedLines": 53,
+  "patchRemovedLines": 3,
+  "artifactSha256": {
+    "index.html": "ff8e31d941f7fcaa65951cabd5610459da2ecfab5c556ae95a1037153a508caa",
+    "app.js": "5ed5c103477a379761205aab60b208d55fd060102cebf7475118ad6aba56d664",
+    "style.css": "5ef1ad36367bedfb4db91163bbf8935096901ac1f0968027248dfcca4e325cd2"
+  },
+  "browserGrade": {
+    "task": "T06",
+    "checkCount": 16,
+    "passed": 16,
+    "results": [
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "no-javascript-readable",
+        "passed": true
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "reduced-motion-immediate",
+        "passed": true
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "missing-observer-readable",
+        "passed": true
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "offscreen-entry-reveals",
+        "passed": true
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "initial-visible-card-reveals",
+        "passed": true
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "live-motion-preference-change",
+        "passed": true
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "removed-element-observation-cleaned",
+        "passed": true
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "content-and-links-preserved",
+        "passed": true
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "no-javascript-readable",
+        "passed": true
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "reduced-motion-immediate",
+        "passed": true
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "missing-observer-readable",
+        "passed": true
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "offscreen-entry-reveals",
+        "passed": true
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "initial-visible-card-reveals",
+        "passed": true
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "live-motion-preference-change",
+        "passed": true
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "removed-element-observation-cleaned",
+        "passed": true
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "content-and-links-preserved",
+        "passed": true
+      }
+    ]
+  },
+  "taskPassed": true
+}

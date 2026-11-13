@@ -1,0 +1,17 @@
+{
+  "accepted": true,
+  "campaigns": [
+    {
+      "campaign": 1,
+      "packageVersion": "1.0.0",
+      "packageSnapshotVerified": true,
+      "shellStartupFilesVerified": 0
+    },
+    {
+      "campaign": 2,
+      "packageVersion": "1.0.0",
+      "packageSnapshotVerified": true,
+      "shellStartupFilesVerified": 3
+    }
+  ]
+}

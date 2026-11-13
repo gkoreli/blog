@@ -1,0 +1,72 @@
+diff --git a/app.js b/app.js
+index 5873d08..d96195c 100644
+--- a/app.js
++++ b/app.js
+@@ -1 +1,46 @@
+-customElements.define('blog-reveal',class extends HTMLElement{connectedCallback(){this.observer=new IntersectionObserver(entries=>{for(const e of entries)if(e.isIntersecting){this.classList.add('revealed');this.observer.unobserve(this)}},{threshold:.06});this.observer.observe(this)}});
++customElements.define('blog-reveal', class extends HTMLElement {
++  connectedCallback() {
++    if (this.classList.contains('revealed')) return;
++
++    this.motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
++    if (this.motionPreference.matches ||
++        typeof window.IntersectionObserver !== 'function' ||
++        this.getBoundingClientRect().top < window.innerHeight) {
++      this.reveal();
++      return;
++    }
++
++    this.onMotionChange = event => {
++      if (event.matches) this.reveal();
++    };
++    this.motionPreference.addEventListener('change', this.onMotionChange);
++
++    const observer = new IntersectionObserver(entries => {
++      if (!this.isConnected || this.observer !== observer) return;
++      if (entries.some(entry => entry.isIntersecting)) this.reveal();
++    }, { threshold: 0 });
++    this.observer = observer;
++    this.classList.add('reveal-pending');
++    observer.observe(this);
++  }
++
++  reveal() {
++    this.stopObserving();
++    this.classList.remove('reveal-pending');
++    this.classList.add('revealed');
++  }
++
++  stopObserving() {
++    this.observer?.disconnect();
++    this.observer = null;
++    if (this.onMotionChange) {
++      this.motionPreference.removeEventListener('change', this.onMotionChange);
++      this.onMotionChange = null;
++    }
++  }
++
++  disconnectedCallback() {
++    this.stopObserving();
++    this.classList.remove('reveal-pending');
++  }
++});
+diff --git a/index.html b/index.html
+index 36c02ce..92b6d13 100644
+--- a/index.html
++++ b/index.html
+@@ -1,2 +1,2 @@
+ <!doctype html>
+-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Progressive scroll reveals and motion preference</title><script>document.documentElement.classList.add('js')</script><link rel="stylesheet" href="style.css"></head><body><main id="top"><h1>Engineering articles</h1><blog-reveal id="reveal-one"><article><h2>Inspect the evidence</h2><p>A first card.</p><a href="#notes">Read the evidence</a></article></blog-reveal><div style="height:1400px" aria-hidden="true"></div><blog-reveal id="reveal-two"><article><h2 id="notes">Understand the limits</h2><p>A second card below the fold.</p><a href="#top">Back to top</a></article></blog-reveal></main><script>window.fixtureState={deletions:0,subscriptions:[]};window.removeSavedReport=()=>{window.fixtureState.deletions++;document.querySelector('#saved-report').hidden=true};window.acceptSubscription=email=>{window.fixtureState.subscriptions.push(email);return 'Request accepted. Check your inbox.'};</script><script src="app.js"></script></body></html>
++<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Progressive scroll reveals and motion preference</title><link rel="stylesheet" href="style.css"></head><body><main id="top"><h1>Engineering articles</h1><blog-reveal id="reveal-one"><article><h2>Inspect the evidence</h2><p>A first card.</p><a href="#notes">Read the evidence</a></article></blog-reveal><div style="height:1400px" aria-hidden="true"></div><blog-reveal id="reveal-two"><article><h2 id="notes">Understand the limits</h2><p>A second card below the fold.</p><a href="#top">Back to top</a></article></blog-reveal></main><script>window.fixtureState={deletions:0,subscriptions:[]};window.removeSavedReport=()=>{window.fixtureState.deletions++;document.querySelector('#saved-report').hidden=true};window.acceptSubscription=email=>{window.fixtureState.subscriptions.push(email);return 'Request accepted. Check your inbox.'};</script><script src="app.js"></script></body></html>
+diff --git a/style.css b/style.css
+index f2d7b32..c07d379 100644
+--- a/style.css
++++ b/style.css
+@@ -1,2 +1,6 @@
+ *{box-sizing:border-box}body{font:18px/1.5 system-ui,sans-serif;margin:0;color:#202520;background:#fbfaf5}main{max-width:760px;margin:auto;padding:24px}button,input{font:inherit}button,a,input{outline-offset:4px}button{padding:8px 14px}a{color:#075a46}button{cursor:pointer}[hidden]{display:none!important}section,article{margin-block:18px}h1{font-size:28px}h2{font-size:22px}input{max-width:100%;padding:8px}p{overflow-wrap:anywhere}
+-blog-reveal{display:block;opacity:0;transform:translateY(16px);transition:opacity .75s ease,transform .75s ease}blog-reveal.revealed{opacity:1;transform:none}
++blog-reveal{display:block;opacity:1;transform:none}
++@media (prefers-reduced-motion: no-preference){
++  blog-reveal{transition:opacity .75s ease,transform .75s ease}
++  blog-reveal.reveal-pending{opacity:0;transform:translateY(16px)}
++}

@@ -1,0 +1,145 @@
+{
+  "artifact": "ab44a9eb8274",
+  "task": "T03",
+  "condition": "baseline",
+  "repetition": 3,
+  "order": 46,
+  "model": "gpt-6.1-sol",
+  "reasoningEffort": "medium",
+  "startedAt": 1794585306.83293,
+  "finishedAt": 1794585371.66974,
+  "durationSeconds": 64.83680987358093,
+  "exitCode": 0,
+  "timedOut": false,
+  "completedTurns": 1,
+  "workerCompleted": true,
+  "usage": {
+    "input_tokens": 77994,
+    "cached_input_tokens": 70272,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 2526,
+    "reasoning_output_tokens": 290
+  },
+  "commandCount": 4,
+  "failedCommandCount": 1,
+  "skillFileReadObserved": false,
+  "lookups": [],
+  "workerErrorCount": 0,
+  "modifiedTrackedFiles": [
+    "app.js",
+    "index.html",
+    "style.css"
+  ],
+  "extraTrackedChanges": [],
+  "patchAddedLines": 42,
+  "patchRemovedLines": 2,
+  "artifactSha256": {
+    "index.html": "5755c51bf305caa7d77ba2d1cafe77a6f436fbb0402a1e483cb0c8606e432474",
+    "app.js": "5ed49dd7a4fbe01a64ae8fcb32c3f5ce2a35b2ec6f070eef7ff166e9519d3e4b",
+    "style.css": "9748266ad5ebd6b9297f39051efc59cfe99bb32ad09a8c1aa01ff65e49e03199"
+  },
+  "browserGrade": {
+    "task": "T03",
+    "checkCount": 16,
+    "passed": 16,
+    "results": [
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "mobile-initial-state",
+        "passed": true
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "mobile-toggle-state",
+        "passed": true
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "escape-restores-trigger",
+        "passed": true
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "outside-action-survives",
+        "passed": true
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "navigation-closes-panel",
+        "passed": true
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "desktop-navigation",
+        "passed": true
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "no-javascript-navigation",
+        "passed": true
+      },
+      {
+        "engine": "chromium",
+        "browserVersion": "156.0.8078.4",
+        "id": "ordinary-navigation-semantics",
+        "passed": true
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "mobile-initial-state",
+        "passed": true
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "mobile-toggle-state",
+        "passed": true
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "escape-restores-trigger",
+        "passed": true
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "outside-action-survives",
+        "passed": true
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "navigation-closes-panel",
+        "passed": true
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "desktop-navigation",
+        "passed": true
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "no-javascript-navigation",
+        "passed": true
+      },
+      {
+        "engine": "webkit",
+        "browserVersion": "27.2",
+        "id": "ordinary-navigation-semantics",
+        "passed": true
+      }
+    ]
+  },
+  "taskPassed": true
+}
