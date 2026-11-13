@@ -26,6 +26,7 @@
 .stats-pills button[aria-pressed='true'] { background: var(--color-surface); color: var(--color-text); border-color: var(--color-border); }
 .stats-traffic-control > p { margin-top: 6px; color: var(--color-text-muted); font-size: 11px; }
 .stats-status { min-height: 20px; margin: 0 0 8px; color: var(--color-text-muted); font-size: 12px; }
+.stats-status > .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
 .stats-status-error, .stats-status-empty { padding: 20px; border: 1px solid var(--color-border); border-radius: 10px; font-size: 14px; }
 .stats-status-loading { padding-block: 16px; }
 .stats-retry { color: var(--color-link); border-color: var(--color-border); margin-left: 12px; }
