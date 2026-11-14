@@ -1,0 +1,25 @@
+{
+  "shortQueries": [
+    "confirm destructive action",
+    "expand content panel",
+    "mobile navigation menu",
+    "inline form errors",
+    "send analytics beacon",
+    "respect reduced motion"
+  ],
+  "controls": [
+    { "id": "word-order", "left": "animate dialog", "right": "dialog animate" },
+    { "id": "removed-negation", "left": "animate dialog", "right": "not animate dialog" },
+    { "id": "ignored-unknown", "left": "dialog", "right": "dialog qzxwvvunknown" },
+    { "id": "hyphen-fallback", "left": "dialog", "right": "dialog-qzxwvvunknown" },
+    { "id": "repeated-word", "left": "dialog", "right": "dialog dialog" },
+    { "id": "all-unknown", "left": "qzxwvvunknown", "right": "xqzzvvunknown" }
+  ],
+  "lengths": [1, 4, 16, 64],
+  "processRepetitions": 3,
+  "warmupCalls": 2000,
+  "batches": 30,
+  "callsPerBatch": 1000,
+  "permutationSeed": 20261113,
+  "k": 10
+}

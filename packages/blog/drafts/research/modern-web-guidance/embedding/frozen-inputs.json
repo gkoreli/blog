@@ -1,0 +1,12 @@
+{
+  "sourceCommit": "596acbc75a330508591b07cd9e198b219341f619",
+  "files": {
+    "reproduce.mjs": "b05bbf6116990b605c72772617b9be6b1725adb51a6a04eb944e5bec944f24b4",
+    "cases.json": "0263858efdac30e2a992c8a6f994b91c3516a29d609ac5d8dc5c6f8370d97534",
+    "LICENSE.upstream": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "measure-package.py": "704d00692f6d23fac18f5a084e502108d955d212ee9df5d99cba39a5b4961069",
+    "protocol.md": "0e9c8762af5534f3107cb6122c031f852ec9949537434a9608cfdfdc02e1bf12",
+    "reference.mjs": "fc8c9eafd2e5d73889efb6943eb2070bc0f4adc54bf55663599891ba974c004a",
+    "source:static-embedder.ts": "1e831f9feba5800717712ef7c4cfe4f8abadf713032b908c14349d023f9c32e4"
+  }
+}
