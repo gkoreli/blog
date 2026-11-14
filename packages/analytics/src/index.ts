@@ -1,4 +1,5 @@
 import { projectReportObservation } from './report-projection.js';
+import { databaseTimestamp, utcDateKey } from '@gkoreli/time';
 import { allowsDiagnostics } from './diagnostics.js';
 import { extractRequestEvidence, extractDiagnosticInputs } from './request-evidence.js';
 import { COLLECTION_VERSION, VERIFIER_PROFILE_VERSION } from './versions.js';
@@ -30,10 +31,6 @@ export type { ReportCalculation, ReportCalculationObserver } from './report-cost
 export { ACTIVE_REFERRAL_POLICY } from './referral-policy.generated.js';
 export { handleCalibration, purgeExpiredCalibration } from './calibration.js';
 export { handleNativeBotCapture, NATIVE_CAPTURE_PREFIX } from './native-bot-capture.js';
-
-function sqliteTimestamp(date: Date): string {
-  return date.toISOString().replace('T', ' ').slice(0, 19);
-}
 
 export { SIGNATURE_DEADLINE_MS } from './request-verification.js';
 export const PUBLIC_PATHS_DEADLINE_MS = 500;
@@ -71,7 +68,7 @@ async function persistObservation(
   const captureEvidence = diagnosticsRequested && publicPaths?.has(new URL(request.url).pathname) === true;
   const metadata = extractRequestMetadata(request, env.OWNER_IPS, publicPaths);
   const classification = analyzeTraffic(metadata.userAgent);
-  const utcDate = observedAt.toISOString().slice(0, 10);
+  const utcDate = utcDateKey(observedAt);
   const [dailyClientId, signature, vendorIp] = await Promise.all([
     createDailyClientId({
       masterKey: hashKey,
@@ -126,7 +123,7 @@ async function persistObservation(
     signatureStatus: signature.status === 'absent' ? null : signature.status,
     readerKind: reader.kind,
     readerReason: reader.reason,
-    observedAt: sqliteTimestamp(observedAt),
+    observedAt: databaseTimestamp(observedAt),
     signatureEvidence: verificationEvidence(request, signature, options.verifySignature !== undefined, classification.declarations.candidates),
     classificationEvidence: classificationEvidence(readerFacts, classification.declarations),
     vendorIpEvidence: vendorIp,

@@ -115,7 +115,7 @@ test('forward projection guards the acknowledged referral input and policy chang
 
 test('core report and complete-window coverage use covering range searches',()=>{
   const f=fixture();try{
-    const [plan]=buildProjectedStatsQueryPlan(query,createStatsWindow(query.range,now));
+    const [plan]=buildProjectedStatsQueryPlan(query,createStatsWindow(query,now));
     const steps=f.sqlite.prepare('EXPLAIN QUERY PLAN '+plan.sql).all(...plan.values).map(row=>row.detail);
     assert.ok(steps.some(step=>step.includes('COVERING INDEX idx_page_observation_report_facts_public_cover')));
     assert.ok(steps.some(step=>step.includes('COVERING INDEX idx_page_observations_public_time')));

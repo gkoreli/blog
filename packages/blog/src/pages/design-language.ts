@@ -151,10 +151,10 @@ export function designLanguagePage() {
   <p class="dl-body-note">Keep a short set of choices visible. Use native radio groups, a quiet selected surface and 44px hit areas around compact labels. Traffic and period stay independent. Agents includes assistants and signed clients; Automation includes legacy rules. The full category names and evidence boundaries belong with the report results. These controls illustrate selection without fetching data.</p>
   ${reportFilters('dl-example')}
   <h3 class="dl-pattern-title">Metrics with a definition</h3>
-  <p class="dl-body-note">Keep the label, number and unit definition together. Use two compact tiles for related totals, with tabular numerals and a short explanation. Show the selected scope and calculation time beside the report. These figures are illustrative.</p>
+  <p class="dl-body-note">Keep the label, number and unit definition together. Use two compact tiles for related totals, with tabular numerals and a short explanation. Show the selected scope and calculation time beside the report. Use one viewer timezone for dates, chart buckets and update times, backed by the same reporting calendar. These figures are illustrative.</p>
   <div class="data-metrics" html:inner=${raw([
     metricTileHtml({ label: 'Page views', value: '1,248', detail: 'Recorded page requests' }),
-    metricTileHtml({ label: 'Daily clients', value: '862', detail: 'Per-day identifiers, not people' }),
+    metricTileHtml({ label: 'Client identifiers', value: '862', detail: 'Rotating identifiers, not people' }),
   ].join(''))}></div>
   <h3 class="dl-pattern-title">Comparison rows</h3>
   <p class="dl-body-note">Keep the title and path clear of chart marks. Print the count above a small meter in a fixed value column. The title filters the report; the separate Visit control opens the page. Both actions keep 44px targets. Titles gain an underline on hover or focus. These values are illustrative.</p>

@@ -349,3 +349,10 @@ The [timezone presentation correction](../../../prototypes/stats/visual-qa-study
 
 
 Delivered as `d1803dcc`; Cloudflare build `6ac89f49-7cb2-46a1-a191-8964ced1d934` succeeded. The [fresh timezone acceptance receipt](2026-11-14-stats-timezone-acceptance.json) confirms matching served identity, exact JS/CSS, live local update times, an hourly legend/table that agree in Pacific time, and unchanged UTC daily labels. Desktop and 320px phone views remain contained. Types, 454 site tests, 35 Markdown validations and an isolated 46-post build pass. The display correction is complete; API timestamps, query windows, daily identifiers, counts and cache lifetime retain their existing contract.
+
+
+### Stats local calendar reporting — November 14
+
+The [shared-calendar implementation record](../../../prototypes/stats/visual-qa-study.md#viewer-calendar-windows-and-shared-time-kernel--november-14) supersedes the earlier UTC daily-aggregation limitation. Stats daily and hourly series, report ranges and Article reach completed weeks now use the selected viewer calendar. UTC storage remains canonical. [ADR-0022](../../../../../docs/adr/0022-utc-instants-and-viewer-calendars.md) records the shared time kernel, domain/repository/presentation boundaries, API 0.3.0 contract refinement and timezone-aware cache identity/expiry. Daily privacy identifiers retain UTC rotation and explicit nonadditive-count semantics.
+
+Local acceptance includes ten kernel tests, 493 analytics tests, 448 site tests, workspace types, validation and an isolated 46-post build. Native D1/SQLite parity covers 78 Stats comparisons plus Article reach, with indexed UTC bounds and bounded statements. A generated independent consumer installs and bundles. Desktop/light and 393px/320px phone/light/dark checks use labeled synthetic observations; a clipped chart-table caption was corrected. Stored records and full report detail remain. The next bounded action is checked source delivery, Cloudflare activation and fresh public acceptance of daily/hourly/Article reach local boundaries.

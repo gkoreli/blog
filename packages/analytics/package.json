@@ -1,6 +1,6 @@
 {
   "name": "@gkoreli/analytics",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "private": true,
   "description": "Cookieless, privacy-first analytics for Cloudflare Workers + D1",
   "type": "module",
@@ -42,14 +42,17 @@
   "scripts": {
     "typecheck": "tsc --noEmit",
     "test": "tsc -p tsconfig.test.json && node --test test/*.test.mjs",
-    "test:portability": "node scripts/fresh-schema.mjs --check && node scripts/check-minimal-worker.mjs",
-    "test:protocol": "node scripts/check-public-signatures-native.mjs"
+    "test:portability": "pnpm -C ../time build && node scripts/fresh-schema.mjs --check && node scripts/check-minimal-worker.mjs",
+    "test:protocol": "pnpm -C ../time build && node scripts/check-public-signatures-native.mjs",
+    "pretest": "pnpm -C ../time build",
+    "pretypecheck": "pnpm -C ../time build"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20250306.0",
     "typescript": "^7.0.2"
   },
   "dependencies": {
-    "ipaddr.js": "2.5.0"
+    "ipaddr.js": "2.5.0",
+    "@gkoreli/time": "workspace:*"
   }
 }

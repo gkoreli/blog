@@ -334,27 +334,27 @@ test('owner endpoint marks the ingestion identity without exposing it and preser
 
 test('UTC presets contain exact dates and required granularity', () => {
   const now = new Date('2026-08-25T13:42:30.000Z');
-  const seven = createStatsWindow('7d', now);
-  const thirty = createStatsWindow('30d', now);
-  const ninety = createStatsWindow('90d', now);
+  const seven = createStatsWindow({range:'7d'}, now);
+  const thirty = createStatsWindow({range:'30d'}, now);
+  const ninety = createStatsWindow({range:'90d'}, now);
 
   assert.deepEqual([seven.start, seven.end, seven.granularity], ['2026-08-19', '2026-08-25', 'hour']);
   assert.deepEqual([thirty.start, thirty.end, thirty.granularity], ['2026-07-27', '2026-08-25', 'day']);
   assert.deepEqual([ninety.start, ninety.end, ninety.granularity], ['2026-05-28', '2026-08-25', 'day']);
-  assert.equal(completeTimeSeries(seven, [], now).length, 158);
-  assert.equal(completeTimeSeries(thirty, [], now).length, 30);
-  assert.equal(completeTimeSeries(ninety, [], now).length, 90);
+  assert.equal(completeTimeSeries(seven, []).length, 158);
+  assert.equal(completeTimeSeries(thirty, []).length, 30);
+  assert.equal(completeTimeSeries(ninety, []).length, 90);
 });
 
 test('bucket completion preserves observations and zero-fills missing UTC buckets', () => {
   const now = new Date('2026-08-25T02:15:00.000Z');
-  const window = createStatsWindow('7d', now);
+  const window = createStatsWindow({range:'7d'}, now);
   const points = completeTimeSeries(window, [
     { bucket: '2026-08-25T01:00:00Z', views: 3, dailyClients: 2 },
-  ], now);
+  ]);
 
-  assert.deepEqual(points.at(-2), { bucket: '2026-08-25T01:00:00Z', views: 3, dailyClients: 2 });
-  assert.deepEqual(points.at(-1), { bucket: '2026-08-25T02:00:00Z', views: 0, dailyClients: 0 });
+  assert.deepEqual(points.at(-2), { bucket: '2026-08-25T01:00:00.000Z', views: 3, dailyClients: 2 });
+  assert.deepEqual(points.at(-1), { bucket: '2026-08-25T02:00:00.000Z', views: 0, dailyClients: 0 });
   assert.equal(points.filter((point) => point.views === 0).length, points.length - 1);
 });
 

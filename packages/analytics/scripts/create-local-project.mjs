@@ -22,8 +22,15 @@ export function createLocalProject(destination) {
   cpSync(new URL('LICENSE', repository), resolve(vendor, 'LICENSE'));
   const packaged = { name: sourcePackage.name, version: sourcePackage.version, private: true,
     type: sourcePackage.type, main: sourcePackage.main, exports: sourcePackage.exports,
-    dependencies: sourcePackage.dependencies, license: 'MIT' };
+    dependencies: { ...sourcePackage.dependencies, '@gkoreli/time': 'file:../time' }, license: 'MIT' };
   writeFileSync(resolve(vendor, 'package.json'), JSON.stringify(packaged, null, 2) + '\n');
+  const timeSource = new URL('packages/time/', repository), timeVendor = resolve(target, 'vendor/time');
+  mkdirSync(timeVendor, { recursive: true });
+  cpSync(new URL('dist/', timeSource), resolve(timeVendor, 'dist'), { recursive: true });
+  cpSync(new URL('LICENSE', repository), resolve(timeVendor, 'LICENSE'));
+  const timePackage = JSON.parse(readFileSync(new URL('package.json', timeSource), 'utf8'));
+  delete timePackage.scripts; delete timePackage.devDependencies;
+  writeFileSync(resolve(timeVendor, 'package.json'), JSON.stringify(timePackage, null, 2) + '\n');
   writeFileSync(resolve(target, 'package.json'), JSON.stringify({
     name: 'analytics-local-evaluation', private: true, type: 'module',
     packageManager: rootPackage.packageManager, engines: rootPackage.engines,

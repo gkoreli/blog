@@ -1,5 +1,6 @@
+import { addCalendarDays, calendarDateKey, calendarDaysBetween, parseTimeZone } from '@gkoreli/time';
 /** Request evidence for editorial decisions; no reader, session or identity claims. */
-export const ARTICLE_REACH_VERSION = '2026-10-30.2';
+export const ARTICLE_REACH_VERSION = '2026-11-14.1';
 export const REACH_METRIC_KEYS = ['views', 'externalViews', 'internalViews', 'unattributedViews', 'unknownSourceViews', 'largestSourceViews', 'unrecognizedTimeViews'] as const;
 export interface ReachMetrics {
   views: number;
@@ -35,7 +36,7 @@ export interface ReachMeasurementHistory {
 }
 export interface ArticleReachReport {
   version: typeof ARTICLE_REACH_VERSION;
-  period: { startInclusive: string; endExclusive: string; updatedAt: string; timeZone: 'UTC' };
+  period: { startInclusive: string; endExclusive: string; updatedAt: string; timeZone: string };
   selection: 'stored-browser-signals';
   catalogueSize: number;
   site: ReachMetrics;
@@ -143,11 +144,10 @@ export function consistentArticleReach(value: unknown): value is ArticleReachRep
     || !metrics(value.site) || !metrics(value.articleTotals) || !contained(value.articleTotals, value.site)) return false;
   const { period, classification, referralPolicy, largestExternalSource } = value;
   if (!record(period) || !keys(period, ['startInclusive', 'endExclusive', 'updatedAt', 'timeZone'])
-    || !reachDay(period.startInclusive) || !reachDay(period.endExclusive) || period.timeZone !== 'UTC'
+    || !reachDay(period.startInclusive) || !reachDay(period.endExclusive) || typeof period.timeZone !== 'string' || parseTimeZone(period.timeZone) === null
     || typeof period.updatedAt !== 'string' || !Number.isFinite(Date.parse(period.updatedAt))) return false;
-  const start = Date.parse(period.startInclusive + 'T00:00:00Z'), end = Date.parse(period.endExclusive + 'T00:00:00Z');
   const updated = new Date(period.updatedAt);
-  if (end - start !== 28 * 86_400_000 || updated.toISOString() !== period.updatedAt || period.updatedAt.slice(0, 10) !== period.endExclusive) return false;
+  if (calendarDaysBetween(period.startInclusive, period.endExclusive) !== 28 || updated.toISOString() !== period.updatedAt || calendarDateKey(period.updatedAt, period.timeZone) !== period.endExclusive) return false;
   if (!record(classification) || !keys(classification, ['recordedProfiles', 'unversionedViews']) || !count(classification.recordedProfiles)
     || !count(classification.unversionedViews) || classification.unversionedViews > value.site.views
     || classification.recordedProfiles > value.site.views - classification.unversionedViews
@@ -163,8 +163,8 @@ export function consistentArticleReach(value: unknown): value is ArticleReachRep
   for (let index = 0; index < 4; index++) {
     const week: unknown = value.weeks[index];
     if (!record(week) || !keys(week, ['startInclusive', 'endExclusive', 'site', 'articles']) || !metrics(week.site) || !metrics(week.articles)
-      || !contained(week.articles, week.site) || week.startInclusive !== new Date(start + index * 7 * 86_400_000).toISOString().slice(0, 10)
-      || week.endExclusive !== new Date(start + (index + 1) * 7 * 86_400_000).toISOString().slice(0, 10)) return false;
+      || !contained(week.articles, week.site) || week.startInclusive !== addCalendarDays(period.startInclusive, index * 7)
+      || week.endExclusive !== addCalendarDays(period.startInclusive, (index + 1) * 7)) return false;
     siteWeeks.push(week.site); articleWeeks.push(week.articles);
   }
   if (!completedWeeks(siteWeeks, value.site) || !completedWeeks(articleWeeks, value.articleTotals)) return false;

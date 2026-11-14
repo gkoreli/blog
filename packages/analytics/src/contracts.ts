@@ -67,6 +67,7 @@ export type ReferrerState = 'external' | 'internal' | 'absent' | 'unusable';
 export type ReportedReferrerState = ReferrerState | 'legacy-unknown';
 
 export interface TimeSeriesPoint {
+  /** Inclusive bucket start as a UTC ISO instant, for every granularity. */
   bucket: string;
   views: number;
   dailyClients: number;
@@ -143,7 +144,9 @@ export interface StatsResponse {
   period: {
     start: string;
     end: string;
-    timeZone: 'UTC';
+    timeZone: string;
+    startInclusive: string;
+    endExclusive: string;
     granularity: Granularity;
     updatedAt: string;
   };
@@ -209,6 +212,8 @@ export interface StatsResponse {
 
 /** Validated analytics report selection, independent of HTTP and D1. */
 export interface StatsQuery {
+  /** Named IANA reporting calendar; omitted API selections use UTC. */
+  timeZone?: string;
   range: StatsRange;
   traffic: TrafficFilter;
   path?: string;

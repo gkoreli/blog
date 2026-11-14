@@ -54,8 +54,8 @@ test('returned later-hour buckets survive clock boundaries without inventing lat
     sqlite.prepare("UPDATE page_observations SET observed_at='2026-10-31 13:00:00' WHERE path='/alpha'").run();
     const r=await queryStats(db,all,new Date('2026-10-31T12:59:59Z'));
     assert.equal(r.totals.views,5);assert.equal(r.timeSeries.reduce((n,row)=>n+row.views,0),5);
-    assert.equal(r.timeSeries.at(-1).bucket,'2026-10-31T13:00:00Z');
-    assert.equal(r.timeSeries.at(-1).views,1);assert.ok(!r.timeSeries.some(row=>row.bucket==='2026-10-31T14:00:00Z'));
+    assert.equal(r.timeSeries.at(-1).bucket,'2026-10-31T13:00:00.000Z');
+    assert.equal(r.timeSeries.at(-1).views,1);assert.ok(!r.timeSeries.some(row=>row.bucket==='2026-10-31T14:00:00.000Z'));
     assert.equal(r.period.updatedAt,'2026-10-31T12:59:59.000Z');
   }finally{sqlite.close();}
 });

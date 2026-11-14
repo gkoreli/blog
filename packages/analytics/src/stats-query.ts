@@ -24,6 +24,8 @@ import { vendorNetworkStateSql } from './vendor-network-summary.js';
 import { fetchMetadataReportCtes, fetchMetadataReportProjectionSql } from './fetch-metadata-report.js';
 import { vendorCacheReportCtes, vendorCacheReportProjectionSql } from './vendor-cache-report.js';
 import { boundedJsonObjectSql } from './sql-json.js';
+import { databaseTimestamp } from '@gkoreli/time';
+import { reportBucketSql } from './report-time-sql.js';
 
 interface QueryPredicate {
   sql: string;
@@ -37,7 +39,7 @@ const PUBLIC_OBSERVATION_PREDICATE = `is_owner = 0 AND NOT EXISTS (
 
 function predicateFor(window: StatsWindow, query: StatsQuery, includeOutgoing = false): QueryPredicate {
   let sql = `observed_at >= ? AND observed_at < ? AND ${PUBLIC_OBSERVATION_PREDICATE}`;
-  const values: unknown[] = [window.startInclusive, window.endExclusive];
+  const values: unknown[] = [databaseTimestamp(window.startInclusive), databaseTimestamp(window.endExclusive)];
   const partition = partitionPredicate(query.traffic);
   if (partition.sql.length > 0) {
     sql += ` AND (${partition.sql})`;
@@ -172,9 +174,9 @@ function reportSql(selected: QueryPredicate, bucketSql: string, includeBoundary:
         )`,
     'series': `(
           SELECT COALESCE(json_group_array(json(row_json)), json('[]')) FROM (
-            SELECT json_object('key1', ${bucketSql}, 'views', COUNT(*),
+            SELECT json_object('key1', bucket, 'views', COUNT(*),
               'dailyClients', COUNT(DISTINCT daily_client_id)) AS row_json
-            FROM included GROUP BY ${bucketSql} ORDER BY ${bucketSql}
+            FROM series_inputs GROUP BY bucket ORDER BY bucket
           )
         )`,
     'referrer': `(
@@ -363,6 +365,7 @@ function reportSql(selected: QueryPredicate, bucketSql: string, includeBoundary:
         ${signatureSelectionRecordedSql()} AS selection_valid FROM signature_facts
     )`);
   }
+  if (sectionNames.includes('series')) ctes.push(`series_inputs AS MATERIALIZED (SELECT daily_client_id, ${bucketSql} AS bucket FROM included)`);
   if (!projected && sectionNames.includes('fetch-metadata')) ctes.push(fetchMetadataReportCtes('cohorts'));
   if (!projected && sectionNames.includes('vendor-cache')) ctes.push(vendorCacheReportCtes('cohorts'));
   if (includeBoundary) ctes.push(boundaryCte);
@@ -379,9 +382,7 @@ function reportSql(selected: QueryPredicate, bucketSql: string, includeBoundary:
 
 /** Prepared values belong to storage; report policy and HTTP parsing stay outside. */
 export function buildStatsQueryPlan(query: StatsQuery, window: StatsWindow, policy: ReferralPolicy): QueryPredicate[] {
-  const bucketSql = window.granularity === 'hour'
-    ? "strftime('%Y-%m-%dT%H:00:00Z', observed_at)"
-    : "strftime('%Y-%m-%d', observed_at)";
+  const bucketSql = reportBucketSql(window);
   const rules = referralRulesJson(policy);
   return REPORT_SECTION_GROUPS.map((names, index) => {
     const includeOutgoing = names.some(name => name === 'transitions' || name === 'referrer-details');
@@ -396,7 +397,7 @@ export function buildStatsQueryPlan(query: StatsQuery, window: StatsWindow, poli
  * the same transaction. Incomplete facts are discarded before source fallback.
  */
 export function buildProjectedStatsQueryPlan(query: StatsQuery, window: StatsWindow): QueryPredicate[] {
-  const bucketSql = window.granularity === 'hour' ? "strftime('%Y-%m-%dT%H:00:00Z', observed_at)" : "strftime('%Y-%m-%d', observed_at)";
+  const bucketSql = reportBucketSql(window);
   const groups = [[...REPORT_SECTION_GROUPS[0], ...REPORT_SECTION_GROUPS[1], ...REPORT_SECTION_GROUPS[2]], [...REPORT_SECTION_GROUPS[3], ...REPORT_SECTION_GROUPS[4]]];
   return groups.map((names,index) => {
     const outgoing = index === 0;
