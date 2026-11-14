@@ -16,7 +16,8 @@ test('first-valid selection records its scope without claiming all candidates or
       return Response.json(fixture.directories[String(url)], { headers: { 'Content-Type': 'application/http-message-signatures-directory+json' } });
     } });
     assert.equal(result.status, 'verified', trial.name); assert.equal(result.agent, trial.selectedOrigin, trial.name);
-    assert.equal(result.evidence.version, '2026-10-28.1');
+    assert.equal(result.evidence.version, '2026-11-13.1');
+    assert.equal(result.evidence.algorithm, 'ed25519');
     const [matchedCandidates, taggedCandidates, attemptedCandidates, unassessedCandidates] = trial.counts;
     assert.deepEqual(result.evidence.selection, { policy: 'first-valid-in-input-order', matchedCandidates, taggedCandidates, attemptedCandidates, unassessedCandidates }, trial.name);
     assert.equal(fetches, attemptedCandidates);

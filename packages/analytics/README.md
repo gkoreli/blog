@@ -25,7 +25,32 @@ The [minimal Worker example](examples/minimal-worker/README.md) provides a local
 | `OWNER_IPS` | Optional comma-separated owner addresses for ingestion exclusion |
 | `OWNER_MARK_GRANT` | Optional private owner-only grant, valid for at most fifteen minutes and read only by `/api/owner` |
 
-Use a separate database per site: observations have no tenant column. The blog's [`migrations/`](migrations/) upgrade site-specific history, including legacy data backfills; do not apply them to another site's data. [`schema/`](schema/) is the empty-install baseline. Changing an applied baseline is not an upgrade; schema changes need a deliberate migration and fresh-schema parity checks. Follow the example's [schema ownership guidance](examples/minimal-worker/README.md#schema-ownership-and-deployment-boundary).
+Use a separate database per site: observations have no tenant column. The blog's [`migrations/`](migrations/) upgrade site-specific history, including legacy data backfills; do not apply them to another site's data. [`schema/`](schema/) contains the frozen empty-install baseline and ordered portable upgrades. Repeat the consumer's migration command to apply new numbered upgrades; never replace its applied baseline. Follow the example's [schema ownership guidance](examples/minimal-worker/README.md#schema-ownership-and-deployment-boundary).
+
+## Reusable reporting
+
+`@gkoreli/analytics/reporting` owns canonical report caching, a composed report handler, durable D1 admission and a small server-rendered report. The blog imports this same cache; its publication shell and bespoke charts remain in the blog. The [standalone example](examples/minimal-worker/worker.ts) shows the complete integration without a framework or browser script.
+
+```ts
+import { createAnalyticsReportHandler, createD1ReportAdmission } from '@gkoreli/analytics/reporting';
+
+const reports = createAnalyticsReportHandler({
+  match: request => caches.default.match(request),
+  put: (request, response) => caches.default.put(request, response),
+}, {
+  admission: env => createD1ReportAdmission(env.DB, {
+    maxColdFillsPerDay: 24,
+    maxReportedRowsReadPerDay: 1_000_000,
+  }),
+  allowedRanges: ['7d', '30d'],
+});
+```
+
+Pass `reports(request, env, ctx)` from the Worker. `renderAnalyticsReport(report)` renders a validated report as readable HTML; `/stats` in the example uses it. `handleStats` remains the uncached low-level HTTP adapter. `admission: null` explicitly chooses an endpoint whose operating limits are supplied externally.
+
+Admission reserves a cold calculation atomically across callers using the same D1 database. Hits and equivalent in-flight requests reuse the completed calculation. The daily fill count is a hard admission limit; returned-read totals are a circuit breaker for later fills, not a pre-execution SQL row cap. A single admitted calculation can cross the threshold. Counters describe provider-returned attempts, not account billing or invisible retry work. Admission/settlement queries are additional work.
+
+One unsettled calculation is allowed per site. Missing read meters, abandoned work or failed settlement keep the day's admission closed; cached reports remain available. A changed daily policy takes effect on a new UTC day. Recovery of an unresolved day requires inspecting its private accounting records rather than clearing them automatically. The next UTC day has an independent budget. Budget records contain internal reservation IDs and aggregate work, not visitor identity; retention of those records and the site's audience data remain operator decisions.
 
 ## Collection and privacy
 
@@ -60,7 +85,9 @@ Hosting-list membership precedes browser shape for unnamed requests; it does not
 
 ## Verification and network methods
 
-The collector uses a bounded Ed25519/directory-discovery subset of RFC 9421 and Web Bot Auth compatibility forms. It has a two-second signature deadline and a one-day maximum lifetime/age policy. Selection is first-valid in input order; matched, tagged, attempted and unassessed counts do not imply multiple valid signers. Invalid, unsupported, unavailable, policy-rejected, not-applicable and indeterminate outcomes remain distinct. [Verifier source](src/webbotauth.ts), [profile history](src/verifier-profile.ts) and [the evidence decision](../../docs/adr/0016.11-signature-verification-evidence.md) define its scope; full conformance or native-provider equivalence is not claimed.
+`@gkoreli/analytics/signatures` exposes request verification and supplied-input audits independently of collection/storage. The shared [public-key module](src/http-signature-key.ts) supports all five public-key algorithms initially defined by RFC 9421: Ed25519, RSA-PSS/SHA-512 with a 64-byte salt, RSA-v1.5/SHA-256, ECDSA P-256/SHA-256 and ECDSA P-384/SHA-384. RSA admission accepts 2048–8192-bit moduli with bounded public exponents. Key-family/algorithm constraints, public-only admission and reviewed demonstration-key rejection apply to both request and directory-proof checks. Imported-key caches separate algorithms. New coverage records retain the selected algorithm; older records keep their original format.
+
+The collector retains a two-second signature deadline and a one-day maximum lifetime/age policy. Selection is first-valid in input order; matched, tagged, attempted and unassessed counts do not imply multiple valid signers. Invalid, unsupported, unavailable, policy-rejected, not-applicable and indeterminate outcomes remain distinct. [Verifier source](src/webbotauth.ts), [profile history](src/verifier-profile.ts) and [the evidence decision](../../docs/adr/0016.11-signature-verification-evidence.md) define scope. Public-directory discovery does not distribute HMAC secrets. Original-wire targets, trailers, arbitrary structured-field components and general response/request associations remain outside the request adapter; full RFC conformance or native-provider equivalence is not claimed.
 
 A verified proof authenticates only covered components against a key. It cannot authenticate an unsigned User-Agent, resource or purpose. Signing `Content-Digest` records header coverage; the request verifier does not compare the digest with body bytes. Replay mitigation is expiry-only, without a nonce database. Key validity/metadata and reviewed demonstration-key rejection are separate admission policies, not an exhaustive compromised-key detector. Human intent, authorization, unique actions, reading, indexing and citation need their own evidence.
 
@@ -107,7 +134,7 @@ Internal source paths must belong to the trusted public route set and omit query
 
 `POST /api/owner` accepts `Authorization: Bearer <ADMIN_SECRET>` or the supported private expiring grant. A mark covers the same host, IP, User-Agent, HMAC key and UTC day, including matching earlier rows. A changed client/day needs another mark. Never place credentials in a URL or Git; the blog's `/owner` form stores none in browser storage. [Owner grant and actual-client boundaries](../blog/drafts/research/analytics-retrospective/12-owner-code-and-verification-correction.md).
 
-The library handler does not provide the blog's calculation cache or a global read budget. The [blog cache](../blog/src/worker/stats-cache.ts) reuses successful calculations for at most an hour, capped at UTC midnight, preserving calculation time and validated filter/policy/version keys. Cache locality and isolate coalescing do not impose a global quota. Query work consumes D1 reads even when few rows return; inspect statement meters and total cold-fill work. After a quota rejection, stop expensive retries and inspect metadata. [Read-budget decision](../../docs/adr/0016.7-budget-d1-reads-and-cache-public-reports.md) and [operational procedure](../../.agents/skills/blog-maintenance/references/operations-and-handoffs.md).
+The [package cache](src/report-cache.ts) reuses successful calculations for at most an hour, capped at UTC midnight, preserving calculation time and validated filter/policy/version keys. New traffic and owner marks become visible after expiry; there is no public refresh bypass. Cache locality and isolate coalescing do not impose a global quota; use the separate admission port for explicit cost policy. Query work consumes D1 reads even when few rows return. After a quota rejection, stop expensive retries and inspect metadata. [Read-budget decision](../../docs/adr/0016.7-budget-d1-reads-and-cache-public-reports.md) and [operational procedure](../../.agents/skills/blog-maintenance/references/operations-and-handoffs.md).
 
 ## Maintaining declarations and evidence profiles
 

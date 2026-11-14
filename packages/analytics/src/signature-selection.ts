@@ -10,7 +10,7 @@ export function signatureSelectionRecordedSql(): string {
     AND json_extract(signature_evidence, '$.source') = 'local-webbotauth'
     AND json_extract(signature_evidence, '$.localStatus') = 'verified'
     AND json_extract(signature_evidence, '$.localOutcome') = 'verified'
-    AND json_extract(signature_evidence, '$.coverage.version') = '2026-10-28.1'
+    AND json_extract(signature_evidence, '$.coverage.version') IN ('2026-10-28.1','2026-11-13.1')
     AND ${value('policy')} = 'first-valid-in-input-order'
     AND ${counts.map(key => `json_type(signature_evidence, '$.coverage.selection.${key}') = 'integer' AND ${value(key)} BETWEEN 0 AND 9007199254740991`).join('\n    AND ')}
     AND ${value('taggedCandidates')} >= 1

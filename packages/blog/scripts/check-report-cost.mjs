@@ -7,7 +7,7 @@ import { pathToFileURL } from 'node:url';
 import { createHash } from 'node:crypto';
 import { build } from 'esbuild';
 import { queryStats } from '../../analytics/.test-dist/stats.js';
-import { createStatsHandler } from '../src/worker/stats-cache.ts';
+import { createStatsHandler } from '@gkoreli/analytics/reporting';
 import { summaryCases } from '../../analytics/test/fixtures/signature-summary.mjs';
 const [output] = process.argv.slice(2); assert.ok(output);
 const baseline = '8825937';

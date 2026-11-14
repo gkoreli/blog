@@ -1,7 +1,8 @@
-import { ACTIVE_REFERRAL_POLICY, parseStatsQuery } from '@gkoreli/analytics';
+import { ACTIVE_REFERRAL_POLICY } from './referral-policy.generated.js';
+import { parseStatsQuery } from './stats-selection.js';
 
 /** Bump when report semantics, storage binding, or public selection rules change. */
-export const STATS_REPORT_VERSION = '2026-11-11.6';
+export const STATS_REPORT_VERSION = '2026-11-13.1';
 export const STATS_EDGE_TTL_SECONDS = 3600;
 const MAX_PENDING_REPORTS = 8;
 const LOOKUP_BUDGET_MS = 250;
@@ -45,7 +46,7 @@ export interface StatsCacheStore {
   put(request: Request, response: Response): Promise<void>;
 }
 
-interface StatsCacheOptions {
+export interface StatsCacheOptions {
   now?: () => number;
   policyHash?: string;
   reportVersion?: string;

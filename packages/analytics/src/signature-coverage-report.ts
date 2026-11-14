@@ -1,5 +1,5 @@
 /** Stored coverage facts only; this does not reverify a signature or impose
- * today's time policy on historical results. Both recorded formats were emitted
+ * today's time policy on historical results. Recognized formats were emitted
  * only after target coverage was required and recorded age was clamped to zero.
  * Zero validity is possible. All booleans must be JSON booleans.
  */
@@ -8,7 +8,8 @@ export function signatureCoverageRecordedSql(): string {
   const value = (key: string) => `json_extract(signature_evidence, ${path(key)})`;
   const type = (key: string) => `json_type(signature_evidence, ${path(key)})`;
   return `COALESCE((json_type(signature_evidence, '$.coverage') = 'object'
-    AND ${value('version')} IN ('2026-10-27.1','2026-10-28.1')
+    AND ${value('version')} IN ('2026-10-27.1','2026-10-28.1','2026-11-13.1')
+    AND (${value('version')} <> '2026-11-13.1' OR ${value('algorithm')} IN ('ed25519','rsa-pss-sha512','rsa-v1_5-sha256','ecdsa-p256-sha256','ecdsa-p384-sha384'))
     AND ${value('headerForm')} IN ('dictionary','legacy-string','bare-uri')
     AND ${value('replayPolicy')} = 'expiry-only'
     AND ${['authority','targetUri','method','path','query','userAgent','contentDigest'].map(key => `${type('covered.' + key)} IN ('true','false')`).join(' AND ')}

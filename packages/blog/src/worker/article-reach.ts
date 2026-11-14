@@ -1,7 +1,7 @@
 import { z } from 'zod';
 import { queryArticleReach } from '@gkoreli/analytics/article-reach';
 import { ARTICLE_REACH_VERSION, validReachCatalogue, type ReachArticle } from '@gkoreli/analytics/article-reach-contract';
-import { createStatsHandler, type StatsCacheStore } from './stats-cache.js';
+import { createStatsHandler, type StatsCacheStore } from '@gkoreli/analytics/reporting';
 
 interface ArticleAssets { fetch(request: Request): Promise<Response> }
 interface ReachEnvironment { DB: D1Database; ASSETS: ArticleAssets }

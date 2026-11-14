@@ -1,15 +1,29 @@
-import { handleOwner, handleStats, observePageResponse, type Env } from '../../src/index.js';
+import { handleOwner, observePageResponse, type Env } from '../../src/index.js';
+import { createAnalyticsReportHandler, createD1ReportAdmission, renderAnalyticsReport } from '../../src/reporting.js';
+import type { StatsResponse } from '../../src/contracts.js';
 
 const paths: ReadonlySet<string> = new Set(['/', '/notes']);
+const reports = createAnalyticsReportHandler<Env>({
+  match: request => caches.default.match(request),
+  put: (request, response) => caches.default.put(request, response),
+}, {
+  admission: env => createD1ReportAdmission(env.DB, { maxColdFillsPerDay: 24, maxReportedRowsReadPerDay: 1_000_000 }),
+  allowedRanges: ['7d', '30d'],
+  onCalculation: event => console.log('analytics.example_report_calculation', event),
+});
 
 export default {
   async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
     const path = new URL(request.url).pathname;
     if (path === '/api/owner') return handleOwner(request, env);
-    if (path === '/api/stats') {
-      if (request.method !== 'GET') return new Response('Method Not Allowed', { status: 405, headers: { Allow: 'GET' } });
-      try { return await handleStats(request, env, event => console.log('analytics.example_report_calculation', event)); }
-      catch { return Response.json({ error: 'Report unavailable' }, { status: 503, headers: { 'Cache-Control': 'no-store' } }); }
+    if (path === '/api/stats' || path === '/stats') {
+      const response = await reports(request, env, ctx);
+      if (path === '/api/stats' || response.status !== 200) return response;
+      const report: StatsResponse = await response.json();
+      return new Response(renderAnalyticsReport(report), { headers: {
+        'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'no-store',
+        'Content-Security-Policy': "default-src 'none'; style-src 'unsafe-inline'; base-uri 'none'; frame-ancestors 'none'",
+      } });
     }
     if (request.method !== 'GET' && request.method !== 'HEAD') {
       return new Response('Method Not Allowed', { status: 405, headers: { Allow: 'GET, HEAD' } });

@@ -10,6 +10,8 @@ The [normalized local evidence](source-checks.json) records 433 passing analytic
 
 The [November 13 analytics landscape comparison](analytics-industry-comparison-2026-11-13.md) extends this review against six popular open-source projects, GA4 and Cloudflare AI Crawl Control. It recommends portable reporting/installation, followed by publisher campaigns/outcomes and a stable evidence interface. It preserves the distinction between current capability, documented competitor features and proposed implementation; no adoption or comparative accuracy trial was performed.
 
+The separately authorized [package engineering continuation](analytics-package-engineering.md) implements the reusable reporting boundary and expands public-key verification. It preserves this research's dated source snapshot and keeps independent operator adoption separate from local installation acceptance.
+
 **What is already present**
 
 | Capability | Inspected implementation | Present boundary | Offer it could support |

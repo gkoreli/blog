@@ -87,7 +87,7 @@ test('real multiple-signature failures preserve all outcomes independent of labe
   const options = { now, cache: createWebBotAuthCache(), includeEvidence: true, fetcher: async () => Response.json({ keys: [jwk] }, { headers: { 'Content-Type': 'application/http-message-signatures-directory+json' } }) };
   const valid = await verifyWebBotAuth(new Request(unsigned, { headers: { ...headers, Signature: `sig=:${signature}:` } }), options);
   assert.equal(valid.status, 'verified');
-  const unsupported = headers['Signature-Input'].replace(/^sig=/, 'other=').replace('alg="ed25519"', 'alg="rsa-pss-sha512"');
+  const unsupported = headers['Signature-Input'].replace(/^sig=/, 'other=').replace('alg="ed25519"', 'alg="hmac-sha256"');
   for (const inputs of [headers['Signature-Input'] + ', ' + unsupported, unsupported + ', ' + headers['Signature-Input']]) {
     const result = await verifyWebBotAuth(new Request('https://tampered.example/a', { headers: { ...headers, 'Signature-Input': inputs, Signature: `sig=:${signature}:, other=:${signature}:` } }), options);
     assert.deepEqual(result.reasons, ['signature-invalid', 'unsupported-alg']);

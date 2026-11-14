@@ -42,7 +42,7 @@ test('unavailable and unsupported candidate outcomes cannot become a complete as
   const unavailable = await auditWebBotAuth(request(fixture.cases[1]), { now: fixture.now, fetcher: async url => String(url).startsWith('https://two.') ? new Response(null, { status: 503 }) : transport(fixture)(url) });
   assert.equal(unavailable.assessment, 'partial'); assert.equal(unavailable.termination, 'exhausted');
   assert.equal(unavailable.verifiedCandidates, 1); assert.equal(unavailable.unavailableCandidates, 1); assert.equal(unavailable.unassessedCandidates, 0); accounted(unavailable);
-  const headers = { ...fixture.cases[0].headers, 'Signature-Input': fixture.cases[0].headers['Signature-Input'].replace('ed25519', 'rsa-pss-sha512') };
+  const headers = { ...fixture.cases[0].headers, 'Signature-Input': fixture.cases[0].headers['Signature-Input'].replace('ed25519', 'hmac-sha256') };
   const unsupported = await auditWebBotAuth(request({ headers }), { now: fixture.now, fetcher: async () => { throw Error('must not fetch'); } });
   assert.equal(unsupported.assessment, 'partial'); assert.equal(unsupported.unsupportedCandidates, 1); assert.equal(unsupported.directoryFetches, 0); accounted(unsupported);
 });

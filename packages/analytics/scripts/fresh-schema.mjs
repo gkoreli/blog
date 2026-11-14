@@ -1,5 +1,5 @@
 import { DatabaseSync } from 'node:sqlite';
-import { readFileSync, readdirSync, writeFileSync } from 'node:fs';
+import { readFileSync, readdirSync } from 'node:fs';
 import { pathToFileURL } from 'node:url';
 
 const migrations = new URL('../migrations/', import.meta.url);
@@ -20,11 +20,11 @@ export function schemaObjects(db) {
     ORDER BY CASE type WHEN 'table' THEN 0 ELSE 1 END, name`).all();
 }
 
-export function historicalSchema() {
+export function historicalSchema(through) {
   const db = new DatabaseSync(':memory:');
   try {
     db.exec(legacyTable);
-    for (const name of readdirSync(migrations).filter(name => name.endsWith('.sql')).sort()) {
+    for (const name of readdirSync(migrations).filter(name => name.endsWith('.sql') && (through === undefined || name.slice(0,4) <= through)).sort()) {
       db.exec(readFileSync(new URL(name, migrations), 'utf8'));
     }
     return schemaObjects(db);
@@ -36,13 +36,22 @@ export function renderFreshSchema() {
 -- Schema snapshot through migration 0021; no historical rows or backfills.
 -- Regenerate: node packages/analytics/scripts/fresh-schema.mjs --write
 -- Future schema changes must update this snapshot and provide an upgrade path.
-\n` + historicalSchema().map(row => row.sql + ';').join('\n\n') + '\n';
+\n` + historicalSchema('0021').map(row => row.sql + ';').join('\n\n') + '\n';
+}
+
+export function portableSchemaSource() {
+  const schema = new URL('../schema/', import.meta.url);
+  return readdirSync(schema).filter(name => name.endsWith('.sql')).sort()
+    .map(name => readFileSync(new URL(name, schema), 'utf8')).join('\n');
 }
 
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
-  if (process.argv[2] === '--write') writeFileSync(freshSchemaPath, renderFreshSchema());
-  else if (process.argv[2] === '--check') {
-    if (readFileSync(freshSchemaPath, 'utf8') !== renderFreshSchema()) throw new Error('Fresh analytics schema is stale');
-    console.log('Fresh analytics schema matches the historical migration chain');
-  } else throw new Error('Expected --write or --check');
+  if (process.argv[2] !== '--check') throw new Error('The issued baseline is frozen. Add an ordered schema upgrade; use --check to verify parity.');
+  if (readFileSync(freshSchemaPath, 'utf8') !== renderFreshSchema()) throw new Error('Issued baseline changed');
+  const db = new DatabaseSync(':memory:');
+  try {
+    db.exec(portableSchemaSource());
+    if (JSON.stringify(schemaObjects(db)) !== JSON.stringify(historicalSchema())) throw new Error('Portable upgrades differ from the historical schema');
+  } finally { db.close(); }
+  console.log('Frozen baseline and ordered portable upgrades match the historical migration chain');
 }

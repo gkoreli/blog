@@ -29,7 +29,7 @@ export function storedObservationReceipt(observation: ReceiptInput, legacyDispla
     throw new Error('Conflicting signer display profile');
   }
   const coverage = evidence.coverage;
-  const selection = coverage?.version === '2026-10-28.1' ? coverage.selection : null;
+  const selection = coverage?.version === '2026-10-28.1' || coverage?.version === '2026-11-13.1' ? coverage.selection ?? null : null;
   const signer: PublicSignerName | 'none' = evidence.source === 'local-webbotauth'
     && evidence.localOutcome === 'verified' && observation.signatureStatus === 'verified'
     ? publicSignerName(observation.signatureAgent, displayProfile) : 'none';

@@ -27,6 +27,32 @@ test('report projection fingerprint covers the complete interpretation and order
   assert.equal(createHash('sha256').update(referralReportRuleDefinition()).digest('hex'),REFERRAL_REPORT_RULE_SHA256);
 });
 
+test('signature-format upgrade promotes only equivalent predecessor facts and preserves new-format/stale fallback', async () => {
+  const f=fixture();
+  try {
+    const predecessor='2ca641b0fed3defaeb8bcc0556ec88a47abda3a7a8d4918655269007978569d2';
+    const insert=f.sqlite.prepare(`INSERT INTO page_observations(path,daily_client_id,traffic_class,device_type,is_owner,signature_status,signature_evidence,observed_at)
+      VALUES('/upgrade',?,'ai','desktop',0,'verified',?,'2026-10-30 12:00:00')`);
+    const envelope={version:'2026-10-27.5',source:'local-webbotauth',localStatus:'verified',localOutcome:'verified',verifierProfile:'2026-10-31.3',coverage:null};
+    const ids=[];
+    for(const e of [envelope,{...envelope,verifierProfile:'2026-11-13.1'}, {...envelope,coverage:{version:'2026-11-13.1'}},envelope]) {
+      ids.push(Number(insert.run(String(ids.length+500).padStart(32,'0'),JSON.stringify(e)).lastInsertRowid));
+    }
+    rebuild(f.sqlite);
+    f.sqlite.prepare('UPDATE page_observation_report_facts SET rule_sha256=?').run(predecessor);
+    f.sqlite.prepare('UPDATE page_observation_report_facts SET rule_sha256=? WHERE observation_id=?').run('0'.repeat(64),ids[3]);
+    const source=f.sqlite.prepare('SELECT * FROM page_observations ORDER BY id').all();
+    const values=f.sqlite.prepare('SELECT * FROM page_observation_report_facts ORDER BY observation_id').all().map(({rule_sha256,...row})=>row);
+    f.sqlite.exec(readFileSync(new URL('../schema/0003_signature_reporting_profiles.sql',import.meta.url),'utf8'));
+    const fingerprint=id=>f.sqlite.prepare('SELECT rule_sha256 FROM page_observation_report_facts WHERE observation_id=?').get(id).rule_sha256;
+    assert.equal(fingerprint(ids[0]),REPORT_PROJECTION_RULE_SHA256);
+    assert.equal(fingerprint(ids[1]),predecessor);assert.equal(fingerprint(ids[2]),predecessor);assert.equal(fingerprint(ids[3]),'0'.repeat(64));
+    assert.deepEqual(f.sqlite.prepare('SELECT * FROM page_observations ORDER BY id').all(),source);
+    assert.deepEqual(f.sqlite.prepare('SELECT * FROM page_observation_report_facts ORDER BY observation_id').all().map(({rule_sha256,...row})=>row),values);
+    assert.deepEqual(await queryProjectedStats(f.db,query,now),await queryStats(f.db,query,now));
+  }finally{f.sqlite.close();}
+});
+
 test('complete projection, missing/stale fallback, dimension repairs and rebuild preserve exact reports',async()=>{
   const f=fixture();try{
     const source=f.sqlite.prepare('SELECT * FROM page_observations ORDER BY id').all();

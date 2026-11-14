@@ -30,7 +30,7 @@ import {
 } from '@gkoreli/newsletter';
 import { typedLinkHeaderValue } from '../lib/typed-links.js';
 import { negotiateRepresentation, type NegotiatedRepresentation } from './negotiate.js';
-import { createStatsHandler } from './stats-cache.js';
+import { createStatsHandler } from '@gkoreli/analytics/reporting';
 import { createArticleReachHandler } from './article-reach.js';
 import { publicPagePaths } from './referrer-pages.js';
 import { handleAiCheck, type AiCheckEnv } from './ai-check.js';

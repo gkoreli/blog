@@ -5,7 +5,7 @@ import { readFileSync } from 'node:fs';
 import { DatabaseSync } from 'node:sqlite';
 import { dirname } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
-import { freshSchemaPath, schemaObjects } from './fresh-schema.mjs';
+import { portableSchemaSource, schemaObjects } from './fresh-schema.mjs';
 import { CLIENT_REGISTRY, KNOWN_CLIENT_PRODUCTS } from '../src/client-registry.ts';
 import { retainedMatchedProducts } from '../src/retained-client-products.ts';
 import { COLLECTION_VERSION, CLASSIFIER_VERSION } from '../src/versions.ts';
@@ -135,7 +135,7 @@ export default {async fetch(request,env) {
     const db = await detectionRuntime.getD1Database('DB');
     const snapshot = new DatabaseSync(':memory:');
     try {
-      snapshot.exec(readFileSync(freshSchemaPath, 'utf8'));
+      snapshot.exec(portableSchemaSource());
       for (const row of schemaObjects(snapshot)) await db.prepare(row.sql).run();
     } finally { snapshot.close(); }
     assert.equal((await call('/analytics-check/' + profiles[0].id, profiles[0])).status, 403);
@@ -207,7 +207,7 @@ try {
   const db = await runtime.getD1Database('DB');
   const snapshot = new DatabaseSync(':memory:');
   try {
-    snapshot.exec(readFileSync(freshSchemaPath, 'utf8'));
+    snapshot.exec(portableSchemaSource());
     for (const row of schemaObjects(snapshot)) await db.prepare(row.sql).run();
   } finally { snapshot.close(); }
   assert.equal((await visit('/api/stats')).status, 200);
@@ -223,7 +223,10 @@ try {
     ['/notes.md', {}, 200], ['/missing', {}, 404], ['/api/stats', { method: 'POST' }, 405],
   ]) assert.equal((await visit(path, init)).status, status);
   assert.equal((await db.prepare('SELECT COUNT(*) AS n FROM page_observations').first()).n, 4);
-  const before = await (await visit('/api/stats')).json();
+  // The first 30d report is intentionally still cached. Use fresh supported
+  // selections for later source checks; there is no public refresh bypass.
+  assert.equal((await (await visit('/api/stats')).json()).totals.views, 0);
+  const before = await (await visit('/api/stats?range=7d')).json();
   assert.equal(before.totals.views, 4);
   const stored = (await db.prepare('SELECT reader_kind,agent_name,representation,daily_client_id,signature_status FROM page_observations ORDER BY id').all()).results;
   assert.deepEqual(stored.map(row => row.representation), ['html', 'markdown', 'html', 'html']);
@@ -233,12 +236,18 @@ try {
   assert.equal(stored[3].signature_status, null);
   assert.equal((await visit('/api/owner', { method: 'POST' })).status, 401);
   assert.equal((await visit('/api/owner', { method: 'POST', headers: { Authorization: `Bearer ${secret}` } })).status, 200);
-  const marked = await (await visit('/api/stats')).json();
+  const marked = await (await visit('/api/stats?path=/notes')).json();
   assert.equal(marked.totals.views, 2); // Prior HTML + Markdown now owner-excluded.
   await visit('/notes');
-  assert.equal((await (await visit('/api/stats')).json()).totals.views, 2);
+  assert.equal((await (await visit('/api/stats?path=/notes&range=7d')).json()).totals.views, 2);
   await visit('/notes', {}, 'another-publication.example');
-  assert.equal((await (await visit('/api/stats')).json()).totals.views, 3);
+  assert.equal((await (await visit('/api/stats', {}, 'another-publication.example')).json()).totals.views, 3);
+  const pageReport = await visit('/stats?path=/notes&range=7d');
+  assert.equal(pageReport.status, 200);
+  const reportHtml = await pageReport.text();
+  assert.ok(reportHtml.includes('rotating daily identifiers'));
+  assert.ok(reportHtml.includes('not people or sessions'));
+  assert.ok(!reportHtml.includes('<script'));
   const ids = (await db.prepare("SELECT daily_client_id FROM page_observations WHERE agent_name IS NULL AND reader_kind <> 'headless-browser' ORDER BY id").all()).results;
   assert.equal(ids[0].daily_client_id, ids[1].daily_client_id);
   assert.notEqual(ids[0].daily_client_id, ids.at(-1).daily_client_id);

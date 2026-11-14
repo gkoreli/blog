@@ -65,7 +65,7 @@ export async function keyLifecycleTrials(fixture, api) {
       const fresh = await run(1, cache, fetcher);
       const newDirectoryPublished = cache.directories.get(fixture.url)?.keys.every(key => key.jwk.x !== fixture.keys[0].jwk.x);
       release.resolve(); const oldResult = await old;
-      const resurrectedBeforeProbe = cache.keys.has(fixture.url + '\n' + fixture.keys[0].kid);
+      const resurrectedBeforeProbe = cache.keys.has(fixture.url + '\n' + fixture.keys[0].kid + '\ned25519');
       const probe = await run(0, cache, fetcher);
       rows.push({ condition: 'late-old-import', results: [closed(oldResult), closed(fresh), closed(probe)], fetches,
         newDirectoryPublished, resurrectedBeforeProbe, pending: cache.pendingDirectories.size });

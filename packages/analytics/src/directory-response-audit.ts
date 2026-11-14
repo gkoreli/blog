@@ -1,8 +1,9 @@
 import { parseDictionary, parameter, serializeItem, serializeInnerList, signatureCandidates,
-  malformedSignatureParameterReason, directoryKey, ed25519JwkThumbprint, type SignatureCandidate } from './webbotauth.js';
+  malformedSignatureParameterReason, type SignatureCandidate } from './webbotauth.js';
+import { directoryKey, publicKeyMaterial, publicKeyMaterialToken, publicKeyThumbprint, isPublicSignatureAlgorithm, importPublicVerificationKey, verifyPublicSignature } from './http-signature-key.js';
 import { knownTestPublicKey, PUBLIC_KEY_POLICY_VERSION } from './known-test-keys.js';
 
-export const DIRECTORY_RESPONSE_AUDIT_VERSION = '2026-10-31.2';
+export const DIRECTORY_RESPONSE_AUDIT_VERSION = '2026-11-13.1';
 type Outcome = 'verified' | 'invalid' | 'policy-rejected' | 'unsupported';
 type DigestState = 'not-assessed' | 'absent' | 'matched' | 'mismatch' | 'malformed' | 'unsupported';
 export interface DirectoryProofAudit {
@@ -14,7 +15,7 @@ export interface DirectoryProofAudit {
   digestCovered: boolean | null;
 }
 interface ProfileCoverage {
-  /** Distinct admitted Ed25519 keys, never requests, operators or readers. */
+  /** Distinct admitted public keys, never requests, operators or readers. */
   verifiedKeys: number;
   /** Null when no key is admitted or incomplete/unsupported evidence prevents a negative. */
   allAdmittedKeysVerified: boolean | null;
@@ -69,11 +70,7 @@ function record(value: unknown): value is Record<string, unknown> {
 }
 function string(value: unknown): value is string { return typeof value === 'string'; }
 function canonicalKeyMaterial(value: unknown): boolean {
-  if (!record(value) || !string(value.x) || !/^[A-Za-z0-9_-]{43}$/.test(value.x)) return false;
-  try {
-    const decoded = atob(value.x.replace(/-/g, '+').replace(/_/g, '/') + '=');
-    return decoded.length === 32 && btoa(decoded).replace(/=/g, '').replace(/\+/g, '-').replace(/\//g, '_') === value.x;
-  } catch { return false; }
+  return publicKeyMaterialToken(value) !== null && publicKeyMaterialToken(value) === JSON.stringify(publicKeyMaterial(value));
 }
 async function digestState(headers: Headers, body: Uint8Array): Promise<DigestState> {
   const field = headers.get('Content-Digest');
@@ -121,7 +118,7 @@ function base(candidate: SignatureCandidate, authority: string, status: number, 
 
 /** Bounded, caller-supplied evidence only. Does not establish transport authenticity,
  * operator/purpose, provider enrollment, request verification or permission to fetch.
- * Profiles count admitted Ed25519 keys; unsupported/rejected directory entries stay visible.
+ * Profiles count admitted public keys; unsupported/rejected directory entries stay visible.
  */
 export async function auditDirectoryResponse(context: DirectoryResponseContext, options: DirectoryResponseAuditOptions): Promise<DirectoryResponseAudit> {
   const result: DirectoryResponseAudit = {
@@ -156,14 +153,14 @@ export async function auditDirectoryResponse(context: DirectoryResponseContext, 
   try { directory = JSON.parse(new TextDecoder('utf-8', { fatal: true, ignoreBOM: true }).decode(body)); } catch { return { ...result, reason: 'directory-invalid' }; }
   if (!record(directory) || !Array.isArray(directory.keys) || directory.keys.length > 128) return { ...result, reason: 'directory-invalid' };
   result.keyEntries = directory.keys.length;
-  const keys = new Map<string, CryptoKey>(), forbidden = new Set<string>(), demonstration = new Set<string>();
+  const keys = new Map<string, JsonWebKey>(), forbidden = new Set<string>(), demonstration = new Set<string>();
   const seen = new Set<string>(), validity = new Map<string, string>(), thumbprints = new Map<string, string>();
   for (const value of directory.keys) {
-    if (!record(value) || value.kty !== 'OKP' || value.crv !== 'Ed25519') { result.unsupportedKeyEntries++; continue; }
-    const x = string(value.x) ? value.x : null;
-    const thumbprint = x !== null && canonicalKeyMaterial(value) ? thumbprints.get(x) ?? await ed25519JwkThumbprint(value) : null;
+    if (!record(value) || publicKeyMaterial(value) === null) { result.unsupportedKeyEntries++; continue; }
+    const identity = JSON.stringify(publicKeyMaterial(value));
+    const thumbprint = canonicalKeyMaterial(value) ? thumbprints.get(identity) ?? await publicKeyThumbprint(value) : null;
     if (thumbprint === null) { result.rejectedKeyEntries++; continue; }
-    if (x !== null) thumbprints.set(x, thumbprint);
+    thumbprints.set(identity, thumbprint);
     if (seen.has(thumbprint)) result.duplicateKeyEntries++;
     seen.add(thumbprint);
     const key = directoryKey(value);
@@ -183,9 +180,13 @@ export async function auditDirectoryResponse(context: DirectoryResponseContext, 
       || (typeof exp === 'number' && typeof nbf === 'number' && exp <= nbf)) {
       result.rejectedKeyEntries++; forbidden.add(thumbprint); continue;
     }
+    if (keys.has(thumbprint) && keys.get(thumbprint)?.alg !== key.jwk.alg) {
+      result.rejectedKeyEntries++; forbidden.add(thumbprint); continue;
+    }
     if (keys.has(thumbprint) || forbidden.has(thumbprint)) continue;
-    try { keys.set(thumbprint, await crypto.subtle.importKey('jwk', key.jwk, { name: 'Ed25519' }, false, ['verify'])); }
-    catch { result.rejectedKeyEntries++; forbidden.add(thumbprint); }
+    const imported = await importPublicVerificationKey(key.jwk);
+    if ('reason' in imported) { result.rejectedKeyEntries++; forbidden.add(thumbprint); }
+    else keys.set(thumbprint, key.jwk);
   }
   for (const id of forbidden) keys.delete(id);
   result.admittedKeys = keys.size;
@@ -212,7 +213,7 @@ export async function auditDirectoryResponse(context: DirectoryResponseContext, 
       || keyid?.type !== 'string' || expires.value < created.value) { result.proofs.push(proof); continue; }
     if (tag?.type !== 'string' || tag.value !== 'http-message-signatures-directory') proof.reason = 'different-tag';
     else if (created.value > now || expires.value < now) proof.reason = 'outside-validity';
-    else if (algorithm !== undefined && (algorithm.type !== 'string' || algorithm.value !== 'ed25519')) { proof.reason = 'algorithm-unsupported'; proof.outcome = 'unsupported'; }
+    else if (algorithm !== undefined && (algorithm.type !== 'string' || !isPublicSignatureAlgorithm(algorithm.value))) { proof.reason = 'algorithm-unsupported'; proof.outcome = 'unsupported'; }
     else if (!keys.has(keyid.value)) { proof.reason = demonstration.has(keyid.value) ? 'known-test-key' : forbidden.has(keyid.value) ? 'key-rejected' : 'key-unavailable'; }
     else {
       const built = base(candidate, url.host, status, headers), key = keys.get(keyid.value);
@@ -220,7 +221,11 @@ export async function auditDirectoryResponse(context: DirectoryResponseContext, 
       else if (key !== undefined) {
         proof.authorityCovered = built.authority; proof.digestCovered = built.digest;
         let valid = false;
-        try { valid = await crypto.subtle.verify({ name: 'Ed25519' }, key, candidate.signature, encoder.encode(built.value)); } catch { /* Rejected by this crypto profile. */ }
+        try {
+          const requested = algorithm?.type === 'string' && isPublicSignatureAlgorithm(algorithm.value) ? algorithm.value : undefined;
+          const imported = await importPublicVerificationKey(key, requested);
+          if (!('reason' in imported)) valid = await verifyPublicSignature(imported, candidate.signature, encoder.encode(built.value));
+        } catch { /* Rejected by this crypto profile. */ }
         proof.outcome = valid ? 'verified' : 'invalid'; proof.reason = valid ? 'verified' : 'signature-mismatch';
         if (valid && built.authority) {
           compatible.add(keyid.value);

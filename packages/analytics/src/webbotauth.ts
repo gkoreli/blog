@@ -1,6 +1,8 @@
 import { directoryLocation } from './directory-discovery.js';
 import { verificationTime } from './verification-clock.js';
 import { knownTestKeyId, knownTestPublicKey, PUBLIC_KEY_POLICY_VERSION } from './known-test-keys.js';
+import { base64Url, directoryKey, publicKeyThumbprint, publicKeyMaterialToken, isPublicSignatureAlgorithm,
+  importPublicVerificationKey, verifyPublicSignature, publicKeyMaterial as publicKeyMaterialIdentity, type PublicSignatureAlgorithm } from './http-signature-key.js';
 const DIRECTORY_TTL_MS = 60 * 60 * 1_000;
 const CLOCK_SKEW_SECONDS = 60;
 const encoder = new TextEncoder();
@@ -27,7 +29,9 @@ export interface SignatureSelection {
 export type SignatureEvidence = SignatureCoverageFacts & (
   | { version: '2026-10-27.1' }
   | { version: '2026-10-28.1'; selection: SignatureSelection }
+  | { version: '2026-11-13.1'; algorithm: PublicSignatureAlgorithm; selection?: SignatureSelection }
 );
+type CurrentSignatureEvidence = Extract<SignatureEvidence, { version: '2026-11-13.1' }>;
 
 export type WebBotAuthResult =
   | { status: 'verified'; agent: string; evidence?: SignatureEvidence }
@@ -117,6 +121,7 @@ interface KeyEntry {
   expiresAt: number;
   notBefore: number | null;
   key: CryptoKey;
+  algorithm: PublicSignatureAlgorithm;
   keyPolicy: typeof PUBLIC_KEY_POLICY_VERSION;
 }
 
@@ -630,63 +635,14 @@ export function buildSignatureBase(request: Request, label: string): string | nu
   return result !== null && !('reason' in result) ? result.base : null;
 }
 
-function base64Url(bytes: Uint8Array): string {
-  let binary = '';
-  for (const byte of bytes) binary += String.fromCharCode(byte);
-  return btoa(binary).replace(/=/g, '').replace(/\+/g, '-').replace(/\//g, '_');
-}
-
 function isRecord(value: unknown): value is Record<string, unknown> {
   return typeof value === 'object' && value !== null && !Array.isArray(value);
 }
 
-function ed25519Material(value: unknown): JsonWebKey | null {
-  if (!isRecord(value)) return null;
-  if (value.kty !== 'OKP' || value.crv !== 'Ed25519' || typeof value.x !== 'string') return null;
-  return { kty: value.kty, crv: value.crv, x: value.x };
-}
-
-/** Thumbprint identity excludes optional metadata. Admission must not discard
- * a matching key's constraints or confuse a forbidden key with a missing key.
- */
-function directoryKey(value: unknown): { jwk: JsonWebKey; metadataRejected: boolean } | null {
-  const jwk = ed25519Material(value);
-  if (jwk === null || !isRecord(value)) return null;
-  const rejected = { jwk, metadataRejected: true };
-  if (Object.hasOwn(value, 'd')) return rejected;
-  if (value.use !== undefined) {
-    if (value.use !== 'sig') return rejected;
-    jwk.use = value.use;
-  }
-  if (value.alg !== undefined) {
-    if (value.alg !== 'EdDSA' && value.alg !== 'Ed25519' && value.alg !== 'ed25519') return rejected;
-    // JOSE names and the WG draft's HTTP Signature Algorithm token denote this
-    // fixed curve. Validate first, then adapt the older workerd import alias.
-    jwk.alg = 'EdDSA';
-  }
-  if (value.key_ops !== undefined) {
-    if (!Array.isArray(value.key_ops) || !value.key_ops.every((operation): operation is string => typeof operation === 'string')) return rejected;
-    if (!value.key_ops.includes('verify') || new Set(value.key_ops).size !== value.key_ops.length) return rejected;
-    if (value.use === 'sig' && value.key_ops.some(operation => operation !== 'sign' && operation !== 'verify')) return rejected;
-    jwk.key_ops = [...value.key_ops];
-  }
-  if (value.ext !== undefined) {
-    if (typeof value.ext !== 'boolean') return rejected;
-    jwk.ext = value.ext;
-  }
-  return { jwk, metadataRejected: false };
-}
-
+/** Compatibility helper: its name continues to limit identity to Ed25519. */
 export async function ed25519JwkThumbprint(value: unknown): Promise<string | null> {
-  try {
-    const jwk = ed25519Material(value);
-    if (jwk === null || jwk.crv !== 'Ed25519' || jwk.kty !== 'OKP' || typeof jwk.x !== 'string') return null;
-    const canonical = `{"crv":"Ed25519","kty":"OKP","x":${JSON.stringify(jwk.x)}}`;
-    const digest = new Uint8Array(await crypto.subtle.digest('SHA-256', encoder.encode(canonical)));
-    return base64Url(digest);
-  } catch {
-    return null;
-  }
+  if (!isRecord(value) || value.kty !== 'OKP' || value.crv !== 'Ed25519') return null;
+  return publicKeyThumbprint(value);
 }
 
 export function createWebBotAuthCache(): WebBotAuthCache {
@@ -873,13 +829,18 @@ async function resolveVerificationKey(
   nowMs: number,
   signal: AbortSignal | undefined,
   recovery: DirectoryRecovery,
-): Promise<{ key: CryptoKey } | { reason: string }> {
+  requestedAlgorithm: PublicSignatureAlgorithm | undefined,
+): Promise<{ key: CryptoKey; algorithm: PublicSignatureAlgorithm } | { reason: string }> {
   if (signal?.aborted) return { reason: 'directory-unavailable' };
-  const cacheKey = pairKey(directoryUrl, keyid);
+  const cacheKey = pairKey(directoryUrl, keyid) + '\n' + (requestedAlgorithm ?? 'key-default');
+  // A cache supplied across an implementation upgrade cannot retain the old
+  // admission policy or its algorithm-unspecified key identities.
+  for (const [identity, entry] of cache.keys) if (entry.keyPolicy !== PUBLIC_KEY_POLICY_VERSION) cache.keys.delete(identity);
   const cached = cache.keys.get(cacheKey);
-  if (cached !== undefined && cached.expiresAt > nowMs && cached.keyPolicy === PUBLIC_KEY_POLICY_VERSION) {
+  if (cached !== undefined && cached.expiresAt > nowMs && cached.keyPolicy === PUBLIC_KEY_POLICY_VERSION
+    && (requestedAlgorithm === undefined || requestedAlgorithm === cached.algorithm)) {
     if (cached.notBefore !== null && nowMs / 1000 < cached.notBefore) return { reason: 'key-not-yet-valid' };
-    return { key: cached.key };
+    return { key: cached.key, algorithm: cached.algorithm };
   }
   if (cached !== undefined) cache.keys.delete(cacheKey);
 
@@ -889,10 +850,10 @@ async function resolveVerificationKey(
   if ('reason' in initial) return initial;
   let directory = initial.directory;
   const find = async (entry: DirectoryEntry) => {
-    for (const candidate of entry.keys) if (await ed25519JwkThumbprint(candidate.jwk) === keyid) {
-      // Equal fixed kty/crv/x members have the same RFC 7638 identity. A second
-      // publication of that identity must not hide a rejected constraint by order.
-      return entry.keys.filter(key => key.jwk.x === candidate.jwk.x);
+    for (const candidate of entry.keys) if (await publicKeyThumbprint(candidate.jwk) === keyid) {
+      // All publications of the same required JWK members share constraints.
+      // No duplicate is allowed to hide a rejected permission by ordering.
+      return entry.keys.filter(key => JSON.stringify(publicKeyMaterialIdentity(key.jwk)) === JSON.stringify(publicKeyMaterialIdentity(candidate.jwk)));
     }
     return [];
   };
@@ -934,6 +895,7 @@ async function resolveVerificationKey(
   if (matching.some(key => key.metadataRejected)) return { reason: matching.some(key => !key.metadataRejected) ? 'key-metadata-conflict' : 'key-metadata-rejected' };
   // The same bytes can have another thumbprint if their x encoding changes.
   if (knownTestPublicKey(selected.jwk)) return { reason: 'known-test-key' };
+  if (matching.some(key => key.jwk.alg !== selected.jwk.alg)) return { reason: 'key-metadata-conflict' };
   // Local admission policy: do not choose between different advertised windows
   // for one key identity by directory order, even if both are currently active.
   if (matching.some(key => key.notBefore !== selected.notBefore || key.expires !== selected.expires)) return { reason: 'key-validity-conflict' };
@@ -941,14 +903,18 @@ async function resolveVerificationKey(
   if (selected.expires !== null && nowMs / 1000 >= selected.expires) return { reason: 'key-expired' };
   {
     try {
-      const key = await crypto.subtle.importKey('jwk', selected.jwk, 'Ed25519', false, ['verify']);
+      const imported = await importPublicVerificationKey(selected.jwk, requestedAlgorithm);
+      // Algorithm/key incompatibility is an admission rejection in this
+      // application; preserve the existing closed stored-outcome vocabulary.
+      if ('reason' in imported) return { reason: imported.reason === 'key-algorithm-mismatch' ? 'key-metadata-rejected' : imported.reason };
+      const { key, algorithm } = imported;
       if (signal?.aborted) return { reason: 'directory-unavailable' };
       // Import is asynchronous. A newer directory may have removed this key
       // while it was pending; never resurrect that old source in the fast cache.
       if (cache.directories.get(directoryUrl) !== directory) return { reason: 'reload' };
       if (cache.keys.size >= 256) cache.keys.delete(cache.keys.keys().next().value ?? '');
-      cache.keys.set(cacheKey, { key, notBefore: selected.notBefore, keyPolicy: PUBLIC_KEY_POLICY_VERSION, expiresAt: Math.min(directory.expiresAt, selected.expires === null ? Infinity : selected.expires * 1000) });
-      return { key };
+      cache.keys.set(cacheKey, { key, algorithm, notBefore: selected.notBefore, keyPolicy: PUBLIC_KEY_POLICY_VERSION, expiresAt: Math.min(directory.expiresAt, selected.expires === null ? Infinity : selected.expires * 1000) });
+      return { key, algorithm };
     } catch {
       return { reason: 'key-invalid' };
     }
@@ -964,7 +930,7 @@ async function verifyCandidate(
   nowMs: number,
   options: WebBotAuthOptions,
   recovery: DirectoryRecovery,
-): Promise<WebBotAuthResult> {
+): Promise<Exclude<WebBotAuthResult, { status: 'verified' }> | { status: 'verified'; agent: string; evidence?: CurrentSignatureEvidence }> {
   const parameterReason = malformedSignatureParameterReason(candidate.input);
   if (parameterReason !== null) return { status: 'unverified', reason: parameterReason };
   const tag = stringValue(parameter(candidate.input.parameters, 'tag'));
@@ -980,7 +946,8 @@ async function verifyCandidate(
   if (options.maxAgeSeconds !== undefined && (expires - created > options.maxAgeSeconds || nowSeconds - created > options.maxAgeSeconds + CLOCK_SKEW_SECONDS)) return { status: 'unverified', reason: 'validity-policy-exceeded' };
 
   const algorithm = parameter(candidate.input.parameters, 'alg');
-  if (algorithm !== undefined && stringValue(algorithm) !== 'ed25519') {
+  const requestedAlgorithm = algorithm === undefined ? undefined : stringValue(algorithm);
+  if (requestedAlgorithm !== undefined && !isPublicSignatureAlgorithm(requestedAlgorithm)) {
     return { status: 'unverified', reason: 'unsupported-alg' };
   }
   const keyid = stringValue(parameter(candidate.input.parameters, 'keyid'));
@@ -1000,23 +967,18 @@ async function verifyCandidate(
   if ('reason' in location) return { status: 'unverified', reason: location.reason };
   if (knownTestKeyId(keyid)) return { status: 'unverified', reason: 'known-test-key' };
 
-  const resolvedKey = await resolveVerificationKey(location.directoryUrl, keyid, fetcher, cache, nowMs, options.signal, recovery);
+  const resolvedKey = await resolveVerificationKey(location.directoryUrl, keyid, fetcher, cache, nowMs, options.signal, recovery, requestedAlgorithm);
   if ('reason' in resolvedKey) return { status: 'unverified', reason: resolvedKey.reason };
   if (options.signal?.aborted) return { status: 'unverified', reason: 'directory-unavailable' };
   try {
-    const verified = await crypto.subtle.verify(
-      'Ed25519',
-      resolvedKey.key,
-      candidate.signature,
-      encoder.encode(signatureBase.base),
-    );
+    const verified = await verifyPublicSignature(resolvedKey, candidate.signature, encoder.encode(signatureBase.base));
     if (options.signal?.aborted) return { status: 'unverified', reason: 'directory-unavailable' };
     if (!verified) return { status: 'unverified', reason: 'signature-invalid' };
     if (!options.includeEvidence) return { status: 'verified', agent: location.agent };
     const names = new Set(candidate.input.items.flatMap(item => item.bare.type === 'string' ? [item.bare.value] : []));
     const recorded = ['@authority', '@target-uri', '@method', '@path', '@query', 'user-agent', 'content-digest', 'signature-agent'];
     return { status: 'verified', agent: location.agent, evidence: {
-      version: '2026-10-27.1', headerForm: parsedAgent.form,
+      version: '2026-11-13.1', algorithm: resolvedKey.algorithm, headerForm: parsedAgent.form,
       covered: { authority: names.has('@authority'), targetUri: names.has('@target-uri'), method: names.has('@method'), path: names.has('@path'), query: names.has('@query'), userAgent: names.has('user-agent'), contentDigest: names.has('content-digest') },
       otherComponentCount: [...names].filter(name => !recorded.includes(name)).length,
       validitySeconds: expires - created, ageSeconds: Math.max(0, nowSeconds - created), replayPolicy: 'expiry-only',
@@ -1028,7 +990,7 @@ async function verifyCandidate(
 }
 
 /**
- * Ed25519/directory-discovery subset on RFC 9421 request components, with
+ * Public-key directory discovery on RFC 9421 request components, with
  * dictionary and legacy wire compatibility. Not full RFC/draft conformance.
  * The independently written implementation is compared with the Apache-2.0
  * reference; unsupported discovery/algorithms/components remain explicit:
@@ -1081,7 +1043,7 @@ export async function verifyWebBotAuth(
         if (!options.includeEvidence || result.evidence === undefined) return result;
         // This is one selected proof. Later candidates may also verify, fail, or
         // name another signer; short-circuiting does not assess them.
-        return { ...result, evidence: { ...result.evidence, version: '2026-10-28.1', selection: {
+        return { ...result, evidence: { ...result.evidence, selection: {
           policy: 'first-valid-in-input-order', matchedCandidates: candidates.length,
           taggedCandidates: tagged.length, attemptedCandidates,
           unassessedCandidates: tagged.length - attemptedCandidates,
@@ -1211,13 +1173,12 @@ export async function webBotAuthCandidateReuseTokens(request: Request, label: st
   if ('reason' in location || location.agent !== verifiedAgent) return null;
   const key = stringValue(parameter(candidate.input.parameters, 'keyid'));
   if (key === null) return null;
-  // RFC thumbprints include the JWK x spelling. Two admitted encodings can
-  // resolve to the same Ed25519 bytes; don't split their nonce scope by keyid.
+  // RFC thumbprints include encoded members. Byte-normalized material keeps
+  // admitted encodings of one key in one nonce scope across all algorithms.
   let material: string | null = null;
   for (const entry of cache.directories.get(location.directoryUrl)?.keys ?? []) {
-    if (typeof entry.jwk.x !== 'string' || await ed25519JwkThumbprint(entry.jwk) !== key) continue;
-    const bytes = Uint8Array.from(atob(entry.jwk.x.replace(/-/g, '+').replace(/_/g, '/')), char => char.charCodeAt(0));
-    if (bytes.length === 32) material = base64Url(bytes);
+    if (await publicKeyThumbprint(entry.jwk) !== key) continue;
+    material = publicKeyMaterialToken(entry.jwk);
     break;
   }
   if (material === null) return null;

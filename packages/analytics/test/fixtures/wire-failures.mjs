@@ -23,13 +23,13 @@ export async function wireFailureFixture() {
   for(const[scenario,expectedReason,expectedOutcome]of specifications){
    const h={...headers};
    if(scenario==='tampered')h['User-Agent']='wire-private-canary';
-   if(scenario==='unsupported-alg')h['Signature-Input']=h['Signature-Input'].replace('alg="ed25519"','alg="rsa-pss-sha512"');
+   if(scenario==='unsupported-alg')h['Signature-Input']=h['Signature-Input'].replace('alg="ed25519"','alg="hmac-sha256"');
    if(scenario==='malformed-fields')h.Signature='not-a-dictionary';
    if(scenario==='unrelated-tag')h['Signature-Input']=h['Signature-Input'].replace('tag="web-bot-auth"','tag="other-protocol"');
    if(scenario==='missing-input')delete h['Signature-Input'];
    if(scenario==='mixed-failures'){
     h['User-Agent']='wire-private-canary';
-    h['Signature-Input']+=', '+headers['Signature-Input'].replace(/^one=/,'two=').replace('alg="ed25519"','alg="rsa-pss-sha512"');
+    h['Signature-Input']+=', '+headers['Signature-Input'].replace(/^one=/,'two=').replace('alg="ed25519"','alg="hmac-sha256"');
     h.Signature+=', '+headers.Signature.replace(/^one=/,'two=');
    }
    cases.push({name:form+'/'+scenario,form,scenario,headers:h,url:'https://publication.example/a',expectedReason,expectedOutcome});

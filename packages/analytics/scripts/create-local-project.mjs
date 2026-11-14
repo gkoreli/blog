@@ -41,7 +41,9 @@ export function createLocalProject(destination) {
   const worker = readFileSync(new URL('worker.ts', example), 'utf8');
   const sourceImport = "from '../../src/index.js'";
   if (!worker.includes(sourceImport)) throw new Error('Example import changed; review the local-project adapter');
-  writeFileSync(resolve(target, 'worker.ts'), worker.replace(sourceImport, "from '@gkoreli/analytics'"));
+  writeFileSync(resolve(target, 'worker.ts'), worker.replace(sourceImport, "from '@gkoreli/analytics'")
+    .replace("from '../../src/reporting.js'", "from '@gkoreli/analytics/reporting'")
+    .replace("from '../../src/contracts.js'", "from '@gkoreli/analytics/contracts'"));
   const config = JSON.parse(readFileSync(new URL('wrangler.jsonc', example), 'utf8'));
   config.d1_databases[0].migrations_dir = './vendor/analytics/schema';
   writeFileSync(resolve(target, 'wrangler.jsonc'), JSON.stringify(config, null, 2) + '\n');
@@ -66,7 +68,7 @@ install, retain pnpm-lock.yaml and use pnpm install --frozen-lockfile for repeat
 The .mise.toml and packageManager fields preserve the evaluated tool versions;
 use your runtime manager if it does not automatically apply those pins.
 
-Visit /notes, then /api/stats?traffic=all at the printed local address. Read
+Visit /notes, then /stats or /api/stats?traffic=all at the printed local address. Read
 analytics.observation_stored before treating a response as a stored event. The
 API's totals.views counts events; totals.dailyClients counts rotating daily
 identifiers. Neither is a people count. byKind and byAgent explain composition;
@@ -74,8 +76,15 @@ an unsigned agent name is a declaration. Missing referrers leave origin unknown.
 analytics.example_report_calculation logs each report's provider-returned work
 counters. Those are local, last-attempt counters, not production billing.
 
-The report is deliberately uncached. Public use needs caching/budgets, separate
-secrets, a database, privacy/retention decisions and an upgrade migration plan.
+The report uses the package cache and durable D1 admission. The example allows
+24 cold fills and 1,000,000 reported reads per UTC day, with 7d/30d selections.
+The read threshold stops later fills; it does not cancel an admitted SQL query.
+Unknown work keeps admission closed for that day. Cache hits remain available.
+Calculation/admission queries are separate work. Choose limits for your site.
+The cache keeps a result up to one hour, capped at UTC midnight; owner marks and
+new traffic become visible after expiry. Repeat db:local to apply ordered schema
+upgrades; the issued baseline stays unchanged. Public use needs separate
+secrets, a database and explicit privacy, retention and recovery decisions.
 No deployment command is supplied. This local trial establishes no adoption,
 human accuracy or real audience demand.
 `);

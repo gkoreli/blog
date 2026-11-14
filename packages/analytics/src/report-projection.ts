@@ -25,7 +25,7 @@ export const REPORT_DERIVED_COLUMNS = [
 ] as const;
 
 // Pinned to reportProjectionSelectSql(); a change requires a rebuild decision.
-export const REPORT_PROJECTION_RULE_SHA256 = '2ca641b0fed3defaeb8bcc0556ec88a47abda3a7a8d4918655269007978569d2';
+export const REPORT_PROJECTION_RULE_SHA256 = '1907b5de82b5694ff41a88b1dbf77f134929199785d63bdf1246bf88713078ca';
 
 /** One event's immutable reporting interpretation, shared with the source fallback.
  * Materialization keeps expensive validation out of repeated leaf expressions.

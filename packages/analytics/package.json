@@ -1,6 +1,6 @@
 {
   "name": "@gkoreli/analytics",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "description": "Cookieless, privacy-first analytics for Cloudflare Workers + D1",
   "type": "module",
@@ -35,12 +35,15 @@
     "./resource-reach": "./src/resource-reach.ts",
     "./access-evidence": "./src/access-evidence.ts",
     "./request-assessment": "./src/request-assessment.ts",
-    "./user-agent": "./src/user-agent-assessment.ts"
+    "./user-agent": "./src/user-agent-assessment.ts",
+    "./reporting": "./src/reporting.ts",
+    "./signatures": "./src/signatures.ts"
   },
   "scripts": {
     "typecheck": "tsc --noEmit",
     "test": "tsc -p tsconfig.test.json && node --test test/*.test.mjs",
-    "test:portability": "node scripts/fresh-schema.mjs --check && node scripts/check-minimal-worker.mjs"
+    "test:portability": "node scripts/fresh-schema.mjs --check && node scripts/check-minimal-worker.mjs",
+    "test:protocol": "node scripts/check-public-signatures-native.mjs"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20250306.0",
