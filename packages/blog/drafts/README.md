@@ -38,6 +38,7 @@ conversations; an unavailable time total is explicitly "not recovered."
 
 | Article / topic | Work and evidence | Current state / next action |
 | --- | --- | --- |
+| [Web Analytics Tools Disagree About What Counts](research/web-analytics-comparison-ai-traffic/article.md) | November 13: comparison of ten analytics approaches, refreshed primary documentation, seven GitHub popularity/source baselines and selected ingestion/detection source paths. [Research and claim review](research/web-analytics-comparison-ai-traffic/README.md). Reuses the owned package's dated acceptance; no cross-product runtime benchmark. | New unpublished comparison draft for author review. Covers collection, identity, bot evidence, outcome workflows and operating boundaries. Publication and the separate production-data approval remain outside this writing task. |
 | [How Modern Web Guidance’s seven-line embedder works](research/modern-web-guidance/article.md) | November 13: completed interface study (54 primary attempts plus 54 retained diagnostic attempts), static-embedding reproduction in three processes, official archive verification, public retrieval replay and reviewed manuscript. [Research index](research/modern-web-guidance/README.md). Elapsed total not recovered. | Reviewed and polished for publication; source remains an unpublished draft. No production trial patch. Further experiments remain separate proposals. |
 
 ## Published from this backlog

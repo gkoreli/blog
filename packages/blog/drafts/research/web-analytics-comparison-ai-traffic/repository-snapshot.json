@@ -1,0 +1,82 @@
+{
+  "checkedAt": "2026-11-14T05:25:17.837Z",
+  "dateBasis": "November 13, 2026 in America/Los_Angeles",
+  "selection": "Seven public web/product analytics repositories, GA4, Cloudflare AI Crawl Control and the owned library; representative comparison, not an exhaustive popularity ranking.",
+  "repositories": [
+    {
+      "repo": "PostHog/posthog",
+      "stars": 40776,
+      "defaultBranch": "master",
+      "commit": "a2b0fe99f5566007dfe62e8096c8597342caecb3",
+      "commitDate": "2026-11-14T05:15:03Z",
+      "license": "NOASSERTION",
+      "url": "https://github.com/PostHog/posthog"
+    },
+    {
+      "repo": "umami-software/umami",
+      "stars": 40129,
+      "defaultBranch": "master",
+      "commit": "b18d5144dfe7342edeeca6f61d13ba3baabed9ad",
+      "commitDate": "2026-11-12T22:02:53Z",
+      "license": "MIT",
+      "url": "https://github.com/umami-software/umami"
+    },
+    {
+      "repo": "plausible/analytics",
+      "stars": 29845,
+      "defaultBranch": "master",
+      "commit": "8e5982c237c8d17be02170e8063b3dd9b8e76085",
+      "commitDate": "2026-11-13T20:19:00Z",
+      "license": "AGPL-3.0",
+      "url": "https://github.com/plausible/analytics"
+    },
+    {
+      "repo": "matomo-org/matomo",
+      "stars": 22027,
+      "defaultBranch": "6.x-dev",
+      "commit": "58a86dee2acc2aaf73a526fe137871f835a59d86",
+      "commitDate": "2026-11-13T10:09:45Z",
+      "license": "GPL-3.0",
+      "url": "https://github.com/matomo-org/matomo"
+    },
+    {
+      "repo": "rybbit-io/rybbit",
+      "stars": 13301,
+      "defaultBranch": "master",
+      "commit": "840369a089c393ae16139c18ba1405efd14d32e6",
+      "commitDate": "2026-11-13T04:09:34Z",
+      "license": "AGPL-3.0",
+      "url": "https://github.com/rybbit-io/rybbit"
+    },
+    {
+      "repo": "Openpanel-dev/openpanel",
+      "stars": 7296,
+      "defaultBranch": "main",
+      "commit": "a5a6eb7d62c9579620ec5e3fbfd4ce760f3d8073",
+      "commitDate": "2026-11-06T13:17:35Z",
+      "license": "AGPL-3.0",
+      "url": "https://github.com/Openpanel-dev/openpanel"
+    },
+    {
+      "repo": "arp242/goatcounter",
+      "stars": 6159,
+      "defaultBranch": "main",
+      "commit": "c031008a8d28c85b36708824f23b28957e7ed262",
+      "commitDate": "2026-09-27T23:23:37Z",
+      "license": "NOASSERTION",
+      "url": "https://github.com/arp242/goatcounter"
+    }
+  ],
+  "owned": {
+    "repo": "gkoreli/blog",
+    "implementationCommit": "a85aa06c381a287dcaee8c5ed401f4d4e2c60ace",
+    "acceptanceCommit": "69fa16915884a8318ed2ba51f3ae52df24808e64",
+    "packageVersion": "0.2.0",
+    "npmPublished": false
+  },
+  "limits": [
+    "Stars are repository-interest counts, not installed sites or votes on accuracy.",
+    "Default-branch source baselines are not a uniform set of released or deployed versions.",
+    "Provider documentation is product documentation; no competitor deployment or accuracy benchmark was executed."
+  ]
+}
