@@ -1,0 +1,23 @@
+[
+  {
+    "text": "an open source project about emojis",
+    "dimensions": 384,
+    "maximumAbsoluteDifference": 0.010389095637947321,
+    "dotProduct": 0.99822730165023,
+    "milliseconds": 29.5
+  },
+  {
+    "text": "a program inside neural network layers",
+    "dimensions": 384,
+    "maximumAbsoluteDifference": 0.000005777925252914429,
+    "dotProduct": 0.9999999889703369,
+    "milliseconds": 12.299999952316284
+  },
+  {
+    "text": "signed code still needs reading",
+    "dimensions": 384,
+    "maximumAbsoluteDifference": 0.00003539770841598511,
+    "dotProduct": 1.0000000046581714,
+    "milliseconds": 12.399999976158142
+  }
+]

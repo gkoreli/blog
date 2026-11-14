@@ -1,5 +1,7 @@
 # Manuscript review for publication
 
+Latest extension: the [package comparison](../search-package/report.md) and [current-corpus acceptance](../search-package/package-acceptance.md) now support a dedicated own-approach section. The manuscript remains a standalone unpublished engineering article; its earlier Radar assignment was withdrawn. Historical queue checks below do not reinstate it.
+
 November 13, 2026, America/Los_Angeles. Scope: review and polish the existing manuscript against saved evidence and pinned source. Research results, learned data, frozen reproduction scripts and interface-study records remain unchanged. The source remains outside `posts/`; this review does not deploy or publish a site route.
 
 ## Consequential changes
@@ -47,3 +49,11 @@ This is a prose and structure review, with no new embedding run, relevance judgm
 A later [E5 engineering investigation](../reader-search/report.md) added finer excerpt selection, current article coverage and real paragraph-link trials. The draft adds two paragraphs after the existing E5 comparison: one successful animated-icon navigation and one retained shared-model excerpt miss, followed by the 26/32 to 23/32 focus regression and the full-question interface default. Expanded context is described as a larger text budget, not a retrieval gain. Reserved cases are explicitly source-aware and agent-authored. Complete matrices, failed cases, inherited recollection-label limits and integration-harness history stay in the linked report.
 
 The seven-line code excerpt, accumulation/normalization explanation, upstream attribution and original MWG/E5 measurements remain unchanged. These product checks do not add an MWG body-search reproduction. The earlier queue synchronization statement describes its dated snapshot; this review updates the authoring draft and does not publish a site route.
+
+## November 14 reusable search package review
+
+The seven-line excerpt, flat row offsets, folded quantization/word scales, fractional hyphen fallback and worked normalization remain the uninterrupted center of the article. Original MWG timing, exact released-weight checks, table-shuffle control and known limits are unchanged. A dedicated own-approach section follows the separate E5 passage experiment, with links to all comparator and package records.
+
+The section identifies native Pagefind versus controlled records, inspected DocSearch versus unexecuted hosted Algolia, cross-encoder article improvements versus paragraph misses/cost, and the pre-reserved method choice versus the tolerant hybrid's better reserved counts. It states the package's actual 43/45 versus 42/45 article counts and 31/45 versus 35/45 paragraph counts, source-aware labels, no-answer failures, raw download size and browser numerical differences. The ambiguous emoji recollection returns related icon material; it is not treated as confirmation of an emoji project. Native paragraph navigation was actually executed.
+
+The matching MWG/Gemini blog index is still unbuilt. No independent training reproduction, historical 507 MB environment, matched 30 µs timing, private telemetry benchmark or hosted Algolia ranking result has been added. The article stays an unpublished standalone engineering draft with no date or slug assigned; historical Radar scheduling records do not reinstate it.

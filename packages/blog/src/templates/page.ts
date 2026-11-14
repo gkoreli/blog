@@ -5,6 +5,8 @@ import { typedLinkElements } from '../lib/typed-links.js';
 import { DispatchSlip } from './artifacts.js';
 import { clientBootstrap } from './client-bootstrap.js';
 import { clientDefines } from '../pipeline/client-mode.js';
+import { searchSurface } from '../pages/search.js';
+import { utilityIcon } from './utility-icon.js';
 
 function turnstileSiteKey(): string {
   return process.env['TURNSTILE_SITE_KEY'] ?? '';
@@ -106,12 +108,14 @@ export function pageShell({ title, description, content, canonicalPath, currentS
           </a>
           <p>Where excitement ends, depth begins.</p>
         </div>
+        <a href="/search" class="search-mobile-link" data-search-open aria-label="Search publication">${utilityIcon('search')}</a>
         <nisli-burger-menu></nisli-burger-menu>
       </div>
 
       <div class="sidebar-nav">
         <div class="sb-cat">Contents</div>
         <nav class="sidebar-section">
+          <a href="/search" class="search-trigger ${currentSlug === 'search' ? 'active' : ''}" data-search-open><span>Search</span><kbd aria-hidden="true">⌘ K</kbd></a>
           <a href="/" class="${isHome ? 'active' : ''}"><span class="sb-dot"></span>Home</a>
           <a href="/essays" class="${currentSection === 'essays' ? 'active' : ''}"><span class="sb-dot"></span>Essays</a>
           <a href="/engineering" class="${currentSection === 'engineering' ? 'active' : ''}"><span class="sb-dot"></span>Engineering</a>
@@ -151,6 +155,12 @@ export function pageShell({ title, description, content, canonicalPath, currentS
     </main>
     <div class="gutter">${gutter ?? ''}</div>
   </div>
+
+  <dialog id="publication-search" class="search-dialog tool-app" aria-labelledby="search-dialog-title">
+    <header class="search-dialog-header"><div><p class="search-eyebrow">gkoreli.com</p><h2 id="search-dialog-title">Find a thought.</h2></div><button type="button" data-search-close aria-label="Close search">Esc</button></header>
+    ${searchSurface('palette')}
+    <footer class="search-dialog-footer"><span>↑ ↓ results · Enter opens · Esc closes</span><a href="/search">Open search page</a></footer>
+  </dialog>
 
   <script type="module" src="/main.js"></script>
   ${scripts?.map(s => html`<script type="module" src="${s}"></script>`) ?? ''}

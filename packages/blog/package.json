@@ -2,7 +2,7 @@
   "name": "@gkoreli/blog",
   "version": "0.1.0",
   "private": true,
-  "description": "Blog site \u2014 built with @nisli/core",
+  "description": "Blog site — built with @nisli/core",
   "type": "module",
   "scripts": {
     "dev": "tsx src/pipeline/dev.ts",
@@ -14,10 +14,10 @@
     "serve": "pnpm dlx serve dist",
     "typecheck": "tsc --noEmit && tsc -p src/worker/tsconfig.json",
     "test:ai-check": "node scripts/check-ai-check.mjs",
-    "pretest": "pnpm -C ../time build",
-    "pretypecheck": "pnpm -C ../time build",
-    "prebuild": "pnpm -C ../time build",
-    "predev": "pnpm -C ../time build"
+    "pretest": "pnpm -C ../time build && pnpm -C ../search build",
+    "pretypecheck": "pnpm -C ../time build && pnpm -C ../search build",
+    "prebuild": "pnpm -C ../time build && pnpm -C ../search build",
+    "predev": "pnpm -C ../time build && pnpm -C ../search build"
   },
   "dependencies": {
     "@gkoreli/analytics": "workspace:*",
@@ -35,7 +35,8 @@
     "shiki": "^4.0.1",
     "zod": "^4.3.6",
     "@gkoreli/site-audit": "workspace:*",
-    "@gkoreli/time": "workspace:*"
+    "@gkoreli/time": "workspace:*",
+    "@gkoreli/search": "workspace:*"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20250306.0",

@@ -1,4 +1,7 @@
-import { html, type TemplateResult } from '@nisli/core';
+import { html, raw, type TemplateResult } from '@nisli/core';
+import type { ArticleDocument } from '@gkoreli/search';
+import { searchableArticle, writeSearchIndex } from './search-index.js';
+import { searchPage } from '../pages/search.js';
 import { cleanOutDir } from '@nisli/ssg';
 import { buildDocuments, renderContent, type PageDocument } from '../lib/ssg.js';
 import { parsePostModule } from '../lib/post-module.js';
@@ -140,6 +143,13 @@ export async function buildHTML(): Promise<void> {
 
   await initMarkdown();
   const pages: { path: string; document: PageDocument }[] = [];
+  const searchArticles: ArticleDocument[] = [];
+  const searchCoverage: { id: string; indexedCharacters: number; ignoredCharacters: number; headings: number }[] = [];
+  function prepare(meta: Post['meta'], body: string): string {
+    const prepared = searchableArticle(meta, body);
+    searchArticles.push(prepared.article); searchCoverage.push({ id: meta.slug, ...prepared.coverage });
+    return prepared.html;
+  }
   const addPage = (slug: string, document: PageDocument) => {
     pages.push({ path: slug === '/' ? '/' : `/${slug}`, document });
   };
@@ -218,7 +228,7 @@ export async function buildHTML(): Promise<void> {
   // Build markdown posts
   for (let i = 0; i < mdPosts.length; i++) {
     const post = mdPosts[i]!;
-    const htmlContent = await renderMarkdown(post.content);
+    const htmlContent = prepare(post.meta, await renderMarkdown(post.content));
     const ogImage = await generateOgImage(post.meta.title, post.meta.slug);
     const body = postPage(post.meta, htmlContent, allPosts);
     const jsonLd = blogPostingJsonLd(post.meta, ogImage);
@@ -232,13 +242,14 @@ export async function buildHTML(): Promise<void> {
   }
 
   // Build TypeScript posts — content controls its own structure
-  for (const { post, article, preamble: renderPreamble, htmlContent } of tsPosts) {
+  for (const { post, preamble: renderPreamble, htmlContent } of tsPosts) {
     const ogImage = await generateOgImage(post.meta.title, post.meta.slug);
     const jsonLd = blogPostingJsonLd(post.meta, ogImage);
     const scripts = post.meta.layout === 'immersive' ? ['/immersive.js'] : [];
     const trail = seriesTrailBlock(post.meta, allPosts);
     const afterword = postAfterword(post.meta, allPosts);
-    const content = html`${article()}${researchFootprint(post.meta)}${trail}${afterword}`;
+    const prepared = prepare(post.meta, htmlContent);
+    const content = html`<div class="article-snapshot" html:inner=${raw(prepared)}></div>${researchFootprint(post.meta)}${trail}${afterword}`;
     const preamble = renderPreamble?.();
     const ogImageAlt = postOgImageAlt(post.meta.title);
     const page = pageShell({ title: post.meta.title, description: post.meta.description, content, canonicalPath: `/${post.meta.slug}`, currentSlug: post.meta.slug, currentSection: post.meta.section, ogImage, ogImageAlt, head: jsonLd, layout: post.meta.layout, scripts, ...(preamble && { preamble }), ogType: 'article', postSlug: post.meta.slug, ...(post.meta.seoTitle !== undefined && { seoTitle: post.meta.seoTitle }) });
@@ -281,6 +292,7 @@ export async function buildHTML(): Promise<void> {
   const aboutBody = aboutPage();
   const aboutShell = pageShell({ title: 'About', description: 'About Goga Koreli — agentic product engineer', content: aboutBody, canonicalPath: '/about', currentSlug: 'about', ogImage: publicationOgImage, ogImageAlt: PUBLICATION_OG_IMAGE_ALT, head: profilePageJsonLd() });
   addPage('about', aboutShell);
+  addPage('search', pageShell({ title: 'Search the publication', description: 'Find articles and the passages inside them.', content: searchPage(), canonicalPath: '/search', currentSlug: 'search', noindex: true, ogImage: publicationOgImage, ogImageAlt: PUBLICATION_OG_IMAGE_ALT }));
 
   const statsBody = statsPage(allPosts.map(post => ({ path: `/${post.slug}`, title: post.title })));
   const statsShell = pageShell({ title: 'Stats', description: 'Public analytics for gkoreli.com — transparent, cookieless', content: statsBody, canonicalPath: '/stats', currentSlug: 'stats', layout: 'report', ogImage: publicationOgImage, ogImageAlt: PUBLICATION_OG_IMAGE_ALT, head: statsHead, noindex: true });
@@ -322,6 +334,7 @@ export async function buildHTML(): Promise<void> {
   addPage('animations-lab', animationsLabShell);
 
   await buildDocuments(DIST, pages);
+  await writeSearchIndex(DIST, searchArticles, searchCoverage);
 
   writeRoot('index.md', homeMarkdown(sortedPosts));
   writeRoot('feed.xml', rssFeed(sortedPosts));
@@ -642,6 +655,9 @@ export async function bundleClient(minify = true): Promise<void> {
     outdir: DIST,
     entryNames: '[name]',
     format: 'esm',
+    splitting: true,
+    chunkNames: 'chunks/[name]-[hash]',
+    conditions: ['onnxruntime-web-use-extern-wasm'],
     minify,
     define: clientDefines(true, process.env),
     target: 'es2024',

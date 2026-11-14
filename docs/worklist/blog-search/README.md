@@ -17,16 +17,16 @@ November 14, 2026. Accepted product work following the completed [reader-search 
 - [x] Read the existing experiment, failures, source coverage and delivery records.
 - [x] Inspect pinned DocSearch keyboard, focus, result hierarchy and hosted-client paths; check primary Pagefind/MiniSearch documentation.
 - [x] Implement the first package boundary: article/passages, HTML extraction, stable native anchors, safe document URLs and explicit index exclusions; six focused tests pass.
-- [ ] Record comparison inputs, method configurations and labels before new rankings.
-- [ ] Implement and test the package boundary, extraction, stable paragraph anchors and retrieval adapters.
-- [ ] Execute comparisons, inspect disagreements and choose defaults within the declared development boundary.
-- [ ] Integrate static index production, fallback search page, enhanced UI and keyboard behavior.
-- [ ] Run representative browser trials, accessibility/keyboard checks, loading/error/empty states and performance checks.
-- [ ] Revise the article and review every material claim against recorded evidence.
+- [x] Record comparison inputs, method configurations and labels before new rankings.
+- [x] Implement and test the package boundary, extraction, stable paragraph anchors and retrieval adapters.
+- [x] Execute comparisons, inspect disagreements and choose defaults within the declared development boundary.
+- [x] Integrate static index production, fallback search page, enhanced UI and keyboard behavior.
+- [x] Run representative browser trials, accessibility/keyboard checks, loading/error/empty states and performance checks.
+- [x] Revise the article and review every material claim against recorded evidence.
 - [ ] Finish isolated builds, scoped delivery, current production acceptance and private prompt backup.
 
 ## Evidence and continuity
 
 The [comparison record](../../../packages/blog/drafts/research/modern-web-guidance/search-package/README.md) owns research conditions and outcomes. Package/API and accepted architecture documentation will live beside their implementation and in an ADR. Raw author queries, bodies, model files and operational logs remain outside Git. The existing study's closed status is preserved; this is new accepted work rather than a reinterpretation of its validation set.
 
-Current state: source inspection and the tested extraction/identity boundary. A two-record fixture confirms Pagefind 1.6.0 can be queried in Node with a confined local-file fetch adapter; no blog ranking has been run. New retrieval and deployed search behavior remain unaccepted. Next bounded action: freeze comparator configurations and question-specific labels, then execute development comparisons while implementing the retrieval interface.
+Current state: the reusable [package](../../../packages/search/README.md), native UI, browser worker, static indexing, no-JavaScript word route and [ADR](../../adr/0023-publication-passage-search.md) are implemented. [Controlled comparisons](../../../packages/blog/drafts/research/modern-web-guidance/search-package/report.md) and [package acceptance](../../../packages/blog/drafts/research/modern-web-guidance/search-package/package-acceptance.md) retain mixed outcomes, source-aware labels, model/download costs and browser limitations. All 51 fixed cases completed in Node and the actual application browser worker. Nineteen package tests, 460 blog tests, workspace typechecks, content validation and isolated builds passed. The standalone MWG manuscript is polished with a dedicated own-approach section; no date/slug or Radar assignment is introduced. Private request preservation is backed up. Next bounded action: complete scoped source delivery, deploy the checked feature and verify current production word/related/source-paragraph flows separately.

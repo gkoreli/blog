@@ -43,3 +43,8 @@ test('bare body text is searchable without requiring a framework-specific wrappe
   assert.deepEqual(result.article.passages.map(p=>p.text),['Visible inline text.']);
   assert.equal(prepare(result.html).html,result.html);
 });
+
+test('publication omissions exclude index text while keeping rendered quotations intact',()=>{
+ const output=prepareArticle({id:'policy',url:'/policy',title:'Policy',html:'<p>Public explanation.</p><blockquote><p>Excluded source note.</p></blockquote>',omitTags:['blockquote']});
+ assert(output.html.includes('Excluded source note.'));assert(!output.article.passages.some(p=>p.text.includes('Excluded source note.')));assert.equal(output.coverage.ignoredCharacters,'Excluded source note.'.replace(/\s/gu,'').length);
+});

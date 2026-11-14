@@ -17,6 +17,8 @@ const attr = (element: Element, name: string): string | undefined => element.att
 export interface HtmlArticleInput extends Omit<ArticleDocument, 'passages'> {
   /** Already rendered article body; pass neither a page shell nor unpublished source notes. */
   readonly html: string;
+  /** Publication policy, applied only to indexing. Source HTML stays readable. */
+  readonly omitTags?: readonly string[];
 }
 
 export interface PreparedArticle {
@@ -41,7 +43,7 @@ export function prepareArticle(input: HtmlArticleInput): PreparedArticle {
   inspectIds(root);
   function walk(node: Node, parents: readonly Element[], omit: boolean): void {
     if ('tagName' in node) {
-      const nextOmit = omit || ignored.has(node.tagName) || node.attrs.some(item => item.name === 'hidden' || item.name === 'data-search-ignore' || item.name === 'aria-hidden' && item.value === 'true');
+      const nextOmit = omit || ignored.has(node.tagName) || input.omitTags?.includes(node.tagName) === true || node.attrs.some(item => item.name === 'hidden' || item.name === 'data-search-ignore' || item.name === 'aria-hidden' && item.value === 'true');
       for (const child of node.childNodes) walk(child, [...parents, node], nextOmit);
       return;
     }

@@ -11,7 +11,7 @@ import { utilityIcon, utilityIconNames, type UtilityIconName } from '../template
 const ICON_LABELS: Record<UtilityIconName, string> = {
   menu: 'Menu', close: 'Close', sun: 'Light appearance', moon: 'Dark appearance',
   clock: 'Time', mail: 'Mail', pen: 'Edit', posts: 'Document',
-  desktop: 'Desktop', tablet: 'Tablet', phone: 'Phone',
+  desktop: 'Desktop', tablet: 'Tablet', phone: 'Phone', search: 'Search',
 };
 
 const PALETTE = [

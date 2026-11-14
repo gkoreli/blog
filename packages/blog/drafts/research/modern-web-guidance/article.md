@@ -133,7 +133,7 @@ This demo uses the query table to encode short metadata on both sides. It has no
 
 Using the loop for article passages would require a compatible document index. The inspected MWG pipeline uses `gemini-embedding-001` with `RETRIEVAL_DOCUMENT`, requests 768 coordinates, then keeps and normalizes the first 256. A blog would run that preparation over bounded article sections and save each vector with its URL and snippet. At search time, the loop would encode the query for comparison with those saved vectors, alongside a keyword baseline.
 
-**I have not built that matching Gemini article index.** Document and query vectors need a compatible learned space; equal array lengths alone do not establish compatibility. The metadata demo and the E5 experiment below are both local artifacts, with no production search feature deployed.
+**I have not built that matching Gemini article index.** Document and query vectors need a compatible learned space; equal array lengths alone do not establish compatibility. The metadata demo uses MWG; the separate E5 work below supplies the document and query model for the search package. Its results cannot establish MWG transfer quality.
 
 ## Separate experiment: E5 passage search on the blog
 
@@ -155,9 +155,39 @@ The labels miss some useful alternatives. For a short prompt-cache query, all th
 
 All three methods also returned results for all **eight expected-no-answer prompts**; a sourdough question produced unrelated passages. On this selected set, semantic-only ranking found fewer known answers than keywords, and hybrid’s one-case net gain does not establish a general improvement. These scores cannot compare E5 with MWG: the guide replay used different content, labels and a different cutoff.
 
-A later [reader-search engineering pass](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/modern-web-guidance/reader-search/report.md) checked all 46 live article pages and added 3,980 smaller units for excerpt selection, while retaining the 866 passages for article ranking. An animated-icon query found OSS Radar #01; clicking its paragraph link highlighted the Moving Icons explanation on the live site. A vague shared-model recollection found the Buzz article among the first three but missed the sharing explanation in its selected excerpts. Expanded source context exposed that explanation, with a larger text budget.
+A later [reader-search pass](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/modern-web-guidance/reader-search/report.md) separated article discovery from paragraph selection and checked live source links. Removing article-location framing reduced selected-block hits from **26/32 to 23/32** on its reserved source-aware questions. Finding the article did not guarantee finding the requested detail. Those checks led to a separate product investigation, rather than additional reproduction of MWG.
 
-Removing article-location framing also reduced selected-block hits from **26/32 to 23/32** on reserved, source-aware agent-authored questions, without improving hybrid article-at-three overall. The interface now defaults to the whole question and makes topic focus optional. Those later checks distinguish article discovery, excerpt selection and navigation; they supply no additional reproduction of MWG’s encoder.
+## Our approach: article search with source paragraphs
+
+I built [`@gkoreli/search`](https://github.com/gkoreli/blog/tree/main/packages/search) inside this blog's monorepo to test that distinction in an actual reader interface. Its two modes serve different needs: **Words** for names and exact details, and optional **Related ideas** for a description whose wording differs from the source. Both return the article's own text and paragraph links.
+
+Before choosing defaults, I compared the original BM25/E5 controls with MiniSearch BM25+, fuzzy/prefix search, Pagefind's generated search engine and an additional cross-encoder reranker. I also read DocSearch's keyboard, result and client code. **DocSearch calls hosted Algolia; I did not run an Algolia ranking or crawler trial.** Native whole-page Pagefind received its own index alongside controlled record-level comparisons. [Versions, all conditions, failures and rankings](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/modern-web-guidance/search-package/report.md).
+
+The new pack had fifteen topics in three correlated forms and six no-known-answer cases. An agent constructed the questions and selected passages after source reading and earlier retrieval work. Ten article groups informed development; five supplied reserved checks. These are useful source-aware checks, with incomplete labels. They do not estimate independent reader accuracy.
+
+The decision recorded before opening reserved results was exact MiniSearch for fast word search, with prefix/fuzzy recovery after existing exact ranks, plus E5/exact-keyword rank fusion for related ideas. On the 15 reserved positives, the chosen hybrid found **14 selected articles and 10 selected paragraphs**; the tolerant hybrid found 15 and 11. I retained the earlier choice and both results. The cross-encoder found all 15 articles but nine selected paragraphs. It also added 23.86 MB of files and substantial native computation, so it became a comparison rather than the default.
+
+The reusable package then needed its own checks. An article owns ordered source passages; HTML extraction adds anchors to the HTML actually served. Broader units select distinct articles, and finer units select their excerpts. Parsing, inference, storage and UI stay outside the search domain, behind a small interface:
+
+```ts
+const search = await createSearch(indexText, {
+  encoder,
+  loadVectors: () => loadBytes(vectorFile),
+});
+const results = await search.search('a detail I remember', {
+  mode: 'related',
+});
+```
+
+The index records its embedding space and checks the vector file's integrity. A different model with 384 output numbers is rejected. Documents and queries use the same pinned E5 recipe; these are transformer embeddings, independent of MWG's word table.
+
+The integrated current-corpus index contains **46 articles and 3,954 source passages**. All 63 selected-block label occurrences mapped to it before package ranking, and every generated passage target existed once in its article HTML. Current parsing, packing and source content differ from the earlier controls. In the actual browser worker, Words found the selected article in **43/45** answerable cases and its selected paragraph in **31/45**; Related ideas scored **42/45** and **35/45**. Related improved the paragraph count while losing one article-at-three case overall. Both returned material for all six no-known-answer cases. [Separate package acceptance](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/modern-web-guidance/search-package/package-acceptance.md) retains the misses and Node/browser differences.
+
+A broad emoji recollection illustrates the limit. It returned OSS Radar #01, but word search's excerpts were generic, and related search surfaced an animated-icon library. That does not confirm an emoji project. A more specific Moving Icons/Svelte query exposed the source explanation; arrow navigation and Enter opened and highlighted that paragraph. Showing source text lets the reader inspect this distinction.
+
+The interface uses a regular search page and a native dialog opened with Cmd/Ctrl+K. Word search loads no transformer. Related search explicitly enables roughly **53.3 MB of additional raw model, runtime and vector files**, which the browser may cache. The lexical index is another 5.72 MB raw; a local Brotli encoding was 0.79 MB, not a measured production transfer. The oversized ONNX file is split for the host's per-file limit, without reducing its total size. This is a materially heavier client than MWG's query table.
+
+Interactive queries run in a browser worker with self-hosted assets. The plain GET form works without JavaScript and sends its query in the URL to the site, where infrastructure logs can retain it. The product returns passages to inspect, with no generated answer or confidence percentage. Browser/device cost, refusal behavior and incomplete relevance labels remain part of the engineering problem.
 
 MWG moves expensive work into the data prepared before release. The loop can stay small because it assembles a query vector from that data. Adopting it means preparing a compatible document index and checking the complete search path on the questions the product needs to answer.
 
@@ -172,3 +202,4 @@ MWG moves expensive work into the data prepared before release. The loop can sta
 | [Local reproduction](https://github.com/gkoreli/blog/tree/main/packages/blog/drafts/research/modern-web-guidance/embedding), November 13, 2026 | Frozen protocol, agent-assisted scripts, exact comparisons, measurements, full replay rows and limits |
 | [Separate local E5 passage comparison](https://github.com/gkoreli/blog/tree/main/packages/blog/drafts/research/modern-web-guidance/passage-search), November 14, 2026 | Full-article index, fixed questions and labels, keyword/semantic/hybrid results, local interface and limits; not an MWG transfer benchmark |
 | [Reader-search engineering checks](https://github.com/gkoreli/blog/tree/main/packages/blog/drafts/research/modern-web-guidance/reader-search), November 14, 2026 | Live article coverage, reserved source-aware cases, excerpt-selection failures and actual paragraph navigation; a later E5 product experiment |
+| [Search package comparisons and acceptance](https://github.com/gkoreli/blog/tree/main/packages/blog/drafts/research/modern-web-guidance/search-package), November 14, 2026 | Controlled lexical/static/dense/reranker comparisons, current-corpus package checks, actual browser worker and source navigation; separate from MWG reproduction |

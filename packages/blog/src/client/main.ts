@@ -5,6 +5,7 @@ import { clientBuildId } from './build-identity.js';
 import { localizeTimeElements } from './local-time.js';
 import './components/theme-toggle.js';
 import './components/burger-menu.js';
+import './search-launcher.js';
 
 const logger = createDefaultClientLogger({ buildId: clientBuildId() });
 

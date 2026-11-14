@@ -1,0 +1,55 @@
+# @gkoreli/search
+
+Article and passage search for publications. The first consumer is [gkoreli.com](https://gkoreli.com/search). This is a workspace package; it has not been released to npm.
+
+```ts
+import { prepareArticle } from '@gkoreli/search/html';
+import { buildSearchIndex, createSearch } from '@gkoreli/search';
+
+const prepared = prepareArticle({
+  id: 'my-post', url: '/my-post', title: 'My post', html: renderedArticleBody,
+});
+// Publish prepared.html so result anchors exist in the actual article.
+const bundle = await buildSearchIndex([prepared.article]);
+const search = await createSearch(bundle.index);
+const results = await search.search('a topic I remember');
+// results.articles[].passages[] contains source text, preview ranges, context and URL.
+```
+
+## Boundary and model
+
+An `ArticleDocument` owns ordered `SourcePassage`s and their native anchors. IDs are caller-owned; indexing never turns an arbitrary query into an article identity. HTML extraction is a build adapter, not a crawler. Pass trusted rendered article content, without the surrounding navigation. It preserves unique authored IDs and creates content-based anchors otherwise. Duplicate text receives a deterministic suffix. Inline formatting changes preserve the text anchor; substantive text edits can change it. Hidden content, scripts, controls and `data-search-ignore` content are omitted. `omitTags` applies publication policy without deleting displayed text.
+
+The application exposes `buildSearchIndex` and `createSearch`, then one `search` operation. It owns query interpretation, candidate retrieval, article grouping, passage selection, scope and provenance. Packed candidate units, the finer excerpt index, MiniSearch serialization, rank fusion and vector layout are internal. HTML, inference, bytes and UI remain adapters. The core has no Node imports, DOM, Cloudflare binding, hosted account, publication slug or framework type.
+
+Word search uses MiniSearch 7.2.0 BM25+, with title/heading/body boosts 3/2/1 and OR matching. Exact ranks come first. Prefix and bounded fuzzy matches append recovery results; they cannot replace an existing exact result. Queries retain negation and topic category words, remove common function words and fixed article-location framing, and support quoted phrases. Inputs are bounded to 512 characters and 40 useful terms. English preparation and tokenization are intentional limits, not multilingual quality claims.
+
+Related mode fuses the exact lexical list with dense ranks at reciprocal-rank constant 60. Candidate units select distinct articles; finer units select up to three source passages within each. It uses the original question for embeddings. Article/section scope and quoted phrases constrain both stages. `limit` and `passagesPerArticle` are bounded overrides. Rank scores are internal: results are neither confidence estimates nor a guarantee that the requested answer exists.
+
+## Optional embeddings
+
+```ts
+const bundle = await buildSearchIndex(articles, { encoder });
+const search = await createSearch(bundle.index, {
+  encoder, loadVectors: () => loadBytes(vectorFile),
+});
+await search.search('a vague recollection', { mode: 'related', article: 'my-post' });
+```
+
+`EmbeddingEncoder` declares a stable `space`, dimensions and `encode(text, purpose, signal)`. An index records that identity. Related search rejects different spaces even when their array lengths match. Queries produce one vector; documents may produce multiple complete chunks. Finite, nonzero vectors are normalized. Multiple document chunks use their best similarity. The index and float32 bytes have integrity checks and source-unit identities. Word search never loads the vector file or invokes the encoder.
+
+Optional subpaths implement pinned E5-small-v2:
+
+- `e5-node`: build-time local CPU inference using Transformers.js 3.8.1; supply verified local files and an optional document-only content cache.
+- `e5-web`: self-hosted, single-thread ONNX Runtime WASM in a dedicated browser worker. Supply the verified asset manifest, base URL and optional progress callback. Tokenization, `query: `/`passage: ` prefixes, mean pooling and L2 normalization match the Node recipe. Documents split below 480 tokens; oversized queries fail explicitly. No silent document truncation.
+- `e5-assets`: verifies four released files at revision `02af79985278377e65c724a76275707cb0333c70`, caches outside Git, splits ONNX transport below 25 MiB per file, and emits fingerprinted assets. Splitting does not reduce total size. First build needs network access; subsequent verified files and document embeddings can be reused.
+
+These adapters use a transformer. They do not implement MWG's seven-line encoder. The core accepts another compatible encoder without a change to its search interface.
+
+## Consumer responsibilities
+
+Publish the transformed article HTML and its index atomically. Persist the index and optional vectors; keep raw research captures, model caches and private author notes outside Git. Serve fingerprinted data with immutable caching and the manifest with freshness checks. The blog's adapter, form/dialog, worker transport, no-JavaScript route, download consent and publication exclusions live in `packages/blog`, not this package. Do not put private text into an index merely because its source file is available.
+
+The browser adapter needs WASM permission in the site's CSP and self-hosted runtime glue/WASM URLs. Model download, memory and CPU costs depend on the device. Browser caching may be evicted. Node timing does not establish browser performance. The bundled UI returns source passages and context rather than generating an answer. Word matches use preview ranges as text; consumers must not render source text as executable HTML.
+
+`pnpm -C packages/search test` checks extraction/anchors, query semantics, retrieval boundaries, corruption/model mismatches, lazy loading, complete E5 inputs and cache behavior. [Comparison evidence](../blog/drafts/research/modern-web-guidance/search-package/README.md) records the source-aware blog trials and their limits. Tests and dogfooding do not establish independent reader accuracy or third-party adoption.

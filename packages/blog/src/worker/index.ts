@@ -36,6 +36,9 @@ import { createBlogAgentAccessHandler } from './agent-access.js';
 import { publicPagePaths } from './referrer-pages.js';
 import { handleAiCheck, type AiCheckEnv } from './ai-check.js';
 import { purgeCheckQuota } from './ai-check-quota.js';
+import { createSearchHandler } from './search.js';
+
+const searchPublication = createSearchHandler();
 
 /** Merged bindings for the packages composed by this Worker. */
 type Env = AnalyticsEnv & NewsletterEnv & ClientObservabilityEnv & AiCheckEnv;
@@ -172,6 +175,8 @@ async function negotiatedAsset(
 
 async function serveContent(request: Request, env: Env): Promise<ServedResponse> {
   const { pathname } = new URL(request.url);
+  const searched = await searchPublication(request, env.ASSETS);
+  if (searched) return { response: searched, representation: 'html' };
   const canNegotiate = request.method === 'GET' || request.method === 'HEAD';
   const negotiated = canNegotiate
     ? negotiateRepresentation(request.headers.get('Accept'))

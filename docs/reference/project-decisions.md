@@ -25,6 +25,7 @@ Audience and growth: [ADR-0016.19](../adr/0016.19-agent-mediated-audience-growth
 | Newsletter | D1 state, Resend delivery, and Turnstile protection | [Subscriptions](../adr/0010-email-subscriptions.md) |
 | Diagnostics | Shared client-error reporting with explicit data and operational limits | [Observability](../adr/0011-client-error-observability.md) |
 | Prompts | Private working notes for every article form; public prompt pages retired | [Prompt publication decision](../adr/0003-prompt-transparency.md) |
+| Publication search | Portable article/passage domain, immediate lexical search, optional local E5, native paragraph links and progressive UI | [Passage search](../adr/0023-publication-passage-search.md) |
 | Design | Shared navigation and typography; custom article layouts where useful | [Navigation](../adr/0007-navigation-and-layout.md), [layout](../adr/0009-layout-system.md), [visual system](../adr/0013.1-publication-visual-layer.md) |
 
 ## Implementation conventions

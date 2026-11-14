@@ -89,6 +89,9 @@ const ctx = await context({
   outdir: DIST,
   entryNames: '[name]',
   format: 'esm',
+  splitting: true,
+  chunkNames: 'chunks/[name]-[hash]',
+  conditions: ['onnxruntime-web-use-extern-wasm'],
   target: 'es2024',
   define: clientDefines(false),
 });

@@ -7,13 +7,17 @@
   "license": "MIT",
   "exports": {
     ".": { "types": "./dist/index.d.ts", "default": "./dist/index.js" },
-    "./html": { "types": "./dist/html.d.ts", "default": "./dist/html.js" }
+    "./html": { "types": "./dist/html.d.ts", "default": "./dist/html.js" },
+    "./e5": { "types": "./dist/e5.d.ts", "default": "./dist/e5.js" },
+    "./e5-web": { "types": "./dist/e5-web.d.ts", "default": "./dist/e5-web.js" },
+    "./e5-node": { "types": "./dist/e5-node.d.ts", "default": "./dist/e5-node.js" },
+    "./e5-assets": { "types": "./dist/e5-assets.d.ts", "default": "./dist/e5-assets.js" }
   },
   "scripts": {
     "build": "tsc --build",
     "typecheck": "tsc --build",
     "test": "pnpm build && node --test test/*.test.mjs"
   },
-  "dependencies": { "minisearch": "7.2.0", "parse5": "8.1.1" },
+  "dependencies": { "minisearch": "7.2.0", "parse5": "8.1.1", "@huggingface/transformers": "3.8.1", "onnxruntime-common": "1.22.0-dev.20250409-89f8206ba4", "onnxruntime-web": "1.22.0-dev.20250409-89f8206ba4" },
   "devDependencies": { "@types/node": "^25.3.3", "typescript": "^7.0.2" }
 }
