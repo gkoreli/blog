@@ -3,7 +3,7 @@
   "releaseTime": "08:00",
   "timeZone": "America/Los_Angeles",
   "issue": 15,
-  "state": "reviewed source queued; local release acceptance passed; hosted check pending",
+  "state": "reviewed source queued; local rehearsal and hosted queue check accepted",
   "queueFile": "packages/blog/scheduled/2026-11-16/046-oss-radar-15-modern-web-guidance-static-embeddings.md",
   "queueSha256": "cf75e38316d0eeeb8cf14fcd22ef9846d5628c9e4fdc74404dcd11d7b51e6e08",
   "savedEvidenceVerification": {
@@ -124,7 +124,21 @@
     "socialImageTitleLegible": true
   },
   "hostedCheck": {
-    "state": "pending",
-    "publishes": false
+    "state": "success",
+    "publishes": false,
+    "runId": 43617079152,
+    "jobId": 132514374643,
+    "url": "https://github.com/gkoreli/blog/actions/runs/43617079152",
+    "sourceCommit": "20dff0323787ebe0d8dfbc23b09cb8632c9f6729",
+    "acceptedQueueEntries": 1,
+    "promotionAndPush": "skipped",
+    "productionValidationAndBuild": "skipped; separate local rehearsal passed",
+    "liveVerification": "skipped; Monday release not yet observed"
+  },
+  "workflowActivation": {
+    "id": 408698342,
+    "name": "Weekly OSS Radar publication",
+    "state": "active",
+    "schedule": "Monday 08:00 America/Los_Angeles"
   }
 }
