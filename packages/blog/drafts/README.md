@@ -38,7 +38,7 @@ conversations; an unavailable time total is explicitly "not recovered."
 
 | Article / topic | Work and evidence | Current state / next action |
 | --- | --- | --- |
-| [Modern Web Guidance’s seven-line embedder](research/modern-web-guidance/article.md) | November 13: completed interface study (54 primary attempts plus 54 retained diagnostic attempts), static-embedding reproduction in three processes, official archive verification, public retrieval replay and article draft. [Research index](research/modern-web-guidance/README.md). Elapsed total not finalized. | Draft ready for author review; no site publication or production trial patch. Further experiments remain separate proposals. |
+| [How Modern Web Guidance’s seven-line embedder works](research/modern-web-guidance/article.md) | November 13: completed interface study (54 primary attempts plus 54 retained diagnostic attempts), static-embedding reproduction in three processes, official archive verification, public retrieval replay and reviewed manuscript. [Research index](research/modern-web-guidance/README.md). Elapsed total not recovered. | Reviewed and polished for publication; source remains an unpublished draft. No production trial patch. Further experiments remain separate proposals. |
 
 ## Published from this backlog
 

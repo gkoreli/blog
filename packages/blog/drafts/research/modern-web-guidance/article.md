@@ -1,30 +1,16 @@
-# Modern Web Guidance’s seven-line embedder, reproduced
+# How Modern Web Guidance’s seven-line embedder works
 
-Modern Web Guidance can embed a short search query in a few microseconds because much of its learned behavior ships as a table. I reproduced the calculation, matched 628 embedding calls per process coordinate for coordinate, and replayed its public retrieval test split.
+Modern Web Guidance turns a short search query into 256 numbers by looking up learned word vectors, weighting them and adding them. Those numbers help find relevant implementation guides. Its seven-line loop performs the sum; the trained table and surrounding code make that sum useful for search.
 
-The useful engineering idea is deciding which work belongs before release. A large model produces the guide vectors and initializes the word table. Training adjusts that table for short web-development queries. The installed CLI mostly looks up rows, adds them, and searches a small corpus.
+Paul Irish’s [engineering report](https://developer.chrome.com/blog/mwg-technical-deep-dive) puts warm query embedding at **30 microseconds**. I reproduced the runtime calculation using the released table and measured the original implementation locally. The results support microsecond-scale embedding, while leaving the training process, historical speedup and private retrieval benchmark as upstream claims.
 
-My local tests support that design within its intended scope. They also expose boundaries that the small loop cannot show: full search takes milliseconds, a relevant result does not establish correct generated code, and the admission gate returned web guides for all 90 curated out-of-scope queries I replayed.
+## Read the loop as a weighted sum
 
-## The knowledge arrives in the data files
+The released `modern-web-guidance@1.0.0` package contains **29,165 vocabulary entries**, each associated with **256 signed-byte coordinates**. An embedding is this kind of numerical representation: search compares its direction with the directions of stored guide vectors.
 
-Paul Irish’s [engineering report](https://developer.chrome.com/blog/mwg-technical-deep-dive) describes Modern Web Guidance moving from a native dependency stack through TensorFlow.js to static query embeddings. Its guides help coding agents find current implementation advice without loading the entire catalog into their context.
+For `confirm destructive action`, the encoder finds the recognized words’ vocabulary rows. It produces pairs `[i, f]`: `i` identifies a row, and `f` says how much that occurrence contributes. A directly recognized word gets `f = 1`.
 
-The released package I inspected contains **29,165 vocabulary entries**, each associated with **256 signed-byte coordinates**. Beside that table are one float32 scale per entry and the vocabulary’s strings. The source and installed query tables matched byte for byte. [Archive inventory and hashes](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/modern-web-guidance/embedding/results/package-receipt.json).
-
-A word’s row is a learned numerical representation. The coordinates do not have convenient labels such as “accessibility” or “animation.” Their directions make certain queries close to certain guide chunks under a dot-product comparison.
-
-The [training code](https://github.com/GoogleChrome/modern-web-guidance-src/blob/596acbc75a330508591b07cd9e198b219341f619/src/rag/train-query-words.ts) explains where those rows come from. It gets word embeddings from `gemini-embedding-001`, truncates and normalizes them to 256 dimensions, then adjusts word vectors and weights so their combinations approximate teacher embeddings of complete training queries. Finally it quantizes the vectors to signed bytes and folds each row’s quantization scale into its word weight.
-
-I inspected that path and used the shipped weights. I did not rerun its model API calls or training. The project documents a 32,915-query training population; my reproduction does not independently validate that population or its separation from evaluation data. [Table provenance](https://github.com/GoogleChrome/modern-web-guidance-src/blob/596acbc75a330508591b07cd9e198b219341f619/src/rag/README.md#committed-table-provenance).
-
-This belongs to the family of static embedding techniques illustrated by [Model2Vec](https://github.com/MinishLab/model2vec): use an expensive model to help construct a compact model whose runtime performs much less work.
-
-## What the seven lines calculate
-
-For a query such as `confirm destructive action`, the encoder finds known vocabulary entries. Each encoded pair contains a row index `i` and a contribution fraction `f`. A directly recognized word gets fraction 1; an unknown hyphenated word can fall back to known parts.
-
-Here is the accumulation loop, with the dimension written explicitly:
+Here is the [accumulation loop](https://github.com/GoogleChrome/modern-web-guidance-src/blob/596acbc75a330508591b07cd9e198b219341f619/src/rag/static-embedder.ts), with the dimension constant written as `256`:
 
 ```js
 for (const [i, f] of enc) {
@@ -36,58 +22,87 @@ for (const [i, f] of enc) {
 }
 ```
 
-`table` supplies the signed-byte coordinates. `scales[i]` combines the learned importance of that word with the multiplier needed to reconstruct its quantized row. `out` accumulates floating-point values.
+The table stores its rows consecutively in one flat array. Row 0 occupies positions 0–255, row 1 occupies 256–511, and so on. Therefore `i * 256` finds the beginning of word `i`’s row, and `offset + k` selects its coordinate `k`.
 
-The [surrounding function](https://github.com/GoogleChrome/modern-web-guidance-src/blob/596acbc75a330508591b07cd9e198b219341f619/src/rag/static-embedder.ts) clears the output first and normalizes the sum afterward, dividing each coordinate by the vector’s length. The complete embedding path also loads data and tokenizes text. Seven lines identify the inner arithmetic, rather than the whole implementation.
+`scales[i]` combines two multipliers: the word’s learned weight and its quantization scale. Quantization stores coordinates as small integers; the scale converts them back to weighted floating-point contributions. The release has already folded the weight and scale together. At query time, `wt` multiplies that stored value by `f` once, and the inner loop reuses it for all 256 coordinates.
 
-For three directly recognized words, the inner loop makes 768 weighted coordinate additions. After initialization, work grows approximately with the number of recognized token contributions times 256. It does not run transformer attention over the query.
+`out[k] += ...` adds the contribution to the query’s coordinate `k`. It combines words coordinate by coordinate. The output stays 256 numbers long regardless of how many words contributed.
 
-The compact table still carries learned parameters. Its 7,466,240 signed-byte values alone occupy **7.47 MB uncompressed**. Storing that same number of coordinates as float32 would require 29.86 MB before vocabulary and scales. Quantization changes the storage representation; training supplies the useful values.
+For three directly recognized words, the inner loop makes **768 weighted coordinate additions**. Work grows approximately with recognized token contributions times 256. The table is already loaded; this path performs no transformer attention over the query.
 
-## Keep expensive document work before release
+The fraction `f` handles a particular fallback. When an unknown hyphenated token has several known parts, each known part receives an equal share. With two known parts, each gets `f = 0.5`. Words with no recognized entry or usable hyphen parts contribute nothing.
 
-The two sides of search have different jobs:
+## Normalize the sum after the loop
 
-| Stage | Work |
+The surrounding function clears `out` before accumulation and normalizes it afterward: divide every coordinate by the vector’s length. The seven lines cover the weighted sum, while these additional steps prepare its input and output.
+
+For a small worked example, suppose two recognized words have the following **made-up, two-dimensional rows**. These illustrate the arithmetic; they are not MWG’s learned values.
+
+| Word | Stored row | Scale, with `f = 1` | Contribution |
+| --- | --- | ---: | --- |
+| First word | `[4, 0]` | `0.25` | `[1, 0]` |
+| Second word | `[0, 4]` | `0.125` | `[0, 0.5]` |
+
+Their sum is `[1, 0.5]`. Its length is `sqrt(1² + 0.5²)`, approximately `1.118`. Dividing both coordinates by that length gives approximately **`[0.894, 0.447]`**.
+
+The direction reflects both contributions, and the length is now one. With normalized query and document vectors, a dot product compares their directions: more aligned vectors receive higher scores. An all-unknown query remains a zero vector and supplies no dense directional signal.
+
+MWG does this in 256 dimensions. Individual coordinates have no assigned labels such as “accessibility” or “animation”; useful relationships come from how the rows were learned.
+
+## The expensive preparation happens before release
+
+The [upstream training script](https://github.com/GoogleChrome/modern-web-guidance-src/blob/596acbc75a330508591b07cd9e198b219341f619/src/rag/train-query-words.ts) initializes word vectors with `gemini-embedding-001`, truncates and normalizes them to 256 dimensions, then adjusts vectors and weights so their sums approximate teacher embeddings of complete training queries. It quantizes the result to signed bytes and folds each row’s quantization scale into its word weight.
+
+I inspected that code and used the shipped table. **I did not rerun training or the teacher API calls.** The project’s [documented 32,915-query training population](https://github.com/GoogleChrome/modern-web-guidance-src/blob/596acbc75a330508591b07cd9e198b219341f619/src/rag/README.md#committed-table-provenance), and its exclusion of evaluation queries, remain upstream provenance claims. This approach belongs to the static embedding family illustrated by [Model2Vec](https://github.com/MinishLab/model2vec).
+
+The release pipeline also prepares guide vectors differently from queries:
+
+| Before release | During a search |
 | --- | --- |
-| Before release: guide chunks | Embed full text with the teacher model; ship the resulting vectors |
-| Before release: query model | Build and tune the word table; ship vocabulary, rows and scales |
-| During a query | Tokenize, sum known rows, normalize, rank guide chunks |
+| Embed guide chunks with the full teacher model and ship their vectors | Compare the query vector with those stored vectors |
+| Build and tune the query word table | Look up recognized words, sum their weighted rows and normalize |
 
-The packaged corpus had **2,016 chunks across 208 guides**. Query vectors were compared with those precomputed document vectors. The search then combined dense ranking with BM25 keyword ranking using reciprocal rank fusion. [Inspected search path](https://github.com/GoogleChrome/modern-web-guidance-src/blob/596acbc75a330508591b07cd9e198b219341f619/src/rag/search.ts).
+That is the asymmetry: full-model document vectors on one side, a compact approximation for short queries on the other. Replacing document embeddings with sums of word rows would require its own evaluation.
 
-That asymmetry matters. The short-query table is trained for combinations of query words. The guide paragraphs retain representations produced by the full teacher model. Replacing both sides with a sum of word rows would be another model change requiring another evaluation.
+The inspected package held **2,016 chunks across 208 guides**. Its [search path](https://github.com/GoogleChrome/modern-web-guidance-src/blob/596acbc75a330508591b07cd9e198b219341f619/src/rag/search.ts) combines dense vector ranking with BM25 keyword ranking. Reciprocal rank fusion combines their rank positions, allowing exact identifiers and semantic matches to contribute.
 
-## Microseconds for embedding, milliseconds for search
+## What I reproduced and what remains upstream
 
-I froze a [reproduction protocol and reference implementation](https://github.com/gkoreli/blog/tree/main/packages/blog/drafts/research/modern-web-guidance/embedding) before measurement. The reference reads the published data formats and recreates tokenization, hyphen fallback, float32 accumulation and normalization. It is source-informed code, rather than a blind reimplementation or a separately trained model.
+I froze a [protocol and source-informed reference implementation](https://github.com/gkoreli/blog/tree/main/packages/blog/drafts/research/modern-web-guidance/embedding) before measurement. The reference recreated tokenization, hyphen fallback, float32 accumulation and normalization after inspecting the source. It used the published vocabulary, table and scales. Retrieval checks reused upstream’s corpus loader, BM25 ranker and rank-fusion function.
 
-Across three fresh Node processes, **all 628 checked embedding calls per process matched every coordinate exactly**. The recreated hybrid rankings also matched all **36 fresh CLI search calls**. Those checks connect the small implementation to the shipped behavior.
+| Evidence | What it establishes |
+| --- | --- |
+| Every coordinate matched on **628 embedding calls per process**, across three processes | The separate implementation reproduced the original query calculation on those calls, including repeats |
+| Recreated hybrid rankings matched **36 fresh CLI search calls** | The reconstructed search agreed with the shipped CLI on six selected queries, each called twice per process |
+| Archive integrity and all **280 installed file payloads** matched | The inspected files match the official npm 1.0.0 archive; source and packaged query tables also match |
+| Training source and documentation inspected | A documented method and provenance; no independent retraining or training-data audit |
 
-On an Apple M5 running Node 24.14.1:
+This reproduces computation using released weights. It does not independently establish how those weights were obtained or that they equal full-model embeddings on unseen queries.
+
+## Warm embedding and fresh search need separate clocks
+
+The timing below measures **upstream’s original `embedSync`**, whose results the reference matched. Environment: Apple M5, macOS arm64, Node 24.14.1, pinned source commit `596acbc75a330508591b07cd9e198b219341f619`.
 
 | Boundary | Observed range across three processes |
 | --- | ---: |
 | Warm short-query embedding, median batch mean | **3.46–3.53 µs/query** |
 | Query-table initialization | 3.99–4.38 ms |
 | First embedding after initialization | 0.16–0.33 ms |
-| Fresh CLI search, median of 12 calls per process | **85.7–86.8 ms** |
+| Fresh-process CLI search, median of 12 calls per process | **85.7–86.8 ms** |
 
-Each warm process had 2,000 warmup calls followed by 30 batches of 1,000 calls over six fixed short queries. This measured `embedSync`, including tokenization and normalization, with tables resident and the runtime warmed. Fresh CLI timing included process startup, data loading, ranking and output. Filesystem caches and ordinary machine load were uncontrolled. [Complete measurements](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/modern-web-guidance/embedding/results/summary.json).
+Each process had 2,000 warmup calls followed by 30 batches of 1,000 measured calls over six fixed short queries. Warm embedding included tokenization, accumulation, normalization and output-array conversion. It excluded initialization and ranking. Fresh CLI timing included process startup, data loading, ranking and output. Filesystem caches and ordinary machine load were uncontrolled. [Full measurements](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/modern-web-guidance/embedding/results/summary.json).
 
-These results make the report’s **30 µs warm embedding** plausible. They do not reproduce its historical hardware comparison or establish a speedup against the old native and TensorFlow.js stacks, which I did not run.
+These results are compatible with the reported **30 µs warm embedding**. They are not a matched reproduction of that timing: hardware, queries and measurement conditions differ. I did not run the historical native or TensorFlow.js stacks, so their relative speedups remain upstream results.
 
-A synthetic length check also behaved as expected: 1, 4, 16 and 64 distinct known entries took roughly 2.96, 3.58, 6.00 and 15.71 µs. These were fixed vocabulary-order strings, useful for checking work scaling rather than language quality.
+Size needs the same care. The query table contains **7.47 MB of signed-byte coordinates**; the same coordinate count as float32 would take 29.86 MB, before scales and vocabulary. The complete official 1.0.0 archive measured **8.79 MB compressed**, with **16.50 MB of regular-file contents**, including guides and a scanner bundle. [File inventory](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/modern-web-guidance/embedding/results/package-receipt.json).
 
-Package size needs its own boundary. The official `1.0.0` archive I downloaded was **8.79 MB compressed**, with **16.50 MB of regular-file contents**. Every one of its 280 files matched the installed package. It includes the word table, guide data and a 4.99 MB scanner bundle.
+The engineering report lists a historical 7.1 MB tarball and an older 507 MB unpacked dependency installation. I did not establish the reason for the current archive difference or recreate that installation. Those differently scoped figures do not yield a like-for-like compression ratio.
 
-That differs from the report’s historical 7.1 MB tarball figure; I did not establish why. Its old **507 MB unpacked dependency installation** also uses a different size boundary. A useful size comparison keeps compressed downloads, unpacked contents and process memory separate.
+## The same loop needs the right learned rows
 
-## The same loop needs the right table
+To test the table’s contribution, I shuffled assignments between words and complete vector/scale rows with a fixed seed. The accumulation algorithm and row distribution stayed intact; words received other words’ representations.
 
-To test the data’s contribution, I shuffled the assignments between words and complete vector/scale rows with a fixed seed. The arithmetic and row distribution stayed intact. Words received other words’ learned representations.
-
-I replayed the upstream public agent test split against the packaged corpus. Of its 514 queries, 504 were labeled in-domain and had at least one guide judged a direct answer. My metric asks whether one of those known grade-2 guides appears in the first ten results.
+The replay used upstream’s public agent test split and **its existing relevance judgments**, primarily LLM-generated. Of 514 queries, 504 were labeled in-domain and had at least one grade-2 direct-answer guide. Nine had no grade-2 guide; one was labeled out-of-domain. My metric asks whether one known grade-2 guide appears in the first ten results. It includes broad orientation guides, so it differs from upstream’s leaf-only Hit@K.
 
 | Retrieval method | Known direct-answer hit in top 10 |
 | --- | ---: |
@@ -96,44 +111,28 @@ I replayed the upstream public agent test split against the packaged corpus. Of 
 | Hybrid dense + BM25 | **501/504** |
 | Dense with shuffled word-vector assignments | **18/504** |
 
-The destructive control makes the learned assignments’ role visible. The tiny accumulator stayed in place while known-answer retrieval deteriorated sharply.
+The destructive control makes the learned assignments’ contribution visible. Keeping the arithmetic while breaking those assignments sharply reduced known-answer hits. It is a mechanism check with one fixed permutation, rather than a proposed competing retriever.
 
-The hybrid also recovered five binary hits that BM25 missed, with no reverse losses on this set. Against dense retrieval it gained four and lost two. Those are bounded replay results, rather than a general ranking guarantee. [Every query and ranking](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/modern-web-guidance/embedding/results/quality.json).
+Some returned guides are unjudged: 795 of the hybrid’s 5,040 candidates. Missing judgments do not establish irrelevance. I did not independently relabel the dataset, reproduce the private 4,000-query telemetry benchmark, or compare with live cloud-model embeddings. [All replay rows and rankings](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/modern-web-guidance/embedding/results/quality.json).
 
-The relevance judgments are the project’s pooled labels, primarily generated by an LLM. I did not independently relabel them. Some returned guides are unjudged: 795 of the hybrid’s 5,040 candidates. They are not thereby established irrelevant. My metric also includes orientation guides, so it differs from the project’s leaf-only Hit@K. I did not reproduce its private 4,000-query telemetry benchmark or cloud-model comparison.
+## What this representation leaves out
 
-A hit means a known useful candidate appeared somewhere in ten results. The consuming agent still has to select, read and correctly apply it.
+The shared tokenizer removes `not`. In a fixed control, `animate dialog` and `not animate dialog` produced exactly equal vectors and identical search rankings. Reversing `animate dialog` preserved the mathematical sum and tested ranking, with small float32 rounding differences. The weighted sum has no learned word-order term, and the tokenizer discards this negation. The consuming agent still has the original task.
 
-## The shortcuts have visible edges
+Equal dense vectors also need not produce equal full-search results. `dialog` and the deliberately unknown compound `dialog-qzxwvvunknown` produced the same vector through hyphen fallback. Their hybrid rankings differed because the keyword tokenizer retained the compound. This is why I checked complete search as well as the embedding calculation.
 
-The tokenizer removes `not`. In a fixed control, `animate dialog` and `not animate dialog` produced exactly equal vectors and identical search rankings. The consuming agent retains the original instruction, but this search path does not preserve that distinction.
+The admission gate returned hybrid results for **all 90 curated out-of-scope queries** I replayed: 40 nearby web topics outside the catalog and 50 farther-away topics. These are counts on a selected public set, not a population estimate or evidence of subsequent agent misuse. A product that must refuse unrelated requests needs to test that decision explicitly; a nonempty result list alone does not establish scope.
 
-Word order also does not receive a learned contextual representation. Reversing `animate dialog` preserved the mathematical sum and tested ranking, with small float32 rounding differences. Unknown words can contribute nothing. A newly coined single-word API name needs a vocabulary update for dense recognition, although keyword search may still find it in guide text.
+Finding useful guidance also differs from applying it correctly. In my separate [six-fixture interface study](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/modern-web-guidance/study/report.md), baseline instructions and ordinary MWG availability each passed 18/18 primary attempts; supplied guides passed 16/18. Guided dialogs avoided manual Tab loops while passing the same checks, but the baseline ceiling left no observed correctness gain. That report retains the first diagnostic batch, the harness repair and the complete repeated comparison. It does not isolate the embedder’s effect on generated code.
 
-The two rankers can diverge even when embeddings match. `dialog` and the deliberately unknown compound `dialog-qzxwvvunknown` produced the same dense vector through hyphen fallback. Their hybrid rankings differed because the keyword tokenizer retained the compound. Testing only the embedder would have missed that distinction.
-
-The scope gate deserves separate attention. **All 90 curated out-of-scope queries received hybrid results**, including all 40 nearby web topics outside the catalog and all 50 farther-away topics. BM25 alone admitted 87. These are admission counts on a selected public set, not a population estimate or evidence that an agent subsequently misused the guides.
-
-For a product that must refuse unrelated requests, these observations support testing an explicit scope decision rather than treating a nonempty top ten as proof of relevance.
-
-## Finding a guide and improving code are different results
-
-I also ran a separate [interface study](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/modern-web-guidance/study/report.md): six small fixtures adapted from my blog’s responsibilities, three conditions and three repetitions, using one requested model configuration with checks in Chromium and WebKit.
-
-In the primary 54-attempt batch, baseline instructions and ordinary MWG availability each passed **18/18** attempts. Directly supplied guides passed **16/18**. The baseline ceiling left little room to show a correctness gain. Guided dialogs did avoid manual Tab loops found in all three baseline dialogs while passing the same checks. Two supplied-guide dialogs missed the required focus return in WebKit.
-
-That study also required a harness repair: its first 54 attempts remain diagnostic evidence, and a complete new balanced batch supplies the primary comparison. The report preserves both batches and the execution limits.
-
-The implementation benefit I can point to is a specific simplification. The wider claim that better retrieval consistently produces better interface code remains open on harder tasks.
-
-For a bounded, offline documentation catalog, this design offers a concrete option: spend more work preparing a release, keep runtime query computation small, and preserve keyword search for exact identifiers. Evaluate the retrieved candidates and the consumer’s behavior separately. The learned table makes the small loop useful; those checks establish where it is useful enough.
+For a bounded offline documentation catalog, this design offers a concrete option: prepare the learned representations before release, keep query computation small, and retain keyword search for literal identifiers. The runtime loop is easy to inspect. Its usefulness depends on the shipped data, the query population and the checks around the complete search path.
 
 ---
 
-| Reference | What it establishes |
+| Reference | Evidence supplied |
 | --- | --- |
-| [Local vector search for coding agents](https://developer.chrome.com/blog/mwg-technical-deep-dive), November 12, 2026 | Maintainer’s historical architecture, timing and footprint report |
-| [Pinned static embedder](https://github.com/GoogleChrome/modern-web-guidance-src/blob/596acbc75a330508591b07cd9e198b219341f619/src/rag/static-embedder.ts) and [training code](https://github.com/GoogleChrome/modern-web-guidance-src/blob/596acbc75a330508591b07cd9e198b219341f619/src/rag/train-query-words.ts) | Inspected runtime calculation and table-generation method |
+| [Local vector search for coding agents](https://developer.chrome.com/blog/mwg-technical-deep-dive), November 12, 2026 | Maintainer’s architecture, historical footprint, timings and quality results |
+| [Pinned static embedder](https://github.com/GoogleChrome/modern-web-guidance-src/blob/596acbc75a330508591b07cd9e198b219341f619/src/rag/static-embedder.ts) and [training code](https://github.com/GoogleChrome/modern-web-guidance-src/blob/596acbc75a330508591b07cd9e198b219341f619/src/rag/train-query-words.ts) | Inspected runtime calculation and training implementation |
 | [Model2Vec](https://github.com/MinishLab/model2vec) | Background on distilling static embeddings |
-| [Public benchmark documentation](https://github.com/GoogleChrome/modern-web-guidance-src/blob/596acbc75a330508591b07cd9e198b219341f619/src/rag/benchmarks/README.md) | Dataset and relevance-label provenance |
-| [Local reproduction](https://github.com/gkoreli/blog/tree/main/packages/blog/drafts/research/modern-web-guidance/embedding), November 13, 2026 | Frozen protocol, agent-assisted scripts, full results, inventory and measurement limits |
+| [Public benchmark documentation](https://github.com/GoogleChrome/modern-web-guidance-src/blob/596acbc75a330508591b07cd9e198b219341f619/src/rag/benchmarks/README.md) | Upstream datasets, relevance judgments and metric definitions |
+| [Local reproduction](https://github.com/gkoreli/blog/tree/main/packages/blog/drafts/research/modern-web-guidance/embedding), November 13, 2026 | Frozen protocol, agent-assisted scripts, exact comparisons, measurements, full replay rows and limits |
