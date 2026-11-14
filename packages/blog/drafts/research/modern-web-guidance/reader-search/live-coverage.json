@@ -1,0 +1,642 @@
+{
+  "capturedAt": "2026-11-14T19:18:55.947Z",
+  "retries": 0,
+  "concurrency": 3,
+  "articleResponses": [
+    {
+      "slug": "ai-fetcher-browser-crawler-headers",
+      "url": "https://gkoreli.com/ai-fetcher-browser-crawler-headers",
+      "finalUrl": "https://gkoreli.com/ai-fetcher-browser-crawler-headers",
+      "status": 200,
+      "contentType": "text/html",
+      "servedDate": "Sat, 14 Nov 2026 19:18:56 GMT",
+      "etag": "W/\"79558d8d8bdfd199bfe34350bc731b63\"",
+      "cacheStatus": "MISS",
+      "bytes": 79851,
+      "sha256": "e0227a27be59ba302e1aef2746b045cb859df5286122df6914485adb41e3b329"
+    },
+    {
+      "slug": "ai-fetcher-research-from-experiments-to-a-cited-reference",
+      "url": "https://gkoreli.com/ai-fetcher-research-from-experiments-to-a-cited-reference",
+      "finalUrl": "https://gkoreli.com/ai-fetcher-research-from-experiments-to-a-cited-reference",
+      "status": 200,
+      "contentType": "text/html",
+      "servedDate": "Sat, 14 Nov 2026 19:18:56 GMT",
+      "etag": "W/\"7782bbb679de3c6197c645eb90794bfc\"",
+      "cacheStatus": "MISS",
+      "bytes": 40282,
+      "sha256": "0ad5bae400784fcfba326b7761f78ddfb546b66c8c27893299e90533f8704c53"
+    },
+    {
+      "slug": "ai-site-check-evidence",
+      "url": "https://gkoreli.com/ai-site-check-evidence",
+      "finalUrl": "https://gkoreli.com/ai-site-check-evidence",
+      "status": 200,
+      "contentType": "text/html",
+      "servedDate": "Sat, 14 Nov 2026 19:18:56 GMT",
+      "etag": "W/\"bf3344b94b2f23303313236cc142469a\"",
+      "cacheStatus": "MISS",
+      "bytes": 32569,
+      "sha256": "f5e9f51eaf391274ebcc9c51a06cc37539dbce47a81df83f3414479108d050d5"
+    },
+    {
+      "slug": "bring-your-own-ai-agent",
+      "url": "https://gkoreli.com/bring-your-own-ai-agent",
+      "finalUrl": "https://gkoreli.com/bring-your-own-ai-agent",
+      "status": 200,
+      "contentType": "text/html",
+      "servedDate": "Sat, 14 Nov 2026 19:18:58 GMT",
+      "etag": "W/\"2c1d75927285e8b1de2fb350a3393edc\"",
+      "cacheStatus": "MISS",
+      "bytes": 46498,
+      "sha256": "9c6bd654bf1a4e617f4813ca88c03edc818c9a98e13f003b3b261d5f6ee6b47f"
+    },
+    {
+      "slug": "building-blog-analytics-what-the-numbers-can-prove",
+      "url": "https://gkoreli.com/building-blog-analytics-what-the-numbers-can-prove",
+      "finalUrl": "https://gkoreli.com/building-blog-analytics-what-the-numbers-can-prove",
+      "status": 200,
+      "contentType": "text/html",
+      "servedDate": "Sat, 14 Nov 2026 19:18:57 GMT",
+      "etag": "W/\"dd3d66055230d086db2011f67980cbb6\"",
+      "cacheStatus": "MISS",
+      "bytes": 29346,
+      "sha256": "adecc8e03b40862b649ced1d805126c07a3f5c7da60e75b4b0084e2587cacb0a"
+    },
+    {
+      "slug": "bun-aot-express-fastify-serializers",
+      "url": "https://gkoreli.com/bun-aot-express-fastify-serializers",
+      "finalUrl": "https://gkoreli.com/bun-aot-express-fastify-serializers",
+      "status": 200,
+      "contentType": "text/html",
+      "servedDate": "Sat, 14 Nov 2026 19:18:56 GMT",
+      "etag": "W/\"9da008e0bf582c0b7c4172379961d253\"",
+      "cacheStatus": "MISS",
+      "bytes": 29558,
+      "sha256": "653919c9a8e521dd253d4e26dadd27ed9391bb7dfb979e1eb351321b478621ef"
+    },
+    {
+      "slug": "chatgpt-plugin-apps",
+      "url": "https://gkoreli.com/chatgpt-plugin-apps",
+      "finalUrl": "https://gkoreli.com/chatgpt-plugin-apps",
+      "status": 200,
+      "contentType": "text/html",
+      "servedDate": "Sat, 14 Nov 2026 19:18:57 GMT",
+      "etag": "W/\"99c7c97c207102928c200f77962ad50b\"",
+      "cacheStatus": "MISS",
+      "bytes": 40520,
+      "sha256": "ac6620343ab79d3989782da27398288a30b0b12035ba20e6e7b9656357736b3c"
+    },
+    {
+      "slug": "cloudflare-turnstile-signup-failures",
+      "url": "https://gkoreli.com/cloudflare-turnstile-signup-failures",
+      "finalUrl": "https://gkoreli.com/cloudflare-turnstile-signup-failures",
+      "status": 200,
+      "contentType": "text/html",
+      "servedDate": "Sat, 14 Nov 2026 19:18:56 GMT",
+      "etag": "W/\"5993beba11c9b84287d3d5a6f7acedfa\"",
+      "cacheStatus": "MISS",
+      "bytes": 47676,
+      "sha256": "957e0d81e1a8b0089895d7fc1c2e7011f3efa1febecdd6bd58eea873f36da95b"
+    },
+    {
+      "slug": "does-llms-txt-work",
+      "url": "https://gkoreli.com/does-llms-txt-work",
+      "finalUrl": "https://gkoreli.com/does-llms-txt-work",
+      "status": 200,
+      "contentType": "text/html",
+      "servedDate": "Sat, 14 Nov 2026 19:18:58 GMT",
+      "etag": "W/\"28a647ce24a1df30ecd9bb9db48a74e7\"",
+      "cacheStatus": "MISS",
+      "bytes": 72709,
+      "sha256": "db75031d10d2112d71ef9f08de32fa8a1f0bb18f93050aab6751ccde33876b2f"
+    },
+    {
+      "slug": "filter-referrer-spam-without-deleting-analytics-history",
+      "url": "https://gkoreli.com/filter-referrer-spam-without-deleting-analytics-history",
+      "finalUrl": "https://gkoreli.com/filter-referrer-spam-without-deleting-analytics-history",
+      "status": 200,
+      "contentType": "text/html",
+      "servedDate": "Sat, 14 Nov 2026 19:18:57 GMT",
+      "etag": "W/\"ccb059970f1f0e42518b2932bb1c45af\"",
+      "cacheStatus": "MISS",
+      "bytes": 39177,
+      "sha256": "982d7681fef65fb3cf12a469095e37bd3121f7702c009f54bf033584ff0a28e2"
+    },
+    {
+      "slug": "first-party-analytics-for-a-personal-blog",
+      "url": "https://gkoreli.com/first-party-analytics-for-a-personal-blog",
+      "finalUrl": "https://gkoreli.com/first-party-analytics-for-a-personal-blog",
+      "status": 200,
+      "contentType": "text/html",
+      "servedDate": "Sat, 14 Nov 2026 19:18:58 GMT",
+      "etag": "W/\"7250d79d5580805576f1326c90aeb2d5\"",
+      "cacheStatus": "MISS",
+      "bytes": 61931,
+      "sha256": "98a328586b3468b6a8e461dd2b22e66b0a257b1a85cb4829cebce927bc7d6777"
+    },
+    {
+      "slug": "how-ghx-was-born",
+      "url": "https://gkoreli.com/how-ghx-was-born",
+      "finalUrl": "https://gkoreli.com/how-ghx-was-born",
+      "status": 200,
+      "contentType": "text/html",
+      "servedDate": "Sat, 14 Nov 2026 19:18:59 GMT",
+      "etag": "W/\"c428304566545396fc84de41cf3d5950\"",
+      "cacheStatus": "MISS",
+      "bytes": 40336,
+      "sha256": "552be927d7742304c07e5f0488e346a770fc2ab028e33763af0bb6e8ff73900b"
+    },
+    {
+      "slug": "how-i-separate-readers-from-bots-without-javascript",
+      "url": "https://gkoreli.com/how-i-separate-readers-from-bots-without-javascript",
+      "finalUrl": "https://gkoreli.com/how-i-separate-readers-from-bots-without-javascript",
+      "status": 200,
+      "contentType": "text/html",
+      "servedDate": "Sat, 14 Nov 2026 19:18:58 GMT",
+      "etag": "W/\"a801c96384de5b866420888808a43686\"",
+      "cacheStatus": "MISS",
+      "bytes": 47744,
+      "sha256": "12732f94f4e8d2568f6d3354ef054a8e9a082ceaedc317feaa30fd2efb9d6d57"
+    },
+    {
+      "slug": "i-am-lost-right-now",
+      "url": "https://gkoreli.com/i-am-lost-right-now",
+      "finalUrl": "https://gkoreli.com/i-am-lost-right-now",
+      "status": 200,
+      "contentType": "text/html",
+      "servedDate": "Sat, 14 Nov 2026 19:18:58 GMT",
+      "etag": "W/\"dd5cbd84466d28158ab28169730cd41b\"",
+      "cacheStatus": "MISS",
+      "bytes": 19808,
+      "sha256": "81a3b304575038d5f4ae65a99c68d9ad1ad12228500106d8b8b4abe6dd539fb0"
+    },
+    {
+      "slug": "i-thought-building-was-enough",
+      "url": "https://gkoreli.com/i-thought-building-was-enough",
+      "finalUrl": "https://gkoreli.com/i-thought-building-was-enough",
+      "status": 200,
+      "contentType": "text/html",
+      "servedDate": "Sat, 14 Nov 2026 19:18:59 GMT",
+      "etag": "W/\"e0e6b976e753c4ff7ae790fbd6f1a061\"",
+      "cacheStatus": "MISS",
+      "bytes": 23003,
+      "sha256": "5ba13f7e79b9fe60868f641b8154037f61bc0709146466dd890425547386c670"
+    },
+    {
+      "slug": "in-the-age-of-abundance-less-is-more",
+      "url": "https://gkoreli.com/in-the-age-of-abundance-less-is-more",
+      "finalUrl": "https://gkoreli.com/in-the-age-of-abundance-less-is-more",
+      "status": 200,
+      "contentType": "text/html",
+      "servedDate": "Sat, 14 Nov 2026 19:18:56 GMT",
+      "etag": "W/\"867ac72a2a78738f63b192c06c72c529\"",
+      "cacheStatus": "MISS",
+      "bytes": 21866,
+      "sha256": "cba8bf5cb8eb1defecc3fd36d155153e395f3ac81013acb84838927d8979328b"
+    },
+    {
+      "slug": "life-as-background-music",
+      "url": "https://gkoreli.com/life-as-background-music",
+      "finalUrl": "https://gkoreli.com/life-as-background-music",
+      "status": 200,
+      "contentType": "text/html",
+      "servedDate": "Sat, 14 Nov 2026 19:18:59 GMT",
+      "etag": "W/\"466b1eb00b5907bcfe19100042396c16\"",
+      "cacheStatus": "MISS",
+      "bytes": 19285,
+      "sha256": "02a6bdc2eb46694d369db3681328e291bc990a921eba48d539780e7009b61b8f"
+    },
+    {
+      "slug": "linux-signal-stack-conflict",
+      "url": "https://gkoreli.com/linux-signal-stack-conflict",
+      "finalUrl": "https://gkoreli.com/linux-signal-stack-conflict",
+      "status": 200,
+      "contentType": "text/html",
+      "servedDate": "Sat, 14 Nov 2026 19:18:59 GMT",
+      "etag": "W/\"12060264aae51ab9ba38c37438ce094b\"",
+      "cacheStatus": "MISS",
+      "bytes": 43567,
+      "sha256": "ba1274e0dfeeceef123832362b33efad30bcb2ceb256f19957f6c70ffb67d10a"
+    },
+    {
+      "slug": "my-evals-say-it-works-i-dont-use-it",
+      "url": "https://gkoreli.com/my-evals-say-it-works-i-dont-use-it",
+      "finalUrl": "https://gkoreli.com/my-evals-say-it-works-i-dont-use-it",
+      "status": 200,
+      "contentType": "text/html",
+      "servedDate": "Sat, 14 Nov 2026 19:18:58 GMT",
+      "etag": "W/\"94062c240790a375cd6f9fc4e8632834\"",
+      "cacheStatus": "MISS",
+      "bytes": 34114,
+      "sha256": "2045bc49c48874633e0e3f506dbf2819838f48d86a32c5411e274a5bb460e230"
+    },
+    {
+      "slug": "one-hundred-pull-requests",
+      "url": "https://gkoreli.com/one-hundred-pull-requests",
+      "finalUrl": "https://gkoreli.com/one-hundred-pull-requests",
+      "status": 200,
+      "contentType": "text/html",
+      "servedDate": "Sat, 14 Nov 2026 19:18:58 GMT",
+      "etag": "W/\"cce52fc00fc9d22c3963181daf2abf57\"",
+      "cacheStatus": "MISS",
+      "bytes": 80180,
+      "sha256": "ac82342e0924a9266396d742b534c79002d85c8d6b5606053e6fa03ac530f948"
+    },
+    {
+      "slug": "openclaw-chose-solid-why-id-choose-nisli",
+      "url": "https://gkoreli.com/openclaw-chose-solid-why-id-choose-nisli",
+      "finalUrl": "https://gkoreli.com/openclaw-chose-solid-why-id-choose-nisli",
+      "status": 200,
+      "contentType": "text/html",
+      "servedDate": "Sat, 14 Nov 2026 19:18:57 GMT",
+      "etag": "W/\"31f70f40ba201a87fbb68726f73926ba\"",
+      "cacheStatus": "MISS",
+      "bytes": 51483,
+      "sha256": "ae2efb4e6ba101d11b3b203173eba15094b341cb3f8a089a37324f8bdbe68174"
+    },
+    {
+      "slug": "openwiki-validates-my-bet",
+      "url": "https://gkoreli.com/openwiki-validates-my-bet",
+      "finalUrl": "https://gkoreli.com/openwiki-validates-my-bet",
+      "status": 200,
+      "contentType": "text/html",
+      "servedDate": "Sat, 14 Nov 2026 19:18:58 GMT",
+      "etag": "W/\"f1c60ad4d8d56fcc57f4ee0c86556c9f\"",
+      "cacheStatus": "MISS",
+      "bytes": 20488,
+      "sha256": "84b9eae41770a4f63c496f2c9f6de2470a40ebc0464f89f3bd76c6315ee2f5ca"
+    },
+    {
+      "slug": "oss-radar-01-vercel-winter-2026-cohort",
+      "url": "https://gkoreli.com/oss-radar-01-vercel-winter-2026-cohort",
+      "finalUrl": "https://gkoreli.com/oss-radar-01-vercel-winter-2026-cohort",
+      "status": 200,
+      "contentType": "text/html",
+      "servedDate": "Sat, 14 Nov 2026 19:18:59 GMT",
+      "etag": "W/\"c2ccfc27095d569808286b4c897457f9\"",
+      "cacheStatus": "MISS",
+      "bytes": 86567,
+      "sha256": "dea1e0ae3af39b2439f32ce576b86419dc2985a3b52ed4fec9154a27c1d47eca"
+    },
+    {
+      "slug": "oss-radar-02-the-toolchain-is-the-moat",
+      "url": "https://gkoreli.com/oss-radar-02-the-toolchain-is-the-moat",
+      "finalUrl": "https://gkoreli.com/oss-radar-02-the-toolchain-is-the-moat",
+      "status": 200,
+      "contentType": "text/html",
+      "servedDate": "Sat, 14 Nov 2026 19:18:59 GMT",
+      "etag": "W/\"f9f1bea4975fcc20b73659efa67e725e\"",
+      "cacheStatus": "MISS",
+      "bytes": 43074,
+      "sha256": "d89e6395732dccb15ac7570648697f125279aaefcb9c0df2abec8d4559e54740"
+    },
+    {
+      "slug": "oss-radar-03-buzz-is-slack-on-airoids",
+      "url": "https://gkoreli.com/oss-radar-03-buzz-is-slack-on-airoids",
+      "finalUrl": "https://gkoreli.com/oss-radar-03-buzz-is-slack-on-airoids",
+      "status": 200,
+      "contentType": "text/html",
+      "servedDate": "Sat, 14 Nov 2026 19:18:58 GMT",
+      "etag": "W/\"b9839a6f481d2e508158e64bd89b86e0\"",
+      "cacheStatus": "MISS",
+      "bytes": 63858,
+      "sha256": "4aad6e195adbc0f89b6b7e0e7a96261f60ec077c96ffbbf16616aed9d5e02e85"
+    },
+    {
+      "slug": "oss-radar-04-the-agent-multiplexer-is-becoming-a-runtime",
+      "url": "https://gkoreli.com/oss-radar-04-the-agent-multiplexer-is-becoming-a-runtime",
+      "finalUrl": "https://gkoreli.com/oss-radar-04-the-agent-multiplexer-is-becoming-a-runtime",
+      "status": 200,
+      "contentType": "text/html",
+      "servedDate": "Sat, 14 Nov 2026 19:18:58 GMT",
+      "etag": "W/\"9275184e8c17ae6ffc5234db28610c77\"",
+      "cacheStatus": "MISS",
+      "bytes": 37166,
+      "sha256": "1d2b0f1d41aa64467dd7f19e78d8b6ad82ca539e3d5f49668496e1529dc61587"
+    },
+    {
+      "slug": "oss-radar-05-bun-1-4",
+      "url": "https://gkoreli.com/oss-radar-05-bun-1-4",
+      "finalUrl": "https://gkoreli.com/oss-radar-05-bun-1-4",
+      "status": 200,
+      "contentType": "text/html",
+      "servedDate": "Sat, 14 Nov 2026 19:18:58 GMT",
+      "etag": "W/\"934805213e1bd4489ded6c7f4305b075\"",
+      "cacheStatus": "MISS",
+      "bytes": 68680,
+      "sha256": "a3640cdd8ccee307bfe5505573259db942119a89916ea1bfde5f0c14e3ed2a49"
+    },
+    {
+      "slug": "oss-radar-06-interp-engine",
+      "url": "https://gkoreli.com/oss-radar-06-interp-engine",
+      "finalUrl": "https://gkoreli.com/oss-radar-06-interp-engine",
+      "status": 200,
+      "contentType": "text/html",
+      "servedDate": "Sat, 14 Nov 2026 19:18:58 GMT",
+      "etag": "W/\"de5e02d3031b00e28d7e0070c80d84c7\"",
+      "cacheStatus": "HIT",
+      "bytes": 57802,
+      "sha256": "5ea9db4333655e1ec32c883ba063bb6b5c8600fccbed884c9617fdf6d9b9cadb"
+    },
+    {
+      "slug": "oss-radar-07-ai-citations",
+      "url": "https://gkoreli.com/oss-radar-07-ai-citations",
+      "finalUrl": "https://gkoreli.com/oss-radar-07-ai-citations",
+      "status": 200,
+      "contentType": "text/html",
+      "servedDate": "Sat, 14 Nov 2026 19:18:57 GMT",
+      "etag": "W/\"f8ad298b671fe15bbcf33ede513e8582\"",
+      "cacheStatus": "MISS",
+      "bytes": 57973,
+      "sha256": "ecafa5fcbd82277a83c863adb7e644264aaf6258d5cbbfca4e219049520cd6de"
+    },
+    {
+      "slug": "oss-radar-08-bun-aot",
+      "url": "https://gkoreli.com/oss-radar-08-bun-aot",
+      "finalUrl": "https://gkoreli.com/oss-radar-08-bun-aot",
+      "status": 200,
+      "contentType": "text/html",
+      "servedDate": "Sat, 14 Nov 2026 19:18:57 GMT",
+      "etag": "W/\"07b3236bdea625c64bb6cf8ceee0905f\"",
+      "cacheStatus": "MISS",
+      "bytes": 30425,
+      "sha256": "6166a5889c4dc898d08fd1ac2a40a46d71632003250d1f41fe6a4f4a8847f97a"
+    },
+    {
+      "slug": "oss-radar-09-tsrs-typescript-memory",
+      "url": "https://gkoreli.com/oss-radar-09-tsrs-typescript-memory",
+      "finalUrl": "https://gkoreli.com/oss-radar-09-tsrs-typescript-memory",
+      "status": 200,
+      "contentType": "text/html",
+      "servedDate": "Sat, 14 Nov 2026 19:18:57 GMT",
+      "etag": "W/\"ddd3de6e951c0a49ae2f5c734fab631e\"",
+      "cacheStatus": "MISS",
+      "bytes": 22905,
+      "sha256": "902bef39adf1b876f1a2b59679be58b52bb5643e7a437b7b35047d87b3c85989"
+    },
+    {
+      "slug": "oss-radar-10-paperpilot-redaction",
+      "url": "https://gkoreli.com/oss-radar-10-paperpilot-redaction",
+      "finalUrl": "https://gkoreli.com/oss-radar-10-paperpilot-redaction",
+      "status": 200,
+      "contentType": "text/html",
+      "servedDate": "Sat, 14 Nov 2026 19:18:57 GMT",
+      "etag": "W/\"c5ca90464c873de441b5fa4bca64a017\"",
+      "cacheStatus": "MISS",
+      "bytes": 23089,
+      "sha256": "83e0f75a772b84cd09e27529e7fb5b647f80a172b7a90ffa474b425cefe8d03a"
+    },
+    {
+      "slug": "oss-radar-11-qwenputer-compiled-cpu",
+      "url": "https://gkoreli.com/oss-radar-11-qwenputer-compiled-cpu",
+      "finalUrl": "https://gkoreli.com/oss-radar-11-qwenputer-compiled-cpu",
+      "status": 200,
+      "contentType": "text/html",
+      "servedDate": "Sat, 14 Nov 2026 19:18:57 GMT",
+      "etag": "W/\"3c1bd3bf0fd0deaa90df3c0330a2badb\"",
+      "cacheStatus": "MISS",
+      "bytes": 20871,
+      "sha256": "b4158f0432d1e5a2c3630c90360190ef2384197ae1219e8f343fa05d34fb8e52"
+    },
+    {
+      "slug": "oss-radar-12-claude-code-status-summary",
+      "url": "https://gkoreli.com/oss-radar-12-claude-code-status-summary",
+      "finalUrl": "https://gkoreli.com/oss-radar-12-claude-code-status-summary",
+      "status": 200,
+      "contentType": "text/html",
+      "servedDate": "Sat, 14 Nov 2026 19:18:57 GMT",
+      "etag": "W/\"b01ebe2401f134c3e8421af26eeede5a\"",
+      "cacheStatus": "MISS",
+      "bytes": 20551,
+      "sha256": "b1ce309b30324dae9210873bd10ef2f8838ec439ee8c16c19b17c81363f3092f"
+    },
+    {
+      "slug": "oss-radar-13-hob-offline-file-tasks",
+      "url": "https://gkoreli.com/oss-radar-13-hob-offline-file-tasks",
+      "finalUrl": "https://gkoreli.com/oss-radar-13-hob-offline-file-tasks",
+      "status": 200,
+      "contentType": "text/html",
+      "servedDate": "Sat, 14 Nov 2026 19:18:56 GMT",
+      "etag": "W/\"6795348d0c333a20061c665084bac214\"",
+      "cacheStatus": "MISS",
+      "bytes": 21213,
+      "sha256": "be601ce23437333d1c73bf45472347d606ec24c561118f5a02a0784231ccb7ce"
+    },
+    {
+      "slug": "oss-radar-14-november-show-hn",
+      "url": "https://gkoreli.com/oss-radar-14-november-show-hn",
+      "finalUrl": "https://gkoreli.com/oss-radar-14-november-show-hn",
+      "status": 200,
+      "contentType": "text/html",
+      "servedDate": "Sat, 14 Nov 2026 19:18:56 GMT",
+      "etag": "W/\"975c0c2ed5fa3fbd6a99241bb7b9966f\"",
+      "cacheStatus": "MISS",
+      "bytes": 51963,
+      "sha256": "61233de3b647b40927620e7ad050f5d6a40f95a61e337aa2a047170e97ddf12c"
+    },
+    {
+      "slug": "please-stop-misreading-user-agent",
+      "url": "https://gkoreli.com/please-stop-misreading-user-agent",
+      "finalUrl": "https://gkoreli.com/please-stop-misreading-user-agent",
+      "status": 200,
+      "contentType": "text/html",
+      "servedDate": "Sat, 14 Nov 2026 19:18:56 GMT",
+      "etag": "W/\"9f104b73a17b24155197439f3aaf27d6\"",
+      "cacheStatus": "MISS",
+      "bytes": 47702,
+      "sha256": "8fddebe52dcb7dfc3a81b871ff880d5c514ee50445ede6c636780e25cc5de9fb"
+    },
+    {
+      "slug": "procrastination-is-a-craft-youve-been-mastering-your-entire-life",
+      "url": "https://gkoreli.com/procrastination-is-a-craft-youve-been-mastering-your-entire-life",
+      "finalUrl": "https://gkoreli.com/procrastination-is-a-craft-youve-been-mastering-your-entire-life",
+      "status": 200,
+      "contentType": "text/html",
+      "servedDate": "Sat, 14 Nov 2026 19:18:59 GMT",
+      "etag": "W/\"baac58cbc6e58f155929ea273644431b\"",
+      "cacheStatus": "MISS",
+      "bytes": 46681,
+      "sha256": "953b0aa2d1e0a18e89d91fad40815a04afcba0aed1cfbe1e09ff9b3bd461b27e"
+    },
+    {
+      "slug": "productive-procrastination",
+      "url": "https://gkoreli.com/productive-procrastination",
+      "finalUrl": "https://gkoreli.com/productive-procrastination",
+      "status": 200,
+      "contentType": "text/html",
+      "servedDate": "Sat, 14 Nov 2026 19:18:57 GMT",
+      "etag": "W/\"d8231fb0f12f0e2b4d33b554eccfdac7\"",
+      "cacheStatus": "MISS",
+      "bytes": 34051,
+      "sha256": "a4dafe24657ae793af83e3b2c46f0e6f654381856c9e7e657ee86a196a3712e4"
+    },
+    {
+      "slug": "prompt-cache-context-edits",
+      "url": "https://gkoreli.com/prompt-cache-context-edits",
+      "finalUrl": "https://gkoreli.com/prompt-cache-context-edits",
+      "status": 200,
+      "contentType": "text/html",
+      "servedDate": "Sat, 14 Nov 2026 19:18:57 GMT",
+      "etag": "W/\"3cde5a7a88ce4500a977c12f824de8c5\"",
+      "cacheStatus": "MISS",
+      "bytes": 68908,
+      "sha256": "43dbdae09e3079249721aaea65d93860fe0bb5722c1eb894d67fa6b86c77fa45"
+    },
+    {
+      "slug": "the-agentic-product-engineer",
+      "url": "https://gkoreli.com/the-agentic-product-engineer",
+      "finalUrl": "https://gkoreli.com/the-agentic-product-engineer",
+      "status": 200,
+      "contentType": "text/html",
+      "servedDate": "Sat, 14 Nov 2026 19:18:59 GMT",
+      "etag": "W/\"2b3775564b24573432f66e86e10c547c\"",
+      "cacheStatus": "MISS",
+      "bytes": 28506,
+      "sha256": "418ae190edb5ff80c2b7693a3349bd7f4498972919ada9b09061f53b791ba20b"
+    },
+    {
+      "slug": "topologies-of-thoughts",
+      "url": "https://gkoreli.com/topologies-of-thoughts",
+      "finalUrl": "https://gkoreli.com/topologies-of-thoughts",
+      "status": 200,
+      "contentType": "text/html",
+      "servedDate": "Sat, 14 Nov 2026 19:18:59 GMT",
+      "etag": "W/\"b17035f8ff34c334afaef91d99d2b92e\"",
+      "cacheStatus": "MISS",
+      "bytes": 43095,
+      "sha256": "7293d4758d8328eee23827e722877198b027d45cb334ab329fdd989065877fb5"
+    },
+    {
+      "slug": "what-if-the-agent-was-better-before-we-helped",
+      "url": "https://gkoreli.com/what-if-the-agent-was-better-before-we-helped",
+      "finalUrl": "https://gkoreli.com/what-if-the-agent-was-better-before-we-helped",
+      "status": 200,
+      "contentType": "text/html",
+      "servedDate": "Sat, 14 Nov 2026 19:18:58 GMT",
+      "etag": "W/\"c92ce1e23842c55f7f294b6b03ae307d\"",
+      "cacheStatus": "MISS",
+      "bytes": 29489,
+      "sha256": "4e84b50202becbf847424c6e9a3dddff9196abf90af547fe8b5c4e30e493e042"
+    },
+    {
+      "slug": "which-ai-fetchers-send-which-headers",
+      "url": "https://gkoreli.com/which-ai-fetchers-send-which-headers",
+      "finalUrl": "https://gkoreli.com/which-ai-fetchers-send-which-headers",
+      "status": 200,
+      "contentType": "text/html",
+      "servedDate": "Sat, 14 Nov 2026 19:18:58 GMT",
+      "etag": "W/\"e37eabcd1288ed6f4d37172ef7505620\"",
+      "cacheStatus": "MISS",
+      "bytes": 76688,
+      "sha256": "9c07788f0bb6994fd95d214b8921ed60fedf1ca63e97cbf6dd74fa403ddea79a"
+    },
+    {
+      "slug": "why-worktree-setup-is-slow-on-macos",
+      "url": "https://gkoreli.com/why-worktree-setup-is-slow-on-macos",
+      "finalUrl": "https://gkoreli.com/why-worktree-setup-is-slow-on-macos",
+      "status": 200,
+      "contentType": "text/html",
+      "servedDate": "Sat, 14 Nov 2026 19:18:57 GMT",
+      "etag": "W/\"97230663deb54451804910106d768dde\"",
+      "cacheStatus": "HIT",
+      "bytes": 22740,
+      "sha256": "9ceaeceb09a5872bf658a4187fcf53b11650a43e0f46efa155eb68c04d5802cd"
+    },
+    {
+      "slug": "you-dont-need-codemap",
+      "url": "https://gkoreli.com/you-dont-need-codemap",
+      "finalUrl": "https://gkoreli.com/you-dont-need-codemap",
+      "status": 200,
+      "contentType": "text/html",
+      "servedDate": "Sat, 14 Nov 2026 19:18:59 GMT",
+      "etag": "W/\"ade9b2515a5a09ebefe1316890b5f2aa\"",
+      "cacheStatus": "MISS",
+      "bytes": 47896,
+      "sha256": "f50b992f6acda2a486e8bc95f139659b7d8ab3f5645164d34d7ea89462e60acb"
+    }
+  ],
+  "sourceCommit": "19d8f8971d1d74b9118c7819bfbb55aa26f7ba9d",
+  "sourceBlocks": 4550,
+  "containedBlocks": 4531,
+  "articlesWithMissingBlocks": [
+    {
+      "slug": "oss-radar-01-vercel-winter-2026-cohort",
+      "missing": [
+        "oss-radar-01-vercel-winter-2026-cohort/b0109-ed20d3d2",
+        "oss-radar-01-vercel-winter-2026-cohort/b0149-a9c81a2e"
+      ]
+    },
+    {
+      "slug": "how-ghx-was-born",
+      "missing": [
+        "how-ghx-was-born/b0069-22de5951"
+      ]
+    },
+    {
+      "slug": "linux-signal-stack-conflict",
+      "missing": [
+        "linux-signal-stack-conflict/b0054-a1712782",
+        "linux-signal-stack-conflict/b0083-f81ebf7f"
+      ]
+    },
+    {
+      "slug": "bring-your-own-ai-agent",
+      "missing": [
+        "bring-your-own-ai-agent/b0073-8f6c7ad5"
+      ]
+    },
+    {
+      "slug": "does-llms-txt-work",
+      "missing": [
+        "does-llms-txt-work/b0009-e8b8b438",
+        "does-llms-txt-work/b0018-84dbd90e",
+        "does-llms-txt-work/b0078-8f09bce0",
+        "does-llms-txt-work/b0163-29ee0f4a"
+      ]
+    },
+    {
+      "slug": "first-party-analytics-for-a-personal-blog",
+      "missing": [
+        "first-party-analytics-for-a-personal-blog/b0010-40c4954b"
+      ]
+    },
+    {
+      "slug": "which-ai-fetchers-send-which-headers",
+      "missing": [
+        "which-ai-fetchers-send-which-headers/b0019-50afc4ad",
+        "which-ai-fetchers-send-which-headers/b0044-de1b89cc"
+      ]
+    },
+    {
+      "slug": "how-i-separate-readers-from-bots-without-javascript",
+      "missing": [
+        "how-i-separate-readers-from-bots-without-javascript/b0039-854d6c99"
+      ]
+    },
+    {
+      "slug": "chatgpt-plugin-apps",
+      "missing": [
+        "chatgpt-plugin-apps/b0029-f1f29419",
+        "chatgpt-plugin-apps/b0041-a497bb47"
+      ]
+    },
+    {
+      "slug": "oss-radar-11-qwenputer-compiled-cpu",
+      "missing": [
+        "oss-radar-11-qwenputer-compiled-cpu/b0024-ed1d8c30"
+      ]
+    },
+    {
+      "slug": "please-stop-misreading-user-agent",
+      "missing": [
+        "please-stop-misreading-user-agent/b0043-9bfce2c7",
+        "please-stop-misreading-user-agent/b0060-751024c7"
+      ]
+    }
+  ],
+  "missingHeadingAnchors": 0,
+  "literalTopicMatches": 0,
+  "textComparisons": "Whitespace-normalized eligible source blocks searched in captured article text. Mismatches retained; formatting differences do not prove missing content.",
+  "fullLocalVerificationSha256": "d79d03e9e68547863c188e8b8be2ea53d8b468469c4f1704b4c978e6d958f394"
+}

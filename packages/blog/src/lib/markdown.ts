@@ -1,4 +1,4 @@
-import { Marked } from 'marked';
+import { Marked, Renderer, type Tokens } from 'marked';
 import { gfmHeadingId } from 'marked-gfm-heading-id';
 import { createHighlighter } from 'shiki';
 import markedShiki from 'marked-shiki';
@@ -16,11 +16,12 @@ export async function initMarkdown(): Promise<void> {
 
   const externalLinks = {
     renderer: {
-      link({ href, text }: { href: string; text: string }) {
-        if (href.startsWith('/') || href.startsWith('#')) {
-          return `<a href="${href}">${text}</a>`;
+      link(this: Renderer, token: Tokens.Link) {
+        const link = Renderer.prototype.link.call(this, token);
+        if (token.href.startsWith('/') || token.href.startsWith('#')) {
+          return link;
         }
-        return `<a href="${href}" target="_blank" rel="noopener">${text}</a>`;
+        return link.replace(/^<a /, '<a target="_blank" rel="noopener" ');
       },
     },
   };

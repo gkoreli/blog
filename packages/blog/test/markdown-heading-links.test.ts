@@ -34,3 +34,25 @@ test('heading IDs preserve inline markup, Unicode and existing link behavior', a
   assert.ok(html.includes('id="გამარჯობა-მსოფლიო"'));
   assert.ok(html.includes('target="_blank" rel="noopener"'));
 });
+
+test('linked labels render code and emphasis rather than exposing Markdown punctuation', async () => {
+  const html = await renderMarkdown('[`SS_AUTODISARM`](https://example.test/kernel "Kernel commit")\n\n[**Bold** and *emphasized* `code`](/about)');
+  assert.ok(html.includes('title="Kernel commit"><code>SS_AUTODISARM</code></a>'));
+  assert.ok(html.includes('target="_blank" rel="noopener"'));
+  assert.ok(html.includes('<a href="/about"><strong>Bold</strong> and <em>emphasized</em> <code>code</code></a>'));
+  assert.ok(!html.includes('`SS_AUTODISARM`'));
+});
+
+test('link attributes retain the default renderer escaping and title behavior', async () => {
+  const html = await renderMarkdown('[A & B](https://example.test/?a=1&b=2 \'A "quoted" title & more\')');
+  assert.ok(html.includes('href="https://example.test/?a=1&b=2"'));
+  assert.ok(html.includes('title="A &quot;quoted&quot; title &amp; more"'));
+  assert.ok(html.includes('>A &amp; B</a>'));
+});
+
+test('the live paragraph mismatch has formatted inline code in its linked label', async () => {
+  const post = parsePost(fileURLToPath(new URL('../posts/003-how-ghx-was-born.md', import.meta.url)));
+  const html = await renderMarkdown(post.content);
+  assert.ok(html.includes('someone else had a <code>ghx</code> repo</a>'));
+  assert.ok(!html.includes('someone else had a `ghx` repo</a>'));
+});
