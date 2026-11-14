@@ -1,6 +1,6 @@
 # OSS Radar #14 — X copy
 
-Status: draft; not posted. One text post, 270 weighted characters including the URL at 23 characters. All remaining characters are ASCII. Composer and live-status checks have not occurred.
+Status: sent on X; owner-timeline confirmation observed. [Post](https://x.com/GogaKoreli/status/2121458320255119404). One text post, 270 weighted characters including the URL at 23 characters. The composer showed ten characters remaining. Reopening the permalink reached an account security check; permalink and independent public visibility verification remain pending. See [publication record](metrics.md).
 
 ## Post
 
