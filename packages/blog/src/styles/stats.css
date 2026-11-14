@@ -1,4 +1,36 @@
 /* A publication report: an overview, open data panels and a complete evidence ledger. */
+.agent-access-report { display: block; padding-bottom: 40px; border-bottom: 1px solid var(--color-border); }
+.agent-access-report > .data-section-heading { grid-template-columns: minmax(0,1fr); }
+.agent-access-form { margin-block: 18px; }
+.agent-access-form fieldset { display: flex; flex-wrap: wrap; align-items: end; gap: 12px; margin: 0; padding: 0; border: 0; min-width: 0; }
+.agent-access-form legend { font: 12px/1.5 var(--font-mono); color: var(--color-text-muted); margin-bottom: 8px; }
+.agent-access-form label { display: grid; gap: 5px; flex: 1 1 240px; min-width: 0; font: 12px/1.5 var(--font-mono); color: var(--color-text-muted); }
+.agent-access-form select { min-width: 0; width: 100%; min-height: 44px; padding: 8px; border: 1px solid var(--color-border); border-radius: 5px; color: var(--color-text); background: var(--color-bg); font: 14px/1.5 var(--font-sans); }
+.agent-access-report button { min-height: 44px; padding: 6px 10px; border: 1px solid transparent; border-radius: 4px; background: transparent; color: var(--color-link); font: inherit; text-align: left; cursor: pointer; }
+.agent-access-report button:hover, .agent-access-report button[aria-pressed="true"] { background: var(--color-surface); }
+.agent-access-period { font: 13px/1.7 var(--font-mono); color: var(--color-text); }
+.agent-access-period > span, .agent-access-note, .agent-access-report [data-agent-status] { color: var(--color-text-muted); }
+.agent-access-note { max-width: 78ch; font-size: 13px; line-height: 1.7; margin-block: 12px 20px; }
+.agent-access-metrics { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 20px; margin-block: 24px; }
+.agent-access-table { max-width: 100%; overflow-x: auto; overscroll-behavior-inline: contain; }
+.agent-access-table table { width: 100%; border-collapse: collapse; text-align: left; font-size: 13px; }
+.agent-access-table caption { text-align: left; padding-block: 0 10px; font: 12px/1.5 var(--font-mono); color: var(--color-text-muted); }
+.agent-access-table th, .agent-access-table td { padding: 9px 10px; border-bottom: 1px solid var(--color-border); vertical-align: top; }
+.agent-access-table thead th { font: 12px/1.5 var(--font-mono); color: var(--color-text-muted); white-space: nowrap; }
+.agent-access-table tbody th { font-weight: 400; }
+.agent-access-table tbody td { font-variant-numeric: tabular-nums; }
+.agent-resource-choice { display: grid; gap: 4px; width: 100%; }
+.agent-resource-choice small { color: var(--color-text-muted); font: 11px/1.6 var(--font-mono); overflow-wrap: anywhere; }
+.agent-access-version { white-space: nowrap; font: 12px/1.7 var(--font-mono); }
+.agent-access-accounting { margin-top: 24px; max-width: 90ch; }
+.agent-access-accounting summary { min-height: 44px; padding-block: 10px; cursor: pointer; }
+.agent-access-requests-heading { padding-top: 12px; margin-block: 24px 14px; }
+@media (max-width: 700px) {
+  .agent-access-metrics { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .agent-access-report .stats-panel-grid { grid-template-columns: minmax(0,1fr); }
+  .agent-access-table table { min-width: 360px; }
+  .agent-access-table:focus-visible { outline-offset: -2px; }
+}
 .stats-page { --stats-section-gap: 40px; --stats-sticky-height: 58px; min-width: 0; font: 14px/1.7 var(--font-sans); }
 .stats-page [hidden] { display: none !important; }
 .stats-page a { color: var(--color-link); text-underline-offset: 3px; }

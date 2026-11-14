@@ -1,3 +1,4 @@
+import './agent-access.js';
 import { consistentVendorCacheSummary } from '@gkoreli/analytics/vendor-cache-summary';
 import { consistentFetchMetadataSummary } from '@gkoreli/analytics/fetch-metadata-summary';
 import { consistentVendorNetworkSummary } from '@gkoreli/analytics/vendor-network-summary';

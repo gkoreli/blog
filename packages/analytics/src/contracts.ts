@@ -7,6 +7,7 @@ import type { ReportedVerifierProfile } from './verifier-profile.js';
 import type { NativeCategoryBasis } from './native-bot-evidence.js';
 import type { DirectoryPublicationBasis } from './directory-publication-contract.js';
 import type { ClientEvidenceRow, ClientNameCoverage } from './client-evidence.js';
+import { AGENT_ACCESS_KINDS } from './agent-roles.js';
 
 /** Prepared private-evidence policy shared by collector and disclosure. */
 export const DIAGNOSTIC_RETENTION_DAYS = 60;
@@ -37,8 +38,8 @@ export type ReaderKind = typeof READER_KINDS[number];
 /** How the public filters group the reader kinds. */
 export const READER_GROUPS: Record<Exclude<TrafficFilter, 'all'>, readonly ReaderKind[]> = {
   browser: ['browser'],
-  agents: ['signed-agent', 'ai-assistant'],
-  crawlers: ['search-crawler', 'seo-crawler', 'ai-search', 'ai-crawler', 'preview-or-feed'],
+  agents: AGENT_ACCESS_KINDS,
+  crawlers: ['search-crawler', 'seo-crawler', 'preview-or-feed'],
   automation: ['cloud-browser', 'headless-browser', 'http-client', 'other-bot', 'legacy-browser'],
   unresolved: ['unresolved'],
 };

@@ -803,7 +803,7 @@ test('referral abuse is excluded consistently from every group and aggregate wit
   const now = new Date('2026-09-06T23:00:00Z');
   for (const traffic of ['browser', 'agents', 'crawlers', 'automation', 'all']) {
     const stats = await queryStats(d1, { range: '7d', traffic }, now);
-    const included = traffic === 'all' ? 4 : 1;
+    const included = { browser: 1, agents: 2, crawlers: 0, automation: 1, all: 4 }[traffic];
     assert.equal(stats.totals.views, included, traffic);
     assert.equal(stats.totals.dailyClients, included, traffic);
     assert.equal(stats.referralPolicy.version, REFERRAL_POLICY_VERSION);
@@ -947,7 +947,7 @@ test('unfiltered stats retain agent, crawler, automation and unresolved reach wh
   assert.equal(report.timeSeries.reduce((sum, row) => sum + row.views, 0), report.totals.views);
   assert.deepEqual(report, await queryStats(d1, { range: '30d', traffic: 'all' }, now));
   assert.equal((await queryStats(d1, { range: '30d', traffic: 'browser' }, now)).totals.views, 1);
-  assert.equal((await queryStats(d1, { range: '30d', traffic: 'agents' }, now)).totals.views, 1);
+  assert.equal((await queryStats(d1, { range: '30d', traffic: 'agents' }, now)).totals.views, 2);
   sqlite.close();
 });
 
@@ -1085,7 +1085,7 @@ test('stats queries enforce one UTC window, class partition, owner exclusion, an
 
   assert.deepEqual(
     [browser.totals.views, agents.totals.views, crawlers.totals.views, automation.totals.views, all.totals.views],
-    [2, 0, 2, 1, 5],
+    [2, 1, 1, 1, 5],
   );
   assert.equal(
     all.totals.views,
@@ -1215,7 +1215,7 @@ test('path and agent filters scope every aggregate and API rejects unknown or co
 
   const composed = await queryStats(d1, {
     range: '7d',
-    traffic: 'crawlers',
+    traffic: 'agents',
     path: '/article',
     agent: 'GPTBot',
   }, now);
@@ -1798,8 +1798,8 @@ test('named role and signer reports preserve historical unknowns and share every
     assert.deepEqual(selected.bySigner, [{ signatureAgent: 'Other', views: 1 }]);
     assert.equal(parseStatsQuery(new URLSearchParams({ agent: name, kind: 'signed-agent', traffic: 'agents' })).kind, 'signed-agent');
   }
-  assert.equal((await queryStats(d1, { range: '7d', traffic: 'crawlers' }, now)).totals.views, 6);
-  assert.equal((await queryStats(d1, { range: '7d', traffic: 'agents' }, now)).totals.views, 3);
+  assert.equal((await queryStats(d1, { range: '7d', traffic: 'crawlers' }, now)).totals.views, 4);
+  assert.equal((await queryStats(d1, { range: '7d', traffic: 'agents' }, now)).totals.views, 5);
   assert.deepEqual((await queryStats(d1, { range: '7d', traffic: 'all', path: '/legacy' }, now)).byAgent, []);
   assert.deepEqual(sqlite.prepare('SELECT * FROM page_observations ORDER BY id').all(), before);
 });

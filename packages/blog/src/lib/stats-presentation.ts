@@ -3,8 +3,8 @@ import { FETCH_METADATA_REPORT_FIELDS } from '@gkoreli/analytics/fetch-metadata-
 import { readerGroupOf, type ReaderKind, type StatsResponse, type TrafficFilter } from '@gkoreli/analytics/contracts';
 
 export const TRAFFIC_LABELS: Record<TrafficFilter, string> = {
-  all: 'All request categories', browser: 'Browser signals', agents: 'Assistants & signed clients',
-  crawlers: 'Crawlers', automation: 'Automation & legacy rules', unresolved: 'Unresolved',
+  all: 'All request categories', browser: 'Browser signals', agents: 'AI & signed clients',
+  crawlers: 'Other crawlers', automation: 'Automation & legacy rules', unresolved: 'Unresolved',
 };
 export const TRAFFIC_GROUPS = ['browser', 'agents', 'crawlers', 'automation', 'unresolved'] as const;
 

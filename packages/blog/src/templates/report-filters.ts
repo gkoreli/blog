@@ -24,7 +24,7 @@ export function reportFilters(idPrefix: string) {
         <input type="radio" name=${`${idPrefix}-traffic`} value=${group} data-traffic=${group} checked=${group === 'all'} aria-label=${COMPACT_LABELS[group] === TRAFFIC_LABELS[group] ? COMPACT_LABELS[group] : `${COMPACT_LABELS[group]}: ${TRAFFIC_LABELS[group]}`}>
         <span>${COMPACT_LABELS[group]}</span>
       </label>`)}</div>
-      <p class="sr-only" id=${`${idPrefix}-traffic-help`}>Categories describe request signals, not verified people. Agents includes assistants and signed clients. Automation includes legacy rules.</p>
+      <p class="sr-only" id=${`${idPrefix}-traffic-help`}>Categories describe request signals, not verified people. Agents includes on-demand fetchers, AI search, AI crawlers and historical or unknown-role signed clients. Other crawlers includes search, SEO and preview declarations. Automation includes legacy rules.</p>
     </fieldset>
     <fieldset class="report-filter report-filter-period" data-filter-group="period">
       <legend>Period</legend>

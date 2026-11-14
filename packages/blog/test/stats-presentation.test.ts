@@ -16,7 +16,7 @@ test('traffic mix reconciles repeated reason rows into the existing disjoint req
     { kind: 'unresolved', reason: 'classification-not-recorded', views: 7, dailyClients: 2 },
   ] as const;
   const mix = trafficMix([...rows]);
-  assert.deepEqual(mix.map(row => row.views), [10, 7, 5, 6, 7]);
+  assert.deepEqual(mix.map(row => row.views), [10, 12, 0, 6, 7]);
   assert.equal(mix.reduce((sum, row) => sum + row.views, 0), rows.reduce((sum, row) => sum + row.views, 0));
   assert.deepEqual(trafficMix([]).map(row => row.views), [0, 0, 0, 0, 0]);
 });
@@ -52,7 +52,7 @@ test('Stats puts the trend before detail, labels its native filters and preserve
   for (const id of ['stats-pages', 'stats-traffic-mix', 'stats-client-form-section', 'stats-kind-signature', 'stats-client-evidence', 'stats-vendor-cache', 'stats-vendor-cache-access', 'stats-vendor-cache-policy']) {
     const section = root.querySelector(`#${id}`); assert.ok(section); assert.equal(section.closest('details'), null);
   }
-  assert.match(root.querySelector('noscript')?.textContent ?? '', /30-day report as JSON/);
+  assert.ok([...root.querySelectorAll('noscript')].some(element => /30-day report as JSON/.test(element.textContent ?? '')));
   assert.match(snapshot, /Per-day identifiers, not people/);
   assert.equal(root.querySelector('#stats-page-catalogue a[href="/example"]')?.textContent, 'Example <title>');
   assert.equal(root.querySelector('#stats-page-catalogue')?.hasAttribute('hidden'), true);

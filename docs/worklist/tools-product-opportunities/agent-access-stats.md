@@ -1,6 +1,6 @@
 # Agent access: the next Stats direction
 
-November 14, 2026 UTC. Agent-mediated reach and use are the selected near-term priority for Stats. This supersedes the generic build order in the [earlier reader-understanding investigation](stats-reader-understanding-2026-11-14.md); its dated observation remains intact. The direction is accepted. The milestones below are a concrete implementation proposal, not delivered features or authorization for paid provider trials.
+November 14, 2026 UTC. Agent-mediated reach and use are the selected near-term priority for Stats. This supersedes the generic build order in the [earlier reader-understanding investigation](stats-reader-understanding-2026-11-14.md); its dated observation remains intact. The first milestone is authorized and in engineering below. Later collection expansion and provider trials remain proposals.
 
 [ADR-0016.19](../../adr/0016.19-agent-mediated-audience-growth.md) already recognizes agent reach, discovery, citations and supported use as outcomes. The next work should connect the existing evidence to articles and publishing decisions, with each observation stage identifiable.
 
@@ -67,8 +67,14 @@ The intended advantage is an inspectable relationship between a publication's ev
 
 ## Current checkpoint
 
+**November 14 engineering in progress:** [ADR-0016.25](../../adr/0016.25-agent-access-report-and-inclusive-ai-scope.md) records primary provider definitions, refreshed pinned PostHog/Rybbit source, native capabilities and the resulting boundaries. The package now has the role scope, validated report/selection domain, source/projected D1 adapter, canonical cached application service, and explicit admission choice. Stats has a native report element, public-catalogue adapter and `/api/agent-access` route. These are working changes, not a delivered or live-accepted feature yet.
+
+Seven focused analytics tests and ten focused site tests pass. Native Workerd/D1 confirms exact Node/source/projected equality, missing/stale fallback, the observed-time index and all 48 original fixture rows unchanged. A native-only compound-query limit required three statements in a single transactional batch. Accepted native output and earlier failures are private operational evidence under the agent-access report's November 14 operations directory. No production query or schema/source-observation mutation has run.
+
+Remaining gates: full affected suites/types/portability, stronger native scale/evidence and fault controls, actual responsive/keyboard/loading/error UI inspection, production-read preflight, scoped delivery and fresh live cache/report acceptance. Next: complete those validations and repair their findings before delivery.
+
 Planning review used clean analytics/Worker source at `9bc553139645af02f09ce20ff67f962c6f61af39`. Existing dated trials and receipts were read for scope, not rerun as fresh acceptance. Cloudflare's current guide and the URI-fragment documentation were rechecked November 14.
 
 The continuation passes checks for 78 local links across the plan, prior assessment and owning index, balanced fences, linked priority/next-action coverage, the recorded source revision, the private-prompt guard and scoped whitespace. Runtime checks and deployment are not applicable to this documentation-only change.
 
-No production request/query, provider trial, collection change or runtime implementation ran for this reprioritization. Campaign outcomes and browser reading-activity experiments remain later options. The next proposed implementation is the retained-data Agent access report above.
+The earlier reprioritization ran no production request/query, provider trial or runtime implementation. The authorized first report is now in engineering as recorded above. Campaign outcomes, broader collection and browser reading-activity experiments remain later options.

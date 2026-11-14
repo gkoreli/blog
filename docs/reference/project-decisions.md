@@ -20,6 +20,7 @@ Audience and growth: [ADR-0016.19](../adr/0016.19-agent-mediated-audience-growth
 | Referral policy | Versioned, reviewable treatment of referrer evidence and abuse | [Referral policy](../adr/0016.6-versioned-referral-policy-and-matomo-source.md) |
 | Report cost | Meter complete reports, use versioned reporting facts and covering reads, and budget optional cache I/O | [Read budget](../adr/0016.7-budget-d1-reads-and-cache-public-reports.md), [cold report projections](../adr/0016.23-cold-report-projections.md) |
 | Analytics package | Shared report delivery, durable admission, ordered portable upgrades and public-key signature policy live in the analytics package | [Portable reporting and signature domains](../adr/0016.24-portable-reporting-and-signature-domains.md) |
+| Agent access | AI search/crawling join the disjoint Agents scope; a completed-window resource/client/format report reads existing evidence without rewriting it | [Agent access report](../adr/0016.25-agent-access-report-and-inclusive-ai-scope.md) |
 | Newsletter | D1 state, Resend delivery, and Turnstile protection | [Subscriptions](../adr/0010-email-subscriptions.md) |
 | Diagnostics | Shared client-error reporting with explicit data and operational limits | [Observability](../adr/0011-client-error-observability.md) |
 | Prompts | Private working notes for every article form; public prompt pages retired | [Prompt publication decision](../adr/0003-prompt-transparency.md) |

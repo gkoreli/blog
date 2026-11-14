@@ -26,7 +26,8 @@ test('Parallel declarations preserve search versus retrieval roles without authe
   const mixed = facts('ShapBot/0.1.0 Shap-User/0.1.0');
   assert.equal(mixed.agentName, null);
   assert.deepEqual(classifyReaderKind(mixed), {kind:'unresolved',reason:'multiple-client-declarations'});
-  assert.equal(typeof parseStatsQuery(new URLSearchParams('traffic=crawlers&kind=ai-search&agent=ShapBot')), 'object');
+  assert.equal(typeof parseStatsQuery(new URLSearchParams('traffic=agents&kind=ai-search&agent=ShapBot')), 'object');
+  assert.equal(typeof parseStatsQuery(new URLSearchParams('traffic=crawlers&kind=ai-search&agent=ShapBot')), 'string');
   assert.equal(typeof parseStatsQuery(new URLSearchParams('traffic=agents&kind=ai-assistant&agent=Shap-User')), 'object');
 });
 

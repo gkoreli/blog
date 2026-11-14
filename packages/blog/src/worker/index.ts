@@ -32,6 +32,7 @@ import { typedLinkHeaderValue } from '../lib/typed-links.js';
 import { negotiateRepresentation, type NegotiatedRepresentation } from './negotiate.js';
 import { createStatsHandler } from '@gkoreli/analytics/reporting';
 import { createArticleReachHandler } from './article-reach.js';
+import { createBlogAgentAccessHandler } from './agent-access.js';
 import { publicPagePaths } from './referrer-pages.js';
 import { handleAiCheck, type AiCheckEnv } from './ai-check.js';
 import { purgeCheckQuota } from './ai-check-quota.js';
@@ -48,6 +49,11 @@ const cachedStats = createStatsHandler({
 });
 
 const cachedArticleReach = createArticleReachHandler({
+  match: request => caches.default.match(request),
+  put: (request, response) => caches.default.put(request, response),
+});
+
+const cachedAgentAccess = createBlogAgentAccessHandler({
   match: request => caches.default.match(request),
   put: (request, response) => caches.default.put(request, response),
 });
@@ -231,6 +237,7 @@ export default {
       return cachedStats(request, env, ctx);
     }
     if (pathname === '/api/readership') return cachedArticleReach(request, env);
+    if (pathname === '/api/agent-access') return cachedAgentAccess(request, env, ctx);
     if (pathname === '/api/owner') {
       return handleOwner(request, env);
     }
