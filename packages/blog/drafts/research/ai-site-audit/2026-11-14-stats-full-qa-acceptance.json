@@ -1,0 +1,185 @@
+{
+  "version": 1,
+  "measuredAt": "2026-11-14T17:07:25.640983+00:00",
+  "implementationCommit": "2f0bc36474af9b559c936c43a4ca517fab3b282a",
+  "sourceCommit": "2f0bc36474af9b559c936c43a4ca517fab3b282a",
+  "cloudflareBuild": "f79745ac-8936-48f0-bff1-24dea901ef84",
+  "method": "Five fresh read-only page/asset GETs. Match served source/build identity and implementation ancestry, inspect rendered shared structure, and compare exact built assets. Raw captures remain outside Git.",
+  "localChecks": {
+    "types": true,
+    "siteTests": 447,
+    "markdownValidation": 35,
+    "builtPosts": 46,
+    "referralPolicy": true,
+    "privatePromptGuard": true,
+    "defaultPreservation": {
+      "checks": {
+        "metrics": true,
+        "notes": true,
+        "method": true,
+        "boundaries": true,
+        "chartLabel": true,
+        "contextFacts": true,
+        "complete chart and evidence tables": true,
+        "all section data": true,
+        "all headings": true,
+        "existing destinations and labels": true
+      },
+      "counts": {
+        "resultSections": 23,
+        "evidenceRecords": 424,
+        "signatureRecords": 149,
+        "combinedEvidenceRecords": 222,
+        "providerCategoryRecords": 53,
+        "readingNotes": 16,
+        "methodTopics": 5,
+        "facts": 98,
+        "rankedRows": 103,
+        "existingLinks": 239
+      },
+      "method": "Compare normalized rendered DOM from frozen before/after assets using one identical saved public response. All section data, complete chart/evidence tables, notes and methodology match exactly. All heading text and reading order match exactly. Label/destination pairs are compared as multisets because the local preview orders its hidden title catalogue differently. One added Cache diagnostics jump is allowed. The transient hover legend is excluded; the complete dated chart data table is compared."
+    },
+    "scopedPreservation": {
+      "checks": {
+        "metrics": true,
+        "notes": true,
+        "method": true,
+        "boundaries": true,
+        "chartLabel": true,
+        "contextFacts": true,
+        "complete chart and evidence tables": true,
+        "all section data": true,
+        "all headings": true,
+        "existing destinations and labels": true
+      },
+      "counts": {
+        "resultSections": 23,
+        "evidenceRecords": 250,
+        "signatureRecords": 89,
+        "combinedEvidenceRecords": 115,
+        "providerCategoryRecords": 46,
+        "readingNotes": 16,
+        "methodTopics": 5,
+        "facts": 98,
+        "rankedRows": 88,
+        "existingLinks": 218
+      },
+      "method": "Compare normalized rendered DOM from frozen before/after assets using one identical saved public response. All section data, complete chart/evidence tables, notes and methodology match exactly. All heading text and reading order match exactly. Label/destination pairs are compared as multisets because the local preview orders its hidden title catalogue differently. One added Cache diagnostics jump is allowed. The transient hover legend is excluded; the complete dated chart data table is compared."
+    },
+    "fullReviewWidths": [
+      1440,
+      393
+    ],
+    "boundaryReviewWidths": [
+      900,
+      320
+    ],
+    "themes": [
+      "light",
+      "dark"
+    ],
+    "phonePageOverflow": false,
+    "phoneClippedCells": 0,
+    "phoneClippedFactValues": 0,
+    "resultSectionsInDisclosures": 0,
+    "methodReferenceMinimumTargetHeightPx": 44,
+    "keyboardReachedFinalMetadataColumn": true,
+    "controlledStates": [
+      "loading then ready",
+      "empty",
+      "unavailable then retry",
+      "noscript markup preview"
+    ]
+  },
+  "responses": [
+    {
+      "path": "/stats",
+      "status": 200,
+      "sha256": "3898e99c6b30bac4859cc756f0809ca5a85a826d7a0d13f08cf99d10d68b2f98",
+      "passed": true,
+      "source": "2f0bc36474af9b559c936c43a4ca517fab3b282a",
+      "build": "f79745ac-8936-48f0-bff1-24dea901ef84",
+      "containsImplementation": true
+    },
+    {
+      "path": "/design-language",
+      "status": 200,
+      "sha256": "e996894d24a1e4d21b1e47df6924975703aaa969486148c76f56975830f2496c",
+      "passed": true,
+      "source": "2f0bc36474af9b559c936c43a4ca517fab3b282a",
+      "build": "f79745ac-8936-48f0-bff1-24dea901ef84",
+      "containsImplementation": true
+    },
+    {
+      "path": "/stats.css",
+      "status": 200,
+      "sha256": "6e3d52f791c008d5c36e13ddba07765bd72fa7f90f59cdce3460c41fa44d85a7",
+      "passed": true
+    },
+    {
+      "path": "/stats.js",
+      "status": 200,
+      "sha256": "2569483b8086cc05b286cf3b87b7079ad0bb49cad2d21a01694f8b85f7e755ab",
+      "passed": true
+    },
+    {
+      "path": "/main.css",
+      "status": 200,
+      "sha256": "b0ed135fed327f8b6cd740bf2d9343137d4390e17af40f7fa99173190ccd3a12",
+      "passed": true
+    }
+  ],
+  "checks": {
+    "sameServedIdentity": true,
+    "allSixteenNotesUseSharedLayout": true,
+    "visibleCacheDiagnosticSections": true,
+    "pairedComparisons": true,
+    "allFiveMethodTopics": true,
+    "sharedPatternExplainsContainerLayout": true,
+    "sharedEvidenceRenderer": true,
+    "exact /stats.css": true,
+    "exact /stats.js": true,
+    "exact /main.css": true
+  },
+  "limits": [
+    "Preservation comparisons use identical dated saved public responses, not current traffic measurements.",
+    "Noscript fallback markup was activated in a local script-free preview; browser scripting was not disabled.",
+    "No analytics collection, classification, query, cache or database behavior changes are included.",
+    "Visual review does not establish reader comprehension."
+  ],
+  "liveVisual": {
+    "defaultReport": {
+      "evidenceRecords": 426,
+      "methodParagraphs": 17,
+      "methodTopics": 5,
+      "notes": 16,
+      "overflow": false,
+      "resultSectionsInDisclosures": 0,
+      "viewport": [
+        393,
+        852
+      ],
+      "visibleDiagnostics": true
+    },
+    "reviewedDesktopWidths": [
+      1440,
+      900
+    ],
+    "reviewedPhoneWidths": [
+      393,
+      320
+    ],
+    "themes": [
+      "light",
+      "dark"
+    ],
+    "pageOverflow": false,
+    "phoneClippedCells": 0,
+    "phoneClippedFactValues": 0,
+    "keyboardFinalMetadataColumnReached": true,
+    "tabletShortTableFits": true,
+    "tabletUnneededScrollCueHidden": true,
+    "temporaryViewportReset": true,
+    "screenshots": "Native screenshots remain outside Git."
+  }
+}
