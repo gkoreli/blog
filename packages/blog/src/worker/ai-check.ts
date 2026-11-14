@@ -1,3 +1,4 @@
+import { utcDateKey } from '@gkoreli/time';
 import { analyzeSite } from '@gkoreli/site-audit';
 import { isSiteAuditReport } from '@gkoreli/site-audit/report-validation';
 import { normalizeTarget, TargetValidationError } from '@gkoreli/site-audit/target';
@@ -168,7 +169,7 @@ export async function handleAiCheck(request: Request, env: AiCheckEnv, dependenc
   const now = dependencies.now?.() ?? new Date();
   let quota: CheckQuota | undefined;
   try {
-    const callerKey = await quotaCallerKey(env.ANALYTICS_HASH_KEY, ip, now.toISOString().slice(0, 10));
+    const callerKey = await quotaCallerKey(env.ANALYTICS_HASH_KEY, ip, utcDateKey(now));
     const [caller, shared] = await Promise.all([
       env.AI_CHECK_RATE_LIMITER.limit({ key: callerKey }),
       env.AI_CHECK_GLOBAL_LIMITER.limit({ key: 'ai-check-route' }),

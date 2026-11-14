@@ -1,3 +1,4 @@
+import { utcDateKey } from '@gkoreli/time';
 import type { Env } from './db.js';
 import { createDailyClientId } from './hash.js';
 import { extractRequestMetadata } from './metadata.js';
@@ -53,7 +54,7 @@ function temporaryGrantMatches(actual: string, raw: string | undefined, now: Dat
 export async function hasCurrentOwnerMark(request: Request, env: Env, now: Date): Promise<boolean> {
   if (!env.ANALYTICS_HASH_KEY || !Number.isFinite(now.getTime())) return false;
   const metadata = extractRequestMetadata(request, env.OWNER_IPS);
-  const day = now.toISOString().slice(0, 10);
+  const day = utcDateKey(now);
   const id = await createDailyClientId({
     masterKey: env.ANALYTICS_HASH_KEY, siteHost: metadata.siteHost, utcDate: day,
     ip: metadata.ip, userAgent: metadata.userAgent,
@@ -85,7 +86,7 @@ export async function handleOwner(
   }
 
   const metadata = extractRequestMetadata(request, env.OWNER_IPS);
-  const utcDate = now.toISOString().slice(0, 10);
+  const utcDate = utcDateKey(now);
   const dailyClientId = await createDailyClientId({
     masterKey: hashKey,
     siteHost: metadata.siteHost,

@@ -1,3 +1,4 @@
+import { isCalendarDate, isUtcInstant } from '@gkoreli/time';
 import { isReaderKind, type ReaderKind } from './contracts.js';
 
 export const ACCESS_EVIDENCE_VERSION = 'access-evidence-v2';
@@ -41,8 +42,7 @@ function ref(v: unknown): v is string { return text(v, 128) && v.trim().length >
 function rows(v: unknown, max: number): unknown[] { return Array.isArray(v) && v.length <= max ? v : fail('array-budget'); }
 function instant(v: unknown, seconds = false): number {
   if (typeof v !== 'string' || !(seconds ? /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z$/ : /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d{3})?Z$/).test(v)) return fail('time');
-  const n = Date.parse(v);
-  return Number.isFinite(n) && new Date(n).toISOString().replace('.000Z', 'Z') === v.replace('.000Z', 'Z') ? n : fail('time');
+  return isUtcInstant(v) ? Date.parse(v) : fail('time');
 }
 function context(v: unknown): Context {
   if (!record(v) || !fields(v, ['method', 'host', 'path', 'query']) || typeof v.method !== 'string' || !/^[A-Z]{1,16}$/.test(v.method)
@@ -54,7 +54,7 @@ function context(v: unknown): Context {
   return { method: v.method, host: v.host, path: v.path, query: v.query };
 }
 function ray(v: unknown): v is string { return typeof v === 'string' && /^[a-f0-9]{16}$/.test(v); }
-function stamp(v: unknown): v is string | null { return v === null || typeof v === 'string' && /^\d{4}-\d{2}-\d{2}\.\d{1,6}$/.test(v) && Number.isFinite(Date.parse(v.slice(0,10) + 'T00:00:00Z')) && new Date(v.slice(0,10) + 'T00:00:00Z').toISOString().startsWith(v.slice(0,10)); }
+function stamp(v: unknown): v is string | null { return v === null || typeof v === 'string' && /^\d{4}-\d{2}-\d{2}\.\d{1,6}$/.test(v) && isCalendarDate(v.slice(0,10)); }
 function unique(reference: string, used: Set<string>): void { if (used.has(reference)) fail('duplicate-reference'); used.add(reference); }
 function lookup(v: unknown, used: Set<string>): Lookup | null {
   if (v === null) return null;

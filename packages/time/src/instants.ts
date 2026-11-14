@@ -24,6 +24,27 @@ export function databaseTimestamp(value: InstantInput): string {
 
 export function utcDateKey(value: InstantInput): string { return utcInstant(value).slice(0, 10); }
 
+/** Saved evidence may omit zero milliseconds; it must still be an exact UTC instant. */
+export function isUtcInstant(value: unknown): value is string {
+  if (typeof value !== 'string' || !/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d{3})?Z$/.test(value)) return false;
+  try { return utcInstant(value).replace('.000Z', 'Z') === value.replace('.000Z', 'Z'); }
+  catch { return false; }
+}
+
+export function isCalendarDate(value: unknown): value is string {
+  if (typeof value !== 'string') return false;
+  try { calendarDateValue(value); return true; }
+  catch { return false; }
+}
+
+/** HTTP/RSS have a protocol representation, independent of viewer locale. */
+export function httpDate(value: InstantInput): string { return new Date(utcInstant(value)).toUTCString(); }
+export function isHttpDate(value: unknown): value is string {
+  if (typeof value !== 'string' || value.length !== 29) return false;
+  const at = Date.parse(value);
+  return Number.isFinite(at) && httpDate(at) === value;
+}
+
 export function calendarDateValue(value: string): Date {
   if (!/^\d{4}-\d{2}-\d{2}$/.test(value)) throw new RangeError('Invalid calendar date');
   const date = new Date(value + 'T00:00:00Z');
@@ -40,6 +61,8 @@ export function addCalendarDays(date: string, count: number): string {
 export function calendarDaysBetween(start: string, end: string): number {
   return (calendarDateValue(end).getTime() - calendarDateValue(start).getTime()) / 86_400_000;
 }
+/** ISO weekday: Monday is 1, Sunday is 7. */
+export function calendarWeekday(date: string): number { return calendarDateValue(date).getUTCDay() || 7; }
 export function calendarDateKey(value: InstantInput, timeZone: string): string {
   const format = new Intl.DateTimeFormat('en', { timeZone, calendar: 'iso8601', numberingSystem: 'latn', year: 'numeric', month: '2-digit', day: '2-digit' });
   const parts = format.formatToParts(new Date(utcInstant(value)));

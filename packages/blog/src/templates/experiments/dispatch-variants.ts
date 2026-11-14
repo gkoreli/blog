@@ -1,3 +1,4 @@
+import { utcDateKey } from '@gkoreli/time';
 import { html } from '@nisli/core';
 import type { TemplateResult } from '@nisli/core';
 
@@ -11,7 +12,7 @@ interface ReplySlipProps {
 
 /* ── Strata Variant A: Receipt Tape ── */
 export function DispatchReceipt({ turnstileSiteKey }: ReplySlipProps) {
-  const today = new Date().toISOString().slice(0, 10);
+  const today = utcDateKey(Date.now());
   return html`<section class="ds-receipt">
     <div class="ds-receipt-feed">
       <div class="ds-receipt-header">

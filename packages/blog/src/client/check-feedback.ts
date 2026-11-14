@@ -1,5 +1,6 @@
 import { feedbackQuota, type CheckFeedback } from '../lib/check-feedback.js';
 import { node, object } from './tool-dom.js';
+import { localTimeElement } from './local-time.js';
 
 export function quotaLabel(value: unknown): string | null {
   const quota = feedbackQuota(value);
@@ -10,7 +11,9 @@ export function showCheckFeedback(status: HTMLElement, feedback: CheckFeedback):
   const card = node('div', undefined, 'tool-feedback'); card.dataset['tone'] = feedback.tone;
   const icon = node('span', undefined, 'tool-feedback-icon'); icon.setAttribute('aria-hidden', 'true');
   const symbol = node('img'); symbol.src = `/icons/${feedback.tone === 'error' ? 'close' : feedback.tone === 'ready' ? 'transparency' : 'clock'}.svg`; symbol.alt = ''; symbol.width = 18; symbol.height = 18; icon.append(symbol);
-  const content = node('div'); content.append(node('strong', feedback.title, 'tool-feedback-title'), node('p', feedback.detail, 'tool-feedback-detail'));
+  const detail = node('p', feedback.detail, 'tool-feedback-detail');
+  if (feedback.resetAt) detail.append(' ', localTimeElement(feedback.resetAt), '.');
+  const content = node('div'); content.append(node('strong', feedback.title, 'tool-feedback-title'), detail);
   if (feedback.meta) content.append(node('span', feedback.meta, 'tool-feedback-meta'));
   if (feedback.alternatives) {
     const actions = node('div', undefined, 'tool-feedback-actions');

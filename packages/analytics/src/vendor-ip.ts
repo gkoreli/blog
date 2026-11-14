@@ -1,3 +1,4 @@
+import { utcInstant } from '@gkoreli/time';
 import { feedEntityTag, feedLastModified, matchingFeedValidation } from './vendor-ip-cache.js';
 import ipaddr from 'ipaddr.js';
 import type { KnownAgentName } from './classify.js';
@@ -106,8 +107,12 @@ export function parseVendorIpFeed(value: unknown): { prefixes: Prefix[]; publish
     if (bytes.some((byte, index) => index * 8 >= bits ? byte !== 0 : index * 8 + 8 > bits && (byte & ((1 << (8 - bits % 8)) - 1)) !== 0)) return null;
     prefixes.push([address, bits]);
   }
-  const version = typeof value.creationTime === 'string' && /^\d{4}-\d{2}-\d{2}T[0-9:.]+Z?$/.test(value.creationTime) ? Date.parse(value.creationTime.endsWith('Z') ? value.creationTime : value.creationTime + 'Z') : NaN;
-  return { prefixes, publisherVersion: Number.isFinite(version) && typeof value.creationTime === 'string' && value.creationTime.length <= 32 ? value.creationTime : null };
+  let publisherVersion: string | null = null;
+  if (typeof value.creationTime === 'string' && value.creationTime.length <= 32 && /^\d{4}-\d{2}-\d{2}T[0-9:.]+Z?$/.test(value.creationTime)) {
+    try { utcInstant(value.creationTime.endsWith('Z') ? value.creationTime : value.creationTime + 'Z'); publisherVersion = value.creationTime; }
+    catch { /* A malformed publisher version is unavailable, never a local-time guess. */ }
+  }
+  return { prefixes, publisherVersion };
 }
 
 function freshness(response: Response, now: number, previous?: Feed): { until: number; store: boolean; cacheControl: string; expires: string | null; evidence: VendorCachePolicy } {
@@ -141,7 +146,7 @@ function freshness(response: Response, now: number, previous?: Feed): { until: n
   if (!Number.isFinite(headerAge)) blockers.push('invalid-age');
   else if (!invalidLifetime && ttl > 0 && age >= Math.min(ttl, MAX_TTL_SECONDS)) blockers.push('age-exhausted');
   return { until: now + seconds * 1000, store, cacheControl: policy, expires,
-    evidence: { assessedAt: new Date(now).toISOString(), lifetimeSource, blockers } };
+    evidence: { assessedAt: utcInstant(now), lifetimeSource, blockers } };
 }
 
 async function bodyBytes(response: Response): Promise<Uint8Array | null> {
@@ -181,7 +186,7 @@ async function fetchFeed(source: VendorIpSource, cache: VendorIpCache, fetcher: 
           cache.feeds.delete(source.id);
           return { reason: 'revalidation-mismatch' };
         }
-        const feed = { ...old, snapshot: { ...old.snapshot, validatedAt: new Date(now).toISOString(), freshUntil: new Date(policy.until).toISOString() }, cacheControl: policy.cacheControl, expires: policy.expires, etag: feedEntityTag(response) ?? old.etag, modified: feedLastModified(response) ?? old.modified, policy: policy.evidence };
+        const feed = { ...old, snapshot: { ...old.snapshot, validatedAt: utcInstant(now), freshUntil: utcInstant(policy.until) }, cacheControl: policy.cacheControl, expires: policy.expires, etag: feedEntityTag(response) ?? old.etag, modified: feedLastModified(response) ?? old.modified, policy: policy.evidence };
         if (!controller.signal.aborted) { if (policy.store) cache.feeds.set(source.id, feed); else cache.feeds.delete(source.id); cache.policies.set(source.id, policy.evidence); acceptedAccess = 'revalidated'; }
         return controller.signal.aborted ? { reason: 'fetch-timeout' } : { feed };
       }
@@ -192,7 +197,7 @@ async function fetchFeed(source: VendorIpSource, cache: VendorIpCache, fetcher: 
       const parsed = await decodeVendorIpDocument(source, bytes);
       const parsedFeed = parseVendorIpFeed(parsed); if (parsedFeed === null) return { reason: 'invalid-feed' };
       const sha256 = [...new Uint8Array(await crypto.subtle.digest('SHA-256', bytes))].map(b => b.toString(16).padStart(2, '0')).join('');
-      const feed: Feed = { snapshot: { sha256, fetchedAt: new Date(now).toISOString(), validatedAt: new Date(now).toISOString(), freshUntil: new Date(policy.until).toISOString(), publisherVersion: parsedFeed.publisherVersion, prefixCount: parsedFeed.prefixes.length }, prefixes: parsedFeed.prefixes, etag: feedEntityTag(response), modified: feedLastModified(response), cacheControl: policy.cacheControl, expires: policy.expires, policy: policy.evidence };
+      const feed: Feed = { snapshot: { sha256, fetchedAt: utcInstant(now), validatedAt: utcInstant(now), freshUntil: utcInstant(policy.until), publisherVersion: parsedFeed.publisherVersion, prefixCount: parsedFeed.prefixes.length }, prefixes: parsedFeed.prefixes, etag: feedEntityTag(response), modified: feedLastModified(response), cacheControl: policy.cacheControl, expires: policy.expires, policy: policy.evidence };
       if (controller.signal.aborted) return { reason: 'fetch-timeout' };
       if (policy.store) cache.feeds.set(source.id, feed); else cache.feeds.delete(source.id);
       cache.policies.set(source.id, policy.evidence);
@@ -219,5 +224,5 @@ export async function verifyVendorIp(request: Request, names: readonly KnownAgen
     const listed = result.feed.prefixes.some(([network, bits]) => selected.address !== null && network.kind() === selected.address.kind() && selected.address.match(network, bits));
     return { source: source.id, outcome: listed ? 'listed' : 'not-listed', reason: null, snapshot: { ...result.feed.snapshot }, cache: result.cache };
   }));
-  return { profile: VENDOR_IP_PROFILE, method: 'published-ip-feed', source: 'local-vendor-ip', checkedAt: new Date(now).toISOString(), address: selected.evidence, declarationCount: declarations.size, configuredDeclarationCount: mapped.size, unmappedDeclarationCount: declarations.size - mapped.size, summary: { listed: checks.some(c => c.outcome === 'listed'), notListed: checks.some(c => c.outcome === 'not-listed'), unavailable: checks.some(c => c.outcome === 'unavailable'), notAssessed: checks.some(c => c.outcome === 'not-assessed') }, checks };
+  return { profile: VENDOR_IP_PROFILE, method: 'published-ip-feed', source: 'local-vendor-ip', checkedAt: utcInstant(now), address: selected.evidence, declarationCount: declarations.size, configuredDeclarationCount: mapped.size, unmappedDeclarationCount: declarations.size - mapped.size, summary: { listed: checks.some(c => c.outcome === 'listed'), notListed: checks.some(c => c.outcome === 'not-listed'), unavailable: checks.some(c => c.outcome === 'unavailable'), notAssessed: checks.some(c => c.outcome === 'not-assessed') }, checks };
 }

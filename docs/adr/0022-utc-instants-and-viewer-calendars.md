@@ -28,6 +28,16 @@ Daily client identifiers retain their UTC rotation and existing privacy boundary
 
 Authored publication dates and recorded version identifiers remain calendar metadata and provenance tokens. Do not shift a publication date as though it were a midnight event, or localize a verifier version's date prefix. Historical evidence and acceptance receipts retain their original conditions.
 
+## Site-wide application
+
+Access-report observations, saved-report comparisons, quota reset feedback and article research-footprint instants use the same presentation policy as Stats. Server-rendered HTML retains complete UTC fallback text in marked native time elements; the browser enhances those instants using the shared core. Dynamic renderers use the same adapter. The UTC instant remains in `datetime`, and raw JSON/evidence is preserved. Keep structured instants in feedback models rather than passing a timezone into domain feedback functions.
+
+Publication-date formatting and RSS generation also use the shared core. Authored calendar dates are invariant across build and viewer timezones; RSS's required wire date uses a deterministic UTC representation. The editorial schedule retains its Monday 08:00 Pacific rule, resolved by the shared calendar rather than another Intl parts parser. Viewer preferences do not alter release policy, UTC privacy rotation, quota admission days or report-budget accounting.
+
+Client-error ingestion, diagnostics, calibration, capture receipts, feed-assessment timestamps, newsletter receipts and report metadata share UTC normalization/serialization. Do not rewrite existing records or replace database-owned UTC defaults with an application clock. Preserve integer epoch expiry formats and existing indexes. Stats exposes legacy referrer-capture stamps as canonical UTC ISO instants and changes its cache version accordingly.
+
+Native HTTP Date/Expires parsing, signature epoch clocks, elapsed durations and received publisher-version tokens retain their distinct protocol semantics. The pre-module bootstrap failure reporter intentionally uses native UTC ISO serialization so it can report a missing main bundle; shared ingestion validates the result. Historical articles, frozen receipts, source reporting calendars and raw protocol evidence are not relabeled or rewritten.
+
 ## Acceptance
 
 The existing [Stats worklist](../../packages/blog/drafts/research/ai-site-audit/02-tools-product-exploration.md) owns implementation, native D1/SQLite parity, storage/identity preservation, cache isolation, portable-package checks, responsive visual QA, delivery and fresh hosted acceptance. Check code, deployment activation and live behavior separately.

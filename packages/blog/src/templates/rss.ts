@@ -1,5 +1,5 @@
 import type { PostMeta } from '../lib/frontmatter.js';
-import { parseLocalDate } from '../lib/dates.js';
+import { httpDate } from '@gkoreli/time';
 import { CONTENT_LICENSE } from '../lib/license.js';
 
 const SITE = 'https://gkoreli.com';
@@ -13,7 +13,7 @@ export function rssFeed(posts: PostMeta[]): string {
       <title>${escapeXml(p.title)}</title>
       <link>${SITE}/${p.slug}</link>
       <guid>${SITE}/${p.slug}</guid>
-      <pubDate>${parseLocalDate(p.date).toUTCString()}</pubDate>
+      <pubDate>${httpDate(`${p.date}T00:00:00Z`)}</pubDate>
       <description>${escapeXml(p.description)}</description>
     </item>`).join('\n');
 

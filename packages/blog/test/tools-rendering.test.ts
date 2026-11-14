@@ -292,6 +292,9 @@ test('all assessed results are visible without opening disclosures in both rende
       assert.equal(root.querySelector('.report-policy-decision')?.textContent, 'Disallowed');
       for (const disclosure of root.querySelectorAll('details')) assert.ok(disclosure.closest('.report-technical'), 'Only method and raw-data sections use disclosures');
     }
-    assert.equal(client.innerHTML, server.firstElementChild?.innerHTML, 'Enhanced and no-JavaScript reports share the same content');
+    const { localizeTimeElements } = await import('../src/client/local-time.js');
+    assert.equal(client.querySelector('time')?.getAttribute('datetime'), server.querySelector('time')?.getAttribute('datetime'));
+    localizeTimeElements(server);
+    assert.equal(client.innerHTML, server.firstElementChild?.innerHTML, 'Both reports retain the same content after timestamp enhancement');
   }
 });

@@ -1,3 +1,4 @@
+import { isUtcInstant } from '@gkoreli/time';
 import { SITE_AUDIT_VERSION, type SiteAuditReport } from './contracts.js';
 import { isTechnicalAssessment } from './product-validation.js';
 
@@ -11,7 +12,7 @@ const array = (value: unknown, check: (item: unknown) => boolean, max = 1000): b
 
 /** Boundary validation for the complete public JSON report, including nested evidence. */
 export function isSiteAuditReport(value: unknown): value is SiteAuditReport {
-  if (!record(value) || value['version'] !== SITE_AUDIT_VERSION || !text(value['checkedAt']) || !text(value['target'])
+  if (!record(value) || value['version'] !== SITE_AUDIT_VERSION || !isUtcInstant(value['checkedAt']) || !text(value['target'])
     || typeof value['complete'] !== 'boolean' || !strings(value['limits'])
     || (value['assessment'] !== undefined && !isTechnicalAssessment(value['assessment']))) return false;
   const resources = value['resources'];

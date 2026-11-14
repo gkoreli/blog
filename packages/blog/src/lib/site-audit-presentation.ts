@@ -1,5 +1,6 @@
 import type { SiteAuditReport, Finding } from '@gkoreli/site-audit/contracts';
 import type { TechnicalAssessment } from '@gkoreli/site-audit/product';
+import { utcInstant } from '@gkoreli/time';
 
 const SCORED_EQUIVALENTS: Record<string, string> = {
   'page-response': 'page-status', 'page-media-type': 'page-html', 'page-title': 'page-title', 'sparse-html': 'source-text', 'indexing-controls': 'general-indexing',
@@ -25,14 +26,10 @@ export function optionalSupportLabel(capability: TechnicalAssessment['optional']
 }
 
 /** Human-readable report identity; both renderers keep the same observation boundary. */
-export function reportIdentity(report: SiteAuditReport): { host: string; observed: string } {
+export function reportIdentity(report: SiteAuditReport): { host: string; observedAt: string } {
   let host = report.target;
   try { host = new URL(report.target).hostname; } catch { /* Retain the supplied text safely. */ }
-  const date = new Date(report.checkedAt);
-  const observed = Number.isFinite(date.getTime()) ? new Intl.DateTimeFormat('en-US', {
-    month: 'short', day: 'numeric', year: 'numeric', hour: 'numeric', minute: '2-digit', timeZone: 'UTC', timeZoneName: 'short',
-  }).format(date) : report.checkedAt;
-  return { host, observed };
+  return { host, observedAt: utcInstant(report.checkedAt) };
 }
 
 export function assessmentVerdict(assessment: TechnicalAssessment): string {

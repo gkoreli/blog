@@ -14,10 +14,13 @@
   "scripts": {
     "typecheck": "tsc --noEmit",
     "test": "tsc -p tsconfig.test.json && node --test test/*.test.mjs",
-    "test:workers": "node scripts/check-workers-transport.mjs"
+    "test:workers": "pnpm -C ../time build && node scripts/check-workers-transport.mjs",
+    "pretypecheck": "pnpm -C ../time build",
+    "pretest": "pnpm -C ../time build"
   },
   "dependencies": {
-    "ipaddr.js": "2.5.0"
+    "ipaddr.js": "2.5.0",
+    "@gkoreli/time": "workspace:*"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20250306.0",

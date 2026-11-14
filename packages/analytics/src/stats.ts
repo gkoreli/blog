@@ -1,3 +1,4 @@
+import { utcInstant } from '@gkoreli/time';
 import { parseStatsQuery } from './stats-selection.js';
 export { parseStatsQuery } from './stats-selection.js';
 import { matchesProjectedReferralPolicy } from './referral-report-projection.js';
@@ -354,12 +355,13 @@ function reportFromRows(query: StatsQuery, now: Date, rows: Record<string, unkno
   const sections = reportSections(rows, query.range === 'all');
   const firstObservedRow = query.range === 'all' ? requiredSection(sections, 'boundary')[0] : undefined;
   const firstObservedAt = firstObservedRow ? nullableString(firstObservedRow, 'firstObservedAt') : null;
-  const window = createStatsWindow(query, now, firstObservedAt ?? (query.range === 'all' ? now.toISOString() : undefined));
+  const window = createStatsWindow(query, now, firstObservedAt ?? (query.range === 'all' ? utcInstant(now) : undefined));
   const totalsRow = requiredSection(sections, 'totals')[0];
   const populatedSeries = seriesRows(requiredSection(sections, 'series'));
   const rawReferrers = referrerRows(requiredSection(sections, 'referrer'));
   const referrals = publicReferrers(rawReferrers, policy);
   const referrerDetails = requiredSection(sections, 'referrer-details')[0];
+  const firstCapturedAt = nullableString(referrerDetails, 'firstCapturedAt');
   const verificationRow = requiredSection(sections, 'verification')[0];
   const vendorNetworkRow = requiredSection(sections, 'vendor-ip')[0];
   const clientForms = clientFormRows(requiredSection(sections, 'device'));
@@ -451,7 +453,7 @@ function reportFromRows(query: StatsQuery, now: Date, rows: Record<string, unkno
     internalReferrerDetails: {
       unrecognizedPathViews: summaryNumberField(referrerDetails, 'unrecognizedPathViews'),
       selfReferrals: summaryNumberField(referrerDetails, 'selfReferrals'),
-      firstCapturedAt: nullableString(referrerDetails, 'firstCapturedAt'),
+      firstCapturedAt: firstCapturedAt === null ? null : utcInstant(firstCapturedAt),
     },
     referralPolicy: {
       version: policy.version,
