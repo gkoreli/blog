@@ -70,3 +70,22 @@ test('the real research-footprint template renders native time elements before l
   assert.equal(times[0]?.textContent, view.instant(meta.researchFootprint.startedAt));
   assert.equal(times[1]?.textContent, view.instant(meta.researchFootprint.measuredAt));
 });
+
+
+test('older custom article footprints use the same marked instants without changing their frozen measurements', async () => {
+  for (const source of [
+    await import('../posts/021-oss-radar-05-bun-1-4.js'),
+    await import('../posts/022-oss-radar-06-interp-engine.js'),
+  ]) {
+    const measurements = JSON.stringify(source.meta.researchFootprint);
+    const [snapshot] = await renderContent([source.article()]); assert.ok(snapshot);
+    const root = document.createElement('section'); root.innerHTML = snapshot;
+    const footprint = root.querySelector('.research-footprint'); assert.ok(footprint);
+    const times = footprint.querySelectorAll('time[data-local-time]'); assert.equal(times.length, 2);
+    assert.equal(times[0]?.getAttribute('datetime'), source.meta.researchFootprint?.startedAt);
+    assert.equal(times[1]?.getAttribute('datetime'), source.meta.researchFootprint?.measuredAt);
+    assert.equal(localizeTimeElements(footprint, { timeZone: 'Asia/Kathmandu', locale: 'en-US' }), 2);
+    assert.equal(JSON.stringify(source.meta.researchFootprint), measurements);
+    assert.doesNotMatch(footprint.textContent ?? '', /\[object Object\]/);
+  }
+});
