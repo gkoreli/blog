@@ -2,6 +2,8 @@
 
 Source inspection on November 14, 2026. Core files are pinned to Omarchy v4.5.0, commit `ac2690cd7be4f47e4a255f5e2e78d904d436b068`. No Omarchy commands or desktop were run.
 
+Later evidence: the [agent-operated VM follow-up](06-vm-results.md) exercised clock cloning/editing, user menu/binding changes, same-version package replacement and restoration. The source-inspection statements below describe the earlier phase; future-version compatibility is still unqualified.
+
 ## Findings
 
 | Question | Inspected evidence | Supported answer and boundary |
