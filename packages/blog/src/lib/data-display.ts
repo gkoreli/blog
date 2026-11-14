@@ -35,13 +35,14 @@ export function metricTileHtml({ label, value, detail }: MetricTile): string {
   return `<div class="data-metric"><span class="data-metric-label">${escape(label)}</span><strong class="data-metric-value${value === null ? ' skeleton skeleton-value' : ''}">${value === null ? '' : escape(value)}</strong><span class="data-metric-detail">${escape(detail)}</span></div>`;
 }
 
-/** Bars compare rows with the largest value; the printed number remains authoritative. */
+/** A bounded meter accompanies the number; it never sits behind the row's text. */
 export function rankedRowHtml(item: RankedItem, maximum: number): string {
   const width = Number.isFinite(item.views) && maximum > 0 ? Math.min(100, Math.max(0, item.views / maximum * 100)) : 0;
   const href = internalHref(item.href), open = internalHref(item.openHref);
   const text = `<span class="data-row-text"><span class="data-row-title">${escape(item.label)}</span>${item.description ? `<small class="data-row-description">${escape(item.description)}</small>` : ''}</span>`;
-  const label = href ? `<a class="data-row-label stats-label" href="${href}">${text}</a>` : `<span class="data-row-label stats-label">${text}</span>`;
-  return `<div class="data-row stats-row"><span class="data-row-bar stats-bar" aria-hidden="true" style="width:${width}%"></span><div class="data-row-identity">${label}</div><span class="data-row-actions stats-row-actions"><span class="data-row-value stats-value">${item.views.toLocaleString('en-US')}<span class="data-row-unit"> ${item.views === 1 ? 'view' : 'views'}</span>${item.detail ? `<small>${escape(item.detail)}</small>` : ''}</span>${open ? `<a class="data-row-open stats-open" href="${open}" aria-label="${escape(item.openAriaLabel ?? `Open ${item.label}`)}">Open</a>` : ''}</span></div>`;
+  const label = href ? `<a class="data-row-label stats-label" href="${href}" title="${escape(`Show stats for ${item.label}`)}">${text}</a>` : `<span class="data-row-label stats-label">${text}</span>`;
+  const openLabel = escape(item.openAriaLabel ?? `Open ${item.label}`);
+  return `<div class="data-row${open ? ' data-row--visitable' : ''} stats-row"><div class="data-row-identity">${label}</div><span class="data-row-actions stats-row-actions"><span class="data-row-measure"><span class="data-row-value stats-value">${item.views.toLocaleString('en-US')}<span class="data-row-unit"> ${item.views === 1 ? 'view' : 'views'}</span>${item.detail ? `<small>${escape(item.detail)}</small>` : ''}</span><span class="data-row-meter" aria-hidden="true"><span class="data-row-bar" style="width:${width}%"></span></span></span>${open ? `<a class="data-row-open stats-open" href="${open}" aria-label="${openLabel}" title="${openLabel}"><span class="ui-icon" aria-hidden="true" style="--ui-icon-image:url('/icons/posts.svg')"></span><span class="data-row-visit-label" aria-hidden="true">Visit</span></a>` : ''}</span></div>`;
 }
 
 export interface EvidenceTableRow {

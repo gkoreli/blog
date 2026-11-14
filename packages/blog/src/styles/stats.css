@@ -65,8 +65,6 @@
 .stats-panel-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 28px; align-items: start; }
 .stats-section, .stats-client-form-section { margin-bottom: 32px; min-width: 0; }
 .stats-section > h3, .stats-client-form-section > h3 { font-size: 21px; font-weight: 500; margin: 0 0 16px; letter-spacing: -.015em; }
-.stats-list-labels { display: flex; justify-content: space-between; gap: 16px; padding: 0 10px 8px; color: var(--color-text-muted); font: 12px/1.7 var(--font-sans); }
-#stats-pages .stats-list-labels { padding-right: 68px; }
 .stats-page .data-row-unit { position: absolute; clip-path: inset(50%); width: 1px; height: 1px; overflow: hidden; }
 .stats-empty { padding: 20px 0; color: var(--color-text-muted); font-size: 14px; }
 .stats-distribution { display: flex; height: 14px; gap: 3px; border-radius: 4px; overflow: hidden; margin: 0 0 18px; }
@@ -169,7 +167,8 @@
   .stats-chart-heading { display: block; }
   .stats-chart-heading > span { display: block; margin-top: 4px; }
 }
-.stats-page .data-row { padding: 4px 10px; }
+.stats-page .data-row { display: grid; gap: 12px; padding: 6px 0; }
+.stats-page .data-row-value { font-size: 13px; line-height: 1.5; }
 .stats-composition-groups { display: block; columns: 2; column-gap: 24px; }
 .stats-kind-group { display: inline-block; width: 100%; break-inside: avoid; margin-bottom: 20px; }
 #stats-traffic-mix .data-row { --series-color: var(--color-link); }
@@ -177,7 +176,7 @@
 #stats-traffic-mix [data-group='crawlers'] { --series-color: var(--color-accent-rust); }
 #stats-traffic-mix [data-group='automation'] { --series-color: var(--color-accent-warm); }
 #stats-traffic-mix [data-group='unresolved'] { --series-color: var(--color-text-muted); }
-#stats-traffic-mix .data-row-bar { display: none; }
+#stats-traffic-mix .data-row-meter { display: none; }
 #stats-traffic-mix .data-row-label::before { content: ''; width: 8px; height: 8px; flex: none; margin-right: 12px; border-radius: 2px; background: var(--series-color); }
 @media (max-width: 600px) { .stats-composition-groups { columns: 1; } }
 @media (min-width: 769px) { .layout-report .content { padding-top: 1.5rem; } }
@@ -209,3 +208,7 @@
 }
 .stats-table-hint { display: none; }
 @media (max-width: 600px) { .stats-table-hint { display: block; margin: -6px 0 10px; color: var(--color-text-muted); font-size: 12px; } }
+
+@media (max-width: 600px) {
+  .stats-page .data-row { column-gap: 10px; row-gap: 0; }
+}

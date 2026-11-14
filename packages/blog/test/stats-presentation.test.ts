@@ -63,9 +63,14 @@ test('shared data templates escape captured labels and reject executable or off-
   assert.equal(root.querySelectorAll('img, script, a').length, 0);
   assert.ok(root.textContent?.includes(hostile));
   assert.equal(root.querySelector<HTMLElement>('.data-row-bar')?.style.width, '0%');
-  root.innerHTML = rankedRowHtml({ label: 'Homepage', views: 12, href: '/stats?path=%2F', openHref: '/', openAriaLabel: 'Open homepage' }, 24);
+  root.innerHTML = rankedRowHtml({ label: 'Homepage', description: '/', views: 12, href: '/stats?path=%2F', openHref: '/', openAriaLabel: 'Open homepage' }, 24);
   assert.equal(root.querySelectorAll('a').length, 2);
+  assert.equal(root.querySelector('.data-row-label')?.getAttribute('href'), '/stats?path=%2F');
+  assert.equal(root.querySelector('.data-row-label .data-row-description')?.textContent, '/');
   assert.equal(root.querySelector('.data-row-open')?.getAttribute('aria-label'), 'Open homepage');
+  assert.equal(root.querySelector('.data-row-open')?.getAttribute('href'), '/');
+  assert.ok(root.querySelector('.data-row-meter .data-row-bar'));
+  assert.equal(root.querySelector('.data-row-identity .data-row-bar'), null);
   assert.equal(root.querySelector<HTMLElement>('.data-row-bar')?.style.width, '50%');
   root.innerHTML = `<dl>${dataFactsHtml([{ label: hostile, value: 0 }, { label: 'Earlier records', value: 1248 }])}</dl>`;
   assert.equal(root.querySelector('img'), null);

@@ -153,7 +153,8 @@ export function designLanguagePage() {
     metricTileHtml({ label: 'Daily clients', value: '862', detail: 'Per-day identifiers, not people' }),
   ].join(''))}></div>
   <h3 class="dl-pattern-title">Comparison rows</h3>
-  <p class="dl-body-note">Print each value and use a quiet bar to support comparison. Keep the main filter destination and a separate Open action distinct, with generous keyboard and touch targets. Wrap long labels. These values illustrate the pattern; they are not site measurements.</p>
+  <p class="dl-body-note">Keep the title and path clear of chart marks. Print the count above a small meter in a fixed value column. The title filters the report; the separate Visit control opens the page. Both actions keep 44px targets. Titles gain an underline on hover or focus. These values are illustrative.</p>
+  <div class="data-row-head data-row-head--visitable" aria-hidden="true"><span>Page</span><span>Views</span><span>Visit</span></div>
   <div html:inner=${raw([
     { label: 'Homepage', views: 420, href: '/stats?path=%2F', openHref: '/', openAriaLabel: 'Open homepage' },
     { label: 'Engineering', description: '/engineering', views: 280, href: '/stats?path=%2Fengineering', openHref: '/engineering' },

@@ -49,11 +49,11 @@ export function statsPage(pages: readonly { path: string; title: string }[] = []
     </section>
     <section class="stats-chapter" id="stats-content" aria-labelledby="stats-content-heading"><header class="data-section-heading"><span class="data-section-number" aria-hidden="true">01</span><div><h2 id="stats-content-heading">Pages &amp; sources</h2><p>Where recorded requests went, and the referrers they reported.</p></div></header>
     <section class="stats-section" id="stats-pages">
-      <h3>Top pages</h3><div class="stats-list-labels" aria-hidden="true"><span>Page</span><span>Views</span></div>
+      <h3>Top pages</h3><div class="data-row-head data-row-head--visitable" aria-hidden="true"><span>Page</span><span>Views</span><span>Visit</span></div>
       <div class="stats-section-results">${listSkeleton(3)}</div>
     </section>
     <section class="stats-section" id="stats-referrers">
-      <h3>Reported referrers</h3><div class="stats-list-labels" aria-hidden="true"><span>Reported source</span><span>Views</span></div>
+      <h3>Reported referrers</h3><div class="data-row-head" aria-hidden="true"><span>Reported source</span><span>Views</span></div>
       <div class="stats-section-results">${listSkeleton(2)}</div>
     </section>
     <section class="stats-section" id="stats-transitions">
@@ -71,7 +71,7 @@ export function statsPage(pages: readonly { path: string; title: string }[] = []
 <p class="stats-transition-details" id="stats-transition-details"></p>
     </section>
     <section class="stats-chapter" id="stats-audience" aria-labelledby="stats-audience-heading"><header class="data-section-heading"><span class="data-section-number" aria-hidden="true">02</span><div><h2 id="stats-audience-heading">Request signals</h2><p>Traffic categories, software claims and network locations. None identifies a person or physical device.</p></div></header>
-    <section class="stats-section" id="stats-traffic-mix"><h3>Traffic mix</h3><div class="stats-distribution" id="stats-distribution" aria-hidden="true"></div><div class="stats-list-labels" aria-hidden="true"><span>Request category</span><span>Views · share</span></div><div class="stats-section-results">${listSkeleton(5)}</div>
+    <section class="stats-section" id="stats-traffic-mix"><h3>Traffic mix</h3><div class="stats-distribution" id="stats-distribution" aria-hidden="true"></div><div class="data-row-head" aria-hidden="true"><span>Request category</span><span>Views · share</span></div><div class="stats-section-results">${listSkeleton(5)}</div>
       ${dataNote(html`<p>These five groups add up to the selected total. They describe request signals and declared roles, including agent access.</p>`, 'Five groups, one total')}
     </section>
     <div class="stats-panel-grid"><section class="stats-client-form-section" id="stats-client-form-section" aria-labelledby="stats-client-form-heading">

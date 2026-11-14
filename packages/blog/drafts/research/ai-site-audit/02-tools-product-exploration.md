@@ -319,3 +319,7 @@ The [visual QA study](../../../prototypes/stats/visual-qa-study.md) records a br
 
 
 Delivered as `0e31268b`; Cloudflare build `8912caab-29b9-4bd7-9eb5-04c1b822d3b6` succeeded. The [fresh acceptance receipt](2026-11-13-stats-visual-acceptance.json) records matching served identity and exact assets, the default homepage shell, live filtering/restoration, all 30 verification facts, complete grouped evidence, native evidence navigation and a 320px dark-theme view with visible counts and keyboard scrolling. Shared examples retain zero and all illustrative records. Types, 457 tests, 35 Markdown validations and an isolated 46-post build pass. The requested visual QA and redesign are complete; further reader usefulness remains a feedback outcome.
+
+### Stats ranking rows — November 14
+
+The [ranking-row correction](../../../prototypes/stats/visual-qa-study.md#ranking-row-correction--november-14) replaces fills behind text with compact meters in a fixed views column. Calm title styling, preserved paths and a separate Visit action reduce competing visual cues. The actual section was inspected in light/dark themes and desktop/phone layouts; phone alignment was corrected. The saved report retains every top-ten path, count and link destination. Source delivery and fresh public acceptance follow separately.
