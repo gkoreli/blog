@@ -1,0 +1,122 @@
+{
+  "version": 1,
+  "recordedAt": "2026-11-14T16:01:14.687636+00:00",
+  "date": "2026-11-14",
+  "status": "complete",
+  "implementationCommit": "a85aa06c381a287dcaee8c5ed401f4d4e2c60ace",
+  "workingSourceCommit": "036058876bea2150042c02390445582b39dd04db",
+  "approval": "Explicit authorization received for bounded production reporting upgrade, preservation of original observations, historical-result comparison and original-record spot checks. Raw direction remains private.",
+  "activation": {
+    "activeVersion": "dabf2a4c-8e7f-46f7-9781-b32f5ba3da22",
+    "sameWorkerScriptEtagAsAcceptedImplementation": true,
+    "sameBindings": true,
+    "newSourceChangesSinceAcceptance": "Documentation only; runtime Git diff empty."
+  },
+  "limits": {
+    "reportedReads": 1000000,
+    "indexedWrites": 150000,
+    "mutationMaximumObservationId": 43321,
+    "mutationIntervals": 9,
+    "scope": "Returned-cost stop thresholds, not pre-execution SQL caps or account-wide billing totals."
+  },
+  "productionCost": {
+    "reportedReads": 577811,
+    "indexedWrites": 129943,
+    "includesVerification": true,
+    "allStatementMetersAvailable": true,
+    "totalStatements": 127,
+    "unknownOrFailedProductionStatements": 0,
+    "sourceObservationWrites": 0,
+    "allReturnedStatementsSingleAttempt": true
+  },
+  "migration": {
+    "changedReportingRuleStamps": 43320,
+    "historicalReportingRowsCompared": 43320,
+    "allOtherReportingValuesIdentical": true,
+    "sourceObservationTableUntouched": true,
+    "predecessorFactsRemaining": 0,
+    "historicalCoverage": {
+      "observations": 43320,
+      "missing_or_stale": 0
+    },
+    "newerFrozenCoverage": {
+      "observations": 256,
+      "missing_or_stale": 0
+    },
+    "migrationsApplied": [
+      "0022_report_budget.sql",
+      "0023_signature_reporting_profiles.sql"
+    ],
+    "deliveryMethod": "0022 additive SQL plus ledger pattern used by Wrangler; 0023 exact guarded predicate applied in nine bounded intervals, then recorded after checking zero predecessor facts remained.",
+    "budgetTablesEmpty": true,
+    "budgetAdmissionEnabledOnBlog": false,
+    "historicalReferralFieldsAlsoCurrent": true,
+    "coverageChecksIncludeReferralPolicy": true
+  },
+  "originalObservationSpotChecks": {
+    "beforeAfterSamples": 28,
+    "historicalSamples": 24,
+    "newerSamples": 4,
+    "allStoredColumnsAndRetainedEvidenceByteIdentical": true,
+    "historicalOldAndNewReportingInterpretationsEqual": true,
+    "allSamplesMatchTheirStoredReportingFields": true,
+    "newerInterpretation": "All four newer records correctly recognize the current verifier profile. This does not invent missing historical evidence or reverify old requests.",
+    "retainedProfileCounts": {
+      "not-recorded": 23,
+      "2026-10-31.3": 1,
+      "2026-11-13.1": 4
+    },
+    "canonicalSerializedRowsByteIdentical": true
+  },
+  "historicalReport": {
+    "start": "2026-11-06",
+    "end": "2026-11-12",
+    "timeZone": "UTC",
+    "traffic": "all",
+    "events": 4334,
+    "sections": 27,
+    "allMetricsBreakdownsAndRecordedProfilesIdentical": true,
+    "expectedReaderMetadataDifference": {
+      "path": "verifierProfile.current",
+      "oldReader": "2026-10-31.3",
+      "newReader": "2026-11-13.1"
+    },
+    "differenceExplanation": "The baseline executes the frozen old implementation and the after report executes the new implementation. Their self-reported current verifier versions differ; every other report value is identical.",
+    "sourceFallbackUsed": false
+  },
+  "nativeOriginalSourceParity": {
+    "passed": true,
+    "retainedOriginalRows": 88,
+    "reportedEvents": 86,
+    "readerKinds": 11,
+    "reportSections": 27,
+    "sourceAndProjectedReportsExactlyEqual": true,
+    "affectedRuntime": "1.20261108.1",
+    "externalRequests": 0,
+    "productionQueriesDuringReplay": 0,
+    "sourceStatements": 5,
+    "projectedStatements": 2,
+    "classificationRows": 24,
+    "initialLocalHarnessFailure": "The local identifier validator omitted digits in existing column names; fixed before the accepted isolated replay. No production query repeated."
+  },
+  "freshNativeControls": {
+    "fivePublicKeyAlgorithms": true,
+    "threePublishedRfcVectors": true,
+    "historicalFormatAndBoundedUpgradeGuards": true,
+    "durableAdmissionAndMigrationLedger": true,
+    "externalRequests": 0
+  },
+  "boundaries": [
+    "Every retained historical report-field row inside the frozen mutation bound was compared; original before/after byte equality is a 28-record stratified spot check, not a full raw-source export.",
+    "The old/new report readers differ only in the self-reported current verifier-version field; historical recorded profiles and all other values match.",
+    "A bounded 88-original-record cohort was replayed in isolated Workerd with bound parameters; its 86-event source/projected reports match exactly across 27 sections. This is retained-source parity, not historical wire re-verification or human attribution.",
+    "Local harness failures are preserved. The initial guard parser expected coverage on both report statements; only the first has it. A strict old/new comparison identified the expected current-version metadata difference. A literal-expanded source control stopped at a local size check before any request; a local glob and identifier guard were corrected before the accepted native replay.",
+    "No full test suite or site build was repeated for this operational acceptance; runtime source is unchanged and the relevant native controls were rerun."
+  ],
+  "privateEvidence": {
+    "manifestSha256": "5288d1097954a63db015ff6bc9e58e55973598894bb3debc5f45d37e5c8abef4",
+    "files": 385,
+    "bytes": 145571038,
+    "originalsAndRawReportsPublished": false
+  }
+}
