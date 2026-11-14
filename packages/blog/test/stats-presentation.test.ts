@@ -49,7 +49,7 @@ test('Stats puts the trend before detail, labels its native filters and preserve
   for (const link of root.querySelectorAll('.stats-navigation a')) {
     const target = link.getAttribute('href'); assert.ok(target); assert.ok(root.querySelector(target));
   }
-  for (const id of ['stats-pages', 'stats-traffic-mix', 'stats-client-form-section', 'stats-kind-signature', 'stats-client-evidence']) {
+  for (const id of ['stats-pages', 'stats-traffic-mix', 'stats-client-form-section', 'stats-kind-signature', 'stats-client-evidence', 'stats-vendor-cache', 'stats-vendor-cache-access', 'stats-vendor-cache-policy']) {
     const section = root.querySelector(`#${id}`); assert.ok(section); assert.equal(section.closest('details'), null);
   }
   assert.match(root.querySelector('noscript')?.textContent ?? '', /30-day report as JSON/);
@@ -86,7 +86,7 @@ test('grouped evidence retains every record, zero and missing marker without rep
   await renderContent([statsPage()]);
   const root = document.createElement('div');
   root.innerHTML = groupedEvidenceTableHtml('Complete example', ['Evidence', 'Profile'], [
-    { group: 'Browser signals', groupHref: '/stats?kind=browser', cells: ['No signature headers', 'current'], views: 12 },
+    { group: 'Browser signals', groupHref: '/stats?kind=browser', cells: ['No signature headers', 'Current stored profile 2026-11-13.1'], views: 12 },
     { group: 'AI assistants', groupHref: 'javascript:alert(1)', cells: ['<img src=x onerror=alert(1)>', 'unavailable'], views: 3 },
     { group: 'Browser signals', cells: ['Earlier unrecorded', 'historical'], views: 0 },
     { group: 'Kind unrecorded or unrecognized', cells: ['Unassessed', 'unavailable'], views: 2 },
@@ -96,6 +96,8 @@ test('grouped evidence retains every record, zero and missing marker without rep
   assert.equal(root.querySelectorAll('th[scope="col"]').length, 3);
   assert.equal(root.querySelectorAll('a').length, 1);
   assert.equal(root.querySelector('img'), null);
+  assert.equal(root.querySelector('.data-evidence-version')?.textContent, '2026-11-13.1');
+  assert.equal(root.querySelector('.data-table-record td')?.textContent, 'Current stored profile 2026-11-13.1');
   assert.deepEqual(Array.from(root.querySelectorAll('.data-table-record .data-table-number'), cell => cell.textContent), ['12', '0', '3', '2']);
   assert.match(root.textContent ?? '', /Kind unrecorded or unrecognized/);
   assert.match(root.textContent ?? '', /<img src=x onerror=alert\(1\)>/);
