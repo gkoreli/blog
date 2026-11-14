@@ -1,0 +1,628 @@
+{
+  "provenance": "Agent-authored, source-aware questions and known answer blocks, fixed before any full-text retrieval rankings. Not real reader logs or independent human relevance judgments. Earlier metadata-demo probes are excluded from the scored set.",
+  "primaryMetric": "knownAnswerAt3",
+  "queries": [
+    {
+      "id": "Q01",
+      "group": 1,
+      "query": "prompt cache prefix edits",
+      "stratum": "short",
+      "article": "prompt-cache-context-edits",
+      "knownBlocks": [
+        "prompt-cache-context-edits/b0010-f2fa5155"
+      ],
+      "knownPassages": [
+        "prompt-cache-context-edits/pef9efa0d9342fc59"
+      ],
+      "answerSummary": "The source reports a cache miss for an early edit and retained cached tokens for an appended instruction."
+    },
+    {
+      "id": "Q02",
+      "group": 1,
+      "query": "Why would adding an instruction at the end preserve cached work while editing an earlier instruction loses it?",
+      "stratum": "question",
+      "article": "prompt-cache-context-edits",
+      "knownBlocks": [
+        "prompt-cache-context-edits/b0010-f2fa5155"
+      ],
+      "knownPassages": [
+        "prompt-cache-context-edits/pef9efa0d9342fc59"
+      ],
+      "answerSummary": "The source reports a cache miss for an early edit and retained cached tokens for an appended instruction."
+    },
+    {
+      "id": "Q03",
+      "group": 2,
+      "query": "Turnstile repeated readiness callback",
+      "stratum": "short",
+      "article": "cloudflare-turnstile-signup-failures",
+      "knownBlocks": [
+        "cloudflare-turnstile-signup-failures/b0002-3d24ff8a",
+        "cloudflare-turnstile-signup-failures/b0012-718f4422"
+      ],
+      "knownPassages": [
+        "cloudflare-turnstile-signup-failures/p9cd29742f619aee0",
+        "cloudflare-turnstile-signup-failures/p7ca9f46ada0ce2ec"
+      ],
+      "answerSummary": "A repeated readiness callback can create a second widget whose error aborts the pending request."
+    },
+    {
+      "id": "Q04",
+      "group": 2,
+      "query": "How can a signup request be cancelled after the human verification widget has already reported success?",
+      "stratum": "question",
+      "article": "cloudflare-turnstile-signup-failures",
+      "knownBlocks": [
+        "cloudflare-turnstile-signup-failures/b0002-3d24ff8a",
+        "cloudflare-turnstile-signup-failures/b0012-718f4422"
+      ],
+      "knownPassages": [
+        "cloudflare-turnstile-signup-failures/p9cd29742f619aee0",
+        "cloudflare-turnstile-signup-failures/p7ca9f46ada0ce2ec"
+      ],
+      "answerSummary": "A repeated readiness callback can create a second widget whose error aborts the pending request."
+    },
+    {
+      "id": "Q05",
+      "group": 3,
+      "query": "historical referral report reconstruction",
+      "stratum": "short",
+      "article": "filter-referrer-spam-without-deleting-analytics-history",
+      "knownBlocks": [
+        "filter-referrer-spam-without-deleting-analytics-history/b0046-1bbfa6d9",
+        "filter-referrer-spam-without-deleting-analytics-history/b0048-511bdeb7"
+      ],
+      "knownPassages": [
+        "filter-referrer-spam-without-deleting-analytics-history/p96143707d6ecea88"
+      ],
+      "answerSummary": "Retained observations enable recalculation, but exact historical reports need captured responses and policy provenance."
+    },
+    {
+      "id": "Q06",
+      "group": 3,
+      "query": "If raw observations are retained, can I always reconstruct exactly what an older dashboard showed?",
+      "stratum": "question",
+      "article": "filter-referrer-spam-without-deleting-analytics-history",
+      "knownBlocks": [
+        "filter-referrer-spam-without-deleting-analytics-history/b0046-1bbfa6d9",
+        "filter-referrer-spam-without-deleting-analytics-history/b0048-511bdeb7"
+      ],
+      "knownPassages": [
+        "filter-referrer-spam-without-deleting-analytics-history/p96143707d6ecea88"
+      ],
+      "answerSummary": "Retained observations enable recalculation, but exact historical reports need captured responses and policy provenance."
+    },
+    {
+      "id": "Q07",
+      "group": 4,
+      "query": "Android tablet desktop mode",
+      "stratum": "short",
+      "article": "please-stop-misreading-user-agent",
+      "knownBlocks": [
+        "please-stop-misreading-user-agent/b0027-a71b0fa1"
+      ],
+      "knownPassages": [
+        "please-stop-misreading-user-agent/p5572ececaecadcde"
+      ],
+      "answerSummary": "Desktop mode can send a Linux-shaped user-agent and changed Client Hints."
+    },
+    {
+      "id": "Q08",
+      "group": 4,
+      "query": "Why might a website offer a Linux download to someone using an Android tablet?",
+      "stratum": "question",
+      "article": "please-stop-misreading-user-agent",
+      "knownBlocks": [
+        "please-stop-misreading-user-agent/b0027-a71b0fa1"
+      ],
+      "knownPassages": [
+        "please-stop-misreading-user-agent/p5572ececaecadcde"
+      ],
+      "answerSummary": "Desktop mode can send a Linux-shaped user-agent and changed Client Hints."
+    },
+    {
+      "id": "Q09",
+      "group": 5,
+      "query": "signed request human readership",
+      "stratum": "short",
+      "article": "how-i-separate-readers-from-bots-without-javascript",
+      "knownBlocks": [
+        "how-i-separate-readers-from-bots-without-javascript/b0043-5227c31f",
+        "how-i-separate-readers-from-bots-without-javascript/b0047-e964c7e9"
+      ],
+      "knownPassages": [
+        "how-i-separate-readers-from-bots-without-javascript/p7a954a492954f2ce"
+      ],
+      "answerSummary": "A verified signer identifies a client, including possible crawlers, rather than proving the initiating person or purpose."
+    },
+    {
+      "id": "Q10",
+      "group": 5,
+      "query": "Does a valid cryptographic signature prove that a person asked an assistant to read the page?",
+      "stratum": "question",
+      "article": "how-i-separate-readers-from-bots-without-javascript",
+      "knownBlocks": [
+        "how-i-separate-readers-from-bots-without-javascript/b0043-5227c31f",
+        "how-i-separate-readers-from-bots-without-javascript/b0047-e964c7e9"
+      ],
+      "knownPassages": [
+        "how-i-separate-readers-from-bots-without-javascript/p7a954a492954f2ce"
+      ],
+      "answerSummary": "A verified signer identifies a client, including possible crawlers, rather than proving the initiating person or purpose."
+    },
+    {
+      "id": "Q11",
+      "group": 6,
+      "query": "Fastify JSON.stringify response coercion",
+      "stratum": "short",
+      "article": "bun-aot-express-fastify-serializers",
+      "knownBlocks": [
+        "bun-aot-express-fastify-serializers/b0017-1d386756"
+      ],
+      "knownPassages": [
+        "bun-aot-express-fastify-serializers/p3dbc75e7ab945f42"
+      ],
+      "answerSummary": "Extra fields and numeric strings can be emitted differently when filtering and coercion disappear."
+    },
+    {
+      "id": "Q12",
+      "group": 6,
+      "query": "What can change if I replace a schema-generated response serializer with ordinary JSON serialization?",
+      "stratum": "question",
+      "article": "bun-aot-express-fastify-serializers",
+      "knownBlocks": [
+        "bun-aot-express-fastify-serializers/b0017-1d386756"
+      ],
+      "knownPassages": [
+        "bun-aot-express-fastify-serializers/p3dbc75e7ab945f42"
+      ],
+      "answerSummary": "Extra fields and numeric strings can be emitted differently when filtering and coercion disappear."
+    },
+    {
+      "id": "Q13",
+      "group": 7,
+      "query": "pnpm hardlinks versus clones",
+      "stratum": "short",
+      "article": "why-worktree-setup-is-slow-on-macos",
+      "knownBlocks": [
+        "why-worktree-setup-is-slow-on-macos/b0016-22e4d124",
+        "why-worktree-setup-is-slow-on-macos/b0017-30ce4f72"
+      ],
+      "knownPassages": [
+        "why-worktree-setup-is-slow-on-macos/pdc985f2550ee1a14"
+      ],
+      "answerSummary": "The reported importers start with hardlinks on Linux and clones on macOS, with many files still created."
+    },
+    {
+      "id": "Q14",
+      "group": 7,
+      "query": "Why does installing dependencies create independent files on the Mac but share file names on Linux?",
+      "stratum": "question",
+      "article": "why-worktree-setup-is-slow-on-macos",
+      "knownBlocks": [
+        "why-worktree-setup-is-slow-on-macos/b0016-22e4d124",
+        "why-worktree-setup-is-slow-on-macos/b0017-30ce4f72"
+      ],
+      "knownPassages": [
+        "why-worktree-setup-is-slow-on-macos/pdc985f2550ee1a14"
+      ],
+      "answerSummary": "The reported importers start with hardlinks on Linux and clones on macOS, with many files still created."
+    },
+    {
+      "id": "Q15",
+      "group": 8,
+      "query": "SA_ONSTACK sigaltstack scope",
+      "stratum": "short",
+      "article": "linux-signal-stack-conflict",
+      "knownBlocks": [
+        "linux-signal-stack-conflict/b0014-24a4e348",
+        "linux-signal-stack-conflict/b0015-2253cddb",
+        "linux-signal-stack-conflict/b0016-eb4b4923",
+        "linux-signal-stack-conflict/b0019-f02ee909",
+        "linux-signal-stack-conflict/b0021-b61825bd"
+      ],
+      "knownPassages": [
+        "linux-signal-stack-conflict/pce0415f085506922",
+        "linux-signal-stack-conflict/pb03daa8548752a5b"
+      ],
+      "answerSummary": "Process-wide signal flags interact with per-thread alternate stacks, and another runtime can alter shared handler flags."
+    },
+    {
+      "id": "Q16",
+      "group": 8,
+      "query": "How can one language runtime make another runtime's signal handler execute on the wrong stack?",
+      "stratum": "question",
+      "article": "linux-signal-stack-conflict",
+      "knownBlocks": [
+        "linux-signal-stack-conflict/b0014-24a4e348",
+        "linux-signal-stack-conflict/b0015-2253cddb",
+        "linux-signal-stack-conflict/b0016-eb4b4923",
+        "linux-signal-stack-conflict/b0019-f02ee909",
+        "linux-signal-stack-conflict/b0021-b61825bd"
+      ],
+      "knownPassages": [
+        "linux-signal-stack-conflict/pce0415f085506922",
+        "linux-signal-stack-conflict/pb03daa8548752a5b"
+      ],
+      "answerSummary": "Process-wide signal flags interact with per-thread alternate stacks, and another runtime can alter shared handler flags."
+    },
+    {
+      "id": "Q17",
+      "group": 9,
+      "query": "PDF redaction text extraction",
+      "stratum": "short",
+      "article": "oss-radar-10-paperpilot-redaction",
+      "knownBlocks": [
+        "oss-radar-10-paperpilot-redaction/b0002-c595fea8",
+        "oss-radar-10-paperpilot-redaction/b0016-9dad6faa"
+      ],
+      "knownPassages": [
+        "oss-radar-10-paperpilot-redaction/p1f40a584ab02b00b",
+        "oss-radar-10-paperpilot-redaction/p6e0f7c2c389b607d"
+      ],
+      "answerSummary": "The tested redaction produced a black rectangle while text extraction could still recover the synthetic secret."
+    },
+    {
+      "id": "Q18",
+      "group": 9,
+      "query": "How can a document look successfully blacked out while its secret text is still recoverable?",
+      "stratum": "question",
+      "article": "oss-radar-10-paperpilot-redaction",
+      "knownBlocks": [
+        "oss-radar-10-paperpilot-redaction/b0002-c595fea8",
+        "oss-radar-10-paperpilot-redaction/b0016-9dad6faa"
+      ],
+      "knownPassages": [
+        "oss-radar-10-paperpilot-redaction/p1f40a584ab02b00b",
+        "oss-radar-10-paperpilot-redaction/p6e0f7c2c389b607d"
+      ],
+      "answerSummary": "The tested redaction produced a black rectangle while text extraction could still recover the synthetic secret."
+    },
+    {
+      "id": "Q19",
+      "group": 10,
+      "query": "Qwenputer processor weights training",
+      "stratum": "short",
+      "article": "oss-radar-11-qwenputer-compiled-cpu",
+      "knownBlocks": [
+        "oss-radar-11-qwenputer-compiled-cpu/b0008-a57ac47c"
+      ],
+      "knownPassages": [
+        "oss-radar-11-qwenputer-compiled-cpu/p24c68e0daca4f07e"
+      ],
+      "answerSummary": "The builder writes processor-implementing weights rather than training the added processor layers."
+    },
+    {
+      "id": "Q20",
+      "group": 10,
+      "query": "Was the neural-network processor taught to execute instructions through training, or constructed another way?",
+      "stratum": "question",
+      "article": "oss-radar-11-qwenputer-compiled-cpu",
+      "knownBlocks": [
+        "oss-radar-11-qwenputer-compiled-cpu/b0008-a57ac47c"
+      ],
+      "knownPassages": [
+        "oss-radar-11-qwenputer-compiled-cpu/p24c68e0daca4f07e"
+      ],
+      "answerSummary": "The builder writes processor-implementing weights rather than training the added processor layers."
+    },
+    {
+      "id": "Q21",
+      "group": 11,
+      "query": "Hob offline model download",
+      "stratum": "short",
+      "article": "oss-radar-13-hob-offline-file-tasks",
+      "knownBlocks": [
+        "oss-radar-13-hob-offline-file-tasks/b0003-2511b427"
+      ],
+      "knownPassages": [
+        "oss-radar-13-hob-offline-file-tasks/p921306face15a5be"
+      ],
+      "answerSummary": "The source reports a 14.4 GB model download and roughly 45–48 seconds per synthetic file task on its tested Mac."
+    },
+    {
+      "id": "Q22",
+      "group": 11,
+      "query": "What must be downloaded first, and how long did the tested file-writing agent take without network access?",
+      "stratum": "question",
+      "article": "oss-radar-13-hob-offline-file-tasks",
+      "knownBlocks": [
+        "oss-radar-13-hob-offline-file-tasks/b0003-2511b427"
+      ],
+      "knownPassages": [
+        "oss-radar-13-hob-offline-file-tasks/p921306face15a5be"
+      ],
+      "answerSummary": "The source reports a 14.4 GB model download and roughly 45–48 seconds per synthetic file task on its tested Mac."
+    },
+    {
+      "id": "Q23",
+      "group": 12,
+      "query": "WebMCP page actions identity",
+      "stratum": "short",
+      "article": "bring-your-own-ai-agent",
+      "knownBlocks": [
+        "bring-your-own-ai-agent/b0034-d5a0f4bb",
+        "bring-your-own-ai-agent/b0035-fddc183c",
+        "bring-your-own-ai-agent/b0039-f4b5c01d"
+      ],
+      "knownPassages": [
+        "bring-your-own-ai-agent/pbacee57ca94711c1"
+      ],
+      "answerSummary": "Page-defined tools expose actions, while user-agent identity, transport and session bounds need an additional layer."
+    },
+    {
+      "id": "Q24",
+      "group": 12,
+      "query": "How can a web page lend editing actions to my own assistant, and what connection problem remains?",
+      "stratum": "question",
+      "article": "bring-your-own-ai-agent",
+      "knownBlocks": [
+        "bring-your-own-ai-agent/b0034-d5a0f4bb",
+        "bring-your-own-ai-agent/b0035-fddc183c",
+        "bring-your-own-ai-agent/b0039-f4b5c01d"
+      ],
+      "knownPassages": [
+        "bring-your-own-ai-agent/pbacee57ca94711c1"
+      ],
+      "answerSummary": "Page-defined tools expose actions, while user-agent identity, transport and session bounds need an additional layer."
+    },
+    {
+      "id": "Q25",
+      "group": 13,
+      "query": "skills MCP optional interface",
+      "stratum": "short",
+      "article": "chatgpt-plugin-apps",
+      "knownBlocks": [
+        "chatgpt-plugin-apps/b0016-9fb414ec"
+      ],
+      "knownPassages": [
+        "chatgpt-plugin-apps/p3a94bb64340e1b10"
+      ],
+      "answerSummary": "The source distinguishes repeatable instructions, service tools and UI for inspecting, comparing, selecting or editing."
+    },
+    {
+      "id": "Q26",
+      "group": 13,
+      "query": "When does an assistant integration need a visual interface rather than only instructions or service tools?",
+      "stratum": "question",
+      "article": "chatgpt-plugin-apps",
+      "knownBlocks": [
+        "chatgpt-plugin-apps/b0016-9fb414ec"
+      ],
+      "knownPassages": [
+        "chatgpt-plugin-apps/p3a94bb64340e1b10"
+      ],
+      "answerSummary": "The source distinguishes repeatable instructions, service tools and UI for inspecting, comparing, selecting or editing."
+    },
+    {
+      "id": "Q27",
+      "group": 14,
+      "query": "llms.txt ranking citation evidence",
+      "stratum": "short",
+      "article": "does-llms-txt-work",
+      "knownBlocks": [
+        "does-llms-txt-work/b0003-34306962",
+        "does-llms-txt-work/b0022-5afa8cbc"
+      ],
+      "knownPassages": [
+        "does-llms-txt-work/p6967fd82b1a5bff0",
+        "does-llms-txt-work/p8a4cab700c0fd998"
+      ],
+      "answerSummary": "The reviewed source does not establish a ranking or citation benefit and distinguishes metadata from evidence of use."
+    },
+    {
+      "id": "Q28",
+      "group": 14,
+      "query": "Is there demonstrated evidence that adding a special text index improves citations in open-web AI search?",
+      "stratum": "question",
+      "article": "does-llms-txt-work",
+      "knownBlocks": [
+        "does-llms-txt-work/b0003-34306962",
+        "does-llms-txt-work/b0022-5afa8cbc"
+      ],
+      "knownPassages": [
+        "does-llms-txt-work/p6967fd82b1a5bff0",
+        "does-llms-txt-work/p8a4cab700c0fd998"
+      ],
+      "answerSummary": "The reviewed source does not establish a ranking or citation benefit and distinguishes metadata from evidence of use."
+    },
+    {
+      "id": "Q29",
+      "group": 15,
+      "query": "sidecar evaluation tool discovery",
+      "stratum": "short",
+      "article": "what-if-the-agent-was-better-before-we-helped",
+      "knownBlocks": [
+        "what-if-the-agent-was-better-before-we-helped/b0105-ca10bbf6",
+        "what-if-the-agent-was-better-before-we-helped/b0107-3afbc96d"
+      ],
+      "knownPassages": [
+        "what-if-the-agent-was-better-before-we-helped/p3b727932d8608e22",
+        "what-if-the-agent-was-better-before-we-helped/pb9cadadaeaebe9d7"
+      ],
+      "answerSummary": "An agent looked for a deferred tool instead of executing the installed CLI, making the verdict a harness failure."
+    },
+    {
+      "id": "Q30",
+      "group": 15,
+      "query": "How can a supposedly weak agent product actually be an evaluation setup that failed to expose its executable?",
+      "stratum": "question",
+      "article": "what-if-the-agent-was-better-before-we-helped",
+      "knownBlocks": [
+        "what-if-the-agent-was-better-before-we-helped/b0105-ca10bbf6",
+        "what-if-the-agent-was-better-before-we-helped/b0107-3afbc96d"
+      ],
+      "knownPassages": [
+        "what-if-the-agent-was-better-before-we-helped/p3b727932d8608e22",
+        "what-if-the-agent-was-better-before-we-helped/pb9cadadaeaebe9d7"
+      ],
+      "answerSummary": "An agent looked for a deferred tool instead of executing the installed CLI, making the verdict a harness failure."
+    },
+    {
+      "id": "Q31",
+      "group": 16,
+      "query": "meaningful work delaying sleep",
+      "stratum": "short",
+      "article": "productive-procrastination",
+      "knownBlocks": [
+        "productive-procrastination/b0002-77bb83dd",
+        "productive-procrastination/b0014-7fd1a656"
+      ],
+      "knownPassages": [
+        "productive-procrastination/peac7a374ca67f0cb",
+        "productive-procrastination/pa3e8428db1f2f88d"
+      ],
+      "answerSummary": "Meaningful work can supply a convincing justification for postponing other priorities, including sleep."
+    },
+    {
+      "id": "Q32",
+      "group": 16,
+      "query": "Why can worthwhile evening projects make it feel acceptable to keep putting off bedtime?",
+      "stratum": "question",
+      "article": "productive-procrastination",
+      "knownBlocks": [
+        "productive-procrastination/b0002-77bb83dd",
+        "productive-procrastination/b0014-7fd1a656"
+      ],
+      "knownPassages": [
+        "productive-procrastination/peac7a374ca67f0cb",
+        "productive-procrastination/pa3e8428db1f2f88d"
+      ],
+      "answerSummary": "Meaningful work can supply a convincing justification for postponing other priorities, including sleep."
+    },
+    {
+      "id": "Q33",
+      "group": 17,
+      "query": "parallel projects avoiding uncertainty",
+      "stratum": "short",
+      "article": "in-the-age-of-abundance-less-is-more",
+      "knownBlocks": [
+        "in-the-age-of-abundance-less-is-more/b0019-3f8d6bcb",
+        "in-the-age-of-abundance-less-is-more/b0047-8d5f5a7a"
+      ],
+      "knownPassages": [
+        "in-the-age-of-abundance-less-is-more/p379d61ec4abd4f7c",
+        "in-the-age-of-abundance-less-is-more/p8c9d8234abb0a1a1"
+      ],
+      "answerSummary": "The essay explores whether useful parallel work avoids boredom and uncertainty instead of staying with a blocked project."
+    },
+    {
+      "id": "Q34",
+      "group": 17,
+      "query": "Could moving to another useful project be a way of escaping the discomfort of one that has stalled?",
+      "stratum": "question",
+      "article": "in-the-age-of-abundance-less-is-more",
+      "knownBlocks": [
+        "in-the-age-of-abundance-less-is-more/b0019-3f8d6bcb",
+        "in-the-age-of-abundance-less-is-more/b0047-8d5f5a7a"
+      ],
+      "knownPassages": [
+        "in-the-age-of-abundance-less-is-more/p379d61ec4abd4f7c",
+        "in-the-age-of-abundance-less-is-more/p8c9d8234abb0a1a1"
+      ],
+      "answerSummary": "The essay explores whether useful parallel work avoids boredom and uncertainty instead of staying with a blocked project."
+    },
+    {
+      "id": "Q35",
+      "group": 18,
+      "query": "innerHTML child state focus",
+      "stratum": "short",
+      "article": "openclaw-chose-solid-why-id-choose-nisli",
+      "knownBlocks": [
+        "openclaw-chose-solid-why-id-choose-nisli/b0024-b7da8757",
+        "openclaw-chose-solid-why-id-choose-nisli/b0025-1c94a572"
+      ],
+      "knownPassages": [
+        "openclaw-chose-solid-why-id-choose-nisli/p99fbedec677babc8"
+      ],
+      "answerSummary": "Wholesale innerHTML replacement destroyed child state; direct signal bindings were the chosen update approach."
+    },
+    {
+      "id": "Q36",
+      "group": 18,
+      "query": "Why did updating a custom element erase its child state, scroll position and keyboard focus?",
+      "stratum": "question",
+      "article": "openclaw-chose-solid-why-id-choose-nisli",
+      "knownBlocks": [
+        "openclaw-chose-solid-why-id-choose-nisli/b0024-b7da8757",
+        "openclaw-chose-solid-why-id-choose-nisli/b0025-1c94a572"
+      ],
+      "knownPassages": [
+        "openclaw-chose-solid-why-id-choose-nisli/p99fbedec677babc8"
+      ],
+      "answerSummary": "Wholesale innerHTML replacement destroyed child state; direct signal bindings were the chosen update approach."
+    },
+    {
+      "id": "N01",
+      "group": null,
+      "query": "What is the weather in Tbilisi today?",
+      "stratum": "expected-no-answer",
+      "article": null,
+      "knownBlocks": [],
+      "knownPassages": []
+    },
+    {
+      "id": "N02",
+      "group": null,
+      "query": "How much flour and water should I feed a sourdough starter?",
+      "stratum": "expected-no-answer",
+      "article": null,
+      "knownBlocks": [],
+      "knownPassages": []
+    },
+    {
+      "id": "N03",
+      "group": null,
+      "query": "Which visa documents do I need to enter Japan next month?",
+      "stratum": "expected-no-answer",
+      "article": null,
+      "knownBlocks": [],
+      "knownPassages": []
+    },
+    {
+      "id": "N04",
+      "group": null,
+      "query": "How do I configure a Kubernetes liveness probe for a Redis cluster?",
+      "stratum": "expected-no-answer",
+      "article": null,
+      "knownBlocks": [],
+      "knownPassages": []
+    },
+    {
+      "id": "N05",
+      "group": null,
+      "query": "What is the exact recipe for spaghetti carbonara?",
+      "stratum": "expected-no-answer",
+      "article": null,
+      "knownBlocks": [],
+      "knownPassages": []
+    },
+    {
+      "id": "N06",
+      "group": null,
+      "query": "What dose of an antibiotic should a child take for an ear infection?",
+      "stratum": "expected-no-answer",
+      "article": null,
+      "knownBlocks": [],
+      "knownPassages": []
+    },
+    {
+      "id": "N07",
+      "group": null,
+      "query": "How do I solve a quadratic equation by completing the square?",
+      "stratum": "expected-no-answer",
+      "article": null,
+      "knownBlocks": [],
+      "knownPassages": []
+    },
+    {
+      "id": "N08",
+      "group": null,
+      "query": "What is the current price of a flight from San Francisco to Tokyo?",
+      "stratum": "expected-no-answer",
+      "article": null,
+      "knownBlocks": [],
+      "knownPassages": []
+    }
+  ]
+}
