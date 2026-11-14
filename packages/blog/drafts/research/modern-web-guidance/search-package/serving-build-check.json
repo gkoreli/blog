@@ -1,0 +1,25 @@
+{
+  "checkedAt": "2026-11-14T21:52:40.436Z",
+  "boundary": "Automatic serving build compared with the manually deployed local build; no relevance labels changed.",
+  "sourceFieldsEqual": true,
+  "semanticRowPositionsEqual": true,
+  "previousIndexId": "8201476e8b9786a8807b23d0729b2ceb995a18e8a61488bd1cdcd1ecf5c6892e",
+  "currentIndexId": "86246b6799e250ad98adf71397cbc8daeec6ce00a6a25978447997a7758d07fa",
+  "currentIndexSha256": "ee27d66e5b7e87fd9a08642a795cf9e278ad3f82d37ccfbc5cd40efd7c6fc1d2",
+  "vectorHashEqual": false,
+  "rows": 4835,
+  "minRowDotProduct": 0.9952876140953999,
+  "meanRowDotProduct": 0.9992800366959131,
+  "maximumCoordinateDifference": 0.016462184488773346,
+  "retirementFixture": {
+    "manifestStates": [
+      "previous",
+      "current"
+    ],
+    "retiredVectorRequests": 1,
+    "newVectorRequests": 1,
+    "modelRequests": 2
+  },
+  "observedBrowserRecovery": true,
+  "negativeLabelsWereNotRelabeled": true
+}

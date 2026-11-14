@@ -48,7 +48,7 @@ These adapters use a transformer. They do not implement MWG's seven-line encoder
 
 ## Consumer responsibilities
 
-Publish the transformed article HTML and its index atomically. Persist the index and optional vectors; keep raw research captures, model caches and private author notes outside Git. Serve fingerprinted data with immutable caching and the manifest with freshness checks. The blog's adapter, form/dialog, worker transport, no-JavaScript route, download consent and publication exclusions live in `packages/blog`, not this package. Do not put private text into an index merely because its source file is available.
+Publish the transformed article HTML and its index atomically. Persist the index and optional vectors; keep raw research captures, model caches and private author notes outside Git. Serve fingerprinted data with immutable caching and the manifest with freshness checks. An open client must handle retired data URLs across deployments; the blog refreshes once on 404/410 and periodically checks its manifest. The blog's adapter, form/dialog, worker transport, no-JavaScript route, download consent and publication exclusions live in `packages/blog`, not this package. Do not put private text into an index merely because its source file is available.
 
 The browser adapter needs WASM permission in the site's CSP and self-hosted runtime glue/WASM URLs. Model download, memory and CPU costs depend on the device. Browser caching may be evicted. Node timing does not establish browser performance. The bundled UI returns source passages and context rather than generating an answer. Word matches use preview ranges as text; consumers must not render source text as executable HTML.
 
