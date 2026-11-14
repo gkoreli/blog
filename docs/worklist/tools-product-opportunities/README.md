@@ -12,6 +12,8 @@ The [November 13 analytics landscape comparison](analytics-industry-comparison-2
 
 The separately authorized [package engineering continuation](analytics-package-engineering.md) implements the reusable reporting boundary and expands public-key verification. It preserves this research's dated source snapshot and keeps independent operator adoption separate from local installation acceptance.
 
+The [November 14 Stats investigation](stats-reader-understanding-2026-11-14.md) distinguishes retained-data analysis from new observation needs. It recommends a completed-period publishing overview, reuse of existing newsletter attribution/confirmation, then a bounded outcome contract and decision-led browser activity experiment. The [public observation receipt](stats-reader-understanding-2026-11-14.json) is a dated live UI sample; the implementation sequence remains proposed.
+
 **What is already present**
 
 | Capability | Inspected implementation | Present boundary | Offer it could support |

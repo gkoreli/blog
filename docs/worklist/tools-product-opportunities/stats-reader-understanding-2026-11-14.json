@@ -1,0 +1,85 @@
+{
+  "version": 1,
+  "recordedAt": "2026-11-14T17:08:52.469597+00:00",
+  "status": "investigation-complete-implementation-proposed",
+  "sourceRevisionReviewed": "7b59404cebb6375bcf53cf06e6f9ad266c3f2154",
+  "liveObservation": {
+    "url": "https://gkoreli.com/stats",
+    "method": "Observed rendered public report in the in-app browser; normalized selected UI values, not a saved API response or independent report replay.",
+    "date": "2026-11-14",
+    "selection": {
+      "traffic": "all",
+      "range": "30d"
+    },
+    "period": {
+      "start": "2026-10-16",
+      "end": "2026-11-14",
+      "timeZone": "UTC",
+      "currentDayPartial": true,
+      "displayedCalculatedAt": "2026-11-14T17:02:00Z",
+      "calculationTimePrecision": "minute-as-displayed"
+    },
+    "views": 15241,
+    "dailyClientIdentifiers": 8458,
+    "referralPolicyExcludedViews": 48,
+    "byTrafficGroup": {
+      "browser": 2567,
+      "agents": 830,
+      "crawlers": 3936,
+      "automation": 5668,
+      "unresolved": 2240
+    },
+    "referrerStatesAndDisplayGroups": {
+      "namedExternal": 328,
+      "otherReportedExternal": 543,
+      "absent": 12536,
+      "internal": 1833,
+      "unusable": 1
+    },
+    "absentReferrerPercentOfAllIncludedViews": 82.3,
+    "groupSumMatches": true,
+    "referrerSumMatches": true
+  },
+  "productionAccess": {
+    "normalBrowserVisits": 1,
+    "customReportSelections": 0,
+    "directSqlStatements": 0,
+    "subscriberRecordsRead": 0,
+    "pageLoadCacheStatus": "not-inspected",
+    "pageLoadDatabaseWork": "not-metered-in-this-investigation",
+    "collectionOrRuntimeChanges": false
+  },
+  "sourceFindings": {
+    "representationAlreadyStored": true,
+    "dailyIdentifiersRotateAcrossDates": true,
+    "focusedArticleReachAlreadyAvailable": true,
+    "focusedArticleReachScope": "stored Browser signals; 28 completed UTC days",
+    "newsletterSignupSourceAlreadyStored": true,
+    "newsletterSignupSourceFields": [
+      "path",
+      "utm_source",
+      "utm_campaign",
+      "external-referrer-hostname"
+    ],
+    "newsletterSourceFields": "length-bounded client claims with server normalization; not authenticated campaign attribution",
+    "newsletterConfirmationAlreadyAcknowledged": true,
+    "subscriberStateIsNotImmutableOutcomeHistory": true,
+    "newsletterReactivationCanClearConfirmationTimeAndRetainExistingSource": true,
+    "searchEvidenceAnalyzerAlreadyAvailable": true
+  },
+  "priorities": [
+    "Completed-period publishing overview from retained data",
+    "Supported newsletter aggregates, then durable publisher outcomes and bounded page-campaign attribution",
+    "Decision-led browser activity experiment with coverage and deletion policy",
+    "Authorized discovery evidence and supported agent-use evidence"
+  ],
+  "limits": [
+    "No new database query, comparative accuracy trial, activity collector or operator trial.",
+    "The browser page load may calculate a cached report; its database work was not inspected.",
+    "Absent referrer applies to all-category requests and does not establish direct acquisition or the share of people.",
+    "The live current day is partial; no growth conclusion is drawn from these totals.",
+    "The web retrieval tool returned an older Stats shell; live values came from a separate rendered browser observation.",
+    "Subscriber rows and source behavior were inspected in code only; no production subscriber data was selected.",
+    "New tracking, retention and public outcome aggregation remain proposed."
+  ]
+}
