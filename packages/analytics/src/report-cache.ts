@@ -4,7 +4,7 @@ import { httpDate, utcDateKey } from '@gkoreli/time';
 import { ZonedCalendar } from '@gkoreli/time/calendar';
 
 /** Bump when report semantics, storage binding, or public selection rules change. */
-export const STATS_REPORT_VERSION = '2026-11-14.2';
+export const STATS_REPORT_VERSION = '2026-11-14.3';
 export const STATS_EDGE_TTL_SECONDS = 3600;
 const MAX_PENDING_REPORTS = 8;
 const LOOKUP_BUDGET_MS = 250;
