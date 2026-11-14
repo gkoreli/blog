@@ -341,3 +341,8 @@ Before/after comparisons against identical saved responses retain all data and d
 
 
 Delivered as `2f0bc364`; Cloudflare build `f79745ac-8936-48f0-bff1-24dea901ef84` succeeded. The [fresh full-page acceptance receipt](2026-11-14-stats-full-qa-acceptance.json) confirms matching served identity, exact assets, shared patterns and visible diagnostics. Live desktop, tablet and light/dark phone checks confirm readable fields, pinned counts, keyboard access and no page overflow. The live report retains 426 evidence records, 16 notes and 17 method paragraphs; preservation against the dated saved report is recorded separately. Integrated types, 447 site tests, 35 Markdown validations and an isolated 46-post build pass. The requested QA and spacing revision is complete; further iteration should follow feedback on the actual report. No analytics database operation was part of delivery.
+
+
+### Stats viewer timezone — November 14
+
+The [timezone presentation correction](../../../prototypes/stats/visual-qa-study.md#viewer-timezone-presentation--november-14) makes report update times and hourly chart axes, legends and table labels use the viewer's browser timezone. Explicit zone suffixes disambiguate repeated daylight-saving hours. Daily aggregates remain labeled by their UTC reporting day; query windows, daily identities, API timestamps and all counts are unchanged. Local comparisons retain every value in 161 hourly and 30 daily buckets. Desktop/phone checks and seven timezone tests cover the formatting and its evidence boundaries. Source delivery and current served acceptance remain the next bounded action.
