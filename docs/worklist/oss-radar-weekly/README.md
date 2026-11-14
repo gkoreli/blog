@@ -1,5 +1,7 @@
 # Weekly OSS Radar production
 
+**Automatic publication paused — November 14, 2026:** the [hosted workflow](https://github.com/gkoreli/blog/actions/workflows/november-publication.yml) (`408698342`, now named “Weekly OSS Radar publication”) is disabled. GitHub returned `disabled_manually`, with no queued or running jobs when checked. This pauses the planned November 16 automatic release and subsequent Monday releases. The setup acceptance below records the earlier activation.
+
 Started November 14, 2026, America/Los_Angeles. One OSS Radar issue each Monday, with the hosted release attempt at **08:00 Pacific**, beginning November 16. This replaces the [November daily campaign](../november-daily-publication/README.md) for future scheduled releases. Other publication work and retired article dispositions retain their own scope.
 
 ## Reader promise
