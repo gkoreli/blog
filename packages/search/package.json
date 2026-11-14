@@ -1,0 +1,19 @@
+{
+  "name": "@gkoreli/search",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Article and passage retrieval for publications",
+  "license": "MIT",
+  "exports": {
+    ".": { "types": "./dist/index.d.ts", "default": "./dist/index.js" },
+    "./html": { "types": "./dist/html.d.ts", "default": "./dist/html.js" }
+  },
+  "scripts": {
+    "build": "tsc --build",
+    "typecheck": "tsc --build",
+    "test": "pnpm build && node --test test/*.test.mjs"
+  },
+  "dependencies": { "minisearch": "7.2.0", "parse5": "8.1.1" },
+  "devDependencies": { "@types/node": "^25.3.3", "typescript": "^7.0.2" }
+}

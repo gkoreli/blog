@@ -1,0 +1,39 @@
+{
+  "frozenAt": "2026-11-14T20:37:30.337Z",
+  "beforeNewBlogComparatorQueries": true,
+  "files": {
+    "protocol.md": "04aca08e25c1912d9a0c06b07daa45983012c3927e976545466ab06d13a22da6",
+    "topics.json": "00c87ca665f0bdbbd9b58a5f696c9a83460152255ac9301d5de3b616eaf02248",
+    "cases.json": "fc85d58463f5eab91fcd9d114caa616790766fae2c41f958af0b94809a995025",
+    "prepare-cases.mjs": "5669c069f1fcaca5fedf3986aefdcabd50b6f4354b4bb1bbfd0e6d51f992afb4",
+    "lexical-query.mjs": "b3538e8c2447fe0b3124c7fcbac59f06a3bdbb33e172abca00518389b707a54d",
+    "build-comparators.mjs": "610ef2325a5cd07c997dd0a07af93c102478403d3b75c021f5059f87ddd3ce66",
+    "pagefind-worker.mjs": "cc208406bffb5f6f25576205c9989aa0ebc136b58a0128eaefd06705c5cbdcd3",
+    "evaluate-comparators.mjs": "8b235a6a24969a18cca634c92a1303a846b52aafc57e0dd580e2db64ecf9db60",
+    "freeze.mjs": "a2a306d4dfe4a3c27de5f66347cc355f568a8b88c27d5e06d05652f9d28dd0cf",
+    "runtime/package.json": "430795f63236e6f47e151807c02bfdf7a22e94e6ac8bc08757264b2d4a22b3bc",
+    "runtime/package-lock.json": "2bf7847a472a602dffcb6ebf2454da028b01efd9ff2cf57c5588b3a365a59607",
+    "registry-pins.json": "8cb8c9fbd3bb71bbfed14da1c5976e8788d7b85e8410f6e0e6d211a730ce80f2",
+    "pagefind-build.json": "87deaededa2ed9022d403961087fea53d4fe2fe242ebc98edd069c48deb03f18",
+    "../passage-search/model.mjs": "a4d12576a0d6422acbebb862633c2a5dffdcdeb83be9d1c2346750a050aa2316",
+    "../passage-search/retrieval.mjs": "069aaeaf83db161d62eb1446046ba61a2fa9567305e7520dc03ba951b236bb9b",
+    "../passage-search/vendor/bm25.ts": "d500702b795447b54eeffc8829d40f06b175ae06ba2b70769e52c412474ca086",
+    "../reader-search/ranking.mjs": "9855708176c6d13b17dd9e4a914217c38e240fc620db605aed2ca8968781ac32",
+    "../reader-search/query-v2.mjs": "59c4b78458108cc04dd4606cfd0bc647e4dda8f1d8523260abda97b1d5a611e0"
+  },
+  "inputs": {
+    "passageFile": "4c89fe3d04c68aacf5edbf723d98b2aad571da1ad84b4baef15be4dd8389a987",
+    "unitFile": "0c3a00362ea35206d4e8aed0d304127abd58a9d6bdf0b554130d22ae8129904d",
+    "passageVectors": "3f50fbf9d25877d841b6b8e0090bd218fd0fd6833b238062c1145510c808799d",
+    "unitVectors": "8dec4c7c0b7b3af33808b0ce939db3298b89792fc32cc3432e49e10b591601e6",
+    "pagefindReceipt": "87deaededa2ed9022d403961087fea53d4fe2fe242ebc98edd069c48deb03f18",
+    "originalCorpus": "d3de0d29a58f46fa12bfde0a347d361ff0116c27cbd7193f4e4b43e0ca0219ea",
+    "originalModelFreeze": "35f9e9e3775881726c569ac6093f6a88f2d3b6625236eb0568dedf87beedfb82"
+  },
+  "cases": {
+    "total": 51,
+    "development": 33,
+    "validation": 18
+  },
+  "boundary": "New source-aware engineering comparator pack. Prior results influenced topic/alternative selection; not independent reader validation. No old benchmark is relabeled."
+}

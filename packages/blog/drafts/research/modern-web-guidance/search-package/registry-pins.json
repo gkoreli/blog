@@ -1,0 +1,57 @@
+{
+  "checkedAt": "2026-11-14T20:22:45.105Z",
+  "packages": [
+    {
+      "name": "minisearch",
+      "version": "7.2.0",
+      "license": "MIT",
+      "repository": {
+        "url": "https://github.com/lucaong/minisearch.git",
+        "type": "git"
+      },
+      "dist": {
+        "integrity": "sha512-dqT2XBYUOZOiC5t2HRnwADjhNS2cecp9u+TJRiJ1Qp/f5qjkeT5APcGPjHw+bz89Ms8Jp+cG4AlE+QZ/QnDglg==",
+        "tarball": "https://registry.npmjs.org/minisearch/-/minisearch-7.2.0.tgz"
+      }
+    },
+    {
+      "name": "pagefind",
+      "version": "1.6.0",
+      "license": "MIT",
+      "repository": {
+        "url": "git+https://github.com/Pagefind/pagefind.git",
+        "type": "git"
+      },
+      "dist": {
+        "integrity": "sha512-yeOd9EA0TUE1PUfbQIluBxzPadBG5/0BV48FAxwMVLkhZcOvwCz6TX4/a/Ofz97pF9/FwwT7CVbTC97BfmI+LQ==",
+        "tarball": "https://registry.npmjs.org/pagefind/-/pagefind-1.6.0.tgz"
+      }
+    },
+    {
+      "name": "parse5",
+      "version": "8.1.1",
+      "license": "MIT",
+      "repository": {
+        "url": "git://github.com/inikulin/parse5.git",
+        "type": "git"
+      },
+      "dist": {
+        "integrity": "sha512-EcR/6WDcU7b2N3vQSxKALCk9lXGtUMQxXio008OEMBE0kavu/7JLfBEeFPzi43nMqVDSbEn3QCK+BMCc9zO//w==",
+        "tarball": "https://registry.npmjs.org/parse5/-/parse5-8.1.1.tgz"
+      }
+    },
+    {
+      "name": "@huggingface/transformers",
+      "version": "4.3.2",
+      "license": "Apache-2.0",
+      "repository": {
+        "url": "git+https://github.com/huggingface/transformers.js.git",
+        "type": "git"
+      },
+      "dist": {
+        "integrity": "sha512-V3+dqf3iWlRYJ9I9GreM3zGQd0lAXnnoPeddmkOQYWAEE4l/+Fi6p7tx/qVUJlKQgLXGim2W76rTOzz+eC0i7g==",
+        "tarball": "https://registry.npmjs.org/@huggingface/transformers/-/transformers-4.3.2.tgz"
+      }
+    }
+  ]
+}

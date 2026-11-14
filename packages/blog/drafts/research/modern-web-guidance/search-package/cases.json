@@ -1,0 +1,524 @@
+{
+  "provenance": "Agent-authored after source reading and earlier retrieval diagnosis; topics and accepted alternatives are informed by that work. New query texts and question-specific selected blocks are fixed before these comparator rankings. Not visitor logs or independent relevance judgments.",
+  "sourceCommit": "19d8f8971d1d74b9118c7819bfbb55aa26f7ba9d",
+  "sourceCorpusSha256": "d3de0d29a58f46fa12bfde0a347d361ff0116c27cbd7193f4e4b43e0ca0219ea",
+  "split": "Ten development and five reserved article groups chosen by SHA256; three related forms stay together. Prior source/results knowledge is disclosed; this is not independent reader validation.",
+  "cases": [
+    {
+      "id": "S01-topic",
+      "article": "oss-radar-01-vercel-winter-2026-cohort",
+      "form": "topic",
+      "query": "Moving Icons native Svelte 5",
+      "knownBlocks": [
+        "oss-radar-01-vercel-winter-2026-cohort/b0133-c1a1899b",
+        "oss-radar-01-vercel-winter-2026-cohort/b0137-c9afde0e"
+      ],
+      "split": "development"
+    },
+    {
+      "id": "S01-recollection",
+      "article": "oss-radar-01-vercel-winter-2026-cohort",
+      "form": "recollection",
+      "query": "Where is the library with moving symbols built for Svelte instead of ported from React?",
+      "knownBlocks": [
+        "oss-radar-01-vercel-winter-2026-cohort/b0133-c1a1899b",
+        "oss-radar-01-vercel-winter-2026-cohort/b0137-c9afde0e"
+      ],
+      "split": "development"
+    },
+    {
+      "id": "S01-typo",
+      "article": "oss-radar-01-vercel-winter-2026-cohort",
+      "form": "typo",
+      "query": "animatd icons Svelte 5",
+      "knownBlocks": [
+        "oss-radar-01-vercel-winter-2026-cohort/b0133-c1a1899b",
+        "oss-radar-01-vercel-winter-2026-cohort/b0137-c9afde0e"
+      ],
+      "split": "development"
+    },
+    {
+      "id": "S02-topic",
+      "article": "oss-radar-10-paperpilot-redaction",
+      "form": "topic",
+      "query": "PaperPilot redacted PDF still extractable",
+      "knownBlocks": [
+        "oss-radar-10-paperpilot-redaction/b0002-c595fea8"
+      ],
+      "split": "development"
+    },
+    {
+      "id": "S02-recollection",
+      "article": "oss-radar-10-paperpilot-redaction",
+      "form": "recollection",
+      "query": "Find the experiment where a black box covered a secret but the document still contained its words.",
+      "knownBlocks": [
+        "oss-radar-10-paperpilot-redaction/b0002-c595fea8"
+      ],
+      "split": "development"
+    },
+    {
+      "id": "S02-typo",
+      "article": "oss-radar-10-paperpilot-redaction",
+      "form": "typo",
+      "query": "PaperPilt PDF redaction",
+      "knownBlocks": [
+        "oss-radar-10-paperpilot-redaction/b0002-c595fea8"
+      ],
+      "split": "development"
+    },
+    {
+      "id": "S03-topic",
+      "article": "please-stop-misreading-user-agent",
+      "form": "topic",
+      "query": "Android tablet desktop mode Linux installer",
+      "knownBlocks": [
+        "please-stop-misreading-user-agent/b0005-447dcb13",
+        "please-stop-misreading-user-agent/b0027-a71b0fa1"
+      ],
+      "split": "development"
+    },
+    {
+      "id": "S03-recollection",
+      "article": "please-stop-misreading-user-agent",
+      "form": "recollection",
+      "query": "Which article explained why a tablet was offered software for a Linux computer?",
+      "knownBlocks": [
+        "please-stop-misreading-user-agent/b0005-447dcb13",
+        "please-stop-misreading-user-agent/b0027-a71b0fa1"
+      ],
+      "split": "development"
+    },
+    {
+      "id": "S03-typo",
+      "article": "please-stop-misreading-user-agent",
+      "form": "typo",
+      "query": "Andriod tablet Linux download",
+      "knownBlocks": [
+        "please-stop-misreading-user-agent/b0005-447dcb13",
+        "please-stop-misreading-user-agent/b0027-a71b0fa1"
+      ],
+      "split": "development"
+    },
+    {
+      "id": "S04-topic",
+      "article": "oss-radar-13-hob-offline-file-tasks",
+      "form": "topic",
+      "query": "Hob CSV report networking blocked",
+      "knownBlocks": [
+        "oss-radar-13-hob-offline-file-tasks/b0002-5e41ae18"
+      ],
+      "split": "development"
+    },
+    {
+      "id": "S04-recollection",
+      "article": "oss-radar-13-hob-offline-file-tasks",
+      "form": "recollection",
+      "query": "Show the local assistant test that produced files after outbound connections were disabled.",
+      "knownBlocks": [
+        "oss-radar-13-hob-offline-file-tasks/b0002-5e41ae18"
+      ],
+      "split": "development"
+    },
+    {
+      "id": "S04-typo",
+      "article": "oss-radar-13-hob-offline-file-tasks",
+      "form": "typo",
+      "query": "Hob offlne report files",
+      "knownBlocks": [
+        "oss-radar-13-hob-offline-file-tasks/b0002-5e41ae18"
+      ],
+      "split": "development"
+    },
+    {
+      "id": "S05-topic",
+      "article": "oss-radar-11-qwenputer-compiled-cpu",
+      "form": "topic",
+      "query": "Qwenputer compiled tensors no optimizer",
+      "knownBlocks": [
+        "oss-radar-11-qwenputer-compiled-cpu/b0009-9722e385"
+      ],
+      "split": "validation"
+    },
+    {
+      "id": "S05-recollection",
+      "article": "oss-radar-11-qwenputer-compiled-cpu",
+      "form": "recollection",
+      "query": "I want the explanation of constructing a processor from model weights instead of learning arithmetic from examples.",
+      "knownBlocks": [
+        "oss-radar-11-qwenputer-compiled-cpu/b0009-9722e385"
+      ],
+      "split": "validation"
+    },
+    {
+      "id": "S05-typo",
+      "article": "oss-radar-11-qwenputer-compiled-cpu",
+      "form": "typo",
+      "query": "Qwenputr compiler weights",
+      "knownBlocks": [
+        "oss-radar-11-qwenputer-compiled-cpu/b0009-9722e385"
+      ],
+      "split": "validation"
+    },
+    {
+      "id": "S06-topic",
+      "article": "oss-radar-12-claude-code-status-summary",
+      "form": "topic",
+      "query": "Claude Code agent_summary full transcript request",
+      "knownBlocks": [
+        "oss-radar-12-claude-code-status-summary/b0008-e28b33f3"
+      ],
+      "split": "development"
+    },
+    {
+      "id": "S06-recollection",
+      "article": "oss-radar-12-claude-code-status-summary",
+      "form": "recollection",
+      "query": "Where is the short progress label that made a separate request with the conversation as input?",
+      "knownBlocks": [
+        "oss-radar-12-claude-code-status-summary/b0008-e28b33f3"
+      ],
+      "split": "development"
+    },
+    {
+      "id": "S06-typo",
+      "article": "oss-radar-12-claude-code-status-summary",
+      "form": "typo",
+      "query": "Claude staus summary request",
+      "knownBlocks": [
+        "oss-radar-12-claude-code-status-summary/b0008-e28b33f3"
+      ],
+      "split": "development"
+    },
+    {
+      "id": "S07-topic",
+      "article": "bun-aot-express-fastify-serializers",
+      "form": "topic",
+      "query": "Bun AOT Express Fastify memory CPU",
+      "knownBlocks": [
+        "bun-aot-express-fastify-serializers/b0002-f497f3e1"
+      ],
+      "split": "validation"
+    },
+    {
+      "id": "S07-recollection",
+      "article": "bun-aot-express-fastify-serializers",
+      "form": "recollection",
+      "query": "Find the comparison where compiling reduced memory in two servers but did not reduce processor cost in both.",
+      "knownBlocks": [
+        "bun-aot-express-fastify-serializers/b0002-f497f3e1"
+      ],
+      "split": "validation"
+    },
+    {
+      "id": "S07-typo",
+      "article": "bun-aot-express-fastify-serializers",
+      "form": "typo",
+      "query": "Bun Fastfy memory comparison",
+      "knownBlocks": [
+        "bun-aot-express-fastify-serializers/b0002-f497f3e1"
+      ],
+      "split": "validation"
+    },
+    {
+      "id": "S08-topic",
+      "article": "how-i-separate-readers-from-bots-without-javascript",
+      "form": "topic",
+      "query": "signed client identity does not prove reader intent",
+      "knownBlocks": [
+        "how-i-separate-readers-from-bots-without-javascript/b0047-e964c7e9"
+      ],
+      "split": "validation"
+    },
+    {
+      "id": "S08-recollection",
+      "article": "how-i-separate-readers-from-bots-without-javascript",
+      "form": "recollection",
+      "query": "Which explanation separates a verified request signer from proof that somebody asked an assistant to read?",
+      "knownBlocks": [
+        "how-i-separate-readers-from-bots-without-javascript/b0047-e964c7e9"
+      ],
+      "split": "validation"
+    },
+    {
+      "id": "S08-typo",
+      "article": "how-i-separate-readers-from-bots-without-javascript",
+      "form": "typo",
+      "query": "signatre agent reader purpose",
+      "knownBlocks": [
+        "how-i-separate-readers-from-bots-without-javascript/b0047-e964c7e9"
+      ],
+      "split": "validation"
+    },
+    {
+      "id": "S09-topic",
+      "article": "openclaw-chose-solid-why-id-choose-nisli",
+      "form": "topic",
+      "query": "innerHTML destroys child state focus scroll",
+      "knownBlocks": [
+        "openclaw-chose-solid-why-id-choose-nisli/b0024-b7da8757"
+      ],
+      "split": "development"
+    },
+    {
+      "id": "S09-recollection",
+      "article": "openclaw-chose-solid-why-id-choose-nisli",
+      "form": "recollection",
+      "query": "Where did replacing the interface markup erase state and the reader's scroll position?",
+      "knownBlocks": [
+        "openclaw-chose-solid-why-id-choose-nisli/b0024-b7da8757"
+      ],
+      "split": "development"
+    },
+    {
+      "id": "S09-typo",
+      "article": "openclaw-chose-solid-why-id-choose-nisli",
+      "form": "typo",
+      "query": "innerHTM focus scroll replacement",
+      "knownBlocks": [
+        "openclaw-chose-solid-why-id-choose-nisli/b0024-b7da8757"
+      ],
+      "split": "development"
+    },
+    {
+      "id": "S10-topic",
+      "article": "openwiki-validates-my-bet",
+      "form": "topic",
+      "query": "OpenWiki task files agent memory",
+      "knownBlocks": [
+        "openwiki-validates-my-bet/b0013-e29fb0c8",
+        "openwiki-validates-my-bet/b0026-126b2612"
+      ],
+      "split": "development"
+    },
+    {
+      "id": "S10-recollection",
+      "article": "openwiki-validates-my-bet",
+      "form": "recollection",
+      "query": "Find the idea of keeping an agent's work and remembered beliefs together in files.",
+      "knownBlocks": [
+        "openwiki-validates-my-bet/b0013-e29fb0c8",
+        "openwiki-validates-my-bet/b0026-126b2612"
+      ],
+      "split": "development"
+    },
+    {
+      "id": "S10-typo",
+      "article": "openwiki-validates-my-bet",
+      "form": "typo",
+      "query": "OpenWki backlog memory",
+      "knownBlocks": [
+        "openwiki-validates-my-bet/b0013-e29fb0c8",
+        "openwiki-validates-my-bet/b0026-126b2612"
+      ],
+      "split": "development"
+    },
+    {
+      "id": "S11-topic",
+      "article": "oss-radar-09-tsrs-typescript-memory",
+      "form": "topic",
+      "query": "tsrs fast mode cache history diagnostics",
+      "knownBlocks": [
+        "oss-radar-09-tsrs-typescript-memory/b0017-5a946a16",
+        "oss-radar-09-tsrs-typescript-memory/b0020-1f41cd8c"
+      ],
+      "split": "development"
+    },
+    {
+      "id": "S11-recollection",
+      "article": "oss-radar-09-tsrs-typescript-memory",
+      "form": "recollection",
+      "query": "Which compiler experiment changed errors when the order of two files changed?",
+      "knownBlocks": [
+        "oss-radar-09-tsrs-typescript-memory/b0017-5a946a16",
+        "oss-radar-09-tsrs-typescript-memory/b0020-1f41cd8c"
+      ],
+      "split": "development"
+    },
+    {
+      "id": "S11-typo",
+      "article": "oss-radar-09-tsrs-typescript-memory",
+      "form": "typo",
+      "query": "tsrs TypeScipt fast diagnostics",
+      "knownBlocks": [
+        "oss-radar-09-tsrs-typescript-memory/b0017-5a946a16",
+        "oss-radar-09-tsrs-typescript-memory/b0020-1f41cd8c"
+      ],
+      "split": "development"
+    },
+    {
+      "id": "S12-topic",
+      "article": "what-if-the-agent-was-better-before-we-helped",
+      "form": "topic",
+      "query": "ghx executable PATH mistaken for deferred tool",
+      "knownBlocks": [
+        "what-if-the-agent-was-better-before-we-helped/b0105-ca10bbf6"
+      ],
+      "split": "development"
+    },
+    {
+      "id": "S12-recollection",
+      "article": "what-if-the-agent-was-better-before-we-helped",
+      "form": "recollection",
+      "query": "Find the evaluation failure where an agent looked for a tool instead of running the installed shell command.",
+      "knownBlocks": [
+        "what-if-the-agent-was-better-before-we-helped/b0105-ca10bbf6"
+      ],
+      "split": "development"
+    },
+    {
+      "id": "S12-typo",
+      "article": "what-if-the-agent-was-better-before-we-helped",
+      "form": "typo",
+      "query": "ghx exectuable PATH discovery",
+      "knownBlocks": [
+        "what-if-the-agent-was-better-before-we-helped/b0105-ca10bbf6"
+      ],
+      "split": "development"
+    },
+    {
+      "id": "S13-topic",
+      "article": "linux-signal-stack-conflict",
+      "form": "topic",
+      "query": "SA_ONSTACK process wide sigaltstack per thread",
+      "knownBlocks": [
+        "linux-signal-stack-conflict/b0014-24a4e348",
+        "linux-signal-stack-conflict/b0040-a2966651"
+      ],
+      "split": "development"
+    },
+    {
+      "id": "S13-recollection",
+      "article": "linux-signal-stack-conflict",
+      "form": "recollection",
+      "query": "Where is the explanation that one signal setting is shared while each thread owns its alternate stack?",
+      "knownBlocks": [
+        "linux-signal-stack-conflict/b0014-24a4e348",
+        "linux-signal-stack-conflict/b0040-a2966651"
+      ],
+      "split": "development"
+    },
+    {
+      "id": "S13-typo",
+      "article": "linux-signal-stack-conflict",
+      "form": "typo",
+      "query": "sigaltstak thread signal flags",
+      "knownBlocks": [
+        "linux-signal-stack-conflict/b0014-24a4e348",
+        "linux-signal-stack-conflict/b0040-a2966651"
+      ],
+      "split": "development"
+    },
+    {
+      "id": "S14-topic",
+      "article": "productive-procrastination",
+      "form": "topic",
+      "query": "meaningful work justifies postponing sleep",
+      "knownBlocks": [
+        "productive-procrastination/b0002-77bb83dd",
+        "productive-procrastination/b0014-7fd1a656"
+      ],
+      "split": "validation"
+    },
+    {
+      "id": "S14-recollection",
+      "article": "productive-procrastination",
+      "form": "recollection",
+      "query": "Which essay says useful work can still be the reason bedtime keeps moving?",
+      "knownBlocks": [
+        "productive-procrastination/b0002-77bb83dd",
+        "productive-procrastination/b0014-7fd1a656"
+      ],
+      "split": "validation"
+    },
+    {
+      "id": "S14-typo",
+      "article": "productive-procrastination",
+      "form": "typo",
+      "query": "productve procrastination sleep",
+      "knownBlocks": [
+        "productive-procrastination/b0002-77bb83dd",
+        "productive-procrastination/b0014-7fd1a656"
+      ],
+      "split": "validation"
+    },
+    {
+      "id": "S15-topic",
+      "article": "oss-radar-03-buzz-is-slack-on-airoids",
+      "form": "topic",
+      "query": "Buzz MeshLLM Share this machine",
+      "knownBlocks": [
+        "oss-radar-03-buzz-is-slack-on-airoids/b0047-f4ecbcfd"
+      ],
+      "split": "validation"
+    },
+    {
+      "id": "S15-recollection",
+      "article": "oss-radar-03-buzz-is-slack-on-airoids",
+      "form": "recollection",
+      "query": "Find the workspace where a member could offer their own running model to other members.",
+      "knownBlocks": [
+        "oss-radar-03-buzz-is-slack-on-airoids/b0047-f4ecbcfd"
+      ],
+      "split": "validation"
+    },
+    {
+      "id": "S15-typo",
+      "article": "oss-radar-03-buzz-is-slack-on-airoids",
+      "form": "typo",
+      "query": "Buzz shared comput model",
+      "knownBlocks": [
+        "oss-radar-03-buzz-is-slack-on-airoids/b0047-f4ecbcfd"
+      ],
+      "split": "validation"
+    },
+    {
+      "id": "N01",
+      "article": null,
+      "form": "no-known-answer",
+      "query": "animated Unicode emoji library for Svelte",
+      "knownBlocks": [],
+      "split": "development"
+    },
+    {
+      "id": "N02",
+      "article": null,
+      "form": "no-known-answer",
+      "query": "how to sharpen a ceramic kitchen knife",
+      "knownBlocks": [],
+      "split": "development"
+    },
+    {
+      "id": "N03",
+      "article": null,
+      "form": "no-known-answer",
+      "query": "recovering a deleted PostgreSQL row with a time machine",
+      "knownBlocks": [],
+      "split": "development"
+    },
+    {
+      "id": "N04",
+      "article": null,
+      "form": "no-known-answer",
+      "query": "growing tomatoes on a shaded balcony",
+      "knownBlocks": [],
+      "split": "validation"
+    },
+    {
+      "id": "N05",
+      "article": null,
+      "form": "no-known-answer",
+      "query": "a tutorial for tuning a violin",
+      "knownBlocks": [],
+      "split": "validation"
+    },
+    {
+      "id": "N06",
+      "article": null,
+      "form": "no-known-answer",
+      "query": "a hotel cancellation refund guide",
+      "knownBlocks": [],
+      "split": "validation"
+    }
+  ]
+}
