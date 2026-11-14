@@ -1,0 +1,82 @@
+{
+  "sourceCommit": "b98a6c025b9795ec452431114a18a66c6160ef7d",
+  "node": "v24.22.3",
+  "platform": "darwin",
+  "architecture": "arm64",
+  "store": "upstream memorySessionStore retained across drive reopen",
+  "results": [
+    {
+      "case": "interrupted-never",
+      "replay": "never",
+      "interruptionAfterSideEffect": true,
+      "beforeReopenStatus": "running",
+      "afterReopenStatus": "failed",
+      "firstReturnedError": true,
+      "callbackInvocations": 1,
+      "independentlyReadJournalLines": [
+        "invocation-1"
+      ],
+      "resumedResult": {
+        "text": "interrupted: the process running it stopped before it reported an outcome; it may or may not have taken effect",
+        "isError": true,
+        "interrupted": true
+      },
+      "finalStatus": "failed",
+      "recordKinds": [
+        "kernel.start",
+        "kernel.end"
+      ]
+    },
+    {
+      "case": "interrupted-safe",
+      "replay": "safe",
+      "interruptionAfterSideEffect": true,
+      "beforeReopenStatus": "running",
+      "afterReopenStatus": "pending",
+      "firstReturnedError": true,
+      "callbackInvocations": 2,
+      "independentlyReadJournalLines": [
+        "invocation-1",
+        "invocation-2"
+      ],
+      "resumedResult": {
+        "text": "fixture-result-2",
+        "isError": false
+      },
+      "finalStatus": "completed",
+      "recordKinds": [
+        "kernel.start",
+        "kernel.retry",
+        "kernel.start",
+        "kernel.end"
+      ]
+    },
+    {
+      "case": "completed-never",
+      "replay": "never",
+      "interruptionAfterSideEffect": false,
+      "beforeReopenStatus": "completed",
+      "afterReopenStatus": "completed",
+      "firstReturnedError": false,
+      "callbackInvocations": 1,
+      "independentlyReadJournalLines": [
+        "invocation-1"
+      ],
+      "resumedResult": {
+        "text": "fixture-result-1",
+        "isError": false
+      },
+      "finalStatus": "completed",
+      "recordKinds": [
+        "kernel.start",
+        "kernel.end"
+      ]
+    }
+  ],
+  "processKilled": false,
+  "diskStoreRecoveryTested": false,
+  "modelServiceCalls": 0,
+  "actualExternalServiceSideEffects": false,
+  "userConfigurationChanged": false,
+  "scope": "Three authored real-kernel/process-bridge controls with local journal side effects; no full service, disk durability, real CLI/model or exactly-once guarantee."
+}

@@ -1,0 +1,103 @@
+{
+  "userEditorConfigurationChanged": false,
+  "pluginCommit": "58a471ec97fb5987eca2b955fd2cba8693a414f6",
+  "scope": "Three authored compiler-context controls, not full editor usability or compiler performance.",
+  "neovim": {
+    "major": 0,
+    "minor": 12,
+    "build": "v0.12.6",
+    "api_compatible": 0,
+    "patch": 6,
+    "api_level": 14,
+    "api_prerelease": false
+  },
+  "cases": [
+    {
+      "output": "Lfunc_begin0:\n  ; 3 | return x + BONUS;\n        add w0, w0, #7\n        ;DEBUG_VALUE: answer:x <- [DW_OP_LLVM_entry_value 1] $w0\n        ret\n    Lfunc_end0:\n        ; -- End function",
+      "case": "arguments",
+      "assemblyRendered": true,
+      "commands": [
+        {
+          "cwd": "<fixture>/arguments",
+          "argv": [
+            "cc",
+            "-dumpmachine"
+          ]
+        },
+        {
+          "cwd": "<fixture>/arguments",
+          "argv": [
+            "cc",
+            "-I<fixture>/include dir",
+            "<fixture>/arguments/sample.c",
+            "-S",
+            "-g",
+            "-O2",
+            "-o",
+            "-"
+          ]
+        },
+        {
+          "argv": [
+            "c++filt",
+            "--no-strip-underscore",
+            "Lfunc_begin0"
+          ]
+        }
+      ],
+      "completed": true,
+      "notices": [],
+      "outputLineCount": 56
+    },
+    {
+      "output": "clang: error: no such file or directory: 'dir\"'",
+      "case": "quoted-command",
+      "assemblyRendered": false,
+      "commands": [
+        {
+          "cwd": "<fixture>/quoted-command",
+          "argv": [
+            "cc",
+            "-I\"<fixture>/include",
+            "dir\"",
+            "<fixture>/quoted-command/sample.c",
+            "-S",
+            "-g",
+            "-O2",
+            "-o",
+            "-"
+          ]
+        }
+      ],
+      "completed": true,
+      "notices": [],
+      "outputLineCount": 1
+    },
+    {
+      "output": "Lfunc_begin0:\n  ; 3 | return x + 99;\n        add w0, w0, #7\n        ;DEBUG_VALUE: answer:x <- [DW_OP_LLVM_entry_value 1] $w0\n        ret\n    Lfunc_end0:\n        ; -- End function",
+      "case": "unsaved-buffer",
+      "assemblyRendered": true,
+      "commands": [
+        {
+          "cwd": "<fixture>/unsaved-buffer",
+          "argv": [
+            "cc",
+            "-I<fixture>/include dir",
+            "<fixture>/unsaved-buffer/sample.c",
+            "-S",
+            "-g",
+            "-O2",
+            "-o",
+            "-"
+          ]
+        }
+      ],
+      "completed": true,
+      "notices": [
+        "asm: buffer modified \u2014 reading the file on disk"
+      ],
+      "outputLineCount": 56
+    }
+  ],
+  "fixtureExecutableRun": false
+}

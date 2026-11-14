@@ -1,0 +1,29 @@
+{
+  "sourceCommit": "ada44ea930d34b11742e2febc5b4f129261124cb",
+  "node": "v24.14.1",
+  "input": {
+    "smallMac": true,
+    "actualRecording": false,
+    "job": "authored abort-aware enhancement stand-in"
+  },
+  "thresholds": {
+    "GiB24IsSmall": true,
+    "GiB32IsSmall": false
+  },
+  "whileFirstRecording": 0,
+  "whileSecondRecording": 1,
+  "attemptsAfterBothStop": 2,
+  "unloadRequestedAtInterruption": 1,
+  "events": [
+    "started-1",
+    "aborted-1",
+    "unload-requested",
+    "started-2",
+    "completed-2"
+  ],
+  "modelServiceCalls": 0,
+  "microphoneUsed": false,
+  "actualMemoryMeasured": false,
+  "actualModelUnloaded": false,
+  "scope": "Queue scheduling and callback requests only; no full application, audio, model quality or memory/throughput measurement."
+}

@@ -1,0 +1,204 @@
+[
+  {
+    "repository": "klad-app/klad",
+    "commit": "4a2496a34f4947a6890adec078203c43c951b0d8",
+    "defaultBranch": "main",
+    "licenseReportedByGitHub": "NOASSERTION",
+    "inspectionState": "Excluded: main application explicitly source-available",
+    "source": "https://github.com/klad-app/klad/tree/4a2496a34f4947a6890adec078203c43c951b0d8",
+    "inspectedFiles": [
+      "README.md",
+      "LICENSE"
+    ],
+    "inspectionCoverage": "Selected consequential paths, not whole-repository audit unless explicitly stated",
+    "receipts": []
+  },
+  {
+    "repository": "FrigadeHQ/yogurt",
+    "commit": "ada44ea930d34b11742e2febc5b4f129261124cb",
+    "defaultBranch": "main",
+    "licenseReportedByGitHub": "MIT",
+    "inspectionState": "Selected main application/transcription/notes wiring and MCP paths inspected; queue and MCP/socket controls exercised",
+    "source": "https://github.com/FrigadeHQ/yogurt/tree/ada44ea930d34b11742e2febc5b4f129261124cb",
+    "inspectedFiles": [
+      "README.md",
+      "LICENSE",
+      "app/src/main/mcp/server.ts",
+      "app/src/main/mcp/socket.ts",
+      "app/src/main/index.ts (selected wiring)",
+      "app/src/main/meeting.ts (selected lifecycle)",
+      "app/src/main/asr/index.ts (selected capture/transcript path)",
+      "app/src/main/asr/transcribe.ts",
+      "app/src/main/notes/index.ts (selected generation/save path)",
+      "app/src/main/notes/model.ts",
+      "app/src/main/notes/queue.ts",
+      "app/src/main/library/store.ts (selected tables/chunk state)"
+    ],
+    "inspectionCoverage": "Selected consequential paths, not whole-repository audit unless explicitly stated",
+    "receipts": [
+      "results/yogurt-mcp-02.json",
+      "results/yogurt-queue-01.json"
+    ]
+  },
+  {
+    "repository": "0xdeadf1sh/AssemblyForNeovim",
+    "commit": "58a471ec97fb5987eca2b955fd2cba8693a414f6",
+    "defaultBranch": "main",
+    "licenseReportedByGitHub": "Unlicense",
+    "inspectionState": "Complete implementation inspected; three compiler-context controls executed",
+    "source": "https://github.com/0xdeadf1sh/AssemblyForNeovim/tree/58a471ec97fb5987eca2b955fd2cba8693a414f6",
+    "inspectedFiles": [
+      "README.md",
+      "LICENSE",
+      "lua/asm/init.lua"
+    ],
+    "inspectionCoverage": "Selected consequential paths, not whole-repository audit unless explicitly stated",
+    "receipts": [
+      "results/neovim-context-01.json"
+    ]
+  },
+  {
+    "repository": "adrbn/bo2-mac",
+    "commit": "ea6f78e0a41a374e5748635da99bafcc2d062d0b",
+    "defaultBranch": "main",
+    "licenseReportedByGitHub": "GPL-3.0",
+    "inspectionState": "Selected build/runtime/graphics paths inspected; no build or gameplay trial",
+    "source": "https://github.com/adrbn/bo2-mac/tree/ea6f78e0a41a374e5748635da99bafcc2d062d0b",
+    "inspectedFiles": [
+      "README.md",
+      "LICENSE",
+      "docs/PRERELEASE.md",
+      "scripts/build_steam.sh",
+      "runtime/gfx/dxbc_to_msl.cpp",
+      "runtime/win32/interp.cpp"
+    ],
+    "inspectionCoverage": "Selected consequential paths, not whole-repository audit unless explicitly stated",
+    "receipts": []
+  },
+  {
+    "repository": "Parcha-ai/agentrun",
+    "commit": "b98a6c025b9795ec452431114a18a66c6160ef7d",
+    "defaultBranch": "main",
+    "licenseReportedByGitHub": "Apache-2.0",
+    "inspectionState": "Selected recovery/kernel/bridge/learning paths inspected; three authored kernel controls and three separate upstream faux-adapter tests passed; no disk/model trial",
+    "source": "https://github.com/Parcha-ai/agentrun/tree/b98a6c025b9795ec452431114a18a66c6160ef7d",
+    "inspectedFiles": [
+      "README.md",
+      "LICENSE",
+      "packages/run-adapters/src/process/recovery.ts",
+      "packages/run-adapters/src/kernel/drive.ts",
+      "packages/serve/src/learning.ts",
+      "packages/serve/src/runner/learning-loop.ts",
+      "packages/run-adapters/test/faux-recover-calls.test.mjs",
+      "packages/run-adapters/test/recovery-fixture.mjs",
+      "packages/run-adapters/src/process/tools.ts",
+      "packages/run-adapters/src/testing.ts (memory store and selected faux behavior)",
+      "packages/run-adapters/src/kernel/types.ts",
+      "packages/run-adapters/src/kernel/errors.ts",
+      "packages/serve/src/runner/sessions.ts",
+      "v0.1.0-beta.37 release notes"
+    ],
+    "inspectionCoverage": "Selected consequential paths, not whole-repository audit unless explicitly stated",
+    "receipts": [
+      "results/agentrun-recovery-01.json",
+      "results/agentrun-upstream-recovery-01.json"
+    ]
+  },
+  {
+    "repository": "simpsoka/zigzag",
+    "commit": "ad19cb09dcf5649fac55b43a083714bcd2b761d4",
+    "defaultBranch": "main",
+    "licenseReportedByGitHub": "Apache-2.0",
+    "inspectionState": "Selected core CLI/document/check/format paths inspected; two exports and one PES reopen executed",
+    "source": "https://github.com/simpsoka/zigzag/tree/ad19cb09dcf5649fac55b43a083714bcd2b761d4",
+    "inspectedFiles": [
+      "README.md",
+      "LICENSE",
+      "Cargo.toml",
+      "build.rs",
+      "src/main.rs",
+      "src/checks.rs",
+      "src/document/mod.rs",
+      "src/formats/pes.rs",
+      "src/design.rs (selected planning/travel path)"
+    ],
+    "inspectionCoverage": "Selected consequential paths, not whole-repository audit unless explicitly stated",
+    "receipts": [
+      "results/zigzag-export-01.json"
+    ],
+    "sourceBuildLimit": "Source pin follows tagged v0.1.3; version string is not proof of release-binary equivalence"
+  },
+  {
+    "repository": "Vaibhaav-Tiwari/deepseek-v3-jax",
+    "commit": "6901be60941b98dc654ed542465290db9e8bafa6",
+    "defaultBranch": "main",
+    "licenseReportedByGitHub": "MIT",
+    "inspectionState": "Complete model implementation inspected; tiny CPU routing/cache/compute controls executed",
+    "source": "https://github.com/Vaibhaav-Tiwari/deepseek-v3-jax/tree/6901be60941b98dc654ed542465290db9e8bafa6",
+    "inspectedFiles": [
+      "README.md",
+      "LICENSE",
+      "deepseek_v3.py"
+    ],
+    "inspectionCoverage": "Selected consequential paths, not whole-repository audit unless explicitly stated",
+    "receipts": [
+      "results/jax-mechanisms-01.json"
+    ]
+  },
+  {
+    "repository": "paul-nameless/agweb",
+    "commit": "a52c8b66e16499ec2781c7fea3c4a37983a7002c",
+    "defaultBranch": "master",
+    "licenseReportedByGitHub": "MIT",
+    "inspectionState": "Workspace/profile/state/build/isolation paths inspected; official 0.2.0 app passed five-workspace cookie/localStorage controls; source build failed for unavailable full-Xcode plugin",
+    "source": "https://github.com/paul-nameless/agweb/tree/a52c8b66e16499ec2781c7fea3c4a37983a7002c",
+    "inspectedFiles": [
+      "README.md",
+      "LICENSE",
+      "Sources/AgwebApp/Browser.swift",
+      "Sources/AgwebApp/Model.swift",
+      "Sources/AgwebApp/BrowserState.swift",
+      "scripts/build.sh",
+      "scripts/selftest.sh (selected isolation/command paths)",
+      "Package.swift",
+      "Sources/AgwebApp/AdBlock.swift (list override)",
+      "Sources/agweb/main.swift (test root and launch/output paths)",
+      "Sources/AgwebCore/Protocol.swift (root/settings path)"
+    ],
+    "inspectionCoverage": "Selected consequential paths, not whole-repository audit unless explicitly stated",
+    "receipts": [
+      "results/agweb-setup-01.json",
+      "results/agweb-profiles-01.json"
+    ]
+  },
+  {
+    "repository": "kane50613/takumi",
+    "discovery": "Return visit to OSS Radar #1; separate from Show HN sample",
+    "commit": "ae2a35011e5cddedb0a4c8b33ab0c9242ca76b2d",
+    "release": "takumi@2.20.0",
+    "releaseDate": "2026-11-08",
+    "currentDefaultBranchCommit": "8a55f0b673ad1a707a422457876783b658183f33",
+    "historicalCheckpoint": "2d772756bd0f46d0dae6f6d365b1bb210505003c",
+    "historicalCheckpointLimit": "Reconstructed near publication day; original audited SHA not recovered",
+    "licenseChecked": "MIT OR Apache-2.0 per README",
+    "source": "https://github.com/kane50613/takumi/tree/ae2a35011e5cddedb0a4c8b33ab0c9242ca76b2d",
+    "inspectionState": "Historical/current/release and shared preparation/font registry inspected; exact-same-object native 2.19/2.20 registration contrast reproduced; earlier passing conditions retained",
+    "inspectedFiles": [
+      "README.md at all three checkpoints",
+      "takumi-js/src/render.ts",
+      "takumi-helpers/src/fonts.ts",
+      "takumi-napi/tests/register-font-again.test.ts",
+      "takumi-wasm/src/renderer.rs at 2.19.0 and 2.20.0",
+      "takumi-bindings-js/src/renderer.ts (FontRegistry)",
+      "takumi-napi/package.json",
+      "commit 4fd9276e43b0130abab25da788625a2b3bd19aa2",
+      "published native facade dist/export.mjs in 2.19.0 and 2.20.0 (selected registry path)"
+    ],
+    "inspectionCoverage": "Selected consequential paths, not all backends/output formats",
+    "receipts": [
+      "results/takumi-font-alias-01.json",
+      "results/takumi-font-alias-shared-01.json",
+      "results/takumi-font-alias-same-object-01.json"
+    ]
+  }
+]

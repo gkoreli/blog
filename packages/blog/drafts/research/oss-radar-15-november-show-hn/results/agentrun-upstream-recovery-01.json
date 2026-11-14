@@ -1,0 +1,15 @@
+{
+  "sourceCommit": "b98a6c025b9795ec452431114a18a66c6160ef7d",
+  "node": "v24.22.3",
+  "suite": "packages/run-adapters/test/faux-recover-calls.test.mjs",
+  "tests": 3,
+  "passed": 3,
+  "failed": 0,
+  "skipped": 0,
+  "conditions": [
+    "Unanswered request is not invented as a recovered tool call",
+    "Answered parked call runs on recovery under its stable id",
+    "Two-call response preserves ordering and text boundaries"
+  ],
+  "scope": "Upstream faux-adapter synthetic recovery tests, separate from authored kernel controls; no real CLI/model or disk-store result."
+}

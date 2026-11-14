@@ -1,0 +1,37 @@
+{
+  "sourceCommit": "a52c8b66e16499ec2781c7fea3c4a37983a7002c",
+  "build": "release-v0.2.0",
+  "os": "27.2",
+  "architecture": "arm64",
+  "versionReply": "agweb 0.2.0",
+  "cases": {
+    "unnamedWriter": {
+      "cookie": "radar=private-fixture",
+      "local": "private-fixture"
+    },
+    "otherUnnamed": {
+      "cookie": "",
+      "local": null
+    },
+    "namedWriter": {
+      "cookie": "radar=shared-fixture",
+      "local": "shared-fixture"
+    },
+    "sameNamedProfile": {
+      "cookie": "radar=shared-fixture",
+      "local": "shared-fixture"
+    },
+    "differentNamedProfile": {
+      "cookie": "",
+      "local": null
+    }
+  },
+  "rootMode": "unique nondefault AGWEB_ROOT; new synthetic profile names",
+  "pageOrigin": "loopback HTTP at one ephemeral origin",
+  "adblockList": "owned loopback list",
+  "realAccountUsed": false,
+  "publicPageOpened": false,
+  "cliOrSkillInstalled": false,
+  "modelServiceCalls": 0,
+  "scope": "One running macOS WebKit app: cookie/localStorage isolation and sharing across five synthetic workspaces; no focus/memory/token benchmark, restart persistence or complete browser isolation audit."
+}

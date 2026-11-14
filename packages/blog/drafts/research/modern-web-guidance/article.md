@@ -1,4 +1,4 @@
-# OSS Radar #15: How Modern Web Guidance’s Seven-Line Embedder Works
+# How Modern Web Guidance’s seven-line embedder works
 
 Modern Web Guidance turns a short search query into 256 numbers by looking up learned word vectors, weighting them and adding them. Those numbers help find relevant implementation guides. Its seven-line loop performs the sum; the trained table and surrounding code make that sum useful for search.
 

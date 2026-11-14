@@ -1,0 +1,64 @@
+{
+  "sourceCommit": "ada44ea930d34b11742e2febc5b4f129261124cb",
+  "node": "v24.14.1",
+  "socketMode": "600",
+  "phases": [
+    {
+      "phase": "off",
+      "storeReads": 0,
+      "results": [
+        {
+          "client": "Fixture A",
+          "refused": true,
+          "syntheticTranscriptReturned": false
+        },
+        {
+          "client": "Fixture B",
+          "refused": true,
+          "syntheticTranscriptReturned": false
+        }
+      ]
+    },
+    {
+      "phase": "on",
+      "storeReads": 4,
+      "results": [
+        {
+          "client": "Fixture A",
+          "refused": false,
+          "syntheticTranscriptReturned": true
+        },
+        {
+          "client": "Fixture B",
+          "refused": false,
+          "syntheticTranscriptReturned": true
+        }
+      ]
+    },
+    {
+      "phase": "off-again",
+      "storeReads": 0,
+      "results": [
+        {
+          "client": "Fixture A",
+          "refused": true,
+          "syntheticTranscriptReturned": false
+        },
+        {
+          "client": "Fixture B",
+          "refused": true,
+          "syntheticTranscriptReturned": false
+        }
+      ]
+    }
+  ],
+  "connectedNames": [
+    "Fixture A",
+    "Fixture B"
+  ],
+  "actualMeetingDataUsed": false,
+  "microphoneUsed": false,
+  "modelServiceCalls": 0,
+  "userConfigurationChanged": false,
+  "scope": "Two same-user connections to the unchanged MCP/socket modules with an in-memory synthetic store; not full-app privacy or transcription acceptance."
+}

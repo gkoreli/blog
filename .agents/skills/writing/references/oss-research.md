@@ -1,12 +1,12 @@
 # OSS research
 
-Use for OSS Radar: reconstruct what shipped, why the project has that shape, and which user decision the evidence supports. Choose a single-project deep dive or a cohort scan as the article’s main focus. Research can use both methods; the article should not become several unrelated reviews. OSS Radar has no prompt file.
+Use for OSS Radar: assemble a coherent, sourced project selection, understand its participants, and distill what matters across the set. Follow the [cohesive Radar format](oss-radar-format.md) and [participant due diligence](oss-radar-due-diligence.md), grounded in issues #1 and #14. Sources include launch cohorts, GitHub discovery and returning projects; Show HN is one source. Single-project implementation explanations belong in engineering. OSS Radar has no public prompt file.
 
 ## Establish the source and claim set
 
 ### Weekly production
 
-The [weekly worklist](../../../../docs/worklist/oss-radar-weekly/README.md) owns the current issue, work stages and Monday publication queue. Follow its research, experimentation, artifact, editorial and release standards. Keep one active issue and a small candidate list; do not let discovery displace the sustained field work needed for the selected question. One useful, well-supported issue per week is the current cadence. Queue only reviewed work for Monday 08:00 Pacific; unfinished claims require more work, narrower scope or an explicit hold.
+The [weekly worklist](../../../../docs/worklist/oss-radar-weekly/README.md) owns the current source/cohort, project reviews and Monday publication preparation. Keep one active issue; do not let future-issue scouting displace work on the next release. Follow its research, experimentation, editorial and release standards. Queue only reviewed cohort issues. Respect any publication pause; a prepared article does not authorize re-enabling a disabled publisher.
 
 Use the week for source reading, representative trials, implementation and separate factual/usefulness/prose reviews. Prefer work a reader can inspect and apply. Session count, word count, tool calls and elapsed time are not quality measures. Do not copy the research notebook or author conversations into the article. Preserve exact writing prompts in the private archive as usual.
 
@@ -38,7 +38,9 @@ Future direction has four distinct states:
 
 Tie a future idea to `shipped part -> new action -> missing rule/component -> possible product`. Name the missing trust, payment, code or operational work. An extension point is not a roadmap. Prefer the nearer supported path and keep only futures that matter to the article’s decision.
 
-## Single-project deep dive
+## Related engineering deep dives
+
+The following research method can support a separate engineering article or deepen one project entry. It does not by itself make a manuscript an OSS Radar issue.
 
 Build the explanation around the significance and falsifiable verdict, the consequential shipped path, the product theory, its material limits and the adoption decision. These are research obligations, not five mandatory headings.
 

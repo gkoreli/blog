@@ -1,0 +1,59 @@
+# Cohort project-review protocol
+
+Declared November 14, before the new local controls below. Preserve the source population and selection boundaries in the [inventory method](inventory-method.json). Follow the [series format](../../../../../.agents/skills/writing/references/oss-radar-format.md); this investigation supplies evidence for project entries and the cohort's distillation, not several standalone engineering articles.
+
+For every included project, record the problem/user, a called implementation path beyond its README, dependencies/operator responsibilities, license, consequential current discussion and a bounded editorial judgment. Read source before interpreting a trial. A launch statement or public user report remains attributed evidence until reproduced. Keep unavailable hardware/model trials unavailable; do not substitute a passing setup test for the product thesis.
+
+## Initial meaningful controls
+
+### AssemblyForNeovim
+
+Baseline `58a471ec97fb5987eca2b955fd2cba8693a414f6`. Inspect `db_entry`, `cc_base`, `build`, `extract`, `run` and `M.show`. Run the actual plugin in an isolated official Neovim 0.12.6 process, using `--clean -u NONE -i NONE`. Do not modify the user's editor configuration.
+
+Question: does the preview preserve a real compilation database's context? Construct a tiny C function depending on a header under an include directory containing a space. Supply semantically equivalent `compile_commands.json` entries using (a) `arguments`, (b) a correctly shell-quoted `command`. Compile through the plugin. Expected from inspection: the argument array preserves the path; whitespace splitting of the string form may lose it. Retain both outcomes and command/error evidence. The question is about this paired case, not every compilation database.
+
+Also inspect the saved-file/unsaved-buffer behavior. If exercised, keep the on-disk and displayed source versions explicit. No compiler output establishes runtime performance or full editor usability. The source is compiled only to assembly; no fixture executable is run.
+
+### DeepSeek V3 in JAX
+
+Baseline `6901be60941b98dc654ed542465290db9e8bafa6`. Use the project's pinned JAX 0.4.34, jaxlib 0.4.34, Optax 0.2.5 and NumPy 2.5.4 in a temporary Python 3.12 CPU runtime. Exclude Metal and training dependencies; record this subset rather than calling it the full published training environment. No checkpoint/pickle, book dataset or model service is needed.
+
+Inspect routed selection versus gate weighting, expert computation and the compressed attention cache. On small synthetic tensors, check that a bias changes selected experts while surviving weights still use raw affinities; compare cached incremental attention with an equivalent full pass at a declared float32 tolerance. Inspect the all-expert tensor contraction separately: sparse output gates alone do not establish sparse compute. These mechanism controls cannot reproduce training quality, balance over a long run, hardware throughput or the full DeepSeek-V3 model.
+
+### ZigZag
+
+Baseline `ad19cb09dcf5649fac55b43a083714bcd2b761d4`. Read SVG import, document/stitch planning, hoop checks and format writing before a CLI trial. Build only the core CLI, with GUI/Bluetooth features disabled. Use a synthetic, bounded SVG and a deliberate over-hoop control. Inspect exported stitch structure and round-trip behavior where supported. Do not connect hardware or infer sew-out quality, tension, fabric suitability or device reliability from a file export.
+
+### Yogurt
+
+Baseline `ada44ea930d34b11742e2febc5b4f129261124cb`. Exercise the unchanged MCP server and socket modules with an authored in-memory meeting, not real recordings. Check two same-user Unix-socket clients with access off, then on, then off again on the existing connections. Expected from the called code: off denies data; enabled is a global read gate rather than per-client authorization; turning it off blocks subsequent reads. Check the actual socket mode. This does not test recording/transcription quality, every application network path or a downstream assistant's treatment of data. No microphone, account, cloud model or external message is involved.
+
+After tracing the main application wiring, transcription and notes paths, inspect `notes/queue.ts` for the operating tradeoff of on-device inference. Before running this additional control, declare a synthetic `smallMac: true` queue: an enhancement job waits during recording, starts after recording stops, is aborted when another recording begins, requests the model-unload callback, and starts again after that recording stops. Use the unchanged queue module and a synthetic abort-aware job. Check `isSmallMac` at 24/32 GiB separately. This tests scheduling and callback requests, not actual microphone capture, RAM use, model unloading, note quality or big-Mac throughput/backlog behavior.
+
+### Returning project: Takumi
+
+Issue #1 discussed Takumi as an image renderer. Compare the repository's March 19 historical checkpoint (not a recovered original audit SHA), current master and the November 8 `takumi@2.20.0` release. Read the shared render path and the release's font-registration regression tests before execution. Current documentation describes a broader shared layout engine with image/SVG/PDF/paint outputs; that is source/documented scope until tested, not proof of a strategic pivot or every output's quality.
+
+The recent release says re-registering identical font bytes under new descriptors now creates the requested family. Run that small use case against the published 2.20.0 native package and, if available, 2.19.0 as a version control. Use the pinned repository's small Geist variable WOFF2, verify its blob identity, register it as Alpha and Beta, and compare the two rendered PNGs. Preserve family names and output identity/failure; do not infer general font conformance or performance. No browser, paid service or user font is required.
+
+The first native receipt used two copied `Uint8Array` inputs with identical bytes and passed on both versions. That does not exactly match the upstream regression's shared `ArrayBuffer` plus a view of it. Before the next execution, add a separately named shared-buffer condition using that same object/view pair, retain the copied-buffer receipt, and limit any conclusion to the observed conditions/backend. Do not describe the advertised change as reproduced solely because current rendering works.
+
+Both native conditions passed. Further inspection of the actual published facade and the [November 1 change](https://github.com/kane50613/takumi/commit/4fd9276e43b0130abab25da788625a2b3bd19aa2) identifies a more specific hypothesis: the old JavaScript registry's `WeakMap` keys each buffer/view **object**, and its generated key omits face descriptors. An ArrayBuffer and its Uint8Array view remain different keys even with shared bytes. Before another execution, add a separately named `same-object` condition that passes the exact same Uint8Array object for both registrations. Expected contrast: old facade reuses the Alpha registration for Beta; current facade includes face descriptors and returns Beta. Retain previous receipts as controls; do not generalize this to other font descriptors or WASM.
+
+### AgentRun kernel recovery
+
+Baseline `b98a6c025b9795ec452431114a18a66c6160ef7d`, with an isolated verified Node 24.22.3 runtime and unchanged source. Read the actual kernel `openDrive`/`effect`, replay policies, writer fencing and memory store, plus the process bridge and relevant upstream recovery controls. Build only the DSL and kernel/adapter packages with pinned dependencies and install scripts disabled; do not launch a model, provider proxy or full service.
+
+Question: what does reopening a session actually do with an effect whose side effect occurred before its outcome was recorded? Use the real kernel and upstream in-memory session store. Let an authored `never` effect append to an owned local journal and stop before returning; abort that drive and reopen the same retained store. Ask for the same key again and check the journal independently. Contrast `safe`: its interrupted intent should become retryable and its callback can append again. Include a completed-effect control, which should return its recorded output without executing again. Verify the interrupted callback really ran before the reopen, rather than constructing only a desired final record.
+
+This is a controlled drive interruption/reopen with retained memory, not an operating-system process kill, disk-store recovery, full agent resume or exactly-once proof. Preserve that boundary even if the side-effect file survives. Run a small relevant upstream faux-adapter recovery suite separately if the build supports it; do not merge that test count with authored trial cases or claim real CLI/model coverage.
+
+### Agweb profile sharing
+
+Baseline `a52c8b66e16499ec2781c7fea3c4a37983a7002c`. Read the supported `build.sh --test DIR`, `AGWEB_ROOT` isolation, profile-store and command paths before execution. Build a temporary test-bundle app in the research directory, without installing its CLI/skill or changing a browser configuration. Use a unique `AGWEB_ROOT`, download/home paths and a loopback-only synthetic page. Supply a local adblock list so this trial does not need the default external list downloads. Never open a real account, public website, challenge or X.
+
+Question: does the running application share website state across visible workspaces according to the inspected profile choice? Open two unnamed workspaces at the same local origin. Write a synthetic cookie/localStorage marker in the first and check the second stays empty. Open two workspaces using one new named fixture profile; write the marker in the first and check the second reads it. Include another named profile as an isolation control. Independently record command results and observed storage, with actual app/source/OS version. Quit only the owned instance and stop only the owned local server. A build/setup failure remains a retained failure, not an isolation result. This does not measure focus, memory, token efficiency, concurrent agent throughput, restart persistence or CDP compatibility.
+
+The supported source build failed before an app existed: this host has Command Line Tools and no full Xcode, with the SwiftUI State macro plugin unavailable. Before the browser trial, use the official v0.2.0 DMG as a separately declared fallback, verify its release asset SHA-256 and signature, copy it only to the temporary research directory, and retain its original bundle. The supported nondefault `AGWEB_ROOT` keeps test state separate without modifying the binary. Record this as a **released binary** trial, not a successful source build. No installation or signature bypass is required.
+
+Other project controls will be added before their execution if source review identifies a useful question. Frozen outcomes remain unchanged; fixes or different inputs need separately named cases. Raw logs stay outside Git; public fixtures and normalized results record versions, conditions, results and practical limits.

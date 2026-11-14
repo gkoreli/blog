@@ -1,4 +1,6 @@
-# OSS Radar #15 — Monday release preparation
+# Modern Web Guidance — withdrawn Radar release preparation
+
+**November 14 correction:** this manuscript is an unpublished engineering article, not OSS Radar #15. Its dated queue copy and manifest entry have been removed. The research, engineering draft and dated acceptance history below are retained; those earlier checks do not authorize a Radar release. The [weekly worklist](../../../../../docs/worklist/oss-radar-weekly/README.md) owns the replacement cohort issue. Automatic publication remains paused.
 
 November 14, 2026, America/Los_Angeles. Target: **November 16 at 08:00 Pacific**. The [weekly production worklist](../../../../../docs/worklist/oss-radar-weekly/README.md) owns the recurring cadence. This pass prepares the existing [reviewed manuscript](article.md); it does not start another article or alter frozen study results.
 
