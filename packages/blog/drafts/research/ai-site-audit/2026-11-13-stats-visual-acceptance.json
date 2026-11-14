@@ -1,0 +1,182 @@
+{
+  "version": 1,
+  "measuredAt": "2026-11-14T04:50:40.338094+00:00",
+  "implementationCommit": "0e31268b0b74359ec498702a2890cc83df3e976d",
+  "sourceCommit": "0e31268b0b74359ec498702a2890cc83df3e976d",
+  "cloudflareBuild": "8912caab-29b9-4bd7-9eb5-04c1b822d3b6",
+  "method": "Six fresh read-only page/asset GETs. Matching served source/build identity, Git ancestry from the checked implementation, report structure, default homepage shell and exact built asset comparisons. Raw responses and headers remain outside Git.",
+  "localChecks": {
+    "typecheck": true,
+    "siteTests": 457,
+    "markdownValidation": 35,
+    "builtPosts": 46,
+    "privatePromptGuard": true,
+    "referralPolicy": true
+  },
+  "responses": [
+    {
+      "path": "/stats",
+      "status": 200,
+      "sha256": "ee11d3a25b49f31b0201bee9cfde2c588691018cb19141a45a57e774c2081d9b",
+      "passed": true,
+      "source": "0e31268b0b74359ec498702a2890cc83df3e976d",
+      "build": "8912caab-29b9-4bd7-9eb5-04c1b822d3b6",
+      "containsImplementation": true
+    },
+    {
+      "path": "/design-language",
+      "status": 200,
+      "sha256": "5d00339cb99a8ee504747a4323bd8e456b2206c76f45d4c5e29ec9e1f02c4038",
+      "passed": true,
+      "source": "0e31268b0b74359ec498702a2890cc83df3e976d",
+      "build": "8912caab-29b9-4bd7-9eb5-04c1b822d3b6",
+      "containsImplementation": true
+    },
+    {
+      "path": "/stats.css",
+      "status": 200,
+      "sha256": "07927e2648294bac5553a6ff4ee9574211c1cb4794029cb78948686df9658fb8",
+      "passed": true
+    },
+    {
+      "path": "/stats.js",
+      "status": 200,
+      "sha256": "31a13f2de3a3b01763524fe49800a7ba6e1ecc7d487dd0118a526720f6631af7",
+      "passed": true
+    },
+    {
+      "path": "/main.css",
+      "status": 200,
+      "sha256": "f7c56b95f43556c6954c7abe45921c2cd2418fc940fb78a7cfa0c65da174d50f",
+      "passed": true
+    },
+    {
+      "path": "/",
+      "status": 200,
+      "sha256": "bd80b97629c724c9c8bca8ef8ce6c2dd8e02e6fbe653f7d06a290ff9c7b3aa8b",
+      "passed": true,
+      "source": "0e31268b0b74359ec498702a2890cc83df3e976d",
+      "build": "8912caab-29b9-4bd7-9eb5-04c1b822d3b6",
+      "containsImplementation": true
+    }
+  ],
+  "checks": {
+    "consistentServedIdentity": true,
+    "reportWidthVariant": true,
+    "resultSectionsPreserved": true,
+    "visibleReadingNotes": true,
+    "visibleMethodTopics": true,
+    "pageTitleCatalogue": true,
+    "loadingSurface": true,
+    "sharedGroupedEvidence": true,
+    "exact /stats.css": true,
+    "exact /stats.js": true,
+    "exact /main.css": true
+  },
+  "sameReportPreservation": {
+    "sameSavedReport": true,
+    "checks": {
+      "chart": true,
+      "coverage": true,
+      "evidence": true,
+      "fields": true,
+      "methods": true,
+      "notes": true,
+      "reasons": true,
+      "rows": true,
+      "totals": true
+    },
+    "beforeDocumentHeight": 49423,
+    "afterDocumentHeight": 43264,
+    "pixelsReduced": 6159,
+    "additionalRequestsBeyondInitialPageLoad": 0,
+    "viewport": {
+      "width": 1280,
+      "height": 720
+    },
+    "limits": "One saved 30-day/all report, not new traffic or reader-comprehension measurements."
+  },
+  "limits": [
+    "The preservation comparison uses a dated saved public report, not current traffic measurements.",
+    "Visual QA and structural checks do not measure reader comprehension.",
+    "Collection, classification, SQL, ranking limits, cache behavior and report consistency checks are unchanged."
+  ],
+  "browserChecks": {
+    "desktop": {
+      "activeChapter": "Overview",
+      "loadingHidden": true,
+      "measuredAt": "2026-11-14T04:50:58.158Z",
+      "methodTopics": 5,
+      "overflow": false,
+      "readingNotes": 16,
+      "records": [
+        {
+          "id": "stats-kind-signature-rows",
+          "rows": 136
+        },
+        {
+          "id": "stats-client-evidence-rows",
+          "rows": 204
+        },
+        {
+          "id": "stats-native-category-rows",
+          "rows": 53
+        }
+      ],
+      "reportWidth": 964,
+      "requestContextStates": 7,
+      "titleRows": 10,
+      "width": 1280
+    },
+    "filter": {
+      "json": "/api/stats?range=30d&traffic=browser",
+      "nameCoverage": [
+        "0",
+        "2,517"
+      ],
+      "notes": 16,
+      "ready": true,
+      "records": 15,
+      "url": "https://gkoreli.com/stats?traffic=browser",
+      "verificationFacts": 30
+    },
+    "phone": {
+      "countsOnScreen": true,
+      "measuredAt": "2026-11-14T04:53:04.544Z",
+      "notes": 16,
+      "overflow": false,
+      "tableKeyboardScroll": true,
+      "theme": "dark",
+      "width": 320
+    },
+    "shared": {
+      "counts": [
+        "1,200",
+        "48",
+        "0"
+      ],
+      "groups": 2,
+      "overflow": false,
+      "records": 3,
+      "theme": "dark",
+      "width": 320
+    },
+    "local": {
+      "minimumTargetHeight": 44,
+      "phoneWidths": [
+        320,
+        393
+      ],
+      "tabletWidth": 900,
+      "emptyState": true,
+      "unavailableState": true,
+      "historyRestoration": true,
+      "allDataAndNotesPreserved": true
+    }
+  },
+  "deploymentCheck": {
+    "name": "Workers Builds: gkoreli-com",
+    "conclusion": "success",
+    "build": "8912caab-29b9-4bd7-9eb5-04c1b822d3b6"
+  }
+}

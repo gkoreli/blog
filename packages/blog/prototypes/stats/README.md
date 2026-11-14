@@ -41,3 +41,6 @@ The [fresh acceptance receipt](../../drafts/research/ai-site-audit/2026-11-13-st
 ## Visual QA and report study — November 13
 
 The [visual QA study](visual-qa-study.md) supersedes the previous layout as the current presentation direction. It records the wider shared report shell, totals beside the trend, persistent navigation, readable page identities, distinct fact and comparison patterns, contextual notes and grouped complete evidence. A same-response DOM comparison preserves every rendered record and note body while reducing the desktop document height by 6,159px. The study distinguishes local visual checks from final delivery and public acceptance.
+
+
+Delivered as `0e31268b`; Cloudflare build `8912caab-29b9-4bd7-9eb5-04c1b822d3b6` succeeded. The [fresh acceptance receipt](../../drafts/research/ai-site-audit/2026-11-13-stats-visual-acceptance.json) confirms the served implementation and assets, preserved complete records, live filtering, visible phone counts and shared examples. Types, 457 site tests, 35 Markdown validations and an isolated 46-post build pass. The visual revision is complete; the study retains the preservation method and its limits.
