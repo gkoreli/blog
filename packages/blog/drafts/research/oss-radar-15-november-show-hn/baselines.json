@@ -182,7 +182,7 @@
     "historicalCheckpointLimit": "Reconstructed near publication day; original audited SHA not recovered",
     "licenseChecked": "MIT OR Apache-2.0 per README",
     "source": "https://github.com/kane50613/takumi/tree/ae2a35011e5cddedb0a4c8b33ab0c9242ca76b2d",
-    "inspectionState": "Historical/current/release and shared preparation/font registry inspected; exact-same-object native 2.19/2.20 registration contrast reproduced; earlier passing conditions retained",
+    "inspectionState": "Historical/current/release and called preparation/font paths inspected; two-version same-object registration contrast, native resource preparation and current font-shadow condition exercised",
     "inspectedFiles": [
       "README.md at all three checkpoints",
       "takumi-js/src/render.ts",
@@ -192,13 +192,32 @@
       "takumi-bindings-js/src/renderer.ts (FontRegistry)",
       "takumi-napi/package.json",
       "commit 4fd9276e43b0130abab25da788625a2b3bd19aa2",
-      "published native facade dist/export.mjs in 2.19.0 and 2.20.0 (selected registry path)"
+      "published native facade dist/export.mjs in 2.19.0 and 2.20.0 (selected registry path)",
+      "takumi-bindings-js/src/prepared.ts",
+      "takumi-napi/src/export.ts (selected facade paths)",
+      "takumi-helpers/src/images.ts",
+      "takumi-napi/tests/prepare.test.ts",
+      "takumi-bindings-common/src/lib.rs (embedded-font path)",
+      "takumi-core/src/fonts/css_font_selector.rs (registration/family-selection paths)",
+      "takumi-core/src/fonts/font_face_cache.rs (capability ranking)",
+      "takumi-core/src/fonts/font_cache.rs",
+      "takumi-core/src/resources/font.rs (fallback bucket)"
     ],
     "inspectionCoverage": "Selected consequential paths, not all backends/output formats",
     "receipts": [
       "results/takumi-font-alias-01.json",
       "results/takumi-font-alias-shared-01.json",
-      "results/takumi-font-alias-same-object-01.json"
-    ]
+      "results/takumi-font-alias-same-object-01.json",
+      "results/takumi-prepared-resources-01.json",
+      "results/takumi-font-shadow-01.json"
+    ],
+    "discussionSources": [
+      "https://github.com/kane50613/takumi/issues/2439",
+      "https://github.com/kane50613/takumi/pull/2444",
+      "https://github.com/kane50613/takumi/pull/2435",
+      "https://github.com/kane50613/takumi/issues/2558",
+      "https://github.com/kane50613/takumi/issues/2372"
+    ],
+    "latestFollowup": "05-takumi-afternoon-fieldwork.md"
   }
 ]

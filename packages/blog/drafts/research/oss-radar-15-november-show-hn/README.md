@@ -30,7 +30,11 @@ These are research questions, not article verdicts. Check each license and conse
 
 [First manuscript review and continuation](04-manuscript-review.md) records the factual/usefulness/prose pass, preparation checks, remaining Sunday acceptance and publication boundary.
 
+Latest handoff: [November 14 afternoon Takumi fieldwork](05-takumi-afternoon-fieldwork.md). The released native resource path now has a controlled HTTP/PNG/SVG trial, and a separate current user report about the built-in `Geist` family was reproduced with a Cyrillic subset and ASCII control. The manuscript now distinguishes the fixed registration case from this matching limit. The source window and final editorial/render acceptance remain open.
+
 Takumi's return visit compares a reconstructed March 19 checkpoint, current master and released 2.20.0 source. Its broader shared-layout/resource scope is documented and source-inspected. Copied buffers and an ArrayBuffer/view pair passed in both native releases. The changed JavaScript cache keys explain why: those inputs have different object identities. A separately declared exact-same-object condition reproduced the registration contrast—2.19 returned Alpha for the requested Beta face; 2.20 returned Beta. Identical PNGs alone missed it. All three receipts remain. No original #1 audit SHA, other-descriptor/WASM or all-format acceptance is claimed.
+
+The afternoon trial additionally showed native `prepare` fetching the drawn CSS image once, skipping the hidden image and reusing bytes for PNG/SVG/measurement. Raw native rendering without bytes did not fetch; the higher-level wrapper uses preparation. On a separate font condition, native 2.20.0 successfully registered the reported Cyrillic face as `Geist` yet drew boxes; an alias worked, while removing the built-in fixed Cyrillic but lost Latin fallback. These checks support advice about the actual API, scripts and font names, not general conformance or a performance claim.
 
 Public GitHub feed leads were independently checked and saved in the source portfolio. They remain discovery-only while the current participant work is unfinished. No project earns a featured entry merely by appearing in a feed.
 

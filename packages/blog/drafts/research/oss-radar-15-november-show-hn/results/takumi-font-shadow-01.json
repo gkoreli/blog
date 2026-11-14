@@ -1,0 +1,150 @@
+{
+  "issue": "https://github.com/kane50613/takumi/issues/2558",
+  "sourceCommit": "ae2a35011e5cddedb0a4c8b33ab0c9242ca76b2d",
+  "packageVersion": "2.20.0",
+  "packageIntegrity": "sha512-28uryNYSyuXZWv5uBfJiWDrRXVdAunkU0sZiB7KG2WgLej64pUNL6jZSTQa+gBXfVu+3DdCz58OnpONBO6EUqQ==",
+  "font": {
+    "package": "@fontsource-variable/geist",
+    "version": "5.3.0",
+    "integrity": "sha512-j0m+vLQuG5XAYoHtGCVu0spvlGreR3EzpECUVzkFmI1mTVnAO38l/NEPDCFgZ177JxzYJCLSmTQibIiYPilGrA==",
+    "license": "OFL-1.1",
+    "file": "@fontsource-variable/geist/files/geist-cyrillic-wght-normal.woff2",
+    "bytes": 15084,
+    "sha256": "6894439694946a589d157ece003086960a6a4013d74a813dab7602efdb3d8c09"
+  },
+  "node": "v24.14.1",
+  "platform": "darwin",
+  "architecture": "arm64",
+  "fontWeight": 400,
+  "cases": [
+    {
+      "case": "builtin-only",
+      "requestedFamily": "Geist",
+      "removedBuiltin": false,
+      "returnedFamilies": [],
+      "renders": [
+        {
+          "script": "cyrillic",
+          "text": "Файли",
+          "image": "builtin-only-cyrillic.png",
+          "bytes": 1767,
+          "pngSha256": "454f2b9b7094bc5808e103194a733f25ee7a4854735db753368fb514b25e745c",
+          "width": 320,
+          "height": 120,
+          "svgSha256": "af94c19eb06028c70147ee87b253c130c0d82fc3e723606c7bf1351751e53c96"
+        },
+        {
+          "script": "ascii",
+          "text": "Files",
+          "image": "builtin-only-ascii.png",
+          "bytes": 1100,
+          "pngSha256": "feaa2922f6fa9922b8a57f6c26e6f23e78fad4a74ba08138eb3128a0d283a244",
+          "width": 320,
+          "height": 120,
+          "svgSha256": "08fcb606b28b2ff9609373f31356630b9c80b73d63814329a420155ce1006ed9"
+        }
+      ]
+    },
+    {
+      "case": "same-family",
+      "requestedFamily": "Geist",
+      "removedBuiltin": false,
+      "returnedFamilies": [
+        "Geist"
+      ],
+      "renders": [
+        {
+          "script": "cyrillic",
+          "text": "Файли",
+          "image": "same-family-cyrillic.png",
+          "bytes": 1767,
+          "pngSha256": "454f2b9b7094bc5808e103194a733f25ee7a4854735db753368fb514b25e745c",
+          "width": 320,
+          "height": 120,
+          "svgSha256": "af94c19eb06028c70147ee87b253c130c0d82fc3e723606c7bf1351751e53c96"
+        },
+        {
+          "script": "ascii",
+          "text": "Files",
+          "image": "same-family-ascii.png",
+          "bytes": 1100,
+          "pngSha256": "feaa2922f6fa9922b8a57f6c26e6f23e78fad4a74ba08138eb3128a0d283a244",
+          "width": 320,
+          "height": 120,
+          "svgSha256": "08fcb606b28b2ff9609373f31356630b9c80b73d63814329a420155ce1006ed9"
+        }
+      ]
+    },
+    {
+      "case": "alias-family",
+      "requestedFamily": "Radar Cyrillic",
+      "removedBuiltin": false,
+      "returnedFamilies": [
+        "Radar Cyrillic"
+      ],
+      "renders": [
+        {
+          "script": "cyrillic",
+          "text": "Файли",
+          "image": "alias-family-cyrillic.png",
+          "bytes": 1712,
+          "pngSha256": "5b0a69da362cd0baefa8ea30008d8e95dd1949dec124b09af33609fa93b867a6",
+          "width": 320,
+          "height": 120,
+          "svgSha256": "02e82329d4180010b74f5ad2d7b3870f4149609f6d38fc2b8dea80793525ba26"
+        },
+        {
+          "script": "ascii",
+          "text": "Files",
+          "image": "alias-family-ascii.png",
+          "bytes": 1100,
+          "pngSha256": "feaa2922f6fa9922b8a57f6c26e6f23e78fad4a74ba08138eb3128a0d283a244",
+          "width": 320,
+          "height": 120,
+          "svgSha256": "08fcb606b28b2ff9609373f31356630b9c80b73d63814329a420155ce1006ed9"
+        }
+      ]
+    },
+    {
+      "case": "removed-builtin",
+      "requestedFamily": "Geist",
+      "removedBuiltin": true,
+      "returnedFamilies": [
+        "Geist"
+      ],
+      "renders": [
+        {
+          "script": "cyrillic",
+          "text": "Файли",
+          "image": "removed-builtin-cyrillic.png",
+          "bytes": 1712,
+          "pngSha256": "5b0a69da362cd0baefa8ea30008d8e95dd1949dec124b09af33609fa93b867a6",
+          "width": 320,
+          "height": 120,
+          "svgSha256": "02e82329d4180010b74f5ad2d7b3870f4149609f6d38fc2b8dea80793525ba26"
+        },
+        {
+          "script": "ascii",
+          "text": "Files",
+          "image": "removed-builtin-ascii.png",
+          "bytes": 1767,
+          "pngSha256": "454f2b9b7094bc5808e103194a733f25ee7a4854735db753368fb514b25e745c",
+          "width": 320,
+          "height": 120,
+          "svgSha256": "af94c19eb06028c70147ee87b253c130c0d82fc3e723606c7bf1351751e53c96"
+        }
+      ]
+    }
+  ],
+  "observations": {
+    "sameFamilyRegistrationReturnedRequestedName": true,
+    "sameFamilyCyrillicEqualsBuiltinOnly": true,
+    "aliasCyrillicDiffersFromBuiltinOnly": true,
+    "removingBuiltinCyrillicEqualsAlias": true,
+    "removedBuiltinAsciiDiffersFromBuiltinOnly": true
+  },
+  "modelServiceCalls": 0,
+  "publicWebsiteUsed": false,
+  "userFontsUsed": false,
+  "scope": "Four fresh native renderer conditions, one Cyrillic subset/word at weight 400 plus ASCII control; registration and output identity, not all glyphs/weights, old-version regression onset or WASM."
+}

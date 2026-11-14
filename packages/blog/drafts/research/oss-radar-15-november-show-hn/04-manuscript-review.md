@@ -1,6 +1,6 @@
 # First manuscript review and continuation
 
-November 14, 2026, America/Los_Angeles. [First manuscript](article.md), [participant evidence](03-participant-dossiers.md), [series format](../../../../../.agents/skills/writing/references/oss-radar-format.md). This is preparation acceptance for an unpublished first draft. Final inventory, editorial acceptance, site rendering and publication are unfinished. The hosted publisher remains disabled; the manifest is empty.
+November 14, 2026, America/Los_Angeles. [First manuscript](article.md), [participant evidence](03-participant-dossiers.md), [series format](../../../../../.agents/skills/writing/references/oss-radar-format.md). This is preparation acceptance for an unpublished first draft. The later [afternoon Takumi fieldwork](05-takumi-afternoon-fieldwork.md) adds resource/matching evidence and a scoped manuscript revision; the initial review below remains historical. Final inventory, editorial acceptance, site rendering and publication are unfinished. The hosted publisher remains disabled; the manifest is empty.
 
 ## Scope and factual pass
 

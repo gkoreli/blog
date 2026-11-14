@@ -1,0 +1,77 @@
+{
+  "sourceCommit": "ae2a35011e5cddedb0a4c8b33ab0c9242ca76b2d",
+  "packageVersion": "2.20.0",
+  "packageIntegrity": "sha512-28uryNYSyuXZWv5uBfJiWDrRXVdAunkU0sZiB7KG2WgLej64pUNL6jZSTQa+gBXfVu+3DdCz58OnpONBO6EUqQ==",
+  "node": "v24.14.1",
+  "platform": "darwin",
+  "architecture": "arm64",
+  "fixture": {
+    "source": "authored HTML/CSS, red PNG and CSS-hidden image",
+    "width": 64,
+    "height": 32,
+    "assetSha256": "50021f8236c73f2387f7e18cc29eebbf471aad076e612e78aa2393af9d88b817"
+  },
+  "serverRequests": [
+    {
+      "phase": "prepare-fetch",
+      "path": "/used.png"
+    }
+  ],
+  "fetchHookCalls": [
+    {
+      "phase": "prepare-fetch",
+      "path": "/used.png"
+    }
+  ],
+  "conditions": {
+    "rawMissingBytesFetched": false,
+    "hiddenImageFetched": false,
+    "preparedOutputsFetchedAgain": false,
+    "suppliedBytesFetched": false,
+    "preparedEqualsDirectSupplied": true,
+    "loadedImageChangesPng": true,
+    "svgEmbedsImage": true,
+    "svgContainsFixtureOrigin": false,
+    "deniedUrlRejectedBeforeTransport": true,
+    "denial": "URL blocked by allowUrl policy: <origin>/used.png"
+  },
+  "artifacts": [
+    {
+      "name": "raw-without-bytes.png",
+      "bytes": 96,
+      "sha256": "db012ac836fd5695c73345c02185f382a550ae4953d7e2b86f95a00cf2a9345c",
+      "width": 64,
+      "height": 32
+    },
+    {
+      "name": "prepared.png",
+      "bytes": 96,
+      "sha256": "f8a3c6039fee842c6a49eb01cb953e2a1614d787dc0480a503caced81876ee91",
+      "width": 64,
+      "height": 32
+    },
+    {
+      "name": "prepared.svg",
+      "bytes": 434,
+      "sha256": "4cc647d11b0c5f188b03917d014932e3536067f7b3788312b3f884ba02dd327c"
+    },
+    {
+      "name": "direct-supplied.png",
+      "bytes": 96,
+      "sha256": "f8a3c6039fee842c6a49eb01cb953e2a1614d787dc0480a503caced81876ee91",
+      "width": 64,
+      "height": 32
+    },
+    {
+      "name": "prepared-supplied.png",
+      "bytes": 96,
+      "sha256": "f8a3c6039fee842c6a49eb01cb953e2a1614d787dc0480a503caced81876ee91",
+      "width": 64,
+      "height": 32
+    }
+  ],
+  "scope": "One authored native HTML/CSS preparation case and controls; resource selection/reuse across PNG, SVG and measure, not layout-cache, PDF/WASM, conformance, security or performance acceptance.",
+  "publicWebsiteUsed": false,
+  "realUserDataUsed": false,
+  "modelServiceCalls": 0
+}
