@@ -1,0 +1,13 @@
+{
+  "frozenAt": "2026-11-14T20:59:35.271Z",
+  "beforeReservedValidation": true,
+  "files": {
+    "amendment-02.md": "d8270e5fb4a1d9dfe057b7dfda12c4c5a71f992388ce45de117abcce52751c1b"
+  },
+  "developmentReceiptHashes": {
+    "development-01.json": "97877cbba50eef3bd7841978b075ea3e7f35e37ec0d9f93ddf5d8349c79d2bea",
+    "native-development-01.json": "b6907605ac62b48990aec2a723a9ef7a0a5d45ebe5b888b6e3ab89ba36b30f7c",
+    "rerank-development-01.json": "a777038b09f1ca6b91532e12a819b43f8e48beabff9ac75a4ad60f27d2c15f6d"
+  },
+  "boundary": "Product direction selected from development, not reserved outcomes. New implementation requires its own acceptance."
+}
