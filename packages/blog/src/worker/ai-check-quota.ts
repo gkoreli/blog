@@ -1,3 +1,5 @@
+import { utcDateKey } from '@gkoreli/time';
+import { ZonedCalendar } from '@gkoreli/time/calendar';
 export const AI_CHECK_DAILY_LIMIT = 10;
 
 export interface CheckQuota {
@@ -36,12 +38,12 @@ export async function quotaCallerKey(secret: string, ip: string, day: string): P
 }
 
 export async function admitCheck(store: QuotaStore, callerKey: string, now = new Date()): Promise<{ allowed: boolean; quota: CheckQuota }> {
-  const day = now.toISOString().slice(0, 10);
-  const resetAt = Date.parse(`${day}T00:00:00.000Z`) + 86_400_000;
-  const used = await store.consume(callerKey, day, resetAt);
+  const day = utcDateKey(now);
+  const resetAt = new ZonedCalendar('UTC').nextDayStart(now);
+  const used = await store.consume(callerKey, day, Date.parse(resetAt));
   return {
     allowed: used !== null,
-    quota: { limit: AI_CHECK_DAILY_LIMIT, remaining: used === null ? 0 : AI_CHECK_DAILY_LIMIT - used, resetAt: new Date(resetAt).toISOString() },
+    quota: { limit: AI_CHECK_DAILY_LIMIT, remaining: used === null ? 0 : AI_CHECK_DAILY_LIMIT - used, resetAt },
   };
 }
 

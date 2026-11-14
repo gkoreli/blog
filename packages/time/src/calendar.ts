@@ -29,6 +29,10 @@ export class ZonedCalendar {
   startOfDay(date: string): string {
     return iso(Temporal.PlainDate.from(date).toZonedDateTime(this.timeZone).epochMilliseconds);
   }
+  /** A domain-selected wall time must exist exactly once in this calendar. */
+  atTime(date: string, time: string): string {
+    return iso(Temporal.PlainDate.from(date).toPlainDateTime(time).toZonedDateTime(this.timeZone, { disambiguation: 'reject' }).epochMilliseconds);
+  }
   nextDayStart(value: InstantInput): string {
     return this.startOfDay(this.addDays(this.dateAt(value), 1));
   }

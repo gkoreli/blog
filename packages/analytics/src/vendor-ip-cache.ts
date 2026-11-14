@@ -1,3 +1,4 @@
+import { isHttpDate } from '@gkoreli/time';
 /** Bounded conditional-validation policy for one public feed per fixed URL.
  * This is deliberately narrower than a general HTTP cache implementation.
  */
@@ -9,9 +10,7 @@ export function feedEntityTag(response: Response): string | null {
 /** Use canonical IMF-fixdate validators; other forms cause a full GET instead. */
 export function feedLastModified(response: Response): string | null {
   const value = response.headers.get('Last-Modified');
-  if (value === null || value.length !== 29) return null;
-  const time = Date.parse(value);
-  return Number.isFinite(time) && new Date(time).toUTCString() === value ? value : null;
+  return isHttpDate(value) ? value : null;
 }
 
 export function matchingFeedValidation(

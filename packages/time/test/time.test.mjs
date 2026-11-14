@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { addCalendarDays, calendarDateKey, calendarDaysBetween, databaseTimestamp, parseTimeZone, timePresentation, utcDateKey, utcInstant } from '../dist/index.js';
+import { addCalendarDays, calendarWeekday, httpDate, isCalendarDate, isHttpDate, isUtcInstant, calendarDateKey, calendarDaysBetween, databaseTimestamp, parseTimeZone, timePresentation, utcDateKey, utcInstant } from '../dist/index.js';
 import { ZonedCalendar } from '../dist/calendar.js';
 
 test('UTC instants and database stamps share an explicit, host-independent boundary', () => {
@@ -88,4 +88,35 @@ test('civil arithmetic counts calendar labels across leap years and offset chang
   assert.equal(calendarDaysBetween('2026-03-01', '2026-03-29'), 28);
   assert.equal(calendarDaysBetween('2026-10-15', '2026-11-12'), 28);
   assert.throws(() => addCalendarDays('2026-02-30', 1), RangeError);
+});
+
+
+test('shared guards reject rolled dates and ambiguous instants without changing evidence precision', () => {
+  for (const value of ['2026-11-14T00:00:00Z', '2026-11-14T00:00:00.000Z', '2026-11-14T00:00:00.123Z']) assert.equal(isUtcInstant(value), true);
+  for (const value of [null, 0, '2026-11-14', '2026-11-14T00:00:00', '2026-02-30T00:00:00Z', '2026-11-14T24:00:00Z', '2026-11-14T00:00:00+00:00']) assert.equal(isUtcInstant(value), false);
+  assert.equal(isCalendarDate('2024-02-29'), true);
+  for (const value of [null, '2026-02-29', '2026-11-14T00:00:00Z']) assert.equal(isCalendarDate(value), false);
+});
+
+test('HTTP dates remain protocol UTC and reject malformed calendar or weekday validators', () => {
+  assert.equal(httpDate('2026-11-14T08:00:00-08:00'), 'Sat, 14 Nov 2026 16:00:00 GMT');
+  assert.equal(isHttpDate('Sat, 14 Nov 2026 16:00:00 GMT'), true);
+  for (const value of [null, 'Fri, 14 Nov 2026 16:00:00 GMT', 'Sat, 31 Feb 2026 16:00:00 GMT', '2026-11-14T16:00:00Z']) assert.equal(isHttpDate(value), false);
+});
+
+test('authored dates and ISO weekdays do not depend on viewer timezone', () => {
+  for (const timeZone of ['America/Los_Angeles', 'Pacific/Kiritimati', 'Asia/Kathmandu']) {
+    const view = timePresentation({ timeZone, locale: 'en-US' });
+    assert.equal(view.calendarDate('2026-11-14', 'long'), 'November 14, 2026');
+  }
+  assert.equal(calendarWeekday('2026-11-16'), 1);
+  assert.equal(calendarWeekday('2026-11-15'), 7);
+});
+
+test('scheduled wall times use actual zone offsets and reject missing or repeated clock times', () => {
+  const calendar = new ZonedCalendar('America/Los_Angeles');
+  assert.equal(calendar.atTime('2026-07-06', '08:00'), '2026-07-06T15:00:00.000Z');
+  assert.equal(calendar.atTime('2026-11-16', '08:00'), '2026-11-16T16:00:00.000Z');
+  assert.throws(() => calendar.atTime('2026-03-08', '02:30'), RangeError);
+  assert.throws(() => calendar.atTime('2026-11-01', '01:30'), RangeError);
 });

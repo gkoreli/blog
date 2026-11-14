@@ -1,10 +1,10 @@
 import { ACTIVE_REFERRAL_POLICY } from './referral-policy.generated.js';
 import { parseStatsQuery } from './stats-selection.js';
-import { utcDateKey } from '@gkoreli/time';
+import { httpDate, utcDateKey } from '@gkoreli/time';
 import { ZonedCalendar } from '@gkoreli/time/calendar';
 
 /** Bump when report semantics, storage binding, or public selection rules change. */
-export const STATS_REPORT_VERSION = '2026-11-14.1';
+export const STATS_REPORT_VERSION = '2026-11-14.2';
 export const STATS_EDGE_TTL_SECONDS = 3600;
 const MAX_PENDING_REPORTS = 8;
 const LOOKUP_BUDGET_MS = 250;
@@ -152,8 +152,8 @@ export function createStatsHandler<Environment>(
       const headers = new Headers(response.headers);
       const ttl = Math.max(0, Math.floor((expiresAt - now()) / 1000));
       headers.set('Cache-Control', `public, max-age=${ttl}`);
-      headers.set('Expires', new Date(expiresAt).toUTCString());
-      headers.set('Date', new Date(startedAt).toUTCString());
+      headers.set('Expires', httpDate(expiresAt));
+      headers.set('Date', httpDate(startedAt));
       const report = new Response(response.body, { status: response.status, statusText: response.statusText, headers });
       if (ttl > 0) {
         publication = cacheOperation('publication', () => cache.put(key, report.clone()), publicationBudget, options.onOperation).then(() => {});

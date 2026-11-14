@@ -142,3 +142,17 @@ test('rejects a schedule that tries to publish prompts', () => {
   assert.throws(() => readPublicationSchedule(root));
   assert.ok(existsSync(source));
 });
+
+
+test('the shared publication calendar preserves 08:00 Pacific after both DST changes', async () => {
+  for (const [date, before, release] of [
+    ['2027-03-15', '2027-03-15T14:59:59Z', '2027-03-15T15:00:00Z'],
+    ['2027-11-08', '2027-11-08T15:59:59Z', '2027-11-08T16:00:00Z'],
+  ]) {
+    const { root, source } = fixture({ date });
+    assert.equal((await publishScheduledArticle(root, new Date(before))).changed, false);
+    assert.ok(existsSync(source));
+    assert.equal((await publishScheduledArticle(root, new Date(release))).changed, true);
+    assert.equal(existsSync(source), false);
+  }
+});

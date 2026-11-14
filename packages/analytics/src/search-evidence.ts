@@ -1,3 +1,4 @@
+import { isCalendarDate as day, isUtcInstant as instant } from '@gkoreli/time';
 /** Private offline analysis. No transport, account access, storage or reader tracking. */
 export const SEARCH_EVIDENCE_VERSION = '2026-10-31.1';
 export const SEARCH_EVIDENCE_INPUT_VERSION = 'search-console-query-page-v1';
@@ -41,14 +42,7 @@ function fields(value: Record<string, unknown>, required: string[], optional: st
 }
 function count(value: unknown): value is number { return typeof value === 'number' && Number.isSafeInteger(value) && value >= 0; }
 function text(value: unknown, maximum: number): value is string { return typeof value === 'string' && value.length <= maximum; }
-function day(value: unknown): value is string {
-  return typeof value === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(value)
-    && Number.isFinite(Date.parse(value + 'T00:00:00Z')) && new Date(value + 'T00:00:00Z').toISOString().slice(0, 10) === value;
-}
-function instant(value: unknown): value is string {
-  return typeof value === 'string' && /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d{3})?Z$/.test(value)
-    && Number.isFinite(Date.parse(value)) && new Date(value).toISOString().replace('.000Z', 'Z') === value.replace('.000Z', 'Z');
-}
+
 function sum(left: number, right: number): number { const result = left + right; if (!Number.isSafeInteger(result)) fail('count-overflow'); return result; }
 function ratio(clicks: number, impressions: number): number | null { return impressions === 0 ? null : clicks / impressions; }
 function url(value: string): URL { try { return new URL(value); } catch { return fail('url'); } }
