@@ -1,0 +1,121 @@
+{
+  "version": 1,
+  "measuredAt": "2026-11-14T17:18:45.941750+00:00",
+  "implementationCommit": "d1803dcc6d8910684ff125b9c9de3880b30d30b9",
+  "sourceCommit": "d1803dcc6d8910684ff125b9c9de3880b30d30b9",
+  "cloudflareBuild": "6ac89f49-7cb2-46a1-a191-8964ced1d934",
+  "method": "Three fresh public page/asset GETs; verify served identity and implementation ancestry, the method boundary, native time markup, and exact built Stats JS/CSS. Raw captures remain outside Git.",
+  "responses": [
+    {
+      "path": "/stats?range=7d",
+      "status": 200,
+      "sha256": "4646816cbd7d855e391ac9b4a6ba1bad2e21c9d58c8586dd23de5a40fc405fdd",
+      "source": "d1803dcc6d8910684ff125b9c9de3880b30d30b9",
+      "build": "6ac89f49-7cb2-46a1-a191-8964ced1d934"
+    },
+    {
+      "path": "/stats.js",
+      "status": 200,
+      "sha256": "e3e0408366265c7e751b0f5e59a6c11c48652bf73e562e516976179cd237ddda"
+    },
+    {
+      "path": "/stats.css",
+      "status": 200,
+      "sha256": "6e3d52f791c008d5c36e13ddba07765bd72fa7f90f59cdce3460c41fa44d85a7"
+    }
+  ],
+  "checks": {
+    "containsImplementation": true,
+    "methodExplainsLocalInstantsAndUTCReportingDays": true,
+    "exactStatsBundle": true,
+    "exactStatsStylesheet": true,
+    "explicitReportingDaysAndLocalTable": true,
+    "nativeCalculationInstant": true
+  },
+  "localChecks": {
+    "types": true,
+    "siteTests": 454,
+    "timeFormattingTests": 7,
+    "markdownValidation": 35,
+    "builtPosts": 46,
+    "referralPolicy": true,
+    "privatePromptGuard": true,
+    "desktopWidth": 1440,
+    "phoneWidth": 320,
+    "phoneTheme": "dark",
+    "pageOverflow": false,
+    "preservation": {
+      "hourly": {
+        "bucketCount": 161,
+        "allBucketValuesRetained": true,
+        "headlineTotalsRetained": true,
+        "exactCalculationInstantRetained": true,
+        "firstDisplayedBucket": "Nov 7, 2026, 4:00 PM PST",
+        "lastDisplayedBucket": "Nov 14, 2026, 8:00 AM PST"
+      },
+      "daily": {
+        "bucketCount": 30,
+        "allBucketValuesRetained": true,
+        "headlineTotalsRetained": true,
+        "exactCalculationInstantRetained": true,
+        "firstDisplayedBucket": "Oct 16, 2026",
+        "lastDisplayedBucket": "Nov 14, 2026"
+      }
+    },
+    "timeCases": [
+      "America/Los_Angeles local clock",
+      "UTC/local date rollover",
+      "repeated fall-back hour with PDT/PST",
+      "spring-forward skipped hour",
+      "Kolkata half-hour offset",
+      "Kathmandu quarter-hour offset",
+      "Tokyo and Kiritimati day boundaries",
+      "en-GB clock formatting",
+      "browser timezone default"
+    ]
+  },
+  "limits": [
+    "Clock and hourly label formatting changes only; SQL, UTC reporting windows, daily identifiers, API timestamps and all counts retain their existing contract.",
+    "Saved-report rendering is separate from current production acceptance.",
+    "Calculation time can precede the current clock by up to the existing cache lifetime.",
+    "Raw responses, private logs and native screenshots remain outside Git."
+  ],
+  "liveTimeChecks": {
+    "hourlyInstantFormatsCorrectly": true,
+    "dailyUpdateFormatsCorrectly": true,
+    "hourlyCalculationInstantRetained": true,
+    "finalHourlyLegendMatchesSavedBucket": true,
+    "dailyChartKeepsUTCDays": true
+  },
+  "liveVisual": {
+    "hourly": {
+      "updatedInstant": "2026-11-14T16:23:48.617Z",
+      "updatedLabel": "Nov 14, 2026, 8:23 AM PST",
+      "context": "Hourly buckets \u00b7 America/Los_Angeles \u00b7 latest bucket is partial",
+      "legend": "TimeNov 14, 2026, 8:00 AM PSTPage views4Daily IDs seen in hour4",
+      "tableCaption": "Hourly values shown in America/Los_Angeles. Daily IDs use UTC days, can repeat across hours and are not additive.",
+      "bucketCount": 161
+    },
+    "daily": {
+      "updatedInstant": "2026-11-14T17:02:59.940Z",
+      "updatedLabel": "Nov 14, 2026, 9:02 AM PST",
+      "context": "Daily buckets \u00b7 UTC days \u00b7 current day is partial",
+      "legend": "UTC dayNov 14, 2026Page views379Daily clients185",
+      "tableCaption": "Daily values by UTC reporting day.",
+      "bucketCount": 30
+    },
+    "mobile": {
+      "context": "Hourly buckets \u00b7 America/Los_Angeles \u00b7 latest bucket is partial",
+      "legend": "TimeNov 14, 2026, 8:00 AM PSTPage views4Daily IDs seen in hour4",
+      "overflow": false,
+      "updated": "Nov 14, 2026, 8:23 AM PST",
+      "viewport": [
+        320,
+        900
+      ],
+      "viewportReset": true
+    },
+    "viewerTimezone": "America/Los_Angeles",
+    "desktopWidth": 1440
+  }
+}
