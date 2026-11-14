@@ -1,0 +1,878 @@
+{
+  "startedAt": "2026-11-14T04:23:33.425Z",
+  "finishedAt": "2026-11-14T04:23:36.616Z",
+  "environment": {
+    "node": "v24.14.1",
+    "platform": "darwin",
+    "arch": "arm64",
+    "cpu": "Apple M5",
+    "osRelease": "27.2.0",
+    "logicalCpuCount": 10
+  },
+  "sourceCommit": "596acbc75a330508591b07cd9e198b219341f619",
+  "packageVersion": "1.0.0",
+  "configSha256": "0263858efdac30e2a992c8a6f994b91c3516a29d609ac5d8dc5c6f8370d97534",
+  "identity": [
+    {
+      "file": "query-words.json",
+      "sha256": "14ddb88bf337a4726a62a13788241d84d656e798a7188b3cc655b1328c863966"
+    },
+    {
+      "file": "query-words.i8",
+      "sha256": "6c88bceb3b737ec4fdbaa7b1a1a9034f5cd46895c0d2f36aff5c7639d14be82b"
+    },
+    {
+      "file": "query-words.scale.f32",
+      "sha256": "4067f3b83a2ae21ffa3df21db1b159b2c04f6058ab394a4e2647d81faf28deea"
+    }
+  ],
+  "datasetHashes": [
+    {
+      "file": "agent-queries.jsonl",
+      "sha256": "ab3c93aabf692028398479685621c44043dc9d1350a6c100f43370a7905dadc0"
+    },
+    {
+      "file": "agent-qrels.jsonl",
+      "sha256": "d5fb45b5a0b41a95513f1af48256f098c7f91f0e95e58724712779867ee0d18b"
+    },
+    {
+      "file": "oos-queries.jsonl",
+      "sha256": "028e2305bbe87ec3dbae64335c552b6ca84dda8e979d526f6f5f43b9534cbd1d"
+    },
+    {
+      "file": "oos-qrels.jsonl",
+      "sha256": "2b54d256d458e17458d78b02d959f4ae024c16e5e06576113a109751dd6f2014"
+    }
+  ],
+  "vocabulary": 29165,
+  "dimensions": 256,
+  "chunks": 2016,
+  "guides": 208,
+  "reproduction": {
+    "vectorsCompared": 628,
+    "maxCoordinateDifference": 0,
+    "cliRankingCallsMatched": 12,
+    "checksum": -4261.571994887199
+  },
+  "timing": {
+    "importMs": 19.089207999999996,
+    "tableInitMs": 3.991500000000002,
+    "firstEmbeddingMs": 0.1619579999999985,
+    "short": {
+      "batchMeanMicroseconds": [
+        3.6879169999999983,
+        3.6567080000000085,
+        3.5293750000000017,
+        3.500833,
+        3.616457999999994,
+        3.5525420000000025,
+        3.497833,
+        3.433917000000008,
+        3.5269590000000055,
+        3.4708329999999985,
+        3.4459169999999943,
+        3.5376659999999873,
+        3.512375000000006,
+        3.4675000000000007,
+        3.5138749999999987,
+        3.668875,
+        3.8728750000000076,
+        3.4532080000000036,
+        3.4215420000000023,
+        3.455666000000008,
+        3.395458000000019,
+        3.3931669999999765,
+        3.355000000000018,
+        3.397207999999978,
+        3.3889580000000024,
+        3.380124999999993,
+        3.4237909999999943,
+        3.3530829999999976,
+        3.4245840000000096,
+        3.3628340000000208
+      ],
+      "medianBatchMeanMicroseconds": 3.4615830000000045
+    },
+    "length": [
+      {
+        "tokens": 1,
+        "query": "0-1",
+        "batchMeanMicroseconds": [
+          3.0070420000000126,
+          3.0255000000000223,
+          2.954250000000002,
+          2.9700410000000095,
+          2.9930420000000026,
+          2.94679099999999,
+          2.992334,
+          3.022083000000009,
+          2.990332999999992,
+          2.9468750000000052,
+          2.947084000000018,
+          3.0245420000000247,
+          2.9600000000000084,
+          2.9534589999999805,
+          2.967667000000006,
+          2.920832999999988,
+          2.949291999999986,
+          2.961250000000007,
+          2.9599999999999795,
+          2.9376249999999975,
+          3.0000420000000076,
+          2.9319579999999807,
+          2.9263749999999793,
+          2.9691249999999907,
+          2.93425000000002,
+          2.9843330000000203,
+          2.967999999999989,
+          2.9233749999999925,
+          2.967416999999983,
+          2.916750000000036
+        ],
+        "medianBatchMeanMicroseconds": 2.9606250000000074
+      },
+      {
+        "tokens": 4,
+        "query": "0-1 0-9 00 000",
+        "batchMeanMicroseconds": [
+          3.661292000000003,
+          3.6138329999999996,
+          3.5564169999999535,
+          3.6535840000000235,
+          3.5852090000000203,
+          3.598124999999982,
+          3.552500000000009,
+          3.5913340000000176,
+          3.588415999999995,
+          3.5650829999999587,
+          3.5784170000000017,
+          3.5585000000000377,
+          3.5929160000000024,
+          3.55845800000003,
+          3.5672500000000014,
+          3.5538329999999974,
+          3.560791999999992,
+          3.586708999999985,
+          3.591583000000014,
+          3.5728750000000105,
+          3.5928749999999923,
+          3.558917000000008,
+          3.593041000000028,
+          3.5952499999999645,
+          3.583583000000033,
+          3.5824589999999716,
+          3.568458000000021,
+          3.5880409999999756,
+          3.5459999999999923,
+          3.5890420000000063
+        ],
+        "medianBatchMeanMicroseconds": 3.5843960000000266
+      },
+      {
+        "tokens": 16,
+        "query": "0-1 0-9 00 000 0000 000000 00000000-0000-0000-0000-000000000000 0004 0056b3 005fcc 007bff 008 00e5ff 00z 01 012345",
+        "batchMeanMicroseconds": [
+          6.037082999999995,
+          6.013624999999991,
+          5.969500000000039,
+          5.972416000000011,
+          5.970042000000035,
+          5.970416,
+          6.0225829999999965,
+          5.960332999999991,
+          6.4444579999999965,
+          6.282959000000005,
+          5.999374999999986,
+          5.989666999999998,
+          5.995042000000012,
+          6.085125000000006,
+          6.0462909999999965,
+          5.998167000000023,
+          5.988583000000006,
+          6.1506669999999986,
+          6.136707999999999,
+          6.110582999999962,
+          6.094959000000017,
+          5.986084000000005,
+          5.938709000000017,
+          6.04141699999991,
+          6.010792000000038,
+          5.968916000000036,
+          5.995874999999955,
+          5.959542000000056,
+          6.005667000000017,
+          5.9952500000000555
+        ],
+        "medianBatchMeanMicroseconds": 5.998771000000005
+      },
+      {
+        "tokens": 64,
+        "query": "0-1 0-9 00 000 0000 000000 00000000-0000-0000-0000-000000000000 0004 0056b3 005fcc 007bff 008 00e5ff 00z 01 012345 013 016 01l12 01ms 02 024 02em 03 042 045 05 059 05em 06 069 06c 0722 08 09 0b57d0 0deg 0f172a 0h2v9h-2v8z 0px 0s 1-2 1-2-2l4 1-based 1-content-navigability-and-structure 1-foundations 1-fundamentals 10 10-second 10-transitions--animations 10-typography 100 1000 10000 100cqi 100deg 100dvb 100dvh 100dvw 100ms 100px 100svh 100svw 100vh",
+        "batchMeanMicroseconds": [
+          15.710707999999956,
+          15.648333000000093,
+          16.293457999999987,
+          15.849709000000075,
+          15.764250000000063,
+          15.695624999999948,
+          15.628333,
+          15.637040999999954,
+          15.703458000000067,
+          15.887333000000014,
+          16.273958000000107,
+          16.186250000000086,
+          15.727166000000013,
+          15.850416999999995,
+          15.90304100000003,
+          15.716042000000016,
+          15.616375000000062,
+          15.610624999999912,
+          15.876708000000008,
+          15.768958,
+          15.606042,
+          15.631167000000005,
+          15.753749999999966,
+          15.670041999999967,
+          15.643290999999975,
+          15.709791999999995,
+          15.57466700000009,
+          15.8443749999999,
+          15.76845900000012,
+          15.583457999999837
+        ],
+        "medianBatchMeanMicroseconds": 15.713374999999985
+      }
+    ],
+    "cliCalls": [
+      {
+        "query": "confirm destructive action",
+        "wallMs": 87.25804199999993,
+        "ids": [
+          "agentic-forms",
+          "dialog",
+          "swipe-to-remove",
+          "custom-button-actions",
+          "passkey-reauthentication",
+          "autofill-sign-up-form",
+          "ime-safe-enter-submit",
+          "menu",
+          "webmcp",
+          "html"
+        ]
+      },
+      {
+        "query": "expand content panel",
+        "wallMs": 86.47579200000018,
+        "ids": [
+          "search-hidden-content",
+          "accordion",
+          "swipe-to-reveal",
+          "viewport-aware-dropdowns",
+          "dialog",
+          "move-dom-element-without-losing-state",
+          "stack-drill-down",
+          "navigation-drawer",
+          "tabs",
+          "spatial-navigation"
+        ]
+      },
+      {
+        "query": "mobile navigation menu",
+        "wallMs": 85.61387500000001,
+        "ids": [
+          "navbar",
+          "menu",
+          "scrollspy",
+          "app-menus",
+          "navigation-drawer",
+          "stack-drill-down",
+          "viewport-aware-dropdowns",
+          "toolbar",
+          "content-first-noise-reduction",
+          "spatial-navigation"
+        ]
+      },
+      {
+        "query": "inline form errors",
+        "wallMs": 85.97008400000004,
+        "ids": [
+          "forms",
+          "style-parent-with-has",
+          "validate-input-after-interaction",
+          "required-field-feedback",
+          "accessible-error-announcement",
+          "select-menu-interaction",
+          "accessibility",
+          "ime-safe-enter-submit",
+          "autofill-sign-up-form",
+          "html"
+        ]
+      },
+      {
+        "query": "send analytics beacon",
+        "wallMs": 87.28162500000008,
+        "ids": [
+          "full-session-analytics",
+          "batch-analytics-events",
+          "identify-inp-causes",
+          "deprioritize-background-fetches",
+          "forms",
+          "secure-external-subresources",
+          "interaction-paint-timing",
+          "identify-heavy-scripts",
+          "security",
+          "flicker-free-client-side-ab-testing"
+        ]
+      },
+      {
+        "query": "respect reduced motion",
+        "wallMs": 86.0620829999998,
+        "ids": [
+          "motion",
+          "spinner",
+          "directional-navigation-transitions",
+          "same-document-transitions",
+          "calculate-with-intrinsic-sizes",
+          "animate-element-entry-exit",
+          "anchor-positioning-tab-underline",
+          "animate-to-from-top-layer",
+          "cross-document-transitions",
+          "natural-interactions"
+        ]
+      },
+      {
+        "query": "confirm destructive action",
+        "wallMs": 86.10162500000024,
+        "ids": [
+          "agentic-forms",
+          "dialog",
+          "swipe-to-remove",
+          "custom-button-actions",
+          "passkey-reauthentication",
+          "autofill-sign-up-form",
+          "ime-safe-enter-submit",
+          "menu",
+          "webmcp",
+          "html"
+        ]
+      },
+      {
+        "query": "expand content panel",
+        "wallMs": 85.98025000000007,
+        "ids": [
+          "search-hidden-content",
+          "accordion",
+          "swipe-to-reveal",
+          "viewport-aware-dropdowns",
+          "dialog",
+          "move-dom-element-without-losing-state",
+          "stack-drill-down",
+          "navigation-drawer",
+          "tabs",
+          "spatial-navigation"
+        ]
+      },
+      {
+        "query": "mobile navigation menu",
+        "wallMs": 86.5352499999999,
+        "ids": [
+          "navbar",
+          "menu",
+          "scrollspy",
+          "app-menus",
+          "navigation-drawer",
+          "stack-drill-down",
+          "viewport-aware-dropdowns",
+          "toolbar",
+          "content-first-noise-reduction",
+          "spatial-navigation"
+        ]
+      },
+      {
+        "query": "inline form errors",
+        "wallMs": 86.666334,
+        "ids": [
+          "forms",
+          "style-parent-with-has",
+          "validate-input-after-interaction",
+          "required-field-feedback",
+          "accessible-error-announcement",
+          "select-menu-interaction",
+          "accessibility",
+          "ime-safe-enter-submit",
+          "autofill-sign-up-form",
+          "html"
+        ]
+      },
+      {
+        "query": "send analytics beacon",
+        "wallMs": 86.13958299999967,
+        "ids": [
+          "full-session-analytics",
+          "batch-analytics-events",
+          "identify-inp-causes",
+          "deprioritize-background-fetches",
+          "forms",
+          "secure-external-subresources",
+          "interaction-paint-timing",
+          "identify-heavy-scripts",
+          "security",
+          "flicker-free-client-side-ab-testing"
+        ]
+      },
+      {
+        "query": "respect reduced motion",
+        "wallMs": 88.14883299999974,
+        "ids": [
+          "motion",
+          "spinner",
+          "directional-navigation-transitions",
+          "same-document-transitions",
+          "calculate-with-intrinsic-sizes",
+          "animate-element-entry-exit",
+          "anchor-positioning-tab-underline",
+          "animate-to-from-top-layer",
+          "cross-document-transitions",
+          "natural-interactions"
+        ]
+      }
+    ],
+    "medianCliMs": 86.30768749999993,
+    "boundary": "Fresh subprocess with potentially warm filesystem caches; warm embed excludes initialization, ranking and CLI."
+  },
+  "controls": [
+    {
+      "id": "word-order",
+      "left": "animate dialog",
+      "right": "dialog animate",
+      "leftTokens": [
+        "animate",
+        "dialog"
+      ],
+      "rightTokens": [
+        "dialog",
+        "animate"
+      ],
+      "leftEncoded": [
+        [
+          1621,
+          1
+        ],
+        [
+          7877,
+          1
+        ]
+      ],
+      "rightEncoded": [
+        [
+          7877,
+          1
+        ],
+        [
+          1621,
+          1
+        ]
+      ],
+      "vectorsExactlyEqual": false,
+      "cosine": 1.000000019300421,
+      "leftNorm": 1.0000000090592003,
+      "rightNorm": 1.000000010241221,
+      "hybridLeft": [
+        "animate-to-from-top-layer",
+        "dialog",
+        "declarative-dialog-popover-control",
+        "animate-element-entry-exit",
+        "motion",
+        "navigation-drawer",
+        "animate-to-intrinsic-sizes",
+        "light-dismiss-a-dialog",
+        "carousel-slide-effects",
+        "persistent-top-layer-ui"
+      ],
+      "hybridRight": [
+        "animate-to-from-top-layer",
+        "dialog",
+        "declarative-dialog-popover-control",
+        "animate-element-entry-exit",
+        "motion",
+        "navigation-drawer",
+        "animate-to-intrinsic-sizes",
+        "light-dismiss-a-dialog",
+        "carousel-slide-effects",
+        "persistent-top-layer-ui"
+      ]
+    },
+    {
+      "id": "removed-negation",
+      "left": "animate dialog",
+      "right": "not animate dialog",
+      "leftTokens": [
+        "animate",
+        "dialog"
+      ],
+      "rightTokens": [
+        "animate",
+        "dialog"
+      ],
+      "leftEncoded": [
+        [
+          1621,
+          1
+        ],
+        [
+          7877,
+          1
+        ]
+      ],
+      "rightEncoded": [
+        [
+          1621,
+          1
+        ],
+        [
+          7877,
+          1
+        ]
+      ],
+      "vectorsExactlyEqual": true,
+      "cosine": 1.0000000181184008,
+      "leftNorm": 1.0000000090592003,
+      "rightNorm": 1.0000000090592003,
+      "hybridLeft": [
+        "animate-to-from-top-layer",
+        "dialog",
+        "declarative-dialog-popover-control",
+        "animate-element-entry-exit",
+        "motion",
+        "navigation-drawer",
+        "animate-to-intrinsic-sizes",
+        "light-dismiss-a-dialog",
+        "carousel-slide-effects",
+        "persistent-top-layer-ui"
+      ],
+      "hybridRight": [
+        "animate-to-from-top-layer",
+        "dialog",
+        "declarative-dialog-popover-control",
+        "animate-element-entry-exit",
+        "motion",
+        "navigation-drawer",
+        "animate-to-intrinsic-sizes",
+        "light-dismiss-a-dialog",
+        "carousel-slide-effects",
+        "persistent-top-layer-ui"
+      ]
+    },
+    {
+      "id": "ignored-unknown",
+      "left": "dialog",
+      "right": "dialog qzxwvvunknown",
+      "leftTokens": [
+        "dialog"
+      ],
+      "rightTokens": [
+        "dialog",
+        "qzxwvvunknown"
+      ],
+      "leftEncoded": [
+        [
+          7877,
+          1
+        ]
+      ],
+      "rightEncoded": [
+        [
+          7877,
+          1
+        ]
+      ],
+      "vectorsExactlyEqual": true,
+      "cosine": 0.9999999758071489,
+      "leftNorm": 0.9999999879035744,
+      "rightNorm": 0.9999999879035744,
+      "hybridLeft": [
+        "dialog",
+        "declarative-dialog-popover-control",
+        "light-dismiss-a-dialog",
+        "platform-controls-dismiss-dialog",
+        "html",
+        "prevent-page-scroll-under-modal-dialog",
+        "accessibility",
+        "persistent-top-layer-ui",
+        "animate-to-from-top-layer",
+        "navigation-drawer"
+      ],
+      "hybridRight": [
+        "dialog",
+        "declarative-dialog-popover-control",
+        "light-dismiss-a-dialog",
+        "platform-controls-dismiss-dialog",
+        "html",
+        "prevent-page-scroll-under-modal-dialog",
+        "accessibility",
+        "persistent-top-layer-ui",
+        "animate-to-from-top-layer",
+        "navigation-drawer"
+      ]
+    },
+    {
+      "id": "hyphen-fallback",
+      "left": "dialog",
+      "right": "dialog-qzxwvvunknown",
+      "leftTokens": [
+        "dialog"
+      ],
+      "rightTokens": [
+        "dialog-qzxwvvunknown"
+      ],
+      "leftEncoded": [
+        [
+          7877,
+          1
+        ]
+      ],
+      "rightEncoded": [
+        [
+          7877,
+          1
+        ]
+      ],
+      "vectorsExactlyEqual": true,
+      "cosine": 0.9999999758071489,
+      "leftNorm": 0.9999999879035744,
+      "rightNorm": 0.9999999879035744,
+      "hybridLeft": [
+        "dialog",
+        "declarative-dialog-popover-control",
+        "light-dismiss-a-dialog",
+        "platform-controls-dismiss-dialog",
+        "html",
+        "prevent-page-scroll-under-modal-dialog",
+        "accessibility",
+        "persistent-top-layer-ui",
+        "animate-to-from-top-layer",
+        "navigation-drawer"
+      ],
+      "hybridRight": [
+        "dialog",
+        "declarative-dialog-popover-control",
+        "light-dismiss-a-dialog",
+        "platform-controls-dismiss-dialog",
+        "html",
+        "accessibility",
+        "persistent-top-layer-ui",
+        "prevent-page-scroll-under-modal-dialog",
+        "persistent-app-tours",
+        "navigation-drawer"
+      ]
+    },
+    {
+      "id": "repeated-word",
+      "left": "dialog",
+      "right": "dialog dialog",
+      "leftTokens": [
+        "dialog"
+      ],
+      "rightTokens": [
+        "dialog",
+        "dialog"
+      ],
+      "leftEncoded": [
+        [
+          7877,
+          1
+        ]
+      ],
+      "rightEncoded": [
+        [
+          7877,
+          1
+        ],
+        [
+          7877,
+          1
+        ]
+      ],
+      "vectorsExactlyEqual": true,
+      "cosine": 0.9999999758071489,
+      "leftNorm": 0.9999999879035744,
+      "rightNorm": 0.9999999879035744,
+      "hybridLeft": [
+        "dialog",
+        "declarative-dialog-popover-control",
+        "light-dismiss-a-dialog",
+        "platform-controls-dismiss-dialog",
+        "html",
+        "prevent-page-scroll-under-modal-dialog",
+        "accessibility",
+        "persistent-top-layer-ui",
+        "animate-to-from-top-layer",
+        "navigation-drawer"
+      ],
+      "hybridRight": [
+        "dialog",
+        "declarative-dialog-popover-control",
+        "light-dismiss-a-dialog",
+        "platform-controls-dismiss-dialog",
+        "html",
+        "prevent-page-scroll-under-modal-dialog",
+        "accessibility",
+        "persistent-top-layer-ui",
+        "animate-to-from-top-layer",
+        "navigation-drawer"
+      ]
+    },
+    {
+      "id": "all-unknown",
+      "left": "qzxwvvunknown",
+      "right": "xqzzvvunknown",
+      "leftTokens": [
+        "qzxwvvunknown"
+      ],
+      "rightTokens": [
+        "xqzzvvunknown"
+      ],
+      "leftEncoded": [],
+      "rightEncoded": [],
+      "vectorsExactlyEqual": true,
+      "cosine": 0,
+      "leftNorm": 0,
+      "rightNorm": 0,
+      "hybridLeft": [],
+      "hybridRight": []
+    }
+  ],
+  "quality": {
+    "metric": "Any upstream grade-2 guide at K=10, including orientation guides; not upstream leaf-only Hit@K.",
+    "agentTestQueries": 514,
+    "answerable": 504,
+    "excluded": [
+      {
+        "qid": "aq0538",
+        "scope": "in_domain",
+        "grade2Count": 0
+      },
+      {
+        "qid": "aq0643",
+        "scope": "in_domain",
+        "grade2Count": 0
+      },
+      {
+        "qid": "aq0644",
+        "scope": "in_domain",
+        "grade2Count": 0
+      },
+      {
+        "qid": "aq0672",
+        "scope": "in_domain",
+        "grade2Count": 0
+      },
+      {
+        "qid": "aq0673",
+        "scope": "in_domain",
+        "grade2Count": 0
+      },
+      {
+        "qid": "aq0725",
+        "scope": "in_domain",
+        "grade2Count": 0
+      },
+      {
+        "qid": "aq0740",
+        "scope": "in_domain",
+        "grade2Count": 0
+      },
+      {
+        "qid": "aq0746",
+        "scope": "in_domain",
+        "grade2Count": 0
+      },
+      {
+        "qid": "aq0832",
+        "scope": "out_of_domain",
+        "grade2Count": 0
+      },
+      {
+        "qid": "aq0938",
+        "scope": "in_domain",
+        "grade2Count": 0
+      }
+    ],
+    "summaries": {
+      "dense": {
+        "grade2HitAt10": 499,
+        "answerableDenominator": 504,
+        "unjudgedReturned": 1304,
+        "returnedCandidates": 5040,
+        "oosAdmitted": 90,
+        "oosDenominator": 90,
+        "oosByStratum": {
+          "near": {
+            "admitted": 40,
+            "denominator": 40
+          },
+          "far": {
+            "admitted": 50,
+            "denominator": 50
+          }
+        }
+      },
+      "bm25": {
+        "grade2HitAt10": 496,
+        "answerableDenominator": 504,
+        "unjudgedReturned": 998,
+        "returnedCandidates": 5031,
+        "oosAdmitted": 87,
+        "oosDenominator": 90,
+        "oosByStratum": {
+          "near": {
+            "admitted": 40,
+            "denominator": 40
+          },
+          "far": {
+            "admitted": 47,
+            "denominator": 50
+          }
+        }
+      },
+      "hybrid": {
+        "grade2HitAt10": 501,
+        "answerableDenominator": 504,
+        "unjudgedReturned": 795,
+        "returnedCandidates": 5040,
+        "oosAdmitted": 90,
+        "oosDenominator": 90,
+        "oosByStratum": {
+          "near": {
+            "admitted": 40,
+            "denominator": 40
+          },
+          "far": {
+            "admitted": 50,
+            "denominator": 50
+          }
+        }
+      },
+      "permutedDense": {
+        "grade2HitAt10": 18,
+        "answerableDenominator": 504,
+        "unjudgedReturned": 4534,
+        "returnedCandidates": 5040,
+        "oosAdmitted": 90,
+        "oosDenominator": 90,
+        "oosByStratum": {
+          "near": {
+            "admitted": 40,
+            "denominator": 40
+          },
+          "far": {
+            "admitted": 50,
+            "denominator": 50
+          }
+        }
+      }
+    },
+    "perQuerySha256": "9af03653bda53d0763e24392f7e51f8d88e2bfb013c03eb269564b944a4b9afa"
+  },
+  "telemetryDisabled": true
+}

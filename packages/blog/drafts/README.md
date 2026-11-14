@@ -34,6 +34,12 @@ topics. Preserve useful investment context without making retirement a reason
 to resume work. Reuse the evidence snapshot below instead of rereading closed
 conversations; an unavailable time total is explicitly "not recovered."
 
+## Active article work
+
+| Article / topic | Work and evidence | Current state / next action |
+| --- | --- | --- |
+| [Modern Web Guidance’s seven-line embedder](research/modern-web-guidance/article.md) | November 13: completed interface study (54 primary attempts plus 54 retained diagnostic attempts), static-embedding reproduction in three processes, official archive verification, public retrieval replay and article draft. [Research index](research/modern-web-guidance/README.md). Elapsed total not finalized. | Draft ready for author review; no site publication or production trial patch. Further experiments remain separate proposals. |
+
 ## Published from this backlog
 
 | Article | Current state | Next action |

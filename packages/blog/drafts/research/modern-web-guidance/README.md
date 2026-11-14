@@ -1,12 +1,14 @@
-# Modern Web Guidance: source review and interface study
+# Modern Web Guidance: static embedding reproduction and interface study
 
-November 13, 2026, America/Los_Angeles. **The interface study is complete:** baseline and ordinary MWG availability passed 18/18 checked tasks each; directly supplied guides passed 16/18. See the [full report](study/report.md), [primary artifact index](study/campaign-02/artifacts.md) and [execution limits](study/campaign-02/execution-audit.json). A first 54-attempt batch with a launcher defect is retained as diagnostic evidence; the primary result comes from a complete repaired 54-attempt batch. No standalone article or production trial patch was created. The source review and small retrieval pilot below remain historical evidence.
+November 13, 2026, America/Los_Angeles. **Static embedding reproduction and an article draft are complete.** The [draft](article.md) explains the learned table, warm versus full-search timing, public retrieval replay and behavior limits. The [reproduction record](embedding/README.md) preserves three processes, exact vector comparisons, fixed controls and full measurements. The draft remains outside the publication pipeline; no production trial patch was applied.
+
+The earlier [interface study](study/report.md) remains separate: baseline and ordinary MWG availability passed 18/18 checked attempts each; directly supplied guides passed 16/18. Its first 54-attempt batch had a launcher defect and remains diagnostic evidence; a complete repaired 54-attempt batch supplies the primary result. [Primary artifact index](study/campaign-02/artifacts.md), [execution limits](study/campaign-02/execution-audit.json). The initial source review and small retrieval pilot below remain historical evidence.
 
 ## Editorial decision
 
-There is a useful standalone investigation here: **does maintained browser guidance improve the code an agent actually delivers under a project's constraints?** The launch is covered by the [OSS Radar #14 entry](../../../posts/045-oss-radar-14-november-show-hn.md). A separate article should contribute independent task outcomes or a transferable retrieval method, rather than repeat the announcement.
+The [current editorial decision](embedding/editorial.md) centers the standalone draft on how learned data makes the seven-line query calculation useful. The new reproduction contributes implementation equality, timing boundaries, package integrity and public retrieval ablations. The completed interface study supplies a distinct downstream check, with no observed pass-rate gain and a narrower code-simplification finding.
 
-The strongest initial direction is a controlled interface-building study using owned tasks. A narrower alternative is a retrieval engineering field note about where a distilled word table works and where the consuming agent must interpret its results. The pilot supports concrete questions for both; it establishes neither product superiority nor general failure.
+The launch itself is already covered by the [OSS Radar #14 entry](../../../posts/045-oss-radar-14-november-show-hn.md). The standalone draft explains the transferable architecture and its tested limits rather than repeating that announcement. [Claim dispositions](embedding/claims.md) separate reproduced results from inspected training code and untested historical comparisons.
 
 ## What the two announcements establish
 
@@ -83,4 +85,4 @@ An optional later retrieval study should compare BM25-only, dense-only and hybri
 
 The pilot ran twice; the final repeat added source/package table-identity checks and conventional even-sample median calculation. Ordered retrieval outcomes agreed. Source links, local links, result invariants, fixture syntax and scoped public diff were checked. Raw author messages are preserved only in the approved private archive. Existing [scanner trials](../oss-radar-14-november-show-hn/04-local-trials.md#modern-web-guidance) retain their original November 11 scope.
 
-The executed study and its two campaign boundaries supersede this initial next-step proposal. Next bounded action: author review of the [completed findings](study/report.md) before deciding whether to write an article. No further experiment or publication is automatically scheduled.
+The executed interface study and its two campaign boundaries supersede this initial next-step proposal. The later static-embedding reproduction and public replay are documented separately above; they do not claim completion of the optional novel-query, independently labeled retrieval study. Next bounded action: author review of the [article draft](article.md) and [new reproduction evidence](embedding/README.md). No further experiment or publication is automatically scheduled.

@@ -1,0 +1,192 @@
+{
+  "measuredProcesses": 3,
+  "frozenInputCommit": "d2da369f",
+  "environment": {
+    "node": "v24.14.1",
+    "platform": "darwin",
+    "arch": "arm64",
+    "cpu": "Apple M5",
+    "osRelease": "27.2.0",
+    "logicalCpuCount": 10
+  },
+  "sourceCommit": "596acbc75a330508591b07cd9e198b219341f619",
+  "packageVersion": "1.0.0",
+  "vocabulary": 29165,
+  "dimensions": 256,
+  "chunks": 2016,
+  "guides": 208,
+  "replication": {
+    "callsComparedPerProcess": [
+      628,
+      628,
+      628
+    ],
+    "maximumCoordinateDifference": 0,
+    "cliRankingsMatched": 36,
+    "identicalQualityResultsAcrossThreeProcesses": true
+  },
+  "processMedianWarmEmbeddingUs": [
+    3.5303540000000027,
+    3.4655619999999914,
+    3.4615830000000045
+  ],
+  "processMedianFreshCliMs": [
+    85.66764549999994,
+    86.8092294999999,
+    86.30768749999993
+  ],
+  "tableInitMs": [
+    4.378374999999998,
+    4.110999999999997,
+    3.991500000000002
+  ],
+  "firstEmbeddingMs": [
+    0.3277909999999977,
+    0.18520800000000293,
+    0.1619579999999985
+  ],
+  "medianLengthExperimentUs": {
+    "1": 2.9625415000000004,
+    "4": 3.5843960000000266,
+    "16": 5.998771000000005,
+    "64": 15.713374999999985
+  },
+  "quality": {
+    "metric": "Any upstream grade-2 guide at K=10, including orientation guides; not upstream leaf-only Hit@K.",
+    "agentTestQueries": 514,
+    "answerable": 504,
+    "excluded": [
+      {
+        "qid": "aq0538",
+        "scope": "in_domain",
+        "grade2Count": 0
+      },
+      {
+        "qid": "aq0643",
+        "scope": "in_domain",
+        "grade2Count": 0
+      },
+      {
+        "qid": "aq0644",
+        "scope": "in_domain",
+        "grade2Count": 0
+      },
+      {
+        "qid": "aq0672",
+        "scope": "in_domain",
+        "grade2Count": 0
+      },
+      {
+        "qid": "aq0673",
+        "scope": "in_domain",
+        "grade2Count": 0
+      },
+      {
+        "qid": "aq0725",
+        "scope": "in_domain",
+        "grade2Count": 0
+      },
+      {
+        "qid": "aq0740",
+        "scope": "in_domain",
+        "grade2Count": 0
+      },
+      {
+        "qid": "aq0746",
+        "scope": "in_domain",
+        "grade2Count": 0
+      },
+      {
+        "qid": "aq0832",
+        "scope": "out_of_domain",
+        "grade2Count": 0
+      },
+      {
+        "qid": "aq0938",
+        "scope": "in_domain",
+        "grade2Count": 0
+      }
+    ],
+    "summaries": {
+      "dense": {
+        "grade2HitAt10": 499,
+        "answerableDenominator": 504,
+        "unjudgedReturned": 1304,
+        "returnedCandidates": 5040,
+        "oosAdmitted": 90,
+        "oosDenominator": 90,
+        "oosByStratum": {
+          "near": {
+            "admitted": 40,
+            "denominator": 40
+          },
+          "far": {
+            "admitted": 50,
+            "denominator": 50
+          }
+        }
+      },
+      "bm25": {
+        "grade2HitAt10": 496,
+        "answerableDenominator": 504,
+        "unjudgedReturned": 998,
+        "returnedCandidates": 5031,
+        "oosAdmitted": 87,
+        "oosDenominator": 90,
+        "oosByStratum": {
+          "near": {
+            "admitted": 40,
+            "denominator": 40
+          },
+          "far": {
+            "admitted": 47,
+            "denominator": 50
+          }
+        }
+      },
+      "hybrid": {
+        "grade2HitAt10": 501,
+        "answerableDenominator": 504,
+        "unjudgedReturned": 795,
+        "returnedCandidates": 5040,
+        "oosAdmitted": 90,
+        "oosDenominator": 90,
+        "oosByStratum": {
+          "near": {
+            "admitted": 40,
+            "denominator": 40
+          },
+          "far": {
+            "admitted": 50,
+            "denominator": 50
+          }
+        }
+      },
+      "permutedDense": {
+        "grade2HitAt10": 18,
+        "answerableDenominator": 504,
+        "unjudgedReturned": 4534,
+        "returnedCandidates": 5040,
+        "oosAdmitted": 90,
+        "oosDenominator": 90,
+        "oosByStratum": {
+          "near": {
+            "admitted": 40,
+            "denominator": 40
+          },
+          "far": {
+            "admitted": 50,
+            "denominator": 50
+          }
+        }
+      }
+    },
+    "perQuerySha256": "9af03653bda53d0763e24392f7e51f8d88e2bfb013c03eb269564b944a4b9afa"
+  },
+  "measurementNotes": [
+    "The per-control cosine field in frozen process receipts is the dot product of near-unit vectors; a zero-vector pair has no defined cosine. Tiny values above one reflect float32 unit-length error.",
+    "The word-order control has float32 rounding differences but identical tested hybrid ranking. The hyphen-fallback control has identical dense vectors but different lexical/hybrid rankings.",
+    "Public grade-2 labels include orientation guides. This is not the upstream leaf-only metric or private telemetry population.",
+    "The 628 comparisons per process are calls, not 628 distinct query strings."
+  ]
+}
