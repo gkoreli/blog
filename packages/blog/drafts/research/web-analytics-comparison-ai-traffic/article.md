@@ -4,9 +4,9 @@ A server request, a browser pageview, a visit and a signup measure different thi
 
 This comparison covers PostHog, Matomo, Plausible, Umami, Rybbit, OpenPanel, GoatCounter, GA4, Cloudflare AI Crawl Control and the analytics library behind this blog. Their differences reach beyond bot detection into identity, conversions, installation and who operates the system.
 
-The library is part of the comparison because I use and develop it. The earlier [User-Agent investigation](/please-stop-misreading-user-agent) examines one part of that work. Its useful distinction is the way it separates declarations, verification and uncertainty. Several established products already offer server-side collection and agent reporting; they also have workflows it lacks.
+The library is part of the comparison because I use and develop it. The earlier [User-Agent investigation](/please-stop-misreading-user-agent) examines one part of that work. Version 0.2 now ships portable cached reporting and broader signature verification, with a production history upgrade checked against retained observations. Our strongest technical advantage is precise evidence about signed requests. Established tools remain ahead in campaigns, outcomes and integrations. That makes publisher outcomes the next build to prioritize.
 
-Primary documentation and selected source paths were checked with AI agents on **November 13, 2026**. No cross-tool installation or identical-traffic replay was performed for this comparison. Our library has separate execution evidence; the other products are compared through their documented capabilities and inspected mechanisms.
+The competitor source and popularity baseline is **November 13, 2026**. Selected detection and integration documentation was checked again on November 14, when our production-upgrade acceptance was completed. No cross-tool installation or identical-traffic replay was performed for this comparison. Our library has execution evidence; the other products are compared through their documented capabilities and inspected mechanisms.
 
 ## Start with what the collector can observe
 
@@ -41,7 +41,7 @@ The collection column describes the documented path relevant to this comparison.
 | [Rybbit](https://rybbit.com/docs/bot-detection) | Tracking requests assessed through several signal layers; filtered bots can retain compact evidence records | Browser and behavioral signals beyond our request classifier, alongside a broader analytics suite |
 | [GA4](https://support.google.com/analytics/answer/12923437) | Instrumented website/app events organized into acquisition, sessions and outcomes | Campaign and advertising integrations, key events and revenue analysis |
 | [Cloudflare AI Crawl Control](https://developers.cloudflare.com/ai-crawl-control/features/analyze-ai-traffic/) | Edge requests, including blocks/errors, with crawler controls and reporting | Visibility before our collector, transfer volume and requested/served formats |
-| [Our library, `@gkoreli/analytics` 0.2](https://github.com/gkoreli/blog/tree/a85aa06c381a287dcaee8c5ed401f4d4e2c60ace/packages/analytics) | Eligible served-page events; people and agents remain in the audience, with separate evidence dimensions | Inspectable classifications, proof coverage and history; a Worker/D1 package without a general conversion workflow |
+| [Our library, `@gkoreli/analytics` 0.2](https://github.com/gkoreli/blog/tree/a85aa06c381a287dcaee8c5ed401f4d4e2c60ace/packages/analytics) | Eligible served-page events; people and agents remain in the audience, with separate evidence dimensions | Signature coverage, historical profiles and portable cached reporting; a Worker/D1 package without a general conversion workflow |
 
 This is a representative selection. At review, the seven external code repositories ranged from about **6,200 to 40,800 GitHub stars**. The [recorded snapshot](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/web-analytics-comparison-ai-traffic/repository-snapshot.json) preserves the exact counts and source baselines. Stars measure repository interest. They do not measure installed sites, detector accuracy or successful operator decisions.
 
@@ -105,15 +105,38 @@ That distinction has shaped the [library's contracts and reporting](https://gith
 
 PostHog offers a useful alternative: classification at query time. That makes current rules available over retained data. It also means, by inference, that changing those rules can change the labels reported for older events. Preserving the original decision and recomputing a current interpretation are both useful operations; an operator should know which report they are reading.
 
-The latest signature work supports all five public-key algorithms initially defined by [RFC 9421](https://www.rfc-editor.org/rfc/rfc9421.html#section-3.3), through a shared key-policy and verification module. Request checks and directory-proof checks use that module. This expands tested interoperability. It leaves explicit limits around transport context, request-body digest validation and nonce replay enforcement; it is not a complete-conformance claim. Nor do most ordinary page events arrive with a useful signature.
+The shipped signature module supports all five public-key algorithms initially defined by [RFC 9421](https://www.rfc-editor.org/rfc/rfc9421.html#section-3.3). Request checks and directory-proof checks share key policy and verification. Node/Workerd comparisons cover the algorithms, and three published RFC vectors provide independent verification inputs. Transport context, request-body digest validation and nonce replay enforcement retain explicit limits; full conformance is not established. Nor do most ordinary page events arrive with a useful signature.
 
-Practical operation matters as much as those evidence fields. The core was already a dedicated package. Version 0.2 moves reusable caching into that package, adds a small report readable without JavaScript, supplies ordered schema upgrades and makes cold-report admission explicit.
+The core was already a dedicated package. Version 0.2 completes more of the delivery boundary: reusable caching, a small report readable without JavaScript, ordered schema upgrades and explicit cold-report admission. A separate generated project recorded six controlled page events and three daily identifiers, then returned a cache MISS followed by a byte-identical HIT. This validates the agent-operated installation/reporting path. An independent publisher's use remains unmeasured. [Package acceptance](https://github.com/gkoreli/blog/blob/69fa16915884a8318ed2ba51f3ae52df24808e64/docs/worklist/tools-product-opportunities/analytics-package-acceptance-2026-11-13.json).
 
-In a separately generated local project, six acknowledged page observations produced six events and three daily identifiers. The report separated three headless declarations, two unsigned search-crawler declarations and one unresolved client. Its first report was a cache MISS; the next was a byte-identical HIT with the same calculation time. Those were controlled agent-operated inputs. They establish the tested installation and reporting path, without establishing independent operator use. Fresh-install upgrades passed; historical production-upgrade acceptance is still pending. The [acceptance record](https://github.com/gkoreli/blog/blob/69fa16915884a8318ed2ba51f3ae52df24808e64/docs/worklist/tools-product-opportunities/analytics-package-acceptance-2026-11-13.json) keeps those outcomes separate.
+The production history upgrade is now verified too. Original observations remain authoritative; precomputed reporting fields accelerate their interpretation. A reporting-rules version stamp identifies which derived fields can be reused. The November 14 migration changed that stamp on **43,320 historical rows**, preserving every other reporting value.
 
-The starter's daily calculation count is a durable admission limit. Its accumulated reported reads form a circuit breaker for later calculations: an executing query can cross that threshold. Cache hits reuse a calculation, and cache expiry is capped at one hour and UTC midnight. These controls make operating choices explicit; they do not establish that our cost is lower than another product's.
+The checks connect that storage change to report behavior:
 
-The larger gaps remain easy to name. The package has no general campaign-to-conversion workflow, broad account/SDK ecosystem or supported cross-day retention report. One database serves one site. Independent adoption, larger operating scale and comparative accuracy remain unmeasured. Its open code is MIT, but the package is still private workspace source, with a local-project generator rather than an npm release or a managed service.
+- All stored columns and retained evidence matched in **28 before/after original-record spot checks**, including 24 historical and four newer records. The historical samples had equal old/new interpretations; the newer samples correctly recognized the current format.
+- The fixed November 6–12 UTC report retained all metrics, breakdowns and recorded profiles across **4,334 included events**. The old/new readers differed only in the label naming their own current verifier version.
+- An isolated native replay of **88 retained originals** produced exactly the same **86-event report across 27 sections** from original evidence and precomputed fields. Complete reporting coverage also passed for the historical corpus and a frozen newer range.
+
+The [production receipt](https://github.com/gkoreli/blog/blob/19d8f8971d1d74b9118c7819bfbb55aa26f7ba9d/docs/worklist/tools-product-opportunities/analytics-production-upgrade-2026-11-14.json) separates the full reporting-field comparison from the sampled original-record checks. The upgrade submitted no writes to original observations. The upgrade and all production verification used **577,811 reported reads and 129,943 indexed writes**, below review limits of 1,000,000 reads and 150,000 writes. Those measure this operation's database work, rather than cost per reader or a competitor benchmark.
+
+Those checks demonstrate history preservation under the recorded conditions. Current and supported historical formats remain readable, and missing historical evidence stays unknown. A newer verifier does not retroactively authenticate an earlier request.
+
+The starter also has a durable daily calculation limit and a returned-read circuit breaker for later fills; an executing query can cross the read threshold. Cache freshness is capped at one hour and UTC midnight. The blog uses the shared cache, while its optional durable admission adapter remains disabled. Shipping that adapter and enabling it at a site are separate operating decisions.
+
+## Our advantages and the remaining gaps
+
+| Dimension | Our shipped position | Relative position |
+| --- | --- | --- |
+| Signed-request evidence | Five public-key algorithms, recorded coverage and separate declaration/network/proof states | Goes beyond the [Matomo UA](https://matomo.org/faq/how-to/install-ai-chatbot-tracking/) and [PostHog UA/IP](https://posthog.com/docs/web-analytics/bot-detection) detection workflows reviewed here when a verifiable signature is present |
+| Historical decisions | Recorded profiles, retained originals and a checked reporting upgrade | Explicit historical interpretation; query-time reinterpretation, as in PostHog, serves a different useful question |
+| Worker reporting | A separate-project starter, shared cache, script-free report and ordered upgrades | Delivered engineering; independent operator usefulness is the next validation gap |
+| Publisher outcomes | Page/referral evidence without a general campaign-to-conversion contract | Behind the goal and acquisition workflows in GA4, Matomo, Plausible and the broader product suites |
+| External integrations | Typed reports and aggregate JSON, with no packaged analytics MCP service or broad SDK/account ecosystem | Behind the integration paths documented by Umami and OpenPanel |
+| Observation coverage | Successful eligible pages and request-level evidence | Narrower than Cloudflare's upstream access view and Rybbit's browser/behavioral signals |
+
+The clearest technical lead is **cryptographic evidence granularity within those reviewed workflows**. The history upgrade establishes another strength of our implementation; we have not benchmarked competitors' upgrades against it. Neither result supplies an overall detection-accuracy ranking.
+
+Product readiness is a larger gap. We still have one database per site, no supported cross-day retention report and no independent adoption or scale result. The source is public and MIT licensed. Distribution currently uses the workspace package and a local-project generator, without an npm release or a managed analytics service.
 
 ## Compare the offer you can actually run
 
@@ -121,7 +144,7 @@ Edition and operating responsibility can reverse a feature comparison. Plausible
 
 PostHog's [self-hosting documentation](https://posthog.com/docs/self-host) explicitly says self-hosted installations are unsupported. That is a material distinction from buying a managed service. For our package, the equivalent responsibility is concrete: the operator owns the Worker, D1 database, configuration, migrations and recovery.
 
-Umami's [official MCP](https://docs.umami.is/docs/mcp) is another useful edition check. It is read-only and uses API permissions. Self-hosted support starts at v3.4 and requires enablement; hosted availability depends on the plan. An agent interface is already an established integration pattern, not a capability our library can claim merely because its reports return JSON.
+Umami's [official read-only MCP](https://docs.umami.is/docs/faq) is another useful edition check. Its [self-hosted enablement](https://docs.umami.is/docs/environment-variables) starts at v3.4, while the [Cloud integration](https://docs.umami.is/docs/cloud/changelog) uses API subscription and website/team permissions. An agent interface is already an established integration pattern. For our existing typed JSON API, the next step is an independent client's task, explicit version/support expectations and bounded exports where needed. An MCP adapter should follow that working interface.
 
 Privacy also depends on what is enabled. Cookie-free page collection, explicitly identified users, browser replay and request diagnostics have different data boundaries. Compare the fields and retention of the configuration you intend to run, rather than treating a product's privacy label as a complete description.
 
@@ -136,13 +159,27 @@ For a practical selection:
 - If the task is crawler access, blocks or transfer volume, use the edge view or appropriate server logs. For configured AI request reports within a broader analytics installation, examine Matomo and PostHog's ingestion paths.
 - If the task is inspecting how declarations, verification and uncertainty support a traffic label on a Worker site, our library is worth evaluating alongside products such as Rybbit. Choose an actual operator question for that evaluation, rather than counting evidence fields.
 
-For our library, the comparison points toward campaigns and outcomes, plus a real independent operator trial. The next useful result would be another publisher explaining a traffic change or making a publishing decision with it. That would establish something the feature table cannot.
+## The next build: publisher campaigns and outcomes
+
+Portable cached reporting is delivered. The next implementation should connect a publishing choice to an acknowledged result: for example, which distribution campaigns brought served access, and which confirmed subscriptions can be traced through an explicit signup flow.
+
+That calls for a small publisher-outcomes module, with three acceptance conditions:
+
+1. Capture bounded, allowlisted campaign labels and a closed set of meaningful events. A confirmed subscription should come from an acknowledged server transition, with deduplication so retries do not inflate it.
+2. Carry attribution only where the flow provides evidence for the relationship. Preserve unknown attribution; arbitrary query strings and invented joins across rotating daily IDs would undermine the current privacy and evidence model.
+3. Give another publisher a complete task: install the package, explain a traffic change or compare a distribution choice, and select a publishing action. Record setup friction, failures, query work and what the operator could actually explain.
+
+Served agent access remains a supported audience observation alongside later actions. A conversion does not authenticate a human or establish that an AI answer used the article. The report should keep these stages separately useful.
+
+The operator trial can start with the shipped report; it need not wait for every outcome feature. If a different missing capability prevents the actual decision, that evidence should change the build order. This is the proposed next milestone, not an outcome already achieved.
+
+After that, stabilize the external query/export interface around the existing typed reports, then add read-only MCP if an operator needs it. A common labelled-input comparison should guide further detector changes, including the hosting-network policy difference. Broader tenancy and more dashboard features can follow demonstrated demand. The strongest next result is a publisher making a supported decision with the system.
 
 ---
 
 ## Terms and source notes
 
-Product documentation and repository counts were checked November 13, 2026 Pacific. Source links pin the inspected code; they do not imply that every hosted or released edition uses that exact commit. Prices, detector accuracy and same-workload operating costs were not benchmarked. [Research and claim review](https://github.com/gkoreli/blog/tree/main/packages/blog/drafts/research/web-analytics-comparison-ai-traffic).
+Repository counts and external source baselines are dated November 13, 2026 Pacific. The Matomo, PostHog and Rybbit detection guides and supporting Umami integration documentation were refreshed November 14; owned production acceptance is also dated November 14. Source links pin inspected code, without implying that every hosted or released edition uses that commit. Prices, detector accuracy and same-workload operating costs were not benchmarked. [Research and claim review](https://github.com/gkoreli/blog/tree/main/packages/blog/drafts/research/web-analytics-comparison-ai-traffic).
 
 | Term / reference | Meaning in this comparison |
 | --- | --- |
