@@ -1,0 +1,143 @@
+{
+  "version": 1,
+  "recordedAt": "2026-11-14T05:18:52.291790+00:00",
+  "package": {
+    "name": "@gkoreli/analytics",
+    "version": "0.2.0",
+    "distribution": "Private workspace source and generated local project; no npm release."
+  },
+  "implementation": {
+    "commit": "a85aa06c381a287dcaee8c5ed401f4d4e2c60ace",
+    "pushedTo": "main",
+    "concurrentChangesPreserved": true
+  },
+  "checks": {
+    "analyticsTests": 484,
+    "siteTests": 442,
+    "workspaceTypes": "passed",
+    "markdownValidation": "passed",
+    "isolatedBuild": {
+      "posts": 46,
+      "elapsedMs": 52505,
+      "sharedOutputUntouched": true
+    },
+    "workerDryRun": "passed",
+    "nativeReportParity": {
+      "runtimes": [
+        "1.20260301.1",
+        "1.20261108.1"
+      ],
+      "selectors": 33,
+      "completeReportComparisonsPerRuntime": 66,
+      "syntheticObservations": 211
+    },
+    "nativeProtocol": {
+      "publicKeyAlgorithms": 5,
+      "publishedRfcVectors": 3,
+      "additional2049BitRsaControl": true,
+      "requestDirectoryParity": "passed",
+      "cachedAlgorithmMismatchControls": "passed",
+      "durableAdmissionRaceAndUnknownMetering": "passed",
+      "guardedUpgradeAndIntervalControls": "passed",
+      "externalRequests": 0
+    }
+  },
+  "standalone": {
+    "pinnedNode": "24.14.1",
+    "pinnedPnpm": "9.15.4",
+    "coldOfflineAttempt": "failed: Wrangler package absent from local store",
+    "normalOnlineInstall": "passed",
+    "subsequentWarmOfflineInstall": "passed",
+    "orderedMigrationsApplied": 3,
+    "localHttp": {
+      "events": 6,
+      "dailyIds": 3,
+      "kinds": [
+        {
+          "kind": "headless-browser",
+          "reason": "HeadlessChrome",
+          "views": 3,
+          "dailyClients": 1
+        },
+        {
+          "kind": "ai-search",
+          "reason": "ExaSearchBot",
+          "views": 2,
+          "dailyClients": 1
+        },
+        {
+          "kind": "unresolved",
+          "reason": "unrecognized-browser-claim",
+          "views": 1,
+          "dailyClients": 1
+        }
+      ],
+      "cache": [
+        "MISS",
+        "HIT"
+      ],
+      "bodiesEqual": true,
+      "calculatedAt": "2026-11-14T04:59:13.503Z"
+    },
+    "browser": "Script-free report, readable composition and seven-day navigation checked. No mobile viewport claim.",
+    "actualExecutor": "Agent-operated local evaluation",
+    "independentOperatorAdoption": false,
+    "ownedServerStopped": true
+  },
+  "production": {
+    "buildId": "0931492d-60a7-4f51-8589-f41fae21f8eb",
+    "servedSourceCommit": "a85aa06c381a287dcaee8c5ed401f4d4e2c60ace",
+    "deploymentId": "7c2daf75-89dd-43a1-a71b-706cdbe7619c",
+    "workerVersion": "e4e6889f-8469-41b3-aa54-7343a1080a33",
+    "percentage": 100,
+    "readOnlyReportControl": {
+      "checkedAt": "2026-11-14T05:17:36.306323+00:00",
+      "selection": "7d, unmatched path",
+      "requests": [
+        {
+          "status": 200,
+          "cache": "MISS",
+          "bodySha256": "bd3c0fc7cac008a0def5565788debf7f2c0c51fe4c515531056ab8bc6f682f28",
+          "calculatedAt": "2026-11-14T05:17:34.939Z",
+          "events": 0
+        },
+        {
+          "status": 200,
+          "cache": "HIT",
+          "bodySha256": "bd3c0fc7cac008a0def5565788debf7f2c0c51fe4c515531056ab8bc6f682f28",
+          "calculatedAt": "2026-11-14T05:17:34.939Z",
+          "events": 0
+        }
+      ],
+      "source": "a85aa06c381a287dcaee8c5ed401f4d4e2c60ace",
+      "scope": "Live delivery and cache of an empty selection; no production traffic interpretation or historical projection upgrade acceptance."
+    },
+    "historicalFactsUpgrade": {
+      "status": "pending explicit approval",
+      "automaticApprovalReview": "rejected specific existing-data mutation as not explicitly authorized",
+      "executedStatements": 0,
+      "maximumExistingFacts": 43321,
+      "finiteIntervals": 9,
+      "reviewReadThreshold": 1000000,
+      "reviewDerivedWriteThreshold": 150000,
+      "sourceMutation": false,
+      "budgetAdapterEnabledOnBlog": false,
+      "pendingMigrations": [
+        "0022_report_budget.sql",
+        "0023_signature_reporting_profiles.sql"
+      ]
+    }
+  },
+  "limits": [
+    "No complete RFC 9421 conformance claim; public-directory discovery excludes HMAC secrets and transport-unavailable components.",
+    "Request-body digest validation and nonce replay enforcement remain separate capabilities.",
+    "Returned-read accounting is a later-fill circuit breaker, not an executing SQL row cap or account-billing measurement.",
+    "Live cache control uses an unmatched path and does not validate production traffic interpretation or historical projection promotion.",
+    "Independent operator usefulness and adoption remain unmeasured."
+  ],
+  "privateEvidence": {
+    "manifestSha256": "3b2d3dc41584d694f8d9e79b180368a724802b763ceb54d7fd08e760b81cd277",
+    "files": 74,
+    "rawCapturesPublished": false
+  }
+}
