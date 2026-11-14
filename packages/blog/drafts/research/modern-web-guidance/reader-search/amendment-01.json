@@ -1,0 +1,12 @@
+{
+  "date": "2026-11-14",
+  "beforeValidation": true,
+  "initialFreezeCommit": "cfbacaaf",
+  "developmentReceiptSha256": "2eacc2ce225334a8e2f6866b04a9a31c4742d5d5f764af2ad23d05589f158a6f",
+  "files": {
+    "amendment-01.md": "62dd82074d373d377fe6baf56bc41c196b4e64f7d2a1c5e6f71b63c8cb5cdee8",
+    "hierarchy.mjs": "ba5458e10025258f53ba0b1242f5e53a8f1ac8b60d6cb8777840f527e48c1305",
+    "evaluate-hierarchy.mjs": "2c7fc09a6b925cdd23469984c408e637243c7b8e1134ddc566f20bdd9c3f5356",
+    "hierarchy.test.mjs": "af154f88dfb20652aa34c10d5401a264b577d3b5c296a2ce8daf31f4c8dbb355"
+  }
+}
