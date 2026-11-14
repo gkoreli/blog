@@ -1,0 +1,94 @@
+{
+  "version": 1,
+  "measuredAt": "2026-11-14T15:59:30.295438+00:00",
+  "implementationCommit": "d063ffa3e007a4f3ba9e198478beb9a6b75668b7",
+  "sourceCommit": "d063ffa3e007a4f3ba9e198478beb9a6b75668b7",
+  "cloudflareBuild": "3e052f6a-89f4-4a34-9995-3110090aadde",
+  "method": "Six fresh read-only page/asset GETs, matching served identity, implementation ancestry and exact asset comparisons. Raw headers and captures remain outside Git.",
+  "localChecks": {
+    "types": true,
+    "siteTests": 442,
+    "markdownValidation": 35,
+    "builtPosts": 46,
+    "privatePromptGuard": true,
+    "savedPathsAndCountsPreserved": 10,
+    "savedFilterAndVisitDestinationsPreserved": 20
+  },
+  "responses": [
+    {
+      "path": "/stats",
+      "status": 200,
+      "sha256": "7c76146627f5d52a1d7eaf37d9c4ca475c11b83750394153bbee94250fee9dc2",
+      "passed": true,
+      "source": "d063ffa3e007a4f3ba9e198478beb9a6b75668b7",
+      "build": "3e052f6a-89f4-4a34-9995-3110090aadde",
+      "containsImplementation": true
+    },
+    {
+      "path": "/design-language",
+      "status": 200,
+      "sha256": "2e08dea701f86bb18ef0117a2c05738828b3dac1b9023dd9589e0ab7ec118891",
+      "passed": true,
+      "source": "d063ffa3e007a4f3ba9e198478beb9a6b75668b7",
+      "build": "3e052f6a-89f4-4a34-9995-3110090aadde",
+      "containsImplementation": true
+    },
+    {
+      "path": "/stats.css",
+      "status": 200,
+      "sha256": "cb4c5e025b8e09d59b3c47b849648021e693367aff11ce9113b2897eb628a4c8",
+      "passed": true
+    },
+    {
+      "path": "/stats.js",
+      "status": 200,
+      "sha256": "05aefe403f64f3cf013252e7c6cc18e952e1cb033b70a9d2a27cf997adb775bf",
+      "passed": true
+    },
+    {
+      "path": "/main.css",
+      "status": 200,
+      "sha256": "8fffcd69a645833ed13bdf6f445d8b3716e2afcc752611219b26f28841a31942",
+      "passed": true
+    },
+    {
+      "path": "/icons/posts.svg",
+      "status": 200,
+      "sha256": "3c798c6ad11743709e2425eef88c8522b5c4a341b8daa129a7b9659890f70495",
+      "passed": true
+    }
+  ],
+  "checks": {
+    "sameServedIdentity": true,
+    "sharedVisitHeader": true,
+    "boundedMeterRenderer": true,
+    "exact /stats.css": true,
+    "exact /stats.js": true,
+    "exact /main.css": true,
+    "exact /icons/posts.svg": true
+  },
+  "limits": [
+    "Local report rendering uses a dated saved public response.",
+    "The scoped local preview checks filter navigation but deliberately returns unavailable for non-default selections.",
+    "No database update or migration is part of this UI correction."
+  ],
+  "browserChecks": {
+    "measuredAt": "2026-11-14T16:00:24.297Z",
+    "desktopWidth": 1440,
+    "desktopTheme": "light",
+    "phoneWidth": 320,
+    "phoneThemes": [
+      "light",
+      "dark"
+    ],
+    "topPageRecords": 10,
+    "pageOverflow": false,
+    "allRestingTitlesWithoutUnderline": true,
+    "metersOutsideIdentity": true,
+    "phoneVisitTargetPx": [
+      44,
+      44
+    ],
+    "scope": "Default public report; no scoped live query was exercised. Section screenshot and raw browser inventory remain outside Git."
+  }
+}
