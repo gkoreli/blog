@@ -1,0 +1,1358 @@
+{
+  "analyzedAt": "2026-11-14T19:56:28.576Z",
+  "receipts": {
+    "matrix-development": {
+      "rawReceiptSha256": "2eacc2ce225334a8e2f6866b04a9a31c4742d5d5f764af2ad23d05589f158a6f",
+      "capturedAt": "2026-11-14T19:33:13.303Z",
+      "cases": 36
+    },
+    "hierarchy-development": {
+      "rawReceiptSha256": "7f70d309c94714a661cf5d0099878cf1566c342a2133da11bb253260c7131aec",
+      "capturedAt": "2026-11-14T19:36:41.409Z",
+      "cases": 36
+    },
+    "matrix-validation": {
+      "rawReceiptSha256": "2367f44741c5e87f7bcecccea1323e3f01e9b2220580742178805373a3e59c07",
+      "capturedAt": "2026-11-14T19:36:43.412Z",
+      "cases": 78
+    },
+    "hierarchy-validation": {
+      "rawReceiptSha256": "12801a43b1f0cbb8594c15d9b309d8bd2e740bd6b49d954ee70152a58445779e",
+      "capturedAt": "2026-11-14T19:36:50.290Z",
+      "cases": 78
+    }
+  },
+  "summaries": {
+    "matrix-development": {
+      "passage-raw-keyword/topic": {
+        "cases": 14,
+        "articleAt1": 11,
+        "articleAt3": 13,
+        "returnedResults": 14,
+        "selectedBlockShownInTargetArticle": 0,
+        "articleAt3AndSelectedBlockShown": 0
+      },
+      "passage-raw-semantic/topic": {
+        "cases": 14,
+        "articleAt1": 13,
+        "articleAt3": 14,
+        "returnedResults": 14,
+        "selectedBlockShownInTargetArticle": 0,
+        "articleAt3AndSelectedBlockShown": 0
+      },
+      "passage-raw-hybrid/topic": {
+        "cases": 14,
+        "articleAt1": 13,
+        "articleAt3": 14,
+        "returnedResults": 14,
+        "selectedBlockShownInTargetArticle": 0,
+        "articleAt3AndSelectedBlockShown": 0
+      },
+      "block-raw-keyword/topic": {
+        "cases": 14,
+        "articleAt1": 11,
+        "articleAt3": 14,
+        "returnedResults": 14,
+        "selectedBlockShownInTargetArticle": 0,
+        "articleAt3AndSelectedBlockShown": 0
+      },
+      "block-raw-semantic/topic": {
+        "cases": 14,
+        "articleAt1": 11,
+        "articleAt3": 14,
+        "returnedResults": 14,
+        "selectedBlockShownInTargetArticle": 0,
+        "articleAt3AndSelectedBlockShown": 0
+      },
+      "block-raw-hybrid/topic": {
+        "cases": 14,
+        "articleAt1": 13,
+        "articleAt3": 13,
+        "returnedResults": 14,
+        "selectedBlockShownInTargetArticle": 0,
+        "articleAt3AndSelectedBlockShown": 0
+      },
+      "passage-focus-keyword/topic": {
+        "cases": 14,
+        "articleAt1": 11,
+        "articleAt3": 13,
+        "returnedResults": 14,
+        "selectedBlockShownInTargetArticle": 0,
+        "articleAt3AndSelectedBlockShown": 0
+      },
+      "passage-focus-semantic/topic": {
+        "cases": 14,
+        "articleAt1": 13,
+        "articleAt3": 14,
+        "returnedResults": 14,
+        "selectedBlockShownInTargetArticle": 0,
+        "articleAt3AndSelectedBlockShown": 0
+      },
+      "passage-focus-hybrid/topic": {
+        "cases": 14,
+        "articleAt1": 13,
+        "articleAt3": 14,
+        "returnedResults": 14,
+        "selectedBlockShownInTargetArticle": 0,
+        "articleAt3AndSelectedBlockShown": 0
+      },
+      "block-focus-keyword/topic": {
+        "cases": 14,
+        "articleAt1": 11,
+        "articleAt3": 14,
+        "returnedResults": 14,
+        "selectedBlockShownInTargetArticle": 0,
+        "articleAt3AndSelectedBlockShown": 0
+      },
+      "block-focus-semantic/topic": {
+        "cases": 14,
+        "articleAt1": 11,
+        "articleAt3": 14,
+        "returnedResults": 14,
+        "selectedBlockShownInTargetArticle": 0,
+        "articleAt3AndSelectedBlockShown": 0
+      },
+      "block-focus-hybrid/topic": {
+        "cases": 14,
+        "articleAt1": 13,
+        "articleAt3": 13,
+        "returnedResults": 14,
+        "selectedBlockShownInTargetArticle": 0,
+        "articleAt3AndSelectedBlockShown": 0
+      },
+      "passage-raw-keyword/reader": {
+        "cases": 14,
+        "articleAt1": 12,
+        "articleAt3": 13,
+        "returnedResults": 14,
+        "selectedBlockShownInTargetArticle": 0,
+        "articleAt3AndSelectedBlockShown": 0
+      },
+      "passage-raw-semantic/reader": {
+        "cases": 14,
+        "articleAt1": 12,
+        "articleAt3": 14,
+        "returnedResults": 14,
+        "selectedBlockShownInTargetArticle": 0,
+        "articleAt3AndSelectedBlockShown": 0
+      },
+      "passage-raw-hybrid/reader": {
+        "cases": 14,
+        "articleAt1": 13,
+        "articleAt3": 14,
+        "returnedResults": 14,
+        "selectedBlockShownInTargetArticle": 0,
+        "articleAt3AndSelectedBlockShown": 0
+      },
+      "block-raw-keyword/reader": {
+        "cases": 14,
+        "articleAt1": 10,
+        "articleAt3": 13,
+        "returnedResults": 14,
+        "selectedBlockShownInTargetArticle": 0,
+        "articleAt3AndSelectedBlockShown": 0
+      },
+      "block-raw-semantic/reader": {
+        "cases": 14,
+        "articleAt1": 12,
+        "articleAt3": 14,
+        "returnedResults": 14,
+        "selectedBlockShownInTargetArticle": 0,
+        "articleAt3AndSelectedBlockShown": 0
+      },
+      "block-raw-hybrid/reader": {
+        "cases": 14,
+        "articleAt1": 12,
+        "articleAt3": 14,
+        "returnedResults": 14,
+        "selectedBlockShownInTargetArticle": 0,
+        "articleAt3AndSelectedBlockShown": 0
+      },
+      "passage-focus-keyword/reader": {
+        "cases": 14,
+        "articleAt1": 12,
+        "articleAt3": 13,
+        "returnedResults": 14,
+        "selectedBlockShownInTargetArticle": 0,
+        "articleAt3AndSelectedBlockShown": 0
+      },
+      "passage-focus-semantic/reader": {
+        "cases": 14,
+        "articleAt1": 13,
+        "articleAt3": 14,
+        "returnedResults": 14,
+        "selectedBlockShownInTargetArticle": 0,
+        "articleAt3AndSelectedBlockShown": 0
+      },
+      "passage-focus-hybrid/reader": {
+        "cases": 14,
+        "articleAt1": 13,
+        "articleAt3": 14,
+        "returnedResults": 14,
+        "selectedBlockShownInTargetArticle": 0,
+        "articleAt3AndSelectedBlockShown": 0
+      },
+      "block-focus-keyword/reader": {
+        "cases": 14,
+        "articleAt1": 10,
+        "articleAt3": 14,
+        "returnedResults": 14,
+        "selectedBlockShownInTargetArticle": 0,
+        "articleAt3AndSelectedBlockShown": 0
+      },
+      "block-focus-semantic/reader": {
+        "cases": 14,
+        "articleAt1": 12,
+        "articleAt3": 13,
+        "returnedResults": 14,
+        "selectedBlockShownInTargetArticle": 0,
+        "articleAt3AndSelectedBlockShown": 0
+      },
+      "block-focus-hybrid/reader": {
+        "cases": 14,
+        "articleAt1": 12,
+        "articleAt3": 13,
+        "returnedResults": 14,
+        "selectedBlockShownInTargetArticle": 0,
+        "articleAt3AndSelectedBlockShown": 0
+      },
+      "passage-raw-keyword/recollection": {
+        "cases": 4,
+        "articleAt1": 4,
+        "articleAt3": 4,
+        "returnedResults": 4,
+        "selectedBlockShownInTargetArticle": 0,
+        "articleAt3AndSelectedBlockShown": 0
+      },
+      "passage-raw-semantic/recollection": {
+        "cases": 4,
+        "articleAt1": 4,
+        "articleAt3": 4,
+        "returnedResults": 4,
+        "selectedBlockShownInTargetArticle": 0,
+        "articleAt3AndSelectedBlockShown": 0
+      },
+      "passage-raw-hybrid/recollection": {
+        "cases": 4,
+        "articleAt1": 4,
+        "articleAt3": 4,
+        "returnedResults": 4,
+        "selectedBlockShownInTargetArticle": 0,
+        "articleAt3AndSelectedBlockShown": 0
+      },
+      "block-raw-keyword/recollection": {
+        "cases": 4,
+        "articleAt1": 4,
+        "articleAt3": 4,
+        "returnedResults": 4,
+        "selectedBlockShownInTargetArticle": 0,
+        "articleAt3AndSelectedBlockShown": 0
+      },
+      "block-raw-semantic/recollection": {
+        "cases": 4,
+        "articleAt1": 4,
+        "articleAt3": 4,
+        "returnedResults": 4,
+        "selectedBlockShownInTargetArticle": 0,
+        "articleAt3AndSelectedBlockShown": 0
+      },
+      "block-raw-hybrid/recollection": {
+        "cases": 4,
+        "articleAt1": 4,
+        "articleAt3": 4,
+        "returnedResults": 4,
+        "selectedBlockShownInTargetArticle": 0,
+        "articleAt3AndSelectedBlockShown": 0
+      },
+      "passage-focus-keyword/recollection": {
+        "cases": 4,
+        "articleAt1": 4,
+        "articleAt3": 4,
+        "returnedResults": 4,
+        "selectedBlockShownInTargetArticle": 0,
+        "articleAt3AndSelectedBlockShown": 0
+      },
+      "passage-focus-semantic/recollection": {
+        "cases": 4,
+        "articleAt1": 4,
+        "articleAt3": 4,
+        "returnedResults": 4,
+        "selectedBlockShownInTargetArticle": 0,
+        "articleAt3AndSelectedBlockShown": 0
+      },
+      "passage-focus-hybrid/recollection": {
+        "cases": 4,
+        "articleAt1": 4,
+        "articleAt3": 4,
+        "returnedResults": 4,
+        "selectedBlockShownInTargetArticle": 0,
+        "articleAt3AndSelectedBlockShown": 0
+      },
+      "block-focus-keyword/recollection": {
+        "cases": 4,
+        "articleAt1": 4,
+        "articleAt3": 4,
+        "returnedResults": 4,
+        "selectedBlockShownInTargetArticle": 0,
+        "articleAt3AndSelectedBlockShown": 0
+      },
+      "block-focus-semantic/recollection": {
+        "cases": 4,
+        "articleAt1": 4,
+        "articleAt3": 4,
+        "returnedResults": 4,
+        "selectedBlockShownInTargetArticle": 0,
+        "articleAt3AndSelectedBlockShown": 0
+      },
+      "block-focus-hybrid/recollection": {
+        "cases": 4,
+        "articleAt1": 4,
+        "articleAt3": 4,
+        "returnedResults": 4,
+        "selectedBlockShownInTargetArticle": 0,
+        "articleAt3AndSelectedBlockShown": 0
+      },
+      "passage-raw-keyword/no-known-answer": {
+        "cases": 4,
+        "articleAt1": 0,
+        "articleAt3": 0,
+        "returnedResults": 4,
+        "selectedBlockShownInTargetArticle": 0,
+        "articleAt3AndSelectedBlockShown": 0
+      },
+      "passage-raw-semantic/no-known-answer": {
+        "cases": 4,
+        "articleAt1": 0,
+        "articleAt3": 0,
+        "returnedResults": 4,
+        "selectedBlockShownInTargetArticle": 0,
+        "articleAt3AndSelectedBlockShown": 0
+      },
+      "passage-raw-hybrid/no-known-answer": {
+        "cases": 4,
+        "articleAt1": 0,
+        "articleAt3": 0,
+        "returnedResults": 4,
+        "selectedBlockShownInTargetArticle": 0,
+        "articleAt3AndSelectedBlockShown": 0
+      },
+      "block-raw-keyword/no-known-answer": {
+        "cases": 4,
+        "articleAt1": 0,
+        "articleAt3": 0,
+        "returnedResults": 4,
+        "selectedBlockShownInTargetArticle": 0,
+        "articleAt3AndSelectedBlockShown": 0
+      },
+      "block-raw-semantic/no-known-answer": {
+        "cases": 4,
+        "articleAt1": 0,
+        "articleAt3": 0,
+        "returnedResults": 4,
+        "selectedBlockShownInTargetArticle": 0,
+        "articleAt3AndSelectedBlockShown": 0
+      },
+      "block-raw-hybrid/no-known-answer": {
+        "cases": 4,
+        "articleAt1": 0,
+        "articleAt3": 0,
+        "returnedResults": 4,
+        "selectedBlockShownInTargetArticle": 0,
+        "articleAt3AndSelectedBlockShown": 0
+      },
+      "passage-focus-keyword/no-known-answer": {
+        "cases": 4,
+        "articleAt1": 0,
+        "articleAt3": 0,
+        "returnedResults": 4,
+        "selectedBlockShownInTargetArticle": 0,
+        "articleAt3AndSelectedBlockShown": 0
+      },
+      "passage-focus-semantic/no-known-answer": {
+        "cases": 4,
+        "articleAt1": 0,
+        "articleAt3": 0,
+        "returnedResults": 4,
+        "selectedBlockShownInTargetArticle": 0,
+        "articleAt3AndSelectedBlockShown": 0
+      },
+      "passage-focus-hybrid/no-known-answer": {
+        "cases": 4,
+        "articleAt1": 0,
+        "articleAt3": 0,
+        "returnedResults": 4,
+        "selectedBlockShownInTargetArticle": 0,
+        "articleAt3AndSelectedBlockShown": 0
+      },
+      "block-focus-keyword/no-known-answer": {
+        "cases": 4,
+        "articleAt1": 0,
+        "articleAt3": 0,
+        "returnedResults": 4,
+        "selectedBlockShownInTargetArticle": 0,
+        "articleAt3AndSelectedBlockShown": 0
+      },
+      "block-focus-semantic/no-known-answer": {
+        "cases": 4,
+        "articleAt1": 0,
+        "articleAt3": 0,
+        "returnedResults": 4,
+        "selectedBlockShownInTargetArticle": 0,
+        "articleAt3AndSelectedBlockShown": 0
+      },
+      "block-focus-hybrid/no-known-answer": {
+        "cases": 4,
+        "articleAt1": 0,
+        "articleAt3": 0,
+        "returnedResults": 4,
+        "selectedBlockShownInTargetArticle": 0,
+        "articleAt3AndSelectedBlockShown": 0
+      }
+    },
+    "hierarchy-development": {
+      "hierarchy-raw-keyword/topic": {
+        "cases": 14,
+        "articleAt1": 11,
+        "articleAt3": 13,
+        "returnedResults": 14,
+        "selectedBlockShownInTargetArticle": 11,
+        "articleAt3AndSelectedBlockShown": 10
+      },
+      "hierarchy-raw-semantic/topic": {
+        "cases": 14,
+        "articleAt1": 13,
+        "articleAt3": 14,
+        "returnedResults": 14,
+        "selectedBlockShownInTargetArticle": 10,
+        "articleAt3AndSelectedBlockShown": 10
+      },
+      "hierarchy-raw-hybrid/topic": {
+        "cases": 14,
+        "articleAt1": 13,
+        "articleAt3": 14,
+        "returnedResults": 14,
+        "selectedBlockShownInTargetArticle": 10,
+        "articleAt3AndSelectedBlockShown": 10
+      },
+      "hierarchy-focus-keyword/topic": {
+        "cases": 14,
+        "articleAt1": 11,
+        "articleAt3": 13,
+        "returnedResults": 14,
+        "selectedBlockShownInTargetArticle": 11,
+        "articleAt3AndSelectedBlockShown": 10
+      },
+      "hierarchy-focus-semantic/topic": {
+        "cases": 14,
+        "articleAt1": 13,
+        "articleAt3": 14,
+        "returnedResults": 14,
+        "selectedBlockShownInTargetArticle": 10,
+        "articleAt3AndSelectedBlockShown": 10
+      },
+      "hierarchy-focus-hybrid/topic": {
+        "cases": 14,
+        "articleAt1": 13,
+        "articleAt3": 14,
+        "returnedResults": 14,
+        "selectedBlockShownInTargetArticle": 10,
+        "articleAt3AndSelectedBlockShown": 10
+      },
+      "hierarchy-raw-keyword/reader": {
+        "cases": 14,
+        "articleAt1": 12,
+        "articleAt3": 13,
+        "returnedResults": 14,
+        "selectedBlockShownInTargetArticle": 11,
+        "articleAt3AndSelectedBlockShown": 10
+      },
+      "hierarchy-raw-semantic/reader": {
+        "cases": 14,
+        "articleAt1": 12,
+        "articleAt3": 14,
+        "returnedResults": 14,
+        "selectedBlockShownInTargetArticle": 9,
+        "articleAt3AndSelectedBlockShown": 9
+      },
+      "hierarchy-raw-hybrid/reader": {
+        "cases": 14,
+        "articleAt1": 13,
+        "articleAt3": 14,
+        "returnedResults": 14,
+        "selectedBlockShownInTargetArticle": 12,
+        "articleAt3AndSelectedBlockShown": 12
+      },
+      "hierarchy-focus-keyword/reader": {
+        "cases": 14,
+        "articleAt1": 12,
+        "articleAt3": 13,
+        "returnedResults": 14,
+        "selectedBlockShownInTargetArticle": 10,
+        "articleAt3AndSelectedBlockShown": 9
+      },
+      "hierarchy-focus-semantic/reader": {
+        "cases": 14,
+        "articleAt1": 13,
+        "articleAt3": 14,
+        "returnedResults": 14,
+        "selectedBlockShownInTargetArticle": 9,
+        "articleAt3AndSelectedBlockShown": 9
+      },
+      "hierarchy-focus-hybrid/reader": {
+        "cases": 14,
+        "articleAt1": 13,
+        "articleAt3": 14,
+        "returnedResults": 14,
+        "selectedBlockShownInTargetArticle": 10,
+        "articleAt3AndSelectedBlockShown": 10
+      },
+      "hierarchy-raw-keyword/recollection": {
+        "cases": 4,
+        "articleAt1": 4,
+        "articleAt3": 4,
+        "returnedResults": 4,
+        "selectedBlockShownInTargetArticle": 3,
+        "articleAt3AndSelectedBlockShown": 3
+      },
+      "hierarchy-raw-semantic/recollection": {
+        "cases": 4,
+        "articleAt1": 4,
+        "articleAt3": 4,
+        "returnedResults": 4,
+        "selectedBlockShownInTargetArticle": 1,
+        "articleAt3AndSelectedBlockShown": 1
+      },
+      "hierarchy-raw-hybrid/recollection": {
+        "cases": 4,
+        "articleAt1": 4,
+        "articleAt3": 4,
+        "returnedResults": 4,
+        "selectedBlockShownInTargetArticle": 2,
+        "articleAt3AndSelectedBlockShown": 2
+      },
+      "hierarchy-focus-keyword/recollection": {
+        "cases": 4,
+        "articleAt1": 4,
+        "articleAt3": 4,
+        "returnedResults": 4,
+        "selectedBlockShownInTargetArticle": 3,
+        "articleAt3AndSelectedBlockShown": 3
+      },
+      "hierarchy-focus-semantic/recollection": {
+        "cases": 4,
+        "articleAt1": 4,
+        "articleAt3": 4,
+        "returnedResults": 4,
+        "selectedBlockShownInTargetArticle": 1,
+        "articleAt3AndSelectedBlockShown": 1
+      },
+      "hierarchy-focus-hybrid/recollection": {
+        "cases": 4,
+        "articleAt1": 4,
+        "articleAt3": 4,
+        "returnedResults": 4,
+        "selectedBlockShownInTargetArticle": 2,
+        "articleAt3AndSelectedBlockShown": 2
+      },
+      "hierarchy-raw-keyword/no-known-answer": {
+        "cases": 4,
+        "articleAt1": 0,
+        "articleAt3": 0,
+        "returnedResults": 4,
+        "selectedBlockShownInTargetArticle": 0,
+        "articleAt3AndSelectedBlockShown": 0
+      },
+      "hierarchy-raw-semantic/no-known-answer": {
+        "cases": 4,
+        "articleAt1": 0,
+        "articleAt3": 0,
+        "returnedResults": 4,
+        "selectedBlockShownInTargetArticle": 0,
+        "articleAt3AndSelectedBlockShown": 0
+      },
+      "hierarchy-raw-hybrid/no-known-answer": {
+        "cases": 4,
+        "articleAt1": 0,
+        "articleAt3": 0,
+        "returnedResults": 4,
+        "selectedBlockShownInTargetArticle": 0,
+        "articleAt3AndSelectedBlockShown": 0
+      },
+      "hierarchy-focus-keyword/no-known-answer": {
+        "cases": 4,
+        "articleAt1": 0,
+        "articleAt3": 0,
+        "returnedResults": 4,
+        "selectedBlockShownInTargetArticle": 0,
+        "articleAt3AndSelectedBlockShown": 0
+      },
+      "hierarchy-focus-semantic/no-known-answer": {
+        "cases": 4,
+        "articleAt1": 0,
+        "articleAt3": 0,
+        "returnedResults": 4,
+        "selectedBlockShownInTargetArticle": 0,
+        "articleAt3AndSelectedBlockShown": 0
+      },
+      "hierarchy-focus-hybrid/no-known-answer": {
+        "cases": 4,
+        "articleAt1": 0,
+        "articleAt3": 0,
+        "returnedResults": 4,
+        "selectedBlockShownInTargetArticle": 0,
+        "articleAt3AndSelectedBlockShown": 0
+      }
+    },
+    "matrix-validation": {
+      "passage-raw-keyword/topic": {
+        "cases": 32,
+        "articleAt1": 30,
+        "articleAt3": 31,
+        "returnedResults": 32,
+        "selectedBlockShownInTargetArticle": 0,
+        "articleAt3AndSelectedBlockShown": 0
+      },
+      "passage-raw-semantic/topic": {
+        "cases": 32,
+        "articleAt1": 25,
+        "articleAt3": 31,
+        "returnedResults": 32,
+        "selectedBlockShownInTargetArticle": 0,
+        "articleAt3AndSelectedBlockShown": 0
+      },
+      "passage-raw-hybrid/topic": {
+        "cases": 32,
+        "articleAt1": 28,
+        "articleAt3": 31,
+        "returnedResults": 32,
+        "selectedBlockShownInTargetArticle": 0,
+        "articleAt3AndSelectedBlockShown": 0
+      },
+      "block-raw-keyword/topic": {
+        "cases": 32,
+        "articleAt1": 28,
+        "articleAt3": 31,
+        "returnedResults": 32,
+        "selectedBlockShownInTargetArticle": 0,
+        "articleAt3AndSelectedBlockShown": 0
+      },
+      "block-raw-semantic/topic": {
+        "cases": 32,
+        "articleAt1": 24,
+        "articleAt3": 31,
+        "returnedResults": 32,
+        "selectedBlockShownInTargetArticle": 0,
+        "articleAt3AndSelectedBlockShown": 0
+      },
+      "block-raw-hybrid/topic": {
+        "cases": 32,
+        "articleAt1": 26,
+        "articleAt3": 32,
+        "returnedResults": 32,
+        "selectedBlockShownInTargetArticle": 0,
+        "articleAt3AndSelectedBlockShown": 0
+      },
+      "passage-focus-keyword/topic": {
+        "cases": 32,
+        "articleAt1": 30,
+        "articleAt3": 31,
+        "returnedResults": 32,
+        "selectedBlockShownInTargetArticle": 0,
+        "articleAt3AndSelectedBlockShown": 0
+      },
+      "passage-focus-semantic/topic": {
+        "cases": 32,
+        "articleAt1": 25,
+        "articleAt3": 31,
+        "returnedResults": 32,
+        "selectedBlockShownInTargetArticle": 0,
+        "articleAt3AndSelectedBlockShown": 0
+      },
+      "passage-focus-hybrid/topic": {
+        "cases": 32,
+        "articleAt1": 28,
+        "articleAt3": 31,
+        "returnedResults": 32,
+        "selectedBlockShownInTargetArticle": 0,
+        "articleAt3AndSelectedBlockShown": 0
+      },
+      "block-focus-keyword/topic": {
+        "cases": 32,
+        "articleAt1": 28,
+        "articleAt3": 31,
+        "returnedResults": 32,
+        "selectedBlockShownInTargetArticle": 0,
+        "articleAt3AndSelectedBlockShown": 0
+      },
+      "block-focus-semantic/topic": {
+        "cases": 32,
+        "articleAt1": 24,
+        "articleAt3": 31,
+        "returnedResults": 32,
+        "selectedBlockShownInTargetArticle": 0,
+        "articleAt3AndSelectedBlockShown": 0
+      },
+      "block-focus-hybrid/topic": {
+        "cases": 32,
+        "articleAt1": 26,
+        "articleAt3": 32,
+        "returnedResults": 32,
+        "selectedBlockShownInTargetArticle": 0,
+        "articleAt3AndSelectedBlockShown": 0
+      },
+      "passage-raw-keyword/reader": {
+        "cases": 32,
+        "articleAt1": 27,
+        "articleAt3": 30,
+        "returnedResults": 32,
+        "selectedBlockShownInTargetArticle": 0,
+        "articleAt3AndSelectedBlockShown": 0
+      },
+      "passage-raw-semantic/reader": {
+        "cases": 32,
+        "articleAt1": 26,
+        "articleAt3": 29,
+        "returnedResults": 32,
+        "selectedBlockShownInTargetArticle": 0,
+        "articleAt3AndSelectedBlockShown": 0
+      },
+      "passage-raw-hybrid/reader": {
+        "cases": 32,
+        "articleAt1": 26,
+        "articleAt3": 31,
+        "returnedResults": 32,
+        "selectedBlockShownInTargetArticle": 0,
+        "articleAt3AndSelectedBlockShown": 0
+      },
+      "block-raw-keyword/reader": {
+        "cases": 32,
+        "articleAt1": 29,
+        "articleAt3": 30,
+        "returnedResults": 32,
+        "selectedBlockShownInTargetArticle": 0,
+        "articleAt3AndSelectedBlockShown": 0
+      },
+      "block-raw-semantic/reader": {
+        "cases": 32,
+        "articleAt1": 24,
+        "articleAt3": 31,
+        "returnedResults": 32,
+        "selectedBlockShownInTargetArticle": 0,
+        "articleAt3AndSelectedBlockShown": 0
+      },
+      "block-raw-hybrid/reader": {
+        "cases": 32,
+        "articleAt1": 26,
+        "articleAt3": 31,
+        "returnedResults": 32,
+        "selectedBlockShownInTargetArticle": 0,
+        "articleAt3AndSelectedBlockShown": 0
+      },
+      "passage-focus-keyword/reader": {
+        "cases": 32,
+        "articleAt1": 28,
+        "articleAt3": 31,
+        "returnedResults": 32,
+        "selectedBlockShownInTargetArticle": 0,
+        "articleAt3AndSelectedBlockShown": 0
+      },
+      "passage-focus-semantic/reader": {
+        "cases": 32,
+        "articleAt1": 27,
+        "articleAt3": 30,
+        "returnedResults": 32,
+        "selectedBlockShownInTargetArticle": 0,
+        "articleAt3AndSelectedBlockShown": 0
+      },
+      "passage-focus-hybrid/reader": {
+        "cases": 32,
+        "articleAt1": 27,
+        "articleAt3": 31,
+        "returnedResults": 32,
+        "selectedBlockShownInTargetArticle": 0,
+        "articleAt3AndSelectedBlockShown": 0
+      },
+      "block-focus-keyword/reader": {
+        "cases": 32,
+        "articleAt1": 29,
+        "articleAt3": 30,
+        "returnedResults": 32,
+        "selectedBlockShownInTargetArticle": 0,
+        "articleAt3AndSelectedBlockShown": 0
+      },
+      "block-focus-semantic/reader": {
+        "cases": 32,
+        "articleAt1": 25,
+        "articleAt3": 30,
+        "returnedResults": 32,
+        "selectedBlockShownInTargetArticle": 0,
+        "articleAt3AndSelectedBlockShown": 0
+      },
+      "block-focus-hybrid/reader": {
+        "cases": 32,
+        "articleAt1": 26,
+        "articleAt3": 31,
+        "returnedResults": 32,
+        "selectedBlockShownInTargetArticle": 0,
+        "articleAt3AndSelectedBlockShown": 0
+      },
+      "passage-raw-keyword/recollection": {
+        "cases": 8,
+        "articleAt1": 5,
+        "articleAt3": 7,
+        "returnedResults": 8,
+        "selectedBlockShownInTargetArticle": 0,
+        "articleAt3AndSelectedBlockShown": 0
+      },
+      "passage-raw-semantic/recollection": {
+        "cases": 8,
+        "articleAt1": 7,
+        "articleAt3": 8,
+        "returnedResults": 8,
+        "selectedBlockShownInTargetArticle": 0,
+        "articleAt3AndSelectedBlockShown": 0
+      },
+      "passage-raw-hybrid/recollection": {
+        "cases": 8,
+        "articleAt1": 7,
+        "articleAt3": 8,
+        "returnedResults": 8,
+        "selectedBlockShownInTargetArticle": 0,
+        "articleAt3AndSelectedBlockShown": 0
+      },
+      "block-raw-keyword/recollection": {
+        "cases": 8,
+        "articleAt1": 6,
+        "articleAt3": 7,
+        "returnedResults": 8,
+        "selectedBlockShownInTargetArticle": 0,
+        "articleAt3AndSelectedBlockShown": 0
+      },
+      "block-raw-semantic/recollection": {
+        "cases": 8,
+        "articleAt1": 8,
+        "articleAt3": 8,
+        "returnedResults": 8,
+        "selectedBlockShownInTargetArticle": 0,
+        "articleAt3AndSelectedBlockShown": 0
+      },
+      "block-raw-hybrid/recollection": {
+        "cases": 8,
+        "articleAt1": 8,
+        "articleAt3": 8,
+        "returnedResults": 8,
+        "selectedBlockShownInTargetArticle": 0,
+        "articleAt3AndSelectedBlockShown": 0
+      },
+      "passage-focus-keyword/recollection": {
+        "cases": 8,
+        "articleAt1": 5,
+        "articleAt3": 7,
+        "returnedResults": 8,
+        "selectedBlockShownInTargetArticle": 0,
+        "articleAt3AndSelectedBlockShown": 0
+      },
+      "passage-focus-semantic/recollection": {
+        "cases": 8,
+        "articleAt1": 7,
+        "articleAt3": 8,
+        "returnedResults": 8,
+        "selectedBlockShownInTargetArticle": 0,
+        "articleAt3AndSelectedBlockShown": 0
+      },
+      "passage-focus-hybrid/recollection": {
+        "cases": 8,
+        "articleAt1": 7,
+        "articleAt3": 8,
+        "returnedResults": 8,
+        "selectedBlockShownInTargetArticle": 0,
+        "articleAt3AndSelectedBlockShown": 0
+      },
+      "block-focus-keyword/recollection": {
+        "cases": 8,
+        "articleAt1": 6,
+        "articleAt3": 7,
+        "returnedResults": 8,
+        "selectedBlockShownInTargetArticle": 0,
+        "articleAt3AndSelectedBlockShown": 0
+      },
+      "block-focus-semantic/recollection": {
+        "cases": 8,
+        "articleAt1": 8,
+        "articleAt3": 8,
+        "returnedResults": 8,
+        "selectedBlockShownInTargetArticle": 0,
+        "articleAt3AndSelectedBlockShown": 0
+      },
+      "block-focus-hybrid/recollection": {
+        "cases": 8,
+        "articleAt1": 8,
+        "articleAt3": 8,
+        "returnedResults": 8,
+        "selectedBlockShownInTargetArticle": 0,
+        "articleAt3AndSelectedBlockShown": 0
+      },
+      "passage-raw-keyword/no-known-answer": {
+        "cases": 6,
+        "articleAt1": 0,
+        "articleAt3": 0,
+        "returnedResults": 6,
+        "selectedBlockShownInTargetArticle": 0,
+        "articleAt3AndSelectedBlockShown": 0
+      },
+      "passage-raw-semantic/no-known-answer": {
+        "cases": 6,
+        "articleAt1": 0,
+        "articleAt3": 0,
+        "returnedResults": 6,
+        "selectedBlockShownInTargetArticle": 0,
+        "articleAt3AndSelectedBlockShown": 0
+      },
+      "passage-raw-hybrid/no-known-answer": {
+        "cases": 6,
+        "articleAt1": 0,
+        "articleAt3": 0,
+        "returnedResults": 6,
+        "selectedBlockShownInTargetArticle": 0,
+        "articleAt3AndSelectedBlockShown": 0
+      },
+      "block-raw-keyword/no-known-answer": {
+        "cases": 6,
+        "articleAt1": 0,
+        "articleAt3": 0,
+        "returnedResults": 6,
+        "selectedBlockShownInTargetArticle": 0,
+        "articleAt3AndSelectedBlockShown": 0
+      },
+      "block-raw-semantic/no-known-answer": {
+        "cases": 6,
+        "articleAt1": 0,
+        "articleAt3": 0,
+        "returnedResults": 6,
+        "selectedBlockShownInTargetArticle": 0,
+        "articleAt3AndSelectedBlockShown": 0
+      },
+      "block-raw-hybrid/no-known-answer": {
+        "cases": 6,
+        "articleAt1": 0,
+        "articleAt3": 0,
+        "returnedResults": 6,
+        "selectedBlockShownInTargetArticle": 0,
+        "articleAt3AndSelectedBlockShown": 0
+      },
+      "passage-focus-keyword/no-known-answer": {
+        "cases": 6,
+        "articleAt1": 0,
+        "articleAt3": 0,
+        "returnedResults": 6,
+        "selectedBlockShownInTargetArticle": 0,
+        "articleAt3AndSelectedBlockShown": 0
+      },
+      "passage-focus-semantic/no-known-answer": {
+        "cases": 6,
+        "articleAt1": 0,
+        "articleAt3": 0,
+        "returnedResults": 6,
+        "selectedBlockShownInTargetArticle": 0,
+        "articleAt3AndSelectedBlockShown": 0
+      },
+      "passage-focus-hybrid/no-known-answer": {
+        "cases": 6,
+        "articleAt1": 0,
+        "articleAt3": 0,
+        "returnedResults": 6,
+        "selectedBlockShownInTargetArticle": 0,
+        "articleAt3AndSelectedBlockShown": 0
+      },
+      "block-focus-keyword/no-known-answer": {
+        "cases": 6,
+        "articleAt1": 0,
+        "articleAt3": 0,
+        "returnedResults": 6,
+        "selectedBlockShownInTargetArticle": 0,
+        "articleAt3AndSelectedBlockShown": 0
+      },
+      "block-focus-semantic/no-known-answer": {
+        "cases": 6,
+        "articleAt1": 0,
+        "articleAt3": 0,
+        "returnedResults": 6,
+        "selectedBlockShownInTargetArticle": 0,
+        "articleAt3AndSelectedBlockShown": 0
+      },
+      "block-focus-hybrid/no-known-answer": {
+        "cases": 6,
+        "articleAt1": 0,
+        "articleAt3": 0,
+        "returnedResults": 6,
+        "selectedBlockShownInTargetArticle": 0,
+        "articleAt3AndSelectedBlockShown": 0
+      }
+    },
+    "hierarchy-validation": {
+      "hierarchy-raw-keyword/topic": {
+        "cases": 32,
+        "articleAt1": 30,
+        "articleAt3": 31,
+        "returnedResults": 32,
+        "selectedBlockShownInTargetArticle": 22,
+        "articleAt3AndSelectedBlockShown": 22
+      },
+      "hierarchy-raw-semantic/topic": {
+        "cases": 32,
+        "articleAt1": 25,
+        "articleAt3": 31,
+        "returnedResults": 32,
+        "selectedBlockShownInTargetArticle": 20,
+        "articleAt3AndSelectedBlockShown": 20
+      },
+      "hierarchy-raw-hybrid/topic": {
+        "cases": 32,
+        "articleAt1": 28,
+        "articleAt3": 31,
+        "returnedResults": 32,
+        "selectedBlockShownInTargetArticle": 23,
+        "articleAt3AndSelectedBlockShown": 23
+      },
+      "hierarchy-focus-keyword/topic": {
+        "cases": 32,
+        "articleAt1": 30,
+        "articleAt3": 31,
+        "returnedResults": 32,
+        "selectedBlockShownInTargetArticle": 22,
+        "articleAt3AndSelectedBlockShown": 22
+      },
+      "hierarchy-focus-semantic/topic": {
+        "cases": 32,
+        "articleAt1": 25,
+        "articleAt3": 31,
+        "returnedResults": 32,
+        "selectedBlockShownInTargetArticle": 20,
+        "articleAt3AndSelectedBlockShown": 20
+      },
+      "hierarchy-focus-hybrid/topic": {
+        "cases": 32,
+        "articleAt1": 28,
+        "articleAt3": 31,
+        "returnedResults": 32,
+        "selectedBlockShownInTargetArticle": 23,
+        "articleAt3AndSelectedBlockShown": 23
+      },
+      "hierarchy-raw-keyword/reader": {
+        "cases": 32,
+        "articleAt1": 27,
+        "articleAt3": 30,
+        "returnedResults": 32,
+        "selectedBlockShownInTargetArticle": 22,
+        "articleAt3AndSelectedBlockShown": 21
+      },
+      "hierarchy-raw-semantic/reader": {
+        "cases": 32,
+        "articleAt1": 26,
+        "articleAt3": 29,
+        "returnedResults": 32,
+        "selectedBlockShownInTargetArticle": 20,
+        "articleAt3AndSelectedBlockShown": 20
+      },
+      "hierarchy-raw-hybrid/reader": {
+        "cases": 32,
+        "articleAt1": 26,
+        "articleAt3": 31,
+        "returnedResults": 32,
+        "selectedBlockShownInTargetArticle": 26,
+        "articleAt3AndSelectedBlockShown": 26
+      },
+      "hierarchy-focus-keyword/reader": {
+        "cases": 32,
+        "articleAt1": 28,
+        "articleAt3": 31,
+        "returnedResults": 32,
+        "selectedBlockShownInTargetArticle": 22,
+        "articleAt3AndSelectedBlockShown": 22
+      },
+      "hierarchy-focus-semantic/reader": {
+        "cases": 32,
+        "articleAt1": 27,
+        "articleAt3": 30,
+        "returnedResults": 32,
+        "selectedBlockShownInTargetArticle": 18,
+        "articleAt3AndSelectedBlockShown": 18
+      },
+      "hierarchy-focus-hybrid/reader": {
+        "cases": 32,
+        "articleAt1": 27,
+        "articleAt3": 31,
+        "returnedResults": 32,
+        "selectedBlockShownInTargetArticle": 23,
+        "articleAt3AndSelectedBlockShown": 23
+      },
+      "hierarchy-raw-keyword/recollection": {
+        "cases": 8,
+        "articleAt1": 5,
+        "articleAt3": 7,
+        "returnedResults": 8,
+        "selectedBlockShownInTargetArticle": 2,
+        "articleAt3AndSelectedBlockShown": 2
+      },
+      "hierarchy-raw-semantic/recollection": {
+        "cases": 8,
+        "articleAt1": 7,
+        "articleAt3": 8,
+        "returnedResults": 8,
+        "selectedBlockShownInTargetArticle": 3,
+        "articleAt3AndSelectedBlockShown": 3
+      },
+      "hierarchy-raw-hybrid/recollection": {
+        "cases": 8,
+        "articleAt1": 7,
+        "articleAt3": 8,
+        "returnedResults": 8,
+        "selectedBlockShownInTargetArticle": 3,
+        "articleAt3AndSelectedBlockShown": 3
+      },
+      "hierarchy-focus-keyword/recollection": {
+        "cases": 8,
+        "articleAt1": 5,
+        "articleAt3": 7,
+        "returnedResults": 8,
+        "selectedBlockShownInTargetArticle": 2,
+        "articleAt3AndSelectedBlockShown": 2
+      },
+      "hierarchy-focus-semantic/recollection": {
+        "cases": 8,
+        "articleAt1": 7,
+        "articleAt3": 8,
+        "returnedResults": 8,
+        "selectedBlockShownInTargetArticle": 3,
+        "articleAt3AndSelectedBlockShown": 3
+      },
+      "hierarchy-focus-hybrid/recollection": {
+        "cases": 8,
+        "articleAt1": 7,
+        "articleAt3": 8,
+        "returnedResults": 8,
+        "selectedBlockShownInTargetArticle": 3,
+        "articleAt3AndSelectedBlockShown": 3
+      },
+      "hierarchy-raw-keyword/no-known-answer": {
+        "cases": 6,
+        "articleAt1": 0,
+        "articleAt3": 0,
+        "returnedResults": 6,
+        "selectedBlockShownInTargetArticle": 0,
+        "articleAt3AndSelectedBlockShown": 0
+      },
+      "hierarchy-raw-semantic/no-known-answer": {
+        "cases": 6,
+        "articleAt1": 0,
+        "articleAt3": 0,
+        "returnedResults": 6,
+        "selectedBlockShownInTargetArticle": 0,
+        "articleAt3AndSelectedBlockShown": 0
+      },
+      "hierarchy-raw-hybrid/no-known-answer": {
+        "cases": 6,
+        "articleAt1": 0,
+        "articleAt3": 0,
+        "returnedResults": 6,
+        "selectedBlockShownInTargetArticle": 0,
+        "articleAt3AndSelectedBlockShown": 0
+      },
+      "hierarchy-focus-keyword/no-known-answer": {
+        "cases": 6,
+        "articleAt1": 0,
+        "articleAt3": 0,
+        "returnedResults": 6,
+        "selectedBlockShownInTargetArticle": 0,
+        "articleAt3AndSelectedBlockShown": 0
+      },
+      "hierarchy-focus-semantic/no-known-answer": {
+        "cases": 6,
+        "articleAt1": 0,
+        "articleAt3": 0,
+        "returnedResults": 6,
+        "selectedBlockShownInTargetArticle": 0,
+        "articleAt3AndSelectedBlockShown": 0
+      },
+      "hierarchy-focus-hybrid/no-known-answer": {
+        "cases": 6,
+        "articleAt1": 0,
+        "articleAt3": 0,
+        "returnedResults": 6,
+        "selectedBlockShownInTargetArticle": 0,
+        "articleAt3AndSelectedBlockShown": 0
+      }
+    }
+  },
+  "validationComparisons": [
+    {
+      "before": "passage-raw-keyword",
+      "after": "passage-focus-keyword",
+      "metric": "knownArticleAt3",
+      "gains": [
+        "R28-reader"
+      ],
+      "losses": []
+    },
+    {
+      "before": "passage-raw-keyword",
+      "after": "block-raw-keyword",
+      "metric": "knownArticleAt3",
+      "gains": [
+        "R28-reader"
+      ],
+      "losses": [
+        "R24-reader"
+      ]
+    },
+    {
+      "before": "passage-focus-keyword",
+      "after": "block-focus-keyword",
+      "metric": "knownArticleAt3",
+      "gains": [],
+      "losses": [
+        "R24-reader"
+      ]
+    },
+    {
+      "before": "passage-raw-semantic",
+      "after": "passage-focus-semantic",
+      "metric": "knownArticleAt3",
+      "gains": [
+        "R28-reader"
+      ],
+      "losses": []
+    },
+    {
+      "before": "passage-raw-semantic",
+      "after": "block-raw-semantic",
+      "metric": "knownArticleAt3",
+      "gains": [
+        "R10-topic",
+        "R10-reader",
+        "R28-reader",
+        "R29-reader"
+      ],
+      "losses": [
+        "R30-topic",
+        "R30-reader"
+      ]
+    },
+    {
+      "before": "passage-focus-semantic",
+      "after": "block-focus-semantic",
+      "metric": "knownArticleAt3",
+      "gains": [
+        "R10-topic",
+        "R29-reader"
+      ],
+      "losses": [
+        "R30-topic",
+        "R30-reader"
+      ]
+    },
+    {
+      "before": "passage-raw-hybrid",
+      "after": "passage-focus-hybrid",
+      "metric": "knownArticleAt3",
+      "gains": [
+        "R11-reader"
+      ],
+      "losses": [
+        "R10-reader"
+      ]
+    },
+    {
+      "before": "passage-raw-hybrid",
+      "after": "block-raw-hybrid",
+      "metric": "knownArticleAt3",
+      "gains": [
+        "R10-topic"
+      ],
+      "losses": []
+    },
+    {
+      "before": "passage-focus-hybrid",
+      "after": "block-focus-hybrid",
+      "metric": "knownArticleAt3",
+      "gains": [
+        "R10-topic",
+        "R10-reader"
+      ],
+      "losses": [
+        "R11-reader"
+      ]
+    },
+    {
+      "before": "passage-raw-keyword",
+      "after": "passage-raw-semantic",
+      "metric": "knownArticleAt3",
+      "gains": [
+        "R11-topic",
+        "R11-reader",
+        "V07"
+      ],
+      "losses": [
+        "R10-topic",
+        "R10-reader",
+        "R29-reader"
+      ]
+    },
+    {
+      "before": "passage-raw-keyword",
+      "after": "passage-raw-hybrid",
+      "metric": "knownArticleAt3",
+      "gains": [
+        "R11-topic",
+        "R28-reader",
+        "V07"
+      ],
+      "losses": [
+        "R10-topic"
+      ]
+    },
+    {
+      "before": "passage-focus-keyword",
+      "after": "passage-focus-semantic",
+      "metric": "knownArticleAt3",
+      "gains": [
+        "R11-topic",
+        "R11-reader",
+        "V07"
+      ],
+      "losses": [
+        "R10-topic",
+        "R10-reader",
+        "R29-reader"
+      ]
+    },
+    {
+      "before": "passage-focus-keyword",
+      "after": "passage-focus-hybrid",
+      "metric": "knownArticleAt3",
+      "gains": [
+        "R11-topic",
+        "R11-reader",
+        "V07"
+      ],
+      "losses": [
+        "R10-topic",
+        "R10-reader"
+      ]
+    }
+  ],
+  "limitations": [
+    "Source-aware agent-authored cases; article-level reserved split, not independent reader validation.",
+    "Paired topic/location forms are correlated.",
+    "Recollection block labels inherited a different article topic. Preserve rows; do not interpret their block counts as answer quality.",
+    "No-known-answer labels and missing words do not prove absence or calibrate refusal.",
+    "Optional expanded source context and UI repair follow validation and do not improve the frozen paragraph count."
+  ],
+  "checks": {
+    "initialAndAmendmentFilesUnchanged": true,
+    "caseRowsAndInputHashesVerified": true,
+    "articleAndHierarchyBlockMetricsRecomputed": true,
+    "allHierarchyArticleOrdersEqualPassageCandidates": true,
+    "measuredQueriesEquivalentUnderFocusV2": 114
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "recordedAt": "2026-11-14T20:04:30.742Z",
+  "afterValidation": true,
+  "changes": [
+    "Preserve category qualifiers in optional focus; all 114 measured texts unchanged",
+    "Whole question default after observing both frozen conditions",
+    "Optional longer passage context, excluded from three-excerpt metric",
+    "Missing-word disclosure; no calibrated no-answer detector"
+  ],
+  "files": {
+    "amendment-02.md": "89d8ac77ad327c36a08088e0d7dabf40a7f5c1a881f8aa0c0c36ffb88489670e",
+    "query-v2.mjs": "59c4b78458108cc04dd4606cfd0bc647e4dda8f1d8523260abda97b1d5a611e0",
+    "page.mjs": "f11ae5641972c91ca06bbcb1fb00f9ea6ca43e98c60cec7b43d1e600e16a2ca5",
+    "context.mjs": "38c992ab527f85b30114ae0d04d6a468a25537f30f625c7a9c78421f7533187c",
+    "load-data.mjs": "522e2ed67140eb53e8d1d8da03eac53932d7923ce98c5b2c012cddf5d99cd01f",
+    "server.mjs": "69974d49610d5f2d0edd7f63dc78a7de3af15e3350ae9d61334b7be15371a250",
+    "style.css": "31aed8c2e0737eaa1f9a6a55a29442fa3db3d628a9dfc075992febda656dd3ee",
+    "page.test.mjs": "4e280b4c3a218cc2785e6227cf60f0d2c0c555d7f8cea73c4f89cfa4df7480d7",
+    "verify-server.mjs": "568ac24bf2c37ca5302108bd6ad71b122121012ef9cc968d7010807690959d86"
+  },
+  "validationReceipts": {
+    "validation-01.json": "2367f44741c5e87f7bcecccea1323e3f01e9b2220580742178805373a3e59c07",
+    "hierarchy-validation-01.json": "12801a43b1f0cbb8594c15d9b309d8bd2e740bd6b49d954ee70152a58445779e"
+  },
+  "independentRelevanceRetest": false
+}

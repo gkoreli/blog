@@ -155,6 +155,10 @@ The labels miss some useful alternatives. For a short prompt-cache query, all th
 
 All three methods also returned results for all **eight expected-no-answer prompts**; a sourdough question produced unrelated passages. On this selected set, semantic-only ranking found fewer known answers than keywords, and hybrid’s one-case net gain does not establish a general improvement. These scores cannot compare E5 with MWG: the guide replay used different content, labels and a different cutoff.
 
+A later [reader-search engineering pass](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/modern-web-guidance/reader-search/report.md) checked all 46 live article pages and added 3,980 smaller units for excerpt selection, while retaining the 866 passages for article ranking. An animated-icon query found OSS Radar #01; clicking its paragraph link highlighted the Moving Icons explanation on the live site. A vague shared-model recollection found the Buzz article among the first three but missed the sharing explanation in its selected excerpts. Expanded source context exposed that explanation, with a larger text budget.
+
+Removing article-location framing also reduced selected-block hits from **26/32 to 23/32** on reserved, source-aware agent-authored questions, without improving hybrid article-at-three overall. The interface now defaults to the whole question and makes topic focus optional. Those later checks distinguish article discovery, excerpt selection and navigation; they supply no additional reproduction of MWG’s encoder.
+
 MWG moves expensive work into the data prepared before release. The loop can stay small because it assembles a query vector from that data. Adopting it means preparing a compatible document index and checking the complete search path on the questions the product needs to answer.
 
 ---
@@ -167,3 +171,4 @@ MWG moves expensive work into the data prepared before release. The loop can sta
 | [Public benchmark documentation](https://github.com/GoogleChrome/modern-web-guidance-src/blob/596acbc75a330508591b07cd9e198b219341f619/src/rag/benchmarks/README.md) | Upstream datasets, relevance judgments and metric definitions |
 | [Local reproduction](https://github.com/gkoreli/blog/tree/main/packages/blog/drafts/research/modern-web-guidance/embedding), November 13, 2026 | Frozen protocol, agent-assisted scripts, exact comparisons, measurements, full replay rows and limits |
 | [Separate local E5 passage comparison](https://github.com/gkoreli/blog/tree/main/packages/blog/drafts/research/modern-web-guidance/passage-search), November 14, 2026 | Full-article index, fixed questions and labels, keyword/semantic/hybrid results, local interface and limits; not an MWG transfer benchmark |
+| [Reader-search engineering checks](https://github.com/gkoreli/blog/tree/main/packages/blog/drafts/research/modern-web-guidance/reader-search), November 14, 2026 | Live article coverage, reserved source-aware cases, excerpt-selection failures and actual paragraph navigation; a later E5 product experiment |

@@ -4,6 +4,12 @@ November 14, 2026, America/Los_Angeles. **Static embedding reproduction, manuscr
 
 The earlier [interface study](study/report.md) remains separate: baseline and ordinary MWG availability passed 18/18 checked attempts each; directly supplied guides passed 16/18. Its first 54-attempt batch had a launcher defect and remains diagnostic evidence; a complete repaired 54-attempt batch supplies the primary result. [Primary artifact index](study/campaign-02/artifacts.md), [execution limits](study/campaign-02/execution-audit.json). The initial source review and small retrieval pilot below remain historical evidence.
 
+## Later reader-search engineering checks
+
+The [reader-search investigation](reader-search/report.md) checks current delivery for all 46 article pages, adds 3,980 finer E5 units for excerpt selection, and preserves the 866-passage index for article candidates. On reserved, source-aware agent-authored cases, whole-question hybrid found the selected article among the first three for 31/32 short topics, 31/32 framed questions and 8/8 additional recollections. Selected-block hits on the framed questions were 26/32, falling to 23/32 with topic focus. The recollection block labels inherited other article topics and cannot supply an exact-answer quality percentage.
+
+Actual browser clicks reached and highlighted source text in both a Markdown article and a custom TypeScript article. The literal emoji topic has no verified answer; related animated icons are not proof of that recollection. The local interface now defaults to the full question, offers optional focus and wider source context, and preserves every frozen ranking and failure. [Methods, source reading and limits](reader-search/README.md). This is another local E5 artifact, with no matching Gemini/MWG article index or public search deployment. The central seven-line explanation remains unchanged in the draft.
+
 ## Editorial decision
 
 The [current editorial decision](embedding/editorial.md) centers the standalone draft on how learned data makes the seven-line query calculation useful. The new reproduction contributes implementation equality, timing boundaries, package integrity and public retrieval ablations. The completed interface study supplies a distinct downstream check, with no observed pass-rate gain and a narrower code-simplification finding.
