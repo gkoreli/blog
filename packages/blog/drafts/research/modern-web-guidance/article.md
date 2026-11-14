@@ -66,7 +66,7 @@ That is the asymmetry: full-model document vectors on one side, a compact approx
 
 The inspected package held **2,016 chunks across 208 guides**. Its [search path](https://github.com/GoogleChrome/modern-web-guidance-src/blob/596acbc75a330508591b07cd9e198b219341f619/src/rag/search.ts) combines dense vector ranking with BM25 keyword ranking. Reciprocal rank fusion combines their rank positions, allowing exact identifiers and semantic matches to contribute.
 
-## What I reproduced and what remains upstream
+## What I reproduced with MWG
 
 I froze a [protocol and source-informed reference implementation](https://github.com/gkoreli/blog/tree/main/packages/blog/drafts/research/modern-web-guidance/embedding) before measurement. The reference recreated tokenization, hyphen fallback, float32 accumulation and normalization after inspecting the source. It used the published vocabulary, table and scales. Retrieval checks reused upstream’s corpus loader, BM25 ranker and rank-fusion function.
 
@@ -98,47 +98,13 @@ Size needs the same care. The query table contains **7.47 MB of signed-byte coor
 
 The engineering report lists a historical 7.1 MB tarball and an older 507 MB unpacked dependency installation. I did not establish the reason for the current archive difference or recreate that installation. Those differently scoped figures do not yield a like-for-like compression ratio.
 
-## Trying it as search on my blog
-
-On November 14, I added a [local browser demonstration](https://github.com/gkoreli/blog/tree/main/packages/blog/drafts/research/modern-web-guidance/blog-search) over 46 post titles and tags from the blog’s source tree. A Web Worker loads the real word table, encodes a query and ranks precomputed metadata vectors. In the browser, `Bun memory` put my Bun/Express/Fastify article first; `signup form` put the Turnstile article first. This is an experimental catalog snapshot, not a deployed search feature.
-
-The shortcut is explicit: I used the query table to encode short metadata on both sides. I did not create teacher embeddings for article bodies. Some returned matches were weak, and a `newsletter bots` probe missed the Turnstile post in the first five. The toy index illustrates the mechanics without establishing full-article search quality.
-
-To follow MWG’s complete design, a blog would prepare its own document index before publishing. Split article text into bounded sections, embed them with a compatible document model, and store each vector with its article URL and snippet. The inspected MWG pipeline uses `gemini-embedding-001` with `RETRIEVAL_DOCUMENT`, requests 768 coordinates, then keeps and normalizes the first 256. The proposed blog build would need that step; it was not run for this demo.
-
-When a visitor searches, the loop produces the query vector. Compare it with the saved section vectors, rank the best matching sections per article, and test a lexical or hybrid alternative. Document and query vectors need a compatible learned space; equal array lengths alone do not establish that compatibility.
-
-The three query-model files alone total about **7.9 MB before compression** here. A browser implementation downloads them; a server-side implementation can keep that model download on the server. The small loop is one component of the choice, alongside index preparation, delivery cost and measured relevance on the blog’s own questions.
-
-## A separate full-article test with a local model
-
-For general passage search, I then built a second [local comparison](https://github.com/gkoreli/blog/tree/main/packages/blog/drafts/research/modern-web-guidance/passage-search) over all 46 article bodies: **866 passages**, with saved vectors, source text and article links. This one uses **E5-small-v2 for both passages and queries**. It runs a full transformer locally through Transformers.js; it does not use MWG's word table or reproduce its seven-line runtime. The compatible Gemini document index remains unbuilt.
-
-The model receives `passage: ` before article text and `query: ` before a search. Mean pooling and normalization produce compatible 384-coordinate vectors, following [E5's documented retrieval recipe](https://huggingface.co/intfloat/e5-small-v2). I checked every input against the token limit before inference. The browser interface retrieves passages rather than generating an answer, and lets me compare BM25 keywords, semantic ranking and their rank fusion.
-
-Before ranking, I froze **36 source-aware, agent-authored questions** and selected answer passages: a short query and a natural-language question for each of 18 article topics. These are not visitor logs or independent human judgments. The primary metric asks whether a preselected answer passage appears in the first three results.
-
-| Full-article method | Known answer passage in first 3 |
-| --- | ---: |
-| BM25 keywords | **32/36** |
-| Local E5 semantic ranking | **27/36** |
-| Hybrid | **33/36** |
-
-Hybrid gained three cases and lost two against keywords. A question about prerequisite downloads and offline file-task duration found the Hob introduction first with hybrid; keywords led with an unrelated prompt-cache passage. In the other direction, keywords put the llms.txt citation-evidence passage first, while semantic search led with OpenScholar material and hybrid moved the selected answer to fourth.
-
-The labels are incomplete. For a short prompt-cache query, all three methods found useful explanations in the right article but missed the selected introduction. I retained that known-answer miss and documented the alternative passages separately. Three fresh processes produced identical rankings; repeating the same questions does not enlarge the relevance sample. [All results and disagreement review](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/modern-web-guidance/passage-search/report.md).
-
-The four local model files totaled **34.73 MB**, and document vectors another **1.33 MB**, excluding text and runtime dependencies. Building the index took **25.49 seconds** on the M5. Warm query encoding had a **2.97 ms** median, separate from startup, ranking and browser overhead. These are transformer measurements, not another timing of MWG's loop.
-
-All three methods also returned results for all eight expected-no-answer prompts. A sourdough question produced unrelated passages; similarity did not establish answerability. This experiment makes general passage search usable locally, but supports keeping keyword search as the baseline. Hybrid's one-case net gain on this selected set does not establish a general improvement, and no search feature has been deployed to the blog.
-
-## The same loop needs the right learned rows
+## The learned rows make MWG’s loop useful
 
 To test the table’s contribution, I shuffled assignments between words and complete vector/scale rows with a fixed seed. The accumulation algorithm and row distribution stayed intact; words received other words’ representations.
 
 The replay used upstream’s public agent test split and **its existing relevance judgments**, primarily LLM-generated. Of 514 queries, 504 were labeled in-domain and had at least one grade-2 direct-answer guide. Nine had no grade-2 guide; one was labeled out-of-domain. My metric asks whether one known grade-2 guide appears in the first ten results. It includes broad orientation guides, so it differs from upstream’s leaf-only Hit@K.
 
-| Retrieval method | Known direct-answer hit in top 10 |
+| MWG guide ranking | Known direct-answer guide in first 10 |
 | --- | ---: |
 | Learned dense query table | **499/504** |
 | BM25 keywords alone | **496/504** |
@@ -149,7 +115,7 @@ The destructive control makes the learned assignments’ contribution visible. K
 
 Some returned guides are unjudged: 795 of the hybrid’s 5,040 candidates. Missing judgments do not establish irrelevance. I did not independently relabel the dataset, reproduce the private 4,000-query telemetry benchmark, or compare with live cloud-model embeddings. [All replay rows and rankings](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/modern-web-guidance/embedding/results/quality.json).
 
-## What this representation leaves out
+## What MWG’s representation leaves out
 
 The shared tokenizer removes `not`. In a fixed control, `animate dialog` and `not animate dialog` produced exactly equal vectors and identical search rankings. Reversing `animate dialog` preserved the mathematical sum and tested ranking, with small float32 rounding differences. The weighted sum has no learned word-order term, and the tokenizer discards this negation. The consuming agent still has the original task.
 
@@ -159,7 +125,37 @@ The admission gate returned hybrid results for **all 90 curated out-of-scope que
 
 Finding useful guidance also differs from applying it correctly. In my separate [six-fixture interface study](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/modern-web-guidance/study/report.md), baseline instructions and ordinary MWG availability each passed 18/18 primary attempts; supplied guides passed 16/18. Guided dialogs avoided manual Tab loops while passing the same checks, but the baseline ceiling left no observed correctness gain. That report retains the first diagnostic batch, the harness repair and the complete repeated comparison. It does not isolate the embedder’s effect on generated code.
 
-For a bounded offline documentation catalog, this design offers a concrete option: prepare the learned representations before release, keep query computation small, and retain keyword search for literal identifiers. The runtime loop is easy to inspect. Its usefulness depends on the shipped data, the query population and the checks around the complete search path.
+## Trying MWG’s loop as blog search
+
+On November 14, I added a [local browser demonstration](https://github.com/gkoreli/blog/tree/main/packages/blog/drafts/research/modern-web-guidance/blog-search) over 46 post titles and tags from the blog’s source tree. A Web Worker loads the released MWG word table, encodes a query and ranks precomputed metadata vectors. In the browser, `Bun memory` put my Bun/Express/Fastify article first; `signup form` put the Turnstile article first.
+
+This demo uses the query table to encode short metadata on both sides. It has no teacher embeddings for article bodies. Some matches were weak: `newsletter bots` missed the Turnstile post in the first five. The artifact demonstrates MWG’s calculation in a browser; it does not establish full-article search quality. Its three query-model files total about **7.9 MB before compression**.
+
+Using the loop for article passages would require a compatible document index. The inspected MWG pipeline uses `gemini-embedding-001` with `RETRIEVAL_DOCUMENT`, requests 768 coordinates, then keeps and normalizes the first 256. A blog would run that preparation over bounded article sections and save each vector with its URL and snippet. At search time, the loop would encode the query for comparison with those saved vectors, alongside a keyword baseline.
+
+**I have not built that matching Gemini article index.** Document and query vectors need a compatible learned space; equal array lengths alone do not establish compatibility. The metadata demo and the E5 experiment below are both local artifacts, with no production search feature deployed.
+
+## Separate experiment: E5 passage search on the blog
+
+To test general passage retrieval, I built a [second local index](https://github.com/gkoreli/blog/tree/main/packages/blog/drafts/research/modern-web-guidance/passage-search) over all 46 article bodies, split into **866 passages**. It uses **E5-small-v2, a full transformer, for both passages and queries**. This experiment measures E5 retrieval on the blog; it does not test MWG’s seven-line encoder or its learned table on article bodies.
+
+Following [E5’s retrieval recipe](https://huggingface.co/intfloat/e5-small-v2), the local model receives `passage: ` before document text and `query: ` before a search, producing normalized 384-coordinate vectors. The interface returns source passages and links, with BM25 keyword ranking, E5 semantic ranking and their rank fusion available for comparison.
+
+Before ranking, an agent wrote **36 questions after reading selected source paragraphs**: one short query and one natural-language question for each of 18 article topics. I froze those questions and their selected answer passages. The questions did not come from visitor logs, and the passage labels were not independently graded by people. The metric counts whether a preselected answer passage appears in the first three results.
+
+| Blog passage ranking | Known answer passage in first 3 |
+| --- | ---: |
+| BM25 keywords | **32/36** |
+| Local E5 semantic ranking | **27/36** |
+| Hybrid | **33/36** |
+
+Hybrid gained three cases and lost two against keywords. It placed the Hob introduction first for the download-and-runtime question; keywords led with an unrelated prompt-cache passage. For the llms.txt citation-evidence question, keywords found the selected answer first, while E5 led with OpenScholar material and hybrid placed the answer fourth.
+
+The labels miss some useful alternatives. For a short prompt-cache query, all three methods found explanations in the right article but missed the selected introduction; I retained that known-answer miss. Three fresh processes produced identical rankings for the fixed set, without adding distinct relevance cases. [The full report](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/modern-web-guidance/passage-search/report.md) retains every result, disagreement, timing and model-size measurement.
+
+All three methods also returned results for all **eight expected-no-answer prompts**; a sourdough question produced unrelated passages. On this selected set, semantic-only ranking found fewer known answers than keywords, and hybrid’s one-case net gain does not establish a general improvement. These scores cannot compare E5 with MWG: the guide replay used different content, labels and a different cutoff.
+
+MWG moves expensive work into the data prepared before release. The loop can stay small because it assembles a query vector from that data. Adopting it means preparing a compatible document index and checking the complete search path on the questions the product needs to answer.
 
 ---
 

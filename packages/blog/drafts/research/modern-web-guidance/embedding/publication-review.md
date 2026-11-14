@@ -31,3 +31,13 @@ Next bounded action: release preparation and publication when requested. The man
 ## November 14 practical extension
 
 A [local browser demo](../blog-search/README.md) now applies the released query calculation to 46 source-tree post titles and tags. The article adds the demonstrated queries, the prototype's symmetric short-metadata shortcut, and a separate proposed build-time path for compatible teacher document embeddings. It does not claim full-article vectors or production search were created. The November 13 frozen studies and results remain unchanged; this additional prose and demo are a later extension of the reviewed manuscript.
+
+## November 14 review after the E5 comparison
+
+The revised manuscript keeps the MWG explanation and evidence in one continuous sequence: weighted accumulation, normalization, preparation, calculation reproduction, clocks, learned-row control and representation limits. The seven-line excerpt and worked normalization explanation are unchanged. Previously, the two blog applications interrupted that sequence, leaving “the same loop” and “this representation” open to misreading after the E5 section. Explicit MWG headings now identify the reproduction, guide replay and representation limits.
+
+The blog applications follow the completed MWG account. The metadata demo identifies its query-table shortcut and the missing compatible Gemini article index. A separately titled E5 section identifies a full local transformer on both sides, its 866-passage corpus, agent-written questions after source reading and its first-three known-answer metric. The MWG replay uses a different corpus, label set and cutoff; the two tables cannot compare the encoders.
+
+E5's 32/27/33 known-answer counts remain unchanged, as do hybrid's three wins and two losses, the useful unlabeled prompt-cache alternatives and the eight expected-no-answer admissions. A gain example and a loss example remain side by side. E5's size and latency details stay in its linked report, keeping them away from the MWG timing table and retaining the full measurement record. The final paragraph returns to MWG's prepared data, small accumulation loop and compatible document index.
+
+This is a prose and structure review, with no new embedding run, relevance judgment, model comparison or change to either frozen study. The authoring body and dated queue body are synchronized; queue frontmatter and release date are preserved. The original saved-evidence verifier and a read-only audit of all three normalized E5 receipts accepted the unchanged results. Updated rendering and queue-byte acceptance are recorded in the [release preparation](../weekly-release-2026-11-16.md).

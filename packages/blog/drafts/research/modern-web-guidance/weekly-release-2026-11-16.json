@@ -160,5 +160,32 @@
     "clock": "Simulated 2026-11-16 08:00 Pacific for isolated promotion only",
     "hostedCheckForRevisedBytes": "not run; earlier hosted receipt identifies earlier queue bytes",
     "productionPublicationObserved": false
+  },
+  "postE5EditorialReview": {
+    "date": "2026-11-14",
+    "scope": "Editorial structure and scope review; no new retrieval evaluation",
+    "previousQueueSha256": "4900cd13fbcc00fbbaf45a04acc3ce66de1b3d502ceed638ac1520332c674f44",
+    "queueSha256": "78c08a0e70d6e90e938945fd03cf9eddd930bb6a7b185da302fbd83be2c36be5",
+    "draftSha256": "0cf9da4719c9c3e5b620c7a55c08659435fd8e72fba1cf902f39834a70de6a71",
+    "queueFrontmatterPreserved": true,
+    "draftAndQueueBodiesMatch": true,
+    "sevenLineLoopAndNormalizationExplanationUnchanged": true,
+    "MWGEvidenceBeforeApplications": true,
+    "E5ComparisonSeparatelyTitled": true,
+    "differentContentLabelsCutoffExplicit": true,
+    "E5SizeAndTimingMovedToLinkedReport": true,
+    "savedMWGAndE5EvidenceVerified": true,
+    "publicationCheck": "pass",
+    "isolatedBuild": {
+      "posts": 47,
+      "h1": 1,
+      "tables": 7,
+      "sectionOrderAndClaimsInHtmlAndMarkdown": true,
+      "canonicalAndDiscovery": true,
+      "htmlSha256": "80542307d2392b3d50e85eb116b4f6cd9c3fb61c05f211ffe5ffcc7daafae3ee",
+      "markdownSha256": "d5dc0022c3ac15b2bda0e0c4517ab723bdbb4ed33f2b4af241c1510c75c2dabe"
+    },
+    "productionPublicationObserved": false,
+    "hostedCheckForRevisedBytes": "not run; previous hosted acceptance identifies earlier queue source"
   }
 }
