@@ -30,6 +30,11 @@ function internalHref(value: string | undefined): string | undefined {
   return value?.startsWith('/') && !value.startsWith('//') && !/[\\\u0000-\u0020]/.test(value) ? escape(value) : undefined;
 }
 
+/** Keep a recorded verifier identifier intact without changing captured text. */
+function evidenceCell(value: string): string {
+  return escape(value).replace(/\b\d{4}-\d{2}-\d{2}\.\d+\b/g, version => `<span class="data-evidence-version">${version}</span>`);
+}
+
 /** Fixed markup shared by Stats and Design Language; captured strings are escaped. */
 export function metricTileHtml({ label, value, detail }: MetricTile): string {
   return `<div class="data-metric"><span class="data-metric-label">${escape(label)}</span><strong class="data-metric-value${value === null ? ' skeleton skeleton-value' : ''}">${value === null ? '' : escape(value)}</strong><span class="data-metric-detail">${escape(detail)}</span></div>`;
@@ -62,7 +67,7 @@ export function groupedEvidenceTableHtml(caption: string, headings: readonly str
   const bodies = [...groups.entries()].sort((a, b) => b[1].total - a[1].total).map(([label, group]) => {
     const href = internalHref(group.href);
     const title = href ? `<a href="${href}">${escape(label)}</a>` : escape(label);
-    return `<tbody><tr class="data-table-group"><th scope="rowgroup" colspan="${headings.length + 1}"><span class="data-table-group-name">${title}</span><span class="data-table-group-total">${group.total.toLocaleString('en-US')} ${group.total === 1 ? 'request' : 'requests'}</span></th></tr>${group.rows.map(row => `<tr class="data-table-record">${row.cells.map((cell, index) => index === 0 ? `<th scope="row">${escape(cell)}</th>` : `<td>${escape(cell)}</td>`).join('')}<td class="data-table-number">${row.views.toLocaleString('en-US')}</td></tr>`).join('')}</tbody>`;
+    return `<tbody><tr class="data-table-group"><th scope="rowgroup" colspan="${headings.length + 1}"><span class="data-table-group-name">${title}</span><span class="data-table-group-total">${group.total.toLocaleString('en-US')} ${group.total === 1 ? 'request' : 'requests'}</span></th></tr>${group.rows.map(row => `<tr class="data-table-record">${row.cells.map((cell, index) => index === 0 ? `<th scope="row">${evidenceCell(cell)}</th>` : `<td>${evidenceCell(cell)}</td>`).join('')}<td class="data-table-number">${row.views.toLocaleString('en-US')}</td></tr>`).join('')}</tbody>`;
   }).join('');
-  return `<table class="data-evidence-table"><caption><span class="data-table-caption-text">${escape(caption)}</span></caption><thead><tr>${headings.map(heading => `<th scope="col">${escape(heading)}</th>`).join('')}<th scope="col" class="data-table-number">Requests</th></tr></thead>${bodies}</table>`;
+  return `<table class="data-evidence-table${headings.length > 2 ? ' data-evidence-table--extended' : ''}" style="--data-table-extra-columns:${Math.max(0, headings.length - 1)}"><caption><span class="data-table-caption-text">${escape(caption)}</span></caption><thead><tr>${headings.map(heading => `<th scope="col">${escape(heading)}</th>`).join('')}<th scope="col" class="data-table-number">Requests</th></tr></thead>${bodies}</table>`;
 }

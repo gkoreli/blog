@@ -165,7 +165,7 @@ export function designLanguagePage() {
     { label: 'Tools', views: 140, href: '/stats?path=%2Ftools', openHref: '/tools' },
   ].map(item => rankedRowHtml(item, 420)).join(''))}></div>
   <h3 class="dl-pattern-title">Coverage and reading notes</h3>
-  <p class="dl-body-note">Lead with results, then separate coverage counts from interpretation. Keep explanations visible, in short paragraphs with a consistent label and a comfortable line length. State when facts overlap. Preserve zero, unknown and historical evidence. These counts are illustrative.</p>
+  <p class="dl-body-note">Lead with results, then separate coverage counts from interpretation. Keep explanations visible, with consistent spacing and a comfortable line length. A reading note places its label beside the explanation when the container is wide enough, and above it in smaller panels. State when facts overlap. Preserve zero, unknown and historical evidence. These counts are illustrative.</p>
   <dl class="data-facts" aria-label="Illustrative record coverage" html:inner=${raw(dataFactsHtml([
     { label: 'Recognized records', value: 1200 },
     { label: 'Earlier records without detail', value: 48 },
@@ -173,7 +173,7 @@ export function designLanguagePage() {
   ]))}></dl>
   ${dataNote(html`<p>The coverage counts account for every request in this example. Earlier records remain part of the total even when detailed evidence was not collected.</p><p>Missing evidence is unknown. A recognized record describes what was measured; it does not establish who made the request.</p>`, 'Preserve the evidence boundary')}
   <h3 class="dl-pattern-title" id="grouped-evidence">Grouped evidence tables</h3>
-  <p class="dl-body-note">Give comparisons enough width. Group shared context once, keep every record visible and print group totals only for disjoint rows. Preserve full evidence labels, verifier versions, zero and missing states. Use a table caption, column and row-group headers, and right-aligned numbers. These three records are illustrative.</p>
+  <p class="dl-body-note">Give comparisons enough width. Group shared context once, keep every record visible and print group totals only for disjoint rows. Preserve full evidence labels, verifier versions, zero and missing states. Use a table caption, column and row-group headers, and right-aligned numbers. In smaller containers, keep the identity and request count visible while additional columns scroll by keyboard or touch. These three records are illustrative.</p>
   <div class="data-table-region" role="region" aria-label="Illustrative grouped evidence; scroll horizontally if needed" tabindex="0" html:inner=${raw(groupedEvidenceTableHtml('Illustrative stored evidence grouped by request classification.', ['Stored signature evidence', 'Verifier profile'], [
     { group: 'Browser signals', cells: ['No signature headers recorded', 'Current example profile'], views: 1200 },
     { group: 'Browser signals', cells: ['Verification detail not recorded', 'Profile unavailable'], views: 48 },

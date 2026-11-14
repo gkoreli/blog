@@ -10,6 +10,10 @@ function listSkeleton(rows: number) {
   return Array.from({ length: rows }, () => html`<div class="skeleton skeleton-row"></div>`);
 }
 
+function listHeading(label: string) {
+  return html`<div class="data-row-head" aria-hidden="true"><span>${label}</span><span>Views</span></div>`;
+}
+
 export function statsPage(pages: readonly { path: string; title: string }[] = []) {
   const catalogue = [{ path: '/', title: 'Homepage' }, { path: '/about', title: 'About' }, { path: '/tools', title: 'Engineering tools' }, { path: '/engineering', title: 'Engineering' }, { path: '/essays', title: 'Essays' }, { path: '/stats', title: 'Stats' }, ...pages];
   return html`<article class="stats-page">
@@ -48,69 +52,78 @@ export function statsPage(pages: readonly { path: string; title: string }[] = []
       <h3>Top pages</h3><div class="data-row-head data-row-head--visitable" aria-hidden="true"><span>Page</span><span>Views</span><span>Visit</span></div>
       <div class="stats-section-results">${listSkeleton(3)}</div>
     </section>
-    <section class="stats-section" id="stats-referrers">
+    <div class="stats-panel-grid stats-source-grid"><section class="stats-section" id="stats-referrers">
       <h3>Reported referrers</h3><div class="data-row-head" aria-hidden="true"><span>Reported source</span><span>Views</span></div>
       <div class="stats-section-results">${listSkeleton(2)}</div>
     </section>
     <section class="stats-section" id="stats-transitions">
       <h3>Frequent page transitions</h3>
+      ${listHeading('Page transition')}
       <div class="stats-section-results">${listSkeleton(2)}</div>
     </section>
-    <section class="stats-section" id="stats-previous-pages" hidden>
+    </div><div class="stats-panel-grid stats-path-grid"><section class="stats-section" id="stats-previous-pages" hidden>
       <h3>Previous blog pages</h3>
+      ${listHeading('Previous page')}
       <div class="stats-section-results">${listSkeleton(2)}</div>
     </section>
     <section class="stats-section" id="stats-next-pages" hidden>
       <h3>Next blog pages</h3>
+      ${listHeading('Next page')}
       <div class="stats-section-results">${listSkeleton(2)}</div>
     </section>
-<p class="stats-transition-details" id="stats-transition-details"></p>
+    </div><p class="stats-transition-details" id="stats-transition-details"></p>
     </section>
     <section class="stats-chapter" id="stats-audience" aria-labelledby="stats-audience-heading"><header class="data-section-heading"><span class="data-section-number" aria-hidden="true">02</span><div><h2 id="stats-audience-heading">Request signals</h2><p>Traffic categories, software claims and network locations. None identifies a person or physical device.</p></div></header>
     <section class="stats-section" id="stats-traffic-mix"><h3>Traffic mix</h3><div class="stats-distribution" id="stats-distribution" aria-hidden="true"></div><div class="data-row-head" aria-hidden="true"><span>Request category</span><span>Views · share</span></div><div class="stats-section-results">${listSkeleton(5)}</div>
       ${dataNote(html`<p>These five groups add up to the selected total. They describe request signals and declared roles, including agent access.</p>`, 'Five groups, one total')}
     </section>
-    <div class="stats-panel-grid"><section class="stats-client-form-section" id="stats-client-form-section" aria-labelledby="stats-client-form-heading">
+    <div class="stats-panel-grid stats-device-grid"><section class="stats-client-form-section" id="stats-client-form-section" aria-labelledby="stats-client-form-heading" aria-describedby="stats-claims-note">
       <h3 id="stats-client-form-heading">Device-type claims</h3>
+      ${listHeading('Recorded claim')}
       <div class="stats-section-results">${listSkeleton(3)}</div>
       <h4 class="data-facts-label">Record coverage · some facts overlap</h4><dl class="data-facts" id="stats-client-form-coverage" aria-label="Client form record coverage"></dl>
-      ${dataNote(html`<p>Request headers describe software claims and mobile-experience preferences, not authenticated hardware. Non-mobile does not establish desktop; Android without Mobile does not establish tablet. Missing and conflicting evidence remain explicit.</p><p>Recognized records can span parser profiles. Earlier desktop includes default guesses. Differing indicators can reflect preferences; unsupported hints and earlier heuristics stay separate.</p>`, 'Claims, not hardware')}
     </section>
+    <div class="stats-panel-note" id="stats-claims-note">
+      ${dataNote(html`<p>Request headers describe software claims and mobile-experience preferences, not authenticated hardware. Non-mobile does not establish desktop; Android without Mobile does not establish tablet. Missing and conflicting evidence remain explicit.</p><p>Recognized records can span parser profiles. Earlier desktop includes default guesses. Differing indicators can reflect preferences; unsupported hints and earlier heuristics stay separate.</p>`, 'Claims, not hardware')}
+    </div>
     <section class="stats-section" id="stats-countries">
       <h3>Top network countries</h3>
+      ${listHeading('Network country')}
       <div class="stats-section-results">${listSkeleton(2)}</div>
     </section>
     </div><section class="stats-section" id="stats-declarations">
       <h3>Named crawlers, tools and services</h3>
+      <div class="stats-list-heads" aria-hidden="true">${listHeading('Client')}${listHeading('Client')}</div>
       <div class="stats-section-results">${listSkeleton(2)}</div>
       <h4 class="data-facts-label">Name coverage · adds up to the selected total</h4><dl class="data-facts" id="stats-client-name-coverage" aria-label="Catalogue name coverage"></dl>
       ${dataNote(html`<p>Names come from this site’s catalogue of crawlers, tools and services. Browser-family signals are reported separately and do not identify the operator.</p><p>A missing selected name can mean no catalogue match, several competing names, or earlier missing data. It does not identify a person or tell us whether a signer is known. The two coverage counts add up to the selected total.</p>`, 'Names and missing evidence')}
     </section>
     </section>
     <section class="stats-chapter" id="stats-evidence" aria-labelledby="stats-evidence-heading"><header class="data-section-heading"><span class="data-section-number" aria-hidden="true">03</span><div><h2 id="stats-evidence-heading">Evidence behind the categories</h2><p>Stored classifications, signatures and network checks, with missing and historical evidence kept explicit.</p></div></header>
-    <nav class="stats-evidence-index" aria-label="Evidence sections"><a href="#stats-composition">Classification rules</a><a href="#stats-fetch-metadata">Request context</a><a href="#stats-kind-signature">Signatures &amp; names</a><a href="#stats-vendor-network">Network checks</a><a href="#stats-verification">Verification coverage</a><a href="#stats-native-category">Provider categories</a></nav>
+    <nav class="stats-evidence-index" aria-label="Evidence sections"><a href="#stats-composition">Classification rules</a><a href="#stats-fetch-metadata">Request context</a><a href="#stats-kind-signature">Signatures &amp; names</a><a href="#stats-vendor-network">Network checks</a><a href="#stats-vendor-cache">Cache diagnostics</a><a href="#stats-verification">Verification coverage</a><a href="#stats-native-category">Provider categories</a></nav>
     <section class="stats-section" id="stats-composition">
       <h3>Request classifications</h3>
       <div class="stats-section-results">${listSkeleton(3)}</div>
     </section>
     <section class="stats-section stats-fetch-metadata" id="stats-fetch-metadata">
       <h3>Request context</h3>
-      <p class="stats-table-hint">Scroll to compare all columns</p><div id="stats-fetch-metadata-rows" role="region" aria-label="Request context table; scroll horizontally if needed" tabindex="0">${listSkeleton(4)}</div>
+      <p class="stats-table-hint">Scroll to compare all columns</p><div class="data-table-region" id="stats-fetch-metadata-rows" role="region" aria-label="Request context table; scroll horizontally if needed" tabindex="0">${listSkeleton(4)}</div>
       <h4 class="data-facts-label">Parsing record coverage</h4><dl class="data-facts" id="stats-fetch-metadata-records" aria-label="Fetch Metadata record coverage"></dl><h4 class="data-facts-label">Activation values</h4><dl class="data-facts" id="stats-fetch-metadata-activation" aria-label="Parsed activation values"></dl>
       ${dataNote(html`<p>Each field uses the same included observations as the headline. Do not add rows together; parameters overlap the state counts.</p><p><strong>Absent:</strong> a recognized record observed no header. <strong>Unassessed:</strong> earlier collection or records this report cannot interpret. <strong>Valid:</strong> parsing succeeded; it does not authenticate a browser or human.</p><p>The browser generation algorithm omits the activation header when false. A true claim does not authenticate a human action.</p>`, 'How to read these fields')}
     </section>
     <section class="stats-section stats-signature-basis" id="stats-kind-signature">
       <h3>Signature evidence by classification</h3>
-      <p class="stats-table-hint">Scroll to compare all columns</p><div id="stats-kind-signature-rows" role="region" aria-label="Signature evidence table; scroll horizontally if needed" tabindex="0">${listSkeleton(3)}</div>
+      <p class="stats-table-hint">Scroll to compare all columns</p><div class="data-table-region" id="stats-kind-signature-rows" role="region" aria-label="Signature evidence table; scroll horizontally if needed" tabindex="0">${listSkeleton(3)}</div>
       ${dataNote(html`<p>Each included observation appears once. Classifications describe declared roles or request rules. A signature covering User-Agent protects the declaration; it does not establish the operator, human involvement or purpose. Select a kind to inspect its vendor and network checks.</p><p>The stored verifier profile shows which implementation produced each result. Current means its identifier matches today's verifier; it does not mean this report reverified the request. Historical profiles can have different checks. Missing profiles, inconsistent records and injected verdicts remain explicit. Each included event appears once across this table.</p>`, 'What a signature establishes')}
     </section>
     <section class="stats-section stats-signature-basis" id="stats-client-evidence">
         <h3>Names, categories &amp; signatures</h3>
-        <p class="stats-table-hint">Scroll to compare all columns</p><div id="stats-client-evidence-rows" role="region" aria-label="Client names and verification table; scroll horizontally if needed" tabindex="0">${listSkeleton(3)}</div>
+        <p class="stats-table-hint">Scroll to compare all columns</p><div class="data-table-region" id="stats-client-evidence-rows" role="region" aria-label="Client names and verification table; scroll horizontally if needed" tabindex="0">${listSkeleton(3)}</div>
       ${dataNote(html`<p>A crawler category can be available while its software name is missing. An unsigned request can match a vendor's published network ranges elsewhere in this report. A selected name is a claim from the request, and a signature authenticates only its covered components. Neither establishes human reading or the initiating party.</p>`, 'Reading the combined evidence')}
     </section>
     <section class="stats-section" id="stats-signers">
       <h3>Stored verified signing outcomes</h3>
+      ${listHeading('Stored signer')}
       <div class="stats-section-results">${listSkeleton(2)}</div>
       ${dataNote(html`<p>These counts follow the top-level stored verified flag, including earlier records without proof detail or with inconsistent detailed records. The classification table separates those cases and stored verifier profiles. Reports do not reverify historical requests. A reviewed display name does not establish a request’s role or purpose.</p>`, 'Stored signing history')}
     </section>
@@ -124,8 +137,8 @@ export function statsPage(pages: readonly { path: string; title: string }[] = []
       <div class="stats-section-results">${listSkeleton(3)}</div>
       ${dataNote(html`<p>Stored checks compare an edge-supplied address with documented vendor ranges. Membership supports network attribution; a nonmatch does not prove impersonation. Outcome counts require a structurally recognized record. </p><p>This report does not cross-check declared names against feed assignments; the offline analyzer does. Declaration counts come from the stored network record. Missing addresses, Worker relay addresses, unavailable feeds, failed revalidation and budget skips stay explicit. Historical outcomes are retained, without fresh address verification. </p><p>Several checked feeds can produce overlapping outcomes. Earlier records remain unknown. <a href="https://github.com/gkoreli/blog/blob/main/packages/analytics/src/vendor-ip-sources.ts" target="_blank" rel="noopener">Configured methods and sources</a>.</p>`, 'Network attribution limits')}
     </section>
-    <details class="stats-cache-details">
-      <summary>Why vendor checks were skipped or reused</summary>
+    <section class="stats-diagnostics" aria-label="Vendor check diagnostics">
+      <p class="stats-diagnostics-title">Why vendor checks were skipped or reused</p>
       <section class="stats-section" id="stats-vendor-cache">
         <h3>Cache diagnostic coverage</h3>
         <div class="stats-section-results">${listSkeleton(3)}</div>
@@ -141,7 +154,7 @@ export function statsPage(pages: readonly { path: string; title: string }[] = []
         <div class="stats-section-results">${listSkeleton(3)}</div>
       ${dataNote(html`<p>A cooldown can carry the last accepted policy context without a membership snapshot. Positive and blocked intervals refer to that validation, not freshness now. Sources and blockers overlap; do not add these counts. Failure without accepted context remains unknown. <a href="https://www.rfc-editor.org/rfc/rfc9111.html#section-5.2.2" target="_blank" rel="noopener">HTTP cache directives</a>.</p>`, 'Policy context, not current freshness')}
     </section>
-    </details>
+    </section>
 
     <section class="stats-section" id="stats-vendor-signatures">
       <h3>Declared vendor checks</h3>
@@ -155,12 +168,13 @@ export function statsPage(pages: readonly { path: string; title: string }[] = []
     </section>
     <section class="stats-section" id="stats-directory-publication">
       <h3>Published key directories</h3>
+      ${listHeading('Directory assessment')}
       <div class="stats-section-results">${listSkeleton(3)}</div>
       ${dataNote(html`<p>The reviewed key-directory map includes first-party endpoints for Exa, Ahrefs, Google and Parallel. This assessment compares the locally verified key publisher with the declared client's reviewed endpoint; it does not establish a per-client signing promise or authenticate an unsigned User-Agent. Conflicting publishers, partial mappings and missing history stay separate. Historical assessments keep their recorded profile. Each included event appears once. <a href="https://github.com/gkoreli/blog/blob/main/packages/analytics/src/directory-publication.ts" target="_blank" rel="noopener">Reviewed endpoints and sources</a>.</p>`, 'What the directory check means')}
     </section>
     <section class="stats-section stats-signature-basis" id="stats-native-category">
       <h3>Cloudflare categories by classification</h3>
-      <div id="stats-native-category-rows" role="region" aria-label="Provider category evidence; scroll horizontally if needed" tabindex="0">${listSkeleton(3)}</div>
+      <div class="data-table-region" id="stats-native-category-rows" role="region" aria-label="Provider category evidence; scroll horizontally if needed" tabindex="0">${listSkeleton(3)}</div>
       ${dataNote(html`<p>Categories can be available without native verification booleans. They are Cloudflare’s classification, not our signature verdict or proof of a human trigger. Empty, unavailable and earlier unrecorded values stay distinct. Each included event appears once.</p>`, 'Provider categories are separate evidence')}
     </section>
     </section>
@@ -174,7 +188,7 @@ export function statsPage(pages: readonly { path: string; title: string }[] = []
     <section class="stats-method-topic" id="stats-method-categories"><h3>Categories & declared names</h3><p>Reports use stored classifications and their reasons. Browser signals match this site's stored browser rules; controlled curl requests have matched them too. Assistants &amp; signed clients contains declared on-demand fetchers and the historical or unknown-role signed-client fallback. Crawlers contains declared search, AI-related crawling (including application indexing and training), SEO/site-audit and link-preview clients. Automation contains hosting-network browsers, headless browsers, HTTP clients, generic bot tokens and older browser claims. Unresolved also includes missing or unrecognized stored classifications, with that provenance shown explicitly. A known classification with a missing or empty reason stays in its kind and is labelled accordingly. These five groups are disjoint and add up to All; none is a verified-human partition. The composition must reconcile with the headline. Client declarations and verified-key outcomes are separate evidence; neither proves human reading or purpose.</p><p>From October 26, 2026 UTC, a known declared client role is retained even when a signature verifies. ExaUser is an on-demand-fetcher declaration; ExaSearchBot is an AI-search declaration; AhrefsBot and AhrefsSiteAudit are SEO/site-audit crawler declarations. Signing outcomes are reported separately and can overlap these kinds. Reviewed signing origins have public service names; all other origins are grouped as Other and stay private. Assistants &amp; signed clients includes declared on-demand fetchers and signed clients whose role is unknown. Stored historical values remain unchanged; missing and unrecognized kinds are projected into Unresolved for reporting. The signature/provider tables keep their separate missing-kind marker. Neither a declared role nor key verification authenticates a request's purpose or human trigger.</p><p>New named declarations use exact lexical product boundaries and reviewed aliases. All matching names/products and their category agreement are retained separately. Multiple names with one common category retain that declared category without selecting an identity; different categories yield Unresolved. A signature does not resolve an ambiguous declaration. Slackbot-LinkExpanding and Slack-ImgProxy are distinct from general-purpose Slackbot. Earlier Slackbot preview-group rows remain filterable without rewriting them.</p><p>Hosting-list membership remains a local grouping rule, independent of request shape. It does not prove automated operation, and absence from the list does not prove human operation. We deliberately keep known consumer relay/VPN networks outside that list. Fetch Metadata describes request context; its absence is not a universal automation verdict. A client declaration, native assessment or crawler match establishes neither indexing, citation nor human attention.</p></section>
     <section class="stats-method-topic" id="stats-method-history"><h3>Collection & classifier history</h3><p>From October 27, 2026 classifier version 2026-10-27.2, new rows labelled Browser signals require a recognized browser-family product claim, navigation/document Fetch Metadata, an Accept that admits HTML, an Accept-Language, and available network evidence outside the hosting list. This rule describes matched signals and does not authenticate an engine or operator. From October 29, parsing preserves case and distinguishes absent, invalid, unrecognized and over-budget fields; valid Item parameters are accepted. Earlier records remain unassessed in the parsing table. Missing network evidence, an unrecognized browser claim, missing or unrecognized Fetch Metadata, and a same-origin claim with an external referrer can yield Unresolved. A network-list nonmatch establishes neither a residential source nor a known operator.</p><p>Historical categories retain their original rules: before August 26, 2026, browser beacons; August 26–September 3, User-Agent-only edge classification; September 3 until the new classifier, navigation headers and a hosting-list nonmatch that could include missing network data. Earlier missing Fetch Metadata and old-browser classifications remain in Automation & legacy rules. These version boundaries can change series without traffic changing. The old navigation reason now explicitly describes unlisted or unavailable networks.</p></section>
     <section class="stats-method-topic" id="stats-method-verification"><h3>Signatures & provider evidence</h3><p>From October 27, 2026 UTC, new observations retain derived local signature coverage and any available native verified-bot/signed-agent booleans. Earlier rows have no such record. Unavailable native fields remain unknown, not false. A verified signature authenticates only covered components against a key. Host-only request binding means authority is covered without method, path, full URL or query coverage; other headers may still be covered. We enforce expiry and a maximum one-day signature lifetime, but do not keep a nonce replay database. A changed unsigned User-Agent can change a declared role without invalidating the signature. Neither local/native differences nor a successful signature establish authorization, benign intent, indexing, citation or human readership.</p><p>Later October 27 observations also retain Cloudflare’s category using a reviewed vocabulary. Empty, unavailable, unrecognized and earlier unrecorded values stay distinct. A category does not establish which native verification method ran. </p><p>The <a href="https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.bot_management.signed_agent/">native signed-agent boolean requires Enterprise Bot Management</a>; Workers Paid does not establish that entitlement.</p></section>
-    <nav class="stats-method-references" aria-label="Measurement references"><p><a href="/privacy">Privacy details</a> · <a href="https://github.com/gkoreli/blog/blob/main/docs/adr/0016-analytics-observation-semantics.md">Engineering decision</a> · <a href="https://github.com/gkoreli/blog/blob/main/docs/adr/0016.2-browser-evidence-and-reader-tier.md">Browser evidence</a> · <a href="https://github.com/gkoreli/blog/blob/main/docs/adr/0016.3-audience-composition-and-citable-articles.md">Audience composition</a></p></nav>
+    <nav class="stats-method-references" aria-label="Measurement references"><a href="/privacy">Privacy details</a><a href="https://github.com/gkoreli/blog/blob/main/docs/adr/0016-analytics-observation-semantics.md">Engineering decision</a><a href="https://github.com/gkoreli/blog/blob/main/docs/adr/0016.2-browser-evidence-and-reader-tier.md">Browser evidence</a><a href="https://github.com/gkoreli/blog/blob/main/docs/adr/0016.3-audience-composition-and-citable-articles.md">Audience composition</a></nav>
   </aside>
   </article>`;
 }
