@@ -1,6 +1,6 @@
 import { html, raw } from '@nisli/core';
 import { reportCheckSectionHtml } from '../lib/site-audit-report.js';
-import { dataFactsHtml, metricTileHtml, rankedRowHtml } from '../lib/data-display.js';
+import { dataFactsHtml, groupedEvidenceTableHtml, metricTileHtml, rankedRowHtml } from '../lib/data-display.js';
 import { dataNote } from '../templates/data-note.js';
 import { homeToolsInvitation } from './home-tools-invitation.js';
 import { navigationChoices } from '../templates/navigation-choice.js';
@@ -156,7 +156,7 @@ export function designLanguagePage() {
   <p class="dl-body-note">Print each value and use a quiet bar to support comparison. Keep the main filter destination and a separate Open action distinct, with generous keyboard and touch targets. Wrap long labels. These values illustrate the pattern; they are not site measurements.</p>
   <div html:inner=${raw([
     { label: 'Homepage', views: 420, href: '/stats?path=%2F', openHref: '/', openAriaLabel: 'Open homepage' },
-    { label: 'Engineering', views: 280, href: '/stats?path=%2Fengineering', openHref: '/engineering' },
+    { label: 'Engineering', description: '/engineering', views: 280, href: '/stats?path=%2Fengineering', openHref: '/engineering' },
     { label: 'Tools', views: 140, href: '/stats?path=%2Ftools', openHref: '/tools' },
   ].map(item => rankedRowHtml(item, 420)).join(''))}></div>
   <h3 class="dl-pattern-title">Coverage and reading notes</h3>
@@ -166,7 +166,14 @@ export function designLanguagePage() {
     { label: 'Earlier records without detail', value: 48 },
     { label: 'Inconsistent records', value: 0 },
   ]))}></dl>
-  ${dataNote(html`<p>The coverage counts account for every request in this example. Earlier records remain part of the total even when detailed evidence was not collected.</p><p>Missing evidence is unknown. A recognized record describes what was measured; it does not establish who made the request.</p>`)}
+  ${dataNote(html`<p>The coverage counts account for every request in this example. Earlier records remain part of the total even when detailed evidence was not collected.</p><p>Missing evidence is unknown. A recognized record describes what was measured; it does not establish who made the request.</p>`, 'Preserve the evidence boundary')}
+  <h3 class="dl-pattern-title" id="grouped-evidence">Grouped evidence tables</h3>
+  <p class="dl-body-note">Give comparisons enough width. Group shared context once, keep every record visible and print group totals only for disjoint rows. Preserve full evidence labels, verifier versions, zero and missing states. Use a table caption, column and row-group headers, and right-aligned numbers. These three records are illustrative.</p>
+  <div class="data-table-region" role="region" aria-label="Illustrative grouped evidence; scroll horizontally if needed" tabindex="0" html:inner=${raw(groupedEvidenceTableHtml('Illustrative stored evidence grouped by request classification.', ['Stored signature evidence', 'Verifier profile'], [
+    { group: 'Browser signals', cells: ['No signature headers recorded', 'Current example profile'], views: 1200 },
+    { group: 'Browser signals', cells: ['Verification detail not recorded', 'Profile unavailable'], views: 48 },
+    { group: 'AI assistants', cells: ['Local result not verified', 'Historical example profile'], views: 0 },
+  ]))}></div>
   </section>
   </section>
 

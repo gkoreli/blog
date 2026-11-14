@@ -312,3 +312,7 @@ The [follow-up design record](../../../prototypes/stats/README.md#reading-hierar
 
 
 Delivered through `b76223ce` and final table correction `60b5a3d7`; Cloudflare build `d0981fa8-4baf-4239-96a1-ff2553fd806d` succeeded. The [fresh acceptance receipt](2026-11-13-stats-reading-acceptance.json) confirms matching served identity and exact assets, preserved visible evidence, live filtering/restoration, native method links, intact desktop headers and 320px containment with keyboard table scrolling. The integrated build preserves concurrent publications and passes 35 Markdown validations with 46 built posts. The requested refinement is complete; further usefulness is a reader-feedback outcome.
+
+### Stats visual QA and report composition — November 13
+
+The [visual QA study](../../../prototypes/stats/visual-qa-study.md) records a broader presentation revision: a wider shared report shell, totals beside the trend, a sticky chapter index, readable page titles with exact paths, diagnostic fact groups, contextual reading notes and complete evidence tables grouped by classification. The original and revised layouts were compared using the same saved response; all nine data and text comparisons match. All 23 result sections and the complete method remain. Desktop document height falls from 49,423px to 43,264px through composition rather than record removal. Local responsive, keyboard, empty/error, history and shared-pattern checks are separate from source delivery and fresh public acceptance, which follow below.

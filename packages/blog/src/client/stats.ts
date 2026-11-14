@@ -1,5 +1,5 @@
 import { consistentVendorCacheSummary } from '@gkoreli/analytics/vendor-cache-summary';
-import { consistentFetchMetadataSummary, FETCH_METADATA_REPORT_FIELDS } from '@gkoreli/analytics/fetch-metadata-summary';
+import { consistentFetchMetadataSummary } from '@gkoreli/analytics/fetch-metadata-summary';
 import { consistentVendorNetworkSummary } from '@gkoreli/analytics/vendor-network-summary';
 import { consistentSignatureSummary } from '@gkoreli/analytics/signature-summary';
 import uPlot from 'uplot';
@@ -11,8 +11,8 @@ import { REVIEWED_VERIFIER_PROFILES, isReportedVerifierProfile, verifierProfileL
 import { nativeCategoryLabel } from '@gkoreli/analytics/native-bot-evidence';
 import { DIRECTORY_PUBLICATION_LABELS } from '@gkoreli/analytics/directory-publication';
 import { CLIENT_NAME_SELECTION_LABELS, consistentClientEvidence } from '@gkoreli/analytics/client-evidence';
-import { dataFactsHtml, rankedRowHtml, type RankedItem } from '../lib/data-display.js';
-import { classificationReasonLabel, trafficMix } from '../lib/stats-presentation.js';
+import { dataFactsHtml, groupedEvidenceTableHtml, rankedRowHtml, type RankedItem } from '../lib/data-display.js';
+import { classificationReasonLabel, requestContextRows, trafficMix } from '../lib/stats-presentation.js';
 import '../styles/stats.css';
 
 type RangeFilter = '7d' | '30d' | '90d' | 'all';
@@ -250,6 +250,7 @@ function setStatus(message: string, kind: 'loading' | 'ready' | 'empty' | 'error
   const status = element('stats-status');
   status.className = `stats-status stats-status-${kind}`;
   status.textContent = message;
+  element('stats-loading').hidden = kind !== 'loading';
 }
 
 function setDashboardVisible(visible: boolean): void {
@@ -263,7 +264,9 @@ function renderPeriod(period: StatsResponse['period'], series: StatsResponse['ti
   const partial = period.granularity === 'hour' ? 'current UTC hour is partial' : 'current UTC day is partial';
   const laterBuckets = series.some(row => bucketTimestamp(row.bucket,period.granularity)*1000 > Date.parse(period.updatedAt));
   const clockNote = laterBuckets ? ' · Some returned bucket timestamps are later than the calculation clock' : '';
-  const dates = document.createElement('span'); dates.textContent = `${period.start} – ${period.end} UTC`;
+  const dates = document.createElement('span');
+  const dateFormat = new Intl.DateTimeFormat('en-US', { dateStyle: 'medium', timeZone: 'UTC' });
+  dates.textContent = `${dateFormat.formatRange(new Date(`${period.start}T00:00:00Z`), new Date(`${period.end}T00:00:00Z`))} · UTC`;
   const detail = document.createElement('span'); detail.textContent = `Updated ${formatUpdatedAt(period.updatedAt)}${clockNote}`;
   element('stats-chart-context').textContent = `${granularity} · UTC · ${partial.replace(' UTC', '')}`;
   element('stats-period').replaceChildren(dates, detail);
@@ -335,6 +338,12 @@ function replaceSectionRows(containerId: string, items: RankedItem[], limit: num
     return;
   }
 
+  const factsOnly = ['stats-verification', 'stats-vendor-network', 'stats-vendor-signatures', 'stats-vendor-cache', 'stats-vendor-cache-access', 'stats-vendor-cache-policy', 'stats-verification-outcomes'].includes(containerId);
+  if (factsOnly) {
+    const facts = document.createElement('dl'); facts.className = 'data-facts';
+    facts.innerHTML = dataFactsHtml(items.map(item => ({ label: item.label, value: item.views })));
+    section.appendChild(facts); return;
+  }
   const visibleItems = limit === null ? items : items.slice(0, limit);
   const max = visibleItems.reduce((highest, item) => Math.max(highest, item.views), 0);
   const rows = document.createElement('div');
@@ -348,11 +357,22 @@ function pageHref(path: string): string | undefined {
     : undefined;
 }
 
+const pageTitles = new Map<string, string>();
+const catalogue = document.getElementById('stats-page-catalogue');
+if (catalogue) {
+  for (const link of catalogue.querySelectorAll('a')) {
+    const path = link.getAttribute('href');
+    if (path && link.textContent) pageTitles.set(path, link.textContent);
+  }
+}
+
 function pageItem(row: StatsResponse['byPath'][number], state: ViewState): RankedItem {
   const openHref = pageHref(row.path);
+  const title = pageTitles.get(row.path);
+  const identity = title ? { label: title, description: row.path } : { label: row.path };
   const item: RankedItem = state.path === null
-    ? { label: row.path, views: row.views, href: stateHref({ ...state, path: row.path }) }
-    : { label: row.path, views: row.views };
+    ? { ...identity, views: row.views, href: stateHref({ ...state, path: row.path }) }
+    : { ...identity, views: row.views };
   if (openHref === undefined) return item;
   return { ...item, openHref, openAriaLabel: `Open ${row.path}` };
 }
@@ -533,32 +553,17 @@ function renderComposition(data: StatsResponse, state: ViewState): void {
   }
 }
 
+function classificationGroup(kind: ReaderKind | null, state: ViewState) {
+  const group = kind === null ? 'Kind unrecorded or unrecognized' : KIND_LABELS[kind];
+  return kind !== null && state.kind === null && state.agent === null
+    ? { group, groupHref: stateHref({ ...state, kind, traffic: 'all' }) }
+    : { group };
+}
+
 function renderClassificationEvidenceTable(containerId: string, evidenceLabel: string, rows: Array<{ kind: ReaderKind | null; label: string; views: number; profileLabel?: string }>, state: ViewState, includeProfile = false): void {
-  const container = element(containerId);
-  const table = document.createElement('table');
-  const caption = document.createElement('caption');
-  caption.textContent = 'Rows sum to the selected total';
-  const head = document.createElement('thead');
-  const header = document.createElement('tr');
-  for (const text of ['Classification', evidenceLabel, ...(includeProfile ? ['Stored verifier'] : []), 'Events']) {
-    const cell = document.createElement('th'); cell.scope = 'col'; cell.textContent = text; header.appendChild(cell);
-  }
-  head.appendChild(header);
-  const body = document.createElement('tbody');
-  for (const row of rows) {
-    const tr = document.createElement('tr');
-    const kind = document.createElement('th'); kind.scope = 'row';
-    const name = row.kind === null ? 'Kind unrecorded or unrecognized' : KIND_LABELS[row.kind];
-    if (row.kind !== null && state.kind === null && state.agent === null) {
-      const link = document.createElement('a'); link.href = stateHref({ ...state, kind: row.kind, traffic: 'all' }); link.textContent = name; kind.appendChild(link);
-    } else kind.textContent = name;
-    const basis = document.createElement('td'); basis.textContent = row.label;
-    const count = document.createElement('td'); count.textContent = formatNumber(row.views);
-    tr.append(kind, basis);
-    if (includeProfile) { const profile = document.createElement('td'); profile.textContent = row.profileLabel ?? 'Profile unavailable'; tr.appendChild(profile); }
-    tr.appendChild(count); body.appendChild(tr);
-  }
-  table.append(caption, head, body); container.replaceChildren(table);
+  element(containerId).innerHTML = groupedEvidenceTableHtml('Grouped by classification. Each request appears once; rows add up to the selected total.',
+    [evidenceLabel, ...(includeProfile ? ['Stored verifier'] : [])],
+    rows.map(row => ({ ...classificationGroup(row.kind, state), cells: [row.label, ...(includeProfile ? [row.profileLabel ?? 'Profile unavailable'] : [])], views: row.views })));
 }
 
 function renderKindSignatures(data: StatsResponse, state: ViewState): void {
@@ -571,27 +576,11 @@ function renderKindSignatures(data: StatsResponse, state: ViewState): void {
   ]);
   const container = element('stats-client-evidence-rows');
   if (data.byKindClientEvidence.length === 0) { container.textContent = 'No requests for this selection.'; return; }
-  const table = document.createElement('table');
-  const caption = document.createElement('caption'); caption.textContent = 'Software names, provider categories and local signature checks on the same requests. Each request appears once.';
-  const head = document.createElement('thead'), header = document.createElement('tr');
-  for (const label of ['Classification', 'Catalogue name', 'Cloudflare category', 'Signature check', 'Verifier profile', 'Requests']) {
-    const th = document.createElement('th'); th.scope = 'col'; th.textContent = label; header.appendChild(th);
-  }
-  head.appendChild(header);
-  const body = document.createElement('tbody');
-  for (const row of data.byKindClientEvidence) {
-    const tr = document.createElement('tr');
-    const values = [row.kind === null ? 'Kind unrecorded or unrecognized' : KIND_LABELS[row.kind],
-      CLIENT_NAME_SELECTION_LABELS[row.nameSelection], nativeCategoryLabel(row.nativeCategory),
-      SIGNATURE_BASIS_LABELS[row.signatureBasis], verifierProfileLabel(row.verifierProfile, data.verifierProfile.current), formatNumber(row.views)];
-    for (const [index, value] of values.entries()) {
-      const cell = document.createElement(index === 0 ? 'th' : 'td');
-      if (cell instanceof HTMLTableCellElement && index === 0) cell.scope = 'row';
-      cell.textContent = value; tr.appendChild(cell);
-    }
-    body.appendChild(tr);
-  }
-  table.append(caption, head, body); container.replaceChildren(table);
+  container.innerHTML = groupedEvidenceTableHtml('Names, provider categories and local signature checks on the same requests, grouped by classification. Each request appears once.',
+    ['Catalogue name', 'Cloudflare category', 'Signature check', 'Verifier profile'],
+    data.byKindClientEvidence.map(row => ({ ...classificationGroup(row.kind, state),
+      cells: [CLIENT_NAME_SELECTION_LABELS[row.nameSelection], nativeCategoryLabel(row.nativeCategory), SIGNATURE_BASIS_LABELS[row.signatureBasis], verifierProfileLabel(row.verifierProfile, data.verifierProfile.current)], views: row.views })));
+
 }
 
 function renderTransitions(data: StatsResponse, state: ViewState): void {
@@ -629,17 +618,17 @@ function renderFetchMetadata(data: StatsResponse): void {
   container.replaceChildren();
   const table = document.createElement('table');
   const caption = table.createCaption();
-  caption.textContent = 'Counts by request field';
+  const captionText = document.createElement('span'); captionText.className = 'data-table-caption-text';
+  captionText.textContent = 'Header parsing states across four request fields. Parameters overlap the other state counts.'; caption.appendChild(captionText);
   const header = table.createTHead().insertRow();
-  for (const label of ['Field', 'Unassessed', 'Absent', 'Valid value', 'Unrecognized', 'Invalid', 'Budget limit', 'Parameters']) {
+  for (const label of ['Parsing state', 'Mode', 'Destination', 'Site context', 'Activation']) {
     const cell = document.createElement('th'); cell.scope = 'col'; cell.textContent = label; header.appendChild(cell);
   }
-  const labels = { mode: 'Mode', destination: 'Destination', site: 'Site context', activation: 'Activation' };
   const body = table.createTBody();
-  for (const field of FETCH_METADATA_REPORT_FIELDS) {
-    const counts = summary.fields[field], row = body.insertRow(), heading = document.createElement('th');
-    heading.scope = 'row'; heading.textContent = labels[field]; row.appendChild(heading);
-    for (const value of [counts.notAssessedViews, counts.absentViews, counts.validViews, counts.unrecognizedViews, counts.invalidViews, counts.policyLimitedViews, counts.parametersViews]) {
+  for (const { label, values } of requestContextRows(summary.fields)) {
+    const row = body.insertRow(), heading = document.createElement('th');
+    heading.scope = 'row'; heading.textContent = label; row.appendChild(heading);
+    for (const value of values) {
       const cell = row.insertCell(); cell.textContent = formatNumber(value);
     }
   }
@@ -667,8 +656,22 @@ function renderDashboard(data: StatsResponse, state: ViewState): void {
   replaceSectionRows('stats-traffic-mix', trafficMix(data.byKind).map(row => ({
     label: row.label, views: row.views,
     href: stateHref({ ...state, traffic: row.group, agent: null, kind: null }),
-    detail: `${(row.views / data.totals.views * 100).toFixed(1)}% of this selection`,
+    detail: `${data.totals.views > 0 ? (row.views / data.totals.views * 100).toFixed(1) : '0.0'}%`,
   })), null);
+  const distribution = element('stats-distribution'); distribution.replaceChildren();
+  const mix = trafficMix(data.byKind);
+  element('stats-traffic-mix').querySelectorAll<HTMLElement>('.data-row').forEach((row, index) => {
+    const group = mix[index]; if (group) row.dataset.group = group.group;
+  });
+  for (const row of mix) {
+    if (row.views === 0) continue;
+    const segment = document.createElement('span'); segment.dataset.group = row.group;
+    segment.style.flexGrow = String(row.views);
+    distribution.appendChild(segment);
+  }
+  element('stats-policy-note').textContent = excluded > 0
+    ? `${formatNumber(excluded)} requests excluded by the referral-abuse policy. Reports can be up to one hour old.`
+    : 'Reports can be up to one hour old. Updated time is the report calculation time.';
   renderClientForms(data.byClientForm, data.clientFormEvidence);
   renderChart(data);
   replaceSectionRows('stats-pages', data.byPath.map((row) => pageItem(row, state)));
@@ -692,38 +695,62 @@ function renderDashboard(data: StatsResponse, state: ViewState): void {
   })), null);
   replaceSectionRows('stats-signers', data.bySigner.map(row => ({ label: row.signatureAgent, views: row.views })), null);
   const verification = data.verification;
-  replaceSectionRows('stats-verification', [
-    { label: 'Stored verification record present', views: verification.recordedViews },
-    { label: 'Verification record not recorded', views: verification.notRecordedViews },
-    { label: 'Consistent stored local result: verified', views: verification.localVerifiedViews },
-    { label: 'Local verification unsuccessful', views: verification.localUnverifiedViews },
-    { label: 'No signature headers', views: verification.localAbsentViews },
-    { label: 'Unrecognized or inconsistent local record', views: verification.unrecognizedLocalViews },
-    { label: 'Verified result; coverage not recorded', views: verification.coverageNotRecordedVerifiedViews },
-    { label: 'Verified result; coverage unrecognized', views: verification.coverageUnrecognizedVerifiedViews },
-    { label: 'Injected test verdict — not local verification', views: verification.testVerdictViews },
-    { label: 'Verified coverage recorded', views: verification.coverageRecordedViews },
-    { label: 'Selected-signature assessment recorded', views: verification.selectionRecordedViews },
-    { label: 'Verified; candidate assessment not recorded', views: verification.selectionNotRecordedVerifiedViews },
-    { label: 'Verified; candidate assessment unrecognized', views: verification.selectionUnrecognizedVerifiedViews },
-    { label: 'Events with several tagged signature candidates', views: verification.multipleTaggedCandidateViews },
-    { label: 'Events with other candidates left unassessed', views: verification.unassessedCandidateViews },
-    { label: 'User-Agent covered', views: verification.userAgentBoundViews },
-    { label: 'Path or full URL covered', views: verification.resourceBoundViews },
-    { label: 'Method covered', views: verification.methodBoundViews },
-    { label: 'Host-only request binding', views: verification.authorityOnlyViews },
-    { label: 'Native boolean fields unavailable', views: verification.nativeUnavailableViews },
-    { label: 'Native boolean record not recorded', views: verification.nativeNotRecordedViews },
-    { label: 'Native boolean record unrecognized', views: verification.nativeUnrecognizedViews },
-    { label: 'At least one stored native boolean available', views: verification.nativeAvailableViews },
-    { label: 'Stored native verified-bot boolean available', views: verification.nativeVerifiedBotAvailableViews },
-    { label: 'Native verified-bot result true', views: verification.nativeVerifiedBotViews },
-    { label: 'Native verified-bot result false', views: verification.nativeVerifiedBotAvailableViews - verification.nativeVerifiedBotViews },
-    { label: 'Stored native signed-agent boolean available', views: verification.nativeSignedAgentAvailableViews },
-    { label: 'Native signed-agent result true', views: verification.nativeSignedAgentViews },
-    { label: 'Native signed-agent result false', views: verification.nativeSignedAgentAvailableViews - verification.nativeSignedAgentViews },
-    { label: 'Local verified; native verified-bot false', views: verification.localVerifiedNativeNotVerifiedViews },
-  ], null);
+  const groups = [
+    { label: 'Record coverage', facts: [
+      { label: 'Stored verification record present', views: verification.recordedViews },
+      { label: 'Verification record not recorded', views: verification.notRecordedViews },
+      { label: 'Injected test verdict — not local verification', views: verification.testVerdictViews },
+    ] },
+    { label: 'Local verification outcomes', facts: [
+      { label: 'Consistent stored local result: verified', views: verification.localVerifiedViews },
+      { label: 'Local verification unsuccessful', views: verification.localUnverifiedViews },
+      { label: 'No signature headers', views: verification.localAbsentViews },
+      { label: 'Unrecognized or inconsistent local record', views: verification.unrecognizedLocalViews },
+    ] },
+    { label: 'Signature coverage', facts: [
+      { label: 'Verified coverage recorded', views: verification.coverageRecordedViews },
+      { label: 'Verified result; coverage not recorded', views: verification.coverageNotRecordedVerifiedViews },
+      { label: 'Verified result; coverage unrecognized', views: verification.coverageUnrecognizedVerifiedViews },
+      { label: 'User-Agent covered', views: verification.userAgentBoundViews },
+      { label: 'Path or full URL covered', views: verification.resourceBoundViews },
+      { label: 'Method covered', views: verification.methodBoundViews },
+      { label: 'Host-only request binding', views: verification.authorityOnlyViews },
+    ] },
+    { label: 'Candidate selection', facts: [
+      { label: 'Selected-signature assessment recorded', views: verification.selectionRecordedViews },
+      { label: 'Verified; candidate assessment not recorded', views: verification.selectionNotRecordedVerifiedViews },
+      { label: 'Verified; candidate assessment unrecognized', views: verification.selectionUnrecognizedVerifiedViews },
+      { label: 'Events with several tagged signature candidates', views: verification.multipleTaggedCandidateViews },
+      { label: 'Events with other candidates left unassessed', views: verification.unassessedCandidateViews },
+    ] },
+    { label: 'Cloudflare boolean availability', facts: [
+      { label: 'Native boolean fields unavailable', views: verification.nativeUnavailableViews },
+      { label: 'Native boolean record not recorded', views: verification.nativeNotRecordedViews },
+      { label: 'Native boolean record unrecognized', views: verification.nativeUnrecognizedViews },
+      { label: 'At least one stored native boolean available', views: verification.nativeAvailableViews },
+    ] },
+    { label: 'Cloudflare verified-bot', facts: [
+      { label: 'Stored native verified-bot boolean available', views: verification.nativeVerifiedBotAvailableViews },
+      { label: 'Native verified-bot result true', views: verification.nativeVerifiedBotViews },
+      { label: 'Native verified-bot result false', views: verification.nativeVerifiedBotAvailableViews - verification.nativeVerifiedBotViews },
+      { label: 'Local verified; native verified-bot false', views: verification.localVerifiedNativeNotVerifiedViews },
+    ] },
+    { label: 'Cloudflare signed-agent', facts: [
+      { label: 'Stored native signed-agent boolean available', views: verification.nativeSignedAgentAvailableViews },
+      { label: 'Native signed-agent result true', views: verification.nativeSignedAgentViews },
+      { label: 'Native signed-agent result false', views: verification.nativeSignedAgentAvailableViews - verification.nativeSignedAgentViews },
+    ] },
+  ];
+  const factsContainer = element('stats-verification').querySelector('.stats-section-results');
+  if (!factsContainer) throw new Error('Missing verification facts container');
+  factsContainer.replaceChildren();
+  for (const group of groups) {
+    const section = document.createElement('section'); section.className = 'stats-fact-group';
+    const heading = document.createElement('h4'); heading.textContent = group.label;
+    const facts = document.createElement('dl'); facts.className = 'data-facts';
+    facts.innerHTML = dataFactsHtml(group.facts.map(item => ({ label: item.label, value: item.views })));
+    section.append(heading, facts); factsContainer.appendChild(section);
+  }
   replaceSectionRows('stats-verification-outcomes', [
     { label: 'Invalid input or cryptographic mismatch', views: verification.localInvalidViews },
     { label: 'Unsupported format or algorithm', views: verification.localUnsupportedViews },
@@ -898,3 +925,21 @@ new ResizeObserver(() => {
 }).observe(element('stats-chart'));
 
 void load(currentState);
+
+const chapterLinks = Array.from(document.querySelectorAll<HTMLAnchorElement>('.stats-navigation a'));
+const chapters = chapterLinks.flatMap(link => {
+  const target = document.getElementById(link.hash.slice(1)); return target ? [{ link, target }] : [];
+});
+let chapterFrame = 0;
+function updateChapter(): void {
+  chapterFrame = 0;
+  const boundary = (document.querySelector('.stats-navigation')?.getBoundingClientRect().height ?? 60) + 48;
+  let active = chapters[0];
+  for (const chapter of chapters) if (chapter.target.getClientRects().length > 0 && chapter.target.getBoundingClientRect().top <= boundary) active = chapter;
+  for (const chapter of chapters) {
+    if (chapter === active) chapter.link.setAttribute('aria-current', 'location');
+    else chapter.link.removeAttribute('aria-current');
+  }
+}
+window.addEventListener('scroll', () => { if (!chapterFrame) chapterFrame = requestAnimationFrame(updateChapter); }, { passive: true });
+updateChapter();

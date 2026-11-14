@@ -1,4 +1,5 @@
 import { HOSTING_NETWORKS } from '@gkoreli/analytics/networks';
+import { FETCH_METADATA_REPORT_FIELDS } from '@gkoreli/analytics/fetch-metadata-summary';
 import { readerGroupOf, type ReaderKind, type StatsResponse, type TrafficFilter } from '@gkoreli/analytics/contracts';
 
 export const TRAFFIC_LABELS: Record<TrafficFilter, string> = {
@@ -6,6 +7,15 @@ export const TRAFFIC_LABELS: Record<TrafficFilter, string> = {
   crawlers: 'Crawlers', automation: 'Automation & legacy rules', unresolved: 'Unresolved',
 };
 export const TRAFFIC_GROUPS = ['browser', 'agents', 'crawlers', 'automation', 'unresolved'] as const;
+
+/** A transpose of the same 28 facts, with no aggregation or new interpretation. */
+export function requestContextRows(fields: StatsResponse['fetchMetadata']['fields']) {
+  const states = [
+    ['Unassessed', 'notAssessedViews'], ['Absent', 'absentViews'], ['Valid value', 'validViews'],
+    ['Unrecognized', 'unrecognizedViews'], ['Invalid', 'invalidViews'], ['Budget limit', 'policyLimitedViews'], ['Parameters (overlap)', 'parametersViews'],
+  ] as const;
+  return states.map(([label, key]) => ({ label, values: FETCH_METADATA_REPORT_FIELDS.map(field => fields[field][key]) }));
+}
 
 /** Existing disjoint request groups, derived from the same included rows as the headline. */
 export function trafficMix(rows: StatsResponse['byKind']): Array<{ group: Exclude<TrafficFilter, 'all'>; label: string; views: number }> {

@@ -2,8 +2,8 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 import { renderContent } from '../src/lib/ssg.js';
 import { statsPage } from '../src/pages/stats.js';
-import { dataFactsHtml, metricTileHtml, rankedRowHtml } from '../src/lib/data-display.js';
-import { classificationReasonLabel, trafficMix } from '../src/lib/stats-presentation.js';
+import { dataFactsHtml, groupedEvidenceTableHtml, metricTileHtml, rankedRowHtml } from '../src/lib/data-display.js';
+import { classificationReasonLabel, requestContextRows, trafficMix } from '../src/lib/stats-presentation.js';
 
 test('traffic mix reconciles repeated reason rows into the existing disjoint request groups', () => {
   const rows = [
@@ -33,7 +33,7 @@ test('classification labels retain compound evidence without leaking diagnostic 
 });
 
 test('Stats puts the trend before detail, labels its native filters and preserves navigable visible results', async () => {
-  const [snapshot] = await renderContent([statsPage()]); assert.ok(snapshot);
+  const [snapshot] = await renderContent([statsPage([{ path: '/example', title: 'Example <title>' }])]); assert.ok(snapshot);
   const root = document.createElement('div'); root.innerHTML = snapshot;
   const select = root.querySelector('select#stats-traffic'); assert.ok(select);
   assert.equal(select.querySelectorAll('option').length, 6);
@@ -50,6 +50,8 @@ test('Stats puts the trend before detail, labels its native filters and preserve
   }
   assert.match(root.querySelector('noscript')?.textContent ?? '', /30-day report as JSON/);
   assert.match(snapshot, /Per-day identifiers, not people/);
+  assert.equal(root.querySelector('#stats-page-catalogue a[href="/example"]')?.textContent, 'Example <title>');
+  assert.equal(root.querySelector('#stats-page-catalogue')?.hasAttribute('hidden'), true);
 });
 
 test('shared data templates escape captured labels and reject executable or off-site row destinations', async () => {
@@ -57,7 +59,7 @@ test('shared data templates escape captured labels and reject executable or off-
   const hostile = '<img src=x onerror="alert(1)">';
   const root = document.createElement('div');
   root.innerHTML = metricTileHtml({ label: hostile, value: hostile, detail: hostile })
-    + rankedRowHtml({ label: hostile, views: 12, href: 'javascript:alert(1)', openHref: '//evil.test', detail: hostile }, 0);
+    + rankedRowHtml({ label: hostile, description: hostile, views: 12, href: 'javascript:alert(1)', openHref: '//evil.test', detail: hostile }, 0);
   assert.equal(root.querySelectorAll('img, script, a').length, 0);
   assert.ok(root.textContent?.includes(hostile));
   assert.equal(root.querySelector<HTMLElement>('.data-row-bar')?.style.width, '0%');
@@ -69,6 +71,37 @@ test('shared data templates escape captured labels and reject executable or off-
   assert.equal(root.querySelector('img'), null);
   assert.deepEqual(Array.from(root.querySelectorAll('dd'), cell => cell.textContent), ['0', '1,248']);
   assert.equal(root.querySelector('dt')?.textContent, hostile);
+});
+
+test('grouped evidence retains every record, zero and missing marker without repeating classification cells', async () => {
+  await renderContent([statsPage()]);
+  const root = document.createElement('div');
+  root.innerHTML = groupedEvidenceTableHtml('Complete example', ['Evidence', 'Profile'], [
+    { group: 'Browser signals', groupHref: '/stats?kind=browser', cells: ['No signature headers', 'current'], views: 12 },
+    { group: 'AI assistants', groupHref: 'javascript:alert(1)', cells: ['<img src=x onerror=alert(1)>', 'unavailable'], views: 3 },
+    { group: 'Browser signals', cells: ['Earlier unrecorded', 'historical'], views: 0 },
+    { group: 'Kind unrecorded or unrecognized', cells: ['Unassessed', 'unavailable'], views: 2 },
+  ]);
+  assert.equal(root.querySelectorAll('.data-table-record').length, 4);
+  assert.equal(root.querySelectorAll('th[scope="rowgroup"]').length, 3);
+  assert.equal(root.querySelectorAll('th[scope="col"]').length, 3);
+  assert.equal(root.querySelectorAll('a').length, 1);
+  assert.equal(root.querySelector('img'), null);
+  assert.deepEqual(Array.from(root.querySelectorAll('.data-table-record .data-table-number'), cell => cell.textContent), ['12', '0', '3', '2']);
+  assert.match(root.textContent ?? '', /Kind unrecorded or unrecognized/);
+  assert.match(root.textContent ?? '', /<img src=x onerror=alert\(1\)>/);
+});
+
+test('request context transpose preserves all 28 parsing facts, including zero and overlapping parameters', () => {
+  const field = (base: number) => ({ notAssessedViews: base + 1, absentViews: base + 2, validViews: base + 3,
+    unrecognizedViews: base + 4, invalidViews: base + 5, policyLimitedViews: base + 6, parametersViews: 0 });
+  const rows = requestContextRows({ mode: field(10), destination: field(20), site: field(30), activation: field(40) });
+  assert.equal(rows.length, 7);
+  assert.deepEqual(rows.map(row => row.values), [
+    [11, 21, 31, 41], [12, 22, 32, 42], [13, 23, 33, 43], [14, 24, 34, 44],
+    [15, 25, 35, 45], [16, 26, 36, 46], [0, 0, 0, 0],
+  ]);
+  assert.equal(rows[6]?.label, 'Parameters (overlap)');
 });
 
 test('Stats preserves each evidence section and keeps its complete reading notes after the results', async () => {

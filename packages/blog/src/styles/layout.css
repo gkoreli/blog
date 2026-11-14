@@ -6,6 +6,9 @@ body { min-height: 100vh; }
   min-height: 100vh;
 }
 
+/* Reports need comparison width; editorial pages keep the centered reading grid. */
+.layout-report { grid-template-columns: 220px minmax(0,1fr) 24px; max-width: 1440px; margin-inline: auto; }
+
 .gutter { /* empty right column mirrors sidebar width for centering */ }
 
 .sidebar-wrapper {
