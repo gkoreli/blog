@@ -1,10 +1,11 @@
+import { databaseTimestamp, utcInstant } from '@gkoreli/time';
+import { ZonedCalendar } from '@gkoreli/time/calendar';
 import { ARTICLE_REACH_VERSION, REACH_METRIC_KEYS, consistentArticleReach, emptyReachMetrics, validReachCatalogue, reachMeasurementHistoryRow, type ArticleReachReport, type ReachArticle, type ReachMetrics } from './article-reach-contract.js';
 import { ACTIVE_REFERRAL_POLICY } from './referral-policy.generated.js';
 import { referralAssessmentCtes, referralRulesJson } from './referral-sql.js';
 import type { ReferralPolicy } from './referral-policy.js';
 import { measuredReportBatch, type ReportCalculationObserver } from './report-cost.js';
 
-const DAY = 86_400_000;
 const NORMALIZED_HOST = `CASE WHEN substr(lower(rtrim(referrer_host, '.')),1,4)='www.' THEN substr(lower(rtrim(referrer_host,'.')),5) ELSE lower(rtrim(referrer_host,'.')) END`;
 // Only a bounded stamp grammar reaches the public report. Unknown text stays a category.
 const stamp = (column: string) => `CASE WHEN ${column} IS NULL THEN NULL
@@ -37,7 +38,7 @@ export const ARTICLE_REACH_SQL = `WITH RECURSIVE
   facts AS MATERIALIZED (
     SELECT CASE WHEN path IN (SELECT path FROM catalogue) THEN path ELSE NULL END AS article_path,
       CASE WHEN strftime('%Y-%m-%d %H:%M:%S',observed_at) IS observed_at AND substr(observed_at,12,2) BETWEEN '00' AND '23'
-        THEN CAST((julianday(substr(observed_at,1,10))-julianday(?))/7 AS INTEGER) ELSE -1 END AS week,
+        THEN COALESCE((SELECT CAST(key AS INTEGER) FROM json_each(?) WHERE observed_at>=json_extract(value,'$.start') AND observed_at<json_extract(value,'$.end')),-1) ELSE -1 END AS week,
       host,
       CASE WHEN referrer_state='internal' OR (referrer_state IS NULL AND host='gkoreli.com') THEN 'internal'
         WHEN referrer_state='absent' AND referrer_host IS NULL THEN 'unattributed'
@@ -92,20 +93,26 @@ function invalid(): never { throw new Error('Incomplete or inconsistent article 
 function count(value: unknown): value is number { return typeof value === 'number' && Number.isSafeInteger(value) && value >= 0; }
 function add(target: ReachMetrics, row: ReachMetrics): void { for (const key of REACH_METRIC_KEYS) target[key] += row[key]; }
 
-export async function queryArticleReach(db: D1Database, catalogue: ReachArticle[], now = new Date(), policy: ReferralPolicy = ACTIVE_REFERRAL_POLICY, observe?: ReportCalculationObserver): Promise<ArticleReachReport> {
+export interface ArticleReachOptions { now?: Date; timeZone?: string; policy?: ReferralPolicy; onCalculation?: ReportCalculationObserver }
+
+export async function queryArticleReach(db: D1Database, catalogue: ReachArticle[], options: ArticleReachOptions = {}): Promise<ArticleReachReport> {
+  const now = options.now ?? new Date(), policy = options.policy ?? ACTIVE_REFERRAL_POLICY;
   if (!validReachCatalogue(catalogue) || !Number.isFinite(now.getTime())) return invalid();
-  const end = Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate()), start = end - 28 * DAY;
-  const day = (at: number) => new Date(at).toISOString().slice(0, 10);
-  const startDay = day(start), endDay = day(end);
-  const statement = db.prepare(ARTICLE_REACH_SQL).bind(JSON.stringify(catalogue.map(post => post.path)), startDay + ' 00:00:00', endDay + ' 00:00:00', referralRulesJson(policy), startDay, JSON.stringify(policy.publicHosts));
-  const results = await measuredReportBatch(db, statement, observe);
+  const calendar = new ZonedCalendar(options.timeZone ?? 'UTC');
+  const endDay = calendar.dateAt(now), startDay = calendar.addDays(endDay, -28);
+  const weeks = Array.from({ length: 4 }, (_, index) => ({
+    startInclusive: calendar.addDays(startDay, index * 7), endExclusive: calendar.addDays(startDay, (index + 1) * 7), site: emptyReachMetrics(), articles: emptyReachMetrics(),
+  }));
+  const intervals = weeks.map(week => ({ start: databaseTimestamp(calendar.startOfDay(week.startInclusive)), end: databaseTimestamp(calendar.startOfDay(week.endExclusive)) }));
+  const statement = db.prepare(ARTICLE_REACH_SQL).bind(JSON.stringify(catalogue.map(post => post.path)), databaseTimestamp(calendar.startOfDay(startDay)), databaseTimestamp(calendar.startOfDay(endDay)), referralRulesJson(policy), JSON.stringify(intervals), JSON.stringify(policy.publicHosts));
+  const results = await measuredReportBatch(db, statement, options.onCalculation);
   const rows = results[0]?.results;
   if (!Array.isArray(rows)) return invalid();
   const report: ArticleReachReport = {
     version: ARTICLE_REACH_VERSION,
-    period: { startInclusive: startDay, endExclusive: endDay, updatedAt: now.toISOString(), timeZone: 'UTC' },
+    period: { startInclusive: startDay, endExclusive: endDay, updatedAt: utcInstant(now), timeZone: calendar.timeZone },
     selection: 'stored-browser-signals', catalogueSize: catalogue.length, site: emptyReachMetrics(), articleTotals: emptyReachMetrics(),
-    weeks: Array.from({ length: 4 }, (_, index) => ({ startInclusive: day(start + index * 7 * DAY), endExclusive: day(start + (index + 1) * 7 * DAY), site: emptyReachMetrics(), articles: emptyReachMetrics() })),
+    weeks,
     articles: catalogue.map(post => ({ ...post, totals: emptyReachMetrics(), weeks: Array.from({ length: 4 }, emptyReachMetrics), largestExternalSource: { selection: 'largest-for-article-in-whole-window', name: null, views: 0, weeks: [0, 0, 0, 0], unrecognizedTimeViews: 0 } })),
     largestExternalSource: { selection: 'largest-in-whole-window', name: null, views: 0 },
     classification: { recordedProfiles: 0, unversionedViews: 0 },
