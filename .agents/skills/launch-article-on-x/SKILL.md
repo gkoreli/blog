@@ -1,6 +1,6 @@
 ---
 name: launch-article-on-x
-description: Design, render, publish, and measure evidence-led X launches for finished gkoreli.com articles. Use when turning an article or its preamble into a high-quality looping MP4 or GIF, writing a single post or short thread, inspecting the author's recent X baseline, publishing through the signed-in browser when explicitly requested, or iterating on distribution.
+description: Prepare evidence-led X copy and media for finished gkoreli.com articles, and analyze supplied performance evidence. Use for a single post, short thread, looping MP4/GIF or distribution analysis. X publication and account operation stay with the author.
 ---
 
 # Launch Article On X
@@ -14,6 +14,12 @@ Use this skill after the article is shaped, fact-checked, and positioned. It may
 ## Authority and sequence
 
 Use [writing](../writing/SKILL.md) for the article’s form, authorship, evidence, positioning and prose. For social copy, load its [prose and informal voice guidance](../writing/references/prose-and-messages.md#gogas-informal-voice), without importing the article’s research apparatus. This skill owns the distribution artifact, capture quality, publication workflow and post-launch learning loop.
+
+## X account boundary
+
+X work is limited to preparing copy/media and analyzing supplied material. Do not operate Goga's X account: no posting, replies, engagement, deletion, account checks or permalink verification through a signed-in browser or API. Earlier publication authorizations do not authorize further account activity. A future change to this preference requires explicit owner direction.
+
+[X's automation rules](https://help.x.com/en/rules-and-policies/x-automation), checked November 13, 2026, prohibit website scripting and warn of account suspension. Do not use browser automation to publish. The author handles X's composer, publication, security checks and review requests. Do not switch accounts, browsers or APIs to work around restrictions. Public help-page research and preparation from supplied exports remain available. Apply the later account-analysis and learning steps only to supplied exports or captures; do not collect them through the account.
 
 ## Working directory
 
@@ -39,9 +45,9 @@ For broader promotion or adoption requests, follow [requested distribution guida
 
 For promotion or trial recruitment through GitHub issues, follow [Goga's invitation requirement](../writing/references/publication-and-learning.md#owner-direction-github-outreach-needs-an-invitation).
 
-When the user asks what performs on their account, inspect 10–20 recent original posts. Prefer the X analytics export (Premium: Analytics → Content → export CSV, columns Post id, Date, Post text, Post Link, Impressions, Likes, Engagements, Bookmarks, Shares, New follows, Replies, Reposts, Profile visits, Detail Expands, URL Clicks) over reading the profile in a browser; it gives exact counts for every post in the window. Check visible reply and native-quote context when the export does not identify post type: a leading `@` is only a clue, since native quote posts can also start with a mention. The export path is `~/Downloads/account_analytics_content_<from>_<to>.csv`; do not commit it. Separate originals from replies, reposts, and quote posts. Compare posts at similar ages; a six-month total is not comparable to a one-hour total. Record visible impressions, likes, replies, reposts, bookmarks when available, media type, opening move, topic, link placement, and whether the post created qualified conversation. Record the export's acquisition time and any unknown data cutoff; refresh per-post analytics after a delayed export instead of treating file arrival as fresh measurement.
+When the user asks what performs on their account, analyze 10–20 recent original posts from supplied exports or captures. The X analytics export (Premium: Analytics → Content → export CSV, columns Post id, Date, Post text, Post Link, Impressions, Likes, Engagements, Bookmarks, Shares, New follows, Replies, Reposts, Profile visits, Detail Expands, URL Clicks) gives exact counts for every post in the window. Check visible reply and native-quote context when the export does not identify post type: a leading `@` is only a clue, since native quote posts can also start with a mention. The export path is `~/Downloads/account_analytics_content_<from>_<to>.csv`; do not commit it. Separate originals from replies, reposts, and quote posts. Compare posts at similar ages; a six-month total is not comparable to a one-hour total. Record visible impressions, likes, replies, reposts, bookmarks when available, media type, opening move, topic, link placement, and whether the post created qualified conversation. Record the export's acquisition time and any unknown data cutoff; use a fresh author-supplied capture when needed after a delayed export instead of treating file arrival as fresh measurement.
 
-Use one focused current X search when external examples could change the decision. Do not imitate a large account's absolute numbers or infer causation from a handful of posts.
+Use supplied examples or public primary sources when they could change the decision, without accessing the X account. Do not imitate a large account's absolute numbers or infer causation from a handful of posts.
 
 ### 2. Choose one breakout concept
 
@@ -91,27 +97,21 @@ Use a single post when one claim and one visual carry the whole doorway. Use a t
 Thread length and layout conventions:
 
 - Keep each post within the owner's 280-character editorial limit. Use X's weighted text count, treating a URL as 23 characters, and record each length in `copy.md`; a raw string length is not sufficient for every Unicode character. See [X's link-count guidance](https://help.x.com/en/using-x/how-to-post-a-link).
-- Retain the owner's preference for a canonical link in the first and last posts. Attach any produced clip to the first; leave the last without an attachment so the article card can appear. Profile ordering, collapsed-thread presentation, and card rendering are not guaranteed by this layout. Inspect the composer when preparing publication and the status page after publishing before claiming a particular presentation.
+- Retain the owner's preference for a canonical link in the first and last posts. Attach any produced clip to the first; leave the last without an attachment so the article card can appear. Profile ordering, collapsed-thread presentation, and card rendering are not guaranteed by this layout. Use author-supplied composer and status captures before claiming a particular presentation.
 
 Do not repeat the same claim across the thread, delay all value until the link, or use engagement bait. Keep each post independently legible if a reply is shown out of context.
 
-### 5. Preview and publish safely
+### 5. Prepare the author-operated publication
 
 Read [destination rules and public visibility](references/publication-verification.md) before adapting this X workflow to another platform or claiming public availability from an owner-only view.
 
-For a publication request, inspect any final media at phone width and full resolution, and check the composer. Confirm the URL, title, alt text, media order, and thread reply chain as applicable. Use descriptive alt text for meaningful visuals. For spoken or sound-dependent video, attach captions; for a silent visual, make every claim legible without audio. A copy-only delivery records that composer and live checks have not occurred.
+Inspect final media at phone width and full resolution. Check the article URL, title, prepared alt text, media order and intended thread sequence. Include captions for spoken or sound-dependent video; silent visuals must be legible without audio. Preserve exact copy and media for the author to publish manually.
 
-Publishing is an external write:
-
-- If the user asks only for copy, strategy, or a preview, do not publish.
-- If the user explicitly asks to post or publish, that authorizes the scoped X post. Show or preserve the exact final copy and media, then publish through the signed-in browser.
-- Never add follow-up posts, delete, quote-post, or reply beyond the approved scope.
-
-After publishing, reopen the canonical status URL and verify the text, media playback, link, and thread order. Save the URL in `metrics.md`.
+Do not submit posts or run account verification. Record composer, publication and live-status checks as unperformed unless supported by author-supplied evidence. A reported post URL can be saved in `metrics.md` with its verification boundary; do not reopen it through the account. Owner-view evidence does not establish independent public visibility.
 
 ### 6. Learn without laundering noise into a lesson
 
-After publication, read [references/learning-loop.md](references/learning-loop.md). Freeze the post for the planned measurement window unless a factual error, broken link, or broken media requires repair. Capture comparable snapshots near one hour, 24 hours, and seven days when practical. Recording a measurement plan does not schedule a job or establish that captures occurred.
+After an author-reported publication, read [references/learning-loop.md](references/learning-loop.md). Preserve the planned measurement window unless a factual error, broken link or media problem needs correction; propose that correction to the author without editing the account. Analyze supplied snapshots at comparable ages. Recording a measurement plan does not schedule a job or establish that captures occurred.
 
 Classify the next action as one of:
 
@@ -129,5 +129,5 @@ Update this skill only when a pattern recurs across launches or a missing rule c
 - If media was produced: the first frame works without autoplay; motion and the loop are readable; encoded text/colors were inspected; files meet the applicable limits in the media reference.
 - The opening post contains value before the click.
 - Claims, numbers, dates, and link destination were rechecked.
-- Publication occurred only when explicitly requested.
-- If published: the live status was verified and added to the measurement record. Otherwise, the copy's unpublished state and any unperformed preview/media checks are explicit.
+- No X account action was taken. Prepared copy/media and author-reported publication are recorded separately.
+- Evidence boundaries are explicit: unperformed composer/live checks stay unperformed, and owner-view evidence does not establish independent public visibility.

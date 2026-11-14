@@ -4,11 +4,15 @@ User authorization establishes the requested scope. Before carrying this X workf
 
 A signed-out submission page may omit later requirements. When account access is available, inspect the signed-in path before calling a submission ready. Record account creation, required newsletter subscriptions, editorial receipt and actual selection separately; never silently turn an approved newsletter-off choice on to pass a gate. The [Changelog execution receipt](../../../../packages/blog/drafts/social/oss-radar-08-bun-aot/execution-2026-10-28.md) records one such discovery and the owner's explicit changed preference.
 
+## X account operation
+
+The [skill's account boundary](../SKILL.md#x-account-boundary) limits X work to preparation and supplied evidence. The author handles posting and account operation. [X's automation rules](https://help.x.com/en/rules-and-policies/x-automation) explicitly prohibit website scripting; posting cadence or ordinary content does not remove that rule. Do not resume verification or switch interfaces after a restriction.
+
 ## X conversations and useful outreach
 
-Within authorized X distribution work, make the relationship and the useful finding the point:
+When preparing contributions for the author to send manually, make the relationship and the useful finding the point. Use supplied thread context without operating the X account:
 
-- Read substantive incoming replies before finding more destinations. Answer the question or build on the observation; acknowledge useful comments with a like when that is within scope. Do not turn reactions into bulk liking, reciprocal follow requests or unrequested DMs.
+- Read substantive incoming replies before finding more destinations. Answer the question or build on the observation; prepare acknowledgments when useful. Do not perform likes or other account actions. Do not turn reactions into bulk liking, reciprocal follow requests or unrequested DMs.
 - Read the actual thread and relevant product/method before offering advice. Check earlier campaign receipts so another reply does not repeat the same pitch to the same person. Distinguish new-thread outreach from genuine conversation follow-ups in the delivery count.
 - For new relationship-building outreach, follow Goga's preference to avoid bot-like accounts: inspect authored posts, substantive conversation history and evidence of ownership of the linked project, release or implementation. Skip declared bots/agents, repetitive paraphrase replies, generic AI-summary feeds and mass promotion; a bio, badge or follower count alone is insufficient. If the evidence is weak, choose another person instead of filling the count. This is a selection judgment, not proof of human identity or grounds for publicly accusing an excluded account; it does not change how agent reach is counted in analytics.
 - Think about the thread as a code review: understand the problem, constraints and mechanism, then find the missing connection or useful next step. Draw on Goga’s open-source implementations as well as articles; use the [public project index](../../../../docs/reference/owned-open-source-projects.md) to find a relevant solution and recheck its current source. An implementation idea, recommendation, example or question can be the contribution. A thread need not contain an error, and a tool recommendation should fit the actual need.
@@ -38,7 +42,7 @@ The [November 6 source review](../../../../packages/blog/drafts/social/ai-fetche
 
 ## Human-operated destinations
 
-[Hacker News's submission guidelines](https://news.ycombinator.com/newsguidelines.html) call for human-written submission text and prohibit automated posting. For HN, use an owner-operated submission path consistent with those rules rather than extending this skill's automated X publication route. Do not create accounts, delete/repost, solicit votes or contact moderators as an unrequested workaround. Keep proposed actions separate from authorized ones.
+[Hacker News's submission guidelines](https://news.ycombinator.com/newsguidelines.html) call for human-written submission text and prohibit automated posting. For HN, use an owner-operated submission path consistent with those rules without automating the destination. Do not create accounts, delete/repost, solicit votes or contact moderators as an unrequested workaround. Keep proposed actions separate from authorized ones.
 
 ## Verify the claimed audience
 

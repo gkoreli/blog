@@ -10,4 +10,4 @@ Reopening that permalink redirected to `x.com/account/access`, showing a securit
 
 ## Measurement boundary
 
-No impressions, clicks, reader outcomes or growth measurements are claimed. An owner-timeline result establishes acceptance into that view, not ordinary public visibility. Recovery and a fresh permalink check are the next bounded action; this record does not schedule monitoring or authorize further posts.
+No impressions, clicks, reader outcomes or growth measurements are claimed. An owner-timeline result establishes acceptance into that view, not ordinary public visibility. Further X account work is canceled. Do not resume recovery, verification or posting. The existing owner-view evidence remains historical; this record does not schedule monitoring.
