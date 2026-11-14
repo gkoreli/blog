@@ -4,7 +4,7 @@ import {
 } from '@gkoreli/analytics/agent-access-contract';
 import { SIGNATURE_BASIS_LABELS } from '@gkoreli/analytics/signature-basis';
 import { dataFactsHtml, metricTileHtml } from './data-display.js';
-import { timePresentation } from '@gkoreli/time';
+import { addCalendarDays, timePresentation } from '@gkoreli/time';
 
 const number = (value: number) => value.toLocaleString('en-US');
 const ENTITIES: Readonly<Record<string, string>> = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' };
@@ -32,7 +32,7 @@ export function agentAccessViewHtml(report: AgentAccessReport, selection: AgentA
   const evidenceViews = evidence.reduce((sum, row) => sum + row.metrics.views, 0);
   const articleViews = articles.reduce((sum, row) => sum + row.metrics.views, 0);
   const markdown = selected.byFormat.find(row => row.format === 'markdown')?.metrics.views ?? 0;
-  const end = new Date(Date.parse(report.scope.endExclusive) - 86_400_000).toISOString().slice(0, 10);
+  const end = addCalendarDays(report.scope.endExclusive, -1);
   const period = `${time.calendarDate(report.scope.start)} – ${time.calendarDate(end)} · UTC reporting days`;
   const roleRows = selected.byRole.map(row => metricsRow(AGENT_ROLE_LABELS[row.kind], row.metrics,
     `<button type="button" data-agent-kind="${row.kind}" aria-pressed="${selection.kind === row.kind}">${escape(AGENT_ROLE_LABELS[row.kind])}</button>`)).join('');
@@ -42,8 +42,8 @@ export function agentAccessViewHtml(report: AgentAccessReport, selection: AgentA
   const clientRows = selected.byClient.map(row => metricsRow(agentClientLabel(row.client), row.metrics,
     `<button type="button" data-agent-client="${escape(row.client)}">${escape(agentClientLabel(row.client))}</button>`)).join('');
   const weeks = selected.total.weeks.map((views, index) => {
-    const start = new Date(Date.parse(report.scope.start) + index * 7 * 86_400_000).toISOString().slice(0, 10);
-    const end = new Date(Date.parse(start) + 6 * 86_400_000).toISOString().slice(0, 10);
+    const start = addCalendarDays(report.scope.start, index * 7);
+    const end = addCalendarDays(start, 6);
     const previous = selected.total.weeks[index - 1];
     const difference = previous === undefined ? '—' : `${views >= previous ? '+' : '−'}${number(Math.abs(views - previous))}`;
     return `<tr><th scope="row">${escape(time.calendarDate(start))} – ${escape(time.calendarDate(end))}</th><td>${number(views)}</td><td>${difference}</td></tr>`;

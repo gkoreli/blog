@@ -4,13 +4,13 @@ import { isSignatureBasis, type SignatureBasis } from './signature-basis.js';
 import { isReportedVerifierProfile, type ReportedVerifierProfile } from './verifier-profile.js';
 import { reachDay, reachMeasurementStamp } from './article-reach-contract.js';
 import { isPublicSignerName, type PublicSignerName } from './signers.js';
+import { addCalendarDays, calendarDaysBetween, isUtcInstant, utcDateKey } from '@gkoreli/time';
 
 export { AGENT_ACCESS_KINDS, AGENT_ROLE_LABELS, isAgentAccessKind } from './agent-roles.js';
 export type { AgentAccessKind } from './agent-roles.js';
 export const AGENT_ACCESS_VERSION = '2026-11-14.1';
 export const AGENT_RESOURCE_LIMIT = 512;
 export const AGENT_ACCESS_ROW_LIMIT = 50_000;
-const DAY = 86_400_000;
 const DAY_MASK = 2 ** 28 - 1;
 
 export interface AgentAccessResource {
@@ -91,7 +91,6 @@ function record(value: unknown): value is Record<string, unknown> { return value
 function keys(value: Record<string, unknown>, names: readonly string[]): boolean { return Object.keys(value).length === names.length && names.every(name => Object.hasOwn(value, name)); }
 function count(value: unknown): value is number { return typeof value === 'number' && Number.isSafeInteger(value) && value >= 0; }
 function text(value: unknown, maximum: number): value is string { return typeof value === 'string' && value.trim().length > 0 && value.length <= maximum; }
-function instant(value: unknown): value is string { return typeof value === 'string' && /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z$/.test(value) && Number.isFinite(Date.parse(value)) && new Date(value).toISOString() === value; }
 function hash(value: unknown): value is string { return typeof value === 'string' && /^[a-f0-9]{64}$/.test(value); }
 export function isAgentAccessClient(value: unknown): value is AgentAccessClient {
   return value === 'not-recorded' || value === 'unrecognized' || typeof value === 'string' && clientDefinition(value) !== null;
@@ -144,8 +143,8 @@ export function validAgentAccessCatalogue(value: unknown): value is AgentAccessR
 }
 export function agentAccessWindow(now: Date): { start: string; endExclusive: string; calculatedAt: string } {
   if (!Number.isFinite(now.getTime())) throw new Error('Invalid agent access clock');
-  const endExclusive = now.toISOString().slice(0, 10);
-  return { start: new Date(Date.parse(endExclusive) - 28 * DAY).toISOString().slice(0, 10), endExclusive, calculatedAt: now.toISOString() };
+  const endExclusive = utcDateKey(now);
+  return { start: addCalendarDays(endExclusive, -28), endExclusive, calculatedAt: now.toISOString() };
 }
 export async function agentAccessCatalogueHash(resources: AgentAccessResource[]): Promise<string> {
   if (!validAgentAccessCatalogue(resources)) throw new Error('Invalid agent access resource catalogue');
@@ -172,8 +171,8 @@ function checkedAgentAccessReport(value: unknown): value is AgentAccessReport {
     || value.version !== AGENT_ACCESS_VERSION || !validAgentAccessCatalogue(value.resources) || !record(value.scope) || !record(value.accounting)) return false;
   const scope = value.scope, accounting = value.accounting;
   if (!keys(scope, ['start', 'endExclusive', 'calculatedAt', 'timeZone', 'days', 'cohort', 'catalogueHash', 'registryProfile', 'referralPolicyHash'])
-    || !reachDay(scope.start) || !reachDay(scope.endExclusive) || Date.parse(scope.endExclusive) - Date.parse(scope.start) !== 28 * DAY
-    || !instant(scope.calculatedAt) || scope.calculatedAt.slice(0, 10) !== scope.endExclusive
+    || !reachDay(scope.start) || !reachDay(scope.endExclusive) || calendarDaysBetween(scope.start, scope.endExclusive) !== 28
+    || !isUtcInstant(scope.calculatedAt) || new Date(scope.calculatedAt).toISOString() !== scope.calculatedAt || scope.calculatedAt.slice(0, 10) !== scope.endExclusive
     || scope.timeZone !== 'UTC' || scope.days !== 28 || scope.cohort !== 'stored-ai-roles-and-signed-fallback'
     || !hash(scope.catalogueHash) || scope.registryProfile !== CLIENT_REGISTRY_PROFILE || !hash(scope.referralPolicyHash)
     || !keys(accounting, ['windowViews', 'ownerExcludedViews', 'referralExcludedViews', 'includedViews', 'otherViews'])
