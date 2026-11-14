@@ -103,6 +103,8 @@ The interface is server-rendered and works without client JavaScript. The owned 
 
 Desktop browser inspection found no horizontal page overflow at 1,280 pixels. A requested 390-pixel browser override continued to render at 1,280, including in a fresh tab; it was reset. There is **no mobile-layout acceptance claim** from that attempt. Full repository type checking and 457 blog tests passed, as did ten focused reader-search tests. No search route was deployed to the public site, and the manuscript remains a separate unpublished engineering draft.
 
+After integrating the already accepted remote analytics changes, type checking and the then-current 451 blog tests passed again. A second isolated production build still covered all 46 posts and all 4,550 extracted blocks. The suite count changed with those remote changes; the two runs are not added together. [Delivery check](delivery-check.json).
+
 ## What this supports next
 
 The prototype is useful enough for further source inspection: several remembered descriptions found the right article and real text, with working live paragraph links. Keywords remain competitive, and exact-excerpt selection and answerability remain unresolved. Keep the comparison controls available; a semantic result should not replace inspecting the source.

@@ -1,0 +1,35 @@
+{
+  "checkedAt": "2026-11-14T20:09:58.501Z",
+  "integratedSourceCommit": "ceb0099b91401ada337ed74bafbbb8858b84c5a4",
+  "searchImplementationCommit": "46088544",
+  "originalAcceptance": "acceptance.json",
+  "boundary": "Delivery integration with already accepted remote analytics changes. No rerun or replacement of relevance measurements.",
+  "offlineDependencyLinking": {
+    "cachedPackagesAdded": 2,
+    "networkDownloads": 0,
+    "installScriptsRun": false
+  },
+  "checks": {
+    "typecheck": true,
+    "blogTests": {
+      "passed": 451,
+      "failed": 0
+    },
+    "isolatedProductionBuild": {
+      "passed": true,
+      "posts": 46,
+      "environmentFilesCopied": false
+    },
+    "sourceBlockComparison": {
+      "blocks": 4550,
+      "missing": 0
+    }
+  },
+  "evidenceHashes": {
+    "integrated-install.log": "827136791e898a6421893ca32ae98699f3a2e6b9860774e51f381791f5f4719d",
+    "integrated-typecheck.log": "9d620c6536be42bc0a33cbd7649e44c6622234b9074d372a78ddf88dd75beea2",
+    "integrated-blog-tests.log": "1d6044abdcbd6bf9f464f98d0657d4602b85a223c0514bff33652845fba3efef",
+    "integrated-build.log": "d3f27fa1cfbab73329076d8d80a7cad347877f18b12e06818ad5da4195ecebb5",
+    "integrated-rendering.json": "c7f6818594f059fb1eeb9d101c8d3bc5ea04123b5152fb0832061951e2971518"
+  }
+}
