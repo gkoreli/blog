@@ -1,7 +1,7 @@
 import { html, raw } from '@nisli/core';
 import { metricTileHtml } from '../lib/data-display.js';
 import { dataNote } from '../templates/data-note.js';
-import { TRAFFIC_LABELS, TRAFFIC_GROUPS } from '../lib/stats-presentation.js';
+import { reportFilters } from '../templates/report-filters.js';
 
 export const statsHead = `<link rel="stylesheet" href="/stats.css">
   <script type="module" src="/stats.js"></script>`;
@@ -18,11 +18,7 @@ export function statsPage(pages: readonly { path: string; title: string }[] = []
     <nav class="stats-header-links" aria-label="Related reports"><a href="/stats/readership">Article reach</a><a id="stats-json-link" href="/api/stats?range=30d&amp;traffic=all">Report JSON</a></nav>
   </header>
   <nav class="stats-navigation" aria-label="Stats sections"><a href="#stats-activity" aria-current="location">Overview</a><a href="#stats-content">Pages</a><a href="#stats-audience">Traffic</a><a href="#stats-evidence">Evidence</a><a href="#stats-methodology">Method</a></nav>
-  <div class="stats-controls" aria-label="Stats filters">
-    <div class="stats-traffic-control"><label for="stats-traffic">Traffic</label><select id="stats-traffic" name="traffic" aria-describedby="stats-traffic-help"><option value="all">${TRAFFIC_LABELS.all}</option>${TRAFFIC_GROUPS.map(group => html`<option value=${group}>${TRAFFIC_LABELS[group]}</option>`)}</select></div>
-    <fieldset class="stats-filter" data-filter-group="period"><legend>Period</legend><div class="stats-pills"><button type="button" data-days="7" aria-pressed="false">7 days</button><button type="button" data-days="30" aria-pressed="true">30 days</button><button type="button" data-days="90" aria-pressed="false">90 days</button><button type="button" data-days="0" aria-pressed="false">All time</button></div></fieldset>
-  </div>
-  <p class="stats-filter-note" id="stats-traffic-help">Categories describe request signals, not verified people.</p>
+  ${reportFilters('stats')}
   <p class="stats-status" id="stats-status" role="status" aria-atomic="true">Loading stats…</p>
   <div class="stats-loading" id="stats-loading" aria-hidden="true"><div class="stats-loading-metrics"><div class="skeleton"></div><div class="skeleton"></div></div><div class="skeleton stats-loading-chart"></div></div>
   <noscript><style>.stats-loading,.stats-status,#stats-dashboard{display:none}</style><p>JavaScript loads this interactive report. <a href="/api/stats?range=30d&amp;traffic=all">Read the 30-day report as JSON</a>, or use the measurement notes below.</p></noscript>

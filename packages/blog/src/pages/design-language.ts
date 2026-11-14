@@ -2,6 +2,7 @@ import { html, raw } from '@nisli/core';
 import { reportCheckSectionHtml } from '../lib/site-audit-report.js';
 import { dataFactsHtml, groupedEvidenceTableHtml, metricTileHtml, rankedRowHtml } from '../lib/data-display.js';
 import { dataNote } from '../templates/data-note.js';
+import { reportFilters } from '../templates/report-filters.js';
 import { homeToolsInvitation } from './home-tools-invitation.js';
 import { navigationChoices } from '../templates/navigation-choice.js';
 import { toolCatalogue } from './tool-catalogue.js';
@@ -146,6 +147,9 @@ export function designLanguagePage() {
     ] }))}></div>`}
   </div>
   <section id="data-patterns">
+  <h3 class="dl-pattern-title" id="report-filters">Visible report filters</h3>
+  <p class="dl-body-note">Keep a short set of choices visible. Use native radio groups, a quiet selected surface and 44px hit areas around compact labels. Traffic and period stay independent. Agents includes assistants and signed clients; Automation includes legacy rules. The full category names and evidence boundaries belong with the report results. These controls illustrate selection without fetching data.</p>
+  ${reportFilters('dl-example')}
   <h3 class="dl-pattern-title">Metrics with a definition</h3>
   <p class="dl-body-note">Keep the label, number and unit definition together. Use two compact tiles for related totals, with tabular numerals and a short explanation. Show the selected scope and calculation time beside the report. These figures are illustrative.</p>
   <div class="data-metrics" html:inner=${raw([

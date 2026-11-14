@@ -131,13 +131,14 @@ function pushState(state: ViewState): void {
 }
 
 function updateControls(state: ViewState): void {
-  const traffic = document.getElementById('stats-traffic');
-  if (traffic instanceof HTMLSelectElement) traffic.value = state.traffic;
+  document.querySelectorAll<HTMLInputElement>('#stats-controls [data-traffic]').forEach(input => {
+    input.checked = input.value === state.traffic;
+  });
   const json = document.getElementById('stats-json-link');
   if (json instanceof HTMLAnchorElement) json.href = statsApiHref(state);
   const selectedDays = state.range === 'all' ? '0' : state.range.replace('d', '');
-  document.querySelectorAll<HTMLButtonElement>('[data-days]').forEach(button => {
-    button.setAttribute('aria-pressed', String(button.dataset.days === selectedDays));
+  document.querySelectorAll<HTMLInputElement>('#stats-controls [data-days]').forEach(input => {
+    input.checked = input.dataset.days === selectedDays;
   });
 }
 
@@ -881,14 +882,11 @@ function changeSelection(nextTraffic: TrafficFilter, range: RangeFilter): void {
   void load(state);
 }
 
-document.getElementById('stats-traffic')?.addEventListener('change', event => {
-  if (event.target instanceof HTMLSelectElement) changeSelection(parseTraffic(event.target.value, currentState.traffic), currentState.range);
-});
-document.querySelector('.stats-controls')?.addEventListener('click', event => {
-  if (!(event.target instanceof Element)) return;
-  const button = event.target.closest('button');
-  if (!(button instanceof HTMLButtonElement) || button.dataset.days === undefined) return;
-  changeSelection(currentState.traffic, parseRange(button.dataset.days === '0' ? 'all' : `${button.dataset.days}d`));
+document.getElementById('stats-controls')?.addEventListener('change', event => {
+  const input = event.target;
+  if (!(input instanceof HTMLInputElement) || input.type !== 'radio') return;
+  if (input.dataset.traffic !== undefined) changeSelection(parseTraffic(input.value, currentState.traffic), currentState.range);
+  else if (input.dataset.days !== undefined) changeSelection(currentState.traffic, parseRange(input.value));
 });
 
 element('stats-scope').addEventListener('click', event => {

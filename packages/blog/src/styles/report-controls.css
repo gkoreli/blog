@@ -1,0 +1,21 @@
+/* Compact choices with native radio behavior and a larger, quiet hit area. */
+.report-controls { display: flex; flex-wrap: wrap; align-items: start; gap: 8px 28px; margin: 0 0 14px; }
+.report-filter { min-width: 0; margin: 0; padding: 0; border: 0; }
+.report-controls .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
+.report-filter legend { padding: 0; margin: 0 0 2px 10px; color: var(--color-text-muted); font: 12px/1.5 var(--font-mono); }
+.report-options { display: flex; flex-wrap: wrap; gap: 0 2px; }
+.report-option { position: relative; display: inline-flex; align-items: center; min-height: 44px; margin: 0; cursor: pointer; }
+.report-option input { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.report-option > span { display: inline-flex; align-items: center; justify-content: center; min-height: 32px; padding: 5px 10px; border: 1px solid transparent; border-radius: 5px; color: var(--color-text-muted); font: 13px/1.5 var(--font-sans); white-space: nowrap; }
+.report-option:hover > span { color: var(--color-text); background: var(--color-surface); }
+.report-option input:checked + span { color: var(--color-link); background: color-mix(in srgb,var(--color-link) 8%,transparent); border-color: color-mix(in srgb,var(--color-link) 28%,transparent); }
+.report-option input:focus-visible + span { outline: 2px solid var(--color-link); outline-offset: 2px; }
+@media (max-width: 600px) {
+  .report-controls { gap: 8px; }
+  .report-filter { flex: 1 1 100%; }
+  .report-option > span { padding-inline: 8px; }
+  .report-filter legend { margin-left: 8px; }
+}
+@media (max-width: 420px) {
+  .report-filter-traffic .report-options { display: grid; grid-template-columns: repeat(3,max-content); }
+}
