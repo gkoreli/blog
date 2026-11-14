@@ -8,6 +8,8 @@ This is a capability review and a set of proposed offers. It does not accept new
 
 The [normalized local evidence](source-checks.json) records 433 passing analytics tests, 41 passing site-audit tests, one passing research-footprint integration test, ten executed capability probes, and static catalogue coverage. The probes used a transport-denying guard; its counter remained zero. These results establish local behavior under the recorded inputs, not production health, detection accuracy, user value or adoption.
 
+The [November 13 analytics landscape comparison](analytics-industry-comparison-2026-11-13.md) extends this review against six popular open-source projects, GA4 and Cloudflare AI Crawl Control. It recommends portable reporting/installation, followed by publisher campaigns/outcomes and a stable evidence interface. It preserves the distinction between current capability, documented competitor features and proposed implementation; no adoption or comparative accuracy trial was performed.
+
 **What is already present**
 
 | Capability | Inspected implementation | Present boundary | Offer it could support |
