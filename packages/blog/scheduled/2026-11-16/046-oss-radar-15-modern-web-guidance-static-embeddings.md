@@ -120,6 +120,28 @@ When a visitor searches, the loop produces the query vector. Compare it with the
 
 The three query-model files alone total about **7.9 MB before compression** here. A browser implementation downloads them; a server-side implementation can keep that model download on the server. The small loop is one component of the choice, alongside index preparation, delivery cost and measured relevance on the blog’s own questions.
 
+## A separate full-article test with a local model
+
+For general passage search, I then built a second [local comparison](https://github.com/gkoreli/blog/tree/main/packages/blog/drafts/research/modern-web-guidance/passage-search) over all 46 article bodies: **866 passages**, with saved vectors, source text and article links. This one uses **E5-small-v2 for both passages and queries**. It runs a full transformer locally through Transformers.js; it does not use MWG's word table or reproduce its seven-line runtime. The compatible Gemini document index remains unbuilt.
+
+The model receives `passage: ` before article text and `query: ` before a search. Mean pooling and normalization produce compatible 384-coordinate vectors, following [E5's documented retrieval recipe](https://huggingface.co/intfloat/e5-small-v2). I checked every input against the token limit before inference. The browser interface retrieves passages rather than generating an answer, and lets me compare BM25 keywords, semantic ranking and their rank fusion.
+
+Before ranking, I froze **36 source-aware, agent-authored questions** and selected answer passages: a short query and a natural-language question for each of 18 article topics. These are not visitor logs or independent human judgments. The primary metric asks whether a preselected answer passage appears in the first three results.
+
+| Full-article method | Known answer passage in first 3 |
+| --- | ---: |
+| BM25 keywords | **32/36** |
+| Local E5 semantic ranking | **27/36** |
+| Hybrid | **33/36** |
+
+Hybrid gained three cases and lost two against keywords. A question about prerequisite downloads and offline file-task duration found the Hob introduction first with hybrid; keywords led with an unrelated prompt-cache passage. In the other direction, keywords put the llms.txt citation-evidence passage first, while semantic search led with OpenScholar material and hybrid moved the selected answer to fourth.
+
+The labels are incomplete. For a short prompt-cache query, all three methods found useful explanations in the right article but missed the selected introduction. I retained that known-answer miss and documented the alternative passages separately. Three fresh processes produced identical rankings; repeating the same questions does not enlarge the relevance sample. [All results and disagreement review](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/modern-web-guidance/passage-search/report.md).
+
+The four local model files totaled **34.73 MB**, and document vectors another **1.33 MB**, excluding text and runtime dependencies. Building the index took **25.49 seconds** on the M5. Warm query encoding had a **2.97 ms** median, separate from startup, ranking and browser overhead. These are transformer measurements, not another timing of MWG's loop.
+
+All three methods also returned results for all eight expected-no-answer prompts. A sourdough question produced unrelated passages; similarity did not establish answerability. This experiment makes general passage search usable locally, but supports keeping keyword search as the baseline. Hybrid's one-case net gain on this selected set does not establish a general improvement, and no search feature has been deployed to the blog.
+
 ## The same loop needs the right learned rows
 
 To test the table’s contribution, I shuffled assignments between words and complete vector/scale rows with a fixed seed. The accumulation algorithm and row distribution stayed intact; words received other words’ representations.
@@ -158,3 +180,4 @@ For a bounded offline documentation catalog, this design offers a concrete optio
 | [Model2Vec](https://github.com/MinishLab/model2vec) | Background on distilling static embeddings |
 | [Public benchmark documentation](https://github.com/GoogleChrome/modern-web-guidance-src/blob/596acbc75a330508591b07cd9e198b219341f619/src/rag/benchmarks/README.md) | Upstream datasets, relevance judgments and metric definitions |
 | [Local reproduction](https://github.com/gkoreli/blog/tree/main/packages/blog/drafts/research/modern-web-guidance/embedding), November 13, 2026 | Frozen protocol, agent-assisted scripts, exact comparisons, measurements, full replay rows and limits |
+| [Separate local E5 passage comparison](https://github.com/gkoreli/blog/tree/main/packages/blog/drafts/research/modern-web-guidance/passage-search), November 14, 2026 | Full-article index, fixed questions and labels, keyword/semantic/hybrid results, local interface and limits; not an MWG transfer benchmark |

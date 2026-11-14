@@ -140,5 +140,25 @@
     "name": "Weekly OSS Radar publication",
     "state": "active",
     "schedule": "Monday 08:00 America/Los_Angeles"
+  },
+  "fullArticleExtension": {
+    "date": "2026-11-14",
+    "queueSha256": "4900cd13fbcc00fbbaf45a04acc3ce66de1b3d502ceed638ac1520332c674f44",
+    "previousAcceptedQueueSha256": "cf75e38316d0eeeb8cf14fcd22ef9846d5628c9e4fdc74404dcd11d7b51e6e08",
+    "sourceAndIsolatedPromotedBytesMatch": true,
+    "generatedPosts": 47,
+    "matchingH1": true,
+    "tables": 7,
+    "newResultClaimsInHtmlAndMarkdown": true,
+    "canonicalAndDiscovery": true,
+    "articleHtmlSha256": "aae38939957e7730056e7b780f12ebce68be7411865487965ca14dd779ace72e",
+    "markdownSha256": "057f81a2e833d4cf15d76ec0d4494ce2d485f58ccdc70ef02404863358ea9509",
+    "workspaceTypecheck": "pass",
+    "publicationCheck": "pass",
+    "mainMarkdownValidationPosts": 35,
+    "build": "isolated archive snapshot with existing locked dependencies; no main dist touched",
+    "clock": "Simulated 2026-11-16 08:00 Pacific for isolated promotion only",
+    "hostedCheckForRevisedBytes": "not run; earlier hosted receipt identifies earlier queue bytes",
+    "productionPublicationObserved": false
   }
 }

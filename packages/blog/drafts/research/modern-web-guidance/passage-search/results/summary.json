@@ -1,0 +1,1023 @@
+{
+  "inputFreezeCommit": "ebdc9f38",
+  "primaryProcess": 1,
+  "model": {
+    "id": "Xenova/e5-small-v2",
+    "revision": "02af79985278377e65c724a76275707cb0333c70",
+    "runtime": "@huggingface/transformers@3.8.1",
+    "dtype": "q8",
+    "dimensions": 384,
+    "pooling": "mean",
+    "normalize": true,
+    "queryPrefix": "query: ",
+    "documentPrefix": "passage: ",
+    "device": "cpu",
+    "intraOpThreads": 2,
+    "interOpThreads": 1,
+    "maximumTokens": 480,
+    "packingTargetTokens": 360
+  },
+  "build": {
+    "capturedAt": "2026-11-14T16:43:53.984Z",
+    "model": {
+      "id": "Xenova/e5-small-v2",
+      "revision": "02af79985278377e65c724a76275707cb0333c70",
+      "runtime": "@huggingface/transformers@3.8.1",
+      "dtype": "q8",
+      "dimensions": 384,
+      "pooling": "mean",
+      "normalize": true,
+      "queryPrefix": "query: ",
+      "documentPrefix": "passage: ",
+      "device": "cpu",
+      "intraOpThreads": 2,
+      "interOpThreads": 1,
+      "maximumTokens": 480,
+      "packingTargetTokens": 360
+    },
+    "passagesSha256": "4c89fe3d04c68aacf5edbf723d98b2aad571da1ad84b4baef15be4dd8389a987",
+    "vectorSha256": "3f50fbf9d25877d841b6b8e0090bd218fd0fd6833b238062c1145510c808799d",
+    "vectorBytes": 1330176,
+    "passages": 866,
+    "dimensions": 384,
+    "modelInitMs": 155.598708,
+    "totalBuildMs": 25491.603333,
+    "batchSize": 8,
+    "cachedBatches": 0,
+    "batches": [
+      {
+        "offset": 0,
+        "count": 8,
+        "elapsedMs": 247.661,
+        "cacheKey": "2a66604adafed664b1785c12eb6d6bf8e5f9d4aa2fd0d4d1713317416e6b4d46"
+      },
+      {
+        "offset": 8,
+        "count": 8,
+        "elapsedMs": 256.83179099999995,
+        "cacheKey": "d57d718e571c05464c182bde634b656ffd7f98cb59e978f84e1fbe781e319e95"
+      },
+      {
+        "offset": 16,
+        "count": 8,
+        "elapsedMs": 240.98033399999997,
+        "cacheKey": "bf74016986e3fc94c28dd073a9016c5ead02ab262db266b34ca2bb0562aa97f4"
+      },
+      {
+        "offset": 24,
+        "count": 8,
+        "elapsedMs": 201.2465840000001,
+        "cacheKey": "677e024c5df8af2e6d6ed2021bca548ddb742638a1759c396733eda77ab53c90"
+      },
+      {
+        "offset": 32,
+        "count": 8,
+        "elapsedMs": 244.0016250000001,
+        "cacheKey": "553edc733c1a902a191af078b34768ba3d925b9110906343465261b58ca5deef"
+      },
+      {
+        "offset": 40,
+        "count": 8,
+        "elapsedMs": 245.07283400000006,
+        "cacheKey": "7e7572f359c8ac560e5561175ef00179d6f8f9dcb65f752c4738823a8e35692c"
+      },
+      {
+        "offset": 48,
+        "count": 8,
+        "elapsedMs": 238.89274999999998,
+        "cacheKey": "8604de9952ad8c78f79ad9e22604f085bf6457562cba6e2d02bef256eca496e4"
+      },
+      {
+        "offset": 56,
+        "count": 8,
+        "elapsedMs": 236.6279579999998,
+        "cacheKey": "45b9b424f906559a9d4e762ca3187028620cc6adab22c5e7cc08c84632b7b97c"
+      },
+      {
+        "offset": 64,
+        "count": 8,
+        "elapsedMs": 233.00329199999987,
+        "cacheKey": "b0c62c82ffce66db22b7c79afafcb377aacc3182f291410fe7a8575436ab412e"
+      },
+      {
+        "offset": 72,
+        "count": 8,
+        "elapsedMs": 234.64075000000003,
+        "cacheKey": "91b4b41ac8a758d01fdbedf3acb7a611fd5956df0e00c34a4d6c1bebbe403d12"
+      },
+      {
+        "offset": 80,
+        "count": 8,
+        "elapsedMs": 219.48966699999983,
+        "cacheKey": "89797f429b92bd83f377f91d283ba9fd00f5f07a1493120c5b36eb582669d58f"
+      },
+      {
+        "offset": 88,
+        "count": 8,
+        "elapsedMs": 213.68762500000003,
+        "cacheKey": "efa8b5f1c8981f3bff0994256a5ddd7bedff17f216ec8e1a3556a8264ff496aa"
+      },
+      {
+        "offset": 96,
+        "count": 8,
+        "elapsedMs": 232.58745899999985,
+        "cacheKey": "02cb9ab289d90d92657a0f4c3856c3827b265203dc159c8271cada52f1ed7f7d"
+      },
+      {
+        "offset": 104,
+        "count": 8,
+        "elapsedMs": 235.73199999999997,
+        "cacheKey": "87daf37f98bf7782a49c7f2c53d72f2d1ee9e57922e3154c28e1869d11269440"
+      },
+      {
+        "offset": 112,
+        "count": 8,
+        "elapsedMs": 237.7942919999996,
+        "cacheKey": "bd602286bdac14bdd9b9c7602e059958ec0bdaf1c2e8e7502364e0a41c286ac5"
+      },
+      {
+        "offset": 120,
+        "count": 8,
+        "elapsedMs": 238.70150000000012,
+        "cacheKey": "3cd325ac6a1eba1baed82550bb323a18d3e2522f50d07b61d716274b0a9f3fe5"
+      },
+      {
+        "offset": 128,
+        "count": 8,
+        "elapsedMs": 232.85362499999974,
+        "cacheKey": "b1c0ff113344c3a1a2d5f1444169677dba73e8447a448d1ce4e7e17f5b8d1a15"
+      },
+      {
+        "offset": 136,
+        "count": 8,
+        "elapsedMs": 276.9865,
+        "cacheKey": "073e328c91b175c4bc6b5ed6768ba30d46949e2c6e162f319b892a78a16b0360"
+      },
+      {
+        "offset": 144,
+        "count": 8,
+        "elapsedMs": 300.5912499999995,
+        "cacheKey": "2e5fc164793d2355fa849fb6864fae59f242d3ec9e41c7c72bbb64c39d7d6bcd"
+      },
+      {
+        "offset": 152,
+        "count": 8,
+        "elapsedMs": 288.2185420000005,
+        "cacheKey": "36c3654fcf60d0aba53f54f02579558d3b5f4f7d77a0f5915ebc78757af1f46f"
+      },
+      {
+        "offset": 160,
+        "count": 8,
+        "elapsedMs": 266.53799999999956,
+        "cacheKey": "e757d6acd274e8bbd085457271c42f52e76eabc765c1c61b0e2825e030761e7c"
+      },
+      {
+        "offset": 168,
+        "count": 8,
+        "elapsedMs": 267.33287500000006,
+        "cacheKey": "0a1c5ef7efdf081668d2660aeab3cb679dabd0407246f33ab2edd3cc87c1dac3"
+      },
+      {
+        "offset": 176,
+        "count": 8,
+        "elapsedMs": 281.6208750000005,
+        "cacheKey": "7830987027b184245b9facadf34924a9e291ceb7b569fb2d2148721e968b4f53"
+      },
+      {
+        "offset": 184,
+        "count": 8,
+        "elapsedMs": 252.4414999999999,
+        "cacheKey": "372595eb0d3dc590a12708b2f7b99b751789265b2cb15d0f4516382b1e6c0fde"
+      },
+      {
+        "offset": 192,
+        "count": 8,
+        "elapsedMs": 336.8135000000002,
+        "cacheKey": "b8d4934a98f0f339423aeec8e4f9f8de3e5dc4da1f59d80af764e11e651b4591"
+      },
+      {
+        "offset": 200,
+        "count": 8,
+        "elapsedMs": 253.6922080000004,
+        "cacheKey": "dc7f63d16c1838af343a11b6b253b2df31b449acee7fedd82345b31d8a57b344"
+      },
+      {
+        "offset": 208,
+        "count": 8,
+        "elapsedMs": 264.361167,
+        "cacheKey": "f70435a71788b14c17fa268a3a8f30378647d382027b8205a2fe52dc2dc13d79"
+      },
+      {
+        "offset": 216,
+        "count": 8,
+        "elapsedMs": 265.53620799999953,
+        "cacheKey": "483642139b13e5c578032f38c2ace90d9cfc99b9545fba06bf66f5e0e50d9110"
+      },
+      {
+        "offset": 224,
+        "count": 8,
+        "elapsedMs": 267.03812500000004,
+        "cacheKey": "1e8eb2b2e85a81edc5a5064313f534d77b686e8196cff87e77e7991de58c2907"
+      },
+      {
+        "offset": 232,
+        "count": 8,
+        "elapsedMs": 244.481084,
+        "cacheKey": "a48491bdd967636c044442513cac90061646995bfdf5a8d770db3a41731af95d"
+      },
+      {
+        "offset": 240,
+        "count": 8,
+        "elapsedMs": 244.2922920000001,
+        "cacheKey": "5eb657d79b94d448b9048d5baf7ed7926321b13ab92a2a612dfa76e43b84df66"
+      },
+      {
+        "offset": 248,
+        "count": 8,
+        "elapsedMs": 222.00237499999912,
+        "cacheKey": "691b0401ec0d2c00d5ea7121cd055ca7a870d00701f4da1b61ceb982fcf388f9"
+      },
+      {
+        "offset": 256,
+        "count": 8,
+        "elapsedMs": 250.60179199999948,
+        "cacheKey": "d4a9f74a1861ddb63ffd54915bbd9160c7e38534a72ef2c4477237ae462821d5"
+      },
+      {
+        "offset": 264,
+        "count": 8,
+        "elapsedMs": 168.55462499999885,
+        "cacheKey": "d3c65cecd731a563d676e15995590c90e42704a4bb230396b5def5bf17eab7b3"
+      },
+      {
+        "offset": 272,
+        "count": 8,
+        "elapsedMs": 227.48400000000038,
+        "cacheKey": "d342e14472b6899d8f40857e25cc4fad3eced2c47a377aef2c120d9471dca82e"
+      },
+      {
+        "offset": 280,
+        "count": 8,
+        "elapsedMs": 238.01974999999948,
+        "cacheKey": "d78879471fd59f578b9b8ea721e1e83ca4904fed8a05e62980efd42902b15b3b"
+      },
+      {
+        "offset": 288,
+        "count": 8,
+        "elapsedMs": 225.7166670000006,
+        "cacheKey": "c26d00eb0d995b0e67fbc9295d9cf929bd553ffe3331c85ebb07f5f88323ad3b"
+      },
+      {
+        "offset": 296,
+        "count": 8,
+        "elapsedMs": 243.33858299999883,
+        "cacheKey": "83e3e148ccd9224fa265bc6ef0336bf04707ad3fc71e15b18b7658a2ae450dc0"
+      },
+      {
+        "offset": 304,
+        "count": 8,
+        "elapsedMs": 225.63395800000035,
+        "cacheKey": "03198b321c8df3ce0a3a2d4c90012138c471f0ac7677c45183d6f81d508d6ff6"
+      },
+      {
+        "offset": 312,
+        "count": 8,
+        "elapsedMs": 238.1772920000003,
+        "cacheKey": "6a8e033f002d1c3ee1f5570697fa16900a83c179c8cdf4254d8cbff87c9ad2b1"
+      },
+      {
+        "offset": 320,
+        "count": 8,
+        "elapsedMs": 222.1899169999997,
+        "cacheKey": "e029db15ab500cd366bac7fa852c69e4303ae3e8926822c6f62ad23a05586934"
+      },
+      {
+        "offset": 328,
+        "count": 8,
+        "elapsedMs": 232.28183400000125,
+        "cacheKey": "926e11edf07183506d6cbfc78ebfc01c814053b2884bdf3ba9bdfa8740b54e15"
+      },
+      {
+        "offset": 336,
+        "count": 8,
+        "elapsedMs": 239.06745799999953,
+        "cacheKey": "80a0abb5909cec6aa2b268f69423ecb8b6c1235d270cfd9802a3c81ae17a8fe3"
+      },
+      {
+        "offset": 344,
+        "count": 8,
+        "elapsedMs": 229.07558299999982,
+        "cacheKey": "ee9d063dd32f8557549c924ded39576d20d4424d0b93c3cde6c26d6f53fb0de4"
+      },
+      {
+        "offset": 352,
+        "count": 8,
+        "elapsedMs": 234.27279199999975,
+        "cacheKey": "969899724becb2a5853c70cdae6bb7ef99627ed7f39db774d952e97eeddf7631"
+      },
+      {
+        "offset": 360,
+        "count": 8,
+        "elapsedMs": 149.89195800000016,
+        "cacheKey": "6e8aa30e3fb7ec57881f93bcbb009028280045ae5ad3defa51b388a96dbff649"
+      },
+      {
+        "offset": 368,
+        "count": 8,
+        "elapsedMs": 201.1314170000005,
+        "cacheKey": "e6905594c57f420b9d8f9ccfb05e56de4ddd583e4cda48a29ea558ed7623a362"
+      },
+      {
+        "offset": 376,
+        "count": 8,
+        "elapsedMs": 235.15550000000076,
+        "cacheKey": "bb371503d964fe978f86d95a502e4df49c4806a5351a8994dc67bd89146bfaaa"
+      },
+      {
+        "offset": 384,
+        "count": 8,
+        "elapsedMs": 245.50829199999862,
+        "cacheKey": "92359d38fe444c3d6ea0f82779ef290bca2c8a2dc7b93b698f047e6e457cf553"
+      },
+      {
+        "offset": 392,
+        "count": 8,
+        "elapsedMs": 210.23883299999943,
+        "cacheKey": "5b0353dc27a979af72843ff4109b590402eb2ea0cc6b18dcbe8acd4cc7c47f23"
+      },
+      {
+        "offset": 400,
+        "count": 8,
+        "elapsedMs": 258.7715420000004,
+        "cacheKey": "22856f657ea35c132838902276bec25540be3bcaf1693792793cde73eb9cb30d"
+      },
+      {
+        "offset": 408,
+        "count": 8,
+        "elapsedMs": 204.91116599999987,
+        "cacheKey": "45e0b8451a99594deb318dc1ffc9fe5115a450b8755a41b0f54aaf35d5db2771"
+      },
+      {
+        "offset": 416,
+        "count": 8,
+        "elapsedMs": 279.54954200000066,
+        "cacheKey": "710301f05ed35a85c322219fbd4abd71090f241d984755808757a8b660cf9f2b"
+      },
+      {
+        "offset": 424,
+        "count": 8,
+        "elapsedMs": 256.3681250000009,
+        "cacheKey": "146edcb8a3cb824ca2d7c000ce8ffd79b86c7e025183900db80137920990572e"
+      },
+      {
+        "offset": 432,
+        "count": 8,
+        "elapsedMs": 245.88225000000057,
+        "cacheKey": "39a045e66269a1685932f98b9be74a05e0ad5484a7b94f87027b272dd98f5a63"
+      },
+      {
+        "offset": 440,
+        "count": 8,
+        "elapsedMs": 249.29899999999907,
+        "cacheKey": "5ac18af48aca07d956be7bd5577b3d47d4850d6cf58cca83f0b3b69a6f93bea0"
+      },
+      {
+        "offset": 448,
+        "count": 8,
+        "elapsedMs": 245.73358299999927,
+        "cacheKey": "5717617f005ed2291105ffaf5ce4b1de55d839274deed87f5a972a2613d1f88d"
+      },
+      {
+        "offset": 456,
+        "count": 8,
+        "elapsedMs": 230.62283399999978,
+        "cacheKey": "addac2090e4760f15b9fb6700efec3578c3a5e12436da78c9ab9d23afc68d450"
+      },
+      {
+        "offset": 464,
+        "count": 8,
+        "elapsedMs": 184.54070800000045,
+        "cacheKey": "7abde37b52360f086ba5eb4a79c2dd891fc52705d12d78065718bcb8d7d2a298"
+      },
+      {
+        "offset": 472,
+        "count": 8,
+        "elapsedMs": 245.95658399999957,
+        "cacheKey": "ac4f9be5b88bd5332c0b67faae427869945e3395483752358eea84b7a9442859"
+      },
+      {
+        "offset": 480,
+        "count": 8,
+        "elapsedMs": 204.51916700000038,
+        "cacheKey": "80377cf25224b6b7656ed16bd1bf26b9b92269f18121c08ed397b451560714b3"
+      },
+      {
+        "offset": 488,
+        "count": 8,
+        "elapsedMs": 239.7012079999986,
+        "cacheKey": "0e2a995eb2632ba8d314ce89d035a4c5d420796ebf5cdc10d193eabf45c1600b"
+      },
+      {
+        "offset": 496,
+        "count": 8,
+        "elapsedMs": 217.52549999999974,
+        "cacheKey": "b14b89843d9998bcd3cf5431db7f2f68a9276f80d25a36decfb069037cf14573"
+      },
+      {
+        "offset": 504,
+        "count": 8,
+        "elapsedMs": 247.5724169999994,
+        "cacheKey": "9ebb5c628e71d82b1e09ae36e5ca78724a993adcf719efe8e131edd1f51b4255"
+      },
+      {
+        "offset": 512,
+        "count": 8,
+        "elapsedMs": 219.8746659999997,
+        "cacheKey": "eb1e49dd6b6bd4d2129f1315bbe609844c3afc7a32658262ea974812789d4837"
+      },
+      {
+        "offset": 520,
+        "count": 8,
+        "elapsedMs": 248.55604099999982,
+        "cacheKey": "edc6a015acc47b502979dc2a22c355b3b15223adda423ca64cb6e1c3a370474f"
+      },
+      {
+        "offset": 528,
+        "count": 8,
+        "elapsedMs": 245.61312499999985,
+        "cacheKey": "743dfd0f2424d0a40264f9927f00c1d9be02ff24e3a9d871d9cdaa6157d3642a"
+      },
+      {
+        "offset": 536,
+        "count": 8,
+        "elapsedMs": 227.4185839999991,
+        "cacheKey": "06d0172736a8a2718ea2d334f7433f833fb799b2ed18b58e1ab2cd77b032827e"
+      },
+      {
+        "offset": 544,
+        "count": 8,
+        "elapsedMs": 251.20216599999912,
+        "cacheKey": "71b76b7c6192f7cdd7865e4852cd0eaf80614703bdc494e7f90b77a495460a79"
+      },
+      {
+        "offset": 552,
+        "count": 8,
+        "elapsedMs": 251.50037499999962,
+        "cacheKey": "3c8b17f96f07b20d2c28c9443aa9ab184509fc44cd2b063ab7ef7f3b58ddc8b4"
+      },
+      {
+        "offset": 560,
+        "count": 8,
+        "elapsedMs": 237.9991250000021,
+        "cacheKey": "eec7f66472b1c56807997e88013fe037c5a9d29e1f9317ba2740222296efe75a"
+      },
+      {
+        "offset": 568,
+        "count": 8,
+        "elapsedMs": 242.45862500000294,
+        "cacheKey": "a4d1403ee564e052e5564b222059159c72cbd90893f8afdd368bcf5efcc2fcfc"
+      },
+      {
+        "offset": 576,
+        "count": 8,
+        "elapsedMs": 226.5106659999983,
+        "cacheKey": "5cea93196a1ff3f74685d3c51cf9d5a87e2dd48a3af799a260339125844b0e59"
+      },
+      {
+        "offset": 584,
+        "count": 8,
+        "elapsedMs": 229.12108300000182,
+        "cacheKey": "9befa64b26e7c621e57d461cfb9cd54b01e9555b98fbd0da99012b310426d52e"
+      },
+      {
+        "offset": 592,
+        "count": 8,
+        "elapsedMs": 239.2397920000003,
+        "cacheKey": "21babdf1184716c679b77ba86dced9ec0f1dbf9f83eda2ea5afd2813c5e90d24"
+      },
+      {
+        "offset": 600,
+        "count": 8,
+        "elapsedMs": 217.58854200000133,
+        "cacheKey": "0d10d238876e6fa9378b5059c99ca689ad115611c7579fc2174864c74fcc3f8e"
+      },
+      {
+        "offset": 608,
+        "count": 8,
+        "elapsedMs": 187.85654099999738,
+        "cacheKey": "5f96beeadca3cf40c4116bb8580e90d215950b1660377c948a3e6ba23d6eb605"
+      },
+      {
+        "offset": 616,
+        "count": 8,
+        "elapsedMs": 248.69400000000314,
+        "cacheKey": "6ce34925661e8e60fe5336a848c8fc270cd77e4d294a15b96b9fb50feae07eb7"
+      },
+      {
+        "offset": 624,
+        "count": 8,
+        "elapsedMs": 215.00941700000112,
+        "cacheKey": "84dcade721fbcd27803a93c0c611ea5450123d40411258a16b8cdf09d49216c0"
+      },
+      {
+        "offset": 632,
+        "count": 8,
+        "elapsedMs": 246.104292,
+        "cacheKey": "6f1ae96bbefd45b660a3b6d7ec6edf3a13df8380c1c65cc065f4b4109afa3e39"
+      },
+      {
+        "offset": 640,
+        "count": 8,
+        "elapsedMs": 226.61987499999668,
+        "cacheKey": "95dd35cc4bfcf184a6c4787d13c5f1db488ee2c09dd1215b8ec0809054f4e0c3"
+      },
+      {
+        "offset": 648,
+        "count": 8,
+        "elapsedMs": 176.96862500000134,
+        "cacheKey": "fd9891c45260adff8e4115a3d26efd345f98276a2c3a7f897f2ef846416facca"
+      },
+      {
+        "offset": 656,
+        "count": 8,
+        "elapsedMs": 156.13779099999738,
+        "cacheKey": "194a3ad78f4eb5fb0b7a3d4e653f9ba9c6ac3aef43057a8e2cccebef0e8e9025"
+      },
+      {
+        "offset": 664,
+        "count": 8,
+        "elapsedMs": 223.29675000000134,
+        "cacheKey": "1ab8a4d5fbb55bb62e92f7a8c45bb700729c238c439608419abe0c3514ad4705"
+      },
+      {
+        "offset": 672,
+        "count": 8,
+        "elapsedMs": 225.01495799999975,
+        "cacheKey": "7e0de14461337fef885444525ef37735f2f2ec012b1efd418ceb2687664ec5b6"
+      },
+      {
+        "offset": 680,
+        "count": 8,
+        "elapsedMs": 229.4459999999999,
+        "cacheKey": "64541381aac72a45a7128c14e52254ab2366f5be4903e41c9bc328e4075abfdb"
+      },
+      {
+        "offset": 688,
+        "count": 8,
+        "elapsedMs": 212.75424999999814,
+        "cacheKey": "dbf8fc599e02bea211fc9e0916279325153bf65a1ca58399c88405c0daa0491a"
+      },
+      {
+        "offset": 696,
+        "count": 8,
+        "elapsedMs": 225.64308300000266,
+        "cacheKey": "e723debd56db134cfcae6cf888c9ebf9db920f009effb6956545967d08961095"
+      },
+      {
+        "offset": 704,
+        "count": 8,
+        "elapsedMs": 95.1583750000027,
+        "cacheKey": "e3a61afc5ff5d5a55daffd5d01b8c0a19dd92addc6c49a47bfbcd5b39e45bc26"
+      },
+      {
+        "offset": 712,
+        "count": 8,
+        "elapsedMs": 108.89679199999955,
+        "cacheKey": "24d11f26fee5ba3757059a65417680618df488b7899b032aef5059ca7de36fae"
+      },
+      {
+        "offset": 720,
+        "count": 8,
+        "elapsedMs": 229.9183750000011,
+        "cacheKey": "9e427aa8c6fa0c75291be91f6efd08596b8c47cd3fdcb04d1f819a914dbc86a3"
+      },
+      {
+        "offset": 728,
+        "count": 8,
+        "elapsedMs": 162.95245799999975,
+        "cacheKey": "c03ba6d65d389c92370a1b8d7c8794883607b50f394fa64e97ebf71987af7d7c"
+      },
+      {
+        "offset": 736,
+        "count": 8,
+        "elapsedMs": 218.81733299999905,
+        "cacheKey": "6ad21cb97a6a7c104561f45e1c9a2a99835833fc3f9c6a0266d0b0603bd5158a"
+      },
+      {
+        "offset": 744,
+        "count": 8,
+        "elapsedMs": 240.21095799999966,
+        "cacheKey": "03fb11132a21d7f5ba6ff1615d8602e3875662435f61c9ae2ce79722db11859a"
+      },
+      {
+        "offset": 752,
+        "count": 8,
+        "elapsedMs": 275.2687079999996,
+        "cacheKey": "b10bec7fbc8ee9b10ad8a4e8b7b3540c5d9962839451c83ab906c5c0187096c6"
+      },
+      {
+        "offset": 760,
+        "count": 8,
+        "elapsedMs": 245.55783300000257,
+        "cacheKey": "8bfcfbc1cd9428ffa07213b9fd454ba2e9ca4a71add4dc4b4cd6ac956279f8cc"
+      },
+      {
+        "offset": 768,
+        "count": 8,
+        "elapsedMs": 238.8887079999986,
+        "cacheKey": "b5906179603bf0e733fae58b5e9baeefa547adaf5a9abdaea3018cdd0aa20e12"
+      },
+      {
+        "offset": 776,
+        "count": 8,
+        "elapsedMs": 227.56299999999828,
+        "cacheKey": "fbae96f7950d03aea208d8dced743a95b802df702ac18127172eb3d72a8a6161"
+      },
+      {
+        "offset": 784,
+        "count": 8,
+        "elapsedMs": 248.81174999999712,
+        "cacheKey": "911637ab637341a4ca1570d17cd2e1596608248e112b32ef6a32a27c6e102339"
+      },
+      {
+        "offset": 792,
+        "count": 8,
+        "elapsedMs": 250.2762920000023,
+        "cacheKey": "46cf188a225e1f272bc14a263a7206a3d205e1e7be791e5e99b1b6039fcabed5"
+      },
+      {
+        "offset": 800,
+        "count": 8,
+        "elapsedMs": 218.2801670000008,
+        "cacheKey": "201805ad346252b42e69f7c0d153e9637b78b072d20d85ee8c3a4f9b406f9945"
+      },
+      {
+        "offset": 808,
+        "count": 8,
+        "elapsedMs": 243.13795799999934,
+        "cacheKey": "f764928f020ca0ff4b30383142d8f4b9e4db8ed57e8dd757d5fd0e2f79d33e83"
+      },
+      {
+        "offset": 816,
+        "count": 8,
+        "elapsedMs": 275.30283399999826,
+        "cacheKey": "1194384f8cd8cf36dbe4bafe74d7df1efdce70aae3d36d276455eb84a61acc4d"
+      },
+      {
+        "offset": 824,
+        "count": 8,
+        "elapsedMs": 278.48254200000156,
+        "cacheKey": "a3ae4548d5db77d31e5201d4b6f344bff253c420c32fd9da7f2249866cabeb59"
+      },
+      {
+        "offset": 832,
+        "count": 8,
+        "elapsedMs": 250.03170800000225,
+        "cacheKey": "b53175cb2a2198d5b853ca01d90e963a69f96ea4134ef40eac63cda64ff1345c"
+      },
+      {
+        "offset": 840,
+        "count": 8,
+        "elapsedMs": 193.67612499999814,
+        "cacheKey": "d8d247f132c6f8e7d04d63b934b760dcab416985b7d832306ce1d8aca9535e1f"
+      },
+      {
+        "offset": 848,
+        "count": 8,
+        "elapsedMs": 272.6262910000005,
+        "cacheKey": "740a018867e1f914ffabb7bf22f42ef8a46f40670a3f3f899dec9c44a0f627c8"
+      },
+      {
+        "offset": 856,
+        "count": 8,
+        "elapsedMs": 253.14541699999972,
+        "cacheKey": "33aec858876d857a4511c790aaeaad7d8f46ee40f97f50aa8c789121ff57aeb1"
+      },
+      {
+        "offset": 864,
+        "count": 2,
+        "elapsedMs": 34.50616699999955,
+        "cacheKey": "dddc9e54f068b6b03e0ca2bd9b32bf17d4a62fc1e943026566d0a35f8e58fcf6"
+      }
+    ],
+    "environment": {
+      "node": "v24.14.1",
+      "cpu": "Apple M5",
+      "platform": "darwin",
+      "arch": "arm64"
+    },
+    "cloudEmbeddingApiCalls": 0,
+    "networkDuringInference": "Remote models disabled; fetch replaced with a throwing function."
+  },
+  "modelAssetBytes": 34726727,
+  "vectorNormRange": [
+    0.99999946980388,
+    1.0000003341471886
+  ],
+  "counts": {
+    "articles": 46,
+    "passages": 866,
+    "answerableQuestions": 36,
+    "expectedNoAnswer": 8,
+    "articleGroups": 18
+  },
+  "metrics": {
+    "all-answerable": {
+      "n": 36,
+      "keyword": {
+        "knownAnswerAt1": 22,
+        "knownAnswerAt3": 32,
+        "knownAnswerAt5": 33,
+        "knownAnswerAt10": 33,
+        "reciprocalRankThrough10": 26.416666666666668,
+        "targetArticleAmongTop3Passages": 35
+      },
+      "semantic": {
+        "knownAnswerAt1": 19,
+        "knownAnswerAt3": 27,
+        "knownAnswerAt5": 28,
+        "knownAnswerAt10": 33,
+        "reciprocalRankThrough10": 23.313492063492063,
+        "targetArticleAmongTop3Passages": 33
+      },
+      "hybrid": {
+        "knownAnswerAt1": 24,
+        "knownAnswerAt3": 33,
+        "knownAnswerAt5": 34,
+        "knownAnswerAt10": 34,
+        "reciprocalRankThrough10": 28.25,
+        "targetArticleAmongTop3Passages": 35
+      }
+    },
+    "short": {
+      "n": 18,
+      "keyword": {
+        "knownAnswerAt1": 11,
+        "knownAnswerAt3": 15,
+        "knownAnswerAt5": 16,
+        "knownAnswerAt10": 16,
+        "reciprocalRankThrough10": 13.083333333333334,
+        "targetArticleAmongTop3Passages": 18
+      },
+      "semantic": {
+        "knownAnswerAt1": 10,
+        "knownAnswerAt3": 14,
+        "knownAnswerAt5": 14,
+        "knownAnswerAt10": 17,
+        "reciprocalRankThrough10": 12.142857142857142,
+        "targetArticleAmongTop3Passages": 17
+      },
+      "hybrid": {
+        "knownAnswerAt1": 11,
+        "knownAnswerAt3": 17,
+        "knownAnswerAt5": 17,
+        "knownAnswerAt10": 17,
+        "reciprocalRankThrough10": 13.666666666666666,
+        "targetArticleAmongTop3Passages": 18
+      }
+    },
+    "question": {
+      "n": 18,
+      "keyword": {
+        "knownAnswerAt1": 11,
+        "knownAnswerAt3": 17,
+        "knownAnswerAt5": 17,
+        "knownAnswerAt10": 17,
+        "reciprocalRankThrough10": 13.333333333333334,
+        "targetArticleAmongTop3Passages": 17
+      },
+      "semantic": {
+        "knownAnswerAt1": 9,
+        "knownAnswerAt3": 13,
+        "knownAnswerAt5": 14,
+        "knownAnswerAt10": 16,
+        "reciprocalRankThrough10": 11.170634920634921,
+        "targetArticleAmongTop3Passages": 16
+      },
+      "hybrid": {
+        "knownAnswerAt1": 13,
+        "knownAnswerAt3": 16,
+        "knownAnswerAt5": 17,
+        "knownAnswerAt10": 17,
+        "reciprocalRankThrough10": 14.583333333333332,
+        "targetArticleAmongTop3Passages": 17
+      }
+    }
+  },
+  "perProcessMetrics": [
+    {
+      "n": 36,
+      "keyword": {
+        "knownAnswerAt1": 22,
+        "knownAnswerAt3": 32,
+        "knownAnswerAt5": 33,
+        "knownAnswerAt10": 33,
+        "reciprocalRankThrough10": 26.416666666666668,
+        "targetArticleAmongTop3Passages": 35
+      },
+      "semantic": {
+        "knownAnswerAt1": 19,
+        "knownAnswerAt3": 27,
+        "knownAnswerAt5": 28,
+        "knownAnswerAt10": 33,
+        "reciprocalRankThrough10": 23.313492063492063,
+        "targetArticleAmongTop3Passages": 33
+      },
+      "hybrid": {
+        "knownAnswerAt1": 24,
+        "knownAnswerAt3": 33,
+        "knownAnswerAt5": 34,
+        "knownAnswerAt10": 34,
+        "reciprocalRankThrough10": 28.25,
+        "targetArticleAmongTop3Passages": 35
+      }
+    },
+    {
+      "n": 36,
+      "keyword": {
+        "knownAnswerAt1": 22,
+        "knownAnswerAt3": 32,
+        "knownAnswerAt5": 33,
+        "knownAnswerAt10": 33,
+        "reciprocalRankThrough10": 26.416666666666668,
+        "targetArticleAmongTop3Passages": 35
+      },
+      "semantic": {
+        "knownAnswerAt1": 19,
+        "knownAnswerAt3": 27,
+        "knownAnswerAt5": 28,
+        "knownAnswerAt10": 33,
+        "reciprocalRankThrough10": 23.313492063492063,
+        "targetArticleAmongTop3Passages": 33
+      },
+      "hybrid": {
+        "knownAnswerAt1": 24,
+        "knownAnswerAt3": 33,
+        "knownAnswerAt5": 34,
+        "knownAnswerAt10": 34,
+        "reciprocalRankThrough10": 28.25,
+        "targetArticleAmongTop3Passages": 35
+      }
+    },
+    {
+      "n": 36,
+      "keyword": {
+        "knownAnswerAt1": 22,
+        "knownAnswerAt3": 32,
+        "knownAnswerAt5": 33,
+        "knownAnswerAt10": 33,
+        "reciprocalRankThrough10": 26.416666666666668,
+        "targetArticleAmongTop3Passages": 35
+      },
+      "semantic": {
+        "knownAnswerAt1": 19,
+        "knownAnswerAt3": 27,
+        "knownAnswerAt5": 28,
+        "knownAnswerAt10": 33,
+        "reciprocalRankThrough10": 23.313492063492063,
+        "targetArticleAmongTop3Passages": 33
+      },
+      "hybrid": {
+        "knownAnswerAt1": 24,
+        "knownAnswerAt3": 33,
+        "knownAnswerAt5": 34,
+        "knownAnswerAt10": 34,
+        "reciprocalRankThrough10": 28.25,
+        "targetArticleAmongTop3Passages": 35
+      }
+    }
+  ],
+  "fullRankingDigests": [
+    "b21cd3a7d0b8e0f6a5aae7dfaed7124e8ad9abef74a23e272a5df35141aafdb8",
+    "b21cd3a7d0b8e0f6a5aae7dfaed7124e8ad9abef74a23e272a5df35141aafdb8",
+    "b21cd3a7d0b8e0f6a5aae7dfaed7124e8ad9abef74a23e272a5df35141aafdb8"
+  ],
+  "identicalFullRankingsAcrossProcesses": true,
+  "comparisonsAt3": {
+    "semantic-vs-keyword": {
+      "wins": [
+        "Q21"
+      ],
+      "losses": [
+        "Q03",
+        "Q10",
+        "Q24",
+        "Q25",
+        "Q26",
+        "Q28"
+      ],
+      "ties": 29,
+      "difference": -0.1388888888888889,
+      "descriptiveClusterBootstrap95": [
+        -0.3055555555555556,
+        0.0
+      ],
+      "clusters": 18,
+      "resamples": 10000,
+      "seed": 202611140
+    },
+    "hybrid-vs-keyword": {
+      "wins": [
+        "Q09",
+        "Q21",
+        "Q22"
+      ],
+      "losses": [
+        "Q26",
+        "Q28"
+      ],
+      "ties": 31,
+      "difference": 0.027777777777777776,
+      "descriptiveClusterBootstrap95": [
+        -0.1111111111111111,
+        0.19444444444444445
+      ],
+      "clusters": 18,
+      "resamples": 10000,
+      "seed": 202611140
+    }
+  },
+  "warmTimings": {
+    "queryEncodingMs": {
+      "n": 129,
+      "medianMs": 2.9699999999999704,
+      "p95NearestRankMs": 4.405417,
+      "minMs": 1.3694590000000062,
+      "maxMs": 6.056833999999981
+    },
+    "keywordMs": {
+      "n": 129,
+      "medianMs": 0.5994170000000167,
+      "p95NearestRankMs": 1.8697080000000028,
+      "minMs": 0.22916699999996126,
+      "maxMs": 2.1479590000000144
+    },
+    "denseScanMs": {
+      "n": 129,
+      "medianMs": 0.45933299999998667,
+      "p95NearestRankMs": 0.9514589999999998,
+      "minMs": 0.2982499999999959,
+      "maxMs": 1.461624999999998
+    },
+    "fusionMs": {
+      "n": 129,
+      "medianMs": 0.17287499999997635,
+      "p95NearestRankMs": 0.3597090000000094,
+      "minMs": 0.07320800000002237,
+      "maxMs": 0.8239590000000021
+    },
+    "semanticQueryTotalMs": {
+      "n": 129,
+      "medianMs": 3.5275419999999826,
+      "p95NearestRankMs": 4.923417000000001,
+      "minMs": 1.7413340000000517,
+      "maxMs": 6.690917000000013
+    },
+    "hybridQueryTotalMs": {
+      "n": 129,
+      "medianMs": 4.31729299999995,
+      "p95NearestRankMs": 6.614168000000035,
+      "minMs": 2.1058340000001294,
+      "maxMs": 7.611208000000033
+    }
+  },
+  "modelInitMs": [
+    121.09354199999999,
+    128.3005,
+    126.00520799999998
+  ],
+  "searchIndexInitMs": [
+    31.663958000000008,
+    34.397666000000015,
+    31.36220799999998
+  ],
+  "expectedNoAnswer": {
+    "n": 8,
+    "returnedNonempty": {
+      "keyword": 8,
+      "semantic": 8,
+      "hybrid": 8
+    },
+    "topScoreRanges": {
+      "keyword": [
+        6.354070627719921,
+        9.644414992369407
+      ],
+      "semantic": [
+        0.7698758249436,
+        0.8351781797116681
+      ],
+      "hybrid": [
+        0.02388888888888889,
+        0.03278688524590164
+      ]
+    }
+  },
+  "limitations": [
+    "Source-aware agent-authored queries and incomplete known-answer labels, not visitor logs or independent human judgments.",
+    "Only 36 distinct answerable questions in 18 source-article groups; process repetition is not a larger relevance sample.",
+    "This local E5 transformer experiment is separate from MWG; no matching Gemini article index was generated.",
+    "No calibrated no-answer threshold; returned scores are not relevance probabilities.",
+    "CPU timings include uncontrolled concurrent machine load and exclude model download and browser/network overhead."
+  ]
+}

@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Search the blog · Local passage experiment</title>
+  <link rel="stylesheet" href="/interface.css"><script type="module" src="/interface.mjs"></script>
+</head>
+<body><main class="tool-app">
+  <header><p class="eyebrow">Goga Koreli · Local research</p><h1>Find the passage you remember.</h1>
+  <p class="intro">Search the full text of 46 articles. Try describing an idea, even if you don’t remember the words used.</p></header>
+  <form id="search-form"><label for="query">What are you looking for?</label>
+    <textarea id="query" name="query" rows="2" maxlength="4096" required>How can a signup request be cancelled after the human verification widget has already reported success?</textarea>
+    <div class="form-actions"><button id="search-button" type="submit">Find passages</button><span id="catalog">Loading the local index…</span></div>
+  </form>
+  <details class="examples"><summary>Try a question from the comparison</summary><ul id="examples"></ul></details>
+  <fieldset id="modes"><legend>Compare the same query</legend>
+    <label><input type="radio" name="mode" value="keyword"> Keyword</label>
+    <label><input type="radio" name="mode" value="semantic"> Semantic</label>
+    <label><input type="radio" name="mode" value="hybrid" checked> Hybrid</label>
+  </fieldset>
+  <p id="status" role="status" aria-live="polite">Ready when you are.</p>
+  <p class="reading-note">These are retrieved source passages. The closest matches can still be unrelated, especially when the blog doesn’t cover a subject. Scores are not confidence estimates.</p>
+  <ol id="results" aria-label="Matching passages"></ol>
+  <noscript><p>This local comparison needs JavaScript. The articles themselves are available at <a href="https://gkoreli.com">gkoreli.com</a>.</p></noscript>
+  <footer><p>866 passages · local E5-small-v2 · BM25 keywords · reciprocal rank fusion</p>
+  <p>This experiment uses a full local transformer for both document and query embeddings. It is separate from Modern Web Guidance’s seven-line query encoder. Nothing here is deployed to the blog.</p>
+  <p>The local server computes all three rankings for comparison. Switching methods reuses those results. No search queries are saved.</p></footer>
+</main></body></html>

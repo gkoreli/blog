@@ -1,0 +1,29 @@
+{
+  "date": "2026-11-14",
+  "timeZone": "America/Los_Angeles",
+  "scope": "Selected local in-app browser interactions; separate from the frozen relevance comparison and from production",
+  "articles": 46,
+  "passages": 866,
+  "defaultTurnstileQuery": "Hybrid first passage explains repeated readiness cancelling a pending POST",
+  "completePassageExpansion": true,
+  "hobQuestion": {
+    "hybridFirst": "Known introduction with model download and task duration",
+    "keywordFirst": "Unrelated prompt-cache article passage"
+  },
+  "citationQuestion": {
+    "keywordFirst": "llms.txt evidence claim",
+    "semanticFirst": "OpenScholar evidence selection and revision"
+  },
+  "sourdoughSemanticResult": "Unrelated agent workflow passages; no rejection threshold",
+  "unknownTokenKeywordResults": 0,
+  "characterLimitErrorObserved": true,
+  "tokenLimitErrorObserved": true,
+  "suggestedQuestionButton": true,
+  "hybridRestored": true,
+  "browserWarningsAndErrors": [],
+  "layout": { "viewportWidth": 1280, "pageScrollWidth": 1280 },
+  "screenshot": "Saved locally outside Git; no public source-text screenshot included",
+  "queriesLoggedByServer": false,
+  "modelInferenceLocation": "Local Node CPU server",
+  "productionRouteOrDeployment": false
+}
