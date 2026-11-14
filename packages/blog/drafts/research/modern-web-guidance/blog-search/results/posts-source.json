@@ -1,0 +1,833 @@
+{
+  "capturedAt": "2026-11-14T15:44:55.469Z",
+  "source": "Local posts/ metadata via existing Markdown and TypeScript validators; not a current-production capture.",
+  "sourceCommit": "036058876bea2150042c02390445582b39dd04db",
+  "posts": [
+    {
+      "slug": "the-agentic-product-engineer",
+      "title": "The Agentic Product Engineer",
+      "date": "2026-03-05",
+      "tags": [
+        "agentic-product-engineering",
+        "context-engineering",
+        "nisli",
+        "backlog-mcp"
+      ],
+      "description": "Software engineering isn't going away — writing code without agents is. The role is expanding, not shrinking. Here's what that actually means.",
+      "url": "https://gkoreli.com/the-agentic-product-engineer"
+    },
+    {
+      "slug": "oss-radar-01-vercel-winter-2026-cohort",
+      "title": "OSS Radar #01: Vercel's Winter 2026 Cohort",
+      "date": "2026-03-19",
+      "tags": [
+        "oss-radar",
+        "open-source",
+        "vercel",
+        "research",
+        "distillation"
+      ],
+      "description": "A new series: I find a source, go through it, distill what's worth your time, and tell you what I actually think. First up — Vercel's Open Source Program Winter 2026 cohort.",
+      "url": "https://gkoreli.com/oss-radar-01-vercel-winter-2026-cohort"
+    },
+    {
+      "slug": "how-ghx-was-born",
+      "title": "Build the GitHub Exploration Tool, No Mistakes",
+      "date": "2026-03-29",
+      "tags": [
+        "ghx",
+        "agentic-engineering",
+        "open-source",
+        "build-in-public",
+        "context-engineering"
+      ],
+      "description": "A CLI tool that looks simple took 23 agent sessions, 2,500+ turns, and three rewrites. This is what building with AI actually looks like.",
+      "url": "https://gkoreli.com/how-ghx-was-born"
+    },
+    {
+      "slug": "topologies-of-thoughts",
+      "title": "Topologies of Thoughts",
+      "date": "2026-03-31",
+      "tags": [
+        "research",
+        "knowledge-graphs",
+        "neuroscience",
+        "obsidian",
+        "embeddings"
+      ],
+      "description": "On Kat Zhang's obsidian note network, the GitHub ecosystem around it, and what graph neuroscience says about the shape of minds",
+      "url": "https://gkoreli.com/topologies-of-thoughts"
+    },
+    {
+      "slug": "procrastination-is-a-craft-youve-been-mastering-your-entire-life",
+      "title": "Procrastination Is a Craft You've Been Mastering Your Entire Life",
+      "date": "2026-04-07",
+      "tags": [
+        "personal-essay",
+        "adhd",
+        "procrastination",
+        "eisenhower-matrix"
+      ],
+      "description": "Every article you've ever read told you procrastination is the enemy. A flaw to fix. A habit to break. I spent 30 years believing that. Turns out, I had it completely backwards.",
+      "url": "https://gkoreli.com/procrastination-is-a-craft-youve-been-mastering-your-entire-life"
+    },
+    {
+      "slug": "oss-radar-02-the-toolchain-is-the-moat",
+      "title": "OSS Radar #02: The Toolchain Is the Moat",
+      "date": "2026-04-12",
+      "tags": [
+        "oss-radar",
+        "open-source",
+        "python",
+        "ai-tooling",
+        "rust",
+        "astral",
+        "uv"
+      ],
+      "description": "How the Astral acquisition reveals the real war being fought in AI coding — and why everyone is talking about the wrong thing.",
+      "url": "https://gkoreli.com/oss-radar-02-the-toolchain-is-the-moat"
+    },
+    {
+      "slug": "you-dont-need-codemap",
+      "title": "You Don't Always Need Codemap",
+      "date": "2026-04-17",
+      "tags": [
+        "ghx",
+        "code-mapping",
+        "context-engineering",
+        "open-source",
+        "agentic-engineering"
+      ],
+      "description": "Codemap, Aider, Gitingest, Repomix, and ghx solve different parts of agent code context: mapping, searching, packing, and deciding what to read before cloning.",
+      "url": "https://gkoreli.com/you-dont-need-codemap"
+    },
+    {
+      "slug": "life-as-background-music",
+      "title": "Life as Background Music",
+      "date": "2026-04-22",
+      "tags": [
+        "essay",
+        "life",
+        "attention",
+        "indifference"
+      ],
+      "description": "On realizing how easy it is to like things, want things, even feel things, and still keep them safely in the background.",
+      "url": "https://gkoreli.com/life-as-background-music"
+    },
+    {
+      "slug": "linux-signal-stack-conflict",
+      "title": "One bitmask in task_struct: how a 10-line kernel patch resolves 15 years of multi-runtime signal conflicts on Linux",
+      "date": "2026-05-21",
+      "tags": [
+        "linux-kernel",
+        "signals",
+        "go",
+        "bun",
+        "wasm",
+        "systems-architecture",
+        "posix"
+      ],
+      "description": "SA_ONSTACK is process-wide. sigaltstack is per-thread. When Go, Bun, .NET, and the JVM share a process, signals land on the wrong stack. One kernel field fixes the class.",
+      "url": "https://gkoreli.com/linux-signal-stack-conflict"
+    },
+    {
+      "slug": "i-thought-building-was-enough",
+      "title": "The Builder’s Perfectionism Trap",
+      "date": "2026-07-01",
+      "tags": [
+        "build-in-public",
+        "creator",
+        "perfectionism",
+        "networking"
+      ],
+      "description": "For a decade I believed great engineering would make everything else happen automatically. I am starting to understand how toxic that was.",
+      "url": "https://gkoreli.com/i-thought-building-was-enough"
+    },
+    {
+      "slug": "what-if-the-agent-was-better-before-we-helped",
+      "title": "What If the Agent Was Better Before We Helped?",
+      "date": "2026-07-05",
+      "tags": [
+        "agentic-engineering",
+        "evals",
+        "ghx",
+        "sidecar-agents",
+        "opentelemetry",
+        "acp"
+      ],
+      "description": "I am building ghx, a code reconnaissance CLI for AI agents, and now an agent sidecar framework around it. The hard question is whether any of it actually improves signal per token compared to plain old gh.",
+      "url": "https://gkoreli.com/what-if-the-agent-was-better-before-we-helped"
+    },
+    {
+      "slug": "one-hundred-pull-requests",
+      "title": "117 Pull Requests Later, It Wasn’t a Task Manager Anymore",
+      "date": "2026-07-09",
+      "tags": [
+        "backlog-mcp",
+        "agentic-engineering",
+        "agentic-product-engineering",
+        "context-engineering",
+        "memory-engineering",
+        "nisli",
+        "architecture"
+      ],
+      "description": "The story of how backlog-mcp grew from a task manager into local-first context and memory infrastructure for AI agents — and produced the UI framework powering this blog.",
+      "url": "https://gkoreli.com/one-hundred-pull-requests"
+    },
+    {
+      "slug": "i-am-lost-right-now",
+      "title": "I Am Lost Right Now",
+      "date": "2026-07-19",
+      "tags": [
+        "personal",
+        "open-source",
+        "writing",
+        "backlog-mcp"
+      ],
+      "description": "I am the only user of my open source projects, I do not know what to build next, and I am trying not to escape into another idea.",
+      "url": "https://gkoreli.com/i-am-lost-right-now"
+    },
+    {
+      "slug": "openwiki-validates-my-bet",
+      "title": "OpenWiki Validates My Bet. I Still Don't Know Where the Memory Should Live",
+      "date": "2026-07-23",
+      "tags": [
+        "backlog-mcp",
+        "openwiki",
+        "agent-memory",
+        "context-engineering",
+        "mcp"
+      ],
+      "description": "OpenWiki validates the main idea behind backlog-mcp. It also forces me to face three problems I have not solved: where agent memory lives, how its files read, and what to call the product.",
+      "url": "https://gkoreli.com/openwiki-validates-my-bet"
+    },
+    {
+      "slug": "oss-radar-03-buzz-is-slack-on-airoids",
+      "title": "OSS Radar #03: Buzz Is Slack on AIroids",
+      "date": "2026-07-24",
+      "tags": [
+        "oss-radar",
+        "open-source",
+        "agents",
+        "collaboration",
+        "buzz",
+        "nostr"
+      ],
+      "description": "Buzz gives agents signed accounts and shared local compute. Delegation reliability and private code access remain unfinished.",
+      "url": "https://gkoreli.com/oss-radar-03-buzz-is-slack-on-airoids"
+    },
+    {
+      "slug": "bring-your-own-ai-agent",
+      "title": "Bring Your Own AI Agent Everywhere",
+      "date": "2026-08-20",
+      "tags": [
+        "agentport",
+        "webmcp",
+        "ai-agents",
+        "privacy",
+        "agentic-engineering"
+      ],
+      "description": "AgentPort lets applications attach a user-owned AI agent with scoped grants, private transport, and no new model subscription per app.",
+      "url": "https://gkoreli.com/bring-your-own-ai-agent"
+    },
+    {
+      "slug": "oss-radar-04-the-agent-multiplexer-is-becoming-a-runtime",
+      "title": "OSS Radar #04: The Agent Multiplexer Is Becoming a Runtime",
+      "date": "2026-08-21",
+      "tags": [
+        "oss-radar",
+        "agents",
+        "terminal",
+        "herdr",
+        "multiplexer"
+      ],
+      "description": "Herdr gives coding agents durable terminal sessions, agent state, and a control API. Screen-derived semantics remain its limit.",
+      "url": "https://gkoreli.com/oss-radar-04-the-agent-multiplexer-is-becoming-a-runtime"
+    },
+    {
+      "slug": "my-evals-say-it-works-i-dont-use-it",
+      "title": "My Evals Say It Works. I Still Don't Reach for It.",
+      "date": "2026-08-21",
+      "tags": [
+        "agentic-engineering",
+        "ghx",
+        "sidecar-agents",
+        "evals",
+        "adoption"
+      ],
+      "description": "The ghx AI-agent reconnaissance sidecar passed a 90-episode eval at 25× compression. My usage logs show a three-day burst, then silence.",
+      "url": "https://gkoreli.com/my-evals-say-it-works-i-dont-use-it"
+    },
+    {
+      "slug": "does-llms-txt-work",
+      "title": "Does llms.txt Work? What a Live Implementation Revealed",
+      "date": "2026-08-25",
+      "tags": [
+        "llms-txt",
+        "geo",
+        "ai-agents",
+        "analytics",
+        "agentic-engineering"
+      ],
+      "description": "Does llms.txt improve AI search? This live audit examines edge data, agent tools, Markdown, and GEO evidence—then shows what to build and measure.",
+      "url": "https://gkoreli.com/does-llms-txt-work"
+    },
+    {
+      "slug": "first-party-analytics-for-a-personal-blog",
+      "title": "How I Built First-Party Analytics for a Personal Blog",
+      "date": "2026-08-26",
+      "tags": [
+        "analytics",
+        "cloudflare-workers",
+        "d1",
+        "privacy",
+        "observability"
+      ],
+      "description": "A code-backed guide to first-party blog analytics with Cloudflare Workers and D1: edge events, privacy, migrations, and public stats.",
+      "url": "https://gkoreli.com/first-party-analytics-for-a-personal-blog"
+    },
+    {
+      "slug": "oss-radar-05-bun-1-4",
+      "title": "OSS Radar #05: Bun 1.4 Made the Runtime the Dependency",
+      "date": "2026-08-26",
+      "tags": [
+        "oss-radar",
+        "bun",
+        "javascript",
+        "rust",
+        "runtime"
+      ],
+      "description": "Bun 1.4 moves fifteen package jobs into one Rust-based binary. The package graph shrinks, but compatibility and maintenance move into the runtime.",
+      "url": "https://gkoreli.com/oss-radar-05-bun-1-4"
+    },
+    {
+      "slug": "oss-radar-06-interp-engine",
+      "title": "OSS Radar #06: interp-engine, Neuronpedia's New Interpretability Engine, Tested on a Mac",
+      "date": "2026-09-02",
+      "tags": [
+        "oss-radar",
+        "interpretability",
+        "neuronpedia",
+        "vllm",
+        "transformerlens",
+        "steering"
+      ],
+      "description": "interp-engine, Neuronpedia's new interpretability engine, names 34 hook points once and compares 27 across engines. I audited the code and ran it on a Mac.",
+      "url": "https://gkoreli.com/oss-radar-06-interp-engine"
+    },
+    {
+      "slug": "which-ai-fetchers-send-which-headers",
+      "title": "Which AI Fetchers Send Which Headers, Measured on a Live Site",
+      "date": "2026-09-03",
+      "tags": [
+        "ai-agents",
+        "analytics",
+        "cloudflare-workers",
+        "http",
+        "observability",
+        "agentic-engineering"
+      ],
+      "description": "What happened when ChatGPT, Claude, Gemini, Grok, Perplexity, Copilot, Mistral, DuckDuckGo, Claude Code and Codex were asked to fetch a page on a live Cloudflare Worker: the User-Agent, Accept and Fetch Metadata headers received, vendor IP-list matches, the limits of verified Web Bot Auth signatures, and which assistants sent no observed request.",
+      "url": "https://gkoreli.com/which-ai-fetchers-send-which-headers"
+    },
+    {
+      "slug": "how-i-separate-readers-from-bots-without-javascript",
+      "title": "Bot Detection Without JavaScript: What My Blog Measured",
+      "date": "2026-09-03",
+      "tags": [
+        "analytics",
+        "cloudflare-workers",
+        "http",
+        "bots",
+        "ai-agents",
+        "observability"
+      ],
+      "description": "Cloudflare Workers bot detection without JavaScript: headers, network evidence, and an unresolved gap of 95 browser observations versus 14 script page loads.",
+      "url": "https://gkoreli.com/how-i-separate-readers-from-bots-without-javascript"
+    },
+    {
+      "slug": "filter-referrer-spam-without-deleting-analytics-history",
+      "title": "How I Defend My Analytics Against Referrer Spam",
+      "date": "2026-09-06",
+      "tags": [
+        "analytics",
+        "http",
+        "cloudflare-workers",
+        "open-source"
+      ],
+      "description": "Suspected referrer spam gave an untrusted site exposure in my public analytics. Matomo rules and reviewed names now limit that abuse.",
+      "url": "https://gkoreli.com/filter-referrer-spam-without-deleting-analytics-history"
+    },
+    {
+      "slug": "oss-radar-07-ai-citations",
+      "title": "OSS Radar #07: AI Citations — Do Agents Preserve the Evidence Behind an Answer?",
+      "date": "2026-09-10",
+      "tags": [
+        "oss-radar",
+        "ai-citations",
+        "open-source",
+        "ai-agents",
+        "source-attribution",
+        "analytics"
+      ],
+      "description": "OpenScholar, STORM, TruLens, and real Codex/Claude runs show where AI citations improve, where they fail, and what makes engineering evidence useful.",
+      "url": "https://gkoreli.com/oss-radar-07-ai-citations"
+    },
+    {
+      "slug": "productive-procrastination",
+      "title": "Productive Procrastination: When Meaningful Work Costs You Sleep",
+      "date": "2026-09-21",
+      "tags": [
+        "essay",
+        "procrastination",
+        "creativity",
+        "planning",
+        "sleep"
+      ],
+      "description": "Why meaningful work can override other priorities, why notes may not restore motivation, and a planning experiment to protect creative time and sleep.",
+      "url": "https://gkoreli.com/productive-procrastination"
+    },
+    {
+      "slug": "chatgpt-plugin-apps",
+      "title": "ChatGPT Plugin Apps: What Changed, and What I'd Build",
+      "date": "2026-10-04",
+      "tags": [
+        "chatgpt",
+        "mcp",
+        "plugins",
+        "product-engineering"
+      ],
+      "description": "What is new in ChatGPT plugin apps, why a specialist app might beat a generated interface, and what Jupyter and VS Code teach us about building one.",
+      "url": "https://gkoreli.com/chatgpt-plugin-apps"
+    },
+    {
+      "slug": "openclaw-chose-solid-why-id-choose-nisli",
+      "title": "OpenClaw Chose Solid. Here’s Why I’d Choose Nisli.",
+      "date": "2026-10-21",
+      "tags": [
+        "nisli",
+        "web-components",
+        "solidjs",
+        "lit"
+      ],
+      "description": "OpenClaw’s Lit-to-Solid migration before and after, plus two practical Nisli examples: streaming text without rerendering and cancellable session previews.",
+      "url": "https://gkoreli.com/openclaw-chose-solid-why-id-choose-nisli"
+    },
+    {
+      "slug": "building-blog-analytics-what-the-numbers-can-prove",
+      "title": "Building Blog Analytics: What the Numbers Can Prove",
+      "date": "2026-10-25",
+      "tags": [
+        "analytics",
+        "cloudflare-workers",
+        "d1",
+        "bots",
+        "observability"
+      ],
+      "description": "Cloudflare Workers and D1 analytics lessons: investigate misleading growth, inspect signed crawlers, and choose article experiments without mistaking requests for readers.",
+      "url": "https://gkoreli.com/building-blog-analytics-what-the-numbers-can-prove"
+    },
+    {
+      "slug": "oss-radar-08-bun-aot",
+      "title": "OSS Radar #08: Bun AOT — Don't Rewrite TypeScript in Rust Yet",
+      "date": "2026-10-27",
+      "tags": [
+        "oss-radar",
+        "bun",
+        "typescript",
+        "rust",
+        "performance"
+      ],
+      "description": "Bun AOT made my TypeScript compiler 3.3× faster with 64% less peak memory. A server executable shrank from 121.5 MB to 30.3 MB with AOT and --trim.",
+      "url": "https://gkoreli.com/oss-radar-08-bun-aot"
+    },
+    {
+      "slug": "why-worktree-setup-is-slow-on-macos",
+      "title": "A Linux VM on My Mac Beat macOS at Installing Dependencies",
+      "date": "2026-10-28",
+      "tags": [
+        "macos",
+        "linux",
+        "pnpm",
+        "git"
+      ],
+      "description": "A Linux VM on my Mac installed T3 Code dependencies almost 4× faster than macOS. I tested four repos, traced the file work and checked the fixes.",
+      "url": "https://gkoreli.com/why-worktree-setup-is-slow-on-macos"
+    },
+    {
+      "slug": "oss-radar-09-tsrs-typescript-memory",
+      "title": "OSS Radar #09: tsrs Checks VS Code Faster with 56% Less RAM",
+      "date": "2026-10-30",
+      "tags": [
+        "oss-radar",
+        "typescript",
+        "rust",
+        "compilers",
+        "performance"
+      ],
+      "description": "tsrs checked VS Code in 1.72s using 2.52GB peak RAM, versus TypeScript 7.1 beta's 4.67s and 5.71GB. I also reproduced a fast-mode compatibility difference.",
+      "url": "https://gkoreli.com/oss-radar-09-tsrs-typescript-memory"
+    },
+    {
+      "slug": "oss-radar-10-paperpilot-redaction",
+      "title": "OSS Radar #10: PaperPilot Left the Secret in My Redacted PDF",
+      "date": "2026-10-30",
+      "tags": [
+        "oss-radar",
+        "pdf",
+        "privacy",
+        "mcp",
+        "testing"
+      ],
+      "description": "PaperPilot's redaction painted a black rectangle and returned success. Its own text-extraction command recovered the secret. I tested the CLI, MCP and a removal control.",
+      "url": "https://gkoreli.com/oss-radar-10-paperpilot-redaction"
+    },
+    {
+      "slug": "oss-radar-11-qwenputer-compiled-cpu",
+      "title": "OSS Radar #11: Qwenputer Ran My Program Inside Qwen’s Layers",
+      "date": "2026-10-30",
+      "tags": [
+        "oss-radar",
+        "ai",
+        "transformers",
+        "testing"
+      ],
+      "description": "I compiled Qwenputer's standalone CPU, changed a program's inputs, and disabled the reference interpreter during generation. The model still computed the right result.",
+      "url": "https://gkoreli.com/oss-radar-11-qwenputer-compiled-cpu"
+    },
+    {
+      "slug": "oss-radar-12-claude-code-status-summary",
+      "title": "OSS Radar #12: Claude Code’s Status Labels Make Their Own Model Calls",
+      "date": "2026-10-30",
+      "tags": [
+        "oss-radar",
+        "ai",
+        "claude-code",
+        "testing"
+      ],
+      "description": "Claude Code's tiny agent-status labels can trigger separate model requests. I checked the binary and timer hook, including a case where the workaround silently misses.",
+      "url": "https://gkoreli.com/oss-radar-12-claude-code-status-summary"
+    },
+    {
+      "slug": "oss-radar-13-hob-offline-file-tasks",
+      "title": "OSS Radar #13: Hob Wrote Correct Files with Network Access Blocked",
+      "date": "2026-10-30",
+      "tags": [
+        "oss-radar",
+        "local-ai",
+        "macos",
+        "testing"
+      ],
+      "description": "Hob's local engine wrote the correct JSON and CSV report with networking blocked. I tested its recommended model, setup cost, waiting time and M1 selection rules.",
+      "url": "https://gkoreli.com/oss-radar-13-hob-offline-file-tasks"
+    },
+    {
+      "slug": "ai-fetcher-research-from-experiments-to-a-cited-reference",
+      "title": "My AI Agent Read My Blog. My Analytics Called It a Browser.",
+      "date": "2026-10-31",
+      "tags": [
+        "ai-agents",
+        "analytics",
+        "http",
+        "observability",
+        "agentic-engineering"
+      ],
+      "description": "Actual Duck.ai, ChatGPT and Grok fetches traced into storage, with screenshots. Grok's eleven requests were stored as Browser. What signatures, 628 events and Arcjet's citation prove.",
+      "url": "https://gkoreli.com/ai-fetcher-research-from-experiments-to-a-cited-reference"
+    },
+    {
+      "slug": "bun-aot-express-fastify-serializers",
+      "title": "Bun AOT in Express and Fastify: memory, CPU and serializers",
+      "date": "2026-11-01",
+      "tags": [
+        "bun",
+        "performance",
+        "express",
+        "fastify",
+        "sqlite"
+      ],
+      "description": "Bun AOT cut app memory by about half in Express and Fastify SQLite tests. I measured CPU, startup and a serializer built before compilation.",
+      "url": "https://gkoreli.com/bun-aot-express-fastify-serializers"
+    },
+    {
+      "slug": "in-the-age-of-abundance-less-is-more",
+      "title": "In the age of abundance, less is more",
+      "date": "2026-11-03",
+      "tags": [
+        "ai-agents",
+        "focus",
+        "productivity",
+        "engineering"
+      ],
+      "description": "AI agents let me keep several projects moving. A mentor's advice made me question whether useful parallel work keeps me from staying with one project.",
+      "url": "https://gkoreli.com/in-the-age-of-abundance-less-is-more"
+    },
+    {
+      "slug": "ai-fetcher-browser-crawler-headers",
+      "title": "AI Fetchers, Browsers, and Crawlers: Their Headers and How to Detect Them in Analytics",
+      "date": "2026-11-05",
+      "tags": [
+        "ai-agents",
+        "analytics",
+        "http",
+        "observability",
+        "cloudflare-workers"
+      ],
+      "description": "Live tests of AI search, fetch, crawl and browser tools: their HTTP headers, signature coverage, analytics blind spots, and the fixes I deployed.",
+      "url": "https://gkoreli.com/ai-fetcher-browser-crawler-headers"
+    },
+    {
+      "slug": "ai-site-check-evidence",
+      "title": "Check What AI Crawlers Can Reach on Your Site",
+      "date": "2026-11-05",
+      "tags": [
+        "ai-agents",
+        "analytics",
+        "http",
+        "robots-txt",
+        "cloudflare-workers"
+      ],
+      "description": "A free site checker and API for robots rules, page content, indexing controls and machine-readable links—with the evidence and limits behind each finding.",
+      "url": "https://gkoreli.com/ai-site-check-evidence"
+    },
+    {
+      "slug": "cloudflare-turnstile-signup-failures",
+      "title": "Cloudflare Turnstile: What Kept Breaking My Signup Form",
+      "date": "2026-11-07",
+      "tags": [
+        "cloudflare",
+        "turnstile",
+        "observability"
+      ],
+      "description": "In a controlled test, my form aborted its signup request after Turnstile reported success. Here's how I traced the races and uncertain email sends.",
+      "url": "https://gkoreli.com/cloudflare-turnstile-signup-failures"
+    },
+    {
+      "slug": "please-stop-misreading-user-agent",
+      "title": "Please Stop Misreading User-Agent. It’s Messing Up Your Analytics.",
+      "date": "2026-11-11",
+      "tags": [
+        "analytics",
+        "bots",
+        "cloudflare-workers",
+        "testing",
+        "ai-agents"
+      ],
+      "description": "Windows 11 can look like Windows 10. An iPad can look like a Mac. See how widely sites read User-Agent, how crawler counts go wrong, and how to audit your own analytics.",
+      "url": "https://gkoreli.com/please-stop-misreading-user-agent"
+    },
+    {
+      "slug": "oss-radar-14-november-show-hn",
+      "title": "OSS Radar #14: November’s Show HN Open-Source Launches",
+      "date": "2026-11-13",
+      "tags": [
+        "oss-radar",
+        "open-source",
+        "agents",
+        "developer-tools",
+        "self-hosting"
+      ],
+      "description": "Twelve November Show HN launches: what they solve, how their code works, and which ideas matter, from structural diffs to decision models and agent recovery.",
+      "url": "https://gkoreli.com/oss-radar-14-november-show-hn"
+    },
+    {
+      "slug": "prompt-cache-context-edits",
+      "title": "Can You Change an Agent’s Context Without Losing Its Prompt Cache?",
+      "date": "2026-09-29",
+      "tags": [
+        "prompt-caching",
+        "llm-inference",
+        "agent-harnesses",
+        "context-engineering"
+      ],
+      "description": "How LLM prompt caching works, why context edits cause misses, and how Pi, Oh My Pi, Codex, and OpenCode manage changes—with Sonnet 5.5 measurements.",
+      "url": "https://gkoreli.com/prompt-cache-context-edits"
+    }
+  ],
+  "sourceFiles": [
+    {
+      "file": "001-the-agentic-product-engineer.md",
+      "sha256": "76cef2505ca301756437eb405d59741c3fabd4bbabdd530e98a78dc766512e50"
+    },
+    {
+      "file": "002-oss-radar-01-vercel-winter-2026-cohort.md",
+      "sha256": "7c8a4d5cd19e8acfd5a3a1ba4fd62e5b000cf7287620f830cd159f636a3917d6"
+    },
+    {
+      "file": "003-how-ghx-was-born.md",
+      "sha256": "e1d7792a399cfeafacaf3504c0979eb2f2edef69ac10f589e56ba5bd21c09ac7"
+    },
+    {
+      "file": "004-topologies-of-thoughts.ts",
+      "sha256": "f62e9e4b8894a7a483cecc994d42d2b2b727aebc1034374f8cc472d4ce98ff78"
+    },
+    {
+      "file": "005-procrastination.ts",
+      "sha256": "b60b8ac63462a8ba27f093ca3aa22b2f04f2b16c8f79a9b180932374f4e8ef5b"
+    },
+    {
+      "file": "006-oss-radar-02-the-toolchain-is-the-moat.ts",
+      "sha256": "ff5f9b22bc908ac6029192625f5818f0bb10a9254d2c595b568fc75488f8d965"
+    },
+    {
+      "file": "007-you-dont-need-codemap.ts",
+      "sha256": "2a180bfad4c1a27477f1e5c7bf528db3d6708f2e7a7695300051804eb9d8ab8c"
+    },
+    {
+      "file": "008-life-as-background-music.md",
+      "sha256": "fbc6d6be8e9c898ed9d6bb35fe3d280e712d79e5885a542caeae69e64b81b06b"
+    },
+    {
+      "file": "009-linux-signal-stack-conflict.md",
+      "sha256": "e7bb22e948d4c8ac6338aeb48f2a39ea588d78e6d989849396568e3462fba6ea"
+    },
+    {
+      "file": "010-i-thought-building-was-enough.md",
+      "sha256": "086599cfb1661fefed9dc9031b486dd4a9403934416b2ab5494d8b010ddf4959"
+    },
+    {
+      "file": "011-what-if-the-agent-was-better-before-we-helped.md",
+      "sha256": "f7b0fe90b7f1cb70a534ed72cff70596cb5013ecb006b0a701a8d2b53d3bb44b"
+    },
+    {
+      "file": "012-one-hundred-pull-requests.ts",
+      "sha256": "45ec4cee7695167bc944c0d4b803bdf28a89099e4bb753103d4cd3e1feceb62a"
+    },
+    {
+      "file": "013-i-am-lost-right-now.md",
+      "sha256": "3a5a183f2e26cf66f19b973b2c7982be7b7a15032fbd730a756760bbe92d606b"
+    },
+    {
+      "file": "014-openwiki-validates-my-bet.md",
+      "sha256": "df659b17f0557e63a5fe0a7820458426f28107fb9e4af6591f6feb1a65753907"
+    },
+    {
+      "file": "015-oss-radar-03-the-agent-needs-an-account.ts",
+      "sha256": "c30eac39ec60e4767a18785599a7d02a3d9bcb066484a5ae08bf0d66ca2fc019"
+    },
+    {
+      "file": "016-bring-your-own-ai-agent.md",
+      "sha256": "4e0cab55b86ad433c61ce234919d9069c45b170ad89dc4b727e51a13853664a3"
+    },
+    {
+      "file": "017-oss-radar-04-the-agent-multiplexer-is-becoming-a-runtime.ts",
+      "sha256": "d536d781fdb3eb0ffef5d07669ca9f4062abd46a0f897eb64e4d91620b2f23ff"
+    },
+    {
+      "file": "018-my-evals-say-it-works-i-dont-use-it.md",
+      "sha256": "3613aae60b27de0066f7b62023d4aecca60ed878a60bee9cffa4797532bd1510"
+    },
+    {
+      "file": "019-does-llms-txt-work.md",
+      "sha256": "b324b390a6c4d7ad24636b549628a5b9b04787271c1c0875aa39c1288945da0a"
+    },
+    {
+      "file": "020-first-party-analytics-for-a-personal-blog.md",
+      "sha256": "12f3cf46acb4de0834f218f52df88bc90a627b0ee0228d910e73025d510de1f8"
+    },
+    {
+      "file": "021-oss-radar-05-bun-1-4.ts",
+      "sha256": "9b6c7598b90329fe53f592f3824ffd93ce87522b728365c0045906334daf4793"
+    },
+    {
+      "file": "022-oss-radar-06-interp-engine.ts",
+      "sha256": "aab7e7caa2a11d238b359cdc1cf708134a646c4f93355f068bfc1915bdb9fc8f"
+    },
+    {
+      "file": "023-which-ai-fetchers-send-which-headers.md",
+      "sha256": "af46ba4707e412c148f70296e9ae1dd09a67eff6d217806fc72c517bcf5bc85d"
+    },
+    {
+      "file": "024-how-i-separate-readers-from-bots-without-javascript.md",
+      "sha256": "de335574cb53858ebd0880a2eb95f212cbb88940a3b57ed01108085511f29001"
+    },
+    {
+      "file": "025-filter-referrer-spam-without-deleting-analytics-history.md",
+      "sha256": "8087463a9242bef7f70f5d39539e459542d41a0d4e540ad317b08469daf4bad0"
+    },
+    {
+      "file": "026-oss-radar-07-promptfoo.ts",
+      "sha256": "55865c724d67efe97e2ff80f6591c4d63fa363701a007980642a1f89a171aadd"
+    },
+    {
+      "file": "027-productive-procrastination.md",
+      "sha256": "107750756aed19a02eb7f958faf67ac404635ab8cc9bd3985a3c360cd0c35c99"
+    },
+    {
+      "file": "028-chatgpt-plugin-apps.md",
+      "sha256": "3621e714a26e48f1903183ad26d2f80cd811fdfb56f57e54b2ea9e207c087214"
+    },
+    {
+      "file": "029-openclaw-chose-solid-why-id-choose-nisli.md",
+      "sha256": "ec48fb2d46d75d75c8704f59072fa7b42d522b937fcaf8db2ff962271b0697a4"
+    },
+    {
+      "file": "030-building-blog-analytics-what-the-numbers-can-prove.md",
+      "sha256": "fbd4f3d2c123e3775686a0171e235f0bdadf37ec4a9f741128228986e9c93907"
+    },
+    {
+      "file": "031-oss-radar-08-bun-aot.md",
+      "sha256": "11377c9c45a1fafbc973ed8cb4febfdb32310d1e81d60de316825b37f79235cd"
+    },
+    {
+      "file": "032-why-worktree-setup-is-slow-on-macos.md",
+      "sha256": "e8358dd6be47ac0589b2d04b7e475d9e39c4564f042835e7913e5a62e413a078"
+    },
+    {
+      "file": "033-oss-radar-09-tsrs-typescript-memory.md",
+      "sha256": "801e1d946cb4b2fbea0b82efdd54e5ee3f3cc9d37884e43bb580ef016d8f7682"
+    },
+    {
+      "file": "034-oss-radar-10-paperpilot-redaction.md",
+      "sha256": "7b4434244ec975ba2ca14c6a03cbb8a19d7f10878c8bc023c49db789cd573c2c"
+    },
+    {
+      "file": "035-oss-radar-11-qwenputer-compiled-cpu.md",
+      "sha256": "f3254673d6606cac0b45fe4164d191451cef87b6e385bda1831ba62f5d275fc8"
+    },
+    {
+      "file": "036-oss-radar-12-claude-code-status-summary.md",
+      "sha256": "6c46ecccc9a6b2f74e8e5246dc8a7e4b28c81d42faa9a2f80193bf84783dc70b"
+    },
+    {
+      "file": "037-oss-radar-13-hob-offline-file-tasks.md",
+      "sha256": "fc3e06bd7a155d69d17b733a2ff15b41e04d7de0c9a36c21c1af158d4508ee19"
+    },
+    {
+      "file": "038-ai-fetcher-research-from-experiments-to-a-cited-reference.md",
+      "sha256": "ee518a89d8c2ddc88cc9bc83d90a55f8725b48b6b00b28f26e30a37a47780446"
+    },
+    {
+      "file": "039-bun-aot-express-fastify-serializers.md",
+      "sha256": "58a4dee8ac319e3b91f5fc908844ddee1fac1ef5c049b0fd4cf5cc38f520ddc4"
+    },
+    {
+      "file": "040-in-the-age-of-abundance-less-is-more.md",
+      "sha256": "8479fb4a2ff9464e60ecc464c4b2069cbf7c3e34d6e13ebdcdf9121fa2579b54"
+    },
+    {
+      "file": "041-ai-fetcher-browser-crawler-headers.md",
+      "sha256": "2e561184f758ef88896ecb686a30f55c32f9f0a85172b0491adeb93f61086db4"
+    },
+    {
+      "file": "042-ai-site-check-evidence.md",
+      "sha256": "526d4908aee31334dcbe8c0f1d348b7fc0511e0e6c975298772af50f33111127"
+    },
+    {
+      "file": "043-cloudflare-turnstile-signup-failures.md",
+      "sha256": "2ef9d97543b76550d63edc047d86ecad5069c59bef5346e28956943f4e0f6ed5"
+    },
+    {
+      "file": "044-please-stop-misreading-user-agent.md",
+      "sha256": "876a41d02ba8100eae4cfcc6ef1c8f60428ef8823be260bc9207892d52cdbe1f"
+    },
+    {
+      "file": "045-oss-radar-14-november-show-hn.md",
+      "sha256": "4fa60c6c50e6941b16d5b2b1204ce27a3a48ada413a5bf0fb6bf8274a09e854b"
+    },
+    {
+      "file": "prompt-cache-context-edits.ts",
+      "sha256": "8e5f0028a59681c93b78481b4dfc58839e7a1cdce885f8bebbd9277c8790642b"
+    }
+  ]
+}

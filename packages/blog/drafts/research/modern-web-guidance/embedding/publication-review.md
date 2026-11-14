@@ -27,3 +27,7 @@ A standalone reading preview rendered with the existing marked 17.0.4 parser was
 The title, opening, headings, example, source labels, result tables and ending were reviewed together for scope and readability. Private source-message preservation and scoped public-diff review remain part of delivery; raw source wording and operational captures are excluded from public files.
 
 Next bounded action: release preparation and publication when requested. The manuscript review is not evidence of deployment activation, current served behavior or reader reception.
+
+## November 14 practical extension
+
+A [local browser demo](../blog-search/README.md) now applies the released query calculation to 46 source-tree post titles and tags. The article adds the demonstrated queries, the prototype's symmetric short-metadata shortcut, and a separate proposed build-time path for compatible teacher document embeddings. It does not claim full-article vectors or production search were created. The November 13 frozen studies and results remain unchanged; this additional prose and demo are a later extension of the reviewed manuscript.

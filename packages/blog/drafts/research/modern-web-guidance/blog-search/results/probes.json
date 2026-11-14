@@ -1,0 +1,494 @@
+{
+  "purpose": "Source-aware exploratory examples; no independent relevance labels or accuracy estimate.",
+  "posts": 46,
+  "representation": "Experimental static title-and-tags vectors; not teacher document embeddings.",
+  "probes": [
+    {
+      "query": "signup form",
+      "recognized": [
+        "signup",
+        "form"
+      ],
+      "methods": {
+        "hybrid": [
+          {
+            "slug": "cloudflare-turnstile-signup-failures",
+            "title": "Cloudflare Turnstile: What Kept Breaking My Signup Form",
+            "alignment": 0.7698994888127508,
+            "matchedTerms": [
+              "signup",
+              "form"
+            ]
+          },
+          {
+            "slug": "linux-signal-stack-conflict",
+            "title": "One bitmask in task_struct: how a 10-line kernel patch resolves 15 years of multi-runtime signal conflicts on Linux",
+            "alignment": 0.7367771562924829,
+            "matchedTerms": []
+          },
+          {
+            "slug": "ai-site-check-evidence",
+            "title": "Check What AI Crawlers Can Reach on Your Site",
+            "alignment": 0.7366679358857957,
+            "matchedTerms": []
+          },
+          {
+            "slug": "in-the-age-of-abundance-less-is-more",
+            "title": "In the age of abundance, less is more",
+            "alignment": 0.7360601003131543,
+            "matchedTerms": []
+          },
+          {
+            "slug": "which-ai-fetchers-send-which-headers",
+            "title": "Which AI Fetchers Send Which Headers, Measured on a Live Site",
+            "alignment": 0.7342090898206614,
+            "matchedTerms": []
+          }
+        ],
+        "static": [
+          {
+            "slug": "cloudflare-turnstile-signup-failures",
+            "title": "Cloudflare Turnstile: What Kept Breaking My Signup Form",
+            "alignment": 0.7698994888127508,
+            "matchedTerms": [
+              "signup",
+              "form"
+            ]
+          },
+          {
+            "slug": "linux-signal-stack-conflict",
+            "title": "One bitmask in task_struct: how a 10-line kernel patch resolves 15 years of multi-runtime signal conflicts on Linux",
+            "alignment": 0.7367771562924829,
+            "matchedTerms": []
+          },
+          {
+            "slug": "ai-site-check-evidence",
+            "title": "Check What AI Crawlers Can Reach on Your Site",
+            "alignment": 0.7366679358857957,
+            "matchedTerms": []
+          },
+          {
+            "slug": "in-the-age-of-abundance-less-is-more",
+            "title": "In the age of abundance, less is more",
+            "alignment": 0.7360601003131543,
+            "matchedTerms": []
+          },
+          {
+            "slug": "which-ai-fetchers-send-which-headers",
+            "title": "Which AI Fetchers Send Which Headers, Measured on a Live Site",
+            "alignment": 0.7342090898206614,
+            "matchedTerms": []
+          }
+        ],
+        "keyword": [
+          {
+            "slug": "cloudflare-turnstile-signup-failures",
+            "title": "Cloudflare Turnstile: What Kept Breaking My Signup Form",
+            "alignment": 0.7698994888127508,
+            "matchedTerms": [
+              "signup",
+              "form"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "query": "user agent analytics",
+      "recognized": [
+        "user",
+        "agent",
+        "analytics"
+      ],
+      "methods": {
+        "hybrid": [
+          {
+            "slug": "ai-fetcher-research-from-experiments-to-a-cited-reference",
+            "title": "My AI Agent Read My Blog. My Analytics Called It a Browser.",
+            "alignment": 0.8600662718512149,
+            "matchedTerms": [
+              "agent",
+              "analytics"
+            ]
+          },
+          {
+            "slug": "bring-your-own-ai-agent",
+            "title": "Bring Your Own AI Agent Everywhere",
+            "alignment": 0.8317291855659082,
+            "matchedTerms": [
+              "agent"
+            ]
+          },
+          {
+            "slug": "first-party-analytics-for-a-personal-blog",
+            "title": "How I Built First-Party Analytics for a Personal Blog",
+            "alignment": 0.8345289805843459,
+            "matchedTerms": [
+              "analytics"
+            ]
+          },
+          {
+            "slug": "oss-radar-04-the-agent-multiplexer-is-becoming-a-runtime",
+            "title": "OSS Radar #04: The Agent Multiplexer Is Becoming a Runtime",
+            "alignment": 0.8254477618773852,
+            "matchedTerms": [
+              "agent"
+            ]
+          },
+          {
+            "slug": "ai-fetcher-browser-crawler-headers",
+            "title": "AI Fetchers, Browsers, and Crawlers: Their Headers and How to Detect Them in Analytics",
+            "alignment": 0.8398126865991175,
+            "matchedTerms": [
+              "analytics"
+            ]
+          }
+        ],
+        "static": [
+          {
+            "slug": "ai-fetcher-research-from-experiments-to-a-cited-reference",
+            "title": "My AI Agent Read My Blog. My Analytics Called It a Browser.",
+            "alignment": 0.8600662718512149,
+            "matchedTerms": [
+              "agent",
+              "analytics"
+            ]
+          },
+          {
+            "slug": "please-stop-misreading-user-agent",
+            "title": "Please Stop Misreading User-Agent. It’s Messing Up Your Analytics.",
+            "alignment": 0.8425470788924887,
+            "matchedTerms": [
+              "analytics"
+            ]
+          },
+          {
+            "slug": "ai-fetcher-browser-crawler-headers",
+            "title": "AI Fetchers, Browsers, and Crawlers: Their Headers and How to Detect Them in Analytics",
+            "alignment": 0.8398126865991175,
+            "matchedTerms": [
+              "analytics"
+            ]
+          },
+          {
+            "slug": "prompt-cache-context-edits",
+            "title": "Can You Change an Agent’s Context Without Losing Its Prompt Cache?",
+            "alignment": 0.8389882692791806,
+            "matchedTerms": [
+              "agent"
+            ]
+          },
+          {
+            "slug": "building-blog-analytics-what-the-numbers-can-prove",
+            "title": "Building Blog Analytics: What the Numbers Can Prove",
+            "alignment": 0.8362643730139803,
+            "matchedTerms": [
+              "analytics"
+            ]
+          }
+        ],
+        "keyword": [
+          {
+            "slug": "ai-fetcher-research-from-experiments-to-a-cited-reference",
+            "title": "My AI Agent Read My Blog. My Analytics Called It a Browser.",
+            "alignment": 0.8600662718512149,
+            "matchedTerms": [
+              "agent",
+              "analytics"
+            ]
+          },
+          {
+            "slug": "what-if-the-agent-was-better-before-we-helped",
+            "title": "What If the Agent Was Better Before We Helped?",
+            "alignment": 0.8098409910544103,
+            "matchedTerms": [
+              "agent"
+            ]
+          },
+          {
+            "slug": "bring-your-own-ai-agent",
+            "title": "Bring Your Own AI Agent Everywhere",
+            "alignment": 0.8317291855659082,
+            "matchedTerms": [
+              "agent"
+            ]
+          },
+          {
+            "slug": "oss-radar-04-the-agent-multiplexer-is-becoming-a-runtime",
+            "title": "OSS Radar #04: The Agent Multiplexer Is Becoming a Runtime",
+            "alignment": 0.8254477618773852,
+            "matchedTerms": [
+              "agent"
+            ]
+          },
+          {
+            "slug": "does-llms-txt-work",
+            "title": "Does llms.txt Work? What a Live Implementation Revealed",
+            "alignment": 0.8149093024116995,
+            "matchedTerms": [
+              "analytics"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "query": "Bun memory",
+      "recognized": [
+        "bun",
+        "memory"
+      ],
+      "methods": {
+        "hybrid": [
+          {
+            "slug": "bun-aot-express-fastify-serializers",
+            "title": "Bun AOT in Express and Fastify: memory, CPU and serializers",
+            "alignment": 0.8953082001216748,
+            "matchedTerms": [
+              "bun",
+              "memory"
+            ]
+          },
+          {
+            "slug": "linux-signal-stack-conflict",
+            "title": "One bitmask in task_struct: how a 10-line kernel patch resolves 15 years of multi-runtime signal conflicts on Linux",
+            "alignment": 0.8032957309273344,
+            "matchedTerms": [
+              "bun"
+            ]
+          },
+          {
+            "slug": "oss-radar-05-bun-1-4",
+            "title": "OSS Radar #05: Bun 1.4 Made the Runtime the Dependency",
+            "alignment": 0.8600329399007921,
+            "matchedTerms": [
+              "bun"
+            ]
+          },
+          {
+            "slug": "openwiki-validates-my-bet",
+            "title": "OpenWiki Validates My Bet. I Still Don't Know Where the Memory Should Live",
+            "alignment": 0.8032596438297399,
+            "matchedTerms": [
+              "memory"
+            ]
+          },
+          {
+            "slug": "oss-radar-08-bun-aot",
+            "title": "OSS Radar #08: Bun AOT — Don't Rewrite TypeScript in Rust Yet",
+            "alignment": 0.8242502948041666,
+            "matchedTerms": [
+              "bun"
+            ]
+          }
+        ],
+        "static": [
+          {
+            "slug": "bun-aot-express-fastify-serializers",
+            "title": "Bun AOT in Express and Fastify: memory, CPU and serializers",
+            "alignment": 0.8953082001216748,
+            "matchedTerms": [
+              "bun",
+              "memory"
+            ]
+          },
+          {
+            "slug": "oss-radar-05-bun-1-4",
+            "title": "OSS Radar #05: Bun 1.4 Made the Runtime the Dependency",
+            "alignment": 0.8600329399007921,
+            "matchedTerms": [
+              "bun"
+            ]
+          },
+          {
+            "slug": "oss-radar-08-bun-aot",
+            "title": "OSS Radar #08: Bun AOT — Don't Rewrite TypeScript in Rust Yet",
+            "alignment": 0.8242502948041666,
+            "matchedTerms": [
+              "bun"
+            ]
+          },
+          {
+            "slug": "linux-signal-stack-conflict",
+            "title": "One bitmask in task_struct: how a 10-line kernel patch resolves 15 years of multi-runtime signal conflicts on Linux",
+            "alignment": 0.8032957309273344,
+            "matchedTerms": [
+              "bun"
+            ]
+          },
+          {
+            "slug": "openwiki-validates-my-bet",
+            "title": "OpenWiki Validates My Bet. I Still Don't Know Where the Memory Should Live",
+            "alignment": 0.8032596438297399,
+            "matchedTerms": [
+              "memory"
+            ]
+          }
+        ],
+        "keyword": [
+          {
+            "slug": "bun-aot-express-fastify-serializers",
+            "title": "Bun AOT in Express and Fastify: memory, CPU and serializers",
+            "alignment": 0.8953082001216748,
+            "matchedTerms": [
+              "bun",
+              "memory"
+            ]
+          },
+          {
+            "slug": "linux-signal-stack-conflict",
+            "title": "One bitmask in task_struct: how a 10-line kernel patch resolves 15 years of multi-runtime signal conflicts on Linux",
+            "alignment": 0.8032957309273344,
+            "matchedTerms": [
+              "bun"
+            ]
+          },
+          {
+            "slug": "openwiki-validates-my-bet",
+            "title": "OpenWiki Validates My Bet. I Still Don't Know Where the Memory Should Live",
+            "alignment": 0.8032596438297399,
+            "matchedTerms": [
+              "memory"
+            ]
+          },
+          {
+            "slug": "oss-radar-05-bun-1-4",
+            "title": "OSS Radar #05: Bun 1.4 Made the Runtime the Dependency",
+            "alignment": 0.8600329399007921,
+            "matchedTerms": [
+              "bun"
+            ]
+          },
+          {
+            "slug": "oss-radar-08-bun-aot",
+            "title": "OSS Radar #08: Bun AOT — Don't Rewrite TypeScript in Rust Yet",
+            "alignment": 0.8242502948041666,
+            "matchedTerms": [
+              "bun"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "query": "newsletter bots",
+      "recognized": [
+        "newsletter",
+        "bots"
+      ],
+      "methods": {
+        "hybrid": [
+          {
+            "slug": "how-i-separate-readers-from-bots-without-javascript",
+            "title": "Bot Detection Without JavaScript: What My Blog Measured",
+            "alignment": 0.8189761309275359,
+            "matchedTerms": [
+              "bots"
+            ]
+          },
+          {
+            "slug": "please-stop-misreading-user-agent",
+            "title": "Please Stop Misreading User-Agent. It’s Messing Up Your Analytics.",
+            "alignment": 0.8227862080395592,
+            "matchedTerms": [
+              "bots"
+            ]
+          },
+          {
+            "slug": "building-blog-analytics-what-the-numbers-can-prove",
+            "title": "Building Blog Analytics: What the Numbers Can Prove",
+            "alignment": 0.8130284002107875,
+            "matchedTerms": [
+              "bots"
+            ]
+          },
+          {
+            "slug": "oss-radar-11-qwenputer-compiled-cpu",
+            "title": "OSS Radar #11: Qwenputer Ran My Program Inside Qwen’s Layers",
+            "alignment": 0.8051811835933476,
+            "matchedTerms": []
+          },
+          {
+            "slug": "oss-radar-03-buzz-is-slack-on-airoids",
+            "title": "OSS Radar #03: Buzz Is Slack on AIroids",
+            "alignment": 0.8037526295785212,
+            "matchedTerms": []
+          }
+        ],
+        "static": [
+          {
+            "slug": "please-stop-misreading-user-agent",
+            "title": "Please Stop Misreading User-Agent. It’s Messing Up Your Analytics.",
+            "alignment": 0.8227862080395592,
+            "matchedTerms": [
+              "bots"
+            ]
+          },
+          {
+            "slug": "how-i-separate-readers-from-bots-without-javascript",
+            "title": "Bot Detection Without JavaScript: What My Blog Measured",
+            "alignment": 0.8189761309275359,
+            "matchedTerms": [
+              "bots"
+            ]
+          },
+          {
+            "slug": "building-blog-analytics-what-the-numbers-can-prove",
+            "title": "Building Blog Analytics: What the Numbers Can Prove",
+            "alignment": 0.8130284002107875,
+            "matchedTerms": [
+              "bots"
+            ]
+          },
+          {
+            "slug": "oss-radar-11-qwenputer-compiled-cpu",
+            "title": "OSS Radar #11: Qwenputer Ran My Program Inside Qwen’s Layers",
+            "alignment": 0.8051811835933476,
+            "matchedTerms": []
+          },
+          {
+            "slug": "oss-radar-03-buzz-is-slack-on-airoids",
+            "title": "OSS Radar #03: Buzz Is Slack on AIroids",
+            "alignment": 0.8037526295785212,
+            "matchedTerms": []
+          }
+        ],
+        "keyword": [
+          {
+            "slug": "how-i-separate-readers-from-bots-without-javascript",
+            "title": "Bot Detection Without JavaScript: What My Blog Measured",
+            "alignment": 0.8189761309275359,
+            "matchedTerms": [
+              "bots"
+            ]
+          },
+          {
+            "slug": "building-blog-analytics-what-the-numbers-can-prove",
+            "title": "Building Blog Analytics: What the Numbers Can Prove",
+            "alignment": 0.8130284002107875,
+            "matchedTerms": [
+              "bots"
+            ]
+          },
+          {
+            "slug": "please-stop-misreading-user-agent",
+            "title": "Please Stop Misreading User-Agent. It’s Messing Up Your Analytics.",
+            "alignment": 0.8227862080395592,
+            "matchedTerms": [
+              "bots"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "query": "qzxwvvunknown",
+      "recognized": [],
+      "methods": {
+        "hybrid": [],
+        "static": [],
+        "keyword": []
+      }
+    }
+  ]
+}

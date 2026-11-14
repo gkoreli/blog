@@ -1,0 +1,44 @@
+{
+  "capturedAt": "2026-11-14T15:54:30.588Z",
+  "posts": 46,
+  "sourceCommit": "036058876bea2150042c02390445582b39dd04db",
+  "sourceSnapshotSha256": "68efc84f7320bc1f347dd6fcf7a9357ba0edaee2a19653fa65efc23d92137f7c",
+  "modelFiles": [
+    {
+      "file": "query-words.json",
+      "sha256": "14ddb88bf337a4726a62a13788241d84d656e798a7188b3cc655b1328c863966",
+      "bytes": 316653
+    },
+    {
+      "file": "query-words.i8",
+      "sha256": "6c88bceb3b737ec4fdbaa7b1a1a9034f5cd46895c0d2f36aff5c7639d14be82b",
+      "bytes": 7466240
+    },
+    {
+      "file": "query-words.scale.f32",
+      "sha256": "4067f3b83a2ae21ffa3df21db1b159b2c04f6058ab394a4e2647d81faf28deea",
+      "bytes": 116660
+    }
+  ],
+  "upstreamLicense": "Apache-2.0",
+  "noticeFiles": [
+    {
+      "file": "LICENSE.upstream",
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "bytes": 11358
+    },
+    {
+      "file": "THIRD_PARTY_NOTICES.upstream",
+      "sha256": "25181107e30dfdd5f884f25fa2e3a9df762027954873a7d2c27808e645f26b9e",
+      "bytes": 33965
+    }
+  ],
+  "vectorsMatchedReference": 51,
+  "vectorShape": [
+    46,
+    256
+  ],
+  "fullArticleEmbeddingsGenerated": false,
+  "modelApiCalls": 0,
+  "productionChange": false
+}

@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Blog search lab · seven-line embeddings</title>
+<link rel="stylesheet" href="style.css">
+<main>
+  <p class="eyebrow">gkoreli.com · local experiment</p>
+  <h1>Try the seven-line embedder on blog titles</h1>
+  <p class="intro">Type a short query. The browser loads the real MWG word table, runs the query calculation, and compares the result with precomputed vectors for post titles and tags.</p>
+  <p class="boundary">This experiment embeds short metadata with the query table on both sides. It does not implement MWG’s teacher-embedded full-document index. Search quality is exploratory; vector alignment is not a confidence score.</p>
+  <form role="search"><fieldset disabled>
+    <label for="query">Search the blog</label><div class="search-row"><input id="query" name="q" type="search" maxlength="200" value="signup form" placeholder="e.g. user agent analytics"><button type="submit">Search</button></div>
+    <label for="mode">Compare retrieval methods</label><select id="mode"><option value="hybrid">Hybrid: vector rank + keyword rank</option><option value="static">Static metadata vectors only</option><option value="keyword">Keyword overlap only</option></select>
+    <div class="examples"><button type="button" data-query="signup form">Signup forms</button><button type="button" data-query="user agent analytics">Bot analytics</button><button type="button" data-query="Bun memory">Bun memory</button></div>
+  </fieldset></form>
+  <p id="status" role="status">Loading the local word table and post index…</p>
+  <p id="result-note" aria-live="polite"></p><ol id="results"></ol>
+  <details><summary>What is running?</summary><p>At build time, this demo embeds each title and its tags with the released query table. At search time, a Web Worker encodes your query, takes dot products, and optionally combines vector rank with literal keyword overlap rank. Descriptions are displayed as snippets and are not indexed. The model files load once; queries run in this page’s worker.</p><p>A full-article version needs article chunks embedded with a compatible document model before publication. The tiny query loop is only one part of that pipeline.</p></details>
+  <details><summary>Browse the article snapshot without search</summary><ul id="fallback"><!--CATALOG_LINKS--></ul></details>
+  <noscript><p>The search needs JavaScript. The article links above work without it.</p></noscript>
+</main><script type="module" src="client.mjs"></script>
+</html>

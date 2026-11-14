@@ -98,6 +98,18 @@ Size needs the same care. The query table contains **7.47 MB of signed-byte coor
 
 The engineering report lists a historical 7.1 MB tarball and an older 507 MB unpacked dependency installation. I did not establish the reason for the current archive difference or recreate that installation. Those differently scoped figures do not yield a like-for-like compression ratio.
 
+## Trying it as search on my blog
+
+On November 14, I added a [local browser demonstration](https://github.com/gkoreli/blog/tree/main/packages/blog/drafts/research/modern-web-guidance/blog-search) over 46 post titles and tags from the blog’s source tree. A Web Worker loads the real word table, encodes a query and ranks precomputed metadata vectors. In the browser, `Bun memory` put my Bun/Express/Fastify article first; `signup form` put the Turnstile article first. This is an experimental catalog snapshot, not a deployed search feature.
+
+The shortcut is explicit: I used the query table to encode short metadata on both sides. I did not create teacher embeddings for article bodies. Some returned matches were weak, and a `newsletter bots` probe missed the Turnstile post in the first five. The toy index illustrates the mechanics without establishing full-article search quality.
+
+To follow MWG’s complete design, a blog would prepare its own document index before publishing. Split article text into bounded sections, embed them with a compatible document model, and store each vector with its article URL and snippet. The inspected MWG pipeline uses `gemini-embedding-001` with `RETRIEVAL_DOCUMENT`, requests 768 coordinates, then keeps and normalizes the first 256. The proposed blog build would need that step; it was not run for this demo.
+
+When a visitor searches, the loop produces the query vector. Compare it with the saved section vectors, rank the best matching sections per article, and test a lexical or hybrid alternative. Document and query vectors need a compatible learned space; equal array lengths alone do not establish that compatibility.
+
+The three query-model files alone total about **7.9 MB before compression** here. A browser implementation downloads them; a server-side implementation can keep that model download on the server. The small loop is one component of the choice, alongside index preparation, delivery cost and measured relevance on the blog’s own questions.
+
 ## The same loop needs the right learned rows
 
 To test the table’s contribution, I shuffled assignments between words and complete vector/scale rows with a fixed seed. The accumulation algorithm and row distribution stayed intact; words received other words’ representations.
