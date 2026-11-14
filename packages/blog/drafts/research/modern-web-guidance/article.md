@@ -159,7 +159,7 @@ A later [reader-search pass](https://github.com/gkoreli/blog/blob/main/packages/
 
 ## Our approach: article search with source paragraphs
 
-I built [`@gkoreli/search`](https://github.com/gkoreli/blog/tree/main/packages/search) inside this blog's monorepo to test that distinction in an actual reader interface. Its two modes serve different needs: **Words** for names and exact details, and optional **Related ideas** for a description whose wording differs from the source. Both return the article's own text and paragraph links.
+I built [`@gkoreli/search`](https://github.com/gkoreli/blog/tree/main/packages/search) inside this blog's monorepo to test that distinction in an actual reader interface. The [blog search](https://gkoreli.com/search) has two modes: **Words** for names and exact details, and optional **Related ideas** for a description whose wording differs from the source. Both return the article's own text and paragraph links.
 
 Before choosing defaults, I compared the original BM25/E5 controls with MiniSearch BM25+, fuzzy/prefix search, Pagefind's generated search engine and an additional cross-encoder reranker. I also read DocSearch's keyboard, result and client code. **DocSearch calls hosted Algolia; I did not run an Algolia ranking or crawler trial.** Native whole-page Pagefind received its own index alongside controlled record-level comparisons. [Versions, all conditions, failures and rankings](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/modern-web-guidance/search-package/report.md).
 
@@ -185,7 +185,7 @@ The integrated current-corpus index contains **46 articles and 3,954 source pass
 
 A broad emoji recollection illustrates the limit. It returned OSS Radar #01, but word search's excerpts were generic, and related search surfaced an animated-icon library. That does not confirm an emoji project. A more specific Moving Icons/Svelte query exposed the source explanation; arrow navigation and Enter opened and highlighted that paragraph. Showing source text lets the reader inspect this distinction.
 
-The interface uses a regular search page and a native dialog opened with Cmd/Ctrl+K. Word search loads no transformer. Related search explicitly enables roughly **53.3 MB of additional raw model, runtime and vector files**, which the browser may cache. The lexical index is another 5.72 MB raw; a local Brotli encoding was 0.79 MB, not a measured production transfer. The oversized ONNX file is split for the host's per-file limit, without reducing its total size. This is a materially heavier client than MWG's query table.
+The interface uses a regular search page and a native dialog opened with Cmd/Ctrl+K. Word search loads no transformer. Related search explicitly enables roughly **53.3 MB of additional raw model, runtime and vector files**, which the browser may cache. The lexical index is another 5.72 MB raw; one production Brotli response measured 1.22 MB. The oversized ONNX file is split for the host's per-file limit, without reducing its total size. This is a materially heavier client than MWG's query table.
 
 Interactive queries run in a browser worker with self-hosted assets. The plain GET form works without JavaScript and sends its query in the URL to the site, where infrastructure logs can retain it. The product returns passages to inspect, with no generated answer or confidence percentage. Browser/device cost, refusal behavior and incomplete relevance labels remain part of the engineering problem.
 

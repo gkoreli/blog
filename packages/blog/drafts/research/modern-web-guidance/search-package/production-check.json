@@ -1,0 +1,34 @@
+{
+  "checkedAt": "2026-11-14T21:58:03.385Z",
+  "sourceCommit": "3a06160815c90762c4625c838bca854fe4d67d72",
+  "buildIdentity": "cf:34acb504-9cc0-46b7-b7e0-0e58bed11978:3a06160815c90762c4625c838bca854fe4d67d72",
+  "indexPath": "/search-assets/ee27d66e5b7e87fd9a08/index.json",
+  "vectorsPath": "/search-assets/ee27d66e5b7e87fd9a08/vectors.f32",
+  "sameIndexAndVectorPathsAsReplayed": true,
+  "articles": 46,
+  "passages": 3954,
+  "manifestStatus": 200,
+  "newsletterConfigured": true,
+  "deploymentId": "4be09e74-b1b1-4291-9406-55366e8ada9c",
+  "version": [
+    {
+      "version_id": "9823b6b6-6737-495d-89c1-610e93a0de5c",
+      "percentage": 100
+    }
+  ],
+  "activatedAt": "2026-11-14T21:56:39.746784Z",
+  "sourceParagraph": {
+    "url": "https://gkoreli.com/oss-radar-01-vercel-winter-2026-cohort#passage-c1a1899b18fa3a73",
+    "highlightObserved": true,
+    "sourceTextSha256": "c1a1899b18fa3a735e196950c26321428ff369a7e0e48e617f47e5c8473b4a38"
+  },
+  "indexResponse": {
+    "checkedAt": "2026-11-14T21:59:30.186Z",
+    "status": 200,
+    "encoding": "br",
+    "encodedBytes": 1216149,
+    "decodedBytes": 5724986,
+    "sha256": "ee27d66e5b7e87fd9a08642a795cf9e278ad3f82d37ccfbc5cd40efd7c6fc1d2"
+  },
+  "limits": "Point-in-time controlled acceptance. No audience-growth, independent reader accuracy, universal device support, npm release or article publication is implied."
+}
