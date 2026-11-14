@@ -1,3 +1,5 @@
+import { calendarWeekday } from '@gkoreli/time';
+import { ZonedCalendar } from '@gkoreli/time/calendar';
 import { existsSync, readFileSync, readdirSync, renameSync } from 'node:fs';
 import { join } from 'node:path';
 import { pathToFileURL } from 'node:url';
@@ -22,7 +24,7 @@ const scheduleSchema = z.object({
 });
 
 function isMonday(date: string): boolean {
-  return new Date(`${date}T12:00:00Z`).getUTCDay() === 1;
+  return calendarWeekday(date) === 1;
 }
 
 export function readPublicationSchedule(root: string) {
@@ -67,15 +69,9 @@ async function readArticleMeta(file: string) {
 
 export async function publishScheduledArticle(root: string, now = new Date()) {
   const schedule = readPublicationSchedule(root);
-  const parts = new Intl.DateTimeFormat('en-CA', {
-    timeZone: schedule.timeZone,
-    year: 'numeric', month: '2-digit', day: '2-digit',
-    hour: '2-digit', minute: '2-digit', hourCycle: 'h23',
-  }).formatToParts(now);
-  const part = (type: string) => parts.find(value => value.type === type)?.value ?? '';
-  const date = `${part('year')}-${part('month')}-${part('day')}`;
-  const time = `${part('hour')}:${part('minute')}`;
-  if (date < schedule.startDate || !isMonday(date) || time < schedule.releaseTime) {
+  const calendar = new ZonedCalendar(schedule.timeZone);
+  const date = calendar.dateAt(now);
+  if (date < schedule.startDate || !isMonday(date) || now.getTime() < Date.parse(calendar.atTime(date, schedule.releaseTime))) {
     return { changed: false, date, slug: '', message: 'Outside the Monday 08:00 Pacific release window.' };
   }
   const article = schedule.articles.find(value => value.date === date);

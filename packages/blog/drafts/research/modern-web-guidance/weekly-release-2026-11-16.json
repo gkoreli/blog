@@ -3,7 +3,7 @@
   "releaseTime": "08:00",
   "timeZone": "America/Los_Angeles",
   "issue": 15,
-  "state": "reviewed source queued; local rehearsal and hosted queue check accepted",
+  "state": "Radar assignment withdrawn; unpublished engineering article; not queued",
   "queueFile": "packages/blog/scheduled/2026-11-16/046-oss-radar-15-modern-web-guidance-static-embeddings.md",
   "queueSha256": "cf75e38316d0eeeb8cf14fcd22ef9846d5628c9e4fdc74404dcd11d7b51e6e08",
   "savedEvidenceVerification": {
@@ -187,5 +187,13 @@
     },
     "productionPublicationObserved": false,
     "hostedCheckForRevisedBytes": "not run; previous hosted acceptance identifies earlier queue source"
+  },
+  "radarAssignmentWithdrawn": {
+    "date": "2026-11-14",
+    "classification": "engineering",
+    "manifestEntryRemoved": true,
+    "queueCopyRemoved": true,
+    "publicationPausePreserved": true,
+    "earlierReceipts": "historical; not current release authorization"
   }
 }

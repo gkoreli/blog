@@ -5,10 +5,5 @@
   "section": "oss-radar",
   "startDate": "2026-11-16",
   "releaseTime": "08:00",
-  "articles": [
-    {
-      "date": "2026-11-16",
-      "file": "046-oss-radar-15-modern-web-guidance-static-embeddings.md"
-    }
-  ]
+  "articles": []
 }

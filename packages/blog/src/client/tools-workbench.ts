@@ -2,7 +2,7 @@ import { comparisonExample } from '../lib/report-comparison-example.js';
 import { ROBOTS_EXAMPLES } from '../lib/robots-examples.js';
 import { evaluateRobotsWorkbench, compareSiteReports, deriveTechnicalAssessment, WorkbenchInputError } from '@gkoreli/site-audit/product';
 import { isSiteAuditReport } from '@gkoreli/site-audit/report-validation';
-import { reportIdentity } from '../lib/site-audit-presentation.js';
+import { localTimeElement } from './local-time.js';
 import type { SiteAuditReport } from '@gkoreli/site-audit/contracts';
 import { node, definition, makeTable, rawEvidence, object } from './tool-dom.js';
 
@@ -53,7 +53,10 @@ export function renderReportComparison(before: SiteAuditReport, after: SiteAudit
   const diff = compareSiteReports(before, after), section = node('section', undefined, 'comparison-result'); section.tabIndex = -1; section.setAttribute('aria-label', 'Report comparison result');
   if ([before, after].some(report => report.limits.some(limit => limit.startsWith('ILLUSTRATIVE EXAMPLE:')))) section.append(node('p', 'Illustrative example data · Supplied demonstration values are not live measurements.', 'comparison-example-note'));
   section.append(node('h2', diff.comparable ? 'Here is what changed.' : 'Review the comparison conditions.', 'comparison-heading'));
-  const context = definition([['Before', `${diff.baselineTarget} · ${reportIdentity(before).observed}`], ['After', `${diff.currentTarget} · ${reportIdentity(after).observed}`]]); section.append(context);
+  const context = definition([['Before', diff.baselineTarget], ['After', diff.currentTarget]]);
+  const dates = context.querySelectorAll('dd');
+  dates[0]?.append(' · ', localTimeElement(before.checkedAt)); dates[1]?.append(' · ', localTimeElement(after.checkedAt));
+  section.append(context);
   for (const reason of diff.reasons) section.append(node('p', reason, 'ai-check-note'));
   const summaries = node('div', undefined, 'access-components comparison-score-summary');
   for (const [label, report] of [['Before', before], ['After', after]] as const) {

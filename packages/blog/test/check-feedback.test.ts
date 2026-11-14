@@ -5,12 +5,14 @@ import { checkErrorHtml } from '../src/worker/ai-check-html.js';
 
 test('daily exhaustion gives one reset explanation and useful free alternatives', () => {
   const quota = { limit: 10, remaining: 0, resetAt: '2026-11-07T00:00:00Z' };
-  const feedback = failureFeedback('Your ten daily checks have been used. Try again after the UTC reset.', 429, quota, 'America/Los_Angeles');
+  const feedback = failureFeedback('Your ten daily checks have been used. Try again after the UTC reset.', 429, quota);
   assert.equal(feedback.tone, 'limited'); assert.equal(feedback.title, 'Daily limit reached');
-  assert.match(feedback.detail, /Nov 6, 4:00 PM PST/); assert.doesNotMatch(feedback.detail, /UTC reset|0 of 10/);
+  assert.equal(feedback.resetAt, '2026-11-07T00:00:00.000Z');
+  assert.equal(feedback.detail, 'Your network’s free checks reset');
   assert.equal(feedback.meta, '0 of 10 checks remaining');
   const html = checkErrorHtml('Old repeated error', 429, quota);
   assert.match(html, /Daily limit reached/); assert.match(html, /UTC/);
+  assert.match(html, /<time datetime="2026-11-07T00:00:00.000Z" data-local-time>/);
   assert.match(html, /href="\/ai-check\/example#access-report"/); assert.match(html, /href="\/tools\/robots"/);
   assert.doesNotMatch(html, /Old repeated error/);
 });

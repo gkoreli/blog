@@ -1,3 +1,4 @@
+import { utcInstant } from '@gkoreli/time';
 import type { ClientContext, ClientErrorEvent, ClientErrorInput } from './types.js';
 import { parseClientErrorPayload } from './schema.js';
 
@@ -6,7 +7,7 @@ export function browserContext(): ClientContext {
     path: location.pathname,
     referrer: document.referrer || undefined,
     userAgent: navigator.userAgent || undefined,
-    occurredAt: new Date().toISOString(),
+    occurredAt: utcInstant(Date.now()),
   };
 }
 

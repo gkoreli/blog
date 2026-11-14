@@ -1,3 +1,4 @@
+import { databaseTimestamp, utcInstant } from '@gkoreli/time';
 import type { RequestDiagnosticInputs } from './request-evidence.js';
 import { REQUEST_EVIDENCE_VERSION } from './request-evidence.js';
 import { isObservationId } from './observation-storage.js';
@@ -15,10 +16,7 @@ export interface ObservationDiagnostic extends RequestDiagnosticInputs {
 }
 
 export function diagnosticExpiry(observedAt: string): string {
-  const date = new Date(`${observedAt.replace(' ', 'T')}Z`);
-  if (!Number.isFinite(date.getTime())) throw new Error('Invalid diagnostic observation time');
-  date.setUTCDate(date.getUTCDate() + DIAGNOSTIC_RETENTION_DAYS);
-  return date.toISOString().replace('T', ' ').slice(0, 19);
+  return databaseTimestamp(Date.parse(utcInstant(observedAt)) + DIAGNOSTIC_RETENTION_DAYS * 86_400_000);
 }
 
 /** Optional diagnostics never get their own public HTTP route. */
@@ -42,13 +40,13 @@ export async function recordDiagnostic(
   await db.prepare(`INSERT INTO page_observation_diagnostics
     (observation_id, evidence_version, captured_at, expires_at, payload)
     VALUES (?, ?, ?, ?, ?)`)
-    .bind(reference, REQUEST_EVIDENCE_VERSION, observedAt, diagnosticExpiry(observedAt), payload).run();
+    .bind(reference, REQUEST_EVIDENCE_VERSION, databaseTimestamp(observedAt), diagnosticExpiry(observedAt), payload).run();
 }
 
 /** Read-side expiry is enforced before exposing even private source evidence. */
 export async function readRecentDiagnostics(db: D1Database, now = new Date(), limit = 25): Promise<unknown[]> {
   if (!Number.isInteger(limit) || limit < 1 || limit > 100) throw new Error('Diagnostic limit must be between 1 and 100');
-  const cutoff = now.toISOString().replace('T', ' ').slice(0, 19);
+  const cutoff = databaseTimestamp(now);
   const result = await db.prepare(`SELECT observation_id, evidence_version, captured_at, expires_at, payload
     FROM page_observation_diagnostics WHERE expires_at > ? ORDER BY expires_at DESC LIMIT ?`)
     .bind(cutoff, limit).all();
@@ -57,7 +55,7 @@ export async function readRecentDiagnostics(db: D1Database, now = new Date(), li
 
 /** At most 10,000 indexed deletions per scheduled invocation; expose backlog. */
 export async function purgeExpiredDiagnostics(db: D1Database, now = new Date()): Promise<{ deleted: number; atLimit: boolean }> {
-  const cutoff = now.toISOString().replace('T', ' ').slice(0, 19);
+  const cutoff = databaseTimestamp(now);
   let deleted = 0;
   for (let iteration = 0; iteration < 10; iteration++) {
     const result = await db.prepare(`DELETE FROM page_observation_diagnostics WHERE observation_id IN (

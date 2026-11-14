@@ -1,0 +1,14 @@
+# OSS Radar discovery and return visits
+
+November 14, 2026. Use the [series format](../../../.agents/skills/writing/references/oss-radar-format.md) and [participant workflow](../../../.agents/skills/writing/references/oss-radar-due-diligence.md). Sources supply leads; substantive project work and editorial judgment determine inclusion. One issue may review a cohort or a coherent mixed selection. Do not turn attention feeds into evidence of demand, quality or a market trend.
+
+| Source | Current use | Next action |
+| --- | --- | --- |
+| [Show HN](https://news.ycombinator.com/show) and its dated index | #14 covered November 1–10; [#15's first pool](../../../packages/blog/drafts/research/oss-radar-15-november-show-hn/README.md) begins November 11–14 | Refresh the closed window and reconcile entrants/exclusions before final selection |
+| [GitHub feed](https://github.com/feed), public release activity and recommendations | Feed access checked in the browser; independently verified public leads include [Hermes Agent](https://github.com/NousResearch/hermes-agent), [NemoClaw](https://github.com/NVIDIA/NemoClaw) and [Plannotator](https://github.com/backnotprop/plannotator) | Treat these as discovery-only until source, history, claims and meaningful trials are reviewed; do not displace #15's unfinished entries |
+| [Issue #1's Vercel cohort](../../../packages/blog/posts/002-oss-radar-01-vercel-winter-2026-cohort.md) | A dated starting point for returns, not a claim about current project state. [Takumi's dossier](../../../packages/blog/drafts/research/oss-radar-15-november-show-hn/03-participant-dossiers.md#takumi--returning-project) compares historical/current positioning and reproduces a native font-registration change with an exact-same-object control | Expand the shared-output evaluation only where it changes the take; choose later returns by meaningful changed evidence |
+| Maintainer release notes, architecture posts, RFCs and firsthand discussions | Used within participant dossiers for design reasons, recent work and operating friction | Prefer primary sources, distinguish release/default-branch state and preserve conflicting evidence |
+
+The personal feed's raw page, account state and recommendation relationships are not public research artifacts. Only independently checked public repositories/releases belong in the public source pool. No follow, star, reaction, post, account setting, external message or maintainer contact was performed for this work.
+
+For a return visit, ask what was actually built since the prior article, which old judgment survives, what changed in the recent weeks, and which evidence supports a pivot or a possible future. Recover historical code when possible and label a reconstructed checkpoint honestly. A new package description or a large commit count alone does not establish a new product direction.

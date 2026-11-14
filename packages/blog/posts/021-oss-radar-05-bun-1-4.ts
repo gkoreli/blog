@@ -1,3 +1,4 @@
+import { timeFallback } from '../src/lib/local-time.js';
 import { html } from '@nisli/core';
 import type { PostMeta } from '../src/lib/frontmatter.js';
 import {
@@ -41,17 +42,7 @@ function formatCount(value: number): string {
   return new Intl.NumberFormat('en-US').format(value);
 }
 
-function formatTimestamp(value: string): string {
-  return new Intl.DateTimeFormat('en-US', {
-    month: 'short',
-    day: 'numeric',
-    year: 'numeric',
-    hour: 'numeric',
-    minute: '2-digit',
-    timeZoneName: 'short',
-    timeZone: 'America/Los_Angeles',
-  }).format(new Date(value));
-}
+
 
 export const meta: PostMeta = {
   title: 'OSS Radar #05: Bun 1.4 Made the Runtime the Dependency',
@@ -86,6 +77,7 @@ export function preamble() {
 }
 
 export function article() {
+  const started = timeFallback(researchFootprint.startedAt), measured = timeFallback(researchFootprint.measuredAt);
   return html`
 <article class="post-content">
   <p class="post-lede">
@@ -689,8 +681,8 @@ export function article() {
     </div>
     <p>
       The planning envelope was 90–120 minutes and 250,000–400,000 aggregate tokens. The measured freeze arrived
-      after ${researchFootprint.wallClockMinutes} minutes, from <time datetime="${researchFootprint.startedAt}">${formatTimestamp(researchFootprint.startedAt)}</time>
-      to <time datetime="${researchFootprint.measuredAt}">${formatTimestamp(researchFootprint.measuredAt)}</time>.
+      after ${researchFootprint.wallClockMinutes} minutes, from <time datetime=${started.instant} data-local-time>${started.label}</time>
+      to <time datetime=${measured.instant} data-local-time>${measured.label}</time>.
       The token estimate was badly wrong because cumulative accounting counts the full context presented on every
       response, including cache hits.
     </p>

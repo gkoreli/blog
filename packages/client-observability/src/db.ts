@@ -22,7 +22,6 @@ export async function recordClientError(db: D1Database, event: ServerClientError
     profile: 'client-error-processing-v1', sanitization: SANITIZATION_PROFILE,
     admission: event.admissionProfile === ADMISSION_PROFILE ? ADMISSION_PROFILE : 'unassessed',
   };
-  const occurred = Date.parse(clean.occurredAt);
   const result = await db.prepare(INSERT).bind(
     event.id,
     clean.type,
@@ -41,7 +40,7 @@ export async function recordClientError(db: D1Database, event: ServerClientError
     event.country,
     event.colo,
     event.asOrganization,
-    Number.isFinite(occurred) ? new Date(occurred).toISOString() : null,
+    clean.occurredAt,
     subscription === undefined ? null : JSON.stringify(subscription),
     JSON.stringify(processing),
   ).run();

@@ -1,3 +1,4 @@
+import { utcInstant } from '@gkoreli/time';
 /**
  * Manual admin campaign sender. A durable campaign identity is admitted before
  * provider calls. Reserved/interrupted campaigns are not automatically replayed;
@@ -89,7 +90,7 @@ export async function handleSend(request: Request, env: NewsletterEnv): Promise<
             sub_id: recipient.subscriberId, email: recipient.email,
             status: receipt.outcome === 'accepted' ? 'sent' : 'failed',
             resend_id: receipt.providerId, error: receipt.outcome === 'failed' ? 'provider_rejected' : null,
-            sent_at: new Date().toISOString() });
+            sent_at: utcInstant(Date.now()) });
         }
         await insertDeliveryLogs(env.DB, logs);
       },

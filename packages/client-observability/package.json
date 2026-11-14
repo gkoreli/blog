@@ -11,10 +11,14 @@
     "./server": "./src/server.ts"
   },
   "scripts": {
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "pretypecheck": "pnpm -C ../time build"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20250306.0",
     "typescript": "^7.0.2"
+  },
+  "dependencies": {
+    "@gkoreli/time": "workspace:*"
   }
 }

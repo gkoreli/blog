@@ -1,3 +1,4 @@
+import { isUtcInstant as instant } from '@gkoreli/time';
 /** Offline observations of agent-operated search and reviewed external references.
  * No inference of people, answer citations, traffic or population growth. */
 export const AGENT_DISCOVERY_VERSION = 'agent-discovery-v1';
@@ -37,10 +38,7 @@ function object(value: unknown): value is Record<string, unknown> { return value
 function fields(value: Record<string, unknown>, keys: string[]): boolean { return Object.keys(value).length === keys.length && keys.every(key => Object.hasOwn(value, key)); }
 function text(value: unknown, maximum = 2048): value is string { return typeof value === 'string' && value.length > 0 && value.length <= maximum && value.trim().length > 0; }
 function id(value: unknown): value is string { return typeof value === 'string' && /^[a-z0-9][a-z0-9-]{0,63}$/.test(value); }
-function instant(value: unknown): value is string {
-  return typeof value === 'string' && /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d{3})?Z$/.test(value)
-    && Number.isFinite(Date.parse(value)) && new Date(value).toISOString().replace('.000Z', 'Z') === value.replace('.000Z', 'Z');
-}
+
 function hash(value: unknown): value is string { return typeof value === 'string' && /^[a-f0-9]{64}$/.test(value); }
 function url(value: unknown): value is string {
   if (!text(value, 4096)) return false;

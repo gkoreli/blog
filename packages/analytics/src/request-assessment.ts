@@ -1,3 +1,4 @@
+import { utcInstant } from '@gkoreli/time';
 import { analyzeTraffic } from './classify.js';
 import { classificationEvidence } from './classification-evidence.js';
 import { clientFormEvidence } from './client-form.js';
@@ -39,7 +40,7 @@ export async function assessRequest(request: Request, dependencies: RequestAsses
   const verification = verificationEvidence(request, signature, dependencies.verifySignature !== undefined, traffic.declarations.candidates);
   return {
     version: REQUEST_ASSESSMENT_VERSION,
-    checkedAt: (dependencies.now?.() ?? new Date()).toISOString(),
+    checkedAt: utcInstant(dependencies.now?.() ?? Date.now()),
     provenance: 'incoming-request' as const,
     context: { referrerState: metadata.referrerState, fetchSite: reportedFetchSite(metadata.secFetchSite) },
     classification: { trafficClass: traffic.trafficClass, readerKind: reader.kind,

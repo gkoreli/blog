@@ -1,9 +1,11 @@
 import { html } from '@nisli/core';
+import { timeFallback } from '../lib/local-time.js';
 import type { PostMeta } from '../lib/frontmatter.js';
 
 export function researchFootprint(meta: PostMeta) {
   const footprint = meta.researchFootprint;
   if (!footprint) return '';
+  const started = timeFallback(footprint.startedAt), measured = timeFallback(footprint.measuredAt);
   return html`
     <section class="research-footprint" id="research-footprint" aria-labelledby="research-footprint-title">
       <div class="research-footprint-heading">
@@ -17,8 +19,8 @@ export function researchFootprint(meta: PostMeta) {
       </div>
       ${footprint.scope ? html`<p>${footprint.scope}</p>` : ''}
       <p>The included sessions span ${formatMinutes(footprint.wallClockMinutes)} of elapsed wall-clock time, from
-      <time datetime="${footprint.startedAt}">${formatTimestamp(footprint.startedAt)}</time> to
-      <time datetime="${footprint.measuredAt}">${formatTimestamp(footprint.measuredAt)}</time>. The measured token total includes
+      <time datetime=${started.instant} data-local-time>${started.label}</time> to
+      <time datetime=${measured.instant} data-local-time>${measured.label}</time>. The measured token total includes
       ${compactTokenCount(footprint.inputTokens)} input tokens (${compactTokenCount(footprint.cachedInputTokens)} served from cache)
       and ${compactTokenCount(footprint.outputTokens)} output tokens. Reasoning tokens (${compactTokenCount(footprint.reasoningOutputTokens)})
       are already included in output. Elapsed time includes gaps between sessions and does not measure human hands-on work.</p>
@@ -39,16 +41,4 @@ function formatMinutes(minutes: number): string {
   if (!hours) return `${remaining} minutes`;
   if (!remaining) return `${hours} hour${hours === 1 ? '' : 's'}`;
   return `${hours}h ${remaining}m`;
-}
-
-function formatTimestamp(value: string): string {
-  return new Intl.DateTimeFormat('en-US', {
-    month: 'short',
-    day: 'numeric',
-    year: 'numeric',
-    hour: 'numeric',
-    minute: '2-digit',
-    timeZoneName: 'short',
-    timeZone: 'America/Los_Angeles',
-  }).format(new Date(value));
 }

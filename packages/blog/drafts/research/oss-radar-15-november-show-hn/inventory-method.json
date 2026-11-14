@@ -1,0 +1,56 @@
+{
+  "state": "provisional; November 14 UTC day still open",
+  "windowStartInclusive": "2026-11-11T00:00:00Z",
+  "plannedWindowEndExclusive": "2026-11-15T00:00:00Z",
+  "index": "Algolia Show HN",
+  "partitions": [
+    {
+      "date": "2026-11-11",
+      "capturedAt": "2026-11-14T19:21:55.204310+00:00",
+      "queryUrl": "https://hn.algolia.com/api/v1/search_by_date?tags=show_hn&numericFilters=created_at_i%3E%3D1794355200%2Ccreated_at_i%3C1794441600&hitsPerPage=1000",
+      "returned": 178,
+      "reportedHits": 178,
+      "exhaustiveNbHits": true,
+      "partialUtcDay": false,
+      "rawSha256": "f7021307fd6e812ccb2a069e412a15d182aa8b371e16a2396ecfc1a561f97171"
+    },
+    {
+      "date": "2026-11-12",
+      "capturedAt": "2026-11-14T19:21:55.652756+00:00",
+      "queryUrl": "https://hn.algolia.com/api/v1/search_by_date?tags=show_hn&numericFilters=created_at_i%3E%3D1794441600%2Ccreated_at_i%3C1794528000&hitsPerPage=1000",
+      "returned": 181,
+      "reportedHits": 181,
+      "exhaustiveNbHits": true,
+      "partialUtcDay": false,
+      "rawSha256": "6a559480c6acf5860fcc1f59666e3c7c7264aa5b9cfed082d7a27ee087f0fde4"
+    },
+    {
+      "date": "2026-11-13",
+      "capturedAt": "2026-11-14T19:21:56.061250+00:00",
+      "queryUrl": "https://hn.algolia.com/api/v1/search_by_date?tags=show_hn&numericFilters=created_at_i%3E%3D1794528000%2Ccreated_at_i%3C1794614400&hitsPerPage=1000",
+      "returned": 148,
+      "reportedHits": 148,
+      "exhaustiveNbHits": true,
+      "partialUtcDay": false,
+      "rawSha256": "8e5bb6ee3b0da67815b78713ea9ec9db6a0da0a2c40216490e329d5040129b58"
+    },
+    {
+      "date": "2026-11-14",
+      "capturedAt": "2026-11-14T19:21:56.429798+00:00",
+      "queryUrl": "https://hn.algolia.com/api/v1/search_by_date?tags=show_hn&numericFilters=created_at_i%3E%3D1794614400%2Ccreated_at_i%3C1794700800&hitsPerPage=1000",
+      "returned": 77,
+      "reportedHits": 77,
+      "exhaustiveNbHits": true,
+      "partialUtcDay": true,
+      "rawSha256": "3c422824388c3100b5cb28e8cbb1a31a690f098f6c11e26ad563dede686b4158"
+    }
+  ],
+  "uniqueSubmissions": 584,
+  "attentionThreshold": 50,
+  "atOrAboveThreshold": 15,
+  "directGithubAtOrAboveThreshold": 8,
+  "licenseDisposition": {
+    "klad-app/klad": "excluded from open-source project reviews: main project explicitly source-available under modified PolyForm Internal Use; separately MIT-licensed subcomponents do not change main-project classification"
+  },
+  "finalization": "Refresh the closed November 11\u201314 window and points snapshot on Sunday, reconcile entrants/exclusions and record the final sample before release."
+}

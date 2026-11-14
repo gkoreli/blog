@@ -1,0 +1,147 @@
+{
+  "sourceCommit": "6901be60941b98dc654ed542465290db9e8bafa6",
+  "versions": {
+    "jax": "0.4.34",
+    "jaxlib": "0.4.34",
+    "optax": "0.2.5",
+    "numpy": "2.5.4"
+  },
+  "backend": "cpu",
+  "randomSeeds": [
+    1,
+    2,
+    3
+  ],
+  "routing": {
+    "rawAffinities": [
+      [
+        0.800000011920929,
+        0.6000000238418579,
+        0.4000000059604645,
+        0.20000000298023224
+      ]
+    ],
+    "withoutBias": [
+      [
+        0.5714285373687744,
+        0.4285714030265808,
+        0.0,
+        0.0
+      ]
+    ],
+    "withSelectionBias": [
+      [
+        0.0,
+        0.0,
+        0.6666666269302368,
+        0.3333333134651184
+      ]
+    ],
+    "selectedWeightsUseRawAffinities": true
+  },
+  "attention": {
+    "tokens": 6,
+    "prefillTokens": 3,
+    "incrementalSteps": 3,
+    "maximumAbsoluteError": 2.9103830456733704e-10,
+    "declaredTolerance": 1e-05,
+    "cacheShapes": {
+      "c": [
+        1,
+        16,
+        8
+      ],
+      "kr": [
+        1,
+        16,
+        4
+      ]
+    },
+    "cachedScalarsPerToken": 12,
+    "uncompressedHeadScalarsPerToken": 40
+  },
+  "moeContractions": [
+    {
+      "operation": "nd,edh->neh",
+      "operands": [
+        [
+          1,
+          32
+        ],
+        [
+          4,
+          32,
+          16
+        ]
+      ],
+      "output": [
+        1,
+        4,
+        16
+      ]
+    },
+    {
+      "operation": "nd,edh->neh",
+      "operands": [
+        [
+          1,
+          32
+        ],
+        [
+          4,
+          32,
+          16
+        ]
+      ],
+      "output": [
+        1,
+        4,
+        16
+      ]
+    },
+    {
+      "operation": "neh,ehd->ned",
+      "operands": [
+        [
+          1,
+          4,
+          16
+        ],
+        [
+          4,
+          16,
+          32
+        ]
+      ],
+      "output": [
+        1,
+        4,
+        32
+      ]
+    },
+    {
+      "operation": "ne,ned->nd",
+      "operands": [
+        [
+          1,
+          4
+        ],
+        [
+          1,
+          4,
+          32
+        ]
+      ],
+      "output": [
+        1,
+        32
+      ]
+    }
+  ],
+  "routedExperts": 4,
+  "selectedExpertsPerToken": 2,
+  "scope": "Authored tiny-tensor controls of the inspected implementation; no training quality or throughput result.",
+  "trainingRun": false,
+  "checkpointLoaded": false,
+  "modelServiceCalls": 0
+}

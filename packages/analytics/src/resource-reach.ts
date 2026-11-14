@@ -1,3 +1,4 @@
+import { isUtcInstant } from '@gkoreli/time';
 import { isReaderKind, type ReaderKind } from './contracts.js';
 
 export const RESOURCE_REACH_VERSION = 'resource-reach-v1';
@@ -57,11 +58,7 @@ function fields(value: Record<string, unknown>, required: string[], optional: st
 function text(value: unknown, maximum: number): value is string { return typeof value === 'string' && value.length <= maximum && value.trim().length > 0; }
 function identifier(value: unknown): value is string { return typeof value === 'string' && /^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$/.test(value); }
 function array(value: unknown, maximum: number): unknown[] { return Array.isArray(value) && value.length <= maximum ? value : fail('array-budget'); }
-function instant(value: string): number | null {
-  if (!/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d{3})?Z$/.test(value)) return null;
-  const at = Date.parse(value);
-  return Number.isFinite(at) && new Date(at).toISOString().replace('.000Z', 'Z') === value.replace('.000Z', 'Z') ? at : null;
-}
+function instant(value: string): number | null { return isUtcInstant(value) ? Date.parse(value) : null; }
 function canonicalPath(value: string): boolean {
   if (!value.startsWith('/') || value.startsWith('//') || /[?#\\\u0000-\u0020\u007f]/.test(value) || /%(?![0-9a-fA-F]{2})/.test(value)) return false;
   try { return new URL(value, 'https://registry.invalid').pathname === value; } catch { return false; }

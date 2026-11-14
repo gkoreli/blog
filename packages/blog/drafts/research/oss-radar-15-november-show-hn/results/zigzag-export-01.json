@@ -1,0 +1,64 @@
+{
+  "sourceCommit": "ad19cb09dcf5649fac55b43a083714bcd2b761d4",
+  "version": "zigzag 0.1.3",
+  "features": "Core CLI; GUI and Bluetooth disabled",
+  "cases": [
+    {
+      "case": "within-hoop",
+      "sourceWidthMm": 20,
+      "hoopMm": [
+        100,
+        100
+      ],
+      "exitCode": 0,
+      "diagnostics": [],
+      "artifacts": [
+        {
+          "format": "pes",
+          "bytes": 2475,
+          "sha256": "25ea70533d911c0140e776dbbb6c19da1945ad53e0594787ef6ea673984504be",
+          "header": "#PES0001"
+        },
+        {
+          "format": "dst",
+          "bytes": 1202,
+          "sha256": "1e6873622c50aeec9d877f9bc7405765dc010ad88838ceefcb00ecf97957e34a",
+          "header": "LA:withi"
+        }
+      ]
+    },
+    {
+      "case": "over-hoop",
+      "sourceWidthMm": 150,
+      "hoopMm": [
+        100,
+        100
+      ],
+      "exitCode": 0,
+      "diagnostics": [
+        "error: Design is 150.0 \u00d7 4.8 mm; the hoop sews 100 \u00d7 100 mm."
+      ],
+      "artifacts": [
+        {
+          "format": "pes",
+          "bytes": 9237,
+          "sha256": "c26df0940af8f4f6c2bcf03f56e71358d91fe707f9d54a29e1aa28be0d1c8ad2",
+          "header": "#PES0001"
+        },
+        {
+          "format": "dst",
+          "bytes": 4589,
+          "sha256": "4b55644435fd0d5b5fd4baa8a363e97e4af12dc457385915226b8977fd7e8b6e",
+          "header": "LA:over-"
+        }
+      ]
+    }
+  ],
+  "reopenPes": {
+    "exitCode": 0,
+    "output": "fabric: Standard (twill, denim, patches)\n20.0 \u00d7 4.8 mm, 225 stitches, 1 colors, 0 trims\n  color 1: #4b6baf, 225 stitches\n"
+  },
+  "hardwareConnected": false,
+  "sewOutPerformed": false,
+  "scope": "Two authored SVG exports and one file reopen. Diagnostics/exit behavior, not stitch quality or device acceptance."
+}

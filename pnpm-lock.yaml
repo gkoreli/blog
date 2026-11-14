@@ -124,6 +124,10 @@ importers:
         version: 1.6.32
 
   packages/client-observability:
+    dependencies:
+      '@gkoreli/time':
+        specifier: workspace:*
+        version: link:../time
     devDependencies:
       '@cloudflare/workers-types':
         specifier: ^4.20250306.0
@@ -135,6 +139,10 @@ importers:
   packages/design: {}
 
   packages/newsletter:
+    dependencies:
+      '@gkoreli/time':
+        specifier: workspace:*
+        version: link:../time
     devDependencies:
       '@cloudflare/workers-types':
         specifier: ^4.20250306.0
@@ -145,6 +153,9 @@ importers:
 
   packages/site-audit:
     dependencies:
+      '@gkoreli/time':
+        specifier: workspace:*
+        version: link:../time
       ipaddr.js:
         specifier: 2.5.0
         version: 2.5.0

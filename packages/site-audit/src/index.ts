@@ -1,3 +1,4 @@
+import { utcInstant } from '@gkoreli/time';
 import { deriveTechnicalAssessment } from './technical-assessment.js';
 import { SITE_AUDIT_VERSION, type SiteAuditReport, type BotRuleAssessment, type Finding } from './contracts.js';
 import { BOT_PROFILES } from './bots.js';
@@ -27,7 +28,7 @@ async function retrieveAll(transport: AuditTransport, requests: readonly Resourc
 export async function analyzeSite(input: string, dependencies: AuditDependencies = {}): Promise<SiteAuditReport> {
   const target = normalizeTarget(input);
   const transport = dependencies.transport ?? createWorkersTransport();
-  const checkedAt = (dependencies.now ?? (() => new Date()))().toISOString();
+  const checkedAt = utcInstant(dependencies.now?.() ?? Date.now());
   const pageResource = await transport.retrieve({ kind: 'page', url: target.href, accept: 'text/html,application/xhtml+xml' });
   // Discovery files belong to the final public page origin. If the page failed
   // validation/fetch, keep the original validated origin for independent checks.

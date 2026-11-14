@@ -1,3 +1,4 @@
+import { timeFallback } from '../src/lib/local-time.js';
 import { html } from '@nisli/core';
 import type { PostMeta } from '../src/lib/frontmatter.js';
 import {
@@ -41,17 +42,7 @@ function formatCount(value: number): string {
   return new Intl.NumberFormat('en-US').format(value);
 }
 
-function formatTimestamp(value: string): string {
-  return new Intl.DateTimeFormat('en-US', {
-    month: 'short',
-    day: 'numeric',
-    year: 'numeric',
-    hour: 'numeric',
-    minute: '2-digit',
-    timeZoneName: 'short',
-    timeZone: 'America/Los_Angeles',
-  }).format(new Date(value));
-}
+
 
 export const meta: PostMeta = {
   title: "OSS Radar #06: interp-engine, Neuronpedia's New Interpretability Engine, Tested on a Mac",
@@ -89,6 +80,7 @@ export function preamble() {
 }
 
 export function article() {
+  const started = timeFallback(researchFootprint.startedAt), measured = timeFallback(researchFootprint.measuredAt);
   return html`
 <article class="post-content">
   <p class="post-lede">
@@ -626,8 +618,8 @@ export function article() {
       and ecosystem theory, an adversarial adoption review, the Apple Silicon reproduction harness, two revisions of
       the preamble, the canvas animation, and a fact-check. The reproduction itself ran from the editor's shell
       because the Codex sandbox hides the Metal device. The measured window runs from
-      <time datetime="${researchFootprint.startedAt}">${formatTimestamp(researchFootprint.startedAt)}</time> to
-      <time datetime="${researchFootprint.measuredAt}">${formatTimestamp(researchFootprint.measuredAt)}</time>, the
+      <time datetime=${started.instant} data-local-time>${started.label}</time> to
+      <time datetime=${measured.instant} data-local-time>${measured.label}</time>, the
       freeze point; the second fact-check, the fp16 sweep, and the edits after them fall outside the total.
     </p>
     <p>

@@ -1,3 +1,4 @@
+import { databaseTimestamp } from '@gkoreli/time';
 import type { Env } from './db.js';
 import { hasCurrentOwnerMark } from './owner.js';
 import { isReaderKind } from './contracts.js';
@@ -32,7 +33,6 @@ function config(raw: string | undefined, now: Date): Config | null {
   }
   return { issuedAt: v.issuedAt, expiresAt: v.expiresAt, trials };
 }
-function stamp(now: Date): string { return now.toISOString().replace('T', ' ').slice(0, 19); }
 function response(body: string, status = 200, type = 'application/json'): Response {
   return new Response(body, { status, headers: { 'Content-Type': type + '; charset=utf-8', 'Cache-Control': 'no-store', 'X-Content-Type-Options': 'nosniff', 'Referrer-Policy': 'no-referrer', 'X-Robots-Tag': 'noindex, nofollow' } });
 }
@@ -73,7 +73,7 @@ export async function handleCalibration(request: Request, env: Env, now = new Da
     return { response: response(`<!doctype html><html lang="en"><meta charset="utf-8"><title>Ready for a controlled trial</title><h1>Ready for a controlled trial</h1><p>Condition: ${trial.condition}. Repeat ${position + 1} of ${peers.length}. Planned operator: ${trial.operator}.</p><p>This ready page creates no page observation or stage counters. Start only when the planned operator is actually taking the action; the label alone proves nothing.</p><p>Your current marked profile is excluded. The trial stores stage counters and the usual excluded observation, with no extra device probe or raw diagnostics.</p>${trial.condition === 'javascript-off' ? '<p>Disable JavaScript for this site yourself before starting. This label does not change your browser settings.</p>' : ''}<p><a href="/analytics-check/${trial.id}">Start trial</a></p>`, 200, 'text/html'), collect: false };
   }
   if (pageMatch && request.method === 'GET') {
-    const expiry = stamp(new Date(active.expiresAt + 86400000));
+    const expiry = databaseTimestamp(active.expiresAt + 86400000);
     await env.DB.prepare('INSERT INTO analytics_calibration_trials(id,condition,operator,expires_at) VALUES(?,?,?,?) ON CONFLICT(id) DO NOTHING').bind(trial.id, trial.condition, trial.operator, expiry).run();
     const updated = await env.DB.prepare('UPDATE analytics_calibration_trials SET page_responses=page_responses+1 WHERE id=? AND condition=? AND operator=? AND page_responses<4').bind(trial.id, trial.condition, trial.operator).run();
     if (updated.meta.changes !== 1) return result('{"error":"Trial response limit or configuration mismatch"}', 429);
@@ -86,7 +86,7 @@ export async function handleCalibration(request: Request, env: Env, now = new Da
   }
   if (action === 'client.js' && request.method === 'GET') return { response: response(CLIENT, 200, 'text/javascript'), collect: false };
   if (action === 'receipt' && request.method === 'GET') {
-    const counters = await env.DB.prepare('SELECT page_responses,script,attempt,queued,not_queued,threw,beacon FROM analytics_calibration_trials WHERE id=? AND expires_at>?').bind(trial.id, stamp(now)).first<Counts>();
+    const counters = await env.DB.prepare('SELECT page_responses,script,attempt,queued,not_queued,threw,beacon FROM analytics_calibration_trials WHERE id=? AND expires_at>?').bind(trial.id, databaseTimestamp(now)).first<Counts>();
     if (!counters) return result('{}', 404);
     const path = '/analytics-check/' + trial.id;
     const observations = await env.DB.prepare('SELECT reader_kind AS kind, is_owner AS ownerExcluded, COUNT(*) AS observations FROM page_observations WHERE path=? GROUP BY reader_kind,is_owner').bind(path).all<{ kind: string; ownerExcluded: number; observations: number }>();
@@ -100,11 +100,11 @@ export async function handleCalibration(request: Request, env: Env, now = new Da
   if (request.headers.get('Origin') !== url.origin) return result('{}', 403);
   if (!await unitBody(request)) return result('{}', 400);
   const column = COLUMNS[stage];
-  const updated = await env.DB.prepare(`UPDATE analytics_calibration_trials SET ${column}=${column}+1 WHERE id=? AND expires_at>? AND ${column}<8`).bind(trial.id, stamp(now)).run();
+  const updated = await env.DB.prepare(`UPDATE analytics_calibration_trials SET ${column}=${column}+1 WHERE id=? AND expires_at>? AND ${column}<8`).bind(trial.id, databaseTimestamp(now)).run();
   return result('{}', updated.meta.changes === 1 ? 200 : 429);
 }
 
 export async function purgeExpiredCalibration(db: D1Database, now = new Date()): Promise<number> {
-  const result = await db.prepare('DELETE FROM analytics_calibration_trials WHERE id IN (SELECT id FROM analytics_calibration_trials WHERE expires_at<=? ORDER BY expires_at LIMIT 1000)').bind(stamp(now)).run();
+  const result = await db.prepare('DELETE FROM analytics_calibration_trials WHERE id IN (SELECT id FROM analytics_calibration_trials WHERE expires_at<=? ORDER BY expires_at LIMIT 1000)').bind(databaseTimestamp(now)).run();
   return result.meta.changes ?? 0;
 }

@@ -1,3 +1,4 @@
+import { utcDateKey } from '@gkoreli/time';
 import { validateReportBudget, type ReportAdmission, type ReportBudgetPolicy, type ReportWork } from './report-budget.js';
 
 /** Durable cold-fill admission, one database per site. At most one unsettled
@@ -9,7 +10,7 @@ export function createD1ReportAdmission(db: D1Database, limits: ReportBudgetPoli
   return {
     async reserve(now) {
       if (!Number.isFinite(now.getTime())) throw new Error('Invalid report budget clock');
-      const day = now.toISOString().slice(0, 10), id = crypto.randomUUID();
+      const day = utcDateKey(now), id = crypto.randomUUID();
       const result = await db.batch<{ id: string }>([
         db.prepare(`INSERT INTO analytics_report_budget_days
           (utc_date,fill_limit,read_limit) VALUES(?,?,?) ON CONFLICT(utc_date) DO NOTHING`)

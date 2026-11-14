@@ -175,6 +175,7 @@ export interface StatsResponse {
   internalReferrerDetails: {
     unrecognizedPathViews: number;
     selfReferrals: number;
+    /** Canonical UTC instant, including legacy SQLite observation stamps. */
     firstCapturedAt: string | null;
   };
   /** Same selection as totals, after owner exclusions, before referral exclusions. */

@@ -1,3 +1,4 @@
+import { utcDateKey, utcInstant } from '@gkoreli/time';
 import type { Env } from './db.js';
 import { hasCurrentOwnerMark } from './owner.js';
 
@@ -115,7 +116,7 @@ export async function handleNativeBotCapture(request: Request, env: Env, clock =
   const unavailable = (reason: UnavailableReason): Response => {
     const body = {
       profile: NATIVE_CAPTURE_UNAVAILABLE_PROFILE, responseId, controlId: control.id,
-      plannedCondition: control.condition, startedAt: started.toISOString(),
+      plannedCondition: control.condition, startedAt: utcInstant(started),
       outcome: 'unavailable' as const, reason,
     };
     // Logging failure must not replace the closed response or expose an exception.
@@ -134,14 +135,14 @@ export async function handleNativeBotCapture(request: Request, env: Env, clock =
     const completed = clock();
     // A midnight boundary changes the owner profile; require a fresh guarded request.
     if (!activeAt(config, completed) || completed.getTime() < started.getTime()
-      || started.toISOString().slice(0, 10) !== completed.toISOString().slice(0, 10)) return response({}, 404);
+      || utcDateKey(started) !== utcDateKey(completed)) return response({}, 404);
     // The deadline covers metadata, hashing and storage. It does not cancel them.
     if (guard.kind === 'timeout') return unavailable('owner-check-timeout');
     if (guard.kind === 'error') return unavailable('owner-check-error');
     if (!guard.marked) return response({}, 403);
     const capture = {
       profile: NATIVE_CAPTURE_PROFILE, responseId, controlId: control.id,
-      plannedCondition: control.condition, observedAt: completed.toISOString(),
+      plannedCondition: control.condition, observedAt: utcInstant(completed),
       ...nativeBotCaptureInputs(request),
     };
     console.info('analytics.native_bot_capture', capture);

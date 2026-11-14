@@ -1,3 +1,4 @@
+import { utcDateKey } from '@gkoreli/time';
 import { readFileSync } from 'node:fs';
 import matter from 'gray-matter';
 import { z } from 'zod/v4';
@@ -77,7 +78,7 @@ export function parsePost(filePath: string): Post {
   const date = result.data.date instanceof Date
     // YAML timestamps are UTC instants. Local getters shift a bare date back a
     // day on machines west of UTC, making local and production indexes differ.
-    ? result.data.date.toISOString().slice(0, 10)
+    ? utcDateKey(result.data.date)
     : result.data.date;
 
   return {

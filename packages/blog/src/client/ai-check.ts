@@ -5,11 +5,13 @@ import { normalizeTarget, TargetValidationError } from '@gkoreli/site-audit/targ
 import { failureFeedback } from '../lib/check-feedback.js';
 import { errorMessage, quotaLabel, showCheckFeedback } from './check-feedback.js';
 import { node, object } from './tool-dom.js';
+import { localizeTimeElements } from './local-time.js';
 
 /** The common report renderer escapes captured values before parsing its fixed markup. */
 export function renderSiteAudit(report: SiteAuditReport, example = false): HTMLElement {
   const container = node('div');
   container.innerHTML = siteAuditReportHtml(report, { example });
+  localizeTimeElements(container);
   const result = container.firstElementChild;
   if (!(result instanceof HTMLElement)) throw new Error('Report markup did not produce a section.');
   return result;

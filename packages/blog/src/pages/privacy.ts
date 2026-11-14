@@ -1,12 +1,8 @@
+import { timePresentation } from '@gkoreli/time';
 import { html } from '@nisli/core';
 import { ANALYTICS_EVIDENCE_SINCE, DIAGNOSTIC_RETENTION_DAYS } from '@gkoreli/analytics/contracts';
 
-const evidenceDate = new Intl.DateTimeFormat('en-US', {
-  timeZone: 'UTC',
-  year: 'numeric',
-  month: 'long',
-  day: 'numeric',
-}).format(new Date(`${ANALYTICS_EVIDENCE_SINCE}T00:00:00Z`));
+const evidenceDate = timePresentation({ timeZone: 'UTC', locale: 'en-US' }).calendarDate(ANALYTICS_EVIDENCE_SINCE, 'long');
 
 export function privacyPage() {
   return html`<article class="post-content">

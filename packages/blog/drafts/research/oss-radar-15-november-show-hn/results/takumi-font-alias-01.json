@@ -1,0 +1,84 @@
+{
+  "node": "v24.14.1",
+  "platform": "darwin",
+  "architecture": "arm64",
+  "font": {
+    "publicSourceCommit": "ae2a35011e5cddedb0a4c8b33ab0c9242ca76b2d",
+    "blob": "d101f19f443c1eb7158f98cb2deebacd97224538",
+    "bytes": 63660,
+    "sha256": "c46b00cf667277d22cc237e58149520daec19542edc3f05e7daff4581dc23d2a"
+  },
+  "results": [
+    {
+      "condition": "previous",
+      "packageVersion": "2.19.0",
+      "packageIntegrity": "sha512-cYxOTb4pOu25Y8GBm3JTyIwenHNAZF11pxEmTxA3Q7VabC0pqeWDo/nOjTc2slTHORaglkvwK4SMmnpzab5BjQ==",
+      "registrations": [
+        {
+          "requested": "Alpha",
+          "registered": [
+            "Alpha"
+          ]
+        },
+        {
+          "requested": "Beta",
+          "registered": [
+            "Beta"
+          ]
+        }
+      ],
+      "renders": [
+        {
+          "family": "Alpha",
+          "success": true,
+          "bytes": 809,
+          "sha256": "a2cb1c9e7f26312d74834fe3a435671ab4dc308592bad619d379461a7ecc0442"
+        },
+        {
+          "family": "Beta",
+          "success": true,
+          "bytes": 809,
+          "sha256": "a2cb1c9e7f26312d74834fe3a435671ab4dc308592bad619d379461a7ecc0442"
+        }
+      ],
+      "identicalImages": true
+    },
+    {
+      "condition": "current",
+      "packageVersion": "2.20.0",
+      "packageIntegrity": "sha512-28uryNYSyuXZWv5uBfJiWDrRXVdAunkU0sZiB7KG2WgLej64pUNL6jZSTQa+gBXfVu+3DdCz58OnpONBO6EUqQ==",
+      "registrations": [
+        {
+          "requested": "Alpha",
+          "registered": [
+            "Alpha"
+          ]
+        },
+        {
+          "requested": "Beta",
+          "registered": [
+            "Beta"
+          ]
+        }
+      ],
+      "renders": [
+        {
+          "family": "Alpha",
+          "success": true,
+          "bytes": 809,
+          "sha256": "a2cb1c9e7f26312d74834fe3a435671ab4dc308592bad619d379461a7ecc0442"
+        },
+        {
+          "family": "Beta",
+          "success": true,
+          "bytes": 809,
+          "sha256": "a2cb1c9e7f26312d74834fe3a435671ab4dc308592bad619d379461a7ecc0442"
+        }
+      ],
+      "identicalImages": true
+    }
+  ],
+  "scope": "One authored same-font/two-family case across two published native packages; no broad font conformance or performance claim.",
+  "modelServiceCalls": 0,
+  "userConfigurationChanged": false
+}

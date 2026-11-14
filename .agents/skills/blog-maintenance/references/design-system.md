@@ -41,6 +41,12 @@ Use [shared tokens](../../../../packages/design/tokens.css), [layout CSS](../../
 - Linked headings and full-surface states provide the navigation cue. Do not append decorative direction arrows or add a second action to a single-destination choice. Use icons only when they convey an action or object.
 - The [compact navigation study](../../../../packages/blog/prototypes/tools/design-language-study.md#accepted-implementation--november-11) records the selection, rationale and earlier alternatives. Compact tiles, readable 14px descriptions, 12px metadata, 16px tile padding and 10px corners are the accepted tools-directory pattern.
 
+## Time presentation
+
+Use the [shared time core](../../../../packages/time/README.md) for every displayed instant, calendar date and timezone operation. Server-rendered instants use the [UTC fallback adapter](../../../../packages/blog/src/lib/local-time.ts) and native `time` elements marked `data-local-time`; [browser enhancement](../../../../packages/blog/src/client/local-time.ts) localizes them. Dynamic report/feedback renderers use that same adapter. Keep UTC instants structured until the presentation boundary. In Nisli templates use native elements rather than interpolating a raw-markup object into a text binding.
+
+Publication dates and version identifiers are calendar metadata. Do not shift them, localize raw JSON/HTTP evidence or derive a timestamp from a date-only value for ordinary UI display. Database UTC defaults, epoch expiries, signature clocks, fixed source calendars and release/admission policy retain their domain meaning; localize the instant shown to the viewer. Do not add separate Intl/Date locale formatters in application modules.
+
 ## Reports and results
 
 - Keep check results, their evidence and actionable next steps visible while scrolling. Use section headings and native jump links for longer reports. Reserve disclosures for method explanations and raw data, rather than hiding passed, failed, optional or unassessed results.

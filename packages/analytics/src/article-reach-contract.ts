@@ -1,4 +1,4 @@
-import { addCalendarDays, calendarDateKey, calendarDaysBetween, parseTimeZone } from '@gkoreli/time';
+import { isCalendarDate, isUtcInstant, utcInstant, addCalendarDays, calendarDateKey, calendarDaysBetween, parseTimeZone } from '@gkoreli/time';
 /** Request evidence for editorial decisions; no reader, session or identity claims. */
 export const ARTICLE_REACH_VERSION = '2026-11-14.1';
 export const REACH_METRIC_KEYS = ['views', 'externalViews', 'internalViews', 'unattributedViews', 'unknownSourceViews', 'largestSourceViews', 'unrecognizedTimeViews'] as const;
@@ -62,10 +62,7 @@ function count(value: unknown): value is number { return typeof value === 'numbe
 function sourceName(value: unknown): value is string | null {
   return value === null || (typeof value === 'string' && value.length <= 253 && /^(?:[a-z0-9-]+\.)+[a-z0-9-]+$/.test(value));
 }
-export function reachDay(value: unknown): value is string {
-  return typeof value === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(value)
-    && Number.isFinite(Date.parse(value + 'T00:00:00Z')) && new Date(value + 'T00:00:00Z').toISOString().slice(0, 10) === value;
-}
+export const reachDay = isCalendarDate;
 export function reachMeasurementStamp(value: unknown): value is string | null {
   return value === null || value === 'unrecognized' || (typeof value === 'string'
     && /^\d{4}-\d{2}-\d{2}\.(?:0|[1-9]\d{0,5})$/.test(value) && reachDay(value.slice(0, 10)));
@@ -145,9 +142,8 @@ export function consistentArticleReach(value: unknown): value is ArticleReachRep
   const { period, classification, referralPolicy, largestExternalSource } = value;
   if (!record(period) || !keys(period, ['startInclusive', 'endExclusive', 'updatedAt', 'timeZone'])
     || !reachDay(period.startInclusive) || !reachDay(period.endExclusive) || typeof period.timeZone !== 'string' || parseTimeZone(period.timeZone) === null
-    || typeof period.updatedAt !== 'string' || !Number.isFinite(Date.parse(period.updatedAt))) return false;
-  const updated = new Date(period.updatedAt);
-  if (calendarDaysBetween(period.startInclusive, period.endExclusive) !== 28 || updated.toISOString() !== period.updatedAt || calendarDateKey(period.updatedAt, period.timeZone) !== period.endExclusive) return false;
+    || !isUtcInstant(period.updatedAt)) return false;
+  if (calendarDaysBetween(period.startInclusive, period.endExclusive) !== 28 || utcInstant(period.updatedAt) !== period.updatedAt || calendarDateKey(period.updatedAt, period.timeZone) !== period.endExclusive) return false;
   if (!record(classification) || !keys(classification, ['recordedProfiles', 'unversionedViews']) || !count(classification.recordedProfiles)
     || !count(classification.unversionedViews) || classification.unversionedViews > value.site.views
     || classification.recordedProfiles > value.site.views - classification.unversionedViews

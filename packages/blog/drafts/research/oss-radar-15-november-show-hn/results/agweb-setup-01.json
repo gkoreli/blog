@@ -1,0 +1,27 @@
+{
+  "sourceCommit": "a52c8b66e16499ec2781c7fea3c4a37983a7002c",
+  "sourceBuild": {
+    "command": "AGWEB_SIGN=- ./scripts/build.sh --test <owned-temporary-app-dir>",
+    "exitCode": 1,
+    "environment": "macOS 27.2 arm64; Apple Swift 6.4 Command Line Tools; full Xcode unavailable",
+    "diagnostic": "SwiftUIMacros.StateMacro implementation/plugin unavailable",
+    "rawLogSha256": "fbae17f0784841a27bc28df35d0055dfabd71467f0bb147c8e38d1634bcbef53",
+    "scope": "Setup failure before app execution, not a browser behavior result"
+  },
+  "releaseFallback": {
+    "version": "0.2.0",
+    "tagMatchesSourcePin": true,
+    "asset": "https://github.com/paul-nameless/agweb/releases/download/v0.2.0/Agweb.dmg",
+    "bytes": 2033503,
+    "sha256": "ef06374e05c2f1dd5fffaba81b8b98840ae8d22422c76a91f434fa97b07a8d17",
+    "matchedGithubAssetDigest": true,
+    "codesignDeepStrict": "passed",
+    "diskImageDetached": true,
+    "installed": false
+  },
+  "cleanup": {
+    "ownedAppQuitExitCode": 0,
+    "ownedSocketAbsent": true,
+    "ownedLoopbackServerClosedByFixture": true
+  }
+}

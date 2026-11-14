@@ -1,3 +1,4 @@
+import { utcInstant } from '@gkoreli/time';
 import type { ClientErrorEvent, ClientErrorType } from './types.js';
 import { parseSubscriptionErrorEvidence } from './subscription-evidence.js';
 import { sanitizeClientError } from './sanitization.js';
@@ -38,8 +39,7 @@ function statusField(value: unknown): number | undefined {
 
 function dateField(value: unknown): string | undefined {
   if (typeof value !== 'string') return undefined;
-  const timestamp = Date.parse(value);
-  return Number.isFinite(timestamp) ? new Date(timestamp).toISOString() : undefined;
+  try { return utcInstant(value); } catch { return undefined; }
 }
 
 export function parseClientErrorPayload(raw: unknown, origin?: string): ClientErrorEvent | null {
