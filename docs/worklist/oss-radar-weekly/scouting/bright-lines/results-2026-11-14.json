@@ -1,0 +1,81 @@
+{
+  "sourceCommit": "84cfe3912b1c15dd1caf8a46bcbaab5d98b5a2a3",
+  "python": "3.14.6",
+  "platform": "darwin",
+  "sourceSha256": {
+    "template/.claude/settings.json": "e2c69141063618e819bf8f1764dfcdd11e0501958634eaa9827bf23f0d676b38",
+    "template/.claude/safe/guard.py": "94905d97b4de9e5b71479b68c80e9f6c6a1597781a4c09d9acdabdd0761bd746",
+    "template/.claude/safe/guard_config.json": "8b8dbd233ef961dbc18fd986af58e8143fd70ba786ebbf8069538d79f4f1412c"
+  },
+  "hookTimeoutSeconds": 10,
+  "hostFailurePolicyFieldPresent": false,
+  "cases": [
+    {
+      "case": "ordinary-command-payload",
+      "timedOutAtConfiguredDeadline": false,
+      "elapsedSeconds": 0.051446290919557214,
+      "exitCode": 0,
+      "blockMessage": false,
+      "stdoutEmpty": true,
+      "proposedCommandExecuted": false
+    },
+    {
+      "case": "network-command-payload",
+      "timedOutAtConfiguredDeadline": false,
+      "elapsedSeconds": 0.05423695803619921,
+      "exitCode": 2,
+      "blockMessage": true,
+      "stdoutEmpty": true,
+      "proposedCommandExecuted": false
+    },
+    {
+      "case": "invalid-json",
+      "timedOutAtConfiguredDeadline": false,
+      "elapsedSeconds": 0.04354304098524153,
+      "exitCode": 2,
+      "blockMessage": true,
+      "stdoutEmpty": true,
+      "proposedCommandExecuted": false
+    },
+    {
+      "case": "guard-exits-one",
+      "timedOutAtConfiguredDeadline": false,
+      "elapsedSeconds": 0.03794220800045878,
+      "exitCode": 2,
+      "blockMessage": true,
+      "stdoutEmpty": true,
+      "proposedCommandExecuted": false
+    },
+    {
+      "case": "counter-lock-held",
+      "timedOutAtConfiguredDeadline": true,
+      "elapsedSeconds": 10.006181792006828,
+      "exitCode": null,
+      "blockMessage": false,
+      "stdoutEmpty": true,
+      "proposedCommandExecuted": false
+    },
+    {
+      "case": "counter-lock-released",
+      "timedOutAtConfiguredDeadline": false,
+      "elapsedSeconds": 0.0715227919863537,
+      "exitCode": 2,
+      "blockMessage": true,
+      "stdoutEmpty": true,
+      "proposedCommandExecuted": false
+    }
+  ],
+  "actualClaudeToolCallRun": false,
+  "modelProviderCalls": 0,
+  "userConfigurationChanged": false,
+  "scope": "Direct hook-process and wrapper controls. Host timeout/permission behavior is documented separately; not reproduced here.",
+  "upstreamSuite": {
+    "testMethodsPassed": 28,
+    "failed": 0,
+    "blockedCommandFixtures": 177,
+    "allowedCommandFixtures": 50,
+    "scope": "Upstream suite, unchanged; command payloads are not executed."
+  },
+  "probe.pySha256": "85a03419507ed410024ca7bd8c0e1c41ebc024370631955c29380937404f5fd1",
+  "protocol.mdSha256": "b60819ff73f25312a34aee7fb0e9cac932be4c1ed3c8796e48295e86733c372e"
+}
