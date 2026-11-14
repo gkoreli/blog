@@ -8,6 +8,7 @@ import type { ClassificationEvidence } from './classification-evidence.js';
 import type { VendorIpEvidence } from './vendor-ip.js';
 import type { ClientFormEvidence } from './client-form.js';
 import { observationStorageReference, type ObservationStorageReference } from './observation-storage.js';
+import { databaseTimestamp } from '@gkoreli/time';
 
 export interface Env {
   DB: D1Database;
@@ -95,6 +96,7 @@ const INSERT_OBSERVATION = `INSERT INTO page_observations (
 RETURNING CAST(id AS TEXT) AS observation_id`;
 
 export async function recordPageObservation(db: D1Database, observation: PageObservation, diagnostic?: ObservationDiagnostic): Promise<ObservationStorageReference> {
+  const observedAt = databaseTimestamp(observation.observedAt);
   const result = await db.prepare(INSERT_OBSERVATION).bind(
     observation.path,
     observation.referrerHost,
@@ -117,7 +119,7 @@ export async function recordPageObservation(db: D1Database, observation: PageObs
     observation.signatureStatus,
     observation.readerKind,
     observation.readerReason,
-    observation.observedAt,
+    observedAt,
     observation.asn === null ? null : 'request',
     observation.referrerState,
     observation.internalReferrerPath,
@@ -137,7 +139,7 @@ export async function recordPageObservation(db: D1Database, observation: PageObs
     // Preserve the acknowledged base observation if its optional diagnostic fails.
     try {
       if (storage.status !== 'returned') throw new Error('Observation reference unavailable');
-      await recordDiagnostic(db, storage.observationId, observation.observedAt, diagnostic);
+      await recordDiagnostic(db, storage.observationId, observedAt, diagnostic);
     } catch {
       console.warn('analytics.diagnostic_write_failed', { operationId: diagnostic.operationId, collectionVersion: COLLECTION_VERSION });
     }

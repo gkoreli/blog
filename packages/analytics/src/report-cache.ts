@@ -1,8 +1,10 @@
 import { ACTIVE_REFERRAL_POLICY } from './referral-policy.generated.js';
 import { parseStatsQuery } from './stats-selection.js';
+import { utcDateKey } from '@gkoreli/time';
+import { ZonedCalendar } from '@gkoreli/time/calendar';
 
 /** Bump when report semantics, storage binding, or public selection rules change. */
-export const STATS_REPORT_VERSION = '2026-11-14.1';
+export const STATS_REPORT_VERSION = '2026-11-14.2';
 export const STATS_EDGE_TTL_SECONDS = 3600;
 const MAX_PENDING_REPORTS = 8;
 const LOOKUP_BUDGET_MS = 250;
@@ -111,12 +113,15 @@ export function createStatsHandler<Environment>(
       return observed(Response.json({ error: query }, { status: 400, headers: { 'Cache-Control': 'no-store' } }), 'INVALID');
     }
     const startedAt = now();
-    const day = new Date(startedAt).toISOString().slice(0, 10);
-    const midnight = Date.parse(`${day}T00:00:00Z`) + 86_400_000;
-    const expiresAt = Math.min(startedAt + STATS_EDGE_TTL_SECONDS * 1000, midnight);
+    const calendar = new ZonedCalendar(query.timeZone ?? 'UTC');
+    const day = utcDateKey(startedAt);
+    const utcMidnight = Date.parse(new ZonedCalendar('UTC').nextDayStart(startedAt));
+    const localMidnight = Date.parse(calendar.nextDayStart(startedAt));
+    const expiresAt = Math.min(startedAt + STATS_EDGE_TTL_SECONDS * 1000, utcMidnight, localMidnight);
     const keyUrl = new URL(`/__stats-cache/${reportVersion}/${policyHash}/${day}`, url.origin);
     keyUrl.searchParams.set('range', query.range);
     keyUrl.searchParams.set('traffic', query.traffic);
+    keyUrl.searchParams.set('timeZone', calendar.timeZone);
     if (query.path !== undefined) keyUrl.searchParams.set('path', query.path);
     if (query.agent !== undefined) keyUrl.searchParams.set('agent', query.agent);
     if (query.kind !== undefined) keyUrl.searchParams.set('kind', query.kind);

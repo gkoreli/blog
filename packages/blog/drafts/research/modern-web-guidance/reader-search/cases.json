@@ -1,0 +1,1231 @@
+{
+  "provenance": "Agent-authored engineering cases after reading publication sources. One topic per indexed article, each tested as a short topic and as an article-location question. Some topics and answer blocks overlap earlier source-aware research; these are not independent reader logs or a population relevance estimate.",
+  "queryForms": "92 topic/framing probes (eight fixed framing templates, including four not recognized by the normalizer); 12 separately authored recollections; ten prompts with no known answer label. Report forms separately.",
+  "splitMethod": "14 development and 32 validation articles chosen by sorted SHA256 of reader-search-20261114 plus article slug; all forms of an article stay together. Validation is a reserved engineering check, not independent unseen-reader research.",
+  "cases": [
+    {
+      "id": "R01-topic",
+      "article": "the-agentic-product-engineer",
+      "form": "topic",
+      "split": "validation",
+      "query": "context engineering loading the right information for an agent",
+      "knownBlocks": [
+        "the-agentic-product-engineer/b0029-5f21ca81"
+      ],
+      "sourceUrl": "https://gkoreli.com/the-agentic-product-engineer#context-engineering-and-backlog-mcp"
+    },
+    {
+      "id": "R01-reader",
+      "article": "the-agentic-product-engineer",
+      "form": "reader",
+      "split": "validation",
+      "query": "Which article talks about context engineering loading the right information for an agent?",
+      "knownBlocks": [
+        "the-agentic-product-engineer/b0029-5f21ca81"
+      ],
+      "sourceUrl": "https://gkoreli.com/the-agentic-product-engineer#context-engineering-and-backlog-mcp"
+    },
+    {
+      "id": "R02-topic",
+      "article": "oss-radar-01-vercel-winter-2026-cohort",
+      "form": "topic",
+      "split": "development",
+      "query": "animated icons native to Svelte 5 runes",
+      "knownBlocks": [
+        "oss-radar-01-vercel-winter-2026-cohort/b0133-c1a1899b"
+      ],
+      "sourceUrl": "https://gkoreli.com/oss-radar-01-vercel-winter-2026-cohort#moving-icons--jakob-isermann"
+    },
+    {
+      "id": "R02-reader",
+      "article": "oss-radar-01-vercel-winter-2026-cohort",
+      "form": "reader",
+      "split": "development",
+      "query": "Find the post about animated icons native to Svelte 5 runes.",
+      "knownBlocks": [
+        "oss-radar-01-vercel-winter-2026-cohort/b0133-c1a1899b"
+      ],
+      "sourceUrl": "https://gkoreli.com/oss-radar-01-vercel-winter-2026-cohort#moving-icons--jakob-isermann"
+    },
+    {
+      "id": "R03-topic",
+      "article": "how-ghx-was-born",
+      "form": "topic",
+      "split": "development",
+      "query": "npm package name collision choosing a scoped ghx package",
+      "knownBlocks": [
+        "how-ghx-was-born/b0069-22de5951"
+      ],
+      "sourceUrl": "https://gkoreli.com/how-ghx-was-born#the-naming-saga"
+    },
+    {
+      "id": "R03-reader",
+      "article": "how-ghx-was-born",
+      "form": "reader",
+      "split": "development",
+      "query": "In which article did I write about npm package name collision choosing a scoped ghx package?",
+      "knownBlocks": [
+        "how-ghx-was-born/b0069-22de5951"
+      ],
+      "sourceUrl": "https://gkoreli.com/how-ghx-was-born#the-naming-saga"
+    },
+    {
+      "id": "R04-topic",
+      "article": "topologies-of-thoughts",
+      "form": "topic",
+      "split": "validation",
+      "query": "Obsidian embeddings visualized as a network in TouchDesigner",
+      "knownBlocks": [
+        "topologies-of-thoughts/b0003-e484e253"
+      ],
+      "sourceUrl": "https://gkoreli.com/topologies-of-thoughts"
+    },
+    {
+      "id": "R04-reader",
+      "article": "topologies-of-thoughts",
+      "form": "reader",
+      "split": "validation",
+      "query": "Where did I discuss Obsidian embeddings visualized as a network in TouchDesigner?",
+      "knownBlocks": [
+        "topologies-of-thoughts/b0003-e484e253"
+      ],
+      "sourceUrl": "https://gkoreli.com/topologies-of-thoughts"
+    },
+    {
+      "id": "R05-topic",
+      "article": "procrastination-is-a-craft-youve-been-mastering-your-entire-life",
+      "form": "topic",
+      "split": "validation",
+      "query": "reframing procrastination instead of treating it as a flaw",
+      "knownBlocks": [
+        "procrastination-is-a-craft-youve-been-mastering-your-entire-life/b0001-f064b3bc"
+      ],
+      "sourceUrl": "https://gkoreli.com/procrastination-is-a-craft-youve-been-mastering-your-entire-life"
+    },
+    {
+      "id": "R05-reader",
+      "article": "procrastination-is-a-craft-youve-been-mastering-your-entire-life",
+      "form": "reader",
+      "split": "validation",
+      "query": "There was something about reframing procrastination instead of treating it as a flaw. Which post was that?",
+      "knownBlocks": [
+        "procrastination-is-a-craft-youve-been-mastering-your-entire-life/b0001-f064b3bc"
+      ],
+      "sourceUrl": "https://gkoreli.com/procrastination-is-a-craft-youve-been-mastering-your-entire-life"
+    },
+    {
+      "id": "R06-topic",
+      "article": "oss-radar-02-the-toolchain-is-the-moat",
+      "form": "topic",
+      "split": "validation",
+      "query": "Astral uv ruff acquisition and Python toolchains for AI agents",
+      "knownBlocks": [
+        "oss-radar-02-the-toolchain-is-the-moat/b0001-e85a20b6"
+      ],
+      "sourceUrl": "https://gkoreli.com/oss-radar-02-the-toolchain-is-the-moat"
+    },
+    {
+      "id": "R06-reader",
+      "article": "oss-radar-02-the-toolchain-is-the-moat",
+      "form": "reader",
+      "split": "validation",
+      "query": "I can't remember the title, but it mentioned Astral uv ruff acquisition and Python toolchains for AI agents.",
+      "knownBlocks": [
+        "oss-radar-02-the-toolchain-is-the-moat/b0001-e85a20b6"
+      ],
+      "sourceUrl": "https://gkoreli.com/oss-radar-02-the-toolchain-is-the-moat"
+    },
+    {
+      "id": "R07-topic",
+      "article": "you-dont-need-codemap",
+      "form": "topic",
+      "split": "validation",
+      "query": "choosing repositories before cloning with maps search and packing",
+      "knownBlocks": [
+        "you-dont-need-codemap/b0001-b1157db6"
+      ],
+      "sourceUrl": "https://gkoreli.com/you-dont-need-codemap"
+    },
+    {
+      "id": "R07-reader",
+      "article": "you-dont-need-codemap",
+      "form": "reader",
+      "split": "validation",
+      "query": "Which piece explained choosing repositories before cloning with maps search and packing?",
+      "knownBlocks": [
+        "you-dont-need-codemap/b0001-b1157db6"
+      ],
+      "sourceUrl": "https://gkoreli.com/you-dont-need-codemap"
+    },
+    {
+      "id": "R08-topic",
+      "article": "life-as-background-music",
+      "form": "topic",
+      "split": "validation",
+      "query": "listening to City of Stars without paying attention to the lyrics",
+      "knownBlocks": [
+        "life-as-background-music/b0002-759ef599"
+      ],
+      "sourceUrl": "https://gkoreli.com/life-as-background-music#life-as-background-music"
+    },
+    {
+      "id": "R08-reader",
+      "article": "life-as-background-music",
+      "form": "reader",
+      "split": "validation",
+      "query": "I am trying to find that write-up on listening to City of Stars without paying attention to the lyrics.",
+      "knownBlocks": [
+        "life-as-background-music/b0002-759ef599"
+      ],
+      "sourceUrl": "https://gkoreli.com/life-as-background-music#life-as-background-music"
+    },
+    {
+      "id": "R09-topic",
+      "article": "linux-signal-stack-conflict",
+      "form": "topic",
+      "split": "validation",
+      "query": "process-wide signal flags and per-thread alternate signal stacks",
+      "knownBlocks": [
+        "linux-signal-stack-conflict/b0014-24a4e348"
+      ],
+      "sourceUrl": "https://gkoreli.com/linux-signal-stack-conflict#why-it-happens"
+    },
+    {
+      "id": "R09-reader",
+      "article": "linux-signal-stack-conflict",
+      "form": "reader",
+      "split": "validation",
+      "query": "Which article talks about process-wide signal flags and per-thread alternate signal stacks?",
+      "knownBlocks": [
+        "linux-signal-stack-conflict/b0014-24a4e348"
+      ],
+      "sourceUrl": "https://gkoreli.com/linux-signal-stack-conflict#why-it-happens"
+    },
+    {
+      "id": "R10-topic",
+      "article": "i-thought-building-was-enough",
+      "form": "topic",
+      "split": "validation",
+      "query": "assuming good engineering would automatically bring product users",
+      "knownBlocks": [
+        "i-thought-building-was-enough/b0002-272a57cc"
+      ],
+      "sourceUrl": "https://gkoreli.com/i-thought-building-was-enough#the-builders-perfectionism-trap"
+    },
+    {
+      "id": "R10-reader",
+      "article": "i-thought-building-was-enough",
+      "form": "reader",
+      "split": "validation",
+      "query": "Find the post about assuming good engineering would automatically bring product users.",
+      "knownBlocks": [
+        "i-thought-building-was-enough/b0002-272a57cc"
+      ],
+      "sourceUrl": "https://gkoreli.com/i-thought-building-was-enough#the-builders-perfectionism-trap"
+    },
+    {
+      "id": "R11-topic",
+      "article": "what-if-the-agent-was-better-before-we-helped",
+      "form": "topic",
+      "split": "validation",
+      "query": "evaluation failed to expose an installed command as an executable",
+      "knownBlocks": [
+        "what-if-the-agent-was-better-before-we-helped/b0105-ca10bbf6"
+      ],
+      "sourceUrl": "https://gkoreli.com/what-if-the-agent-was-better-before-we-helped#the-eval-framework-also-has-to-be-evaluated"
+    },
+    {
+      "id": "R11-reader",
+      "article": "what-if-the-agent-was-better-before-we-helped",
+      "form": "reader",
+      "split": "validation",
+      "query": "In which article did I write about evaluation failed to expose an installed command as an executable?",
+      "knownBlocks": [
+        "what-if-the-agent-was-better-before-we-helped/b0105-ca10bbf6"
+      ],
+      "sourceUrl": "https://gkoreli.com/what-if-the-agent-was-better-before-we-helped#the-eval-framework-also-has-to-be-evaluated"
+    },
+    {
+      "id": "R12-topic",
+      "article": "one-hundred-pull-requests",
+      "form": "topic",
+      "split": "validation",
+      "query": "task manager with no edit button and an agent-owned core",
+      "knownBlocks": [
+        "one-hundred-pull-requests/b0087-c3b1a234"
+      ],
+      "sourceUrl": "https://gkoreli.com/one-hundred-pull-requests"
+    },
+    {
+      "id": "R12-reader",
+      "article": "one-hundred-pull-requests",
+      "form": "reader",
+      "split": "validation",
+      "query": "Where did I discuss task manager with no edit button and an agent-owned core?",
+      "knownBlocks": [
+        "one-hundred-pull-requests/b0087-c3b1a234"
+      ],
+      "sourceUrl": "https://gkoreli.com/one-hundred-pull-requests"
+    },
+    {
+      "id": "R13-topic",
+      "article": "i-am-lost-right-now",
+      "form": "topic",
+      "split": "development",
+      "query": "writing while stuck without forcing a solution or a lesson",
+      "knownBlocks": [
+        "i-am-lost-right-now/b0003-0b574134"
+      ],
+      "sourceUrl": "https://gkoreli.com/i-am-lost-right-now#i-am-lost-right-now"
+    },
+    {
+      "id": "R13-reader",
+      "article": "i-am-lost-right-now",
+      "form": "reader",
+      "split": "development",
+      "query": "There was something about writing while stuck without forcing a solution or a lesson. Which post was that?",
+      "knownBlocks": [
+        "i-am-lost-right-now/b0003-0b574134"
+      ],
+      "sourceUrl": "https://gkoreli.com/i-am-lost-right-now#i-am-lost-right-now"
+    },
+    {
+      "id": "R14-topic",
+      "article": "openwiki-validates-my-bet",
+      "form": "topic",
+      "split": "validation",
+      "query": "an agent backlog as memory and files that work without the tool",
+      "knownBlocks": [
+        "openwiki-validates-my-bet/b0002-2f88a70b"
+      ],
+      "sourceUrl": "https://gkoreli.com/openwiki-validates-my-bet#openwiki-validates-my-bet-i-still-dont-know-where-the-memory-should-live"
+    },
+    {
+      "id": "R14-reader",
+      "article": "openwiki-validates-my-bet",
+      "form": "reader",
+      "split": "validation",
+      "query": "I can't remember the title, but it mentioned an agent backlog as memory and files that work without the tool.",
+      "knownBlocks": [
+        "openwiki-validates-my-bet/b0002-2f88a70b"
+      ],
+      "sourceUrl": "https://gkoreli.com/openwiki-validates-my-bet#openwiki-validates-my-bet-i-still-dont-know-where-the-memory-should-live"
+    },
+    {
+      "id": "R15-topic",
+      "article": "oss-radar-03-buzz-is-slack-on-airoids",
+      "form": "topic",
+      "split": "validation",
+      "query": "Buzz gives people and agents Nostr keys for signed work",
+      "knownBlocks": [
+        "oss-radar-03-buzz-is-slack-on-airoids/b0010-06a5652b"
+      ],
+      "sourceUrl": "https://gkoreli.com/oss-radar-03-buzz-is-slack-on-airoids"
+    },
+    {
+      "id": "R15-reader",
+      "article": "oss-radar-03-buzz-is-slack-on-airoids",
+      "form": "reader",
+      "split": "validation",
+      "query": "Which piece explained Buzz gives people and agents Nostr keys for signed work?",
+      "knownBlocks": [
+        "oss-radar-03-buzz-is-slack-on-airoids/b0010-06a5652b"
+      ],
+      "sourceUrl": "https://gkoreli.com/oss-radar-03-buzz-is-slack-on-airoids"
+    },
+    {
+      "id": "R16-topic",
+      "article": "bring-your-own-ai-agent",
+      "form": "topic",
+      "split": "validation",
+      "query": "WebMCP page actions versus agent identity consent and transport",
+      "knownBlocks": [
+        "bring-your-own-ai-agent/b0039-f4b5c01d"
+      ],
+      "sourceUrl": "https://gkoreli.com/bring-your-own-ai-agent#webmcp-gives-a-web-app-a-voice"
+    },
+    {
+      "id": "R16-reader",
+      "article": "bring-your-own-ai-agent",
+      "form": "reader",
+      "split": "validation",
+      "query": "I am trying to find that write-up on WebMCP page actions versus agent identity consent and transport.",
+      "knownBlocks": [
+        "bring-your-own-ai-agent/b0039-f4b5c01d"
+      ],
+      "sourceUrl": "https://gkoreli.com/bring-your-own-ai-agent#webmcp-gives-a-web-app-a-voice"
+    },
+    {
+      "id": "R17-topic",
+      "article": "oss-radar-04-the-agent-multiplexer-is-becoming-a-runtime",
+      "form": "topic",
+      "split": "validation",
+      "query": "Herdr terminal multiplexer owns PTYs and tracks agents from terminal state",
+      "knownBlocks": [
+        "oss-radar-04-the-agent-multiplexer-is-becoming-a-runtime/b0001-d3407de9"
+      ],
+      "sourceUrl": "https://gkoreli.com/oss-radar-04-the-agent-multiplexer-is-becoming-a-runtime"
+    },
+    {
+      "id": "R17-reader",
+      "article": "oss-radar-04-the-agent-multiplexer-is-becoming-a-runtime",
+      "form": "reader",
+      "split": "validation",
+      "query": "Which article talks about Herdr terminal multiplexer owns PTYs and tracks agents from terminal state?",
+      "knownBlocks": [
+        "oss-radar-04-the-agent-multiplexer-is-becoming-a-runtime/b0001-d3407de9"
+      ],
+      "sourceUrl": "https://gkoreli.com/oss-radar-04-the-agent-multiplexer-is-becoming-a-runtime"
+    },
+    {
+      "id": "R18-topic",
+      "article": "my-evals-say-it-works-i-dont-use-it",
+      "form": "topic",
+      "split": "development",
+      "query": "sidecar workflow friction and forty to one hundred second waits",
+      "knownBlocks": [
+        "my-evals-say-it-works-i-dont-use-it/b0020-a2a86543"
+      ],
+      "sourceUrl": "https://gkoreli.com/my-evals-say-it-works-i-dont-use-it#where-it-hurts"
+    },
+    {
+      "id": "R18-reader",
+      "article": "my-evals-say-it-works-i-dont-use-it",
+      "form": "reader",
+      "split": "development",
+      "query": "Find the post about sidecar workflow friction and forty to one hundred second waits.",
+      "knownBlocks": [
+        "my-evals-say-it-works-i-dont-use-it/b0020-a2a86543"
+      ],
+      "sourceUrl": "https://gkoreli.com/my-evals-say-it-works-i-dont-use-it#where-it-hurts"
+    },
+    {
+      "id": "R19-topic",
+      "article": "does-llms-txt-work",
+      "form": "topic",
+      "split": "validation",
+      "query": "whether llms.txt has evidence of an AI search ranking or citation benefit",
+      "knownBlocks": [
+        "does-llms-txt-work/b0003-34306962"
+      ],
+      "sourceUrl": "https://gkoreli.com/does-llms-txt-work#does-llmstxt-work-what-a-live-implementation-revealed"
+    },
+    {
+      "id": "R19-reader",
+      "article": "does-llms-txt-work",
+      "form": "reader",
+      "split": "validation",
+      "query": "In which article did I write about whether llms.txt has evidence of an AI search ranking or citation benefit?",
+      "knownBlocks": [
+        "does-llms-txt-work/b0003-34306962"
+      ],
+      "sourceUrl": "https://gkoreli.com/does-llms-txt-work#does-llmstxt-work-what-a-live-implementation-revealed"
+    },
+    {
+      "id": "R20-topic",
+      "article": "first-party-analytics-for-a-personal-blog",
+      "form": "topic",
+      "split": "development",
+      "query": "an analytics counter called AI Reads that could not observe AI reading",
+      "knownBlocks": [
+        "first-party-analytics-for-a-personal-blog/b0024-f2b70fd1"
+      ],
+      "sourceUrl": "https://gkoreli.com/first-party-analytics-for-a-personal-blog#why-my-javascript-analytics-beacon-measured-the-wrong-event"
+    },
+    {
+      "id": "R20-reader",
+      "article": "first-party-analytics-for-a-personal-blog",
+      "form": "reader",
+      "split": "development",
+      "query": "Where did I discuss an analytics counter called AI Reads that could not observe AI reading?",
+      "knownBlocks": [
+        "first-party-analytics-for-a-personal-blog/b0024-f2b70fd1"
+      ],
+      "sourceUrl": "https://gkoreli.com/first-party-analytics-for-a-personal-blog#why-my-javascript-analytics-beacon-measured-the-wrong-event"
+    },
+    {
+      "id": "R21-topic",
+      "article": "oss-radar-05-bun-1-4",
+      "form": "topic",
+      "split": "development",
+      "query": "Bun switched from Zig to Rust and absorbed package jobs into built-ins",
+      "knownBlocks": [
+        "oss-radar-05-bun-1-4/b0001-6b36ef27"
+      ],
+      "sourceUrl": "https://gkoreli.com/oss-radar-05-bun-1-4"
+    },
+    {
+      "id": "R21-reader",
+      "article": "oss-radar-05-bun-1-4",
+      "form": "reader",
+      "split": "development",
+      "query": "There was something about Bun switched from Zig to Rust and absorbed package jobs into built-ins. Which post was that?",
+      "knownBlocks": [
+        "oss-radar-05-bun-1-4/b0001-6b36ef27"
+      ],
+      "sourceUrl": "https://gkoreli.com/oss-radar-05-bun-1-4"
+    },
+    {
+      "id": "R22-topic",
+      "article": "oss-radar-06-interp-engine",
+      "form": "topic",
+      "split": "development",
+      "query": "interp-engine serving the wrong Gemma tensor without an alarm",
+      "knownBlocks": [
+        "oss-radar-06-interp-engine/b0001-567f8877"
+      ],
+      "sourceUrl": "https://gkoreli.com/oss-radar-06-interp-engine"
+    },
+    {
+      "id": "R22-reader",
+      "article": "oss-radar-06-interp-engine",
+      "form": "reader",
+      "split": "development",
+      "query": "I can't remember the title, but it mentioned interp-engine serving the wrong Gemma tensor without an alarm.",
+      "knownBlocks": [
+        "oss-radar-06-interp-engine/b0001-567f8877"
+      ],
+      "sourceUrl": "https://gkoreli.com/oss-radar-06-interp-engine"
+    },
+    {
+      "id": "R23-topic",
+      "article": "which-ai-fetchers-send-which-headers",
+      "form": "topic",
+      "split": "validation",
+      "query": "a signed bot request whose signature did not cover the URL path",
+      "knownBlocks": [
+        "which-ai-fetchers-send-which-headers/b0008-5107664e"
+      ],
+      "sourceUrl": "https://gkoreli.com/which-ai-fetchers-send-which-headers#which-ai-fetchers-send-which-headers-measured-on-a-live-site"
+    },
+    {
+      "id": "R23-reader",
+      "article": "which-ai-fetchers-send-which-headers",
+      "form": "reader",
+      "split": "validation",
+      "query": "Which piece explained a signed bot request whose signature did not cover the URL path?",
+      "knownBlocks": [
+        "which-ai-fetchers-send-which-headers/b0008-5107664e"
+      ],
+      "sourceUrl": "https://gkoreli.com/which-ai-fetchers-send-which-headers#which-ai-fetchers-send-which-headers-measured-on-a-live-site"
+    },
+    {
+      "id": "R24-topic",
+      "article": "how-i-separate-readers-from-bots-without-javascript",
+      "form": "topic",
+      "split": "validation",
+      "query": "a signed agent request does not prove a person initiated reading",
+      "knownBlocks": [
+        "how-i-separate-readers-from-bots-without-javascript/b0043-5227c31f"
+      ],
+      "sourceUrl": "https://gkoreli.com/how-i-separate-readers-from-bots-without-javascript#agent-names-signatures-and-request-purpose"
+    },
+    {
+      "id": "R24-reader",
+      "article": "how-i-separate-readers-from-bots-without-javascript",
+      "form": "reader",
+      "split": "validation",
+      "query": "I am trying to find that write-up on a signed agent request does not prove a person initiated reading.",
+      "knownBlocks": [
+        "how-i-separate-readers-from-bots-without-javascript/b0043-5227c31f"
+      ],
+      "sourceUrl": "https://gkoreli.com/how-i-separate-readers-from-bots-without-javascript#agent-names-signatures-and-request-purpose"
+    },
+    {
+      "id": "R25-topic",
+      "article": "filter-referrer-spam-without-deleting-analytics-history",
+      "form": "topic",
+      "split": "validation",
+      "query": "reconstructing historical dashboards requires more than retained raw observations",
+      "knownBlocks": [
+        "filter-referrer-spam-without-deleting-analytics-history/b0046-1bbfa6d9"
+      ],
+      "sourceUrl": "https://gkoreli.com/filter-referrer-spam-without-deleting-analytics-history#preserving-historical-reports"
+    },
+    {
+      "id": "R25-reader",
+      "article": "filter-referrer-spam-without-deleting-analytics-history",
+      "form": "reader",
+      "split": "validation",
+      "query": "Which article talks about reconstructing historical dashboards requires more than retained raw observations?",
+      "knownBlocks": [
+        "filter-referrer-spam-without-deleting-analytics-history/b0046-1bbfa6d9"
+      ],
+      "sourceUrl": "https://gkoreli.com/filter-referrer-spam-without-deleting-analytics-history#preserving-historical-reports"
+    },
+    {
+      "id": "R26-topic",
+      "article": "oss-radar-07-ai-citations",
+      "form": "topic",
+      "split": "development",
+      "query": "adding a citation is different from evaluating whether its source supports the claim",
+      "knownBlocks": [
+        "oss-radar-07-ai-citations/b0027-1ff515aa"
+      ],
+      "sourceUrl": "https://gkoreli.com/oss-radar-07-ai-citations"
+    },
+    {
+      "id": "R26-reader",
+      "article": "oss-radar-07-ai-citations",
+      "form": "reader",
+      "split": "development",
+      "query": "Find the post about adding a citation is different from evaluating whether its source supports the claim.",
+      "knownBlocks": [
+        "oss-radar-07-ai-citations/b0027-1ff515aa"
+      ],
+      "sourceUrl": "https://gkoreli.com/oss-radar-07-ai-citations"
+    },
+    {
+      "id": "R27-topic",
+      "article": "productive-procrastination",
+      "form": "topic",
+      "split": "validation",
+      "query": "meaningful evening work provides a justification for postponing sleep",
+      "knownBlocks": [
+        "productive-procrastination/b0009-2f8f962f"
+      ],
+      "sourceUrl": "https://gkoreli.com/productive-procrastination#productive-procrastination-when-meaningful-work-costs-you-sleep"
+    },
+    {
+      "id": "R27-reader",
+      "article": "productive-procrastination",
+      "form": "reader",
+      "split": "validation",
+      "query": "In which article did I write about meaningful evening work provides a justification for postponing sleep?",
+      "knownBlocks": [
+        "productive-procrastination/b0009-2f8f962f"
+      ],
+      "sourceUrl": "https://gkoreli.com/productive-procrastination#productive-procrastination-when-meaningful-work-costs-you-sleep"
+    },
+    {
+      "id": "R28-topic",
+      "article": "chatgpt-plugin-apps",
+      "form": "topic",
+      "split": "validation",
+      "query": "when assistant integrations need a visual interface instead of only tools or skills",
+      "knownBlocks": [
+        "chatgpt-plugin-apps/b0016-9fb414ec"
+      ],
+      "sourceUrl": "https://gkoreli.com/chatgpt-plugin-apps#what-changed-since-the-earlier-chatgpt-apps"
+    },
+    {
+      "id": "R28-reader",
+      "article": "chatgpt-plugin-apps",
+      "form": "reader",
+      "split": "validation",
+      "query": "Where did I discuss when assistant integrations need a visual interface instead of only tools or skills?",
+      "knownBlocks": [
+        "chatgpt-plugin-apps/b0016-9fb414ec"
+      ],
+      "sourceUrl": "https://gkoreli.com/chatgpt-plugin-apps#what-changed-since-the-earlier-chatgpt-apps"
+    },
+    {
+      "id": "R29-topic",
+      "article": "openclaw-chose-solid-why-id-choose-nisli",
+      "form": "topic",
+      "split": "validation",
+      "query": "innerHTML replacement destroys child state scroll position and keyboard focus",
+      "knownBlocks": [
+        "openclaw-chose-solid-why-id-choose-nisli/b0024-b7da8757"
+      ],
+      "sourceUrl": "https://gkoreli.com/openclaw-chose-solid-why-id-choose-nisli#why-i-built-nisli-this-way"
+    },
+    {
+      "id": "R29-reader",
+      "article": "openclaw-chose-solid-why-id-choose-nisli",
+      "form": "reader",
+      "split": "validation",
+      "query": "There was something about innerHTML replacement destroys child state scroll position and keyboard focus. Which post was that?",
+      "knownBlocks": [
+        "openclaw-chose-solid-why-id-choose-nisli/b0024-b7da8757"
+      ],
+      "sourceUrl": "https://gkoreli.com/openclaw-chose-solid-why-id-choose-nisli#why-i-built-nisli-this-way"
+    },
+    {
+      "id": "R30-topic",
+      "article": "building-blog-analytics-what-the-numbers-can-prove",
+      "form": "topic",
+      "split": "validation",
+      "query": "building analytics while keeping requests clients and readership distinct",
+      "knownBlocks": [
+        "building-blog-analytics-what-the-numbers-can-prove/b0004-12b8ffdd"
+      ],
+      "sourceUrl": "https://gkoreli.com/building-blog-analytics-what-the-numbers-can-prove#building-blog-analytics-what-the-numbers-can-prove"
+    },
+    {
+      "id": "R30-reader",
+      "article": "building-blog-analytics-what-the-numbers-can-prove",
+      "form": "reader",
+      "split": "validation",
+      "query": "I can't remember the title, but it mentioned building analytics while keeping requests clients and readership distinct.",
+      "knownBlocks": [
+        "building-blog-analytics-what-the-numbers-can-prove/b0004-12b8ffdd"
+      ],
+      "sourceUrl": "https://gkoreli.com/building-blog-analytics-what-the-numbers-can-prove#building-blog-analytics-what-the-numbers-can-prove"
+    },
+    {
+      "id": "R31-topic",
+      "article": "oss-radar-08-bun-aot",
+      "form": "topic",
+      "split": "validation",
+      "query": "compiling a Hono application with Bun AOT and testing runtime compatibility",
+      "knownBlocks": [
+        "oss-radar-08-bun-aot/b0033-2128efc3"
+      ],
+      "sourceUrl": "https://gkoreli.com/oss-radar-08-bun-aot#sources-and-evidence"
+    },
+    {
+      "id": "R31-reader",
+      "article": "oss-radar-08-bun-aot",
+      "form": "reader",
+      "split": "validation",
+      "query": "Which piece explained compiling a Hono application with Bun AOT and testing runtime compatibility?",
+      "knownBlocks": [
+        "oss-radar-08-bun-aot/b0033-2128efc3"
+      ],
+      "sourceUrl": "https://gkoreli.com/oss-radar-08-bun-aot#sources-and-evidence"
+    },
+    {
+      "id": "R32-topic",
+      "article": "why-worktree-setup-is-slow-on-macos",
+      "form": "topic",
+      "split": "validation",
+      "query": "pnpm uses hardlinks on Linux and clones on macOS",
+      "knownBlocks": [
+        "why-worktree-setup-is-slow-on-macos/b0016-22e4d124"
+      ],
+      "sourceUrl": "https://gkoreli.com/why-worktree-setup-is-slow-on-macos#the-mac-creates-independent-files"
+    },
+    {
+      "id": "R32-reader",
+      "article": "why-worktree-setup-is-slow-on-macos",
+      "form": "reader",
+      "split": "validation",
+      "query": "I am trying to find that write-up on pnpm uses hardlinks on Linux and clones on macOS.",
+      "knownBlocks": [
+        "why-worktree-setup-is-slow-on-macos/b0016-22e4d124"
+      ],
+      "sourceUrl": "https://gkoreli.com/why-worktree-setup-is-slow-on-macos#the-mac-creates-independent-files"
+    },
+    {
+      "id": "R33-topic",
+      "article": "oss-radar-09-tsrs-typescript-memory",
+      "form": "topic",
+      "split": "validation",
+      "query": "tsrs fast mode can change TypeScript diagnostics",
+      "knownBlocks": [
+        "oss-radar-09-tsrs-typescript-memory/b0003-d97d92a4"
+      ],
+      "sourceUrl": "https://gkoreli.com/oss-radar-09-tsrs-typescript-memory#oss-radar-09-tsrs-checks-vs-code-faster-with-56-less-ram"
+    },
+    {
+      "id": "R33-reader",
+      "article": "oss-radar-09-tsrs-typescript-memory",
+      "form": "reader",
+      "split": "validation",
+      "query": "Which article talks about tsrs fast mode can change TypeScript diagnostics?",
+      "knownBlocks": [
+        "oss-radar-09-tsrs-typescript-memory/b0003-d97d92a4"
+      ],
+      "sourceUrl": "https://gkoreli.com/oss-radar-09-tsrs-typescript-memory#oss-radar-09-tsrs-checks-vs-code-faster-with-56-less-ram"
+    },
+    {
+      "id": "R34-topic",
+      "article": "oss-radar-10-paperpilot-redaction",
+      "form": "topic",
+      "split": "development",
+      "query": "a PDF redaction leaves black boxes but extractable secret text",
+      "knownBlocks": [
+        "oss-radar-10-paperpilot-redaction/b0002-c595fea8"
+      ],
+      "sourceUrl": "https://gkoreli.com/oss-radar-10-paperpilot-redaction#oss-radar-10-paperpilot-left-the-secret-in-my-redacted-pdf"
+    },
+    {
+      "id": "R34-reader",
+      "article": "oss-radar-10-paperpilot-redaction",
+      "form": "reader",
+      "split": "development",
+      "query": "Find the post about a PDF redaction leaves black boxes but extractable secret text.",
+      "knownBlocks": [
+        "oss-radar-10-paperpilot-redaction/b0002-c595fea8"
+      ],
+      "sourceUrl": "https://gkoreli.com/oss-radar-10-paperpilot-redaction#oss-radar-10-paperpilot-left-the-secret-in-my-redacted-pdf"
+    },
+    {
+      "id": "R35-topic",
+      "article": "oss-radar-11-qwenputer-compiled-cpu",
+      "form": "topic",
+      "split": "validation",
+      "query": "processor instructions compiled into neural weights rather than learned through training",
+      "knownBlocks": [
+        "oss-radar-11-qwenputer-compiled-cpu/b0005-9a4388ec"
+      ],
+      "sourceUrl": "https://gkoreli.com/oss-radar-11-qwenputer-compiled-cpu#oss-radar-11-qwenputer-ran-my-program-inside-qwens-layers"
+    },
+    {
+      "id": "R35-reader",
+      "article": "oss-radar-11-qwenputer-compiled-cpu",
+      "form": "reader",
+      "split": "validation",
+      "query": "In which article did I write about processor instructions compiled into neural weights rather than learned through training?",
+      "knownBlocks": [
+        "oss-radar-11-qwenputer-compiled-cpu/b0005-9a4388ec"
+      ],
+      "sourceUrl": "https://gkoreli.com/oss-radar-11-qwenputer-compiled-cpu#oss-radar-11-qwenputer-ran-my-program-inside-qwens-layers"
+    },
+    {
+      "id": "R36-topic",
+      "article": "oss-radar-12-claude-code-status-summary",
+      "form": "topic",
+      "split": "validation",
+      "query": "background agent status labels have a model request path outside the conversation transcript",
+      "knownBlocks": [
+        "oss-radar-12-claude-code-status-summary/b0002-7b3994ce"
+      ],
+      "sourceUrl": "https://gkoreli.com/oss-radar-12-claude-code-status-summary#oss-radar-12-claude-codes-status-labels-make-their-own-model-calls"
+    },
+    {
+      "id": "R36-reader",
+      "article": "oss-radar-12-claude-code-status-summary",
+      "form": "reader",
+      "split": "validation",
+      "query": "Where did I discuss background agent status labels have a model request path outside the conversation transcript?",
+      "knownBlocks": [
+        "oss-radar-12-claude-code-status-summary/b0002-7b3994ce"
+      ],
+      "sourceUrl": "https://gkoreli.com/oss-radar-12-claude-code-status-summary#oss-radar-12-claude-codes-status-labels-make-their-own-model-calls"
+    },
+    {
+      "id": "R37-topic",
+      "article": "oss-radar-13-hob-offline-file-tasks",
+      "form": "topic",
+      "split": "validation",
+      "query": "Hob model download and file writing with networking blocked",
+      "knownBlocks": [
+        "oss-radar-13-hob-offline-file-tasks/b0003-2511b427"
+      ],
+      "sourceUrl": "https://gkoreli.com/oss-radar-13-hob-offline-file-tasks#oss-radar-13-hob-wrote-correct-files-with-network-access-blocked"
+    },
+    {
+      "id": "R37-reader",
+      "article": "oss-radar-13-hob-offline-file-tasks",
+      "form": "reader",
+      "split": "validation",
+      "query": "There was something about Hob model download and file writing with networking blocked. Which post was that?",
+      "knownBlocks": [
+        "oss-radar-13-hob-offline-file-tasks/b0003-2511b427"
+      ],
+      "sourceUrl": "https://gkoreli.com/oss-radar-13-hob-offline-file-tasks#oss-radar-13-hob-wrote-correct-files-with-network-access-blocked"
+    },
+    {
+      "id": "R38-topic",
+      "article": "ai-fetcher-research-from-experiments-to-a-cited-reference",
+      "form": "topic",
+      "split": "development",
+      "query": "Codex drove a browser that analytics classified as a human browser",
+      "knownBlocks": [
+        "ai-fetcher-research-from-experiments-to-a-cited-reference/b0003-cbadd0c5"
+      ],
+      "sourceUrl": "https://gkoreli.com/ai-fetcher-research-from-experiments-to-a-cited-reference#my-ai-agent-read-my-blog-my-analytics-called-it-a-browser"
+    },
+    {
+      "id": "R38-reader",
+      "article": "ai-fetcher-research-from-experiments-to-a-cited-reference",
+      "form": "reader",
+      "split": "development",
+      "query": "I can't remember the title, but it mentioned Codex drove a browser that analytics classified as a human browser.",
+      "knownBlocks": [
+        "ai-fetcher-research-from-experiments-to-a-cited-reference/b0003-cbadd0c5"
+      ],
+      "sourceUrl": "https://gkoreli.com/ai-fetcher-research-from-experiments-to-a-cited-reference#my-ai-agent-read-my-blog-my-analytics-called-it-a-browser"
+    },
+    {
+      "id": "R39-topic",
+      "article": "bun-aot-express-fastify-serializers",
+      "form": "topic",
+      "split": "validation",
+      "query": "replacing Fastify response serialization loses field filtering and coercion",
+      "knownBlocks": [
+        "bun-aot-express-fastify-serializers/b0017-1d386756"
+      ],
+      "sourceUrl": "https://gkoreli.com/bun-aot-express-fastify-serializers#generate-the-serializer-before-compiling"
+    },
+    {
+      "id": "R39-reader",
+      "article": "bun-aot-express-fastify-serializers",
+      "form": "reader",
+      "split": "validation",
+      "query": "Which piece explained replacing Fastify response serialization loses field filtering and coercion?",
+      "knownBlocks": [
+        "bun-aot-express-fastify-serializers/b0017-1d386756"
+      ],
+      "sourceUrl": "https://gkoreli.com/bun-aot-express-fastify-serializers#generate-the-serializer-before-compiling"
+    },
+    {
+      "id": "R40-topic",
+      "article": "in-the-age-of-abundance-less-is-more",
+      "form": "topic",
+      "split": "development",
+      "query": "switching useful projects to avoid the discomfort of being stuck",
+      "knownBlocks": [
+        "in-the-age-of-abundance-less-is-more/b0019-3f8d6bcb"
+      ],
+      "sourceUrl": "https://gkoreli.com/in-the-age-of-abundance-less-is-more#stay-with-the-blocked-project"
+    },
+    {
+      "id": "R40-reader",
+      "article": "in-the-age-of-abundance-less-is-more",
+      "form": "reader",
+      "split": "development",
+      "query": "I am trying to find that write-up on switching useful projects to avoid the discomfort of being stuck.",
+      "knownBlocks": [
+        "in-the-age-of-abundance-less-is-more/b0019-3f8d6bcb"
+      ],
+      "sourceUrl": "https://gkoreli.com/in-the-age-of-abundance-less-is-more#stay-with-the-blocked-project"
+    },
+    {
+      "id": "R41-topic",
+      "article": "ai-fetcher-browser-crawler-headers",
+      "form": "topic",
+      "split": "development",
+      "query": "Context.dev command line lacks scrape and map despite REST API support",
+      "knownBlocks": [
+        "ai-fetcher-browser-crawler-headers/b0120-24844ab1"
+      ],
+      "sourceUrl": "https://gkoreli.com/ai-fetcher-browser-crawler-headers#cli-and-mcp-are-separate-working-interfaces"
+    },
+    {
+      "id": "R41-reader",
+      "article": "ai-fetcher-browser-crawler-headers",
+      "form": "reader",
+      "split": "development",
+      "query": "Which article talks about Context.dev command line lacks scrape and map despite REST API support?",
+      "knownBlocks": [
+        "ai-fetcher-browser-crawler-headers/b0120-24844ab1"
+      ],
+      "sourceUrl": "https://gkoreli.com/ai-fetcher-browser-crawler-headers#cli-and-mcp-are-separate-working-interfaces"
+    },
+    {
+      "id": "R42-topic",
+      "article": "ai-site-check-evidence",
+      "form": "topic",
+      "split": "development",
+      "query": "a public page checker inspects delivery and robots rules without testing every AI provider",
+      "knownBlocks": [
+        "ai-site-check-evidence/b0006-943644a0"
+      ],
+      "sourceUrl": "https://gkoreli.com/ai-site-check-evidence#start-with-the-page-you-need-an-agent-to-read"
+    },
+    {
+      "id": "R42-reader",
+      "article": "ai-site-check-evidence",
+      "form": "reader",
+      "split": "development",
+      "query": "Find the post about a public page checker inspects delivery and robots rules without testing every AI provider.",
+      "knownBlocks": [
+        "ai-site-check-evidence/b0006-943644a0"
+      ],
+      "sourceUrl": "https://gkoreli.com/ai-site-check-evidence#start-with-the-page-you-need-an-agent-to-read"
+    },
+    {
+      "id": "R43-topic",
+      "article": "cloudflare-turnstile-signup-failures",
+      "form": "topic",
+      "split": "validation",
+      "query": "a repeated Turnstile readiness callback can cancel an already pending signup request",
+      "knownBlocks": [
+        "cloudflare-turnstile-signup-failures/b0002-3d24ff8a"
+      ],
+      "sourceUrl": "https://gkoreli.com/cloudflare-turnstile-signup-failures#cloudflare-turnstile-what-kept-breaking-my-signup-form"
+    },
+    {
+      "id": "R43-reader",
+      "article": "cloudflare-turnstile-signup-failures",
+      "form": "reader",
+      "split": "validation",
+      "query": "In which article did I write about a repeated Turnstile readiness callback can cancel an already pending signup request?",
+      "knownBlocks": [
+        "cloudflare-turnstile-signup-failures/b0002-3d24ff8a"
+      ],
+      "sourceUrl": "https://gkoreli.com/cloudflare-turnstile-signup-failures#cloudflare-turnstile-what-kept-breaking-my-signup-form"
+    },
+    {
+      "id": "R44-topic",
+      "article": "please-stop-misreading-user-agent",
+      "form": "topic",
+      "split": "validation",
+      "query": "Android tablet desktop mode causes a Linux download recommendation",
+      "knownBlocks": [
+        "please-stop-misreading-user-agent/b0027-a71b0fa1"
+      ],
+      "sourceUrl": "https://gkoreli.com/please-stop-misreading-user-agent#a-tablet-can-ask-to-look-like-a-desktop"
+    },
+    {
+      "id": "R44-reader",
+      "article": "please-stop-misreading-user-agent",
+      "form": "reader",
+      "split": "validation",
+      "query": "Where did I discuss Android tablet desktop mode causes a Linux download recommendation?",
+      "knownBlocks": [
+        "please-stop-misreading-user-agent/b0027-a71b0fa1"
+      ],
+      "sourceUrl": "https://gkoreli.com/please-stop-misreading-user-agent#a-tablet-can-ask-to-look-like-a-desktop"
+    },
+    {
+      "id": "R45-topic",
+      "article": "oss-radar-14-november-show-hn",
+      "form": "topic",
+      "split": "validation",
+      "query": "Coldframe refrigeration controller honeypot from a November Show HN roundup",
+      "knownBlocks": [
+        "oss-radar-14-november-show-hn/b0089-ec72e7f0"
+      ],
+      "sourceUrl": "https://gkoreli.com/oss-radar-14-november-show-hn#coldframe-a-refrigeration-controller-honeypot"
+    },
+    {
+      "id": "R45-reader",
+      "article": "oss-radar-14-november-show-hn",
+      "form": "reader",
+      "split": "validation",
+      "query": "There was something about Coldframe refrigeration controller honeypot from a November Show HN roundup. Which post was that?",
+      "knownBlocks": [
+        "oss-radar-14-november-show-hn/b0089-ec72e7f0"
+      ],
+      "sourceUrl": "https://gkoreli.com/oss-radar-14-november-show-hn#coldframe-a-refrigeration-controller-honeypot"
+    },
+    {
+      "id": "R46-topic",
+      "article": "prompt-cache-context-edits",
+      "form": "topic",
+      "split": "development",
+      "query": "appending instructions preserves cached prompt work while editing an early instruction invalidates it",
+      "knownBlocks": [
+        "prompt-cache-context-edits/b0040-e91deb31"
+      ],
+      "sourceUrl": "https://gkoreli.com/prompt-cache-context-edits"
+    },
+    {
+      "id": "R46-reader",
+      "article": "prompt-cache-context-edits",
+      "form": "reader",
+      "split": "development",
+      "query": "I can't remember the title, but it mentioned appending instructions preserves cached prompt work while editing an early instruction invalidates it.",
+      "knownBlocks": [
+        "prompt-cache-context-edits/b0040-e91deb31"
+      ],
+      "sourceUrl": "https://gkoreli.com/prompt-cache-context-edits"
+    },
+    {
+      "id": "V01",
+      "article": "oss-radar-01-vercel-winter-2026-cohort",
+      "form": "recollection",
+      "split": "development",
+      "query": "the little library with moving pictures you can drop into a Svelte interface",
+      "knownBlocks": [
+        "oss-radar-01-vercel-winter-2026-cohort/b0133-c1a1899b"
+      ],
+      "sourceUrl": "https://gkoreli.com/oss-radar-01-vercel-winter-2026-cohort#moving-icons--jakob-isermann"
+    },
+    {
+      "id": "V02",
+      "article": "oss-radar-10-paperpilot-redaction",
+      "form": "recollection",
+      "split": "development",
+      "query": "the thing that looked like it hid words in a PDF but left them there",
+      "knownBlocks": [
+        "oss-radar-10-paperpilot-redaction/b0002-c595fea8"
+      ],
+      "sourceUrl": "https://gkoreli.com/oss-radar-10-paperpilot-redaction#oss-radar-10-paperpilot-left-the-secret-in-my-redacted-pdf"
+    },
+    {
+      "id": "V03",
+      "article": "oss-radar-11-qwenputer-compiled-cpu",
+      "form": "recollection",
+      "split": "validation",
+      "query": "somebody built a processor inside a language model without teaching it with examples",
+      "knownBlocks": [
+        "oss-radar-11-qwenputer-compiled-cpu/b0005-9a4388ec"
+      ],
+      "sourceUrl": "https://gkoreli.com/oss-radar-11-qwenputer-compiled-cpu#oss-radar-11-qwenputer-ran-my-program-inside-qwens-layers"
+    },
+    {
+      "id": "V04",
+      "article": "oss-radar-13-hob-offline-file-tasks",
+      "form": "recollection",
+      "split": "validation",
+      "query": "the app that wrote local reports after blocking the internet",
+      "knownBlocks": [
+        "oss-radar-13-hob-offline-file-tasks/b0003-2511b427"
+      ],
+      "sourceUrl": "https://gkoreli.com/oss-radar-13-hob-offline-file-tasks#oss-radar-13-hob-wrote-correct-files-with-network-access-blocked"
+    },
+    {
+      "id": "V05",
+      "article": "cloudflare-turnstile-signup-failures",
+      "form": "recollection",
+      "split": "validation",
+      "query": "a second human-check widget cancelled the signup already on the wire",
+      "knownBlocks": [
+        "cloudflare-turnstile-signup-failures/b0002-3d24ff8a"
+      ],
+      "sourceUrl": "https://gkoreli.com/cloudflare-turnstile-signup-failures#cloudflare-turnstile-what-kept-breaking-my-signup-form"
+    },
+    {
+      "id": "V06",
+      "article": "prompt-cache-context-edits",
+      "form": "recollection",
+      "split": "development",
+      "query": "why changing instructions at the beginning makes later cached work unusable",
+      "knownBlocks": [
+        "prompt-cache-context-edits/b0040-e91deb31"
+      ],
+      "sourceUrl": "https://gkoreli.com/prompt-cache-context-edits"
+    },
+    {
+      "id": "V07",
+      "article": "you-dont-need-codemap",
+      "form": "recollection",
+      "split": "validation",
+      "query": "a tool that helped before deciding which repository to download",
+      "knownBlocks": [
+        "you-dont-need-codemap/b0001-b1157db6"
+      ],
+      "sourceUrl": "https://gkoreli.com/you-dont-need-codemap"
+    },
+    {
+      "id": "V08",
+      "article": "please-stop-misreading-user-agent",
+      "form": "recollection",
+      "split": "validation",
+      "query": "a tablet pretending to be a desktop and getting the wrong installer",
+      "knownBlocks": [
+        "please-stop-misreading-user-agent/b0027-a71b0fa1"
+      ],
+      "sourceUrl": "https://gkoreli.com/please-stop-misreading-user-agent#a-tablet-can-ask-to-look-like-a-desktop"
+    },
+    {
+      "id": "V09",
+      "article": "oss-radar-09-tsrs-typescript-memory",
+      "form": "recollection",
+      "split": "validation",
+      "query": "the faster type checker that sometimes missed an error",
+      "knownBlocks": [
+        "oss-radar-09-tsrs-typescript-memory/b0003-d97d92a4"
+      ],
+      "sourceUrl": "https://gkoreli.com/oss-radar-09-tsrs-typescript-memory#oss-radar-09-tsrs-checks-vs-code-faster-with-56-less-ram"
+    },
+    {
+      "id": "V10",
+      "article": "oss-radar-03-buzz-is-slack-on-airoids",
+      "form": "recollection",
+      "split": "validation",
+      "query": "the project room that let teammates share their laptop's model",
+      "knownBlocks": [
+        "oss-radar-03-buzz-is-slack-on-airoids/b0010-06a5652b"
+      ],
+      "sourceUrl": "https://gkoreli.com/oss-radar-03-buzz-is-slack-on-airoids"
+    },
+    {
+      "id": "V11",
+      "article": "oss-radar-06-interp-engine",
+      "form": "recollection",
+      "split": "development",
+      "query": "a model measurement with the right shape but taken from the wrong internal location",
+      "knownBlocks": [
+        "oss-radar-06-interp-engine/b0001-567f8877"
+      ],
+      "sourceUrl": "https://gkoreli.com/oss-radar-06-interp-engine"
+    },
+    {
+      "id": "V12",
+      "article": "oss-radar-12-claude-code-status-summary",
+      "form": "recollection",
+      "split": "validation",
+      "query": "a tiny progress caption that secretly needed another model request",
+      "knownBlocks": [
+        "oss-radar-12-claude-code-status-summary/b0002-7b3994ce"
+      ],
+      "sourceUrl": "https://gkoreli.com/oss-radar-12-claude-code-status-summary#oss-radar-12-claude-codes-status-labels-make-their-own-model-calls"
+    },
+    {
+      "id": "N01",
+      "article": null,
+      "form": "no-known-answer",
+      "split": "development",
+      "query": "emoji library",
+      "knownBlocks": []
+    },
+    {
+      "id": "N02",
+      "article": null,
+      "form": "no-known-answer",
+      "split": "development",
+      "query": "sourdough oven steam timing",
+      "knownBlocks": []
+    },
+    {
+      "id": "N03",
+      "article": null,
+      "form": "no-known-answer",
+      "split": "development",
+      "query": "chess castling through check",
+      "knownBlocks": []
+    },
+    {
+      "id": "N04",
+      "article": null,
+      "form": "no-known-answer",
+      "split": "development",
+      "query": "road bicycle tyre pressure",
+      "knownBlocks": []
+    },
+    {
+      "id": "N05",
+      "article": null,
+      "form": "no-known-answer",
+      "split": "validation",
+      "query": "houseplant root rot treatment",
+      "knownBlocks": []
+    },
+    {
+      "id": "N06",
+      "article": null,
+      "form": "no-known-answer",
+      "split": "validation",
+      "query": "backpacking tent waterproof ratings",
+      "knownBlocks": []
+    },
+    {
+      "id": "N07",
+      "article": null,
+      "form": "no-known-answer",
+      "split": "validation",
+      "query": "an open source project that predicts earthquakes",
+      "knownBlocks": []
+    },
+    {
+      "id": "N08",
+      "article": null,
+      "form": "no-known-answer",
+      "split": "validation",
+      "query": "a hotel booking cancellation workflow tutorial",
+      "knownBlocks": []
+    },
+    {
+      "id": "N09",
+      "article": null,
+      "form": "no-known-answer",
+      "split": "validation",
+      "query": "a tutorial for tuning a violin",
+      "knownBlocks": []
+    },
+    {
+      "id": "N10",
+      "article": null,
+      "form": "no-known-answer",
+      "split": "validation",
+      "query": "Svelte animated emoji rendering",
+      "knownBlocks": []
+    }
+  ]
+}

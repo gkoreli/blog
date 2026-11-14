@@ -13,7 +13,11 @@
     "test": "node --import tsx --test test/*.test.ts test/*.test.mjs",
     "serve": "pnpm dlx serve dist",
     "typecheck": "tsc --noEmit && tsc -p src/worker/tsconfig.json",
-    "test:ai-check": "node scripts/check-ai-check.mjs"
+    "test:ai-check": "node scripts/check-ai-check.mjs",
+    "pretest": "pnpm -C ../time build",
+    "pretypecheck": "pnpm -C ../time build",
+    "prebuild": "pnpm -C ../time build",
+    "predev": "pnpm -C ../time build"
   },
   "dependencies": {
     "@gkoreli/analytics": "workspace:*",
@@ -30,7 +34,8 @@
     "marked-shiki": "^1.2.1",
     "shiki": "^4.0.1",
     "zod": "^4.3.6",
-    "@gkoreli/site-audit": "workspace:*"
+    "@gkoreli/site-audit": "workspace:*",
+    "@gkoreli/time": "workspace:*"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20250306.0",

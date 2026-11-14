@@ -16,6 +16,9 @@ const output = process.argv[2];
 assert(output, 'Output directory required');
 const repeat = process.argv[3] === undefined ? 1 : Number(process.argv[3]);
 assert(Number.isSafeInteger(repeat) && repeat > 0 && repeat <= 500, 'Repeat must be 1–500');
+const resourceCount = Number(process.argv[4] ?? ACCESS_CATALOGUE.length);
+assert(Number.isSafeInteger(resourceCount) && resourceCount >= ACCESS_CATALOGUE.length && resourceCount <= 512, 'Resource count must be 6–512');
+const resources = [...ACCESS_CATALOGUE, ...Array.from({ length: resourceCount - ACCESS_CATALOGUE.length }, (_, index) => ({ id: 'scale:' + index, path: '/scale-resource-' + index, title: 'Scale resource ' + index, role: 'article', articleId: null, collection: 'page' }))];
 await mkdir(output, { recursive: true });
 const require = createRequire(new URL('../../../package.json', import.meta.url));
 const { Miniflare } = await import(pathToFileURL(require.resolve('miniflare', { paths: [dirname(require.resolve('wrangler/package.json'))] })));
@@ -23,7 +26,7 @@ const { build } = await import(pathToFileURL(require.resolve('esbuild', { paths:
 const entry = `import {queryAgentAccess} from './packages/analytics/src/agent-access.ts';
 let externalFetches=0;globalThis.fetch=async()=>{externalFetches++;throw Error('External transport disabled')};
 export default{async fetch(request,env){const calculations=[];
-  try{const report=await queryAgentAccess(env.DB,${JSON.stringify(ACCESS_CATALOGUE)},{now:new Date(${JSON.stringify(ACCESS_NOW.toISOString())}),onCalculation:event=>calculations.push(event),readModel:new URL(request.url).searchParams.get('source')==='1'?'source':'projected'});
+  try{const report=await queryAgentAccess(env.DB,${JSON.stringify(resources)},{now:new Date(${JSON.stringify(ACCESS_NOW.toISOString())}),onCalculation:event=>calculations.push(event),readModel:new URL(request.url).searchParams.get('source')==='1'?'source':'projected'});
     return Response.json({report,calculations,externalFetches});
   }catch(error){return Response.json({error:String(error),calculations,externalFetches},{status:503})}}};`;
 const compiled = await build({ stdin: { contents: entry, resolveDir: resolve('.'), loader: 'js' }, bundle: true, format: 'esm', platform: 'browser', target: 'es2022', write: false });
@@ -43,7 +46,7 @@ try {
   }
   await db.prepare("INSERT INTO owner_clients(daily_client_id,utc_date)VALUES(?,'2026-10-17')").bind('f'.repeat(32)).run();
   const original = (await db.prepare('SELECT * FROM page_observations ORDER BY id').all()).results;
-  const expected = await queryAgentAccess(fixture.db, ACCESS_CATALOGUE, { now: ACCESS_NOW, readModel: 'source' });
+  const expected = await queryAgentAccess(fixture.db, resources, { now: ACCESS_NOW, readModel: 'source' });
   async function check(name, source, expectedReport = expected) {
     const response = await mf.dispatchFetch('https://native.fixture/report' + (source ? '?source=1' : ''));
     const body = await response.json();
@@ -72,11 +75,11 @@ try {
   receipts.push({ name: 'malformed-derived-proof-rejected', status: rejected.status, reportReturned: false });
   const after = (await db.prepare('SELECT * FROM page_observations ORDER BY id').all()).results;
   assert.deepEqual(after, original);
-  const queries = buildAgentAccessQueryPlan(ACCESS_CATALOGUE, '2026-10-17', '2026-11-14', ACTIVE_REFERRAL_POLICY);
+  const queries = buildAgentAccessQueryPlan(resources, '2026-10-17', '2026-11-14', ACTIVE_REFERRAL_POLICY);
   const query = queries[0];
   const plan = (await db.prepare('EXPLAIN QUERY PLAN ' + query.sql).bind(...query.values).all()).results;
   assert(plan.some(row => /observed_at/.test(row.detail) && /SEARCH/.test(row.detail)), 'Date-bounded observation index is required');
-  const summary = { version: 1, passed: true, recordedAt: new Date().toISOString(), runtime: 'native Workerd via installed Miniflare', originalRows: original.length, originalRowsUnchanged: true, originalRowsSha256: createHash('sha256').update(JSON.stringify(original)).digest('hex'), checks: receipts, queryPlan: plan, sourceSqlBytes: buildAgentAccessQueryPlan(ACCESS_CATALOGUE, '2026-10-17', '2026-11-14', ACTIVE_REFERRAL_POLICY, true).map(query=>query.sql.length), projectedSqlBytes: queries.map(query=>query.sql.length), boundParameters: query.values.length };
+  const summary = { version: 1, passed: true, recordedAt: new Date().toISOString(), runtime: 'native Workerd via installed Miniflare', resources: resources.length, originalRows: original.length, originalRowsUnchanged: true, originalRowsSha256: createHash('sha256').update(JSON.stringify(original)).digest('hex'), checks: receipts, queryPlan: plan, sourceSqlBytes: buildAgentAccessQueryPlan(resources, '2026-10-17', '2026-11-14', ACTIVE_REFERRAL_POLICY, true).map(query=>query.sql.length), projectedSqlBytes: queries.map(query=>query.sql.length), boundParameters: query.values.length };
   await writeFile(resolve(output, 'native-acceptance.json'), JSON.stringify(summary, null, 2) + '\n');
-  console.log(JSON.stringify({ passed: true, originalRows: original.length, originalRowsUnchanged: true, checks: receipts.map(({ name, views, cells, calculations, status }) => ({ name, views, cells, status, calculations: calculations?.map(event => ({ readModel: event.readModel, reads: event.reportedRowsRead, writes: event.reportedRowsWritten, statements: event.submittedStatements, elapsedMs: event.elapsedMs })) })), sourceSqlBytes: summary.sourceSqlBytes, projectedSqlBytes: summary.projectedSqlBytes }));
+  console.log(JSON.stringify({ passed: true, resources: resources.length, originalRows: original.length, originalRowsUnchanged: true, checks: receipts.map(({ name, views, cells, calculations, status }) => ({ name, views, cells, status, calculations: calculations?.map(event => ({ readModel: event.readModel, reads: event.reportedRowsRead, writes: event.reportedRowsWritten, statements: event.submittedStatements, elapsedMs: event.elapsedMs })) })), sourceSqlBytes: summary.sourceSqlBytes, projectedSqlBytes: summary.projectedSqlBytes }));
 } finally { fixture.sqlite.close(); schema.close(); await mf.dispose(); }

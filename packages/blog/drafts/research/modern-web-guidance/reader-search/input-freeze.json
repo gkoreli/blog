@@ -1,0 +1,58 @@
+{
+  "frozenAt": "2026-11-14T19:32:55.572Z",
+  "beforeNewReaderRankings": true,
+  "files": {
+    "protocol.md": "d7ec0b8544519bd2367b2983854cc080d5559d2a5016d163f6ad7cda5bbd63c9",
+    "intents.json": "e590d4028b8ce9431eb120e08d14bff3f62e8a03b834e6198af641beb1508395",
+    "recollections.json": "11e8dd32a8bc5b8023cf02bbf0cdaff43655b1bae805bd8c647c66b7026ae316",
+    "cases.json": "cbcb2530f04b43b0d28b4b47bda7c49a96a93dd6f1bbfcb14785f07d00fc3002",
+    "query.mjs": "e4f2f2de0a39f11f623db0ddf0c7e01089a6a7e38892f3ed39887f1327c0cd32",
+    "navigation.mjs": "ef00a81f6c489d25f2ee0d57dfbffd351b6b6d55a0e95a132cc589da0881bcfb",
+    "ranking.mjs": "9855708176c6d13b17dd9e4a914217c38e240fc620db605aed2ca8968781ac32",
+    "prepare-cases.mjs": "da870097b9e848b1ac584991dde29a9ef911c6ae433b8a2c2b29d8a7a3994d5e",
+    "prepare-units.mjs": "6bd8584f88bf92f1acb1e1456d8a8966f0057e9ba94247db96c7b60cb4b00826",
+    "capture-live.mjs": "953d17c3f9fcdbb11eb3c857af98c996713e0e607ffafb212ea337b594ff1a74",
+    "verify-live.mjs": "008379ae726ab8d965489ef128c88e08c4256390313f5d5b9f7b42217e3f6a05",
+    "evaluate-reader.mjs": "0469af80126dcaa49ddc264e4e6e323af2e983638db18e703c26f9977a3ed720",
+    "reader.test.mjs": "13b7fe51a5752b4d1da10b24ce64f738b468bc4eaf9a690d293a9fdcefc73876",
+    "freeze-reader.mjs": "f7074b2af28e4f39b4bea525d59c94f2507761df18ec440fb11fb451def74acc",
+    "unit-manifest.json": "a57d2b4627f3b4a524691d2b0bfe08f09845fe4dd348110512e97b68d93048e1",
+    "live-coverage.json": "0198923623f48c024e87a766ace6a61523fe0df0ed27be68b9f290dcc826685d"
+  },
+  "sourceInputs": {
+    "corpusSha256": "d3de0d29a58f46fa12bfde0a347d361ff0116c27cbd7193f4e4b43e0ca0219ea",
+    "unitFileSha256": "0c3a00362ea35206d4e8aed0d304127abd58a9d6bdf0b554130d22ae8129904d",
+    "unitIndexReceiptSha256": "e1ea548fc5b79f94e25f6244795913e89011146a0c8a562431f3ddd45fe23b7f",
+    "liveVerificationSha256": "d79d03e9e68547863c188e8b8be2ea53d8b468469c4f1704b4c978e6d958f394",
+    "liveCaptureReceiptSha256": "2035e79318246a240942283117eb7fffaa71f95f2b158e025d13398a8cbd619e",
+    "originalModelFreezeSha256": "35f9e9e3775881726c569ac6093f6a88f2d3b6625236eb0568dedf87beedfb82"
+  },
+  "counts": {
+    "articles": 46,
+    "originalPassages": 866,
+    "sourceBlockUnits": 3980,
+    "pairedProbes": 92,
+    "recollections": 12,
+    "noKnownAnswer": 10,
+    "totalCases": 114,
+    "developmentCases": 36,
+    "validationCases": 78
+  },
+  "build": {
+    "passages": 3980,
+    "vectorBytes": 6113280,
+    "vectorSha256": "8dec4c7c0b7b3af33808b0ce939db3298b89792fc32cc3432e49e10b591601e6",
+    "modelInitMs": 110.38999999999999,
+    "totalBuildMs": 38627.798083,
+    "batchSize": 8,
+    "cachedBatches": 0,
+    "batches": 498,
+    "environment": {
+      "node": "v24.14.1",
+      "cpu": "Apple M5",
+      "platform": "darwin",
+      "arch": "arm64"
+    }
+  },
+  "boundary": "Initial engineering inputs. Any development amendment must preserve this snapshot and identify the code used before validation; UI/report files are not frozen here."
+}

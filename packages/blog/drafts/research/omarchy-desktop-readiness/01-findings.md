@@ -2,6 +2,8 @@
 
 Evidence reviewed November 14, 2026, America/Los_Angeles. This is a research synthesis and a proposed article direction, not a hands-on Omarchy review or a recommendation to replace a particular computer.
 
+Editorial status update, November 14: the subsequent [article draft](article.md) adopts the switching-decision direction and adds the [extension-interface inspection](03-extensibility.md). That supersedes the optional article-choice status at the end of this initial research snapshot. Its proposed runtime and hardware experiments remain unrun.
+
 Omarchy has a credible case as a developer workstation for people who like its defaults and accept responsibility for recovery. The evidence reviewed here does not establish that it is a dependable replacement for every Mac workflow. Its distinctive contribution is the coordinated experience around Linux: setup, desktop conventions, maintenance, agent integration, hardware work and a recognizable community. Linux execution benefits and whole-laptop readiness require different evidence.
 
 ## The existing benchmark supplies a useful starting point

@@ -1,0 +1,105 @@
+{
+  "recordedAt": "2026-11-14T20:04:30.754Z",
+  "dateBasis": "America/Los_Angeles, November 14, 2026",
+  "scope": "Local E5 engineering prototype; article source iteration; no production search route",
+  "sourceSnapshot": "19d8f8971d1d74b9118c7819bfbb55aa26f7ba9d",
+  "isolatedBuildSource": "95151f4c",
+  "checks": {
+    "typecheck": "passed",
+    "blogTests": {
+      "passed": 457,
+      "failed": 0
+    },
+    "readerTests": {
+      "passed": 10,
+      "failed": 0
+    },
+    "markdownLinkTests": {
+      "passed": 6,
+      "failed": 0
+    },
+    "markdownPostValidation": {
+      "passed": 35
+    },
+    "productionBuild": {
+      "isolated": true,
+      "posts": 46,
+      "passed": true,
+      "environmentFilesCopied": false
+    },
+    "sourceBlockComparison": {
+      "blocks": 4550,
+      "missing": 0
+    },
+    "integration": {
+      "comparisons": 684,
+      "agreed": true,
+      "httpContracts": 7,
+      "wholeQuestionDefault": true,
+      "escapingAndNoClientScripts": true
+    }
+  },
+  "browser": {
+    "surface": "Owned in-app browser; native GET form, mode controls, disclosure controls and real source-link clicks",
+    "sourceAwareAgentTrials": true,
+    "finalWholeQuestionDefaultObserved": true,
+    "focusToggleObserved": true,
+    "scriptElements": 0,
+    "desktop": {
+      "width": 1280,
+      "horizontalOverflow": false
+    },
+    "narrowAttempt": {
+      "requestedWidth": 390,
+      "observedWidth": 1280,
+      "freshTabAlso1280": true,
+      "overrideReset": true,
+      "accepted": false
+    },
+    "liveLinks": [
+      {
+        "article": "oss-radar-01-vercel-winter-2026-cohort",
+        "sourceFormat": "Markdown",
+        "targetSection": "Moving Icons",
+        "targetTag": "p",
+        "visibleHighlight": true,
+        "top": 358.03125,
+        "bottom": 449.8125,
+        "viewport": 720,
+        "scrollY": 14565
+      },
+      {
+        "article": "oss-radar-03-buzz-is-slack-on-airoids",
+        "sourceFormat": "TypeScript",
+        "targetSection": "Members can lend a local model",
+        "targetTag": "p",
+        "visibleHighlight": true,
+        "top": 326.9609375,
+        "bottom": 479.9296875,
+        "viewport": 720,
+        "scrollY": 5506
+      }
+    ],
+    "emojiProjectAnswerVerified": false
+  },
+  "localEvidenceHashes": {
+    "typecheck.log": "8624b9e44291493249277c7cf5225ddd56ce9f4bf73e0b4fe0ca99faae91dde9",
+    "blog-tests.log": "efe8ffd8c8565b8296e814b12f4043dbd0debe83f500ec4a5e0a9909b7c7942e",
+    "isolated-build.log": "9a741fe8c11bda615f3cece9ce508ba787c48d78fbd887cb94c3a78cc59602ef",
+    "validate.log": "57be26e011c14c6e77a7e13dca91fdbb90580a6e2fe1452b72885500915a972c",
+    "server-integration.log": "4d101cc850c712e842e0a663c63012d669125268c312132a3dea627516e23fcb",
+    "server-integration-02.log": "2c736b51146eba842b99c9e3deeb453735eb02bd825f441fae22804d85c72c43",
+    "server-03.json": "14aec2997e88a7a9f954b369b9a5167405ca1cc88e8421067ad17973d550ec1c",
+    "reader-search-final.jpg": "4489aa5613ce298220c3e53f0f834c6f236c6d50c1fea2bb34f39afbb3d0eccc",
+    "live-icons-paragraph.jpg": "bb422b833e716cfb0cc13ad7fba8004fc02210a5c92c3d95f8d2909536ca0832",
+    "live-buzz-paragraph.jpg": "585f8cc35f252aac7e98cfcf0b1c202e229908346f13921b68f6b9c2ba6434c1"
+  },
+  "limits": [
+    "API comparisons repeat fixed cases; not 684 independent questions",
+    "Inherited recollection block labels not interpreted as paragraph quality",
+    "Whole-question default, qualifier repair and expanded context follow validation",
+    "Text-target capture checks are not all-browser navigation acceptance",
+    "Renderer fix verified in source and isolated build; historical live capture retained",
+    "No matching Gemini/MWG body index; no public search deployment; article remains a draft"
+  ]
+}

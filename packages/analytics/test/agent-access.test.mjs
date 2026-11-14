@@ -76,6 +76,19 @@ test('catalogue ownership and closed windows reject invalid or ambiguous definit
   assert.throws(() => agentAccessWindow(new Date('invalid')));
 });
 
+test('resource lookup preserves exact paths even when historical text contains JSON syntax or NULs', async () => {
+  const fixture = accessFixture();
+  try {
+    for (const path of ['/article-a\u0000suffix', '/article-a"', '/article-a\\', '/article-a[0]', '/article-a/../article-b']) {
+      fixture.sqlite.prepare('UPDATE page_observations SET path=? WHERE id=1').run(path);
+      const report = await queryAgentAccess(fixture.db, ACCESS_CATALOGUE, { now: ACCESS_NOW, readModel: 'source' });
+      assert.equal(report.total.views, 39);
+      assert.equal(report.resourceTotals.find(row => row.resourceId === 'article-a').metrics.views, 34);
+      assert.equal(report.resourceTotals.find(row => row.resourceId === null).metrics.views, 2);
+    }
+  } finally { fixture.sqlite.close(); }
+});
+
 test('malformed reports cannot silently drop counts, proof detail, history, coverage or metadata', async () => {
   const fixture = accessFixture();
   try {

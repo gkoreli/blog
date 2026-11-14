@@ -1,0 +1,286 @@
+{
+  "checkedAt": "2026-11-14T19:56:27.230Z",
+  "method": "Filesystem reads of an isolated production build, no copied environment files. This is not deployment acceptance.",
+  "sourceCommit": "19d8f8971d1d74b9118c7819bfbb55aa26f7ba9d",
+  "pages": 46,
+  "blocks": 4550,
+  "missing": 0,
+  "results": [
+    {
+      "slug": "the-agentic-product-engineer",
+      "htmlSha256": "cbf5751d3854add2d62720487f24ea7fdb15c24f2e89768d54f4efadff9fca85",
+      "blocks": 65,
+      "missing": []
+    },
+    {
+      "slug": "oss-radar-01-vercel-winter-2026-cohort",
+      "htmlSha256": "10547e16186dcab426d156fa8333d98a10515fe551596cfedb0ff70c875d3f23",
+      "blocks": 275,
+      "missing": []
+    },
+    {
+      "slug": "how-ghx-was-born",
+      "htmlSha256": "92ab3e8385334132b4108c46a2d9676be2cab0e4ca658f0fafc7541d9dd961b9",
+      "blocks": 116,
+      "missing": []
+    },
+    {
+      "slug": "topologies-of-thoughts",
+      "htmlSha256": "1790e12fb0b5dd743e7c306135d9cd707798bc1a89c044cd5615f88c5f1e58d5",
+      "blocks": 107,
+      "missing": []
+    },
+    {
+      "slug": "procrastination-is-a-craft-youve-been-mastering-your-entire-life",
+      "htmlSha256": "77962c0681cce759555792e5f98045013e0e84ebee9e299154da51c805b38f0b",
+      "blocks": 99,
+      "missing": []
+    },
+    {
+      "slug": "oss-radar-02-the-toolchain-is-the-moat",
+      "htmlSha256": "bbad588daa7e287bc297b8170664080f2de8b96688cefdfa8890164d592fe674",
+      "blocks": 136,
+      "missing": []
+    },
+    {
+      "slug": "you-dont-need-codemap",
+      "htmlSha256": "d999ccf71ef613e1c37b00c95eb6d7c3f5be1df11012d41cf1dee7c2167a40c6",
+      "blocks": 182,
+      "missing": []
+    },
+    {
+      "slug": "life-as-background-music",
+      "htmlSha256": "5cd3324c853cfe45ff7a688b7cce8e43e6172314224c2156c9db02f1c1fafb53",
+      "blocks": 46,
+      "missing": []
+    },
+    {
+      "slug": "linux-signal-stack-conflict",
+      "htmlSha256": "2157dbc01424972c51f4d669a5a52d6ce6a32f83a9ca148256e0de3d94dd6e85",
+      "blocks": 83,
+      "missing": []
+    },
+    {
+      "slug": "i-thought-building-was-enough",
+      "htmlSha256": "9df3467573f3b930fb6fab3e8663dc73d7dd966a5b90b094c3020e56cd53839b",
+      "blocks": 120,
+      "missing": []
+    },
+    {
+      "slug": "what-if-the-agent-was-better-before-we-helped",
+      "htmlSha256": "6a4ff326289edf3cc609d9258db81fe49308ba13b73f693f848593ebb924deb5",
+      "blocks": 158,
+      "missing": []
+    },
+    {
+      "slug": "one-hundred-pull-requests",
+      "htmlSha256": "dbbdc11853c82d01f0651984fd34be1abaeccd11dbf49fd8e8ae6e942312f0be",
+      "blocks": 187,
+      "missing": []
+    },
+    {
+      "slug": "i-am-lost-right-now",
+      "htmlSha256": "f5c3d4a5b53e6714eae208cf0ff78e1cb1e707b690edec51981eba1b8a407d91",
+      "blocks": 3,
+      "missing": []
+    },
+    {
+      "slug": "openwiki-validates-my-bet",
+      "htmlSha256": "5bab23c1f2865f389186b71f18622e2189f08ca37eaa806e5970c0ba3f22b648",
+      "blocks": 48,
+      "missing": []
+    },
+    {
+      "slug": "oss-radar-03-buzz-is-slack-on-airoids",
+      "htmlSha256": "926490d6a494231495b189f0b05255daf3239822748b5c0c31ada6b52a852c49",
+      "blocks": 189,
+      "missing": []
+    },
+    {
+      "slug": "bring-your-own-ai-agent",
+      "htmlSha256": "98416b0eb736a910eeed3034973b3c77d650217cf8f056bb15486a506e30f259",
+      "blocks": 119,
+      "missing": []
+    },
+    {
+      "slug": "oss-radar-04-the-agent-multiplexer-is-becoming-a-runtime",
+      "htmlSha256": "8a0f06595d9df53c5f75b2003c9c0b6cc00dac1a680105049d226d584611c0fa",
+      "blocks": 81,
+      "missing": []
+    },
+    {
+      "slug": "my-evals-say-it-works-i-dont-use-it",
+      "htmlSha256": "d9f14b3d42431019cd29c4ef255c64e92dc33936b9e24f04d5606ead09dd1c70",
+      "blocks": 80,
+      "missing": []
+    },
+    {
+      "slug": "does-llms-txt-work",
+      "htmlSha256": "cebdaea6a64d0e76923cca47e3817de6f50564c092e217d305524dc76a9b5fb8",
+      "blocks": 163,
+      "missing": []
+    },
+    {
+      "slug": "first-party-analytics-for-a-personal-blog",
+      "htmlSha256": "489388b678ec78af793266632c440614a16bbfa97972fe7a1166db5396a8dbff",
+      "blocks": 181,
+      "missing": []
+    },
+    {
+      "slug": "oss-radar-05-bun-1-4",
+      "htmlSha256": "492d48266ffd451ed448145bf3e1871cbbf67e0fc98be9de46d1dc578d0bd774",
+      "blocks": 151,
+      "missing": []
+    },
+    {
+      "slug": "oss-radar-06-interp-engine",
+      "htmlSha256": "a00a0b606b42863f29b5a735473cb3352b5958fb7fcdc913671e2ff7829f752f",
+      "blocks": 107,
+      "missing": []
+    },
+    {
+      "slug": "which-ai-fetchers-send-which-headers",
+      "htmlSha256": "5b874bfbc272838da5820f788f3abf9d5db8c14bee703fdeb1a17abdbb94902f",
+      "blocks": 112,
+      "missing": []
+    },
+    {
+      "slug": "how-i-separate-readers-from-bots-without-javascript",
+      "htmlSha256": "c9390f264136a64720ba1d81dd20584b635ed814bfe6dc8b1f1a15485bad2fea",
+      "blocks": 98,
+      "missing": []
+    },
+    {
+      "slug": "filter-referrer-spam-without-deleting-analytics-history",
+      "htmlSha256": "da8ca6a2b1ccbbe7234bf88842a971a9fe5df2cdde549f2ca836543779ac17af",
+      "blocks": 64,
+      "missing": []
+    },
+    {
+      "slug": "oss-radar-07-ai-citations",
+      "htmlSha256": "8adcd62443dcd1c1a0ed9cdb522da3f2ed251f4fa28fae171d01587d1d8a4265",
+      "blocks": 138,
+      "missing": []
+    },
+    {
+      "slug": "productive-procrastination",
+      "htmlSha256": "b026acc0a3136d2771ed4a24cf72002c5bc71d8bebf5931d2730f8ec1926f15d",
+      "blocks": 86,
+      "missing": []
+    },
+    {
+      "slug": "chatgpt-plugin-apps",
+      "htmlSha256": "4f435fda1e76b6322ac98f7fbfed0e9173806d487f7f1b5e3ec041a72a5d423e",
+      "blocks": 81,
+      "missing": []
+    },
+    {
+      "slug": "openclaw-chose-solid-why-id-choose-nisli",
+      "htmlSha256": "4f47db3ceef96478d5319b4bf250c5ed1117f0b0837a00b50ee3dd35b1074ec0",
+      "blocks": 75,
+      "missing": []
+    },
+    {
+      "slug": "building-blog-analytics-what-the-numbers-can-prove",
+      "htmlSha256": "0919379dc7dd857013bc7835f0d03780eee05565ac89ddb3d7e1b0acd7052c34",
+      "blocks": 49,
+      "missing": []
+    },
+    {
+      "slug": "oss-radar-08-bun-aot",
+      "htmlSha256": "27ed2e405eb761cc38486fba97adf4a5f1fbacffaaf2a99113cf315e41e11ed7",
+      "blocks": 48,
+      "missing": []
+    },
+    {
+      "slug": "why-worktree-setup-is-slow-on-macos",
+      "htmlSha256": "8210a6949bfd9bceb2b2e3da92bbf3770e7f58cfb26ef765a37b2699f92a297f",
+      "blocks": 40,
+      "missing": []
+    },
+    {
+      "slug": "oss-radar-09-tsrs-typescript-memory",
+      "htmlSha256": "87430c98a07a79868df6636fd5f1872bbc747d31dc422b124b721c3380cf49fa",
+      "blocks": 33,
+      "missing": []
+    },
+    {
+      "slug": "oss-radar-10-paperpilot-redaction",
+      "htmlSha256": "c242364e94577ffa4421f7c630897cb400d55944120097bf0fe4efb0eb999b4b",
+      "blocks": 33,
+      "missing": []
+    },
+    {
+      "slug": "oss-radar-11-qwenputer-compiled-cpu",
+      "htmlSha256": "bc9137bdf93342af059db6cc04bad94b4a84be8d561fb6b62aded8c7115259f1",
+      "blocks": 30,
+      "missing": []
+    },
+    {
+      "slug": "oss-radar-12-claude-code-status-summary",
+      "htmlSha256": "8f920aba86294fe723d1165831816f8aef8056719eb1a988c8cc8e47205cfeff",
+      "blocks": 32,
+      "missing": []
+    },
+    {
+      "slug": "oss-radar-13-hob-offline-file-tasks",
+      "htmlSha256": "86bbdebc486f0d7f2572d2b0daf6b912e894544be50c6bc0091a88602e031e87",
+      "blocks": 30,
+      "missing": []
+    },
+    {
+      "slug": "ai-fetcher-research-from-experiments-to-a-cited-reference",
+      "htmlSha256": "c4e2fc3744b46b50c9868330fed38bdfa0ec97b7aa3a910b5cd06fa8e4d6fef3",
+      "blocks": 78,
+      "missing": []
+    },
+    {
+      "slug": "bun-aot-express-fastify-serializers",
+      "htmlSha256": "ba03cb4f310202d33af506a5b0b8a3e15757c8292f563e0fbfcf97a3355ba8bd",
+      "blocks": 45,
+      "missing": []
+    },
+    {
+      "slug": "in-the-age-of-abundance-less-is-more",
+      "htmlSha256": "58af7370a19d796853d26c39f783bbf65f764a63e45578f2efa92805a65ca2ca",
+      "blocks": 54,
+      "missing": []
+    },
+    {
+      "slug": "ai-fetcher-browser-crawler-headers",
+      "htmlSha256": "6a79852fcab0cb9db05401f3aab177713d16f7f9ee06af336443717a03333a47",
+      "blocks": 179,
+      "missing": []
+    },
+    {
+      "slug": "ai-site-check-evidence",
+      "htmlSha256": "001f7afa490960818db561897edaab776c42d1e48833beaf746185b1042205fe",
+      "blocks": 57,
+      "missing": []
+    },
+    {
+      "slug": "cloudflare-turnstile-signup-failures",
+      "htmlSha256": "dffde64b341075173bfe38f394b5791d5d9abdc9c2255262926ba8101942a3fb",
+      "blocks": 82,
+      "missing": []
+    },
+    {
+      "slug": "please-stop-misreading-user-agent",
+      "htmlSha256": "b5647061290aa255299d7e14bfa88e70860bef88f36524d1c914576442b20d66",
+      "blocks": 90,
+      "missing": []
+    },
+    {
+      "slug": "oss-radar-14-november-show-hn",
+      "htmlSha256": "6e373824e43d403b25147603ad7708b8d21d760d268bf992a9dec22cfb044002",
+      "blocks": 106,
+      "missing": []
+    },
+    {
+      "slug": "prompt-cache-context-edits",
+      "htmlSha256": "61133fda4ee6cb56e9b5f5e69b169ee3340018950b5858d4cd994816ec613660",
+      "blocks": 214,
+      "missing": []
+    }
+  ]
+}

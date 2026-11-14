@@ -53,7 +53,7 @@ test('Stats puts the trend before detail, labels its native filters and preserve
     const section = root.querySelector(`#${id}`); assert.ok(section); assert.equal(section.closest('details'), null);
   }
   assert.ok([...root.querySelectorAll('noscript')].some(element => /30-day report as JSON/.test(element.textContent ?? '')));
-  assert.match(snapshot, /Per-day identifiers, not people/);
+  assert.match(snapshot, /Rotating identifiers, not people/);
   assert.equal(root.querySelector('#stats-page-catalogue a[href="/example"]')?.textContent, 'Example <title>');
   assert.equal(root.querySelector('#stats-page-catalogue')?.hasAttribute('hidden'), true);
 });
@@ -135,7 +135,7 @@ test('Stats preserves each evidence section and keeps its complete reading notes
     const topic = root.querySelector(target); assert.ok(topic); assert.equal(topic.closest('details'), null);
   }
   assert.equal(root.querySelectorAll('.stats-method-topic').length, 5);
-  assert.match(root.querySelector('#stats-method-counting')?.textContent ?? '', /Hourly daily-client values are not additive/);
+  assert.match(root.querySelector('#stats-method-counting')?.textContent ?? '', /Client-identifier counts across hourly or daily buckets are not additive/);
   assert.match(root.querySelector('#stats-method-sources')?.textContent ?? '', /These observations do not establish complete journeys/);
   assert.match(root.querySelector('#stats-method-history')?.textContent ?? '', /These version boundaries can change series without traffic changing/);
   assert.match(root.querySelector('#stats-method-verification')?.textContent ?? '', /do not keep a nonce replay database/);

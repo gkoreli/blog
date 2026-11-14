@@ -16,7 +16,11 @@ test('local project can resolve the package without the blog, with private keys 
     assert.equal(manifest.packageManager, 'pnpm@9.15.4');
     assert.equal(readFileSync(join(target, '.mise.toml'), 'utf8'), '[tools]\nnode = "24.14.1"\n');
     const packaged = JSON.parse(readFileSync(join(target, 'vendor/analytics/package.json')));
-    assert.deepEqual(packaged.dependencies, { 'ipaddr.js': '2.5.0' });
+    assert.deepEqual(packaged.dependencies, { 'ipaddr.js': '2.5.0', '@gkoreli/time': 'file:../time' });
+    const timePackage = JSON.parse(readFileSync(join(target, 'vendor/time/package.json')));
+    assert.equal(timePackage.name, '@gkoreli/time');
+    assert.equal(timePackage.dependencies['@js-temporal/polyfill'], '0.5.1');
+    assert.ok(statSync(join(target, 'vendor/time/dist/calendar.js')).isFile());
     assert.equal(packaged.scripts, undefined);
     assert.deepEqual(readdirSync(join(target, 'vendor/analytics')).sort(), ['LICENSE', 'package.json', 'schema', 'src']);
     assert.match(readFileSync(join(target, 'worker.ts'), 'utf8'), /from '@gkoreli\/analytics'/);

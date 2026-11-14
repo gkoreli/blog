@@ -6,7 +6,7 @@ import { queryAgentAccess } from '../../analytics/src/agent-access.ts';
 import { consistentAgentAccessReport } from '../../analytics/src/agent-access-contract.ts';
 import { agentResourcesFromIndex } from '../src/worker/agent-access.ts';
 import { agentAccessViewHtml } from '../src/lib/agent-access-view.ts';
-import { statsTimePresentation } from '../src/lib/stats-time.ts';
+import { timePresentation } from '@gkoreli/time';
 import { statsPage } from '../src/pages/stats.ts';
 import { renderContent } from '../src/lib/ssg.ts';
 
@@ -46,7 +46,7 @@ test('report rendering preserves scope, complete evidence, unknowns, safe labels
     const report = await queryAgentAccess(db, resources, { now: new Date('2026-11-14T17:02:00.000Z'), readModel: 'source' });
     assert(consistentAgentAccessReport(report));
     const before = JSON.stringify(report);
-    const html = agentAccessViewHtml(report, { articleId: null, client: null, kind: null }, statsTimePresentation('America/Los_Angeles', 'en-US'));
+    const html = agentAccessViewHtml(report, { articleId: null, client: null, kind: null }, timePresentation({timeZone:'America/Los_Angeles', locale:'en-US'}));
     assert.doesNotMatch(html, /<img|onerror="/); assert.match(html, /&lt;img/);
     assert.match(html, /PST/); assert.match(html, /UTC reporting days/);
     for (const text of ['AI-search declarations', 'AI-crawler declarations', 'On-demand fetcher declarations', 'historical or unknown role', 'No selected client name', 'Format not recorded', 'Stored proof and network evidence', 'Recorded measurement profiles', 'Unregistered resource events']) assert(html.includes(text), text);

@@ -71,7 +71,6 @@ export function buildAgentAccessQueryPlan(
   const historyRow = select('history', history, 'facts GROUP BY resource_id,reader_kind,public_client,public_format,public_collection,public_classifier,public_source');
   const proofRow = select('proof', proof, 'proof_facts GROUP BY resource_id,reader_kind,public_client,public_format,report_signature_basis,report_verifier_profile,public_publisher,public_network,network_listed');
   const base = (agentOnly: boolean) => `WITH RECURSIVE
-      catalogue AS MATERIALIZED (SELECT json_extract(value,'$[0]') AS resource_id,json_extract(value,'$[1]') AS resource_path FROM json_each(?4)),
       names AS MATERIALIZED (SELECT value AS name FROM json_each(?5)),
       window_rows AS MATERIALIZED (
         SELECT id,path,daily_client_id,is_owner,referrer_host,reader_kind,agent_name,representation,observed_at,collection_version,classifier_version,observation_source
@@ -85,7 +84,8 @@ export function buildAgentAccessQueryPlan(
       included AS MATERIALIZED (SELECT * FROM assessed WHERE referral_excluded=0),
       agent_rows AS MATERIALIZED (SELECT * FROM included WHERE reader_kind IN (${cohort})),
       facts AS MATERIALIZED (
-        SELECT catalogue.resource_id,i.reader_kind,
+        SELECT CASE WHEN json_extract(?4,'$.'||json_quote(i.path)||'[1]') IS i.path
+          THEN json_extract(?4,'$.'||json_quote(i.path)||'[0]') END AS resource_id,i.reader_kind,
           CASE WHEN i.agent_name IS NULL THEN 'not-recorded' WHEN i.agent_name IN (SELECT name FROM names) THEN i.agent_name ELSE 'unrecognized' END AS public_client,
           CASE WHEN i.representation IS NULL THEN 'not-recorded' WHEN i.representation IN ('html','markdown') THEN i.representation ELSE 'unrecognized' END AS public_format,
           ${stamp('collection_version')} AS public_collection,${stamp('classifier_version')} AS public_classifier,
@@ -93,9 +93,13 @@ export function buildAgentAccessQueryPlan(
           CASE WHEN strftime('%Y-%m-%d %H:%M:%S',i.observed_at) IS i.observed_at AND substr(i.observed_at,12,2) BETWEEN '00' AND '23'
             THEN CAST(julianday(substr(i.observed_at,1,10))-julianday(substr(?1,1,10)) AS INTEGER) ELSE -1 END AS day_index,
           i.id
-        FROM agent_rows AS i LEFT JOIN catalogue ON catalogue.resource_path=i.path
+        FROM agent_rows AS i
       )`;
-  const values = [start + ' 00:00:00', endExclusive + ' 00:00:00', referralRulesJson(policy), JSON.stringify(resources.map(resource => [resource.id, resource.path])), JSON.stringify(CLIENT_REGISTRY.map(client => client.name))];
+  // A bound map avoids scanning every catalogue row for every observation. Check
+  // the full stored path again: JSON path parsing must never create an alias
+  // (notably for malformed historical text containing a NUL).
+  const resourceMap = Object.fromEntries(resources.map(resource => [resource.path, [resource.id, resource.path]]));
+  const values = [start + ' 00:00:00', endExclusive + ' 00:00:00', referralRulesJson(policy), JSON.stringify(resourceMap), JSON.stringify(CLIENT_REGISTRY.map(client => client.name))];
   // The native D1 engine counts expanded CTE/compound terms. Keep independent
   // census/cells, history and evidence grains in one transactional batch, instead
   // of repeating the full evidence tree for every report section.

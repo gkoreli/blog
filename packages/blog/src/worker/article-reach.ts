@@ -2,6 +2,7 @@ import { z } from 'zod';
 import { queryArticleReach } from '@gkoreli/analytics/article-reach';
 import { ARTICLE_REACH_VERSION, validReachCatalogue, type ReachArticle } from '@gkoreli/analytics/article-reach-contract';
 import { createStatsHandler, type StatsCacheStore } from '@gkoreli/analytics/reporting';
+import { parseTimeZone } from '@gkoreli/time';
 
 interface ArticleAssets { fetch(request: Request): Promise<Response> }
 interface ReachEnvironment { DB: D1Database; ASSETS: ArticleAssets }
@@ -26,14 +27,18 @@ async function articleCatalogue(assets: ArticleAssets): Promise<ReachArticle[]> 
 }
 
 export function createArticleReachHandler(cache: StatsCacheStore, now: () => number = Date.now) {
-  const cached = createStatsHandler(cache, async (_request, env: ReachEnvironment) => {
+  const cached = createStatsHandler(cache, async (request, env: ReachEnvironment) => {
     const catalogue = await articleCatalogue(env.ASSETS);
-    const report = await queryArticleReach(env.DB, catalogue, new Date(now()), undefined, event => console.info('article-reach-calculation', event));
+    const report = await queryArticleReach(env.DB, catalogue, { now: new Date(now()), timeZone: new URL(request.url).searchParams.get('timeZone') ?? 'UTC', onCalculation: event => console.info('article-reach-calculation', event) });
     return Response.json(report);
   }, { now, reportVersion: 'article-reach-' + ARTICLE_REACH_VERSION, onOutcome: event => console.info('article-reach-cache', event) });
   return (request: Request, env: ReachEnvironment): Promise<Response> => {
-    // No caller-selected path, source, period or bypass: one shared report per day/version/policy.
-    const canonical = new Request(new URL('/api/readership', request.url), { method: request.method });
+    // Only the named calendar is selectable; paths, sources and periods stay fixed.
+    const url = new URL(request.url);
+    const zone = parseTimeZone(url.searchParams.get('timeZone') ?? 'UTC');
+    if (zone === null || url.searchParams.getAll('timeZone').length > 1) return Promise.resolve(Response.json({ error: 'timeZone must be one supported IANA timezone' }, { status: 400 }));
+    const selection = new URL('/api/readership', request.url); selection.searchParams.set('timeZone', zone);
+    const canonical = new Request(selection, { method: request.method });
     return cached(canonical, env);
   };
 }

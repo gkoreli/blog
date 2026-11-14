@@ -14,7 +14,7 @@ import { DIRECTORY_PUBLICATION_LABELS } from '@gkoreli/analytics/directory-publi
 import { CLIENT_NAME_SELECTION_LABELS, consistentClientEvidence } from '@gkoreli/analytics/client-evidence';
 import { dataFactsHtml, groupedEvidenceTableHtml, rankedRowHtml, type RankedItem } from '../lib/data-display.js';
 import { classificationReasonLabel, requestContextRows, trafficMix } from '../lib/stats-presentation.js';
-import { statsTimePresentation } from '../lib/stats-time.js';
+import { timePresentation, utcInstant } from '@gkoreli/time';
 import '../styles/stats.css';
 
 type RangeFilter = '7d' | '30d' | '90d' | 'all';
@@ -29,7 +29,7 @@ type ViewState = {
 const MAX_ITEMS = 10;
 const CHART_HEIGHT = 260;
 const DEFAULT_STATE: ViewState = { range: '30d', traffic: 'all', path: null, agent: null, kind: null };
-const reportTime = statsTimePresentation();
+const reportTime = timePresentation();
 
 /** Public names describe stored rule matches and declared roles. */
 const KIND_LABELS: Record<ReaderKind, string> = {
@@ -146,7 +146,7 @@ function updateControls(state: ViewState): void {
 }
 
 function statsApiHref(state: ViewState): string {
-  const params = new URLSearchParams({ range: state.range, traffic: state.traffic });
+  const params = new URLSearchParams({ range: state.range, traffic: state.traffic, timeZone: reportTime.timeZone });
   if (state.path !== null) params.set('path', state.path);
   if (state.agent !== null) params.set('agent', state.agent);
   if (state.kind !== null) params.set('kind', state.kind);
@@ -157,6 +157,10 @@ async function fetchStats(state: ViewState, signal: AbortSignal): Promise<StatsR
   const response = await fetch(statsApiHref(state), { signal });
   if (!response.ok) throw new Error(`Stats request failed with ${response.status}`);
   const data: StatsResponse = await response.json();
+  if (typeof data.period?.startInclusive !== 'string' || typeof data.period.endExclusive !== 'string'
+    || utcInstant(data.period.startInclusive) !== data.period.startInclusive || utcInstant(data.period.endExclusive) !== data.period.endExclusive
+    || !data.timeSeries.every(row => utcInstant(row.bucket) === row.bucket)
+    || !reportTime.matchesCalendar(data.period.timeZone, [data.period.startInclusive, data.period.endExclusive, data.period.updatedAt, ...data.timeSeries.map(row => row.bucket)])) throw new Error('Localized report time is unavailable. Please reload.');
   // An old cached API response must not restore arbitrary hostname display.
   if (data.referralPolicy === undefined) throw new Error('Stats referral policy is unavailable');
   if (data.byReferrerState === undefined || data.internalTransitions === undefined || data.internalReferrerDetails === undefined) {
@@ -216,9 +220,8 @@ function formatViewCount(value: number, page = false): string {
   return `${formatNumber(value)} ${page ? 'page ' : ''}${unit}`;
 }
 
-function bucketTimestamp(bucket: string, granularity: StatsResponse['period']['granularity']): number {
-  const instant = granularity === 'hour' ? bucket : `${bucket}T00:00:00Z`;
-  return Date.parse(instant) / 1000;
+function bucketTimestamp(bucket: string): number {
+  return Date.parse(bucket) / 1000;
 }
 
 function setStatus(message: string, kind: 'loading' | 'ready' | 'empty' | 'error'): void {
@@ -237,17 +240,15 @@ function setDashboardVisible(visible: boolean): void {
 function renderPeriod(period: StatsResponse['period'], series: StatsResponse['timeSeries']): void {
   const granularity = period.granularity === 'hour' ? 'Hourly buckets' : 'Daily buckets';
   const partial = period.granularity === 'hour' ? 'latest bucket is partial' : 'current day is partial';
-  const laterBuckets = series.some(row => bucketTimestamp(row.bucket,period.granularity)*1000 > Date.parse(period.updatedAt));
+  const laterBuckets = series.some(row => bucketTimestamp(row.bucket)*1000 > Date.parse(period.updatedAt));
   const clockNote = laterBuckets ? ' · Some returned bucket timestamps are later than the calculation clock' : '';
   const dates = document.createElement('span');
-  const dateFormat = new Intl.DateTimeFormat(undefined, { dateStyle: 'medium', timeZone: 'UTC' });
-  dates.textContent = `${dateFormat.formatRange(new Date(`${period.start}T00:00:00Z`), new Date(`${period.end}T00:00:00Z`))} · UTC reporting days`;
+  dates.textContent = `${reportTime.dateRange(period.start, period.end)} · ${reportTime.timeZone}`;
   const detail = document.createElement('span');
   const updated = document.createElement('time'); updated.dateTime = period.updatedAt;
-  updated.textContent = reportTime.formatInstant(period.updatedAt);
+  updated.textContent = reportTime.instant(period.updatedAt);
   detail.append('Updated ', updated, clockNote);
-  const zone = period.granularity === 'hour' ? reportTime.timeZone : 'UTC days';
-  element('stats-chart-context').textContent = `${granularity} · ${zone} · ${partial}`;
+  element('stats-chart-context').textContent = `${granularity} · ${reportTime.timeZone} · ${partial}`;
   element('stats-period').replaceChildren(dates, detail);
   element('stats-period').hidden = false;
 }
@@ -385,13 +386,13 @@ function renderChartTable(data: StatsResponse): void {
 
   const table = document.createElement('table');
   const caption = document.createElement('caption');
-  caption.textContent = data.period.granularity === 'hour'
-    ? `Hourly values shown in ${reportTime.timeZone}. Daily IDs use UTC days, can repeat across hours and are not additive.`
-    : 'Daily values by UTC reporting day.';
+  const captionText = document.createElement('span');
+  captionText.className = 'stats-chart-caption';
+  captionText.textContent = `${data.period.granularity === 'hour' ? 'Hourly' : 'Daily'} values in ${reportTime.timeZone}. Client identifiers can repeat across buckets and their counts are not additive.`;
+  caption.appendChild(captionText);
   const head = document.createElement('thead');
   const headRow = document.createElement('tr');
-  const clientLabel = data.period.granularity === 'hour' ? 'Daily IDs seen in hour' : 'Daily clients';
-  for (const text of [data.period.granularity === 'hour' ? 'Local time' : 'UTC reporting day', 'Page views', clientLabel]) {
+  for (const text of [data.period.granularity === 'hour' ? 'Local time' : 'Local day', 'Page views', 'Client identifiers']) {
     const cell = document.createElement('th');
     cell.scope = 'col';
     cell.textContent = text;
@@ -402,7 +403,8 @@ function renderChartTable(data: StatsResponse): void {
   const body = document.createElement('tbody');
   for (const row of data.timeSeries) {
     const tableRow = document.createElement('tr');
-    for (const text of [reportTime.formatBucket(row.bucket, data.period.granularity), formatNumber(row.views), formatNumber(row.dailyClients)]) {
+    const label = data.period.granularity === 'hour' ? reportTime.instant(row.bucket) : reportTime.date(row.bucket);
+    for (const text of [label, formatNumber(row.views), formatNumber(row.dailyClients)]) {
       const cell = document.createElement('td');
       cell.textContent = text;
       tableRow.appendChild(cell);
@@ -419,10 +421,7 @@ function renderChart(data: StatsResponse): void {
   container.replaceChildren();
   const hourly = data.period.granularity === 'hour';
   const unit = hourly ? 'Hourly' : 'Daily';
-  const clientUnit = hourly ? 'daily IDs seen in each hour' : 'daily clients';
-  const nonAdditive = hourly ? ' Daily IDs can repeat across hours and are not additive.' : '';
-  const zone = hourly ? reportTime.timeZone : 'UTC reporting days';
-  container.setAttribute('aria-label', `${unit} page views and ${clientUnit} shown in ${zone}. Reporting days ${data.period.start} through ${data.period.end} UTC.${nonAdditive} ${formatViewCount(data.totals.views, true)} total.`);
+  container.setAttribute('aria-label', `${unit} page views and client identifiers in ${reportTime.timeZone} from ${data.period.start} through ${data.period.end}. Identifiers can repeat across buckets; their counts are not additive. ${formatViewCount(data.totals.views, true)} total.`);
   renderChartTable(data);
 
   if (data.timeSeries.length === 0) {
@@ -434,24 +433,24 @@ function renderChart(data: StatsResponse): void {
   }
 
   const colors = getColors();
-  const timestamps = data.timeSeries.map(row => bucketTimestamp(row.bucket, data.period.granularity));
+  const timestamps = data.timeSeries.map(row => bucketTimestamp(row.bucket));
   const views = data.timeSeries.map(row => row.views);
   const dailyClients = data.timeSeries.map(row => row.dailyClients);
   const alignedData: uPlot.AlignedData = [timestamps, views, dailyClients];
   const options: uPlot.Options = {
     width: Math.max(container.clientWidth, 1),
     height: CHART_HEIGHT,
-    tzDate: timestamp => uPlot.tzDate(new Date(timestamp * 1000), reportTime.chartTimeZone(data.period.granularity)),
+    tzDate: timestamp => uPlot.tzDate(new Date(timestamp * 1000), reportTime.timeZone),
     scales: { x: { time: true }, y: { range: (_plot, _minimum, maximum) => [0, Math.max(maximum, 1)] } },
     axes: [
       { stroke: colors.muted, grid: { show: false }, font: '11px monospace' },
       { stroke: colors.muted, grid: { stroke: colors.border, width: 1 }, size: 44, font: '11px monospace' },
     ],
     series: [
-      { label: hourly ? 'Time' : 'UTC day', value: (_plot, value, _series, index) => index === null ? '—'
-        : reportTime.formatChartValue(value, data.period.granularity) },
+      { label: hourly ? 'Time' : 'Day', value: (_plot, value, _series, index) => index === null ? '—'
+        : hourly ? reportTime.instant(value * 1000) : reportTime.date(value * 1000) },
       { label: 'Page views', stroke: colors.link, fill: translucent(colors.link), width: 2, points: { show: false } },
-      { label: hourly ? 'Daily IDs seen in hour' : 'Daily clients', stroke: colors.secondary, width: 1.5, dash: [6, 4], points: { show: false } },
+      { label: 'Client IDs', stroke: colors.secondary, width: 1.5, dash: [6, 4], points: { show: false } },
     ],
     legend: { live: true },
     hooks: {

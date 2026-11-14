@@ -1,4 +1,5 @@
 import type { ReaderKind, StatsResponse } from './contracts.js';
+import { timePresentation } from '@gkoreli/time';
 
 function escape(value: string): string {
   return value.replace(/[&<>"']/g, character => character === '&' ? '&amp;' : character === '<' ? '&lt;'
@@ -17,8 +18,9 @@ const labels: Record<ReaderKind, string> = {
  */
 export function renderAnalyticsReport(report: StatsResponse, options: { title?: string } = {}): string {
   const title = escape(options.title ?? 'Website analytics');
+  const time = timePresentation({ timeZone: report.period.timeZone });
   const link = (range: string) => {
-    const params = new URLSearchParams({ range, traffic: report.filters.traffic });
+    const params = new URLSearchParams({ range, traffic: report.filters.traffic, timeZone: time.timeZone });
     for (const key of ['path', 'agent', 'kind'] as const) {
       const value = report.filters[key];
       if (value !== null) params.set(key, value);
@@ -33,7 +35,7 @@ export function renderAnalyticsReport(report: StatsResponse, options: { title?: 
   return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${title}</title>
 <style>html{color-scheme:light dark;font-family:Georgia,serif;line-height:1.6}body{max-width:64rem;margin:auto;padding:2rem 1rem}h1,h2{line-height:1.2}a{color:inherit}nav{display:flex;gap:1rem;flex-wrap:wrap}table{border-collapse:collapse;width:100%;margin:2rem 0}caption{text-align:left;font-weight:bold;font-size:1.2rem}th,td{padding:.5rem;text-align:left;border-bottom:1px solid #888;overflow-wrap:anywhere}th:last-child,td:last-child{text-align:right;font-variant-numeric:tabular-nums}.metrics{font-size:1.3rem}small{display:block;max-width:75ch}p{max-width:75ch}</style></head><body><main><h1>${title}</h1>
 <nav aria-label="Report period"><a href="${link('7d')}">7 days</a><a href="${link('30d')}">30 days</a><a href="/api/stats${link(report.filters.range)}">JSON report</a></nav>
-<p>${escape(report.period.start)}–${escape(report.period.end)} UTC; includes the partial current day. Calculated <time>${escape(report.period.updatedAt)}</time>.</p>
+<p>${escape(time.dateRange(report.period.start, report.period.end))} · ${escape(time.timeZone)}; includes the partial current day. Calculated <time datetime="${escape(report.period.updatedAt)}">${escape(time.instant(report.period.updatedAt))}</time>.</p>
 <p>Selection: ${escape([report.filters.traffic, report.filters.path, report.filters.agent, report.filters.kind].filter(value => value !== null).join(' · '))}.</p>
 <p class="metrics"><strong>${number(report.totals.views)}</strong> included page events · <strong>${number(report.totals.dailyClients)}</strong> rotating daily identifiers</p>
 <small>Events are served requests. Daily identifiers are not people or sessions and cannot identify returning readers across days. Browser signals do not authenticate a human. People and agents both contribute to the observed audience.</small>

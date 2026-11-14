@@ -14,6 +14,9 @@ importers:
 
   packages/analytics:
     dependencies:
+      '@gkoreli/time':
+        specifier: workspace:*
+        version: link:../time
       ipaddr.js:
         specifier: 2.5.0
         version: 2.5.0
@@ -55,6 +58,9 @@ importers:
       '@gkoreli/site-audit':
         specifier: workspace:*
         version: link:../site-audit
+      '@gkoreli/time':
+        specifier: workspace:*
+        version: link:../time
       '@nisli/core':
         specifier: ^0.57.0
         version: 0.57.0
@@ -146,6 +152,16 @@ importers:
       '@cloudflare/workers-types':
         specifier: ^4.20250306.0
         version: 4.20260306.1
+      typescript:
+        specifier: ^7.0.2
+        version: 7.0.2
+
+  packages/time:
+    dependencies:
+      '@js-temporal/polyfill':
+        specifier: 0.5.1
+        version: 0.5.1
+    devDependencies:
       typescript:
         specifier: ^7.0.2
         version: 7.0.2
@@ -507,6 +523,10 @@ packages:
 
   '@jridgewell/trace-mapping@0.3.9':
     resolution: {integrity: sha512-3Belt6tdc8bPgAtbcmdtNJlirVoTmEb5e2gC94PnkwEW9jI6CAHUeoG85tjWP5WquqfavoMtMwiG4P926ZKKuQ==}
+
+  '@js-temporal/polyfill@0.5.1':
+    resolution: {integrity: sha512-hloP58zRVCRSpgDxmqCWJNlizAlUgJFqG2ypq79DCvyv9tHjRYMDOcPFjzfl/A1/YxDvRCZz8wvZvmapQnKwFQ==}
+    engines: {node: '>=12'}
 
   '@mixmark-io/domino@2.2.0':
     resolution: {integrity: sha512-Y28PR25bHXUg88kCV7nivXrP2Nj2RueZ3/l/jdx6J9f8J4nsEGcgX0Qe6lt7Pa+J79+kPiJU3LguR6O/6zrLOw==}
@@ -1248,6 +1268,9 @@ packages:
     resolution: {integrity: sha512-PMSmkqxr106Xa156c2M265Z+FTrPl+oxd/rgOQy2tijQeK5TxQ43psO1ZCwhVOSdnn+RzkzlRz/eY4BgJBYVpg==}
     hasBin: true
 
+  jsbi@4.3.2:
+    resolution: {integrity: sha512-9fqMSQbhJykSeii05nxKl4m6Eqn2P6rOlYiS+C5Dr/HPIU/7yZxu5qzbs40tgaFORiw2Amd0mirjxatXYMkIew==}
+
   jsonfile@3.0.1:
     resolution: {integrity: sha512-oBko6ZHlubVB5mRFkur5vgYR1UyqX+S6Y/oCfLhqNdcc2fYFlDpIoNc7AfKS1KOGcnNAkvsr0grLck9ANM815w==}
 
@@ -1948,6 +1971,10 @@ snapshots:
     dependencies:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.5
+
+  '@js-temporal/polyfill@0.5.1':
+    dependencies:
+      jsbi: 4.3.2
 
   '@mixmark-io/domino@2.2.0': {}
 
@@ -2659,6 +2686,8 @@ snapshots:
     dependencies:
       argparse: 1.0.10
       esprima: 4.0.1
+
+  jsbi@4.3.2: {}
 
   jsonfile@3.0.1:
     optionalDependencies:

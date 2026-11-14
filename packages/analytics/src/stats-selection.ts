@@ -2,6 +2,7 @@ import { READER_GROUPS, isReaderKind, readerGroupOf, type StatsQuery, type Traff
 import { KNOWN_AGENT_NAMES } from './classify.js';
 import { agentReaderKinds } from './readerkind.js';
 import { parseStatsRange } from './dates.js';
+import { parseTimeZone } from '@gkoreli/time';
 
 function parseTrafficFilter(value: string | null): TrafficFilter | null {
   switch (value) {
@@ -50,6 +51,13 @@ export function parseStatsQuery(params: URLSearchParams): StatsQuery | string {
   const rawPath = params.get('path');
   const path = rawPath === null || rawPath.length === 0 ? undefined : rawPath;
   const query: StatsQuery = { range, traffic };
+  const rawZone = params.get('timeZone');
+  if (params.getAll('timeZone').length > 1) return 'timeZone must be one supported IANA timezone';
+  if (rawZone !== null) {
+    const timeZone = parseTimeZone(rawZone);
+    if (timeZone === null) return 'timeZone must be a supported IANA timezone';
+    query.timeZone = timeZone;
+  }
   if (path !== undefined) query.path = path;
   if (agent !== undefined) query.agent = agent;
   if (kind !== undefined) query.kind = kind;

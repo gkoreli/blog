@@ -1,0 +1,268 @@
+{
+  "version": 1,
+  "measuredAt": "2026-11-14T19:49:34.300685+00:00",
+  "implementationCommit": "a89aa7c46ae4de7e184041fa71de86a6cc3b8f9a",
+  "sourceCommit": "a89aa7c46ae4de7e184041fa71de86a6cc3b8f9a",
+  "cloudflareBuild": "88647ad2-2e68-4393-8486-b6f080c99d02",
+  "method": "Six fresh public page/asset GETs; verify matching served identity, implementation ancestry, shared method boundaries and exact built Stats/Article reach bundles and Stats stylesheet. Raw captures remain outside Git.",
+  "responses": [
+    {
+      "path": "/stats?range=30d",
+      "status": 200,
+      "sha256": "e4431be9f298ed4c182b872a67a464771f0024f3e96b6a45d93bcad1db594141",
+      "source": "a89aa7c46ae4de7e184041fa71de86a6cc3b8f9a",
+      "build": "88647ad2-2e68-4393-8486-b6f080c99d02"
+    },
+    {
+      "path": "/stats/readership",
+      "status": 200,
+      "sha256": "1c7509c87b3a7aaff2283bbe87799d8c3a984a76b77d5a5967cad7f634393684",
+      "source": "a89aa7c46ae4de7e184041fa71de86a6cc3b8f9a",
+      "build": "88647ad2-2e68-4393-8486-b6f080c99d02"
+    },
+    {
+      "path": "/stats.js",
+      "status": 200,
+      "sha256": "bd37fc8c66f28790d4b1ec42ee8461e18497e6e4fa61a1df41891f546b251a31"
+    },
+    {
+      "path": "/article-reach.js",
+      "status": 200,
+      "sha256": "f882ccb7ecfce49d5a565a85f2465aa3e9904d14deab4916f76ef84b92834895"
+    },
+    {
+      "path": "/stats.css",
+      "status": 200,
+      "sha256": "30d08a9962ad0d48df86a312dc5ce32609443120730287d6dfe8d02213dfc183"
+    },
+    {
+      "path": "/design-language",
+      "status": 200,
+      "sha256": "e002abe42d943125f0dc168b203e7162ad7fc3557e7b1d29f9ee1ca74203b6a0",
+      "source": "a89aa7c46ae4de7e184041fa71de86a6cc3b8f9a",
+      "build": "88647ad2-2e68-4393-8486-b6f080c99d02"
+    }
+  ],
+  "checks": {
+    "containsImplementation": true,
+    "samePageIdentity": true,
+    "methodExplainsViewerCalendarAndUTCStorage": true,
+    "exactStatsBundle": true,
+    "exactArticleReachBundle": true,
+    "exactStatsStylesheet": true,
+    "nativeCalculationInstant": true,
+    "localDayTableAndZoneSelection": true,
+    "articleReachUsesViewerCalendar": true,
+    "designLanguageHasSharedPolicy": true,
+    "browserExcludesCalendarDependency": true
+  },
+  "apiContract": {
+    "analyticsVersion": "0.3.0",
+    "storage": "Existing fixed-width UTC seconds; canonical UTC ISO instants at API boundaries",
+    "selection": "Optional canonical IANA timeZone; API default UTC; browsers supply viewer zone",
+    "buckets": "Canonical UTC start instants for actual local day/hour buckets",
+    "identity": "Daily UTC rotation retained; bucket identifier counts are not additive"
+  },
+  "localChecks": {
+    "types": true,
+    "timeKernelTests": 10,
+    "analyticsTests": 493,
+    "siteTests": 448,
+    "markdownValidation": 35,
+    "builtPosts": 46,
+    "referralPolicy": true,
+    "privatePromptGuard": true,
+    "nativeD1": {
+      "comparisons": 66,
+      "calendarComparisons": 12,
+      "syntheticRows": 228,
+      "articleReachParity": true,
+      "maximumSqlBytes": 40435,
+      "maximumBoundValues": 6,
+      "parity": true,
+      "maximumLocalBatchReads": 24194,
+      "allReadOnly": true
+    },
+    "portableWorker": {
+      "cases": 24,
+      "externalRequests": 0,
+      "productionRequests": 0
+    },
+    "independentGeneratedConsumer": {
+      "installed": true,
+      "dryRunBundle": true
+    },
+    "responsiveWidths": [
+      1440,
+      393,
+      320
+    ],
+    "themes": [
+      "light",
+      "dark"
+    ],
+    "syntheticLocalPreview": true
+  },
+  "liveReports": {
+    "daily": {
+      "checks": {
+        "statusOK": true,
+        "selectedZone": true,
+        "localRange": true,
+        "exactStart": true,
+        "exactEnd": true,
+        "uniqueOrderedInstants": true,
+        "startsAtLocalMidnight": true,
+        "endsInLocalCurrentDay": true,
+        "viewsReconcile": true,
+        "canonicalUTCInstants": true,
+        "30Days": true,
+        "localDayStarts": true,
+        "crossesDST": true
+      },
+      "period": {
+        "start": "2026-10-16",
+        "end": "2026-11-14",
+        "timeZone": "America/Los_Angeles",
+        "startInclusive": "2026-10-16T07:00:00.000Z",
+        "endExclusive": "2026-11-15T08:00:00.000Z",
+        "granularity": "day",
+        "updatedAt": "2026-11-14T19:49:41.280Z"
+      },
+      "buckets": 30,
+      "views": 15361,
+      "clientIdentifiers": 8462,
+      "firstBucket": "2026-10-16T07:00:00.000Z",
+      "lastBucket": "2026-11-14T08:00:00.000Z",
+      "cacheOutcome": "MISS"
+    },
+    "hourly": {
+      "checks": {
+        "statusOK": true,
+        "selectedZone": true,
+        "localRange": true,
+        "exactStart": true,
+        "exactEnd": true,
+        "uniqueOrderedInstants": true,
+        "startsAtLocalMidnight": true,
+        "endsInLocalCurrentDay": true,
+        "viewsReconcile": true,
+        "canonicalUTCInstants": true,
+        "localHourStarts": true
+      },
+      "period": {
+        "start": "2026-11-08",
+        "end": "2026-11-14",
+        "timeZone": "America/Los_Angeles",
+        "startInclusive": "2026-11-08T08:00:00.000Z",
+        "endExclusive": "2026-11-15T08:00:00.000Z",
+        "granularity": "hour",
+        "updatedAt": "2026-11-14T19:49:42.292Z"
+      },
+      "buckets": 156,
+      "views": 3937,
+      "clientIdentifiers": 2110,
+      "firstBucket": "2026-11-08T08:00:00.000Z",
+      "lastBucket": "2026-11-14T19:00:00.000Z",
+      "cacheOutcome": "MISS"
+    },
+    "articleReach": {
+      "checks": {
+        "statusOK": true,
+        "selectedZone": true,
+        "28CompletedLocalDays": true,
+        "currentDayOmitted": true,
+        "fourWeeks": true,
+        "localWeekBoundaries": true
+      },
+      "period": {
+        "startInclusive": "2026-10-17",
+        "endExclusive": "2026-11-14",
+        "updatedAt": "2026-11-14T19:49:42.665Z",
+        "timeZone": "America/Los_Angeles"
+      },
+      "weeks": [
+        {
+          "startInclusive": "2026-10-17",
+          "endExclusive": "2026-10-24"
+        },
+        {
+          "startInclusive": "2026-10-24",
+          "endExclusive": "2026-10-31"
+        },
+        {
+          "startInclusive": "2026-10-31",
+          "endExclusive": "2026-11-07"
+        },
+        {
+          "startInclusive": "2026-11-07",
+          "endExclusive": "2026-11-14"
+        }
+      ]
+    },
+    "passed": true
+  },
+  "liveVisual": {
+    "viewerTimezone": "America/Los_Angeles",
+    "desktopWidth": 1440,
+    "daily": {
+      "caption": "Daily values in America/Los_Angeles. Client identifiers can repeat across buckets and their counts are not additive.",
+      "context": "Daily buckets \u00b7 America/Los_Angeles \u00b7 current day is partial",
+      "first": "Oct 16, 2026227181",
+      "last": "Nov 14, 2026366143",
+      "legend": "DayNov 14, 2026Page views366Client IDs143",
+      "overflow": 0,
+      "period": "Oct 16 \u2013 Nov 14, 2026 \u00b7 America/Los_AngelesUpdated Nov 14, 2026, 11:49 AM PST",
+      "rows": 30,
+      "updatedInstant": "2026-11-14T19:49:41.280Z",
+      "updatedLabel": "Nov 14, 2026, 11:49 AM PST"
+    },
+    "hourly": {
+      "context": "Hourly buckets \u00b7 America/Los_Angeles \u00b7 latest bucket is partial",
+      "first": "Nov 8, 2026, 12:00 AM PST1615",
+      "last": "Nov 14, 2026, 11:00 AM PST7013",
+      "legend": "TimeNov 14, 2026, 11:00 AM PSTPage views70Client IDs13",
+      "overflow": 0,
+      "period": "Nov 8 \u2013 14, 2026 \u00b7 America/Los_AngelesUpdated Nov 14, 2026, 11:49 AM PST",
+      "rows": 156,
+      "updatedInstant": "2026-11-14T19:49:42.292Z",
+      "updatedLabel": "Nov 14, 2026, 11:49 AM PST"
+    },
+    "mobile320": {
+      "legend": "TimeNov 14, 2026, 11:00 AM PSTPage views70Client IDs13",
+      "overflow": 0,
+      "period": "Nov 8 \u2013 14, 2026 \u00b7 America/Los_AngelesUpdated Nov 14, 2026, 11:49 AM PST",
+      "width": 320
+    },
+    "articleReach320": {
+      "json": "/api/readership?timeZone=America%2FLos_Angeles",
+      "overflow": 0,
+      "period": "Oct 17 \u2013 Nov 13, 2026 \u00b7 America/Los_Angeles \u00b7 Updated Nov 14, 2026, 11:49 AM PST",
+      "weeks": "Four completed seven-day periods in America/Los_Angeles; today omittedLocal datesSite eventsSite outside largestArticle eventsArticles outside largestOct 17 \u2013 23, 2026384311240168Oct 24 \u2013 30, 2026704388565249Oct 31 \u2013 Nov 6, 2026763763478478Nov 7 \u2013 13, 2026646615354324",
+      "width": 320
+    },
+    "allRenderedCountsMatch": {
+      "hourly": true,
+      "daily": true
+    },
+    "finalPhone": {
+      "context": "Daily buckets \u00b7 America/Los_Angeles \u00b7 current day is partial",
+      "height": 852,
+      "methodParagraphs": 17,
+      "notes": 16,
+      "overflow": 0,
+      "period": "Oct 16 \u2013 Nov 14, 2026 \u00b7 America/Los_AngelesUpdated Nov 14, 2026, 11:49 AM PST",
+      "width": 393
+    },
+    "viewportReset": true
+  },
+  "limits": [
+    "Calendar boundaries legitimately select different totals from the earlier UTC windows; stored observations, classifications and metric definitions are retained.",
+    "Daily client identifiers still rotate on UTC dates, and local-day/hour identifier counts are not additive.",
+    "API callers that omit timeZone retain UTC. Authored publication dates and provenance/version identifiers remain civil metadata.",
+    "Native D1 cost and statement measurements use local synthetic observations, not production billing meters.",
+    "No schema migration, historical-data rewrite or stable cross-day identity was introduced.",
+    "Calculation time is the cached report calculation instant, not the current clock.",
+    "Raw responses, logs, source conversations and screenshots remain outside Git."
+  ]
+}

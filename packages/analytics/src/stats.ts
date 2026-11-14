@@ -329,7 +329,7 @@ function validateReportCounts(
 }
 
 export async function queryStats(db: D1Database, query: StatsQuery, now = new Date(), policy: ReferralPolicy = ACTIVE_REFERRAL_POLICY, observeCalculation?: ReportCalculationObserver): Promise<StatsResponse> {
-  const initialWindow = createStatsWindow(query.range, now);
+  const initialWindow = createStatsWindow(query, now);
   const statements = buildStatsQueryPlan(query, initialWindow, policy)
     .map(statement => db.prepare(statement.sql).bind(...statement.values));
   const results = await measuredReportBatch(db, statements, observeCalculation);
@@ -340,7 +340,7 @@ export async function queryStats(db: D1Database, query: StatsQuery, now = new Da
 /** The read model is accepted only with transactional source coverage. */
 export async function queryProjectedStats(db: D1Database, query: StatsQuery, now = new Date(), policy: ReferralPolicy = ACTIVE_REFERRAL_POLICY, observeCalculation?: ReportCalculationObserver): Promise<StatsResponse> {
   if (!matchesProjectedReferralPolicy(policy)) return queryStats(db, query, now, policy, event => observeCalculation?.({ ...event, readModel: 'source-fallback' }));
-  const statements = buildProjectedStatsQueryPlan(query, createStatsWindow(query.range, now))
+  const statements = buildProjectedStatsQueryPlan(query, createStatsWindow(query, now))
     .map(statement => db.prepare(statement.sql).bind(...statement.values));
   const results = await measuredReportBatch(db, statements, event => observeCalculation?.({ ...event, readModel: 'projection' }));
   const rows = results.flatMap(result => result.results ?? []);
@@ -354,7 +354,7 @@ function reportFromRows(query: StatsQuery, now: Date, rows: Record<string, unkno
   const sections = reportSections(rows, query.range === 'all');
   const firstObservedRow = query.range === 'all' ? requiredSection(sections, 'boundary')[0] : undefined;
   const firstObservedAt = firstObservedRow ? nullableString(firstObservedRow, 'firstObservedAt') : null;
-  const window = createStatsWindow(query.range, now, firstObservedAt ?? undefined);
+  const window = createStatsWindow(query, now, firstObservedAt ?? (query.range === 'all' ? now.toISOString() : undefined));
   const totalsRow = requiredSection(sections, 'totals')[0];
   const populatedSeries = seriesRows(requiredSection(sections, 'series'));
   const rawReferrers = referrerRows(requiredSection(sections, 'referrer'));
@@ -423,7 +423,9 @@ function reportFromRows(query: StatsQuery, now: Date, rows: Record<string, unkno
     period: {
       start: window.start,
       end: window.end,
-      timeZone: 'UTC',
+      timeZone: window.calendar.timeZone,
+      startInclusive: window.startInclusive,
+      endExclusive: window.endExclusive,
       granularity: window.granularity,
       updatedAt: window.updatedAt,
     },
@@ -441,7 +443,7 @@ function reportFromRows(query: StatsQuery, now: Date, rows: Record<string, unkno
     },
     byPath: pathRows(requiredSection(sections, 'path')),
     byCountry: countryRows(requiredSection(sections, 'country')),
-    timeSeries: completeTimeSeries(window, populatedSeries, now),
+    timeSeries: completeTimeSeries(window, populatedSeries),
     byReferrer: referrals.byReferrer,
     otherReferrerViews: referrals.otherReferrerViews,
     byReferrerState: referrerStateRows(requiredSection(sections, 'referrer-state')),

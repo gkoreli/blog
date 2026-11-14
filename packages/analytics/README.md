@@ -2,11 +2,11 @@
 
 Cookieless page analytics for a Cloudflare Worker and D1. It records eligible page responses, preserves client declarations and verification separately, and reports included request events. People and agents both count as audience at their observed stages; a request alone establishes neither reading nor its initiating party. See [ADR-0016.19](../../docs/adr/0016.19-agent-mediated-audience-growth.md).
 
-The source is public and MIT licensed; the workspace package is marked private, with one pinned runtime dependency, `ipaddr.js`. This document describes the checked implementation; code, migration, deployment activation and measured production behavior require separate evidence. The [User-Agent trust worklist](../blog/drafts/research/analytics-retrospective/136-user-agent-trust-and-hardening.md) continues the [accepted detection investigation](../blog/drafts/research/analytics-retrospective/128-detection-improvement-worklist.md).
+The source is public and MIT licensed; the workspace package is marked private, using pinned `ipaddr.js` and the shared [time kernel](../time/README.md). This document describes the checked implementation; code, migration, deployment activation and measured production behavior require separate evidence. The [User-Agent trust worklist](../blog/drafts/research/analytics-retrospective/136-user-agent-trust-and-hardening.md) continues the [accepted detection investigation](../blog/drafts/research/analytics-retrospective/128-detection-improvement-worklist.md).
 
 ## Agent access reports
 
-Version 0.3 adds [`agent-access`](src/agent-access.ts) and its browser-safe [`agent-access-contract`](src/agent-access-contract.ts). `queryAgentAccess(db, resources, options)` reads 28 completed UTC days. Resources declare stable IDs, canonical paths, article/evidence/site roles, explicit evidence parents and current collection coverage. The query reconciles independent totals with joint resource/client/role/format cells, four-week history and signature/network evidence. Original observations are never rewritten; missing/stale reporting facts fall back to source interpretation.
+Version 0.4 adds [`agent-access`](src/agent-access.ts) and its browser-safe [`agent-access-contract`](src/agent-access-contract.ts). `queryAgentAccess(db, resources, options)` reads 28 completed UTC days. Resources declare stable IDs, canonical paths, article/evidence/site roles, explicit evidence parents and current collection coverage. The query reconciles independent totals with joint resource/client/role/format cells, four-week history and signature/network evidence. Original observations are never rewritten; missing/stale reporting facts fall back to source interpretation.
 
 `createAgentAccessReportHandler(cache, { catalogue, admission, ...options })` composes a typed catalogue port, cache and optional durable admission. Choose `admission: null` explicitly for an externally controlled endpoint, or provide the existing D1 admission adapter. It returns one canonical report independent of caller filter parameters. Cache identity follows catalogue and interpretation changes. `consistentAgentAccessReport` validates the received aggregate; `selectAgentAccess(report, { articleId, client, kind })` provides local drill-down without additional SQL or cross-day identities. [Architecture and native constraints](../../docs/adr/0016.25-agent-access-report-and-inclusive-ai-scope.md).
 
@@ -119,14 +119,16 @@ The extractor intentionally supports a reviewed lexical dialect, not every HTTP 
 
 ```text
 GET /api/stats?range=7d|30d|90d|all&traffic=browser|agents|crawlers|automation|unresolved|all
-               &path=/slug&agent=<canonical name>&kind=<reader kind>
+               &path=/slug&agent=<canonical name>&kind=<reader kind>&timeZone=<IANA zone>
 ```
 
-The default includes all recorded categories. Valid filters scope the report; incompatible group/kind/agent combinations return 400. UTC windows can include a partial current day. Reports exclude ingestion owner marks, matching daily IDs in `owner_clients` and the current versioned referral-abuse policy. Save historical reports when their exact policy-dependent totals matter. [Policy maintenance and private review](policies/README.md).
+The default includes all recorded categories. Valid filters scope the report; incompatible group/kind/agent combinations return 400. The reporting calendar defaults to UTC for API callers; a valid `timeZone` selects actual local-day boundaries. Windows can include the partial current local day. Reports exclude ingestion owner marks, matching daily IDs in `owner_clients` and the current versioned referral-abuse policy. Save historical reports when their exact policy-dependent totals matter. [Policy maintenance and private review](policies/README.md).
+
+Analytics 0.3.0 returns `period.start` and `period.end` as civil dates in `period.timeZone`, plus exact UTC `startInclusive`/`endExclusive` bounds. Every `timeSeries.bucket` is a canonical UTC ISO instant with milliseconds and `Z`, including daily bucket starts. Daily keys are no longer bare date strings. The browser sends its own timezone and uses the shared presentation core. Daily HMAC rotation remains UTC; the metric is rotating identifiers, not local-day unique people. [Time and calendar decision](../../docs/adr/0022-utc-instants-and-viewer-calendars.md).
 
 | Response facet | Interpretation |
 | --- | --- |
-| `totals`, `byPath`, `timeSeries`, `byKind` | Included events and classifications; daily IDs can repeat across hourly buckets and are not additive |
+| `totals`, `byPath`, `timeSeries`, `byKind` | Included events and classifications; rotating identifiers can repeat across hourly or daily buckets and their counts are not additive |
 | `byAgent`, `clientNameCoverage` | Selected scalar names and the selected/not-selected partition; no selected name does not necessarily mean zero declarations |
 | `bySigner`, `byKindSignature` | Stored verified signer display and detailed local signature basis/profile; separate evidence channels |
 | `byKindNativeCategory`, `byKindClientEvidence` | Provider category and joint kind × selected-name state × provider-category × signature/profile groups; missing/unrecognized stored kinds remain null in evidence tables |
@@ -142,7 +144,7 @@ Internal source paths must belong to the trusted public route set and omit query
 
 `POST /api/owner` accepts `Authorization: Bearer <ADMIN_SECRET>` or the supported private expiring grant. A mark covers the same host, IP, User-Agent, HMAC key and UTC day, including matching earlier rows. A changed client/day needs another mark. Never place credentials in a URL or Git; the blog's `/owner` form stores none in browser storage. [Owner grant and actual-client boundaries](../blog/drafts/research/analytics-retrospective/12-owner-code-and-verification-correction.md).
 
-The [package cache](src/report-cache.ts) reuses successful calculations for at most an hour, capped at UTC midnight, preserving calculation time and validated filter/policy/version keys. New traffic and owner marks become visible after expiry; there is no public refresh bypass. Cache locality and isolate coalescing do not impose a global quota; use the separate admission port for explicit cost policy. Query work consumes D1 reads even when few rows return. After a quota rejection, stop expensive retries and inspect metadata. [Read-budget decision](../../docs/adr/0016.7-budget-d1-reads-and-cache-public-reports.md) and [operational procedure](../../.agents/skills/blog-maintenance/references/operations-and-handoffs.md).
+The [package cache](src/report-cache.ts) reuses successful calculations for at most an hour, capped at UTC and selected-calendar midnight, preserving calculation time and validated calendar/filter/policy/version keys. New traffic and owner marks become visible after expiry; there is no public refresh bypass. Cache locality and isolate coalescing do not impose a global quota; use the separate admission port for explicit cost policy. Query work consumes D1 reads even when few rows return. After a quota rejection, stop expensive retries and inspect metadata. [Read-budget decision](../../docs/adr/0016.7-budget-d1-reads-and-cache-public-reports.md) and [operational procedure](../../.agents/skills/blog-maintenance/references/operations-and-handoffs.md).
 
 ## Maintaining declarations and evidence profiles
 

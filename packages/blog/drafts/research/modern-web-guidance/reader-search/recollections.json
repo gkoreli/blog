@@ -1,0 +1,17 @@
+{
+  "provenance": "Twelve additional agent-authored recollections, fixed before retrieval outcomes. They omit project names and do not use the framing templates. They are source-aware and may have useful answers in articles other than the one selected; report separately from the paired framing probes.",
+  "cases": [
+    {"article":"oss-radar-01-vercel-winter-2026-cohort","query":"the little library with moving pictures you can drop into a Svelte interface"},
+    {"article":"oss-radar-10-paperpilot-redaction","query":"the thing that looked like it hid words in a PDF but left them there"},
+    {"article":"oss-radar-11-qwenputer-compiled-cpu","query":"somebody built a processor inside a language model without teaching it with examples"},
+    {"article":"oss-radar-13-hob-offline-file-tasks","query":"the app that wrote local reports after blocking the internet"},
+    {"article":"cloudflare-turnstile-signup-failures","query":"a second human-check widget cancelled the signup already on the wire"},
+    {"article":"prompt-cache-context-edits","query":"why changing instructions at the beginning makes later cached work unusable"},
+    {"article":"you-dont-need-codemap","query":"a tool that helped before deciding which repository to download"},
+    {"article":"please-stop-misreading-user-agent","query":"a tablet pretending to be a desktop and getting the wrong installer"},
+    {"article":"oss-radar-09-tsrs-typescript-memory","query":"the faster type checker that sometimes missed an error"},
+    {"article":"oss-radar-03-buzz-is-slack-on-airoids","query":"the project room that let teammates share their laptop's model"},
+    {"article":"oss-radar-06-interp-engine","query":"a model measurement with the right shape but taken from the wrong internal location"},
+    {"article":"oss-radar-12-claude-code-status-summary","query":"a tiny progress caption that secretly needed another model request"}
+  ]
+}

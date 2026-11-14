@@ -4,7 +4,7 @@ import {
 } from '@gkoreli/analytics/agent-access-contract';
 import { SIGNATURE_BASIS_LABELS } from '@gkoreli/analytics/signature-basis';
 import { dataFactsHtml, metricTileHtml } from './data-display.js';
-import { statsTimePresentation } from './stats-time.js';
+import { timePresentation } from '@gkoreli/time';
 
 const number = (value: number) => value.toLocaleString('en-US');
 const ENTITIES: Readonly<Record<string, string>> = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' };
@@ -24,7 +24,7 @@ function metricsRow(label: string, metrics: AgentAccessMetrics, control = label)
 /** Presentation consumes the package's selection service. It does not infer
  * identities, reinterpret evidence, fetch per-row reports or join trajectories.
  */
-export function agentAccessViewHtml(report: AgentAccessReport, selection: AgentAccessSelection, time = statsTimePresentation()): string {
+export function agentAccessViewHtml(report: AgentAccessReport, selection: AgentAccessSelection, time = timePresentation()): string {
   const selected = selectAgentAccess(report, selection);
   const articles = selected.byResource.filter(row => row.resource.role === 'article');
   const evidence = selected.byResource.filter(row => row.resource.role === 'evidence');
@@ -33,7 +33,7 @@ export function agentAccessViewHtml(report: AgentAccessReport, selection: AgentA
   const articleViews = articles.reduce((sum, row) => sum + row.metrics.views, 0);
   const markdown = selected.byFormat.find(row => row.format === 'markdown')?.metrics.views ?? 0;
   const end = new Date(Date.parse(report.scope.endExclusive) - 86_400_000).toISOString().slice(0, 10);
-  const period = `${time.formatBucket(report.scope.start, 'day')} – ${time.formatBucket(end, 'day')} · UTC reporting days`;
+  const period = `${time.calendarDate(report.scope.start)} – ${time.calendarDate(end)} · UTC reporting days`;
   const roleRows = selected.byRole.map(row => metricsRow(AGENT_ROLE_LABELS[row.kind], row.metrics,
     `<button type="button" data-agent-kind="${row.kind}" aria-pressed="${selection.kind === row.kind}">${escape(AGENT_ROLE_LABELS[row.kind])}</button>`)).join('');
   const formatRows = selected.byFormat.map(row => metricsRow(formatLabel(row.format), row.metrics)).join('');
@@ -46,7 +46,7 @@ export function agentAccessViewHtml(report: AgentAccessReport, selection: AgentA
     const end = new Date(Date.parse(start) + 6 * 86_400_000).toISOString().slice(0, 10);
     const previous = selected.total.weeks[index - 1];
     const difference = previous === undefined ? '—' : `${views >= previous ? '+' : '−'}${number(Math.abs(views - previous))}`;
-    return `<tr><th scope="row">${escape(time.formatBucket(start, 'day'))} – ${escape(time.formatBucket(end, 'day'))}</th><td>${number(views)}</td><td>${difference}</td></tr>`;
+    return `<tr><th scope="row">${escape(time.calendarDate(start))} – ${escape(time.calendarDate(end))}</th><td>${number(views)}</td><td>${difference}</td></tr>`;
   }).join('');
   const proofGroups = new Map<string, { label: string; profile: string; publisher: string; network: string; views: number }>();
   for (const proof of selected.proofs) {
@@ -72,7 +72,7 @@ export function agentAccessViewHtml(report: AgentAccessReport, selection: AgentA
     { label: 'Active UTC days', value: number(accessDayCount(selected.total.dayMask)), detail: 'Union of recorded days, out of 28' },
     { label: 'Markdown events', value: number(markdown), detail: 'Served format; preference not established' },
   ].map(metricTileHtml).join('');
-  return `<p class="agent-access-period">${escape(period)}<br><span>Calculated ${escape(time.formatInstant(report.scope.calculatedAt))}</span></p>
+  return `<p class="agent-access-period">${escape(period)}<br><span>Calculated ${escape(time.instant(report.scope.calculatedAt))}</span></p>
     ${selection.kind !== null ? `<p class="agent-access-selection">Role: ${escape(AGENT_ROLE_LABELS[selection.kind])} <button type="button" data-agent-reset="kind">Show all roles</button></p>` : ''}
     <div class="agent-access-metrics">${tiles}</div>
     ${selected.total.views === 0 ? '<p class="agent-access-empty">No retained events match this selection. This does not establish zero demand or complete collection.</p>' : ''}

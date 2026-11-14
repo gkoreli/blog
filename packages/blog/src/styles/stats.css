@@ -80,8 +80,10 @@
 .stats-chart-data summary { display: inline-flex; align-items: center; min-height: 44px; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
 .stats-chart-data summary::before { content: '+'; margin-right: 8px; font: 16px var(--font-mono); text-decoration: none; }
 .stats-chart-data[open] summary::before { content: '−'; }
+#stats-chart-table { container-type: inline-size; overflow-x: auto; }
 .stats-chart-data table { width: 100%; border-collapse: collapse; color: var(--color-text); font: 12px/1.7 var(--font-mono); }
 .stats-chart-data caption { text-align: left; padding: 8px 0; color: var(--color-text-muted); font-family: var(--font-sans); }
+.stats-chart-caption { display: block; max-width: 100cqi; overflow-wrap: anywhere; }
 .stats-chart-data th, .stats-chart-data td { padding: 9px 12px; border-bottom: 1px solid var(--color-border); text-align: right; font-variant-numeric: tabular-nums; }
 .stats-chart-data :is(th,td):first-child { text-align: left; }
 .stats-report-note { margin: 0; padding-block: 12px; border-top: 1px solid var(--color-border); color: var(--color-text-muted); font-size: 12px; }
@@ -167,7 +169,6 @@
   .stats-totals .data-metric-detail { font-size: 12px; }
   .stats-chart-heading { display: block; }
   .stats-chart-heading > span { display: block; margin-top: 6px; }
-  .stats-chart-data { overflow-x: auto; }
   .stats-chart-data table { min-width: 420px; }
   .stats-composition-groups { grid-template-columns: minmax(0,1fr); }
   .stats-section > h3, .stats-client-form-section > h3 { font-size: 20px; }

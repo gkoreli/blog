@@ -14,6 +14,9 @@ import { pathToFileURL } from 'node:url';
 import wrangler from 'wrangler';
 import { reportProjectionSql as networkReportProjectionSql } from '../.test-dist/report-projection.js';
 import { queryProjectedStats as queryStats } from '../.test-dist/stats.js';
+import { queryArticleReach } from '../.test-dist/article-reach.js';
+import { buildStatsQueryPlan } from '../.test-dist/stats-query.js';
+import { ACTIVE_REFERRAL_POLICY } from '../.test-dist/referral-policy.generated.js';
 import { STATS_INTEGRITY_INSERT, statsIntegrityValues } from '../test/fixtures/stats-integrity.mjs';
 import { networkSummaryCases } from '../test/fixtures/vendor-network-summary.mjs';
 
@@ -51,6 +54,18 @@ try {
     ...['Mobile','iPhone iPad','Mozilla/5.0 Chrome/150.0.0.0 Safari/537.36',''].flatMap(ua=>[null,'?0','?1','unsupported'].map(hint=>({...base,client_form_evidence:JSON.stringify(clientFormEvidence(ua,hint,null))}))),
   ];
   for(const row of records) inserts.push({sql:`INSERT INTO page_observations(${Object.keys(row).join(',')}) VALUES(${Object.keys(row).map(()=>'?').join(',')})`,values:Object.values(row)});
+  const calendarCases = [
+    { zone:'America/Los_Angeles', range:'all', now:'2026-11-02T20:00:00Z', path:'/calendar-all', at:['2026-08-01 06:59:59','2026-08-01 07:00:00'], expected:[['2026-07-31T07:00:00.000Z',1],['2026-08-01T07:00:00.000Z',1]] },
+    { zone:'America/Los_Angeles', range:'7d', now:'2026-11-02T20:00:00Z', path:'/calendar-fall', at:['2026-11-01 08:15:00','2026-11-01 09:15:00'], expected:[['2026-11-01T08:00:00.000Z',1],['2026-11-01T09:00:00.000Z',1]] },
+    { zone:'America/Los_Angeles', range:'30d', now:'2026-03-09T20:00:00Z', path:'/calendar-spring', at:['2026-03-08 08:00:00','2026-03-09 06:59:59','2026-03-09 07:00:00'], expected:[['2026-03-08T08:00:00.000Z',2],['2026-03-09T07:00:00.000Z',1]] },
+    { zone:'Asia/Kolkata', range:'7d', now:'2026-11-15T05:00:00Z', path:'/calendar-india', at:['2026-11-14 18:45:00','2026-11-14 19:05:00','2026-11-14 19:30:00'], expected:[['2026-11-14T18:30:00.000Z',2],['2026-11-14T19:30:00.000Z',1]] },
+    { zone:'Asia/Kathmandu', range:'7d', now:'2026-11-15T05:00:00Z', path:'/calendar-nepal', at:['2026-11-14 18:20:00','2026-11-14 18:59:00','2026-11-14 19:15:00'], expected:[['2026-11-14T18:15:00.000Z',2],['2026-11-14T19:15:00.000Z',1]] },
+    { zone:'Australia/Lord_Howe', range:'7d', now:'2026-10-04T04:00:00Z', path:'/calendar-half-dst', at:['2026-10-03 15:29:59','2026-10-03 15:30:00','2026-10-03 15:45:00','2026-10-03 16:00:00'], expected:[['2026-10-03T14:30:00.000Z',1],['2026-10-03T15:30:00.000Z',2],['2026-10-03T16:00:00.000Z',1]] },
+  ];
+  for (const item of calendarCases) for (const at of item.at) inserts.push({
+    sql:"INSERT INTO page_observations(path,daily_client_id,traffic_class,device_type,is_owner,reader_kind,reader_reason,observed_at,referrer_state)VALUES(?,?,'browser','desktop',0,'browser','fixture',?,'absent')",
+    values:[item.path,(inserts.length+7000).toString(16).padStart(32,'0'),at],
+  });
   for (const {sql,values} of inserts) sqlite.prepare(sql).run(...values);
   await db.batch(inserts.map(({sql,values}) => db.prepare(sql).bind(...values)));
   const referenceDb = {
@@ -64,6 +79,8 @@ try {
   queries.push({ range: '7d', traffic: 'all', agent: 'ExaUser' });
   const now = new Date('2026-10-31T12:00:00Z');
   const costs = [];
+  const calendarCosts = [];
+  let maximumSqlBytes=0, maximumBoundValues=0;
   for (const mode of ['fallback', 'projected']) {
     if (mode === 'projected') {
       await db.prepare(networkReportProjectionSql('range')).bind(0, Number.MAX_SAFE_INTEGER).run();
@@ -74,15 +91,32 @@ try {
     const actual = await queryStats(db, query, now, undefined, cost => costs.push(cost));
     assert.deepEqual(actual, expected, JSON.stringify({ mode, query }));
     }
+    for (const item of calendarCases) {
+      const query={range:item.range,traffic:'all',timeZone:item.zone,path:item.path}, clock=new Date(item.now);
+      const expected=await reference.queryStats(referenceDb,query,clock);
+      const actual=await queryStats(db,query,clock,undefined,cost=>calendarCosts.push({mode,zone:item.zone,...cost}));
+      assert.deepEqual(actual,expected,JSON.stringify({mode,query}));
+      assert.deepEqual(actual.timeSeries.filter(b=>b.views).map(b=>[b.bucket,b.views]),item.expected);
+      const plans=buildStatsQueryPlan(query,createStatsWindow(query,clock),ACTIVE_REFERRAL_POLICY);
+      maximumSqlBytes=Math.max(maximumSqlBytes,...plans.map(p=>Buffer.byteLength(p.sql)));
+      maximumBoundValues=Math.max(maximumBoundValues,...plans.map(p=>p.values.length));
+    }
   }
-  const [plan]=buildProjectedStatsQueryPlan({range:'30d',traffic:'all'},createStatsWindow('30d',now));
+  const reachCatalogue=calendarCases.map(item=>({path:item.path,title:item.path,publishedOn:'2026-01-01'}));
+  const reachOptions={now:new Date('2026-11-03T00:00:00Z'),timeZone:'America/Los_Angeles'};
+  const expectedReach=await queryArticleReach(referenceDb,reachCatalogue,reachOptions);
+  const actualReach=await queryArticleReach(db,reachCatalogue,reachOptions);
+  assert.deepEqual(actualReach,expectedReach);
+  assert.equal(actualReach.period.endExclusive,'2026-11-02');
+  assert.ok(maximumSqlBytes<100_000 && maximumBoundValues<=100);
+  const [plan]=buildProjectedStatsQueryPlan({range:'30d',traffic:'all'},createStatsWindow({range:'30d'},now));
   const explained=await db.prepare('EXPLAIN QUERY PLAN '+plan.sql).bind(...plan.values).all();
   const coveringPlans=explained.results.filter(row=>typeof row.detail==='string' && row.detail.includes('COVERING INDEX')).map(row=>row.detail);
   assert.ok(coveringPlans.some(step=>step.includes('idx_page_observation_report_facts_public_cover')));
   assert.ok(coveringPlans.some(step=>step.includes('idx_page_observations_public_time')));
   assert.ok(costs.every(cost => [2,5].includes(cost.submittedStatements) && cost.returnedResults === cost.submittedStatements && cost.reportedRowsWritten === 0));
   console.log(JSON.stringify({ selectors: queries.length, comparisons: queries.length * 2, meteredBatches: costs.length, modes: ['fallback', 'projected'], syntheticRows: inserts.length, projectedStatementsPerReport: 2, sourceStatementsPerReport: 5,
-    firstReport: costs[0], coveringPlans, parity: true }));
+    firstReport: costs[0], coveringPlans, calendarCases:calendarCases.length, calendarComparisons:calendarCases.length*2, calendarCosts, articleReachParity:true, maximumSqlBytes, maximumBoundValues, parity: true }));
 } finally {
   sqlite.close();
   await proxy?.dispose();

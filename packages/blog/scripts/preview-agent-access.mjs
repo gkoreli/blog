@@ -45,6 +45,13 @@ const types = { '.js': 'text/javascript', '.css': 'text/css', '.html': 'text/htm
 const fixturePosts = [{ url: '/article-a', title: 'Article A — controlled fixture', date: '2026-10-17' }, { url: '/article-b', title: 'Article B — controlled fixture', date: '2026-10-17' }, { url: '/article-zero', title: 'No retained events — controlled fixture', date: '2026-11-01' }];
 async function asset(request) {
   const path = new URL(request.url).pathname;
+  if (path === '/__acceptance/originals') {
+    const after = (await db.prepare('SELECT * FROM page_observations WHERE id<=? ORDER BY id').bind(originals.length).all()).results;
+    assert.deepEqual(after, originals);
+    const receipt = { originalRows: originals.length, originalRowsUnchanged: true, sha256: createHash('sha256').update(JSON.stringify(after)).digest('hex') };
+    await writeFile(resolve(output, 'originals-after-browser.json'), JSON.stringify(receipt, null, 2) + '\n');
+    return Response.json(receipt);
+  }
   if (path === '/posts.json') return Response.json(fixturePosts);
   let file = resolve(dist, '.' + path);
   if (relative(dist, file).startsWith('..')) return new Response(null, { status: 404 });
@@ -71,7 +78,7 @@ await db.prepare(reportProjectionSql('range')).bind(0, Number.MAX_SAFE_INTEGER).
 await db.prepare(referralReportProjectionSql()).bind(0, Number.MAX_SAFE_INTEGER, REFERRAL_REPORT_RULES_JSON).run();
 const originals = (await db.prepare('SELECT * FROM page_observations ORDER BY id').all()).results;
 const url = (await mf.ready).href;
-const receipt = { url, stats: new URL('/stats', url).href, source: 'actual composed Worker and isolated built assets; synthetic native D1', originalRows: originals.length, originalSha256: createHash('sha256').update(JSON.stringify(originals)).digest('hex'), publicBuildConfiguration: 'No local .env copied; subscription site key is not part of this acceptance.', startedAt: new Date().toISOString() };
+const receipt = { url, stats: new URL('/stats', url).href, pid: process.pid, source: 'actual composed Worker and isolated built assets; synthetic native D1', originalRows: originals.length, originalSha256: createHash('sha256').update(JSON.stringify(originals)).digest('hex'), publicBuildConfiguration: 'No local .env copied; subscription site key is not part of this acceptance.', startedAt: new Date().toISOString() };
 await writeFile(resolve(output, 'preview.json'), JSON.stringify(receipt, null, 2) + '\n');
 console.log(JSON.stringify(receipt));
 async function stop() {
