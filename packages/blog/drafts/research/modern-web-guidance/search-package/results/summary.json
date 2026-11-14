@@ -1,0 +1,656 @@
+[
+  {
+    "name": "development-01",
+    "summary": {
+      "bm25": {
+        "topic": {
+          "n": 10,
+          "articleAt3": 10,
+          "jointBlock": 8,
+          "returned": 10
+        },
+        "recollection": {
+          "n": 10,
+          "articleAt3": 9,
+          "jointBlock": 8,
+          "returned": 10
+        },
+        "typo": {
+          "n": 10,
+          "articleAt3": 10,
+          "jointBlock": 8,
+          "returned": 10
+        },
+        "negative": {
+          "n": 3,
+          "articleAt3": 0,
+          "jointBlock": 0,
+          "returned": 3
+        }
+      },
+      "e5": {
+        "topic": {
+          "n": 10,
+          "articleAt3": 10,
+          "jointBlock": 10,
+          "returned": 10
+        },
+        "recollection": {
+          "n": 10,
+          "articleAt3": 10,
+          "jointBlock": 6,
+          "returned": 10
+        },
+        "typo": {
+          "n": 10,
+          "articleAt3": 9,
+          "jointBlock": 8,
+          "returned": 10
+        },
+        "negative": {
+          "n": 3,
+          "articleAt3": 0,
+          "jointBlock": 0,
+          "returned": 3
+        }
+      },
+      "original-hybrid": {
+        "topic": {
+          "n": 10,
+          "articleAt3": 10,
+          "jointBlock": 10,
+          "returned": 10
+        },
+        "recollection": {
+          "n": 10,
+          "articleAt3": 10,
+          "jointBlock": 8,
+          "returned": 10
+        },
+        "typo": {
+          "n": 10,
+          "articleAt3": 8,
+          "jointBlock": 7,
+          "returned": 10
+        },
+        "negative": {
+          "n": 3,
+          "articleAt3": 0,
+          "jointBlock": 0,
+          "returned": 3
+        }
+      },
+      "minisearch-exact": {
+        "topic": {
+          "n": 10,
+          "articleAt3": 10,
+          "jointBlock": 10,
+          "returned": 10
+        },
+        "recollection": {
+          "n": 10,
+          "articleAt3": 9,
+          "jointBlock": 8,
+          "returned": 10
+        },
+        "typo": {
+          "n": 10,
+          "articleAt3": 10,
+          "jointBlock": 7,
+          "returned": 10
+        },
+        "negative": {
+          "n": 3,
+          "articleAt3": 0,
+          "jointBlock": 0,
+          "returned": 3
+        }
+      },
+      "minisearch-tolerant": {
+        "topic": {
+          "n": 10,
+          "articleAt3": 10,
+          "jointBlock": 10,
+          "returned": 10
+        },
+        "recollection": {
+          "n": 10,
+          "articleAt3": 9,
+          "jointBlock": 7,
+          "returned": 10
+        },
+        "typo": {
+          "n": 10,
+          "articleAt3": 10,
+          "jointBlock": 7,
+          "returned": 10
+        },
+        "negative": {
+          "n": 3,
+          "articleAt3": 0,
+          "jointBlock": 0,
+          "returned": 3
+        }
+      },
+      "e5-minisearch-hybrid": {
+        "topic": {
+          "n": 10,
+          "articleAt3": 10,
+          "jointBlock": 10,
+          "returned": 10
+        },
+        "recollection": {
+          "n": 10,
+          "articleAt3": 9,
+          "jointBlock": 8,
+          "returned": 10
+        },
+        "typo": {
+          "n": 10,
+          "articleAt3": 9,
+          "jointBlock": 8,
+          "returned": 10
+        },
+        "negative": {
+          "n": 3,
+          "articleAt3": 0,
+          "jointBlock": 0,
+          "returned": 3
+        }
+      },
+      "pagefind-raw": {
+        "topic": {
+          "n": 10,
+          "articleAt3": 7,
+          "jointBlock": 7,
+          "returned": 7
+        },
+        "recollection": {
+          "n": 10,
+          "articleAt3": 0,
+          "jointBlock": 0,
+          "returned": 0
+        },
+        "typo": {
+          "n": 10,
+          "articleAt3": 7,
+          "jointBlock": 2,
+          "returned": 7
+        },
+        "negative": {
+          "n": 3,
+          "articleAt3": 0,
+          "jointBlock": 0,
+          "returned": 0
+        }
+      },
+      "pagefind-prepared": {
+        "topic": {
+          "n": 10,
+          "articleAt3": 7,
+          "jointBlock": 7,
+          "returned": 7
+        },
+        "recollection": {
+          "n": 10,
+          "articleAt3": 0,
+          "jointBlock": 0,
+          "returned": 0
+        },
+        "typo": {
+          "n": 10,
+          "articleAt3": 7,
+          "jointBlock": 2,
+          "returned": 7
+        },
+        "negative": {
+          "n": 3,
+          "articleAt3": 0,
+          "jointBlock": 0,
+          "returned": 0
+        }
+      }
+    }
+  },
+  {
+    "name": "validation-01",
+    "summary": {
+      "bm25": {
+        "topic": {
+          "n": 5,
+          "articleAt3": 5,
+          "jointBlock": 5,
+          "returned": 5
+        },
+        "recollection": {
+          "n": 5,
+          "articleAt3": 4,
+          "jointBlock": 2,
+          "returned": 5
+        },
+        "typo": {
+          "n": 5,
+          "articleAt3": 5,
+          "jointBlock": 1,
+          "returned": 5
+        },
+        "negative": {
+          "n": 3,
+          "articleAt3": 0,
+          "jointBlock": 0,
+          "returned": 3
+        }
+      },
+      "e5": {
+        "topic": {
+          "n": 5,
+          "articleAt3": 4,
+          "jointBlock": 4,
+          "returned": 5
+        },
+        "recollection": {
+          "n": 5,
+          "articleAt3": 4,
+          "jointBlock": 2,
+          "returned": 5
+        },
+        "typo": {
+          "n": 5,
+          "articleAt3": 5,
+          "jointBlock": 3,
+          "returned": 5
+        },
+        "negative": {
+          "n": 3,
+          "articleAt3": 0,
+          "jointBlock": 0,
+          "returned": 3
+        }
+      },
+      "original-hybrid": {
+        "topic": {
+          "n": 5,
+          "articleAt3": 5,
+          "jointBlock": 5,
+          "returned": 5
+        },
+        "recollection": {
+          "n": 5,
+          "articleAt3": 4,
+          "jointBlock": 3,
+          "returned": 5
+        },
+        "typo": {
+          "n": 5,
+          "articleAt3": 5,
+          "jointBlock": 2,
+          "returned": 5
+        },
+        "negative": {
+          "n": 3,
+          "articleAt3": 0,
+          "jointBlock": 0,
+          "returned": 3
+        }
+      },
+      "minisearch-exact": {
+        "topic": {
+          "n": 5,
+          "articleAt3": 4,
+          "jointBlock": 4,
+          "returned": 5
+        },
+        "recollection": {
+          "n": 5,
+          "articleAt3": 5,
+          "jointBlock": 2,
+          "returned": 5
+        },
+        "typo": {
+          "n": 5,
+          "articleAt3": 5,
+          "jointBlock": 1,
+          "returned": 5
+        },
+        "negative": {
+          "n": 3,
+          "articleAt3": 0,
+          "jointBlock": 0,
+          "returned": 3
+        }
+      },
+      "minisearch-tolerant": {
+        "topic": {
+          "n": 5,
+          "articleAt3": 5,
+          "jointBlock": 5,
+          "returned": 5
+        },
+        "recollection": {
+          "n": 5,
+          "articleAt3": 5,
+          "jointBlock": 2,
+          "returned": 5
+        },
+        "typo": {
+          "n": 5,
+          "articleAt3": 5,
+          "jointBlock": 2,
+          "returned": 5
+        },
+        "negative": {
+          "n": 3,
+          "articleAt3": 0,
+          "jointBlock": 0,
+          "returned": 3
+        }
+      },
+      "e5-minisearch-hybrid": {
+        "topic": {
+          "n": 5,
+          "articleAt3": 5,
+          "jointBlock": 5,
+          "returned": 5
+        },
+        "recollection": {
+          "n": 5,
+          "articleAt3": 5,
+          "jointBlock": 3,
+          "returned": 5
+        },
+        "typo": {
+          "n": 5,
+          "articleAt3": 5,
+          "jointBlock": 3,
+          "returned": 5
+        },
+        "negative": {
+          "n": 3,
+          "articleAt3": 0,
+          "jointBlock": 0,
+          "returned": 3
+        }
+      },
+      "pagefind-raw": {
+        "topic": {
+          "n": 5,
+          "articleAt3": 4,
+          "jointBlock": 3,
+          "returned": 4
+        },
+        "recollection": {
+          "n": 5,
+          "articleAt3": 0,
+          "jointBlock": 0,
+          "returned": 0
+        },
+        "typo": {
+          "n": 5,
+          "articleAt3": 5,
+          "jointBlock": 2,
+          "returned": 5
+        },
+        "negative": {
+          "n": 3,
+          "articleAt3": 0,
+          "jointBlock": 0,
+          "returned": 0
+        }
+      },
+      "pagefind-prepared": {
+        "topic": {
+          "n": 5,
+          "articleAt3": 4,
+          "jointBlock": 3,
+          "returned": 4
+        },
+        "recollection": {
+          "n": 5,
+          "articleAt3": 0,
+          "jointBlock": 0,
+          "returned": 0
+        },
+        "typo": {
+          "n": 5,
+          "articleAt3": 5,
+          "jointBlock": 2,
+          "returned": 5
+        },
+        "negative": {
+          "n": 3,
+          "articleAt3": 0,
+          "jointBlock": 0,
+          "returned": 0
+        }
+      }
+    }
+  },
+  {
+    "name": "native-development-01",
+    "summary": {
+      "raw": {
+        "topic": {
+          "n": 10,
+          "articleAt3": 9,
+          "jointBlock": null,
+          "returned": 9
+        },
+        "recollection": {
+          "n": 10,
+          "articleAt3": 1,
+          "jointBlock": null,
+          "returned": 4
+        },
+        "typo": {
+          "n": 10,
+          "articleAt3": 7,
+          "jointBlock": null,
+          "returned": 8
+        },
+        "negative": {
+          "n": 3,
+          "articleAt3": 0,
+          "jointBlock": null,
+          "returned": 0
+        }
+      },
+      "prepared": {
+        "topic": {
+          "n": 10,
+          "articleAt3": 9,
+          "jointBlock": null,
+          "returned": 9
+        },
+        "recollection": {
+          "n": 10,
+          "articleAt3": 1,
+          "jointBlock": null,
+          "returned": 4
+        },
+        "typo": {
+          "n": 10,
+          "articleAt3": 7,
+          "jointBlock": null,
+          "returned": 8
+        },
+        "negative": {
+          "n": 3,
+          "articleAt3": 0,
+          "jointBlock": null,
+          "returned": 0
+        }
+      }
+    }
+  },
+  {
+    "name": "native-validation-01",
+    "summary": {
+      "raw": {
+        "topic": {
+          "n": 5,
+          "articleAt3": 4,
+          "jointBlock": null,
+          "returned": 5
+        },
+        "recollection": {
+          "n": 5,
+          "articleAt3": 0,
+          "jointBlock": null,
+          "returned": 1
+        },
+        "typo": {
+          "n": 5,
+          "articleAt3": 5,
+          "jointBlock": null,
+          "returned": 5
+        },
+        "negative": {
+          "n": 3,
+          "articleAt3": 0,
+          "jointBlock": null,
+          "returned": 0
+        }
+      },
+      "prepared": {
+        "topic": {
+          "n": 5,
+          "articleAt3": 4,
+          "jointBlock": null,
+          "returned": 5
+        },
+        "recollection": {
+          "n": 5,
+          "articleAt3": 0,
+          "jointBlock": null,
+          "returned": 1
+        },
+        "typo": {
+          "n": 5,
+          "articleAt3": 5,
+          "jointBlock": null,
+          "returned": 5
+        },
+        "negative": {
+          "n": 3,
+          "articleAt3": 0,
+          "jointBlock": null,
+          "returned": 0
+        }
+      }
+    }
+  },
+  {
+    "name": "rerank-development-01",
+    "summary": {
+      "e5-minisearch-exact-hybrid": {
+        "topic": {
+          "n": 10,
+          "articleAt3": 10,
+          "jointBlock": 10,
+          "returned": 10
+        },
+        "recollection": {
+          "n": 10,
+          "articleAt3": 10,
+          "jointBlock": 9,
+          "returned": 10
+        },
+        "typo": {
+          "n": 10,
+          "articleAt3": 9,
+          "jointBlock": 8,
+          "returned": 10
+        },
+        "negative": {
+          "n": 3,
+          "articleAt3": 0,
+          "jointBlock": 0,
+          "returned": 3
+        }
+      },
+      "retrieve-rerank": {
+        "topic": {
+          "n": 10,
+          "articleAt3": 10,
+          "jointBlock": 10,
+          "returned": 10
+        },
+        "recollection": {
+          "n": 10,
+          "articleAt3": 10,
+          "jointBlock": 7,
+          "returned": 10
+        },
+        "typo": {
+          "n": 10,
+          "articleAt3": 10,
+          "jointBlock": 6,
+          "returned": 10
+        },
+        "negative": {
+          "n": 3,
+          "articleAt3": 0,
+          "jointBlock": 0,
+          "returned": 3
+        }
+      }
+    }
+  },
+  {
+    "name": "rerank-validation-01",
+    "summary": {
+      "e5-minisearch-exact-hybrid": {
+        "topic": {
+          "n": 5,
+          "articleAt3": 4,
+          "jointBlock": 4,
+          "returned": 5
+        },
+        "recollection": {
+          "n": 5,
+          "articleAt3": 5,
+          "jointBlock": 3,
+          "returned": 5
+        },
+        "typo": {
+          "n": 5,
+          "articleAt3": 5,
+          "jointBlock": 3,
+          "returned": 5
+        },
+        "negative": {
+          "n": 3,
+          "articleAt3": 0,
+          "jointBlock": 0,
+          "returned": 3
+        }
+      },
+      "retrieve-rerank": {
+        "topic": {
+          "n": 5,
+          "articleAt3": 5,
+          "jointBlock": 4,
+          "returned": 5
+        },
+        "recollection": {
+          "n": 5,
+          "articleAt3": 5,
+          "jointBlock": 3,
+          "returned": 5
+        },
+        "typo": {
+          "n": 5,
+          "articleAt3": 5,
+          "jointBlock": 2,
+          "returned": 5
+        },
+        "negative": {
+          "n": 3,
+          "articleAt3": 0,
+          "jointBlock": 0,
+          "returned": 3
+        }
+      }
+    }
+  }
+]

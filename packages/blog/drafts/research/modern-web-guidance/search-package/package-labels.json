@@ -1,0 +1,916 @@
+{
+  "boundary": "Mapped source text to current source passages before any 51-case package ranking. Whitespace compacted only; no manual substitution of labels.",
+  "sourceCorpusSha256": "d3de0d29a58f46fa12bfde0a347d361ff0116c27cbd7193f4e4b43e0ca0219ea",
+  "indexSha256": "2c180d28506cbdd15e57933f792ae4cb32e5bcb5c587e7fb381defb87a3f6936",
+  "indexId": "8201476e8b9786a8807b23d0729b2ceb995a18e8a61488bd1cdcd1ecf5c6892e",
+  "articles": 46,
+  "passages": 3954,
+  "cases": [
+    {
+      "id": "S01-topic",
+      "article": "oss-radar-01-vercel-winter-2026-cohort",
+      "form": "topic",
+      "split": "development",
+      "targets": [
+        {
+          "source": "oss-radar-01-vercel-winter-2026-cohort/b0133-c1a1899b",
+          "sourceTextSha256": "b23ee3f596b7f721f6bcf289885ed71f5fc5050286f3a2a68af7557373ef1a45",
+          "relation": "equal",
+          "passages": [
+            "oss-radar-01-vercel-winter-2026-cohort/passage-c1a1899b18fa3a73"
+          ]
+        },
+        {
+          "source": "oss-radar-01-vercel-winter-2026-cohort/b0137-c9afde0e",
+          "sourceTextSha256": "8b0f76d0ef6ce9dddc2e1e2db33215309aace7d12d0b8b5106e34d8499b12feb",
+          "relation": "equal",
+          "passages": [
+            "oss-radar-01-vercel-winter-2026-cohort/passage-c9afde0eda3de180"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "S01-recollection",
+      "article": "oss-radar-01-vercel-winter-2026-cohort",
+      "form": "recollection",
+      "split": "development",
+      "targets": [
+        {
+          "source": "oss-radar-01-vercel-winter-2026-cohort/b0133-c1a1899b",
+          "sourceTextSha256": "b23ee3f596b7f721f6bcf289885ed71f5fc5050286f3a2a68af7557373ef1a45",
+          "relation": "equal",
+          "passages": [
+            "oss-radar-01-vercel-winter-2026-cohort/passage-c1a1899b18fa3a73"
+          ]
+        },
+        {
+          "source": "oss-radar-01-vercel-winter-2026-cohort/b0137-c9afde0e",
+          "sourceTextSha256": "8b0f76d0ef6ce9dddc2e1e2db33215309aace7d12d0b8b5106e34d8499b12feb",
+          "relation": "equal",
+          "passages": [
+            "oss-radar-01-vercel-winter-2026-cohort/passage-c9afde0eda3de180"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "S01-typo",
+      "article": "oss-radar-01-vercel-winter-2026-cohort",
+      "form": "typo",
+      "split": "development",
+      "targets": [
+        {
+          "source": "oss-radar-01-vercel-winter-2026-cohort/b0133-c1a1899b",
+          "sourceTextSha256": "b23ee3f596b7f721f6bcf289885ed71f5fc5050286f3a2a68af7557373ef1a45",
+          "relation": "equal",
+          "passages": [
+            "oss-radar-01-vercel-winter-2026-cohort/passage-c1a1899b18fa3a73"
+          ]
+        },
+        {
+          "source": "oss-radar-01-vercel-winter-2026-cohort/b0137-c9afde0e",
+          "sourceTextSha256": "8b0f76d0ef6ce9dddc2e1e2db33215309aace7d12d0b8b5106e34d8499b12feb",
+          "relation": "equal",
+          "passages": [
+            "oss-radar-01-vercel-winter-2026-cohort/passage-c9afde0eda3de180"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "S02-topic",
+      "article": "oss-radar-10-paperpilot-redaction",
+      "form": "topic",
+      "split": "development",
+      "targets": [
+        {
+          "source": "oss-radar-10-paperpilot-redaction/b0002-c595fea8",
+          "sourceTextSha256": "0120808219835904b746c4d67b4f7bd673ff5b007046a31f9a2b80aec22ee3a2",
+          "relation": "equal",
+          "passages": [
+            "oss-radar-10-paperpilot-redaction/passage-c595fea8d313a67b"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "S02-recollection",
+      "article": "oss-radar-10-paperpilot-redaction",
+      "form": "recollection",
+      "split": "development",
+      "targets": [
+        {
+          "source": "oss-radar-10-paperpilot-redaction/b0002-c595fea8",
+          "sourceTextSha256": "0120808219835904b746c4d67b4f7bd673ff5b007046a31f9a2b80aec22ee3a2",
+          "relation": "equal",
+          "passages": [
+            "oss-radar-10-paperpilot-redaction/passage-c595fea8d313a67b"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "S02-typo",
+      "article": "oss-radar-10-paperpilot-redaction",
+      "form": "typo",
+      "split": "development",
+      "targets": [
+        {
+          "source": "oss-radar-10-paperpilot-redaction/b0002-c595fea8",
+          "sourceTextSha256": "0120808219835904b746c4d67b4f7bd673ff5b007046a31f9a2b80aec22ee3a2",
+          "relation": "equal",
+          "passages": [
+            "oss-radar-10-paperpilot-redaction/passage-c595fea8d313a67b"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "S03-topic",
+      "article": "please-stop-misreading-user-agent",
+      "form": "topic",
+      "split": "development",
+      "targets": [
+        {
+          "source": "please-stop-misreading-user-agent/b0005-447dcb13",
+          "sourceTextSha256": "8dd583a8858e5048a34265dd9b14e5e4d3f5248a276ebf3db84caf2d897f0a83",
+          "relation": "equal",
+          "passages": [
+            "please-stop-misreading-user-agent/passage-447dcb13814d0142"
+          ]
+        },
+        {
+          "source": "please-stop-misreading-user-agent/b0027-a71b0fa1",
+          "sourceTextSha256": "97aeff5847f8ef0f972fd89dd6afcdac77d18295113af62cf2e449194dec9f85",
+          "relation": "equal",
+          "passages": [
+            "please-stop-misreading-user-agent/passage-a71b0fa149b0c798"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "S03-recollection",
+      "article": "please-stop-misreading-user-agent",
+      "form": "recollection",
+      "split": "development",
+      "targets": [
+        {
+          "source": "please-stop-misreading-user-agent/b0005-447dcb13",
+          "sourceTextSha256": "8dd583a8858e5048a34265dd9b14e5e4d3f5248a276ebf3db84caf2d897f0a83",
+          "relation": "equal",
+          "passages": [
+            "please-stop-misreading-user-agent/passage-447dcb13814d0142"
+          ]
+        },
+        {
+          "source": "please-stop-misreading-user-agent/b0027-a71b0fa1",
+          "sourceTextSha256": "97aeff5847f8ef0f972fd89dd6afcdac77d18295113af62cf2e449194dec9f85",
+          "relation": "equal",
+          "passages": [
+            "please-stop-misreading-user-agent/passage-a71b0fa149b0c798"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "S03-typo",
+      "article": "please-stop-misreading-user-agent",
+      "form": "typo",
+      "split": "development",
+      "targets": [
+        {
+          "source": "please-stop-misreading-user-agent/b0005-447dcb13",
+          "sourceTextSha256": "8dd583a8858e5048a34265dd9b14e5e4d3f5248a276ebf3db84caf2d897f0a83",
+          "relation": "equal",
+          "passages": [
+            "please-stop-misreading-user-agent/passage-447dcb13814d0142"
+          ]
+        },
+        {
+          "source": "please-stop-misreading-user-agent/b0027-a71b0fa1",
+          "sourceTextSha256": "97aeff5847f8ef0f972fd89dd6afcdac77d18295113af62cf2e449194dec9f85",
+          "relation": "equal",
+          "passages": [
+            "please-stop-misreading-user-agent/passage-a71b0fa149b0c798"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "S04-topic",
+      "article": "oss-radar-13-hob-offline-file-tasks",
+      "form": "topic",
+      "split": "development",
+      "targets": [
+        {
+          "source": "oss-radar-13-hob-offline-file-tasks/b0002-5e41ae18",
+          "sourceTextSha256": "2070856b872129fb88823543ebacbca99ff5e608e8eaa17c49218e2a8c3169c1",
+          "relation": "equal",
+          "passages": [
+            "oss-radar-13-hob-offline-file-tasks/passage-5e41ae180e00b57f"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "S04-recollection",
+      "article": "oss-radar-13-hob-offline-file-tasks",
+      "form": "recollection",
+      "split": "development",
+      "targets": [
+        {
+          "source": "oss-radar-13-hob-offline-file-tasks/b0002-5e41ae18",
+          "sourceTextSha256": "2070856b872129fb88823543ebacbca99ff5e608e8eaa17c49218e2a8c3169c1",
+          "relation": "equal",
+          "passages": [
+            "oss-radar-13-hob-offline-file-tasks/passage-5e41ae180e00b57f"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "S04-typo",
+      "article": "oss-radar-13-hob-offline-file-tasks",
+      "form": "typo",
+      "split": "development",
+      "targets": [
+        {
+          "source": "oss-radar-13-hob-offline-file-tasks/b0002-5e41ae18",
+          "sourceTextSha256": "2070856b872129fb88823543ebacbca99ff5e608e8eaa17c49218e2a8c3169c1",
+          "relation": "equal",
+          "passages": [
+            "oss-radar-13-hob-offline-file-tasks/passage-5e41ae180e00b57f"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "S05-topic",
+      "article": "oss-radar-11-qwenputer-compiled-cpu",
+      "form": "topic",
+      "split": "validation",
+      "targets": [
+        {
+          "source": "oss-radar-11-qwenputer-compiled-cpu/b0009-9722e385",
+          "sourceTextSha256": "8e45ed753cc7af48a1136a32486209105567622ca849e327f45149da7b2a5a6c",
+          "relation": "equal",
+          "passages": [
+            "oss-radar-11-qwenputer-compiled-cpu/passage-9722e38505472563"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "S05-recollection",
+      "article": "oss-radar-11-qwenputer-compiled-cpu",
+      "form": "recollection",
+      "split": "validation",
+      "targets": [
+        {
+          "source": "oss-radar-11-qwenputer-compiled-cpu/b0009-9722e385",
+          "sourceTextSha256": "8e45ed753cc7af48a1136a32486209105567622ca849e327f45149da7b2a5a6c",
+          "relation": "equal",
+          "passages": [
+            "oss-radar-11-qwenputer-compiled-cpu/passage-9722e38505472563"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "S05-typo",
+      "article": "oss-radar-11-qwenputer-compiled-cpu",
+      "form": "typo",
+      "split": "validation",
+      "targets": [
+        {
+          "source": "oss-radar-11-qwenputer-compiled-cpu/b0009-9722e385",
+          "sourceTextSha256": "8e45ed753cc7af48a1136a32486209105567622ca849e327f45149da7b2a5a6c",
+          "relation": "equal",
+          "passages": [
+            "oss-radar-11-qwenputer-compiled-cpu/passage-9722e38505472563"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "S06-topic",
+      "article": "oss-radar-12-claude-code-status-summary",
+      "form": "topic",
+      "split": "development",
+      "targets": [
+        {
+          "source": "oss-radar-12-claude-code-status-summary/b0008-e28b33f3",
+          "sourceTextSha256": "46f5d0807e4de348a48d0cc41a401b91a59de8761ae6fe61c47629fec2390585",
+          "relation": "equal",
+          "passages": [
+            "oss-radar-12-claude-code-status-summary/passage-e28b33f3cb6099ec"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "S06-recollection",
+      "article": "oss-radar-12-claude-code-status-summary",
+      "form": "recollection",
+      "split": "development",
+      "targets": [
+        {
+          "source": "oss-radar-12-claude-code-status-summary/b0008-e28b33f3",
+          "sourceTextSha256": "46f5d0807e4de348a48d0cc41a401b91a59de8761ae6fe61c47629fec2390585",
+          "relation": "equal",
+          "passages": [
+            "oss-radar-12-claude-code-status-summary/passage-e28b33f3cb6099ec"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "S06-typo",
+      "article": "oss-radar-12-claude-code-status-summary",
+      "form": "typo",
+      "split": "development",
+      "targets": [
+        {
+          "source": "oss-radar-12-claude-code-status-summary/b0008-e28b33f3",
+          "sourceTextSha256": "46f5d0807e4de348a48d0cc41a401b91a59de8761ae6fe61c47629fec2390585",
+          "relation": "equal",
+          "passages": [
+            "oss-radar-12-claude-code-status-summary/passage-e28b33f3cb6099ec"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "S07-topic",
+      "article": "bun-aot-express-fastify-serializers",
+      "form": "topic",
+      "split": "validation",
+      "targets": [
+        {
+          "source": "bun-aot-express-fastify-serializers/b0002-f497f3e1",
+          "sourceTextSha256": "135e5c7bea35329020d63141f7b798d1028ce3721885526ad7d7368faa686aa3",
+          "relation": "equal",
+          "passages": [
+            "bun-aot-express-fastify-serializers/passage-f497f3e11e8d0088"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "S07-recollection",
+      "article": "bun-aot-express-fastify-serializers",
+      "form": "recollection",
+      "split": "validation",
+      "targets": [
+        {
+          "source": "bun-aot-express-fastify-serializers/b0002-f497f3e1",
+          "sourceTextSha256": "135e5c7bea35329020d63141f7b798d1028ce3721885526ad7d7368faa686aa3",
+          "relation": "equal",
+          "passages": [
+            "bun-aot-express-fastify-serializers/passage-f497f3e11e8d0088"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "S07-typo",
+      "article": "bun-aot-express-fastify-serializers",
+      "form": "typo",
+      "split": "validation",
+      "targets": [
+        {
+          "source": "bun-aot-express-fastify-serializers/b0002-f497f3e1",
+          "sourceTextSha256": "135e5c7bea35329020d63141f7b798d1028ce3721885526ad7d7368faa686aa3",
+          "relation": "equal",
+          "passages": [
+            "bun-aot-express-fastify-serializers/passage-f497f3e11e8d0088"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "S08-topic",
+      "article": "how-i-separate-readers-from-bots-without-javascript",
+      "form": "topic",
+      "split": "validation",
+      "targets": [
+        {
+          "source": "how-i-separate-readers-from-bots-without-javascript/b0047-e964c7e9",
+          "sourceTextSha256": "8845d71082f1463a82da5ef3691de9301788aba8faf6822fb0d0ebfff79702f4",
+          "relation": "equal",
+          "passages": [
+            "how-i-separate-readers-from-bots-without-javascript/passage-e964c7e9783588bd"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "S08-recollection",
+      "article": "how-i-separate-readers-from-bots-without-javascript",
+      "form": "recollection",
+      "split": "validation",
+      "targets": [
+        {
+          "source": "how-i-separate-readers-from-bots-without-javascript/b0047-e964c7e9",
+          "sourceTextSha256": "8845d71082f1463a82da5ef3691de9301788aba8faf6822fb0d0ebfff79702f4",
+          "relation": "equal",
+          "passages": [
+            "how-i-separate-readers-from-bots-without-javascript/passage-e964c7e9783588bd"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "S08-typo",
+      "article": "how-i-separate-readers-from-bots-without-javascript",
+      "form": "typo",
+      "split": "validation",
+      "targets": [
+        {
+          "source": "how-i-separate-readers-from-bots-without-javascript/b0047-e964c7e9",
+          "sourceTextSha256": "8845d71082f1463a82da5ef3691de9301788aba8faf6822fb0d0ebfff79702f4",
+          "relation": "equal",
+          "passages": [
+            "how-i-separate-readers-from-bots-without-javascript/passage-e964c7e9783588bd"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "S09-topic",
+      "article": "openclaw-chose-solid-why-id-choose-nisli",
+      "form": "topic",
+      "split": "development",
+      "targets": [
+        {
+          "source": "openclaw-chose-solid-why-id-choose-nisli/b0024-b7da8757",
+          "sourceTextSha256": "665bdf2479762239a662e5968617fa288d29f3e3cc31685d871ae48b6c1138ae",
+          "relation": "equal",
+          "passages": [
+            "openclaw-chose-solid-why-id-choose-nisli/passage-b7da87575ac454f9"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "S09-recollection",
+      "article": "openclaw-chose-solid-why-id-choose-nisli",
+      "form": "recollection",
+      "split": "development",
+      "targets": [
+        {
+          "source": "openclaw-chose-solid-why-id-choose-nisli/b0024-b7da8757",
+          "sourceTextSha256": "665bdf2479762239a662e5968617fa288d29f3e3cc31685d871ae48b6c1138ae",
+          "relation": "equal",
+          "passages": [
+            "openclaw-chose-solid-why-id-choose-nisli/passage-b7da87575ac454f9"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "S09-typo",
+      "article": "openclaw-chose-solid-why-id-choose-nisli",
+      "form": "typo",
+      "split": "development",
+      "targets": [
+        {
+          "source": "openclaw-chose-solid-why-id-choose-nisli/b0024-b7da8757",
+          "sourceTextSha256": "665bdf2479762239a662e5968617fa288d29f3e3cc31685d871ae48b6c1138ae",
+          "relation": "equal",
+          "passages": [
+            "openclaw-chose-solid-why-id-choose-nisli/passage-b7da87575ac454f9"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "S10-topic",
+      "article": "openwiki-validates-my-bet",
+      "form": "topic",
+      "split": "development",
+      "targets": [
+        {
+          "source": "openwiki-validates-my-bet/b0013-e29fb0c8",
+          "sourceTextSha256": "c84683e5bde2f4758e2e09507c6f6ed506de1683f1bcf3bc3c7e887ac1ec831c",
+          "relation": "equal",
+          "passages": [
+            "openwiki-validates-my-bet/passage-e29fb0c804b7b648"
+          ]
+        },
+        {
+          "source": "openwiki-validates-my-bet/b0026-126b2612",
+          "sourceTextSha256": "0c322ec516f2d1d2e7d48814cc4d6346635bdc296e9b829a78ae65f44c0694fd",
+          "relation": "equal",
+          "passages": [
+            "openwiki-validates-my-bet/passage-126b2612fe40a895"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "S10-recollection",
+      "article": "openwiki-validates-my-bet",
+      "form": "recollection",
+      "split": "development",
+      "targets": [
+        {
+          "source": "openwiki-validates-my-bet/b0013-e29fb0c8",
+          "sourceTextSha256": "c84683e5bde2f4758e2e09507c6f6ed506de1683f1bcf3bc3c7e887ac1ec831c",
+          "relation": "equal",
+          "passages": [
+            "openwiki-validates-my-bet/passage-e29fb0c804b7b648"
+          ]
+        },
+        {
+          "source": "openwiki-validates-my-bet/b0026-126b2612",
+          "sourceTextSha256": "0c322ec516f2d1d2e7d48814cc4d6346635bdc296e9b829a78ae65f44c0694fd",
+          "relation": "equal",
+          "passages": [
+            "openwiki-validates-my-bet/passage-126b2612fe40a895"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "S10-typo",
+      "article": "openwiki-validates-my-bet",
+      "form": "typo",
+      "split": "development",
+      "targets": [
+        {
+          "source": "openwiki-validates-my-bet/b0013-e29fb0c8",
+          "sourceTextSha256": "c84683e5bde2f4758e2e09507c6f6ed506de1683f1bcf3bc3c7e887ac1ec831c",
+          "relation": "equal",
+          "passages": [
+            "openwiki-validates-my-bet/passage-e29fb0c804b7b648"
+          ]
+        },
+        {
+          "source": "openwiki-validates-my-bet/b0026-126b2612",
+          "sourceTextSha256": "0c322ec516f2d1d2e7d48814cc4d6346635bdc296e9b829a78ae65f44c0694fd",
+          "relation": "equal",
+          "passages": [
+            "openwiki-validates-my-bet/passage-126b2612fe40a895"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "S11-topic",
+      "article": "oss-radar-09-tsrs-typescript-memory",
+      "form": "topic",
+      "split": "development",
+      "targets": [
+        {
+          "source": "oss-radar-09-tsrs-typescript-memory/b0017-5a946a16",
+          "sourceTextSha256": "3b44a87f7a44f500c6075f9054c745e31c7041ace3b6161c70e5071c86d36ba6",
+          "relation": "equal",
+          "passages": [
+            "oss-radar-09-tsrs-typescript-memory/passage-5a946a16d0aa8da9"
+          ]
+        },
+        {
+          "source": "oss-radar-09-tsrs-typescript-memory/b0020-1f41cd8c",
+          "sourceTextSha256": "46cf67b520bcf439fe306bc36d9b873c334364adc7e15d6d8bdae8b68dcf1f5e",
+          "relation": "equal",
+          "passages": [
+            "oss-radar-09-tsrs-typescript-memory/passage-1f41cd8cf6f03222"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "S11-recollection",
+      "article": "oss-radar-09-tsrs-typescript-memory",
+      "form": "recollection",
+      "split": "development",
+      "targets": [
+        {
+          "source": "oss-radar-09-tsrs-typescript-memory/b0017-5a946a16",
+          "sourceTextSha256": "3b44a87f7a44f500c6075f9054c745e31c7041ace3b6161c70e5071c86d36ba6",
+          "relation": "equal",
+          "passages": [
+            "oss-radar-09-tsrs-typescript-memory/passage-5a946a16d0aa8da9"
+          ]
+        },
+        {
+          "source": "oss-radar-09-tsrs-typescript-memory/b0020-1f41cd8c",
+          "sourceTextSha256": "46cf67b520bcf439fe306bc36d9b873c334364adc7e15d6d8bdae8b68dcf1f5e",
+          "relation": "equal",
+          "passages": [
+            "oss-radar-09-tsrs-typescript-memory/passage-1f41cd8cf6f03222"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "S11-typo",
+      "article": "oss-radar-09-tsrs-typescript-memory",
+      "form": "typo",
+      "split": "development",
+      "targets": [
+        {
+          "source": "oss-radar-09-tsrs-typescript-memory/b0017-5a946a16",
+          "sourceTextSha256": "3b44a87f7a44f500c6075f9054c745e31c7041ace3b6161c70e5071c86d36ba6",
+          "relation": "equal",
+          "passages": [
+            "oss-radar-09-tsrs-typescript-memory/passage-5a946a16d0aa8da9"
+          ]
+        },
+        {
+          "source": "oss-radar-09-tsrs-typescript-memory/b0020-1f41cd8c",
+          "sourceTextSha256": "46cf67b520bcf439fe306bc36d9b873c334364adc7e15d6d8bdae8b68dcf1f5e",
+          "relation": "equal",
+          "passages": [
+            "oss-radar-09-tsrs-typescript-memory/passage-1f41cd8cf6f03222"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "S12-topic",
+      "article": "what-if-the-agent-was-better-before-we-helped",
+      "form": "topic",
+      "split": "development",
+      "targets": [
+        {
+          "source": "what-if-the-agent-was-better-before-we-helped/b0105-ca10bbf6",
+          "sourceTextSha256": "29820ac3d8f4101bab7366843454a50e6ef62986c385a06c6918be2738cfc7d4",
+          "relation": "equal",
+          "passages": [
+            "what-if-the-agent-was-better-before-we-helped/passage-ca10bbf6fc47fe62"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "S12-recollection",
+      "article": "what-if-the-agent-was-better-before-we-helped",
+      "form": "recollection",
+      "split": "development",
+      "targets": [
+        {
+          "source": "what-if-the-agent-was-better-before-we-helped/b0105-ca10bbf6",
+          "sourceTextSha256": "29820ac3d8f4101bab7366843454a50e6ef62986c385a06c6918be2738cfc7d4",
+          "relation": "equal",
+          "passages": [
+            "what-if-the-agent-was-better-before-we-helped/passage-ca10bbf6fc47fe62"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "S12-typo",
+      "article": "what-if-the-agent-was-better-before-we-helped",
+      "form": "typo",
+      "split": "development",
+      "targets": [
+        {
+          "source": "what-if-the-agent-was-better-before-we-helped/b0105-ca10bbf6",
+          "sourceTextSha256": "29820ac3d8f4101bab7366843454a50e6ef62986c385a06c6918be2738cfc7d4",
+          "relation": "equal",
+          "passages": [
+            "what-if-the-agent-was-better-before-we-helped/passage-ca10bbf6fc47fe62"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "S13-topic",
+      "article": "linux-signal-stack-conflict",
+      "form": "topic",
+      "split": "development",
+      "targets": [
+        {
+          "source": "linux-signal-stack-conflict/b0014-24a4e348",
+          "sourceTextSha256": "49d55c7f8c2ad4f4d1ed48e0292b016bc5e96c69ae68d4d8875d122f9c89958c",
+          "relation": "equal",
+          "passages": [
+            "linux-signal-stack-conflict/passage-611531b777bfe8ed"
+          ]
+        },
+        {
+          "source": "linux-signal-stack-conflict/b0040-a2966651",
+          "sourceTextSha256": "da236539253aad51f9ac35e2d53cb0220f89378e3081f4e1396dc2715a1e187b",
+          "relation": "equal",
+          "passages": [
+            "linux-signal-stack-conflict/passage-a2966651d291bbde"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "S13-recollection",
+      "article": "linux-signal-stack-conflict",
+      "form": "recollection",
+      "split": "development",
+      "targets": [
+        {
+          "source": "linux-signal-stack-conflict/b0014-24a4e348",
+          "sourceTextSha256": "49d55c7f8c2ad4f4d1ed48e0292b016bc5e96c69ae68d4d8875d122f9c89958c",
+          "relation": "equal",
+          "passages": [
+            "linux-signal-stack-conflict/passage-611531b777bfe8ed"
+          ]
+        },
+        {
+          "source": "linux-signal-stack-conflict/b0040-a2966651",
+          "sourceTextSha256": "da236539253aad51f9ac35e2d53cb0220f89378e3081f4e1396dc2715a1e187b",
+          "relation": "equal",
+          "passages": [
+            "linux-signal-stack-conflict/passage-a2966651d291bbde"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "S13-typo",
+      "article": "linux-signal-stack-conflict",
+      "form": "typo",
+      "split": "development",
+      "targets": [
+        {
+          "source": "linux-signal-stack-conflict/b0014-24a4e348",
+          "sourceTextSha256": "49d55c7f8c2ad4f4d1ed48e0292b016bc5e96c69ae68d4d8875d122f9c89958c",
+          "relation": "equal",
+          "passages": [
+            "linux-signal-stack-conflict/passage-611531b777bfe8ed"
+          ]
+        },
+        {
+          "source": "linux-signal-stack-conflict/b0040-a2966651",
+          "sourceTextSha256": "da236539253aad51f9ac35e2d53cb0220f89378e3081f4e1396dc2715a1e187b",
+          "relation": "equal",
+          "passages": [
+            "linux-signal-stack-conflict/passage-a2966651d291bbde"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "S14-topic",
+      "article": "productive-procrastination",
+      "form": "topic",
+      "split": "validation",
+      "targets": [
+        {
+          "source": "productive-procrastination/b0002-77bb83dd",
+          "sourceTextSha256": "7cb8f6b1ad8e063db17683c486dca2c191c6492484019334e3c67c89380973e1",
+          "relation": "equal",
+          "passages": [
+            "productive-procrastination/passage-77bb83dd056485fd"
+          ]
+        },
+        {
+          "source": "productive-procrastination/b0014-7fd1a656",
+          "sourceTextSha256": "ae532f1c575a52d0466c2ffb3359e5846b2363421ae28ba227bd46c9feaca187",
+          "relation": "equal",
+          "passages": [
+            "productive-procrastination/passage-7fd1a656461cec25"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "S14-recollection",
+      "article": "productive-procrastination",
+      "form": "recollection",
+      "split": "validation",
+      "targets": [
+        {
+          "source": "productive-procrastination/b0002-77bb83dd",
+          "sourceTextSha256": "7cb8f6b1ad8e063db17683c486dca2c191c6492484019334e3c67c89380973e1",
+          "relation": "equal",
+          "passages": [
+            "productive-procrastination/passage-77bb83dd056485fd"
+          ]
+        },
+        {
+          "source": "productive-procrastination/b0014-7fd1a656",
+          "sourceTextSha256": "ae532f1c575a52d0466c2ffb3359e5846b2363421ae28ba227bd46c9feaca187",
+          "relation": "equal",
+          "passages": [
+            "productive-procrastination/passage-7fd1a656461cec25"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "S14-typo",
+      "article": "productive-procrastination",
+      "form": "typo",
+      "split": "validation",
+      "targets": [
+        {
+          "source": "productive-procrastination/b0002-77bb83dd",
+          "sourceTextSha256": "7cb8f6b1ad8e063db17683c486dca2c191c6492484019334e3c67c89380973e1",
+          "relation": "equal",
+          "passages": [
+            "productive-procrastination/passage-77bb83dd056485fd"
+          ]
+        },
+        {
+          "source": "productive-procrastination/b0014-7fd1a656",
+          "sourceTextSha256": "ae532f1c575a52d0466c2ffb3359e5846b2363421ae28ba227bd46c9feaca187",
+          "relation": "equal",
+          "passages": [
+            "productive-procrastination/passage-7fd1a656461cec25"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "S15-topic",
+      "article": "oss-radar-03-buzz-is-slack-on-airoids",
+      "form": "topic",
+      "split": "validation",
+      "targets": [
+        {
+          "source": "oss-radar-03-buzz-is-slack-on-airoids/b0047-f4ecbcfd",
+          "sourceTextSha256": "e3c5bece3c1ad284414d1bad9a9dfc98aeb9613d9f48000cd6e2280a02bf8bed",
+          "relation": "equal",
+          "passages": [
+            "oss-radar-03-buzz-is-slack-on-airoids/passage-f4ecbcfd14bdb398"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "S15-recollection",
+      "article": "oss-radar-03-buzz-is-slack-on-airoids",
+      "form": "recollection",
+      "split": "validation",
+      "targets": [
+        {
+          "source": "oss-radar-03-buzz-is-slack-on-airoids/b0047-f4ecbcfd",
+          "sourceTextSha256": "e3c5bece3c1ad284414d1bad9a9dfc98aeb9613d9f48000cd6e2280a02bf8bed",
+          "relation": "equal",
+          "passages": [
+            "oss-radar-03-buzz-is-slack-on-airoids/passage-f4ecbcfd14bdb398"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "S15-typo",
+      "article": "oss-radar-03-buzz-is-slack-on-airoids",
+      "form": "typo",
+      "split": "validation",
+      "targets": [
+        {
+          "source": "oss-radar-03-buzz-is-slack-on-airoids/b0047-f4ecbcfd",
+          "sourceTextSha256": "e3c5bece3c1ad284414d1bad9a9dfc98aeb9613d9f48000cd6e2280a02bf8bed",
+          "relation": "equal",
+          "passages": [
+            "oss-radar-03-buzz-is-slack-on-airoids/passage-f4ecbcfd14bdb398"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "N01",
+      "article": null,
+      "form": "no-known-answer",
+      "split": "development",
+      "targets": []
+    },
+    {
+      "id": "N02",
+      "article": null,
+      "form": "no-known-answer",
+      "split": "development",
+      "targets": []
+    },
+    {
+      "id": "N03",
+      "article": null,
+      "form": "no-known-answer",
+      "split": "development",
+      "targets": []
+    },
+    {
+      "id": "N04",
+      "article": null,
+      "form": "no-known-answer",
+      "split": "validation",
+      "targets": []
+    },
+    {
+      "id": "N05",
+      "article": null,
+      "form": "no-known-answer",
+      "split": "validation",
+      "targets": []
+    },
+    {
+      "id": "N06",
+      "article": null,
+      "form": "no-known-answer",
+      "split": "validation",
+      "targets": []
+    }
+  ]
+}

@@ -1,0 +1,2060 @@
+{
+  "sourceSha256": "b6907605ac62b48990aec2a723a9ef7a0a5d45ebe5b888b6e3ab89ba36b30f7c",
+  "split": "development",
+  "completedAt": "2026-11-14T20:50:00.886Z",
+  "summary": {
+    "raw": {
+      "topic": {
+        "n": 10,
+        "articleAt3": 9,
+        "jointBlock": null,
+        "returned": 9
+      },
+      "recollection": {
+        "n": 10,
+        "articleAt3": 1,
+        "jointBlock": null,
+        "returned": 4
+      },
+      "typo": {
+        "n": 10,
+        "articleAt3": 7,
+        "jointBlock": null,
+        "returned": 8
+      },
+      "negative": {
+        "n": 3,
+        "articleAt3": 0,
+        "jointBlock": null,
+        "returned": 0
+      }
+    },
+    "prepared": {
+      "topic": {
+        "n": 10,
+        "articleAt3": 9,
+        "jointBlock": null,
+        "returned": 9
+      },
+      "recollection": {
+        "n": 10,
+        "articleAt3": 1,
+        "jointBlock": null,
+        "returned": 4
+      },
+      "typo": {
+        "n": 10,
+        "articleAt3": 7,
+        "jointBlock": null,
+        "returned": 8
+      },
+      "negative": {
+        "n": 3,
+        "articleAt3": 0,
+        "jointBlock": null,
+        "returned": 0
+      }
+    }
+  },
+  "rows": [
+    {
+      "id": "S01-topic",
+      "article": "oss-radar-01-vercel-winter-2026-cohort",
+      "form": "topic",
+      "knownBlocks": null,
+      "conditions": {
+        "raw": {
+          "articleAt1": true,
+          "articleAt3": true,
+          "jointBlock": null,
+          "rank": 1,
+          "articles": [
+            {
+              "article": "oss-radar-01-vercel-winter-2026-cohort",
+              "score": 24.87309455871582,
+              "sections": [
+                {
+                  "url": "https://gkoreli.com/oss-radar-01-vercel-winter-2026-cohort#answer-overflow--rhys-sullivan",
+                  "title": "Answer Overflow — Rhys Sullivan",
+                  "excerptSha256": "412befe33b5f2dd52f0bf13f77f7640f7cb5740a19e6cfde5f6c920a01b95ebc"
+                },
+                {
+                  "url": "https://gkoreli.com/oss-radar-01-vercel-winter-2026-cohort#hot-updater--kang-sungyu",
+                  "title": "hot-updater — Kang Sungyu",
+                  "excerptSha256": "9ffd6fafd658fd082d0e499d9b5b20f9764283fe40e89def2e30e39c52aba37c"
+                },
+                {
+                  "url": "https://gkoreli.com/oss-radar-01-vercel-winter-2026-cohort#takumi--kane-wang",
+                  "title": "takumi — Kane Wang",
+                  "excerptSha256": "eeea922a896c4a3c6db408b10d384aa56be8e206d0b12cbc8663b48acb35b03a"
+                }
+              ]
+            }
+          ],
+          "rankingDigests": "fdb34c8afe4f35d786a514f5a44a17e74136a8d3b70f54ad93dede803a83f5ac",
+          "timing": 88.899125
+        },
+        "prepared": {
+          "articleAt1": true,
+          "articleAt3": true,
+          "jointBlock": null,
+          "rank": 1,
+          "articles": [
+            {
+              "article": "oss-radar-01-vercel-winter-2026-cohort",
+              "score": 24.87309455871582,
+              "sections": [
+                {
+                  "url": "https://gkoreli.com/oss-radar-01-vercel-winter-2026-cohort#answer-overflow--rhys-sullivan",
+                  "title": "Answer Overflow — Rhys Sullivan",
+                  "excerptSha256": "412befe33b5f2dd52f0bf13f77f7640f7cb5740a19e6cfde5f6c920a01b95ebc"
+                },
+                {
+                  "url": "https://gkoreli.com/oss-radar-01-vercel-winter-2026-cohort#hot-updater--kang-sungyu",
+                  "title": "hot-updater — Kang Sungyu",
+                  "excerptSha256": "9ffd6fafd658fd082d0e499d9b5b20f9764283fe40e89def2e30e39c52aba37c"
+                },
+                {
+                  "url": "https://gkoreli.com/oss-radar-01-vercel-winter-2026-cohort#takumi--kane-wang",
+                  "title": "takumi — Kane Wang",
+                  "excerptSha256": "eeea922a896c4a3c6db408b10d384aa56be8e206d0b12cbc8663b48acb35b03a"
+                }
+              ]
+            }
+          ],
+          "rankingDigests": "fdb34c8afe4f35d786a514f5a44a17e74136a8d3b70f54ad93dede803a83f5ac",
+          "timing": 7.361542000000014
+        }
+      }
+    },
+    {
+      "id": "S01-recollection",
+      "article": "oss-radar-01-vercel-winter-2026-cohort",
+      "form": "recollection",
+      "knownBlocks": null,
+      "conditions": {
+        "raw": {
+          "articleAt1": false,
+          "articleAt3": false,
+          "jointBlock": null,
+          "rank": null,
+          "articles": [],
+          "rankingDigests": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "timing": 11.055791
+        },
+        "prepared": {
+          "articleAt1": false,
+          "articleAt3": false,
+          "jointBlock": null,
+          "rank": null,
+          "articles": [],
+          "rankingDigests": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "timing": 0.9385000000000048
+        }
+      }
+    },
+    {
+      "id": "S01-typo",
+      "article": "oss-radar-01-vercel-winter-2026-cohort",
+      "form": "typo",
+      "knownBlocks": null,
+      "conditions": {
+        "raw": {
+          "articleAt1": true,
+          "articleAt3": true,
+          "jointBlock": null,
+          "rank": 1,
+          "articles": [
+            {
+              "article": "oss-radar-01-vercel-winter-2026-cohort",
+              "score": 31.2475643157959,
+              "sections": [
+                {
+                  "url": "https://gkoreli.com/oss-radar-01-vercel-winter-2026-cohort#ui-tripled--moumen-soliman",
+                  "title": "UI TripleD — Moumen Soliman",
+                  "excerptSha256": "66263feb8b47b490aac10cab229873c44bd40fa8deee5f0e4bb53c5980096767"
+                },
+                {
+                  "url": "https://gkoreli.com/oss-radar-01-vercel-winter-2026-cohort#takumi--kane-wang",
+                  "title": "takumi — Kane Wang",
+                  "excerptSha256": "1b9e19054709a7422d88a25f0595a0d1c705dbaa210008ce0f5484e6269a9ff4"
+                },
+                {
+                  "url": "https://gkoreli.com/oss-radar-01-vercel-winter-2026-cohort#yourdigitalrightsorg--yoav-aviram",
+                  "title": "YourDigitalRights.org — Yoav Aviram",
+                  "excerptSha256": "248e28fdabd26bfb6e92076db6139cd9c0281c7abb00d9206b4d6bdaaf93b4f2"
+                }
+              ]
+            }
+          ],
+          "rankingDigests": "3cc9251faddab0c5163e6d1534bc025cb578d2d5394931bba9ed2461762da9bc",
+          "timing": 7.610541000000012
+        },
+        "prepared": {
+          "articleAt1": true,
+          "articleAt3": true,
+          "jointBlock": null,
+          "rank": 1,
+          "articles": [
+            {
+              "article": "oss-radar-01-vercel-winter-2026-cohort",
+              "score": 31.2475643157959,
+              "sections": [
+                {
+                  "url": "https://gkoreli.com/oss-radar-01-vercel-winter-2026-cohort#ui-tripled--moumen-soliman",
+                  "title": "UI TripleD — Moumen Soliman",
+                  "excerptSha256": "66263feb8b47b490aac10cab229873c44bd40fa8deee5f0e4bb53c5980096767"
+                },
+                {
+                  "url": "https://gkoreli.com/oss-radar-01-vercel-winter-2026-cohort#takumi--kane-wang",
+                  "title": "takumi — Kane Wang",
+                  "excerptSha256": "1b9e19054709a7422d88a25f0595a0d1c705dbaa210008ce0f5484e6269a9ff4"
+                },
+                {
+                  "url": "https://gkoreli.com/oss-radar-01-vercel-winter-2026-cohort#yourdigitalrightsorg--yoav-aviram",
+                  "title": "YourDigitalRights.org — Yoav Aviram",
+                  "excerptSha256": "248e28fdabd26bfb6e92076db6139cd9c0281c7abb00d9206b4d6bdaaf93b4f2"
+                }
+              ]
+            }
+          ],
+          "rankingDigests": "3cc9251faddab0c5163e6d1534bc025cb578d2d5394931bba9ed2461762da9bc",
+          "timing": 5.476666999999992
+        }
+      }
+    },
+    {
+      "id": "S02-topic",
+      "article": "oss-radar-10-paperpilot-redaction",
+      "form": "topic",
+      "knownBlocks": null,
+      "conditions": {
+        "raw": {
+          "articleAt1": true,
+          "articleAt3": true,
+          "jointBlock": null,
+          "rank": 1,
+          "articles": [
+            {
+              "article": "oss-radar-10-paperpilot-redaction",
+              "score": 83.80912017822266,
+              "sections": [
+                {
+                  "url": "https://gkoreli.com/oss-radar-10-paperpilot-redaction#oss-radar-10-paperpilot-left-the-secret-in-my-redacted-pdf",
+                  "title": "OSS Radar #10: PaperPilot Left the Secret in My Redacted PDF",
+                  "excerptSha256": "023e3395228f5904921eaace2f26b6f88de7fe37a3de99f7dc926b66e38057ab"
+                },
+                {
+                  "url": "https://gkoreli.com/oss-radar-10-paperpilot-redaction#the-secret-came-back-in-two-commands",
+                  "title": "The secret came back in two commands",
+                  "excerptSha256": "40426955ad7a2eb1f37422d7db0a7cd789182e81456b2b3677c6edd4c7edc26f"
+                },
+                {
+                  "url": "https://gkoreli.com/oss-radar-10-paperpilot-redaction#what-the-operation-actually-does",
+                  "title": "What the operation actually does",
+                  "excerptSha256": "781192cbe7f52e7e814f4820fa6285b569405706a127566b62ae0fac10ac2b1f"
+                }
+              ]
+            }
+          ],
+          "rankingDigests": "47bf1d2f41a80af17aefe528f06c46ecf244f6302255100f55b30e153ed43e6c",
+          "timing": 3.305666000000002
+        },
+        "prepared": {
+          "articleAt1": true,
+          "articleAt3": true,
+          "jointBlock": null,
+          "rank": 1,
+          "articles": [
+            {
+              "article": "oss-radar-10-paperpilot-redaction",
+              "score": 83.80913543701172,
+              "sections": [
+                {
+                  "url": "https://gkoreli.com/oss-radar-10-paperpilot-redaction#oss-radar-10-paperpilot-left-the-secret-in-my-redacted-pdf",
+                  "title": "OSS Radar #10: PaperPilot Left the Secret in My Redacted PDF",
+                  "excerptSha256": "023e3395228f5904921eaace2f26b6f88de7fe37a3de99f7dc926b66e38057ab"
+                },
+                {
+                  "url": "https://gkoreli.com/oss-radar-10-paperpilot-redaction#the-secret-came-back-in-two-commands",
+                  "title": "The secret came back in two commands",
+                  "excerptSha256": "40426955ad7a2eb1f37422d7db0a7cd789182e81456b2b3677c6edd4c7edc26f"
+                },
+                {
+                  "url": "https://gkoreli.com/oss-radar-10-paperpilot-redaction#what-the-operation-actually-does",
+                  "title": "What the operation actually does",
+                  "excerptSha256": "781192cbe7f52e7e814f4820fa6285b569405706a127566b62ae0fac10ac2b1f"
+                }
+              ]
+            }
+          ],
+          "rankingDigests": "d36ed283f1b95a8121d436de31d8b96ab8ae9f13fd93300bc51af3c4d4c1bb17",
+          "timing": 1.1797920000000204
+        }
+      }
+    },
+    {
+      "id": "S02-recollection",
+      "article": "oss-radar-10-paperpilot-redaction",
+      "form": "recollection",
+      "knownBlocks": null,
+      "conditions": {
+        "raw": {
+          "articleAt1": false,
+          "articleAt3": false,
+          "jointBlock": null,
+          "rank": null,
+          "articles": [],
+          "rankingDigests": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "timing": 3.924790999999999
+        },
+        "prepared": {
+          "articleAt1": false,
+          "articleAt3": false,
+          "jointBlock": null,
+          "rank": null,
+          "articles": [],
+          "rankingDigests": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "timing": 0.9247079999999812
+        }
+      }
+    },
+    {
+      "id": "S02-typo",
+      "article": "oss-radar-10-paperpilot-redaction",
+      "form": "typo",
+      "knownBlocks": null,
+      "conditions": {
+        "raw": {
+          "articleAt1": true,
+          "articleAt3": true,
+          "jointBlock": null,
+          "rank": 1,
+          "articles": [
+            {
+              "article": "oss-radar-10-paperpilot-redaction",
+              "score": 63.07499313354492,
+              "sections": [
+                {
+                  "url": "https://gkoreli.com/oss-radar-10-paperpilot-redaction#oss-radar-10-paperpilot-left-the-secret-in-my-redacted-pdf",
+                  "title": "OSS Radar #10: PaperPilot Left the Secret in My Redacted PDF",
+                  "excerptSha256": "023e3395228f5904921eaace2f26b6f88de7fe37a3de99f7dc926b66e38057ab"
+                },
+                {
+                  "url": "https://gkoreli.com/oss-radar-10-paperpilot-redaction#the-secret-came-back-in-two-commands",
+                  "title": "The secret came back in two commands",
+                  "excerptSha256": "7ba16fcab0bb46af2787300b0659787fc7b04c8334bf1501b20420963eb556f0"
+                },
+                {
+                  "url": "https://gkoreli.com/oss-radar-10-paperpilot-redaction#what-the-operation-actually-does",
+                  "title": "What the operation actually does",
+                  "excerptSha256": "7c4959fb3a4c9ad29479d66ea3e62c5de050dffcf2f1327ff5cf72f5d60c50a1"
+                }
+              ]
+            }
+          ],
+          "rankingDigests": "43ac5b31daae1426c49519de62e9cfd23400b1ce23714138b3cb8f7148a81506",
+          "timing": 0.674334000000016
+        },
+        "prepared": {
+          "articleAt1": true,
+          "articleAt3": true,
+          "jointBlock": null,
+          "rank": 1,
+          "articles": [
+            {
+              "article": "oss-radar-10-paperpilot-redaction",
+              "score": 63.07499313354492,
+              "sections": [
+                {
+                  "url": "https://gkoreli.com/oss-radar-10-paperpilot-redaction#oss-radar-10-paperpilot-left-the-secret-in-my-redacted-pdf",
+                  "title": "OSS Radar #10: PaperPilot Left the Secret in My Redacted PDF",
+                  "excerptSha256": "023e3395228f5904921eaace2f26b6f88de7fe37a3de99f7dc926b66e38057ab"
+                },
+                {
+                  "url": "https://gkoreli.com/oss-radar-10-paperpilot-redaction#the-secret-came-back-in-two-commands",
+                  "title": "The secret came back in two commands",
+                  "excerptSha256": "7ba16fcab0bb46af2787300b0659787fc7b04c8334bf1501b20420963eb556f0"
+                },
+                {
+                  "url": "https://gkoreli.com/oss-radar-10-paperpilot-redaction#what-the-operation-actually-does",
+                  "title": "What the operation actually does",
+                  "excerptSha256": "7c4959fb3a4c9ad29479d66ea3e62c5de050dffcf2f1327ff5cf72f5d60c50a1"
+                }
+              ]
+            }
+          ],
+          "rankingDigests": "43ac5b31daae1426c49519de62e9cfd23400b1ce23714138b3cb8f7148a81506",
+          "timing": 0.5822079999999801
+        }
+      }
+    },
+    {
+      "id": "S03-topic",
+      "article": "please-stop-misreading-user-agent",
+      "form": "topic",
+      "knownBlocks": null,
+      "conditions": {
+        "raw": {
+          "articleAt1": true,
+          "articleAt3": true,
+          "jointBlock": null,
+          "rank": 1,
+          "articles": [
+            {
+              "article": "please-stop-misreading-user-agent",
+              "score": 37.09563446044922,
+              "sections": [
+                {
+                  "url": "https://gkoreli.com/please-stop-misreading-user-agent#please-stop-misreading-user-agent-its-messing-up-your-analytics",
+                  "title": "Please Stop Misreading User-Agent. It’s Messing Up Your Analytics.",
+                  "excerptSha256": "594fc6525254792de12ce838c1ff28a0ec5e408d00ddf432ee7d05ce1800f3ad"
+                },
+                {
+                  "url": "https://gkoreli.com/please-stop-misreading-user-agent#the-problem-is-larger-than-one-phone-brand",
+                  "title": "The problem is larger than one phone brand",
+                  "excerptSha256": "627a5d36ae107c789ae28b4fec8ad4fd8db0bbe5457fcd723d4e1b85e386cfbd"
+                },
+                {
+                  "url": "https://gkoreli.com/please-stop-misreading-user-agent#a-modern-os-can-report-an-old-version",
+                  "title": "A modern OS can report an old version",
+                  "excerptSha256": "7d7a73ff0c736564156d0a143fd57aa5bf77d3a384f372ab974942373da8c445"
+                }
+              ]
+            }
+          ],
+          "rankingDigests": "ce99c6f2cd1ea542a7ba350e3d3610eb210bf8a98b15c5e473ddf402d3d97e2e",
+          "timing": 4.592874999999992
+        },
+        "prepared": {
+          "articleAt1": true,
+          "articleAt3": true,
+          "jointBlock": null,
+          "rank": 1,
+          "articles": [
+            {
+              "article": "please-stop-misreading-user-agent",
+              "score": 37.09563446044922,
+              "sections": [
+                {
+                  "url": "https://gkoreli.com/please-stop-misreading-user-agent#please-stop-misreading-user-agent-its-messing-up-your-analytics",
+                  "title": "Please Stop Misreading User-Agent. It’s Messing Up Your Analytics.",
+                  "excerptSha256": "594fc6525254792de12ce838c1ff28a0ec5e408d00ddf432ee7d05ce1800f3ad"
+                },
+                {
+                  "url": "https://gkoreli.com/please-stop-misreading-user-agent#the-problem-is-larger-than-one-phone-brand",
+                  "title": "The problem is larger than one phone brand",
+                  "excerptSha256": "627a5d36ae107c789ae28b4fec8ad4fd8db0bbe5457fcd723d4e1b85e386cfbd"
+                },
+                {
+                  "url": "https://gkoreli.com/please-stop-misreading-user-agent#a-modern-os-can-report-an-old-version",
+                  "title": "A modern OS can report an old version",
+                  "excerptSha256": "7d7a73ff0c736564156d0a143fd57aa5bf77d3a384f372ab974942373da8c445"
+                }
+              ]
+            }
+          ],
+          "rankingDigests": "ce99c6f2cd1ea542a7ba350e3d3610eb210bf8a98b15c5e473ddf402d3d97e2e",
+          "timing": 4.327167000000003
+        }
+      }
+    },
+    {
+      "id": "S03-recollection",
+      "article": "please-stop-misreading-user-agent",
+      "form": "recollection",
+      "knownBlocks": null,
+      "conditions": {
+        "raw": {
+          "articleAt1": true,
+          "articleAt3": true,
+          "jointBlock": null,
+          "rank": 1,
+          "articles": [
+            {
+              "article": "please-stop-misreading-user-agent",
+              "score": 35.15425109863281,
+              "sections": [
+                {
+                  "url": "https://gkoreli.com/please-stop-misreading-user-agent#please-stop-misreading-user-agent-its-messing-up-your-analytics",
+                  "title": "Please Stop Misreading User-Agent. It’s Messing Up Your Analytics.",
+                  "excerptSha256": "55cd7ff12561cfb50beb8ccb8e9fec0b9a09ebb64f3662bb7dcdf8332e7ea778"
+                },
+                {
+                  "url": "https://gkoreli.com/please-stop-misreading-user-agent#check-where-googlebot-came-from",
+                  "title": "Check where “Googlebot” came from",
+                  "excerptSha256": "f8da2def4479dd3af07d891f3752b09b47e0a1cf34d85817252f8a17dbc1cdb1"
+                },
+                {
+                  "url": "https://gkoreli.com/please-stop-misreading-user-agent#the-problem-is-larger-than-one-phone-brand",
+                  "title": "The problem is larger than one phone brand",
+                  "excerptSha256": "b4b3610d9f7c59c4b5cc3fdcbb1d6577408098ce1b40a72d3c3d4495c7f9261c"
+                }
+              ]
+            }
+          ],
+          "rankingDigests": "0b94ed17a5e78a580d9c015870ac616f97b9044ace0e4ab1ddc8738abd0b18f9",
+          "timing": 4.781958000000003
+        },
+        "prepared": {
+          "articleAt1": true,
+          "articleAt3": true,
+          "jointBlock": null,
+          "rank": 1,
+          "articles": [
+            {
+              "article": "please-stop-misreading-user-agent",
+              "score": 28.740755081176758,
+              "sections": [
+                {
+                  "url": "https://gkoreli.com/please-stop-misreading-user-agent#please-stop-misreading-user-agent-its-messing-up-your-analytics",
+                  "title": "Please Stop Misreading User-Agent. It’s Messing Up Your Analytics.",
+                  "excerptSha256": "af1b7c84c27a4457d833faf3c41d7d0943d13b6dd6a74ac26ba1ba835d27bba1"
+                },
+                {
+                  "url": "https://gkoreli.com/please-stop-misreading-user-agent#check-where-googlebot-came-from",
+                  "title": "Check where “Googlebot” came from",
+                  "excerptSha256": "2a6da674a7fa3a088c8a6cf4b52b781ea5ffb22b2bf67d9572575689b410f44f"
+                },
+                {
+                  "url": "https://gkoreli.com/please-stop-misreading-user-agent#the-problem-is-larger-than-one-phone-brand",
+                  "title": "The problem is larger than one phone brand",
+                  "excerptSha256": "564d85fea01f2d2dca91c3b08be4cfbe15b158ae44c01650995ecfd7bc380228"
+                }
+              ]
+            }
+          ],
+          "rankingDigests": "50c68aff0c327394ff9d2d9dd01610172dc56b22b7fce6d6adfbb3e75fe844ba",
+          "timing": 2.959791999999993
+        }
+      }
+    },
+    {
+      "id": "S03-typo",
+      "article": "please-stop-misreading-user-agent",
+      "form": "typo",
+      "knownBlocks": null,
+      "conditions": {
+        "raw": {
+          "articleAt1": true,
+          "articleAt3": true,
+          "jointBlock": null,
+          "rank": 1,
+          "articles": [
+            {
+              "article": "please-stop-misreading-user-agent",
+              "score": 21.331632614135742,
+              "sections": [
+                {
+                  "url": "https://gkoreli.com/please-stop-misreading-user-agent#please-stop-misreading-user-agent-its-messing-up-your-analytics",
+                  "title": "Please Stop Misreading User-Agent. It’s Messing Up Your Analytics.",
+                  "excerptSha256": "49db5b05a74f372a165b1eceb645128f6f7a777df9a6483e467c97366fb12333"
+                },
+                {
+                  "url": "https://gkoreli.com/please-stop-misreading-user-agent#check-where-googlebot-came-from",
+                  "title": "Check where “Googlebot” came from",
+                  "excerptSha256": "c8e912ddd514416d97d62959bc415ecff5b93001cf1d247178feb2533f9e0b7d"
+                },
+                {
+                  "url": "https://gkoreli.com/please-stop-misreading-user-agent#the-problem-is-larger-than-one-phone-brand",
+                  "title": "The problem is larger than one phone brand",
+                  "excerptSha256": "564d85fea01f2d2dca91c3b08be4cfbe15b158ae44c01650995ecfd7bc380228"
+                }
+              ]
+            }
+          ],
+          "rankingDigests": "b565e24cd8da05d89b10f7eae29b916c2bc426ff86d57a87d6e871b2214f39f2",
+          "timing": 2.7656670000000076
+        },
+        "prepared": {
+          "articleAt1": true,
+          "articleAt3": true,
+          "jointBlock": null,
+          "rank": 1,
+          "articles": [
+            {
+              "article": "please-stop-misreading-user-agent",
+              "score": 21.331632614135742,
+              "sections": [
+                {
+                  "url": "https://gkoreli.com/please-stop-misreading-user-agent#please-stop-misreading-user-agent-its-messing-up-your-analytics",
+                  "title": "Please Stop Misreading User-Agent. It’s Messing Up Your Analytics.",
+                  "excerptSha256": "49db5b05a74f372a165b1eceb645128f6f7a777df9a6483e467c97366fb12333"
+                },
+                {
+                  "url": "https://gkoreli.com/please-stop-misreading-user-agent#check-where-googlebot-came-from",
+                  "title": "Check where “Googlebot” came from",
+                  "excerptSha256": "c8e912ddd514416d97d62959bc415ecff5b93001cf1d247178feb2533f9e0b7d"
+                },
+                {
+                  "url": "https://gkoreli.com/please-stop-misreading-user-agent#the-problem-is-larger-than-one-phone-brand",
+                  "title": "The problem is larger than one phone brand",
+                  "excerptSha256": "564d85fea01f2d2dca91c3b08be4cfbe15b158ae44c01650995ecfd7bc380228"
+                }
+              ]
+            }
+          ],
+          "rankingDigests": "b565e24cd8da05d89b10f7eae29b916c2bc426ff86d57a87d6e871b2214f39f2",
+          "timing": 2.602000000000004
+        }
+      }
+    },
+    {
+      "id": "S04-topic",
+      "article": "oss-radar-13-hob-offline-file-tasks",
+      "form": "topic",
+      "knownBlocks": null,
+      "conditions": {
+        "raw": {
+          "articleAt1": true,
+          "articleAt3": true,
+          "jointBlock": null,
+          "rank": 1,
+          "articles": [
+            {
+              "article": "oss-radar-13-hob-offline-file-tasks",
+              "score": 33.94829559326172,
+              "sections": [
+                {
+                  "url": "https://gkoreli.com/oss-radar-13-hob-offline-file-tasks#oss-radar-13-hob-wrote-correct-files-with-network-access-blocked",
+                  "title": "OSS Radar #13: Hob Wrote Correct Files with Network Access Blocked",
+                  "excerptSha256": "8e3b8c7c582e8bf90d26d09d4136cdc328310f9f8bb190996393bee8dca7bd8b"
+                },
+                {
+                  "url": "https://gkoreli.com/oss-radar-13-hob-offline-file-tasks#it-did-the-file-work",
+                  "title": "It did the file work",
+                  "excerptSha256": "9a18c9fd7a686891ea738b35bef7a76da7b0cba3f90ad3d9e17eb9136a4fc1e2"
+                },
+                {
+                  "url": "https://gkoreli.com/oss-radar-13-hob-offline-file-tasks#the-cloud-was-unavailable-during-the-tasks",
+                  "title": "The cloud was unavailable during the tasks",
+                  "excerptSha256": "5b80eb96ac6fe4dbd9effea49ca120d55680fbd71af6c9667c148f985fb46726"
+                }
+              ]
+            }
+          ],
+          "rankingDigests": "596d28ea88dbd2347935f2dac1b6336b5834ac683ffb0ae77b8f32469e9f1589",
+          "timing": 1.4217079999999953
+        },
+        "prepared": {
+          "articleAt1": true,
+          "articleAt3": true,
+          "jointBlock": null,
+          "rank": 1,
+          "articles": [
+            {
+              "article": "oss-radar-13-hob-offline-file-tasks",
+              "score": 33.94829177856445,
+              "sections": [
+                {
+                  "url": "https://gkoreli.com/oss-radar-13-hob-offline-file-tasks#oss-radar-13-hob-wrote-correct-files-with-network-access-blocked",
+                  "title": "OSS Radar #13: Hob Wrote Correct Files with Network Access Blocked",
+                  "excerptSha256": "8e3b8c7c582e8bf90d26d09d4136cdc328310f9f8bb190996393bee8dca7bd8b"
+                },
+                {
+                  "url": "https://gkoreli.com/oss-radar-13-hob-offline-file-tasks#it-did-the-file-work",
+                  "title": "It did the file work",
+                  "excerptSha256": "9a18c9fd7a686891ea738b35bef7a76da7b0cba3f90ad3d9e17eb9136a4fc1e2"
+                },
+                {
+                  "url": "https://gkoreli.com/oss-radar-13-hob-offline-file-tasks#the-cloud-was-unavailable-during-the-tasks",
+                  "title": "The cloud was unavailable during the tasks",
+                  "excerptSha256": "5b80eb96ac6fe4dbd9effea49ca120d55680fbd71af6c9667c148f985fb46726"
+                }
+              ]
+            }
+          ],
+          "rankingDigests": "394235427ea9505c423a8fc9717d94dad45a95bf854c098224855eaf1320880d",
+          "timing": 0.6741249999999752
+        }
+      }
+    },
+    {
+      "id": "S04-recollection",
+      "article": "oss-radar-13-hob-offline-file-tasks",
+      "form": "recollection",
+      "knownBlocks": null,
+      "conditions": {
+        "raw": {
+          "articleAt1": false,
+          "articleAt3": false,
+          "jointBlock": null,
+          "rank": null,
+          "articles": [
+            {
+              "article": "oss-radar-14-november-show-hn",
+              "score": 15.371339797973633,
+              "sections": [
+                {
+                  "url": "https://gkoreli.com/oss-radar-14-november-show-hn#oss-radar-14-novembers-show-hn-open-source-launches",
+                  "title": "OSS Radar #14: November’s Show HN Open-Source Launches",
+                  "excerptSha256": "3a98284f7e40a576c4dd9631db8a2b0931c201cca2057cb68b3514b1dc7d233d"
+                },
+                {
+                  "url": "https://gkoreli.com/oss-radar-14-november-show-hn#the-source",
+                  "title": "The source",
+                  "excerptSha256": "e9a9c1088ab665321431094d1fa3b4641e064449595a27b40c12279da0e50d68"
+                },
+                {
+                  "url": "https://gkoreli.com/oss-radar-14-november-show-hn#the-projects",
+                  "title": "The projects",
+                  "excerptSha256": "4bb3ab8196b111509264419721d0cb64e0bf2970b96c03a581b2b6d872d77ec1"
+                }
+              ]
+            }
+          ],
+          "rankingDigests": "c6ce023bd8649988e3417e80ded0574ee79e97609fec0d54306dd401765df146",
+          "timing": 5.444874999999996
+        },
+        "prepared": {
+          "articleAt1": false,
+          "articleAt3": false,
+          "jointBlock": null,
+          "rank": null,
+          "articles": [
+            {
+              "article": "oss-radar-14-november-show-hn",
+              "score": 14.050395011901855,
+              "sections": [
+                {
+                  "url": "https://gkoreli.com/oss-radar-14-november-show-hn#oss-radar-14-novembers-show-hn-open-source-launches",
+                  "title": "OSS Radar #14: November’s Show HN Open-Source Launches",
+                  "excerptSha256": "ed06a4cec92c5c24515021d4668f415f4a2e0b57df86feedd28f0f326fb8c818"
+                },
+                {
+                  "url": "https://gkoreli.com/oss-radar-14-november-show-hn#the-source",
+                  "title": "The source",
+                  "excerptSha256": "feb909ee1e9f025d11ef15c9bf2353f9264c2868588a036bbd65de46e81c9130"
+                },
+                {
+                  "url": "https://gkoreli.com/oss-radar-14-november-show-hn#modern-web-guidance-current-browser-guidance-for-coding-agents",
+                  "title": "Modern Web Guidance: current browser guidance for coding agents",
+                  "excerptSha256": "ed4e1ed5cf697ee438223f75cd97889b6179f03c8b356fa376f9e1d7864d2388"
+                }
+              ]
+            }
+          ],
+          "rankingDigests": "2d9db60d2495645184ba1bc0f9cb6606541b887b01f982d49c2c6fa22a53a551",
+          "timing": 3.625417000000027
+        }
+      }
+    },
+    {
+      "id": "S04-typo",
+      "article": "oss-radar-13-hob-offline-file-tasks",
+      "form": "typo",
+      "knownBlocks": null,
+      "conditions": {
+        "raw": {
+          "articleAt1": false,
+          "articleAt3": false,
+          "jointBlock": null,
+          "rank": null,
+          "articles": [
+            {
+              "article": "oss-radar-01-vercel-winter-2026-cohort",
+              "score": 3.904771089553833,
+              "sections": [
+                {
+                  "url": "https://gkoreli.com/oss-radar-01-vercel-winter-2026-cohort#takumi--kane-wang",
+                  "title": "takumi — Kane Wang",
+                  "excerptSha256": "bdda2fb7ffd85ffde1c2455bbd57dd4c13e6fce2787fc3d21de79b10b417cb4e"
+                },
+                {
+                  "url": "https://gkoreli.com/oss-radar-01-vercel-winter-2026-cohort#yourdigitalrightsorg--yoav-aviram",
+                  "title": "YourDigitalRights.org — Yoav Aviram",
+                  "excerptSha256": "de5f453fc10ccbfca2c999ae725e373ec6f8e7a5f91b652e396a970401cc13dd"
+                },
+                {
+                  "url": "https://gkoreli.com/oss-radar-01-vercel-winter-2026-cohort#kde-connect--contributor-shakil-ahmed-faisal",
+                  "title": "KDE Connect — contributor: Shakil Ahmed Faisal",
+                  "excerptSha256": "9a7c397c4cd558377e55da251740b8fa0fa781c60baeaefd62fb7d9028792fc6"
+                }
+              ]
+            }
+          ],
+          "rankingDigests": "a5cc7040a9f675e8ea8e99f3776b56e486708b135fdd4f7fa5f2eac525ebadc8",
+          "timing": 3.5707499999999754
+        },
+        "prepared": {
+          "articleAt1": false,
+          "articleAt3": false,
+          "jointBlock": null,
+          "rank": null,
+          "articles": [
+            {
+              "article": "oss-radar-01-vercel-winter-2026-cohort",
+              "score": 3.904771089553833,
+              "sections": [
+                {
+                  "url": "https://gkoreli.com/oss-radar-01-vercel-winter-2026-cohort#takumi--kane-wang",
+                  "title": "takumi — Kane Wang",
+                  "excerptSha256": "bdda2fb7ffd85ffde1c2455bbd57dd4c13e6fce2787fc3d21de79b10b417cb4e"
+                },
+                {
+                  "url": "https://gkoreli.com/oss-radar-01-vercel-winter-2026-cohort#yourdigitalrightsorg--yoav-aviram",
+                  "title": "YourDigitalRights.org — Yoav Aviram",
+                  "excerptSha256": "de5f453fc10ccbfca2c999ae725e373ec6f8e7a5f91b652e396a970401cc13dd"
+                },
+                {
+                  "url": "https://gkoreli.com/oss-radar-01-vercel-winter-2026-cohort#kde-connect--contributor-shakil-ahmed-faisal",
+                  "title": "KDE Connect — contributor: Shakil Ahmed Faisal",
+                  "excerptSha256": "9a7c397c4cd558377e55da251740b8fa0fa781c60baeaefd62fb7d9028792fc6"
+                }
+              ]
+            }
+          ],
+          "rankingDigests": "a5cc7040a9f675e8ea8e99f3776b56e486708b135fdd4f7fa5f2eac525ebadc8",
+          "timing": 3.515291999999988
+        }
+      }
+    },
+    {
+      "id": "S06-topic",
+      "article": "oss-radar-12-claude-code-status-summary",
+      "form": "topic",
+      "knownBlocks": null,
+      "conditions": {
+        "raw": {
+          "articleAt1": true,
+          "articleAt3": true,
+          "jointBlock": null,
+          "rank": 1,
+          "articles": [
+            {
+              "article": "oss-radar-12-claude-code-status-summary",
+              "score": 18.69724464416504,
+              "sections": [
+                {
+                  "url": "https://gkoreli.com/oss-radar-12-claude-code-status-summary#oss-radar-12-claude-codes-status-labels-make-their-own-model-calls",
+                  "title": "OSS Radar #12: Claude Code’s Status Labels Make Their Own Model Calls",
+                  "excerptSha256": "93b18c4ecbe585f2f1120c0e343ef4c6f76652d2a5fc943f3cd437d00e9a5543"
+                },
+                {
+                  "url": "https://gkoreli.com/oss-radar-12-claude-code-status-summary#a-small-label-can-have-a-large-input",
+                  "title": "A small label can have a large input",
+                  "excerptSha256": "9042f36831589550b0031d1245248f83388a8884fdba6a3a095343b139b34e74"
+                },
+                {
+                  "url": "https://gkoreli.com/oss-radar-12-claude-code-status-summary#closing-the-panel-is-not-a-verified-fix",
+                  "title": "Closing the panel is not a verified fix",
+                  "excerptSha256": "4bd1bb7aeae60ede628db424915ca64335fb2aa8d6e476b855cb9c8556cd7428"
+                }
+              ]
+            }
+          ],
+          "rankingDigests": "6df0d55fcb7a5eb4d0821d77aabea60bf64b00eb79aebe708e8a909af5f4237d",
+          "timing": 1.5598750000000337
+        },
+        "prepared": {
+          "articleAt1": true,
+          "articleAt3": true,
+          "jointBlock": null,
+          "rank": 1,
+          "articles": [
+            {
+              "article": "oss-radar-12-claude-code-status-summary",
+              "score": 18.69724464416504,
+              "sections": [
+                {
+                  "url": "https://gkoreli.com/oss-radar-12-claude-code-status-summary#oss-radar-12-claude-codes-status-labels-make-their-own-model-calls",
+                  "title": "OSS Radar #12: Claude Code’s Status Labels Make Their Own Model Calls",
+                  "excerptSha256": "93b18c4ecbe585f2f1120c0e343ef4c6f76652d2a5fc943f3cd437d00e9a5543"
+                },
+                {
+                  "url": "https://gkoreli.com/oss-radar-12-claude-code-status-summary#a-small-label-can-have-a-large-input",
+                  "title": "A small label can have a large input",
+                  "excerptSha256": "9042f36831589550b0031d1245248f83388a8884fdba6a3a095343b139b34e74"
+                },
+                {
+                  "url": "https://gkoreli.com/oss-radar-12-claude-code-status-summary#closing-the-panel-is-not-a-verified-fix",
+                  "title": "Closing the panel is not a verified fix",
+                  "excerptSha256": "4bd1bb7aeae60ede628db424915ca64335fb2aa8d6e476b855cb9c8556cd7428"
+                }
+              ]
+            }
+          ],
+          "rankingDigests": "6df0d55fcb7a5eb4d0821d77aabea60bf64b00eb79aebe708e8a909af5f4237d",
+          "timing": 0.8752500000000509
+        }
+      }
+    },
+    {
+      "id": "S06-recollection",
+      "article": "oss-radar-12-claude-code-status-summary",
+      "form": "recollection",
+      "knownBlocks": null,
+      "conditions": {
+        "raw": {
+          "articleAt1": false,
+          "articleAt3": false,
+          "jointBlock": null,
+          "rank": null,
+          "articles": [
+            {
+              "article": "does-llms-txt-work",
+              "score": 14.3936767578125,
+              "sections": [
+                {
+                  "url": "https://gkoreli.com/does-llms-txt-work#does-llmstxt-work-what-a-live-implementation-revealed",
+                  "title": "Does llms.txt Work? What a Live Implementation Revealed",
+                  "excerptSha256": "f6336226433bfd71a480ae66304aac5dab3ee89206d0c69cdf26cd660ec7e545"
+                },
+                {
+                  "url": "https://gkoreli.com/does-llms-txt-work#should-you-add-llmstxt",
+                  "title": "Should you add llms.txt?",
+                  "excerptSha256": "157a4f60477a0a895a88b85e806ca3d3d0e72ff2775d9c05eda1a50bb50ad232"
+                },
+                {
+                  "url": "https://gkoreli.com/does-llms-txt-work#what-llmstxt-isand-what-it-is-not",
+                  "title": "What llms.txt is—and what it is not",
+                  "excerptSha256": "7205a8bd3470f003e4636a2a97747f0af5cb77ea9ae431f2efb994d51386691d"
+                }
+              ]
+            }
+          ],
+          "rankingDigests": "df03cade702b1e17751b5cc30c92de5872e611107585e6e1a5e2b8bbecd30d63",
+          "timing": 8.820042
+        },
+        "prepared": {
+          "articleAt1": false,
+          "articleAt3": false,
+          "jointBlock": null,
+          "rank": null,
+          "articles": [
+            {
+              "article": "does-llms-txt-work",
+              "score": 11.756553649902344,
+              "sections": [
+                {
+                  "url": "https://gkoreli.com/does-llms-txt-work#should-you-add-llmstxt",
+                  "title": "Should you add llms.txt?",
+                  "excerptSha256": "2ec9955c67274db920bddf5adc18300511c068e682dbcfc8dde8729d135aeef1"
+                },
+                {
+                  "url": "https://gkoreli.com/does-llms-txt-work#what-llmstxt-isand-what-it-is-not",
+                  "title": "What llms.txt is—and what it is not",
+                  "excerptSha256": "4a7cafda61efdd59279a5d2b23279feecaf0933d04ddbba59a2cadf3f209896c"
+                },
+                {
+                  "url": "https://gkoreli.com/does-llms-txt-work#ai-reads-could-not-see-direct-resource-requests",
+                  "title": "“AI Reads” could not see direct resource requests",
+                  "excerptSha256": "c59b3af7e0ac48048089584cfacedbb88b62f1ab8e83ca7e4b6c80f91f8f3f4e"
+                }
+              ]
+            }
+          ],
+          "rankingDigests": "ebfd5f67017e2988fb166359db72f1736084d19e4f5aaf53e4f2543396c6ec56",
+          "timing": 4.19520799999998
+        }
+      }
+    },
+    {
+      "id": "S06-typo",
+      "article": "oss-radar-12-claude-code-status-summary",
+      "form": "typo",
+      "knownBlocks": null,
+      "conditions": {
+        "raw": {
+          "articleAt1": false,
+          "articleAt3": false,
+          "jointBlock": null,
+          "rank": null,
+          "articles": [],
+          "rankingDigests": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "timing": 0.47254099999997834
+        },
+        "prepared": {
+          "articleAt1": false,
+          "articleAt3": false,
+          "jointBlock": null,
+          "rank": null,
+          "articles": [],
+          "rankingDigests": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "timing": 0.3225830000000087
+        }
+      }
+    },
+    {
+      "id": "S09-topic",
+      "article": "openclaw-chose-solid-why-id-choose-nisli",
+      "form": "topic",
+      "knownBlocks": null,
+      "conditions": {
+        "raw": {
+          "articleAt1": true,
+          "articleAt3": true,
+          "jointBlock": null,
+          "rank": 1,
+          "articles": [
+            {
+              "article": "openclaw-chose-solid-why-id-choose-nisli",
+              "score": 26.038814544677734,
+              "sections": [
+                {
+                  "url": "https://gkoreli.com/openclaw-chose-solid-why-id-choose-nisli#openclaw-chose-solid-heres-why-id-choose-nisli",
+                  "title": "OpenClaw Chose Solid. Here’s Why I’d Choose Nisli.",
+                  "excerptSha256": "21fcf7309227dcf574bc959741eb8e189ea54315550d3dc5b1978932d7c2a40f"
+                },
+                {
+                  "url": "https://gkoreli.com/openclaw-chose-solid-why-id-choose-nisli#what-openclaw-actually-changed",
+                  "title": "What OpenClaw actually changed",
+                  "excerptSha256": "b3fdbefebf22fb6021d36d57fd6eacdb71849f33c775252c25c792957cee04cc"
+                },
+                {
+                  "url": "https://gkoreli.com/openclaw-chose-solid-why-id-choose-nisli#why-i-built-nisli-this-way",
+                  "title": "Why I built Nisli this way",
+                  "excerptSha256": "bec3ae66dca0e0830a0380cecc659e68065dc30bd0dbcc335e8ce12260491f36"
+                }
+              ]
+            },
+            {
+              "article": "one-hundred-pull-requests",
+              "score": 15.767929077148438,
+              "sections": [
+                {
+                  "url": "https://gkoreli.com/one-hundred-pull-requests",
+                  "excerptSha256": "1b14b2346f6540065a2dbb8bd179dc7d1ea1c8b2c726fcc2175794132eaf451e"
+                }
+              ]
+            }
+          ],
+          "rankingDigests": "2916f6ad7145fec10deb420d747d5872cb3f73736a4855ed110ca636cbf092ca",
+          "timing": 3.0850409999999897
+        },
+        "prepared": {
+          "articleAt1": true,
+          "articleAt3": true,
+          "jointBlock": null,
+          "rank": 1,
+          "articles": [
+            {
+              "article": "openclaw-chose-solid-why-id-choose-nisli",
+              "score": 26.038814544677734,
+              "sections": [
+                {
+                  "url": "https://gkoreli.com/openclaw-chose-solid-why-id-choose-nisli#openclaw-chose-solid-heres-why-id-choose-nisli",
+                  "title": "OpenClaw Chose Solid. Here’s Why I’d Choose Nisli.",
+                  "excerptSha256": "21fcf7309227dcf574bc959741eb8e189ea54315550d3dc5b1978932d7c2a40f"
+                },
+                {
+                  "url": "https://gkoreli.com/openclaw-chose-solid-why-id-choose-nisli#what-openclaw-actually-changed",
+                  "title": "What OpenClaw actually changed",
+                  "excerptSha256": "b3fdbefebf22fb6021d36d57fd6eacdb71849f33c775252c25c792957cee04cc"
+                },
+                {
+                  "url": "https://gkoreli.com/openclaw-chose-solid-why-id-choose-nisli#why-i-built-nisli-this-way",
+                  "title": "Why I built Nisli this way",
+                  "excerptSha256": "bec3ae66dca0e0830a0380cecc659e68065dc30bd0dbcc335e8ce12260491f36"
+                }
+              ]
+            },
+            {
+              "article": "one-hundred-pull-requests",
+              "score": 15.767929077148438,
+              "sections": [
+                {
+                  "url": "https://gkoreli.com/one-hundred-pull-requests",
+                  "excerptSha256": "1b14b2346f6540065a2dbb8bd179dc7d1ea1c8b2c726fcc2175794132eaf451e"
+                }
+              ]
+            }
+          ],
+          "rankingDigests": "2916f6ad7145fec10deb420d747d5872cb3f73736a4855ed110ca636cbf092ca",
+          "timing": 2.5691249999999854
+        }
+      }
+    },
+    {
+      "id": "S09-recollection",
+      "article": "openclaw-chose-solid-why-id-choose-nisli",
+      "form": "recollection",
+      "knownBlocks": null,
+      "conditions": {
+        "raw": {
+          "articleAt1": false,
+          "articleAt3": false,
+          "jointBlock": null,
+          "rank": null,
+          "articles": [],
+          "rankingDigests": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "timing": 1.0478330000000255
+        },
+        "prepared": {
+          "articleAt1": false,
+          "articleAt3": false,
+          "jointBlock": null,
+          "rank": null,
+          "articles": [],
+          "rankingDigests": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "timing": 0.8210829999999874
+        }
+      }
+    },
+    {
+      "id": "S09-typo",
+      "article": "openclaw-chose-solid-why-id-choose-nisli",
+      "form": "typo",
+      "knownBlocks": null,
+      "conditions": {
+        "raw": {
+          "articleAt1": true,
+          "articleAt3": true,
+          "jointBlock": null,
+          "rank": 1,
+          "articles": [
+            {
+              "article": "openclaw-chose-solid-why-id-choose-nisli",
+              "score": 14.635407447814941,
+              "sections": [
+                {
+                  "url": "https://gkoreli.com/openclaw-chose-solid-why-id-choose-nisli#openclaw-chose-solid-heres-why-id-choose-nisli",
+                  "title": "OpenClaw Chose Solid. Here’s Why I’d Choose Nisli.",
+                  "excerptSha256": "fd5d9424e0ad85c92f9f63eb78106f7cbc14dc8ed39b139e2a0c83125547a005"
+                },
+                {
+                  "url": "https://gkoreli.com/openclaw-chose-solid-why-id-choose-nisli#what-openclaw-actually-changed",
+                  "title": "What OpenClaw actually changed",
+                  "excerptSha256": "3bd4786e6deb1c7c91cd732addab69dcc5ba1840d6ca2ba166241aabeeb95b23"
+                },
+                {
+                  "url": "https://gkoreli.com/openclaw-chose-solid-why-id-choose-nisli#why-i-built-nisli-this-way",
+                  "title": "Why I built Nisli this way",
+                  "excerptSha256": "fe1fd254cea7ace122f2062a3594ef91dce7927891e5d8a726efea7eb5a3cfe7"
+                }
+              ]
+            },
+            {
+              "article": "one-hundred-pull-requests",
+              "score": 9.660991668701172,
+              "sections": [
+                {
+                  "url": "https://gkoreli.com/one-hundred-pull-requests",
+                  "excerptSha256": "e76281bde2950708bb0fe6830cf99108e3f7f3f7cbc2a93a83833598c6a2c8e1"
+                }
+              ]
+            }
+          ],
+          "rankingDigests": "ffd5b3bc7d85204a4b4a0951ec806cb320f14c1613a86ec98a080cf1e3b5d305",
+          "timing": 1.6846249999999827
+        },
+        "prepared": {
+          "articleAt1": true,
+          "articleAt3": true,
+          "jointBlock": null,
+          "rank": 1,
+          "articles": [
+            {
+              "article": "openclaw-chose-solid-why-id-choose-nisli",
+              "score": 14.635407447814941,
+              "sections": [
+                {
+                  "url": "https://gkoreli.com/openclaw-chose-solid-why-id-choose-nisli#openclaw-chose-solid-heres-why-id-choose-nisli",
+                  "title": "OpenClaw Chose Solid. Here’s Why I’d Choose Nisli.",
+                  "excerptSha256": "fd5d9424e0ad85c92f9f63eb78106f7cbc14dc8ed39b139e2a0c83125547a005"
+                },
+                {
+                  "url": "https://gkoreli.com/openclaw-chose-solid-why-id-choose-nisli#what-openclaw-actually-changed",
+                  "title": "What OpenClaw actually changed",
+                  "excerptSha256": "3bd4786e6deb1c7c91cd732addab69dcc5ba1840d6ca2ba166241aabeeb95b23"
+                },
+                {
+                  "url": "https://gkoreli.com/openclaw-chose-solid-why-id-choose-nisli#why-i-built-nisli-this-way",
+                  "title": "Why I built Nisli this way",
+                  "excerptSha256": "fe1fd254cea7ace122f2062a3594ef91dce7927891e5d8a726efea7eb5a3cfe7"
+                }
+              ]
+            },
+            {
+              "article": "one-hundred-pull-requests",
+              "score": 9.660991668701172,
+              "sections": [
+                {
+                  "url": "https://gkoreli.com/one-hundred-pull-requests",
+                  "excerptSha256": "e76281bde2950708bb0fe6830cf99108e3f7f3f7cbc2a93a83833598c6a2c8e1"
+                }
+              ]
+            }
+          ],
+          "rankingDigests": "ffd5b3bc7d85204a4b4a0951ec806cb320f14c1613a86ec98a080cf1e3b5d305",
+          "timing": 1.6035420000000045
+        }
+      }
+    },
+    {
+      "id": "S10-topic",
+      "article": "openwiki-validates-my-bet",
+      "form": "topic",
+      "knownBlocks": null,
+      "conditions": {
+        "raw": {
+          "articleAt1": true,
+          "articleAt3": true,
+          "jointBlock": null,
+          "rank": 1,
+          "articles": [
+            {
+              "article": "openwiki-validates-my-bet",
+              "score": 33.9123420715332,
+              "sections": [
+                {
+                  "url": "https://gkoreli.com/openwiki-validates-my-bet#openwiki-validates-my-bet-i-still-dont-know-where-the-memory-should-live",
+                  "title": "OpenWiki Validates My Bet. I Still Don't Know Where the Memory Should Live",
+                  "excerptSha256": "62f0bb07406626852f191fb4acbb7625c2381bf53e3e1e6f916e7e43efd7601b"
+                },
+                {
+                  "url": "https://gkoreli.com/openwiki-validates-my-bet#the-direct-comparison",
+                  "title": "The direct comparison",
+                  "excerptSha256": "7ecc45634342d6e01378df758ab1b2ea0493e9bb5794edc33e3e2ed8891b41ac"
+                },
+                {
+                  "url": "https://gkoreli.com/openwiki-validates-my-bet#one-backlog-became-too-large",
+                  "title": "One backlog became too large",
+                  "excerptSha256": "1af2d2613a9a7090df702bd8913bb38263d0340edc2be3e464e6584d5af5acc7"
+                }
+              ]
+            }
+          ],
+          "rankingDigests": "0ec6c248d923fb44500954b3d23f18c914693d4308965f203723f9827b3b765e",
+          "timing": 1.7878749999999854
+        },
+        "prepared": {
+          "articleAt1": true,
+          "articleAt3": true,
+          "jointBlock": null,
+          "rank": 1,
+          "articles": [
+            {
+              "article": "openwiki-validates-my-bet",
+              "score": 33.9123420715332,
+              "sections": [
+                {
+                  "url": "https://gkoreli.com/openwiki-validates-my-bet#openwiki-validates-my-bet-i-still-dont-know-where-the-memory-should-live",
+                  "title": "OpenWiki Validates My Bet. I Still Don't Know Where the Memory Should Live",
+                  "excerptSha256": "62f0bb07406626852f191fb4acbb7625c2381bf53e3e1e6f916e7e43efd7601b"
+                },
+                {
+                  "url": "https://gkoreli.com/openwiki-validates-my-bet#the-direct-comparison",
+                  "title": "The direct comparison",
+                  "excerptSha256": "7ecc45634342d6e01378df758ab1b2ea0493e9bb5794edc33e3e2ed8891b41ac"
+                },
+                {
+                  "url": "https://gkoreli.com/openwiki-validates-my-bet#one-backlog-became-too-large",
+                  "title": "One backlog became too large",
+                  "excerptSha256": "1af2d2613a9a7090df702bd8913bb38263d0340edc2be3e464e6584d5af5acc7"
+                }
+              ]
+            }
+          ],
+          "rankingDigests": "0ec6c248d923fb44500954b3d23f18c914693d4308965f203723f9827b3b765e",
+          "timing": 0.9027500000000259
+        }
+      }
+    },
+    {
+      "id": "S10-recollection",
+      "article": "openwiki-validates-my-bet",
+      "form": "recollection",
+      "knownBlocks": null,
+      "conditions": {
+        "raw": {
+          "articleAt1": false,
+          "articleAt3": false,
+          "jointBlock": null,
+          "rank": null,
+          "articles": [],
+          "rankingDigests": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "timing": 1.0502500000000055
+        },
+        "prepared": {
+          "articleAt1": false,
+          "articleAt3": false,
+          "jointBlock": null,
+          "rank": null,
+          "articles": [],
+          "rankingDigests": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "timing": 1.0365840000000048
+        }
+      }
+    },
+    {
+      "id": "S10-typo",
+      "article": "openwiki-validates-my-bet",
+      "form": "typo",
+      "knownBlocks": null,
+      "conditions": {
+        "raw": {
+          "articleAt1": true,
+          "articleAt3": true,
+          "jointBlock": null,
+          "rank": 1,
+          "articles": [
+            {
+              "article": "openwiki-validates-my-bet",
+              "score": 18.006128311157227,
+              "sections": [
+                {
+                  "url": "https://gkoreli.com/openwiki-validates-my-bet#openwiki-validates-my-bet-i-still-dont-know-where-the-memory-should-live",
+                  "title": "OpenWiki Validates My Bet. I Still Don't Know Where the Memory Should Live",
+                  "excerptSha256": "62f0bb07406626852f191fb4acbb7625c2381bf53e3e1e6f916e7e43efd7601b"
+                },
+                {
+                  "url": "https://gkoreli.com/openwiki-validates-my-bet#the-direct-comparison",
+                  "title": "The direct comparison",
+                  "excerptSha256": "faf7f265229df24bcf9224334f627a183822afb327f64d46131802cdb49dca58"
+                },
+                {
+                  "url": "https://gkoreli.com/openwiki-validates-my-bet#one-backlog-became-too-large",
+                  "title": "One backlog became too large",
+                  "excerptSha256": "b07e55d8ff2fa9a2b77829123beededb314b1fe7819f9a32dbbffcb18bd58650"
+                }
+              ]
+            },
+            {
+              "article": "one-hundred-pull-requests",
+              "score": 15.319561958312988,
+              "sections": [
+                {
+                  "url": "https://gkoreli.com/one-hundred-pull-requests",
+                  "excerptSha256": "3605cb6f24655795d86d81d78354ba21d4aada8b36170553b4a5b1469d10f497"
+                }
+              ]
+            },
+            {
+              "article": "i-am-lost-right-now",
+              "score": 7.913486003875732,
+              "sections": [
+                {
+                  "url": "https://gkoreli.com/i-am-lost-right-now#i-am-lost-right-now",
+                  "title": "I Am Lost Right Now",
+                  "excerptSha256": "bf7b2d9bfff6209aadd6a6834ef4cfa2f5d3802626c0609e56f6dfbe2ef0a9b4"
+                }
+              ]
+            },
+            {
+              "article": "openclaw-chose-solid-why-id-choose-nisli",
+              "score": 5.008258819580078,
+              "sections": [
+                {
+                  "url": "https://gkoreli.com/openclaw-chose-solid-why-id-choose-nisli#openclaw-chose-solid-heres-why-id-choose-nisli",
+                  "title": "OpenClaw Chose Solid. Here’s Why I’d Choose Nisli.",
+                  "excerptSha256": "1f8439f92d30e1eae622aff60a72f6418fe5111d6fa1310419d9280fae497789"
+                },
+                {
+                  "url": "https://gkoreli.com/openclaw-chose-solid-why-id-choose-nisli#what-openclaw-actually-changed",
+                  "title": "What OpenClaw actually changed",
+                  "excerptSha256": "ef74972985e2e748d40b63a4747478021bfda348d95e4a3798ff0c04c66dcc8f"
+                },
+                {
+                  "url": "https://gkoreli.com/openclaw-chose-solid-why-id-choose-nisli#why-i-built-nisli-this-way",
+                  "title": "Why I built Nisli this way",
+                  "excerptSha256": "bec3ae66dca0e0830a0380cecc659e68065dc30bd0dbcc335e8ce12260491f36"
+                }
+              ]
+            }
+          ],
+          "rankingDigests": "02aac230bae1d9323f3456b6196f1821372e266535b462c54a1fa7a0f25bd070",
+          "timing": 3.648750000000007
+        },
+        "prepared": {
+          "articleAt1": true,
+          "articleAt3": true,
+          "jointBlock": null,
+          "rank": 1,
+          "articles": [
+            {
+              "article": "openwiki-validates-my-bet",
+              "score": 18.006128311157227,
+              "sections": [
+                {
+                  "url": "https://gkoreli.com/openwiki-validates-my-bet#openwiki-validates-my-bet-i-still-dont-know-where-the-memory-should-live",
+                  "title": "OpenWiki Validates My Bet. I Still Don't Know Where the Memory Should Live",
+                  "excerptSha256": "62f0bb07406626852f191fb4acbb7625c2381bf53e3e1e6f916e7e43efd7601b"
+                },
+                {
+                  "url": "https://gkoreli.com/openwiki-validates-my-bet#the-direct-comparison",
+                  "title": "The direct comparison",
+                  "excerptSha256": "faf7f265229df24bcf9224334f627a183822afb327f64d46131802cdb49dca58"
+                },
+                {
+                  "url": "https://gkoreli.com/openwiki-validates-my-bet#one-backlog-became-too-large",
+                  "title": "One backlog became too large",
+                  "excerptSha256": "b07e55d8ff2fa9a2b77829123beededb314b1fe7819f9a32dbbffcb18bd58650"
+                }
+              ]
+            },
+            {
+              "article": "one-hundred-pull-requests",
+              "score": 15.319561958312988,
+              "sections": [
+                {
+                  "url": "https://gkoreli.com/one-hundred-pull-requests",
+                  "excerptSha256": "3605cb6f24655795d86d81d78354ba21d4aada8b36170553b4a5b1469d10f497"
+                }
+              ]
+            },
+            {
+              "article": "i-am-lost-right-now",
+              "score": 7.913486003875732,
+              "sections": [
+                {
+                  "url": "https://gkoreli.com/i-am-lost-right-now#i-am-lost-right-now",
+                  "title": "I Am Lost Right Now",
+                  "excerptSha256": "bf7b2d9bfff6209aadd6a6834ef4cfa2f5d3802626c0609e56f6dfbe2ef0a9b4"
+                }
+              ]
+            },
+            {
+              "article": "openclaw-chose-solid-why-id-choose-nisli",
+              "score": 5.008258819580078,
+              "sections": [
+                {
+                  "url": "https://gkoreli.com/openclaw-chose-solid-why-id-choose-nisli#openclaw-chose-solid-heres-why-id-choose-nisli",
+                  "title": "OpenClaw Chose Solid. Here’s Why I’d Choose Nisli.",
+                  "excerptSha256": "1f8439f92d30e1eae622aff60a72f6418fe5111d6fa1310419d9280fae497789"
+                },
+                {
+                  "url": "https://gkoreli.com/openclaw-chose-solid-why-id-choose-nisli#what-openclaw-actually-changed",
+                  "title": "What OpenClaw actually changed",
+                  "excerptSha256": "ef74972985e2e748d40b63a4747478021bfda348d95e4a3798ff0c04c66dcc8f"
+                },
+                {
+                  "url": "https://gkoreli.com/openclaw-chose-solid-why-id-choose-nisli#why-i-built-nisli-this-way",
+                  "title": "Why I built Nisli this way",
+                  "excerptSha256": "bec3ae66dca0e0830a0380cecc659e68065dc30bd0dbcc335e8ce12260491f36"
+                }
+              ]
+            }
+          ],
+          "rankingDigests": "02aac230bae1d9323f3456b6196f1821372e266535b462c54a1fa7a0f25bd070",
+          "timing": 2.911584000000005
+        }
+      }
+    },
+    {
+      "id": "S11-topic",
+      "article": "oss-radar-09-tsrs-typescript-memory",
+      "form": "topic",
+      "knownBlocks": null,
+      "conditions": {
+        "raw": {
+          "articleAt1": true,
+          "articleAt3": true,
+          "jointBlock": null,
+          "rank": 1,
+          "articles": [
+            {
+              "article": "oss-radar-09-tsrs-typescript-memory",
+              "score": 37.189292907714844,
+              "sections": [
+                {
+                  "url": "https://gkoreli.com/oss-radar-09-tsrs-typescript-memory#oss-radar-09-tsrs-checks-vs-code-faster-with-56-less-ram",
+                  "title": "OSS Radar #09: tsrs Checks VS Code Faster with 56% Less RAM",
+                  "excerptSha256": "59587319780d8999500375a9865810147f51d9439c57a158b92a5514346a649c"
+                },
+                {
+                  "url": "https://gkoreli.com/oss-radar-09-tsrs-typescript-memory#the-eightfold-claim-has-conditions",
+                  "title": "The eightfold claim has conditions",
+                  "excerptSha256": "8e535539698764d0bd92e7f95995f112addd405882f86d6efb93cf9c6ccbe4fb"
+                },
+                {
+                  "url": "https://gkoreli.com/oss-radar-09-tsrs-typescript-memory#fast-mode-can-change-your-errors",
+                  "title": "Fast mode can change your errors",
+                  "excerptSha256": "436ede658f5c4282c55982a843aa74256f61b1457eff13131a7433591c01bb10"
+                }
+              ]
+            }
+          ],
+          "rankingDigests": "5afc399bb554873e729dcb0c35fc34187dacfc4d81bd425a1442d7465fcfcd21",
+          "timing": 1.8343750000000227
+        },
+        "prepared": {
+          "articleAt1": true,
+          "articleAt3": true,
+          "jointBlock": null,
+          "rank": 1,
+          "articles": [
+            {
+              "article": "oss-radar-09-tsrs-typescript-memory",
+              "score": 37.189292907714844,
+              "sections": [
+                {
+                  "url": "https://gkoreli.com/oss-radar-09-tsrs-typescript-memory#oss-radar-09-tsrs-checks-vs-code-faster-with-56-less-ram",
+                  "title": "OSS Radar #09: tsrs Checks VS Code Faster with 56% Less RAM",
+                  "excerptSha256": "59587319780d8999500375a9865810147f51d9439c57a158b92a5514346a649c"
+                },
+                {
+                  "url": "https://gkoreli.com/oss-radar-09-tsrs-typescript-memory#the-eightfold-claim-has-conditions",
+                  "title": "The eightfold claim has conditions",
+                  "excerptSha256": "8e535539698764d0bd92e7f95995f112addd405882f86d6efb93cf9c6ccbe4fb"
+                },
+                {
+                  "url": "https://gkoreli.com/oss-radar-09-tsrs-typescript-memory#fast-mode-can-change-your-errors",
+                  "title": "Fast mode can change your errors",
+                  "excerptSha256": "436ede658f5c4282c55982a843aa74256f61b1457eff13131a7433591c01bb10"
+                }
+              ]
+            }
+          ],
+          "rankingDigests": "5afc399bb554873e729dcb0c35fc34187dacfc4d81bd425a1442d7465fcfcd21",
+          "timing": 0.81412499999999
+        }
+      }
+    },
+    {
+      "id": "S11-recollection",
+      "article": "oss-radar-09-tsrs-typescript-memory",
+      "form": "recollection",
+      "knownBlocks": null,
+      "conditions": {
+        "raw": {
+          "articleAt1": false,
+          "articleAt3": false,
+          "jointBlock": null,
+          "rank": null,
+          "articles": [
+            {
+              "article": "oss-radar-05-bun-1-4",
+              "score": 13.088966369628906,
+              "sections": [
+                {
+                  "url": "https://gkoreli.com/oss-radar-05-bun-1-4",
+                  "excerptSha256": "9197aa601cd729491bcfe2cb9a2a49e4b3e82c8052d4c811b8dc604ef6efac3a"
+                },
+                {
+                  "url": "https://gkoreli.com/oss-radar-05-bun-1-4#research-footprint-title",
+                  "title": "Research footprint",
+                  "excerptSha256": "8f900c4038e43644e04edea7b6e37979d50c937c5a17854afa87c3c940b7e93d"
+                }
+              ]
+            },
+            {
+              "article": "oss-radar-14-november-show-hn",
+              "score": 11.005034446716309,
+              "sections": [
+                {
+                  "url": "https://gkoreli.com/oss-radar-14-november-show-hn#oss-radar-14-novembers-show-hn-open-source-launches",
+                  "title": "OSS Radar #14: November’s Show HN Open-Source Launches",
+                  "excerptSha256": "f44047152546a344775820757ad7e916357a7aa31b46342442712db46ac48325"
+                },
+                {
+                  "url": "https://gkoreli.com/oss-radar-14-november-show-hn#the-source",
+                  "title": "The source",
+                  "excerptSha256": "e9a9c1088ab665321431094d1fa3b4641e064449595a27b40c12279da0e50d68"
+                },
+                {
+                  "url": "https://gkoreli.com/oss-radar-14-november-show-hn#the-projects",
+                  "title": "The projects",
+                  "excerptSha256": "4bb3ab8196b111509264419721d0cb64e0bf2970b96c03a581b2b6d872d77ec1"
+                }
+              ]
+            }
+          ],
+          "rankingDigests": "16b9d835587fac2bf60e1d01210c38c330f4c6821a8bfcf27a8bf4aa7c2c8a61",
+          "timing": 5.541209000000038
+        },
+        "prepared": {
+          "articleAt1": false,
+          "articleAt3": false,
+          "jointBlock": null,
+          "rank": null,
+          "articles": [
+            {
+              "article": "why-worktree-setup-is-slow-on-macos",
+              "score": 13.54932975769043,
+              "sections": [
+                {
+                  "url": "https://gkoreli.com/why-worktree-setup-is-slow-on-macos#a-linux-vm-on-my-mac-beat-macos-at-installing-dependencies",
+                  "title": "A Linux VM on My Mac Beat macOS at Installing Dependencies",
+                  "excerptSha256": "29e46967bee2c93f6489fc02e83236b946831288b288b5568a54fd94aefeba7b"
+                },
+                {
+                  "url": "https://gkoreli.com/why-worktree-setup-is-slow-on-macos#four-repositories-one-physical-mac",
+                  "title": "Four repositories, one physical Mac",
+                  "excerptSha256": "1fbe1d93edfd5b7cc43deff495bdc198edbbdba0284067bdda01e72f97f27192"
+                },
+                {
+                  "url": "https://gkoreli.com/why-worktree-setup-is-slow-on-macos#the-mac-creates-independent-files",
+                  "title": "The Mac creates independent files",
+                  "excerptSha256": "594603e221a5bafef8f133a4c2e71a271108b96ad92c3c5312d6218b1fe2a3d1"
+                }
+              ]
+            },
+            {
+              "article": "oss-radar-05-bun-1-4",
+              "score": 11.976639747619629,
+              "sections": [
+                {
+                  "url": "https://gkoreli.com/oss-radar-05-bun-1-4",
+                  "excerptSha256": "e9f57a6b454be68a453f6453629fddf5d77cb5c3b26e65eb9bb97357f7fee4a4"
+                },
+                {
+                  "url": "https://gkoreli.com/oss-radar-05-bun-1-4#research-footprint-title",
+                  "title": "Research footprint",
+                  "excerptSha256": "5b3ac4b974ce3fd3c306b093e361039d46e1c8d01999279509e53717683f1c5b"
+                }
+              ]
+            },
+            {
+              "article": "oss-radar-14-november-show-hn",
+              "score": 10.286627769470215,
+              "sections": [
+                {
+                  "url": "https://gkoreli.com/oss-radar-14-november-show-hn#oss-radar-14-novembers-show-hn-open-source-launches",
+                  "title": "OSS Radar #14: November’s Show HN Open-Source Launches",
+                  "excerptSha256": "f5f84a8e0240acc860d8206abb320e478b2a603891c7016ded827e74bda94894"
+                },
+                {
+                  "url": "https://gkoreli.com/oss-radar-14-november-show-hn#the-source",
+                  "title": "The source",
+                  "excerptSha256": "b395f4b9bcd9363004e2deccf316f48f2aa02ee4775f098555ea867522446d2e"
+                },
+                {
+                  "url": "https://gkoreli.com/oss-radar-14-november-show-hn#modern-web-guidance-current-browser-guidance-for-coding-agents",
+                  "title": "Modern Web Guidance: current browser guidance for coding agents",
+                  "excerptSha256": "7e5703c62d2764c51e50a87eddc3f1b30d879e62460caae839353286ffa91262"
+                }
+              ]
+            }
+          ],
+          "rankingDigests": "0af9f9d796a1b638b2f410e5ae9763ee77dc045cc2d0b8869ecbe229a4aafa6d",
+          "timing": 4.604790999999977
+        }
+      }
+    },
+    {
+      "id": "S11-typo",
+      "article": "oss-radar-09-tsrs-typescript-memory",
+      "form": "typo",
+      "knownBlocks": null,
+      "conditions": {
+        "raw": {
+          "articleAt1": true,
+          "articleAt3": true,
+          "jointBlock": null,
+          "rank": 1,
+          "articles": [
+            {
+              "article": "oss-radar-09-tsrs-typescript-memory",
+              "score": 37.485084533691406,
+              "sections": [
+                {
+                  "url": "https://gkoreli.com/oss-radar-09-tsrs-typescript-memory#oss-radar-09-tsrs-checks-vs-code-faster-with-56-less-ram",
+                  "title": "OSS Radar #09: tsrs Checks VS Code Faster with 56% Less RAM",
+                  "excerptSha256": "59587319780d8999500375a9865810147f51d9439c57a158b92a5514346a649c"
+                },
+                {
+                  "url": "https://gkoreli.com/oss-radar-09-tsrs-typescript-memory#the-eightfold-claim-has-conditions",
+                  "title": "The eightfold claim has conditions",
+                  "excerptSha256": "c28dae84e6a630f520743acf791e1f241e6d1e2ab223ddc83f7fc4da2385246b"
+                },
+                {
+                  "url": "https://gkoreli.com/oss-radar-09-tsrs-typescript-memory#fast-mode-can-change-your-errors",
+                  "title": "Fast mode can change your errors",
+                  "excerptSha256": "436ede658f5c4282c55982a843aa74256f61b1457eff13131a7433591c01bb10"
+                }
+              ]
+            }
+          ],
+          "rankingDigests": "42828f50af446509c31e353433c89e19b6663415e4187ad2ec9867f5a4d79aed",
+          "timing": 0.8395419999999945
+        },
+        "prepared": {
+          "articleAt1": true,
+          "articleAt3": true,
+          "jointBlock": null,
+          "rank": 1,
+          "articles": [
+            {
+              "article": "oss-radar-09-tsrs-typescript-memory",
+              "score": 37.485084533691406,
+              "sections": [
+                {
+                  "url": "https://gkoreli.com/oss-radar-09-tsrs-typescript-memory#oss-radar-09-tsrs-checks-vs-code-faster-with-56-less-ram",
+                  "title": "OSS Radar #09: tsrs Checks VS Code Faster with 56% Less RAM",
+                  "excerptSha256": "59587319780d8999500375a9865810147f51d9439c57a158b92a5514346a649c"
+                },
+                {
+                  "url": "https://gkoreli.com/oss-radar-09-tsrs-typescript-memory#the-eightfold-claim-has-conditions",
+                  "title": "The eightfold claim has conditions",
+                  "excerptSha256": "c28dae84e6a630f520743acf791e1f241e6d1e2ab223ddc83f7fc4da2385246b"
+                },
+                {
+                  "url": "https://gkoreli.com/oss-radar-09-tsrs-typescript-memory#fast-mode-can-change-your-errors",
+                  "title": "Fast mode can change your errors",
+                  "excerptSha256": "436ede658f5c4282c55982a843aa74256f61b1457eff13131a7433591c01bb10"
+                }
+              ]
+            }
+          ],
+          "rankingDigests": "42828f50af446509c31e353433c89e19b6663415e4187ad2ec9867f5a4d79aed",
+          "timing": 0.6059170000000336
+        }
+      }
+    },
+    {
+      "id": "S12-topic",
+      "article": "what-if-the-agent-was-better-before-we-helped",
+      "form": "topic",
+      "knownBlocks": null,
+      "conditions": {
+        "raw": {
+          "articleAt1": false,
+          "articleAt3": false,
+          "jointBlock": null,
+          "rank": null,
+          "articles": [],
+          "rankingDigests": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "timing": 0.5464580000000296
+        },
+        "prepared": {
+          "articleAt1": false,
+          "articleAt3": false,
+          "jointBlock": null,
+          "rank": null,
+          "articles": [],
+          "rankingDigests": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "timing": 0.42758299999997007
+        }
+      }
+    },
+    {
+      "id": "S12-recollection",
+      "article": "what-if-the-agent-was-better-before-we-helped",
+      "form": "recollection",
+      "knownBlocks": null,
+      "conditions": {
+        "raw": {
+          "articleAt1": false,
+          "articleAt3": false,
+          "jointBlock": null,
+          "rank": null,
+          "articles": [],
+          "rankingDigests": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "timing": 1.317542000000003
+        },
+        "prepared": {
+          "articleAt1": false,
+          "articleAt3": false,
+          "jointBlock": null,
+          "rank": null,
+          "articles": [],
+          "rankingDigests": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "timing": 0.8289580000000001
+        }
+      }
+    },
+    {
+      "id": "S12-typo",
+      "article": "what-if-the-agent-was-better-before-we-helped",
+      "form": "typo",
+      "knownBlocks": null,
+      "conditions": {
+        "raw": {
+          "articleAt1": false,
+          "articleAt3": false,
+          "jointBlock": null,
+          "rank": null,
+          "articles": [],
+          "rankingDigests": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "timing": 0.2915840000000003
+        },
+        "prepared": {
+          "articleAt1": false,
+          "articleAt3": false,
+          "jointBlock": null,
+          "rank": null,
+          "articles": [],
+          "rankingDigests": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "timing": 0.269375000000025
+        }
+      }
+    },
+    {
+      "id": "S13-topic",
+      "article": "linux-signal-stack-conflict",
+      "form": "topic",
+      "knownBlocks": null,
+      "conditions": {
+        "raw": {
+          "articleAt1": true,
+          "articleAt3": true,
+          "jointBlock": null,
+          "rank": 1,
+          "articles": [
+            {
+              "article": "linux-signal-stack-conflict",
+              "score": 42.20088577270508,
+              "sections": [
+                {
+                  "url": "https://gkoreli.com/linux-signal-stack-conflict#one-bitmask-in-task_struct-how-a-10-line-kernel-patch-resolves-15-years-of-multi-runtime-signal-conflicts-on-linux",
+                  "title": "One bitmask in task_struct: how a 10-line kernel patch resolves 15 years of multi-runtime signal conflicts on Linux",
+                  "excerptSha256": "a49137b5c337db0f2daa507247142137d6af91bfa9194885d89321cb745ffd4a"
+                },
+                {
+                  "url": "https://gkoreli.com/linux-signal-stack-conflict#the-bug",
+                  "title": "The bug",
+                  "excerptSha256": "b1833c1825731d37dc18916ba92c1a98828f4a9d68dc101ff6f1572b04b5818a"
+                },
+                {
+                  "url": "https://gkoreli.com/linux-signal-stack-conflict#why-it-happens",
+                  "title": "Why it happens",
+                  "excerptSha256": "5e8ad8fca5fbb038d552a1ab3f3737654af54a77fdb7e97dbb9cfa791bb0a648"
+                }
+              ]
+            }
+          ],
+          "rankingDigests": "525875ece1f3d76ddd3ae3832faf427c2a8d8682bc4c668ce29da72e528b04ab",
+          "timing": 2.3516670000000204
+        },
+        "prepared": {
+          "articleAt1": true,
+          "articleAt3": true,
+          "jointBlock": null,
+          "rank": 1,
+          "articles": [
+            {
+              "article": "linux-signal-stack-conflict",
+              "score": 42.20088577270508,
+              "sections": [
+                {
+                  "url": "https://gkoreli.com/linux-signal-stack-conflict#one-bitmask-in-task_struct-how-a-10-line-kernel-patch-resolves-15-years-of-multi-runtime-signal-conflicts-on-linux",
+                  "title": "One bitmask in task_struct: how a 10-line kernel patch resolves 15 years of multi-runtime signal conflicts on Linux",
+                  "excerptSha256": "a49137b5c337db0f2daa507247142137d6af91bfa9194885d89321cb745ffd4a"
+                },
+                {
+                  "url": "https://gkoreli.com/linux-signal-stack-conflict#the-bug",
+                  "title": "The bug",
+                  "excerptSha256": "b1833c1825731d37dc18916ba92c1a98828f4a9d68dc101ff6f1572b04b5818a"
+                },
+                {
+                  "url": "https://gkoreli.com/linux-signal-stack-conflict#why-it-happens",
+                  "title": "Why it happens",
+                  "excerptSha256": "5e8ad8fca5fbb038d552a1ab3f3737654af54a77fdb7e97dbb9cfa791bb0a648"
+                }
+              ]
+            }
+          ],
+          "rankingDigests": "525875ece1f3d76ddd3ae3832faf427c2a8d8682bc4c668ce29da72e528b04ab",
+          "timing": 1.795958999999982
+        }
+      }
+    },
+    {
+      "id": "S13-recollection",
+      "article": "linux-signal-stack-conflict",
+      "form": "recollection",
+      "knownBlocks": null,
+      "conditions": {
+        "raw": {
+          "articleAt1": false,
+          "articleAt3": false,
+          "jointBlock": null,
+          "rank": null,
+          "articles": [],
+          "rankingDigests": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "timing": 1.1471659999999702
+        },
+        "prepared": {
+          "articleAt1": false,
+          "articleAt3": false,
+          "jointBlock": null,
+          "rank": null,
+          "articles": [],
+          "rankingDigests": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "timing": 0.7959169999999745
+        }
+      }
+    },
+    {
+      "id": "S13-typo",
+      "article": "linux-signal-stack-conflict",
+      "form": "typo",
+      "knownBlocks": null,
+      "conditions": {
+        "raw": {
+          "articleAt1": true,
+          "articleAt3": true,
+          "jointBlock": null,
+          "rank": 1,
+          "articles": [
+            {
+              "article": "linux-signal-stack-conflict",
+              "score": 21.791044235229492,
+              "sections": [
+                {
+                  "url": "https://gkoreli.com/linux-signal-stack-conflict#one-bitmask-in-task_struct-how-a-10-line-kernel-patch-resolves-15-years-of-multi-runtime-signal-conflicts-on-linux",
+                  "title": "One bitmask in task_struct: how a 10-line kernel patch resolves 15 years of multi-runtime signal conflicts on Linux",
+                  "excerptSha256": "9f01f3846f22a58db2a10f57f3ccd20ee2783a8dcfb4744b28e5f79008f0753f"
+                },
+                {
+                  "url": "https://gkoreli.com/linux-signal-stack-conflict#the-bug",
+                  "title": "The bug",
+                  "excerptSha256": "83e447fc91685a0a4b30f58f6cde03213ac4e771f6dde55307015822ad5886ed"
+                },
+                {
+                  "url": "https://gkoreli.com/linux-signal-stack-conflict#why-it-happens",
+                  "title": "Why it happens",
+                  "excerptSha256": "5581fe1104f323929e05da01ed5df5af1086882518e06b8e63899c90b7f4a097"
+                }
+              ]
+            },
+            {
+              "article": "oss-radar-01-vercel-winter-2026-cohort",
+              "score": 9.761563301086426,
+              "sections": [
+                {
+                  "url": "https://gkoreli.com/oss-radar-01-vercel-winter-2026-cohort#oss-radar-01-vercels-winter-2026-cohort",
+                  "title": "OSS Radar #01: Vercel's Winter 2026 Cohort",
+                  "excerptSha256": "7668b57c0022fdfd663e26555fc8a30b494bad476b0675c1bce47e3ff7055150"
+                },
+                {
+                  "url": "https://gkoreli.com/oss-radar-01-vercel-winter-2026-cohort#the-source",
+                  "title": "The Source",
+                  "excerptSha256": "734255d30c25e02728725eb553c0d64caa12e5ab3f550001db24cebcc95e85d0"
+                },
+                {
+                  "url": "https://gkoreli.com/oss-radar-01-vercel-winter-2026-cohort#answer-overflow--rhys-sullivan",
+                  "title": "Answer Overflow — Rhys Sullivan",
+                  "excerptSha256": "608f82ab31b12b167da02ed6b77971c52415b3b5e7ce9d115a78cb073c4cf2f5"
+                }
+              ]
+            }
+          ],
+          "rankingDigests": "813e5d48f4cb806b55f124f9fe3cffc23f124de67795d9d2d8cd181c88718e15",
+          "timing": 6.912832999999978
+        },
+        "prepared": {
+          "articleAt1": true,
+          "articleAt3": true,
+          "jointBlock": null,
+          "rank": 1,
+          "articles": [
+            {
+              "article": "linux-signal-stack-conflict",
+              "score": 21.791044235229492,
+              "sections": [
+                {
+                  "url": "https://gkoreli.com/linux-signal-stack-conflict#one-bitmask-in-task_struct-how-a-10-line-kernel-patch-resolves-15-years-of-multi-runtime-signal-conflicts-on-linux",
+                  "title": "One bitmask in task_struct: how a 10-line kernel patch resolves 15 years of multi-runtime signal conflicts on Linux",
+                  "excerptSha256": "9f01f3846f22a58db2a10f57f3ccd20ee2783a8dcfb4744b28e5f79008f0753f"
+                },
+                {
+                  "url": "https://gkoreli.com/linux-signal-stack-conflict#the-bug",
+                  "title": "The bug",
+                  "excerptSha256": "83e447fc91685a0a4b30f58f6cde03213ac4e771f6dde55307015822ad5886ed"
+                },
+                {
+                  "url": "https://gkoreli.com/linux-signal-stack-conflict#why-it-happens",
+                  "title": "Why it happens",
+                  "excerptSha256": "5581fe1104f323929e05da01ed5df5af1086882518e06b8e63899c90b7f4a097"
+                }
+              ]
+            },
+            {
+              "article": "oss-radar-01-vercel-winter-2026-cohort",
+              "score": 9.761563301086426,
+              "sections": [
+                {
+                  "url": "https://gkoreli.com/oss-radar-01-vercel-winter-2026-cohort#oss-radar-01-vercels-winter-2026-cohort",
+                  "title": "OSS Radar #01: Vercel's Winter 2026 Cohort",
+                  "excerptSha256": "7668b57c0022fdfd663e26555fc8a30b494bad476b0675c1bce47e3ff7055150"
+                },
+                {
+                  "url": "https://gkoreli.com/oss-radar-01-vercel-winter-2026-cohort#the-source",
+                  "title": "The Source",
+                  "excerptSha256": "734255d30c25e02728725eb553c0d64caa12e5ab3f550001db24cebcc95e85d0"
+                },
+                {
+                  "url": "https://gkoreli.com/oss-radar-01-vercel-winter-2026-cohort#answer-overflow--rhys-sullivan",
+                  "title": "Answer Overflow — Rhys Sullivan",
+                  "excerptSha256": "608f82ab31b12b167da02ed6b77971c52415b3b5e7ce9d115a78cb073c4cf2f5"
+                }
+              ]
+            }
+          ],
+          "rankingDigests": "813e5d48f4cb806b55f124f9fe3cffc23f124de67795d9d2d8cd181c88718e15",
+          "timing": 6.7687499999999545
+        }
+      }
+    },
+    {
+      "id": "N01",
+      "article": null,
+      "form": "no-known-answer",
+      "knownBlocks": null,
+      "conditions": {
+        "raw": {
+          "articleAt1": false,
+          "articleAt3": false,
+          "jointBlock": null,
+          "rank": null,
+          "articles": [],
+          "rankingDigests": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "timing": 1.0230000000000246
+        },
+        "prepared": {
+          "articleAt1": false,
+          "articleAt3": false,
+          "jointBlock": null,
+          "rank": null,
+          "articles": [],
+          "rankingDigests": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "timing": 0.48133300000000645
+        }
+      }
+    },
+    {
+      "id": "N02",
+      "article": null,
+      "form": "no-known-answer",
+      "knownBlocks": null,
+      "conditions": {
+        "raw": {
+          "articleAt1": false,
+          "articleAt3": false,
+          "jointBlock": null,
+          "rank": null,
+          "articles": [],
+          "rankingDigests": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "timing": 0.5859590000000026
+        },
+        "prepared": {
+          "articleAt1": false,
+          "articleAt3": false,
+          "jointBlock": null,
+          "rank": null,
+          "articles": [],
+          "rankingDigests": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "timing": 0.27891699999997854
+        }
+      }
+    },
+    {
+      "id": "N03",
+      "article": null,
+      "form": "no-known-answer",
+      "knownBlocks": null,
+      "conditions": {
+        "raw": {
+          "articleAt1": false,
+          "articleAt3": false,
+          "jointBlock": null,
+          "rank": null,
+          "articles": [],
+          "rankingDigests": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "timing": 0.7962499999999864
+        },
+        "prepared": {
+          "articleAt1": false,
+          "articleAt3": false,
+          "jointBlock": null,
+          "rank": null,
+          "articles": [],
+          "rankingDigests": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "timing": 0.46795799999995324
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,1281 @@
+{
+  "sourceSha256": "b526959a229f5c3ddaecac876f21ac3fed99483b46eab023e88d1932de1548b4",
+  "split": "validation",
+  "completedAt": "2026-11-14T21:01:34.217Z",
+  "summary": {
+    "raw": {
+      "topic": {
+        "n": 5,
+        "articleAt3": 4,
+        "jointBlock": null,
+        "returned": 5
+      },
+      "recollection": {
+        "n": 5,
+        "articleAt3": 0,
+        "jointBlock": null,
+        "returned": 1
+      },
+      "typo": {
+        "n": 5,
+        "articleAt3": 5,
+        "jointBlock": null,
+        "returned": 5
+      },
+      "negative": {
+        "n": 3,
+        "articleAt3": 0,
+        "jointBlock": null,
+        "returned": 0
+      }
+    },
+    "prepared": {
+      "topic": {
+        "n": 5,
+        "articleAt3": 4,
+        "jointBlock": null,
+        "returned": 5
+      },
+      "recollection": {
+        "n": 5,
+        "articleAt3": 0,
+        "jointBlock": null,
+        "returned": 1
+      },
+      "typo": {
+        "n": 5,
+        "articleAt3": 5,
+        "jointBlock": null,
+        "returned": 5
+      },
+      "negative": {
+        "n": 3,
+        "articleAt3": 0,
+        "jointBlock": null,
+        "returned": 0
+      }
+    }
+  },
+  "rows": [
+    {
+      "id": "S05-topic",
+      "article": "oss-radar-11-qwenputer-compiled-cpu",
+      "form": "topic",
+      "knownBlocks": null,
+      "conditions": {
+        "raw": {
+          "articleAt1": true,
+          "articleAt3": true,
+          "jointBlock": null,
+          "rank": 1,
+          "articles": [
+            {
+              "article": "oss-radar-11-qwenputer-compiled-cpu",
+              "score": 35.28126907348633,
+              "sections": [
+                {
+                  "url": "https://gkoreli.com/oss-radar-11-qwenputer-compiled-cpu#oss-radar-11-qwenputer-ran-my-program-inside-qwens-layers",
+                  "title": "OSS Radar #11: Qwenputer Ran My Program Inside Qwen’s Layers",
+                  "excerptSha256": "958df56a828fff7735c4e5552139825e1ee632f5e405555e7329c80624462422"
+                },
+                {
+                  "url": "https://gkoreli.com/oss-radar-11-qwenputer-compiled-cpu#nobody-trained-this-cpu",
+                  "title": "Nobody trained this CPU",
+                  "excerptSha256": "9a220a2906a72f542a42e3d0c4de901593c0c44947495f847e0cfbef58223884"
+                },
+                {
+                  "url": "https://gkoreli.com/oss-radar-11-qwenputer-compiled-cpu#the-model-ran-the-program",
+                  "title": "The model ran the program",
+                  "excerptSha256": "4f9fa1b975517c3ef52deb4a58a54c500e573fbbec80de3bb2808e94777638b8"
+                }
+              ]
+            }
+          ],
+          "rankingDigests": "3c582589c52e0b81767e5c9b0d278fe049edb17b982ffc2a06ad18b07f1b641d",
+          "timing": 86.373667
+        },
+        "prepared": {
+          "articleAt1": true,
+          "articleAt3": true,
+          "jointBlock": null,
+          "rank": 1,
+          "articles": [
+            {
+              "article": "oss-radar-11-qwenputer-compiled-cpu",
+              "score": 35.28126907348633,
+              "sections": [
+                {
+                  "url": "https://gkoreli.com/oss-radar-11-qwenputer-compiled-cpu#oss-radar-11-qwenputer-ran-my-program-inside-qwens-layers",
+                  "title": "OSS Radar #11: Qwenputer Ran My Program Inside Qwen’s Layers",
+                  "excerptSha256": "958df56a828fff7735c4e5552139825e1ee632f5e405555e7329c80624462422"
+                },
+                {
+                  "url": "https://gkoreli.com/oss-radar-11-qwenputer-compiled-cpu#nobody-trained-this-cpu",
+                  "title": "Nobody trained this CPU",
+                  "excerptSha256": "9a220a2906a72f542a42e3d0c4de901593c0c44947495f847e0cfbef58223884"
+                },
+                {
+                  "url": "https://gkoreli.com/oss-radar-11-qwenputer-compiled-cpu#the-model-ran-the-program",
+                  "title": "The model ran the program",
+                  "excerptSha256": "4f9fa1b975517c3ef52deb4a58a54c500e573fbbec80de3bb2808e94777638b8"
+                }
+              ]
+            }
+          ],
+          "rankingDigests": "3c582589c52e0b81767e5c9b0d278fe049edb17b982ffc2a06ad18b07f1b641d",
+          "timing": 2.1876670000000047
+        }
+      }
+    },
+    {
+      "id": "S05-recollection",
+      "article": "oss-radar-11-qwenputer-compiled-cpu",
+      "form": "recollection",
+      "knownBlocks": null,
+      "conditions": {
+        "raw": {
+          "articleAt1": false,
+          "articleAt3": false,
+          "jointBlock": null,
+          "rank": null,
+          "articles": [],
+          "rankingDigests": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "timing": 14.877999999999986
+        },
+        "prepared": {
+          "articleAt1": false,
+          "articleAt3": false,
+          "jointBlock": null,
+          "rank": null,
+          "articles": [],
+          "rankingDigests": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "timing": 1.0762919999999951
+        }
+      }
+    },
+    {
+      "id": "S05-typo",
+      "article": "oss-radar-11-qwenputer-compiled-cpu",
+      "form": "typo",
+      "knownBlocks": null,
+      "conditions": {
+        "raw": {
+          "articleAt1": true,
+          "articleAt3": true,
+          "jointBlock": null,
+          "rank": 1,
+          "articles": [
+            {
+              "article": "oss-radar-11-qwenputer-compiled-cpu",
+              "score": 29.455825805664062,
+              "sections": [
+                {
+                  "url": "https://gkoreli.com/oss-radar-11-qwenputer-compiled-cpu#oss-radar-11-qwenputer-ran-my-program-inside-qwens-layers",
+                  "title": "OSS Radar #11: Qwenputer Ran My Program Inside Qwen’s Layers",
+                  "excerptSha256": "958df56a828fff7735c4e5552139825e1ee632f5e405555e7329c80624462422"
+                },
+                {
+                  "url": "https://gkoreli.com/oss-radar-11-qwenputer-compiled-cpu#nobody-trained-this-cpu",
+                  "title": "Nobody trained this CPU",
+                  "excerptSha256": "2048af35671473caffc9bb291b3eac0804d7f66f33ef0cbc034c3de4c83f0307"
+                },
+                {
+                  "url": "https://gkoreli.com/oss-radar-11-qwenputer-compiled-cpu#the-model-ran-the-program",
+                  "title": "The model ran the program",
+                  "excerptSha256": "4f9fa1b975517c3ef52deb4a58a54c500e573fbbec80de3bb2808e94777638b8"
+                }
+              ]
+            }
+          ],
+          "rankingDigests": "477c898668a1b57a0d0ddffe97d89cd8bfe79c3d459b52dd3372821c18a56437",
+          "timing": 0.9214580000000012
+        },
+        "prepared": {
+          "articleAt1": true,
+          "articleAt3": true,
+          "jointBlock": null,
+          "rank": 1,
+          "articles": [
+            {
+              "article": "oss-radar-11-qwenputer-compiled-cpu",
+              "score": 29.455825805664062,
+              "sections": [
+                {
+                  "url": "https://gkoreli.com/oss-radar-11-qwenputer-compiled-cpu#oss-radar-11-qwenputer-ran-my-program-inside-qwens-layers",
+                  "title": "OSS Radar #11: Qwenputer Ran My Program Inside Qwen’s Layers",
+                  "excerptSha256": "958df56a828fff7735c4e5552139825e1ee632f5e405555e7329c80624462422"
+                },
+                {
+                  "url": "https://gkoreli.com/oss-radar-11-qwenputer-compiled-cpu#nobody-trained-this-cpu",
+                  "title": "Nobody trained this CPU",
+                  "excerptSha256": "2048af35671473caffc9bb291b3eac0804d7f66f33ef0cbc034c3de4c83f0307"
+                },
+                {
+                  "url": "https://gkoreli.com/oss-radar-11-qwenputer-compiled-cpu#the-model-ran-the-program",
+                  "title": "The model ran the program",
+                  "excerptSha256": "4f9fa1b975517c3ef52deb4a58a54c500e573fbbec80de3bb2808e94777638b8"
+                }
+              ]
+            }
+          ],
+          "rankingDigests": "477c898668a1b57a0d0ddffe97d89cd8bfe79c3d459b52dd3372821c18a56437",
+          "timing": 0.6797500000000127
+        }
+      }
+    },
+    {
+      "id": "S07-topic",
+      "article": "bun-aot-express-fastify-serializers",
+      "form": "topic",
+      "knownBlocks": null,
+      "conditions": {
+        "raw": {
+          "articleAt1": true,
+          "articleAt3": true,
+          "jointBlock": null,
+          "rank": 1,
+          "articles": [
+            {
+              "article": "bun-aot-express-fastify-serializers",
+              "score": 83.29235076904297,
+              "sections": [
+                {
+                  "url": "https://gkoreli.com/bun-aot-express-fastify-serializers#bun-aot-in-express-and-fastify-memory-cpu-and-serializers",
+                  "title": "Bun AOT in Express and Fastify: memory, CPU and serializers",
+                  "excerptSha256": "933a7739b4bb64705eeab30eb1ffa46c0b1bcb8071cfde0209cb13fca07edca2"
+                },
+                {
+                  "url": "https://gkoreli.com/bun-aot-express-fastify-serializers#half-the-ram-did-not-guarantee-less-cpu",
+                  "title": "Half the RAM did not guarantee less CPU",
+                  "excerptSha256": "e591189e9e6b5128eb8a04f28a2eed6c499df270a8c43a9ba78f0ddfd13a8866"
+                },
+                {
+                  "url": "https://gkoreli.com/bun-aot-express-fastify-serializers#generate-the-serializer-before-compiling",
+                  "title": "Generate the serializer before compiling",
+                  "excerptSha256": "6c6d84fcff2dc55debfafbaaa5e88f06eaa66ec1482912acdfc7efa28634b410"
+                }
+              ]
+            },
+            {
+              "article": "oss-radar-08-bun-aot",
+              "score": 32.60761260986328,
+              "sections": [
+                {
+                  "url": "https://gkoreli.com/oss-radar-08-bun-aot#bun-aot-dont-rewrite-typescript-in-rust-yet",
+                  "title": "Bun AOT: Don't Rewrite TypeScript in Rust Yet",
+                  "excerptSha256": "87dadb09bed42b7a0a327a9b57a41db2b47a5586234d01eedb9539b038adbe74"
+                },
+                {
+                  "url": "https://gkoreli.com/oss-radar-08-bun-aot#how-much-ram-does-it-save",
+                  "title": "How much RAM does it save?",
+                  "excerptSha256": "4e4ee12a661baf8dd54b2d8c3b01129610216cdbc89fdc66c07c7217e96b9c49"
+                },
+                {
+                  "url": "https://gkoreli.com/oss-radar-08-bun-aot#where-does-memory-go-before-the-jit-gets-hot",
+                  "title": "Where does memory go before the JIT gets hot?",
+                  "excerptSha256": "b15425e0d15ecb2c5baded229f1f024e0a01f2e2104b2c5cf09a1618a8e524bf"
+                }
+              ]
+            },
+            {
+              "article": "oss-radar-05-bun-1-4",
+              "score": 31.68125343322754,
+              "sections": [
+                {
+                  "url": "https://gkoreli.com/oss-radar-05-bun-1-4",
+                  "excerptSha256": "841ebc53db31e4c38e7aa6c11b0a3d9b2a87c8898c9629d0ad6aff6fd483ab87"
+                }
+              ]
+            }
+          ],
+          "rankingDigests": "1c6e58d889f3a55b3851526789a5602f6dff03956b647fe777490bf0c665b48b",
+          "timing": 4.13624999999999
+        },
+        "prepared": {
+          "articleAt1": true,
+          "articleAt3": true,
+          "jointBlock": null,
+          "rank": 1,
+          "articles": [
+            {
+              "article": "bun-aot-express-fastify-serializers",
+              "score": 83.29235076904297,
+              "sections": [
+                {
+                  "url": "https://gkoreli.com/bun-aot-express-fastify-serializers#bun-aot-in-express-and-fastify-memory-cpu-and-serializers",
+                  "title": "Bun AOT in Express and Fastify: memory, CPU and serializers",
+                  "excerptSha256": "933a7739b4bb64705eeab30eb1ffa46c0b1bcb8071cfde0209cb13fca07edca2"
+                },
+                {
+                  "url": "https://gkoreli.com/bun-aot-express-fastify-serializers#half-the-ram-did-not-guarantee-less-cpu",
+                  "title": "Half the RAM did not guarantee less CPU",
+                  "excerptSha256": "e591189e9e6b5128eb8a04f28a2eed6c499df270a8c43a9ba78f0ddfd13a8866"
+                },
+                {
+                  "url": "https://gkoreli.com/bun-aot-express-fastify-serializers#generate-the-serializer-before-compiling",
+                  "title": "Generate the serializer before compiling",
+                  "excerptSha256": "6c6d84fcff2dc55debfafbaaa5e88f06eaa66ec1482912acdfc7efa28634b410"
+                }
+              ]
+            },
+            {
+              "article": "oss-radar-08-bun-aot",
+              "score": 32.60761260986328,
+              "sections": [
+                {
+                  "url": "https://gkoreli.com/oss-radar-08-bun-aot#bun-aot-dont-rewrite-typescript-in-rust-yet",
+                  "title": "Bun AOT: Don't Rewrite TypeScript in Rust Yet",
+                  "excerptSha256": "87dadb09bed42b7a0a327a9b57a41db2b47a5586234d01eedb9539b038adbe74"
+                },
+                {
+                  "url": "https://gkoreli.com/oss-radar-08-bun-aot#how-much-ram-does-it-save",
+                  "title": "How much RAM does it save?",
+                  "excerptSha256": "4e4ee12a661baf8dd54b2d8c3b01129610216cdbc89fdc66c07c7217e96b9c49"
+                },
+                {
+                  "url": "https://gkoreli.com/oss-radar-08-bun-aot#where-does-memory-go-before-the-jit-gets-hot",
+                  "title": "Where does memory go before the JIT gets hot?",
+                  "excerptSha256": "b15425e0d15ecb2c5baded229f1f024e0a01f2e2104b2c5cf09a1618a8e524bf"
+                }
+              ]
+            },
+            {
+              "article": "oss-radar-05-bun-1-4",
+              "score": 31.68125343322754,
+              "sections": [
+                {
+                  "url": "https://gkoreli.com/oss-radar-05-bun-1-4",
+                  "excerptSha256": "841ebc53db31e4c38e7aa6c11b0a3d9b2a87c8898c9629d0ad6aff6fd483ab87"
+                }
+              ]
+            }
+          ],
+          "rankingDigests": "1c6e58d889f3a55b3851526789a5602f6dff03956b647fe777490bf0c665b48b",
+          "timing": 3.212916000000007
+        }
+      }
+    },
+    {
+      "id": "S07-recollection",
+      "article": "bun-aot-express-fastify-serializers",
+      "form": "recollection",
+      "knownBlocks": null,
+      "conditions": {
+        "raw": {
+          "articleAt1": false,
+          "articleAt3": false,
+          "jointBlock": null,
+          "rank": null,
+          "articles": [],
+          "rankingDigests": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "timing": 5.3110829999999964
+        },
+        "prepared": {
+          "articleAt1": false,
+          "articleAt3": false,
+          "jointBlock": null,
+          "rank": null,
+          "articles": [],
+          "rankingDigests": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "timing": 1.737667000000016
+        }
+      }
+    },
+    {
+      "id": "S07-typo",
+      "article": "bun-aot-express-fastify-serializers",
+      "form": "typo",
+      "knownBlocks": null,
+      "conditions": {
+        "raw": {
+          "articleAt1": true,
+          "articleAt3": true,
+          "jointBlock": null,
+          "rank": 1,
+          "articles": [
+            {
+              "article": "bun-aot-express-fastify-serializers",
+              "score": 13.817586898803711,
+              "sections": [
+                {
+                  "url": "https://gkoreli.com/bun-aot-express-fastify-serializers#bun-aot-in-express-and-fastify-memory-cpu-and-serializers",
+                  "title": "Bun AOT in Express and Fastify: memory, CPU and serializers",
+                  "excerptSha256": "933a7739b4bb64705eeab30eb1ffa46c0b1bcb8071cfde0209cb13fca07edca2"
+                },
+                {
+                  "url": "https://gkoreli.com/bun-aot-express-fastify-serializers#half-the-ram-did-not-guarantee-less-cpu",
+                  "title": "Half the RAM did not guarantee less CPU",
+                  "excerptSha256": "49ac0ca484b73fb2b03197524002dbef3926b2d4b163c2210a6a612643e248e1"
+                },
+                {
+                  "url": "https://gkoreli.com/bun-aot-express-fastify-serializers#generate-the-serializer-before-compiling",
+                  "title": "Generate the serializer before compiling",
+                  "excerptSha256": "8e3e0aa25d44dfcce3b129b87b8e041842bbef5dce8fdaaf8a946de9cedc2781"
+                }
+              ]
+            },
+            {
+              "article": "oss-radar-06-interp-engine",
+              "score": 5.6406402587890625,
+              "sections": [
+                {
+                  "url": "https://gkoreli.com/oss-radar-06-interp-engine",
+                  "excerptSha256": "db05ff76f55c8f62a8a4984198a1b9cb2244d827ad91c67600a8d93781797185"
+                }
+              ]
+            }
+          ],
+          "rankingDigests": "d31578e01f66b95ff87873aac331a9173e8974f2135d4d6840c365774d30364e",
+          "timing": 7.492500000000007
+        },
+        "prepared": {
+          "articleAt1": true,
+          "articleAt3": true,
+          "jointBlock": null,
+          "rank": 1,
+          "articles": [
+            {
+              "article": "bun-aot-express-fastify-serializers",
+              "score": 13.817586898803711,
+              "sections": [
+                {
+                  "url": "https://gkoreli.com/bun-aot-express-fastify-serializers#bun-aot-in-express-and-fastify-memory-cpu-and-serializers",
+                  "title": "Bun AOT in Express and Fastify: memory, CPU and serializers",
+                  "excerptSha256": "933a7739b4bb64705eeab30eb1ffa46c0b1bcb8071cfde0209cb13fca07edca2"
+                },
+                {
+                  "url": "https://gkoreli.com/bun-aot-express-fastify-serializers#half-the-ram-did-not-guarantee-less-cpu",
+                  "title": "Half the RAM did not guarantee less CPU",
+                  "excerptSha256": "49ac0ca484b73fb2b03197524002dbef3926b2d4b163c2210a6a612643e248e1"
+                },
+                {
+                  "url": "https://gkoreli.com/bun-aot-express-fastify-serializers#generate-the-serializer-before-compiling",
+                  "title": "Generate the serializer before compiling",
+                  "excerptSha256": "8e3e0aa25d44dfcce3b129b87b8e041842bbef5dce8fdaaf8a946de9cedc2781"
+                }
+              ]
+            },
+            {
+              "article": "oss-radar-06-interp-engine",
+              "score": 5.6406402587890625,
+              "sections": [
+                {
+                  "url": "https://gkoreli.com/oss-radar-06-interp-engine",
+                  "excerptSha256": "db05ff76f55c8f62a8a4984198a1b9cb2244d827ad91c67600a8d93781797185"
+                }
+              ]
+            }
+          ],
+          "rankingDigests": "d31578e01f66b95ff87873aac331a9173e8974f2135d4d6840c365774d30364e",
+          "timing": 2.429374999999993
+        }
+      }
+    },
+    {
+      "id": "S08-topic",
+      "article": "how-i-separate-readers-from-bots-without-javascript",
+      "form": "topic",
+      "knownBlocks": null,
+      "conditions": {
+        "raw": {
+          "articleAt1": false,
+          "articleAt3": false,
+          "jointBlock": null,
+          "rank": null,
+          "articles": [
+            {
+              "article": "which-ai-fetchers-send-which-headers",
+              "score": 13.99359130859375,
+              "sections": [
+                {
+                  "url": "https://gkoreli.com/which-ai-fetchers-send-which-headers#which-ai-fetchers-send-which-headers-measured-on-a-live-site",
+                  "title": "Which AI Fetchers Send Which Headers, Measured on a Live Site",
+                  "excerptSha256": "fb797cb8768c9c6b1958d8bc3e096b893ce06140cfa85b63311f044420815741"
+                },
+                {
+                  "url": "https://gkoreli.com/which-ai-fetchers-send-which-headers#the-capture-table-what-each-fetcher-sent",
+                  "title": "The capture table: what each fetcher sent",
+                  "excerptSha256": "597d946a11e6cbeb3846d727684ac0c831347018d4ee96ad973b1f1b2d58a1ef"
+                },
+                {
+                  "url": "https://gkoreli.com/which-ai-fetchers-send-which-headers#chatgpt-user-documented-list-verified-and-fetches-more-than-asked",
+                  "title": "ChatGPT-User: documented, list-verified, and fetches more than asked",
+                  "excerptSha256": "9eff09de5cec53e12c198a5e513e31c1d5cc0f4bcc670520f3e45bdc0028089d"
+                }
+              ]
+            },
+            {
+              "article": "cloudflare-turnstile-signup-failures",
+              "score": 13.407064437866211,
+              "sections": [
+                {
+                  "url": "https://gkoreli.com/cloudflare-turnstile-signup-failures#cloudflare-turnstile-what-kept-breaking-my-signup-form",
+                  "title": "Cloudflare Turnstile: What Kept Breaking My Signup Form",
+                  "excerptSha256": "ba50cf2b72b53bbbb5496efd0e65dc85cf04480755f000d8010c627d6e1d80d8"
+                },
+                {
+                  "url": "https://gkoreli.com/cloudflare-turnstile-signup-failures#find-the-last-stage-you-can-prove",
+                  "title": "Find the last stage you can prove",
+                  "excerptSha256": "81492434ecd8c80f1909f1cd9bf4c5333d56deba82e1a435e3d4dab2e492c2a4"
+                },
+                {
+                  "url": "https://gkoreli.com/cloudflare-turnstile-signup-failures#make-callbacks-belong-to-one-attempt",
+                  "title": "Make callbacks belong to one attempt",
+                  "excerptSha256": "c1be59f3b8a22d6a250fb4ff967b2ad09c33a58d7a8ba322e760e4ef058cceae"
+                }
+              ]
+            },
+            {
+              "article": "first-party-analytics-for-a-personal-blog",
+              "score": 13.120524406433105,
+              "sections": [
+                {
+                  "url": "https://gkoreli.com/first-party-analytics-for-a-personal-blog#how-i-built-first-party-analytics-for-a-personal-blog",
+                  "title": "How I Built First-Party Analytics for a Personal Blog",
+                  "excerptSha256": "2ec3a515073e2e33a6c0869cb315081f66649ec14e827ed05261a283666b9b49"
+                },
+                {
+                  "url": "https://gkoreli.com/first-party-analytics-for-a-personal-blog#why-my-javascript-analytics-beacon-measured-the-wrong-event",
+                  "title": "Why my JavaScript analytics beacon measured the wrong event",
+                  "excerptSha256": "ee89ffbf67ac6b962631622cc7e65d2455943dc5b98499f104fbafb9b927446b"
+                },
+                {
+                  "url": "https://gkoreli.com/first-party-analytics-for-a-personal-blog#why-copy-and-sql-could-not-fix-client-side-analytics",
+                  "title": "Why copy and SQL could not fix client-side analytics",
+                  "excerptSha256": "7de7b7016bd4f40901fb74a0c2cf02a8e14db5042eaec49c193562ca541339dc"
+                }
+              ]
+            },
+            {
+              "article": "please-stop-misreading-user-agent",
+              "score": 10.702510833740234,
+              "sections": [
+                {
+                  "url": "https://gkoreli.com/please-stop-misreading-user-agent#check-where-googlebot-came-from",
+                  "title": "Check where “Googlebot” came from",
+                  "excerptSha256": "95d9d7c4aa90ebfecc0d5294483287db5c317bb60823944bf7cc9039182edfc1"
+                },
+                {
+                  "url": "https://gkoreli.com/please-stop-misreading-user-agent#the-problem-is-larger-than-one-phone-brand",
+                  "title": "The problem is larger than one phone brand",
+                  "excerptSha256": "d1198bd238fd719c43c6d99f062ffdf4ded7994c022dfc8e363fa49b480273b1"
+                },
+                {
+                  "url": "https://gkoreli.com/please-stop-misreading-user-agent#a-modern-os-can-report-an-old-version",
+                  "title": "A modern OS can report an old version",
+                  "excerptSha256": "4f889609c20daf6ade961900c5d3e8f6263fb09ec60e9c40c3fcff5bde91a34f"
+                }
+              ]
+            }
+          ],
+          "rankingDigests": "fd7470c9214ae3ac0d532958427e9757a887db4b15391d49f78aacfaae63e37b",
+          "timing": 17.563000000000017
+        },
+        "prepared": {
+          "articleAt1": false,
+          "articleAt3": false,
+          "jointBlock": null,
+          "rank": null,
+          "articles": [
+            {
+              "article": "first-party-analytics-for-a-personal-blog",
+              "score": 15.2205171585083,
+              "sections": [
+                {
+                  "url": "https://gkoreli.com/first-party-analytics-for-a-personal-blog#how-i-built-first-party-analytics-for-a-personal-blog",
+                  "title": "How I Built First-Party Analytics for a Personal Blog",
+                  "excerptSha256": "2ec3a515073e2e33a6c0869cb315081f66649ec14e827ed05261a283666b9b49"
+                },
+                {
+                  "url": "https://gkoreli.com/first-party-analytics-for-a-personal-blog#why-my-javascript-analytics-beacon-measured-the-wrong-event",
+                  "title": "Why my JavaScript analytics beacon measured the wrong event",
+                  "excerptSha256": "ee89ffbf67ac6b962631622cc7e65d2455943dc5b98499f104fbafb9b927446b"
+                },
+                {
+                  "url": "https://gkoreli.com/first-party-analytics-for-a-personal-blog#why-copy-and-sql-could-not-fix-client-side-analytics",
+                  "title": "Why copy and SQL could not fix client-side analytics",
+                  "excerptSha256": "7de7b7016bd4f40901fb74a0c2cf02a8e14db5042eaec49c193562ca541339dc"
+                }
+              ]
+            },
+            {
+              "article": "which-ai-fetchers-send-which-headers",
+              "score": 14.033978462219238,
+              "sections": [
+                {
+                  "url": "https://gkoreli.com/which-ai-fetchers-send-which-headers#which-ai-fetchers-send-which-headers-measured-on-a-live-site",
+                  "title": "Which AI Fetchers Send Which Headers, Measured on a Live Site",
+                  "excerptSha256": "fb797cb8768c9c6b1958d8bc3e096b893ce06140cfa85b63311f044420815741"
+                },
+                {
+                  "url": "https://gkoreli.com/which-ai-fetchers-send-which-headers#the-capture-table-what-each-fetcher-sent",
+                  "title": "The capture table: what each fetcher sent",
+                  "excerptSha256": "597d946a11e6cbeb3846d727684ac0c831347018d4ee96ad973b1f1b2d58a1ef"
+                },
+                {
+                  "url": "https://gkoreli.com/which-ai-fetchers-send-which-headers#chatgpt-user-documented-list-verified-and-fetches-more-than-asked",
+                  "title": "ChatGPT-User: documented, list-verified, and fetches more than asked",
+                  "excerptSha256": "9eff09de5cec53e12c198a5e513e31c1d5cc0f4bcc670520f3e45bdc0028089d"
+                }
+              ]
+            },
+            {
+              "article": "cloudflare-turnstile-signup-failures",
+              "score": 13.12115478515625,
+              "sections": [
+                {
+                  "url": "https://gkoreli.com/cloudflare-turnstile-signup-failures#cloudflare-turnstile-what-kept-breaking-my-signup-form",
+                  "title": "Cloudflare Turnstile: What Kept Breaking My Signup Form",
+                  "excerptSha256": "ba50cf2b72b53bbbb5496efd0e65dc85cf04480755f000d8010c627d6e1d80d8"
+                },
+                {
+                  "url": "https://gkoreli.com/cloudflare-turnstile-signup-failures#find-the-last-stage-you-can-prove",
+                  "title": "Find the last stage you can prove",
+                  "excerptSha256": "81492434ecd8c80f1909f1cd9bf4c5333d56deba82e1a435e3d4dab2e492c2a4"
+                },
+                {
+                  "url": "https://gkoreli.com/cloudflare-turnstile-signup-failures#make-callbacks-belong-to-one-attempt",
+                  "title": "Make callbacks belong to one attempt",
+                  "excerptSha256": "c1be59f3b8a22d6a250fb4ff967b2ad09c33a58d7a8ba322e760e4ef058cceae"
+                }
+              ]
+            },
+            {
+              "article": "please-stop-misreading-user-agent",
+              "score": 10.410486221313477,
+              "sections": [
+                {
+                  "url": "https://gkoreli.com/please-stop-misreading-user-agent#check-where-googlebot-came-from",
+                  "title": "Check where “Googlebot” came from",
+                  "excerptSha256": "1e7e10ac24c44aa00dea5e3da1cb80d5ac6f02d7255251af2fd4bbb76ea638f5"
+                },
+                {
+                  "url": "https://gkoreli.com/please-stop-misreading-user-agent#the-problem-is-larger-than-one-phone-brand",
+                  "title": "The problem is larger than one phone brand",
+                  "excerptSha256": "d1198bd238fd719c43c6d99f062ffdf4ded7994c022dfc8e363fa49b480273b1"
+                },
+                {
+                  "url": "https://gkoreli.com/please-stop-misreading-user-agent#a-modern-os-can-report-an-old-version",
+                  "title": "A modern OS can report an old version",
+                  "excerptSha256": "4f889609c20daf6ade961900c5d3e8f6263fb09ec60e9c40c3fcff5bde91a34f"
+                }
+              ]
+            }
+          ],
+          "rankingDigests": "20b9cde5b5fdf25ceb2e1d706e2cf37986ac7f376a63a30a4a8a2107ba6fd8ab",
+          "timing": 14.963875000000002
+        }
+      }
+    },
+    {
+      "id": "S08-recollection",
+      "article": "how-i-separate-readers-from-bots-without-javascript",
+      "form": "recollection",
+      "knownBlocks": null,
+      "conditions": {
+        "raw": {
+          "articleAt1": false,
+          "articleAt3": false,
+          "jointBlock": null,
+          "rank": null,
+          "articles": [],
+          "rankingDigests": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "timing": 2.8310000000000173
+        },
+        "prepared": {
+          "articleAt1": false,
+          "articleAt3": false,
+          "jointBlock": null,
+          "rank": null,
+          "articles": [],
+          "rankingDigests": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "timing": 0.8667499999999677
+        }
+      }
+    },
+    {
+      "id": "S08-typo",
+      "article": "how-i-separate-readers-from-bots-without-javascript",
+      "form": "typo",
+      "knownBlocks": null,
+      "conditions": {
+        "raw": {
+          "articleAt1": true,
+          "articleAt3": true,
+          "jointBlock": null,
+          "rank": 1,
+          "articles": [
+            {
+              "article": "how-i-separate-readers-from-bots-without-javascript",
+              "score": 13.256199836730957,
+              "sections": [
+                {
+                  "url": "https://gkoreli.com/how-i-separate-readers-from-bots-without-javascript#bot-detection-without-javascript-what-my-blog-measured",
+                  "title": "Bot Detection Without JavaScript: What My Blog Measured",
+                  "excerptSha256": "7459919e3e29ef1c8ec2d1d28f1c7fef13193934db6c4838dcaa753f1be40ba2"
+                },
+                {
+                  "url": "https://gkoreli.com/how-i-separate-readers-from-bots-without-javascript#comparing-edge-page-views-with-a-script-counter",
+                  "title": "Comparing edge page views with a script counter",
+                  "excerptSha256": "56a8dca21fe63bfc39590efff9b0a7ee5df18604bae6d642095e88580db9ca5e"
+                },
+                {
+                  "url": "https://gkoreli.com/how-i-separate-readers-from-bots-without-javascript#the-request-rules-in-the-cloudflare-worker",
+                  "title": "The request rules in the Cloudflare Worker",
+                  "excerptSha256": "543242aba2e7228bd6c36793e40ba4b2d5e69f8d26c2df7d8d20d21d0f5142a7"
+                }
+              ]
+            },
+            {
+              "article": "which-ai-fetchers-send-which-headers",
+              "score": 12.684301376342773,
+              "sections": [
+                {
+                  "url": "https://gkoreli.com/which-ai-fetchers-send-which-headers#which-ai-fetchers-send-which-headers-measured-on-a-live-site",
+                  "title": "Which AI Fetchers Send Which Headers, Measured on a Live Site",
+                  "excerptSha256": "e4337155fbbc427413e28fee10a8fd508f1341da3bfa51dc58ab34ea55d1a5f9"
+                },
+                {
+                  "url": "https://gkoreli.com/which-ai-fetchers-send-which-headers#the-capture-table-what-each-fetcher-sent",
+                  "title": "The capture table: what each fetcher sent",
+                  "excerptSha256": "aaf0efc351ca63a9284fd983342fa6680526a1e5e9dbfed9f0b73eaf64816d77"
+                },
+                {
+                  "url": "https://gkoreli.com/which-ai-fetchers-send-which-headers#chatgpt-user-documented-list-verified-and-fetches-more-than-asked",
+                  "title": "ChatGPT-User: documented, list-verified, and fetches more than asked",
+                  "excerptSha256": "1521dd165ba524258cf6135c7b04d005fc6854b5c7d118617f94687ed4a7b369"
+                }
+              ]
+            },
+            {
+              "article": "first-party-analytics-for-a-personal-blog",
+              "score": 7.629575729370117,
+              "sections": [
+                {
+                  "url": "https://gkoreli.com/first-party-analytics-for-a-personal-blog#how-i-built-first-party-analytics-for-a-personal-blog",
+                  "title": "How I Built First-Party Analytics for a Personal Blog",
+                  "excerptSha256": "43c5b4a3da29727b286f2c4e545b50278b46e96764fd7fe7f368f3328e7d3f15"
+                },
+                {
+                  "url": "https://gkoreli.com/first-party-analytics-for-a-personal-blog#why-my-javascript-analytics-beacon-measured-the-wrong-event",
+                  "title": "Why my JavaScript analytics beacon measured the wrong event",
+                  "excerptSha256": "18219c56f7655c7addc6739318b06734c5c3e612efeac790f95ad2a259db136b"
+                },
+                {
+                  "url": "https://gkoreli.com/first-party-analytics-for-a-personal-blog#what-changed-across-the-analytics-stack",
+                  "title": "What changed across the analytics stack",
+                  "excerptSha256": "6a3a270a85b84bfa205d4fcdad5799ac2bed25866b6a0110791b956544f5dd3f"
+                }
+              ]
+            }
+          ],
+          "rankingDigests": "39bfde9232590a983e0c142eccd47342a9057275646c155b83e26da4813c0079",
+          "timing": 9.487791999999956
+        },
+        "prepared": {
+          "articleAt1": true,
+          "articleAt3": true,
+          "jointBlock": null,
+          "rank": 1,
+          "articles": [
+            {
+              "article": "how-i-separate-readers-from-bots-without-javascript",
+              "score": 13.256199836730957,
+              "sections": [
+                {
+                  "url": "https://gkoreli.com/how-i-separate-readers-from-bots-without-javascript#bot-detection-without-javascript-what-my-blog-measured",
+                  "title": "Bot Detection Without JavaScript: What My Blog Measured",
+                  "excerptSha256": "7459919e3e29ef1c8ec2d1d28f1c7fef13193934db6c4838dcaa753f1be40ba2"
+                },
+                {
+                  "url": "https://gkoreli.com/how-i-separate-readers-from-bots-without-javascript#comparing-edge-page-views-with-a-script-counter",
+                  "title": "Comparing edge page views with a script counter",
+                  "excerptSha256": "56a8dca21fe63bfc39590efff9b0a7ee5df18604bae6d642095e88580db9ca5e"
+                },
+                {
+                  "url": "https://gkoreli.com/how-i-separate-readers-from-bots-without-javascript#the-request-rules-in-the-cloudflare-worker",
+                  "title": "The request rules in the Cloudflare Worker",
+                  "excerptSha256": "543242aba2e7228bd6c36793e40ba4b2d5e69f8d26c2df7d8d20d21d0f5142a7"
+                }
+              ]
+            },
+            {
+              "article": "which-ai-fetchers-send-which-headers",
+              "score": 12.684301376342773,
+              "sections": [
+                {
+                  "url": "https://gkoreli.com/which-ai-fetchers-send-which-headers#which-ai-fetchers-send-which-headers-measured-on-a-live-site",
+                  "title": "Which AI Fetchers Send Which Headers, Measured on a Live Site",
+                  "excerptSha256": "e4337155fbbc427413e28fee10a8fd508f1341da3bfa51dc58ab34ea55d1a5f9"
+                },
+                {
+                  "url": "https://gkoreli.com/which-ai-fetchers-send-which-headers#the-capture-table-what-each-fetcher-sent",
+                  "title": "The capture table: what each fetcher sent",
+                  "excerptSha256": "aaf0efc351ca63a9284fd983342fa6680526a1e5e9dbfed9f0b73eaf64816d77"
+                },
+                {
+                  "url": "https://gkoreli.com/which-ai-fetchers-send-which-headers#chatgpt-user-documented-list-verified-and-fetches-more-than-asked",
+                  "title": "ChatGPT-User: documented, list-verified, and fetches more than asked",
+                  "excerptSha256": "1521dd165ba524258cf6135c7b04d005fc6854b5c7d118617f94687ed4a7b369"
+                }
+              ]
+            },
+            {
+              "article": "first-party-analytics-for-a-personal-blog",
+              "score": 7.629575729370117,
+              "sections": [
+                {
+                  "url": "https://gkoreli.com/first-party-analytics-for-a-personal-blog#how-i-built-first-party-analytics-for-a-personal-blog",
+                  "title": "How I Built First-Party Analytics for a Personal Blog",
+                  "excerptSha256": "43c5b4a3da29727b286f2c4e545b50278b46e96764fd7fe7f368f3328e7d3f15"
+                },
+                {
+                  "url": "https://gkoreli.com/first-party-analytics-for-a-personal-blog#why-my-javascript-analytics-beacon-measured-the-wrong-event",
+                  "title": "Why my JavaScript analytics beacon measured the wrong event",
+                  "excerptSha256": "18219c56f7655c7addc6739318b06734c5c3e612efeac790f95ad2a259db136b"
+                },
+                {
+                  "url": "https://gkoreli.com/first-party-analytics-for-a-personal-blog#what-changed-across-the-analytics-stack",
+                  "title": "What changed across the analytics stack",
+                  "excerptSha256": "6a3a270a85b84bfa205d4fcdad5799ac2bed25866b6a0110791b956544f5dd3f"
+                }
+              ]
+            }
+          ],
+          "rankingDigests": "39bfde9232590a983e0c142eccd47342a9057275646c155b83e26da4813c0079",
+          "timing": 8.834541999999999
+        }
+      }
+    },
+    {
+      "id": "S14-topic",
+      "article": "productive-procrastination",
+      "form": "topic",
+      "knownBlocks": null,
+      "conditions": {
+        "raw": {
+          "articleAt1": true,
+          "articleAt3": true,
+          "jointBlock": null,
+          "rank": 1,
+          "articles": [
+            {
+              "article": "productive-procrastination",
+              "score": 36.59244155883789,
+              "sections": [
+                {
+                  "url": "https://gkoreli.com/productive-procrastination#productive-procrastination-when-meaningful-work-costs-you-sleep",
+                  "title": "Productive Procrastination: When Meaningful Work Costs You Sleep",
+                  "excerptSha256": "f06260d05478466b3592dd3353f77c1de6347f2e348b6b0f599cc93bc52771be"
+                },
+                {
+                  "url": "https://gkoreli.com/productive-procrastination#meaningful-work-can-become-the-excuse",
+                  "title": "Meaningful work can become the excuse",
+                  "excerptSha256": "03b165fb87212dedc01e3dea6208f87161fc2610966f9b09124a8f2a2b64cf7f"
+                },
+                {
+                  "url": "https://gkoreli.com/productive-procrastination#i-want-to-keep-the-excitement",
+                  "title": "I want to keep the excitement",
+                  "excerptSha256": "f4a6dd39b569f58978bc3183ee2cb30e6600e1a3afce8f010df45d1e49f0e935"
+                }
+              ]
+            }
+          ],
+          "rankingDigests": "db19d121a25e4e07d97c00bbf1264e585f1513291725cb30980947fe42933289",
+          "timing": 3.275875000000042
+        },
+        "prepared": {
+          "articleAt1": true,
+          "articleAt3": true,
+          "jointBlock": null,
+          "rank": 1,
+          "articles": [
+            {
+              "article": "productive-procrastination",
+              "score": 36.59244155883789,
+              "sections": [
+                {
+                  "url": "https://gkoreli.com/productive-procrastination#productive-procrastination-when-meaningful-work-costs-you-sleep",
+                  "title": "Productive Procrastination: When Meaningful Work Costs You Sleep",
+                  "excerptSha256": "f06260d05478466b3592dd3353f77c1de6347f2e348b6b0f599cc93bc52771be"
+                },
+                {
+                  "url": "https://gkoreli.com/productive-procrastination#meaningful-work-can-become-the-excuse",
+                  "title": "Meaningful work can become the excuse",
+                  "excerptSha256": "03b165fb87212dedc01e3dea6208f87161fc2610966f9b09124a8f2a2b64cf7f"
+                },
+                {
+                  "url": "https://gkoreli.com/productive-procrastination#i-want-to-keep-the-excitement",
+                  "title": "I want to keep the excitement",
+                  "excerptSha256": "f4a6dd39b569f58978bc3183ee2cb30e6600e1a3afce8f010df45d1e49f0e935"
+                }
+              ]
+            }
+          ],
+          "rankingDigests": "db19d121a25e4e07d97c00bbf1264e585f1513291725cb30980947fe42933289",
+          "timing": 3.1338329999999814
+        }
+      }
+    },
+    {
+      "id": "S14-recollection",
+      "article": "productive-procrastination",
+      "form": "recollection",
+      "knownBlocks": null,
+      "conditions": {
+        "raw": {
+          "articleAt1": false,
+          "articleAt3": false,
+          "jointBlock": null,
+          "rank": null,
+          "articles": [],
+          "rankingDigests": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "timing": 1.1906669999999622
+        },
+        "prepared": {
+          "articleAt1": false,
+          "articleAt3": false,
+          "jointBlock": null,
+          "rank": null,
+          "articles": [],
+          "rankingDigests": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "timing": 0.7598330000000146
+        }
+      }
+    },
+    {
+      "id": "S14-typo",
+      "article": "productive-procrastination",
+      "form": "typo",
+      "knownBlocks": null,
+      "conditions": {
+        "raw": {
+          "articleAt1": true,
+          "articleAt3": true,
+          "jointBlock": null,
+          "rank": 1,
+          "articles": [
+            {
+              "article": "productive-procrastination",
+              "score": 53.99530029296875,
+              "sections": [
+                {
+                  "url": "https://gkoreli.com/productive-procrastination#productive-procrastination-when-meaningful-work-costs-you-sleep",
+                  "title": "Productive Procrastination: When Meaningful Work Costs You Sleep",
+                  "excerptSha256": "59140cbb33024fcc85d640107b54fa161a5c4260cc1c6b0575254212f3a838cf"
+                },
+                {
+                  "url": "https://gkoreli.com/productive-procrastination#meaningful-work-can-become-the-excuse",
+                  "title": "Meaningful work can become the excuse",
+                  "excerptSha256": "1f32ef333bf7d0a4e63816ac9c769552c989938673bd472f6b32cb1c07cfc249"
+                },
+                {
+                  "url": "https://gkoreli.com/productive-procrastination#the-missing-plan-may-come-before-the-interruption",
+                  "title": "The missing plan may come before the interruption",
+                  "excerptSha256": "3cddab9cb703a4e544a7ff3fa876b1780c0e0b0402f109544d6780154d796be3"
+                }
+              ]
+            },
+            {
+              "article": "procrastination-is-a-craft-youve-been-mastering-your-entire-life",
+              "score": 19.635150909423828,
+              "sections": [
+                {
+                  "url": "https://gkoreli.com/procrastination-is-a-craft-youve-been-mastering-your-entire-life",
+                  "excerptSha256": "ad392b9815833136756507c2622a6c93e437f55ceb30cabf0f1a03d31b51fb86"
+                }
+              ]
+            }
+          ],
+          "rankingDigests": "af17c59899c208b2b424d7c70376ee6d97a07552955591a2165a2cba38c2d284",
+          "timing": 3.3787920000000327
+        },
+        "prepared": {
+          "articleAt1": true,
+          "articleAt3": true,
+          "jointBlock": null,
+          "rank": 1,
+          "articles": [
+            {
+              "article": "productive-procrastination",
+              "score": 53.99530029296875,
+              "sections": [
+                {
+                  "url": "https://gkoreli.com/productive-procrastination#productive-procrastination-when-meaningful-work-costs-you-sleep",
+                  "title": "Productive Procrastination: When Meaningful Work Costs You Sleep",
+                  "excerptSha256": "59140cbb33024fcc85d640107b54fa161a5c4260cc1c6b0575254212f3a838cf"
+                },
+                {
+                  "url": "https://gkoreli.com/productive-procrastination#meaningful-work-can-become-the-excuse",
+                  "title": "Meaningful work can become the excuse",
+                  "excerptSha256": "1f32ef333bf7d0a4e63816ac9c769552c989938673bd472f6b32cb1c07cfc249"
+                },
+                {
+                  "url": "https://gkoreli.com/productive-procrastination#the-missing-plan-may-come-before-the-interruption",
+                  "title": "The missing plan may come before the interruption",
+                  "excerptSha256": "3cddab9cb703a4e544a7ff3fa876b1780c0e0b0402f109544d6780154d796be3"
+                }
+              ]
+            },
+            {
+              "article": "procrastination-is-a-craft-youve-been-mastering-your-entire-life",
+              "score": 19.635150909423828,
+              "sections": [
+                {
+                  "url": "https://gkoreli.com/procrastination-is-a-craft-youve-been-mastering-your-entire-life",
+                  "excerptSha256": "ad392b9815833136756507c2622a6c93e437f55ceb30cabf0f1a03d31b51fb86"
+                }
+              ]
+            }
+          ],
+          "rankingDigests": "af17c59899c208b2b424d7c70376ee6d97a07552955591a2165a2cba38c2d284",
+          "timing": 2.9103749999999877
+        }
+      }
+    },
+    {
+      "id": "S15-topic",
+      "article": "oss-radar-03-buzz-is-slack-on-airoids",
+      "form": "topic",
+      "knownBlocks": null,
+      "conditions": {
+        "raw": {
+          "articleAt1": true,
+          "articleAt3": true,
+          "jointBlock": null,
+          "rank": 1,
+          "articles": [
+            {
+              "article": "oss-radar-03-buzz-is-slack-on-airoids",
+              "score": 40.44124984741211,
+              "sections": [
+                {
+                  "url": "https://gkoreli.com/oss-radar-03-buzz-is-slack-on-airoids",
+                  "excerptSha256": "4aa5a5a7d654ec98e351ba55294186c08e6675ae6167941f5f65bb747c75fc2c"
+                }
+              ]
+            }
+          ],
+          "rankingDigests": "6f3c6f5467218ca4658f2de62bb53c3d1e10b069dd60af434b59bcce28121eec",
+          "timing": 1.872333000000026
+        },
+        "prepared": {
+          "articleAt1": true,
+          "articleAt3": true,
+          "jointBlock": null,
+          "rank": 1,
+          "articles": [
+            {
+              "article": "oss-radar-03-buzz-is-slack-on-airoids",
+              "score": 38.415836334228516,
+              "sections": [
+                {
+                  "url": "https://gkoreli.com/oss-radar-03-buzz-is-slack-on-airoids",
+                  "excerptSha256": "4aa5a5a7d654ec98e351ba55294186c08e6675ae6167941f5f65bb747c75fc2c"
+                }
+              ]
+            }
+          ],
+          "rankingDigests": "44cb5f3e6afdef3d3f5fd0aeab9af09862788e0065d66390c7fbd6ca1016b36b",
+          "timing": 0.8878750000000082
+        }
+      }
+    },
+    {
+      "id": "S15-recollection",
+      "article": "oss-radar-03-buzz-is-slack-on-airoids",
+      "form": "recollection",
+      "knownBlocks": null,
+      "conditions": {
+        "raw": {
+          "articleAt1": false,
+          "articleAt3": false,
+          "jointBlock": null,
+          "rank": null,
+          "articles": [
+            {
+              "article": "oss-radar-14-november-show-hn",
+              "score": 18.35764503479004,
+              "sections": [
+                {
+                  "url": "https://gkoreli.com/oss-radar-14-november-show-hn#oss-radar-14-novembers-show-hn-open-source-launches",
+                  "title": "OSS Radar #14: November’s Show HN Open-Source Launches",
+                  "excerptSha256": "3f3c78cc9e9226fcdf5c4e0a301b9ec266e04946d61402329f1b7370d88080f4"
+                },
+                {
+                  "url": "https://gkoreli.com/oss-radar-14-november-show-hn#the-source",
+                  "title": "The source",
+                  "excerptSha256": "e9a9c1088ab665321431094d1fa3b4641e064449595a27b40c12279da0e50d68"
+                },
+                {
+                  "url": "https://gkoreli.com/oss-radar-14-november-show-hn#the-projects",
+                  "title": "The projects",
+                  "excerptSha256": "4bb3ab8196b111509264419721d0cb64e0bf2970b96c03a581b2b6d872d77ec1"
+                }
+              ]
+            }
+          ],
+          "rankingDigests": "3cdf0195b1fbc56477ea96289b3e269c8d54c345419acf00c58520c802cec70f",
+          "timing": 6.43420900000001
+        },
+        "prepared": {
+          "articleAt1": false,
+          "articleAt3": false,
+          "jointBlock": null,
+          "rank": null,
+          "articles": [
+            {
+              "article": "oss-radar-14-november-show-hn",
+              "score": 14.891768455505371,
+              "sections": [
+                {
+                  "url": "https://gkoreli.com/oss-radar-14-november-show-hn#oss-radar-14-novembers-show-hn-open-source-launches",
+                  "title": "OSS Radar #14: November’s Show HN Open-Source Launches",
+                  "excerptSha256": "7705cd64d4a5938656a5a90a2fe2eea34d19b90c4355bc6b58a94e21ee88a3fb"
+                },
+                {
+                  "url": "https://gkoreli.com/oss-radar-14-november-show-hn#the-source",
+                  "title": "The source",
+                  "excerptSha256": "c146c2e5fbd0aef0b143d9917e04a24d00dabf3f6e41a63666d298c44641fad7"
+                },
+                {
+                  "url": "https://gkoreli.com/oss-radar-14-november-show-hn#modern-web-guidance-current-browser-guidance-for-coding-agents",
+                  "title": "Modern Web Guidance: current browser guidance for coding agents",
+                  "excerptSha256": "b4112ce63dc815e3a2ab003ce72b475aac820745c434217e8ea3e4ab0746a257"
+                }
+              ]
+            }
+          ],
+          "rankingDigests": "5a270a0c573523bcf11ed1cf13a50d023f111911d9e3f87b2939891db1cff76a",
+          "timing": 4.088415999999995
+        }
+      }
+    },
+    {
+      "id": "S15-typo",
+      "article": "oss-radar-03-buzz-is-slack-on-airoids",
+      "form": "typo",
+      "knownBlocks": null,
+      "conditions": {
+        "raw": {
+          "articleAt1": true,
+          "articleAt3": true,
+          "jointBlock": null,
+          "rank": 1,
+          "articles": [
+            {
+              "article": "oss-radar-03-buzz-is-slack-on-airoids",
+              "score": 35.1707763671875,
+              "sections": [
+                {
+                  "url": "https://gkoreli.com/oss-radar-03-buzz-is-slack-on-airoids",
+                  "excerptSha256": "7c91d253cd4792bcc17dfe6c7f56b5710d10706d6d084d5308c81cc18898aa8b"
+                }
+              ]
+            }
+          ],
+          "rankingDigests": "62b5114aed35bdacfeabd4c513496ff786fd6444996c8389171cf8d592a1fc22",
+          "timing": 1.321124999999995
+        },
+        "prepared": {
+          "articleAt1": true,
+          "articleAt3": true,
+          "jointBlock": null,
+          "rank": 1,
+          "articles": [
+            {
+              "article": "oss-radar-03-buzz-is-slack-on-airoids",
+              "score": 35.1707763671875,
+              "sections": [
+                {
+                  "url": "https://gkoreli.com/oss-radar-03-buzz-is-slack-on-airoids",
+                  "excerptSha256": "7c91d253cd4792bcc17dfe6c7f56b5710d10706d6d084d5308c81cc18898aa8b"
+                }
+              ]
+            }
+          ],
+          "rankingDigests": "62b5114aed35bdacfeabd4c513496ff786fd6444996c8389171cf8d592a1fc22",
+          "timing": 1.0541660000000093
+        }
+      }
+    },
+    {
+      "id": "N04",
+      "article": null,
+      "form": "no-known-answer",
+      "knownBlocks": null,
+      "conditions": {
+        "raw": {
+          "articleAt1": false,
+          "articleAt3": false,
+          "jointBlock": null,
+          "rank": null,
+          "articles": [],
+          "rankingDigests": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "timing": 0.7080840000000421
+        },
+        "prepared": {
+          "articleAt1": false,
+          "articleAt3": false,
+          "jointBlock": null,
+          "rank": null,
+          "articles": [],
+          "rankingDigests": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "timing": 0.371249999999975
+        }
+      }
+    },
+    {
+      "id": "N05",
+      "article": null,
+      "form": "no-known-answer",
+      "knownBlocks": null,
+      "conditions": {
+        "raw": {
+          "articleAt1": false,
+          "articleAt3": false,
+          "jointBlock": null,
+          "rank": null,
+          "articles": [],
+          "rankingDigests": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "timing": 0.6730000000000018
+        },
+        "prepared": {
+          "articleAt1": false,
+          "articleAt3": false,
+          "jointBlock": null,
+          "rank": null,
+          "articles": [],
+          "rankingDigests": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "timing": 0.5600000000000023
+        }
+      }
+    },
+    {
+      "id": "N06",
+      "article": null,
+      "form": "no-known-answer",
+      "knownBlocks": null,
+      "conditions": {
+        "raw": {
+          "articleAt1": false,
+          "articleAt3": false,
+          "jointBlock": null,
+          "rank": null,
+          "articles": [],
+          "rankingDigests": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "timing": 0.5818340000000148
+        },
+        "prepared": {
+          "articleAt1": false,
+          "articleAt3": false,
+          "jointBlock": null,
+          "rank": null,
+          "articles": [],
+          "rankingDigests": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "timing": 0.3391669999999749
+        }
+      }
+    }
+  ]
+}
