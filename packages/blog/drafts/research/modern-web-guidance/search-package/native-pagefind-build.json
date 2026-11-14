@@ -1,0 +1,240 @@
+{
+  "completedAt": "2026-11-14T20:45:43.848Z",
+  "version": "1.6.0",
+  "mode": "Native HTML pages; .post-content; English; default ranking",
+  "sourceCommit": "19d8f8971d1d74b9118c7819bfbb55aa26f7ba9d",
+  "corpusSha256": "d3de0d29a58f46fa12bfde0a347d361ff0116c27cbd7193f4e4b43e0ca0219ea",
+  "totalBuildMs": 361.80025,
+  "htmlInputs": [
+    {
+      "article": "the-agentic-product-engineer",
+      "bytes": 28252,
+      "sha256": "cbf5751d3854add2d62720487f24ea7fdb15c24f2e89768d54f4efadff9fca85"
+    },
+    {
+      "article": "oss-radar-01-vercel-winter-2026-cohort",
+      "bytes": 86331,
+      "sha256": "10547e16186dcab426d156fa8333d98a10515fe551596cfedb0ff70c875d3f23"
+    },
+    {
+      "article": "how-ghx-was-born",
+      "bytes": 40093,
+      "sha256": "92ab3e8385334132b4108c46a2d9676be2cab0e4ca658f0fafc7541d9dd961b9"
+    },
+    {
+      "article": "topologies-of-thoughts",
+      "bytes": 42841,
+      "sha256": "1790e12fb0b5dd743e7c306135d9cd707798bc1a89c044cd5615f88c5f1e58d5"
+    },
+    {
+      "article": "procrastination-is-a-craft-youve-been-mastering-your-entire-life",
+      "bytes": 46427,
+      "sha256": "77962c0681cce759555792e5f98045013e0e84ebee9e299154da51c805b38f0b"
+    },
+    {
+      "article": "oss-radar-02-the-toolchain-is-the-moat",
+      "bytes": 42820,
+      "sha256": "bbad588daa7e287bc297b8170664080f2de8b96688cefdfa8890164d592fe674"
+    },
+    {
+      "article": "you-dont-need-codemap",
+      "bytes": 47642,
+      "sha256": "d999ccf71ef613e1c37b00c95eb6d7c3f5be1df11012d41cf1dee7c2167a40c6"
+    },
+    {
+      "article": "life-as-background-music",
+      "bytes": 19031,
+      "sha256": "5cd3324c853cfe45ff7a688b7cce8e43e6172314224c2156c9db02f1c1fafb53"
+    },
+    {
+      "article": "linux-signal-stack-conflict",
+      "bytes": 43346,
+      "sha256": "2157dbc01424972c51f4d669a5a52d6ce6a32f83a9ca148256e0de3d94dd6e85"
+    },
+    {
+      "article": "i-thought-building-was-enough",
+      "bytes": 22749,
+      "sha256": "9df3467573f3b930fb6fab3e8663dc73d7dd966a5b90b094c3020e56cd53839b"
+    },
+    {
+      "article": "what-if-the-agent-was-better-before-we-helped",
+      "bytes": 29235,
+      "sha256": "6a4ff326289edf3cc609d9258db81fe49308ba13b73f693f848593ebb924deb5"
+    },
+    {
+      "article": "one-hundred-pull-requests",
+      "bytes": 79926,
+      "sha256": "dbbdc11853c82d01f0651984fd34be1abaeccd11dbf49fd8e8ae6e942312f0be"
+    },
+    {
+      "article": "i-am-lost-right-now",
+      "bytes": 19554,
+      "sha256": "f5c3d4a5b53e6714eae208cf0ff78e1cb1e707b690edec51981eba1b8a407d91"
+    },
+    {
+      "article": "openwiki-validates-my-bet",
+      "bytes": 20234,
+      "sha256": "5bab23c1f2865f389186b71f18622e2189f08ca37eaa806e5970c0ba3f22b648"
+    },
+    {
+      "article": "oss-radar-03-buzz-is-slack-on-airoids",
+      "bytes": 63604,
+      "sha256": "926490d6a494231495b189f0b05255daf3239822748b5c0c31ada6b52a852c49"
+    },
+    {
+      "article": "bring-your-own-ai-agent",
+      "bytes": 46255,
+      "sha256": "98416b0eb736a910eeed3034973b3c77d650217cf8f056bb15486a506e30f259"
+    },
+    {
+      "article": "oss-radar-04-the-agent-multiplexer-is-becoming-a-runtime",
+      "bytes": 36912,
+      "sha256": "8a0f06595d9df53c5f75b2003c9c0b6cc00dac1a680105049d226d584611c0fa"
+    },
+    {
+      "article": "my-evals-say-it-works-i-dont-use-it",
+      "bytes": 33860,
+      "sha256": "d9f14b3d42431019cd29c4ef255c64e92dc33936b9e24f04d5606ead09dd1c70"
+    },
+    {
+      "article": "does-llms-txt-work",
+      "bytes": 72521,
+      "sha256": "cebdaea6a64d0e76923cca47e3817de6f50564c092e217d305524dc76a9b5fb8"
+    },
+    {
+      "article": "first-party-analytics-for-a-personal-blog",
+      "bytes": 61688,
+      "sha256": "489388b678ec78af793266632c440614a16bbfa97972fe7a1166db5396a8dbff"
+    },
+    {
+      "article": "oss-radar-05-bun-1-4",
+      "bytes": 68426,
+      "sha256": "492d48266ffd451ed448145bf3e1871cbbf67e0fc98be9de46d1dc578d0bd774"
+    },
+    {
+      "article": "oss-radar-06-interp-engine",
+      "bytes": 57548,
+      "sha256": "a00a0b606b42863f29b5a735473cb3352b5958fb7fcdc913671e2ff7829f752f"
+    },
+    {
+      "article": "which-ai-fetchers-send-which-headers",
+      "bytes": 76456,
+      "sha256": "5b874bfbc272838da5820f788f3abf9d5db8c14bee703fdeb1a17abdbb94902f"
+    },
+    {
+      "article": "how-i-separate-readers-from-bots-without-javascript",
+      "bytes": 47501,
+      "sha256": "c9390f264136a64720ba1d81dd20584b635ed814bfe6dc8b1f1a15485bad2fea"
+    },
+    {
+      "article": "filter-referrer-spam-without-deleting-analytics-history",
+      "bytes": 38923,
+      "sha256": "da8ca6a2b1ccbbe7234bf88842a971a9fe5df2cdde549f2ca836543779ac17af"
+    },
+    {
+      "article": "oss-radar-07-ai-citations",
+      "bytes": 57719,
+      "sha256": "8adcd62443dcd1c1a0ed9cdb522da3f2ed251f4fa28fae171d01587d1d8a4265"
+    },
+    {
+      "article": "productive-procrastination",
+      "bytes": 33797,
+      "sha256": "b026acc0a3136d2771ed4a24cf72002c5bc71d8bebf5931d2730f8ec1926f15d"
+    },
+    {
+      "article": "chatgpt-plugin-apps",
+      "bytes": 40299,
+      "sha256": "4f435fda1e76b6322ac98f7fbfed0e9173806d487f7f1b5e3ec041a72a5d423e"
+    },
+    {
+      "article": "openclaw-chose-solid-why-id-choose-nisli",
+      "bytes": 51229,
+      "sha256": "4f47db3ceef96478d5319b4bf250c5ed1117f0b0837a00b50ee3dd35b1074ec0"
+    },
+    {
+      "article": "building-blog-analytics-what-the-numbers-can-prove",
+      "bytes": 29092,
+      "sha256": "0919379dc7dd857013bc7835f0d03780eee05565ac89ddb3d7e1b0acd7052c34"
+    },
+    {
+      "article": "oss-radar-08-bun-aot",
+      "bytes": 30171,
+      "sha256": "27ed2e405eb761cc38486fba97adf4a5f1fbacffaaf2a99113cf315e41e11ed7"
+    },
+    {
+      "article": "why-worktree-setup-is-slow-on-macos",
+      "bytes": 22486,
+      "sha256": "8210a6949bfd9bceb2b2e3da92bbf3770e7f58cfb26ef765a37b2699f92a297f"
+    },
+    {
+      "article": "oss-radar-09-tsrs-typescript-memory",
+      "bytes": 22651,
+      "sha256": "87430c98a07a79868df6636fd5f1872bbc747d31dc422b124b721c3380cf49fa"
+    },
+    {
+      "article": "oss-radar-10-paperpilot-redaction",
+      "bytes": 22835,
+      "sha256": "c242364e94577ffa4421f7c630897cb400d55944120097bf0fe4efb0eb999b4b"
+    },
+    {
+      "article": "oss-radar-11-qwenputer-compiled-cpu",
+      "bytes": 20628,
+      "sha256": "bc9137bdf93342af059db6cc04bad94b4a84be8d561fb6b62aded8c7115259f1"
+    },
+    {
+      "article": "oss-radar-12-claude-code-status-summary",
+      "bytes": 20297,
+      "sha256": "8f920aba86294fe723d1165831816f8aef8056719eb1a988c8cc8e47205cfeff"
+    },
+    {
+      "article": "oss-radar-13-hob-offline-file-tasks",
+      "bytes": 20959,
+      "sha256": "86bbdebc486f0d7f2572d2b0daf6b912e894544be50c6bc0091a88602e031e87"
+    },
+    {
+      "article": "ai-fetcher-research-from-experiments-to-a-cited-reference",
+      "bytes": 40028,
+      "sha256": "c4e2fc3744b46b50c9868330fed38bdfa0ec97b7aa3a910b5cd06fa8e4d6fef3"
+    },
+    {
+      "article": "bun-aot-express-fastify-serializers",
+      "bytes": 29304,
+      "sha256": "ba03cb4f310202d33af506a5b0b8a3e15757c8292f563e0fbfcf97a3355ba8bd"
+    },
+    {
+      "article": "in-the-age-of-abundance-less-is-more",
+      "bytes": 21612,
+      "sha256": "58af7370a19d796853d26c39f783bbf65f764a63e45578f2efa92805a65ca2ca"
+    },
+    {
+      "article": "ai-fetcher-browser-crawler-headers",
+      "bytes": 79597,
+      "sha256": "6a79852fcab0cb9db05401f3aab177713d16f7f9ee06af336443717a03333a47"
+    },
+    {
+      "article": "ai-site-check-evidence",
+      "bytes": 32315,
+      "sha256": "001f7afa490960818db561897edaab776c42d1e48833beaf746185b1042205fe"
+    },
+    {
+      "article": "cloudflare-turnstile-signup-failures",
+      "bytes": 47422,
+      "sha256": "dffde64b341075173bfe38f394b5791d5d9abdc9c2255262926ba8101942a3fb"
+    },
+    {
+      "article": "please-stop-misreading-user-agent",
+      "bytes": 47481,
+      "sha256": "b5647061290aa255299d7e14bfa88e70860bef88f36524d1c914576442b20d66"
+    },
+    {
+      "article": "oss-radar-14-november-show-hn",
+      "bytes": 51709,
+      "sha256": "6e373824e43d403b25147603ad7708b8d21d760d268bf992a9dec22cfb044002"
+    },
+    {
+      "article": "prompt-cache-context-edits",
+      "bytes": 68654,
+      "sha256": "61133fda4ee6cb56e9b5f5e69b169ee3340018950b5858d4cd994816ec613660"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "frozenAt": "2026-11-14T20:48:44.626Z",
+  "afterInitialDevelopment": true,
+  "beforeReservedValidation": true,
+  "initialInputCommit": "1d259829",
+  "developmentReceiptSha256": "97877cbba50eef3bd7841978b075ea3e7f35e37ec0d9f93ddf5d8349c79d2bea",
+  "files": {
+    "amendment-01.md": "3d471155230aaade8fa9d951cebfa48394691b7c960777526ff782e5b5ab9ef9",
+    "build-native-pagefind.mjs": "803e27b0675a6b065ff4248dd849cf6659ac29f3e94e4d0374a6d4d2076f610c",
+    "evaluate-native-pagefind.mjs": "9e822495d1e6f2f5c0b9e6820804c7db8c9d5e250c33225bee25763457258c91",
+    "download-reranker.mjs": "fe2149850871687b8f2f781369803b35e1e2bb05d069efb04622c15d1b837f9e",
+    "reranker.mjs": "667eebb5e07297eda5d96221ca100b1da3728dde72ad9c438edf615275ca561b",
+    "evaluate-reranking.mjs": "e7f8a8531d2777cdb85ba9f968ae1ae8682df648cf0405d1ad411f3805bc2e52",
+    "reranker-model.json": "bdfad2b018b912a1615a302141e6d6644bce63a057debb5dcc82e19f703542c1",
+    "native-pagefind-build.json": "9743837a19ae533b83a396c49100a72617024603d0ffef08eb1bc63234a0c2d8"
+  },
+  "boundary": "Additional development conditions; no labels or initial ranks changed. Non-blog fixture confirms local reranker loads and emits finite single logits."
+}
