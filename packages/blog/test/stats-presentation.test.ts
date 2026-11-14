@@ -35,10 +35,14 @@ test('classification labels retain compound evidence without leaking diagnostic 
 test('Stats puts the trend before detail, labels its native filters and preserves navigable visible results', async () => {
   const [snapshot] = await renderContent([statsPage([{ path: '/example', title: 'Example <title>' }])]); assert.ok(snapshot);
   const root = document.createElement('div'); root.innerHTML = snapshot;
-  const select = root.querySelector('select#stats-traffic'); assert.ok(select);
-  assert.equal(select.querySelectorAll('option').length, 6);
-  assert.equal(root.querySelector('label[for="stats-traffic"]')?.textContent, 'Traffic');
+  const traffic = root.querySelector('fieldset#stats-traffic'); assert.ok(traffic);
+  assert.equal(traffic.querySelector('legend')?.textContent, 'Traffic');
+  assert.deepEqual(Array.from(traffic.querySelectorAll('input[type="radio"]'), input => input.getAttribute('value')), ['all', 'browser', 'agents', 'crawlers', 'automation', 'unresolved']);
+  assert.equal(traffic.querySelectorAll('input[checked]').length, 1);
+  assert.equal(traffic.querySelector('input[checked]')?.getAttribute('value'), 'all');
+  assert.match(root.querySelector('#stats-traffic-help')?.textContent ?? '', /request signals, not verified people/);
   assert.equal(root.querySelectorAll('[data-days]').length, 4);
+  assert.equal(root.querySelector('[data-days][checked]')?.getAttribute('value'), '30d');
   assert.ok(snapshot.indexOf('id="stats-activity"') < snapshot.indexOf('id="stats-client-form-section"'));
   assert.ok(snapshot.indexOf('id="stats-activity"') < snapshot.indexOf('id="stats-pages"'));
   assert.equal(root.querySelectorAll('.data-metric').length, 2);

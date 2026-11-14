@@ -1,0 +1,114 @@
+{
+  "version": 1,
+  "measuredAt": "2026-11-14T16:13:09.387206+00:00",
+  "implementationCommit": "9ff2a91d813146955ebaf2e4de539a198ad7049b",
+  "sourceCommit": "9ff2a91d813146955ebaf2e4de539a198ad7049b",
+  "cloudflareBuild": "304e8f30-a71a-4962-b39b-b78e6a69177b",
+  "method": "Five fresh read-only page/asset GETs. Match served identity and implementation ancestry, parse native filter values/defaults, and compare exact built assets. Raw captures remain outside Git.",
+  "localChecks": {
+    "types": true,
+    "siteTests": 442,
+    "markdownValidation": 35,
+    "builtPosts": 46,
+    "referralPolicy": true,
+    "privatePromptGuard": true,
+    "desktopControlHeightPx": 64,
+    "phoneWidths": [
+      393,
+      320
+    ],
+    "minimumTargetHeightPx": 44,
+    "keyboardTrafficSelection": "browser",
+    "keyboardPeriodSelection": "7d",
+    "historyRestoresBothGroups": true,
+    "controlledUnavailableState": true,
+    "sharedPatternNativeSelection": true
+  },
+  "responses": [
+    {
+      "path": "/stats",
+      "status": 200,
+      "sha256": "2930c41069507a29b226bd40e57ece5782c121c212967768a7458637ea6833e1",
+      "passed": true,
+      "source": "9ff2a91d813146955ebaf2e4de539a198ad7049b",
+      "build": "304e8f30-a71a-4962-b39b-b78e6a69177b",
+      "containsImplementation": true
+    },
+    {
+      "path": "/design-language",
+      "status": 200,
+      "sha256": "1efe48bf2930c6c370bf0e4924d1a3394793624e62f9b360a848d2a6cf826dba",
+      "passed": true,
+      "source": "9ff2a91d813146955ebaf2e4de539a198ad7049b",
+      "build": "304e8f30-a71a-4962-b39b-b78e6a69177b",
+      "containsImplementation": true
+    },
+    {
+      "path": "/stats.css",
+      "status": 200,
+      "sha256": "ea318aea4357eb73b8091f8727398504bc635449c8eeecf824f612fb1e45c7e7",
+      "passed": true
+    },
+    {
+      "path": "/stats.js",
+      "status": 200,
+      "sha256": "f21186e4ab02bc2a889fba50d9e8b94927553e68561808079f3f58d77f7139e9",
+      "passed": true
+    },
+    {
+      "path": "/main.css",
+      "status": 200,
+      "sha256": "af46ff870eacd871b9372f53dcacd2ac98c8f07373ca42397f7e1f9b761036e2",
+      "passed": true
+    }
+  ],
+  "checks": {
+    "sameServedIdentity": true,
+    "/stats traffic choices": true,
+    "/stats period choices": true,
+    "/stats defaults": true,
+    "/stats native radios": true,
+    "/design-language traffic choices": true,
+    "/design-language period choices": true,
+    "/design-language defaults": true,
+    "/design-language native radios": true,
+    "exact /stats.css": true,
+    "exact /stats.js": true,
+    "exact /main.css": true
+  },
+  "limits": [
+    "Local report rendering uses a dated saved public response.",
+    "Non-default local selections deliberately return unavailable; those checks establish selection, error handling and history.",
+    "No analytics collection, classification, query or database mutation changes are included.",
+    "Visual review does not establish reader comprehension."
+  ],
+  "browserChecks": {
+    "measuredAt": "2026-11-14T16:14:46.770Z",
+    "liveCategorySelection": true,
+    "liveJsonDestination": true,
+    "filteredReportVisible": true,
+    "filteredMixMatchesHeadline": true,
+    "nativeKeyboardFocusVisible": true,
+    "backRestoresBothSelections": true,
+    "desktopControlHeightPx": 64,
+    "desktopOverflow": false,
+    "phones": [
+      {
+        "categoryRows": 2,
+        "minTargetHeight": 44,
+        "minTargetWidth": 54.6484375,
+        "overflow": false,
+        "theme": "dark",
+        "width": 320
+      },
+      {
+        "categoryRows": 2,
+        "overflow": false,
+        "theme": "light",
+        "width": 393
+      }
+    ],
+    "scope": "One live 30-day Browser signals selection, followed by Back to All traffic. Period changes were checked with the controlled local unavailable response; no live period-query grid was run.",
+    "screenshots": "Native captures of the actual toolbar and phone layout remain outside Git."
+  }
+}
