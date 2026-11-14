@@ -4,6 +4,8 @@ November 14, 2026 UTC. Investigation complete; the implementation sequence below
 
 The next useful Stats iteration should explain changes in reach, sustained article demand and acknowledged actions. The request-evidence machinery already supports detailed inspection. More of that machinery alone would leave the principal publishing questions unanswered.
 
+**Priority update, November 14:** [Agent access is now the selected next Stats direction](agent-access-stats.md), ahead of the generic build order below. Its first proposed milestone connects article/resource access, declared clients, served formats and measurement coverage. The initial observation, assessment and receipt here remain dated evidence.
+
 ## Current observation
 
 The live browser loaded the default All traffic / 30 days report on November 14. It displayed October 16–November 14 UTC, calculated at 17:02 UTC: **15,241 page views**, **8,458 daily client identifiers**, and **48 referral-policy exclusions**. The current day is partial and cached reports can be an hour old. The [normalized receipt](stats-reader-understanding-2026-11-14.json) records only the inspected public values and their limits.
@@ -78,6 +80,6 @@ Persistent returning-person tracking would require changing the accepted cross-d
 
 Source reviewed at `7b59404cebb6375bcf53cf06e6f9ad266c3f2154`, with the analytics/newsletter/Stats paths clean. The investigation checked live UI values against simple group/referrer arithmetic and inspected the collection/report/confirmation paths. It did not read subscriber records, independently replay the live report, benchmark a new query, change code, enable events or measure attention or editorial usefulness.
 
-Documentation checks passed: 69 local links across this record and its owning index, receipt JSON parsing, group/referrer reconciliation, source-commit existence, balanced fences, the private-prompt guard and scoped whitespace. Runtime tests and a production build are not applicable to these documentation-only changes.
+Initial documentation checks passed: 69 local links across this record and its owning index, receipt JSON parsing, group/referrer reconciliation, source-commit existence, balanced fences, the private-prompt guard and scoped whitespace. The later priority continuation records its own expanded link check. Runtime tests and a production build are not applicable to these documentation-only changes.
 
-Next bounded implementation proposal: a completed-period publishing overview with article and traffic-group contributions, backed by native-tested, metered aggregates. Existing reports remain useful while the new contract is defined. This proposal does not reopen completed signature, migration or Stats visual acceptance work.
+Initial implementation proposal: a completed-period publishing overview with article and traffic-group contributions. The later [agent-access priority](agent-access-stats.md) supersedes that build order while retaining the native-tested, metered reporting requirements. This does not reopen completed signature, migration or Stats visual acceptance work.
