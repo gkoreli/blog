@@ -1,0 +1,319 @@
+{
+  "version": 1,
+  "measuredAt": "2026-11-14T20:16:52.184114+00:00",
+  "implementationCommit": "b34419498e37c9dd94c631a5d185effd232f4dea",
+  "sourceCommit": "b34419498e37c9dd94c631a5d185effd232f4dea",
+  "cloudflareBuild": "64c3aae5-a820-41b8-8a54-bbd8cc801afe",
+  "method": "Twelve marked read-only page/asset GETs; matching served identity, exact client bundles, canonical marked UTC fallback instants, unchanged authored date and deterministic RSS. Raw captures stay outside Git.",
+  "responses": [
+    {
+      "path": "/ai-check/example",
+      "status": 200,
+      "sha256": "85dd0ff8aa415b147e96e6902fadfcaebeeceda84971513615e824792258a00e",
+      "build": "64c3aae5-a820-41b8-8a54-bbd8cc801afe",
+      "source": "b34419498e37c9dd94c631a5d185effd232f4dea"
+    },
+    {
+      "path": "/which-ai-fetchers-send-which-headers",
+      "status": 200,
+      "sha256": "ad0b3627dec2d6401c5a6ed989b2a603d19fc08ef5abcb7dd7f62f5edb3ed206",
+      "build": "64c3aae5-a820-41b8-8a54-bbd8cc801afe",
+      "source": "b34419498e37c9dd94c631a5d185effd232f4dea"
+    },
+    {
+      "path": "/tools/compare",
+      "status": 200,
+      "sha256": "6e0a9f0a53fb5b446607da9be12d42e662d80b3f79c6f1d92001c03446140012",
+      "build": "64c3aae5-a820-41b8-8a54-bbd8cc801afe",
+      "source": "b34419498e37c9dd94c631a5d185effd232f4dea"
+    },
+    {
+      "path": "/tools/request-inspector",
+      "status": 200,
+      "sha256": "f1dcf65e9352f08df627094819a27181e24644f13e2bcc4e395c82e658cbed5b",
+      "build": "64c3aae5-a820-41b8-8a54-bbd8cc801afe",
+      "source": "b34419498e37c9dd94c631a5d185effd232f4dea"
+    },
+    {
+      "path": "/main.js",
+      "status": 200,
+      "sha256": "5a5f05e46ca5163c13fd166044c8b648f96648584c9be655258b03fd96fa4830",
+      "build": "64c3aae5-a820-41b8-8a54-bbd8cc801afe",
+      "source": "b34419498e37c9dd94c631a5d185effd232f4dea"
+    },
+    {
+      "path": "/ai-check.js",
+      "status": 200,
+      "sha256": "3da2947909fd1aa98cb3336706423ceab72fb9c637eac9d83fbc7afced112867"
+    },
+    {
+      "path": "/tools-workbench.js",
+      "status": 200,
+      "sha256": "d3b1caa10c96a84346f0fd35d9e5c1f4caadf0931f46a9842d72faf5fd99f6b2"
+    },
+    {
+      "path": "/request-inspector.js",
+      "status": 200,
+      "sha256": "03a1ccd44a16b4db500f1c3b5019687e0d15beec0cbc1d01edfd4eee934a084e"
+    },
+    {
+      "path": "/feed.xml",
+      "status": 200,
+      "sha256": "3afd67e1815a8a7f207dd1768f67bedc9f5f55e661d1addc1c86b482a2013b46"
+    },
+    {
+      "path": "/privacy",
+      "status": 200,
+      "sha256": "482d1e3a8411aab4f6708852df4b343587b41c3c87d15cf8e18829d6b16629a2",
+      "build": "64c3aae5-a820-41b8-8a54-bbd8cc801afe",
+      "source": "b34419498e37c9dd94c631a5d185effd232f4dea"
+    },
+    {
+      "path": "/oss-radar-05-bun-1-4",
+      "status": 200,
+      "sha256": "c68c2d4f9b5a062956a30586e88d8a7704daec3c456da663adfb0f37e6778806",
+      "build": "64c3aae5-a820-41b8-8a54-bbd8cc801afe",
+      "source": "b34419498e37c9dd94c631a5d185effd232f4dea"
+    },
+    {
+      "path": "/oss-radar-06-interp-engine",
+      "status": 200,
+      "sha256": "eae0bb56d4456c8e0f26f21da6c25facdc71885e85637dd67c8d4105aa29a309",
+      "build": "64c3aae5-a820-41b8-8a54-bbd8cc801afe",
+      "source": "b34419498e37c9dd94c631a5d185effd232f4dea"
+    }
+  ],
+  "checks": {
+    "containsImplementation": true,
+    "matchingPageIdentity": true,
+    "savedReportHasUTCInstantAndFallback": true,
+    "footprintHasTwoMarkedNativeInstants": true,
+    "olderLayoutsHaveMarkedInstants": true,
+    "footprintRendersReadableFallback": true,
+    "authoredDateRetained": true,
+    "exactMainBundle": true,
+    "exactAuditBundle": true,
+    "exactComparisonBundle": true,
+    "exactInspectorBundle": true,
+    "feedUsesDeterministicUTC": true,
+    "calendarDependencyExcludedFromBrowser": true
+  },
+  "implementationCommits": [
+    "921fe086df264e93e336b9de096872b90de90067",
+    "b34419498e37c9dd94c631a5d185effd232f4dea"
+  ],
+  "localChecks": {
+    "types": true,
+    "timeCoreTests": 14,
+    "analyticsTests": 493,
+    "siteTests": 457,
+    "siteAuditTests": 46,
+    "totalTests": 1010,
+    "markdownValidation": 35,
+    "builtPosts": 46,
+    "referralPolicy": true,
+    "privatePromptGuard": true,
+    "generatedTimeAudit": {
+      "htmlPages": 64,
+      "markedUtcInstants": 22,
+      "civilDateElements": 35,
+      "researchFootprintPages": 9,
+      "researchFootprintSections": 11,
+      "errors": []
+    },
+    "sourceFilesAudited": 349,
+    "applicationLocaleFormattersOutsideCore": 0,
+    "nativeBootstrapUtcSerializerExceptions": 1,
+    "nativeToolWorker": {
+      "httpCases": 58,
+      "externalRequests": 0,
+      "quotaAdmissions": 10,
+      "quotaRejections": 20
+    },
+    "nativePortableAnalytics": {
+      "httpCases": 24,
+      "externalRequests": 0,
+      "productionRequests": 0
+    },
+    "nativeAuditTransport": {
+      "targetGets": 8,
+      "dnsRequests": 16,
+      "interceptedFixtures": true
+    }
+  },
+  "liveStats": {
+    "status": 200,
+    "canonicalReferrerCaptureInstant": true,
+    "firstCapturedAt": "2026-11-08T08:00:17.000Z",
+    "selectedTimeZone": "America/Los_Angeles",
+    "pageViewsReconcile": true,
+    "method": "One bounded read-only hosted Stats request; no schema operation or direct database command."
+  },
+  "liveVisual": {
+    "viewerTimezone": "America/Los_Angeles",
+    "desktopWidth": 1440,
+    "savedReport": {
+      "checks": 6,
+      "overflow": 0,
+      "times": [
+        {
+          "instant": "2026-11-06T16:33:45.697Z",
+          "label": "Nov 6, 2026, 8:33 AM PST"
+        }
+      ]
+    },
+    "footprint": {
+      "overflow": 0,
+      "publication": "September 3, 2026",
+      "times": [
+        {
+          "instant": "2026-09-03T03:44:10.071Z",
+          "label": "Sep 2, 2026, 8:44 PM PDT"
+        },
+        {
+          "instant": "2026-09-04T18:03:26.591Z",
+          "label": "Sep 4, 2026, 11:03 AM PDT"
+        }
+      ]
+    },
+    "comparison": {
+      "overflow": 0,
+      "times": [
+        {
+          "instant": "2026-11-06T00:00:00.000Z",
+          "label": "Nov 5, 2026, 4:00 PM PST"
+        },
+        {
+          "instant": "2026-11-06T01:00:00.000Z",
+          "label": "Nov 5, 2026, 5:00 PM PST"
+        }
+      ]
+    },
+    "olderBun320": {
+      "overflow": 0,
+      "sections": 2,
+      "times": [
+        {
+          "instant": "2026-08-26T23:58:34.236Z",
+          "label": "Aug 26, 2026, 4:58 PM PDT"
+        },
+        {
+          "instant": "2026-08-27T04:50:02.563Z",
+          "label": "Aug 26, 2026, 9:50 PM PDT"
+        },
+        {
+          "instant": "2026-08-26T23:58:34.236Z",
+          "label": "Aug 26, 2026, 4:58 PM PDT"
+        },
+        {
+          "instant": "2026-08-27T04:50:02.563Z",
+          "label": "Aug 26, 2026, 9:50 PM PDT"
+        }
+      ]
+    },
+    "olderInterp320": {
+      "overflow": 0,
+      "sections": 2,
+      "times": [
+        {
+          "instant": "2026-09-02T03:42:21.704Z",
+          "label": "Sep 1, 2026, 8:42 PM PDT"
+        },
+        {
+          "instant": "2026-09-02T06:05:20.659Z",
+          "label": "Sep 1, 2026, 11:05 PM PDT"
+        },
+        {
+          "instant": "2026-09-02T03:42:21.704Z",
+          "label": "Sep 1, 2026, 8:42 PM PDT"
+        },
+        {
+          "instant": "2026-09-02T06:05:20.659Z",
+          "label": "Sep 1, 2026, 11:05 PM PDT"
+        }
+      ]
+    },
+    "finalPhone": {
+      "height": 852,
+      "overflow": 0,
+      "times": [
+        {
+          "instant": "2026-11-06T16:33:45.697Z",
+          "label": "Nov 6, 2026, 8:33 AM PST"
+        }
+      ],
+      "width": 393
+    },
+    "viewportReset": true,
+    "productionAssessments": 0
+  },
+  "localVisual": {
+    "viewerTimeZone": "America/Los_Angeles",
+    "desktopWidth": 1440,
+    "phoneWidth": 320,
+    "footprint": {
+      "objectText": false,
+      "overflow": 0,
+      "publication": "September 3, 2026",
+      "times": [
+        {
+          "instant": "2026-09-03T03:44:10.071Z",
+          "label": "Sep 2, 2026, 8:44 PM PDT"
+        },
+        {
+          "instant": "2026-09-04T18:03:26.591Z",
+          "label": "Sep 4, 2026, 11:03 AM PDT"
+        }
+      ]
+    },
+    "comparison": {
+      "overflow": 0,
+      "times": [
+        {
+          "instant": "2026-11-06T00:00:00.000Z",
+          "label": "Nov 5, 2026, 4:00 PM PST"
+        },
+        {
+          "instant": "2026-11-06T01:00:00.000Z",
+          "label": "Nov 5, 2026, 5:00 PM PST"
+        }
+      ]
+    },
+    "serverQuota": {
+      "feedback": "Your network\u2019s free checks reset Nov 14, 2026, 4:00 PM PST.",
+      "overflow": 0,
+      "times": [
+        {
+          "instant": "2026-11-15T00:00:00.000Z",
+          "label": "Nov 14, 2026, 4:00 PM PST"
+        }
+      ],
+      "width": 320
+    },
+    "dynamicQuota": {
+      "feedback": "Your network\u2019s free checks reset Nov 14, 2026, 4:00 PM PST.",
+      "overflow": 0,
+      "time": [
+        {
+          "instant": "2026-11-15T00:00:00.000Z",
+          "label": "Nov 14, 2026, 4:00 PM PST"
+        }
+      ]
+    },
+    "states": "Saved report and footprint; illustrative comparison and quota feedback. No production check or audit.",
+    "themes": [
+      "light",
+      "dark"
+    ]
+  },
+  "limits": [
+    "Storage field representations, UTC database defaults, epoch expiries, privacy rotation and quota/release policies are preserved; no schema migration or historical-data rewrite was performed.",
+    "Publication dates, frozen measurements, article prose, raw JSON/HTTP evidence and recorded version identifiers retain their original meaning.",
+    "All existing provenance sections are retained, including the custom and shared sections on two older article pages; the build audit covers eleven sections across nine pages.",
+    "Server-rendered instants have complete UTC fallback text; the browser enhances marked times using its timezone and locale.",
+    "The pre-module load-failure reporter intentionally emits native UTC ISO before the shared client bundle is available; shared ingestion validates its timestamp.",
+    "Quota feedback is tested with labeled local fixtures and native Worker cases; no production target audit or request inspection was submitted.",
+    "Native runtime/transport measurements use intercepted fixtures, not production attribution or billing evidence.",
+    "Raw captures, screenshots, logs and private source conversations remain outside Git."
+  ]
+}
