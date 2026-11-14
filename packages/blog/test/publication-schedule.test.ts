@@ -7,21 +7,22 @@ import { publishScheduledArticle, readPublicationSchedule } from '../src/lib/pub
 
 const roots: string[] = [];
 const filename = '042-scheduled-test.md';
-const date = '2026-11-06';
-const atEight = new Date('2026-11-06T16:00:00Z');
+const date = '2026-11-16';
+const atEight = new Date('2026-11-16T16:00:00Z');
 
-function fixture(options: { prompts?: boolean; file?: string; contentDate?: string } = {}) {
+function fixture(options: { prompts?: boolean; file?: string; contentDate?: string; date?: string; section?: string } = {}) {
+  const queuedDate = options.date ?? date;
   const root = mkdtempSync(join(tmpdir(), 'blog-publication-'));
   roots.push(root);
-  for (const directory of ['posts', 'prompts', `scheduled/${date}`]) mkdirSync(join(root, directory), { recursive: true });
+  for (const directory of ['posts', 'prompts', `scheduled/${queuedDate}`]) mkdirSync(join(root, directory), { recursive: true });
   const file = options.file ?? filename;
   const config = {
-    timeZone: 'America/Los_Angeles', startDate: date, endDate: '2026-11-30', releaseTime: '08:00',
-    articles: [{ date, file, prompts: options.prompts ?? false }],
+    timeZone: 'America/Los_Angeles', cadence: 'weekly', releaseDay: 'monday', section: 'oss-radar', startDate: date, releaseTime: '08:00',
+    articles: [{ date: queuedDate, file, prompts: options.prompts ?? false }],
   };
-  const source = join(root, 'scheduled', date, file);
+  const source = join(root, 'scheduled', queuedDate, file);
   writeFileSync(join(root, 'publication-schedule.json'), JSON.stringify(config));
-  writeFileSync(source, `---\ntitle: Scheduled test\ndate: "${options.contentDate ?? date}"\ndescription: Test article\nsection: engineering\n---\n\n# Scheduled test\n`);
+  writeFileSync(source, `---\ntitle: Scheduled test\ndate: "${options.contentDate ?? queuedDate}"\ndescription: Test article\nsection: ${options.section ?? 'oss-radar'}\n---\n\n# Scheduled test\n`);
   if (options.prompts) writeFileSync(join(root, 'scheduled', date, 'scheduled-test.prompts.md'), 'Exact shaping prompt.\n');
   return { root, source, config };
 }
@@ -30,7 +31,7 @@ afterEach(() => { for (const root of roots.splice(0)) rmSync(root, { recursive: 
 
 test('uses Pacific time and never promotes before 08:00', async () => {
   const { root, source } = fixture();
-  assert.equal((await publishScheduledArticle(root, new Date('2026-11-06T15:59:59Z'))).changed, false);
+  assert.equal((await publishScheduledArticle(root, new Date('2026-11-16T15:59:59Z'))).changed, false);
   assert.ok(existsSync(source));
   assert.equal((await publishScheduledArticle(root, atEight)).changed, true);
   assert.ok(!existsSync(source));
@@ -51,22 +52,53 @@ test('moves exact article bytes, leaves private notes alone, and is idempotent o
   assert.equal((await publishScheduledArticle(root, atEight)).changed, false);
 });
 
-test('never publishes before the campaign or in December or a later year', async () => {
+test('never publishes before the first Monday or on another weekday', async () => {
   const { root, source } = fixture();
-  for (const instant of ['2026-11-05T18:00:00Z', '2026-12-01T16:00:00Z', '2027-11-06T16:00:00Z']) {
+  for (const instant of ['2026-11-09T18:00:00Z', '2026-11-15T18:00:00Z', '2026-11-17T18:00:00Z']) {
     assert.equal((await publishScheduledArticle(root, new Date(instant))).changed, false);
   }
   assert.ok(existsSync(source));
 });
 
-test('a missing day fails without publishing yesterday’s queued article', async () => {
+test('a missing Monday fails without publishing an older queued article', async () => {
   const { root, source } = fixture();
-  await assert.rejects(publishScheduledArticle(root, new Date('2026-11-07T16:00:00Z')), /No approved article queued/);
+  await assert.rejects(publishScheduledArticle(root, new Date('2026-11-23T16:00:00Z')), /No reviewed OSS Radar article queued/);
+  assert.ok(existsSync(source));
+});
+
+test('weekly publication continues into December and across Pacific daylight saving time', async () => {
+  for (const [day, early, release] of [
+    ['2026-12-07', '2026-12-07T15:59:59Z', '2026-12-07T16:00:00Z'],
+    ['2027-03-15', '2027-03-15T14:59:59Z', '2027-03-15T15:00:00Z'],
+  ] as const) {
+    const { root, source } = fixture({ date: day });
+    assert.equal((await publishScheduledArticle(root, new Date(early))).changed, false);
+    assert.ok(existsSync(source));
+    assert.equal((await publishScheduledArticle(root, new Date(release))).changed, true);
+  }
+});
+
+test('rejects a non-Monday queue entry and a non-OSS article', () => {
+  assert.throws(() => readPublicationSchedule(fixture({ date: '2026-11-17' }).root), /date must be a Monday/);
+  assert.throws(() => readPublicationSchedule(fixture({ section: 'engineering' }).root), /must be OSS Radar/);
+});
+
+test('rejects a non-Monday start date', () => {
+  const { root, config } = fixture();
+  config.startDate = '2026-11-17';
+  writeFileSync(join(root, 'publication-schedule.json'), JSON.stringify(config));
+  assert.throws(() => readPublicationSchedule(root), /must start on a Monday/);
+});
+
+test('does not publish a second OSS Radar already released that Monday', async () => {
+  const { root, source } = fixture();
+  writeFileSync(join(root, 'posts', '001-another-issue.md'), `---\ntitle: Earlier issue\ndate: "${date}"\ndescription: Already published\nsection: oss-radar\n---\n\n# Earlier issue\n`);
+  await assert.rejects(publishScheduledArticle(root, atEight), /already published for this Monday/);
   assert.ok(existsSync(source));
 });
 
 test('requires the frontmatter date to match the scheduled day', () => {
-  const { root, source } = fixture({ contentDate: '2026-11-07' });
+  const { root, source } = fixture({ contentDate: '2026-11-17' });
   assert.throws(() => readPublicationSchedule(root), /date must match/);
   assert.ok(existsSync(source));
 });
@@ -75,7 +107,7 @@ test('rejects duplicate dates and path traversal', () => {
   const { root, config } = fixture();
   config.articles.push({ date, file: '043-another-test.md', prompts: false });
   writeFileSync(join(root, 'publication-schedule.json'), JSON.stringify(config));
-  assert.throws(() => readPublicationSchedule(root), /one unique article per day/);
+  assert.throws(() => readPublicationSchedule(root), /one unique article per Monday/);
   config.articles = [{ date, file: '../outside.md', prompts: false }];
   writeFileSync(join(root, 'publication-schedule.json'), JSON.stringify(config));
   assert.throws(() => readPublicationSchedule(root));
@@ -91,8 +123,16 @@ test('refuses collisions without moving the article', async () => {
 
 test('checks TypeScript metadata after moving and restores files on failure', async () => {
   const { root, source } = fixture({ file: '042-scheduled-test.ts' });
-  writeFileSync(source, `export const meta = { title: 'Test', description: 'Test', section: 'engineering', date: '2026-11-07', slug: 'scheduled-test' };\nexport const article = () => null;\n`);
+  writeFileSync(source, `export const meta = { title: 'Test', description: 'Test', section: 'engineering', date: '2026-11-17', slug: 'scheduled-test' };\nexport const article = () => null;\n`);
   await assert.rejects(publishScheduledArticle(root, atEight), /date and slug must match/);
+  assert.ok(existsSync(source));
+  assert.ok(!existsSync(join(root, 'posts', '042-scheduled-test.ts')));
+});
+
+test('restores a TypeScript article that is outside OSS Radar', async () => {
+  const { root, source } = fixture({ file: '042-scheduled-test.ts' });
+  writeFileSync(source, `export const meta = { title: 'Test', description: 'Test', section: 'engineering', date: '${date}', slug: 'scheduled-test' };\nexport const article = () => null;\n`);
+  await assert.rejects(publishScheduledArticle(root, atEight), /must be OSS Radar/);
   assert.ok(existsSync(source));
   assert.ok(!existsSync(join(root, 'posts', '042-scheduled-test.ts')));
 });

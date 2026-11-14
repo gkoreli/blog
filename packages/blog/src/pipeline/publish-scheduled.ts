@@ -1,11 +1,12 @@
 import { appendFileSync } from 'node:fs';
+import { z } from 'zod/v4';
 import { ROOT } from '../lib/paths.js';
 import { publishScheduledArticle, readPublicationSchedule } from '../lib/publication-schedule.js';
 
 const mode = process.argv[2] ?? 'check';
 if (mode === 'check') {
   const schedule = readPublicationSchedule(ROOT);
-  console.log(`${schedule.articles.length} scheduled article(s); November 6–30 at 08:00 ${schedule.timeZone}.`);
+  console.log(`${schedule.articles.length} reviewed OSS Radar article(s); Mondays at ${schedule.releaseTime} ${schedule.timeZone}, starting ${schedule.startDate}.`);
 } else if (mode === 'publish') {
   const result = await publishScheduledArticle(ROOT);
   console.log(result.message);
@@ -15,8 +16,8 @@ if (mode === 'check') {
   if (process.env.GITHUB_STEP_SUMMARY) appendFileSync(process.env.GITHUB_STEP_SUMMARY, `${result.message}\n`);
 } else if (mode === 'verify') {
   const [slug, date] = process.argv.slice(3);
-  if (!slug || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug) || !date || !/^2026-11-\d{2}$/.test(date)) {
-    throw new Error('verify requires an article slug and November 2026 date');
+  if (!slug || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug) || !date || !z.iso.date().safeParse(date).success) {
+    throw new Error('verify requires an article slug and a valid YYYY-MM-DD date');
   }
   const base = 'https://gkoreli.com';
   let accepted = false;

@@ -1,13 +1,13 @@
-name: November article publication
+name: Weekly OSS Radar publication
 
 on:
   schedule:
-    - cron: '0 8 6-30 11 *'
+    - cron: '0 8 * * 1'
       timezone: America/Los_Angeles
   workflow_dispatch:
     inputs:
       mode:
-        description: Check the queue, or publish today's approved article after 08:00 Pacific
+        description: Check the queue, or publish Monday's reviewed OSS Radar after 08:00 Pacific
         type: choice
         options: [check, publish]
         default: check
@@ -16,7 +16,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: november-article-publication
+  group: oss-radar-weekly-publication
   cancel-in-progress: false
 
 jobs:
@@ -37,7 +37,7 @@ jobs:
           package-manager-cache: false
       - uses: pnpm/action-setup@73e46992e05b19abd31f2f3c20e0e7370d762115 # v6
       - run: pnpm install --frozen-lockfile
-      - name: Select today's approved article
+      - name: Select Monday's reviewed OSS Radar article
         id: article
         env:
           MODE: ${{ github.event_name == 'schedule' && 'publish' || inputs.mode }}

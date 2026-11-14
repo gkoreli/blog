@@ -4,6 +4,12 @@ Use for OSS Radar: reconstruct what shipped, why the project has that shape, and
 
 ## Establish the source and claim set
 
+### Weekly production
+
+The [weekly worklist](../../../../docs/worklist/oss-radar-weekly/README.md) owns the current issue, work stages and Monday publication queue. Follow its research, experimentation, artifact, editorial and release standards. Keep one active issue and a small candidate list; do not let discovery displace the sustained field work needed for the selected question. One useful, well-supported issue per week is the current cadence. Queue only reviewed work for Monday 08:00 Pacific; unfinished claims require more work, narrower scope or an explicit hold.
+
+Use the week for source reading, representative trials, implementation and separate factual/usefulness/prose reviews. Prefer work a reader can inspect and apply. Session count, word count, tool calls and elapsed time are not quality measures. Do not copy the research notebook or author conversations into the article. Preserve exact writing prompts in the private archive as usual.
+
 Record the check date, release or launch, branch and baseline commit for each repository, plus consequential issue/PR states in working notes. Pin code, configuration, architecture and vision links to one baseline SHA per repository; explain a later baseline and recheck live states before publication. Reader copy needs only the state that changes a claim, not the raw audit ledger.
 
 Before drafting, keep a claim table:

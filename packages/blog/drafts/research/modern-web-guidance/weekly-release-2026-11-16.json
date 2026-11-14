@@ -1,0 +1,130 @@
+{
+  "releaseDate": "2026-11-16",
+  "releaseTime": "08:00",
+  "timeZone": "America/Los_Angeles",
+  "issue": 15,
+  "state": "reviewed source queued; local release acceptance passed; hosted check pending",
+  "queueFile": "packages/blog/scheduled/2026-11-16/046-oss-radar-15-modern-web-guidance-static-embeddings.md",
+  "queueSha256": "cf75e38316d0eeeb8cf14fcd22ef9846d5628c9e4fdc74404dcd11d7b51e6e08",
+  "savedEvidenceVerification": {
+    "accepted": true,
+    "frozenLocalFiles": 6,
+    "processReceipts": 3,
+    "rankingRows": 604,
+    "coordinateComparisonsPerProcess": 160768,
+    "matchedCliCalls": 36,
+    "archiveFileReceipts": 280
+  },
+  "freshReaderExample": {
+    "capturedAt": "2026-11-14T16:29:26.804Z",
+    "posts": 46,
+    "sourceCommit": "19d8f8971d1d74b9118c7819bfbb55aa26f7ba9d",
+    "sourceSnapshotSha256": "30ef5a2f24de755ebb927d580851036f1f074f4ffdb54d77ab198e92acc16d97",
+    "modelFiles": [
+      {
+        "file": "query-words.json",
+        "sha256": "14ddb88bf337a4726a62a13788241d84d656e798a7188b3cc655b1328c863966",
+        "bytes": 316653
+      },
+      {
+        "file": "query-words.i8",
+        "sha256": "6c88bceb3b737ec4fdbaa7b1a1a9034f5cd46895c0d2f36aff5c7639d14be82b",
+        "bytes": 7466240
+      },
+      {
+        "file": "query-words.scale.f32",
+        "sha256": "4067f3b83a2ae21ffa3df21db1b159b2c04f6058ab394a4e2647d81faf28deea",
+        "bytes": 116660
+      }
+    ],
+    "upstreamLicense": "Apache-2.0",
+    "noticeFiles": [
+      {
+        "file": "LICENSE.upstream",
+        "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+        "bytes": 11358
+      },
+      {
+        "file": "THIRD_PARTY_NOTICES.upstream",
+        "sha256": "25181107e30dfdd5f884f25fa2e3a9df762027954873a7d2c27808e645f26b9e",
+        "bytes": 33965
+      }
+    ],
+    "vectorsMatchedReference": 51,
+    "vectorShape": [
+      46,
+      256
+    ],
+    "fullArticleEmbeddingsGenerated": false,
+    "modelApiCalls": 0,
+    "productionChange": false
+  },
+  "browserChecks": {
+    "signupFormTopResult": "Cloudflare Turnstile: What Kept Breaking My Signup Form",
+    "bunMemoryTopResult": "Bun AOT in Express and Fastify: memory, CPU and serializers",
+    "staticUnknownQueryResults": 0,
+    "hybridRestored": true,
+    "scope": "Selected exploratory interactions in a real browser; not a relevance benchmark"
+  },
+  "primaryReportRecheck": {
+    "url": "https://developer.chrome.com/blog/mwg-technical-deep-dive",
+    "status": 200,
+    "historical30MicrosecondAnd507MBClaimsPresent": true
+  },
+  "publisherTests": {
+    "passed": 14,
+    "failed": 0
+  },
+  "workspaceTypecheck": "pass",
+  "futurePublicationObserved": false,
+  "upstreamSourceRecheck": {
+    "currentMain": "5e5cd33a7738f21281e3027732bcbd58cfa82bf1",
+    "pinnedSource": "596acbc75a330508591b07cd9e198b219341f619",
+    "byteIdenticalFiles": [
+      "src/rag/static-embedder.ts",
+      "src/rag/train-query-words.ts",
+      "src/rag/README.md",
+      "src/rag/search.ts",
+      "src/rag/benchmarks/README.md"
+    ],
+    "pinnedImplementationLinksChecked": 7
+  },
+  "isolatedPromotion": {
+    "earlyBlocked": true,
+    "atEightPromoted": true,
+    "exactBytes": true,
+    "retryIdempotent": true,
+    "sha256": "cf75e38316d0eeeb8cf14fcd22ef9846d5628c9e4fdc74404dcd11d7b51e6e08",
+    "release": {
+      "changed": true,
+      "date": "2026-11-16",
+      "slug": "oss-radar-15-modern-web-guidance-static-embeddings",
+      "message": "Promoted 046-oss-radar-15-modern-web-guidance-static-embeddings.md for publication."
+    }
+  },
+  "isolatedBuild": {
+    "generatedPosts": 47,
+    "matchingH1": true,
+    "date": "2026-11-16",
+    "tables": 6,
+    "codeBlocks": 1,
+    "canonicalAndMetadata": "pass",
+    "markdownCitationsAndDiscovery": "pass",
+    "articleHtmlSha256": "250472b819f1e9d431b516d429646e09d2eaa4abf6eb676c479b9fb291a585c4",
+    "markdownSha256": "6380e495d20e9341bb314881065f6b6a2807ca4cf05c720108ba9411c5390d1f",
+    "socialImageSha256": "95c80c8b81d176b581d72cbaaf79469cd5d785831b29f7a39bd115bbf8569b08",
+    "markdownValidationPosts": 36
+  },
+  "articleBrowser": {
+    "viewportWidth": 1280,
+    "pageScrollWidth": 1280,
+    "date": "November 16, 2026",
+    "matchingH1": true,
+    "tables": 6,
+    "socialImageTitleLegible": true
+  },
+  "hostedCheck": {
+    "state": "pending",
+    "publishes": false
+  }
+}

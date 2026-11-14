@@ -1,81 +1,28 @@
-# November article queue
+# Weekly OSS Radar queue
 
-Publish one finished article each day from **November 6–30, 2026**, with release
-attempts starting at **08:00 America/Los_Angeles**. November 5 is already covered
-by [AI Fetchers, Browsers, and Crawlers](https://gkoreli.com/ai-fetcher-browser-crawler-headers).
+Publish one reviewed OSS Radar each Monday, with release attempts beginning at **08:00 America/Los_Angeles**, starting November 16, 2026. The [weekly production worklist](../../../docs/worklist/oss-radar-weekly/README.md) owns research, field work, experiments, implementation, writing and editing throughout the week. This replaces the bounded November daily campaign for future scheduled releases; its dated history remains in the [older worklist](../../../docs/worklist/november-daily-publication/README.md).
 
-**Current state, November 11:** the [Turnstile article](../posts/043-cloudflare-turnstile-signup-failures.md)
-selected for November 7 is published. Its author prompts are private under the
-[current publication decision](../../../docs/adr/0003-prompt-transparency.md).
-No Turnstile release was selected for November 6; November 8–30 need approved entries. The
-[publication worklist](../../../docs/worklist/november-daily-publication/README.md)
-records the date correction, accepted preparation and remaining live checks.
+The [manifest](../publication-schedule.json) lists release-ready snapshots. Unfinished work stays outside it. The hosted publisher never chooses another draft to fill an empty slot.
 
-The [manifest](../publication-schedule.json) lists finished articles selected for
-release. A schedule cannot publish an unfinished article. Writing reminders are
-separate from this release workflow.
+## Queue a reviewed issue
 
-## Queue a finished article
+1. Complete the writing skill's [OSS research and weekly standards](../../../.agents/skills/writing/references/oss-research.md). Record reader value, actual source understanding, meaningful experiments, a usable artifact, material limits and editorial/release acceptance in the issue's research directory.
+2. Save the reviewed release snapshot at `scheduled/YYYY-MM-DD/NNN-article-slug.md` or `.ts`. The date must be a Monday on or after the schedule's start; metadata must use that date and `section: oss-radar`. Keep one matching body H1. TypeScript imports must work from the final `posts/` location. An authoring draft may remain as an explicitly identified research snapshot.
+3. Add one date/file entry to [the manifest](../publication-schedule.json). Dates and slugs must be unique. Listing the reviewed snapshot selects it for that Monday's release under the standing weekly publication instruction.
+4. Run `pnpm -C packages/blog publication check` and relevant checks, including an isolated promotion/build rehearsal for a new article. Commit and push the scoped source, evidence and manifest to `main`.
 
-1. Finish and review the article through the appropriate writing skill.
-2. Put its final source at `scheduled/YYYY-MM-DD/NNN-article-slug.md` or `.ts`
-   within this package. Set its publication date to that day. TypeScript imports
-   must work from the final `posts/` location.
-3. Add one entry to [publication-schedule.json](../publication-schedule.json):
-
-   ```json
-   { "date": "2026-11-07", "file": "043-article-slug.md" }
-   ```
-
-4. Run `pnpm -C packages/blog publication check`, then commit and push the scoped
-   sources and schedule. Listing an article in this queue authorizes its release
-   on that day. Keep unfinished work in `drafts/` without a schedule entry.
-
-Raw author prompts and personal working notes remain private; do not queue them. The scheduler rejects `prompts: true`.
-
-Assets belong in their normal package locations. Queued article files
-are outside the SSG's discovered directories, so they do not appear in the live
-site or generated feeds before promotion. **The GitHub repository is public**;
-this mechanism does not make source files private.
+Raw author prompts and working notes remain in the approved private writing archive. Do not queue them. The publisher rejects `prompts: true` and moves only the named article. Assets belong in their normal package locations. Queue source is public in GitHub but absent from the generated site, feeds and discovery files until promotion.
 
 ## Release and recovery
 
-[The hosted workflow](../../../.github/workflows/november-publication.yml) uses
-the pinned Node runtime and pnpm version. It promotes only today's explicitly
-listed source, runs types, metadata validation and an isolated runner
-build, then commits and pushes to `main` using the repository's personal identity.
-The existing Cloudflare Git integration performs deployment.
+[The hosted workflow](../../../.github/workflows/november-publication.yml) retains its historical filename and Actions history, but now runs on Mondays at 08:00 Pacific throughout the year. It uses the pinned runtime and pnpm version, selects only that Monday's reviewed source, checks types/metadata and the production build, then commits and pushes using the repository's personal Git identity. The existing Cloudflare integration deploys the commit.
 
-The job checks the live article, Markdown, index date, RSS and sitemap after the
-push. A successful push and a successful live check are separate results. No
-Cloudflare credential is added to GitHub. Automatic releases use GitHub's scoped
-`GITHUB_TOKEN`; personal author metadata does not change that authentication.
+The job then checks the live article, Markdown, correct index date, RSS and sitemap. Source delivery, deployment and served-content acceptance are separate results. No new Cloudflare credential is needed. GitHub's scoped job token supplies push authorization; personal commit metadata does not change that authentication.
 
-**08:00 is the release trigger, not a guaranteed live instant.** GitHub scheduling
-can be delayed or dropped, and validation/build/deployment take time. This is
-appropriate for a morning publication habit. Exact timed visibility would need
-predeployment and a server-side release gate for every article representation.
+**08:00 is the release trigger.** GitHub scheduling, validation and deployment can delay live availability. The IANA time zone keeps the morning schedule through daylight saving time; this is not an exact-minute visibility guarantee.
 
-If a run fails, inspect [Actions](https://github.com/gkoreli/blog/actions/workflows/november-publication.yml).
-Missing articles fail visibly without publishing a different draft. Re-run using
-**Run workflow → publish** after fixing the queue. Before 08:00, that command is a
-no-op. After an article is committed, retries verify it without republishing it.
-Concurrent changes to `main` make the push fail safely; start a fresh run against
-current `main` to repeat validation. Do not force-push or merge an unchecked tree.
-Missed days never automatically publish on a later date.
+An unfilled Monday fails visibly. Fix the queue and use **Run workflow → publish** on that same Monday after 08:00; retries check a promoted article rather than publish it twice. Other weekdays and times before 08:00 do not promote source. Missed weeks are not automatically caught up. A push conflict fails safely: start a fresh run against current main and repeat checks; do not force-push an unchecked tree.
 
-Use **Run workflow → check** for a hosted check without publishing. Watch the
-first actual article release; an empty-queue check cannot prove the
-GitHub-token-to-Cloudflare deployment path. Configure GitHub Actions failure
-notifications in your account if you want email/push alerts; they are not enabled
-by this repository change.
+Use **Run workflow → check** for hosted queue validation without publication. To cancel a queued release, remove its manifest entry before its run. Disable the workflow to stop automatic releases. The preparation heartbeat must not become a second publisher.
 
-The scheduler and runtime guard are bounded to November 2026. December and later
-years cannot publish through this campaign. Disable the workflow after November
-30 to avoid idle annual wakeups. To cancel an individual queued release, remove
-its schedule entry and push before its run; disabling the workflow stops all
-automatic releases.
-
-Sources: [GitHub schedule semantics](https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#schedule),
-[Cloudflare Git integration](https://developers.cloudflare.com/workers/ci-cd/builds/git-integration/).
-Implementation and activation evidence: [worklist](../../../docs/worklist/november-daily-publication/README.md).
+[GitHub schedule semantics](https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#schedule) document possible delays and dropped runs. [Time-zone syntax](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax#onschedule) documents IANA zones. [Cloudflare Git integration](https://developers.cloudflare.com/workers/ci-cd/builds/git-integration/) supplies the existing deployment path. Setup, hosted activation and dated release acceptance belong in the [weekly worklist](../../../docs/worklist/oss-radar-weekly/README.md).

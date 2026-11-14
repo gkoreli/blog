@@ -1,5 +1,7 @@
 # November daily publication
 
+**Superseded for future releases — November 14, 2026:** the [weekly OSS Radar worklist](../oss-radar-weekly/README.md) now owns Monday 08:00 Pacific releases. The manifest, selection code and existing workflow have changed to that ongoing cadence. Dated campaign setup and acceptance below remain historical evidence; old unfinished-day instructions are not the current publication plan.
+
 **Current November 6 Pacific checkpoint:** Goga confirms that another builder has
 already published today's article. Turnstile is selected for **November 7
 at 08:00 America/Los_Angeles**. Its finished Markdown and exact prompts now live

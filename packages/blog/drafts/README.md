@@ -2,6 +2,8 @@
 
 ## New active writing
 
+- **Weekly OSS Radar, starting November 16, 2026:** one Monday morning release, prepared through the week. [Production rhythm, reader value and quality standard](../../../docs/worklist/oss-radar-weekly/README.md). Issue #15 uses the existing MWG investigation below; the following issue is in scouting.
+
 - **Published November 13, 2026:** [OSS Radar #14: November’s Show HN Open-Source Launches](https://gkoreli.com/oss-radar-14-november-show-hn) — twelve November 1–10 launches, with implementation reading, discussion sources and focused executed paths for ten projects. [Source](../posts/045-oss-radar-14-november-show-hn.md); [research and publication acceptance](research/oss-radar-14-november-show-hn/README.md). Publication complete. This work does not reopen the retired backlog below.
 
 **Publication update — November 11, 2026, America/Los_Angeles:** Goga authorized
@@ -39,7 +41,7 @@ conversations; an unavailable time total is explicitly "not recovered."
 | Article / topic | Work and evidence | Current state / next action |
 | --- | --- | --- |
 | [Web Analytics Tools Disagree About What Counts](research/web-analytics-comparison-ai-traffic/article.md) | November 13: ten-tool comparison, primary documentation, seven popularity/source baselines and selected ingestion paths. November 14: updated with shipped package and verified production-history upgrade, a scoped competitive-position table and proposed publisher-outcomes milestone. [Research and claim review](research/web-analytics-comparison-ai-traffic/README.md). No cross-product runtime benchmark. | Revised unpublished draft for author review. Distinguishes cryptographic-evidence strengths, established-product advantages and remaining independent-operator evidence. Publication, outreach and further module implementation are separate actions. |
-| [How Modern Web Guidance’s seven-line embedder works](research/modern-web-guidance/article.md) | November 13: completed interface study (54 primary attempts plus 54 retained diagnostic attempts), static-embedding reproduction, public retrieval replay and manuscript review. November 14: a runnable browser example over 46 post titles/tags and a practical integration section. [Research index](research/modern-web-guidance/README.md). Elapsed total not recovered. | Unpublished manuscript and local metadata-search demo. A compatible full-article document index and production search remain unbuilt. Further experiments remain separate proposals. |
+| [How Modern Web Guidance’s seven-line embedder works](research/modern-web-guidance/article.md) | November 13: completed interface study (54 primary attempts plus 54 retained diagnostic attempts), static-embedding reproduction, public retrieval replay and manuscript review. November 14: a runnable browser example over 46 post titles/tags and a practical integration section. [Research index](research/modern-web-guidance/README.md). Elapsed total not recovered. | OSS Radar #15 release candidate for Monday November 16, 08:00 Pacific. [Release checks](research/modern-web-guidance/weekly-release-2026-11-16.md) own readiness and the dated queue copy. A full-article document index and production search remain unbuilt; further experiments remain separate proposals. |
 
 ## Published from this backlog
 
