@@ -1,0 +1,166 @@
+{
+  "version": 1,
+  "recordedOn": "2026-11-14",
+  "status": "accepted",
+  "sourceCommit": "7015bac364f9356eedd3126c00198918b8a28d64",
+  "delivery": {
+    "branch": "main",
+    "remoteAccepted": true,
+    "sourceIdentifiedByHostedBuildId": true,
+    "statsJavaScriptAndStylesByteEqualToCheckedBuild": true,
+    "statsHTMLMatchesAfterBuildIdAndExistingCloudflareInsightsInjection": true,
+    "publicNewsletterConfigurationPreserved": true,
+    "initialFeatureAcceptance": {
+      "sourceCommit": "3934fce07f350c5c1943623abe701971aa9fafec",
+      "preparedWorkerVersion": "ec278afd-adfe-427d-8dc2-998a856f9593",
+      "observedWorkerVersion": "fadf94c5-eca8-4349-a7a7-324e7e9ed051",
+      "sameWorkerScriptEtag": true
+    },
+    "observedActiveWorkerVersion": "1fdd094c-7c65-4ecb-a6b6-b42038377afc",
+    "hostedSourceCommit": "7015bac364f9356eedd3126c00198918b8a28d64"
+  },
+  "localChecks": {
+    "workspaceTypes": true,
+    "analyticsTests": 501,
+    "siteTests": 460,
+    "markdownValidation": true,
+    "nativePortability": true,
+    "isolatedProductionBuild": true,
+    "workerDryRun": true,
+    "localLinks": 112,
+    "finalCacheAndAgentTests": 23
+  },
+  "native": {
+    "syntheticOriginals": 4800,
+    "resources": 57,
+    "includedEvents": 3900,
+    "jointCells": 14,
+    "sourceProjectedEqual": true,
+    "missingAndStaleProjectionFallback": true,
+    "malformedEvidenceRejected": true,
+    "originalsExactlyUnchanged": true,
+    "maximumCatalogueResources": 512,
+    "maximumCataloguePassed": true,
+    "projectedReportedReads": 244766,
+    "reportedWrites": 0,
+    "costScope": "Native local D1 reported last-attempt counters; total-attempt metadata unavailable. Not a production billing estimate."
+  },
+  "historical": {
+    "retainedOriginals": 88,
+    "frozenAllEvents": 86,
+    "frozenAllSections": 27,
+    "baselineCommit": "cafc6fa03cf89d5b802ae1b88ed3948a1ceff1f7",
+    "allReportExactlyEqual": true,
+    "allSourceProjectedEqual": true,
+    "agentSourceProjectedEqual": true,
+    "agentEvents": 30,
+    "allFourRolesPresent": true,
+    "originalsExactlyUnchanged": true,
+    "externalRequests": 0,
+    "productionQueriesDuringReplay": 0
+  },
+  "production": {
+    "window": {
+      "start": "2026-10-17",
+      "endExclusive": "2026-11-14",
+      "timeZone": "UTC",
+      "days": 28
+    },
+    "events": 3850,
+    "articlesAccessed": 45,
+    "activeUtcDays": 28,
+    "markdownEvents": 893,
+    "roles": [
+      {
+        "kind": "ai-assistant",
+        "views": 150
+      },
+      {
+        "kind": "ai-search",
+        "views": 2308
+      },
+      {
+        "kind": "ai-crawler",
+        "views": 773
+      },
+      {
+        "kind": "signed-agent",
+        "views": 619
+      }
+    ],
+    "jointCells": 657,
+    "sourceMatches": [
+      "whole-window accounting",
+      "total metrics",
+      "all role totals",
+      "all resource totals",
+      "all joint cells"
+    ],
+    "canonicalCache": [
+      "MISS",
+      "HIT"
+    ],
+    "sameCachedBytesAndCalculationTime": true,
+    "originalSamples": 64,
+    "originalSamplesExactlyUnchanged": true,
+    "migrations": 0,
+    "sourceOrDerivedMutations": 0,
+    "freshReportReportedReads": 414324,
+    "declaredCheckReportedReads": 993612,
+    "declaredCheckReportedWrites": 0,
+    "reportedReadReviewThreshold": 1000000,
+    "costScope": "Saved date-bounded source control, two original-sample SELECTs, one measured agent-report fill and one measured seven-day article-scoped traffic-report fill; excludes unrelated account activity. Reported rows_read is query work, not distinct observations. Cache reuse is local and does not impose a global ceiling.",
+    "agentReportObservedSource": "3934fce07f350c5c1943623abe701971aa9fafec",
+    "finalTrafficFilter": {
+      "sourceCommit": "7015bac364f9356eedd3126c00198918b8a28d64",
+      "cacheNamespace": "2026-11-14.3",
+      "scope": {
+        "range": "7d",
+        "traffic": "agents",
+        "path": "/i-am-lost-right-now",
+        "timeZone": "UTC"
+      },
+      "events": 5,
+      "presentRoles": [
+        "ai-search",
+        "ai-crawler",
+        "signed-agent"
+      ],
+      "otherRolesAbsent": true,
+      "cache": "MISS",
+      "reportedReads": 29635,
+      "reportedWrites": 0
+    }
+  },
+  "interface": {
+    "productionDesktopAndMobilePassed": true,
+    "localThemes": [
+      "light",
+      "dark"
+    ],
+    "localWidths": [
+      1280,
+      390,
+      320
+    ],
+    "loadingEmptyErrorAndRetryPassed": true,
+    "keyboardFocusPassed": true,
+    "drilldownsUseLocalReport": true,
+    "pageOverflowObserved": false
+  },
+  "example": {
+    "articlePath": "/oss-radar-08-bun-aot",
+    "events": 84,
+    "activeUtcDays": 18,
+    "markdownEvents": 31,
+    "evidenceDownloadCoverage": "not-collected"
+  },
+  "boundaries": [
+    "Stored role and client declarations do not authenticate purpose or identify people.",
+    "Successful eligible HTML/Markdown page GETs only; files, upstream blocks, failures, HEAD and 304 have different coverage.",
+    "Current catalogue does not establish historical resource availability.",
+    "Request logs do not establish citations, training, comprehension or answer use."
+  ],
+  "privateEvidence": "Raw source records, request logs, screenshots and full command receipts remain in ignored operational storage.",
+  "featureSourceCommit": "3934fce07f350c5c1943623abe701971aa9fafec"
+}
