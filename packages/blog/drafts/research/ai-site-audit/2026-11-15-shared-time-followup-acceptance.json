@@ -1,0 +1,149 @@
+{
+  "version": 1,
+  "checkedAt": "2026-11-15T06:37:35.866Z",
+  "source": "32f89d9904d85e6e8c3ad4c161344e007af801a8",
+  "build": "52802a9a-4b32-43c5-b03e-438ff6e236dc",
+  "method": "Bounded public page/asset GETs; served source identity and exact bundle comparison with public build metadata. No report-cache bypass or database query.",
+  "responses": [
+    {
+      "path": "/stats",
+      "status": 200,
+      "sha256": "cdbe873043fd18d6ae98fcf5b907d1755936373e76b7182ce42bdb9103fc1185",
+      "build": "52802a9a-4b32-43c5-b03e-438ff6e236dc",
+      "source": "32f89d9904d85e6e8c3ad4c161344e007af801a8"
+    },
+    {
+      "path": "/tools/compare",
+      "status": 200,
+      "sha256": "306b7945f3a88443a1944ca57b11de8be8e52e35bd87da347e73b1508ad8bda7",
+      "build": "52802a9a-4b32-43c5-b03e-438ff6e236dc",
+      "source": "32f89d9904d85e6e8c3ad4c161344e007af801a8"
+    },
+    {
+      "path": "/which-ai-fetchers-send-which-headers",
+      "status": 200,
+      "sha256": "a08bea95325bbf9001ced9bd18c0ae4b06db96653071793ad3914cdba710491f",
+      "build": "52802a9a-4b32-43c5-b03e-438ff6e236dc",
+      "source": "32f89d9904d85e6e8c3ad4c161344e007af801a8"
+    },
+    {
+      "path": "/main.js",
+      "status": 200,
+      "sha256": "42c06a767724e653e71c0a0f31a19323565a988c9468c128a77ffc21829561c2",
+      "matchesBuiltAsset": true
+    },
+    {
+      "path": "/stats.js",
+      "status": 200,
+      "sha256": "9ab68c20b3e17694796e3335c5fd898d0036e29cb3bd974326d150e904a6a9e6",
+      "matchesBuiltAsset": true
+    },
+    {
+      "path": "/tools-workbench.js",
+      "status": 200,
+      "sha256": "69dc1220e30c5f2c2ef1751568071991a202f55d1008b863531cd99a3db006ad",
+      "matchesBuiltAsset": true
+    },
+    {
+      "path": "/ai-check.js",
+      "status": 200,
+      "sha256": "e2aab100ae908458e6bec97c7c3290a68233279ffa9575a2c2ceb1845413f63a",
+      "matchesBuiltAsset": true
+    },
+    {
+      "path": "/request-inspector.js",
+      "status": 200,
+      "sha256": "e88d86ba55d50cf1717241672d94ee2e39a28d018e93262029d81507026da829",
+      "matchesBuiltAsset": true
+    }
+  ],
+  "activation": {
+    "dashboardStatus": "success",
+    "servingIdentityMatches": true
+  },
+  "checks": {
+    "timeTests": 15,
+    "analyticsTests": 501,
+    "siteTests": 464,
+    "workspaceTypes": "passed",
+    "markdownPostsValidated": 35,
+    "builtArticles": 46,
+    "generatedHtmlPages": 65,
+    "markedUtcInstants": 22,
+    "civilDates": 35,
+    "activeSourceFiles": 385,
+    "sourceBoundary": "passed",
+    "privatePromptGuard": "passed",
+    "referralPolicy": "passed"
+  },
+  "native": {
+    "runtime": "native Workerd via installed Miniflare",
+    "checks": 5,
+    "fixtureObservations": 48,
+    "fixtureObservationsUnchanged": true,
+    "fixtureObservationsSha256": "e8323a2e0e23b18fdac9a964873fa441d88f894027e4654beaae1c239a17d3ab",
+    "externalTransport": "intercepted; no production database calls"
+  },
+  "browser": [
+    {
+      "path": "/stats",
+      "widths": [
+        1280,
+        320
+      ],
+      "pageOverflow": false,
+      "reportingTimeZone": "America/Los_Angeles",
+      "periodLabel": "Oct 16 \u2013 Nov 14, 2026",
+      "updatedLabel": "Nov 14, 2026, 10:37 PM PST",
+      "agentCalculation": {
+        "instant": "2026-11-15T06:20:32.379Z",
+        "label": "Nov 14, 2026, 10:20 PM PST"
+      }
+    },
+    {
+      "path": "/tools/compare",
+      "width": 320,
+      "pageOverflow": false,
+      "inputs": "explicitly illustrative example reports",
+      "times": [
+        {
+          "instant": "2026-11-06T00:00:00.000Z",
+          "label": "Nov 5, 2026, 4:00 PM PST"
+        },
+        {
+          "instant": "2026-11-06T01:00:00.000Z",
+          "label": "Nov 5, 2026, 5:00 PM PST"
+        }
+      ]
+    },
+    {
+      "path": "/which-ai-fetchers-send-which-headers",
+      "width": 1280,
+      "pageOverflow": false,
+      "times": [
+        {
+          "instant": "2026-09-03T03:44:10.071Z",
+          "label": "Sep 2, 2026, 8:44 PM PDT"
+        },
+        {
+          "instant": "2026-09-04T18:03:26.591Z",
+          "label": "Sep 4, 2026, 11:03 AM PDT"
+        }
+      ]
+    }
+  ],
+  "boundaries": [
+    "Storage schemas, indexed UTC storage formats and daily privacy rotation are unchanged; no historical rewrite or viewer-timezone tracking was introduced.",
+    "Authored dates, fixed source reporting calendars, protocol evidence and frozen research receipts retain their original meanings.",
+    "The inline pre-module failure reporter intentionally remains independent; shared ingestion validates its UTC instant.",
+    "Native reconciliation uses controlled fixtures; it does not establish production population completeness.",
+    "Temporary browser viewport overrides were reset. Raw captures and screenshots remain outside Git."
+  ],
+  "integration": {
+    "base": "266e7ce149107bed78f350de897ab14f47825435",
+    "workspaceTypes": "passed",
+    "focusedSiteTests": 10,
+    "activeSourceFiles": 386,
+    "scope": "Concurrent Agent access exploration retains the shared native time adapter and canonical timestamp contract. Hosted evidence above belongs to source 32f89d99."
+  }
+}
