@@ -1,0 +1,280 @@
+{
+  "version": 1,
+  "checkedAt": "2026-11-15T07:39:47.092Z",
+  "status": "accepted",
+  "sourceCommit": "ed7c5965f7993bd1d771a83b3ff10717bc8d1b16",
+  "implementationCommit": "b30bf1ba",
+  "deployment": {
+    "build": "5139622a-92df-44ca-9295-2b905499fab2",
+    "versionPrefix": "4bf7b0fb",
+    "status": "ready",
+    "trafficPercent": 100,
+    "observation": "Signed-in deployment activity names the source commit and active version."
+  },
+  "local": {
+    "timeTests": 15,
+    "analyticsTests": 504,
+    "siteTests": 471,
+    "workspaceTypes": "passed",
+    "markdownPostsValidated": 35,
+    "builtArticles": 46,
+    "builtHtmlPages": 65,
+    "preservedArticleTables": 124,
+    "preservedArticleCells": 2703,
+    "preservedPolicyParagraphs": 39,
+    "singleProvenancePages": 9,
+    "canonicalMarkedUtcInstants": 18,
+    "fixtureReportViewsCompared": 7,
+    "fixtureOriginalRowsUnchanged": 48,
+    "recordedResponsiveViews": 24,
+    "widths": [
+      320,
+      393,
+      900,
+      1440
+    ],
+    "pageOverflow": false,
+    "guards": [
+      "shared-time source boundary",
+      "semantic color contrast",
+      "unique complete-document IDs",
+      "referral policy",
+      "private prompts"
+    ]
+  },
+  "production": {
+    "method": "Ordinary public page and asset GETs; source identity, publication structure and exact built-asset comparison. No cache bypass or direct database query.",
+    "responses": [
+      {
+        "path": "/engineering",
+        "status": 200,
+        "sha256": "75757e4e714be5932abdfb5c7761db8176a1c23bc2726502b7a7ac95c2dac3b0",
+        "bytes": 60837,
+        "matchesSource": true
+      },
+      {
+        "path": "/which-ai-fetchers-send-which-headers",
+        "status": 200,
+        "sha256": "36c282b4073162ae3f4d21b7b84070fc564a7b8c72bf32ff0f047226117aa577",
+        "bytes": 87564,
+        "matchesSource": true
+      },
+      {
+        "path": "/oss-radar-06-interp-engine",
+        "status": 200,
+        "sha256": "e522dfddc943a4a8c0916a5e33fdae3f6c105c3d90258153a7a645bd24b9d988",
+        "bytes": 67615,
+        "matchesSource": true
+      },
+      {
+        "path": "/about",
+        "status": 200,
+        "sha256": "6390dec408c3a1711f8bb9aa79cdf905733b8979047730e60a4d9d3b0167c649",
+        "bytes": 18738,
+        "matchesSource": true
+      },
+      {
+        "path": "/privacy",
+        "status": 200,
+        "sha256": "e9008fb52fd2eb49f16e2a12683e05904fee734ac60981654623ffa2c5fc9825",
+        "bytes": 33195,
+        "matchesSource": true
+      },
+      {
+        "path": "/license",
+        "status": 200,
+        "sha256": "3dc81b658cf9cda690d31b821756b8e9680728e2a8fbdcbd0a2482a1f8e75901",
+        "bytes": 12196,
+        "matchesSource": true
+      },
+      {
+        "path": "/animations-lab",
+        "status": 200,
+        "sha256": "d144e2e1a446a614d7c12250fc92bc23d984954c2162a128e791662e34d92063",
+        "bytes": 32074,
+        "matchesSource": true
+      },
+      {
+        "path": "/stats",
+        "status": 200,
+        "sha256": "57fa74b9b0b05874a7d6bdb5cf85d9e5bb2170a16050ce4d9ec3a070459531cf",
+        "bytes": 58742,
+        "matchesSource": true
+      },
+      {
+        "path": "/stats/readership",
+        "status": 200,
+        "sha256": "8240171dfb5f878886999c1bec8766a4aadb0e641721906b02fdc408fa17e483",
+        "bytes": 17464,
+        "matchesSource": true
+      },
+      {
+        "path": "/design-language",
+        "status": 200,
+        "sha256": "6512e4c2bab4b2a4bf1e05e260fb6b6f66c123c145e40dbb20e3c98fd9a89baa",
+        "bytes": 62890,
+        "matchesSource": true
+      },
+      {
+        "path": "/main.js",
+        "status": 200,
+        "sha256": "0adb93eed51818cc11cd9eb1b5bbeb93a9c3a6cb7377fd22e98309bbc2642728",
+        "bytes": 25256,
+        "matchesBuiltAsset": true
+      },
+      {
+        "path": "/main.css",
+        "status": 200,
+        "sha256": "4e01cbba00f9a9fa360889939eada98d5e59a1897bf5ec22ab23dd6ce372bfba",
+        "bytes": 166084,
+        "matchesBuiltAsset": true
+      },
+      {
+        "path": "/stats.js",
+        "status": 200,
+        "sha256": "127c1fb7a09bf4101b79bd01ac681043d4de467d3d5d384fa02cf0a692bbbd9b",
+        "bytes": 134048,
+        "matchesBuiltAsset": true
+      },
+      {
+        "path": "/stats.css",
+        "status": 200,
+        "sha256": "554e71da9abbf905fdad470da39ba1389026899c2a5abe99cd703bcc1694d847",
+        "bytes": 21071,
+        "matchesBuiltAsset": true
+      },
+      {
+        "path": "/article-reach.js",
+        "status": 200,
+        "sha256": "c9598cd852425b3f29176b3821d7821e298a23e2923315a51f57bc342f240da8",
+        "bytes": 7695,
+        "matchesBuiltAsset": true
+      },
+      {
+        "path": "/article-reach.css",
+        "status": 200,
+        "sha256": "f2394199c81430a2f71adfa55947d7b31332543277c1f482f7ad5e1bf49af9dd",
+        "bytes": 21673,
+        "matchesBuiltAsset": true
+      },
+      {
+        "path": "/tools-workbench.js",
+        "status": 200,
+        "sha256": "69dc1220e30c5f2c2ef1751568071991a202f55d1008b863531cd99a3db006ad",
+        "bytes": 12887,
+        "matchesBuiltAsset": true
+      },
+      {
+        "path": "/ai-check.js",
+        "status": 200,
+        "sha256": "e2aab100ae908458e6bec97c7c3290a68233279ffa9575a2c2ceb1845413f63a",
+        "bytes": 33836,
+        "matchesBuiltAsset": true
+      }
+    ],
+    "browserViews": 7,
+    "widths": [
+      320,
+      393,
+      1440
+    ],
+    "reportsReady": [
+      "Agent access",
+      "Page requests",
+      "Article reach"
+    ],
+    "viewerTimeZone": "America/Los_Angeles",
+    "statsReadingNotes": 16,
+    "statsMethodParagraphs": 17,
+    "scopedSearch": "Engineering selected; all five displayed articles are Engineering",
+    "utcInstantRetained": "2026-11-15T07:33:24.617Z",
+    "localizedCalculationLabel": "Nov 14, 2026, 11:33 PM PST",
+    "pageOverflow": false,
+    "viewportOverrideReset": true
+  },
+  "areas": [
+    {
+      "id": "01",
+      "area": "Readability",
+      "status": "accepted",
+      "evidence": "Semantic inks and control boundaries pass their supported-surface contrast checks; real light/dark metadata stays opaque."
+    },
+    {
+      "id": "02",
+      "area": "Article reach",
+      "status": "accepted",
+      "evidence": "Five shared metrics; all values, table cells and notes match the preceding interface in seven frozen-report views, including alternate sorts and every history scope. Live compact metrics render successfully."
+    },
+    {
+      "id": "03",
+      "area": "Provenance",
+      "status": "accepted",
+      "evidence": "Nine article pages have one footprint each. Seven custom explanation paragraphs remain in both HTML and Markdown. All sixty-five complete documents have unique IDs."
+    },
+    {
+      "id": "04",
+      "area": "Links",
+      "status": "accepted",
+      "evidence": "Standalone and rich content use complete semantic link and focus styles; published provenance and evidence links use the same roles."
+    },
+    {
+      "id": "05",
+      "area": "License",
+      "status": "accepted",
+      "evidence": "Direct complete-license destinations, public scope text and one citation statement; full license files remain unchanged."
+    },
+    {
+      "id": "06",
+      "area": "Report scope",
+      "status": "accepted",
+      "evidence": "Agent access retains its fixed UTC source days. Page requests and Article reach use viewer-local calendars. Scope headers distinguish controls, and independent selections, empty intersections and controlled failure/retry behave correctly."
+    },
+    {
+      "id": "07",
+      "area": "Discovery",
+      "status": "accepted",
+      "evidence": "All 26 Engineering, 6 Essays and 14 OSS Radar articles remain in chronology. Topic links are independent destinations. Native GET fallback is section-scoped locally; live browser search returns the selected section."
+    },
+    {
+      "id": "08",
+      "area": "Reading navigation",
+      "status": "accepted",
+      "evidence": "One prepared outline supplies native phone contents and a wide rail. All outline destinations resolve; the published rail remains at its sticky offset while scrolling."
+    },
+    {
+      "id": "09",
+      "area": "Tables",
+      "status": "accepted",
+      "evidence": "All 124 article tables and 2703 cells retain content, links and merged relationships. Keyboard panning preserves first-column identity; fitting tables suppress their overflow cue."
+    },
+    {
+      "id": "10",
+      "area": "Interaction density",
+      "status": "accepted",
+      "evidence": "320px and 393px layouts retain full labels and 44px frequent targets. Menu Escape, scroll locking, search focus restoration and horizontal section navigation work; temporary viewport overrides are reset."
+    },
+    {
+      "id": "11",
+      "area": "Privacy",
+      "status": "accepted",
+      "evidence": "All 39 original policy paragraphs remain below four linked overview topics and native chapter navigation. The search dialog and policy chapter have distinct IDs."
+    },
+    {
+      "id": "12",
+      "area": "Animations Lab",
+      "status": "accepted",
+      "evidence": "All four experiments and sixteen sliders remain. Shared section navigation and compact phone spacing bring the first scene to approximately 554px. A keyboard control changes its running experiment."
+    },
+    {
+      "id": "13",
+      "area": "Project identity",
+      "status": "accepted",
+      "evidence": "Four distinct project drawings use shared single-destination rows with complete descriptions and the original destinations."
+    }
+  ],
+  "boundaries": [
+    "No analytics query, schema, observation, collection or identity contract changes. UTC storage and the shared time kernel remain in place.",
+    "Synthetic comparisons establish preservation under their frozen inputs; production checks are a dated serving and UI sample. Neither establishes complete traffic collection, human readership or future uptime.",
+    "Private captures, browser logs, screenshots and source conversations are excluded from this public receipt."
+  ]
+}

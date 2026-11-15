@@ -1,6 +1,6 @@
 # ADR-0024: Publication reading and design contracts
 
-Implementation in progress — November 15, 2026 UTC. Extends the stable shell and expressive article interior in [ADR-0013.1](0013.1-publication-visual-layer.md). The [implementation worklist](../worklist/site-design-system/README.md) owns preservation checks, responsive visual review, delivery and measured acceptance.
+Accepted — November 15, 2026 UTC. Extends the stable shell and expressive article interior in [ADR-0013.1](0013.1-publication-visual-layer.md). The [implementation worklist](../worklist/site-design-system/README.md) owns preservation checks, responsive visual review, delivery and measured acceptance.
 
 ## Decision
 
@@ -23,3 +23,7 @@ Utility glyphs identify an object or action; decoration does not add a second na
 Publication structure is prepared before search indexing, rather than being an accidental side effect of search extraction. The existing `parse5` parser becomes an explicit blog dependency; the parser remains in the build path. Browser enhancement stays small and native. No new UI framework, database schema, collection field, identity model or report aggregation is introduced.
 
 Privacy retains its full technical disclosure below a linked overview. The content-license page uses public destinations and concise scope text while linking the complete license terms. Source conversations and private audit captures remain outside public evidence.
+
+## Acceptance
+
+The [delivery receipt](../worklist/site-design-system/acceptance-2026-11-15.json) records checked implementation, content/data preservation, desktop and phone review, source publication, active deployment and fresh hosted acceptance for all thirteen worklist areas.

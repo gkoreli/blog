@@ -1,6 +1,6 @@
 # Publication design system implementation
 
-Status: locally verified; source delivery and hosted acceptance pending. Scope: shared visual rules and the publication, report and utility compositions that consume them. Preserve article content, measurement records, policy disclosures and native navigation while improving their presentation.
+Status: complete — published and verified November 15, 2026 UTC. Scope: shared visual rules and the publication, report and utility compositions that consume them. Preserve article content, measurement records, policy disclosures and native navigation while improving their presentation.
 
 The earlier [tool and Stats work](../../../packages/blog/drafts/research/ai-site-audit/02-tools-product-exploration.md) supplies the accepted compact navigation and data-display patterns. [Publication search](../blog-search/delivery-2026-11-14.md) shipped after the visual review and must be reused for discovery.
 
@@ -39,4 +39,10 @@ Responsive visual review covers the affected patterns at 1440px, 900px, 393px an
 
 Review corrected a duplicated Agent access index, its unavailable-state destinations, the reading-rail wrapper and a sparse palette grid. Agent client/role intersections, empty results, controlled failure/retry and independent report selections retain their evidence boundaries. Calculation times preserve exact UTC instants while displaying local labels. The lab now reuses the same native section index; its first phone scene begins near 554px, retaining all four experiments and sixteen sliders. About uses four distinct project drawings and complete descriptions.
 
-The final local checks also pass fifteen time-kernel tests, shared-time source-boundary enforcement, referral-policy and private-prompt guards. The built publication has eighteen canonical marked UTC instants after removing the four duplicated provenance instances. No analytics query, schema, observation, collection or identity contract changes. The next bounded action is checked delivery to main, deployment activation and fresh hosted acceptance. Private screenshots and comparison captures remain outside Git.
+The final local checks also pass fifteen time-kernel tests, shared-time source-boundary enforcement, referral-policy and private-prompt guards. The built publication has eighteen canonical marked UTC instants after removing the four duplicated provenance instances. No analytics query, schema, observation, collection or identity contract changes. Delivery and fresh hosted acceptance are recorded separately below. Private screenshots and comparison captures remain outside Git.
+
+## Delivery and fresh acceptance
+
+Implementation `b30bf1ba` is integrated and published on main as `ed7c5965`. Cloudflare build `5139622a-92df-44ca-9295-2b905499fab2` is ready, with active version `4bf7b0fb` at 100% traffic. The [acceptance receipt](acceptance-2026-11-15.json) records all thirteen areas separately, ten ordinary public page responses and eight exact served asset matches.
+
+Seven fresh live browser views confirm healthy reports, viewer-local daily labels and calculation times, retained native UTC instants, compact metrics, scoped search, sticky reading navigation and a single complete provenance section. Desktop and 320px/393px phone views have no page overflow; all sixteen Stats reading notes and seventeen method paragraphs remain. The browser viewport override and original theme are restored. Both isolated QA servers preserve their original forty-eight rows and are stopped. No required implementation or acceptance work remains.
