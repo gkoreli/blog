@@ -1,0 +1,97 @@
+{
+  "version": 1,
+  "recordedOn": "2026-11-15",
+  "status": "accepted",
+  "sourceCommit": "266e7ce149107bed78f350de897ab14f47825435",
+  "activeWorkerVersion": "db179695-37d9-4523-a1ff-8d7407f18bd4",
+  "packageVersion": "0.5.0",
+  "changes": [
+    "Portable exploration model owns contextual choices, coverage and retained evidence summaries",
+    "Selected cells aggregate by client/resource/role/format in one pass",
+    "Native role controls beside article/client selections, visible selection counts and accessible announcements",
+    "Full-width article table with distinct Visit actions and native section links",
+    "Grouped attribution evidence retains all records and pins request counts on narrow screens",
+    "Clear and retry restore useful focus; retry preserves a deliberate focus move"
+  ],
+  "preservation": {
+    "wireContractUnchanged": true,
+    "queryPlansUnchanged": true,
+    "schemaAndCollectorUnchanged": true,
+    "cacheNamespacesUnchanged": true,
+    "productionReportBytesIdenticalAcrossDelivery": true,
+    "productionCalculationTimePreserved": true,
+    "afterCache": "HIT",
+    "savedAggregateSelectionsExactlyEqual": 294,
+    "selectionBaseline": "369871d9",
+    "nativeOriginalsExactlyUnchanged": 4800,
+    "browserFixtureOriginalsExactlyUnchanged": 48,
+    "sourceProjectedParity": true
+  },
+  "checks": {
+    "analyticsTests": 504,
+    "siteTests": 464,
+    "workspaceTypes": true,
+    "markdownValidation": true,
+    "nativePortability": true,
+    "isolatedConfiguredBuild": true,
+    "workerDryRun": true,
+    "publicNewsletterConfigurationPreserved": true,
+    "liveJavaScriptAndStylesMatchCheckedBuild": true
+  },
+  "manual": {
+    "sources": [
+      "Actual composed Worker/native D1 with a declared fixed fixture clock",
+      "Labeled retained production aggregate replay",
+      "Fresh activated production interface"
+    ],
+    "localWidths": [
+      1280,
+      390,
+      320
+    ],
+    "themes": [
+      "light",
+      "dark"
+    ],
+    "nativeRadioKeys": true,
+    "emptyIntersectionKeepsAlternatives": true,
+    "clearFocus": true,
+    "failedAndSuccessfulRetryFocus": true,
+    "movedFocusPreservedWhileLoading": true,
+    "errorDoesNotRenderZeroMetrics": true,
+    "visitDestination": true,
+    "horizontalEvidenceKeyboardScroll": true,
+    "pinnedEvidenceCounts": true,
+    "zeroAdditionalNativeBatchesForSelections": true,
+    "pageOverflowObserved": false,
+    "viewportRestored": true
+  },
+  "liveReport": {
+    "windowStart": "2026-10-18",
+    "windowEndExclusive": "2026-11-15",
+    "timeZone": "UTC",
+    "calculatedAt": "2026-11-15T06:20:32.379Z",
+    "events": 3858,
+    "articlesAccessed": 46,
+    "activeUtcDays": 28,
+    "markdownEvents": 895,
+    "aiSearchSelectionEvents": 2362,
+    "aiCrawlerSelectionEvents": 771,
+    "legacyArticleScopedReportLoaded": true
+  },
+  "cost": {
+    "observedReportedReads": 422302,
+    "observedReportedWrites": 0,
+    "reviewStopThreshold": 1000000,
+    "scope": "One observed canonical agent report calculation; reported last-attempt query work, not account billing. Cache hits issue no report calculation.",
+    "noAdditionalReportCalculationObservedDuringCacheAndUIChecks": true,
+    "noSeparateCostEventCapturedForLegacyReport": true,
+    "notAnAccountBillingTotal": true
+  },
+  "limits": [
+    "No new observations, file collection, revision measurements or attribution claims are introduced.",
+    "Choice counts keep the other selections and ignore only their own dimension. Article choices include registered evidence.",
+    "Declared roles/names and signing/network evidence retain separate meanings.",
+    "Raw operational captures and screenshots stay outside Git."
+  ]
+}
