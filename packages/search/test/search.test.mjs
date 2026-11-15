@@ -39,7 +39,7 @@ test('quoted phrases, article scopes, section filters, accents and bounded queri
   assert.equal((await search.search('')).articles.length,0);
 });
 
-test('prefix recovery finds an unfinished name and cannot reorder an existing exact result',async()=>{
+test('bounded prefix recovery finds unfinished names and retains single-term exact lookup',async()=>{
   const search=await createSearch((await buildSearchIndex(documents)).index);
   assert.equal((await search.search('orbit')).articles[0].article.id,'orbit');
   assert.equal((await search.search('orbi')).articles[0].article.id,'orbit');
@@ -84,4 +84,33 @@ test('long source passages keep the matching text in their preview',async()=>{
 test('an article scope cannot fabricate a hit for a query with no matching unit',async()=>{
  const bundle=await buildSearchIndex(documents),engine=await createSearch(bundle.index);
  assert.deepEqual((await engine.search('zqwxvnosuchword',{article:'orbit'})).articles,[]);
+});
+
+test('source passages cannot be mutated through result/context references',async()=>{
+ const engine=await createSearch((await buildSearchIndex(documents)).index),result=await engine.search('orbital');
+ const hit=result.articles[0].passages[0];
+ assert.throws(()=>{hit.passage.text='Replaced';},TypeError);
+ assert.throws(()=>{hit.context[0].headings.push('Injected');},TypeError);
+ assert.match((await engine.search('orbital')).articles[0].passages[0].passage.text,/spacecraft/);
+});
+
+test('more passages preserves the initial ranking and reports the matching source count',async()=>{
+ const doc=article('many','Examples','<h2>Notes</h2>'+Array.from({length:12},(_,i)=>`<p>Needle detail ${i}.</p>`).join(''));
+ const engine=await createSearch((await buildSearchIndex([doc])).index);
+ const first=(await engine.search('needle')).articles[0],more=(await engine.search('needle',{article:'many',passagesPerArticle:8})).articles[0];
+ assert.equal(first.passages.length,3);assert.equal(first.totalPassages,12);assert.equal(more.passages.length,8);
+ assert.deepEqual(more.passages.slice(0,3),first.passages);
+});
+
+test('paragraph selection uses body/heading evidence rather than repeated article-title words',async()=>{
+ const doc=article('details','Orbital machinery','<p>Brief introduction.</p><p>The pump regulates fuel pressure during transfer.</p><p>Closing remarks.</p>');
+ const engine=await createSearch((await buildSearchIndex([doc])).index);
+ const result=await engine.search('orbital fuel pressure');assert.equal(result.articles[0].passages.length,1);assert.match(result.articles[0].passages[0].passage.text,/pump/);
+ const titleOnly=await engine.search('machinery');assert.equal(titleOnly.articles.length,1);assert.equal(titleOnly.articles[0].passages.length,0);
+});
+
+test('recovery with more matched query terms can beat an unrelated partial exact match',async()=>{
+ const docs=[article('weak','Needle','<p>Needle alone.</p>'),article('wanted','Other topic','<p>Needle spacecraft navigation.</p>')];
+ const engine=await createSearch((await buildSearchIndex(docs)).index);
+ assert.equal((await engine.search('needle spacecraf')).articles[0].article.id,'wanted');
 });

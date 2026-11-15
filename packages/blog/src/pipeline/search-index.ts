@@ -11,8 +11,9 @@ import type { PostMeta } from '../lib/frontmatter.js';
 
 export function searchableArticle(meta: PostMeta, html: string): PreparedArticle {
   return prepareArticle({ id: meta.slug, url: `/${meta.slug}`, title: meta.title, section: meta.section, date: meta.date, tags: meta.tags, html,
-    // This published article contains an author source note in a blockquote. Do not redistribute it in the search index.
-    ...(meta.slug === 'how-i-separate-readers-from-bots-without-javascript' ? { omitTags: ['blockquote'] } : {}),
+    // These articles include author source notes in blockquotes. Do not redistribute
+    // those blocks into a new index; displayed article markup is a separate concern.
+    ...(['how-i-separate-readers-from-bots-without-javascript', 'filter-referrer-spam-without-deleting-analytics-history', 'how-ghx-was-born'].includes(meta.slug) ? { omitTags: ['blockquote'] } : {}),
   });
 }
 
@@ -28,7 +29,7 @@ export async function writeSearchIndex(destination: string, articles: readonly A
     },
     async put(key, vector) { const path = join(cache, 'vectors', key), bytes = Buffer.alloc(vector.length * 4); vector.forEach((value, i) => bytes.writeFloatLE(value, i * 4)); await mkdir(dirname(path), { recursive: true }); await writeFile(path, bytes); computed++; if (computed % 250 === 0) console.log(`Search: embedded ${computed} new units (${cached} cached).`); },
   });
-  const bundle = await buildSearchIndex(articles, { encoder });
+  const bundle = await (async () => { try { return await buildSearchIndex(articles, { encoder }); } finally { await encoder.close(); } })();
   if (!bundle.vectors) throw new Error('Related-search indexing produced no vectors.');
   const hash = createHash('sha256').update(bundle.index).digest('hex').slice(0, 20), base = `/search-assets/${hash}`;
   await mkdir(join(destination, base), { recursive: true });

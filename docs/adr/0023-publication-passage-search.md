@@ -2,6 +2,8 @@
 
 Accepted November 14, 2026. [Delivery worklist](../worklist/blog-search/README.md), [comparison and limits](../../packages/blog/drafts/research/modern-web-guidance/search-package/report.md).
 
+The [v0.2 amendment](#v02-session-and-retrieval-boundaries) supersedes the v0.1 recovery ordering and unit-level article fusion described below. Historical comparison artifacts remain unchanged.
+
 ## Decision
 
 Build `@gkoreli/search` as a reusable workspace package. An article owns ordered source passages, native anchors and publication identity. Expose `prepareArticle` through the HTML adapter, `buildSearchIndex`, `createSearch` and the engine's `search` operation. Keep candidate packing, lexical indexes, vector rows, rank fusion and grouping inside the module. HTML parsing, inference, file transport, Cloudflare serving and the Nisli publication interface are adapters. The domain depends on none of those hosts. Do not introduce a repository interface or service abstraction merely to forward one implementation call.
@@ -27,3 +29,15 @@ The method choice was recorded before reserved comparator output. Exact MiniSear
 Pagefind's native static-site index and heading sections were executed and retained, alongside controlled record-level conditions. It struggled with the conversational questions in this selected English pack; that is not a general verdict on Pagefind. DocSearch informed interaction conventions, but its hosted Algolia ranking/crawler was not evaluated. The additional cross-encoder improved selected article ordering while missing some requested paragraph detail and adding a second model and computation. Retain it as research rather than shipping it by default.
 
 MWG's seven-line query encoder remains a separate reproduction. The matching Gemini/MWG full-blog document index was not built. E5 product results must never be attributed to that encoder or used to validate its upstream training, historical installation footprint or private benchmark claims.
+
+## v0.2 session and retrieval boundaries
+
+Accepted November 14, 2026. [Iteration](../worklist/blog-search/v0.2.md), [controlled comparison](../../packages/blog/drafts/research/modern-web-guidance/search-package-v02/README.md).
+
+Keep the article aggregate and source identity immutable after opening the index. Return source passages, bounded previews, context and total available ranked passages; source evidence is distinct from ranking confidence. The portable core borrows inference and byte-loading ports. E5 adapters own model resources and expose an idempotent `close()` that drains accepted work. Runtime tensor cleanup applies to failure paths too. E5 runtimes become optional peers rather than mandatory word-search dependencies.
+
+Add a deep HTTP session adapter with `search` and `close`, configured by an absolute manifest URL and optional lazy managed-encoder factory. It owns shared index/model loading, retries after failed creation, freshness checks, model reuse across content refresh, one forced retry after asset retirement, and safe model retirement/shutdown. Both reader intents use one opened core engine. Leave newest-query scheduling and progress presentation in the blog worker; neither belongs in article identity or ranking. Do not introduce a host-neutral repository abstraction merely to wrap fetch. Index format 2 and manifest format 1 remain compatible with existing readers.
+
+Select distinct article ranks before related-mode reciprocal-rank fusion. Rank lexical paragraphs using their heading/body rather than the repeated article title. For word recovery, prioritize matched query-term coverage, then exact evidence, then BM25+ score. These fixed policies were chosen by the declared known-set rule; the new source-aware confirmation set did not establish a general relevance gain. Retain its selected-paragraph regressions. Keep three excerpts for relevance comparisons even when the UI lets the reader expand an article to eight, thirteen, eighteen or twenty. Expansion scopes the existing query, preserves its ranking prefix and focuses the first newly displayed source link.
+
+The publication adapter extends existing omissions for identified author source-note blocks without turning private prompts into a new searchable corpus. This changes the integrated corpus; frozen same-input experiments retain their original snapshot. Delivery checks must use the actual new index and all actual paragraph destinations separately.

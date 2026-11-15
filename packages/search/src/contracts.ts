@@ -7,6 +7,9 @@ export interface EmbeddingEncoder {
   encode(text: string, purpose: 'query' | 'document', signal?: AbortSignal): Promise<readonly Float32Array[]>;
 }
 
+/** The adapter owns its model resources; close waits for work already submitted. */
+export interface ManagedEncoder extends EmbeddingEncoder { close(): Promise<void> }
+
 export interface SearchBundle {
   readonly index: string;
   readonly vectors?: Uint8Array;
@@ -35,6 +38,8 @@ export interface PassageMatch {
 export interface ArticleMatch {
   readonly article: Omit<ArticleDocument, 'passages'>;
   readonly passages: readonly PassageMatch[];
+  /** Ranked source passages available under the current query and scope. */
+  readonly totalPassages: number;
 }
 
 export interface SearchResponse {

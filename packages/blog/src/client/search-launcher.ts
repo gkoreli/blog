@@ -20,6 +20,11 @@ document.addEventListener('keydown', event => {
   if ((event.metaKey || event.ctrlKey) && !event.altKey && !event.shiftKey && event.key.toLowerCase() === 'k' || event.key === '/' && !event.metaKey && !event.ctrlKey && !event.altKey && !event.shiftKey && !editable) { event.preventDefault(); void openSearch(); }
 });
 if (dialog instanceof HTMLDialogElement) {
+  // type=search can consume the first Escape to clear a nonempty value. The
+  // dialog's advertised shortcut closes immediately and retains that query.
+  dialog.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && !event.isComposing) { event.preventDefault(); event.stopPropagation(); dialog.close(); }
+  }, { capture: true });
   dialog.querySelector('[data-search-close]')?.addEventListener('click', () => dialog.close());
   dialog.addEventListener('click', event => { if (event.target === dialog) { const rect = dialog.getBoundingClientRect(); if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) dialog.close(); } });
   dialog.addEventListener('close', () => { document.documentElement.classList.remove('search-open'); opener?.focus(); });

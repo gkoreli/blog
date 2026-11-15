@@ -1,23 +1,76 @@
 {
   "name": "@gkoreli/search",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "type": "module",
   "description": "Article and passage retrieval for publications",
   "license": "MIT",
   "exports": {
-    ".": { "types": "./dist/index.d.ts", "default": "./dist/index.js" },
-    "./html": { "types": "./dist/html.d.ts", "default": "./dist/html.js" },
-    "./e5": { "types": "./dist/e5.d.ts", "default": "./dist/e5.js" },
-    "./e5-web": { "types": "./dist/e5-web.d.ts", "default": "./dist/e5-web.js" },
-    "./e5-node": { "types": "./dist/e5-node.d.ts", "default": "./dist/e5-node.js" },
-    "./e5-assets": { "types": "./dist/e5-assets.d.ts", "default": "./dist/e5-assets.js" }
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./html": {
+      "types": "./dist/html.d.ts",
+      "default": "./dist/html.js"
+    },
+    "./e5": {
+      "types": "./dist/e5.d.ts",
+      "default": "./dist/e5.js"
+    },
+    "./e5-web": {
+      "types": "./dist/e5-web.d.ts",
+      "default": "./dist/e5-web.js"
+    },
+    "./e5-node": {
+      "types": "./dist/e5-node.d.ts",
+      "default": "./dist/e5-node.js"
+    },
+    "./e5-assets": {
+      "types": "./dist/e5-assets.d.ts",
+      "default": "./dist/e5-assets.js"
+    },
+    "./http": {
+      "types": "./dist/http.d.ts",
+      "default": "./dist/http.js"
+    }
   },
   "scripts": {
     "build": "tsc --build",
     "typecheck": "tsc --build",
     "test": "pnpm build && node --test test/*.test.mjs"
   },
-  "dependencies": { "minisearch": "7.2.0", "parse5": "8.1.1", "@huggingface/transformers": "3.8.1", "onnxruntime-common": "1.22.0-dev.20250409-89f8206ba4", "onnxruntime-web": "1.22.0-dev.20250409-89f8206ba4" },
-  "devDependencies": { "@types/node": "^25.3.3", "typescript": "^7.0.2" }
+  "dependencies": {
+    "minisearch": "7.2.0",
+    "parse5": "8.1.1"
+  },
+  "devDependencies": {
+    "@types/node": "^25.3.3",
+    "typescript": "^7.0.2",
+    "@huggingface/transformers": "3.8.1",
+    "onnxruntime-common": "1.22.0-dev.20250409-89f8206ba4",
+    "onnxruntime-web": "1.22.0-dev.20250409-89f8206ba4"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE"
+  ],
+  "peerDependencies": {
+    "@huggingface/transformers": "3.8.1",
+    "onnxruntime-common": "1.22.0-dev.20250409-89f8206ba4",
+    "onnxruntime-web": "1.22.0-dev.20250409-89f8206ba4"
+  },
+  "peerDependenciesMeta": {
+    "@huggingface/transformers": {
+      "optional": true
+    },
+    "onnxruntime-common": {
+      "optional": true
+    },
+    "onnxruntime-web": {
+      "optional": true
+    }
+  }
 }

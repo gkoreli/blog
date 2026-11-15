@@ -1,0 +1,251 @@
+{
+  "boundary": "Agent-authored source-aware confirmation; prior corpus knowledge, incomplete labels, paired forms. Frozen before v0.2 ranking execution.",
+  "indexSha256": "11dc9dcd0ddefd510f8446f550173438a5e0dfbc7308d97107eb6d864fc0dfe9",
+  "indexId": "7f336454dd91f883eb7f7f4acbdc2602bb01b860c16e5c14b08902c7957e19c2",
+  "cases": [
+    {
+      "id": "V01-topic",
+      "article": "cloudflare-turnstile-signup-failures",
+      "query": "Turnstile single fresh widget recovery timeout",
+      "targets": [
+        {
+          "id": "cloudflare-turnstile-signup-failures/passage-b9c4d5c5b14060d6",
+          "sha256": "b9c4d5c5b14060d67d84b8e6f79fb1e109261cfc99abba81253dd980b478d733"
+        }
+      ]
+    },
+    {
+      "id": "V01-question",
+      "article": "cloudflare-turnstile-signup-failures",
+      "query": "Where did I limit a failed verification widget to one automatic replacement under the original deadline?",
+      "targets": [
+        {
+          "id": "cloudflare-turnstile-signup-failures/passage-b9c4d5c5b14060d6",
+          "sha256": "b9c4d5c5b14060d67d84b8e6f79fb1e109261cfc99abba81253dd980b478d733"
+        }
+      ]
+    },
+    {
+      "id": "V02-topic",
+      "article": "filter-referrer-spam-without-deleting-analytics-history",
+      "query": "referrer report shared assessment D1 row reads",
+      "targets": [
+        {
+          "id": "filter-referrer-spam-without-deleting-analytics-history/passage-9bb32fdc9d82d29c",
+          "sha256": "9bb32fdc9d82d29c6db7205b973e8744114735fea3d47023ca53fc2a59257375"
+        }
+      ]
+    },
+    {
+      "id": "V02-question",
+      "article": "filter-referrer-spam-without-deleting-analytics-history",
+      "query": "Find the paragraph where calculating a traffic policy once reduced database work but could leave reports an hour old.",
+      "targets": [
+        {
+          "id": "filter-referrer-spam-without-deleting-analytics-history/passage-9bb32fdc9d82d29c",
+          "sha256": "9bb32fdc9d82d29c6db7205b973e8744114735fea3d47023ca53fc2a59257375"
+        }
+      ]
+    },
+    {
+      "id": "V03-topic",
+      "article": "why-worktree-setup-is-slow-on-macos",
+      "query": "Linux build changed cached dependencies independent copies",
+      "targets": [
+        {
+          "id": "why-worktree-setup-is-slow-on-macos/passage-09d2bd9989d66239",
+          "sha256": "09d2bd9989d6623968f20d13e3ec05941638865a6cf681bec0886b816f98f510"
+        }
+      ]
+    },
+    {
+      "id": "V03-question",
+      "article": "why-worktree-setup-is-slow-on-macos",
+      "query": "Where did reusing installed files break the following package install, and copying them avoid the problem?",
+      "targets": [
+        {
+          "id": "why-worktree-setup-is-slow-on-macos/passage-09d2bd9989d66239",
+          "sha256": "09d2bd9989d6623968f20d13e3ec05941638865a6cf681bec0886b816f98f510"
+        }
+      ]
+    },
+    {
+      "id": "V04-topic",
+      "article": "prompt-cache-context-edits",
+      "query": "Sonnet append instruction 7870 cached tokens",
+      "targets": [
+        {
+          "id": "prompt-cache-context-edits/passage-f2fa5155480549d3",
+          "sha256": "f2fa5155480549d346e9ba531def4e4d5fe00cf328d8d7875187ae967887e6ba"
+        }
+      ]
+    },
+    {
+      "id": "V04-question",
+      "article": "prompt-cache-context-edits",
+      "query": "Find the measured case where adding an instruction at the end preserved cached work while editing the beginning lost it.",
+      "targets": [
+        {
+          "id": "prompt-cache-context-edits/passage-f2fa5155480549d3",
+          "sha256": "f2fa5155480549d346e9ba531def4e4d5fe00cf328d8d7875187ae967887e6ba"
+        }
+      ]
+    },
+    {
+      "id": "V05-topic",
+      "article": "how-ghx-was-born",
+      "query": "ghx GraphQL aliases batch five file reads",
+      "targets": [
+        {
+          "id": "how-ghx-was-born/passage-51ad3efe4255bce2",
+          "sha256": "51ad3efe4255bce2ee8e2f81d1de83370e5f04cd56a9db1c4587e56269b0c4cf"
+        }
+      ]
+    },
+    {
+      "id": "V05-question",
+      "article": "how-ghx-was-born",
+      "query": "Which tool read several remote source files in one network round trip?",
+      "targets": [
+        {
+          "id": "how-ghx-was-born/passage-51ad3efe4255bce2",
+          "sha256": "51ad3efe4255bce2ee8e2f81d1de83370e5f04cd56a9db1c4587e56269b0c4cf"
+        }
+      ]
+    },
+    {
+      "id": "V06-topic",
+      "article": "topologies-of-thoughts",
+      "query": "knowledge graph articulated relationship edge label",
+      "targets": [
+        {
+          "id": "topologies-of-thoughts/passage-e74e558f4dd88051",
+          "sha256": "e74e558f4dd880511188610837c92ec79cad9ec4b574860c62c7c8d4ed0a91d5"
+        }
+      ]
+    },
+    {
+      "id": "V06-question",
+      "article": "topologies-of-thoughts",
+      "query": "Where is the distinction between a binary connection between notes and explaining what their relationship actually is?",
+      "targets": [
+        {
+          "id": "topologies-of-thoughts/passage-e74e558f4dd88051",
+          "sha256": "e74e558f4dd880511188610837c92ec79cad9ec4b574860c62c7c8d4ed0a91d5"
+        }
+      ]
+    },
+    {
+      "id": "V07-topic",
+      "article": "first-party-analytics-for-a-personal-blog",
+      "query": "beacon POST Referer navigation source",
+      "targets": [
+        {
+          "id": "first-party-analytics-for-a-personal-blog/passage-54ecb253d7c4a6c4",
+          "sha256": "54ecb253d7c4a6c47715c768b1a206601db09c1d1dad2363b9527d906650f223"
+        }
+      ]
+    },
+    {
+      "id": "V07-question",
+      "article": "first-party-analytics-for-a-personal-blog",
+      "query": "Why did the analytics client have to send the original navigation source instead of using the event request header?",
+      "targets": [
+        {
+          "id": "first-party-analytics-for-a-personal-blog/passage-54ecb253d7c4a6c4",
+          "sha256": "54ecb253d7c4a6c47715c768b1a206601db09c1d1dad2363b9527d906650f223"
+        }
+      ]
+    },
+    {
+      "id": "V08-topic",
+      "article": "you-dont-need-codemap",
+      "query": "ghx remote reconnaissance before local indexing",
+      "targets": [
+        {
+          "id": "you-dont-need-codemap/passage-2a4cfca4fbcf3bcc",
+          "sha256": "2a4cfca4fbcf3bcc51e90b4d629b67e0abd4003d8885dd0c0dacc9e76d835014"
+        }
+      ]
+    },
+    {
+      "id": "V08-question",
+      "article": "you-dont-need-codemap",
+      "query": "Which explanation puts remote repository exploration before the decision to clone and map the whole codebase?",
+      "targets": [
+        {
+          "id": "you-dont-need-codemap/passage-2a4cfca4fbcf3bcc",
+          "sha256": "2a4cfca4fbcf3bcc51e90b4d629b67e0abd4003d8885dd0c0dacc9e76d835014"
+        }
+      ]
+    },
+    {
+      "id": "V09-topic",
+      "article": "bring-your-own-ai-agent",
+      "query": "Brave BYOM AgentPort model versus agent",
+      "targets": [
+        {
+          "id": "bring-your-own-ai-agent/passage-2ee223e671627c07",
+          "sha256": "2ee223e671627c0721e44615b37c8114b2209327c93012f19c9a3520c4aa06ae"
+        }
+      ]
+    },
+    {
+      "id": "V09-question",
+      "article": "bring-your-own-ai-agent",
+      "query": "Where did I explain why bringing a model endpoint does not bring along agent memory, files and approval rules?",
+      "targets": [
+        {
+          "id": "bring-your-own-ai-agent/passage-2ee223e671627c07",
+          "sha256": "2ee223e671627c0721e44615b37c8114b2209327c93012f19c9a3520c4aa06ae"
+        }
+      ]
+    },
+    {
+      "id": "V10-topic",
+      "article": "my-evals-say-it-works-i-dont-use-it",
+      "query": "eval capability habit setup tax",
+      "targets": [
+        {
+          "id": "my-evals-say-it-works-i-dont-use-it/passage-7c4bbda87e3b4009",
+          "sha256": "7c4bbda87e3b40097e7b47959193dfd0beba0944073e0838b1e5a1ddee1f088b"
+        }
+      ]
+    },
+    {
+      "id": "V10-question",
+      "article": "my-evals-say-it-works-i-dont-use-it",
+      "query": "Find the paragraph saying a passing evaluation did not remove installation friction or make the product a habit.",
+      "targets": [
+        {
+          "id": "my-evals-say-it-works-i-dont-use-it/passage-7c4bbda87e3b4009",
+          "sha256": "7c4bbda87e3b40097e7b47959193dfd0beba0944073e0838b1e5a1ddee1f088b"
+        }
+      ]
+    },
+    {
+      "id": "VN1",
+      "article": null,
+      "query": "replacing a bicycle hydraulic brake hose",
+      "targets": []
+    },
+    {
+      "id": "VN2",
+      "article": null,
+      "query": "calculating inheritance tax in Portugal",
+      "targets": []
+    },
+    {
+      "id": "VN3",
+      "article": null,
+      "query": "identifying a poisonous wild mushroom",
+      "targets": []
+    },
+    {
+      "id": "VN4",
+      "article": null,
+      "query": "restoring a damaged vinyl record",
+      "targets": []
+    }
+  ]
+}
