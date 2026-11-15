@@ -1,0 +1,140 @@
+{
+  "boundary": "Presentation-only correction. CSS viewport fixtures are layout checks; live browser checks exercised the actual deployed control and word search.",
+  "sourceCommit": "a48959c2be3c9cb0e4b4fad00e5ace1e0ac9a603",
+  "sourceBase": "c3413057",
+  "local": {
+    "sourceCommit": "a48959c2",
+    "sourceBase": "c3413057",
+    "checkedAt": "2026-11-15T15:43:47.710Z",
+    "fixtures": [
+      {
+        "width": 390,
+        "path": "/",
+        "documentWidth": 390,
+        "navSearch": 0,
+        "viewport": 390,
+        "visible": [
+          "search-icon-link search-mobile-link"
+        ]
+      },
+      {
+        "width": 768,
+        "path": "/",
+        "documentWidth": 768,
+        "navSearch": 0,
+        "viewport": 768,
+        "visible": [
+          "search-icon-link search-mobile-link"
+        ]
+      },
+      {
+        "width": 769,
+        "path": "/",
+        "documentWidth": 769,
+        "navSearch": 0,
+        "viewport": 769,
+        "visible": [
+          "search-icon-link search-compact-link"
+        ]
+      },
+      {
+        "width": 1199,
+        "path": "/",
+        "documentWidth": 1199,
+        "navSearch": 0,
+        "viewport": 1199,
+        "visible": [
+          "search-icon-link search-compact-link"
+        ]
+      },
+      {
+        "width": 1200,
+        "path": "/",
+        "documentWidth": 1200,
+        "navSearch": 0,
+        "viewport": 1200,
+        "visible": [
+          "search-icon-link search-rail-link"
+        ]
+      },
+      {
+        "width": 1440,
+        "path": "/",
+        "documentWidth": 1440,
+        "navSearch": 0,
+        "viewport": 1440,
+        "visible": [
+          "search-icon-link search-rail-link"
+        ]
+      },
+      {
+        "width": 1280,
+        "path": "/stats",
+        "documentWidth": 1280,
+        "navSearch": 0,
+        "viewport": 1280,
+        "visible": [
+          "search-icon-link search-compact-link"
+        ]
+      },
+      {
+        "width": 390,
+        "path": "/stats",
+        "documentWidth": 390,
+        "navSearch": 0,
+        "viewport": 390,
+        "visible": [
+          "search-icon-link search-mobile-link"
+        ]
+      }
+    ],
+    "checks": {
+      "workspaceTypecheck": "passed in clean isolated checkout",
+      "markdownValidation": 35,
+      "readingAndDesignTests": 3,
+      "isolatedBuiltPosts": 46,
+      "clickAndWordSearch": true,
+      "ctrlK": true,
+      "escapeAndFocusReturn": true,
+      "mobileKeyboardActivation": true,
+      "tabFromThemeToSearch": true,
+      "rightRailBeforeArticle": true,
+      "stickyRailTopAfterScrolling": 32,
+      "lightAndDarkThemes": true
+    },
+    "cssSha256": "88a2d565399a0e893a6aa459d55f1d7fd91b4271f6d3326d874fd9803d756b7a"
+  },
+  "production": {
+    "checkedAt": "2026-11-15T15:48:05.876Z",
+    "buildIds": [
+      "cf:5977a0a6-de5c-44ac-a50f-da9f3a5afaa1:a48959c2be3c9cb0e4b4fad00e5ace1e0ac9a603"
+    ],
+    "homeHasCompactLauncher": true,
+    "articleHasRightRail": true,
+    "articleUtilityBeforeMain": true,
+    "leftNavigationSearchRemoved": true,
+    "cssSha256": "88a2d565399a0e893a6aa459d55f1d7fd91b4271f6d3326d874fd9803d756b7a",
+    "localCssSha256": "88a2d565399a0e893a6aa459d55f1d7fd91b4271f6d3326d874fd9803d756b7a",
+    "cssMatchesLocal": true,
+    "buildId": "5977a0a6-de5c-44ac-a50f-da9f3a5afaa1",
+    "workerVersion": "176526d1-5222-4ca7-82b5-30ca00d0d634",
+    "trafficPercent": 100,
+    "deployedAt": "2026-11-15T15:47:25.327Z",
+    "browser": {
+      "recordedAt": "2026-11-15T15:50:09.368Z",
+      "viewport": 1280,
+      "visibleLauncher": "search-icon-link search-rail-link",
+      "target": {
+        "width": 44,
+        "height": 44
+      },
+      "leftNavSearchRows": 0,
+      "clickOpenedDialog": true,
+      "wordResultsShown": 5,
+      "metaKOpenedDialog": true,
+      "escapeClosedDialog": true,
+      "focusReturnedToCompactIcon": true
+    },
+    "screenshotSha256": "35609a938c283fcdc046cc9b8f28e530b28417384807c799601ff0741292b186"
+  }
+}
