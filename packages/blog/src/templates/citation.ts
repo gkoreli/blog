@@ -1,5 +1,6 @@
 import type { PostMeta } from '../lib/frontmatter.js';
 import { CONTENT_LICENSE } from '../lib/license.js';
+import { isCalendarDate } from '@gkoreli/time';
 
 const SITE = 'https://gkoreli.com';
 const MONTHS = [
@@ -25,12 +26,11 @@ interface CitationDate {
 }
 
 function citationDate(date: string): CitationDate {
-  const match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(date);
-  if (!match) throw new Error(`Citation date must use YYYY-MM-DD: ${date}`);
+  if (!isCalendarDate(date)) throw new Error(`Invalid citation date: ${date}`);
 
-  const year = Number(match[1]);
-  const month = Number(match[2]);
-  const day = Number(match[3]);
+  const year = Number(date.slice(0, 4));
+  const month = Number(date.slice(5, 7));
+  const day = Number(date.slice(8, 10));
   const monthName = MONTHS[month - 1];
   if (!monthName || day < 1 || day > 31) throw new Error(`Invalid citation date: ${date}`);
 

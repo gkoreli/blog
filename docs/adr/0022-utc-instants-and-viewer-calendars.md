@@ -38,6 +38,8 @@ Client-error ingestion, diagnostics, calibration, capture receipts, feed-assessm
 
 Native HTTP Date/Expires parsing, signature epoch clocks, elapsed durations and received publisher-version tokens retain their distinct protocol semantics. The pre-module bootstrap failure reporter intentionally uses native UTC ISO serialization so it can report a missing main bundle; shared ingestion validates the result. Historical articles, frozen receipts, source reporting calendars and raw protocol evidence are not relabeled or rewritten.
 
+Enforce this boundary with a source test over active packages, custom article layouts and publication/export tooling. Canonical report timestamp validation belongs in the kernel alongside serialization; evidence contracts may retain their original second precision. New reports reuse the native time adapters even when their source reporting calendar is intentionally fixed.
+
 ## Acceptance
 
 The existing [Stats worklist](../../packages/blog/drafts/research/ai-site-audit/02-tools-product-exploration.md) owns implementation, native D1/SQLite parity, storage/identity preservation, cache isolation, portable-package checks, responsive visual QA, delivery and fresh hosted acceptance. Check code, deployment activation and live behavior separately.

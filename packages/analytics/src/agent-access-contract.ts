@@ -4,7 +4,7 @@ import { isSignatureBasis, type SignatureBasis } from './signature-basis.js';
 import { isReportedVerifierProfile, type ReportedVerifierProfile } from './verifier-profile.js';
 import { reachDay, reachMeasurementStamp } from './article-reach-contract.js';
 import { isPublicSignerName, type PublicSignerName } from './signers.js';
-import { addCalendarDays, calendarDaysBetween, isUtcInstant, utcDateKey } from '@gkoreli/time';
+import { addCalendarDays, calendarDaysBetween, isCanonicalUtcInstant, utcDateKey, utcInstant } from '@gkoreli/time';
 
 export { AGENT_ACCESS_KINDS, AGENT_ROLE_LABELS, isAgentAccessKind } from './agent-roles.js';
 export type { AgentAccessKind } from './agent-roles.js';
@@ -144,7 +144,7 @@ export function validAgentAccessCatalogue(value: unknown): value is AgentAccessR
 export function agentAccessWindow(now: Date): { start: string; endExclusive: string; calculatedAt: string } {
   if (!Number.isFinite(now.getTime())) throw new Error('Invalid agent access clock');
   const endExclusive = utcDateKey(now);
-  return { start: addCalendarDays(endExclusive, -28), endExclusive, calculatedAt: now.toISOString() };
+  return { start: addCalendarDays(endExclusive, -28), endExclusive, calculatedAt: utcInstant(now) };
 }
 export async function agentAccessCatalogueHash(resources: AgentAccessResource[]): Promise<string> {
   if (!validAgentAccessCatalogue(resources)) throw new Error('Invalid agent access resource catalogue');
@@ -172,7 +172,7 @@ function checkedAgentAccessReport(value: unknown): value is AgentAccessReport {
   const scope = value.scope, accounting = value.accounting;
   if (!keys(scope, ['start', 'endExclusive', 'calculatedAt', 'timeZone', 'days', 'cohort', 'catalogueHash', 'registryProfile', 'referralPolicyHash'])
     || !reachDay(scope.start) || !reachDay(scope.endExclusive) || calendarDaysBetween(scope.start, scope.endExclusive) !== 28
-    || !isUtcInstant(scope.calculatedAt) || new Date(scope.calculatedAt).toISOString() !== scope.calculatedAt || scope.calculatedAt.slice(0, 10) !== scope.endExclusive
+    || !isCanonicalUtcInstant(scope.calculatedAt) || utcDateKey(scope.calculatedAt) !== scope.endExclusive
     || scope.timeZone !== 'UTC' || scope.days !== 28 || scope.cohort !== 'stored-ai-roles-and-signed-fallback'
     || !hash(scope.catalogueHash) || scope.registryProfile !== CLIENT_REGISTRY_PROFILE || !hash(scope.referralPolicyHash)
     || !keys(accounting, ['windowViews', 'ownerExcludedViews', 'referralExcludedViews', 'includedViews', 'otherViews'])

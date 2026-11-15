@@ -5,6 +5,7 @@ import {
 import { SIGNATURE_BASIS_LABELS } from '@gkoreli/analytics/signature-basis';
 import { dataFactsHtml, metricTileHtml } from './data-display.js';
 import { addCalendarDays, timePresentation } from '@gkoreli/time';
+import { localTimeHtml } from './local-time.js';
 
 const number = (value: number) => value.toLocaleString('en-US');
 const ENTITIES: Readonly<Record<string, string>> = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' };
@@ -72,7 +73,7 @@ export function agentAccessViewHtml(report: AgentAccessReport, selection: AgentA
     { label: 'Active UTC days', value: number(accessDayCount(selected.total.dayMask)), detail: 'Union of recorded days, out of 28' },
     { label: 'Markdown events', value: number(markdown), detail: 'Served format; preference not established' },
   ].map(metricTileHtml).join('');
-  return `<p class="agent-access-period">${escape(period)}<br><span>Calculated ${escape(time.instant(report.scope.calculatedAt))}</span></p>
+  return `<p class="agent-access-period">${escape(period)}<br><span>Calculated ${localTimeHtml(report.scope.calculatedAt, time)}</span></p>
     ${selection.kind !== null ? `<p class="agent-access-selection">Role: ${escape(AGENT_ROLE_LABELS[selection.kind])} <button type="button" data-agent-reset="kind">Show all roles</button></p>` : ''}
     <div class="agent-access-metrics">${tiles}</div>
     ${selected.total.views === 0 ? '<p class="agent-access-empty">No retained events match this selection. This does not establish zero demand or complete collection.</p>' : ''}

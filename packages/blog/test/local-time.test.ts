@@ -5,6 +5,7 @@ import { localizeTimeElements, localTimeElement } from '../src/client/local-time
 import { localTimeHtml } from '../src/lib/local-time.js';
 import { renderContent } from '../src/lib/ssg.js';
 import { parseClientErrorPayload } from '../../client-observability/src/schema.js';
+import { timePresentation } from '@gkoreli/time';
 
 await renderContent([html`<p>Time fixture</p>`]);
 
@@ -40,6 +41,21 @@ test('dynamic and SSR time elements share repeated-hour labels and exact UTC ins
   }
   assert.match(root.querySelectorAll('time')[0]?.textContent ?? '', /1:30 AM PDT/);
   assert.match(root.querySelectorAll('time')[1]?.textContent ?? '', /1:30 AM PST/);
+});
+
+test('explicit report presentation shares markup and preserves the instant across date rollovers', () => {
+  const instant = '2026-11-14T00:30:00.000Z';
+  for (const timeZone of ['America/Los_Angeles', 'Asia/Kathmandu', 'Pacific/Kiritimati']) {
+    const options = { timeZone, locale: 'en-US' };
+    const root = document.createElement('section');
+    root.innerHTML = localTimeHtml(instant, timePresentation(options));
+    const time = root.querySelector('time'); assert.ok(time);
+    assert.equal(time.getAttribute('datetime'), instant);
+    assert.equal(time.textContent, localTimeElement(instant, options).textContent);
+    const label = time.textContent;
+    assert.equal(localizeTimeElements(root, options), 1);
+    assert.equal(time.textContent, label);
+  }
 });
 
 test('client-error ingestion normalizes offsets and rejects ambiguous or impossible event times', () => {

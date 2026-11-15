@@ -49,6 +49,7 @@ test('report rendering preserves scope, complete evidence, unknowns, safe labels
     const html = agentAccessViewHtml(report, { articleId: null, client: null, kind: null }, timePresentation({timeZone:'America/Los_Angeles', locale:'en-US'}));
     assert.doesNotMatch(html, /<img|onerror="/); assert.match(html, /&lt;img/);
     assert.match(html, /PST/); assert.match(html, /UTC reporting days/);
+    assert.match(html, /<time datetime="2026-11-14T17:02:00.000Z" data-local-time>Nov 14, 2026, 9:02 AM PST<\/time>/);
     for (const text of ['AI-search declarations', 'AI-crawler declarations', 'On-demand fetcher declarations', 'historical or unknown role', 'No selected client name', 'Format not recorded', 'Stored proof and network evidence', 'Recorded measurement profiles', 'Unregistered resource events']) assert(html.includes(text), text);
     for (const client of ['ChatGPT-User', 'OAI-SearchBot', 'GPTBot']) assert(html.includes(client));
     const selected = agentAccessViewHtml(report, { articleId: 'article:a', client: 'OAI-SearchBot', kind: 'ai-search' });

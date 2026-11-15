@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { DatabaseSync } from 'node:sqlite';
 import test from 'node:test';
-import { buildQueries, compareDay, d1Schema, daysBetween, parseRum, rumQuery, type RumGroup } from '../scripts/analytics-evidence.models.ts';
+import { buildQueries, compareDay, d1Schema, daysBetween, nextDay, parseRum, rumQuery, type RumGroup } from '../scripts/analytics-evidence.models.ts';
 
 const day = '2020-01-01';
 function group(path = '/', count = 1, interval = 1): RumGroup {
@@ -20,6 +20,14 @@ test('UTC windows reject invalid dates, SQL input, partial days and oversized ra
   for (const [start, end] of [['2020-02-30', '2020-03-01'], [day, "2020-01-02'; DELETE FROM x;"], [day, day], [day, '2020-03-01'], ['2020-03-02', '2020-03-03']]) {
     assert.throws(() => daysBetween(start!, end!, now));
   }
+});
+
+test('source evidence retains UTC days across viewer midnight and daylight-saving changes', () => {
+  const now = new Date('2026-11-02T00:30:00Z'); // Still November 1 in Pacific time.
+  assert.deepEqual(daysBetween('2026-10-31', '2026-11-02', now), ['2026-10-31', '2026-11-01']);
+  assert.equal(nextDay('2024-02-29'), '2024-03-01');
+  assert.equal(nextDay('2026-12-31'), '2027-01-01');
+  assert.throws(() => nextDay('2026-02-30'));
 });
 
 test('D1 queries apply owner exclusion and export aggregates without client IDs', () => {

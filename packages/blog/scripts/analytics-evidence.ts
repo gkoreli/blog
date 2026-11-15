@@ -5,6 +5,7 @@ import { homedir } from 'node:os';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { parseArgs } from 'node:util';
+import { utcInstant } from '@gkoreli/time';
 import { buildQueries, compareDay, d1Schema, daysBetween, parseRum, rumQuery } from './analytics-evidence.models.ts';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '../../..');
@@ -58,7 +59,7 @@ async function main() {
   const out = resolve(values.out);
   // Exclusive directory creation prevents overwriting earlier evidence.
   mkdirSync(out, { mode: 0o700 });
-  const startedAt = new Date().toISOString();
+  const startedAt = utcInstant(Date.now());
   const hashes: Record<string, string> = {};
   const failures: string[] = [];
   const write = (name: string, contents: string) => {
@@ -70,17 +71,17 @@ async function main() {
   write('queries.sql', queries.map(q => `-- ${q.name}\n${q.sql};`).join('\n\n') + '\n');
   let d1: ReturnType<typeof d1Schema.parse> | undefined;
   try {
-    const captureStartedAt = new Date().toISOString();
+    const captureStartedAt = utcInstant(Date.now());
     const raw: unknown = JSON.parse(command('pnpm', ['exec', 'wrangler', 'd1', 'execute', 'blog-analytics', '--remote', '--json', '--command', queries.map(q => q.sql + ';').join('\n')]));
     d1 = d1Schema.parse(raw);
     if (d1.length !== queries.length) throw new Error('D1 result count differs from the query count.');
-    json('d1.json', { captureStartedAt, capturedAt: new Date().toISOString(), results: d1.map((result, i) => ({ name: queries[i]!.name, ...result })) });
+    json('d1.json', { captureStartedAt, capturedAt: utcInstant(Date.now()), results: d1.map((result, i) => ({ name: queries[i]!.name, ...result })) });
   } catch { failures.push('D1 capture failed validation or execution; counts unavailable. No unvalidated result is used.'); d1 = undefined; }
   let gitCommit: string | null = null;
   try { gitCommit = command('git', ['rev-parse', 'HEAD']).trim(); } catch { failures.push('Git revision unavailable.'); }
   try {
     const deployments: unknown = JSON.parse(command('pnpm', ['exec', 'wrangler', 'deployments', 'list', '--json']));
-    json('deployments.json', { capturedAt: new Date().toISOString(), deployments });
+    json('deployments.json', { capturedAt: utcInstant(Date.now()), deployments });
   } catch { failures.push('Worker deployment history unavailable; do not infer deployed version from Git.'); }
   const sourceHashes = Object.fromEntries(['analytics-evidence.ts', 'analytics-evidence.models.ts'].map(name => [name, createHash('sha256').update(readFileSync(join(root, 'packages/blog/scripts', name))).digest('hex')]));
   const comparisons: Array<ReturnType<typeof compareDay> & { botsExcluded: boolean }> = [];
@@ -93,7 +94,7 @@ async function main() {
       for (const botsExcluded of [true, false]) {
         const query = rumQuery(accountId, day, botsExcluded);
         const name = `rum-${day}-${botsExcluded ? 'bots-excluded' : 'all'}.json`;
-        const captureStartedAt = new Date().toISOString();
+        const captureStartedAt = utcInstant(Date.now());
         try {
           const response = await fetch('https://api.cloudflare.com/client/v4/graphql', {
             method: 'POST', headers: { Authorization: `Bearer ${auth}`, 'Content-Type': 'application/json' },
@@ -102,7 +103,7 @@ async function main() {
           if (!response.ok) throw new Error('RUM HTTP request failed.');
           const raw: unknown = await response.json();
           const groups = parseRum(raw, day);
-          json(name, { query, captureStartedAt, capturedAt: new Date().toISOString(), groups });
+          json(name, { query, captureStartedAt, capturedAt: utcInstant(Date.now()), groups });
           if (d1) {
             const daily = d1[queries.findIndex(q => q.name === 'daily')]!.results;
             const paths = d1[queries.findIndex(q => q.name === 'paths')]!.results;
@@ -111,7 +112,7 @@ async function main() {
         } catch {
           const failure = `RUM ${day} ${botsExcluded ? 'bots-excluded' : 'all'} failed execution, schema, date, or group-limit validation; no count inferred.`;
           failures.push(failure);
-          if (!hashes[name]) json(name, { query, captureStartedAt, capturedAt: new Date().toISOString(), error: failure });
+          if (!hashes[name]) json(name, { query, captureStartedAt, capturedAt: utcInstant(Date.now()), error: failure });
         }
       }
     }
@@ -154,7 +155,7 @@ async function main() {
     '- Project plan: packages/blog/drafts/research/readers-vs-bots/14-evidence-backed-implementation-plan.md', '',
   );
   write('report.md', lines.join('\n'));
-  json('manifest.json', { formatVersion: 1, startedAt, completedAt: new Date().toISOString(), window: { start: values.start, endExclusive: values.end, timeZone: 'UTC' }, database: 'blog-analytics', rumHost: 'gkoreli.com', mode: values['d1-only'] ? 'd1-only' : 'd1-and-rum', gitCommit, sourceHashes, complete, comparable, failures, files: { ...hashes } });
+  json('manifest.json', { formatVersion: 1, startedAt, completedAt: utcInstant(Date.now()), window: { start: values.start, endExclusive: values.end, timeZone: 'UTC' }, database: 'blog-analytics', rumHost: 'gkoreli.com', mode: values['d1-only'] ? 'd1-only' : 'd1-and-rum', gitCommit, sourceHashes, complete, comparable, failures, files: { ...hashes } });
   console.log(`Evidence saved to ${out}/report.md`);
   if (failures.length) process.exitCode = 1;
 }

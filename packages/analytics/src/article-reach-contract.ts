@@ -1,4 +1,4 @@
-import { isCalendarDate, isUtcInstant, utcInstant, addCalendarDays, calendarDateKey, calendarDaysBetween, parseTimeZone } from '@gkoreli/time';
+import { isCalendarDate, isCanonicalUtcInstant, addCalendarDays, calendarDateKey, calendarDaysBetween, parseTimeZone } from '@gkoreli/time';
 /** Request evidence for editorial decisions; no reader, session or identity claims. */
 export const ARTICLE_REACH_VERSION = '2026-11-14.1';
 export const REACH_METRIC_KEYS = ['views', 'externalViews', 'internalViews', 'unattributedViews', 'unknownSourceViews', 'largestSourceViews', 'unrecognizedTimeViews'] as const;
@@ -142,8 +142,8 @@ export function consistentArticleReach(value: unknown): value is ArticleReachRep
   const { period, classification, referralPolicy, largestExternalSource } = value;
   if (!record(period) || !keys(period, ['startInclusive', 'endExclusive', 'updatedAt', 'timeZone'])
     || !reachDay(period.startInclusive) || !reachDay(period.endExclusive) || typeof period.timeZone !== 'string' || parseTimeZone(period.timeZone) === null
-    || !isUtcInstant(period.updatedAt)) return false;
-  if (calendarDaysBetween(period.startInclusive, period.endExclusive) !== 28 || utcInstant(period.updatedAt) !== period.updatedAt || calendarDateKey(period.updatedAt, period.timeZone) !== period.endExclusive) return false;
+    || !isCanonicalUtcInstant(period.updatedAt)) return false;
+  if (calendarDaysBetween(period.startInclusive, period.endExclusive) !== 28 || calendarDateKey(period.updatedAt, period.timeZone) !== period.endExclusive) return false;
   if (!record(classification) || !keys(classification, ['recordedProfiles', 'unversionedViews']) || !count(classification.recordedProfiles)
     || !count(classification.unversionedViews) || classification.unversionedViews > value.site.views
     || classification.recordedProfiles > value.site.views - classification.unversionedViews
