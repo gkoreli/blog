@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { addCalendarDays, calendarWeekday, httpDate, isCalendarDate, isHttpDate, isUtcInstant, calendarDateKey, calendarDaysBetween, databaseTimestamp, parseTimeZone, timePresentation, utcDateKey, utcInstant } from '../dist/index.js';
+import { addCalendarDays, calendarWeekday, httpDate, isCalendarDate, isCanonicalUtcInstant, isHttpDate, isUtcInstant, calendarDateKey, calendarDaysBetween, databaseTimestamp, parseTimeZone, timePresentation, utcDateKey, utcInstant } from '../dist/index.js';
 import { ZonedCalendar } from '../dist/calendar.js';
 
 test('UTC instants and database stamps share an explicit, host-independent boundary', () => {
@@ -96,6 +96,16 @@ test('shared guards reject rolled dates and ambiguous instants without changing 
   for (const value of [null, 0, '2026-11-14', '2026-11-14T00:00:00', '2026-02-30T00:00:00Z', '2026-11-14T24:00:00Z', '2026-11-14T00:00:00+00:00']) assert.equal(isUtcInstant(value), false);
   assert.equal(isCalendarDate('2024-02-29'), true);
   for (const value of [null, '2026-02-29', '2026-11-14T00:00:00Z']) assert.equal(isCalendarDate(value), false);
+});
+
+test('canonical API timestamps are distinct from retained evidence and SQLite storage', () => {
+  for (const input of ['2026-11-14T16:23:48Z', '2026-11-14T08:23:48-08:00', '2026-11-14 16:23:48', 1794673428000]) {
+    const canonical = utcInstant(input);
+    assert.equal(isCanonicalUtcInstant(canonical), true);
+    assert.equal(isCanonicalUtcInstant(databaseTimestamp(input)), false);
+  }
+  assert.equal(isUtcInstant('2026-11-14T16:23:48Z'), true);
+  for (const input of [null, {}, '2026-11-14T16:23:48Z', '2026-11-14T16:23:48.000+00:00', '2026-11-14T16:23:48', '2026-11-14', '2026-02-30T00:00:00.000Z']) assert.equal(isCanonicalUtcInstant(input), false);
 });
 
 test('HTTP dates remain protocol UTC and reject malformed calendar or weekday validators', () => {

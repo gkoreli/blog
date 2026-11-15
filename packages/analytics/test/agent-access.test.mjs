@@ -102,7 +102,9 @@ test('malformed reports cannot silently drop counts, proof detail, history, cove
       row => row.cells[0].format = 'future', row => row.proofs[0].basis = 'future', row => row.proofs[0].publisher = 'https://private.example',
       row => row.proofs[0].profile = 'future', row => row.proofs[0].network = 'future', row => { row.proofs[0].network = 'not-recorded'; row.proofs[0].networkListed = true; },
       row => row.history[0].classifier = 'private-canary', row => row.history[0].source = 'private-canary',
-      row => row.scope.start = '2026-10-18', row => row.scope.calculatedAt = '2026-11-13T12:34:56.000Z', row => row.scope.catalogueHash = 'bad',
+      row => row.scope.start = '2026-10-18', row => row.scope.calculatedAt = '2026-11-13T12:34:56.000Z',
+      row => row.scope.calculatedAt = '2026-11-14T12:34:56Z', row => row.scope.calculatedAt = '2026-11-14T04:34:56.000-08:00',
+      row => row.scope.catalogueHash = 'bad',
       row => row.resources[0].path = '/private?query', row => row.extra = 'private', row => delete row.cells,
       row => { row.cells[0].metrics = { views: Number.MAX_SAFE_INTEGER, weeks: [Number.MAX_SAFE_INTEGER, 0, 0, 0], dayMask: 1, unrecognizedTimeViews: 0 }; },
     ];

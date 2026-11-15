@@ -7,10 +7,11 @@ export function timeFallback(value: InstantInput): { instant: string; label: str
   return { instant, label: fallback.instant(instant) };
 }
 
-/** Complete SSR text, with a canonical instant for progressive localization.
- * Both interpolations are produced by the time core, never arbitrary HTML.
+/** UTC SSR fallback or an explicit report presentation, with the same canonical
+ * instant retained for progressive localization and native time semantics.
  */
-export function localTimeHtml(value: InstantInput): string {
-  const { instant, label } = timeFallback(value);
+export function localTimeHtml(value: InstantInput, presentation = fallback): string {
+  const instant = utcInstant(value);
+  const label = presentation.instant(instant).replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;');
   return `<time datetime="${instant}" data-local-time>${label}</time>`;
 }

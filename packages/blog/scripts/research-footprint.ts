@@ -16,6 +16,7 @@
  */
 
 import { existsSync, readdirSync } from 'node:fs';
+import { utcInstant } from '@gkoreli/time';
 import { homedir } from 'node:os';
 import { dirname, join, relative, resolve } from 'node:path';
 import {
@@ -173,7 +174,7 @@ function main(): void {
   const allSessions = [...codexSources.flatMap(source => source.sessions), ...claudeSources.flatMap(source => source.sessions)];
   if (!allSessions.length) throw new Error('No sessions were included');
   const measuredAt = latestUsageAt(allSessions);
-  const frozenAt = new Date().toISOString();
+  const frozenAt = utcInstant(Date.now());
   const startedAt = earliestStartedAt(allSessions);
   const measuredWallClockMinutes = wallClockMinutes(startedAt, measuredAt);
   const totals = [...codexSources, ...claudeSources].reduce((sum, source) => addTokenTotals(sum, source.totals), emptyTokenTotals());

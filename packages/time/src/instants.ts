@@ -31,6 +31,13 @@ export function isUtcInstant(value: unknown): value is string {
   catch { return false; }
 }
 
+/** API instants use exactly the representation emitted by utcInstant. Evidence
+ * may retain second precision through isUtcInstant without changing its bytes.
+ */
+export function isCanonicalUtcInstant(value: unknown): value is string {
+  return isUtcInstant(value) && utcInstant(value) === value;
+}
+
 export function isCalendarDate(value: unknown): value is string {
   if (typeof value !== 'string') return false;
   try { calendarDateValue(value); return true; }

@@ -6,6 +6,7 @@ import type { AgentAccessExploration } from '@gkoreli/analytics/agent-access-exp
 import { SIGNATURE_BASIS_LABELS } from '@gkoreli/analytics/signature-basis';
 import { dataFactsHtml, groupedEvidenceTableHtml, metricTileHtml } from './data-display.js';
 import { addCalendarDays, timePresentation } from '@gkoreli/time';
+import { localTimeHtml } from './local-time.js';
 
 const number = (value: number) => value.toLocaleString('en-US');
 const ENTITIES: Readonly<Record<string, string>> = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' };
@@ -34,7 +35,7 @@ export function agentAccessViewHtml(view: AgentAccessExploration, time = timePre
     { label: 'Active UTC days', value: number(accessDayCount(view.metrics.dayMask)), detail: 'Union of recorded days, out of 28' },
     { label: 'Markdown events', value: number(view.markdownEvents), detail: 'Served format; preference not established' },
   ].map(metricTileHtml).join('');
-  const overview = `<p class="agent-access-period">${escape(period)}<br><span>Calculated <time datetime="${escape(scope.calculatedAt)}">${escape(time.instant(scope.calculatedAt))}</time></span></p><div class="agent-access-metrics">${tiles}</div>`;
+  const overview = `<p class="agent-access-period">${escape(period)}<br><span>Calculated ${localTimeHtml(scope.calculatedAt, time)}</span></p><div class="agent-access-metrics">${tiles}</div>`;
   const roleRows = view.roles.map(row => metricsRow(AGENT_ROLE_LABELS[row.kind], row.metrics)).join('');
   const formatRows = view.formats.map(row => metricsRow(FORMAT_LABELS[row.format], row.metrics)).join('');
   const articleRows = view.articles.map(row => `<tr><th scope="row"><button type="button" class="agent-resource-choice" data-agent-article="${escape(row.resource.id)}"><span>${escape(row.resource.title)}</span><small>${escape(row.resource.path)}</small></button></th><td>${number(row.metrics.views)}</td><td>${number(accessDayCount(row.metrics.dayMask))}</td><td><a class="agent-access-visit" href="${escape(row.resource.path)}" aria-label="Visit ${escape(row.resource.title)}"><span class="ui-icon" aria-hidden="true" style="--ui-icon-image:url('/icons/posts.svg')"></span><span>Visit</span></a></td></tr>`).join('');

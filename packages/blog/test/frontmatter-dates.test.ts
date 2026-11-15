@@ -4,6 +4,8 @@ import { mkdtempSync, writeFileSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { execFileSync } from 'node:child_process';
+import { postMetaSchema } from '../src/lib/frontmatter.js';
+import { bibtex, cslJson } from '../src/templates/citation.js';
 
 test('quoted and YAML-coerced publication dates retain the authored day across build timezones', () => {
   const root = mkdtempSync(join(tmpdir(), 'publication-date-'));
@@ -25,4 +27,15 @@ test('quoted and YAML-coerced publication dates retain the authored day across b
       assert.match(String(dates.feed), /<pubDate>Thu, 29 Feb 2024 00:00:00 GMT<\/pubDate>/);
     }
   } finally { rmSync(root, { recursive: true, force: true }); }
+});
+
+test('citation dates share real-calendar validation while retaining protocol date parts', () => {
+  const metadata = (date: string) => postMetaSchema.parse({ title: 'Fixture', slug: 'fixture', date, description: 'Fixture', section: 'engineering' });
+  const leapDay = metadata('2024-02-29');
+  assert.match(cslJson(leapDay), /"date-parts": \[\s*\[\s*2024,\s*2,\s*29/);
+  assert.match(bibtex(leapDay), /year=\{2024\},\s*month=\{February\}/);
+  for (const date of ['2026-02-29', '2026-04-31', '2026-11-14T00:00:00Z', '2026-13-01']) {
+    assert.throws(() => cslJson(metadata(date)), /Invalid citation date/);
+    assert.throws(() => bibtex(metadata(date)), /Invalid citation date/);
+  }
 });

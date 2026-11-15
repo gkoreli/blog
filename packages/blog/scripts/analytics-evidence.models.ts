@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { addCalendarDays, calendarDaysBetween, isCalendarDate, utcDateKey } from '@gkoreli/time';
 
 const count = z.number().int().nonnegative();
 export const aggregateRow = z.record(z.string(), z.union([z.string(), z.number(), z.null()]));
@@ -23,17 +24,16 @@ export const rumSchema = z.object({
 
 export function daysBetween(start: string, end: string, now = new Date()): string[] {
   for (const date of [start, end]) {
-    if (!/^\d{4}-\d{2}-\d{2}$/.test(date) || !Number.isFinite(Date.parse(date))
-      || new Date(date).toISOString().slice(0, 10) !== date) throw new Error('Dates must be real YYYY-MM-DD UTC dates.');
+    if (!isCalendarDate(date)) throw new Error('Dates must be real YYYY-MM-DD UTC dates.');
   }
-  if (end > now.toISOString().slice(0, 10)) throw new Error('End must exclude the current partial UTC day.');
-  const length = (Date.parse(end) - Date.parse(start)) / 86_400_000;
+  if (end > utcDateKey(now)) throw new Error('End must exclude the current partial UTC day.');
+  const length = calendarDaysBetween(start, end);
   if (length < 1 || length > 31) throw new Error('Choose 1–31 complete UTC days; end is exclusive.');
-  return Array.from({ length }, (_, i) => new Date(Date.parse(start) + i * 86_400_000).toISOString().slice(0, 10));
+  return Array.from({ length }, (_, i) => addCalendarDays(start, i));
 }
 
 export function nextDay(day: string): string {
-  return new Date(Date.parse(day) + 86_400_000).toISOString().slice(0, 10);
+  return addCalendarDays(day, 1);
 }
 
 export function buildQueries(start: string, end: string) {

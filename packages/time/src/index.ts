@@ -1,5 +1,5 @@
 import { calendarDateValue, parseTimeZone, utcInstant, viewerTimeZone, type InstantInput } from './instants.js';
-export { addCalendarDays, calendarDateKey, calendarDaysBetween, calendarWeekday, databaseTimestamp, httpDate, isCalendarDate, isHttpDate, isUtcInstant, parseTimeZone, utcDateKey, utcInstant, viewerTimeZone, type InstantInput } from './instants.js';
+export { addCalendarDays, calendarDateKey, calendarDaysBetween, calendarWeekday, databaseTimestamp, httpDate, isCalendarDate, isCanonicalUtcInstant, isHttpDate, isUtcInstant, parseTimeZone, utcDateKey, utcInstant, viewerTimeZone, type InstantInput } from './instants.js';
 
 /** One presentation policy for instants and already-selected civil dates.
  * Calendar arithmetic and database representations never enter UI callers.

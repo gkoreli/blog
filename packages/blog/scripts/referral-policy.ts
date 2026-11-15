@@ -3,6 +3,7 @@ import { fileURLToPath } from 'node:url';
 import { resolve, join } from 'node:path';
 import { parseArgs } from 'node:util';
 import { z } from 'zod';
+import { utcInstant } from '@gkoreli/time';
 import { createReferralAssessor } from '../../analytics/src/referral-policy.js';
 import { ACTIVE_REFERRAL_POLICY } from '../../analytics/src/referral-policy.generated.js';
 import {
@@ -87,7 +88,7 @@ async function main() {
     z.object({ license: z.literal('CC0-1.0') }).parse(JSON.parse(composer));
     const manifest = sourceManifestSchema.parse({
       provider: 'matomo', repository: 'https://github.com/matomo-org/referrer-spam-list', revision,
-      capturedAt: new Date().toISOString(), license: 'CC0-1.0', entryCount: hosts.length,
+      capturedAt: utcInstant(Date.now()), license: 'CC0-1.0', entryCount: hosts.length,
       files: { 'spammers.txt': sha256(raw), 'README.md': sha256(readme), 'composer.json': sha256(composer) },
     });
     await mkdir(sourcesRoot, { recursive: true });
@@ -124,7 +125,7 @@ async function main() {
     for (const query of input) for (const row of query.results) if (typeof row.referrer_host === 'string') hosts.add(row.referrer_host);
     const assess = createReferralAssessor(policy);
     const assessments = [...hosts].sort().map(assess);
-    await writeFile(values.out, JSON.stringify({ policyVersion: policy.version, policySha256: policy.sha256, source: policy.source, inputSha256: sha256(rawInput), assessedAt: new Date().toISOString(), assessments }, null, 2) + '\n', { flag: 'wx', mode: 0o600 });
+    await writeFile(values.out, JSON.stringify({ policyVersion: policy.version, policySha256: policy.sha256, source: policy.source, inputSha256: sha256(rawInput), assessedAt: utcInstant(Date.now()), assessments }, null, 2) + '\n', { flag: 'wx', mode: 0o600 });
     process.stdout.write(`Assessed ${hosts.size} private hostnames; ${assessments.filter(value => value.action === 'exclude').length} matched exclusions\n`);
     return;
   }
@@ -138,7 +139,7 @@ async function main() {
     if (!response.ok) throw new Error(`Report capture failed: HTTP ${response.status}`);
     const body = await response.text();
     if (Buffer.byteLength(body) > 2000000) throw new Error('Report exceeds capture bound');
-    const evidence = reportEvidence(body, url.href, new Date().toISOString(), policy);
+    const evidence = reportEvidence(body, url.href, utcInstant(Date.now()), policy);
     await writeFile(values.out, JSON.stringify(evidence, null, 2) + '\n', { flag: 'wx', mode: 0o600 });
     process.stdout.write(`Captured report using ${policy.version} (${evidence.responseSha256})\n`);
     return;

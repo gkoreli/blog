@@ -14,7 +14,7 @@ import { DIRECTORY_PUBLICATION_LABELS } from '@gkoreli/analytics/directory-publi
 import { CLIENT_NAME_SELECTION_LABELS, consistentClientEvidence } from '@gkoreli/analytics/client-evidence';
 import { dataFactsHtml, groupedEvidenceTableHtml, rankedRowHtml, type RankedItem } from '../lib/data-display.js';
 import { classificationReasonLabel, requestContextRows, trafficMix } from '../lib/stats-presentation.js';
-import { timePresentation, utcInstant } from '@gkoreli/time';
+import { timePresentation, isCanonicalUtcInstant } from '@gkoreli/time';
 import '../styles/stats.css';
 
 type RangeFilter = '7d' | '30d' | '90d' | 'all';
@@ -157,9 +157,8 @@ async function fetchStats(state: ViewState, signal: AbortSignal): Promise<StatsR
   const response = await fetch(statsApiHref(state), { signal });
   if (!response.ok) throw new Error(`Stats request failed with ${response.status}`);
   const data: StatsResponse = await response.json();
-  if (typeof data.period?.startInclusive !== 'string' || typeof data.period.endExclusive !== 'string'
-    || utcInstant(data.period.startInclusive) !== data.period.startInclusive || utcInstant(data.period.endExclusive) !== data.period.endExclusive
-    || !data.timeSeries.every(row => utcInstant(row.bucket) === row.bucket)
+  if (!isCanonicalUtcInstant(data.period?.startInclusive) || !isCanonicalUtcInstant(data.period.endExclusive)
+    || !isCanonicalUtcInstant(data.period.updatedAt) || !data.timeSeries.every(row => isCanonicalUtcInstant(row.bucket))
     || !reportTime.matchesCalendar(data.period.timeZone, [data.period.startInclusive, data.period.endExclusive, data.period.updatedAt, ...data.timeSeries.map(row => row.bucket)])) throw new Error('Localized report time is unavailable. Please reload.');
   // An old cached API response must not restore arbitrary hostname display.
   if (data.referralPolicy === undefined) throw new Error('Stats referral policy is unavailable');
