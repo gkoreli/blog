@@ -1,0 +1,63 @@
+{
+  "state": "closed UTC window; Sunday points snapshot; Fursoy initially source-reviewed, final editorial inclusion pending",
+  "windowStartInclusive": "2026-11-11T00:00:00Z",
+  "windowEndExclusive": "2026-11-15T00:00:00Z",
+  "index": "Algolia Show HN",
+  "partitions": [
+    {
+      "date": "2026-11-11",
+      "capturedAt": "2026-11-15T14:40:33.342389+00:00",
+      "queryUrl": "https://hn.algolia.com/api/v1/search_by_date?tags=show_hn&numericFilters=created_at_i%3E%3D1794355200%2Ccreated_at_i%3C1794441600&hitsPerPage=1000",
+      "returned": 178,
+      "reportedHits": 178,
+      "exhaustiveNbHits": true,
+      "partialUtcDay": false,
+      "rawSha256": "3829046efbeb9bd41c47647c57ee86184acc994387d98bd0ee438f910a04be74"
+    },
+    {
+      "date": "2026-11-12",
+      "capturedAt": "2026-11-15T14:40:33.290314+00:00",
+      "queryUrl": "https://hn.algolia.com/api/v1/search_by_date?tags=show_hn&numericFilters=created_at_i%3E%3D1794441600%2Ccreated_at_i%3C1794528000&hitsPerPage=1000",
+      "returned": 181,
+      "reportedHits": 181,
+      "exhaustiveNbHits": true,
+      "partialUtcDay": false,
+      "rawSha256": "0f068f8ab10a7e01e4198a3bc090b80404cc53413ffea3e9f30212822bc1b363"
+    },
+    {
+      "date": "2026-11-13",
+      "capturedAt": "2026-11-15T14:40:33.282633+00:00",
+      "queryUrl": "https://hn.algolia.com/api/v1/search_by_date?tags=show_hn&numericFilters=created_at_i%3E%3D1794528000%2Ccreated_at_i%3C1794614400&hitsPerPage=1000",
+      "returned": 148,
+      "reportedHits": 148,
+      "exhaustiveNbHits": true,
+      "partialUtcDay": false,
+      "rawSha256": "90b0af5af9f140732d0a27076a7bcc1b6af04e721b1b1b68bb7cdb2fe4897a16"
+    },
+    {
+      "date": "2026-11-14",
+      "capturedAt": "2026-11-15T14:40:33.189153+00:00",
+      "queryUrl": "https://hn.algolia.com/api/v1/search_by_date?tags=show_hn&numericFilters=created_at_i%3E%3D1794614400%2Ccreated_at_i%3C1794700800&hitsPerPage=1000",
+      "returned": 96,
+      "reportedHits": 96,
+      "exhaustiveNbHits": true,
+      "partialUtcDay": false,
+      "rawSha256": "d235ccdcb804f6a9447fc9fb7628d277f254b67b9780bcb4e0f5c9f8e6ecbd46"
+    }
+  ],
+  "uniqueSubmissions": 603,
+  "attentionThreshold": 50,
+  "atOrAboveThreshold": 16,
+  "directGithubAtOrAboveThreshold": 9,
+  "supersedesPopulationSnapshot": "inventory-method.json",
+  "populationDelta": 19,
+  "newThresholdEntrants": [
+    "50497137"
+  ],
+  "licenseDisposition": {
+    "klad-app/klad": "excluded from OSS reviews: main application is explicitly source-available; separate MIT components do not change that classification",
+    "FURSOY/fursoy-cpu": "README declares Apache 2.0; actual license retains grants with a customized trademark paragraph, GitHub NOASSERTION retained; initial source review found no Klad-style field-of-use restriction"
+  },
+  "selectionState": "Seven launch projects plus returning Takumi in the first manuscript; newly qualifying Fursoy is initially source-reviewed, not yet accepted for inclusion",
+  "latestReview": "06-sunday-closed-window.md"
+}

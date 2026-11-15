@@ -1,0 +1,10 @@
+id,createdAt,author,title,url,points,comments
+50449891,2026-11-11T04:56:47Z,adrbn,Show HN: Black Ops II statically recompiled to native ARM64 macOS,https://github.com/adrbn/bo2-mac,150,67
+50453229,2026-11-11T13:34:24Z,0xdeadf1sh,"Show HN: Godbolt-in-a-floating-window for Neovim (C, C++, Rust)",https://github.com/0xdeadf1sh/AssemblyForNeovim,105,20
+50454625,2026-11-11T15:33:06Z,brownrout,"Show HN: Yogurt – Free, private, open-source alternative to Granola",https://github.com/FrigadeHQ/yogurt,303,115
+50454951,2026-11-11T16:00:50Z,ambewas,"Show HN: Klad, a paint app your coding agent can drive (source-available)",https://github.com/klad-app/klad,84,34
+50470488,2026-11-12T17:02:42Z,simpsoka,"Show HN: My $300 embroidery machine needed a subscription, so I built my own app",https://github.com/simpsoka/zigzag,740,256
+50471650,2026-11-12T18:15:48Z,miguelrios,"Show HN: AgentRun – open-source, Self-improving Managed Agents",https://github.com/Parcha-ai/agentrun/blob/main/README.md,138,40
+50497137,2026-11-14T14:06:34Z,fursoy,Show HN: Fursoy – Out-of-order RV64IMAFDV core in SystemVerilog (Linux 6.6),https://github.com/FURSOY/fursoy-cpu,81,26
+50497147,2026-11-14T14:08:12Z,paul_nameless,Show HN: Agweb – a browser for agents that stays out of your way,https://github.com/paul-nameless/agweb,104,30
+50497589,2026-11-14T15:04:15Z,VaibhaavTiwari,Show HN: DeepSeek V3 in ~200 lines of pure Jax,https://github.com/Vaibhaav-Tiwari/deepseek-v3-jax,254,23

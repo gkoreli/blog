@@ -219,5 +219,36 @@
       "https://github.com/kane50613/takumi/issues/2372"
     ],
     "latestFollowup": "05-takumi-afternoon-fieldwork.md"
+  },
+  {
+    "repository": "FURSOY/fursoy-cpu",
+    "discovery": "New qualifying direct-GitHub candidate in the Sunday closed-window snapshot; final manuscript inclusion pending",
+    "commit": "377ae9563ab1b88ee0a037f2223ab49822968396",
+    "defaultBranch": "main",
+    "licenseReportedByGitHub": "NOASSERTION",
+    "licenseInspection": "README declares Apache 2.0; LICENSE retains grants and customizes trademark wording. Preserve the actual text and GitHub classification rather than assume exact standard-license recognition.",
+    "inspectionState": "Initial source/discussion review of selected PTW and CSR integration, Linux boot and synthesis runners, Sail comparator and saved upstream results; no local RTL or hardware trial",
+    "source": "https://github.com/FURSOY/fursoy-cpu/tree/377ae9563ab1b88ee0a037f2223ab49822968396",
+    "inspectedFiles": [
+      "LICENSE",
+      "README.md",
+      "docs/architecture/core-s0.md (historical predecessor, selected context)",
+      "docs/architecture/slice1-m9-soc-linux-v1.md (selected architecture scope)",
+      "rtl/core/fursoy_s1_core.sv (called PTW/SQ/L1D integration)",
+      "rtl/core/fursoy_s1_ptw.sv (selected ordering/comment context)",
+      "rtl/core/fursoy_s1_csr.sv (selected interrupt read-modify-write path)",
+      "rtl/platform/fursoy_s1_soc.sv (selected PTW memory response path)",
+      "tools/run_s1_m9_closeout.py (build/execute/result acceptance)",
+      "tools/run_s1_synth.py (module selection/fresh-run/cache/timing constraints)",
+      "tools/run_s1_sail_cosim.py (fixed workload/comparator/result paths)",
+      "results/s1-m9-closeout.json (maintainer-produced)",
+      "results/s1-sail-cosim.json (maintainer-produced)"
+    ],
+    "inspectionCoverage": "Selected consequential paths; not a whole-repository audit, independent verification or hardware acceptance",
+    "discussionSources": [
+      "https://news.ycombinator.com/item?id=50497137"
+    ],
+    "receipts": [],
+    "latestFollowup": "06-sunday-closed-window.md"
   }
 ]

@@ -1,0 +1,45 @@
+# Sunday closed-window check and remaining work
+
+November 15, 2026, America/Los_Angeles. This supersedes the open-window status in the [Saturday handoff](05-takumi-afternoon-fieldwork.md), while retaining its experiments and limits. The [manuscript](article.md) contains eight entries: seven launch projects and returning Takumi. It is a first draft, not accepted release source. Its source paragraph still describes Saturday's provisional capture and must be reconciled after the final selection.
+
+## Closed launch population
+
+The [Sunday method record](inventory-closed-method.json), [603-entry inventory](inventory-closed-2026-11-15.csv) and [nine direct-GitHub candidates](sample-closed-2026-11-15.csv) replace Saturday's population snapshot for selection. The earlier files remain historical receipts.
+
+At 14:40 UTC, four exhaustive Algolia partitions returned 178 / 181 / 148 / 96 submissions for November 11 / 12 / 13 / 14. The window is now closed: November 11 00:00 UTC inclusive through November 15 00:00 UTC exclusive. There are 603 unique submissions, 19 more than the provisional capture. Sixteen have at least 50 points at this retrieval; nine link directly to GitHub. Scores can still change after the submission window closes. Neither points nor a direct repository link establishes adoption or quality.
+
+Klad's main application remains excluded under the previously inspected source-available license. **Fursoy is the one newly qualifying direct-GitHub candidate.** Its appearance changes the candidate pool, without automatically earning a manuscript entry. Final inclusion remains open until its consequential evidence and distinct contribution have been reviewed.
+
+## Fursoy: initial source and discussion review
+
+[FURSOY/fursoy-cpu](https://github.com/FURSOY/fursoy-cpu/tree/377ae9563ab1b88ee0a037f2223ab49822968396), pinned at `377ae9563ab1b88ee0a037f2223ab49822968396`. The repository was created September 6, 2026; the inspected main commit is November 15's documentation/diagram update. No GitHub releases were returned at inspection. Its [Show HN discussion](https://news.ycombinator.com/item?id=50497137) had 81 points and 26 comments in the Sunday snapshot.
+
+The project targets people studying or extending an out-of-order RISC-V processor and its verification environment. Slice-1 is the two-wide out-of-order implementation; older Slice-0 documents describe a simpler in-order predecessor and must not be used as the current core contract.
+
+The README declares Apache 2.0. The [actual license](https://github.com/FURSOY/fursoy-cpu/blob/377ae9563ab1b88ee0a037f2223ab49822968396/LICENSE) retains its copyright/patent grants and has a project-specific trademark paragraph. GitHub reports `NOASSERTION`, which is retained rather than silently relabelled as recognition of an unmodified standard license. The inspected text did not reveal a Klad-style field-of-use restriction; the project remains a candidate for review. This is a source classification record, not a legal assurance.
+
+| Consequential claim | Inspected basis | Current interpretation and limit |
+| --- | --- | --- |
+| Linux 6.6.50 and BusyBox boot | [Closeout runner](https://github.com/FURSOY/fursoy-cpu/blob/377ae9563ab1b88ee0a037f2223ab49822968396/tools/run_s1_m9_closeout.py) builds the device tree, SBI firmware and Verilator SoC model, then runs a supplied kernel image. The [saved result](https://github.com/FURSOY/fursoy-cpu/blob/377ae9563ab1b88ee0a037f2223ab49822968396/results/s1-m9-closeout.json) records 89,861,075 cycles, userspace/memory-stress markers and zero recorded access faults/conservation errors | Maintainer-produced simulation evidence, not an independently reproduced boot or physical hardware result |
+| 500 MHz timing | [Synthesis runner](https://github.com/FURSOY/fursoy-cpu/blob/377ae9563ab1b88ee0a037f2223ab49822968396/tools/run_s1_synth.py) selects eight standalone blocks, converts SystemVerilog with sv2v, synthesizes with Yosys and checks a 2 ns constraint with OpenSTA. The default reads cached logs; `--run-synth` requests a fresh run | A pre-place-and-route block result. The README explicitly says full-SoC place and route and SRAM macro compilation have not been executed. It does not establish a fabricated CPU or whole-chip clock speed |
+| Page-table walker sees dirty page-table updates | [Core integration](https://github.com/FURSOY/fursoy-cpu/blob/377ae9563ab1b88ee0a037f2223ab49822968396/rtl/core/fursoy_s1_core.sv#L710-L742) waits for an empty store queue, returns a dirty L1D snoop hit through a registered response, and suppresses the external PTW request on that hit | Source supports the claimed integration mechanism. Reading only the walker module's older direct-DRAM comment would miss this called path. Its actual ordering/coherence behavior still needs a declared RTL control |
+| Verification against Sail | [Runner/comparator](https://github.com/FURSOY/fursoy-cpu/blob/377ae9563ab1b88ee0a037f2223ab49822968396/tools/run_s1_sail_cosim.py) includes four fixed workloads and compares instruction traces, register results and selected trap/CSR state. The [saved result](https://github.com/FURSOY/fursoy-cpu/blob/377ae9563ab1b88ee0a037f2223ab49822968396/results/s1-sail-cosim.json) reports 627 Sail steps across integer, FP, vector and Sv39/trap cases | The reference-model path exists, contrary to one early discussion assumption. These finite reported cases are not formal verification or exhaustive ISA coverage; no independent rerun has been performed here |
+| Interrupt livelock fix | The maintainer describes an externally asserted SEIP being latched during a `mip` read-modify-write. The [CSR implementation](https://github.com/FURSOY/fursoy-cpu/blob/377ae9563ab1b88ee0a037f2223ab49822968396/rtl/core/fursoy_s1_csr.sv#L449-L480) substitutes the software-writable bit for that write calculation while retaining the combined interrupt value for reads | The present code matches the reported correction. The earlier failure and its complete resolution remain the maintainer's account, not a reproduced before/after trial |
+
+The public discussion includes a reader's substantive review of execution widths, timing scope, simulation and documentation drift, alongside arguments about AI-assisted design. That code review is useful counterevidence; it is not testimony of a fabricated or deployed chip. The latest README/diagram responds to some clarity questions, but a documentation commit is not an independently established hardware outcome.
+
+No Verilator, Icarus Verilog, Yosys or RISC-V GCC was present on this host at the environment check. Clang and Make were present. No RTL simulation, toolchain installation, synthesis, Linux boot, FPGA run or hardware measurement was performed in this session. Missing tools describe the local setup, not a project failure.
+
+## Today's order of work
+
+1. **Final selection and consequential research.** Finish Fursoy's verification-path review and decide whether it earns space. If a meaningful supported RTL trial is feasible in an isolated environment, declare its input/control before running it; otherwise keep any entry explicitly source/report-based or omit it with a stated selection reason. Check consequential changes to the other entries, especially Takumi's current font report and AgentRun's beta release/upgrade contract. Do not rerun unchanged passing fixtures for a new date.
+2. **Finish the article as a selection.** Reconcile the source numbers, dates, inclusion explanation and title; review every project judgment against its dossier. Keep bo2 gameplay, Yogurt audio quality, Agweb efficiency, AgentRun disk durability and Fursoy hardware performance outside the supported claims unless new evidence is actually obtained. Edit the cross-project patterns and distillation around what the selected projects teach a reader.
+3. **Complete release acceptance by the 17:00 Pacific target.** Add final metadata only after selection/editorial review, build the actual article in an isolated checkout, inspect the rendered page and discovery/social outputs, and save the exact readiness state. A manuscript file alone is not completion.
+
+The next scheduled preparation starts are 09:00 and 14:00 Pacific. These are planned work starts, not evidence of hours already spent. The next bounded research action is the Fursoy verification/selection decision; unrelated #16 scouting stays secondary.
+
+## Publication boundary
+
+The intended cadence remains Monday morning, with November 16 at 08:00 Pacific as the issue's target. GitHub again returned `disabled_manually` for publisher workflow `408698342` during the Sunday check, and the manifest still has no articles. The earlier explicit publication pause remains in force. Finishing reviewed source does not authorize enabling or bypassing the publisher, queueing around the pause or posting to X.
+
+Raw Sunday inventory responses live outside Git in `/private/tmp/oss-radar-15-sunday-2026-11-15/`; the Saturday runtime and trial artifacts retain their earlier private temporary location. No raw author messages are included here.
