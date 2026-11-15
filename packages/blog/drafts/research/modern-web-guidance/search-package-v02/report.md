@@ -68,6 +68,12 @@ Manual browser checks opened a ghx selected explanation in fourth place through 
 
 Thirty package tests, 460 blog tests, workspace typechecks, content validation and isolated full builds passed during implementation. Source delivery, automatic activation and current production acceptance are recorded separately in the [delivery record](../../../../../../docs/worklist/blog-search/delivery-v0.2.md). Browser warm-up, payload size and functional checks are not a latency SLO or a low-memory device profile.
 
+## Serving-build check
+
+Source `0db4355e` automatically activated at 100% as Worker version `830931de-f115-4f0d-b61f-1122f98d3929`, November 15 at 06:23 UTC. The [point-in-time production receipt](production-check.json) records public build identity, the actual index/vector hashes, all 75 replay rows and raw server GET acceptance. Article/lexical fields and semantic row positions equal the local build; vector bytes differ (minimum corresponding-row cosine 0.995288, mean 0.999280). Every aggregate article/joint count remained the same. Complete per-mode rankings matched the local Node run in 81/150 cases, so aggregate agreement must not be described as ranking equivalence. This diagnostic does not isolate the numerical difference's cause.
+
+The live browser also exercised word passage expansion, focus on the newly exposed fourth ghx explanation, Enter to its actual highlighted target, explicit Related opt-in, the actual Moving Icons target, Cmd+K and immediate Escape/query/focus preservation. The native GET returned source excerpts without client execution. These controlled acceptance requests are not organic audience use. The [delivery record](../../../../../../docs/worklist/blog-search/delivery-v0.2.md) separates source, activation and observations. The manuscript stays unpublished.
+
 ## Next questions, not accepted claims
 
 Independent reader tasks, multilingual preparation, calibrated no-answer decisions, low-memory device cost, compact/sharded indexes and smaller compatible models remain proposals. The [manuscript](../article.md) keeps MWG's released-weight reproduction separate from all E5 product work. The matching Gemini/MWG full-blog document index is still unbuilt. No article publication or npm release occurred in this iteration.

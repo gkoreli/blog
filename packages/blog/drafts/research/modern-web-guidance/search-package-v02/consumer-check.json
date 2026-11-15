@@ -1,13 +1,15 @@
 {
+  "checkedAt": "2026-11-15T06:22:55.117Z",
   "packageVersion": "0.2.0",
   "pnpm": "9.15.4",
+  "tarballSha256": "ac5e654b16765b0f413ff2f2c23f01de87054b16be76db7fbecbfc207d3acbe5",
   "packages": [
-    "@gkoreli+search@file+..+package+gkoreli-search-0.2.0.tgz",
+    "@gkoreli+search@file+..+package-final+gkoreli-search-0.2.0.tgz",
     "entities@9.0.0",
     "minisearch@7.2.0",
     "parse5@8.1.1"
   ],
+  "installedPackageCount": 4,
   "wordSearchArticle": "example",
-  "modelDependencies": 0,
-  "installedPackageCount": 4
+  "modelDependencies": 0
 }
