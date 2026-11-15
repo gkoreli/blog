@@ -3,25 +3,7 @@ import { documentUrl, type ArticleDocument } from './documents.js';
 import type { ArticleMatch, EmbeddingEncoder, PassageMatch, SearchEngine, SearchOptions, SearchResponse, TextRange } from './contracts.js';
 import { digest, lexicalOptions, normalizedVector, readSnapshot, type SearchUnit } from './snapshot.js';
 import { normalizeWord, parseQuery, tokenize } from './query.js';
-
-interface RankedUnit { readonly id: string; readonly score: number }
-
-function fuse(first: readonly RankedUnit[], second: readonly RankedUnit[]): RankedUnit[] {
-  const scores = new Map<string, number>();
-  for (const list of [first, second]) for (const [rank, row] of list.entries()) scores.set(row.id, (scores.get(row.id) ?? 0) + 1 / (61 + rank));
-  return [...scores].map(([id, score]) => ({ id, score })).sort((a, b) => b.score - a.score);
-}
-
-function lexicalRows(index: MiniSearch<SearchUnit>, text: string, recovery: boolean): RankedUnit[] {
-  const exact = index.search(text).map(row => ({ id: row.id, score: row.score })).filter((row): row is RankedUnit => typeof row.id === 'string' && Number.isFinite(row.score));
-  if (!recovery) return exact;
-  const found = new Set(exact.map(row => row.id));
-  const expanded = index.search(text, {
-    fuzzy: term => term.length >= 5 && term.length <= 40 ? 0.2 : false, maxFuzzy: 1,
-    prefix: (term, position, terms) => position === terms.length - 1 && term.length >= 3 && term.length <= 64,
-  });
-  return [...exact, ...expanded.filter(row => typeof row.id === 'string' && !found.has(row.id) && Number.isFinite(row.score)).map(row => ({ id: String(row.id), score: row.score }))];
-}
+import { articleRanks, fuse, lexicalRows, policy, type RankedUnit } from './ranking.js';
 
 function preview(text: string, terms: readonly string[]): PassageMatch['preview'] {
   const wanted = new Set(terms); const ranges: TextRange[] = [];
@@ -50,8 +32,13 @@ function boundedCount(value: number | undefined, fallback: number, maximum: numb
 }
 
 /** One corpus, two reader intents. Model inference and byte loading are explicit ports. */
-export async function createSearch(serialized: string, adapters: { readonly encoder?: EmbeddingEncoder; readonly loadVectors?: (signal?: AbortSignal) => Promise<Uint8Array> } = {}): Promise<SearchEngine> {
+export async function createSearch(serialized: string, adapters: { readonly encoder?: EmbeddingEncoder; readonly loadEncoder?: () => Promise<EmbeddingEncoder>; readonly loadVectors?: (signal?: AbortSignal) => Promise<Uint8Array> } = {}): Promise<SearchEngine> {
   const snapshot = await readSnapshot(serialized);
+  // TypeScript readonly alone cannot protect source identity from JavaScript callers.
+  for (const article of snapshot.articles) {
+    for (const passage of article.passages) { Object.freeze(passage.headings); Object.freeze(passage); }
+    Object.freeze(article.passages); if (article.tags) Object.freeze(article.tags); Object.freeze(article);
+  }
   const articles = new Map(snapshot.articles.map(article => [article.id, article]));
   const candidateUnits = new Map(snapshot.candidates.map(unit => [unit.id, unit]));
   const excerptUnits = new Map(snapshot.excerpts.map(unit => [unit.id, unit]));
@@ -59,6 +46,13 @@ export async function createSearch(serialized: string, adapters: { readonly enco
   const excerptIndex = MiniSearch.loadJSON<SearchUnit>(snapshot.excerptIndex, lexicalOptions);
   const vocabulary = new Set(snapshot.excerpts.flatMap(unit => tokenize(unit.title + '\n' + unit.heading + '\n' + unit.text)));
   let vectorPromise: Promise<Float32Array> | undefined;
+  let encoderPromise: Promise<EmbeddingEncoder> | undefined;
+  async function encoder(): Promise<EmbeddingEncoder> {
+    if (adapters.encoder) return adapters.encoder;
+    if (!adapters.loadEncoder) throw new Error('Related search requires the same embedding space used to build this index.');
+    encoderPromise ??= adapters.loadEncoder().catch(error => { encoderPromise = undefined; throw error; });
+    return encoderPromise;
+  }
 
   async function vectors(signal?: AbortSignal): Promise<Float32Array> {
     if (vectorPromise) return vectorPromise;
@@ -89,17 +83,17 @@ export async function createSearch(serialized: string, adapters: { readonly enco
     return rows.filter(row => { const unit = units.get(row.id); if (!unit) throw new Error('A search rank refers to an unknown unit.'); return inScope(unit, options, phrases); });
   }
 
-  function matches(article: ArticleDocument, rows: readonly RankedUnit[], terms: readonly string[], count: number): PassageMatch[] {
+  function matches(article: ArticleDocument, rows: readonly RankedUnit[], terms: readonly string[], count: number): { passages: PassageMatch[]; totalPassages: number } {
     const selected = new Set<string>(); const result: PassageMatch[] = [];
     for (const row of rows) {
       const unit = excerptUnits.get(row.id); if (!unit || unit.articleId !== article.id) continue;
       const passageId = unit.passageIds[0]; if (!passageId || selected.has(passageId)) continue;
       const position = article.passages.findIndex(p => p.id === passageId), passage = article.passages[position]; if (!passage) throw new Error('Missing source passage.');
       selected.add(passageId);
+      if (result.length >= count) continue;
       result.push({ id: unit.id, passage, url: documentUrl(article.url) + '#' + encodeURIComponent(passage.anchor), preview: preview(passage.text, terms), context: article.passages.slice(Math.max(0, position - 1), position + 2) });
-      if (result.length >= count) break;
     }
-    return result;
+    return { passages: result, totalPassages: selected.size };
   }
 
   return {
@@ -114,11 +108,12 @@ export async function createSearch(serialized: string, adapters: { readonly enco
       const response = (found: readonly ArticleMatch[]): SearchResponse => ({ indexId: snapshot.id, query: query.text, mode, articles: found, missingWords: [...new Set(query.terms.filter(term => !vocabulary.has(term)))] });
       if (!query.text || !query.terms.length) return response([]);
       let candidateRows = lexicalRows(candidateIndex, query.lexical, mode === 'words');
-      let excerptRows = lexicalRows(excerptIndex, query.lexical, mode === 'words');
+      let excerptRows = lexicalRows(excerptIndex, query.lexical, mode === 'words', true);
+      let fusedArticles: RankedUnit[] | undefined;
       if (mode === 'related') {
-        const metadata = snapshot.semantic, encoder = adapters.encoder;
-        if (!metadata || !encoder || encoder.space !== metadata.space || encoder.dimensions !== metadata.dimensions) throw new Error('Related search requires the same embedding space used to build this index.');
-        const [data, encoded] = await Promise.all([vectors(options.signal), encoder.encode(query.text, 'query', options.signal)]);
+        const metadata = snapshot.semantic, model = await encoder();
+        if (!metadata || model.space !== metadata.space || model.dimensions !== metadata.dimensions) throw new Error('Related search requires the same embedding space used to build this index.');
+        const [data, encoded] = await Promise.all([vectors(options.signal), model.encode(query.text, 'query', options.signal)]);
         options.signal?.throwIfAborted(); if (encoded.length !== 1 || !encoded[0]) throw new Error('A query must produce one embedding.');
         const vector = normalizedVector(encoded[0], metadata.dimensions), scores = new Map<string, number>();
         for (const [row, id] of metadata.units.entries()) {
@@ -127,18 +122,20 @@ export async function createSearch(serialized: string, adapters: { readonly enco
           scores.set(id, Math.max(scores.get(id) ?? -Infinity, score));
         }
         const dense = [...scores].map(([id, score]) => ({ id, score })).sort((a, b) => b.score - a.score);
-        candidateRows = fuse(dense.filter(row => candidateUnits.has(row.id)), candidateRows);
+        const denseCandidates = dense.filter(row => candidateUnits.has(row.id));
+        if (policy.articleFusion) fusedArticles = fuse(articleRanks(scoped(denseCandidates, candidateUnits, options, query.phrases), candidateUnits), articleRanks(scoped(candidateRows, candidateUnits, options, query.phrases), candidateUnits));
+        candidateRows = fuse(denseCandidates, candidateRows);
         excerptRows = fuse(dense.filter(row => excerptUnits.has(row.id)), excerptRows);
       }
       candidateRows = scoped(candidateRows, candidateUnits, options, query.phrases);
       excerptRows = scoped(excerptRows, excerptUnits, options, query.phrases);
       const selected = new Set<string>(), result: ArticleMatch[] = [];
-      const ids = candidateRows.map(row => candidateUnits.get(row.id)?.articleId);
+      const ids = fusedArticles ? fusedArticles.map(row => row.id) : candidateRows.map(row => candidateUnits.get(row.id)?.articleId);
       for (const id of ids) {
         if (!id || selected.has(id)) continue;
         const article = articles.get(id); if (!article || options.section !== undefined && options.section !== article.section) continue;
         selected.add(id); const { passages: source, ...meta } = article;
-        result.push({ article: meta, passages: matches(article, excerptRows, query.terms, perArticle) });
+        result.push({ article: meta, ...matches(article, excerptRows, query.terms, perArticle) });
         if (result.length >= limit) break;
       }
       return response(result);

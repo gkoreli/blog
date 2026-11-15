@@ -1,0 +1,13 @@
+{
+  "selectedAt": "2026-11-15T06:02:17.340Z",
+  "selected": "combined",
+  "rule": "Maximize summed joint hits, then summed article hits, then fewer policy changes on known development cases only.",
+  "developmentSha256": "d3a9af94a6317dad327dd83942a16e317cf0b4c2532c2adf9cd59bdaecb61bf1",
+  "order": [
+    "combined",
+    "body",
+    "coverage",
+    "article",
+    "v01"
+  ]
+}

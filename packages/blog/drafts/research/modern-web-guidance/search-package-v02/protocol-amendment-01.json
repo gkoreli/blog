@@ -1,0 +1,9 @@
+{
+  "recordedAt": "2026-11-15T06:15:42.909508+00:00",
+  "change": "Correct only the relative worklist link after execution; no hypothesis, cutoff, case, label, selection rule or result changes.",
+  "originalSha256": "4b7c8d75cd87f3c6f47f3de5ee5431c603f8a93227f7418ff7e5d2f5aa945c94",
+  "currentSha256": "39c51955ed669c26f0e5c5eeb949ebed2f590bd72984600f1be42b9b11ba26b2",
+  "originalTarget": "../../../../../../../docs/worklist/blog-search/v0.2.md",
+  "correctedTarget": "../../../../../../docs/worklist/blog-search/v0.2.md",
+  "reconstruction": "Replacing correctedTarget with originalTarget in protocol.md reconstructs the original frozen bytes."
+}

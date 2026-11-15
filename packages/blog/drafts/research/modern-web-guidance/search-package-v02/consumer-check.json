@@ -1,0 +1,13 @@
+{
+  "packageVersion": "0.2.0",
+  "pnpm": "9.15.4",
+  "packages": [
+    "@gkoreli+search@file+..+package+gkoreli-search-0.2.0.tgz",
+    "entities@9.0.0",
+    "minisearch@7.2.0",
+    "parse5@8.1.1"
+  ],
+  "wordSearchArticle": "example",
+  "modelDependencies": 0,
+  "installedPackageCount": 4
+}

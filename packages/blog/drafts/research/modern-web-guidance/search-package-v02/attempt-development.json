@@ -1,0 +1,41 @@
+{
+  "startedAt": "2026-11-15T06:02:06.228Z",
+  "indexSha256": "11dc9dcd0ddefd510f8446f550173438a5e0dfbc7308d97107eb6d864fc0dfe9",
+  "confirmationSha256": "8971c27010de8e639d14734b97a44ae6fe99631c674047e33ed7ec0dd6aae19b",
+  "packageSearchSha256": "df77f3389501ab62064ab71382fd113afba9de267fe9abc04c7a3b23ecd44642",
+  "rankingSha256": "3c18bc288fe038c6ee8873fa0b2932483b4526784906b8a5ab3bece262e56ec4",
+  "variants": [
+    {
+      "id": "v01",
+      "changes": 0
+    },
+    {
+      "id": "body",
+      "passageBody": true,
+      "articleFusion": false,
+      "coverageRecovery": false,
+      "changes": 1
+    },
+    {
+      "id": "article",
+      "passageBody": false,
+      "articleFusion": true,
+      "coverageRecovery": false,
+      "changes": 1
+    },
+    {
+      "id": "coverage",
+      "passageBody": false,
+      "articleFusion": false,
+      "coverageRecovery": true,
+      "changes": 1
+    },
+    {
+      "id": "combined",
+      "passageBody": true,
+      "articleFusion": true,
+      "coverageRecovery": true,
+      "changes": 3
+    }
+  ]
+}

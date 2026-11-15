@@ -1,0 +1,11 @@
+import {readFileSync,writeFileSync,existsSync} from 'node:fs';
+import {createHash} from 'node:crypto';
+import {resolve,join} from 'node:path';
+const raw=resolve(process.argv[2]??''),hash=x=>createHash('sha256').update(x).digest('hex');
+const nativeBytes=readFileSync(join(raw,'native-acceptance.json')),browserBytes=readFileSync(join(raw,'browser-acceptance-02.json'));
+const native=JSON.parse(nativeBytes),browser=JSON.parse(browserBytes);
+if(browser.indexIds.length!==1||browser.indexIds[0]!==native.indexId)throw Error('Different application indexes.');
+const summarize=rows=>Object.fromEntries(['known','confirmation'].map(group=>{const selected=rows.filter(r=>group==='known'?!r.id.startsWith('V'):r.id.startsWith('V')),positive=selected.filter(r=>r.positive);return [group,{positiveForms:positive.length,noKnownAnswerPrompts:selected.length-positive.length,...Object.fromEntries(['words','related'].map(mode=>[mode,{articleAt3:positive.filter(r=>r.conditions[mode].articleAt3).length,joint:positive.filter(r=>r.conditions[mode].joint).length,negativesReturningArticles:selected.filter(r=>!r.positive&&r.conditions[mode].articles.length).length}]))}];}));
+let identicalRankings=0;for(const row of native.rows){const other=browser.rows.find(r=>r.id===row.id);if(!other)throw Error('Missing browser case.');for(const mode of ['words','related'])if(JSON.stringify(row.conditions[mode].articles)===JSON.stringify(other.conditions[mode].articles))identicalRankings++;}
+const receipt={recordedAt:new Date().toISOString(),boundary:'Acceptance of previously observed cases on the integrated v0.2 corpus; no new independent relevance sample. Summaries recomputed from all 75 rows, including the six N-prefixed known negatives.',native:{...native,summary:summarize(native.rows),rawSha256:hash(nativeBytes)},browser:{...browser,summary:summarize(browser.rows),rawSha256:hash(browserBytes)},identicalRankings,totalComparedRankings:native.rows.length*2};
+const output=new URL('./acceptance.json',import.meta.url);if(existsSync(output))throw Error('Refusing to overwrite acceptance.');writeFileSync(output,JSON.stringify(receipt,null,2)+'\n',{flag:'wx'});console.log({native:receipt.native.summary,browser:receipt.browser.summary,identicalRankings,total:receipt.totalComparedRankings});

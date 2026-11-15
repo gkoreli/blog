@@ -1,0 +1,8 @@
+{
+  "frozenAt": "2026-11-15T05:59:45.168Z",
+  "indexSha256": "11dc9dcd0ddefd510f8446f550173438a5e0dfbc7308d97107eb6d864fc0dfe9",
+  "confirmationSha256": "8971c27010de8e639d14734b97a44ae6fe99631c674047e33ed7ec0dd6aae19b",
+  "protocolSha256": "4b7c8d75cd87f3c6f47f3de5ee5431c603f8a93227f7418ff7e5d2f5aa945c94",
+  "sourceCommit": "369871d9",
+  "baselineVersion": "0.1.0"
+}

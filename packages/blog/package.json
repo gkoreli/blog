@@ -2,7 +2,7 @@
   "name": "@gkoreli/blog",
   "version": "0.1.0",
   "private": true,
-  "description": "Blog site — built with @nisli/core",
+  "description": "Blog site \u2014 built with @nisli/core",
   "type": "module",
   "scripts": {
     "dev": "tsx src/pipeline/dev.ts",
@@ -36,7 +36,10 @@
     "zod": "^4.3.6",
     "@gkoreli/site-audit": "workspace:*",
     "@gkoreli/time": "workspace:*",
-    "@gkoreli/search": "workspace:*"
+    "@gkoreli/search": "workspace:*",
+    "@huggingface/transformers": "3.8.1",
+    "onnxruntime-common": "1.22.0-dev.20250409-89f8206ba4",
+    "onnxruntime-web": "1.22.0-dev.20250409-89f8206ba4"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20250306.0",
