@@ -40,7 +40,7 @@ There is also optional assistant access. The [MCP server](https://github.com/Fri
 
 [One Linux user](https://news.ycombinator.com/item?id=50474482) reports that the application worked after an initial problem was fixed. A newer [microphone startup fix](https://github.com/FrigadeHQ/yogurt/pull/39), shipped in 0.3.20, follows the input device's sample rate instead of a remembered rate that could fail after a device change. These are practical capture problems as well as model problems.
 
-The current [0.3.21 release](https://github.com/FrigadeHQ/yogurt/releases/tag/v0.3.21) retains the queue and MCP modules exercised here. Those controls used synthetic work, without recording audio or judging recognition and summaries. Yogurt is worth evaluating with a representative synthetic meeting on the intended machine: local ownership includes managing the compute and capture setup that a hosted service normally absorbs.
+[0.3.23](https://github.com/FrigadeHQ/yogurt/releases/tag/v0.3.23) also changes assistant startup on a Mac: its [helper passes `--hidden`](https://github.com/FrigadeHQ/yogurt/commit/efe9218105c1f9d810edcb01659c605ca03e5546) when it opens a closed Yogurt instance. Starting the application and authorizing transcript reads are separate controls; the tested server/socket gate and notes queue remain unchanged. Those controls used synthetic work, without recording audio or judging recognition and summaries. Yogurt is worth evaluating with a representative synthetic meeting on the intended machine: local ownership includes managing the compute and capture setup that a hosted service normally absorbs.
 
 ### AssemblyForNeovim: assembly beside the code
 

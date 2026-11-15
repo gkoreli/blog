@@ -1,0 +1,44 @@
+{
+  "manuscriptSha256": "e18681438a0c3dfe74c40e910359dfc8653b4b05e9988ac719d3a58da5d12515",
+  "supersedes": {
+    "receipt": "article-render-2026-11-15.json",
+    "manuscriptSha256": "bee9aa9d090cff0657ae97d74339ac503053e2584f5f251db9988f4ec2a9b0d9",
+    "retained": true
+  },
+  "buildBaseline": "bc5311897a7e03fd43dc1b090cdfe15fc83b3b35",
+  "plannedFilename": "046-oss-radar-15-november-launches.md",
+  "canonical": "https://gkoreli.com/oss-radar-15-november-launches",
+  "publicationDate": "2026-11-16",
+  "renderedH1Count": 1,
+  "projectEntries": 9,
+  "h3TotalIncludingInterpretation": 11,
+  "resolvedLocalLinks": 21,
+  "htmlSha256": "461c51099d8469849df115957d1ead70f77ac34c2a820406f3801cb9f9168f08",
+  "ogSha256": "1fb155c3840a109d9a7fe14d8e35ea65158cc9c6522a924b975e55911143eea9",
+  "ogUnchangedFromMorning": true,
+  "representations": [
+    "HTML",
+    "Markdown",
+    "CSL-JSON",
+    "BibTeX",
+    "posts.json",
+    "RSS",
+    "sitemap",
+    "llms.txt",
+    "llms-full.txt",
+    "OG PNG"
+  ],
+  "searchIndex": {
+    "articles": 47,
+    "candidatePassages": 66
+  },
+  "browserEvidenceReused": {
+    "receipt": "article-render-2026-11-15.json",
+    "scope": "Same site code, layout, metadata and page structure; only one Yogurt paragraph changed. Fresh generated HTML checked; no new browser/desktop-app trial."
+  },
+  "node": "24.14.1",
+  "pnpm": "9.15.4",
+  "publisherStateChecked": "disabled_manually",
+  "publicationManifestEntries": 0,
+  "productionPublicationPerformed": false
+}

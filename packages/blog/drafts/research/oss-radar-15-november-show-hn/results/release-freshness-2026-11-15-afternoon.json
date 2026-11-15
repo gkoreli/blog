@@ -1,0 +1,139 @@
+{
+  "startedAt": "2026-11-15T21:57:20.657Z",
+  "checkedThrough": "2026-11-15T22:05:04Z",
+  "releases": [
+    {
+      "repository": "Parcha-ai/agentrun",
+      "url": "https://api.github.com/repos/Parcha-ai/agentrun/releases?per_page=2",
+      "releases": [
+        {
+          "tag": "v0.1.0-beta.38",
+          "published": "2026-11-14T23:10:31Z"
+        },
+        {
+          "tag": "v0.1.0-beta.37",
+          "published": "2026-11-14T00:13:29Z"
+        }
+      ]
+    },
+    {
+      "repository": "FrigadeHQ/yogurt",
+      "url": "https://api.github.com/repos/FrigadeHQ/yogurt/releases?per_page=2",
+      "releases": [
+        {
+          "tag": "v0.3.23",
+          "published": "2026-11-15T20:23:35Z"
+        },
+        {
+          "tag": "v0.3.22",
+          "published": "2026-11-15T19:20:26Z"
+        }
+      ]
+    },
+    {
+      "repository": "simpsoka/zigzag",
+      "url": "https://api.github.com/repos/simpsoka/zigzag/releases?per_page=2",
+      "releases": [
+        {
+          "tag": "v0.1.5",
+          "published": "2026-11-15T04:46:16Z"
+        },
+        {
+          "tag": "v0.1.4",
+          "published": "2026-11-14T21:49:32Z"
+        }
+      ]
+    },
+    {
+      "repository": "paul-nameless/agweb",
+      "url": "https://api.github.com/repos/paul-nameless/agweb/releases?per_page=2",
+      "releases": [
+        {
+          "tag": "v0.3.0",
+          "published": "2026-11-14T23:18:57Z"
+        },
+        {
+          "tag": "v0.2.0",
+          "published": "2026-11-13T22:11:41Z"
+        }
+      ]
+    },
+    {
+      "repository": "kane50613/takumi",
+      "url": "https://api.github.com/repos/kane50613/takumi/releases?per_page=2",
+      "releases": [
+        {
+          "tag": "takumi@2.20.0",
+          "published": "2026-11-08T08:05:22Z"
+        },
+        {
+          "tag": "takumi-svg@0.3.35",
+          "published": "2026-11-08T08:05:22Z"
+        }
+      ]
+    },
+    {
+      "repository": "adrbn/bo2-mac",
+      "url": "https://api.github.com/repos/adrbn/bo2-mac/releases?per_page=2",
+      "releases": [
+        {
+          "tag": "v0.2.0-test.4",
+          "published": "2026-11-06T16:04:54Z"
+        },
+        {
+          "tag": "v0.2.0-test.3",
+          "published": "2026-11-06T09:39:12Z"
+        }
+      ]
+    },
+    {
+      "repository": "Vaibhaav-Tiwari/deepseek-v3-jax",
+      "url": "https://api.github.com/repos/Vaibhaav-Tiwari/deepseek-v3-jax/releases?per_page=2",
+      "releases": [
+        {
+          "tag": "v1.0",
+          "published": "2026-11-14T14:59:40Z"
+        }
+      ]
+    }
+  ],
+  "supplemental": [
+    {
+      "name": "FURSOY/fursoy-cpu",
+      "url": "https://api.github.com/repos/FURSOY/fursoy-cpu/commits/main",
+      "sha": "377ae9563ab1b88ee0a037f2223ab49822968396",
+      "date": "2026-11-15T06:51:23Z",
+      "title": "docs: add pipeline diagram, clarify execution ports, and sync architecture docs"
+    },
+    {
+      "name": "0xdeadf1sh/AssemblyForNeovim",
+      "url": "https://api.github.com/repos/0xdeadf1sh/AssemblyForNeovim/commits/main",
+      "sha": "58a471ec97fb5987eca2b955fd2cba8693a414f6",
+      "date": "2026-11-12T08:22:58Z",
+      "title": "Merge pull request #3 from rxolve/c2x-fallback"
+    },
+    {
+      "name": "Takumi issue 2558",
+      "url": "https://api.github.com/repos/kane50613/takumi/issues/2558",
+      "title": "A font registered as `Geist` is shadowed by the built-in Geist, so its Cyrillic draws as boxes",
+      "state": "open",
+      "updated": "2026-11-14T16:03:44Z",
+      "comments": 0
+    }
+  ],
+  "changedRepository": "FrigadeHQ/yogurt",
+  "changedRelease": "v0.3.23",
+  "releaseSource": "d89d48abb10b00d93144e5a9227fb1f62dcbe198",
+  "comparison": "https://github.com/FrigadeHQ/yogurt/compare/v0.3.21...v0.3.23",
+  "comparedCommits": 4,
+  "readerConsequence": "Mac MCP helper now passes --hidden and the app recognizes that flag on macOS; startup is separate from transcript authorization. Actual new native/UI launch not exercised.",
+  "unchangedTestedPaths": [
+    "app/src/main/mcp/server.ts",
+    "app/src/main/mcp/socket.ts",
+    "app/src/main/notes/queue.ts"
+  ],
+  "otherEntryFindingsChanged": false,
+  "publisherState": "disabled_manually",
+  "publicationManifestEntries": 0,
+  "publicationPerformed": false
+}

@@ -32,16 +32,25 @@
       "app/src/main/notes/index.ts (selected generation/save path)",
       "app/src/main/notes/model.ts",
       "app/src/main/notes/queue.ts",
-      "app/src/main/library/store.ts (selected tables/chunk state)"
+      "app/src/main/library/store.ts (selected tables/chunk state)",
+      "v0.3.23 app/native/yogurt-mcp/main.swift",
+      "v0.3.23 app/src/main/mcp/paths.ts",
+      "v0.3.23 app/src/main/mcp/index.ts",
+      "v0.3.23 app/src/main/index.ts (startup and activation wiring)",
+      "v0.3.23 app/src/main/callNames/attribute.ts (roster control)"
     ],
     "inspectionCoverage": "Selected consequential paths, not whole-repository audit unless explicitly stated",
     "receipts": [
       "results/yogurt-mcp-02.json",
       "results/yogurt-queue-01.json"
     ],
-    "currentRelease": "v0.3.21",
-    "currentReleaseSource": "a7596ec6471763ea059effed8be1ad7d8efd5959",
-    "currentReleaseInspection": "Comparison preserves exercised MCP/socket/queue modules; microphone startup PR39 and newer calendar/title wiring checked"
+    "currentRelease": "v0.3.23",
+    "currentReleaseSource": "d89d48abb10b00d93144e5a9227fb1f62dcbe198",
+    "currentReleaseInspection": "Afternoon comparison v0.3.21...v0.3.23: four commits; Webex attribution/roster handling and native Mac helper windowless-launch request changed. MCP server/socket and notes queue remain unchanged; original component receipts retain their source pin.",
+    "discussionSources": [
+      "https://github.com/FrigadeHQ/yogurt/issues/54"
+    ],
+    "latestFollowup": "08-review-and-readiness.md"
   },
   {
     "repository": "0xdeadf1sh/AssemblyForNeovim",
