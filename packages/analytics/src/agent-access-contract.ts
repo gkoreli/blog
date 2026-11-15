@@ -247,12 +247,22 @@ export function selectAgentAccess(report: AgentAccessReport, selection: AgentAcc
   const resources = new Set(report.resources.filter(resource => article === null || resource.id === article?.id || resource.articleId === article?.id).map(resource => resource.id));
   const matches = (row: AgentAccessDimension) => (selection.articleId === null || row.resourceId !== null && resources.has(row.resourceId)) && (selection.client === null || row.client === selection.client) && (selection.kind === null || row.kind === selection.kind);
   const cells = report.cells.filter(matches), history = report.history.filter(matches), proofs = report.proofs.filter(matches);
-  const byClient = [...new Set(cells.map(cell => cell.client))].map(client => ({ client, metrics: sum(cells.filter(cell => cell.client === client)) })).sort((a, b) => b.metrics.views - a.metrics.views || a.client.localeCompare(b.client));
-  const byResource = report.resources.filter(resource => resources.has(resource.id)).map(resource => ({ resource, metrics: sum(cells.filter(cell => cell.resourceId === resource.id)) })).sort((a, b) => b.metrics.views - a.metrics.views || a.resource.path.localeCompare(b.resource.path));
+  const clients = new Map<AgentAccessClient, AgentAccessMetrics>(), resourceMetrics = new Map<string | null, AgentAccessMetrics>();
+  const roles = new Map<AgentAccessKind, AgentAccessMetrics>(), formats = new Map<AgentAccessFormat, AgentAccessMetrics>();
+  function add<Key>(groups: Map<Key, AgentAccessMetrics>, key: Key, metrics: AgentAccessMetrics): void {
+    const total = groups.get(key) ?? emptyAgentAccessMetrics();
+    addAgentAccessMetrics(total, metrics); groups.set(key, total);
+  }
+  for (const cell of cells) {
+    add(clients, cell.client, cell.metrics); add(resourceMetrics, cell.resourceId, cell.metrics);
+    add(roles, cell.kind, cell.metrics); add(formats, cell.format, cell.metrics);
+  }
+  const byClient = [...clients].map(([client, metrics]) => ({ client, metrics })).sort((a, b) => b.metrics.views - a.metrics.views || a.client.localeCompare(b.client));
+  const byResource = report.resources.filter(resource => resources.has(resource.id)).map(resource => ({ resource, metrics: resourceMetrics.get(resource.id) ?? emptyAgentAccessMetrics() })).sort((a, b) => b.metrics.views - a.metrics.views || a.resource.path.localeCompare(b.resource.path));
   return {
     total: sum(cells), byClient, byResource, history, proofs,
-    unregistered: sum(cells.filter(cell => cell.resourceId === null)),
-    byRole: AGENT_ACCESS_KINDS.map(kind => ({ kind, metrics: sum(cells.filter(cell => cell.kind === kind)) })),
-    byFormat: AGENT_FORMATS.map(format => ({ format, metrics: sum(cells.filter(cell => cell.format === format)) })),
+    unregistered: resourceMetrics.get(null) ?? emptyAgentAccessMetrics(),
+    byRole: AGENT_ACCESS_KINDS.map(kind => ({ kind, metrics: roles.get(kind) ?? emptyAgentAccessMetrics() })),
+    byFormat: AGENT_FORMATS.map(format => ({ format, metrics: formats.get(format) ?? emptyAgentAccessMetrics() })),
   };
 }

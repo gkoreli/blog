@@ -1,9 +1,10 @@
 import {
-  accessDayCount, AGENT_ROLE_LABELS, selectAgentAccess,
-  type AgentAccessClient, type AgentAccessFormat, type AgentAccessMetrics, type AgentAccessReport, type AgentAccessSelection,
+  accessDayCount, AGENT_ROLE_LABELS,
+  type AgentAccessClient, type AgentAccessFormat, type AgentAccessMetrics,
 } from '@gkoreli/analytics/agent-access-contract';
+import type { AgentAccessExploration } from '@gkoreli/analytics/agent-access-explorer';
 import { SIGNATURE_BASIS_LABELS } from '@gkoreli/analytics/signature-basis';
-import { dataFactsHtml, metricTileHtml } from './data-display.js';
+import { dataFactsHtml, groupedEvidenceTableHtml, metricTileHtml } from './data-display.js';
 import { addCalendarDays, timePresentation } from '@gkoreli/time';
 
 const number = (value: number) => value.toLocaleString('en-US');
@@ -13,89 +14,68 @@ export function agentClientLabel(client: AgentAccessClient): string {
   return client === 'not-recorded' ? 'No selected client name' : client === 'unrecognized' ? 'Unrecognized stored name' : client;
 }
 const FORMAT_LABELS: Record<AgentAccessFormat, string> = { html: 'HTML', markdown: 'Markdown', 'not-recorded': 'Format not recorded', unrecognized: 'Unrecognized format' };
-const formatLabel = (format: AgentAccessFormat) => FORMAT_LABELS[format];
 function table(label: string, headings: string[], rows: string): string {
   return `<div class="agent-access-table" role="region" aria-label="${escape(label)}; scroll horizontally if needed" tabindex="0"><table><caption>${escape(label)}</caption><thead><tr>${headings.map(heading => `<th scope="col">${escape(heading)}</th>`).join('')}</tr></thead><tbody>${rows}</tbody></table></div>`;
 }
-function metricsRow(label: string, metrics: AgentAccessMetrics, control = label): string {
+function metricsRow(label: string, metrics: AgentAccessMetrics, control = escape(label)): string {
   return `<tr><th scope="row">${control}</th><td>${number(metrics.views)}</td><td>${number(accessDayCount(metrics.dayMask))}</td></tr>`;
 }
+export function agentAccessSelectionLabel(view: AgentAccessExploration): string {
+  return [view.article?.title ?? 'All articles and site resources', view.selection.client === null ? 'All client declarations' : agentClientLabel(view.selection.client), view.selection.kind === null ? 'All roles' : AGENT_ROLE_LABELS[view.selection.kind]].join(' · ');
+}
 
-/** Presentation consumes the package's selection service. It does not infer
- * identities, reinterpret evidence, fetch per-row reports or join trajectories.
- */
-export function agentAccessViewHtml(report: AgentAccessReport, selection: AgentAccessSelection, time = timePresentation()): string {
-  const selected = selectAgentAccess(report, selection);
-  const articles = selected.byResource.filter(row => row.resource.role === 'article');
-  const evidence = selected.byResource.filter(row => row.resource.role === 'evidence');
-  const siteViews = selected.byResource.filter(row => row.resource.role === 'site').reduce((sum, row) => sum + row.metrics.views, 0);
-  const evidenceViews = evidence.reduce((sum, row) => sum + row.metrics.views, 0);
-  const articleViews = articles.reduce((sum, row) => sum + row.metrics.views, 0);
-  const markdown = selected.byFormat.find(row => row.format === 'markdown')?.metrics.views ?? 0;
-  const end = addCalendarDays(report.scope.endExclusive, -1);
-  const period = `${time.calendarDate(report.scope.start)} – ${time.calendarDate(end)} · UTC reporting days`;
-  const roleRows = selected.byRole.map(row => metricsRow(AGENT_ROLE_LABELS[row.kind], row.metrics,
-    `<button type="button" data-agent-kind="${row.kind}" aria-pressed="${selection.kind === row.kind}">${escape(AGENT_ROLE_LABELS[row.kind])}</button>`)).join('');
-  const formatRows = selected.byFormat.map(row => metricsRow(formatLabel(row.format), row.metrics)).join('');
-  const articleRows = articles.map(row => metricsRow(row.resource.title, row.metrics,
-    `<button type="button" class="agent-resource-choice" data-agent-article="${escape(row.resource.id)}"><span>${escape(row.resource.title)}</span><small>${escape(row.resource.path)}</small></button>`)).join('');
-  const clientRows = selected.byClient.map(row => metricsRow(agentClientLabel(row.client), row.metrics,
-    `<button type="button" data-agent-client="${escape(row.client)}">${escape(agentClientLabel(row.client))}</button>`)).join('');
-  const weeks = selected.total.weeks.map((views, index) => {
-    const start = addCalendarDays(report.scope.start, index * 7);
-    const end = addCalendarDays(start, 6);
-    const previous = selected.total.weeks[index - 1];
-    const difference = previous === undefined ? '—' : `${views >= previous ? '+' : '−'}${number(Math.abs(views - previous))}`;
-    return `<tr><th scope="row">${escape(time.calendarDate(start))} – ${escape(time.calendarDate(end))}</th><td>${number(views)}</td><td>${difference}</td></tr>`;
-  }).join('');
-  const proofGroups = new Map<string, { label: string; profile: string; publisher: string; network: string; views: number }>();
-  for (const proof of selected.proofs) {
-    const network = proof.network === 'not-recorded' ? 'Not recorded' : proof.network === 'unrecognized' ? 'Unrecognized record' : proof.networkListed ? 'Recorded membership match' : 'Recognized record; no membership match recorded';
-    const key = JSON.stringify([proof.basis, proof.profile, proof.publisher, network]);
-    const group = proofGroups.get(key) ?? { label: SIGNATURE_BASIS_LABELS[proof.basis], profile: proof.profile, publisher: proof.publisher, network, views: 0 };
-    group.views += proof.views; proofGroups.set(key, group);
-  }
-  const proofRows = [...proofGroups.values()].sort((a, b) => b.views - a.views || a.label.localeCompare(b.label)).map(row =>
-    `<tr><th scope="row">${escape(row.label)}</th><td class="agent-access-version">${escape(row.profile)}</td><td>${escape(row.publisher === 'not-recorded' ? 'Not recorded' : row.publisher)}</td><td>${escape(row.network)}</td><td>${number(row.views)}</td></tr>`).join('');
-  const historyGroups = new Map<string, { collection: string; classifier: string; source: string; format: AgentAccessFormat; views: number }>();
-  for (const row of selected.history) {
-    const key = JSON.stringify([row.collection, row.classifier, row.source, row.format]);
-    const group = historyGroups.get(key) ?? { collection: row.collection ?? 'not-recorded', classifier: row.classifier ?? 'not-recorded', source: row.source, format: row.format, views: 0 };
-    group.views += row.metrics.views; historyGroups.set(key, group);
-  }
-  const historyRows = [...historyGroups.values()].sort((a, b) => b.views - a.views || a.collection.localeCompare(b.collection)).map(row =>
-    `<tr><td class="agent-access-version">${escape(row.collection)}</td><td class="agent-access-version">${escape(row.classifier)}</td><td>${escape(row.source)}</td><td>${escape(formatLabel(row.format))}</td><td>${number(row.views)}</td></tr>`).join('');
-  const evidenceRows = evidence.map(row => `<tr><th scope="row"><a href="${escape(row.resource.path)}">${escape(row.resource.title)}</a></th><td>${row.resource.collection === 'not-collected' && row.metrics.views === 0 ? 'Not collected by the page counter' : number(row.metrics.views)}</td><td>${row.resource.collection === 'page' ? 'Page access' : 'Outside current page collection'}</td></tr>`).join('');
+/** The package owns the read model; this boundary only labels and escapes it. */
+export function agentAccessViewHtml(view: AgentAccessExploration, time = timePresentation()) {
+  const { scope, accounting } = view.window;
+  const period = `${time.calendarDate(scope.start)} – ${time.calendarDate(addCalendarDays(scope.endExclusive, -1))} · UTC reporting days`;
   const tiles = [
-    { label: 'Page events', value: number(selected.total.views), detail: 'Selected AI roles and signed fallback' },
-    { label: 'Articles accessed', value: number(articles.filter(row => row.metrics.views > 0).length), detail: 'Registered articles with retained events' },
-    { label: 'Active UTC days', value: number(accessDayCount(selected.total.dayMask)), detail: 'Union of recorded days, out of 28' },
-    { label: 'Markdown events', value: number(markdown), detail: 'Served format; preference not established' },
+    { label: 'Page events', value: number(view.metrics.views), detail: 'In the selected article, client and role scope' },
+    { label: 'Articles accessed', value: number(view.articlesAccessed), detail: 'Registered articles with retained events' },
+    { label: 'Active UTC days', value: number(accessDayCount(view.metrics.dayMask)), detail: 'Union of recorded days, out of 28' },
+    { label: 'Markdown events', value: number(view.markdownEvents), detail: 'Served format; preference not established' },
   ].map(metricTileHtml).join('');
-  return `<p class="agent-access-period">${escape(period)}<br><span>Calculated ${escape(time.instant(report.scope.calculatedAt))}</span></p>
-    ${selection.kind !== null ? `<p class="agent-access-selection">Role: ${escape(AGENT_ROLE_LABELS[selection.kind])} <button type="button" data-agent-reset="kind">Show all roles</button></p>` : ''}
-    <div class="agent-access-metrics">${tiles}</div>
-    ${selected.total.views === 0 ? '<p class="agent-access-empty">No retained events match this selection. This does not establish zero demand or complete collection.</p>' : ''}
+  const overview = `<p class="agent-access-period">${escape(period)}<br><span>Calculated <time datetime="${escape(scope.calculatedAt)}">${escape(time.instant(scope.calculatedAt))}</time></span></p><div class="agent-access-metrics">${tiles}</div>`;
+  const roleRows = view.roles.map(row => metricsRow(AGENT_ROLE_LABELS[row.kind], row.metrics)).join('');
+  const formatRows = view.formats.map(row => metricsRow(FORMAT_LABELS[row.format], row.metrics)).join('');
+  const articleRows = view.articles.map(row => `<tr><th scope="row"><button type="button" class="agent-resource-choice" data-agent-article="${escape(row.resource.id)}"><span>${escape(row.resource.title)}</span><small>${escape(row.resource.path)}</small></button></th><td>${number(row.metrics.views)}</td><td>${number(accessDayCount(row.metrics.dayMask))}</td><td><a class="agent-access-visit" href="${escape(row.resource.path)}" aria-label="Visit ${escape(row.resource.title)}"><span class="ui-icon" aria-hidden="true" style="--ui-icon-image:url('/icons/posts.svg')"></span><span>Visit</span></a></td></tr>`).join('');
+  const clientRows = view.clients.map(row => metricsRow(agentClientLabel(row.client), row.metrics,
+    `<button type="button" data-agent-client="${escape(row.client)}">${escape(agentClientLabel(row.client))}</button>`)).join('');
+  const maximumWeek = Math.max(...view.metrics.weeks);
+  const weeks = view.metrics.weeks.map((views, index) => {
+    const start = addCalendarDays(scope.start, index * 7), end = addCalendarDays(start, 6), previous = view.metrics.weeks[index - 1];
+    const difference = previous === undefined ? '—' : `${views >= previous ? '+' : '−'}${number(Math.abs(views - previous))}`;
+    return `<tr><th scope="row">${escape(time.calendarDate(start))} – ${escape(time.calendarDate(end))}</th><td>${number(views)}<span class="agent-week-meter" aria-hidden="true"><span style="width:${maximumWeek === 0 ? 0 : views / maximumWeek * 100}%"></span></span></td><td>${difference}</td></tr>`;
+  }).join('');
+  const proofRows = view.attribution.map(row => {
+    const network = row.network === 'not-recorded' ? 'Not recorded' : row.network === 'unrecognized' ? 'Unrecognized record' : row.networkListed ? 'Recorded membership match' : 'Recognized record; no membership match recorded';
+    return { group: SIGNATURE_BASIS_LABELS[row.basis], cells: [row.profile, row.publisher === 'not-recorded' ? 'Not recorded' : row.publisher, network], views: row.views };
+  });
+  const proofTable = proofRows.length === 0 ? '<p>No proof records in this selection.</p>' : `<div class="data-table-region" role="region" aria-label="Stored proof and network evidence; each selected event appears once; scroll horizontally if needed" tabindex="0">${groupedEvidenceTableHtml('Stored proof and network evidence; each selected event appears once', ['Verifier profile', 'Stored signing publisher', 'Network evidence'], proofRows)}</div>`;
+  const historyRows = view.measurements.map(row => `<tr><td class="agent-access-version">${escape(row.collection ?? 'not-recorded')}</td><td class="agent-access-version">${escape(row.classifier ?? 'not-recorded')}</td><td>${escape(row.source)}</td><td>${escape(FORMAT_LABELS[row.format])}</td><td>${number(row.views)}</td></tr>`).join('');
+  const evidenceRows = view.coverage.evidence.map(row => `<tr><th scope="row"><a href="${escape(row.resource.path)}">${escape(row.resource.title)}</a></th><td>${row.resource.collection === 'not-collected' && row.metrics.views === 0 ? 'Not collected by the page counter' : number(row.metrics.views)}</td><td>${row.resource.collection === 'page' ? 'Page access' : 'Outside current page collection'}</td></tr>`).join('');
+  const details = `${view.metrics.views === 0 ? '<p class="agent-access-empty">No retained events match this selection. This does not establish zero demand or complete collection.</p>' : ''}
+    <nav class="agent-access-index" aria-label="Agent access sections"><a href="#agent-access-weeks">Weekly activity</a><a href="#agent-access-articles">Articles</a><a href="#agent-access-clients">Clients</a><a href="#agent-access-coverage">Coverage</a><a href="#agent-access-evidence">Evidence</a><a href="#agent-access-history">Measurement history</a></nav>
+    <section class="stats-section" id="agent-access-weeks"><h3>Four completed weeks</h3>${table('Selected page events by completed UTC week', ['UTC dates', 'Page events', 'Change from preceding week'], weeks)}
+      <p class="agent-access-note">Changes describe recorded access. Check measurement profiles before interpreting a trend.${view.metrics.unrecognizedTimeViews > 0 ? ` ${number(view.metrics.unrecognizedTimeViews)} ${view.metrics.unrecognizedTimeViews === 1 ? 'event has an unrecognized time' : 'events have unrecognized times'} and ${view.metrics.unrecognizedTimeViews === 1 ? 'is' : 'are'} retained outside these weekly rows.` : ''}</p></section>
     <div class="stats-panel-grid"><section class="stats-section"><h3>Declared roles</h3>${table('Disjoint roles in this selection', ['Stored role', 'Page events', 'Active UTC days'], roleRows)}</section>
       <section class="stats-section"><h3>Served formats</h3>${table('Disjoint served representations', ['Format', 'Page events', 'Active UTC days'], formatRows)}</section></div>
-    <p class="agent-access-note">AI search and AI crawling are included alongside on-demand fetchers. Signed fallback records retain their historical or unknown role. Names and roles are declarations; neither a signature nor a network match establishes a human trigger, training, citation or use. Active-day counts overlap across rows.</p>
-    <section class="stats-section"><h3>Four completed weeks</h3>${table('Selected page events by completed UTC week', ['UTC dates', 'Page events', 'Change from preceding week'], weeks)}
-      <p class="agent-access-note">Changes describe recorded access. Check collection profiles below before interpreting a trend. ${number(selected.total.unrecognizedTimeViews)} events have unrecognized times and are retained outside these weekly rows.</p></section>
-    <div class="stats-panel-grid"><section class="stats-section"><h3>Articles</h3>${table('Registered article access; select an article and its evidence', ['Article', 'Page events', 'Active UTC days'], articleRows)}<p class="agent-access-note">Article rows count the article itself. Selecting one includes its registered evidence resources. Zero retained events does not establish publication availability or zero interest.</p></section>
-      <section class="stats-section"><h3>Client declarations</h3>${table('Client names in the selected roles', ['Declared name', 'Page events', 'Active UTC days'], clientRows || '<tr><td colspan="3">No selected client declarations in this scope.</td></tr>')}<p class="agent-access-note">These are stored selected names, not authenticated operators or unique agents. A missing name can include ambiguous declarations or earlier missing evidence.</p></section></div>
-    <section class="stats-section"><h3>Resource coverage</h3><dl class="data-facts">${dataFactsHtml([
-      { label: 'Registered article events', value: articleViews }, { label: 'Registered evidence events', value: evidenceViews },
-      { label: 'Registered site-page events', value: siteViews }, { label: 'Unregistered resource events — paths withheld', value: selected.unregistered.views },
-      { label: 'Registered evidence resources', value: evidence.length },
+    <p class="agent-access-note">Names and roles are declarations. Active-day counts overlap across rows; a served format does not establish a preference.</p>
+    <section class="stats-section" id="agent-access-articles"><h3>Articles</h3>${table('Article page access; select a title to include its registered evidence', ['Article', 'Page events', 'Active UTC days', 'Visit'], articleRows)}<p class="agent-access-note">Article rows count the article itself. Selecting a title includes its registered evidence. Zero retained events does not establish historical availability or zero interest.</p></section>
+      <section class="stats-section" id="agent-access-clients"><h3>Client declarations</h3>${table('Client names in the selected roles', ['Declared name', 'Page events', 'Active UTC days'], clientRows || '<tr><td colspan="3">No selected client declarations in this scope.</td></tr>')}<p class="agent-access-note">Stored selected names do not authenticate operators or identify unique agents. Missing names include ambiguous declarations and earlier missing evidence.</p></section>
+    <section class="stats-section" id="agent-access-coverage"><h3>Resource coverage</h3><dl class="data-facts">${dataFactsHtml([
+      { label: 'Registered article events', value: view.coverage.articleEvents }, { label: 'Registered evidence events', value: view.coverage.evidenceEvents },
+      { label: 'Registered site-page events', value: view.coverage.siteEvents }, { label: 'Unregistered resource events — paths withheld', value: view.coverage.unregisteredEvents },
+      { label: 'Registered evidence resources', value: view.coverage.evidence.length },
     ])}</dl>${evidenceRows ? table('Explicitly registered evidence resources', ['Resource', 'Retained page events', 'Current coverage'], evidenceRows) : '<p>No evidence resources are registered in this selection.</p>'}
-      <p class="agent-access-note">Event counts above partition the selected total; resource counts use a different unit. The current page counter covers successful eligible HTML/Markdown GETs. Files, failed requests, HEAD checks and 304 revalidations have different coverage. Retired or unmatched paths are aggregated without public links. Registry membership does not reconstruct historical availability.</p></section>
-    <section class="stats-section"><h3>Attribution evidence</h3>${table('Stored proof and network evidence; each selected event appears once', ['Signature basis', 'Verifier profile', 'Stored signing publisher', 'Network evidence', 'Page events'], proofRows || '<tr><td colspan="5">No proof records in this selection.</td></tr>')}
-      <p class="agent-access-note">Publisher names follow the stored signing outcome and are separate from the declared client. Network membership does not establish that the range belongs to the declared name. A recognized record without a membership match can include unavailable or unassessed checks. These reports interpret retained results; they do not reverify old requests.</p></section>
-    <section class="stats-section"><h3>Recorded measurement profiles</h3>${table('Collection history for this selection', ['Collection', 'Classifier', 'Source', 'Format', 'Page events'], historyRows || '<tr><td colspan="5">No measurement history in this selection.</td></tr>')}
-      <p class="agent-access-note">Profiles record provenance. Missing stamps do not establish stable historical rules; matching stamps do not prove unchanged feeds or detector accuracy. No cross-day client identity or complete journey is inferred.</p></section>
+      <p class="agent-access-note">Event counts partition this selection; resource counts use a different unit. Files, failed requests, HEAD checks and 304 revalidations have different coverage. Retired or unmatched paths are not linked.</p></section>
+    <section class="stats-section" id="agent-access-evidence"><h3>Attribution evidence</h3>${proofTable}
+      <p class="agent-access-note">Stored signing publishers are separate from client declarations. Signatures and network membership do not establish a human trigger, training, citation or use. Historical requests are not reverified.</p></section>
+    <section class="stats-section" id="agent-access-history"><h3>Recorded measurement profiles</h3>${table('Collection history for this selection', ['Collection', 'Classifier', 'Source', 'Format', 'Page events'], historyRows || '<tr><td colspan="5">No measurement history in this selection.</td></tr>')}
+      <p class="agent-access-note">Missing stamps do not establish stable historical rules. Matching stamps do not prove unchanged feeds or detector accuracy. No cross-day client identity or complete journey is inferred.</p></section>
     <details class="agent-access-accounting"><summary>Whole-window accounting and boundaries</summary><dl class="data-facts">${dataFactsHtml([
-      { label: 'Retained events inside the closed window', value: report.accounting.windowViews }, { label: 'Outside owner/client policy', value: report.accounting.ownerExcludedViews },
-      { label: 'Referral-policy exclusions after owner filtering', value: report.accounting.referralExcludedViews }, { label: 'Included events in all roles', value: report.accounting.includedViews },
-      { label: 'AI and signed-fallback cohort before these selections', value: report.total.views }, { label: 'Other included roles', value: report.accounting.otherViews },
-    ])}</dl><p>These are independently reconciled stored-event counts. Collection is best effort. The report does not observe upstream blocks, internal model retrieval, comprehension or answer citations. Article, client and role selections reuse this same calculated report.</p></details>`;
+      { label: 'Retained events inside the closed window', value: accounting.windowViews }, { label: 'Outside owner/client policy', value: accounting.ownerExcludedViews },
+      { label: 'Referral-policy exclusions after owner filtering', value: accounting.referralExcludedViews }, { label: 'Included events in all roles', value: accounting.includedViews },
+      { label: 'AI and signed-fallback cohort before these selections', value: view.window.metrics.views }, { label: 'Other included roles', value: accounting.otherViews },
+    ])}</dl><p>These are independently reconciled stored-event counts. Collection is best effort and covers successful eligible HTML/Markdown GETs. The current catalogue does not reconstruct historical availability. This report does not observe upstream blocks, internal model retrieval, comprehension or answer citations. Selections reuse the same calculated report.</p><p>A missing network membership match includes unavailable or unassessed checks. A match does not establish that the range belongs to the declared client. AI search and AI crawling are included alongside on-demand fetchers; signed fallback records retain their historical or unknown role.</p></details>`;
+  return { overview, details };
 }

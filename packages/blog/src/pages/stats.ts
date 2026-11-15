@@ -24,13 +24,16 @@ export function statsPage(pages: readonly { path: string; title: string }[] = []
   <nav class="stats-navigation" aria-label="Stats sections"><a href="#stats-agent-access" aria-current="location">Agent access</a><a href="#stats-activity">Overview</a><a href="#stats-content">Pages</a><a href="#stats-audience">Traffic</a><a href="#stats-evidence">Evidence</a><a href="#stats-methodology">Method</a></nav>
   <agent-access-report class="stats-chapter agent-access-report" id="stats-agent-access" aria-labelledby="agent-access-heading">
     <header class="data-section-heading"><div><h2 id="agent-access-heading">Agent access</h2><p>Which work AI fetchers, search clients, crawlers and historical signed clients access, in which served format.</p></div></header>
-    <p class="agent-access-note">28 completed UTC days. This report has its own article, client and role selections; the page-request filters below use their selected period. Names and roles describe stored request evidence.</p>
-    <form class="agent-access-form"><fieldset data-agent-controls disabled><legend>Select agent access</legend>
+    <p class="agent-access-note">28 completed UTC days of declared AI and historical signed-client access. The page-request report below has its own period and filters.</p>
+    <div data-agent-overview></div>
+    <form class="agent-access-form"><fieldset data-agent-controls disabled><legend>Select agent access</legend><div class="agent-access-selects">
       <label>Article and registered evidence<select data-agent-article-select name="agent-article"><option value="">All articles and site resources</option></select></label>
       <label>Client declaration<select data-agent-client-select name="agent-client"><option value="">All client declarations</option></select></label>
-      <button type="button" data-agent-clear>Clear selections</button>
+      <button type="button" data-agent-clear disabled>Clear selections</button></div>
+      <fieldset class="agent-access-roles report-filter"><legend>Declared role</legend><div class="report-options"><label class="report-option"><input type="radio" name="agent-role" data-agent-role value="" checked aria-label="All roles"><span>All roles <small data-agent-role-count></small></span></label><label class="report-option"><input type="radio" name="agent-role" data-agent-role value="ai-assistant" aria-label="On-demand fetcher declarations"><span>On-demand <small data-agent-role-count></small></span></label><label class="report-option"><input type="radio" name="agent-role" data-agent-role value="ai-search" aria-label="AI-search declarations"><span>AI search <small data-agent-role-count></small></span></label><label class="report-option"><input type="radio" name="agent-role" data-agent-role value="ai-crawler" aria-label="AI-crawler declarations"><span>AI crawlers <small data-agent-role-count></small></span></label><label class="report-option"><input type="radio" name="agent-role" data-agent-role value="signed-agent" aria-label="Signed clients — historical or unknown role"><span>Signed fallback <small data-agent-role-count></small></span></label></div></fieldset>
+      <p class="agent-access-filter-note">Counts beside choices cover the other two selections. Article choices include registered evidence.</p>
     </fieldset></form>
-    <p data-agent-status role="status" aria-live="polite">Loading the completed-day agent access report…</p>
+    <p data-agent-status class="agent-access-selection" role="status" aria-live="polite" aria-atomic="true">Loading the completed-day agent access report…</p>
     <button type="button" data-agent-retry hidden>Retry agent access</button>
     <div data-agent-results></div>
     <p class="agent-access-note"><a href="/api/agent-access">Agent access JSON</a> · Current collection covers eligible served pages. Citation and answer-use observations are separate outcomes.</p>

@@ -8,16 +8,22 @@ import { pathToFileURL } from 'node:url';
 import { createHash } from 'node:crypto';
 import { DatabaseSync } from 'node:sqlite';
 import { schemaObjects } from '../../analytics/scripts/fresh-schema.mjs';
-import { accessFixture } from '../../analytics/test/fixtures/agent-access.mjs';
+import { ACCESS_NOW, accessFixture } from '../../analytics/test/fixtures/agent-access.mjs';
+import { consistentAgentAccessReport } from '../../analytics/.test-dist/agent-access-contract.js';
 import { reportProjectionSql } from '../../analytics/.test-dist/report-projection.js';
 import { referralReportProjectionSql, REFERRAL_REPORT_RULES_JSON } from '../../analytics/.test-dist/referral-report-projection.js';
 
 const output = process.argv[2]; assert(output, 'Output directory required'); await mkdir(output, { recursive: true });
+const savedReport = process.argv[3] ? JSON.parse(await readFile(process.argv[3], 'utf8')) : null;
+if (savedReport !== null) assert(consistentAgentAccessReport(savedReport), 'Saved report must pass the public contract');
 const root = resolve(import.meta.dirname, '../../..'), dist = resolve(root, 'packages/blog/dist');
 const require = createRequire(resolve(root, 'package.json'));
 const { Miniflare } = await import(pathToFileURL(require.resolve('miniflare', { paths: [dirname(require.resolve('wrangler/package.json'))] })));
 const { build } = await import(pathToFileURL(require.resolve('esbuild', { paths: [resolve(root, 'packages/blog')] })));
 const entry = `import app from './packages/blog/src/worker/index.ts';
+import {createBlogAgentAccessHandler} from './packages/blog/src/worker/agent-access.ts';
+const savedReport=${JSON.stringify(savedReport)};
+const fixtureAgent=createBlogAgentAccessHandler({match:r=>caches.default.match(r),put:(r,s)=>caches.default.put(r,s)},()=>${ACCESS_NOW.getTime()});
 let batches=0,reads=0,writes=0,externalFetches=0,mode='healthy';
 globalThis.fetch=async()=>{externalFetches++;throw Error('External transport disabled')};
 export default{async fetch(request,env,ctx){
@@ -38,11 +44,12 @@ export default{async fetch(request,env,ctx){
     batches++;const results=await env.DB.batch(statements);
     for(const result of results){reads+=result.meta.rows_read??0;writes+=result.meta.rows_written??0;}return results;
   }};
+  if(path==='/api/agent-access')return savedReport?Response.json(savedReport,{headers:{'Cache-Control':'no-store','X-Local-Replay':'saved-aggregate'}}):fixtureAgent(request,{...env,DB},ctx);
   return app.fetch(request,{...env,DB},ctx);
 }};`;
 const compiled = await build({ stdin: { contents: entry, resolveDir: root, loader: 'js' }, bundle: true, format: 'esm', platform: 'browser', target: 'es2022', write: false });
 const types = { '.js': 'text/javascript', '.css': 'text/css', '.html': 'text/html', '.json': 'application/json', '.svg': 'image/svg+xml', '.png': 'image/png', '.jpg': 'image/jpeg', '.ttf': 'font/ttf', '.md': 'text/markdown' };
-const fixturePosts = [{ url: '/article-a', title: 'Article A — controlled fixture', date: '2026-10-17' }, { url: '/article-b', title: 'Article B — controlled fixture', date: '2026-10-17' }, { url: '/article-zero', title: 'No retained events — controlled fixture', date: '2026-11-01' }];
+const fixturePosts = savedReport ? savedReport.resources.filter(resource => resource.role === 'article').map(resource => ({url:resource.path,title:resource.title,date:'2026-10-17'})) : [{ url: '/article-a', title: 'Article A — controlled fixture', date: '2026-10-17' }, { url: '/article-b', title: 'Article B — controlled fixture', date: '2026-10-17' }, { url: '/article-zero', title: 'No retained events — controlled fixture', date: '2026-11-01' }];
 async function asset(request) {
   const path = new URL(request.url).pathname;
   if (path === '/__acceptance/originals') {
@@ -59,7 +66,7 @@ async function asset(request) {
     const info = await stat(file);
     if (info.isDirectory()) file = resolve(file, 'index.html');
     let bytes = await readFile(file);
-    if (path === '/stats' || path === '/stats/') bytes = Buffer.from(bytes.toString().replace('<agent-access-report', '<p>Controlled local data — synthetic native D1 acceptance fixture.</p><agent-access-report'));
+    if (path === '/stats' || path === '/stats/') bytes = Buffer.from(bytes.toString().replace('<agent-access-report', `<p class="agent-access-note">${savedReport ? 'Saved production aggregate from ' + savedReport.scope.calculatedAt + ' — local replay; other panels use synthetic D1.' : 'Controlled local data — synthetic native D1; fixed agent-report clock.'}</p><agent-access-report`));
     return new Response(request.method === 'HEAD' ? null : bytes, { headers: { 'Content-Type': types[extname(file)] ?? 'application/octet-stream' } });
   } catch { return new Response(null, { status: 404 }); }
 }
@@ -78,7 +85,7 @@ await db.prepare(reportProjectionSql('range')).bind(0, Number.MAX_SAFE_INTEGER).
 await db.prepare(referralReportProjectionSql()).bind(0, Number.MAX_SAFE_INTEGER, REFERRAL_REPORT_RULES_JSON).run();
 const originals = (await db.prepare('SELECT * FROM page_observations ORDER BY id').all()).results;
 const url = (await mf.ready).href;
-const receipt = { url, stats: new URL('/stats', url).href, pid: process.pid, source: 'actual composed Worker and isolated built assets; synthetic native D1', originalRows: originals.length, originalSha256: createHash('sha256').update(JSON.stringify(originals)).digest('hex'), publicBuildConfiguration: 'No local .env copied; subscription site key is not part of this acceptance.', startedAt: new Date().toISOString() };
+const receipt = { url, stats: new URL('/stats', url).href, pid: process.pid, source: savedReport ? 'actual built interface; validated saved production aggregate; synthetic D1 for other panels' : 'actual composed Worker and built assets; synthetic native D1 with fixed agent-report clock', originalRows: originals.length, originalSha256: createHash('sha256').update(JSON.stringify(originals)).digest('hex'), publicBuildConfiguration: 'No local .env copied; subscription site key is not part of this acceptance.', startedAt: new Date().toISOString() };
 await writeFile(resolve(output, 'preview.json'), JSON.stringify(receipt, null, 2) + '\n');
 console.log(JSON.stringify(receipt));
 async function stop() {

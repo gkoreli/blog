@@ -1,6 +1,6 @@
 {
   "name": "@gkoreli/analytics",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "private": true,
   "description": "Cookieless, privacy-first analytics for Cloudflare Workers + D1",
   "type": "module",
@@ -34,6 +34,7 @@
     "./article-reach-contract": "./src/article-reach-contract.ts",
     "./agent-access": "./src/agent-access.ts",
     "./agent-access-contract": "./src/agent-access-contract.ts",
+    "./agent-access-explorer": "./src/agent-access-explorer.ts",
     "./resource-reach": "./src/resource-reach.ts",
     "./access-evidence": "./src/access-evidence.ts",
     "./request-assessment": "./src/request-assessment.ts",

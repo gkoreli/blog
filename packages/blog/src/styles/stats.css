@@ -2,11 +2,27 @@
 .agent-access-report { display: block; padding-bottom: 40px; border-bottom: 1px solid var(--color-border); }
 .agent-access-report > .data-section-heading { grid-template-columns: minmax(0,1fr); }
 .agent-access-form { margin-block: 18px; }
-.agent-access-form fieldset { display: flex; flex-wrap: wrap; align-items: end; gap: 12px; margin: 0; padding: 0; border: 0; min-width: 0; }
+.agent-access-form > fieldset { display: block; margin: 0; padding: 0; border: 0; min-width: 0; }
 .agent-access-form legend { font: 12px/1.5 var(--font-mono); color: var(--color-text-muted); margin-bottom: 8px; }
-.agent-access-form label { display: grid; gap: 5px; flex: 1 1 240px; min-width: 0; font: 12px/1.5 var(--font-mono); color: var(--color-text-muted); }
+.agent-access-selects { display: flex; flex-wrap: wrap; align-items: end; gap: 12px; }
+.agent-access-selects label { display: grid; gap: 5px; flex: 1 1 240px; min-width: 0; font: 12px/1.5 var(--font-mono); color: var(--color-text-muted); }
 .agent-access-form select { min-width: 0; width: 100%; min-height: 44px; padding: 8px; border: 1px solid var(--color-border); border-radius: 5px; color: var(--color-text); background: var(--color-bg); font: 14px/1.5 var(--font-sans); }
 .agent-access-report button { min-height: 44px; padding: 6px 10px; border: 1px solid transparent; border-radius: 4px; background: transparent; color: var(--color-link); font: inherit; text-align: left; cursor: pointer; }
+.agent-access-report button:disabled { opacity: .55; cursor: default; }
+.agent-access-roles { margin-top: 14px; }
+.agent-access-roles .report-options { gap: 2px 6px; }
+.agent-access-roles small { margin-left: 6px; font: 11px/1.5 var(--font-mono); }
+.agent-access-filter-note { color: var(--color-text-muted); font-size: 12px; margin: 6px 0 0; }
+.agent-access-selection { margin-top: 16px; font-size: 13px; overflow-wrap: anywhere; }
+.agent-access-index { display: flex; flex-wrap: wrap; gap: 4px 20px; margin-block: 16px; }
+.agent-access-index a { display: inline-flex; align-items: center; min-height: 44px; font-size: 13px; }
+#agent-access-articles thead th { white-space: normal; }
+#agent-access-articles th:first-child { width: 62%; }
+#agent-access-clients .agent-access-table { max-width: 780px; }
+.agent-access-visit { display: inline-flex; align-items: center; gap: 6px; min-width: 44px; min-height: 44px; }
+.agent-access-visit .ui-icon { width: 16px; height: 16px; }
+.agent-week-meter { display: block; width: 100%; height: 3px; margin-top: 5px; background: var(--color-border); }
+.agent-week-meter > span { display: block; height: 100%; background: var(--color-link); }
 .agent-access-report button:hover, .agent-access-report button[aria-pressed="true"] { background: var(--color-surface); }
 .agent-access-period { font: 13px/1.7 var(--font-mono); color: var(--color-text); }
 .agent-access-period > span, .agent-access-note, .agent-access-report [data-agent-status] { color: var(--color-text-muted); }
