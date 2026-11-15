@@ -1,5 +1,7 @@
 # Participant dossiers — November 14
 
+Historical Saturday dossiers. The [Sunday fieldwork](07-sunday-fieldwork.md) supersedes provisional selection and current-release statements, adds Fursoy and records AgentRun beta.38's changed learning path. Earlier experiments retain their original pins and limits.
+
 Working evidence for the next Radar, not a reviewed manuscript or a publication receipt. [Pins](baselines.json), [population and selection](inventory-method.json), [declared controls](02-review-protocol.md), [fixtures and reproduction](repro/README.md). The Show HN pool is provisional; Takumi is a separately selected return visit from #1. Effort was not timed per participant, so no hours-per-project total is claimed.
 
 Each entry separates inspected implementation, executed behavior and attributed reports. Discussion coverage is purposeful reading of relevant branches, not a representative sentiment survey or a claim to have read every comment. Raw responses and logs remain outside Git. The next actions below are consequential gaps, not a requirement to manufacture an experiment for every repository.

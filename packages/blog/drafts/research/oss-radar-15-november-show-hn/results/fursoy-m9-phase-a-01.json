@@ -1,0 +1,52 @@
+{
+  "sourceCommit": "377ae9563ab1b88ee0a037f2223ab49822968396",
+  "tool": "Verilator 5.054, official Homebrew arm64_golden_gate bottle extracted into /tmp",
+  "platform": "macOS arm64",
+  "upstreamRunnerUnchanged": true,
+  "upstreamResult": {
+    "timestamp_utc": "2026-11-15T15:27:40.679281+00:00",
+    "phase": "M9 Phase A: Asynchronous Interrupt Subsystem & Precise ROB Head Trap Arbitration",
+    "production_rtl_manifest_sha256": "0889e47e98000b4c9f41e8a7d8682d26490bc34b5b9971a2c39db40249cc625b",
+    "spec_reference": {
+      "document": "docs/architecture/slice1-m9-soc-linux-v1.md",
+      "version": "1.1",
+      "sha256": "bb353f632ec909b3270522e289d994cc90a34f18ab323705a9010e1070181347"
+    },
+    "unit_verification": {
+      "phase": "Phase A",
+      "total_properties": 7,
+      "passed_properties_count": 7,
+      "status": "pass",
+      "randomized_torture_operations": 25500,
+      "torture_seeds": [
+        42,
+        20260920,
+        20261009
+      ],
+      "torture_mismatches": 0,
+      "properties": [
+        "PROP_M9_01",
+        "PROP_M9_02",
+        "PROP_M9_03",
+        "PROP_M9_04",
+        "PROP_M9_05",
+        "PROP_M9_06",
+        "PROP_M9_07"
+      ]
+    },
+    "elapsed_seconds": 24.49,
+    "overall_status": "PASS"
+  },
+  "frontendEnabled": false,
+  "scope": "Upstream interrupt/trap suite with direct operation injection. Not Linux boot, Sail, timing, FPGA or physical hardware acceptance.",
+  "buildWarnings": {
+    "category": "LATCH",
+    "count": 2,
+    "module": "fursoy_s1_lsu_queues",
+    "temporaries": [
+      "sign_ext",
+      "raw_fmt"
+    ],
+    "functionalDefectEstablished": false
+  }
+}

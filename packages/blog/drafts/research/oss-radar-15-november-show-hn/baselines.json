@@ -38,7 +38,10 @@
     "receipts": [
       "results/yogurt-mcp-02.json",
       "results/yogurt-queue-01.json"
-    ]
+    ],
+    "currentRelease": "v0.3.21",
+    "currentReleaseSource": "a7596ec6471763ea059effed8be1ad7d8efd5959",
+    "currentReleaseInspection": "Comparison preserves exercised MCP/socket/queue modules; microphone startup PR39 and newer calendar/title wiring checked"
   },
   {
     "repository": "0xdeadf1sh/AssemblyForNeovim",
@@ -70,10 +73,14 @@
       "docs/PRERELEASE.md",
       "scripts/build_steam.sh",
       "runtime/gfx/dxbc_to_msl.cpp",
-      "runtime/win32/interp.cpp"
+      "runtime/win32/interp.cpp",
+      "runtime/win32/win32_runtime.cpp (actual interpreter callers)",
+      "runtime/win32/remaining_dlls_impl.cpp (actual translate_shader/registration path)",
+      "runtime/gfx/metal_backend.mm (selected translated-source compilation path)"
     ],
     "inspectionCoverage": "Selected consequential paths, not whole-repository audit unless explicitly stated",
-    "receipts": []
+    "receipts": [],
+    "latestFollowup": "07-sunday-fieldwork.md"
   },
   {
     "repository": "Parcha-ai/agentrun",
@@ -96,13 +103,24 @@
       "packages/run-adapters/src/kernel/types.ts",
       "packages/run-adapters/src/kernel/errors.ts",
       "packages/serve/src/runner/sessions.ts",
-      "v0.1.0-beta.37 release notes"
+      "v0.1.0-beta.37 release notes",
+      "beta.38 packages/serve/src/learn/compile.ts (selected trigger, compile and guard paths)",
+      "beta.38 packages/serve/src/learn/promote.ts",
+      "beta.38 packages/serve/src/runner/promotion.ts (minimum evidence, dry-run exception, scoring/settlement)",
+      "beta.38 packages/serve/src/runner/workflow-first.ts",
+      "beta.38 packages/serve/test/learn-replay-score.test.mjs (selected controls)",
+      "v0.1.0-beta.38 release notes"
     ],
     "inspectionCoverage": "Selected consequential paths, not whole-repository audit unless explicitly stated",
     "receipts": [
       "results/agentrun-recovery-01.json",
-      "results/agentrun-upstream-recovery-01.json"
-    ]
+      "results/agentrun-upstream-recovery-01.json",
+      "results/agentrun-learning-score-01.json"
+    ],
+    "currentRelease": "v0.1.0-beta.38",
+    "currentReleaseSource": "d10f0053e09cd7ac0186006b13f7a6a52aa8bc22",
+    "currentReleaseInspection": "Compile/promotion/workflow-first called path and upgrade notes read; actual beta.38 scoring module exercised on synthetic graded rows. Prior kernel controls keep their original source pin.",
+    "latestFollowup": "07-sunday-fieldwork.md"
   },
   {
     "repository": "simpsoka/zigzag",
@@ -126,7 +144,10 @@
     "receipts": [
       "results/zigzag-export-01.json"
     ],
-    "sourceBuildLimit": "Source pin follows tagged v0.1.3; version string is not proof of release-binary equivalence"
+    "sourceBuildLimit": "Source pin follows tagged v0.1.3; version string is not proof of release-binary equivalence",
+    "currentRelease": "v0.1.5",
+    "currentReleaseSource": "429a028054145fc3e541525bb05b57596fa49d22",
+    "currentReleaseInspection": "CLI write/check path unchanged; planner/geometry changed. The 225-stitch result remains at the earlier source pin."
   },
   {
     "repository": "Vaibhaav-Tiwari/deepseek-v3-jax",
@@ -169,7 +190,10 @@
     "receipts": [
       "results/agweb-setup-01.json",
       "results/agweb-profiles-01.json"
-    ]
+    ],
+    "currentRelease": "v0.3.0",
+    "currentReleaseSource": "1d97f056b8727f7278cb4da4d11c1af22cda2ec9",
+    "currentReleaseInspection": "Profile/store path retained; new workspace selection, obstruction behavior and YAML installation report checked. App trial remains released0.2.0."
   },
   {
     "repository": "kane50613/takumi",
@@ -222,12 +246,12 @@
   },
   {
     "repository": "FURSOY/fursoy-cpu",
-    "discovery": "New qualifying direct-GitHub candidate in the Sunday closed-window snapshot; final manuscript inclusion pending",
+    "discovery": "New qualifying launch in the Sunday closed-window snapshot; selected after source/discussion review and actual RTL controls",
     "commit": "377ae9563ab1b88ee0a037f2223ab49822968396",
     "defaultBranch": "main",
     "licenseReportedByGitHub": "NOASSERTION",
     "licenseInspection": "README declares Apache 2.0; LICENSE retains grants and customizes trademark wording. Preserve the actual text and GitHub classification rather than assume exact standard-license recognition.",
-    "inspectionState": "Initial source/discussion review of selected PTW and CSR integration, Linux boot and synthesis runners, Sail comparator and saved upstream results; no local RTL or hardware trial",
+    "inspectionState": "Selected PTW/CSR and called SoC paths inspected; unchanged interrupt/trap suite passed 7 properties and 25,500 stress operations; directed actual CSR and one-operand mutation controls executed",
     "source": "https://github.com/FURSOY/fursoy-cpu/tree/377ae9563ab1b88ee0a037f2223ab49822968396",
     "inspectedFiles": [
       "LICENSE",
@@ -242,13 +266,18 @@
       "tools/run_s1_synth.py (module selection/fresh-run/cache/timing constraints)",
       "tools/run_s1_sail_cosim.py (fixed workload/comparator/result paths)",
       "results/s1-m9-closeout.json (maintainer-produced)",
-      "results/s1-sail-cosim.json (maintainer-produced)"
+      "results/s1-sail-cosim.json (maintainer-produced)",
+      "verification/s1_m9_phase_a_tb.cpp (interrupt properties/stress and direct-injection scope)",
+      "rtl/core/fursoy_s1_lsu_queues.sv (MMIO formatting block behind local-variable latch warnings)"
     ],
     "inspectionCoverage": "Selected consequential paths; not a whole-repository audit, independent verification or hardware acceptance",
     "discussionSources": [
       "https://news.ycombinator.com/item?id=50497137"
     ],
-    "receipts": [],
-    "latestFollowup": "06-sunday-closed-window.md"
+    "receipts": [
+      "results/fursoy-m9-phase-a-01.json",
+      "results/fursoy-csr-seip-01.json"
+    ],
+    "latestFollowup": "07-sunday-fieldwork.md"
   }
 ]

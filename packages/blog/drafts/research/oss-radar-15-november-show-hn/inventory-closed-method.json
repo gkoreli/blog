@@ -1,5 +1,5 @@
 {
-  "state": "closed UTC window; Sunday points snapshot; Fursoy initially source-reviewed, final editorial inclusion pending",
+  "state": "closed UTC window; final selection settled after Sunday research; editorial/render acceptance recorded separately",
   "windowStartInclusive": "2026-11-11T00:00:00Z",
   "windowEndExclusive": "2026-11-15T00:00:00Z",
   "index": "Algolia Show HN",
@@ -58,6 +58,6 @@
     "klad-app/klad": "excluded from OSS reviews: main application is explicitly source-available; separate MIT components do not change that classification",
     "FURSOY/fursoy-cpu": "README declares Apache 2.0; actual license retains grants with a customized trademark paragraph, GitHub NOASSERTION retained; initial source review found no Klad-style field-of-use restriction"
   },
-  "selectionState": "Seven launch projects plus returning Takumi in the first manuscript; newly qualifying Fursoy is initially source-reviewed, not yet accepted for inclusion",
-  "latestReview": "06-sunday-closed-window.md"
+  "selectionState": "Eight launch OSS projects after Klad exclusion, plus returning Takumi; nine manuscript entries",
+  "latestReview": "07-sunday-fieldwork.md"
 }

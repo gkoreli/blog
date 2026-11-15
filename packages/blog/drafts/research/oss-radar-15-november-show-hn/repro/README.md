@@ -12,6 +12,8 @@ Use a fresh temporary directory and receipt path for each invocation. Pin reposi
 | [yogurt-mcp.mjs](yogurt-mcp.mjs) | Node 24.14.1 type stripping; unchanged pinned server/socket modules | Two same-user clients, off/on/off global gate, socket 0600. No full application or recording |
 | [yogurt-queue.mjs](yogurt-queue.mjs) | Node 24.14.1 type stripping; unchanged pinned queue, synthetic small-Mac branch | Wait/interrupt/restart and unload callback request. No actual capture/model/RAM measurement |
 | [agentrun-recovery.mjs](agentrun-recovery.mjs) | Verified Node 24.22.3; unchanged source-built DSL/kernel/adapter | Three bridge/kernel interruption/reopen cases with an upstream memory store and owned journal. No disk-store/process-kill/model trial |
+| [agentrun-learning-score.mjs](agentrun-learning-score.mjs) | Node 24.22.3; beta.38's unchanged scoring module bundled with TypeBox 1.3.27 | Declared accuracy/hand-back/failure-denominator comparisons; no model, persistent promotion or learned-quality result |
+| [fursoy-csr-seip.py](fursoy-csr-seip.py), [C++ fixture](fursoy-csr-seip.cpp) | Verilator 5.054; pinned actual CSR/package source and a one-operand mutation | CSRRC external/software interrupt distinction plus no-pin/software-set/pin-only controls. No historical-checkout/Linux/timing/hardware trial |
 | [agweb-profiles.py](agweb-profiles.py) | Official verified Agweb 0.2.0 app, macOS 27.2 arm64; unique nondefault data root | Five workspaces at one loopback origin distinguish named sharing and separate profiles. Source build failed for missing full-Xcode plugin; no focus/memory benchmark |
 | [takumi-font-alias.mjs](takumi-font-alias.mjs) | Node 24.14.1, published native core 2.19.0 / 2.20.0, verified Geist WOFF2 | Copied-buffer and shared-buffer conditions pass in both; exact-same-object condition distinguishes the registration fix. PNG equality alone misses the old wrong family |
 | [takumi-prepared-resources.mjs](takumi-prepared-resources.mjs) | Node 24.14.1, native core 2.20.0; owned loopback HTTP and authored HTML/image | Drawn/hidden resource selection, prepared PNG/SVG/measurement reuse, supplied bytes and denied URL. No layout-cache or performance result |
@@ -70,3 +72,19 @@ Agweb's `scripts/build.sh --test` failed with the SwiftUI State macro plugin mis
 The afternoon Takumi controls add no upgrade to the existing core runtime. The resource fixture serves only its authored PNG on loopback, restricts its fetch hook to that origin, records actual HTTP requests and closes the owned server. It writes all images/SVG/measurement outside Git and publishes normalized hashes. It deliberately compares raw native rendering against explicit preparation; do not substitute the high-level `takumi-js` wrapper, which prepares itself, without declaring a different case.
 
 `fontsource_runtime` contains only the pinned `@fontsource-variable/geist@5.3.0` data package, installed with scripts disabled. Its Cyrillic WOFF2 is 15,084 bytes, SHA-256 `6894439694946a589d157ece003086960a6a4013d74a813dab7602efdb3d8c09`, under OFL-1.1. The receipt records package integrity. The font-shadow fixture uses a fresh renderer per condition and keeps Cyrillic/ASCII outputs; actual PNGs were visually inspected. It tests the reported matching condition at weight 400, not every font range or the older-version regression onset. Removing bundled fallback is a diagnostic contrast with an observed cost.
+
+## Sunday additions
+
+Use the [Sunday declarations and outcomes](../07-sunday-fieldwork.md), with fresh output paths. `agentrun_beta38` is source `d10f0053e09cd7ac0186006b13f7a6a52aa8bc22`; `scoring_dependencies` supplies the declared TypeBox 1.3.27 package. `fursoy_checkout` is source `377ae9563ab1b88ee0a037f2223ab49822968396`. The CSR wrapper checks the two source-file hashes before compiling. The temporary mutation changes only the read-modify-write operand, preserving the original checkout.
+
+```sh
+NODE_PATH="$scoring_dependencies/node_modules" esbuild \
+  "$agentrun_beta38/packages/serve/src/learn/promote.ts" \
+  --bundle --platform=node --format=esm --outfile="$trial_root/promote.mjs"
+node repro/agentrun-learning-score.mjs "$trial_root/promote.mjs" "$trial_root/score.json"
+
+PATH="$verilator_prefix/bin:$PATH" VERILATOR_ROOT="$verilator_prefix/share/verilator" \
+  python3 repro/fursoy-csr-seip.py "$fursoy_checkout" "$trial_root/csr"
+```
+
+The unchanged upstream Fursoy suite is `python3 tools/run_s1_m9_phase_a.py`, run from that checkout with Verilator on PATH. It passed 7 properties and 25,500 stress operations, but explicitly disables instruction fetching and uses direct operation injection. Its two local-temporary latch warnings are retained in the result record. The Verilator bottle was fetched with a task-specific Homebrew cache and extracted into `/tmp`; no system-wide Verilator installation was performed.

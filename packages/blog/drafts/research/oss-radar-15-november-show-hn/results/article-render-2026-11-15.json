@@ -1,0 +1,46 @@
+{
+  "manuscriptSha256": "bee9aa9d090cff0657ae97d74339ac503053e2584f5f251db9988f4ec2a9b0d9",
+  "buildBaseline": "3ee62d4af941a4774ba9bdf05ac3a72ec7556ef4",
+  "plannedFilename": "046-oss-radar-15-november-launches.md",
+  "canonical": "https://gkoreli.com/oss-radar-15-november-launches",
+  "publicationDate": "2026-11-16",
+  "renderedH1Count": 1,
+  "projectEntries": 9,
+  "h3TotalIncludingInterpretation": 11,
+  "resolvedLocalLinks": 21,
+  "representations": [
+    "HTML",
+    "Markdown",
+    "CSL-JSON",
+    "BibTeX",
+    "posts.json",
+    "RSS",
+    "sitemap",
+    "llms.txt",
+    "llms-full.txt",
+    "OG PNG"
+  ],
+  "htmlSha256": "6128fee5d6dfeb54e24504f9fb8c02b368fee62b3b66a34d34db600f7abfa285",
+  "ogSha256": "1fb155c3840a109d9a7fe14d8e35ea65158cc9c6522a924b975e55911143eea9",
+  "browser": {
+    "desktop": "visually inspected",
+    "narrowViewport": [
+      390,
+      844
+    ],
+    "narrowDocumentWidth": 390,
+    "narrowSourceTableWidth": 354,
+    "contentsNavigation": "expanded and Sources anchor exercised",
+    "viewportReset": true,
+    "currentLayoutRechecked": true
+  },
+  "productionPublicationPerformed": false,
+  "initialBuildBaseline": "c3413057b353aa129cffee77b95d41f24d6c0857",
+  "searchIndex": {
+    "articles": 47,
+    "candidatePassages": 66
+  },
+  "node": "24.14.1",
+  "pnpm": "9.15.4",
+  "publisherStateChecked": "disabled_manually"
+}

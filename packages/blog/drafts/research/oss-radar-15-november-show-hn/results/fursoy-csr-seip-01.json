@@ -1,0 +1,39 @@
+{
+  "sourceCommit": "377ae9563ab1b88ee0a037f2223ab49822968396",
+  "verilator": "Verilator 5.054 2026-11-01 rev vUNKNOWN-built20261101",
+  "results": [
+    {
+      "condition": "original",
+      "csrSourceSha256": "9b19600eaa35c2b632dc40b339cff168f8326c6d16aa5a8c1a84636ead3d5699",
+      "pendingSeipAfterPinClears": {
+        "external_high_during_csrrc_then_low": 0,
+        "no_external_pin": 0,
+        "software_seip_preserved": 1,
+        "pin_pulse_without_csr": 0
+      }
+    },
+    {
+      "condition": "combined-read-value-mutation",
+      "csrSourceSha256": "466f65880a169b856f4a23fbc0a707693cbd9e87cb7546fda4c45371a118b5e1",
+      "pendingSeipAfterPinClears": {
+        "external_high_during_csrrc_then_low": 1,
+        "no_external_pin": 0,
+        "software_seip_preserved": 1,
+        "pin_pulse_without_csr": 0
+      }
+    }
+  ],
+  "scope": "One actual CSR module, CSRRC issue/retire handshake and three controls; mutation matches the reported old operand, not a checked historical checkout. No Linux boot, timing or hardware result.",
+  "initialHarnessAttempts": [
+    {
+      "case": "reset input left in U-mode",
+      "result": "privilege rejection before CSR operation",
+      "projectFailure": false
+    },
+    {
+      "case": "assumed direct test injection supports mip",
+      "result": "software-set SEIP control failed; switch has no mip case",
+      "projectFailure": false
+    }
+  ]
+}
