@@ -1,6 +1,6 @@
 # Blog search package and dogfood integration
 
-The completed v0.1 record is below. A separately accepted [v0.2 iteration](v0.2.md) tracks current package, reader interaction and article work.
+A separate [compact search placement correction](ui-placement-2026-11-15.md) follows the completed package work. The completed v0.1 record is below. A separately accepted [v0.2 iteration](v0.2.md) tracks current package, reader interaction and article work.
 
 November 14, 2026. Accepted product work following the completed [reader-search investigation](../../../packages/blog/drafts/research/modern-web-guidance/reader-search/README.md). The earlier MWG and E5 measurements remain frozen. This work builds a reusable monorepo package, integrates it into the publication, compares representative retrieval approaches, and revises the engineering article from the resulting evidence.
 

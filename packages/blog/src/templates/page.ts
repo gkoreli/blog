@@ -12,6 +12,10 @@ function turnstileSiteKey(): string {
   return process.env['TURNSTILE_SITE_KEY'] ?? '';
 }
 
+function searchLauncher(placement: string): TemplateResult {
+  return html`<a href="/search" class="search-icon-link ${placement}" data-search-open aria-label="Search publication" title="Search publication (Ctrl K)">${utilityIcon('search')}</a>`;
+}
+
 const SITE_URL = 'https://gkoreli.com';
 
 function canonicalUrl(path: string): string {
@@ -108,14 +112,13 @@ export function pageShell({ title, description, content, canonicalPath, currentS
           </a>
           <p>Where excitement ends, depth begins.</p>
         </div>
-        <a href="/search" class="search-mobile-link" data-search-open aria-label="Search publication">${utilityIcon('search')}</a>
+        ${searchLauncher('search-mobile-link')}
         <nisli-burger-menu></nisli-burger-menu>
       </div>
 
       <div class="sidebar-nav">
-        <div class="sb-cat">Contents</div>
+        <div class="sb-contents-heading"><div class="sb-cat">Contents</div>${searchLauncher('search-compact-link')}</div>
         <nav class="sidebar-section">
-          <a href="/search" class="search-trigger ${currentSlug === 'search' ? 'active' : ''}" data-search-open><span>Search</span><kbd aria-hidden="true">⌘ K</kbd></a>
           <a href="/" class="${isHome ? 'active' : ''}"><span class="sb-dot"></span>Home</a>
           <a href="/essays" class="${currentSection === 'essays' ? 'active' : ''}"><span class="sb-dot"></span>Essays</a>
           <a href="/engineering" class="${currentSection === 'engineering' ? 'active' : ''}"><span class="sb-dot"></span>Engineering</a>
@@ -144,6 +147,8 @@ export function pageShell({ title, description, content, canonicalPath, currentS
     </aside>
     </div>
 
+    <div class="gutter"><div class="publication-rail"><div class="publication-rail-tools">${searchLauncher('search-rail-link')}</div>${gutter ?? ''}</div></div>
+
     <main class="content">
       ${content}
 
@@ -153,7 +158,6 @@ export function pageShell({ title, description, content, canonicalPath, currentS
         <p>Built with <a href="https://www.npmjs.com/package/@nisli/core">@nisli/core</a> · <a href="/privacy">Privacy</a></p>
       </footer>
     </main>
-    <div class="gutter">${gutter ?? ''}</div>
   </div>
 
   <dialog id="site-publication-search" data-publication-search-dialog class="search-dialog tool-app" aria-labelledby="search-dialog-title">

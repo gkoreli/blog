@@ -1,6 +1,7 @@
 let modulePromise: Promise<typeof import('./search.js')> | undefined;
 const load = () => modulePromise ??= import('./search.js');
-for (const hint of document.querySelectorAll('.search-trigger kbd')) hint.textContent = /Mac|iPhone|iPad/u.test(navigator.platform) ? '⌘ K' : 'Ctrl K';
+const shortcut = /Mac|iPhone|iPad/u.test(navigator.platform) ? '⌘ K' : 'Ctrl K';
+for (const trigger of document.querySelectorAll('[data-search-open]')) trigger.setAttribute('title', `Search publication (${shortcut})`);
 const dialog = document.querySelector('[data-publication-search-dialog]');
 let opener: HTMLElement | null = null;
 
