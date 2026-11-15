@@ -24,7 +24,7 @@ details.research-note summary::-webkit-details-marker { display: none; }
 details.research-note summary::before {
   content: '▸';
   font-size: var(--text-2xs);
-  color: var(--color-accent-rust);
+  color: var(--color-ink-rust);
   display: inline-block;
   transition: transform 0.15s;
 }

@@ -1,4 +1,6 @@
 import { html } from '@nisli/core';
+import { navigationChoices } from '../templates/navigation-choice.js';
+import { projectCatalogue } from './project-catalogue.js';
 
 export function aboutPage() {
   return html`<article class="post-content">
@@ -16,13 +18,7 @@ export function aboutPage() {
 
   <h2>Projects</h2>
 
-  <p><a href="https://github.com/gkoreli/ghx" target="_blank" rel="noopener">ghx</a> — Auditable code reconnaissance for AI agents. A specialized sidecar explores GitHub and returns schema-validated claims, evidence, commands, and uncertainty instead of a transcript.</p>
-
-  <p><a href="https://github.com/gkoreli/backlog-mcp" target="_blank" rel="noopener">backlog-mcp</a> — Local-first context, memory, and work history for AI agents. Agents orient, recall decisions, attach artifacts, and search their own history while humans retain plain markdown they can read and diff.</p>
-
-  <p><a href="https://www.npmjs.com/package/@nisli/core" target="_blank" rel="noopener">@nisli/core</a> — A zero-dependency reactive web component framework. Born from building backlog-mcp's web viewer, with fine-grained signals, light-DOM templates, dependency injection, routing, and static generation.</p>
-
-  <p><a href="https://github.com/gkoreli/blog" target="_blank" rel="noopener">gkoreli.com</a> — This publication. Built with @nisli/core and deployed on Cloudflare Workers. The source is public.</p>
+  ${navigationChoices(projectCatalogue(), { label: 'Projects', idPrefix: 'about-project', layout: 'rows', headingLevel: 3 })}
 
   <h2>Tools</h2>
 

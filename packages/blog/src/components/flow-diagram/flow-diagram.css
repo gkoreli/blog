@@ -87,7 +87,7 @@
 }
 
 .flow-arrow {
-  color: var(--color-accent-warm);
+  color: var(--color-ink-warm);
   font-family: var(--font-mono);
   font-size: 1.4rem;
   line-height: 1;

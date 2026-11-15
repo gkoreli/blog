@@ -1,5 +1,7 @@
 /* Shared report patterns: defined totals, comparisons, facts and complete evidence. */
 .data-metrics { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 12px; }
+.data-metrics--summary { grid-template-columns: repeat(auto-fit,minmax(150px,1fr)); }
+@media (max-width: 600px) { .data-metrics--summary { grid-template-columns: repeat(2,minmax(0,1fr)); } .data-metrics--summary .data-metric:first-child { grid-column: 1 / -1; } }
 .data-metric { display: flex; flex-direction: column; gap: 5px; padding: 14px 16px; min-width: 0; border: 1px solid var(--color-border); border-radius: 10px; }
 .data-metric-label { font: 500 12px/1.6 var(--font-mono); color: var(--color-text-muted); }
 .data-metric-value { font: 500 clamp(26px,3vw,32px)/1.25 var(--font-mono); font-variant-numeric: tabular-nums; letter-spacing: -.055em; color: var(--color-text); }

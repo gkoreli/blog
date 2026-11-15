@@ -88,15 +88,21 @@ test('the real research-footprint template renders native time elements before l
 });
 
 
-test('older custom article footprints use the same marked instants without changing their frozen measurements', async () => {
+test('custom research notes occupy one shared footprint without changing frozen measurements', async () => {
+  const { researchFootprint } = await import('../src/pages/research-footprint.js');
   for (const source of [
     await import('../posts/021-oss-radar-05-bun-1-4.js'),
     await import('../posts/022-oss-radar-06-interp-engine.js'),
   ]) {
     const measurements = JSON.stringify(source.meta.researchFootprint);
-    const [snapshot] = await renderContent([source.article()]); assert.ok(snapshot);
+    const [snapshot] = await renderContent([html`${source.article()}${researchFootprint(source.meta, source.researchNotes())}`]); assert.ok(snapshot);
     const root = document.createElement('section'); root.innerHTML = snapshot;
     const footprint = root.querySelector('.research-footprint'); assert.ok(footprint);
+    assert.equal(root.querySelectorAll('#research-footprint').length, 1);
+    assert.equal(root.querySelectorAll('#research-footprint-title').length, 1);
+    assert.equal(footprint.querySelectorAll('.research-footprint-stats > div').length, 4);
+    assert.match(footprint.textContent ?? '', /frozen manifest/);
+    assert.match(footprint.textContent ?? '', /Reasoning output/);
     const times = footprint.querySelectorAll('time[data-local-time]'); assert.equal(times.length, 2);
     assert.equal(times[0]?.getAttribute('datetime'), source.meta.researchFootprint?.startedAt);
     assert.equal(times[1]?.getAttribute('datetime'), source.meta.researchFootprint?.measuredAt);

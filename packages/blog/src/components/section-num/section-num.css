@@ -7,5 +7,5 @@ nisli-section-num .section-num {
   font-size: var(--text-sm-mono);
   letter-spacing: 0.25em;
   text-transform: uppercase;
-  color: var(--color-accent-rust);
+  color: var(--color-ink-rust);
 }

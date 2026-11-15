@@ -77,7 +77,6 @@ export function preamble() {
 }
 
 export function article() {
-  const started = timeFallback(researchFootprint.startedAt), measured = timeFallback(researchFootprint.measuredAt);
   return html`
 <article class="post-content">
   <p class="post-lede">
@@ -668,17 +667,14 @@ export function article() {
     ],
   })}
 
-  <section class="research-footprint" id="research-footprint" aria-labelledby="research-footprint-title">
-    <div class="research-footprint-heading">
-      <h2 id="research-footprint-title">Research footprint</h2>
-      <a href="${RESEARCH_URL}" target="_blank" rel="noopener">Open the evidence artifacts ↗</a>
-    </div>
-    <div class="research-footprint-stats">
-      <div><strong>${researchFootprint.wallClockMinutes} min</strong><span>wall-clock window</span></div>
-      <div><strong>${researchFootprint.sessions}</strong><span>linked agent sessions</span></div>
-      <div><strong>${researchFootprint.artifacts}</strong><span>committed Markdown artifacts</span></div>
-      <div><strong>${compactTokenCount(researchFootprint.totalTokens)}</strong><span>tokens processed</span></div>
-    </div>
+
+</article>`;
+}
+
+/** Additional measured explanation; the publication owns its frame and limits. */
+export function researchNotes() {
+  const started = timeFallback(researchFootprint.startedAt), measured = timeFallback(researchFootprint.measuredAt);
+  return html`
     <p>
       The planning envelope was 90–120 minutes and 250,000–400,000 aggregate tokens. The measured freeze arrived
       after ${researchFootprint.wallClockMinutes} minutes, from <time datetime=${started.instant} data-local-time>${started.label}</time>
@@ -705,11 +701,5 @@ export function article() {
       headline total. This number describes the article's linked research-session tree, not every internal token the
       Codex product may have processed around it.
     </p>
-    <p class="research-footprint-note">
-      This is provenance, not a quality score, bill, or environmental estimate. Wall-clock time is not hands-on time.
-      The private session logs are not published; the prefix commitments make the record auditable by the author but
-      do not let a reader independently reconstruct the totals.
-    </p>
-  </section>
-</article>`;
+  `;
 }

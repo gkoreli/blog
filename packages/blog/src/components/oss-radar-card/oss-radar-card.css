@@ -1,7 +1,7 @@
 /* ── OSS Radar publication card ── */
 /* Dark header bar (ink-colored) signals serialized publication format */
 
-a.rdr {
+.rdr {
   display: block;
   text-decoration: none;
   color: var(--color-text);
@@ -11,9 +11,9 @@ a.rdr {
   transition: border-color 0.2s;
 }
 
-a.rdr:visited { color: var(--color-text); }
-a.rdr:hover { border-color: var(--color-link); }
-a.rdr:hover .rdr-title { color: var(--color-link); }
+.rdr-main, .rdr-main:visited { display: block; color: var(--color-text); text-decoration: none; }
+.rdr:hover, .rdr:focus-within { border-color: var(--color-link); }
+.rdr-main:hover .rdr-title, .rdr-main:focus-visible .rdr-title { color: var(--color-link); }
 
 .rdr-head {
   display: flex;
@@ -29,7 +29,7 @@ a.rdr:hover .rdr-title { color: var(--color-link); }
   font-size: var(--text-xs);
   font-weight: 700;
   letter-spacing: 0.08em;
-  color: rgba(250, 248, 245, 0.5);
+  color: var(--color-on-header);
 }
 
 .rdr-body { padding: 1.1rem; }
@@ -60,30 +60,7 @@ a.rdr:hover .rdr-title { color: var(--color-link); }
   color: var(--color-text-muted);
 }
 
-.rdr-link {
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: var(--color-link);
-}
-
 .rdr-tags {
-  display: flex;
-  gap: 0.5rem;
-  flex-wrap: wrap;
   margin-top: 0.6rem;
-}
-
-.rdr-tag {
-  font-size: 0.68rem;
-  color: var(--color-text-muted);
-  opacity: 0.55;
-}
-
-.rdr-tag::before {
-  content: '#';
-  background: var(--gradient-brand);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  font-weight: 600;
+  padding: 0 1.1rem 0.65rem;
 }

@@ -28,12 +28,12 @@ site-audit-check, request-evidence-check, robots-workbench, report-comparison { 
 .tool-console-meta { font: 0.6rem/1.6 var(--font-mono); color: var(--tool-muted); }
 .ai-check-form label, .tools-workbench label { display: block; font: 500 0.75rem/1.6 var(--font-mono); margin-bottom: 0.55rem; }
 .ai-check-input-row { display: flex; gap: 0.6rem; }
-.tool-app input, .tool-app textarea, .tool-app select { font: 0.8rem/1.5 var(--font-mono); color: var(--color-text); background: var(--color-bg); border: 1px solid var(--color-border); border-radius: 3px; padding: 0.75rem 0.85rem; min-width: 0; }
+.tool-app input, .tool-app textarea, .tool-app select { font: 0.8rem/1.5 var(--font-mono); color: var(--color-text); background: var(--color-bg); border: 1px solid var(--color-control-border); border-radius: 3px; padding: 0.75rem 0.85rem; min-width: 0; }
 .tool-app :is(input, textarea, select) { font-size: max(16px, 0.8rem); }
 .ai-check-input-row input { flex: 1; width: 100%; }
 .tool-app textarea { display: block; width: 100%; resize: vertical; font-family: var(--font-mono); font-size: max(16px, 0.74rem); line-height: 1.75; }
-.tool-app button, .tool-button { display: inline-flex; justify-content: center; align-items: center; gap: 0.6rem; border: 1px solid transparent; border-radius: 3px; padding: 0.75rem 1rem; background: var(--color-link); color: var(--color-bg); font: 500 0.76rem/1.4 var(--font-mono); text-decoration: none; cursor: pointer; min-height: 44px; white-space: nowrap; transition: filter 120ms; }
-.tool-app .tool-button, .tool-app .tool-button:visited { color: var(--color-bg); }
+.tool-app button, .tool-button { display: inline-flex; justify-content: center; align-items: center; gap: 0.6rem; border: 1px solid transparent; border-radius: 3px; padding: 0.75rem 1rem; background: var(--color-link); color: var(--color-on-action); font: 500 0.76rem/1.4 var(--font-mono); text-decoration: none; cursor: pointer; min-height: 44px; white-space: nowrap; transition: filter 120ms; }
+.tool-app .tool-button, .tool-app .tool-button:visited { color: var(--color-on-action); }
 .tool-app button:hover, .tool-button:hover { filter: brightness(1.08); }
 .tool-app button:disabled { opacity: 0.55; cursor: wait; }
 .tool-app :is(button, input, textarea, select, summary, a):focus-visible { outline: 2px solid var(--color-link); outline-offset: 3px; }
@@ -129,8 +129,8 @@ site-audit-check, request-evidence-check, robots-workbench, report-comparison { 
 .access-check-row { display: grid; grid-template-columns: 1rem minmax(0, 1fr) auto; gap: 0.6rem; padding: 0.8rem 0; border-bottom: 1px solid var(--color-border); align-items: baseline; }
 .access-check-row:last-child { border: 0; }
 .access-check-indicator { font: 0.8rem/1.5 var(--font-mono); color: var(--color-link); }
-.access-check-row[data-state="fail"] .access-check-indicator { color: var(--color-accent-rust); }
-.access-check-row[data-state="unknown"] .access-check-indicator { color: var(--color-accent-warm); }
+.access-check-row[data-state="fail"] .access-check-indicator { color: var(--color-ink-rust); }
+.access-check-row[data-state="unknown"] .access-check-indicator { color: var(--color-ink-warm); }
 .access-check-row strong { font-size: 0.85rem; }
 .access-check-row p { font-size: 0.8rem; margin-top: 0.3rem; color: var(--tool-muted); }
 .access-check-points { font: 0.65rem/1.5 var(--font-mono); white-space: nowrap; }
@@ -216,7 +216,7 @@ site-audit-check, request-evidence-check, robots-workbench, report-comparison { 
   .access-component-state { min-height: 3em; }
   .access-component-bar { margin-top: 0.5rem; }
   .workbench-fields, .comparison-inputs { grid-template-columns: 1fr; }
-  .comparison-result caption::after { content: 'Scroll table →'; display: block; margin-top: 0.3rem; color: var(--tool-muted); font: 400 0.65rem/1.6 var(--font-mono); }
+  .comparison-result caption::after { content: 'Scroll to compare all columns'; display: block; margin-top: 0.3rem; color: var(--tool-muted); font: 400 0.65rem/1.6 var(--font-mono); }
   .ai-check-input-row { flex-direction: column; }
   .ai-check-input-row button { width: 100%; }
   .ai-check-form { padding: 0 0 1rem; }

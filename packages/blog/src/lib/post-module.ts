@@ -27,5 +27,8 @@ export function parsePostModule(value: unknown, file: string) {
     ...('preamble' in value && value.preamble !== undefined
       ? { preamble: templateExport(value.preamble, `${file}: preamble`) }
       : {}),
+    ...('researchNotes' in value && value.researchNotes !== undefined
+      ? { researchNotes: templateExport(value.researchNotes, `${file}: researchNotes`) }
+      : {}),
   };
 }

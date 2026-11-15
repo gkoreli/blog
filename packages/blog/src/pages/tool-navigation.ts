@@ -1,4 +1,4 @@
-import { html } from '@nisli/core';
+import { sectionNavigation } from '../templates/section-navigation.js';
 
 export function toolNavigation(current: 'overview' | 'check' | 'request' | 'robots' | 'compare') {
   const links = [
@@ -8,7 +8,5 @@ export function toolNavigation(current: 'overview' | 'check' | 'request' | 'robo
     { id: 'robots', href: '/tools/robots', label: 'Robots' },
     { id: 'compare', href: '/tools/compare', label: 'Compare' },
   ];
-  return html`<nav class="tool-navigation" aria-label="Tools">${links.map(link => current === link.id
-    ? html`<a href=${link.href} aria-current="page">${link.label}</a>`
-    : html`<a href=${link.href}>${link.label}</a>`)}</nav>`;
+  return sectionNavigation('Tools', links, { className: 'tool-navigation', currentHref: links.find(link => link.id === current)?.href ?? '/tools', currentKind: 'page' });
 }

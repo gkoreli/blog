@@ -31,7 +31,7 @@
   line-height: 1.5;
 }
 .src-why > span {
-  color: var(--color-accent-warm);
+  color: var(--color-ink-warm);
   padding-right: 0.2rem;
 }
 .src-ref {
@@ -46,7 +46,7 @@
   text-decoration-color: var(--color-border);
   text-underline-offset: 2px;
 }
-.src-ref a:hover { color: var(--color-accent-warm); text-decoration-color: var(--color-accent-warm); }
+.src-ref a:hover { color: var(--color-ink-warm); text-decoration-color: var(--color-accent-warm); }
 
 /* Non-collapsible research note (OSS Radar variant) */
 .radar-research-note {
@@ -67,7 +67,7 @@
   text-transform: uppercase;
   font-size: var(--text-2xs);
 }
-.radar-research-note a { color: var(--color-accent-blue); }
+.radar-research-note a { color: var(--color-ink-blue); }
 
 @media (max-width: 600px) {
   .src-item { grid-template-columns: 1fr; }

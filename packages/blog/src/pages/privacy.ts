@@ -5,10 +5,17 @@ import { ANALYTICS_EVIDENCE_SINCE, DIAGNOSTIC_RETENTION_DAYS } from '@gkoreli/an
 const evidenceDate = timePresentation({ timeZone: 'UTC', locale: 'en-US' }).calendarDate(ANALYTICS_EVIDENCE_SINCE, 'long');
 
 export function privacyPage() {
-  return html`<article class="post-content">
+  return html`<article class="post-content policy-page">
   <h1>Privacy</h1>
 
   <p>This is a personal engineering blog. Here's what's collected and why.</p>
+
+  <dl class="policy-summary" aria-label="Privacy at a glance">
+    <div><dt>Page analytics</dt><dd>Request information and a daily pseudonymous identifier help explain access to the publication. The routine counter uses no cookies. Its observation rows currently have no automatic expiration. <a href="#first-party-analytics">Full collection and retention details</a>.</dd></div>
+    <div><dt>Private diagnostics</dt><dd>Optional request diagnostics expire from private reads after ${DIAGNOSTIC_RETENTION_DAYS} days; scheduled cleanup can lag. Global Privacy Control or Do Not Track omits that optional layer, while the routine counter remains separate. <a href="#private-request-diagnostics">Diagnostic policy</a>.</dd></div>
+    <div><dt>Newsletter</dt><dd>Your email supports signup and delivery. Confirmation reservations last seven days; unsubscribed and bounced addresses are purged after 90 days. Every newsletter has an unsubscribe link. <a href="#newsletter">Delivery, retention and opt-out details</a>.</dd></div>
+    <div><dt>Search &amp; services</dt><dd>Interactive search runs locally. A plain search form sends its query in this site's URL. Cloudflare provides infrastructure, analytics and abuse protection; Google Fonts supplies fonts. <a href="#publication-search">Search privacy</a> · <a href="#other-services">Other services</a>.</dd></div>
+  </dl>
 
   <h2>First-party analytics</h2>
   <p>From classifier version 2026-10-27.2, routine observations also retain closed derived classification evidence: all recognized client names and reviewed product aliases, their category agreement, a coarse browser-family claim, missing/listed/not-listed network evidence, navigation shape, the activation marker's presence/form, and a bounded referrer-context inconsistency flag. Unrecognized free-text products and raw User-Agent values are not copied into this record. These facts remain linked to the routine pseudonymous observation under its existing retention; they do not authenticate a device, person, purpose or vendor.</p>

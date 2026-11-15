@@ -30,7 +30,7 @@ nisli-topo-diagram canvas {
 }
 .topo-label strong {
   display: block;
-  color: var(--color-accent-warm);
+  color: var(--color-ink-warm);
   font-size: var(--text-xs);
   margin-bottom: 0.2rem;
 }

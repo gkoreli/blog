@@ -13,14 +13,21 @@
   --space-12: 3rem;
   --space-16: 4rem;
 
+  /* Interaction geometry is independent of the visible glyph size. */
+  --target-min: 44px;
+  --control-radius: 6px;
+  --focus-width: 2px;
+  --focus-offset: 3px;
+
   /* Type scale */
-  --text-2xs: 0.55rem;
-  --text-xs: 0.6rem;
-  --text-sm-mono: 0.7rem;
+  --text-2xs: 0.667rem;
+  --text-xs: 0.72rem;
+  --text-sm-mono: 0.75rem;
   --text-sm: 0.85rem;
   --text-base: 1rem;
   --text-lg: 1.2rem;
   --text-xl: 1.35rem;
+  --type-interface-title: clamp(32px, 4vw, 44px);
 
   /* ── Palette ── */
   /* Paper — warm cream, never pure white */
@@ -30,23 +37,34 @@
   --color-surface-2: #e8e4dd;
   /* Ink — warm near-black */
   --color-text: #2d2a24;
-  --color-text-muted: #7a7568;
+  --color-text-secondary: #625d53;
+  --color-text-muted: var(--color-text-secondary);
+  --color-text-meta: var(--color-text-secondary);
   /* Accent palette */
   --color-link: #1a6b4e;         /* Deep Green — links, CTAs, brand primary */
+  --color-on-action: #faf8f5;
+  --color-control-border: #858072;
   --color-accent-warm: #a88a2a;  /* Warm Gold — Essays: attention, warmth */
   --color-accent-rust: #b04a24;  /* Rust — OSS Radar: urgency, signal */
   --color-accent-blue: #4a7a94;  /* Blueprint Blue — Engineering: clarity, depth */
   /* Header — dark bar used in publication cards (OSS Radar, Dispatch) */
   --color-header: #2d2a24;
+  --color-on-header: #faf8f5;
   --color-border: #ddd8cf;
+
+  /* Text inks are tested on paper and both neutral surfaces. Decorative
+     accents above remain available for illustration, meters and rules. */
+  --color-ink-warm: #78601a;
+  --color-ink-rust: #963e20;
+  --color-ink-blue: #38647a;
 
   /* ── Section identity colors — named contract, values are emotional tones ── */
   /* Essays: literary warmth */
-  --section-essays: var(--color-accent-warm);
+  --section-essays: var(--color-ink-warm);
   /* Engineering: systematic clarity */
-  --section-engineering: var(--color-accent-blue);
+  --section-engineering: var(--color-ink-blue);
   /* OSS Radar: signal urgency */
-  --section-oss-radar: var(--color-accent-rust);
+  --section-oss-radar: var(--color-ink-rust);
   /* Frames: growth and stillness */
   --section-frames: var(--color-link);
 
@@ -82,13 +100,18 @@
   --color-surface: #242424;
   --color-surface-2: #2c2c2c;
   --color-text: #e0ddd5;
-  --color-text-muted: #9a9589;
+  --color-text-secondary: #aaa496;
   --color-link: #6ec9a8;
+  --color-on-action: #15251e;
+  --color-control-border: #878276;
   --color-accent-warm: #e8c87a;
   --color-accent-rust: #c05a2e;
   --color-accent-blue: #5b8fa8;
   --color-header: #111111;
   --color-border: #3a3a3a;
+  --color-ink-warm: #e8c87a;
+  --color-ink-rust: #e09270;
+  --color-ink-blue: #85b2c9;
   --glass-panel-bg: color-mix(in srgb, var(--color-surface) 72%, transparent);
   --glass-panel-border: color-mix(in srgb, var(--color-link) 24%, var(--color-border));
   --glass-panel-shadow:
@@ -134,6 +157,13 @@ mark {
 
 input, button, textarea, select { font: inherit; }
 p, h1, h2, h3, h4, h5, h6 { overflow-wrap: break-word; }
+
+/* A link is complete outside editorial containers as well as inside them. */
+a { color: var(--color-link); text-underline-offset: 0.18em; }
+:is(a,button,input,select,textarea,summary,[tabindex]):focus-visible {
+  outline: var(--focus-width) solid var(--color-link);
+  outline-offset: var(--focus-offset);
+}
 
 /* ── Glass surface utilities ── */
 .glass-panel {

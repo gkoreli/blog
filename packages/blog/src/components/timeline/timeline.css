@@ -22,7 +22,7 @@
 .tl-date {
   font-family: var(--font-mono);
   font-size: var(--text-2xs);
-  color: var(--color-accent-warm);
+  color: var(--color-ink-warm);
   letter-spacing: 0.1em;
   margin-bottom: 0.25rem;
 }

@@ -3,6 +3,7 @@ import type { PostMeta, Section } from '../lib/frontmatter.js';
 import { formatDateLong } from '../lib/dates.js';
 import { SectionLabel } from '../components/index.js';
 import { researchFootprint } from './research-footprint.js';
+import { utilityIcon } from '../templates/utility-icon.js';
 
 function resolveSeriesPosts(meta: PostMeta, allPosts: PostMeta[]) {
   if (!meta.series) return null;
@@ -102,13 +103,12 @@ export function postAfterword(meta: PostMeta, allPosts: PostMeta[]): TemplateRes
     <p class="post-afterword-label">${nextRead.label}</p>
     <a href="/${nextRead.post.slug}">
       <span>${nextRead.post.title}</span>
-      <span class="post-afterword-arrow" aria-hidden="true">→</span>
     </a>
   </div>` : ''}
   ${acceptsTechnicalFeedback ? html`<div class="post-feedback">
     <h2>What did I get wrong?</h2>
     <p>Found a weak assumption, broken baseline, or technical mistake?</p>
-    <a href="${feedbackUrl(meta)}" target="_blank" rel="noopener">Open a critique on GitHub <span aria-hidden="true">↗</span></a>
+    <a href="${feedbackUrl(meta)}" target="_blank" rel="noopener">${utilityIcon('github')} Open a critique on GitHub</a>
   </div>` : ''}
 </section>`;
 }

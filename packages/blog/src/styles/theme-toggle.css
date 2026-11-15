@@ -20,8 +20,8 @@
 .theme-toggle::before {
   content: '';
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 7px;
+  left: 7px;
   width: 28px;
   height: 28px;
   border-radius: 0.4rem;
@@ -38,7 +38,7 @@
 }
 
 .theme-toggle:has(button:last-child.active)::before {
-  transform: translateX(28px);
+  transform: translateX(var(--target-min));
 }
 
 .theme-toggle button {
@@ -47,16 +47,16 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 28px;
-  height: 28px;
+  width: var(--target-min);
+  height: var(--target-min);
   background: none;
   border: none;
   cursor: pointer;
-  opacity: 0.45;
-  transition: opacity 0.2s;
+  color: var(--color-text-secondary);
+  transition: color 0.2s;
   border-radius: 0.4rem;
 }
 
-.theme-toggle button.active { opacity: 1; }
-.theme-toggle button:hover:not(.active) { opacity: 0.75; }
+.theme-toggle button.active { color: var(--color-link); }
+.theme-toggle button:hover:not(.active) { color: var(--color-text); }
 .theme-toggle img { display: block; }

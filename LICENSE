@@ -10,9 +10,9 @@ Third-party research fixtures retain their upstream licenses. The [FFmpeg DVB su
 
 ## Content (CC BY-NC-ND 4.0)
 
-All blog posts, articles, essays, and images in `packages/blog/posts/` and `packages/blog/prompts/` are licensed under [Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International](./LICENSE-CC-BY-NC-ND-4.0).
+Published blog posts, articles, essays, and images are licensed under [Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International](./LICENSE-CC-BY-NC-ND-4.0). Private source materials are not included.
 
-You may share the content with attribution, but you may not use it commercially or create derivative works. Quoting and citing with attribution and a link to the canonical URL is always welcome.
+You may share unchanged content for noncommercial purposes with attribution; adaptations may not be distributed. The linked license contains the complete terms. Quoting and citing with attribution and a link to the canonical URL is always welcome.
 
 Code snippets that appear inside posts are licensed under the MIT License like the rest of the code, so readers may adapt them freely.
 

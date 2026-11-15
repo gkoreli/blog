@@ -1,0 +1,37 @@
+/* One reading composition for ordinary prose, rich articles and policy detail. */
+.reading-rail-host { height: 100%; }
+.reading-contents { font: 13px/1.6 var(--font-sans); color: var(--color-text-secondary); }
+.reading-contents ol { list-style: none; padding: 0; margin: 0; }
+.reading-contents li { margin: 0; }
+.reading-contents a { display: flex; align-items: center; min-height: var(--target-min); padding: 7px 10px; border-radius: var(--control-radius); color: var(--color-text-secondary); text-decoration: none; }
+.reading-contents a:hover, .reading-contents a[aria-current] { color: var(--color-link); background: var(--color-surface); }
+.reading-contents a[aria-current] { font-weight: 600; }
+.reading-contents-label { font: 12px/1.6 var(--font-mono); margin-bottom: 10px; color: var(--color-text-meta); }
+.reading-contents--rail { position: sticky; top: 32px; max-height: calc(100dvh - 64px); overflow-y: auto; padding: 0 16px 16px 24px; margin-top: 2rem; max-width: 290px; }
+.reading-contents--inline { margin: 1.25rem 0 1.5rem; border-block: 1px solid var(--color-border); }
+.post-content .reading-contents--inline { padding: 0; border: 0; border-block: 1px solid var(--color-border); border-radius: 0; }
+.reading-contents--inline summary { display: grid; grid-template-columns: 16px minmax(0,1fr) auto; align-items: center; gap: 10px; min-height: var(--target-min); padding-block: 12px; cursor: pointer; font: 13px/1.5 var(--font-mono); color: var(--color-link); }
+.reading-contents--inline summary::before { content: '+'; font: 18px/1 var(--font-mono); }
+.reading-contents--inline[open] summary::before { content: '−'; }
+.reading-contents summary span { font-size: 12px; color: var(--color-text-meta); }
+.reading-contents--inline[open] nav { padding-bottom: 12px; }
+.reading-table { margin: 1.5rem 0; min-width: 0; }
+.reading-table-cue { display: flex; align-items: center; justify-content: space-between; gap: 12px; color: var(--color-text-meta); font: 12px/1.6 var(--font-mono); margin: 0 0 8px; }
+.reading-table-cue[hidden] { display: none; }
+.reading-table-scroll { max-width: 100%; overflow: auto; overscroll-behavior-inline: contain; isolation: isolate; border-block: 1px solid var(--color-border); }
+.reading-table-scroll :is(table,.compare-table), .post-content .reading-table-scroll table { display: table; width: 100%; min-width: 100%; margin: 0; overflow: visible; border-collapse: separate; border-spacing: 0; font: 14px/1.65 var(--font-sans); }
+.reading-table-scroll :is(th,td), .post-content .reading-table-scroll :is(th,td) { min-width: 130px; padding: 12px 14px; vertical-align: top; text-align: left; border: 0; border-bottom: 1px solid var(--color-border); white-space: normal; color: var(--color-text); }
+.reading-table-scroll th, .post-content .reading-table-scroll th { font: 500 12px/1.6 var(--font-mono); color: var(--color-text-meta); background: var(--color-surface); letter-spacing: 0; }
+.reading-table--identified :is(td,th):first-child { position: sticky; left: 0; z-index: 1; min-width: 145px; max-width: 240px; background: var(--color-bg); }
+.reading-table--identified thead th:first-child { z-index: 2; background: var(--color-surface); }
+.reading-table--panned :is(td,th):first-child { box-shadow: 1px 0 var(--color-border), 8px 0 12px -10px var(--color-text); }
+.reading-table-scroll tr:last-child > :is(th,td) { border-bottom: 0; }
+.reading-table-scroll caption { text-align: left; padding: 12px 14px; color: var(--color-text-secondary); }
+.post-content :is(h2,h3), .article-snapshot :is(h2,h3) { scroll-margin-top: 32px; }
+@media (min-width: 1400px) { .layout-post .reading-contents--inline, .layout-immersive .reading-contents--inline { display: none; } }
+@media (max-width: 1399px) { .reading-contents--rail { display: none; } }
+@media (max-width: 600px) {
+  .reading-table-scroll :is(th,td), .post-content .reading-table-scroll :is(th,td) { min-width: 135px; padding: 10px 12px; }
+  .reading-table--identified :is(td,th):first-child { min-width: 130px; max-width: 160px; }
+}
+@media print { .reading-contents { display: none !important; } .reading-table-cue { display: none; } .reading-table-scroll { overflow: visible; } .reading-table-scroll table { min-width: 0; } .reading-table--identified :is(td,th):first-child { position: static; } }

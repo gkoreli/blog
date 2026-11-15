@@ -1,5 +1,8 @@
 import { consistentArticleReach, type ArticleReachReport } from '@gkoreli/analytics/article-reach-contract';
 import { addCalendarDays, calendarDaysBetween, timePresentation } from '@gkoreli/time';
+import { metricTileHtml } from '../lib/data-display.js';
+import { tableRegionHtml } from '../lib/reading-display.js';
+import { enhanceReadingTables } from './reading.js';
 import '../styles/article-reach.css';
 
 function element(id: string): HTMLElement {
@@ -9,6 +12,11 @@ function element(id: string): HTMLElement {
 }
 const number = (value: number) => value.toLocaleString();
 const reportTime = timePresentation();
+let disposeTables: () => void = () => {};
+function refreshTables(): void { disposeTables(); disposeTables = enhanceReadingTables(element('reach-report')); }
+function showTable(id: string, table: HTMLTableElement): void {
+  element(id).innerHTML = tableRegionHtml(table.caption?.textContent ?? 'Report comparison', table.outerHTML);
+}
 const percent = (part: number, whole: number) => whole === 0 ? '0%' : (part / whole * 100).toFixed(1) + '%';
 function table(headers: string[], caption: string): { table: HTMLTableElement; body: HTMLTableSectionElement } {
   const table = document.createElement('table'), title = table.createCaption(), head = table.createTHead().insertRow(), body = table.createTBody();
@@ -20,13 +28,14 @@ function cell(row: HTMLTableRowElement, value: number | string): HTMLTableCellEl
   const td = row.insertCell(); td.textContent = typeof value === 'number' ? number(value) : value; return td;
 }
 function overview(data: ArticleReachReport): void {
-  const cards = element('reach-overview'); cards.replaceChildren();
   const metrics = data.articleTotals;
-  for (const [label, value] of [['Article events', metrics.views], ['Reported external', metrics.externalViews], ['Within this blog', metrics.internalViews], ['No referrer', metrics.unattributedViews], ['Unknown source evidence', metrics.unknownSourceViews]]) {
-    const card = document.createElement('div'), count = document.createElement('div'), name = document.createElement('div');
-    card.className = 'stats-card'; count.className = 'stats-card-value'; name.className = 'stats-card-label';
-    count.textContent = typeof value === 'number' ? number(value) : String(value); name.textContent = String(label); card.append(count, name); cards.append(card);
-  }
+  element('reach-overview').innerHTML = [
+    { label: 'Article events', value: metrics.views, detail: 'All recorded article requests in this category' },
+    { label: 'Reported external', value: metrics.externalViews, detail: 'A referring site was reported' },
+    { label: 'Within this blog', value: metrics.internalViews, detail: 'A recognized internal page was reported' },
+    { label: 'No referrer', value: metrics.unattributedViews, detail: 'Origin was not supplied' },
+    { label: 'Unknown source evidence', value: metrics.unknownSourceViews, detail: 'Unusable, inconsistent or earlier merged evidence' },
+  ].map(metric => metricTileHtml({ ...metric, value: number(metric.value) })).join('');
 }
 function articles(data: ArticleReachReport): void {
   const sort = element('reach-sort');
@@ -49,7 +58,7 @@ function articles(data: ArticleReachReport): void {
     title.append(concentration);
     for (const value of [m.externalViews, m.internalViews, m.unattributedViews, m.unknownSourceViews]) cell(row, value);
   }
-  element('reach-articles').replaceChildren(result);
+  showTable('reach-articles', result);
 }
 function history(data: ArticleReachReport): void {
   const select = element('reach-history-scope');
@@ -74,7 +83,7 @@ function history(data: ArticleReachReport): void {
     label.append(delivery); row.append(label);
     for (const count of [...profile.weeks, profile.views, profile.unrecognizedTimeViews]) cell(row, count);
   }
-  element('reach-history').replaceChildren(result);
+  showTable('reach-history', result);
 }
 function render(data: ArticleReachReport): void {
   element('reach-period').textContent = `${reportTime.dateRange(data.period.startInclusive, addCalendarDays(data.period.endExclusive, -1))} · ${reportTime.timeZone} · Updated ${reportTime.instant(data.period.updatedAt)}`;
@@ -88,7 +97,7 @@ function render(data: ArticleReachReport): void {
     const row = body.insertRow(), label = document.createElement('th'); label.scope = 'row'; label.textContent = reportTime.dateRange(week.startInclusive, addCalendarDays(week.endExclusive, -1)); row.append(label);
     for (const value of [week.site.views, week.site.views - week.site.largestSourceViews, week.articles.views, week.articles.views - week.articles.largestSourceViews]) cell(row, value);
   }
-  element('reach-weeks').replaceChildren(weekly);
+  showTable('reach-weeks', weekly);
   element('reach-profiles').textContent = `${number(data.classification.recordedProfiles)} distinct stored classifier identifiers; ${number(data.classification.unversionedViews)} site events lack a classifier stamp. ${number(data.site.unrecognizedTimeViews)} events have unrecognized timestamps and are outside the weekly rows, while remaining in the totals.`;
   const scope = element('reach-history-scope');
   if (!(scope instanceof HTMLSelectElement)) throw new Error('Missing history selection');
@@ -101,10 +110,11 @@ function render(data: ArticleReachReport): void {
   element('reach-policy').textContent = `Owner-marked observations are excluded. Referral policy ${data.referralPolicy.version} excludes ${number(data.referralPolicy.excludedViews)} additional Browser-signal observations in this window. The largest-source comparison does not change that policy or stored records.`;
   element('reach-status').textContent = data.site.views === 0 ? 'No stored Browser signals in this completed window.' : 'Report ready.';
   element('reach-report').hidden = false; element('reach-report').setAttribute('aria-busy', 'false');
+  refreshTables();
 }
 let current: ArticleReachReport | null = null;
-element('reach-sort').addEventListener('change', () => { if (current) articles(current); });
-element('reach-history-scope').addEventListener('change', () => { if (current) history(current); });
+element('reach-sort').addEventListener('change', () => { if (current) { articles(current); refreshTables(); } });
+element('reach-history-scope').addEventListener('change', () => { if (current) { history(current); refreshTables(); } });
 async function load(): Promise<void> {
   element('reach-status').textContent = 'Loading the report…'; element('reach-report').hidden = true;
   try {

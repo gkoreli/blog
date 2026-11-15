@@ -12,7 +12,7 @@ nisli-insight .insight-label {
   font-size: var(--text-2xs);
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--color-accent-rust);
+  color: var(--color-ink-rust);
   margin-bottom: 0.5rem;
 }
 nisli-insight p { margin: 0; font-size: var(--text-base); color: var(--color-text); }

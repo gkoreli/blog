@@ -12,7 +12,7 @@ export function PageHero({
   accentColor,
   stats = [],
 }: {
-  kicker: string;
+  kicker?: string;
   title: string;
   description: string;
   accentColor: string;
@@ -20,7 +20,7 @@ export function PageHero({
 }) {
   return html`<div class="page-hero">
   <div class="page-hero-accent-rule" style="background:${accentColor}"></div>
-  <div class="page-hero-kicker" style="color:${accentColor}">${kicker}</div>
+  ${kicker ? html`<div class="page-hero-kicker" style="color:${accentColor}">${kicker}</div>` : ''}
   <h1 class="page-hero-title">${title}</h1>
   <p class="page-hero-desc">${description}</p>
   ${stats.length > 0 ? html`<div class="page-hero-stats">

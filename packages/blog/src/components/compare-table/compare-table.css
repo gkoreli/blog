@@ -39,7 +39,7 @@
 .compare-table td:first-child {
   font-family: var(--font-mono);
   font-size: var(--text-xs);
-  color: var(--color-accent-warm);
+  color: var(--color-ink-warm);
   font-weight: 500;
   white-space: nowrap;
 }

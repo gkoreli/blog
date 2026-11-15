@@ -78,11 +78,11 @@
   font-weight: 300;
 }
 .mx-quad.q1 { border-top: 2px solid var(--color-accent-rust); }
-.mx-quad.q1 .mx-tag { color: var(--color-accent-rust); }
+.mx-quad.q1 .mx-tag { color: var(--color-ink-rust); }
 .mx-quad.q2 { border-top: 2px solid var(--color-link); }
 .mx-quad.q2 .mx-tag { color: var(--color-link); }
 .mx-quad.q3 { border-top: 2px solid var(--color-accent-warm); }
-.mx-quad.q3 .mx-tag { color: var(--color-accent-warm); }
+.mx-quad.q3 .mx-tag { color: var(--color-ink-warm); }
 .mx-quad.q4 { border-top: 2px solid var(--color-text-muted); }
 .mx-quad.q4 .mx-tag { color: var(--color-text-muted); }
 

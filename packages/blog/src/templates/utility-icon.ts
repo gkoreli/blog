@@ -1,6 +1,6 @@
 import { html } from '@nisli/core';
 
-export const utilityIconNames = ['menu', 'close', 'sun', 'moon', 'clock', 'mail', 'pen', 'posts', 'desktop', 'tablet', 'phone', 'search'] as const;
+export const utilityIconNames = ['menu', 'close', 'sun', 'moon', 'clock', 'mail', 'pen', 'posts', 'desktop', 'tablet', 'phone', 'search', 'github', 'x', 'linkedin'] as const;
 export type UtilityIconName = typeof utilityIconNames[number];
 
 export function utilityIconStyle(name: UtilityIconName): string {

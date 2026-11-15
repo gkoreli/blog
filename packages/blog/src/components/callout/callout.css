@@ -12,7 +12,7 @@ nisli-callout .callout-label {
   font-size: var(--text-2xs);
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--color-accent-warm);
+  color: var(--color-ink-warm);
   margin-bottom: 0.5rem;
   display: block;
 }

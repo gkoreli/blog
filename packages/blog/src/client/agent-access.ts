@@ -4,6 +4,8 @@ import {
 } from '@gkoreli/analytics/agent-access-contract';
 import { ALL_AGENT_ACCESS, exploreAgentAccess } from '@gkoreli/analytics/agent-access-explorer';
 import { agentAccessViewHtml, agentAccessSelectionLabel, agentClientLabel } from '../lib/agent-access-view.js';
+import { enhanceReadingTables } from './reading.js';
+import { initSectionNavigation } from './section-navigation.js';
 
 class AgentAccessReportElement extends HTMLElement {
   private report: AgentAccessReport | null = null;
@@ -11,6 +13,7 @@ class AgentAccessReportElement extends HTMLElement {
   private controller: AbortController | undefined;
   private generation = 0;
   private initialized = false;
+  private disposePresentation: () => void = () => {};
 
   connectedCallback(): void {
     if (!this.initialized) {
@@ -21,7 +24,7 @@ class AgentAccessReportElement extends HTMLElement {
     }
     if (this.report) this.render(); else void this.load();
   }
-  disconnectedCallback(): void { this.generation++; this.controller?.abort(); }
+  disconnectedCallback(): void { this.generation++; this.controller?.abort(); this.disposePresentation(); }
 
   private status(message: string, state: 'loading' | 'ready' | 'error'): void {
     const target = this.querySelector<HTMLElement>('[data-agent-status]');
@@ -31,6 +34,8 @@ class AgentAccessReportElement extends HTMLElement {
     if (controls) controls.disabled = state !== 'ready';
     const retry = this.querySelector<HTMLButtonElement>('[data-agent-retry]');
     if (retry) retry.hidden = state !== 'error';
+    const navigation = this.querySelector<HTMLElement>('[data-section-navigation]');
+    if (navigation) navigation.hidden = state !== 'ready';
   }
   private async load(restoreFocus = false): Promise<void> {
     const generation = ++this.generation;
@@ -63,8 +68,11 @@ class AgentAccessReportElement extends HTMLElement {
     if (!this.report) return;
     const view = exploreAgentAccess(this.report, this.selection), html = agentAccessViewHtml(view);
     const overview = this.querySelector<HTMLElement>('[data-agent-overview]'), details = this.querySelector<HTMLElement>('[data-agent-results]');
+    this.disposePresentation();
     if (overview) overview.innerHTML = html.overview;
     if (details) details.innerHTML = html.details;
+    const tables = enhanceReadingTables(this), navigation = initSectionNavigation(this);
+    this.disposePresentation = () => { tables(); navigation(); };
     const articles = this.querySelector<HTMLSelectElement>('[data-agent-article-select]');
     if (articles) {
       articles.replaceChildren(new Option(`All articles and site resources — ${view.choices.allResources.views.toLocaleString()}`, ''));

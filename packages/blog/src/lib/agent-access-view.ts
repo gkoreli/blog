@@ -7,6 +7,7 @@ import { SIGNATURE_BASIS_LABELS } from '@gkoreli/analytics/signature-basis';
 import { dataFactsHtml, groupedEvidenceTableHtml, metricTileHtml } from './data-display.js';
 import { addCalendarDays, timePresentation } from '@gkoreli/time';
 import { localTimeHtml } from './local-time.js';
+import { tableRegionHtml } from './reading-display.js';
 
 const number = (value: number) => value.toLocaleString('en-US');
 const ENTITIES: Readonly<Record<string, string>> = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' };
@@ -16,7 +17,7 @@ export function agentClientLabel(client: AgentAccessClient): string {
 }
 const FORMAT_LABELS: Record<AgentAccessFormat, string> = { html: 'HTML', markdown: 'Markdown', 'not-recorded': 'Format not recorded', unrecognized: 'Unrecognized format' };
 function table(label: string, headings: string[], rows: string): string {
-  return `<div class="agent-access-table" role="region" aria-label="${escape(label)}; scroll horizontally if needed" tabindex="0"><table><caption>${escape(label)}</caption><thead><tr>${headings.map(heading => `<th scope="col">${escape(heading)}</th>`).join('')}</tr></thead><tbody>${rows}</tbody></table></div>`;
+  return `<div class="agent-access-table">${tableRegionHtml(label, `<table><caption>${escape(label)}</caption><thead><tr>${headings.map(heading => `<th scope="col">${escape(heading)}</th>`).join('')}</tr></thead><tbody>${rows}</tbody></table>`, !rows.includes('colspan='))}</div>`;
 }
 function metricsRow(label: string, metrics: AgentAccessMetrics, control = escape(label)): string {
   return `<tr><th scope="row">${control}</th><td>${number(metrics.views)}</td><td>${number(accessDayCount(metrics.dayMask))}</td></tr>`;
@@ -55,7 +56,6 @@ export function agentAccessViewHtml(view: AgentAccessExploration, time = timePre
   const historyRows = view.measurements.map(row => `<tr><td class="agent-access-version">${escape(row.collection ?? 'not-recorded')}</td><td class="agent-access-version">${escape(row.classifier ?? 'not-recorded')}</td><td>${escape(row.source)}</td><td>${escape(FORMAT_LABELS[row.format])}</td><td>${number(row.views)}</td></tr>`).join('');
   const evidenceRows = view.coverage.evidence.map(row => `<tr><th scope="row"><a href="${escape(row.resource.path)}">${escape(row.resource.title)}</a></th><td>${row.resource.collection === 'not-collected' && row.metrics.views === 0 ? 'Not collected by the page counter' : number(row.metrics.views)}</td><td>${row.resource.collection === 'page' ? 'Page access' : 'Outside current page collection'}</td></tr>`).join('');
   const details = `${view.metrics.views === 0 ? '<p class="agent-access-empty">No retained events match this selection. This does not establish zero demand or complete collection.</p>' : ''}
-    <nav class="agent-access-index" aria-label="Agent access sections"><a href="#agent-access-weeks">Weekly activity</a><a href="#agent-access-articles">Articles</a><a href="#agent-access-clients">Clients</a><a href="#agent-access-coverage">Coverage</a><a href="#agent-access-evidence">Evidence</a><a href="#agent-access-history">Measurement history</a></nav>
     <section class="stats-section" id="agent-access-weeks"><h3>Four completed weeks</h3>${table('Selected page events by completed UTC week', ['UTC dates', 'Page events', 'Change from preceding week'], weeks)}
       <p class="agent-access-note">Changes describe recorded access. Check measurement profiles before interpreting a trend.${view.metrics.unrecognizedTimeViews > 0 ? ` ${number(view.metrics.unrecognizedTimeViews)} ${view.metrics.unrecognizedTimeViews === 1 ? 'event has an unrecognized time' : 'events have unrecognized times'} and ${view.metrics.unrecognizedTimeViews === 1 ? 'is' : 'are'} retained outside these weekly rows.` : ''}</p></section>
     <div class="stats-panel-grid"><section class="stats-section"><h3>Declared roles</h3>${table('Disjoint roles in this selection', ['Stored role', 'Page events', 'Active UTC days'], roleRows)}</section>

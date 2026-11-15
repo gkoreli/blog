@@ -49,7 +49,7 @@
 .report-check-title strong { font: 500 14px/1.6 var(--font-sans); }
 .report-check-state { display: inline-flex; align-items: center; gap: 5px; font: 10px/1.6 var(--font-mono); color: var(--color-link); white-space: nowrap; }
 .report-check-state::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: currentColor; flex: none; }
-.access-check-row[data-state="fail"] .report-check-state { color: var(--color-accent-rust); }
+.access-check-row[data-state="fail"] .report-check-state { color: var(--color-ink-rust); }
 .access-check-row[data-state="unknown"] .report-check-state { color: var(--tool-muted); }
 .access-check-row[data-state="unknown"] .report-check-state::before { border: 1px solid currentColor; background: transparent; }
 .report-check-group .access-check-row p { font: 13px/1.7 var(--font-sans); margin-top: 5px; }

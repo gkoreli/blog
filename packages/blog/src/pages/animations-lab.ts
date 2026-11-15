@@ -1,4 +1,5 @@
 import { html } from '@nisli/core';
+import { sectionNavigation } from '../templates/section-navigation.js';
 
 interface LabExperiment {
   readonly id: string;
@@ -250,13 +251,8 @@ export function animationsLabPage() {
         </div>
         <div class="al-live">Live Experiments</div>
       </div>
-      <p>Motion studies for the publication runtime. Each experiment gets its own stage, its own thesis, and enough room to be judged as an authored visual object.</p>
-      <div class="al-header-meta">
-        <a href="#ambient-drift">01 Ambient Drift</a>
-        <a href="#memory-zone">02 Memory Zone</a>
-        <a href="#text-emergence">03 Text Emergence</a>
-        <a href="#fracture-pulse">04 Fracture Pulse</a>
-      </div>
+      <p>Motion studies from the publication. Adjust a scene, inspect its behavior and read the design notes.</p>
+      ${sectionNavigation('Experiments', EXPERIMENTS.map(experiment => ({ href: `#${experiment.id}`, label: `${experiment.number} ${experiment.title}` })), { className: 'al-header-meta' })}
     </header>
 
     <div class="al-scroll-stack">

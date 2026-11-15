@@ -1,6 +1,7 @@
 import { html } from '@nisli/core';
 import type { PostMeta } from '../../lib/frontmatter.js';
 import { formatDateShort } from '../../lib/dates.js';
+import { topicLinks } from '../../templates/archive-discovery.js';
 
 function extractIssueNumber(slug: string): string {
   const m = slug.match(/oss-radar-(\d+)/);
@@ -9,18 +10,16 @@ function extractIssueNumber(slug: string): string {
 
 export function OSSRadarCard({ post }: { post: PostMeta }) {
   const issueNum = extractIssueNumber(post.slug);
-  return html`<a href="/${post.slug}" class="rdr">
+  return html`<article class="rdr"><a href="/${post.slug}" class="rdr-main">
   <div class="rdr-head">
     ${issueNum ? html`<span class="rdr-num">Issue ${issueNum}</span>` : ''}
   </div>
   <div class="rdr-body">
-    <div class="rdr-title">${post.title.replace(/^OSS Radar \S+\s*[—–-]\s*/i, '')}</div>
+    <h2 class="rdr-title">${post.title.replace(/^OSS Radar \S+\s*[—–-]\s*/i, '')}</h2>
     <p class="rdr-desc">${post.description}</p>
     <div class="rdr-footer">
       <span class="rdr-date">${formatDateShort(post.date)}</span>
-      <span class="rdr-link">Read issue →</span>
     </div>
-    ${post.tags.length > 0 ? html`<div class="rdr-tags">${post.tags.map(t => html`<span class="rdr-tag">${t}</span>`)}</div>` : ''}
   </div>
-</a>`;
+</a>${post.tags.length > 0 ? topicLinks(post.tags, post.section, 'rdr-tags') : ''}</article>`;
 }

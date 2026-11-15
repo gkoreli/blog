@@ -901,21 +901,3 @@ new ResizeObserver(() => {
 }).observe(element('stats-chart'));
 
 void load(currentState);
-
-const chapterLinks = Array.from(document.querySelectorAll<HTMLAnchorElement>('.stats-navigation a'));
-const chapters = chapterLinks.flatMap(link => {
-  const target = document.getElementById(link.hash.slice(1)); return target ? [{ link, target }] : [];
-});
-let chapterFrame = 0;
-function updateChapter(): void {
-  chapterFrame = 0;
-  const boundary = (document.querySelector('.stats-navigation')?.getBoundingClientRect().height ?? 60) + 48;
-  let active = chapters[0];
-  for (const chapter of chapters) if (chapter.target.getClientRects().length > 0 && chapter.target.getBoundingClientRect().top <= boundary) active = chapter;
-  for (const chapter of chapters) {
-    if (chapter === active) chapter.link.setAttribute('aria-current', 'location');
-    else chapter.link.removeAttribute('aria-current');
-  }
-}
-window.addEventListener('scroll', () => { if (!chapterFrame) chapterFrame = requestAnimationFrame(updateChapter); }, { passive: true });
-updateChapter();

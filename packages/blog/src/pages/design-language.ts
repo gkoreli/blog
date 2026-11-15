@@ -7,11 +7,16 @@ import { homeToolsInvitation } from './home-tools-invitation.js';
 import { navigationChoices } from '../templates/navigation-choice.js';
 import { toolCatalogue } from './tool-catalogue.js';
 import { utilityIcon, utilityIconNames, type UtilityIconName } from '../templates/utility-icon.js';
+import { projectCatalogue } from './project-catalogue.js';
+import { sectionNavigation } from '../templates/section-navigation.js';
+import { reportContextHeading } from '../templates/report-context.js';
+import { readingContentsHtml, tableRegionHtml } from '../lib/reading-display.js';
 
 const ICON_LABELS: Record<UtilityIconName, string> = {
   menu: 'Menu', close: 'Close', sun: 'Light appearance', moon: 'Dark appearance',
   clock: 'Time', mail: 'Mail', pen: 'Edit', posts: 'Document',
   desktop: 'Desktop', tablet: 'Tablet', phone: 'Phone', search: 'Search',
+  github: 'GitHub', x: 'X', linkedin: 'LinkedIn',
 };
 
 const PALETTE = [
@@ -21,7 +26,10 @@ const PALETTE = [
   { name: 'Warm Gold',    token: '--color-accent-warm',   light: '#a88a2a', dark: '#e8c87a',  role: 'Essays — attention, warmth' },
   { name: 'Rust',         token: '--color-accent-rust',   light: '#b04a24', dark: '#c05a2e',  role: 'OSS Radar — urgency, signal' },
   { name: 'Blueprint',    token: '--color-accent-blue',   light: '#4a7a94', dark: '#5b8fa8',  role: 'Engineering — clarity, depth' },
-  { name: 'Muted',        token: '--color-text-muted',    light: '#7a7568', dark: '#9a9589',  role: 'Secondary text, metadata' },
+  { name: 'Secondary ink', token: '--color-text-secondary', light: '#625d53', dark: '#aaa496', role: 'Readable secondary text on paper and both neutral surfaces' },
+  { name: 'Gold ink', token: '--color-ink-warm', light: '#78601a', dark: '#e8c87a', role: 'Essays text; decorative gold is a separate role' },
+  { name: 'Rust ink', token: '--color-ink-rust', light: '#963e20', dark: '#e09270', role: 'OSS Radar text and status explanations' },
+  { name: 'Blueprint ink', token: '--color-ink-blue', light: '#38647a', dark: '#85b2c9', role: 'Engineering text; works on the neutral surfaces' },
 ];
 
 const TYPE_SAMPLES = [
@@ -85,6 +93,7 @@ export function designLanguagePage() {
       <div class="dl-swatch-role">${sw.role}</div>
     </div>`)}
   </div>
+  <p class="dl-body-note">Text colors are tested against paper and both neutral surfaces. Keep metadata opaque; quiet hierarchy comes from scale and spacing. Decorative accents, glass washes and the identity gradient have separate roles and should not become small text colors.</p>
 
   ${GradSep()}
 
@@ -134,6 +143,12 @@ export function designLanguagePage() {
   <h3 class="dl-pattern-title">Illustrated rows</h3>
   <p class="dl-body-note">Use an open list for supporting destinations or longer collections. Keep the same type, drawings and native link behavior, with quiet horizontal divisions.</p>
   ${navigationChoices(toolCatalogue.slice(2), { label: 'Illustrated row examples', idPrefix: 'dl-row', layout: 'rows', headingLevel: 3 })}
+  <h3 class="dl-pattern-title">Project identities</h3>
+  <p class="dl-body-note">Keep the same open row and complete link target while drawing from the work itself. Code structure, memory and reactive state need distinct illustrations. These are the actual project descriptions and drawings used on About.</p>
+  ${navigationChoices(projectCatalogue().slice(0, 3), { label: 'Project row examples', idPrefix: 'dl-project', layout: 'rows', headingLevel: 3 })}
+  <h3 class="dl-pattern-title">Section navigation</h3>
+  <p class="dl-body-note">Keep native links, full labels and 44px targets. A narrow strip scrolls rather than squeezing text or stranding one option on a second line. Current location and keyboard focus remain visible.</p>
+  ${sectionNavigation('Example section navigation', [{ href: '#navigation-patterns', label: 'Navigation' }, { href: '#data-patterns', label: 'Reports' }, { href: '#reading-patterns', label: 'Reading' }, { href: '#iconography', label: 'Iconography' }], { currentHref: '#navigation-patterns' })}
   <h3 class="dl-pattern-title">Illustrated invitation</h3>
   <p class="dl-body-note">Bring one relevant destination into the writing with a compact illustration and a restrained tint. The whole surface responds, including the artwork and padding. Keep forms and secondary controls in their own region.</p>
   ${homeToolsInvitation('dl-tools-invitation-heading')}
@@ -147,14 +162,26 @@ export function designLanguagePage() {
     ] }))}></div>`}
   </div>
   <section id="data-patterns">
+  <h3 class="dl-pattern-title">A report owns its scope</h3>
+  <p class="dl-body-note">Calendar, window and selection ownership belong beside each report's controls. Independent reports stay visibly bounded. Localizing an instant does not change the calendar used to aggregate its data. This scope is illustrative.</p>
+  ${reportContextHeading({ id: 'dl-scope-heading', title: 'Example access report', description: 'A separate report with its own selections and explicit completed-day calendar.', scope: [{ label: 'Window', value: '28 completed days' }, { label: 'Calendar', value: 'UTC reporting days' }, { label: 'Controls in this report', value: 'Article, client and role' }] })}
   <h3 class="dl-pattern-title" id="report-filters">Visible report filters</h3>
   <p class="dl-body-note">Keep a short set of choices visible. Use native radio groups, a quiet selected surface and 44px hit areas around compact labels. Traffic and period stay independent. Agents includes assistants and signed clients; Automation includes legacy rules. The full category names and evidence boundaries belong with the report results. These controls illustrate selection without fetching data.</p>
   ${reportFilters('dl-example')}
   <h3 class="dl-pattern-title">Metrics with a definition</h3>
-  <p class="dl-body-note">Keep the label, number and unit definition together. Use two compact tiles for related totals, with tabular numerals and a short explanation. Show the selected scope and calculation time beside the report. Use one viewer timezone for dates, chart buckets and update times, backed by the same reporting calendar. These figures are illustrative.</p>
+  <p class="dl-body-note">Keep the label, number and unit definition together. Use compact tiles for related totals, with tabular numerals and a short explanation. Show scope and calculation time beside the report. Within one reporting context, dates and buckets use its stated calendar; instant labels use the shared time core. These figures are illustrative.</p>
   <div class="data-metrics" html:inner=${raw([
     metricTileHtml({ label: 'Page views', value: '1,248', detail: 'Recorded page requests' }),
     metricTileHtml({ label: 'Client identifiers', value: '862', detail: 'Rotating identifiers, not people' }),
+  ].join(''))}></div>
+  <h3 class="dl-pattern-title">A total and its source categories</h3>
+  <p class="dl-body-note">Article reach uses the same metric tiles in a responsive summary. Keep the total first and retain every source category and definition. These example categories add up to the total.</p>
+  <div class="data-metrics data-metrics--summary" html:inner=${raw([
+    metricTileHtml({ label: 'Article events', value: '1,248', detail: 'All recorded article requests in this example' }),
+    metricTileHtml({ label: 'Reported external', value: '600', detail: 'A referring site was reported' }),
+    metricTileHtml({ label: 'Within this blog', value: '320', detail: 'A recognized internal page was reported' }),
+    metricTileHtml({ label: 'No referrer', value: '280', detail: 'Origin was not supplied' }),
+    metricTileHtml({ label: 'Unknown source evidence', value: '48', detail: 'Unusable, inconsistent or earlier merged evidence' }),
   ].join(''))}></div>
   <h3 class="dl-pattern-title">Comparison rows</h3>
   <p class="dl-body-note">Keep the title and path clear of chart marks. Print the count above a small meter in a fixed value column. The title filters the report; the separate Visit control opens the page. Both actions keep 44px targets. Titles gain an underline on hover or focus. These values are illustrative.</p>
@@ -180,6 +207,15 @@ export function designLanguagePage() {
     { group: 'AI assistants', cells: ['Local result not verified', 'Historical example profile'], views: 0 },
   ]))}></div>
   </section>
+  </section>
+
+  <section id="reading-patterns">
+  <h3 class="dl-pattern-title">Navigation for detailed reading</h3>
+  <p class="dl-body-note">Long articles expose their actual sections through native contents links. A wide reading rail marks location; the phone version uses the same outline in a compact disclosure. Source paragraphs stay visible and existing section links remain stable.</p>
+  <div html:inner=${raw(readingContentsHtml([{ id: 'navigation-patterns', title: 'Navigation patterns', level: 2 }, { id: 'data-patterns', title: 'Report patterns', level: 2 }, { id: 'reading-patterns', title: 'Reading patterns', level: 2 }, { id: 'iconography', title: 'Iconography', level: 2 }], 'inline'))}></div>
+  <h3 class="dl-pattern-title">Complete comparisons on phones</h3>
+  <p class="dl-body-note">The shared table frame owns keyboard scrolling, an overflow cue and a retained identity column for ordinary rectangular tables. Merged relationships keep their full table structure. These values are illustrative.</p>
+  <div html:inner=${raw(tableRegionHtml('Illustrative request comparison', '<table><thead><tr><th>Recorded path</th><th>Declaration</th><th>Network evidence</th><th>Signature</th><th>Stored result</th></tr></thead><tbody><tr><th scope="row">Example browser request</th><td>Browser claim</td><td>Not assessed</td><td>No signature</td><td>Unresolved</td></tr><tr><th scope="row">Example signed request</th><td>Client declaration</td><td>Listed range</td><td>Host only</td><td>Evidence retained</td></tr></tbody></table>'))}></div>
   </section>
 
   ${GradSep()}

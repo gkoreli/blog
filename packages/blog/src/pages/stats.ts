@@ -2,6 +2,8 @@ import { html, raw } from '@nisli/core';
 import { metricTileHtml } from '../lib/data-display.js';
 import { dataNote } from '../templates/data-note.js';
 import { reportFilters } from '../templates/report-filters.js';
+import { sectionNavigation } from '../templates/section-navigation.js';
+import { reportContextHeading } from '../templates/report-context.js';
 
 export const statsHead = `<link rel="stylesheet" href="/stats.css">
   <script type="module" src="/stats.js"></script>`;
@@ -21,11 +23,11 @@ export function statsPage(pages: readonly { path: string; title: string }[] = []
     <div><h1>Stats</h1><p class="stats-intro">Agent access, traffic and the evidence behind each request.</p></div>
     <nav class="stats-header-links" aria-label="Related reports"><a href="/stats/readership">Article reach</a><a id="stats-json-link" href="/api/stats?range=30d&amp;traffic=all">Report JSON</a></nav>
   </header>
-  <nav class="stats-navigation" aria-label="Stats sections"><a href="#stats-agent-access" aria-current="location">Agent access</a><a href="#stats-activity">Overview</a><a href="#stats-content">Pages</a><a href="#stats-audience">Traffic</a><a href="#stats-evidence">Evidence</a><a href="#stats-methodology">Method</a></nav>
-  <agent-access-report class="stats-chapter agent-access-report" id="stats-agent-access" aria-labelledby="agent-access-heading">
-    <header class="data-section-heading"><div><h2 id="agent-access-heading">Agent access</h2><p>Which work AI fetchers, search clients, crawlers and historical signed clients access, in which served format.</p></div></header>
-    <p class="agent-access-note">28 completed UTC days of declared AI and historical signed-client access. The page-request report below has its own period and filters.</p>
-    <div data-agent-overview></div>
+  ${sectionNavigation('Report views', [{ href: '#stats-agent-access', label: 'Agent access' }, { href: '#stats-page-requests', label: 'Page requests' }], { className: 'report-view-navigation' })}
+  <agent-access-report class="report-context agent-access-report" id="stats-agent-access" aria-labelledby="agent-access-heading">
+    ${reportContextHeading({ id: 'agent-access-heading', title: 'Agent access', description: 'Which work AI fetchers, search clients, crawlers and historical signed clients access, in which served format. Names and roles describe stored request evidence.', scope: [{ label: 'Window', value: '28 completed days' }, { label: 'Calendar', value: 'UTC reporting days' }, { label: 'Controls in this report', value: 'Article, client and role' }] })}
+    ${sectionNavigation('Agent access sections', [{ href: '#agent-access-summary', label: 'Overview' }, { href: '#agent-access-weeks', label: 'Weekly activity' }, { href: '#agent-access-articles', label: 'Articles' }, { href: '#agent-access-clients', label: 'Clients' }, { href: '#agent-access-coverage', label: 'Coverage' }, { href: '#agent-access-evidence', label: 'Evidence' }, { href: '#agent-access-history', label: 'History' }], { className: 'agent-access-navigation', currentHref: '#agent-access-summary', hidden: true })}
+    <div data-agent-overview id="agent-access-summary"></div>
     <form class="agent-access-form"><fieldset data-agent-controls disabled><legend>Select agent access</legend><div class="agent-access-selects">
       <label>Article and registered evidence<select data-agent-article-select name="agent-article"><option value="">All articles and site resources</option></select></label>
       <label>Client declaration<select data-agent-client-select name="agent-client"><option value="">All client declarations</option></select></label>
@@ -39,7 +41,9 @@ export function statsPage(pages: readonly { path: string; title: string }[] = []
     <p class="agent-access-note"><a href="/api/agent-access">Agent access JSON</a> · Current collection covers eligible served pages. Citation and answer-use observations are separate outcomes.</p>
     <noscript><p>Enable JavaScript to select articles and clients, or open the agent access JSON report.</p></noscript>
   </agent-access-report>
-  <h2 class="agent-access-requests-heading">Page requests</h2>
+  <section class="report-context" id="stats-page-requests" aria-labelledby="page-requests-heading">
+  ${reportContextHeading({ id: 'page-requests-heading', title: 'Page requests', description: 'Recorded page requests across the selected traffic categories. The filters in this report apply to its overview, rankings and evidence.', scope: [{ label: 'Window', value: 'Selected period' }, { label: 'Calendar', value: 'Your timezone' }, { label: 'Controls in this report', value: 'Traffic, period and page' }] })}
+  ${sectionNavigation('Page request sections', [{ href: '#stats-activity', label: 'Overview' }, { href: '#stats-content', label: 'Pages' }, { href: '#stats-audience', label: 'Traffic' }, { href: '#stats-evidence', label: 'Evidence' }, { href: '#stats-methodology', label: 'Method' }], { className: 'stats-navigation', currentHref: '#stats-activity' })}
   ${reportFilters('stats')}
   <p class="stats-status" id="stats-status" role="status" aria-atomic="true">Loading stats…</p>
   <div class="stats-loading" id="stats-loading" aria-hidden="true"><div class="stats-loading-metrics"><div class="skeleton"></div><div class="skeleton"></div></div><div class="skeleton stats-loading-chart"></div></div>
@@ -208,5 +212,5 @@ export function statsPage(pages: readonly { path: string; title: string }[] = []
     <section class="stats-method-topic" id="stats-method-verification"><h3>Signatures & provider evidence</h3><p>From October 27, 2026 UTC, new observations retain derived local signature coverage and any available native verified-bot/signed-agent booleans. Earlier rows have no such record. Unavailable native fields remain unknown, not false. A verified signature authenticates only covered components against a key. Host-only request binding means authority is covered without method, path, full URL or query coverage; other headers may still be covered. We enforce expiry and a maximum one-day signature lifetime, but do not keep a nonce replay database. A changed unsigned User-Agent can change a declared role without invalidating the signature. Neither local/native differences nor a successful signature establish authorization, benign intent, indexing, citation or human readership.</p><p>Later October 27 observations also retain Cloudflare’s category using a reviewed vocabulary. Empty, unavailable, unrecognized and earlier unrecorded values stay distinct. A category does not establish which native verification method ran. </p><p>The <a href="https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.bot_management.signed_agent/">native signed-agent boolean requires Enterprise Bot Management</a>; Workers Paid does not establish that entitlement.</p></section>
     <nav class="stats-method-references" aria-label="Measurement references"><a href="/privacy">Privacy details</a><a href="https://github.com/gkoreli/blog/blob/main/docs/adr/0016-analytics-observation-semantics.md">Engineering decision</a><a href="https://github.com/gkoreli/blog/blob/main/docs/adr/0016.2-browser-evidence-and-reader-tier.md">Browser evidence</a><a href="https://github.com/gkoreli/blog/blob/main/docs/adr/0016.3-audience-composition-and-citable-articles.md">Audience composition</a></nav>
   </aside>
-  </article>`;
+</section></article>`;
 }

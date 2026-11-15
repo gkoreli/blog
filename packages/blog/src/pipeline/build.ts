@@ -2,13 +2,15 @@ import { html, raw, type TemplateResult } from '@nisli/core';
 import type { ArticleDocument } from '@gkoreli/search';
 import { searchableArticle, writeSearchIndex } from './search-index.js';
 import { searchPage } from '../pages/search.js';
+import { assertUniqueElementIds, prepareReadingDocument } from '../lib/reading-document.js';
+import { readingRail } from '../lib/reading-display.js';
 import { cleanOutDir } from '@nisli/ssg';
 import { buildDocuments, renderContent, type PageDocument } from '../lib/ssg.js';
 import { parsePostModule } from '../lib/post-module.js';
 import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
 import { basename, join, relative } from 'node:path';
 import { build as esbuild } from 'esbuild';
-import { DIST, SRC, ESBUILD_ENTRIES, REPO_ROOT } from '../lib/paths.js';
+import { DIST, SRC, ESBUILD_ENTRIES } from '../lib/paths.js';
 import { discoverPosts, writeRoot, copyAssets } from '../lib/fs.js';
 import { initMarkdown, renderMarkdown } from '../lib/markdown.js';
 import { parsePost, validatePosts } from '../lib/frontmatter.js';
@@ -44,7 +46,6 @@ import { ossRadarPage } from '../pages/oss-radar.js';
 import { licensePage } from '../pages/license.js';
 import { cslJson, bibtex, citationMarkdown } from '../templates/citation.js';
 import { robotsTxt } from '../templates/robots.js';
-import { CONTENT_LICENSE } from '../lib/license.js';
 import { clientDefines } from './client-mode.js';
 
 export { DIST } from '../lib/paths.js';
@@ -53,16 +54,6 @@ const PUBLICATION_OG_IMAGE_ALT = 'gkoreli.com social card reading “Agentic Eng
 
 function postOgImageAlt(title: string): string {
   return `gkoreli.com social card reading “${title}” and “Where excitement ends, depth begins.”`;
-}
-
-function contentLicenseMarkdown(): string {
-  const repositoryLicense = readFileSync(join(REPO_ROOT, 'LICENSE'), 'utf-8');
-  const heading = `## Content (${CONTENT_LICENSE.name})`;
-  const start = repositoryLicense.indexOf(heading);
-  if (start < 0) throw new Error(`Repository LICENSE is missing the ${heading} section`);
-
-  // This section becomes a standalone page, so promote its heading without changing its text.
-  return repositoryLicense.slice(start).trim().replace(/^## /, '# ');
 }
 
 /** Step 1: Clean and prepare dist */
@@ -145,10 +136,11 @@ export async function buildHTML(): Promise<void> {
   const pages: { path: string; document: PageDocument }[] = [];
   const searchArticles: ArticleDocument[] = [];
   const searchCoverage: { id: string; indexedCharacters: number; ignoredCharacters: number; headings: number }[] = [];
-  function prepare(meta: Post['meta'], body: string): string {
-    const prepared = searchableArticle(meta, body);
+  function prepare(meta: Post['meta'], body: string) {
+    const reading = prepareReadingDocument(body);
+    const prepared = searchableArticle(meta, reading.html);
     searchArticles.push(prepared.article); searchCoverage.push({ id: meta.slug, ...prepared.coverage });
-    return prepared.html;
+    return { html: prepared.html, outline: reading.outline };
   }
   const addPage = (slug: string, document: PageDocument) => {
     pages.push({ path: slug === '/' ? '/' : `/${slug}`, document });
@@ -170,18 +162,16 @@ export async function buildHTML(): Promise<void> {
   // Load TypeScript posts via dynamic import
   const tsPosts: {
     post: Post;
-    article: () => TemplateResult;
     preamble?: () => TemplateResult;
     htmlContent: string;
   }[] = [];
   for (const f of tsFiles) {
     const candidate: unknown = await import(f);
     const mod = parsePostModule(candidate, f);
-    const [htmlContent] = await renderContent([mod.article()]);
+    const [htmlContent] = await renderContent([html`${mod.article()}${researchFootprint(mod.meta, mod.researchNotes?.())}`]);
     if (htmlContent === undefined) throw new Error(`No rendered content for ${f}`);
     tsPosts.push({
       post: { meta: mod.meta, content: '' },
-      article: mod.article,
       htmlContent,
       ...(mod.preamble && { preamble: mod.preamble }),
     });
@@ -230,10 +220,10 @@ export async function buildHTML(): Promise<void> {
     const post = mdPosts[i]!;
     const htmlContent = prepare(post.meta, await renderMarkdown(post.content));
     const ogImage = await generateOgImage(post.meta.title, post.meta.slug);
-    const body = postPage(post.meta, htmlContent, allPosts);
+    const body = postPage(post.meta, htmlContent.html, allPosts);
     const jsonLd = blogPostingJsonLd(post.meta, ogImage);
     const ogImageAlt = postOgImageAlt(post.meta.title);
-    const page = pageShell({ title: post.meta.title, description: post.meta.description, content: body, canonicalPath: `/${post.meta.slug}`, currentSlug: post.meta.slug, currentSection: post.meta.section, ogImage, ogImageAlt, head: jsonLd, layout: 'post', ogType: 'article', postSlug: post.meta.slug, ...(post.meta.seoTitle !== undefined && { seoTitle: post.meta.seoTitle }) });
+    const page = pageShell({ title: post.meta.title, description: post.meta.description, content: body, canonicalPath: `/${post.meta.slug}`, currentSlug: post.meta.slug, currentSection: post.meta.section, ogImage, ogImageAlt, head: jsonLd, layout: 'post', gutter: readingRail(htmlContent.outline), ogType: 'article', postSlug: post.meta.slug, ...(post.meta.seoTitle !== undefined && { seoTitle: post.meta.seoTitle }) });
     addPage(post.meta.slug, page);
     writeRoot(`${post.meta.slug}.md`, mdRawContents[i]! + seriesTrailMarkdown(post.meta, allPosts) + citationMarkdown(post.meta));
     writeRoot(`${post.meta.slug}.csl.json`, cslJson(post.meta));
@@ -249,10 +239,10 @@ export async function buildHTML(): Promise<void> {
     const trail = seriesTrailBlock(post.meta, allPosts);
     const afterword = postAfterword(post.meta, allPosts);
     const prepared = prepare(post.meta, htmlContent);
-    const content = html`<div class="article-snapshot" html:inner=${raw(prepared)}></div>${researchFootprint(post.meta)}${trail}${afterword}`;
+    const content = html`<div class="article-snapshot" html:inner=${raw(prepared.html)}></div>${trail}${afterword}`;
     const preamble = renderPreamble?.();
     const ogImageAlt = postOgImageAlt(post.meta.title);
-    const page = pageShell({ title: post.meta.title, description: post.meta.description, content, canonicalPath: `/${post.meta.slug}`, currentSlug: post.meta.slug, currentSection: post.meta.section, ogImage, ogImageAlt, head: jsonLd, layout: post.meta.layout, scripts, ...(preamble && { preamble }), ogType: 'article', postSlug: post.meta.slug, ...(post.meta.seoTitle !== undefined && { seoTitle: post.meta.seoTitle }) });
+    const page = pageShell({ title: post.meta.title, description: post.meta.description, content, canonicalPath: `/${post.meta.slug}`, currentSlug: post.meta.slug, currentSection: post.meta.section, ogImage, ogImageAlt, head: jsonLd, layout: post.meta.layout, gutter: readingRail(prepared.outline), scripts, ...(preamble && { preamble }), ogType: 'article', postSlug: post.meta.slug, ...(post.meta.seoTitle !== undefined && { seoTitle: post.meta.seoTitle }) });
     addPage(post.meta.slug, page);
     writeRoot(`${post.meta.slug}.md`, htmlToMarkdown(htmlContent, post.meta) + seriesTrailMarkdown(post.meta, allPosts) + citationMarkdown(post.meta));
     writeRoot(`${post.meta.slug}.csl.json`, cslJson(post.meta));
@@ -297,7 +287,7 @@ export async function buildHTML(): Promise<void> {
   const statsBody = statsPage(allPosts.map(post => ({ path: `/${post.slug}`, title: post.title })));
   const statsShell = pageShell({ title: 'Stats', description: 'Public analytics for gkoreli.com — transparent, cookieless', content: statsBody, canonicalPath: '/stats', currentSlug: 'stats', layout: 'report', ogImage: publicationOgImage, ogImageAlt: PUBLICATION_OG_IMAGE_ALT, head: statsHead, noindex: true });
   addPage('stats', statsShell);
-  addPage('stats/readership', pageShell({ title: 'Browser-signal article reach', description: 'Browser-signal article reach, completed weeks and reported source concentration.', content: articleReachPage(), canonicalPath: '/stats/readership', currentSlug: 'stats', noindex: true, ogImage: publicationOgImage, ogImageAlt: PUBLICATION_OG_IMAGE_ALT, head: '<link rel="stylesheet" href="/article-reach.css">', scripts: ['/article-reach.js'] }));
+  addPage('stats/readership', pageShell({ title: 'Browser-signal article reach', description: 'Browser-signal article reach, completed weeks and reported source concentration.', content: articleReachPage(), canonicalPath: '/stats/readership', currentSlug: 'stats', layout: 'report', noindex: true, ogImage: publicationOgImage, ogImageAlt: PUBLICATION_OG_IMAGE_ALT, head: '<link rel="stylesheet" href="/article-reach.css">', scripts: ['/article-reach.js'] }));
 
   addPage('tools', pageShell({ title: 'Engineering tools', description: 'Check page access, inspect request evidence, test robots rules and compare saved reports with free tools for people and agents.', content: toolsPage(), canonicalPath: '/tools', currentSlug: 'tools', ogImage: publicationOgImage, ogImageAlt: PUBLICATION_OG_IMAGE_ALT }));
   addPage('tools/request-inspector', pageShell({ title: 'Request inspector', description: 'Inspect the referrer, navigation context, client declarations and verification evidence of your incoming request.', content: requestInspectorPage(), canonicalPath: '/tools/request-inspector', currentSlug: 'tools', ogImage: publicationOgImage, ogImageAlt: PUBLICATION_OG_IMAGE_ALT, scripts: ['/request-inspector.js'] }));
@@ -307,12 +297,15 @@ export async function buildHTML(): Promise<void> {
 
   addPage('owner', pageShell({ title: 'Exclude my browser', description: 'Owner browser exclusion for analytics', content: ownerPage(), canonicalPath: '/owner', currentSlug: 'owner', ogImage: publicationOgImage, ogImageAlt: PUBLICATION_OG_IMAGE_ALT, noindex: true, scripts: ['/owner.js'] }));
 
-  const privacyBody = privacyPage();
-  const privacyShell = pageShell({ title: 'Privacy', description: 'Privacy policy for gkoreli.com — analytics, newsletter, and bot protection disclosure', content: privacyBody, canonicalPath: '/privacy', currentSlug: 'privacy', ogImage: publicationOgImage, ogImageAlt: PUBLICATION_OG_IMAGE_ALT });
+  const [privacyHtml] = await renderContent([privacyPage()]);
+  if (privacyHtml === undefined) throw new Error('Missing privacy document');
+  const privacy = prepareReadingDocument(privacyHtml);
+  const privacyBody = html`<div html:inner=${raw(privacy.html)}></div>`;
+  const privacyShell = pageShell({ title: 'Privacy', description: 'Privacy policy for gkoreli.com — analytics, newsletter, and bot protection disclosure', content: privacyBody, canonicalPath: '/privacy', currentSlug: 'privacy', layout: 'post', gutter: readingRail(privacy.outline), ogImage: publicationOgImage, ogImageAlt: PUBLICATION_OG_IMAGE_ALT });
   addPage('privacy', privacyShell);
 
-  const licenseBody = licensePage(await renderMarkdown(contentLicenseMarkdown()));
-  const licenseShell = pageShell({ title: 'Content License', description: 'The license for articles, essays, images, and prompts published on gkoreli.com.', content: licenseBody, canonicalPath: '/license', currentSlug: 'license', ogImage: publicationOgImage, ogImageAlt: PUBLICATION_OG_IMAGE_ALT });
+  const licenseBody = licensePage();
+  const licenseShell = pageShell({ title: 'Content License', description: 'The license and attribution terms for published articles, essays, images and code on gkoreli.com.', content: licenseBody, canonicalPath: '/license', currentSlug: 'license', ogImage: publicationOgImage, ogImageAlt: PUBLICATION_OG_IMAGE_ALT });
   addPage('license', licenseShell);
 
   const dlBody = designLanguagePage();
@@ -421,6 +414,8 @@ export function validateHtmlOutput(): void {
   const problems: string[] = [];
 
   for (const page of pages) {
+    try { assertUniqueElementIds(page.html); }
+    catch (error) { problems.push(`${page.file}: ${error instanceof Error ? error.message : 'Invalid element IDs'}`); }
     const hasTurnstile = tags(page.html, 'script').some(tag => {
       const src = attribute(tag, 'src');
       return src === 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit'

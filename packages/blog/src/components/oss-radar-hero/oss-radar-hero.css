@@ -28,7 +28,7 @@
   border: 1px solid rgba(180, 200, 220, 0.3);
 }
 .radar-pill--accent {
-  color: var(--color-accent-warm);
+  color: var(--color-ink-warm);
   border-color: var(--color-accent-warm);
 }
 

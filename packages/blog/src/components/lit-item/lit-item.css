@@ -1,16 +1,15 @@
 /* ── Literary list item ── */
 /* Used in section archive pages: spacious, text-first, italic excerpt */
 
-a.lit {
+.lit {
   display: block;
-  text-decoration: none;
-  color: var(--color-text);
   padding: 1.5rem 0;
   border-bottom: 1px solid var(--color-border);
 }
 
-a.lit:visited { color: var(--color-text); }
-a.lit:hover .lit-title { color: var(--color-link); }
+.lit-main { display: block; text-decoration: none; color: var(--color-text); }
+.lit-main:visited { color: var(--color-text); }
+.lit-main:hover .lit-title, .lit-main:focus-visible .lit-title { color: var(--color-link); }
 
 .lit-meta {
   font-family: var(--font-mono);
@@ -39,24 +38,4 @@ a.lit:hover .lit-title { color: var(--color-link); }
   line-height: 1.75;
   font-style: italic;
   margin-bottom: 0.55rem;
-}
-
-.lit-tags {
-  display: flex;
-  gap: 0.55rem;
-}
-
-.lit-tag {
-  font-size: 0.68rem;
-  color: var(--color-text-muted);
-  opacity: 0.55;
-}
-
-.lit-tag::before {
-  content: '#';
-  background: var(--gradient-brand);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  font-weight: 600;
 }

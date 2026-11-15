@@ -80,7 +80,6 @@ export function preamble() {
 }
 
 export function article() {
-  const started = timeFallback(researchFootprint.startedAt), measured = timeFallback(researchFootprint.measuredAt);
   return html`
 <article class="post-content">
   <p class="post-lede">
@@ -601,17 +600,15 @@ export function article() {
     ],
   })}
 
-  <section class="research-footprint" id="research-footprint" aria-labelledby="research-footprint-title">
-    <div class="research-footprint-heading">
-      <h2 id="research-footprint-title">Research footprint</h2>
-      <a href="${RESEARCH_URL}" target="_blank" rel="noopener">Open the evidence artifacts ↗</a>
-    </div>
-    <div class="research-footprint-stats">
-      <div><strong>${researchFootprint.wallClockMinutes} min</strong><span>wall-clock window</span></div>
-      <div><strong>${researchFootprint.sessions}</strong><span>measured agent sessions</span></div>
-      <div><strong>${researchFootprint.artifacts}</strong><span>committed Markdown artifacts</span></div>
-      <div><strong>${compactTokenCount(researchFootprint.totalTokens)}</strong><span>tokens processed</span></div>
-    </div>
+
+</article>
+`;
+}
+
+/** Additional measured explanation; the publication owns its frame and limits. */
+export function researchNotes() {
+  const started = timeFallback(researchFootprint.startedAt), measured = timeFallback(researchFootprint.measuredAt);
+  return html`
     <p>
       This issue was researched in a different shape from the last one. A Claude Code session held the editorial
       thread, ran five short search agents, and launched eight independent Codex workers: a source audit, a product
@@ -638,12 +635,5 @@ export function article() {
       roots and one Claude transcript were joined and what was excluded, including the worker that produced the
       manifest. No Codex counter reset occurred in this issue's sessions.
     </p>
-    <p class="research-footprint-note">
-      This is provenance, not a quality score, bill, or environmental estimate. Wall-clock time is not hands-on time.
-      The private session logs are not published; the prefix commitments make the record auditable by the author but
-      do not let a reader independently reconstruct the totals.
-    </p>
-  </section>
-</article>
-`;
+  `;
 }

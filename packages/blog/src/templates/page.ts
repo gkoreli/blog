@@ -136,9 +136,9 @@ export function pageShell({ title, description, content, canonicalPath, currentS
       </nav>
 
       <div class="sidebar-social">
-        <a href="https://github.com/gkoreli" title="GitHub" target="_blank" rel="noopener"><img src="/icons/github.svg" width="16" height="16" alt="GitHub"></a>
-        <a href="https://x.com/GogaKoreli" title="X" target="_blank" rel="noopener"><img src="/icons/x.svg" width="16" height="16" alt="X"></a>
-        <a href="https://www.linkedin.com/in/goga-koreli/" title="LinkedIn" target="_blank" rel="noopener"><img src="/icons/linkedin.svg" width="16" height="16" alt="LinkedIn"></a>
+        <a href="https://github.com/gkoreli" aria-label="GitHub" title="GitHub" target="_blank" rel="noopener">${utilityIcon('github')}</a>
+        <a href="https://x.com/GogaKoreli" aria-label="X" title="X" target="_blank" rel="noopener">${utilityIcon('x')}</a>
+        <a href="https://www.linkedin.com/in/goga-koreli/" aria-label="LinkedIn" title="LinkedIn" target="_blank" rel="noopener">${utilityIcon('linkedin')}</a>
         <nisli-theme-toggle></nisli-theme-toggle>
       </div>
     </aside>
@@ -156,7 +156,7 @@ export function pageShell({ title, description, content, canonicalPath, currentS
     <div class="gutter">${gutter ?? ''}</div>
   </div>
 
-  <dialog id="publication-search" class="search-dialog tool-app" aria-labelledby="search-dialog-title">
+  <dialog id="site-publication-search" data-publication-search-dialog class="search-dialog tool-app" aria-labelledby="search-dialog-title">
     <header class="search-dialog-header"><div><p class="search-eyebrow">gkoreli.com</p><h2 id="search-dialog-title">Find a thought.</h2></div><button type="button" data-search-close aria-label="Close search">Esc</button></header>
     ${searchSurface('palette')}
     <footer class="search-dialog-footer"><span>↑ ↓ results · Enter opens · Esc closes</span><a href="/search">Open search page</a></footer>

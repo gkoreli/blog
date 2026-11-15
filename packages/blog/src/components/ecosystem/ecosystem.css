@@ -10,7 +10,7 @@
 .eco-name {
   font-family: var(--font-mono);
   font-size: var(--text-xs);
-  color: var(--color-accent-blue);
+  color: var(--color-ink-blue);
   padding-right: 1.5rem;
   padding-top: 0.2rem;
   line-height: 1.5;

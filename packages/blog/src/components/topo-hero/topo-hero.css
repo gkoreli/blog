@@ -27,7 +27,7 @@ nisli-topo-hero { display: none; }
   font-size: var(--text-xs);
   letter-spacing: 0.3em;
   text-transform: uppercase;
-  color: var(--color-accent-warm);
+  color: var(--color-ink-warm);
   opacity: 0;
   animation: rich-rise 1s 0.4s forwards;
   margin-bottom: 1.4rem;
@@ -44,7 +44,7 @@ nisli-topo-hero { display: none; }
 }
 .topo-hero-inner h1 em {
   font-style: italic;
-  color: var(--color-accent-warm);
+  color: var(--color-ink-warm);
 }
 .topo-hero-inner .topo-byline {
   font-size: var(--text-base);

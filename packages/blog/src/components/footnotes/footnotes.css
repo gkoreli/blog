@@ -10,4 +10,4 @@
   color: var(--color-text-muted);
   margin-bottom: 0.5rem;
 }
-.footnote-item a { color: var(--color-accent-blue); text-decoration: none; }
+.footnote-item a { color: var(--color-ink-blue); text-decoration: none; }

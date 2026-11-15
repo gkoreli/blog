@@ -78,7 +78,7 @@ The build generates publication files from discovered posts, metadata, and site-
 - `posts.json` — structured post index with article URLs
 - `/{slug}.md` — clean markdown per post (frontmatter stripped) with a trailing `## Cite this` block
 - `/{slug}.csl.json` and `/{slug}.bib` — per-post citation representations (`templates/citation.ts`), license name from the content license constant
-- `/license` — the content section of the repository `LICENSE`, rendered as a page
+- `/license` — a public scope summary with direct destinations for the complete content and code licenses
 - `robots.txt` — access, `Content-Signal`, license comment, sitemap (`templates/robots.ts`)
 - JSON-LD `BlogPosting` — in `<head>` of blog posts only
 - `rel="canonical"` + `og:url` — self-referencing on every page

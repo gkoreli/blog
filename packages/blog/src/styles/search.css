@@ -5,7 +5,7 @@
 .search-trigger kbd { font: 11px var(--font-mono); color: var(--color-text-muted); }
 .search-page { padding-block: 1rem 3rem; }
 .search-eyebrow { font: 11px/1.5 var(--font-mono); text-transform: uppercase; letter-spacing: .1em; color: var(--color-text-muted); margin: 0 0 .7rem; }
-.search-page h1 { font: 500 clamp(2rem,5vw,3.2rem)/1.12 var(--font-sans); letter-spacing: -.04em; margin: 0 0 1rem; }
+.search-page h1 { font: 500 var(--type-interface-title)/1.12 var(--font-sans); letter-spacing: -.04em; margin: 0 0 1rem; }
 .search-page > p { line-height: 1.7; }
 .search-page [data-search-surface] { margin-top: 2rem; }
 .search-form > label { display: block; font: 12px/1.5 var(--font-mono); margin-bottom: .6rem; color: var(--color-text-muted); }
@@ -41,6 +41,11 @@
 .search-within { margin-top: .5rem; }
 .search-more { display: block; min-height: 44px; padding: .65rem 0; margin-top: .4rem; color: var(--color-link); background: none; border: 0; font: 11px/1.6 var(--font-mono); cursor: pointer; text-align: left; }
 .search-more, .search-scope, .search-within { max-width: 100%; white-space: normal; overflow-wrap: anywhere; }
+.search-controls select, .search-input-row button, .search-enable, .search-scope, .search-within, .search-context summary, .search-dialog-header button { min-height: var(--target-min); }
+.search-input-row, .search-controls select { border-color: var(--color-control-border); }
+.search-controls select { font-size: 14px; }
+.search-context summary { display: flex; align-items: center; }
+@media (max-width: 600px) { .search-controls select { font-size: 16px; } }
 .search-empty { font: 15px/1.8 var(--font-sans); margin-block: 2rem; }
 .search-footnote { margin-top: 2rem; border-top: 1px solid var(--color-border); padding-top: 1rem; }
 .search-dialog { width: min(720px,calc(100vw - 2rem)); max-height: min(85dvh,900px); padding: 1.5rem 1.75rem 0; margin: 7dvh auto auto; overflow: auto; border: 1px solid var(--color-border); border-radius: 12px; background: var(--color-bg); color: var(--color-text); box-shadow: 0 25px 100px #0005; }
@@ -57,7 +62,7 @@
 .post-content :has(> .search-anchor:target) { background: color-mix(in srgb,var(--color-link) 12%,transparent); }
 [data-search-surface] [hidden] { display: none; }
 @media(max-width:767px) {
-  .search-mobile-link { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; color: var(--color-text); margin-left: auto; }
+  .search-mobile-link { display: flex; align-items: center; justify-content: center; width: var(--target-min); height: var(--target-min); color: var(--color-text); margin-left: auto; }
   .sidebar-bar nisli-burger-menu { margin-left: .3rem; }
   .search-dialog { width: 100%; max-width: 100%; height: 100dvh; max-height: 100dvh; margin: 0; border: 0; border-radius: 0; padding: 1.1rem 1.2rem 0; }
   .search-dialog-footer { font-size: 9px; }

@@ -1,7 +1,7 @@
 let modulePromise: Promise<typeof import('./search.js')> | undefined;
 const load = () => modulePromise ??= import('./search.js');
 for (const hint of document.querySelectorAll('.search-trigger kbd')) hint.textContent = /Mac|iPhone|iPad/u.test(navigator.platform) ? '⌘ K' : 'Ctrl K';
-const dialog = document.querySelector('#publication-search');
+const dialog = document.querySelector('[data-publication-search-dialog]');
 let opener: HTMLElement | null = null;
 
 async function openSearch(trigger?: HTMLElement): Promise<void> {
@@ -32,5 +32,10 @@ if (dialog instanceof HTMLDialogElement) {
 const page = document.querySelector('.search-page [data-search-surface]');
 if (page instanceof HTMLElement) {
   const params = new URLSearchParams(location.search), query = params.get('q') ?? '';
-  void load().then(search => { const surface = search.enhanceSearch(page); if (surface) { surface.input.value = query; if (query) surface.run(); } });
+  void load().then(search => {
+    const section = page.querySelector('select[name="section"]');
+    if (section instanceof HTMLSelectElement) section.value = params.get('section') ?? '';
+    const surface = search.enhanceSearch(page);
+    if (surface) { surface.input.value = query; if (query) surface.run(); }
+  });
 }

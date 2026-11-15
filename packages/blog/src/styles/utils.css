@@ -24,8 +24,8 @@
 
 .text-muted  { color: var(--color-text-muted); }
 .text-link   { color: var(--color-link); }
-.text-warm   { color: var(--color-accent-warm); }
-.text-rust   { color: var(--color-accent-rust); }
+.text-warm   { color: var(--color-ink-warm); }
+.text-rust   { color: var(--color-ink-rust); }
 .text-center { text-align: center; }
 
 .font-mono { font-family: var(--font-mono); }

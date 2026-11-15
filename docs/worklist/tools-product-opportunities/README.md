@@ -14,7 +14,7 @@ The separately authorized [package engineering continuation](analytics-package-e
 
 The [November 14 Stats investigation](stats-reader-understanding-2026-11-14.md) distinguishes retained-data analysis from new observation needs. It recommends a completed-period publishing overview, reuse of existing newsletter attribution/confirmation, then a bounded outcome contract and decision-led browser activity experiment. The [public observation receipt](stats-reader-understanding-2026-11-14.json) is a dated live UI sample; the implementation sequence remains proposed.
 
-The subsequent [agent-access direction](agent-access-stats.md) takes priority for Stats: article/resource access by declared client and served format first, then delivery/revision freshness and separately sampled citations or supported use. This records the selected focus and concrete acceptance for its first report; implementation and new provider trials remain proposed.
+The subsequent [agent-access direction](agent-access-stats.md) takes priority for Stats: article/resource access by declared client and served format first, then delivery/revision freshness and separately sampled citations or supported use. That worklist records its implementation and acceptance separately from future provider trials. The [publication design worklist](../site-design-system/README.md) owns the continuing shared reading, discovery and report-presentation improvements, preserving these analytics contracts and evidence boundaries.
 
 **What is already present**
 

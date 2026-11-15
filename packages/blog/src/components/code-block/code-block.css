@@ -11,6 +11,6 @@
   overflow-x: auto;
 }
 .code-block .cm { color: var(--color-text-muted); font-style: italic; }
-.code-block .kw { color: var(--color-accent-warm); }
-.code-block .fn { color: var(--color-accent-blue); }
+.code-block .kw { color: var(--color-ink-warm); }
+.code-block .fn { color: var(--color-ink-blue); }
 .code-block .st { color: var(--color-link); }

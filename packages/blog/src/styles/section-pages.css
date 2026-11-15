@@ -2,6 +2,22 @@
 
 .section-archive-list { margin-top: 0.5rem; }
 
+.archive-discovery { margin-top: 1.4rem; padding-block: 1rem; border-block: 1px solid var(--color-border); }
+.archive-search > label, .archive-topic-browser > p { display: block; margin: 0 0 8px; font: 12px/1.5 var(--font-mono); color: var(--color-text-meta); }
+.archive-search > div { display: flex; align-items: stretch; }
+.archive-search input[type='search'] { min-width: 0; flex: 1; padding: 10px 12px; border: 1px solid var(--color-control-border); border-radius: var(--control-radius) 0 0 var(--control-radius); background: var(--color-bg); color: var(--color-text); font-size: 16px; }
+.archive-search input::placeholder { color: var(--color-text-secondary); opacity: 1; }
+.archive-search button { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: var(--target-min); padding-inline: 12px; border: 1px solid var(--color-control-border); border-left: 0; border-radius: 0 var(--control-radius) var(--control-radius) 0; background: var(--color-surface); color: var(--color-link); font: 12px var(--font-mono); cursor: pointer; }
+.archive-topic-browser { margin-top: 16px; }
+.topic-links { display: flex; flex-wrap: wrap; gap: 0 8px; }
+.topic-link { display: inline-flex; align-items: center; min-height: var(--target-min); padding: 8px 4px; color: var(--color-text-meta); font: 12px/1.5 var(--font-mono); text-decoration: none; overflow-wrap: anywhere; }
+.topic-link:visited { color: var(--color-text-meta); }
+.topic-link:hover, .topic-link:focus-visible { color: var(--color-link); text-decoration: underline; }
+.topic-hash { background: var(--gradient-brand); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.archive-topic-browser details { margin-top: 4px; }
+.archive-topic-browser summary { display: flex; align-items: center; min-height: var(--target-min); font: 12px/1.5 var(--font-mono); color: var(--color-link); cursor: pointer; }
+.section-archive > .separator { display: none; }
+
 .section-archive-empty {
   font-size: var(--text-sm);
   color: var(--color-text-muted);
@@ -17,11 +33,9 @@
   text-transform: uppercase;
   color: var(--section-oss-radar);
   margin-bottom: 0.5rem;
-  opacity: 0.8;
 }
 
 .rdr-group-label--archive {
   color: var(--color-text-muted);
   margin-top: 1.75rem;
-  opacity: 0.7;
 }

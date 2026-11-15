@@ -28,12 +28,19 @@ export function createSearchHandler() {
         const path = manifest.index;
         loaded = { path, engine: (async () => { const response = await assets.fetch(new Request(new URL(path, url))); if (!response.ok) throw new Error('The article index is unavailable.'); return createSearch(await response.text()); })().catch(error => { loaded = undefined; throw error; }) };
       }
-      const engine = await loaded.engine, result = await engine.search(query);
+      const engine = await loaded.engine;
+      const requestedSection = url.searchParams.get('section');
+      const section = requestedSection && engine.sections.includes(requestedSection) ? requestedSection : undefined;
+      const result = await engine.search(query, section ? { section } : {});
       html = resultsHtml(result); status = `${result.articles.length} ${result.articles.length === 1 ? 'article' : 'articles'} shown from ${engine.articleCount} published articles. Results link to source passages.`;
     } catch { code = query.length > 512 ? 400 : 503; status = code === 400 ? 'Please shorten the search to 512 characters.' : 'Search is temporarily unavailable. Please try again.'; }
     const headers = new Headers(page.headers); headers.set('Cache-Control', 'no-store'); headers.set('X-Robots-Tag', 'noindex');
     const transformed = new HTMLRewriter()
       .on('#page-query', { element(element) { element.setAttribute('value', query.slice(0, 512)); } })
+      .on('.search-page select[name="section"] option', { element(element) {
+        if (element.getAttribute('value') === (url.searchParams.get('section') ?? '')) element.setAttribute('selected', '');
+        else element.removeAttribute('selected');
+      } })
       .on('.search-page .search-results', { element(element) { element.setInnerContent(html, { html: true }); } })
       .on('.search-page .search-status', { element(element) { element.setInnerContent(status); } })
       .transform(new Response(page.body, { status: code, headers }));

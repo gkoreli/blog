@@ -1,8 +1,10 @@
-import { html } from '@nisli/core';
+import { html, type TemplateResult } from '@nisli/core';
+import { utilityIcon } from '../templates/utility-icon.js';
 import { timeFallback } from '../lib/local-time.js';
 import type { PostMeta } from '../lib/frontmatter.js';
 
-export function researchFootprint(meta: PostMeta) {
+/** Page assembly owns the frame; an article can supply its measured commentary. */
+export function researchFootprint(meta: PostMeta, explanation?: TemplateResult) {
   const footprint = meta.researchFootprint;
   if (!footprint) return '';
   const started = timeFallback(footprint.startedAt), measured = timeFallback(footprint.measuredAt);
@@ -10,21 +12,23 @@ export function researchFootprint(meta: PostMeta) {
     <section class="research-footprint" id="research-footprint" aria-labelledby="research-footprint-title">
       <div class="research-footprint-heading">
         <h2 id="research-footprint-title">Research footprint</h2>
-        <a href="${footprint.provenanceUrl}" target="_blank" rel="noopener">Open the evidence artifacts ↗</a>
+        <a href="${footprint.provenanceUrl}" target="_blank" rel="noopener">${utilityIcon('posts')} Evidence artifacts</a>
       </div>
       <div class="research-footprint-stats">
+        <div><strong>${footprint.wallClockMinutes.toLocaleString('en-US')} min</strong><span>elapsed wall-clock window</span></div>
         <div><strong>${footprint.sessions}</strong><span>agent sessions</span></div>
         <div><strong>${footprint.artifacts}</strong><span>committed artifacts</span></div>
         <div><strong>${compactTokenCount(footprint.totalTokens)}</strong><span>tokens processed</span></div>
       </div>
       ${footprint.scope ? html`<p>${footprint.scope}</p>` : ''}
-      <p>The included sessions span ${formatMinutes(footprint.wallClockMinutes)} of elapsed wall-clock time, from
+      ${explanation ?? html`<p>The included sessions span ${formatMinutes(footprint.wallClockMinutes)} of elapsed wall-clock time, from
       <time datetime=${started.instant} data-local-time>${started.label}</time> to
       <time datetime=${measured.instant} data-local-time>${measured.label}</time>. The measured token total includes
       ${compactTokenCount(footprint.inputTokens)} input tokens (${compactTokenCount(footprint.cachedInputTokens)} served from cache)
       and ${compactTokenCount(footprint.outputTokens)} output tokens. Reasoning tokens (${compactTokenCount(footprint.reasoningOutputTokens)})
-      are already included in output. Elapsed time includes gaps between sessions and does not measure human hands-on work.</p>
+      are already included in output.</p>`}
       <p class="research-footprint-note">This is a provenance measure, not a quality score, cost estimate, or environmental-impact estimate.
+      Elapsed wall-clock time includes gaps and does not measure human hands-on work.
       Token counts come from the private agent sessions identified in the public manifest, which records the log format, included session IDs, selected usage boundaries, and SHA-256 prefix commitments. The author can audit the totals against those logs; readers cannot independently reconstruct them without the private logs. The committed artifacts show the resulting work.</p>
     </section>`;
 }

@@ -8,13 +8,12 @@
 }
 
 .al-header {
-  min-height: 42vh;
-  margin-bottom: 4rem;
+  margin-bottom: 1.5rem;
 }
 
 .al-header-rule {
   height: 2px;
-  margin-bottom: 2.5rem;
+  margin-bottom: 1rem;
   border-radius: 1px;
   background: linear-gradient(90deg, #1a6b4e, #6ec9a8 58%, #93c5fd);
 }
@@ -47,8 +46,8 @@
 .al-header h1 {
   max-width: 760px;
   margin-top: 0.25rem;
-  font-size: clamp(2.4rem, 7vw, 5.8rem);
-  line-height: 0.95;
+  font-size: var(--type-interface-title);
+  line-height: 1.1;
   letter-spacing: -0.04em;
 }
 
@@ -69,13 +68,9 @@
 }
 
 .al-header-meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.45rem;
   margin-top: 1.25rem;
 }
 
-.al-header-meta a,
 .al-substrates span {
   font-family: var(--font-mono);
   font-size: var(--text-2xs);
@@ -86,14 +81,11 @@
   padding: 0.22rem 0.48rem;
 }
 
-.al-header-meta a:hover {
-  color: var(--color-link);
-  background: var(--color-surface);
-}
+.al-console input[type='range'], .al-actions button { min-height: var(--target-min); }
 
 .al-scroll-stack {
   display: grid;
-  gap: 7rem;
+  gap: 4rem;
 }
 
 .al-experiment {
@@ -108,8 +100,8 @@
 
 .al-exp-header h2 {
   margin-top: 0.2rem;
-  font-size: clamp(2rem, 5vw, 4rem);
-  line-height: 0.98;
+  font-size: clamp(26px, 3vw, 36px);
+  line-height: 1.15;
   letter-spacing: -0.035em;
 }
 
@@ -437,6 +429,7 @@
 }
 
 @media (max-width: 768px) {
+  .al-page { padding-top: 0; }
   .al-header-top,
   .al-exp-header {
     flex-direction: column;
@@ -445,6 +438,12 @@
   .al-header {
     min-height: 0;
   }
+
+  .al-header-top { gap: 8px; }
+  .al-live { padding: 0; border: 0; }
+  .al-header p { margin-top: 12px; font-size: 16px; line-height: 1.7; }
+  .al-exp-header { position: relative; display: block; padding-top: 18px; }
+  .al-status { position: absolute; top: 18px; right: 0; padding: 0; border: 0; }
 
   .al-scroll-stack {
     gap: 5rem;
