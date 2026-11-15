@@ -37,7 +37,7 @@ Takumi's return visit compares a reconstructed March 19 checkpoint, current mast
 
 The afternoon trial additionally showed native `prepare` fetching the drawn CSS image once, skipping the hidden image and reusing bytes for PNG/SVG/measurement. Raw native rendering without bytes did not fetch; the higher-level wrapper uses preparation. On a separate font condition, native 2.20.0 successfully registered the reported Cyrillic face as `Geist` yet drew boxes; an alias worked, while removing the built-in fixed Cyrillic but lost Latin fallback. These checks support advice about the actual API, scripts and font names, not general conformance or a performance claim.
 
-Public GitHub feed leads were independently checked and saved in the source portfolio. They remain discovery-only while the current participant work is unfinished. No project earns a featured entry merely by appearing in a feed.
+Public GitHub feed leads were independently checked and saved in the source portfolio. They remain discovery-only for future selection; #15's accepted roster is settled. No project earns a featured entry merely by appearing in a feed.
 
 ## Article shape
 

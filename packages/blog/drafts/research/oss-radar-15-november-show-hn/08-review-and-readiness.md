@@ -49,3 +49,9 @@ Raw logs, intermediate failed harnesses, generated site outputs and the social c
 Keep the accepted manuscript unchanged unless a consequential new fact changes an entry. At the next preparation start, check only such changes and retain any dated source boundary. There is no remaining research or editorial blocker for the claims made in this version.
 
 **Release is held under the earlier explicit publication pause.** Do not add a manifest entry, enable the workflow, publish early or create another publisher merely because the article is ready. Once release is explicitly authorized, use the existing queue procedure with the exact accepted snapshot and Monday 08:00 Pacific target. Recheck the staged source/hash and queue/build acceptance against the then-current site code, then verify deployment and served content separately. No X operation is part of this handoff.
+
+## November 15, 09:02 preparation follow-up
+
+Between 17:02 and 17:05 UTC, checked the seven relevant release collections, Fursoy and AssemblyForNeovim's default-branch heads, and Takumi issue 2558. Release versions and the two source heads matched Sunday's accepted state; the font report remained open without comments. The manuscript hash still matches the accepted render receipt. The manifest remains empty and workflow 408698342 returned `disabled_manually`. No article edit, repeated experiment, build or publication was needed.
+
+The existing preparation automation now reads current readiness from the weekly worklist instead of treating #15 as an unfinished provisional selection. Its active status, daily 09:00/14:00 starts, chat destination, participant-depth requirements and publication pause were preserved and verified. The source portfolio's stale selection tasks were reconciled with acceptance. Next action remains a consequential-fact check before the target, or the existing release procedure after explicit authorization.
