@@ -1,6 +1,6 @@
 # Evening participant due diligence
 
-November 15, 2026, America/Los_Angeles. Additional depth review after the earlier source acceptance. The expanded manuscript now has [fresh editorial and render acceptance](08-review-and-readiness.md#november-15-evening-acceptance). Earlier receipts remain historical. Publication is held; the manifest remains empty.
+November 15, 2026, America/Los_Angeles. Additional depth review after the earlier source acceptance. This manuscript received [evening editorial and render acceptance](08-review-and-readiness.md#november-15-evening-acceptance). The [Monday follow-up](10-monday-release-follow-up.md) subsequently updates Yogurt and AgentRun; this record and its receipts retain their dated scope. Publication is held; the manifest remains empty.
 
 ## Effort and coverage
 

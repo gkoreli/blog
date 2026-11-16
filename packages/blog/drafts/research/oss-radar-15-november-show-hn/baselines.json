@@ -44,16 +44,17 @@
       "results/yogurt-mcp-02.json",
       "results/yogurt-queue-01.json",
       "results/yogurt-backfill-01.json",
-      "results/yogurt-recognition-01.json"
+      "results/yogurt-recognition-01.json",
+      "results/yogurt-legacy-recovery-01.json"
     ],
-    "currentRelease": "v0.3.24",
-    "currentReleaseSource": "0f2e5bc5d9452e956dfc82b26b96ec1fd14f3a60",
-    "currentReleaseInspection": "Saved-recording recovery implemented and exercised through source store/pipeline plus official native helpers and catalog-pinned small model. Earlier queue/socket receipts retain their pins.",
+    "currentRelease": "v0.3.34",
+    "currentReleaseSource": "2004c7fc3d77538a648bf28632e49d484349a057",
+    "currentReleaseInspection": "Legacy stopped/done empty-meeting migration, launch catch-up and transcript filter changes inspected. Two-version persisted-store contrast and 56 unchanged upstream tests passed; native recognition remains a 0.3.24 result.",
     "discussionSources": [
       "https://github.com/FrigadeHQ/yogurt/issues/54",
       "https://github.com/FrigadeHQ/yogurt/issues/30"
     ],
-    "latestFollowup": "09-evening-due-diligence.md"
+    "latestFollowup": "10-monday-release-follow-up.md"
   },
   {
     "repository": "0xdeadf1sh/AssemblyForNeovim",
@@ -132,12 +133,13 @@
       "results/agentrun-recovery-01.json",
       "results/agentrun-upstream-recovery-01.json",
       "results/agentrun-learning-score-01.json",
-      "results/agentrun-disk-crash-fence-01.json"
+      "results/agentrun-disk-crash-fence-01.json",
+      "results/agentrun-current-learning-01.json"
     ],
-    "currentRelease": "v0.1.0-beta.38",
-    "currentReleaseSource": "d10f0053e09cd7ac0186006b13f7a6a52aa8bc22",
-    "currentReleaseInspection": "Compile/promotion/workflow-first called path and upgrade notes read; actual beta.38 scoring module exercised on synthetic graded rows. Prior kernel controls keep their original source pin.",
-    "latestFollowup": "09-evening-due-diligence.md"
+    "currentRelease": "v0.1.0-beta.40",
+    "currentReleaseSource": "bb7fb3eab9ad592fe81a57c1389744856889da7b",
+    "currentReleaseInspection": "Current scoring/refit/promotion/workflow-first/cost paths and beta.39/40 upgrade contract inspected; exact published beta.38/40 scoring/cost modules compared on authored rows. Disk crash/fencing remains beta.38; no full current service, provider or database upgrade trial.",
+    "latestFollowup": "10-monday-release-follow-up.md"
   },
   {
     "repository": "simpsoka/zigzag",

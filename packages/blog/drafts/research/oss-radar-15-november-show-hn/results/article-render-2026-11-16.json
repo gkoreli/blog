@@ -1,0 +1,66 @@
+{
+  "checkedAt": "2026-11-16T17:18:07.475642+00:00",
+  "manuscriptSha256": "589cbb345324436c517e694f77c3833d98a6d539eea1afea3cb5cc020fa14aee",
+  "supersedes": {
+    "receipt": "article-render-2026-11-15-evening-current-site.json",
+    "manuscriptSha256": "f159a21cc8cbeb8fbf9dcf250080ef635994ea24ff280a25c9882b6fb6414cb3",
+    "retained": true,
+    "reason": "Consequential Yogurt and AgentRun releases changed two entries; population and roster preserved."
+  },
+  "buildBaseline": "d36660154b394310a8591b672336b36a636d8fc8",
+  "plannedFilename": "046-oss-radar-15-november-launches.md",
+  "canonical": "https://gkoreli.com/oss-radar-15-november-launches",
+  "publicationDate": "2026-11-16",
+  "renderedH1Count": 1,
+  "projectEntries": 9,
+  "h3TotalIncludingInterpretation": 11,
+  "tables": 2,
+  "resolvedLocalLinks": 19,
+  "htmlSha256": "eed3b4d974e68fe625911d3d9fc27c9be4c75f0323b44b7e5c385a2a2a3fb05d",
+  "ogSha256": "1fb155c3840a109d9a7fe14d8e35ea65158cc9c6522a924b975e55911143eea9",
+  "ogUnchangedFromPrevious": true,
+  "representations": [
+    "HTML",
+    "Markdown",
+    "CSL-JSON",
+    "BibTeX",
+    "posts.json",
+    "RSS",
+    "sitemap",
+    "llms.txt",
+    "llms-full.txt",
+    "OG PNG"
+  ],
+  "searchIndex": {
+    "articles": 47,
+    "candidatePassages": 78,
+    "indexSha256": "5654bb182dbca1910f2de4f98a6e2cb7f6e90d06e73e6f3498da89027a8de07c"
+  },
+  "freshBrowserReview": {
+    "method": "CUA in-app browser, owned isolated loopback preview",
+    "desktop": {
+      "width": 1280,
+      "documentScrollWidth": 1280,
+      "focus": "Revised Yogurt recovery and partial-state paragraphs"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "documentScrollWidth": 390,
+      "sourceTableWidth": 354,
+      "focus": "New AgentRun wrong-answer grading paragraph and adjacent cost explanation"
+    },
+    "observations": [
+      "Matching H1 and dated page",
+      "Revised source visibly present at paragraph anchors",
+      "New passages readable without document overflow",
+      "Viewport override reset"
+    ],
+    "retainedInteractionBoundary": "Earlier contents/table-scroll controls retain their own source/site receipts; no new table-scroll or contents interaction is claimed."
+  },
+  "node": "24.14.1",
+  "pnpm": "9.15.4",
+  "publisherStateChecked": "disabled_manually",
+  "publicationManifestEntries": 0,
+  "productionPublicationPerformed": false
+}

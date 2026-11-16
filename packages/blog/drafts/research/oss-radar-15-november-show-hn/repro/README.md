@@ -179,3 +179,32 @@ AGENTRUN_TEST_PG_URL= "$node_bin" --test --test-reporter=tap \
 The [receipt](../results/agentrun-disk-crash-fence-01.json) records package integrities and unchanged test hashes. Both sweep modes are local; the two-machine-labelled mode copies a stopped directory on the same host. The workflow sweep uses pi-durable Node SQLite storage. Separate fencing tests exercise AgentRun's production Connection/RunStorage. The counted HTTP effects are synthetic and owned; no paid effect or provider was used.
 
 For JAX, run `JAX_PLATFORMS=cpu "$jax_python" -m pytest -q` from the pinned checkout with the table's exact dependencies. This includes small synthetic training and checkpoint writes, so the older mechanism fixture's no-training limit does not describe this later run. The merged ROCm contributor's full GPU training remains an attributed report.
+
+## Monday release controls
+
+The [Monday follow-up](../10-monday-release-follow-up.md) declares the changed questions. Earlier successful speech, crash and other controls retain their actual versions; no full current-release product evaluation is implied.
+
+Copy [yogurt-legacy-recovery.test.ts](yogurt-legacy-recovery.test.ts) unchanged into `app/test` in separate pinned 0.3.24 and 0.3.34 source checkouts. Use the same declared Node 24.22.3, Vitest 5.0.4, Electron 44.7.2 import and chrono-node 2.10.3 runtime as Sunday's tests. The fixture constructs old SQLite state in a new owned database, then tests actual store opening, candidate selection and another reopen. It does not reach private fields or transcribe audio. Run from each checkout's `app` directory with a fresh output path:
+
+```sh
+RADAR_YOGURT_RELEASE=0.3.24 RADAR_LEGACY_RESULT="$trial_root/legacy-024.json" \
+  ELECTRON_OVERRIDE_DIST_PATH="$trial_root/electron-import-only" "$node_bin" \
+  "$yogurt_runtime/node_modules/vitest/vitest.mjs" run test/yogurt-legacy-recovery.test.ts
+
+# Run this second command from the separate 0.3.34 app checkout.
+RADAR_YOGURT_RELEASE=0.3.34 RADAR_LEGACY_RESULT="$trial_root/legacy-034.json" \
+  ELECTRON_OVERRIDE_DIST_PATH="$trial_root/electron-import-only" "$node_bin" \
+  "$yogurt_runtime/node_modules/vitest/vitest.mjs" run test/store.test.ts \
+  test/backfill.test.ts test/hallucination.test.ts test/yogurt-legacy-recovery.test.ts
+```
+
+The [receipt](../results/yogurt-legacy-recovery-01.json) separates the 56 unmodified upstream tests in the current snapshot, the authored current test and the baseline contrast. It records source hashes and the partial-state limit. A passing migration is not a new summary or recognition-quality result.
+
+[agentrun-current-learning.mjs](agentrun-current-learning.mjs) imports the exact published beta.38 and beta.40 modules directly. Prepare separate dependency runtimes with `@parcha/agentrun-serve` at those versions and scripts disabled; beta.40's trial also pins pi-durable/chord/pi-ai 1.5.2. The [receipt](../results/agentrun-current-learning-01.json) records package integrities and actual module hashes. Run from this directory's parent:
+
+```sh
+"$node_bin" repro/agentrun-current-learning.mjs "$agentrun_beta38_runtime" \
+  "$agentrun_beta40_runtime" "$trial_root/current-learning.json"
+```
+
+The fixture calls actual scoring/refit/cost functions on authored rows. `clears` is a predicate, not full replay settlement or promotion. The old wrong-workflow-answer comparison is arithmetic only: beta.38's normal selector used agent-path grades. The current supported-path result and the supplied-expected-answer controls are separate. Cost rows are artificial and establish selection rules, not spending or savings. No server, provider, mailbox or database upgrade is used.

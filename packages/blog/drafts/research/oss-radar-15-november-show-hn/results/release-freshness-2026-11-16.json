@@ -1,0 +1,245 @@
+{
+  "scheduledCheckIn": "2026-11-16T16:58:03.286Z",
+  "checkedThrough": "2026-11-16T17:12:56Z",
+  "releases": [
+    {
+      "repository": "FrigadeHQ/yogurt",
+      "url": "https://api.github.com/repos/FrigadeHQ/yogurt/releases?per_page=3",
+      "releases": [
+        {
+          "tag": "v0.3.34",
+          "published": "2026-11-16T14:50:56Z"
+        },
+        {
+          "tag": "v0.3.33",
+          "published": "2026-11-16T14:05:13Z"
+        },
+        {
+          "tag": "v0.3.32",
+          "published": "2026-11-16T12:21:45Z"
+        }
+      ]
+    },
+    {
+      "repository": "Parcha-ai/agentrun",
+      "url": "https://api.github.com/repos/Parcha-ai/agentrun/releases?per_page=3",
+      "releases": [
+        {
+          "tag": "v0.1.0-beta.40",
+          "published": "2026-11-16T11:30:10Z"
+        },
+        {
+          "tag": "v0.1.0-beta.39",
+          "published": "2026-11-16T07:12:32Z"
+        },
+        {
+          "tag": "v0.1.0-beta.38",
+          "published": "2026-11-14T23:10:31Z"
+        }
+      ]
+    },
+    {
+      "repository": "simpsoka/zigzag",
+      "url": "https://api.github.com/repos/simpsoka/zigzag/releases?per_page=3",
+      "releases": [
+        {
+          "tag": "v0.1.5",
+          "published": "2026-11-15T04:46:16Z"
+        },
+        {
+          "tag": "v0.1.4",
+          "published": "2026-11-14T21:49:32Z"
+        },
+        {
+          "tag": "v0.1.3",
+          "published": "2026-11-13T23:56:01Z"
+        }
+      ]
+    },
+    {
+      "repository": "paul-nameless/agweb",
+      "url": "https://api.github.com/repos/paul-nameless/agweb/releases?per_page=3",
+      "releases": [
+        {
+          "tag": "v0.3.0",
+          "published": "2026-11-14T23:18:57Z"
+        },
+        {
+          "tag": "v0.2.0",
+          "published": "2026-11-13T22:11:41Z"
+        },
+        {
+          "tag": "v0.1.0",
+          "published": "2026-11-11T17:56:26Z"
+        }
+      ]
+    },
+    {
+      "repository": "kane50613/takumi",
+      "url": "https://api.github.com/repos/kane50613/takumi/releases?per_page=3",
+      "releases": [
+        {
+          "tag": "takumi@2.20.0",
+          "published": "2026-11-08T08:05:22Z"
+        },
+        {
+          "tag": "takumi-svg@0.3.35",
+          "published": "2026-11-08T08:05:22Z"
+        },
+        {
+          "tag": "takumi-raster@0.7.0",
+          "published": "2026-11-08T08:05:23Z"
+        }
+      ]
+    },
+    {
+      "repository": "adrbn/bo2-mac",
+      "url": "https://api.github.com/repos/adrbn/bo2-mac/releases?per_page=3",
+      "releases": [
+        {
+          "tag": "v0.2.0-test.4",
+          "published": "2026-11-06T16:04:54Z"
+        },
+        {
+          "tag": "v0.2.0-test.3",
+          "published": "2026-11-06T09:39:12Z"
+        },
+        {
+          "tag": "v0.2.0-test.2",
+          "published": "2026-11-05T16:06:01Z"
+        }
+      ]
+    },
+    {
+      "repository": "Vaibhaav-Tiwari/deepseek-v3-jax",
+      "url": "https://api.github.com/repos/Vaibhaav-Tiwari/deepseek-v3-jax/releases?per_page=3",
+      "releases": [
+        {
+          "tag": "v1.0",
+          "published": "2026-11-14T14:59:40Z"
+        }
+      ]
+    }
+  ],
+  "supplemental": [
+    {
+      "name": "0xdeadf1sh/AssemblyForNeovim/head",
+      "url": "https://api.github.com/repos/0xdeadf1sh/AssemblyForNeovim/commits/main",
+      "sha": "58a471ec97fb5987eca2b955fd2cba8693a414f6",
+      "date": "2026-11-12T08:22:58Z",
+      "title": "Merge pull request #3 from rxolve/c2x-fallback"
+    },
+    {
+      "name": "FURSOY/fursoy-cpu/head",
+      "url": "https://api.github.com/repos/FURSOY/fursoy-cpu/commits/main",
+      "sha": "377ae9563ab1b88ee0a037f2223ab49822968396",
+      "date": "2026-11-15T06:51:23Z",
+      "title": "docs: add pipeline diagram, clarify execution ports, and sync architecture docs"
+    },
+    {
+      "name": "0xdeadf1sh/AssemblyForNeovim/pulls/4",
+      "url": "https://api.github.com/repos/0xdeadf1sh/AssemblyForNeovim/pulls/4",
+      "state": "open",
+      "updated": "2026-11-12T13:09:49Z",
+      "comments": 0,
+      "mergedAt": null,
+      "head": "22e08c1171b153b543137b7ae7ab43ec6f088eb1"
+    },
+    {
+      "name": "adrbn/bo2-mac/pulls/7",
+      "url": "https://api.github.com/repos/adrbn/bo2-mac/pulls/7",
+      "state": "open",
+      "updated": "2026-11-13T16:23:07Z",
+      "comments": 0,
+      "mergedAt": null,
+      "head": "722a4eb48995fff6ecda88db23c22b6422f1382c"
+    },
+    {
+      "name": "kane50613/takumi/pulls/2569",
+      "url": "https://api.github.com/repos/kane50613/takumi/pulls/2569",
+      "state": "open",
+      "updated": "2026-11-16T02:08:42Z",
+      "comments": 2,
+      "mergedAt": null,
+      "head": "e500bebe8bdc7fe73d436ecb031ef87ff3aac4ba"
+    },
+    {
+      "name": "kane50613/takumi/pulls/2571",
+      "url": "https://api.github.com/repos/kane50613/takumi/pulls/2571",
+      "state": "open",
+      "updated": "2026-11-16T02:08:30Z",
+      "comments": 19,
+      "mergedAt": null,
+      "head": "9fbc8a25b5bef05d326494be07c3d025112bc681"
+    },
+    {
+      "name": "kane50613/takumi/issues/2558",
+      "url": "https://api.github.com/repos/kane50613/takumi/issues/2558",
+      "state": "open",
+      "updated": "2026-11-14T16:03:44Z",
+      "comments": 0
+    },
+    {
+      "name": "FrigadeHQ/yogurt/issues/30",
+      "url": "https://api.github.com/repos/FrigadeHQ/yogurt/issues/30",
+      "state": "closed",
+      "updated": "2026-11-16T14:20:57Z",
+      "comments": 10
+    },
+    {
+      "name": "simpsoka/zigzag/issues/15",
+      "url": "https://api.github.com/repos/simpsoka/zigzag/issues/15",
+      "state": "open",
+      "updated": "2026-11-15T18:35:59Z",
+      "comments": 4
+    },
+    {
+      "name": "paul-nameless/agweb/issues/3",
+      "url": "https://api.github.com/repos/paul-nameless/agweb/issues/3",
+      "state": "open",
+      "updated": "2026-11-15T04:23:18Z",
+      "comments": 0
+    }
+  ],
+  "changedReleases": [
+    {
+      "repository": "FrigadeHQ/yogurt",
+      "before": "v0.3.24",
+      "after": "v0.3.34",
+      "source": "2004c7fc3d77538a648bf28632e49d484349a057",
+      "comparison": "https://github.com/FrigadeHQ/yogurt/compare/v0.3.24...v0.3.34",
+      "comparedCommits": 28,
+      "changedFiles": 93,
+      "consequentialPaths": [
+        "app/src/main/store.ts",
+        "app/src/main/index.ts",
+        "app/src/main/asr/hallucination.ts",
+        "app/test/store.test.ts"
+      ],
+      "consequence": "Legacy stopped/done empty meetings are selected once; original reporter confirms recovery. A partial transcript remains excluded."
+    },
+    {
+      "repository": "Parcha-ai/agentrun",
+      "before": "v0.1.0-beta.38",
+      "after": "v0.1.0-beta.40",
+      "source": "bb7fb3eab9ad592fe81a57c1389744856889da7b",
+      "consequentialPaths": [
+        "packages/serve/src/learn/promote.ts",
+        "packages/serve/src/learn/refit.ts",
+        "packages/serve/src/runner/promotion.ts",
+        "packages/serve/src/runner/workflow-first.ts",
+        "packages/serve/src/learning-cost.ts",
+        "packages/serve/src/store-reads/learning.ts"
+      ],
+      "consequence": "Current wrong-workflow-answer grading and serving-only cost selection change; hand-back scoring and low-evidence dry-run exception remain. Upgrade notes now distinguish SQLite and Postgres."
+    }
+  ],
+  "sourceSha256Before": "f159a21cc8cbeb8fbf9dcf250080ef635994ea24ff280a25c9882b6fb6414cb3",
+  "sourceSha256After": "589cbb345324436c517e694f77c3833d98a6d539eea1afea3cb5cc020fa14aee",
+  "populationAndRosterChanged": false,
+  "publisherState": "disabled_manually",
+  "publisherVerification": "Read-only gh API fallback after connector rejected the workflow-metadata URL.",
+  "publicationManifestEntries": 0,
+  "publicationPerformed": false,
+  "scope": "Consequential release/issue/source check, not a fresh review of all default branches or repeated product evaluations. Previous receipts retain their version boundaries."
+}

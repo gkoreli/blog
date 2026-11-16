@@ -1,0 +1,147 @@
+{
+  "before": {
+    "release": "0.1.0-beta.38",
+    "source": "d10f0053e09cd7ac0186006b13f7a6a52aa8bc22"
+  },
+  "after": {
+    "release": "0.1.0-beta.40",
+    "source": "bb7fb3eab9ad592fe81a57c1389744856889da7b",
+    "moduleHashes": {
+      "learn/promote.js": "e8346e76ecca8d5a4607ea03d0d87b8d9af457d06a2cf1cf7137c116de16fd6c",
+      "learn/refit.js": "cf65968b023ed35617297101ca0f811d6ce5774fdee3ee599c6f245ad817f2ba",
+      "learning-cost.js": "a1eafed74ea6d0c28e7539cfd8d4e44d796a543003285f3551c9c9d2dba9e776"
+    }
+  },
+  "node": "v24.22.3",
+  "scoring": [
+    {
+      "case": "one-answer-nineteen-handbacks",
+      "suppliedRows": 20,
+      "score": {
+        "n": 20,
+        "agree": 1,
+        "agent_acc": 1,
+        "wf_acc": 1,
+        "delta": 0,
+        "handed_back": 19
+      },
+      "clearsScoringPredicate": true
+    },
+    {
+      "case": "all-handbacks",
+      "suppliedRows": 20,
+      "score": {
+        "n": 20,
+        "agree": 0,
+        "agent_acc": 1,
+        "wf_acc": 1,
+        "delta": 0,
+        "handed_back": 20
+      },
+      "clearsScoringPredicate": false
+    },
+    {
+      "case": "five-answers-fifteen-failures",
+      "suppliedRows": 20,
+      "score": {
+        "n": 5,
+        "agree": 5,
+        "agent_acc": 1,
+        "wf_acc": 1,
+        "delta": 0,
+        "handed_back": 0
+      },
+      "clearsScoringPredicate": true
+    }
+  ],
+  "previouslyWrongWorkflowAnswer": {
+    "oldUnchanged": {
+      "n": 5,
+      "agree": 5,
+      "agent_acc": 0,
+      "wf_acc": 0,
+      "delta": 0,
+      "handed_back": 0
+    },
+    "currentUnchanged": {
+      "n": 5,
+      "agree": 5,
+      "agent_acc": 1,
+      "wf_acc": 0,
+      "delta": -1,
+      "handed_back": 0
+    },
+    "currentDifferentWithoutExpected": {
+      "n": 5,
+      "agree": 0,
+      "agent_acc": 1,
+      "wf_acc": 1,
+      "delta": 0,
+      "handed_back": 0
+    },
+    "currentDifferentWithExpected": {
+      "n": 5,
+      "agree": 0,
+      "agent_acc": 1,
+      "wf_acc": 0,
+      "delta": -1,
+      "handed_back": 0
+    },
+    "currentExpectedMatch": {
+      "n": 5,
+      "agree": 0,
+      "agent_acc": 1,
+      "wf_acc": 1,
+      "delta": 0,
+      "handed_back": 0
+    },
+    "oldComparisonLimit": "The beta.38 scorer comparison is arithmetic only: beta.38 replay selection normally chose agent-path grades, not these workflow-path rows. It is not a reproduced beta.38 service defect."
+  },
+  "costSelection": {
+    "suppliedServingRows": 20,
+    "insertedNonservingRows": 2,
+    "oldClean": {
+      "runs": 20,
+      "mean_usd": 1
+    },
+    "currentClean": {
+      "runs": 20,
+      "mean_usd": 1
+    },
+    "oldWithNonservingRows": {
+      "runs": 22,
+      "mean_usd": 91.818182
+    },
+    "currentWithNonservingRows": {
+      "runs": 20,
+      "mean_usd": 1
+    }
+  },
+  "modelCalls": 0,
+  "realSpend": 0,
+  "fullPromotionOrchestrationExercised": false,
+  "scope": "Actual published scoring and cost aggregation on declared synthetic rows. No full service, model learning, semantic correctness, replay orchestration or real cost-saving result. clears is a scoring predicate, not a complete promotion decision.",
+  "packages": {
+    "@parcha/agentrun-serve": {
+      "version": "0.1.0-beta.40",
+      "integrity": "sha512-e+DlPpULtE3ztJzQEALMx3VhEwPAKKbIJNs7ezY0FUNkGHvEvpxsE5zCX+WsMkJ1BtrGqbfjYsWaID+TP2GhVw=="
+    },
+    "@parcha/agentrun-dsl": {
+      "version": "0.1.0-beta.40",
+      "integrity": "sha512-TV5VCT2zrfS/5Jjn/fCvMk8yaZ4IZMZnSeISqkbaVppzTSmLzVgBym+lZcKsmWqWFZ+pMIE4yMsACtGsR8NZBQ=="
+    },
+    "@earendil-works/pi-durable": {
+      "version": "1.5.2",
+      "integrity": "sha512-zDB3anbI/yD0IG+VVY+g5tU+c5XOVqQAFwLkXRMiqZb4p/afWro0voZtLNoRAWcDA2r73kvmH6kKin9Ka8l55g=="
+    },
+    "@earendil-works/chord": {
+      "version": "1.5.2",
+      "integrity": "sha512-3g088g7qVXL2cpRAKWjj9za6RLls9FBnuUo5c0hBZ0xCftBQjae0opS+34M22vdXTVE7BNqkRG/FPc9BsM7eEg=="
+    },
+    "@earendil-works/pi-ai": {
+      "version": "1.5.2",
+      "integrity": "sha512-2tWPSnV3qzfiDIY3aWluBag3vC++Vs+VsXt/UquSU5onPMohPih72FUhIhaqmDdMYubOgB3Byl9uF4Vk40JLvQ=="
+    }
+  },
+  "fixtureSha256": "962715f02710dc65aa72073544d7165ecd8cb142a37d24b692d8bd018f40a00d"
+}

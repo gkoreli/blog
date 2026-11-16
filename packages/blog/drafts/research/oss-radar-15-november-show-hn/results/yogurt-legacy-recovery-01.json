@@ -1,0 +1,59 @@
+{
+  "baseline": {
+    "release": "0.3.24",
+    "source": "0f2e5bc5d9452e956dfc82b26b96ec1fd14f3a60",
+    "candidatesAfterUpgrade": [],
+    "candidatesAfterHandledReopen": [],
+    "partialStillPendingButIneligible": true,
+    "scope": "Actual file-backed store candidate selection and one-time migration, with fresh and reopened SQLite. No transcription, summary, model or full application trial."
+  },
+  "current": {
+    "release": "0.3.34",
+    "source": "2004c7fc3d77538a648bf28632e49d484349a057",
+    "candidatesAfterUpgrade": [
+      "legacy-stopped-empty",
+      "legacy-done-empty"
+    ],
+    "candidatesAfterHandledReopen": [],
+    "partialStillPendingButIneligible": true,
+    "scope": "Actual file-backed store candidate selection and one-time migration, with fresh and reopened SQLite. No transcription, summary, model or full application trial."
+  },
+  "upstreamTests": {
+    "source": "2004c7fc3d77538a648bf28632e49d484349a057",
+    "files": [
+      {
+        "file": "backfill.test.ts",
+        "tests": 4,
+        "status": "passed"
+      },
+      {
+        "file": "hallucination.test.ts",
+        "tests": 10,
+        "status": "passed"
+      },
+      {
+        "file": "store.test.ts",
+        "tests": 42,
+        "status": "passed"
+      }
+    ],
+    "unchangedUpstreamTestsPassed": 56,
+    "authoredCurrentTestsPassed": 1,
+    "failures": 0
+  },
+  "environment": {
+    "node": "24.22.3",
+    "vitest": "5.0.4",
+    "electronImport": "44.7.2; no Electron UI or binary download",
+    "chrono-node": "2.10.3",
+    "platform": "macOS arm64"
+  },
+  "fixtureSha256": "39eb4f06eefb57bcdb8e1dd7f1f04835cf3ab26c2261a31c17927ac90a84a227",
+  "currentSourceHashes": {
+    "app/src/main/store.ts": "b0648ce6676f91d518c7ddd46092286cf2400c8d00c31b3c12faa75ef2bb4409",
+    "app/src/main/index.ts": "03a9b9e53b6c9d8798c61a6eedbed4e3abd1da9dc518be7ba33d6067f2cfce1e",
+    "app/src/main/asr/backfill.ts": "7fd1d334b0dcfc0555a4f24dbeb61a14ab581ffd4421d0bcfb0d70c891dfcd9c",
+    "app/src/main/asr/hallucination.ts": "312a4c70bd401c1c7977e2f33e3fdaffab7aa9ac731e45fcbbaa5b59cd2caeff"
+  },
+  "scope": "Actual SQLite migration/candidate/reopen controls and unchanged selected upstream tests. Earlier real decoder/model recognition remains a 0.3.24 result; no new native capture, recognition, summary or full application trial."
+}
