@@ -14,7 +14,7 @@ The earlier [tool and Stats work](../../../packages/blog/drafts/research/ai-site
 | 04 Links | Shared sections own complete link/focus states without depending on an incidental ancestor. | Standalone/rich article examples and both themes. |
 | 05 License | Public license destinations work, public copy explains scope without repository paths or duplicated citation text. | Rendered destinations and policy-preservation check. |
 | 06 Report scope | Independent report calendars and selections are visibly bounded; filter ownership is unambiguous. | Both report contexts, selection behavior and unchanged data. |
-| 07 Discovery | Archives offer the shipped search and meaningful topic navigation while retaining their full chronology. | Search/topic navigation, native fallback and complete article inventory. |
+| 07 Discovery | Archives retain topic navigation and full chronology; shared navigation opens the shipped search. | Topic destinations, native search fallback and complete article inventory, with no inline archive search form. |
 | 08 Reading navigation | Long articles expose stable, useful section navigation in their actual reading shell. | Markdown/rich/immersive articles, native links and phone layouts. |
 | 09 Tables | Full evidence remains available with an overflow cue, focusable scrolling and retained row identity where appropriate. | Long-label/merged-cell fixtures and actual technical articles. |
 | 10 Interaction density | Frequent phone targets and narrow section navigation follow one interaction scale. | 320px and 393px targets, menu Escape/scroll lock and section-index behavior. |
@@ -50,3 +50,5 @@ Seven fresh live browser views confirm healthy reports, viewer-local daily label
 ## Sidebar utility follow-up
 
 The separate [November 15 sidebar correction](sidebar-utilities-2026-11-15.md) unifies the icon controls and moves search beside Contents. It preserves the completed thirteen-area acceptance above and records its own delivery and current serving checks.
+
+The [archive search correction](archive-search-removal-2026-11-15.md) removes the extra content forms from all three archives while preserving their topic links and article inventories. It supersedes the earlier inline archive-form presentation only.

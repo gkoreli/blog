@@ -21,9 +21,7 @@ test('archives retain every article and make topics independent scoped search de
     const posts = [post(section, 'one', ['shared', 'one']), post(section, 'two', ['shared', 'two'])];
     const [snapshot] = await renderContent([page(posts)]); assert.ok(snapshot);
     const root = document.createElement('section'); root.innerHTML = snapshot;
-    const form = root.querySelector('form'); assert.ok(form);
-    assert.equal(form.getAttribute('action'), '/search'); assert.equal(form.getAttribute('method'), 'get');
-    assert.equal(root.querySelector<HTMLInputElement>('input[name="section"]')?.value, section);
+    assert.equal(root.querySelector('form'), null);
     const articles = root.querySelectorAll('.section-archive-list article'); assert.equal(articles.length, posts.length);
     for (const [index, article] of [...articles].entries()) {
       assert.equal(article.querySelector('a')?.getAttribute('href'), `/${posts[index]?.slug}`);
