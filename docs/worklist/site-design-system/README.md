@@ -46,3 +46,7 @@ The final local checks also pass fifteen time-kernel tests, shared-time source-b
 Implementation `b30bf1ba` is integrated and published on main as `ed7c5965`. Cloudflare build `5139622a-92df-44ca-9295-2b905499fab2` is ready, with active version `4bf7b0fb` at 100% traffic. The [acceptance receipt](acceptance-2026-11-15.json) records all thirteen areas separately, ten ordinary public page responses and eight exact served asset matches.
 
 Seven fresh live browser views confirm healthy reports, viewer-local daily labels and calculation times, retained native UTC instants, compact metrics, scoped search, sticky reading navigation and a single complete provenance section. Desktop and 320px/393px phone views have no page overflow; all sixteen Stats reading notes and seventeen method paragraphs remain. The browser viewport override and original theme are restored. Both isolated QA servers preserve their original forty-eight rows and are stopped. No required implementation or acceptance work remains.
+
+## Sidebar utility follow-up
+
+The separate [November 15 sidebar correction](sidebar-utilities-2026-11-15.md) unifies the icon controls and moves search beside Contents. It preserves the completed thirteen-area acceptance above and records its own delivery and current serving checks.

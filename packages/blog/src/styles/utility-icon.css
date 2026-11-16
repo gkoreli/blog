@@ -2,5 +2,9 @@
 .ui-icon { display: inline-block; width: var(--ui-icon-size,16px); height: var(--ui-icon-size,16px); flex: 0 0 var(--ui-icon-size,16px); vertical-align: -.15em; background: currentColor; mask-image: var(--ui-icon-image); mask-position: center; mask-size: contain; mask-repeat: no-repeat; mask-mode: alpha; }
 .burger-btn { color: var(--color-link); }
 .burger-btn .ui-icon { --ui-icon-size: 20px; }
-.theme-toggle button { color: var(--color-link); }
+/* Shared geometry for quiet navigation and appearance controls. */
+.icon-control { display: inline-flex; align-items: center; justify-content: center; flex: 0 0 var(--target-min); width: var(--target-min); height: var(--target-min); margin: 0; padding: 0; border: 0; border-radius: var(--control-radius); appearance: none; background: transparent; color: var(--color-text-secondary); box-shadow: none; text-decoration: none; cursor: pointer; }
+.icon-control:hover { color: var(--color-link); background: var(--color-surface); }
+.icon-control:focus-visible { outline-offset: -3px; }
+.icon-control > .ui-icon { --ui-icon-size: 20px; }
 @media(forced-colors:active) { .ui-icon { forced-color-adjust: none; background: ButtonText; } }

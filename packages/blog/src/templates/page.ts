@@ -12,8 +12,8 @@ function turnstileSiteKey(): string {
   return process.env['TURNSTILE_SITE_KEY'] ?? '';
 }
 
-function searchLauncher(placement: string): TemplateResult {
-  return html`<a href="/search" class="search-icon-link ${placement}" data-search-open aria-label="Search publication" title="Search publication (Ctrl K)">${utilityIcon('search')}</a>`;
+function searchLauncher(placement: 'mobile' | 'sidebar'): TemplateResult {
+  return html`<a href="/search" class="search-icon-link ${placement === 'sidebar' ? 'search-sidebar-link' : 'search-mobile-link icon-control'}" data-search-open aria-label="Search publication" title="Search publication (Ctrl K)">${utilityIcon('search')}${placement === 'sidebar' ? html`<span>Search</span>` : ''}</a>`;
 }
 
 const SITE_URL = 'https://gkoreli.com';
@@ -112,12 +112,12 @@ export function pageShell({ title, description, content, canonicalPath, currentS
           </a>
           <p>Where excitement ends, depth begins.</p>
         </div>
-        ${searchLauncher('search-mobile-link')}
+        ${searchLauncher('mobile')}
         <nisli-burger-menu></nisli-burger-menu>
       </div>
 
       <div class="sidebar-nav">
-        <div class="sb-contents-heading"><div class="sb-cat">Contents</div>${searchLauncher('search-compact-link')}</div>
+        <div class="sb-contents-heading"><div class="sb-cat">Contents</div>${searchLauncher('sidebar')}</div>
         <nav class="sidebar-section">
           <a href="/" class="${isHome ? 'active' : ''}"><span class="sb-dot"></span>Home</a>
           <a href="/essays" class="${currentSection === 'essays' ? 'active' : ''}"><span class="sb-dot"></span>Essays</a>
@@ -139,15 +139,15 @@ export function pageShell({ title, description, content, canonicalPath, currentS
       </nav>
 
       <div class="sidebar-social">
-        <a href="https://github.com/gkoreli" aria-label="GitHub" title="GitHub" target="_blank" rel="noopener">${utilityIcon('github')}</a>
-        <a href="https://x.com/GogaKoreli" aria-label="X" title="X" target="_blank" rel="noopener">${utilityIcon('x')}</a>
-        <a href="https://www.linkedin.com/in/goga-koreli/" aria-label="LinkedIn" title="LinkedIn" target="_blank" rel="noopener">${utilityIcon('linkedin')}</a>
+        <a class="icon-control" href="https://github.com/gkoreli" aria-label="GitHub" target="_blank" rel="noopener">${utilityIcon('github')}</a>
+        <a class="icon-control" href="https://x.com/GogaKoreli" aria-label="X" target="_blank" rel="noopener">${utilityIcon('x')}</a>
+        <a class="icon-control" href="https://www.linkedin.com/in/goga-koreli/" aria-label="LinkedIn" target="_blank" rel="noopener">${utilityIcon('linkedin')}</a>
         <nisli-theme-toggle></nisli-theme-toggle>
       </div>
     </aside>
     </div>
 
-    <div class="gutter"><div class="publication-rail"><div class="publication-rail-tools">${searchLauncher('search-rail-link')}</div>${gutter ?? ''}</div></div>
+    <div class="gutter">${gutter ? html`<div class="publication-rail">${gutter}</div>` : ''}</div>
 
     <main class="content">
       ${content}

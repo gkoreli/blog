@@ -11,7 +11,6 @@ body { min-height: 100vh; }
 
 .gutter { grid-column: 3; grid-row: 1; min-width: 0; }
 .publication-rail { position: sticky; top: 32px; max-height: calc(100dvh - 64px); overflow-y: auto; margin-top: 2rem; padding: 0 16px 16px 24px; max-width: 290px; }
-.publication-rail-tools { display: flex; }
 .layout-report .publication-rail { display: none; }
 
 .sidebar-wrapper {
@@ -148,30 +147,14 @@ body { min-height: 100vh; }
 
 .sidebar-social {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   align-items: center;
   gap: 0;
-  margin-top: 0.7rem;
+  margin-top: 8px;
 }
 
-.sidebar-social a {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  width: var(--target-min);
-  height: var(--target-min);
-  border-radius: 0.325rem;
-  border: 0;
-  background: none;
-  text-decoration: none;
-  color: var(--color-link);
-}
-
-.sidebar-social a::before { content: ''; position: absolute; inset: 7px; border: 1px solid var(--color-border); border-radius: var(--control-radius); }
-.sidebar-social a:hover::before { background: var(--color-surface); border-color: var(--color-control-border); }
-.sidebar-social .ui-icon { position: relative; width: 16px; height: 16px; }
-.sidebar-social a img { display: block; }
+.sidebar-social nisli-theme-toggle { margin-left: auto; }
+@media (min-width: 769px) { .layout-report .sidebar { padding-inline: 12px; } }
 
 /* ── Gradient separator ── */
 .separator {

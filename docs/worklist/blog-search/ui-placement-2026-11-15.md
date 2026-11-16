@@ -1,5 +1,7 @@
 # Compact search placement
 
+Superseded later November 15 by the [sidebar utility correction](../site-design-system/sidebar-utilities-2026-11-15.md). This dated record retains the earlier layout and checks; the current shell places labeled Search beside Contents on desktop.
+
 November 15, 2026. A bounded presentation follow-up to completed [search v0.2](v0.2.md) and the [publication reading layout](../site-design-system/README.md). Retrieval policies and frozen research results are unchanged.
 
 ## Change and acceptance
