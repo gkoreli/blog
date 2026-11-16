@@ -1,0 +1,121 @@
+{
+  "checkedAt": "2026-11-16T03:33:53.259Z",
+  "sourceCommit": "6badf3c056a5034fafff3bcd0de3df999963d2a9",
+  "buildUuid": "fd8126bd-7322-4a8d-bed8-a563eaf7cf03",
+  "ok": true,
+  "results": [
+    {
+      "pathname": "/",
+      "status": 200,
+      "sha256": "9a8f8191b8fe347c3e966ff1caf72175c2e14885941a14861272ac950a97b2a0",
+      "contentType": "text/html",
+      "buildMarker": true,
+      "desktopSearch": 1,
+      "mobileSearch": 1,
+      "railSearch": 0,
+      "socialNames": [
+        "GitHub",
+        "X",
+        "LinkedIn"
+      ],
+      "socialTitles": 0
+    },
+    {
+      "pathname": "/which-ai-fetchers-send-which-headers",
+      "status": 200,
+      "sha256": "00903bb0cc595bb62d456df2a44d20c2f8d8e1123606fb641230a9559737e97a",
+      "contentType": "text/html",
+      "buildMarker": true,
+      "desktopSearch": 1,
+      "mobileSearch": 1,
+      "railSearch": 0,
+      "socialNames": [
+        "GitHub",
+        "X",
+        "LinkedIn"
+      ],
+      "socialTitles": 0
+    },
+    {
+      "pathname": "/stats",
+      "status": 200,
+      "sha256": "32cabe39f5f7d1db25162c8d8a83ad289c9d30b02f2056838532003344500415",
+      "contentType": "text/html",
+      "buildMarker": true,
+      "desktopSearch": 1,
+      "mobileSearch": 1,
+      "railSearch": 0,
+      "socialNames": [
+        "GitHub",
+        "X",
+        "LinkedIn"
+      ],
+      "socialTitles": 0
+    },
+    {
+      "pathname": "/main.js",
+      "status": 200,
+      "sha256": "19bdbc965336627189af1af35f1f22359d34f3596a6077f69f2d92f85541371b",
+      "contentType": "text/javascript",
+      "matchesLocal": true
+    },
+    {
+      "pathname": "/main.css",
+      "status": 200,
+      "sha256": "745672a4a8e7c8708ad255e5e1723743f72ec70f2cf851425087ce82a9310a1c",
+      "contentType": "text/css",
+      "matchesLocal": true
+    }
+  ],
+  "activation": {
+    "versionId": "5315d49e-5a6c-424e-984f-209f70fd5457",
+    "status": "Ready",
+    "trafficPercent": 100,
+    "buildCompletedAt": "2026-11-16T03:33:11.086Z",
+    "source": "Cloudflare deployment dashboard"
+  },
+  "localShellAudit": {
+    "commonShellPages": 64,
+    "standalonePages": [
+      "404.html"
+    ],
+    "desktopSearchLaunchersPerShell": 1,
+    "mobileSearchLaunchersPerShell": 1,
+    "searchLaunchersInArticleRail": 0,
+    "socialIconControlsPerShell": 3
+  },
+  "liveBrowser": {
+    "viewportWidths": [
+      1280,
+      393,
+      320
+    ],
+    "visibleSearchLaunchersPerViewport": 1,
+    "documentOverflow": false,
+    "footerTargetPx": 44,
+    "footerGlyphPx": 20,
+    "footerControlsAligned": true,
+    "desktopSearchLabel": "Search",
+    "desktopSearchLocation": "Beside Contents",
+    "appearance": [
+      "pointer activation",
+      "Space activation",
+      "reload persistence",
+      "both themes"
+    ],
+    "search": [
+      "click activation",
+      "Cmd+K activation",
+      "phone Enter activation",
+      "five articles returned for word query",
+      "query retention",
+      "Escape focus return",
+      "expanded phone menu restored after dialog dismissal"
+    ],
+    "cleanup": [
+      "original light theme restored",
+      "default viewport restored",
+      "owned preview stopped"
+    ]
+  }
+}
