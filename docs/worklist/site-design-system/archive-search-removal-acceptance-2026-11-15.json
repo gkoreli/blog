@@ -1,0 +1,111 @@
+{
+  "checkedAt": "2026-11-16T03:45:15.310Z",
+  "sourceCommit": "ac2039b490e04a7ddbee0888b6c45b956b04c467",
+  "ok": true,
+  "results": [
+    {
+      "path": "/engineering",
+      "status": 200,
+      "buildId": "cf:bafdbe43-6b81-473e-9d27-2f575be312df:ac2039b490e04a7ddbee0888b6c45b956b04c467",
+      "sourceMarker": true,
+      "inlineSearchForms": 0,
+      "searchInputsInArchive": 0,
+      "articles": 26,
+      "articleListSha256": "d86dc6de0afa7e3c528b77fcb647d5802819ffc01cc92c0896e9766fe817b31f",
+      "articlesUnchanged": true,
+      "topicLinks": 193,
+      "topicLinksUnchanged": true,
+      "navigationSearch": true
+    },
+    {
+      "path": "/essays",
+      "status": 200,
+      "buildId": "cf:bafdbe43-6b81-473e-9d27-2f575be312df:ac2039b490e04a7ddbee0888b6c45b956b04c467",
+      "sourceMarker": true,
+      "inlineSearchForms": 0,
+      "searchInputsInArchive": 0,
+      "articles": 6,
+      "articleListSha256": "e24f53be820fd3249f92fe33a044fc8770811ee4c717790cf925b910ebc290d5",
+      "articlesUnchanged": true,
+      "topicLinks": 48,
+      "topicLinksUnchanged": true,
+      "navigationSearch": true
+    },
+    {
+      "path": "/oss-radar",
+      "status": 200,
+      "buildId": "cf:bafdbe43-6b81-473e-9d27-2f575be312df:ac2039b490e04a7ddbee0888b6c45b956b04c467",
+      "sourceMarker": true,
+      "inlineSearchForms": 0,
+      "searchInputsInArchive": 0,
+      "articles": 14,
+      "articleListSha256": "4e975190b676f6950cbc7ec06129becd26fc6e95fddad819880ff30060f9f806",
+      "articlesUnchanged": true,
+      "topicLinks": 115,
+      "topicLinksUnchanged": true,
+      "navigationSearch": true
+    },
+    {
+      "path": "/main.css",
+      "status": 200,
+      "sha256": "4f51381b989e797bc03f6a1bc4a23f667c371703d0b77a8fee97112ca7f80e74",
+      "matchesLocal": true,
+      "removedSelectorsAbsent": true
+    }
+  ],
+  "activation": {
+    "buildUuid": "bafdbe43-6b81-473e-9d27-2f575be312df",
+    "versionId": "306e1a7f-9e69-4479-8b1c-9861a58c0597",
+    "status": "Ready",
+    "trafficPercent": 100,
+    "buildCompletedAt": "2026-11-16T03:44:33.275Z",
+    "source": "Cloudflare deployment dashboard"
+  },
+  "localPreservation": [
+    {
+      "slug": "engineering",
+      "articles": 26,
+      "topicLinks": 193,
+      "articlesUnchanged": true,
+      "topicLinksUnchanged": true,
+      "inlineSearchForms": 0
+    },
+    {
+      "slug": "essays",
+      "articles": 6,
+      "topicLinks": 48,
+      "articlesUnchanged": true,
+      "topicLinksUnchanged": true,
+      "inlineSearchForms": 0
+    },
+    {
+      "slug": "oss-radar",
+      "articles": 14,
+      "topicLinks": 115,
+      "articlesUnchanged": true,
+      "topicLinksUnchanged": true,
+      "inlineSearchForms": 0
+    }
+  ],
+  "checks": {
+    "workspaceTypes": "passed",
+    "publicationPatternTests": 4,
+    "productionBuildArticles": 46,
+    "referralPolicy": "passed"
+  },
+  "liveBrowser": {
+    "path": "/engineering",
+    "viewportWidths": [
+      1280,
+      393
+    ],
+    "inlineSearchForms": 0,
+    "visibleSearchLaunchers": 1,
+    "documentOverflow": false,
+    "cleanup": [
+      "original light theme restored",
+      "default viewport restored",
+      "owned preview stopped"
+    ]
+  }
+}
