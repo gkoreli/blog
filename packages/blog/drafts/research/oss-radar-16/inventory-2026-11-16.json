@@ -1,0 +1,195 @@
+{
+  "recorded": "2026-11-16",
+  "issue": 16,
+  "nominalReleaseDate": "2026-11-23",
+  "publication": "paused; research only; no queue entry",
+  "method": "Purposive eight-repository pool fixed before qualification, drawn from existing independently checked public leads, the November 14 Show HN scout and three possible returns to OSS Radar #1. Not a public-feed census, popularity ranking or final featured roster.",
+  "candidates": [
+    {
+      "repository": "NousResearch/hermes-agent",
+      "name": "Hermes Agent",
+      "origin": "Existing independently verified public lead",
+      "originRecord": "../../../../../docs/worklist/oss-radar-weekly/sources.md",
+      "repositoryUrl": "https://github.com/NousResearch/hermes-agent",
+      "selectedRef": "v0.23.2",
+      "sourceSha": "ae2a81ccc00e9b7c06301523e5bb09608397149c",
+      "sourceUrl": "https://github.com/NousResearch/hermes-agent/tree/ae2a81ccc00e9b7c06301523e5bb09608397149c",
+      "sourceCommitDate": "2026-11-16T19:28:45Z",
+      "release": {
+        "tag": "v0.23.2",
+        "published": "2026-11-16T20:59:18Z",
+        "prerelease": false,
+        "url": "https://github.com/NousResearch/hermes-agent/releases/tag/v0.23.2"
+      },
+      "license": "MIT",
+      "licenseSources": [
+        "https://github.com/NousResearch/hermes-agent/blob/ae2a81ccc00e9b7c06301523e5bb09608397149c/LICENSE"
+      ],
+      "apiLicense": "MIT",
+      "disposition": "selected for diligence",
+      "readerJob": "Persistent memory and reusable agent skills",
+      "nextAction": "Exercise actual memory load/mutation/reopen and skill persistence; distinguish prompt memory from learned model weights."
+    },
+    {
+      "repository": "NVIDIA/NemoClaw",
+      "name": "NemoClaw",
+      "origin": "Existing independently verified public lead",
+      "originRecord": "../../../../../docs/worklist/oss-radar-weekly/sources.md",
+      "repositoryUrl": "https://github.com/NVIDIA/NemoClaw",
+      "selectedRef": "main",
+      "sourceSha": "1981b81a3d39ca3e58d4f5aae0bce7d2b7051b0d",
+      "sourceUrl": "https://github.com/NVIDIA/NemoClaw/tree/1981b81a3d39ca3e58d4f5aae0bce7d2b7051b0d",
+      "sourceCommitDate": "2026-11-16T20:32:58Z",
+      "release": null,
+      "license": "Apache-2.0",
+      "licenseSources": [
+        "https://github.com/NVIDIA/NemoClaw/blob/1981b81a3d39ca3e58d4f5aae0bce7d2b7051b0d/LICENSE"
+      ],
+      "apiLicense": "Apache-2.0",
+      "disposition": "selected for diligence",
+      "readerJob": "Operate agent runtimes inside OpenShell",
+      "nextAction": "Map the installable artifact to source; exercise live policy mutation and replacement on an owned supported runtime before any containment claim."
+    },
+    {
+      "repository": "backnotprop/plannotator",
+      "name": "Plannotator",
+      "origin": "Existing independently verified public lead",
+      "originRecord": "../../../../../docs/worklist/oss-radar-weekly/sources.md",
+      "repositoryUrl": "https://github.com/backnotprop/plannotator",
+      "selectedRef": "v0.28.66",
+      "sourceSha": "85e847e8369189ee4027598212623edfe0cd1602",
+      "sourceUrl": "https://github.com/backnotprop/plannotator/tree/85e847e8369189ee4027598212623edfe0cd1602",
+      "sourceCommitDate": "2026-11-16T06:13:42Z",
+      "release": {
+        "tag": "v0.28.66",
+        "published": "2026-11-16T06:53:54Z",
+        "prerelease": false,
+        "url": "https://github.com/backnotprop/plannotator/releases/tag/v0.28.66"
+      },
+      "license": "MIT OR Apache-2.0",
+      "licenseSources": [
+        "https://github.com/backnotprop/plannotator/blob/85e847e8369189ee4027598212623edfe0cd1602/LICENSE-MIT",
+        "https://github.com/backnotprop/plannotator/blob/85e847e8369189ee4027598212623edfe0cd1602/LICENSE-APACHE"
+      ],
+      "apiLicense": "Apache-2.0",
+      "disposition": "selected for diligence",
+      "readerJob": "Review and route feedback across agent sessions",
+      "nextAction": "Exercise actual Inbox reply ownership, late grants and ended-session behavior at the release pin."
+    },
+    {
+      "repository": "LeriderTechnologies/bright-lines",
+      "name": "Bright Lines",
+      "origin": "November 14 Show HN scout; prior bounded component controls",
+      "originRecord": "../../../../../docs/worklist/oss-radar-weekly/scouting/2026-11-14.md",
+      "repositoryUrl": "https://github.com/LeriderTechnologies/bright-lines",
+      "selectedRef": "main",
+      "sourceSha": "84cfe3912b1c15dd1caf8a46bcbaab5d98b5a2a3",
+      "sourceUrl": "https://github.com/LeriderTechnologies/bright-lines/tree/84cfe3912b1c15dd1caf8a46bcbaab5d98b5a2a3",
+      "sourceCommitDate": "2026-11-13T12:00:00Z",
+      "release": null,
+      "license": "MIT",
+      "licenseSources": [
+        "https://github.com/LeriderTechnologies/bright-lines/blob/84cfe3912b1c15dd1caf8a46bcbaab5d98b5a2a3/LICENSE"
+      ],
+      "apiLicense": "MIT",
+      "disposition": "retained comparator",
+      "readerJob": "Guard coding-agent tool calls",
+      "nextAction": "Reuse November 14 controls; host timeout behavior and representative workflow cost remain untested."
+    },
+    {
+      "repository": "AymanAhsan/CodeRelay",
+      "name": "CodeRelay",
+      "origin": "November 14 Show HN scout; implementation qualification pending",
+      "originRecord": "../../../../../docs/worklist/oss-radar-weekly/scouting/2026-11-14.md",
+      "repositoryUrl": "https://github.com/AymanAhsan/CodeRelay",
+      "selectedRef": "main",
+      "sourceSha": "ba0f79b7d81c3508e5d6fd95fd915b0babf54ac8",
+      "sourceUrl": "https://github.com/AymanAhsan/CodeRelay/tree/ba0f79b7d81c3508e5d6fd95fd915b0babf54ac8",
+      "sourceCommitDate": "2026-11-13T02:53:14Z",
+      "release": null,
+      "license": "MIT",
+      "licenseSources": [
+        "https://github.com/AymanAhsan/CodeRelay/blob/ba0f79b7d81c3508e5d6fd95fd915b0babf54ac8/LICENSE"
+      ],
+      "apiLicense": "MIT",
+      "disposition": "selected for diligence",
+      "readerJob": "Coordinate team agents through Git-pinned contracts",
+      "nextAction": "Exercise the actual local decision service with a contract revision during launch; compare packaged artifacts and upstream T3 Code."
+    },
+    {
+      "repository": "jakobhoeg/browser-ai",
+      "name": "browser-ai",
+      "origin": "OSS Radar #1 return candidate",
+      "originRecord": "../../../posts/002-oss-radar-01-vercel-winter-2026-cohort.md",
+      "repositoryUrl": "https://github.com/jakobhoeg/browser-ai",
+      "selectedRef": "@browser-ai/core@3.0.4",
+      "sourceSha": "441223a4a3ce0fdf2b1671922080e049ff4e24e9",
+      "sourceUrl": "https://github.com/jakobhoeg/browser-ai/tree/441223a4a3ce0fdf2b1671922080e049ff4e24e9",
+      "sourceCommitDate": "2026-10-01T09:43:45Z",
+      "release": {
+        "tag": "@browser-ai/core@3.0.4",
+        "published": "2026-10-01T09:45:17Z",
+        "prerelease": false,
+        "url": "https://github.com/jakobhoeg/browser-ai/releases/tag/%40browser-ai/core%403.0.4"
+      },
+      "license": "Apache-2.0 notice",
+      "licenseSources": [
+        "https://github.com/jakobhoeg/browser-ai/blob/441223a4a3ce0fdf2b1671922080e049ff4e24e9/LICENSE"
+      ],
+      "apiLicense": "NOASSERTION",
+      "disposition": "reserve; not selected",
+      "readerJob": "Run AI inference in a browser",
+      "nextAction": "Reserve; compare the historical checkpoint and current provider/model paths before choosing a meaningful browser trial."
+    },
+    {
+      "repository": "InsForge/insforge",
+      "name": "InsForge",
+      "origin": "OSS Radar #1 return candidate",
+      "originRecord": "../../../posts/002-oss-radar-01-vercel-winter-2026-cohort.md",
+      "repositoryUrl": "https://github.com/InsForge/InsForge",
+      "selectedRef": "v2.3.5",
+      "sourceSha": "c1c886e775d286433e4b50c78c24335783e8fc00",
+      "sourceUrl": "https://github.com/InsForge/insforge/tree/c1c886e775d286433e4b50c78c24335783e8fc00",
+      "sourceCommitDate": "2026-10-23T00:12:55Z",
+      "release": {
+        "tag": "v2.3.5",
+        "published": "2026-10-23T01:02:21Z",
+        "prerelease": false,
+        "url": "https://github.com/InsForge/InsForge/releases/tag/v2.3.5"
+      },
+      "license": "Apache-2.0",
+      "licenseSources": [
+        "https://github.com/InsForge/insforge/blob/c1c886e775d286433e4b50c78c24335783e8fc00/LICENSE"
+      ],
+      "apiLicense": "Apache-2.0",
+      "disposition": "reserve; not selected",
+      "readerJob": "Backend services designed for agent use",
+      "nextAction": "Reserve; establish the actual history and service/auth boundaries before claiming a changed product."
+    },
+    {
+      "repository": "yusing/godoxy",
+      "name": "GoDoxy",
+      "origin": "OSS Radar #1 return candidate",
+      "originRecord": "../../../posts/002-oss-radar-01-vercel-winter-2026-cohort.md",
+      "repositoryUrl": "https://github.com/yusing/godoxy",
+      "selectedRef": "v0.34.0",
+      "sourceSha": "77cbac6b532d7d3881010eade21fe1a7f9e4bf8e",
+      "sourceUrl": "https://github.com/yusing/godoxy/tree/77cbac6b532d7d3881010eade21fe1a7f9e4bf8e",
+      "sourceCommitDate": "2026-11-16T07:07:37Z",
+      "release": {
+        "tag": "v0.34.0",
+        "published": "2026-11-16T07:41:27Z",
+        "prerelease": false,
+        "url": "https://github.com/yusing/godoxy/releases/tag/v0.34.0"
+      },
+      "license": "MIT with Go-derived-code notices",
+      "licenseSources": [
+        "https://github.com/yusing/godoxy/blob/77cbac6b532d7d3881010eade21fe1a7f9e4bf8e/LICENSE"
+      ],
+      "apiLicense": "NOASSERTION",
+      "disposition": "selected for diligence",
+      "readerJob": "Operate a self-hosted reverse proxy and container services",
+      "nextAction": "Run an actual down/silence/end/recovery notification sequence and inspect setup output; obtain the declared Go toolchain and submodules without changing global configuration."
+    }
+  ]
+}

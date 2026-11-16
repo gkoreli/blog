@@ -1,0 +1,71 @@
+{
+  "date": "2026-11-16",
+  "sourceSha": "ba0f79b7d81c3508e5d6fd95fd915b0babf54ac8",
+  "environment": {
+    "node": "v24.14.1",
+    "effect": "4.0.0-rc.115",
+    "ws": "8.21.3",
+    "esbuild": "0.27.3",
+    "platform": "darwin",
+    "arch": "arm64"
+  },
+  "scope": "Unchanged upstream HubStore and loopback HTTP server; actual schemas; isolated owned SQLite; no provider, real team, Git checkout or claimed end-to-end agent trial",
+  "checks": [
+    {
+      "condition": "snapshot_requires_credential",
+      "status": 401
+    },
+    {
+      "condition": "explicit_agreement_with_stale_A",
+      "status": 409,
+      "currentPin": "B",
+      "state": "suggested"
+    },
+    {
+      "condition": "manual_accept_after_author_revision_without_observed_sha",
+      "status": 200,
+      "currentPin": "B",
+      "state": "accepted",
+      "contractAwaiting": null
+    },
+    {
+      "condition": "explicit_current_B_then_accept",
+      "agreementStatus": 200,
+      "acceptanceStatus": 200,
+      "currentPin": "B"
+    },
+    {
+      "condition": "revise_accepted_contract",
+      "status": 404
+    },
+    {
+      "condition": "accept_assignee_revision_before_author_agreement",
+      "status": 409
+    },
+    {
+      "condition": "accept_assignee_revision_after_author_agreement",
+      "status": 200,
+      "currentPin": "B"
+    },
+    {
+      "condition": "completion_by_other_member",
+      "status": 403
+    },
+    {
+      "condition": "completion_with_malformed_sha",
+      "status": 400
+    },
+    {
+      "condition": "repeat_completion",
+      "status": 409
+    },
+    {
+      "condition": "completion_receipt_survives_reopen_without_git_or_test_verification",
+      "status": "done",
+      "currentPin": "B",
+      "completionSha": "authored-C",
+      "receiptPreserved": true
+    }
+  ],
+  "passed": 11
+}

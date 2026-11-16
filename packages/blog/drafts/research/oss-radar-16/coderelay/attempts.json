@@ -1,0 +1,13 @@
+{
+  "date": "2026-11-16",
+  "sourceSha": "ba0f79b7d81c3508e5d6fd95fd915b0babf54ac8",
+  "attempts": [
+    { "id": "01", "state": "setup failure", "result": "The temporary folder selected Node 20.20.2; node:sqlite was unavailable before the server could start.", "change": "Use the explicit installed Node 24.14.1 executable; do not change global version-manager settings." },
+    { "id": "02", "state": "environment refusal", "result": "Node 24.14.1 reached server creation, but sandboxed loopback listen returned EPERM before the trial.", "change": "Run only the declared owned loopback experiment with the required sandbox permission." },
+    { "id": "03", "state": "fixture expectation corrected", "result": "The API refused revising an accepted task with 404. The harness had expected 409; the refusal behavior itself held.", "change": "Correct the expected refusal status without changing upstream code." },
+    { "id": "04", "state": "preliminary pass", "result": "All eleven conditions passed. Source snapshots had not yet been byte-verified against the fetched raw strings.", "change": "Rewrite fetched source bytes exactly, record SHA-256, rebuild, and retain this run as preliminary." },
+    { "id": "05", "state": "accepted", "result": "All eleven conditions passed from the byte-verified pinned source on Node 24.14.1. Only Node's experimental SQLite warning remained.", "artifact": "results-2026-11-16.json" },
+    { "id": "06", "state": "portable reproduction accepted", "result": "A fresh owned copy fetched all six source files, verified their hashes, installed the exact declared dependencies, built with the portable script and reproduced the same eleven condition states and runtime versions. The generated registry lockfile was retained.", "coverage": "Same eleven conditions, not additional independent coverage." }
+  ],
+  "coverage": "Eleven authored component/API conditions. Earlier attempts and any portable-fixture repetition do not increase this count. Upstream store and decision-service tests were inspected but not run."
+}

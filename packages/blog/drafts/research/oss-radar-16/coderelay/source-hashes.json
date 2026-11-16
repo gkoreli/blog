@@ -1,0 +1,30 @@
+{
+  "repository": "AymanAhsan/CodeRelay",
+  "revision": "ba0f79b7d81c3508e5d6fd95fd915b0babf54ac8",
+  "files": {
+    "apps/hub/src/store.ts": {
+      "sha256": "53c5a81893748497a911cdc1d76d0750d0327269be2f803ed1b199835dc53eec",
+      "bytes": 32525
+    },
+    "apps/hub/src/server.ts": {
+      "sha256": "374952b9c0f1b2e65993214360d73a6a04e6ee60d0d05c04be2d5077b93879ca",
+      "bytes": 15795
+    },
+    "packages/contracts/src/teamHub.ts": {
+      "sha256": "a072b99fd4c521dee493bc2f6f67859e53c9f0c184f0fcd951f497b540c05de0",
+      "bytes": 17575
+    },
+    "packages/contracts/src/baseSchemas.ts": {
+      "sha256": "b86e533237e85a517f76b5fcd59ba30604a5a33c4ec23af61f3b652a17cdeda7",
+      "bytes": 9315
+    },
+    "packages/contracts/src/index.ts": {
+      "sha256": "08911b4daf5da7330813049423234951bbc9b3a700391b57b86b168215a125b4",
+      "bytes": 2203
+    },
+    "LICENSE": {
+      "sha256": "935d8f2af0c703f9c39517ee57cc4930b19d02d533be930b63f0e82f93614b43",
+      "bytes": 1070
+    }
+  }
+}
