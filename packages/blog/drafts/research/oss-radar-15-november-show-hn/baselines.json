@@ -18,7 +18,7 @@
     "commit": "ada44ea930d34b11742e2febc5b4f129261124cb",
     "defaultBranch": "main",
     "licenseReportedByGitHub": "MIT",
-    "inspectionState": "Selected main application/transcription/notes wiring and MCP paths inspected; queue and MCP/socket controls exercised",
+    "inspectionState": "Selected capture/notes/assistant/recovery paths; queue/socket, 69 upstream tests, persisted partial-state controls and released native/local-model recognition path exercised",
     "source": "https://github.com/FrigadeHQ/yogurt/tree/ada44ea930d34b11742e2febc5b4f129261124cb",
     "inspectedFiles": [
       "README.md",
@@ -42,22 +42,25 @@
     "inspectionCoverage": "Selected consequential paths, not whole-repository audit unless explicitly stated",
     "receipts": [
       "results/yogurt-mcp-02.json",
-      "results/yogurt-queue-01.json"
+      "results/yogurt-queue-01.json",
+      "results/yogurt-backfill-01.json",
+      "results/yogurt-recognition-01.json"
     ],
-    "currentRelease": "v0.3.23",
-    "currentReleaseSource": "d89d48abb10b00d93144e5a9227fb1f62dcbe198",
-    "currentReleaseInspection": "Afternoon comparison v0.3.21...v0.3.23: four commits; Webex attribution/roster handling and native Mac helper windowless-launch request changed. MCP server/socket and notes queue remain unchanged; original component receipts retain their source pin.",
+    "currentRelease": "v0.3.24",
+    "currentReleaseSource": "0f2e5bc5d9452e956dfc82b26b96ec1fd14f3a60",
+    "currentReleaseInspection": "Saved-recording recovery implemented and exercised through source store/pipeline plus official native helpers and catalog-pinned small model. Earlier queue/socket receipts retain their pins.",
     "discussionSources": [
-      "https://github.com/FrigadeHQ/yogurt/issues/54"
+      "https://github.com/FrigadeHQ/yogurt/issues/54",
+      "https://github.com/FrigadeHQ/yogurt/issues/30"
     ],
-    "latestFollowup": "08-review-and-readiness.md"
+    "latestFollowup": "09-evening-due-diligence.md"
   },
   {
     "repository": "0xdeadf1sh/AssemblyForNeovim",
     "commit": "58a471ec97fb5987eca2b955fd2cba8693a414f6",
     "defaultBranch": "main",
     "licenseReportedByGitHub": "Unlicense",
-    "inspectionState": "Complete implementation inspected; three compiler-context controls executed",
+    "inspectionState": "Complete Lua implementation; C context, actual normal-mode syntax-tree selection, standalone Rust, Cargo features and multiple targets exercised",
     "source": "https://github.com/0xdeadf1sh/AssemblyForNeovim/tree/58a471ec97fb5987eca2b955fd2cba8693a414f6",
     "inspectedFiles": [
       "README.md",
@@ -66,15 +69,17 @@
     ],
     "inspectionCoverage": "Selected consequential paths, not whole-repository audit unless explicitly stated",
     "receipts": [
-      "results/neovim-context-01.json"
-    ]
+      "results/neovim-context-01.json",
+      "results/neovim-selection-rust-01.json"
+    ],
+    "latestFollowup": "09-evening-due-diligence.md"
   },
   {
     "repository": "adrbn/bo2-mac",
     "commit": "ea6f78e0a41a374e5748635da99bafcc2d062d0b",
     "defaultBranch": "main",
     "licenseReportedByGitHub": "GPL-3.0",
-    "inspectionState": "Selected build/runtime/graphics paths inspected; no build or gameplay trial",
+    "inspectionState": "Selected called runtime/graphics/build paths; unchanged shader bridge and 26 vendored units built, synthetic DXBC and packing/maps exercised, translated vertex function compiled through Metal; no game trial",
     "source": "https://github.com/adrbn/bo2-mac/tree/ea6f78e0a41a374e5748635da99bafcc2d062d0b",
     "inspectedFiles": [
       "README.md",
@@ -88,15 +93,17 @@
       "runtime/gfx/metal_backend.mm (selected translated-source compilation path)"
     ],
     "inspectionCoverage": "Selected consequential paths, not whole-repository audit unless explicitly stated",
-    "receipts": [],
-    "latestFollowup": "07-sunday-fieldwork.md"
+    "receipts": [
+      "results/bo2-shader-controls-01.json"
+    ],
+    "latestFollowup": "09-evening-due-diligence.md"
   },
   {
     "repository": "Parcha-ai/agentrun",
     "commit": "b98a6c025b9795ec452431114a18a66c6160ef7d",
     "defaultBranch": "main",
     "licenseReportedByGitHub": "Apache-2.0",
-    "inspectionState": "Selected recovery/kernel/bridge/learning paths inspected; three authored kernel controls and three separate upstream faux-adapter tests passed; no disk/model trial",
+    "inspectionState": "Selected recovery/learning/SQLite journal/fence paths; earlier kernel and scoring controls plus released disk crash sweep and production journal fencing; no model outcome or full-service trial",
     "source": "https://github.com/Parcha-ai/agentrun/tree/b98a6c025b9795ec452431114a18a66c6160ef7d",
     "inspectedFiles": [
       "README.md",
@@ -124,19 +131,20 @@
     "receipts": [
       "results/agentrun-recovery-01.json",
       "results/agentrun-upstream-recovery-01.json",
-      "results/agentrun-learning-score-01.json"
+      "results/agentrun-learning-score-01.json",
+      "results/agentrun-disk-crash-fence-01.json"
     ],
     "currentRelease": "v0.1.0-beta.38",
     "currentReleaseSource": "d10f0053e09cd7ac0186006b13f7a6a52aa8bc22",
     "currentReleaseInspection": "Compile/promotion/workflow-first called path and upgrade notes read; actual beta.38 scoring module exercised on synthetic graded rows. Prior kernel controls keep their original source pin.",
-    "latestFollowup": "07-sunday-fieldwork.md"
+    "latestFollowup": "09-evening-due-diligence.md"
   },
   {
     "repository": "simpsoka/zigzag",
     "commit": "ad19cb09dcf5649fac55b43a083714bcd2b761d4",
     "defaultBranch": "main",
     "licenseReportedByGitHub": "Apache-2.0",
-    "inspectionState": "Selected core CLI/document/check/format paths inspected; two exports and one PES reopen executed",
+    "inspectionState": "Selected import/planner/profile/export paths; earlier core controls plus current 0.1.5 curved multi-object export with independent PES/EXP reader and profile/minimum/over-hoop comparisons; no sew-out",
     "source": "https://github.com/simpsoka/zigzag/tree/ad19cb09dcf5649fac55b43a083714bcd2b761d4",
     "inspectedFiles": [
       "README.md",
@@ -151,19 +159,21 @@
     ],
     "inspectionCoverage": "Selected consequential paths, not whole-repository audit unless explicitly stated",
     "receipts": [
-      "results/zigzag-export-01.json"
+      "results/zigzag-export-01.json",
+      "results/zigzag-current-plan-01.json"
     ],
     "sourceBuildLimit": "Source pin follows tagged v0.1.3; version string is not proof of release-binary equivalence",
     "currentRelease": "v0.1.5",
     "currentReleaseSource": "429a028054145fc3e541525bb05b57596fa49d22",
-    "currentReleaseInspection": "CLI write/check path unchanged; planner/geometry changed. The 225-stitch result remains at the earlier source pin."
+    "currentReleaseInspection": "CLI write/check path unchanged; planner/geometry changed. The 225-stitch result remains at the earlier source pin.",
+    "latestFollowup": "09-evening-due-diligence.md"
   },
   {
     "repository": "Vaibhaav-Tiwari/deepseek-v3-jax",
     "commit": "6901be60941b98dc654ed542465290db9e8bafa6",
     "defaultBranch": "main",
     "licenseReportedByGitHub": "MIT",
-    "inspectionState": "Complete model implementation inspected; tiny CPU routing/cache/compute controls executed",
+    "inspectionState": "Complete model and test/training paths read; tiny mechanism controls, all 39 upstream CPU tests including tiny training/checkpoints, and same-seed PRNG configuration contrast; no published corpus run",
     "source": "https://github.com/Vaibhaav-Tiwari/deepseek-v3-jax/tree/6901be60941b98dc654ed542465290db9e8bafa6",
     "inspectedFiles": [
       "README.md",
@@ -172,15 +182,19 @@
     ],
     "inspectionCoverage": "Selected consequential paths, not whole-repository audit unless explicitly stated",
     "receipts": [
-      "results/jax-mechanisms-01.json"
-    ]
+      "results/jax-mechanisms-01.json",
+      "results/jax-upstream-cpu-01.json",
+      "results/jax-prng-01.json"
+    ],
+    "latestFollowup": "09-evening-due-diligence.md",
+    "additionalSetupSource": "352060d2fb6caaa8fa3742182b40145024f33b31 (merged ROCm contribution; core model baseline unchanged)"
   },
   {
     "repository": "paul-nameless/agweb",
     "commit": "a52c8b66e16499ec2781c7fea3c4a37983a7002c",
     "defaultBranch": "master",
     "licenseReportedByGitHub": "MIT",
-    "inspectionState": "Workspace/profile/state/build/isolation paths inspected; official 0.2.0 app passed five-workspace cookie/localStorage controls; source build failed for unavailable full-Xcode plugin",
+    "inspectionState": "Selected workspace/profile/action/build paths; official 0.2.0 five-workspace/storage and restart controls, current 0.3.0 form/covered-click/restart; no focus/efficiency benchmark",
     "source": "https://github.com/paul-nameless/agweb/tree/a52c8b66e16499ec2781c7fea3c4a37983a7002c",
     "inspectedFiles": [
       "README.md",
@@ -198,11 +212,17 @@
     "inspectionCoverage": "Selected consequential paths, not whole-repository audit unless explicitly stated",
     "receipts": [
       "results/agweb-setup-01.json",
-      "results/agweb-profiles-01.json"
+      "results/agweb-profiles-01.json",
+      "results/agweb-release-signature-01.json",
+      "results/agweb-restart-01.json",
+      "results/agweb-restart-02.json"
     ],
     "currentRelease": "v0.3.0",
     "currentReleaseSource": "1d97f056b8727f7278cb4da4d11c1af22cda2ec9",
-    "currentReleaseInspection": "Profile/store path retained; new workspace selection, obstruction behavior and YAML installation report checked. App trial remains released0.2.0."
+    "currentReleaseInspection": "Profile/store path retained; new workspace selection, obstruction behavior and YAML installation report checked. App trial remains released0.2.0.",
+    "latestFollowup": "09-evening-due-diligence.md",
+    "runtimeReportedSource": "c9e2e41874c3b7b3778ee14a40c7de4e0d263b68",
+    "runtimeTagDifference": "Only Resources/Info.plist version bump between reported source and v0.3.0 tag"
   },
   {
     "repository": "kane50613/takumi",
@@ -215,7 +235,7 @@
     "historicalCheckpointLimit": "Reconstructed near publication day; original audited SHA not recovered",
     "licenseChecked": "MIT OR Apache-2.0 per README",
     "source": "https://github.com/kane50613/takumi/tree/ae2a35011e5cddedb0a4c8b33ab0c9242ca76b2d",
-    "inspectionState": "Historical/current/release and called preparation/font paths inspected; two-version same-object registration contrast, native resource preparation and current font-shadow condition exercised",
+    "inspectionState": "Historical/release/current and selected font/resource/binding paths; two-version registration, native preparation/font matching, high-level native/ESM WASM and CommonJS initializer controls",
     "inspectedFiles": [
       "README.md at all three checkpoints",
       "takumi-js/src/render.ts",
@@ -242,7 +262,8 @@
       "results/takumi-font-alias-shared-01.json",
       "results/takumi-font-alias-same-object-01.json",
       "results/takumi-prepared-resources-01.json",
-      "results/takumi-font-shadow-01.json"
+      "results/takumi-font-shadow-01.json",
+      "results/takumi-wrapper-backends-01.json"
     ],
     "discussionSources": [
       "https://github.com/kane50613/takumi/issues/2439",
@@ -251,7 +272,7 @@
       "https://github.com/kane50613/takumi/issues/2558",
       "https://github.com/kane50613/takumi/issues/2372"
     ],
-    "latestFollowup": "05-takumi-afternoon-fieldwork.md"
+    "latestFollowup": "09-evening-due-diligence.md"
   },
   {
     "repository": "FURSOY/fursoy-cpu",
@@ -260,7 +281,7 @@
     "defaultBranch": "main",
     "licenseReportedByGitHub": "NOASSERTION",
     "licenseInspection": "README declares Apache 2.0; LICENSE retains grants and customizes trademark wording. Preserve the actual text and GitHub classification rather than assume exact standard-license recognition.",
-    "inspectionState": "Selected PTW/CSR and called SoC paths inspected; unchanged interrupt/trap suite passed 7 properties and 25,500 stress operations; directed actual CSR and one-operand mutation controls executed",
+    "inspectionState": "Selected PTW/CSR/fetched/injection/boot/reference/synthesis paths; seven-property/25500-operation suite, CSR mutation and fetched integer/memory program with changed-instruction control; no Linux/Sail/timing/hardware acceptance",
     "source": "https://github.com/FURSOY/fursoy-cpu/tree/377ae9563ab1b88ee0a037f2223ab49822968396",
     "inspectedFiles": [
       "LICENSE",
@@ -285,8 +306,9 @@
     ],
     "receipts": [
       "results/fursoy-m9-phase-a-01.json",
-      "results/fursoy-csr-seip-01.json"
+      "results/fursoy-csr-seip-01.json",
+      "results/fursoy-fetched-program-01.json"
     ],
-    "latestFollowup": "07-sunday-fieldwork.md"
+    "latestFollowup": "09-evening-due-diligence.md"
   }
 ]

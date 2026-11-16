@@ -1,0 +1,38 @@
+{
+  "release": "0.3.0",
+  "source": "1d97f056b8727f7278cb4da4d11c1af22cda2ec9",
+  "formResult": "Saved Ada",
+  "snapshotContainsInput": true,
+  "actionReplyContainsSaved": true,
+  "coveredButton": {
+    "exitCode": 1,
+    "replyExcerpt": "Error: #save is covered by <div#cover>, which would get the click."
+  },
+  "beforeRestart": {
+    "named": {
+      "cookie": "radar=persist",
+      "local": "persist"
+    },
+    "unnamed": {
+      "cookie": "radar=temporary",
+      "local": "temporary"
+    }
+  },
+  "afterRestart": {
+    "named": {
+      "cookie": "radar=persist",
+      "local": "persist"
+    },
+    "unnamed": {
+      "cookie": "",
+      "local": null
+    }
+  },
+  "settleBeforeQuitSeconds": 1,
+  "sameOrigin": true,
+  "versionReply": "agweb 0.3.0 (c9e2e41)",
+  "scope": "One form and one loopback origin, named versus unnamed cookie/localStorage across application restart, and a current-release covered-button control. No real login, focus or efficiency result.",
+  "binaryReportedRevision": "c9e2e41874c3b7b3778ee14a40c7de4e0d263b68",
+  "releaseTagSource": "1d97f056b8727f7278cb4da4d11c1af22cda2ec9",
+  "buildTagDifference": "Only Resources/Info.plist version bump; compared source unchanged in the tested paths."
+}

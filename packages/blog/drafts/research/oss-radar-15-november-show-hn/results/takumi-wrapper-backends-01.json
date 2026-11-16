@@ -1,0 +1,57 @@
+{
+  "source": "ae2a35011e5cddedb0a4c8b33ab0c9242ca76b2d",
+  "node": "v24.22.3",
+  "packages": {
+    "takumi-js": {
+      "version": "2.20.0",
+      "integrity": "sha512-WnqocRxTlQcDeA6Q0Awcz3+diSF3UGA2hmIL3pLsqiGXZHpeeRVpVad97EO33sYiMT6+L2kMya28EVGJbjCyfg=="
+    },
+    "@takumi-rs/core": {
+      "version": "2.20.0",
+      "integrity": "sha512-28uryNYSyuXZWv5uBfJiWDrRXVdAunkU0sZiB7KG2WgLej64pUNL6jZSTQa+gBXfVu+3DdCz58OnpONBO6EUqQ=="
+    },
+    "@takumi-rs/wasm": {
+      "version": "2.20.0",
+      "integrity": "sha512-2Xfu55Ye8gmJMXQEDun/5zl/78LyCXKUjP503alH1tG0OyotkkWpZbgW8iWGuxxf4IJvp9kIaO+NLGbq4B6J8A=="
+    },
+    "@takumi-rs/helpers": {
+      "version": "2.20.0",
+      "integrity": "sha512-efdeG4Ujsw0IEYXhq3lUN1UiKhK6f3tak7VSMrCEWSvumFs0q5moBHSLdsR6aJhPNsYei21Ea6Rjtv94/qdyjg=="
+    }
+  },
+  "requests": [
+    {
+      "phase": "native",
+      "path": "/drawn.png"
+    },
+    {
+      "phase": "wasm",
+      "path": "/drawn.png"
+    }
+  ],
+  "artifacts": [
+    {
+      "backend": "native",
+      "bytes": 96,
+      "sha256": "f8a3c6039fee842c6a49eb01cb953e2a1614d787dc0480a503caced81876ee91",
+      "width": 64,
+      "height": 32
+    },
+    {
+      "backend": "wasm",
+      "bytes": 96,
+      "sha256": "f8a3c6039fee842c6a49eb01cb953e2a1614d787dc0480a503caced81876ee91",
+      "width": 64,
+      "height": 32
+    }
+  ],
+  "pngBytesEqualInThisCase": true,
+  "commonjs": {
+    "initType": "object",
+    "initError": "TypeError: commonjs.init is not a function"
+  },
+  "esm": {
+    "initType": "function"
+  },
+  "scope": "One high-level HTML/CSS/image render through explicit native and WASM renderers in Node, plus the CommonJS init export. No full conformance, browser/bundler or Cloudflare deployment result."
+}

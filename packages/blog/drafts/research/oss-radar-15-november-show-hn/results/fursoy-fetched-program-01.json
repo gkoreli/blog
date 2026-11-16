@@ -1,0 +1,40 @@
+{
+  "source": "377ae9563ab1b88ee0a037f2223ab49822968396",
+  "checkedAt": "2026-11-16T03:31:44.335256+00:00",
+  "frontendEnabled": true,
+  "harness": "verification/s1_sail_cosim_tb.cpp",
+  "harnessSha256": "a424b737c9fceb625f9bc3bb919773099ed40d7c04f7f0c3c5fcfc209edbeaf8",
+  "harnessBinarySha256": "997127a98aa534fed5a1838cad03fba67be8dc6cec2832db37907b5db36701d8",
+  "cases": [
+    {
+      "case": "multiply",
+      "loadedProduct": 63,
+      "loadedSum": 55,
+      "expectedProduct": 63,
+      "expectedSum": 55,
+      "matched": true,
+      "retiredEvents": 44,
+      "lastCycle": 117,
+      "traceSha256": "ba679f0815337ff23510aeeda8f2adeb9d88759b27c5338501504d360d30429d"
+    },
+    {
+      "case": "changed-instruction-control",
+      "loadedProduct": 16,
+      "loadedSum": 55,
+      "expectedProduct": 63,
+      "expectedSum": 55,
+      "matched": false,
+      "retiredEvents": 44,
+      "lastCycle": 117,
+      "traceSha256": "205daaf201b26bf4f74eaf5b29829cb8422a8f4519735dc727afcf79198358c0"
+    }
+  ],
+  "elapsedSeconds": 0.171,
+  "harnessBuildReused": true,
+  "commandDifferencesFromSailRunner": [
+    "--assert enabled",
+    "-Wno-fatal retains known lint warnings",
+    "authored instruction words replace ELF/cross-assembler inputs"
+  ],
+  "scope": "Authored integer/multiply/loop/store/load program and changed-instruction negative control; no Sail differential, Linux boot, FP/vector, timing or hardware result."
+}

@@ -1,0 +1,37 @@
+{
+  "release": "0.3.24",
+  "source": "0f2e5bc5d9452e956dfc82b26b96ec1fd14f3a60",
+  "model": "whisper-small-q5_1",
+  "modelSha256": "ae85e4a935d7a567bd102fe55afc16bb595bdb618e11b2fc7591bc08120411bb",
+  "audioSha256": "332bc71931c0c1c28ca7254e6efe1fe71dbf25d5f547cbe688925c367ab00ea5",
+  "decoderSha256": "80d78f6d7e08a0e3a717d2cf2384b5a384aafd88e639bc472c302df67f148a90",
+  "serverSha256": "df598fb660bb3b1de27a6720900b411c6356570ffa2e1576ea6502c121ec25aa",
+  "decodedSamples": 203895,
+  "decodedSeconds": 12.7434375,
+  "done": true,
+  "pending": false,
+  "savedSegments": 5,
+  "wordCoverage": {
+    "monday": true,
+    "alice": true,
+    "export": true,
+    "bob": true,
+    "browser": true,
+    "launch": true,
+    "tomorrow": true,
+    "thirty-or-30": true
+  },
+  "transcriptSha256": "1487e5ca8f28d933accd771981eeac58fbe3d4347ace70173daeff4287119974",
+  "warnings": [],
+  "elapsedSeconds": 5.979132374999999,
+  "scope": "Authored Samantha English speech in M4A, released Mac helpers and catalog-pinned small model through actual saved-recording pipeline/SQLite. No microphone capture, real meeting, summary, speaker-quality or general accuracy/performance claim.",
+  "releaseArchiveSha256": "47ea7397fe040712a35dae4612123401ed55266d9ee2d461be8d6a71a73d5951",
+  "releaseSignature": "Strict/deep code-signature verification passed with macOS trust services accessible; no resigning or security change.",
+  "fixtureSource": "../repro/yogurt-synthetic-speech.txt; locally synthesized Samantha voice, converted to AAC/M4A with system codecs.",
+  "node": "24.22.3",
+  "host": "macOS 27.2 arm64",
+  "retainedSetupLimits": [
+    "Sandbox signature checks also failed on system codesign and the old verified app; all passed outside it.",
+    "AAC was unavailable inside the sandbox; the same system converter succeeded outside it."
+  ]
+}

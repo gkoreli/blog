@@ -1,0 +1,196 @@
+{
+  "release": "0.1.5",
+  "source": "429a028054145fc3e541525bb05b57596fa49d22",
+  "version": "zigzag 0.1.5",
+  "input": "Authored curved ring with a hole and two separate leaves, two thread colors; 60x30mm SVG",
+  "inputSha256": "05a7ceebb777da50d0b875a7878fdb3c46eeb330141f55d32fe42d0f568859a4",
+  "reader": "pyembroidery 1.5.1, units 0.1mm; counts exclude jumps/trims/color commands and separate zero-length stitches",
+  "cases": [
+    {
+      "case": "default",
+      "settings": [],
+      "exitCode": 0,
+      "files": [
+        {
+          "format": "pes",
+          "sha256": "eb5f274371bb9699c10663cdecc24a376158ba593bf433487313979d9971179d",
+          "nonzeroSewingMoves": 1302,
+          "zeroSewingMoves": 2,
+          "under04mm": 157,
+          "under06mm": 214,
+          "minNonzeroMm": 0.1,
+          "maxMm": 3.026549190084311,
+          "commands": {
+            "1": 2,
+            "0": 1304,
+            "5": 1,
+            "2": 1,
+            "4": 1
+          },
+          "boundsTenthMm": [
+            -230,
+            -108,
+            230,
+            109
+          ]
+        },
+        {
+          "format": "exp",
+          "sha256": "aebef42bf95040579594eacaee8171b1dad647bb6874d2c2276387f4074b2973",
+          "nonzeroSewingMoves": 1302,
+          "zeroSewingMoves": 2,
+          "under04mm": 157,
+          "under06mm": 214,
+          "minNonzeroMm": 0.1,
+          "maxMm": 3.026549190084311,
+          "commands": {
+            "1": 2,
+            "0": 1304,
+            "2": 2,
+            "5": 1,
+            "4": 1
+          },
+          "boundsTenthMm": [
+            -230,
+            -108,
+            230,
+            109
+          ]
+        }
+      ],
+      "previewSha256": "e8066ead3bc66cf9be39470219d5aa094caa421a7c9dc07ab867d79817e08dfd"
+    },
+    {
+      "case": "melco-default",
+      "settings": [
+        "--machine",
+        "melco-summit"
+      ],
+      "exitCode": 0,
+      "files": [
+        {
+          "format": "pes",
+          "sha256": "1a7f4b7f88ae90912e9dee253ae03c66d6c7f64995fe49f4d858c05801374ed0",
+          "nonzeroSewingMoves": 1323,
+          "zeroSewingMoves": 4,
+          "under04mm": 0,
+          "under06mm": 155,
+          "minNonzeroMm": 0.4,
+          "maxMm": 4.031128874149275,
+          "commands": {
+            "1": 8,
+            "0": 1327,
+            "2": 7,
+            "5": 1,
+            "4": 1
+          },
+          "boundsTenthMm": [
+            -230,
+            -108,
+            230,
+            109
+          ]
+        },
+        {
+          "format": "exp",
+          "sha256": "d55907e75f7bde8bd72f88fb17305909484a7d2ad57a6660c17fffeb525c2902",
+          "nonzeroSewingMoves": 1323,
+          "zeroSewingMoves": 4,
+          "under04mm": 0,
+          "under06mm": 155,
+          "minNonzeroMm": 0.4,
+          "maxMm": 4.031128874149275,
+          "commands": {
+            "1": 7,
+            "0": 1327,
+            "2": 4,
+            "5": 1,
+            "4": 1
+          },
+          "boundsTenthMm": [
+            -230,
+            -108,
+            230,
+            109
+          ]
+        }
+      ],
+      "previewSha256": "1522fe95c235c1d9e99224ec37ceb7cc022facd0f2c587ae1fd773c6a455e21d"
+    },
+    {
+      "case": "melco-min06",
+      "settings": [
+        "--machine",
+        "melco-summit",
+        "--min-stitch",
+        "0.6"
+      ],
+      "exitCode": 0,
+      "files": [
+        {
+          "format": "pes",
+          "sha256": "3cdd67d9dc9f7994929c183bf5f5971ea8d02efc4b192e486bc23d37d5621f64",
+          "nonzeroSewingMoves": 1314,
+          "zeroSewingMoves": 2,
+          "under04mm": 0,
+          "under06mm": 0,
+          "minNonzeroMm": 0.6,
+          "maxMm": 3.026549190084311,
+          "commands": {
+            "1": 2,
+            "0": 1316,
+            "5": 1,
+            "2": 1,
+            "4": 1
+          },
+          "boundsTenthMm": [
+            -230,
+            -108,
+            230,
+            109
+          ]
+        },
+        {
+          "format": "exp",
+          "sha256": "e5cf0cf3bb1e5c1a6300331c2457e776c36fe86d6cde872e8d9c3cc6deb7a1d8",
+          "nonzeroSewingMoves": 1314,
+          "zeroSewingMoves": 2,
+          "under04mm": 0,
+          "under06mm": 0,
+          "minNonzeroMm": 0.6,
+          "maxMm": 3.026549190084311,
+          "commands": {
+            "1": 2,
+            "0": 1316,
+            "2": 2,
+            "5": 1,
+            "4": 1
+          },
+          "boundsTenthMm": [
+            -230,
+            -108,
+            230,
+            109
+          ]
+        }
+      ],
+      "previewSha256": "728a21423b2889782b00a533476e665351e545ea6c45d6eb0aafd722b4ab6666"
+    }
+  ],
+  "scope": "Core CLI, current planner, PES/EXP serialization and independent reread; no shop artwork/checker, GUI, machine, thread/fabric or sew-out result.",
+  "overHoopControl": {
+    "hoopMm": [
+      10,
+      10
+    ],
+    "reportedDesignMm": [
+      46.0,
+      21.8
+    ],
+    "exitCode": 0,
+    "constraintErrorPrinted": true,
+    "fileWritten": true,
+    "sha256": "e5cf0cf3bb1e5c1a6300331c2457e776c36fe86d6cde872e8d9c3cc6deb7a1d8"
+  },
+  "previewVisuallyInspected": "Melco-min06 PNG: two colors, ring with visible hole and two leaves; physical stitch quality remains untested."
+}

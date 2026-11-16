@@ -1,0 +1,61 @@
+{
+  "source": "d10f0053e09cd7ac0186006b13f7a6a52aa8bc22",
+  "release": "0.1.0-beta.38",
+  "node": "24.22.3",
+  "packages": {
+    "@parcha/agentrun-serve": {
+      "version": "0.1.0-beta.38",
+      "integrity": "sha512-Pzpff+w0mtbshugbePF85I5m/dYFfVep5CSnnlAQnKlaEi8G8aZeM2UyrjwlO+q6nrGht4ttT6E+/3yl3kSz6Q=="
+    },
+    "@parcha/agentrun-dsl": {
+      "version": "0.1.0-beta.38",
+      "integrity": "sha512-Bb9cYRHEAzQC01k1e1/Oa888eWUtvU1YQ3aKxbagXHX+TDB0buyxjd69UxVsenUsIiFsIwCbBM8FjX9eTsF1LA=="
+    },
+    "@earendil-works/pi-durable": {
+      "version": "1.5.2",
+      "integrity": "sha512-zDB3anbI/yD0IG+VVY+g5tU+c5XOVqQAFwLkXRMiqZb4p/afWro0voZtLNoRAWcDA2r73kvmH6kKin9Ka8l55g=="
+    },
+    "@earendil-works/chord": {
+      "version": "1.5.2",
+      "integrity": "sha512-3g088g7qVXL2cpRAKWjj9za6RLls9FBnuUo5c0hBZ0xCftBQjae0opS+34M22vdXTVE7BNqkRG/FPc9BsM7eEg=="
+    },
+    "@earendil-works/pi-ai": {
+      "version": "1.5.2",
+      "integrity": "sha512-2tWPSnV3qzfiDIY3aWluBag3vC++Vs+VsXt/UquSU5onPMohPih72FUhIhaqmDdMYubOgB3Byl9uF4Vk40JLvQ=="
+    }
+  },
+  "unchangedSourceTests": {
+    "test/durable-crash-sweep.test.mjs": "57c43a2d2314c5075fbc54ee1ac52ae123d407af13128ca4c6cd836d9e379f0b",
+    "test/store-journal-fence.test.mjs": "dc4ebea9f66026e0548188b7b5e59641d615eadf990a8c7ae60ce59de80cdb8b",
+    "test/fixtures/durable/crash-child.mjs": "6a803748ac76b5243f4fdd8a2907217fdcffab60c86c70d8fd9c9207d0ec17c5"
+  },
+  "passedTests": 5,
+  "failedTests": 0,
+  "seconds": 26.025,
+  "crossingsPerMode": {
+    "admit": 2,
+    "dispatch": 2,
+    "settle": 2,
+    "commit": 3
+  },
+  "modes": [
+    {
+      "machines": 1,
+      "meaning": "Local SQLite file, fresh child process for each cut/resume/reopen",
+      "cases": 9,
+      "violations": 0
+    },
+    {
+      "machines": 2,
+      "meaning": "Same local host; copy the stopped run directory before resume, not two physical machines",
+      "cases": 9,
+      "violations": 0
+    }
+  ],
+  "negativeControl": "Bypass-journal plant was caught dispatching an effect twice.",
+  "journalFencing": "Two production Connection/RunStorage tests rejected stale epoch commits without journal/sequence/run-row partial writes; current epoch writes succeeded.",
+  "processCut": "SIGKILL at each declared crossing; no graceful-shutdown substitution.",
+  "effect": "Owned loopback counting server; no model provider, external account or paid tool call.",
+  "storeCaveat": "Workflow crash sweep uses pi-durable Node SQLite storage via documentStore. Production AgentRun Connection/RunStorage is exercised separately by the fencing tests.",
+  "scope": "Released disk-backed synthetic workflow recovery and production journal fencing, not a complete agent/harness/provider/service or Postgres failure trial."
+}

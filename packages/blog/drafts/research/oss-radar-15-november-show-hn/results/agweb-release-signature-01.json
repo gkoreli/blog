@@ -1,0 +1,26 @@
+{
+  "release": "0.3.0",
+  "source": "1d97f056b8727f7278cb4da4d11c1af22cda2ec9",
+  "asset": "https://github.com/paul-nameless/agweb/releases/download/v0.3.0/Agweb.dmg",
+  "publishedSha256": "3e48229ca465a91b46fca3b47610834a1a4de3a24685c8bb3110453bf1c7c287",
+  "actualSha256": "3e48229ca465a91b46fca3b47610834a1a4de3a24685c8bb3110453bf1c7c287",
+  "host": "macOS 27.2 arm64",
+  "codeSignatureVerification": {
+    "command": "codesign --verify --deep --strict --verbose=4 Agweb.app",
+    "mountedOriginalExitCode": 1,
+    "untouchedCopyExitCode": 1,
+    "message": "invalid signature (code or signature have been modified); In architecture: arm64",
+    "sandboxContext": "Initial sandbox lacked trust-service access; old Agweb and system codesign controls also failed.",
+    "outsideSandboxExitCodes": {
+      "systemVerifier": 0,
+      "agweb020": 0,
+      "agweb030": 0,
+      "yogurt0324": 0
+    },
+    "acceptedResult": "Agweb 0.3.0 valid on disk and satisfies its designated requirement with trust services accessible."
+  },
+  "originalAndCopyHashesMatch": true,
+  "releaseExecuted": true,
+  "scope": "Digest and code-signature verification accepted after environment controls. Initial sandbox failures do not establish a release defect; no security settings or signatures changed.",
+  "runtimeReceipt": "agweb-restart-02.json"
+}

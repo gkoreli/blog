@@ -1,0 +1,22 @@
+{
+  "minimalVertexTranslated": true,
+  "invariantPosition": true,
+  "misalignedFloat2Packed": true,
+  "alignedUnchanged": true,
+  "paddingGapInserted": true,
+  "unsupportedScalarArrayUnchanged": true,
+  "bindingMap": "0=0,1=2",
+  "source": "ea6f78e0a41a374e5748635da99bafcc2d062d0b",
+  "compiledSources": 26,
+  "elapsedSeconds": 3.555,
+  "gameAssetsUsed": false,
+  "metalRuntimeCompilationPerformed": true,
+  "metalFunctionCreated": "xlatMtlMain",
+  "drawOrGameplayPerformed": false,
+  "conditions": "Apple Clang 21, macOS 27.2 arm64. Default sandbox exposed no Metal device; the same executable outside the sandbox compiled the authored MSL and created its vertex function.",
+  "retainedSetupFailures": [
+    "CMake absent; direct compilation follows the upstream CMake source list.",
+    "First direct build missed the vendor-root include directory; corrected before accepted execution."
+  ],
+  "limits": "Minimal authored vertex shader plus source-included packing/map helper controls; no proprietary shaders, game files, frame rendering, performance or playability result."
+}

@@ -1,0 +1,31 @@
+{
+  "release": "0.2.0",
+  "source": "a52c8b66e16499ec2781c7fea3c4a37983a7002c",
+  "formResult": "Saved Ada",
+  "snapshotContainsInput": true,
+  "actionReplyContainsSaved": true,
+  "beforeRestart": {
+    "named": {
+      "cookie": "radar=persist",
+      "local": "persist"
+    },
+    "unnamed": {
+      "cookie": "radar=temporary",
+      "local": "temporary"
+    }
+  },
+  "afterRestart": {
+    "named": {
+      "cookie": "radar=persist",
+      "local": "persist"
+    },
+    "unnamed": {
+      "cookie": "",
+      "local": null
+    }
+  },
+  "settleBeforeQuitSeconds": 1,
+  "sameOrigin": true,
+  "versionReply": "agweb 0.2.0",
+  "scope": "One form and one loopback origin, named versus unnamed cookie/localStorage across application restart. No current 0.3.0 execution, real login, focus or efficiency result."
+}

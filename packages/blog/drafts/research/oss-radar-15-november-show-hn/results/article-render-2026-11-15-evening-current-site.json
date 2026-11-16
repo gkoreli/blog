@@ -1,0 +1,72 @@
+{
+  "checkedAt": "2026-11-16T04:15:50.693145+00:00",
+  "manuscriptSha256": "f159a21cc8cbeb8fbf9dcf250080ef635994ea24ff280a25c9882b6fb6414cb3",
+  "supersedes": {
+    "receipt": "article-render-2026-11-15-evening.json",
+    "manuscriptSha256": "f159a21cc8cbeb8fbf9dcf250080ef635994ea24ff280a25c9882b6fb6414cb3",
+    "reason": "Same manuscript rebuilt after concurrent shared-navigation/sidebar changes; earlier receipt retained.",
+    "retained": true
+  },
+  "buildBaseline": "a2af0b13a6fa9ec6839ea11dfb35225d8ef0bfa5",
+  "plannedFilename": "046-oss-radar-15-november-launches.md",
+  "canonical": "https://gkoreli.com/oss-radar-15-november-launches",
+  "publicationDate": "2026-11-16",
+  "renderedH1Count": 1,
+  "projectEntries": 9,
+  "h3TotalIncludingInterpretation": 11,
+  "tables": 2,
+  "resolvedLocalLinks": 19,
+  "htmlSha256": "537084dabeb88d3edaddd0088a54c5ef3704ab4aa37ca146acff75f696930524",
+  "ogSha256": "1fb155c3840a109d9a7fe14d8e35ea65158cc9c6522a924b975e55911143eea9",
+  "ogUnchangedFromAfternoon": true,
+  "representations": [
+    "HTML",
+    "Markdown",
+    "CSL-JSON",
+    "BibTeX",
+    "posts.json",
+    "RSS",
+    "sitemap",
+    "llms.txt",
+    "llms-full.txt",
+    "OG PNG"
+  ],
+  "searchIndex": {
+    "articles": 47,
+    "candidatePassages": 76,
+    "indexSha256": "7489b2bc0c182ab8a281ddabff534331ce90cb472bc001b3a2bf5fc80a3e9b6c"
+  },
+  "node": "24.14.1",
+  "pnpm": "9.15.4",
+  "productionPublicationPerformed": false,
+  "publisherStateChecked": "disabled_manually",
+  "publicationManifestEntries": 0,
+  "freshBrowserReview": {
+    "method": "CUA in-app browser; explicit reload after the current-site rebuild",
+    "desktop": {
+      "width": 1280,
+      "documentScrollWidth": 1280,
+      "articleTablesWidth": 728
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "documentScrollWidth": 390,
+      "sourceTableWidth": 354,
+      "measurementTableWidth": 400,
+      "measurementTableContainerWidth": 354
+    },
+    "observations": [
+      "Updated shared-navigation search and sidebar utilities visible",
+      "Matching H1 and November 16 date",
+      "Contents expansion and Sources anchor navigation succeeded",
+      "Source table readable at narrow width",
+      "No document overflow at either width",
+      "Viewport override reset"
+    ],
+    "retainedSameManuscriptInteraction": {
+      "receipt": "article-render-2026-11-15-evening.json",
+      "scope": "The earlier explicit measurement-table horizontal-scroll check remains attached to that receipt. The current-site recheck measured the same table/container widths."
+    }
+  }
+}

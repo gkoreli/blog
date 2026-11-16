@@ -1,0 +1,68 @@
+{
+  "checkedAt": "2026-11-16T04:10:03.748925+00:00",
+  "manuscriptSha256": "f159a21cc8cbeb8fbf9dcf250080ef635994ea24ff280a25c9882b6fb6414cb3",
+  "supersedes": {
+    "receipt": "article-render-2026-11-15-afternoon.json",
+    "manuscriptSha256": "e18681438a0c3dfe74c40e910359dfc8653b4b05e9988ac719d3a58da5d12515",
+    "retained": true
+  },
+  "buildBaseline": "44746f91a3f1e51be352c53b90fde6dd185d7f02",
+  "plannedFilename": "046-oss-radar-15-november-launches.md",
+  "canonical": "https://gkoreli.com/oss-radar-15-november-launches",
+  "publicationDate": "2026-11-16",
+  "renderedH1Count": 1,
+  "projectEntries": 9,
+  "h3TotalIncludingInterpretation": 11,
+  "tables": 2,
+  "resolvedLocalLinks": 19,
+  "htmlSha256": "434fe93876276c28085080e0e28803fe08c1e32bda723e1341e9d08da5227057",
+  "ogSha256": "1fb155c3840a109d9a7fe14d8e35ea65158cc9c6522a924b975e55911143eea9",
+  "ogUnchangedFromAfternoon": true,
+  "representations": [
+    "HTML",
+    "Markdown",
+    "CSL-JSON",
+    "BibTeX",
+    "posts.json",
+    "RSS",
+    "sitemap",
+    "llms.txt",
+    "llms-full.txt",
+    "OG PNG"
+  ],
+  "searchIndex": {
+    "articles": 47,
+    "candidatePassages": 76,
+    "indexSha256": "7489b2bc0c182ab8a281ddabff534331ce90cb472bc001b3a2bf5fc80a3e9b6c"
+  },
+  "freshBrowserReview": {
+    "method": "CUA in-app browser, isolated loopback preview",
+    "desktop": {
+      "width": 1280,
+      "documentScrollWidth": 1280,
+      "articleTablesWidth": 728
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "documentScrollWidth": 390,
+      "sourceTableWidth": 354,
+      "measurementTableWidth": 400,
+      "measurementTableContainerWidth": 354,
+      "measurementTableHorizontalScrollObserved": 46,
+      "horizontalScrollCueVisible": true
+    },
+    "observations": [
+      "Matching visible H1 and November 16 date",
+      "Contents expansion and Sources anchor navigation",
+      "New ZigZag table scrolls within its container; no document overflow",
+      "Project entry and source table readable at narrow width",
+      "Viewport override reset after review"
+    ]
+  },
+  "node": "24.14.1",
+  "pnpm": "9.15.4",
+  "productionPublicationPerformed": false,
+  "publisherStateChecked": "disabled_manually",
+  "publicationManifestEntries": 0
+}

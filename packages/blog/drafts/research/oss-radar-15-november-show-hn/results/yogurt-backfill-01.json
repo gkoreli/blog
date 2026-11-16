@@ -1,0 +1,77 @@
+{
+  "cases": [
+    {
+      "mode": "complete",
+      "before": {
+        "done": true,
+        "pending": false,
+        "segments": 4,
+        "eligible": false
+      },
+      "after": {
+        "pending": false,
+        "segments": 4,
+        "eligible": false
+      }
+    },
+    {
+      "mode": "no-model",
+      "before": {
+        "done": false,
+        "pending": true,
+        "segments": 0,
+        "eligible": true
+      },
+      "after": {
+        "pending": true,
+        "segments": 0,
+        "eligible": true
+      }
+    },
+    {
+      "mode": "pause-after-first-transcription",
+      "before": {
+        "done": false,
+        "pending": true,
+        "segments": 1,
+        "eligible": false
+      },
+      "after": {
+        "pending": true,
+        "segments": 1,
+        "eligible": false
+      }
+    }
+  ],
+  "checkedAt": "2026-11-16T03:22:16Z",
+  "source": "0f2e5bc5d9452e956dfc82b26b96ec1fd14f3a60",
+  "release": "0.3.24",
+  "discussion": "https://github.com/FrigadeHQ/yogurt/issues/30",
+  "node": "24.22.3",
+  "testRunner": "vitest@5.0.4",
+  "upstreamTests": {
+    "files": [
+      "backfill.test.ts",
+      "transcription.test.ts",
+      "pipeline.test.ts",
+      "deleteRecording.test.ts"
+    ],
+    "passed": 69,
+    "failed": 0
+  },
+  "sourceFiles": {
+    "app/src/main/asr/backfill.ts": "7fd1d334b0dcfc0555a4f24dbeb61a14ab581ffd4421d0bcfb0d70c891dfcd9c",
+    "app/src/main/asr/index.ts": "f0dd0849cac32b3ea7638ac144717f66c08e0ca6acd71fa80793864875a5bae4",
+    "app/src/main/store.ts": "afa8310ef132263c5c019a4f1518ad020ac79ff06d618a1ae147cf74d991decd",
+    "app/src/main/index.ts": "208fc303afbcea132ebfaead099e4246b69e228691483ae8266ddb990615139a"
+  },
+  "setup": "Exact declared Vitest/Electron/chrono-node packages installed with scripts disabled. Electron executable path overridden for import-only unit tests; no Electron app launched.",
+  "limits": [
+    "Deterministic transcriber and authored tone/silence; no speech model, native decode, audio recognition or summary trial.",
+    "The paused-recording result exercises the component and actual persisted selection query; it does not claim a full Electron UI reproduction."
+  ],
+  "retainedAttempts": [
+    "Initial upstream run lacked Electron and chrono-node imports; 34 pipeline tests ran, three suites could not load.",
+    "First authored test supplied nonexistent chunk.endMs; corrected to the authored one-second line duration before the accepted run."
+  ]
+}

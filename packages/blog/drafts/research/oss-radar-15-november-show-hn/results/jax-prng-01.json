@@ -1,0 +1,23 @@
+{
+  "jax": "0.4.34",
+  "source": "6901be60941b98dc654ed542465290db9e8bafa6",
+  "config": "TINY",
+  "batch": "Fixed NumPy seed-0 batch in both conditions",
+  "cases": [
+    {
+      "partitionable": false,
+      "seed": 0,
+      "embeddingSha256": "8e0ec0d12f28b94ee63c98e6044cbaacc16d83a975eacc2c480367a4dba2c678",
+      "firstLoss": 5.391690731048584,
+      "mainLoss": 4.151673793792725
+    },
+    {
+      "partitionable": true,
+      "seed": 0,
+      "embeddingSha256": "2cdc0f1f4f0026fee57a084890ddbca830cb423b31108f12c6afe0c5e769f2d8",
+      "firstLoss": 5.42543888092041,
+      "mainLoss": 4.179805755615234
+    }
+  ],
+  "scope": "CPU first-forward initialization control; no newer-JAX, GPU, corpus, training-trajectory or speed result."
+}

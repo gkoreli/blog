@@ -1,0 +1,54 @@
+{
+  "source": "58a471ec97fb5987eca2b955fd2cba8693a414f6",
+  "purpose": "Verify the final published reproduction fixture, including its added explicit Cargo target control. Earlier receipt retained.",
+  "fixture": "../repro/neovim-selection-rust.lua",
+  "fixtureSha256": "0c900a5ae344f8b14cd8ef709b8d6025d1362560873d60522fd480c5e5b72382",
+  "neovim": {
+    "build": "v0.12.6",
+    "minor": 12,
+    "api_compatible": 0,
+    "patch": 6,
+    "major": 0,
+    "api_level": 14,
+    "api_prerelease": false
+  },
+  "rust": "1.96.1",
+  "cases": [
+    {
+      "case": "c-unparsed",
+      "assemblyRendered": true,
+      "title": "{ { \" sample.c  5-5  -O2  \u00b7  [+/-] level  [R] rerun  [q] close \" } }"
+    },
+    {
+      "case": "c-parsed",
+      "assemblyRendered": true,
+      "title": "{ { \" sample.c  3-7  -O2  \u00b7  [+/-] level  [R] rerun  [q] close \" } }"
+    },
+    {
+      "case": "rust-standalone",
+      "assemblyRendered": true,
+      "title": "{ { \" lib.rs  1-5  -O2  \u00b7  [+/-] level  [R] rerun  [q] close \" } }"
+    },
+    {
+      "case": "cargo-library",
+      "assemblyRendered": true,
+      "title": "{ { \" lib.rs  1-5  -O2  \u00b7  [+/-] level  [R] rerun  [q] close \" } }"
+    },
+    {
+      "case": "cargo-multiple-targets",
+      "assemblyRendered": false,
+      "title": "{ { \" lib.rs  1-5  -O2  \u00b7  failed \" } }"
+    }
+  ],
+  "explicitFeatureReference": {
+    "command": "cargo rustc --offline --features fast -- --emit asm -Copt-level=2",
+    "containsAdd99": true
+  },
+  "explicitMultipleTargetControl": {
+    "command": "cargo rustc --offline --lib -- --emit asm -Cdebuginfo=2 -Ccodegen-units=1 -Copt-level=2",
+    "exitCode": 0,
+    "containsAdd7": true
+  },
+  "fixtureExecutableRun": false,
+  "scope": "Same declared authored sources and clean editor/compiler context, new owned output directory; no user editor configuration or executable run."
+}

@@ -1,0 +1,231 @@
+{
+  "fixtureExecutableRun": false,
+  "pluginCommit": "58a471ec97fb5987eca2b955fd2cba8693a414f6",
+  "neovim": {
+    "api_prerelease": false,
+    "build": "v0.12.6",
+    "minor": 12,
+    "api_compatible": 0,
+    "patch": 6,
+    "major": 0,
+    "api_level": 14
+  },
+  "cases": [
+    {
+      "commands": [
+        {
+          "cwd": "<fixture>/c-unparsed",
+          "argv": [
+            "cc",
+            "-std=c23",
+            "-fsyntax-only",
+            "-x",
+            "c",
+            "-"
+          ]
+        },
+        {
+          "cwd": "<fixture>/c-unparsed",
+          "argv": [
+            "cc",
+            "-dumpmachine"
+          ]
+        },
+        {
+          "cwd": "<fixture>/c-unparsed",
+          "argv": [
+            "cc",
+            "-std=c23",
+            "<fixture>/c-unparsed/sample.c",
+            "-S",
+            "-g",
+            "-O2",
+            "-o",
+            "-"
+          ]
+        },
+        {
+          "argv": [
+            "c++filt",
+            "--no-strip-underscore",
+            "Ltmp0"
+          ]
+        }
+      ],
+      "case": "c-unparsed",
+      "title": "{ { \" sample.c  5-5  -O2  \u00b7  [+/-] level  [R] rerun  [q] close \" } }",
+      "assemblyRendered": true,
+      "notices": [],
+      "outputLineCount": 4,
+      "outputExcerpt": [
+        "Ltmp0:",
+        "  ; 5 | int plus = doubled + 7;",
+        "        add w0, w8, #7",
+        "        ;DEBUG_VALUE: answer:x <- [DW_OP_LLVM_entry_value 1] $w0"
+      ]
+    },
+    {
+      "commands": [
+        {
+          "cwd": "<fixture>/c-parsed",
+          "argv": [
+            "cc",
+            "-std=c23",
+            "<fixture>/c-parsed/sample.c",
+            "-S",
+            "-g",
+            "-O2",
+            "-o",
+            "-"
+          ]
+        },
+        {
+          "argv": [
+            "c++filt",
+            "--no-strip-underscore",
+            "Lfunc_begin0"
+          ]
+        },
+        {
+          "argv": [
+            "c++filt",
+            "--no-strip-underscore",
+            "Ltmp1"
+          ]
+        }
+      ],
+      "case": "c-parsed",
+      "title": "{ { \" sample.c  3-7  -O2  \u00b7  [+/-] level  [R] rerun  [q] close \" } }",
+      "assemblyRendered": true,
+      "notices": [],
+      "outputLineCount": 67,
+      "outputExcerpt": [
+        "Lfunc_begin0:",
+        "  ; 4 | int doubled = x * 2;",
+        "        lsl w8, w0, #1",
+        "        ;DEBUG_VALUE: answer:doubled <- $w8",
+        "        ;DEBUG_VALUE: answer:plus <- undef",
+        "",
+        "Ltmp0:",
+        "  ; 5 | int plus = doubled + 7;",
+        "        add w0, w8, #7",
+        "        ;DEBUG_VALUE: answer:x <- [DW_OP_LLVM_entry_value 1] $w0"
+      ]
+    },
+    {
+      "commands": [
+        {
+          "cwd": "<fixture>/rust-standalone/src",
+          "argv": [
+            "rustc",
+            "--print",
+            "cfg"
+          ]
+        },
+        {
+          "cwd": "<fixture>/rust-standalone/src",
+          "argv": [
+            "rustc",
+            "--crate-type=lib",
+            "--emit",
+            "asm=<temporary-output>",
+            "-Cdebuginfo=2",
+            "-Ccodegen-units=1",
+            "-Copt-level=2",
+            "<fixture>/rust-standalone/src/lib.rs"
+          ]
+        }
+      ],
+      "case": "rust-standalone",
+      "title": "{ { \" lib.rs  1-5  -O2  \u00b7  [+/-] level  [R] rerun  [q] close \" } }",
+      "assemblyRendered": true,
+      "notices": [],
+      "outputLineCount": 40,
+      "outputExcerpt": [
+        "Lfunc_begin0:",
+        "  ; 4 | #[cfg(not(feature = \"fast\"))] { x + 7 }",
+        "        add w0, w0, #7",
+        "    Ltmp0:",
+        "",
+        "Ltmp0:",
+        "  ; 5 | }",
+        "        ret",
+        "    Lfunc_end0:",
+        "    Lsection_debug_loc:"
+      ]
+    },
+    {
+      "commands": [
+        {
+          "cwd": "<fixture>/cargo-library",
+          "argv": [
+            "cargo",
+            "rustc",
+            "--quiet",
+            "--",
+            "--emit",
+            "asm=<temporary-output>",
+            "-Cdebuginfo=2",
+            "-Ccodegen-units=1",
+            "-Copt-level=2"
+          ]
+        }
+      ],
+      "case": "cargo-library",
+      "title": "{ { \" lib.rs  1-5  -O2  \u00b7  [+/-] level  [R] rerun  [q] close \" } }",
+      "assemblyRendered": true,
+      "notices": [],
+      "outputLineCount": 40,
+      "outputExcerpt": [
+        "Lfunc_begin0:",
+        "  ; 4 | #[cfg(not(feature = \"fast\"))] { x + 7 }",
+        "        add w0, w0, #7",
+        "    Ltmp0:",
+        "",
+        "Ltmp0:",
+        "  ; 5 | }",
+        "        ret",
+        "    Lfunc_end0:",
+        "    Lsection_debug_loc:"
+      ]
+    },
+    {
+      "commands": [
+        {
+          "cwd": "<fixture>/cargo-multiple-targets",
+          "argv": [
+            "cargo",
+            "rustc",
+            "--quiet",
+            "--",
+            "--emit",
+            "asm=<temporary-output>",
+            "-Cdebuginfo=2",
+            "-Ccodegen-units=1",
+            "-Copt-level=2"
+          ]
+        }
+      ],
+      "case": "cargo-multiple-targets",
+      "title": "{ { \" lib.rs  1-5  -O2  \u00b7  failed \" } }",
+      "assemblyRendered": false,
+      "notices": [],
+      "outputLineCount": 2,
+      "outputExcerpt": [
+        "error: extra arguments to `rustc` can only be passed to one target, consider filtering",
+        "the package by passing, e.g., `--lib` or `--bin NAME` to specify a single target"
+      ]
+    }
+  ],
+  "explicitFeatureReference": {
+    "containsAdd99": true,
+    "command": "cargo rustc --offline --features fast -- --emit asm -Copt-level=2"
+  },
+  "rust": "1.96.1",
+  "scope": "Actual normal-mode C selection in fresh clean buffers; standalone Rust, Cargo library, feature reference and multi-target failure. No executable, runtime performance or installed parser/UI configuration change.",
+  "explicitMultipleTargetControl": {
+    "command": "cargo rustc --offline --lib -- --emit asm -Cdebuginfo=2 -Ccodegen-units=1 -Copt-level=2",
+    "exitCode": 0,
+    "containsAdd7": true
+  }
+}
