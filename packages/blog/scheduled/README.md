@@ -23,6 +23,8 @@ The job then checks the live article, Markdown, correct index date, RSS and site
 
 An unfilled Monday fails visibly. Fix the queue and use **Run workflow → publish** on that same Monday after 08:00; retries check a promoted article rather than publish it twice. Other weekdays and times before 08:00 do not promote source. Missed weeks are not automatically caught up. A push conflict fails safely: start a fresh run against current main and repeat checks; do not force-push an unchecked tree.
 
+A separately authorized immediate catch-up may use normal repository delivery with its actual publication date. It does not re-enable a paused publisher or change the Monday gate; [the November 17 release](../drafts/research/oss-radar-15-november-show-hn/11-publication-2026-11-17.md) records this distinction.
+
 Use **Run workflow → check** for hosted queue validation without publication. To cancel a queued release, remove its manifest entry before its run. Disable the workflow to stop automatic releases. The preparation heartbeat must not become a second publisher.
 
 [GitHub schedule semantics](https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#schedule) document possible delays and dropped runs. [Time-zone syntax](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax#onschedule) documents IANA zones. [Cloudflare Git integration](https://developers.cloudflare.com/workers/ci-cd/builds/git-integration/) supplies the existing deployment path. Setup, hosted activation and dated release acceptance belong in the [weekly worklist](../../../docs/worklist/oss-radar-weekly/README.md).

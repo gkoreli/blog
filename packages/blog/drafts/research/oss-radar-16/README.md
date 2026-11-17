@@ -2,7 +2,7 @@
 
 November 16, 2026, America/Los_Angeles. **Source selection and initial qualification are complete; participant due diligence and the article are unfinished. Publication remains paused.** No title, slug, manuscript, queue entry or publication manifest entry has been assigned.
 
-The next issue will use the [recurring selection format](../../../../../.agents/skills/writing/references/oss-radar-format.md): declared sources, substantive project reviews, supported patterns and a reasoned distillation. The [weekly worklist](../../../../../docs/worklist/oss-radar-weekly/README.md) owns timing and release authorization. [#15's accepted source](../oss-radar-15-november-show-hn/10-monday-release-follow-up.md) stays held and unchanged; new research does not reopen its passed checks.
+The next issue will use the [recurring selection format](../../../../../.agents/skills/writing/references/oss-radar-format.md): declared sources, substantive project reviews, supported patterns and a reasoned distillation. The [weekly worklist](../../../../../docs/worklist/oss-radar-weekly/README.md) owns timing and release authorization. [#15 was published November 17](../oss-radar-15-november-show-hn/11-publication-2026-11-17.md) under one-time authorization. Automatic publication remains paused; new #16 research does not reopen the published issue's passed checks.
 
 ## Declared selection
 

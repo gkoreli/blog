@@ -1,0 +1,127 @@
+{
+  "checkedAt": "2026-11-17T15:14:06.577Z",
+  "sourceCommit": "2e9ec8003ca29aaf66d63f3bb938a896789906fd",
+  "sourceSha256": "5ef0fc0c5fb840001091c4d4f75b58222fef09047d1e847de11fe7d1884618d8",
+  "canonical": "https://gkoreli.com/oss-radar-15-november-launches",
+  "publicationDate": "2026-11-17",
+  "endpoints": [
+    {
+      "name": "article",
+      "path": "/oss-radar-15-november-launches",
+      "status": 200,
+      "type": "text/html",
+      "sha256": "0a7785a50d2029eb94473e4084555e3dde594cf16e1cbaf260fa71e034ce06c8",
+      "bytes": 63455
+    },
+    {
+      "name": "markdown",
+      "path": "/oss-radar-15-november-launches.md",
+      "status": 200,
+      "type": "text/markdown; charset=utf-8",
+      "sha256": "9198446cbc731762ed417ecd83568e38ded0e2efe1d852b36b58e433c85013b6",
+      "bytes": 39127
+    },
+    {
+      "name": "csl",
+      "path": "/oss-radar-15-november-launches.csl.json",
+      "status": 200,
+      "type": "application/vnd.citationstyles.csl+json",
+      "sha256": "fbd0e8593cbd9e03347ad4edcd02c3d82ffc3e3936c8608e93b3b182e5f2d5bd",
+      "bytes": 483
+    },
+    {
+      "name": "bib",
+      "path": "/oss-radar-15-november-launches.bib",
+      "status": 200,
+      "type": "application/x-bibtex; charset=utf-8",
+      "sha256": "e8161771cde5ac3d92a2906aff141f44d162b0baa0bac88d68e76e4df8667489",
+      "bytes": 263
+    },
+    {
+      "name": "index",
+      "path": "/posts.json",
+      "status": 200,
+      "type": "application/json",
+      "sha256": "30fe297f10e740803c7fa275e312c60d2ece2503e25c35c1cb973c26d0136317",
+      "bytes": 34865
+    },
+    {
+      "name": "feed",
+      "path": "/feed.xml",
+      "status": 200,
+      "type": "application/xml",
+      "sha256": "42416d02f845be4b8baeb40cd0cb2af1aa17bc1a211361e9e822121ebf60b075",
+      "bytes": 23594
+    },
+    {
+      "name": "sitemap",
+      "path": "/sitemap.xml",
+      "status": 200,
+      "type": "application/xml",
+      "sha256": "72f7d7134db3c126080de35437136a4ce298c4d5f539b0a19f381c222c1277ec",
+      "bytes": 5782
+    },
+    {
+      "name": "section",
+      "path": "/oss-radar",
+      "status": 200,
+      "type": "text/html",
+      "sha256": "313f6d56c101ce800b07b0a16b2da4faebb4b3ed28bdda3ecf2262e312d886fe",
+      "bytes": 42599
+    },
+    {
+      "name": "og",
+      "path": "/og/oss-radar-15-november-launches.png",
+      "status": 200,
+      "type": "image/png",
+      "sha256": "1fb155c3840a109d9a7fe14d8e35ea65158cc9c6522a924b975e55911143eea9",
+      "bytes": 121917
+    },
+    {
+      "name": "negotiatedMarkdown",
+      "path": "/oss-radar-15-november-launches",
+      "status": 200,
+      "type": "text/markdown; charset=utf-8",
+      "sha256": "9198446cbc731762ed417ecd83568e38ded0e2efe1d852b36b58e433c85013b6",
+      "bytes": 39127
+    }
+  ],
+  "h1": 1,
+  "h3": 11,
+  "exactLocalMarkdownMatches": true,
+  "negotiatedMarkdownMatches": true,
+  "currentReleaseParagraphsPresent": true,
+  "radarIndexContainsArticle": true,
+  "publisherState": "disabled_manually",
+  "manifestEntries": 0,
+  "scope": "Controlled release acceptance: article identity/content, metadata/discovery and served representations. No reader, adoption or distribution outcome is inferred.",
+  "productionPublicationPerformed": true,
+  "browserReview": {
+    "method": "CUA in-app browser on the production URL",
+    "desktop": {
+      "width": 1280,
+      "documentScrollWidth": 1280,
+      "h1": 1
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "documentScrollWidth": 390,
+      "h1": 1
+    },
+    "observed": [
+      "November 17 date and matching H1",
+      "Published beta.42 coverage/matching paragraphs readable",
+      "No document overflow at either width",
+      "Viewport override reset; article tab retained as deliverable"
+    ]
+  },
+  "providerCheckObserved": {
+    "name": "Workers Builds: gkoreli-com",
+    "id": 134136487400,
+    "url": "https://github.com/gkoreli/blog/runs/134136487400",
+    "status": "in_progress",
+    "observedAt": "2026-11-17T15:16:43Z",
+    "limit": "This metadata was still pending when the exact served article and representations passed acceptance; no completed provider-check result is claimed."
+  }
+}
