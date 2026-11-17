@@ -1,10 +1,10 @@
 # November 17 publication
 
-November 17, 2026, America/Los_Angeles. **The corrected issue #15 release candidate is ready; publication remains paused.** The Monday slot was missed while the publisher was disabled and the manifest empty. A request to restore the publisher was rejected by automatic approval review because the retained hold requires explicit new resumption authorization. Source preparation is complete; no production publication is claimed.
+November 17, 2026, America/Los_Angeles. **A one-time immediate release of #15 is authorized; automatic publication remains paused.** The Monday slot was missed while the publisher was disabled and the manifest empty. The earlier re-enablement request was rejected by automatic approval review. The subsequent scoped authorization covers this issue only, so the hosted workflow and publication schedule remain unchanged. Source delivery and live acceptance are separate steps below.
 
 ## Source and current corrections
 
-The closed 603-submission population, eight OSS launches and Takumi return are unchanged. The held November 16 manuscript remains a historical snapshot at SHA-256 `589cbb345324436c517e694f77c3833d98a6d539eea1afea3cb5cc020fa14aee`. The current reviewed [draft](article.md) is the corrected candidate at SHA-256 `5ef0fc0c5fb840001091c4d4f75b58222fef09047d1e847de11fe7d1884618d8`. Its prepared post filename is `046-oss-radar-15-november-launches.md`, proposed URL `https://gkoreli.com/oss-radar-15-november-launches`, and candidate date November 17. Use the actual date when release is approved. The earlier accepted draft remains in Git history and dated receipts; Monday publication is not claimed.
+The closed 603-submission population, eight OSS launches and Takumi return are unchanged. The held November 16 manuscript remains a historical snapshot at SHA-256 `589cbb345324436c517e694f77c3833d98a6d539eea1afea3cb5cc020fa14aee`. The current reviewed [draft](article.md) is the corrected candidate at SHA-256 `5ef0fc0c5fb840001091c4d4f75b58222fef09047d1e847de11fe7d1884618d8`. Its [selected post source](../../../posts/046-oss-radar-15-november-launches.md) uses the actual November 17 release date and URL `https://gkoreli.com/oss-radar-15-november-launches`. The earlier accepted draft remains in Git history and dated receipts; Monday publication is not claimed.
 
 The [bounded freshness record](results/release-freshness-2026-11-17.json) covers seven release collections and ten relevant head/issue/PR states. Three projects released newer versions; Fursoy also changed substantially after the pinned RTL. Only consequential copy was revised; passing older experiments were not rerun to acquire a new date.
 
@@ -32,6 +32,6 @@ Retained setup/check failures: metadata validation initially ran before fresh wo
 
 ## Delivery and served acceptance
 
-Only the corrected research draft, fixtures and evidence may be saved to `main` while approval is pending. Do not commit the prepared file under `posts/`, enable the hosted workflow or change the preparation automation to lift the hold before resumption is authorized. The manifest remains empty. Once approved, a delayed immediate release should use its actual date and normal repository delivery; future Monday releases use the existing queue/publisher.
+The exact accepted source is promoted to `posts/` and delivered through the normal main-branch/Cloudflare path for this one-time release. The automatic publisher stays disabled and the manifest stays empty. No hosted workflow or preparation-automation setting is changed. Future automatic releases remain held until separately resumed.
 
 Production article, Markdown, discovery/date records and live reading still require acceptance after the source push. No X operation, external message, maintainer contact or paid service is part of this release. Raw author material remains private.
