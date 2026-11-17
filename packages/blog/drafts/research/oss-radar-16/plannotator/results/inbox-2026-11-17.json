@@ -1,0 +1,296 @@
+{
+  "source_commit": "969084882013ac7634283ebca06f3118e766d30d",
+  "release": "v0.28.67",
+  "bun": "1.4.0",
+  "system": "darwin",
+  "arch": "arm64",
+  "cases": [
+    {
+      "case": "other_and_unnamed_reader_then_owner_after_reopen",
+      "pending_before_owner": [
+        "msg_01M7N7PNK7BA8DZ3ZPK673BBF3"
+      ],
+      "owner_read_settled": true,
+      "thread_after": {
+        "id": "msg_01M7N7PNK7EX197A65CN8W1XTB",
+        "project_id": "prj_01M7N7PNK6BXPNFEMSN2P7B791",
+        "thread_id": "msg_01M7N7PNK7EX197A65CN8W1XTB",
+        "reply_to": null,
+        "author": {
+          "kind": "agent",
+          "host": "t3",
+          "session": "00000000-0000-4000-8000-000000000016",
+          "name": "Fixture agent"
+        },
+        "subject": "Which parser should I use for the release notes?",
+        "subject_question": null,
+        "body": "Which parser should I use for the release notes?",
+        "created_at": "2026-11-17T17:00:00.001Z",
+        "resolved_at": null,
+        "idempotency_key": null,
+        "thread_name": null,
+        "agent_checked_seq": 3,
+        "agent_checked_at": "2026-11-17T17:00:00.005Z"
+      },
+      "reply_after": {
+        "id": "msg_01M7N7PNK7BA8DZ3ZPK673BBF3",
+        "project_id": "prj_01M7N7PNK6BXPNFEMSN2P7B791",
+        "thread_id": "msg_01M7N7PNK7EX197A65CN8W1XTB",
+        "reply_to": "msg_01M7N7PNK7EX197A65CN8W1XTB",
+        "author": {
+          "kind": "person"
+        },
+        "subject": null,
+        "body": "Use the streaming parser and preserve the original timestamps.",
+        "created_at": "2026-11-17T17:00:00.002Z",
+        "resolved_at": null,
+        "idempotency_key": "reply-readers"
+      }
+    },
+    {
+      "case": "raw_mcp",
+      "newcomer_read_settled": true,
+      "thread_after": {
+        "id": "msg_01M7N7PNK9347TXVY8F1SJH656",
+        "project_id": "prj_01M7N7PNK8KH45HF6CVF63KJXA",
+        "thread_id": "msg_01M7N7PNK9347TXVY8F1SJH656",
+        "reply_to": null,
+        "author": {
+          "kind": "agent",
+          "host": "cursor",
+          "session": "ses_original",
+          "name": "Fixture agent"
+        },
+        "subject": "Which parser should I use for the release notes?",
+        "subject_question": null,
+        "body": "Which parser should I use for the release notes?",
+        "created_at": "2026-11-17T17:00:00.007Z",
+        "resolved_at": null,
+        "idempotency_key": null,
+        "thread_name": null,
+        "agent_checked_seq": 3,
+        "agent_checked_at": "2026-11-17T17:00:00.009Z"
+      }
+    },
+    {
+      "case": "wrong_host",
+      "newcomer_read_settled": true,
+      "thread_after": {
+        "id": "msg_01M7N7PNK9NQRZJPYY89CHH207",
+        "project_id": "prj_01M7N7PNK9JJRZKCNEBWEVPXQ0",
+        "thread_id": "msg_01M7N7PNK9NQRZJPYY89CHH207",
+        "reply_to": null,
+        "author": {
+          "kind": "agent",
+          "host": "cursor",
+          "session": "00000000-0000-4000-8000-000000000016",
+          "name": "Fixture agent"
+        },
+        "subject": "Which parser should I use for the release notes?",
+        "subject_question": null,
+        "body": "Which parser should I use for the release notes?",
+        "created_at": "2026-11-17T17:00:00.011Z",
+        "resolved_at": null,
+        "idempotency_key": null,
+        "thread_name": null,
+        "agent_checked_seq": 3,
+        "agent_checked_at": "2026-11-17T17:00:00.013Z"
+      }
+    },
+    {
+      "case": "late_grant_after_other_reader_and_restart",
+      "accepted": [
+        {
+          "threadId": "00000000-0000-4000-8000-000000000016",
+          "message": "Plannotator Inbox: Radar fixture (msg_01M7N7PNKAEADQHGYN3JBJ5BYJ)\nThis is a user reply from Plannotator Inbox. Their reply follows as they wrote it: it is their answer to you. When they need to hear back, answer in the same thread: send_message with reply_to set to the id in parentheses on the line above.\n[Thread msg_01M7N7PNKAKZ09XPXD4J3FDFZG]\n\nUse the streaming parser and preserve the original timestamps.\n\n[for context: read_thread (opt: set limit) or search \u00b7 help: plannotator inbox --help]",
+          "mode": "queue",
+          "clientRequestId": "plannotator-inbox-msg_01M7N7PNKAEADQHGYN3JBJ5BYJ"
+        }
+      ],
+      "reply_after": {
+        "id": "msg_01M7N7PNKAEADQHGYN3JBJ5BYJ",
+        "project_id": "prj_01M7N7PNK9H49JM3T37179CM7M",
+        "thread_id": "msg_01M7N7PNKAKZ09XPXD4J3FDFZG",
+        "reply_to": "msg_01M7N7PNKAKZ09XPXD4J3FDFZG",
+        "author": {
+          "kind": "person"
+        },
+        "subject": null,
+        "body": "Use the streaming parser and preserve the original timestamps.",
+        "created_at": "2026-11-17T17:00:00.016Z",
+        "resolved_at": null,
+        "idempotency_key": "reply-late_grant",
+        "delivery": {
+          "state": "delivered",
+          "host": "t3",
+          "session": "00000000-0000-4000-8000-000000000016",
+          "at": "2026-11-17T17:00:00.019Z"
+        }
+      },
+      "logs": [
+        "No T3 grant reaches thread 00000000-0000-4000-8000-000000000016; run `plannotator t3 login --url <T3 MCP URL>`. Its replies wait in the Inbox.",
+        "No T3 grant reaches thread 00000000-0000-4000-8000-000000000016; run `plannotator t3 login --url <T3 MCP URL>`. Its replies wait in the Inbox."
+      ]
+    },
+    {
+      "case": "transport_outage_preserves_owner_then_retries",
+      "gone_during_outage": false,
+      "accepted_after_recovery": [
+        {
+          "threadId": "00000000-0000-4000-8000-000000000016",
+          "message": "Plannotator Inbox: Radar fixture (msg_01M7N7PNKGDT6VS6GDH7HQNJ0F)\nThis is a user reply from Plannotator Inbox. Their reply follows as they wrote it: it is their answer to you. When they need to hear back, answer in the same thread: send_message with reply_to set to the id in parentheses on the line above.\n[Thread msg_01M7N7PNKGTQD7QCPKBACBD1JA]\n\nUse the streaming parser and preserve the original timestamps.\n\n[for context: read_thread (opt: set limit) or search \u00b7 help: plannotator inbox --help]",
+          "mode": "queue",
+          "clientRequestId": "plannotator-inbox-msg_01M7N7PNKGDT6VS6GDH7HQNJ0F"
+        }
+      ],
+      "logs": [
+        "T3 could not be reached for thread 00000000-0000-4000-8000-000000000016. Trying again later."
+      ]
+    },
+    {
+      "case": "lookup_under_unmatched_grant_does_not_prove_gone",
+      "gone": false,
+      "pending": [
+        "msg_01M7N7PNKJV9GDP6XA0WDBM7JS"
+      ],
+      "calls": [
+        {
+          "method": "t3_thread_read",
+          "args": {
+            "view": "messages",
+            "limit": 1,
+            "runLimit": 50,
+            "maxCharsPerItem": 50000,
+            "threadId": "00000000-0000-4000-8000-000000000016"
+          }
+        }
+      ],
+      "logs": [
+        "No T3 grant reaches thread 00000000-0000-4000-8000-000000000016; run `plannotator t3 login --url <T3 MCP URL>`. Its replies wait in the Inbox."
+      ]
+    },
+    {
+      "case": "known_thread_ended_newcomer_can_settle",
+      "promised": false,
+      "pending_after_new_reader": [],
+      "tool_call_cleared_gone": true,
+      "calls": [
+        {
+          "method": "t3_thread_read",
+          "args": {
+            "view": "messages",
+            "limit": 1,
+            "runLimit": 50,
+            "maxCharsPerItem": 50000,
+            "threadId": "00000000-0000-4000-8000-000000000016"
+          }
+        },
+        {
+          "method": "t3_thread_send",
+          "args": {
+            "threadId": "00000000-0000-4000-8000-000000000016",
+            "message": "Plannotator Inbox: Radar fixture (msg_01M7N7PNKKH9NTJM1Q7R4MZ6DD)\nThis is a user reply from Plannotator Inbox. Their reply follows as they wrote it: it is their answer to you. When they need to hear back, answer in the same thread: send_message with reply_to set to the id in parentheses on the line above.\n[Thread msg_01M7N7PNKKT2VC3G81W6P7PT02]\n\nUse the streaming parser and preserve the original timestamps.\n\n[for context: read_thread (opt: set limit) or search \u00b7 help: plannotator inbox --help]",
+            "mode": "queue",
+            "clientRequestId": "plannotator-inbox-msg_01M7N7PNKKH9NTJM1Q7R4MZ6DD"
+          }
+        }
+      ],
+      "reply_after": {
+        "id": "msg_01M7N7PNKKH9NTJM1Q7R4MZ6DD",
+        "project_id": "prj_01M7N7PNKKX0G1TZ2GABG7E3DP",
+        "thread_id": "msg_01M7N7PNKKT2VC3G81W6P7PT02",
+        "reply_to": "msg_01M7N7PNKKT2VC3G81W6P7PT02",
+        "author": {
+          "kind": "person"
+        },
+        "subject": null,
+        "body": "Use the streaming parser and preserve the original timestamps.",
+        "created_at": "2026-11-17T17:00:31.032Z",
+        "resolved_at": null,
+        "idempotency_key": "reply-unpromised_gone"
+      },
+      "logs": [
+        "T3 no longer has thread 00000000-0000-4000-8000-000000000016 (thread_not_found: The thread was not found.); the reply waits in the Inbox for the next agent."
+      ]
+    },
+    {
+      "case": "explicit_wake_stays_strict_when_gone",
+      "promised": true,
+      "pending_after_new_reader": [
+        "msg_01M7N7PNKP2PWV7SRBGXCBTQ5K"
+      ],
+      "tool_call_cleared_gone": true,
+      "calls": [
+        {
+          "method": "t3_thread_read",
+          "args": {
+            "view": "messages",
+            "limit": 1,
+            "runLimit": 50,
+            "maxCharsPerItem": 50000,
+            "threadId": "00000000-0000-4000-8000-000000000016"
+          }
+        },
+        {
+          "method": "t3_thread_send",
+          "args": {
+            "threadId": "00000000-0000-4000-8000-000000000016",
+            "message": "Plannotator Inbox: Radar fixture (msg_01M7N7PNKP2PWV7SRBGXCBTQ5K)\nThis is a user reply from Plannotator Inbox. Their reply follows as they wrote it: it is their answer to you. When they need to hear back, answer in the same thread: send_message with reply_to set to the id in parentheses on the line above.\n[Thread msg_01M7N7PNKPMY6SJVVK97PZ9TEB]\n\nUse the streaming parser and preserve the original timestamps.\n\n[for context: read_thread (opt: set limit) or search \u00b7 help: plannotator inbox --help]",
+            "mode": "queue",
+            "clientRequestId": "plannotator-inbox-msg_01M7N7PNKP2PWV7SRBGXCBTQ5K"
+          }
+        },
+        {
+          "method": "t3_thread_read",
+          "args": {
+            "view": "messages",
+            "limit": 1,
+            "runLimit": 50,
+            "maxCharsPerItem": 50000,
+            "threadId": "00000000-0000-4000-8000-000000000016"
+          }
+        },
+        {
+          "method": "t3_thread_send",
+          "args": {
+            "threadId": "00000000-0000-4000-8000-000000000016",
+            "message": "Plannotator Inbox: Radar fixture (msg_01M7N7PNKP2PWV7SRBGXCBTQ5K)\nThis is a user reply from Plannotator Inbox. Their reply follows as they wrote it: it is their answer to you. When they need to hear back, answer in the same thread: send_message with reply_to set to the id in parentheses on the line above.\n[Thread msg_01M7N7PNKPMY6SJVVK97PZ9TEB]\n\nUse the streaming parser and preserve the original timestamps.\n\n[for context: read_thread (opt: set limit) or search \u00b7 help: plannotator inbox --help]",
+            "mode": "queue",
+            "clientRequestId": "plannotator-inbox-msg_01M7N7PNKP2PWV7SRBGXCBTQ5K"
+          }
+        }
+      ],
+      "reply_after": {
+        "id": "msg_01M7N7PNKP2PWV7SRBGXCBTQ5K",
+        "project_id": "prj_01M7N7PNKN0Q4WQHDAX6GVSS55",
+        "thread_id": "msg_01M7N7PNKPMY6SJVVK97PZ9TEB",
+        "reply_to": "msg_01M7N7PNKPMY6SJVVK97PZ9TEB",
+        "author": {
+          "kind": "person"
+        },
+        "subject": null,
+        "body": "Use the streaming parser and preserve the original timestamps.",
+        "created_at": "2026-11-17T17:00:31.036Z",
+        "resolved_at": null,
+        "idempotency_key": "reply-promised_gone",
+        "delivery": {
+          "state": "delivered",
+          "host": "t3",
+          "session": "00000000-0000-4000-8000-000000000016",
+          "at": "2026-11-17T17:00:31.038Z"
+        }
+      },
+      "logs": [
+        "T3 no longer has thread 00000000-0000-4000-8000-000000000016 (thread_not_found: The thread was not found.); the reply waits in the Inbox for the next agent."
+      ]
+    }
+  ],
+  "limits": [
+    "scripted T3 RPC boundary; no real T3 turn",
+    "component store/wake path; no Inbox UI or MCP-route evaluation",
+    "isolated direct dependency pins, not full upstream workspace install"
+  ],
+  "source_hashes": "../source-hashes.json",
+  "upstream_source_count": 121,
+  "clock": "Fixture logical clock; the outage control advances 31 seconds without a wall-clock timing benchmark."
+}

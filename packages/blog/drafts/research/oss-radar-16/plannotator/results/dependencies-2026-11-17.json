@@ -1,0 +1,20 @@
+{
+  "versions": {
+    "zod": "4.6.7",
+    "@modelcontextprotocol/client": "2.3.1",
+    "eventsource-parser": "3.1.1",
+    "jose": "6.2.10",
+    "pkce-challenge": "5.0.1",
+    "@modelcontextprotocol/core": "2.3.1",
+    "eventsource": "3.0.7",
+    "cross-spawn": "7.0.6",
+    "path-key": "3.1.1",
+    "shebang-command": "2.0.0",
+    "shebang-regex": "3.0.0",
+    "which": "2.0.2",
+    "isexe": "2.0.0"
+  },
+  "all_versions_present_in_upstream_bun_lock": true,
+  "lifecycle_scripts": "disabled",
+  "scope": "Isolated component install, not the full workspace install."
+}

@@ -1,0 +1,13 @@
+{
+  "name": "radar-plannotator-trial-dependencies",
+  "private": true,
+  "dependencies": {
+    "@modelcontextprotocol/client": "2.3.1",
+    "zod": "4.6.7"
+  },
+  "pnpm": {
+    "overrides": {
+      "jose": "6.2.10"
+    }
+  }
+}

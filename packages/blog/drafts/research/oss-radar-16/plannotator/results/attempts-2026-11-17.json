@@ -1,0 +1,57 @@
+{
+  "date": "2026-11-17",
+  "release": "v0.28.67",
+  "source_commit": "969084882013ac7634283ebca06f3118e766d30d",
+  "archive": {
+    "url": "https://codeload.github.com/backnotprop/plannotator/tar.gz/969084882013ac7634283ebca06f3118e766d30d",
+    "sha256": "2ea489a62dd1e951eef2c1c34df6de39a2bfb3b4dc05184387e7e29a204a94ab",
+    "bytes": 49931247
+  },
+  "fixture_sha256": "29f8eb1ebfcc69d2d159f0d765dc3edbd1aeca61d37a210a1acae8fb5bed7661",
+  "attempts": [
+    {
+      "id": "imports-01",
+      "exit_code": 0,
+      "outcome": "real-store-import-ready",
+      "detail": "Actual local workspace packages linked using their exports; no third-party packages required for the store import."
+    },
+    {
+      "id": "imports-02",
+      "exit_code": 1,
+      "outcome": "missing-dependency",
+      "detail": "The actual credential module required @modelcontextprotocol/client. Auto-install was disabled; no account fallback was attempted."
+    },
+    {
+      "id": "imports-03",
+      "exit_code": 0,
+      "outcome": "real-wake-and-credentials-import-ready",
+      "detail": "Installed only the manifest MCP client and Zod pins with lifecycle scripts disabled."
+    },
+    {
+      "id": "trial-01",
+      "exit_code": 1,
+      "outcome": "fixture-error",
+      "completed_case_groups": 3,
+      "detail": "The scripted service had accepted a queued send, but the fixture inspected the nonexistent text field. The actual RPC field is message; existing progress, persisted records and stderr were retained."
+    },
+    {
+      "id": "trial-02",
+      "exit_code": 0,
+      "case_groups": 8,
+      "outcome": "accepted-component-result",
+      "detail": "Corrected the RPC field assertion. Dependency audit then found isolated JOSE resolution 6.2.17 instead of the upstream lock version 6.2.10."
+    },
+    {
+      "id": "reproduction-03",
+      "exit_code": 0,
+      "case_groups": 8,
+      "outcome": "accepted-portable-reproduction",
+      "detail": "Pinned JOSE 6.2.10; all 13 resolved package versions occur in the upstream lock. Verified all 121 source files before store creation and compared the observed runtime source closure afterward. Independent archive and persisted receipt/log checks passed."
+    }
+  ],
+  "limits": [
+    "Scripted T3 RPC response; no real T3 turn or model/provider run.",
+    "Bun 1.4.0 on Darwin arm64 only.",
+    "Controlled clock, not retry-latency measurement."
+  ]
+}

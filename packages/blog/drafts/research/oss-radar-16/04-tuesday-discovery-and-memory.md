@@ -1,5 +1,7 @@
 # November 17 — selection revision and Hermes memory
 
+**Next action advanced:** [the later November 17 session](05-tuesday-inbox-ownership.md) completed Plannotator's store/wake component trial and selects GoDoxy's actual health monitor next. The Hermes results and discovery policy below remain accepted; the then-proposed Plannotator action is now historical.
+
 **Milestone:** #16 now uses a project-led selection without HN discovery. A real released-code Hermes memory trial and a checked portable reproduction are complete. The issue, its project reviews and its manuscript remain unfinished. Target: November 23; publication remains paused.
 
 This record supersedes the active selection and next action in the [November 16 source selection](01-source-selection.md) and [Monday handoff](03-monday-handoff.md). Their inventory, source origins and completed CodeRelay research remain historical evidence. It does not change either published #14 or #15.
