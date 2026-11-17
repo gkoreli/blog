@@ -1,6 +1,6 @@
 # OSS Radar format
 
-Current series contract, November 14, 2026. The reference issues are [#1: Vercel's Winter 2026 cohort](../../../../packages/blog/posts/002-oss-radar-01-vercel-winter-2026-cohort.md) and [#14: November Show HN launches](../../../../packages/blog/posts/045-oss-radar-14-november-show-hn.md). Preserve their sources → projects → interpretation → distillation progression. Sources may be one bounded cohort or a curated mix of new discoveries and returning projects, with a clear selection rationale. A strong engineering explanation is not automatically an issue of this series.
+Current series contract, November 17, 2026. The reference issues are [#1: Vercel's Winter 2026 cohort](../../../../packages/blog/posts/002-oss-radar-01-vercel-winter-2026-cohort.md) and [#14: November Show HN launches](../../../../packages/blog/posts/045-oss-radar-14-november-show-hn.md). Preserve their sources → projects → interpretation → distillation progression. Sources may be one bounded cohort or a curated mix of new discoveries and returning projects, with a clear selection rationale. HN submissions, scores and launch windows are not the default discovery or selection rule; use an HN cohort only when explicitly requested for that issue. The reference issues establish the editorial form, not a permanent discovery feed. A strong engineering explanation is not automatically an issue of this series.
 
 ## Reader promise
 

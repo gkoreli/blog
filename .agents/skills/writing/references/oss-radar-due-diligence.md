@@ -4,11 +4,11 @@ Use with the [series format](oss-radar-format.md). A featured entry should refle
 
 ## Discovery portfolio
 
-Maintain a small, qualified pool rather than treating one launch site as the publication's only source.
+Maintain a small, qualified pool. Start with consequential shipped work, a distinctive reader job and a question worth investigating. Public releases, implementation history, maintainer engineering work and useful returns to earlier Radar participants supply leads. HN submissions, votes and launch windows do not determine discovery, inclusion or ordering by default. Use an HN cohort only when explicitly requested for that issue; #16 excludes HN as a selection source. An HN discussion may still supply attributed criticism or testimony for a project selected independently. Preserve a lead's actual origin when setting it aside; do not relabel an HN discovery as a GitHub discovery.
 
 | Source | Useful evidence | Boundary |
 | --- | --- | --- |
-| Show HN and comparable launch discussions | Problem, maintainer explanations, first questions and reported attempts | Votes and comments are attention, not adoption; indexed samples have biases |
+| HN and other public launch discussions | Attributed explanations, objections and reported attempts for independently selected projects | HN is not a default selection source. An explicitly requested HN issue is an exception; votes are attention, not adoption |
 | GitHub home/feed, followed projects and recommendations | Leads worth investigating and changes in projects already of interest | Inspect the linked repository; a personal feed is not a reproducible public census. Do not publish private feed contents or private-repository information |
 | Public releases, changelogs, RFCs and recent commit/PR history | What shipped, what is proposed, and which implementation changed | Default branch can be ahead of the version a user installs; commits are not outcomes |
 | Earlier Radar cohorts, including #1's 32 projects | A dated starting point for a useful return visit | Recheck old claims; archived article copy is not proof of present behavior or a historical code state |

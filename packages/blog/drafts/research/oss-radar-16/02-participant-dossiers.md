@@ -1,5 +1,7 @@
 # Initial participant dossiers
 
+**Historical qualification:** [November 17's fieldwork](04-tuesday-discovery-and-memory.md) adds executed Hermes memory results and revises the selection. CodeRelay is set aside; the November 16 observations below retain their original date and evidence state. Use the [research README](README.md) for current priorities.
+
 November 16, 2026. These records describe qualification, not finished reviews. Exact identities, origins, licenses, dates and refs are in the [inventory](inventory-2026-11-16.json). Follow the [participant workflow](../../../../../.agents/skills/writing/references/oss-radar-due-diligence.md) before writing. No per-project elapsed total was recorded.
 
 ## Hermes Agent

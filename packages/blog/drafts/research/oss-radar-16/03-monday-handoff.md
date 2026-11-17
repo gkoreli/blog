@@ -1,5 +1,7 @@
 # Monday source-selection handoff
 
+**Superseded next action:** use the [November 17 handoff](04-tuesday-discovery-and-memory.md#current-limits-and-next-session). CodeRelay is outside the active #16 selection. This dated record preserves Monday's work and its then-proposed experiment.
+
 November 16, 2026, America/Los_Angeles. Nominal issue date: **November 23**. **The source-selection milestone is complete. Participant diligence, article writing and editorial/release acceptance are unfinished. Publication remains paused.**
 
 ## Completed work

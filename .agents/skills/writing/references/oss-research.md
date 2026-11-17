@@ -1,6 +1,6 @@
 # OSS research
 
-Use for OSS Radar: assemble a coherent, sourced project selection, understand its participants, and distill what matters across the set. Follow the [cohesive Radar format](oss-radar-format.md) and [participant due diligence](oss-radar-due-diligence.md), grounded in issues #1 and #14. Sources include launch cohorts, GitHub discovery and returning projects; Show HN is one source. Single-project implementation explanations belong in engineering. OSS Radar has no public prompt file.
+Use for OSS Radar: assemble a coherent, sourced project selection, understand its participants, and distill what matters across the set. Follow the [cohesive Radar format](oss-radar-format.md) and [participant due diligence](oss-radar-due-diligence.md), grounded in issues #1 and #14. Discover projects through consequential public release/implementation work, maintainer engineering discussions and useful return visits. HN is excluded as a selection source for #16 and is not the series default; use an HN cohort only when explicitly requested for that issue. HN discussion can corroborate or challenge an independently selected project's claims. Single-project implementation explanations belong in engineering. OSS Radar has no public prompt file.
 
 ## Establish the source and claim set
 

@@ -1,0 +1,38 @@
+{
+  "date": "2026-11-17",
+  "source_commit": "ae2a81ccc00e9b7c06301523e5bb09608397149c",
+  "archive": {
+    "url": "https://codeload.github.com/NousResearch/hermes-agent/tar.gz/ae2a81ccc00e9b7c06301523e5bb09608397149c",
+    "sha256": "fe3481973fd7b4f78a4f716110e793b1474ec5eec9d44fc0332c6be40fa9b776",
+    "bytes": 94687829
+  },
+  "attempts": [
+    {
+      "id": "source-comparison",
+      "outcome": "stopped-before-execution",
+      "detail": "Two prior locally materialized files each had one additional trailing newline. The 10 newly fetched files matched. Actual trial used the unchanged pinned archive; both memory files were then separately matched against fresh raw GitHub bytes."
+    },
+    {
+      "id": "memory-01",
+      "exit_code": 1,
+      "outcome": "fixture-error",
+      "detail": "An oversized test entry repeated the selected patch span. The store refused the ambiguous patch before the intended drift guard; the fixture incorrectly expected drift_backup and raised KeyError. Existing condition artifacts and stderr retained privately."
+    },
+    {
+      "id": "memory-02",
+      "exit_code": 0,
+      "cases": 10,
+      "outcome": "accepted-component-result",
+      "detail": "Retained repeated-span refusal as a control; used a unique span for drift."
+    },
+    {
+      "id": "memory-03",
+      "exit_code": 0,
+      "cases": 10,
+      "outcome": "accepted-portable-reproduction",
+      "detail": "After adding source-closure verification to the portable fixture, all 27 imported upstream files matched the checked hashes before execution and the observed import closure matched afterward."
+    }
+  ],
+  "provider_calls": 0,
+  "scope": "Authored local memory-store cases; no whole agent, model, skill-learning or hosted runtime evaluation."
+}

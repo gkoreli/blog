@@ -1,5 +1,7 @@
 # Source selection — November 16
 
+**Historical selection:** the [November 17 revision](04-tuesday-discovery-and-memory.md) supersedes this roster and next action. CodeRelay and Bright Lines are outside the active #16 selection; their recorded origins and artifacts below remain intact. Use the [research README](README.md) for current work.
+
 ## Population and method
 
 The pool was fixed as eight named public repositories before qualification: Hermes Agent, NemoClaw, Plannotator, Bright Lines, CodeRelay, browser-ai, InsForge and GoDoxy. The [normalized inventory](inventory-2026-11-16.json) is the complete population for this selection. Repository metadata, release objects, selected commits, root files and actual license text were checked for all eight on November 16. No popularity threshold or score ordering was used.

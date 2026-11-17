@@ -1,0 +1,110 @@
+{
+  "hermes_cli/__init__.py": {
+    "sha256": "980efcc4bd80193e3258b85df02262e39de771352db445c7f3cad56bf6b41eb4",
+    "bytes": 3609
+  },
+  "hermes_cli/_subprocess_compat.py": {
+    "sha256": "0105042a68dc70a8b1375e7202e65fd4b9bdc4404db092511f3ab88f04c65561",
+    "bytes": 48775
+  },
+  "hermes_constants.py": {
+    "sha256": "d2f4392d910ab29974bdea6a447f99aae1b996cf66fdc191cfc35bcc6e8e9fdb",
+    "bytes": 72121
+  },
+  "hermes_dir_acl.py": {
+    "sha256": "de5ff2e3b3a7eeb5fe6b1e370360d1201a37aa9124b29a676a17b7339afd24e1",
+    "bytes": 25492
+  },
+  "hermes_scope.py": {
+    "sha256": "3bdc544c91bf995d0b68bb34137fdc7c4b774e65aecfb4a69a15002f782c96eb",
+    "bytes": 13758
+  },
+  "hermes_yaml.py": {
+    "sha256": "f97f0f08b6474c52434d0cffaa7ba0ecaa5b9279c4abcbb35c11d15f9c89db76",
+    "bytes": 3372
+  },
+  "tools/__init__.py": {
+    "sha256": "7bca460f476ac9ace706c8cfd07e98f8aae34d839862f0f68abafc3a8397cf35",
+    "bytes": 457
+  },
+  "tools/environments/__init__.py": {
+    "sha256": "bd99cbf48af47565e422800a561f99a4d9c2deb66adc49a0663389dae092d5c6",
+    "bytes": 419
+  },
+  "tools/environments/base.py": {
+    "sha256": "636b537ce83d2a00717ce0c234b36676a5a929449349ef7ddf56e89893888c8b",
+    "bytes": 44434
+  },
+  "tools/environments/base_output.py": {
+    "sha256": "e71e3bf546479556cd24c174db445f617b4456d8ae6604cfc9e8ee2b6369a644",
+    "bytes": 20638
+  },
+  "tools/environments/base_processes.py": {
+    "sha256": "e7d942dfc90fbe5afc1770816b79acb62f3d9826f092b8d8c7feffa97c5a8479",
+    "bytes": 11012
+  },
+  "tools/environments/base_session_env.py": {
+    "sha256": "6410456ecc4624d8755de5f8fcb6d2e76819e4dc31e1feaffcbf240d3561b48f",
+    "bytes": 13363
+  },
+  "tools/environments/base_wait.py": {
+    "sha256": "8bfb5a97f1fd92a1c9a6f8e1c801473ef23caa6b767c9da7e3553ea86fc827c9",
+    "bytes": 3093
+  },
+  "tools/environments/fd_wait.py": {
+    "sha256": "7779e472d5c8483315769481f9adb3140b035ee4f9e85497263005afe50e0259",
+    "bytes": 2309
+  },
+  "tools/environments/sandbox_scope.py": {
+    "sha256": "683966d4cf925d0a1f2e6ba2bcd26b98ccb5c19c66eda199ffe6838d43f47385",
+    "bytes": 16468
+  },
+  "tools/hosted_tool_policy.py": {
+    "sha256": "16f42b9538e920800892b084e1a6d6499dca4a7a5e153cb76f5a2c2c59492fa9",
+    "bytes": 6530
+  },
+  "tools/interrupt.py": {
+    "sha256": "d15b7106e6012a7743c693fdb227bba10590e42971777acac779f94fdd91cbae",
+    "bytes": 5127
+  },
+  "tools/memory_tool.py": {
+    "sha256": "791e3561346190d243be91714a8d8ffaeafa72a40a471fe8dc01cf778b4d4a68",
+    "bytes": 26158
+  },
+  "tools/memory_tool_store.py": {
+    "sha256": "502c85f10f6d12f2f92e511670882602988c7f43476ffd74e376c0daa37a3032",
+    "bytes": 44825
+  },
+  "tools/registry.py": {
+    "sha256": "9d5b888360955f9345743f6633dda24490961db7dad30664360ad7d4f6b7851c",
+    "bytes": 61493
+  },
+  "tools/terminal_tool_sudo_askpass.py": {
+    "sha256": "519cada797d70ed7afd57bf24d61714b1e183f82f7e849827e08df13b2dc0e27",
+    "bytes": 19110
+  },
+  "tools/threat_patterns.py": {
+    "sha256": "2339e0c9d0427b157cb37272b68fc674184fc8267db199aced2cc6464c3bd4dd",
+    "bytes": 18268
+  },
+  "tools/tool_output_truncate.py": {
+    "sha256": "c008f5f4dab87a9607e1d79ee5536207cededd574eb37a47e79c9587d59c3db1",
+    "bytes": 1448
+  },
+  "utils/__init__.py": {
+    "sha256": "4b8d1dec59ec3a4806b4af12f52becb7ff26ec3e5f9e0d1d9a8bc4cf88d78f26",
+    "bytes": 2649
+  },
+  "utils/env.py": {
+    "sha256": "a4caf72e76fdc453f2ba345de9c097e46425b569210c55404dc2aaeae84255d1",
+    "bytes": 4569
+  },
+  "utils/files.py": {
+    "sha256": "6c87bb0714ea6dee1de496a7725c8b3d6869d32adafe1065359531d84387a5c4",
+    "bytes": 32641
+  },
+  "utils/urls.py": {
+    "sha256": "5769264532bb296424081650d26d2e9e4255f0f0e65ee123d03990fb94727386",
+    "bytes": 2954
+  }
+}
