@@ -1,5 +1,7 @@
 # November 17 — Plannotator's reply ownership
 
+**Next action advanced:** [the afternoon health-monitor session](06-tuesday-health-silence.md) completed GoDoxy's bounded monitor/HTTP-probe trial. Its current handoff selects NemoClaw's supported runtime/policy path next; the Plannotator evidence below remains accepted.
+
 **Milestone:** the real Inbox store, JSONL persistence, T3 wake and credential/delivery classes passed an authored eight-group trial, followed by a source-checked reproduction. The T3 RPC endpoint was scripted. This advances one project dossier; the article and a live host/UI evaluation remain unfinished. Publication stays paused.
 
 This completes the Plannotator component experiment selected in the [earlier Tuesday handoff](04-tuesday-discovery-and-memory.md#current-limits-and-next-session). Use the next action below for the following session. [Protocol, portable fixture and reproduction instructions](plannotator/README.md); [normalized results](plannotator/results/inbox-2026-11-17.json); [all attempt dispositions](plannotator/results/attempts-2026-11-17.json).

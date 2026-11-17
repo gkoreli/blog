@@ -1,0 +1,93 @@
+{
+  "date": "2026-11-17",
+  "source_commit": "77cbac6b532d7d3881010eade21fe1a7f9e4bf8e",
+  "release": "v0.34.0",
+  "source_archive": {
+    "url": "https://codeload.github.com/yusing/godoxy/tar.gz/77cbac6b532d7d3881010eade21fe1a7f9e4bf8e",
+    "bytes": 2336571,
+    "sha256": "a8c915fe81a36dc9aa7991c68ef4de5e6a230c0d4f6999ff573862d0546d2251"
+  },
+  "toolchain": {
+    "version": "go1.27.4",
+    "metadata_source": "https://go.dev/dl/?mode=json",
+    "archive": {
+      "url": "https://go.dev/dl/go1.27.4.darwin-arm64.tar.gz",
+      "bytes": 68231011,
+      "sha256": "91a44a2b8a716600ad94a4f143e156116620db8828086a6e3602291be9bd0bb4"
+    },
+    "official_sha256_matched": true
+  },
+  "build_submodules": [
+    {
+      "repository": "yusing/goutils",
+      "commit": "e4dc8ec2f99d294dc56e8823b3038d1866228acb",
+      "path": "goutils",
+      "archive": {
+        "url": "https://codeload.github.com/yusing/goutils/tar.gz/e4dc8ec2f99d294dc56e8823b3038d1866228acb",
+        "bytes": 240957,
+        "sha256": "e6ab9ca7fbc4735f9f034bcb5224b4b023cc078d664ae61c87a7d09c41ef5891"
+      }
+    },
+    {
+      "repository": "godoxy-app/go-oidc",
+      "commit": "e49e54f31b32e1078b87df0ea1f4129650220f87",
+      "path": "internal/go-oidc",
+      "archive": {
+        "url": "https://codeload.github.com/godoxy-app/go-oidc/tar.gz/e49e54f31b32e1078b87df0ea1f4129650220f87",
+        "bytes": 33542,
+        "sha256": "4720437986eb42b2c53da2b1cfa409efe0e2b4541e8db7d1c519b3e41561093b"
+      }
+    },
+    {
+      "repository": "godoxy-app/gopsutil",
+      "commit": "28e462f475551ffe5b6027f212600fde5481aa8d",
+      "path": "internal/gopsutil",
+      "archive": {
+        "url": "https://codeload.github.com/godoxy-app/gopsutil/tar.gz/28e462f475551ffe5b6027f212600fde5481aa8d",
+        "bytes": 227056,
+        "sha256": "3d5ffe51da56c2431108ac178380f05fd9af9fef4d11c0e4b9a16084bfd87f80"
+      }
+    }
+  ],
+  "webui": "Not used in backend component trial",
+  "omitted_gopsutil_links": [
+    {
+      "path": "gopsutil-28e462f475551ffe5b6027f212600fde5481aa8d/process/testdata/linux/1/fd/0",
+      "target": "/foo"
+    },
+    {
+      "path": "gopsutil-28e462f475551ffe5b6027f212600fde5481aa8d/process/testdata/linux/1/fd/1",
+      "target": "/bar"
+    },
+    {
+      "path": "gopsutil-28e462f475551ffe5b6027f212600fde5481aa8d/process/testdata/linux/1/fd/2",
+      "target": "/baz"
+    }
+  ],
+  "environment": {
+    "GOENV": "off",
+    "GOWORK": "off",
+    "GOTOOLCHAIN": "local",
+    "CGO_ENABLED": "0",
+    "GOPROXY_during_trial": "off",
+    "GOPATH_GOMODCACHE_GOCACHE": "owned temporary directories"
+  },
+  "compiled_monitor_files": [
+    "monitor.go",
+    "last_seen.go",
+    "new.go",
+    "radar_monitor_trial_test.go"
+  ],
+  "required_linker_flag": {
+    "value": "-ldflags=-checklinkname=0",
+    "source": "internal/serialization/time_test.go:11"
+  },
+  "historical_comparison": {
+    "commit": "213e4a5cdb635bf1f5f5985fd04515ad592497d5",
+    "path": "internal/health/monitor/monitor.go",
+    "sha256": "207b35c09d569155a06378b1a8bdf3fbe89a249826e522acf2e8e6e6e716677d",
+    "state": "source inspected, not executed; reconstructed checkpoint, not original audited revision"
+  },
+  "fixture_sha256": "206e13708a70031817129c9368a894a075bb68c4689a7e1768646c8dd1f7e726",
+  "verified_source_and_module_files": 36
+}

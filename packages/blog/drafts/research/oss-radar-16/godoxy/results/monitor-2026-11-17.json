@@ -1,0 +1,735 @@
+{
+  "source_commit": "77cbac6b532d7d3881010eade21fe1a7f9e4bf8e",
+  "go": "go1.27.4",
+  "os": "darwin",
+  "arch": "arm64",
+  "cases": [
+    {
+      "case": "ordinary_down_threshold_and_recovery",
+      "effective_windows": [],
+      "nil_windows": true,
+      "steps": [
+        {
+          "logical_time": "2026-11-17T02:50:00Z",
+          "http_status": 200,
+          "probe_requests": 1,
+          "status": "healthy",
+          "consecutive_failures": 0,
+          "down_callback_sent": false,
+          "notices_so_far": []
+        },
+        {
+          "logical_time": "2026-11-17T02:51:00Z",
+          "http_status": 503,
+          "probe_requests": 2,
+          "status": "unhealthy",
+          "consecutive_failures": 1,
+          "down_callback_sent": false,
+          "notices_so_far": []
+        },
+        {
+          "logical_time": "2026-11-17T02:52:00Z",
+          "http_status": 503,
+          "probe_requests": 3,
+          "status": "unhealthy",
+          "consecutive_failures": 2,
+          "down_callback_sent": true,
+          "notices_so_far": [
+            {
+              "kind": "down",
+              "title": "\u274c Service went down \u274c",
+              "fields": [
+                {
+                  "name": "Service Name",
+                  "value": "radar/ordinary_down_threshold_and_recovery"
+                },
+                {
+                  "name": "Time",
+                  "value": "<wall-clock field, not a timing result>"
+                },
+                {
+                  "name": "Service URL",
+                  "value": "<owned-probe>"
+                },
+                {
+                  "name": "Detail",
+                  "value": "Service Unavailable"
+                },
+                {
+                  "name": "Last Seen",
+                  "value": "<wall-clock field, not a timing result>"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "logical_time": "2026-11-17T02:53:00Z",
+          "http_status": 503,
+          "probe_requests": 4,
+          "status": "unhealthy",
+          "consecutive_failures": 3,
+          "down_callback_sent": true,
+          "notices_so_far": [
+            {
+              "kind": "down",
+              "title": "\u274c Service went down \u274c",
+              "fields": [
+                {
+                  "name": "Service Name",
+                  "value": "radar/ordinary_down_threshold_and_recovery"
+                },
+                {
+                  "name": "Time",
+                  "value": "<wall-clock field, not a timing result>"
+                },
+                {
+                  "name": "Service URL",
+                  "value": "<owned-probe>"
+                },
+                {
+                  "name": "Detail",
+                  "value": "Service Unavailable"
+                },
+                {
+                  "name": "Last Seen",
+                  "value": "<wall-clock field, not a timing result>"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "logical_time": "2026-11-17T02:54:00Z",
+          "http_status": 200,
+          "probe_requests": 5,
+          "status": "healthy",
+          "consecutive_failures": 0,
+          "down_callback_sent": false,
+          "notices_so_far": [
+            {
+              "kind": "down",
+              "title": "\u274c Service went down \u274c",
+              "fields": [
+                {
+                  "name": "Service Name",
+                  "value": "radar/ordinary_down_threshold_and_recovery"
+                },
+                {
+                  "name": "Time",
+                  "value": "<wall-clock field, not a timing result>"
+                },
+                {
+                  "name": "Service URL",
+                  "value": "<owned-probe>"
+                },
+                {
+                  "name": "Detail",
+                  "value": "Service Unavailable"
+                },
+                {
+                  "name": "Last Seen",
+                  "value": "<wall-clock field, not a timing result>"
+                }
+              ]
+            },
+            {
+              "kind": "up",
+              "title": "\u2705 Service is up \u2705",
+              "fields": [
+                {
+                  "name": "Service Name",
+                  "value": "radar/ordinary_down_threshold_and_recovery"
+                },
+                {
+                  "name": "Time",
+                  "value": "<wall-clock field, not a timing result>"
+                },
+                {
+                  "name": "Service URL",
+                  "value": "<owned-probe>"
+                },
+                {
+                  "name": "Ping",
+                  "value": "0 ms"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case": "failure_and_recovery_inside_silence",
+      "effective_windows": [
+        "03:00-04:00"
+      ],
+      "nil_windows": false,
+      "steps": [
+        {
+          "logical_time": "2026-11-17T03:10:00Z",
+          "http_status": 503,
+          "probe_requests": 1,
+          "status": "unhealthy",
+          "consecutive_failures": 1,
+          "down_callback_sent": false,
+          "notices_so_far": []
+        },
+        {
+          "logical_time": "2026-11-17T03:11:00Z",
+          "http_status": 503,
+          "probe_requests": 2,
+          "status": "unhealthy",
+          "consecutive_failures": 2,
+          "down_callback_sent": false,
+          "notices_so_far": []
+        },
+        {
+          "logical_time": "2026-11-17T03:12:00Z",
+          "http_status": 200,
+          "probe_requests": 3,
+          "status": "healthy",
+          "consecutive_failures": 0,
+          "down_callback_sent": false,
+          "notices_so_far": []
+        }
+      ]
+    },
+    {
+      "case": "still_down_at_exact_window_end",
+      "effective_windows": [
+        "03:00-04:00"
+      ],
+      "nil_windows": false,
+      "steps": [
+        {
+          "logical_time": "2026-11-17T03:59:58Z",
+          "http_status": 503,
+          "probe_requests": 1,
+          "status": "unhealthy",
+          "consecutive_failures": 1,
+          "down_callback_sent": false,
+          "notices_so_far": []
+        },
+        {
+          "logical_time": "2026-11-17T03:59:59Z",
+          "http_status": 503,
+          "probe_requests": 2,
+          "status": "unhealthy",
+          "consecutive_failures": 2,
+          "down_callback_sent": false,
+          "notices_so_far": []
+        },
+        {
+          "logical_time": "2026-11-17T04:00:00Z",
+          "http_status": 503,
+          "probe_requests": 3,
+          "status": "unhealthy",
+          "consecutive_failures": 3,
+          "down_callback_sent": true,
+          "notices_so_far": [
+            {
+              "kind": "down",
+              "title": "\u274c Service went down \u274c",
+              "fields": [
+                {
+                  "name": "Service Name",
+                  "value": "radar/still_down_at_exact_window_end"
+                },
+                {
+                  "name": "Time",
+                  "value": "<wall-clock field, not a timing result>"
+                },
+                {
+                  "name": "Service URL",
+                  "value": "<owned-probe>"
+                },
+                {
+                  "name": "Detail",
+                  "value": "Service Unavailable"
+                },
+                {
+                  "name": "Last Seen",
+                  "value": "<wall-clock field, not a timing result>"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "logical_time": "2026-11-17T04:00:01Z",
+          "http_status": 503,
+          "probe_requests": 4,
+          "status": "unhealthy",
+          "consecutive_failures": 4,
+          "down_callback_sent": true,
+          "notices_so_far": [
+            {
+              "kind": "down",
+              "title": "\u274c Service went down \u274c",
+              "fields": [
+                {
+                  "name": "Service Name",
+                  "value": "radar/still_down_at_exact_window_end"
+                },
+                {
+                  "name": "Time",
+                  "value": "<wall-clock field, not a timing result>"
+                },
+                {
+                  "name": "Service URL",
+                  "value": "<owned-probe>"
+                },
+                {
+                  "name": "Detail",
+                  "value": "Service Unavailable"
+                },
+                {
+                  "name": "Last Seen",
+                  "value": "<wall-clock field, not a timing result>"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "logical_time": "2026-11-17T04:01:00Z",
+          "http_status": 200,
+          "probe_requests": 5,
+          "status": "healthy",
+          "consecutive_failures": 0,
+          "down_callback_sent": false,
+          "notices_so_far": [
+            {
+              "kind": "down",
+              "title": "\u274c Service went down \u274c",
+              "fields": [
+                {
+                  "name": "Service Name",
+                  "value": "radar/still_down_at_exact_window_end"
+                },
+                {
+                  "name": "Time",
+                  "value": "<wall-clock field, not a timing result>"
+                },
+                {
+                  "name": "Service URL",
+                  "value": "<owned-probe>"
+                },
+                {
+                  "name": "Detail",
+                  "value": "Service Unavailable"
+                },
+                {
+                  "name": "Last Seen",
+                  "value": "<wall-clock field, not a timing result>"
+                }
+              ]
+            },
+            {
+              "kind": "up",
+              "title": "\u2705 Service is up \u2705",
+              "fields": [
+                {
+                  "name": "Service Name",
+                  "value": "radar/still_down_at_exact_window_end"
+                },
+                {
+                  "name": "Time",
+                  "value": "<wall-clock field, not a timing result>"
+                },
+                {
+                  "name": "Service URL",
+                  "value": "<owned-probe>"
+                },
+                {
+                  "name": "Ping",
+                  "value": "0 ms"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case": "earlier_down_recovers_inside_silence",
+      "effective_windows": [
+        "03:00-04:00"
+      ],
+      "nil_windows": false,
+      "steps": [
+        {
+          "logical_time": "2026-11-17T02:55:00Z",
+          "http_status": 503,
+          "probe_requests": 1,
+          "status": "unhealthy",
+          "consecutive_failures": 1,
+          "down_callback_sent": true,
+          "notices_so_far": [
+            {
+              "kind": "down",
+              "title": "\u274c Service went down \u274c",
+              "fields": [
+                {
+                  "name": "Service Name",
+                  "value": "radar/earlier_down_recovers_inside_silence"
+                },
+                {
+                  "name": "Time",
+                  "value": "<wall-clock field, not a timing result>"
+                },
+                {
+                  "name": "Service URL",
+                  "value": "<owned-probe>"
+                },
+                {
+                  "name": "Detail",
+                  "value": "Service Unavailable"
+                },
+                {
+                  "name": "Last Seen",
+                  "value": "<wall-clock field, not a timing result>"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "logical_time": "2026-11-17T03:10:00Z",
+          "http_status": 200,
+          "probe_requests": 2,
+          "status": "healthy",
+          "consecutive_failures": 0,
+          "down_callback_sent": false,
+          "notices_so_far": [
+            {
+              "kind": "down",
+              "title": "\u274c Service went down \u274c",
+              "fields": [
+                {
+                  "name": "Service Name",
+                  "value": "radar/earlier_down_recovers_inside_silence"
+                },
+                {
+                  "name": "Time",
+                  "value": "<wall-clock field, not a timing result>"
+                },
+                {
+                  "name": "Service URL",
+                  "value": "<owned-probe>"
+                },
+                {
+                  "name": "Detail",
+                  "value": "Service Unavailable"
+                },
+                {
+                  "name": "Last Seen",
+                  "value": "<wall-clock field, not a timing result>"
+                }
+              ]
+            },
+            {
+              "kind": "up",
+              "title": "\u2705 Service is up \u2705",
+              "fields": [
+                {
+                  "name": "Service Name",
+                  "value": "radar/earlier_down_recovers_inside_silence"
+                },
+                {
+                  "name": "Time",
+                  "value": "<wall-clock field, not a timing result>"
+                },
+                {
+                  "name": "Service URL",
+                  "value": "<owned-probe>"
+                },
+                {
+                  "name": "Ping",
+                  "value": "0 ms"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case": "cross_midnight_local_clock",
+      "effective_windows": [
+        "23:30-00:30"
+      ],
+      "nil_windows": false,
+      "steps": [
+        {
+          "logical_time": "2026-11-17T23:45:00-08:00",
+          "http_status": 503,
+          "probe_requests": 1,
+          "status": "unhealthy",
+          "consecutive_failures": 1,
+          "down_callback_sent": false,
+          "notices_so_far": []
+        },
+        {
+          "logical_time": "2026-11-18T00:15:00-08:00",
+          "http_status": 503,
+          "probe_requests": 2,
+          "status": "unhealthy",
+          "consecutive_failures": 2,
+          "down_callback_sent": false,
+          "notices_so_far": []
+        },
+        {
+          "logical_time": "2026-11-18T00:30:00-08:00",
+          "http_status": 503,
+          "probe_requests": 3,
+          "status": "unhealthy",
+          "consecutive_failures": 3,
+          "down_callback_sent": true,
+          "notices_so_far": [
+            {
+              "kind": "down",
+              "title": "\u274c Service went down \u274c",
+              "fields": [
+                {
+                  "name": "Service Name",
+                  "value": "radar/cross_midnight_local_clock"
+                },
+                {
+                  "name": "Time",
+                  "value": "<wall-clock field, not a timing result>"
+                },
+                {
+                  "name": "Service URL",
+                  "value": "<owned-probe>"
+                },
+                {
+                  "name": "Detail",
+                  "value": "Service Unavailable"
+                },
+                {
+                  "name": "Last Seen",
+                  "value": "<wall-clock field, not a timing result>"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "logical_time": "2026-11-18T00:31:00-08:00",
+          "http_status": 200,
+          "probe_requests": 4,
+          "status": "healthy",
+          "consecutive_failures": 0,
+          "down_callback_sent": false,
+          "notices_so_far": [
+            {
+              "kind": "down",
+              "title": "\u274c Service went down \u274c",
+              "fields": [
+                {
+                  "name": "Service Name",
+                  "value": "radar/cross_midnight_local_clock"
+                },
+                {
+                  "name": "Time",
+                  "value": "<wall-clock field, not a timing result>"
+                },
+                {
+                  "name": "Service URL",
+                  "value": "<owned-probe>"
+                },
+                {
+                  "name": "Detail",
+                  "value": "Service Unavailable"
+                },
+                {
+                  "name": "Last Seen",
+                  "value": "<wall-clock field, not a timing result>"
+                }
+              ]
+            },
+            {
+              "kind": "up",
+              "title": "\u2705 Service is up \u2705",
+              "fields": [
+                {
+                  "name": "Service Name",
+                  "value": "radar/cross_midnight_local_clock"
+                },
+                {
+                  "name": "Time",
+                  "value": "<wall-clock field, not a timing result>"
+                },
+                {
+                  "name": "Service URL",
+                  "value": "<owned-probe>"
+                },
+                {
+                  "name": "Ping",
+                  "value": "0 ms"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case": "same_instant_expressed_in_utc",
+      "effective_windows": [
+        "23:30-00:30"
+      ],
+      "nil_windows": false,
+      "steps": [
+        {
+          "logical_time": "2026-11-18T07:45:00Z",
+          "http_status": 503,
+          "probe_requests": 1,
+          "status": "unhealthy",
+          "consecutive_failures": 1,
+          "down_callback_sent": true,
+          "notices_so_far": [
+            {
+              "kind": "down",
+              "title": "\u274c Service went down \u274c",
+              "fields": [
+                {
+                  "name": "Service Name",
+                  "value": "radar/same_instant_expressed_in_utc"
+                },
+                {
+                  "name": "Time",
+                  "value": "<wall-clock field, not a timing result>"
+                },
+                {
+                  "name": "Service URL",
+                  "value": "<owned-probe>"
+                },
+                {
+                  "name": "Detail",
+                  "value": "Service Unavailable"
+                },
+                {
+                  "name": "Last Seen",
+                  "value": "<wall-clock field, not a timing result>"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case": "nil_windows_inherit",
+      "effective_windows": [
+        "03:00-04:00"
+      ],
+      "nil_windows": false,
+      "steps": [
+        {
+          "logical_time": "2026-11-17T03:10:00Z",
+          "http_status": 503,
+          "probe_requests": 1,
+          "status": "unhealthy",
+          "consecutive_failures": 1,
+          "down_callback_sent": false,
+          "notices_so_far": []
+        }
+      ]
+    },
+    {
+      "case": "empty_windows_opt_out",
+      "effective_windows": [],
+      "nil_windows": false,
+      "steps": [
+        {
+          "logical_time": "2026-11-17T03:10:00Z",
+          "http_status": 503,
+          "probe_requests": 1,
+          "status": "unhealthy",
+          "consecutive_failures": 1,
+          "down_callback_sent": true,
+          "notices_so_far": [
+            {
+              "kind": "down",
+              "title": "\u274c Service went down \u274c",
+              "fields": [
+                {
+                  "name": "Service Name",
+                  "value": "radar/empty_windows_opt_out"
+                },
+                {
+                  "name": "Time",
+                  "value": "<wall-clock field, not a timing result>"
+                },
+                {
+                  "name": "Service URL",
+                  "value": "<owned-probe>"
+                },
+                {
+                  "name": "Detail",
+                  "value": "Service Unavailable"
+                },
+                {
+                  "name": "Last Seen",
+                  "value": "<wall-clock field, not a timing result>"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case": "custom_window_overrides_default",
+      "effective_windows": [
+        "05:00-06:00"
+      ],
+      "nil_windows": false,
+      "steps": [
+        {
+          "logical_time": "2026-11-17T03:10:00Z",
+          "http_status": 503,
+          "probe_requests": 1,
+          "status": "unhealthy",
+          "consecutive_failures": 1,
+          "down_callback_sent": true,
+          "notices_so_far": [
+            {
+              "kind": "down",
+              "title": "\u274c Service went down \u274c",
+              "fields": [
+                {
+                  "name": "Service Name",
+                  "value": "radar/custom_window_overrides_default"
+                },
+                {
+                  "name": "Time",
+                  "value": "<wall-clock field, not a timing result>"
+                },
+                {
+                  "name": "Service URL",
+                  "value": "<owned-probe>"
+                },
+                {
+                  "name": "Detail",
+                  "value": "Service Unavailable"
+                },
+                {
+                  "name": "Last Seen",
+                  "value": "<wall-clock field, not a timing result>"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "limits": "Logical clock and notification callback; no router/ticker/container/external-delivery acceptance.",
+  "clock": "Logical clock; wall-clock fields normalized. No elapsed downtime, latency benchmark or container-TZ trial.",
+  "source_hashes": "../source-hashes.json",
+  "probe_requests": 23
+}

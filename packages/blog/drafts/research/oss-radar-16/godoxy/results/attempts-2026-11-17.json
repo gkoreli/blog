@@ -1,0 +1,51 @@
+{
+  "date": "2026-11-17",
+  "attempts": [
+    {
+      "id": "archive-extraction",
+      "outcome": "safe-extraction-refusal",
+      "detail": "Python data filtering rejected absolute Linux process-fd fixture links in gopsutil. Retained the archive; extracted regular files/directories and recorded the three omitted fixture links."
+    },
+    {
+      "id": "build-01",
+      "exit_code": 1,
+      "outcome": "missing-test-dependencies",
+      "detail": "Normal dependency resolution succeeded, but the offline no-run test build lacked upstream test imports. Resolved the test dependency graph using unchanged module pins and owned caches."
+    },
+    {
+      "id": "trial-02",
+      "exit_code": 1,
+      "outcome": "Darwin-external-test-build-limit",
+      "detail": "The package external tests import routeimpl then entrypoint, whose Linux unix.Eventfd symbols do not build on Darwin. No scenario ran."
+    },
+    {
+      "id": "trial-03",
+      "exit_code": 1,
+      "outcome": "missing-documented-linker-flag",
+      "detail": "Explicit production-file list avoided the unrelated test path, then Go rejected the intentional time.unitMap link. Used the project-documented per-command -ldflags=-checklinkname=0 flag; no global setting changed."
+    },
+    {
+      "id": "trial-04",
+      "exit_code": 1,
+      "outcome": "sandbox-loopback-restriction",
+      "detail": "The linked test reached httptest startup but the sandbox rejected loopback listening. No monitor scenario completed."
+    },
+    {
+      "id": "trial-05",
+      "exit_code": 0,
+      "scenarios": 9,
+      "http_probes": 23,
+      "outcome": "accepted-component-result",
+      "detail": "Explicit IPv4 127.0.0.1 listener with approved tool permission; notification callbacks captured locally. No external platform contacted."
+    },
+    {
+      "id": "reproduction-06",
+      "exit_code": 0,
+      "scenarios": 9,
+      "http_probes": 23,
+      "outcome": "accepted-portable-reproduction",
+      "detail": "Preparation helper verified 36 source/module files before a fresh test run; source and module files match pinned archives."
+    }
+  ],
+  "separate_environment_probe": "Sandboxed podman info could not access its loopback socket; this did not establish whether a VM was running. No VM was created or started."
+}
