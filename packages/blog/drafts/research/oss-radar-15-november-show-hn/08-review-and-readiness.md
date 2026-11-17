@@ -1,5 +1,7 @@
 # Issue #15 editorial and render acceptance
 
+**November 17 update:** [The corrected candidate](11-publication-2026-11-17.md) supersedes the held November 16 source after AgentRun beta.42 and Agweb 0.4.0 changed the advice. Exact candidate hash: `5ef0fc0c5fb840001091c4d4f75b58222fef09047d1e847de11fe7d1884618d8`. New controls and isolated build checks passed. The publication hold remains; no article is live. Earlier acceptances below retain their dates and versions.
+
 November 16, 2026, America/Los_Angeles. **The revised source has passed factual, editorial and render review after consequential Monday changes to Yogurt and AgentRun. Publication remains paused; nothing is queued or published.** The [Monday record](10-monday-release-follow-up.md) owns the new release checks and controls; the [evening diligence record](09-evening-due-diligence.md) retains the broader work on all nine entries. Earlier acceptances below remain dated history rather than certification of a later manuscript.
 
 ## Accepted source

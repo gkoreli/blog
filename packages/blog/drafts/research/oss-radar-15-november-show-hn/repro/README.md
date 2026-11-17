@@ -208,3 +208,14 @@ The [receipt](../results/yogurt-legacy-recovery-01.json) separates the 56 unmodi
 ```
 
 The fixture calls actual scoring/refit/cost functions on authored rows. `clears` is a predicate, not full replay settlement or promotion. The old wrong-workflow-answer comparison is arithmetic only: beta.38's normal selector used agent-path grades. The current supported-path result and the supplied-expected-answer controls are separate. Cost rows are artificial and establish selection rules, not spending or savings. No server, provider, mailbox or database upgrade is used.
+
+## November 17 promotion check
+
+[AgentRun beta.42](../11-publication-2026-11-17.md) adds a new promotion path. The [fixture](agentrun42-check.mjs) takes a bundle exporting `checkPasses`, `checkShares`, `sameAnswer` from `packages/serve/src/learn/promote.ts` and `loopOf` from `packages/serve/src/learning-setting.ts`, a JSON file of checked raw-source hashes, and a fresh result path. Use source `3b10f6fa540d37acf237d230207baa691402dcbe`, its actual `answer-json.ts` and `learn/workflow-nodes.ts` imports, TypeBox 1.3.27 and esbuild 0.27.3. Verify source hashes against the [receipt](../results/agentrun42-check-01.json) before bundling.
+
+```sh
+node repro/agentrun42-check.mjs \
+  "$trial_root/promotion-check.mjs" "$trial_root/source-hashes.json" "$trial_root/check.json"
+```
+
+The five predicate and three matching conditions exercise actual current functions, not the full service, model learning or database migration. The runtime caller was inspected separately for failed-input counting, skipped writes and no-evidence handling. Earlier scoring/crash results retain their actual versions.

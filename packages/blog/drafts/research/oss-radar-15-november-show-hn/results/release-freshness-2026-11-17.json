@@ -1,0 +1,329 @@
+{
+  "date": "2026-11-17",
+  "purpose": "Bounded release correction before delayed publication; retain dated experiments at their actual versions.",
+  "releaseCollections": [
+    {
+      "repository": "FrigadeHQ/yogurt",
+      "before": "v0.3.34",
+      "returned": [
+        {
+          "tag": "v0.3.39",
+          "published": "2026-11-17T06:52:01Z",
+          "url": "https://github.com/FrigadeHQ/yogurt/releases/tag/v0.3.39"
+        },
+        {
+          "tag": "v0.3.38",
+          "published": "2026-11-17T04:43:38Z",
+          "url": "https://github.com/FrigadeHQ/yogurt/releases/tag/v0.3.38"
+        },
+        {
+          "tag": "v0.3.37",
+          "published": "2026-11-17T02:15:22Z",
+          "url": "https://github.com/FrigadeHQ/yogurt/releases/tag/v0.3.37"
+        }
+      ]
+    },
+    {
+      "repository": "Parcha-ai/agentrun",
+      "before": "v0.1.0-beta.40",
+      "returned": [
+        {
+          "tag": "v0.1.0-beta.42",
+          "published": "2026-11-17T14:18:38Z",
+          "url": "https://github.com/Parcha-ai/agentrun/releases/tag/v0.1.0-beta.42"
+        },
+        {
+          "tag": "v0.1.0-beta.41",
+          "published": "2026-11-16T21:06:12Z",
+          "url": "https://github.com/Parcha-ai/agentrun/releases/tag/v0.1.0-beta.41"
+        },
+        {
+          "tag": "v0.1.0-beta.40",
+          "published": "2026-11-16T11:30:10Z",
+          "url": "https://github.com/Parcha-ai/agentrun/releases/tag/v0.1.0-beta.40"
+        }
+      ]
+    },
+    {
+      "repository": "simpsoka/zigzag",
+      "before": "v0.1.5",
+      "returned": [
+        {
+          "tag": "v0.1.5",
+          "published": "2026-11-15T04:46:16Z",
+          "url": "https://github.com/simpsoka/zigzag/releases/tag/v0.1.5"
+        },
+        {
+          "tag": "v0.1.4",
+          "published": "2026-11-14T21:49:32Z",
+          "url": "https://github.com/simpsoka/zigzag/releases/tag/v0.1.4"
+        },
+        {
+          "tag": "v0.1.3",
+          "published": "2026-11-13T23:56:01Z",
+          "url": "https://github.com/simpsoka/zigzag/releases/tag/v0.1.3"
+        }
+      ]
+    },
+    {
+      "repository": "paul-nameless/agweb",
+      "before": "v0.3.0",
+      "returned": [
+        {
+          "tag": "v0.4.0",
+          "published": "2026-11-16T21:47:51Z",
+          "url": "https://github.com/paul-nameless/agweb/releases/tag/v0.4.0"
+        },
+        {
+          "tag": "v0.3.0",
+          "published": "2026-11-14T23:18:57Z",
+          "url": "https://github.com/paul-nameless/agweb/releases/tag/v0.3.0"
+        },
+        {
+          "tag": "v0.2.0",
+          "published": "2026-11-13T22:11:41Z",
+          "url": "https://github.com/paul-nameless/agweb/releases/tag/v0.2.0"
+        }
+      ]
+    },
+    {
+      "repository": "kane50613/takumi",
+      "before": "takumi@2.20.0",
+      "returned": [
+        {
+          "tag": "takumi@2.20.0",
+          "published": "2026-11-08T08:05:22Z",
+          "url": "https://github.com/kane50613/takumi/releases/tag/takumi%402.20.0"
+        },
+        {
+          "tag": "takumi-svg@0.3.35",
+          "published": "2026-11-08T08:05:22Z",
+          "url": "https://github.com/kane50613/takumi/releases/tag/takumi-svg%400.3.35"
+        },
+        {
+          "tag": "takumi-raster@0.7.0",
+          "published": "2026-11-08T08:05:23Z",
+          "url": "https://github.com/kane50613/takumi/releases/tag/takumi-raster%400.7.0"
+        }
+      ]
+    },
+    {
+      "repository": "adrbn/bo2-mac",
+      "before": "v0.2.0-test.4",
+      "returned": [
+        {
+          "tag": "v0.2.0-test.4",
+          "published": "2026-11-06T16:04:54Z",
+          "url": "https://github.com/adrbn/bo2-mac/releases/tag/v0.2.0-test.4"
+        },
+        {
+          "tag": "v0.2.0-test.3",
+          "published": "2026-11-06T09:39:12Z",
+          "url": "https://github.com/adrbn/bo2-mac/releases/tag/v0.2.0-test.3"
+        },
+        {
+          "tag": "v0.2.0-test.2",
+          "published": "2026-11-05T16:06:01Z",
+          "url": "https://github.com/adrbn/bo2-mac/releases/tag/v0.2.0-test.2"
+        }
+      ]
+    },
+    {
+      "repository": "Vaibhaav-Tiwari/deepseek-v3-jax",
+      "before": "v1.0",
+      "returned": [
+        {
+          "tag": "v1.0",
+          "published": "2026-11-14T14:59:40Z",
+          "url": "https://github.com/Vaibhaav-Tiwari/deepseek-v3-jax/releases/tag/v1.0"
+        }
+      ]
+    }
+  ],
+  "supplemental": [
+    {
+      "name": "0xdeadf1sh/AssemblyForNeovim/head",
+      "url": "https://api.github.com/repos/0xdeadf1sh/AssemblyForNeovim/commits/main",
+      "before": {
+        "sha": "58a471ec97fb5987eca2b955fd2cba8693a414f6",
+        "state": null,
+        "comments": null
+      },
+      "observed": {
+        "sha": "58a471ec97fb5987eca2b955fd2cba8693a414f6",
+        "date": "2026-11-12T08:22:58Z"
+      }
+    },
+    {
+      "name": "FURSOY/fursoy-cpu/head",
+      "url": "https://api.github.com/repos/FURSOY/fursoy-cpu/commits/main",
+      "before": {
+        "sha": "377ae9563ab1b88ee0a037f2223ab49822968396",
+        "state": null,
+        "comments": null
+      },
+      "observed": {
+        "sha": "2e46fa4c65e9b8405e9d9504b75a87b5bbe6187a",
+        "date": "2026-11-16T19:48:05Z"
+      }
+    },
+    {
+      "name": "0xdeadf1sh/AssemblyForNeovim/pulls/4",
+      "url": "https://api.github.com/repos/0xdeadf1sh/AssemblyForNeovim/pulls/4",
+      "before": {
+        "sha": null,
+        "state": "open",
+        "comments": 0
+      },
+      "observed": {
+        "state": "open",
+        "updated": "2026-11-12T13:09:49Z",
+        "comments": 0,
+        "mergedAt": null,
+        "head": "22e08c1171b153b543137b7ae7ab43ec6f088eb1"
+      }
+    },
+    {
+      "name": "adrbn/bo2-mac/pulls/7",
+      "url": "https://api.github.com/repos/adrbn/bo2-mac/pulls/7",
+      "before": {
+        "sha": null,
+        "state": "open",
+        "comments": 0
+      },
+      "observed": {
+        "state": "open",
+        "updated": "2026-11-13T16:23:07Z",
+        "comments": 0,
+        "mergedAt": null,
+        "head": "722a4eb48995fff6ecda88db23c22b6422f1382c"
+      }
+    },
+    {
+      "name": "kane50613/takumi/pulls/2569",
+      "url": "https://api.github.com/repos/kane50613/takumi/pulls/2569",
+      "before": {
+        "sha": null,
+        "state": "open",
+        "comments": 2
+      },
+      "observed": {
+        "state": "open",
+        "updated": "2026-11-17T14:38:08Z",
+        "comments": 2,
+        "mergedAt": null,
+        "head": "a1356329c6dbd74c27ff1b10b7af1e3176de8257"
+      }
+    },
+    {
+      "name": "kane50613/takumi/pulls/2571",
+      "url": "https://api.github.com/repos/kane50613/takumi/pulls/2571",
+      "before": {
+        "sha": null,
+        "state": "open",
+        "comments": 19
+      },
+      "observed": {
+        "state": "open",
+        "updated": "2026-11-17T14:36:02Z",
+        "comments": 19,
+        "mergedAt": null,
+        "head": "b2a3a8153df3b19c2373fe4aed96a3fcb27ae527"
+      }
+    },
+    {
+      "name": "kane50613/takumi/issues/2558",
+      "url": "https://api.github.com/repos/kane50613/takumi/issues/2558",
+      "before": {
+        "sha": null,
+        "state": "open",
+        "comments": 0
+      },
+      "observed": {
+        "state": "open",
+        "updated": "2026-11-14T16:03:44Z",
+        "comments": 0,
+        "mergedAt": null,
+        "head": null
+      }
+    },
+    {
+      "name": "FrigadeHQ/yogurt/issues/30",
+      "url": "https://api.github.com/repos/FrigadeHQ/yogurt/issues/30",
+      "before": {
+        "sha": null,
+        "state": "closed",
+        "comments": 10
+      },
+      "observed": {
+        "state": "closed",
+        "updated": "2026-11-16T14:20:57Z",
+        "comments": 10,
+        "mergedAt": null,
+        "head": null
+      }
+    },
+    {
+      "name": "simpsoka/zigzag/issues/15",
+      "url": "https://api.github.com/repos/simpsoka/zigzag/issues/15",
+      "before": {
+        "sha": null,
+        "state": "open",
+        "comments": 4
+      },
+      "observed": {
+        "state": "open",
+        "updated": "2026-11-15T18:35:59Z",
+        "comments": 4,
+        "mergedAt": null,
+        "head": null
+      }
+    },
+    {
+      "name": "paul-nameless/agweb/issues/3",
+      "url": "https://api.github.com/repos/paul-nameless/agweb/issues/3",
+      "before": {
+        "sha": null,
+        "state": "open",
+        "comments": 0
+      },
+      "observed": {
+        "state": "closed",
+        "updated": "2026-11-16T19:52:42Z",
+        "comments": 1,
+        "mergedAt": null,
+        "head": null
+      }
+    }
+  ],
+  "consequentialChanges": [
+    {
+      "repository": "Parcha-ai/agentrun",
+      "before": "v0.1.0-beta.40",
+      "after": "v0.1.0-beta.42",
+      "source": "3b10f6fa540d37acf237d230207baa691402dcbe",
+      "evidence": "Release contract, merged PR 3032, called decision/default/matching code and five actual predicate plus three matching controls. The new path requires autonomous coverage; agreement is not independent correctness.",
+      "trial": "agentrun42-check-01.json"
+    },
+    {
+      "repository": "paul-nameless/agweb",
+      "before": "v0.3.0",
+      "after": "v0.4.0",
+      "evidence": "Declared macOS minimum changes to 15.4; issue 3 closed after fixes, with release notes describing moved-tab notes and extraction. New OS/features are release-reported, not retested locally."
+    },
+    {
+      "repository": "FrigadeHQ/yogurt",
+      "before": "v0.3.34",
+      "after": "v0.3.39",
+      "evidence": "35 compared commits; neither app/src/main/store.ts nor app/src/main/asr/backfill.ts changed in this comparison. Existing recovery experiments retain their versions. No current-recognition/summary/queue result inferred."
+    },
+    {
+      "repository": "FURSOY/fursoy-cpu",
+      "before": "377ae9563ab1b88ee0a037f2223ab49822968396",
+      "after": "2e46fa4c65e9b8405e9d9504b75a87b5bbe6187a",
+      "evidence": "Five compared commits with substantial RTL and verification/tool changes. Prior processor executions and eight-block timing scope remain tied to the inspected November 15 revision, rather than transferred to new RTL."
+    }
+  ],
+  "populationAndRosterChanged": false,
+  "fullProjectSuitesRepeated": false
+}

@@ -1,0 +1,37 @@
+{
+  "sourceSha256": "5ef0fc0c5fb840001091c4d4f75b58222fef09047d1e847de11fe7d1884618d8",
+  "htmlSha256": "5c79b2b6d6ed90bd4cee7922d168feaef2617ff07ad348467427ab7ceeeec061",
+  "ogSha256": "1fb155c3840a109d9a7fe14d8e35ea65158cc9c6522a924b975e55911143eea9",
+  "canonical": "https://gkoreli.com/oss-radar-15-november-launches",
+  "publicationDate": "2026-11-17",
+  "h1": 1,
+  "h3": 11,
+  "resolvedLocalLinks": 27,
+  "representations": [
+    "HTML",
+    "Markdown",
+    "CSL-JSON",
+    "BibTeX",
+    "posts.json",
+    "RSS",
+    "sitemap",
+    "llms.txt",
+    "llms-full.txt",
+    "OG PNG"
+  ],
+  "postsBuilt": 47,
+  "buildBaseline": "a9fe8547e63bc4f451c0cd47dfaf9ce68c5af2f0",
+  "node": "24.14.1",
+  "pnpm": "9.15.4",
+  "validMarkdownPosts": 36,
+  "searchReleaseParagraphPresent": true,
+  "desktopMobileCandidateReview": {
+    "sourceSha256": "d6dc0c4f4b67e4e67bfdd7084952a533db51e20d46668b87f2828296ec48c39b",
+    "desktopWidth": 1280,
+    "mobileWidth": 390,
+    "mobileHeight": 844,
+    "mobileDocumentScrollWidth": 390,
+    "observed": "Readable revised AgentRun passage; one H1. Two short prose changes followed, then final full build and structural acceptance."
+  },
+  "productionPublicationPerformed": false
+}
