@@ -32,6 +32,17 @@ Initial review November 13, 2026 Pacific; shipped-state and positioning update N
 
 The external repository/star snapshot remains frozen at November 13. Matomo/PostHog/Rybbit detection guides and supporting Umami documents were refreshed November 14. No additional production reads, new comparative runtime trial or full test-suite rerun was performed for this article update.
 
+## November 18 publication review
+
+| Claim | Evidence | Limit |
+| --- | --- | --- |
+| PostHog and Umami led among the seven selected code repositories | The November 13 snapshot records 40,776 and 40,129 stars respectively. The [November 18 W3Techs survey](https://w3techs.com/technologies/overview/traffic_analysis) separately reports detected website usage of 46.1% Google Analytics, 4.8% Cloudflare Web Analytics and 1.4% Matomo. | Repository interest and survey coverage answer different questions. The Google category does not isolate GA4. |
+| Period comparisons and ranked changes are established workflows | [Matomo date comparisons](https://matomo.org/faq/reporting-tools/compare-date-ranges/), [Movers and Shakers](https://matomo.org/faq/general/how-do-i-find-the-movers-and-shakers-increasers-and-decreasers/) and [PostHog web analytics over MCP](https://posthog.com/docs/web-analytics/surfaces/mcp). | Matomo and PostHog report capabilities come from their documentation. The owned feature compares the retained article and client access cohort over a fixed pair of UTC weeks. |
+| A publisher can trace a weekly difference to contributing rows | [Weekly comparison acceptance](../../../../../docs/worklist/tools-product-opportunities/agent-access-week-comparison-2026-11-18.json). The saved November 15 aggregate gives the Bun AOT follow-up 12 and 26 eligible events. The ExaSearchBot declaration gives 2 and 17. | This is a replay of one saved report. Different recorded measurement profiles across the two weeks limit interpretation. The rows provide counts by declaration and do not establish cause or an authenticated operator. |
+| The next proposed measurement is served revision and registered evidence access | [Agent access worklist](../../../../../docs/worklist/tools-product-opportunities/agent-access-stats.md#second-milestone-delivery-resource-coverage-and-revision-freshness) and [RFC 9110 validators](https://www.rfc-editor.org/rfc/rfc9110.html#section-8.8). | The proposal supersedes the November 14 article priority. Historic records without a revision stay unknown. Answer use and upstream access failures require their own evidence. |
+
+The selected November 18 refresh used primary product documentation. The dedicated Umami MCP page was again unavailable through the browsing tool. The FAQ, self-hosted configuration and Cloud changelog support the published statements. The IETF listing still identifies protocol-01 as an Internet-Draft. The external source baselines remain dated November 13.
+
 ## Rejected or narrowed claims
 
 - “Server-side AI reporting is unique to this library”: contradicted by Matomo/PostHog, with server-log paths elsewhere.

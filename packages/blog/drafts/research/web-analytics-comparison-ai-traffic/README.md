@@ -1,6 +1,6 @@
 # Web analytics comparison: people, agents and outcomes
 
-Started November 13, 2026 Pacific; revised November 14 after production reporting acceptance. [Draft](article.md); [claim review](claims.md); [November 13 repository baselines and popularity snapshot](repository-snapshot.json).
+Started November 13, 2026 Pacific and revised November 14 after production reporting acceptance. [November 14 manuscript](article.md), [maintained release source](../../../posts/047-web-analytics-comparison-ai-traffic.md), [claim review](claims.md) and [repository baselines](repository-snapshot.json).
 
 ## Reader and article
 
@@ -20,7 +20,7 @@ The earlier [industry comparison](../../../../../docs/worklist/tools-product-opp
 
 Raw author directions are preserved only in the approved private writing archive. Public records summarize decisions and evidence; they contain no source conversation. Source IDs/timestamps not supplied by the platform remain unknown.
 
-## Editorial decisions
+## November 14 editorial checkpoint
 
 Working title: **Web Analytics Tools Disagree About What Counts**. Search title candidate: **Web Analytics Comparison: People, Bots and AI Traffic**. Description candidate: **Compare popular web analytics tools by the traffic they observe, the decisions they support, and the evidence behind this blog's signature and history guarantees.** These are unpublished metadata candidates, without an invented publication date or URL.
 
@@ -32,10 +32,18 @@ The revised competitive verdict is specific: signature coverage and separated pr
 
 The next proposed build is a bounded publisher campaign/outcome contract with acknowledged events, deduplication and explicit unknown attribution. A real independent operator task can begin with the shipped starter and guide its scope. Stable external query/export support and demand-led read-only MCP follow; a labelled comparative fixture should precede accuracy claims or further policy changes. These are article recommendations, not authorization to implement another module or contact an operator.
 
-## Status and next action
+## November 14 draft status
 
 The revised manuscript remains unpublished for author review. It is about 3,800 words and adds a competitive-position table plus a concrete next-build proposal. The site's Markdown renderer produced one H1 and four semantic tables with 32 rows. Checks passed for 54 local links, eight owned source references, the production acceptance figures, code fences, JSON, scoped privacy and whitespace. Revised render and check receipts are saved in ignored `packages/blog/worklog/operations/analytics-comparison-article-20261114/`; the earlier render remains dated November 13.
 
 The source inspection strengthened the Rybbit comparison: when filtering is disabled, its inspected ingestion path still mirrors detections into `bot_observations`. The manuscript does not confuse the documentation's absence from the bot-events view with absence of retained evidence. This is source evidence at the recorded baseline, without an installed-release or hosted-runtime claim.
 
 Next action: author review of the manuscript's emphasis and voice. Keep publication, distribution, cross-product runtime experiments and the separate production-data approval outside this writing task. The article lives under `drafts/research/`, without a post number, publication date or public article URL. Existing retired article dispositions remain unchanged.
+
+## November 18 release
+
+The maintained source uses the title **Web Analytics Tools Disagree About What Counts**, engineering section and November 18 publication date. The revised opening uses the documented same-session GoatCounter example. The article compares ten options and leads with the decisions their observations support. The release uses the November 13 GitHub snapshot, updated November 18 website adoption figures and the [verified weekly comparison](../../../../../docs/worklist/tools-product-opportunities/agent-access-week-comparison-2026-11-18.json).
+
+The comparison article now proposes served revision and registered evidence access as the next work for this publication. It places that proposal beside a recorded traffic-change example and a separate independent operator task. The earlier campaign and conversion proposal remains in the November 14 checkpoint.
+
+Local release checks passed for 37 Markdown posts and the isolated 48-post build. The candidate rendered one article heading and four tables. At desktop and phone widths, the article and contents worked without page overflow. The mobile table scrolled by keyboard and kept its first column visible. The link to Weekly change opened the actual local report. The release check confirmed the canonical URL, publication date, shared/search titles, Markdown, citation files, social card and discovery lists.

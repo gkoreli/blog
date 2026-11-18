@@ -1,0 +1,78 @@
+{
+  "version": 1,
+  "status": "accepted",
+  "sourceCommit": "16037a6ca5fc9f323f190e660a5401f79cfa35d9",
+  "workerVersion": "31aa2cb3-ff9d-45aa-945f-9d0bd4b4b684",
+  "activatedAt": "2026-11-18T15:33:28.750Z",
+  "packageVersion": "0.6.0",
+  "contract": {
+    "period": "Latest seven completed UTC days versus the preceding seven",
+    "partitions": ["client declarations", "registered and unregistered resources"],
+    "leadingPerDirection": 3,
+    "separateRemainders": true,
+    "profileFields": ["collection", "classifier", "source"],
+    "selectionAddsRequestsOrQueries": false,
+    "newCollectionOrSchemaMutation": false,
+    "existingWireContractAndQueryPlansPreserved": true
+  },
+  "checks": {
+    "analyticsTests": 506,
+    "siteTests": 471,
+    "workspaceTypes": true,
+    "metadataAndConfiguredBuild": true,
+    "nativePortability": true,
+    "workerDryRun": true,
+    "syntheticOriginalsExactlyUnchanged": 4800,
+    "browserFixtureOriginalsExactlyUnchanged": 48,
+    "liveStatsAssetsMatch": true,
+    "publicNewsletterConfigurationPreserved": true
+  },
+  "savedReplay": {
+    "reportCalculatedAt": "2026-11-15T06:20:32.379Z",
+    "reportEvents": 3858,
+    "selectionsWithExactlyEqualExistingResults": 4700,
+    "differencePartitionsAndProfileCountsReconciled": true,
+    "previousStart": "2026-11-01",
+    "latestStart": "2026-11-08",
+    "latestEndExclusive": "2026-11-15",
+    "allSelection": { "previous": 1194, "latest": 1229, "change": 35 },
+    "article": {
+      "path": "/bun-aot-express-fastify-serializers",
+      "previous": 12,
+      "latest": 26,
+      "declaredClient": "ExaSearchBot",
+      "clientPrevious": 2,
+      "clientLatest": 17,
+      "measurementStatus": "multiple-profiles"
+    }
+  },
+  "manualBrowser": {
+    "sources": ["native D1 fixture", "dated saved aggregate replay", "activated production"],
+    "widths": [1280, 390, 320],
+    "themes": ["light", "dark"],
+    "checked": ["client drill-down and focus", "selection clearing and focus", "stable counts", "empty selection", "keyboard profile disclosure", "count columns visible at narrow widths"],
+    "nativeBrowserBatches": 2,
+    "nativeBrowserReads": 24781,
+    "nativeBrowserWrites": 0
+  },
+  "freshLiveCheck": {
+    "calculatedAt": "2026-11-18T15:36:35.611Z",
+    "previousStart": "2026-11-04",
+    "latestStart": "2026-11-11",
+    "latestEndExclusive": "2026-11-18",
+    "eventsInFull28DayReport": 4251,
+    "previous": 1389,
+    "latest": 1312,
+    "change": -77,
+    "selectedDeclaration": "ShapBot",
+    "selectedPrevious": 84,
+    "selectedLatest": 247,
+    "separateLegacyReportLoaded": true
+  },
+  "limits": [
+    "Movement explains which recorded counts changed. Cause, authentication of the declared client, and later use require separate evidence.",
+    "A matching stamp describes the stored measurement profile. It does not establish stable collection coverage or accuracy.",
+    "The replay starts with a dated public aggregate. Production verification uses a separate fresh report. Native fixture query counts are not production billing totals.",
+    "Raw operational captures stay outside Git."
+  ]
+}
