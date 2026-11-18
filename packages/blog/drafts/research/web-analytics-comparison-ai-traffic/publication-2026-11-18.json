@@ -1,0 +1,83 @@
+{
+  "version": 1,
+  "status": "published-and-verified",
+  "title": "Web Analytics Tools Disagree About What Counts",
+  "canonicalUrl": "https://gkoreli.com/web-analytics-comparison-ai-traffic",
+  "publicationDate": "2026-11-18",
+  "sourceCommit": "c805f40ebb6d3044ad2228a92da3a840186343bd",
+  "articleSourceSha256": "f1d8887907653989882f5eee231745e017726bbe236ebf357584e5abc6106cd2",
+  "workerVersion": "cbe6412d-4c0e-4b38-8b10-97895edb02e3",
+  "activatedAt": "2026-11-18T15:46:54.302171Z",
+  "checkedAt": "2026-11-18T15:47:25.061578+00:00",
+  "cloudflareBuildCheck": "https://github.com/gkoreli/blog/runs/134925573314",
+  "checkedBuild": {
+    "validatedMarkdownPosts": 37,
+    "totalPosts": 48,
+    "headings": 1,
+    "semanticTables": 4,
+    "resolvedInternalArticleLinks": 3
+  },
+  "servedResponses": {
+    "article.html": {
+      "status": 200,
+      "path": "/web-analytics-comparison-ai-traffic"
+    },
+    "article.md": {
+      "status": 200,
+      "path": "/web-analytics-comparison-ai-traffic.md",
+      "matchesCheckedBuild": true
+    },
+    "negotiated.md": {
+      "status": 200,
+      "path": "/web-analytics-comparison-ai-traffic",
+      "matchesCheckedBuild": true
+    },
+    "article.csl.json": {
+      "status": 200,
+      "path": "/web-analytics-comparison-ai-traffic.csl.json",
+      "matchesCheckedBuild": true
+    },
+    "article.bib": {
+      "status": 200,
+      "path": "/web-analytics-comparison-ai-traffic.bib",
+      "matchesCheckedBuild": true
+    },
+    "og.png": {
+      "status": 200,
+      "path": "/og/web-analytics-comparison-ai-traffic.png",
+      "matchesCheckedBuild": true
+    },
+    "posts.json": {
+      "status": 200,
+      "path": "/posts.json"
+    },
+    "feed.xml": {
+      "status": 200,
+      "path": "/feed.xml"
+    },
+    "sitemap.xml": {
+      "status": 200,
+      "path": "/sitemap.xml"
+    },
+    "llms.txt": {
+      "status": 200,
+      "path": "/llms.txt"
+    },
+    "stats.html": {
+      "status": 200,
+      "path": "/stats"
+    }
+  },
+  "manual": {
+    "viewportWidths": [
+      1280,
+      390
+    ],
+    "phoneContentsJump": "#what-changed-in-agent-access-last-week",
+    "workedExampleVisible": true,
+    "statsLink": "/stats#agent-access-change",
+    "keyboardTableScrollAndPinnedHeadingInLocalRelease": true,
+    "pageOverflowObserved": false
+  },
+  "limits": "Controlled HTTP and browser checks establish publication and readable output. Reader reception and independent operator adoption remain unmeasured. Raw captures stay outside Git."
+}
