@@ -3,6 +3,7 @@ import {
   type AgentAccessClient, type AgentAccessKind, type AgentAccessMetrics,
   type AgentAccessReport, type AgentAccessResource, type AgentAccessSelection,
 } from './agent-access-contract.js';
+import { compareAgentAccessWeeks } from './agent-access-comparison.js';
 
 export const ALL_AGENT_ACCESS: Readonly<AgentAccessSelection> = Object.freeze({ articleId: null, client: null, kind: null });
 
@@ -64,6 +65,7 @@ export function exploreAgentAccess(report: AgentAccessReport, selection: AgentAc
     markdownEvents: selected.byFormat.find(row => row.format === 'markdown')?.metrics.views ?? 0,
     coverage: { articleEvents: resourceViews('article'), evidenceEvents: resourceViews('evidence'), siteEvents: resourceViews('site'), unregisteredEvents: selected.unregistered.views, evidence },
     attribution, measurements,
+    comparison: compareAgentAccessWeeks(report.scope, selected),
     choices: {
       allResources, allClients, allRoles,
       articles: report.resources.filter(resource => resource.role === 'article').map(resource => ({ resource, metrics: articleChoices.get(resource.id) ?? emptyAgentAccessMetrics() })),

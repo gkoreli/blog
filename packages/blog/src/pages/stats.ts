@@ -26,7 +26,7 @@ export function statsPage(pages: readonly { path: string; title: string }[] = []
   ${sectionNavigation('Report views', [{ href: '#stats-agent-access', label: 'Agent access' }, { href: '#stats-page-requests', label: 'Page requests' }], { className: 'report-view-navigation' })}
   <agent-access-report class="report-context agent-access-report" id="stats-agent-access" aria-labelledby="agent-access-heading">
     ${reportContextHeading({ id: 'agent-access-heading', title: 'Agent access', description: 'Which work AI fetchers, search clients, crawlers and historical signed clients access, in which served format. Names and roles describe stored request evidence.', scope: [{ label: 'Window', value: '28 completed days' }, { label: 'Calendar', value: 'UTC reporting days' }, { label: 'Controls in this report', value: 'Article, client and role' }] })}
-    ${sectionNavigation('Agent access sections', [{ href: '#agent-access-summary', label: 'Overview' }, { href: '#agent-access-weeks', label: 'Weekly activity' }, { href: '#agent-access-articles', label: 'Articles' }, { href: '#agent-access-clients', label: 'Clients' }, { href: '#agent-access-coverage', label: 'Coverage' }, { href: '#agent-access-evidence', label: 'Evidence' }, { href: '#agent-access-history', label: 'History' }], { className: 'agent-access-navigation', currentHref: '#agent-access-summary', hidden: true })}
+    ${sectionNavigation('Agent access sections', [{ href: '#agent-access-summary', label: 'Overview' }, { href: '#agent-access-change', label: 'Weekly change' }, { href: '#agent-access-weeks', label: 'Four weeks' }, { href: '#agent-access-articles', label: 'Articles' }, { href: '#agent-access-clients', label: 'Clients' }, { href: '#agent-access-coverage', label: 'Coverage' }, { href: '#agent-access-evidence', label: 'Evidence' }, { href: '#agent-access-history', label: 'History' }], { className: 'agent-access-navigation', currentHref: '#agent-access-summary', hidden: true })}
     <div data-agent-overview id="agent-access-summary"></div>
     <form class="agent-access-form"><fieldset data-agent-controls disabled><legend>Select agent access</legend><div class="agent-access-selects">
       <label>Article and registered evidence<select data-agent-article-select name="agent-article"><option value="">All articles and site resources</option></select></label>
@@ -37,7 +37,7 @@ export function statsPage(pages: readonly { path: string; title: string }[] = []
     </fieldset></form>
     <p data-agent-status class="agent-access-selection" role="status" aria-live="polite" aria-atomic="true">Loading the completed-day agent access report…</p>
     <button type="button" data-agent-retry hidden>Retry agent access</button>
-    <div data-agent-results></div>
+    <div id="agent-access-change" data-agent-results></div>
     <p class="agent-access-note"><a href="/api/agent-access">Agent access JSON</a> · Current collection covers eligible served pages. Citation and answer-use observations are separate outcomes.</p>
     <noscript><p>Enable JavaScript to select articles and clients, or open the agent access JSON report.</p></noscript>
   </agent-access-report>

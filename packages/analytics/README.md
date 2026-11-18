@@ -12,6 +12,8 @@ Version 0.4 adds [`agent-access`](src/agent-access.ts) and its browser-safe [`ag
 
 `exploreAgentAccess(report, selection)` from [`agent-access-explorer`](src/agent-access-explorer.ts) produces the browser-safe exploration model: selected metrics, coverage, grouped attribution/measurement records, and contextual choices. Choice counts retain the other selections and ignore their own, keeping alternatives visible even for an empty intersection. Resource ownership includes explicitly registered evidence. Counts keep their original units; active days remain unions. The renderer consumes this model rather than calculating analytics. No extra request or SQL is needed. This interface is included in version 0.5.
 
+Version 0.6 adds `comparison` to this model. It compares the last two completed seven-day UTC periods in the selection. The client and resource breakdowns each account for the full change, with up to three entries in each direction and a remainder count and subtotal. Profile counts show which collection, classifier and source stamps were recorded in each period. Matching stamps still leave coverage and detector accuracy open. The same validated report powers the comparison.
+
 Agents now includes on-demand fetcher, AI-search, AI-crawler and historical/unknown-role signed-client rows. Other crawlers retains search-engine, SEO and preview roles. The groups remain disjoint; All and stored classifications retain their meanings. This deliberate reporting-group change advances the Stats cache namespace. These role labels do not authenticate purpose, human involvement, citations or use.
 
 ## Start locally

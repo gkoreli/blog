@@ -74,7 +74,9 @@ test('report rendering preserves scope, complete evidence, unknowns, safe labels
     page.querySelector('[data-agent-results]').innerHTML = rendered.details;
     const indexes = page.querySelectorAll('nav[aria-label="Agent access sections"]');
     assert.equal(indexes.length, 1);
-    const links = indexes[0].querySelectorAll('a'); assert.equal(links.length, 7);
+    const links = indexes[0].querySelectorAll('a'); assert.equal(links.length, 8);
+    assert.equal(links[1].getAttribute('href'), '#agent-access-change');
+    assert.match(page.querySelector('#agent-access-change').textContent, /Weekly change.*Latest seven completed UTC days/s);
     for (const link of links) assert(page.querySelector(link.getAttribute('href')));
     assert.equal(element.querySelector('.agent-access-visit').getAttribute('href'), '/a');
     assert.equal(element.querySelector('button[data-agent-article]').getAttribute('data-agent-article'), 'article:a');

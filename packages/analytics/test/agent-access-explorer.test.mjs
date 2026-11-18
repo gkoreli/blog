@@ -57,3 +57,64 @@ test('all facet combinations retain exact selected metrics and ignore only their
     }
   } finally { fixture.sqlite.close(); }
 });
+
+test('weekly comparison uses two complete periods and only the profiles of their dated events', async () => {
+  const fixture = accessFixture();
+  try {
+    const query = () => queryAgentAccess(fixture.db, ACCESS_CATALOGUE, { now: ACCESS_NOW, readModel: 'source' });
+    const report = await query();
+    const { comparison } = exploreAgentAccess(report);
+    assert.deepEqual(comparison.previous, { start: '2026-10-31', endExclusive: '2026-11-07', views: 9 });
+    assert.deepEqual(comparison.latest, { start: '2026-11-07', endExclusive: '2026-11-14', views: 8 });
+    assert.equal(comparison.change, -1);
+    assert.equal(comparison.measurement.status, 'one-profile');
+    assert.deepEqual(comparison.measurement.profiles.map(row => [row.previous, row.latest]), [[9, 8]]);
+    assert.deepEqual(comparison.clients, [{ kind: 'entry', key: 'ExaSearchBot', previous: 1, latest: 0, change: -1 }]);
+    assert.equal(exploreAgentAccess(report, { ...ALL_AGENT_ACCESS, articleId: 'article-b' }).comparison.measurement.status, 'empty-week');
+
+    fixture.sqlite.prepare("UPDATE page_observations SET classifier_version=? WHERE observed_at='2026-11-07 12:00:00' AND reader_kind='ai-search'").run('2026-11-07.9');
+    const different = exploreAgentAccess(await query()).comparison.measurement;
+    assert.equal(different.status, 'multiple-profiles');
+    assert.deepEqual(different.profiles.map(row => [row.previous, row.latest]), [[9, 7], [0, 1]]);
+
+    fixture.sqlite.prepare("UPDATE page_observations SET collection_version=NULL WHERE observed_at='2026-11-07 12:00:00' AND reader_kind='ai-search'").run();
+    const incomplete = exploreAgentAccess(await query()).comparison.measurement;
+    assert.equal(incomplete.status, 'incomplete');
+    assert.equal(incomplete.profiles.find(row => row.collection === null)?.latest, 1);
+  } finally { fixture.sqlite.close(); }
+});
+
+test('weekly change ranks both directions and reconciles remainder and unregistered resources even at net zero', async () => {
+  const fixture = accessFixture();
+  try {
+    const catalogue = [...ACCESS_CATALOGUE];
+    const add = (name, resourceId, date, views) => {
+      if (resourceId && !catalogue.some(resource => resource.id === resourceId)) {
+        catalogue.push({ id: resourceId, path: `/${resourceId}`, title: resourceId, role: 'article', articleId: null, collection: 'page' });
+      }
+      for (let index = 0; index < views; index++) {
+        const row = { ...fixture.rows[0], path: resourceId ? `/${resourceId}` : '/unregistered-private-canary', observed_at: date, agent_name: name };
+        const columns = Object.keys(row);
+        fixture.sqlite.prepare(`INSERT INTO page_observations(${columns.join(',')})VALUES(${columns.map(() => '?').join(',')})`).run(...Object.values(row));
+      }
+    };
+    add('Claude-User', null, '2026-11-10 10:00:00', 5);
+    add('ExaUser', 'added-1', '2026-11-10 10:00:00', 4);
+    add('Perplexity-User', 'added-2', '2026-11-10 10:00:00', 3);
+    add('PerplexityBot', 'added-3', '2026-11-10 10:00:00', 2);
+    add('Applebot', 'removed-1', '2026-11-02 10:00:00', 5);
+    add('Amazonbot', 'removed-2', '2026-11-02 10:00:00', 4);
+    add('Claude-SearchBot', 'removed-3', '2026-11-02 10:00:00', 3);
+    add('ClaudeBot', 'removed-4', '2026-11-02 10:00:00', 1);
+    const report = await queryAgentAccess(fixture.db, catalogue, { now: ACCESS_NOW, readModel: 'source' });
+    const { comparison } = exploreAgentAccess(report);
+    assert.deepEqual([comparison.previous.views, comparison.latest.views, comparison.change], [22, 22, 0]);
+    for (const rows of [comparison.clients, comparison.resources]) {
+      assert.deepEqual(rows.map(row => row.change), [5, 4, 3, 2, -5, -4, -3, -2]);
+      assert.deepEqual(rows.filter(row => row.kind === 'other').map(row => [row.direction, row.count]), [['increase', 1], ['decrease', 2]]);
+      assert.equal(rows.reduce((total, row) => total + row.change, 0), comparison.change);
+    }
+    assert.equal(comparison.resources[0].key, null);
+    assert.equal(JSON.stringify(comparison).includes('private-canary'), false);
+  } finally { fixture.sqlite.close(); }
+});

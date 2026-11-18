@@ -39,10 +39,29 @@
 .agent-access-accounting { margin-top: 24px; max-width: 90ch; }
 .agent-access-accounting summary { min-height: 44px; padding-block: 10px; cursor: pointer; }
 .agent-access-requests-heading { padding-top: 12px; margin-block: 24px 14px; }
+.agent-comparison-totals { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 12px; margin-block: 12px; }
+.agent-comparison-totals dt, .agent-comparison-totals small { font: 12px/1.5 var(--font-mono); color: var(--color-text-muted); }
+.agent-comparison-totals dd { margin: 4px 0 0; font: 600 clamp(20px,3vw,32px)/1.2 var(--font-mono); font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+.agent-comparison-totals small { display: block; margin-top: 6px; }
+.agent-comparison-profiles summary { min-height: 44px; padding-block: 10px; cursor: pointer; color: var(--color-link); }
+.agent-comparison-profiles .agent-access-table { max-width: 780px; }
+.agent-comparison-breakdowns { margin-top: 16px; }
+.agent-comparison-breakdowns > div { min-width: 0; }
+.agent-access-comparison .reading-table { margin-block: 0; }
+.agent-access-comparison :is(h4,caption) { font: 600 14px/1.5 var(--font-sans); color: var(--color-text); }
+.agent-access-comparison caption { padding: 10px 6px; }
+.agent-access-comparison .reading-table-scroll :is(th,td) { min-width: 0; vertical-align: middle; padding-inline: 6px; }
+.agent-access-comparison .reading-table-scroll th:first-child { white-space: normal; overflow-wrap: anywhere; }
+.agent-access-comparison .reading-table-scroll :is(th,td):not(:first-child) { width: 1%; text-align: right; white-space: nowrap; }
+.agent-access-comparison .reading-table-scroll tbody th { font-family: var(--font-sans); }
+.agent-access-comparison .reading-table-scroll tbody th:has(button) { padding-block: 0; }
+.agent-comparison-stamps span { display: block; }
+.agent-comparison-breakdowns button { padding-inline: 0; max-width: 100%; overflow-wrap: anywhere; }
 @media (max-width: 700px) {
   .agent-access-metrics { grid-template-columns: repeat(2,minmax(0,1fr)); }
   .agent-access-report .stats-panel-grid { grid-template-columns: minmax(0,1fr); }
   .agent-access-table table { min-width: 360px; }
+  .agent-access-comparison .reading-table-scroll table { min-width: 100%; }
   .agent-access-table:focus-visible { outline-offset: -2px; }
 }
 .stats-page { --stats-section-gap: 40px; --stats-sticky-height: 58px; min-width: 0; font: 14px/1.7 var(--font-sans); }
