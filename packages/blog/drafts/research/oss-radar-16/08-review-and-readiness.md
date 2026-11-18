@@ -1,6 +1,6 @@
 # OSS Radar #16 — review and readiness
 
-Reviewed November 18, 2026, Pacific. The [release candidate](article.md) is dated Monday, November 23. Use the planned filename `047-oss-radar-16-saved-skills-and-inbox-replies.md` for promotion when authorized. The source remains in the drafts directory. The release manifest is empty and GitHub reports workflow 408698342 as `disabled_manually`.
+Reviewed November 18, 2026, Pacific. The [release candidate](article.md) is dated Monday, November 23. The proposed promotion filename is `048-oss-radar-16-saved-skills-and-inbox-replies.md`. Check the prefix against current main when release is authorized. The source remains in the drafts directory. The release manifest is empty and GitHub reports workflow 408698342 as `disabled_manually`.
 
 ## Editorial and evidence check
 
@@ -23,6 +23,10 @@ The prose was revised to identify Hermes's tool subprocesses and explicit model 
 - The canonical, dated BlogPosting JSON-LD, Markdown body, CSL JSON, BibTeX, `posts.json`, RSS, sitemap, `llms.txt`, and `llms-full.txt` agreed on the intended entry. These are local build observations.
 
 ## Monday decision
+
+The November 18 morning recheck found the same release pins and NemoClaw `lkg` commit. A recently closed, unmerged Hermes PR concerned background-review reads counting as skill use. The trial checked exact model output after explicit loads, so the report leaves the result and reader advice intact. NemoClaw's resurfaced install-retry report concerned v0.0.1 with OpenShell 0.0.16. [Hermes PR #144319](https://github.com/NousResearch/hermes-agent/pull/144319) · [NemoClaw issue #1162](https://github.com/NVIDIA/NemoClaw/issues/1162).
+
+The [analytics comparison](../../../posts/047-web-analytics-comparison-ai-traffic.md) took prefix `047` after the preview. Prefix `048` is available at this check. The site and scheduler derive the same slug after stripping the prefix, so the reviewed source hash and intended URL still apply.
 
 At the pre-release check, compare the current project refs with the pins in the manuscript. Investigate a release change only if it affects the advice, then review and render any resulting edit. The candidate is ready at the evidence scope described above. A live T3 host or supported NemoClaw runtime could add end-to-end findings if available.
 
