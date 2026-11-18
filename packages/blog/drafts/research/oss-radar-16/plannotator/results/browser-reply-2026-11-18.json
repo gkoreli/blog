@@ -1,0 +1,44 @@
+{
+  "date": "2026-11-18",
+  "host": "Darwin arm64",
+  "node": "24.14.1",
+  "playwright_core": "1.64.1",
+  "mcp_client": "2.3.1",
+  "fixture_sha256": "5f5ebbb7b0be5d23dc9227b18c9e74e5aed68cc5b78c925430955e2410f1b441",
+  "release_archive_sha256": "2625ec32639e45ba770d94d52f6b324a5460a892e5e2ba4d4494105afdab191d",
+  "source_archive_sha256": "0d4ddd652f6e0e8eb27c57225eb76d7074ac16b869be1ed1ec971628a4797491",
+  "inspected_source_sha256": {
+    "LICENSE-MIT": "4307b84eae31b7ee1436003da418390ba69a4d016195cbfc451a1e8ef9e923c0",
+    "LICENSE-APACHE": "b96752709405e4b4eefda5514d01941a25d78230bddd891523279fed63eed5e0",
+    "packages/shared/inbox/store.ts": "5bfd9175782343899624d093d459dfba4b41c1f9c7fe7cb60579f52ef6eef6c2",
+    "packages/shared/inbox/store-log/jsonl-log.ts": "a7579ad23abfdbd06661094d7de300c4f053c47dfe6cb1e037296c9254f04153",
+    "packages/server/inbox-mcp.ts": "240c042e7b4e68920edc25d04c9644a25b7643764ebb73cf037850062a2256c8",
+    "packages/server/inbox-mcp-read.ts": "d9b35740edfe74007482bf1c8c396595a40023cada918a91d357c1c4725fb0d8"
+  },
+  "version": "v0.29.0",
+  "commit": "55e6bbd2b16580b23b5926b235a314a17591d12a",
+  "binarySha256": "c383a5ff5338af20ced2c0090926e0ecd6a6019dcdd4112901bbb859e4186c06",
+  "cases": [
+    {
+      "name": "browser_reply",
+      "http_status": 200,
+      "author": "person",
+      "no_wake_promised": true,
+      "delivery": null
+    },
+    {
+      "name": "other_mcp_reader",
+      "reply_in_response": true,
+      "checked_mark_advanced": false,
+      "delivery": null
+    },
+    {
+      "name": "original_mcp_reader_after_restart",
+      "preserved_body": true,
+      "reply_in_response": true,
+      "checked_mark_advanced": true,
+      "delivery_state": null
+    }
+  ],
+  "browser": "157.0.8103.79"
+}

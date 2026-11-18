@@ -37,3 +37,14 @@ python memory_trial.py /path/to/hermes-source /path/to/fresh-output
 ```
 
 Keep `source-hashes.json` beside the fixture. It verifies the executed source files before import and checks the observed import closure afterward. All ten recorded conditions passed on Darwin arm64, Python 3.14.6. The fixture deliberately refuses an existing output directory so a new attempt cannot overwrite its predecessor. This is the checked environment, not a cross-platform result.
+
+## November 18 skill reuse
+
+Use the same [v0.23.2 source](https://github.com/NousResearch/hermes-agent/tree/ae2a81ccc00e9b7c06301523e5bb09608397149c) and Python environment. Prepare an owned copy of the Ollama model store containing only `qwen3.5:4b`. Verify its manifest and blob digests against [the recorded inputs](results/skill-reuse-2026-11-18.json). Use an Ollama 0.21.2 binary on Darwin arm64. The fixture starts its own loopback server and temporary Hermes profile. It shuts down that server on exit.
+
+```sh
+python skill_reuse_trial.py /path/to/pinned-hermes /path/to/fresh-output \
+  /path/to/ollama /path/to/owned-models
+```
+
+The fixture uses the actual skill create, list, view, and patch tools across subprocesses. It sends the captured catalog or procedure to the local model under a fixed seed and temperature and compares exact visible strings. Driver behavior, model inputs, and all seven outputs are recorded. The selected rules include a made-up convention, so the two no-instructions controls are expected to miss details. The comparison checks procedure reuse and patch visibility. It leaves autonomous skill choice and whole-agent performance open.

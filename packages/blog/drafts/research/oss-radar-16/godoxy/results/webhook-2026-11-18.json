@@ -1,0 +1,33 @@
+{
+  "date": "2026-11-18",
+  "host": "Darwin arm64",
+  "release": "v0.34.0",
+  "source_commit": "77cbac6b532d7d3881010eade21fe1a7f9e4bf8e",
+  "go": "1.27.4",
+  "fixture_sha256": "79f38e1fdd7a08728f517b5967d348377a37432a2a5dc1f67be17cdbbeb96707",
+  "called_source_sha256": {
+    "internal/health/monitor/monitor.go": "ddc9d4a82a87e70a2eb8e309e5e2d64046cf6840e562610f2d3727e2f4065da0",
+    "internal/health/monitor/last_seen.go": "bdf856589d82652a19ed1dc4aa8061bd7c07422b72f92cf02863c8b024f5afb9",
+    "internal/health/monitor/new.go": "a451505d9b4c0bf28a5b06ec6f22bcbc65dfb56d46f460dffdb8152f794e0b6e",
+    "internal/notif/dispatcher.go": "97f0444e22c180e3673f47b1ecb9829420f85fe5a3c33176ab475d08499a902c",
+    "internal/notif/providers.go": "48da16acbac6d4e5acf27ebe5d8d0828ab2c9a12677a7fb5b4ee5c1c2ae8d773",
+    "internal/notif/webhook.go": "52f546d625792b67649ed0fd4f6539a83d22d321cc6d2af3debd2d3958e61ec1"
+  },
+  "monitor_notices": 2,
+  "webhook_requests": [
+    {
+      "title": "❌ Service went down ❌",
+      "http_status": 503,
+      "observed_detail": "Service Unavailable"
+    },
+    {
+      "title": "❌ Service went down ❌",
+      "http_status": 204,
+      "observed_detail": "Service Unavailable"
+    },
+    {
+      "title": "✅ Service is up ✅",
+      "http_status": 204
+    }
+  ]
+}

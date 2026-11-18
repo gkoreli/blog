@@ -40,3 +40,14 @@ The preparation helper verifies the source files and links actual workspace pack
 The T3 provider boundary is scripted. A queued response proves the Inbox accepted that service response and persisted its own state, not that a real T3 agent received a turn or completed work. The store and wake are not mocked. No real provider, paid model, personal Inbox, OAuth account or T3 server will be used. UI/host integration, different providers, load and cross-platform behavior remain separate work.
 
 The relevant firsthand [report #3339](https://github.com/backnotprop/plannotator/issues/3339), [merged correction #3348](https://github.com/backnotprop/plannotator/pull/3348) and [maintainer's explanation](https://github.com/backnotprop/plannotator/issues/3339#issuecomment-6881466766) distinguish retaining a reply from guaranteeing eventual delivery. Without a grant or an authoritative disappearance signal, the Inbox cannot identify a dead thread from silence alone.
+
+## November 18 browser trial
+
+The [v0.29.0 release](https://github.com/backnotprop/plannotator/releases/tag/v0.29.0) binary was tested separately on Darwin arm64. Download and verify the Darwin ARM64 asset against the [trial receipt](results/browser-reply-2026-11-18.json). Use Node 24.14.1, Chrome 157.0.8103.79, a scratch dependency directory with `playwright-core@1.64.1`, and one with `@modelcontextprotocol/client@2.3.1` (see the existing lockfile). Run the [browser fixture](inbox_browser_trial.mjs) with paths to those directories and a fresh output directory.
+
+```sh
+node inbox_browser_trial.mjs /path/to/plannotator /path/to/chrome \
+  /path/to/playwright-deps /path/to/mcp-deps /path/to/fresh-output
+```
+
+The fixture runs a scoped local Inbox with account-home reads restricted, auto-connect and updates disabled, and data in the output directory. It replies through the shipped UI and checks persisted read marks across clean shutdown and restart. The T3 identities are synthetic MCP readers. A real T3 conversation, grant, or agent turn was outside this trial.

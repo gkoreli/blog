@@ -1,5 +1,7 @@
 # November 17 — GoDoxy during scheduled downtime
 
+[November 18's fieldwork and draft](07-wednesday-current-release-checks.md) add delivery through an actual webhook and supersede this record's next-work section.
+
 **Milestone:** the real released health-monitor implementation and HTTP probe passed nine controlled scenarios, followed by a source-checked reproduction. Twenty-three real loopback probes exercised thresholding, silence, recovery and defaults; emitted notifications were captured at the callback boundary. The article and full product/host evaluation remain unfinished. Publication stays paused.
 
 This completes the monitor experiment selected in the [morning handoff](05-tuesday-inbox-ownership.md#attempts-and-next-work). [Protocol and reproduction](godoxy/README.md), [normalized observations](godoxy/results/monitor-2026-11-17.json), [setup/source pins](godoxy/results/setup-2026-11-17.json) and [all attempt dispositions](godoxy/results/attempts-2026-11-17.json) preserve the result and limits.

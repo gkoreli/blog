@@ -1,0 +1,145 @@
+{
+  "date": "2026-11-18",
+  "host": "Darwin arm64",
+  "release": "v0.23.2",
+  "dependencies": {
+    "ruamel.yaml": "0.18.16",
+    "ruamel.yaml.clib": "0.2.15"
+  },
+  "fixture_sha256": "031d40aafe3864251f95dc996191515d6dd4ccf0ed50ab9b89a045c9f3a963b2",
+  "called_source_sha256": {
+    "tools/skill_manager_tool.py": "ddfa4167226aa1662d00489853ba13894b13c27f09e75cdb24befdb833427905",
+    "tools/skills_tool.py": "492d1cc49f0f3e982aed98c8538d455988c06b376fb4560f473f6c1f602c3154"
+  },
+  "model_receipt": {
+    "model": "qwen3.5:4b",
+    "manifest_sha256": "2a654d98e6fba55d452b7043684e9b57a947e393bbffa62485a7aac05ee4eefd",
+    "blobs": [
+      {
+        "media_type": "application/vnd.docker.container.image.v1+json",
+        "digest": "sha256:de9fed2251b37295b763727a59ca35cf5cfe5c7379bc3e2104b2ce3c145aa887",
+        "bytes": 475
+      },
+      {
+        "media_type": "application/vnd.ollama.image.model",
+        "digest": "sha256:81fb60c7daa80fc1123380b98970b320ae233409f0f71a72ed7b9b0d62f40490",
+        "bytes": 3389971840
+      },
+      {
+        "media_type": "application/vnd.ollama.image.license",
+        "digest": "sha256:7339fa418c9ad3e8e12e74ad0fd26a9cc4be8703f9c110728a992b193be85cb2",
+        "bytes": 11355
+      },
+      {
+        "media_type": "application/vnd.ollama.image.params",
+        "digest": "sha256:9371364b27a52acac9d87f88bd93c9db1174d8d6ec57f6888925cdc1788871ff",
+        "bytes": 65
+      }
+    ]
+  },
+  "source_commit": "ae2a81ccc00e9b7c06301523e5bb09608397149c",
+  "python": "3.14.6",
+  "created": {
+    "operation": "create",
+    "success": true
+  },
+  "patched": {
+    "operation": "patch",
+    "success": true
+  },
+  "catalog_entry": {
+    "name": "yard-dispatch-format",
+    "description": "Format yard dispatch records by the workshop convention.",
+    "category": null
+  },
+  "first_content_sha256": "126d69698a0dda3de7d5456db79acaabd5e5512334ae5927e95ac781e24f863f",
+  "patched_content_sha256": "c4492c706a7a7a419eaa227eb737e0c5eb7e5dfdfbaa0c80cf47731adf373c00",
+  "model": "qwen3.5:4b",
+  "cases": [
+    {
+      "condition": "no_skill",
+      "input": {
+        "job": "coil",
+        "count": 7,
+        "rack": "D4",
+        "priority": "routine"
+      },
+      "expected": "RIVET/D4/007/mz2/coil",
+      "actual": "D4, coil, 7, routine",
+      "match": false
+    },
+    {
+      "condition": "catalog_only",
+      "input": {
+        "job": "coil",
+        "count": 7,
+        "rack": "D4",
+        "priority": "routine"
+      },
+      "expected": "RIVET/D4/007/mz2/coil",
+      "actual": "COIL 7 D4 ROUTINE",
+      "match": false
+    },
+    {
+      "condition": "loaded_skill",
+      "input": {
+        "job": "coil",
+        "count": 7,
+        "rack": "D4",
+        "priority": "routine"
+      },
+      "expected": "RIVET/D4/007/mz2/coil",
+      "actual": "RIVET/D4/007/mz2/coil",
+      "match": true
+    },
+    {
+      "condition": "patched_skill",
+      "input": {
+        "job": "coil",
+        "count": 7,
+        "rack": "D4",
+        "priority": "routine"
+      },
+      "expected": "RIVET/D4/007/bp4/coil",
+      "actual": "RIVET/D4/007/bp4/coil",
+      "match": true
+    },
+    {
+      "condition": "no_skill",
+      "input": {
+        "job": "flange",
+        "count": 28,
+        "rack": "B9",
+        "priority": "urgent"
+      },
+      "expected": "RIVET/B9/028/vt7/flange",
+      "actual": "B9, flange, 28, urgent",
+      "match": false
+    },
+    {
+      "condition": "catalog_only",
+      "input": {
+        "job": "flange",
+        "count": 28,
+        "rack": "B9",
+        "priority": "urgent"
+      },
+      "expected": "RIVET/B9/028/vt7/flange",
+      "actual": "B9 28 flange urgent",
+      "match": false
+    },
+    {
+      "condition": "loaded_skill",
+      "input": {
+        "job": "flange",
+        "count": 28,
+        "rack": "B9",
+        "priority": "urgent"
+      },
+      "expected": "RIVET/B9/028/vt7/flange",
+      "actual": "RIVET/B9/028/vt7/flange",
+      "match": true
+    }
+  ],
+  "ollama": "0.21.2"
+}

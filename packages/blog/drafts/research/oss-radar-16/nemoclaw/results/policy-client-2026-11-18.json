@@ -1,0 +1,214 @@
+{
+  "date": "2026-11-18",
+  "host": "Darwin arm64",
+  "install_ref": "lkg",
+  "bootstrap_main_commit": "4ab9ba052e49f01c6bb777fb6c74d41f3e558815",
+  "yaml": "2.8.3",
+  "fixture_sha256": "b1afc87ca5e2cb7a8527d50205ee8890741e7ba0067bb1d16cbe5dc7ced35d1e",
+  "source_archive_sha256": "74ad60905e07acc9fb09eb7a1ad4c9fa3202ef3a7541eaed25ebb1cc8f932454",
+  "openshell_commit": "d1155aa70042d3e2ee49dbfa15346b108b7c1d92",
+  "openshell_binary_sha256": "0baeeffe0e4c184b08fde910ac9e8815fb0b8cfb808e49c0e634d7db65fb03bb",
+  "openshell_release_archive_sha256": "e582f2374053bebac8e6aaeb4a369931b7d4bb97bd55055e2c02e85502627e22",
+  "openshell_checksum_list_sha256": "f8b6ec65366f9d256737b884ba4d9f184b4dbbbb9540711ed9e4934d772eba7e",
+  "inspected_source_sha256": {
+    "LICENSE": "e3c4fd182d51e5fbf6d32c2f87d44b989db519c51a88489f8a624f3a77b7cd7a",
+    "install.sh": "662dfc66b84c4507a6c1a3cc5429ab9ace6034c26a44ed84d446451e32db57d4",
+    "nemoclaw-blueprint/blueprint.yaml": "323e06bec47aaa9323b6eca1fa1f02eee0f96bfd06294a3a187679b5b31fbc89",
+    "ci/openshell-upgrade-trust.json": "d7b04fa026c4ab33ceed490718cf19071015a049595f717c681f10adf852b7e0",
+    "src/lib/policy/index.ts": "53d6a01243c6ba7b35aeda9b15c390f768ac3e54000440f06639c5398ab3ab15"
+  },
+  "source_commit": "82e1ad7474ec7175c5b860b2bfa9d7940bc6e75f",
+  "release": "v0.0.144",
+  "version": "openshell 0.0.116",
+  "bun": "1.4.0",
+  "sourceFiles": {
+    "nemoclaw/src/blueprint/openshell-policy.ts": "d709c61663e4867fc39575a196faecb4ccfec16b54676fc880fdd2d9bff1bb81",
+    "nemoclaw/src/shared/openshell-policy-boundary.cts": "a10894d071252d372585c36ca2490b87f7fbbc759345a08046d7d7fba4eb8e6d"
+  },
+  "reads": {
+    "effective": {
+      "policySource": "global",
+      "effectivePolicy": {
+        "version": 1,
+        "network_policies": {
+          "published": {
+            "endpoints": []
+          }
+        }
+      },
+      "policyIdentity": {
+        "hash": "sha256:fixture-effective",
+        "activeVersion": 6
+      }
+    },
+    "base": {
+      "document": "version: 1\nnetwork_policies: {}",
+      "appliedRevision": 6
+    },
+    "revision": {
+      "document": "version: 1\nnetwork_policies: {}",
+      "appliedRevision": 5
+    }
+  },
+  "calls": [
+    [
+      "openshell",
+      "policy",
+      "get",
+      "-g",
+      "fixture",
+      "--full",
+      "--output",
+      "json",
+      "radar"
+    ],
+    [
+      "openshell",
+      "policy",
+      "get",
+      "-g",
+      "fixture",
+      "--base",
+      "radar"
+    ],
+    [
+      "openshell",
+      "policy",
+      "get",
+      "-g",
+      "fixture",
+      "--rev",
+      "5",
+      "--base",
+      "radar"
+    ],
+    [
+      "openshell",
+      "policy",
+      "set",
+      "-g",
+      "fixture",
+      "--policy",
+      "fixture.yaml",
+      "--wait",
+      "radar"
+    ],
+    [
+      "openshell",
+      "policy",
+      "set",
+      "-g",
+      "fixture",
+      "--policy",
+      "fixture.yaml",
+      "--wait",
+      "radar"
+    ],
+    [
+      "openshell",
+      "policy",
+      "set",
+      "-g",
+      "fixture",
+      "--policy",
+      "fixture.yaml",
+      "--wait",
+      "radar"
+    ],
+    [
+      "openshell",
+      "policy",
+      "set",
+      "-g",
+      "fixture",
+      "--policy",
+      "fixture.yaml",
+      "--wait",
+      "radar"
+    ],
+    [
+      "openshell",
+      "policy",
+      "set",
+      "-g",
+      "fixture",
+      "--policy",
+      "fixture.yaml",
+      "--wait",
+      "radar"
+    ]
+  ],
+  "observations": [
+    {
+      "condition": "confirmed_exit",
+      "response": {
+        "status": 0
+      },
+      "submission": {
+        "outcome": {
+          "kind": "applied"
+        },
+        "status": 0
+      }
+    },
+    {
+      "condition": "gateway_refusal",
+      "response": {
+        "status": 1,
+        "stderr": "Error: code: 'failed precondition', message: 'fixture policy rejected'"
+      },
+      "submission": {
+        "outcome": {
+          "kind": "rejected",
+          "status": 1,
+          "message": "fixture policy rejected"
+        },
+        "status": 1
+      }
+    },
+    {
+      "condition": "transport",
+      "response": {
+        "status": 1,
+        "stderr": "tonic::transport::error: fixture disconnected"
+      },
+      "submission": {
+        "outcome": {
+          "kind": "ambiguous",
+          "detail": "tonic::transport::error: fixture disconnected"
+        },
+        "status": 1
+      }
+    },
+    {
+      "condition": "timeout",
+      "response": {
+        "status": null,
+        "error": {
+          "message": "fixture timed out"
+        }
+      },
+      "submission": {
+        "outcome": {
+          "kind": "ambiguous",
+          "detail": "fixture timed out"
+        },
+        "status": null
+      }
+    },
+    {
+      "condition": "generic_nonzero",
+      "response": {
+        "status": 2,
+        "stderr": "fixture command ended"
+      },
+      "submission": {
+        "outcome": {
+          "kind": "ambiguous",
+          "detail": "fixture command ended"
+        },
+        "status": 2
+      }
+    }
+  ]
+}

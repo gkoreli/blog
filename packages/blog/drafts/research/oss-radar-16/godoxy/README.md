@@ -44,3 +44,14 @@ RADAR_GODOXY_OUTPUT=/path/to/fresh-output \
 ```
 
 The [preparation helper](prepare_trial.py) verifies 36 source/module files and copies only the authored fixture. The output directory must not already exist. The native sandbox rejected loopback listening; the accepted run used the explicit IPv4 loopback fixture with approved tool permission. It did not require a running container engine. A fresh source-checked reproduction passed. This is a monitor/HTTP-probe/notification-callback result, not a full upstream suite, background scheduling, live route/UI, container, Proxmox or external-notification-delivery result.
+
+## November 18 webhook trial
+
+Use the same pinned source, submodules, Go toolchain and owned caches. Copy [`radar_webhook_trial_test.go`](radar_webhook_trial_test.go) into `internal/health/monitor` after verifying the source. Use the command above with a fresh `RADAR_GODOXY_OUTPUT` and replace the filter and final arguments as follows.
+
+```sh
+  -ldflags=-checklinkname=0 -count=1 -run '^TestRadarWebhookDelivery$' -v \
+  monitor.go last_seen.go new.go radar_webhook_trial_test.go
+```
+
+This fixture connects the monitor's callback to the real notification dispatcher and Webhook provider. One loopback server supplies health probes. Another records webhook POSTs and returns 503 on the first delivery and 204 afterward. The controlled clock advances across the silence boundary. [Recorded results](results/webhook-2026-11-18.json) show two monitor notices, three actual requests and retry after the failed response. The result covers delivery to the local test receiver.
