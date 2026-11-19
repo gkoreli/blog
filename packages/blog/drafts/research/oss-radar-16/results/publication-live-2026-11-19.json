@@ -1,0 +1,82 @@
+{
+  "checked_at": "2026-11-19T16:06:07.754Z",
+  "stage": "live",
+  "canonical": "https://gkoreli.com/oss-radar-16-saved-skills-and-inbox-replies",
+  "date": "2026-11-19",
+  "posts": 49,
+  "source_sha256": "734a0ce9c89557652524a1845b23291471d558c4a36f9a7667633e737eabb3a5",
+  "browser": "157.0.8103.79",
+  "views": [
+    {
+      "label": "desktop",
+      "width": 1365,
+      "height": 900,
+      "scroll_width": 1365,
+      "javascript": false
+    },
+    {
+      "label": "mobile",
+      "width": 390,
+      "height": 844,
+      "scroll_width": 390,
+      "javascript": false
+    },
+    {
+      "label": "narrow-no-js",
+      "width": 320,
+      "height": 720,
+      "scroll_width": 320,
+      "javascript": false
+    }
+  ],
+  "representations": {
+    "/oss-radar-16-saved-skills-and-inbox-replies.md": {
+      "status": 200,
+      "sha256": "7af84e7a942b3d011a16a9ca994f55a6efe28b9833a8548b9ae4ab1653f506ca"
+    },
+    "/oss-radar-16-saved-skills-and-inbox-replies as Markdown": {
+      "status": 200,
+      "sha256": "7af84e7a942b3d011a16a9ca994f55a6efe28b9833a8548b9ae4ab1653f506ca"
+    },
+    "/posts.json": {
+      "status": 200,
+      "sha256": "ce0beb6f569f2152c0f58a2c1aba817cf9b13f480c4614a110e459dadf2eecb3"
+    },
+    "/feed.xml": {
+      "status": 200,
+      "sha256": "626d52029d3a0f6a46c4be3b53b367fa5e3ccd3fc9a2229dc2b6811bfaaf3652"
+    },
+    "/sitemap.xml": {
+      "status": 200,
+      "sha256": "a2e457310b83fe25183f8735f5c24be7744371585bf6d1407d96ae10aade04b4"
+    },
+    "/llms.txt": {
+      "status": 200,
+      "sha256": "a283b22bd75822796eec5c1b64b0aa2d799e362122d54d5f20d7c49b1cc9b573"
+    },
+    "/llms-full.txt": {
+      "status": 200,
+      "sha256": "c5854f54909de2a758d5f5cdb6d3d840f1bbae71c48df14930a05b115163c009"
+    },
+    "/oss-radar-16-saved-skills-and-inbox-replies.csl.json": {
+      "status": 200,
+      "sha256": "b97d742cdf3d70d46b31da22f1698177051558d377895e8f2d8e9a1890f8edc4"
+    },
+    "/oss-radar-16-saved-skills-and-inbox-replies.bib": {
+      "status": 200,
+      "sha256": "8c0365988e4d40bb2b1fcb898f9e3655d34113d5df3643a27d9bafd7f1df11a8"
+    },
+    "/oss-radar": {
+      "status": 200,
+      "sha256": "79eee617e466b09c50adffe9063554528be8054ed9f7ca85466d120dbc269172"
+    },
+    "/oss-radar-16-saved-skills-and-inbox-replies": {
+      "status": 200,
+      "sha256": "b4d458ef5f12f3675408722235d9fe0873b396ec435b5d1efb7b883132e989f1"
+    },
+    "/og/oss-radar-16-saved-skills-and-inbox-replies.png?v=7379ca59": {
+      "status": 200,
+      "sha256": "7379ca596303d0468b70ad6d9c1ed87fd2538841ce720d450babf1a896ef0807"
+    }
+  }
+}
