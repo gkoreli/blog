@@ -1,0 +1,593 @@
+{
+  "date": "2026-11-19",
+  "npm_latest_at_check": "1.1.17",
+  "fixture_sha256": "ae349c76a70a60e5980914d95d9c773b83841b9e5e63f5d1ffa22830c5dfcca2",
+  "environment": {
+    "arch": "aarch64",
+    "system": "Alpine Linux v3.23",
+    "python": "3.12.13",
+    "node": "v24.22.3",
+    "npm": "11.11.0",
+    "zsh": "zsh 5.9 (aarch64-alpine-linux-musl)"
+  },
+  "releases": {
+    "1.0.2": {
+      "lock_sha256": "2ca70a420fd2be5bd963fa3a0253981ed7063b3b8a142e8946f6dd225910e25d",
+      "installed": {
+        "hot-updater": {
+          "version": "1.0.2",
+          "integrity": "sha512-lhq3zvglgLGFF2KAiSAzg3CA5Dy5V8o2ZdbDkSlof69Jg8sHFznKhtRc9AXIrWdc6fYKrPmojUTlcl4XKdyS7Q=="
+        },
+        "@hot-updater/bare": {
+          "version": "1.0.2",
+          "integrity": "sha512-cqe5cBaHmRDD7SrrCB/3VrrZJXixGTYSjyYxiQ0GW36zICbi5TdlM051pQuXBg26+EslLKi1K0I1FQ2G0EIkXQ=="
+        },
+        "@hot-updater/react-native": {
+          "version": "1.0.2",
+          "integrity": "sha512-yuJzTVZv9SOE7kbQvbhmr6BEm4M0R4Oy1ZRFE+OQmVRZUrjGgK2zOM9yPWnKPfqT7zVOhGFxmYvldo8uXwjoFg=="
+        },
+        "@hot-updater/cli-tools": {
+          "version": "1.0.2",
+          "integrity": "sha512-32odueqPPlfvlG/BMBzM1mhu7sfZJBqY5l5842j2nbVOj+Nq6T/jSTOSB7FRsYzibUMa9em8NDYqZyC8IK5dDA=="
+        },
+        "@expo/fingerprint": {
+          "version": "0.20.14",
+          "integrity": "sha512-7sihStGX1ZepJBNbYgeQY7cU2GQ+PSkSROe3g7JOQqnT6OOuX0rXKY0ZNoVnlB2Y/H5FWnnJ6QrPlK3fNg9+bQ=="
+        },
+        "react-native": {
+          "version": "0.85.2",
+          "integrity": "sha512-GFWEPwLYirfj5X8gMtXOWtqX0cqUEURRHETZfFk37VCa4++izrKvGvv24anvuyulXV87NAhVkfNw93rLg3HByw=="
+        },
+        "@react-native-community/cli": {
+          "version": "20.1.0",
+          "integrity": "sha512-441WsVtRe4nGJ9OzA+QMU1+22lA6Q2hRWqqIMKD0wjEMLqcSfOZyu2UL9a/yRpL/dRpyUsU4n7AxqKfTKO/Csg=="
+        },
+        "@react-native-community/cli-platform-ios": {
+          "version": "20.1.0",
+          "integrity": "sha512-XN7Da9z4WsJxtqVtEzY8q2bv22OsvzaFP5zy5+phMWNoJlU4lf7IvBSxqGYMpQ9XhYP7arDw5vmW4W34s06rnA=="
+        },
+        "@react-native-community/cli-platform-android": {
+          "version": "20.1.0",
+          "integrity": "sha512-TeHPDThOwDppQRpndm9kCdRCBI8AMy3HSIQ+iy7VYQXL5BtZ5LfmGdusoj7nVN/ZGn0Lc6Gwts5qowyupXdeKg=="
+        }
+      },
+      "observations": {
+        "baseline": {
+          "ios": {
+            "hash": "4a698e74f81ca95443b2e7cbdac45bc194fd4c8b",
+            "engine": null,
+            "sources": [
+              "ios",
+              "node_modules/@hot-updater/react-native",
+              "ios/RadarApp.xcodeproj/project.pbxproj",
+              "package:react-native",
+              "rncoreAutolinkingConfig"
+            ]
+          },
+          "android": {
+            "hash": "e15fa8cb089a70e996aad622030fe4cde67f7e71",
+            "engine": null,
+            "sources": [
+              "android",
+              "node_modules/@hot-updater/react-native",
+              "android/app/build.gradle",
+              "package:react-native",
+              "rncoreAutolinkingConfig"
+            ]
+          }
+        },
+        "build_numbers": {
+          "ios": {
+            "hash": "7f348fdc764f5f6260d000a48245fc2a8495dada",
+            "engine": null,
+            "sources": [
+              "ios",
+              "node_modules/@hot-updater/react-native",
+              "ios/RadarApp.xcodeproj/project.pbxproj",
+              "package:react-native",
+              "rncoreAutolinkingConfig"
+            ]
+          },
+          "android": {
+            "hash": "f14d3204a6f46affd5f1acf777705f77ff5756ea",
+            "engine": null,
+            "sources": [
+              "android",
+              "node_modules/@hot-updater/react-native",
+              "android/app/build.gradle",
+              "package:react-native",
+              "rncoreAutolinkingConfig"
+            ]
+          }
+        },
+        "codegen_spec": {
+          "ios": {
+            "hash": "4a698e74f81ca95443b2e7cbdac45bc194fd4c8b",
+            "engine": null,
+            "sources": [
+              "ios",
+              "node_modules/@hot-updater/react-native",
+              "ios/RadarApp.xcodeproj/project.pbxproj",
+              "package:react-native",
+              "rncoreAutolinkingConfig"
+            ]
+          },
+          "android": {
+            "hash": "e15fa8cb089a70e996aad622030fe4cde67f7e71",
+            "engine": null,
+            "sources": [
+              "android",
+              "node_modules/@hot-updater/react-native",
+              "android/app/build.gradle",
+              "package:react-native",
+              "rncoreAutolinkingConfig"
+            ]
+          }
+        }
+      },
+      "source_tag_commit": "b70401fe3f9c5d66b6e6732350f1773f6e95ef7b"
+    },
+    "1.1.0": {
+      "lock_sha256": "2e5dec2ac4e0fd26d80809505a1f05bb05d98c41531e37be777aa2df0c278f8f",
+      "installed": {
+        "hot-updater": {
+          "version": "1.1.0",
+          "integrity": "sha512-ufPiQo0q1rnnJWzUSKfpJtN2znsH27A82zsdzpqHT5yakG1zVliaKDOidL8EJfoWIPwhGVWgH24/QfLiiuEVCw=="
+        },
+        "@hot-updater/bare": {
+          "version": "1.1.0",
+          "integrity": "sha512-IdhovqzlaBuUEMm3kJz20KgfP/MS6i9DVLiJeosKYDdZdOUzywOtwp00UA1FQTLxAsmpxb7D7USSj0LA3DYdvA=="
+        },
+        "@hot-updater/react-native": {
+          "version": "1.1.0",
+          "integrity": "sha512-gtEDPD2/rEnswNVeCbC5/8uILK+q5YlSNOFT/NR2wWyvClEvdc4hEFHRjUmOIgYhzyxzAP41TO80M2y2u8aDsA=="
+        },
+        "@hot-updater/cli-tools": {
+          "version": "1.1.0",
+          "integrity": "sha512-nuoRgD57D/UU6HbjqsbQOgEpqO5J1vci2UXegafrokx6C1BxknxzuRXiOCZxeTnO1IIR4dBKHerEWjSeY/NuDg=="
+        },
+        "react-native": {
+          "version": "0.85.2",
+          "integrity": "sha512-GFWEPwLYirfj5X8gMtXOWtqX0cqUEURRHETZfFk37VCa4++izrKvGvv24anvuyulXV87NAhVkfNw93rLg3HByw=="
+        },
+        "@react-native-community/cli": {
+          "version": "20.1.0",
+          "integrity": "sha512-441WsVtRe4nGJ9OzA+QMU1+22lA6Q2hRWqqIMKD0wjEMLqcSfOZyu2UL9a/yRpL/dRpyUsU4n7AxqKfTKO/Csg=="
+        },
+        "@react-native-community/cli-platform-ios": {
+          "version": "20.1.0",
+          "integrity": "sha512-XN7Da9z4WsJxtqVtEzY8q2bv22OsvzaFP5zy5+phMWNoJlU4lf7IvBSxqGYMpQ9XhYP7arDw5vmW4W34s06rnA=="
+        },
+        "@react-native-community/cli-platform-android": {
+          "version": "20.1.0",
+          "integrity": "sha512-TeHPDThOwDppQRpndm9kCdRCBI8AMy3HSIQ+iy7VYQXL5BtZ5LfmGdusoj7nVN/ZGn0Lc6Gwts5qowyupXdeKg=="
+        }
+      },
+      "observations": {
+        "old_record": {
+          "ios": {
+            "hash": "4a698e74f81ca95443b2e7cbdac45bc194fd4c8b",
+            "diagnostic": "missing_recorded_inputs"
+          },
+          "android": {
+            "hash": "e15fa8cb089a70e996aad622030fe4cde67f7e71",
+            "diagnostic": "missing_recorded_inputs"
+          }
+        },
+        "baseline": {
+          "ios": {
+            "hash": "abdce560c4692d45c272e03366499519f410a27823a3a46fd79c26c656f9736f",
+            "engine": "hot-updater/interface@1",
+            "sources": [
+              "codegen-config:.",
+              "dependency:@hot-updater/react-native",
+              "runtime",
+              "src/NativeRadarDevice.ts"
+            ]
+          },
+          "android": {
+            "hash": "4a1bcf33a706dde42ab478728877176692bb46d9b61586ad9345a1dab3a55e65",
+            "engine": "hot-updater/interface@1",
+            "sources": [
+              "codegen-config:.",
+              "dependency:@hot-updater/react-native",
+              "runtime",
+              "setting:android:hermesEnabled",
+              "setting:android:newArchEnabled",
+              "src/NativeRadarDevice.ts"
+            ]
+          }
+        },
+        "upgrade_reports_engine_change": true,
+        "build_baseline": {
+          "ios": {
+            "hash": "abdce560c4692d45c272e03366499519f410a27823a3a46fd79c26c656f9736f"
+          },
+          "android": {
+            "hash": "4a1bcf33a706dde42ab478728877176692bb46d9b61586ad9345a1dab3a55e65"
+          }
+        },
+        "build_numbers": {
+          "ios": {
+            "hash": "abdce560c4692d45c272e03366499519f410a27823a3a46fd79c26c656f9736f"
+          },
+          "android": {
+            "hash": "4a1bcf33a706dde42ab478728877176692bb46d9b61586ad9345a1dab3a55e65"
+          }
+        },
+        "ui_source": {
+          "ios": {
+            "hash": "abdce560c4692d45c272e03366499519f410a27823a3a46fd79c26c656f9736f"
+          },
+          "android": {
+            "hash": "4a1bcf33a706dde42ab478728877176692bb46d9b61586ad9345a1dab3a55e65"
+          }
+        },
+        "codegen_spec": {
+          "ios": {
+            "hash": "9e394e692286211f4ab8ea11cd9f55ff709e0bf002e38f38efee7f44c4781096",
+            "diagnostic": "stale_recorded_hash"
+          },
+          "android": {
+            "hash": "82590a577012ff4ad293a3e6b802ad3a8c9ad4023dafbfb4632c5c5f89d9a3c7",
+            "diagnostic": "stale_recorded_hash"
+          }
+        },
+        "ios_build_script_with_changed_spec": {
+          "Debug": {
+            "hash": "abdce560c4692d45c272e03366499519f410a27823a3a46fd79c26c656f9736f"
+          },
+          "Release": {
+            "hash": "9e394e692286211f4ab8ea11cd9f55ff709e0bf002e38f38efee7f44c4781096",
+            "diagnostic": "stale_recorded_hash"
+          }
+        },
+        "ios_only_spec": {
+          "ios": {
+            "hash": "f979d622a95c9c241d170ccf65e0f18513e8c17ff1c5e032d49ced6475e9541d",
+            "diagnostic": "stale_recorded_hash"
+          },
+          "android": {
+            "hash": "4a1bcf33a706dde42ab478728877176692bb46d9b61586ad9345a1dab3a55e65"
+          }
+        },
+        "app_swift_unlisted": {
+          "ios": {
+            "hash": "abdce560c4692d45c272e03366499519f410a27823a3a46fd79c26c656f9736f"
+          },
+          "android": {
+            "hash": "4a1bcf33a706dde42ab478728877176692bb46d9b61586ad9345a1dab3a55e65"
+          }
+        },
+        "app_swift_listed": {
+          "ios": {
+            "hash": "228ed89cbc4ad8b5d577af68a8b4bafc31abffcc74b459519f4123d3c0747ee5",
+            "engine": "hot-updater/interface@1",
+            "sources": [
+              "codegen-config:.",
+              "dependency:@hot-updater/react-native",
+              "runtime",
+              "ios/RadarApp/Mode.swift",
+              "src/NativeRadarDevice.ts"
+            ]
+          },
+          "android": {
+            "hash": "4a1bcf33a706dde42ab478728877176692bb46d9b61586ad9345a1dab3a55e65",
+            "engine": "hot-updater/interface@1",
+            "sources": [
+              "codegen-config:.",
+              "dependency:@hot-updater/react-native",
+              "runtime",
+              "setting:android:hermesEnabled",
+              "setting:android:newArchEnabled",
+              "src/NativeRadarDevice.ts"
+            ]
+          }
+        },
+        "app_swift_listed_change": {
+          "ios": {
+            "hash": "b07d83386e2a5e18ab000619171af8fb47a9698198665718a7c45e2ff688d346",
+            "diagnostic": "stale_recorded_hash"
+          },
+          "android": {
+            "hash": "4a1bcf33a706dde42ab478728877176692bb46d9b61586ad9345a1dab3a55e65"
+          }
+        },
+        "build_files_listed": {
+          "ios": {
+            "hash": "e74d6c99d5622c118031e71893204d53d5c7227d78c3ab3b7eac5958564d696b",
+            "engine": "hot-updater/interface@1",
+            "sources": [
+              "codegen-config:.",
+              "dependency:@hot-updater/react-native",
+              "runtime",
+              "ios/RadarApp.xcodeproj/project.pbxproj",
+              "src/NativeRadarDevice.ts"
+            ]
+          },
+          "android": {
+            "hash": "75b422fc1a15159c805eb260a9c2857e41e0b72cc927951ffe1d7cecc75dadfc",
+            "engine": "hot-updater/interface@1",
+            "sources": [
+              "codegen-config:.",
+              "dependency:@hot-updater/react-native",
+              "runtime",
+              "setting:android:hermesEnabled",
+              "setting:android:newArchEnabled",
+              "android/app/build.gradle",
+              "src/NativeRadarDevice.ts"
+            ]
+          }
+        },
+        "build_files_listed_change": {
+          "ios": {
+            "hash": "cfe58010c1f63b90a8f1517b199237dac72d16c3958bea3cc3235b80795783f8",
+            "diagnostic": "stale_recorded_hash"
+          },
+          "android": {
+            "hash": "3213342f8b64d6e3209afd45c63deac2a20ed969c452887eb7a1a3e25ab69497",
+            "diagnostic": "stale_recorded_hash"
+          }
+        },
+        "native_version": {
+          "ios": {
+            "hash": "d3ea1d5c0416be4681e9ac4f50d065cb14c4023fbd2b6524da5bf11beafc36ce",
+            "engine": "hot-updater/interface@1",
+            "sources": [
+              "codegen-config:.",
+              "dependency:@hot-updater/react-native",
+              "nativeVersion",
+              "runtime",
+              "src/NativeRadarDevice.ts"
+            ]
+          },
+          "android": {
+            "hash": "9c6594296e6f0f2487bbaa14fc96cb8dd7095111095d207c50f95eb004683d93",
+            "engine": "hot-updater/interface@1",
+            "sources": [
+              "codegen-config:.",
+              "dependency:@hot-updater/react-native",
+              "nativeVersion",
+              "runtime",
+              "setting:android:hermesEnabled",
+              "setting:android:newArchEnabled",
+              "src/NativeRadarDevice.ts"
+            ]
+          }
+        }
+      },
+      "source_tag_commit": "bb510d3db7348b6eb0285c89292dac660faaf6f2"
+    },
+    "1.1.17": {
+      "lock_sha256": "8382101940a254be0468bdc49f09983830136b7f18d1c6d584b9deeae91349a4",
+      "installed": {
+        "hot-updater": {
+          "version": "1.1.17",
+          "integrity": "sha512-UA49KIAOAvWP0fKzlh17caO4mEXFCAGg0+Eu96D/pw7XWbx2RSaJqui6Qd0p2Nm0f0nwc6u1Zh1LLmGOt2EoEg=="
+        },
+        "@hot-updater/bare": {
+          "version": "1.1.17",
+          "integrity": "sha512-yJmrhwQfc2QlBXl9Lqu4farLqHxMXNl2duRXuQZOrMBrkZ/diSWLinh+cBP0sZHzIazh2yK67g84AfhWyaAkUw=="
+        },
+        "@hot-updater/react-native": {
+          "version": "1.1.17",
+          "integrity": "sha512-SEPgJsFf6NCglzfSgr9DDMvWiaTZtWPoJsWUYY/kDMbU78xfXgFYe/1iCAELPWFCwfmwgP5DvPM+SLP6wAdhiA=="
+        },
+        "@hot-updater/cli-tools": {
+          "version": "1.1.17",
+          "integrity": "sha512-rIuijYvcQEk+yYIEVSNK6XxMkLHXfXtHgw+6q795LBRIEZDLZbSbaVlZZMB7psCbhpQTIaAh42wW9ylBoFhjIA=="
+        },
+        "react-native": {
+          "version": "0.85.2",
+          "integrity": "sha512-GFWEPwLYirfj5X8gMtXOWtqX0cqUEURRHETZfFk37VCa4++izrKvGvv24anvuyulXV87NAhVkfNw93rLg3HByw=="
+        },
+        "@react-native-community/cli": {
+          "version": "20.1.0",
+          "integrity": "sha512-441WsVtRe4nGJ9OzA+QMU1+22lA6Q2hRWqqIMKD0wjEMLqcSfOZyu2UL9a/yRpL/dRpyUsU4n7AxqKfTKO/Csg=="
+        },
+        "@react-native-community/cli-platform-ios": {
+          "version": "20.1.0",
+          "integrity": "sha512-XN7Da9z4WsJxtqVtEzY8q2bv22OsvzaFP5zy5+phMWNoJlU4lf7IvBSxqGYMpQ9XhYP7arDw5vmW4W34s06rnA=="
+        },
+        "@react-native-community/cli-platform-android": {
+          "version": "20.1.0",
+          "integrity": "sha512-TeHPDThOwDppQRpndm9kCdRCBI8AMy3HSIQ+iy7VYQXL5BtZ5LfmGdusoj7nVN/ZGn0Lc6Gwts5qowyupXdeKg=="
+        }
+      },
+      "observations": {
+        "old_record": {
+          "ios": {
+            "hash": "4a698e74f81ca95443b2e7cbdac45bc194fd4c8b",
+            "diagnostic": "missing_recorded_inputs"
+          },
+          "android": {
+            "hash": "e15fa8cb089a70e996aad622030fe4cde67f7e71",
+            "diagnostic": "missing_recorded_inputs"
+          }
+        },
+        "baseline": {
+          "ios": {
+            "hash": "89821a4fd728c54210f5d50f318410ea73a526fd98d97d6ee3d46add139d3954",
+            "engine": "hot-updater/interface@1",
+            "sources": [
+              "codegen-config:.",
+              "dependency:@hot-updater/react-native",
+              "runtime",
+              "src/NativeRadarDevice.ts"
+            ]
+          },
+          "android": {
+            "hash": "7ddbf4e354daed4e7341a58327d59dce917046f02014b76ba018efda327ee4b3",
+            "engine": "hot-updater/interface@1",
+            "sources": [
+              "codegen-config:.",
+              "dependency:@hot-updater/react-native",
+              "runtime",
+              "setting:android:hermesEnabled",
+              "setting:android:newArchEnabled",
+              "src/NativeRadarDevice.ts"
+            ]
+          }
+        },
+        "upgrade_reports_engine_change": true,
+        "build_baseline": {
+          "ios": {
+            "hash": "89821a4fd728c54210f5d50f318410ea73a526fd98d97d6ee3d46add139d3954"
+          },
+          "android": {
+            "hash": "7ddbf4e354daed4e7341a58327d59dce917046f02014b76ba018efda327ee4b3"
+          }
+        },
+        "build_numbers": {
+          "ios": {
+            "hash": "89821a4fd728c54210f5d50f318410ea73a526fd98d97d6ee3d46add139d3954"
+          },
+          "android": {
+            "hash": "7ddbf4e354daed4e7341a58327d59dce917046f02014b76ba018efda327ee4b3"
+          }
+        },
+        "ui_source": {
+          "ios": {
+            "hash": "89821a4fd728c54210f5d50f318410ea73a526fd98d97d6ee3d46add139d3954"
+          },
+          "android": {
+            "hash": "7ddbf4e354daed4e7341a58327d59dce917046f02014b76ba018efda327ee4b3"
+          }
+        },
+        "codegen_spec": {
+          "ios": {
+            "hash": "a0f7cadb3d40dd2c110ca64aa81d1377fcbf31d2ab0b768177868a9f88f20df1",
+            "diagnostic": "stale_recorded_hash"
+          },
+          "android": {
+            "hash": "827584157a3afe69efcca3db0443b90e7195c97a242bda408c883d6be9b6ca45",
+            "diagnostic": "stale_recorded_hash"
+          }
+        },
+        "ios_build_script_with_changed_spec": {
+          "Debug": {
+            "hash": "89821a4fd728c54210f5d50f318410ea73a526fd98d97d6ee3d46add139d3954"
+          },
+          "Release": {
+            "hash": "a0f7cadb3d40dd2c110ca64aa81d1377fcbf31d2ab0b768177868a9f88f20df1",
+            "diagnostic": "stale_recorded_hash"
+          }
+        },
+        "ios_only_spec": {
+          "ios": {
+            "hash": "02dbffbb2aff02e630f6daff7c7e21403190eb4b73dd25e341af9af6230d866d",
+            "diagnostic": "stale_recorded_hash"
+          },
+          "android": {
+            "hash": "7ddbf4e354daed4e7341a58327d59dce917046f02014b76ba018efda327ee4b3"
+          }
+        },
+        "app_swift_unlisted": {
+          "ios": {
+            "hash": "89821a4fd728c54210f5d50f318410ea73a526fd98d97d6ee3d46add139d3954"
+          },
+          "android": {
+            "hash": "7ddbf4e354daed4e7341a58327d59dce917046f02014b76ba018efda327ee4b3"
+          }
+        },
+        "app_swift_listed": {
+          "ios": {
+            "hash": "3a65051c51e7448792bbc58d40ebf954fa748746806132bbdc1c6e277379da02",
+            "engine": "hot-updater/interface@1",
+            "sources": [
+              "codegen-config:.",
+              "dependency:@hot-updater/react-native",
+              "runtime",
+              "ios/RadarApp/Mode.swift",
+              "src/NativeRadarDevice.ts"
+            ]
+          },
+          "android": {
+            "hash": "7ddbf4e354daed4e7341a58327d59dce917046f02014b76ba018efda327ee4b3",
+            "engine": "hot-updater/interface@1",
+            "sources": [
+              "codegen-config:.",
+              "dependency:@hot-updater/react-native",
+              "runtime",
+              "setting:android:hermesEnabled",
+              "setting:android:newArchEnabled",
+              "src/NativeRadarDevice.ts"
+            ]
+          }
+        },
+        "app_swift_listed_change": {
+          "ios": {
+            "hash": "8fdb75bf6131c406cb4c34173ae149a03e94dfbc99d5c81b29ad21dbc9af5e57",
+            "diagnostic": "stale_recorded_hash"
+          },
+          "android": {
+            "hash": "7ddbf4e354daed4e7341a58327d59dce917046f02014b76ba018efda327ee4b3"
+          }
+        },
+        "build_files_listed": {
+          "ios": {
+            "hash": "de5ef814cecb15d36256ed591f1c430e56c2a4c4522358a40b5716834d1dc017",
+            "engine": "hot-updater/interface@1",
+            "sources": [
+              "codegen-config:.",
+              "dependency:@hot-updater/react-native",
+              "runtime",
+              "ios/RadarApp.xcodeproj/project.pbxproj",
+              "src/NativeRadarDevice.ts"
+            ]
+          },
+          "android": {
+            "hash": "6f4b25d466d3da7ef824bf59f7d3046e52717f97ca0cbd1c9c45b00c5b613c6a",
+            "engine": "hot-updater/interface@1",
+            "sources": [
+              "codegen-config:.",
+              "dependency:@hot-updater/react-native",
+              "runtime",
+              "setting:android:hermesEnabled",
+              "setting:android:newArchEnabled",
+              "android/app/build.gradle",
+              "src/NativeRadarDevice.ts"
+            ]
+          }
+        },
+        "build_files_listed_change": {
+          "ios": {
+            "hash": "d6010ad00b074b95d9ee9416a140f5716e631ced57afefc2827b9666c63bfddd",
+            "diagnostic": "stale_recorded_hash"
+          },
+          "android": {
+            "hash": "bd8ce761220886d62362c37f6a72c3975bab273a8f83b112a7a68a9e2534241b",
+            "diagnostic": "stale_recorded_hash"
+          }
+        },
+        "native_version": {
+          "ios": {
+            "hash": "cab75458be703e9dfbd0e7a2003b6be6debdd3d5d8177ec964ce4c1a5f507fdb",
+            "engine": "hot-updater/interface@1",
+            "sources": [
+              "codegen-config:.",
+              "dependency:@hot-updater/react-native",
+              "nativeVersion",
+              "runtime",
+              "src/NativeRadarDevice.ts"
+            ]
+          },
+          "android": {
+            "hash": "c0b3f565232828aab6df9d610b8842b6aa649498c7a26d607656f3da33b6c3db",
+            "engine": "hot-updater/interface@1",
+            "sources": [
+              "codegen-config:.",
+              "dependency:@hot-updater/react-native",
+              "nativeVersion",
+              "runtime",
+              "setting:android:hermesEnabled",
+              "setting:android:newArchEnabled",
+              "src/NativeRadarDevice.ts"
+            ]
+          }
+        }
+      },
+      "source_tag_commit": "08a4cbca00214511ddb983a76a0a2b5781f7c8e1"
+    }
+  }
+}

@@ -1,0 +1,86 @@
+{
+  "date": "2026-11-19",
+  "release": "flagd/v0.19.0",
+  "source_commit": "11037220611eab982261d2348b13147b4450b562",
+  "environment": "Alpine 3.23.4 on aarch64, Python 3.12.13, Lima 2.2.1 VZ",
+  "fixture_sha256": "fa164b5a653943f0ad180606e40ed1c15e39a18689f40545aad98199fc2e92ca",
+  "release_archive_sha256": "cdb0afdcd3f8fe0dc37861bc6a14509933af7c33ab859c26ee670c7fd76e7e88",
+  "synthetic_identities": 128,
+  "binary_sha256": "acbc8ad26d7587c8935d530abf76bc5ae199f1161da92f0207ebcd0f93e54419",
+  "observations": {
+    "flat": {
+      "at_20": {
+        "excluded": 111,
+        "test": 9,
+        "control": 8
+      },
+      "at_80": {
+        "excluded": 27,
+        "control": 44,
+        "test": 57
+      },
+      "transitions": {
+        "control->control": 8,
+        "excluded->control": 27,
+        "excluded->excluded": 27,
+        "excluded->test": 57,
+        "test->control": 9
+      },
+      "missing_identity": {
+        "value": "excluded",
+        "reason": "DEFAULT",
+        "variant": "excluded",
+        "metadata": {}
+      }
+    },
+    "two-stage": {
+      "at_20": {
+        "excluded": 110,
+        "control": 11,
+        "test": 7
+      },
+      "at_80": {
+        "test": 46,
+        "excluded": 24,
+        "control": 58
+      },
+      "transitions": {
+        "control->control": 11,
+        "excluded->control": 47,
+        "excluded->excluded": 24,
+        "excluded->test": 39,
+        "test->test": 7
+      },
+      "missing_identity": {
+        "value": "excluded",
+        "reason": "DEFAULT",
+        "variant": "excluded",
+        "metadata": {}
+      }
+    },
+    "same-seed": {
+      "at_20": {
+        "excluded": 102,
+        "test": 26
+      },
+      "at_80": {
+        "test": 67,
+        "control": 38,
+        "excluded": 23
+      },
+      "transitions": {
+        "excluded->control": 38,
+        "excluded->excluded": 23,
+        "excluded->test": 41,
+        "test->test": 26
+      },
+      "missing_identity": {
+        "value": "excluded",
+        "reason": "DEFAULT",
+        "variant": "excluded",
+        "metadata": {}
+      }
+    }
+  },
+  "daemon_exit_status": 0
+}
