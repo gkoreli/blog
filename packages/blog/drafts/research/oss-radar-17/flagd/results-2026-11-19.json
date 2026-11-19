@@ -1,0 +1,133 @@
+{
+  "date": "2026-11-19",
+  "release": "flagd/v0.19.0",
+  "source_commit": "11037220611eab982261d2348b13147b4450b562",
+  "environment": "Alpine 3.23.4 on aarch64, Python 3.12.13, Lima 2.2.1 VZ",
+  "fixture_sha256": "95ac031d8e712d32b978d660bbb6510fb95207b8a6cc3918f4ddcb28ce35b4e8",
+  "binary_sha256": "acbc8ad26d7587c8935d530abf76bc5ae199f1161da92f0207ebcd0f93e54419",
+  "synthetic_identities": 128,
+  "phases": {
+    "ten_first": [
+      [
+        "new",
+        10
+      ],
+      [
+        "old",
+        90
+      ]
+    ],
+    "quarter_first": [
+      [
+        "new",
+        25
+      ],
+      [
+        "old",
+        75
+      ]
+    ],
+    "quarter_last": [
+      [
+        "old",
+        75
+      ],
+      [
+        "new",
+        25
+      ]
+    ]
+  },
+  "observations": {
+    "unchanged_repeat_matches": true,
+    "enabled_memberships": {
+      "ten_first": [
+        "fixture-003",
+        "fixture-028",
+        "fixture-036",
+        "fixture-060",
+        "fixture-064",
+        "fixture-066",
+        "fixture-094",
+        "fixture-098",
+        "fixture-101",
+        "fixture-102",
+        "fixture-106",
+        "fixture-125"
+      ],
+      "quarter_first": [
+        "fixture-003",
+        "fixture-005",
+        "fixture-006",
+        "fixture-008",
+        "fixture-010",
+        "fixture-011",
+        "fixture-012",
+        "fixture-017",
+        "fixture-020",
+        "fixture-028",
+        "fixture-036",
+        "fixture-043",
+        "fixture-047",
+        "fixture-048",
+        "fixture-059",
+        "fixture-060",
+        "fixture-061",
+        "fixture-064",
+        "fixture-065",
+        "fixture-066",
+        "fixture-075",
+        "fixture-088",
+        "fixture-089",
+        "fixture-094",
+        "fixture-098",
+        "fixture-101",
+        "fixture-102",
+        "fixture-103",
+        "fixture-106",
+        "fixture-116",
+        "fixture-119",
+        "fixture-125"
+      ],
+      "quarter_last": [
+        "fixture-009",
+        "fixture-013",
+        "fixture-021",
+        "fixture-022",
+        "fixture-023",
+        "fixture-032",
+        "fixture-038",
+        "fixture-042",
+        "fixture-053",
+        "fixture-055",
+        "fixture-068",
+        "fixture-083",
+        "fixture-085",
+        "fixture-087",
+        "fixture-095",
+        "fixture-105",
+        "fixture-108",
+        "fixture-109",
+        "fixture-112",
+        "fixture-113",
+        "fixture-117"
+      ]
+    },
+    "enabled_counts": [
+      12,
+      32,
+      21
+    ],
+    "expanded_retained": 12,
+    "reorder_retained": 0,
+    "reorder_changed": 53,
+    "missing_targeting_key": {
+      "value": "old",
+      "reason": "DEFAULT",
+      "variant": "old",
+      "metadata": {}
+    }
+  },
+  "daemon_exit_status": 0,
+  "release_archive_sha256": "cdb0afdcd3f8fe0dc37861bc6a14509933af7c33ab859c26ee670c7fd76e7e88"
+}

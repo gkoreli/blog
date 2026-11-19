@@ -1,0 +1,53 @@
+{
+  "date": "2026-11-19",
+  "release": "v0.16.3",
+  "source_commit": "777a5350e09012b29d26b9611122046d8a96fc1c",
+  "environment": "Alpine 3.23.4 on aarch64, Python 3.12.13, Lima 2.2.1 VZ",
+  "fixture_sha256": "3f4bd22cc4fb4e45ceb9099be5a194ea5d60438e1044ed65b88f94b8ddc98fa0",
+  "observations": {
+    "before": [
+      "1|text|007"
+    ],
+    "after_backfill": {
+      "old": [
+        "1|text|007"
+      ],
+      "new": [
+        "1|integer|7"
+      ]
+    },
+    "qualified_insert_with_default_search_path": "old column's NOT NULL check rejected the write",
+    "after_writes": {
+      "old": [
+        "1|text|7",
+        "2|text|009",
+        "3|text|11"
+      ],
+      "new": [
+        "1|integer|7",
+        "2|integer|9",
+        "3|integer|11"
+      ]
+    },
+    "after_rollback": {
+      "old": [
+        "1|text|7",
+        "2|text|009",
+        "3|text|11"
+      ],
+      "new_schema_exists": false
+    },
+    "after_complete": {
+      "new": [
+        "1|integer|7",
+        "2|integer|9",
+        "3|integer|11"
+      ],
+      "old_schema_exists": false
+    }
+  },
+  "passed": true,
+  "binary_sha256": "c37f41f29b8e5784a47f91069975bd397448cf1014d47cd426680f18a84804a7",
+  "postgresql": "psql (PostgreSQL) 17.12",
+  "pgroll": "pgroll version 0.16.3"
+}
