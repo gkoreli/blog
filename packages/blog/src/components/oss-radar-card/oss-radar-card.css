@@ -11,10 +11,6 @@
   transition: border-color 0.2s;
 }
 
-.rdr-main, .rdr-main:visited { display: block; color: var(--color-text); text-decoration: none; }
-.rdr:hover, .rdr:focus-within { border-color: var(--color-link); }
-.rdr-main:hover .rdr-title, .rdr-main:focus-visible .rdr-title { color: var(--color-link); }
-
 .rdr-head {
   display: flex;
   justify-content: space-between;
@@ -58,9 +54,4 @@
 .rdr-date {
   font-size: 0.75rem;
   color: var(--color-text-muted);
-}
-
-.rdr-tags {
-  margin-top: 0.6rem;
-  padding: 0 1.1rem 0.65rem;
 }

@@ -52,3 +52,9 @@ Seven fresh live browser views confirm healthy reports, viewer-local daily label
 The separate [November 15 sidebar correction](sidebar-utilities-2026-11-15.md) unifies the icon controls and moves search beside Contents. It preserves the completed thirteen-area acceptance above and records its own delivery and current serving checks.
 
 The [archive search correction](archive-search-removal-2026-11-15.md) removes the extra content forms from all three archives while preserving their topic links and article inventories. It supersedes the earlier inline archive-form presentation only.
+
+## November 19 archive revision
+
+Archive headers use a single collapsed topic index. Each article title links directly to the article, and article headers and listings omit visual tag rows. Topic metadata continues to supply the section index and search. This supersedes the earlier per-entry topic presentation.
+
+On Engineering at 1280px, the topic block occupies 29px of height, down from 200px. Its disclosure target measures 152px wide, down from 728px. The first article title moves up 227px at a 390px viewport. Keyboard activation opens the full list of 66 section-scoped topics. Workspace types, the 48-article production build and all 471 blog tests passed.

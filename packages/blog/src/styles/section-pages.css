@@ -2,16 +2,53 @@
 
 .section-archive-list { margin-top: 0.5rem; }
 
-.archive-discovery { margin-top: 1.4rem; padding-block: 1rem; border-block: 1px solid var(--color-border); }
-.archive-topic-browser > p { display: block; margin: 0 0 8px; font: 12px/1.5 var(--font-mono); color: var(--color-text-meta); }
-.topic-links { display: flex; flex-wrap: wrap; gap: 0 8px; }
-.topic-link { display: inline-flex; align-items: center; min-height: var(--target-min); padding: 8px 4px; color: var(--color-text-meta); font: 12px/1.5 var(--font-mono); text-decoration: none; overflow-wrap: anywhere; }
-.topic-link:visited { color: var(--color-text-meta); }
-.topic-link:hover, .topic-link:focus-visible { color: var(--color-link); text-decoration: underline; }
-.topic-hash { background: var(--gradient-brand); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-.archive-topic-browser details { margin-top: 4px; }
-.archive-topic-browser summary { display: flex; align-items: center; min-height: var(--target-min); font: 12px/1.5 var(--font-mono); color: var(--color-link); cursor: pointer; }
-.section-archive > .separator { display: none; }
+.archive-topics {
+  margin-top: 0.75rem;
+  padding-bottom: 0.45rem;
+  border-bottom: 1px solid var(--color-border);
+  font: 13px/1.5 var(--font-mono);
+}
+
+.archive-topics summary {
+  width: fit-content;
+  max-width: 100%;
+  color: var(--color-link);
+  cursor: pointer;
+}
+.archive-topics summary span { color: var(--color-text-meta); }
+
+.archive-topics ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 14px;
+  list-style: none;
+  padding-block: 10px 4px;
+}
+.archive-topics li { min-width: 0; }
+.archive-topics a {
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+.topic-hash {
+  background: var(--gradient-brand);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.section-archive-list h2 a {
+  color: inherit;
+  text-decoration: none;
+}
+:is(.archive-topics a, .archive-topics summary, .section-archive-list h2 a):is(:hover, :focus-visible) {
+  color: var(--color-link);
+  text-decoration: underline;
+}
+
+@media (any-pointer: coarse) {
+  .archive-topics summary { padding-block: 8px; }
+  .archive-topics a { display: inline-block; padding-block: 5px; }
+}
 
 .section-archive-empty {
   font-size: var(--text-sm);

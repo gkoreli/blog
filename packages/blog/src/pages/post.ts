@@ -120,9 +120,6 @@ export function postPage(meta: PostMeta, htmlContent: string, allPosts?: PostMet
   <header class="post-header">
     ${SectionLabel({ section: meta.section })}
     <time datetime="${meta.date}">${dateStr}</time><span class="post-header-sep"> · </span><a href="/about" rel="author" class="post-header-author">Goga Koreli</a>
-    ${meta.tags.length > 0
-      ? html`<div class="tags">${meta.tags.map(t => html`<span class="tag">${t}</span>`)}</div>`
-      : ''}
   </header>
   <div class="post-content" html:inner=${raw(htmlContent)}></div>
   ${researchFootprint(meta)}

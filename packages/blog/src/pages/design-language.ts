@@ -1,4 +1,5 @@
 import { html, raw } from '@nisli/core';
+import { archiveTopicIndex } from '../templates/archive-topics.js';
 import { reportCheckSectionHtml } from '../lib/site-audit-report.js';
 import { dataFactsHtml, groupedEvidenceTableHtml, metricTileHtml, rankedRowHtml } from '../lib/data-display.js';
 import { dataNote } from '../templates/data-note.js';
@@ -105,10 +106,8 @@ export function designLanguagePage() {
       <div class="${s.cls}">${s.text}</div>
     </div>`)}
     <div class="dl-type-row">
-      <div class="dl-type-meta">Mono · Tags and tokens</div>
-      <div class="dl-tag-sample">
-        ${['agents', 'context', 'toolchain'].map(t => html`<span class="tag">${t}</span>`)}
-      </div>
+      <div class="dl-type-meta">Archive topic index</div>
+      ${archiveTopicIndex('engineering', [{ tags: ['analytics', 'ai-agents', 'cloudflare-workers'] }])}
     </div>
   </div>
 

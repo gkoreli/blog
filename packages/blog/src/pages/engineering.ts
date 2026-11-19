@@ -2,7 +2,7 @@ import { html } from '@nisli/core';
 import type { PostMeta } from '../lib/frontmatter.js';
 import { SECTION_LABELS, SECTION_DESCRIPTIONS } from '../lib/frontmatter.js';
 import { PageHero, LitItem } from '../components/index.js';
-import { archiveDiscovery } from '../templates/archive-discovery.js';
+import { archiveTopicIndex } from '../templates/archive-topics.js';
 
 export function engineeringPage(posts: PostMeta[]) {
   const stats = [
@@ -16,8 +16,7 @@ export function engineeringPage(posts: PostMeta[]) {
     accentColor: 'var(--section-engineering)',
     stats,
   })}
-  ${archiveDiscovery('engineering', posts)}
-  <div class="separator"><img src="/icons/sparkle.svg" class="separator-icon" width="14" height="14" alt=""></div>
+  ${archiveTopicIndex('engineering', posts)}
   <div class="section-archive-list">
     ${posts.length === 0
       ? html`<p class="section-archive-empty">Nothing published yet — check back soon.</p>`

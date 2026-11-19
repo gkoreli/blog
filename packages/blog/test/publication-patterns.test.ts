@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { postMetaSchema, type Section } from '../src/lib/frontmatter.js';
-import { archiveTopics } from '../src/lib/discovery.js';
+import { postPage } from '../src/pages/post.js';
 import { engineeringPage } from '../src/pages/engineering.js';
 import { essaysPage } from '../src/pages/essays.js';
 import { ossRadarPage } from '../src/pages/oss-radar.js';
@@ -22,17 +22,20 @@ test('archives retain every article and make topics independent scoped search de
     const [snapshot] = await renderContent([page(posts)]); assert.ok(snapshot);
     const root = document.createElement('section'); root.innerHTML = snapshot;
     assert.equal(root.querySelector('form'), null);
+    const index = root.querySelector('details'); assert.ok(index);
+    assert.equal(index.open, false);
+    const topics = [...index.querySelectorAll('a')].map(link => new URL(link.href, 'https://gkoreli.com'));
+    assert.deepEqual(topics.map(url => url.searchParams.get('q')), ['one', 'shared', 'two']);
+    assert.ok(topics.every(url => url.pathname === '/search' && url.searchParams.get('section') === section));
     const articles = root.querySelectorAll('.section-archive-list article'); assert.equal(articles.length, posts.length);
     for (const [index, article] of [...articles].entries()) {
-      assert.equal(article.querySelector('a')?.getAttribute('href'), `/${posts[index]?.slug}`);
-      assert.equal(article.querySelectorAll('a a').length, 0);
-      const topic = article.querySelector('.topic-link'); assert.ok(topic);
-      const href = new URL(topic.getAttribute('href') ?? '', 'https://gkoreli.com');
-      assert.equal(href.pathname, '/search'); assert.equal(href.searchParams.get('section'), section);
-      assert.equal(href.searchParams.get('q'), 'shared');
+      assert.equal(article.querySelector('h2 a')?.getAttribute('href'), `/${posts[index]?.slug}`);
+      assert.equal(article.querySelectorAll('a').length, 1);
     }
   }
-  assert.deepEqual(archiveTopics([post('engineering', 'one', ['shared', 'shared']), post('engineering', 'two', ['shared'])]), [{ name: 'shared', count: 2 }]);
+  const [article] = await renderContent([postPage(post('engineering', 'one', ['private-tag-marker']), '<h1>One</h1>')]);
+  assert.ok(article);
+  assert.doesNotMatch(article, /private-tag-marker/);
 });
 
 test('privacy overview and contents reach complete native disclosure sections', async () => {

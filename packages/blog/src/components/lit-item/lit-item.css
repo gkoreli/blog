@@ -7,10 +7,6 @@
   border-bottom: 1px solid var(--color-border);
 }
 
-.lit-main { display: block; text-decoration: none; color: var(--color-text); }
-.lit-main:visited { color: var(--color-text); }
-.lit-main:hover .lit-title, .lit-main:focus-visible .lit-title { color: var(--color-link); }
-
 .lit-meta {
   font-family: var(--font-mono);
   font-size: var(--text-2xs);
@@ -37,5 +33,4 @@
   color: var(--color-text-muted);
   line-height: 1.75;
   font-style: italic;
-  margin-bottom: 0.55rem;
 }

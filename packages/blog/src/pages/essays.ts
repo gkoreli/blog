@@ -2,7 +2,7 @@ import { html } from '@nisli/core';
 import type { PostMeta } from '../lib/frontmatter.js';
 import { SECTION_LABELS, SECTION_DESCRIPTIONS } from '../lib/frontmatter.js';
 import { PageHero, LitItem } from '../components/index.js';
-import { archiveDiscovery } from '../templates/archive-discovery.js';
+import { archiveTopicIndex } from '../templates/archive-topics.js';
 
 export function essaysPage(posts: PostMeta[]) {
   return html`<div class="section-archive" data-section="essays">
@@ -12,8 +12,7 @@ export function essaysPage(posts: PostMeta[]) {
     accentColor: 'var(--section-essays)',
     stats: [{ value: String(posts.length), label: 'Published' }],
   })}
-  ${archiveDiscovery('essays', posts)}
-  <div class="separator"><img src="/icons/sparkle.svg" class="separator-icon" width="14" height="14" alt=""></div>
+  ${archiveTopicIndex('essays', posts)}
   <div class="section-archive-list">
     ${posts.length === 0
       ? html`<p class="section-archive-empty">Nothing published yet — check back soon.</p>`
