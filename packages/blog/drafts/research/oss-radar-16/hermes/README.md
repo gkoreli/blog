@@ -48,3 +48,14 @@ python skill_reuse_trial.py /path/to/pinned-hermes /path/to/fresh-output \
 ```
 
 The fixture uses the actual skill create, list, view, and patch tools across subprocesses. It sends the captured catalog or procedure to the local model under a fixed seed and temperature and compares exact visible strings. Driver behavior, model inputs, and all seven outputs are recorded. The selected rules include a made-up convention, so the two no-instructions controls are expected to miss details. The comparison checks procedure reuse and patch visibility. It leaves autonomous skill choice and whole-agent performance open.
+
+## November 19 chat CLI trial
+
+Install the pinned v0.23.2 runtime dependencies in an owned Python 3.14 environment using `uv sync --frozen --no-default-groups --no-install-project`. Use the same model files and Ollama version described above. The [CLI fixture](agent_skill_trial.py) starts a loopback model server and a scoped chat profile. Keep the fresh output path short so its Unix socket fits.
+
+```sh
+python agent_skill_trial.py /path/to/pinned-hermes /path/to/ollama \
+  /path/to/owned-models /path/to/fresh-output
+```
+
+In the first session the skill was available in the catalog. The second used the CLI's explicit preload flag. [The receipt](results/agent-skill-2026-11-19.json) preserves the one synthetic prompt, observed tool calls and exact replies.

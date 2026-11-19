@@ -1,0 +1,113 @@
+{
+  "date": "2026-11-19",
+  "release": "v0.34.0",
+  "source_commit": "77cbac6b532d7d3881010eade21fe1a7f9e4bf8e",
+  "binary": "godoxy-linux-arm64",
+  "binary_sha256": "f48d8a4389d72ef54a6fb8a4546141d80b63c4d9e6ff30e777751f1dcae31616",
+  "fixture_sha256": "e65015236d8858dd1f4718908fb87b87ce62f92878e2c345cc4c803c2e096d1a",
+  "guest": "Alpine 3.23.4 on aarch64, Python 3.12.13, Lima 2.2.1 with VZ and no host mounts",
+  "clock": "UTC wall clock",
+  "conditions": [
+    {
+      "mode": "reload",
+      "passed": true,
+      "window_utc": "15:49-16:02",
+      "conditions": [
+        "both proxy routes served while healthy",
+        "inherited silence deferred the down notification and the explicit empty list sent it",
+        "removing default silence repeated the unchanged route's down alert",
+        "both routes delivered a single recovery alert"
+      ],
+      "notices": [
+        {
+          "kind": "down",
+          "service": "override",
+          "phase": "window",
+          "at": "2026-11-19T15:52:05.611+00:00",
+          "response_status": 204
+        },
+        {
+          "kind": "down",
+          "service": "inherited",
+          "phase": "reload",
+          "at": "2026-11-19T15:52:10.665+00:00",
+          "response_status": 204
+        },
+        {
+          "kind": "down",
+          "service": "override",
+          "phase": "reload",
+          "at": "2026-11-19T15:52:10.666+00:00",
+          "response_status": 204
+        },
+        {
+          "kind": "up",
+          "service": "override",
+          "phase": "recovery",
+          "at": "2026-11-19T15:52:18.669+00:00",
+          "response_status": 204
+        },
+        {
+          "kind": "up",
+          "service": "inherited",
+          "phase": "recovery",
+          "at": "2026-11-19T15:52:18.669+00:00",
+          "response_status": 204
+        }
+      ],
+      "probes": {
+        "inherited": 6,
+        "override": 9
+      },
+      "proxy_exit_status": 0,
+      "elapsed_seconds": 19.03
+    },
+    {
+      "mode": "expires",
+      "passed": true,
+      "window_utc": "15:49-15:54",
+      "conditions": [
+        "both proxy routes served while healthy",
+        "inherited silence deferred the down notification and the explicit empty list sent it",
+        "natural expiration sent only the deferred down alert",
+        "both routes delivered a single recovery alert"
+      ],
+      "notices": [
+        {
+          "kind": "down",
+          "service": "override",
+          "phase": "window",
+          "at": "2026-11-19T15:52:23.567+00:00",
+          "response_status": 204
+        },
+        {
+          "kind": "down",
+          "service": "inherited",
+          "phase": "expiration",
+          "at": "2026-11-19T15:54:00.564+00:00",
+          "response_status": 204
+        },
+        {
+          "kind": "up",
+          "service": "inherited",
+          "phase": "recovery",
+          "at": "2026-11-19T15:54:03.564+00:00",
+          "response_status": 204
+        },
+        {
+          "kind": "up",
+          "service": "override",
+          "phase": "recovery",
+          "at": "2026-11-19T15:54:03.565+00:00",
+          "response_status": 204
+        }
+      ],
+      "probes": {
+        "inherited": 104,
+        "override": 102
+      },
+      "proxy_exit_status": 0,
+      "elapsed_seconds": 104.83
+    }
+  ]
+}

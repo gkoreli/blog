@@ -1,0 +1,35 @@
+{
+  "date": "2026-11-19",
+  "release": "v0.23.2",
+  "host": "Darwin arm64",
+  "fixture_sha256": "ebbe67324d5a0f723a6878e2a0a4af8478f170d5dad3f0ef56dfbb6e02e88a08",
+  "seed_fixture_sha256": "031d40aafe3864251f95dc996191515d6dd4ccf0ed50ab9b89a045c9f3a963b2",
+  "source_archive_sha256": "fe3481973fd7b4f78a4f716110e793b1474ec5eec9d44fc0332c6be40fa9b776",
+  "source_commit": "ae2a81ccc00e9b7c06301523e5bb09608397149c",
+  "source_lock_sha256": "d0ae8bfd20db7a8ca0e75418df718315c58088b120366227cc62ee8fe25d4274",
+  "model": "qwen3.5:4b",
+  "context_requested": 65536,
+  "python": "3.14.6",
+  "model_manifest_sha256": "2a654d98e6fba55d452b7043684e9b57a947e393bbffa62485a7aac05ee4eefd",
+  "input": "Return the yard dispatch line for this workshop record: coil, rack D4, count 7, routine priority.",
+  "expected": "RIVET/D4/007/mz2/coil",
+  "cases": [
+    {
+      "condition": "catalog_available",
+      "status": 0,
+      "actual": "I cannot directly query yard dispatch records from the available tool set. The `yard-dispatch-format` skill is for formatting records, not retrieving them.\n\nTo help you find that specific record, I need either:\n- A file path where yard dispatch logs are stored, or\n- Access to a tool that can search the workshop database/logs\n\nCan you provide the location of the records or confirm what system stores them?",
+      "exact_match": false,
+      "tool_calls": [],
+      "result_seen": true
+    },
+    {
+      "condition": "explicit_preload",
+      "status": 0,
+      "actual": "RIVET/D4/007/mz2/coil",
+      "exact_match": true,
+      "tool_calls": [],
+      "result_seen": true
+    }
+  ],
+  "ollama": "0.21.2"
+}

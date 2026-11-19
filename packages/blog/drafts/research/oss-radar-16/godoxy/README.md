@@ -55,3 +55,14 @@ Use the same pinned source, submodules, Go toolchain and owned caches. Copy [`ra
 ```
 
 This fixture connects the monitor's callback to the real notification dispatcher and Webhook provider. One loopback server supplies health probes. Another records webhook POSTs and returns 503 on the first delivery and 204 afterward. The controlled clock advances across the silence boundary. [Recorded results](results/webhook-2026-11-18.json) show two monitor notices, three actual requests and retry after the failed response. The result covers delivery to the local test receiver.
+
+## November 19 release-binary route trial
+
+Verify the [published ARM64 Linux executable](https://github.com/yusing/godoxy/releases/tag/v0.34.0) against the [recorded SHA-256](results/linux-routes-2026-11-19.json) and run these commands in a disposable ARM64 Linux guest. Use fresh output directories for both conditions.
+
+```sh
+TZ=UTC python3 route_reload_trial.py ./godoxy-linux-arm64 ./reload-01 reload
+TZ=UTC python3 route_reload_trial.py ./godoxy-linux-arm64 ./expires-01 expires
+```
+
+The two file-provider routes use the same initial global silence with one explicit empty override. The expiry case can take two minutes. The assertions cover actual proxied traffic, health probes and HTTP 204 webhook receipts through the change. [Fieldwork](../09-thursday-release-fieldwork.md#godoxy-through-a-live-configuration-change).

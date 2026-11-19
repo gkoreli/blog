@@ -1,9 +1,9 @@
 ---
 title: "OSS Radar #16: Saved Skills, Inbox Replies, and Health Checks"
 seoTitle: "OSS Radar #16: Hermes, Plannotator, NemoClaw, and GoDoxy"
-alternativeHeadline: "Four open-source projects for carrying instructions, replies, policy, and alerts across interruptions"
-date: "2026-11-23"
-description: "Hands-on with Hermes Agent, Plannotator, NemoClaw, and GoDoxy. What happens to saved skills, inbox replies, policy edits, and alerts across interruptions?"
+alternativeHeadline: "Four open-source projects tested through a config reload, a saved skill, a pending reply, and an uncertain policy edit"
+date: "2026-11-19"
+description: "GoDoxy repeated a down alert after a config reload. Tests of Hermes Agent, Plannotator, and NemoClaw show what to check when saved work is still pending."
 section: oss-radar
 series:
   id: oss-radar
@@ -14,15 +14,15 @@ tags: [oss-radar, open-source, developer-tools, agents, self-hosting]
 
 # OSS Radar #16: Saved Skills, Inbox Replies, and Health Checks
 
-Hermes Agent's skill reader picked up a one-line edit to a saved procedure, and a local model followed the new rule when given the revised instructions. In Plannotator, a reply survived a restart and stayed waiting for the session that asked the question, even after another reader opened the thread.
+Changing a quiet window in GoDoxy sent a second down alert for a route whose own settings stayed the same and whose health endpoint was still down. When the window expired on its own, the proxy sent only the alert it had deferred.
 
-This issue also looks at NemoClaw's handling of a policy edit when it loses contact with OpenShell, and returns to GoDoxy to see what happens when a service is still down after its scheduled backup window.
+In Plannotator, another session could see a saved reply while the original session still had it waiting. Hermes Agent and NemoClaw raise a similar question. What can you check when a rule is saved or a change is submitted and the next step still matters?
 
 ## Sources and selection
 
 Hermes Agent, Plannotator, and NemoClaw came from public GitHub release and implementation work. The selection follows three jobs that come up once an agent has ongoing work: carrying a procedure to a new session, getting a human decision back to the right task, and operating the runtime around it. GoDoxy returns from [the first Radar](/oss-radar-01-vercel-winter-2026-cohort), where it appeared in Vercel's Winter 2026 cohort. The return visit follows a maintenance problem raised by someone running scheduled backups.
 
-This is a curated four-project selection. It favors tools with a concrete operating question and enough public source and discussion to investigate it. Repository activity here says little about adoption. The [release pins, fixtures, and results](https://github.com/gkoreli/blog/tree/main/packages/blog/drafts/research/oss-radar-16) cover research through November 18, with AI assistance.
+The selection favors tools with a concrete operating question and enough public source and discussion to investigate it. The [release pins, fixtures, and results](https://github.com/gkoreli/blog/tree/main/packages/blog/drafts/research/oss-radar-16) cover research through November 19, with AI assistance.
 
 ## The projects
 
@@ -32,9 +32,9 @@ If you keep explaining the same house rules to an agent, Hermes gives you two pl
 
 A Hermes user reported that the local memory scanner was hiding benign material. In a separate v0.23.2 trial, a flagged phrase hid an entire undivided memory entry from the prompt while the file on disk stayed intact. Putting the clean fact in its own entry made it visible. A memory written during the session also stayed out of that session's frozen starting snapshot and appeared after a fresh load. If the agent seems to have forgotten something, the first check is which entries actually made it into the prompt. [User report #156389](https://github.com/NousResearch/hermes-agent/issues/156389) · [Memory trial](https://github.com/gkoreli/blog/tree/main/packages/blog/drafts/research/oss-radar-16/hermes).
 
-For the skill trial, the real skill tool saved a workshop dispatch convention with a field order, zero padding, and codes for two priorities. A local Qwen3.5 4B model missed both exact outputs when given only the task, and missed both again with the skill's catalog description. With the full skill loaded by a fresh process, it produced both expected strings. A separate call used `bp4` after another fresh process picked up a patch changing the previous code, `mz2`. The fixture chose which skill to pass to the model, so automatic discovery remains an open question. [Skill fixture and results](https://github.com/gkoreli/blog/tree/main/packages/blog/drafts/research/oss-radar-16/hermes).
+For the skill trial, the real skill tool saved a workshop dispatch convention with a field order, zero padding, and codes for two priorities. A local Qwen3.5 4B model missed both exact outputs with the task alone and with the catalog description. With the full skill supplied, it produced both expected lines and picked up a change to one of the priority codes. In the chat CLI, the model named the saved skill without calling it and asked where to find the record that the prompt had already supplied. In a fresh session with the same prompt and the skill explicitly preloaded, it returned the exact line. [Skill fixtures and results](https://github.com/gkoreli/blog/tree/main/packages/blog/drafts/research/oss-radar-16/hermes).
 
-The useful part is being able to inspect, edit, and test a procedure outside a conversation. Try it first on a task you repeat often enough to bring two real examples of a good result. Keep both examples with the rules. A valid-looking answer can still be following last week's convention.
+Try one task with a known-good result in a fresh session. Check whether the session loaded the saved skill and whether the output follows its rules. Explicit preload is available when you want to choose the procedure yourself.
 
 ### Plannotator — get a reply back to the work that asked for it
 
@@ -46,31 +46,29 @@ An earlier v0.28.67 component trial went further with a scripted T3 service. A l
 
 ### NemoClaw — manage policy around an agent runtime
 
-NVIDIA's NemoClaw handles agent onboarding and sandbox operations around OpenShell, which owns policy and provides the runtime boundary. The default installer pointed to the `lkg` ref at NemoClaw v0.0.144 on November 18. Its blueprint requires OpenShell 0.0.116, a pairing that matters when you're following instructions or investigating a failed upgrade. The official macOS binary reported that pinned version. [Installer](https://github.com/NVIDIA/NemoClaw/blob/82e1ad7474ec7175c5b860b2bfa9d7940bc6e75f/install.sh#L20) · [Blueprint](https://github.com/NVIDIA/NemoClaw/blob/82e1ad7474ec7175c5b860b2bfa9d7940bc6e75f/nemoclaw-blueprint/blueprint.yaml#L6) · [Architecture](https://docs.nvidia.com/nemoclaw/latest/user-guide/openclaw/about/how-it-works).
+NVIDIA's NemoClaw handles agent onboarding and sandbox operations around OpenShell, which owns policy and provides the runtime boundary. On November 19, the default install ref resolved to NemoClaw v0.0.145 and required OpenShell 0.0.116. The previous v0.0.144 tag paired with the same OpenShell release, and the policy client and read-back files checked for this issue match across the two tags. The official OpenShell macOS CLI reported 0.0.116. [Current installer](https://github.com/NVIDIA/NemoClaw/blob/6f36feffb7a0f448194eafef3042e7ad47faa0de/install.sh#L20) · [Blueprint](https://github.com/NVIDIA/NemoClaw/blob/6f36feffb7a0f448194eafef3042e7ad47faa0de/nemoclaw-blueprint/blueprint.yaml#L6) · [Architecture](https://docs.nvidia.com/nemoclaw/latest/user-guide/openclaw/about/how-it-works).
 
 An earlier change moved durable policy ownership to OpenShell. The wrapper still has to tell an operator what happened to a request. Through the released client, a scripted explicit precondition refusal returned a rejection. A disconnect, timeout, and unclassified exit each returned an ambiguous outcome. The policy action can reread the current base policy and revision to see what landed. That is useful when a dropped response could follow a successful write. An older report about a refused provider switch also describes a generated provider left behind, a reminder that policy state and integration cleanup have separate outcomes. [Policy ownership change #10515](https://github.com/NVIDIA/NemoClaw/pull/10515) · [Policy action](https://github.com/NVIDIA/NemoClaw/blob/82e1ad7474ec7175c5b860b2bfa9d7940bc6e75f/src/lib/policy/index.ts#L1108) · [User report #13904](https://github.com/NVIDIA/NemoClaw/issues/13904).
 
-The tests ran the client with scripted command results. The Mac lacked both documented container runtimes, so live gateway behavior and sandbox enforcement remain unverified. This is worth an operator's look if you want a packaged setup for OpenShell. Start on a supported disposable host and check which policy is active after a change and after a restart. [Prerequisites](https://docs.nvidia.com/nemoclaw/latest/user-guide/openclaw/get-started/prerequisites) · [Version and client trial](https://github.com/gkoreli/blog/tree/main/packages/blog/drafts/research/oss-radar-16/nemoclaw).
+The client trial and the upstream policy tests used scripted results at v0.0.144. An ambiguous submission counted as applied when the authoritative read-back matched. When read-back was unavailable, the update remained unconfirmed. Live gateway behavior and sandbox enforcement remain unverified. On a supported disposable host, check which policy is active after a change and after a restart. [Read-back tests](https://github.com/NVIDIA/NemoClaw/blob/82e1ad7474ec7175c5b860b2bfa9d7940bc6e75f/src/lib/policy/policy-live-state.test.ts#L636) · [Client trial](https://github.com/gkoreli/blog/tree/main/packages/blog/drafts/research/oss-radar-16/nemoclaw).
 
 ### GoDoxy — quiet hours for expected downtime
 
 The first Radar covered GoDoxy as a reverse proxy that discovers containers and can sleep idle services, with Proxmox support already visible in March source. The return visit is about what happens after you route real services through it. A contributor running regular backups wanted a quiet window for the expected downtime. Earlier versions already checked health and sent down and recovery notices. The current monitor can defer an initial down notice, then send it on the first eligible failed check after the window without needing a fresh outage. [March source](https://github.com/yusing/godoxy/tree/213e4a5cdb635bf1f5f5985fd04515ad592497d5) · [Contributor's PR #296](https://github.com/yusing/godoxy/pull/296) · [v0.34.0 monitor](https://github.com/yusing/godoxy/blob/77cbac6b532d7d3881010eade21fe1a7f9e4bf8e/internal/health/monitor/monitor.go).
 
-In loopback trials on v0.34.0, an outage that began and recovered entirely inside the quiet window emitted neither notice. If a down notice had already gone out before silence began, recovery still emitted an up notice. A separate trial held a service down across 04:00 with a controlled clock. The monitor called for one down notice, but the local webhook saw two POSTs because it answered the first with HTTP 503. The dispatcher retried, received 204, and later delivered one up notice. The number of POSTs depended on the receiver's response. [Monitor and webhook trials](https://github.com/gkoreli/blog/tree/main/packages/blog/drafts/research/oss-radar-16/godoxy).
+The released v0.34.0 proxy ran two file-configured routes in a Linux VM. Both health endpoints returned 503. One route inherited the quiet window and kept probing without sending a down alert. The other used an empty silence list and alerted on its first failed check. Removing the global window reloaded the configuration and sent two alerts, one for the deferred outage and one for the unchanged route that had already alerted. The webhook accepted every delivery. In the run with no config edit, reaching the end of the window sent only the deferred alert. Both routes sent recovery alerts when their health checks returned 200 again. [Release-binary fixture and results](https://github.com/gkoreli/blog/tree/main/packages/blog/drafts/research/oss-radar-16/godoxy).
 
-This makes silence useful for an existing GoDoxy installation with predictable maintenance. Set the window per route, and check that your receiver handles repeated deliveries appropriately. The trials covered HTTP checks and a local webhook. Certificate setup, Proxmox, and container restarts remain outside that result.
+There are two ways a receiver can get a second message. In a separate trial, one down alert caused two webhook requests because the first returned HTTP 503. The reload produced a fresh alert even with a healthy receiver. If you edit a maintenance window mid-outage, account for the possibility of repeat alerts from the routes already down. [Webhook retry control](https://github.com/gkoreli/blog/blob/main/packages/blog/drafts/research/oss-radar-16/godoxy/results/webhook-2026-11-18.json).
 
 ## What the projects show
 
-The trials put an interruption between an action and its expected result. Sometimes the delay was intentional. GoDoxy still showed the route as unhealthy and waited to send an alert. Sometimes a deliberate check was needed. NemoClaw's policy action can ask OpenShell what landed after an ambiguous response. The useful detail in both cases is that the tool has somewhere to look when the next step is unclear.
-
-That distinction is harder to test in a demo where the skill is already loaded, the agent is online, or the webhook always returns 200. These four projects were chosen in part because their files, read marks, revisions, or delivery attempts give the operator something to inspect. A tool can expose those states and still need good defaults, a reliable runtime, or a clearer way to show them.
+Each tool gives you a record of one step in a longer operation. When an agent recognizes a skill, check the load and compare its output with a known-good result. When an Inbox reply is visible, check whether the intended session acknowledged it. For a policy edit, read the active revision before retrying an uncertain write. For an alert, look at both the monitor and what the receiver accepted.
 
 ## What to try
 
-Hermes is the smallest experiment if you already have a repeatable task and examples of the right result. Plannotator is the better first trial if feedback already gets lost between working sessions. Give it one real decision on the host you use, then close and reopen the host and see whether the answer reaches the waiting task.
+Hermes is the smallest experiment if you already have a repeatable task and an example of the right result. Plannotator is worth trying if feedback gets lost between sessions. Give it one real decision and check whether the waiting task continues after reopening your host.
 
-For a GoDoxy operator, a narrow window around one backup is a useful starting point. It postpones the first alert if a real outage starts at the same time, so make the window only as long as the expected downtime. NemoClaw takes more setup to evaluate. Its release pair and read-back path tell you what to inspect on a supported host before you give it an ongoing workload.
+For an existing GoDoxy setup, start with one scheduled backup and check what your receiver gets if the outage runs long. NemoClaw needs a supported runtime for a useful operating trial. The version pair and read-back path give you a starting point for that check.
 
 ## Sources
 

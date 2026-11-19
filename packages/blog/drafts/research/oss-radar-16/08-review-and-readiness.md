@@ -1,5 +1,7 @@
 # OSS Radar #16 — review and readiness
 
+[November 19's release fieldwork](09-thursday-release-fieldwork.md) and [publication record](10-publication-2026-11-19.md) supersede this November 18 preview and its Monday decision.
+
 Reviewed November 18, 2026, Pacific. The [release candidate](article.md) is dated Monday, November 23. The proposed promotion filename is `048-oss-radar-16-saved-skills-and-inbox-replies.md`. Check the prefix against current main when release is authorized. The source remains in the drafts directory. The release manifest is empty and GitHub reports workflow 408698342 as `disabled_manually`.
 
 ## Editorial and evidence check
