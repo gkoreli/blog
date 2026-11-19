@@ -32,6 +32,7 @@ export const CLIENT_ENTRY = join(SRC, 'client', 'main.ts');
 
 /** packages/blog/src/client/stats.ts — stats page entry point (loads only on /stats) */
 export const STATS_ENTRY = join(SRC, 'client', 'stats.ts');
+export const AGENT_ACCESS_ENTRY = join(SRC, 'client', 'agent-access.ts');
 export const ARTICLE_REACH_ENTRY = join(SRC, 'client', 'article-reach.ts');
 export const AI_CHECK_ENTRY = join(SRC, 'client', 'ai-check.ts');
 export const REQUEST_INSPECTOR_ENTRY = join(SRC, 'client', 'request-inspector.ts');
@@ -50,7 +51,7 @@ export const CANVAS_ENTRY = join(SRC, 'client', 'canvas.ts');
 export const OWNER_ENTRY = join(SRC, 'client', 'owner.ts');
 export const SEARCH_WORKER_ENTRY = join(SRC, 'client', 'search-worker.ts');
 
-export const ESBUILD_ENTRIES = [OWNER_ENTRY, CLIENT_ENTRY, SEARCH_WORKER_ENTRY, STATS_ENTRY, ARTICLE_REACH_ENTRY, AI_CHECK_ENTRY, REQUEST_INSPECTOR_ENTRY, TOOLS_WORKBENCH_ENTRY, IMMERSIVE_ENTRY, ANIMATIONS_LAB_ENTRY, CANVAS_ENTRY, STYLES_SRC];
+export const ESBUILD_ENTRIES = [OWNER_ENTRY, CLIENT_ENTRY, SEARCH_WORKER_ENTRY, STATS_ENTRY, AGENT_ACCESS_ENTRY, ARTICLE_REACH_ENTRY, AI_CHECK_ENTRY, REQUEST_INSPECTOR_ENTRY, TOOLS_WORKBENCH_ENTRY, IMMERSIVE_ENTRY, ANIMATIONS_LAB_ENTRY, CANVAS_ENTRY, STYLES_SRC];
 
 /** Section archive route slugs */
 export const ESSAYS_PAGE = 'essays';

@@ -66,7 +66,7 @@ async function asset(request) {
     const info = await stat(file);
     if (info.isDirectory()) file = resolve(file, 'index.html');
     let bytes = await readFile(file);
-    if (path === '/stats' || path === '/stats/') bytes = Buffer.from(bytes.toString().replace('<agent-access-report', `<p class="agent-access-note">${savedReport ? 'Saved production aggregate from ' + savedReport.scope.calculatedAt + ' — local replay; other panels use synthetic D1.' : 'Controlled local data — synthetic native D1; fixed agent-report clock.'}</p><agent-access-report`));
+    if (path === '/stats/agent-access' || path === '/stats/agent-access/') bytes = Buffer.from(bytes.toString().replace('<agent-access-report', `<p class="agent-access-note">${savedReport ? 'Saved production aggregate from ' + savedReport.scope.calculatedAt + ' — local replay; other panels use synthetic D1.' : 'Controlled local data — synthetic native D1; fixed agent-report clock.'}</p><agent-access-report`));
     return new Response(request.method === 'HEAD' ? null : bytes, { headers: { 'Content-Type': types[extname(file)] ?? 'application/octet-stream' } });
   } catch { return new Response(null, { status: 404 }); }
 }
@@ -85,7 +85,7 @@ await db.prepare(reportProjectionSql('range')).bind(0, Number.MAX_SAFE_INTEGER).
 await db.prepare(referralReportProjectionSql()).bind(0, Number.MAX_SAFE_INTEGER, REFERRAL_REPORT_RULES_JSON).run();
 const originals = (await db.prepare('SELECT * FROM page_observations ORDER BY id').all()).results;
 const url = (await mf.ready).href;
-const receipt = { url, stats: new URL('/stats', url).href, pid: process.pid, source: savedReport ? 'actual built interface; validated saved production aggregate; synthetic D1 for other panels' : 'actual composed Worker and built assets; synthetic native D1 with fixed agent-report clock', originalRows: originals.length, originalSha256: createHash('sha256').update(JSON.stringify(originals)).digest('hex'), publicBuildConfiguration: 'No local .env copied; subscription site key is not part of this acceptance.', startedAt: new Date().toISOString() };
+const receipt = { url, stats: new URL('/stats/agent-access', url).href, pid: process.pid, source: savedReport ? 'actual built interface; validated saved production aggregate; synthetic D1 for other panels' : 'actual composed Worker and built assets; synthetic native D1 with fixed agent-report clock', originalRows: originals.length, originalSha256: createHash('sha256').update(JSON.stringify(originals)).digest('hex'), publicBuildConfiguration: 'No local .env copied; subscription site key is not part of this acceptance.', startedAt: new Date().toISOString() };
 await writeFile(resolve(output, 'preview.json'), JSON.stringify(receipt, null, 2) + '\n');
 console.log(JSON.stringify(receipt));
 async function stop() {

@@ -10,12 +10,20 @@
 .report-option:hover > span { color: var(--color-text); background: var(--color-surface); }
 .report-option input:checked + span { color: var(--color-link); background: color-mix(in srgb,var(--color-link) 8%,transparent); border-color: color-mix(in srgb,var(--color-link) 28%,transparent); }
 .report-option input:focus-visible + span { outline: 2px solid var(--color-link); outline-offset: 2px; }
+
+.report-period-short { display: none; }
+.report-traffic-choice { display: grid; gap: 2px; align-content: start; }
+.report-traffic-choice label { color: var(--color-text-muted); font: 12px/1.5 var(--font-mono); }
+.report-traffic-choice select { max-width: 100%; min-height: 36px; margin-block: 4px; padding: 4px 6px; border: 1px solid var(--color-control-border); border-radius: var(--control-radius); background: var(--color-bg); color: var(--color-text); font: 13px/1.5 var(--font-sans); }
 @media (max-width: 600px) {
-  .report-controls { gap: 8px; }
-  .report-filter { flex: 1 1 100%; }
-  .report-option > span { padding-inline: 8px; }
-  .report-filter legend { margin-left: 8px; }
+  .report-controls { gap: 4px 12px; }
+  .report-filter legend { margin-left: 4px; }
+  .report-period-long { display: none; }
+  .report-period-short { display: inline; }
+  .report-filter-period .report-option { min-width: 40px; justify-content: center; }
+  .report-traffic-choice select { font-size: 16px; }
+  .report-option > span { padding-inline: 5px; }
+  .report-traffic-choice select { min-height: 40px; margin-block: 2px; }
 }
-@media (max-width: 420px) {
-  .report-filter-traffic .report-options { display: grid; grid-template-columns: repeat(3,max-content); }
-}
+
+@media (pointer: coarse) { .report-traffic-choice select { min-height: 44px; margin-block: 0; } }

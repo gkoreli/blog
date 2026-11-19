@@ -8,30 +8,29 @@ const COMPACT_LABELS: Record<TrafficFilter, string> = {
 };
 
 const PERIODS = [
-  { value: '7d', days: '7', label: '7 days' },
-  { value: '30d', days: '30', label: '30 days' },
-  { value: '90d', days: '90', label: '90 days' },
-  { value: 'all', days: '0', label: 'All time' },
+  { value: '7d', days: '7', label: '7 days', short: '7d' },
+  { value: '30d', days: '30', label: '30 days', short: '30d' },
+  { value: '90d', days: '90', label: '90 days', short: '90d' },
+  { value: 'all', days: '0', label: 'All time', short: 'All' },
 ] as const;
 
 /** Native single-choice controls; the report owns fetching and URL state. */
 export function reportFilters(idPrefix: string) {
   const traffic = ['all', ...TRAFFIC_GROUPS] as const;
   return html`<div class="report-controls" id=${`${idPrefix}-controls`} aria-label="Report filters">
-    <fieldset class="report-filter report-filter-traffic" id=${`${idPrefix}-traffic`} aria-describedby=${`${idPrefix}-traffic-help`}>
-      <legend>Traffic</legend>
-      <div class="report-options">${traffic.map(group => html`<label class="report-option">
-        <input type="radio" name=${`${idPrefix}-traffic`} value=${group} data-traffic=${group} checked=${group === 'all'} aria-label=${COMPACT_LABELS[group] === TRAFFIC_LABELS[group] ? COMPACT_LABELS[group] : `${COMPACT_LABELS[group]}: ${TRAFFIC_LABELS[group]}`}>
-        <span>${COMPACT_LABELS[group]}</span>
-      </label>`)}</div>
-      <p class="sr-only" id=${`${idPrefix}-traffic-help`}>Categories describe request signals, not verified people. Agents includes on-demand fetchers, AI search, AI crawlers and historical or unknown-role signed clients. Other crawlers includes search, SEO and preview declarations. Automation includes legacy rules.</p>
-    </fieldset>
     <fieldset class="report-filter report-filter-period" data-filter-group="period">
       <legend>Period</legend>
       <div class="report-options">${PERIODS.map(period => html`<label class="report-option">
-        <input type="radio" name=${`${idPrefix}-period`} value=${period.value} data-days=${period.days} checked=${period.value === '30d'}>
-        <span>${period.label}</span>
+        <input type="radio" name=${`${idPrefix}-period`} value=${period.value} aria-label=${period.label} data-days=${period.days} checked=${period.value === '30d'}>
+        <span aria-hidden="true"><span class="report-period-long">${period.label}</span><span class="report-period-short">${period.short}</span></span>
       </label>`)}</div>
     </fieldset>
+    <div class="report-traffic-choice">
+      <label for=${`${idPrefix}-traffic`}>Traffic</label>
+      <select id=${`${idPrefix}-traffic`} name=${`${idPrefix}-traffic`} aria-describedby=${`${idPrefix}-traffic-help`} data-traffic>
+        ${traffic.map(group => html`<option value=${group} aria-label=${COMPACT_LABELS[group] === TRAFFIC_LABELS[group] ? COMPACT_LABELS[group] : `${COMPACT_LABELS[group]}: ${TRAFFIC_LABELS[group]}`}>${COMPACT_LABELS[group]}</option>`)}
+      </select>
+      <p class="sr-only" id=${`${idPrefix}-traffic-help`}>Categories describe request signals, not verified people. Agents includes on-demand fetchers, AI search, AI crawlers and historical or unknown-role signed clients. Other crawlers includes search, SEO and preview declarations. Automation includes legacy rules.</p>
+    </div>
   </div>`;
 }

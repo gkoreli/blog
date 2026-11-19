@@ -48,6 +48,8 @@ class AgentAccessReportElement extends HTMLElement {
       if (!consistentAgentAccessReport(value)) throw new Error('Agent access report failed its consistency checks');
       if (!this.isConnected || generation !== this.generation) return;
       this.report = value; this.render();
+      const target = document.getElementById(location.hash.slice(1));
+      if (target && this.contains(target)) target.scrollIntoView({ block: 'start' });
     } catch {
       if (!this.isConnected || generation !== this.generation) return;
       this.status('Agent access is unavailable. A failed or incomplete report is not shown as zero.', 'error');

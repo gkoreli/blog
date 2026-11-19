@@ -30,6 +30,9 @@ import { researchFootprint } from '../pages/research-footprint.js';
 import { postAfterword, postPage, seriesTrailBlock, seriesTrailMarkdown } from '../pages/post.js';
 import { privacyPage } from '../pages/privacy.js';
 import { ownerPage } from '../pages/owner.js';
+import { agentAccessPage } from '../pages/agent-access.js';
+import { statsMethodPage } from '../pages/stats-method.js';
+import { STATS_VIEWS } from '../lib/stats-views.js';
 import { statsPage, statsHead } from '../pages/stats.js';
 import { articleReachPage } from '../pages/article-reach.js';
 import { aiCheckPage } from '../pages/ai-check.js';
@@ -284,10 +287,17 @@ export async function buildHTML(): Promise<void> {
   addPage('about', aboutShell);
   addPage('search', pageShell({ title: 'Search the publication', description: 'Find articles and the passages inside them.', content: searchPage(), canonicalPath: '/search', currentSlug: 'search', noindex: true, ogImage: publicationOgImage, ogImageAlt: PUBLICATION_OG_IMAGE_ALT }));
 
-  const statsBody = statsPage(allPosts.map(post => ({ path: `/${post.slug}`, title: post.title })));
-  const statsShell = pageShell({ title: 'Stats', description: 'Public analytics for gkoreli.com — transparent, cookieless', content: statsBody, canonicalPath: '/stats', currentSlug: 'stats', layout: 'report', ogImage: publicationOgImage, ogImageAlt: PUBLICATION_OG_IMAGE_ALT, head: statsHead, noindex: true });
-  addPage('stats', statsShell);
-  addPage('stats/readership', pageShell({ title: 'Browser-signal article reach', description: 'Browser-signal article reach, completed weeks and reported source concentration.', content: articleReachPage(), canonicalPath: '/stats/readership', currentSlug: 'stats', layout: 'report', noindex: true, ogImage: publicationOgImage, ogImageAlt: PUBLICATION_OG_IMAGE_ALT, head: '<link rel="stylesheet" href="/article-reach.css">', scripts: ['/article-reach.js'] }));
+  const statsCatalogue = allPosts.map(post => ({ path: `/${post.slug}`, title: post.title }));
+  for (const view of STATS_VIEWS) {
+    const content = view.id === 'agents' ? agentAccessPage() : view.id === 'reach' ? articleReachPage()
+      : view.id === 'method' ? statsMethodPage() : statsPage(statsCatalogue, view.id);
+    const head = view.id === 'reach' ? '<link rel="stylesheet" href="/article-reach.css">'
+      : view.id === 'agents' ? '<link rel="stylesheet" href="/stats.css">' : statsHead;
+    const scripts = view.id === 'agents' ? ['/agent-access.js'] : view.id === 'reach' ? ['/article-reach.js'] : [];
+    addPage(view.href.slice(1), pageShell({ title: `${view.label} · Stats`, description: view.description,
+      content, canonicalPath: view.href, currentSlug: 'stats', layout: 'report', noindex: true,
+      ogImage: publicationOgImage, ogImageAlt: PUBLICATION_OG_IMAGE_ALT, head, scripts }));
+  }
 
   addPage('tools', pageShell({ title: 'Engineering tools', description: 'Check page access, inspect request evidence, test robots rules and compare saved reports with free tools for people and agents.', content: toolsPage(), canonicalPath: '/tools', currentSlug: 'tools', ogImage: publicationOgImage, ogImageAlt: PUBLICATION_OG_IMAGE_ALT }));
   addPage('tools/request-inspector', pageShell({ title: 'Request inspector', description: 'Inspect the referrer, navigation context, client declarations and verification evidence of your incoming request.', content: requestInspectorPage(), canonicalPath: '/tools/request-inspector', currentSlug: 'tools', ogImage: publicationOgImage, ogImageAlt: PUBLICATION_OG_IMAGE_ALT, scripts: ['/request-inspector.js'] }));

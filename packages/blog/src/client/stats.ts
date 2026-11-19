@@ -1,4 +1,5 @@
-import './agent-access.js';
+import { requestTrend, sevenDayRequestAverages } from '../lib/request-trend.js';
+import { legacyStatsPath } from '../lib/stats-views.js';
 import { consistentVendorCacheSummary } from '@gkoreli/analytics/vendor-cache-summary';
 import { consistentFetchMetadataSummary } from '@gkoreli/analytics/fetch-metadata-summary';
 import { consistentVendorNetworkSummary } from '@gkoreli/analytics/vendor-network-summary';
@@ -134,9 +135,10 @@ function pushState(state: ViewState): void {
 }
 
 function updateControls(state: ViewState): void {
-  document.querySelectorAll<HTMLInputElement>('#stats-controls [data-traffic]').forEach(input => {
-    input.checked = input.value === state.traffic;
-  });
+  const traffic = document.querySelector<HTMLSelectElement>('#stats-controls select[data-traffic]');
+  if (traffic) traffic.value = state.traffic;
+  const selection = paramsForState(state).toString();
+  for (const link of document.querySelectorAll<HTMLAnchorElement>('a[data-request-link]')) link.search = selection;
   const json = document.getElementById('stats-json-link');
   if (json instanceof HTMLAnchorElement) json.href = statsApiHref(state);
   const selectedDays = state.range === 'all' ? '0' : state.range.replace('d', '');
@@ -184,9 +186,10 @@ async function fetchStats(state: ViewState, signal: AbortSignal): Promise<StatsR
   return data;
 }
 
-function getColors(): { link: string; border: string; muted: string; secondary: string } {
+function getColors() {
   const styles = getComputedStyle(document.documentElement);
   return {
+    average: styles.getPropertyValue('--color-ink-warm').trim(),
     link: styles.getPropertyValue('--color-link').trim(),
     secondary: styles.getPropertyValue('--color-accent-blue').trim(),
     border: styles.getPropertyValue('--color-border').trim(),
@@ -202,6 +205,7 @@ function translucent(hex: string): string {
   return `rgba(${red},${green},${blue},0.15)`;
 }
 
+const decimal = new Intl.NumberFormat(undefined, { maximumFractionDigits: 1 });
 const countryNames = new Intl.DisplayNames(['en'], { type: 'region' });
 function countryLabel(code: string): string {
   const special = SPECIAL_COUNTRIES[code];
@@ -247,20 +251,18 @@ function renderPeriod(period: StatsResponse['period'], series: StatsResponse['ti
   const updated = document.createElement('time'); updated.dateTime = period.updatedAt;
   updated.textContent = reportTime.instant(period.updatedAt);
   detail.append('Updated ', updated, clockNote);
-  element('stats-chart-context').textContent = `${granularity} · ${reportTime.timeZone} · ${partial}`;
-  element('stats-period').replaceChildren(dates, detail);
+  const context = document.getElementById('stats-chart-context');
+  if (context) context.textContent = `${granularity} · ${partial}`;
+  const footer = document.getElementById('stats-updated');
+  element('stats-period').replaceChildren(dates);
+  if (footer) footer.replaceChildren(detail);
+  else element('stats-period').append(detail);
   element('stats-period').hidden = false;
 }
 
 function renderTotals(totals: StatsResponse['totals']): void {
-  const values = [totals.views, totals.dailyClients];
-  element('stats-totals').querySelectorAll<HTMLElement>('.data-metric').forEach((card, index) => {
-    const value = card.querySelector<HTMLElement>('.data-metric-value');
-    const total = values[index];
-    if (!value || total === undefined) return;
-    value.className = 'data-metric-value';
-    value.textContent = formatNumber(total);
-  });
+  element('stats-request-count').textContent = formatNumber(totals.views);
+  element('stats-client-count').textContent = formatNumber(totals.dailyClients);
 }
 
 function renderScope(filters: StatsResponse['filters']): void {
@@ -376,7 +378,7 @@ function destroyChart(): void {
   chart = null;
 }
 
-function renderChartTable(data: StatsResponse): void {
+function renderChartTable(data: StatsResponse, averages: Array<number | null> | null): void {
   const container = element('stats-chart-table');
   if (data.timeSeries.length === 0) {
     container.textContent = 'No chart data for this selection.';
@@ -388,10 +390,13 @@ function renderChartTable(data: StatsResponse): void {
   const captionText = document.createElement('span');
   captionText.className = 'stats-chart-caption';
   captionText.textContent = `${data.period.granularity === 'hour' ? 'Hourly' : 'Daily'} values in ${reportTime.timeZone}. Client identifiers can repeat across buckets and their counts are not additive.`;
+  if (averages) captionText.append(' The request average covers seven completed local days ending on the indicated date.');
   caption.appendChild(captionText);
   const head = document.createElement('thead');
   const headRow = document.createElement('tr');
-  for (const text of [data.period.granularity === 'hour' ? 'Local time' : 'Local day', 'Page views', 'Client identifiers']) {
+  const columns = [data.period.granularity === 'hour' ? 'Local time' : 'Local day', 'Page requests', 'Client identifiers'];
+  if (averages) columns.push('7-day request average');
+  for (const text of columns) {
     const cell = document.createElement('th');
     cell.scope = 'col';
     cell.textContent = text;
@@ -400,10 +405,13 @@ function renderChartTable(data: StatsResponse): void {
   head.appendChild(headRow);
 
   const body = document.createElement('tbody');
-  for (const row of data.timeSeries) {
+  for (const [index, row] of data.timeSeries.entries()) {
     const tableRow = document.createElement('tr');
     const label = data.period.granularity === 'hour' ? reportTime.instant(row.bucket) : reportTime.date(row.bucket);
-    for (const text of [label, formatNumber(row.views), formatNumber(row.dailyClients)]) {
+    const values = [label, formatNumber(row.views), formatNumber(row.dailyClients)];
+    const average = averages?.[index];
+    if (averages) values.push(average == null ? '—' : decimal.format(average));
+    for (const text of values) {
       const cell = document.createElement('td');
       cell.textContent = text;
       tableRow.appendChild(cell);
@@ -420,8 +428,9 @@ function renderChart(data: StatsResponse): void {
   container.replaceChildren();
   const hourly = data.period.granularity === 'hour';
   const unit = hourly ? 'Hourly' : 'Daily';
-  container.setAttribute('aria-label', `${unit} page views and client identifiers in ${reportTime.timeZone} from ${data.period.start} through ${data.period.end}. Identifiers can repeat across buckets; their counts are not additive. ${formatViewCount(data.totals.views, true)} total.`);
-  renderChartTable(data);
+  container.setAttribute('aria-label', `${unit} page requests and client identifiers in ${reportTime.timeZone} from ${data.period.start} through ${data.period.end}. Identifiers can repeat across buckets; their counts are not additive. ${formatViewCount(data.totals.views, true)} total.`);
+  const averages = sevenDayRequestAverages(data);
+  renderChartTable(data, averages);
 
   if (data.timeSeries.length === 0) {
     const empty = document.createElement('p');
@@ -436,6 +445,7 @@ function renderChart(data: StatsResponse): void {
   const views = data.timeSeries.map(row => row.views);
   const dailyClients = data.timeSeries.map(row => row.dailyClients);
   const alignedData: uPlot.AlignedData = [timestamps, views, dailyClients];
+  if (averages) alignedData.push(averages);
   const options: uPlot.Options = {
     width: Math.max(container.clientWidth, 1),
     height: CHART_HEIGHT,
@@ -448,7 +458,7 @@ function renderChart(data: StatsResponse): void {
     series: [
       { label: hourly ? 'Time' : 'Day', value: (_plot, value, _series, index) => index === null ? '—'
         : hourly ? reportTime.instant(value * 1000) : reportTime.date(value * 1000) },
-      { label: 'Page views', stroke: colors.link, fill: translucent(colors.link), width: 2, points: { show: false } },
+      { label: 'Page requests', stroke: colors.link, fill: translucent(colors.link), width: 2, points: { show: false } },
       { label: 'Client IDs', stroke: colors.secondary, width: 1.5, dash: [6, 4], points: { show: false } },
     ],
     legend: { live: true },
@@ -457,6 +467,10 @@ function renderChart(data: StatsResponse): void {
       setCursor: [plot => { if (plot.cursor.idx === null || plot.cursor.idx === undefined) plot.setLegend({ idx: timestamps.length - 1 }); }],
     },
   };
+  if (averages) options.series.push({
+    label: '7-day average', stroke: colors.average, width: 2.5, dash: [10, 3], points: { show: false },
+    value: (_plot, value) => value == null ? '—' : decimal.format(value),
+  });
   chart = new uPlot(options, alignedData, container);
 }
 
@@ -548,11 +562,6 @@ function renderClassificationEvidenceTable(containerId: string, evidenceLabel: s
 function renderKindSignatures(data: StatsResponse, state: ViewState): void {
   renderClassificationEvidenceTable('stats-kind-signature-rows', 'Stored local signature evidence', data.byKindSignature.map(row => ({ ...row, label: SIGNATURE_BASIS_LABELS[row.basis], profileLabel: verifierProfileLabel(row.profile, data.verifierProfile.current) })), state, true);
   renderClassificationEvidenceTable('stats-native-category-rows', 'Cloudflare category evidence', data.byKindNativeCategory.map(row => ({ ...row, label: nativeCategoryLabel(row.basis) })), state);
-  const coverage = data.clientNameCoverage;
-  element('stats-client-name-coverage').innerHTML = dataFactsHtml([
-    { label: 'One selected catalogue name', value: coverage.selectedNameViews },
-    { label: 'No single selected name', value: coverage.noSelectedNameViews },
-  ]);
   const container = element('stats-client-evidence-rows');
   if (data.byKindClientEvidence.length === 0) { container.textContent = 'No requests for this selection.'; return; }
   container.innerHTML = groupedEvidenceTableHtml('Names, provider categories and local signature checks on the same requests, grouped by classification. Each request appears once.',
@@ -618,20 +627,51 @@ function renderFetchMetadata(data: StatsResponse): void {
   ]);
 }
 
-function renderDashboard(data: StatsResponse, state: ViewState): void {
-  renderPeriod(data.period,data.timeSeries);
-  renderScope(data.filters);
-  const excluded = data.referralPolicy.excludedViews;
-  const exclusionNotice = excluded > 0
-    ? ` ${formatNumber(excluded)} ${excluded === 1 ? 'observation excluded' : 'observations excluded'} by the referral-abuse policy for this selection.`
-    : '';
-  if (data.totals.views === 0 && data.internalTransitions.length === 0) {
-    setDashboardVisible(false);
-    setStatus(`No page views to show for this selection.${exclusionNotice}`, 'empty');
-    return;
-  }
-  setDashboardVisible(true);
+function renderOverview(data: StatsResponse): void {
   renderTotals(data.totals);
+  const trend = requestTrend(data);
+  const average = element('stats-average');
+  average.hidden = !trend;
+  if (trend) {
+    const label = document.createElement('span');
+    label.textContent = 'Daily average';
+    const value = document.createElement('strong');
+    value.textContent = decimal.format(trend.recent);
+    const comparison = document.createElement('span');
+    const delta = trend.recent - trend.previous;
+    const change = delta === 0 ? 'No change' : trend.previous === 0 ? 'Up from zero'
+      : `${delta > 0 ? 'Up' : 'Down'} ${new Intl.NumberFormat(undefined, { style: 'percent', maximumFractionDigits: 1 }).format(Math.abs(delta) / trend.previous)}`;
+    comparison.textContent = `${change} · previously ${decimal.format(trend.previous)}/day`;
+    comparison.className = 'stats-change';
+    const basis = document.createElement('small');
+    basis.textContent = `Last ${trend.days} complete days vs. previous ${trend.days}`;
+    average.replaceChildren(label, value, comparison, basis);
+  }
+  renderChart(data);
+  const excluded = data.referralPolicy.excludedViews;
+  element('stats-policy-note').textContent = excluded > 0
+    ? `${formatNumber(excluded)} requests excluded by the referral-abuse policy. Reports can be up to one hour old.`
+    : 'Reports can be up to one hour old.';
+}
+
+function renderPages(data: StatsResponse, state: ViewState): void {
+  replaceSectionRows('stats-pages', data.byPath.map((row) => pageItem(row, state)));
+  const referrers: RankedItem[] = data.byReferrer.map(row => ({ label: row.referrerHost, views: row.views }));
+  if (data.otherReferrerViews > 0) {
+    referrers.push({ label: 'Other reported referrers', views: data.otherReferrerViews });
+  }
+  const referrerLabels: Record<ReportedReferrerState, string> = {
+    external: 'Outside websites', internal: 'Within this blog', absent: 'No referrer sent',
+    unusable: 'Unusable referrer', 'legacy-unknown': 'Unknown — earlier collection',
+  };
+  for (const row of data.byReferrerState) {
+    if (row.state !== 'external') referrers.push({ label: referrerLabels[row.state], views: row.views });
+  }
+  replaceSectionRows('stats-referrers', referrers, null);
+  renderTransitions(data, state);
+}
+
+function renderTraffic(data: StatsResponse, state: ViewState): void {
   replaceSectionRows('stats-traffic-mix', trafficMix(data.byKind).map(row => ({
     label: row.label, views: row.views,
     href: stateHref({ ...state, traffic: row.group, agent: null, kind: null }),
@@ -648,30 +688,20 @@ function renderDashboard(data: StatsResponse, state: ViewState): void {
     segment.style.flexGrow = String(row.views);
     distribution.appendChild(segment);
   }
-  element('stats-policy-note').textContent = excluded > 0
-    ? `${formatNumber(excluded)} requests excluded by the referral-abuse policy. Reports can be up to one hour old.`
-    : 'Reports can be up to one hour old. Updated time is the report calculation time.';
+  const coverage = data.clientNameCoverage;
+  element('stats-client-name-coverage').innerHTML = dataFactsHtml([
+    { label: 'One selected catalogue name', value: coverage.selectedNameViews },
+    { label: 'No single selected name', value: coverage.noSelectedNameViews },
+  ]);
   renderClientForms(data.byClientForm, data.clientFormEvidence);
-  renderChart(data);
-  replaceSectionRows('stats-pages', data.byPath.map((row) => pageItem(row, state)));
-  const referrers: RankedItem[] = data.byReferrer.map(row => ({ label: row.referrerHost, views: row.views }));
-  if (data.otherReferrerViews > 0) {
-    referrers.push({ label: 'Other reported referrers', views: data.otherReferrerViews });
-  }
-  const referrerLabels: Record<ReportedReferrerState, string> = {
-    external: 'Outside websites', internal: 'Within this blog', absent: 'No referrer sent',
-    unusable: 'Unusable referrer', 'legacy-unknown': 'Unknown — earlier collection',
-  };
-  for (const row of data.byReferrerState) {
-    if (row.state !== 'external') referrers.push({ label: referrerLabels[row.state], views: row.views });
-  }
-  replaceSectionRows('stats-referrers', referrers, null);
-  renderTransitions(data, state);
   replaceSectionRows('stats-countries', data.byCountry.map(row => ({ label: countryLabel(row.country), views: row.views })));
   replaceSectionRows('stats-declarations', data.byAgent.map(row => ({
     label: row.agentName, views: row.views,
     href: stateHref({ ...state, agent: row.agentName, kind: null, traffic: 'all' }),
   })), null);
+}
+
+function renderEvidence(data: StatsResponse, state: ViewState): void {
   replaceSectionRows('stats-signers', data.bySigner.map(row => ({ label: row.signatureAgent, views: row.views })), null);
   const verification = data.verification;
   const groups = [
@@ -802,7 +832,27 @@ function renderDashboard(data: StatsResponse, state: ViewState): void {
   renderComposition(data, state);
   renderKindSignatures(data, state);
   renderFetchMetadata(data);
+}
 
+function renderDashboard(data: StatsResponse, state: ViewState): void {
+  renderPeriod(data.period,data.timeSeries);
+  renderScope(data.filters);
+  const excluded = data.referralPolicy.excludedViews;
+  const exclusionNotice = excluded > 0
+    ? ` ${formatNumber(excluded)} ${excluded === 1 ? 'observation excluded' : 'observations excluded'} by the referral-abuse policy for this selection.`
+    : '';
+  if (data.totals.views === 0 && data.internalTransitions.length === 0) {
+    setDashboardVisible(false);
+    setStatus(`No page views to show for this selection.${exclusionNotice}`, 'empty');
+    return;
+  }
+  setDashboardVisible(true);
+  switch (document.querySelector<HTMLElement>('[data-request-view]')?.dataset.requestView) {
+    case 'requests': renderOverview(data); break;
+    case 'pages': renderPages(data, state); break;
+    case 'traffic': renderTraffic(data, state); break;
+    case 'evidence': renderEvidence(data, state); break;
+  }
   setStatus(excluded > 0 ? `${formatNumber(excluded)} excluded by the referral-abuse policy.` : 'Report loaded.', 'ready');
   const announcement = document.createElement('span'); announcement.className = 'sr-only';
   announcement.textContent = `Showing ${formatViewCount(data.totals.views, true)}. `;
@@ -860,44 +910,63 @@ function changeSelection(nextTraffic: TrafficFilter, range: RangeFilter): void {
   void load(state);
 }
 
-document.getElementById('stats-controls')?.addEventListener('change', event => {
-  const input = event.target;
-  if (!(input instanceof HTMLInputElement) || input.type !== 'radio') return;
-  if (input.dataset.traffic !== undefined) changeSelection(parseTraffic(input.value, currentState.traffic), currentState.range);
-  else if (input.dataset.days !== undefined) changeSelection(currentState.traffic, parseRange(input.value));
-});
+function startReport(): void {
+  document.getElementById('stats-controls')?.addEventListener('change', event => {
+    const input = event.target;
+    if (input instanceof HTMLSelectElement && input.hasAttribute('data-traffic')) {
+      changeSelection(parseTraffic(input.value, currentState.traffic), currentState.range);
+    } else if (input instanceof HTMLInputElement && input.hasAttribute('data-days')) {
+      changeSelection(currentState.traffic, parseRange(input.value));
+    }
+  });
 
-element('stats-scope').addEventListener('click', event => {
-  if (!(event.target instanceof Element)) return;
-  const button = event.target.closest('button');
-  if (!(button instanceof HTMLButtonElement)) return;
-  const filter = button.dataset.clearFilter;
-  const state: ViewState = filter === 'path'
-    ? { ...currentState, path: null }
-    : filter === 'agent'
-      ? { ...currentState, agent: null }
-      : filter === 'kind'
-        ? { ...currentState, kind: null }
-        : currentState;
-  if (state === currentState) return;
-  pushState(state);
-  void load(state);
-});
+  element('stats-scope').addEventListener('click', event => {
+    if (!(event.target instanceof Element)) return;
+    const button = event.target.closest('button');
+    if (!(button instanceof HTMLButtonElement)) return;
+    const filter = button.dataset.clearFilter;
+    const state: ViewState = filter === 'path'
+      ? { ...currentState, path: null }
+      : filter === 'agent'
+        ? { ...currentState, agent: null }
+        : filter === 'kind'
+          ? { ...currentState, kind: null }
+          : currentState;
+    if (state === currentState) return;
+    pushState(state);
+    void load(state);
+  });
 
-window.addEventListener('popstate', () => {
-  const state = getState();
-  // Fragment navigation also emits popstate. Keep native section jumps in the page.
-  if (state.range === currentState.range && state.traffic === currentState.traffic
-    && state.path === currentState.path && state.agent === currentState.agent && state.kind === currentState.kind) return;
-  void load(state);
-});
+  window.addEventListener('popstate', () => {
+    const state = getState();
+    // Fragment navigation also emits popstate. Keep native section jumps in the page.
+    if (state.range === currentState.range && state.traffic === currentState.traffic
+      && state.path === currentState.path && state.agent === currentState.agent && state.kind === currentState.kind) return;
+    void load(state);
+  });
 
-new MutationObserver(() => {
-  if (currentData) renderChart(currentData);
-}).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+  const chartContainer = document.getElementById('stats-chart');
+  if (chartContainer) {
+    new MutationObserver(() => {
+      if (currentData) renderChart(currentData);
+    }).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
 
-new ResizeObserver(() => {
-  if (chart) chart.setSize({ width: Math.max(element('stats-chart').clientWidth, 1), height: CHART_HEIGHT });
-}).observe(element('stats-chart'));
+    new ResizeObserver(() => {
+      if (chart) chart.setSize({ width: Math.max(chartContainer.clientWidth, 1), height: CHART_HEIGHT });
+    }).observe(chartContainer);
+  }
+  void load(currentState);
+}
 
-void load(currentState);
+function followLegacyLink(): boolean {
+  const path = location.pathname.replace(/\/$/, '') === '/stats' && legacyStatsPath(location.hash);
+  if (!path) return false;
+  location.replace(path + location.search + location.hash);
+  return true;
+}
+
+window.addEventListener('hashchange', followLegacyLink);
+if (!followLegacyLink()) {
+  if (document.getElementById('stats-dashboard')) startReport();
+  else updateControls(currentState);
+}

@@ -1,10 +1,11 @@
+import { STATS_VIEWS } from '../lib/stats-views.js';
 import { z } from 'zod';
 
 // Public non-post routes rendered by build.ts. Article routes come
 // from the published posts.json asset, never from the incoming Referer value.
 const fixedPaths = [
   '/', '/about', '/engineering', '/essays', '/oss-radar', '/privacy', '/license',
-  '/stats', '/stats/readership', '/design-language', '/animations-lab',
+  ...STATS_VIEWS.map(view => view.href), '/design-language', '/animations-lab',
 ];
 const publicPath = z.string().regex(/^\/[a-z0-9-]+$/);
 const indexSchema = z.array(z.object({ url: publicPath }));

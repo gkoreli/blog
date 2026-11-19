@@ -1,6 +1,9 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { renderContent } from '../src/lib/ssg.js';
+import { statsMethodPage } from '../src/pages/stats-method.js';
+import { legacyStatsPath } from '../src/lib/stats-views.js';
+import { requestTrend, sevenDayRequestAverages } from '../src/lib/request-trend.js';
 import { statsPage } from '../src/pages/stats.js';
 import { dataFactsHtml, groupedEvidenceTableHtml, metricTileHtml, rankedRowHtml } from '../src/lib/data-display.js';
 import { classificationReasonLabel, requestContextRows, trafficMix } from '../src/lib/stats-presentation.js';
@@ -35,25 +38,22 @@ test('classification labels retain compound evidence without leaking diagnostic 
 test('Stats puts the trend before detail, labels its native filters and preserves navigable visible results', async () => {
   const [snapshot] = await renderContent([statsPage([{ path: '/example', title: 'Example <title>' }])]); assert.ok(snapshot);
   const root = document.createElement('div'); root.innerHTML = snapshot;
-  const traffic = root.querySelector('fieldset#stats-traffic'); assert.ok(traffic);
-  assert.equal(traffic.querySelector('legend')?.textContent, 'Traffic');
-  assert.deepEqual(Array.from(traffic.querySelectorAll('input[type="radio"]'), input => input.getAttribute('value')), ['all', 'browser', 'agents', 'crawlers', 'automation', 'unresolved']);
-  assert.equal(traffic.querySelectorAll('input[checked]').length, 1);
-  assert.equal(traffic.querySelector('input[checked]')?.getAttribute('value'), 'all');
+  const traffic = root.querySelector('select#stats-traffic'); assert.ok(traffic);
+  assert.equal(root.querySelector('label[for="stats-traffic"]')?.textContent, 'Traffic');
+  assert.deepEqual(Array.from(traffic.querySelectorAll('option'), option => option.getAttribute('value')), ['all', 'browser', 'agents', 'crawlers', 'automation', 'unresolved']);
   assert.match(root.querySelector('#stats-traffic-help')?.textContent ?? '', /request signals, not verified people/);
   assert.equal(root.querySelectorAll('[data-days]').length, 4);
   assert.equal(root.querySelector('[data-days][checked]')?.getAttribute('value'), '30d');
-  assert.ok(snapshot.indexOf('id="stats-activity"') < snapshot.indexOf('id="stats-client-form-section"'));
-  assert.ok(snapshot.indexOf('id="stats-activity"') < snapshot.indexOf('id="stats-pages"'));
-  assert.equal(root.querySelectorAll('.data-metric').length, 2);
-  for (const link of root.querySelectorAll('.stats-navigation a')) {
-    const target = link.getAttribute('href'); assert.ok(target); assert.ok(root.querySelector(target));
-  }
-  for (const id of ['stats-pages', 'stats-traffic-mix', 'stats-client-form-section', 'stats-kind-signature', 'stats-client-evidence', 'stats-vendor-cache', 'stats-vendor-cache-access', 'stats-vendor-cache-policy']) {
-    const section = root.querySelector(`#${id}`); assert.ok(section); assert.equal(section.closest('details'), null);
-  }
+  assert.ok(root.querySelector('#stats-chart'));
+  assert.ok(root.querySelector('#stats-request-count'));
+  assert.ok(root.querySelector('#stats-client-count'));
+  assert.equal(root.querySelector('.stats-chapter, .stats-methodology, agent-access-report'), null);
+  assert.equal(root.querySelector('.stats-views a[aria-current]')?.getAttribute('href'), '/stats');
+  assert.equal(root.querySelectorAll('.stats-views a').length, 7);
   assert.ok([...root.querySelectorAll('noscript')].some(element => /30-day report as JSON/.test(element.textContent ?? '')));
-  assert.match(snapshot, /Rotating identifiers, not people/);
+  assert.match(snapshot, /Identifiers rotate/);
+  const [pages] = await renderContent([statsPage([{ path: '/example', title: 'Example <title>' }], 'pages')]);
+  assert.ok(pages); root.innerHTML = pages;
   assert.equal(root.querySelector('#stats-page-catalogue a[href="/example"]')?.textContent, 'Example <title>');
   assert.equal(root.querySelector('#stats-page-catalogue')?.hasAttribute('hidden'), true);
 });
@@ -116,8 +116,16 @@ test('request context transpose preserves all 28 parsing facts, including zero a
 });
 
 test('Stats preserves each evidence section and keeps its complete reading notes after the results', async () => {
-  const [snapshot] = await renderContent([statsPage()]); assert.ok(snapshot);
-  const root = document.createElement('div'); root.innerHTML = snapshot;
+  const root = document.createElement('div');
+  const reports = await renderContent([statsPage([], 'pages'), statsPage([], 'traffic'), statsPage([], 'evidence'), statsMethodPage()]);
+  for (const snapshot of reports) {
+    const page = document.createElement('div'); page.innerHTML = snapshot;
+    const path = page.querySelector('a[aria-current="page"]')?.getAttribute('href');
+    for (const target of page.querySelectorAll('.stats-chapter[id], .stats-chapter [id], .stats-methodology[id], .stats-method-topic[id]')) {
+      assert.equal(legacyStatsPath('#' + target.id), path, target.id);
+    }
+    root.append(page);
+  }
   const ids = ['stats-pages', 'stats-referrers', 'stats-transitions', 'stats-previous-pages', 'stats-next-pages',
     'stats-traffic-mix', 'stats-client-form-section', 'stats-countries', 'stats-declarations', 'stats-composition',
     'stats-fetch-metadata', 'stats-kind-signature', 'stats-client-evidence', 'stats-signers', 'stats-verification-outcomes',
@@ -139,4 +147,26 @@ test('Stats preserves each evidence section and keeps its complete reading notes
   assert.match(root.querySelector('#stats-method-sources')?.textContent ?? '', /These observations do not establish complete journeys/);
   assert.match(root.querySelector('#stats-method-history')?.textContent ?? '', /These version boundaries can change series without traffic changing/);
   assert.match(root.querySelector('#stats-method-verification')?.textContent ?? '', /do not keep a nonce replay database/);
+});
+
+test('daily request averages compare completed local dates across the fall clock change', () => {
+  const period = { start: '2026-10-29', end: '2026-11-04', timeZone: 'America/Los_Angeles', granularity: 'hour' as const,
+    startInclusive: '2026-10-29T07:00:00.000Z', endExclusive: '2026-11-05T08:00:00.000Z', updatedAt: '2026-11-04T18:00:00.000Z' };
+  const timeSeries = Array.from({ length: 156 }, (_, i) => ({
+    bucket: new Date(Date.parse(period.startInclusive) + i * 3_600_000).toISOString(),
+    views: i >= 145 ? 500 : 1, dailyClients: 1,
+  }));
+  assert.deepEqual(requestTrend({ period, timeSeries }), { days: 3, previous: 24, recent: 73 / 3 });
+  assert.equal(requestTrend({ period, timeSeries: [] }), null);
+  assert.deepEqual(requestTrend({ period, timeSeries: timeSeries.map(row => ({ ...row, views: 0 })) }), { days: 3, previous: 0, recent: 0 });
+});
+
+test('the daily trend line starts after seven recorded days and omits today’s partial point', () => {
+  const period = { start: '2026-11-01', end: '2026-11-09', timeZone: 'UTC', granularity: 'day' as const,
+    startInclusive: '2026-11-01T00:00:00.000Z', endExclusive: '2026-11-10T00:00:00.000Z', updatedAt: '2026-11-09T12:00:00.000Z' };
+  const timeSeries = Array.from({ length: 9 }, (_, i) => ({
+    bucket: new Date(Date.parse(period.startInclusive) + i * 86_400_000).toISOString(), views: i, dailyClients: 1,
+  }));
+  assert.deepEqual(sevenDayRequestAverages({ period, timeSeries }), [null, null, null, null, null, null, 3, 4, null]);
+  assert.equal(sevenDayRequestAverages({ period: { ...period, granularity: 'hour' }, timeSeries }), null);
 });

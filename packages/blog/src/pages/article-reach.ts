@@ -1,13 +1,14 @@
 import { html } from '@nisli/core';
+import { statsHeader } from '../templates/stats-header.js';
 import { reportScopeFacts } from '../templates/report-context.js';
 
 export function articleReachPage() {
-  return html`<article class="article-reach">
+  return html`<article class="stats-page article-reach">
+    ${statsHeader('reach')}
     <header>
-      <h1>Browser-signal article reach</h1>
+      <h2>Browser-signal article reach</h2>
       <p>Which articles attract requests, and how much depends on one reported source?</p>
       ${reportScopeFacts([{ label: 'Window', value: 'Four completed weeks' }, { label: 'Calendar', value: 'Your timezone' }, { label: 'Request category', value: 'Browser signals' }])}
-      <nav class="reach-header-links" aria-label="Report resources"><a id="reach-json-link" href="/api/readership">Report JSON</a></nav>
     </header>
     <p id="reach-status" role="status" aria-atomic="true">Loading the report…</p>
     <noscript><p>The report is also available through the JSON link above. Its dates, counts and evidence limits are included there.</p></noscript>
@@ -17,7 +18,7 @@ export function articleReachPage() {
         <h2 id="reach-overview-heading">Where article requests come from</h2>
         <div id="reach-overview" class="data-metrics data-metrics--summary reach-metrics"></div>
       <p class="stats-section-note">Four completed seven-day periods of stored Browser signals, using your timezone. These requests can come from people, automated browsers or relays. They do not measure reading or identify readers.</p>
-      <p class="stats-section-note">This is one request category, not the whole audience. People may use agents to discover and use the articles; their access is part of our reach. <a href="/stats#stats-agent-access">Agent access report</a> · <a href="/stats?traffic=all">All audience access</a> · <a href="/stats?traffic=agents">AI and signed clients</a> · <a href="/stats?traffic=crawlers">Other crawler access</a></p>
+      <p class="stats-section-note">This is one request category, not the whole audience. People may use agents to discover and use the articles; their access is part of our reach. <a href="/stats/agent-access">Agent access report</a> · <a href="/stats?traffic=all">All audience access</a> · <a href="/stats?traffic=agents">AI and signed clients</a> · <a href="/stats?traffic=crawlers">Other crawler access</a></p>
         <p class="stats-section-note">External referrers suggest discovery; internal referrers describe navigation within this blog. An absent referrer leaves origin unknown. Unknown evidence includes unusable, inconsistent or earlier merged records. None is a count of newly acquired readers.</p>
       </section>
       <section class="stats-section" aria-labelledby="reach-concentration-heading">

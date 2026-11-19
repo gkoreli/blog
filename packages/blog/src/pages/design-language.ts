@@ -164,8 +164,8 @@ export function designLanguagePage() {
   <h3 class="dl-pattern-title">A report owns its scope</h3>
   <p class="dl-body-note">Calendar, window and selection ownership belong beside each report's controls. Independent reports stay visibly bounded. Localizing an instant does not change the calendar used to aggregate its data. This scope is illustrative.</p>
   ${reportContextHeading({ id: 'dl-scope-heading', title: 'Example access report', description: 'A separate report with its own selections and explicit completed-day calendar.', scope: [{ label: 'Window', value: '28 completed days' }, { label: 'Calendar', value: 'UTC reporting days' }, { label: 'Controls in this report', value: 'Article, client and role' }] })}
-  <h3 class="dl-pattern-title" id="report-filters">Visible report filters</h3>
-  <p class="dl-body-note">Keep a short set of choices visible. Use native radio groups, a quiet selected surface and 44px hit areas around compact labels. Traffic and period stay independent. Agents includes assistants and signed clients; Automation includes legacy rules. The full category names and evidence boundaries belong with the report results. These controls illustrate selection without fetching data.</p>
+  <h3 class="dl-pattern-title" id="report-filters">Report filters</h3>
+  <p class="dl-body-note">Keep the period choices visible for quick comparisons. A compact traffic selector shows the current category. Both controls use native keyboard interaction.</p>
   ${reportFilters('dl-example')}
   <h3 class="dl-pattern-title">Metrics with a definition</h3>
   <p class="dl-body-note">Keep the label, number and unit definition together. Use compact tiles for related totals, with tabular numerals and a short explanation. Show scope and calculation time beside the report. Within one reporting context, dates and buckets use its stated calendar; instant labels use the shared time core. These figures are illustrative.</p>

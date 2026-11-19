@@ -1,5 +1,7 @@
 # Agent access: the next Stats direction
 
+November 19, 2026. The Stats landing view follows overall page requests. [Agent access](https://gkoreli.com/stats/agent-access) has a dedicated route for its completed-week comparisons and evidence. The November 14 milestone below records the original combined presentation.
+
 November 14, 2026 UTC. Agent-mediated reach and use are the selected near-term priority for Stats. This supersedes the generic build order in the [earlier reader-understanding investigation](stats-reader-understanding-2026-11-14.md); its dated observation remains intact. The first milestone is shipped and accepted below. Later collection expansion and provider trials remain proposals.
 
 [ADR-0016.19](../../adr/0016.19-agent-mediated-audience-growth.md) already recognizes agent reach, discovery, citations and supported use as outcomes. The next work should connect the existing evidence to articles and publishing decisions, with each observation stage identifiable.
@@ -106,3 +108,9 @@ Analytics package source 0.6 adds a comparison to the existing exploration inter
 Source `16037a6c` is active on Worker `31aa2cb3-ff9d-45aa-945f-9d0bd4b4b684`. The [acceptance receipt](agent-access-week-comparison-2026-11-18.json) records 4,700 equal preexisting selection results on the saved report, the two complete change partitions and fresh production checks. Browser validation found wide shared table cells that hid counts. The comparison now fits their labels and numbers together down to 320 pixels. Checks cover responsive layout, keyboard disclosure, focus after client selection and Clear, and steady or empty weeks. The actual live report showed 1,389 and 1,312 events across the two weeks. Selecting ShapBot showed 84 and 247. These are recorded events grouped by a stored declaration.
 
 The comparison uses retained observations and adds no collection, migration or report query. The next bounded capture proposal is still the served revision and registered evidence access from the second milestone. An independent operator can test whether the existing starter and comparison explain a concrete change before more collection is enabled.
+
+## November 19 dashboard navigation
+
+Page requests opens with its selected-period total, a completed-day average comparison and the time series. Daily charts also show a trailing seven-day request average. The average excludes the open local day and the comparison uses equal windows within the selection. Pages and sources, traffic mix, evidence and method have dedicated views. Agent access and Article reach retain their independent calendars, controls and data endpoints.
+
+Local acceptance used the built site and saved public aggregates. All seven views opened at 390px without document overflow. The full plot fit the 390 × 844 overview, and the 320px overview stayed within the viewport. The desktop chart was checked in both themes. An unavailable filter selection showed the retry control, Back restored the preceding chart, and the previous weekly-change bookmark opened its original section on the dedicated report. The presentation tests cover DST, the partial day, chart warm-up and the relocated detail anchors.

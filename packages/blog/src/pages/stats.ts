@@ -1,9 +1,8 @@
-import { html, raw } from '@nisli/core';
-import { metricTileHtml } from '../lib/data-display.js';
+import { html } from '@nisli/core';
 import { dataNote } from '../templates/data-note.js';
 import { reportFilters } from '../templates/report-filters.js';
-import { sectionNavigation } from '../templates/section-navigation.js';
-import { reportContextHeading } from '../templates/report-context.js';
+import type { RequestView } from '../lib/stats-views.js';
+import { statsHeader } from '../templates/stats-header.js';
 
 export const statsHead = `<link rel="stylesheet" href="/stats.css">
   <script type="module" src="/stats.js"></script>`;
@@ -16,60 +15,29 @@ function listHeading(label: string) {
   return html`<div class="data-row-head" aria-hidden="true"><span>${label}</span><span>Views</span></div>`;
 }
 
-export function statsPage(pages: readonly { path: string; title: string }[] = []) {
-  const catalogue = [{ path: '/', title: 'Homepage' }, { path: '/about', title: 'About' }, { path: '/tools', title: 'Engineering tools' }, { path: '/engineering', title: 'Engineering' }, { path: '/essays', title: 'Essays' }, { path: '/stats', title: 'Stats' }, ...pages];
-  return html`<article class="stats-page">
-  <header class="stats-header">
-    <div><h1>Stats</h1><p class="stats-intro">Agent access, traffic and the evidence behind each request.</p></div>
-    <nav class="stats-header-links" aria-label="Related reports"><a href="/stats/readership">Article reach</a><a id="stats-json-link" href="/api/stats?range=30d&amp;traffic=all">Report JSON</a></nav>
-  </header>
-  ${sectionNavigation('Report views', [{ href: '#stats-agent-access', label: 'Agent access' }, { href: '#stats-page-requests', label: 'Page requests' }], { className: 'report-view-navigation' })}
-  <agent-access-report class="report-context agent-access-report" id="stats-agent-access" aria-labelledby="agent-access-heading">
-    ${reportContextHeading({ id: 'agent-access-heading', title: 'Agent access', description: 'Which work AI fetchers, search clients, crawlers and historical signed clients access, in which served format. Names and roles describe stored request evidence.', scope: [{ label: 'Window', value: '28 completed days' }, { label: 'Calendar', value: 'UTC reporting days' }, { label: 'Controls in this report', value: 'Article, client and role' }] })}
-    ${sectionNavigation('Agent access sections', [{ href: '#agent-access-summary', label: 'Overview' }, { href: '#agent-access-change', label: 'Weekly change' }, { href: '#agent-access-weeks', label: 'Four weeks' }, { href: '#agent-access-articles', label: 'Articles' }, { href: '#agent-access-clients', label: 'Clients' }, { href: '#agent-access-coverage', label: 'Coverage' }, { href: '#agent-access-evidence', label: 'Evidence' }, { href: '#agent-access-history', label: 'History' }], { className: 'agent-access-navigation', currentHref: '#agent-access-summary', hidden: true })}
-    <div data-agent-overview id="agent-access-summary"></div>
-    <form class="agent-access-form"><fieldset data-agent-controls disabled><legend>Select agent access</legend><div class="agent-access-selects">
-      <label>Article and registered evidence<select data-agent-article-select name="agent-article"><option value="">All articles and site resources</option></select></label>
-      <label>Client declaration<select data-agent-client-select name="agent-client"><option value="">All client declarations</option></select></label>
-      <button type="button" data-agent-clear disabled>Clear selections</button></div>
-      <fieldset class="agent-access-roles report-filter"><legend>Declared role</legend><div class="report-options"><label class="report-option"><input type="radio" name="agent-role" data-agent-role value="" checked aria-label="All roles"><span>All roles <small data-agent-role-count></small></span></label><label class="report-option"><input type="radio" name="agent-role" data-agent-role value="ai-assistant" aria-label="On-demand fetcher declarations"><span>On-demand <small data-agent-role-count></small></span></label><label class="report-option"><input type="radio" name="agent-role" data-agent-role value="ai-search" aria-label="AI-search declarations"><span>AI search <small data-agent-role-count></small></span></label><label class="report-option"><input type="radio" name="agent-role" data-agent-role value="ai-crawler" aria-label="AI-crawler declarations"><span>AI crawlers <small data-agent-role-count></small></span></label><label class="report-option"><input type="radio" name="agent-role" data-agent-role value="signed-agent" aria-label="Signed clients — historical or unknown role"><span>Signed fallback <small data-agent-role-count></small></span></label></div></fieldset>
-      <p class="agent-access-filter-note">Counts beside choices cover the other two selections. Article choices include registered evidence.</p>
-    </fieldset></form>
-    <p data-agent-status class="agent-access-selection" role="status" aria-live="polite" aria-atomic="true">Loading the completed-day agent access report…</p>
-    <button type="button" data-agent-retry hidden>Retry agent access</button>
-    <div id="agent-access-change" data-agent-results></div>
-    <p class="agent-access-note"><a href="/api/agent-access">Agent access JSON</a> · Current collection covers eligible served pages. Citation and answer-use observations are separate outcomes.</p>
-    <noscript><p>Enable JavaScript to select articles and clients, or open the agent access JSON report.</p></noscript>
-  </agent-access-report>
-  <section class="report-context" id="stats-page-requests" aria-labelledby="page-requests-heading">
-  ${reportContextHeading({ id: 'page-requests-heading', title: 'Page requests', description: 'Recorded page requests across the selected traffic categories. The filters in this report apply to its overview, rankings and evidence.', scope: [{ label: 'Window', value: 'Selected period' }, { label: 'Calendar', value: 'Your timezone' }, { label: 'Controls in this report', value: 'Traffic, period and page' }] })}
-  ${sectionNavigation('Page request sections', [{ href: '#stats-activity', label: 'Overview' }, { href: '#stats-content', label: 'Pages' }, { href: '#stats-audience', label: 'Traffic' }, { href: '#stats-evidence', label: 'Evidence' }, { href: '#stats-methodology', label: 'Method' }], { className: 'stats-navigation', currentHref: '#stats-activity' })}
-  ${reportFilters('stats')}
-  <p class="stats-status" id="stats-status" role="status" aria-atomic="true">Loading stats…</p>
-  <div class="stats-loading" id="stats-loading" aria-hidden="true"><div class="stats-loading-metrics"><div class="skeleton"></div><div class="skeleton"></div></div><div class="skeleton stats-loading-chart"></div></div>
-  <noscript><style>.stats-loading,.stats-status,#stats-dashboard{display:none}</style><p>JavaScript loads this interactive report. <a href="/api/stats?range=30d&amp;traffic=all">Read the 30-day report as JSON</a>, or use the measurement notes below.</p></noscript>
-  <p class="stats-scope" id="stats-scope" hidden></p>
-  <div id="stats-page-catalogue" hidden>${catalogue.map(page => html`<a href=${page.path}>${page.title}</a>`)}</div>
-  <div id="stats-dashboard" aria-busy="true">
-    <section class="stats-overview" id="stats-activity" aria-label="Traffic overview">
-    <div class="stats-period" id="stats-period" hidden></div>
-    <div class="data-metrics stats-totals" id="stats-totals" html:inner=${raw([
-      metricTileHtml({label:'Page views',value:null,detail:'Recorded page requests'}),
-      metricTileHtml({label:'Client identifiers',value:null,detail:'Rotating identifiers, not people'}),
-    ].join(''))}></div>
+function requestsPanel() {
+  return html`<section class="stats-overview" id="stats-activity" aria-label="Traffic overview">
+    <div class="stats-totals">
+      <div class="stats-primary-total"><span>Page requests</span><strong id="stats-request-count">—</strong></div>
+      <div class="stats-average" id="stats-average" hidden></div>
+    </div>
     <section class="stats-chart-section" aria-labelledby="stats-chart-heading">
-      <div class="stats-chart-heading"><h2 id="stats-chart-heading">Page views over time</h2><span id="stats-chart-context">Local time · recorded page requests</span></div>
+      <div class="stats-chart-heading"><h2 id="stats-chart-heading">Page requests over time</h2><span id="stats-chart-context">Local time · recorded page requests</span></div>
       <div class="stats-chart" id="stats-chart" role="img" aria-label="Loading page views chart">
         <div class="skeleton skeleton-chart"></div>
       </div>
+      <p class="stats-client-total"><strong id="stats-client-count">—</strong> client identifiers during this period. Identifiers rotate and can repeat across buckets.</p>
       <details class="stats-chart-data">
         <summary>View chart as a table</summary>
         <div id="stats-chart-table" role="region" aria-label="Chart values; scroll horizontally if needed" tabindex="0"><div class="skeleton skeleton-row"></div></div>
       </details>
-      <p class="stats-report-note" id="stats-policy-note"></p>
+      <footer class="stats-report-note"><span id="stats-policy-note"></span> <span id="stats-updated"></span></footer>
     </section>
-    </section>
-    <section class="stats-chapter" id="stats-content" aria-labelledby="stats-content-heading"><header class="data-section-heading"><span class="data-section-number" aria-hidden="true">01</span><div><h2 id="stats-content-heading">Pages &amp; sources</h2><p>Where recorded requests went, and the referrers they reported.</p></div></header>
+    </section>`;
+}
+
+function pagesPanel() {
+  return html`<section class="stats-chapter" id="stats-content" aria-labelledby="stats-content-heading"><header class="data-section-heading"><div><h2 id="stats-content-heading">Pages &amp; sources</h2><p>Where recorded requests went, and the referrers they reported.</p></div></header>
     <section class="stats-section" id="stats-pages">
       <h3>Top pages</h3><div class="data-row-head data-row-head--visitable" aria-hidden="true"><span>Page</span><span>Views</span><span>Visit</span></div>
       <div class="stats-section-results">${listSkeleton(3)}</div>
@@ -94,8 +62,11 @@ export function statsPage(pages: readonly { path: string; title: string }[] = []
       <div class="stats-section-results">${listSkeleton(2)}</div>
     </section>
     </div><p class="stats-transition-details" id="stats-transition-details"></p>
-    </section>
-    <section class="stats-chapter" id="stats-audience" aria-labelledby="stats-audience-heading"><header class="data-section-heading"><span class="data-section-number" aria-hidden="true">02</span><div><h2 id="stats-audience-heading">Request signals</h2><p>Traffic categories, software claims and network locations. None identifies a person or physical device.</p></div></header>
+    </section>`;
+}
+
+function trafficPanel() {
+  return html`<section class="stats-chapter" id="stats-audience" aria-labelledby="stats-audience-heading"><header class="data-section-heading"><div><h2 id="stats-audience-heading">Request signals</h2><p>Traffic categories, software claims and network locations. None identifies a person or physical device.</p></div></header>
     <section class="stats-section" id="stats-traffic-mix"><h3>Traffic mix</h3><div class="stats-distribution" id="stats-distribution" aria-hidden="true"></div><div class="data-row-head" aria-hidden="true"><span>Request category</span><span>Views · share</span></div><div class="stats-section-results">${listSkeleton(5)}</div>
       ${dataNote(html`<p>These five groups add up to the selected total. They describe request signals and declared roles, including agent access.</p>`, 'Five groups, one total')}
     </section>
@@ -120,8 +91,11 @@ export function statsPage(pages: readonly { path: string; title: string }[] = []
       <h4 class="data-facts-label">Name coverage · adds up to the selected total</h4><dl class="data-facts" id="stats-client-name-coverage" aria-label="Catalogue name coverage"></dl>
       ${dataNote(html`<p>Names come from this site’s catalogue of crawlers, tools and services. Browser-family signals are reported separately and do not identify the operator.</p><p>A missing selected name can mean no catalogue match, several competing names, or earlier missing data. It does not identify a person or tell us whether a signer is known. The two coverage counts add up to the selected total.</p>`, 'Names and missing evidence')}
     </section>
-    </section>
-    <section class="stats-chapter" id="stats-evidence" aria-labelledby="stats-evidence-heading"><header class="data-section-heading"><span class="data-section-number" aria-hidden="true">03</span><div><h2 id="stats-evidence-heading">Evidence behind the categories</h2><p>Stored classifications, signatures and network checks, with missing and historical evidence kept explicit.</p></div></header>
+    </section>`;
+}
+
+function evidencePanel() {
+  return html`<section class="stats-chapter" id="stats-evidence" aria-labelledby="stats-evidence-heading"><header class="data-section-heading"><div><h2 id="stats-evidence-heading">Evidence behind the categories</h2><p>Stored classifications, signatures and network checks, with missing and historical evidence kept explicit.</p></div></header>
     <nav class="stats-evidence-index" aria-label="Evidence sections"><a href="#stats-composition">Classification rules</a><a href="#stats-fetch-metadata">Request context</a><a href="#stats-kind-signature">Signatures &amp; names</a><a href="#stats-vendor-network">Network checks</a><a href="#stats-vendor-cache">Cache diagnostics</a><a href="#stats-verification">Verification coverage</a><a href="#stats-native-category">Provider categories</a></nav>
     <section class="stats-section" id="stats-composition">
       <h3>Request classifications</h3>
@@ -199,18 +173,25 @@ export function statsPage(pages: readonly { path: string; title: string }[] = []
       <div class="data-table-region" id="stats-native-category-rows" role="region" aria-label="Provider category evidence; scroll horizontally if needed" tabindex="0">${listSkeleton(3)}</div>
       ${dataNote(html`<p>Categories can be available without native verification booleans. They are Cloudflare’s classification, not our signature verdict or proof of a human trigger. Empty, unavailable and earlier unrecorded values stay distinct. Each included event appears once.</p>`, 'Provider categories are separate evidence')}
     </section>
-    </section>
-  </div>
+    </section>`;
+}
 
-  <aside class="stats-methodology" id="stats-methodology" aria-labelledby="stats-methodology-heading">
-    <h2 id="stats-methodology-heading">What these numbers mean</h2>
-    <nav class="stats-method-navigation" aria-label="Measurement topics"><a href="#stats-method-counting">Counting & freshness</a><a href="#stats-method-sources">Referrers & page transitions</a><a href="#stats-method-categories">Categories & declared names</a><a href="#stats-method-history">Collection & classifier history</a><a href="#stats-method-verification">Signatures & provider evidence</a></nav>
-    <section class="stats-method-topic" id="stats-method-counting"><h3>Counting & freshness</h3><p>People and agents are part of this publication’s audience. All includes every recorded request category. Browser signals can come from browsers, automated clients or relays; they do not identify people.</p><p>A page view is one recorded page event. Since the August 26, 2026 cutover, that means a successful, non-prefetch GET that served HTML or the Markdown twin of a page at the edge. API requests, assets, redirects, errors, feeds, and other non-page responses do not count. Recording is best effort. Rows marked as mine are excluded from public queries, but that marking depends on server-side configuration and is not currently proven for all of my requests.</p><p>A daily client is a per-day pseudonymous identifier, not a person. Edge observations use a secret HMAC over the site, UTC date, IP address, and User-Agent; historical beacon rows use their original daily identifiers. Neither method establishes the same client across dates, devices, or networks. Client-identifier counts across hourly or daily buckets are not additive.</p><p>Reports can be up to one hour old. The updated time shows when a report was calculated; changing a filter may select a report calculated at a different time. Report dates, hourly and daily buckets, and timestamps use your browser’s timezone. Stored instants remain UTC. Client identifiers still rotate on UTC dates; a local day can span two rotations, so identifier counts across buckets are not additive.</p></section>
-    <section class="stats-method-topic" id="stats-method-sources"><h3>Referrers & page transitions</h3><p>Reported referrers describe each page request. Within this blog means an internal referrer was sent; No referrer sent means the header was absent or empty; Unusable referrer means a value was received but could not supply a supported hostname. Unknown — earlier collection covers historical records where those cases were merged. These categories are not a count of first-time arrivals.</p><p>Internal means this publication’s normalized hostname grouping, including its www alias; it is broader than browser same-origin. New origin-only/root referrers have no recorded source path. Historical / sources may mean the homepage or a path removed by referrer policy. Unusable includes unsupported legitimate HTTP forms as well as malformed values.</p><p>Page transitions use recognized public internal paths, with query strings and fragments removed. Select a page to see both previous and next blog pages. Time and traffic filters apply to the request for the destination page. Repeated requests count again; same-page referrals are separate. These observations do not establish complete journeys, exits, or a conversion rate. <a href="https://matomo.org/faq/reports/transitions-analyze-the-previous-and-following-actions-of-your-visitors-for-each-page/">Page-transition prior art</a>.</p><p>Referrers are claims supplied with requests and can be fabricated. Only reviewed hostnames are named here; other names are grouped as Other reported referrers, without treating unfamiliar sources as bots. A pinned Matomo spam list and reviewed local rules exclude matching observations from every public metric, including All; the excluded count is shown for your selection. Referral evidence is retained. These rules also apply to past dates, so reported history can change when the policy changes. An approved name does not prove a genuine referral. <a href="https://github.com/gkoreli/blog/blob/main/docs/adr/0016.6-versioned-referral-policy-and-matomo-source.md">Referral-abuse policy</a>.</p></section>
-    <section class="stats-method-topic" id="stats-method-categories"><h3>Categories & declared names</h3><p>Reports use stored classifications and their reasons. Browser signals match this site's stored browser rules; controlled curl requests have matched them too. AI &amp; signed clients contains declared on-demand fetchers, AI-search and AI-crawler roles, and the historical or unknown-role signed-client fallback. Other crawlers contains search-engine, SEO/site-audit and link-preview declarations. Automation contains hosting-network browsers, headless browsers, HTTP clients, generic bot tokens and older browser claims. Unresolved also includes missing or unrecognized stored classifications, with that provenance shown explicitly. A known classification with a missing or empty reason stays in its kind and is labelled accordingly. These five groups are disjoint and add up to All; none is a verified-human partition. The composition must reconcile with the headline. Client declarations and verified-key outcomes are separate evidence; neither proves human reading or purpose.</p><p>From October 26, 2026 UTC, a known declared client role is retained even when a signature verifies. ExaUser is an on-demand-fetcher declaration; ExaSearchBot is an AI-search declaration; AhrefsBot and AhrefsSiteAudit are SEO/site-audit crawler declarations. Signing outcomes are reported separately and can overlap these kinds. Reviewed signing origins have public service names; all other origins are grouped as Other and stay private. AI &amp; signed clients includes on-demand fetcher, AI-search and AI-crawler declarations plus signed clients whose role is unknown. The reporting groups changed November 14, 2026; stored roles and original observations were not rewritten. Stored historical values remain unchanged; missing and unrecognized kinds are projected into Unresolved for reporting. The signature/provider tables keep their separate missing-kind marker. Neither a declared role nor key verification authenticates a request's purpose or human trigger.</p><p>New named declarations use exact lexical product boundaries and reviewed aliases. All matching names/products and their category agreement are retained separately. Multiple names with one common category retain that declared category without selecting an identity; different categories yield Unresolved. A signature does not resolve an ambiguous declaration. Slackbot-LinkExpanding and Slack-ImgProxy are distinct from general-purpose Slackbot. Earlier Slackbot preview-group rows remain filterable without rewriting them.</p><p>Hosting-list membership remains a local grouping rule, independent of request shape. It does not prove automated operation, and absence from the list does not prove human operation. We deliberately keep known consumer relay/VPN networks outside that list. Fetch Metadata describes request context; its absence is not a universal automation verdict. A client declaration, native assessment or crawler match establishes neither indexing, citation nor human attention.</p></section>
-    <section class="stats-method-topic" id="stats-method-history"><h3>Collection & classifier history</h3><p>From October 27, 2026 classifier version 2026-10-27.2, new rows labelled Browser signals require a recognized browser-family product claim, navigation/document Fetch Metadata, an Accept that admits HTML, an Accept-Language, and available network evidence outside the hosting list. This rule describes matched signals and does not authenticate an engine or operator. From October 29, parsing preserves case and distinguishes absent, invalid, unrecognized and over-budget fields; valid Item parameters are accepted. Earlier records remain unassessed in the parsing table. Missing network evidence, an unrecognized browser claim, missing or unrecognized Fetch Metadata, and a same-origin claim with an external referrer can yield Unresolved. A network-list nonmatch establishes neither a residential source nor a known operator.</p><p>Historical categories retain their original rules: before August 26, 2026, browser beacons; August 26–September 3, User-Agent-only edge classification; September 3 until the new classifier, navigation headers and a hosting-list nonmatch that could include missing network data. Earlier missing Fetch Metadata and old-browser classifications remain in Automation & legacy rules. These version boundaries can change series without traffic changing. The old navigation reason now explicitly describes unlisted or unavailable networks.</p></section>
-    <section class="stats-method-topic" id="stats-method-verification"><h3>Signatures & provider evidence</h3><p>From October 27, 2026 UTC, new observations retain derived local signature coverage and any available native verified-bot/signed-agent booleans. Earlier rows have no such record. Unavailable native fields remain unknown, not false. A verified signature authenticates only covered components against a key. Host-only request binding means authority is covered without method, path, full URL or query coverage; other headers may still be covered. We enforce expiry and a maximum one-day signature lifetime, but do not keep a nonce replay database. A changed unsigned User-Agent can change a declared role without invalidating the signature. Neither local/native differences nor a successful signature establish authorization, benign intent, indexing, citation or human readership.</p><p>Later October 27 observations also retain Cloudflare’s category using a reviewed vocabulary. Empty, unavailable, unrecognized and earlier unrecorded values stay distinct. A category does not establish which native verification method ran. </p><p>The <a href="https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.bot_management.signed_agent/">native signed-agent boolean requires Enterprise Bot Management</a>; Workers Paid does not establish that entitlement.</p></section>
-    <nav class="stats-method-references" aria-label="Measurement references"><a href="/privacy">Privacy details</a><a href="https://github.com/gkoreli/blog/blob/main/docs/adr/0016-analytics-observation-semantics.md">Engineering decision</a><a href="https://github.com/gkoreli/blog/blob/main/docs/adr/0016.2-browser-evidence-and-reader-tier.md">Browser evidence</a><a href="https://github.com/gkoreli/blog/blob/main/docs/adr/0016.3-audience-composition-and-citable-articles.md">Audience composition</a></nav>
-  </aside>
-</section></article>`;
+const panels = { requests: requestsPanel, pages: pagesPanel, traffic: trafficPanel, evidence: evidencePanel };
+
+export function statsPage(pages: readonly { path: string; title: string }[] = [], view: RequestView = 'requests') {
+  const catalogue = [{ path: '/', title: 'Homepage' }, { path: '/about', title: 'About' }, { path: '/tools', title: 'Engineering tools' }, { path: '/engineering', title: 'Engineering' }, { path: '/essays', title: 'Essays' }, { path: '/stats', title: 'Stats' }, ...pages];
+  return html`<article class="stats-page" data-request-view=${view}>
+  ${statsHeader(view)}
+  <section id="stats-page-requests" aria-label="Page requests">
+  ${reportFilters('stats')}
+  <p class="stats-status" id="stats-status" role="status" aria-atomic="true">Loading stats…</p>
+  <div class="stats-loading" id="stats-loading" aria-hidden="true"><div class="stats-loading-metrics"><div class="skeleton"></div><div class="skeleton"></div></div><div class="skeleton stats-loading-chart"></div></div>
+  <noscript><style>.stats-loading,.stats-status,#stats-dashboard{display:none}</style><p>JavaScript loads this interactive report. <a href="/api/stats?range=30d&amp;traffic=all">Read the 30-day report as JSON</a>, or read <a href="/stats/method">how requests are counted</a>.</p></noscript>
+  <p class="stats-scope" id="stats-scope" hidden></p>
+  <div id="stats-page-catalogue" hidden>${(view === 'pages' ? catalogue : []).map(page => html`<a href=${page.path}>${page.title}</a>`)}</div>
+  <div class="stats-period" id="stats-period" hidden></div>
+  <div id="stats-dashboard" aria-busy="true">
+    ${panels[view]()}
+  </div>
+  </section></article>`;
 }

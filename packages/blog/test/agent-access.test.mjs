@@ -8,6 +8,7 @@ import { agentResourcesFromIndex } from '../src/worker/agent-access.ts';
 import { exploreAgentAccess } from '../../analytics/src/agent-access-explorer.ts';
 import { agentAccessViewHtml, agentAccessSelectionLabel } from '../src/lib/agent-access-view.ts';
 import { timePresentation } from '@gkoreli/time';
+import { agentAccessPage } from '../src/pages/agent-access.ts';
 import { statsPage } from '../src/pages/stats.ts';
 import { renderContent } from '../src/lib/ssg.ts';
 
@@ -23,7 +24,7 @@ test('public catalogue maps current articles and declared files, rejects ambigui
 });
 
 test('actual Stats markup separates the fixed agent report from the selected-period request report', async () => {
-  const [snapshot] = await renderContent([statsPage()]);
+  const [snapshot, requestsHtml] = await renderContent([agentAccessPage(), statsPage()]);
   assert(snapshot); const element = document.createElement('div'); element.innerHTML = snapshot;
   const report = element.querySelector('agent-access-report');
   assert(report); assert.equal(report.id, 'stats-agent-access');
@@ -36,14 +37,13 @@ test('actual Stats markup separates the fixed agent report from the selected-per
   assert.equal(report.querySelector('.agent-access-navigation').hidden, true);
   assert.equal(report.querySelector('[data-agent-status]').getAttribute('aria-atomic'), 'true');
   assert.deepEqual([...report.querySelectorAll('.report-scope-facts dd')].map(item => item.textContent), ['28 completed days', 'UTC reporting days', 'Article, client and role']);
-  const requests = element.querySelector('#stats-page-requests'); assert(requests);
-  assert.deepEqual([...requests.querySelectorAll('.report-scope-facts dd')].map(item => item.textContent), ['Selected period', 'Your timezone', 'Traffic, period and page']);
-  assert.equal(element.querySelector('.report-view-navigation a').getAttribute('href'), '#stats-agent-access');
-  assert.equal(requests.querySelector('.stats-navigation a').getAttribute('href'), '#stats-activity');
-  assert.equal(requests.contains(element.querySelector('#stats-controls')), true);
-  assert.equal(report.contains(element.querySelector('#stats-controls')), false);
-  assert.equal(element.querySelectorAll('#stats-controls input[data-traffic]').length, 6);
-  assert.match(element.querySelector('#stats-controls').textContent, /AI search, AI crawlers/);
+  const requests = document.createElement('div'); requests.innerHTML = requestsHtml;
+  assert.equal(requests.querySelector('agent-access-report'), null);
+  assert.equal(element.querySelector('#stats-controls'), null);
+  assert.equal(element.querySelector('.stats-views [aria-current]').getAttribute('href'), '/stats/agent-access');
+  assert.equal(requests.querySelector('.stats-views [aria-current]').getAttribute('href'), '/stats');
+  assert.equal(requests.querySelectorAll('#stats-controls [data-traffic] option').length, 6);
+  assert.match(requests.querySelector('#stats-controls').textContent, /AI search, AI crawlers/);
 });
 
 test('report rendering preserves scope, complete evidence, unknowns, safe labels and localized calculation time', async () => {
@@ -68,7 +68,7 @@ test('report rendering preserves scope, complete evidence, unknowns, safe labels
     const selected = exploreAgentAccess(report, { articleId: 'article:a', client: 'OAI-SearchBot', kind: 'ai-search' });
     assert.match(agentAccessSelectionLabel(selected), /OAI-SearchBot.*AI-search declarations/);
     const element = document.createElement('div'); element.innerHTML = rendered.details;
-    const [shell] = await renderContent([statsPage()]); assert(shell);
+    const [shell] = await renderContent([agentAccessPage()]); assert(shell);
     const page = document.createElement('div'); page.innerHTML = shell;
     page.querySelector('[data-agent-overview]').innerHTML = rendered.overview;
     page.querySelector('[data-agent-results]').innerHTML = rendered.details;
