@@ -1,0 +1,79 @@
+{
+  "site_base_commit": "060f76393f3a98729d1c8f8e0e310a51cf1a66f8",
+  "checked_at": "2026-11-20T16:00:58.025Z",
+  "stage": "local",
+  "canonical": "https://gkoreli.com/oss-radar-17-what-still-works-after-an-upgrade",
+  "date": "2026-11-23",
+  "posts": 50,
+  "source_sha256": "41627811aae914a9a3b2cdd147e0f195bfe2f29806feabf134c5407410f43927",
+  "browser": "157.0.8103.79",
+  "views": [
+    {
+      "label": "desktop",
+      "width": 1365,
+      "height": 900,
+      "scroll_width": 1365,
+      "javascript": true
+    },
+    {
+      "label": "mobile",
+      "width": 390,
+      "height": 844,
+      "scroll_width": 390,
+      "javascript": true
+    },
+    {
+      "label": "narrow-no-js",
+      "width": 320,
+      "height": 720,
+      "scroll_width": 320,
+      "javascript": false
+    }
+  ],
+  "representations": {
+    "/oss-radar-17-what-still-works-after-an-upgrade.md": {
+      "status": 200,
+      "sha256": "05b27e963bb4a68fb7493e9b36a911e8dc895318c97e35258767c57e997fc5cb"
+    },
+    "/posts.json": {
+      "status": 200,
+      "sha256": "df0b44ec322907fb70aa23b4dd650078e83577c17c979482123b48f2fc1f93c1"
+    },
+    "/feed.xml": {
+      "status": 200,
+      "sha256": "ef9040a0179e9f0f19aa7cfb92646f8c7096ee9ab6f10406a539b96200e278c4"
+    },
+    "/sitemap.xml": {
+      "status": 200,
+      "sha256": "90be5618b47b8ef11bf11f1be14875e0f8ca110ed98d14baef15dca95ce09dfc"
+    },
+    "/llms.txt": {
+      "status": 200,
+      "sha256": "4c944f531fa84f19b33770746237a8028111319c65dcbe4fbb5b18cf50e0acc7"
+    },
+    "/llms-full.txt": {
+      "status": 200,
+      "sha256": "7594e6c05da9c9f936c2026774460106f68f77ea534defd183208c34e5715186"
+    },
+    "/oss-radar-17-what-still-works-after-an-upgrade.csl.json": {
+      "status": 200,
+      "sha256": "84bf56763f706904c74c6fd20d47cdab5323bb19858efbbb567f7c182ea1f13b"
+    },
+    "/oss-radar-17-what-still-works-after-an-upgrade.bib": {
+      "status": 200,
+      "sha256": "bd27e7484112a2caf12632e682901398558a0c4814dcd1b3b225c1e2ab61e37d"
+    },
+    "/oss-radar": {
+      "status": 200,
+      "sha256": "f3d7969299a6fb936ec9b9432bab81b9741155c183eecafe582c020955515bad"
+    },
+    "/oss-radar-17-what-still-works-after-an-upgrade": {
+      "status": 200,
+      "sha256": "04e083b162981ca9558d75d569f2dfbcc44c61158062c537f1881ac60d93c4c0"
+    },
+    "/og/oss-radar-17-what-still-works-after-an-upgrade.png?v=6dd79a1d": {
+      "status": 200,
+      "sha256": "6dd79a1d2d146540f9a5872c8e5c856c98ff4c0fa4f6e6e45ec61af580648caa"
+    }
+  }
+}
