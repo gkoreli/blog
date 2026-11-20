@@ -22,6 +22,12 @@ On ARM64 macOS, both builds compiled the same config reader while `active.json` 
 
 An initial preload test asserted a sequence that also failed under the JIT. The accepted fixture follows the observed JIT order `observer`, `provider`, `factory`. Both canaries preserve it with and without `--aot`. Stable 1.4.5 did not supply the callable `load` helper to that `vi.mock` factory. The separate failed-then-mocked fixture had one passing test and one failing test in every tested mode. It keeps the original failure visible after the later file registers a mock. This is our `mock.module` plus rejected dynamic-import case. The upstream patch reports different specific cases, and this check does not overturn those tests. The later runs added the retargeted symlink, argument, and direct-read controls.
 
+## November 20 afternoon HTTP follow-up
+
+GitHub published a second November 20 canary at `3f3202e4225011f4ebc10ea705f284b8df070a1b`. Its response handling change paces compressed reads with the consumer. The targeted macOS check serves 393,631 bytes of synthetic API logs from one Node HTTP/1.1 origin as identity, gzip, Brotli, and Zstandard. Each encoding has a `Content-Length` response and a response sent in 4,093-byte pieces that the client reads with a short pause. Bun 1.4.5 and both November 20 canaries recovered the identical body in all 24 reads. [Merged response change](https://github.com/oven-sh/bun/pull/49203) · [Pinned fetch path](https://github.com/oven-sh/bun/blob/3f3202e4225011f4ebc10ea705f284b8df070a1b/src/runtime/webcore/fetch/FetchTasklet.rs) · [Fixture](fetch_followup.mjs) · [Results](fetch-followup-2026-11-20.json).
+
+JavaScript received different chunk boundaries. For the buffered gzip response the largest observed piece was 262,144 bytes in the morning canary and 377,247 bytes in the afternoon canary. Those sizes describe one program and one run. The earlier codec timing and native compilation measurements still refer to their original binaries. GitHub and npm continued to list 1.4.5 as stable at the afternoon check. [Stable release](https://github.com/oven-sh/bun/releases/tag/bun-v1.4.5).
+
 ## Run the fixtures
 
 The Linux codec run used checksummed official Linux ARM64 musl ZIP assets and Node v24.22.3 in a disposable Alpine 3.23.4 VM. Use [the exact #8 source bytes](https://github.com/gkoreli/blog/blob/a109684af05ffab07ae4d2c2a550dbd2e2df926e/packages/blog/posts/031-oss-radar-08-bun-aot.md) for the Markdown input. The macOS AOT runs used checksummed GitHub assets and the npm integrity pin for the earlier binary. Both fixtures record the executable revision or digest. The canary download tag moves over time, so check the source revisions next to the receipts.
@@ -29,4 +35,5 @@ The Linux codec run used checksummed official Linux ARM64 musl ZIP assets and No
 ```sh
 node codec_matrix.mjs /path/to/stable /path/to/canary /tmp/fresh-codecs /path/to/radar-eight.md
 python3 aot_trials.py /path/to/stable /path/to/nov19 /path/to/nov20 /tmp/fresh-aot
+node fetch_followup.mjs /path/to/stable /path/to/morning-canary /path/to/afternoon-canary /tmp/fresh-fetch
 ```

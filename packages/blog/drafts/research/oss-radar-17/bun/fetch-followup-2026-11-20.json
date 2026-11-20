@@ -1,0 +1,279 @@
+{
+  "date": "2026-11-20",
+  "fixture_sha256": "25096be66aa081ec1d23240d1be3f8fb3a64ee29286c2a8824d2e4b7dd4ba743",
+  "new_canary_zip_sha256": "75960ad7ec9ea5d5ae4da92b68449fa9667cc78dd85494bac7100d2f710dde33",
+  "new_canary_binary_sha256": "e871cb288241e4ef0bff6998e3d1389319334275e27202d5c136c273f01cbf9d",
+  "node": "v24.14.1",
+  "platform": "darwin",
+  "arch": "arm64",
+  "input_bytes": 393631,
+  "input_sha256": "d4c47e924deac68b85932cc9e8428d9872d494a6bb9f15e0aa5e5fa1ae0f3e70",
+  "encoded_sizes": {
+    "identity": 393631,
+    "gzip": 83848,
+    "br": 61766,
+    "zstd": 85474
+  },
+  "consumer_pause_ms": 2,
+  "origin_slice_bytes": 4093,
+  "builds": {
+    "stable": {
+      "version": "1.4.5",
+      "revision": "a7733435cf40429e3b35c36072769df2052b80f1",
+      "cases": [
+        {
+          "mode": "buffered-origin",
+          "encoding": "identity",
+          "status": 200,
+          "content_encoding": "identity",
+          "sha256": "d4c47e924deac68b85932cc9e8428d9872d494a6bb9f15e0aa5e5fa1ae0f3e70",
+          "bytes": 393631,
+          "chunk_count": 1,
+          "largest_chunk_bytes": 393631
+        },
+        {
+          "mode": "buffered-origin",
+          "encoding": "gzip",
+          "status": 200,
+          "content_encoding": "gzip",
+          "sha256": "d4c47e924deac68b85932cc9e8428d9872d494a6bb9f15e0aa5e5fa1ae0f3e70",
+          "bytes": 393631,
+          "chunk_count": 4,
+          "largest_chunk_bytes": 262144
+        },
+        {
+          "mode": "buffered-origin",
+          "encoding": "br",
+          "status": 200,
+          "content_encoding": "br",
+          "sha256": "d4c47e924deac68b85932cc9e8428d9872d494a6bb9f15e0aa5e5fa1ae0f3e70",
+          "bytes": 393631,
+          "chunk_count": 2,
+          "largest_chunk_bytes": 262144
+        },
+        {
+          "mode": "buffered-origin",
+          "encoding": "zstd",
+          "status": 200,
+          "content_encoding": "zstd",
+          "sha256": "d4c47e924deac68b85932cc9e8428d9872d494a6bb9f15e0aa5e5fa1ae0f3e70",
+          "bytes": 393631,
+          "chunk_count": 2,
+          "largest_chunk_bytes": 262144
+        },
+        {
+          "mode": "chunked-origin",
+          "encoding": "identity",
+          "status": 200,
+          "content_encoding": "identity",
+          "sha256": "d4c47e924deac68b85932cc9e8428d9872d494a6bb9f15e0aa5e5fa1ae0f3e70",
+          "bytes": 393631,
+          "chunk_count": 59,
+          "largest_chunk_bytes": 12279
+        },
+        {
+          "mode": "chunked-origin",
+          "encoding": "gzip",
+          "status": 200,
+          "content_encoding": "gzip",
+          "sha256": "d4c47e924deac68b85932cc9e8428d9872d494a6bb9f15e0aa5e5fa1ae0f3e70",
+          "bytes": 393631,
+          "chunk_count": 15,
+          "largest_chunk_bytes": 38831
+        },
+        {
+          "mode": "chunked-origin",
+          "encoding": "br",
+          "status": 200,
+          "content_encoding": "br",
+          "sha256": "d4c47e924deac68b85932cc9e8428d9872d494a6bb9f15e0aa5e5fa1ae0f3e70",
+          "bytes": 393631,
+          "chunk_count": 10,
+          "largest_chunk_bytes": 79075
+        },
+        {
+          "mode": "chunked-origin",
+          "encoding": "zstd",
+          "status": 200,
+          "content_encoding": "zstd",
+          "sha256": "d4c47e924deac68b85932cc9e8428d9872d494a6bb9f15e0aa5e5fa1ae0f3e70",
+          "bytes": 393631,
+          "chunk_count": 4,
+          "largest_chunk_bytes": 131072
+        }
+      ]
+    },
+    "tested": {
+      "version": "1.4.6",
+      "revision": "7bb427f3be953a1a9bf575ee8c87dc0946106de1",
+      "cases": [
+        {
+          "mode": "buffered-origin",
+          "encoding": "identity",
+          "status": 200,
+          "content_encoding": "identity",
+          "sha256": "d4c47e924deac68b85932cc9e8428d9872d494a6bb9f15e0aa5e5fa1ae0f3e70",
+          "bytes": 393631,
+          "chunk_count": 1,
+          "largest_chunk_bytes": 393631
+        },
+        {
+          "mode": "buffered-origin",
+          "encoding": "gzip",
+          "status": 200,
+          "content_encoding": "gzip",
+          "sha256": "d4c47e924deac68b85932cc9e8428d9872d494a6bb9f15e0aa5e5fa1ae0f3e70",
+          "bytes": 393631,
+          "chunk_count": 4,
+          "largest_chunk_bytes": 262144
+        },
+        {
+          "mode": "buffered-origin",
+          "encoding": "br",
+          "status": 200,
+          "content_encoding": "br",
+          "sha256": "d4c47e924deac68b85932cc9e8428d9872d494a6bb9f15e0aa5e5fa1ae0f3e70",
+          "bytes": 393631,
+          "chunk_count": 2,
+          "largest_chunk_bytes": 262144
+        },
+        {
+          "mode": "buffered-origin",
+          "encoding": "zstd",
+          "status": 200,
+          "content_encoding": "zstd",
+          "sha256": "d4c47e924deac68b85932cc9e8428d9872d494a6bb9f15e0aa5e5fa1ae0f3e70",
+          "bytes": 393631,
+          "chunk_count": 2,
+          "largest_chunk_bytes": 262144
+        },
+        {
+          "mode": "chunked-origin",
+          "encoding": "identity",
+          "status": 200,
+          "content_encoding": "identity",
+          "sha256": "d4c47e924deac68b85932cc9e8428d9872d494a6bb9f15e0aa5e5fa1ae0f3e70",
+          "bytes": 393631,
+          "chunk_count": 58,
+          "largest_chunk_bytes": 12279
+        },
+        {
+          "mode": "chunked-origin",
+          "encoding": "gzip",
+          "status": 200,
+          "content_encoding": "gzip",
+          "sha256": "d4c47e924deac68b85932cc9e8428d9872d494a6bb9f15e0aa5e5fa1ae0f3e70",
+          "bytes": 393631,
+          "chunk_count": 15,
+          "largest_chunk_bytes": 38831
+        },
+        {
+          "mode": "chunked-origin",
+          "encoding": "br",
+          "status": 200,
+          "content_encoding": "br",
+          "sha256": "d4c47e924deac68b85932cc9e8428d9872d494a6bb9f15e0aa5e5fa1ae0f3e70",
+          "bytes": 393631,
+          "chunk_count": 11,
+          "largest_chunk_bytes": 80148
+        },
+        {
+          "mode": "chunked-origin",
+          "encoding": "zstd",
+          "status": 200,
+          "content_encoding": "zstd",
+          "sha256": "d4c47e924deac68b85932cc9e8428d9872d494a6bb9f15e0aa5e5fa1ae0f3e70",
+          "bytes": 393631,
+          "chunk_count": 4,
+          "largest_chunk_bytes": 131072
+        }
+      ]
+    },
+    "newer": {
+      "version": "1.4.6",
+      "revision": "3f3202e4225011f4ebc10ea705f284b8df070a1b",
+      "cases": [
+        {
+          "mode": "buffered-origin",
+          "encoding": "identity",
+          "status": 200,
+          "content_encoding": "identity",
+          "sha256": "d4c47e924deac68b85932cc9e8428d9872d494a6bb9f15e0aa5e5fa1ae0f3e70",
+          "bytes": 393631,
+          "chunk_count": 2,
+          "largest_chunk_bytes": 230502
+        },
+        {
+          "mode": "buffered-origin",
+          "encoding": "gzip",
+          "status": 200,
+          "content_encoding": "gzip",
+          "sha256": "d4c47e924deac68b85932cc9e8428d9872d494a6bb9f15e0aa5e5fa1ae0f3e70",
+          "bytes": 393631,
+          "chunk_count": 2,
+          "largest_chunk_bytes": 377247
+        },
+        {
+          "mode": "buffered-origin",
+          "encoding": "br",
+          "status": 200,
+          "content_encoding": "br",
+          "sha256": "d4c47e924deac68b85932cc9e8428d9872d494a6bb9f15e0aa5e5fa1ae0f3e70",
+          "bytes": 393631,
+          "chunk_count": 2,
+          "largest_chunk_bytes": 262144
+        },
+        {
+          "mode": "buffered-origin",
+          "encoding": "zstd",
+          "status": 200,
+          "content_encoding": "zstd",
+          "sha256": "d4c47e924deac68b85932cc9e8428d9872d494a6bb9f15e0aa5e5fa1ae0f3e70",
+          "bytes": 393631,
+          "chunk_count": 2,
+          "largest_chunk_bytes": 262144
+        },
+        {
+          "mode": "chunked-origin",
+          "encoding": "identity",
+          "status": 200,
+          "content_encoding": "identity",
+          "sha256": "d4c47e924deac68b85932cc9e8428d9872d494a6bb9f15e0aa5e5fa1ae0f3e70",
+          "bytes": 393631,
+          "chunk_count": 59,
+          "largest_chunk_bytes": 12279
+        },
+        {
+          "mode": "chunked-origin",
+          "encoding": "gzip",
+          "status": 200,
+          "content_encoding": "gzip",
+          "sha256": "d4c47e924deac68b85932cc9e8428d9872d494a6bb9f15e0aa5e5fa1ae0f3e70",
+          "bytes": 393631,
+          "chunk_count": 14,
+          "largest_chunk_bytes": 38845
+        },
+        {
+          "mode": "chunked-origin",
+          "encoding": "br",
+          "status": 200,
+          "content_encoding": "br",
+          "sha256": "d4c47e924deac68b85932cc9e8428d9872d494a6bb9f15e0aa5e5fa1ae0f3e70",
+          "bytes": 393631,
+          "chunk_count": 10,
+          "largest_chunk_bytes": 79075
+        },
+        {
+          "mode": "chunked-origin",
+          "encoding": "zstd",
+          "status": 200,
+          "content_encoding": "zstd",
+          "sha256": "d4c47e924deac68b85932cc9e8428d9872d494a6bb9f15e0aa5e5fa1ae0f3e70",
+          "bytes": 393631,
+          "chunk_count": 4,
+          "largest_chunk_bytes": 131072
+        }
+      ]
+    }
+  }
+}
