@@ -7,6 +7,7 @@ import { html } from '@nisli/core';
 import { buildDocuments, renderContent } from '../src/lib/ssg.js';
 import { parsePostModule } from '../src/lib/post-module.js';
 import { pageShell } from '../src/templates/page.js';
+import { searchDialog, searchPage } from '../src/pages/search.js';
 import { postPage } from '../src/pages/post.js';
 
 const meta = {
@@ -54,6 +55,23 @@ test('SSG retains the complete document, escaped metadata, and client islands', 
   } finally {
     rmSync(outDir, { recursive: true, force: true });
   }
+});
+
+test('the search page and its dialog have independent queries and the dialog links to published articles', async () => {
+  const [markup] = await renderContent([html`${searchPage()}${searchDialog([postModule().meta])}`]);
+  assert.ok(markup);
+  const root = document.createElement('div');
+  root.innerHTML = markup;
+  const form = root.querySelector('.search-page form');
+  assert.equal(form?.getAttribute('action'), '/search');
+  assert.equal(form?.getAttribute('method'), 'get');
+  assert.equal(form?.querySelector('input[name="q"]')?.id, 'page-query');
+  const dialog = root.querySelector('dialog');
+  assert.equal(dialog?.querySelector('input[name="q"]')?.id, 'palette-query');
+  assert.equal(dialog?.querySelector('details')?.open, false);
+  const article = dialog?.querySelector('.palette-latest a');
+  assert.equal(article?.getAttribute('href'), '/' + meta.slug);
+  assert.ok(article?.textContent?.includes(meta.title));
 });
 
 test('Markdown content keeps code markup without a prompt link or teaser', async () => {

@@ -1,7 +1,7 @@
 import { html, raw, type TemplateResult } from '@nisli/core';
 import type { ArticleDocument } from '@gkoreli/search';
 import { searchableArticle, writeSearchIndex } from './search-index.js';
-import { searchPage } from '../pages/search.js';
+import { searchDialog, searchPage } from '../pages/search.js';
 import { assertUniqueElementIds, prepareReadingDocument } from '../lib/reading-document.js';
 import { readingRail } from '../lib/reading-display.js';
 import { cleanOutDir } from '@nisli/ssg';
@@ -15,7 +15,7 @@ import { discoverPosts, writeRoot, copyAssets } from '../lib/fs.js';
 import { initMarkdown, renderMarkdown } from '../lib/markdown.js';
 import { parsePost, validatePosts } from '../lib/frontmatter.js';
 import type { Post } from '../lib/frontmatter.js';
-import { pageShell } from '../templates/page.js';
+import { pageShell as renderPageShell } from '../templates/page.js';
 import { rssFeed } from '../templates/rss.js';
 import { generateOgImage } from '../lib/og.js';
 import { sitemapXml } from '../templates/sitemap.js';
@@ -194,6 +194,8 @@ export async function buildHTML(): Promise<void> {
     if (dateOrder !== 0) return dateOrder;
     return (discoveryIndex.get(b.slug) ?? -1) - (discoveryIndex.get(a.slug) ?? -1);
   });
+  const search = searchDialog(sortedPosts.slice(0, 3));
+  const pageShell = (props: Parameters<typeof renderPageShell>[0]) => renderPageShell(props, search);
   const publicationOgImage = await generateOgImage('Agentic Engineering Field Notes', 'gkoreli-com');
 
   // Validate series: no duplicate order values within the same series id

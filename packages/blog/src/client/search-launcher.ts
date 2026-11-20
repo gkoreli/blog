@@ -30,17 +30,27 @@ if (dialog instanceof HTMLDialogElement) {
       dialog.close();
     }
   }, { capture: true });
+  dialog.addEventListener('click', event => {
+    if (event.defaultPrevented || event.button !== 0 || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+    const link = event.target instanceof Element ? event.target.closest('a') : null;
+    if (link && link.pathname === location.pathname && link.hash) {
+      opener = null;
+      dialog.close();
+    }
+  });
   dialog.querySelector('[data-search-close]')?.addEventListener('click', () => dialog.close());
   dialog.addEventListener('click', event => { if (event.target === dialog) { const rect = dialog.getBoundingClientRect(); if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) dialog.close(); } });
   dialog.addEventListener('close', () => { document.documentElement.classList.remove('search-open'); opener?.focus(); });
 }
 const page = document.querySelector('.search-page [data-search-surface]');
 if (page instanceof HTMLElement) {
-  const params = new URLSearchParams(location.search), query = params.get('q') ?? '';
   void load().then(search => {
-    const section = page.querySelector('select[name="section"]');
-    if (section instanceof HTMLSelectElement) section.value = params.get('section') ?? '';
     const surface = search.enhanceSearch(page);
-    if (surface) { surface.input.value = query; if (query) surface.run(); }
+    const restore = () => {
+      const fragment = new URLSearchParams(location.hash.slice(1));
+      surface?.restore(fragment.has('q') ? fragment : new URLSearchParams(location.search));
+    };
+    restore();
+    window.addEventListener('hashchange', restore);
   });
 }

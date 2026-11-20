@@ -5,7 +5,7 @@ import { typedLinkElements } from '../lib/typed-links.js';
 import { DispatchSlip } from './artifacts.js';
 import { clientBootstrap } from './client-bootstrap.js';
 import { clientDefines } from '../pipeline/client-mode.js';
-import { searchSurface } from '../pages/search.js';
+import { searchDialog } from '../pages/search.js';
 import { utilityIcon } from './utility-icon.js';
 
 function turnstileSiteKey(): string {
@@ -50,7 +50,7 @@ type PageShellProps = PageShellBaseProps & (
   | { ogImage?: undefined; ogImageAlt?: undefined }
 );
 
-export function pageShell({ title, description, content, canonicalPath, currentSlug, currentSection, ogImage, ogImageAlt, head, gutter, preamble, layout, scripts, ogType = 'website', noindex = false, seoTitle, postSlug, markdownPath }: PageShellProps): PageDocument {
+export function pageShell({ title, description, content, canonicalPath, currentSlug, currentSection, ogImage, ogImageAlt, head, gutter, preamble, layout, scripts, ogType = 'website', noindex = false, seoTitle, postSlug, markdownPath }: PageShellProps, search = searchDialog()): PageDocument {
   const TURNSTILE_SITE_KEY = turnstileSiteKey();
   const canonical = canonicalUrl(canonicalPath);
   const layoutClass = layout && layout !== 'default' ? ` layout-${layout}` : '';
@@ -160,11 +160,7 @@ export function pageShell({ title, description, content, canonicalPath, currentS
     </main>
   </div>
 
-  <dialog id="site-publication-search" data-publication-search-dialog class="search-dialog tool-app" aria-labelledby="search-dialog-title">
-    <header class="search-dialog-header"><div><p class="search-eyebrow">gkoreli.com</p><h2 id="search-dialog-title">Find a thought.</h2></div><button type="button" data-search-close aria-label="Close search">Esc</button></header>
-    ${searchSurface('palette')}
-    <footer class="search-dialog-footer"><span>↑ ↓ results · Enter opens · Esc closes</span><a href="/search">Open search page</a></footer>
-  </dialog>
+  ${search}
 
   <script type="module" src="/main.js"></script>
   ${scripts?.map(s => html`<script type="module" src="${s}"></script>`) ?? ''}
