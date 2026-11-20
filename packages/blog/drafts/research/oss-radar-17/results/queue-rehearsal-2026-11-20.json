@@ -1,0 +1,21 @@
+{
+  "before": {
+    "changed": false,
+    "date": "2026-11-23",
+    "slug": "",
+    "message": "Outside the Monday 08:00 Pacific release window."
+  },
+  "onTime": {
+    "changed": true,
+    "date": "2026-11-23",
+    "slug": "oss-radar-17-what-still-works-after-an-upgrade",
+    "message": "Promoted 049-oss-radar-17-what-still-works-after-an-upgrade.md for publication."
+  },
+  "retry": {
+    "changed": false,
+    "date": "2026-11-23",
+    "slug": "oss-radar-17-what-still-works-after-an-upgrade",
+    "message": "Article already promoted; verify its live deployment."
+  },
+  "source_sha256": "41627811aae914a9a3b2cdd147e0f195bfe2f29806feabf134c5407410f43927"
+}

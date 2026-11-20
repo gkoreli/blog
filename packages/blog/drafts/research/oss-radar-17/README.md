@@ -1,18 +1,23 @@
 # OSS Radar #17 research
 
-November 19, 2026. A rollout can keep serving the old behavior while new work starts. Who keeps getting the old feature, how long can an old database client keep writing, and which mobile binaries can take a JavaScript update? The working selection follows those decisions at three different layers.
+November 19–20, 2026. A rollout can keep serving the old behavior while new work starts. Four projects make that concrete through compression, feature assignments, database connections, and mobile update targeting. [November 23 draft](article.md).
 
 ## Sources and selection
 
-Five public repositories were considered on November 19. The pool came from public releases and implementation discussions, with Hot Updater and InsForge revisited from [issue #1](../../../posts/002-oss-radar-01-vercel-winter-2026-cohort.md). The search favored releases with a practical coexistence question and a path that could be exercised locally. It includes a September database release and an October return visit alongside November releases. [Discovery policy](../../../../../docs/worklist/oss-radar-weekly/sources.md).
+Five public repositories were considered on November 19. The pool came from public releases and implementation discussions, with Hot Updater and InsForge revisited from [issue #1](../../../posts/002-oss-radar-01-vercel-winter-2026-cohort.md). Bun joined November 20 from its public builds and changes to established runtime interfaces. The resulting six-repository pool favors a practical coexistence question and a path that can be exercised locally. [Discovery policy](../../../../../docs/worklist/oss-radar-weekly/sources.md).
 
 | Project and release | Source of interest | Working selection |
 | --- | --- | --- |
+| [Bun 1.4.5](https://github.com/oven-sh/bun/releases/tag/bun-v1.4.5) and [November 20 canary](https://github.com/oven-sh/bun/tree/7bb427f3be953a1a9bf575ee8c87dc0946106de1) | The current compression and AOT changes extend the tests from #5 and #8 | Tested return. Decode and HTTP matrix, timings, native builds, and a config change after compilation |
 | [flagd v0.19.0](https://github.com/open-feature/flagd/releases/tag/flagd/v0.19.0), November 17 | OpenFeature's evaluator and [maintainer experiment guide](https://github.com/open-feature/flagd/pull/2096) explain how a stable hash can still put people in different groups when a rule changes | Tested. Who keeps the new variant when rollout weights grow or the pairs change order? |
 | [pgroll v0.16.3](https://github.com/xataio/pgroll/releases/tag/v0.16.3), September 8 | The migration CLI and [client configuration discussion](https://github.com/xataio/pgroll/issues/829) show where the old and new application versions meet | Tested. Which writes and values survive a rollback when a new client has already written data? |
 | [Hot Updater v1.1.0](https://github.com/gronxb/hot-updater/releases/tag/v1.1.0), October 19, and [npm 1.1.17](https://www.npmjs.com/package/hot-updater/v/1.1.17), November 19 | A [bare React Native user's report](https://github.com/gronxb/hot-updater/issues/1552) led to a change in how the CLI identifies compatible native builds | Tested return. Compared both versions with the old 1.0.2 CLI and ran the released iOS SDK script |
 | [Argo Rollouts v1.10.2](https://github.com/argoproj/argo-rollouts/releases/tag/v1.10.2), November 4 | Kubernetes controller release at `be8a6221c6c9751cd14497f31a2cb3c33690375a` | Background. A representative canary would add a cluster and traffic-routing layer to the allocation question |
 | [InsForge v2.3.5](https://github.com/InsForge/InsForge/releases/tag/v2.3.5), October 23 | Prior issue's reserve and current storage-policy changes at `c1c886e775d286433e4b50c78c24335783e8fc00` | Background. The current release gives a storage-policy question for another investigation |
+
+## Bun on the wire and in the executable
+
+The stable 1.4.5 and November 20 canary builds both read every tested gzip, Brotli, and Zstandard payload with Node as a third implementation. All three canary Zstandard streams dropped the extra empty frame. Two November AOT versions and a direct-read control show where a compiled program can still use an old symlink target. [Bun source and trial record](bun/README.md).
 
 ## flagd and who gets a variant
 
@@ -38,13 +43,15 @@ On PostgreSQL 17.12 the released CLI changed a non-null `quantity` column from t
 
 An early attempt copied a legacy `name` field that v0.16.3 rejects. A second attempt got both views and backfill, then failed when an insert qualified the new view with the connection still on the default `search_path`. The accepted run reproduced that rejection by the old column's `NOT NULL` constraint as a control. Rollback in this toy database restored the old column type and kept the writes made during the migration. The old client still saw the loss of the original padding in the updated row. Pooling, concurrent load, and production lock time remain open. [Client configuration guide](https://pgroll.com/docs/latest/guides/clientapps).
 
+On November 20, one persistent psql backend followed `SET LOCAL` back to its old path after both commit and transaction rollback. A session-level setting survived commit and kept the name of the removed schema after pgroll rollback. `public_v2, public` located the new view and got SQLSTATE `23502` on insert, as expected from the trigger's comparison of the full setting to the latest schema's name. The first setup used the Alpine psql wrapper's child environment, which made the nested pgroll CLI fail because lib/pq rejected `PGSYSCONFDIR`. The third attempt used an explicit URL and a clean child environment and verified the same backend across all check points. The trial uses the same version and synthetic schema as the first result. A production pool's checkout/reset policies and concurrent migration load remain open. [Connection fixture](pgroll/connection_trial.py) · [Transaction and rollback observations](pgroll/connection-2026-11-20.json).
+
 ## Hot Updater and the installed native interface
 
 Hot Updater returns from issue #1 with a change in how it identifies an app build for JavaScript updates. We reproduced the original build-number churn in the supported 1.0.2 configuration, then checked the actual 1.1.0 and 1.1.17 CLI packages. Their bare defaults kept the hash stable for a build number and changed it for a shared codegen spec. Leaving the old build files in `extraSources` brought the churn back. The iOS SDK script also showed why Debug can miss a stale stored hash that appears in Release. The dossier pins the source, records the migration warning and bounds the result to the CLI and script. [Return-visit dossier and reproduction](hot-updater/README.md).
 
-## Next fieldwork
+## Monday preparation
 
-A reused database connection is the next useful control for pgroll. Compare explicit version selection through session `search_path` and transaction-local `search_path`, then observe the active schema after commit or rollback. Use the real CLI's migration and both application views. The result should inform advice for clients that reuse connections across old and new application code.
+The four-project source passed the [Friday editorial, preview, and queue checks](2026-11-20-review.md). Before arming the Monday release, recheck Bun's official release and npm install target. If 1.5 has shipped, verify its artifact and rerun the reader-facing controls against it before making release claims. The canary comparisons remain dated observations. Refresh the rendered preview if the selected release evidence changes.
 
 ## Reproduce the daemon and database trials
 
@@ -54,4 +61,5 @@ The receipts use release artifacts verified against GitHub's asset digests. The 
 python3 flagd/cohort_trial.py /path/to/flagd /tmp/flagd-trial
 python3 flagd/experiment_ramp.py /path/to/flagd /tmp/flagd-ramp
 python3 pgroll/type_rollback_trial.py /path/to/pgroll /tmp/pgroll-trial
+python3 pgroll/connection_trial.py /path/to/pgroll /tmp/pgroll-connection
 ```

@@ -1,0 +1,1423 @@
+{
+  "date": "2026-11-20",
+  "fixture_sha256": "798057d119c432094a23d794a56034ebea7d0f606df1d7b031f4a2505403803e",
+  "guest": "Alpine 3.23.4 ARM64, Lima 2.2.1 VZ",
+  "machine": {
+    "os": "Linux",
+    "kernel": "6.18.22-0-virt",
+    "assigned_vcpus": 2
+  },
+  "archive_sha256": {
+    "stable": "d655765d3a0c0fdf707e27c7aa1a4f2c84f1bbc1f759db7e6e3d3c5be414396c",
+    "canary": "1038a4fcff3ebcad2f9500f9dcdabbca1053adc462c43e5a5e12cc35aa804ded"
+  },
+  "input": {
+    "api-log": {
+      "bytes": 583748,
+      "sha256": "c783168089023f1f88a1fd03866f9b0973f3abcd50bf09c2d6c6196f893ff7b7"
+    },
+    "blog-markdown": {
+      "bytes": 13934,
+      "sha256": "11377c9c45a1fafbc973ed8cb4febfdb32310d1e81d60de316825b37f79235cd"
+    },
+    "seeded-binary": {
+      "bytes": 131072,
+      "sha256": "82ad261d5797dab14cbf0b0f68070fe0ea91bb9e4ff80ce4c0c2457ad4702006"
+    }
+  },
+  "encodings": {
+    "stable": {
+      "identity": {
+        "version": "1.4.5",
+        "revision": "a7733435cf40429e3b35c36072769df2052b80f1",
+        "platform": "linux",
+        "arch": "arm64",
+        "libraries": {
+          "zlib": "12731092979c6d07f42da27da673a9f6c7b13586",
+          "brotli": null,
+          "zstd": "f8745da6ff1ad1e7bab384bd1f9d742439278e99"
+        }
+      },
+      "observations": [
+        {
+          "corpus": "api-log",
+          "format": "gzip",
+          "mode": "buffer",
+          "bytes": 74628,
+          "sha256": "a639ed63b4d35c11689a407910d85cc95337fcb42e7133db72278023bfe44bb6"
+        },
+        {
+          "corpus": "api-log",
+          "format": "gzip",
+          "mode": "stream",
+          "bytes": 74651,
+          "sha256": "ef2e64ba47db5d16319253d13c80963de710e07a4387f90ac7616e44e733fefd"
+        },
+        {
+          "corpus": "api-log",
+          "format": "br",
+          "mode": "buffer",
+          "bytes": 70453,
+          "sha256": "7ec10414261ed34ef378966b36de2a3e81a3749eac54cc73af2fff7f75509d6b"
+        },
+        {
+          "corpus": "api-log",
+          "format": "br",
+          "mode": "stream",
+          "bytes": 70453,
+          "sha256": "7ec10414261ed34ef378966b36de2a3e81a3749eac54cc73af2fff7f75509d6b"
+        },
+        {
+          "corpus": "api-log",
+          "format": "zstd",
+          "mode": "buffer",
+          "bytes": 75090,
+          "sha256": "769f3029f8f6c48d672fe526c9507bbc208ae2473d6aec71574e7eb8b9978314"
+        },
+        {
+          "corpus": "api-log",
+          "format": "zstd",
+          "mode": "stream",
+          "bytes": 75096,
+          "sha256": "e90d9b20ee5e02e2ae9e9a2fa20be4f9fe3cdf27505b46cbd508786c5ab16c82"
+        },
+        {
+          "corpus": "blog-markdown",
+          "format": "gzip",
+          "mode": "buffer",
+          "bytes": 5940,
+          "sha256": "c761cd92d4f4691a363a08b84b0aa4c902c9b634f4885fce80f1717a9a8e1b80"
+        },
+        {
+          "corpus": "blog-markdown",
+          "format": "gzip",
+          "mode": "stream",
+          "bytes": 5940,
+          "sha256": "c761cd92d4f4691a363a08b84b0aa4c902c9b634f4885fce80f1717a9a8e1b80"
+        },
+        {
+          "corpus": "blog-markdown",
+          "format": "br",
+          "mode": "buffer",
+          "bytes": 5978,
+          "sha256": "1ae393539f27e67f2c8d512e958c1352c73b65c4e5f44263e93b6ad82913c4d7"
+        },
+        {
+          "corpus": "blog-markdown",
+          "format": "br",
+          "mode": "stream",
+          "bytes": 5978,
+          "sha256": "1ae393539f27e67f2c8d512e958c1352c73b65c4e5f44263e93b6ad82913c4d7"
+        },
+        {
+          "corpus": "blog-markdown",
+          "format": "zstd",
+          "mode": "buffer",
+          "bytes": 6140,
+          "sha256": "db00a7af5194c40c41131ade8cb1d6540551dee6f95d9a9ea1f7fa4c3f9e74da"
+        },
+        {
+          "corpus": "blog-markdown",
+          "format": "zstd",
+          "mode": "stream",
+          "bytes": 6199,
+          "sha256": "ac23f5e042a4daaaad01dce425c86c825366e7f85c3ec7017e7f362f9e7f8037"
+        },
+        {
+          "corpus": "seeded-binary",
+          "format": "gzip",
+          "mode": "buffer",
+          "bytes": 131132,
+          "sha256": "fe26794be09e019ae36a0ff55f684d03c553b4d19ff7e71388d41d7c6b44e810"
+        },
+        {
+          "corpus": "seeded-binary",
+          "format": "gzip",
+          "mode": "stream",
+          "bytes": 131132,
+          "sha256": "fe26794be09e019ae36a0ff55f684d03c553b4d19ff7e71388d41d7c6b44e810"
+        },
+        {
+          "corpus": "seeded-binary",
+          "format": "br",
+          "mode": "buffer",
+          "bytes": 131077,
+          "sha256": "63c3e8a6ad2b8bfdc1e94cc09e0ecead61da448e6b13f245713e392001cf608c"
+        },
+        {
+          "corpus": "seeded-binary",
+          "format": "br",
+          "mode": "stream",
+          "bytes": 131077,
+          "sha256": "63c3e8a6ad2b8bfdc1e94cc09e0ecead61da448e6b13f245713e392001cf608c"
+        },
+        {
+          "corpus": "seeded-binary",
+          "format": "zstd",
+          "mode": "buffer",
+          "bytes": 131084,
+          "sha256": "08d2b3379bbbf09601386ce46b5f6311e5f7a23a6e55c7f954b5734b2f2ac1a0"
+        },
+        {
+          "corpus": "seeded-binary",
+          "format": "zstd",
+          "mode": "stream",
+          "bytes": 131090,
+          "sha256": "e8496edddf7a70268cdf87d6470d540a629b440deb0f1bb30809b4e2f2e9b7ac"
+        }
+      ]
+    },
+    "canary": {
+      "identity": {
+        "version": "1.4.6",
+        "revision": "7bb427f3be953a1a9bf575ee8c87dc0946106de1",
+        "platform": "linux",
+        "arch": "arm64",
+        "libraries": {
+          "zlib": "1.3.2.1-motley",
+          "brotli": null,
+          "zstd": "1.5.7"
+        }
+      },
+      "observations": [
+        {
+          "corpus": "api-log",
+          "format": "gzip",
+          "mode": "buffer",
+          "bytes": 74628,
+          "sha256": "a639ed63b4d35c11689a407910d85cc95337fcb42e7133db72278023bfe44bb6"
+        },
+        {
+          "corpus": "api-log",
+          "format": "gzip",
+          "mode": "stream",
+          "bytes": 74651,
+          "sha256": "ef2e64ba47db5d16319253d13c80963de710e07a4387f90ac7616e44e733fefd"
+        },
+        {
+          "corpus": "api-log",
+          "format": "br",
+          "mode": "buffer",
+          "bytes": 70453,
+          "sha256": "7ec10414261ed34ef378966b36de2a3e81a3749eac54cc73af2fff7f75509d6b"
+        },
+        {
+          "corpus": "api-log",
+          "format": "br",
+          "mode": "stream",
+          "bytes": 70453,
+          "sha256": "7ec10414261ed34ef378966b36de2a3e81a3749eac54cc73af2fff7f75509d6b"
+        },
+        {
+          "corpus": "api-log",
+          "format": "zstd",
+          "mode": "buffer",
+          "bytes": 75090,
+          "sha256": "769f3029f8f6c48d672fe526c9507bbc208ae2473d6aec71574e7eb8b9978314"
+        },
+        {
+          "corpus": "api-log",
+          "format": "zstd",
+          "mode": "stream",
+          "bytes": 75087,
+          "sha256": "59bc46742dfb0d7b625f1b3892e518f1da3359fc897f56422e488537d4ea18b4"
+        },
+        {
+          "corpus": "blog-markdown",
+          "format": "gzip",
+          "mode": "buffer",
+          "bytes": 5940,
+          "sha256": "c761cd92d4f4691a363a08b84b0aa4c902c9b634f4885fce80f1717a9a8e1b80"
+        },
+        {
+          "corpus": "blog-markdown",
+          "format": "gzip",
+          "mode": "stream",
+          "bytes": 5940,
+          "sha256": "c761cd92d4f4691a363a08b84b0aa4c902c9b634f4885fce80f1717a9a8e1b80"
+        },
+        {
+          "corpus": "blog-markdown",
+          "format": "br",
+          "mode": "buffer",
+          "bytes": 5978,
+          "sha256": "1ae393539f27e67f2c8d512e958c1352c73b65c4e5f44263e93b6ad82913c4d7"
+        },
+        {
+          "corpus": "blog-markdown",
+          "format": "br",
+          "mode": "stream",
+          "bytes": 5978,
+          "sha256": "1ae393539f27e67f2c8d512e958c1352c73b65c4e5f44263e93b6ad82913c4d7"
+        },
+        {
+          "corpus": "blog-markdown",
+          "format": "zstd",
+          "mode": "buffer",
+          "bytes": 6140,
+          "sha256": "db00a7af5194c40c41131ade8cb1d6540551dee6f95d9a9ea1f7fa4c3f9e74da"
+        },
+        {
+          "corpus": "blog-markdown",
+          "format": "zstd",
+          "mode": "stream",
+          "bytes": 6190,
+          "sha256": "536ca2fe3df3b31e02cb7161e477f81461ebf05289f0b0498636233c8e31f762"
+        },
+        {
+          "corpus": "seeded-binary",
+          "format": "gzip",
+          "mode": "buffer",
+          "bytes": 131132,
+          "sha256": "fe26794be09e019ae36a0ff55f684d03c553b4d19ff7e71388d41d7c6b44e810"
+        },
+        {
+          "corpus": "seeded-binary",
+          "format": "gzip",
+          "mode": "stream",
+          "bytes": 131132,
+          "sha256": "fe26794be09e019ae36a0ff55f684d03c553b4d19ff7e71388d41d7c6b44e810"
+        },
+        {
+          "corpus": "seeded-binary",
+          "format": "br",
+          "mode": "buffer",
+          "bytes": 131077,
+          "sha256": "63c3e8a6ad2b8bfdc1e94cc09e0ecead61da448e6b13f245713e392001cf608c"
+        },
+        {
+          "corpus": "seeded-binary",
+          "format": "br",
+          "mode": "stream",
+          "bytes": 131077,
+          "sha256": "63c3e8a6ad2b8bfdc1e94cc09e0ecead61da448e6b13f245713e392001cf608c"
+        },
+        {
+          "corpus": "seeded-binary",
+          "format": "zstd",
+          "mode": "buffer",
+          "bytes": 131084,
+          "sha256": "08d2b3379bbbf09601386ce46b5f6311e5f7a23a6e55c7f954b5734b2f2ac1a0"
+        },
+        {
+          "corpus": "seeded-binary",
+          "format": "zstd",
+          "mode": "stream",
+          "bytes": 131081,
+          "sha256": "6de0fbd5dd72c3d795ca1d8805e4d45a88040e5c4893566827d159655d533fc3"
+        }
+      ]
+    },
+    "node": {
+      "identity": {
+        "version": "v24.22.3",
+        "revision": null,
+        "platform": "linux",
+        "arch": "arm64",
+        "libraries": {
+          "zlib": "1.3.2",
+          "brotli": "1.2.0",
+          "zstd": "1.5.7"
+        }
+      },
+      "observations": [
+        {
+          "corpus": "api-log",
+          "format": "gzip",
+          "mode": "buffer",
+          "bytes": 73131,
+          "sha256": "383a10d738c2480dfb698600b0a3db8c8a4d89685eec7f348e92be0282abe3d1"
+        },
+        {
+          "corpus": "api-log",
+          "format": "gzip",
+          "mode": "stream",
+          "bytes": 73131,
+          "sha256": "383a10d738c2480dfb698600b0a3db8c8a4d89685eec7f348e92be0282abe3d1"
+        },
+        {
+          "corpus": "api-log",
+          "format": "br",
+          "mode": "buffer",
+          "bytes": 70453,
+          "sha256": "7ec10414261ed34ef378966b36de2a3e81a3749eac54cc73af2fff7f75509d6b"
+        },
+        {
+          "corpus": "api-log",
+          "format": "br",
+          "mode": "stream",
+          "bytes": 70453,
+          "sha256": "7ec10414261ed34ef378966b36de2a3e81a3749eac54cc73af2fff7f75509d6b"
+        },
+        {
+          "corpus": "api-log",
+          "format": "zstd",
+          "mode": "buffer",
+          "bytes": 75090,
+          "sha256": "769f3029f8f6c48d672fe526c9507bbc208ae2473d6aec71574e7eb8b9978314"
+        },
+        {
+          "corpus": "api-log",
+          "format": "zstd",
+          "mode": "stream",
+          "bytes": 75096,
+          "sha256": "e90d9b20ee5e02e2ae9e9a2fa20be4f9fe3cdf27505b46cbd508786c5ab16c82"
+        },
+        {
+          "corpus": "blog-markdown",
+          "format": "gzip",
+          "mode": "buffer",
+          "bytes": 5907,
+          "sha256": "5b680aa9fe8e5fe2d7cc301185bf2b26bd49dabaaf6b51ea460af2945a09fed8"
+        },
+        {
+          "corpus": "blog-markdown",
+          "format": "gzip",
+          "mode": "stream",
+          "bytes": 5907,
+          "sha256": "5b680aa9fe8e5fe2d7cc301185bf2b26bd49dabaaf6b51ea460af2945a09fed8"
+        },
+        {
+          "corpus": "blog-markdown",
+          "format": "br",
+          "mode": "buffer",
+          "bytes": 5978,
+          "sha256": "1ae393539f27e67f2c8d512e958c1352c73b65c4e5f44263e93b6ad82913c4d7"
+        },
+        {
+          "corpus": "blog-markdown",
+          "format": "br",
+          "mode": "stream",
+          "bytes": 5978,
+          "sha256": "1ae393539f27e67f2c8d512e958c1352c73b65c4e5f44263e93b6ad82913c4d7"
+        },
+        {
+          "corpus": "blog-markdown",
+          "format": "zstd",
+          "mode": "buffer",
+          "bytes": 6140,
+          "sha256": "db00a7af5194c40c41131ade8cb1d6540551dee6f95d9a9ea1f7fa4c3f9e74da"
+        },
+        {
+          "corpus": "blog-markdown",
+          "format": "zstd",
+          "mode": "stream",
+          "bytes": 6199,
+          "sha256": "ac23f5e042a4daaaad01dce425c86c825366e7f85c3ec7017e7f362f9e7f8037"
+        },
+        {
+          "corpus": "seeded-binary",
+          "format": "gzip",
+          "mode": "buffer",
+          "bytes": 131130,
+          "sha256": "7d1ca7aa842ca65cd04199e9243f235d382708b3fd75900d4a88cbb244c1fedb"
+        },
+        {
+          "corpus": "seeded-binary",
+          "format": "gzip",
+          "mode": "stream",
+          "bytes": 131130,
+          "sha256": "7d1ca7aa842ca65cd04199e9243f235d382708b3fd75900d4a88cbb244c1fedb"
+        },
+        {
+          "corpus": "seeded-binary",
+          "format": "br",
+          "mode": "buffer",
+          "bytes": 131077,
+          "sha256": "63c3e8a6ad2b8bfdc1e94cc09e0ecead61da448e6b13f245713e392001cf608c"
+        },
+        {
+          "corpus": "seeded-binary",
+          "format": "br",
+          "mode": "stream",
+          "bytes": 131077,
+          "sha256": "63c3e8a6ad2b8bfdc1e94cc09e0ecead61da448e6b13f245713e392001cf608c"
+        },
+        {
+          "corpus": "seeded-binary",
+          "format": "zstd",
+          "mode": "buffer",
+          "bytes": 131084,
+          "sha256": "08d2b3379bbbf09601386ce46b5f6311e5f7a23a6e55c7f954b5734b2f2ac1a0"
+        },
+        {
+          "corpus": "seeded-binary",
+          "format": "zstd",
+          "mode": "stream",
+          "bytes": 131090,
+          "sha256": "e8496edddf7a70268cdf87d6470d540a629b440deb0f1bb30809b4e2f2e9b7ac"
+        }
+      ]
+    }
+  },
+  "decode_checks": {
+    "stable": {
+      "input_count": 54,
+      "buffer_exact": 54,
+      "stream_exact": 54
+    },
+    "canary": {
+      "input_count": 54,
+      "buffer_exact": 54,
+      "stream_exact": 54
+    },
+    "node": {
+      "input_count": 54,
+      "buffer_exact": 54,
+      "stream_exact": 54
+    }
+  },
+  "http": {
+    "stable": [
+      {
+        "producer": "stable",
+        "format": "gzip",
+        "status": 200,
+        "encoding": "gzip",
+        "decoded_bytes": 583748,
+        "match": true
+      },
+      {
+        "producer": "stable",
+        "format": "br",
+        "status": 200,
+        "encoding": "br",
+        "decoded_bytes": 583748,
+        "match": true
+      },
+      {
+        "producer": "stable",
+        "format": "zstd",
+        "status": 200,
+        "encoding": "zstd",
+        "decoded_bytes": 583748,
+        "match": true
+      },
+      {
+        "producer": "canary",
+        "format": "gzip",
+        "status": 200,
+        "encoding": "gzip",
+        "decoded_bytes": 583748,
+        "match": true
+      },
+      {
+        "producer": "canary",
+        "format": "br",
+        "status": 200,
+        "encoding": "br",
+        "decoded_bytes": 583748,
+        "match": true
+      },
+      {
+        "producer": "canary",
+        "format": "zstd",
+        "status": 200,
+        "encoding": "zstd",
+        "decoded_bytes": 583748,
+        "match": true
+      },
+      {
+        "producer": "node",
+        "format": "gzip",
+        "status": 200,
+        "encoding": "gzip",
+        "decoded_bytes": 583748,
+        "match": true
+      },
+      {
+        "producer": "node",
+        "format": "br",
+        "status": 200,
+        "encoding": "br",
+        "decoded_bytes": 583748,
+        "match": true
+      },
+      {
+        "producer": "node",
+        "format": "zstd",
+        "status": 200,
+        "encoding": "zstd",
+        "decoded_bytes": 583748,
+        "match": true
+      }
+    ],
+    "canary": [
+      {
+        "producer": "stable",
+        "format": "gzip",
+        "status": 200,
+        "encoding": "gzip",
+        "decoded_bytes": 583748,
+        "match": true
+      },
+      {
+        "producer": "stable",
+        "format": "br",
+        "status": 200,
+        "encoding": "br",
+        "decoded_bytes": 583748,
+        "match": true
+      },
+      {
+        "producer": "stable",
+        "format": "zstd",
+        "status": 200,
+        "encoding": "zstd",
+        "decoded_bytes": 583748,
+        "match": true
+      },
+      {
+        "producer": "canary",
+        "format": "gzip",
+        "status": 200,
+        "encoding": "gzip",
+        "decoded_bytes": 583748,
+        "match": true
+      },
+      {
+        "producer": "canary",
+        "format": "br",
+        "status": 200,
+        "encoding": "br",
+        "decoded_bytes": 583748,
+        "match": true
+      },
+      {
+        "producer": "canary",
+        "format": "zstd",
+        "status": 200,
+        "encoding": "zstd",
+        "decoded_bytes": 583748,
+        "match": true
+      },
+      {
+        "producer": "node",
+        "format": "gzip",
+        "status": 200,
+        "encoding": "gzip",
+        "decoded_bytes": 583748,
+        "match": true
+      },
+      {
+        "producer": "node",
+        "format": "br",
+        "status": 200,
+        "encoding": "br",
+        "decoded_bytes": 583748,
+        "match": true
+      },
+      {
+        "producer": "node",
+        "format": "zstd",
+        "status": 200,
+        "encoding": "zstd",
+        "decoded_bytes": 583748,
+        "match": true
+      }
+    ]
+  },
+  "zstd_stream_suffix": {
+    "api-log": {
+      "old_bytes": 75096,
+      "new_bytes": 75087,
+      "new_is_exact_old_prefix": true,
+      "old_suffix_hex": "28b52ffd2000010000"
+    },
+    "blog-markdown": {
+      "old_bytes": 6199,
+      "new_bytes": 6190,
+      "new_is_exact_old_prefix": true,
+      "old_suffix_hex": "28b52ffd2000010000"
+    },
+    "seeded-binary": {
+      "old_bytes": 131090,
+      "new_bytes": 131081,
+      "new_is_exact_old_prefix": true,
+      "old_suffix_hex": "28b52ffd2000010000"
+    }
+  },
+  "node_decoded_suffix_bytes": 0,
+  "timing": [
+    {
+      "trial": 1,
+      "build": "stable",
+      "samples": [
+        {
+          "corpus": "api-log",
+          "format": "gzip",
+          "iterations": 13,
+          "input_bytes": 583748,
+          "encode_ms": 21.790168,
+          "decode_ms": 6.630108999999997
+        },
+        {
+          "corpus": "api-log",
+          "format": "br",
+          "iterations": 13,
+          "input_bytes": 583748,
+          "encode_ms": 17.444069,
+          "decode_ms": 4.582059000000001
+        },
+        {
+          "corpus": "api-log",
+          "format": "zstd",
+          "iterations": 13,
+          "input_bytes": 583748,
+          "encode_ms": 5.96168999999999,
+          "decode_ms": 2.4392179999999968
+        },
+        {
+          "corpus": "blog-markdown",
+          "format": "gzip",
+          "iterations": 160,
+          "input_bytes": 13934,
+          "encode_ms": 7.398071000000002,
+          "decode_ms": 4.290307999999996
+        },
+        {
+          "corpus": "blog-markdown",
+          "format": "br",
+          "iterations": 160,
+          "input_bytes": 13934,
+          "encode_ms": 14.095055000000002,
+          "decode_ms": 4.064933000000011
+        },
+        {
+          "corpus": "blog-markdown",
+          "format": "zstd",
+          "iterations": 160,
+          "input_bytes": 13934,
+          "encode_ms": 5.695981000000003,
+          "decode_ms": 2.424509999999998
+        },
+        {
+          "corpus": "seeded-binary",
+          "format": "gzip",
+          "iterations": 56,
+          "input_bytes": 131072,
+          "encode_ms": 59.62794199999999,
+          "decode_ms": 2.9109689999999944
+        },
+        {
+          "corpus": "seeded-binary",
+          "format": "br",
+          "iterations": 56,
+          "input_bytes": 131072,
+          "encode_ms": 4.77364399999999,
+          "decode_ms": 2.135883000000007
+        },
+        {
+          "corpus": "seeded-binary",
+          "format": "zstd",
+          "iterations": 56,
+          "input_bytes": 131072,
+          "encode_ms": 2.4423010000000147,
+          "decode_ms": 1.2667550000000176
+        }
+      ]
+    },
+    {
+      "trial": 1,
+      "build": "canary",
+      "samples": [
+        {
+          "corpus": "api-log",
+          "format": "gzip",
+          "iterations": 13,
+          "input_bytes": 583748,
+          "encode_ms": 19.767576999999996,
+          "decode_ms": 3.6685560000000024
+        },
+        {
+          "corpus": "api-log",
+          "format": "br",
+          "iterations": 13,
+          "input_bytes": 583748,
+          "encode_ms": 14.453390000000006,
+          "decode_ms": 3.8686819999999997
+        },
+        {
+          "corpus": "api-log",
+          "format": "zstd",
+          "iterations": 13,
+          "input_bytes": 583748,
+          "encode_ms": 6.583483999999999,
+          "decode_ms": 2.8010110000000026
+        },
+        {
+          "corpus": "blog-markdown",
+          "format": "gzip",
+          "iterations": 160,
+          "input_bytes": 13934,
+          "encode_ms": 6.228941000000006,
+          "decode_ms": 2.3063429999999983
+        },
+        {
+          "corpus": "blog-markdown",
+          "format": "br",
+          "iterations": 160,
+          "input_bytes": 13934,
+          "encode_ms": 10.443916000000002,
+          "decode_ms": 3.4839720000000085
+        },
+        {
+          "corpus": "blog-markdown",
+          "format": "zstd",
+          "iterations": 160,
+          "input_bytes": 13934,
+          "encode_ms": 6.090939999999989,
+          "decode_ms": 2.5570519999999988
+        },
+        {
+          "corpus": "seeded-binary",
+          "format": "gzip",
+          "iterations": 56,
+          "input_bytes": 131072,
+          "encode_ms": 43.041917999999995,
+          "decode_ms": 1.5337140000000034
+        },
+        {
+          "corpus": "seeded-binary",
+          "format": "br",
+          "iterations": 56,
+          "input_bytes": 131072,
+          "encode_ms": 4.184017000000011,
+          "decode_ms": 1.1877969999999891
+        },
+        {
+          "corpus": "seeded-binary",
+          "format": "zstd",
+          "iterations": 56,
+          "input_bytes": 131072,
+          "encode_ms": 2.3533840000000055,
+          "decode_ms": 1.0860040000000026
+        }
+      ]
+    },
+    {
+      "trial": 2,
+      "build": "canary",
+      "samples": [
+        {
+          "corpus": "api-log",
+          "format": "gzip",
+          "iterations": 13,
+          "input_bytes": 583748,
+          "encode_ms": 19.381158999999997,
+          "decode_ms": 3.789099
+        },
+        {
+          "corpus": "api-log",
+          "format": "br",
+          "iterations": 13,
+          "input_bytes": 583748,
+          "encode_ms": 13.641969999999993,
+          "decode_ms": 3.7754309999999975
+        },
+        {
+          "corpus": "api-log",
+          "format": "zstd",
+          "iterations": 13,
+          "input_bytes": 583748,
+          "encode_ms": 7.039902999999995,
+          "decode_ms": 2.5648020000000002
+        },
+        {
+          "corpus": "blog-markdown",
+          "format": "gzip",
+          "iterations": 160,
+          "input_bytes": 13934,
+          "encode_ms": 6.541150999999999,
+          "decode_ms": 2.3675089999999983
+        },
+        {
+          "corpus": "blog-markdown",
+          "format": "br",
+          "iterations": 160,
+          "input_bytes": 13934,
+          "encode_ms": 10.897501000000005,
+          "decode_ms": 3.426971999999992
+        },
+        {
+          "corpus": "blog-markdown",
+          "format": "zstd",
+          "iterations": 160,
+          "input_bytes": 13934,
+          "encode_ms": 6.149566000000007,
+          "decode_ms": 2.4955929999999995
+        },
+        {
+          "corpus": "seeded-binary",
+          "format": "gzip",
+          "iterations": 56,
+          "input_bytes": 131072,
+          "encode_ms": 42.44274899999999,
+          "decode_ms": 1.884883000000002
+        },
+        {
+          "corpus": "seeded-binary",
+          "format": "br",
+          "iterations": 56,
+          "input_bytes": 131072,
+          "encode_ms": 4.793685000000011,
+          "decode_ms": 1.2928380000000175
+        },
+        {
+          "corpus": "seeded-binary",
+          "format": "zstd",
+          "iterations": 56,
+          "input_bytes": 131072,
+          "encode_ms": 2.169009000000017,
+          "decode_ms": 1.2500880000000052
+        }
+      ]
+    },
+    {
+      "trial": 2,
+      "build": "stable",
+      "samples": [
+        {
+          "corpus": "api-log",
+          "format": "gzip",
+          "iterations": 13,
+          "input_bytes": 583748,
+          "encode_ms": 23.131758,
+          "decode_ms": 6.813400999999999
+        },
+        {
+          "corpus": "api-log",
+          "format": "br",
+          "iterations": 13,
+          "input_bytes": 583748,
+          "encode_ms": 19.043325000000003,
+          "decode_ms": 4.8031019999999955
+        },
+        {
+          "corpus": "api-log",
+          "format": "zstd",
+          "iterations": 13,
+          "input_bytes": 583748,
+          "encode_ms": 6.767110000000002,
+          "decode_ms": 2.8530530000000027
+        },
+        {
+          "corpus": "blog-markdown",
+          "format": "gzip",
+          "iterations": 160,
+          "input_bytes": 13934,
+          "encode_ms": 7.905197999999999,
+          "decode_ms": 4.462309000000005
+        },
+        {
+          "corpus": "blog-markdown",
+          "format": "br",
+          "iterations": 160,
+          "input_bytes": 13934,
+          "encode_ms": 14.588766000000007,
+          "decode_ms": 4.052557000000007
+        },
+        {
+          "corpus": "blog-markdown",
+          "format": "zstd",
+          "iterations": 160,
+          "input_bytes": 13934,
+          "encode_ms": 5.853938999999983,
+          "decode_ms": 2.550301999999988
+        },
+        {
+          "corpus": "seeded-binary",
+          "format": "gzip",
+          "iterations": 56,
+          "input_bytes": 131072,
+          "encode_ms": 58.959355999999985,
+          "decode_ms": 2.320008999999999
+        },
+        {
+          "corpus": "seeded-binary",
+          "format": "br",
+          "iterations": 56,
+          "input_bytes": 131072,
+          "encode_ms": 4.369557999999984,
+          "decode_ms": 1.2829220000000134
+        },
+        {
+          "corpus": "seeded-binary",
+          "format": "zstd",
+          "iterations": 56,
+          "input_bytes": 131072,
+          "encode_ms": 2.189758000000012,
+          "decode_ms": 1.1632960000000026
+        }
+      ]
+    },
+    {
+      "trial": 3,
+      "build": "stable",
+      "samples": [
+        {
+          "corpus": "api-log",
+          "format": "gzip",
+          "iterations": 13,
+          "input_bytes": 583748,
+          "encode_ms": 21.915377,
+          "decode_ms": 6.507609000000002
+        },
+        {
+          "corpus": "api-log",
+          "format": "br",
+          "iterations": 13,
+          "input_bytes": 583748,
+          "encode_ms": 17.111400000000003,
+          "decode_ms": 4.646394000000001
+        },
+        {
+          "corpus": "api-log",
+          "format": "zstd",
+          "iterations": 13,
+          "input_bytes": 583748,
+          "encode_ms": 6.132356999999999,
+          "decode_ms": 2.6345519999999993
+        },
+        {
+          "corpus": "blog-markdown",
+          "format": "gzip",
+          "iterations": 160,
+          "input_bytes": 13934,
+          "encode_ms": 7.677239,
+          "decode_ms": 3.8901400000000024
+        },
+        {
+          "corpus": "blog-markdown",
+          "format": "br",
+          "iterations": 160,
+          "input_bytes": 13934,
+          "encode_ms": 14.466931000000002,
+          "decode_ms": 3.923973999999987
+        },
+        {
+          "corpus": "blog-markdown",
+          "format": "zstd",
+          "iterations": 160,
+          "input_bytes": 13934,
+          "encode_ms": 5.769856000000004,
+          "decode_ms": 2.4407179999999897
+        },
+        {
+          "corpus": "seeded-binary",
+          "format": "gzip",
+          "iterations": 56,
+          "input_bytes": 131072,
+          "encode_ms": 62.29299399999999,
+          "decode_ms": 2.377342999999996
+        },
+        {
+          "corpus": "seeded-binary",
+          "format": "br",
+          "iterations": 56,
+          "input_bytes": 131072,
+          "encode_ms": 4.4107250000000136,
+          "decode_ms": 1.2565049999999758
+        },
+        {
+          "corpus": "seeded-binary",
+          "format": "zstd",
+          "iterations": 56,
+          "input_bytes": 131072,
+          "encode_ms": 2.273758000000015,
+          "decode_ms": 1.1445879999999988
+        }
+      ]
+    },
+    {
+      "trial": 3,
+      "build": "canary",
+      "samples": [
+        {
+          "corpus": "api-log",
+          "format": "gzip",
+          "iterations": 13,
+          "input_bytes": 583748,
+          "encode_ms": 20.852539,
+          "decode_ms": 3.8705989999999986
+        },
+        {
+          "corpus": "api-log",
+          "format": "br",
+          "iterations": 13,
+          "input_bytes": 583748,
+          "encode_ms": 12.958967000000001,
+          "decode_ms": 3.9713489999999965
+        },
+        {
+          "corpus": "api-log",
+          "format": "zstd",
+          "iterations": 13,
+          "input_bytes": 583748,
+          "encode_ms": 6.864942999999997,
+          "decode_ms": 2.758677000000006
+        },
+        {
+          "corpus": "blog-markdown",
+          "format": "gzip",
+          "iterations": 160,
+          "input_bytes": 13934,
+          "encode_ms": 6.626068000000004,
+          "decode_ms": 2.361885000000001
+        },
+        {
+          "corpus": "blog-markdown",
+          "format": "br",
+          "iterations": 160,
+          "input_bytes": 13934,
+          "encode_ms": 10.453125,
+          "decode_ms": 3.416304999999994
+        },
+        {
+          "corpus": "blog-markdown",
+          "format": "zstd",
+          "iterations": 160,
+          "input_bytes": 13934,
+          "encode_ms": 6.029939999999996,
+          "decode_ms": 2.5141770000000037
+        },
+        {
+          "corpus": "seeded-binary",
+          "format": "gzip",
+          "iterations": 56,
+          "input_bytes": 131072,
+          "encode_ms": 40.699242,
+          "decode_ms": 2.148425000000003
+        },
+        {
+          "corpus": "seeded-binary",
+          "format": "br",
+          "iterations": 56,
+          "input_bytes": 131072,
+          "encode_ms": 4.476851000000011,
+          "decode_ms": 1.6287560000000099
+        },
+        {
+          "corpus": "seeded-binary",
+          "format": "zstd",
+          "iterations": 56,
+          "input_bytes": 131072,
+          "encode_ms": 2.963636000000008,
+          "decode_ms": 1.053087000000005
+        }
+      ]
+    },
+    {
+      "trial": 4,
+      "build": "canary",
+      "samples": [
+        {
+          "corpus": "api-log",
+          "format": "gzip",
+          "iterations": 13,
+          "input_bytes": 583748,
+          "encode_ms": 21.628584999999998,
+          "decode_ms": 5.3148960000000045
+        },
+        {
+          "corpus": "api-log",
+          "format": "br",
+          "iterations": 13,
+          "input_bytes": 583748,
+          "encode_ms": 14.008595999999997,
+          "decode_ms": 5.344770999999994
+        },
+        {
+          "corpus": "api-log",
+          "format": "zstd",
+          "iterations": 13,
+          "input_bytes": 583748,
+          "encode_ms": 7.432570999999996,
+          "decode_ms": 3.2041789999999963
+        },
+        {
+          "corpus": "blog-markdown",
+          "format": "gzip",
+          "iterations": 160,
+          "input_bytes": 13934,
+          "encode_ms": 8.890535,
+          "decode_ms": 3.018512000000001
+        },
+        {
+          "corpus": "blog-markdown",
+          "format": "br",
+          "iterations": 160,
+          "input_bytes": 13934,
+          "encode_ms": 10.253791000000007,
+          "decode_ms": 4.0573909999999955
+        },
+        {
+          "corpus": "blog-markdown",
+          "format": "zstd",
+          "iterations": 160,
+          "input_bytes": 13934,
+          "encode_ms": 5.933314999999993,
+          "decode_ms": 2.5365520000000004
+        },
+        {
+          "corpus": "seeded-binary",
+          "format": "gzip",
+          "iterations": 56,
+          "input_bytes": 131072,
+          "encode_ms": 41.831914,
+          "decode_ms": 2.094340999999986
+        },
+        {
+          "corpus": "seeded-binary",
+          "format": "br",
+          "iterations": 56,
+          "input_bytes": 131072,
+          "encode_ms": 4.077266000000009,
+          "decode_ms": 1.2062959999999805
+        },
+        {
+          "corpus": "seeded-binary",
+          "format": "zstd",
+          "iterations": 56,
+          "input_bytes": 131072,
+          "encode_ms": 1.9481329999999843,
+          "decode_ms": 1.0046710000000019
+        }
+      ]
+    },
+    {
+      "trial": 4,
+      "build": "stable",
+      "samples": [
+        {
+          "corpus": "api-log",
+          "format": "gzip",
+          "iterations": 13,
+          "input_bytes": 583748,
+          "encode_ms": 21.599251999999996,
+          "decode_ms": 6.369233000000001
+        },
+        {
+          "corpus": "api-log",
+          "format": "br",
+          "iterations": 13,
+          "input_bytes": 583748,
+          "encode_ms": 17.440901999999994,
+          "decode_ms": 4.814893999999995
+        },
+        {
+          "corpus": "api-log",
+          "format": "zstd",
+          "iterations": 13,
+          "input_bytes": 583748,
+          "encode_ms": 6.110816,
+          "decode_ms": 2.7558030000000002
+        },
+        {
+          "corpus": "blog-markdown",
+          "format": "gzip",
+          "iterations": 160,
+          "input_bytes": 13934,
+          "encode_ms": 7.465529000000004,
+          "decode_ms": 4.164515999999992
+        },
+        {
+          "corpus": "blog-markdown",
+          "format": "br",
+          "iterations": 160,
+          "input_bytes": 13934,
+          "encode_ms": 15.668185999999992,
+          "decode_ms": 4.077681999999996
+        },
+        {
+          "corpus": "blog-markdown",
+          "format": "zstd",
+          "iterations": 160,
+          "input_bytes": 13934,
+          "encode_ms": 6.691317999999995,
+          "decode_ms": 2.725594000000001
+        },
+        {
+          "corpus": "seeded-binary",
+          "format": "gzip",
+          "iterations": 56,
+          "input_bytes": 131072,
+          "encode_ms": 63.89574999999999,
+          "decode_ms": 2.9124280000000056
+        },
+        {
+          "corpus": "seeded-binary",
+          "format": "br",
+          "iterations": 56,
+          "input_bytes": 131072,
+          "encode_ms": 5.785523000000012,
+          "decode_ms": 1.8888819999999953
+        },
+        {
+          "corpus": "seeded-binary",
+          "format": "zstd",
+          "iterations": 56,
+          "input_bytes": 131072,
+          "encode_ms": 3.227345999999983,
+          "decode_ms": 1.4283799999999758
+        }
+      ]
+    },
+    {
+      "trial": 5,
+      "build": "stable",
+      "samples": [
+        {
+          "corpus": "api-log",
+          "format": "gzip",
+          "iterations": 13,
+          "input_bytes": 583748,
+          "encode_ms": 24.315385999999997,
+          "decode_ms": 7.559654000000002
+        },
+        {
+          "corpus": "api-log",
+          "format": "br",
+          "iterations": 13,
+          "input_bytes": 583748,
+          "encode_ms": 17.778778000000003,
+          "decode_ms": 4.500391999999991
+        },
+        {
+          "corpus": "api-log",
+          "format": "zstd",
+          "iterations": 13,
+          "input_bytes": 583748,
+          "encode_ms": 6.341149999999999,
+          "decode_ms": 3.1058029999999945
+        },
+        {
+          "corpus": "blog-markdown",
+          "format": "gzip",
+          "iterations": 160,
+          "input_bytes": 13934,
+          "encode_ms": 8.83711799999999,
+          "decode_ms": 4.5686429999999945
+        },
+        {
+          "corpus": "blog-markdown",
+          "format": "br",
+          "iterations": 160,
+          "input_bytes": 13934,
+          "encode_ms": 15.392727000000008,
+          "decode_ms": 4.124182999999988
+        },
+        {
+          "corpus": "blog-markdown",
+          "format": "zstd",
+          "iterations": 160,
+          "input_bytes": 13934,
+          "encode_ms": 6.325275000000005,
+          "decode_ms": 3.028261999999984
+        },
+        {
+          "corpus": "seeded-binary",
+          "format": "gzip",
+          "iterations": 56,
+          "input_bytes": 131072,
+          "encode_ms": 64.13845900000001,
+          "decode_ms": 2.697428000000002
+        },
+        {
+          "corpus": "seeded-binary",
+          "format": "br",
+          "iterations": 56,
+          "input_bytes": 131072,
+          "encode_ms": 4.974186000000003,
+          "decode_ms": 1.5036309999999844
+        },
+        {
+          "corpus": "seeded-binary",
+          "format": "zstd",
+          "iterations": 56,
+          "input_bytes": 131072,
+          "encode_ms": 2.37159299999999,
+          "decode_ms": 1.3057129999999972
+        }
+      ]
+    },
+    {
+      "trial": 5,
+      "build": "canary",
+      "samples": [
+        {
+          "corpus": "api-log",
+          "format": "gzip",
+          "iterations": 13,
+          "input_bytes": 583748,
+          "encode_ms": 19.185200000000002,
+          "decode_ms": 4.099183000000004
+        },
+        {
+          "corpus": "api-log",
+          "format": "br",
+          "iterations": 13,
+          "input_bytes": 583748,
+          "encode_ms": 14.17118,
+          "decode_ms": 4.035015000000001
+        },
+        {
+          "corpus": "api-log",
+          "format": "zstd",
+          "iterations": 13,
+          "input_bytes": 583748,
+          "encode_ms": 7.458571000000006,
+          "decode_ms": 3.0723449999999985
+        },
+        {
+          "corpus": "blog-markdown",
+          "format": "gzip",
+          "iterations": 160,
+          "input_bytes": 13934,
+          "encode_ms": 6.387775000000005,
+          "decode_ms": 2.900261999999998
+        },
+        {
+          "corpus": "blog-markdown",
+          "format": "br",
+          "iterations": 160,
+          "input_bytes": 13934,
+          "encode_ms": 10.981209000000007,
+          "decode_ms": 3.4287629999999893
+        },
+        {
+          "corpus": "blog-markdown",
+          "format": "zstd",
+          "iterations": 160,
+          "input_bytes": 13934,
+          "encode_ms": 6.449108999999993,
+          "decode_ms": 2.747551999999999
+        },
+        {
+          "corpus": "seeded-binary",
+          "format": "gzip",
+          "iterations": 56,
+          "input_bytes": 131072,
+          "encode_ms": 41.76437200000001,
+          "decode_ms": 1.6920479999999998
+        },
+        {
+          "corpus": "seeded-binary",
+          "format": "br",
+          "iterations": 56,
+          "input_bytes": 131072,
+          "encode_ms": 3.9004320000000234,
+          "decode_ms": 1.379380999999995
+        },
+        {
+          "corpus": "seeded-binary",
+          "format": "zstd",
+          "iterations": 56,
+          "input_bytes": 131072,
+          "encode_ms": 2.093716999999998,
+          "decode_ms": 1.21983800000001
+        }
+      ]
+    }
+  ]
+}

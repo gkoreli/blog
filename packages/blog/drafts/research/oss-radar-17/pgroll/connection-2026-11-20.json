@@ -1,0 +1,81 @@
+{
+  "date": "2026-11-20",
+  "fixture_sha256": "d74d8944a0fa06791fc1f5321b738199edd262fcad5577dce16fa8294bd1c02c",
+  "source_commit": "777a5350e09012b29d26b9611122046d8a96fc1c",
+  "environment": "Alpine 3.23.4 on aarch64, Python 3.12.13, Lima 2.2.1 VZ",
+  "binary_sha256": "c37f41f29b8e5784a47f91069975bd397448cf1014d47cd426680f18a84804a7",
+  "pgroll": "pgroll version 0.16.3",
+  "postgresql": "psql (PostgreSQL) 17.12",
+  "backend_count": 1,
+  "events": {
+    "configured-old": [
+      [
+        "public_v1",
+        "text",
+        "007"
+      ]
+    ],
+    "new-transaction": [
+      [
+        "public_v2",
+        "integer",
+        "11"
+      ]
+    ],
+    "after-commit": [
+      [
+        "public_v1",
+        "text",
+        "11"
+      ]
+    ],
+    "after-transaction-rollback": [
+      [
+        "public_v1",
+        "0"
+      ]
+    ],
+    "multi-schema-read": [
+      [
+        "public_v2, public",
+        "public_v2",
+        "integer",
+        "11"
+      ]
+    ],
+    "session-after-commit": [
+      [
+        "public_v2",
+        "integer",
+        "17"
+      ]
+    ],
+    "stale-session": [
+      [
+        "public_v2",
+        "(none)"
+      ]
+    ],
+    "after-reselecting-old": [
+      [
+        "1",
+        "text",
+        "007"
+      ],
+      [
+        "2",
+        "text",
+        "11"
+      ],
+      [
+        "4",
+        "text",
+        "17"
+      ]
+    ]
+  },
+  "sqlstate": {
+    "multi-schema-write": "23502",
+    "stale-session-read": "42P01"
+  }
+}

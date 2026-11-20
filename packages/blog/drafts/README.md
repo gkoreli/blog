@@ -2,6 +2,8 @@
 
 ## New active writing
 
+- **November 23 OSS Radar target:** [#17 — What Still Works After an Upgrade?](research/oss-radar-17/article.md). Bun compression and AOT tests lead the issue, alongside flagd, pgroll, and Hot Updater. [Research and fixtures](research/oss-radar-17/README.md).
+
 - **Published November 19, 2026:** [OSS Radar #16: Saved Skills, Inbox Replies, and Health Checks](https://gkoreli.com/oss-radar-16-saved-skills-and-inbox-replies). The four reviews cover GoDoxy's config reload, Hermes's chat CLI, Plannotator's Inbox, and NemoClaw's policy client. [Maintained source](../posts/048-oss-radar-16-saved-skills-and-inbox-replies.md) · [Release checks](research/oss-radar-16/10-publication-2026-11-19.md).
 
 - **Published November 18, 2026:** [Web Analytics Tools Disagree About What Counts](https://gkoreli.com/web-analytics-comparison-ai-traffic). The comparison covers ten analytics options, the verified history upgrade and a worked agent access example. [Maintained source](../posts/047-web-analytics-comparison-ai-traffic.md), [research](research/web-analytics-comparison-ai-traffic/README.md) and [live verification](research/web-analytics-comparison-ai-traffic/publication-2026-11-18.json).

@@ -1,0 +1,331 @@
+{
+  "date": "2026-11-20",
+  "fixture_sha256": "f5e04bd4344cb01104fea9f61744ce2cfce0ba7c48ab7bb208ebc4dc9e68687c",
+  "archives": {
+    "stable_sha256": "b5d6bc2e13caf14e57c89661e89efd073ff16165b41bfe43882616410609cd10",
+    "earlier_npm_integrity": "sha512-MD6SdA/djWBymYDM5d9/E00a8wOCa9qksllpRaNakj8fYEEwBsOA66nwyNeskImFzSiyHMWs31FpF4/1iWIRvQ==",
+    "canary_sha256": "eb412e1b90d87d8d71377d3f38cd188e7303dddd03b97debf87df03fff1c412f"
+  },
+  "source_revisions": {
+    "stable": "a7733435cf40429e3b35c36072769df2052b80f1",
+    "earlier": "ca7729d01a30856c5f613886057a8d45d7c21a74",
+    "canary": "7bb427f3be953a1a9bf575ee8c87dc0946106de1"
+  },
+  "machine": {
+    "system": "Darwin",
+    "release": "27.2.0",
+    "arch": "arm64"
+  },
+  "binaries": {
+    "stable": {
+      "revision": "1.4.5+a7733435c",
+      "sha256": "e2984124f1514e1e6bbda20adedbf07a02c443c6a5828853a15c7c7abf78e19f"
+    },
+    "earlier": {
+      "revision": "1.4.6-canary.1+ca7729d01",
+      "sha256": "2d2c47fc2ae79fd417366a9fd13143a83a890f3da8d2ee49969d288df160e51b"
+    },
+    "canary": {
+      "revision": "1.4.6-canary.1+7bb427f3b",
+      "sha256": "5fd758f56f8a72ef34bde4a46fe85a36968d3fb7f3d82975ec3eeca4a4307dc2"
+    }
+  },
+  "tests": {
+    "stable-failed-then-mocked-jit": {
+      "status": 1,
+      "counts": {
+        "pass": 1,
+        "fail": 1
+      },
+      "printed_sequence": null,
+      "aot_diagnostic_lines": 0
+    },
+    "stable-preload-order-jit": {
+      "status": 1,
+      "counts": {
+        "pass": 0,
+        "fail": 1
+      },
+      "printed_sequence": null,
+      "aot_diagnostic_lines": 0
+    },
+    "earlier-failed-then-mocked-jit": {
+      "status": 1,
+      "counts": {
+        "pass": 1,
+        "fail": 1
+      },
+      "printed_sequence": null,
+      "aot_diagnostic_lines": 0
+    },
+    "earlier-failed-then-mocked-aot": {
+      "status": 1,
+      "counts": {
+        "pass": 1,
+        "fail": 1
+      },
+      "printed_sequence": null,
+      "aot_diagnostic_lines": 0
+    },
+    "earlier-preload-order-jit": {
+      "status": 0,
+      "counts": {
+        "pass": 1,
+        "fail": 0
+      },
+      "printed_sequence": "[\"observer\",\"provider\",\"factory\"]",
+      "aot_diagnostic_lines": 0
+    },
+    "earlier-preload-order-aot": {
+      "status": 0,
+      "counts": {
+        "pass": 1,
+        "fail": 0
+      },
+      "printed_sequence": "[\"observer\",\"provider\",\"factory\"]",
+      "aot_diagnostic_lines": 0
+    },
+    "canary-failed-then-mocked-jit": {
+      "status": 1,
+      "counts": {
+        "pass": 1,
+        "fail": 1
+      },
+      "printed_sequence": null,
+      "aot_diagnostic_lines": 0
+    },
+    "canary-failed-then-mocked-aot": {
+      "status": 1,
+      "counts": {
+        "pass": 1,
+        "fail": 1
+      },
+      "printed_sequence": null,
+      "aot_diagnostic_lines": 0
+    },
+    "canary-preload-order-jit": {
+      "status": 0,
+      "counts": {
+        "pass": 1,
+        "fail": 0
+      },
+      "printed_sequence": "[\"observer\",\"provider\",\"factory\"]",
+      "aot_diagnostic_lines": 0
+    },
+    "canary-preload-order-aot": {
+      "status": 0,
+      "counts": {
+        "pass": 1,
+        "fail": 0
+      },
+      "printed_sequence": "[\"observer\",\"provider\",\"factory\"]",
+      "aot_diagnostic_lines": 0
+    }
+  },
+  "program": {
+    "bundle": {
+      "build_status": 0,
+      "run_status": 0,
+      "output": {
+        "retained": [
+          "a",
+          "c"
+        ],
+        "changed": [
+          "b"
+        ]
+      },
+      "matches_source": true,
+      "file_bytes": 139294322
+    },
+    "aot": {
+      "build_status": 0,
+      "run_status": 0,
+      "output": {
+        "retained": [
+          "a",
+          "c"
+        ],
+        "changed": [
+          "b"
+        ]
+      },
+      "matches_source": true,
+      "file_bytes": 53365874
+    }
+  },
+  "path_resolution": {
+    "earlier": {
+      "build_status": 0,
+      "before": {
+        "literal": {
+          "status": 1,
+          "output": null
+        },
+        "argument": {
+          "status": 0,
+          "output": {
+            "basename": "v1.json",
+            "data": {
+              "version": 1
+            }
+          }
+        },
+        "direct_read": {
+          "status": 0,
+          "output": {
+            "basename": "active.json",
+            "data": {
+              "version": 1
+            }
+          }
+        }
+      },
+      "after": {
+        "literal": {
+          "status": 1,
+          "output": null
+        },
+        "argument": {
+          "status": 0,
+          "output": {
+            "basename": "v1.json",
+            "data": {
+              "version": 1
+            }
+          }
+        },
+        "direct_read": {
+          "status": 0,
+          "output": {
+            "basename": "active.json",
+            "data": {
+              "version": 2
+            }
+          }
+        }
+      }
+    },
+    "canary": {
+      "build_status": 0,
+      "before": {
+        "literal": {
+          "status": 0,
+          "output": {
+            "basename": "v1.json",
+            "data": {
+              "version": 1
+            }
+          }
+        },
+        "argument": {
+          "status": 0,
+          "output": {
+            "basename": "v1.json",
+            "data": {
+              "version": 1
+            }
+          }
+        },
+        "direct_read": {
+          "status": 0,
+          "output": {
+            "basename": "active.json",
+            "data": {
+              "version": 1
+            }
+          }
+        }
+      },
+      "after": {
+        "literal": {
+          "status": 0,
+          "output": {
+            "basename": "v1.json",
+            "data": {
+              "version": 1
+            }
+          }
+        },
+        "argument": {
+          "status": 0,
+          "output": {
+            "basename": "v1.json",
+            "data": {
+              "version": 1
+            }
+          }
+        },
+        "direct_read": {
+          "status": 0,
+          "output": {
+            "basename": "active.json",
+            "data": {
+              "version": 2
+            }
+          }
+        }
+      }
+    },
+    "source": {
+      "before": {
+        "literal": {
+          "status": 0,
+          "output": {
+            "basename": "v1.json",
+            "data": {
+              "version": 1
+            }
+          }
+        },
+        "argument": {
+          "status": 0,
+          "output": {
+            "basename": "v1.json",
+            "data": {
+              "version": 1
+            }
+          }
+        },
+        "direct_read": {
+          "status": 0,
+          "output": {
+            "basename": "active.json",
+            "data": {
+              "version": 1
+            }
+          }
+        }
+      },
+      "after": {
+        "literal": {
+          "status": 0,
+          "output": {
+            "basename": "v2.json",
+            "data": {
+              "version": 2
+            }
+          }
+        },
+        "argument": {
+          "status": 0,
+          "output": {
+            "basename": "v2.json",
+            "data": {
+              "version": 2
+            }
+          }
+        },
+        "direct_read": {
+          "status": 0,
+          "output": {
+            "basename": "active.json",
+            "data": {
+              "version": 2
+            }
+          }
+        }
+      }
+    }
+  }
+}
