@@ -1,4 +1,5 @@
 import { html, raw } from '@nisli/core';
+import { dropdown } from '@gkoreli/design/dropdown';
 import { archiveTopicIndex } from '../templates/archive-topics.js';
 import { reportCheckSectionHtml } from '../lib/site-audit-report.js';
 import { dataFactsHtml, groupedEvidenceTableHtml, metricTileHtml, rankedRowHtml } from '../lib/data-display.js';
@@ -164,6 +165,17 @@ export function designLanguagePage() {
   <h3 class="dl-pattern-title">A report owns its scope</h3>
   <p class="dl-body-note">Calendar, window and selection ownership belong beside each report's controls. Independent reports stay visibly bounded. Localizing an instant does not change the calendar used to aggregate its data. This scope is illustrative.</p>
   ${reportContextHeading({ id: 'dl-scope-heading', title: 'Example access report', description: 'A separate report with its own selections and explicit completed-day calendar.', scope: [{ label: 'Window', value: '28 completed days' }, { label: 'Calendar', value: 'UTC reporting days' }, { label: 'Controls in this report', value: 'Article, client and role' }] })}
+  <h3 class="dl-pattern-title" id="dropdown">Dropdown</h3>
+  <p class="dl-body-note">Use a dropdown for one choice from a list. Keep its label visible as the selection changes. Disable the field while its choices load.</p>
+  <div class="dl-dropdown-examples">
+    ${dropdown({ id: 'dl-section', label: 'Section', value: 'engineering', options: [
+      { value: '', label: 'Everything' }, { value: 'engineering', label: 'Engineering' },
+      { value: 'essays', label: 'Essays' }, { value: 'oss-radar', label: 'OSS Radar' },
+    ] })}
+    ${dropdown({ id: 'dl-client', label: 'Client declaration', disabled: true, options: [
+      { value: '', label: 'Loading clients…' },
+    ] })}
+  </div>
   <h3 class="dl-pattern-title" id="report-filters">Report filters</h3>
   <p class="dl-body-note">Keep the period choices visible for quick comparisons. A compact traffic selector shows the current category. Both controls use native keyboard interaction.</p>
   ${reportFilters('dl-example')}

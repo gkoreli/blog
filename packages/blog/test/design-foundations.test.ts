@@ -1,6 +1,28 @@
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import test from 'node:test';
+import { dropdown } from '@gkoreli/design/dropdown';
+import { renderContent } from '../src/lib/ssg.js';
+
+test('a shared dropdown keeps its form name, accessible labels and selected option in static HTML', async () => {
+  const [markup] = await renderContent([dropdown({
+    id: 'sample-scope', name: 'scope', label: 'Scope', describedBy: 'scope-note', value: 'all',
+    options: [{ value: '', label: 'Choose' }, { value: 'all', label: 'All <events>', accessibleLabel: 'All recorded events' }],
+  })]);
+  assert.ok(markup);
+  const form = document.createElement('form');
+  form.innerHTML = markup;
+  const select = form.querySelector('select');
+  assert.ok(select);
+  assert.equal(form.querySelector('label')?.htmlFor, select.id);
+  assert.equal(select.name, 'scope');
+  assert.equal(select.disabled, false);
+  assert.equal(select.getAttribute('aria-describedby'), 'scope-note');
+  const option = select.querySelector('option[selected]');
+  assert.equal(option?.getAttribute('value'), 'all');
+  assert.equal(option?.textContent?.trim(), 'All <events>');
+  assert.equal(option?.getAttribute('aria-label'), 'All recorded events');
+});
 
 function luminance(color: string): number {
   assert.match(color, /^#[\da-f]{6}$/iu);

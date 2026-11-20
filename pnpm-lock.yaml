@@ -151,7 +151,11 @@ importers:
         specifier: ^7.0.2
         version: 7.0.2
 
-  packages/design: {}
+  packages/design:
+    dependencies:
+      '@nisli/core':
+        specifier: ^0.57.0
+        version: 0.57.0
 
   packages/newsletter:
     dependencies:

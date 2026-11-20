@@ -5,8 +5,7 @@
 .agent-access-form > fieldset { display: block; margin: 0; padding: 0; border: 0; min-width: 0; }
 .agent-access-form legend { font: 12px/1.5 var(--font-mono); color: var(--color-text-muted); margin-bottom: 8px; }
 .agent-access-selects { display: flex; flex-wrap: wrap; align-items: end; gap: 12px; }
-.agent-access-selects label { display: grid; gap: 5px; flex: 1 1 240px; min-width: 0; font: 12px/1.5 var(--font-mono); color: var(--color-text-muted); }
-.agent-access-form select { min-width: 0; width: 100%; min-height: 44px; padding: 8px; border: 1px solid var(--color-control-border); border-radius: 5px; color: var(--color-text); background: var(--color-bg); font: 14px/1.5 var(--font-sans); }
+.agent-access-selects > .dropdown-field { flex: 1 1 240px; }
 .agent-access-report button { min-height: 44px; padding: 6px 10px; border: 1px solid transparent; border-radius: 4px; background: transparent; color: var(--color-link); font: inherit; text-align: left; cursor: pointer; }
 .agent-access-report button:disabled { opacity: .55; cursor: default; }
 .agent-access-roles { margin-top: 14px; }
@@ -68,7 +67,7 @@
 .stats-page [hidden] { display: none !important; }
 .stats-page a { color: var(--color-link); text-underline-offset: 3px; }
 .stats-page :is(h1,h2,h3,h4) { color: var(--color-text); line-height: 1.35; }
-.stats-page :is(a,button,select,summary,[tabindex]):focus-visible { outline: 2px solid var(--color-link); outline-offset: 3px; }
+.stats-page :is(a,button,summary,[tabindex]):focus-visible { outline: 2px solid var(--color-link); outline-offset: 3px; }
 .stats-page [id] { scroll-margin-top: calc(var(--stats-sticky-height) + 24px); }
 .stats-scope-clear, .stats-retry { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 6px 14px; border: 1px solid transparent; border-radius: 4px; background: transparent; color: var(--color-text-muted); cursor: pointer; font: 13px/1.5 var(--font-sans); white-space: nowrap; }
 .stats-scope-clear:hover, .stats-retry:hover { color: var(--color-text); background: var(--color-surface); }
@@ -169,7 +168,6 @@
   .stats-list-heads > :last-child { display: none; }
 }
 @media (max-width: 600px) {
-  .agent-access-form select { font-size: 16px; }
   .stats-page { font-size: 14px; }
   .stats-period { display: block; margin-bottom: 18px; }
   .stats-period > span { display: block; margin-top: 4px; }

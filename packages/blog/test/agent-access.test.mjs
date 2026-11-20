@@ -42,7 +42,7 @@ test('actual Stats markup separates the fixed agent report from the selected-per
   assert.equal(element.querySelector('#stats-controls'), null);
   assert.equal(element.querySelector('.stats-views [aria-current]').getAttribute('href'), '/stats/agent-access');
   assert.equal(requests.querySelector('.stats-views [aria-current]').getAttribute('href'), '/stats');
-  assert.equal(requests.querySelectorAll('#stats-controls [data-traffic] option').length, 6);
+  assert.equal(requests.querySelectorAll('#stats-traffic option').length, 6);
   assert.match(requests.querySelector('#stats-controls').textContent, /AI search, AI crawlers/);
 });
 

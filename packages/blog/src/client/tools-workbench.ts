@@ -23,15 +23,15 @@ export function parseSavedReport(source: string): SiteAuditReport {
 export class RobotsWorkbench extends HTMLElement {
   private readonly submit = (event: SubmitEvent): void => { event.preventDefault(); this.evaluate(true); };
   private readonly example = (event: Event): void => {
-    if (!(event.target instanceof HTMLSelectElement) || !event.target.hasAttribute('data-robots-example')) return;
+    if (!(event.target instanceof HTMLSelectElement) || event.target.id !== 'robots-example') return;
     const id = event.target.value; const selected = ROBOTS_EXAMPLES.find(example => example.id === id);
     if (!selected) return;
     const source = this.querySelector('textarea[name="robots"]'), token = this.querySelector('input[name="token"]'), path = this.querySelector('input[name="path"]');
     if (!(source instanceof HTMLTextAreaElement) || !(token instanceof HTMLInputElement) || !(path instanceof HTMLInputElement)) return;
     source.value = selected.robots; token.value = selected.token; path.value = selected.path; this.evaluate();
   };
-  private readonly input = (event: Event): void => { if (event.target instanceof HTMLElement) event.target.removeAttribute('aria-invalid'); if (event.target instanceof HTMLInputElement || event.target instanceof HTMLTextAreaElement) { const picker = this.querySelector('[data-robots-example]'); if (picker instanceof HTMLSelectElement) picker.value = ''; } const status = this.querySelector('[data-workbench-status]'); if (status) { status.textContent = ''; status.removeAttribute('data-state'); } this.querySelector('[data-workbench-result]')?.replaceChildren(); };
-  connectedCallback(): void { this.addEventListener('submit', this.submit); this.addEventListener('input', this.input); this.addEventListener('change', this.example); const picker = this.querySelector('[data-robots-example]'); if (picker instanceof HTMLSelectElement) { picker.disabled = false; picker.closest('.workbench-example-picker')?.removeAttribute('hidden'); } const button = this.querySelector<HTMLButtonElement>('button[type="submit"]'); if (button instanceof HTMLButtonElement) button.disabled = false; }
+  private readonly input = (event: Event): void => { if (event.target instanceof HTMLElement) event.target.removeAttribute('aria-invalid'); if (event.target instanceof HTMLInputElement || event.target instanceof HTMLTextAreaElement) { const picker = this.querySelector('#robots-example'); if (picker instanceof HTMLSelectElement) picker.value = ''; } const status = this.querySelector('[data-workbench-status]'); if (status) { status.textContent = ''; status.removeAttribute('data-state'); } this.querySelector('[data-workbench-result]')?.replaceChildren(); };
+  connectedCallback(): void { this.addEventListener('submit', this.submit); this.addEventListener('input', this.input); this.addEventListener('change', this.example); const picker = this.querySelector('#robots-example'); if (picker instanceof HTMLSelectElement) { picker.disabled = false; picker.closest('.workbench-example-picker')?.removeAttribute('hidden'); } const button = this.querySelector<HTMLButtonElement>('button[type="submit"]'); if (button instanceof HTMLButtonElement) button.disabled = false; }
   disconnectedCallback(): void { this.removeEventListener('submit', this.submit); this.removeEventListener('input', this.input); this.removeEventListener('change', this.example); }
   private evaluate(focusResult = false): void {
     const source = this.querySelector('textarea[name="robots"]'), token = this.querySelector('input[name="token"]'), path = this.querySelector('input[name="path"]'), status = this.querySelector('[data-workbench-status]'), output = this.querySelector('[data-workbench-result]');

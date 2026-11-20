@@ -2,6 +2,13 @@
   "name": "@gkoreli/design",
   "version": "0.1.0",
   "private": true,
-  "description": "Design language for gkoreli.com — tokens, utilities, and reference",
-  "type": "module"
+  "description": "Design language for gkoreli.com — tokens, controls, utilities, and reference",
+  "type": "module",
+  "exports": {
+    "./dropdown": "./src/dropdown.ts",
+    "./*": "./*"
+  },
+  "dependencies": {
+    "@nisli/core": "^0.57.0"
+  }
 }

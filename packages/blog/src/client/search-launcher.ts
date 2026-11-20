@@ -24,7 +24,11 @@ if (dialog instanceof HTMLDialogElement) {
   // type=search can consume the first Escape to clear a nonempty value. The
   // dialog's advertised shortcut closes immediately and retains that query.
   dialog.addEventListener('keydown', event => {
-    if (event.key === 'Escape' && !event.isComposing) { event.preventDefault(); event.stopPropagation(); dialog.close(); }
+    if (event.key === 'Escape' && !event.isComposing && event.target instanceof HTMLInputElement && event.target.type === 'search') {
+      event.preventDefault();
+      event.stopPropagation();
+      dialog.close();
+    }
   }, { capture: true });
   dialog.querySelector('[data-search-close]')?.addEventListener('click', () => dialog.close());
   dialog.addEventListener('click', event => { if (event.target === dialog) { const rect = dialog.getBoundingClientRect(); if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) dialog.close(); } });

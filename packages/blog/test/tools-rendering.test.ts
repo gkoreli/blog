@@ -244,7 +244,7 @@ test('policy examples update all three inputs and remain entirely local', async 
   const view = constructors(t); const [snapshot] = await renderContent([robotsPlaygroundPage()]); assert.ok(snapshot);
   await import('../src/client/tools-workbench.js'); t.mock.method(globalThis, 'fetch', async () => { assert.fail('Examples must remain local'); });
   document.body.innerHTML = snapshot;
-  const picker = document.querySelector('[data-robots-example]'), path = document.querySelector('input[name="path"]');
+  const picker = document.querySelector('#robots-example'), path = document.querySelector('input[name="path"]');
   assert.ok(picker instanceof HTMLSelectElement); assert.ok(path instanceof HTMLInputElement); assert.equal(picker.disabled, false);
   picker.value = 'exception'; picker.dispatchEvent(new view.Event('change', { bubbles: true }));
   assert.equal(path.value, '/private/public/article'); assert.match(document.querySelector('[data-workbench-result]')?.textContent ?? '', /Allow: \/private\/public\//);

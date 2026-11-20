@@ -135,7 +135,7 @@ function pushState(state: ViewState): void {
 }
 
 function updateControls(state: ViewState): void {
-  const traffic = document.querySelector<HTMLSelectElement>('#stats-controls select[data-traffic]');
+  const traffic = document.querySelector<HTMLSelectElement>('#stats-traffic');
   if (traffic) traffic.value = state.traffic;
   const selection = paramsForState(state).toString();
   for (const link of document.querySelectorAll<HTMLAnchorElement>('a[data-request-link]')) link.search = selection;
@@ -913,7 +913,7 @@ function changeSelection(nextTraffic: TrafficFilter, range: RangeFilter): void {
 function startReport(): void {
   document.getElementById('stats-controls')?.addEventListener('change', event => {
     const input = event.target;
-    if (input instanceof HTMLSelectElement && input.hasAttribute('data-traffic')) {
+    if (input instanceof HTMLSelectElement && input.id === 'stats-traffic') {
       changeSelection(parseTraffic(input.value, currentState.traffic), currentState.range);
     } else if (input instanceof HTMLInputElement && input.hasAttribute('data-days')) {
       changeSelection(currentState.traffic, parseRange(input.value));

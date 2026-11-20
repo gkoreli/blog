@@ -1,4 +1,5 @@
 import { html } from '@nisli/core';
+import { dropdown } from '@gkoreli/design/dropdown';
 import type { TrafficFilter } from '@gkoreli/analytics/contracts';
 import { TRAFFIC_GROUPS, TRAFFIC_LABELS } from '../lib/stats-presentation.js';
 
@@ -25,12 +26,13 @@ export function reportFilters(idPrefix: string) {
         <span aria-hidden="true"><span class="report-period-long">${period.label}</span><span class="report-period-short">${period.short}</span></span>
       </label>`)}</div>
     </fieldset>
-    <div class="report-traffic-choice">
-      <label for=${`${idPrefix}-traffic`}>Traffic</label>
-      <select id=${`${idPrefix}-traffic`} name=${`${idPrefix}-traffic`} aria-describedby=${`${idPrefix}-traffic-help`} data-traffic>
-        ${traffic.map(group => html`<option value=${group} aria-label=${COMPACT_LABELS[group] === TRAFFIC_LABELS[group] ? COMPACT_LABELS[group] : `${COMPACT_LABELS[group]}: ${TRAFFIC_LABELS[group]}`}>${COMPACT_LABELS[group]}</option>`)}
-      </select>
-      <p class="sr-only" id=${`${idPrefix}-traffic-help`}>Categories describe request signals, not verified people. Agents includes on-demand fetchers, AI search, AI crawlers and historical or unknown-role signed clients. Other crawlers includes search, SEO and preview declarations. Automation includes legacy rules.</p>
-    </div>
+    ${dropdown({
+      id: `${idPrefix}-traffic`, name: `${idPrefix}-traffic`, label: 'Traffic', describedBy: `${idPrefix}-traffic-help`,
+      options: traffic.map(group => ({
+        value: group, label: COMPACT_LABELS[group],
+        accessibleLabel: COMPACT_LABELS[group] === TRAFFIC_LABELS[group] ? COMPACT_LABELS[group] : `${COMPACT_LABELS[group]}: ${TRAFFIC_LABELS[group]}`,
+      })),
+    })}
+    <p class="sr-only" id=${`${idPrefix}-traffic-help`}>Categories describe request signals, not verified people. Agents includes on-demand fetchers, AI search, AI crawlers and historical or unknown-role signed clients. Other crawlers includes search, SEO and preview declarations. Automation includes legacy rules.</p>
   </div>`;
 }

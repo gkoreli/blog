@@ -26,17 +26,17 @@ site-audit-check, request-evidence-check, robots-workbench, report-comparison { 
 .workbench-form { padding: 1.4rem; border: 1px solid var(--color-border); border-radius: 3px; background: var(--color-surface); }
 .ai-check-form { padding: 0 0 1rem; }
 .tool-console-meta { font: 0.6rem/1.6 var(--font-mono); color: var(--tool-muted); }
-.ai-check-form label, .tools-workbench label { display: block; font: 500 0.75rem/1.6 var(--font-mono); margin-bottom: 0.55rem; }
+.ai-check-form label, .tools-workbench label:where(:not(.dropdown-label)) { display: block; font: 500 0.75rem/1.6 var(--font-mono); margin-bottom: 0.55rem; }
 .ai-check-input-row { display: flex; gap: 0.6rem; }
-.tool-app input, .tool-app textarea, .tool-app select { font: 0.8rem/1.5 var(--font-mono); color: var(--color-text); background: var(--color-bg); border: 1px solid var(--color-control-border); border-radius: 3px; padding: 0.75rem 0.85rem; min-width: 0; }
-.tool-app :is(input, textarea, select) { font-size: max(16px, 0.8rem); }
+.tool-app input, .tool-app textarea { font: 0.8rem/1.5 var(--font-mono); color: var(--color-text); background: var(--color-bg); border: 1px solid var(--color-control-border); border-radius: 3px; padding: 0.75rem 0.85rem; min-width: 0; }
+.tool-app :is(input, textarea) { font-size: max(16px, 0.8rem); }
 .ai-check-input-row input { flex: 1; width: 100%; }
 .tool-app textarea { display: block; width: 100%; resize: vertical; font-family: var(--font-mono); font-size: max(16px, 0.74rem); line-height: 1.75; }
 .tool-app button, .tool-button { display: inline-flex; justify-content: center; align-items: center; gap: 0.6rem; border: 1px solid transparent; border-radius: 3px; padding: 0.75rem 1rem; background: var(--color-link); color: var(--color-on-action); font: 500 0.76rem/1.4 var(--font-mono); text-decoration: none; cursor: pointer; min-height: 44px; white-space: nowrap; transition: filter 120ms; }
 .tool-app .tool-button, .tool-app .tool-button:visited { color: var(--color-on-action); }
 .tool-app button:hover, .tool-button:hover { filter: brightness(1.08); }
 .tool-app button:disabled { opacity: 0.55; cursor: wait; }
-.tool-app :is(button, input, textarea, select, summary, a):focus-visible { outline: 2px solid var(--color-link); outline-offset: 3px; }
+.tool-app :is(button, input, textarea, summary, a):focus-visible { outline: 2px solid var(--color-link); outline-offset: 3px; }
 .tool-app :is(input, textarea)[aria-invalid="true"] { border-color: var(--color-accent-rust); }
 .tool-app :is(input, textarea)[aria-invalid="true"]:focus-visible { outline-color: var(--color-accent-rust); }
 .ai-check .ai-check-field-error { font-size: 0.73rem; line-height: 1.55; margin-top: 0.6rem; color: var(--color-text); }
@@ -164,9 +164,7 @@ site-audit-check, request-evidence-check, robots-workbench, report-comparison { 
 .report-facts dt { color: var(--tool-muted); font: 0.65rem/1.7 var(--font-mono); margin-bottom: 0.4rem; }
 .report-facts dd { font: 0.8rem/1.7 var(--font-mono); }
 .report-facts .report-fact-detail { color: var(--tool-muted); font: 0.68rem/1.7 var(--font-sans); margin-top: 0.25rem; }
-.workbench-example-picker { display: flex; align-items: center; flex-wrap: wrap; gap: 0.65rem; margin-bottom: 1.2rem; }
-.workbench-example-picker label { margin: 0; }
-.workbench-example-picker select { flex: 1; font-size: 0.75rem; padding: 0.5rem; }
+.workbench-example-picker { display: flex; align-items: baseline; flex-wrap: wrap; gap: 0.65rem; margin-bottom: 1.2rem; }
 .robots-editor-layout { display: grid; grid-template-columns: 1.4fr 1fr; gap: 1.3rem; }
 .robots-controls .workbench-fields { grid-template-columns: 1fr; margin-top: 0; }
 .robots-controls .workbench-actions { align-items: flex-start; flex-direction: column; }
@@ -262,7 +260,6 @@ site-audit-check, request-evidence-check, robots-workbench, report-comparison { 
 @media (max-width: 700px) {
   .robots-editor-layout { grid-template-columns: 1fr; gap: 1.3rem; }
   .workbench-example-picker > .tool-caption { display: none; }
-  .workbench-example-picker select { flex: 1 0 100%; width: 100%; min-width: 0; }
   .ai-check .report-facts { grid-template-columns: 1fr; gap: 0.8rem; }
   .report-facts > div { display: grid; grid-template-columns: 1fr 1.4fr; gap: 0.2rem 0.8rem; }
   .report-facts dt { margin: 0; }

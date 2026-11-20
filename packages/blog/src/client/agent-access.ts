@@ -57,7 +57,7 @@ class AgentAccessReportElement extends HTMLElement {
     // A retry button disappears while loading. Restore its place only if the
     // operator has not moved focus to another control during the request.
     if (restoreFocus && document.activeElement === document.body) {
-      this.querySelector<HTMLElement>(this.report ? '[data-agent-article-select]' : '[data-agent-retry]')?.focus();
+      this.querySelector<HTMLElement>(this.report ? '#agent-article' : '[data-agent-retry]')?.focus();
     }
   }
   private select(changes: Partial<AgentAccessSelection>): void {
@@ -75,13 +75,13 @@ class AgentAccessReportElement extends HTMLElement {
     if (details) details.innerHTML = html.details;
     const tables = enhanceReadingTables(this), navigation = initSectionNavigation(this);
     this.disposePresentation = () => { tables(); navigation(); };
-    const articles = this.querySelector<HTMLSelectElement>('[data-agent-article-select]');
+    const articles = this.querySelector<HTMLSelectElement>('#agent-article');
     if (articles) {
       articles.replaceChildren(new Option(`All articles and site resources — ${view.choices.allResources.views.toLocaleString()}`, ''));
       for (const row of [...view.choices.articles].sort((a, b) => a.resource.title.localeCompare(b.resource.title))) articles.add(new Option(`${row.resource.title} — ${row.metrics.views.toLocaleString()}`, row.resource.id));
       articles.value = this.selection.articleId ?? '';
     }
-    const clients = this.querySelector<HTMLSelectElement>('[data-agent-client-select]');
+    const clients = this.querySelector<HTMLSelectElement>('#agent-client');
     if (clients) {
       clients.replaceChildren(new Option(`All client declarations — ${view.choices.allClients.views.toLocaleString()}`, ''));
       for (const row of [...view.choices.clients].sort((a, b) => agentClientLabel(a.client).localeCompare(agentClientLabel(b.client)))) clients.add(new Option(`${agentClientLabel(row.client)} — ${row.metrics.views.toLocaleString()}`, row.client));
@@ -99,8 +99,8 @@ class AgentAccessReportElement extends HTMLElement {
   }
   private handleChange(event: Event): void {
     const target = event.target;
-    if (target instanceof HTMLSelectElement && target.matches('[data-agent-article-select]')) this.select({ articleId: target.value || null });
-    else if (target instanceof HTMLSelectElement && target.matches('[data-agent-client-select]')) {
+    if (target instanceof HTMLSelectElement && target.matches('#agent-article')) this.select({ articleId: target.value || null });
+    else if (target instanceof HTMLSelectElement && target.matches('#agent-client')) {
       if (target.value === '' || isAgentAccessClient(target.value)) this.select({ client: target.value === '' ? null : target.value });
     } else if (target instanceof HTMLInputElement && target.matches('[data-agent-role]')) {
       if (target.value === '' || isAgentAccessKind(target.value)) this.select({ kind: target.value === '' ? null : target.value });
@@ -112,10 +112,10 @@ class AgentAccessReportElement extends HTMLElement {
     if (!target || !this.contains(target)) return;
     if (target.hasAttribute('data-agent-retry')) { void this.load(true); return; }
     const client = target.dataset.agentClient, articleId = target.dataset.agentArticle;
-    if (articleId !== undefined) { this.select({ articleId }); this.querySelector<HTMLSelectElement>('[data-agent-article-select]')?.focus(); }
-    else if (client !== undefined && isAgentAccessClient(client)) { this.select({ client }); this.querySelector<HTMLSelectElement>('[data-agent-client-select]')?.focus(); }
+    if (articleId !== undefined) { this.select({ articleId }); this.querySelector<HTMLSelectElement>('#agent-article')?.focus(); }
+    else if (client !== undefined && isAgentAccessClient(client)) { this.select({ client }); this.querySelector<HTMLSelectElement>('#agent-client')?.focus(); }
     else if (target.hasAttribute('data-agent-clear')) {
-      this.select({ ...ALL_AGENT_ACCESS }); this.querySelector<HTMLSelectElement>('[data-agent-article-select]')?.focus();
+      this.select({ ...ALL_AGENT_ACCESS }); this.querySelector<HTMLSelectElement>('#agent-article')?.focus();
     }
   }
 }

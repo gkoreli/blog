@@ -58,3 +58,9 @@ The [archive search correction](archive-search-removal-2026-11-15.md) removes th
 Archive headers use a single collapsed topic index. Each article title links directly to the article, and article headers and listings omit visual tag rows. Topic metadata continues to supply the section index and search. This supersedes the earlier per-entry topic presentation.
 
 On Engineering at 1280px, the topic block occupies 29px of height, down from 200px. Its disclosure target measures 152px wide, down from 728px. The first article title moves up 227px at a 390px viewport. Keyboard activation opens the full list of 66 section-scoped topics. Workspace types, the 48-article production build and all 471 blog tests passed.
+
+## November 20 dropdowns
+
+The [dropdown renderer](../../../packages/design/src/dropdown.ts) supplies all eight single-choice fields across Stats, Agent access, Article reach, Search and the robots playground. The [Design Language example](https://gkoreli.com/design-language#dropdown) includes an enabled field and a disabled field. Pages supply choices and react to the native change event.
+
+The 49-article build contains 158 selects across 72 documents, including the shared search dialog. Each has one associated label and a unique ID. Browser checks covered keyboard selection and dismissal in desktop Chromium, light and dark themes, forced colors, and selection with JavaScript disabled. Mobile WebKit emulation covered 390px and 320px widths, 44px touch targets and a long article selection. All 474 blog tests and workspace type checks passed.

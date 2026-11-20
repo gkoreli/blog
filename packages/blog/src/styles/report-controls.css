@@ -12,18 +12,11 @@
 .report-option input:focus-visible + span { outline: 2px solid var(--color-link); outline-offset: 2px; }
 
 .report-period-short { display: none; }
-.report-traffic-choice { display: grid; gap: 2px; align-content: start; }
-.report-traffic-choice label { color: var(--color-text-muted); font: 12px/1.5 var(--font-mono); }
-.report-traffic-choice select { max-width: 100%; min-height: 36px; margin-block: 4px; padding: 4px 6px; border: 1px solid var(--color-control-border); border-radius: var(--control-radius); background: var(--color-bg); color: var(--color-text); font: 13px/1.5 var(--font-sans); }
 @media (max-width: 600px) {
   .report-controls { gap: 4px 12px; }
   .report-filter legend { margin-left: 4px; }
   .report-period-long { display: none; }
   .report-period-short { display: inline; }
   .report-filter-period .report-option { min-width: 40px; justify-content: center; }
-  .report-traffic-choice select { font-size: 16px; }
   .report-option > span { padding-inline: 5px; }
-  .report-traffic-choice select { min-height: 40px; margin-block: 2px; }
 }
-
-@media (pointer: coarse) { .report-traffic-choice select { min-height: 44px; margin-block: 0; } }

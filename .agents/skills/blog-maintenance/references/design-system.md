@@ -33,6 +33,8 @@ Use [shared tokens](../../../../packages/design/tokens.css), [layout CSS](../../
 - Use the sparkle separator between appropriate publication areas. Tags render as `#hashtags`, with the gradient on the hash, rather than badges.
 - Add motion only when it helps comprehension. Preserve readable content before interactive components load.
 
+Single-choice dropdowns use the [design package renderer](../../../../packages/design/src/dropdown.ts) and [component styles](../../../../packages/design/dropdown.css). Supply a unique ID, visible label and options. Supply a name for form submission and a description ID for help text. Use the native select’s value, change event and disabled state, including fieldset disabling. Page CSS owns placement and available width. The [Design Language example](https://gkoreli.com/design-language#dropdown) uses the same renderer.
+
 ## Interactive navigation
 
 - A single-destination invitation or navigation choice uses one native link with a concise name. Its hit area includes the artwork and padding, with one tab stop and visible focus across the surface. Preserve native keyboard activation.

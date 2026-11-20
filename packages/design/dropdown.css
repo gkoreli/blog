@@ -1,0 +1,97 @@
+.dropdown-field {
+  display: inline-grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-content: start;
+  gap: var(--space-1);
+  inline-size: fit-content;
+  max-inline-size: 100%;
+  min-inline-size: 0;
+  vertical-align: top;
+}
+
+.dropdown-field > .dropdown-label {
+  margin: 0;
+  color: var(--color-text-meta);
+  font: 12px/1.5 var(--font-mono);
+}
+
+.dropdown-control { display: grid; min-inline-size: 0; position: relative; }
+
+.dropdown-control select {
+  appearance: none;
+  color-scheme: light;
+  inline-size: 100%;
+  min-inline-size: 0;
+  min-block-size: 36px;
+  margin: 0;
+  padding: 6px 32px 6px 11px;
+  border: 1px solid var(--color-control-border);
+  border-radius: var(--control-radius);
+  background: var(--color-bg);
+  color: var(--color-text);
+  font: 14px/1.5 var(--font-sans);
+  text-overflow: ellipsis;
+  cursor: pointer;
+}
+
+[data-theme="dark"] .dropdown-control select { color-scheme: dark; }
+
+.dropdown-control::after {
+  content: '';
+  position: absolute;
+  inset-inline-end: 13px;
+  top: calc(50% - 5px);
+  width: 7px;
+  height: 7px;
+  border: solid var(--color-text-secondary);
+  border-width: 0 1.5px 1.5px 0;
+  transform: rotate(45deg);
+  pointer-events: none;
+}
+
+.dropdown-control select:enabled:hover { border-color: var(--color-link); }
+.dropdown-control select:focus-visible { outline: var(--focus-width) solid var(--color-link); outline-offset: var(--focus-offset); }
+.dropdown-control select:disabled { background: var(--color-surface); color: var(--color-text-muted); cursor: default; }
+
+@media (pointer: coarse), (max-width: 600px) {
+  .dropdown-control select { min-block-size: var(--target-min); font-size: 16px; }
+}
+
+/* Supporting pointer browsers can theme the menu while the select manages selection. */
+@media (hover: hover) and (pointer: fine) {
+  @supports (appearance: base-select) and selector(::picker(select)) {
+    .dropdown-control select, .dropdown-control select::picker(select) { appearance: base-select; }
+    .dropdown-control select::picker-icon { display: none; }
+    .dropdown-control select:open { border-color: var(--color-link); }
+    .dropdown-control select::picker(select) {
+      max-block-size: min(22rem, 55dvh);
+      max-inline-size: min(42rem, calc(100vw - 24px));
+      overflow: auto;
+      overscroll-behavior: contain;
+      margin-block: 4px;
+      padding: 4px;
+      border: 1px solid var(--color-control-border);
+      border-radius: var(--control-radius);
+      background: var(--color-bg);
+      color: var(--color-text);
+      font: 14px/1.5 var(--font-sans);
+      box-shadow: 0 4px 14px color-mix(in srgb, var(--color-text) 12%, transparent);
+    }
+    .dropdown-control option {
+      min-block-size: 32px;
+      padding: 6px 9px;
+      border-radius: 3px;
+      white-space: normal;
+      overflow-wrap: anywhere;
+    }
+    .dropdown-control option:checked { color: var(--color-link); background: color-mix(in srgb, var(--color-link) 8%, var(--color-bg)); }
+    .dropdown-control option:hover, .dropdown-control option:focus-visible { background: var(--color-surface); }
+    .dropdown-control option:focus-visible { outline: var(--focus-width) solid var(--color-link); outline-offset: -2px; }
+  }
+}
+
+@media (forced-colors: active) {
+  .dropdown-control select, .dropdown-control select::picker(select) { appearance: auto; }
+  .dropdown-control select { appearance: auto; padding-inline-end: var(--space-2); }
+  .dropdown-control::after { display: none; }
+}

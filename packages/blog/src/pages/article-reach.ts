@@ -1,4 +1,5 @@
 import { html } from '@nisli/core';
+import { dropdown } from '@gkoreli/design/dropdown';
 import { statsHeader } from '../templates/stats-header.js';
 import { reportScopeFacts } from '../templates/report-context.js';
 
@@ -34,14 +35,20 @@ export function articleReachPage() {
         <details class="reach-history">
           <summary>Measurement history</summary>
           <p class="stats-section-note">Check whether the recorded collection and classification methods changed across weeks before interpreting a trend. These groups cover only the Browser signals already selected above; they cannot reveal requests an older rule excluded.</p>
-          <label class="reach-sort">Show history for <select id="reach-history-scope"><option value="site">All site events</option><option value="articles">All article events</option></select></label>
+          ${dropdown({ id: 'reach-history-scope', label: 'Show history for', options: [
+            { value: 'site', label: 'All site events' }, { value: 'articles', label: 'All article events' },
+          ] })}
           <div id="reach-history" class="reach-table"></div>
           <p class="stats-section-note">Stamps identify the stored method, not people or proven comparability. A date-shaped stamp is not a review of its rules. Missing and unrecognized stamps stay explicit. Groups describe stored events, not a replay under today's rules.</p>
         </details>
       </section>
       <section class="stats-section" aria-labelledby="reach-articles-heading">
         <h2 id="reach-articles-heading">Article reach</h2>
-        <label class="reach-sort">Sort articles <select id="reach-sort"><option value="views">Total events</option><option value="outside">Outside site’s top external source</option><option value="outside-article">Outside each article’s top external source</option></select></label>
+        ${dropdown({ id: 'reach-sort', label: 'Sort articles', options: [
+          { value: 'views', label: 'Total events' },
+          { value: 'outside', label: 'Outside site’s top external source' },
+          { value: 'outside-article', label: 'Outside each article’s top external source' },
+        ] })}
         <p class="stats-section-note">Current published articles only; home, section hubs and prompt pages are outside this ranking. Dates provide publication context; actual exposure is unmeasured. Repeated requests count again.</p>
         <p class="stats-section-note">An article can depend on a different source from the site’s largest. Its top external hostname is selected across the full window, independently for each article. The percentage uses that article’s external events; the outside count uses all its events, including internal and unattributed requests. These overlapping comparisons are not extra events or human counts. Names appear only with existing public display approval.</p>
         <div id="reach-articles" class="reach-table"></div>

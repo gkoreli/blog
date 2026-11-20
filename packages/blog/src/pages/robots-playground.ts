@@ -1,4 +1,5 @@
 import { html } from '@nisli/core';
+import { dropdown } from '@gkoreli/design/dropdown';
 import { toolNavigation } from './tool-navigation.js';
 
 import { ROBOTS_EXAMPLES } from '../lib/robots-examples.js';
@@ -10,7 +11,13 @@ export function robotsPlaygroundPage() {
     <header class="ai-check-header"><p class="tool-kicker">Policy playground · local and unlimited</p><h1>Robots playground</h1><p class="ai-check-lead">Test a robots.txt against one client and path. See the matching groups, the selected rule, and the reason for the decision.</p></header>
     <robots-workbench>
       <form data-robots-form class="workbench-form" novalidate>
-        <div class="workbench-example-picker" hidden><label for="robots-example">Load an example</label><select id="robots-example" data-robots-example disabled><option value="">Choose a policy…</option>${ROBOTS_EXAMPLES.map(example => html`<option value=${example.id}>${example.label}</option>`)}</select><span class="tool-caption">Replaces the editor below.</span></div><div class="robots-editor-layout"><div>
+        <div class="workbench-example-picker" hidden>
+          ${dropdown({ id: 'robots-example', label: 'Load an example', disabled: true, describedBy: 'robots-example-help',
+            options: [{ value: '', label: 'Choose a policy…' }, ...ROBOTS_EXAMPLES.map(example => ({ value: example.id, label: example.label }))],
+          })}
+          <span id="robots-example-help" class="tool-caption">Replaces the editor below.</span>
+        </div>
+        <div class="robots-editor-layout"><div>
         <div class="workbench-editor-heading"><label for="robots-source">robots.txt content</label><span class="tool-console-meta">Editable sample</span></div><textarea id="robots-source" name="robots" aria-describedby="robots-status" rows="10" maxlength="524288" spellcheck="false" autocapitalize="off" autocorrect="off">${ROBOTS_EXAMPLE}</textarea>
         </div><div class="robots-controls"><div class="workbench-fields"><div><label for="robots-token">Crawler product token</label><input id="robots-token" name="token" autocapitalize="off" autocorrect="off" spellcheck="false" aria-describedby="robots-status" value="OAI-SearchBot" maxlength="128" required list="robots-tokens"><datalist id="robots-tokens"><option value="OAI-SearchBot"></option><option value="ChatGPT-User"></option><option value="GPTBot"></option><option value="Claude-SearchBot"></option><option value="Claude-User"></option><option value="PerplexityBot"></option><option value="Googlebot"></option></datalist></div><div><label for="robots-path">Path to check</label><input id="robots-path" name="path" autocapitalize="off" autocorrect="off" spellcheck="false" aria-describedby="robots-status" value="/guides/agent-access" maxlength="2048" required></div></div>
         <div class="workbench-actions"><button type="submit" disabled>Evaluate rules</button><span class="tool-caption">Runs in your browser. Nothing is uploaded.</span></div>
