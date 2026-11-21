@@ -1,0 +1,254 @@
+{
+  "checked_at": "2026-11-21T17:08:08+00:00",
+  "machine": {
+    "macos": "27.2",
+    "arch": "arm64"
+  },
+  "expected_stdout": "{\"passes\":2}",
+  "binaries": {
+    "stable": {
+      "revision": "1.4.5+a7733435c",
+      "binary_sha256": "e2984124f1514e1e6bbda20adedbf07a02c443c6a5828853a15c7c7abf78e19f",
+      "cases": {
+        "build_bytecode": {
+          "args": [
+            "build",
+            "--compile",
+            "--bytecode",
+            "./entry.ts",
+            "--outfile",
+            "./program"
+          ],
+          "status": 0,
+          "diagnostic": null,
+          "artifact_bytes": 89160066,
+          "run": {
+            "status": 0,
+            "stdout": "{\"passes\":2}"
+          }
+        }
+      }
+    },
+    "earlier_canary": {
+      "revision": "1.4.6-canary.1+3f3202e42",
+      "binary_sha256": "e871cb288241e4ef0bff6998e3d1389319334275e27202d5c136c273f01cbf9d",
+      "cases": {
+        "build_bytecode": {
+          "args": [
+            "build",
+            "--compile",
+            "--bytecode",
+            "./entry.ts",
+            "--outfile",
+            "./program"
+          ],
+          "status": 0,
+          "diagnostic": null,
+          "artifact_bytes": 139294338,
+          "run": {
+            "status": 0,
+            "stdout": "{\"passes\":2}"
+          }
+        },
+        "build_aot": {
+          "args": [
+            "build",
+            "--compile",
+            "--aot",
+            "./entry.ts",
+            "--outfile",
+            "./program"
+          ],
+          "status": 0,
+          "diagnostic": null,
+          "artifact_bytes": 53151234,
+          "run": {
+            "status": 0,
+            "stdout": "{\"passes\":2}"
+          }
+        },
+        "build_combined": {
+          "args": [
+            "build",
+            "--compile",
+            "--aot",
+            "--bytecode",
+            "./entry.ts",
+            "--outfile",
+            "./program"
+          ],
+          "status": 0,
+          "diagnostic": "note: --bytecode has no effect with --aot: the program is compiled to machine code",
+          "artifact_bytes": 53151234,
+          "run": {
+            "status": 0,
+            "stdout": "{\"passes\":2}"
+          }
+        },
+        "compile_bytecode": {
+          "args": [
+            "compile",
+            "--bytecode",
+            "./entry.ts",
+            "--outfile",
+            "./program"
+          ],
+          "status": 0,
+          "diagnostic": "note: --bytecode has no effect with --aot: the program is compiled to machine code",
+          "artifact_bytes": 53151234,
+          "run": {
+            "status": 0,
+            "stdout": "{\"passes\":2}"
+          }
+        },
+        "compile_no_aot_bytecode": {
+          "args": [
+            "compile",
+            "--no-aot",
+            "--bytecode",
+            "./entry.ts",
+            "--outfile",
+            "./program"
+          ],
+          "status": 0,
+          "diagnostic": null,
+          "artifact_bytes": 139294338,
+          "run": {
+            "status": 0,
+            "stdout": "{\"passes\":2}"
+          }
+        },
+        "api_aot": {
+          "args": [
+            "./build.mjs"
+          ],
+          "status": 0,
+          "diagnostic": null,
+          "artifact_bytes": 53151234,
+          "run": {
+            "status": 0,
+            "stdout": "{\"passes\":2}"
+          }
+        },
+        "api_combined": {
+          "args": [
+            "./build.mjs"
+          ],
+          "status": 0,
+          "diagnostic": null,
+          "artifact_bytes": 53151234,
+          "run": {
+            "status": 0,
+            "stdout": "{\"passes\":2}"
+          }
+        }
+      }
+    },
+    "newer_canary": {
+      "revision": "1.4.6-canary.1+b15f51302",
+      "binary_sha256": "322b37a684bba06a3c2e39cc51dab4b2f1242164d937553a3ad8a8b72cf79d8d",
+      "cases": {
+        "build_bytecode": {
+          "args": [
+            "build",
+            "--compile",
+            "--bytecode",
+            "./entry.ts",
+            "--outfile",
+            "./program"
+          ],
+          "status": 0,
+          "diagnostic": null,
+          "artifact_bytes": 139310850,
+          "run": {
+            "status": 0,
+            "stdout": "{\"passes\":2}"
+          }
+        },
+        "build_aot": {
+          "args": [
+            "build",
+            "--compile",
+            "--aot",
+            "./entry.ts",
+            "--outfile",
+            "./program"
+          ],
+          "status": 0,
+          "diagnostic": null,
+          "artifact_bytes": 53134722,
+          "run": {
+            "status": 0,
+            "stdout": "{\"passes\":2}"
+          }
+        },
+        "build_combined": {
+          "args": [
+            "build",
+            "--compile",
+            "--aot",
+            "--bytecode",
+            "./entry.ts",
+            "--outfile",
+            "./program"
+          ],
+          "status": 1,
+          "diagnostic": "error: Cannot use both --aot and --bytecode. Choose --aot for machine code or --bytecode for bytecode",
+          "artifact_bytes": null,
+          "run": null
+        },
+        "compile_bytecode": {
+          "args": [
+            "compile",
+            "--bytecode",
+            "./entry.ts",
+            "--outfile",
+            "./program"
+          ],
+          "status": 1,
+          "diagnostic": "error: Cannot use --bytecode with bun compile, which compiles to machine code. Remove --bytecode, or add --no-aot",
+          "artifact_bytes": null,
+          "run": null
+        },
+        "compile_no_aot_bytecode": {
+          "args": [
+            "compile",
+            "--no-aot",
+            "--bytecode",
+            "./entry.ts",
+            "--outfile",
+            "./program"
+          ],
+          "status": 0,
+          "diagnostic": null,
+          "artifact_bytes": 139310850,
+          "run": {
+            "status": 0,
+            "stdout": "{\"passes\":2}"
+          }
+        },
+        "api_aot": {
+          "args": [
+            "./build.mjs"
+          ],
+          "status": 0,
+          "diagnostic": null,
+          "artifact_bytes": 53134722,
+          "run": {
+            "status": 0,
+            "stdout": "{\"passes\":2}"
+          }
+        },
+        "api_combined": {
+          "args": [
+            "./build.mjs"
+          ],
+          "status": 1,
+          "diagnostic": "compile.aot cannot be used with bytecode. Choose compile.aot for machine code or bytecode for bytecode",
+          "artifact_bytes": null,
+          "run": null
+        }
+      }
+    }
+  }
+}

@@ -28,12 +28,27 @@ GitHub published a second November 20 canary at `3f3202e4225011f4ebc10ea705f284b
 
 JavaScript received different chunk boundaries. For the buffered gzip response the largest observed piece was 262,144 bytes in the morning canary and 377,247 bytes in the afternoon canary. Those sizes describe one program and one run. The earlier codec timing and native compilation measurements still refer to their original binaries. GitHub and npm continued to list 1.4.5 as stable at the afternoon check. [Stable release](https://github.com/oven-sh/bun/releases/tag/bun-v1.4.5).
 
+## November 21 AOT build flags
+
+Bun's CLI and JavaScript build API now check whether the caller requested both ahead-of-time compilation and bytecode. The earlier implementation ignored bytecode when the caller requested native compilation. [Merged change](https://github.com/oven-sh/bun/pull/49336) · [CLI check](https://github.com/oven-sh/bun/blob/b15f51302d72e1cd9038ecd0cf33782c02ee7681/src/runtime/cli/compile_options.rs#L1174-L1191) · [Build API](https://github.com/oven-sh/bun/blob/b15f51302d72e1cd9038ecd0cf33782c02ee7681/src/runtime/api/JSBundler.rs#L1713-L1724).
+
+On macOS ARM64, both canaries built and ran one TypeScript program with AOT alone, bytecode alone, `bun compile --no-aot --bytecode`, and the AOT-only `Bun.build` call. Stable 1.4.5 also built and ran the bytecode-only command. The November 20 afternoon canary accepted three requests for both modes. It printed a note for each CLI invocation. The next canary returned status 1 and produced no executable for all three requests. [Fixture](aot_flags.py) · [All 15 build outcomes](aot-flags-2026-11-21.json).
+
+| Build request | November 20 afternoon, `3f3202e42` | November 21 UTC, `b15f51302` |
+| --- | --- | --- |
+| `bun build --compile --aot --bytecode` | Built, with a note | Rejected |
+| `bun compile --bytecode` | Built, with a note | Rejected |
+| `Bun.build` with `compile.aot` and `bytecode` enabled | Built | Rejected |
+
+A build script moving to the canary can keep its bytecode by using `bun build --compile --bytecode` or by passing `--no-aot` to `bun compile`. To produce the native executable, keep the AOT option and remove bytecode. This check covered one standalone program and the Mac ARM64 builds. The newer official ZIP matched SHA-256 `14f4c8961a7a221b4aee42b5da5cc3f9d75eaaf857d1fd0239bd1f650c95f223`. [November 20 afternoon source](https://github.com/oven-sh/bun/tree/3f3202e4225011f4ebc10ea705f284b8df070a1b) · [November 21 UTC source](https://github.com/oven-sh/bun/tree/b15f51302d72e1cd9038ecd0cf33782c02ee7681).
+
 ## Run the fixtures
 
-The Linux codec run used checksummed official Linux ARM64 musl ZIP assets and Node v24.22.3 in a disposable Alpine 3.23.4 VM. Use [the exact #8 source bytes](https://github.com/gkoreli/blog/blob/a109684af05ffab07ae4d2c2a550dbd2e2df926e/packages/blog/posts/031-oss-radar-08-bun-aot.md) for the Markdown input. The macOS AOT runs used checksummed GitHub assets and the npm integrity pin for the earlier binary. Both fixtures record the executable revision or digest. The canary download tag moves over time, so check the source revisions next to the receipts.
+The Linux codec run used checksummed official Linux ARM64 musl ZIP assets and Node v24.22.3 in a disposable Alpine 3.23.4 VM. Use [the exact #8 source bytes](https://github.com/gkoreli/blog/blob/a109684af05ffab07ae4d2c2a550dbd2e2df926e/packages/blog/posts/031-oss-radar-08-bun-aot.md) for the Markdown input. The macOS AOT runs used checksummed GitHub assets and the npm integrity pin for the earlier binary. The receipts identify the tested binary revisions or hashes. The canary download tag moves over time, so check the source revisions next to the receipts.
 
 ```sh
 node codec_matrix.mjs /path/to/stable /path/to/canary /tmp/fresh-codecs /path/to/radar-eight.md
 python3 aot_trials.py /path/to/stable /path/to/nov19 /path/to/nov20 /tmp/fresh-aot
 node fetch_followup.mjs /path/to/stable /path/to/morning-canary /path/to/afternoon-canary /tmp/fresh-fetch
+python3 aot_flags.py /path/to/stable /path/to/nov20-afternoon /path/to/nov21-utc /tmp/fresh-aot-flags
 ```
