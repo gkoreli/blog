@@ -38,6 +38,16 @@ An initial two-version run established the build-number and spec result. The sec
 python3 fingerprint_trial.py /tmp/hot-updater-fingerprint-trial
 ```
 
+## November 22 npm release
+
+Hot Updater 1.1.18 shipped fixes for the native launch report and for database migration against a newer schema. The tag comparison leaves the fingerprint engine, the recorded-input recomputation and the iOS header script at the same source. We installed the new CLI, bare adapter and native SDK and matched eight installed package integrity values to npm. [Source comparison](https://github.com/gronxb/hot-updater/compare/v1.1.17...v1.1.18) · [npm release](https://www.npmjs.com/package/hot-updater/v/1.1.18).
+
+The default bare configuration again kept both hashes after a store build-number change. Adding a method to the shared spec changed both. In the synthetic iOS build environment, Debug wrote the saved value and Release wrote the new hash and warned about the stale record. The test exercised the packaged CLI and header script using React Native 0.85.2 on Linux ARM64. [Follow-up fixture](current_release_check.py) · [Installed package pins and results](current-release-2026-11-22.json).
+
+```sh
+python3 current_release_check.py 1.1.18 /tmp/hot-updater-1.1.18
+```
+
 ## Judgment
 
 The change makes build numbers a poor reason to create a new update target. For a team upgrading an existing bare app, the useful review is the old `extraSources` list and the set of native changes JavaScript actually depends on. Include stable compatibility inputs explicitly or move the `nativeVersion` marker when an untracked native change matters. Both tested newer baselines include the Hot Updater native SDK package as an input, so the same engine can yield a different fingerprint after a native dependency update. An existing binary keeps the value it already embedded. The maintainer calls for new store builds to move apps across the original engine change. Hot Updater's `appVersion` strategy offers manual version targeting when the team instead wants to maintain that mapping explicitly. [Owner's upgrade note](https://github.com/gronxb/hot-updater/issues/1552#issuecomment-6259374272) · [Released fingerprint guide](https://github.com/gronxb/hot-updater/blob/bb510d3db7348b6eb0285c89292dac660faaf6f2/docs/content/docs/%28latest%29/guides/update-strategies/fingerprint.mdx).

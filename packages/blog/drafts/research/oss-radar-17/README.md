@@ -51,7 +51,7 @@ Hot Updater returns from issue #1 with a change in how it identifies an app buil
 
 ## Monday preparation
 
-The four-project source passed the [Friday editorial, preview, and queue checks](2026-11-20-review.md). Before arming the Monday release, recheck Bun's official release and npm install target. If 1.5 has shipped, verify its artifact and rerun the reader-facing controls against it before making release claims. The canary comparisons remain dated observations. Refresh the rendered preview if the selected release evidence changes.
+The four-project source passed the [Friday editorial, preview, and queue checks](2026-11-20-review.md). The [Sunday release check](2026-11-22-release-readiness.md) verified Bun's stable version, the exact queued source, and activation of the hosted workflow for the November 23 release. Monday's run and served-content checks are next.
 
 ## Reproduce the daemon and database trials
 

@@ -1,0 +1,204 @@
+{
+  "machine": {
+    "macos": "27.2",
+    "arch": "arm64"
+  },
+  "binaries": {
+    "stable": {
+      "revision": "1.4.5+a7733435c",
+      "sha256": "e2984124f1514e1e6bbda20adedbf07a02c443c6a5828853a15c7c7abf78e19f"
+    },
+    "nov20_canary": {
+      "revision": "1.4.6-canary.1+7bb427f3b",
+      "sha256": "5fd758f56f8a72ef34bde4a46fe85a36968d3fb7f3d82975ec3eeca4a4307dc2"
+    },
+    "new_canary": {
+      "revision": "1.4.6-canary.1+25c4fca9e",
+      "sha256": "c25552dd347cb88e572876ffeb821ee5801c001fedbe783790c0d3ae960a3a70"
+    }
+  },
+  "path_resolution": {
+    "earlier": {
+      "build_status": 0,
+      "before": {
+        "literal": {
+          "status": 0,
+          "output": {
+            "basename": "v1.json",
+            "data": {
+              "version": 1
+            }
+          }
+        },
+        "argument": {
+          "status": 0,
+          "output": {
+            "basename": "v1.json",
+            "data": {
+              "version": 1
+            }
+          }
+        },
+        "direct_read": {
+          "status": 0,
+          "output": {
+            "basename": "active.json",
+            "data": {
+              "version": 1
+            }
+          }
+        }
+      },
+      "after": {
+        "literal": {
+          "status": 0,
+          "output": {
+            "basename": "v1.json",
+            "data": {
+              "version": 1
+            }
+          }
+        },
+        "argument": {
+          "status": 0,
+          "output": {
+            "basename": "v1.json",
+            "data": {
+              "version": 1
+            }
+          }
+        },
+        "direct_read": {
+          "status": 0,
+          "output": {
+            "basename": "active.json",
+            "data": {
+              "version": 2
+            }
+          }
+        }
+      }
+    },
+    "canary": {
+      "build_status": 0,
+      "before": {
+        "literal": {
+          "status": 0,
+          "output": {
+            "basename": "v1.json",
+            "data": {
+              "version": 1
+            }
+          }
+        },
+        "argument": {
+          "status": 0,
+          "output": {
+            "basename": "v1.json",
+            "data": {
+              "version": 1
+            }
+          }
+        },
+        "direct_read": {
+          "status": 0,
+          "output": {
+            "basename": "active.json",
+            "data": {
+              "version": 1
+            }
+          }
+        }
+      },
+      "after": {
+        "literal": {
+          "status": 0,
+          "output": {
+            "basename": "v1.json",
+            "data": {
+              "version": 1
+            }
+          }
+        },
+        "argument": {
+          "status": 0,
+          "output": {
+            "basename": "v1.json",
+            "data": {
+              "version": 1
+            }
+          }
+        },
+        "direct_read": {
+          "status": 0,
+          "output": {
+            "basename": "active.json",
+            "data": {
+              "version": 2
+            }
+          }
+        }
+      }
+    },
+    "source": {
+      "before": {
+        "literal": {
+          "status": 0,
+          "output": {
+            "basename": "v1.json",
+            "data": {
+              "version": 1
+            }
+          }
+        },
+        "argument": {
+          "status": 0,
+          "output": {
+            "basename": "v1.json",
+            "data": {
+              "version": 1
+            }
+          }
+        },
+        "direct_read": {
+          "status": 0,
+          "output": {
+            "basename": "active.json",
+            "data": {
+              "version": 1
+            }
+          }
+        }
+      },
+      "after": {
+        "literal": {
+          "status": 0,
+          "output": {
+            "basename": "v2.json",
+            "data": {
+              "version": 2
+            }
+          }
+        },
+        "argument": {
+          "status": 0,
+          "output": {
+            "basename": "v2.json",
+            "data": {
+              "version": 2
+            }
+          }
+        },
+        "direct_read": {
+          "status": 0,
+          "output": {
+            "basename": "active.json",
+            "data": {
+              "version": 2
+            }
+          }
+        }
+      }
+    }
+  }
+}

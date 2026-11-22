@@ -42,6 +42,10 @@ On macOS ARM64, both canaries built and ran one TypeScript program with AOT alon
 
 A build script moving to the canary can keep its bytecode by using `bun build --compile --bytecode` or by passing `--no-aot` to `bun compile`. To produce the native executable, keep the AOT option and remove bytecode. This check covered one standalone program and the Mac ARM64 builds. The newer official ZIP matched SHA-256 `14f4c8961a7a221b4aee42b5da5cc3f9d75eaaf857d1fd0239bd1f650c95f223`. [November 20 afternoon source](https://github.com/oven-sh/bun/tree/3f3202e4225011f4ebc10ea705f284b8df070a1b) · [November 21 UTC source](https://github.com/oven-sh/bun/tree/b15f51302d72e1cd9038ecd0cf33782c02ee7681).
 
+## November 22 path refactor
+
+Bun's path refactor touched the AOT module resolver and standalone module graph. The November 22 UTC canary and the November 20 morning canary agreed on all six reads before and after rotating the symlink in the same macOS ARM64 fixture. After rotation, both native executables resolved the literal and the argument to `v1.json`. Reading the argument directly opened the new target and returned version 2, as the Bun 1.4.5 source run did. The newer official Mac ARM64 ZIP matched SHA-256 `73029637098fb68945cbdce280edd652362dbed051440c83ef61bd2ec8cb105d`. [Path refactor](https://github.com/oven-sh/bun/pull/49146) · [Canary source](https://github.com/oven-sh/bun/tree/25c4fca9ea98ec5904587726264e4039e3e1a18f) · [Follow-up fixture](path_canary_check.py) · [Path results](path-canary-2026-11-22.json).
+
 ## Run the fixtures
 
 The Linux codec run used checksummed official Linux ARM64 musl ZIP assets and Node v24.22.3 in a disposable Alpine 3.23.4 VM. Use [the exact #8 source bytes](https://github.com/gkoreli/blog/blob/a109684af05ffab07ae4d2c2a550dbd2e2df926e/packages/blog/posts/031-oss-radar-08-bun-aot.md) for the Markdown input. The macOS AOT runs used checksummed GitHub assets and the npm integrity pin for the earlier binary. The receipts identify the tested binary revisions or hashes. The canary download tag moves over time, so check the source revisions next to the receipts.
@@ -51,4 +55,5 @@ node codec_matrix.mjs /path/to/stable /path/to/canary /tmp/fresh-codecs /path/to
 python3 aot_trials.py /path/to/stable /path/to/nov19 /path/to/nov20 /tmp/fresh-aot
 node fetch_followup.mjs /path/to/stable /path/to/morning-canary /path/to/afternoon-canary /tmp/fresh-fetch
 python3 aot_flags.py /path/to/stable /path/to/nov20-afternoon /path/to/nov21-utc /tmp/fresh-aot-flags
+python3 path_canary_check.py /path/to/stable /path/to/nov20 /path/to/nov22 /tmp/fresh-aot-path
 ```
