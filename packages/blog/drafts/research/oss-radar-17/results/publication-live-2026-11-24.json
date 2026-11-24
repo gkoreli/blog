@@ -1,0 +1,20 @@
+{
+  "checked_at": "2026-11-24T08:25:47-08:00",
+  "url": "https://gkoreli.com/oss-radar-17-what-still-works-after-an-upgrade",
+  "date": "2026-11-24",
+  "http_status": {
+    "article": 200,
+    "markdown": 200,
+    "archive": 200,
+    "catalog": 200,
+    "feed": 200,
+    "sitemap": 200,
+    "social_card": 200,
+    "prior_issue": 200
+  },
+  "markdown_matches_isolated_build": true,
+  "social_card_dimensions": [
+    1200,
+    600
+  ]
+}

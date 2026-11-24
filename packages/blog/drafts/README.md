@@ -2,7 +2,7 @@
 
 ## New active writing
 
-- **November 23 OSS Radar target:** [#17 — What Still Works After an Upgrade?](research/oss-radar-17/article.md). Bun compression and AOT tests lead the issue, alongside flagd, pgroll, and Hot Updater. [Research and fixtures](research/oss-radar-17/README.md).
+- **Published November 24, 2026:** [OSS Radar #17: What Still Works After an Upgrade?](https://gkoreli.com/oss-radar-17-what-still-works-after-an-upgrade). Bun compression and AOT tests lead the issue, alongside flagd, pgroll, and Hot Updater. [Maintained source](../posts/049-oss-radar-17-what-still-works-after-an-upgrade.md) · [Research and fixtures](research/oss-radar-17/README.md) · [Release verification](research/oss-radar-17/2026-11-24-release-incident.md).
 
 - **Published November 19, 2026:** [OSS Radar #16: Saved Skills, Inbox Replies, and Health Checks](https://gkoreli.com/oss-radar-16-saved-skills-and-inbox-replies). The four reviews cover GoDoxy's config reload, Hermes's chat CLI, Plannotator's Inbox, and NemoClaw's policy client. [Maintained source](../posts/048-oss-radar-16-saved-skills-and-inbox-replies.md) · [Release checks](research/oss-radar-16/10-publication-2026-11-19.md).
 

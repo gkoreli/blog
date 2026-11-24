@@ -51,7 +51,7 @@ Hot Updater returns from issue #1 with a change in how it identifies an app buil
 
 ## Monday preparation
 
-The four-project source passed the [Friday editorial, preview, and queue checks](2026-11-20-review.md) and the [Sunday release check](2026-11-22-release-readiness.md). The November 23 hosted job started late and failed during dependency installation. The source is still queued and the workflow is paused. [Incident and repair](2026-11-24-release-incident.md).
+The four-project source passed the [Friday editorial, preview, and queue checks](2026-11-20-review.md) and the [Sunday release check](2026-11-22-release-readiness.md). The November 23 hosted job started late and failed during dependency installation. The issue went live November 24 after the install repair. [Incident and release verification](2026-11-24-release-incident.md) · [Published article](https://gkoreli.com/oss-radar-17-what-still-works-after-an-upgrade).
 
 ## Reproduce the daemon and database trials
 

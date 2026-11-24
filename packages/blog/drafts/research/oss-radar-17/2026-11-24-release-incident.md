@@ -16,4 +16,12 @@ Two clean frozen-lockfile installs used the pinned pnpm 9.15.4 and the shipped O
 
 In that isolated checkout, a simulated November 23 08:00 release promoted the exact reviewed bytes. Workspace typecheck, validation of 39 Markdown posts, and a 50-post production build passed. The build contained the article in HTML and Markdown, the OSS Radar archive, the dated post catalog, and RSS.
 
-The queued source has passed the [Sunday editorial and render checks](2026-11-22-release-readiness.md). The November 23 release window has closed. A catch-up needs a new approved date.
+## November 24 catch-up
+
+The November 24 release approval covered issue #17. The [publication commit](https://github.com/gkoreli/blog/commit/b35f3b025f70a971177dff23d696dfec0758bd5e) moved the reviewed Markdown to `posts/`, set the frontmatter date to November 24, and removed the November 23 manifest entry. SHA-256 of the released source is `a80cf39c497d89556371f10ba549b51f05dc5323999dc8a6410e6ca3084d15c5`. The publication date is the only change to the reviewed Markdown. GitHub and npm still listed Bun 1.4.5 on November 24. [Reviewed source](2026-11-22-release-readiness.md) · [Maintained article source](../../../posts/049-oss-radar-17-what-still-works-after-an-upgrade.md) · [Bun release](https://github.com/oven-sh/bun/releases/tag/bun-v1.4.5).
+
+The isolated release build exercised a clean frozen-lockfile install with lifecycle scripts on. Typecheck, queue validation, validation of 39 Markdown posts, and the 50-post production build passed. The rendered article, post catalog and RSS carried November 24. The archive, Markdown, sitemap and social card were present.
+
+Cloudflare Workers Builds passed for the publication commit at 08:25:22 Pacific. GitHub reported the weekly publisher as `disabled_manually`, and the manifest had zero entries. [Hosted deployment check](https://github.com/gkoreli/blog/runs/138597137487).
+
+At 08:25:47 Pacific the public article, Markdown, Radar archive, post catalog, RSS, sitemap and 1200 × 600 social card returned 200. The served Markdown matched the isolated build. The catalog and RSS each had one entry dated November 24. Issue #16 also returned 200. [Live article](https://gkoreli.com/oss-radar-17-what-still-works-after-an-upgrade) · [Verification receipt](results/publication-live-2026-11-24.json).
