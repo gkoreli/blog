@@ -24,6 +24,8 @@ The application exposes `buildSearchIndex` and `createSearch`, then one `search`
 
 Word search uses MiniSearch 7.2.0 BM25+ and OR matching. Article discovery uses title/heading/body boosts 3/2/1; paragraph selection uses heading/body so a repeated article title cannot stand in for source evidence. Prefix and bounded fuzzy recovery can precede a weak partial exact hit when they cover more query terms. Within equal coverage, exact results precede recovered results. Queries retain negation and topic category words, remove common function words and fixed article-location framing, and support quoted phrases. Inputs are bounded to 512 characters and 40 useful terms. English preparation and tokenization are intentional limits, not multilingual quality claims.
 
+A query consisting of a series name and issue number can resolve directly from a published title such as `Field Notes #08: Seedlings`. It accepts an optional hash and leading zeros, and a first-word shorthand when the issue match is unique. Both modes return the scoped article link with `matchedBy: 'issue-number'` and an empty passage list. Ambiguous references and longer topic queries use ordinary retrieval.
+
 Related mode fuses exact lexical and dense ranks at reciprocal-rank constant 60. Candidate lists become distinct article ranks before fusion; finer units independently select up to three source passages within each. It uses the original question for embeddings. Article/section scope and quoted phrases constrain both stages. `limit` and `passagesPerArticle` are bounded overrides. Rank scores are internal: results are neither confidence estimates nor a guarantee that the requested answer exists.
 
 ## Optional embeddings

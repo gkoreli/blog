@@ -37,6 +37,7 @@ export interface PassageMatch {
 
 export interface ArticleMatch {
   readonly article: Omit<ArticleDocument, 'passages'>;
+  readonly matchedBy?: 'issue-number';
   readonly passages: readonly PassageMatch[];
   /** Ranked source passages available under the current query and scope. */
   readonly totalPassages: number;

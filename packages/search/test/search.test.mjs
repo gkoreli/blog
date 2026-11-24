@@ -114,3 +114,27 @@ test('recovery with more matched query terms can beat an unrelated partial exact
  const engine=await createSearch((await buildSearchIndex(docs)).index);
  assert.equal((await engine.search('needle spacecraf')).articles[0].article.id,'wanted');
 });
+
+test('numbered title lookup resolves short references without ranking incidental body numbers', async () => {
+  const wanted = article('wanted-issue', 'Field Notes #08: Seedlings', '<p>Plant the seedlings in spring.</p>');
+  const other = article('other-issue', 'Field Notes #07: Soil', '<p>Field measurements show 8 samples.</p>', 'essays');
+  const search = await createSearch((await buildSearchIndex([wanted, other])).index);
+
+  for (const [query, mode] of [['field 8', 'words'], ['Field Notes 08', 'words'], ['FIELD #008', 'related']]) {
+    const result = await search.search(query, { mode });
+    assert.deepEqual(result.articles.map(match => [match.article.id, match.matchedBy, match.passages.length]), [['wanted-issue', 'issue-number', 0]]);
+    assert.deepEqual(result.missingWords, []);
+  }
+  assert.deepEqual((await search.search('field 8', { section: 'essays' })).articles, []);
+  assert.deepEqual((await search.search('field 8', { article: other.id })).articles, []);
+  assert.equal((await search.search('8 samples')).articles[0].passages[0].passage.text, 'Field measurements show 8 samples.');
+});
+
+test('ambiguous shorthand and explicitly quoted phrases use ordinary retrieval', async () => {
+  const notes = article('notes', 'Field Notes #08: Soil', '<p>Soil descriptions.</p>');
+  const reports = article('reports', 'Field Reports #08: Water', '<p>Water descriptions.</p>');
+  const search = await createSearch((await buildSearchIndex([notes, reports])).index);
+  assert.deepEqual((await search.search('field 8')).articles.map(match => match.matchedBy), [undefined, undefined]);
+  assert.deepEqual((await search.search('"Field Notes 8"')).articles, []);
+  assert.equal((await search.search('Field Reports #8')).articles[0].article.id, reports.id);
+});

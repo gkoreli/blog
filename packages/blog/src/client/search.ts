@@ -92,7 +92,8 @@ export function enhanceSearch(root: HTMLElement): SearchSurface | undefined {
       else if (focused instanceof HTMLElement && !focused.isConnected) input.focus();
       const absent = event.result.missingWords.length ? ` No indexed word matches: ${event.result.missingWords.slice(0, 5).join(', ')}.` : '';
       const count = event.result.articles.length;
-      status.textContent = `${count ? `${count} ${count === 1 ? 'article' : 'articles'} shown` : 'No results'}${articleTitle ? ' within this article' : ''}.${event.result.mode === 'related' ? ' Ranked by related ideas.' : ''}${absent}`;
+      const matchedIssue = event.result.articles[0]?.matchedBy === 'issue-number';
+      status.textContent = matchedIssue ? 'Matched the issue number.' : `${count ? `${count} ${count === 1 ? 'article' : 'articles'} shown` : 'No results'}${articleTitle ? ' within this article' : ''}.${event.result.mode === 'related' ? ' Ranked by related ideas.' : ''}${absent}`;
     });
     try { worker().postMessage(command); } catch { listeners.delete(id); busy(false); if (!nativeResults) results.replaceChildren(); status.textContent = 'Local search is unavailable. Submit a word search on the search page.'; }
   };

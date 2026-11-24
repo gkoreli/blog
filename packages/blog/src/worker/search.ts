@@ -32,7 +32,8 @@ export function createSearchHandler() {
       const requestedSection = url.searchParams.get('section');
       const section = requestedSection && engine.sections.includes(requestedSection) ? requestedSection : undefined;
       const result = await engine.search(query, section ? { section } : {});
-      html = resultsHtml(result); status = `${result.articles.length} ${result.articles.length === 1 ? 'article' : 'articles'} shown from ${engine.articleCount} published articles. Results link to source passages.`;
+      html = resultsHtml(result);
+      status = result.articles[0]?.matchedBy === 'issue-number' ? 'Matched the issue number.' : `${result.articles.length} ${result.articles.length === 1 ? 'article' : 'articles'} shown from ${engine.articleCount} published articles. Results link to source passages.`;
     } catch { code = query.length > 512 ? 400 : 503; status = code === 400 ? 'Please shorten the search to 512 characters.' : 'Search is temporarily unavailable. Please try again.'; }
     const headers = new Headers(page.headers); headers.set('Cache-Control', 'no-store'); headers.set('X-Robots-Tag', 'noindex');
     const transformed = new HTMLRewriter()

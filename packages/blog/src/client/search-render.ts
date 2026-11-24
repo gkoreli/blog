@@ -37,7 +37,7 @@ export function renderSearchResults(container: HTMLElement, response: SearchResp
       for (const passage of excerpt.context) contextBox.append(element('p', passage.id === excerpt.passage.id ? 'search-context-selected' : '', passage.text));
       article.append(contextBox);
     }
-    if (!match.passages.length) article.append(element('p', 'search-model-note', 'The article matched; no source passage matched these words.'));
+    if (!match.passages.length && match.matchedBy !== 'issue-number') article.append(element('p', 'search-model-note', 'The article matched; no source passage matched these words.'));
     if (match.totalPassages > match.passages.length) {
       if (match.passages.length < 20) {
         const button = element('button', 'search-more', `More passages in this article (${match.passages.length} of ${match.totalPassages} shown)`); button.type = 'button';

@@ -4,6 +4,7 @@ import type { ArticleMatch, EmbeddingEncoder, PassageMatch, SearchEngine, Search
 import { digest, lexicalOptions, normalizedVector, readSnapshot, type SearchUnit } from './snapshot.js';
 import { normalizeWord, parseQuery, tokenize } from './query.js';
 import { articleRanks, fuse, lexicalRows, policy, type RankedUnit } from './ranking.js';
+import { numberedTitleLookup } from './numbered-titles.js';
 
 function preview(text: string, terms: readonly string[]): PassageMatch['preview'] {
   const wanted = new Set(terms); const ranges: TextRange[] = [];
@@ -40,6 +41,7 @@ export async function createSearch(serialized: string, adapters: { readonly enco
     Object.freeze(article.passages); if (article.tags) Object.freeze(article.tags); Object.freeze(article);
   }
   const articles = new Map(snapshot.articles.map(article => [article.id, article]));
+  const lookupNumberedTitle = numberedTitleLookup(snapshot.articles);
   const candidateUnits = new Map(snapshot.candidates.map(unit => [unit.id, unit]));
   const excerptUnits = new Map(snapshot.excerpts.map(unit => [unit.id, unit]));
   const candidateIndex = MiniSearch.loadJSON<SearchUnit>(snapshot.candidateIndex, lexicalOptions);
@@ -72,9 +74,14 @@ export async function createSearch(serialized: string, adapters: { readonly enco
     return vectorPromise;
   }
 
+  function articleInScope(article: ArticleDocument, options: SearchOptions): boolean {
+    return (options.article === undefined || article.id === options.article)
+      && (options.section === undefined || article.section === options.section);
+  }
+
   function inScope(unit: SearchUnit, options: SearchOptions, phrases: readonly string[]): boolean {
     const article = articles.get(unit.articleId);
-    if (!article || options.article !== undefined && article.id !== options.article || options.section !== undefined && article.section !== options.section) return false;
+    if (!article || !articleInScope(article, options)) return false;
     const source = normalizeWord(unit.title + ' ' + unit.heading + ' ' + unit.text).replace(/\s+/gu, ' ');
     return phrases.every(phrase => source.includes(phrase));
   }
@@ -107,6 +114,13 @@ export async function createSearch(serialized: string, adapters: { readonly enco
       options.signal?.throwIfAborted();
       const response = (found: readonly ArticleMatch[]): SearchResponse => ({ indexId: snapshot.id, query: query.text, mode, articles: found, missingWords: [...new Set(query.terms.filter(term => !vocabulary.has(term)))] });
       if (!query.text || !query.terms.length) return response([]);
+      const numberedTitle = lookupNumberedTitle(query.text);
+      if (numberedTitle) {
+        if (!articleInScope(numberedTitle, options)) return response([]);
+        const { passages, ...article } = numberedTitle;
+        const match: ArticleMatch = { article, matchedBy: 'issue-number', passages: [], totalPassages: 0 };
+        return { ...response([match]), missingWords: [] };
+      }
       let candidateRows = lexicalRows(candidateIndex, query.lexical, mode === 'words');
       let excerptRows = lexicalRows(excerptIndex, query.lexical, mode === 'words', true);
       let fusedArticles: RankedUnit[] | undefined;

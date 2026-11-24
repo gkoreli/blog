@@ -38,3 +38,13 @@ Current state: the reusable [package](../../../packages/search/README.md), nativ
 The launcher opens a focused query field and the three latest published articles. Section and matching controls share a Filters disclosure. A query shows one source passage per article, with context and additional matches available in the dialog. Full search carries the query, mode, section and article scope in the URL fragment. The standalone form still supports a native GET word search.
 
 Isolated Chromium and mobile WebKit checks exercised recent-article navigation, typing, clearing, passage expansion, scope transfer, model consent and Escape with focus return. Desktop and narrow phone layouts use the same markup. At 320px, the related-search consent button wraps inside the viewport.
+
+## Numbered issue lookup · November 24, 2026
+
+The live search could find a numbered issue using its published title prefix. A name and unpadded number could instead retrieve other articles whose body text happened to contain that number. The existing relevance checks focused on topical retrieval and did not exercise this lookup.
+
+Resolve exact issue references against published article titles before ranking passages. Accept the full series name or an unambiguous first-word shorthand, with an optional hash and leading zeros. Return the matched article link and respect the current section and article filters. The dialog and native GET form identify an issue match explicitly.
+
+The November 24 serving snapshot had 49 articles, 4,127 passages and 16 numbered OSS Radar issues. On those same index bytes, all 48 issue reference variants returned only their intended article. All 75 previously recorded word-search responses matched the prior runtime exactly. This checks the change against the existing topical cases and every available issue.
+
+The 32 search package tests, 475 blog tests, workspace typecheck and validation of 38 Markdown posts passed. The isolated production build rendered 49 posts. Live acceptance follows activation of the source commit.
