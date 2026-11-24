@@ -115,26 +115,62 @@ test('recovery with more matched query terms can beat an unrelated partial exact
  assert.equal((await engine.search('needle spacecraf')).articles[0].article.id,'wanted');
 });
 
-test('numbered title lookup resolves short references without ranking incidental body numbers', async () => {
-  const wanted = article('wanted-issue', 'Field Notes #08: Seedlings', '<p>Plant the seedlings in spring.</p>');
-  const other = article('other-issue', 'Field Notes #07: Soil', '<p>Field measurements show 8 samples.</p>', 'essays');
-  const search = await createSearch((await buildSearchIndex([wanted, other])).index);
+const numberedDocuments = [
+  article('wanted-issue', 'Growing seedlings in spring', '<p>Plant the seedlings in spring.</p><p>Water the roots after transplanting.</p>'),
+  article('other-issue', 'Field Notes #07: Soil', '<p>Field measurements show 8 samples.</p><p>Seedlings need water after transplanting.</p>', 'essays'),
+];
+const numberedCollections = [{
+  title: 'Field Notes', aliases: ['Field', 'field-notes'],
+  issues: [{ number: 8, articleId: 'wanted-issue' }, { number: 7, articleId: 'other-issue' }],
+}];
 
-  for (const [query, mode] of [['field 8', 'words'], ['Field Notes 08', 'words'], ['FIELD #008', 'related']]) {
+test('declared issue references survive a title change and respect filters without a model', async () => {
+  const search = await createSearch((await buildSearchIndex(numberedDocuments, { numberedCollections })).index);
+  for (const [query, mode] of [['field 8', 'words'], ['Field Notes 08', 'words'], ['FIELD#008', 'related'], ['field-notes #8', 'words']]) {
     const result = await search.search(query, { mode });
-    assert.deepEqual(result.articles.map(match => [match.article.id, match.matchedBy, match.passages.length]), [['wanted-issue', 'issue-number', 0]]);
+    assert.deepEqual(result.reference, { title: 'Field Notes', number: '8', outcome: 'found', passageQuery: false });
+    assert.deepEqual(result.articles.map(match => [match.article.id, match.passages.length]), [['wanted-issue', 0]]);
     assert.deepEqual(result.missingWords, []);
   }
-  assert.deepEqual((await search.search('field 8', { section: 'essays' })).articles, []);
-  assert.deepEqual((await search.search('field 8', { article: other.id })).articles, []);
+  for (const scope of [{ section: 'essays' }, { article: 'other-issue' }]) {
+    const result = await search.search('field 8', scope);
+    assert.equal(result.reference.outcome, 'outside-scope');
+    assert.deepEqual(result.articles, []);
+  }
+  const absent = await search.search('Field Notes 6', { mode: 'related' });
+  assert.equal(absent.reference.outcome, 'missing');
+  assert.deepEqual(absent.articles, []);
   assert.equal((await search.search('8 samples')).articles[0].passages[0].passage.text, 'Field measurements show 8 samples.');
+  assert.equal((await search.search('field 8.0')).reference, undefined);
+  assert.equal((await search.search('"Field Notes 8"')).reference, undefined);
 });
 
-test('ambiguous shorthand and explicitly quoted phrases use ordinary retrieval', async () => {
-  const notes = article('notes', 'Field Notes #08: Soil', '<p>Soil descriptions.</p>');
-  const reports = article('reports', 'Field Reports #08: Water', '<p>Water descriptions.</p>');
-  const search = await createSearch((await buildSearchIndex([notes, reports])).index);
-  assert.deepEqual((await search.search('field 8')).articles.map(match => match.matchedBy), [undefined, undefined]);
-  assert.deepEqual((await search.search('"Field Notes 8"')).articles, []);
-  assert.equal((await search.search('Field Reports #8')).articles[0].article.id, reports.id);
+test('issue plus detail searches within the issue and keeps the article when no passage matches', async () => {
+  const bundle = await buildSearchIndex(numberedDocuments, { numberedCollections, encoder });
+  const search = await createSearch(bundle.index, { encoder, loadVectors: async () => bundle.vectors });
+  for (const mode of ['words', 'related']) {
+    const query = 'Field Notes #08: "after transplanting"';
+    const result = await search.search(query, { mode });
+    assert.equal(result.query, query);
+    assert.equal(result.reference.passageQuery, true);
+    assert.deepEqual(result.articles.map(match => match.article.id), ['wanted-issue']);
+    assert.deepEqual(result.articles[0].passages.map(p => p.passage.text), ['Water the roots after transplanting.']);
+    assert.match(result.articles[0].passages[0].url, /^\/wanted-issue#/);
+  }
+  const absent = await search.search('Field Notes 08 "8 samples"');
+  assert.equal(absent.reference.outcome, 'found');
+  assert.equal(absent.articles[0].article.id, 'wanted-issue');
+  assert.equal(absent.articles[0].passages.length, 0);
+});
+
+test('catalogue rejects conflicting identities and legacy snapshots still search by topic', async () => {
+  const [collection] = numberedCollections;
+  const build = collections => buildSearchIndex(numberedDocuments, { numberedCollections: collections });
+  await assert.rejects(build([collection, { title: 'Field Reports', aliases: [' FIELD '], issues: [] }]), /Duplicate numbered collection name/);
+  await assert.rejects(build([{ ...collection, issues: [...collection.issues, { number: 8, articleId: 'other-issue' }] }]), /Duplicate issue number/);
+  await assert.rejects(build([{ ...collection, issues: [{ number: 1, articleId: 'unknown' }] }]), /Invalid issue/);
+  const legacy = await createSearch((await buildSearchIndex(numberedDocuments)).index);
+  const result = await legacy.search('Field Notes 7');
+  assert.equal(result.reference, undefined);
+  assert.equal(result.articles[0].article.id, 'other-issue');
 });

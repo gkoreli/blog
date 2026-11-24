@@ -13,7 +13,7 @@ function highlight(text: string, ranges: readonly TextRange[]): DocumentFragment
 export function renderSearchResults(container: HTMLElement, response: SearchResponse, scope: (article: string, title: string) => void, more: (article: string, title: string, shown: number) => void): void {
   const compact = container.closest('dialog') !== null;
   const fragment = document.createDocumentFragment();
-  if (!response.articles.length && response.query) fragment.append(element('p', 'search-empty', 'Try fewer words, another spelling, or Related ideas.'));
+  if (!response.reference && !response.articles.length && response.query) fragment.append(element('p', 'search-empty', 'Try fewer words, another spelling, or Related ideas.'));
   for (const match of response.articles) {
     const article = element('article', 'search-hit');
     article.dataset['searchArticle'] = match.article.id;
@@ -37,7 +37,7 @@ export function renderSearchResults(container: HTMLElement, response: SearchResp
       for (const passage of excerpt.context) contextBox.append(element('p', passage.id === excerpt.passage.id ? 'search-context-selected' : '', passage.text));
       article.append(contextBox);
     }
-    if (!match.passages.length && match.matchedBy !== 'issue-number') article.append(element('p', 'search-model-note', 'The article matched; no source passage matched these words.'));
+    if (!match.passages.length && !response.reference) article.append(element('p', 'search-model-note', 'The article matched; no source passage matched these words.'));
     if (match.totalPassages > match.passages.length) {
       if (match.passages.length < 20) {
         const button = element('button', 'search-more', `More passages in this article (${match.passages.length} of ${match.totalPassages} shown)`); button.type = 'button';

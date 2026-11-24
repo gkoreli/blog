@@ -1,7 +1,9 @@
 import { createSearch, type SearchEngine, type SearchResponse } from '@gkoreli/search';
+import { issueSearchStatus } from '../lib/search-status.js';
 
 function escape(value: string): string { return value.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;').replaceAll("'", '&#39;'); }
 function resultsHtml(result: SearchResponse): string {
+  if (result.reference && !result.articles.length) return '';
   if (!result.articles.length) return '<p class="search-empty">No matching passages. Try fewer words or another spelling.</p>';
   return result.articles.map(match => `<article class="search-hit"><p class="search-hit-meta">${escape(match.article.section ?? '')}</p><h3 class="search-hit-title"><a href="${escape(match.article.url)}">${escape(match.article.title)}</a></h3>${match.passages.map(passage => `<a class="search-passage" href="${escape(passage.url)}"><span class="search-passage-heading">${escape(passage.passage.headings.at(-1) ?? '')}</span><span class="search-passage-text">${passage.preview.start ? '…' : ''}${escape(passage.preview.text)}${passage.preview.end < passage.passage.text.length ? '…' : ''}</span><span class="search-passage-action">Open passage</span></a>`).join('')}</article>`).join('');
 }
@@ -33,7 +35,7 @@ export function createSearchHandler() {
       const section = requestedSection && engine.sections.includes(requestedSection) ? requestedSection : undefined;
       const result = await engine.search(query, section ? { section } : {});
       html = resultsHtml(result);
-      status = result.articles[0]?.matchedBy === 'issue-number' ? 'Matched the issue number.' : `${result.articles.length} ${result.articles.length === 1 ? 'article' : 'articles'} shown from ${engine.articleCount} published articles. Results link to source passages.`;
+      status = issueSearchStatus(result) ?? `${result.articles.length} ${result.articles.length === 1 ? 'article' : 'articles'} shown from ${engine.articleCount} published articles. Results link to source passages.`;
     } catch { code = query.length > 512 ? 400 : 503; status = code === 400 ? 'Please shorten the search to 512 characters.' : 'Search is temporarily unavailable. Please try again.'; }
     const headers = new Headers(page.headers); headers.set('Cache-Control', 'no-store'); headers.set('X-Robots-Tag', 'noindex');
     const transformed = new HTMLRewriter()

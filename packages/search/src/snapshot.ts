@@ -2,6 +2,7 @@ import MiniSearch, { type Options } from 'minisearch';
 import { validateDocument, type ArticleDocument, type SourcePassage } from './documents.js';
 import type { EmbeddingEncoder, SearchBundle } from './contracts.js';
 import { tokenize, normalizeWord } from './query.js';
+import { compileNumberedCollections, type NumberedCollection } from './numbered-collections.js';
 
 export interface SearchUnit {
   readonly id: string;
@@ -27,6 +28,7 @@ export interface Snapshot {
   readonly excerpts: readonly SearchUnit[];
   readonly candidateIndex: string;
   readonly excerptIndex: string;
+  readonly numberedCollections: readonly NumberedCollection[];
   readonly semantic?: SemanticData;
 }
 
@@ -72,10 +74,15 @@ export function normalizedVector(values: Float32Array, dimensions: number): Floa
 }
 
 /** Build once; the query runtime receives text/index bytes and optional separate float32 data. */
-export async function buildSearchIndex(documents: readonly ArticleDocument[], options: { readonly encoder?: EmbeddingEncoder; readonly signal?: AbortSignal } = {}): Promise<SearchBundle> {
+export async function buildSearchIndex(documents: readonly ArticleDocument[], options: { readonly encoder?: EmbeddingEncoder; readonly signal?: AbortSignal; readonly numberedCollections?: readonly NumberedCollection[] } = {}): Promise<SearchBundle> {
   const articles = documents.map(article => ({ ...article, ...(article.tags ? { tags: [...article.tags] } : {}), passages: article.passages.map(p => ({ ...p, headings: [...p.headings] })) })).sort((a, b) => a.id.localeCompare(b.id));
   const seen = new Set<string>();
   for (const article of articles) { validateDocument(article); if (seen.has(article.id)) throw new Error('Duplicate article identity.'); seen.add(article.id); }
+  const numberedCollections = (options.numberedCollections ?? []).map(({ title, aliases, issues }) => ({
+    title, ...(aliases ? { aliases: [...aliases] } : {}),
+    issues: issues.map(({ number, articleId }) => ({ number, articleId })).sort((a, b) => a.number - b.number),
+  }));
+  compileNumberedCollections(numberedCollections, seen);
   const candidates = articles.flatMap(candidateUnits), excerpts = articles.flatMap(article => article.passages.map(passage => passageUnit(article, passage)));
   const candidateIndex = new MiniSearch<SearchUnit>(lexicalOptions), excerptIndex = new MiniSearch<SearchUnit>(lexicalOptions);
   candidateIndex.addAll(candidates); excerptIndex.addAll(excerpts);
@@ -96,7 +103,7 @@ export async function buildSearchIndex(documents: readonly ArticleDocument[], op
     semantic = { space: encoder.space, dimensions: encoder.dimensions, units: ids, sha256: await digest(vectors) };
   }
   const positions = new Map([...candidates, ...excerpts].map((unit, index) => [unit.id, index]));
-  const payload = { ...base, ...(semantic ? { semantic: { space: semantic.space, dimensions: semantic.dimensions, sha256: semantic.sha256, rows: semantic.units.map(id => { const position = positions.get(id); if (position === undefined) throw new Error('Unknown encoded unit.'); return position; }) } } : {}) };
+  const payload = { ...base, ...(numberedCollections.length ? { numberedCollections } : {}), ...(semantic ? { semantic: { space: semantic.space, dimensions: semantic.dimensions, sha256: semantic.sha256, rows: semantic.units.map(id => { const position = positions.get(id); if (position === undefined) throw new Error('Unknown encoded unit.'); return position; }) } } : {}) };
   const id = await digest(new TextEncoder().encode(JSON.stringify(payload)));
   return { index: JSON.stringify({ ...payload, id }), ...(vectors ? { vectors } : {}) };
 }
@@ -117,6 +124,21 @@ function readArticle(value: unknown): ArticleDocument {
   if (section !== undefined && typeof section !== 'string' || date !== undefined && typeof date !== 'string' || tags !== undefined && !strings(tags)) throw new Error('Invalid article metadata.');
   const article: ArticleDocument = { id: string(value['id']), url: string(value['url']), title: string(value['title']), passages: value['passages'].map(readPassage), ...(section === undefined ? {} : { section }), ...(date === undefined ? {} : { date }), ...(tags === undefined ? {} : { tags }) };
   validateDocument(article); return article;
+}
+
+function readNumberedCollections(value: unknown): NumberedCollection[] {
+  if (value === undefined) return [];
+  if (!Array.isArray(value)) throw new Error('Invalid numbered collections.');
+  return value.map((item: unknown) => {
+    if (!record(item) || !Array.isArray(item['issues'])) throw new Error('Invalid numbered collection.');
+    const aliases = item['aliases'];
+    if (aliases !== undefined && !strings(aliases)) throw new Error('Invalid numbered collection aliases.');
+    const issues = item['issues'].map((issue: unknown) => {
+      if (!record(issue) || typeof issue['number'] !== 'number') throw new Error('Invalid issue in a numbered collection.');
+      return { number: issue['number'], articleId: string(issue['articleId']) };
+    });
+    return { title: string(item['title']), ...(aliases ? { aliases } : {}), issues };
+  });
 }
 
 export async function readSnapshot(serialized: string): Promise<Snapshot> {
@@ -141,5 +163,5 @@ export async function readSnapshot(serialized: string): Promise<Snapshot> {
     semantic = { space: data['space'], dimensions: data['dimensions'], units: rows, sha256: data['sha256'] };
     if (new Set(semantic.units).size !== units.size) throw new Error('Semantic data omits indexed source units.');
   }
-  return { format: 2, id: string(value['id']), articles, candidates, excerpts, candidateIndex: string(value['candidateIndex']), excerptIndex: string(value['excerptIndex']), ...(semantic ? { semantic } : {}) };
+  return { format: 2, id: string(value['id']), articles, candidates, excerpts, candidateIndex: string(value['candidateIndex']), excerptIndex: string(value['excerptIndex']), numberedCollections: readNumberedCollections(value['numberedCollections']), ...(semantic ? { semantic } : {}) };
 }

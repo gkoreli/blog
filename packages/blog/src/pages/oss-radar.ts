@@ -1,17 +1,19 @@
 import { html } from '@nisli/core';
 import type { PostMeta } from '../lib/frontmatter.js';
 import { SECTION_LABELS, SECTION_DESCRIPTIONS } from '../lib/frontmatter.js';
+import { ossRadarIssueNumber } from '../lib/oss-radar.js';
 import { PageHero, OSSRadarCard } from '../components/index.js';
 import { archiveTopicIndex } from '../templates/archive-topics.js';
 
 export function ossRadarPage(posts: PostMeta[]) {
-  const latestIssueNum = posts[0]?.slug.match(/oss-radar-(\d+)/)?.[1];
+  const latest = posts[0];
+  const latestIssueNum = latest ? ossRadarIssueNumber(latest.slug) : undefined;
   const stats = [
     { value: String(posts.length), label: 'Issues' },
     ...(latestIssueNum ? [{ value: `#${latestIssueNum}`, label: 'Latest' }] : []),
   ];
 
-  const [latest, ...archive] = posts;
+  const archive = posts.slice(1);
 
   return html`<div class="section-archive" data-section="oss-radar">
   ${PageHero({

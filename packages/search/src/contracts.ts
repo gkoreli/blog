@@ -1,4 +1,5 @@
 import type { ArticleDocument, SourcePassage } from './documents.js';
+import type { NumberedReference } from './numbered-collections.js';
 
 /** The adapter owns tokenization, prefixes, model loading and long-document splitting. */
 export interface EmbeddingEncoder {
@@ -37,7 +38,6 @@ export interface PassageMatch {
 
 export interface ArticleMatch {
   readonly article: Omit<ArticleDocument, 'passages'>;
-  readonly matchedBy?: 'issue-number';
   readonly passages: readonly PassageMatch[];
   /** Ranked source passages available under the current query and scope. */
   readonly totalPassages: number;
@@ -49,6 +49,7 @@ export interface SearchResponse {
   readonly mode: 'words' | 'related';
   readonly articles: readonly ArticleMatch[];
   readonly missingWords: readonly string[];
+  readonly reference?: NumberedReference;
 }
 
 export interface SearchEngine {

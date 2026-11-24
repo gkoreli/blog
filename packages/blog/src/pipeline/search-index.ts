@@ -2,12 +2,13 @@ import { createHash } from 'node:crypto';
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join, dirname } from 'node:path';
-import { buildSearchIndex, type ArticleDocument } from '@gkoreli/search';
+import { buildSearchIndex, type ArticleDocument, type NumberedCollection } from '@gkoreli/search';
 import { prepareArticle, type PreparedArticle } from '@gkoreli/search/html';
 import { prepareE5Assets } from '@gkoreli/search/e5-assets';
 import { createLocalE5 } from '@gkoreli/search/e5-node';
 import { E5_SPACE } from '@gkoreli/search/e5';
-import type { PostMeta } from '../lib/frontmatter.js';
+import { SECTION_LABELS, type PostMeta } from '../lib/frontmatter.js';
+import { ossRadarIssueNumber } from '../lib/oss-radar.js';
 
 export function searchableArticle(meta: PostMeta, html: string): PreparedArticle {
   return prepareArticle({ id: meta.slug, url: `/${meta.slug}`, title: meta.title, section: meta.section, date: meta.date, tags: meta.tags, html,
@@ -19,6 +20,15 @@ export function searchableArticle(meta: PostMeta, html: string): PreparedArticle
 
 export async function writeSearchIndex(destination: string, articles: readonly ArticleDocument[], coverage: readonly { id: string; indexedCharacters: number; ignoredCharacters: number; headings: number }[]): Promise<void> {
   const started = performance.now();
+  const ossRadar: NumberedCollection = {
+    title: SECTION_LABELS['oss-radar'],
+    aliases: ['OSS', 'oss-radar'],
+    issues: articles.filter(article => article.section === 'oss-radar').map(({ id }) => {
+      const issue = ossRadarIssueNumber(id);
+      if (!issue) throw new Error(`OSS Radar article has no issue number in its slug: ${id}`);
+      return { number: Number(issue), articleId: id };
+    }),
+  };
   const cache = process.env['BLOG_SEARCH_CACHE'] ?? join(tmpdir(), 'gkoreli-search-v1');
   const model = await prepareE5Assets(cache, destination);
   let cached = 0, computed = 0;
@@ -29,7 +39,7 @@ export async function writeSearchIndex(destination: string, articles: readonly A
     },
     async put(key, vector) { const path = join(cache, 'vectors', key), bytes = Buffer.alloc(vector.length * 4); vector.forEach((value, i) => bytes.writeFloatLE(value, i * 4)); await mkdir(dirname(path), { recursive: true }); await writeFile(path, bytes); computed++; if (computed % 250 === 0) console.log(`Search: embedded ${computed} new units (${cached} cached).`); },
   });
-  const bundle = await (async () => { try { return await buildSearchIndex(articles, { encoder }); } finally { await encoder.close(); } })();
+  const bundle = await (async () => { try { return await buildSearchIndex(articles, { encoder, numberedCollections: [ossRadar] }); } finally { await encoder.close(); } })();
   if (!bundle.vectors) throw new Error('Related-search indexing produced no vectors.');
   const hash = createHash('sha256').update(bundle.index).digest('hex').slice(0, 20), base = `/search-assets/${hash}`;
   await mkdir(join(destination, base), { recursive: true });

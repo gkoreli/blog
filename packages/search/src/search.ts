@@ -4,7 +4,7 @@ import type { ArticleMatch, EmbeddingEncoder, PassageMatch, SearchEngine, Search
 import { digest, lexicalOptions, normalizedVector, readSnapshot, type SearchUnit } from './snapshot.js';
 import { normalizeWord, parseQuery, tokenize } from './query.js';
 import { articleRanks, fuse, lexicalRows, policy, type RankedUnit } from './ranking.js';
-import { numberedTitleLookup } from './numbered-titles.js';
+import { compileNumberedCollections, type NumberedReference } from './numbered-collections.js';
 
 function preview(text: string, terms: readonly string[]): PassageMatch['preview'] {
   const wanted = new Set(terms); const ranges: TextRange[] = [];
@@ -41,7 +41,7 @@ export async function createSearch(serialized: string, adapters: { readonly enco
     Object.freeze(article.passages); if (article.tags) Object.freeze(article.tags); Object.freeze(article);
   }
   const articles = new Map(snapshot.articles.map(article => [article.id, article]));
-  const lookupNumberedTitle = numberedTitleLookup(snapshot.articles);
+  const resolveReference = compileNumberedCollections(snapshot.numberedCollections, new Set(articles.keys()));
   const candidateUnits = new Map(snapshot.candidates.map(unit => [unit.id, unit]));
   const excerptUnits = new Map(snapshot.excerpts.map(unit => [unit.id, unit]));
   const candidateIndex = MiniSearch.loadJSON<SearchUnit>(snapshot.candidateIndex, lexicalOptions);
@@ -103,26 +103,41 @@ export async function createSearch(serialized: string, adapters: { readonly enco
     return { passages: result, totalPassages: selected.size };
   }
 
+  function articleMatch(article: ArticleDocument, rows: readonly RankedUnit[], terms: readonly string[], count: number): ArticleMatch {
+    const { passages, ...meta } = article;
+    return { article: meta, ...matches(article, rows, terms, count) };
+  }
+
   return {
     id: snapshot.id, articleCount: articles.size, passageCount: snapshot.excerpts.length,
     sections: [...new Set(snapshot.articles.flatMap(article => article.section === undefined ? [] : [article.section]))].sort(),
     relatedSpace: snapshot.semantic?.space ?? null,
     async search(value, options = {}): Promise<SearchResponse> {
-      const query = parseQuery(value), mode = options.mode ?? 'words';
+      const input = parseQuery(value), mode = options.mode ?? 'words';
       if (mode !== 'words' && mode !== 'related') throw new Error('Unknown search mode.');
       const limit = boundedCount(options.limit, 5, 20), perArticle = boundedCount(options.passagesPerArticle, 3, 20);
       options.signal?.throwIfAborted();
-      const response = (found: readonly ArticleMatch[]): SearchResponse => ({ indexId: snapshot.id, query: query.text, mode, articles: found, missingWords: [...new Set(query.terms.filter(term => !vocabulary.has(term)))] });
-      if (!query.text || !query.terms.length) return response([]);
-      const numberedTitle = lookupNumberedTitle(query.text);
-      if (numberedTitle) {
-        if (!articleInScope(numberedTitle, options)) return response([]);
-        const { passages, ...article } = numberedTitle;
-        const match: ArticleMatch = { article, matchedBy: 'issue-number', passages: [], totalPassages: 0 };
-        return { ...response([match]), missingWords: [] };
-      }
-      let candidateRows = lexicalRows(candidateIndex, query.lexical, mode === 'words');
+      const locator = resolveReference(input.text);
+      const target = locator?.articleId === undefined ? undefined : articles.get(locator.articleId);
+      const query = locator ? parseQuery(locator.detail) : input;
+      const reference: NumberedReference | undefined = locator && {
+        title: locator.title,
+        number: locator.number,
+        outcome: !target ? 'missing' : articleInScope(target, options) ? 'found' : 'outside-scope',
+        passageQuery: query.terms.length > 0,
+      };
+      const response = (found: readonly ArticleMatch[]): SearchResponse => ({
+        indexId: snapshot.id, query: input.text, mode, articles: found,
+        missingWords: reference && reference.outcome !== 'found' ? [] : [...new Set(query.terms.filter(term => !vocabulary.has(term)))],
+        ...(reference ? { reference } : {}),
+      });
+      if (reference && reference.outcome !== 'found') return response([]);
+      const scope = target ? { ...options, article: target.id } : options;
+      if (!query.terms.length) return response(target ? [articleMatch(target, [], [], perArticle)] : []);
+
+      let candidateRows = target ? [] : lexicalRows(candidateIndex, query.lexical, mode === 'words');
       let excerptRows = lexicalRows(excerptIndex, query.lexical, mode === 'words', true);
+      if (target) excerptRows = scoped(excerptRows, excerptUnits, scope, query.phrases);
       let fusedArticles: RankedUnit[] | undefined;
       if (mode === 'related') {
         const metadata = snapshot.semantic, model = await encoder();
@@ -131,25 +146,27 @@ export async function createSearch(serialized: string, adapters: { readonly enco
         options.signal?.throwIfAborted(); if (encoded.length !== 1 || !encoded[0]) throw new Error('A query must produce one embedding.');
         const vector = normalizedVector(encoded[0], metadata.dimensions), scores = new Map<string, number>();
         for (const [row, id] of metadata.units.entries()) {
+          if (target && excerptUnits.get(id)?.articleId !== target.id) continue;
           let score = 0;
           for (let i = 0; i < metadata.dimensions; i++) { const left = vector[i], right = data[row * metadata.dimensions + i]; if (left === undefined || right === undefined) throw new Error('Incomplete search vector.'); score += left * right; }
           scores.set(id, Math.max(scores.get(id) ?? -Infinity, score));
         }
         const dense = [...scores].map(([id, score]) => ({ id, score })).sort((a, b) => b.score - a.score);
         const denseCandidates = dense.filter(row => candidateUnits.has(row.id));
-        if (policy.articleFusion) fusedArticles = fuse(articleRanks(scoped(denseCandidates, candidateUnits, options, query.phrases), candidateUnits), articleRanks(scoped(candidateRows, candidateUnits, options, query.phrases), candidateUnits));
+        if (!target && policy.articleFusion) fusedArticles = fuse(articleRanks(scoped(denseCandidates, candidateUnits, scope, query.phrases), candidateUnits), articleRanks(scoped(candidateRows, candidateUnits, scope, query.phrases), candidateUnits));
         candidateRows = fuse(denseCandidates, candidateRows);
         excerptRows = fuse(dense.filter(row => excerptUnits.has(row.id)), excerptRows);
       }
-      candidateRows = scoped(candidateRows, candidateUnits, options, query.phrases);
-      excerptRows = scoped(excerptRows, excerptUnits, options, query.phrases);
+      excerptRows = scoped(excerptRows, excerptUnits, scope, query.phrases);
+      if (target) return response([articleMatch(target, excerptRows, query.terms, perArticle)]);
+      candidateRows = scoped(candidateRows, candidateUnits, scope, query.phrases);
       const selected = new Set<string>(), result: ArticleMatch[] = [];
       const ids = fusedArticles ? fusedArticles.map(row => row.id) : candidateRows.map(row => candidateUnits.get(row.id)?.articleId);
       for (const id of ids) {
         if (!id || selected.has(id)) continue;
         const article = articles.get(id); if (!article || options.section !== undefined && options.section !== article.section) continue;
-        selected.add(id); const { passages: source, ...meta } = article;
-        result.push({ article: meta, ...matches(article, excerptRows, query.terms, perArticle) });
+        selected.add(id);
+        result.push(articleMatch(article, excerptRows, query.terms, perArticle));
         if (result.length >= limit) break;
       }
       return response(result);
