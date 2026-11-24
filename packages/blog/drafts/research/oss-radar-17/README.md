@@ -51,7 +51,7 @@ Hot Updater returns from issue #1 with a change in how it identifies an app buil
 
 ## Monday preparation
 
-The four-project source passed the [Friday editorial, preview, and queue checks](2026-11-20-review.md). The [Sunday release check](2026-11-22-release-readiness.md) verified Bun's stable version, the exact queued source, and activation of the hosted workflow for the November 23 release. Monday's run and served-content checks are next.
+The four-project source passed the [Friday editorial, preview, and queue checks](2026-11-20-review.md) and the [Sunday release check](2026-11-22-release-readiness.md). The November 23 hosted job started late and failed during dependency installation. The source is still queued and the workflow is paused. [Incident and repair](2026-11-24-release-incident.md).
 
 ## Reproduce the daemon and database trials
 

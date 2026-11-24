@@ -2,7 +2,7 @@
 
 **November 19 one-time release:** [#16 is published](https://gkoreli.com/oss-radar-16-saved-skills-and-inbox-replies). At that release, the automatic publisher was disabled and the manifest was empty. [Publication record](../../../packages/blog/drafts/research/oss-radar-16/10-publication-2026-11-19.md).
 
-**November 23 release:** [#17](../../../packages/blog/drafts/research/oss-radar-17/article.md) passed the [Sunday release check](../../../packages/blog/drafts/research/oss-radar-17/2026-11-22-release-readiness.md). The sole reviewed queue entry is set for Monday at 08:00 Pacific, and the hosted workflow is active for this release. Restore the pause after the dated release checks.
+**November 23 release missed:** GitHub started the [#17 release job](https://github.com/gkoreli/blog/actions/runs/45314433189) at 18:43 Pacific. An optional ONNX Runtime GPU download returned 404 during installation. The reviewed snapshot remains in the queue, and the publisher is paused. [Incident and repair](../../../packages/blog/drafts/research/oss-radar-17/2026-11-24-release-incident.md).
 
 **Automatic publication pause began November 14, 2026:** GitHub reported the [hosted workflow](https://github.com/gkoreli/blog/actions/workflows/november-publication.yml) (`408698342`, “Weekly OSS Radar publication”) as `disabled_manually`, with no queued or running jobs. That paused the planned November 16 release and set the standing pause for subsequent weeks. The setup acceptance below records the earlier activation.
 
@@ -53,7 +53,7 @@ The worklist is not a numerical quality score. Record the reason an issue is rea
 | --- | --- | --- | --- |
 | November 16 target, released November 17, 2026 | [#15 — November launches and Takumi revisited](https://gkoreli.com/oss-radar-15-november-launches) | One-time release with [live acceptance](../../../packages/blog/drafts/research/oss-radar-15-november-show-hn/11-publication-2026-11-17.md) | Complete |
 | November 23 target, released November 19, 2026 | [#16 — Saved Skills, Inbox Replies, and Health Checks](https://gkoreli.com/oss-radar-16-saved-skills-and-inbox-replies) | One-time release with [final fieldwork and publication checks](../../../packages/blog/drafts/research/oss-radar-16/10-publication-2026-11-19.md) | Complete |
-| Monday, November 23, 2026 at 08:00 Pacific | [#17 — What Still Works After an Upgrade?](../../../packages/blog/drafts/research/oss-radar-17/article.md) | [Sunday checks passed and the hosted workflow is active](../../../packages/blog/drafts/research/oss-radar-17/2026-11-22-release-readiness.md) | Verify Monday's run, promoted source hash, live article, archive, and feed. Restore the workflow pause |
+| Monday, November 23, 2026 at 08:00 Pacific | [#17 — What Still Works After an Upgrade?](../../../packages/blog/drafts/research/oss-radar-17/article.md) | [Delayed job failed at dependency installation](../../../packages/blog/drafts/research/oss-radar-17/2026-11-24-release-incident.md). Snapshot preserved and publisher paused | Establish an approved catch-up date, then verify its release and served article |
 
 Issue #15 continues #14's Show HN source with the closed November 11–14 UTC window: **603 submissions and nine direct-GitHub candidates at 50+ points**. Klad remains excluded as source-available. All eight remaining launch projects plus returning Takumi are in the final manuscript. [Sunday's fieldwork](../../../packages/blog/drafts/research/oss-radar-15-november-show-hn/07-sunday-fieldwork.md) adds Fursoy's executed RTL controls, AgentRun beta.38 scoring/current-release corrections and further called-path reading. The [readiness record](../../../packages/blog/drafts/research/oss-radar-15-november-show-hn/08-review-and-readiness.md) accepts editorial and isolated-render checks while retaining the pause. The [MWG engineering research](../../../packages/blog/drafts/research/modern-web-guidance/README.md) is separate.
 
@@ -85,7 +85,7 @@ November 18 completed [four release checks](../../../packages/blog/drafts/resear
 - [Selection/promotion](../../../packages/blog/src/lib/publication-schedule.ts) and [focused checks](../../../packages/blog/test/publication-schedule.test.ts)
 - [OSS writing/research guidance](../../../.agents/skills/writing/references/oss-research.md)
 
-The hosted workflow is active for the November 23 exception. Its 08:00 Pacific trigger starts validation and deployment. Restore the publication pause after the dated run and live checks, or after a terminal release failure.
+The hosted workflow is paused after the November 23 release attempt. The November 23 snapshot remains the reviewed source for #17. A subsequent dated release needs a new approval.
 
 ## November 14 setup acceptance
 
