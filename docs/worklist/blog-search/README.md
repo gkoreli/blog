@@ -47,4 +47,8 @@ Resolve exact issue references against published article titles before ranking p
 
 The November 24 serving snapshot had 49 articles, 4,127 passages and 16 numbered OSS Radar issues. On those same index bytes, all 48 issue reference variants returned only their intended article. All 75 previously recorded word-search responses matched the prior runtime exactly. This checks the change against the existing topical cases and every available issue.
 
-The 32 search package tests, 475 blog tests, workspace typecheck and validation of 38 Markdown posts passed. The isolated production build rendered 49 posts. Live acceptance follows activation of the source commit.
+The replay also measured the dialog's one-excerpt limit on the 20 existing confirmation questions. Word search placed the intended article in the first three for all 20. It showed the selected passage for 12 with one excerpt per article and 15 with three. These cases come from the labeled search study. [Confirmation protocol](../../../packages/blog/drafts/research/modern-web-guidance/search-package-v02/protocol.md).
+
+The 32 search package tests, 475 blog tests, workspace typecheck and validation of 38 Markdown posts passed. The isolated production build rendered 49 posts. Both the isolated browser dialog and local Worker returned the expected issue.
+
+Source `7c2f4c2f` went live on November 24 at 08:08 Pacific through automatic build `7486e13b-5933-4d2d-90ca-48580d32589f`. Worker version `c3c19d09-428f-4f90-8c21-42730c6fcada` received 100% of traffic. The live dialog returned one article and its title link opened OSS Radar #08. The native GET form returned the same match for both shorthand and full series name. A filter for Essays returned zero articles for that reference.
