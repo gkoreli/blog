@@ -2,7 +2,7 @@
 title: "OSS Radar #17: What Still Works After an Upgrade?"
 seoTitle: "OSS Radar #17: Bun, flagd, pgroll, and Hot Updater"
 alternativeHeadline: "Four tested upgrades in compression, feature flag assignment, Postgres schema changes, and React Native updates"
-date: "2026-11-23"
+date: "2026-11-24"
 description: "Bun changed what Zstandard wrote and kept old decoders working. Trials of flagd, pgroll, and Hot Updater show what survives a rollout."
 section: oss-radar
 series:
