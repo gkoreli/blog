@@ -1,0 +1,708 @@
+{
+  "machine": {
+    "kernel": "6.18.22-0-virt",
+    "arch": "aarch64"
+  },
+  "releases": {
+    "v0.21.12": {
+      "cli": "dagger v0.21.12 (image://registry.dagger.io/engine:v0.21.12) linux/arm64/v8",
+      "cli_sha256": "cfcb806993c224357c5568de1e8327f3271a7303fce21fab5c6656f041a6845b",
+      "engine_image": {
+        "repo_digests": [
+          "registry.dagger.io/engine@sha256:b4a1a7b7b663e0da98d7f4c675762d40d78d7e507a5756c4f1015a0e1dd6380a"
+        ],
+        "image_id": "sha256:b4a1a7b7b663e0da98d7f4c675762d40d78d7e507a5756c4f1015a0e1dd6380a",
+        "os": "linux",
+        "architecture": "arm64"
+      },
+      "runs": {
+        "first": {
+          "edit": null,
+          "local_inputs": {
+            "selected": "selected-v1\n",
+            "adjacent": "adjacent-v1\n",
+            "base": "base-v1\n"
+          },
+          "engine_host_inputs": {
+            "adjacent": "adjacent-v1\n",
+            "base": "base-v1\n",
+            "selected": "selected-v1\n"
+          },
+          "output": "selected-v1\n",
+          "copy_spans": [
+            {
+              "destination": "/selected.txt",
+              "source": "/selected.txt",
+              "cached": true,
+              "checksum_paths": []
+            },
+            {
+              "destination": "/adjacent.txt",
+              "source": "/adjacent.txt",
+              "cached": true,
+              "checksum_paths": []
+            },
+            {
+              "destination": "/result.txt",
+              "source": "/base.txt",
+              "cached": true,
+              "checksum_paths": []
+            },
+            {
+              "destination": "/result.txt",
+              "source": "/selected.txt",
+              "cached": true,
+              "checksum_paths": []
+            }
+          ]
+        },
+        "unchanged": {
+          "edit": null,
+          "local_inputs": {
+            "selected": "selected-v1\n",
+            "adjacent": "adjacent-v1\n",
+            "base": "base-v1\n"
+          },
+          "engine_host_inputs": {
+            "adjacent": "adjacent-v1\n",
+            "base": "base-v1\n",
+            "selected": "selected-v1\n"
+          },
+          "output": "selected-v1\n",
+          "copy_spans": [
+            {
+              "destination": "/result.txt",
+              "source": "/base.txt",
+              "cached": true,
+              "checksum_paths": []
+            },
+            {
+              "destination": "/selected.txt",
+              "source": "/selected.txt",
+              "cached": true,
+              "checksum_paths": []
+            },
+            {
+              "destination": "/adjacent.txt",
+              "source": "/adjacent.txt",
+              "cached": true,
+              "checksum_paths": []
+            },
+            {
+              "destination": "/result.txt",
+              "source": "/selected.txt",
+              "cached": true,
+              "checksum_paths": []
+            }
+          ]
+        },
+        "adjacent_edited": {
+          "edit": {
+            "file": "adjacent.txt",
+            "same_size": true,
+            "same_mtime": false
+          },
+          "local_inputs": {
+            "selected": "selected-v1\n",
+            "adjacent": "adjacent-v2\n",
+            "base": "base-v1\n"
+          },
+          "engine_host_inputs": {
+            "adjacent": "adjacent-v2\n",
+            "base": "base-v1\n",
+            "selected": "selected-v1\n"
+          },
+          "output": "selected-v1\n",
+          "copy_spans": [
+            {
+              "destination": "/result.txt",
+              "source": "/base.txt",
+              "cached": false,
+              "checksum_paths": [
+                "/base.txt"
+              ]
+            },
+            {
+              "destination": "/selected.txt",
+              "source": "/selected.txt",
+              "cached": false,
+              "checksum_paths": [
+                "/selected.txt"
+              ]
+            },
+            {
+              "destination": "/adjacent.txt",
+              "source": "/adjacent.txt",
+              "cached": false,
+              "checksum_paths": [
+                "/adjacent.txt"
+              ]
+            },
+            {
+              "destination": "/result.txt",
+              "source": "/selected.txt",
+              "cached": false,
+              "checksum_paths": [
+                "/selected.txt"
+              ]
+            }
+          ]
+        },
+        "overwritten_base_edited": {
+          "edit": {
+            "file": "base.txt",
+            "same_size": true,
+            "same_mtime": false
+          },
+          "local_inputs": {
+            "selected": "selected-v1\n",
+            "adjacent": "adjacent-v2\n",
+            "base": "base-v2\n"
+          },
+          "engine_host_inputs": {
+            "adjacent": "adjacent-v2\n",
+            "base": "base-v2\n",
+            "selected": "selected-v1\n"
+          },
+          "output": "selected-v1\n",
+          "copy_spans": [
+            {
+              "destination": "/selected.txt",
+              "source": "/selected.txt",
+              "cached": false,
+              "checksum_paths": [
+                "/selected.txt"
+              ]
+            },
+            {
+              "destination": "/result.txt",
+              "source": "/base.txt",
+              "cached": false,
+              "checksum_paths": [
+                "/base.txt"
+              ]
+            },
+            {
+              "destination": "/adjacent.txt",
+              "source": "/adjacent.txt",
+              "cached": false,
+              "checksum_paths": [
+                "/adjacent.txt"
+              ]
+            },
+            {
+              "destination": "/result.txt",
+              "source": "/selected.txt",
+              "cached": false,
+              "checksum_paths": [
+                "/selected.txt"
+              ]
+            }
+          ]
+        },
+        "selected_edited": {
+          "edit": {
+            "file": "selected.txt",
+            "same_size": true,
+            "same_mtime": false
+          },
+          "local_inputs": {
+            "selected": "selected-v2\n",
+            "adjacent": "adjacent-v2\n",
+            "base": "base-v2\n"
+          },
+          "engine_host_inputs": {
+            "adjacent": "adjacent-v2\n",
+            "base": "base-v2\n",
+            "selected": "selected-v2\n"
+          },
+          "output": "selected-v2\n",
+          "copy_spans": [
+            {
+              "destination": "/selected.txt",
+              "source": "/selected.txt",
+              "cached": false,
+              "checksum_paths": [
+                "/selected.txt"
+              ]
+            },
+            {
+              "destination": "/result.txt",
+              "source": "/base.txt",
+              "cached": false,
+              "checksum_paths": [
+                "/base.txt"
+              ]
+            },
+            {
+              "destination": "/adjacent.txt",
+              "source": "/adjacent.txt",
+              "cached": false,
+              "checksum_paths": [
+                "/adjacent.txt"
+              ]
+            },
+            {
+              "destination": "/result.txt",
+              "source": "/selected.txt",
+              "cached": false,
+              "checksum_paths": [
+                "/selected.txt"
+              ]
+            }
+          ]
+        },
+        "mtime_preserved": {
+          "edit": {
+            "file": "selected.txt",
+            "same_size": true,
+            "same_mtime": true
+          },
+          "local_inputs": {
+            "selected": "selected-v3\n",
+            "adjacent": "adjacent-v2\n",
+            "base": "base-v2\n"
+          },
+          "engine_host_inputs": {
+            "adjacent": "adjacent-v2\n",
+            "base": "base-v2\n",
+            "selected": "selected-v2\n"
+          },
+          "output": "selected-v2\n",
+          "copy_spans": [
+            {
+              "destination": "/selected.txt",
+              "source": "/selected.txt",
+              "cached": true,
+              "checksum_paths": []
+            },
+            {
+              "destination": "/result.txt",
+              "source": "/base.txt",
+              "cached": true,
+              "checksum_paths": []
+            },
+            {
+              "destination": "/adjacent.txt",
+              "source": "/adjacent.txt",
+              "cached": true,
+              "checksum_paths": []
+            },
+            {
+              "destination": "/result.txt",
+              "source": "/selected.txt",
+              "cached": true,
+              "checksum_paths": []
+            }
+          ]
+        },
+        "mtime_advanced": {
+          "edit": {
+            "file": "selected.txt",
+            "same_size": true,
+            "same_mtime": false
+          },
+          "local_inputs": {
+            "selected": "selected-v3\n",
+            "adjacent": "adjacent-v2\n",
+            "base": "base-v2\n"
+          },
+          "engine_host_inputs": {
+            "adjacent": "adjacent-v2\n",
+            "base": "base-v2\n",
+            "selected": "selected-v3\n"
+          },
+          "output": "selected-v3\n",
+          "copy_spans": [
+            {
+              "destination": "/selected.txt",
+              "source": "/selected.txt",
+              "cached": false,
+              "checksum_paths": [
+                "/selected.txt"
+              ]
+            },
+            {
+              "destination": "/result.txt",
+              "source": "/base.txt",
+              "cached": false,
+              "checksum_paths": [
+                "/base.txt"
+              ]
+            },
+            {
+              "destination": "/adjacent.txt",
+              "source": "/adjacent.txt",
+              "cached": false,
+              "checksum_paths": [
+                "/adjacent.txt"
+              ]
+            },
+            {
+              "destination": "/result.txt",
+              "source": "/selected.txt",
+              "cached": false,
+              "checksum_paths": [
+                "/selected.txt"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "v0.21.11": {
+      "cli": "dagger v0.21.11 (image://registry.dagger.io/engine:v0.21.11) linux/arm64/v8",
+      "cli_sha256": "19fc0866b7fa6e3e711dcf5e642a65c2094d49a4f0dc3e8b85acc7057bbd5c44",
+      "engine_image": {
+        "repo_digests": [
+          "registry.dagger.io/engine@sha256:6b557cc8b5fdfee0e2e8c82d451ac922097a1255482143e1b96c0be3ff2a303c"
+        ],
+        "image_id": "sha256:6b557cc8b5fdfee0e2e8c82d451ac922097a1255482143e1b96c0be3ff2a303c",
+        "os": "linux",
+        "architecture": "arm64"
+      },
+      "runs": {
+        "first": {
+          "edit": null,
+          "local_inputs": {
+            "selected": "selected-v1\n",
+            "adjacent": "adjacent-v1\n",
+            "base": "base-v1\n"
+          },
+          "engine_host_inputs": {
+            "adjacent": "adjacent-v1\n",
+            "base": "base-v1\n",
+            "selected": "selected-v1\n"
+          },
+          "output": "selected-v1\n",
+          "copy_spans": [
+            {
+              "destination": "/result.txt",
+              "source": "/base.txt",
+              "cached": false,
+              "checksum_paths": [
+                "/"
+              ]
+            },
+            {
+              "destination": "/selected.txt",
+              "source": "/selected.txt",
+              "cached": false,
+              "checksum_paths": [
+                "/"
+              ]
+            },
+            {
+              "destination": "/adjacent.txt",
+              "source": "/adjacent.txt",
+              "cached": false,
+              "checksum_paths": [
+                "/"
+              ]
+            },
+            {
+              "destination": "/result.txt",
+              "source": "/selected.txt",
+              "cached": false,
+              "checksum_paths": [
+                "/"
+              ]
+            }
+          ]
+        },
+        "unchanged": {
+          "edit": null,
+          "local_inputs": {
+            "selected": "selected-v1\n",
+            "adjacent": "adjacent-v1\n",
+            "base": "base-v1\n"
+          },
+          "engine_host_inputs": {
+            "adjacent": "adjacent-v1\n",
+            "base": "base-v1\n",
+            "selected": "selected-v1\n"
+          },
+          "output": "selected-v1\n",
+          "copy_spans": [
+            {
+              "destination": "/selected.txt",
+              "source": "/selected.txt",
+              "cached": true,
+              "checksum_paths": []
+            },
+            {
+              "destination": "/result.txt",
+              "source": "/base.txt",
+              "cached": true,
+              "checksum_paths": []
+            },
+            {
+              "destination": "/adjacent.txt",
+              "source": "/adjacent.txt",
+              "cached": true,
+              "checksum_paths": []
+            },
+            {
+              "destination": "/result.txt",
+              "source": "/selected.txt",
+              "cached": true,
+              "checksum_paths": []
+            }
+          ]
+        },
+        "adjacent_edited": {
+          "edit": {
+            "file": "adjacent.txt",
+            "same_size": true,
+            "same_mtime": false
+          },
+          "local_inputs": {
+            "selected": "selected-v1\n",
+            "adjacent": "adjacent-v2\n",
+            "base": "base-v1\n"
+          },
+          "engine_host_inputs": {
+            "adjacent": "adjacent-v2\n",
+            "base": "base-v1\n",
+            "selected": "selected-v1\n"
+          },
+          "output": "selected-v1\n",
+          "copy_spans": [
+            {
+              "destination": "/result.txt",
+              "source": "/base.txt",
+              "cached": false,
+              "checksum_paths": [
+                "/"
+              ]
+            },
+            {
+              "destination": "/selected.txt",
+              "source": "/selected.txt",
+              "cached": false,
+              "checksum_paths": [
+                "/"
+              ]
+            },
+            {
+              "destination": "/adjacent.txt",
+              "source": "/adjacent.txt",
+              "cached": false,
+              "checksum_paths": [
+                "/"
+              ]
+            },
+            {
+              "destination": "/result.txt",
+              "source": "/selected.txt",
+              "cached": false,
+              "checksum_paths": [
+                "/"
+              ]
+            }
+          ]
+        },
+        "overwritten_base_edited": {
+          "edit": {
+            "file": "base.txt",
+            "same_size": true,
+            "same_mtime": false
+          },
+          "local_inputs": {
+            "selected": "selected-v1\n",
+            "adjacent": "adjacent-v2\n",
+            "base": "base-v2\n"
+          },
+          "engine_host_inputs": {
+            "adjacent": "adjacent-v2\n",
+            "base": "base-v2\n",
+            "selected": "selected-v1\n"
+          },
+          "output": "selected-v1\n",
+          "copy_spans": [
+            {
+              "destination": "/result.txt",
+              "source": "/base.txt",
+              "cached": false,
+              "checksum_paths": [
+                "/"
+              ]
+            },
+            {
+              "destination": "/selected.txt",
+              "source": "/selected.txt",
+              "cached": false,
+              "checksum_paths": [
+                "/"
+              ]
+            },
+            {
+              "destination": "/adjacent.txt",
+              "source": "/adjacent.txt",
+              "cached": false,
+              "checksum_paths": [
+                "/"
+              ]
+            },
+            {
+              "destination": "/result.txt",
+              "source": "/selected.txt",
+              "cached": false,
+              "checksum_paths": [
+                "/"
+              ]
+            }
+          ]
+        },
+        "selected_edited": {
+          "edit": {
+            "file": "selected.txt",
+            "same_size": true,
+            "same_mtime": false
+          },
+          "local_inputs": {
+            "selected": "selected-v2\n",
+            "adjacent": "adjacent-v2\n",
+            "base": "base-v2\n"
+          },
+          "engine_host_inputs": {
+            "adjacent": "adjacent-v2\n",
+            "base": "base-v2\n",
+            "selected": "selected-v2\n"
+          },
+          "output": "selected-v2\n",
+          "copy_spans": [
+            {
+              "destination": "/selected.txt",
+              "source": "/selected.txt",
+              "cached": false,
+              "checksum_paths": [
+                "/"
+              ]
+            },
+            {
+              "destination": "/result.txt",
+              "source": "/base.txt",
+              "cached": false,
+              "checksum_paths": [
+                "/"
+              ]
+            },
+            {
+              "destination": "/adjacent.txt",
+              "source": "/adjacent.txt",
+              "cached": false,
+              "checksum_paths": [
+                "/"
+              ]
+            },
+            {
+              "destination": "/result.txt",
+              "source": "/selected.txt",
+              "cached": false,
+              "checksum_paths": [
+                "/"
+              ]
+            }
+          ]
+        },
+        "mtime_preserved": {
+          "edit": {
+            "file": "selected.txt",
+            "same_size": true,
+            "same_mtime": true
+          },
+          "local_inputs": {
+            "selected": "selected-v3\n",
+            "adjacent": "adjacent-v2\n",
+            "base": "base-v2\n"
+          },
+          "engine_host_inputs": {
+            "adjacent": "adjacent-v2\n",
+            "base": "base-v2\n",
+            "selected": "selected-v2\n"
+          },
+          "output": "selected-v2\n",
+          "copy_spans": [
+            {
+              "destination": "/result.txt",
+              "source": "/base.txt",
+              "cached": true,
+              "checksum_paths": []
+            },
+            {
+              "destination": "/selected.txt",
+              "source": "/selected.txt",
+              "cached": true,
+              "checksum_paths": []
+            },
+            {
+              "destination": "/adjacent.txt",
+              "source": "/adjacent.txt",
+              "cached": true,
+              "checksum_paths": []
+            },
+            {
+              "destination": "/result.txt",
+              "source": "/selected.txt",
+              "cached": true,
+              "checksum_paths": []
+            }
+          ]
+        },
+        "mtime_advanced": {
+          "edit": {
+            "file": "selected.txt",
+            "same_size": true,
+            "same_mtime": false
+          },
+          "local_inputs": {
+            "selected": "selected-v3\n",
+            "adjacent": "adjacent-v2\n",
+            "base": "base-v2\n"
+          },
+          "engine_host_inputs": {
+            "adjacent": "adjacent-v2\n",
+            "base": "base-v2\n",
+            "selected": "selected-v3\n"
+          },
+          "output": "selected-v3\n",
+          "copy_spans": [
+            {
+              "destination": "/result.txt",
+              "source": "/base.txt",
+              "cached": false,
+              "checksum_paths": [
+                "/"
+              ]
+            },
+            {
+              "destination": "/selected.txt",
+              "source": "/selected.txt",
+              "cached": false,
+              "checksum_paths": [
+                "/"
+              ]
+            },
+            {
+              "destination": "/adjacent.txt",
+              "source": "/adjacent.txt",
+              "cached": false,
+              "checksum_paths": [
+                "/"
+              ]
+            },
+            {
+              "destination": "/result.txt",
+              "source": "/selected.txt",
+              "cached": false,
+              "checksum_paths": [
+                "/"
+              ]
+            }
+          ]
+        }
+      }
+    }
+  }
+}

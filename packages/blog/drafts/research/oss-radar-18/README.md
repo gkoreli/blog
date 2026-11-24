@@ -14,6 +14,8 @@ The November 24 scan checked the official GitHub latest-release endpoint for 21 
 
 The working set asks which input or existing bytes a tool uses when it skips work. mise can refuse a read before it saves reusable output. Dagger can identify a copy by its source files and the destination's parent. restic can replace an existing file when links change the meaning of reusing its byte ranges. The test for each is to change one concrete input, then inspect what was restored or rebuilt. [mise fieldwork](mise/README.md) · [Dagger source trace](dagger/README.md) · [restic fieldwork](restic/README.md).
 
+The Dagger engine comparison put a separate check before the copy. Both releases used earlier bytes when an edit preserved a file's length and modification time. The 0.21.12 checksum had a smaller scope once an ordinary edit reached the engine. This gives the issue a concrete distinction between choosing which bytes to check and finding those bytes in the first place. [Engine trial and source](dagger/README.md).
+
 ## Next bounded action
 
-Exercise Dagger's shipped engine with a multistage Dockerfile. Change a file in the source stage that the final stage leaves behind, then change the file it actually copies. Inspect the final file and the copy's cache trace. The two completed fixtures supply the starting evidence for the other entries. Review the working selection after the Dagger result and before committing to the article's synthesis.
+Check whether same-size edits with preserved modification times reach mise's declared-input key and restic's next local backup. The new controls should identify which measurements can support a shared lesson and where the tools make different choices. Keep the existing ordinary trials as their baselines, then review the selection and article outline.

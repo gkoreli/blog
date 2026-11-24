@@ -2,7 +2,7 @@
 
 ## New active writing
 
-- **November 30 OSS Radar preparation target:** [#18 research](research/oss-radar-18/README.md) covers file reuse in mise, Dagger, and restic. The first mise cache and restic restore results are recorded. Dagger's engine trial is next.
+- **November 30 OSS Radar preparation target:** [#18 research](research/oss-radar-18/README.md) covers file reuse in mise, Dagger, and restic. The initial run of each project is recorded. Follow-up controls will check how the tools see a content change when size and modification time stay the same.
 
 - **Published November 24, 2026:** [OSS Radar #17: What Still Works After an Upgrade?](https://gkoreli.com/oss-radar-17-what-still-works-after-an-upgrade). Bun compression and AOT tests lead the issue, alongside flagd, pgroll, and Hot Updater. [Maintained source](../posts/049-oss-radar-17-what-still-works-after-an-upgrade.md) · [Research and fixtures](research/oss-radar-17/README.md) · [Release verification](research/oss-radar-17/2026-11-24-release-incident.md).
 

@@ -1,0 +1,36 @@
+{
+  "version": "v0.21.12",
+  "variants": {
+    "unfiltered": {
+      "entries": [
+        "adjacent.txt",
+        "selected.txt"
+      ],
+      "copy_spans": [
+        {
+          "destination": "/package/",
+          "source": "/inputs",
+          "cached": false,
+          "checksum_paths": [
+            "/inputs"
+          ]
+        }
+      ]
+    },
+    "filtered": {
+      "entries": [
+        "selected.txt"
+      ],
+      "copy_spans": [
+        {
+          "destination": "/package/",
+          "source": "/inputs",
+          "cached": false,
+          "checksum_paths": [
+            "/"
+          ]
+        }
+      ]
+    }
+  }
+}
