@@ -1,0 +1,125 @@
+{
+  "environment": {
+    "system": "Darwin",
+    "kernel": "27.2.0",
+    "arch": "arm64",
+    "mise": "2026.11.14 macos-arm64 (2026-11-24)"
+  },
+  "binary_sha256": "ad39dddb61236cc546ecbd0294aa3fc72a5ae7f1f8c7e6dc6fd4211f99eb3b79",
+  "cases": {
+    "ordinary_cache": {
+      "sandbox_requested": false,
+      "declared_inputs": [
+        "src/app.txt"
+      ],
+      "runs": {
+        "first": {
+          "status": 0,
+          "output": "application\ndebug\n",
+          "diagnostics": [
+            "[build] cache miss: no matching cache entry"
+          ]
+        },
+        "mode_changed": {
+          "status": 0,
+          "output": "application\ndebug\n",
+          "diagnostics": [
+            "[build] restored outputs from cache f5c789ca829a51892f1f1cb1aef390abaaa947316e1ea89d27671da55e86bece"
+          ]
+        },
+        "fresh_output": {
+          "status": 0,
+          "output": "application\ndebug\n",
+          "diagnostics": [
+            "[build] restored outputs from cache f5c789ca829a51892f1f1cb1aef390abaaa947316e1ea89d27671da55e86bece"
+          ]
+        },
+        "source_changed": {
+          "status": 0,
+          "output": "application-v2\nrelease\n",
+          "diagnostics": [
+            "[build] cache miss: no matching cache entry"
+          ]
+        }
+      }
+    },
+    "sandbox_missing_input": {
+      "sandbox_requested": true,
+      "declared_inputs": [
+        "src/app.txt"
+      ],
+      "runs": {
+        "first": {
+          "status": 0,
+          "output": "application\ndebug\n",
+          "diagnostics": [
+            "[build] cache miss: no matching cache entry",
+            "mise WARN  cache.sandbox is only enforced on Linux; cached tasks run outside the sandbox here"
+          ]
+        },
+        "mode_changed": {
+          "status": 0,
+          "output": "application\ndebug\n",
+          "diagnostics": [
+            "[build] restored outputs from cache 24ce54888da6443bd93ea3687e5cd82b8746cabcc17bfdd682718da5a7d78d73"
+          ]
+        },
+        "fresh_output": {
+          "status": 0,
+          "output": "application\ndebug\n",
+          "diagnostics": [
+            "[build] restored outputs from cache 24ce54888da6443bd93ea3687e5cd82b8746cabcc17bfdd682718da5a7d78d73"
+          ]
+        },
+        "source_changed": {
+          "status": 0,
+          "output": "application-v2\nrelease\n",
+          "diagnostics": [
+            "[build] cache miss: no matching cache entry",
+            "mise WARN  cache.sandbox is only enforced on Linux; cached tasks run outside the sandbox here"
+          ]
+        }
+      }
+    },
+    "sandbox_declared_input": {
+      "sandbox_requested": true,
+      "declared_inputs": [
+        "src/app.txt",
+        "build-mode.txt"
+      ],
+      "runs": {
+        "first": {
+          "status": 0,
+          "output": "application\ndebug\n",
+          "diagnostics": [
+            "[build] cache miss: no matching cache entry",
+            "mise WARN  cache.sandbox is only enforced on Linux; cached tasks run outside the sandbox here"
+          ]
+        },
+        "mode_changed": {
+          "status": 0,
+          "output": "application\nrelease\n",
+          "diagnostics": [
+            "[build] cache miss: no matching cache entry",
+            "mise WARN  cache.sandbox is only enforced on Linux; cached tasks run outside the sandbox here"
+          ]
+        },
+        "fresh_output": {
+          "status": 0,
+          "output": "application\nrelease\n",
+          "diagnostics": [
+            "[build] restored outputs from cache 95984823a1d6dad1080c1ba1821e9a6e0fc59e433f431af10fef8e830728de8a"
+          ]
+        },
+        "source_changed": {
+          "status": 0,
+          "output": "application-v2\nrelease\n",
+          "diagnostics": [
+            "[build] cache miss: no matching cache entry",
+            "mise WARN  cache.sandbox is only enforced on Linux; cached tasks run outside the sandbox here"
+          ]
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "environment": {
+    "platform": "Darwin",
+    "arch": "arm64",
+    "restic": "restic 0.20.0 compiled with go1.27.4 on darwin/arm64"
+  },
+  "binary_sha256": "9263cc41641f056b32a09ac133974bed8359d3310d2f42f9e9e46b19760d80bf",
+  "snapshot_blobs": {
+    "old": 8,
+    "new": 8,
+    "common": 7
+  },
+  "expected_sha256": {
+    "initial": "f31d19d24b33ea1acc2fc2e99451ae72fc96fd22730603bbc24928b219f62b1f",
+    "updated": "c8184e644d838d84ae759ed5770cbc9af487abee396d98cb476936f97e625254"
+  },
+  "base_after_both_restores_sha256": "f31d19d24b33ea1acc2fc2e99451ae72fc96fd22730603bbc24928b219f62b1f",
+  "restored_targets": {
+    "copied_target": {
+      "sha256": "c8184e644d838d84ae759ed5770cbc9af487abee396d98cb476936f97e625254",
+      "shared_inode_before": {
+        "data.bin": false,
+        "labels.txt": false
+      },
+      "shared_inode_after": {
+        "data.bin": false,
+        "labels.txt": false
+      },
+      "unchanged_labels_match": true
+    },
+    "hard_linked_target": {
+      "sha256": "c8184e644d838d84ae759ed5770cbc9af487abee396d98cb476936f97e625254",
+      "shared_inode_before": {
+        "data.bin": true,
+        "labels.txt": true
+      },
+      "shared_inode_after": {
+        "data.bin": false,
+        "labels.txt": true
+      },
+      "unchanged_labels_match": true
+    }
+  }
+}

@@ -1,0 +1,124 @@
+{
+  "environment": {
+    "system": "Linux",
+    "kernel": "6.18.22-0-virt",
+    "arch": "aarch64",
+    "mise": "2026.11.14 linux-arm64 (2026-11-24)"
+  },
+  "binary_sha256": "7a5252b6a4f30baa96486234e9f217c9f9aaef2343f32b744cd1a54fb4248268",
+  "cases": {
+    "ordinary_cache": {
+      "sandbox_requested": false,
+      "declared_inputs": [
+        "src/app.txt"
+      ],
+      "runs": {
+        "first": {
+          "status": 0,
+          "output": "application\ndebug\n",
+          "diagnostics": [
+            "[build] cache miss: no matching cache entry"
+          ]
+        },
+        "mode_changed": {
+          "status": 0,
+          "output": "application\ndebug\n",
+          "diagnostics": [
+            "[build] restored outputs from cache 4a6f479768435de4b15862b05c41aa7f357ec34cc21357ae31de75641d10cf74"
+          ]
+        },
+        "fresh_output": {
+          "status": 0,
+          "output": "application\ndebug\n",
+          "diagnostics": [
+            "[build] restored outputs from cache 4a6f479768435de4b15862b05c41aa7f357ec34cc21357ae31de75641d10cf74"
+          ]
+        },
+        "source_changed": {
+          "status": 0,
+          "output": "application-v2\nrelease\n",
+          "diagnostics": [
+            "[build] cache miss: no matching cache entry"
+          ]
+        }
+      }
+    },
+    "sandbox_missing_input": {
+      "sandbox_requested": true,
+      "declared_inputs": [
+        "src/app.txt"
+      ],
+      "runs": {
+        "first": {
+          "status": 1,
+          "output": null,
+          "diagnostics": [
+            "[build] cache miss: no matching cache entry",
+            "cat: can't open 'build-mode.txt': Permission denied"
+          ]
+        },
+        "mode_changed": {
+          "status": 1,
+          "output": null,
+          "diagnostics": [
+            "[build] cache miss: no matching cache entry",
+            "cat: can't open 'build-mode.txt': Permission denied"
+          ]
+        },
+        "fresh_output": {
+          "status": 1,
+          "output": null,
+          "diagnostics": [
+            "[build] cache miss: no matching cache entry",
+            "cat: can't open 'build-mode.txt': Permission denied"
+          ]
+        },
+        "source_changed": {
+          "status": 1,
+          "output": null,
+          "diagnostics": [
+            "[build] cache miss: no matching cache entry",
+            "cat: can't open 'build-mode.txt': Permission denied"
+          ]
+        }
+      }
+    },
+    "sandbox_declared_input": {
+      "sandbox_requested": true,
+      "declared_inputs": [
+        "src/app.txt",
+        "build-mode.txt"
+      ],
+      "runs": {
+        "first": {
+          "status": 0,
+          "output": "application\ndebug\n",
+          "diagnostics": [
+            "[build] cache miss: no matching cache entry"
+          ]
+        },
+        "mode_changed": {
+          "status": 0,
+          "output": "application\nrelease\n",
+          "diagnostics": [
+            "[build] cache miss: no matching cache entry"
+          ]
+        },
+        "fresh_output": {
+          "status": 0,
+          "output": "application\nrelease\n",
+          "diagnostics": [
+            "[build] restored outputs from cache 90e351b93b06cf999235d4ab51d35ef0033bf260056521148275f267b941a3bf"
+          ]
+        },
+        "source_changed": {
+          "status": 0,
+          "output": "application-v2\nrelease\n",
+          "diagnostics": [
+            "[build] cache miss: no matching cache entry"
+          ]
+        }
+      }
+    }
+  }
+}
