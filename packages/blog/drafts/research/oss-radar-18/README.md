@@ -1,6 +1,6 @@
 # OSS Radar #18 research
 
-Research began November 24, 2026. The preparation target is Monday, November 30 at 08:00 Pacific. A first draft and isolated preview are ready for review.
+Research began November 24, 2026. The preparation target is Monday, November 30 at 08:00 Pacific. The draft now includes the destination controls and is ready for final editorial review.
 
 ## Sources and selection
 
@@ -24,6 +24,14 @@ The [draft](article.md) follows the decisions in order. mise starts with which f
 
 The isolated preview used a clean install with lifecycle scripts, then compiled the workspace dependencies before validating the draft. Typecheck and validation of 40 Markdown articles passed. The 51-post build generated the November 30 page, one matching heading, archive, RSS, catalog, sitemap, Markdown, citations, and 1200 × 600 social card. The receipt pins the exact draft and site base. [Preview receipt](draft-preview-2026-11-25.json).
 
+## November 25 claim review
+
+- mise can accept an existing output based on ordinary freshness and the saved artifact's key and checksum. An in-place edit of the working output survived that check on Alpine and macOS. Comparing working output content made the artifact cache restore the expected bytes and made the ordinary task rebuild them. [Executor and controls](mise/README.md#existing-output-control).
+- Dagger's two engine traces show the copy checksum narrowing from `/` to `/selected.txt` for the unfiltered copy. Both engines retained old bytes at the host snapshot step after the time-preserving edit. The trial measured checksum request paths and file contents. The build slowdown belongs to the upstream CI report. [Paired engine runs](dagger/README.md).
+- restic's default backup caught the edit when `ctime` advanced. Its `if-changed` restore retained matching-size, matching-time target bytes and verified zero files. `always` restored the saved bytes and verified one. Both runs preserved the bytes of the earlier hard-linked copy. These controls used disposable local repositories and files on Alpine and macOS ARM64. [Restore cases and verification code](restic/README.md#existing-restore-target-control).
+
+The release recheck on November 25 still found mise v2026.11.14, Dagger v0.21.12, and restic v0.20.0. The revised draft passed a second isolated preview. [Revised draft receipt](draft-preview-after-review-2026-11-25.json).
+
 ## Next bounded action
 
-Challenge the reader's advice in the draft against the pinned implementations and receipts. Check that the Dagger timing claims remain attributed, that the mise content-freshness remedy is scoped to declared paths, and that the restic restore advice preserves the earlier copy. Review the exact source and final render once that pass is complete.
+Complete the editorial review, recheck releases and consequential upstream discussions, then render and pin the exact release candidate. The hosted publisher is paused and the manifest is empty.

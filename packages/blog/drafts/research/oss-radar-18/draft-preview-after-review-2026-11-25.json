@@ -1,0 +1,25 @@
+{
+  "stage": "draft_preview_after_claim_review",
+  "site_base_commit": "deecd96213cadb4213e189c7839483402d14398d",
+  "date": "2026-11-30",
+  "slug": "oss-radar-18-when-a-file-looks-unchanged",
+  "source_sha256": "03cc790869cc7dd48161d16594acb0909e9ab5ae09c302b1fdded2b952c87c69",
+  "markdown_posts_validated": 40,
+  "post_count": 51,
+  "verified": [
+    "HTML title and three project headings",
+    "November 30 date",
+    "destination findings",
+    "section archive",
+    "catalog",
+    "RSS",
+    "sitemap",
+    "Markdown",
+    "CSL JSON",
+    "BibTeX"
+  ],
+  "social_card_png": [
+    1200,
+    600
+  ]
+}

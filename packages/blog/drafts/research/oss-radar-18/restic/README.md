@@ -15,3 +15,15 @@ The earlier report describes files with the expected size and modification time 
 The default incremental backup classified an unchanged repeat as one unmodified file and added zero data blobs. We then changed the source to `edition-B` with the same size, modification time, and inode. Its `ctime` advanced. The next ordinary backup reported one changed file and added one data blob. Reading the file from that snapshot gave `edition-B`, matching a forced reread. The default and forced results agree on both Linux and macOS ARM64. [Linux evidence](../mtime-alpine-2026-11-25.json) · [macOS evidence](../mtime-macos-2026-11-25.json).
 
 The archiver can reuse a prior file's blob list when metadata matches and the repository still has those blobs. Its default regular-file comparison includes `ctime` and inode alongside size and modification time. This check concerns a local Unix file edit and a default backup configuration. The Linux ARM64 release archive matched SHA-256 `1188daded239bccb5952a01d2ad33e77a0d3dc34f9d9fc1e7fdda618d44938ef`. [Reuse branch](https://github.com/restic/restic/blob/9c88ff768f10c192dc6a87619a65a16374080e33/internal/archiver/archiver.go#L523-L546) · [Metadata comparison](https://github.com/restic/restic/blob/9c88ff768f10c192dc6a87619a65a16374080e33/internal/archiver/archiver.go#L632-L659) · [Fixture](../mtime_inputs_trial.py).
+
+### Existing restore target control
+
+Separate restore destinations began with `edition-B` in the target and its hard-linked peer. The local snapshot contained `edition-A` at the same size. Every invocation passed `--verify`. [Fixture](../destination_reuse_trial.py) · [Linux receipt](../destination-alpine-2026-11-25.json) · [macOS receipt](../destination-macos-2026-11-25.json).
+
+| Restore policy and target | Target afterwards | Files verified | Hard link still shared |
+| --- | --- | ---: | --- |
+| `if-changed`, size and modification time match the snapshot | `edition-B` | 0 | Yes |
+| `if-changed`, target modification time advanced | `edition-A` | 1 | No |
+| `always`, size and modification time match the snapshot | `edition-A` | 1 | No |
+
+The peer remained `edition-B` in every case, and the two ARM64 platforms agreed. The `if-changed` path treats matching size and modification time as sufficient. Its verification pass visits files recorded as content restores and skips metadata-only work. The number of files verified describes that set. [Matching size and time](https://github.com/restic/restic/blob/9c88ff768f10c192dc6a87619a65a16374080e33/internal/restorer/restorer.go#L734-L769) · [Verification file selection](https://github.com/restic/restic/blob/9c88ff768f10c192dc6a87619a65a16374080e33/internal/restorer/restorer.go#L645-L682).

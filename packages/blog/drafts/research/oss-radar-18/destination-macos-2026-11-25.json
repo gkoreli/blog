@@ -1,0 +1,130 @@
+{
+  "system": {
+    "os": "Darwin",
+    "kernel": "27.2.0",
+    "arch": "arm64"
+  },
+  "mise": {
+    "binary": {
+      "version": "2026.11.14 macos-arm64 (2026-11-24)",
+      "sha256": "ad39dddb61236cc546ecbd0294aa3fc72a5ae7f1f8c7e6dc6fd4211f99eb3b79"
+    },
+    "artifact_default_freshness": {
+      "initial": {
+        "output": "edition-A\n",
+        "skipped_as_fresh": false,
+        "restored_key": null
+      },
+      "edited_output": {
+        "same_size": true,
+        "same_mtime": true,
+        "same_inode": true,
+        "ctime_changed": true
+      },
+      "after_edit": {
+        "output": "edition-B\n",
+        "skipped_as_fresh": true,
+        "restored_key": null
+      },
+      "after_removal": {
+        "output": "edition-A\n",
+        "skipped_as_fresh": false,
+        "restored_key": "d179081be6898a60b43ff6d8eb753f4445ab5b014097f79965ed566418fc7916"
+      },
+      "source_after_runs": "edition-A\n"
+    },
+    "artifact_content_freshness": {
+      "initial": {
+        "output": "edition-A\n",
+        "skipped_as_fresh": false,
+        "restored_key": null
+      },
+      "edited_output": {
+        "same_size": true,
+        "same_mtime": true,
+        "same_inode": true,
+        "ctime_changed": true
+      },
+      "after_edit": {
+        "output": "edition-A\n",
+        "skipped_as_fresh": false,
+        "restored_key": "b876c21c4922827c89b1ee1089a5e0098f7ce0525dfde48655fbc941925d5f88"
+      },
+      "after_removal": {
+        "output": "edition-A\n",
+        "skipped_as_fresh": false,
+        "restored_key": "b876c21c4922827c89b1ee1089a5e0098f7ce0525dfde48655fbc941925d5f88"
+      },
+      "source_after_runs": "edition-A\n"
+    },
+    "ordinary_content_freshness": {
+      "initial": {
+        "output": "edition-A\n",
+        "skipped_as_fresh": false,
+        "restored_key": null
+      },
+      "edited_output": {
+        "same_size": true,
+        "same_mtime": true,
+        "same_inode": true,
+        "ctime_changed": true
+      },
+      "after_edit": {
+        "output": "edition-A\n",
+        "skipped_as_fresh": false,
+        "restored_key": null
+      },
+      "source_after_runs": "edition-A\n"
+    }
+  },
+  "restic": {
+    "binary": {
+      "version": "restic 0.20.0 compiled with go1.27.4 on darwin/arm64",
+      "sha256": "9263cc41641f056b32a09ac133974bed8359d3310d2f42f9e9e46b19760d80bf"
+    },
+    "destination": {
+      "snapshot_contents": "edition-A\n",
+      "restore_cases": {
+        "if_changed_same_mtime": {
+          "preparation_edit": {
+            "same_size": true,
+            "same_mtime": true,
+            "same_inode": true,
+            "ctime_changed": true
+          },
+          "same_mtime_as_snapshot_before_restore": true,
+          "target_after": "edition-B\n",
+          "peer_after": "edition-B\n",
+          "link_shared_after": true,
+          "files_verified": 0
+        },
+        "if_changed_later_mtime": {
+          "preparation_edit": {
+            "same_size": true,
+            "same_mtime": true,
+            "same_inode": true,
+            "ctime_changed": true
+          },
+          "same_mtime_as_snapshot_before_restore": false,
+          "target_after": "edition-A\n",
+          "peer_after": "edition-B\n",
+          "link_shared_after": false,
+          "files_verified": 1
+        },
+        "always_same_mtime": {
+          "preparation_edit": {
+            "same_size": true,
+            "same_mtime": true,
+            "same_inode": true,
+            "ctime_changed": true
+          },
+          "same_mtime_as_snapshot_before_restore": true,
+          "target_after": "edition-A\n",
+          "peer_after": "edition-B\n",
+          "link_shared_after": false,
+          "files_verified": 1
+        }
+      }
+    }
+  }
+}
