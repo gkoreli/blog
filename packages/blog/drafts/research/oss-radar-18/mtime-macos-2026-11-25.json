@@ -1,0 +1,145 @@
+{
+  "system": {
+    "os": "Darwin",
+    "kernel": "27.2.0",
+    "arch": "arm64"
+  },
+  "mise": {
+    "binary": {
+      "version": "2026.11.14 macos-arm64 (2026-11-24)",
+      "sha256": "ad39dddb61236cc546ecbd0294aa3fc72a5ae7f1f8c7e6dc6fd4211f99eb3b79"
+    },
+    "artifact": {
+      "initial": {
+        "output": "edition-A\n",
+        "restored_key": null,
+        "skipped_as_fresh": false,
+        "cache_miss": true
+      },
+      "unchanged_repeat": {
+        "output": "edition-A\n",
+        "restored_key": "d179081be6898a60b43ff6d8eb753f4445ab5b014097f79965ed566418fc7916",
+        "skipped_as_fresh": false,
+        "cache_miss": false
+      },
+      "edit": {
+        "same_size": true,
+        "same_mtime": true,
+        "same_inode": true,
+        "ctime_changed": true
+      },
+      "after_edit_with_existing_output": {
+        "output": "edition-B\n",
+        "restored_key": null,
+        "skipped_as_fresh": false,
+        "cache_miss": true
+      },
+      "after_removing_output": {
+        "output": "edition-B\n",
+        "restored_key": "9b83e2ce233e95f982d15453efd2ffecf4d5404c312a9d88bfbae05e7713a093",
+        "skipped_as_fresh": false,
+        "cache_miss": false
+      }
+    },
+    "default_freshness": {
+      "initial": {
+        "output": "edition-A\n",
+        "restored_key": null,
+        "skipped_as_fresh": false,
+        "cache_miss": false
+      },
+      "unchanged_repeat": {
+        "output": "edition-A\n",
+        "restored_key": null,
+        "skipped_as_fresh": true,
+        "cache_miss": false
+      },
+      "edit": {
+        "same_size": true,
+        "same_mtime": true,
+        "same_inode": true,
+        "ctime_changed": true
+      },
+      "after_edit_with_existing_output": {
+        "output": "edition-A\n",
+        "restored_key": null,
+        "skipped_as_fresh": true,
+        "cache_miss": false
+      },
+      "forced_run": {
+        "output": "edition-B\n",
+        "restored_key": null,
+        "skipped_as_fresh": false,
+        "cache_miss": false
+      }
+    },
+    "hash_freshness": {
+      "initial": {
+        "output": "edition-A\n",
+        "restored_key": null,
+        "skipped_as_fresh": false,
+        "cache_miss": false
+      },
+      "unchanged_repeat": {
+        "output": "edition-A\n",
+        "restored_key": null,
+        "skipped_as_fresh": true,
+        "cache_miss": false
+      },
+      "edit": {
+        "same_size": true,
+        "same_mtime": true,
+        "same_inode": true,
+        "ctime_changed": true
+      },
+      "after_edit_with_existing_output": {
+        "output": "edition-B\n",
+        "restored_key": null,
+        "skipped_as_fresh": false,
+        "cache_miss": false
+      }
+    }
+  },
+  "restic": {
+    "binary": {
+      "version": "restic 0.20.0 compiled with go1.27.4 on darwin/arm64",
+      "sha256": "9263cc41641f056b32a09ac133974bed8359d3310d2f42f9e9e46b19760d80bf"
+    },
+    "backup": {
+      "initial": {
+        "readback": "edition-A\n",
+        "files_new": 1,
+        "files_changed": 0,
+        "files_unmodified": 0,
+        "data_blobs_added": 1
+      },
+      "unchanged_repeat": {
+        "readback": "edition-A\n",
+        "files_new": 0,
+        "files_changed": 0,
+        "files_unmodified": 1,
+        "data_blobs_added": 0
+      },
+      "edit": {
+        "same_size": true,
+        "same_mtime": true,
+        "same_inode": true,
+        "ctime_changed": true
+      },
+      "incremental_after_edit": {
+        "readback": "edition-B\n",
+        "files_new": 0,
+        "files_changed": 1,
+        "files_unmodified": 0,
+        "data_blobs_added": 1
+      },
+      "forced_reference": {
+        "readback": "edition-B\n",
+        "files_new": 1,
+        "files_changed": 0,
+        "files_unmodified": 0,
+        "data_blobs_added": 0
+      }
+    }
+  }
+}

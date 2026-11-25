@@ -1,6 +1,6 @@
 # OSS Radar #18 research
 
-Research began November 24, 2026. The preparation target is Monday, November 30 at 08:00 Pacific. This issue is at the project-selection and fieldwork stage.
+Research began November 24, 2026. The preparation target is Monday, November 30 at 08:00 Pacific. A first draft and isolated preview are ready for review.
 
 ## Sources and selection
 
@@ -16,6 +16,14 @@ The working set asks which input or existing bytes a tool uses when it skips wor
 
 The Dagger engine comparison put a separate check before the copy. Both releases used earlier bytes when an edit preserved a file's length and modification time. The 0.21.12 checksum had a smaller scope once an ordinary edit reached the engine. This gives the issue a concrete distinction between choosing which bytes to check and finding those bytes in the first place. [Engine trial and source](dagger/README.md).
 
+On November 25, mise's artifact cache and restic's default backup both picked up a same-size edit with a preserved modification time. The file's status-change time advanced. The ordinary mise task skipped the edit until we forced it or enabled content freshness. This gives the comparison a control within one project as well as across projects. The fixture used fresh local repositories and task caches on Alpine and macOS ARM64. The content-freshness case ran in a fresh directory after the first two mise cases and the backup trial. [Fixture](mtime_inputs_trial.py) · [Linux evidence](mtime-alpine-2026-11-25.json) · [macOS evidence](mtime-macos-2026-11-25.json).
+
+## First draft and preview
+
+The [draft](article.md) follows the decisions in order. mise starts with which files belong in a task's key. Dagger shows that the host directory can retain earlier bytes before the copy checksum runs. restic checks metadata to choose a prior blob list, then has a separate decision about whether restore can keep bytes already at the destination.
+
+The isolated preview used a clean install with lifecycle scripts, then compiled the workspace dependencies before validating the draft. Typecheck and validation of 40 Markdown articles passed. The 51-post build generated the November 30 page, one matching heading, archive, RSS, catalog, sitemap, Markdown, citations, and 1200 × 600 social card. The receipt pins the exact draft and site base. [Preview receipt](draft-preview-2026-11-25.json).
+
 ## Next bounded action
 
-Check whether same-size edits with preserved modification times reach mise's declared-input key and restic's next local backup. The new controls should identify which measurements can support a shared lesson and where the tools make different choices. Keep the existing ordinary trials as their baselines, then review the selection and article outline.
+Challenge the reader's advice in the draft against the pinned implementations and receipts. Check that the Dagger timing claims remain attributed, that the mise content-freshness remedy is scoped to declared paths, and that the restic restore advice preserves the earlier copy. Review the exact source and final render once that pass is complete.

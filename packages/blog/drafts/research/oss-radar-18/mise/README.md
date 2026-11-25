@@ -15,3 +15,15 @@ The fixture builds one text file from `src/app.txt` and `build-mode.txt`. Each c
 | Sandbox requested, mode file included in `sources` | Cache miss produced `release`. Repeating the inputs restored it | Cache miss produced `release`. Repeating the inputs restored it |
 
 Editing the declared primary source forced a new result in every case that could read the inputs. A team can use Linux to catch a missing declaration early and include real build inputs in `sources` on both platforms. This trial exercised one ordinary file dependency. It leaves the behavior of a team's full build and other ambient inputs open.
+
+## November 25 edit with a preserved timestamp
+
+We changed a declared source from `edition-A` to `edition-B` in place. The size, modification time, and inode stayed fixed. The status-change time, `ctime`, advanced. The output existed when the edited task ran. Every completed case agreed on the observed behavior across Alpine ARM64 and macOS ARM64. [Fixture](../mtime_inputs_trial.py) · [Linux evidence](../mtime-alpine-2026-11-25.json) · [macOS evidence](../mtime-macos-2026-11-25.json).
+
+| Task configuration | After the edit | Control |
+| --- | --- | --- |
+| Default freshness with `sources` and `outputs` | Skipped and kept `edition-A` | `--force` rebuilt `edition-B` |
+| Artifact cache enabled, sandbox requested | Cache miss and `edition-B` | Deleting the output restored `edition-B` under a different key from the initial restore |
+| Artifact cache absent, `settings.task.source_freshness_hash_contents = true` | Rebuilt `edition-B` | The unchanged repeat skipped in both environments |
+
+The default freshness path records source path, size, and modification time and compares source and output modification times. The artifact cache computes a content key. It can reuse a per-file digest only when the recorded metadata matches, including `ctime` on the tested systems. With content freshness enabled, the ordinary task also checks file contents. The preceding source tag already has that option and the `ctime` check. The November 24 feature adds the derived Linux sandbox. [Pinned freshness](https://github.com/jdx/mise/blob/383f858914918dc951bb052734f8f0b995756388/src/task/task_source_checker.rs#L1332-L1463) · [Pinned artifact inputs](https://github.com/jdx/mise/blob/383f858914918dc951bb052734f8f0b995756388/src/task/task_source_checker.rs#L1265-L1310) · [Per-file digest reuse](https://github.com/jdx/mise/blob/383f858914918dc951bb052734f8f0b995756388/src/task/task_source_checker.rs#L1910-L1923) · [Preceding source](https://github.com/jdx/mise/blob/79f7186ddbc74d2209630f540317d534d8e0cbb8/src/task/task_source_checker.rs).
