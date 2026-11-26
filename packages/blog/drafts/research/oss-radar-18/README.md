@@ -1,6 +1,6 @@
 # OSS Radar #18 research
 
-Research began November 24, 2026. The preparation target is Monday, November 30 at 08:00 Pacific. The draft now includes the destination controls and is ready for final editorial review.
+Research began November 24, 2026. The preparation target is Monday, November 30 at 08:00 Pacific. The reviewed candidate includes the two-release restic comparison and the mise read-allowance control.
 
 ## Sources and selection
 
@@ -32,6 +32,14 @@ The isolated preview used a clean install with lifecycle scripts, then compiled 
 
 The release recheck on November 25 still found mise v2026.11.14, Dagger v0.21.12, and restic v0.20.0. The revised draft passed a second isolated preview. [Revised draft receipt](draft-preview-after-review-2026-11-25.json).
 
+## November 26 fieldwork and candidate review
+
+- The released restic comparison reproduced the reported hard-link restore failure on v0.19.1. On Alpine its output matched snapshot size and time, so retrying with `if-changed --verify` accepted the damaged bytes and verified zero files. On macOS the first result was short and the retry recovered it. Fresh v0.20.0 restores matched the snapshot on both. The ordinary copied targets matched on both releases. [Version comparison](restic/README.md#november-26-released-version-comparison).
+- The mise build passed on Linux after adding a read allowance. The cache kept returning `debug` after changing the allowed file until a declared input made the task run again. The candidate puts the distinction between read permission and input content next to the sandbox example. [Read-allowance control](mise/README.md#november-26-read-allowance-control).
+- The new Dagger discussion concerns an open proposal for narrowed Git and directory API operations on the beta line. The stable Dockerfile copy remains the selected subject. [Upstream check](dagger/README.md#november-26-upstream-check).
+
+The selection, project entries, synthesis, and distillation were reviewed against the linked receipts and pinned code. GitHub still listed the three tested stable releases on November 26. mise's v2026.11.15 release PR was open. [mise release tracking](https://github.com/jdx/mise/pull/16102) · [Exact candidate preview](candidate-preview-2026-11-26.json).
+
 ## Next bounded action
 
-Complete the editorial review, recheck releases and consequential upstream discussions, then render and pin the exact release candidate. The hosted publisher is paused and the manifest is empty.
+Before the November 30 target, check for releases or discussion that changes the advice and compare the recorded manuscript hash with the release candidate. The hosted publisher is paused and the manifest is empty.

@@ -1,0 +1,157 @@
+{
+  "environment": {
+    "platform": "Darwin",
+    "arch": "arm64"
+  },
+  "snapshot_blobs": {
+    "initial": 4,
+    "updated": 4,
+    "shared": 3
+  },
+  "expected_snapshot": {
+    "sha256": "c8184e644d838d84ae759ed5770cbc9af487abee396d98cb476936f97e625254",
+    "size": 8388608,
+    "zero_bytes": 32811
+  },
+  "earlier_copy_sha256": "f31d19d24b33ea1acc2fc2e99451ae72fc96fd22730603bbc24928b219f62b1f",
+  "versions": {
+    "previous": {
+      "version": "restic 0.19.1 compiled with go1.26.4 on darwin/arm64",
+      "binary_sha256": "06582569ff2f10e1935a6f12187c76db02f0bae99e6e54098f2cdc374766d768",
+      "ordinary_copy": {
+        "exit_code": 0,
+        "sha256": "c8184e644d838d84ae759ed5770cbc9af487abee396d98cb476936f97e625254",
+        "matches_snapshot": true,
+        "size": 8388608,
+        "zero_bytes": 32811,
+        "mtime_matches_snapshot": true,
+        "link_shared_before": false,
+        "link_shared_after": false,
+        "earlier_copy_unchanged": true,
+        "labels_link_shared": false,
+        "files_verified": null
+      },
+      "hard_link": {
+        "exit_code": 0,
+        "sha256": "11fa13e85f68f3c4c7349dd2eb766a4dc8d6871652f68a19674d69b770368550",
+        "matches_snapshot": false,
+        "size": 7296064,
+        "zero_bytes": 3278451,
+        "mtime_matches_snapshot": true,
+        "link_shared_before": true,
+        "link_shared_after": false,
+        "earlier_copy_unchanged": true,
+        "labels_link_shared": true,
+        "files_verified": null
+      },
+      "hard_link_with_verify": {
+        "exit_code": 1,
+        "sha256": "11fa13e85f68f3c4c7349dd2eb766a4dc8d6871652f68a19674d69b770368550",
+        "matches_snapshot": false,
+        "size": 7296064,
+        "zero_bytes": 3278451,
+        "mtime_matches_snapshot": true,
+        "link_shared_before": true,
+        "link_shared_after": false,
+        "earlier_copy_unchanged": true,
+        "labels_link_shared": true,
+        "files_verified": null
+      },
+      "if_changed_retry_with_verify": {
+        "exit_code": 0,
+        "sha256": "c8184e644d838d84ae759ed5770cbc9af487abee396d98cb476936f97e625254",
+        "matches_snapshot": true,
+        "size": 8388608,
+        "zero_bytes": 32811,
+        "mtime_matches_snapshot": true,
+        "link_shared_before": false,
+        "link_shared_after": false,
+        "earlier_copy_unchanged": true,
+        "labels_link_shared": true,
+        "files_verified": 1
+      },
+      "always_retry_with_verify": {
+        "exit_code": 0,
+        "sha256": "c8184e644d838d84ae759ed5770cbc9af487abee396d98cb476936f97e625254",
+        "matches_snapshot": true,
+        "size": 8388608,
+        "zero_bytes": 32811,
+        "mtime_matches_snapshot": true,
+        "link_shared_before": false,
+        "link_shared_after": false,
+        "earlier_copy_unchanged": true,
+        "labels_link_shared": true,
+        "files_verified": 0
+      }
+    },
+    "current": {
+      "version": "restic 0.20.0 compiled with go1.27.4 on darwin/arm64",
+      "binary_sha256": "9263cc41641f056b32a09ac133974bed8359d3310d2f42f9e9e46b19760d80bf",
+      "ordinary_copy": {
+        "exit_code": 0,
+        "sha256": "c8184e644d838d84ae759ed5770cbc9af487abee396d98cb476936f97e625254",
+        "matches_snapshot": true,
+        "size": 8388608,
+        "zero_bytes": 32811,
+        "mtime_matches_snapshot": true,
+        "link_shared_before": false,
+        "link_shared_after": false,
+        "earlier_copy_unchanged": true,
+        "labels_link_shared": false,
+        "files_verified": null
+      },
+      "hard_link": {
+        "exit_code": 0,
+        "sha256": "c8184e644d838d84ae759ed5770cbc9af487abee396d98cb476936f97e625254",
+        "matches_snapshot": true,
+        "size": 8388608,
+        "zero_bytes": 32811,
+        "mtime_matches_snapshot": true,
+        "link_shared_before": true,
+        "link_shared_after": false,
+        "earlier_copy_unchanged": true,
+        "labels_link_shared": true,
+        "files_verified": null
+      },
+      "hard_link_with_verify": {
+        "exit_code": 0,
+        "sha256": "c8184e644d838d84ae759ed5770cbc9af487abee396d98cb476936f97e625254",
+        "matches_snapshot": true,
+        "size": 8388608,
+        "zero_bytes": 32811,
+        "mtime_matches_snapshot": true,
+        "link_shared_before": true,
+        "link_shared_after": false,
+        "earlier_copy_unchanged": true,
+        "labels_link_shared": true,
+        "files_verified": 1
+      },
+      "if_changed_retry_with_verify": {
+        "exit_code": 0,
+        "sha256": "c8184e644d838d84ae759ed5770cbc9af487abee396d98cb476936f97e625254",
+        "matches_snapshot": true,
+        "size": 8388608,
+        "zero_bytes": 32811,
+        "mtime_matches_snapshot": true,
+        "link_shared_before": false,
+        "link_shared_after": false,
+        "earlier_copy_unchanged": true,
+        "labels_link_shared": true,
+        "files_verified": 0
+      },
+      "always_retry_with_verify": {
+        "exit_code": 0,
+        "sha256": "c8184e644d838d84ae759ed5770cbc9af487abee396d98cb476936f97e625254",
+        "matches_snapshot": true,
+        "size": 8388608,
+        "zero_bytes": 32811,
+        "mtime_matches_snapshot": true,
+        "link_shared_before": false,
+        "link_shared_after": false,
+        "earlier_copy_unchanged": true,
+        "labels_link_shared": true,
+        "files_verified": 0
+      }
+    }
+  }
+}

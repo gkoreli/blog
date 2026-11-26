@@ -1,0 +1,50 @@
+{
+  "environment": {
+    "system": "Linux",
+    "kernel": "6.18.22-0-virt",
+    "arch": "aarch64",
+    "mise": "2026.11.14 linux-arm64 (2026-11-24)"
+  },
+  "binary_sha256": "7a5252b6a4f30baa96486234e9f217c9f9aaef2343f32b744cd1a54fb4248268",
+  "cases": {
+    "sandbox_with_read_allowance": {
+      "sandbox_requested": true,
+      "declared_inputs": [
+        "src/app.txt"
+      ],
+      "runs": {
+        "first": {
+          "status": 0,
+          "output": "application\ndebug\n",
+          "diagnostics": [
+            "[build] cache miss: no matching cache entry"
+          ]
+        },
+        "mode_changed": {
+          "status": 0,
+          "output": "application\ndebug\n",
+          "diagnostics": [
+            "[build] restored outputs from cache 3594966e64e8c65c90926be14dec11280d5e6790daf796054632119dce668e25"
+          ]
+        },
+        "fresh_output": {
+          "status": 0,
+          "output": "application\ndebug\n",
+          "diagnostics": [
+            "[build] restored outputs from cache 3594966e64e8c65c90926be14dec11280d5e6790daf796054632119dce668e25"
+          ]
+        },
+        "source_changed": {
+          "status": 0,
+          "output": "application-v2\nrelease\n",
+          "diagnostics": [
+            "[build] cache miss: no matching cache entry"
+          ]
+        }
+      },
+      "allowed_reads": [
+        "build-mode.txt"
+      ]
+    }
+  }
+}

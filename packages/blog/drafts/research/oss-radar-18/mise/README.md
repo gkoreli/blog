@@ -16,6 +16,10 @@ The fixture builds one text file from `src/app.txt` and `build-mode.txt`. Each c
 
 Editing the declared primary source forced a new result in every case that could read the inputs. A team can use Linux to catch a missing declaration early and include real build inputs in `sources` on both platforms. This trial exercised one ordinary file dependency. It leaves the behavior of a team's full build and other ambient inputs open.
 
+### November 26 read-allowance control
+
+We ran the same fixture on Alpine 3.23.4 ARM64 with `--allow-read=build-mode.txt` and only `src/app.txt` in `sources`. The first run read `debug` and stored the output. Changing only the mode to `release` restored `debug` twice from the same key. Changing the declared app source then missed the cache and produced `application-v2` and `release`. The allowed path participates in the key. Its contents participate when declared in `sources`. This matters when a developer makes a sandboxed task pass by permitting a read. [Released cache rules](https://github.com/jdx/mise/blob/383f858914918dc951bb052734f8f0b995756388/docs/tasks/caching.md#cache-sandbox) · [Fixture with `--read-allowance-only`](cache_inputs_trial.py) · [Alpine receipt](allowance-alpine-2026-11-26.json).
+
 ## November 25 edit with a preserved timestamp
 
 We changed a declared source from `edition-A` to `edition-B` in place. The size, modification time, and inode stayed fixed. The status-change time, `ctime`, advanced. The output existed when the edited task ran. Every completed case agreed on the observed behavior across Alpine ARM64 and macOS ARM64. [Fixture](../mtime_inputs_trial.py) · [Linux evidence](../mtime-alpine-2026-11-25.json) · [macOS evidence](../mtime-macos-2026-11-25.json).

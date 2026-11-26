@@ -27,3 +27,16 @@ Separate restore destinations began with `edition-B` in the target and its hard-
 | `always`, size and modification time match the snapshot | `edition-A` | 1 | No |
 
 The peer remained `edition-B` in every case, and the two ARM64 platforms agreed. The `if-changed` path treats matching size and modification time as sufficient. Its verification pass visits files recorded as content restores and skips metadata-only work. The number of files verified describes that set. [Matching size and time](https://github.com/restic/restic/blob/9c88ff768f10c192dc6a87619a65a16374080e33/internal/restorer/restorer.go#L734-L769) · [Verification file selection](https://github.com/restic/restic/blob/9c88ff768f10c192dc6a87619a65a16374080e33/internal/restorer/restorer.go#L645-L682).
+
+## November 26 released-version comparison
+
+The baseline was v0.19.1 at `6aa3a516ce654808a1f28f9fa21e9b7c8e6e90bf`. Both official ARM64 release archives matched the publisher's SHA-256 list. On each platform the script used v0.19.1 to prepare one local repository with two snapshots of a seeded 8 MiB file after a seven-byte edit. Both binaries restored the same newer snapshot over fresh copies of the earlier restore. It checked whole-file SHA-256, size, modification time, shared inode and the earlier copy after each run. The snapshots shared four of five chunks on Alpine and three of four on macOS. [Baseline tag and checksums](https://github.com/restic/restic/releases/tag/v0.19.1) · [Fixture](compare_hard_link_restores.py) · [Alpine](comparison-alpine-2026-11-26.json) · [macOS](comparison-macos-2026-11-26.json).
+
+| Target and check | v0.19.1 on Alpine | v0.19.1 on macOS | v0.20.0 on both |
+| --- | --- | --- | --- |
+| Ordinary copied target with `if-changed` | Matched snapshot | Matched snapshot | Matched snapshot |
+| Hard-linked target with `if-changed` | Exit 0, all 8,388,608 bytes present, 6,364,482 zeros | Exit 0, 7,296,064 bytes with a different hash | Matched snapshot |
+| Fresh hard-linked target with `if-changed --verify` | Exit 1 | Exit 1 | Matched snapshot, one file verified |
+| Retry of the earlier hard-linked target with `if-changed --verify` | Exit 0, same damaged hash, zero files verified | Restored the short file, one file verified | Earlier result matched, zero files verified |
+
+On Alpine, an `always --verify` retry on the v0.19.1 target restored the correct hash and verified one file. The original restore remained byte-identical after every call. The unchanged labels file kept its link to the original across the hard-linked cases. Independent repository initialization produced different chunk boundaries on the two platforms. The comparison is over local synthetic data on Alpine 3.23.4 and macOS ARM64. The user's S3 and NFS workflow is reported separately. [User report](https://github.com/restic/restic/issues/22085) · [Changed restore branch and regression test](https://github.com/restic/restic/pull/22086/files).

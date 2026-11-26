@@ -2,7 +2,7 @@
 
 ## New active writing
 
-- **November 30 OSS Radar preparation target:** [#18 — When a File Looks Unchanged](research/oss-radar-18/article.md) draws on file reuse trials in mise, Dagger, and restic. The [revised isolated preview](research/oss-radar-18/draft-preview-after-review-2026-11-25.json) passed with the destination controls. [Research and remaining review](research/oss-radar-18/README.md).
+- **November 30 OSS Radar preparation target:** [#18 — When a File Looks Unchanged](research/oss-radar-18/article.md) draws on file reuse trials in mise, Dagger, and restic. The [reviewed candidate](research/oss-radar-18/candidate-preview-2026-11-26.json) includes a released-version restore comparison and passed its isolated preview. [Research and pre-release check](research/oss-radar-18/README.md).
 
 - **Published November 24, 2026:** [OSS Radar #17: What Still Works After an Upgrade?](https://gkoreli.com/oss-radar-17-what-still-works-after-an-upgrade). Bun compression and AOT tests lead the issue, alongside flagd, pgroll, and Hot Updater. [Maintained source](../posts/049-oss-radar-17-what-still-works-after-an-upgrade.md) · [Research and fixtures](research/oss-radar-17/README.md) · [Release verification](research/oss-radar-17/2026-11-24-release-incident.md).
 

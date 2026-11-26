@@ -1,18 +1,18 @@
 """Compare mise artifact caching with and without a declared build input.
 
-Use: python3 cache_inputs_trial.py MISE_BINARY FRESH_OUTPUT_DIRECTORY
+Use: python3 cache_inputs_trial.py MISE_BINARY FRESH_OUTPUT_DIRECTORY [--read-allowance-only]
 """
 
+import argparse
 from hashlib import file_digest
 import json
 import os
 from pathlib import Path
 import platform
 import subprocess
-import sys
 
 
-def trial(binary, root, *, sandbox, declare_mode):
+def trial(binary, root, *, sandbox, declare_mode, allow_mode=False):
     project = root / 'project'
     source = project / 'src' / 'app.txt'
     source.parent.mkdir(parents=True)
@@ -43,6 +43,10 @@ def trial(binary, root, *, sandbox, declare_mode):
         directory.mkdir()
         env[f'MISE_{label.upper()}_DIR'] = str(directory)
 
+    arguments = [binary, 'run']
+    if allow_mode:
+        arguments.append('--allow-read=build-mode.txt')
+    arguments.append('build')
     results = {}
     for phase in ('first', 'mode_changed', 'fresh_output', 'source_changed'):
         if phase == 'mode_changed':
@@ -50,7 +54,7 @@ def trial(binary, root, *, sandbox, declare_mode):
         if phase == 'source_changed':
             source.write_text('application-v2\n')
         output.unlink(missing_ok=True)
-        run = subprocess.run([binary, 'run', 'build'], cwd=project, env=env,
+        run = subprocess.run(arguments, cwd=project, env=env,
                              capture_output=True, text=True, timeout=25)
         log = run.stdout + run.stderr
         (root / f'{phase}.log').write_text(log)
@@ -65,24 +69,38 @@ def trial(binary, root, *, sandbox, declare_mode):
     return {'sandbox_requested': sandbox, 'declared_inputs': inputs, 'runs': results}
 
 
-def main(binary, output):
+def main(binary, output, *, read_allowance_only):
     output.mkdir()
     version = subprocess.check_output([binary, '--version'], text=True,
                                       env={**os.environ, 'MISE_CHECK_FOR_UPDATE': 'false'}).strip()
     with binary.open('rb') as handle:
         digest = file_digest(handle, 'sha256').hexdigest()
+    if read_allowance_only:
+        cases = {
+            'sandbox_with_read_allowance': trial(binary, output / 'allowance', sandbox=True,
+                                                 declare_mode=False, allow_mode=True),
+        }
+        cases['sandbox_with_read_allowance']['allowed_reads'] = ['build-mode.txt']
+    else:
+        cases = {
+            'ordinary_cache': trial(binary, output / 'ordinary', sandbox=False, declare_mode=False),
+            'sandbox_missing_input': trial(binary, output / 'missing', sandbox=True, declare_mode=False),
+            'sandbox_declared_input': trial(binary, output / 'declared', sandbox=True, declare_mode=True),
+        }
     results = {
         'environment': {'system': platform.system(), 'kernel': platform.release(),
                         'arch': platform.machine(), 'mise': version},
         'binary_sha256': digest,
-        'cases': {
-            'ordinary_cache': trial(binary, output / 'ordinary', sandbox=False, declare_mode=False),
-            'sandbox_missing_input': trial(binary, output / 'missing', sandbox=True, declare_mode=False),
-            'sandbox_declared_input': trial(binary, output / 'declared', sandbox=True, declare_mode=True),
-        },
+        'cases': cases,
     }
     print(json.dumps(results, indent=2))
 
 
 if __name__ == '__main__':
-    main(*(Path(value).resolve() for value in sys.argv[1:]))
+    parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
+    parser.add_argument('mise_binary', type=Path)
+    parser.add_argument('fresh_output_directory', type=Path)
+    parser.add_argument('--read-allowance-only', action='store_true')
+    args = parser.parse_args()
+    main(args.mise_binary.resolve(), args.fresh_output_directory.resolve(),
+         read_allowance_only=args.read_allowance_only)

@@ -26,3 +26,7 @@ For a pipeline that generates files with preserved timestamps, read the imported
 ```sh
 python3 copy_cache_trial.py /path/to/dagger-0.21.12 /path/to/dagger-0.21.11 /tmp/fresh-dagger-trial
 ```
+
+## November 26 upstream check
+
+The latest stable release endpoint still returned v0.21.12. An open Dagger change describes dependency steps rerunning across Git commits on v1.0.0-beta.21 when the selected file was unchanged. Its proposed fix covers narrowed Git reads and API `withDirectory` copies with `include` patterns. The source distinction matters here because the tested path is Dockerfile `COPY`, which already has its own identity implementation. The PR remained open at `633ff7e38d351ccb0f79014596bc4eb1491bcbe7` and supplies maintainer-reported evidence for a separate path. [Stable release](https://github.com/dagger/dagger/releases/tag/v0.21.12) · [Open narrowed-read proposal and its reproduction](https://github.com/dagger/dagger/pull/14990).

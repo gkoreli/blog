@@ -1,0 +1,55 @@
+{
+  "stage": "reviewed_candidate_preview",
+  "verified_on": "2026-11-26",
+  "site_base_commit": "c7011b27b6e2fef3713f8920c6e4ddeb1f59f4a5",
+  "date": "2026-11-30",
+  "slug": "oss-radar-18-when-a-file-looks-unchanged",
+  "source_sha256": "ac8519764c6771af0e6e0f506acd1dddf367dbbd9a910ad7a30ee1e47289d13f",
+  "clean_install": {
+    "platform": "macOS ARM64",
+    "frozen_lockfile": true,
+    "offline_package_store": true,
+    "lifecycle_scripts": true,
+    "onnxruntime_postinstall": "passed"
+  },
+  "markdown_posts_validated": 40,
+  "post_count": 51,
+  "verified": [
+    "workspace typecheck",
+    "HTML title, five sections, three project headings",
+    "metadata and canonical",
+    "release date",
+    "new fieldwork links",
+    "section archive",
+    "catalog",
+    "RSS",
+    "sitemap",
+    "Markdown",
+    "CSL JSON",
+    "BibTeX"
+  ],
+  "local_chrome_viewports": [
+    {
+      "viewport": [
+        1440,
+        900
+      ],
+      "titleHeight": 94,
+      "horizontalOverflow": false,
+      "articleReadableWithoutJavaScript": true
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "titleHeight": 140,
+      "horizontalOverflow": false,
+      "articleReadableWithoutJavaScript": true
+    }
+  ],
+  "social_card_png": [
+    1200,
+    600
+  ]
+}
